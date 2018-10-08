@@ -117,22 +117,16 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <metadata name="c1SuperTooltip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>17, 17</value>
+  <metadata name="sB.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>433, 9</value>
   </metadata>
-  <metadata name="c1SuperTooltip2.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>158, 17</value>
+  <metadata name="theme1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>497, 9</value>
   </metadata>
-  <metadata name="c1SuperErrorProvider1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>299, 17</value>
-  </metadata>
-  <data name="c1FlexGrid1.StyleInfo" xml:space="preserve">
-    <value>Normal{BackColor:White;ForeColor:68, 68, 68;SearchBackColor:Yellow;Border:Flat,1,224, 224, 224,Both;BackgroundImageLayout:LeftTop;}	Alternate{BackColor:244, 244, 244;ForeColor:68, 68, 68;SearchBackColor:Yellow;BackgroundImageLayout:LeftTop;}	Fixed{BackColor:White;ForeColor:100, 118, 135;SearchBackColor:Yellow;Border:Flat,1,ControlDark,Both;BackgroundImageLayout:LeftTop;}	Highlight{BackColor:100, 118, 135;ForeColor:HighlightText;SearchBackColor:Orange;BackgroundImageLayout:LeftTop;}	Focus{BackColor:White;ForeColor:68, 68, 68;SearchBackColor:Yellow;BackgroundImageLayout:LeftTop;}	Editor{BackColor:White;ForeColor:68, 68, 68;SearchBackColor:Yellow;BackgroundImageLayout:LeftTop;}	Search{BackColor:100, 118, 135;ForeColor:HighlightText;SearchBackColor:Orange;BackgroundImageLayout:LeftTop;}	Frozen{BackColor:50, 100, 118, 135;ForeColor:68, 68, 68;SearchBackColor:Yellow;BackgroundImageLayout:LeftTop;}	FrozenAlternate{BackColor:50, 100, 118, 135;ForeColor:68, 68, 68;SearchBackColor:Yellow;BackgroundImageLayout:LeftTop;}	NewRow{BackColor:White;ForeColor:GrayText;SearchBackColor:Yellow;BackgroundImageLayout:LeftTop;}	EmptyArea{BackColor:224, 224, 224;ForeColor:68, 68, 68;SearchBackColor:Yellow;Border:Flat,1,ControlDarkDark,Both;BackgroundImageLayout:LeftTop;}	SelectedColumnHeader{BackColor:185, 193, 201;ForeColor:White;SearchBackColor:Yellow;BackgroundImageLayout:LeftTop;}	SelectedRowHeader{BackColor:185, 193, 201;ForeColor:White;SearchBackColor:Yellow;BackgroundImageLayout:LeftTop;}	GrandTotal{BackColor:Black;ForeColor:White;SearchBackColor:Yellow;BackgroundImageLayout:LeftTop;}	Subtotal0{BackColor:ControlDarkDark;ForeColor:White;SearchBackColor:Yellow;BackgroundImageLayout:LeftTop;}	Subtotal1{BackColor:ControlDarkDark;ForeColor:White;SearchBackColor:Yellow;BackgroundImageLayout:LeftTop;}	Subtotal2{BackColor:ControlDarkDark;ForeColor:White;SearchBackColor:Yellow;BackgroundImageLayout:LeftTop;}	Subtotal3{BackColor:ControlDarkDark;ForeColor:White;SearchBackColor:Yellow;BackgroundImageLayout:LeftTop;}	Subtotal4{BackColor:ControlDarkDark;ForeColor:White;SearchBackColor:Yellow;BackgroundImageLayout:LeftTop;}	Subtotal5{BackColor:ControlDarkDark;ForeColor:White;SearchBackColor:Yellow;BackgroundImageLayout:LeftTop;}	FilterEditor{BackColor:White;ForeColor:68, 68, 68;SearchBackColor:Yellow;BackgroundImageLayout:LeftTop;}	FirstCustomStyle{}	</value>
-  </data>
-  <metadata name="c1ThemeController1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>473, 17</value>
-  </metadata>
-  <metadata name="c1ThemeController1.ApplicationTheme" xml:space="preserve">
+  <metadata name="theme1.ApplicationTheme" xml:space="preserve">
     <value>Windows8Gray</value>
+  </metadata>
+  <metadata name="$this.TrayHeight" type="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>58</value>
   </metadata>
 </root>

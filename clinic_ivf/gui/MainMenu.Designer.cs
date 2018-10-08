@@ -29,16 +29,16 @@
         private void InitializeComponent()
         {
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
-            this.tCC1 = new C1.Win.C1Command.C1CommandDock();
-            this.tC1 = new C1.Win.C1Command.C1DockingTab();
-            this.PageS = new C1.Win.C1Command.C1DockingTabPage();
-            this.lABToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.กำหนดคาโปรแกรมToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.ปอนOPUToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuExit = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuLabOpu1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuLabOpu = new System.Windows.Forms.ToolStripMenuItem();
             this.ปอนFETToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ปอนSemenAnalysisToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ปอนSpermFreexingToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuExit = new System.Windows.Forms.ToolStripMenuItem();
+            this.กำหนดคาโปรแกรมToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.tCC1 = new C1.Win.C1Command.C1CommandDock();
+            this.tC1 = new C1.Win.C1Command.C1DockingTab();
+            this.PageS = new C1.Win.C1Command.C1DockingTabPage();
             this.c1ThemeController1 = new C1.Win.C1Themes.C1ThemeController();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tCC1)).BeginInit();
@@ -53,13 +53,61 @@
             this.menuStrip1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(161)))), ((int)(((byte)(106)))));
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.menuExit,
-            this.lABToolStripMenuItem,
+            this.menuLabOpu1,
             this.กำหนดคาโปรแกรมToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(1017, 24);
             this.menuStrip1.TabIndex = 2;
             this.menuStrip1.Text = "menuStrip1";
+            // 
+            // menuExit
+            // 
+            this.menuExit.Image = global::clinic_ivf.Properties.Resources.login24;
+            this.menuExit.Name = "menuExit";
+            this.menuExit.Size = new System.Drawing.Size(53, 20);
+            this.menuExit.Text = "Exit";
+            // 
+            // menuLabOpu1
+            // 
+            this.menuLabOpu1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.menuLabOpu,
+            this.ปอนFETToolStripMenuItem,
+            this.ปอนSemenAnalysisToolStripMenuItem,
+            this.ปอนSpermFreexingToolStripMenuItem});
+            this.menuLabOpu1.Name = "menuLabOpu1";
+            this.menuLabOpu1.Size = new System.Drawing.Size(40, 20);
+            this.menuLabOpu1.Text = "LAB";
+            // 
+            // menuLabOpu
+            // 
+            this.menuLabOpu.Name = "menuLabOpu";
+            this.menuLabOpu.Size = new System.Drawing.Size(180, 22);
+            this.menuLabOpu.Text = "ป้อน OPU";
+            // 
+            // ปอนFETToolStripMenuItem
+            // 
+            this.ปอนFETToolStripMenuItem.Name = "ปอนFETToolStripMenuItem";
+            this.ปอนFETToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.ปอนFETToolStripMenuItem.Text = "ป้อน FET";
+            // 
+            // ปอนSemenAnalysisToolStripMenuItem
+            // 
+            this.ปอนSemenAnalysisToolStripMenuItem.Name = "ปอนSemenAnalysisToolStripMenuItem";
+            this.ปอนSemenAnalysisToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.ปอนSemenAnalysisToolStripMenuItem.Text = "ป้อน Semen Analysis";
+            // 
+            // ปอนSpermFreexingToolStripMenuItem
+            // 
+            this.ปอนSpermFreexingToolStripMenuItem.Name = "ปอนSpermFreexingToolStripMenuItem";
+            this.ปอนSpermFreexingToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.ปอนSpermFreexingToolStripMenuItem.Text = "ป้อนSperm Freezing";
+            // 
+            // กำหนดคาโปรแกรมToolStripMenuItem
+            // 
+            this.กำหนดคาโปรแกรมToolStripMenuItem.Name = "กำหนดคาโปรแกรมToolStripMenuItem";
+            this.กำหนดคาโปรแกรมToolStripMenuItem.Size = new System.Drawing.Size(106, 20);
+            this.กำหนดคาโปรแกรมToolStripMenuItem.Text = "กำหนดค่าโปรแกรม";
             // 
             // tCC1
             // 
@@ -95,54 +143,6 @@
             this.PageS.TabIndex = 0;
             this.PageS.Text = "Start Page";
             // 
-            // lABToolStripMenuItem
-            // 
-            this.lABToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.ปอนOPUToolStripMenuItem,
-            this.ปอนFETToolStripMenuItem,
-            this.ปอนSemenAnalysisToolStripMenuItem,
-            this.ปอนSpermFreexingToolStripMenuItem});
-            this.lABToolStripMenuItem.Name = "lABToolStripMenuItem";
-            this.lABToolStripMenuItem.Size = new System.Drawing.Size(40, 20);
-            this.lABToolStripMenuItem.Text = "LAB";
-            // 
-            // กำหนดคาโปรแกรมToolStripMenuItem
-            // 
-            this.กำหนดคาโปรแกรมToolStripMenuItem.Name = "กำหนดคาโปรแกรมToolStripMenuItem";
-            this.กำหนดคาโปรแกรมToolStripMenuItem.Size = new System.Drawing.Size(106, 20);
-            this.กำหนดคาโปรแกรมToolStripMenuItem.Text = "กำหนดค่าโปรแกรม";
-            // 
-            // ปอนOPUToolStripMenuItem
-            // 
-            this.ปอนOPUToolStripMenuItem.Name = "ปอนOPUToolStripMenuItem";
-            this.ปอนOPUToolStripMenuItem.Size = new System.Drawing.Size(179, 22);
-            this.ปอนOPUToolStripMenuItem.Text = "ป้อน OPU";
-            // 
-            // ปอนFETToolStripMenuItem
-            // 
-            this.ปอนFETToolStripMenuItem.Name = "ปอนFETToolStripMenuItem";
-            this.ปอนFETToolStripMenuItem.Size = new System.Drawing.Size(179, 22);
-            this.ปอนFETToolStripMenuItem.Text = "ป้อน FET";
-            // 
-            // ปอนSemenAnalysisToolStripMenuItem
-            // 
-            this.ปอนSemenAnalysisToolStripMenuItem.Name = "ปอนSemenAnalysisToolStripMenuItem";
-            this.ปอนSemenAnalysisToolStripMenuItem.Size = new System.Drawing.Size(179, 22);
-            this.ปอนSemenAnalysisToolStripMenuItem.Text = "ป้อน Semen Analysis";
-            // 
-            // ปอนSpermFreexingToolStripMenuItem
-            // 
-            this.ปอนSpermFreexingToolStripMenuItem.Name = "ปอนSpermFreexingToolStripMenuItem";
-            this.ปอนSpermFreexingToolStripMenuItem.Size = new System.Drawing.Size(179, 22);
-            this.ปอนSpermFreexingToolStripMenuItem.Text = "ป้อนSperm Freezing";
-            // 
-            // menuExit
-            // 
-            this.menuExit.Image = global::clinic_ivf.Properties.Resources.login24;
-            this.menuExit.Name = "menuExit";
-            this.menuExit.Size = new System.Drawing.Size(53, 20);
-            this.menuExit.Text = "Exit";
-            // 
             // c1ThemeController1
             // 
             this.c1ThemeController1.Theme = "BeigeOne";
@@ -177,8 +177,8 @@
         private C1.Win.C1Command.C1CommandDock tCC1;
         private C1.Win.C1Command.C1DockingTab tC1;
         private C1.Win.C1Command.C1DockingTabPage PageS;
-        private System.Windows.Forms.ToolStripMenuItem lABToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem ปอนOPUToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem menuLabOpu1;
+        private System.Windows.Forms.ToolStripMenuItem menuLabOpu;
         private System.Windows.Forms.ToolStripMenuItem ปอนFETToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem ปอนSemenAnalysisToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem ปอนSpermFreexingToolStripMenuItem;

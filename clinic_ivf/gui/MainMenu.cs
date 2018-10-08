@@ -36,7 +36,7 @@ namespace clinic_ivf.gui
                 /* run your code here */
                 ic.ivfDB = new objdb.IvfDB(ic.conn);
             }).Start();
-            
+            splash.Dispose();
             if (login.LogonSuccessful.Equals("1"))
             {
                 initConfig();
@@ -50,9 +50,18 @@ namespace clinic_ivf.gui
         {
             this.FormClosing += MainMenu4_FormClosing;
             menuExit.Click += MenuExit_Click;
-            
+            menuLabOpu.Click += MenuLabOpu_Click;
 
         }
+
+        private void MenuLabOpu_Click(object sender, EventArgs e)
+        {
+            //throw new NotImplementedException();
+            FrmLabOpuView frm = new FrmLabOpuView(ic, this);
+            frm.FormBorderStyle = FormBorderStyle.None;
+            AddNewTab(frm, menuLabOpu.Text + " ");
+        }
+
         private void MenuExit_Click(object sender, EventArgs e)
         {
             //throw new NotImplementedException();
