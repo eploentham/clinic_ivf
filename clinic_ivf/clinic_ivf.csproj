@@ -95,6 +95,12 @@
     <Compile Include="gui\FrmLabOPUAdd.Designer.cs">
       <DependentUpon>FrmLabOPUAdd.cs</DependentUpon>
     </Compile>
+    <Compile Include="gui\FrmLabOPUAdd1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="gui\FrmLabOPUAdd1.Designer.cs">
+      <DependentUpon>FrmLabOPUAdd1.cs</DependentUpon>
+    </Compile>
     <Compile Include="gui\FrmLabOpuProce.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -195,6 +201,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="gui\FrmLabOPUAdd.resx">
       <DependentUpon>FrmLabOPUAdd.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="gui\FrmLabOPUAdd1.resx">
+      <DependentUpon>FrmLabOPUAdd1.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="gui\FrmLabOpuProce.resx">
       <DependentUpon>FrmLabOpuProce.cs</DependentUpon>

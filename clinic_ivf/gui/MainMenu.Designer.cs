@@ -41,11 +41,12 @@
             this.menuPosi = new System.Windows.Forms.ToolStripMenuItem();
             this.lABToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuOpuProce = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuFetProce = new System.Windows.Forms.ToolStripMenuItem();
             this.tCC1 = new C1.Win.C1Command.C1CommandDock();
             this.tC1 = new C1.Win.C1Command.C1DockingTab();
             this.PageS = new C1.Win.C1Command.C1DockingTabPage();
             this.c1ThemeController1 = new C1.Win.C1Themes.C1ThemeController();
-            this.menuFetProce = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuTestForm = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tCC1)).BeginInit();
             this.tCC1.SuspendLayout();
@@ -80,7 +81,8 @@
             this.menuLabOpu,
             this.menuLabFet,
             this.ปอนSemenAnalysisToolStripMenuItem,
-            this.ปอนSpermFreexingToolStripMenuItem});
+            this.ปอนSpermFreexingToolStripMenuItem,
+            this.menuTestForm});
             this.menuLabOpu1.Name = "menuLabOpu1";
             this.menuLabOpu1.Size = new System.Drawing.Size(40, 20);
             this.menuLabOpu1.Text = "LAB";
@@ -88,25 +90,25 @@
             // menuLabOpu
             // 
             this.menuLabOpu.Name = "menuLabOpu";
-            this.menuLabOpu.Size = new System.Drawing.Size(179, 22);
+            this.menuLabOpu.Size = new System.Drawing.Size(180, 22);
             this.menuLabOpu.Text = "ป้อน OPU";
             // 
             // menuLabFet
             // 
             this.menuLabFet.Name = "menuLabFet";
-            this.menuLabFet.Size = new System.Drawing.Size(179, 22);
+            this.menuLabFet.Size = new System.Drawing.Size(180, 22);
             this.menuLabFet.Text = "ป้อน FET";
             // 
             // ปอนSemenAnalysisToolStripMenuItem
             // 
             this.ปอนSemenAnalysisToolStripMenuItem.Name = "ปอนSemenAnalysisToolStripMenuItem";
-            this.ปอนSemenAnalysisToolStripMenuItem.Size = new System.Drawing.Size(179, 22);
+            this.ปอนSemenAnalysisToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.ปอนSemenAnalysisToolStripMenuItem.Text = "ป้อน Semen Analysis";
             // 
             // ปอนSpermFreexingToolStripMenuItem
             // 
             this.ปอนSpermFreexingToolStripMenuItem.Name = "ปอนSpermFreexingToolStripMenuItem";
-            this.ปอนSpermFreexingToolStripMenuItem.Size = new System.Drawing.Size(179, 22);
+            this.ปอนSpermFreexingToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.ปอนSpermFreexingToolStripMenuItem.Text = "ป้อนSperm Freezing";
             // 
             // กำหนดคาโปรแกรมToolStripMenuItem
@@ -123,19 +125,19 @@
             // menuStaff
             // 
             this.menuStaff.Name = "menuStaff";
-            this.menuStaff.Size = new System.Drawing.Size(180, 22);
+            this.menuStaff.Size = new System.Drawing.Size(142, 22);
             this.menuStaff.Text = "รายชื่อพนักงาน";
             // 
             // menuDept
             // 
             this.menuDept.Name = "menuDept";
-            this.menuDept.Size = new System.Drawing.Size(180, 22);
+            this.menuDept.Size = new System.Drawing.Size(142, 22);
             this.menuDept.Text = "แผนก";
             // 
             // menuPosi
             // 
             this.menuPosi.Name = "menuPosi";
-            this.menuPosi.Size = new System.Drawing.Size(180, 22);
+            this.menuPosi.Size = new System.Drawing.Size(142, 22);
             this.menuPosi.Text = "ตำแหน่ง";
             // 
             // lABToolStripMenuItem
@@ -144,14 +146,20 @@
             this.menuOpuProce,
             this.menuFetProce});
             this.lABToolStripMenuItem.Name = "lABToolStripMenuItem";
-            this.lABToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.lABToolStripMenuItem.Size = new System.Drawing.Size(142, 22);
             this.lABToolStripMenuItem.Text = "LAB";
             // 
             // menuOpuProce
             // 
             this.menuOpuProce.Name = "menuOpuProce";
-            this.menuOpuProce.Size = new System.Drawing.Size(180, 22);
+            this.menuOpuProce.Size = new System.Drawing.Size(155, 22);
             this.menuOpuProce.Text = "OPU Procedure";
+            // 
+            // menuFetProce
+            // 
+            this.menuFetProce.Name = "menuFetProce";
+            this.menuFetProce.Size = new System.Drawing.Size(155, 22);
+            this.menuFetProce.Text = "FET Procedure";
             // 
             // tCC1
             // 
@@ -191,11 +199,11 @@
             // 
             this.c1ThemeController1.Theme = "BeigeOne";
             // 
-            // menuFetProce
+            // menuTestForm
             // 
-            this.menuFetProce.Name = "menuFetProce";
-            this.menuFetProce.Size = new System.Drawing.Size(180, 22);
-            this.menuFetProce.Text = "FET Procedure";
+            this.menuTestForm.Name = "menuTestForm";
+            this.menuTestForm.Size = new System.Drawing.Size(180, 22);
+            this.menuTestForm.Text = "Test Form";
             // 
             // MainMenu
             // 
@@ -240,5 +248,6 @@
         private System.Windows.Forms.ToolStripMenuItem lABToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem menuOpuProce;
         private System.Windows.Forms.ToolStripMenuItem menuFetProce;
+        private System.Windows.Forms.ToolStripMenuItem menuTestForm;
     }
 }

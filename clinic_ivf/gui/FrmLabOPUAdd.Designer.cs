@@ -31,6 +31,8 @@
             this.theme1 = new C1.Win.C1Themes.C1ThemeController();
             this.spMain = new System.Windows.Forms.SplitContainer();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.btnEdit = new C1.Win.C1Input.C1Button();
+            this.btnSave = new C1.Win.C1Input.C1Button();
             this.c1DateEdit7 = new C1.Win.C1Input.C1DateEdit();
             this.c1DateEdit6 = new C1.Win.C1Input.C1DateEdit();
             this.c1TextBox32 = new C1.Win.C1Input.C1TextBox();
@@ -109,6 +111,7 @@
             this.c1TextBox19 = new C1.Win.C1Input.C1TextBox();
             this.label26 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.c1Button2 = new C1.Win.C1Input.C1Button();
             this.c1TextBox12 = new C1.Win.C1Input.C1TextBox();
             this.c1TextBox11 = new C1.Win.C1Input.C1TextBox();
             this.c1TextBox10 = new C1.Win.C1Input.C1TextBox();
@@ -127,12 +130,19 @@
             this.c1TextBox6 = new C1.Win.C1Input.C1TextBox();
             this.label9 = new System.Windows.Forms.Label();
             this.spBody = new System.Windows.Forms.SplitContainer();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.gbDay6 = new System.Windows.Forms.GroupBox();
-            this.gbDay5 = new System.Windows.Forms.GroupBox();
-            this.gbDay3 = new System.Windows.Forms.GroupBox();
-            this.gbDay2 = new System.Windows.Forms.GroupBox();
-            this.groupBox6 = new System.Windows.Forms.GroupBox();
+            this.sB = new System.Windows.Forms.StatusStrip();
+            this.sB1 = new System.Windows.Forms.ToolStripStatusLabel();
+            this.c1CommandDock1 = new C1.Win.C1Command.C1CommandDock();
+            this.c1DockingTab1 = new C1.Win.C1Command.C1DockingTab();
+            this.tabDay2 = new C1.Win.C1Command.C1DockingTabPage();
+            this.tabDay3 = new C1.Win.C1Command.C1DockingTabPage();
+            this.tabDay5 = new C1.Win.C1Command.C1DockingTabPage();
+            this.tabDay6 = new C1.Win.C1Command.C1DockingTabPage();
+            this.c1DockingTabPage5 = new C1.Win.C1Command.C1DockingTabPage();
+            this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this.splitContainer2 = new System.Windows.Forms.SplitContainer();
+            this.splitContainer3 = new System.Windows.Forms.SplitContainer();
+            this.groupBox7 = new System.Windows.Forms.GroupBox();
             this.label61 = new System.Windows.Forms.Label();
             this.c1ComboBox3 = new C1.Win.C1Input.C1ComboBox();
             this.c1ComboBox2 = new C1.Win.C1Input.C1ComboBox();
@@ -161,17 +171,18 @@
             this.label50 = new System.Windows.Forms.Label();
             this.label49 = new System.Windows.Forms.Label();
             this.label48 = new System.Windows.Forms.Label();
-            this.sB = new System.Windows.Forms.StatusStrip();
-            this.sB1 = new System.Windows.Forms.ToolStripStatusLabel();
-            this.btnSave = new C1.Win.C1Input.C1Button();
-            this.btnEdit = new C1.Win.C1Input.C1Button();
-            this.c1Button2 = new C1.Win.C1Input.C1Button();
+            this.gbDay2 = new System.Windows.Forms.GroupBox();
+            this.gbDay3 = new System.Windows.Forms.GroupBox();
+            this.gbDay5 = new System.Windows.Forms.GroupBox();
+            this.gbDay6 = new System.Windows.Forms.GroupBox();
             ((System.ComponentModel.ISupportInitialize)(this.theme1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.spMain)).BeginInit();
             this.spMain.Panel1.SuspendLayout();
             this.spMain.Panel2.SuspendLayout();
             this.spMain.SuspendLayout();
             this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.btnEdit)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnSave)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.c1DateEdit7)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.c1DateEdit6)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.c1TextBox32)).BeginInit();
@@ -215,6 +226,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.c1DateEdit3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.c1TextBox19)).BeginInit();
             this.groupBox2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.c1Button2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.c1TextBox12)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.c1TextBox11)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.c1TextBox10)).BeginInit();
@@ -227,8 +239,24 @@
             this.spBody.Panel1.SuspendLayout();
             this.spBody.Panel2.SuspendLayout();
             this.spBody.SuspendLayout();
-            this.panel1.SuspendLayout();
-            this.groupBox6.SuspendLayout();
+            this.sB.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.c1CommandDock1)).BeginInit();
+            this.c1CommandDock1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.c1DockingTab1)).BeginInit();
+            this.c1DockingTab1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
+            this.splitContainer1.Panel1.SuspendLayout();
+            this.splitContainer1.Panel2.SuspendLayout();
+            this.splitContainer1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).BeginInit();
+            this.splitContainer2.Panel1.SuspendLayout();
+            this.splitContainer2.Panel2.SuspendLayout();
+            this.splitContainer2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer3)).BeginInit();
+            this.splitContainer3.Panel1.SuspendLayout();
+            this.splitContainer3.Panel2.SuspendLayout();
+            this.splitContainer3.SuspendLayout();
+            this.groupBox7.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.c1ComboBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.c1ComboBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.c1TextBox44)).BeginInit();
@@ -243,10 +271,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.c1TextBox35)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.c1TextBox34)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.c1TextBox33)).BeginInit();
-            this.sB.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.btnSave)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.btnEdit)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.c1Button2)).BeginInit();
             this.SuspendLayout();
             // 
             // theme1
@@ -315,6 +339,34 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Patient";
             this.theme1.SetTheme(this.groupBox1, "(default)");
+            // 
+            // btnEdit
+            // 
+            this.btnEdit.Image = global::clinic_ivf.Properties.Resources.lock24;
+            this.btnEdit.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnEdit.Location = new System.Drawing.Point(1051, 20);
+            this.btnEdit.Name = "btnEdit";
+            this.btnEdit.Size = new System.Drawing.Size(83, 39);
+            this.btnEdit.TabIndex = 536;
+            this.btnEdit.Text = "แก้ไขช้อมูล";
+            this.btnEdit.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.theme1.SetTheme(this.btnEdit, "(default)");
+            this.btnEdit.UseVisualStyleBackColor = true;
+            this.btnEdit.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            // 
+            // btnSave
+            // 
+            this.btnSave.Image = global::clinic_ivf.Properties.Resources.download_database24;
+            this.btnSave.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnSave.Location = new System.Drawing.Point(1051, 65);
+            this.btnSave.Name = "btnSave";
+            this.btnSave.Size = new System.Drawing.Size(83, 39);
+            this.btnSave.TabIndex = 535;
+            this.btnSave.Text = "บันทึกช้อมูล";
+            this.btnSave.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.theme1.SetTheme(this.btnSave, "(default)");
+            this.btnSave.UseVisualStyleBackColor = true;
+            this.btnSave.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
             // 
             // c1DateEdit7
             // 
@@ -1542,6 +1594,20 @@
             this.groupBox2.Text = "Maturation";
             this.theme1.SetTheme(this.groupBox2, "(default)");
             // 
+            // c1Button2
+            // 
+            this.c1Button2.Image = global::clinic_ivf.Properties.Resources.download_database24;
+            this.c1Button2.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.c1Button2.Location = new System.Drawing.Point(240, 147);
+            this.c1Button2.Name = "c1Button2";
+            this.c1Button2.Size = new System.Drawing.Size(83, 39);
+            this.c1Button2.TabIndex = 536;
+            this.c1Button2.Text = "บันทึกช้อมูล";
+            this.c1Button2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.theme1.SetTheme(this.c1Button2, "(default)");
+            this.c1Button2.UseVisualStyleBackColor = true;
+            this.c1Button2.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            // 
             // c1TextBox12
             // 
             this.c1TextBox12.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
@@ -1792,14 +1858,14 @@
             // spBody.Panel1
             // 
             this.spBody.Panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.spBody.Panel1.Controls.Add(this.panel1);
+            this.spBody.Panel1.Controls.Add(this.splitContainer1);
             this.spBody.Panel1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
             this.theme1.SetTheme(this.spBody.Panel1, "(default)");
             // 
             // spBody.Panel2
             // 
             this.spBody.Panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.spBody.Panel2.Controls.Add(this.groupBox6);
+            this.spBody.Panel2.Controls.Add(this.groupBox7);
             this.spBody.Panel2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
             this.theme1.SetTheme(this.spBody.Panel2, "(default)");
             this.spBody.Size = new System.Drawing.Size(1111, 843);
@@ -1807,113 +1873,227 @@
             this.spBody.TabIndex = 0;
             this.theme1.SetTheme(this.spBody, "(default)");
             // 
-            // panel1
+            // sB
             // 
-            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.panel1.Controls.Add(this.gbDay6);
-            this.panel1.Controls.Add(this.gbDay5);
-            this.panel1.Controls.Add(this.gbDay3);
-            this.panel1.Controls.Add(this.gbDay2);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.panel1.Location = new System.Drawing.Point(0, 0);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1111, 690);
-            this.panel1.TabIndex = 0;
-            this.theme1.SetTheme(this.panel1, "(default)");
+            this.sB.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.sB1});
+            this.sB.Location = new System.Drawing.Point(0, 970);
+            this.sB.Name = "sB";
+            this.sB.Size = new System.Drawing.Size(1516, 22);
+            this.sB.TabIndex = 9;
+            this.sB.Text = "statusStrip1";
             // 
-            // gbDay6
+            // sB1
             // 
-            this.gbDay6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.gbDay6.Dock = System.Windows.Forms.DockStyle.Left;
-            this.gbDay6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.gbDay6.Location = new System.Drawing.Point(810, 0);
-            this.gbDay6.Name = "gbDay6";
-            this.gbDay6.Size = new System.Drawing.Size(270, 690);
-            this.gbDay6.TabIndex = 3;
-            this.gbDay6.TabStop = false;
-            this.gbDay6.Text = "Day 6 Embryo Development ";
-            this.theme1.SetTheme(this.gbDay6, "(default)");
+            this.sB1.Name = "sB1";
+            this.sB1.Size = new System.Drawing.Size(118, 17);
+            this.sB1.Text = "toolStripStatusLabel1";
             // 
-            // gbDay5
+            // c1CommandDock1
             // 
-            this.gbDay5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.gbDay5.Dock = System.Windows.Forms.DockStyle.Left;
-            this.gbDay5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.gbDay5.Location = new System.Drawing.Point(540, 0);
-            this.gbDay5.Name = "gbDay5";
-            this.gbDay5.Size = new System.Drawing.Size(270, 690);
-            this.gbDay5.TabIndex = 2;
-            this.gbDay5.TabStop = false;
-            this.gbDay5.Text = "Day 5 Embryo Development ";
-            this.theme1.SetTheme(this.gbDay5, "(default)");
+            this.c1CommandDock1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.c1CommandDock1.Controls.Add(this.c1DockingTab1);
+            this.c1CommandDock1.Dock = System.Windows.Forms.DockStyle.Right;
+            this.c1CommandDock1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.c1CommandDock1.Id = 2;
+            this.c1CommandDock1.Location = new System.Drawing.Point(1319, 0);
+            this.c1CommandDock1.Name = "c1CommandDock1";
+            this.c1CommandDock1.Size = new System.Drawing.Size(197, 970);
+            this.theme1.SetTheme(this.c1CommandDock1, "(default)");
             // 
-            // gbDay3
+            // c1DockingTab1
             // 
-            this.gbDay3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.gbDay3.Dock = System.Windows.Forms.DockStyle.Left;
-            this.gbDay3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.gbDay3.Location = new System.Drawing.Point(270, 0);
-            this.gbDay3.Name = "gbDay3";
-            this.gbDay3.Size = new System.Drawing.Size(270, 690);
-            this.gbDay3.TabIndex = 1;
-            this.gbDay3.TabStop = false;
-            this.gbDay3.Text = "Day 3 Embryo Development ";
-            this.theme1.SetTheme(this.gbDay3, "(default)");
+            this.c1DockingTab1.Alignment = System.Windows.Forms.TabAlignment.Right;
+            this.c1DockingTab1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.c1DockingTab1.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.c1DockingTab1.CanAutoHide = true;
+            this.c1DockingTab1.CanCloseTabs = true;
+            this.c1DockingTab1.CanMoveTabs = true;
+            this.c1DockingTab1.Controls.Add(this.tabDay2);
+            this.c1DockingTab1.Controls.Add(this.tabDay3);
+            this.c1DockingTab1.Controls.Add(this.tabDay5);
+            this.c1DockingTab1.Controls.Add(this.tabDay6);
+            this.c1DockingTab1.Controls.Add(this.c1DockingTabPage5);
+            this.c1DockingTab1.HotTrack = true;
+            this.c1DockingTab1.Location = new System.Drawing.Point(0, 0);
+            this.c1DockingTab1.Name = "c1DockingTab1";
+            this.c1DockingTab1.SelectedIndex = 4;
+            this.c1DockingTab1.ShowCaption = true;
+            this.c1DockingTab1.Size = new System.Drawing.Size(197, 970);
+            this.c1DockingTab1.TabIndex = 0;
+            this.c1DockingTab1.TabSizeMode = C1.Win.C1Command.TabSizeModeEnum.Fit;
+            this.c1DockingTab1.TabsShowFocusCues = false;
+            this.c1DockingTab1.TabsSpacing = 2;
+            this.c1DockingTab1.TabStyle = C1.Win.C1Command.TabStyleEnum.Office2007;
+            this.theme1.SetTheme(this.c1DockingTab1, "(default)");
             // 
-            // gbDay2
+            // tabDay2
             // 
-            this.gbDay2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.gbDay2.Dock = System.Windows.Forms.DockStyle.Left;
-            this.gbDay2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.gbDay2.Location = new System.Drawing.Point(0, 0);
-            this.gbDay2.Name = "gbDay2";
-            this.gbDay2.Size = new System.Drawing.Size(270, 690);
-            this.gbDay2.TabIndex = 0;
-            this.gbDay2.TabStop = false;
-            this.gbDay2.Text = "Day 2 Embryo Development ";
-            this.theme1.SetTheme(this.gbDay2, "(default)");
+            this.tabDay2.CaptionText = "Day2";
+            this.tabDay2.CaptionVisible = true;
+            this.tabDay2.Location = new System.Drawing.Point(3, 0);
+            this.tabDay2.Name = "tabDay2";
+            this.tabDay2.Size = new System.Drawing.Size(170, 970);
+            this.tabDay2.TabIndex = 0;
+            this.tabDay2.Text = "Day2";
             // 
-            // groupBox6
+            // tabDay3
             // 
-            this.groupBox6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.groupBox6.Controls.Add(this.label61);
-            this.groupBox6.Controls.Add(this.c1ComboBox3);
-            this.groupBox6.Controls.Add(this.c1ComboBox2);
-            this.groupBox6.Controls.Add(this.label60);
-            this.groupBox6.Controls.Add(this.c1TextBox44);
-            this.groupBox6.Controls.Add(this.c1TextBox43);
-            this.groupBox6.Controls.Add(this.c1TextBox42);
-            this.groupBox6.Controls.Add(this.c1TextBox41);
-            this.groupBox6.Controls.Add(this.c1TextBox40);
-            this.groupBox6.Controls.Add(this.c1TextBox39);
-            this.groupBox6.Controls.Add(this.c1TextBox38);
-            this.groupBox6.Controls.Add(this.c1TextBox37);
-            this.groupBox6.Controls.Add(this.label59);
-            this.groupBox6.Controls.Add(this.label58);
-            this.groupBox6.Controls.Add(this.label57);
-            this.groupBox6.Controls.Add(this.label56);
-            this.groupBox6.Controls.Add(this.label55);
-            this.groupBox6.Controls.Add(this.label54);
-            this.groupBox6.Controls.Add(this.c1TextBox36);
-            this.groupBox6.Controls.Add(this.c1TextBox35);
-            this.groupBox6.Controls.Add(this.c1TextBox34);
-            this.groupBox6.Controls.Add(this.c1TextBox33);
-            this.groupBox6.Controls.Add(this.label53);
-            this.groupBox6.Controls.Add(this.label52);
-            this.groupBox6.Controls.Add(this.label51);
-            this.groupBox6.Controls.Add(this.label50);
-            this.groupBox6.Controls.Add(this.label49);
-            this.groupBox6.Controls.Add(this.label48);
-            this.groupBox6.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupBox6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.groupBox6.Location = new System.Drawing.Point(0, 0);
-            this.groupBox6.Name = "groupBox6";
-            this.groupBox6.Size = new System.Drawing.Size(1111, 149);
-            this.groupBox6.TabIndex = 0;
-            this.groupBox6.TabStop = false;
-            this.groupBox6.Text = "Embryo for ET";
-            this.theme1.SetTheme(this.groupBox6, "(default)");
+            this.tabDay3.CaptionText = "Day3";
+            this.tabDay3.CaptionVisible = true;
+            this.tabDay3.Location = new System.Drawing.Point(3, 0);
+            this.tabDay3.Name = "tabDay3";
+            this.tabDay3.Size = new System.Drawing.Size(170, 970);
+            this.tabDay3.TabIndex = 1;
+            this.tabDay3.Text = "Day3";
+            // 
+            // tabDay5
+            // 
+            this.tabDay5.CaptionText = "Day5";
+            this.tabDay5.CaptionVisible = true;
+            this.tabDay5.Location = new System.Drawing.Point(3, 0);
+            this.tabDay5.Name = "tabDay5";
+            this.tabDay5.Size = new System.Drawing.Size(170, 970);
+            this.tabDay5.TabIndex = 2;
+            this.tabDay5.Text = "Day5";
+            // 
+            // tabDay6
+            // 
+            this.tabDay6.CaptionText = "Day6";
+            this.tabDay6.CaptionVisible = true;
+            this.tabDay6.Location = new System.Drawing.Point(3, 0);
+            this.tabDay6.Name = "tabDay6";
+            this.tabDay6.Size = new System.Drawing.Size(170, 970);
+            this.tabDay6.TabIndex = 3;
+            this.tabDay6.Text = "Day6";
+            // 
+            // c1DockingTabPage5
+            // 
+            this.c1DockingTabPage5.CaptionVisible = true;
+            this.c1DockingTabPage5.Location = new System.Drawing.Point(3, 0);
+            this.c1DockingTabPage5.Name = "c1DockingTabPage5";
+            this.c1DockingTabPage5.Size = new System.Drawing.Size(170, 970);
+            this.c1DockingTabPage5.TabIndex = 4;
+            this.c1DockingTabPage5.Text = "Page5";
+            // 
+            // splitContainer1
+            // 
+            this.splitContainer1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.splitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitContainer1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.splitContainer1.Location = new System.Drawing.Point(0, 0);
+            this.splitContainer1.Name = "splitContainer1";
+            // 
+            // splitContainer1.Panel1
+            // 
+            this.splitContainer1.Panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.splitContainer1.Panel1.Controls.Add(this.splitContainer2);
+            this.splitContainer1.Panel1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.theme1.SetTheme(this.splitContainer1.Panel1, "(default)");
+            // 
+            // splitContainer1.Panel2
+            // 
+            this.splitContainer1.Panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.splitContainer1.Panel2.Controls.Add(this.splitContainer3);
+            this.splitContainer1.Panel2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.theme1.SetTheme(this.splitContainer1.Panel2, "(default)");
+            this.splitContainer1.Size = new System.Drawing.Size(1111, 690);
+            this.splitContainer1.SplitterDistance = 370;
+            this.splitContainer1.TabIndex = 0;
+            this.theme1.SetTheme(this.splitContainer1, "(default)");
+            // 
+            // splitContainer2
+            // 
+            this.splitContainer2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.splitContainer2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitContainer2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.splitContainer2.Location = new System.Drawing.Point(0, 0);
+            this.splitContainer2.Name = "splitContainer2";
+            // 
+            // splitContainer2.Panel1
+            // 
+            this.splitContainer2.Panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.splitContainer2.Panel1.Controls.Add(this.gbDay2);
+            this.splitContainer2.Panel1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.theme1.SetTheme(this.splitContainer2.Panel1, "(default)");
+            // 
+            // splitContainer2.Panel2
+            // 
+            this.splitContainer2.Panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.splitContainer2.Panel2.Controls.Add(this.gbDay3);
+            this.splitContainer2.Panel2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.theme1.SetTheme(this.splitContainer2.Panel2, "(default)");
+            this.splitContainer2.Size = new System.Drawing.Size(370, 690);
+            this.splitContainer2.SplitterDistance = 123;
+            this.splitContainer2.TabIndex = 0;
+            this.theme1.SetTheme(this.splitContainer2, "(default)");
+            // 
+            // splitContainer3
+            // 
+            this.splitContainer3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.splitContainer3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitContainer3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.splitContainer3.Location = new System.Drawing.Point(0, 0);
+            this.splitContainer3.Name = "splitContainer3";
+            // 
+            // splitContainer3.Panel1
+            // 
+            this.splitContainer3.Panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.splitContainer3.Panel1.Controls.Add(this.gbDay5);
+            this.splitContainer3.Panel1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.theme1.SetTheme(this.splitContainer3.Panel1, "(default)");
+            // 
+            // splitContainer3.Panel2
+            // 
+            this.splitContainer3.Panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.splitContainer3.Panel2.Controls.Add(this.gbDay6);
+            this.splitContainer3.Panel2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.theme1.SetTheme(this.splitContainer3.Panel2, "(default)");
+            this.splitContainer3.Size = new System.Drawing.Size(737, 690);
+            this.splitContainer3.SplitterDistance = 245;
+            this.splitContainer3.TabIndex = 0;
+            this.theme1.SetTheme(this.splitContainer3, "(default)");
+            // 
+            // groupBox7
+            // 
+            this.groupBox7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.groupBox7.Controls.Add(this.label61);
+            this.groupBox7.Controls.Add(this.c1ComboBox3);
+            this.groupBox7.Controls.Add(this.c1ComboBox2);
+            this.groupBox7.Controls.Add(this.label60);
+            this.groupBox7.Controls.Add(this.c1TextBox44);
+            this.groupBox7.Controls.Add(this.c1TextBox43);
+            this.groupBox7.Controls.Add(this.c1TextBox42);
+            this.groupBox7.Controls.Add(this.c1TextBox41);
+            this.groupBox7.Controls.Add(this.c1TextBox40);
+            this.groupBox7.Controls.Add(this.c1TextBox39);
+            this.groupBox7.Controls.Add(this.c1TextBox38);
+            this.groupBox7.Controls.Add(this.c1TextBox37);
+            this.groupBox7.Controls.Add(this.label59);
+            this.groupBox7.Controls.Add(this.label58);
+            this.groupBox7.Controls.Add(this.label57);
+            this.groupBox7.Controls.Add(this.label56);
+            this.groupBox7.Controls.Add(this.label55);
+            this.groupBox7.Controls.Add(this.label54);
+            this.groupBox7.Controls.Add(this.c1TextBox36);
+            this.groupBox7.Controls.Add(this.c1TextBox35);
+            this.groupBox7.Controls.Add(this.c1TextBox34);
+            this.groupBox7.Controls.Add(this.c1TextBox33);
+            this.groupBox7.Controls.Add(this.label53);
+            this.groupBox7.Controls.Add(this.label52);
+            this.groupBox7.Controls.Add(this.label51);
+            this.groupBox7.Controls.Add(this.label50);
+            this.groupBox7.Controls.Add(this.label49);
+            this.groupBox7.Controls.Add(this.label48);
+            this.groupBox7.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.groupBox7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.groupBox7.Location = new System.Drawing.Point(0, 0);
+            this.groupBox7.Name = "groupBox7";
+            this.groupBox7.Size = new System.Drawing.Size(1111, 149);
+            this.groupBox7.TabIndex = 2;
+            this.groupBox7.TabStop = false;
+            this.groupBox7.Text = "Embryo for ET";
+            this.theme1.SetTheme(this.groupBox7, "(default)");
             // 
             // label61
             // 
@@ -2295,69 +2475,64 @@
             this.label48.Text = "No. of ET :";
             this.theme1.SetTheme(this.label48, "(default)");
             // 
-            // sB
+            // gbDay2
             // 
-            this.sB.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.sB1});
-            this.sB.Location = new System.Drawing.Point(0, 970);
-            this.sB.Name = "sB";
-            this.sB.Size = new System.Drawing.Size(1516, 22);
-            this.sB.TabIndex = 9;
-            this.sB.Text = "statusStrip1";
+            this.gbDay2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.gbDay2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.gbDay2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.gbDay2.Location = new System.Drawing.Point(0, 0);
+            this.gbDay2.Name = "gbDay2";
+            this.gbDay2.Size = new System.Drawing.Size(123, 690);
+            this.gbDay2.TabIndex = 2;
+            this.gbDay2.TabStop = false;
+            this.gbDay2.Text = "Day 2 Embryo Development ";
+            this.theme1.SetTheme(this.gbDay2, "(default)");
             // 
-            // sB1
+            // gbDay3
             // 
-            this.sB1.Name = "sB1";
-            this.sB1.Size = new System.Drawing.Size(118, 17);
-            this.sB1.Text = "toolStripStatusLabel1";
+            this.gbDay3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.gbDay3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.gbDay3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.gbDay3.Location = new System.Drawing.Point(0, 0);
+            this.gbDay3.Name = "gbDay3";
+            this.gbDay3.Size = new System.Drawing.Size(243, 690);
+            this.gbDay3.TabIndex = 3;
+            this.gbDay3.TabStop = false;
+            this.gbDay3.Text = "Day 3 Embryo Development ";
+            this.theme1.SetTheme(this.gbDay3, "(default)");
             // 
-            // btnSave
+            // gbDay5
             // 
-            this.btnSave.Image = global::clinic_ivf.Properties.Resources.download_database24;
-            this.btnSave.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnSave.Location = new System.Drawing.Point(1051, 65);
-            this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(83, 39);
-            this.btnSave.TabIndex = 535;
-            this.btnSave.Text = "บันทึกช้อมูล";
-            this.btnSave.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.theme1.SetTheme(this.btnSave, "(default)");
-            this.btnSave.UseVisualStyleBackColor = true;
-            this.btnSave.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            this.gbDay5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.gbDay5.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.gbDay5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.gbDay5.Location = new System.Drawing.Point(0, 0);
+            this.gbDay5.Name = "gbDay5";
+            this.gbDay5.Size = new System.Drawing.Size(245, 690);
+            this.gbDay5.TabIndex = 4;
+            this.gbDay5.TabStop = false;
+            this.gbDay5.Text = "Day 5 Embryo Development ";
+            this.theme1.SetTheme(this.gbDay5, "(default)");
             // 
-            // btnEdit
+            // gbDay6
             // 
-            this.btnEdit.Image = global::clinic_ivf.Properties.Resources.lock24;
-            this.btnEdit.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnEdit.Location = new System.Drawing.Point(1051, 20);
-            this.btnEdit.Name = "btnEdit";
-            this.btnEdit.Size = new System.Drawing.Size(83, 39);
-            this.btnEdit.TabIndex = 536;
-            this.btnEdit.Text = "แก้ไขช้อมูล";
-            this.btnEdit.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.theme1.SetTheme(this.btnEdit, "(default)");
-            this.btnEdit.UseVisualStyleBackColor = true;
-            this.btnEdit.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
-            // 
-            // c1Button2
-            // 
-            this.c1Button2.Image = global::clinic_ivf.Properties.Resources.download_database24;
-            this.c1Button2.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.c1Button2.Location = new System.Drawing.Point(240, 147);
-            this.c1Button2.Name = "c1Button2";
-            this.c1Button2.Size = new System.Drawing.Size(83, 39);
-            this.c1Button2.TabIndex = 536;
-            this.c1Button2.Text = "บันทึกช้อมูล";
-            this.c1Button2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.theme1.SetTheme(this.c1Button2, "(default)");
-            this.c1Button2.UseVisualStyleBackColor = true;
-            this.c1Button2.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            this.gbDay6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.gbDay6.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.gbDay6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.gbDay6.Location = new System.Drawing.Point(0, 0);
+            this.gbDay6.Name = "gbDay6";
+            this.gbDay6.Size = new System.Drawing.Size(488, 690);
+            this.gbDay6.TabIndex = 5;
+            this.gbDay6.TabStop = false;
+            this.gbDay6.Text = "Day 6 Embryo Development ";
+            this.theme1.SetTheme(this.gbDay6, "(default)");
             // 
             // FrmLabOPUAdd
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1516, 992);
+            this.Controls.Add(this.c1CommandDock1);
             this.Controls.Add(this.spMain);
             this.Controls.Add(this.sB);
             this.Name = "FrmLabOPUAdd";
@@ -2370,6 +2545,8 @@
             this.spMain.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.btnEdit)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnSave)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.c1DateEdit7)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.c1DateEdit6)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.c1TextBox32)).EndInit();
@@ -2417,6 +2594,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.c1TextBox19)).EndInit();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.c1Button2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.c1TextBox12)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.c1TextBox11)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.c1TextBox10)).EndInit();
@@ -2429,9 +2607,26 @@
             this.spBody.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.spBody)).EndInit();
             this.spBody.ResumeLayout(false);
-            this.panel1.ResumeLayout(false);
-            this.groupBox6.ResumeLayout(false);
-            this.groupBox6.PerformLayout();
+            this.sB.ResumeLayout(false);
+            this.sB.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.c1CommandDock1)).EndInit();
+            this.c1CommandDock1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.c1DockingTab1)).EndInit();
+            this.c1DockingTab1.ResumeLayout(false);
+            this.splitContainer1.Panel1.ResumeLayout(false);
+            this.splitContainer1.Panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
+            this.splitContainer1.ResumeLayout(false);
+            this.splitContainer2.Panel1.ResumeLayout(false);
+            this.splitContainer2.Panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).EndInit();
+            this.splitContainer2.ResumeLayout(false);
+            this.splitContainer3.Panel1.ResumeLayout(false);
+            this.splitContainer3.Panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer3)).EndInit();
+            this.splitContainer3.ResumeLayout(false);
+            this.groupBox7.ResumeLayout(false);
+            this.groupBox7.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.c1ComboBox3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.c1ComboBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.c1TextBox44)).EndInit();
@@ -2446,11 +2641,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.c1TextBox35)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.c1TextBox34)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.c1TextBox33)).EndInit();
-            this.sB.ResumeLayout(false);
-            this.sB.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.btnSave)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.btnEdit)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.c1Button2)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -2555,13 +2745,42 @@
         private C1.Win.C1Input.C1TextBox c1TextBox30;
         private System.Windows.Forms.Label label45;
         private System.Windows.Forms.SplitContainer spBody;
-        private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.GroupBox gbDay2;
-        private System.Windows.Forms.GroupBox groupBox6;
-        private System.Windows.Forms.GroupBox gbDay5;
-        private System.Windows.Forms.GroupBox gbDay3;
         private System.Windows.Forms.Label label47;
         private C1.Win.C1Input.C1TextBox c1TextBox32;
+        private C1.Win.C1Input.C1DateEdit c1DateEdit7;
+        private C1.Win.C1Input.C1DateEdit c1DateEdit6;
+        private C1.Win.C1Input.C1Button btnSave;
+        private C1.Win.C1Input.C1Button btnEdit;
+        private C1.Win.C1Input.C1Button c1Button2;
+        private C1.Win.C1Command.C1CommandDock c1CommandDock1;
+        private C1.Win.C1Command.C1DockingTab c1DockingTab1;
+        private C1.Win.C1Command.C1DockingTabPage tabDay2;
+        private C1.Win.C1Command.C1DockingTabPage tabDay3;
+        private C1.Win.C1Command.C1DockingTabPage tabDay5;
+        private C1.Win.C1Command.C1DockingTabPage tabDay6;
+        private C1.Win.C1Command.C1DockingTabPage c1DockingTabPage5;
+        private System.Windows.Forms.SplitContainer splitContainer1;
+        private System.Windows.Forms.SplitContainer splitContainer2;
+        private System.Windows.Forms.SplitContainer splitContainer3;
+        private System.Windows.Forms.GroupBox groupBox7;
+        private System.Windows.Forms.Label label61;
+        private C1.Win.C1Input.C1ComboBox c1ComboBox3;
+        private C1.Win.C1Input.C1ComboBox c1ComboBox2;
+        private System.Windows.Forms.Label label60;
+        private C1.Win.C1Input.C1TextBox c1TextBox44;
+        private C1.Win.C1Input.C1TextBox c1TextBox43;
+        private C1.Win.C1Input.C1TextBox c1TextBox42;
+        private C1.Win.C1Input.C1TextBox c1TextBox41;
+        private C1.Win.C1Input.C1TextBox c1TextBox40;
+        private C1.Win.C1Input.C1TextBox c1TextBox39;
+        private C1.Win.C1Input.C1TextBox c1TextBox38;
+        private C1.Win.C1Input.C1TextBox c1TextBox37;
+        private System.Windows.Forms.Label label59;
+        private System.Windows.Forms.Label label58;
+        private System.Windows.Forms.Label label57;
+        private System.Windows.Forms.Label label56;
+        private System.Windows.Forms.Label label55;
+        private System.Windows.Forms.Label label54;
         private C1.Win.C1Input.C1TextBox c1TextBox36;
         private C1.Win.C1Input.C1TextBox c1TextBox35;
         private C1.Win.C1Input.C1TextBox c1TextBox34;
@@ -2572,29 +2791,9 @@
         private System.Windows.Forms.Label label50;
         private System.Windows.Forms.Label label49;
         private System.Windows.Forms.Label label48;
-        private System.Windows.Forms.Label label59;
-        private System.Windows.Forms.Label label58;
-        private System.Windows.Forms.Label label57;
-        private System.Windows.Forms.Label label56;
-        private System.Windows.Forms.Label label55;
-        private System.Windows.Forms.Label label54;
-        private C1.Win.C1Input.C1TextBox c1TextBox40;
-        private C1.Win.C1Input.C1TextBox c1TextBox39;
-        private C1.Win.C1Input.C1TextBox c1TextBox38;
-        private C1.Win.C1Input.C1TextBox c1TextBox37;
-        private C1.Win.C1Input.C1TextBox c1TextBox43;
-        private C1.Win.C1Input.C1TextBox c1TextBox42;
-        private C1.Win.C1Input.C1TextBox c1TextBox41;
-        private C1.Win.C1Input.C1TextBox c1TextBox44;
-        private System.Windows.Forms.Label label61;
-        private C1.Win.C1Input.C1ComboBox c1ComboBox3;
-        private C1.Win.C1Input.C1ComboBox c1ComboBox2;
-        private System.Windows.Forms.Label label60;
-        private C1.Win.C1Input.C1DateEdit c1DateEdit7;
-        private C1.Win.C1Input.C1DateEdit c1DateEdit6;
+        private System.Windows.Forms.GroupBox gbDay2;
+        private System.Windows.Forms.GroupBox gbDay3;
+        private System.Windows.Forms.GroupBox gbDay5;
         private System.Windows.Forms.GroupBox gbDay6;
-        private C1.Win.C1Input.C1Button btnSave;
-        private C1.Win.C1Input.C1Button btnEdit;
-        private C1.Win.C1Input.C1Button c1Button2;
     }
 }
