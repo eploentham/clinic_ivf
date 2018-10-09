@@ -51,7 +51,16 @@ namespace clinic_ivf.gui
             this.FormClosing += MainMenu4_FormClosing;
             menuExit.Click += MenuExit_Click;
             menuLabOpu.Click += MenuLabOpu_Click;
+            menuLabFet.Click += MenuLabFet_Click;
 
+        }
+
+        private void MenuLabFet_Click(object sender, EventArgs e)
+        {
+            //throw new NotImplementedException();
+            FrmLabFetView frm = new FrmLabFetView(ic, this);
+            frm.FormBorderStyle = FormBorderStyle.None;
+            AddNewTab(frm, menuLabOpu.Text + " ");
         }
 
         private void MenuLabOpu_Click(object sender, EventArgs e)

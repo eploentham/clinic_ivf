@@ -32,7 +32,7 @@
             this.menuExit = new System.Windows.Forms.ToolStripMenuItem();
             this.menuLabOpu1 = new System.Windows.Forms.ToolStripMenuItem();
             this.menuLabOpu = new System.Windows.Forms.ToolStripMenuItem();
-            this.ปอนFETToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuLabFet = new System.Windows.Forms.ToolStripMenuItem();
             this.ปอนSemenAnalysisToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ปอนSpermFreexingToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.กำหนดคาโปรแกรมToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -72,7 +72,7 @@
             // 
             this.menuLabOpu1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.menuLabOpu,
-            this.ปอนFETToolStripMenuItem,
+            this.menuLabFet,
             this.ปอนSemenAnalysisToolStripMenuItem,
             this.ปอนSpermFreexingToolStripMenuItem});
             this.menuLabOpu1.Name = "menuLabOpu1";
@@ -85,11 +85,11 @@
             this.menuLabOpu.Size = new System.Drawing.Size(180, 22);
             this.menuLabOpu.Text = "ป้อน OPU";
             // 
-            // ปอนFETToolStripMenuItem
+            // menuLabFet
             // 
-            this.ปอนFETToolStripMenuItem.Name = "ปอนFETToolStripMenuItem";
-            this.ปอนFETToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.ปอนFETToolStripMenuItem.Text = "ป้อน FET";
+            this.menuLabFet.Name = "menuLabFet";
+            this.menuLabFet.Size = new System.Drawing.Size(180, 22);
+            this.menuLabFet.Text = "ป้อน FET";
             // 
             // ปอนSemenAnalysisToolStripMenuItem
             // 
@@ -179,7 +179,7 @@
         private C1.Win.C1Command.C1DockingTabPage PageS;
         private System.Windows.Forms.ToolStripMenuItem menuLabOpu1;
         private System.Windows.Forms.ToolStripMenuItem menuLabOpu;
-        private System.Windows.Forms.ToolStripMenuItem ปอนFETToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem menuLabFet;
         private System.Windows.Forms.ToolStripMenuItem ปอนSemenAnalysisToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem ปอนSpermFreexingToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem กำหนดคาโปรแกรมToolStripMenuItem;

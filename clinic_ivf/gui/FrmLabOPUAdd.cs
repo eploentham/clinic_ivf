@@ -20,7 +20,6 @@ namespace clinic_ivf.gui
         IvfControl ic;
 
         Font fEdit, fEditB;
-
         Color bg, fc;
         Font ff, ffB;
         int colID = 1, colNum = 2, colDesc = 3;

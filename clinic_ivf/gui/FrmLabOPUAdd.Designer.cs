@@ -29,12 +29,8 @@
         private void InitializeComponent()
         {
             this.theme1 = new C1.Win.C1Themes.C1ThemeController();
-            this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this.spMain = new System.Windows.Forms.SplitContainer();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.label61 = new System.Windows.Forms.Label();
-            this.c1ComboBox3 = new C1.Win.C1Input.C1ComboBox();
-            this.c1ComboBox2 = new C1.Win.C1Input.C1ComboBox();
-            this.label60 = new System.Windows.Forms.Label();
             this.c1TextBox32 = new C1.Win.C1Input.C1TextBox();
             this.label47 = new System.Windows.Forms.Label();
             this.c1ComboBox1 = new C1.Win.C1Input.C1ComboBox();
@@ -56,7 +52,7 @@
             this.c1TextBox1 = new C1.Win.C1Input.C1TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.txtHnMale = new C1.Win.C1Input.C1TextBox();
-            this.splitContainer2 = new System.Windows.Forms.SplitContainer();
+            this.spLeft = new System.Windows.Forms.SplitContainer();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
             this.c1TextBox31 = new C1.Win.C1Input.C1TextBox();
             this.label46 = new System.Windows.Forms.Label();
@@ -130,7 +126,7 @@
             this.label10 = new System.Windows.Forms.Label();
             this.c1TextBox6 = new C1.Win.C1Input.C1TextBox();
             this.label9 = new System.Windows.Forms.Label();
-            this.splitContainer3 = new System.Windows.Forms.SplitContainer();
+            this.spBody = new System.Windows.Forms.SplitContainer();
             this.panel1 = new System.Windows.Forms.Panel();
             this.gbDay6 = new System.Windows.Forms.GroupBox();
             this.gbDay5 = new System.Windows.Forms.GroupBox();
@@ -162,14 +158,16 @@
             this.label48 = new System.Windows.Forms.Label();
             this.sB = new System.Windows.Forms.StatusStrip();
             this.sB1 = new System.Windows.Forms.ToolStripStatusLabel();
+            this.label61 = new System.Windows.Forms.Label();
+            this.c1ComboBox3 = new C1.Win.C1Input.C1ComboBox();
+            this.c1ComboBox2 = new C1.Win.C1Input.C1ComboBox();
+            this.label60 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.theme1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
-            this.splitContainer1.Panel1.SuspendLayout();
-            this.splitContainer1.Panel2.SuspendLayout();
-            this.splitContainer1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.spMain)).BeginInit();
+            this.spMain.Panel1.SuspendLayout();
+            this.spMain.Panel2.SuspendLayout();
+            this.spMain.SuspendLayout();
             this.groupBox1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.c1ComboBox3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.c1ComboBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.c1TextBox32)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.c1ComboBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.c1DateEdit1)).BeginInit();
@@ -181,10 +179,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.c1Button1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.c1TextBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtHnMale)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).BeginInit();
-            this.splitContainer2.Panel1.SuspendLayout();
-            this.splitContainer2.Panel2.SuspendLayout();
-            this.splitContainer2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.spLeft)).BeginInit();
+            this.spLeft.Panel1.SuspendLayout();
+            this.spLeft.Panel2.SuspendLayout();
+            this.spLeft.SuspendLayout();
             this.groupBox5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.c1TextBox31)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.c1TextBox25)).BeginInit();
@@ -221,10 +219,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.c1TextBox7)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.c1DateEdit2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.c1TextBox6)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainer3)).BeginInit();
-            this.splitContainer3.Panel1.SuspendLayout();
-            this.splitContainer3.Panel2.SuspendLayout();
-            this.splitContainer3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.spBody)).BeginInit();
+            this.spBody.Panel1.SuspendLayout();
+            this.spBody.Panel2.SuspendLayout();
+            this.spBody.SuspendLayout();
             this.panel1.SuspendLayout();
             this.groupBox6.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.c1TextBox44)).BeginInit();
@@ -240,46 +238,44 @@
             ((System.ComponentModel.ISupportInitialize)(this.c1TextBox34)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.c1TextBox33)).BeginInit();
             this.sB.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.c1ComboBox3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.c1ComboBox2)).BeginInit();
             this.SuspendLayout();
             // 
             // theme1
             // 
             this.theme1.Theme = "Office2013Red";
             // 
-            // splitContainer1
+            // spMain
             // 
-            this.splitContainer1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.splitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.splitContainer1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.splitContainer1.Location = new System.Drawing.Point(0, 0);
-            this.splitContainer1.Name = "splitContainer1";
-            this.splitContainer1.Orientation = System.Windows.Forms.Orientation.Horizontal;
+            this.spMain.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.spMain.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.spMain.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.spMain.Location = new System.Drawing.Point(0, 0);
+            this.spMain.Name = "spMain";
+            this.spMain.Orientation = System.Windows.Forms.Orientation.Horizontal;
             // 
-            // splitContainer1.Panel1
+            // spMain.Panel1
             // 
-            this.splitContainer1.Panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.splitContainer1.Panel1.Controls.Add(this.groupBox1);
-            this.splitContainer1.Panel1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.theme1.SetTheme(this.splitContainer1.Panel1, "(default)");
+            this.spMain.Panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.spMain.Panel1.Controls.Add(this.groupBox1);
+            this.spMain.Panel1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.theme1.SetTheme(this.spMain.Panel1, "(default)");
             // 
-            // splitContainer1.Panel2
+            // spMain.Panel2
             // 
-            this.splitContainer1.Panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.splitContainer1.Panel2.Controls.Add(this.splitContainer2);
-            this.splitContainer1.Panel2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.theme1.SetTheme(this.splitContainer1.Panel2, "(default)");
-            this.splitContainer1.Size = new System.Drawing.Size(1155, 970);
-            this.splitContainer1.SplitterDistance = 123;
-            this.splitContainer1.TabIndex = 10;
-            this.theme1.SetTheme(this.splitContainer1, "(default)");
+            this.spMain.Panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.spMain.Panel2.Controls.Add(this.spLeft);
+            this.spMain.Panel2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.theme1.SetTheme(this.spMain.Panel2, "(default)");
+            this.spMain.Size = new System.Drawing.Size(1155, 970);
+            this.spMain.SplitterDistance = 123;
+            this.spMain.TabIndex = 10;
+            this.theme1.SetTheme(this.spMain, "(default)");
             // 
             // groupBox1
             // 
             this.groupBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.groupBox1.Controls.Add(this.label61);
-            this.groupBox1.Controls.Add(this.c1ComboBox3);
-            this.groupBox1.Controls.Add(this.c1ComboBox2);
-            this.groupBox1.Controls.Add(this.label60);
             this.groupBox1.Controls.Add(this.c1TextBox32);
             this.groupBox1.Controls.Add(this.label47);
             this.groupBox1.Controls.Add(this.c1ComboBox1);
@@ -310,74 +306,6 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Patient";
             this.theme1.SetTheme(this.groupBox1, "(default)");
-            // 
-            // label61
-            // 
-            this.label61.AutoSize = true;
-            this.label61.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.label61.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label61.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.label61.Location = new System.Drawing.Point(660, 88);
-            this.label61.Name = "label61";
-            this.label61.Size = new System.Drawing.Size(147, 16);
-            this.label61.TabIndex = 537;
-            this.label61.Text = "Embryologist approve :";
-            this.theme1.SetTheme(this.label61, "(default)");
-            // 
-            // c1ComboBox3
-            // 
-            this.c1ComboBox3.AllowSpinLoop = false;
-            this.c1ComboBox3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.c1ComboBox3.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
-            this.c1ComboBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.c1ComboBox3.GapHeight = 0;
-            this.c1ComboBox3.ImagePadding = new System.Windows.Forms.Padding(0);
-            this.c1ComboBox3.ItemsDisplayMember = "";
-            this.c1ComboBox3.ItemsValueMember = "";
-            this.c1ComboBox3.Location = new System.Drawing.Point(813, 84);
-            this.c1ComboBox3.Name = "c1ComboBox3";
-            this.c1ComboBox3.Size = new System.Drawing.Size(207, 20);
-            this.c1ComboBox3.Style.DropDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.c1ComboBox3.Style.DropDownBorderColor = System.Drawing.Color.Gainsboro;
-            this.c1ComboBox3.Style.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.c1ComboBox3.TabIndex = 536;
-            this.c1ComboBox3.Tag = null;
-            this.theme1.SetTheme(this.c1ComboBox3, "(default)");
-            this.c1ComboBox3.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
-            // 
-            // c1ComboBox2
-            // 
-            this.c1ComboBox2.AllowSpinLoop = false;
-            this.c1ComboBox2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.c1ComboBox2.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
-            this.c1ComboBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.c1ComboBox2.GapHeight = 0;
-            this.c1ComboBox2.ImagePadding = new System.Windows.Forms.Padding(0);
-            this.c1ComboBox2.ItemsDisplayMember = "";
-            this.c1ComboBox2.ItemsValueMember = "";
-            this.c1ComboBox2.Location = new System.Drawing.Point(813, 63);
-            this.c1ComboBox2.Name = "c1ComboBox2";
-            this.c1ComboBox2.Size = new System.Drawing.Size(207, 20);
-            this.c1ComboBox2.Style.DropDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.c1ComboBox2.Style.DropDownBorderColor = System.Drawing.Color.Gainsboro;
-            this.c1ComboBox2.Style.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.c1ComboBox2.TabIndex = 535;
-            this.c1ComboBox2.Tag = null;
-            this.theme1.SetTheme(this.c1ComboBox2, "(default)");
-            this.c1ComboBox2.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
-            // 
-            // label60
-            // 
-            this.label60.AutoSize = true;
-            this.label60.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.label60.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label60.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.label60.Location = new System.Drawing.Point(660, 65);
-            this.label60.Name = "label60";
-            this.label60.Size = new System.Drawing.Size(131, 16);
-            this.label60.TabIndex = 534;
-            this.label60.Text = "Embryologist report :";
-            this.theme1.SetTheme(this.label60, "(default)");
             // 
             // c1TextBox32
             // 
@@ -683,34 +611,34 @@
             this.theme1.SetTheme(this.txtHnMale, "(default)");
             this.txtHnMale.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
             // 
-            // splitContainer2
+            // spLeft
             // 
-            this.splitContainer2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.splitContainer2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.splitContainer2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.splitContainer2.Location = new System.Drawing.Point(0, 0);
-            this.splitContainer2.Name = "splitContainer2";
+            this.spLeft.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.spLeft.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.spLeft.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.spLeft.Location = new System.Drawing.Point(0, 0);
+            this.spLeft.Name = "spLeft";
             // 
-            // splitContainer2.Panel1
+            // spLeft.Panel1
             // 
-            this.splitContainer2.Panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.splitContainer2.Panel1.Controls.Add(this.groupBox5);
-            this.splitContainer2.Panel1.Controls.Add(this.groupBox4);
-            this.splitContainer2.Panel1.Controls.Add(this.groupBox3);
-            this.splitContainer2.Panel1.Controls.Add(this.groupBox2);
-            this.splitContainer2.Panel1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.theme1.SetTheme(this.splitContainer2.Panel1, "(default)");
+            this.spLeft.Panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.spLeft.Panel1.Controls.Add(this.groupBox5);
+            this.spLeft.Panel1.Controls.Add(this.groupBox4);
+            this.spLeft.Panel1.Controls.Add(this.groupBox3);
+            this.spLeft.Panel1.Controls.Add(this.groupBox2);
+            this.spLeft.Panel1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.theme1.SetTheme(this.spLeft.Panel1, "(default)");
             // 
-            // splitContainer2.Panel2
+            // spLeft.Panel2
             // 
-            this.splitContainer2.Panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.splitContainer2.Panel2.Controls.Add(this.splitContainer3);
-            this.splitContainer2.Panel2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.theme1.SetTheme(this.splitContainer2.Panel2, "(default)");
-            this.splitContainer2.Size = new System.Drawing.Size(1155, 843);
-            this.splitContainer2.SplitterDistance = 306;
-            this.splitContainer2.TabIndex = 0;
-            this.theme1.SetTheme(this.splitContainer2, "(default)");
+            this.spLeft.Panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.spLeft.Panel2.Controls.Add(this.spBody);
+            this.spLeft.Panel2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.theme1.SetTheme(this.spLeft.Panel2, "(default)");
+            this.spLeft.Size = new System.Drawing.Size(1155, 843);
+            this.spLeft.SplitterDistance = 306;
+            this.spLeft.TabIndex = 0;
+            this.theme1.SetTheme(this.spLeft, "(default)");
             // 
             // groupBox5
             // 
@@ -1808,32 +1736,32 @@
             this.label9.Text = "No of OPU :";
             this.theme1.SetTheme(this.label9, "(default)");
             // 
-            // splitContainer3
+            // spBody
             // 
-            this.splitContainer3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.splitContainer3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.splitContainer3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.splitContainer3.Location = new System.Drawing.Point(0, 0);
-            this.splitContainer3.Name = "splitContainer3";
-            this.splitContainer3.Orientation = System.Windows.Forms.Orientation.Horizontal;
+            this.spBody.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.spBody.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.spBody.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.spBody.Location = new System.Drawing.Point(0, 0);
+            this.spBody.Name = "spBody";
+            this.spBody.Orientation = System.Windows.Forms.Orientation.Horizontal;
             // 
-            // splitContainer3.Panel1
+            // spBody.Panel1
             // 
-            this.splitContainer3.Panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.splitContainer3.Panel1.Controls.Add(this.panel1);
-            this.splitContainer3.Panel1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.theme1.SetTheme(this.splitContainer3.Panel1, "(default)");
+            this.spBody.Panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.spBody.Panel1.Controls.Add(this.panel1);
+            this.spBody.Panel1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.theme1.SetTheme(this.spBody.Panel1, "(default)");
             // 
-            // splitContainer3.Panel2
+            // spBody.Panel2
             // 
-            this.splitContainer3.Panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.splitContainer3.Panel2.Controls.Add(this.groupBox6);
-            this.splitContainer3.Panel2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.theme1.SetTheme(this.splitContainer3.Panel2, "(default)");
-            this.splitContainer3.Size = new System.Drawing.Size(845, 843);
-            this.splitContainer3.SplitterDistance = 690;
-            this.splitContainer3.TabIndex = 0;
-            this.theme1.SetTheme(this.splitContainer3, "(default)");
+            this.spBody.Panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.spBody.Panel2.Controls.Add(this.groupBox6);
+            this.spBody.Panel2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.theme1.SetTheme(this.spBody.Panel2, "(default)");
+            this.spBody.Size = new System.Drawing.Size(845, 843);
+            this.spBody.SplitterDistance = 690;
+            this.spBody.TabIndex = 0;
+            this.theme1.SetTheme(this.spBody, "(default)");
             // 
             // panel1
             // 
@@ -1891,6 +1819,10 @@
             // groupBox6
             // 
             this.groupBox6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.groupBox6.Controls.Add(this.label61);
+            this.groupBox6.Controls.Add(this.c1ComboBox3);
+            this.groupBox6.Controls.Add(this.c1ComboBox2);
+            this.groupBox6.Controls.Add(this.label60);
             this.groupBox6.Controls.Add(this.c1TextBox44);
             this.groupBox6.Controls.Add(this.c1TextBox43);
             this.groupBox6.Controls.Add(this.c1TextBox42);
@@ -2253,25 +2185,91 @@
             this.sB1.Size = new System.Drawing.Size(118, 17);
             this.sB1.Text = "toolStripStatusLabel1";
             // 
+            // label61
+            // 
+            this.label61.AutoSize = true;
+            this.label61.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.label61.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label61.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.label61.Location = new System.Drawing.Point(421, 106);
+            this.label61.Name = "label61";
+            this.label61.Size = new System.Drawing.Size(147, 16);
+            this.label61.TabIndex = 541;
+            this.label61.Text = "Embryologist approve :";
+            this.theme1.SetTheme(this.label61, "(default)");
+            // 
+            // c1ComboBox3
+            // 
+            this.c1ComboBox3.AllowSpinLoop = false;
+            this.c1ComboBox3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.c1ComboBox3.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
+            this.c1ComboBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.c1ComboBox3.GapHeight = 0;
+            this.c1ComboBox3.ImagePadding = new System.Windows.Forms.Padding(0);
+            this.c1ComboBox3.ItemsDisplayMember = "";
+            this.c1ComboBox3.ItemsValueMember = "";
+            this.c1ComboBox3.Location = new System.Drawing.Point(574, 102);
+            this.c1ComboBox3.Name = "c1ComboBox3";
+            this.c1ComboBox3.Size = new System.Drawing.Size(207, 20);
+            this.c1ComboBox3.Style.DropDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.c1ComboBox3.Style.DropDownBorderColor = System.Drawing.Color.Gainsboro;
+            this.c1ComboBox3.Style.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.c1ComboBox3.TabIndex = 540;
+            this.c1ComboBox3.Tag = null;
+            this.theme1.SetTheme(this.c1ComboBox3, "(default)");
+            this.c1ComboBox3.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            // 
+            // c1ComboBox2
+            // 
+            this.c1ComboBox2.AllowSpinLoop = false;
+            this.c1ComboBox2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.c1ComboBox2.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
+            this.c1ComboBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.c1ComboBox2.GapHeight = 0;
+            this.c1ComboBox2.ImagePadding = new System.Windows.Forms.Padding(0);
+            this.c1ComboBox2.ItemsDisplayMember = "";
+            this.c1ComboBox2.ItemsValueMember = "";
+            this.c1ComboBox2.Location = new System.Drawing.Point(574, 81);
+            this.c1ComboBox2.Name = "c1ComboBox2";
+            this.c1ComboBox2.Size = new System.Drawing.Size(207, 20);
+            this.c1ComboBox2.Style.DropDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.c1ComboBox2.Style.DropDownBorderColor = System.Drawing.Color.Gainsboro;
+            this.c1ComboBox2.Style.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.c1ComboBox2.TabIndex = 539;
+            this.c1ComboBox2.Tag = null;
+            this.theme1.SetTheme(this.c1ComboBox2, "(default)");
+            this.c1ComboBox2.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            // 
+            // label60
+            // 
+            this.label60.AutoSize = true;
+            this.label60.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.label60.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label60.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.label60.Location = new System.Drawing.Point(421, 83);
+            this.label60.Name = "label60";
+            this.label60.Size = new System.Drawing.Size(131, 16);
+            this.label60.TabIndex = 538;
+            this.label60.Text = "Embryologist report :";
+            this.theme1.SetTheme(this.label60, "(default)");
+            // 
             // FrmLabOPUAdd
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1155, 992);
-            this.Controls.Add(this.splitContainer1);
+            this.Controls.Add(this.spMain);
             this.Controls.Add(this.sB);
             this.Name = "FrmLabOPUAdd";
             this.Text = "FrmLabOPUAdd";
             this.Load += new System.EventHandler(this.FrmLabOPUAdd_Load);
             ((System.ComponentModel.ISupportInitialize)(this.theme1)).EndInit();
-            this.splitContainer1.Panel1.ResumeLayout(false);
-            this.splitContainer1.Panel2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
-            this.splitContainer1.ResumeLayout(false);
+            this.spMain.Panel1.ResumeLayout(false);
+            this.spMain.Panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.spMain)).EndInit();
+            this.spMain.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.c1ComboBox3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.c1ComboBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.c1TextBox32)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.c1ComboBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.c1DateEdit1)).EndInit();
@@ -2283,10 +2281,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.c1Button1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.c1TextBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtHnMale)).EndInit();
-            this.splitContainer2.Panel1.ResumeLayout(false);
-            this.splitContainer2.Panel2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).EndInit();
-            this.splitContainer2.ResumeLayout(false);
+            this.spLeft.Panel1.ResumeLayout(false);
+            this.spLeft.Panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.spLeft)).EndInit();
+            this.spLeft.ResumeLayout(false);
             this.groupBox5.ResumeLayout(false);
             this.groupBox5.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.c1TextBox31)).EndInit();
@@ -2327,10 +2325,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.c1TextBox7)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.c1DateEdit2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.c1TextBox6)).EndInit();
-            this.splitContainer3.Panel1.ResumeLayout(false);
-            this.splitContainer3.Panel2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainer3)).EndInit();
-            this.splitContainer3.ResumeLayout(false);
+            this.spBody.Panel1.ResumeLayout(false);
+            this.spBody.Panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.spBody)).EndInit();
+            this.spBody.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
             this.groupBox6.ResumeLayout(false);
             this.groupBox6.PerformLayout();
@@ -2348,6 +2346,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.c1TextBox33)).EndInit();
             this.sB.ResumeLayout(false);
             this.sB.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.c1ComboBox3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.c1ComboBox2)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -2358,7 +2358,7 @@
         private C1.Win.C1Themes.C1ThemeController theme1;
         private System.Windows.Forms.StatusStrip sB;
         private System.Windows.Forms.ToolStripStatusLabel sB1;
-        private System.Windows.Forms.SplitContainer splitContainer1;
+        private System.Windows.Forms.SplitContainer spMain;
         private System.Windows.Forms.GroupBox groupBox1;
         private C1.Win.C1Input.C1ComboBox c1ComboBox1;
         private System.Windows.Forms.Label label8;
@@ -2379,7 +2379,7 @@
         private C1.Win.C1Input.C1TextBox c1TextBox1;
         private System.Windows.Forms.Label label4;
         private C1.Win.C1Input.C1TextBox txtHnMale;
-        private System.Windows.Forms.SplitContainer splitContainer2;
+        private System.Windows.Forms.SplitContainer spLeft;
         private System.Windows.Forms.GroupBox groupBox2;
         private C1.Win.C1Input.C1TextBox c1TextBox12;
         private C1.Win.C1Input.C1TextBox c1TextBox11;
@@ -2453,7 +2453,7 @@
         private System.Windows.Forms.Label label44;
         private C1.Win.C1Input.C1TextBox c1TextBox30;
         private System.Windows.Forms.Label label45;
-        private System.Windows.Forms.SplitContainer splitContainer3;
+        private System.Windows.Forms.SplitContainer spBody;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.GroupBox gbDay3;
         private System.Windows.Forms.GroupBox groupBox6;

@@ -65,6 +65,18 @@
     <Compile Include="gui\Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="gui\FrmLabFetAdd.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="gui\FrmLabFetAdd.Designer.cs">
+      <DependentUpon>FrmLabFetAdd.cs</DependentUpon>
+    </Compile>
+    <Compile Include="gui\FrmLabFetView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="gui\FrmLabFetView.Designer.cs">
+      <DependentUpon>FrmLabFetView.cs</DependentUpon>
+    </Compile>
     <Compile Include="gui\FrmLabOPUAdd.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -110,6 +122,12 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="gui\Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="gui\FrmLabFetAdd.resx">
+      <DependentUpon>FrmLabFetAdd.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="gui\FrmLabFetView.resx">
+      <DependentUpon>FrmLabFetView.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="gui\FrmLabOPUAdd.resx">
       <DependentUpon>FrmLabOPUAdd.cs</DependentUpon>
