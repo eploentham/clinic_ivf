@@ -201,4 +201,129 @@ CREATE TABLE `f_zipcodes` (
 
 
 
+61-10-09
+
+CREATE TABLE `ivf`.`lab_t_opu` (
+  `opu_id` INT NOT NULL AUTO_INCREMENT,
+  `opu_code` VARCHAR(255) NULL,
+  `embryo_freez_stage` INT NULL,
+  `embryoid_freez_position` VARCHAR(255) NULL,
+  `hn_male` VARCHAR(255) NULL,
+  `hn_female` VARCHAR(255) NULL,
+  `name_male` VARCHAR(255) NULL,
+  `name_female` VARCHAR(255) NULL,
+  `dob_male` VARCHAR(255) NULL,
+  `dob_female` VARCHAR(255) NULL,
+  `doctor_id` INT NULL,
+  `proce_id` INT NULL,
+  `opu_date` VARCHAR(255) NULL,
+  `no_of_opu` VARCHAR(255) NULL,
+  `matura_date` VARCHAR(255) NULL,
+  `matura_m_ii` VARCHAR(255) NULL,
+  `matura_m_i` VARCHAR(255) NULL,
+  `matura_gv` VARCHAR(255) NULL,
+  `matura_abmormal` VARCHAR(255) NULL,
+  `matura_dead` VARCHAR(255) NULL,
+  `fertili_date` VARCHAR(255) NULL,
+  `fertili_2_pn` VARCHAR(255) NULL,
+  `fertili_1_pn` VARCHAR(255) NULL,
+  `fertili_3_pn` VARCHAR(255) NULL,
+  `fertili_4_pn` VARCHAR(255) NULL,
+  `fertili_no_pn` VARCHAR(255) NULL,
+  `fertili_dead` VARCHAR(255) NULL,
+  `sperm_date` VARCHAR(255) NULL,
+  `sperm_vloume` VARCHAR(255) NULL,
+  `sperm_count` VARCHAR(255) NULL,
+  `sperm_count_total` VARCHAR(255) NULL,
+  `sperm_motile` VARCHAR(255) NULL,
+  `sperm_motile_total` VARCHAR(255) NULL,
+  `sperm_motility` VARCHAR(255) NULL,
+  `sperm_fresh_sperm` VARCHAR(255) NULL,
+  `sperm_frozen_sperm` VARCHAR(255) NULL,
+  `embryo_freez_date` VARCHAR(255) NULL,
+  `embryo_freez_day` VARCHAR(255) NULL,
+  `embryo_freez_no_og` VARCHAR(255) NULL,
+  `embryo_freez_no_of_straw` VARCHAR(255) NULL,
+  `embryo_freez_mothod` VARCHAR(255) NULL,
+  `embryo_freez_freeze_media` VARCHAR(255) NULL,
+  `embryo_for_et_no_of_et` VARCHAR(255) NULL,
+  `embbryo_for_et_day` VARCHAR(255) NULL,
+  `embbryo_for_et_date` VARCHAR(255) NULL,
+  `embbryo_for_et_assisted` VARCHAR(255) NULL,
+  `embbryo_for_et_remark` VARCHAR(255) NULL,
+  `embbryo_for_et_volume` VARCHAR(255) NULL,
+  `embbryo_for_et_catheter` VARCHAR(255) NULL,
+  `embbryo_for_et_doctor` VARCHAR(255) NULL,
+  `embbryo_for_et_embryologist_id` INT NULL,
+  `embbryo_for_et_number_of_transfer` VARCHAR(255) NULL,
+  `embbryo_for_et_number_of_freeze` VARCHAR(255) NULL,
+  `embbryo_for_et_number_of_discard` VARCHAR(255) NULL,
+  `embryologist_report_id` INT NULL,
+  `embryologist_approve_id` INT NULL,
+  `date_create` VARCHAR(255) NULL,
+  `date_modi` VARCHAR(255) NULL,
+  `date_cancel` VARCHAR(255) NULL,
+  `user_create` VARCHAR(255) NULL,
+  `user_modi` VARCHAR(255) NULL,
+  `user_cancel` VARCHAR(255) NULL,
+  `active` VARCHAR(255) NULL,
+  `remark` VARCHAR(255) NULL,
+  PRIMARY KEY (`opu_id`))
+ENGINE = MyISAM
+DEFAULT CHARACTER SET = utf8
+COLLATE = utf8_bin
+COMMENT = 'id=300';
+
+
+CREATE TABLE `ivf`.`lab_b_procedure` (
+  `proce_id` INT NOT NULL AUTO_INCREMENT,
+  `proce_code` VARCHAR(255) NULL,
+  `proce_name_t` VARCHAR(255) NULL,
+  `proce_name_e` VARCHAR(255) NULL,
+  `remark` VARCHAR(255) NULL,
+  `active` VARCHAR(255) NULL,
+  `date_create` VARCHAR(255) NULL,
+  `date_modi` VARCHAR(255) NULL,
+  `date_cancel` VARCHAR(255) NULL,
+  `user_create` VARCHAR(255) NULL,
+  `user_modi` VARCHAR(255) NULL,
+  `user_cancel` VARCHAR(255) NULL,
+  PRIMARY KEY (`proce_id`))
+ENGINE = MyISAM
+DEFAULT CHARACTER SET = utf8
+COLLATE = utf8_bin
+COMMENT = 'id=301';
+
+CREATE TABLE `ivf`.`lab_t_opu_embryo_dev` (
+  `opu_embryo_dev_id` INT NOT NULL AUTO_INCREMENT,
+  `opu_fet_id` INT NULL,
+  `status_day` VARCHAR(255) NULL,
+  `opu_embryo_dev_no` INT NULL,
+  `desc` VARCHAR(2000) NULL,
+  `active` VARCHAR(255) NULL,
+  `remark` VARCHAR(255) NULL,
+  `path_pic` VARCHAR(255) NULL,
+  `date_create` VARCHAR(255) NULL,
+  `date_modi` VARCHAR(255) NULL,
+  `date_cancel` VARCHAR(255) NULL,
+  `user_create` VARCHAR(255) NULL,
+  `user_modi` VARCHAR(255) NULL,
+  `user_cancel` VARCHAR(255) NULL,
+  PRIMARY KEY (`opu_embryo_dev_id`))
+ENGINE = MyISAM
+DEFAULT CHARACTER SET = utf8
+COLLATE = utf8_bin
+COMMENT = 'id=302';
+
+ALTER TABLE `ivf`.`lab_b_procedure` 
+ADD COLUMN `status_lab` VARCHAR(255) NULL COMMENT '1=opu, 2=fet' AFTER `user_cancel`;
+
+ALTER TABLE `ivf`.`lab_b_procedure` 
+ADD COLUMN `sort1` VARCHAR(255) NULL AFTER `status_lab`;
+
+
+
+
+
+
 

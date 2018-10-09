@@ -11,6 +11,10 @@ namespace clinic_ivf.objdb
         ConnectDB conn;
 
         public StaffDB stfDB;
+        public DepartmentDB deptDB;
+        public PositionDB posiDB;
+        public PrefixDB pfxDB;
+        public LabProcedureDB proceDB;
 
         public IvfDB(ConnectDB c)
         {
@@ -21,7 +25,11 @@ namespace clinic_ivf.objdb
         {
             Console.WriteLine("ivfDB start");
             stfDB = new StaffDB(conn);
-            
+            deptDB = new DepartmentDB(conn);
+            posiDB = new PositionDB(conn);
+            pfxDB = new PrefixDB(conn);
+            proceDB = new LabProcedureDB(conn);
+
             Console.WriteLine("ivfDB end");
         }
     }

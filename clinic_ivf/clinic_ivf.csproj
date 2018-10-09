@@ -65,6 +65,18 @@
     <Compile Include="gui\Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="gui\FrmDepartment1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="gui\FrmDepartment1.designer.cs">
+      <DependentUpon>FrmDepartment1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="gui\FrmDepartmentS.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="gui\FrmDepartmentS.designer.cs">
+      <DependentUpon>FrmDepartmentS.cs</DependentUpon>
+    </Compile>
     <Compile Include="gui\FrmLabFetAdd.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -83,17 +95,53 @@
     <Compile Include="gui\FrmLabOPUAdd.Designer.cs">
       <DependentUpon>FrmLabOPUAdd.cs</DependentUpon>
     </Compile>
+    <Compile Include="gui\FrmLabOpuProce.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="gui\FrmLabOpuProce.Designer.cs">
+      <DependentUpon>FrmLabOpuProce.cs</DependentUpon>
+    </Compile>
     <Compile Include="gui\FrmLabOpuView.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="gui\FrmLabOpuView.Designer.cs">
       <DependentUpon>FrmLabOpuView.cs</DependentUpon>
     </Compile>
+    <Compile Include="gui\FrmLabProcedure.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="gui\FrmLabProcedure.Designer.cs">
+      <DependentUpon>FrmLabProcedure.cs</DependentUpon>
+    </Compile>
+    <Compile Include="gui\FrmPosition.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="gui\FrmPosition.designer.cs">
+      <DependentUpon>FrmPosition.cs</DependentUpon>
+    </Compile>
+    <Compile Include="gui\FrmPositionS.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="gui\FrmPositionS.designer.cs">
+      <DependentUpon>FrmPositionS.cs</DependentUpon>
+    </Compile>
+    <Compile Include="gui\FrmSetPassword.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="gui\FrmSetPassword.designer.cs">
+      <DependentUpon>FrmSetPassword.cs</DependentUpon>
+    </Compile>
     <Compile Include="gui\FrmSplash.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="gui\FrmSplash.Designer.cs">
       <DependentUpon>FrmSplash.cs</DependentUpon>
+    </Compile>
+    <Compile Include="gui\FrmStaff.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="gui\FrmStaff.designer.cs">
+      <DependentUpon>FrmStaff.cs</DependentUpon>
     </Compile>
     <Compile Include="gui\Login.cs">
       <SubType>Form</SubType>
@@ -108,20 +156,34 @@
       <DependentUpon>MainMenu.cs</DependentUpon>
     </Compile>
     <Compile Include="objdb\ConnectDB.cs" />
+    <Compile Include="objdb\DepartmentDB.cs" />
     <Compile Include="objdb\IvfDB.cs" />
+    <Compile Include="objdb\LabProcedureDB.cs" />
+    <Compile Include="objdb\PositionDB.cs" />
+    <Compile Include="objdb\PrefixDB.cs" />
     <Compile Include="objdb\StaffDB.cs" />
     <Compile Include="object1\ComboBoxItem.cs" />
     <Compile Include="object1\Department.cs" />
+    <Compile Include="object1\FilterRow.cs" />
     <Compile Include="object1\FtpClient.cs" />
     <Compile Include="object1\IniFile.cs" />
     <Compile Include="object1\InitConfig.cs" />
+    <Compile Include="object1\LabProcedure.cs" />
     <Compile Include="object1\LogFile.cs" />
     <Compile Include="object1\Persistent.cs" />
+    <Compile Include="object1\Position.cs" />
+    <Compile Include="object1\Prefix.cs" />
     <Compile Include="object1\Staff.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="gui\Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="gui\FrmDepartment1.resx">
+      <DependentUpon>FrmDepartment1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="gui\FrmDepartmentS.resx">
+      <DependentUpon>FrmDepartmentS.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="gui\FrmLabFetAdd.resx">
       <DependentUpon>FrmLabFetAdd.cs</DependentUpon>
@@ -132,11 +194,29 @@
     <EmbeddedResource Include="gui\FrmLabOPUAdd.resx">
       <DependentUpon>FrmLabOPUAdd.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="gui\FrmLabOpuProce.resx">
+      <DependentUpon>FrmLabOpuProce.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="gui\FrmLabOpuView.resx">
       <DependentUpon>FrmLabOpuView.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="gui\FrmLabProcedure.resx">
+      <DependentUpon>FrmLabProcedure.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="gui\FrmPosition.resx">
+      <DependentUpon>FrmPosition.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="gui\FrmPositionS.resx">
+      <DependentUpon>FrmPositionS.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="gui\FrmSetPassword.resx">
+      <DependentUpon>FrmSetPassword.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="gui\FrmSplash.resx">
       <DependentUpon>FrmSplash.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="gui\FrmStaff.resx">
+      <DependentUpon>FrmStaff.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="gui\Login.resx">
       <DependentUpon>Login.cs</DependentUpon>

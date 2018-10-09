@@ -52,7 +52,33 @@ namespace clinic_ivf.gui
             menuExit.Click += MenuExit_Click;
             menuLabOpu.Click += MenuLabOpu_Click;
             menuLabFet.Click += MenuLabFet_Click;
+            menuDept.Click += MenuDept_Click;
+            menuPosi.Click += MenuPosi_Click;
+            menuStaff.Click += MenuStaff_Click;
+        }
 
+        private void MenuStaff_Click(object sender, EventArgs e)
+        {
+            //throw new NotImplementedException();
+            FrmStaff frm = new FrmStaff(ic);
+            frm.FormBorderStyle = FormBorderStyle.None;
+            AddNewTab(frm, menuStaff.Text + " ");
+        }
+
+        private void MenuPosi_Click(object sender, EventArgs e)
+        {
+            //throw new NotImplementedException();
+            FrmPosition frm = new FrmPosition(ic);
+            frm.FormBorderStyle = FormBorderStyle.None;
+            AddNewTab(frm, menuPosi.Text + " ");
+        }
+
+        private void MenuDept_Click(object sender, EventArgs e)
+        {
+            //throw new NotImplementedException();
+            FrmDepartment1 frm = new FrmDepartment1(ic);
+            frm.FormBorderStyle = FormBorderStyle.None;
+            AddNewTab(frm, menuDept.Text + " ");
         }
 
         private void MenuLabFet_Click(object sender, EventArgs e)

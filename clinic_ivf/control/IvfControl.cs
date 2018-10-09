@@ -20,7 +20,7 @@ namespace clinic_ivf.control
         public List<Department> lDept;
 
         public IvfDB ivfDB;
-
+        
 
         public String userId = "";
         public String copID = "", jobID = "", cusID = "", addrID = "", contID = "", cusrID = "", custID = "", stfID = "", deptID = "", posiID = "", drawID = "";
@@ -64,6 +64,8 @@ namespace clinic_ivf.control
             conn = new ConnectDB(iniC);
 
             ivfDB = new IvfDB(conn);
+            
+
         }
         public void GetConfig()
         {
