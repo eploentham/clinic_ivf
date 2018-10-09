@@ -20,7 +20,7 @@ namespace clinic_ivf.gui
     public partial class FrmLabOpuProce : Form
     {
         IvfControl ic;
-        Department dept;
+        LabProcedure proce;
 
         Font fEdit, fEditB;
 
@@ -28,22 +28,25 @@ namespace clinic_ivf.gui
         Font ff, ffB;
         int colID = 1, colCode = 2, colName = 3, colRemark = 4, colE = 5, colS = 6, coledit = 7, colCnt = 7;
 
-        C1FlexGrid grfDept;
+        C1FlexGrid grfProce;
         //C1TextBox txtPassword = new C1.Win.C1Input.C1TextBox();
         Boolean flagEdit = false;
         C1SuperTooltip stt;
         C1SuperErrorProvider sep;
         String userIdVoid = "";
+        //public enum StatusLab { OPUProcedure, FETProcedure};
+        objdb.LabProcedureDB.StatusLab statusLab;
 
-        public FrmLabOpuProce(IvfControl ic)
+        public FrmLabOpuProce(IvfControl ic, objdb.LabProcedureDB.StatusLab statuslab)
         {
             InitializeComponent();
             this.ic = ic;
+            statusLab = statuslab;
             initConfig();
         }
         private void initConfig()
         {
-            dept = new Department();
+            proce = new LabProcedure();
             fEdit = new Font(ic.iniC.grdViewFontName, ic.grdViewFontSize, FontStyle.Regular);
             fEditB = new Font(ic.iniC.grdViewFontName, ic.grdViewFontSize, FontStyle.Bold);
 
@@ -75,6 +78,8 @@ namespace clinic_ivf.gui
             txtPasswordVoid.Hide();
             stt = new C1SuperTooltip();
             sep = new C1SuperErrorProvider();
+            label1.Hide();
+            txtProceCode.Hide();
             //stt.BackgroundGradient = C1.Win.C1SuperTooltip.BackgroundGradient.Gold;
         }
 
@@ -84,7 +89,7 @@ namespace clinic_ivf.gui
             if (MessageBox.Show("ต้องการ บันทึกช้อมูล ", "", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == DialogResult.OK)
             {
                 setDeptment();
-                String re = ic.ivfDB.deptDB.insertDepartment(dept, ic.user.staff_id);
+                String re = ic.ivfDB.proceDB.insertLabProcedure(proce, ic.user.staff_id);
                 int chk = 0;
                 if (int.TryParse(re, out chk))
                 {
@@ -125,7 +130,7 @@ namespace clinic_ivf.gui
             //throw new NotImplementedException();
             if (MessageBox.Show("ต้องการ ยกเลิกช้อมูล ", "", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == DialogResult.OK)
             {
-                ic.ivfDB.deptDB.VoidDepartment(txtID.Text, userIdVoid);
+                ic.ivfDB.proceDB.VoidLabProcedure(txtID.Text, userIdVoid);
                 setGrfDeptH();
             }
         }
@@ -165,72 +170,82 @@ namespace clinic_ivf.gui
         }
         private void initGrfDept()
         {
-            grfDept = new C1FlexGrid();
-            grfDept.Font = fEdit;
-            grfDept.Dock = System.Windows.Forms.DockStyle.Fill;
-            grfDept.Location = new System.Drawing.Point(0, 0);
+            grfProce = new C1FlexGrid();
+            grfProce.Font = fEdit;
+            grfProce.Dock = System.Windows.Forms.DockStyle.Fill;
+            grfProce.Location = new System.Drawing.Point(0, 0);
 
             //FilterRow fr = new FilterRow(grfDept);
 
-            grfDept.AfterRowColChange += new C1.Win.C1FlexGrid.RangeEventHandler(this.grfDept_AfterRowColChange);
-            grfDept.CellButtonClick += new C1.Win.C1FlexGrid.RowColEventHandler(this.grfDept_CellButtonClick);
-            grfDept.CellChanged += new C1.Win.C1FlexGrid.RowColEventHandler(this.grfDept_CellChanged);
+            grfProce.AfterRowColChange += new C1.Win.C1FlexGrid.RangeEventHandler(this.grfProce_AfterRowColChange);
+            grfProce.CellButtonClick += new C1.Win.C1FlexGrid.RowColEventHandler(this.grfProce_CellButtonClick);
+            grfProce.CellChanged += new C1.Win.C1FlexGrid.RowColEventHandler(this.grfProce_CellChanged);
 
-            panel2.Controls.Add(this.grfDept);
+            panel2.Controls.Add(this.grfProce);
 
             C1Theme theme = C1ThemeController.GetThemeByName("Office2013Red", false);
-            C1ThemeController.ApplyThemeToObject(grfDept, theme);
+            C1ThemeController.ApplyThemeToObject(grfProce, theme);
         }
         private void setGrfDeptH()
         {
 
-            //grfDept.Rows.Count = 7;
-
-            grfDept.DataSource = ic.ivfDB.deptDB.selectAll1();
-            grfDept.Cols.Count = colCnt;
-            CellStyle cs = grfDept.Styles.Add("btn");
+            //grfDept.Rows.Count = 7;            
+            grfProce.DataSource = ic.ivfDB.proceDB.selectAll1(statusLab);
+            
+            grfProce.Cols.Count = colCnt;
+            CellStyle cs = grfProce.Styles.Add("btn");
             cs.DataType = typeof(Button);
             //cs.ComboList = "|Tom|Dick|Harry";
             cs.ForeColor = Color.Navy;
             cs.Font = new Font(Font, FontStyle.Bold);
-            cs = grfDept.Styles.Add("date");
+            cs = grfProce.Styles.Add("date");
             cs.DataType = typeof(DateTime);
             cs.Format = "dd-MMM-yy";
             cs.ForeColor = Color.DarkGoldenrod;
 
-            grfDept.Cols[colE].Style = grfDept.Styles["btn"];
-            grfDept.Cols[colS].Style = grfDept.Styles["date"];
+            grfProce.Cols[colE].Style = grfProce.Styles["btn"];
+            grfProce.Cols[colS].Style = grfProce.Styles["date"];
 
-            grfDept.Cols[colID].Width = 60;
+            grfProce.Cols[colName].Width = 300;
 
-            grfDept.Cols[colE].Width = 100;
-            grfDept.Cols[colS].Width = 100;
+            grfProce.Cols[colE].Width = 100;
+            grfProce.Cols[colS].Width = 100;
 
-            grfDept.ShowCursor = true;
+            grfProce.ShowCursor = true;
             //grdFlex.Cols[colID].Caption = "no";
             //grfDept.Cols[colCode].Caption = "รหัส";
 
-            grfDept.Cols[colCode].Caption = "รหัส";
-            grfDept.Cols[colName].Caption = "ชื่อแผนก";
-            grfDept.Cols[colRemark].Caption = "หมายเหตุ";
+            grfProce.Cols[colCode].Caption = "รหัส";
+            if (statusLab == objdb.LabProcedureDB.StatusLab.OPUProcedure)
+            {
+                grfProce.Cols[colName].Caption = "ชื่อ OPU Procedure";
+                label2.Text = grfProce.Cols[colName].Caption;
+            }
+            else if (statusLab == objdb.LabProcedureDB.StatusLab.FETProcedure)
+            {
+                grfProce.Cols[colName].Caption = "ชื่อ FET Procedure";
+                label2.Text = grfProce.Cols[colName].Caption;
+            }
+            grfProce.Cols[colRemark].Caption = "หมายเหตุ";
             //grfDept.Cols[coledit].Visible = false;
-            if (grfDept.Rows.Count > 2)
+            if (grfProce.Rows.Count > 2)
             {
                 //CellRange rg = grfDept.GetCellRange(2, colE);
                 //rg.Style = grfDept.Styles["btn"];
-                for (int i = 1; i < grfDept.Rows.Count; i++)
+                for (int i = 1; i < grfProce.Rows.Count; i++)
                 {
-                    grfDept[i, 0] = i;
+                    grfProce[i, 0] = i;
                     if (i % 2 == 0)
-                        grfDept.Rows[i].StyleNew.BackColor = ColorTranslator.FromHtml(ic.iniC.grfRowColor);
+                        grfProce.Rows[i].StyleNew.BackColor = ColorTranslator.FromHtml(ic.iniC.grfRowColor);
                 }
             }
 
             //CellRange rg1 = grfBank.GetCellRange(1, colE, grfBank.Rows.Count, colE);
             //rg1.Style = grfBank.Styles["date"];
-            grfDept.Cols[colID].Visible = false;
-            grfDept.Cols[colE].Visible = false;
-            grfDept.Cols[colS].Visible = false;
+            grfProce.Cols[colID].Visible = false;
+            grfProce.Cols[colE].Visible = false;
+            grfProce.Cols[colS].Visible = false;
+            grfProce.Cols[colCode].Visible = false;
         }
         private void textBox_Enter(object sender, EventArgs e)
         {
@@ -258,11 +273,11 @@ namespace clinic_ivf.gui
         }
         private void setControl(String deptId)
         {
-            dept = ic.ivfDB.deptDB.selectByPk1(deptId);
-            txtID.Value = dept.dept_id;
-            txtProceCode.Value = dept.depart_code;
-            txtProceNameT.Value = dept.depart_name_t;
-            txtRemark.Value = dept.remark;
+            proce = ic.ivfDB.proceDB.selectByPk1(deptId);
+            txtID.Value = proce.proce_id;
+            txtProceCode.Value = proce.proce_code;
+            txtProceNameT.Value = proce.proce_name_t;
+            txtRemark.Value = proce.remark;
         }
         private void setControlEnable(Boolean flag)
         {
@@ -275,28 +290,36 @@ namespace clinic_ivf.gui
         }
         private void setDeptment()
         {
-            dept.dept_id = txtID.Text;
-            dept.depart_code = txtProceCode.Text;
-            dept.depart_name_t = txtProceNameT.Text;
-            dept.remark = txtRemark.Text;
+            proce.proce_id = txtID.Text;
+            proce.proce_code = txtProceCode.Text;
+            proce.proce_name_t = txtProceNameT.Text;
+            proce.remark = txtRemark.Text;
+            if (statusLab == objdb.LabProcedureDB.StatusLab.OPUProcedure)
+            {
+                proce.status_lab = "01";
+            }
+            else if (statusLab == objdb.LabProcedureDB.StatusLab.FETProcedure)
+            {
+                proce.status_lab = "02";
+            }
         }
-        private void grfDept_AfterRowColChange(object sender, C1.Win.C1FlexGrid.RangeEventArgs e)
+        private void grfProce_AfterRowColChange(object sender, C1.Win.C1FlexGrid.RangeEventArgs e)
         {
             if (e.NewRange.r1 < 0) return;
             if (e.NewRange.Data == null) return;
 
             String deptId = "";
-            deptId = grfDept[e.NewRange.r1, colID] != null ? grfDept[e.NewRange.r1, colID].ToString() : "";
+            deptId = grfProce[e.NewRange.r1, colID] != null ? grfProce[e.NewRange.r1, colID].ToString() : "";
             setControl(deptId);
             setControlEnable(false);
             //setControlAddr(addrId);
             //setControlAddrEnable(false);
         }
-        private void grfDept_CellButtonClick(object sender, C1.Win.C1FlexGrid.RowColEventArgs e)
+        private void grfProce_CellButtonClick(object sender, C1.Win.C1FlexGrid.RowColEventArgs e)
         {
 
         }
-        private void grfDept_CellChanged(object sender, C1.Win.C1FlexGrid.RowColEventArgs e)
+        private void grfProce_CellChanged(object sender, C1.Win.C1FlexGrid.RowColEventArgs e)
         {
             //if (e.Row == 0) return;
             //CellStyle cs = grfDept.Styles.Add("text");

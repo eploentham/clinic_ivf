@@ -26,11 +26,13 @@ namespace clinic_ivf.gui
         C1FlexGrid grfDay3, grfDay5;
         C1SuperTooltip stt;
         C1SuperErrorProvider sep;
+        //objdb.LabProcedureDB.StatusLab statusLab;
 
         public FrmLabFetAdd(IvfControl ic)
         {
             InitializeComponent();
             this.ic = ic;
+            
             initConfig();
         }
         private void initConfig()
@@ -47,6 +49,7 @@ namespace clinic_ivf.gui
             stt = new C1SuperTooltip();
             sep = new C1SuperErrorProvider();
             //stt.BackgroundGradient = C1.Win.C1SuperTooltip.BackgroundGradient.Gold;
+            ic.ivfDB.proceDB.setCboLabProce(cboFetProce, objdb.LabProcedureDB.StatusLab.FETProcedure);
 
             initGrfDay3();
             initGrfDay5();

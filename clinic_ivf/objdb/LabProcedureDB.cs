@@ -15,6 +15,7 @@ namespace clinic_ivf.objdb
         public LabProcedure proce;
         ConnectDB conn;
 
+        public enum StatusLab { OPUProcedure, FETProcedure };
         public LabProcedureDB(ConnectDB c)
         {
             conn = c;
@@ -24,8 +25,8 @@ namespace clinic_ivf.objdb
         {
             proce = new LabProcedure();
             proce.proce_id = "proce_id";
-            proce.proce_code = "dept_code";
-            proce.proce_name_t = "dept_name_t";
+            proce.proce_code = "proce_code";
+            proce.proce_name_t = "proce_name_t";
             proce.status_lab = "status_lab";    //1=opu, 2=fet
             proce.proce_name_e = "proce_name_e";
             proce.remark = "remark";
@@ -69,7 +70,7 @@ namespace clinic_ivf.objdb
             p.active = "1";
 
             chkNull(p);
-
+            
             sql = "Insert Into " + proce.table + "(" + proce.proce_code + "," + proce.proce_name_t + "," + proce.status_lab + "," +
                 proce.proce_name_e + "," + proce.remark + "," + proce.date_create + "," +
                 proce.date_modi + "," + proce.date_cancel + "," + proce.user_create + "," +
@@ -216,13 +217,24 @@ namespace clinic_ivf.objdb
 
             return dt;
         }
-        public DataTable selectAll1()
+        public DataTable selectAll1(StatusLab statuslab)
         {
             DataTable dt = new DataTable();
-            String sql = "select dept.proce_id, dept.dept_code, dept.dept_name_t, dept.remark  " +
+            String sql = "";
+            if(statuslab == StatusLab.OPUProcedure)
+            {
+                sql = "select dept.proce_id, dept.proce_code, dept.proce_name_t, dept.remark  " +
                 "From " + proce.table + " dept " +
                 " " +
-                "Where dept." + proce.active + " ='1' ";
+                "Where dept." + proce.active + " ='1' and dept."+ proce.status_lab+"='01'";
+            }
+            else if (statuslab == StatusLab.FETProcedure)
+            {
+                sql = "select dept.proce_id, dept.proce_code, dept.proce_name_t, dept.remark  " +
+                "From " + proce.table + " dept " +
+                " " +
+                "Where dept." + proce.active + " ='1' and dept." + proce.status_lab + "='02'";
+            }
             dt = conn.selectData(conn.conn, sql);
 
             return dt;
@@ -271,21 +283,32 @@ namespace clinic_ivf.objdb
 
             return proce1;
         }
-        public DataTable selectC1()
+        public DataTable selectC1(StatusLab statuslab)
         {
             DataTable dt = new DataTable();
-            String sql = "select dept." + proce.pkField + ",dept." + proce.proce_name_t + " " +
-                "From " + proce.table + " dept " +
-                " " +
-                "Where dept." + proce.active + " ='1' ";
+            String sql = "";
+            if (statuslab == StatusLab.OPUProcedure)
+            {
+                sql = "select dept." + proce.pkField + ",dept." + proce.proce_name_t + " " +
+                    "From " + proce.table + " dept " +
+                    " " +
+                    "Where dept." + proce.active + " ='1'  and dept." + proce.status_lab + "='01'";
+            }
+            else if (statuslab == StatusLab.FETProcedure)
+            {
+                sql = "select dept." + proce.pkField + ",dept." + proce.proce_name_t + " " +
+                    "From " + proce.table + " dept " +
+                    " " +
+                    "Where dept." + proce.active + " ='1'  and dept." + proce.status_lab + "='02'";
+            }
             dt = conn.selectData(conn.conn, sql);
 
             return dt;
         }
-        public C1ComboBox setCboLabProce(C1ComboBox c)
+        public C1ComboBox setCboLabProce(C1ComboBox c, StatusLab statuslab)
         {
             ComboBoxItem item = new ComboBoxItem();
-            DataTable dt = selectC1();
+            DataTable dt = selectC1(statuslab);
             //String aaa = "";
             ComboBoxItem item1 = new ComboBoxItem();
             item1.Text = "";

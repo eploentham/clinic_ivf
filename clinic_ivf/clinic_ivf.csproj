@@ -158,6 +158,7 @@
     <Compile Include="objdb\ConnectDB.cs" />
     <Compile Include="objdb\DepartmentDB.cs" />
     <Compile Include="objdb\IvfDB.cs" />
+    <Compile Include="objdb\LabOpuDB.cs" />
     <Compile Include="objdb\LabProcedureDB.cs" />
     <Compile Include="objdb\PositionDB.cs" />
     <Compile Include="objdb\PrefixDB.cs" />
@@ -168,6 +169,7 @@
     <Compile Include="object1\FtpClient.cs" />
     <Compile Include="object1\IniFile.cs" />
     <Compile Include="object1\InitConfig.cs" />
+    <Compile Include="object1\LabOpu.cs" />
     <Compile Include="object1\LabProcedure.cs" />
     <Compile Include="object1\LogFile.cs" />
     <Compile Include="object1\Persistent.cs" />

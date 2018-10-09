@@ -29,22 +29,23 @@
         private void InitializeComponent()
         {
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.menuExit = new System.Windows.Forms.ToolStripMenuItem();
             this.menuLabOpu1 = new System.Windows.Forms.ToolStripMenuItem();
             this.menuLabOpu = new System.Windows.Forms.ToolStripMenuItem();
             this.menuLabFet = new System.Windows.Forms.ToolStripMenuItem();
             this.ปอนSemenAnalysisToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ปอนSpermFreexingToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.กำหนดคาโปรแกรมToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuStaff = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuDept = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuPosi = new System.Windows.Forms.ToolStripMenuItem();
+            this.lABToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuOpuProce = new System.Windows.Forms.ToolStripMenuItem();
             this.tCC1 = new C1.Win.C1Command.C1CommandDock();
             this.tC1 = new C1.Win.C1Command.C1DockingTab();
             this.PageS = new C1.Win.C1Command.C1DockingTabPage();
             this.c1ThemeController1 = new C1.Win.C1Themes.C1ThemeController();
-            this.menuStaff = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuDept = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuPosi = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuExit = new System.Windows.Forms.ToolStripMenuItem();
-            this.lABToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuOpuProce = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuFetProce = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tCC1)).BeginInit();
             this.tCC1.SuspendLayout();
@@ -65,6 +66,13 @@
             this.menuStrip1.Size = new System.Drawing.Size(1017, 24);
             this.menuStrip1.TabIndex = 2;
             this.menuStrip1.Text = "menuStrip1";
+            // 
+            // menuExit
+            // 
+            this.menuExit.Image = global::clinic_ivf.Properties.Resources.login24;
+            this.menuExit.Name = "menuExit";
+            this.menuExit.Size = new System.Drawing.Size(53, 20);
+            this.menuExit.Text = "Exit";
             // 
             // menuLabOpu1
             // 
@@ -112,6 +120,39 @@
             this.กำหนดคาโปรแกรมToolStripMenuItem.Size = new System.Drawing.Size(106, 20);
             this.กำหนดคาโปรแกรมToolStripMenuItem.Text = "กำหนดค่าโปรแกรม";
             // 
+            // menuStaff
+            // 
+            this.menuStaff.Name = "menuStaff";
+            this.menuStaff.Size = new System.Drawing.Size(180, 22);
+            this.menuStaff.Text = "รายชื่อพนักงาน";
+            // 
+            // menuDept
+            // 
+            this.menuDept.Name = "menuDept";
+            this.menuDept.Size = new System.Drawing.Size(180, 22);
+            this.menuDept.Text = "แผนก";
+            // 
+            // menuPosi
+            // 
+            this.menuPosi.Name = "menuPosi";
+            this.menuPosi.Size = new System.Drawing.Size(180, 22);
+            this.menuPosi.Text = "ตำแหน่ง";
+            // 
+            // lABToolStripMenuItem
+            // 
+            this.lABToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.menuOpuProce,
+            this.menuFetProce});
+            this.lABToolStripMenuItem.Name = "lABToolStripMenuItem";
+            this.lABToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.lABToolStripMenuItem.Text = "LAB";
+            // 
+            // menuOpuProce
+            // 
+            this.menuOpuProce.Name = "menuOpuProce";
+            this.menuOpuProce.Size = new System.Drawing.Size(180, 22);
+            this.menuOpuProce.Text = "OPU Procedure";
+            // 
             // tCC1
             // 
             this.tCC1.Controls.Add(this.tC1);
@@ -150,44 +191,11 @@
             // 
             this.c1ThemeController1.Theme = "BeigeOne";
             // 
-            // menuStaff
+            // menuFetProce
             // 
-            this.menuStaff.Name = "menuStaff";
-            this.menuStaff.Size = new System.Drawing.Size(180, 22);
-            this.menuStaff.Text = "รายชื่อพนักงาน";
-            // 
-            // menuDept
-            // 
-            this.menuDept.Name = "menuDept";
-            this.menuDept.Size = new System.Drawing.Size(180, 22);
-            this.menuDept.Text = "แผนก";
-            // 
-            // menuPosi
-            // 
-            this.menuPosi.Name = "menuPosi";
-            this.menuPosi.Size = new System.Drawing.Size(180, 22);
-            this.menuPosi.Text = "ตำแหน่ง";
-            // 
-            // menuExit
-            // 
-            this.menuExit.Image = global::clinic_ivf.Properties.Resources.login24;
-            this.menuExit.Name = "menuExit";
-            this.menuExit.Size = new System.Drawing.Size(53, 20);
-            this.menuExit.Text = "Exit";
-            // 
-            // lABToolStripMenuItem
-            // 
-            this.lABToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.menuOpuProce});
-            this.lABToolStripMenuItem.Name = "lABToolStripMenuItem";
-            this.lABToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.lABToolStripMenuItem.Text = "LAB";
-            // 
-            // menuOpuProce
-            // 
-            this.menuOpuProce.Name = "menuOpuProce";
-            this.menuOpuProce.Size = new System.Drawing.Size(180, 22);
-            this.menuOpuProce.Text = "OPU Procedure";
+            this.menuFetProce.Name = "menuFetProce";
+            this.menuFetProce.Size = new System.Drawing.Size(180, 22);
+            this.menuFetProce.Text = "FET Procedure";
             // 
             // MainMenu
             // 
@@ -231,5 +239,6 @@
         private System.Windows.Forms.ToolStripMenuItem menuPosi;
         private System.Windows.Forms.ToolStripMenuItem lABToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem menuOpuProce;
+        private System.Windows.Forms.ToolStripMenuItem menuFetProce;
     }
 }

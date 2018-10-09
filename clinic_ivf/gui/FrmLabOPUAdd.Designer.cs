@@ -39,7 +39,7 @@
             this.label8 = new System.Windows.Forms.Label();
             this.c1DateEdit1 = new C1.Win.C1Input.C1DateEdit();
             this.label31 = new System.Windows.Forms.Label();
-            this.cboStaff = new C1.Win.C1Input.C1ComboBox();
+            this.cboOpuProce = new C1.Win.C1Input.C1ComboBox();
             this.label7 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
@@ -163,6 +163,9 @@
             this.label48 = new System.Windows.Forms.Label();
             this.sB = new System.Windows.Forms.StatusStrip();
             this.sB1 = new System.Windows.Forms.ToolStripStatusLabel();
+            this.btnSave = new C1.Win.C1Input.C1Button();
+            this.btnEdit = new C1.Win.C1Input.C1Button();
+            this.c1Button2 = new C1.Win.C1Input.C1Button();
             ((System.ComponentModel.ISupportInitialize)(this.theme1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.spMain)).BeginInit();
             this.spMain.Panel1.SuspendLayout();
@@ -174,7 +177,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.c1TextBox32)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.c1ComboBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.c1DateEdit1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.cboStaff)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cboOpuProce)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.c1TextBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.c1TextBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.c1Button1)).BeginInit();
@@ -241,6 +244,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.c1TextBox34)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.c1TextBox33)).BeginInit();
             this.sB.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.btnSave)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnEdit)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.c1Button2)).BeginInit();
             this.SuspendLayout();
             // 
             // theme1
@@ -277,6 +283,8 @@
             // groupBox1
             // 
             this.groupBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.groupBox1.Controls.Add(this.btnEdit);
+            this.groupBox1.Controls.Add(this.btnSave);
             this.groupBox1.Controls.Add(this.c1DateEdit7);
             this.groupBox1.Controls.Add(this.c1DateEdit6);
             this.groupBox1.Controls.Add(this.c1TextBox32);
@@ -285,7 +293,7 @@
             this.groupBox1.Controls.Add(this.label8);
             this.groupBox1.Controls.Add(this.c1DateEdit1);
             this.groupBox1.Controls.Add(this.label31);
-            this.groupBox1.Controls.Add(this.cboStaff);
+            this.groupBox1.Controls.Add(this.cboOpuProce);
             this.groupBox1.Controls.Add(this.label7);
             this.groupBox1.Controls.Add(this.label6);
             this.groupBox1.Controls.Add(this.label5);
@@ -471,26 +479,26 @@
             this.label31.Text = "Date of OPU :";
             this.theme1.SetTheme(this.label31, "(default)");
             // 
-            // cboStaff
+            // cboOpuProce
             // 
-            this.cboStaff.AllowSpinLoop = false;
-            this.cboStaff.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.cboStaff.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
-            this.cboStaff.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.cboStaff.GapHeight = 0;
-            this.cboStaff.ImagePadding = new System.Windows.Forms.Padding(0);
-            this.cboStaff.ItemsDisplayMember = "";
-            this.cboStaff.ItemsValueMember = "";
-            this.cboStaff.Location = new System.Drawing.Point(813, 41);
-            this.cboStaff.Name = "cboStaff";
-            this.cboStaff.Size = new System.Drawing.Size(207, 20);
-            this.cboStaff.Style.DropDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.cboStaff.Style.DropDownBorderColor = System.Drawing.Color.Gainsboro;
-            this.cboStaff.Style.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.cboStaff.TabIndex = 526;
-            this.cboStaff.Tag = null;
-            this.theme1.SetTheme(this.cboStaff, "(default)");
-            this.cboStaff.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            this.cboOpuProce.AllowSpinLoop = false;
+            this.cboOpuProce.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.cboOpuProce.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
+            this.cboOpuProce.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.cboOpuProce.GapHeight = 0;
+            this.cboOpuProce.ImagePadding = new System.Windows.Forms.Padding(0);
+            this.cboOpuProce.ItemsDisplayMember = "";
+            this.cboOpuProce.ItemsValueMember = "";
+            this.cboOpuProce.Location = new System.Drawing.Point(813, 41);
+            this.cboOpuProce.Name = "cboOpuProce";
+            this.cboOpuProce.Size = new System.Drawing.Size(207, 20);
+            this.cboOpuProce.Style.DropDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.cboOpuProce.Style.DropDownBorderColor = System.Drawing.Color.Gainsboro;
+            this.cboOpuProce.Style.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.cboOpuProce.TabIndex = 526;
+            this.cboOpuProce.Tag = null;
+            this.theme1.SetTheme(this.cboOpuProce, "(default)");
+            this.cboOpuProce.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
             // 
             // label7
             // 
@@ -1506,6 +1514,7 @@
             // groupBox2
             // 
             this.groupBox2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.groupBox2.Controls.Add(this.c1Button2);
             this.groupBox2.Controls.Add(this.c1TextBox12);
             this.groupBox2.Controls.Add(this.c1TextBox11);
             this.groupBox2.Controls.Add(this.c1TextBox10);
@@ -2302,6 +2311,48 @@
             this.sB1.Size = new System.Drawing.Size(118, 17);
             this.sB1.Text = "toolStripStatusLabel1";
             // 
+            // btnSave
+            // 
+            this.btnSave.Image = global::clinic_ivf.Properties.Resources.download_database24;
+            this.btnSave.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnSave.Location = new System.Drawing.Point(1051, 65);
+            this.btnSave.Name = "btnSave";
+            this.btnSave.Size = new System.Drawing.Size(83, 39);
+            this.btnSave.TabIndex = 535;
+            this.btnSave.Text = "บันทึกช้อมูล";
+            this.btnSave.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.theme1.SetTheme(this.btnSave, "(default)");
+            this.btnSave.UseVisualStyleBackColor = true;
+            this.btnSave.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            // 
+            // btnEdit
+            // 
+            this.btnEdit.Image = global::clinic_ivf.Properties.Resources.lock24;
+            this.btnEdit.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnEdit.Location = new System.Drawing.Point(1051, 20);
+            this.btnEdit.Name = "btnEdit";
+            this.btnEdit.Size = new System.Drawing.Size(83, 39);
+            this.btnEdit.TabIndex = 536;
+            this.btnEdit.Text = "แก้ไขช้อมูล";
+            this.btnEdit.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.theme1.SetTheme(this.btnEdit, "(default)");
+            this.btnEdit.UseVisualStyleBackColor = true;
+            this.btnEdit.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            // 
+            // c1Button2
+            // 
+            this.c1Button2.Image = global::clinic_ivf.Properties.Resources.download_database24;
+            this.c1Button2.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.c1Button2.Location = new System.Drawing.Point(240, 147);
+            this.c1Button2.Name = "c1Button2";
+            this.c1Button2.Size = new System.Drawing.Size(83, 39);
+            this.c1Button2.TabIndex = 536;
+            this.c1Button2.Text = "บันทึกช้อมูล";
+            this.c1Button2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.theme1.SetTheme(this.c1Button2, "(default)");
+            this.c1Button2.UseVisualStyleBackColor = true;
+            this.c1Button2.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            // 
             // FrmLabOPUAdd
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -2324,7 +2375,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.c1TextBox32)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.c1ComboBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.c1DateEdit1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.cboStaff)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cboOpuProce)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.c1TextBox3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.c1TextBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.c1Button1)).EndInit();
@@ -2397,6 +2448,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.c1TextBox33)).EndInit();
             this.sB.ResumeLayout(false);
             this.sB.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.btnSave)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnEdit)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.c1Button2)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -2413,7 +2467,7 @@
         private System.Windows.Forms.Label label8;
         private C1.Win.C1Input.C1DateEdit c1DateEdit1;
         private System.Windows.Forms.Label label31;
-        private C1.Win.C1Input.C1ComboBox cboStaff;
+        private C1.Win.C1Input.C1ComboBox cboOpuProce;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label5;
@@ -2539,5 +2593,8 @@
         private C1.Win.C1Input.C1DateEdit c1DateEdit7;
         private C1.Win.C1Input.C1DateEdit c1DateEdit6;
         private System.Windows.Forms.GroupBox gbDay6;
+        private C1.Win.C1Input.C1Button btnSave;
+        private C1.Win.C1Input.C1Button btnEdit;
+        private C1.Win.C1Input.C1Button c1Button2;
     }
 }

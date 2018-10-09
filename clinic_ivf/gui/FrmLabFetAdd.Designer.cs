@@ -39,7 +39,7 @@
             this.label8 = new System.Windows.Forms.Label();
             this.c1DateEdit1 = new C1.Win.C1Input.C1DateEdit();
             this.label31 = new System.Windows.Forms.Label();
-            this.cboStaff = new C1.Win.C1Input.C1ComboBox();
+            this.cboFetProce = new C1.Win.C1Input.C1ComboBox();
             this.label7 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.c1TextBox5 = new C1.Win.C1Input.C1TextBox();
@@ -82,6 +82,7 @@
             this.c1TextBox19 = new C1.Win.C1Input.C1TextBox();
             this.label26 = new System.Windows.Forms.Label();
             this.spBody = new System.Windows.Forms.SplitContainer();
+            this.groupBox7 = new System.Windows.Forms.GroupBox();
             this.gbDay5 = new System.Windows.Forms.GroupBox();
             this.gbDay3 = new System.Windows.Forms.GroupBox();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
@@ -113,7 +114,6 @@
             this.label50 = new System.Windows.Forms.Label();
             this.label49 = new System.Windows.Forms.Label();
             this.label48 = new System.Windows.Forms.Label();
-            this.groupBox7 = new System.Windows.Forms.GroupBox();
             this.sB.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.theme1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.spMain)).BeginInit();
@@ -124,7 +124,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.c1TextBox32)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.c1ComboBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.c1DateEdit1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.cboStaff)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cboFetProce)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.c1TextBox5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.c1TextBox4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.c1TextBox3)).BeginInit();
@@ -228,7 +228,7 @@
             this.groupBox1.Controls.Add(this.label8);
             this.groupBox1.Controls.Add(this.c1DateEdit1);
             this.groupBox1.Controls.Add(this.label31);
-            this.groupBox1.Controls.Add(this.cboStaff);
+            this.groupBox1.Controls.Add(this.cboFetProce);
             this.groupBox1.Controls.Add(this.label7);
             this.groupBox1.Controls.Add(this.label6);
             this.groupBox1.Controls.Add(this.c1TextBox5);
@@ -258,7 +258,7 @@
             this.c1TextBox32.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.c1TextBox32.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
             this.c1TextBox32.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.c1TextBox32.Location = new System.Drawing.Point(94, 84);
+            this.c1TextBox32.Location = new System.Drawing.Point(813, 83);
             this.c1TextBox32.Name = "c1TextBox32";
             this.c1TextBox32.Size = new System.Drawing.Size(207, 20);
             this.c1TextBox32.TabIndex = 532;
@@ -272,7 +272,7 @@
             this.label47.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
             this.label47.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label47.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.label47.Location = new System.Drawing.Point(8, 85);
+            this.label47.Location = new System.Drawing.Point(660, 85);
             this.label47.Name = "label47";
             this.label47.Size = new System.Drawing.Size(38, 16);
             this.label47.TabIndex = 531;
@@ -335,7 +335,7 @@
             this.c1DateEdit1.Calendar.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
             this.c1DateEdit1.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
             this.c1DateEdit1.ImagePadding = new System.Windows.Forms.Padding(0);
-            this.c1DateEdit1.Location = new System.Drawing.Point(444, 85);
+            this.c1DateEdit1.Location = new System.Drawing.Point(813, 63);
             this.c1DateEdit1.Name = "c1DateEdit1";
             this.c1DateEdit1.Size = new System.Drawing.Size(200, 18);
             this.c1DateEdit1.TabIndex = 528;
@@ -349,33 +349,33 @@
             this.label31.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
             this.label31.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label31.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.label31.Location = new System.Drawing.Point(344, 85);
+            this.label31.Location = new System.Drawing.Point(660, 63);
             this.label31.Name = "label31";
             this.label31.Size = new System.Drawing.Size(89, 16);
             this.label31.TabIndex = 527;
             this.label31.Text = "Date of OPU :";
             this.theme1.SetTheme(this.label31, "(default)");
             // 
-            // cboStaff
+            // cboFetProce
             // 
-            this.cboStaff.AllowSpinLoop = false;
-            this.cboStaff.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.cboStaff.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
-            this.cboStaff.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.cboStaff.GapHeight = 0;
-            this.cboStaff.ImagePadding = new System.Windows.Forms.Padding(0);
-            this.cboStaff.ItemsDisplayMember = "";
-            this.cboStaff.ItemsValueMember = "";
-            this.cboStaff.Location = new System.Drawing.Point(813, 41);
-            this.cboStaff.Name = "cboStaff";
-            this.cboStaff.Size = new System.Drawing.Size(207, 20);
-            this.cboStaff.Style.DropDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.cboStaff.Style.DropDownBorderColor = System.Drawing.Color.Gainsboro;
-            this.cboStaff.Style.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.cboStaff.TabIndex = 526;
-            this.cboStaff.Tag = null;
-            this.theme1.SetTheme(this.cboStaff, "(default)");
-            this.cboStaff.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            this.cboFetProce.AllowSpinLoop = false;
+            this.cboFetProce.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.cboFetProce.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
+            this.cboFetProce.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.cboFetProce.GapHeight = 0;
+            this.cboFetProce.ImagePadding = new System.Windows.Forms.Padding(0);
+            this.cboFetProce.ItemsDisplayMember = "";
+            this.cboFetProce.ItemsValueMember = "";
+            this.cboFetProce.Location = new System.Drawing.Point(813, 41);
+            this.cboFetProce.Name = "cboFetProce";
+            this.cboFetProce.Size = new System.Drawing.Size(207, 20);
+            this.cboFetProce.Style.DropDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.cboFetProce.Style.DropDownBorderColor = System.Drawing.Color.Gainsboro;
+            this.cboFetProce.Style.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.cboFetProce.TabIndex = 526;
+            this.cboFetProce.Tag = null;
+            this.theme1.SetTheme(this.cboFetProce, "(default)");
+            this.cboFetProce.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
             // 
             // label7
             // 
@@ -955,7 +955,7 @@
             this.label24.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
             this.label24.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label24.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.label24.Location = new System.Drawing.Point(9, 38);
+            this.label24.Location = new System.Drawing.Point(9, 36);
             this.label24.Name = "label24";
             this.label24.Size = new System.Drawing.Size(89, 16);
             this.label24.TabIndex = 504;
@@ -1016,6 +1016,19 @@
             this.spBody.SplitterDistance = 389;
             this.spBody.TabIndex = 0;
             this.theme1.SetTheme(this.spBody, "(default)");
+            // 
+            // groupBox7
+            // 
+            this.groupBox7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.groupBox7.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.groupBox7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.groupBox7.Location = new System.Drawing.Point(540, 0);
+            this.groupBox7.Name = "groupBox7";
+            this.groupBox7.Size = new System.Drawing.Size(275, 389);
+            this.groupBox7.TabIndex = 3;
+            this.groupBox7.TabStop = false;
+            this.groupBox7.Text = "Picture of Embryo Development ";
+            this.theme1.SetTheme(this.groupBox7, "(default)");
             // 
             // gbDay5
             // 
@@ -1464,19 +1477,6 @@
             this.label48.Text = "No. of ET :";
             this.theme1.SetTheme(this.label48, "(default)");
             // 
-            // groupBox7
-            // 
-            this.groupBox7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.groupBox7.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupBox7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.groupBox7.Location = new System.Drawing.Point(540, 0);
-            this.groupBox7.Name = "groupBox7";
-            this.groupBox7.Size = new System.Drawing.Size(275, 389);
-            this.groupBox7.TabIndex = 3;
-            this.groupBox7.TabStop = false;
-            this.groupBox7.Text = "Picture of Embryo Development ";
-            this.theme1.SetTheme(this.groupBox7, "(default)");
-            // 
             // FrmLabFetAdd
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1499,7 +1499,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.c1TextBox32)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.c1ComboBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.c1DateEdit1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.cboStaff)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cboFetProce)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.c1TextBox5)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.c1TextBox4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.c1TextBox3)).EndInit();
@@ -1567,7 +1567,7 @@
         private System.Windows.Forms.Label label8;
         private C1.Win.C1Input.C1DateEdit c1DateEdit1;
         private System.Windows.Forms.Label label31;
-        private C1.Win.C1Input.C1ComboBox cboStaff;
+        private C1.Win.C1Input.C1ComboBox cboFetProce;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label6;
         private C1.Win.C1Input.C1TextBox c1TextBox5;

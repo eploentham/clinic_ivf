@@ -22,5 +22,6 @@ namespace clinic_ivf.object1
         public String user_modi { get; set; }
         public String status_lab { get; set; }
         public String sort1 { get; set; }
+        
     }
 }

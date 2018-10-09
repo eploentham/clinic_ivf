@@ -48,7 +48,8 @@ namespace clinic_ivf.gui
             stt = new C1SuperTooltip();
             sep = new C1SuperErrorProvider();
             //stt.BackgroundGradient = C1.Win.C1SuperTooltip.BackgroundGradient.Gold;
-            
+            ic.ivfDB.proceDB.setCboLabProce(cboOpuProce, objdb.LabProcedureDB.StatusLab.OPUProcedure);
+
             initGrfDay2();
             initGrfDay3();
             initGrfDay5();
@@ -151,7 +152,7 @@ namespace clinic_ivf.gui
 
             //grfExpn.DataSource = xC.xtDB.expndDB.selectAll1(cboYear.Text);
             //grfExpn.Rows.Count = dt.Rows.Count + 1;
-            grfDay2.Rows.Count = 40;
+            grfDay2.Rows.Count = 41;
             grfDay2.Cols.Count = 4;
             C1TextBox txt = new C1TextBox();
             C1ComboBox cboproce = new C1ComboBox();
@@ -188,7 +189,7 @@ namespace clinic_ivf.gui
 
             //grfExpn.DataSource = xC.xtDB.expndDB.selectAll1(cboYear.Text);
             //grfExpn.Rows.Count = dt.Rows.Count + 1;
-            grfDay3.Rows.Count = 40;
+            grfDay3.Rows.Count = 41;
             grfDay3.Cols.Count = 4;
             C1TextBox txt = new C1TextBox();
             //txt.dat
@@ -225,7 +226,7 @@ namespace clinic_ivf.gui
 
             //grfExpn.DataSource = xC.xtDB.expndDB.selectAll1(cboYear.Text);
             //grfExpn.Rows.Count = dt.Rows.Count + 1;
-            grfDay5.Rows.Count = 40;
+            grfDay5.Rows.Count = 41;
             grfDay5.Cols.Count = 4;
             C1TextBox txt = new C1TextBox();
             //txt.dat
