@@ -406,3 +406,67 @@ ADD COLUMN `embryo_freez_mothod_6` VARCHAR(255) NULL AFTER `embryo_freez_no_of_s
 ADD COLUMN `embryo_freez_freeze_media_6` VARCHAR(255) NULL AFTER `embryo_freez_mothod_6`,
 ADD COLUMN `embryo_freez_stage_6` VARCHAR(255) NULL AFTER `embryo_freez_freeze_media_6`,
 ADD COLUMN `embryo_freez_position_6` VARCHAR(255) NULL AFTER `embryo_freez_stage_6`;
+
+CREATE TABLE `ivf`.`lab_t_request` (
+  `req_id` INT NOT NULL AUTO_INCREMENT,
+  `req_code` VARCHAR(255) NULL,
+  `req_date` VARCHAR(255) NULL,
+  `hn_male` VARCHAR(255) NULL,
+  `name_male` VARCHAR(255) NULL,
+  `hn_female` VARCHAR(255) NULL,
+  `name_female` VARCHAR(255) NULL,
+  `status_req` VARCHAR(255) NULL COMMENT '0=default, 1= req,2=accept req, 4=start req,5=result',
+  `accept_date` VARCHAR(255) NULL,
+  `start_date` VARCHAR(255) NULL,
+  `result_date` VARCHAR(255) NULL,
+  `visit_id` VARCHAR(255) NULL,
+  `vn` VARCHAR(255) NULL,
+  `active` VARCHAR(255) NULL,
+  `remark` VARCHAR(255) NULL,
+  `date_create` VARCHAR(255) NULL,
+  `date_modi` VARCHAR(255) NULL,
+  `date_cancel` VARCHAR(255) NULL,
+  `user_create` VARCHAR(255) NULL,
+  `user_modi` VARCHAR(255) NULL,
+  `user_cancel` VARCHAR(255) NULL,
+  `item_id` INT NULL,
+  PRIMARY KEY (`req_id`))
+ENGINE = MyISAM
+DEFAULT CHARACTER SET = utf8
+COLLATE = utf8_bin
+COMMENT = 'id=304';
+
+
+CREATE TABLE `ivf`.`f_item_group` (
+  `item_group_id` INT NOT NULL AUTO_INCREMENT,
+  `item_group_name_t` VARCHAR(255) NULL,
+  `item_group_name_e` VARCHAR(255) NULL,
+  PRIMARY KEY (`item_group_id`))
+COMMENT = 'id=305';
+
+
+CREATE TABLE `ivf`.`b_item_sub_group` (
+  `item_sub_group_id` INT NOT NULL AUTO_INCREMENT,
+  `item_sub_group_code` VARCHAR(45) NULL,
+  `item_sub_group_name_t` VARCHAR(45) NULL,
+  `item_sub_group_name_e` VARCHAR(45) NULL,
+  `b_item_sub_groupcol` VARCHAR(45) NULL,
+  `item_group_id` INT NULL,
+  `active` VARCHAR(45) NULL,
+  `remark` VARCHAR(45) NULL,
+  `date_create` VARCHAR(45) NULL,
+  `date_modi` VARCHAR(45) NULL,
+  `date_cancel` VARCHAR(45) NULL,
+  `user_create` VARCHAR(45) NULL,
+  `user_modi` VARCHAR(45) NULL,
+  `user_cancel` VARCHAR(45) NULL,
+  PRIMARY KEY (`item_sub_group_id`))
+ENGINE = MyISAM
+DEFAULT CHARACTER SET = utf8
+COLLATE = utf8_bin
+COMMENT = 'id=306';
+
+ALTER TABLE `ivf`.`f_item_group` 
+CHARACTER SET = utf8 , COLLATE = utf8_bin , ENGINE = MyISAM ;
+
+
