@@ -44,12 +44,17 @@ namespace clinic_ivf.gui
             theme1.SetTheme(sB, "BeigeOne");                       
 
             sB1.Text = "";
+            bg = txtHnMale.BackColor;
+            fc = txtHnMale.ForeColor;
+            ff = txtHnMale.Font;
 
             stt = new C1SuperTooltip();
             sep = new C1SuperErrorProvider();
             //stt.BackgroundGradient = C1.Win.C1SuperTooltip.BackgroundGradient.Gold;
             ic.ivfDB.proceDB.setCboLabProce(cboOpuProce, objdb.LabProcedureDB.StatusLab.OPUProcedure);
+            btnSave.Click += BtnSave_Click;
 
+            setFocusColor();
             initGrfDay2();
             initGrfDay3();
             initGrfDay5();
@@ -59,6 +64,52 @@ namespace clinic_ivf.gui
             setGrfDay5();
             setGrfDay6();
         }
+        private void setFocusColor()
+        {
+            this.txtHnMale.Leave += new System.EventHandler(this.textBox_Leave);
+            this.txtHnMale.Enter += new System.EventHandler(this.textBox_Enter);
+
+            //this.txtPosiNameT.Leave += new System.EventHandler(this.textBox_Leave);
+            //this.txtPosiNameT.Enter += new System.EventHandler(this.textBox_Enter);
+
+            //this.txtRemark.Leave += new System.EventHandler(this.textBox_Leave);
+            //this.txtRemark.Enter += new System.EventHandler(this.textBox_Enter);
+        }
+        private void textBox_Leave(object sender, EventArgs e)
+        {
+            C1TextBox a = (C1TextBox)sender;
+            a.BackColor = bg;
+            a.ForeColor = fc;
+            a.Font = new Font(ff, FontStyle.Regular);
+        }
+        private void textBox_Enter(object sender, EventArgs e)
+        {
+            C1TextBox a = (C1TextBox)sender;
+            a.BackColor = ic.cTxtFocus;
+            a.Font = new Font(ff, FontStyle.Bold);
+        }
+        private void BtnSave_Click(object sender, EventArgs e)
+        {
+            //throw new NotImplementedException();
+            if (MessageBox.Show("ต้องการ บันทึกช้อมูล ", "", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == DialogResult.OK)
+            {
+                //setDeptment();
+                //String re = ic.ivfDB.posiDB.insertPosition(posi, ic.user.staff_id);
+                //int chk = 0;
+                //if (int.TryParse(re, out chk))
+                //{
+                //    btnSave.Image = Resources.accept_database24;
+                //}
+                //else
+                //{
+                //    btnSave.Image = Resources.accept_database24;
+                //}
+                //setGrfPosi();
+                //setGrdView();
+                //this.Dispose();
+            }
+        }
+
         private void initGrfDay2()
         {
             grfDay2 = new C1FlexGrid();

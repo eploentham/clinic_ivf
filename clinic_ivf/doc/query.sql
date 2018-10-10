@@ -322,8 +322,87 @@ ALTER TABLE `ivf`.`lab_b_procedure`
 ADD COLUMN `sort1` VARCHAR(255) NULL AFTER `status_lab`;
 
 
+61-10-10
+ALTER TABLE `ivf`.`lab_t_opu` 
+CHANGE COLUMN `no_of_opu` `matura_no_of_opu` VARCHAR(255) NULL DEFAULT NULL ;
+ALTER TABLE `ivf`.`lab_t_opu` 
+ADD COLUMN `matura_post_mat` VARCHAR(255) NULL AFTER `matura_gv`;
+
+ALTER TABLE `ivf`.`lab_t_opu` 
+CHANGE COLUMN `embryo_freez_date` `embryo_freez_date_0` VARCHAR(255) NULL DEFAULT NULL ,
+CHANGE COLUMN `embryo_freez_day` `embryo_freez_day_0` VARCHAR(255) NULL DEFAULT NULL ,
+CHANGE COLUMN `embryo_freez_no_og` `embryo_freez_no_og_0` VARCHAR(255) NULL DEFAULT NULL ,
+CHANGE COLUMN `embryo_freez_no_of_straw` `embryo_freez_no_of_straw_0` VARCHAR(255) NULL DEFAULT NULL ,
+CHANGE COLUMN `embryo_freez_mothod` `embryo_freez_mothod_0` VARCHAR(255) NULL DEFAULT NULL ,
+CHANGE COLUMN `embryo_freez_freeze_media` `embryo_freez_freeze_media_0` VARCHAR(255) NULL DEFAULT NULL ;
+
+ALTER TABLE `ivf`.`lab_t_opu` 
+ADD COLUMN `embryo_freez_date_1` VARCHAR(255) NULL AFTER `remark`,
+ADD COLUMN `embryo_freez_day_1` VARCHAR(255) NULL AFTER `embryo_freez_date_1`,
+ADD COLUMN `embryo_freez_no_og_1` VARCHAR(255) NULL AFTER `embryo_freez_day_1`,
+ADD COLUMN `embryo_freez_no_of_straw_1` VARCHAR(255) NULL AFTER `embryo_freez_no_og_1`,
+ADD COLUMN `embryo_freez_mothod_1` VARCHAR(255) NULL AFTER `embryo_freez_no_of_straw_1`,
+ADD COLUMN `embryo_freez_freeze_media_1` VARCHAR(255) NULL AFTER `embryo_freez_mothod_1`,
+ADD COLUMN `embryo_freez_stage_1` VARCHAR(45) NULL AFTER `embryo_freez_freeze_media_1`,
+ADD COLUMN `embryo_freez_stage_0` VARCHAR(45) NULL AFTER `embryo_freez_stage_1`,
+ADD COLUMN `embryo_freez_position_1` VARCHAR(45) NULL AFTER `embryo_freez_stage_0`,
+ADD COLUMN `embryo_freez_position_0` VARCHAR(45) NULL AFTER `embryo_freez_position_1`;
+
+ALTER TABLE `ivf`.`lab_t_opu` 
+CHANGE COLUMN `embryo_freez_position_0` `embryo_freez_position_0` VARCHAR(45) NULL DEFAULT NULL AFTER `embryo_freez_freeze_media_0`,
+CHANGE COLUMN `embryo_freez_stage_0` `embryo_freez_stage_0` VARCHAR(45) NULL DEFAULT NULL AFTER `embryo_freez_position_0`;
+
+ALTER TABLE `ivf`.`lab_t_opu` 
+CHANGE COLUMN `embryo_freez_stage_1` `embryo_freez_stage_1` VARCHAR(255) NULL DEFAULT NULL ,
+CHANGE COLUMN `embryo_freez_position_1` `embryo_freez_position_1` VARCHAR(255) NULL DEFAULT NULL ;
 
 
+ALTER TABLE `ivf`.`lab_t_opu` 
+ADD COLUMN `embryo_freez_date_2` VARCHAR(255) NULL AFTER `embryo_freez_position_1`,
+ADD COLUMN `embryo_freez_day_2` VARCHAR(255) NULL AFTER `embryo_freez_date_2`,
+ADD COLUMN `embryo_freez_no_og_2` VARCHAR(255) NULL AFTER `embryo_freez_day_2`,
+ADD COLUMN `embryo_freez_no_of_straw_2` VARCHAR(255) NULL AFTER `embryo_freez_no_og_2`,
+ADD COLUMN `embryo_freez_mothod_2` VARCHAR(255) NULL AFTER `embryo_freez_no_of_straw_2`,
+ADD COLUMN `embryo_freez_freeze_media_2` VARCHAR(255) NULL AFTER `embryo_freez_mothod_2`,
+ADD COLUMN `embryo_freez_stage_2` VARCHAR(255) NULL AFTER `embryo_freez_freeze_media_2`,
+ADD COLUMN `embryo_freez_position_2` VARCHAR(255) NULL AFTER `embryo_freez_stage_2`;
 
+ALTER TABLE `ivf`.`lab_t_opu` 
+ADD COLUMN `embryo_freez_date_3` VARCHAR(255) NULL AFTER `embryo_freez_position_2`,
+ADD COLUMN `embryo_freez_day_3` VARCHAR(255) NULL AFTER `embryo_freez_date_3`,
+ADD COLUMN `embryo_freez_no_og_3` VARCHAR(255) NULL AFTER `embryo_freez_day_3`,
+ADD COLUMN `embryo_freez_no_of_straw_3` VARCHAR(255) NULL AFTER `embryo_freez_no_og_3`,
+ADD COLUMN `embryo_freez_mothod_3` VARCHAR(255) NULL AFTER `embryo_freez_no_of_straw_3`,
+ADD COLUMN `embryo_freez_freeze_media_3` VARCHAR(255) NULL AFTER `embryo_freez_mothod_3`,
+ADD COLUMN `embryo_freez_stage_3` VARCHAR(255) NULL AFTER `embryo_freez_freeze_media_3`,
+ADD COLUMN `embryo_freez_position_3` VARCHAR(255) NULL AFTER `embryo_freez_stage_3`;
 
+ALTER TABLE `ivf`.`lab_t_opu` 
+ADD COLUMN `embryo_freez_date_4` VARCHAR(255) NULL AFTER `embryo_freez_position_3`,
+ADD COLUMN `embryo_freez_day_4` VARCHAR(255) NULL AFTER `embryo_freez_date_4`,
+ADD COLUMN `embryo_freez_no_og_4` VARCHAR(255) NULL AFTER `embryo_freez_day_4`,
+ADD COLUMN `embryo_freez_no_of_straw_4` VARCHAR(255) NULL AFTER `embryo_freez_no_og_4`,
+ADD COLUMN `embryo_freez_mothod_4` VARCHAR(255) NULL AFTER `embryo_freez_no_of_straw_4`,
+ADD COLUMN `embryo_freez_freeze_media_4` VARCHAR(255) NULL AFTER `embryo_freez_mothod_4`,
+ADD COLUMN `embryo_freez_stage_4` VARCHAR(255) NULL AFTER `embryo_freez_freeze_media_4`,
+ADD COLUMN `embryo_freez_position_4` VARCHAR(255) NULL AFTER `embryo_freez_stage_4`;
 
+ALTER TABLE `ivf`.`lab_t_opu` 
+ADD COLUMN `embryo_freez_date_5` VARCHAR(255) NULL AFTER `embryo_freez_position_4`,
+ADD COLUMN `embryo_freez_day_5` VARCHAR(255) NULL AFTER `embryo_freez_date_5`,
+ADD COLUMN `embryo_freez_no_og_5` VARCHAR(255) NULL AFTER `embryo_freez_day_5`,
+ADD COLUMN `embryo_freez_no_of_straw_5` VARCHAR(255) NULL AFTER `embryo_freez_no_og_5`,
+ADD COLUMN `embryo_freez_mothod_5` VARCHAR(255) NULL AFTER `embryo_freez_no_of_straw_5`,
+ADD COLUMN `embryo_freez_freeze_media_5` VARCHAR(255) NULL AFTER `embryo_freez_mothod_5`,
+ADD COLUMN `embryo_freez_stage_5` VARCHAR(255) NULL AFTER `embryo_freez_freeze_media_5`,
+ADD COLUMN `embryo_freez_position_5` VARCHAR(255) NULL AFTER `embryo_freez_stage_5`;
+
+ALTER TABLE `ivf`.`lab_t_opu` 
+ADD COLUMN `embryo_freez_date_6` VARCHAR(255) NULL AFTER `embryo_freez_position_5`,
+ADD COLUMN `embryo_freez_day_6` VARCHAR(255) NULL AFTER `embryo_freez_date_6`,
+ADD COLUMN `embryo_freez_no_og_6` VARCHAR(255) NULL AFTER `embryo_freez_day_6`,
+ADD COLUMN `embryo_freez_no_of_straw_6` VARCHAR(255) NULL AFTER `embryo_freez_no_og_6`,
+ADD COLUMN `embryo_freez_mothod_6` VARCHAR(255) NULL AFTER `embryo_freez_no_of_straw_6`,
+ADD COLUMN `embryo_freez_freeze_media_6` VARCHAR(255) NULL AFTER `embryo_freez_mothod_6`,
+ADD COLUMN `embryo_freez_stage_6` VARCHAR(255) NULL AFTER `embryo_freez_freeze_media_6`,
+ADD COLUMN `embryo_freez_position_6` VARCHAR(255) NULL AFTER `embryo_freez_stage_6`;

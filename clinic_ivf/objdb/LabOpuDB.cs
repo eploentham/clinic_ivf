@@ -56,12 +56,15 @@ namespace clinic_ivf.objdb
             opu.sperm_motility = "sperm_motility";
             opu.sperm_fresh_sperm = "sperm_fresh_sperm";
             opu.sperm_frozen_sperm = "sperm_frozen_sperm";
-            opu.embryo_freez_date = "embryo_freez_date";
-            opu.embryo_freez_day = "embryo_freez_day";
-            opu.embryo_freez_no_og = "embryo_freez_no_og";
-            opu.embryo_freez_no_of_straw = "embryo_freez_no_of_straw";
-            opu.embryo_freez_mothod = "embryo_freez_mothod";
-            opu.embryo_freez_freeze_media = "embryo_freez_freeze_media";
+            opu.embryo_freez_date_0 = "embryo_freez_date_0";
+            opu.embryo_freez_day_0 = "embryo_freez_day_0";
+            opu.embryo_freez_no_og_0 = "embryo_freez_no_og_0";
+            opu.embryo_freez_no_of_straw_0 = "embryo_freez_no_of_straw_0";
+            opu.embryo_freez_mothod_0 = "embryo_freez_mothod_0";
+            opu.embryo_freez_freeze_media_0 = "embryo_freez_freeze_media_0";
+            opu.embryo_freez_position_0 = "embryo_freez_position_0";
+            opu.embryo_freez_stage_0 = "embryo_freez_stage_0";
+
             opu.embryo_for_et_no_of_et = "embryo_for_et_no_of_et";
             opu.embbryo_for_et_day = "embbryo_for_et_day";
             opu.embbryo_for_et_date = "embbryo_for_et_date";
@@ -84,6 +87,60 @@ namespace clinic_ivf.objdb
             opu.user_cancel = "user_cancel";
             opu.active = "active";
             opu.remark = "remark";
+
+            opu.embryo_freez_date_1 = "embryo_freez_date_1";
+            opu.embryo_freez_day_1 = "embryo_freez_day_1";
+            opu.embryo_freez_no_og_1 = "embryo_freez_no_og_1";
+            opu.embryo_freez_no_of_straw_1 = "embryo_freez_no_of_straw_1";
+            opu.embryo_freez_mothod_1 = "embryo_freez_mothod_1";
+            opu.embryo_freez_freeze_media_1 = "embryo_freez_freeze_media_1";
+            opu.embryo_freez_position_1 = "embryo_freez_position_1";
+            opu.embryo_freez_stage_1 = "embryo_freez_stage_1";
+
+            opu.embryo_freez_date_2 = "embryo_freez_date_2";
+            opu.embryo_freez_day_2 = "embryo_freez_day_2";
+            opu.embryo_freez_no_og_2 = "embryo_freez_no_og_2";
+            opu.embryo_freez_no_of_straw_2 = "embryo_freez_no_of_straw_2";
+            opu.embryo_freez_mothod_2 = "embryo_freez_mothod_2";
+            opu.embryo_freez_freeze_media_2 = "embryo_freez_freeze_media_2";
+            opu.embryo_freez_position_2 = "embryo_freez_position_2";
+            opu.embryo_freez_stage_2 = "embryo_freez_stage_2";
+
+            opu.embryo_freez_date_3 = "embryo_freez_date_3";
+            opu.embryo_freez_day_3 = "embryo_freez_day_3";
+            opu.embryo_freez_no_og_3 = "embryo_freez_no_og_3";
+            opu.embryo_freez_no_of_straw_3 = "embryo_freez_no_of_straw_3";
+            opu.embryo_freez_mothod_3 = "embryo_freez_mothod_3";
+            opu.embryo_freez_freeze_media_3 = "embryo_freez_freeze_media_3";
+            opu.embryo_freez_position_3 = "embryo_freez_position_3";
+            opu.embryo_freez_stage_3 = "embryo_freez_stage_3";
+
+            opu.embryo_freez_date_4 = "embryo_freez_date_4";
+            opu.embryo_freez_day_4 = "embryo_freez_day_4";
+            opu.embryo_freez_no_og_4 = "embryo_freez_no_og_4";
+            opu.embryo_freez_no_of_straw_4 = "embryo_freez_no_of_straw_4";
+            opu.embryo_freez_mothod_4 = "embryo_freez_mothod_4";
+            opu.embryo_freez_freeze_media_4 = "embryo_freez_freeze_media_4";
+            opu.embryo_freez_position_4 = "embryo_freez_position_4";
+            opu.embryo_freez_stage_4 = "embryo_freez_stage_4";
+
+            opu.embryo_freez_date_5 = "embryo_freez_date_5";
+            opu.embryo_freez_day_5 = "embryo_freez_day_5";
+            opu.embryo_freez_no_og_5 = "embryo_freez_no_og_5";
+            opu.embryo_freez_no_of_straw_5 = "embryo_freez_no_of_straw_5";
+            opu.embryo_freez_mothod_5 = "embryo_freez_mothod_5";
+            opu.embryo_freez_freeze_media_5 = "embryo_freez_freeze_media_5";
+            opu.embryo_freez_position_5 = "embryo_freez_position_5";
+            opu.embryo_freez_stage_5 = "embryo_freez_stage_5";
+
+            opu.embryo_freez_date_6 = "embryo_freez_date_6";
+            opu.embryo_freez_day_6 = "embryo_freez_day_6";
+            opu.embryo_freez_no_og_6 = "embryo_freez_no_og_6";
+            opu.embryo_freez_no_of_straw_6 = "embryo_freez_no_of_straw_6";
+            opu.embryo_freez_mothod_6 = "embryo_freez_mothod_6";
+            opu.embryo_freez_freeze_media_6 = "embryo_freez_freeze_media_6";
+            opu.embryo_freez_position_6 = "embryo_freez_position_6";
+            opu.embryo_freez_stage_6 = "embryo_freez_stage_6";
         }
         private void chkNull(LabOpu p)
         {

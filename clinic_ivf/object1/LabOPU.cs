@@ -44,12 +44,14 @@ namespace clinic_ivf.object1
         public String sperm_motility { get; set; }
         public String sperm_fresh_sperm { get; set; }
         public String sperm_frozen_sperm { get; set; }
-        public String embryo_freez_date { get; set; }
-        public String embryo_freez_day { get; set; }
-        public String embryo_freez_no_og { get; set; }
-        public String embryo_freez_no_of_straw { get; set; }
-        public String embryo_freez_mothod { get; set; }
-        public String embryo_freez_freeze_media { get; set; }
+        public String embryo_freez_date_0 { get; set; }
+        public String embryo_freez_day_0 { get; set; }
+        public String embryo_freez_no_og_0 { get; set; }
+        public String embryo_freez_no_of_straw_0 { get; set; }
+        public String embryo_freez_mothod_0 { get; set; }
+        public String embryo_freez_freeze_media_0 { get; set; }
+        public String embryo_freez_position_0 { get; set; }
+        public String embryo_freez_stage_0 { get; set; }
         public String embryo_for_et_no_of_et { get; set; }
         public String embbryo_for_et_day { get; set; }
         public String embbryo_for_et_date { get; set; }
@@ -72,5 +74,59 @@ namespace clinic_ivf.object1
         public String user_cancel { get; set; }
         public String active { get; set; }
         public String remark { get; set; }
+
+        public String embryo_freez_date_1 { get; set; }
+        public String embryo_freez_day_1 { get; set; }
+        public String embryo_freez_no_og_1 { get; set; }
+        public String embryo_freez_no_of_straw_1 { get; set; }
+        public String embryo_freez_mothod_1 { get; set; }
+        public String embryo_freez_freeze_media_1 { get; set; }
+        public String embryo_freez_position_1 { get; set; }
+        public String embryo_freez_stage_1 { get; set; }
+
+        public String embryo_freez_date_2 { get; set; }
+        public String embryo_freez_day_2 { get; set; }
+        public String embryo_freez_no_og_2 { get; set; }
+        public String embryo_freez_no_of_straw_2 { get; set; }
+        public String embryo_freez_mothod_2 { get; set; }
+        public String embryo_freez_freeze_media_2 { get; set; }
+        public String embryo_freez_position_2 { get; set; }
+        public String embryo_freez_stage_2{ get; set; }
+
+        public String embryo_freez_date_3 { get; set; }
+        public String embryo_freez_day_3 { get; set; }
+        public String embryo_freez_no_og_3 { get; set; }
+        public String embryo_freez_no_of_straw_3 { get; set; }
+        public String embryo_freez_mothod_3 { get; set; }
+        public String embryo_freez_freeze_media_3 { get; set; }
+        public String embryo_freez_position_3 { get; set; }
+        public String embryo_freez_stage_3 { get; set; }
+
+        public String embryo_freez_date_4 { get; set; }
+        public String embryo_freez_day_4 { get; set; }
+        public String embryo_freez_no_og_4 { get; set; }
+        public String embryo_freez_no_of_straw_4 { get; set; }
+        public String embryo_freez_mothod_4 { get; set; }
+        public String embryo_freez_freeze_media_4 { get; set; }
+        public String embryo_freez_position_4 { get; set; }
+        public String embryo_freez_stage_4 { get; set; }
+
+        public String embryo_freez_date_5 { get; set; }
+        public String embryo_freez_day_5 { get; set; }
+        public String embryo_freez_no_og_5 { get; set; }
+        public String embryo_freez_no_of_straw_5 { get; set; }
+        public String embryo_freez_mothod_5 { get; set; }
+        public String embryo_freez_freeze_media_5 { get; set; }
+        public String embryo_freez_position_5 { get; set; }
+        public String embryo_freez_stage_5 { get; set; }
+
+        public String embryo_freez_date_6 { get; set; }
+        public String embryo_freez_day_6 { get; set; }
+        public String embryo_freez_no_og_6 { get; set; }
+        public String embryo_freez_no_of_straw_6 { get; set; }
+        public String embryo_freez_mothod_6 { get; set; }
+        public String embryo_freez_freeze_media_6 { get; set; }
+        public String embryo_freez_position_6 { get; set; }
+        public String embryo_freez_stage_6 { get; set; }
     }
 }
