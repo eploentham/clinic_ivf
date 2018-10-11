@@ -137,6 +137,9 @@
     <Compile Include="gui\FrmLabReqView.Designer.cs">
       <DependentUpon>FrmLabReqView.cs</DependentUpon>
     </Compile>
+    <Compile Include="gui\FrmPasswordConfirm.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="gui\FrmPosition.cs">
       <SubType>Form</SubType>
     </Compile>

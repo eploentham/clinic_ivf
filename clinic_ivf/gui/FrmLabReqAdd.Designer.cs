@@ -48,7 +48,7 @@
             this.cboLabReq = new C1.Win.C1Input.C1ComboBox();
             this.txtReqDate = new C1.Win.C1Input.C1DateEdit();
             this.label11 = new System.Windows.Forms.Label();
-            this.btnNew = new C1.Win.C1Input.C1Button();
+            this.btnReq = new C1.Win.C1Input.C1Button();
             this.sB.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.theme1)).BeginInit();
             this.panel1.SuspendLayout();
@@ -61,7 +61,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtHn)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cboLabReq)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtReqDate)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.btnNew)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnReq)).BeginInit();
             this.SuspendLayout();
             // 
             // sB
@@ -114,7 +114,7 @@
             this.groupBox1.Controls.Add(this.cboLabReq);
             this.groupBox1.Controls.Add(this.txtReqDate);
             this.groupBox1.Controls.Add(this.label11);
-            this.groupBox1.Controls.Add(this.btnNew);
+            this.groupBox1.Controls.Add(this.btnReq);
             this.groupBox1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
             this.groupBox1.Location = new System.Drawing.Point(0, 0);
@@ -353,17 +353,17 @@
             this.label11.Text = "Date Request :";
             this.theme1.SetTheme(this.label11, "(default)");
             // 
-            // btnNew
+            // btnReq
             // 
-            this.btnNew.Location = new System.Drawing.Point(591, 32);
-            this.btnNew.Name = "btnNew";
-            this.btnNew.Size = new System.Drawing.Size(110, 31);
-            this.btnNew.TabIndex = 0;
-            this.btnNew.Text = "requert";
-            this.btnNew.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.theme1.SetTheme(this.btnNew, "(default)");
-            this.btnNew.UseVisualStyleBackColor = true;
-            this.btnNew.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            this.btnReq.Location = new System.Drawing.Point(591, 32);
+            this.btnReq.Name = "btnReq";
+            this.btnReq.Size = new System.Drawing.Size(110, 31);
+            this.btnReq.TabIndex = 0;
+            this.btnReq.Text = "requert";
+            this.btnReq.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.theme1.SetTheme(this.btnReq, "(default)");
+            this.btnReq.UseVisualStyleBackColor = true;
+            this.btnReq.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
             // 
             // FrmLabReqAdd
             // 
@@ -390,7 +390,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtHn)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cboLabReq)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtReqDate)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.btnNew)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnReq)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -418,6 +418,6 @@
         private C1.Win.C1Input.C1ComboBox cboLabReq;
         private C1.Win.C1Input.C1DateEdit txtReqDate;
         private System.Windows.Forms.Label label11;
-        private C1.Win.C1Input.C1Button btnNew;
+        private C1.Win.C1Input.C1Button btnReq;
     }
 }

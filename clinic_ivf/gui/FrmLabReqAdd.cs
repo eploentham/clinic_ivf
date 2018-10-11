@@ -26,6 +26,13 @@ namespace clinic_ivf.gui
             txtReqDate.Value = System.DateTime.Now.Year+"-" + System.DateTime.Now.ToString("MM-dd HH:mm:ss");
 
             btnSearch.Click += BtnSearch_Click;
+            btnReq.Click += BtnReq_Click;
+        }
+
+        private void BtnReq_Click(object sender, EventArgs e)
+        {
+            //throw new NotImplementedException();
+
         }
 
         private void BtnSearch_Click(object sender, EventArgs e)
