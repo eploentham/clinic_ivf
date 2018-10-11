@@ -119,6 +119,24 @@
     <Compile Include="gui\FrmLabProcedure.Designer.cs">
       <DependentUpon>FrmLabProcedure.cs</DependentUpon>
     </Compile>
+    <Compile Include="gui\FrmLabReqAccept.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="gui\FrmLabReqAccept.Designer.cs">
+      <DependentUpon>FrmLabReqAccept.cs</DependentUpon>
+    </Compile>
+    <Compile Include="gui\FrmLabReqAdd.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="gui\FrmLabReqAdd.Designer.cs">
+      <DependentUpon>FrmLabReqAdd.cs</DependentUpon>
+    </Compile>
+    <Compile Include="gui\FrmLabReqView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="gui\FrmLabReqView.Designer.cs">
+      <DependentUpon>FrmLabReqView.cs</DependentUpon>
+    </Compile>
     <Compile Include="gui\FrmPosition.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -130,6 +148,12 @@
     </Compile>
     <Compile Include="gui\FrmPositionS.designer.cs">
       <DependentUpon>FrmPositionS.cs</DependentUpon>
+    </Compile>
+    <Compile Include="gui\FrmSearchHn.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="gui\FrmSearchHn.Designer.cs">
+      <DependentUpon>FrmSearchHn.cs</DependentUpon>
     </Compile>
     <Compile Include="gui\FrmSetPassword.cs">
       <SubType>Form</SubType>
@@ -163,18 +187,21 @@
     </Compile>
     <Compile Include="objdb\ConnectDB.cs" />
     <Compile Include="objdb\DepartmentDB.cs" />
+    <Compile Include="objdb\BItemDB.cs" />
     <Compile Include="objdb\IvfDB.cs" />
     <Compile Include="objdb\LabOpuDB.cs" />
     <Compile Include="objdb\LabProcedureDB.cs" />
     <Compile Include="objdb\PositionDB.cs" />
     <Compile Include="objdb\PrefixDB.cs" />
     <Compile Include="objdb\StaffDB.cs" />
+    <Compile Include="objdb\VisitOldDB.cs" />
     <Compile Include="object1\ComboBoxItem.cs" />
     <Compile Include="object1\Department.cs" />
     <Compile Include="object1\FilterRow.cs" />
     <Compile Include="object1\FtpClient.cs" />
     <Compile Include="object1\IniFile.cs" />
     <Compile Include="object1\InitConfig.cs" />
+    <Compile Include="object1\BItem.cs" />
     <Compile Include="object1\LabOpu.cs" />
     <Compile Include="object1\LabProcedure.cs" />
     <Compile Include="object1\LogFile.cs" />
@@ -182,6 +209,7 @@
     <Compile Include="object1\Position.cs" />
     <Compile Include="object1\Prefix.cs" />
     <Compile Include="object1\Staff.cs" />
+    <Compile Include="object1\VisitOld.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="gui\Form1.resx">
@@ -214,11 +242,23 @@
     <EmbeddedResource Include="gui\FrmLabProcedure.resx">
       <DependentUpon>FrmLabProcedure.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="gui\FrmLabReqAccept.resx">
+      <DependentUpon>FrmLabReqAccept.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="gui\FrmLabReqAdd.resx">
+      <DependentUpon>FrmLabReqAdd.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="gui\FrmLabReqView.resx">
+      <DependentUpon>FrmLabReqView.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="gui\FrmPosition.resx">
       <DependentUpon>FrmPosition.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="gui\FrmPositionS.resx">
       <DependentUpon>FrmPositionS.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="gui\FrmSearchHn.resx">
+      <DependentUpon>FrmSearchHn.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="gui\FrmSetPassword.resx">
       <DependentUpon>FrmSetPassword.cs</DependentUpon>

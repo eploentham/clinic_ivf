@@ -38,6 +38,8 @@ namespace clinic_ivf.control
         String soapTaxId = "";
         public String FixJobCode = "IMP", FixEccCode = "CC";
 
+        public VisitOld sVsOld;
+
         public IvfControl()
         {
             initConfig();
@@ -64,8 +66,8 @@ namespace clinic_ivf.control
             conn = new ConnectDB(iniC);
 
             ivfDB = new IvfDB(conn);
-            
 
+            sVsOld = new VisitOld();
         }
         public void GetConfig()
         {

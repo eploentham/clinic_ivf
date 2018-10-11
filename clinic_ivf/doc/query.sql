@@ -272,7 +272,7 @@ CREATE TABLE `ivf`.`lab_t_opu` (
 ENGINE = MyISAM
 DEFAULT CHARACTER SET = utf8
 COLLATE = utf8_bin
-COMMENT = 'id=300';
+COMMENT = 'id=200';
 
 
 CREATE TABLE `ivf`.`lab_b_procedure` (
@@ -292,7 +292,7 @@ CREATE TABLE `ivf`.`lab_b_procedure` (
 ENGINE = MyISAM
 DEFAULT CHARACTER SET = utf8
 COLLATE = utf8_bin
-COMMENT = 'id=301';
+COMMENT = 'id=201';
 
 CREATE TABLE `ivf`.`lab_t_opu_embryo_dev` (
   `opu_embryo_dev_id` INT NOT NULL AUTO_INCREMENT,
@@ -313,7 +313,7 @@ CREATE TABLE `ivf`.`lab_t_opu_embryo_dev` (
 ENGINE = MyISAM
 DEFAULT CHARACTER SET = utf8
 COLLATE = utf8_bin
-COMMENT = 'id=302';
+COMMENT = 'id=202';
 
 ALTER TABLE `ivf`.`lab_b_procedure` 
 ADD COLUMN `status_lab` VARCHAR(255) NULL COMMENT '1=opu, 2=fet' AFTER `user_cancel`;
@@ -434,15 +434,17 @@ CREATE TABLE `ivf`.`lab_t_request` (
 ENGINE = MyISAM
 DEFAULT CHARACTER SET = utf8
 COLLATE = utf8_bin
-COMMENT = 'id=304';
+COMMENT = 'id=204';
 
 
-CREATE TABLE `ivf`.`f_item_group` (
-  `item_group_id` INT NOT NULL AUTO_INCREMENT,
-  `item_group_name_t` VARCHAR(255) NULL,
-  `item_group_name_e` VARCHAR(255) NULL,
-  PRIMARY KEY (`item_group_id`))
-COMMENT = 'id=305';
+CREATE TABLE `f_item_group` (
+  `item_group_id` int(11) NOT NULL AUTO_INCREMENT,
+  `item_group_code` varchar(255) COLLATE utf8_bin DEFAULT NULL,
+  `item_group_name_t` varchar(255) COLLATE utf8_bin DEFAULT NULL,
+  `item_group_name_e` varchar(255) COLLATE utf8_bin DEFAULT NULL,
+  PRIMARY KEY (`item_group_id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_bin COMMENT='id=205';
+
 
 
 CREATE TABLE `ivf`.`b_item_sub_group` (
@@ -464,9 +466,76 @@ CREATE TABLE `ivf`.`b_item_sub_group` (
 ENGINE = MyISAM
 DEFAULT CHARACTER SET = utf8
 COLLATE = utf8_bin
-COMMENT = 'id=306';
+COMMENT = 'id=206';
 
 ALTER TABLE `ivf`.`f_item_group` 
 CHARACTER SET = utf8 , COLLATE = utf8_bin , ENGINE = MyISAM ;
+
+
+61-10-11
+
+ALTER TABLE f_item_group AUTO_INCREMENT = 2050000000;
+ALTER TABLE b_item_sub_group AUTO_INCREMENT = 2060000000;
+
+INSERT INTO `ivf`.`f_item_group` (`item_group_code`, `item_group_name_t`) VALUES ('1', 'ยา');
+INSERT INTO `ivf`.`f_item_group` (`item_group_code`, `item_group_name_t`) VALUES ('2', 'LAB');
+INSERT INTO `ivf`.`f_item_group` (`item_group_code`, `item_group_name_t`) VALUES ('3', 'X-RAY');
+INSERT INTO `ivf`.`f_item_group` (`item_group_code`, `item_group_name_t`) VALUES ('4', 'เวชภัณฑ์');
+INSERT INTO `ivf`.`f_item_group` (`item_group_code`, `item_group_name_t`) VALUES ('5', 'ค่าบริการ');
+
+CREATE TABLE `ivf`.`b_item` (
+  `item_id` INT NOT NULL AUTO_INCREMENT,
+  `item_code` VARCHAR(255) NULL,
+  `item_name_t` VARCHAR(255) NULL,
+  `item_name_e` VARCHAR(255) NULL,
+  `b_itemcol` VARCHAR(255) NULL,
+  `item_sub_group_id` INT NULL,
+  `item_common_name` VARCHAR(255) NULL,
+  `item_trade_name` VARCHAR(255) NULL,
+  `item_nick_name` VARCHAR(255) NULL,
+  `item_billing_subgroop_id` INT NULL,
+  `item_secret` VARCHAR(255) NULL,
+  `active` VARCHAR(255) NULL,
+  `remark` VARCHAR(255) NULL,
+  `date_create` VARCHAR(255) NULL,
+  `date_modi` VARCHAR(255) NULL,
+  `date_cancel` VARCHAR(255) NULL,
+  `user_create` VARCHAR(255) NULL,
+  `user_modi` VARCHAR(255) NULL,
+  `user_cancel` VARCHAR(255) NULL,
+  PRIMARY KEY (`item_id`))
+ENGINE = MyISAM
+DEFAULT CHARACTER SET = utf8
+COLLATE = utf8_bin
+COMMENT = 'id=207';
+
+INSERT INTO `ivf`.`b_item_sub_group` (`item_sub_group_code`, `item_sub_group_name_t`, `item_group_id`, `active`) VALUES ('CDR01', 'ยาในบัญชียาหลัก', '1', '1');
+INSERT INTO `ivf`.`b_item_sub_group` (`item_sub_group_code`, `item_sub_group_name_t`, `item_group_id`, `active`) VALUES ('CDR02', 'ยานอกบัญชียาหลัก', '1', '1');
+INSERT INTO `ivf`.`b_item_sub_group` (`item_sub_group_code`, `item_sub_group_name_t`, `item_group_id`, `active`) VALUES ('CLR01', 'LAB', '3', '1');
+INSERT INTO `ivf`.`b_item_sub_group` (`item_sub_group_code`, `item_sub_group_name_t`, `item_group_id`, `active`) VALUES ('CXR01', 'X-RAY', '2', '1');
+
+CREATE TABLE `ivf`.`f_item_billing_group` (
+  `item_billing_group_id` INT NOT NULL AUTO_INCREMENT,
+  `item_billing_group_code` VARCHAR(255) NULL,
+  `item_billing_group_name_t` VARCHAR(255) NULL,
+  `item_billing_group_name_e` VARCHAR(255) NULL,
+  PRIMARY KEY (`item_billing_group_id`))
+ENGINE = MyISAM
+DEFAULT CHARACTER SET = utf8
+COLLATE = utf8_bin
+COMMENT = 'id=208';
+ALTER TABLE f_item_billing_group AUTO_INCREMENT = 2080000000;
+
+ALTER TABLE `ivf`.`b_company` 
+CHANGE COLUMN `tax_doc` `req_doc` INT(11) NULL DEFAULT NULL COMMENT 'running ใบภาษีหัก ณ ที่จ่าย' ,
+CHANGE COLUMN `prefix_tax_doc` `prefix_req_doc` VARCHAR(255) CHARACTER SET 'utf8' COLLATE 'utf8_bin' NULL DEFAULT NULL ;
+
+UPDATE `ivf`.`b_item_sub_group` SET `item_group_id` = '2' WHERE (`item_sub_group_id` = '2060000002');
+UPDATE `ivf`.`b_item_sub_group` SET `item_group_id` = '3' WHERE (`item_sub_group_id` = '2060000003');
+
+
+INSERT INTO `ivf`.`b_item` (`item_code`, `item_name_t`, `item_name_e`, `active`) VALUES ('l0001', 'LAB OPU', 'LAB OPU', '1');
+INSERT INTO `ivf`.`b_item` (`item_code`, `item_name_t`, `item_name_e`, `active`) VALUES ('l0002', 'LAB FET', 'LAB FET', '1');
+
 
 

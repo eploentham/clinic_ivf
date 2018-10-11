@@ -15,6 +15,7 @@ namespace clinic_ivf.objdb
         public PositionDB posiDB;
         public PrefixDB pfxDB;
         public LabProcedureDB proceDB;
+        public VisitOldDB vsOldDB;
 
         public IvfDB(ConnectDB c)
         {
@@ -29,6 +30,7 @@ namespace clinic_ivf.objdb
             posiDB = new PositionDB(conn);
             pfxDB = new PrefixDB(conn);
             proceDB = new LabProcedureDB(conn);
+            vsOldDB = new VisitOldDB(conn);
 
             Console.WriteLine("ivfDB end");
         }

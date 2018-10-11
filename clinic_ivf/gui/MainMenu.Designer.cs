@@ -35,6 +35,9 @@
             this.menuLabFet = new System.Windows.Forms.ToolStripMenuItem();
             this.ปอนSemenAnalysisToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ปอนSpermFreexingToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuTestForm = new System.Windows.Forms.ToolStripMenuItem();
+            this.nurseToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuReqLab = new System.Windows.Forms.ToolStripMenuItem();
             this.กำหนดคาโปรแกรมToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStaff = new System.Windows.Forms.ToolStripMenuItem();
             this.menuDept = new System.Windows.Forms.ToolStripMenuItem();
@@ -46,7 +49,7 @@
             this.tC1 = new C1.Win.C1Command.C1DockingTab();
             this.PageS = new C1.Win.C1Command.C1DockingTabPage();
             this.c1ThemeController1 = new C1.Win.C1Themes.C1ThemeController();
-            this.menuTestForm = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuLabAccept = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tCC1)).BeginInit();
             this.tCC1.SuspendLayout();
@@ -61,6 +64,7 @@
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.menuExit,
             this.menuLabOpu1,
+            this.nurseToolStripMenuItem,
             this.กำหนดคาโปรแกรมToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
@@ -78,6 +82,7 @@
             // menuLabOpu1
             // 
             this.menuLabOpu1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.menuLabAccept,
             this.menuLabOpu,
             this.menuLabFet,
             this.ปอนSemenAnalysisToolStripMenuItem,
@@ -110,6 +115,26 @@
             this.ปอนSpermFreexingToolStripMenuItem.Name = "ปอนSpermFreexingToolStripMenuItem";
             this.ปอนSpermFreexingToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.ปอนSpermFreexingToolStripMenuItem.Text = "ป้อนSperm Freezing";
+            // 
+            // menuTestForm
+            // 
+            this.menuTestForm.Name = "menuTestForm";
+            this.menuTestForm.Size = new System.Drawing.Size(180, 22);
+            this.menuTestForm.Text = "Test Form";
+            // 
+            // nurseToolStripMenuItem
+            // 
+            this.nurseToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.menuReqLab});
+            this.nurseToolStripMenuItem.Name = "nurseToolStripMenuItem";
+            this.nurseToolStripMenuItem.Size = new System.Drawing.Size(50, 20);
+            this.nurseToolStripMenuItem.Text = "Nurse";
+            // 
+            // menuReqLab
+            // 
+            this.menuReqLab.Name = "menuReqLab";
+            this.menuReqLab.Size = new System.Drawing.Size(138, 22);
+            this.menuReqLab.Text = "Request Lab";
             // 
             // กำหนดคาโปรแกรมToolStripMenuItem
             // 
@@ -199,11 +224,11 @@
             // 
             this.c1ThemeController1.Theme = "BeigeOne";
             // 
-            // menuTestForm
+            // menuLabAccept
             // 
-            this.menuTestForm.Name = "menuTestForm";
-            this.menuTestForm.Size = new System.Drawing.Size(180, 22);
-            this.menuTestForm.Text = "Test Form";
+            this.menuLabAccept.Name = "menuLabAccept";
+            this.menuLabAccept.Size = new System.Drawing.Size(180, 22);
+            this.menuLabAccept.Text = "Accept Lab";
             // 
             // MainMenu
             // 
@@ -249,5 +274,8 @@
         private System.Windows.Forms.ToolStripMenuItem menuOpuProce;
         private System.Windows.Forms.ToolStripMenuItem menuFetProce;
         private System.Windows.Forms.ToolStripMenuItem menuTestForm;
+        private System.Windows.Forms.ToolStripMenuItem nurseToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem menuReqLab;
+        private System.Windows.Forms.ToolStripMenuItem menuLabAccept;
     }
 }
