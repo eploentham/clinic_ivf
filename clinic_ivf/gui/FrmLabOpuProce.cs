@@ -296,11 +296,11 @@ namespace clinic_ivf.gui
             proce.remark = txtRemark.Text;
             if (statusLab == objdb.LabProcedureDB.StatusLab.OPUProcedure)
             {
-                proce.status_lab = "01";
+                proce.status_lab = "OPU";
             }
             else if (statusLab == objdb.LabProcedureDB.StatusLab.FETProcedure)
             {
-                proce.status_lab = "02";
+                proce.status_lab = "FET";
             }
         }
         private void grfProce_AfterRowColChange(object sender, C1.Win.C1FlexGrid.RangeEventArgs e)

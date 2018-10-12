@@ -29,9 +29,14 @@
         private void InitializeComponent()
         {
             this.theme1 = new C1.Win.C1Themes.C1ThemeController();
-            this.sB = new System.Windows.Forms.StatusStrip();
-            this.sB1 = new System.Windows.Forms.ToolStripStatusLabel();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.btnOk = new C1.Win.C1Input.C1Button();
+            this.label5 = new System.Windows.Forms.Label();
+            this.txtVn = new C1.Win.C1Input.C1TextBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.txtName = new C1.Win.C1Input.C1TextBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.txtHn = new C1.Win.C1Input.C1TextBox();
             this.tC1 = new C1.Win.C1Command.C1DockingTab();
             this.tabCurrent = new C1.Win.C1Command.C1DockingTabPage();
             this.gbCu = new System.Windows.Forms.GroupBox();
@@ -46,16 +51,14 @@
             this.label1 = new System.Windows.Forms.Label();
             this.txtDateStart = new C1.Win.C1Input.C1DateEdit();
             this.label11 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.txtName = new C1.Win.C1Input.C1TextBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.txtHn = new C1.Win.C1Input.C1TextBox();
-            this.label5 = new System.Windows.Forms.Label();
-            this.txtVn = new C1.Win.C1Input.C1TextBox();
-            this.btnOk = new C1.Win.C1Input.C1Button();
+            this.sB = new System.Windows.Forms.StatusStrip();
+            this.sB1 = new System.Windows.Forms.ToolStripStatusLabel();
             ((System.ComponentModel.ISupportInitialize)(this.theme1)).BeginInit();
-            this.sB.SuspendLayout();
             this.groupBox2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.btnOk)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtVn)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtName)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtHn)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tC1)).BeginInit();
             this.tC1.SuspendLayout();
             this.tabCurrent.SuspendLayout();
@@ -66,31 +69,12 @@
             ((System.ComponentModel.ISupportInitialize)(this.c1Button1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtDateEnd)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtDateStart)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtName)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtHn)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtVn)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.btnOk)).BeginInit();
+            this.sB.SuspendLayout();
             this.SuspendLayout();
             // 
             // theme1
             // 
             this.theme1.Theme = "Office2013Red";
-            // 
-            // sB
-            // 
-            this.sB.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.sB1});
-            this.sB.Location = new System.Drawing.Point(0, 514);
-            this.sB.Name = "sB";
-            this.sB.Size = new System.Drawing.Size(944, 22);
-            this.sB.TabIndex = 525;
-            this.sB.Text = "statusStrip1";
-            // 
-            // sB1
-            // 
-            this.sB1.Name = "sB1";
-            this.sB1.Size = new System.Drawing.Size(118, 17);
-            this.sB1.Text = "toolStripStatusLabel1";
             // 
             // groupBox2
             // 
@@ -106,11 +90,103 @@
             this.groupBox2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
             this.groupBox2.Location = new System.Drawing.Point(0, 0);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(944, 75);
+            this.groupBox2.Size = new System.Drawing.Size(944, 69);
             this.groupBox2.TabIndex = 526;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Search Patient";
             this.theme1.SetTheme(this.groupBox2, "(default)");
+            // 
+            // btnOk
+            // 
+            this.btnOk.Image = global::clinic_ivf.Properties.Resources.Female_user_search_24;
+            this.btnOk.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnOk.Location = new System.Drawing.Point(774, 14);
+            this.btnOk.Name = "btnOk";
+            this.btnOk.Size = new System.Drawing.Size(83, 43);
+            this.btnOk.TabIndex = 526;
+            this.btnOk.Text = "search";
+            this.btnOk.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.theme1.SetTheme(this.btnOk, "(default)");
+            this.btnOk.UseVisualStyleBackColor = true;
+            this.btnOk.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.label5.Location = new System.Drawing.Point(594, 21);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(33, 16);
+            this.label5.TabIndex = 525;
+            this.label5.Text = "VN :";
+            this.theme1.SetTheme(this.label5, "(default)");
+            // 
+            // txtVn
+            // 
+            this.txtVn.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtVn.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
+            this.txtVn.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.txtVn.Location = new System.Drawing.Point(633, 19);
+            this.txtVn.Name = "txtVn";
+            this.txtVn.Size = new System.Drawing.Size(124, 20);
+            this.txtVn.TabIndex = 524;
+            this.txtVn.Tag = null;
+            this.theme1.SetTheme(this.txtVn, "(default)");
+            this.txtVn.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.label2.Location = new System.Drawing.Point(264, 21);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(48, 16);
+            this.label2.TabIndex = 523;
+            this.label2.Text = "name :";
+            this.theme1.SetTheme(this.label2, "(default)");
+            // 
+            // txtName
+            // 
+            this.txtName.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtName.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
+            this.txtName.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.txtName.Location = new System.Drawing.Point(318, 19);
+            this.txtName.Name = "txtName";
+            this.txtName.Size = new System.Drawing.Size(268, 20);
+            this.txtName.TabIndex = 522;
+            this.txtName.Tag = null;
+            this.theme1.SetTheme(this.txtName, "(default)");
+            this.txtName.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.label3.Location = new System.Drawing.Point(40, 21);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(37, 16);
+            this.label3.TabIndex = 521;
+            this.label3.Text = "HN  :";
+            this.theme1.SetTheme(this.label3, "(default)");
+            // 
+            // txtHn
+            // 
+            this.txtHn.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtHn.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
+            this.txtHn.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.txtHn.Location = new System.Drawing.Point(91, 19);
+            this.txtHn.Name = "txtHn";
+            this.txtHn.Size = new System.Drawing.Size(124, 20);
+            this.txtHn.TabIndex = 520;
+            this.txtHn.Tag = null;
+            this.theme1.SetTheme(this.txtHn, "(default)");
+            this.txtHn.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
             // 
             // tC1
             // 
@@ -120,10 +196,10 @@
             this.tC1.Controls.Add(this.tabSearch);
             this.tC1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tC1.HotTrack = true;
-            this.tC1.Location = new System.Drawing.Point(0, 75);
+            this.tC1.Location = new System.Drawing.Point(0, 69);
             this.tC1.Name = "tC1";
             this.tC1.SelectedIndex = 1;
-            this.tC1.Size = new System.Drawing.Size(944, 439);
+            this.tC1.Size = new System.Drawing.Size(944, 445);
             this.tC1.TabIndex = 527;
             this.tC1.TabSizeMode = C1.Win.C1Command.TabSizeModeEnum.Fit;
             this.tC1.TabsShowFocusCues = false;
@@ -136,7 +212,7 @@
             this.tabCurrent.Controls.Add(this.gbCu);
             this.tabCurrent.Location = new System.Drawing.Point(1, 24);
             this.tabCurrent.Name = "tabCurrent";
-            this.tabCurrent.Size = new System.Drawing.Size(942, 414);
+            this.tabCurrent.Size = new System.Drawing.Size(942, 420);
             this.tabCurrent.TabIndex = 0;
             this.tabCurrent.Text = "current visit";
             // 
@@ -147,7 +223,7 @@
             this.gbCu.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
             this.gbCu.Location = new System.Drawing.Point(0, 0);
             this.gbCu.Name = "gbCu";
-            this.gbCu.Size = new System.Drawing.Size(942, 414);
+            this.gbCu.Size = new System.Drawing.Size(942, 420);
             this.gbCu.TabIndex = 0;
             this.gbCu.TabStop = false;
             this.gbCu.Text = "groupBox2";
@@ -158,7 +234,7 @@
             this.tabSearch.Controls.Add(this.panel1);
             this.tabSearch.Location = new System.Drawing.Point(1, 24);
             this.tabSearch.Name = "tabSearch";
-            this.tabSearch.Size = new System.Drawing.Size(942, 414);
+            this.tabSearch.Size = new System.Drawing.Size(942, 420);
             this.tabSearch.TabIndex = 1;
             this.tabSearch.Text = "search hn";
             // 
@@ -171,7 +247,7 @@
             this.panel1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(942, 414);
+            this.panel1.Size = new System.Drawing.Size(942, 420);
             this.panel1.TabIndex = 0;
             this.theme1.SetTheme(this.panel1, "(default)");
             // 
@@ -182,7 +258,7 @@
             this.gbHn.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
             this.gbHn.Location = new System.Drawing.Point(0, 57);
             this.gbHn.Name = "gbHn";
-            this.gbHn.Size = new System.Drawing.Size(942, 357);
+            this.gbHn.Size = new System.Drawing.Size(942, 363);
             this.gbHn.TabIndex = 528;
             this.gbHn.TabStop = false;
             this.gbHn.Text = "groupBox3";
@@ -337,97 +413,21 @@
             this.label11.Text = "Date Start :";
             this.theme1.SetTheme(this.label11, "(default)");
             // 
-            // label2
+            // sB
             // 
-            this.label2.AutoSize = true;
-            this.label2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.label2.Location = new System.Drawing.Point(264, 21);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(48, 16);
-            this.label2.TabIndex = 523;
-            this.label2.Text = "name :";
-            this.theme1.SetTheme(this.label2, "(default)");
+            this.sB.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.sB1});
+            this.sB.Location = new System.Drawing.Point(0, 514);
+            this.sB.Name = "sB";
+            this.sB.Size = new System.Drawing.Size(944, 22);
+            this.sB.TabIndex = 525;
+            this.sB.Text = "statusStrip1";
             // 
-            // txtName
+            // sB1
             // 
-            this.txtName.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtName.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
-            this.txtName.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.txtName.Location = new System.Drawing.Point(318, 19);
-            this.txtName.Name = "txtName";
-            this.txtName.Size = new System.Drawing.Size(268, 20);
-            this.txtName.TabIndex = 522;
-            this.txtName.Tag = null;
-            this.theme1.SetTheme(this.txtName, "(default)");
-            this.txtName.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.label3.Location = new System.Drawing.Point(40, 21);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(37, 16);
-            this.label3.TabIndex = 521;
-            this.label3.Text = "HN  :";
-            this.theme1.SetTheme(this.label3, "(default)");
-            // 
-            // txtHn
-            // 
-            this.txtHn.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtHn.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
-            this.txtHn.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.txtHn.Location = new System.Drawing.Point(91, 19);
-            this.txtHn.Name = "txtHn";
-            this.txtHn.Size = new System.Drawing.Size(124, 20);
-            this.txtHn.TabIndex = 520;
-            this.txtHn.Tag = null;
-            this.theme1.SetTheme(this.txtHn, "(default)");
-            this.txtHn.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.label5.Location = new System.Drawing.Point(594, 21);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(33, 16);
-            this.label5.TabIndex = 525;
-            this.label5.Text = "VN :";
-            this.theme1.SetTheme(this.label5, "(default)");
-            // 
-            // txtVn
-            // 
-            this.txtVn.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtVn.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
-            this.txtVn.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.txtVn.Location = new System.Drawing.Point(633, 19);
-            this.txtVn.Name = "txtVn";
-            this.txtVn.Size = new System.Drawing.Size(124, 20);
-            this.txtVn.TabIndex = 524;
-            this.txtVn.Tag = null;
-            this.theme1.SetTheme(this.txtVn, "(default)");
-            this.txtVn.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
-            // 
-            // btnOk
-            // 
-            this.btnOk.Image = global::clinic_ivf.Properties.Resources.Open_folder_accept;
-            this.btnOk.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnOk.Location = new System.Drawing.Point(774, 14);
-            this.btnOk.Name = "btnOk";
-            this.btnOk.Size = new System.Drawing.Size(83, 43);
-            this.btnOk.TabIndex = 526;
-            this.btnOk.Text = "Email";
-            this.btnOk.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.theme1.SetTheme(this.btnOk, "(default)");
-            this.btnOk.UseVisualStyleBackColor = true;
-            this.btnOk.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            this.sB1.Name = "sB1";
+            this.sB1.Size = new System.Drawing.Size(118, 17);
+            this.sB1.Text = "toolStripStatusLabel1";
             // 
             // FrmSearchHn
             // 
@@ -442,10 +442,12 @@
             this.Text = "FrmSearchHn";
             this.Load += new System.EventHandler(this.FrmSearchHn_Load);
             ((System.ComponentModel.ISupportInitialize)(this.theme1)).EndInit();
-            this.sB.ResumeLayout(false);
-            this.sB.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.btnOk)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtVn)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtName)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtHn)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tC1)).EndInit();
             this.tC1.ResumeLayout(false);
             this.tabCurrent.ResumeLayout(false);
@@ -457,10 +459,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.c1Button1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtDateEnd)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtDateStart)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtName)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtHn)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtVn)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.btnOk)).EndInit();
+            this.sB.ResumeLayout(false);
+            this.sB.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 

@@ -17,6 +17,8 @@ namespace clinic_ivf.objdb
         public LabProcedureDB proceDB;
         public VisitOldDB vsOldDB;
         public BItemDB itmDB;
+        public LabRequestDB lbReqDB;
+        public CompanyDB copDB;
 
         public IvfDB(ConnectDB c)
         {
@@ -33,6 +35,8 @@ namespace clinic_ivf.objdb
             proceDB = new LabProcedureDB(conn);
             vsOldDB = new VisitOldDB(conn);
             itmDB = new BItemDB(conn);
+            lbReqDB = new LabRequestDB(conn);
+            copDB = new CompanyDB(conn);
 
             Console.WriteLine("ivfDB end");
         }

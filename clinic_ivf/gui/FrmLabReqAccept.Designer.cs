@@ -32,7 +32,7 @@
             this.c1DateEdit1 = new C1.Win.C1Input.C1DateEdit();
             this.label1 = new System.Windows.Forms.Label();
             this.c1DateEdit2 = new C1.Win.C1Input.C1DateEdit();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.gB = new System.Windows.Forms.GroupBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.label11 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
@@ -53,6 +53,7 @@
             this.theme1 = new C1.Win.C1Themes.C1ThemeController();
             this.sB1 = new System.Windows.Forms.ToolStripStatusLabel();
             this.sB = new System.Windows.Forms.StatusStrip();
+            this.txtHn = new C1.Win.C1Input.C1TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.c1Button1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.c1DateEdit1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.c1DateEdit2)).BeginInit();
@@ -67,6 +68,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.c1TextBox14)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.theme1)).BeginInit();
             this.sB.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtHn)).BeginInit();
             this.SuspendLayout();
             // 
             // c1Button1
@@ -153,22 +155,23 @@
             this.theme1.SetTheme(this.c1DateEdit2, "(default)");
             this.c1DateEdit2.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
             // 
-            // groupBox2
+            // gB
             // 
-            this.groupBox2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.groupBox2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupBox2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.groupBox2.Location = new System.Drawing.Point(0, 72);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(1012, 541);
-            this.groupBox2.TabIndex = 1;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "groupBox2";
-            this.theme1.SetTheme(this.groupBox2, "(default)");
+            this.gB.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.gB.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.gB.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.gB.Location = new System.Drawing.Point(0, 72);
+            this.gB.Name = "gB";
+            this.gB.Size = new System.Drawing.Size(1012, 541);
+            this.gB.TabIndex = 1;
+            this.gB.TabStop = false;
+            this.gB.Text = "groupBox2";
+            this.theme1.SetTheme(this.gB, "(default)");
             // 
             // groupBox1
             // 
             this.groupBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.groupBox1.Controls.Add(this.txtHn);
             this.groupBox1.Controls.Add(this.c1Button1);
             this.groupBox1.Controls.Add(this.c1DateEdit1);
             this.groupBox1.Controls.Add(this.label1);
@@ -200,7 +203,7 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.panel1.Controls.Add(this.groupBox2);
+            this.panel1.Controls.Add(this.gB);
             this.panel1.Controls.Add(this.groupBox1);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
@@ -427,6 +430,20 @@
             this.sB.TabIndex = 524;
             this.sB.Text = "statusStrip1";
             // 
+            // txtHn
+            // 
+            this.txtHn.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtHn.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
+            this.txtHn.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.txtHn.Location = new System.Drawing.Point(505, 26);
+            this.txtHn.Name = "txtHn";
+            this.txtHn.Size = new System.Drawing.Size(29, 20);
+            this.txtHn.TabIndex = 522;
+            this.txtHn.Tag = null;
+            this.theme1.SetTheme(this.txtHn, "(default)");
+            this.txtHn.Visible = false;
+            this.txtHn.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            // 
             // FrmLabReqAccept
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -467,6 +484,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.theme1)).EndInit();
             this.sB.ResumeLayout(false);
             this.sB.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtHn)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -479,7 +497,7 @@
         private C1.Win.C1Input.C1DateEdit c1DateEdit1;
         private System.Windows.Forms.Label label1;
         private C1.Win.C1Input.C1DateEdit c1DateEdit2;
-        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.GroupBox gB;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Panel panel1;
@@ -499,5 +517,6 @@
         private C1.Win.C1Input.C1TextBox c1TextBox14;
         private System.Windows.Forms.ToolStripStatusLabel sB1;
         private System.Windows.Forms.StatusStrip sB;
+        private C1.Win.C1Input.C1TextBox txtHn;
     }
 }

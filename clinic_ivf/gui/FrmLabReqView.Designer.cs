@@ -33,8 +33,9 @@
             this.label1 = new System.Windows.Forms.Label();
             this.c1DateEdit2 = new C1.Win.C1Input.C1DateEdit();
             this.btnNew = new C1.Win.C1Input.C1Button();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.gB = new System.Windows.Forms.GroupBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.txtHn = new C1.Win.C1Input.C1TextBox();
             this.label11 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.c1CheckBox1 = new C1.Win.C1Input.C1CheckBox();
@@ -59,6 +60,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.c1DateEdit2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnNew)).BeginInit();
             this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtHn)).BeginInit();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.c1CheckBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.c1TextBox24)).BeginInit();
@@ -73,7 +75,7 @@
             // 
             // c1Button1
             // 
-            this.c1Button1.Location = new System.Drawing.Point(471, 24);
+            this.c1Button1.Location = new System.Drawing.Point(471, 18);
             this.c1Button1.Name = "c1Button1";
             this.c1Button1.Size = new System.Drawing.Size(28, 23);
             this.c1Button1.TabIndex = 517;
@@ -104,7 +106,7 @@
             this.c1DateEdit1.Calendar.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
             this.c1DateEdit1.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
             this.c1DateEdit1.ImagePadding = new System.Windows.Forms.Padding(0);
-            this.c1DateEdit1.Location = new System.Drawing.Point(323, 26);
+            this.c1DateEdit1.Location = new System.Drawing.Point(323, 20);
             this.c1DateEdit1.Name = "c1DateEdit1";
             this.c1DateEdit1.Size = new System.Drawing.Size(129, 18);
             this.c1DateEdit1.TabIndex = 514;
@@ -118,7 +120,7 @@
             this.label1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.label1.Location = new System.Drawing.Point(247, 27);
+            this.label1.Location = new System.Drawing.Point(247, 21);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(70, 16);
             this.label1.TabIndex = 513;
@@ -147,7 +149,7 @@
             this.c1DateEdit2.Calendar.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
             this.c1DateEdit2.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
             this.c1DateEdit2.ImagePadding = new System.Windows.Forms.Padding(0);
-            this.c1DateEdit2.Location = new System.Drawing.Point(90, 26);
+            this.c1DateEdit2.Location = new System.Drawing.Point(90, 20);
             this.c1DateEdit2.Name = "c1DateEdit2";
             this.c1DateEdit2.Size = new System.Drawing.Size(129, 18);
             this.c1DateEdit2.TabIndex = 512;
@@ -157,7 +159,7 @@
             // 
             // btnNew
             // 
-            this.btnNew.Location = new System.Drawing.Point(960, 19);
+            this.btnNew.Location = new System.Drawing.Point(960, 13);
             this.btnNew.Name = "btnNew";
             this.btnNew.Size = new System.Drawing.Size(86, 31);
             this.btnNew.TabIndex = 0;
@@ -166,22 +168,23 @@
             this.btnNew.UseVisualStyleBackColor = true;
             this.btnNew.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
             // 
-            // groupBox2
+            // gB
             // 
-            this.groupBox2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.groupBox2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupBox2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.groupBox2.Location = new System.Drawing.Point(0, 72);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(1150, 543);
-            this.groupBox2.TabIndex = 1;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "groupBox2";
-            this.theme1.SetTheme(this.groupBox2, "(default)");
+            this.gB.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.gB.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.gB.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.gB.Location = new System.Drawing.Point(0, 54);
+            this.gB.Name = "gB";
+            this.gB.Size = new System.Drawing.Size(1150, 561);
+            this.gB.TabIndex = 1;
+            this.gB.TabStop = false;
+            this.gB.Text = "groupBox2";
+            this.theme1.SetTheme(this.gB, "(default)");
             // 
             // groupBox1
             // 
             this.groupBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.groupBox1.Controls.Add(this.txtHn);
             this.groupBox1.Controls.Add(this.c1Button1);
             this.groupBox1.Controls.Add(this.c1DateEdit1);
             this.groupBox1.Controls.Add(this.label1);
@@ -192,11 +195,25 @@
             this.groupBox1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
             this.groupBox1.Location = new System.Drawing.Point(0, 0);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(1150, 72);
+            this.groupBox1.Size = new System.Drawing.Size(1150, 54);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Search";
             this.theme1.SetTheme(this.groupBox1, "(default)");
+            // 
+            // txtHn
+            // 
+            this.txtHn.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtHn.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
+            this.txtHn.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.txtHn.Location = new System.Drawing.Point(519, 19);
+            this.txtHn.Name = "txtHn";
+            this.txtHn.Size = new System.Drawing.Size(29, 20);
+            this.txtHn.TabIndex = 521;
+            this.txtHn.Tag = null;
+            this.theme1.SetTheme(this.txtHn, "(default)");
+            this.txtHn.Visible = false;
+            this.txtHn.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
             // 
             // label11
             // 
@@ -204,7 +221,7 @@
             this.label11.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
             this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label11.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.label11.Location = new System.Drawing.Point(11, 27);
+            this.label11.Location = new System.Drawing.Point(11, 21);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(73, 16);
             this.label11.TabIndex = 511;
@@ -214,7 +231,7 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.panel1.Controls.Add(this.groupBox2);
+            this.panel1.Controls.Add(this.gB);
             this.panel1.Controls.Add(this.groupBox1);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
@@ -471,6 +488,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.btnNew)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtHn)).EndInit();
             this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.c1CheckBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.c1TextBox24)).EndInit();
@@ -495,7 +513,7 @@
         private System.Windows.Forms.Label label1;
         private C1.Win.C1Input.C1DateEdit c1DateEdit2;
         private C1.Win.C1Input.C1Button btnNew;
-        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.GroupBox gB;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Panel panel1;
@@ -515,5 +533,6 @@
         private C1.Win.C1Input.C1TextBox c1TextBox14;
         private System.Windows.Forms.ToolStripStatusLabel sB1;
         private System.Windows.Forms.StatusStrip sB;
+        private C1.Win.C1Input.C1TextBox txtHn;
     }
 }

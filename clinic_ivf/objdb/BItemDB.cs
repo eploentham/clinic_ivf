@@ -22,6 +22,7 @@ namespace clinic_ivf.objdb
         private void initConfig()
         {
             itm = new BItem();
+            lItm = new List<BItem>();
             itm.item_id = "item_id";
             itm.item_code = "item_code";
             itm.item_name_t = "item_name_t";

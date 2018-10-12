@@ -8,6 +8,8 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Threading;
+using System.Globalization;
 
 namespace clinic_ivf.control
 {
@@ -26,7 +28,7 @@ namespace clinic_ivf.control
         public String copID = "", jobID = "", cusID = "", addrID = "", contID = "", cusrID = "", custID = "", stfID = "", deptID = "", posiID = "", drawID = "";
         public String rContactName = "", rContacTel = "", rContID = "", userIderc = "";
                 
-        public Staff sStf;
+        public Staff sStf, cStf;
         
         public LogFile lf;
         public Staff user;
@@ -61,6 +63,8 @@ namespace clinic_ivf.control
             iniF = new IniFile(appName);
             iniC = new InitConfig();
             user = new Staff();
+            cStf = new Staff();
+            sStf = new Staff();
 
             GetConfig();
             conn = new ConnectDB(iniC);
@@ -90,6 +94,28 @@ namespace clinic_ivf.control
 
             iniC.grdViewFontName = iniC.grdViewFontName.Equals("") ? "Microsoft Sans Serif" : iniC.grdViewFontName;
             int.TryParse(iniC.grdViewFontSize, out grdViewFontSize);
+        }
+        public String datetoDB(String dt)
+        {
+            DateTime dt1 = new DateTime();
+            String re = "";
+            if (dt != null)
+            {
+                if (!dt.Equals(""))
+                {
+                    // Thread แบบนี้ ทำให้ โปรแกรม ที่ไปลงที Xtrim ไม่เอา date ผิด
+                    Thread.CurrentThread.CurrentCulture = new CultureInfo("en-us")
+                    {
+                        DateTimeFormat =
+                        {
+                            DateSeparator = "-"
+                        }
+                    };
+                    dt1 = DateTime.Parse(dt.ToString());
+                    re = dt1.Year.ToString() + "-" + dt1.ToString("MM-dd");
+                }
+            }
+            return re;
         }
     }
 }

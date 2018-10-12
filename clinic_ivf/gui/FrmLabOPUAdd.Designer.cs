@@ -31,10 +31,11 @@
             this.theme1 = new C1.Win.C1Themes.C1ThemeController();
             this.spMain = new System.Windows.Forms.SplitContainer();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.txtID = new C1.Win.C1Input.C1TextBox();
             this.btnEdit = new C1.Win.C1Input.C1Button();
             this.btnSave = new C1.Win.C1Input.C1Button();
+            this.txtDobFeMale = new C1.Win.C1Input.C1DateEdit();
             this.txtDobMale = new C1.Win.C1Input.C1DateEdit();
-            this.txtDobFemale = new C1.Win.C1Input.C1DateEdit();
             this.txtOpuCode = new C1.Win.C1Input.C1TextBox();
             this.label47 = new System.Windows.Forms.Label();
             this.cboDoctor = new C1.Win.C1Input.C1ComboBox();
@@ -47,15 +48,17 @@
             this.label5 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.txtNameFemale = new C1.Win.C1Input.C1TextBox();
             this.txtNameMale = new C1.Win.C1Input.C1TextBox();
+            this.txtNameFeMale = new C1.Win.C1Input.C1TextBox();
             this.c1Button1 = new C1.Win.C1Input.C1Button();
             this.label1 = new System.Windows.Forms.Label();
-            this.txtHnFemale = new C1.Win.C1Input.C1TextBox();
-            this.label4 = new System.Windows.Forms.Label();
             this.txtHnMale = new C1.Win.C1Input.C1TextBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.txtHnFeMale = new C1.Win.C1Input.C1TextBox();
             this.spLeft = new System.Windows.Forms.SplitContainer();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.c1ComboBox1 = new C1.Win.C1Input.C1ComboBox();
+            this.c1Button3 = new C1.Win.C1Input.C1Button();
             this.c1TextBox31 = new C1.Win.C1Input.C1TextBox();
             this.label46 = new System.Windows.Forms.Label();
             this.c1TextBox25 = new C1.Win.C1Input.C1TextBox();
@@ -174,33 +177,35 @@
             this.c1DockingTabPage5 = new C1.Win.C1Command.C1DockingTabPage();
             this.sB = new System.Windows.Forms.StatusStrip();
             this.sB1 = new System.Windows.Forms.ToolStripStatusLabel();
-            this.txtID = new C1.Win.C1Input.C1TextBox();
-            this.c1Button3 = new C1.Win.C1Input.C1Button();
-            this.c1ComboBox1 = new C1.Win.C1Input.C1ComboBox();
+            this.txtLabReqCode = new C1.Win.C1Input.C1TextBox();
+            this.label62 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.theme1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.spMain)).BeginInit();
             this.spMain.Panel1.SuspendLayout();
             this.spMain.Panel2.SuspendLayout();
             this.spMain.SuspendLayout();
             this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtID)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnEdit)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnSave)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtDobFeMale)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtDobMale)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtDobFemale)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtOpuCode)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cboDoctor)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtOpuDate)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cboOpuProce)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtNameFemale)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtNameMale)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtNameFeMale)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.c1Button1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtHnFemale)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtHnMale)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtHnFeMale)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.spLeft)).BeginInit();
             this.spLeft.Panel1.SuspendLayout();
             this.spLeft.Panel2.SuspendLayout();
             this.spLeft.SuspendLayout();
             this.groupBox5.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.c1ComboBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.c1Button3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.c1TextBox31)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.c1TextBox25)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.c1TextBox26)).BeginInit();
@@ -272,9 +277,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.c1DockingTab1)).BeginInit();
             this.c1DockingTab1.SuspendLayout();
             this.sB.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.txtID)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.c1Button3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.c1ComboBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtLabReqCode)).BeginInit();
             this.SuspendLayout();
             // 
             // theme1
@@ -311,11 +314,13 @@
             // groupBox1
             // 
             this.groupBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.groupBox1.Controls.Add(this.txtLabReqCode);
+            this.groupBox1.Controls.Add(this.label62);
             this.groupBox1.Controls.Add(this.txtID);
             this.groupBox1.Controls.Add(this.btnEdit);
             this.groupBox1.Controls.Add(this.btnSave);
+            this.groupBox1.Controls.Add(this.txtDobFeMale);
             this.groupBox1.Controls.Add(this.txtDobMale);
-            this.groupBox1.Controls.Add(this.txtDobFemale);
             this.groupBox1.Controls.Add(this.txtOpuCode);
             this.groupBox1.Controls.Add(this.label47);
             this.groupBox1.Controls.Add(this.cboDoctor);
@@ -328,13 +333,13 @@
             this.groupBox1.Controls.Add(this.label5);
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.label2);
-            this.groupBox1.Controls.Add(this.txtNameFemale);
             this.groupBox1.Controls.Add(this.txtNameMale);
+            this.groupBox1.Controls.Add(this.txtNameFeMale);
             this.groupBox1.Controls.Add(this.c1Button1);
             this.groupBox1.Controls.Add(this.label1);
-            this.groupBox1.Controls.Add(this.txtHnFemale);
-            this.groupBox1.Controls.Add(this.label4);
             this.groupBox1.Controls.Add(this.txtHnMale);
+            this.groupBox1.Controls.Add(this.label4);
+            this.groupBox1.Controls.Add(this.txtHnFeMale);
             this.groupBox1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
             this.groupBox1.Location = new System.Drawing.Point(0, 0);
@@ -344,6 +349,20 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Patient";
             this.theme1.SetTheme(this.groupBox1, "(default)");
+            // 
+            // txtID
+            // 
+            this.txtID.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtID.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
+            this.txtID.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.txtID.Location = new System.Drawing.Point(305, 43);
+            this.txtID.Name = "txtID";
+            this.txtID.Size = new System.Drawing.Size(30, 20);
+            this.txtID.TabIndex = 537;
+            this.txtID.Tag = null;
+            this.theme1.SetTheme(this.txtID, "(default)");
+            this.txtID.Visible = false;
+            this.txtID.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
             // 
             // btnEdit
             // 
@@ -373,10 +392,10 @@
             this.btnSave.UseVisualStyleBackColor = true;
             this.btnSave.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
             // 
-            // txtDobMale
+            // txtDobFeMale
             // 
-            this.txtDobMale.AllowSpinLoop = false;
-            this.txtDobMale.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtDobFeMale.AllowSpinLoop = false;
+            this.txtDobFeMale.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             // 
             // 
             // 
@@ -393,45 +412,45 @@
             this.txtDobMale.Calendar.TodayBorderColor = System.Drawing.Color.White;
             this.txtDobMale.Calendar.TrailingForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
             this.txtDobMale.Calendar.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            this.txtDobFeMale.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
+            this.txtDobFeMale.ImagePadding = new System.Windows.Forms.Padding(0);
+            this.txtDobFeMale.Location = new System.Drawing.Point(94, 63);
+            this.txtDobFeMale.Name = "txtDobFeMale";
+            this.txtDobFeMale.Size = new System.Drawing.Size(207, 18);
+            this.txtDobFeMale.TabIndex = 534;
+            this.txtDobFeMale.Tag = null;
+            this.theme1.SetTheme(this.txtDobFeMale, "(default)");
+            this.txtDobFeMale.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            // 
+            // txtDobMale
+            // 
+            this.txtDobMale.AllowSpinLoop = false;
+            this.txtDobMale.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            // 
+            // 
+            // 
+            this.txtDobFeMale.Calendar.ArrowColor = System.Drawing.Color.Black;
+            this.txtDobFeMale.Calendar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.txtDobFeMale.Calendar.DayNamesFont = new System.Drawing.Font("Tahoma", 8F);
+            this.txtDobFeMale.Calendar.Font = new System.Drawing.Font("Tahoma", 8F);
+            this.txtDobFeMale.Calendar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.txtDobFeMale.Calendar.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(71)))), ((int)(((byte)(47)))));
+            this.txtDobFeMale.Calendar.SelectionForeColor = System.Drawing.Color.White;
+            this.txtDobFeMale.Calendar.TitleBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(230)))));
+            this.txtDobFeMale.Calendar.TitleFont = new System.Drawing.Font("Tahoma", 8F);
+            this.txtDobFeMale.Calendar.TitleForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.txtDobFeMale.Calendar.TodayBorderColor = System.Drawing.Color.White;
+            this.txtDobFeMale.Calendar.TrailingForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
+            this.txtDobFeMale.Calendar.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
             this.txtDobMale.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
             this.txtDobMale.ImagePadding = new System.Windows.Forms.Padding(0);
-            this.txtDobMale.Location = new System.Drawing.Point(94, 63);
+            this.txtDobMale.Location = new System.Drawing.Point(444, 63);
             this.txtDobMale.Name = "txtDobMale";
             this.txtDobMale.Size = new System.Drawing.Size(207, 18);
-            this.txtDobMale.TabIndex = 534;
+            this.txtDobMale.TabIndex = 533;
             this.txtDobMale.Tag = null;
             this.theme1.SetTheme(this.txtDobMale, "(default)");
             this.txtDobMale.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
-            // 
-            // txtDobFemale
-            // 
-            this.txtDobFemale.AllowSpinLoop = false;
-            this.txtDobFemale.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            // 
-            // 
-            // 
-            this.txtDobFemale.Calendar.ArrowColor = System.Drawing.Color.Black;
-            this.txtDobFemale.Calendar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.txtDobFemale.Calendar.DayNamesFont = new System.Drawing.Font("Tahoma", 8F);
-            this.txtDobFemale.Calendar.Font = new System.Drawing.Font("Tahoma", 8F);
-            this.txtDobFemale.Calendar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.txtDobFemale.Calendar.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(71)))), ((int)(((byte)(47)))));
-            this.txtDobFemale.Calendar.SelectionForeColor = System.Drawing.Color.White;
-            this.txtDobFemale.Calendar.TitleBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(230)))));
-            this.txtDobFemale.Calendar.TitleFont = new System.Drawing.Font("Tahoma", 8F);
-            this.txtDobFemale.Calendar.TitleForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.txtDobFemale.Calendar.TodayBorderColor = System.Drawing.Color.White;
-            this.txtDobFemale.Calendar.TrailingForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
-            this.txtDobFemale.Calendar.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
-            this.txtDobFemale.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
-            this.txtDobFemale.ImagePadding = new System.Windows.Forms.Padding(0);
-            this.txtDobFemale.Location = new System.Drawing.Point(444, 63);
-            this.txtDobFemale.Name = "txtDobFemale";
-            this.txtDobFemale.Size = new System.Drawing.Size(207, 18);
-            this.txtDobFemale.TabIndex = 533;
-            this.txtDobFemale.Tag = null;
-            this.theme1.SetTheme(this.txtDobFemale, "(default)");
-            this.txtDobFemale.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
             // 
             // txtOpuCode
             // 
@@ -622,31 +641,31 @@
             this.label2.Text = "name :";
             this.theme1.SetTheme(this.label2, "(default)");
             // 
-            // txtNameFemale
-            // 
-            this.txtNameFemale.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtNameFemale.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
-            this.txtNameFemale.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.txtNameFemale.Location = new System.Drawing.Point(444, 41);
-            this.txtNameFemale.Name = "txtNameFemale";
-            this.txtNameFemale.Size = new System.Drawing.Size(207, 20);
-            this.txtNameFemale.TabIndex = 518;
-            this.txtNameFemale.Tag = null;
-            this.theme1.SetTheme(this.txtNameFemale, "(default)");
-            this.txtNameFemale.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
-            // 
             // txtNameMale
             // 
             this.txtNameMale.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtNameMale.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
             this.txtNameMale.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.txtNameMale.Location = new System.Drawing.Point(94, 41);
+            this.txtNameMale.Location = new System.Drawing.Point(444, 41);
             this.txtNameMale.Name = "txtNameMale";
             this.txtNameMale.Size = new System.Drawing.Size(207, 20);
-            this.txtNameMale.TabIndex = 517;
+            this.txtNameMale.TabIndex = 518;
             this.txtNameMale.Tag = null;
             this.theme1.SetTheme(this.txtNameMale, "(default)");
             this.txtNameMale.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            // 
+            // txtNameFeMale
+            // 
+            this.txtNameFeMale.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtNameFeMale.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
+            this.txtNameFeMale.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.txtNameFeMale.Location = new System.Drawing.Point(94, 41);
+            this.txtNameFeMale.Name = "txtNameFeMale";
+            this.txtNameFeMale.Size = new System.Drawing.Size(207, 20);
+            this.txtNameFeMale.TabIndex = 517;
+            this.txtNameFeMale.Tag = null;
+            this.theme1.SetTheme(this.txtNameFeMale, "(default)");
+            this.txtNameFeMale.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
             // 
             // c1Button1
             // 
@@ -672,18 +691,18 @@
             this.label1.Text = "HN male :";
             this.theme1.SetTheme(this.label1, "(default)");
             // 
-            // txtHnFemale
+            // txtHnMale
             // 
-            this.txtHnFemale.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtHnFemale.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
-            this.txtHnFemale.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.txtHnFemale.Location = new System.Drawing.Point(444, 19);
-            this.txtHnFemale.Name = "txtHnFemale";
-            this.txtHnFemale.Size = new System.Drawing.Size(207, 20);
-            this.txtHnFemale.TabIndex = 514;
-            this.txtHnFemale.Tag = null;
-            this.theme1.SetTheme(this.txtHnFemale, "(default)");
-            this.txtHnFemale.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            this.txtHnMale.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtHnMale.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
+            this.txtHnMale.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.txtHnMale.Location = new System.Drawing.Point(444, 19);
+            this.txtHnMale.Name = "txtHnMale";
+            this.txtHnMale.Size = new System.Drawing.Size(207, 20);
+            this.txtHnMale.TabIndex = 514;
+            this.txtHnMale.Tag = null;
+            this.theme1.SetTheme(this.txtHnMale, "(default)");
+            this.txtHnMale.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
             // 
             // label4
             // 
@@ -698,18 +717,18 @@
             this.label4.Text = "HN Female :";
             this.theme1.SetTheme(this.label4, "(default)");
             // 
-            // txtHnMale
+            // txtHnFeMale
             // 
-            this.txtHnMale.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtHnMale.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
-            this.txtHnMale.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.txtHnMale.Location = new System.Drawing.Point(94, 19);
-            this.txtHnMale.Name = "txtHnMale";
-            this.txtHnMale.Size = new System.Drawing.Size(207, 20);
-            this.txtHnMale.TabIndex = 512;
-            this.txtHnMale.Tag = null;
-            this.theme1.SetTheme(this.txtHnMale, "(default)");
-            this.txtHnMale.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            this.txtHnFeMale.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtHnFeMale.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
+            this.txtHnFeMale.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.txtHnFeMale.Location = new System.Drawing.Point(94, 19);
+            this.txtHnFeMale.Name = "txtHnFeMale";
+            this.txtHnFeMale.Size = new System.Drawing.Size(207, 20);
+            this.txtHnFeMale.TabIndex = 512;
+            this.txtHnFeMale.Tag = null;
+            this.theme1.SetTheme(this.txtHnFeMale, "(default)");
+            this.txtHnFeMale.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
             // 
             // spLeft
             // 
@@ -769,6 +788,41 @@
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "Embryo Freezing";
             this.theme1.SetTheme(this.groupBox5, "(default)");
+            // 
+            // c1ComboBox1
+            // 
+            this.c1ComboBox1.AllowSpinLoop = false;
+            this.c1ComboBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.c1ComboBox1.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
+            this.c1ComboBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.c1ComboBox1.GapHeight = 0;
+            this.c1ComboBox1.ImagePadding = new System.Windows.Forms.Padding(0);
+            this.c1ComboBox1.ItemsDisplayMember = "";
+            this.c1ComboBox1.ItemsValueMember = "";
+            this.c1ComboBox1.Location = new System.Drawing.Point(117, 13);
+            this.c1ComboBox1.Name = "c1ComboBox1";
+            this.c1ComboBox1.Size = new System.Drawing.Size(99, 20);
+            this.c1ComboBox1.Style.DropDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.c1ComboBox1.Style.DropDownBorderColor = System.Drawing.Color.Gainsboro;
+            this.c1ComboBox1.Style.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.c1ComboBox1.TabIndex = 538;
+            this.c1ComboBox1.Tag = null;
+            this.theme1.SetTheme(this.c1ComboBox1, "(default)");
+            this.c1ComboBox1.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            // 
+            // c1Button3
+            // 
+            this.c1Button3.Image = global::clinic_ivf.Properties.Resources.download_database24;
+            this.c1Button3.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.c1Button3.Location = new System.Drawing.Point(240, 144);
+            this.c1Button3.Name = "c1Button3";
+            this.c1Button3.Size = new System.Drawing.Size(83, 39);
+            this.c1Button3.TabIndex = 537;
+            this.c1Button3.Text = "บันทึกช้อมูล";
+            this.c1Button3.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.theme1.SetTheme(this.c1Button3, "(default)");
+            this.c1Button3.UseVisualStyleBackColor = true;
+            this.c1Button3.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
             // 
             // c1TextBox31
             // 
@@ -2524,54 +2578,31 @@
             this.sB1.Size = new System.Drawing.Size(118, 17);
             this.sB1.Text = "toolStripStatusLabel1";
             // 
-            // txtID
+            // txtLabReqCode
             // 
-            this.txtID.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtID.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
-            this.txtID.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.txtID.Location = new System.Drawing.Point(305, 43);
-            this.txtID.Name = "txtID";
-            this.txtID.Size = new System.Drawing.Size(30, 20);
-            this.txtID.TabIndex = 537;
-            this.txtID.Tag = null;
-            this.theme1.SetTheme(this.txtID, "(default)");
-            this.txtID.Visible = false;
-            this.txtID.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            this.txtLabReqCode.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtLabReqCode.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
+            this.txtLabReqCode.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.txtLabReqCode.Location = new System.Drawing.Point(444, 83);
+            this.txtLabReqCode.Name = "txtLabReqCode";
+            this.txtLabReqCode.Size = new System.Drawing.Size(207, 20);
+            this.txtLabReqCode.TabIndex = 539;
+            this.txtLabReqCode.Tag = null;
+            this.theme1.SetTheme(this.txtLabReqCode, "(default)");
+            this.txtLabReqCode.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
             // 
-            // c1Button3
+            // label62
             // 
-            this.c1Button3.Image = global::clinic_ivf.Properties.Resources.download_database24;
-            this.c1Button3.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.c1Button3.Location = new System.Drawing.Point(240, 144);
-            this.c1Button3.Name = "c1Button3";
-            this.c1Button3.Size = new System.Drawing.Size(83, 39);
-            this.c1Button3.TabIndex = 537;
-            this.c1Button3.Text = "บันทึกช้อมูล";
-            this.c1Button3.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.theme1.SetTheme(this.c1Button3, "(default)");
-            this.c1Button3.UseVisualStyleBackColor = true;
-            this.c1Button3.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
-            // 
-            // c1ComboBox1
-            // 
-            this.c1ComboBox1.AllowSpinLoop = false;
-            this.c1ComboBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.c1ComboBox1.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
-            this.c1ComboBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.c1ComboBox1.GapHeight = 0;
-            this.c1ComboBox1.ImagePadding = new System.Windows.Forms.Padding(0);
-            this.c1ComboBox1.ItemsDisplayMember = "";
-            this.c1ComboBox1.ItemsValueMember = "";
-            this.c1ComboBox1.Location = new System.Drawing.Point(117, 13);
-            this.c1ComboBox1.Name = "c1ComboBox1";
-            this.c1ComboBox1.Size = new System.Drawing.Size(99, 20);
-            this.c1ComboBox1.Style.DropDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.c1ComboBox1.Style.DropDownBorderColor = System.Drawing.Color.Gainsboro;
-            this.c1ComboBox1.Style.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.c1ComboBox1.TabIndex = 538;
-            this.c1ComboBox1.Tag = null;
-            this.theme1.SetTheme(this.c1ComboBox1, "(default)");
-            this.c1ComboBox1.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            this.label62.AutoSize = true;
+            this.label62.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.label62.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label62.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.label62.Location = new System.Drawing.Point(344, 85);
+            this.label62.Name = "label62";
+            this.label62.Size = new System.Drawing.Size(91, 16);
+            this.label62.TabIndex = 538;
+            this.label62.Text = "Req Number :";
+            this.theme1.SetTheme(this.label62, "(default)");
             // 
             // FrmLabOPUAdd
             // 
@@ -2591,25 +2622,28 @@
             this.spMain.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtID)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnEdit)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnSave)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtDobFeMale)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtDobMale)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtDobFemale)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtOpuCode)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cboDoctor)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtOpuDate)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cboOpuProce)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtNameFemale)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtNameMale)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtNameFeMale)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.c1Button1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtHnFemale)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtHnMale)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtHnFeMale)).EndInit();
             this.spLeft.Panel1.ResumeLayout(false);
             this.spLeft.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.spLeft)).EndInit();
             this.spLeft.ResumeLayout(false);
             this.groupBox5.ResumeLayout(false);
             this.groupBox5.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.c1ComboBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.c1Button3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.c1TextBox31)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.c1TextBox25)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.c1TextBox26)).EndInit();
@@ -2686,9 +2720,7 @@
             this.c1DockingTab1.ResumeLayout(false);
             this.sB.ResumeLayout(false);
             this.sB.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.txtID)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.c1Button3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.c1ComboBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtLabReqCode)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -2711,13 +2743,13 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
-        private C1.Win.C1Input.C1TextBox txtNameFemale;
         private C1.Win.C1Input.C1TextBox txtNameMale;
+        private C1.Win.C1Input.C1TextBox txtNameFeMale;
         private C1.Win.C1Input.C1Button c1Button1;
         private System.Windows.Forms.Label label1;
-        private C1.Win.C1Input.C1TextBox txtHnFemale;
-        private System.Windows.Forms.Label label4;
         private C1.Win.C1Input.C1TextBox txtHnMale;
+        private System.Windows.Forms.Label label4;
+        private C1.Win.C1Input.C1TextBox txtHnFeMale;
         private System.Windows.Forms.SplitContainer spLeft;
         private System.Windows.Forms.GroupBox groupBox2;
         private C1.Win.C1Input.C1TextBox txtMaturaDead;
@@ -2794,8 +2826,8 @@
         private System.Windows.Forms.SplitContainer spBody;
         private System.Windows.Forms.Label label47;
         private C1.Win.C1Input.C1TextBox txtOpuCode;
+        private C1.Win.C1Input.C1DateEdit txtDobFeMale;
         private C1.Win.C1Input.C1DateEdit txtDobMale;
-        private C1.Win.C1Input.C1DateEdit txtDobFemale;
         private C1.Win.C1Input.C1Button btnSave;
         private C1.Win.C1Input.C1Button btnEdit;
         private C1.Win.C1Input.C1Button c1Button2;
@@ -2845,5 +2877,7 @@
         private C1.Win.C1Input.C1TextBox txtID;
         private C1.Win.C1Input.C1ComboBox c1ComboBox1;
         private C1.Win.C1Input.C1Button c1Button3;
+        private C1.Win.C1Input.C1TextBox txtLabReqCode;
+        private System.Windows.Forms.Label label62;
     }
 }

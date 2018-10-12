@@ -100,7 +100,7 @@ namespace clinic_ivf.gui
             if (stf1.staff_fname_t.Length > 0)
             {
                 btnOk.Image = Resources.Accept_Male_User24;
-                //stt.Show("<p><b>สวัสดี</b></p>คุณ " + stf1.staff_fname_t + " " + stf1.staff_lname_t + "<br> กรุณา ป้อนรหัสผ่าน", txtUserName);
+                stt.Show("<p><b>สวัสดี</b></p>คุณ " + stf1.staff_fname_t + " " + stf1.staff_lname_t + "<br> กรุณา ป้อนรหัสผ่าน", txtUserName);
 
                 //stt.SetToolTip(txtUserName, "<p><b>สวัสดี</b></p>คุณ " + stf1.staff_fname_t + " " + stf1.staff_lname_t + "<br> กรุณา ป้อนรหัสผ่าน");
                 sep.Clear();

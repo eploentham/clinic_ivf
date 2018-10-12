@@ -226,14 +226,14 @@ namespace clinic_ivf.objdb
                 sql = "select dept.proce_id, dept.proce_code, dept.proce_name_t, dept.remark  " +
                 "From " + proce.table + " dept " +
                 " " +
-                "Where dept." + proce.active + " ='1' and dept."+ proce.status_lab+"='01'";
+                "Where dept." + proce.active + " ='1' and dept."+ proce.status_lab+"='OPU'";
             }
             else if (statuslab == StatusLab.FETProcedure)
             {
                 sql = "select dept.proce_id, dept.proce_code, dept.proce_name_t, dept.remark  " +
                 "From " + proce.table + " dept " +
                 " " +
-                "Where dept." + proce.active + " ='1' and dept." + proce.status_lab + "='02'";
+                "Where dept." + proce.active + " ='1' and dept." + proce.status_lab + "='FET'";
             }
             dt = conn.selectData(conn.conn, sql);
 

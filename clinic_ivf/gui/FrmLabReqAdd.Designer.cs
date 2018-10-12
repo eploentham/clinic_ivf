@@ -33,8 +33,11 @@
             this.theme1 = new C1.Win.C1Themes.C1ThemeController();
             this.panel1 = new System.Windows.Forms.Panel();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.txtStfConfirmID = new C1.Win.C1Input.C1TextBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.txtRemark = new C1.Win.C1Input.C1TextBox();
+            this.txtUserReq = new C1.Win.C1Input.C1TextBox();
             this.label7 = new System.Windows.Forms.Label();
-            this.cboUserReq = new C1.Win.C1Input.C1ComboBox();
             this.txtReqCode = new C1.Win.C1Input.C1TextBox();
             this.label47 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -49,11 +52,14 @@
             this.txtReqDate = new C1.Win.C1Input.C1DateEdit();
             this.label11 = new System.Windows.Forms.Label();
             this.btnReq = new C1.Win.C1Input.C1Button();
+            this.txtID = new C1.Win.C1Input.C1TextBox();
             this.sB.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.theme1)).BeginInit();
             this.panel1.SuspendLayout();
             this.groupBox1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.cboUserReq)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtStfConfirmID)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtRemark)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtUserReq)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtReqCode)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtName)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtVn)).BeginInit();
@@ -62,6 +68,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.cboLabReq)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtReqDate)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnReq)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtID)).BeginInit();
             this.SuspendLayout();
             // 
             // sB
@@ -99,8 +106,12 @@
             // groupBox1
             // 
             this.groupBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.groupBox1.Controls.Add(this.txtID);
+            this.groupBox1.Controls.Add(this.txtStfConfirmID);
+            this.groupBox1.Controls.Add(this.label5);
+            this.groupBox1.Controls.Add(this.txtRemark);
+            this.groupBox1.Controls.Add(this.txtUserReq);
             this.groupBox1.Controls.Add(this.label7);
-            this.groupBox1.Controls.Add(this.cboUserReq);
             this.groupBox1.Controls.Add(this.txtReqCode);
             this.groupBox1.Controls.Add(this.label47);
             this.groupBox1.Controls.Add(this.label3);
@@ -125,6 +136,59 @@
             this.groupBox1.Text = "Search";
             this.theme1.SetTheme(this.groupBox1, "(default)");
             // 
+            // txtStfConfirmID
+            // 
+            this.txtStfConfirmID.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtStfConfirmID.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
+            this.txtStfConfirmID.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.txtStfConfirmID.Location = new System.Drawing.Point(358, 121);
+            this.txtStfConfirmID.Name = "txtStfConfirmID";
+            this.txtStfConfirmID.Size = new System.Drawing.Size(30, 20);
+            this.txtStfConfirmID.TabIndex = 547;
+            this.txtStfConfirmID.Tag = null;
+            this.theme1.SetTheme(this.txtStfConfirmID, "(default)");
+            this.txtStfConfirmID.Visible = false;
+            this.txtStfConfirmID.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.label5.Location = new System.Drawing.Point(16, 145);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(62, 16);
+            this.label5.TabIndex = 546;
+            this.label5.Text = "Remark :";
+            this.theme1.SetTheme(this.label5, "(default)");
+            // 
+            // txtRemark
+            // 
+            this.txtRemark.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtRemark.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
+            this.txtRemark.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.txtRemark.Location = new System.Drawing.Point(122, 143);
+            this.txtRemark.Name = "txtRemark";
+            this.txtRemark.Size = new System.Drawing.Size(579, 20);
+            this.txtRemark.TabIndex = 545;
+            this.txtRemark.Tag = null;
+            this.theme1.SetTheme(this.txtRemark, "(default)");
+            this.txtRemark.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            // 
+            // txtUserReq
+            // 
+            this.txtUserReq.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtUserReq.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
+            this.txtUserReq.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.txtUserReq.Location = new System.Drawing.Point(494, 121);
+            this.txtUserReq.Name = "txtUserReq";
+            this.txtUserReq.Size = new System.Drawing.Size(207, 20);
+            this.txtUserReq.TabIndex = 544;
+            this.txtUserReq.Tag = null;
+            this.theme1.SetTheme(this.txtUserReq, "(default)");
+            this.txtUserReq.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            // 
             // label7
             // 
             this.label7.AutoSize = true;
@@ -137,27 +201,6 @@
             this.label7.TabIndex = 543;
             this.label7.Text = "user Request :";
             this.theme1.SetTheme(this.label7, "(default)");
-            // 
-            // cboUserReq
-            // 
-            this.cboUserReq.AllowSpinLoop = false;
-            this.cboUserReq.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.cboUserReq.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
-            this.cboUserReq.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.cboUserReq.GapHeight = 0;
-            this.cboUserReq.ImagePadding = new System.Windows.Forms.Padding(0);
-            this.cboUserReq.ItemsDisplayMember = "";
-            this.cboUserReq.ItemsValueMember = "";
-            this.cboUserReq.Location = new System.Drawing.Point(494, 121);
-            this.cboUserReq.Name = "cboUserReq";
-            this.cboUserReq.Size = new System.Drawing.Size(207, 20);
-            this.cboUserReq.Style.DropDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.cboUserReq.Style.DropDownBorderColor = System.Drawing.Color.Gainsboro;
-            this.cboUserReq.Style.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.cboUserReq.TabIndex = 542;
-            this.cboUserReq.Tag = null;
-            this.theme1.SetTheme(this.cboUserReq, "(default)");
-            this.cboUserReq.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
             // 
             // txtReqCode
             // 
@@ -355,15 +398,31 @@
             // 
             // btnReq
             // 
-            this.btnReq.Location = new System.Drawing.Point(591, 32);
+            this.btnReq.Image = global::clinic_ivf.Properties.Resources.Add_ticket_24;
+            this.btnReq.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnReq.Location = new System.Drawing.Point(573, 32);
             this.btnReq.Name = "btnReq";
-            this.btnReq.Size = new System.Drawing.Size(110, 31);
+            this.btnReq.Size = new System.Drawing.Size(128, 31);
             this.btnReq.TabIndex = 0;
             this.btnReq.Text = "requert";
             this.btnReq.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.theme1.SetTheme(this.btnReq, "(default)");
             this.btnReq.UseVisualStyleBackColor = true;
             this.btnReq.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            // 
+            // txtID
+            // 
+            this.txtID.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtID.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
+            this.txtID.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.txtID.Location = new System.Drawing.Point(86, 20);
+            this.txtID.Name = "txtID";
+            this.txtID.Size = new System.Drawing.Size(30, 20);
+            this.txtID.TabIndex = 548;
+            this.txtID.Tag = null;
+            this.theme1.SetTheme(this.txtID, "(default)");
+            this.txtID.Visible = false;
+            this.txtID.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
             // 
             // FrmLabReqAdd
             // 
@@ -382,7 +441,9 @@
             this.panel1.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.cboUserReq)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtStfConfirmID)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtRemark)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtUserReq)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtReqCode)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtName)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtVn)).EndInit();
@@ -391,6 +452,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.cboLabReq)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtReqDate)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnReq)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtID)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -404,7 +466,6 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Label label7;
-        private C1.Win.C1Input.C1ComboBox cboUserReq;
         private C1.Win.C1Input.C1TextBox txtReqCode;
         private System.Windows.Forms.Label label47;
         private System.Windows.Forms.Label label3;
@@ -419,5 +480,10 @@
         private C1.Win.C1Input.C1DateEdit txtReqDate;
         private System.Windows.Forms.Label label11;
         private C1.Win.C1Input.C1Button btnReq;
+        private C1.Win.C1Input.C1TextBox txtUserReq;
+        private System.Windows.Forms.Label label5;
+        private C1.Win.C1Input.C1TextBox txtRemark;
+        private C1.Win.C1Input.C1TextBox txtStfConfirmID;
+        private C1.Win.C1Input.C1TextBox txtID;
     }
 }

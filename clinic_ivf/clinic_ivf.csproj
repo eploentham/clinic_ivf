@@ -188,17 +188,20 @@
     <Compile Include="gui\MainMenu.Designer.cs">
       <DependentUpon>MainMenu.cs</DependentUpon>
     </Compile>
+    <Compile Include="objdb\CompanyDB.cs" />
     <Compile Include="objdb\ConnectDB.cs" />
     <Compile Include="objdb\DepartmentDB.cs" />
     <Compile Include="objdb\BItemDB.cs" />
     <Compile Include="objdb\IvfDB.cs" />
     <Compile Include="objdb\LabOpuDB.cs" />
     <Compile Include="objdb\LabProcedureDB.cs" />
+    <Compile Include="objdb\LabRequestDB.cs" />
     <Compile Include="objdb\PositionDB.cs" />
     <Compile Include="objdb\PrefixDB.cs" />
     <Compile Include="objdb\StaffDB.cs" />
     <Compile Include="objdb\VisitOldDB.cs" />
     <Compile Include="object1\ComboBoxItem.cs" />
+    <Compile Include="object1\Company.cs" />
     <Compile Include="object1\Department.cs" />
     <Compile Include="object1\FilterRow.cs" />
     <Compile Include="object1\FtpClient.cs" />
@@ -207,6 +210,7 @@
     <Compile Include="object1\BItem.cs" />
     <Compile Include="object1\LabOpu.cs" />
     <Compile Include="object1\LabProcedure.cs" />
+    <Compile Include="object1\LabRequest.cs" />
     <Compile Include="object1\LogFile.cs" />
     <Compile Include="object1\Persistent.cs" />
     <Compile Include="object1\Position.cs" />
@@ -303,7 +307,9 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <None Include="Resources\Add-ticket_24.png" />
+  </ItemGroup>
   <ItemGroup>
     <None Include="Resources\lock.png" />
   </ItemGroup>
@@ -843,6 +849,33 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Zoom-out48.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Remove-ticket_24.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Ticket_24.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Female-user-search-24.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Female-user-accept-24.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Female-user-add-24.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Female-user-edit-24.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Female-user-help-24.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Female-user-info-24.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Female-user-remove-24.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -3,6 +3,7 @@ using C1.Win.C1Input;
 using C1.Win.C1SuperTooltip;
 using C1.Win.C1Themes;
 using clinic_ivf.control;
+using clinic_ivf.object1;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -18,6 +19,8 @@ namespace clinic_ivf.gui
     public partial class FrmLabOPUAdd : Form
     {
         IvfControl ic;
+        String reqId = "";
+        LabRequest lbReq;
 
         Font fEdit, fEditB;
         Color bg, fc;
@@ -28,10 +31,11 @@ namespace clinic_ivf.gui
         C1SuperTooltip stt;
         C1SuperErrorProvider sep;
 
-        public FrmLabOPUAdd(IvfControl ic)
+        public FrmLabOPUAdd(IvfControl ic, String reqid)
         {
             InitializeComponent();
             this.ic = ic;
+            reqId = reqid;
             initConfig();
         }
         private void initConfig()
@@ -44,14 +48,18 @@ namespace clinic_ivf.gui
             theme1.SetTheme(sB, "BeigeOne");                       
 
             sB1.Text = "";
-            bg = txtHnMale.BackColor;
-            fc = txtHnMale.ForeColor;
-            ff = txtHnMale.Font;
+            bg = txtHnFeMale.BackColor;
+            fc = txtHnFeMale.ForeColor;
+            ff = txtHnFeMale.Font;
 
             stt = new C1SuperTooltip();
             sep = new C1SuperErrorProvider();
-            //stt.BackgroundGradient = C1.Win.C1SuperTooltip.BackgroundGradient.Gold;
+
             ic.ivfDB.proceDB.setCboLabProce(cboOpuProce, objdb.LabProcedureDB.StatusLab.OPUProcedure);
+
+            setControl();
+            //stt.BackgroundGradient = C1.Win.C1SuperTooltip.BackgroundGradient.Gold;
+            
             btnSave.Click += BtnSave_Click;
 
             setFocusColor();
@@ -66,8 +74,8 @@ namespace clinic_ivf.gui
         }
         private void setFocusColor()
         {
-            this.txtHnMale.Leave += new System.EventHandler(this.textBox_Leave);
-            this.txtHnMale.Enter += new System.EventHandler(this.textBox_Enter);
+            this.txtHnFeMale.Leave += new System.EventHandler(this.textBox_Leave);
+            this.txtHnFeMale.Enter += new System.EventHandler(this.textBox_Enter);
 
             //this.txtPosiNameT.Leave += new System.EventHandler(this.textBox_Leave);
             //this.txtPosiNameT.Enter += new System.EventHandler(this.textBox_Enter);
@@ -87,6 +95,15 @@ namespace clinic_ivf.gui
             C1TextBox a = (C1TextBox)sender;
             a.BackColor = ic.cTxtFocus;
             a.Font = new Font(ff, FontStyle.Bold);
+        }
+        private void setControl()
+        {
+            lbReq = ic.ivfDB.lbReqDB.selectByPk1(reqId);
+            txtHnFeMale.Value = lbReq.hn_female;
+            txtHnMale.Value = lbReq.hn_male;
+            txtNameFeMale.Value = lbReq.name_female;
+            txtNameMale.Value = lbReq.name_male;
+            txtLabReqCode.Value = lbReq.req_code;
         }
         private void BtnSave_Click(object sender, EventArgs e)
         {

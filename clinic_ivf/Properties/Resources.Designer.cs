@@ -123,6 +123,16 @@ namespace clinic_ivf.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Add_ticket_24 {
+            get {
+                object obj = ResourceManager.GetObject("Add_ticket_24", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap AlignTextCenter_small {
             get {
                 object obj = ResourceManager.GetObject("AlignTextCenter_small", resourceCulture);
@@ -486,6 +496,76 @@ namespace clinic_ivf.Properties {
         internal static System.Drawing.Bitmap ExportPdf_large {
             get {
                 object obj = ResourceManager.GetObject("ExportPdf_large", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Female_user_accept_24 {
+            get {
+                object obj = ResourceManager.GetObject("Female_user_accept_24", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Female_user_add_24 {
+            get {
+                object obj = ResourceManager.GetObject("Female_user_add_24", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Female_user_edit_24 {
+            get {
+                object obj = ResourceManager.GetObject("Female_user_edit_24", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Female_user_help_24 {
+            get {
+                object obj = ResourceManager.GetObject("Female_user_help_24", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Female_user_info_24 {
+            get {
+                object obj = ResourceManager.GetObject("Female_user_info_24", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Female_user_remove_24 {
+            get {
+                object obj = ResourceManager.GetObject("Female_user_remove_24", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Female_user_search_24 {
+            get {
+                object obj = ResourceManager.GetObject("Female_user_search_24", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -1333,6 +1413,16 @@ namespace clinic_ivf.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Remove_ticket_24 {
+            get {
+                object obj = ResourceManager.GetObject("Remove_ticket_24", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Replace_small {
             get {
                 object obj = ResourceManager.GetObject("Replace_small", resourceCulture);
@@ -1656,6 +1746,16 @@ namespace clinic_ivf.Properties {
         internal static System.Drawing.Bitmap TextToTable_small {
             get {
                 object obj = ResourceManager.GetObject("TextToTable_small", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Ticket_24 {
+            get {
+                object obj = ResourceManager.GetObject("Ticket_24", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

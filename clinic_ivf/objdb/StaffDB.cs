@@ -63,6 +63,7 @@ namespace clinic_ivf.objdb
             stf.status_expense_appv = "status_expense_appv";
             stf.status_expense_draw = "status_expense_draw";
             stf.status_expense_pay = "status_expense_pay";
+            stf.password_confirm = "password_confirm";
 
             stf.table = "b_staff";
             stf.pkField = "staff_id";
@@ -303,6 +304,23 @@ namespace clinic_ivf.objdb
             }
             return re;
         }
+        public String updatePasswordConfirm(String stfId, String password1)
+        {
+            //DataTable dt = new DataTable();
+            String re = "";
+            String sql = "Update " + stf.table + " Set " + stf.password_confirm + "='" + password1 + "' " +
+                "Where " + stf.pkField + "='" + stfId + "'";
+            //conn.ExecuteNonQuery(conn.conn, sql);
+            try
+            {
+                re = conn.ExecuteNonQuery(conn.conn, sql);
+            }
+            catch (Exception ex)
+            {
+                sql = ex.Message + " " + ex.InnerException;
+            }
+            return re;
+        }
         public String VoidStaff(String stfId, String userIdVoid)
         {
             DataTable dt = new DataTable();
@@ -410,6 +428,43 @@ namespace clinic_ivf.objdb
                 return "";
             }
         }
+        public String selectByPasswordConfirm(String pass)
+        {
+            Staff cop1 = new Staff();
+            DataTable dt = new DataTable();
+            String sql = "select stf.*, pfx.prefix_name_t, '' as dept_name_t, '' as posi_name_t  " +
+                "From " + stf.table + " stf " +
+                "Left Join b_prefix pfx On stf.prefix_id = pfx.prefix_id " +
+                "Where stf." + stf.password_confirm + " ='" + pass + "' ";
+            dt = conn.selectData(conn.conn, sql);
+            if (dt.Rows.Count > 0)
+            {
+                return dt.Rows[0][stf.staff_id].ToString();
+            }
+            else
+            {
+                return "";
+            }
+        }
+        public Staff selectByPasswordConfirm1(String pass)
+        {
+            Staff cop1 = new Staff();
+            DataTable dt = new DataTable();
+            String sql = "select stf.*, pfx.prefix_name_t, '' as dept_name_t, '' as posi_name_t  " +
+                "From " + stf.table + " stf " +
+                "Left Join b_prefix pfx On stf.prefix_id = pfx.prefix_id " +
+                "Where stf." + stf.password_confirm + " ='" + pass + "' ";
+            dt = conn.selectData(conn.conn, sql);
+            if (dt.Rows.Count > 0)
+            {
+                cop1 = setStaff(dt);
+                return cop1;
+            }
+            else
+            {
+                return setStaff1(cop1);
+            }
+        }
         public Staff selectByLogin(String username, String password1)
         {
             Staff cop1 = new Staff();
@@ -472,17 +527,18 @@ namespace clinic_ivf.objdb
                 stf1.logo = dt.Rows[0][stf.logo].ToString();
                 stf1.posi_id = dt.Rows[0][stf.posi_id].ToString();
                 stf1.dept_name = dt.Rows[0][stf.dept_name].ToString();
-                stf1.prefix_name_t = dt.Rows[0][stf.prefix_name_t].ToString();
-                stf1.status_admin = dt.Rows[0][stf.status_admin].ToString();
-                stf1.status_module_imp_job = dt.Rows[0][stf.status_module_imp_job].ToString();
-                stf1.status_module_exp_job = dt.Rows[0][stf.status_module_exp_job].ToString();
-                stf1.status_module_other_job = dt.Rows[0][stf.status_module_other_job].ToString();
+                stf1.prefix_name_t = dt.Rows[0][stf.prefix_name_t] != null ? dt.Rows[0][stf.prefix_name_t].ToString():"";
+                stf1.status_admin = dt.Rows[0][stf.status_admin] != null ? dt.Rows[0][stf.status_admin].ToString():"";
+                stf1.status_module_imp_job = dt.Rows[0][stf.status_module_imp_job] != null ? dt.Rows[0][stf.status_module_imp_job].ToString():"";
+                stf1.status_module_exp_job = dt.Rows[0][stf.status_module_exp_job] != null ? dt.Rows[0][stf.status_module_exp_job].ToString():"";
+                stf1.status_module_other_job = dt.Rows[0][stf.status_module_other_job] != null ? dt.Rows[0][stf.status_module_other_job].ToString():"";
                 stf1.posi_name = dt.Rows[0][stf.posi_name].ToString();
                 stf1.dept_name_t = dt.Rows[0][stf.dept_name_t] != null ? dt.Rows[0][stf.dept_name_t].ToString() : "";
                 stf1.posi_name_t = dt.Rows[0][stf.posi_name_t] != null ? dt.Rows[0][stf.posi_name_t].ToString() : "";
                 stf1.status_expense_appv = dt.Rows[0][stf.status_expense_appv] != null ? dt.Rows[0][stf.status_expense_appv].ToString() : "";
                 stf1.status_expense_draw = dt.Rows[0][stf.status_expense_draw] != null ? dt.Rows[0][stf.status_expense_draw].ToString() : "";
                 stf1.status_expense_pay = dt.Rows[0][stf.status_expense_pay] != null ? dt.Rows[0][stf.status_expense_pay].ToString() : "";
+                stf1.password_confirm = dt.Rows[0][stf.password_confirm] != null ? dt.Rows[0][stf.password_confirm].ToString() : "";
             }
             else
             {
@@ -528,6 +584,7 @@ namespace clinic_ivf.objdb
             stf1.status_expense_appv = "0";
             stf1.status_expense_draw = "0";
             stf1.status_expense_pay = "0";
+            stf1.password_confirm = "";
             return stf1;
         }
         public void setCboStaff(C1ComboBox c, String selected)

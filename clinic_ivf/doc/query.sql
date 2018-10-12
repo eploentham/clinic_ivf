@@ -537,5 +537,14 @@ UPDATE `ivf`.`b_item_sub_group` SET `item_group_id` = '3' WHERE (`item_sub_group
 INSERT INTO `ivf`.`b_item` (`item_code`, `item_name_t`, `item_name_e`, `active`) VALUES ('l0001', 'LAB OPU', 'LAB OPU', '1');
 INSERT INTO `ivf`.`b_item` (`item_code`, `item_name_t`, `item_name_e`, `active`) VALUES ('l0002', 'LAB FET', 'LAB FET', '1');
 
+61-10-12
 
+ALTER TABLE `ivf`.`lab_b_procedure` 
+ADD COLUMN `sort1` VARCHAR(45) NULL AFTER `user_cancel`;
+
+ALTER TABLE `ivf`.`b_staff` 
+ADD COLUMN `password_confirm` VARCHAR(255) NULL AFTER `status_expense_pay`;
+UPDATE `ivf`.`b_staff` SET `password_confirm` = '1618' WHERE (`staff_id` = '1220000001');
+
+INSERT INTO `ivf`.`b_company` (`comp_code`, `vat`, `year_curr`, `prefix_req_doc`) VALUES ('001', '7', '2018', 'REQ');
 

@@ -39,5 +39,6 @@ namespace clinic_ivf.object1
         public String status_expense_draw { get; set; }
         public String status_expense_appv { get; set; }
         public String status_expense_pay { get; set; }
+        public String password_confirm { get; set; }
     }
 }

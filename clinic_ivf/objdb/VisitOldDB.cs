@@ -34,7 +34,7 @@ namespace clinic_ivf.objdb
             vsold.LVSID = "LVSID";
             vsold.IntLock = "IntLock";
 
-            vsold.table = "visit";
+            vsold.table = "Visit";
             vsold.pkField = "VN";
         }
         public DataTable selectCurrentVisit()

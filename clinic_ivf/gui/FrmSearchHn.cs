@@ -65,7 +65,7 @@ namespace clinic_ivf.gui
             ic.sVsOld.VN = txtVn.Text;
             ic.sVsOld.PIDS = txtHn.Text;
             Close();
-            return true;
+            //return true;
         }
 
         private void initGrfCu()

@@ -658,4 +658,34 @@
   <data name="_lock" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\lock.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="Add_ticket_24" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Add-ticket_24.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Remove_ticket_24" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Remove-ticket_24.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Ticket_24" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Ticket_24.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Female_user_accept_24" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Female-user-accept-24.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Female_user_add_24" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Female-user-add-24.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Female_user_edit_24" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Female-user-edit-24.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Female_user_help_24" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Female-user-help-24.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Female_user_info_24" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Female-user-info-24.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Female_user_remove_24" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Female-user-remove-24.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Female_user_search_24" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Female-user-search-24.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
 </root>

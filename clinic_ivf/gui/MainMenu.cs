@@ -65,7 +65,7 @@ namespace clinic_ivf.gui
         private void MenuLabAccept_Click(object sender, EventArgs e)
         {
             //throw new NotImplementedException();
-            FrmLabReqAccept frm = new FrmLabReqAccept(ic);
+            FrmLabReqAccept frm = new FrmLabReqAccept(ic, this);
             frm.FormBorderStyle = FormBorderStyle.None;
             AddNewTab(frm, menuLabAccept.Text + " ");
         }
