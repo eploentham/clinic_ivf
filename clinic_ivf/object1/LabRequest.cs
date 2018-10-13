@@ -30,5 +30,8 @@ namespace clinic_ivf.object1
         public String user_modi { get; set; }
         public String user_cancel { get; set; }
         public String item_id { get; set; }
+        public String accept_staff_id { get; set; }
+        public String start_staff_id { get; set; }
+        public String result_staff_id { get; set; }
     }
 }

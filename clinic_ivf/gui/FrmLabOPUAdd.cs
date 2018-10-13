@@ -56,6 +56,7 @@ namespace clinic_ivf.gui
             sep = new C1SuperErrorProvider();
 
             ic.ivfDB.proceDB.setCboLabProce(cboOpuProce, objdb.LabProcedureDB.StatusLab.OPUProcedure);
+            ic.setCboDay(CboEmbryoDay, "");
 
             setControl();
             //stt.BackgroundGradient = C1.Win.C1SuperTooltip.BackgroundGradient.Gold;

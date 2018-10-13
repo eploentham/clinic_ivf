@@ -548,3 +548,10 @@ UPDATE `ivf`.`b_staff` SET `password_confirm` = '1618' WHERE (`staff_id` = '1220
 
 INSERT INTO `ivf`.`b_company` (`comp_code`, `vat`, `year_curr`, `prefix_req_doc`) VALUES ('001', '7', '2018', 'REQ');
 
+61-10-13
+ALTER TABLE `ivf`.`lab_t_request` 
+ADD COLUMN `accept_staff_id` INT NULL AFTER `item_id`,
+ADD COLUMN `start_staff_id` INT NULL AFTER `accept_staff_id`,
+ADD COLUMN `result_staff_id` INT NULL AFTER `start_staff_id`;
+
+

@@ -253,7 +253,7 @@ namespace clinic_ivf.gui
         }
         private void MainMenu_Load(object sender, EventArgs e)
         {
-
+            this.Text = "สวัสดี คุณ "+ic.user.staff_fname_t +" "+ic.user.staff_lname_t+" Update 2018-10-13 ";
         }
     }
 }

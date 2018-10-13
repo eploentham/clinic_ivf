@@ -146,19 +146,28 @@ namespace clinic_ivf.gui
         }
         private void openLabOPUAdd(String reqId, String name)
         {
-            FrmLabOPUAdd frm = new FrmLabOPUAdd(ic, reqId);
-            String txt = "";
-            if (!name.Equals(""))
+            ic.cStf.staff_id = "";
+            FrmPasswordConfirm frm = new FrmPasswordConfirm(ic);
+            frm.ShowDialog(this);
+            if (!ic.cStf.staff_id.Equals(""))
             {
-                txt = "ป้อน LAB OPU " + name;
-            }
-            else
-            {
-                txt = "ป้อน LAB OPU ใหม่ ";
-            }
+                ic.ivfDB.lbReqDB.UpdateStatusRequestAccept(reqId, ic.cStf.staff_id);
+                setGrfReq();
+                FrmLabOPUAdd frm1 = new FrmLabOPUAdd(ic, reqId);
+                String txt = "";
+                if (!name.Equals(""))
+                {
+                    txt = "ป้อน LAB OPU " + name;
+                }
+                else
+                {
+                    txt = "ป้อน LAB OPU ใหม่ ";
+                }
 
-            frm.FormBorderStyle = FormBorderStyle.None;
-            menu.AddNewTab(frm, txt);
+                frm1.FormBorderStyle = FormBorderStyle.None;
+                menu.AddNewTab(frm1, txt);
+            }
+                //
         }
         private void FrmLabReqAccept_Load(object sender, EventArgs e)
         {

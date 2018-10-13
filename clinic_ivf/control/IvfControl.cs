@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Threading;
 using System.Globalization;
+using C1.Win.C1Input;
 
 namespace clinic_ivf.control
 {
@@ -116,6 +117,29 @@ namespace clinic_ivf.control
                 }
             }
             return re;
+        }
+        public void setCboDay(C1ComboBox c, String selected)
+        {
+            ComboBoxItem item = new ComboBoxItem();
+            //DataTable dt = selectWard();
+            
+            item = new ComboBoxItem();
+            item.Value = "";
+            item.Text = "";
+            c.Items.Add(item);
+            for(int i=1;i<=6;i++)
+            {
+                item = new ComboBoxItem();
+                item.Value = i.ToString();
+                item.Text = i.ToString();
+                c.Items.Add(item);
+                if (item.Value.Equals(selected))
+                {
+                    //c.SelectedItem = item.Value;
+                    c.SelectedText = item.Text;
+                    c.SelectedIndex = i + 1;
+                }
+            }
         }
     }
 }
