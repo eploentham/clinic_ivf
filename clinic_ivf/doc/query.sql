@@ -555,3 +555,16 @@ ADD COLUMN `start_staff_id` INT NULL AFTER `accept_staff_id`,
 ADD COLUMN `result_staff_id` INT NULL AFTER `start_staff_id`;
 
 
+61-10-16
+ALTER TABLE `ivf`.`b_staff` 
+ADD COLUMN `accept_staff_id` INT NULL AFTER `password_confirm`,
+ADD COLUMN `start_staff_id` INT NULL AFTER `accept_staff_id`,
+ADD COLUMN `result_staff_id` INT NULL AFTER `start_staff_id`;
+
+ALTER TABLE `ivf`.`lab_t_request` 
+COMMENT = 'id=204' ;
+ALTER TABLE `ivf`.`lab_t_opu_embryo_dev` 
+COMMENT = 'id=202' ;
+ALTER TABLE `ivf`.`lab_t_opu` 
+COMMENT = 'id=200' ;
+UPDATE `ivf`.`b_company` SET `active` = '1' WHERE (`comp_id` = '1020000002');

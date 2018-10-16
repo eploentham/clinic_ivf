@@ -145,7 +145,7 @@ namespace clinic_ivf.objdb
                 "'" + p.accept_date + "','" + p.start_date + "','" + p.result_date + "'," +
                 "'" + p.visit_id + "','" + p.vn + "','" + p.item_id + "'," +
                 "now(),'" + p.date_modi + "','" + p.date_cancel + "'," +
-                "'" + userId + "','" + p.user_modi + "','" + p.user_cancel + "' " +
+                "'" + userId + "','" + p.user_modi + "','" + p.user_cancel + "', " +
                 "'" + p.accept_staff_id + "','" + p.start_staff_id + "','" + p.result_staff_id + "' " +
                 ")";
             try
