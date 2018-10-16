@@ -31,6 +31,7 @@
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.menuExit = new System.Windows.Forms.ToolStripMenuItem();
             this.menuLabOpu1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuLabAccept = new System.Windows.Forms.ToolStripMenuItem();
             this.menuLabOpu = new System.Windows.Forms.ToolStripMenuItem();
             this.menuLabFet = new System.Windows.Forms.ToolStripMenuItem();
             this.ปอนSemenAnalysisToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -49,7 +50,9 @@
             this.tC1 = new C1.Win.C1Command.C1DockingTab();
             this.PageS = new C1.Win.C1Command.C1DockingTabPage();
             this.c1ThemeController1 = new C1.Win.C1Themes.C1ThemeController();
-            this.menuLabAccept = new System.Windows.Forms.ToolStripMenuItem();
+            this.เวชระเบยนToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuPatient = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuVisitNew = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tCC1)).BeginInit();
             this.tCC1.SuspendLayout();
@@ -63,8 +66,9 @@
             this.menuStrip1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(161)))), ((int)(((byte)(106)))));
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.menuExit,
-            this.menuLabOpu1,
+            this.เวชระเบยนToolStripMenuItem,
             this.nurseToolStripMenuItem,
+            this.menuLabOpu1,
             this.กำหนดคาโปรแกรมToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
@@ -91,6 +95,12 @@
             this.menuLabOpu1.Name = "menuLabOpu1";
             this.menuLabOpu1.Size = new System.Drawing.Size(40, 20);
             this.menuLabOpu1.Text = "LAB";
+            // 
+            // menuLabAccept
+            // 
+            this.menuLabAccept.Name = "menuLabAccept";
+            this.menuLabAccept.Size = new System.Drawing.Size(180, 22);
+            this.menuLabAccept.Text = "Accept Lab";
             // 
             // menuLabOpu
             // 
@@ -133,7 +143,7 @@
             // menuReqLab
             // 
             this.menuReqLab.Name = "menuReqLab";
-            this.menuReqLab.Size = new System.Drawing.Size(138, 22);
+            this.menuReqLab.Size = new System.Drawing.Size(180, 22);
             this.menuReqLab.Text = "Request Lab";
             // 
             // กำหนดคาโปรแกรมToolStripMenuItem
@@ -150,19 +160,19 @@
             // menuStaff
             // 
             this.menuStaff.Name = "menuStaff";
-            this.menuStaff.Size = new System.Drawing.Size(142, 22);
+            this.menuStaff.Size = new System.Drawing.Size(180, 22);
             this.menuStaff.Text = "รายชื่อพนักงาน";
             // 
             // menuDept
             // 
             this.menuDept.Name = "menuDept";
-            this.menuDept.Size = new System.Drawing.Size(142, 22);
+            this.menuDept.Size = new System.Drawing.Size(180, 22);
             this.menuDept.Text = "แผนก";
             // 
             // menuPosi
             // 
             this.menuPosi.Name = "menuPosi";
-            this.menuPosi.Size = new System.Drawing.Size(142, 22);
+            this.menuPosi.Size = new System.Drawing.Size(180, 22);
             this.menuPosi.Text = "ตำแหน่ง";
             // 
             // lABToolStripMenuItem
@@ -171,19 +181,19 @@
             this.menuOpuProce,
             this.menuFetProce});
             this.lABToolStripMenuItem.Name = "lABToolStripMenuItem";
-            this.lABToolStripMenuItem.Size = new System.Drawing.Size(142, 22);
+            this.lABToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.lABToolStripMenuItem.Text = "LAB";
             // 
             // menuOpuProce
             // 
             this.menuOpuProce.Name = "menuOpuProce";
-            this.menuOpuProce.Size = new System.Drawing.Size(155, 22);
+            this.menuOpuProce.Size = new System.Drawing.Size(180, 22);
             this.menuOpuProce.Text = "OPU Procedure";
             // 
             // menuFetProce
             // 
             this.menuFetProce.Name = "menuFetProce";
-            this.menuFetProce.Size = new System.Drawing.Size(155, 22);
+            this.menuFetProce.Size = new System.Drawing.Size(180, 22);
             this.menuFetProce.Text = "FET Procedure";
             // 
             // tCC1
@@ -224,11 +234,26 @@
             // 
             this.c1ThemeController1.Theme = "BeigeOne";
             // 
-            // menuLabAccept
+            // เวชระเบยนToolStripMenuItem
             // 
-            this.menuLabAccept.Name = "menuLabAccept";
-            this.menuLabAccept.Size = new System.Drawing.Size(180, 22);
-            this.menuLabAccept.Text = "Accept Lab";
+            this.เวชระเบยนToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.menuPatient,
+            this.menuVisitNew});
+            this.เวชระเบยนToolStripMenuItem.Name = "เวชระเบยนToolStripMenuItem";
+            this.เวชระเบยนToolStripMenuItem.Size = new System.Drawing.Size(66, 20);
+            this.เวชระเบยนToolStripMenuItem.Text = "เวชระเบียน";
+            // 
+            // menuPatient
+            // 
+            this.menuPatient.Name = "menuPatient";
+            this.menuPatient.Size = new System.Drawing.Size(180, 22);
+            this.menuPatient.Text = "ประวัติคนไข้";
+            // 
+            // menuVisitNew
+            // 
+            this.menuVisitNew.Name = "menuVisitNew";
+            this.menuVisitNew.Size = new System.Drawing.Size(180, 22);
+            this.menuVisitNew.Text = "ออก Visit";
             // 
             // MainMenu
             // 
@@ -277,5 +302,8 @@
         private System.Windows.Forms.ToolStripMenuItem nurseToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem menuReqLab;
         private System.Windows.Forms.ToolStripMenuItem menuLabAccept;
+        private System.Windows.Forms.ToolStripMenuItem เวชระเบยนToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem menuPatient;
+        private System.Windows.Forms.ToolStripMenuItem menuVisitNew;
     }
 }
