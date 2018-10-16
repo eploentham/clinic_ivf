@@ -31,6 +31,9 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>Resources\icon-sqr-01.ico</ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="C1.C1Zip.4, Version=4.0.20181.296, Culture=neutral, PublicKeyToken=79882d576c6336da" />
     <Reference Include="C1.Win.4, Version=4.0.20181.296, Culture=neutral, PublicKeyToken=944ae1ea0e47ca04" />
@@ -876,6 +879,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Female-user-remove-24.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icon-sqr-01.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -25,7 +25,7 @@ namespace clinic_ivf.gui
         Font fEdit, fEditB;
         Color bg, fc;
         Font ff, ffB;
-        int colID = 1, colNum = 2, colDesc = 3;
+        int colID = 1, colNum = 2, colDesc = 3, colDesc2=4, colDesc3=5;
 
         C1FlexGrid grfDay2, grfDay3, grfDay5, grfDay6;
         C1SuperTooltip stt;
@@ -222,7 +222,7 @@ namespace clinic_ivf.gui
             //grfExpn.DataSource = xC.xtDB.expndDB.selectAll1(cboYear.Text);
             //grfExpn.Rows.Count = dt.Rows.Count + 1;
             grfDay2.Rows.Count = 41;
-            grfDay2.Cols.Count = 4;
+            grfDay2.Cols.Count = 64;
             C1TextBox txt = new C1TextBox();
             C1ComboBox cboproce = new C1ComboBox();
             //ic.ivfDB.itmDB.setCboItem(cboproce);
@@ -239,6 +239,8 @@ namespace clinic_ivf.gui
 
             grfDay2.Cols[colNum].Caption = "no";
             grfDay2.Cols[colDesc].Caption = "desc";
+            grfDay2.Cols[colDesc2].Caption = "desc2";
+            grfDay2.Cols[colDesc3].Caption = "desc3";
 
             Color color = ColorTranslator.FromHtml(ic.iniC.grfRowColor);
             //CellRange rg1 = grfBank.GetCellRange(1, colE, grfBank.Rows.Count, colE);
