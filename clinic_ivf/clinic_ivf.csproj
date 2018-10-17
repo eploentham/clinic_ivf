@@ -198,6 +198,7 @@
     <Compile Include="objdb\LabOpuDB.cs" />
     <Compile Include="objdb\LabProcedureDB.cs" />
     <Compile Include="objdb\LabRequestDB.cs" />
+    <Compile Include="objdb\PatientDB.cs" />
     <Compile Include="objdb\PositionDB.cs" />
     <Compile Include="objdb\PrefixDB.cs" />
     <Compile Include="objdb\StaffDB.cs" />
@@ -214,6 +215,7 @@
     <Compile Include="object1\LabProcedure.cs" />
     <Compile Include="object1\LabRequest.cs" />
     <Compile Include="object1\LogFile.cs" />
+    <Compile Include="object1\Patient.cs" />
     <Compile Include="object1\Persistent.cs" />
     <Compile Include="object1\Position.cs" />
     <Compile Include="object1\Prefix.cs" />
