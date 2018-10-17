@@ -70,6 +70,7 @@ namespace clinic_ivf.gui
             lbReq.user_modi = "";
             lbReq.user_cancel = "";
             lbReq.item_id = cboLabReq.SelectedItem != null ? ((ComboBoxItem)(cboLabReq.SelectedItem)).Value : "";
+            lbReq.doctor_id = cboDoctor.SelectedItem != null ? ((ComboBoxItem)(cboDoctor.SelectedItem)).Value : "";
         }
         private void BtnReq_Click(object sender, EventArgs e)
         {

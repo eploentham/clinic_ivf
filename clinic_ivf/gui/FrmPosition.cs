@@ -167,6 +167,14 @@ namespace clinic_ivf.gui
             txtPosiCode.Value = posi.posi_code;
             txtPosiNameT.Value = posi.posi_name_t;
             txtRemark.Value = posi.remark;
+            if (posi.status_doctor.Equals("1"))
+            {
+                chkStatusDoctor.Checked = true;
+            }
+            else
+            {
+                chkStatusDoctor.Checked = false;
+            }
         }
         private void setControlEnable(Boolean flag)
         {
@@ -177,13 +185,14 @@ namespace clinic_ivf.gui
             chkVoid.Enabled = flag;
             btnEdit.Image = !flag ? Resources.lock24 : Resources.open24;
         }
-        private void setDeptment()
+        private void setPosition()
         {
             posi.posi_id = txtID.Text;
             posi.posi_code = txtPosiCode.Text;
             posi.posi_name_t = txtPosiNameT.Text;
             //posi.posi_name_e = txtPosiNameE.Text;
             posi.remark = txtRemark.Text;
+            posi.status_doctor = chkStatusDoctor.Checked == true ? "1" : "0";
         }
         private void grfPosi_AfterRowColChange(object sender, C1.Win.C1FlexGrid.RangeEventArgs e)
         {
@@ -260,7 +269,7 @@ namespace clinic_ivf.gui
         {
             if (MessageBox.Show("ต้องการ บันทึกช้อมูล ", "", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == DialogResult.OK)
             {
-                setDeptment();
+                setPosition();
                 String re = ic.ivfDB.posiDB.insertPosition(posi, ic.user.staff_id);
                 int chk = 0;
                 if (int.TryParse(re, out chk))

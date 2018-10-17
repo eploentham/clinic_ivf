@@ -38,6 +38,7 @@ namespace clinic_ivf.objdb
             posi.user_cancel = "user_cancel";
             posi.active = "active";
             posi.sort1 = "sort1";
+            posi.status_doctor = "status_doctor";
 
             posi.table = "b_position";
             posi.pkField = "posi_id";
@@ -64,17 +65,19 @@ namespace clinic_ivf.objdb
             p.remark = p.remark == null ? "" : p.remark;
             //p.posi_name_e = int.TryParse(p.comp_id, out chk) ? chk.ToString() : "0";
             p.posi_id = int.TryParse(p.posi_id, out chk) ? chk.ToString() : "0";
-            //p.dept_parent_id = int.TryParse(p.dept_parent_id, out chk) ? chk.ToString() : "0";
+            p.status_doctor = int.TryParse(p.status_doctor, out chk) ? chk.ToString() : "0";
 
             sql = "Insert Into " + posi.table + "(" + posi.posi_code + "," + posi.posi_name_t + "," + posi.posi_name_e + "," +
                 posi.sort1 + "," + posi.remark + "," + posi.date_create + "," +
                 posi.date_modi + "," + posi.date_cancel + "," + posi.user_create + "," +
-                posi.user_modi + "," + posi.user_cancel + "," + posi.active + " " +
+                posi.user_modi + "," + posi.user_cancel + "," + posi.active + ", " +
+                posi.status_doctor + " " +
                 ") " +
                 "Values ('" + p.posi_code + "','" + p.posi_name_t.Replace("'", "''") + "','" + p.posi_name_e + "'," +
                 "'" + p.sort1 + "','" + p.remark.Replace("'", "''") + "',now()," +
                 "'" + p.date_modi + "','" + p.date_cancel + "','" + userId + "'," +
-                "'" + p.user_modi + "','" + p.user_cancel + "','" + p.active + "' " +
+                "'" + p.user_modi + "','" + p.user_cancel + "','" + p.active + "', " +
+                "'" + p.status_doctor + "' " +
                 ")";
             try
             {
@@ -104,7 +107,7 @@ namespace clinic_ivf.objdb
             p.remark = p.remark == null ? "" : p.remark;
             //p.comp_id = int.TryParse(p.comp_id, out chk) ? chk.ToString() : "0";
             p.posi_id = int.TryParse(p.posi_id, out chk) ? chk.ToString() : "0";
-            //p.dept_parent_id = int.TryParse(p.dept_parent_id, out chk) ? chk.ToString() : "0";
+            p.status_doctor = int.TryParse(p.status_doctor, out chk) ? chk.ToString() : "0";
 
             sql = "Update " + posi.table + " Set " +
                 " " + posi.posi_code + " = '" + p.posi_code + "'" +
@@ -114,7 +117,8 @@ namespace clinic_ivf.objdb
                 "," + posi.remark + " = '" + p.remark.Replace("'", "''") + "'" +
                 "," + posi.date_modi + " = now()" +
                 "," + posi.user_modi + " = '" + userId + "'" +
-                "Where " + posi.pkField + "='" + p.posi_id + "'"
+                "," + posi.status_doctor + " = '" + userId + "'" +
+                "Where " + posi.pkField + "='" + p.status_doctor + "'"
                 ;
 
             try
@@ -267,17 +271,34 @@ namespace clinic_ivf.objdb
                 dept1.posi_id = dt.Rows[0][posi.posi_id].ToString();
                 dept1.posi_code = dt.Rows[0][posi.posi_code].ToString();
                 dept1.posi_name_t = dt.Rows[0][posi.posi_name_t].ToString();
-                dept1.posi_name_e = dt.Rows[0][posi.posi_name_e].ToString();
-                //dept1.dept_parent_id = dt.Rows[0][posi.dept_parent_id].ToString();
-                dept1.remark = dt.Rows[0][posi.remark].ToString();
-                dept1.date_create = dt.Rows[0][posi.date_create].ToString();
-                dept1.date_modi = dt.Rows[0][posi.date_modi].ToString();
-                dept1.date_cancel = dt.Rows[0][posi.date_cancel].ToString();
-                dept1.user_create = dt.Rows[0][posi.user_create].ToString();
-                dept1.user_modi = dt.Rows[0][posi.user_modi].ToString();
-                dept1.user_cancel = dt.Rows[0][posi.user_cancel].ToString();
-                dept1.active = dt.Rows[0][posi.active].ToString();
-                dept1.sort1 = dt.Rows[0][posi.sort1].ToString();
+                dept1.posi_name_e = dt.Rows[0][posi.posi_name_e] != null ? dt.Rows[0][posi.posi_name_e].ToString() : "";
+                dept1.status_doctor = dt.Rows[0][posi.status_doctor] != null ? dt.Rows[0][posi.status_doctor].ToString() : "";
+                dept1.remark = dt.Rows[0][posi.remark] != null ? dt.Rows[0][posi.remark].ToString() : "";
+                dept1.date_create = dt.Rows[0][posi.date_create] != null ? dt.Rows[0][posi.date_create].ToString() : "";
+                dept1.date_modi = dt.Rows[0][posi.date_modi] != null ? dt.Rows[0][posi.date_modi].ToString() : "";
+                dept1.date_cancel = dt.Rows[0][posi.date_cancel] != null ? dt.Rows[0][posi.date_cancel].ToString() : "";
+                dept1.user_create = dt.Rows[0][posi.user_create] != null ? dt.Rows[0][posi.user_create].ToString() : "";
+                dept1.user_modi = dt.Rows[0][posi.user_create] != null ? dt.Rows[0][posi.user_modi].ToString() : "";
+                dept1.user_cancel = dt.Rows[0][posi.user_create] != null ? dt.Rows[0][posi.user_cancel].ToString() : "";
+                dept1.active = dt.Rows[0][posi.user_create] != null ? dt.Rows[0][posi.active].ToString() : "";
+                dept1.sort1 = dt.Rows[0][posi.user_create] != null ? dt.Rows[0][posi.sort1].ToString() : "";
+            }
+            else
+            {
+                posi.posi_code = "";
+                posi.posi_name_t = "";
+                posi.posi_name_e = "";
+                //posi.dept_parent_id = "dept_parent_id";
+                posi.remark = "";
+                posi.date_create = "";
+                posi.date_modi = "";
+                posi.date_cancel = "";
+                posi.user_create = "";
+                posi.user_modi = "";
+                posi.user_cancel = "";
+                posi.active = "";
+                posi.sort1 = "";
+                posi.status_doctor = "";
             }
 
             return dept1;

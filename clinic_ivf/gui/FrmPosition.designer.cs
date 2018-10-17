@@ -48,6 +48,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.sB = new System.Windows.Forms.StatusStrip();
             this.sB1 = new System.Windows.Forms.ToolStripStatusLabel();
+            this.chkStatusDoctor = new C1.Win.C1Input.C1CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.theme1)).BeginInit();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
@@ -66,6 +67,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtID)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtPosiCode)).BeginInit();
             this.sB.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.chkStatusDoctor)).BeginInit();
             this.SuspendLayout();
             // 
             // theme1
@@ -124,6 +126,7 @@
             // panel3
             // 
             this.panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.panel3.Controls.Add(this.chkStatusDoctor);
             this.panel3.Controls.Add(this.txtPasswordVoid);
             this.panel3.Controls.Add(this.btnNew);
             this.panel3.Controls.Add(this.chkVoid);
@@ -347,6 +350,24 @@
             this.sB1.Size = new System.Drawing.Size(118, 17);
             this.sB1.Text = "toolStripStatusLabel1";
             // 
+            // chkStatusDoctor
+            // 
+            this.chkStatusDoctor.BackColor = System.Drawing.Color.Transparent;
+            this.chkStatusDoctor.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
+            this.chkStatusDoctor.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.chkStatusDoctor.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.chkStatusDoctor.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.chkStatusDoctor.Location = new System.Drawing.Point(124, 173);
+            this.chkStatusDoctor.Name = "chkStatusDoctor";
+            this.chkStatusDoctor.Padding = new System.Windows.Forms.Padding(4, 1, 1, 1);
+            this.chkStatusDoctor.Size = new System.Drawing.Size(155, 24);
+            this.chkStatusDoctor.TabIndex = 260;
+            this.chkStatusDoctor.Text = "เป้นแพทย์";
+            this.theme1.SetTheme(this.chkStatusDoctor, "(default)");
+            this.chkStatusDoctor.UseVisualStyleBackColor = true;
+            this.chkStatusDoctor.Value = null;
+            this.chkStatusDoctor.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            // 
             // FrmPosition
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -377,6 +398,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtPosiCode)).EndInit();
             this.sB.ResumeLayout(false);
             this.sB.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.chkStatusDoctor)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -404,5 +426,6 @@
         private C1.Win.C1Input.C1TextBox txtPosiCode;
         private System.Windows.Forms.Label label1;
         private C1.Win.C1Input.C1TextBox txtPasswordVoid;
+        private C1.Win.C1Input.C1CheckBox chkStatusDoctor;
     }
 }

@@ -141,6 +141,7 @@ namespace clinic_ivf.objdb
             opu.embryo_freez_freeze_media_6 = "embryo_freez_freeze_media_6";
             opu.embryo_freez_position_6 = "embryo_freez_position_6";
             opu.embryo_freez_stage_6 = "embryo_freez_stage_6";
+            opu.req_id = "req_id";
         }
         private void chkNull(LabOpu p)
         {
@@ -170,7 +171,7 @@ namespace clinic_ivf.objdb
 
             p.doctor_id = int.TryParse(p.doctor_id, out chk) ? chk.ToString() : "0";
             p.proce_id = int.TryParse(p.proce_id, out chk) ? chk.ToString() : "0";
-            //p.prefix_id = int.TryParse(p.prefix_id, out chk) ? chk.ToString() : "0";
+            p.req_id = int.TryParse(p.req_id, out chk) ? chk.ToString() : "0";
 
             //p.status_lab = p.status_lab == null ? "0" : p.status_lab;
         }
@@ -189,7 +190,8 @@ namespace clinic_ivf.objdb
                 opu.name_female + "," + opu.dob_male + "," + opu.opu_date + "," +
                 opu.doctor_id + "," + opu.proce_id + "," +
                 opu.date_create + "," + opu.date_modi + "," + opu.date_cancel + "," +
-                opu.user_create + "," + opu.user_modi + "," + opu.user_cancel + " " +
+                opu.user_create + "," + opu.user_modi + "," + opu.user_cancel + ", " +
+                opu.req_id + "," +
                 ") " +
                 "Values ('" + p.opu_code + "','" + p.embryo_freez_stage + "','" + p.embryoid_freez_position + "'," +
                 "'" + p.hn_male.Replace("'", "''") + "','" + p.hn_female.Replace("'", "''") + "','" + p.name_male + "'," +
@@ -197,7 +199,8 @@ namespace clinic_ivf.objdb
                 "'" + p.name_female + "','" + p.dob_male + "','" + p.opu_date + "'," +
                 "'" + p.doctor_id + "','" + p.proce_id + "'," +
                 "now(),'" + p.date_modi + "','" + p.date_cancel + "'," +
-                "'" + userId + "','" + p.user_modi + "','" + p.user_cancel + "' " +                
+                "'" + userId + "','" + p.user_modi + "','" + p.user_cancel + "', " +
+                "'" + p.req_id + "' " +
                 ")";
             try
             {

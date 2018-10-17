@@ -46,6 +46,7 @@ namespace clinic_ivf.objdb
             lbReq.accept_staff_id = "accept_staff_id";
             lbReq.start_staff_id = "start_staff_id";
             lbReq.result_staff_id = "result_staff_id";
+            lbReq.doctor_id = "doctor_id";
 
             lbReq.table = "lab_t_request";
             lbReq.pkField = "req_id";
@@ -78,6 +79,7 @@ namespace clinic_ivf.objdb
             p.accept_staff_id = int.TryParse(p.accept_staff_id, out chk) ? chk.ToString() : "0";
             p.start_staff_id = int.TryParse(p.start_staff_id, out chk) ? chk.ToString() : "0";
             p.result_staff_id = int.TryParse(p.result_staff_id, out chk) ? chk.ToString() : "0";
+            p.doctor_id = int.TryParse(p.doctor_id, out chk) ? chk.ToString() : "0";
         }
         public DataTable selectByPk(String copId)
         {
@@ -112,13 +114,14 @@ namespace clinic_ivf.objdb
         public String UpdateStatusRequestAccept(String lbReqId, String userIdAccept)
         {
             DataTable dt = new DataTable();
+            String re = "";
             String sql = "Update " + lbReq.table + " Set " +
                 "" + lbReq.status_req + "='2' " +
                 "," + lbReq.accept_date + "= now() " +
                 "," + lbReq.accept_staff_id + "='" + userIdAccept + "' " +
                 "Where " + lbReq.pkField + "='" + lbReqId + "'";
-            conn.ExecuteNonQuery(conn.conn, sql);
-            return "1";
+            re = conn.ExecuteNonQuery(conn.conn, sql);
+            return re;
         }
         public String insert(LabRequest p, String userId)
         {
@@ -137,7 +140,8 @@ namespace clinic_ivf.objdb
                 lbReq.visit_id + "," + lbReq.vn + "," + lbReq.item_id + "," +
                 lbReq.date_create + "," + lbReq.date_modi + "," + lbReq.date_cancel + "," +
                 lbReq.user_create + "," + lbReq.user_modi + "," + lbReq.user_cancel + ", " +
-                lbReq.accept_staff_id + "," + lbReq.start_staff_id + "," + lbReq.result_staff_id + " " +
+                lbReq.accept_staff_id + "," + lbReq.start_staff_id + "," + lbReq.result_staff_id + ", " +
+                lbReq.doctor_id + "," +
                 ") " +
                 "Values ('" + p.req_code + "','" + p.req_date + "','" + p.hn_male + "'," +
                 "'" + p.name_male.Replace("'", "''") + "','" + p.hn_female.Replace("'", "''") + "','" + p.name_female + "'," +
@@ -146,7 +150,8 @@ namespace clinic_ivf.objdb
                 "'" + p.visit_id + "','" + p.vn + "','" + p.item_id + "'," +
                 "now(),'" + p.date_modi + "','" + p.date_cancel + "'," +
                 "'" + userId + "','" + p.user_modi + "','" + p.user_cancel + "', " +
-                "'" + p.accept_staff_id + "','" + p.start_staff_id + "','" + p.result_staff_id + "' " +
+                "'" + p.accept_staff_id + "','" + p.start_staff_id + "','" + p.result_staff_id + "', " +
+                "'" + p.doctor_id + "' " +
                 ")";
             try
             {
@@ -204,6 +209,7 @@ namespace clinic_ivf.objdb
                 lbReq1.accept_staff_id = dt.Rows[0][lbReq.accept_staff_id].ToString();
                 lbReq1.start_staff_id = dt.Rows[0][lbReq.start_staff_id].ToString();
                 lbReq1.result_staff_id = dt.Rows[0][lbReq.result_staff_id].ToString();
+                lbReq1.doctor_id = dt.Rows[0][lbReq.doctor_id].ToString();
             }
             else
             {
@@ -232,6 +238,7 @@ namespace clinic_ivf.objdb
                 lbReq1.accept_staff_id = "";
                 lbReq1.start_staff_id = "";
                 lbReq1.result_staff_id = "";
+                lbReq1.doctor_id = "";
             }
 
             return lbReq1;

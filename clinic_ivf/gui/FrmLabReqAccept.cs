@@ -2,6 +2,7 @@
 using C1.Win.C1Input;
 using C1.Win.C1SuperTooltip;
 using clinic_ivf.control;
+using clinic_ivf.object1;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -87,7 +88,7 @@ namespace clinic_ivf.gui
             if (MessageBox.Show("ต้องการ รับ request  \n  req number " + chk + " \n name " + name, "", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == DialogResult.OK)
             {
                 //grfReq.Rows.Remove(grfReq.Row);
-                openLabOPUAdd(id, name);
+                acceptLabOPUAdd(id, name);
             }
         }
         private void GrfReq_AfterRowColChange(object sender, RangeEventArgs e)
@@ -144,30 +145,57 @@ namespace clinic_ivf.gui
             }
             grfReq.Cols[colRqId].Visible = false;
         }
-        private void openLabOPUAdd(String reqId, String name)
+        private void acceptLabOPUAdd(String reqId, String name)
         {
             ic.cStf.staff_id = "";
             FrmPasswordConfirm frm = new FrmPasswordConfirm(ic);
             frm.ShowDialog(this);
             if (!ic.cStf.staff_id.Equals(""))
             {
-                ic.ivfDB.lbReqDB.UpdateStatusRequestAccept(reqId, ic.cStf.staff_id);
-                setGrfReq();
-                FrmLabOPUAdd frm1 = new FrmLabOPUAdd(ic, reqId);
-                String txt = "";
-                if (!name.Equals(""))
+                String re = ic.ivfDB.lbReqDB.UpdateStatusRequestAccept(reqId, ic.cStf.staff_id);
+                int chk = 0;
+                if (int.TryParse(re, out chk))
                 {
-                    txt = "ป้อน LAB OPU " + name;
+                    LabOpu opu = new LabOpu();
+                    LabRequest lbreq = new LabRequest();
+                    lbreq = ic.ivfDB.lbReqDB.selectByPk1(reqId);
+                    opu.opu_id = "";
+                    opu.opu_code = ic.ivfDB.copDB.genOPUDoc();
+                    opu.embryo_freez_stage = "";
+                    opu.embryoid_freez_position = "";
+                    opu.hn_male = "";
+                    opu.hn_female = lbreq.hn_female;
+                    opu.name_male = "";
+                    opu.name_female = lbreq.name_female;
+                    opu.remark = "";
+                    opu.dob_female = "";
+                    opu.dob_male = "";
+                    opu.doctor_id = "";
+                    opu.proce_id = "";
+                    opu.opu_date = System.DateTime.Now.ToString("yyyy-MM-dd");
+                    opu.req_id = reqId;
+
+                    setGrfReq();
+                    FrmLabOPUAdd frm1 = new FrmLabOPUAdd(ic, reqId);
+                    String txt = "";
+                    if (!name.Equals(""))
+                    {
+                        txt = "ป้อน LAB OPU " + name;
+                    }
+                    else
+                    {
+                        txt = "ป้อน LAB OPU ใหม่ ";
+                    }
+
+                    frm1.FormBorderStyle = FormBorderStyle.None;
+                    menu.AddNewTab(frm1, txt);
                 }
                 else
                 {
-                    txt = "ป้อน LAB OPU ใหม่ ";
+                    MessageBox.Show("ไม่สามารถ update status accept", "error");
                 }
-
-                frm1.FormBorderStyle = FormBorderStyle.None;
-                menu.AddNewTab(frm1, txt);
+                
             }
-                //
         }
         private void FrmLabReqAccept_Load(object sender, EventArgs e)
         {

@@ -33,5 +33,6 @@ namespace clinic_ivf.object1
         public String accept_staff_id { get; set; }
         public String start_staff_id { get; set; }
         public String result_staff_id { get; set; }
+        public String doctor_id { get; set; }
     }
 }

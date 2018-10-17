@@ -78,12 +78,12 @@ namespace clinic_ivf.objdb
             cop.billing_cover_doc = "billing_cover_doc";
             cop.req_doc = "req_doc";
             cop.month_curr = "month_curr";
-            cop.prefix_cash_draw_doc = "prefix_cash_draw_doc";
+            cop.prefix_opu_doc = "prefix_opu_doc";
             cop.prefix_billing_doc = "prefix_billing_doc";
             cop.prefix_receipt_doc = "prefix_receipt_doc";
             cop.prefix_billing_cover_doc = "prefix_billing_cover_doc";
             cop.prefix_req_doc = "prefix_req_doc";
-            cop.ecc_doc = "ecc_doc";
+            cop.opu_doc = "opu_doc";
             cop.erc_doc = "erc_doc";
 
             cop.table = "b_company";
@@ -118,12 +118,12 @@ namespace clinic_ivf.objdb
             p.amphur_id = p.amphur_id == null ? "" : p.amphur_id;
             p.district_id = p.district_id == null ? "" : p.district_id;
             p.month_curr = p.month_curr == null ? "" : p.month_curr;
-            p.prefix_cash_draw_doc = p.prefix_cash_draw_doc == null ? "" : p.prefix_cash_draw_doc;
+            p.prefix_opu_doc = p.prefix_opu_doc == null ? "" : p.prefix_opu_doc;
             p.prefix_billing_doc = p.prefix_billing_doc == null ? "" : p.prefix_billing_doc;
             p.prefix_receipt_doc = p.prefix_receipt_doc == null ? "" : p.prefix_receipt_doc;
             p.prefix_billing_cover_doc = p.prefix_billing_cover_doc == null ? "" : p.prefix_billing_cover_doc;
             p.prefix_req_doc = p.prefix_req_doc == null ? "" : p.prefix_req_doc;
-            p.ecc_doc = p.ecc_doc == null ? "" : p.ecc_doc;
+            p.opu_doc = p.opu_doc == null ? "" : p.opu_doc;
             p.erc_doc = p.erc_doc == null ? "" : p.erc_doc;
 
             p.amount_reserve = Decimal.TryParse(p.amount_reserve, out chk1) ? chk1.ToString() : "0";
@@ -487,7 +487,7 @@ namespace clinic_ivf.objdb
             doc = cop1.prefix_req_doc + year.Substring(year.Length - 2, 2) + doc;
             return doc;
         }
-        public String genEccDoc()
+        public String genOPUDoc()
         {
             String doc = "", year = "", sql = "";
             Company cop1 = new Company();
@@ -497,7 +497,7 @@ namespace clinic_ivf.objdb
             {
                 sql = "Update " + cop.table + " Set " +
                     " " + cop.year_curr + "='" + year + "' " +
-                    "," + cop.ecc_doc + "=1 " +
+                    "," + cop.opu_doc + "=1 " +
                     "Where " + cop.pkField + "='" + cop1.comp_id + "'";
                 conn.ExecuteNonQuery(conn.conn, sql);
                 doc = "00001";
@@ -505,7 +505,7 @@ namespace clinic_ivf.objdb
             else
             {
                 int chk = 0;
-                if (int.TryParse(cop1.ecc_doc, out chk))
+                if (int.TryParse(cop1.opu_doc, out chk))
                 {
                     chk++;
                     doc = "00000" + chk;
@@ -513,12 +513,12 @@ namespace clinic_ivf.objdb
                     year = cop1.year_curr;
 
                     sql = "Update " + cop.table + " Set " +
-                    "" + cop.ecc_doc + "=" + chk +
+                    "" + cop.opu_doc + "=" + chk +
                     " Where " + cop.pkField + "='" + cop1.comp_id + "'";
                     conn.ExecuteNonQuery(conn.conn, sql);
                 }
             }
-            doc = "CC" + year.Substring(year.Length - 2, 2) + doc;
+            doc = "OPU" + year.Substring(year.Length - 2, 2) + doc;
             return doc;
         }
         public String genErcDoc()
@@ -629,12 +629,12 @@ namespace clinic_ivf.objdb
                 cop1.billing_cover_doc = dt.Rows[0][cop.billing_cover_doc].ToString();
                 cop1.req_doc = dt.Rows[0][cop.req_doc].ToString();
                 cop1.month_curr = dt.Rows[0][cop.month_curr].ToString();
-                cop1.prefix_cash_draw_doc = dt.Rows[0][cop.prefix_cash_draw_doc].ToString();
+                cop1.prefix_opu_doc = dt.Rows[0][cop.prefix_opu_doc].ToString();
                 cop1.prefix_billing_doc = dt.Rows[0][cop.prefix_billing_doc].ToString();
                 cop1.prefix_receipt_doc = dt.Rows[0][cop.prefix_receipt_doc].ToString();
                 cop1.prefix_billing_cover_doc = dt.Rows[0][cop.prefix_billing_cover_doc].ToString();
                 cop1.prefix_req_doc = dt.Rows[0][cop.prefix_req_doc].ToString();
-                cop1.ecc_doc = dt.Rows[0][cop.ecc_doc].ToString();
+                cop1.opu_doc = dt.Rows[0][cop.opu_doc].ToString();
                 cop1.erc_doc = dt.Rows[0][cop.erc_doc].ToString();
             }
             else
@@ -697,12 +697,12 @@ namespace clinic_ivf.objdb
                 cop1.billing_cover_doc = "";
                 cop1.req_doc = "";
                 cop1.month_curr = "";
-                cop1.prefix_cash_draw_doc = "";
+                cop1.prefix_opu_doc = "";
                 cop1.prefix_billing_doc = "";
                 cop1.prefix_receipt_doc = "";
                 cop1.prefix_billing_cover_doc = "";
                 cop1.prefix_req_doc = "";
-                cop1.ecc_doc = "";
+                cop1.opu_doc = "";
                 cop1.erc_doc = "";
             }
 

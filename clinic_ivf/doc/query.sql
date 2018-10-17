@@ -568,3 +568,14 @@ COMMENT = 'id=202' ;
 ALTER TABLE `ivf`.`lab_t_opu` 
 COMMENT = 'id=200' ;
 UPDATE `ivf`.`b_company` SET `active` = '1' WHERE (`comp_id` = '1020000002');
+
+61-10-17
+ALTER TABLE `ivf`.`b_company` 
+CHANGE COLUMN `prefix_cash_draw_doc` `prefix_opu_doc` VARCHAR(255) CHARACTER SET 'utf8' COLLATE 'utf8_bin' NULL DEFAULT NULL ,
+CHANGE COLUMN `ecc_doc` `opu_doc` INT(11) NULL DEFAULT NULL COMMENT 'expense clear cash \\nเลขที่ ของ หน้าจอ ป้อน clear เงินสด ที่เบิกไป\\nใช้เป็น table header ของ table t_expense_clear_cash' ;
+UPDATE `ivf`.`b_company` SET `prefix_opu_doc` = 'OPU', `opu_doc` = '0' WHERE (`comp_id` = '1020000002');
+ALTER TABLE `ivf`.`lab_t_opu` 
+ADD COLUMN `req_id` INT NULL AFTER `embryo_freez_position_6`;
+ALTER TABLE `ivf`.`b_prefix` 
+ADD COLUMN `status_doctor` VARCHAR(255) NULL AFTER `remark`;
+

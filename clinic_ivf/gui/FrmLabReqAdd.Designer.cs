@@ -33,6 +33,7 @@
             this.theme1 = new C1.Win.C1Themes.C1ThemeController();
             this.panel1 = new System.Windows.Forms.Panel();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.txtID = new C1.Win.C1Input.C1TextBox();
             this.txtStfConfirmID = new C1.Win.C1Input.C1TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.txtRemark = new C1.Win.C1Input.C1TextBox();
@@ -52,11 +53,13 @@
             this.txtReqDate = new C1.Win.C1Input.C1DateEdit();
             this.label11 = new System.Windows.Forms.Label();
             this.btnReq = new C1.Win.C1Input.C1Button();
-            this.txtID = new C1.Win.C1Input.C1TextBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.cboDoctor = new C1.Win.C1Input.C1ComboBox();
             this.sB.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.theme1)).BeginInit();
             this.panel1.SuspendLayout();
             this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtID)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtStfConfirmID)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtRemark)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtUserReq)).BeginInit();
@@ -68,7 +71,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.cboLabReq)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtReqDate)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnReq)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtID)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cboDoctor)).BeginInit();
             this.SuspendLayout();
             // 
             // sB
@@ -106,6 +109,8 @@
             // groupBox1
             // 
             this.groupBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.groupBox1.Controls.Add(this.label6);
+            this.groupBox1.Controls.Add(this.cboDoctor);
             this.groupBox1.Controls.Add(this.txtID);
             this.groupBox1.Controls.Add(this.txtStfConfirmID);
             this.groupBox1.Controls.Add(this.label5);
@@ -135,6 +140,20 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Search";
             this.theme1.SetTheme(this.groupBox1, "(default)");
+            // 
+            // txtID
+            // 
+            this.txtID.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtID.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
+            this.txtID.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.txtID.Location = new System.Drawing.Point(86, 20);
+            this.txtID.Name = "txtID";
+            this.txtID.Size = new System.Drawing.Size(30, 20);
+            this.txtID.TabIndex = 548;
+            this.txtID.Tag = null;
+            this.theme1.SetTheme(this.txtID, "(default)");
+            this.txtID.Visible = false;
+            this.txtID.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
             // 
             // txtStfConfirmID
             // 
@@ -410,19 +429,39 @@
             this.btnReq.UseVisualStyleBackColor = true;
             this.btnReq.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
             // 
-            // txtID
+            // label6
             // 
-            this.txtID.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtID.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
-            this.txtID.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.txtID.Location = new System.Drawing.Point(86, 20);
-            this.txtID.Name = "txtID";
-            this.txtID.Size = new System.Drawing.Size(30, 20);
-            this.txtID.TabIndex = 548;
-            this.txtID.Tag = null;
-            this.theme1.SetTheme(this.txtID, "(default)");
-            this.txtID.Visible = false;
-            this.txtID.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            this.label6.AutoSize = true;
+            this.label6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.label6.Location = new System.Drawing.Point(394, 97);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(54, 16);
+            this.label6.TabIndex = 550;
+            this.label6.Text = "Doctor :";
+            this.theme1.SetTheme(this.label6, "(default)");
+            // 
+            // cboDoctor
+            // 
+            this.cboDoctor.AllowSpinLoop = false;
+            this.cboDoctor.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.cboDoctor.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
+            this.cboDoctor.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.cboDoctor.GapHeight = 0;
+            this.cboDoctor.ImagePadding = new System.Windows.Forms.Padding(0);
+            this.cboDoctor.ItemsDisplayMember = "";
+            this.cboDoctor.ItemsValueMember = "";
+            this.cboDoctor.Location = new System.Drawing.Point(494, 95);
+            this.cboDoctor.Name = "cboDoctor";
+            this.cboDoctor.Size = new System.Drawing.Size(207, 20);
+            this.cboDoctor.Style.DropDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.cboDoctor.Style.DropDownBorderColor = System.Drawing.Color.Gainsboro;
+            this.cboDoctor.Style.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.cboDoctor.TabIndex = 549;
+            this.cboDoctor.Tag = null;
+            this.theme1.SetTheme(this.cboDoctor, "(default)");
+            this.cboDoctor.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
             // 
             // FrmLabReqAdd
             // 
@@ -441,6 +480,7 @@
             this.panel1.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtID)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtStfConfirmID)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtRemark)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtUserReq)).EndInit();
@@ -452,7 +492,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.cboLabReq)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtReqDate)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnReq)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtID)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cboDoctor)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -485,5 +525,7 @@
         private C1.Win.C1Input.C1TextBox txtRemark;
         private C1.Win.C1Input.C1TextBox txtStfConfirmID;
         private C1.Win.C1Input.C1TextBox txtID;
+        private System.Windows.Forms.Label label6;
+        private C1.Win.C1Input.C1ComboBox cboDoctor;
     }
 }
