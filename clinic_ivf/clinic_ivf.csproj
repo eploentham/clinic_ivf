@@ -35,9 +35,11 @@
     <ApplicationIcon>Resources\icon-sqr-01.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="C1.C1Report.4, Version=4.0.20182.314, Culture=neutral, PublicKeyToken=594a0605db190bb9" />
     <Reference Include="C1.C1Zip.4, Version=4.0.20182.314, Culture=neutral, PublicKeyToken=79882d576c6336da, processorArchitecture=MSIL" />
     <Reference Include="C1.Win.4, Version=4.0.20182.314, Culture=neutral, PublicKeyToken=944ae1ea0e47ca04, processorArchitecture=MSIL" />
     <Reference Include="C1.Win.C1Command.4, Version=4.0.20182.314, Culture=neutral, PublicKeyToken=e808566f358766d8, processorArchitecture=MSIL" />
+    <Reference Include="C1.Win.C1Document.4, Version=4.0.20182.314, Culture=neutral, PublicKeyToken=944ae1ea0e47ca04" />
     <Reference Include="C1.Win.C1FlexGrid.4, Version=4.0.20182.314, Culture=neutral, PublicKeyToken=79882d576c6336da, processorArchitecture=MSIL" />
     <Reference Include="C1.Win.C1Input.4, Version=4.0.20182.314, Culture=neutral, PublicKeyToken=7e7ff60f0c214f9a, processorArchitecture=MSIL" />
     <Reference Include="C1.Win.C1SuperTooltip.4, Version=4.0.20182.314, Culture=neutral, PublicKeyToken=79882d576c6336da, processorArchitecture=MSIL" />
@@ -45,6 +47,7 @@
     <Reference Include="INIFileParser, Version=2.5.2.0, Culture=neutral, PublicKeyToken=79af7b307b65cf3c, processorArchitecture=MSIL">
       <HintPath>..\packages\ini-parser.2.5.2\lib\net20\INIFileParser.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.VisualBasic" />
     <Reference Include="MySql.Data, Version=8.0.12.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL" />
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
@@ -142,6 +145,18 @@
     <Compile Include="gui\FrmPasswordConfirm.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="gui\FrmPatientAdd.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="gui\FrmPatientAdd.Designer.cs">
+      <DependentUpon>FrmPatientAdd.cs</DependentUpon>
+    </Compile>
+    <Compile Include="gui\FrmPatientView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="gui\FrmPatientView.Designer.cs">
+      <DependentUpon>FrmPatientView.cs</DependentUpon>
+    </Compile>
     <Compile Include="gui\FrmPosition.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -190,6 +205,18 @@
     <Compile Include="gui\MainMenu.Designer.cs">
       <DependentUpon>MainMenu.cs</DependentUpon>
     </Compile>
+    <Compile Include="objdb\FBloodGroupDB.cs" />
+    <Compile Include="objdb\FNationDB.cs" />
+    <Compile Include="objdb\FPatientDischargeStatusDB.cs" />
+    <Compile Include="objdb\FEducationTypeDB.cs" />
+    <Compile Include="objdb\FMarriageStatusDB.cs" />
+    <Compile Include="objdb\FOccupationDB.cs" />
+    <Compile Include="objdb\FPatientRaceDB.cs" />
+    <Compile Include="objdb\FPrefixDB.cs" />
+    <Compile Include="objdb\FRelationDB.cs" />
+    <Compile Include="objdb\FReligionDB.cs" />
+    <Compile Include="objdb\FSexDB.cs" />
+    <Compile Include="object1\FBloodGroup.cs" />
     <Compile Include="objdb\CompanyDB.cs" />
     <Compile Include="objdb\ConnectDB.cs" />
     <Compile Include="objdb\DepartmentDB.cs" />
@@ -206,7 +233,17 @@
     <Compile Include="object1\ComboBoxItem.cs" />
     <Compile Include="object1\Company.cs" />
     <Compile Include="object1\Department.cs" />
+    <Compile Include="object1\FEducationType.cs" />
     <Compile Include="object1\FilterRow.cs" />
+    <Compile Include="object1\FMarriageStatus.cs" />
+    <Compile Include="object1\FNation.cs" />
+    <Compile Include="object1\FOccupation.cs" />
+    <Compile Include="object1\FPatientDischargeStatus.cs" />
+    <Compile Include="object1\FPatientRace.cs" />
+    <Compile Include="object1\FPrefix.cs" />
+    <Compile Include="object1\FRelation.cs" />
+    <Compile Include="object1\FReligion.cs" />
+    <Compile Include="object1\FSex.cs" />
     <Compile Include="object1\FtpClient.cs" />
     <Compile Include="object1\IniFile.cs" />
     <Compile Include="object1\InitConfig.cs" />
@@ -261,6 +298,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="gui\FrmLabReqView.resx">
       <DependentUpon>FrmLabReqView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="gui\FrmPatientAdd.resx">
+      <DependentUpon>FrmPatientAdd.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="gui\FrmPatientView.resx">
+      <DependentUpon>FrmPatientView.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="gui\FrmPosition.resx">
       <DependentUpon>FrmPosition.cs</DependentUpon>

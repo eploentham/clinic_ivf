@@ -60,6 +60,15 @@ namespace clinic_ivf.gui
             menuTestForm.Click += MenuTestForm_Click;
             menuReqLab.Click += MenuReqLab_Click;
             menuLabAccept.Click += MenuLabAccept_Click;
+            menuPatient.Click += MenuPatient_Click;
+        }
+
+        private void MenuPatient_Click(object sender, EventArgs e)
+        {
+            //throw new NotImplementedException();
+            FrmPatientView frm = new FrmPatientView(ic, this);
+            frm.FormBorderStyle = FormBorderStyle.None;
+            AddNewTab(frm, menuPatient.Text + " ");
         }
 
         private void MenuLabAccept_Click(object sender, EventArgs e)

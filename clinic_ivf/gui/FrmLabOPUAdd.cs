@@ -43,8 +43,8 @@ namespace clinic_ivf.gui
             fEdit = new Font(ic.iniC.grdViewFontName, ic.grdViewFontSize, FontStyle.Regular);
             fEditB = new Font(ic.iniC.grdViewFontName, ic.grdViewFontSize, FontStyle.Bold);
 
-            C1ThemeController.ApplicationTheme = ic.iniC.themeApplication;
-            theme1.Theme = C1ThemeController.ApplicationTheme;
+            //C1ThemeController.ApplicationTheme = ic.iniC.themeApplication;
+            //theme1.Theme = C1ThemeController.ApplicationTheme;
             theme1.SetTheme(sB, "BeigeOne");                       
 
             sB1.Text = "";
