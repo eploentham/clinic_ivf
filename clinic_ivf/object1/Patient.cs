@@ -43,11 +43,11 @@ namespace clinic_ivf.object1
         public String patient_couple_pid { get; set; }
         public String patient_community_status { get; set; }
         public String patient_private_doctor { get; set; }
-        public String patient_pid { get; set; }
+        public String pid { get; set; }
         public String patient_mother_lastname { get; set; }
         public String patient_father_lastname { get; set; }
         public String patient_couple_lastname { get; set; }
-        public String patient_phone_number { get; set; }
+        public String mobile1 { get; set; }
         public String f_patient_relation_id { get; set; }
         public String patient_contact_phone_number { get; set; }
         public String patient_contact_sex_id { get; set; }
@@ -69,7 +69,7 @@ namespace clinic_ivf.object1
         public String patient_active { get; set; }
         public String patient_drugallergy { get; set; }
         public String patient_language_for_print { get; set; }
-        public String patient_patient_mobile_phone { get; set; }
+        public String mobile2 { get; set; }
         public String patient_contact_mobile_phone { get; set; }
         public String patient_has_home_in_pcu { get; set; }
         public String t_health_family_id { get; set; }
@@ -94,5 +94,8 @@ namespace clinic_ivf.object1
         public String patient_patient_email { get; set; }
         public String patient_contact_email { get; set; }
         public String picture_profile { get; set; }
+        public String line_id { get; set; }
+        public String email { get; set; }
+        public String passport { get; set; }
     }
 }

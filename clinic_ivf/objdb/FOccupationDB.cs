@@ -21,6 +21,7 @@ namespace clinic_ivf.objdb
             fo = new FOccupation();
             fo.f_patient_occupation_id = "f_patient_occupation_id";
             fo.patient_occupation_description = "patient_occupation_description";
+            fo.active = "active";
 
             fo.pkField = "f_patient_occupation_id";
             fo.table = "f_patient_occupation";

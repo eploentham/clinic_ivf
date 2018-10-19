@@ -141,5 +141,18 @@ namespace clinic_ivf.control
                 }
             }
         }
+        public void setC1Combo(C1ComboBox c, String data)
+        {
+            if (c.Items.Count == 0) return;
+            c.SelectedIndex = c.SelectedItem == null ? 0 : c.SelectedIndex;
+            foreach (ComboBoxItem item in c.Items)
+            {
+                if (item.Value.Equals(data))
+                {
+                    c.SelectedItem = item;
+                    break;
+                }
+            }
+        }
     }
 }

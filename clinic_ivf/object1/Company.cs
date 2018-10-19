@@ -64,6 +64,7 @@ namespace clinic_ivf.object1
         public String prefix_billing_cover_doc { get; set; }
         public String prefix_req_doc { get; set; }
         public String opu_doc { get; set; }
-        public String erc_doc { get; set; }
+        public String hn_doc { get; set; }
+        public String prefix_hn_doc { get; set; }
     }
 }

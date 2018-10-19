@@ -213,6 +213,7 @@
     <Compile Include="objdb\FOccupationDB.cs" />
     <Compile Include="objdb\FPatientRaceDB.cs" />
     <Compile Include="objdb\FPrefixDB.cs" />
+    <Compile Include="objdb\FRaceDB.cs" />
     <Compile Include="objdb\FRelationDB.cs" />
     <Compile Include="objdb\FReligionDB.cs" />
     <Compile Include="objdb\FSexDB.cs" />
@@ -241,6 +242,7 @@
     <Compile Include="object1\FPatientDischargeStatus.cs" />
     <Compile Include="object1\FPatientRace.cs" />
     <Compile Include="object1\FPrefix.cs" />
+    <Compile Include="object1\FRace.cs" />
     <Compile Include="object1\FRelation.cs" />
     <Compile Include="object1\FReligion.cs" />
     <Compile Include="object1\FSex.cs" />
@@ -926,6 +928,15 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\icon-sqr-01.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\theory24.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\themes24.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\unit-completed24.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -9,31 +9,32 @@ using System.Threading.Tasks;
 
 namespace clinic_ivf.objdb
 {
-    public class FPatientRaceDB
+    public class FRaceDB
     {
-        FPatientRace fpr;
+        FRace fpn;
         ConnectDB conn;
-        public FPatientRaceDB(ConnectDB c)
+        public FRaceDB(ConnectDB c)
         {
             conn = c;
             initConfig();
         }
         private void initConfig()
         {
-            fpr = new FPatientRace();
-            fpr.f_patient_race_id = "f_patient_race_id";
-            fpr.patient_race_description = "patient_race_description";
+            fpn = new FRace();
+            fpn.f_patient_race_id = "f_patient_race_id";
+            fpn.patient_race_description = "patient_race_description";
+            fpn.active = "active";
 
-            fpr.pkField = "f_patient_race_id";
-            fpr.table = "f_patient_race";
+            fpn.pkField = "f_patient_race_id";
+            fpn.table = "f_patient_race";
         }
         public DataTable selectAll()
         {
             DataTable dt = new DataTable();
-            String sql = "select fpr.*  " +
-                "From " + fpr.table + " fpr " +
+            String sql = "select fpn.*  " +
+                "From " + fpn.table + " fpn " +
                 " " +
-                "Where fpr." + fpr.active + " ='1' ";
+                "Where fpn." + fpn.active + " ='1' ";
             dt = conn.selectData(conn.conn, sql);
 
             return dt;
@@ -41,10 +42,10 @@ namespace clinic_ivf.objdb
         public DataTable selectByPk(String copId)
         {
             DataTable dt = new DataTable();
-            String sql = "select fpr.* " +
-                "From " + fpr.table + " fpr " +
+            String sql = "select fpn.* " +
+                "From " + fpn.table + " fpn " +
                 //"Left Join t_ssdata_visit ssv On ssv.ssdata_visit_id = bd.ssdata_visit_id " +
-                "Where fpr." + fpr.pkField + " ='" + copId + "' ";
+                "Where fpn." + fpn.pkField + " ='" + copId + "' ";
             dt = conn.selectData(conn.conn, sql);
             return dt;
         }
@@ -52,10 +53,10 @@ namespace clinic_ivf.objdb
         {
             FPrefix cop1 = new FPrefix();
             DataTable dt = new DataTable();
-            String sql = "select fpr.* " +
-                "From " + fpr.table + " fpr " +
+            String sql = "select fpn.* " +
+                "From " + fpn.table + " fpn " +
                 //"Left Join t_ssdata_visit ssv On ssv.ssdata_visit_id = bd.ssdata_visit_id " +
-                "Where fpr." + fpr.pkField + " ='" + copId + "' ";
+                "Where fpn." + fpn.pkField + " ='" + copId + "' ";
             dt = conn.selectData(conn.conn, sql);
             cop1 = setPrefix(dt);
             return cop1;
@@ -65,8 +66,8 @@ namespace clinic_ivf.objdb
             FPrefix dept1 = new FPrefix();
             if (dt.Rows.Count > 0)
             {
-                dept1.f_patient_prefix_id = dt.Rows[0][fpr.f_patient_race_id].ToString();
-                dept1.patient_prefix_description = dt.Rows[0][fpr.patient_race_description].ToString();
+                dept1.f_patient_prefix_id = dt.Rows[0][fpn.f_patient_race_id].ToString();
+                dept1.patient_prefix_description = dt.Rows[0][fpn.patient_race_description].ToString();
             }
 
             return dept1;
@@ -74,15 +75,15 @@ namespace clinic_ivf.objdb
         public DataTable selectC1()
         {
             DataTable dt = new DataTable();
-            String sql = "select fpr." + fpr.pkField + ",fpr." + fpr.patient_race_description + " " +
-                "From " + fpr.table + " fpr " +
+            String sql = "select fpn." + fpn.pkField + ",fpn." + fpn.patient_race_description + " " +
+                "From " + fpn.table + " fpn " +
                 " " +
-                "Where fpr." + fpr.active + " ='1' ";
+                "Where fpn." + fpn.active + " ='1' ";
             dt = conn.selectData(conn.conn, sql);
 
             return dt;
         }
-        public C1ComboBox setCboPrefix(C1ComboBox c)
+        public C1ComboBox setCboRace(C1ComboBox c)
         {
             ComboBoxItem item = new ComboBoxItem();
             DataTable dt = selectC1();
@@ -96,8 +97,8 @@ namespace clinic_ivf.objdb
             foreach (DataRow row in dt.Rows)
             {
                 item = new ComboBoxItem();
-                item.Text = row[fpr.patient_race_description].ToString();
-                item.Value = row[fpr.f_patient_race_id].ToString();
+                item.Text = row[fpn.patient_race_description].ToString();
+                item.Value = row[fpn.f_patient_race_id].ToString();
 
                 c.Items.Add(item);
             }

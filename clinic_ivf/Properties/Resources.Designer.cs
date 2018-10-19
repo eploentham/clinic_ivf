@@ -1763,6 +1763,26 @@ namespace clinic_ivf.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap themes24 {
+            get {
+                object obj = ResourceManager.GetObject("themes24", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap theory24 {
+            get {
+                object obj = ResourceManager.GetObject("theory24", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Ticket_24 {
             get {
                 object obj = ResourceManager.GetObject("Ticket_24", resourceCulture);
@@ -1856,6 +1876,16 @@ namespace clinic_ivf.Properties {
         internal static System.Drawing.Bitmap unit_completed16 {
             get {
                 object obj = ResourceManager.GetObject("unit_completed16", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap unit_completed24 {
+            get {
+                object obj = ResourceManager.GetObject("unit_completed24", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

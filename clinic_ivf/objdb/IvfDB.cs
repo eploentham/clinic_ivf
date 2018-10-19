@@ -19,6 +19,18 @@ namespace clinic_ivf.objdb
         public BItemDB itmDB;
         public LabRequestDB lbReqDB;
         public CompanyDB copDB;
+        public PatientDB pttDB;
+
+        public FPrefixDB fpDB;
+        public FBloodGroupDB fbgDB;
+        public FSexDB sexDB;
+        public FMarriageStatusDB fmsDB;
+        public FRaceDB frcDB;
+        public FNationDB fpnDB;
+        public FEducationTypeDB fetDB;
+        public FRelationDB frlDB;
+        public FReligionDB frgDB;
+        public FPatientRaceDB fprDB;
 
         public IvfDB(ConnectDB c)
         {
@@ -37,6 +49,17 @@ namespace clinic_ivf.objdb
             itmDB = new BItemDB(conn);
             lbReqDB = new LabRequestDB(conn);
             copDB = new CompanyDB(conn);
+            fpDB = new FPrefixDB(conn);
+            fbgDB = new FBloodGroupDB(conn);
+            sexDB = new FSexDB(conn);
+            fmsDB = new FMarriageStatusDB(conn);
+            fpnDB = new FNationDB(conn);
+            fetDB = new FEducationTypeDB(conn);
+            frlDB = new FRelationDB(conn);
+            frgDB = new FReligionDB(conn);
+            fprDB = new FPatientRaceDB(conn);
+            frcDB = new FRaceDB(conn);
+            pttDB = new PatientDB(conn);
 
             Console.WriteLine("ivfDB end");
         }

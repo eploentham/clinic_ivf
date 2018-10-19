@@ -1,29 +1,108 @@
-﻿using clinic_ivf.object1;
+﻿using C1.Win.C1Input;
+using clinic_ivf.object1;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace clinic_ivf.objdb
 {
-    class FMarriageDB
+    public class FMarriageStatusDB
     {
-        FMarriageStatus fm;
+        FMarriageStatus fms;
         ConnectDB conn;
-        public FMarriageDB(ConnectDB c)
+        public FMarriageStatusDB(ConnectDB c)
         {
             conn = c;
             initConfig();
         }
         private void initConfig()
         {
-            fm = new FMarriageStatus();
-            fm.f_patient_marriage_status_id = "f_patient_marriage_status_id";
-            fm.patient_marriage_status_description = "patient_marriage_status_description";
+            fms = new FMarriageStatus();
+            fms.f_patient_marriage_status_id = "f_patient_marriage_status_id";
+            fms.patient_marriage_status_description = "patient_marriage_status_description";
+            fms.active = "active";
 
-            fm.pkField = "f_patient_marriage_status_id";
-            fm.table = "f_patient_marriage_status";
+            fms.pkField = "f_patient_marriage_status_id";
+            fms.table = "f_patient_marriage_status";
+        }
+        public DataTable selectAll()
+        {
+            DataTable dt = new DataTable();
+            String sql = "select fms.*  " +
+                "From " + fms.table + " fms " +
+                " " +
+                "Where fms." + fms.active + " ='1' ";
+            dt = conn.selectData(conn.conn, sql);
+
+            return dt;
+        }
+        public DataTable selectByPk(String copId)
+        {
+            DataTable dt = new DataTable();
+            String sql = "select fms.* " +
+                "From " + fms.table + " fms " +
+                //"Left Join t_ssdata_visit ssv On ssv.ssdata_visit_id = bd.ssdata_visit_id " +
+                "Where fms." + fms.pkField + " ='" + copId + "' ";
+            dt = conn.selectData(conn.conn, sql);
+            return dt;
+        }
+        public FPrefix selectByPk1(String copId)
+        {
+            FPrefix cop1 = new FPrefix();
+            DataTable dt = new DataTable();
+            String sql = "select fms.* " +
+                "From " + fms.table + " fms " +
+                //"Left Join t_ssdata_visit ssv On ssv.ssdata_visit_id = bd.ssdata_visit_id " +
+                "Where fms." + fms.pkField + " ='" + copId + "' ";
+            dt = conn.selectData(conn.conn, sql);
+            cop1 = setMarriageStatus(dt);
+            return cop1;
+        }
+        private FPrefix setMarriageStatus(DataTable dt)
+        {
+            FPrefix dept1 = new FPrefix();
+            if (dt.Rows.Count > 0)
+            {
+                dept1.f_patient_prefix_id = dt.Rows[0][fms.f_patient_marriage_status_id].ToString();
+                dept1.patient_prefix_description = dt.Rows[0][fms.patient_marriage_status_description].ToString();
+            }
+
+            return dept1;
+        }
+        public DataTable selectC1()
+        {
+            DataTable dt = new DataTable();
+            String sql = "select fms." + fms.pkField + ",fms." + fms.patient_marriage_status_description + " " +
+                "From " + fms.table + " fms " +
+                " " +
+                "Where fms." + fms.active + " ='1' ";
+            dt = conn.selectData(conn.conn, sql);
+
+            return dt;
+        }
+        public C1ComboBox setCboMarriage(C1ComboBox c)
+        {
+            ComboBoxItem item = new ComboBoxItem();
+            DataTable dt = selectC1();
+            //String aaa = "";
+            ComboBoxItem item1 = new ComboBoxItem();
+            item1.Text = "";
+            item1.Value = "000";
+            c.Items.Clear();
+            c.Items.Add(item1);
+            //for (int i = 0; i < dt.Rows.Count; i++)
+            foreach (DataRow row in dt.Rows)
+            {
+                item = new ComboBoxItem();
+                item.Text = row[fms.patient_marriage_status_description].ToString();
+                item.Value = row[fms.f_patient_marriage_status_id].ToString();
+
+                c.Items.Add(item);
+            }
+            return c;
         }
     }
 }

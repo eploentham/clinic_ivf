@@ -84,7 +84,8 @@ namespace clinic_ivf.objdb
             cop.prefix_billing_cover_doc = "prefix_billing_cover_doc";
             cop.prefix_req_doc = "prefix_req_doc";
             cop.opu_doc = "opu_doc";
-            cop.erc_doc = "erc_doc";
+            cop.hn_doc = "hn_doc";
+            cop.prefix_hn_doc = "prefix_hn_doc";
 
             cop.table = "b_company";
             cop.pkField = "comp_id";
@@ -123,8 +124,9 @@ namespace clinic_ivf.objdb
             p.prefix_receipt_doc = p.prefix_receipt_doc == null ? "" : p.prefix_receipt_doc;
             p.prefix_billing_cover_doc = p.prefix_billing_cover_doc == null ? "" : p.prefix_billing_cover_doc;
             p.prefix_req_doc = p.prefix_req_doc == null ? "" : p.prefix_req_doc;
-            p.opu_doc = p.opu_doc == null ? "" : p.opu_doc;
-            p.erc_doc = p.erc_doc == null ? "" : p.erc_doc;
+            p.opu_doc = p.opu_doc == null ? "0" : p.opu_doc;
+            p.hn_doc = p.hn_doc == null ? "0" : p.hn_doc;
+            p.prefix_hn_doc = p.prefix_hn_doc == null ? "" : p.prefix_hn_doc;
 
             p.amount_reserve = Decimal.TryParse(p.amount_reserve, out chk1) ? chk1.ToString() : "0";
             p.billing_doc = int.TryParse(p.billing_doc, out chk) ? chk.ToString() : "0";
@@ -521,7 +523,7 @@ namespace clinic_ivf.objdb
             doc = "OPU" + year.Substring(year.Length - 2, 2) + doc;
             return doc;
         }
-        public String genErcDoc()
+        public String genHNDoc()
         {
             String doc = "", year = "", sql = "";
             Company cop1 = new Company();
@@ -531,7 +533,7 @@ namespace clinic_ivf.objdb
             {
                 sql = "Update " + cop.table + " Set " +
                     " " + cop.year_curr + "='" + year + "' " +
-                    "," + cop.erc_doc + "=1 " +
+                    "," + cop.hn_doc + "=1 " +
                     "Where " + cop.pkField + "='" + cop1.comp_id + "'";
                 conn.ExecuteNonQuery(conn.conn, sql);
                 doc = "00001";
@@ -539,7 +541,7 @@ namespace clinic_ivf.objdb
             else
             {
                 int chk = 0;
-                if (int.TryParse(cop1.erc_doc, out chk))
+                if (int.TryParse(cop1.hn_doc, out chk))
                 {
                     chk++;
                     doc = "00000" + chk;
@@ -547,12 +549,12 @@ namespace clinic_ivf.objdb
                     year = cop1.year_curr;
 
                     sql = "Update " + cop.table + " Set " +
-                    "" + cop.erc_doc + "=" + chk +
+                    "" + cop.hn_doc + "=" + chk +
                     " Where " + cop.pkField + "='" + cop1.comp_id + "'";
                     conn.ExecuteNonQuery(conn.conn, sql);
                 }
             }
-            doc = "RC" + year.Substring(year.Length - 2, 2) + doc;
+            doc = cop1.prefix_hn_doc + year.Substring(year.Length - 2, 2) + doc;
             return doc;
         }
         public String updateAmountReserve(String amt)
@@ -635,7 +637,8 @@ namespace clinic_ivf.objdb
                 cop1.prefix_billing_cover_doc = dt.Rows[0][cop.prefix_billing_cover_doc].ToString();
                 cop1.prefix_req_doc = dt.Rows[0][cop.prefix_req_doc].ToString();
                 cop1.opu_doc = dt.Rows[0][cop.opu_doc].ToString();
-                cop1.erc_doc = dt.Rows[0][cop.erc_doc].ToString();
+                cop1.hn_doc = dt.Rows[0][cop.hn_doc].ToString();
+                cop1.prefix_hn_doc = dt.Rows[0][cop.prefix_hn_doc].ToString();
             }
             else
             {
@@ -703,7 +706,8 @@ namespace clinic_ivf.objdb
                 cop1.prefix_billing_cover_doc = "";
                 cop1.prefix_req_doc = "";
                 cop1.opu_doc = "";
-                cop1.erc_doc = "";
+                cop1.hn_doc = "";
+                cop1.prefix_hn_doc = "";
             }
 
             return cop1;

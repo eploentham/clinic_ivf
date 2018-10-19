@@ -579,3 +579,313 @@ ADD COLUMN `req_id` INT NULL AFTER `embryo_freez_position_6`;
 ALTER TABLE `ivf`.`b_prefix` 
 ADD COLUMN `status_doctor` VARCHAR(255) NULL AFTER `remark`;
 
+
+
+
+61-10-19
+ALTER TABLE f_patient_religion AUTO_INCREMENT = 2180000000;
+INSERT INTO `ivf`.`f_patient_religion` (`patient_religion_description`) VALUES ('พุทธ');
+INSERT INTO `ivf`.`f_patient_religion` (`patient_religion_description`) VALUES ('อิสลาม');
+INSERT INTO `ivf`.`f_patient_religion` (`patient_religion_description`) VALUES ('คริสต์');
+INSERT INTO `ivf`.`f_patient_religion` (`patient_religion_description`) VALUES ('ฮินดู');
+INSERT INTO `ivf`.`f_patient_religion` (`patient_religion_description`) VALUES ('ขงจื้อ');
+INSERT INTO `ivf`.`f_patient_religion` (`patient_religion_description`) VALUES ('ไม่นับถือศาสนา');
+INSERT INTO `ivf`.`f_patient_religion` (`patient_religion_description`) VALUES ('อื่นๆ');
+INSERT INTO `ivf`.`f_patient_religion` (`patient_religion_description`) VALUES ('ไม่ทราบ');
+
+UPDATE `ivf`.`f_patient_blood_group` SET `patient_blood_group_description` = 'ไม่ระบุ' WHERE (`f_patient_blood_group_id` = '2140000001');
+INSERT INTO `ivf`.`f_patient_blood_group` (`patient_blood_group_description`) VALUES ('A');
+INSERT INTO `ivf`.`f_patient_blood_group` (`patient_blood_group_description`) VALUES ('B');
+INSERT INTO `ivf`.`f_patient_blood_group` (`patient_blood_group_description`) VALUES ('AB');
+INSERT INTO `ivf`.`f_patient_blood_group` (`patient_blood_group_description`) VALUES ('O');
+
+ALTER TABLE f_patient_relation AUTO_INCREMENT = 219000000;
+DELETE FROM `ivf`.`f_patient_relation` WHERE (`f_patient_relation_id` = '2147483647');
+INSERT INTO `ivf`.`f_patient_relation` (`patient_relation_description`) VALUES ('ไม่ระบุ');
+INSERT INTO `ivf`.`f_patient_relation` (`patient_relation_description`) VALUES ('บิดา');
+INSERT INTO `ivf`.`f_patient_relation` (`patient_relation_description`) VALUES ('มารดา');
+INSERT INTO `ivf`.`f_patient_relation` (`patient_relation_description`) VALUES ('พี่');
+INSERT INTO `ivf`.`f_patient_relation` (`patient_relation_description`) VALUES ('น้อง');
+INSERT INTO `ivf`.`f_patient_relation` (`patient_relation_description`) VALUES ('ลุง');
+INSERT INTO `ivf`.`f_patient_relation` (`patient_relation_description`) VALUES ('ป้า');
+INSERT INTO `ivf`.`f_patient_relation` (`patient_relation_description`) VALUES ('น้า');
+INSERT INTO `ivf`.`f_patient_relation` (`patient_relation_description`) VALUES ('อา');
+INSERT INTO `ivf`.`f_patient_relation` (`patient_relation_description`) VALUES ('เพื่อน');
+INSERT INTO `ivf`.`f_patient_relation` (`patient_relation_description`) VALUES ('ภรรยา');
+INSERT INTO `ivf`.`f_patient_relation` (`patient_relation_description`) VALUES ('สามี');
+INSERT INTO `ivf`.`f_patient_relation` (`patient_relation_description`) VALUES ('ยาย');
+INSERT INTO `ivf`.`f_patient_relation` (`patient_relation_description`) VALUES ('แฟน');
+INSERT INTO `ivf`.`f_patient_relation` (`patient_relation_description`) VALUES ('คนรู้จัก');
+INSERT INTO `ivf`.`f_patient_relation` (`patient_relation_description`) VALUES ('ลูก');
+INSERT INTO `ivf`.`f_patient_relation` (`patient_relation_description`) VALUES ('ตนเอง');
+
+ALTER TABLE f_patient_race AUTO_INCREMENT = 217000000;
+INSERT INTO `ivf`.`f_patient_race` (`patient_race_description`) VALUES ('ไม่ระบุ');
+INSERT INTO `ivf`.`f_patient_race` (`patient_race_description`) VALUES ('อังกฤษ');
+INSERT INTO `ivf`.`f_patient_race` (`patient_race_description`) VALUES ('โปรตุเกส');
+INSERT INTO `ivf`.`f_patient_race` (`patient_race_description`) VALUES ('เนเธอร์แลนด์');
+INSERT INTO `ivf`.`f_patient_race` (`patient_race_description`) VALUES ('เยอรมัน');
+INSERT INTO `ivf`.`f_patient_race` (`patient_race_description`) VALUES ('ฝรั่งเศส');
+INSERT INTO `ivf`.`f_patient_race` (`patient_race_description`) VALUES ('เดนมาร์ก');
+INSERT INTO `ivf`.`f_patient_race` (`patient_race_description`) VALUES ('สวีเดน');
+INSERT INTO `ivf`.`f_patient_race` (`patient_race_description`) VALUES ('ไนจีเรีย');
+INSERT INTO `ivf`.`f_patient_race` (`patient_race_description`) VALUES ('สหรัฐอาหรับเอมิเรตส์');
+INSERT INTO `ivf`.`f_patient_race` (`patient_race_description`) VALUES ('กินี');
+INSERT INTO `ivf`.`f_patient_race` (`patient_race_description`) VALUES ('สวีสเซอร์แลนด์');
+INSERT INTO `ivf`.`f_patient_race` (`patient_race_description`) VALUES ('ปาปัวนิวกินี');
+INSERT INTO `ivf`.`f_patient_race` (`patient_race_description`) VALUES ('ม้ง');
+INSERT INTO `ivf`.`f_patient_race` (`patient_race_description`) VALUES ('เมี่ยน');
+INSERT INTO `ivf`.`f_patient_race` (`patient_race_description`) VALUES ('อิตาลี');
+INSERT INTO `ivf`.`f_patient_race` (`patient_race_description`) VALUES ('รอให้สัญชาติไทย*');
+INSERT INTO `ivf`.`f_patient_race` (`patient_race_description`) VALUES ('นอร์เวย์');
+INSERT INTO `ivf`.`f_patient_race` (`patient_race_description`) VALUES ('อัฟกัน');
+INSERT INTO `ivf`.`f_patient_race` (`patient_race_description`) VALUES ('บาห์เรน');
+INSERT INTO `ivf`.`f_patient_race` (`patient_race_description`) VALUES ('ภูฏาน');
+INSERT INTO `ivf`.`f_patient_race` (`patient_race_description`) VALUES ('จอร์แดน');
+INSERT INTO `ivf`.`f_patient_race` (`patient_race_description`) VALUES ('เกาหลีเหนือ');
+INSERT INTO `ivf`.`f_patient_race` (`patient_race_description`) VALUES ('มัลดีฟ');
+INSERT INTO `ivf`.`f_patient_race` (`patient_race_description`) VALUES ('มองโกเลีย');
+INSERT INTO `ivf`.`f_patient_race` (`patient_race_description`) VALUES ('โอมาน');
+INSERT INTO `ivf`.`f_patient_race` (`patient_race_description`) VALUES ('กาตาร์');
+INSERT INTO `ivf`.`f_patient_race` (`patient_race_description`) VALUES ('เยเมน');
+INSERT INTO `ivf`.`f_patient_race` (`patient_race_description`) VALUES ('ออสเตรีย');
+INSERT INTO `ivf`.`f_patient_race` (`patient_race_description`) VALUES ('เยเมน(ใต้)**');
+INSERT INTO `ivf`.`f_patient_race` (`patient_race_description`) VALUES ('หมู่เกาะฟิจิ');
+INSERT INTO `ivf`.`f_patient_race` (`patient_race_description`) VALUES ('คิริบาส');
+INSERT INTO `ivf`.`f_patient_race` (`patient_race_description`) VALUES ('นาอูรู');
+INSERT INTO `ivf`.`f_patient_race` (`patient_race_description`) VALUES ('หมู่เกาะโซโลมอน');
+INSERT INTO `ivf`.`f_patient_race` (`patient_race_description`) VALUES ('ตองก้า');
+INSERT INTO `ivf`.`f_patient_race` (`patient_race_description`) VALUES ('ตูวาลู');
+INSERT INTO `ivf`.`f_patient_race` (`patient_race_description`) VALUES ('วานูอาตู');
+INSERT INTO `ivf`.`f_patient_race` (`patient_race_description`) VALUES ('ซามัว');
+INSERT INTO `ivf`.`f_patient_race` (`patient_race_description`) VALUES ('แอลเบเนีย');
+INSERT INTO `ivf`.`f_patient_race` (`patient_race_description`) VALUES ('ไอร์แลนด์');
+INSERT INTO `ivf`.`f_patient_race` (`patient_race_description`) VALUES ('อันดอร์รา');
+INSERT INTO `ivf`.`f_patient_race` (`patient_race_description`) VALUES ('เยอรมนีตะวันออก**');
+INSERT INTO `ivf`.`f_patient_race` (`patient_race_description`) VALUES ('ไอซ์แลนด์');
+INSERT INTO `ivf`.`f_patient_race` (`patient_race_description`) VALUES ('ลิกเตนสไตน์');
+INSERT INTO `ivf`.`f_patient_race` (`patient_race_description`) VALUES ('โมนาโก');
+INSERT INTO `ivf`.`f_patient_race` (`patient_race_description`) VALUES ('ซานมารีโน');
+INSERT INTO `ivf`.`f_patient_race` (`patient_race_description`) VALUES ('บริติช');
+INSERT INTO `ivf`.`f_patient_race` (`patient_race_description`) VALUES ('แอลจีเรีย');
+INSERT INTO `ivf`.`f_patient_race` (`patient_race_description`) VALUES ('แองโกลา');
+INSERT INTO `ivf`.`f_patient_race` (`patient_race_description`) VALUES ('เบนิน');
+INSERT INTO `ivf`.`f_patient_race` (`patient_race_description`) VALUES ('ฟินแลนด์');
+INSERT INTO `ivf`.`f_patient_race` (`patient_race_description`) VALUES ('บอตสวานา');
+INSERT INTO `ivf`.`f_patient_race` (`patient_race_description`) VALUES ('บูร์กินาฟาโซ');
+INSERT INTO `ivf`.`f_patient_race` (`patient_race_description`) VALUES ('บุรุนดี');
+INSERT INTO `ivf`.`f_patient_race` (`patient_race_description`) VALUES ('แคเมอรูน');
+INSERT INTO `ivf`.`f_patient_race` (`patient_race_description`) VALUES ('เคปเวิร์ด');
+INSERT INTO `ivf`.`f_patient_race` (`patient_race_description`) VALUES ('แอฟริกากลาง');
+INSERT INTO `ivf`.`f_patient_race` (`patient_race_description`) VALUES ('ชาด');
+INSERT INTO `ivf`.`f_patient_race` (`patient_race_description`) VALUES ('คอโมโรส');
+INSERT INTO `ivf`.`f_patient_race` (`patient_race_description`) VALUES ('คองโก');
+INSERT INTO `ivf`.`f_patient_race` (`patient_race_description`) VALUES ('โกตดิวัวร์');
+INSERT INTO `ivf`.`f_patient_race` (`patient_race_description`) VALUES ('เบลเยี่ยม');
+INSERT INTO `ivf`.`f_patient_race` (`patient_race_description`) VALUES ('จิบูตี');
+INSERT INTO `ivf`.`f_patient_race` (`patient_race_description`) VALUES ('อิเควทอเรียลกินี');
+INSERT INTO `ivf`.`f_patient_race` (`patient_race_description`) VALUES ('กาบอง');
+INSERT INTO `ivf`.`f_patient_race` (`patient_race_description`) VALUES ('แกมเบีย');
+INSERT INTO `ivf`.`f_patient_race` (`patient_race_description`) VALUES ('กานา');
+INSERT INTO `ivf`.`f_patient_race` (`patient_race_description`) VALUES ('กินีบีสเซา');
+INSERT INTO `ivf`.`f_patient_race` (`patient_race_description`) VALUES ('เลโซโท');
+
+
+INSERT INTO `ivf`.`f_patient_prefix` (`patient_prefix_description`) VALUES ('ไม่ระบุ');
+INSERT INTO `ivf`.`f_patient_prefix` (`patient_prefix_description`) VALUES ('ด.ช.');
+INSERT INTO `ivf`.`f_patient_prefix` (`patient_prefix_description`) VALUES ('ด.ญ.');
+INSERT INTO `ivf`.`f_patient_prefix` (`patient_prefix_description`) VALUES ('นาย');
+INSERT INTO `ivf`.`f_patient_prefix` (`patient_prefix_description`) VALUES ('นางสาว');
+INSERT INTO `ivf`.`f_patient_prefix` (`patient_prefix_description`) VALUES ('นาง');
+
+
+INSERT INTO `ivf`.`f_patient_occupation` (`patient_occupation_description`) VALUES ('ไม่มีอาชีพ');
+INSERT INTO `ivf`.`f_patient_occupation` (`patient_occupation_description`) VALUES ('นักสำรวจ');
+INSERT INTO `ivf`.`f_patient_occupation` (`patient_occupation_description`) VALUES ('ช่างเทคนิควิศวกรรม');
+INSERT INTO `ivf`.`f_patient_occupation` (`patient_occupation_description`) VALUES ('นักวิทยาศาสตร์');
+INSERT INTO `ivf`.`f_patient_occupation` (`patient_occupation_description`) VALUES ('แพทย์');
+INSERT INTO `ivf`.`f_patient_occupation` (`patient_occupation_description`) VALUES ('ศัลยแพทย์');
+INSERT INTO `ivf`.`f_patient_occupation` (`patient_occupation_description`) VALUES ('ทันตแพทย์');
+INSERT INTO `ivf`.`f_patient_occupation` (`patient_occupation_description`) VALUES ('สัตวแพทย์');
+INSERT INTO `ivf`.`f_patient_occupation` (`patient_occupation_description`) VALUES ('อาจารย์มหาวิทยาลัย');
+INSERT INTO `ivf`.`f_patient_occupation` (`patient_occupation_description`) VALUES ('อาจารย์โรงเรียน');
+INSERT INTO `ivf`.`f_patient_occupation` (`patient_occupation_description`) VALUES ('พยาบาล');
+INSERT INTO `ivf`.`f_patient_occupation` (`patient_occupation_description`) VALUES ('เภสัชกร');
+INSERT INTO `ivf`.`f_patient_occupation` (`patient_occupation_description`) VALUES ('ผู้ปฏิบัติงานทางเทคนิคการแพทย์');
+INSERT INTO `ivf`.`f_patient_occupation` (`patient_occupation_description`) VALUES ('พนักงานที่ทำงานช่วยเหลือด้านกา');
+INSERT INTO `ivf`.`f_patient_occupation` (`patient_occupation_description`) VALUES ('ผู้พิพากษา');
+INSERT INTO `ivf`.`f_patient_occupation` (`patient_occupation_description`) VALUES ('อัยการ');
+INSERT INTO `ivf`.`f_patient_occupation` (`patient_occupation_description`) VALUES ('ประติมากร');
+
+INSERT INTO `ivf`.`f_patient_marriage_status` (`patient_marriage_status_description`) VALUES ('โสด');
+INSERT INTO `ivf`.`f_patient_marriage_status` (`patient_marriage_status_description`) VALUES ('คู่');
+INSERT INTO `ivf`.`f_patient_marriage_status` (`patient_marriage_status_description`) VALUES ('แยกกันอยู่(ร้าง)');
+INSERT INTO `ivf`.`f_patient_marriage_status` (`patient_marriage_status_description`) VALUES ('หย่า');
+INSERT INTO `ivf`.`f_patient_marriage_status` (`patient_marriage_status_description`) VALUES ('หม้าย');
+INSERT INTO `ivf`.`f_patient_marriage_status` (`patient_marriage_status_description`) VALUES ('สมณะ');
+INSERT INTO `ivf`.`f_patient_marriage_status` (`patient_marriage_status_description`) VALUES ('ไม่ทราบ');
+
+ALTER TABLE f_patient_race AUTO_INCREMENT = 216000000;
+INSERT INTO `ivf`.`f_patient_education_type` (`patient_education_type_description`) VALUES ('ไม่เรียน');
+INSERT INTO `ivf`.`f_patient_education_type` (`patient_education_type_description`) VALUES ('ประถมศึกษาปีที่ 4');
+INSERT INTO `ivf`.`f_patient_education_type` (`patient_education_type_description`) VALUES ('ประถมศึกษาปีที่ 6');
+INSERT INTO `ivf`.`f_patient_education_type` (`patient_education_type_description`) VALUES ('มัธยมศึกษาตอนปลาย');
+INSERT INTO `ivf`.`f_patient_education_type` (`patient_education_type_description`) VALUES ('ปวช.');
+INSERT INTO `ivf`.`f_patient_education_type` (`patient_education_type_description`) VALUES ('ปวส.');
+INSERT INTO `ivf`.`f_patient_education_type` (`patient_education_type_description`) VALUES ('อนุปริญญา');
+INSERT INTO `ivf`.`f_patient_education_type` (`patient_education_type_description`) VALUES ('ปริญญาตรี');
+INSERT INTO `ivf`.`f_patient_education_type` (`patient_education_type_description`) VALUES ('สูงกว่าปริญญาตรี');
+INSERT INTO `ivf`.`f_patient_education_type` (`patient_education_type_description`) VALUES ('ไม่ระบุ');
+INSERT INTO `ivf`.`f_patient_education_type` (`patient_education_type_description`) VALUES ('มัธยมศึกษาตอนต้น');
+INSERT INTO `ivf`.`f_patient_education_type` (`patient_education_type_description`) VALUES ('ปริญญาโท');
+INSERT INTO `ivf`.`f_patient_education_type` (`patient_education_type_description`) VALUES ('ปริญญาเอก');
+
+
+ALTER TABLE f_patient_discharge_status AUTO_INCREMENT = 215000000;
+INSERT INTO `ivf`.`f_patient_discharge_status` (`patient_discharge_status_description`) VALUES ('ตาย');
+INSERT INTO `ivf`.`f_patient_discharge_status` (`patient_discharge_status_description`) VALUES ('ย้าย');
+INSERT INTO `ivf`.`f_patient_discharge_status` (`patient_discharge_status_description`) VALUES ('สาบสูญ');
+
+
+INSERT INTO `ivf`.`f_item_billing_group` (`item_billing_group_code`, `item_billing_group_name_t`) VALUES ('00', 'ชันสูตรทางห้องปฏิบัติการ');
+INSERT INTO `ivf`.`f_item_billing_group` (`item_billing_group_code`, `item_billing_group_name_t`) VALUES ('01', 'X-ray');
+INSERT INTO `ivf`.`f_item_billing_group` (`item_billing_group_code`, `item_billing_group_name_t`) VALUES ('02', 'ตรวจชันสูตรอื่นๆ');
+INSERT INTO `ivf`.`f_item_billing_group` (`item_billing_group_code`, `item_billing_group_name_t`) VALUES ('03', 'ผ่าตัด');
+INSERT INTO `ivf`.`f_item_billing_group` (`item_billing_group_code`, `item_billing_group_name_t`) VALUES ('04', 'การรักษาอื่นๆ');
+INSERT INTO `ivf`.`f_item_billing_group` (`item_billing_group_code`, `item_billing_group_name_t`) VALUES ('05', 'ยาและเวชภัณฑ์');
+INSERT INTO `ivf`.`f_item_billing_group` (`item_billing_group_code`, `item_billing_group_name_t`) VALUES ('06', 'ICU');
+INSERT INTO `ivf`.`f_item_billing_group` (`item_billing_group_code`, `item_billing_group_name_t`) VALUES ('07', 'ค่าห้อง');
+INSERT INTO `ivf`.`f_item_billing_group` (`item_billing_group_code`, `item_billing_group_name_t`) VALUES ('08', 'ค่าอาหาร');
+INSERT INTO `ivf`.`f_item_billing_group` (`item_billing_group_code`, `item_billing_group_name_t`) VALUES ('09', 'อื่นๆ');
+INSERT INTO `ivf`.`f_item_billing_group` (`item_billing_group_code`, `item_billing_group_name_t`) VALUES ('10', 'ทันตกรรม');
+
+
+INSERT INTO `ivf`.`f_patient_nation` (`patient_nation_description`) VALUES ('ไม่ระบุ');
+INSERT INTO `ivf`.`f_patient_nation` (`patient_nation_description`) VALUES ('อังกฤษ');
+INSERT INTO `ivf`.`f_patient_nation` (`patient_nation_description`) VALUES ('โปรตุเกส');
+INSERT INTO `ivf`.`f_patient_nation` (`patient_nation_description`) VALUES ('เนเธอร์แลนด์');
+INSERT INTO `ivf`.`f_patient_nation` (`patient_nation_description`) VALUES ('เยอรมัน');
+INSERT INTO `ivf`.`f_patient_nation` (`patient_nation_description`) VALUES ('ฝรั่งเศส');
+INSERT INTO `ivf`.`f_patient_nation` (`patient_nation_description`) VALUES ('เดนมาร์ก');
+INSERT INTO `ivf`.`f_patient_nation` (`patient_nation_description`) VALUES ('สวีเดน');
+INSERT INTO `ivf`.`f_patient_nation` (`patient_nation_description`) VALUES ('ไนจีเรีย');
+INSERT INTO `ivf`.`f_patient_nation` (`patient_nation_description`) VALUES ('สหรัฐอาหรับเอมิเรตส์');
+INSERT INTO `ivf`.`f_patient_nation` (`patient_nation_description`) VALUES ('กินี');
+INSERT INTO `ivf`.`f_patient_nation` (`patient_nation_description`) VALUES ('สวีสเซอร์แลนด์');
+INSERT INTO `ivf`.`f_patient_nation` (`patient_nation_description`) VALUES ('ปาปัวนิวกินี');
+INSERT INTO `ivf`.`f_patient_nation` (`patient_nation_description`) VALUES ('ม้ง');
+INSERT INTO `ivf`.`f_patient_nation` (`patient_nation_description`) VALUES ('เมี่ยน');
+INSERT INTO `ivf`.`f_patient_nation` (`patient_nation_description`) VALUES ('อิตาลี');
+INSERT INTO `ivf`.`f_patient_nation` (`patient_nation_description`) VALUES ('รอให้สัญชาติไทย*');
+INSERT INTO `ivf`.`f_patient_nation` (`patient_nation_description`) VALUES ('นอร์เวย์');
+INSERT INTO `ivf`.`f_patient_nation` (`patient_nation_description`) VALUES ('อัฟกัน');
+INSERT INTO `ivf`.`f_patient_nation` (`patient_nation_description`) VALUES ('บาห์เรน');
+INSERT INTO `ivf`.`f_patient_nation` (`patient_nation_description`) VALUES ('ภูฏาน');
+INSERT INTO `ivf`.`f_patient_nation` (`patient_nation_description`) VALUES ('จอร์แดน');
+INSERT INTO `ivf`.`f_patient_nation` (`patient_nation_description`) VALUES ('เกาหลีเหนือ');
+INSERT INTO `ivf`.`f_patient_nation` (`patient_nation_description`) VALUES ('มัลดีฟ');
+INSERT INTO `ivf`.`f_patient_nation` (`patient_nation_description`) VALUES ('มองโกเลีย');
+INSERT INTO `ivf`.`f_patient_nation` (`patient_nation_description`) VALUES ('โอมาน');
+INSERT INTO `ivf`.`f_patient_nation` (`patient_nation_description`) VALUES ('กาตาร์');
+INSERT INTO `ivf`.`f_patient_nation` (`patient_nation_description`) VALUES ('เยเมน');
+INSERT INTO `ivf`.`f_patient_nation` (`patient_nation_description`) VALUES ('ออสเตรีย');
+INSERT INTO `ivf`.`f_patient_nation` (`patient_nation_description`) VALUES ('เยเมน(ใต้)**');
+INSERT INTO `ivf`.`f_patient_nation` (`patient_nation_description`) VALUES ('หมู่เกาะฟิจิ');
+INSERT INTO `ivf`.`f_patient_nation` (`patient_nation_description`) VALUES ('คิริบาส');
+INSERT INTO `ivf`.`f_patient_nation` (`patient_nation_description`) VALUES ('นาอูรู');
+INSERT INTO `ivf`.`f_patient_nation` (`patient_nation_description`) VALUES ('หมู่เกาะโซโลมอน');
+INSERT INTO `ivf`.`f_patient_nation` (`patient_nation_description`) VALUES ('ตองก้า');
+INSERT INTO `ivf`.`f_patient_nation` (`patient_nation_description`) VALUES ('ตูวาลู');
+INSERT INTO `ivf`.`f_patient_nation` (`patient_nation_description`) VALUES ('วานูอาตู');
+INSERT INTO `ivf`.`f_patient_nation` (`patient_nation_description`) VALUES ('ซามัว');
+INSERT INTO `ivf`.`f_patient_nation` (`patient_nation_description`) VALUES ('แอลเบเนีย');
+INSERT INTO `ivf`.`f_patient_nation` (`patient_nation_description`) VALUES ('ไอร์แลนด์');
+INSERT INTO `ivf`.`f_patient_nation` (`patient_nation_description`) VALUES ('อันดอร์รา');
+INSERT INTO `ivf`.`f_patient_nation` (`patient_nation_description`) VALUES ('เยอรมนีตะวันออก**');
+INSERT INTO `ivf`.`f_patient_nation` (`patient_nation_description`) VALUES ('ไอซ์แลนด์');
+INSERT INTO `ivf`.`f_patient_nation` (`patient_nation_description`) VALUES ('ลิกเตนสไตน์');
+INSERT INTO `ivf`.`f_patient_nation` (`patient_nation_description`) VALUES ('โมนาโก');
+INSERT INTO `ivf`.`f_patient_nation` (`patient_nation_description`) VALUES ('ซานมารีโน');
+INSERT INTO `ivf`.`f_patient_nation` (`patient_nation_description`) VALUES ('บริติช');
+INSERT INTO `ivf`.`f_patient_nation` (`patient_nation_description`) VALUES ('แอลจีเรีย');
+INSERT INTO `ivf`.`f_patient_nation` (`patient_nation_description`) VALUES ('แองโกลา');
+INSERT INTO `ivf`.`f_patient_nation` (`patient_nation_description`) VALUES ('เบนิน');
+INSERT INTO `ivf`.`f_patient_nation` (`patient_nation_description`) VALUES ('ฟินแลนด์');
+INSERT INTO `ivf`.`f_patient_nation` (`patient_nation_description`) VALUES ('บอตสวานา');
+INSERT INTO `ivf`.`f_patient_nation` (`patient_nation_description`) VALUES ('บูร์กินาฟาโซ');
+INSERT INTO `ivf`.`f_patient_nation` (`patient_nation_description`) VALUES ('บุรุนดี');
+INSERT INTO `ivf`.`f_patient_nation` (`patient_nation_description`) VALUES ('แคเมอรูน');
+INSERT INTO `ivf`.`f_patient_nation` (`patient_nation_description`) VALUES ('เคปเวิร์ด');
+INSERT INTO `ivf`.`f_patient_nation` (`patient_nation_description`) VALUES ('แอฟริกากลาง');
+INSERT INTO `ivf`.`f_patient_nation` (`patient_nation_description`) VALUES ('ชาด');
+INSERT INTO `ivf`.`f_patient_nation` (`patient_nation_description`) VALUES ('คอโมโรส');
+INSERT INTO `ivf`.`f_patient_nation` (`patient_nation_description`) VALUES ('คองโก');
+INSERT INTO `ivf`.`f_patient_nation` (`patient_nation_description`) VALUES ('โกตดิวัวร์');
+INSERT INTO `ivf`.`f_patient_nation` (`patient_nation_description`) VALUES ('เบลเยี่ยม');
+INSERT INTO `ivf`.`f_patient_nation` (`patient_nation_description`) VALUES ('จิบูตี');
+INSERT INTO `ivf`.`f_patient_nation` (`patient_nation_description`) VALUES ('อิเควทอเรียลกินี');
+INSERT INTO `ivf`.`f_patient_nation` (`patient_nation_description`) VALUES ('กาบอง');
+INSERT INTO `ivf`.`f_patient_nation` (`patient_nation_description`) VALUES ('แกมเบีย');
+INSERT INTO `ivf`.`f_patient_nation` (`patient_nation_description`) VALUES ('กานา');
+INSERT INTO `ivf`.`f_patient_nation` (`patient_nation_description`) VALUES ('กินีบีสเซา');
+INSERT INTO `ivf`.`f_patient_nation` (`patient_nation_description`) VALUES ('เลโซโท');
+
+
+
+ALTER TABLE `ivf`.`f_patient_blood_group` 
+ADD COLUMN `active` VARCHAR(255) NULL AFTER `patient_blood_group_description`;
+
+ALTER TABLE `ivf`.`f_patient_discharge_status` 
+ADD COLUMN `active` VARCHAR(255) NULL AFTER `patient_discharge_status_description`;
+
+ALTER TABLE `ivf`.`f_patient_education_type` 
+ADD COLUMN `active` VARCHAR(255) NULL AFTER `patient_education_type_sort_index`;
+
+ALTER TABLE `ivf`.`f_patient_marriage_status` 
+ADD COLUMN `active` VARCHAR(255) NULL AFTER `patient_marriage_status_description`;
+
+ALTER TABLE `ivf`.`f_patient_nation` 
+ADD COLUMN `active` VARCHAR(255) NULL AFTER `patient_nation_description`;
+
+ALTER TABLE `ivf`.`f_patient_occupation` 
+CHANGE COLUMN `f_patient_occupation_active` `active` VARCHAR(255) CHARACTER SET 'utf8' COLLATE 'utf8_bin' NULL DEFAULT NULL ;
+
+ALTER TABLE `ivf`.`f_patient_race` 
+ADD COLUMN `active` VARCHAR(255) NULL AFTER `patient_race_description`;
+
+ALTER TABLE `ivf`.`f_patient_relation` 
+ADD COLUMN `active` VARCHAR(255) NULL AFTER `patient_relation_description`;
+
+ALTER TABLE `ivf`.`f_patient_religion` 
+ADD COLUMN `active` VARCHAR(255) NULL AFTER `patient_religion_description`;
+
+ALTER TABLE `ivf`.`f_item_billing_group` 
+ADD COLUMN `active` VARCHAR(255) NULL AFTER `item_billing_group_name_e`;
+
+ALTER TABLE `ivf`.`f_sex` 
+ADD COLUMN `active` VARCHAR(255) NULL AFTER `sex_description`;
+
+ALTER TABLE `ivf`.`t_patient` 
+ADD COLUMN `date_create` VARCHAR(45) NULL AFTER `picture_profile`,
+ADD COLUMN `date_modi` VARCHAR(45) NULL AFTER `date_create`,
+ADD COLUMN `date_cancel` VARCHAR(45) NULL AFTER `date_modi`,
+ADD COLUMN `user_create` VARCHAR(45) NULL AFTER `date_cancel`,
+ADD COLUMN `user_modi` VARCHAR(45) NULL AFTER `user_create`,
+ADD COLUMN `user_cancel` VARCHAR(45) NULL AFTER `user_modi`;
+ADD COLUMN `active` VARCHAR(45) NULL AFTER `user_modi`;
+
+ALTER TABLE `ivf`.`t_patient` 
+CHANGE COLUMN `date_create` `date_create` VARCHAR(255) NULL DEFAULT NULL ,
+CHANGE COLUMN `date_modi` `date_modi` VARCHAR(255) NULL DEFAULT NULL ,
+CHANGE COLUMN `date_cancel` `date_cancel` VARCHAR(255) NULL DEFAULT NULL ,
+CHANGE COLUMN `user_create` `user_create` VARCHAR(255) NULL DEFAULT NULL ,
+CHANGE COLUMN `user_modi` `user_modi` VARCHAR(255) NULL DEFAULT NULL ,
+CHANGE COLUMN `user_cancel` `user_cancel` VARCHAR(255) NULL DEFAULT NULL ,
+CHANGE COLUMN `active` `active` VARCHAR(255) NULL DEFAULT NULL ;
+
+ALTER TABLE `ivf`.`b_company` 
+ADD COLUMN `prefix_hn_doc` VARCHAR(255) NULL AFTER `hn_doc`,
+CHANGE COLUMN `erc_doc` `hn_doc` INT(11) NULL DEFAULT NULL COMMENT 'หน้าจอ การเงิน เคลีย์เงินสด' ;
+
+UPDATE `ivf`.`b_company` SET `hn_doc` = '0', `prefix_hn_doc` = 'BH' WHERE (`comp_id` = '1020000002');
+
