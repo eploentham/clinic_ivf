@@ -56,7 +56,7 @@ namespace clinic_ivf.objdb
             ptt.patient_couple_pid  = "patient_couple_pid";
             ptt.patient_community_status  = "patient_community_status";
             ptt.patient_private_doctor  = "patient_private_doctor";
-            ptt.pid  = "patient_pid";
+            ptt.pid  = "pid";
             ptt.patient_mother_lastname  = "patient_mother_lastname";
             ptt.patient_father_lastname  = "patient_father_lastname";
             ptt.patient_couple_lastname  = "patient_couple_lastname";
@@ -118,6 +118,7 @@ namespace clinic_ivf.objdb
             ptt.line_id = "line_id";
             ptt.email = "email";
             ptt.passport = "passport";
+            ptt.remark = "remark";
 
             ptt.pkField = "t_patient_id";
             ptt.table = "t_patient";
@@ -235,6 +236,7 @@ namespace clinic_ivf.objdb
             int chk = 0;
 
             chkNull(p);
+            ptt.pid = "pid";
             sql = "Insert Into " + ptt.table + "(" + ptt.patient_hn + "," + ptt.patient_firstname + "," + ptt.patient_lastname + "," +
                 ptt.patient_xn + "," + ptt.patient_birthday + "," + ptt.patient_house + "," +
                 ptt.active + "," + ptt.remark + "," + ptt.patient_road + "," +
@@ -272,7 +274,7 @@ namespace clinic_ivf.objdb
                 "'" + p.patient_xn.Replace("'", "''") + "','" + p.patient_birthday.Replace("'", "''") + "','" + p.patient_house.Replace("'", "''") + "'," +
                 "'" + p.active + "','" + p.remark.Replace("'", "''") + "','" + p.patient_road.Replace("'", "''") + "'," +
                 "'" + p.patient_moo + "','" + p.patient_tambon + "','" + p.patient_amphur + "'," + 
-                "'" + p.patient_changwat + "','" + p.patient_father_firstname.Replace("'", "''") + "'," + p.patient_mother_firstname.Replace("'", "''") + "'," +
+                "'" + p.patient_changwat + "','" + p.patient_father_firstname.Replace("'", "''") + "','" + p.patient_mother_firstname.Replace("'", "''") + "'," +
                 "now(),'" + p.date_modi + "','" + p.date_cancel + "'," +
                 "'" + userId + "','" + p.user_modi + "','" + p.user_cancel + "', " +
                 "'" + p.patient_couple_firstname.Replace("'", "''") + "','" + p.patient_move_in_date_time + "','" + p.patient_discharge_date_time + "'," +
@@ -309,7 +311,6 @@ namespace clinic_ivf.objdb
             {
                 sql = ex.Message + " " + ex.InnerException;
             }
-
             return re;
         }
         public String insertPatient(Patient p, String userId)
@@ -470,103 +471,103 @@ namespace clinic_ivf.objdb
         }
         private Patient setPatient1(Patient stf1)
         {
-            ptt.t_patient_id = "";
-            ptt.patient_hn = "";
-            ptt.f_patient_prefix_id = "";
-            ptt.patient_firstname = "";
-            ptt.patient_lastname = "";
-            ptt.patient_xn = "";
-            ptt.f_sex_id = "";
-            ptt.patient_birthday = "";
-            ptt.patient_house = "";
-            ptt.patient_road = "";
-            ptt.patient_moo = "";
-            ptt.patient_tambon = "";
-            ptt.patient_amphur = "";
-            ptt.patient_changwat = "";
-            ptt.f_patient_marriage_status_id = "";
-            ptt.f_patient_occupation_id = "";
-            ptt.f_patient_race_id = "";
-            ptt.f_patient_nation_id = "";
-            ptt.f_patient_religion_id = "";
-            ptt.f_patient_education_type_id = "";
-            ptt.f_patient_family_status_id = "";
-            ptt.patient_father_firstname = "";
-            ptt.patient_mother_firstname = "";
-            ptt.patient_couple_firstname = "";
-            ptt.patient_move_in_date_time = "";
-            ptt.f_patient_discharge_status_id = "";
-            ptt.patient_discharge_date_time = "";
-            ptt.f_patient_blood_group_id = "";
-            ptt.f_patient_foreigner_id = "";
-            ptt.f_patient_area_status_id = "";
-            ptt.patient_father_pid = "";
-            ptt.patient_mather_pid = "";
-            ptt.patient_couple_pid = "";
-            ptt.patient_community_status = "";
-            ptt.patient_private_doctor = "";
-            ptt.pid = "";
-            ptt.patient_mother_lastname = "";
-            ptt.patient_father_lastname = "";
-            ptt.patient_couple_lastname = "";
-            ptt.mobile1 = "";
-            ptt.f_patient_relation_id = "";
-            ptt.patient_contact_phone_number = "";
-            ptt.patient_contact_sex_id = "";
-            ptt.patient_contact_house = "";
-            ptt.patient_contact_moo = "";
-            ptt.patient_contact_changwat = "";
-            ptt.patient_contact_amphur = "";
-            ptt.patient_contact_tambon = "";
-            ptt.patient_contact_road = "";
-            ptt.patient_contact_firstname = "";
-            ptt.patient_contact_lastname = "";
-            ptt.patient_birthday_true = "";
-            ptt.patient_merged = "";
-            ptt.patient_record_date_time = "";
-            ptt.patient_update_date_time = "";
-            ptt.patient_staff_record = "";
-            ptt.patient_staff_modify = "";
-            ptt.patient_staff_cancel = "";
-            ptt.patient_active = "";
-            ptt.patient_drugallergy = "";
-            ptt.patient_language_for_print = "";
-            ptt.mobile2 = "";
-            ptt.patient_contact_mobile_phone = "";
-            ptt.patient_has_home_in_pcu = "";
-            ptt.t_health_family_id = "";
-            ptt.patient_other_country_address = "";
-            ptt.patient_is_other_country = "";
-            ptt.contact_id = "";
-            ptt.contact_namet = "";
-            ptt.remark1 = "";
-            ptt.remark2 = "";
-            ptt.contact_join_id = "";
-            ptt.contact_join_namet = "";
-            ptt.ss_patient_hn = "";
-            ptt.patient_soi = "";
-            ptt.patient_contact_soi = "";
-            ptt.status_chronic = "";
-            ptt.status_hiv = "";
-            ptt.patient_status_hiv = "";
-            ptt.status_deny_allergy = "";
-            ptt.latitude = "";
-            ptt.longitude = "";
-            ptt.t_person_id = "";
-            ptt.patient_patient_email = "";
-            ptt.patient_contact_email = "";
-            ptt.picture_profile = "";
+            stf1.t_patient_id = "";
+            stf1.patient_hn = "";
+            stf1.f_patient_prefix_id = "";
+            stf1.patient_firstname = "";
+            stf1.patient_lastname = "";
+            stf1.patient_xn = "";
+            stf1.f_sex_id = "";
+            stf1.patient_birthday = "";
+            stf1.patient_house = "";
+            stf1.patient_road = "";
+            stf1.patient_moo = "";
+            stf1.patient_tambon = "";
+            stf1.patient_amphur = "";
+            stf1.patient_changwat = "";
+            stf1.f_patient_marriage_status_id = "";
+            stf1.f_patient_occupation_id = "";
+            stf1.f_patient_race_id = "";
+            stf1.f_patient_nation_id = "";
+            stf1.f_patient_religion_id = "";
+            stf1.f_patient_education_type_id = "";
+            stf1.f_patient_family_status_id = "";
+            stf1.patient_father_firstname = "";
+            stf1.patient_mother_firstname = "";
+            stf1.patient_couple_firstname = "";
+            stf1.patient_move_in_date_time = "";
+            stf1.f_patient_discharge_status_id = "";
+            stf1.patient_discharge_date_time = "";
+            stf1.f_patient_blood_group_id = "";
+            stf1.f_patient_foreigner_id = "";
+            stf1.f_patient_area_status_id = "";
+            stf1.patient_father_pid = "";
+            stf1.patient_mather_pid = "";
+            stf1.patient_couple_pid = "";
+            stf1.patient_community_status = "";
+            stf1.patient_private_doctor = "";
+            stf1.pid = "";
+            stf1.patient_mother_lastname = "";
+            stf1.patient_father_lastname = "";
+            stf1.patient_couple_lastname = "";
+            stf1.mobile1 = "";
+            stf1.f_patient_relation_id = "";
+            stf1.patient_contact_phone_number = "";
+            stf1.patient_contact_sex_id = "";
+            stf1.patient_contact_house = "";
+            stf1.patient_contact_moo = "";
+            stf1.patient_contact_changwat = "";
+            stf1.patient_contact_amphur = "";
+            stf1.patient_contact_tambon = "";
+            stf1.patient_contact_road = "";
+            stf1.patient_contact_firstname = "";
+            stf1.patient_contact_lastname = "";
+            stf1.patient_birthday_true = "";
+            stf1.patient_merged = "";
+            stf1.patient_record_date_time = "";
+            stf1.patient_update_date_time = "";
+            stf1.patient_staff_record = "";
+            stf1.patient_staff_modify = "";
+            stf1.patient_staff_cancel = "";
+            stf1.patient_active = "";
+            stf1.patient_drugallergy = "";
+            stf1.patient_language_for_print = "";
+            stf1.mobile2 = "";
+            stf1.patient_contact_mobile_phone = "";
+            stf1.patient_has_home_in_pcu = "";
+            stf1.t_health_family_id = "";
+            stf1.patient_other_country_address = "";
+            stf1.patient_is_other_country = "";
+            stf1.contact_id = "";
+            stf1.contact_namet = "";
+            stf1.remark1 = "";
+            stf1.remark2 = "";
+            stf1.contact_join_id = "";
+            stf1.contact_join_namet = "";
+            stf1.ss_patient_hn = "";
+            stf1.patient_soi = "";
+            stf1.patient_contact_soi = "";
+            stf1.status_chronic = "";
+            stf1.status_hiv = "";
+            stf1.patient_status_hiv = "";
+            stf1.status_deny_allergy = "";
+            stf1.latitude = "";
+            stf1.longitude = "";
+            stf1.t_person_id = "";
+            stf1.patient_patient_email = "";
+            stf1.patient_contact_email = "";
+            stf1.picture_profile = "";
 
-            ptt.date_cancel = "";
-            ptt.date_create = "";
-            ptt.date_modi = "";
-            ptt.user_cancel = "";
-            ptt.user_create = "";
-            ptt.user_modi = "";
-            ptt.active = "";
-            ptt.line_id = "";
-            ptt.email = "";
-            ptt.passport = "";
+            stf1.date_cancel = "";
+            stf1.date_create = "";
+            stf1.date_modi = "";
+            stf1.user_cancel = "";
+            stf1.user_create = "";
+            stf1.user_modi = "";
+            stf1.active = "";
+            stf1.line_id = "";
+            stf1.email = "";
+            stf1.passport = "";
             return stf1;
         }
     }

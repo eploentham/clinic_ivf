@@ -31,6 +31,10 @@
             this.theme1 = new C1.Win.C1Themes.C1ThemeController();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
+            this.label8 = new System.Windows.Forms.Label();
+            this.txtPaasport = new C1.Win.C1Input.C1TextBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.txtPid = new C1.Win.C1Input.C1TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label26 = new System.Windows.Forms.Label();
             this.cboRg = new C1.Win.C1Input.C1ComboBox();
@@ -42,7 +46,7 @@
             this.dropDownItem3 = new C1.Win.C1Input.DropDownItem();
             this.btnSavePic = new C1.Win.C1Input.C1Button();
             this.btnCapture = new C1.Win.C1Input.C1Button();
-            this.btnOn = new C1.Win.C1Input.C1Button();
+            this.btnWebCamOn = new C1.Win.C1Input.C1Button();
             this.btnEdit = new C1.Win.C1Input.C1Button();
             this.btnSave = new C1.Win.C1Input.C1Button();
             this.label24 = new System.Windows.Forms.Label();
@@ -119,10 +123,7 @@
             this.tabVisit = new C1.Win.C1Command.C1DockingTabPage();
             this.sB = new System.Windows.Forms.StatusStrip();
             this.sB1 = new System.Windows.Forms.ToolStripStatusLabel();
-            this.label6 = new System.Windows.Forms.Label();
-            this.txtPid = new C1.Win.C1Input.C1TextBox();
-            this.label8 = new System.Windows.Forms.Label();
-            this.txtPaasport = new C1.Win.C1Input.C1TextBox();
+            this.c1BarCode1 = new C1.Win.BarCode.C1BarCode();
             ((System.ComponentModel.ISupportInitialize)(this.theme1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
@@ -132,12 +133,14 @@
             this.splitContainer2.Panel1.SuspendLayout();
             this.splitContainer2.Panel2.SuspendLayout();
             this.splitContainer2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtPaasport)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtPid)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cboRg)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cboRace)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnPrint)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnSavePic)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnCapture)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.btnOn)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnWebCamOn)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnEdit)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnSave)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtEmail)).BeginInit();
@@ -187,8 +190,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtMotherFname)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtMotherLname)).BeginInit();
             this.sB.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.txtPid)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtPaasport)).BeginInit();
             this.SuspendLayout();
             // 
             // theme1
@@ -233,6 +234,7 @@
             // splitContainer2.Panel1
             // 
             this.splitContainer2.Panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.splitContainer2.Panel1.Controls.Add(this.c1BarCode1);
             this.splitContainer2.Panel1.Controls.Add(this.label8);
             this.splitContainer2.Panel1.Controls.Add(this.txtPaasport);
             this.splitContainer2.Panel1.Controls.Add(this.label6);
@@ -245,7 +247,7 @@
             this.splitContainer2.Panel1.Controls.Add(this.btnPrint);
             this.splitContainer2.Panel1.Controls.Add(this.btnSavePic);
             this.splitContainer2.Panel1.Controls.Add(this.btnCapture);
-            this.splitContainer2.Panel1.Controls.Add(this.btnOn);
+            this.splitContainer2.Panel1.Controls.Add(this.btnWebCamOn);
             this.splitContainer2.Panel1.Controls.Add(this.btnEdit);
             this.splitContainer2.Panel1.Controls.Add(this.btnSave);
             this.splitContainer2.Panel1.Controls.Add(this.label24);
@@ -292,6 +294,58 @@
             this.splitContainer2.TabIndex = 0;
             this.theme1.SetTheme(this.splitContainer2, "(default)");
             // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.label8.Location = new System.Drawing.Point(503, 15);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(68, 16);
+            this.label8.TabIndex = 601;
+            this.label8.Text = "Passport :";
+            this.theme1.SetTheme(this.label8, "(default)");
+            // 
+            // txtPaasport
+            // 
+            this.txtPaasport.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtPaasport.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
+            this.txtPaasport.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.txtPaasport.Location = new System.Drawing.Point(592, 15);
+            this.txtPaasport.Name = "txtPaasport";
+            this.txtPaasport.Size = new System.Drawing.Size(120, 20);
+            this.txtPaasport.TabIndex = 600;
+            this.txtPaasport.Tag = null;
+            this.theme1.SetTheme(this.txtPaasport, "(default)");
+            this.txtPaasport.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.label6.Location = new System.Drawing.Point(284, 15);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(36, 16);
+            this.label6.TabIndex = 599;
+            this.label6.Text = "PID :";
+            this.theme1.SetTheme(this.label6, "(default)");
+            // 
+            // txtPid
+            // 
+            this.txtPid.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtPid.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
+            this.txtPid.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.txtPid.Location = new System.Drawing.Point(326, 15);
+            this.txtPid.Name = "txtPid";
+            this.txtPid.Size = new System.Drawing.Size(167, 20);
+            this.txtPid.TabIndex = 598;
+            this.txtPid.Tag = null;
+            this.theme1.SetTheme(this.txtPid, "(default)");
+            this.txtPid.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            // 
             // label1
             // 
             this.label1.AutoSize = true;
@@ -311,7 +365,7 @@
             this.label26.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
             this.label26.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label26.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.label26.Location = new System.Drawing.Point(429, 173);
+            this.label26.Location = new System.Drawing.Point(442, 173);
             this.label26.Name = "label26";
             this.label26.Size = new System.Drawing.Size(64, 16);
             this.label26.TabIndex = 596;
@@ -345,7 +399,7 @@
             this.label25.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
             this.label25.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label25.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.label25.Location = new System.Drawing.Point(429, 145);
+            this.label25.Location = new System.Drawing.Point(442, 145);
             this.label25.Name = "label25";
             this.label25.Size = new System.Drawing.Size(47, 16);
             this.label25.TabIndex = 594;
@@ -430,19 +484,19 @@
             this.btnCapture.UseVisualStyleBackColor = true;
             this.btnCapture.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
             // 
-            // btnOn
+            // btnWebCamOn
             // 
-            this.btnOn.Image = global::clinic_ivf.Properties.Resources.theory24;
-            this.btnOn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnOn.Location = new System.Drawing.Point(734, 104);
-            this.btnOn.Name = "btnOn";
-            this.btnOn.Size = new System.Drawing.Size(83, 39);
-            this.btnOn.TabIndex = 588;
-            this.btnOn.Text = "เปิดกล้อง";
-            this.btnOn.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.theme1.SetTheme(this.btnOn, "(default)");
-            this.btnOn.UseVisualStyleBackColor = true;
-            this.btnOn.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            this.btnWebCamOn.Image = global::clinic_ivf.Properties.Resources.theory24;
+            this.btnWebCamOn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnWebCamOn.Location = new System.Drawing.Point(734, 104);
+            this.btnWebCamOn.Name = "btnWebCamOn";
+            this.btnWebCamOn.Size = new System.Drawing.Size(83, 39);
+            this.btnWebCamOn.TabIndex = 588;
+            this.btnWebCamOn.Text = "เปิดกล้อง";
+            this.btnWebCamOn.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.theme1.SetTheme(this.btnWebCamOn, "(default)");
+            this.btnWebCamOn.UseVisualStyleBackColor = true;
+            this.btnWebCamOn.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
             // 
             // btnEdit
             // 
@@ -478,7 +532,7 @@
             this.label24.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
             this.label24.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label24.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.label24.Location = new System.Drawing.Point(429, 198);
+            this.label24.Location = new System.Drawing.Point(442, 198);
             this.label24.Name = "label24";
             this.label24.Size = new System.Drawing.Size(48, 16);
             this.label24.TabIndex = 585;
@@ -504,7 +558,7 @@
             this.label23.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
             this.label23.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label23.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.label23.Location = new System.Drawing.Point(126, 196);
+            this.label23.Location = new System.Drawing.Point(161, 196);
             this.label23.Name = "label23";
             this.label23.Size = new System.Drawing.Size(55, 16);
             this.label23.TabIndex = 583;
@@ -516,7 +570,7 @@
             this.txtLineID.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtLineID.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
             this.txtLineID.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.txtLineID.Location = new System.Drawing.Point(209, 194);
+            this.txtLineID.Location = new System.Drawing.Point(231, 194);
             this.txtLineID.Name = "txtLineID";
             this.txtLineID.Size = new System.Drawing.Size(181, 20);
             this.txtLineID.TabIndex = 582;
@@ -532,7 +586,7 @@
             this.chkChronic.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.chkChronic.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.chkChronic.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.chkChronic.Location = new System.Drawing.Point(7, 137);
+            this.chkChronic.Location = new System.Drawing.Point(432, 246);
             this.chkChronic.Name = "chkChronic";
             this.chkChronic.Padding = new System.Windows.Forms.Padding(4, 1, 1, 1);
             this.chkChronic.Size = new System.Drawing.Size(104, 24);
@@ -551,7 +605,7 @@
             this.chkDenyAllergy.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.chkDenyAllergy.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.chkDenyAllergy.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.chkDenyAllergy.Location = new System.Drawing.Point(7, 167);
+            this.chkDenyAllergy.Location = new System.Drawing.Point(542, 246);
             this.chkDenyAllergy.Name = "chkDenyAllergy";
             this.chkDenyAllergy.Padding = new System.Windows.Forms.Padding(4, 1, 1, 1);
             this.chkDenyAllergy.Size = new System.Drawing.Size(104, 24);
@@ -568,7 +622,7 @@
             this.label17.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
             this.label17.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label17.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.label17.Location = new System.Drawing.Point(126, 222);
+            this.label17.Location = new System.Drawing.Point(161, 222);
             this.label17.Name = "label17";
             this.label17.Size = new System.Drawing.Size(62, 16);
             this.label17.TabIndex = 579;
@@ -580,7 +634,7 @@
             this.txtRemark.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtRemark.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
             this.txtRemark.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.txtRemark.Location = new System.Drawing.Point(209, 220);
+            this.txtRemark.Location = new System.Drawing.Point(231, 220);
             this.txtRemark.Name = "txtRemark";
             this.txtRemark.Size = new System.Drawing.Size(503, 20);
             this.txtRemark.TabIndex = 578;
@@ -594,7 +648,7 @@
             this.label16.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
             this.label16.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label16.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.label16.Location = new System.Drawing.Point(126, 169);
+            this.label16.Location = new System.Drawing.Point(161, 169);
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(65, 16);
             this.label16.TabIndex = 577;
@@ -606,7 +660,7 @@
             this.txtMobile2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtMobile2.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
             this.txtMobile2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.txtMobile2.Location = new System.Drawing.Point(209, 167);
+            this.txtMobile2.Location = new System.Drawing.Point(231, 167);
             this.txtMobile2.Name = "txtMobile2";
             this.txtMobile2.Size = new System.Drawing.Size(207, 20);
             this.txtMobile2.TabIndex = 576;
@@ -620,7 +674,7 @@
             this.label15.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
             this.label15.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label15.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.label15.Location = new System.Drawing.Point(126, 143);
+            this.label15.Location = new System.Drawing.Point(161, 143);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(65, 16);
             this.label15.TabIndex = 575;
@@ -632,7 +686,7 @@
             this.txtMobile1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtMobile1.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
             this.txtMobile1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.txtMobile1.Location = new System.Drawing.Point(209, 141);
+            this.txtMobile1.Location = new System.Drawing.Point(231, 141);
             this.txtMobile1.Name = "txtMobile1";
             this.txtMobile1.Size = new System.Drawing.Size(207, 20);
             this.txtMobile1.TabIndex = 574;
@@ -646,11 +700,11 @@
             this.label14.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
             this.label14.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label14.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.label14.Location = new System.Drawing.Point(111, 117);
+            this.label14.Location = new System.Drawing.Point(161, 117);
             this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(92, 16);
+            this.label14.Size = new System.Drawing.Size(54, 16);
             this.label14.TabIndex = 573;
-            this.label14.Text = "Marital status :";
+            this.label14.Text = "Marital :";
             this.theme1.SetTheme(this.label14, "(default)");
             // 
             // cboMarital
@@ -663,7 +717,7 @@
             this.cboMarital.ImagePadding = new System.Windows.Forms.Padding(0);
             this.cboMarital.ItemsDisplayMember = "";
             this.cboMarital.ItemsValueMember = "";
-            this.cboMarital.Location = new System.Drawing.Point(209, 115);
+            this.cboMarital.Location = new System.Drawing.Point(231, 115);
             this.cboMarital.Name = "cboMarital";
             this.cboMarital.Size = new System.Drawing.Size(168, 20);
             this.cboMarital.Style.DropDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
@@ -680,7 +734,7 @@
             this.label13.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
             this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label13.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.label13.Location = new System.Drawing.Point(429, 119);
+            this.label13.Location = new System.Drawing.Point(442, 119);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(74, 16);
             this.label13.TabIndex = 571;
@@ -714,7 +768,7 @@
             this.label12.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
             this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label12.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.label12.Location = new System.Drawing.Point(429, 93);
+            this.label12.Location = new System.Drawing.Point(442, 93);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(53, 16);
             this.label12.TabIndex = 569;
@@ -748,7 +802,7 @@
             this.label10.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
             this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label10.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.label10.Location = new System.Drawing.Point(429, 67);
+            this.label10.Location = new System.Drawing.Point(442, 67);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(90, 16);
             this.label10.TabIndex = 567;
@@ -765,7 +819,7 @@
             this.cboBloodG.ImagePadding = new System.Windows.Forms.Padding(0);
             this.cboBloodG.ItemsDisplayMember = "";
             this.cboBloodG.ItemsValueMember = "";
-            this.cboBloodG.Location = new System.Drawing.Point(521, 65);
+            this.cboBloodG.Location = new System.Drawing.Point(535, 65);
             this.cboBloodG.Name = "cboBloodG";
             this.cboBloodG.Size = new System.Drawing.Size(114, 20);
             this.cboBloodG.Style.DropDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
@@ -782,7 +836,7 @@
             this.label5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.label5.Location = new System.Drawing.Point(126, 93);
+            this.label5.Location = new System.Drawing.Point(161, 93);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(37, 16);
             this.label5.TabIndex = 557;
@@ -799,7 +853,7 @@
             this.cboSex.ImagePadding = new System.Windows.Forms.Padding(0);
             this.cboSex.ItemsDisplayMember = "";
             this.cboSex.ItemsValueMember = "";
-            this.cboSex.Location = new System.Drawing.Point(209, 91);
+            this.cboSex.Location = new System.Drawing.Point(231, 91);
             this.cboSex.Name = "cboSex";
             this.cboSex.Size = new System.Drawing.Size(168, 20);
             this.cboSex.Style.DropDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
@@ -834,7 +888,7 @@
             this.txtDob.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
             this.txtDob.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtDob.ImagePadding = new System.Windows.Forms.Padding(0);
-            this.txtDob.Location = new System.Drawing.Point(209, 65);
+            this.txtDob.Location = new System.Drawing.Point(231, 65);
             this.txtDob.Name = "txtDob";
             this.txtDob.ReadOnly = true;
             this.txtDob.Size = new System.Drawing.Size(168, 20);
@@ -849,7 +903,7 @@
             this.label11.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
             this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label11.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.label11.Location = new System.Drawing.Point(126, 67);
+            this.label11.Location = new System.Drawing.Point(161, 67);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(43, 16);
             this.label11.TabIndex = 554;
@@ -1578,57 +1632,25 @@
             this.sB1.Size = new System.Drawing.Size(118, 17);
             this.sB1.Text = "toolStripStatusLabel1";
             // 
-            // label6
+            // c1BarCode1
             // 
-            this.label6.AutoSize = true;
-            this.label6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.label6.Location = new System.Drawing.Point(284, 15);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(36, 16);
-            this.label6.TabIndex = 599;
-            this.label6.Text = "PID :";
-            this.theme1.SetTheme(this.label6, "(default)");
-            // 
-            // txtPid
-            // 
-            this.txtPid.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtPid.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
-            this.txtPid.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.txtPid.Location = new System.Drawing.Point(326, 15);
-            this.txtPid.Name = "txtPid";
-            this.txtPid.Size = new System.Drawing.Size(167, 20);
-            this.txtPid.TabIndex = 598;
-            this.txtPid.Tag = null;
-            this.theme1.SetTheme(this.txtPid, "(default)");
-            this.txtPid.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.label8.Location = new System.Drawing.Point(503, 15);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(68, 16);
-            this.label8.TabIndex = 601;
-            this.label8.Text = "Passport :";
-            this.theme1.SetTheme(this.label8, "(default)");
-            // 
-            // txtPaasport
-            // 
-            this.txtPaasport.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtPaasport.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
-            this.txtPaasport.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.txtPaasport.Location = new System.Drawing.Point(592, 15);
-            this.txtPaasport.Name = "txtPaasport";
-            this.txtPaasport.Size = new System.Drawing.Size(120, 20);
-            this.txtPaasport.TabIndex = 600;
-            this.txtPaasport.Tag = null;
-            this.theme1.SetTheme(this.txtPaasport, "(default)");
-            this.txtPaasport.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            this.c1BarCode1.AdditionalNumber = null;
+            this.c1BarCode1.BackColor = System.Drawing.Color.White;
+            this.c1BarCode1.CodeType = C1.BarCode.CodeType.QRCode;
+            this.c1BarCode1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.c1BarCode1.ForeColor = System.Drawing.Color.Black;
+            this.c1BarCode1.Location = new System.Drawing.Point(7, 67);
+            this.c1BarCode1.MicroQRCodeOptions.EncodingCodePage = 65001;
+            this.c1BarCode1.Name = "c1BarCode1";
+            this.c1BarCode1.QuietZone.Bottom = 0D;
+            this.c1BarCode1.QuietZone.Left = 0D;
+            this.c1BarCode1.QuietZone.Right = 0D;
+            this.c1BarCode1.QuietZone.Top = 0D;
+            this.c1BarCode1.Size = new System.Drawing.Size(151, 150);
+            this.c1BarCode1.TabIndex = 602;
+            this.c1BarCode1.Text = "c1BarCode1";
+            this.c1BarCode1.TextFixedLength = 0;
+            this.c1BarCode1.WideToNarrowRatio = 2F;
             // 
             // FrmPatientAdd
             // 
@@ -1650,12 +1672,14 @@
             this.splitContainer2.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).EndInit();
             this.splitContainer2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.txtPaasport)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtPid)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cboRg)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cboRace)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnPrint)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnSavePic)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnCapture)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.btnOn)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnWebCamOn)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnEdit)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnSave)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtEmail)).EndInit();
@@ -1708,8 +1732,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtMotherLname)).EndInit();
             this.sB.ResumeLayout(false);
             this.sB.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.txtPid)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtPaasport)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1776,7 +1798,7 @@
         private C1.Win.C1Input.C1Button btnSave;
         private C1.Win.C1Input.C1Button btnSavePic;
         private C1.Win.C1Input.C1Button btnCapture;
-        private C1.Win.C1Input.C1Button btnOn;
+        private C1.Win.C1Input.C1Button btnWebCamOn;
         private C1.Win.C1Command.C1DockingTabPage tabVisit;
         private C1.Win.C1Input.C1Button c1Button4;
         private C1.Win.C1Input.C1SplitButton btnPrint;
@@ -1812,5 +1834,6 @@
         private C1.Win.C1Input.C1TextBox txtPaasport;
         private System.Windows.Forms.Label label6;
         private C1.Win.C1Input.C1TextBox txtPid;
+        private C1.Win.BarCode.C1BarCode c1BarCode1;
     }
 }

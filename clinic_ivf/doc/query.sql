@@ -889,3 +889,5 @@ CHANGE COLUMN `erc_doc` `hn_doc` INT(11) NULL DEFAULT NULL COMMENT 'หน้า
 
 UPDATE `ivf`.`b_company` SET `hn_doc` = '0', `prefix_hn_doc` = 'BH' WHERE (`comp_id` = '1020000002');
 
+ALTER TABLE `ivf`.`t_patient` 
+ADD COLUMN `remark` VARCHAR(255) NULL AFTER `passport`;

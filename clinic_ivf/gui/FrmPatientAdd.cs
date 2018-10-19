@@ -1,4 +1,5 @@
-﻿using C1.Win.C1FlexGrid;
+﻿using AForge.Video.DirectShow;
+using C1.Win.C1FlexGrid;
 using C1.Win.C1SuperTooltip;
 using clinic_ivf.control;
 using clinic_ivf.object1;
@@ -18,7 +19,7 @@ namespace clinic_ivf.gui
     public partial class FrmPatientAdd : Form
     {
         IvfControl ic;
-        String pttId = "";
+        String pttId = "", webcamname="";
         Patient ptt;
 
         Font fEdit, fEditB;
@@ -29,6 +30,11 @@ namespace clinic_ivf.gui
         C1FlexGrid grfDay2, grfDay3, grfDay5, grfDay6;
         C1SuperTooltip stt;
         C1SuperErrorProvider sep;
+
+        FilterInfoCollection webcanDevice;
+        
+        Bitmap img;
+        Image image1;
 
         public FrmPatientAdd(IvfControl ic, String pttid)
         {
@@ -51,6 +57,21 @@ namespace clinic_ivf.gui
 
             stt = new C1SuperTooltip();
             sep = new C1SuperErrorProvider();
+            image1 = null;
+            try
+            {
+                webcanDevice = new FilterInfoCollection(FilterCategory.VideoInputDevice);
+                ic.video = new VideoCaptureDevice();
+                foreach (FilterInfo device in webcanDevice)
+                {
+                    webcamname = device.Name;
+                    //video.NewFrame += Video_NewFrame;
+                }
+            }
+            catch (Exception ex)
+            {
+                //MessageBox.Show(" no camera Found\n" + ex.Message);
+            }
 
             ic.ivfDB.fpDB.setCboPrefix(cboPrefix);
             ic.ivfDB.fmsDB.setCboMarriage(cboMarital);
@@ -71,6 +92,69 @@ namespace clinic_ivf.gui
 
             btnPrnSticker.Click += BtnPrnSticker_Click;
             btnSave.Click += BtnSave_Click;
+            btnWebCamOn.Click += BtnWebCamOn_Click;
+            btnCapture.Click += BtnCapture_Click;
+            this.FormClosed += FrmPatientAdd_FormClosed;
+
+            btnCapture.Enabled = false;
+            btnSavePic.Enabled = false;
+        }
+
+        private void FrmPatientAdd_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            //throw new NotImplementedException();
+            Exit();
+        }
+        private void TakePic()
+        {
+            //myPlayer.SoundLocation = appPath + "\\camera.wav";
+            //myPlayer.Play();
+            //listView1.Items.Clear();
+            //imageList1.Images.Clear();
+            image1 = (Image)img.Clone();
+            if (image1 == null)
+            {
+            }
+            else
+            {
+                ic.video.Stop();
+                btnSavePic.Enabled = true;
+                //img = (Bitmap)eventArgs.Frame.Clone();
+                //picPtt.Image = img;
+            }
+
+            image1 = null;
+            //loadimages();
+        }
+        private void BtnCapture_Click(object sender, EventArgs e)
+        {
+            //throw new NotImplementedException();
+            TakePic();
+        }
+
+        private void BtnWebCamOn_Click(object sender, EventArgs e)
+        {
+            //throw new NotImplementedException();            
+            try
+            {
+                ic.video = new VideoCaptureDevice(webcanDevice[0].MonikerString);
+                ic.video.NewFrame += Video_NewFrame;
+                ic.video.Start();
+                btnCapture.Enabled = true;
+                btnSavePic.Enabled = false;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Sorry there is no camera Found\n" + ex.Message);
+            }
+            
+        }
+
+        private void Video_NewFrame(object sender, AForge.Video.NewFrameEventArgs eventArgs)
+        {
+            //throw new NotImplementedException();
+            img = (Bitmap)eventArgs.Frame.Clone();
+            picPtt.Image = img;
         }
 
         private void BtnSave_Click(object sender, EventArgs e)
@@ -83,7 +167,7 @@ namespace clinic_ivf.gui
                 int chk = 0;
                 if (int.TryParse(re, out chk))
                 {
-                    ic.ivfDB.stfDB.getlStf();
+                    //ic.ivfDB.stfDB.getlStf();
                     btnSave.Image = Resources.accept_database24;
                 }
                 else
@@ -100,6 +184,16 @@ namespace clinic_ivf.gui
         {
             //throw new NotImplementedException();
             MessageBox.Show("aaaa", "");
+        }
+        private void Exit()
+        {
+            if (ic.video != null && ic.video.IsRunning)
+            {
+                ic.video.SignalToStop();
+                ic.video.WaitForStop();
+                ic.video.Stop();
+                ic.video = null;
+            }
         }
         private void setControl(String pttid)
         {
@@ -140,7 +234,8 @@ namespace clinic_ivf.gui
         private void setPatient()
         {
             ptt.t_patient_id = txtID.Text;
-            ptt.patient_hn = txtHn.Text;
+            
+            ptt.patient_hn = txtID.Text.Equals("") ? ic.ivfDB.copDB.genHNDoc() : txtHn.Text;
             ptt.patient_firstname = txtPttName.Text;
             ptt.patient_lastname = txtPttLName.Text;
             ptt.remark = txtRemark.Text;

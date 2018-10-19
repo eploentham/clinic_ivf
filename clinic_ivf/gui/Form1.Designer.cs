@@ -40,6 +40,9 @@
             this.c1Button1 = new C1.Win.C1Input.C1Button();
             this.c1ThemeController1 = new C1.Win.C1Themes.C1ThemeController();
             this.c1FlexGrid1 = new C1.Win.C1FlexGrid.C1FlexGrid();
+            this.txtReqDate = new C1.Win.C1Input.C1DateEdit();
+            this.c1SuperTooltip3 = new C1.Win.C1SuperTooltip.C1SuperTooltip(this.components);
+            this.c1TextBox2 = new C1.Win.C1Input.C1TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.c1SuperErrorProvider1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.c1CommandDock1)).BeginInit();
             this.c1CommandDock1.SuspendLayout();
@@ -49,6 +52,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.c1Button1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.c1ThemeController1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.c1FlexGrid1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtReqDate)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.c1TextBox2)).BeginInit();
             this.SuspendLayout();
             // 
             // c1SuperTooltip1
@@ -119,9 +124,9 @@
             // 
             // c1FlexGrid1
             // 
-            this.c1FlexGrid1.BackColor = System.Drawing.Color.White;
+            this.c1FlexGrid1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
             this.c1FlexGrid1.ColumnInfo = "10,1,0,0,0,95,Columns:";
-            this.c1FlexGrid1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(68)))), ((int)(((byte)(68)))));
+            this.c1FlexGrid1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
             this.c1FlexGrid1.Location = new System.Drawing.Point(394, 108);
             this.c1FlexGrid1.Name = "c1FlexGrid1";
             this.c1FlexGrid1.Rows.DefaultSize = 19;
@@ -130,12 +135,66 @@
             this.c1FlexGrid1.StyleInfo = resources.GetString("c1FlexGrid1.StyleInfo");
             this.c1FlexGrid1.TabIndex = 4;
             this.c1ThemeController1.SetTheme(this.c1FlexGrid1, "(default)");
+            this.c1FlexGrid1.Tree.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(43)))), ((int)(((byte)(43)))));
+            // 
+            // txtReqDate
+            // 
+            this.txtReqDate.AllowSpinLoop = false;
+            this.txtReqDate.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            // 
+            // 
+            // 
+            this.txtReqDate.Calendar.ArrowColor = System.Drawing.Color.Black;
+            this.txtReqDate.Calendar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.txtReqDate.Calendar.DayNamesFont = new System.Drawing.Font("Tahoma", 8F);
+            this.txtReqDate.Calendar.Font = new System.Drawing.Font("Tahoma", 8F);
+            this.txtReqDate.Calendar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.txtReqDate.Calendar.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(71)))), ((int)(((byte)(47)))));
+            this.txtReqDate.Calendar.SelectionForeColor = System.Drawing.Color.White;
+            this.txtReqDate.Calendar.TitleBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(230)))));
+            this.txtReqDate.Calendar.TitleFont = new System.Drawing.Font("Tahoma", 8F);
+            this.txtReqDate.Calendar.TitleForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.txtReqDate.Calendar.TodayBorderColor = System.Drawing.Color.White;
+            this.txtReqDate.Calendar.TrailingForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
+            this.txtReqDate.Calendar.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            this.txtReqDate.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(172)))), ((int)(((byte)(172)))), ((int)(((byte)(172)))));
+            this.txtReqDate.ImagePadding = new System.Windows.Forms.Padding(0);
+            this.txtReqDate.Location = new System.Drawing.Point(383, 313);
+            this.txtReqDate.Name = "txtReqDate";
+            this.txtReqDate.ReadOnly = true;
+            this.txtReqDate.Size = new System.Drawing.Size(168, 18);
+            this.txtReqDate.TabIndex = 513;
+            this.txtReqDate.Tag = null;
+            this.c1ThemeController1.SetTheme(this.txtReqDate, "(default)");
+            this.txtReqDate.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            // 
+            // c1SuperTooltip3
+            // 
+            this.c1SuperTooltip3.BackgroundGradient = C1.Win.C1SuperTooltip.BackgroundGradient.None;
+            this.c1SuperTooltip3.Font = new System.Drawing.Font("Tahoma", 8F);
+            this.c1SuperTooltip3.RightToLeft = System.Windows.Forms.RightToLeft.Inherit;
+            this.c1ThemeController1.SetTheme(this.c1SuperTooltip3, "(default)");
+            // 
+            // c1TextBox2
+            // 
+            this.c1TextBox2.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(71)))), ((int)(((byte)(71)))));
+            this.c1TextBox2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.c1TextBox2.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(172)))), ((int)(((byte)(172)))), ((int)(((byte)(172)))));
+            this.c1TextBox2.Location = new System.Drawing.Point(490, 43);
+            this.c1TextBox2.Name = "c1TextBox2";
+            this.c1TextBox2.Size = new System.Drawing.Size(100, 18);
+            this.c1TextBox2.TabIndex = 514;
+            this.c1TextBox2.Tag = null;
+            this.c1ThemeController1.SetTheme(this.c1TextBox2, "(default)");
+            this.c1TextBox2.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.c1TextBox2);
+            this.Controls.Add(this.txtReqDate);
             this.Controls.Add(this.c1FlexGrid1);
             this.Controls.Add(this.c1Button1);
             this.Controls.Add(this.c1TextBox1);
@@ -151,6 +210,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.c1Button1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.c1ThemeController1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.c1FlexGrid1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtReqDate)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.c1TextBox2)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -167,6 +228,9 @@
         private C1.Win.C1Input.C1TextBox c1TextBox1;
         private C1.Win.C1Themes.C1ThemeController c1ThemeController1;
         private C1.Win.C1FlexGrid.C1FlexGrid c1FlexGrid1;
+        private C1.Win.C1Input.C1DateEdit txtReqDate;
+        private C1.Win.C1SuperTooltip.C1SuperTooltip c1SuperTooltip3;
+        private C1.Win.C1Input.C1TextBox c1TextBox2;
     }
 }
 

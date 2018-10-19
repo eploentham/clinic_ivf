@@ -11,6 +11,7 @@ using System.Windows.Forms;
 using System.Threading;
 using System.Globalization;
 using C1.Win.C1Input;
+using AForge.Video.DirectShow;
 
 namespace clinic_ivf.control
 {
@@ -40,6 +41,8 @@ namespace clinic_ivf.control
         Regex regEmail;
         String soapTaxId = "";
         public String FixJobCode = "IMP", FixEccCode = "CC";
+
+        public VideoCaptureDevice video;
 
         public VisitOld sVsOld;
 

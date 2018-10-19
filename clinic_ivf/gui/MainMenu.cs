@@ -185,6 +185,13 @@ namespace clinic_ivf.gui
             flagExit = true;
             if (MessageBox.Show("ต้องการออกจากโปรแกรม2", "ออกจากโปรแกรม menu", MessageBoxButtons.OKCancel, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.OK)
             {
+                if (ic.video != null && ic.video.IsRunning)
+                {
+                    ic.video.SignalToStop();
+                    ic.video.WaitForStop();
+                    ic.video.Stop();
+                    ic.video = null;
+                }
                 Close();
                 return true;
             }
