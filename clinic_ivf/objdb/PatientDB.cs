@@ -360,6 +360,24 @@ namespace clinic_ivf.objdb
             cop1 = setPatient(dt);
             return cop1;
         }
+        public DataTable selectByDate(String date)
+        {
+            DataTable dt = new DataTable();
+            String sql = "select ptt.* " +
+                "From " + ptt.table + " ptt " +
+                "Where ptt." + ptt.patient_record_date_time + " >='" + date + " 00:00:00' and ptt." + ptt.patient_record_date_time + " <='" + date + " 23:59:59'";
+            dt = conn.selectData(conn.conn, sql);
+            return dt;
+        }
+        public DataTable selectByDate1(String date)
+        {
+            DataTable dt = new DataTable();
+            String sql = "select ptt."+ptt.t_patient_id+",ptt."+ptt.patient_hn+ ",CONCAT(ptt." + ptt.patient_firstname+",' ',ptt."+ptt.patient_lastname+") as name,ptt."+ptt.remark+" " +
+                "From " + ptt.table + " ptt " +
+                "Where ptt." + ptt.patient_record_date_time + " >='" + date + " 00:00:00' and ptt." + ptt.patient_record_date_time + " <='" + date + " 23:59:59'";
+            dt = conn.selectData(conn.conn, sql);
+            return dt;
+        }
         public Patient setPatient(DataTable dt)
         {
             Patient ptt1 = new Patient();

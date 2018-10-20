@@ -79,7 +79,7 @@ namespace clinic_ivf.gui
             {
                 stt.Hide();
                 setLabRequest();
-                String re = ic.ivfDB.lbReqDB.insertLabRequest(lbReq, ic.user.staff_id);
+                String re = ic.ivfDB.lbReqDB.insertLabRequest(lbReq, txtStfConfirmID.Text);
                 int chk = 0;
                 if (int.TryParse(re, out chk))
                 {
@@ -107,7 +107,6 @@ namespace clinic_ivf.gui
                     btnReq.Image = Resources.Ticket_24;
                 }
             }
-            
         }
 
         private void BtnSearch_Click(object sender, EventArgs e)

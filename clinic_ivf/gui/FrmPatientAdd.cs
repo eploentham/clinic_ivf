@@ -1,4 +1,6 @@
 ﻿using AForge.Video.DirectShow;
+using C1.Win.C1Document;
+using C1.Win.C1Document.Export;
 using C1.Win.C1FlexGrid;
 using C1.Win.C1SuperTooltip;
 using clinic_ivf.control;
@@ -9,6 +11,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -36,6 +39,8 @@ namespace clinic_ivf.gui
         Bitmap img;
         Image image1;
 
+        String filename = "";
+        
         public FrmPatientAdd(IvfControl ic, String pttid)
         {
             InitializeComponent();
@@ -49,6 +54,7 @@ namespace clinic_ivf.gui
             fEditB = new Font(ic.iniC.grdViewFontName, ic.grdViewFontSize, FontStyle.Bold);
             
             theme1.SetTheme(sB, "BeigeOne");
+            barcode.BackColor = this.BackColor;
 
             sB1.Text = "";
             bg = txtPttName.BackColor;
@@ -95,9 +101,18 @@ namespace clinic_ivf.gui
             btnWebCamOn.Click += BtnWebCamOn_Click;
             btnCapture.Click += BtnCapture_Click;
             this.FormClosed += FrmPatientAdd_FormClosed;
+            btnPrvSticker.Click += BtnPrvSticker_Click;
 
             btnCapture.Enabled = false;
             btnSavePic.Enabled = false;
+        }
+
+        private void BtnPrvSticker_Click(object sender, EventArgs e)
+        {
+            //throw new NotImplementedException();
+            filename = "DefaultDocument.pdf";
+            FrmPrintPreview frm = new FrmPrintPreview(ic,filename);
+            frm.ShowDialog(this);
         }
 
         private void FrmPatientAdd_FormClosed(object sender, FormClosedEventArgs e)
@@ -160,30 +175,98 @@ namespace clinic_ivf.gui
         private void BtnSave_Click(object sender, EventArgs e)
         {
             //throw new NotImplementedException();
-            if (MessageBox.Show("ต้องการ บันทึกช้อมูล ", "", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == DialogResult.OK)
+            //if (MessageBox.Show("ต้องการ บันทึกช้อมูล ", "", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == DialogResult.OK)
+            //{
+            //    setPatient();
+            //    String re = ic.ivfDB.pttDB.insertPatient(ptt, ic.user.staff_id);
+            //    int chk = 0;
+            //    if (int.TryParse(re, out chk))
+            //    {
+            //        //ic.ivfDB.stfDB.getlStf();
+            //        btnSave.Image = Resources.accept_database24;
+            //    }
+            //    else
+            //    {
+            //        btnSave.Image = Resources.accept_database24;
+            //    }
+            //    //setGrfStfH();
+            //    //setControlEnable(false);
+            //    //this.Dispose();
+            //}
+            if (btnSave.Text.Equals("Confirm"))
             {
+                stt.Hide();
                 setPatient();
-                String re = ic.ivfDB.pttDB.insertPatient(ptt, ic.user.staff_id);
+                String re = ic.ivfDB.pttDB.insertPatient(ptt, txtStfConfirmID.Text);
                 int chk = 0;
                 if (int.TryParse(re, out chk))
                 {
-                    //ic.ivfDB.stfDB.getlStf();
                     btnSave.Image = Resources.accept_database24;
+                    txtID.Value = re;
+                    //System.Threading.Thread.Sleep(2000);
+                    //this.Dispose();
+                }
+            }
+            else
+            {
+                ic.cStf.staff_id = "";
+                FrmPasswordConfirm frm = new FrmPasswordConfirm(ic);
+                frm.ShowDialog(this);
+                if (!ic.cStf.staff_id.Equals(""))
+                {
+                    txtUserReq.Value = ic.cStf.staff_fname_t + " " + ic.cStf.staff_lname_t;
+                    txtStfConfirmID.Value = ic.cStf.staff_id;
+                    btnSave.Text = "Confirm";
+                    btnSave.Image = Resources.Add_ticket_24;
+                    stt.Show("<p><b>สวัสดี</b></p>คุณ " + ic.cStf.staff_fname_t + " " + ic.cStf.staff_lname_t + "<br> กรุณายินยันการ confirm อีกครั้ง", btnWebCamOn);
                 }
                 else
                 {
-                    btnSave.Image = Resources.accept_database24;
+                    btnSave.Text = "Save";
+                    btnSave.Image = Resources.download_database24;
                 }
-                //setGrfStfH();
-                //setControlEnable(false);
-                //this.Dispose();
             }
         }
 
         private void BtnPrnSticker_Click(object sender, EventArgs e)
         {
             //throw new NotImplementedException();
-            MessageBox.Show("aaaa", "");
+            //MessageBox.Show("aaaa", "");
+            if (string.IsNullOrEmpty(filename))
+            {
+                MessageBox.Show(this, "Please select a PDF file.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            if (!File.Exists(filename))
+            {
+                MessageBox.Show(this, string.Format("File \"{0}\" does not exist.", filename), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            // load document
+            //while (true)
+            //{
+            try
+            {
+                c1PdfDocumentSource2.LoadFromFile(filename);
+                //break;
+            }
+            catch (PdfPasswordException)
+            {
+                string password = PasswordForm.DoEnterPassword(filename);
+                if (password == null)
+                    return;
+                c1PdfDocumentSource2.Credential.Password = password;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(this, ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            //}
+            // execute action            
+            DoPrint(c1PdfDocumentSource2);
+           
         }
         private void Exit()
         {
@@ -230,6 +313,9 @@ namespace clinic_ivf.gui
             //ic.setC1Combo(cboRg, ptt.f_patient_religion_id);
             //ic.setC1Combo(cboRg, ptt.f_patient_religion_id);
             //ic.setC1Combo(cboRg, ptt.f_patient_religion_id);
+            chkChronic.Checked = ptt.status_chronic.Equals("1") ? true : false;
+            chkDenyAllergy.Checked = ptt.status_deny_allergy.Equals("1") ? true : false;
+            barcode.Text = txtHn.Text;
         }
         private void setPatient()
         {
@@ -251,10 +337,61 @@ namespace clinic_ivf.gui
             ptt.patient_mother_lastname = txtMotherLname.Text;
             ptt.patient_couple_firstname = txtCouFname.Text;
             ptt.patient_couple_lastname = txtCouLname.Text;
+            ptt.patient_record_date_time = System.DateTime.Now.Year + "-" + System.DateTime.Now.ToString("MM-dd HH:mm:ss");
 
-            //stf.dept_id = cboDept.SelectedItem == null ? "" : ((ComboBoxItem)cboDept.SelectedItem).Value;
+            ptt.f_sex_id = cboSex.SelectedItem == null ? "" : ((ComboBoxItem)cboSex.SelectedItem).Value;
+            ptt.f_patient_marriage_status_id = cboMarital.SelectedItem == null ? "" : ((ComboBoxItem)cboMarital.SelectedItem).Value;
+            ptt.f_patient_blood_group_id = cboBloodG.SelectedItem == null ? "" : ((ComboBoxItem)cboBloodG.SelectedItem).Value;
+            ptt.f_patient_nation_id = CboNation.SelectedItem == null ? "" : ((ComboBoxItem)CboNation.SelectedItem).Value;
+            ptt.f_patient_race_id = cboRace.SelectedItem == null ? "" : ((ComboBoxItem)cboRace.SelectedItem).Value;
+            ptt.f_patient_religion_id = cboRg.SelectedItem == null ? "" : ((ComboBoxItem)cboRg.SelectedItem).Value;
+
+            ptt.status_deny_allergy = chkDenyAllergy.Checked == true ? "1" : "0";
+            ptt.status_chronic = chkChronic.Checked == true ? "1" : "0";
+        }
+        private void DoPrint(C1PdfDocumentSource pds)
+        {
+            if (printDialog1.ShowDialog(this) != DialogResult.OK)
+                return;
+
+            try
+            {
+                C1PrintOptions po = new C1PrintOptions();
+                po.PrinterSettings = printDialog1.PrinterSettings;
+                pds.Print(po);
+                MessageBox.Show(this, "Document was successfully printed.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(this, ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
+        private void DoExport(C1PdfDocumentSource pds, ExportProvider ep)
+        {
+            SaveFileDialog savefile = new SaveFileDialog();
+            savefile.DefaultExt = "." + ep.DefaultExtension;
+            savefile.FileName = Path.GetFileName(filename) + "." + ep.DefaultExtension;
+            savefile.Filter = string.Format("{0} (*.{1})|*.{1}|All files (*.*)|*.*", ep.FormatName, ep.DefaultExtension);
+            if (savefile.ShowDialog(this) != DialogResult.OK)
+                return;
+
+            try
+            {
+                var exporter = ep.NewExporter();
+                exporter.ShowOptions = false;
+                exporter.FileName = savefile.FileName;
+                if (exporter.ShowOptionsDialog())
+                {
+                    pds.Export(exporter);
+                    MessageBox.Show(this, "Document was successfully exported.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(this, ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
         private void FrmPatientAdd_Load(object sender, EventArgs e)
         {
             tC1.SelectedTab = tabFamily;

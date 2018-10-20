@@ -28,9 +28,14 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.theme1 = new C1.Win.C1Themes.C1ThemeController();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
+            this.txtStfConfirmID = new C1.Win.C1Input.C1TextBox();
+            this.txtUserReq = new C1.Win.C1Input.C1TextBox();
+            this.label21 = new System.Windows.Forms.Label();
+            this.barcode = new C1.Win.BarCode.C1BarCode();
             this.label8 = new System.Windows.Forms.Label();
             this.txtPaasport = new C1.Win.C1Input.C1TextBox();
             this.label6 = new System.Windows.Forms.Label();
@@ -42,7 +47,7 @@
             this.cboRace = new C1.Win.C1Input.C1ComboBox();
             this.btnPrint = new C1.Win.C1Input.C1SplitButton();
             this.btnPrnSticker = new C1.Win.C1Input.DropDownItem();
-            this.dropDownItem2 = new C1.Win.C1Input.DropDownItem();
+            this.btnPrvSticker = new C1.Win.C1Input.DropDownItem();
             this.dropDownItem3 = new C1.Win.C1Input.DropDownItem();
             this.btnSavePic = new C1.Win.C1Input.C1Button();
             this.btnCapture = new C1.Win.C1Input.C1Button();
@@ -123,7 +128,8 @@
             this.tabVisit = new C1.Win.C1Command.C1DockingTabPage();
             this.sB = new System.Windows.Forms.StatusStrip();
             this.sB1 = new System.Windows.Forms.ToolStripStatusLabel();
-            this.c1BarCode1 = new C1.Win.BarCode.C1BarCode();
+            this.printDialog1 = new System.Windows.Forms.PrintDialog();
+            this.c1PdfDocumentSource2 = new C1.Win.C1Document.C1PdfDocumentSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.theme1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
@@ -133,6 +139,8 @@
             this.splitContainer2.Panel1.SuspendLayout();
             this.splitContainer2.Panel2.SuspendLayout();
             this.splitContainer2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtStfConfirmID)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtUserReq)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtPaasport)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtPid)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cboRg)).BeginInit();
@@ -234,7 +242,10 @@
             // splitContainer2.Panel1
             // 
             this.splitContainer2.Panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.splitContainer2.Panel1.Controls.Add(this.c1BarCode1);
+            this.splitContainer2.Panel1.Controls.Add(this.txtStfConfirmID);
+            this.splitContainer2.Panel1.Controls.Add(this.txtUserReq);
+            this.splitContainer2.Panel1.Controls.Add(this.label21);
+            this.splitContainer2.Panel1.Controls.Add(this.barcode);
             this.splitContainer2.Panel1.Controls.Add(this.label8);
             this.splitContainer2.Panel1.Controls.Add(this.txtPaasport);
             this.splitContainer2.Panel1.Controls.Add(this.label6);
@@ -293,6 +304,66 @@
             this.splitContainer2.SplitterDistance = 1153;
             this.splitContainer2.TabIndex = 0;
             this.theme1.SetTheme(this.splitContainer2, "(default)");
+            // 
+            // txtStfConfirmID
+            // 
+            this.txtStfConfirmID.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtStfConfirmID.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
+            this.txtStfConfirmID.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.txtStfConfirmID.Location = new System.Drawing.Point(421, 248);
+            this.txtStfConfirmID.Name = "txtStfConfirmID";
+            this.txtStfConfirmID.Size = new System.Drawing.Size(30, 20);
+            this.txtStfConfirmID.TabIndex = 605;
+            this.txtStfConfirmID.Tag = null;
+            this.theme1.SetTheme(this.txtStfConfirmID, "(default)");
+            this.txtStfConfirmID.Visible = false;
+            this.txtStfConfirmID.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            // 
+            // txtUserReq
+            // 
+            this.txtUserReq.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtUserReq.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
+            this.txtUserReq.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.txtUserReq.Location = new System.Drawing.Point(506, 248);
+            this.txtUserReq.Name = "txtUserReq";
+            this.txtUserReq.Size = new System.Drawing.Size(207, 20);
+            this.txtUserReq.TabIndex = 604;
+            this.txtUserReq.Tag = null;
+            this.theme1.SetTheme(this.txtUserReq, "(default)");
+            this.txtUserReq.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            // 
+            // label21
+            // 
+            this.label21.AutoSize = true;
+            this.label21.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.label21.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label21.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.label21.Location = new System.Drawing.Point(457, 250);
+            this.label21.Name = "label21";
+            this.label21.Size = new System.Drawing.Size(43, 16);
+            this.label21.TabIndex = 603;
+            this.label21.Text = "user  :";
+            this.theme1.SetTheme(this.label21, "(default)");
+            // 
+            // barcode
+            // 
+            this.barcode.AdditionalNumber = null;
+            this.barcode.BackColor = System.Drawing.Color.White;
+            this.barcode.CodeType = C1.BarCode.CodeType.QRCode;
+            this.barcode.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.barcode.ForeColor = System.Drawing.Color.Black;
+            this.barcode.Location = new System.Drawing.Point(7, 67);
+            this.barcode.MicroQRCodeOptions.EncodingCodePage = 65001;
+            this.barcode.Name = "barcode";
+            this.barcode.QuietZone.Bottom = 0D;
+            this.barcode.QuietZone.Left = 0D;
+            this.barcode.QuietZone.Right = 0D;
+            this.barcode.QuietZone.Top = 0D;
+            this.barcode.Size = new System.Drawing.Size(151, 150);
+            this.barcode.TabIndex = 602;
+            this.barcode.Text = "c1BarCode1";
+            this.barcode.TextFixedLength = 0;
+            this.barcode.WideToNarrowRatio = 2F;
             // 
             // label8
             // 
@@ -432,7 +503,7 @@
             this.btnPrint.Image = global::clinic_ivf.Properties.Resources.print;
             this.btnPrint.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnPrint.Items.Add(this.btnPrnSticker);
-            this.btnPrint.Items.Add(this.dropDownItem2);
+            this.btnPrint.Items.Add(this.btnPrvSticker);
             this.btnPrint.Items.Add(this.dropDownItem3);
             this.btnPrint.Location = new System.Drawing.Point(719, 241);
             this.btnPrint.Name = "btnPrint";
@@ -448,9 +519,10 @@
             this.btnPrnSticker.Image = global::clinic_ivf.Properties.Resources.printer_blue24;
             this.btnPrnSticker.Text = "Print Sticker";
             // 
-            // dropDownItem2
+            // btnPrvSticker
             // 
-            this.dropDownItem2.Text = "dropDownItem2";
+            this.btnPrvSticker.Image = global::clinic_ivf.Properties.Resources.printer_orange48;
+            this.btnPrvSticker.Text = "Preview Sticker";
             // 
             // dropDownItem3
             // 
@@ -520,7 +592,7 @@
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(83, 39);
             this.btnSave.TabIndex = 586;
-            this.btnSave.Text = "บันทึกช้อมูล";
+            this.btnSave.Text = "Save";
             this.btnSave.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.theme1.SetTheme(this.btnSave, "(default)");
             this.btnSave.UseVisualStyleBackColor = true;
@@ -586,10 +658,10 @@
             this.chkChronic.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.chkChronic.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.chkChronic.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.chkChronic.Location = new System.Drawing.Point(432, 246);
+            this.chkChronic.Location = new System.Drawing.Point(164, 248);
             this.chkChronic.Name = "chkChronic";
             this.chkChronic.Padding = new System.Windows.Forms.Padding(4, 1, 1, 1);
-            this.chkChronic.Size = new System.Drawing.Size(104, 24);
+            this.chkChronic.Size = new System.Drawing.Size(88, 24);
             this.chkChronic.TabIndex = 581;
             this.chkChronic.Text = "มีโรคเรื้อรัง";
             this.theme1.SetTheme(this.chkChronic, "(default)");
@@ -605,7 +677,7 @@
             this.chkDenyAllergy.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.chkDenyAllergy.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.chkDenyAllergy.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.chkDenyAllergy.Location = new System.Drawing.Point(542, 246);
+            this.chkDenyAllergy.Location = new System.Drawing.Point(260, 246);
             this.chkDenyAllergy.Name = "chkDenyAllergy";
             this.chkDenyAllergy.Padding = new System.Windows.Forms.Padding(4, 1, 1, 1);
             this.chkDenyAllergy.Size = new System.Drawing.Size(104, 24);
@@ -1632,25 +1704,9 @@
             this.sB1.Size = new System.Drawing.Size(118, 17);
             this.sB1.Text = "toolStripStatusLabel1";
             // 
-            // c1BarCode1
+            // printDialog1
             // 
-            this.c1BarCode1.AdditionalNumber = null;
-            this.c1BarCode1.BackColor = System.Drawing.Color.White;
-            this.c1BarCode1.CodeType = C1.BarCode.CodeType.QRCode;
-            this.c1BarCode1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.c1BarCode1.ForeColor = System.Drawing.Color.Black;
-            this.c1BarCode1.Location = new System.Drawing.Point(7, 67);
-            this.c1BarCode1.MicroQRCodeOptions.EncodingCodePage = 65001;
-            this.c1BarCode1.Name = "c1BarCode1";
-            this.c1BarCode1.QuietZone.Bottom = 0D;
-            this.c1BarCode1.QuietZone.Left = 0D;
-            this.c1BarCode1.QuietZone.Right = 0D;
-            this.c1BarCode1.QuietZone.Top = 0D;
-            this.c1BarCode1.Size = new System.Drawing.Size(151, 150);
-            this.c1BarCode1.TabIndex = 602;
-            this.c1BarCode1.Text = "c1BarCode1";
-            this.c1BarCode1.TextFixedLength = 0;
-            this.c1BarCode1.WideToNarrowRatio = 2F;
+            this.printDialog1.UseEXDialog = true;
             // 
             // FrmPatientAdd
             // 
@@ -1672,6 +1728,8 @@
             this.splitContainer2.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).EndInit();
             this.splitContainer2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.txtStfConfirmID)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtUserReq)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtPaasport)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtPid)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cboRg)).EndInit();
@@ -1803,7 +1861,7 @@
         private C1.Win.C1Input.C1Button c1Button4;
         private C1.Win.C1Input.C1SplitButton btnPrint;
         private C1.Win.C1Input.DropDownItem btnPrnSticker;
-        private C1.Win.C1Input.DropDownItem dropDownItem2;
+        private C1.Win.C1Input.DropDownItem btnPrvSticker;
         private C1.Win.C1Input.DropDownItem dropDownItem3;
         private System.Windows.Forms.Label label25;
         private C1.Win.C1Input.C1ComboBox cboRace;
@@ -1834,6 +1892,11 @@
         private C1.Win.C1Input.C1TextBox txtPaasport;
         private System.Windows.Forms.Label label6;
         private C1.Win.C1Input.C1TextBox txtPid;
-        private C1.Win.BarCode.C1BarCode c1BarCode1;
+        private C1.Win.BarCode.C1BarCode barcode;
+        private C1.Win.C1Input.C1TextBox txtStfConfirmID;
+        private C1.Win.C1Input.C1TextBox txtUserReq;
+        private System.Windows.Forms.Label label21;
+        private System.Windows.Forms.PrintDialog printDialog1;
+        private C1.Win.C1Document.C1PdfDocumentSource c1PdfDocumentSource2;
     }
 }
