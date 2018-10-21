@@ -2,6 +2,7 @@
 using C1.Win.C1Document;
 using C1.Win.C1Document.Export;
 using C1.Win.C1FlexGrid;
+using C1.Win.C1Input;
 using C1.Win.C1SuperTooltip;
 using clinic_ivf.control;
 using clinic_ivf.object1;
@@ -95,6 +96,7 @@ namespace clinic_ivf.gui
             ic.ivfDB.sexDB.setCboSex(cboSex);
 
             setControl(pttId);
+            setFocusColor();
 
             btnPrnSticker.Click += BtnPrnSticker_Click;
             btnSave.Click += BtnSave_Click;
@@ -267,6 +269,60 @@ namespace clinic_ivf.gui
             // execute action            
             DoPrint(c1PdfDocumentSource2);
            
+        }
+        private void setFocusColor()
+        {
+            this.txtHn.Leave += new System.EventHandler(this.textBox_Leave);
+            this.txtPid.Enter += new System.EventHandler(this.textBox_Enter);
+            this.txtPaasport.Enter += new System.EventHandler(this.textBox_Enter);
+            this.txtPttName.Enter += new System.EventHandler(this.textBox_Enter);
+            this.txtPttLName.Enter += new System.EventHandler(this.textBox_Enter);
+            this.txtMobile1.Enter += new System.EventHandler(this.textBox_Enter);
+            this.txtMobile2.Enter += new System.EventHandler(this.textBox_Enter);
+            this.txtLineID.Enter += new System.EventHandler(this.textBox_Enter);
+            this.txtRemark.Enter += new System.EventHandler(this.textBox_Enter);
+            this.txtEmail.Enter += new System.EventHandler(this.textBox_Enter);
+            this.txtFatherFname.Enter += new System.EventHandler(this.textBox_Enter);
+            this.txtFatherLname.Enter += new System.EventHandler(this.textBox_Enter);
+            this.txtMotherFname.Enter += new System.EventHandler(this.textBox_Enter);
+            this.txtMotherLname.Enter += new System.EventHandler(this.textBox_Enter);
+            this.txtCouFname.Enter += new System.EventHandler(this.textBox_Enter);
+            this.txtCouLname.Enter += new System.EventHandler(this.textBox_Enter);
+            this.txtContMobile2.Enter += new System.EventHandler(this.textBox_Enter);
+            this.txtContMobile1.Enter += new System.EventHandler(this.textBox_Enter);
+            this.txtContFname1.Enter += new System.EventHandler(this.textBox_Enter);
+            this.txtContFname2.Enter += new System.EventHandler(this.textBox_Enter);
+            this.txtContLname1.Enter += new System.EventHandler(this.textBox_Enter);
+            this.txtContLname2.Enter += new System.EventHandler(this.textBox_Enter);
+
+            this.cboBloodG.Enter += new System.EventHandler(this.textBox_Enter);
+            this.cboCouPrefix.Enter += new System.EventHandler(this.textBox_Enter);
+            this.cboCouRel.Enter += new System.EventHandler(this.textBox_Enter);
+            this.CboEduca.Enter += new System.EventHandler(this.textBox_Enter);
+            this.cboMarital.Enter += new System.EventHandler(this.textBox_Enter);
+            this.cboName1Prefix.Enter += new System.EventHandler(this.textBox_Enter);
+            this.cboName1Rl.Enter += new System.EventHandler(this.textBox_Enter);
+            this.cboName2Prefix.Enter += new System.EventHandler(this.textBox_Enter);
+            this.cboName2Rl.Enter += new System.EventHandler(this.textBox_Enter);
+            this.CboNation.Enter += new System.EventHandler(this.textBox_Enter);
+            this.cboPrefix.Enter += new System.EventHandler(this.textBox_Enter);
+            this.cboRace.Enter += new System.EventHandler(this.textBox_Enter);
+            this.cboRg.Enter += new System.EventHandler(this.textBox_Enter);
+            this.cboSex.Enter += new System.EventHandler(this.textBox_Enter);
+            //this.txtPid1.Enter += new System.EventHandler(this.textBox_Enter);
+        }
+        private void textBox_Leave(object sender, EventArgs e)
+        {
+            C1TextBox a = (C1TextBox)sender;
+            a.BackColor = bg;
+            a.ForeColor = fc;
+            a.Font = new Font(ff, FontStyle.Regular);
+        }
+        private void textBox_Enter(object sender, EventArgs e)
+        {
+            C1TextBox a = (C1TextBox)sender;
+            a.BackColor = ic.cTxtFocus;
+            a.Font = new Font(ff, FontStyle.Bold);
         }
         private void Exit()
         {
