@@ -1,4 +1,5 @@
 ﻿using AForge.Video.DirectShow;
+using C1.C1Pdf;
 using C1.Win.C1Document;
 using C1.Win.C1Document.Export;
 using C1.Win.C1FlexGrid;
@@ -11,10 +12,13 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -80,6 +84,7 @@ namespace clinic_ivf.gui
                 //MessageBox.Show(" no camera Found\n" + ex.Message);
             }
 
+            txtDob.Value = DateTime.Now.ToString("yyyy-MM-dd");
             ic.ivfDB.fpDB.setCboPrefix(cboPrefix);
             ic.ivfDB.fmsDB.setCboMarriage(cboMarital);
             ic.ivfDB.fbgDB.setCboBloodGroup(cboBloodG);
@@ -108,15 +113,7 @@ namespace clinic_ivf.gui
             btnCapture.Enabled = false;
             btnSavePic.Enabled = false;
         }
-
-        private void BtnPrvSticker_Click(object sender, EventArgs e)
-        {
-            //throw new NotImplementedException();
-            filename = "DefaultDocument.pdf";
-            FrmPrintPreview frm = new FrmPrintPreview(ic,filename);
-            frm.ShowDialog(this);
-        }
-
+        
         private void FrmPatientAdd_FormClosed(object sender, FormClosedEventArgs e)
         {
             //throw new NotImplementedException();
@@ -229,28 +226,15 @@ namespace clinic_ivf.gui
                 }
             }
         }
-
-        private void BtnPrnSticker_Click(object sender, EventArgs e)
+        private void BtnPrvSticker_Click(object sender, EventArgs e)
         {
             //throw new NotImplementedException();
-            //MessageBox.Show("aaaa", "");
-            if (string.IsNullOrEmpty(filename))
-            {
-                MessageBox.Show(this, "Please select a PDF file.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
-            if (!File.Exists(filename))
-            {
-                MessageBox.Show(this, string.Format("File \"{0}\" does not exist.", filename), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
-
-            // load document
-            //while (true)
-            //{
+            filename = "flow.pdf";
             try
             {
-                c1PdfDocumentSource2.LoadFromFile(filename);
+                createPDFSticker(cboPrefix.Text + " " + txtPttName.Text + " " + txtPttLName.Text + "\n" + txtDob.Text);
+                //cPdf.LoadFromFile(filename);
+                //cPdf.lo(filename);
                 //break;
             }
             catch (PdfPasswordException)
@@ -258,7 +242,35 @@ namespace clinic_ivf.gui
                 string password = PasswordForm.DoEnterPassword(filename);
                 if (password == null)
                     return;
-                c1PdfDocumentSource2.Credential.Password = password;
+                cPdf.Credential.Password = password;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(this, ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            
+            FrmPrintPreview frm = new FrmPrintPreview(ic, filename);
+            frm.ShowDialog(this);
+        }
+        private void BtnPrnSticker_Click(object sender, EventArgs e)
+        {
+            //throw new NotImplementedException();
+            //MessageBox.Show("aaaa", "");
+            filename = "flow.pdf";            
+            try
+            {
+                createPDFSticker(cboPrefix.Text+" "+ txtPttName.Text+" "+txtPttLName.Text+"\n"+txtDob.Text);
+                cPdf.LoadFromFile(filename);
+                //cPdf.lo(filename);
+                //break;
+            }
+            catch (PdfPasswordException)
+            {
+                string password = PasswordForm.DoEnterPassword(filename);
+                if (password == null)
+                    return;
+                cPdf.Credential.Password = password;
             }
             catch (Exception ex)
             {
@@ -267,7 +279,7 @@ namespace clinic_ivf.gui
             }
             //}
             // execute action            
-            DoPrint(c1PdfDocumentSource2);
+            DoPrint(cPdf);
            
         }
         private void setFocusColor()
@@ -447,6 +459,144 @@ namespace clinic_ivf.gui
             {
                 MessageBox.Show(this, ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+        public void createPDFSticker(String txt)
+        {
+            //C1DocumentSource cPdf = new C1DocumentSource();
+            // load long string from resource file
+            string text = "Resource not found...";
+            //Assembly a = Assembly.GetExecutingAssembly();
+            //foreach (string res in a.GetManifestResourceNames())
+            //{
+            //    if (res.ToLower().IndexOf("flow.txt") > -1)
+            //    {
+            //        StreamReader sr = new StreamReader(a.GetManifestResourceStream(res));
+            //        text = sr.ReadToEnd();
+            //    }
+            //}
+            text = txt;
+            text = text.Replace("\t", "   ");
+            //text = string.Format("{0}\r\n\r\n---oOoOoOo---\r\n\r\n{0}", text);
+
+            // create pdf document
+            _c1pdf.Clear();
+            _c1pdf.DocumentInfo.Title = "";
+            sB.Text = "Creating pdf document...";
+
+            // add title
+            Font titleFont = new Font("Tahoma", 24, FontStyle.Bold);
+            Font bodyFont = new Font("Tahoma", 9);
+            RectangleF rcPage = GetPageRect();
+            RectangleF rc = RenderParagraph(_c1pdf.DocumentInfo.Title, titleFont, rcPage, rcPage, false);
+            rc.Y += titleFont.Size + 6;
+            rc.Height = rcPage.Height - rc.Y;
+
+            // create two columns for the text
+            RectangleF rcLeft = rc;
+            //rcLeft.Width = rcPage.Width / 2 - 12;
+            rcLeft.Width = 120;
+            rcLeft.Height = 90;
+            rcLeft.Y = 60;
+            RectangleF rcRight = rcLeft;
+            rcRight.X = rcPage.Right - rcRight.Width;
+
+            RectangleF rcMiddle = rcLeft;
+            rcMiddle.X = rcPage.Right - rcMiddle.Width - rcMiddle.Width - 55;
+
+            //rcMiddle.X = 180;
+            // start with left column
+            //rc = rcLeft;
+
+            // render string spanning columns and pages
+            for (int i=1;i<=10 ;i++ )
+            {
+                // render as much as will fit into the rectangle
+                rc.Inflate(-3, -3);
+                int nextChar = _c1pdf.DrawString(text, bodyFont, Brushes.Black, rcLeft);
+                rc.Inflate(+3, +3);
+                _c1pdf.DrawRectangle(Pens.Silver, rcLeft);
+
+                _c1pdf.DrawString(text, bodyFont, Brushes.Black, rcMiddle);
+                _c1pdf.DrawRectangle(Pens.Silver, rcMiddle);
+
+                _c1pdf.DrawString(text, bodyFont, Brushes.Black, rcRight);
+                _c1pdf.DrawRectangle(Pens.Silver, rcRight);
+
+                rcLeft.Y += 120;
+                rcMiddle.Y += 120;
+                rcRight.Y += 120;
+                // break when done
+                //if (nextChar >= text.Length)
+                //    break;
+
+                // get rid of the part that was rendered
+                //text = text.Substring(nextChar);
+
+                // switch to right-side rectangle
+                //if (rc.Left == rcLeft.Left)
+                //{
+                //    rc = rcRight;
+                //}
+                //else // switch to left-side rectangle on the next page
+                //{
+                //    _c1pdf.NewPage();
+                //    rc = rcLeft;
+                //}
+            }
+
+            // save and show pdf document
+            sB.Text = "Saving pdf document...";
+            string fileName = Path.GetDirectoryName(Application.ExecutablePath) + @"\flow.pdf";
+            _c1pdf.Save(fileName);
+            Thread.Sleep(1000);
+            //Process.Start(fileName);
+        }
+        internal RectangleF GetPageRect()
+        {
+            RectangleF rcPage = _c1pdf.PageRectangle;
+            rcPage.Inflate(-72, -72);
+            return rcPage;
+        }
+        internal RectangleF RenderParagraph(string text, Font font, RectangleF rcPage, RectangleF rc, bool outline, bool linkTarget)
+        {
+            // if it won't fit this page, do a page break
+            rc.Height = _c1pdf.MeasureString(text, font, rc.Width).Height;
+            if (rc.Bottom > rcPage.Bottom)
+            {
+                _c1pdf.NewPage();
+                rc.Y = rcPage.Top;
+            }
+
+            // draw the string
+            _c1pdf.DrawString(text, font, Brushes.Black, rc);
+
+            // show bounds (mainly to check word wrapping)
+            //_c1pdf.DrawRectangle(Pens.Sienna, rc);
+
+            // add headings to outline
+            if (outline)
+            {
+                _c1pdf.DrawLine(Pens.Black, rc.X, rc.Y, rc.Right, rc.Y);
+                _c1pdf.AddBookmark(text, 0, rc.Y);
+            }
+
+            // add link target
+            if (linkTarget)
+            {
+                _c1pdf.AddTarget(text, rc);
+            }
+
+            // update rectangle for next time
+            rc.Offset(0, rc.Height);
+            return rc;
+        }
+        internal RectangleF RenderParagraph(string text, Font font, RectangleF rcPage, RectangleF rc, bool outline)
+        {
+            return RenderParagraph(text, font, rcPage, rc, outline, false);
+        }
+        internal RectangleF RenderParagraph(string text, Font font, RectangleF rcPage, RectangleF rc)
+        {
+            return RenderParagraph(text, font, rcPage, rc, false, false);
         }
         private void FrmPatientAdd_Load(object sender, EventArgs e)
         {

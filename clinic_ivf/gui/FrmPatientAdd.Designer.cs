@@ -129,7 +129,8 @@
             this.sB = new System.Windows.Forms.StatusStrip();
             this.sB1 = new System.Windows.Forms.ToolStripStatusLabel();
             this.printDialog1 = new System.Windows.Forms.PrintDialog();
-            this.c1PdfDocumentSource2 = new C1.Win.C1Document.C1PdfDocumentSource(this.components);
+            this.cPdf = new C1.Win.C1Document.C1PdfDocumentSource(this.components);
+            this._c1pdf = new C1.C1Pdf.C1PdfDocument();
             ((System.ComponentModel.ISupportInitialize)(this.theme1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
@@ -1708,6 +1709,22 @@
             // 
             this.printDialog1.UseEXDialog = true;
             // 
+            // _c1pdf
+            // 
+            this._c1pdf.DocumentInfo.Author = "";
+            this._c1pdf.DocumentInfo.CreationDate = new System.DateTime(((long)(0)));
+            this._c1pdf.DocumentInfo.Creator = "";
+            this._c1pdf.DocumentInfo.Keywords = "";
+            this._c1pdf.DocumentInfo.Producer = "ComponentOne C1Pdf";
+            this._c1pdf.DocumentInfo.Subject = "";
+            this._c1pdf.DocumentInfo.Title = "";
+            this._c1pdf.MaxHeaderBookmarkLevel = 0;
+            this._c1pdf.PdfVersion = "1.3";
+            this._c1pdf.RefDC = null;
+            this._c1pdf.RotateAngle = 0F;
+            this._c1pdf.UseFastTextOut = true;
+            this._c1pdf.UseFontShaping = true;
+            // 
             // FrmPatientAdd
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1897,6 +1914,7 @@
         private C1.Win.C1Input.C1TextBox txtUserReq;
         private System.Windows.Forms.Label label21;
         private System.Windows.Forms.PrintDialog printDialog1;
-        private C1.Win.C1Document.C1PdfDocumentSource c1PdfDocumentSource2;
+        private C1.Win.C1Document.C1PdfDocumentSource cPdf;
+        private C1.C1Pdf.C1PdfDocument _c1pdf;
     }
 }

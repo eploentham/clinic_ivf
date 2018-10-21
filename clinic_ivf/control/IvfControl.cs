@@ -12,6 +12,9 @@ using System.Threading;
 using System.Globalization;
 using C1.Win.C1Input;
 using AForge.Video.DirectShow;
+using System.IO;
+using System.Reflection;
+using C1.Win.C1Document;
 
 namespace clinic_ivf.control
 {
@@ -157,5 +160,6 @@ namespace clinic_ivf.control
                 }
             }
         }
+        
     }
 }

@@ -57,7 +57,7 @@ namespace clinic_ivf.gui
             txtSearch.KeyUp += TxtSearch_KeyUp;
 
             initGrfPtt();
-            setGrfPtt();
+            setGrfPtt("");
         }
 
         private void TxtSearch_KeyUp(object sender, KeyEventArgs e)
