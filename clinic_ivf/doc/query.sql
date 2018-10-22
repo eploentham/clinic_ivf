@@ -891,3 +891,19 @@ UPDATE `ivf`.`b_company` SET `hn_doc` = '0', `prefix_hn_doc` = 'BH' WHERE (`comp
 
 ALTER TABLE `ivf`.`t_patient` 
 ADD COLUMN `remark` VARCHAR(255) NULL AFTER `passport`;
+
+
+61-10-22
+ALTER TABLE `ivf`.`t_patient` 
+ADD COLUMN `patient_type` VARCHAR(255) NULL AFTER `patient_active`,
+ADD COLUMN `patient_group` VARCHAR(255) NULL AFTER `patient_type`;
+
+ALTER TABLE `ivf`.`t_patient` 
+ADD COLUMN `agent` VARCHAR(255) NULL AFTER `patient_group`;
+
+INSERT INTO `ivf`.`f_patient_prefix` (`patient_prefix_description`, `active`) VALUES ('Mrs.', '1');
+INSERT INTO `ivf`.`f_patient_prefix` (`patient_prefix_description`, `active`) VALUES ('Miss', '1');
+INSERT INTO `ivf`.`f_patient_prefix` (`patient_prefix_description`, `active`) VALUES ('Mr.', '1');
+INSERT INTO `ivf`.`f_patient_prefix` (`patient_prefix_description`, `active`) VALUES ('Girl', '1');
+INSERT INTO `ivf`.`f_patient_prefix` (`patient_prefix_description`, `active`) VALUES ('Boy', '1');
+INSERT INTO `ivf`.`f_patient_prefix` (`patient_prefix_description`, `active`) VALUES ('-', '1');

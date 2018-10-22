@@ -97,5 +97,8 @@ namespace clinic_ivf.object1
         public String line_id { get; set; }
         public String email { get; set; }
         public String passport { get; set; }
+        public String patient_type { get; set; }
+        public String patient_group { get; set; }
+        public String agent { get; set; }
     }
 }

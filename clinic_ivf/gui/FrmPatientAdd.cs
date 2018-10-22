@@ -1,4 +1,5 @@
-﻿using AForge.Video.DirectShow;
+﻿
+using AForge.Video.DirectShow;
 using C1.C1Pdf;
 using C1.Win.C1Document;
 using C1.Win.C1Document.Export;
@@ -99,6 +100,8 @@ namespace clinic_ivf.gui
             ic.ivfDB.frlDB.setCboRelation(cboName1Rl);
             ic.ivfDB.frlDB.setCboRelation(cboName2Rl);
             ic.ivfDB.sexDB.setCboSex(cboSex);
+            ic.setCboPttType(cboPttType);
+            ic.setCboPttGroup(cboPttGroup);
 
             setControl(pttId);
             setFocusColor();
@@ -199,8 +202,10 @@ namespace clinic_ivf.gui
                 int chk = 0;
                 if (int.TryParse(re, out chk))
                 {
+                    btnSave.Text = "Save";
                     btnSave.Image = Resources.accept_database24;
                     txtID.Value = re;
+                    txtPid.Focus();
                     //System.Threading.Thread.Sleep(2000);
                     //this.Dispose();
                 }
@@ -217,6 +222,7 @@ namespace clinic_ivf.gui
                     btnSave.Text = "Confirm";
                     btnSave.Image = Resources.Add_ticket_24;
                     stt.Show("<p><b>สวัสดี</b></p>คุณ " + ic.cStf.staff_fname_t + " " + ic.cStf.staff_lname_t + "<br> กรุณายินยันการ confirm อีกครั้ง", btnWebCamOn);
+                    btnSave.Focus();
                 }
                 else
                 {
@@ -434,6 +440,8 @@ namespace clinic_ivf.gui
             txtMotherLname.Value = ptt.patient_mother_lastname;
             txtCouFname.Value = ptt.patient_couple_firstname;
             txtCouLname.Value = ptt.patient_couple_lastname;
+            txtAgent.Value = ptt.agent;
+            txtDrugAllergy.Value = ptt.patient_drugallergy;
 
             ic.setC1Combo(cboPrefix, ptt.f_patient_prefix_id);
             ic.setC1Combo(cboSex, ptt.f_sex_id);
@@ -443,8 +451,8 @@ namespace clinic_ivf.gui
             ic.setC1Combo(CboEduca, ptt.f_patient_education_type_id);
             ic.setC1Combo(cboRace, ptt.f_patient_race_id);
             ic.setC1Combo(cboRg, ptt.f_patient_religion_id);
-            //ic.setC1Combo(cboCouPrefix, ptt.f_patient_religion_id);
-            //ic.setC1Combo(cboRg, ptt.f_patient_religion_id);
+            ic.setC1Combo(cboPttType, ptt.f_patient_religion_id);
+            ic.setC1Combo(cboPttGroup, ptt.f_patient_religion_id);
             //ic.setC1Combo(cboRg, ptt.f_patient_religion_id);
             //ic.setC1Combo(cboRg, ptt.f_patient_religion_id);
             //ic.setC1Combo(cboRg, ptt.f_patient_religion_id);
@@ -484,6 +492,11 @@ namespace clinic_ivf.gui
 
             ptt.status_deny_allergy = chkDenyAllergy.Checked == true ? "1" : "0";
             ptt.status_chronic = chkChronic.Checked == true ? "1" : "0";
+
+            ptt.patient_group = cboPttGroup.SelectedItem == null ? "" : ((ComboBoxItem)cboPttGroup.SelectedItem).Value;
+            ptt.patient_type = cboPttType.SelectedItem == null ? "" : ((ComboBoxItem)cboPttType.SelectedItem).Value;
+            ptt.agent = txtAgent.Text;
+            ptt.patient_drugallergy = txtDrugAllergy.Text;
         }
         private void DoPrint(C1PdfDocumentSource pds)
         {
@@ -560,45 +573,56 @@ namespace clinic_ivf.gui
             rc.Y += titleFont.Size + 6;
             rc.Height = rcPage.Height - rc.Y;
 
-            // create two columns for the text
+            // create three columns for the text
             RectangleF rcLeft = rc;
+            int chk = 0;
             //rcLeft.Width = rcPage.Width / 2 - 12;
-            rcLeft.Width = 120;
-            rcLeft.Height = 90;
-            rcLeft.Y = 60;
+            rcLeft.Width = int.TryParse(ic.iniC.sticker_donor_width, out chk) ? chk : 120;
+            rcLeft.Height = int.TryParse(ic.iniC.sticker_donor_height, out chk) ? chk : 90;
+            rcLeft.Y = int.TryParse(ic.iniC.sticker_donor_start_y, out chk) ? chk : 60;
             RectangleF rcRight = rcLeft;
             rcRight.X = rcPage.Right - rcRight.Width;
 
             RectangleF rcMiddle = rcLeft;
             rcMiddle.X = rcPage.Right - rcMiddle.Width - rcMiddle.Width - 55;
-            RectangleF rcBarcode = RenderParagraph("", titleFont, rcPage, rcPage, false);
-            rcBarcode.Height = 30;
+            RectangleF rcBarcode1 = RenderParagraph("", titleFont, rcPage, rcPage, false);
+            rcBarcode1.Height = int.TryParse(ic.iniC.sticker_donor_barcode_height, out chk) ? chk : 40;
+            rcBarcode1.Width = rcLeft.Width - 10;
+            rcBarcode1.X = rcBarcode1.X + (int.TryParse(ic.iniC.sticker_donor_barcode_gap_x, out chk) ? chk : 5);
+            rcBarcode1.Y = rcBarcode1.Y + (int.TryParse(ic.iniC.sticker_donor_barcode_gap_y, out chk) ? chk : 30);
+            RectangleF rcBarcodeM = rcBarcode1;
+            RectangleF rcBarcodeR = rcBarcode1;
+            rcBarcodeM.X = rcMiddle.X + (int.TryParse(ic.iniC.sticker_donor_barcode_gap_x, out chk) ? chk : 5);
+            rcBarcodeR.X = rcRight.X + (int.TryParse(ic.iniC.sticker_donor_barcode_gap_x, out chk) ? chk : 5);
             //rcMiddle.X = 180;
             // start with left column
             //rc = rcLeft;
 
             // render string spanning columns and pages
-            for (int i=1;i<=10 ;i++ )
+            for (int i=1;i<=10 ;i++)
             {
                 // render as much as will fit into the rectangle
                 rc.Inflate(-3, -3);
                 int nextChar = _c1pdf.DrawString(text, bodyFont, Brushes.Black, rcLeft);
-                _c1pdf.DrawImage(img, rcBarcode);
+                _c1pdf.DrawImage(img, rcBarcode1);
                 rc.Inflate(+3, +3);
                 _c1pdf.DrawRectangle(Pens.Silver, rcLeft);
                 
 
                 _c1pdf.DrawString(text, bodyFont, Brushes.Black, rcMiddle);
+                _c1pdf.DrawImage(img, rcBarcodeM);
                 _c1pdf.DrawRectangle(Pens.Silver, rcMiddle);
-
-
+                
                 _c1pdf.DrawString(text, bodyFont, Brushes.Black, rcRight);
+                _c1pdf.DrawImage(img, rcBarcodeR);
                 _c1pdf.DrawRectangle(Pens.Silver, rcRight);
 
-                rcLeft.Y += 120;
-                rcMiddle.Y += 120;
-                rcRight.Y += 120;
-                rcBarcode.Y += 120;
+                rcLeft.Y += int.TryParse(ic.iniC.sticker_donor_width, out chk) ? chk : 120;
+                rcMiddle.Y += int.TryParse(ic.iniC.sticker_donor_width, out chk) ? chk : 120;
+                rcRight.Y += int.TryParse(ic.iniC.sticker_donor_width, out chk) ? chk : 120;
+                rcBarcode1.Y += int.TryParse(ic.iniC.sticker_donor_width, out chk) ? chk : 120;
+                rcBarcodeM.Y += int.TryParse(ic.iniC.sticker_donor_width, out chk) ? chk : 120;
+                rcBarcodeR.Y += int.TryParse(ic.iniC.sticker_donor_width, out chk) ? chk : 120;
                 // break when done
                 //if (nextChar >= text.Length)
                 //    break;

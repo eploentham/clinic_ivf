@@ -100,7 +100,22 @@ namespace clinic_ivf.control
             iniC.txtFocus = iniF.getIni("app", "txtFocus");
             iniC.grfRowColor = iniF.getIni("app", "grfRowColor");
 
+            iniC.sticker_donor_width = iniF.getIni("sticker_donor", "width");
+            iniC.sticker_donor_height = iniF.getIni("sticker_donor", "height");
+            iniC.sticker_donor_start_y = iniF.getIni("sticker_donor", "start_y");
+            iniC.sticker_donor_barcode_height = iniF.getIni("sticker_donor", "barcode_height");
+            iniC.sticker_donor_barcode_gap_x = iniF.getIni("sticker_donor", "barcode_gap_x");
+            iniC.sticker_donor_barcode_gap_y = iniF.getIni("sticker_donor", "barcode_gap_y");
+
             iniC.grdViewFontName = iniC.grdViewFontName.Equals("") ? "Microsoft Sans Serif" : iniC.grdViewFontName;
+
+            iniC.sticker_donor_width = iniC.sticker_donor_width.Equals("") ? "120" : iniC.sticker_donor_width;
+            iniC.sticker_donor_height = iniC.sticker_donor_height.Equals("") ? "90" : iniC.sticker_donor_height;
+            iniC.sticker_donor_start_y = iniC.sticker_donor_start_y.Equals("") ? "60" : iniC.sticker_donor_start_y;
+            iniC.sticker_donor_barcode_height = iniC.sticker_donor_barcode_height.Equals("") ? "40" : iniC.sticker_donor_barcode_height;
+            iniC.sticker_donor_barcode_gap_x = iniC.sticker_donor_barcode_gap_x.Equals("") ? "5" : iniC.sticker_donor_barcode_gap_x;
+            iniC.sticker_donor_barcode_gap_y = iniC.sticker_donor_barcode_gap_y.Equals("") ? "30" : iniC.sticker_donor_barcode_gap_y;
+
             int.TryParse(iniC.grdViewFontSize, out grdViewFontSize);
         }
         public String datetoDB(String dt)
@@ -161,6 +176,57 @@ namespace clinic_ivf.control
                 }
             }
         }
-        
+        public C1ComboBox setCboPttType(C1ComboBox c)
+        {
+            ComboBoxItem item = new ComboBoxItem();
+            
+            //String aaa = "";
+            ComboBoxItem item1 = new ComboBoxItem();
+            item1.Text = "";
+            item1.Value = "000";
+            c.Items.Clear();
+            c.Items.Add(item1);
+            //for (int i = 0; i < dt.Rows.Count; i++)
+            
+            item = new ComboBoxItem();
+            item.Text = "Patient";
+            item.Value = "Patient";
+
+            item = new ComboBoxItem();
+            item.Text = "Egg Donor";
+            item.Value = "Egg Donor";
+
+            item = new ComboBoxItem();
+            item.Text = "Surrogate";
+            item.Value = "Surrogate";
+
+            c.Items.Add(item);
+            
+            return c;
+        }
+        public C1ComboBox setCboPttGroup(C1ComboBox c)
+        {
+            ComboBoxItem item = new ComboBoxItem();
+
+            //String aaa = "";
+            ComboBoxItem item1 = new ComboBoxItem();
+            item1.Text = "";
+            item1.Value = "000";
+            c.Items.Clear();
+            c.Items.Add(item1);
+            //for (int i = 0; i < dt.Rows.Count; i++)
+
+            item = new ComboBoxItem();
+            item.Text = "A";
+            item.Value = "a";
+
+            item = new ComboBoxItem();
+            item.Text = "B";
+            item.Value = "b";
+            
+            c.Items.Add(item);
+
+            return c;
+        }
     }
 }

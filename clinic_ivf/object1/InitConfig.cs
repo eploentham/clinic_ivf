@@ -14,5 +14,7 @@ namespace clinic_ivf.object1
         public String hostFTP = "", userFTP = "", passFTP = "", portFTP = "";
 
         public String grdViewFontSize = "", grdViewFontName = "", themeApplication = "", txtFocus = "", grfRowColor = "";
+
+        public String sticker_donor_width = "", sticker_donor_height = "", sticker_donor_start_y = "", sticker_donor_barcode_height = "", sticker_donor_barcode_gap_x = "", sticker_donor_barcode_gap_y = "";
     }
 }
