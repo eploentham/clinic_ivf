@@ -162,7 +162,6 @@ namespace clinic_ivf.gui
             {
                 MessageBox.Show("Sorry there is no camera Found\n" + ex.Message);
             }
-            
         }
 
         private void Video_NewFrame(object sender, AForge.Video.NewFrameEventArgs eventArgs)
