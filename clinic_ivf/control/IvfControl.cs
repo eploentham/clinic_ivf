@@ -12,6 +12,9 @@ using System.Threading;
 using System.Globalization;
 using C1.Win.C1Input;
 using AForge.Video.DirectShow;
+using System.IO;
+using System.Reflection;
+using C1.Win.C1Document;
 
 namespace clinic_ivf.control
 {
@@ -76,6 +79,7 @@ namespace clinic_ivf.control
             ivfDB = new IvfDB(conn);
 
             sVsOld = new VisitOld();
+            cTxtFocus = ColorTranslator.FromHtml(iniC.txtFocus);
         }
         public void GetConfig()
         {
@@ -157,5 +161,6 @@ namespace clinic_ivf.control
                 }
             }
         }
+        
     }
 }

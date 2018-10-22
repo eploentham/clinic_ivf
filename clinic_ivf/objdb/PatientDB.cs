@@ -374,7 +374,32 @@ namespace clinic_ivf.objdb
             DataTable dt = new DataTable();
             String sql = "select ptt."+ptt.t_patient_id+",ptt."+ptt.patient_hn+ ",CONCAT(ptt." + ptt.patient_firstname+",' ',ptt."+ptt.patient_lastname+") as name,ptt."+ptt.remark+" " +
                 "From " + ptt.table + " ptt " +
-                "Where ptt." + ptt.patient_record_date_time + " >='" + date + " 00:00:00' and ptt." + ptt.patient_record_date_time + " <='" + date + " 23:59:59'";
+                "Left join f_patient_prefix fpp on fpp.f_patient_prefix_id = ptt.f_patient_prefix_id " +
+                "Where ptt." + ptt.patient_record_date_time + " >='" + date + " 00:00:00' and ptt." + ptt.patient_record_date_time + " <='" + date + " 23:59:59' " +
+                "Order By ptt." + ptt.patient_record_date_time;
+            dt = conn.selectData(conn.conn, sql);
+            return dt;
+        }
+        public DataTable selectBySearch(String search)
+        {
+            DataTable dt = new DataTable();
+            String whereHN = "", whereName="", wherepid="";
+            if (!search.Equals(""))
+            {
+                whereHN = " ptt."+ptt.patient_hn+" like '"+search+"%'";
+            }
+            if (!search.Equals(""))
+            {
+                whereName = " or ( ptt." + ptt.patient_firstname + " like '" + search + "%' )";
+            }
+            if (!search.Equals(""))
+            {
+                wherepid = " or ( ptt." + ptt.pid + " like '" + search + "%' )";
+            }
+            String sql = "select ptt." + ptt.t_patient_id + ",ptt." + ptt.patient_hn + ",CONCAT(ptt." + ptt.patient_firstname + ",' ',ptt." + ptt.patient_lastname + ") as name,ptt." + ptt.remark + " " +
+                "From " + ptt.table + " ptt " +
+                "Left join f_patient_prefix fpp on fpp.f_patient_prefix_id = ptt.f_patient_prefix_id " +
+                "Where " + whereHN + whereName + wherepid;
             dt = conn.selectData(conn.conn, sql);
             return dt;
         }

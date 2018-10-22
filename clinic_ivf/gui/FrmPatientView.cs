@@ -54,10 +54,18 @@ namespace clinic_ivf.gui
             sep = new C1SuperErrorProvider();
 
             btnNew.Click += BtnNew_Click;
+            txtSearch.KeyUp += TxtSearch_KeyUp;
 
             initGrfPtt();
-            setGrfPtt();
+            setGrfPtt("");
         }
+
+        private void TxtSearch_KeyUp(object sender, KeyEventArgs e)
+        {
+            //throw new NotImplementedException();
+
+        }
+
         private void initGrfPtt()
         {
             grfPtt = new C1FlexGrid();
@@ -88,14 +96,21 @@ namespace clinic_ivf.gui
 
             //grfAddr.DataSource = xC.iniDB.addrDB.selectByTableId1(vn);
         }
-        private void setGrfPtt()
+        private void setGrfPtt(String search)
         {
             //grfDept.Rows.Count = 7;
             grfPtt.Clear();
             DataTable dt = new DataTable();
-            String date = System.DateTime.Now.Year + "-" + System.DateTime.Now.ToString("MM-dd");
-
-            grfPtt.DataSource = ic.ivfDB.pttDB.selectByDate1(date);
+            if (search.Equals(""))
+            {
+                String date = System.DateTime.Now.Year + "-" + System.DateTime.Now.ToString("MM-dd");
+                grfPtt.DataSource = ic.ivfDB.pttDB.selectByDate1(date);
+            }
+            else
+            {
+                grfPtt.DataSource = ic.ivfDB.pttDB.selectBySearch(search);
+            }
+            
             //grfExpn.Rows.Count = dt.Rows.Count + 1;
             //grfCu.Rows.Count = 41;
             //grfCu.Cols.Count = 4;
