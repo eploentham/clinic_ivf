@@ -79,6 +79,7 @@ namespace clinic_ivf.control
             ivfDB = new IvfDB(conn);
 
             sVsOld = new VisitOld();
+            cTxtFocus = ColorTranslator.FromHtml(iniC.txtFocus);
         }
         public void GetConfig()
         {

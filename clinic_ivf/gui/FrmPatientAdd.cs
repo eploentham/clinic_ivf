@@ -280,46 +280,115 @@ namespace clinic_ivf.gui
             //}
             // execute action            
             DoPrint(cPdf);
-           
         }
         private void setFocusColor()
         {
             this.txtHn.Leave += new System.EventHandler(this.textBox_Leave);
+            this.txtHn.Enter += new System.EventHandler(this.textBox_Enter);
+
+            this.txtPid.Leave += new System.EventHandler(this.textBox_Leave);
             this.txtPid.Enter += new System.EventHandler(this.textBox_Enter);
+
+            this.txtPaasport.Leave += new System.EventHandler(this.textBox_Leave);
             this.txtPaasport.Enter += new System.EventHandler(this.textBox_Enter);
+
+            this.txtPttName.Leave += new System.EventHandler(this.textBox_Leave);
             this.txtPttName.Enter += new System.EventHandler(this.textBox_Enter);
+
+            this.txtPttLName.Leave += new System.EventHandler(this.textBox_Leave);
             this.txtPttLName.Enter += new System.EventHandler(this.textBox_Enter);
+
+            this.txtMobile1.Leave += new System.EventHandler(this.textBox_Leave);
             this.txtMobile1.Enter += new System.EventHandler(this.textBox_Enter);
+
+            this.txtMobile2.Leave += new System.EventHandler(this.textBox_Leave);
             this.txtMobile2.Enter += new System.EventHandler(this.textBox_Enter);
+
+            this.txtLineID.Leave += new System.EventHandler(this.textBox_Leave);
             this.txtLineID.Enter += new System.EventHandler(this.textBox_Enter);
+
+            this.txtRemark.Leave += new System.EventHandler(this.textBox_Leave);
             this.txtRemark.Enter += new System.EventHandler(this.textBox_Enter);
+
+            this.txtEmail.Leave += new System.EventHandler(this.textBox_Leave);
             this.txtEmail.Enter += new System.EventHandler(this.textBox_Enter);
+
+            this.txtFatherFname.Leave += new System.EventHandler(this.textBox_Leave);
             this.txtFatherFname.Enter += new System.EventHandler(this.textBox_Enter);
+
+            this.txtFatherLname.Leave += new System.EventHandler(this.textBox_Leave);
             this.txtFatherLname.Enter += new System.EventHandler(this.textBox_Enter);
+
+            this.txtMotherFname.Leave += new System.EventHandler(this.textBox_Leave);
             this.txtMotherFname.Enter += new System.EventHandler(this.textBox_Enter);
+
+            this.txtMotherLname.Leave += new System.EventHandler(this.textBox_Leave);
             this.txtMotherLname.Enter += new System.EventHandler(this.textBox_Enter);
+
+            this.txtCouFname.Leave += new System.EventHandler(this.textBox_Leave);
             this.txtCouFname.Enter += new System.EventHandler(this.textBox_Enter);
+
+            this.txtCouLname.Leave += new System.EventHandler(this.textBox_Leave);
             this.txtCouLname.Enter += new System.EventHandler(this.textBox_Enter);
+
+            this.txtContMobile2.Leave += new System.EventHandler(this.textBox_Leave);
             this.txtContMobile2.Enter += new System.EventHandler(this.textBox_Enter);
+
+            this.txtContMobile1.Leave += new System.EventHandler(this.textBox_Leave);
             this.txtContMobile1.Enter += new System.EventHandler(this.textBox_Enter);
+
+            this.txtContFname1.Leave += new System.EventHandler(this.textBox_Leave);
             this.txtContFname1.Enter += new System.EventHandler(this.textBox_Enter);
+
+            this.txtContFname2.Leave += new System.EventHandler(this.textBox_Leave);
             this.txtContFname2.Enter += new System.EventHandler(this.textBox_Enter);
+
+            this.txtContLname1.Leave += new System.EventHandler(this.textBox_Leave);
             this.txtContLname1.Enter += new System.EventHandler(this.textBox_Enter);
+
+            this.txtContLname2.Leave += new System.EventHandler(this.textBox_Leave);
             this.txtContLname2.Enter += new System.EventHandler(this.textBox_Enter);
 
+            this.cboBloodG.Leave += new System.EventHandler(this.textBox_Leave);
             this.cboBloodG.Enter += new System.EventHandler(this.textBox_Enter);
+
+            this.cboCouPrefix.Leave += new System.EventHandler(this.textBox_Leave);
             this.cboCouPrefix.Enter += new System.EventHandler(this.textBox_Enter);
+
+            this.cboCouRel.Leave += new System.EventHandler(this.textBox_Leave);
             this.cboCouRel.Enter += new System.EventHandler(this.textBox_Enter);
+
+            this.CboEduca.Leave += new System.EventHandler(this.textBox_Leave);
             this.CboEduca.Enter += new System.EventHandler(this.textBox_Enter);
+
+            this.cboMarital.Leave += new System.EventHandler(this.textBox_Leave);
             this.cboMarital.Enter += new System.EventHandler(this.textBox_Enter);
+
+            this.cboName1Prefix.Leave += new System.EventHandler(this.textBox_Leave);
             this.cboName1Prefix.Enter += new System.EventHandler(this.textBox_Enter);
+
+            this.cboName1Rl.Leave += new System.EventHandler(this.textBox_Leave);
             this.cboName1Rl.Enter += new System.EventHandler(this.textBox_Enter);
+
+            this.cboName2Prefix.Leave += new System.EventHandler(this.textBox_Leave);
             this.cboName2Prefix.Enter += new System.EventHandler(this.textBox_Enter);
+
+            this.cboName2Rl.Leave += new System.EventHandler(this.textBox_Leave);
             this.cboName2Rl.Enter += new System.EventHandler(this.textBox_Enter);
+
+            this.CboNation.Leave += new System.EventHandler(this.textBox_Leave);
             this.CboNation.Enter += new System.EventHandler(this.textBox_Enter);
+
+            this.cboPrefix.Leave += new System.EventHandler(this.textBox_Leave);
             this.cboPrefix.Enter += new System.EventHandler(this.textBox_Enter);
+
+            this.cboRace.Leave += new System.EventHandler(this.textBox_Leave);
             this.cboRace.Enter += new System.EventHandler(this.textBox_Enter);
+
+            this.cboRg.Leave += new System.EventHandler(this.textBox_Leave);
             this.cboRg.Enter += new System.EventHandler(this.textBox_Enter);
+
+            this.cboSex.Leave += new System.EventHandler(this.textBox_Leave);
             this.cboSex.Enter += new System.EventHandler(this.textBox_Enter);
             //this.txtPid1.Enter += new System.EventHandler(this.textBox_Enter);
         }
@@ -476,6 +545,7 @@ namespace clinic_ivf.gui
             //}
             text = txt;
             text = text.Replace("\t", "   ");
+            Image img = barcode.Image;
             //text = string.Format("{0}\r\n\r\n---oOoOoOo---\r\n\r\n{0}", text);
 
             // create pdf document
@@ -502,7 +572,8 @@ namespace clinic_ivf.gui
 
             RectangleF rcMiddle = rcLeft;
             rcMiddle.X = rcPage.Right - rcMiddle.Width - rcMiddle.Width - 55;
-
+            RectangleF rcBarcode = RenderParagraph("", titleFont, rcPage, rcPage, false);
+            rcBarcode.Height = 30;
             //rcMiddle.X = 180;
             // start with left column
             //rc = rcLeft;
@@ -513,11 +584,14 @@ namespace clinic_ivf.gui
                 // render as much as will fit into the rectangle
                 rc.Inflate(-3, -3);
                 int nextChar = _c1pdf.DrawString(text, bodyFont, Brushes.Black, rcLeft);
+                _c1pdf.DrawImage(img, rcBarcode);
                 rc.Inflate(+3, +3);
                 _c1pdf.DrawRectangle(Pens.Silver, rcLeft);
+                
 
                 _c1pdf.DrawString(text, bodyFont, Brushes.Black, rcMiddle);
                 _c1pdf.DrawRectangle(Pens.Silver, rcMiddle);
+
 
                 _c1pdf.DrawString(text, bodyFont, Brushes.Black, rcRight);
                 _c1pdf.DrawRectangle(Pens.Silver, rcRight);
@@ -525,6 +599,7 @@ namespace clinic_ivf.gui
                 rcLeft.Y += 120;
                 rcMiddle.Y += 120;
                 rcRight.Y += 120;
+                rcBarcode.Y += 120;
                 // break when done
                 //if (nextChar >= text.Length)
                 //    break;
