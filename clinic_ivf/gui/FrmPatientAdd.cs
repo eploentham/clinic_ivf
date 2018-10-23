@@ -112,11 +112,205 @@ namespace clinic_ivf.gui
             btnCapture.Click += BtnCapture_Click;
             this.FormClosed += FrmPatientAdd_FormClosed;
             btnPrvSticker.Click += BtnPrvSticker_Click;
+            btnSavePic.Click += BtnSavePic_Click; ;
+            setKeyEnter();
 
             btnCapture.Enabled = false;
             btnSavePic.Enabled = false;
         }
-        
+
+        private void BtnSavePic_Click(object sender, EventArgs e)
+        {
+            //throw new NotImplementedException();
+            String folder = "";
+            folder = DateTime.Now.Year.ToString();
+            ic.ftpC.createDirectory(folder);
+            ic.ftpC.upload("", @"C:\\source\\ivf\\clinic_ivf\\clinic_ivf.sln");
+        }
+
+        private void setKeyEnter()
+        {
+            txtPid.KeyUp += TxtPid_KeyUp;
+            txtPaasport.KeyUp += TxtPid_KeyUp;
+            txtPttName.KeyUp += TxtPid_KeyUp;
+            txtPttLName.KeyUp += TxtPid_KeyUp;
+            txtDob.KeyUp += TxtPid_KeyUp;
+            cboSex.KeyUp += TxtPid_KeyUp;
+            cboMarital.KeyUp += TxtPid_KeyUp;
+            txtMobile1.KeyUp += TxtPid_KeyUp;
+            txtMobile2.KeyUp += TxtPid_KeyUp;
+            txtLineID.KeyUp += TxtPid_KeyUp;
+            txtRemark.KeyUp += TxtPid_KeyUp;
+            cboBloodG.KeyUp += TxtPid_KeyUp;
+            CboNation.KeyUp += TxtPid_KeyUp;
+            CboEduca.KeyUp += TxtPid_KeyUp;
+            cboRace.KeyUp += TxtPid_KeyUp;
+            cboRg.KeyUp += TxtPid_KeyUp;
+            txtEmail.KeyUp += TxtPid_KeyUp;
+            txtFatherFname.KeyUp += TxtPid_KeyUp;
+            txtFatherLname.KeyUp += TxtPid_KeyUp;
+            txtFatherMobile.KeyUp += TxtPid_KeyUp;
+            txtMotherFname.KeyUp += TxtPid_KeyUp;
+            txtMotherLname.KeyUp += TxtPid_KeyUp;
+            txtMotherMobile.KeyUp += TxtPid_KeyUp;
+            txtCouFname.KeyUp += TxtPid_KeyUp;
+            txtCouLname.KeyUp += TxtPid_KeyUp;
+            txtCouMobile.KeyUp += TxtPid_KeyUp;
+            cboName1Prefix.KeyUp += TxtPid_KeyUp;
+            txtContFname1.KeyUp += TxtPid_KeyUp;
+            txtContLname1.KeyUp += TxtPid_KeyUp;
+            txtContMobile1.KeyUp += TxtPid_KeyUp;
+            cboName2Prefix.KeyUp += TxtPid_KeyUp;
+            txtContFname2.KeyUp += TxtPid_KeyUp;
+            txtContLname2.KeyUp += TxtPid_KeyUp;
+            txtContMobile2.KeyUp += TxtPid_KeyUp;
+            txtDrugAllergy.KeyUp += TxtPid_KeyUp;
+            
+        }
+        private void TxtPid_KeyUp(object sender, KeyEventArgs e)
+        {
+            //throw new NotImplementedException();
+            if ((e.KeyCode == Keys.Enter))
+            {
+                if (sender.Equals(txtPid))
+                {
+                    txtPaasport.Focus();
+                }
+                else if (sender.Equals(txtPaasport))
+                {
+                    txtPttName.Focus();
+                }
+                else if (sender.Equals(txtPttName))
+                {
+                    txtPttLName.Focus();
+                }
+                else if (sender.Equals(txtPttLName))
+                {
+                    txtDob.Focus();
+                }
+                else if (sender.Equals(txtDob))
+                {
+                    cboSex.Focus();
+                }
+                else if (sender.Equals(cboSex))
+                {
+                    cboMarital.Focus();
+                }
+                else if (sender.Equals(cboMarital))
+                {
+                    txtMobile1.Focus();
+                }
+                else if (sender.Equals(txtMobile1))
+                {
+                    txtMobile2.Focus();
+                }
+                else if (sender.Equals(txtMobile2))
+                {
+                    txtLineID.Focus();
+                }
+                else if (sender.Equals(txtLineID))
+                {
+                    txtRemark.Focus();
+                }
+                else if (sender.Equals(txtRemark))
+                {
+                    cboBloodG.Focus();
+                }
+                else if (sender.Equals(cboBloodG))
+                {
+                    CboNation.Focus();
+                }
+                else if (sender.Equals(CboNation))
+                {
+                    CboEduca.Focus();
+                }
+                else if (sender.Equals(CboEduca))
+                {
+                    cboRace.Focus();
+                }
+                else if (sender.Equals(cboRace))
+                {
+                    cboRg.Focus();
+                }
+                else if (sender.Equals(cboRg))
+                {
+                    txtEmail.Focus();
+                }
+                else if (sender.Equals(txtEmail))
+                {
+                    txtFatherFname.Focus();
+                }
+                else if (sender.Equals(txtFatherFname))
+                {
+                    txtFatherLname.Focus();
+                }
+                else if (sender.Equals(txtFatherLname))
+                {
+                    txtFatherMobile.Focus();
+                }
+                else if (sender.Equals(txtFatherMobile))
+                {
+                    txtMotherFname.Focus();
+                }
+                else if (sender.Equals(txtMotherFname))
+                {
+                    txtMotherLname.Focus();
+                }
+                else if (sender.Equals(txtMotherLname))
+                {
+                    txtMotherMobile.Focus();
+                }
+                else if (sender.Equals(txtMotherMobile))
+                {
+                    txtCouFname.Focus();
+                }
+                else if (sender.Equals(txtCouFname))
+                {
+                    txtCouLname.Focus();
+                }
+                else if (sender.Equals(txtCouLname))
+                {
+                    txtCouMobile.Focus();
+                }
+                else if (sender.Equals(txtCouMobile))
+                {
+                    cboName1Prefix.Focus();
+                }
+                else if (sender.Equals(cboName1Prefix))
+                {
+                    txtContFname1.Focus();
+                }
+                else if (sender.Equals(txtContFname1))
+                {
+                    txtContLname1.Focus();
+                }
+                else if (sender.Equals(txtContLname1))
+                {
+                    txtContMobile1.Focus();
+                }
+                else if (sender.Equals(txtContMobile1))
+                {
+                    cboName2Prefix.Focus();
+                }
+                else if (sender.Equals(cboName2Prefix))
+                {
+                    txtContFname2.Focus();
+                }
+                else if (sender.Equals(txtContFname2))
+                {
+                    txtContLname2.Focus();
+                }
+                else if (sender.Equals(txtContLname2))
+                {
+                    txtContMobile2.Focus();
+                }
+                else if (sender.Equals(txtContMobile2))
+                {
+                    txtDrugAllergy.Focus();
+                }
+            }
+        }
+
         private void FrmPatientAdd_FormClosed(object sender, FormClosedEventArgs e)
         {
             //throw new NotImplementedException();
@@ -423,6 +617,10 @@ namespace clinic_ivf.gui
         private void setControl(String pttid)
         {
             ptt = ic.ivfDB.pttDB.selectByPk1(pttid);
+            if (ptt.t_patient_id.Equals(""))
+            {
+                btnWebCamOn.Enabled = false;
+            }
             txtHn.Value = ptt.patient_hn;
             txtID.Value = ptt.t_patient_id;
             txtPttName.Value = ptt.patient_firstname;
@@ -442,6 +640,11 @@ namespace clinic_ivf.gui
             txtCouLname.Value = ptt.patient_couple_lastname;
             txtAgent.Value = ptt.agent;
             txtDrugAllergy.Value = ptt.patient_drugallergy;
+            txtRemark.Value = ptt.remark;
+            txtDob.Value = ptt.patient_birthday;
+            txtFatherMobile.Value = ptt.patient_father_mobile;
+            txtMotherMobile.Value = ptt.patient_mother_mobile;
+            txtCouMobile.Value = ptt.patient_couple_mobile;
 
             ic.setC1Combo(cboPrefix, ptt.f_patient_prefix_id);
             ic.setC1Combo(cboSex, ptt.f_sex_id);
@@ -451,8 +654,8 @@ namespace clinic_ivf.gui
             ic.setC1Combo(CboEduca, ptt.f_patient_education_type_id);
             ic.setC1Combo(cboRace, ptt.f_patient_race_id);
             ic.setC1Combo(cboRg, ptt.f_patient_religion_id);
-            ic.setC1Combo(cboPttType, ptt.f_patient_religion_id);
-            ic.setC1Combo(cboPttGroup, ptt.f_patient_religion_id);
+            ic.setC1Combo(cboPttType, ptt.patient_type);
+            ic.setC1Combo(cboPttGroup, ptt.patient_group);
             //ic.setC1Combo(cboRg, ptt.f_patient_religion_id);
             //ic.setC1Combo(cboRg, ptt.f_patient_religion_id);
             //ic.setC1Combo(cboRg, ptt.f_patient_religion_id);
@@ -489,6 +692,7 @@ namespace clinic_ivf.gui
             ptt.f_patient_nation_id = CboNation.SelectedItem == null ? "" : ((ComboBoxItem)CboNation.SelectedItem).Value;
             ptt.f_patient_race_id = cboRace.SelectedItem == null ? "" : ((ComboBoxItem)cboRace.SelectedItem).Value;
             ptt.f_patient_religion_id = cboRg.SelectedItem == null ? "" : ((ComboBoxItem)cboRg.SelectedItem).Value;
+            ptt.f_patient_education_type_id = CboEduca.SelectedItem == null ? "" : ((ComboBoxItem)CboEduca.SelectedItem).Value;
 
             ptt.status_deny_allergy = chkDenyAllergy.Checked == true ? "1" : "0";
             ptt.status_chronic = chkChronic.Checked == true ? "1" : "0";
@@ -497,6 +701,11 @@ namespace clinic_ivf.gui
             ptt.patient_type = cboPttType.SelectedItem == null ? "" : ((ComboBoxItem)cboPttType.SelectedItem).Value;
             ptt.agent = txtAgent.Text;
             ptt.patient_drugallergy = txtDrugAllergy.Text;
+            ptt.patient_father_mobile = txtFatherMobile.Text;
+            ptt.patient_mother_mobile = txtMotherMobile.Text;
+            ptt.patient_couple_mobile = txtCouMobile.Text;
+            ptt.patient_birthday = ic.datetoDB(txtDob.Text);
+            ptt.f_patient_prefix_id = cboPrefix.SelectedItem == null ? "" : ((ComboBoxItem)cboPrefix.SelectedItem).Value;
         }
         private void DoPrint(C1PdfDocumentSource pds)
         {

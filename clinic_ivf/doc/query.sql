@@ -907,3 +907,12 @@ INSERT INTO `ivf`.`f_patient_prefix` (`patient_prefix_description`, `active`) VA
 INSERT INTO `ivf`.`f_patient_prefix` (`patient_prefix_description`, `active`) VALUES ('Girl', '1');
 INSERT INTO `ivf`.`f_patient_prefix` (`patient_prefix_description`, `active`) VALUES ('Boy', '1');
 INSERT INTO `ivf`.`f_patient_prefix` (`patient_prefix_description`, `active`) VALUES ('-', '1');
+
+ALTER TABLE `ivf`.`t_patient` 
+ADD COLUMN `status_convert` VARCHAR(255) NULL AFTER `remark`;
+
+61-10-23
+ALTER TABLE `ivf`.`t_patient` 
+ADD COLUMN `patient_father_moble` VARCHAR(255) NULL AFTER `status_convert`,
+ADD COLUMN `patient_mother_mobile` VARCHAR(255) NULL AFTER `patient_father_moble`,
+ADD COLUMN `patient_couple_mobile` VARCHAR(255) NULL AFTER `patient_mother_mobile`;

@@ -48,6 +48,7 @@ namespace clinic_ivf.control
         public VideoCaptureDevice video;
 
         public VisitOld sVsOld;
+        //public FtpClient ftpC;
 
         public IvfControl()
         {
@@ -72,9 +73,10 @@ namespace clinic_ivf.control
             user = new Staff();
             cStf = new Staff();
             sStf = new Staff();
-
+            
             GetConfig();
             conn = new ConnectDB(iniC);
+            ftpC = new FtpClient(iniC.hostFTP, iniC.userFTP, iniC.passFTP);
 
             ivfDB = new IvfDB(conn);
 
@@ -115,6 +117,11 @@ namespace clinic_ivf.control
             iniC.sticker_donor_barcode_height = iniC.sticker_donor_barcode_height.Equals("") ? "40" : iniC.sticker_donor_barcode_height;
             iniC.sticker_donor_barcode_gap_x = iniC.sticker_donor_barcode_gap_x.Equals("") ? "5" : iniC.sticker_donor_barcode_gap_x;
             iniC.sticker_donor_barcode_gap_y = iniC.sticker_donor_barcode_gap_y.Equals("") ? "30" : iniC.sticker_donor_barcode_gap_y;
+
+            iniC.hostFTP = iniC.hostFTP ==null ? "" : iniC.hostFTP;
+            iniC.userFTP = iniC.userFTP == null ? "" : iniC.userFTP;
+            iniC.passFTP = iniC.passFTP == null ? "" : iniC.passFTP;
+            iniC.portFTP = iniC.portFTP == null ? "" : iniC.portFTP;
 
             int.TryParse(iniC.grdViewFontSize, out grdViewFontSize);
         }
@@ -176,6 +183,22 @@ namespace clinic_ivf.control
                 }
             }
         }
+        public String getC1Combo(C1ComboBox c, String data)
+        {
+            String re = "";
+            if (c.Items.Count == 0) return "";
+            c.SelectedIndex = c.SelectedItem == null ? 0 : c.SelectedIndex;
+            foreach (ComboBoxItem item in c.Items)
+            {
+                if (item.Text.Equals(data))
+                {
+                    //c.SelectedItem = item;
+                    re = item.Value;
+                    break;
+                }
+            }
+            return re;
+        }
         public C1ComboBox setCboPttType(C1ComboBox c)
         {
             ComboBoxItem item = new ComboBoxItem();
@@ -191,15 +214,16 @@ namespace clinic_ivf.control
             item = new ComboBoxItem();
             item.Text = "Patient";
             item.Value = "Patient";
+            c.Items.Add(item);
 
             item = new ComboBoxItem();
             item.Text = "Egg Donor";
             item.Value = "Egg Donor";
+            c.Items.Add(item);
 
             item = new ComboBoxItem();
             item.Text = "Surrogate";
             item.Value = "Surrogate";
-
             c.Items.Add(item);
             
             return c;
@@ -219,11 +243,11 @@ namespace clinic_ivf.control
             item = new ComboBoxItem();
             item.Text = "A";
             item.Value = "a";
+            c.Items.Add(item);
 
             item = new ComboBoxItem();
             item.Text = "B";
-            item.Value = "b";
-            
+            item.Value = "b";            
             c.Items.Add(item);
 
             return c;

@@ -122,6 +122,10 @@ namespace clinic_ivf.objdb
             ptt.patient_type = "patient_type";
             ptt.patient_group = "patient_group";
             ptt.agent = "agent";
+            ptt.status_convert = "status_convert";
+            ptt.patient_father_mobile = "patient_father_mobile";
+            ptt.patient_mother_mobile = "patient_mother_mobile";
+            ptt.patient_couple_mobile = "patient_couple_mobile";
 
             ptt.pkField = "t_patient_id";
             ptt.table = "t_patient";
@@ -204,9 +208,14 @@ namespace clinic_ivf.objdb
             p.passport = p.passport == null ? "" : p.passport;
             p.remark2 = p.remark2 == null ? "" : p.remark2;
             p.remark1 = p.remark1 == null ? "" : p.remark1;
+            p.remark = p.remark == null ? "" : p.remark;
             p.patient_group = p.patient_group == null ? "" : p.patient_group;
             p.patient_type = p.patient_type == null ? "" : p.patient_type;
             p.agent = p.agent == null ? "" : p.agent;
+            p.status_convert = p.status_convert == null ? "" : p.status_convert;
+            p.patient_mother_mobile = p.patient_mother_mobile == null ? "" : p.patient_mother_mobile;
+            p.patient_couple_mobile = p.patient_couple_mobile == null ? "" : p.patient_couple_mobile;
+            p.patient_father_mobile = p.patient_father_mobile == null ? "" : p.patient_father_mobile;
 
             p.f_patient_prefix_id = int.TryParse(p.f_patient_prefix_id, out chk) ? chk.ToString() : "0";
             p.f_sex_id = int.TryParse(p.f_sex_id, out chk) ? chk.ToString() : "0";
@@ -240,15 +249,17 @@ namespace clinic_ivf.objdb
             p.active = "1";
             //p.ssdata_id = "";
             int chk = 0;
-
+            //p.date_create = "";
             chkNull(p);
             
-            sql = "Insert Into " + ptt.table + "(" + ptt.patient_hn + "," + ptt.patient_firstname + "," + ptt.patient_lastname + "," +
+            try
+            {
+                sql = "Insert Into " + ptt.table + "(" + ptt.patient_hn + "," + ptt.patient_firstname + "," + ptt.patient_lastname + "," +
                 ptt.patient_xn + "," + ptt.patient_birthday + "," + ptt.patient_house + "," +
                 ptt.active + "," + ptt.remark + "," + ptt.patient_road + "," +
                 ptt.patient_moo + "," + ptt.patient_tambon + "," + ptt.patient_amphur + "," +
                 ptt.patient_changwat + "," + ptt.patient_father_firstname + "," + ptt.patient_mother_firstname + "," +
-                ptt.date_create + "," + ptt.date_modi + "," + ptt.date_cancel + "," +
+                ptt.date_create + "," + ptt.date_modi + "," + ptt.date_cancel + ", " +
                 ptt.user_create + "," + ptt.user_modi + "," + ptt.user_cancel + ", " +
                 ptt.patient_couple_firstname + "," + ptt.patient_move_in_date_time + "," + ptt.patient_discharge_date_time + "," +
                 ptt.patient_father_pid + "," + ptt.patient_mather_pid + "," + ptt.patient_couple_pid + "," +
@@ -275,14 +286,15 @@ namespace clinic_ivf.objdb
                 ptt.f_patient_relation_id + "," + ptt.patient_contact_sex_id + "," + ptt.t_health_family_id + "," +
                 ptt.contact_id + "," + ptt.contact_join_id + "," + ptt.t_person_id + ", " +
                 ptt.line_id + "," + ptt.email + "," + ptt.passport + ", " +
-                ptt.patient_type + "," + ptt.patient_group + "," + ptt.agent+" "+
+                ptt.patient_type + "," + ptt.patient_group + "," + ptt.agent + "," +
+                ptt.status_convert + " " +
                 ") " +
                 "Values ('" + p.patient_hn + "','" + p.patient_firstname.Replace("'", "''") + "','" + p.patient_lastname.Replace("'", "''") + "'," +
                 "'" + p.patient_xn.Replace("'", "''") + "','" + p.patient_birthday.Replace("'", "''") + "','" + p.patient_house.Replace("'", "''") + "'," +
                 "'" + p.active + "','" + p.remark.Replace("'", "''") + "','" + p.patient_road.Replace("'", "''") + "'," +
-                "'" + p.patient_moo.Replace("'", "''") + "','" + p.patient_tambon + "','" + p.patient_amphur + "'," + 
+                "'" + p.patient_moo.Replace("'", "''") + "','" + p.patient_tambon + "','" + p.patient_amphur + "'," +
                 "'" + p.patient_changwat + "','" + p.patient_father_firstname.Replace("'", "''") + "','" + p.patient_mother_firstname.Replace("'", "''") + "'," +
-                "now(),'" + p.date_modi + "','" + p.date_cancel + "'," +
+                "now(),'" + p.date_modi + "','" + p.date_cancel + "', " +
                 "'" + userId + "','" + p.user_modi + "','" + p.user_cancel + "', " +
                 "'" + p.patient_couple_firstname.Replace("'", "''") + "','" + p.patient_move_in_date_time + "','" + p.patient_discharge_date_time + "'," +
                 "'" + p.patient_father_pid + "','" + p.patient_mather_pid + "','" + p.patient_couple_pid + "'," +
@@ -309,10 +321,10 @@ namespace clinic_ivf.objdb
                 "'" + p.f_patient_relation_id + "','" + p.patient_contact_sex_id + "','" + p.t_health_family_id + "'," +
                 "'" + p.contact_id + "','" + p.contact_join_id + "','" + p.t_person_id + "', " +
                 "'" + p.line_id + "','" + p.email + "','" + p.passport + "', " +
-                "'" + p.patient_type.Replace("'", "''") + "','" + p.patient_group.Replace("'", "''") + "','" +p.agent.Replace("'", "''") + "' "+
+                "'" + p.patient_type.Replace("'", "''") + "','" + p.patient_group.Replace("'", "''") + "','" + p.agent.Replace("'", "''") + "', " +
+                "'" + p.status_convert.Replace("'", "''") + "'" +
                 ")";
-            try
-            {
+
                 re = conn.ExecuteNonQuery(conn.conn, sql);
             }
             catch (Exception ex)
@@ -346,8 +358,8 @@ namespace clinic_ivf.objdb
 
             chkNull(p);
             sql = "Update "+ptt.table + " " +
-                " Set "+ptt.patient_hn + "='"+p.patient_hn+"' " +
-                "," + ptt.patient_firstname + "='" + p.patient_hn + "' " +
+                " Set "+ptt.patient_hn + "='"+p.patient_hn + "' " +
+                "," + ptt.patient_firstname + "='" + p.patient_firstname + "' " +
                 "," + ptt.patient_lastname + "='" + p.patient_lastname + "' " +
                 "," + ptt.patient_birthday + "='" + p.patient_birthday + "' " +
                 "," + ptt.patient_xn + "='" + p.patient_xn + "' " +
@@ -379,7 +391,80 @@ namespace clinic_ivf.objdb
                 "," + ptt.status_deny_allergy + "='" + p.status_deny_allergy + "' " +
                 "," + ptt.status_chronic + "='" + p.status_chronic + "' " +
                 "," + ptt.patient_drugallergy + "='" + p.patient_drugallergy + "' " +
-                " Where "+ptt.pkField + " = '" + p.t_patient_id + "' "
+                "," + ptt.f_patient_blood_group_id + "='" + p.f_patient_blood_group_id + "' " +
+                "," + ptt.f_patient_nation_id + "='" + p.f_patient_nation_id + "' " +
+                "," + ptt.f_patient_education_type_id + "='" + p.f_patient_education_type_id + "' " +
+                "," + ptt.f_patient_religion_id + "='" + p.f_patient_religion_id + "' " +
+                "," + ptt.f_patient_race_id + "='" + p.f_patient_race_id + "' " +
+                "," + ptt.patient_group + "='" + p.patient_group + "' " +
+                "," + ptt.patient_mother_mobile + "='" + p.patient_mother_mobile + "' " +
+                "," + ptt.patient_father_mobile + "='" + p.patient_father_mobile + "' " +
+                "," + ptt.patient_couple_mobile + "='" + p.patient_couple_mobile + "' " +
+                "," + ptt.f_patient_marriage_status_id + "='" + p.f_patient_marriage_status_id + "' " +
+                "," + ptt.f_sex_id + "='" + p.f_sex_id + "' " +
+                " Where " +ptt.pkField + " = '" + p.t_patient_id + "' "
+                ;
+            try
+            {
+                re = conn.ExecuteNonQuery(conn.conn, sql);
+            }
+            catch (Exception ex)
+            {
+                sql = ex.Message + " " + ex.InnerException;
+            }
+            return re;
+        }
+        public String updateFamily(Patient p, String userId)
+        {
+            String re = "";
+            String sql = "";
+            p.active = "1";
+            //p.ssdata_id = "";
+            int chk = 0;
+
+            chkNull(p);
+            sql = "Update " + ptt.table + " " +
+                " Set " + ptt.patient_father_firstname + "='" + p.patient_father_firstname + "' " +
+                "," + ptt.patient_father_lastname + "='" + p.patient_father_lastname+ "' " +
+                "," + ptt.patient_lastname + "='" + p.patient_lastname + "' " +
+                "," + ptt.patient_birthday + "='" + p.patient_birthday + "' " +
+                "," + ptt.patient_xn + "='" + p.patient_xn + "' " +
+                "," + ptt.patient_house + "='" + p.patient_house + "' " +
+                "," + ptt.remark + "='" + p.remark + "' " +
+                "," + ptt.patient_road + "='" + p.patient_road + "' " +
+                "," + ptt.patient_moo + "='" + p.patient_moo + "' " +
+                "," + ptt.patient_tambon + "='" + p.patient_tambon + "' " +
+                "," + ptt.patient_amphur + "='" + p.patient_amphur + "' " +
+                "," + ptt.patient_changwat + "='" + p.patient_changwat + "' " +
+                "," + ptt.patient_father_firstname + "='" + p.patient_father_firstname + "' " +
+                "," + ptt.patient_mother_firstname + "='" + p.patient_mother_firstname + "' " +
+                "," + ptt.patient_couple_firstname + "='" + p.patient_couple_firstname + "' " +
+                "," + ptt.pid + "='" + p.pid + "' " +
+                "," + ptt.patient_mother_lastname + "='" + p.patient_mother_lastname + "' " +
+                "," + ptt.patient_father_lastname + "='" + p.patient_father_lastname + "' " +
+                "," + ptt.patient_couple_lastname + "='" + p.patient_couple_lastname + "' " +
+                "," + ptt.mobile1 + "='" + p.mobile1 + "' " +
+                "," + ptt.mobile2 + "='" + p.mobile2 + "' " +
+                "," + ptt.line_id + "='" + p.line_id + "' " +
+                "," + ptt.email + "='" + p.email + "' " +
+                "," + ptt.passport + "='" + p.passport + "' " +
+                "," + ptt.patient_type + "='" + p.patient_type + "' " +
+                "," + ptt.patient_group + "='" + p.patient_group + "' " +
+                "," + ptt.agent + "='" + p.agent + "' " +
+                "," + ptt.f_patient_prefix_id + "='" + p.f_patient_prefix_id + "' " +
+                "," + ptt.remark1 + "='" + p.remark1 + "' " +
+                "," + ptt.remark2 + "='" + p.remark2 + "' " +
+                "," + ptt.status_deny_allergy + "='" + p.status_deny_allergy + "' " +
+                "," + ptt.status_chronic + "='" + p.status_chronic + "' " +
+                "," + ptt.patient_drugallergy + "='" + p.patient_drugallergy + "' " +
+                "," + ptt.f_patient_blood_group_id + "='" + p.f_patient_blood_group_id + "' " +
+                "," + ptt.f_patient_nation_id + "='" + p.f_patient_nation_id + "' " +
+                "," + ptt.f_patient_education_type_id + "='" + p.f_patient_education_type_id + "' " +
+                "," + ptt.f_patient_religion_id + "='" + p.f_patient_religion_id + "' " +
+                "," + ptt.f_patient_race_id + "='" + p.f_patient_race_id + "' " +
+                "," + ptt.patient_group + "='" + p.patient_group + "' " +
+                "," + ptt.patient_type + "='" + p.patient_type + "' " +
+                " Where " + ptt.pkField + " = '" + p.t_patient_id + "' "
                 ;
             try
             {
@@ -449,17 +534,30 @@ namespace clinic_ivf.objdb
             String whereHN = "", whereName="", wherepid="";
             if (!search.Equals(""))
             {
-                whereHN = " ptt."+ptt.patient_hn+" like '"+search+"%'";
+                whereHN = " ptt."+ptt.patient_hn+" like '%"+search.Trim().ToUpper()+"%'";
             }
             if (!search.Equals(""))
             {
-                whereName = " or ( ptt." + ptt.patient_firstname + " like '" + search + "%' )";
+                String[] txt = search.Split(' ');
+                if (txt.Length == 2)
+                {
+                    whereName = " or ( lcase(ptt." + ptt.patient_firstname + ") like '%" + txt[0].Trim().ToLower() + "%') and ( lcase(ptt." + ptt.patient_lastname + ") like '%" + txt[1].Trim().ToLower() + "%')";
+                }
+                else if (txt.Length == 1)
+                {
+                    whereName = " or ( lcase(ptt." + ptt.patient_firstname + ") like '%" + txt[0].Trim().ToLower() + "%') or ( lcase(ptt." + ptt.patient_lastname + ") like '%" + txt[0].Trim().ToLower() + "%')";
+                }
+                else
+                {
+                    whereName = " or ( lcase(ptt." + ptt.patient_firstname + ") like '%" + search.Trim().ToLower() + "%') or ( lcase(ptt." + ptt.patient_lastname + ") like '%" + search.Trim().ToLower() + "%')";
+                }
+                
             }
             if (!search.Equals(""))
             {
-                wherepid = " or ( ptt." + ptt.pid + " like '" + search + "%' )";
+                wherepid = " or ( ptt." + ptt.pid + " like '%" + search.Trim() + "%' )";
             }
-            String sql = "select ptt." + ptt.t_patient_id + ",ptt." + ptt.patient_hn + ",CONCAT(ptt." + ptt.patient_firstname + ",' ',ptt." + ptt.patient_lastname + ") as name,ptt." + ptt.remark + " " +
+            String sql = "select ptt." + ptt.t_patient_id + ",ptt." + ptt.patient_hn + ",CONCAT(IFNULL(fpp.patient_prefix_description,''),' ', ptt." + ptt.patient_firstname + ",' ',ptt." + ptt.patient_lastname + ") as name,ptt." + ptt.remark + " " +
                 "From " + ptt.table + " ptt " +
                 "Left join f_patient_prefix fpp on fpp.f_patient_prefix_id = ptt.f_patient_prefix_id " +
                 "Where " + whereHN + whereName + wherepid;
@@ -571,6 +669,12 @@ namespace clinic_ivf.objdb
                 ptt1.patient_group = dt.Rows[0][ptt.patient_group].ToString();
                 ptt1.patient_type = dt.Rows[0][ptt.patient_type].ToString();
                 ptt1.agent = dt.Rows[0][ptt.agent].ToString();
+                ptt1.remark = dt.Rows[0][ptt.remark].ToString();
+                ptt1.mobile2 = dt.Rows[0][ptt.mobile2].ToString();
+                ptt1.patient_father_mobile = dt.Rows[0][ptt.patient_father_mobile].ToString();
+                ptt1.patient_mother_mobile = dt.Rows[0][ptt.patient_mother_mobile].ToString();
+                ptt1.patient_couple_mobile = dt.Rows[0][ptt.patient_couple_mobile].ToString();
+                ptt1.f_patient_marriage_status_id = dt.Rows[0][ptt.f_patient_marriage_status_id].ToString();
             }
             else
             {
@@ -680,6 +784,11 @@ namespace clinic_ivf.objdb
             stf1.patient_type = "";
             stf1.patient_group = "";
             stf1.agent = "";
+            stf1.remark = "";
+            stf1.patient_father_mobile = "";
+            stf1.patient_mother_mobile = "";
+            stf1.patient_couple_mobile = "";
+            //stf1.f_patient_marriage_status_id = "";
             return stf1;
         }
     }

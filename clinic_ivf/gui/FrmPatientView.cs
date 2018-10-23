@@ -63,7 +63,10 @@ namespace clinic_ivf.gui
         private void TxtSearch_KeyUp(object sender, KeyEventArgs e)
         {
             //throw new NotImplementedException();
-
+            if (txtSearch.Text.Length >= 2)
+            {
+                setGrfPtt(txtSearch.Text);
+            }
         }
 
         private void initGrfPtt()
@@ -145,6 +148,8 @@ namespace clinic_ivf.gui
             for (int i = 1; i <= grfPtt.Rows.Count - 1; i++)
             {
                 grfPtt[i, 0] = i;
+                if (i % 2 == 0)
+                    grfPtt.Rows[i].StyleNew.BackColor = color;
             }
             grfPtt.Cols[colPttId].Visible = false;
         }

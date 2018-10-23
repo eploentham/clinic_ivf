@@ -53,6 +53,7 @@
             this.tC1 = new C1.Win.C1Command.C1DockingTab();
             this.PageS = new C1.Win.C1Command.C1DockingTabPage();
             this.c1ThemeController1 = new C1.Win.C1Themes.C1ThemeController();
+            this.convertPatientDonorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tCC1)).BeginInit();
             this.tCC1.SuspendLayout();
@@ -95,13 +96,13 @@
             // menuPatient
             // 
             this.menuPatient.Name = "menuPatient";
-            this.menuPatient.Size = new System.Drawing.Size(180, 22);
+            this.menuPatient.Size = new System.Drawing.Size(126, 22);
             this.menuPatient.Text = "ประวัติคนไข้";
             // 
             // menuVisitNew
             // 
             this.menuVisitNew.Name = "menuVisitNew";
-            this.menuVisitNew.Size = new System.Drawing.Size(180, 22);
+            this.menuVisitNew.Size = new System.Drawing.Size(126, 22);
             this.menuVisitNew.Text = "ออก Visit";
             // 
             // nurseToolStripMenuItem
@@ -173,7 +174,8 @@
             this.menuStaff,
             this.menuDept,
             this.menuPosi,
-            this.lABToolStripMenuItem});
+            this.lABToolStripMenuItem,
+            this.convertPatientDonorToolStripMenuItem});
             this.กำหนดคาโปรแกรมToolStripMenuItem.Name = "กำหนดคาโปรแกรมToolStripMenuItem";
             this.กำหนดคาโปรแกรมToolStripMenuItem.Size = new System.Drawing.Size(106, 20);
             this.กำหนดคาโปรแกรมToolStripMenuItem.Text = "กำหนดค่าโปรแกรม";
@@ -181,19 +183,19 @@
             // menuStaff
             // 
             this.menuStaff.Name = "menuStaff";
-            this.menuStaff.Size = new System.Drawing.Size(142, 22);
+            this.menuStaff.Size = new System.Drawing.Size(192, 22);
             this.menuStaff.Text = "รายชื่อพนักงาน";
             // 
             // menuDept
             // 
             this.menuDept.Name = "menuDept";
-            this.menuDept.Size = new System.Drawing.Size(142, 22);
+            this.menuDept.Size = new System.Drawing.Size(192, 22);
             this.menuDept.Text = "แผนก";
             // 
             // menuPosi
             // 
             this.menuPosi.Name = "menuPosi";
-            this.menuPosi.Size = new System.Drawing.Size(142, 22);
+            this.menuPosi.Size = new System.Drawing.Size(192, 22);
             this.menuPosi.Text = "ตำแหน่ง";
             // 
             // lABToolStripMenuItem
@@ -202,7 +204,7 @@
             this.menuOpuProce,
             this.menuFetProce});
             this.lABToolStripMenuItem.Name = "lABToolStripMenuItem";
-            this.lABToolStripMenuItem.Size = new System.Drawing.Size(142, 22);
+            this.lABToolStripMenuItem.Size = new System.Drawing.Size(192, 22);
             this.lABToolStripMenuItem.Text = "LAB";
             // 
             // menuOpuProce
@@ -255,6 +257,12 @@
             // 
             this.c1ThemeController1.Theme = "BeigeOne";
             // 
+            // convertPatientDonorToolStripMenuItem
+            // 
+            this.convertPatientDonorToolStripMenuItem.Name = "convertPatientDonorToolStripMenuItem";
+            this.convertPatientDonorToolStripMenuItem.Size = new System.Drawing.Size(192, 22);
+            this.convertPatientDonorToolStripMenuItem.Text = "Convert Patient Donor";
+            // 
             // MainMenu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -305,5 +313,6 @@
         private System.Windows.Forms.ToolStripMenuItem เวชระเบยนToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem menuPatient;
         private System.Windows.Forms.ToolStripMenuItem menuVisitNew;
+        private System.Windows.Forms.ToolStripMenuItem convertPatientDonorToolStripMenuItem;
     }
 }

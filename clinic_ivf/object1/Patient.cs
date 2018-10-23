@@ -100,5 +100,9 @@ namespace clinic_ivf.object1
         public String patient_type { get; set; }
         public String patient_group { get; set; }
         public String agent { get; set; }
+        public String status_convert { get; set; }
+        public String patient_father_mobile { get; set; }
+        public String patient_mother_mobile { get; set; }
+        public String patient_couple_mobile { get; set; }
     }
 }

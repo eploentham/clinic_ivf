@@ -43,6 +43,7 @@
             this.pB1 = new System.Windows.Forms.ProgressBar();
             this.btnTestConnection = new C1.Win.C1Input.C1Button();
             this.listBox1 = new System.Windows.Forms.ListBox();
+            this.cboPrefix = new C1.Win.C1Input.C1ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.txtShost)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtSdatabase)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtSuser)).BeginInit();
@@ -50,6 +51,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtSport)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnConvertDonor)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnTestConnection)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cboPrefix)).BeginInit();
             this.SuspendLayout();
             // 
             // label15
@@ -230,11 +232,33 @@
             this.listBox1.Size = new System.Drawing.Size(207, 264);
             this.listBox1.TabIndex = 601;
             // 
+            // cboPrefix
+            // 
+            this.cboPrefix.AllowSpinLoop = false;
+            this.cboPrefix.BorderColor = System.Drawing.SystemColors.WindowFrame;
+            this.cboPrefix.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.cboPrefix.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
+            this.cboPrefix.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.cboPrefix.GapHeight = 0;
+            this.cboPrefix.ImagePadding = new System.Windows.Forms.Padding(0);
+            this.cboPrefix.ItemsDisplayMember = "";
+            this.cboPrefix.ItemsValueMember = "";
+            this.cboPrefix.Location = new System.Drawing.Point(99, 231);
+            this.cboPrefix.Name = "cboPrefix";
+            this.cboPrefix.Size = new System.Drawing.Size(111, 20);
+            this.cboPrefix.Style.DropDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.cboPrefix.Style.DropDownBorderColor = System.Drawing.Color.Gainsboro;
+            this.cboPrefix.Style.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.cboPrefix.TabIndex = 602;
+            this.cboPrefix.Tag = null;
+            this.cboPrefix.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            // 
             // FrmConvertData
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1002, 575);
+            this.Controls.Add(this.cboPrefix);
             this.Controls.Add(this.listBox1);
             this.Controls.Add(this.btnTestConnection);
             this.Controls.Add(this.pB1);
@@ -260,6 +284,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtSport)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnConvertDonor)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnTestConnection)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cboPrefix)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -282,5 +307,6 @@
         private System.Windows.Forms.ProgressBar pB1;
         private C1.Win.C1Input.C1Button btnTestConnection;
         private System.Windows.Forms.ListBox listBox1;
+        private C1.Win.C1Input.C1ComboBox cboPrefix;
     }
 }
