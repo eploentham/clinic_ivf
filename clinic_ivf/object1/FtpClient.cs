@@ -89,9 +89,11 @@ namespace clinic_ivf.object1
                 /* Specify the Type of FTP Request */
                 ftpRequest.Method = WebRequestMethods.Ftp.UploadFile;
                 /* Establish Return Communication with the FTP Server */
-                ftpStream = ftpRequest.GetRequestStream();
+
                 /* Open a File Stream to Read the File for Upload */
+                if (!File.Exists(localFile)) return;
                 FileStream localFileStream = new FileStream(localFile, FileMode.Open);
+                ftpStream = ftpRequest.GetRequestStream();
                 /* Buffer for the Downloaded Data */
                 byte[] byteBuffer = new byte[bufferSize];
                 int bytesSent = localFileStream.Read(byteBuffer, 0, bufferSize);

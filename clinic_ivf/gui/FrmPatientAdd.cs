@@ -124,8 +124,8 @@ namespace clinic_ivf.gui
             //throw new NotImplementedException();
             String folder = "";
             folder = DateTime.Now.Year.ToString();
-            ic.ftpC.createDirectory(folder);
-            ic.ftpC.upload("", @"C:\\source\\ivf\\clinic_ivf\\clinic_ivf.sln");
+            //ic.ftpC.createDirectory(folder);
+            ic.ftpC.upload("DefaultDocument.pdf", @"C:\\source\\ivf\\clinic_ivf\\clinic_ivf\\doc\\DefaultDocument.pdf");
         }
 
         private void setKeyEnter()
