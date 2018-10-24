@@ -253,8 +253,16 @@ namespace clinic_ivf.gui
             tab.ResumeLayout();
             tab.Refresh();
             tab.Text = label;
+            if (ic.iniC.statusAppDonor.Equals("1"))
+            {
+                theme1.SetTheme(tC1, ic.iniC.themeDonor);
+            }
+            else
+            {
+                theme1.SetTheme(tC1, "Office2007Blue");
+            }
             tC1.SelectedTab = tab;
-            c1ThemeController1.SetTheme(tC1, "Office2010Blue");
+            //theme1.SetTheme(tC1, "Office2010Blue");
             //theme1.SetTheme(tC1, "Office2010Green");
         }
 
@@ -278,7 +286,41 @@ namespace clinic_ivf.gui
         }
         private void MainMenu_Load(object sender, EventArgs e)
         {
+            
             this.Text = "สวัสดี คุณ "+ic.user.staff_fname_t +" "+ic.user.staff_lname_t+" Update 2018-10-20 ";
+            //theme1.SetTheme(this, ic.theme);
+            theme1.SetTheme(this, ic.theme);
+            theme1.SetTheme(menuStrip1, ic.theme);
+            theme1.SetTheme(tC1, ic.theme);
+            if (ic.iniC.statusAppDonor.Equals("1"))
+            {
+                //theme1.SetTheme(panel1, "BeigeOne");menuStrip1
+                foreach (Control c in menuStrip1.Controls)
+                {
+                    theme1.SetTheme(c, ic.theme);
+                }
+                menuRecept.Visible = true;
+                menuNurse.Visible = false;
+                menuLab.Visible = false;
+                menuInit.Visible = false;
+                menuRecept.Text = "Reception Donor";
+            }
+            else
+            {
+                
+                //foreach (Control c in tC1.Controls)
+                //{
+                //    if (c is C1DockingTab) continue;
+                //    if (c is C1CommandDock) continue;
+                //    if (c is C1DockingTabPage) continue;
+                //    theme1.SetTheme(c, "Office2007Blue");
+                //}
+                menuRecept.Visible = true;
+                menuNurse.Visible = true;
+                menuLab.Visible = true;
+                menuInit.Visible = true;
+            }
+
         }
     }
 }

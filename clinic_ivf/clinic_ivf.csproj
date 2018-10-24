@@ -252,6 +252,7 @@
     <Compile Include="objdb\FRelationDB.cs" />
     <Compile Include="objdb\FReligionDB.cs" />
     <Compile Include="objdb\FSexDB.cs" />
+    <Compile Include="objdb\PatientOldDB.cs" />
     <Compile Include="object1\FBloodGroup.cs" />
     <Compile Include="objdb\CompanyDB.cs" />
     <Compile Include="objdb\ConnectDB.cs" />
@@ -290,6 +291,7 @@
     <Compile Include="object1\LabRequest.cs" />
     <Compile Include="object1\LogFile.cs" />
     <Compile Include="object1\Patient.cs" />
+    <Compile Include="object1\PatientOld.cs" />
     <Compile Include="object1\Persistent.cs" />
     <Compile Include="object1\Position.cs" />
     <Compile Include="object1\Prefix.cs" />

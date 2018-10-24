@@ -41,11 +41,12 @@ namespace clinic_ivf.gui
         C1SuperErrorProvider sep;
 
         FilterInfoCollection webcanDevice;
-        
+        FtpClient ff1;
         Bitmap img;
         Image image1;
 
         String filename = "";
+        static String filenamepic = "", host="", user="", pass="";
         
         public FrmPatientAdd(IvfControl ic, String pttid)
         {
@@ -59,13 +60,14 @@ namespace clinic_ivf.gui
             fEdit = new Font(ic.iniC.grdViewFontName, ic.grdViewFontSize, FontStyle.Regular);
             fEditB = new Font(ic.iniC.grdViewFontName, ic.grdViewFontSize, FontStyle.Bold);
             
-            theme1.SetTheme(sB, "BeigeOne");
+            //theme1.SetTheme(sB, "BeigeOne");
             barcode.BackColor = this.BackColor;
 
             sB1.Text = "";
             bg = txtPttName.BackColor;
             fc = txtPttName.ForeColor;
             ff = txtPttName.Font;
+            ff1 = new FtpClient(ic.iniC.hostFTP, ic.iniC.userFTP, ic.iniC.passFTP);
 
             stt = new C1SuperTooltip();
             sep = new C1SuperErrorProvider();
@@ -116,7 +118,9 @@ namespace clinic_ivf.gui
             setKeyEnter();
 
             btnCapture.Enabled = false;
-            btnSavePic.Enabled = false;
+            //picPtt.Load("54158.jpg");
+            //picPtt.SizeMode = PictureBoxSizeMode.StretchImage;
+            //btnSavePic.Enabled = false;
         }
 
         private void BtnSavePic_Click(object sender, EventArgs e)
@@ -124,8 +128,10 @@ namespace clinic_ivf.gui
             //throw new NotImplementedException();
             String folder = "";
             folder = DateTime.Now.Year.ToString();
-            //ic.ftpC.createDirectory(folder);
-            ic.ftpC.upload("DefaultDocument.pdf", @"C:\\source\\ivf\\clinic_ivf\\clinic_ivf\\doc\\DefaultDocument.pdf");
+            image1 = picPtt.Image;
+            //image1.Save(@"temppic.jpg", System.Drawing.Imaging.ImageFormat.Jpeg);
+            ic.saveFilePatienttoServer(txtHn.Text, image1);
+            //ic.ftpC.upload("DefaultDocument.pdf", @"D:\\source\\ivf\\clinic_ivf\\clinic_ivf\\doc\\DefaultDocument.pdf");
         }
 
         private void setKeyEnter()
@@ -663,6 +669,43 @@ namespace clinic_ivf.gui
             chkChronic.Checked = ptt.status_chronic.Equals("1") ? true : false;
             chkDenyAllergy.Checked = ptt.status_deny_allergy.Equals("1") ? true : false;
             barcode.Text = txtHn.Text;
+            filenamepic = txtHn.Text;
+            host = ic.iniC.hostFTP;
+            user = ic.iniC.userFTP;
+            pass = ic.iniC.passFTP;
+            MemoryStream stream = new MemoryStream();
+            //stream = ic.ftpC.download(DateTime.Now.Year.ToString()+"/"+txtHn.Text+"."+ System.Drawing.Imaging.ImageFormat.Jpeg);
+            ////image1 = new Image();
+            //Bitmap bitmap = new Bitmap(stream);
+            ////image1 = bitmap;
+            //picPtt.Image = bitmap;
+            //picPtt.SizeMode = PictureBoxSizeMode.StretchImage;
+            Thread threadA = new Thread(new ParameterizedThreadStart(ExecuteA));
+            threadA.Start();
+        }
+        private void ExecuteA(Object obj)
+        {
+            //Console.WriteLine("Executing parameterless thread!");
+            try
+            {
+                MemoryStream stream = new MemoryStream();
+                FtpClient ftp = new FtpClient(host, user, pass);
+                stream = ftp.download(DateTime.Now.Year.ToString() + "/" + filenamepic + "." + System.Drawing.Imaging.ImageFormat.Jpeg);
+                Bitmap bitmap = new Bitmap(stream);
+                //picPtt.Image = bitmap;
+                //picPtt.SizeMode = PictureBoxSizeMode.StretchImage;
+                setPic(bitmap);
+            }
+            catch(Exception ex)
+            {
+
+            }
+            
+        }
+        private void setPic(Bitmap bitmap)
+        {
+            picPtt.Image = bitmap;
+            picPtt.SizeMode = PictureBoxSizeMode.StretchImage;
         }
         private void setPatient()
         {
@@ -908,6 +951,28 @@ namespace clinic_ivf.gui
         private void FrmPatientAdd_Load(object sender, EventArgs e)
         {
             tC1.SelectedTab = tabFamily;
+            if (ic.iniC.statusAppDonor.Equals("1"))
+            {
+                theme1.SetTheme(sB, ic.theme);
+            }
+            else
+            {
+                theme1.SetTheme(sB, "Office2010Red");
+            }
+            //theme1.SetTheme(splitContainer1, ic.theme);
+            //theme1.SetTheme(splitContainer2, ic.theme);
+            //theme1.SetTheme(grfDay2, ic.theme);
+            //theme1.SetTheme(grfDay2, ic.theme);
+            //theme1.SetTheme(grfDay2, ic.theme);
+            //theme1.SetTheme(grfDay2, ic.theme);
+            //foreach (Control c in groupBox1.Controls)
+            //{
+            //    theme1.SetTheme(c, ic.theme);
+            //}
+            //foreach (Control c in gB.Controls)
+            //{
+            //    theme1.SetTheme(c, ic.theme);
+            //}
         }
     }
 }

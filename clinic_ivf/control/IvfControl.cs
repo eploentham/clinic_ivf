@@ -43,6 +43,7 @@ namespace clinic_ivf.control
         public FtpClient ftpC;
         Regex regEmail;
         String soapTaxId = "";
+        public String theme="";
         public String FixJobCode = "IMP", FixEccCode = "CC";
 
         public VideoCaptureDevice video;
@@ -82,6 +83,14 @@ namespace clinic_ivf.control
 
             sVsOld = new VisitOld();
             cTxtFocus = ColorTranslator.FromHtml(iniC.txtFocus);
+            if (iniC.statusAppDonor.Equals("1"))
+            {
+                theme = iniC.themeDonor;
+            }
+            else
+            {
+                theme = iniC.themeApplication;
+            }
         }
         public void GetConfig()
         {
@@ -98,9 +107,12 @@ namespace clinic_ivf.control
 
             iniC.grdViewFontSize = iniF.getIni("app", "grdViewFontSize");
             iniC.grdViewFontName = iniF.getIni("app", "grdViewFontName");
-            iniC.themeApplication = iniF.getIni("app", "themeApplication");
+            
             iniC.txtFocus = iniF.getIni("app", "txtFocus");
             iniC.grfRowColor = iniF.getIni("app", "grfRowColor");
+            iniC.statusAppDonor = iniF.getIni("app", "statusAppDonor");
+            iniC.themeApplication = iniF.getIni("app", "themeApplication");
+            iniC.themeDonor = iniF.getIni("app", "themeDonor");
 
             iniC.sticker_donor_width = iniF.getIni("sticker_donor", "width");
             iniC.sticker_donor_height = iniF.getIni("sticker_donor", "height");
@@ -122,6 +134,12 @@ namespace clinic_ivf.control
             iniC.userFTP = iniC.userFTP == null ? "" : iniC.userFTP;
             iniC.passFTP = iniC.passFTP == null ? "" : iniC.passFTP;
             iniC.portFTP = iniC.portFTP == null ? "" : iniC.portFTP;
+
+            iniC.themeApplication = iniC.themeApplication == null ? "Office2007Blue" : iniC.themeApplication .Equals("") ? "Office2007Blue" : iniC.themeApplication;
+            iniC.themeDonor = iniC.themeDonor == null ? "Office2007Blue" : iniC.themeDonor.Equals("") ? "Office2007Blue" : iniC.themeDonor;
+
+            iniC.statusAppDonor = iniC.statusAppDonor == null ? "1" : iniC.statusAppDonor.Equals("") ? "1" : iniC.statusAppDonor;
+
 
             int.TryParse(iniC.grdViewFontSize, out grdViewFontSize);
         }
@@ -251,6 +269,16 @@ namespace clinic_ivf.control
             c.Items.Add(item);
 
             return c;
+        }
+        public void saveFilePatienttoServer(String filename, Image pic)
+        {
+            if (File.Exists(@"temppic" + System.Drawing.Imaging.ImageFormat.Jpeg))
+            {
+                File.Delete(@"temppic" + System.Drawing.Imaging.ImageFormat.Jpeg);
+            }
+            pic.Save(@"temppic." + System.Drawing.Imaging.ImageFormat.Jpeg, System.Drawing.Imaging.ImageFormat.Jpeg);
+            ftpC.createDirectory(DateTime.Now.Year.ToString());
+            ftpC.upload(DateTime.Now.Year.ToString()+"/" +filename+"." + System.Drawing.Imaging.ImageFormat.Jpeg, @"temppic" + "." + System.Drawing.Imaging.ImageFormat.Jpeg);
         }
     }
 }

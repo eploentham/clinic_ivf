@@ -10,13 +10,13 @@ namespace clinic_ivf.object1
 {
     public class FtpClient
     {
-        private string host = null;
-        private string user = null;
-        private string pass = null;
-        private FtpWebRequest ftpRequest = null;
-        private FtpWebResponse ftpResponse = null;
-        private Stream ftpStream = null;
-        private int bufferSize = 2048;
+        string host = null;
+        string user = null;
+        string pass = null;
+        FtpWebRequest ftpRequest = null;
+        FtpWebResponse ftpResponse = null;
+        Stream ftpStream = null;
+        int bufferSize = 2048;
 
         /* Construct Object */
         public FtpClient(string hostIP, string userName, string password)
@@ -25,7 +25,7 @@ namespace clinic_ivf.object1
         }
 
         /* Download File */
-        public MemoryStream download(string remoteFile)
+        public MemoryStream download(String remoteFile)
         {
             MemoryStream stream = new MemoryStream();
             try
@@ -62,7 +62,9 @@ namespace clinic_ivf.object1
 
                     }
                 }
-                catch (Exception ex) { Console.WriteLine(ex.ToString()); }
+                catch (Exception ex) {
+                    Console.WriteLine(ex.ToString());
+                }
                 /* Resource Cleanup */
                 //localFileStream.Close();
                 ftpStream.Close();

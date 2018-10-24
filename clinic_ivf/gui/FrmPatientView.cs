@@ -89,6 +89,7 @@ namespace clinic_ivf.gui
             gB.Controls.Add(grfPtt);
 
             theme1.SetTheme(grfPtt, "Office2010Blue");
+            
         }
         private void GrfReq_AfterRowColChange(object sender, RangeEventArgs e)
         {
@@ -128,7 +129,6 @@ namespace clinic_ivf.gui
             grfPtt.Cols[colPttHn].Width = 120;
             grfPtt.Cols[colPttRemark].Width = 300;
             
-
             grfPtt.ShowCursor = true;
             //grdFlex.Cols[colID].Caption = "no";
             //grfDept.Cols[colCode].Caption = "รหัส";
@@ -152,6 +152,8 @@ namespace clinic_ivf.gui
                     grfPtt.Rows[i].StyleNew.BackColor = color;
             }
             grfPtt.Cols[colPttId].Visible = false;
+            theme1.SetTheme(grfPtt, ic.theme);
+            
         }
         private void ContextMenu_edit(object sender, System.EventArgs e)
         {
@@ -159,11 +161,11 @@ namespace clinic_ivf.gui
             id = grfPtt[grfPtt.Row, colPttId] != null ? grfPtt[grfPtt.Row, colPttId].ToString() : "";
             chk = grfPtt[grfPtt.Row, colPttHn] != null ? grfPtt[grfPtt.Row, colPttHn].ToString() : "";
             name = grfPtt[grfPtt.Row, colPttName] != null ? grfPtt[grfPtt.Row, colPttName].ToString() : "";
-            if (MessageBox.Show("ต้องการ แก้ไข Patient  \n  hn number " + chk + " \n name " + name, "", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == DialogResult.OK)
-            {
+            //if (MessageBox.Show("ต้องการ แก้ไข Patient  \n  hn number " + chk + " \n name " + name, "", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == DialogResult.OK)
+            //{
                 //grfReq.Rows.Remove(grfReq.Row);
                 openPatientAdd(id, name);
-            }
+            //}
         }
         private void BtnNew_Click(object sender, EventArgs e)
         {
@@ -188,7 +190,17 @@ namespace clinic_ivf.gui
         }
         private void FrmPatientView_Load(object sender, EventArgs e)
         {
-
+            theme1.SetTheme(groupBox1, ic.theme);
+            theme1.SetTheme(gB, ic.theme);
+            theme1.SetTheme(grfPtt, ic.theme);
+            foreach (Control c in groupBox1.Controls)
+            {
+                theme1.SetTheme(c, ic.theme);
+            }
+            foreach (Control c in gB.Controls)
+            {
+                theme1.SetTheme(c, ic.theme);
+            }
         }
     }
 }

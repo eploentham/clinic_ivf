@@ -1812,6 +1812,7 @@
             // 
             // sB
             // 
+            this.sB.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(222)))), ((int)(((byte)(222)))));
             this.sB.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.sB1});
             this.sB.Location = new System.Drawing.Point(0, 718);
@@ -1819,6 +1820,7 @@
             this.sB.Size = new System.Drawing.Size(1457, 22);
             this.sB.TabIndex = 526;
             this.sB.Text = "statusStrip1";
+            this.theme1.SetTheme(this.sB, "Office2013DarkGray");
             // 
             // sB1
             // 

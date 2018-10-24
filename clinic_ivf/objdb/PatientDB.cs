@@ -358,8 +358,8 @@ namespace clinic_ivf.objdb
 
             chkNull(p);
             sql = "Update "+ptt.table + " " +
-                " Set "+ptt.patient_hn + "='"+p.patient_hn + "' " +
-                "," + ptt.patient_firstname + "='" + p.patient_firstname + "' " +
+                //" Set "+ptt.patient_hn + "='"+p.patient_hn + "' " +
+                "Set " + ptt.patient_firstname + "='" + p.patient_firstname + "' " +
                 "," + ptt.patient_lastname + "='" + p.patient_lastname + "' " +
                 "," + ptt.patient_birthday + "='" + p.patient_birthday + "' " +
                 "," + ptt.patient_xn + "='" + p.patient_xn + "' " +

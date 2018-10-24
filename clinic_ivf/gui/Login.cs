@@ -1,4 +1,5 @@
-﻿using C1.Win.C1SuperTooltip;
+﻿using C1.Win.C1Input;
+using C1.Win.C1SuperTooltip;
 using clinic_ivf.control;
 using clinic_ivf.object1;
 using clinic_ivf.Properties;
@@ -19,6 +20,10 @@ namespace clinic_ivf.gui
         public String LogonSuccessful = "";
         Staff stf;
 
+        Font fEdit, fEditB;
+        Color bg, fc;
+        Font ff, ffB;
+
         IvfControl ic;
         FrmSplash splash;
 
@@ -36,18 +41,33 @@ namespace clinic_ivf.gui
         {
             txtUserName.KeyUp += TxtUserName_KeyUp;
             txtUserName.LostFocus += TxtUserName_LostFocus;
+            txtUserName.Enter += TxtUserName_Enter;
             txtPassword.KeyUp += TxtPassword_KeyUp;
+            txtPassword.Enter += TxtUserName_Enter;
             btnOk.Click += BtnOk_Click;
-            foreach (Control c in panel1.Controls)
-            {
-                theme1.SetTheme(c, "Office2013Red");
-            }
-            theme1.SetTheme(panel1, "Office2013Red");
+            bg = txtUserName.BackColor;
+            fc = txtUserName.ForeColor;
+
+            //theme1.SetTheme(panel1, "Office2013Red");
             //theme1.SetTheme(label2, "Office2010Blue");
             stt = new C1SuperTooltip();
             sep = new C1SuperErrorProvider();
             //stt.BackgroundGradient = C1.Win.C1SuperTooltip.BackgroundGradient.Gold;
             //stt.
+        }
+
+        //private void TxtPassword_Enter(object sender, EventArgs e)
+        //{
+        //    //throw new NotImplementedException();
+        //    C1TextBox a = (C1TextBox)sender;
+        //    a.BackColor = ic.cTxtFocus;
+        //}
+
+        private void TxtUserName_Enter(object sender, EventArgs e)
+        {
+            //throw new NotImplementedException();
+            C1TextBox a = (C1TextBox)sender;
+            a.BackColor = ic.cTxtFocus;
         }
 
         private void BtnOk_Click(object sender, EventArgs e)
@@ -73,6 +93,10 @@ namespace clinic_ivf.gui
         private void TxtUserName_LostFocus(object sender, EventArgs e)
         {
             //throw new NotImplementedException();
+            C1TextBox a = (C1TextBox)sender;
+            a.BackColor = bg;
+            //a.ForeColor = fc;
+            //a.Font = new Font(ff, FontStyle.Regular);
             chkLogin();
         }
 
@@ -116,7 +140,26 @@ namespace clinic_ivf.gui
         }
         private void Login_Load(object sender, EventArgs e)
         {
-
+            //if (ic.iniC.statusAppDonor.Equals("1"))
+            //{
+            theme1.SetTheme(this, ic.theme);
+            theme1.SetTheme(panel1, ic.theme);
+            foreach (Control c in panel1.Controls)
+            {
+                theme1.SetTheme(c,ic.theme);
+            }
+            bg = txtUserName.BackColor;
+            fc = txtUserName.ForeColor;
+            //}
+            //else
+            //{
+            //    theme1.SetTheme(this, "Office2007Blue");
+            //    theme1.SetTheme(panel1, "Office2007Blue");
+            //    foreach (Control c in panel1.Controls)
+            //    {
+            //        theme1.SetTheme(c, "Office2007Blue");
+            //    }
+            //}
         }
     }
 }
