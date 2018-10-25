@@ -44,7 +44,7 @@ namespace clinic_ivf.objdb
             posi.pkField = "posi_id";
 
             lDept = new List<Position>();
-            getlPosi();
+            //getlPosi();
         }
         public String insert(Position p, String userId)
         {

@@ -916,3 +916,28 @@ ALTER TABLE `ivf`.`t_patient`
 ADD COLUMN `patient_father_moble` VARCHAR(255) NULL AFTER `status_convert`,
 ADD COLUMN `patient_mother_mobile` VARCHAR(255) NULL AFTER `patient_father_moble`,
 ADD COLUMN `patient_couple_mobile` VARCHAR(255) NULL AFTER `patient_mother_mobile`;
+
+
+61-10-25
+ALTER TABLE `ivf`.`t_patient` 
+ADD COLUMN `patient_firstname_e` VARCHAR(255) NULL AFTER `patient_couple_mobile`,
+ADD COLUMN `patient_lastname_e` VARCHAR(255) NULL AFTER `patient_firstname_e`,
+CHANGE COLUMN `date_create` `date_create` VARCHAR(55) CHARACTER SET 'utf8' COLLATE 'utf8_bin' NULL DEFAULT NULL ,
+CHANGE COLUMN `date_modi` `date_modi` VARCHAR(55) CHARACTER SET 'utf8' COLLATE 'utf8_bin' NULL DEFAULT NULL ,
+CHANGE COLUMN `date_cancel` `date_cancel` VARCHAR(55) CHARACTER SET 'utf8' COLLATE 'utf8_bin' NULL DEFAULT NULL ,
+CHANGE COLUMN `user_create` `user_create` VARCHAR(55) CHARACTER SET 'utf8' COLLATE 'utf8_bin' NULL DEFAULT NULL ,
+CHANGE COLUMN `user_modi` `user_modi` VARCHAR(55) CHARACTER SET 'utf8' COLLATE 'utf8_bin' NULL DEFAULT NULL ,
+CHANGE COLUMN `user_cancel` `user_cancel` VARCHAR(55) CHARACTER SET 'utf8' COLLATE 'utf8_bin' NULL DEFAULT NULL ,
+CHANGE COLUMN `active` `active` VARCHAR(1) CHARACTER SET 'utf8' COLLATE 'utf8_bin' NULL DEFAULT NULL ,
+CHANGE COLUMN `status_convert` `status_convert` VARCHAR(1) NULL DEFAULT NULL ;
+
+ALTER TABLE `ivf`.`t_patient` 
+ADD COLUMN `contract` VARCHAR(255) NULL AFTER `patient_lastname_e`,
+ADD COLUMN `insurance` VARCHAR(255) NULL AFTER `contract`;
+
+ALTER TABLE `ivf`.`t_patient` 
+CHANGE COLUMN `status_chronic` `status_chronic` VARCHAR(1) CHARACTER SET 'utf8' COLLATE 'utf8_bin' NULL DEFAULT NULL ,
+CHANGE COLUMN `status_hiv` `status_hiv` VARCHAR(1) CHARACTER SET 'utf8' COLLATE 'utf8_bin' NULL DEFAULT NULL ,
+CHANGE COLUMN `patient_status_hiv` `patient_status_hiv` VARCHAR(1) CHARACTER SET 'utf8' COLLATE 'utf8_bin' NULL DEFAULT NULL ,
+CHANGE COLUMN `status_deny_allergy` `status_deny_allergy` VARCHAR(1) CHARACTER SET 'utf8' COLLATE 'utf8_bin' NULL DEFAULT NULL ;
+

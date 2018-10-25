@@ -104,5 +104,9 @@ namespace clinic_ivf.object1
         public String patient_father_mobile { get; set; }
         public String patient_mother_mobile { get; set; }
         public String patient_couple_mobile { get; set; }
+        public String patient_firstname_e { get; set; }
+        public String patient_lastname_e { get; set; }
+        public String contract { get; set; }
+        public String insurance { get; set; }
     }
 }

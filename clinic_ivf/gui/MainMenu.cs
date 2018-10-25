@@ -40,6 +40,12 @@ namespace clinic_ivf.gui
             if (login.LogonSuccessful.Equals("1"))
             {
                 initConfig();
+                new Thread(() =>
+                {
+                    Thread.CurrentThread.IsBackground = true;
+                    /* run your code here */
+                    ic.getInit();
+                }).Start();
             }
             else
             {
@@ -62,6 +68,7 @@ namespace clinic_ivf.gui
             menuLabAccept.Click += MenuLabAccept_Click;
             menuPatient.Click += MenuPatient_Click;
             convertPatientDonorToolStripMenuItem.Click += ConvertPatientDonorToolStripMenuItem_Click;
+            
         }
 
         private void ConvertPatientDonorToolStripMenuItem_Click(object sender, EventArgs e)

@@ -673,7 +673,7 @@ namespace clinic_ivf.gui
             host = ic.iniC.hostFTP;
             user = ic.iniC.userFTP;
             pass = ic.iniC.passFTP;
-            MemoryStream stream = new MemoryStream();
+            //MemoryStream stream = new MemoryStream();
             //stream = ic.ftpC.download(DateTime.Now.Year.ToString()+"/"+txtHn.Text+"."+ System.Drawing.Imaging.ImageFormat.Jpeg);
             ////image1 = new Image();
             //Bitmap bitmap = new Bitmap(stream);
@@ -688,13 +688,15 @@ namespace clinic_ivf.gui
             //Console.WriteLine("Executing parameterless thread!");
             try
             {
-                MemoryStream stream = new MemoryStream();
-                FtpClient ftp = new FtpClient(host, user, pass);
-                stream = ftp.download(DateTime.Now.Year.ToString() + "/" + filenamepic + "." + System.Drawing.Imaging.ImageFormat.Jpeg);
-                Bitmap bitmap = new Bitmap(stream);
+                //MemoryStream stream = new MemoryStream();
+                //FtpClient ftp = new FtpClient(host, user, pass);
+                //stream = ic.ftpC.download(DateTime.Now.Year.ToString() + "/" + filenamepic + "." + System.Drawing.Imaging.ImageFormat.Jpeg);
+                //Bitmap bitmap = new Bitmap(stream);
+                //Bitmap bitmap = new Bitmap(ic.ftpC.download(DateTime.Now.Year.ToString() + "/" + filenamepic + "." + System.Drawing.Imaging.ImageFormat.Jpeg));
                 //picPtt.Image = bitmap;
                 //picPtt.SizeMode = PictureBoxSizeMode.StretchImage;
-                setPic(bitmap);
+                //setPic(bitmap);
+                setPic(new Bitmap(ic.ftpC.download(DateTime.Now.Year.ToString() + "/" + filenamepic + "." + System.Drawing.Imaging.ImageFormat.Jpeg)));
             }
             catch(Exception ex)
             {
@@ -749,6 +751,11 @@ namespace clinic_ivf.gui
             ptt.patient_couple_mobile = txtCouMobile.Text;
             ptt.patient_birthday = ic.datetoDB(txtDob.Text);
             ptt.f_patient_prefix_id = cboPrefix.SelectedItem == null ? "" : ((ComboBoxItem)cboPrefix.SelectedItem).Value;
+
+            ptt.patient_firstname_e = txtPttNameE.Text;
+            ptt.patient_lastname_e = txtPttLNameE.Text;
+            ptt.contract = txtContract.Text;
+            ptt.insurance = txtInsurance.Text;
         }
         private void DoPrint(C1PdfDocumentSource pds)
         {
