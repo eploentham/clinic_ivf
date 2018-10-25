@@ -437,7 +437,7 @@ namespace clinic_ivf.gui
             filename = "flow.pdf";
             try
             {
-                createPDFSticker(cboPrefix.Text + " " + txtPttName.Text + " " + txtPttLName.Text + "\n" + txtDob.Text);
+                createPDFSticker(txtHn.Text, cboPrefix.Text + " " + txtPttName.Text + " " + txtPttLName.Text + "\n" + txtDob.Text);
                 //cPdf.LoadFromFile(filename);
                 //cPdf.lo(filename);
                 //break;
@@ -465,7 +465,7 @@ namespace clinic_ivf.gui
             filename = "flow.pdf";            
             try
             {
-                createPDFSticker(cboPrefix.Text+" "+ txtPttName.Text+" "+txtPttLName.Text+"\n"+txtDob.Text);
+                createPDFSticker(txtHn.Text, cboPrefix.Text+" "+ txtPttName.Text+" "+txtPttLName.Text+"\n"+txtDob.Text);
                 cPdf.LoadFromFile(filename);
                 //cPdf.lo(filename);
                 //break;
@@ -793,7 +793,7 @@ namespace clinic_ivf.gui
                 MessageBox.Show(this, ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-        public void createPDFSticker(String txt)
+        public void createPDFSticker(String hn, String txt)
         {
             //C1DocumentSource cPdf = new C1DocumentSource();
             // load long string from resource file
