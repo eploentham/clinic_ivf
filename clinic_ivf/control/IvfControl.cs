@@ -92,6 +92,10 @@ namespace clinic_ivf.control
                 theme = iniC.themeApplication;
             }
         }
+        public void getInit()
+        {
+            ivfDB.sexDB.getlSex();
+        }
         public void GetConfig()
         {
             iniC.hostDB = iniF.getIni("connection","hostDB");           
@@ -139,7 +143,6 @@ namespace clinic_ivf.control
             iniC.themeDonor = iniC.themeDonor == null ? "Office2007Blue" : iniC.themeDonor.Equals("") ? "Office2007Blue" : iniC.themeDonor;
 
             iniC.statusAppDonor = iniC.statusAppDonor == null ? "1" : iniC.statusAppDonor.Equals("") ? "1" : iniC.statusAppDonor;
-
 
             int.TryParse(iniC.grdViewFontSize, out grdViewFontSize);
         }
@@ -201,6 +204,7 @@ namespace clinic_ivf.control
                 }
             }
         }
+        
         public String getC1Combo(C1ComboBox c, String data)
         {
             String re = "";

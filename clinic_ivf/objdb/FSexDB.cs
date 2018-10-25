@@ -13,6 +13,7 @@ namespace clinic_ivf.objdb
     {
         FSex sex;
         ConnectDB conn;
+        public List<FSex> lSex;
         public FSexDB(ConnectDB c)
         {
             conn = c;
@@ -82,6 +83,34 @@ namespace clinic_ivf.objdb
             dt = conn.selectData(conn.conn, sql);
 
             return dt;
+        }
+        public void getlSex()
+        {
+            //lDept = new List<Position>();
+            lSex.Clear();
+            DataTable dt = new DataTable();
+            dt = selectAll();
+            foreach (DataRow row in dt.Rows)
+            {
+                FSex itm1 = new FSex();
+                itm1.f_sex_id = row[sex.f_sex_id].ToString();
+                itm1.sex_description = row[sex.sex_description].ToString();
+
+                lSex.Add(itm1);
+            }
+        }
+        public String getList(String id)
+        {
+            String re = "";
+            foreach(FSex sex in lSex)
+            {
+                if (sex.f_sex_id.Equals(id))
+                {
+                    re = sex.sex_description;
+                    break;
+                }
+            }
+            return re;
         }
         public C1ComboBox setCboSex(C1ComboBox c)
         {

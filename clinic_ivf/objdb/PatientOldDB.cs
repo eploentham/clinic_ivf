@@ -274,6 +274,77 @@ namespace clinic_ivf.objdb
 
             return re;
         }
+        public String insertPatientOld(Patient p, String userId)
+        {
+            String re = "";
+            PatientOld pttO1 = setPatientToOLD(p);
+            if (pttO1.PID.Equals(""))
+            {
+                re = insert(pttO1, "");
+            }
+            else
+            {
+                re = update(pttO1, "");
+            }
+
+            return re;
+        }
+        public PatientOld setPatientToOLD(Patient ptt)
+        {
+            PatientOld pttO1 = new PatientOld();
+            pttO.Address = "";
+            pttO.Age = "";
+            pttO.AgentID = "";
+            pttO.Allergy = ptt.patient_drugallergy;
+            pttO.BuildingVillage = "";
+            pttO.CompanyName = "";
+            pttO.CompanyPhoneNo = "";
+            pttO.ContractName = ptt.contract;
+            pttO.DateOfBirth = "";
+            pttO.District = "";
+            pttO.Email = ptt.email;
+            pttO.EmergencyPersonAddress = "";
+            pttO.EmergencyPersonalContact = "";
+            pttO.EPAddress = "";
+            pttO.EPDistrict = "";
+            pttO.EPEmail = "";
+            pttO.EPHomePhoneNo = "";
+            pttO.EPMobilePhoneNo = "";
+            pttO.EPProvince = "";
+            pttO.EPRoad = "";
+            pttO.EPSubDistrict = "";
+            pttO.EPZipcode = "";
+            pttO.HomePhoneNo = ptt.mobile2;
+            pttO.IDNumber = ptt.pid;
+            pttO.IDType = "";
+            pttO.InsuranceName = ptt.insurance;
+            pttO.MaritalID = "";
+            pttO.MobilePhoneNo = ptt.mobile1;
+            pttO.Moo = ptt.patient_moo;
+            pttO.Nationality = "";
+            pttO.Occupation = "";
+            pttO.OName = "";
+            pttO.OSurname = "";
+            pttO.PatientTypeID = "";
+            pttO.PaymentID = "";
+            pttO.PID = "";
+            pttO.PIDS = ptt.patient_hn;
+            pttO.PName = ptt.patient_firstname;
+            pttO.Province = "";
+            pttO.PSurname = "";
+            pttO.Race = ptt.f_patient_race_id;
+            pttO.RelationshipID = "";
+            pttO.RelationshipOther = "";
+            pttO.Religion = "";
+            pttO.Road = ptt.patient_road;
+            pttO.SexID = "";
+            pttO.Soi = "";
+            pttO.SubDistrict = "";
+            pttO.SurfixID = "";
+            pttO.ZipCode = "";
+
+            return pttO1;
+        }
         public DataTable selectByPk(String pttId)
         {
             DataTable dt = new DataTable();
