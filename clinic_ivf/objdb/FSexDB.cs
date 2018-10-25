@@ -21,6 +21,7 @@ namespace clinic_ivf.objdb
         }
         private void initConfig()
         {
+            lSex = new List<FSex>();
             sex = new FSex();
             sex.f_sex_id = "f_sex_id";
             sex.sex_description = "sex_description";

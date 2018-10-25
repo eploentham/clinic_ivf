@@ -13,7 +13,7 @@ namespace clinic_ivf.objdb
         public StaffDB stfDB;
         public DepartmentDB deptDB;
         public PositionDB posiDB;
-        public PrefixDB pfxDB;
+        //public PrefixDB pfxDB;
         public LabProcedureDB proceDB;
         public VisitOldDB vsOldDB;
         public BItemDB itmDB;
@@ -21,7 +21,7 @@ namespace clinic_ivf.objdb
         public CompanyDB copDB;
         public PatientDB pttDB;
 
-        public FPrefixDB fpDB;
+        public FPrefixDB fpfDB;
         public FBloodGroupDB fbgDB;
         public FSexDB sexDB;
         public FMarriageStatusDB fmsDB;
@@ -44,13 +44,13 @@ namespace clinic_ivf.objdb
             stfDB = new StaffDB(conn);
             deptDB = new DepartmentDB(conn);
             posiDB = new PositionDB(conn);
-            pfxDB = new PrefixDB(conn);
+            //pfxDB = new PrefixDB(conn);
             proceDB = new LabProcedureDB(conn);
             vsOldDB = new VisitOldDB(conn);
             itmDB = new BItemDB(conn);
             lbReqDB = new LabRequestDB(conn);
             copDB = new CompanyDB(conn);
-            fpDB = new FPrefixDB(conn);
+            fpfDB = new FPrefixDB(conn);
             fbgDB = new FBloodGroupDB(conn);
             sexDB = new FSexDB(conn);
             fmsDB = new FMarriageStatusDB(conn);

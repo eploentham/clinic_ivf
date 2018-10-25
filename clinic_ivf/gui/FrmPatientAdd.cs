@@ -88,16 +88,16 @@ namespace clinic_ivf.gui
             }
 
             txtDob.Value = DateTime.Now.ToString("yyyy-MM-dd");
-            ic.ivfDB.fpDB.setCboPrefix(cboPrefix);
+            ic.ivfDB.fpfDB.setCboPrefix(cboPrefix);
             ic.ivfDB.fmsDB.setCboMarriage(cboMarital);
             ic.ivfDB.fbgDB.setCboBloodGroup(cboBloodG);
             ic.ivfDB.fpnDB.setCboNation(CboNation);
             ic.ivfDB.fetDB.setCboEduca(CboEduca);
             ic.ivfDB.frcDB.setCboRace(cboRace);
             ic.ivfDB.frgDB.setCboReligion(cboRg);
-            ic.ivfDB.fpDB.setCboPrefix(cboCouPrefix);
-            ic.ivfDB.fpDB.setCboPrefix(cboName1Prefix);
-            ic.ivfDB.fpDB.setCboPrefix(cboName2Prefix);
+            ic.ivfDB.fpfDB.setCboPrefix(cboCouPrefix);
+            ic.ivfDB.fpfDB.setCboPrefix(cboName1Prefix);
+            ic.ivfDB.fpfDB.setCboPrefix(cboName2Prefix);
             ic.ivfDB.frlDB.setCboRelation(cboCouRel);
             ic.ivfDB.frlDB.setCboRelation(cboName1Rl);
             ic.ivfDB.frlDB.setCboRelation(cboName2Rl);
@@ -437,7 +437,10 @@ namespace clinic_ivf.gui
             filename = "flow.pdf";
             try
             {
-                createPDFSticker(txtHn.Text, cboPrefix.Text + " " + txtPttName.Text + " " + txtPttLName.Text + "\n" + txtDob.Text);
+                String age = "";
+                age = ptt.AgeStringShort();
+                //DateTime dt = txtDob.Text;
+                createPDFSticker(txtHn.Text, cboPrefix.Text + " " + txtPttName.Text + " " + txtPttLName.Text + "\n  DOB " + ic.datetoDB(txtDob.Text) + "\n  AGE " + age);
                 //cPdf.LoadFromFile(filename);
                 //cPdf.lo(filename);
                 //break;
@@ -465,7 +468,15 @@ namespace clinic_ivf.gui
             filename = "flow.pdf";            
             try
             {
-                createPDFSticker(txtHn.Text, cboPrefix.Text+" "+ txtPttName.Text+" "+txtPttLName.Text+"\n"+txtDob.Text);
+                String age = "";
+                //DateTime dtB;
+                //if(DateTime.TryParse(ptt.patient_birthday,out dtB))
+                //{
+                //    Age age1 = new Age(dtB);
+                //    age = age1.AgeString;
+                //}
+                age = ptt.AgeStringShort();
+                createPDFSticker(txtHn.Text, cboPrefix.Text+" "+ txtPttName.Text+" "+txtPttLName.Text+"\n  DOB "+ ic.datetoDB(txtDob.Text)+"\n  AGE "+ age);
                 cPdf.LoadFromFile(filename);
                 //cPdf.lo(filename);
                 //break;
@@ -756,6 +767,8 @@ namespace clinic_ivf.gui
             ptt.patient_lastname_e = txtPttLNameE.Text;
             ptt.contract = txtContract.Text;
             ptt.insurance = txtInsurance.Text;
+            ptt.patient_contact_firstname = txtContFname1.Text;
+            ptt.patient_contact_lastname = txtContLname1.Text;
         }
         private void DoPrint(C1PdfDocumentSource pds)
         {
@@ -827,26 +840,27 @@ namespace clinic_ivf.gui
             // add title
             Font titleFont = new Font("Tahoma", 24, FontStyle.Bold);
             Font bodyFont = new Font("Tahoma", 9);
+            Font bodyFontB = new Font("Tahoma", 12);
             RectangleF rcPage = GetPageRect();
             RectangleF rc = RenderParagraph(_c1pdf.DocumentInfo.Title, titleFont, rcPage, rcPage, false);
             rc.Y += titleFont.Size + 6;
             rc.Height = rcPage.Height - rc.Y;
 
             // create three columns for the text
-            RectangleF rcLeft = rc;
+            RectangleF rcLeft1 = rc;
             int chk = 0;
             //rcLeft.Width = rcPage.Width / 2 - 12;
-            rcLeft.Width = int.TryParse(ic.iniC.sticker_donor_width, out chk) ? chk : 120;
-            rcLeft.Height = int.TryParse(ic.iniC.sticker_donor_height, out chk) ? chk : 90;
-            rcLeft.Y = int.TryParse(ic.iniC.sticker_donor_start_y, out chk) ? chk : 60;
-            RectangleF rcRight = rcLeft;
+            rcLeft1.Width = int.TryParse(ic.iniC.sticker_donor_width, out chk) ? chk : 120;
+            rcLeft1.Height = int.TryParse(ic.iniC.sticker_donor_height, out chk) ? chk : 90;
+            rcLeft1.Y = int.TryParse(ic.iniC.sticker_donor_start_y, out chk) ? chk : 60;
+            RectangleF rcRight = rcLeft1;
             rcRight.X = rcPage.Right - rcRight.Width;
 
-            RectangleF rcMiddle = rcLeft;
+            RectangleF rcMiddle = rcLeft1;
             rcMiddle.X = rcPage.Right - rcMiddle.Width - rcMiddle.Width - 55;
             RectangleF rcBarcode1 = RenderParagraph("", titleFont, rcPage, rcPage, false);
             rcBarcode1.Height = int.TryParse(ic.iniC.sticker_donor_barcode_height, out chk) ? chk : 40;
-            rcBarcode1.Width = rcLeft.Width - 10;
+            rcBarcode1.Width = rcLeft1.Width - 10;
             rcBarcode1.X = rcBarcode1.X + (int.TryParse(ic.iniC.sticker_donor_barcode_gap_x, out chk) ? chk : 5);
             rcBarcode1.Y = rcBarcode1.Y + (int.TryParse(ic.iniC.sticker_donor_barcode_gap_y, out chk) ? chk : 30);
             RectangleF rcBarcodeM = rcBarcode1;
@@ -862,21 +876,23 @@ namespace clinic_ivf.gui
             {
                 // render as much as will fit into the rectangle
                 rc.Inflate(-3, -3);
-                int nextChar = _c1pdf.DrawString(text, bodyFont, Brushes.Black, rcLeft);
+                int nextChar = _c1pdf.DrawString(hn, bodyFontB, Brushes.Black, rcLeft1);
+                int nextChar1 = _c1pdf.DrawString("\n"+text, bodyFont, Brushes.Black, rcLeft1);
                 _c1pdf.DrawImage(img, rcBarcode1);
                 rc.Inflate(+3, +3);
-                _c1pdf.DrawRectangle(Pens.Silver, rcLeft);
-                
+                _c1pdf.DrawRectangle(Pens.Silver, rcLeft1);
 
-                _c1pdf.DrawString(text, bodyFont, Brushes.Black, rcMiddle);
+                _c1pdf.DrawString(hn, bodyFontB, Brushes.Black, rcMiddle);
+                _c1pdf.DrawString("\n" + text, bodyFont, Brushes.Black, rcMiddle);
                 _c1pdf.DrawImage(img, rcBarcodeM);
                 _c1pdf.DrawRectangle(Pens.Silver, rcMiddle);
-                
-                _c1pdf.DrawString(text, bodyFont, Brushes.Black, rcRight);
+
+                _c1pdf.DrawString(hn, bodyFontB, Brushes.Black, rcRight);
+                _c1pdf.DrawString("\n" + text, bodyFont, Brushes.Black, rcRight);
                 _c1pdf.DrawImage(img, rcBarcodeR);
                 _c1pdf.DrawRectangle(Pens.Silver, rcRight);
 
-                rcLeft.Y += int.TryParse(ic.iniC.sticker_donor_width, out chk) ? chk : 120;
+                rcLeft1.Y += int.TryParse(ic.iniC.sticker_donor_width, out chk) ? chk : 120;
                 rcMiddle.Y += int.TryParse(ic.iniC.sticker_donor_width, out chk) ? chk : 120;
                 rcRight.Y += int.TryParse(ic.iniC.sticker_donor_width, out chk) ? chk : 120;
                 rcBarcode1.Y += int.TryParse(ic.iniC.sticker_donor_width, out chk) ? chk : 120;

@@ -253,6 +253,7 @@
     <Compile Include="objdb\FReligionDB.cs" />
     <Compile Include="objdb\FSexDB.cs" />
     <Compile Include="objdb\PatientOldDB.cs" />
+    <Compile Include="object1\Age.cs" />
     <Compile Include="object1\FBloodGroup.cs" />
     <Compile Include="objdb\CompanyDB.cs" />
     <Compile Include="objdb\ConnectDB.cs" />

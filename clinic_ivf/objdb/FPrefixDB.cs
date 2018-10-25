@@ -13,8 +13,10 @@ namespace clinic_ivf.objdb
 {
     public class FPrefixDB
     {
-        FPrefix fp;
+        FPrefix fpf;
         ConnectDB conn;
+        public List<FPrefix> lFpf;
+
         public FPrefixDB(ConnectDB c)
         {
             conn = c;
@@ -22,23 +24,52 @@ namespace clinic_ivf.objdb
         }
         private void initConfig()
         {
-            fp = new FPrefix();
-            fp.active = "active";
-            fp.f_patient_prefix_id = "f_patient_prefix_id";
-            fp.f_sex_id = "f_sex_id";            
-            fp.patient_prefix_description = "patient_prefix_description";
-            fp.active = "active";
+            lFpf = new List<FPrefix>();
+            fpf = new FPrefix();
+            fpf.active = "active";
+            fpf.f_patient_prefix_id = "f_patient_prefix_id";
+            fpf.f_sex_id = "f_sex_id";            
+            fpf.patient_prefix_description = "patient_prefix_description";
+            fpf.active = "active";
 
-            fp.pkField = "f_patient_prefix_id";
-            fp.table = "f_patient_prefix";
+            fpf.pkField = "f_patient_prefix_id";
+            fpf.table = "f_patient_prefix";
+        }
+        public void getlFPrefix()
+        {
+            //lDept = new List<Position>();
+            lFpf.Clear();
+            DataTable dt = new DataTable();
+            dt = selectAll();
+            foreach (DataRow row in dt.Rows)
+            {
+                FPrefix itm1 = new FPrefix();
+                itm1.f_patient_prefix_id = row[fpf.f_patient_prefix_id].ToString();
+                itm1.patient_prefix_description = row[fpf.patient_prefix_description].ToString();
+
+                lFpf.Add(itm1);
+            }
+        }
+        public String getList(String id)
+        {
+            String re = "";
+            foreach (FPrefix sex in lFpf)
+            {
+                if (sex.f_patient_prefix_id.Equals(id))
+                {
+                    re = sex.patient_prefix_description;
+                    break;
+                }
+            }
+            return re;
         }
         public DataTable selectAll()
         {
             DataTable dt = new DataTable();
             String sql = "select dept.*  " +
-                "From " + fp.table + " dept " +
+                "From " + fpf.table + " dept " +
                 " " +
-                "Where dept." + fp.active + " ='1' ";
+                "Where dept." + fpf.active + " ='1' ";
             dt = conn.selectData(conn.conn, sql);
 
             return dt;
@@ -47,9 +78,9 @@ namespace clinic_ivf.objdb
         {
             DataTable dt = new DataTable();
             String sql = "select dept.* " +
-                "From " + fp.table + " dept " +
+                "From " + fpf.table + " dept " +
                 //"Left Join t_ssdata_visit ssv On ssv.ssdata_visit_id = bd.ssdata_visit_id " +
-                "Where dept." + fp.pkField + " ='" + copId + "' ";
+                "Where dept." + fpf.pkField + " ='" + copId + "' ";
             dt = conn.selectData(conn.conn, sql);
             return dt;
         }
@@ -58,9 +89,9 @@ namespace clinic_ivf.objdb
             FPrefix cop1 = new FPrefix();
             DataTable dt = new DataTable();
             String sql = "select dept.* " +
-                "From " + fp.table + " dept " +
+                "From " + fpf.table + " dept " +
                 //"Left Join t_ssdata_visit ssv On ssv.ssdata_visit_id = bd.ssdata_visit_id " +
-                "Where dept." + fp.pkField + " ='" + copId + "' ";
+                "Where dept." + fpf.pkField + " ='" + copId + "' ";
             dt = conn.selectData(conn.conn, sql);
             cop1 = setPrefix(dt);
             return cop1;
@@ -70,8 +101,8 @@ namespace clinic_ivf.objdb
             FPrefix dept1 = new FPrefix();
             if (dt.Rows.Count > 0)
             {
-                dept1.f_patient_prefix_id = dt.Rows[0][fp.f_patient_prefix_id].ToString();
-                dept1.patient_prefix_description = dt.Rows[0][fp.patient_prefix_description].ToString();                
+                dept1.f_patient_prefix_id = dt.Rows[0][fpf.f_patient_prefix_id].ToString();
+                dept1.patient_prefix_description = dt.Rows[0][fpf.patient_prefix_description].ToString();                
             }
 
             return dept1;
@@ -79,10 +110,10 @@ namespace clinic_ivf.objdb
         public DataTable selectC1()
         {
             DataTable dt = new DataTable();
-            String sql = "select dept." + fp.pkField + ",dept." + fp.patient_prefix_description + " " +
-                "From " + fp.table + " dept " +
+            String sql = "select dept." + fpf.pkField + ",dept." + fpf.patient_prefix_description + " " +
+                "From " + fpf.table + " dept " +
                 " " +
-                "Where dept." + fp.active + " ='1' ";
+                "Where dept." + fpf.active + " ='1' ";
             dt = conn.selectData(conn.conn, sql);
 
             return dt;
@@ -101,8 +132,8 @@ namespace clinic_ivf.objdb
             foreach (DataRow row in dt.Rows)
             {
                 item = new ComboBoxItem();
-                item.Text = row[fp.patient_prefix_description].ToString();
-                item.Value = row[fp.f_patient_prefix_id].ToString();
+                item.Text = row[fpf.patient_prefix_description].ToString();
+                item.Value = row[fpf.f_patient_prefix_id].ToString();
 
                 c.Items.Add(item);
             }

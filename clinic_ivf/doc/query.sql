@@ -941,3 +941,27 @@ CHANGE COLUMN `status_hiv` `status_hiv` VARCHAR(1) CHARACTER SET 'utf8' COLLATE 
 CHANGE COLUMN `patient_status_hiv` `patient_status_hiv` VARCHAR(1) CHARACTER SET 'utf8' COLLATE 'utf8_bin' NULL DEFAULT NULL ,
 CHANGE COLUMN `status_deny_allergy` `status_deny_allergy` VARCHAR(1) CHARACTER SET 'utf8' COLLATE 'utf8_bin' NULL DEFAULT NULL ;
 
+INSERT INTO `ivf`.`f_patient_religion` (`patient_religion_description`) VALUES ('Buddhism');
+INSERT INTO `ivf`.`f_patient_religion` (`patient_religion_description`) VALUES ('Christianity');
+INSERT INTO `ivf`.`f_patient_religion` (`patient_religion_description`) VALUES ('Islam');
+INSERT INTO `ivf`.`f_patient_religion` (`patient_religion_description`) VALUES ('African Traditional & Diasporic');
+INSERT INTO `ivf`.`f_patient_religion` (`patient_religion_description`) VALUES ('Agnostic');
+INSERT INTO `ivf`.`f_patient_religion` (`patient_religion_description`) VALUES ('Atheist');
+INSERT INTO `ivf`.`f_patient_religion` (`patient_religion_description`) VALUES ('Baha\'i');
+INSERT INTO `ivf`.`f_patient_religion` (`patient_religion_description`) VALUES ('Cao Dai');
+INSERT INTO `ivf`.`f_patient_religion` (`patient_religion_description`) VALUES ('Chinese traditional religion');
+INSERT INTO `ivf`.`f_patient_religion` (`patient_religion_description`) VALUES ('Hinduism');
+INSERT INTO `ivf`.`f_patient_religion` (`patient_religion_description`) VALUES ('Jainism');
+INSERT INTO `ivf`.`f_patient_religion` (`patient_religion_description`) VALUES ('Juche');
+INSERT INTO `ivf`.`f_patient_religion` (`patient_religion_description`) VALUES ('Judaism');
+INSERT INTO `ivf`.`f_patient_religion` (`patient_religion_description`) VALUES ('Neo-Paganism');
+INSERT INTO `ivf`.`f_patient_religion` (`patient_religion_description`) VALUES ('Nonreligious');
+INSERT INTO `ivf`.`f_patient_religion` (`patient_religion_description`) VALUES ('Rastafarianism');
+INSERT INTO `ivf`.`f_patient_religion` (`patient_religion_description`) VALUES ('Secular');
+INSERT INTO `ivf`.`f_patient_religion` (`patient_religion_description`) VALUES ('Shinto');
+INSERT INTO `ivf`.`f_patient_religion` (`patient_religion_description`) VALUES ('Sikhism');
+INSERT INTO `ivf`.`f_patient_religion` (`patient_religion_description`) VALUES ('Spiritism');
+INSERT INTO `ivf`.`f_patient_religion` (`patient_religion_description`) VALUES ('Tenrikyo');
+INSERT INTO `ivf`.`f_patient_religion` (`patient_religion_description`) VALUES ('Unitarian-Universalism');
+INSERT INTO `ivf`.`f_patient_religion` (`patient_religion_description`) VALUES ('Zoroastrianism');
+INSERT INTO `ivf`.`f_patient_religion` (`patient_religion_description`) VALUES ('primal-indigenous');

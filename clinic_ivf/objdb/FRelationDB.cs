@@ -13,6 +13,7 @@ namespace clinic_ivf.objdb
     {
         FRelation frl;
         ConnectDB conn;
+        public List<FRelation> lFrl;
         public FRelationDB(ConnectDB c)
         {
             conn = c;
@@ -20,6 +21,7 @@ namespace clinic_ivf.objdb
         }
         private void initConfig()
         {
+            lFrl = new List<FRelation>();
             frl = new FRelation();
             frl.f_patient_relation_id = "f_patient_relation_id";
             frl.patient_relation_description = "patient_relation_description";
@@ -27,6 +29,34 @@ namespace clinic_ivf.objdb
 
             frl.pkField = "f_patient_relation_id";
             frl.table = "f_patient_relation";
+        }
+        public void getlFRelation()
+        {
+            //lDept = new List<Position>();
+            lFrl.Clear();
+            DataTable dt = new DataTable();
+            dt = selectAll();
+            foreach (DataRow row in dt.Rows)
+            {
+                FRelation itm1 = new FRelation();
+                itm1.f_patient_relation_id = row[frl.f_patient_relation_id].ToString();
+                itm1.patient_relation_description = row[frl.patient_relation_description].ToString();
+
+                lFrl.Add(itm1);
+            }
+        }
+        public String getList(String id)
+        {
+            String re = "";
+            foreach (FRelation sex in lFrl)
+            {
+                if (sex.f_patient_relation_id.Equals(id))
+                {
+                    re = sex.patient_relation_description;
+                    break;
+                }
+            }
+            return re;
         }
         public DataTable selectAll()
         {

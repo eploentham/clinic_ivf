@@ -49,6 +49,7 @@ namespace clinic_ivf.control
         public VideoCaptureDevice video;
 
         public VisitOld sVsOld;
+        public Age age;
         //public FtpClient ftpC;
 
         public IvfControl()

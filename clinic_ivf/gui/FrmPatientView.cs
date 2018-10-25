@@ -201,6 +201,7 @@ namespace clinic_ivf.gui
             {
                 theme1.SetTheme(c, ic.theme);
             }
+            txtSearch.Focus();
         }
     }
 }

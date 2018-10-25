@@ -13,6 +13,7 @@ namespace clinic_ivf.objdb
     {
         FMarriageStatus fms;
         ConnectDB conn;
+        public List<FMarriageStatus> lFms;
         public FMarriageStatusDB(ConnectDB c)
         {
             conn = c;
@@ -20,6 +21,7 @@ namespace clinic_ivf.objdb
         }
         private void initConfig()
         {
+            lFms = new List<FMarriageStatus>();
             fms = new FMarriageStatus();
             fms.f_patient_marriage_status_id = "f_patient_marriage_status_id";
             fms.patient_marriage_status_description = "patient_marriage_status_description";
@@ -27,6 +29,34 @@ namespace clinic_ivf.objdb
 
             fms.pkField = "f_patient_marriage_status_id";
             fms.table = "f_patient_marriage_status";
+        }
+        public void getlFMarriage()
+        {
+            //lDept = new List<Position>();
+            lFms.Clear();
+            DataTable dt = new DataTable();
+            dt = selectAll();
+            foreach (DataRow row in dt.Rows)
+            {
+                FMarriageStatus itm1 = new FMarriageStatus();
+                itm1.f_patient_marriage_status_id = row[fms.f_patient_marriage_status_id].ToString();
+                itm1.patient_marriage_status_description = row[fms.patient_marriage_status_description].ToString();
+
+                lFms.Add(itm1);
+            }
+        }
+        public String getList(String id)
+        {
+            String re = "";
+            foreach (FMarriageStatus sex in lFms)
+            {
+                if (sex.f_patient_marriage_status_id.Equals(id))
+                {
+                    re = sex.patient_marriage_status_description;
+                    break;
+                }
+            }
+            return re;
         }
         public DataTable selectAll()
         {
