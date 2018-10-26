@@ -6,6 +6,7 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace clinic_ivf.objdb
 {
@@ -30,15 +31,15 @@ namespace clinic_ivf.objdb
 
 
             agnO.pkField = "AgentID";
-            agnO.table = "agent";
+            agnO.table = "Agent";
         }
         public DataTable selectAll()
         {
             DataTable dt = new DataTable();
-            String sql = "select sex.*  " +
-                "From " + agnO.table + " sex " +
-                " " +
-                "Where sex." + agnO.active + " ='1' ";
+            String sql = "select agnO.*  " +
+                "From " + agnO.table + " agnO " +
+                " ";
+                //"Where agnO." + agnO.active + " ='1' ";
             dt = conn.selectData(conn.conn, sql);
 
             return dt;
@@ -46,10 +47,10 @@ namespace clinic_ivf.objdb
         public DataTable selectByPk(String copId)
         {
             DataTable dt = new DataTable();
-            String sql = "select sex.* " +
-                "From " + agnO.table + " sex " +
+            String sql = "select agnO.* " +
+                "From " + agnO.table + " agnO ";
                 //"Left Join t_ssdata_visit ssv On ssv.ssdata_visit_id = bd.ssdata_visit_id " +
-                "Where sex." + agnO.pkField + " ='" + copId + "' ";
+                //"Where sex." + agnO.pkField + " ='" + copId + "' ";
             dt = conn.selectData(conn.conn, sql);
             return dt;
         }
@@ -82,6 +83,27 @@ namespace clinic_ivf.objdb
             return re;
         }
         public C1ComboBox setCboAgent(C1ComboBox c)
+        {
+            ComboBoxItem item = new ComboBoxItem();
+            DataTable dt = selectAll();
+            //String aaa = "";
+            ComboBoxItem item1 = new ComboBoxItem();
+            item1.Text = "";
+            item1.Value = "000";
+            c.Items.Clear();
+            c.Items.Add(item1);
+            //for (int i = 0; i < dt.Rows.Count; i++)
+            foreach (DataRow row in dt.Rows)
+            {
+                item = new ComboBoxItem();
+                item.Text = row[agnO.agentname].ToString();
+                item.Value = row[agnO.agentid].ToString();
+
+                c.Items.Add(item);
+            }
+            return c;
+        }
+        public ComboBox setCboAgent(ComboBox c)
         {
             ComboBoxItem item = new ComboBoxItem();
             DataTable dt = selectAll();

@@ -965,3 +965,52 @@ INSERT INTO `ivf`.`f_patient_religion` (`patient_religion_description`) VALUES (
 INSERT INTO `ivf`.`f_patient_religion` (`patient_religion_description`) VALUES ('Unitarian-Universalism');
 INSERT INTO `ivf`.`f_patient_religion` (`patient_religion_description`) VALUES ('Zoroastrianism');
 INSERT INTO `ivf`.`f_patient_religion` (`patient_religion_description`) VALUES ('primal-indigenous');
+
+61-10-26
+
+ALTER TABLE `ivf`.`t_patient` 
+ADD COLUMN `patient_couple_f_patient_prefix_id` INT NULL AFTER `agent`;
+ALTER TABLE `ivf`.`t_patient` 
+CHANGE COLUMN `patient_couple_f_patient_prefix_id` `patient_couple_f_patient_prefix_id` INT(11) NULL DEFAULT NULL AFTER `patient_couple_mobile`;
+
+ALTER TABLE `ivf`.`t_patient` 
+CHANGE COLUMN `patient_firstname_e` `patient_firstname_e` VARCHAR(255) NULL DEFAULT NULL AFTER `patient_lastname`,
+CHANGE COLUMN `patient_lastname_e` `patient_lastname_e` VARCHAR(255) NULL DEFAULT NULL AFTER `patient_firstname_e`;
+
+ALTER TABLE `ivf`.`t_patient` 
+ADD COLUMN `patient_contact_f_patient_relation_id` INT NULL AFTER `agent`,
+ADD COLUMN `patient_coulpe_f_patient_relation_id` INT NULL AFTER `patient_contact_f_patient_relation_id`;
+
+ALTER TABLE `ivf`.`t_patient` 
+CHANGE COLUMN `patient_coulpe_f_patient_relation_id` `patient_coulpe_f_patient_relation_id` INT(11) NULL DEFAULT NULL AFTER `patient_couple_f_patient_prefix_id`,
+CHANGE COLUMN `patient_contact_f_patient_relation_id` `patient_contact_f_patient_relation_id` INT(11) NULL DEFAULT NULL AFTER `f_patient_relation_id`;
+
+ALTER TABLE `ivf`.`t_patient` 
+ADD COLUMN `b_contract_plans_id` INT NULL AFTER `agent`;
+
+ALTER TABLE `ivf`.`b_contract_plans` 
+CHANGE COLUMN `contract_plans_active` `active` VARCHAR(255) CHARACTER SET 'utf8' COLLATE 'utf8_bin' NULL DEFAULT NULL ;
+
+
+CREATE TABLE `ivf`.`t_patient_image` (
+  `patient_image_id` INT NOT NULL AUTO_INCREMENT,
+  `t_patient_id` INT NULL,
+  `t_visit_id` INT NULL,
+  `desc1` VARCHAR(255) NULL,
+  `desc2` VARCHAR(255) NULL,
+  `desc3` VARCHAR(255) NULL,
+  `desc4` VARCHAR(255) NULL,
+  `active` VARCHAR(255) NULL,
+  `remark` VARCHAR(255) NULL,
+  `date_create` VARCHAR(255) NULL,
+  `date_modi` VARCHAR(255) NULL,
+  `date_cancel` VARCHAR(255) NULL,
+  `user_create` VARCHAR(255) NULL,
+  `user_modi` VARCHAR(255) NULL,
+  `user_cancel` VARCHAR(255) NULL,
+  PRIMARY KEY (`patient_image_id`))
+ENGINE = MyISAM
+DEFAULT CHARACTER SET = utf8
+COLLATE = utf8_bin
+COMMENT = 'id=211';
+ALTER TABLE f_item_billing_group AUTO_INCREMENT = 2110000000;

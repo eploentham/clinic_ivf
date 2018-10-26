@@ -107,12 +107,15 @@ namespace clinic_ivf.object1
         public String patient_firstname_e { get; set; }
         public String patient_lastname_e { get; set; }
         public String contract { get; set; }
-<<<<<<< HEAD
+
         public String insurance { get; set; }//patient_contact_f_patient_prefix_id
         public String patient_contact_f_patient_prefix_id { get; set; }
         public String patient_couple_f_patient_prefix_id { get; set; }
-=======
-        public String insurance { get; set; }
+        public String patient_contact_f_patient_relation_id { get; set; }
+        public String patient_coulpe_f_patient_relation_id { get; set; }
+        public String b_contract_plans_id { get; set; }
+
+        //public String insurance { get; set; }
         public Age age = new Age(DateTime.Now);
         public String AgeString()
         {            
@@ -136,6 +139,6 @@ namespace clinic_ivf.object1
             }
             return re;
         }
->>>>>>> 9ed44180a1f2199164640c36ed21f7a602a68966
+
     }
 }

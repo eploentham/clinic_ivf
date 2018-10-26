@@ -11,10 +11,10 @@ namespace clinic_ivf.objdb
 {
     public class BContractPayerDB
     {
-        public object1.BContractPayer crp;
+        public BContractPayer crp;
         ConnectDB conn;
 
-        public List<object1.BContractPayer> lCrp;
+        public List<BContractPayer> lCrp;
 
         public BContractPayerDB(ConnectDB c)
         {
@@ -23,14 +23,14 @@ namespace clinic_ivf.objdb
         }
         private void initConfig()
         {
-            lCrp = new List<object1.BContractPayer>();
-            crp = new object1.BContractPayer();
+            lCrp = new List<BContractPayer>();
+            crp = new BContractPayer();
             crp.b_contract_payer_id = "b_contract_payer_id";
             crp.contract_payer_description = "contract_payer_description";
 
 
             crp.pkField = "b_contract_payer_id";
-            crp.table = "b_contract_plans";
+            crp.table = "b_contract_payer";
         }
         public DataTable selectAll()
         {
@@ -53,7 +53,7 @@ namespace clinic_ivf.objdb
             dt = conn.selectData(conn.conn, sql);
             return dt;
         }
-        public void getlSex()
+        public void getlContractPayer()
         {
             //lDept = new List<Position>();
             lCrp.Clear();
@@ -61,7 +61,7 @@ namespace clinic_ivf.objdb
             dt = selectAll();
             foreach (DataRow row in dt.Rows)
             {
-                object1.BContractPayer itm1 = new object1.BContractPayer();
+                BContractPayer itm1 = new BContractPayer();
                 itm1.b_contract_payer_id = row[crp.b_contract_payer_id].ToString();
                 itm1.contract_payer_description = row[crp.contract_payer_description].ToString();
 
@@ -71,7 +71,7 @@ namespace clinic_ivf.objdb
         public String getList(String id)
         {
             String re = "";
-            foreach (object1.BContractPayer sex in lCrp)
+            foreach (BContractPayer sex in lCrp)
             {
                 if (sex.b_contract_payer_id.Equals(id))
                 {
@@ -81,7 +81,7 @@ namespace clinic_ivf.objdb
             }
             return re;
         }
-        public C1ComboBox setCboAgent(C1ComboBox c)
+        public C1ComboBox setCboContractPayer(C1ComboBox c)
         {
             ComboBoxItem item = new ComboBoxItem();
             DataTable dt = selectAll();

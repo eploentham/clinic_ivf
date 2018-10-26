@@ -133,6 +133,10 @@ namespace clinic_ivf.objdb
             ptt.patient_contact_f_patient_prefix_id = "patient_contact_f_patient_prefix_id";
             ptt.patient_couple_f_patient_prefix_id = "patient_couple_f_patient_prefix_id";
 
+            ptt.patient_contact_f_patient_relation_id = "patient_contact_f_patient_relation_id";
+            ptt.patient_coulpe_f_patient_relation_id = "patient_coulpe_f_patient_relation_id";
+            ptt.b_contract_plans_id = "b_contract_plans_id";
+
             ptt.pkField = "t_patient_id";
             ptt.table = "t_patient";
         }
@@ -248,6 +252,9 @@ namespace clinic_ivf.objdb
             p.t_person_id = int.TryParse(p.t_person_id, out chk) ? chk.ToString() : "0";
             p.patient_contact_f_patient_prefix_id = int.TryParse(p.patient_contact_f_patient_prefix_id, out chk) ? chk.ToString() : "0";
             p.patient_couple_f_patient_prefix_id = int.TryParse(p.patient_couple_f_patient_prefix_id, out chk) ? chk.ToString() : "0";
+            p.patient_contact_f_patient_relation_id = int.TryParse(p.patient_contact_f_patient_relation_id, out chk) ? chk.ToString() : "0";
+            p.patient_coulpe_f_patient_relation_id = int.TryParse(p.patient_coulpe_f_patient_relation_id, out chk) ? chk.ToString() : "0";
+            p.b_contract_plans_id = int.TryParse(p.b_contract_plans_id, out chk) ? chk.ToString() : "0";
 
             p.latitude = decimal.TryParse(p.latitude, out chk1) ? chk1.ToString() : "0";
             p.longitude = decimal.TryParse(p.longitude, out chk1) ? chk1.ToString() : "0";
@@ -299,7 +306,9 @@ namespace clinic_ivf.objdb
                 ptt.patient_type + "," + ptt.patient_group + "," + ptt.agent + "," +
                 ptt.status_convert + "," + ptt.patient_firstname_e + "," + ptt.patient_lastname_e + "," +
                 ptt.contract + "," + ptt.insurance + "," + ptt.patient_contact_f_patient_prefix_id + "," +
-                ptt.patient_couple_f_patient_prefix_id + " " +
+                ptt.patient_couple_f_patient_prefix_id + "," + ptt.patient_contact_f_patient_relation_id + "," + ptt.patient_coulpe_f_patient_relation_id + "," +
+                ptt.b_contract_plans_id + "," + ptt.patient_father_mobile + "," + ptt.patient_mother_mobile + "," +
+                ptt.patient_couple_mobile + " "+ 
                 ") " +
                 "Values ('" + p.patient_hn + "','" + p.patient_firstname.Replace("'", "''") + "','" + p.patient_lastname.Replace("'", "''") + "'," +
                 "'" + p.patient_xn.Replace("'", "''") + "','" + p.patient_birthday.Replace("'", "''") + "','" + p.patient_house.Replace("'", "''") + "'," +
@@ -336,7 +345,9 @@ namespace clinic_ivf.objdb
                 "'" + p.patient_type.Replace("'", "''") + "','" + p.patient_group.Replace("'", "''") + "','" + p.agent.Replace("'", "''") + "', " +
                 "'" + p.status_convert.Replace("'", "''") + "','" + p.patient_firstname_e.Replace("'", "''") + "','" + p.patient_lastname_e.Replace("'", "''") + "', " +
                 "'" + p.contract.Replace("'", "''") + "','" + p.insurance.Replace("'", "''") + "','" + p.patient_contact_f_patient_prefix_id + "', " +
-                "'" + p.patient_couple_f_patient_prefix_id.Replace("'", "''") + "' " +
+                "'" + p.patient_couple_f_patient_prefix_id.Replace("'", "''") + "','" + p.patient_contact_f_patient_relation_id.Replace("'", "''") + "','" + p.patient_coulpe_f_patient_relation_id.Replace("'", "''") + "', " +
+                "'" + p.b_contract_plans_id.Replace("'", "''") + "','" +p.patient_father_mobile+"','"+p.patient_mother_mobile+"', "+
+                "'" + p.patient_couple_mobile+"' " +
                 ")";
 
                 re = conn.ExecuteNonQuery(conn.conn, sql);
@@ -422,6 +433,12 @@ namespace clinic_ivf.objdb
                 "," + ptt.insurance + "='" + p.insurance.Replace("'", "''") + "' " +
                 "," + ptt.patient_contact_f_patient_prefix_id + "='" + p.patient_contact_f_patient_prefix_id.Replace("'", "''") + "' " +
                 "," + ptt.patient_couple_f_patient_prefix_id + "='" + p.patient_couple_f_patient_prefix_id.Replace("'", "''") + "' " +
+                "," + ptt.patient_contact_firstname + "='" + p.patient_contact_firstname.Replace("'", "''") + "' " +
+                "," + ptt.patient_contact_lastname + "='" + p.patient_contact_lastname.Replace("'", "''") + "' " +
+                "," + ptt.patient_contact_mobile_phone + "='" + p.patient_contact_mobile_phone.Replace("'", "''") + "' " +
+                "," + ptt.patient_contact_f_patient_relation_id + "='" + p.patient_contact_f_patient_relation_id.Replace("'", "''") + "' " +
+                "," + ptt.patient_coulpe_f_patient_relation_id + "='" + p.patient_coulpe_f_patient_relation_id.Replace("'", "''") + "' " +
+                "," + ptt.b_contract_plans_id + "='" + p.b_contract_plans_id.Replace("'", "''") + "' " +
                 " Where " +ptt.pkField + " = '" + p.t_patient_id + "' "
                 ;
             try
@@ -701,6 +718,9 @@ namespace clinic_ivf.objdb
                 ptt1.insurance = dt.Rows[0][ptt.insurance].ToString();
                 ptt1.patient_contact_f_patient_prefix_id = dt.Rows[0][ptt.patient_contact_f_patient_prefix_id].ToString();
                 ptt1.patient_couple_f_patient_prefix_id = dt.Rows[0][ptt.patient_couple_f_patient_prefix_id].ToString();
+                ptt1.patient_contact_f_patient_relation_id = dt.Rows[0][ptt.patient_contact_f_patient_relation_id].ToString();
+                ptt1.patient_coulpe_f_patient_relation_id = dt.Rows[0][ptt.patient_coulpe_f_patient_relation_id].ToString();
+                ptt1.b_contract_plans_id = dt.Rows[0][ptt.b_contract_plans_id].ToString();
             }
             else
             {
@@ -820,6 +840,9 @@ namespace clinic_ivf.objdb
             stf1.insurance = "";
             stf1.patient_contact_f_patient_prefix_id = "";
             stf1.patient_couple_f_patient_prefix_id = "";
+            stf1.patient_contact_f_patient_relation_id = "";
+            stf1.patient_coulpe_f_patient_relation_id = "";
+            stf1.b_contract_plans_id = "";
             return stf1;
         }
     }

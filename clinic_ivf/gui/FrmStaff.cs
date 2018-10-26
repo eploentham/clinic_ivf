@@ -81,7 +81,7 @@ namespace clinic_ivf.gui
             setGrfStfH();
             setFocusColor();
             setFocus();
-            cboPrefix = ic.ivfDB.pfxDB.setCboPrefix(cboPrefix);
+            cboPrefix = ic.ivfDB.fpfDB.setCboPrefix(cboPrefix);
             cboDept = ic.ivfDB.deptDB.setCboDept(cboDept);
             cboPosi = ic.ivfDB.posiDB.setCboPosi(cboPosi);
             setControlEnable(false);

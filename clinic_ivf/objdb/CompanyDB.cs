@@ -536,24 +536,23 @@ namespace clinic_ivf.objdb
                     "," + cop.hn_doc + "=1 " +
                     "Where " + cop.pkField + "='" + cop1.comp_id + "'";
                 conn.ExecuteNonQuery(conn.conn, sql);
-                doc = "00001";
+                //doc = "00001";
             }
-            else
+            
+            int chk = 0;
+            if (int.TryParse(cop1.hn_doc, out chk))
             {
-                int chk = 0;
-                if (int.TryParse(cop1.hn_doc, out chk))
-                {
-                    chk++;
-                    doc = "00000" + chk;
-                    doc = doc.Substring(doc.Length - 5, 5);
-                    year = cop1.year_curr;
+                chk++;
+                doc = "00000" + chk;
+                doc = doc.Substring(doc.Length - 5, 5);
+                year = cop1.year_curr;
 
-                    sql = "Update " + cop.table + " Set " +
-                    "" + cop.hn_doc + "=" + chk +
-                    " Where " + cop.pkField + "='" + cop1.comp_id + "'";
-                    conn.ExecuteNonQuery(conn.conn, sql);
-                }
+                sql = "Update " + cop.table + " Set " +
+                "" + cop.hn_doc + "=" + chk +
+                " Where " + cop.pkField + "='" + cop1.comp_id + "'";
+                conn.ExecuteNonQuery(conn.conn, sql);
             }
+            year = String.Concat(DateTime.Now.Year +543);
             doc = cop1.prefix_hn_doc + year.Substring(year.Length - 2, 2) + doc;
             return doc;
         }

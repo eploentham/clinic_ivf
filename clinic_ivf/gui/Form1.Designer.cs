@@ -126,7 +126,7 @@
             // 
             this.c1FlexGrid1.BackColor = System.Drawing.Color.White;
             this.c1FlexGrid1.ColumnInfo = "10,1,0,0,0,95,Columns:";
-            this.c1FlexGrid1.ForeColor = System.Drawing.Color.Black;
+            this.c1FlexGrid1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(68)))), ((int)(((byte)(68)))));
             this.c1FlexGrid1.Location = new System.Drawing.Point(394, 108);
             this.c1FlexGrid1.Name = "c1FlexGrid1";
             this.c1FlexGrid1.Rows.DefaultSize = 19;
@@ -134,7 +134,8 @@
             this.c1FlexGrid1.Size = new System.Drawing.Size(240, 150);
             this.c1FlexGrid1.StyleInfo = resources.GetString("c1FlexGrid1.StyleInfo");
             this.c1FlexGrid1.TabIndex = 4;
-            this.c1ThemeController1.SetTheme(this.c1FlexGrid1, "Office2007Blue");
+            this.c1ThemeController1.SetTheme(this.c1FlexGrid1, "Office2016Colorful");
+            this.c1FlexGrid1.Tree.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(171)))), ((int)(((byte)(171)))), ((int)(((byte)(171)))));
             // 
             // txtReqDate
             // 
@@ -144,19 +145,19 @@
             // 
             // 
             // 
-            this.txtReqDate.Calendar.ArrowColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
-            this.txtReqDate.Calendar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(87)))), ((int)(((byte)(87)))), ((int)(((byte)(87)))));
-            this.txtReqDate.Calendar.DayNamesColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
+            this.txtReqDate.Calendar.ArrowColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(118)))), ((int)(((byte)(135)))));
+            this.txtReqDate.Calendar.BackColor = System.Drawing.Color.White;
+            this.txtReqDate.Calendar.DayNamesColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(118)))), ((int)(((byte)(135)))));
             this.txtReqDate.Calendar.DayNamesFont = new System.Drawing.Font("Tahoma", 8F);
             this.txtReqDate.Calendar.Font = new System.Drawing.Font("Tahoma", 8F);
-            this.txtReqDate.Calendar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
-            this.txtReqDate.Calendar.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(162)))), ((int)(((byte)(162)))), ((int)(((byte)(162)))));
-            this.txtReqDate.Calendar.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.txtReqDate.Calendar.TitleBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(87)))), ((int)(((byte)(87)))), ((int)(((byte)(87)))));
+            this.txtReqDate.Calendar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(68)))), ((int)(((byte)(68)))));
+            this.txtReqDate.Calendar.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(118)))), ((int)(((byte)(135)))));
+            this.txtReqDate.Calendar.SelectionForeColor = System.Drawing.Color.White;
+            this.txtReqDate.Calendar.TitleBackColor = System.Drawing.Color.White;
             this.txtReqDate.Calendar.TitleFont = new System.Drawing.Font("Tahoma", 8F);
-            this.txtReqDate.Calendar.TitleForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
-            this.txtReqDate.Calendar.TodayBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
-            this.txtReqDate.Calendar.TrailingForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(172)))), ((int)(((byte)(172)))), ((int)(((byte)(172)))));
+            this.txtReqDate.Calendar.TitleForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(118)))), ((int)(((byte)(135)))));
+            this.txtReqDate.Calendar.TodayBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(118)))), ((int)(((byte)(135)))));
+            this.txtReqDate.Calendar.TrailingForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
             this.txtReqDate.Calendar.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
             this.txtReqDate.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
             this.txtReqDate.ImagePadding = new System.Windows.Forms.Padding(0);
@@ -172,6 +173,7 @@
             // c1SuperTooltip3
             // 
             this.c1SuperTooltip3.BackgroundGradient = C1.Win.C1SuperTooltip.BackgroundGradient.None;
+            this.c1SuperTooltip3.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(101)))), ((int)(((byte)(101)))), ((int)(((byte)(101)))));
             this.c1SuperTooltip3.Font = new System.Drawing.Font("Tahoma", 8F);
             this.c1SuperTooltip3.RightToLeft = System.Windows.Forms.RightToLeft.Inherit;
             this.c1ThemeController1.SetTheme(this.c1SuperTooltip3, "(default)");

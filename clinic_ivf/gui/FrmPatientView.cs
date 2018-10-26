@@ -63,9 +63,16 @@ namespace clinic_ivf.gui
         private void TxtSearch_KeyUp(object sender, KeyEventArgs e)
         {
             //throw new NotImplementedException();
-            if (txtSearch.Text.Length >= 2)
+            if (e.KeyCode == Keys.Enter)
             {
                 setGrfPtt(txtSearch.Text);
+            }
+            else
+            {
+                if (txtSearch.Text.Length >= 2)
+                {
+                    setGrfPtt(txtSearch.Text);
+                }
             }
         }
 

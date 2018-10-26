@@ -105,9 +105,9 @@ namespace clinic_ivf.objdb
             dt = selectAll();
             foreach (DataRow row in dt.Rows)
             {
-                FSex itm1 = new FSex();
-                itm1.f_sex_id = row[pfx.prefix_id].ToString();
-                itm1.sex_description = row[pfx.prefix_name_t].ToString();
+                Prefix itm1 = new Prefix();
+                itm1.prefix_id = row[pfx.prefix_id].ToString();
+                itm1.prefix_name_t = row[pfx.prefix_name_t].ToString();
 
                 lPfx.Add(itm1);
             }

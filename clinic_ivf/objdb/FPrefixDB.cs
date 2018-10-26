@@ -139,5 +139,26 @@ namespace clinic_ivf.objdb
             }
             return c;
         }
+        public ComboBox setCboPrefix(ComboBox c)
+        {
+            ComboBoxItem item = new ComboBoxItem();
+            DataTable dt = selectC1();
+            //String aaa = "";
+            ComboBoxItem item1 = new ComboBoxItem();
+            item1.Text = "";
+            item1.Value = "000";
+            c.Items.Clear();
+            c.Items.Add(item1);
+            //for (int i = 0; i < dt.Rows.Count; i++)
+            foreach (DataRow row in dt.Rows)
+            {
+                item = new ComboBoxItem();
+                item.Text = row[fpf.patient_prefix_description].ToString();
+                item.Value = row[fpf.f_patient_prefix_id].ToString();
+
+                c.Items.Add(item);
+            }
+            return c;
+        }
     }
 }

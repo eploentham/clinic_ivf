@@ -256,13 +256,13 @@
     <Compile Include="objdb\FReligionDB.cs" />
     <Compile Include="objdb\FSexDB.cs" />
     <Compile Include="objdb\PatientOldDB.cs" />
-<<<<<<< HEAD
+
     <Compile Include="object1\AgentOld.cs" />
     <Compile Include="object1\BContractPayer.cs" />
     <Compile Include="object1\BContractPlans.cs" />
-=======
+
     <Compile Include="object1\Age.cs" />
->>>>>>> 9ed44180a1f2199164640c36ed21f7a602a68966
+
     <Compile Include="object1\FBloodGroup.cs" />
     <Compile Include="objdb\CompanyDB.cs" />
     <Compile Include="objdb\ConnectDB.cs" />

@@ -33,6 +33,7 @@ namespace clinic_ivf.objdb
         public FReligionDB frgDB;
         public FPatientRaceDB fprDB;
         public PatientOldDB pttOldDB;
+        public BContractPlansDB crlDB;
 
         public IvfDB(ConnectDB c)
         {
@@ -64,6 +65,7 @@ namespace clinic_ivf.objdb
             pttDB = new PatientDB(conn);
             pttOldDB = new PatientOldDB(conn);
             agnOldDB = new AgentOldDB(conn);
+            crlDB = new BContractPlansDB(conn);
 
             Console.WriteLine("ivfDB end");
         }
