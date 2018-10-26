@@ -11,8 +11,9 @@ namespace clinic_ivf.objdb
 {
     public class FRaceDB
     {
-        FRace fpn;
+        FRace frac;
         ConnectDB conn;
+        public List<FRace> lFrac;
         public FRaceDB(ConnectDB c)
         {
             conn = c;
@@ -20,21 +21,49 @@ namespace clinic_ivf.objdb
         }
         private void initConfig()
         {
-            fpn = new FRace();
-            fpn.f_patient_race_id = "f_patient_race_id";
-            fpn.patient_race_description = "patient_race_description";
-            fpn.active = "active";
+            frac = new FRace();
+            frac.f_patient_race_id = "f_patient_race_id";
+            frac.patient_race_description = "patient_race_description";
+            frac.active = "active";
 
-            fpn.pkField = "f_patient_race_id";
-            fpn.table = "f_patient_race";
+            frac.pkField = "f_patient_race_id";
+            frac.table = "f_patient_race";
+        }
+        public void getlFRace()
+        {
+            //lDept = new List<Position>();
+            lFrac.Clear();
+            DataTable dt = new DataTable();
+            dt = selectAll();
+            foreach (DataRow row in dt.Rows)
+            {
+                FRace itm1 = new FRace();
+                itm1.f_patient_race_id = row[frac.f_patient_race_id].ToString();
+                itm1.patient_race_description = row[frac.patient_race_description].ToString();
+
+                lFrac.Add(itm1);
+            }
+        }
+        public String getList(String id)
+        {
+            String re = "";
+            foreach (FRace sex in lFrac)
+            {
+                if (sex.f_patient_race_id.Equals(id))
+                {
+                    re = sex.patient_race_description;
+                    break;
+                }
+            }
+            return re;
         }
         public DataTable selectAll()
         {
             DataTable dt = new DataTable();
             String sql = "select fpn.*  " +
-                "From " + fpn.table + " fpn " +
+                "From " + frac.table + " fpn " +
                 " " +
-                "Where fpn." + fpn.active + " ='1' ";
+                "Where fpn." + frac.active + " ='1' ";
             dt = conn.selectData(conn.conn, sql);
 
             return dt;
@@ -43,9 +72,9 @@ namespace clinic_ivf.objdb
         {
             DataTable dt = new DataTable();
             String sql = "select fpn.* " +
-                "From " + fpn.table + " fpn " +
+                "From " + frac.table + " fpn " +
                 //"Left Join t_ssdata_visit ssv On ssv.ssdata_visit_id = bd.ssdata_visit_id " +
-                "Where fpn." + fpn.pkField + " ='" + copId + "' ";
+                "Where fpn." + frac.pkField + " ='" + copId + "' ";
             dt = conn.selectData(conn.conn, sql);
             return dt;
         }
@@ -54,9 +83,9 @@ namespace clinic_ivf.objdb
             FPrefix cop1 = new FPrefix();
             DataTable dt = new DataTable();
             String sql = "select fpn.* " +
-                "From " + fpn.table + " fpn " +
+                "From " + frac.table + " fpn " +
                 //"Left Join t_ssdata_visit ssv On ssv.ssdata_visit_id = bd.ssdata_visit_id " +
-                "Where fpn." + fpn.pkField + " ='" + copId + "' ";
+                "Where fpn." + frac.pkField + " ='" + copId + "' ";
             dt = conn.selectData(conn.conn, sql);
             cop1 = setPrefix(dt);
             return cop1;
@@ -66,8 +95,8 @@ namespace clinic_ivf.objdb
             FPrefix dept1 = new FPrefix();
             if (dt.Rows.Count > 0)
             {
-                dept1.f_patient_prefix_id = dt.Rows[0][fpn.f_patient_race_id].ToString();
-                dept1.patient_prefix_description = dt.Rows[0][fpn.patient_race_description].ToString();
+                dept1.f_patient_prefix_id = dt.Rows[0][frac.f_patient_race_id].ToString();
+                dept1.patient_prefix_description = dt.Rows[0][frac.patient_race_description].ToString();
             }
 
             return dept1;
@@ -75,10 +104,10 @@ namespace clinic_ivf.objdb
         public DataTable selectC1()
         {
             DataTable dt = new DataTable();
-            String sql = "select fpn." + fpn.pkField + ",fpn." + fpn.patient_race_description + " " +
-                "From " + fpn.table + " fpn " +
+            String sql = "select fpn." + frac.pkField + ",fpn." + frac.patient_race_description + " " +
+                "From " + frac.table + " fpn " +
                 " " +
-                "Where fpn." + fpn.active + " ='1' ";
+                "Where fpn." + frac.active + " ='1' ";
             dt = conn.selectData(conn.conn, sql);
 
             return dt;
@@ -97,8 +126,8 @@ namespace clinic_ivf.objdb
             foreach (DataRow row in dt.Rows)
             {
                 item = new ComboBoxItem();
-                item.Text = row[fpn.patient_race_description].ToString();
-                item.Value = row[fpn.f_patient_race_id].ToString();
+                item.Text = row[frac.patient_race_description].ToString();
+                item.Value = row[frac.f_patient_race_id].ToString();
 
                 c.Items.Add(item);
             }

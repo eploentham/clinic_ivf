@@ -13,7 +13,7 @@ namespace clinic_ivf.objdb
     {
         public Prefix pfx;
         ConnectDB conn;
-
+        public List<Prefix> lPfx;
         public PrefixDB(ConnectDB c)
         {
             conn = c;
@@ -21,6 +21,7 @@ namespace clinic_ivf.objdb
         }
         private void initConfig()
         {
+            lPfx = new List<Prefix>();
             pfx = new Prefix();
             pfx.prefix_id = "prefix_id";
             pfx.prefix_code = "prefix_code";
@@ -96,7 +97,34 @@ namespace clinic_ivf.objdb
 
             return re;
         }
+        public void getlSex()
+        {
+            //lDept = new List<Position>();
+            lPfx.Clear();
+            DataTable dt = new DataTable();
+            dt = selectAll();
+            foreach (DataRow row in dt.Rows)
+            {
+                FSex itm1 = new FSex();
+                itm1.f_sex_id = row[pfx.prefix_id].ToString();
+                itm1.sex_description = row[pfx.prefix_name_t].ToString();
 
+                lPfx.Add(itm1);
+            }
+        }
+        public String getList(String id)
+        {
+            String re = "";
+            foreach (Prefix sex in lPfx)
+            {
+                if (sex.prefix_id.Equals(id))
+                {
+                    re = sex.prefix_name_t;
+                    break;
+                }
+            }
+            return re;
+        }
         public DataTable selectAll()
         {
             DataTable dt = new DataTable();

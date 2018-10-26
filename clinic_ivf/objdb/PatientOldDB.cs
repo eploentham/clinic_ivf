@@ -12,6 +12,12 @@ namespace clinic_ivf.objdb
     {
         public PatientOld pttO;
         ConnectDB conn;
+        FSexDB sexDB;
+        FPrefixDB fpfDB;
+        FMarriageStatusDB fmsDB;
+        FNationDB fpnDB;
+        FRelationDB frlDB;
+        FRaceDB fracDB;
         public PatientOldDB(ConnectDB c)
         {
             conn = c;
@@ -73,6 +79,13 @@ namespace clinic_ivf.objdb
 
             pttO.table = "patient";
             pttO.pkField = "PID";
+
+            sexDB = new FSexDB(conn);
+            fpfDB = new FPrefixDB(conn);
+            fmsDB = new FMarriageStatusDB(conn);
+            fpnDB = new FNationDB(conn);
+            frlDB = new FRelationDB(conn);
+            fracDB = new FRaceDB(conn);
         }
         private void chkNull(PatientOld p)
         {
@@ -292,8 +305,8 @@ namespace clinic_ivf.objdb
         public PatientOld setPatientToOLD(Patient ptt)
         {
             PatientOld pttO1 = new PatientOld();
-            pttO.Address = "";
-            pttO.Age = "";
+            pttO.Address = ptt.patient_house;
+            pttO.Age = ptt.AgeStringShort().Replace("Y",".").Replace("M", ".").Replace("D", ".");
             pttO.AgentID = "";
             pttO.Allergy = ptt.patient_drugallergy;
             pttO.BuildingVillage = "";
@@ -304,7 +317,7 @@ namespace clinic_ivf.objdb
             pttO.District = "";
             pttO.Email = ptt.email;
             pttO.EmergencyPersonAddress = "";
-            pttO.EmergencyPersonalContact = "";
+            pttO.EmergencyPersonalContact = ptt.patient_contact_firstname+" "+ptt.patient_contact_lastname;
             pttO.EPAddress = "";
             pttO.EPDistrict = "";
             pttO.EPEmail = "";
@@ -318,10 +331,12 @@ namespace clinic_ivf.objdb
             pttO.IDNumber = ptt.pid;
             pttO.IDType = "";
             pttO.InsuranceName = ptt.insurance;
-            pttO.MaritalID = "";
+            String mat = "";
+            mat = fmsDB.getList(ptt.f_patient_marriage_status_id);
+            pttO.MaritalID = mat.Equals("หย่า") ? "3" : mat.Equals("หม้าย") ? "4" : mat.Equals("โสด") ? "1" : mat.Equals("คู่") ? "2" : "";
             pttO.MobilePhoneNo = ptt.mobile1;
             pttO.Moo = ptt.patient_moo;
-            pttO.Nationality = "";
+            pttO.Nationality = fpnDB.getList(ptt.f_patient_nation_id);
             pttO.Occupation = "";
             pttO.OName = "";
             pttO.OSurname = "";
@@ -331,16 +346,18 @@ namespace clinic_ivf.objdb
             pttO.PIDS = ptt.patient_hn;
             pttO.PName = ptt.patient_firstname;
             pttO.Province = "";
-            pttO.PSurname = "";
-            pttO.Race = ptt.f_patient_race_id;
+            pttO.PSurname = ptt.patient_lastname;
+            pttO.Race = fracDB.getList(ptt.f_patient_race_id);
             pttO.RelationshipID = "";
             pttO.RelationshipOther = "";
-            pttO.Religion = "";
+            pttO.Religion = frlDB.getList(ptt.f_patient_religion_id);
             pttO.Road = ptt.patient_road;
-            pttO.SexID = "";
+            pttO.SexID = sexDB.getList(ptt.f_sex_id).Equals("ชาย") ? "1" : "2";
             pttO.Soi = "";
+            String pre = "";
+            pre = fpfDB.getList(ptt.f_patient_prefix_id);
             pttO.SubDistrict = "";
-            pttO.SurfixID = "";
+            pttO.SurfixID = pre.Equals("Mrs.") ? "1" : pre.Equals("Miss") ? "2" : pre.Equals("Mr.") ? "3" : pre.Equals("Girl") ? "4" : pre.Equals("Boy") ? "5" : "";
             pttO.ZipCode = "";
 
             return pttO1;

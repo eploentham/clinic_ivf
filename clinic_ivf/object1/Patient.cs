@@ -107,8 +107,35 @@ namespace clinic_ivf.object1
         public String patient_firstname_e { get; set; }
         public String patient_lastname_e { get; set; }
         public String contract { get; set; }
+<<<<<<< HEAD
         public String insurance { get; set; }//patient_contact_f_patient_prefix_id
         public String patient_contact_f_patient_prefix_id { get; set; }
         public String patient_couple_f_patient_prefix_id { get; set; }
+=======
+        public String insurance { get; set; }
+        public Age age = new Age(DateTime.Now);
+        public String AgeString()
+        {            
+            String re = "";
+            DateTime dtB;
+            if (DateTime.TryParse(patient_birthday, out dtB))
+            {
+                age = new Age(dtB);
+                re = age.AgeString;
+            }
+            return re;
+        }
+        public String AgeStringShort()
+        {
+            String re = "";
+            DateTime dtB;
+            if (DateTime.TryParse(patient_birthday, out dtB))
+            {
+                age = new Age(dtB);
+                re = age.AgeString.Replace("Years", "Y").Replace("Year", "Y").Replace("Months", "M").Replace("Month", "M").Replace("Days", "D").Replace("Day", "D");
+            }
+            return re;
+        }
+>>>>>>> 9ed44180a1f2199164640c36ed21f7a602a68966
     }
 }

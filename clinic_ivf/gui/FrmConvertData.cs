@@ -32,7 +32,7 @@ namespace clinic_ivf.gui
             txtSpassword.Value = "ivf2017";
             txtSport.Value = "3306";
 
-            ic.ivfDB.fpDB.setCboPrefix(cboPrefix);
+            ic.ivfDB.fpfDB.setCboPrefix(cboPrefix);
 
             btnConvertDonor.Click += BtnConvertDonor_Click;
             btnTestConnection.Click += BtnTestConnection_Click;
