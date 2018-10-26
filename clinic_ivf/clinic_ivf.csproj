@@ -240,6 +240,9 @@
     <Compile Include="gui\PasswordForm.designer.cs">
       <DependentUpon>PasswordForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="objdb\AgentOldDB.cs" />
+    <Compile Include="objdb\BContractPlansDB.cs" />
+    <Compile Include="objdb\BContractPayerDB.cs" />
     <Compile Include="objdb\FBloodGroupDB.cs" />
     <Compile Include="objdb\FNationDB.cs" />
     <Compile Include="objdb\FPatientDischargeStatusDB.cs" />
@@ -253,6 +256,9 @@
     <Compile Include="objdb\FReligionDB.cs" />
     <Compile Include="objdb\FSexDB.cs" />
     <Compile Include="objdb\PatientOldDB.cs" />
+    <Compile Include="object1\AgentOld.cs" />
+    <Compile Include="object1\BContractPayer.cs" />
+    <Compile Include="object1\BContractPlans.cs" />
     <Compile Include="object1\FBloodGroup.cs" />
     <Compile Include="objdb\CompanyDB.cs" />
     <Compile Include="objdb\ConnectDB.cs" />

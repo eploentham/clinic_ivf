@@ -20,6 +20,7 @@ namespace clinic_ivf.objdb
         public LabRequestDB lbReqDB;
         public CompanyDB copDB;
         public PatientDB pttDB;
+        public AgentOldDB agnOldDB;
 
         public FPrefixDB fpDB;
         public FBloodGroupDB fbgDB;
@@ -62,6 +63,7 @@ namespace clinic_ivf.objdb
             frcDB = new FRaceDB(conn);
             pttDB = new PatientDB(conn);
             pttOldDB = new PatientOldDB(conn);
+            agnOldDB = new AgentOldDB(conn);
 
             Console.WriteLine("ivfDB end");
         }

@@ -130,6 +130,8 @@ namespace clinic_ivf.objdb
             ptt.patient_lastname_e = "patient_lastname_e";
             ptt.contract = "contract";
             ptt.insurance = "insurance";
+            ptt.patient_contact_f_patient_prefix_id = "patient_contact_f_patient_prefix_id";
+            ptt.patient_couple_f_patient_prefix_id = "patient_couple_f_patient_prefix_id";
 
             ptt.pkField = "t_patient_id";
             ptt.table = "t_patient";
@@ -244,8 +246,8 @@ namespace clinic_ivf.objdb
             p.contact_id = int.TryParse(p.contact_id, out chk) ? chk.ToString() : "0";
             p.contact_join_id = int.TryParse(p.contact_join_id, out chk) ? chk.ToString() : "0";
             p.t_person_id = int.TryParse(p.t_person_id, out chk) ? chk.ToString() : "0";
-            //p.item_billing_subgroop_id = int.TryParse(p.item_billing_subgroop_id, out chk) ? chk.ToString() : "0";
-            //p.item_billing_subgroop_id = int.TryParse(p.item_billing_subgroop_id, out chk) ? chk.ToString() : "0";
+            p.patient_contact_f_patient_prefix_id = int.TryParse(p.patient_contact_f_patient_prefix_id, out chk) ? chk.ToString() : "0";
+            p.patient_couple_f_patient_prefix_id = int.TryParse(p.patient_couple_f_patient_prefix_id, out chk) ? chk.ToString() : "0";
 
             p.latitude = decimal.TryParse(p.latitude, out chk1) ? chk1.ToString() : "0";
             p.longitude = decimal.TryParse(p.longitude, out chk1) ? chk1.ToString() : "0";
@@ -296,7 +298,8 @@ namespace clinic_ivf.objdb
                 ptt.line_id + "," + ptt.email + "," + ptt.passport + ", " +
                 ptt.patient_type + "," + ptt.patient_group + "," + ptt.agent + "," +
                 ptt.status_convert + "," + ptt.patient_firstname_e + "," + ptt.patient_lastname_e + "," +
-                ptt.contract + "," + ptt.insurance + " " +
+                ptt.contract + "," + ptt.insurance + "," + ptt.patient_contact_f_patient_prefix_id + "," +
+                ptt.patient_couple_f_patient_prefix_id + " " +
                 ") " +
                 "Values ('" + p.patient_hn + "','" + p.patient_firstname.Replace("'", "''") + "','" + p.patient_lastname.Replace("'", "''") + "'," +
                 "'" + p.patient_xn.Replace("'", "''") + "','" + p.patient_birthday.Replace("'", "''") + "','" + p.patient_house.Replace("'", "''") + "'," +
@@ -332,7 +335,8 @@ namespace clinic_ivf.objdb
                 "'" + p.line_id + "','" + p.email + "','" + p.passport + "', " +
                 "'" + p.patient_type.Replace("'", "''") + "','" + p.patient_group.Replace("'", "''") + "','" + p.agent.Replace("'", "''") + "', " +
                 "'" + p.status_convert.Replace("'", "''") + "','" + p.patient_firstname_e.Replace("'", "''") + "','" + p.patient_lastname_e.Replace("'", "''") + "', " +
-                "'" + p.contract.Replace("'", "''") + "','" + p.insurance.Replace("'", "''") + "','" + p.status_convert.Replace("'", "''") + "' " +
+                "'" + p.contract.Replace("'", "''") + "','" + p.insurance.Replace("'", "''") + "','" + p.patient_contact_f_patient_prefix_id + "', " +
+                "'" + p.patient_couple_f_patient_prefix_id.Replace("'", "''") + "' " +
                 ")";
 
                 re = conn.ExecuteNonQuery(conn.conn, sql);
@@ -416,6 +420,8 @@ namespace clinic_ivf.objdb
                 "," + ptt.patient_lastname_e + "='" + p.patient_lastname_e.Replace("'", "''") + "' " +
                 "," + ptt.contract + "='" + p.contract.Replace("'", "''") + "' " +
                 "," + ptt.insurance + "='" + p.insurance.Replace("'", "''") + "' " +
+                "," + ptt.patient_contact_f_patient_prefix_id + "='" + p.patient_contact_f_patient_prefix_id.Replace("'", "''") + "' " +
+                "," + ptt.patient_couple_f_patient_prefix_id + "='" + p.patient_couple_f_patient_prefix_id.Replace("'", "''") + "' " +
                 " Where " +ptt.pkField + " = '" + p.t_patient_id + "' "
                 ;
             try
@@ -693,6 +699,8 @@ namespace clinic_ivf.objdb
                 ptt1.patient_lastname_e = dt.Rows[0][ptt.patient_lastname_e].ToString();
                 ptt1.contract = dt.Rows[0][ptt.contract].ToString();
                 ptt1.insurance = dt.Rows[0][ptt.insurance].ToString();
+                ptt1.patient_contact_f_patient_prefix_id = dt.Rows[0][ptt.patient_contact_f_patient_prefix_id].ToString();
+                ptt1.patient_couple_f_patient_prefix_id = dt.Rows[0][ptt.patient_couple_f_patient_prefix_id].ToString();
             }
             else
             {
@@ -810,6 +818,8 @@ namespace clinic_ivf.objdb
             stf1.patient_lastname_e = "";
             stf1.contract = "";
             stf1.insurance = "";
+            stf1.patient_contact_f_patient_prefix_id = "";
+            stf1.patient_couple_f_patient_prefix_id = "";
             return stf1;
         }
     }

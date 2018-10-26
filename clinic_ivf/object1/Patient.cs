@@ -107,6 +107,8 @@ namespace clinic_ivf.object1
         public String patient_firstname_e { get; set; }
         public String patient_lastname_e { get; set; }
         public String contract { get; set; }
-        public String insurance { get; set; }
+        public String insurance { get; set; }//patient_contact_f_patient_prefix_id
+        public String patient_contact_f_patient_prefix_id { get; set; }
+        public String patient_couple_f_patient_prefix_id { get; set; }
     }
 }

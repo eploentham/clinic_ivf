@@ -97,10 +97,10 @@ namespace clinic_ivf.gui
             ic.ivfDB.frgDB.setCboReligion(cboRg);
             ic.ivfDB.fpDB.setCboPrefix(cboCouPrefix);
             ic.ivfDB.fpDB.setCboPrefix(cboName1Prefix);
-            ic.ivfDB.fpDB.setCboPrefix(cboName2Prefix);
+            ic.ivfDB.fpDB.setCboPrefix(cboName1Prefix);
             ic.ivfDB.frlDB.setCboRelation(cboCouRel);
             ic.ivfDB.frlDB.setCboRelation(cboName1Rl);
-            ic.ivfDB.frlDB.setCboRelation(cboName2Rl);
+            ic.ivfDB.agnOldDB.setCboAgent(cboAgent);
             ic.ivfDB.sexDB.setCboSex(cboSex);
             ic.setCboPttType(cboPttType);
             ic.setCboPttGroup(cboPttGroup);
@@ -118,6 +118,16 @@ namespace clinic_ivf.gui
             setKeyEnter();
 
             btnCapture.Enabled = false;
+            if (ic.iniC.statusAppDonor.Equals("1"))
+            {
+                txtAgent.Show();
+                cboAgent.Hide();
+            }
+            else
+            {
+                txtAgent.Hide();
+                cboAgent.Show();
+            }
             //picPtt.Load("54158.jpg");
             //picPtt.SizeMode = PictureBoxSizeMode.StretchImage;
             //btnSavePic.Enabled = false;
@@ -166,10 +176,10 @@ namespace clinic_ivf.gui
             txtContFname1.KeyUp += TxtPid_KeyUp;
             txtContLname1.KeyUp += TxtPid_KeyUp;
             txtContMobile1.KeyUp += TxtPid_KeyUp;
-            cboName2Prefix.KeyUp += TxtPid_KeyUp;
-            txtContFname2.KeyUp += TxtPid_KeyUp;
-            txtContLname2.KeyUp += TxtPid_KeyUp;
-            txtContMobile2.KeyUp += TxtPid_KeyUp;
+            //cboName2Prefix.KeyUp += TxtPid_KeyUp;
+            //txtContFname2.KeyUp += TxtPid_KeyUp;
+            //txtContLname2.KeyUp += TxtPid_KeyUp;
+            //txtContMobile2.KeyUp += TxtPid_KeyUp;
             txtDrugAllergy.KeyUp += TxtPid_KeyUp;
             
         }
@@ -294,26 +304,11 @@ namespace clinic_ivf.gui
                 {
                     txtContMobile1.Focus();
                 }
-                else if (sender.Equals(txtContMobile1))
-                {
-                    cboName2Prefix.Focus();
-                }
-                else if (sender.Equals(cboName2Prefix))
-                {
-                    txtContFname2.Focus();
-                }
-                else if (sender.Equals(txtContFname2))
-                {
-                    txtContLname2.Focus();
-                }
-                else if (sender.Equals(txtContLname2))
-                {
-                    txtContMobile2.Focus();
-                }
-                else if (sender.Equals(txtContMobile2))
-                {
-                    txtDrugAllergy.Focus();
-                }
+                
+                //else if (sender.Equals(txtContMobile2))
+                //{
+                //    txtDrugAllergy.Focus();
+                //}
             }
         }
 
@@ -536,8 +531,7 @@ namespace clinic_ivf.gui
             this.txtCouLname.Leave += new System.EventHandler(this.textBox_Leave);
             this.txtCouLname.Enter += new System.EventHandler(this.textBox_Enter);
 
-            this.txtContMobile2.Leave += new System.EventHandler(this.textBox_Leave);
-            this.txtContMobile2.Enter += new System.EventHandler(this.textBox_Enter);
+            
 
             this.txtContMobile1.Leave += new System.EventHandler(this.textBox_Leave);
             this.txtContMobile1.Enter += new System.EventHandler(this.textBox_Enter);
@@ -545,14 +539,12 @@ namespace clinic_ivf.gui
             this.txtContFname1.Leave += new System.EventHandler(this.textBox_Leave);
             this.txtContFname1.Enter += new System.EventHandler(this.textBox_Enter);
 
-            this.txtContFname2.Leave += new System.EventHandler(this.textBox_Leave);
-            this.txtContFname2.Enter += new System.EventHandler(this.textBox_Enter);
+            
 
             this.txtContLname1.Leave += new System.EventHandler(this.textBox_Leave);
             this.txtContLname1.Enter += new System.EventHandler(this.textBox_Enter);
 
-            this.txtContLname2.Leave += new System.EventHandler(this.textBox_Leave);
-            this.txtContLname2.Enter += new System.EventHandler(this.textBox_Enter);
+            
 
             this.cboBloodG.Leave += new System.EventHandler(this.textBox_Leave);
             this.cboBloodG.Enter += new System.EventHandler(this.textBox_Enter);
@@ -573,13 +565,7 @@ namespace clinic_ivf.gui
             this.cboName1Prefix.Enter += new System.EventHandler(this.textBox_Enter);
 
             this.cboName1Rl.Leave += new System.EventHandler(this.textBox_Leave);
-            this.cboName1Rl.Enter += new System.EventHandler(this.textBox_Enter);
-
-            this.cboName2Prefix.Leave += new System.EventHandler(this.textBox_Leave);
-            this.cboName2Prefix.Enter += new System.EventHandler(this.textBox_Enter);
-
-            this.cboName2Rl.Leave += new System.EventHandler(this.textBox_Leave);
-            this.cboName2Rl.Enter += new System.EventHandler(this.textBox_Enter);
+            this.cboName1Rl.Enter += new System.EventHandler(this.textBox_Enter);                        
 
             this.CboNation.Leave += new System.EventHandler(this.textBox_Leave);
             this.CboNation.Enter += new System.EventHandler(this.textBox_Enter);
@@ -662,8 +648,8 @@ namespace clinic_ivf.gui
             ic.setC1Combo(cboRg, ptt.f_patient_religion_id);
             ic.setC1Combo(cboPttType, ptt.patient_type);
             ic.setC1Combo(cboPttGroup, ptt.patient_group);
-            //ic.setC1Combo(cboRg, ptt.f_patient_religion_id);
-            //ic.setC1Combo(cboRg, ptt.f_patient_religion_id);
+            ic.setC1Combo(cboName1Prefix, ptt.patient_contact_f_patient_prefix_id);
+            //ic.setC1Combo(cboCouPrefix, ptt.f_patient_religion_id);
             //ic.setC1Combo(cboRg, ptt.f_patient_religion_id);
             //ic.setC1Combo(cboRg, ptt.f_patient_religion_id);
             chkChronic.Checked = ptt.status_chronic.Equals("1") ? true : false;
@@ -680,6 +666,14 @@ namespace clinic_ivf.gui
             ////image1 = bitmap;
             //picPtt.Image = bitmap;
             //picPtt.SizeMode = PictureBoxSizeMode.StretchImage;
+            if (ic.iniC.statusAppDonor.Equals("1"))
+            {
+                txtAgent.Text = ptt.agent;
+            }
+            else
+            {
+                ic.setC1Combo(cboAgent, ptt.agent);
+            }
             Thread threadA = new Thread(new ParameterizedThreadStart(ExecuteA));
             threadA.Start();
         }
@@ -751,11 +745,20 @@ namespace clinic_ivf.gui
             ptt.patient_couple_mobile = txtCouMobile.Text;
             ptt.patient_birthday = ic.datetoDB(txtDob.Text);
             ptt.f_patient_prefix_id = cboPrefix.SelectedItem == null ? "" : ((ComboBoxItem)cboPrefix.SelectedItem).Value;
+            ptt.patient_contact_f_patient_prefix_id = cboName1Prefix.SelectedItem == null ? "" : ((ComboBoxItem)cboName1Prefix.SelectedItem).Value;
 
             ptt.patient_firstname_e = txtPttNameE.Text;
             ptt.patient_lastname_e = txtPttLNameE.Text;
             ptt.contract = txtContract.Text;
             ptt.insurance = txtInsurance.Text;
+            if (ic.iniC.statusAppDonor.Equals("1"))
+            {
+                ptt.agent = txtAgent.Text;
+            }
+            else
+            {
+                ptt.agent = cboAgent.SelectedItem == null ? "" : ((ComboBoxItem)cboAgent.SelectedItem).Value;
+            }
         }
         private void DoPrint(C1PdfDocumentSource pds)
         {
