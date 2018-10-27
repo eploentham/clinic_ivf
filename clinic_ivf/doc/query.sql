@@ -1014,3 +1014,8 @@ DEFAULT CHARACTER SET = utf8
 COLLATE = utf8_bin
 COMMENT = 'id=211';
 ALTER TABLE f_item_billing_group AUTO_INCREMENT = 2110000000;
+
+61-10-27
+ALTER TABLE `ivf`.`t_patient_image` 
+ADD COLUMN `image_path` VARCHAR(255) NULL AFTER `user_cancel`,
+ADD COLUMN `status_image` VARCHAR(255) NULL COMMENT '0=default; 1=pic profile;2=pic from patient add;' AFTER `image_path`;

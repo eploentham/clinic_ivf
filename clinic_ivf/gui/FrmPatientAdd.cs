@@ -35,7 +35,7 @@ namespace clinic_ivf.gui
         Font fEdit, fEditB;
         Color bg, fc;
         Font ff, ffB;
-        int colID = 1, colHn = 2, colImg = 3, colDesc = 4, colDesc2 = 5, colDesc3 = 6, colPathPic = 7;
+        int colID = 1, colHn = 2, colImg = 3, colDesc = 4, colDesc2 = 5, colDesc3 = 6, colPathPic = 7, colBtn=8;
         
         //C1FlexGrid grfDay2, grfDay3, grfDay5, grfDay6;
         C1SuperTooltip stt;
@@ -152,43 +152,68 @@ namespace clinic_ivf.gui
             {
                 //MessageBox.Show("aaa", "");
                 OpenFileDialog ofd = new OpenFileDialog();
-                ofd.Filter = "Images (*.BMP;*.JPG;*.Jepg;*.GIF)|*.BMP;*.JPG;*.Jepg;*.GIF|All files (*.*)|*.*";
+                ofd.Filter = "Images (*.BMP;*.JPG;*.Jepg;*.Png;*.GIF)|*.BMP;*.JPG;*.Jepg;*.Png;*.GIF|All files (*.*)|*.*";
                 ofd.Multiselect = true;
                 ofd.Title = "My Image Browser";
                 DialogResult dr = ofd.ShowDialog();
                 if (dr == System.Windows.Forms.DialogResult.OK)
                 {
                     // Read the files
-                    
+
                     //Row row1 = grfImg.Rows.Add();
                     //CellRange rg1 = grfImg.GetCellRange(grfImg.Rows.Count-1, colImg);
-                    
+                    int i = 1;
+                    grfImg.AllowMerging = C1.Win.C1FlexGrid.AllowMergingEnum.RestrictRows;
+                    grfImg.Cols[colImg].AllowMerging = true;
                     //cc.Image
                     foreach (String file in ofd.FileNames)
                     {
                         // Create a PictureBox.
                         try
                         {
+                            grfImg.Cols[colImg].ImageAndText = true;
                             grfImg.Rows.Add();
                             int row = grfImg.Rows.Count;
-                            int newWidth = 120;
-                            CellRange rg1 = grfImg.GetCellRange(row-1, colImg);
+                            int newWidth = 180;
+                            CellRange rg1 = grfImg.GetCellRange(row - 1, colImg);
+                            
                             //PictureBox pb = new PictureBox();
                             Image loadedImage = Image.FromFile(file);
                             int originalWidth = loadedImage.Width;
                             Image resizedImage = loadedImage.GetThumbnailImage(newWidth, (newWidth * loadedImage.Height) / originalWidth, null, IntPtr.Zero);
                             //Hashtable ht = new Hashtable();
                             //ht.Add(colImg, loadedImage);
-                            //grfImg.Cols[colImg].ImageMap = ht;
+                            grfImg[row - 1, colPathPic] = file;
+                            grfImg[row - 1, colBtn] = "send";
                             rg1.Image = resizedImage;
+                            //grfImg.me
+                            grfImg.Rows.Add();
+                            grfImg.Rows.Add();
+                            grfImg.Rows.Add();
+                            CellRange rg2 = grfImg.GetCellRange(row, colImg);
+                            CellRange rg3 = grfImg.GetCellRange(row+1, colImg);
+                            CellRange rg4 = grfImg.GetCellRange(row+2, colImg);
+                            rg2.Image = resizedImage;
+                            rg3.Image = resizedImage;
+                            rg4.Image = resizedImage;
+                            grfImg[row - 1, colImg] =  i;
+                            grfImg[row, colImg] =  i;
+                            grfImg[row + 1, colImg] =  i;
+                            grfImg[row + 2, colImg] =  i;
+                            grfImg[row , colPathPic] = file;
+                            grfImg[row + 1, colPathPic] = file;
+                            grfImg[row + 2, colPathPic] = file;
+                            //CellRange rgM = grfImg.GetCellRange(row - 1, colDesc, row +1, colDesc);
+                            //grfImg.GetMergedRange()
                             //grfImg[grfImg.Row, colImg] = loadedImage;
-                            //grfImg.Cols[colImg].ImageAndText = false;
+
                             //row1.DataMap = ht;
                             //row1[colImg].ImageAndText = false;
                             //pb.Height = loadedImage.Height;
                             //pb.Width = loadedImage.Width;
                             //pb.Image = loadedImage;
                             //flowLayoutPanel1.Controls.Add(pb);
+                            i++;
                         }
                         catch (SecurityException ex)
                         {
@@ -619,9 +644,7 @@ namespace clinic_ivf.gui
             this.txtCouFname.Enter += new System.EventHandler(this.textBox_Enter);
 
             this.txtCouLname.Leave += new System.EventHandler(this.textBox_Leave);
-            this.txtCouLname.Enter += new System.EventHandler(this.textBox_Enter);
-
-            
+            this.txtCouLname.Enter += new System.EventHandler(this.textBox_Enter);   
 
             this.txtContMobile1.Leave += new System.EventHandler(this.textBox_Leave);
             this.txtContMobile1.Enter += new System.EventHandler(this.textBox_Enter);
@@ -629,12 +652,8 @@ namespace clinic_ivf.gui
             this.txtContFname1.Leave += new System.EventHandler(this.textBox_Leave);
             this.txtContFname1.Enter += new System.EventHandler(this.textBox_Enter);
 
-            
-
             this.txtContLname1.Leave += new System.EventHandler(this.textBox_Leave);
-            this.txtContLname1.Enter += new System.EventHandler(this.textBox_Enter);
-
-            
+            this.txtContLname1.Enter += new System.EventHandler(this.textBox_Enter);                        
 
             this.cboBloodG.Leave += new System.EventHandler(this.textBox_Leave);
             this.cboBloodG.Enter += new System.EventHandler(this.textBox_Enter);
@@ -706,7 +725,8 @@ namespace clinic_ivf.gui
             //FilterRow fr = new FilterRow(grfExpn);
 
             grfImg.AfterRowColChange += GrfImg_AfterRowColChange;
-            //grfExpnC.CellButtonClick += new C1.Win.C1FlexGrid.RowColEventHandler(this.grfDept_CellButtonClick);
+            grfImg.MouseDown += GrfImg_MouseDown;
+            grfImg.DoubleClick += GrfImg_DoubleClick;
             //grfExpnC.CellChanged += new C1.Win.C1FlexGrid.RowColEventHandler(this.grfDept_CellChanged);
             ContextMenu menuGw = new ContextMenu();
             //menuGw.MenuItems.Add("&แก้ไข รายการเบิก", new EventHandler(ContextMenu_edit));
@@ -719,6 +739,36 @@ namespace clinic_ivf.gui
 
         }
 
+        private void GrfImg_DoubleClick(object sender, EventArgs e)
+        {
+            //throw new NotImplementedException();
+            if (grfImg.Row < 0) return;
+            if (grfImg.Col == colImg)
+            {
+                //MessageBox.Show("a "+grfImg[grfImg.Row, colImg].ToString(), "");
+                int row = 0;
+                int.TryParse(grfImg[grfImg.Row, colImg].ToString(), out row);
+                row *= 4;
+                FrmShowImage frm = new FrmShowImage(grfImg[row, colPathPic].ToString());
+                frm.ShowDialog(this);
+            }
+        }
+
+        private void GrfImg_MouseDown(object sender, MouseEventArgs e)
+        {
+            //throw new NotImplementedException();
+            if (grfImg.MouseCol < 0) return;
+            if (grfImg.Cols[grfImg.MouseCol].Editor is Button)
+            {
+                //Current cell enters in edit mode, and button is clicked
+                SendKeys.Send("{ENTER}");
+                SendKeys.Send("{ENTER}");
+            }
+        }
+        private void BtnEditor_Click(object sender, EventArgs e)
+        {
+            //MessageBox.Show(String.Format("Button clicked in - Row : {0}, column : {1}.", grfImg.MouseRow.ToString(), grfImg.MouseCol.ToString()));
+        }
         private void GrfImg_AfterRowColChange(object sender, RangeEventArgs e)
         {
             //throw new NotImplementedException();
@@ -729,26 +779,31 @@ namespace clinic_ivf.gui
         {
             grfImg.Clear();
             grfImg.Rows.Count = 1;
-            grfImg.Cols.Count = 8;
-            DataTable dt = new DataTable();
-            
+            grfImg.Cols.Count = 9;
+            DataTable dt = new DataTable();            
 
             //grfExpn.Rows.Count = dt.Rows.Count + 1;
             //grfCu.Rows.Count = 41;
             //grfCu.Cols.Count = 4;
             C1TextBox txt = new C1TextBox();
+            Button btn = new Button();
+            btn.BackColor = Color.Gray;
+            btn.Click += BtnEditor_Click;
             //C1ComboBox cboproce = new C1ComboBox();
             //ic.ivfDB.itmDB.setCboItem(cboproce);
             grfImg.Cols[colHn].Editor = txt;
             grfImg.Cols[colDesc].Editor = txt;
             grfImg.Cols[colDesc2].Editor = txt;
             grfImg.Cols[colDesc3].Editor = txt;
+            grfImg.Cols[colBtn].Editor = btn;
 
             grfImg.Cols[colHn].Width = 250;
             grfImg.Cols[colImg].Width = 100;
             grfImg.Cols[colDesc].Width = 100;
             grfImg.Cols[colDesc2].Width = 100;
             grfImg.Cols[colDesc3].Width = 100;
+            grfImg.Cols[colBtn].Width = 50;
+            grfImg.Cols[colPathPic].Width = 100;
 
             grfImg.ShowCursor = true;
             //grdFlex.Cols[colID].Caption = "no";
@@ -758,12 +813,14 @@ namespace clinic_ivf.gui
             grfImg.Cols[colDesc].Caption = "Desc1";
             grfImg.Cols[colDesc2].Caption = "Desc2";
             grfImg.Cols[colDesc3].Caption = "Desc3";
-            Hashtable ht = new Hashtable();
-            foreach (DataRow dr in dt.Rows)
-            {
-                ht.Add(dr["CategoryID"], LoadImage(dr["Picture"] as byte[]));
-            }
-            grfImg.Cols[colImg].ImageMap = ht;
+            grfImg.Cols[colBtn].Caption = "send";
+
+            //Hashtable ht = new Hashtable();
+            //foreach (DataRow dr in dt.Rows)
+            //{
+            //    ht.Add(dr["CategoryID"], LoadImage(dr["Picture"] as byte[]));
+            //}
+            //grfImg.Cols[colImg].ImageMap = ht;
             grfImg.Cols[colImg].ImageAndText = false;
 
             ContextMenu menuGw = new ContextMenu();
@@ -781,6 +838,8 @@ namespace clinic_ivf.gui
                     //grfPtt.Rows[i].StyleNew.BackColor = color;
             }
             grfImg.Cols[colID].Visible = false;
+            //grfImg.Cols[colPathPic].Visible = false;
+            grfImg.Cols[colImg].AllowEditing = false;
             grfImg.AutoSizeCols();
             grfImg.AutoSizeRows();
             theme1.SetTheme(grfImg, "Office2016Colorful");

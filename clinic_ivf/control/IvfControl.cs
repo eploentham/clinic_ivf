@@ -285,5 +285,15 @@ namespace clinic_ivf.control
             ftpC.createDirectory(DateTime.Now.Year.ToString());
             ftpC.upload(DateTime.Now.Year.ToString()+"/" +filename+"." + System.Drawing.Imaging.ImageFormat.Jpeg, @"temppic" + "." + System.Drawing.Imaging.ImageFormat.Jpeg);
         }
+        public void saveFilePatientHNtoServer(String hn,String filename, Image pic)
+        {
+            if (File.Exists(@"temppic" + System.Drawing.Imaging.ImageFormat.Jpeg))
+            {
+                File.Delete(@"temppic" + System.Drawing.Imaging.ImageFormat.Jpeg);
+            }
+            pic.Save(@"temppic." + System.Drawing.Imaging.ImageFormat.Jpeg, System.Drawing.Imaging.ImageFormat.Jpeg);
+            ftpC.createDirectory(hn);
+            ftpC.upload(DateTime.Now.Year.ToString() + "/" + filename + "." + System.Drawing.Imaging.ImageFormat.Jpeg, @"temppic" + "." + System.Drawing.Imaging.ImageFormat.Jpeg);
+        }
     }
 }
