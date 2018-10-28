@@ -503,13 +503,26 @@ namespace clinic_ivf.gui
                 {
                     if (!ic.iniC.statusAppDonor.Equals("1"))
                     {
-                        re = ic.ivfDB.pttOldDB.insertPatientOld(ptt, txtStfConfirmID.Text);
+                        String re1 = ic.ivfDB.pttOldDB.insertPatientOld(ptt, txtStfConfirmID.Text);
+                        if (int.TryParse(re1, out chk))
+                        {
+                            if (txtID.Text.Equals(""))
+                            {
+                                PatientOld pttOld = new PatientOld();
+                                pttOld = ic.ivfDB.pttOldDB.selectByPk1(re1);
+                                String re2 = ic.ivfDB.pttDB.updatePID(re, pttOld.PID);
+                                if (int.TryParse(re2, out chk))
+                                {
+                                    btnSave.Text = "Save";
+                                    btnSave.Image = Resources.accept_database24;
+                                    txtID.Value = re;
+                                    txtPid.Focus();
+                                }
+                            }
+                        }
                     }
 
-                    btnSave.Text = "Save";
-                    btnSave.Image = Resources.accept_database24;
-                    txtID.Value = re;
-                    txtPid.Focus();
+                    
                     //System.Threading.Thread.Sleep(2000);
                     //this.Dispose();
                 }

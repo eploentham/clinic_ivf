@@ -114,6 +114,7 @@ namespace clinic_ivf.object1
         public String patient_contact_f_patient_relation_id { get; set; }
         public String patient_coulpe_f_patient_relation_id { get; set; }
         public String b_contract_plans_id { get; set; }
+        public String t_patient_id_old { get; set; }
 
         //public String insurance { get; set; }
         public Age age = new Age(DateTime.Now);

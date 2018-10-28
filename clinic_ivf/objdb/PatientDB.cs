@@ -136,6 +136,7 @@ namespace clinic_ivf.objdb
             ptt.patient_contact_f_patient_relation_id = "patient_contact_f_patient_relation_id";
             ptt.patient_coulpe_f_patient_relation_id = "patient_coulpe_f_patient_relation_id";
             ptt.b_contract_plans_id = "b_contract_plans_id";
+            ptt.t_patient_id_old = "t_patient_id_old";
 
             ptt.pkField = "t_patient_id";
             ptt.table = "t_patient";
@@ -255,6 +256,7 @@ namespace clinic_ivf.objdb
             p.patient_contact_f_patient_relation_id = int.TryParse(p.patient_contact_f_patient_relation_id, out chk) ? chk.ToString() : "0";
             p.patient_coulpe_f_patient_relation_id = int.TryParse(p.patient_coulpe_f_patient_relation_id, out chk) ? chk.ToString() : "0";
             p.b_contract_plans_id = int.TryParse(p.b_contract_plans_id, out chk) ? chk.ToString() : "0";
+            p.t_patient_id_old = int.TryParse(p.t_patient_id_old, out chk) ? chk.ToString() : "0";
 
             p.latitude = decimal.TryParse(p.latitude, out chk1) ? chk1.ToString() : "0";
             p.longitude = decimal.TryParse(p.longitude, out chk1) ? chk1.ToString() : "0";
@@ -308,7 +310,7 @@ namespace clinic_ivf.objdb
                 ptt.contract + "," + ptt.insurance + "," + ptt.patient_contact_f_patient_prefix_id + "," +
                 ptt.patient_couple_f_patient_prefix_id + "," + ptt.patient_contact_f_patient_relation_id + "," + ptt.patient_coulpe_f_patient_relation_id + "," +
                 ptt.b_contract_plans_id + "," + ptt.patient_father_mobile + "," + ptt.patient_mother_mobile + "," +
-                ptt.patient_couple_mobile + " "+ 
+                ptt.patient_couple_mobile + ","+ ptt.patient_couple_mobile + " " +
                 ") " +
                 "Values ('" + p.patient_hn + "','" + p.patient_firstname.Replace("'", "''") + "','" + p.patient_lastname.Replace("'", "''") + "'," +
                 "'" + p.patient_xn.Replace("'", "''") + "','" + p.patient_birthday.Replace("'", "''") + "','" + p.patient_house.Replace("'", "''") + "'," +
@@ -347,7 +349,7 @@ namespace clinic_ivf.objdb
                 "'" + p.contract.Replace("'", "''") + "','" + p.insurance.Replace("'", "''") + "','" + p.patient_contact_f_patient_prefix_id + "', " +
                 "'" + p.patient_couple_f_patient_prefix_id.Replace("'", "''") + "','" + p.patient_contact_f_patient_relation_id.Replace("'", "''") + "','" + p.patient_coulpe_f_patient_relation_id.Replace("'", "''") + "', " +
                 "'" + p.b_contract_plans_id.Replace("'", "''") + "','" +p.patient_father_mobile+"','"+p.patient_mother_mobile+"', "+
-                "'" + p.patient_couple_mobile+"' " +
+                "'" + p.patient_couple_mobile+"','" + p.t_patient_id_old + "' " +
                 ")";
 
                 re = conn.ExecuteNonQuery(conn.conn, sql);
@@ -520,6 +522,16 @@ namespace clinic_ivf.objdb
                 "" + ptt.active + "='3'" +
                 "," + ptt.date_cancel + "=now() " +
                 "," + ptt.user_cancel + "='" + userIdVoid + "' " +
+                "Where " + ptt.pkField + "='" + pttId + "'";
+            conn.ExecuteNonQuery(conn.conn, sql);
+
+            return "1";
+        }
+        public String updatePID(String pttId, String pid)
+        {
+            DataTable dt = new DataTable();
+            String sql = "Update " + ptt.table + " Set " +
+                "" + ptt.t_patient_id_old + "='"+ pid + "' " +                
                 "Where " + ptt.pkField + "='" + pttId + "'";
             conn.ExecuteNonQuery(conn.conn, sql);
 

@@ -348,8 +348,8 @@ namespace clinic_ivf.objdb
             pttO1.OSurname = "";
             pttO1.PatientTypeID = "";
             pttO1.PaymentID = "";
-            pttO1.PID = "";
-            pttO1.PIDS = ptt.patient_hn;
+            pttO1.PID = selectByMaxPID();
+            pttO1.PIDS = genHN(pttO1.PID);
             pttO1.PName = ptt.patient_firstname;
             pttO1.Province = "";
             pttO1.PSurname = ptt.patient_lastname;
@@ -404,11 +404,32 @@ namespace clinic_ivf.objdb
             }
             if (year < chk) {
                 chk = chk + 1;
-            } else {
+            }
+            else
+            {
                 chk = year + 1;
             }
             //IDS = "HN-".substr($PID, -5). "/".substr(date("Y", time()) + 543, -2);//
             return chk.ToString();
+        }
+        public String genHN(String pid)
+        {
+            String re = "", chk="", year="";
+            int chk1 = 0;
+            //PIDS = "HN-".substr($PID, -5). "/".substr(date("Y", time()) + 543, -2);
+            if (pid.Length > 4)
+            {
+                chk = pid.Substring(pid.Length - 5);
+                //year = pid.Substring(0, 4);
+                if(int.TryParse(pid.Substring(0, 4), out chk1))
+                {
+                    chk1 += 543;
+                    year = chk1.ToString().Substring(chk1.ToString().Length - 2);
+                    re = "HN-" + chk + "/" + year;
+                }
+            }
+            
+            return re;
         }
         public PatientOld setPatient(DataTable dt)
         {
