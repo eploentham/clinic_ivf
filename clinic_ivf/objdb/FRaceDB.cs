@@ -21,6 +21,7 @@ namespace clinic_ivf.objdb
         }
         private void initConfig()
         {
+            lFrac = new List<FRace>();
             frac = new FRace();
             frac.f_patient_race_id = "f_patient_race_id";
             frac.patient_race_description = "patient_race_description";
@@ -47,6 +48,10 @@ namespace clinic_ivf.objdb
         public String getList(String id)
         {
             String re = "";
+            if (lFrac.Count <= 0)
+            {
+                getlFRace();
+            }
             foreach (FRace sex in lFrac)
             {
                 if (sex.f_patient_race_id.Equals(id))

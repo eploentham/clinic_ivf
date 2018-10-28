@@ -501,6 +501,11 @@ namespace clinic_ivf.gui
                 int chk = 0;
                 if (int.TryParse(re, out chk))
                 {
+                    if (!ic.iniC.statusAppDonor.Equals("1"))
+                    {
+                        re = ic.ivfDB.pttOldDB.insertPatientOld(ptt, txtStfConfirmID.Text);
+                    }
+
                     btnSave.Text = "Save";
                     btnSave.Image = Resources.accept_database24;
                     txtID.Value = re;
@@ -1125,6 +1130,7 @@ namespace clinic_ivf.gui
             // create pdf document
             _c1pdf.Clear();
             _c1pdf.DocumentInfo.Title = "";
+            _c1pdf.PaperKind = System.Drawing.Printing.PaperKind.A4;
             sB.Text = "Creating pdf document...";
 
             // add title
@@ -1133,13 +1139,15 @@ namespace clinic_ivf.gui
             Font bodyFontB = new Font("Tahoma", 12);
             RectangleF rcPage = GetPageRect();
             RectangleF rc = RenderParagraph(_c1pdf.DocumentInfo.Title, titleFont, rcPage, rcPage, false);
-            rc.Y += titleFont.Size + 6;
-            rc.Height = rcPage.Height - rc.Y;
+            //rc.Y += titleFont.Size + 6;
+            //rc.Height = rcPage.Height - rc.Y;
 
             // create three columns for the text
             RectangleF rcLeft1 = rc;
             int chk = 0;
-            //rcLeft.Width = rcPage.Width / 2 - 12;
+            ic.iniC.sticker_donor_start_y = "20";
+            ic.iniC.sticker_donor_barcode_gap_y = "5";
+            ic.iniC.sticker_donor_barcode_height = "25";
             rcLeft1.Width = int.TryParse(ic.iniC.sticker_donor_width, out chk) ? chk : 120;
             rcLeft1.Height = int.TryParse(ic.iniC.sticker_donor_height, out chk) ? chk : 90;
             rcLeft1.Y = int.TryParse(ic.iniC.sticker_donor_start_y, out chk) ? chk : 60;
@@ -1162,14 +1170,14 @@ namespace clinic_ivf.gui
             //rc = rcLeft;
 
             // render string spanning columns and pages
-            for (int i=1;i<=10 ;i++)
+            for (int i=1;i<=9 ;i++)
             {
                 // render as much as will fit into the rectangle
-                rc.Inflate(-3, -3);
+                //rc.Inflate(-3, -3);
                 int nextChar = _c1pdf.DrawString(hn, bodyFontB, Brushes.Black, rcLeft1);
                 int nextChar1 = _c1pdf.DrawString("\n"+text, bodyFont, Brushes.Black, rcLeft1);
                 _c1pdf.DrawImage(img, rcBarcode1);
-                rc.Inflate(+3, +3);
+                //rc.Inflate(+3, +3);
                 _c1pdf.DrawRectangle(Pens.Silver, rcLeft1);
 
                 _c1pdf.DrawString(hn, bodyFontB, Brushes.Black, rcMiddle);
@@ -1182,12 +1190,12 @@ namespace clinic_ivf.gui
                 _c1pdf.DrawImage(img, rcBarcodeR);
                 _c1pdf.DrawRectangle(Pens.Silver, rcRight);
 
-                rcLeft1.Y += int.TryParse(ic.iniC.sticker_donor_width, out chk) ? chk : 120;
-                rcMiddle.Y += int.TryParse(ic.iniC.sticker_donor_width, out chk) ? chk : 120;
-                rcRight.Y += int.TryParse(ic.iniC.sticker_donor_width, out chk) ? chk : 120;
-                rcBarcode1.Y += int.TryParse(ic.iniC.sticker_donor_width, out chk) ? chk : 120;
-                rcBarcodeM.Y += int.TryParse(ic.iniC.sticker_donor_width, out chk) ? chk : 120;
-                rcBarcodeR.Y += int.TryParse(ic.iniC.sticker_donor_width, out chk) ? chk : 120;
+                rcLeft1.Y += int.TryParse(ic.iniC.sticker_donor_height, out chk) ? chk : 120;
+                rcMiddle.Y += int.TryParse(ic.iniC.sticker_donor_height, out chk) ? chk : 120;
+                rcRight.Y += int.TryParse(ic.iniC.sticker_donor_height, out chk) ? chk : 120;
+                rcBarcode1.Y += int.TryParse(ic.iniC.sticker_donor_height, out chk) ? chk : 120;
+                rcBarcodeM.Y += int.TryParse(ic.iniC.sticker_donor_height, out chk) ? chk : 120;
+                rcBarcodeR.Y += int.TryParse(ic.iniC.sticker_donor_height, out chk) ? chk : 120;
                 // break when done
                 //if (nextChar >= text.Length)
                 //    break;

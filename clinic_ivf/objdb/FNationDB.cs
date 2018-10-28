@@ -13,7 +13,7 @@ namespace clinic_ivf.objdb
     {
         FNation fpn;
         ConnectDB conn;
-        public List<FNation> lfpn;
+        public List<FNation> lFpn;
         public FNationDB(ConnectDB c)
         {
             conn = c;
@@ -21,7 +21,7 @@ namespace clinic_ivf.objdb
         }
         private void initConfig()
         {
-            lfpn = new List<FNation>();
+            lFpn = new List<FNation>();
             fpn = new FNation();
             fpn.f_patient_nation_id = "f_patient_nation_id";
             fpn.patient_nation_description = "patient_nation_description";
@@ -33,7 +33,7 @@ namespace clinic_ivf.objdb
         public void getlFNation()
         {
             //lDept = new List<Position>();
-            lfpn.Clear();
+            lFpn.Clear();
             DataTable dt = new DataTable();
             dt = selectAll();
             foreach (DataRow row in dt.Rows)
@@ -42,13 +42,17 @@ namespace clinic_ivf.objdb
                 itm1.f_patient_nation_id = row[fpn.f_patient_nation_id].ToString();
                 itm1.patient_nation_description = row[fpn.patient_nation_description].ToString();
 
-                lfpn.Add(itm1);
+                lFpn.Add(itm1);
             }
         }
         public String getList(String id)
         {
             String re = "";
-            foreach (FNation sex in lfpn)
+            if (lFpn.Count <= 0)
+            {
+                getlFNation();
+            }
+            foreach (FNation sex in lFpn)
             {
                 if (sex.f_patient_nation_id.Equals(id))
                 {

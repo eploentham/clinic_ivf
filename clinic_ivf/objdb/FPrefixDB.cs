@@ -53,6 +53,10 @@ namespace clinic_ivf.objdb
         public String getList(String id)
         {
             String re = "";
+            if (lFpf.Count <= 0)
+            {
+                getlFPrefix();
+            }
             foreach (FPrefix sex in lFpf)
             {
                 if (sex.f_patient_prefix_id.Equals(id))

@@ -18,6 +18,7 @@ namespace clinic_ivf.objdb
         FNationDB fpnDB;
         FRelationDB frlDB;
         FRaceDB fracDB;
+        FReligionDB frgDB;
         public PatientOldDB(ConnectDB c)
         {
             conn = c;
@@ -86,6 +87,7 @@ namespace clinic_ivf.objdb
             fpnDB = new FNationDB(conn);
             frlDB = new FRelationDB(conn);
             fracDB = new FRaceDB(conn);
+            frgDB = new FReligionDB(conn);
         }
         private void chkNull(PatientOld p)
         {
@@ -145,6 +147,10 @@ namespace clinic_ivf.objdb
             p.PaymentID = int.TryParse(p.PaymentID, out chk) ? chk.ToString() : "0";
             p.AgentID = int.TryParse(p.AgentID, out chk) ? chk.ToString() : "0";
             p.PatientTypeID = int.TryParse(p.PatientTypeID, out chk) ? chk.ToString() : "0";
+            p.IDType = int.TryParse(p.IDType, out chk) ? chk.ToString() : "0";
+
+            p.DateOfBirth = p.DateOfBirth.Equals("") ? null : p.DateOfBirth;
+            //p.IDType = p.IDType.Equals("") ? null : p.IDType;
         }
         public String insert(PatientOld p, String userId)
         {
@@ -172,8 +178,8 @@ namespace clinic_ivf.objdb
                 pttO.Race + "," + pttO.RelationshipID + "," + pttO.RelationshipOther + "," +
                 pttO.Religion + "," + pttO.Road + "," + pttO.SexID + "," +
                 pttO.Soi + "," + pttO.SubDistrict + "," + pttO.SurfixID + "," +
-                pttO.ZipCode + " " +
-                
+                pttO.ZipCode + "," + pttO.PID + " " +
+
                 ") " +
                 "Values ('" + p.Address + "','" + p.Age.Replace("'", "''") + "','" + p.AgentID.Replace("'", "''") + "'," +
                 "'" + p.Allergy.Replace("'", "''") + "','" + p.BuildingVillage.Replace("'", "''") + "','" + p.CompanyName.Replace("'", "''") + "'," +
@@ -193,7 +199,7 @@ namespace clinic_ivf.objdb
                 "'" + p.Race + "','" + p.RelationshipID + "','" + p.RelationshipOther + "'," +
                 "'" + p.Religion + "','" + p.Road + "','" + p.SexID + "'," +
                 "'" + p.Soi + "','" + p.SubDistrict + "','" + p.SurfixID.Replace("'", "''") + "'," +
-                "'" + p.ZipCode + "' " + 
+                "'" + p.ZipCode + "'," + p.PID + " " +
                 ")";
 
                 re = conn.ExecuteNonQuery(conn.conn, sql);
@@ -305,60 +311,60 @@ namespace clinic_ivf.objdb
         public PatientOld setPatientToOLD(Patient ptt)
         {
             PatientOld pttO1 = new PatientOld();
-            pttO.Address = ptt.patient_house;
-            pttO.Age = ptt.AgeStringShort().Replace("Y",".").Replace("M", ".").Replace("D", ".");
-            pttO.AgentID = "";
-            pttO.Allergy = ptt.patient_drugallergy;
-            pttO.BuildingVillage = "";
-            pttO.CompanyName = "";
-            pttO.CompanyPhoneNo = "";
-            pttO.ContractName = ptt.contract;
-            pttO.DateOfBirth = "";
-            pttO.District = "";
-            pttO.Email = ptt.email;
-            pttO.EmergencyPersonAddress = "";
-            pttO.EmergencyPersonalContact = ptt.patient_contact_firstname+" "+ptt.patient_contact_lastname;
-            pttO.EPAddress = "";
-            pttO.EPDistrict = "";
-            pttO.EPEmail = "";
-            pttO.EPHomePhoneNo = "";
-            pttO.EPMobilePhoneNo = "";
-            pttO.EPProvince = "";
-            pttO.EPRoad = "";
-            pttO.EPSubDistrict = "";
-            pttO.EPZipcode = "";
-            pttO.HomePhoneNo = ptt.mobile2;
-            pttO.IDNumber = ptt.pid;
-            pttO.IDType = "";
-            pttO.InsuranceName = ptt.insurance;
+            pttO1.Address = ptt.patient_house;
+            pttO1.Age = ptt.AgeStringShort().Replace("Y",".").Replace("M", ".").Replace("D", ".");
+            pttO1.AgentID = "";
+            pttO1.Allergy = ptt.patient_drugallergy;
+            pttO1.BuildingVillage = "";
+            pttO1.CompanyName = "";
+            pttO1.CompanyPhoneNo = "";
+            pttO1.ContractName = ptt.contract;
+            pttO1.DateOfBirth = ptt.patient_birthday;
+            pttO1.District = "";
+            pttO1.Email = ptt.email;
+            pttO1.EmergencyPersonAddress = "";
+            pttO1.EmergencyPersonalContact = ptt.patient_contact_firstname+" "+ptt.patient_contact_lastname;
+            pttO1.EPAddress = "";
+            pttO1.EPDistrict = "";
+            pttO1.EPEmail = "";
+            pttO1.EPHomePhoneNo = "";
+            pttO1.EPMobilePhoneNo = "";
+            pttO1.EPProvince = "";
+            pttO1.EPRoad = "";
+            pttO1.EPSubDistrict = "";
+            pttO1.EPZipcode = "";
+            pttO1.HomePhoneNo = ptt.mobile2;
+            pttO1.IDNumber = ptt.pid;
+            pttO1.IDType = "";
+            pttO1.InsuranceName = ptt.insurance;
             String mat = "";
             mat = fmsDB.getList(ptt.f_patient_marriage_status_id);
-            pttO.MaritalID = mat.Equals("หย่า") ? "3" : mat.Equals("หม้าย") ? "4" : mat.Equals("โสด") ? "1" : mat.Equals("คู่") ? "2" : "";
-            pttO.MobilePhoneNo = ptt.mobile1;
-            pttO.Moo = ptt.patient_moo;
-            pttO.Nationality = fpnDB.getList(ptt.f_patient_nation_id);
-            pttO.Occupation = "";
-            pttO.OName = "";
-            pttO.OSurname = "";
-            pttO.PatientTypeID = "";
-            pttO.PaymentID = "";
-            pttO.PID = "";
-            pttO.PIDS = ptt.patient_hn;
-            pttO.PName = ptt.patient_firstname;
-            pttO.Province = "";
-            pttO.PSurname = ptt.patient_lastname;
-            pttO.Race = fracDB.getList(ptt.f_patient_race_id);
-            pttO.RelationshipID = "";
-            pttO.RelationshipOther = "";
-            pttO.Religion = frlDB.getList(ptt.f_patient_religion_id);
-            pttO.Road = ptt.patient_road;
-            pttO.SexID = sexDB.getList(ptt.f_sex_id).Equals("ชาย") ? "1" : "2";
-            pttO.Soi = "";
+            pttO1.MaritalID = mat.Equals("หย่า") ? "3" : mat.Equals("หม้าย") ? "4" : mat.Equals("โสด") ? "1" : mat.Equals("คู่") ? "2" : "";
+            pttO1.MobilePhoneNo = ptt.mobile1;
+            pttO1.Moo = ptt.patient_moo;
+            pttO1.Nationality = fpnDB.getList(ptt.f_patient_nation_id);
+            pttO1.Occupation = "";
+            pttO1.OName = "";
+            pttO1.OSurname = "";
+            pttO1.PatientTypeID = "";
+            pttO1.PaymentID = "";
+            pttO1.PID = "";
+            pttO1.PIDS = ptt.patient_hn;
+            pttO1.PName = ptt.patient_firstname;
+            pttO1.Province = "";
+            pttO1.PSurname = ptt.patient_lastname;
+            pttO1.Race = fracDB.getList(ptt.f_patient_race_id);
+            pttO1.RelationshipID = "";
+            pttO1.RelationshipOther = "";
+            pttO1.Religion = frgDB.getList(ptt.f_patient_religion_id);
+            pttO1.Road = ptt.patient_road;
+            pttO1.SexID = sexDB.getList(ptt.f_sex_id).Equals("ชาย") ? "1" : "2";
+            pttO1.Soi = "";
             String pre = "";
             pre = fpfDB.getList(ptt.f_patient_prefix_id);
-            pttO.SubDistrict = "";
-            pttO.SurfixID = pre.Equals("Mrs.") ? "1" : pre.Equals("Miss") ? "2" : pre.Equals("Mr.") ? "3" : pre.Equals("Girl") ? "4" : pre.Equals("Boy") ? "5" : "";
-            pttO.ZipCode = "";
+            pttO1.SubDistrict = "";
+            pttO1.SurfixID = pre.Equals("Mrs.") ? "1" : pre.Equals("Miss") ? "2" : pre.Equals("Mr.") ? "3" : pre.Equals("Girl") ? "4" : pre.Equals("Boy") ? "5" : "";
+            pttO1.ZipCode = "";
 
             return pttO1;
         }
@@ -381,6 +387,28 @@ namespace clinic_ivf.objdb
             dt = conn.selectData(conn.conn, sql);
             cop1 = setPatient(dt);
             return cop1;
+        }
+        public String selectByMaxPID()
+        {
+            PatientOld cop1 = new PatientOld();
+            DataTable dt = new DataTable();
+            int chk = 0;
+            int year = DateTime.Now.Year*10000;
+            String re = "";
+            String sql = "select max(PID) as MAXPID from Patient ";
+            dt = conn.selectData(conn.conn, sql);
+            if (dt.Rows.Count > 0)
+            {
+                re = dt.Rows[0]["MAXPID"].ToString();
+                chk = int.Parse(re);
+            }
+            if (year < chk) {
+                chk = chk + 1;
+            } else {
+                chk = year + 1;
+            }
+            //IDS = "HN-".substr($PID, -5). "/".substr(date("Y", time()) + 543, -2);//
+            return chk.ToString();
         }
         public PatientOld setPatient(DataTable dt)
         {

@@ -21,6 +21,7 @@ namespace clinic_ivf.objdb
         public CompanyDB copDB;
         public PatientDB pttDB;
         public AgentOldDB agnOldDB;
+        public PatientOldDB pttOldDB;
 
         public FPrefixDB fpfDB;
         public FBloodGroupDB fbgDB;
@@ -32,7 +33,7 @@ namespace clinic_ivf.objdb
         public FRelationDB frlDB;
         public FReligionDB frgDB;
         public FPatientRaceDB fprDB;
-        public PatientOldDB pttOldDB;
+        //public PatientOldDB pttOldDB;
         public BContractPlansDB crlDB;
 
         public IvfDB(ConnectDB c)

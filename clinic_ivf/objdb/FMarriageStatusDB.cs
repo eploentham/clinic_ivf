@@ -48,6 +48,10 @@ namespace clinic_ivf.objdb
         public String getList(String id)
         {
             String re = "";
+            if (lFms.Count <= 0)
+            {
+                getlFMarriage();
+            }
             foreach (FMarriageStatus sex in lFms)
             {
                 if (sex.f_patient_marriage_status_id.Equals(id))

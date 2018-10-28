@@ -13,6 +13,7 @@ namespace clinic_ivf.objdb
     {
         FReligion frg;
         ConnectDB conn;
+        public List<FReligion> lFrl;
         public FReligionDB(ConnectDB c)
         {
             conn = c;
@@ -20,6 +21,7 @@ namespace clinic_ivf.objdb
         }
         private void initConfig()
         {
+            lFrl = new List<FReligion>();
             frg = new FReligion();
             frg.f_patient_religion_id = "f_patient_religion_id";
             frg.patient_religion_description = "patient_religion_description";
@@ -27,6 +29,38 @@ namespace clinic_ivf.objdb
 
             frg.pkField = "f_patient_religion_id";
             frg.table = "f_patient_religion";
+        }
+        public void getlFRelation()
+        {
+            //lDept = new List<Position>();
+            lFrl.Clear();
+            DataTable dt = new DataTable();
+            dt = selectAll();
+            foreach (DataRow row in dt.Rows)
+            {
+                FReligion itm1 = new FReligion();
+                itm1.f_patient_religion_id = row[frg.f_patient_religion_id].ToString();
+                itm1.patient_religion_description = row[frg.patient_religion_description].ToString();
+
+                lFrl.Add(itm1);
+            }
+        }
+        public String getList(String id)
+        {
+            String re = "";
+            if (lFrl.Count <= 0)
+            {
+                getlFRelation();
+            }
+            foreach (FReligion sex in lFrl)
+            {
+                if (sex.f_patient_religion_id.Equals(id))
+                {
+                    re = sex.patient_religion_description;
+                    break;
+                }
+            }
+            return re;
         }
         public DataTable selectAll()
         {
