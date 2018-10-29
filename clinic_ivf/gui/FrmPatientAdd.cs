@@ -1158,22 +1158,27 @@ namespace clinic_ivf.gui
             // create three columns for the text
             RectangleF rcLeft1 = rc;
             int chk = 0;
-            ic.iniC.sticker_donor_start_y = "20";
-            ic.iniC.sticker_donor_barcode_gap_y = "5";
-            ic.iniC.sticker_donor_barcode_height = "25";
+            //ic.iniC.sticker_donor_start_y = "30";
+            //ic.iniC.sticker_donor_barcode_gap_y = "5";
+            //ic.iniC.sticker_donor_barcode_height = "25";
             rcLeft1.Width = int.TryParse(ic.iniC.sticker_donor_width, out chk) ? chk : 120;
             rcLeft1.Height = int.TryParse(ic.iniC.sticker_donor_height, out chk) ? chk : 90;
             rcLeft1.Y = int.TryParse(ic.iniC.sticker_donor_start_y, out chk) ? chk : 60;
+            rcLeft1.X = int.TryParse(ic.iniC.sticker_donor_start_x, out chk) ? chk : 52;
             RectangleF rcRight = rcLeft1;
-            rcRight.X = rcPage.Right - rcRight.Width;
-
+            
             RectangleF rcMiddle = rcLeft1;
-            rcMiddle.X = rcPage.Right - rcMiddle.Width - rcMiddle.Width - 55;
-            RectangleF rcBarcode1 = RenderParagraph("", titleFont, rcPage, rcPage, false);
+            //rcMiddle.X = rcPage.Right - rcMiddle.Width - rcMiddle.Width - 55;
+            int.TryParse(ic.iniC.sticker_donor_gap, out chk);
+            rcMiddle.X = rcLeft1.Right + chk;
+            rcRight.X = rcMiddle.Right + chk;
+            RectangleF rcBarcode1 = RenderParagraph("", titleFont, rcLeft1, rcLeft1, false);
             rcBarcode1.Height = int.TryParse(ic.iniC.sticker_donor_barcode_height, out chk) ? chk : 40;
             rcBarcode1.Width = rcLeft1.Width - 10;
+            rcBarcode1.X = rcLeft1.X;
             rcBarcode1.X = rcBarcode1.X + (int.TryParse(ic.iniC.sticker_donor_barcode_gap_x, out chk) ? chk : 5);
-            rcBarcode1.Y = rcBarcode1.Y + (int.TryParse(ic.iniC.sticker_donor_barcode_gap_y, out chk) ? chk : 30);
+            //rcBarcode1.Y = rcBarcode1.Y + (int.TryParse(ic.iniC.sticker_donor_barcode_gap_y, out chk) ? chk : 30);
+            rcBarcode1.Y = rcLeft1.Height - rcBarcode1.Height + (int.TryParse(ic.iniC.sticker_donor_barcode_gap_y, out chk) ? chk : 30);
             RectangleF rcBarcodeM = rcBarcode1;
             RectangleF rcBarcodeR = rcBarcode1;
             rcBarcodeM.X = rcMiddle.X + (int.TryParse(ic.iniC.sticker_donor_barcode_gap_x, out chk) ? chk : 5);

@@ -32,6 +32,7 @@
             this.theme1 = new C1.Win.C1Themes.C1ThemeController();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
+            this.btnVisit = new C1.Win.C1Input.C1Button();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.cboAgent = new C1.Win.C1Input.C1ComboBox();
             this.btnVoid = new C1.Win.C1Input.C1Button();
@@ -170,14 +171,15 @@
             this.label36 = new System.Windows.Forms.Label();
             this.c1TextBox1 = new C1.Win.C1Input.C1TextBox();
             this.tabVisit = new C1.Win.C1Command.C1DockingTabPage();
+            this.tabImage = new C1.Win.C1Command.C1DockingTabPage();
+            this.pnImage = new System.Windows.Forms.Panel();
             this.sB = new System.Windows.Forms.StatusStrip();
             this.sB1 = new System.Windows.Forms.ToolStripStatusLabel();
             this.printDialog1 = new System.Windows.Forms.PrintDialog();
             this.cPdf = new C1.Win.C1Document.C1PdfDocumentSource(this.components);
             this._c1pdf = new C1.C1Pdf.C1PdfDocument();
-            this.c1Button1 = new C1.Win.C1Input.C1Button();
-            this.tabImage = new C1.Win.C1Command.C1DockingTabPage();
-            this.pnImage = new System.Windows.Forms.Panel();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.pnVisit = new System.Windows.Forms.Panel();
             ((System.ComponentModel.ISupportInitialize)(this.theme1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
@@ -187,6 +189,7 @@
             this.splitContainer2.Panel1.SuspendLayout();
             this.splitContainer2.Panel2.SuspendLayout();
             this.splitContainer2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.btnVisit)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cboAgent)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnVoid)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtPttLName)).BeginInit();
@@ -270,9 +273,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.c1TextBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.c1TextBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.c1TextBox1)).BeginInit();
-            this.sB.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.c1Button1)).BeginInit();
+            this.tabVisit.SuspendLayout();
             this.tabImage.SuspendLayout();
+            this.sB.SuspendLayout();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // theme1
@@ -317,7 +321,6 @@
             // splitContainer2.Panel1
             // 
             this.splitContainer2.Panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.splitContainer2.Panel1.Controls.Add(this.c1Button1);
             this.splitContainer2.Panel1.Controls.Add(this.comboBox1);
             this.splitContainer2.Panel1.Controls.Add(this.cboAgent);
             this.splitContainer2.Panel1.Controls.Add(this.btnVoid);
@@ -392,6 +395,20 @@
             this.splitContainer2.SplitterDistance = 1153;
             this.splitContainer2.TabIndex = 0;
             this.theme1.SetTheme(this.splitContainer2, "(default)");
+            // 
+            // btnVisit
+            // 
+            this.btnVisit.Image = global::clinic_ivf.Properties.Resources.users24;
+            this.btnVisit.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnVisit.Location = new System.Drawing.Point(43, 12);
+            this.btnVisit.Name = "btnVisit";
+            this.btnVisit.Size = new System.Drawing.Size(83, 33);
+            this.btnVisit.TabIndex = 619;
+            this.btnVisit.Text = "new Visit";
+            this.btnVisit.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.theme1.SetTheme(this.btnVisit, "(default)");
+            this.btnVisit.UseVisualStyleBackColor = true;
+            this.btnVisit.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
             // 
             // comboBox1
             // 
@@ -2459,11 +2476,33 @@
             // 
             // tabVisit
             // 
+            this.tabVisit.Controls.Add(this.pnVisit);
+            this.tabVisit.Controls.Add(this.panel1);
             this.tabVisit.Location = new System.Drawing.Point(1, 24);
             this.tabVisit.Name = "tabVisit";
             this.tabVisit.Size = new System.Drawing.Size(1455, 442);
             this.tabVisit.TabIndex = 3;
             this.tabVisit.Text = "Visit";
+            // 
+            // tabImage
+            // 
+            this.tabImage.Controls.Add(this.pnImage);
+            this.tabImage.Location = new System.Drawing.Point(1, 24);
+            this.tabImage.Name = "tabImage";
+            this.tabImage.Size = new System.Drawing.Size(1455, 442);
+            this.tabImage.TabIndex = 4;
+            this.tabImage.Text = "Image";
+            // 
+            // pnImage
+            // 
+            this.pnImage.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.pnImage.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pnImage.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.pnImage.Location = new System.Drawing.Point(0, 0);
+            this.pnImage.Name = "pnImage";
+            this.pnImage.Size = new System.Drawing.Size(1455, 442);
+            this.pnImage.TabIndex = 0;
+            this.theme1.SetTheme(this.pnImage, "(default)");
             // 
             // sB
             // 
@@ -2503,39 +2542,28 @@
             this._c1pdf.UseFastTextOut = true;
             this._c1pdf.UseFontShaping = true;
             // 
-            // c1Button1
+            // panel1
             // 
-            this.c1Button1.Image = global::clinic_ivf.Properties.Resources.unit_completed24;
-            this.c1Button1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.c1Button1.Location = new System.Drawing.Point(865, 6);
-            this.c1Button1.Name = "c1Button1";
-            this.c1Button1.Size = new System.Drawing.Size(83, 33);
-            this.c1Button1.TabIndex = 619;
-            this.c1Button1.Text = "scan";
-            this.c1Button1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.theme1.SetTheme(this.c1Button1, "(default)");
-            this.c1Button1.UseVisualStyleBackColor = true;
-            this.c1Button1.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.panel1.Controls.Add(this.btnVisit);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.panel1.Location = new System.Drawing.Point(0, 0);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(1455, 60);
+            this.panel1.TabIndex = 0;
+            this.theme1.SetTheme(this.panel1, "(default)");
             // 
-            // tabImage
+            // pnVisit
             // 
-            this.tabImage.Controls.Add(this.pnImage);
-            this.tabImage.Location = new System.Drawing.Point(1, 24);
-            this.tabImage.Name = "tabImage";
-            this.tabImage.Size = new System.Drawing.Size(1455, 442);
-            this.tabImage.TabIndex = 4;
-            this.tabImage.Text = "Image";
-            // 
-            // pnImage
-            // 
-            this.pnImage.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.pnImage.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnImage.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.pnImage.Location = new System.Drawing.Point(0, 0);
-            this.pnImage.Name = "pnImage";
-            this.pnImage.Size = new System.Drawing.Size(1455, 442);
-            this.pnImage.TabIndex = 0;
-            this.theme1.SetTheme(this.pnImage, "(default)");
+            this.pnVisit.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.pnVisit.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pnVisit.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.pnVisit.Location = new System.Drawing.Point(0, 60);
+            this.pnVisit.Name = "pnVisit";
+            this.pnVisit.Size = new System.Drawing.Size(1455, 382);
+            this.pnVisit.TabIndex = 1;
+            this.theme1.SetTheme(this.pnVisit, "(default)");
             // 
             // FrmPatientAdd
             // 
@@ -2557,6 +2585,7 @@
             this.splitContainer2.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).EndInit();
             this.splitContainer2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.btnVisit)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cboAgent)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnVoid)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtPttLName)).EndInit();
@@ -2643,10 +2672,11 @@
             ((System.ComponentModel.ISupportInitialize)(this.c1TextBox3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.c1TextBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.c1TextBox1)).EndInit();
+            this.tabVisit.ResumeLayout(false);
+            this.tabImage.ResumeLayout(false);
             this.sB.ResumeLayout(false);
             this.sB.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.c1Button1)).EndInit();
-            this.tabImage.ResumeLayout(false);
+            this.panel1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -2800,8 +2830,10 @@
         private C1.Win.C1Input.C1TextBox txtContFname1;
         private C1.Win.C1Input.C1ComboBox cboAgent;
         private System.Windows.Forms.ComboBox comboBox1;
-        private C1.Win.C1Input.C1Button c1Button1;
+        private C1.Win.C1Input.C1Button btnVisit;
         private C1.Win.C1Command.C1DockingTabPage tabImage;
         private System.Windows.Forms.Panel pnImage;
+        private System.Windows.Forms.Panel pnVisit;
+        private System.Windows.Forms.Panel panel1;
     }
 }
