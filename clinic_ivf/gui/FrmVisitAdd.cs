@@ -1,6 +1,7 @@
 ﻿using C1.Win.C1SuperTooltip;
 using clinic_ivf.control;
 using clinic_ivf.object1;
+using clinic_ivf.Properties;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -19,6 +20,7 @@ namespace clinic_ivf.gui
         IvfControl ic;
         String pttId = "", webcamname = "", vsid="";
         Patient ptt;
+        VisitOld vsOld;
 
         Font fEdit, fEditB;
         Color bg, fc;
@@ -93,7 +95,60 @@ namespace clinic_ivf.gui
         private void BtnVisit_Click(object sender, EventArgs e)
         {
             //throw new NotImplementedException();
+            if (btnVisit.Text.Equals("Confirm"))
+            {
+                stt.Hide();
+                setVisitOld();
+                String re = ic.ivfDB.vsOldDB.insertVisitOld(vsOld, txtStfConfirmID.Text);
+                int chk = 0;
+                if (int.TryParse(re, out chk))
+                {
+                    //if (!ic.iniC.statusAppDonor.Equals("1"))
+                    //{
+                    //String re1 = ic.ivfDB.pttOldDB.insertPatientOld(ptt, txtStfConfirmID.Text);
+                    //if (int.TryParse(re1, out chk))
+                    //{
+                    //if (txtID.Text.Equals(""))
+                    //{
+                    //    //PatientOld pttOld = new PatientOld();
+                    //    //pttOld = ic.ivfDB.pttOldDB.selectByPk1(re1);
+                    //    String re2 = ic.ivfDB.pttDB.updatePID(re, re1);
+                    //    if (int.TryParse(re2, out chk))
+                    //    {
+                    btnVisit.Text = "Save Visit";
+                    btnVisit.Image = Resources.accept_database24;
+                    //        txtID.Value = re;
+                    //        txtPid.Focus();
+                    //    }
+                    //}
+                    //}
+                    //}
 
+
+                    //System.Threading.Thread.Sleep(2000);
+                    //this.Dispose();
+                }
+            }
+            else
+            {
+                ic.cStf.staff_id = "";
+                FrmPasswordConfirm frm = new FrmPasswordConfirm(ic);
+                frm.ShowDialog(this);
+                if (!ic.cStf.staff_id.Equals(""))
+                {
+                    txtUserReq.Value = ic.cStf.staff_fname_t + " " + ic.cStf.staff_lname_t;
+                    txtStfConfirmID.Value = ic.cStf.staff_id;
+                    btnVisit.Text = "Confirm";
+                    btnVisit.Image = Resources.Add_ticket_24;
+                    stt.Show("<p><b>สวัสดี</b></p>คุณ " + ic.cStf.staff_fname_t + " " + ic.cStf.staff_lname_t + "<br> กรุณายินยันการ confirm อีกครั้ง", cboPttType);
+                    btnVisit.Focus();
+                }
+                else
+                {
+                    btnVisit.Text = "new Visit";
+                    btnVisit.Image = Resources.download_database24;
+                }
+            }
         }
 
         private void setControl(String pttid)
@@ -101,7 +156,7 @@ namespace clinic_ivf.gui
             ptt = ic.ivfDB.pttDB.selectByPk1(pttid);
             
             txtHn.Value = ptt.patient_hn;
-            txtID.Value = ptt.t_patient_id;
+            txtPttId.Value = ptt.t_patient_id;
             txtPttName.Value = ptt.patient_firstname;
             txtPttLName.Value = ptt.patient_lastname;
             txtRemark.Value = ptt.remark;
@@ -171,6 +226,22 @@ namespace clinic_ivf.gui
         {
             picPtt.Image = bitmap;
             picPtt.SizeMode = PictureBoxSizeMode.StretchImage;
+        }
+        private void setVisitOld()
+        {
+            vsOld = new VisitOld();
+            vsOld.VN = txtID.Text;
+            vsOld.VSID = "165";
+            vsOld.PID = txtPttId.Text;
+            vsOld.PIDS = txtHn.Text;
+            vsOld.PName = cboPrefix.Text +" "+txtPttNameE.Text+" "+txtPttLNameE.Text;
+            vsOld.OName = "";
+            vsOld.VDate = DateTime.Now.ToString("yyyy-MM-dd");
+            vsOld.VStartTime = DateTime.Now.ToString("hh:MM:ss");
+            vsOld.VEndTime = "";
+            vsOld.VUpdateTime = "";
+            vsOld.LVSID = "";
+            vsOld.IntLock = "0";
         }
         private void FrmVisitAdd_Load(object sender, EventArgs e)
         {

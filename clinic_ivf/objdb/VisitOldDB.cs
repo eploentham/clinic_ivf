@@ -40,6 +40,7 @@ namespace clinic_ivf.objdb
         private void chkNull(VisitOld p)
         {
             int chk = 0;
+            Int64 chk1 = 0;
 
             //p.VN = p.VN == null ? "" : p.VN;
             //p.VSID = p.VSID == null ? "" : p.VSID;
@@ -58,8 +59,8 @@ namespace clinic_ivf.objdb
             p.IntLock = int.TryParse(p.IntLock, out chk) ? chk.ToString() : "0";
             p.LVSID = int.TryParse(p.LVSID, out chk) ? chk.ToString() : "0";
             //p.PIDS = int.TryParse(p.PIDS, out chk) ? chk.ToString() : "0";
-            p.PID = int.TryParse(p.PID, out chk) ? chk.ToString() : "0";
-            p.VN = int.TryParse(p.VN, out chk) ? chk.ToString() : "0";
+            p.PID = Int64.TryParse(p.PID, out chk1) ? chk1.ToString() : "0";
+            p.VN = Int64.TryParse(p.VN, out chk1) ? chk1.ToString() : "0";
             p.VSID = int.TryParse(p.VSID, out chk) ? chk.ToString() : "0";
         }
         public String insert(VisitOld p, String userId)
@@ -123,8 +124,9 @@ namespace clinic_ivf.objdb
         {
             String re = "";
 
-            if (p.PID.Equals(""))
+            if (p.VN.Equals(""))
             {
+                p.VN = genVN();
                 re = insert(p, userId);
             }
             else
@@ -159,18 +161,18 @@ namespace clinic_ivf.objdb
         public String genVN()
         {
             DataTable dt = new DataTable();
-            int year = (DateTime.Now.Year * 1000);
+            Int64 year = (DateTime.Now.Year * 1000);
             String sql = "select max(VN) as VN from Visit ";
-            int max = 0, vn=0;
+            Int64 max = 0, vn=0;
             
             dt = conn.selectData(conn.conn, sql);
             if (dt.Rows.Count > 0)
             {
-                int.TryParse(dt.Rows[0]["VN"].ToString(), out max);
+                Int64.TryParse(dt.Rows[0]["VN"].ToString(), out max);
             }
             if (max > year)
             {
-                vn += max;
+                vn = max + 1;
             }
             else
             {

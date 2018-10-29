@@ -272,6 +272,9 @@
     <Compile Include="objdb\FReligionDB.cs" />
     <Compile Include="objdb\FSexDB.cs" />
     <Compile Include="objdb\PatientOldDB.cs" />
+    <Compile Include="objdb\VisitDB.cs" />
+    <Compile Include="object1\Visit.cs" />
+    <Compile Include="objdb\VisitQueueTransferDB.cs" />
     <Compile Include="object1\AgentOld.cs" />
     <Compile Include="object1\BContractPayer.cs" />
     <Compile Include="object1\BContractPlans.cs" />
@@ -321,6 +324,7 @@
     <Compile Include="object1\Prefix.cs" />
     <Compile Include="object1\Staff.cs" />
     <Compile Include="object1\VisitOld.cs" />
+    <Compile Include="object1\VisitQueueTransfer.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="gui\Form1.resx">

@@ -516,9 +516,9 @@ namespace clinic_ivf.gui
                         {
                             if (txtID.Text.Equals(""))
                             {
-                                PatientOld pttOld = new PatientOld();
-                                pttOld = ic.ivfDB.pttOldDB.selectByPk1(re1);
-                                String re2 = ic.ivfDB.pttDB.updatePID(re, pttOld.PID);
+                                //PatientOld pttOld = new PatientOld();
+                                //pttOld = ic.ivfDB.pttOldDB.selectByPk1(re1);
+                                String re2 = ic.ivfDB.pttDB.updatePID(re, re1);
                                 if (int.TryParse(re2, out chk))
                                 {
                                     btnSave.Text = "Save";
@@ -1071,7 +1071,6 @@ namespace clinic_ivf.gui
             ptt.patient_contact_f_patient_relation_id = cboName1Rl.SelectedItem == null ? "" : ((ComboBoxItem)cboName1Rl.SelectedItem).Value;
             ptt.patient_coulpe_f_patient_relation_id = cboCouRel.SelectedItem == null ? "" : ((ComboBoxItem)cboCouRel.SelectedItem).Value;
             ptt.b_contract_plans_id = cboCrl.SelectedItem == null ? "" : ((ComboBoxItem)cboCrl.SelectedItem).Value;
-
             
             if (ic.iniC.statusAppDonor.Equals("1"))
             {
