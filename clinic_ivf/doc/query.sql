@@ -1023,3 +1023,83 @@ ADD COLUMN `status_image` VARCHAR(255) NULL COMMENT '0=default; 1=pic profile;2=
 61-10-28
 ALTER TABLE `ivf`.`t_patient` 
 ADD COLUMN `t_patient_id_old` INT NULL AFTER `b_contract_plans_id`;
+
+
+61-10-29
+
+CREATE TABLE b_service_point
+(
+    b_service_point_id INT NOT NULL AUTO_INCREMENT,
+    service_point_number VARCHAR(255) NULL,
+    service_point_description VARCHAR(255) NULL,
+    f_service_group_id INT NULL,
+    f_service_subgroup_id INT NULL,
+    service_point_active VARCHAR(255) NULL,
+    service_point_check VARCHAR(255) NULL,
+    service_point_operation_room VARCHAR(255) NULL,
+    service_point_color VARCHAR(255) NULL,
+    alert_send_opdcard VARCHAR(255) NULL,
+    is_ipd VARCHAR(1) NULL,
+    PRIMARY KEY (`b_service_point_id`))
+ENGINE = MyISAM
+DEFAULT CHARACTER SET = utf8
+COLLATE = utf8_bin
+COMMENT = 'id=212';
+ALTER TABLE b_service_point AUTO_INCREMENT = 2120000000;
+
+
+CREATE TABLE f_service_group
+(
+    f_service_group_id  INT NOT NULL AUTO_INCREMENT,
+    service_group_description VARCHAR(255) NULL,
+    PRIMARY KEY (`f_service_group_id`))
+ENGINE = MyISAM
+DEFAULT CHARACTER SET = utf8
+COLLATE = utf8_bin
+COMMENT = 'id=213';
+ALTER TABLE f_service_group AUTO_INCREMENT = 2130000000;
+
+CREATE TABLE f_service_subgroup
+(
+    f_service_subgroup_id  INT NOT NULL AUTO_INCREMENT,
+    service_subgroup_description VARCHAR(255) NULL,
+    PRIMARY KEY (`f_service_subgroup_id`))
+ENGINE = MyISAM
+DEFAULT CHARACTER SET = utf8
+COLLATE = utf8_bin
+COMMENT = 'id=214';
+ALTER TABLE f_service_subgroup AUTO_INCREMENT = 2140000000;
+
+INSERT INTO `ivf`.`f_service_group` (`service_group_description`) VALUES ('เวชระเบียน');
+INSERT INTO `ivf`.`f_service_group` (`service_group_description`) VALUES ('หน้าห้องตรวจ');
+INSERT INTO `ivf`.`f_service_group` (`service_group_description`) VALUES ('ห้องตรวจ');
+INSERT INTO `ivf`.`f_service_group` (`service_group_description`) VALUES ('จุดบริการตรวจ รับ จ่าย');
+INSERT INTO `ivf`.`f_service_group` (`service_group_description`) VALUES ('การเงิน');
+INSERT INTO `ivf`.`f_service_group` (`service_group_description`) VALUES ('การตั้งค่า');
+INSERT INTO `ivf`.`f_service_group` (`service_group_description`) VALUES ('คลินิกใช้การบันทึกรหัส ICD-10, ICD-9 ');
+INSERT INTO `ivf`.`f_service_group` (`service_group_description`) VALUES ('อื่นๆ');
+
+INSERT INTO `ivf`.`f_service_subgroup` (`service_subgroup_description`) VALUES ('Lab');
+INSERT INTO `ivf`.`f_service_subgroup` (`service_subgroup_description`) VALUES ('Xray');
+INSERT INTO `ivf`.`f_service_subgroup` (`service_subgroup_description`) VALUES ('Drug');
+INSERT INTO `ivf`.`f_service_subgroup` (`service_subgroup_description`) VALUES ('Other');
+INSERT INTO `ivf`.`f_service_subgroup` (`service_subgroup_description`) VALUES ('IPD');
+
+INSERT INTO `ivf`.`b_service_point` (`service_point_number`, `service_point_description`, `f_service_group_id`, `service_point_active`, `service_point_operation_room`, `service_point_color`) VALUES ('10', 'Reception', '2130000000', '1', '0', '225,225,225');
+INSERT INTO `ivf`.`b_service_point` (`service_point_number`, `service_point_description`, `f_service_group_id`, `f_service_subgroup_id`, `service_point_active`, `service_point_operation_room`, `service_point_color`) VALUES ('20', 'กุมารเวช', '2130000003', '', '1', '0', '225,225,225');
+INSERT INTO `ivf`.`b_service_point` (`service_point_number`, `service_point_description`, `f_service_group_id`, `f_service_subgroup_id`, `service_point_active`, `service_point_operation_room`, `service_point_color`) VALUES ('30', 'สูติ-นาริเวช', '2130000003', '', '1', '0', '225,225,225');
+INSERT INTO `ivf`.`b_service_point` (`service_point_number`, `service_point_description`, `f_service_group_id`, `f_service_subgroup_id`, `service_point_active`, `service_point_operation_room`, `service_point_color`) VALUES ('40', 'อายุรกรรม', '2130000003', '', '1', '0', '225,225,225');
+INSERT INTO `ivf`.`b_service_point` (`service_point_number`, `service_point_description`, `f_service_group_id`, `f_service_subgroup_id`, `service_point_active`, `service_point_operation_room`, `service_point_color`) VALUES ('50', 'LAB', '2130000007', '2140000000', '1', '0', '225,225,225');
+INSERT INTO `ivf`.`b_service_point` (`service_point_number`, `service_point_description`, `f_service_group_id`, `f_service_subgroup_id`, `service_point_active`, `service_point_operation_room`, `service_point_color`) VALUES ('60', 'X-Ray', '2130000007', '2140000001', '1', '0', '225,225,225');
+INSERT INTO `ivf`.`b_service_point` (`service_point_number`, `service_point_description`, `f_service_group_id`, `f_service_subgroup_id`, `service_point_active`, `service_point_operation_room`, `service_point_color`) VALUES ('70', 'ห้องยา', '2130000007', '2140000002', '1', '0', '225,225,225');
+INSERT INTO `ivf`.`b_service_point` (`service_point_number`, `service_point_description`, `f_service_group_id`, `f_service_subgroup_id`, `service_point_active`, `service_point_operation_room`, `service_point_color`) VALUES ('80', 'LR+NS', '2130000007', '2140000004', '1', '0', '225,225,225');
+INSERT INTO `ivf`.`b_service_point` (`service_point_number`, `service_point_description`, `f_service_group_id`, `f_service_subgroup_id`, `service_point_active`, `service_point_operation_room`, `service_point_color`) VALUES ('90', 'WARD ', '2130000007', '2140000004', '1', '0', '225,225,225');
+INSERT INTO `ivf`.`b_service_point` (`service_point_number`, `service_point_description`, `f_service_group_id`, `f_service_subgroup_id`, `service_point_active`, `service_point_operation_room`, `service_point_color`) VALUES ('A1', 'การเงิน', '2130000004', '2140000003', '1', '0', '225,225,225');
+INSERT INTO `ivf`.`b_service_point` (`service_point_description`, `f_service_group_id`, `f_service_subgroup_id`, `service_point_operation_room`) VALUES ('OR', '2130000007', '2140000004', '1');
+
+UPDATE `ivf`.`b_service_point` SET `service_point_number` = 'A2' WHERE (`b_service_point_id` = '2120000010');
+
+ALTER TABLE `ivf`.`b_service_point` 
+CHANGE COLUMN `service_point_active` `active` VARCHAR(255) NULL DEFAULT NULL ;
+
+

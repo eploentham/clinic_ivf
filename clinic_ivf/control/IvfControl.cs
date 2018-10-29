@@ -15,6 +15,7 @@ using AForge.Video.DirectShow;
 using System.IO;
 using System.Reflection;
 using C1.Win.C1Document;
+using MySql.Data.Types;
 
 namespace clinic_ivf.control
 {
@@ -170,6 +171,22 @@ namespace clinic_ivf.control
                     dt1 = DateTime.Parse(dt.ToString());
                     re = dt1.Year.ToString() + "-" + dt1.ToString("MM-dd");
                 }
+            }
+            return re;
+        }
+        public String datetoShow(Object dt)
+        {
+            DateTime dt1 = new DateTime();
+            MySqlDateTime dtm = new MySqlDateTime();
+            String re = "";
+            if (dt != null)
+            {
+                if(DateTime.TryParse(dt.ToString(),out dt1))
+                {
+                    re = dt1.ToString("dd-MM-yyyy");
+                }
+
+
             }
             return re;
         }

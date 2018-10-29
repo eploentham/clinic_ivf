@@ -74,12 +74,12 @@ namespace clinic_ivf.objdb
             sql = "Insert Into " + vsold.table + "(" + vsold.PID + "," + vsold.PIDS + "," + vsold.PName + "," +
                 vsold.OName + "," + vsold.VDate + "," + vsold.VStartTime + "," +
                 vsold.VEndTime + "," + vsold.VUpdateTime + "," + vsold.LVSID + "," +
-                vsold.IntLock + " " +
+                vsold.IntLock + "," + vsold.VN + "," + vsold.VSID + " " +
                 ") " +
                 "Values ('" + p.PID + "','" + p.PIDS.Replace("'", "''") + "','" + p.PName + "'," +
                 "'" + p.OName + "','" + p.VDate.Replace("'", "''") + "','" + p.VStartTime + "'," +
                 "'" + p.VEndTime + "','" + p.VUpdateTime + "','" + p.LVSID + "'," +
-                "'" + p.IntLock + "' " +
+                "'" + p.IntLock + "','" + p.VN + "','" + p.VSID + "' " +
                 ")";
             try
             {
@@ -146,13 +146,38 @@ namespace clinic_ivf.objdb
         public DataTable selectCurrentVisit()
         {
             DataTable dt = new DataTable();
-            String sql = "select vsold.PIDS,vsold.VN, vsold.PName, vsold.VDate, vsold.VStartTime  " +
+            String date = System.DateTime.Now.Year + "-" + System.DateTime.Now.ToString("MM-dd");
+            String sql = "select vsold.VN as id,vsold.VN, vsold.PIDS, vsold.PName, vsold.VDate, vsold.VStartTime, vsold.VEndTime, VStatus.VName, vsold.VSID " +
                 "From " + vsold.table + " vsold " +
+                "Left Join VStatus on  VStatus.VSID = vsold.VSID " +
                 " " +
-                "Where vsold." + vsold.VSID + " <>'999' ";
+                "Where vsold." + vsold.VDate + " ='"+ date + "' ";
             dt = conn.selectData(conn.conn, sql);
 
             return dt;
         }
+        public String genVN()
+        {
+            DataTable dt = new DataTable();
+            int year = (DateTime.Now.Year * 1000);
+            String sql = "select max(VN) as VN from Visit ";
+            int max = 0, vn=0;
+            
+            dt = conn.selectData(conn.conn, sql);
+            if (dt.Rows.Count > 0)
+            {
+                int.TryParse(dt.Rows[0]["VN"].ToString(), out max);
+            }
+            if (max > year)
+            {
+                vn += max;
+            }
+            else
+            {
+                vn += year;
+            }
+            return vn.ToString();
+        }
+
     }
 }

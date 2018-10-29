@@ -23,7 +23,7 @@ namespace clinic_ivf.gui
         Color bg, fc;
         Font ff, ffB;
 
-        int colPttId = 1, colPttHn = 2, colPttName = 3, colPttRemark = 4;
+        int colID=1, colVN = 2, colPttHn = 3, colPttName = 4, colVsDate = 5, colVsTime=6, colVsEtime=7, colStatus=8;
 
         C1FlexGrid grfPtt;
         C1SuperTooltip stt;
@@ -134,35 +134,43 @@ namespace clinic_ivf.gui
             DataTable dt = new DataTable();
             if (search.Equals(""))
             {
-                String date = System.DateTime.Now.Year + "-" + System.DateTime.Now.ToString("MM-dd");
-                grfPtt.DataSource = ic.ivfDB.pttDB.selectByDate1(date);
+                //String date = System.DateTime.Now.Year + "-" + System.DateTime.Now.ToString("MM-dd");
+                dt = ic.ivfDB.vsOldDB.selectCurrentVisit();
             }
             else
             {
-                grfPtt.DataSource = ic.ivfDB.pttDB.selectBySearch(search);
+                //grfPtt.DataSource = ic.ivfDB.vsOldDB.selectCurrentVisit(search);
             }
 
             //grfExpn.Rows.Count = dt.Rows.Count + 1;
-            //grfCu.Rows.Count = 41;
-            //grfCu.Cols.Count = 4;
+            grfPtt.Rows.Count = dt.Rows.Count+1;
+            grfPtt.Cols.Count = 9;
             C1TextBox txt = new C1TextBox();
             //C1ComboBox cboproce = new C1ComboBox();
             //ic.ivfDB.itmDB.setCboItem(cboproce);
             grfPtt.Cols[colPttHn].Editor = txt;
             grfPtt.Cols[colPttName].Editor = txt;
-            grfPtt.Cols[colPttRemark].Editor = txt;
+            grfPtt.Cols[colVsDate].Editor = txt;
 
-            grfPtt.Cols[colPttName].Width = 250;
+            grfPtt.Cols[colVN].Width = 120;
             grfPtt.Cols[colPttHn].Width = 120;
-            grfPtt.Cols[colPttRemark].Width = 300;
+            grfPtt.Cols[colPttName].Width = 300;
+            grfPtt.Cols[colVsDate].Width = 100;
+            grfPtt.Cols[colVsTime].Width = 80;
+            grfPtt.Cols[colVsEtime].Width = 80;
+            grfPtt.Cols[colStatus].Width = 200;
 
             grfPtt.ShowCursor = true;
             //grdFlex.Cols[colID].Caption = "no";
             //grfDept.Cols[colCode].Caption = "รหัส";
 
+            grfPtt.Cols[colVN].Caption = "VN";
             grfPtt.Cols[colPttHn].Caption = "HN";
             grfPtt.Cols[colPttName].Caption = "Name";
-            grfPtt.Cols[colPttRemark].Caption = "Remark";
+            grfPtt.Cols[colVsDate].Caption = "Date";
+            grfPtt.Cols[colVsTime].Caption = "Time visit";
+            grfPtt.Cols[colVsEtime].Caption = "Time finish";
+            grfPtt.Cols[colStatus].Caption = "Status";
 
             ContextMenu menuGw = new ContextMenu();
             menuGw.MenuItems.Add("&แก้ไข Patient", new EventHandler(ContextMenu_edit));
@@ -172,20 +180,30 @@ namespace clinic_ivf.gui
             //CellRange rg1 = grfBank.GetCellRange(1, colE, grfBank.Rows.Count, colE);
             //rg1.Style = grfBank.Styles["date"];
             //grfCu.Cols[colID].Visible = false;
-            for (int i = 1; i <= grfPtt.Rows.Count - 1; i++)
+            int i = 1;
+            foreach(DataRow row in dt.Rows)
             {
                 grfPtt[i, 0] = i;
-                if (i % 2 == 0)
-                    grfPtt.Rows[i].StyleNew.BackColor = color;
+                grfPtt[i, colID] = row["id"].ToString();
+                grfPtt[i, colVN] = row["VN"].ToString();
+                grfPtt[i, colPttHn] = row["PIDS"].ToString();
+                grfPtt[i, colPttName] = row["PName"].ToString();
+                grfPtt[i, colVsDate] = ic.datetoShow(row["VDate"]);
+                grfPtt[i, colVsTime] = row["VStartTime"].ToString();
+                grfPtt[i, colVsEtime] = row["VEndTime"].ToString();
+                grfPtt[i, colStatus] = row["VName"].ToString();
+                //if (i % 2 == 0)
+                //    grfPtt.Rows[i].StyleNew.BackColor = color;
+                i++;
             }
-            grfPtt.Cols[colPttId].Visible = false;
+            grfPtt.Cols[colID].Visible = false;
             theme1.SetTheme(grfPtt, ic.theme);
 
         }
         private void ContextMenu_edit(object sender, System.EventArgs e)
         {
             String chk = "", name = "", id = "";
-            id = grfPtt[grfPtt.Row, colPttId] != null ? grfPtt[grfPtt.Row, colPttId].ToString() : "";
+            id = grfPtt[grfPtt.Row, colVN] != null ? grfPtt[grfPtt.Row, colVN].ToString() : "";
             chk = grfPtt[grfPtt.Row, colPttHn] != null ? grfPtt[grfPtt.Row, colPttHn].ToString() : "";
             name = grfPtt[grfPtt.Row, colPttName] != null ? grfPtt[grfPtt.Row, colPttName].ToString() : "";
             //if (MessageBox.Show("ต้องการ แก้ไข Patient  \n  hn number " + chk + " \n name " + name, "", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == DialogResult.OK)

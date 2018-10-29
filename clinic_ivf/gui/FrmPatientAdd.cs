@@ -127,6 +127,7 @@ namespace clinic_ivf.gui
             btnPrvSticker.Click += BtnPrvSticker_Click;
             btnSavePic.Click += BtnSavePic_Click;
             tC1.DoubleClick += TC1_DoubleClick;
+            btnVisit.Click += BtnVisit_Click;
             setKeyEnter();
 
             btnCapture.Enabled = false;
@@ -143,6 +144,13 @@ namespace clinic_ivf.gui
             //picPtt.Load("54158.jpg");
             //picPtt.SizeMode = PictureBoxSizeMode.StretchImage;
             //btnSavePic.Enabled = false;
+        }
+
+        private void BtnVisit_Click(object sender, EventArgs e)
+        {
+            //throw new NotImplementedException();
+            FrmVisitAdd frm = new FrmVisitAdd(ic, "", txtID.Text);
+            frm.ShowDialog(this);
         }
 
         private void TC1_DoubleClick(object sender, EventArgs e)

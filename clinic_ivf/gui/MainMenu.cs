@@ -74,7 +74,7 @@ namespace clinic_ivf.gui
         private void MenuVisitNew_Click(object sender, EventArgs e)
         {
             //throw new NotImplementedException();
-            FrmVisitView frm = new FrmVisitView(ic);
+            FrmVisitView frm = new FrmVisitView(ic, this);
             frm.FormBorderStyle = FormBorderStyle.None;
             AddNewTab(frm, menuVisitNew.Text + " ");
         }
