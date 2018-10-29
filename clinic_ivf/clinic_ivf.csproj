@@ -225,6 +225,18 @@
     <Compile Include="gui\FrmStaff.designer.cs">
       <DependentUpon>FrmStaff.cs</DependentUpon>
     </Compile>
+    <Compile Include="gui\FrmVisitAdd.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="gui\FrmVisitAdd.Designer.cs">
+      <DependentUpon>FrmVisitAdd.cs</DependentUpon>
+    </Compile>
+    <Compile Include="gui\FrmVisitView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="gui\FrmVisitView.Designer.cs">
+      <DependentUpon>FrmVisitView.cs</DependentUpon>
+    </Compile>
     <Compile Include="gui\Login.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -377,6 +389,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="gui\FrmStaff.resx">
       <DependentUpon>FrmStaff.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="gui\FrmVisitAdd.resx">
+      <DependentUpon>FrmVisitAdd.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="gui\FrmVisitView.resx">
+      <DependentUpon>FrmVisitView.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="gui\Login.resx">
       <DependentUpon>Login.cs</DependentUpon>
