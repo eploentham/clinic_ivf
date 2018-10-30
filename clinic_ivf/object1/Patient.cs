@@ -136,7 +136,8 @@ namespace clinic_ivf.object1
             if (DateTime.TryParse(patient_birthday, out dtB))
             {
                 age = new Age(dtB);
-                re = age.AgeString.Replace("Years", "Y").Replace("Year", "Y").Replace("Months", "M").Replace("Month", "M").Replace("Days", "D").Replace("Day", "D");
+                //re = age.AgeString.Replace("Years", "Y").Replace("Year", "Y").Replace("Months", "M").Replace("Month", "M").Replace("Days", "D").Replace("Day", "D");
+                re = age.Years+"."+age.Months+"."+age.Days;
             }
             return re;
         }

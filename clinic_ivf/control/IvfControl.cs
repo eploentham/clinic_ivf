@@ -257,17 +257,17 @@ namespace clinic_ivf.control
             
             item = new ComboBoxItem();
             item.Text = "Patient";
-            item.Value = "Patient";
+            item.Value = "1";
             c.Items.Add(item);
 
             item = new ComboBoxItem();
             item.Text = "Egg Donor";
-            item.Value = "Egg Donor";
+            item.Value = "2";
             c.Items.Add(item);
 
             item = new ComboBoxItem();
             item.Text = "Surrogate";
-            item.Value = "Surrogate";
+            item.Value = "3";
             c.Items.Add(item);
             
             return c;

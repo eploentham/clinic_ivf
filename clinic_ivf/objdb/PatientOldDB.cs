@@ -300,6 +300,7 @@ namespace clinic_ivf.objdb
             if (pttO1.PID.Equals(""))
             {
                 pttO1.PID = selectByMaxPID();
+                pttO1.PIDS = genHN(pttO1.PID);
                 re = insert(pttO1, "");
                 re = pttO1.PID;
             }
@@ -315,7 +316,7 @@ namespace clinic_ivf.objdb
             PatientOld pttO1 = new PatientOld();
             pttO1.Address = ptt.patient_house;
             pttO1.Age = ptt.AgeStringShort().Replace("Y",".").Replace("M", ".").Replace("D", ".");
-            pttO1.AgentID = "";
+            pttO1.AgentID = ptt.agent;
             pttO1.Allergy = ptt.patient_drugallergy;
             pttO1.BuildingVillage = "";
             pttO1.CompanyName = "";
@@ -348,13 +349,16 @@ namespace clinic_ivf.objdb
             pttO1.Occupation = "";
             pttO1.OName = "";
             pttO1.OSurname = "";
-            pttO1.PatientTypeID = "";
-            pttO1.PaymentID = "";
-            pttO1.PID = selectByMaxPID();
-            pttO1.PIDS = genHN(pttO1.PID);
-            pttO1.PName = ptt.patient_firstname;
+            pttO1.PatientTypeID = ptt.patient_type;
+            pttO1.PaymentID = ptt.b_contract_plans_id;
+            
+                pttO1.PID = ptt.t_patient_id;
+                pttO1.PIDS = ptt.patient_hn;
+            
+            
+            pttO1.PName = ptt.patient_firstname_e;
             pttO1.Province = "";
-            pttO1.PSurname = ptt.patient_lastname;
+            pttO1.PSurname = ptt.patient_lastname_e;
             pttO1.Race = fracDB.getList(ptt.f_patient_race_id);
             pttO1.RelationshipID = "";
             pttO1.RelationshipOther = "";
@@ -396,6 +400,7 @@ namespace clinic_ivf.objdb
                 {
                     whereName = " or ( lcase(ptt." + pttO.OName + ") like '%" + txt[0].Trim().ToLower() + "%') and ( lcase(ptt." + pttO.OSurname + ") like '%" + txt[1].Trim().ToLower() + "%')";
                     wherenameE = " or ( lcase(ptt." + pttO.PName + ") like '%" + txt[0].Trim().ToLower() + "%') and ( lcase(ptt." + pttO.PSurname + ") like '%" + txt[1].Trim().ToLower() + "%')";
+                    wherenameE += " or ( lcase(ptt." + pttO.PName + ") like '%" + txt[0].Trim().ToLower() +" "+txt[1].Trim().ToLower() + "%') ";
                 }
                 else if (txt.Length == 1)
                 {

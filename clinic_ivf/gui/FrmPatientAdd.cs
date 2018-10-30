@@ -31,12 +31,14 @@ namespace clinic_ivf.gui
         IvfControl ic;
         String pttId = "", webcamname="";
         Patient ptt;
+        PatientOld pttO1;
 
         Font fEdit, fEditB;
         Color bg, fc;
         Font ff, ffB;
         int colID = 1, colHn = 2, colImg = 3, colDesc = 4, colDesc2 = 5, colDesc3 = 6, colPathPic = 7, colBtn=8;
-        
+        int colVsID = 1, colVsHn = 2, colVsVisitDate = 3, colVsVisitTime=4, colVsStatus=5;
+
         //C1FlexGrid grfDay2, grfDay3, grfDay5, grfDay6;
         C1SuperTooltip stt;
         C1SuperErrorProvider sep;
@@ -45,7 +47,7 @@ namespace clinic_ivf.gui
         FtpClient ff1;
         Bitmap img;
         Image image1;
-        C1FlexGrid grfImg;
+        C1FlexGrid grfImg, grfVs;
 
         String filename = "";
         static String filenamepic = "", host="", user="", pass="";
@@ -118,6 +120,8 @@ namespace clinic_ivf.gui
             setFocusColor();
             initGrfImg();
             setGrfImg("");
+            initGrfVs();
+            setGrfVs(txtHn.Text);
 
             btnPrnSticker.Click += BtnPrnSticker_Click;
             btnSave.Click += BtnSave_Click;
@@ -505,31 +509,33 @@ namespace clinic_ivf.gui
             {
                 stt.Hide();
                 setPatient();
-                String re = ic.ivfDB.pttDB.insertPatient(ptt, txtStfConfirmID.Text);
+                //String re = ic.ivfDB.pttDB.insertPatient(ptt, txtStfConfirmID.Text);
+                String re = ic.ivfDB.pttOldDB.insertPatientOld(ptt, txtStfConfirmID.Text);
                 int chk = 0;
                 if (int.TryParse(re, out chk))
                 {
                     if (!ic.iniC.statusAppDonor.Equals("1"))
                     {
-                        String re1 = ic.ivfDB.pttOldDB.insertPatientOld(ptt, txtStfConfirmID.Text);
+                        //String re1 = ic.ivfDB.pttOldDB.insertPatientOld(ptt, txtStfConfirmID.Text);
+                        String re1 = ic.ivfDB.pttDB.insertPatient(ptt, txtStfConfirmID.Text);
                         if (int.TryParse(re1, out chk))
                         {
                             if (txtID.Text.Equals(""))
                             {
-                                //PatientOld pttOld = new PatientOld();
-                                //pttOld = ic.ivfDB.pttOldDB.selectByPk1(re1);
-                                String re2 = ic.ivfDB.pttDB.updatePID(re, re1);
+                                PatientOld pttOld = new PatientOld();
+                                pttOld = ic.ivfDB.pttOldDB.selectByPk1(re);
+                                String re2 = ic.ivfDB.pttDB.updatePID(re1, re, pttOld.PIDS);
                                 if (int.TryParse(re2, out chk))
                                 {
                                     btnSave.Text = "Save";
                                     btnSave.Image = Resources.accept_database24;
                                     txtID.Value = re;
                                     txtPid.Focus();
+                                    txtHn.Value = pttOld.PIDS;
                                 }
                             }
                         }
                     }
-
                     
                     //System.Threading.Thread.Sleep(2000);
                     //this.Dispose();
@@ -905,9 +911,111 @@ namespace clinic_ivf.gui
             // return what we got
             return img;
         }
+        private void initGrfVs()
+        {
+            grfVs = new C1FlexGrid();
+            grfVs.Font = fEdit;
+            grfVs.Dock = System.Windows.Forms.DockStyle.Fill;
+            grfVs.Location = new System.Drawing.Point(0, 0);
+
+            //FilterRow fr = new FilterRow(grfExpn);
+
+            grfVs.AfterRowColChange += GrfImg_AfterRowColChange;
+            grfVs.MouseDown += GrfImg_MouseDown;
+            grfVs.DoubleClick += GrfImg_DoubleClick;
+            //grfExpnC.CellChanged += new C1.Win.C1FlexGrid.RowColEventHandler(this.grfDept_CellChanged);
+            ContextMenu menuGw = new ContextMenu();
+            //menuGw.MenuItems.Add("&แก้ไข รายการเบิก", new EventHandler(ContextMenu_edit));
+            //menuGw.MenuItems.Add("&แก้ไข", new EventHandler(ContextMenu_Gw_Edit));
+            //menuGw.MenuItems.Add("&ยกเลิก", new EventHandler(ContextMenu_Gw_Cancel));
+            grfVs.ContextMenu = menuGw;
+            pnVisit.Controls.Add(grfVs);
+
+            theme1.SetTheme(grfVs, "Office2016DarkGray");
+
+        }
+        private void setGrfVs(String search)
+        {
+            grfVs.Clear();
+            grfVs.Rows.Count = 1;
+            grfVs.Cols.Count = 6;
+            DataTable dt = ic.ivfDB.vsOldDB.selectByHN(search);
+
+            grfVs.Rows.Count = dt.Rows.Count + 1;
+            //grfCu.Rows.Count = 41;
+            //grfCu.Cols.Count = 4;
+            C1TextBox txt = new C1TextBox();
+            //Button btn = new Button();
+            //btn.BackColor = Color.Gray;
+            //btn.Click += BtnEditor_Click;
+            //C1ComboBox cboproce = new C1ComboBox();
+            //ic.ivfDB.itmDB.setCboItem(cboproce);
+            grfVs.Cols[colVsID].Editor = txt;
+            grfVs.Cols[colVsHn].Editor = txt;
+            grfVs.Cols[colVsVisitDate].Editor = txt;
+            grfVs.Cols[colVsVisitTime].Editor = txt;
+            //grfImg.Cols[colBtn].Editor = btn;
+
+            grfVs.Cols[colVsID].Width = 250;
+            grfVs.Cols[colVsHn].Width = 100;
+            grfVs.Cols[colVsVisitDate].Width = 100;
+            grfVs.Cols[colVsVisitTime].Width = 100;
+            grfVs.Cols[colVsStatus].Width = 250;
+            //grfImg.Cols[colBtn].Width = 50;
+            //grfImg.Cols[colPathPic].Width = 100;
+
+            grfVs.ShowCursor = true;
+            //grdFlex.Cols[colID].Caption = "no";
+            //grfDept.Cols[colCode].Caption = "รหัส";
+
+            grfVs.Cols[colVsID].Caption = "VN";
+            grfVs.Cols[colVsHn].Caption = "HN";
+            grfVs.Cols[colVsVisitDate].Caption = "visit date";
+            grfVs.Cols[colVsVisitTime].Caption = "visit time";
+            grfVs.Cols[colVsStatus].Caption = "Status";
+
+            //Hashtable ht = new Hashtable();
+            //foreach (DataRow dr in dt.Rows)
+            //{
+            //    ht.Add(dr["CategoryID"], LoadImage(dr["Picture"] as byte[]));
+            //}
+            //grfImg.Cols[colImg].ImageMap = ht;
+            //grfVs.Cols[colImg].ImageAndText = false;
+
+            ContextMenu menuGw = new ContextMenu();
+            menuGw.MenuItems.Add("&แก้ไข Patient", new EventHandler(ContextMenu_edit));
+            grfVs.ContextMenu = menuGw;
+
+            Color color = ColorTranslator.FromHtml(ic.iniC.grfRowColor);
+            //CellRange rg1 = grfBank.GetCellRange(1, colE, grfBank.Rows.Count, colE);
+            //rg1.Style = grfBank.Styles["date"];
+            //grfCu.Cols[colID].Visible = false;
+            int i = 1;
+            foreach(DataRow row in dt.Rows)
+            {
+                grfVs[i, colVsID] = row[ic.ivfDB.vsOldDB.vsold.VN].ToString();
+                grfVs[i, colVsHn] = row[ic.ivfDB.vsOldDB.vsold.PIDS].ToString();
+                grfVs[i, colVsVisitDate] = ic.datetoShow(row[ic.ivfDB.vsOldDB.vsold.VDate]);
+                grfVs[i, colVsVisitTime] = row[ic.ivfDB.vsOldDB.vsold.VStartTime].ToString();
+                grfVs[i, colVsStatus] = row["VName"].ToString();
+                grfVs[i, 0] = i;
+                i++;
+                //if (i % 2 == 0)
+                //grfPtt.Rows[i].StyleNew.BackColor = color;
+            }
+            //grfVs.Cols[colID].Visible = false;
+            //grfImg.Cols[colPathPic].Visible = false;
+            grfVs.Cols[colImg].AllowEditing = false;
+            grfVs.AutoSizeCols();
+            grfVs.AutoSizeRows();
+            theme1.SetTheme(grfImg, "Office2016DarkGray");
+
+        }
         private void setControl(String pttid)
         {
-            ptt = ic.ivfDB.pttDB.selectByPk1(pttid);
+            //pttO1 = new PatientOld();
+            //pttO1 = ic.ivfDB.pttOldDB.selectByPk1(pttid);
+            ptt = ic.ivfDB.pttDB.selectByIDold(pttid);
             if (ptt.t_patient_id.Equals(""))
             {
                 btnWebCamOn.Enabled = false;
@@ -962,6 +1070,10 @@ namespace clinic_ivf.gui
             txtContMobile1.Value = ptt.patient_contact_mobile_phone;
             txtPttLNameE.Value = ptt.patient_lastname_e;
             txtPttNameE.Value = ptt.patient_firstname_e;
+            txtAddrNo.Value = ptt.patient_house;
+            txtMoo.Value = ptt.patient_moo;
+            txtRoad.Value = ptt.patient_road;
+            
 
             ic.setC1Combo(cboCouPrefix, ptt.patient_couple_f_patient_prefix_id);
             ic.setC1Combo(cboName1Rl, ptt.patient_contact_f_patient_relation_id);
@@ -996,7 +1108,29 @@ namespace clinic_ivf.gui
             txtPttName.Value = pttO.OName;
             txtPttLName.Value = pttO.OSurname;
             txtContFname1.Value = pttO.EmergencyPersonalContact;
-            //txtContLname1.Value = pttO.OSurname;
+            txtDob.Value = pttO.DateOfBirth;
+            ic.setC1Combo(cboAgent, pttO.AgentID);
+            ic.setC1Combo(cboPttType, pttO.PatientTypeID);
+            ic.setC1Combo(cboCrl, pttO.PaymentID);
+            ic.setC1Combo(cboSex, pttO.SexID);
+            ic.setC1Combo(cboMarital, pttO.MaritalID);
+            ic.setC1Combo(cboRg, pttO.Religion);
+            cboProv.Value = pttO.Province;
+            cboDist.Value = pttO.District;
+            txtAddrNo.Value = pttO.Address;
+            txtMoo.Value = pttO.Moo;
+            txtRoad.Value = pttO.Road;
+            if (pttO.IDNumber.Length == 10)
+            {
+
+            }
+            //txtPid.Value = pttO.IDNumber.Length == 10 ? pttO.IDNumber : "";
+            //txtPaasport.Value = pttO.IDNumber.Length != 10 ? pttO.IDNumber : "";
+            txtPid.Value = pttO.IDNumber;
+            //cboName1Rl.Text = pttO.RelationshipID;
+            ic.setC1Combo(cboName1Rl, pttO.RelationshipID);
+
+            txtEmail.Value = pttO.Email;
 
             Thread threadA = new Thread(new ParameterizedThreadStart(ExecuteA));
             threadA.Start();

@@ -527,15 +527,18 @@ namespace clinic_ivf.objdb
 
             return "1";
         }
-        public String updatePID(String pttId, String pid)
+        public String updatePID(String pttId, String pid, String hn)
         {
             DataTable dt = new DataTable();
+            String re = "";
             String sql = "Update " + ptt.table + " Set " +
-                "" + ptt.t_patient_id_old + "='"+ pid + "' " +                
+                "" + ptt.t_patient_id_old + "='"+ pid + "' " +
+                "," + ptt.patient_hn + "='" + hn + "' " +
                 "Where " + ptt.pkField + "='" + pttId + "'";
-            conn.ExecuteNonQuery(conn.conn, sql);
+            
+            re = conn.ExecuteNonQuery(conn.conn, sql);
 
-            return "1";
+            return re;
         }
         public DataTable selectByPk(String pttId)
         {
@@ -545,6 +548,17 @@ namespace clinic_ivf.objdb
                 "Where ptt." + ptt.pkField + " ='" + pttId + "' ";
             dt = conn.selectData(conn.conn, sql);
             return dt;
+        }
+        public Patient selectByIDold(String pttId)
+        {
+            Patient cop1 = new Patient();
+            DataTable dt = new DataTable();
+            String sql = "select ptt.* " +
+                "From " + ptt.table + " ptt " +
+                "Where ptt." + ptt.t_patient_id_old + " ='" + pttId + "' ";
+            dt = conn.selectData(conn.conn, sql);
+            cop1 = setPatient(dt);
+            return cop1;
         }
         public Patient selectByPk1(String pttId)
         {
@@ -740,6 +754,7 @@ namespace clinic_ivf.objdb
                 ptt1.patient_contact_f_patient_relation_id = dt.Rows[0][ptt.patient_contact_f_patient_relation_id].ToString();
                 ptt1.patient_coulpe_f_patient_relation_id = dt.Rows[0][ptt.patient_coulpe_f_patient_relation_id].ToString();
                 ptt1.b_contract_plans_id = dt.Rows[0][ptt.b_contract_plans_id].ToString();
+                ptt1.t_patient_id_old = dt.Rows[0][ptt.t_patient_id_old].ToString();
             }
             else
             {
@@ -862,6 +877,7 @@ namespace clinic_ivf.objdb
             stf1.patient_contact_f_patient_relation_id = "";
             stf1.patient_coulpe_f_patient_relation_id = "";
             stf1.b_contract_plans_id = "";
+            stf1.t_patient_id_old = "";
             return stf1;
         }
     }
