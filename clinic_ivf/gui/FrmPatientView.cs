@@ -111,15 +111,19 @@ namespace clinic_ivf.gui
         {
             //grfDept.Rows.Count = 7;
             grfPtt.Clear();
+            grfPtt.DataSource = null;
+            grfPtt.Rows.Count = 1;
             DataTable dt = new DataTable();
             if (search.Equals(""))
             {
                 String date = System.DateTime.Now.Year + "-" + System.DateTime.Now.ToString("MM-dd");
-                grfPtt.DataSource = ic.ivfDB.pttDB.selectByDate1(date);
+                //grfPtt.DataSource = ic.ivfDB.pttDB.selectByDate1(date);
+                //grfPtt.DataSource = ic.ivfDB.pttDB.selectByDate1(date);
             }
             else
             {
-                grfPtt.DataSource = ic.ivfDB.pttDB.selectBySearch(search);
+                //grfPtt.DataSource = ic.ivfDB.pttDB.selectBySearch(search);
+                grfPtt.DataSource = ic.ivfDB.pttOldDB.selectBySearch(search);
             }
             
             //grfExpn.Rows.Count = dt.Rows.Count + 1;

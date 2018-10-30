@@ -180,6 +180,7 @@
             this.printDialog1 = new System.Windows.Forms.PrintDialog();
             this.cPdf = new C1.Win.C1Document.C1PdfDocumentSource(this.components);
             this._c1pdf = new C1.C1Pdf.C1PdfDocument();
+            this.txtIoOld = new C1.Win.C1Input.C1TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.theme1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
@@ -277,6 +278,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.btnVisit)).BeginInit();
             this.tabImage.SuspendLayout();
             this.sB.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtIoOld)).BeginInit();
             this.SuspendLayout();
             // 
             // theme1
@@ -321,6 +323,7 @@
             // splitContainer2.Panel1
             // 
             this.splitContainer2.Panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.splitContainer2.Panel1.Controls.Add(this.txtIoOld);
             this.splitContainer2.Panel1.Controls.Add(this.comboBox1);
             this.splitContainer2.Panel1.Controls.Add(this.cboAgent);
             this.splitContainer2.Panel1.Controls.Add(this.btnVoid);
@@ -2565,6 +2568,20 @@
             this._c1pdf.UseFastTextOut = true;
             this._c1pdf.UseFontShaping = true;
             // 
+            // txtIoOld
+            // 
+            this.txtIoOld.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtIoOld.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
+            this.txtIoOld.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.txtIoOld.Location = new System.Drawing.Point(458, 9);
+            this.txtIoOld.Name = "txtIoOld";
+            this.txtIoOld.Size = new System.Drawing.Size(30, 20);
+            this.txtIoOld.TabIndex = 619;
+            this.txtIoOld.Tag = null;
+            this.theme1.SetTheme(this.txtIoOld, "(default)");
+            this.txtIoOld.Visible = false;
+            this.txtIoOld.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            // 
             // FrmPatientAdd
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -2677,6 +2694,7 @@
             this.tabImage.ResumeLayout(false);
             this.sB.ResumeLayout(false);
             this.sB.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtIoOld)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -2835,5 +2853,6 @@
         private System.Windows.Forms.Panel pnImage;
         private System.Windows.Forms.Panel pnVisit;
         private System.Windows.Forms.Panel panel1;
+        private C1.Win.C1Input.C1TextBox txtIoOld;
     }
 }

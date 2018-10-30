@@ -987,6 +987,17 @@ namespace clinic_ivf.gui
             {
                 ic.setC1Combo(cboAgent, ptt.agent);
             }
+            PatientOld pttO = new PatientOld();
+            pttO = ic.ivfDB.pttOldDB.selectByPk1(pttid);
+            txtHn.Value = pttO.PIDS;
+            txtIoOld.Value = pttO.PID;
+            txtPttNameE.Value = pttO.PName;
+            txtPttLNameE.Value = pttO.PSurname;
+            txtPttName.Value = pttO.OName;
+            txtPttLName.Value = pttO.OSurname;
+            txtContFname1.Value = pttO.EmergencyPersonalContact;
+            //txtContLname1.Value = pttO.OSurname;
+
             Thread threadA = new Thread(new ParameterizedThreadStart(ExecuteA));
             threadA.Start();
         }

@@ -370,45 +370,57 @@ namespace clinic_ivf.objdb
 
             return pttO1;
         }
+        public DataTable selectByDate1(String date)
+        {
+            DataTable dt = new DataTable();
+            String sql = "select ptt." + pttO.PID + ",ptt." + pttO.PIDS + ",CONCAT(ptt." + pttO.PName + ",' ',ptt." + pttO.PSurname + ") as name,ptt." + pttO.EmergencyPersonalContact + " " +
+                "From " + pttO.table + " ptt " +
+                "Left join f_patient_prefix fpp on fpp.f_patient_prefix_id = ptt.f_patient_prefix_id " +
+                "Where ptt." + pttO.OName + " >='" + date + " 00:00:00' and ptt." + pttO.OName + " <='" + date + " 23:59:59' " +
+                "Order By ptt." + pttO.OName;
+            dt = conn.selectData(conn.conn, sql);
+            return dt;
+        }
         public DataTable selectBySearch(String search)
         {
             DataTable dt = new DataTable();
             String whereHN = "", whereName = "", wherepid = "", wherepassport = "", wherenameE = "";
             if (!search.Equals(""))
             {
-                whereHN = " ptt." + ptt.patient_hn + " like '%" + search.Trim().ToUpper() + "%'";
+                whereHN = " ptt." + pttO.PIDS + " like '%" + search.Trim().ToUpper() + "%'";
             }
             if (!search.Equals(""))
             {
                 String[] txt = search.Split(' ');
                 if (txt.Length == 2)
                 {
-                    whereName = " or ( lcase(ptt." + ptt.patient_firstname + ") like '%" + txt[0].Trim().ToLower() + "%') and ( lcase(ptt." + ptt.patient_lastname + ") like '%" + txt[1].Trim().ToLower() + "%')";
-                    wherenameE = " or ( lcase(ptt." + ptt.patient_firstname_e + ") like '%" + txt[0].Trim().ToLower() + "%') and ( lcase(ptt." + ptt.patient_lastname_e + ") like '%" + txt[1].Trim().ToLower() + "%')";
+                    whereName = " or ( lcase(ptt." + pttO.OName + ") like '%" + txt[0].Trim().ToLower() + "%') and ( lcase(ptt." + pttO.OSurname + ") like '%" + txt[1].Trim().ToLower() + "%')";
+                    wherenameE = " or ( lcase(ptt." + pttO.PName + ") like '%" + txt[0].Trim().ToLower() + "%') and ( lcase(ptt." + pttO.PSurname + ") like '%" + txt[1].Trim().ToLower() + "%')";
                 }
                 else if (txt.Length == 1)
                 {
-                    whereName = " or ( lcase(ptt." + ptt.patient_firstname + ") like '%" + txt[0].Trim().ToLower() + "%') or ( lcase(ptt." + ptt.patient_lastname + ") like '%" + txt[0].Trim().ToLower() + "%')";
-                    wherenameE = " or ( lcase(ptt." + ptt.patient_firstname_e + ") like '%" + txt[0].Trim().ToLower() + "%') or ( lcase(ptt." + ptt.patient_lastname_e + ") like '%" + txt[0].Trim().ToLower() + "%')";
+                    whereName = " or ( lcase(ptt." + pttO.OName + ") like '%" + txt[0].Trim().ToLower() + "%') or ( lcase(ptt." + pttO.OSurname + ") like '%" + txt[0].Trim().ToLower() + "%')";
+                    wherenameE = " or ( lcase(ptt." + pttO.PName + ") like '%" + txt[0].Trim().ToLower() + "%') or ( lcase(ptt." + pttO.PSurname + ") like '%" + txt[0].Trim().ToLower() + "%')";
                 }
                 else
                 {
-                    whereName = " or ( lcase(ptt." + ptt.patient_firstname + ") like '%" + search.Trim().ToLower() + "%') or ( lcase(ptt." + ptt.patient_lastname + ") like '%" + search.Trim().ToLower() + "%')";
-                    wherenameE = " or ( lcase(ptt." + ptt.patient_firstname_e + ") like '%" + search.Trim().ToLower() + "%') or ( lcase(ptt." + ptt.patient_lastname_e + ") like '%" + search.Trim().ToLower() + "%')";
+                    whereName = " or ( lcase(ptt." + pttO.OName + ") like '%" + search.Trim().ToLower() + "%') or ( lcase(ptt." + pttO.OSurname + ") like '%" + search.Trim().ToLower() + "%')";
+                    wherenameE = " or ( lcase(ptt." + pttO.PName + ") like '%" + search.Trim().ToLower() + "%') or ( lcase(ptt." + pttO.PSurname + ") like '%" + search.Trim().ToLower() + "%')";
                 }
             }
             if (!search.Equals(""))
             {
-                wherepid = " or ( ptt." + ptt.pid + " like '%" + search.Trim() + "%' )";
+                wherepid = " or ( ptt." + pttO.IDNumber + " like '%" + search.Trim() + "%' )";
             }
-            if (!search.Equals(""))
-            {
-                wherepassport = " or ( ptt." + ptt.passport + " like '%" + search.Trim() + "%' )";
-            }
-            String sql = "select ptt." + ptt.t_patient_id + ",ptt." + ptt.patient_hn + ",CONCAT(IFNULL(fpp.patient_prefix_description,''),' ', ptt." + ptt.patient_firstname + ",' ',ptt." + ptt.patient_lastname + ") as name,ptt." + ptt.remark + " " +
-                "From " + ptt.table + " ptt " +
-                "Left join f_patient_prefix fpp on fpp.f_patient_prefix_id = ptt.f_patient_prefix_id " +
-                "Where " + whereHN + whereName + wherepid + wherenameE;
+            //if (!search.Equals(""))
+            //{
+            //    wherepassport = " or ( ptt." + pttO.passport + " like '%" + search.Trim() + "%' )";
+            //}
+            String sql = "select ptt." + pttO.PID + ",ptt." + pttO.PIDS + ",CONCAT(IFNULL(fpp.SurfixName,''),' ', ptt." + pttO.PName + ",' ',ptt." + pttO.PSurname + ") as name,ptt." + pttO.EmergencyPersonalContact + " " +
+                "From " + pttO.table + " ptt " +
+                "Left join surfixname fpp on fpp.SurfixID = ptt.SurfixID " +
+                "Where " + whereHN + whereName + wherepid + wherenameE+" " +
+                "Order By ptt." + pttO.PID;
             dt = conn.selectData(conn.conn, sql);
             return dt;
         }
