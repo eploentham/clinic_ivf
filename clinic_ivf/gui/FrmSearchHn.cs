@@ -55,6 +55,13 @@ namespace clinic_ivf.gui
             initGrfCu();
             setGrfCu();
             tC1.SelectedTab = tabCurrent;
+            btnSearch.Click += BtnSearch_Click;
+        }
+
+        private void BtnSearch_Click(object sender, EventArgs e)
+        {
+            //throw new NotImplementedException();
+
         }
 
         private void BtnOk_Click(object sender, EventArgs e)
