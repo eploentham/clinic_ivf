@@ -66,7 +66,7 @@ namespace clinic_ivf.gui
         }
         private void openPatientAdd(String pttId, String name)
         {
-            FrmPatientAdd frm = new FrmPatientAdd(ic, pttId);
+            FrmPatientAdd frm = new FrmPatientAdd(ic, "","", pttId);
             String txt = "";
             if (!name.Equals(""))
             {

@@ -29,7 +29,7 @@ namespace clinic_ivf.gui
     public partial class FrmPatientAdd : Form
     {
         IvfControl ic;
-        String pttId = "", webcamname="";
+        String pttId = "", pttOldId="", vsoldId="", webcamname="";
         Patient ptt;
         PatientOld pttO1;
 
@@ -52,11 +52,13 @@ namespace clinic_ivf.gui
         String filename = "";
         static String filenamepic = "", host="", user="", pass="";
         
-        public FrmPatientAdd(IvfControl ic, String pttid)
+        public FrmPatientAdd(IvfControl ic, String pttid, String vsoldid, String pttoldid)
         {
             InitializeComponent();
             this.ic = ic;
             pttId = pttid;
+            vsoldId = vsoldid;
+            pttOldId = pttoldid;
             initConfig();
         }
         private void initConfig()
@@ -116,7 +118,7 @@ namespace clinic_ivf.gui
             ic.setCboPttType(cboPttType);
             ic.setCboPttGroup(cboPttGroup);
 
-            setControl(pttId);
+            setControl();
             setFocusColor();
             initGrfImg();
             setGrfImg("");
@@ -184,9 +186,11 @@ namespace clinic_ivf.gui
                         try
                         {
                             grfImg.Cols[colImg].ImageAndText = true;
-                            grfImg.Rows.Add();
+                            Row row1 = grfImg.Rows.Add();
                             int row = grfImg.Rows.Count;
                             int newWidth = 180;
+                            int hei = grfImg.Rows.DefaultSize;
+                            //grfImg.Rows[row-1].Height = hei*6;
                             CellRange rg1 = grfImg.GetCellRange(row - 1, colImg);
                             
                             //PictureBox pb = new PictureBox();
@@ -197,26 +201,27 @@ namespace clinic_ivf.gui
                             //ht.Add(colImg, loadedImage);
                             grfImg[row - 1, colPathPic] = file;
                             grfImg[row - 1, colBtn] = "send";
+                            //row1.ImageAndTex
                             rg1.Image = resizedImage;
                             //grfImg.me
                             grfImg.Rows.Add();
                             grfImg.Rows.Add();
                             grfImg.Rows.Add();
                             CellRange rg2 = grfImg.GetCellRange(row, colImg);
-                            CellRange rg3 = grfImg.GetCellRange(row+1, colImg);
-                            CellRange rg4 = grfImg.GetCellRange(row+2, colImg);
+                            CellRange rg3 = grfImg.GetCellRange(row + 1, colImg);
+                            CellRange rg4 = grfImg.GetCellRange(row + 2, colImg);
                             rg2.Image = resizedImage;
                             rg3.Image = resizedImage;
                             rg4.Image = resizedImage;
-                            grfImg[row - 1, colImg] =  i;
-                            grfImg[row, colImg] =  i;
-                            grfImg[row + 1, colImg] =  i;
-                            grfImg[row + 2, colImg] =  i;
-                            grfImg[row , colPathPic] = file;
+                            grfImg[row - 1, colImg] = i;
+                            grfImg[row, colImg] = i;
+                            grfImg[row + 1, colImg] = i;
+                            grfImg[row + 2, colImg] = i;
+                            grfImg[row, colPathPic] = file;
                             grfImg[row + 1, colPathPic] = file;
                             grfImg[row + 2, colPathPic] = file;
-                            //CellRange rgM = grfImg.GetCellRange(row - 1, colDesc, row +1, colDesc);
-                            //grfImg.GetMergedRange()
+                            CellRange rgM = grfImg.GetCellRange(row - 1, colDesc, row + 1, colDesc);
+                            //grfImg.me
                             //grfImg[grfImg.Row, colImg] = loadedImage;
 
                             //row1.DataMap = ht;
@@ -510,35 +515,51 @@ namespace clinic_ivf.gui
                 stt.Hide();
                 setPatient();
                 //String re = ic.ivfDB.pttDB.insertPatient(ptt, txtStfConfirmID.Text);
-                String re = ic.ivfDB.pttOldDB.insertPatientOld(ptt, txtStfConfirmID.Text);
-                int chk = 0;
-                if (int.TryParse(re, out chk))
+                if (ic.iniC.statusAppDonor.Equals("1"))
                 {
-                    if (!ic.iniC.statusAppDonor.Equals("1"))
+                    String re = ic.ivfDB.pttDB.insertPatient(ptt, txtStfConfirmID.Text);
+                    int chk = 0;
+                    Patient ptt1 = new Patient();
+                    ptt1 = ic.ivfDB.pttDB.selectByPk1(re);
+                    txtID.Value = re;
+                    txtPid.Focus();
+                    txtHn.Value = ptt1.patient_hn;
+                    barcode.Text = txtHn.Text;
+                    btnSave.Text = "Save";
+                    btnSave.Image = Resources.accept_database24;
+                }
+                else
+                {
+                    String re = ic.ivfDB.pttOldDB.insertPatientOld(ptt, txtStfConfirmID.Text);
+                    int chk = 0;
+                    if (int.TryParse(re, out chk))
                     {
-                        //String re1 = ic.ivfDB.pttOldDB.insertPatientOld(ptt, txtStfConfirmID.Text);
-                        String re1 = ic.ivfDB.pttDB.insertPatient(ptt, txtStfConfirmID.Text);
-                        if (int.TryParse(re1, out chk))
+                        if (!ic.iniC.statusAppDonor.Equals("1"))
                         {
-                            if (txtID.Text.Equals(""))
+                            //String re1 = ic.ivfDB.pttOldDB.insertPatientOld(ptt, txtStfConfirmID.Text);
+                            String re1 = ic.ivfDB.pttDB.insertPatient(ptt, txtStfConfirmID.Text);
+                            if (int.TryParse(re1, out chk))
                             {
-                                PatientOld pttOld = new PatientOld();
-                                pttOld = ic.ivfDB.pttOldDB.selectByPk1(re);
-                                String re2 = ic.ivfDB.pttDB.updatePID(re1, re, pttOld.PIDS);
-                                if (int.TryParse(re2, out chk))
+                                if (txtID.Text.Equals(""))
                                 {
-                                    btnSave.Text = "Save";
-                                    btnSave.Image = Resources.accept_database24;
-                                    txtID.Value = re;
-                                    txtPid.Focus();
-                                    txtHn.Value = pttOld.PIDS;
+                                    PatientOld pttOld = new PatientOld();
+                                    pttOld = ic.ivfDB.pttOldDB.selectByPk1(re);
+                                    String re2 = ic.ivfDB.pttDB.updatePID(re1, re, pttOld.PIDS);
+                                    if (int.TryParse(re2, out chk))
+                                    {
+                                        btnSave.Text = "Save";
+                                        btnSave.Image = Resources.accept_database24;
+                                        txtID.Value = re;
+                                        txtPid.Focus();
+                                        txtHn.Value = pttOld.PIDS;
+                                        barcode.Text = txtHn.Text;
+                                    }
                                 }
                             }
                         }
+                        //System.Threading.Thread.Sleep(2000);
+                        //this.Dispose();
                     }
-                    
-                    //System.Threading.Thread.Sleep(2000);
-                    //this.Dispose();
                 }
             }
             else
@@ -779,8 +800,9 @@ namespace clinic_ivf.gui
             {
                 //MessageBox.Show("a "+grfImg[grfImg.Row, colImg].ToString(), "");
                 int row = 0;
-                int.TryParse(grfImg[grfImg.Row, colImg].ToString(), out row);
-                row *= 4;
+                //int.TryParse(grfImg[grfImg.Row, colImg].ToString(), out row);
+                int.TryParse(grfImg.Row.ToString(), out row);
+                //row *= 4;
                 FrmShowImage frm = new FrmShowImage(grfImg[row, colPathPic].ToString());
                 frm.ShowDialog(this);
             }
@@ -810,6 +832,7 @@ namespace clinic_ivf.gui
         private void setGrfImg(String search)
         {
             grfImg.Clear();
+            grfImg.DataSource = null;
             grfImg.Rows.Count = 1;
             grfImg.Cols.Count = 9;
             DataTable dt = new DataTable();            
@@ -821,6 +844,7 @@ namespace clinic_ivf.gui
             Button btn = new Button();
             btn.BackColor = Color.Gray;
             btn.Click += BtnEditor_Click;
+            PictureBox img = new PictureBox();
             //C1ComboBox cboproce = new C1ComboBox();
             //ic.ivfDB.itmDB.setCboItem(cboproce);
             grfImg.Cols[colHn].Editor = txt;
@@ -828,6 +852,7 @@ namespace clinic_ivf.gui
             grfImg.Cols[colDesc2].Editor = txt;
             grfImg.Cols[colDesc3].Editor = txt;
             grfImg.Cols[colBtn].Editor = btn;
+            grfImg.Cols[colImg].Editor = img;
 
             grfImg.Cols[colHn].Width = 250;
             grfImg.Cols[colImg].Width = 100;
@@ -1011,11 +1036,10 @@ namespace clinic_ivf.gui
             theme1.SetTheme(grfImg, "Office2016DarkGray");
 
         }
-        private void setControl(String pttid)
+        private void setControlDonor(String pttid)
         {
-            //pttO1 = new PatientOld();
-            //pttO1 = ic.ivfDB.pttOldDB.selectByPk1(pttid);
-            ptt = ic.ivfDB.pttDB.selectByIDold(pttid);
+            ptt = ic.ivfDB.pttDB.selectByPk1(pttid);
+
             if (ptt.t_patient_id.Equals(""))
             {
                 btnWebCamOn.Enabled = false;
@@ -1073,33 +1097,96 @@ namespace clinic_ivf.gui
             txtAddrNo.Value = ptt.patient_house;
             txtMoo.Value = ptt.patient_moo;
             txtRoad.Value = ptt.patient_road;
-            
+
 
             ic.setC1Combo(cboCouPrefix, ptt.patient_couple_f_patient_prefix_id);
             ic.setC1Combo(cboName1Rl, ptt.patient_contact_f_patient_relation_id);
             ic.setC1Combo(cboCouRel, ptt.patient_coulpe_f_patient_relation_id);
             ic.setC1Combo(cboCrl, ptt.b_contract_plans_id);
-            //ptt.patient_couple_f_patient_prefix_id = cboCouRel.SelectedItem
+            txtAgent.Value = ptt.agent;
+            //txtEmail.Value = pttO.Email;
+        }
+        private void setControlPtt(String pttid)
+        {
+            ptt = ic.ivfDB.pttDB.selectByPk1(pttid);
+            if (ptt.t_patient_id.Equals(""))
+            {
+                ptt = ic.ivfDB.pttDB.selectByIDold(pttOldId);
+            }
 
-            //host = ic.iniC.hostFTP;
-            //user = ic.iniC.userFTP;
-            //pass = ic.iniC.passFTP;
-            //MemoryStream stream = new MemoryStream();
-            //stream = ic.ftpC.download(DateTime.Now.Year.ToString()+"/"+txtHn.Text+"."+ System.Drawing.Imaging.ImageFormat.Jpeg);
-            ////image1 = new Image();
-            //Bitmap bitmap = new Bitmap(stream);
-            ////image1 = bitmap;
-            //picPtt.Image = bitmap;
-            //picPtt.SizeMode = PictureBoxSizeMode.StretchImage;
-            if (ic.iniC.statusAppDonor.Equals("1"))
+            if (ptt.t_patient_id.Equals(""))
             {
-                txtAgent.Value = ptt.agent;
+                btnWebCamOn.Enabled = false;
             }
-            else
-            {
-                ic.setC1Combo(cboAgent, ptt.agent);
-            }
+            txtHn.Value = ptt.patient_hn;
+            txtID.Value = ptt.t_patient_id;
+            txtPttName.Value = ptt.patient_firstname;
+            txtPttLName.Value = ptt.patient_lastname;
+            txtRemark.Value = ptt.remark;
+            txtLineID.Value = ptt.line_id;
+            txtEmail.Value = ptt.email;
+            txtMobile1.Value = ptt.mobile1;
+            txtMobile2.Value = ptt.mobile2;
+            txtPid.Value = ptt.pid;
+            txtPaasport.Value = ptt.passport;
+            txtFatherFname.Value = ptt.patient_father_firstname;
+            txtFatherLname.Value = ptt.patient_father_lastname;
+            txtMotherFname.Value = ptt.patient_mother_firstname;
+            txtMotherLname.Value = ptt.patient_mother_lastname;
+            txtCouFname.Value = ptt.patient_couple_firstname;
+            txtCouLname.Value = ptt.patient_couple_lastname;
+            txtAgent.Value = ptt.agent;
+            txtDrugAllergy.Value = ptt.patient_drugallergy;
+            txtRemark.Value = ptt.remark;
+            txtDob.Value = ptt.patient_birthday;
+            txtFatherMobile.Value = ptt.patient_father_mobile;
+            txtMotherMobile.Value = ptt.patient_mother_mobile;
+            txtCouMobile.Value = ptt.patient_couple_mobile;
+
+            ic.setC1Combo(cboPrefix, ptt.f_patient_prefix_id);
+            ic.setC1Combo(cboSex, ptt.f_sex_id);
+            ic.setC1Combo(cboMarital, ptt.f_patient_marriage_status_id);
+            ic.setC1Combo(cboBloodG, ptt.f_patient_blood_group_id);
+            ic.setC1Combo(CboNation, ptt.f_patient_nation_id);
+            ic.setC1Combo(CboEduca, ptt.f_patient_education_type_id);
+            ic.setC1Combo(cboRace, ptt.f_patient_race_id);
+            ic.setC1Combo(cboRg, ptt.f_patient_religion_id);
+            ic.setC1Combo(cboPttType, ptt.patient_type);
+            ic.setC1Combo(cboPttGroup, ptt.patient_group);
+            ic.setC1Combo(cboName1Prefix, ptt.patient_contact_f_patient_prefix_id);
+            //ic.setC1Combo(cboCouPrefix, ptt.f_patient_religion_id);
+            //ic.setC1Combo(cboRg, ptt.f_patient_religion_id);
+            //ic.setC1Combo(cboRg, ptt.f_patient_religion_id);
+            chkChronic.Checked = ptt.status_chronic.Equals("1") ? true : false;
+            chkDenyAllergy.Checked = ptt.status_deny_allergy.Equals("1") ? true : false;
+            barcode.Text = txtHn.Text;
+            filenamepic = txtHn.Text;
+            txtContract.Value = ptt.contract;
+            txtInsurance.Value = ptt.insurance;
+            txtContFname1.Value = ptt.patient_contact_firstname;
+            txtContLname1.Value = ptt.patient_contact_lastname;
+            txtContMobile1.Value = ptt.patient_contact_mobile_phone;
+            txtPttLNameE.Value = ptt.patient_lastname_e;
+            txtPttNameE.Value = ptt.patient_firstname_e;
+            txtAddrNo.Value = ptt.patient_house;
+            txtMoo.Value = ptt.patient_moo;
+            txtRoad.Value = ptt.patient_road;
+
+
+            ic.setC1Combo(cboCouPrefix, ptt.patient_couple_f_patient_prefix_id);
+            ic.setC1Combo(cboName1Rl, ptt.patient_contact_f_patient_relation_id);
+            ic.setC1Combo(cboCouRel, ptt.patient_coulpe_f_patient_relation_id);
+            ic.setC1Combo(cboCrl, ptt.b_contract_plans_id);
+            ic.setC1Combo(cboAgent, ptt.agent);
+
             PatientOld pttO = new PatientOld();
+            VisitOld vsOld = new VisitOld();
+            if (pttid.Equals(""))
+            {
+                vsOld = ic.ivfDB.vsOldDB.selectByPk1(vsoldId);
+                pttid = vsOld.PID;
+            }
+
             pttO = ic.ivfDB.pttOldDB.selectByPk1(pttid);
             txtHn.Value = pttO.PIDS;
             txtIoOld.Value = pttO.PID;
@@ -1131,7 +1218,34 @@ namespace clinic_ivf.gui
             ic.setC1Combo(cboName1Rl, pttO.RelationshipID);
 
             txtEmail.Value = pttO.Email;
+        }
+        private void setControl()
+        {
+            //pttO1 = new PatientOld();
+            //pttO1 = ic.ivfDB.pttOldDB.selectByPk1(pttid);
+            if (ic.iniC.statusAppDonor.Equals("1"))
+            {
+                setControlDonor(pttId);
+            }
+            else
+            {
+                setControlPtt(pttOldId);
+            }
+            
+            
+            //ptt.patient_couple_f_patient_prefix_id = cboCouRel.SelectedItem
 
+            //host = ic.iniC.hostFTP;
+            //user = ic.iniC.userFTP;
+            //pass = ic.iniC.passFTP;
+            //MemoryStream stream = new MemoryStream();
+            //stream = ic.ftpC.download(DateTime.Now.Year.ToString()+"/"+txtHn.Text+"."+ System.Drawing.Imaging.ImageFormat.Jpeg);
+            ////image1 = new Image();
+            //Bitmap bitmap = new Bitmap(stream);
+            ////image1 = bitmap;
+            //picPtt.Image = bitmap;
+            //picPtt.SizeMode = PictureBoxSizeMode.StretchImage;
+            
             Thread threadA = new Thread(new ParameterizedThreadStart(ExecuteA));
             threadA.Start();
         }

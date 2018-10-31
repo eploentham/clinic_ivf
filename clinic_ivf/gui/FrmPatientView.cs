@@ -123,7 +123,14 @@ namespace clinic_ivf.gui
             else
             {
                 //grfPtt.DataSource = ic.ivfDB.pttDB.selectBySearch(search);
-                grfPtt.DataSource = ic.ivfDB.pttOldDB.selectBySearch(search);
+                if (ic.iniC.statusAppDonor.Equals("1"))
+                {
+                    grfPtt.DataSource = ic.ivfDB.pttDB.selectBySearch(search);
+                }
+                else
+                {
+                    grfPtt.DataSource = ic.ivfDB.pttOldDB.selectBySearch(search);
+                }
             }
             
             //grfExpn.Rows.Count = dt.Rows.Count + 1;
@@ -185,7 +192,15 @@ namespace clinic_ivf.gui
         }
         private void openPatientAdd(String pttId, String name)
         {
-            FrmPatientAdd frm = new FrmPatientAdd(ic, pttId);
+            FrmPatientAdd frm;
+            if (ic.iniC.statusAppDonor.Equals("1"))
+            {
+                frm = new FrmPatientAdd(ic, pttId, "", "");
+            }
+            else
+            {
+                frm = new FrmPatientAdd(ic,"","", pttId);
+            }
             String txt = "";
             if (!name.Equals(""))
             {

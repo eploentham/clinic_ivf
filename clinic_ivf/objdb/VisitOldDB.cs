@@ -145,6 +145,17 @@ namespace clinic_ivf.objdb
             dt = conn.selectData(conn.conn, sql);
             return dt;
         }
+        public VisitOld selectByPk1(String copId)
+        {
+            VisitOld cop1 = new VisitOld();
+            DataTable dt = new DataTable();
+            String sql = "select vsold.* " +
+                "From " + vsold.table + " vsold " +
+                "Where vsold." + vsold.pkField + " ='" + copId + "' ";
+            dt = conn.selectData(conn.conn, sql);
+            cop1 = setVisitOld(dt);
+            return cop1;
+        }
         public DataTable selectByHN(String hn)
         {
             DataTable dt = new DataTable();
@@ -194,6 +205,47 @@ namespace clinic_ivf.objdb
             }
             return vn.ToString();
         }
-
+        public VisitOld setVisitOld(DataTable dt)
+        {
+            VisitOld vsold1 = new VisitOld();
+            if (dt.Rows.Count > 0)
+            {
+                vsold1.VN = dt.Rows[0][vsold.VN].ToString();
+                vsold1.VSID = dt.Rows[0][vsold.VSID].ToString();
+                vsold1.PID = dt.Rows[0][vsold.PID].ToString();
+                vsold1.PIDS = dt.Rows[0][vsold.PIDS].ToString();
+                vsold1.PName = dt.Rows[0][vsold.PName].ToString();
+                vsold1.OName = dt.Rows[0][vsold.OName].ToString();
+                vsold1.VDate = dt.Rows[0][vsold.VDate].ToString();
+                vsold1.VStartTime = dt.Rows[0][vsold.VStartTime].ToString();
+                vsold1.VEndTime = dt.Rows[0][vsold.VEndTime].ToString();
+                vsold1.VUpdateTime = dt.Rows[0][vsold.VUpdateTime].ToString();
+                vsold1.LVSID = dt.Rows[0][vsold.LVSID].ToString();
+                vsold1.IntLock = dt.Rows[0][vsold.IntLock].ToString();
+                
+            }
+            else
+            {
+                setVisitOld1(vsold1);
+            }
+            return vsold1;
+        }
+        private VisitOld setVisitOld1(VisitOld stf1)
+        {
+            stf1.VN = "";
+            stf1.VSID = "";
+            stf1.PID = "";
+            stf1.PIDS = "";
+            stf1.PName = "";
+            stf1.OName = "";
+            stf1.VDate = "";
+            stf1.VStartTime = "";
+            stf1.VEndTime = "";
+            stf1.VUpdateTime = "";
+            stf1.LVSID = "";
+            stf1.IntLock = "";
+            
+            return stf1;
+        }
     }
 }
