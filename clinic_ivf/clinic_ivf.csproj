@@ -45,30 +45,39 @@
       <HintPath>..\packages\AForge.Video.DirectShow.2.2.5\lib\AForge.Video.DirectShow.dll</HintPath>
     </Reference>
     <Reference Include="C1.C1Pdf.4, Version=4.0.20182.314, Culture=neutral, PublicKeyToken=79882d576c6336da, processorArchitecture=MSIL" />
+    <Reference Include="C1.C1Report.4, Version=4.0.20182.314, Culture=neutral, PublicKeyToken=594a0605db190bb9, processorArchitecture=MSIL" />
     <Reference Include="C1.C1Zip.4, Version=4.0.20182.314, Culture=neutral, PublicKeyToken=79882d576c6336da, processorArchitecture=MSIL" />
     <Reference Include="C1.Win.4, Version=4.0.20182.314, Culture=neutral, PublicKeyToken=944ae1ea0e47ca04, processorArchitecture=MSIL" />
     <Reference Include="C1.Win.BarCode.4, Version=4.0.20182.314, Culture=neutral, PublicKeyToken=79882d576c6336da, processorArchitecture=MSIL" />
     <Reference Include="C1.Win.Bitmap.4, Version=4.0.20182.314, Culture=neutral, PublicKeyToken=944ae1ea0e47ca04, processorArchitecture=MSIL" />
+    <Reference Include="C1.Win.C1Chart.4, Version=4.0.20182.314, Culture=neutral, PublicKeyToken=a22e16972c085838" />
+    <Reference Include="C1.Win.C1Chart3D.4, Version=4.0.20182.314, Culture=neutral, PublicKeyToken=a22e16972c085838" />
     <Reference Include="C1.Win.C1Command.4, Version=4.0.20182.314, Culture=neutral, PublicKeyToken=e808566f358766d8, processorArchitecture=MSIL" />
     <Reference Include="C1.Win.C1Document.4, Version=4.0.20182.314, Culture=neutral, PublicKeyToken=944ae1ea0e47ca04" />
-    <Reference Include="C1.Win.C1DX.4, Version=4.0.20182.314, Culture=neutral, PublicKeyToken=944ae1ea0e47ca04" />
     <Reference Include="C1.Win.C1FlexGrid.4, Version=4.0.20182.314, Culture=neutral, PublicKeyToken=79882d576c6336da, processorArchitecture=MSIL" />
     <Reference Include="C1.Win.C1Input.4, Version=4.0.20182.314, Culture=neutral, PublicKeyToken=7e7ff60f0c214f9a, processorArchitecture=MSIL" />
-    <Reference Include="C1.Win.C1InputPanel.4, Version=4.0.20182.314, Culture=neutral, PublicKeyToken=79882d576c6336da" />
-    <Reference Include="C1.Win.C1Ribbon.4, Version=4.0.20182.314, Culture=neutral, PublicKeyToken=79882d576c6336da" />
+    <Reference Include="C1.Win.C1List.4, Version=4.0.20182.314, Culture=neutral, PublicKeyToken=6b24f8f981dbd7bc, processorArchitecture=MSIL" />
+    <Reference Include="C1.Win.C1Report.4, Version=4.0.20182.314, Culture=neutral, PublicKeyToken=41780e2fc605e636, processorArchitecture=MSIL" />
+    <Reference Include="C1.Win.C1ReportDesigner.4, Version=4.0.20182.314, Culture=neutral, PublicKeyToken=fb528571dbff5bd2, processorArchitecture=MSIL" />
+    <Reference Include="C1.Win.C1Ribbon.4, Version=4.0.20182.314, Culture=neutral, PublicKeyToken=79882d576c6336da, processorArchitecture=MSIL" />
+    <Reference Include="C1.Win.C1Schedule.4, Version=4.0.20182.314, Culture=neutral, PublicKeyToken=79882d576c6336da, processorArchitecture=MSIL" />
     <Reference Include="C1.Win.C1SuperTooltip.4, Version=4.0.20182.314, Culture=neutral, PublicKeyToken=79882d576c6336da, processorArchitecture=MSIL" />
     <Reference Include="C1.Win.C1Themes.4, Version=4.0.20182.314, Culture=neutral, PublicKeyToken=594a0605db190bb9, processorArchitecture=MSIL" />
+    <Reference Include="C1.Win.Calendar.4, Version=4.0.20182.314, Culture=neutral, PublicKeyToken=79882d576c6336da, processorArchitecture=MSIL" />
     <Reference Include="C1.Win.FlexChart.4, Version=4.0.20182.314, Culture=neutral, PublicKeyToken=3aa2920c09e0aefd" />
+    <Reference Include="C1.Win.FlexReport.4, Version=4.0.20182.314, Culture=neutral, PublicKeyToken=944ae1ea0e47ca04, processorArchitecture=MSIL" />
     <Reference Include="C1.Win.FlexViewer.4, Version=4.0.20182.314, Culture=neutral, PublicKeyToken=944ae1ea0e47ca04, processorArchitecture=MSIL" />
-    <Reference Include="C1.Win.ImportServices.4, Version=4.0.20182.314, Culture=neutral, PublicKeyToken=944ae1ea0e47ca04" />
     <Reference Include="INIFileParser, Version=2.5.2.0, Culture=neutral, PublicKeyToken=79af7b307b65cf3c, processorArchitecture=MSIL">
       <HintPath>..\packages\ini-parser.2.5.2\lib\net20\INIFileParser.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.VisualBasic" />
     <Reference Include="MySql.Data, Version=8.0.12.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="ReachFramework" />
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Windows.Forms.DataVisualization" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -78,6 +87,7 @@
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
+    <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="control\IvfControl.cs" />
@@ -86,6 +96,18 @@
     </Compile>
     <Compile Include="gui\Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="gui\FrmAppoinmentView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="gui\FrmAppoinmentView.Designer.cs">
+      <DependentUpon>FrmAppoinmentView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="gui\FrmAppointmentAdd.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="gui\FrmAppointmentAdd.Designer.cs">
+      <DependentUpon>FrmAppointmentAdd.cs</DependentUpon>
     </Compile>
     <Compile Include="gui\FrmConvertData.cs">
       <SubType>Form</SubType>
@@ -174,6 +196,12 @@
     <Compile Include="gui\FrmPatientAdd.Designer.cs">
       <DependentUpon>FrmPatientAdd.cs</DependentUpon>
     </Compile>
+    <Compile Include="gui\FrmPatientUpPic.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="gui\FrmPatientUpPic.Designer.cs">
+      <DependentUpon>FrmPatientUpPic.cs</DependentUpon>
+    </Compile>
     <Compile Include="gui\FrmPatientView.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -256,9 +284,11 @@
       <DependentUpon>PasswordForm.cs</DependentUpon>
     </Compile>
     <Compile Include="objdb\AgentOldDB.cs" />
+    <Compile Include="objdb\AppointmentOldDB.cs" />
     <Compile Include="objdb\BContractPlansDB.cs" />
     <Compile Include="objdb\BContractPayerDB.cs" />
     <Compile Include="objdb\BServicePointDB.cs" />
+    <Compile Include="objdb\DoctorOldDB.cs" />
     <Compile Include="objdb\FBloodGroupDB.cs" />
     <Compile Include="objdb\FNationDB.cs" />
     <Compile Include="objdb\FPatientDischargeStatusDB.cs" />
@@ -273,6 +303,8 @@
     <Compile Include="objdb\FSexDB.cs" />
     <Compile Include="objdb\PatientOldDB.cs" />
     <Compile Include="objdb\VisitDB.cs" />
+    <Compile Include="object1\AppointmentOld.cs" />
+    <Compile Include="object1\DoctorOld.cs" />
     <Compile Include="object1\Visit.cs" />
     <Compile Include="objdb\VisitQueueTransferDB.cs" />
     <Compile Include="object1\AgentOld.cs" />
@@ -330,6 +362,12 @@
     <EmbeddedResource Include="gui\Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="gui\FrmAppoinmentView.resx">
+      <DependentUpon>FrmAppoinmentView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="gui\FrmAppointmentAdd.resx">
+      <DependentUpon>FrmAppointmentAdd.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="gui\FrmConvertData.resx">
       <DependentUpon>FrmConvertData.cs</DependentUpon>
     </EmbeddedResource>
@@ -371,6 +409,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="gui\FrmPatientAdd.resx">
       <DependentUpon>FrmPatientAdd.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="gui\FrmPatientUpPic.resx">
+      <DependentUpon>FrmPatientUpPic.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="gui\FrmPatientView.resx">
       <DependentUpon>FrmPatientView.cs</DependentUpon>

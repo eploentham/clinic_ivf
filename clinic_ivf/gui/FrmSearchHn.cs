@@ -21,7 +21,7 @@ namespace clinic_ivf.gui
         Font fEdit, fEditB;
         Color bg, fc;
         Font ff, ffB;
-        int colCuHn = 1, colCuVn = 2, colCuName = 3, colCuDate=4, colCuTime=5;
+        int colCuHn = 2, colCuVn1 = 1, colCuName = 3, colCuDate=4, colCuTime=5, colDept=6;
 
         C1FlexGrid grfCu, grfDay3, grfDay5, grfDay6;
         C1SuperTooltip stt;
@@ -96,12 +96,12 @@ namespace clinic_ivf.gui
             if (e.NewRange.r1 < 0) return;
             if (e.NewRange.Data == null) return;
             String vn = "";
-            vn = grfCu[e.NewRange.r1, colCuVn] != null ? grfCu[e.NewRange.r1, colCuVn].ToString() : "";
+            vn = grfCu[e.NewRange.r1, colCuVn1] != null ? grfCu[e.NewRange.r1, colCuVn1].ToString() : "";
             if (!vn.Equals(""))
             {
                 ic.sVsOld = new VisitOld();
                 ic.sVsOld.PName = grfCu[grfCu.Row, colCuName]!= null ? grfCu[grfCu.Row, colCuName].ToString() : "";
-                ic.sVsOld.VN = grfCu[grfCu.Row, colCuVn] != null ? grfCu[grfCu.Row, colCuVn].ToString() : "";
+                ic.sVsOld.VN = grfCu[grfCu.Row, colCuVn1] != null ? grfCu[grfCu.Row, colCuVn1].ToString() : "";
                 ic.sVsOld.PIDS = grfCu[grfCu.Row, colCuHn] != null ? grfCu[grfCu.Row, colCuHn].ToString() : "";
 
                 txtHn.Value = ic.sVsOld.PIDS;
@@ -116,43 +116,58 @@ namespace clinic_ivf.gui
             //grfDept.Rows.Count = 7;
             grfCu.Clear();
             DataTable dt = new DataTable();
-
-            grfCu.DataSource = ic.ivfDB.vsOldDB.selectCurrentVisit();
+            grfCu.DataSource = null;
+            dt = ic.ivfDB.vsOldDB.selectCurrentVisit();
             //grfExpn.Rows.Count = dt.Rows.Count + 1;
-            //grfCu.Rows.Count = 41;
-            //grfCu.Cols.Count = 4;
+            grfCu.Rows.Count = 1;
+            grfCu.Cols.Count = 7;
             C1TextBox txt = new C1TextBox();
             C1ComboBox cboproce = new C1ComboBox();
             //ic.ivfDB.itmDB.setCboItem(cboproce);
             grfCu.Cols[colCuHn].Editor = txt;
-            grfCu.Cols[colCuVn].Editor = txt;
+            grfCu.Cols[colCuVn1].Editor = txt;
             grfCu.Cols[colCuName].Editor = txt;
 
-            grfCu.Cols[colCuHn].Width = 120;
-            grfCu.Cols[colCuVn].Width = 120;
+            grfCu.Cols[colCuHn].Width = 100;
+            grfCu.Cols[colCuVn1].Width = 100;
             grfCu.Cols[colCuName].Width = 280;
             grfCu.Cols[colCuDate].Width = 100;
             grfCu.Cols[colCuTime].Width = 80;
+            grfCu.Cols[colDept].Width = 120;
+            //grfCu.Cols[colCuTime].Width = 80;
 
             grfCu.ShowCursor = true;
             //grdFlex.Cols[colID].Caption = "no";
             //grfDept.Cols[colCode].Caption = "รหัส";
 
             grfCu.Cols[colCuHn].Caption = "HN";
-            grfCu.Cols[colCuVn].Caption = "VN";
+            grfCu.Cols[colCuVn1].Caption = "VN";
             grfCu.Cols[colCuName].Caption = "Name";
             grfCu.Cols[colCuDate].Caption = "Date";
             grfCu.Cols[colCuTime].Caption = "Time";
+            grfCu.Cols[colDept].Caption = "dept";
 
             Color color = ColorTranslator.FromHtml(ic.iniC.grfRowColor);
             //CellRange rg1 = grfBank.GetCellRange(1, colE, grfBank.Rows.Count, colE);
             //rg1.Style = grfBank.Styles["date"];
             //grfCu.Cols[colID].Visible = false;
-            for (int i = 1; i <= grfCu.Rows.Count-1; i++)
+            for (int i = 0; i <= dt.Rows.Count-1; i++)
             {
-                grfCu[i, 0] = i;
+                Row row = grfCu.Rows.Add();
+                row[0] = i;
+                row[colCuVn1] = dt.Rows[i]["VN"].ToString();
+                row[colCuHn] = dt.Rows[i]["PIDS"].ToString();
+                row[colCuName] = dt.Rows[i]["PName"].ToString();
+                row[colCuDate] =  ic.datetoShow(dt.Rows[i]["VDate"].ToString());
+                row[colCuTime] = dt.Rows[i]["VStartTime"].ToString();
+                row[colDept] = dt.Rows[i]["VName"].ToString();
             }
-            //grfCu.Cols[colNum].Visible = false;
+            grfCu.Cols[colCuHn].AllowEditing = false;
+            grfCu.Cols[colCuVn1].AllowEditing = false;
+            grfCu.Cols[colCuName].AllowEditing = false;
+            grfCu.Cols[colCuDate].AllowEditing = false;
+            grfCu.Cols[colCuTime].AllowEditing = false;
+            grfCu.Cols[colDept].AllowEditing = false;
         }
         private void FrmSearchHn_Load(object sender, EventArgs e)
         {

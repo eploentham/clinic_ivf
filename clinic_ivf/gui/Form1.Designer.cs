@@ -43,17 +43,26 @@
             this.txtReqDate = new C1.Win.C1Input.C1DateEdit();
             this.c1SuperTooltip3 = new C1.Win.C1SuperTooltip.C1SuperTooltip(this.components);
             this.c1TextBox2 = new C1.Win.C1Input.C1TextBox();
+            this.c1FlexViewer1 = new C1.Win.FlexViewer.C1FlexViewer();
+            this.c1FlexReport1 = new C1.Win.FlexReport.C1FlexReport();
+            this.c1Report1 = new C1.C1Report.C1Report();
+            this.c1Report2 = new C1.C1Report.C1Report();
+            this.c1ReportDesigner1 = new C1.Win.C1ReportDesigner.C1ReportDesigner();
             ((System.ComponentModel.ISupportInitialize)(this.c1SuperErrorProvider1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.c1CommandDock1)).BeginInit();
             this.c1CommandDock1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.c1DockingTab1)).BeginInit();
             this.c1DockingTab1.SuspendLayout();
+            this.c1DockingTabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.c1TextBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.c1Button1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.c1ThemeController1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.c1FlexGrid1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtReqDate)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.c1TextBox2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.c1FlexViewer1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.c1Report1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.c1Report2)).BeginInit();
             this.SuspendLayout();
             // 
             // c1SuperTooltip1
@@ -99,6 +108,7 @@
             // c1DockingTabPage1
             // 
             this.c1DockingTabPage1.CaptionVisible = true;
+            this.c1DockingTabPage1.Controls.Add(this.c1ReportDesigner1);
             this.c1DockingTabPage1.Location = new System.Drawing.Point(0, 0);
             this.c1DockingTabPage1.Name = "c1DockingTabPage1";
             this.c1DockingTabPage1.Size = new System.Drawing.Size(297, 426);
@@ -191,11 +201,77 @@
             this.c1ThemeController1.SetTheme(this.c1TextBox2, "(default)");
             this.c1TextBox2.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
             // 
+            // c1FlexViewer1
+            // 
+            this.c1FlexViewer1.AutoScrollMargin = new System.Drawing.Size(0, 0);
+            this.c1FlexViewer1.AutoScrollMinSize = new System.Drawing.Size(0, 0);
+            this.c1FlexViewer1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.c1FlexViewer1.Location = new System.Drawing.Point(388, 0);
+            this.c1FlexViewer1.Name = "c1FlexViewer1";
+            this.c1FlexViewer1.OutlineBackColorHot = System.Drawing.Color.FromArgb(((int)(((byte)(185)))), ((int)(((byte)(193)))), ((int)(((byte)(201)))));
+            this.c1FlexViewer1.OutlineBackColorHotSelected = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(118)))), ((int)(((byte)(135)))));
+            this.c1FlexViewer1.OutlineBackColorSelected = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(118)))), ((int)(((byte)(135)))));
+            this.c1FlexViewer1.OutlineButtonBackColorHot = System.Drawing.Color.FromArgb(((int)(((byte)(185)))), ((int)(((byte)(193)))), ((int)(((byte)(201)))));
+            this.c1FlexViewer1.OutlineButtonBackColorPressed = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(118)))), ((int)(((byte)(135)))));
+            this.c1FlexViewer1.OutlineButtonForeColorHot = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(118)))), ((int)(((byte)(135)))));
+            this.c1FlexViewer1.OutlineButtonForeColorNormal = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(68)))), ((int)(((byte)(68)))));
+            this.c1FlexViewer1.OutlineButtonForeColorPressed = System.Drawing.Color.White;
+            this.c1FlexViewer1.OutlineForeColorHot = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(118)))), ((int)(((byte)(135)))));
+            this.c1FlexViewer1.OutlineForeColorNormal = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(68)))), ((int)(((byte)(68)))));
+            this.c1FlexViewer1.OutlineLineColor = System.Drawing.Color.FromArgb(((int)(((byte)(212)))), ((int)(((byte)(212)))), ((int)(((byte)(212)))));
+            this.c1FlexViewer1.ParamHeaderBackColor = System.Drawing.Color.White;
+            this.c1FlexViewer1.ParamHeaderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(118)))), ((int)(((byte)(135)))));
+            this.c1FlexViewer1.Size = new System.Drawing.Size(412, 450);
+            this.c1FlexViewer1.SplitterColor = System.Drawing.Color.FromArgb(((int)(((byte)(212)))), ((int)(((byte)(212)))), ((int)(((byte)(212)))));
+            this.c1FlexViewer1.TabIndex = 516;
+            this.c1ThemeController1.SetTheme(this.c1FlexViewer1, "(default)");
+            this.c1FlexViewer1.ThumbBackColorHot = System.Drawing.Color.FromArgb(((int)(((byte)(185)))), ((int)(((byte)(193)))), ((int)(((byte)(201)))));
+            this.c1FlexViewer1.ThumbBackColorPressed = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(118)))), ((int)(((byte)(135)))));
+            this.c1FlexViewer1.ThumbBackColorSelected = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(118)))), ((int)(((byte)(135)))));
+            // 
+            // c1FlexReport1
+            // 
+            this.c1FlexReport1.ReportDefinition = resources.GetString("c1FlexReport1.ReportDefinition");
+            this.c1FlexReport1.ReportName = "c1FlexReport1";
+            // 
+            // c1Report1
+            // 
+            this.c1Report1.ReportDefinition = resources.GetString("c1Report1.ReportDefinition");
+            this.c1Report1.ReportName = "c1Report1";
+            // 
+            // c1Report2
+            // 
+            this.c1Report2.ReportDefinition = resources.GetString("c1Report2.ReportDefinition");
+            this.c1Report2.ReportName = "c1Report2";
+            // 
+            // c1ReportDesigner1
+            // 
+            this.c1ReportDesigner1.BackColor = System.Drawing.Color.White;
+            this.c1ReportDesigner1.BackColorEmpty = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.c1ReportDesigner1.BackColorSection = System.Drawing.Color.White;
+            this.c1ReportDesigner1.ColorFieldEdge = System.Drawing.Color.FromArgb(((int)(((byte)(101)))), ((int)(((byte)(101)))), ((int)(((byte)(101)))));
+            this.c1ReportDesigner1.ColorReportEdge = System.Drawing.Color.FromArgb(((int)(((byte)(101)))), ((int)(((byte)(101)))), ((int)(((byte)(101)))));
+            this.c1ReportDesigner1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.c1ReportDesigner1.ForeColorGroup = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(68)))), ((int)(((byte)(68)))));
+            this.c1ReportDesigner1.ForeColorSection = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(68)))), ((int)(((byte)(68)))));
+            this.c1ReportDesigner1.Location = new System.Drawing.Point(3, 66);
+            this.c1ReportDesigner1.Name = "c1ReportDesigner1";
+            this.c1ReportDesigner1.Ruler.BackColorEmpty = System.Drawing.SystemColors.AppWorkspace;
+            this.c1ReportDesigner1.Ruler.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(212)))), ((int)(((byte)(212)))), ((int)(((byte)(212)))));
+            this.c1ReportDesigner1.Ruler.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(118)))), ((int)(((byte)(135)))));
+            this.c1ReportDesigner1.Ruler.Highlight = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(118)))), ((int)(((byte)(135)))));
+            this.c1ReportDesigner1.Size = new System.Drawing.Size(349, 328);
+            this.c1ReportDesigner1.TabIndex = 518;
+            this.c1ReportDesigner1.Text = "c1ReportDesigner1";
+            this.c1ThemeController1.SetTheme(this.c1ReportDesigner1, "(default)");
+            this.c1ReportDesigner1.ZoomFactor = 1F;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.c1FlexViewer1);
             this.Controls.Add(this.c1TextBox2);
             this.Controls.Add(this.txtReqDate);
             this.Controls.Add(this.c1FlexGrid1);
@@ -209,12 +285,16 @@
             this.c1CommandDock1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.c1DockingTab1)).EndInit();
             this.c1DockingTab1.ResumeLayout(false);
+            this.c1DockingTabPage1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.c1TextBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.c1Button1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.c1ThemeController1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.c1FlexGrid1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtReqDate)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.c1TextBox2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.c1FlexViewer1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.c1Report1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.c1Report2)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -234,6 +314,11 @@
         private C1.Win.C1Input.C1DateEdit txtReqDate;
         private C1.Win.C1SuperTooltip.C1SuperTooltip c1SuperTooltip3;
         private C1.Win.C1Input.C1TextBox c1TextBox2;
+        private C1.Win.FlexViewer.C1FlexViewer c1FlexViewer1;
+        private C1.Win.FlexReport.C1FlexReport c1FlexReport1;
+        private C1.C1Report.C1Report c1Report1;
+        private C1.Win.C1ReportDesigner.C1ReportDesigner c1ReportDesigner1;
+        private C1.C1Report.C1Report c1Report2;
     }
 }
 

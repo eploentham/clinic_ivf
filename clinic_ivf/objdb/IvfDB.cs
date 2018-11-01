@@ -22,7 +22,7 @@ namespace clinic_ivf.objdb
         public PatientDB pttDB;
         public AgentOldDB agnOldDB;
         public PatientOldDB pttOldDB;
-        //public VisitOldDB vsOldDB;
+        public DoctorOldDB dtrOldDB;
 
         public FPrefixDB fpfDB;
         public FBloodGroupDB fbgDB;
@@ -34,7 +34,7 @@ namespace clinic_ivf.objdb
         public FRelationDB frlDB;
         public FReligionDB frgDB;
         public FPatientRaceDB fprDB;
-        //public PatientOldDB pttOldDB;
+        public AppointmentOldDB appnOldDB;
         public BContractPlansDB crlDB;
         public BServicePointDB bspDB;
 
@@ -70,6 +70,8 @@ namespace clinic_ivf.objdb
             agnOldDB = new AgentOldDB(conn);
             crlDB = new BContractPlansDB(conn);
             bspDB = new BServicePointDB(conn);
+            dtrOldDB = new DoctorOldDB(conn);
+            appnOldDB = new AppointmentOldDB(conn);
 
             Console.WriteLine("ivfDB end");
         }

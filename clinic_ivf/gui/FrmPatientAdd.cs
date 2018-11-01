@@ -118,6 +118,9 @@ namespace clinic_ivf.gui
             ic.setCboPttType(cboPttType);
             ic.setCboPttGroup(cboPttGroup);
 
+            cboAgent.AutoCompleteSource = AutoCompleteSource.ListItems;
+            cboAgent.AutoCompleteMode = AutoCompleteMode.Suggest;
+
             setControl();
             setFocusColor();
             initGrfImg();
@@ -172,6 +175,9 @@ namespace clinic_ivf.gui
                 DialogResult dr = ofd.ShowDialog();
                 if (dr == System.Windows.Forms.DialogResult.OK)
                 {
+                    FrmPatientUpPic frm = new FrmPatientUpPic(ofd.FileNames);
+                    frm.ShowDialog(this);
+
                     // Read the files
 
                     //Row row1 = grfImg.Rows.Add();
@@ -180,11 +186,24 @@ namespace clinic_ivf.gui
                     grfImg.AllowMerging = C1.Win.C1FlexGrid.AllowMergingEnum.RestrictRows;
                     grfImg.Cols[colImg].AllowMerging = true;
                     //cc.Image
+                    Column col = grfImg.Cols[colImg];
+                    col.DataType = typeof(Image);
                     foreach (String file in ofd.FileNames)
                     {
                         // Create a PictureBox.
                         try
                         {
+                            //Hashtable ht = new Hashtable();
+                            //Bitmap CheckedAlarm = (Bitmap)Image.FromFile(file);
+                            //ht.Add(false, CheckedAlarm);
+                            //CellStyle cs = grfImg.Styles.Add("Verified");
+                            //cs.Display = DisplayEnum.ImageOnly;
+                            //cs.ImageAlign = ImageAlignEnum.Stretch;
+                            //cs.ImageMap = ht;
+                            //grfImg.Cols[colImg].Style = cs;
+                            //grfImg.AutoSizeCols();
+                            //grfImg.AutoSizeRows();
+
                             grfImg.Cols[colImg].ImageAndText = true;
                             Row row1 = grfImg.Rows.Add();
                             int row = grfImg.Rows.Count;
@@ -192,7 +211,7 @@ namespace clinic_ivf.gui
                             int hei = grfImg.Rows.DefaultSize;
                             //grfImg.Rows[row-1].Height = hei*6;
                             CellRange rg1 = grfImg.GetCellRange(row - 1, colImg);
-                            
+
                             //PictureBox pb = new PictureBox();
                             Image loadedImage = Image.FromFile(file);
                             int originalWidth = loadedImage.Width;
@@ -202,34 +221,33 @@ namespace clinic_ivf.gui
                             grfImg[row - 1, colPathPic] = file;
                             grfImg[row - 1, colBtn] = "send";
                             //row1.ImageAndTex
-                            rg1.Image = resizedImage;
+                            //rg1.Image = resizedImage;
+                            grfImg[row - 1, colImg] = resizedImage;
                             //grfImg.me
-                            grfImg.Rows.Add();
-                            grfImg.Rows.Add();
-                            grfImg.Rows.Add();
-                            CellRange rg2 = grfImg.GetCellRange(row, colImg);
-                            CellRange rg3 = grfImg.GetCellRange(row + 1, colImg);
-                            CellRange rg4 = grfImg.GetCellRange(row + 2, colImg);
-                            rg2.Image = resizedImage;
-                            rg3.Image = resizedImage;
-                            rg4.Image = resizedImage;
-                            grfImg[row - 1, colImg] = i;
-                            grfImg[row, colImg] = i;
-                            grfImg[row + 1, colImg] = i;
-                            grfImg[row + 2, colImg] = i;
-                            grfImg[row, colPathPic] = file;
-                            grfImg[row + 1, colPathPic] = file;
-                            grfImg[row + 2, colPathPic] = file;
-                            CellRange rgM = grfImg.GetCellRange(row - 1, colDesc, row + 1, colDesc);
-                            //grfImg.me
-                            //grfImg[grfImg.Row, colImg] = loadedImage;
+                            //grfImg.Rows.Add();
+                            //grfImg.Rows.Add();
+                            //grfImg.Rows.Add();
+                            //grfImg.Rows[row].AllowMerging = true;
+                            //grfImg.Rows[row + 1].AllowMerging = true;
+                            //grfImg.Rows[row + 2].AllowMerging = true;
+                            //grfImg.Cols[colDesc].AllowMerging = true;
+                            //grfImg.Cols[colDesc2].AllowMerging = true;
+                            //grfImg.Cols[colDesc3].AllowMerging = true;
+                            //CellRange rg2 = grfImg.GetCellRange(row, colImg);
+                            //CellRange rg3 = grfImg.GetCellRange(row + 1, colImg);
+                            //CellRange rg4 = grfImg.GetCellRange(row + 2, colImg);
+                            //rg2.Image = resizedImage;
+                            //rg3.Image = resizedImage;
+                            //rg4.Image = resizedImage;
+                            //grfImg[row - 1, colImg] = i;
+                            //grfImg[row, colImg] = i;
+                            //grfImg[row + 1, colImg] = i;
+                            //grfImg[row + 2, colImg] = i;
+                            //grfImg[row, colPathPic] = file;
+                            //grfImg[row + 1, colPathPic] = file;
+                            //grfImg[row + 2, colPathPic] = file;
 
-                            //row1.DataMap = ht;
-                            //row1[colImg].ImageAndText = false;
-                            //pb.Height = loadedImage.Height;
-                            //pb.Width = loadedImage.Width;
-                            //pb.Image = loadedImage;
-                            //flowLayoutPanel1.Controls.Add(pb);
+
                             i++;
                         }
                         catch (SecurityException ex)
@@ -251,6 +269,12 @@ namespace clinic_ivf.gui
                     grfImg.AutoSizeCols();
                     grfImg.AutoSizeRows();
                 }
+                grfImg.Cols[colDesc].Visible = false;
+                grfImg.Cols[colDesc2].Visible = false;
+                grfImg.Cols[colDesc3].Visible = false;
+                grfImg.Cols[colHn].Visible = false;
+                grfImg.Cols[colPathPic].Visible = false;
+                grfImg.Cols[colBtn].Visible = false;
             }
         }
 
@@ -1097,8 +1121,7 @@ namespace clinic_ivf.gui
             txtAddrNo.Value = ptt.patient_house;
             txtMoo.Value = ptt.patient_moo;
             txtRoad.Value = ptt.patient_road;
-
-
+            
             ic.setC1Combo(cboCouPrefix, ptt.patient_couple_f_patient_prefix_id);
             ic.setC1Combo(cboName1Rl, ptt.patient_contact_f_patient_relation_id);
             ic.setC1Combo(cboCouRel, ptt.patient_coulpe_f_patient_relation_id);
@@ -1216,7 +1239,7 @@ namespace clinic_ivf.gui
             txtPid.Value = pttO.IDNumber;
             //cboName1Rl.Text = pttO.RelationshipID;
             ic.setC1Combo(cboName1Rl, pttO.RelationshipID);
-
+            barcode.Text = txtHn.Text;
             txtEmail.Value = pttO.Email;
         }
         private void setControl()

@@ -69,6 +69,15 @@ namespace clinic_ivf.gui
             menuPatient.Click += MenuPatient_Click;
             convertPatientDonorToolStripMenuItem.Click += ConvertPatientDonorToolStripMenuItem_Click;
             menuVisitNew.Click += MenuVisitNew_Click;
+            menuAppn.Click += MenuAppn_Click;
+        }
+
+        private void MenuAppn_Click(object sender, EventArgs e)
+        {
+            //throw new NotImplementedException();
+            FrmAppoinmentView frm = new FrmAppoinmentView(ic, this);
+            frm.FormBorderStyle = FormBorderStyle.None;
+            AddNewTab(frm, menuAppn.Text + " ");
         }
 
         private void MenuVisitNew_Click(object sender, EventArgs e)
