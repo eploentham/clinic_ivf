@@ -46,7 +46,7 @@
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.label4 = new System.Windows.Forms.Label();
             this.txtHnMale = new C1.Win.C1Input.C1TextBox();
-            this.c1Button1 = new C1.Win.C1Input.C1Button();
+            this.btnSearch = new C1.Win.C1Input.C1Button();
             this.txtDateEnd = new C1.Win.C1Input.C1DateEdit();
             this.label1 = new System.Windows.Forms.Label();
             this.txtDateStart = new C1.Win.C1Input.C1DateEdit();
@@ -66,7 +66,7 @@
             this.panel1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtHnMale)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.c1Button1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnSearch)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtDateEnd)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtDateStart)).BeginInit();
             this.sB.SuspendLayout();
@@ -269,7 +269,7 @@
             this.groupBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
             this.groupBox1.Controls.Add(this.label4);
             this.groupBox1.Controls.Add(this.txtHnMale);
-            this.groupBox1.Controls.Add(this.c1Button1);
+            this.groupBox1.Controls.Add(this.btnSearch);
             this.groupBox1.Controls.Add(this.txtDateEnd);
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Controls.Add(this.txtDateStart);
@@ -310,16 +310,16 @@
             this.theme1.SetTheme(this.txtHnMale, "(default)");
             this.txtHnMale.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
             // 
-            // c1Button1
+            // btnSearch
             // 
-            this.c1Button1.Location = new System.Drawing.Point(628, 14);
-            this.c1Button1.Name = "c1Button1";
-            this.c1Button1.Size = new System.Drawing.Size(28, 23);
-            this.c1Button1.TabIndex = 517;
-            this.c1Button1.Text = "...";
-            this.theme1.SetTheme(this.c1Button1, "(default)");
-            this.c1Button1.UseVisualStyleBackColor = true;
-            this.c1Button1.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            this.btnSearch.Location = new System.Drawing.Point(628, 14);
+            this.btnSearch.Name = "btnSearch";
+            this.btnSearch.Size = new System.Drawing.Size(28, 23);
+            this.btnSearch.TabIndex = 517;
+            this.btnSearch.Text = "...";
+            this.theme1.SetTheme(this.btnSearch, "(default)");
+            this.btnSearch.UseVisualStyleBackColor = true;
+            this.btnSearch.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
             // 
             // txtDateEnd
             // 
@@ -456,7 +456,7 @@
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtHnMale)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.c1Button1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnSearch)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtDateEnd)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtDateStart)).EndInit();
             this.sB.ResumeLayout(false);
@@ -481,7 +481,7 @@
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Label label4;
         private C1.Win.C1Input.C1TextBox txtHnMale;
-        private C1.Win.C1Input.C1Button c1Button1;
+        private C1.Win.C1Input.C1Button btnSearch;
         private C1.Win.C1Input.C1DateEdit txtDateEnd;
         private System.Windows.Forms.Label label1;
         private C1.Win.C1Input.C1DateEdit txtDateStart;
