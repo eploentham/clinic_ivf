@@ -94,7 +94,7 @@ namespace clinic_ivf.object1
 
                 /* Open a File Stream to Read the File for Upload */
                 if (!File.Exists(localFile)) return;
-                FileStream localFileStream = new FileStream(localFile, FileMode.Open);
+                FileStream localFileStream = new FileStream(localFile, FileMode.Open, FileAccess.Read);
                 ftpStream = ftpRequest.GetRequestStream();
                 /* Buffer for the Downloaded Data */
                 byte[] byteBuffer = new byte[bufferSize];

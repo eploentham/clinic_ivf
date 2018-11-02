@@ -1,6 +1,7 @@
 ﻿using C1.Win.C1Input;
 using C1.Win.C1SuperTooltip;
 using clinic_ivf.control;
+using clinic_ivf.objdb;
 using clinic_ivf.object1;
 using clinic_ivf.Properties;
 using System;
@@ -29,6 +30,7 @@ namespace clinic_ivf.gui
 
         C1SuperTooltip stt;
         C1SuperErrorProvider sep;
+        StaffDB stfDB;
 
         public Login(IvfControl ic, FrmSplash splash)
         {
@@ -52,6 +54,7 @@ namespace clinic_ivf.gui
             //theme1.SetTheme(label2, "Office2010Blue");
             stt = new C1SuperTooltip();
             sep = new C1SuperErrorProvider();
+            stfDB = new StaffDB(ic.conn);
             //stt.BackgroundGradient = C1.Win.C1SuperTooltip.BackgroundGradient.Gold;
             //stt.
         }
@@ -73,7 +76,7 @@ namespace clinic_ivf.gui
         private void BtnOk_Click(object sender, EventArgs e)
         {
             //throw new NotImplementedException();
-            stf = ic.ivfDB.stfDB.selectByLogin(txtUserName.Text, txtPassword.Text);
+            stf = stfDB.selectByLogin(txtUserName.Text, txtPassword.Text);
             if (stf.staff_fname_t.Length > 0)
             {
                 ic.userId = stf.staff_id;
@@ -120,7 +123,8 @@ namespace clinic_ivf.gui
         private void chkLogin()
         {
             Staff stf1 = new Staff();
-            stf1 = ic.ivfDB.stfDB.selectByUsername(txtUserName.Text);
+            
+            stf1 = stfDB.selectByUsername(txtUserName.Text);
             if (stf1.staff_fname_t.Length > 0)
             {
                 btnOk.Image = Resources.Accept_Male_User24;

@@ -301,10 +301,12 @@
     <Compile Include="objdb\FRelationDB.cs" />
     <Compile Include="objdb\FReligionDB.cs" />
     <Compile Include="objdb\FSexDB.cs" />
+    <Compile Include="objdb\PatientImageDB.cs" />
     <Compile Include="objdb\PatientOldDB.cs" />
     <Compile Include="objdb\VisitDB.cs" />
     <Compile Include="object1\AppointmentOld.cs" />
     <Compile Include="object1\DoctorOld.cs" />
+    <Compile Include="object1\PatientImage.cs" />
     <Compile Include="object1\Visit.cs" />
     <Compile Include="objdb\VisitQueueTransferDB.cs" />
     <Compile Include="object1\AgentOld.cs" />
@@ -430,6 +432,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="gui\FrmSetPassword.resx">
       <DependentUpon>FrmSetPassword.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="gui\FrmShowImage.resx">
+      <DependentUpon>FrmShowImage.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="gui\FrmSplash.resx">
       <DependentUpon>FrmSplash.cs</DependentUpon>
@@ -1064,6 +1069,24 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\698929.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\pdf-symbol.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\pdf-symbol_80.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\pdf-symbol_400.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\pdf-symbol_80-1.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\pdf-symbol_80-2.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\pdf_symbol_300.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

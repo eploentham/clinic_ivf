@@ -81,7 +81,7 @@ namespace clinic_ivf.control
             conn = new ConnectDB(iniC);
             ftpC = new FtpClient(iniC.hostFTP, iniC.userFTP, iniC.passFTP);
 
-            ivfDB = new IvfDB(conn);
+            //ivfDB = new IvfDB(conn);
 
             sVsOld = new VisitOld();
             cTxtFocus = ColorTranslator.FromHtml(iniC.txtFocus);
@@ -296,15 +296,31 @@ namespace clinic_ivf.control
 
             return c;
         }
-        public void saveFilePatienttoServer(String filename, Image pic)
+        public void savePicPatienttoServer( String filename, Image pic)
         {
             if (File.Exists(@"temppic" + System.Drawing.Imaging.ImageFormat.Jpeg))
             {
                 File.Delete(@"temppic" + System.Drawing.Imaging.ImageFormat.Jpeg);
             }
             pic.Save(@"temppic." + System.Drawing.Imaging.ImageFormat.Jpeg, System.Drawing.Imaging.ImageFormat.Jpeg);
-            ftpC.createDirectory(DateTime.Now.Year.ToString());
-            ftpC.upload(DateTime.Now.Year.ToString()+"/" +filename+"." + System.Drawing.Imaging.ImageFormat.Jpeg, @"temppic" + "." + System.Drawing.Imaging.ImageFormat.Jpeg);
+            ftpC.createDirectory("images/" + filename);
+            ftpC.upload("images/" + filename + "/" +filename+"." + System.Drawing.Imaging.ImageFormat.Jpeg, @"temppic" + "." + System.Drawing.Imaging.ImageFormat.Jpeg);
+        }
+        public void saveFilePatienttoServer(String pttId,String filenamenew, String localpathandfilename)
+        {
+            //if (File.Exists(@"temppic" + System.Drawing.Imaging.ImageFormat.Jpeg))
+            //{
+            //    File.Delete(@"temppic" + System.Drawing.Imaging.ImageFormat.Jpeg);
+            //}
+            //pic.Save(@"temppic." + System.Drawing.Imaging.ImageFormat.Jpeg, localpathandfilename);
+            String[] sur = localpathandfilename.Split('.');
+            String ex = "";
+            if (sur.Length == 2)
+            {
+                ex = sur[1];
+            }
+            ftpC.createDirectory("images/" + pttId);
+            ftpC.upload("images/"+pttId + "/" + filenamenew + "." + ex, localpathandfilename);
         }
         public void saveFilePatientHNtoServer(String hn,String filename, Image pic)
         {

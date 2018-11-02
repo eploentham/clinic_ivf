@@ -36,7 +36,7 @@ namespace clinic_ivf.gui
         Font fEdit, fEditB;
         Color bg, fc;
         Font ff, ffB;
-        int colID = 1, colHn = 2, colImg = 3, colDesc = 4, colDesc2 = 5, colDesc3 = 6, colPathPic = 7, colBtn=8;
+        int colID = 1, colHn = 2, colImg = 3, colDesc = 4, colDesc2 = 5, colDesc3 = 6, colPathPic = 7, colBtn=8, colStatus=9;
         int colVsID = 1, colVsHn = 2, colVsVisitDate = 3, colVsVisitTime=4, colVsStatus=5;
 
         //C1FlexGrid grfDay2, grfDay3, grfDay5, grfDay6;
@@ -150,8 +150,8 @@ namespace clinic_ivf.gui
                 txtAgent.Hide();
                 cboAgent.Show();
             }
-            //picPtt.Load("54158.jpg");
-            //picPtt.SizeMode = PictureBoxSizeMode.StretchImage;
+            picPtt.Load("54158.jpg");
+            picPtt.SizeMode = PictureBoxSizeMode.StretchImage;
             //btnSavePic.Enabled = false;
         }
 
@@ -169,14 +169,14 @@ namespace clinic_ivf.gui
             {
                 //MessageBox.Show("aaa", "");
                 OpenFileDialog ofd = new OpenFileDialog();
-                ofd.Filter = "Images (*.BMP;*.JPG;*.Jepg;*.Png;*.GIF)|*.BMP;*.JPG;*.Jepg;*.Png;*.GIF|All files (*.*)|*.*";
+                ofd.Filter = "Images (*.BMP;*.JPG;*.Jepg;*.Png;*.GIF)|*.BMP;*.JPG;*.Jepg;*.Png;*.GIF|Pdf Files|*.pdf|All files (*.*)|*.*";
                 ofd.Multiselect = true;
                 ofd.Title = "My Image Browser";
                 DialogResult dr = ofd.ShowDialog();
                 if (dr == System.Windows.Forms.DialogResult.OK)
                 {
-                    FrmPatientUpPic frm = new FrmPatientUpPic(ofd.FileNames);
-                    frm.ShowDialog(this);
+                    //FrmPatientUpPic frm = new FrmPatientUpPic(ofd.FileNames);
+                    //frm.ShowDialog(this);
 
                     // Read the files
 
@@ -193,60 +193,38 @@ namespace clinic_ivf.gui
                         // Create a PictureBox.
                         try
                         {
-                            //Hashtable ht = new Hashtable();
-                            //Bitmap CheckedAlarm = (Bitmap)Image.FromFile(file);
-                            //ht.Add(false, CheckedAlarm);
-                            //CellStyle cs = grfImg.Styles.Add("Verified");
-                            //cs.Display = DisplayEnum.ImageOnly;
-                            //cs.ImageAlign = ImageAlignEnum.Stretch;
-                            //cs.ImageMap = ht;
-                            //grfImg.Cols[colImg].Style = cs;
-                            //grfImg.AutoSizeCols();
-                            //grfImg.AutoSizeRows();
-
+                            Image loadedImage, resizedImage;
+                            String[] sur = file.Split('.');
+                            String ex = "";
+                            if (sur.Length == 2)
+                            {
+                                ex = sur[1];
+                            }
+                            if (!ex.Equals("pdf"))
+                            {
+                                loadedImage = Image.FromFile(file);
+                                int originalWidth = loadedImage.Width;
+                                int newWidth = 180;
+                                resizedImage = loadedImage.GetThumbnailImage(newWidth, (newWidth * loadedImage.Height) / originalWidth, null, IntPtr.Zero);
+                            }
+                            else
+                            {
+                                resizedImage = Resources.pdf_symbol_80_2;
+                            }
                             grfImg.Cols[colImg].ImageAndText = true;
                             Row row1 = grfImg.Rows.Add();
                             int row = grfImg.Rows.Count;
-                            int newWidth = 180;
+                            
                             int hei = grfImg.Rows.DefaultSize;
                             //grfImg.Rows[row-1].Height = hei*6;
                             CellRange rg1 = grfImg.GetCellRange(row - 1, colImg);
 
-                            //PictureBox pb = new PictureBox();
-                            Image loadedImage = Image.FromFile(file);
-                            int originalWidth = loadedImage.Width;
-                            Image resizedImage = loadedImage.GetThumbnailImage(newWidth, (newWidth * loadedImage.Height) / originalWidth, null, IntPtr.Zero);
-                            //Hashtable ht = new Hashtable();
-                            //ht.Add(colImg, loadedImage);
+                            //PictureBox pb = new PictureBox();                            
+                            
                             grfImg[row - 1, colPathPic] = file;
                             grfImg[row - 1, colBtn] = "send";
-                            //row1.ImageAndTex
-                            //rg1.Image = resizedImage;
+                            
                             grfImg[row - 1, colImg] = resizedImage;
-                            //grfImg.me
-                            //grfImg.Rows.Add();
-                            //grfImg.Rows.Add();
-                            //grfImg.Rows.Add();
-                            //grfImg.Rows[row].AllowMerging = true;
-                            //grfImg.Rows[row + 1].AllowMerging = true;
-                            //grfImg.Rows[row + 2].AllowMerging = true;
-                            //grfImg.Cols[colDesc].AllowMerging = true;
-                            //grfImg.Cols[colDesc2].AllowMerging = true;
-                            //grfImg.Cols[colDesc3].AllowMerging = true;
-                            //CellRange rg2 = grfImg.GetCellRange(row, colImg);
-                            //CellRange rg3 = grfImg.GetCellRange(row + 1, colImg);
-                            //CellRange rg4 = grfImg.GetCellRange(row + 2, colImg);
-                            //rg2.Image = resizedImage;
-                            //rg3.Image = resizedImage;
-                            //rg4.Image = resizedImage;
-                            //grfImg[row - 1, colImg] = i;
-                            //grfImg[row, colImg] = i;
-                            //grfImg[row + 1, colImg] = i;
-                            //grfImg[row + 2, colImg] = i;
-                            //grfImg[row, colPathPic] = file;
-                            //grfImg[row + 1, colPathPic] = file;
-                            //grfImg[row + 2, colPathPic] = file;
-
 
                             i++;
                         }
@@ -269,11 +247,11 @@ namespace clinic_ivf.gui
                     grfImg.AutoSizeCols();
                     grfImg.AutoSizeRows();
                 }
-                grfImg.Cols[colDesc].Visible = false;
+                grfImg.Cols[colDesc].Visible = true;
                 grfImg.Cols[colDesc2].Visible = false;
                 grfImg.Cols[colDesc3].Visible = false;
                 grfImg.Cols[colHn].Visible = false;
-                grfImg.Cols[colPathPic].Visible = false;
+                grfImg.Cols[colPathPic].Visible = true;
                 grfImg.Cols[colBtn].Visible = false;
             }
         }
@@ -285,7 +263,7 @@ namespace clinic_ivf.gui
             folder = DateTime.Now.Year.ToString();
             image1 = picPtt.Image;
             //image1.Save(@"temppic.jpg", System.Drawing.Imaging.ImageFormat.Jpeg);
-            ic.saveFilePatienttoServer(txtHn.Text, image1);
+            ic.savePicPatienttoServer(txtIoOld.Text, image1);
             //ic.ftpC.upload("DefaultDocument.pdf", @"D:\\source\\ivf\\clinic_ivf\\clinic_ivf\\doc\\DefaultDocument.pdf");
         }
 
@@ -827,7 +805,7 @@ namespace clinic_ivf.gui
                 //int.TryParse(grfImg[grfImg.Row, colImg].ToString(), out row);
                 int.TryParse(grfImg.Row.ToString(), out row);
                 //row *= 4;
-                FrmShowImage frm = new FrmShowImage(grfImg[row, colPathPic].ToString());
+                FrmShowImage frm = new FrmShowImage(ic, grfImg[row, colID] !=null? grfImg[row, colID].ToString():"", pttOldId,grfImg[row, colPathPic].ToString());
                 frm.ShowDialog(this);
             }
         }

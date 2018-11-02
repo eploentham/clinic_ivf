@@ -37,6 +37,7 @@ namespace clinic_ivf.objdb
         public AppointmentOldDB appnOldDB;
         public BContractPlansDB crlDB;
         public BServicePointDB bspDB;
+        public PatientImageDB pttImgDB;
 
         public IvfDB(ConnectDB c)
         {
@@ -72,6 +73,7 @@ namespace clinic_ivf.objdb
             bspDB = new BServicePointDB(conn);
             dtrOldDB = new DoctorOldDB(conn);
             appnOldDB = new AppointmentOldDB(conn);
+            pttImgDB = new PatientImageDB(conn);
 
             Console.WriteLine("ivfDB end");
         }
