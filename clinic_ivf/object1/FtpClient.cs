@@ -114,7 +114,11 @@ namespace clinic_ivf.object1
                 ftpStream.Close();
                 ftpRequest = null;
             }
-            catch (Exception ex) { Console.WriteLine(ex.ToString()); }
+            catch (Exception ex)
+            {
+                //String status = ((FtpWebResponse)ex.Response).StatusDescription;
+                Console.WriteLine(ex.ToString());
+            }
             return;
         }
 
@@ -215,7 +219,11 @@ namespace clinic_ivf.object1
                 ftpResponse.Close();
                 ftpRequest = null;
             }
-            catch (Exception ex) { Console.WriteLine(ex.ToString()); }
+            catch (Exception ex)
+            {
+                //String status = ((FtpWebResponse)ex.Response).StatusDescription;
+                Console.WriteLine(ex.ToString());
+            }
             return;
         }
 

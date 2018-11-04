@@ -375,29 +375,8 @@ namespace clinic_ivf.objdb
 
             return dt;
         }
-        public DataTable selectByPk(String copId)
-        {
-            DataTable dt = new DataTable();
-            String sql = "select stf.* " +
-                "From " + stf.table + " stf " +
-                "Where stf." + stf.pkField + " ='" + copId + "' ";
-            dt = conn.selectData(conn.conn, sql);
-            return dt;
-        }
-        public Staff selectByPk1(String copId)
-        {
-            Staff cop1 = new Staff();
-            DataTable dt = new DataTable();
-            String sql = "select stf.*, pfx.prefix_name_t, posi.posi_name_t, dept.dept_name_t " +
-                "From " + stf.table + " stf " +
-                "Left Join b_prefix pfx On stf.prefix_id = pfx.prefix_id " +
-                "Left Join b_position posi On stf.posi_id = posi.posi_id " +
-                "Left Join b_department dept On stf.dept_id = dept.dept_id " +
-                "Where stf." + stf.pkField + " ='" + copId + "' ";
-            dt = conn.selectData(conn.conn, sql);
-            cop1 = setStaff(dt);
-            return cop1;
-        }
+        
+
         public Staff selectByUsername(String username)
         {
             Staff cop1 = new Staff();

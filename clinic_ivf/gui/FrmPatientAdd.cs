@@ -150,7 +150,7 @@ namespace clinic_ivf.gui
                 txtAgent.Hide();
                 cboAgent.Show();
             }
-            picPtt.Load("54158.jpg");
+            //picPtt.Load("54158.jpg");
             picPtt.SizeMode = PictureBoxSizeMode.StretchImage;
             //btnSavePic.Enabled = false;
         }
@@ -1189,6 +1189,14 @@ namespace clinic_ivf.gui
             }
 
             pttO = ic.ivfDB.pttOldDB.selectByPk1(pttid);
+            if (pttO.PID.Equals(""))
+            {
+                btnWebCamOn.Enabled = false;
+            }
+            else
+            {
+                btnWebCamOn.Enabled = true;
+            }
             txtHn.Value = pttO.PIDS;
             txtIoOld.Value = pttO.PID;
             txtPttNameE.Value = pttO.PName;
