@@ -598,7 +598,6 @@ namespace clinic_ivf.gui
                 a.ForeColor = fc;
                 a.Font = new Font(ff, FontStyle.Regular);
             }
-            
         }
         private void setControl(String stfId)
         {

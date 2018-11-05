@@ -127,7 +127,7 @@ namespace clinic_ivf.gui
                 dateend1 = dateend.ToString("yyyy-MM-dd");
             }
             
-                //String date = System.DateTime.Now.Year + "-" + System.DateTime.Now.ToString("MM-dd");
+            //String date = System.DateTime.Now.Year + "-" + System.DateTime.Now.ToString("MM-dd");
             dt = ic.ivfDB.appnOldDB.selectByDateDtr(datestart1, dateend1, cboDoctor.Text);
             
 

@@ -357,6 +357,26 @@ namespace clinic_ivf.objdb
 
             return dt;
         }
+        public DataTable selectByPk(String copId)
+        {
+            DataTable dt = new DataTable();
+            String sql = "select stf.* " +
+                "From " + stf.table + " stf " +
+                "Where stf." + stf.pkField + " ='" + copId + "' ";
+            dt = conn.selectData(conn.conn, sql);
+            return dt;
+        }
+        public Staff selectByPk1(String copId)
+        {
+            Staff stf1 = new Staff();
+            DataTable dt = new DataTable();
+            String sql = "select stf.* " +
+                "From " + stf.table + " stf " +
+                "Where stf." + stf.pkField + " ='" + copId + "' ";
+            dt = conn.selectData(conn.conn, sql);
+            stf1 = setStaff(dt);
+            return stf1;
+        }
         public DataTable selectCSByCodeLike(String copId)
         {
             DataTable dt = new DataTable();
