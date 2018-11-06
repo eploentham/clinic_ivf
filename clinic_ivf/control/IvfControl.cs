@@ -332,5 +332,36 @@ namespace clinic_ivf.control
             ftpC.createDirectory(hn);
             ftpC.upload(DateTime.Now.Year.ToString() + "/" + filename + "." + System.Drawing.Imaging.ImageFormat.Jpeg, @"temppic" + "." + System.Drawing.Imaging.ImageFormat.Jpeg);
         }
+        public bool compareImage(Bitmap bmp1, Bitmap bmp2)
+        {
+            bool equals = true;
+            bool flag = true;  //Inner loop isn't broken
+
+            //Test to see if we have the same size of image
+            if (bmp1.Size == bmp2.Size)
+            {
+                for (int x = 0; x < bmp1.Width; ++x)
+                {
+                    for (int y = 0; y < bmp1.Height; ++y)
+                    {
+                        if (bmp1.GetPixel(x, y) != bmp2.GetPixel(x, y))
+                        {
+                            equals = false;
+                            flag = false;
+                            break;
+                        }
+                    }
+                    if (!flag)
+                    {
+                        break;
+                    }
+                }
+            }
+            else
+            {
+                equals = false;
+            }
+            return equals;
+        }
     }
 }

@@ -1088,5 +1088,14 @@
   <ItemGroup>
     <None Include="Resources\pdf_symbol_300.jpg" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\red-checkmark-png-16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\transparent_16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\red-checkmark-png-51.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -207,7 +207,7 @@
             this.txtDateEnd.ImagePadding = new System.Windows.Forms.Padding(0);
             this.txtDateEnd.Location = new System.Drawing.Point(299, 20);
             this.txtDateEnd.Name = "txtDateEnd";
-            this.txtDateEnd.Size = new System.Drawing.Size(129, 18);
+            this.txtDateEnd.Size = new System.Drawing.Size(105, 18);
             this.txtDateEnd.TabIndex = 514;
             this.txtDateEnd.Tag = null;
             this.theme1.SetTheme(this.txtDateEnd, "(default)");
@@ -249,16 +249,16 @@
             this.txtDateStart.Culture = 1054;
             this.txtDateStart.DateTimeInput = false;
             this.txtDateStart.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
+            this.txtDateStart.DisplayFormat.CustomFormat = "dd-MM-yyyy";
             this.txtDateStart.DisplayFormat.FormatType = C1.Win.C1Input.FormatTypeEnum.ShortDate;
-            this.txtDateStart.DisplayFormat.Inherit = ((C1.Win.C1Input.FormatInfoInheritFlags)((((((C1.Win.C1Input.FormatInfoInheritFlags.CustomFormat | C1.Win.C1Input.FormatInfoInheritFlags.NullText) 
-            | C1.Win.C1Input.FormatInfoInheritFlags.EmptyAsNull) 
+            this.txtDateStart.DisplayFormat.Inherit = ((C1.Win.C1Input.FormatInfoInheritFlags)(((((C1.Win.C1Input.FormatInfoInheritFlags.NullText | C1.Win.C1Input.FormatInfoInheritFlags.EmptyAsNull) 
             | C1.Win.C1Input.FormatInfoInheritFlags.TrimStart) 
             | C1.Win.C1Input.FormatInfoInheritFlags.TrimEnd) 
             | C1.Win.C1Input.FormatInfoInheritFlags.CalendarType)));
             this.txtDateStart.ImagePadding = new System.Windows.Forms.Padding(0);
             this.txtDateStart.Location = new System.Drawing.Point(90, 20);
             this.txtDateStart.Name = "txtDateStart";
-            this.txtDateStart.Size = new System.Drawing.Size(129, 18);
+            this.txtDateStart.Size = new System.Drawing.Size(105, 18);
             this.txtDateStart.TabIndex = 512;
             this.txtDateStart.Tag = null;
             this.theme1.SetTheme(this.txtDateStart, "(default)");
