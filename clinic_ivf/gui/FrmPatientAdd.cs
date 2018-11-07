@@ -1277,7 +1277,6 @@ namespace clinic_ivf.gui
             {
 
             }
-            
         }
         private void setPic(Bitmap bitmap)
         {

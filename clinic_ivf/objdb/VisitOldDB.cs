@@ -178,7 +178,50 @@ namespace clinic_ivf.objdb
                 "From " + vsold.table + " vsold " +
                 "Left Join VStatus on  VStatus.VSID = vsold.VSID " +
                 " " +
-                "Where vsold." + vsold.VDate + " ='"+ date + "' ";
+                "Where vsold." + vsold.VDate + " ='"+ date + "' " +
+                "Order By vsold.VDate, vsold.VStartTime";
+            dt = conn.selectData(conn.conn, sql);
+
+            return dt;
+        }
+        public DataTable selectByStatusNurseWaiting()
+        {
+            DataTable dt = new DataTable();
+            String date = System.DateTime.Now.Year + "-" + System.DateTime.Now.ToString("MM-dd");
+            String sql = "select vsold.VN as id,vsold.VN, vsold.PIDS, vsold.PName, vsold.VDate, vsold.VStartTime, vsold.VEndTime, VStatus.VName, vsold.VSID " +
+                "From " + vsold.table + " vsold " +
+                "Left Join VStatus on  VStatus.VSID = vsold.VSID " +
+                " " +
+                "Where vsold." + vsold.VDate + " ='" + date + "' and vsold.VSID = '110' " +
+                "Order By vsold.VDate, vsold.VStartTime";
+            dt = conn.selectData(conn.conn, sql);
+
+            return dt;
+        }
+        public DataTable selectByStatusNurseDiag()
+        {
+            DataTable dt = new DataTable();
+            String date = System.DateTime.Now.Year + "-" + System.DateTime.Now.ToString("MM-dd");
+            String sql = "select vsold.VN as id,vsold.VN, vsold.PIDS, vsold.PName, vsold.VDate, vsold.VStartTime, vsold.VEndTime, VStatus.VName, vsold.VSID " +
+                "From " + vsold.table + " vsold " +
+                "Left Join VStatus on  VStatus.VSID = vsold.VSID " +
+                " " +
+                "Where vsold." + vsold.VDate + " ='" + date + "' and vsold.VSID in ('115','144','135','112','113','114') " +
+                "Order By vsold.VDate, vsold.VStartTime";
+            dt = conn.selectData(conn.conn, sql);
+
+            return dt;
+        }
+        public DataTable selectByStatusNurseFinish()
+        {
+            DataTable dt = new DataTable();
+            String date = System.DateTime.Now.Year + "-" + System.DateTime.Now.ToString("MM-dd");
+            String sql = "select vsold.VN as id,vsold.VN, vsold.PIDS, vsold.PName, vsold.VDate, vsold.VStartTime, vsold.VEndTime, VStatus.VName, vsold.VSID " +
+                "From " + vsold.table + " vsold " +
+                "Left Join VStatus on  VStatus.VSID = vsold.VSID " +
+                " " +
+                "Where vsold." + vsold.VDate + " ='" + date + "' and vsold.VSID in ('999','166','165') " +
+                "Order By vsold.VDate, vsold.VStartTime";
             dt = conn.selectData(conn.conn, sql);
 
             return dt;
