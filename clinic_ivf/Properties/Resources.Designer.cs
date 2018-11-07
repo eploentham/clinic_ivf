@@ -1443,6 +1443,26 @@ namespace clinic_ivf.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap red_checkmark_png_16 {
+            get {
+                object obj = ResourceManager.GetObject("red_checkmark_png_16", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap red_checkmark_png_51 {
+            get {
+                object obj = ResourceManager.GetObject("red_checkmark_png_51", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap redo {
             get {
                 object obj = ResourceManager.GetObject("redo", resourceCulture);
@@ -1856,6 +1876,16 @@ namespace clinic_ivf.Properties {
         internal static System.Drawing.Bitmap Ticket_24 {
             get {
                 object obj = ResourceManager.GetObject("Ticket_24", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap transparent_16 {
+            get {
+                object obj = ResourceManager.GetObject("transparent_16", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

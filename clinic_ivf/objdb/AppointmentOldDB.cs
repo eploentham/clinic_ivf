@@ -116,10 +116,11 @@ namespace clinic_ivf.objdb
             String wheredate = "", sql="", wheredoctor="";
             wheredate = " appnOld." + appnOld.AppDate + " >='" + startDate + " 00:00:00' and appnOld." + appnOld.AppDate + " <='" + endDate + " 23:59:59'";
             wheredoctor = !doctor.Equals("") ? " and appnOld." + appnOld.Doctor+" like '%"+ doctor + "%'":"";
-            sql = "select appnOld.* " +
+            sql = "select appnOld.*, STR_TO_DATE(AppTime, '%h:%i %p')  as aaa " +
                 "From " + appnOld.table + " appnOld " +
             //"Left Join t_ssdata_visit ssv On ssv.ssdata_visit_id = bd.ssdata_visit_id " +
-            "Where "+ wheredate+ wheredoctor;
+            "Where "+ wheredate+ wheredoctor+
+            " Order By "+ appnOld.AppDate+ ", aaa" ;
             
             dt = conn.selectData(conn.conn, sql);
             return dt;

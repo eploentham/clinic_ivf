@@ -28,7 +28,7 @@ namespace clinic_ivf.objdb
             dtrOld.Name = "Name";
             dtrOld.TVS = "TVS";
 
-            dtrOld.table = "doctor";
+            dtrOld.table = "Doctor";
             dtrOld.pkField = "ID";
         }
         public DataTable selectByPk(String copId)
