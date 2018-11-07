@@ -595,8 +595,7 @@ namespace clinic_ivf.gui
                 row1[colVsANC] = "";
                 row1[colVsAnes] = row[ic.ivfDB.appnOldDB.appnOld.Doctor].ToString();
                 row1[colVsRemark] = "";
-
-                
+                                
                 //if (i % 2 == 0)
                 //    grfPtt.Rows[i].StyleNew.BackColor = color;
                 i++;
