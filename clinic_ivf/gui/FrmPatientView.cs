@@ -199,7 +199,7 @@ namespace clinic_ivf.gui
             }
             else
             {
-                frm = new FrmPatientAdd(ic,"","", pttId);
+                frm = new FrmPatientAdd(ic,"", pttId,"");
             }
             String txt = "";
             if (!name.Equals(""))

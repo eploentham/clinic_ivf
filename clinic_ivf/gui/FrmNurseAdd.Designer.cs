@@ -29,14 +29,14 @@
         private void InitializeComponent()
         {
             this.theme1 = new C1.Win.C1Themes.C1ThemeController();
-            this.sB = new System.Windows.Forms.StatusStrip();
-            this.sB1 = new System.Windows.Forms.ToolStripStatusLabel();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.txtDoctor = new C1.Win.C1Input.C1TextBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.c1TextBox4 = new C1.Win.C1Input.C1TextBox();
-            this.c1TextBox3 = new C1.Win.C1Input.C1TextBox();
-            this.c1TextBox2 = new C1.Win.C1Input.C1TextBox();
-            this.c1TextBox1 = new C1.Win.C1Input.C1TextBox();
+            this.txtVn = new C1.Win.C1Input.C1TextBox();
+            this.txtBg = new C1.Win.C1Input.C1TextBox();
+            this.txtSex = new C1.Win.C1Input.C1TextBox();
+            this.txtDob = new C1.Win.C1Input.C1TextBox();
             this.chkChronic = new C1.Win.C1Input.C1CheckBox();
             this.chkDenyAllergy = new C1.Win.C1Input.C1CheckBox();
             this.label10 = new System.Windows.Forms.Label();
@@ -48,62 +48,53 @@
             this.txtPttNameE = new C1.Win.C1Input.C1TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.txtHn = new C1.Win.C1Input.C1TextBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.c1TextBox5 = new C1.Win.C1Input.C1TextBox();
             this.panel1 = new System.Windows.Forms.Panel();
             this.tC = new C1.Win.C1Command.C1DockingTab();
             this.tabDrug = new C1.Win.C1Command.C1DockingTabPage();
+            this.pnDrug = new System.Windows.Forms.Panel();
             this.tabLab = new C1.Win.C1Command.C1DockingTabPage();
             this.tabApp = new C1.Win.C1Command.C1DockingTabPage();
             this.tabCert = new C1.Win.C1Command.C1DockingTabPage();
+            this.sB = new System.Windows.Forms.StatusStrip();
+            this.sB1 = new System.Windows.Forms.ToolStripStatusLabel();
+            this.txtAllergy = new C1.Win.C1Input.C1TextBox();
+            this.label6 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.theme1)).BeginInit();
-            this.sB.SuspendLayout();
             this.groupBox1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.c1TextBox4)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.c1TextBox3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.c1TextBox2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.c1TextBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtDoctor)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtVn)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtBg)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtSex)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtDob)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkChronic)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkDenyAllergy)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtPttName)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtPttNameE)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtHn)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.c1TextBox5)).BeginInit();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tC)).BeginInit();
             this.tC.SuspendLayout();
+            this.tabDrug.SuspendLayout();
+            this.sB.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtAllergy)).BeginInit();
             this.SuspendLayout();
             // 
             // theme1
             // 
             this.theme1.Theme = "Office2013Red";
             // 
-            // sB
-            // 
-            this.sB.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.sB1});
-            this.sB.Location = new System.Drawing.Point(0, 727);
-            this.sB.Name = "sB";
-            this.sB.Size = new System.Drawing.Size(1148, 22);
-            this.sB.TabIndex = 528;
-            this.sB.Text = "statusStrip1";
-            // 
-            // sB1
-            // 
-            this.sB1.Name = "sB1";
-            this.sB1.Size = new System.Drawing.Size(118, 17);
-            this.sB1.Text = "toolStripStatusLabel1";
-            // 
             // groupBox1
             // 
             this.groupBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.groupBox1.Controls.Add(this.txtAllergy);
+            this.groupBox1.Controls.Add(this.label6);
             this.groupBox1.Controls.Add(this.label3);
-            this.groupBox1.Controls.Add(this.c1TextBox5);
+            this.groupBox1.Controls.Add(this.txtDoctor);
             this.groupBox1.Controls.Add(this.label2);
-            this.groupBox1.Controls.Add(this.c1TextBox4);
-            this.groupBox1.Controls.Add(this.c1TextBox3);
-            this.groupBox1.Controls.Add(this.c1TextBox2);
-            this.groupBox1.Controls.Add(this.c1TextBox1);
+            this.groupBox1.Controls.Add(this.txtVn);
+            this.groupBox1.Controls.Add(this.txtBg);
+            this.groupBox1.Controls.Add(this.txtSex);
+            this.groupBox1.Controls.Add(this.txtDob);
             this.groupBox1.Controls.Add(this.chkChronic);
             this.groupBox1.Controls.Add(this.chkDenyAllergy);
             this.groupBox1.Controls.Add(this.label10);
@@ -125,6 +116,32 @@
             this.groupBox1.Text = "Patient";
             this.theme1.SetTheme(this.groupBox1, "(default)");
             // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.label3.Location = new System.Drawing.Point(205, 69);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(54, 16);
+            this.label3.TabIndex = 693;
+            this.label3.Text = "Doctor :";
+            this.theme1.SetTheme(this.label3, "(default)");
+            // 
+            // txtDoctor
+            // 
+            this.txtDoctor.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtDoctor.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
+            this.txtDoctor.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.txtDoctor.Location = new System.Drawing.Point(287, 67);
+            this.txtDoctor.Name = "txtDoctor";
+            this.txtDoctor.Size = new System.Drawing.Size(371, 20);
+            this.txtDoctor.TabIndex = 692;
+            this.txtDoctor.Tag = null;
+            this.theme1.SetTheme(this.txtDoctor, "(default)");
+            this.txtDoctor.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            // 
             // label2
             // 
             this.label2.AutoSize = true;
@@ -138,57 +155,57 @@
             this.label2.Text = "VN :";
             this.theme1.SetTheme(this.label2, "(default)");
             // 
-            // c1TextBox4
+            // txtVn
             // 
-            this.c1TextBox4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.c1TextBox4.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
-            this.c1TextBox4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.c1TextBox4.Location = new System.Drawing.Point(53, 45);
-            this.c1TextBox4.Name = "c1TextBox4";
-            this.c1TextBox4.Size = new System.Drawing.Size(146, 24);
-            this.c1TextBox4.TabIndex = 690;
-            this.c1TextBox4.Tag = null;
-            this.theme1.SetTheme(this.c1TextBox4, "(default)");
-            this.c1TextBox4.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            this.txtVn.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtVn.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
+            this.txtVn.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.txtVn.Location = new System.Drawing.Point(53, 45);
+            this.txtVn.Name = "txtVn";
+            this.txtVn.Size = new System.Drawing.Size(146, 24);
+            this.txtVn.TabIndex = 690;
+            this.txtVn.Tag = null;
+            this.theme1.SetTheme(this.txtVn, "(default)");
+            this.txtVn.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
             // 
-            // c1TextBox3
+            // txtBg
             // 
-            this.c1TextBox3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.c1TextBox3.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
-            this.c1TextBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.c1TextBox3.Location = new System.Drawing.Point(915, 18);
-            this.c1TextBox3.Name = "c1TextBox3";
-            this.c1TextBox3.Size = new System.Drawing.Size(73, 20);
-            this.c1TextBox3.TabIndex = 689;
-            this.c1TextBox3.Tag = null;
-            this.theme1.SetTheme(this.c1TextBox3, "(default)");
-            this.c1TextBox3.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            this.txtBg.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtBg.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
+            this.txtBg.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.txtBg.Location = new System.Drawing.Point(913, 41);
+            this.txtBg.Name = "txtBg";
+            this.txtBg.Size = new System.Drawing.Size(73, 20);
+            this.txtBg.TabIndex = 689;
+            this.txtBg.Tag = null;
+            this.theme1.SetTheme(this.txtBg, "(default)");
+            this.txtBg.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
             // 
-            // c1TextBox2
+            // txtSex
             // 
-            this.c1TextBox2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.c1TextBox2.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
-            this.c1TextBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.c1TextBox2.Location = new System.Drawing.Point(713, 41);
-            this.c1TextBox2.Name = "c1TextBox2";
-            this.c1TextBox2.Size = new System.Drawing.Size(107, 20);
-            this.c1TextBox2.TabIndex = 688;
-            this.c1TextBox2.Tag = null;
-            this.theme1.SetTheme(this.c1TextBox2, "(default)");
-            this.c1TextBox2.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            this.txtSex.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtSex.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
+            this.txtSex.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.txtSex.Location = new System.Drawing.Point(713, 41);
+            this.txtSex.Name = "txtSex";
+            this.txtSex.Size = new System.Drawing.Size(107, 20);
+            this.txtSex.TabIndex = 688;
+            this.txtSex.Tag = null;
+            this.theme1.SetTheme(this.txtSex, "(default)");
+            this.txtSex.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
             // 
-            // c1TextBox1
+            // txtDob
             // 
-            this.c1TextBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.c1TextBox1.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
-            this.c1TextBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.c1TextBox1.Location = new System.Drawing.Point(713, 20);
-            this.c1TextBox1.Name = "c1TextBox1";
-            this.c1TextBox1.Size = new System.Drawing.Size(107, 20);
-            this.c1TextBox1.TabIndex = 687;
-            this.c1TextBox1.Tag = null;
-            this.theme1.SetTheme(this.c1TextBox1, "(default)");
-            this.c1TextBox1.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            this.txtDob.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtDob.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
+            this.txtDob.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.txtDob.Location = new System.Drawing.Point(713, 20);
+            this.txtDob.Name = "txtDob";
+            this.txtDob.Size = new System.Drawing.Size(156, 20);
+            this.txtDob.TabIndex = 687;
+            this.txtDob.Tag = null;
+            this.theme1.SetTheme(this.txtDob, "(default)");
+            this.txtDob.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
             // 
             // chkChronic
             // 
@@ -234,7 +251,7 @@
             this.label10.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
             this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label10.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.label10.Location = new System.Drawing.Point(828, 22);
+            this.label10.Location = new System.Drawing.Point(826, 45);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(90, 16);
             this.label10.TabIndex = 683;
@@ -345,32 +362,6 @@
             this.theme1.SetTheme(this.txtHn, "(default)");
             this.txtHn.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
             // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.label3.Location = new System.Drawing.Point(205, 69);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(54, 16);
-            this.label3.TabIndex = 693;
-            this.label3.Text = "Doctor :";
-            this.theme1.SetTheme(this.label3, "(default)");
-            // 
-            // c1TextBox5
-            // 
-            this.c1TextBox5.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.c1TextBox5.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
-            this.c1TextBox5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.c1TextBox5.Location = new System.Drawing.Point(287, 67);
-            this.c1TextBox5.Name = "c1TextBox5";
-            this.c1TextBox5.Size = new System.Drawing.Size(371, 20);
-            this.c1TextBox5.TabIndex = 692;
-            this.c1TextBox5.Tag = null;
-            this.theme1.SetTheme(this.c1TextBox5, "(default)");
-            this.c1TextBox5.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
-            // 
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
@@ -406,11 +397,23 @@
             // 
             // tabDrug
             // 
+            this.tabDrug.Controls.Add(this.pnDrug);
             this.tabDrug.Location = new System.Drawing.Point(1, 24);
             this.tabDrug.Name = "tabDrug";
             this.tabDrug.Size = new System.Drawing.Size(1146, 603);
             this.tabDrug.TabIndex = 0;
             this.tabDrug.Text = "Medicine &Supplies";
+            // 
+            // pnDrug
+            // 
+            this.pnDrug.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.pnDrug.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pnDrug.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.pnDrug.Location = new System.Drawing.Point(0, 0);
+            this.pnDrug.Name = "pnDrug";
+            this.pnDrug.Size = new System.Drawing.Size(1146, 603);
+            this.pnDrug.TabIndex = 0;
+            this.theme1.SetTheme(this.pnDrug, "(default)");
             // 
             // tabLab
             // 
@@ -436,6 +439,48 @@
             this.tabCert.TabIndex = 3;
             this.tabCert.Text = "Medical Certificate";
             // 
+            // sB
+            // 
+            this.sB.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.sB1});
+            this.sB.Location = new System.Drawing.Point(0, 727);
+            this.sB.Name = "sB";
+            this.sB.Size = new System.Drawing.Size(1148, 22);
+            this.sB.TabIndex = 528;
+            this.sB.Text = "statusStrip1";
+            // 
+            // sB1
+            // 
+            this.sB1.Name = "sB1";
+            this.sB1.Size = new System.Drawing.Size(118, 17);
+            this.sB1.Text = "toolStripStatusLabel1";
+            // 
+            // txtAllergy
+            // 
+            this.txtAllergy.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtAllergy.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
+            this.txtAllergy.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.txtAllergy.Location = new System.Drawing.Point(724, 67);
+            this.txtAllergy.Name = "txtAllergy";
+            this.txtAllergy.Size = new System.Drawing.Size(383, 20);
+            this.txtAllergy.TabIndex = 695;
+            this.txtAllergy.Tag = null;
+            this.theme1.SetTheme(this.txtAllergy, "(default)");
+            this.txtAllergy.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.label6.Location = new System.Drawing.Point(664, 69);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(56, 16);
+            this.label6.TabIndex = 694;
+            this.label6.Text = "Allergy :";
+            this.theme1.SetTheme(this.label6, "(default)");
+            // 
             // FrmNurseAdd
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -446,24 +491,27 @@
             this.Controls.Add(this.sB);
             this.Name = "FrmNurseAdd";
             this.Text = "FrmNurseAdd";
+            this.Load += new System.EventHandler(this.FrmNurseAdd_Load);
             ((System.ComponentModel.ISupportInitialize)(this.theme1)).EndInit();
-            this.sB.ResumeLayout(false);
-            this.sB.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.c1TextBox4)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.c1TextBox3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.c1TextBox2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.c1TextBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtDoctor)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtVn)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtBg)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtSex)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtDob)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkChronic)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkDenyAllergy)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtPttName)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtPttNameE)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtHn)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.c1TextBox5)).EndInit();
             this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.tC)).EndInit();
             this.tC.ResumeLayout(false);
+            this.tabDrug.ResumeLayout(false);
+            this.sB.ResumeLayout(false);
+            this.sB.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtAllergy)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -476,10 +524,10 @@
         private System.Windows.Forms.ToolStripStatusLabel sB1;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Label label2;
-        private C1.Win.C1Input.C1TextBox c1TextBox4;
-        private C1.Win.C1Input.C1TextBox c1TextBox3;
-        private C1.Win.C1Input.C1TextBox c1TextBox2;
-        private C1.Win.C1Input.C1TextBox c1TextBox1;
+        private C1.Win.C1Input.C1TextBox txtVn;
+        private C1.Win.C1Input.C1TextBox txtBg;
+        private C1.Win.C1Input.C1TextBox txtSex;
+        private C1.Win.C1Input.C1TextBox txtDob;
         private C1.Win.C1Input.C1CheckBox chkChronic;
         private C1.Win.C1Input.C1CheckBox chkDenyAllergy;
         private System.Windows.Forms.Label label10;
@@ -492,12 +540,15 @@
         private System.Windows.Forms.Label label4;
         private C1.Win.C1Input.C1TextBox txtHn;
         private System.Windows.Forms.Label label3;
-        private C1.Win.C1Input.C1TextBox c1TextBox5;
+        private C1.Win.C1Input.C1TextBox txtDoctor;
         private System.Windows.Forms.Panel panel1;
         private C1.Win.C1Command.C1DockingTab tC;
         private C1.Win.C1Command.C1DockingTabPage tabDrug;
         private C1.Win.C1Command.C1DockingTabPage tabLab;
         private C1.Win.C1Command.C1DockingTabPage tabApp;
         private C1.Win.C1Command.C1DockingTabPage tabCert;
+        private System.Windows.Forms.Panel pnDrug;
+        private C1.Win.C1Input.C1TextBox txtAllergy;
+        private System.Windows.Forms.Label label6;
     }
 }

@@ -123,7 +123,7 @@ namespace clinic_ivf.gui
         private void chkLogin()
         {
             Staff stf1 = new Staff();
-            
+            if (txtUserName.Text.Length <= 0) return;
             stf1 = stfDB.selectByUsername(txtUserName.Text);
             if (stf1.staff_fname_t.Length > 0)
             {

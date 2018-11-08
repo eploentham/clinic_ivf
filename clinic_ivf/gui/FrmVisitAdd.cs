@@ -34,7 +34,7 @@ namespace clinic_ivf.gui
         String filename = "";
         static String filenamepic = "", host = "", user = "", pass = "";
 
-        public FrmVisitAdd(IvfControl ic, String vsid, String pttid)
+        public FrmVisitAdd(IvfControl ic, String pttid, String vsid)
         {
             InitializeComponent();
             this.vsid = vsid;

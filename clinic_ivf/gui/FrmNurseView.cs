@@ -23,7 +23,7 @@ namespace clinic_ivf.gui
         Color bg, fc;
         Font ff, ffB;
 
-        int colID = 1, colVN = 2, colPttHn = 3, colPttName = 4, colVsDate = 5, colVsTime = 6, colVsEtime = 7, colStatus = 8;
+        int colID = 1, colVN = 2, colPttHn = 3, colPttName = 4, colVsDate = 5, colVsTime = 6, colVsEtime = 7, colStatus = 8, colPttId=9;
 
         C1FlexGrid grfQue, grfDiag, grfFinish;
         C1SuperTooltip stt;
@@ -126,7 +126,7 @@ namespace clinic_ivf.gui
 
             //grfExpn.Rows.Count = dt.Rows.Count + 1;
             grfFinish.Rows.Count = dt.Rows.Count + 1;
-            grfFinish.Cols.Count = 9;
+            grfFinish.Cols.Count = 10;
             C1TextBox txt = new C1TextBox();
             //C1ComboBox cboproce = new C1ComboBox();
             //ic.ivfDB.itmDB.setCboItem(cboproce);
@@ -177,11 +177,13 @@ namespace clinic_ivf.gui
                 grfFinish[i, colVsTime] = row["VStartTime"].ToString();
                 grfFinish[i, colVsEtime] = row["VEndTime"].ToString();
                 grfFinish[i, colStatus] = row["VName"].ToString();
+                grfFinish[i, colPttId] = row["PID"].ToString();
                 //if (i % 2 == 0)
                 //    grfPtt.Rows[i].StyleNew.BackColor = color;
                 i++;
             }
             grfFinish.Cols[colID].Visible = false;
+            grfFinish.Cols[colPttId].Visible = false;
             //theme1.SetTheme(grfFinish, ic.theme);
 
         }
@@ -394,6 +396,7 @@ namespace clinic_ivf.gui
                 grfQue[i, colVsTime] = row["VStartTime"].ToString();
                 grfQue[i, colVsEtime] = row["VEndTime"].ToString();
                 grfQue[i, colStatus] = row["VName"].ToString();
+                grfQue[i, colStatus] = row["VName"].ToString();
                 //if (i % 2 == 0)
                 //    grfPtt.Rows[i].StyleNew.BackColor = color;
                 i++;
@@ -404,13 +407,15 @@ namespace clinic_ivf.gui
         }
         private void ContextMenu_edit(object sender, System.EventArgs e)
         {
-            String chk = "", name = "", id = "";
+            String chk = "", name = "", vn = "", pttId="";
 
-            id = grfQue[grfQue.Row, colVN] != null ? grfQue[grfQue.Row, colVN].ToString() : "";
+            vn = grfQue[grfQue.Row, colVN] != null ? grfQue[grfQue.Row, colVN].ToString() : "";
+            pttId = grfQue[grfQue.Row, colPttId] != null ? grfQue[grfQue.Row, colPttId].ToString() : "";
             chk = grfQue[grfQue.Row, colPttHn] != null ? grfQue[grfQue.Row, colPttHn].ToString() : "";
             name = grfQue[grfQue.Row, colPttName] != null ? grfQue[grfQue.Row, colPttName].ToString() : "";
-            FrmNurseAdd frm = new FrmNurseAdd();
-            frm.ShowDialog(this);
+            //FrmNurseAdd frm = new FrmNurseAdd();
+            //frm.ShowDialog(this);
+            openPatientAdd(pttId, vn, name);
             //if (MessageBox.Show("ต้องการ แก้ไข Patient  \n  hn number " + chk + " \n name " + name, "", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == DialogResult.OK)
             //{
             //grfReq.Rows.Remove(grfReq.Row);
@@ -419,18 +424,37 @@ namespace clinic_ivf.gui
         }
         private void ContextMenu_order(object sender, System.EventArgs e)
         {
-            String chk = "", name = "", id = "";
+            String chk = "", name = "", vn = "", pttId = "";
 
-            id = grfQue[grfQue.Row, colVN] != null ? grfQue[grfQue.Row, colVN].ToString() : "";
+            vn = grfQue[grfQue.Row, colVN] != null ? grfQue[grfQue.Row, colVN].ToString() : "";
+            pttId = grfQue[grfQue.Row, colPttId] != null ? grfQue[grfQue.Row, colPttId].ToString() : "";
             chk = grfQue[grfQue.Row, colPttHn] != null ? grfQue[grfQue.Row, colPttHn].ToString() : "";
             name = grfQue[grfQue.Row, colPttName] != null ? grfQue[grfQue.Row, colPttName].ToString() : "";
-            FrmNurseAdd frm = new FrmNurseAdd();
-            frm.ShowDialog(this);
+            //FrmNurseAdd frm = new FrmNurseAdd();
+            //frm.ShowDialog(this);
+
+            openPatientAdd(pttId, vn, name);
             //if (MessageBox.Show("ต้องการ แก้ไข Patient  \n  hn number " + chk + " \n name " + name, "", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == DialogResult.OK)
             //{
             //grfReq.Rows.Remove(grfReq.Row);
             //openPatientAdd(id, name);
             //}
+        }
+        private void openPatientAdd(String pttId, String vn, String name)
+        {
+            FrmNurseAdd frm = new FrmNurseAdd(ic, pttId, vn);
+            String txt = "";
+            if (!name.Equals(""))
+            {
+                txt = " " + name;
+            }
+            //else
+            //{
+            //    txt = "ป้อน Patient ใหม่ ";
+            //}
+
+            frm.FormBorderStyle = FormBorderStyle.None;
+            menu.AddNewTab(frm, txt);
         }
         private void FrmNurseView_Load(object sender, EventArgs e)
         {

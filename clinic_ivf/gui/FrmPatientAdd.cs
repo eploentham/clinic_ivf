@@ -52,7 +52,7 @@ namespace clinic_ivf.gui
         String filename = "";
         static String filenamepic = "", host="", user="", pass="";
         
-        public FrmPatientAdd(IvfControl ic, String pttid, String vsoldid, String pttoldid)
+        public FrmPatientAdd(IvfControl ic, String pttid, String pttoldid, String vsoldid)
         {
             InitializeComponent();
             this.ic = ic;

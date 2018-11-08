@@ -423,7 +423,7 @@ namespace clinic_ivf.objdb
             //}
             String sql = "select ptt." + pttO.PID + ",ptt." + pttO.PIDS + ",CONCAT(IFNULL(fpp.SurfixName,''),' ', ptt." + pttO.PName + ",' ',ptt." + pttO.PSurname + ") as name,ptt." + pttO.EmergencyPersonalContact + " " +
                 "From " + pttO.table + " ptt " +
-                "Left join surfixname fpp on fpp.SurfixID = ptt.SurfixID " +
+                "Left join SurfixName fpp on fpp.SurfixID = ptt.SurfixID " +
                 "Where " + whereHN + whereName + wherepid + wherenameE+" " +
                 "Order By ptt." + pttO.PID;
             dt = conn.selectData(conn.conn, sql);
