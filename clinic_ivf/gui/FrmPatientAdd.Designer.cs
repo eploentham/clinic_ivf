@@ -308,7 +308,7 @@
             this.splitContainer1.Panel2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
             this.theme1.SetTheme(this.splitContainer1.Panel2, "(default)");
             this.splitContainer1.Size = new System.Drawing.Size(1457, 718);
-            this.splitContainer1.SplitterDistance = 247;
+            this.splitContainer1.SplitterDistance = 294;
             this.splitContainer1.TabIndex = 527;
             this.theme1.SetTheme(this.splitContainer1, "(default)");
             // 
@@ -394,7 +394,7 @@
             this.splitContainer2.Panel2.Controls.Add(this.picPtt);
             this.splitContainer2.Panel2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
             this.theme1.SetTheme(this.splitContainer2.Panel2, "(default)");
-            this.splitContainer2.Size = new System.Drawing.Size(1457, 247);
+            this.splitContainer2.Size = new System.Drawing.Size(1457, 294);
             this.splitContainer2.SplitterDistance = 1153;
             this.splitContainer2.TabIndex = 0;
             this.theme1.SetTheme(this.splitContainer2, "(default)");
@@ -1367,7 +1367,7 @@
             this.picPtt.Dock = System.Windows.Forms.DockStyle.Fill;
             this.picPtt.Location = new System.Drawing.Point(0, 0);
             this.picPtt.Name = "picPtt";
-            this.picPtt.Size = new System.Drawing.Size(300, 247);
+            this.picPtt.Size = new System.Drawing.Size(300, 294);
             this.picPtt.TabIndex = 0;
             this.picPtt.TabStop = false;
             // 
@@ -1384,7 +1384,7 @@
             this.tC1.Location = new System.Drawing.Point(0, 0);
             this.tC1.Name = "tC1";
             this.tC1.SelectedIndex = 3;
-            this.tC1.Size = new System.Drawing.Size(1457, 467);
+            this.tC1.Size = new System.Drawing.Size(1457, 420);
             this.tC1.TabIndex = 0;
             this.tC1.TabSizeMode = C1.Win.C1Command.TabSizeModeEnum.Fit;
             this.tC1.TabsShowFocusCues = false;
@@ -1397,7 +1397,7 @@
             this.tabFamily.Controls.Add(this.groupBox1);
             this.tabFamily.Location = new System.Drawing.Point(1, 24);
             this.tabFamily.Name = "tabFamily";
-            this.tabFamily.Size = new System.Drawing.Size(1455, 442);
+            this.tabFamily.Size = new System.Drawing.Size(1455, 395);
             this.tabFamily.TabIndex = 0;
             this.tabFamily.Text = "Family";
             // 
@@ -1438,7 +1438,7 @@
             this.groupBox1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
             this.groupBox1.Location = new System.Drawing.Point(0, 0);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(1455, 442);
+            this.groupBox1.Size = new System.Drawing.Size(1455, 395);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.theme1.SetTheme(this.groupBox1, "(default)");
@@ -1879,7 +1879,7 @@
             this.tabAddress.Controls.Add(this.groupBox3);
             this.tabAddress.Location = new System.Drawing.Point(1, 24);
             this.tabAddress.Name = "tabAddress";
-            this.tabAddress.Size = new System.Drawing.Size(1455, 442);
+            this.tabAddress.Size = new System.Drawing.Size(1455, 395);
             this.tabAddress.TabIndex = 2;
             this.tabAddress.Text = "Address";
             // 
@@ -2483,7 +2483,7 @@
             this.tabVisit.Controls.Add(this.panel1);
             this.tabVisit.Location = new System.Drawing.Point(1, 24);
             this.tabVisit.Name = "tabVisit";
-            this.tabVisit.Size = new System.Drawing.Size(1455, 442);
+            this.tabVisit.Size = new System.Drawing.Size(1455, 395);
             this.tabVisit.TabIndex = 3;
             this.tabVisit.Text = "Visit";
             // 
@@ -2494,7 +2494,7 @@
             this.pnVisit.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
             this.pnVisit.Location = new System.Drawing.Point(0, 60);
             this.pnVisit.Name = "pnVisit";
-            this.pnVisit.Size = new System.Drawing.Size(1455, 382);
+            this.pnVisit.Size = new System.Drawing.Size(1455, 335);
             this.pnVisit.TabIndex = 1;
             this.theme1.SetTheme(this.pnVisit, "(default)");
             // 
@@ -2529,7 +2529,7 @@
             this.tabImage.Controls.Add(this.pnImage);
             this.tabImage.Location = new System.Drawing.Point(1, 24);
             this.tabImage.Name = "tabImage";
-            this.tabImage.Size = new System.Drawing.Size(1455, 442);
+            this.tabImage.Size = new System.Drawing.Size(1455, 395);
             this.tabImage.TabIndex = 4;
             this.tabImage.Text = "Image";
             // 
@@ -2540,7 +2540,7 @@
             this.pnImage.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
             this.pnImage.Location = new System.Drawing.Point(0, 0);
             this.pnImage.Name = "pnImage";
-            this.pnImage.Size = new System.Drawing.Size(1455, 442);
+            this.pnImage.Size = new System.Drawing.Size(1455, 395);
             this.pnImage.TabIndex = 0;
             this.theme1.SetTheme(this.pnImage, "(default)");
             // 

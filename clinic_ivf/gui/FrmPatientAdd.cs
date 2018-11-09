@@ -1470,17 +1470,17 @@ namespace clinic_ivf.gui
                 int nextChar1 = _c1pdf.DrawString("\n"+text, bodyFont, Brushes.Black, rcLeft1);
                 _c1pdf.DrawImage(img, rcBarcode1);
                 //rc.Inflate(+3, +3);
-                _c1pdf.DrawRectangle(Pens.Silver, rcLeft1);
+                //_c1pdf.DrawRectangle(Pens.Silver, rcLeft1);
 
                 _c1pdf.DrawString(hn, bodyFontB, Brushes.Black, rcMiddle);
                 _c1pdf.DrawString("\n" + text, bodyFont, Brushes.Black, rcMiddle);
                 _c1pdf.DrawImage(img, rcBarcodeM);
-                _c1pdf.DrawRectangle(Pens.Silver, rcMiddle);
+                //_c1pdf.DrawRectangle(Pens.Silver, rcMiddle);
 
                 _c1pdf.DrawString(hn, bodyFontB, Brushes.Black, rcRight);
                 _c1pdf.DrawString("\n" + text, bodyFont, Brushes.Black, rcRight);
                 _c1pdf.DrawImage(img, rcBarcodeR);
-                _c1pdf.DrawRectangle(Pens.Silver, rcRight);
+                //_c1pdf.DrawRectangle(Pens.Silver, rcRight);
 
                 rcLeft1.Y += int.TryParse(ic.iniC.sticker_donor_height, out chk) ? chk : 120;
                 rcMiddle.Y += int.TryParse(ic.iniC.sticker_donor_height, out chk) ? chk : 120;
