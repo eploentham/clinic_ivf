@@ -155,7 +155,7 @@
             this.label44 = new System.Windows.Forms.Label();
             this.txtLon = new C1.Win.C1Input.C1TextBox();
             this.label43 = new System.Windows.Forms.Label();
-            this.xtLat = new C1.Win.C1Input.C1TextBox();
+            this.txtLat = new C1.Win.C1Input.C1TextBox();
             this.label42 = new System.Windows.Forms.Label();
             this.cboCou = new C1.Win.C1Input.C1ComboBox();
             this.label41 = new System.Windows.Forms.Label();
@@ -266,7 +266,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.c1TextBox10)).BeginInit();
             this.groupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtLon)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.xtLat)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtLat)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cboCou)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cboProv)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cboAmpr)).BeginInit();
@@ -2186,7 +2186,7 @@
             this.groupBox3.Controls.Add(this.label44);
             this.groupBox3.Controls.Add(this.txtLon);
             this.groupBox3.Controls.Add(this.label43);
-            this.groupBox3.Controls.Add(this.xtLat);
+            this.groupBox3.Controls.Add(this.txtLat);
             this.groupBox3.Controls.Add(this.label42);
             this.groupBox3.Controls.Add(this.cboCou);
             this.groupBox3.Controls.Add(this.label41);
@@ -2250,18 +2250,18 @@
             this.label43.Text = "Latitude :";
             this.theme1.SetTheme(this.label43, "(default)");
             // 
-            // xtLat
+            // txtLat
             // 
-            this.xtLat.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.xtLat.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
-            this.xtLat.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.xtLat.Location = new System.Drawing.Point(381, 89);
-            this.xtLat.Name = "xtLat";
-            this.xtLat.Size = new System.Drawing.Size(111, 20);
-            this.xtLat.TabIndex = 590;
-            this.xtLat.Tag = null;
-            this.theme1.SetTheme(this.xtLat, "(default)");
-            this.xtLat.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            this.txtLat.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtLat.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
+            this.txtLat.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.txtLat.Location = new System.Drawing.Point(381, 89);
+            this.txtLat.Name = "txtLat";
+            this.txtLat.Size = new System.Drawing.Size(111, 20);
+            this.txtLat.TabIndex = 590;
+            this.txtLat.Tag = null;
+            this.theme1.SetTheme(this.txtLat, "(default)");
+            this.txtLat.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
             // 
             // label42
             // 
@@ -2681,7 +2681,7 @@
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtLon)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.xtLat)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtLat)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cboCou)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cboProv)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cboAmpr)).EndInit();
@@ -2810,7 +2810,7 @@
         private System.Windows.Forms.Label label44;
         private C1.Win.C1Input.C1TextBox txtLon;
         private System.Windows.Forms.Label label43;
-        private C1.Win.C1Input.C1TextBox xtLat;
+        private C1.Win.C1Input.C1TextBox txtLat;
         private System.Windows.Forms.GroupBox groupBox4;
         private System.Windows.Forms.Label label45;
         private C1.Win.C1Input.C1TextBox c1TextBox6;

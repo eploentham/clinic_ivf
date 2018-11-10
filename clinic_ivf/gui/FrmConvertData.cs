@@ -90,8 +90,8 @@ namespace clinic_ivf.gui
                     Patient ptt = new Patient();
                     ptt.t_patient_id = "";
                     ptt.patient_hn = row["hn"].ToString();
-                    ptt.patient_firstname = row["name"].ToString();
-                    ptt.patient_lastname = row["surname"].ToString();
+                    ptt.patient_firstname_e = row["name"].ToString();
+                    ptt.patient_lastname_e = row["surname"].ToString();
                     ptt.patient_birthday = row["dbirth"].ToString();
                     ptt.mobile1 = row["phone"].ToString();
                     ptt.f_sex_id = row["sex"].ToString().Equals("M") ? "2100000001" : "2100000002";

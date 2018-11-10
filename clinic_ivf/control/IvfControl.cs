@@ -128,6 +128,7 @@ namespace clinic_ivf.control
             iniC.sticker_donor_barcode_gap_y = iniF.getIni("sticker_donor", "barcode_gap_y");
             iniC.sticker_donor_gap = iniF.getIni("sticker_donor", "gap");
             iniC.sticker_donor_start_x = iniF.getIni("sticker_donor", "start_x");
+            iniC.patientaddpanel1weight = iniF.getIni("app", "patientaddpanel1weight");
 
             iniC.grdViewFontName = iniC.grdViewFontName.Equals("") ? "Microsoft Sans Serif" : iniC.grdViewFontName;
 
@@ -139,6 +140,7 @@ namespace clinic_ivf.control
             iniC.sticker_donor_barcode_gap_y = iniC.sticker_donor_barcode_gap_y.Equals("") ? "30" : iniC.sticker_donor_barcode_gap_y;
             iniC.sticker_donor_gap = iniC.sticker_donor_gap.Equals("") ? "20" : iniC.sticker_donor_gap;
             iniC.sticker_donor_start_x = iniC.sticker_donor_start_x.Equals("") ? "52" : iniC.sticker_donor_start_x;
+            iniC.patientaddpanel1weight = iniC.patientaddpanel1weight==null ? "300" : iniC.patientaddpanel1weight.Equals("") ? "300" : iniC.patientaddpanel1weight;
 
             iniC.hostFTP = iniC.hostFTP ==null ? "" : iniC.hostFTP;
             iniC.userFTP = iniC.userFTP == null ? "" : iniC.userFTP;

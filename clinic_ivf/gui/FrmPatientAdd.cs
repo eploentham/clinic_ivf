@@ -592,9 +592,12 @@ namespace clinic_ivf.gui
             try
             {
                 String age = "";
+                DateTime dt = new DateTime();
+                dt = (DateTime)txtDob.Value;
                 age = ptt.AgeStringShort();
                 //DateTime dt = txtDob.Text;
-                createPDFSticker(txtHn.Text, cboPrefix.Text + " " + txtPttNameE.Text + " " + txtPttLNameE.Text + "\n  DOB " + ic.datetoDB(txtDob.Text) + "\n  AGE " + age);
+                //createPDFSticker(txtHn.Text, cboPrefix.Text + " " + txtPttNameE.Text + " " + txtPttLNameE.Text + "\n  DOB " + ic.datetoDB(txtDob.Text) + "\n  AGE " + age);
+                createPDFSticker(txtHn.Text, cboPrefix.Text + " " + txtPttNameE.Text + " " + txtPttLNameE.Text + "\n  DOB " + dt.ToString("dd-MM-yyyy") + "\n  AGE " + age);
                 //cPdf.LoadFromFile(filename);
                 //cPdf.lo(filename);
                 //break;
@@ -1437,7 +1440,8 @@ namespace clinic_ivf.gui
             //ic.iniC.sticker_donor_barcode_height = "25";
             rcLeft1.Width = int.TryParse(ic.iniC.sticker_donor_width, out chk) ? chk : 120;
             rcLeft1.Height = int.TryParse(ic.iniC.sticker_donor_height, out chk) ? chk : 90;
-            rcLeft1.Y = int.TryParse(ic.iniC.sticker_donor_start_y, out chk) ? chk : 60;
+            ic.iniC.sticker_donor_start_y = "33";     // 38
+            rcLeft1.Y = int.TryParse(ic.iniC.sticker_donor_start_y, out chk) ? chk : 63;
             rcLeft1.X = int.TryParse(ic.iniC.sticker_donor_start_x, out chk) ? chk : 52;
             RectangleF rcRight = rcLeft1;
             
@@ -1467,6 +1471,7 @@ namespace clinic_ivf.gui
                 // render as much as will fit into the rectangle
                 //rc.Inflate(-3, -3);
                 int nextChar = _c1pdf.DrawString(hn, bodyFontB, Brushes.Black, rcLeft1);
+                //int nextChar2 = _c1pdf.DrawString("\n ", bodyFont, Brushes.Black, rcLeft1);
                 int nextChar1 = _c1pdf.DrawString("\n"+text, bodyFont, Brushes.Black, rcLeft1);
                 _c1pdf.DrawImage(img, rcBarcode1);
                 //rc.Inflate(+3, +3);
@@ -1564,6 +1569,8 @@ namespace clinic_ivf.gui
         private void FrmPatientAdd_Load(object sender, EventArgs e)
         {
             tC1.SelectedTab = tabFamily;
+            splitContainer1.Panel1MinSize = 200;
+            splitContainer1.SplitterDistance = int.Parse(ic.iniC.patientaddpanel1weight);
             if (ic.iniC.statusAppDonor.Equals("1"))
             {
                 theme1.SetTheme(sB, ic.theme);

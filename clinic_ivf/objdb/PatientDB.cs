@@ -629,7 +629,7 @@ namespace clinic_ivf.objdb
             String sql = "select ptt." + ptt.t_patient_id + ",ptt." + ptt.patient_hn + ",CONCAT(IFNULL(fpp.patient_prefix_description,''),' ', ptt." + ptt.patient_firstname_e + ",' ',ptt." + ptt.patient_lastname_e + ") as name,ptt." + ptt.remark + " " +
                 "From " + ptt.table + " ptt " +
                 "Left join f_patient_prefix fpp on fpp.f_patient_prefix_id = ptt.f_patient_prefix_id " +
-                "Where " + whereHN + whereName + wherepid+ wherenameE+" " +
+                "Where " + whereHN + whereName + wherepid+ wherenameE+ " and ptt."+ptt.active+ "='1'" +
                 "Order By ptt." + ptt.t_patient_id;
             dt = conn.selectData(conn.conn, sql);
             return dt;
