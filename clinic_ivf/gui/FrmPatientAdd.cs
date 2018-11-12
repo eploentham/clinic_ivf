@@ -263,7 +263,7 @@ namespace clinic_ivf.gui
             folder = DateTime.Now.Year.ToString();
             image1 = picPtt.Image;
             //image1.Save(@"temppic.jpg", System.Drawing.Imaging.ImageFormat.Jpeg);
-            ic.savePicPatienttoServer(txtIoOld.Text, image1);
+            ic.savePicPatienttoServer(txtIdOld.Text, image1);
             //ic.ftpC.upload("DefaultDocument.pdf", @"D:\\source\\ivf\\clinic_ivf\\clinic_ivf\\doc\\DefaultDocument.pdf");
         }
 
@@ -1201,7 +1201,7 @@ namespace clinic_ivf.gui
                 btnWebCamOn.Enabled = true;
             }
             txtHn.Value = pttO.PIDS;
-            txtIoOld.Value = pttO.PID;
+            txtIdOld.Value = pttO.PID;
             txtPttNameE.Value = pttO.PName;
             txtPttLNameE.Value = pttO.PSurname;
             txtPttName.Value = pttO.OName;

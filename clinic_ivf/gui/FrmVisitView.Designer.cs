@@ -29,39 +29,25 @@
         private void InitializeComponent()
         {
             this.theme1 = new C1.Win.C1Themes.C1ThemeController();
-            this.sB = new System.Windows.Forms.StatusStrip();
-            this.sB1 = new System.Windows.Forms.ToolStripStatusLabel();
             this.gB = new System.Windows.Forms.GroupBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.label4 = new System.Windows.Forms.Label();
             this.txtSearch = new C1.Win.C1Input.C1TextBox();
             this.btnNew = new C1.Win.C1Input.C1Button();
+            this.sB = new System.Windows.Forms.StatusStrip();
+            this.sB1 = new System.Windows.Forms.ToolStripStatusLabel();
+            this.chkHn = new System.Windows.Forms.RadioButton();
+            this.chkVisit = new System.Windows.Forms.RadioButton();
             ((System.ComponentModel.ISupportInitialize)(this.theme1)).BeginInit();
-            this.sB.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtSearch)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnNew)).BeginInit();
+            this.sB.SuspendLayout();
             this.SuspendLayout();
             // 
             // theme1
             // 
             this.theme1.Theme = "Office2013Red";
-            // 
-            // sB
-            // 
-            this.sB.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.sB1});
-            this.sB.Location = new System.Drawing.Point(0, 712);
-            this.sB.Name = "sB";
-            this.sB.Size = new System.Drawing.Size(1126, 22);
-            this.sB.TabIndex = 526;
-            this.sB.Text = "statusStrip1";
-            // 
-            // sB1
-            // 
-            this.sB1.Name = "sB1";
-            this.sB1.Size = new System.Drawing.Size(118, 17);
-            this.sB1.Text = "toolStripStatusLabel1";
             // 
             // gB
             // 
@@ -79,6 +65,8 @@
             // groupBox1
             // 
             this.groupBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.groupBox1.Controls.Add(this.chkVisit);
+            this.groupBox1.Controls.Add(this.chkHn);
             this.groupBox1.Controls.Add(this.label4);
             this.groupBox1.Controls.Add(this.txtSearch);
             this.groupBox1.Controls.Add(this.btnNew);
@@ -129,6 +117,56 @@
             this.btnNew.UseVisualStyleBackColor = true;
             this.btnNew.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
             // 
+            // sB
+            // 
+            this.sB.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.sB1});
+            this.sB.Location = new System.Drawing.Point(0, 712);
+            this.sB.Name = "sB";
+            this.sB.Size = new System.Drawing.Size(1126, 22);
+            this.sB.TabIndex = 526;
+            this.sB.Text = "statusStrip1";
+            // 
+            // sB1
+            // 
+            this.sB1.Name = "sB1";
+            this.sB1.Size = new System.Drawing.Size(118, 17);
+            this.sB1.Text = "toolStripStatusLabel1";
+            // 
+            // chkHn
+            // 
+            this.chkHn.AutoSize = true;
+            this.chkHn.BackColor = System.Drawing.Color.Transparent;
+            this.chkHn.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
+            this.chkHn.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(189)))), ((int)(((byte)(182)))));
+            this.chkHn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(189)))), ((int)(((byte)(182)))));
+            this.chkHn.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.chkHn.Location = new System.Drawing.Point(351, 21);
+            this.chkHn.Name = "chkHn";
+            this.chkHn.Size = new System.Drawing.Size(59, 17);
+            this.chkHn.TabIndex = 530;
+            this.chkHn.TabStop = true;
+            this.chkHn.Text = "ค้น HN";
+            this.theme1.SetTheme(this.chkHn, "(default)");
+            this.chkHn.UseVisualStyleBackColor = false;
+            // 
+            // chkVisit
+            // 
+            this.chkVisit.AutoSize = true;
+            this.chkVisit.BackColor = System.Drawing.Color.Transparent;
+            this.chkVisit.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
+            this.chkVisit.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(189)))), ((int)(((byte)(182)))));
+            this.chkVisit.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(189)))), ((int)(((byte)(182)))));
+            this.chkVisit.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.chkVisit.Location = new System.Drawing.Point(463, 22);
+            this.chkVisit.Name = "chkVisit";
+            this.chkVisit.Size = new System.Drawing.Size(62, 17);
+            this.chkVisit.TabIndex = 533;
+            this.chkVisit.TabStop = true;
+            this.chkVisit.Text = "ค้น Visit";
+            this.theme1.SetTheme(this.chkVisit, "(default)");
+            this.chkVisit.UseVisualStyleBackColor = false;
+            // 
             // FrmVisitView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -141,12 +179,12 @@
             this.Text = "FrmVisitView";
             this.Load += new System.EventHandler(this.FrmVisitView_Load);
             ((System.ComponentModel.ISupportInitialize)(this.theme1)).EndInit();
-            this.sB.ResumeLayout(false);
-            this.sB.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtSearch)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnNew)).EndInit();
+            this.sB.ResumeLayout(false);
+            this.sB.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -162,5 +200,7 @@
         private System.Windows.Forms.Label label4;
         private C1.Win.C1Input.C1TextBox txtSearch;
         private C1.Win.C1Input.C1Button btnNew;
+        private System.Windows.Forms.RadioButton chkVisit;
+        private System.Windows.Forms.RadioButton chkHn;
     }
 }

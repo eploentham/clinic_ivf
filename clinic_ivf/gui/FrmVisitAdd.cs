@@ -20,6 +20,7 @@ namespace clinic_ivf.gui
         IvfControl ic;
         String pttId = "", webcamname = "", vsid="";
         Patient ptt;
+        PatientOld pttO;
         VisitOld vsOld;
 
         Font fEdit, fEditB;
@@ -159,6 +160,8 @@ namespace clinic_ivf.gui
             txtPttId.Value = ptt.t_patient_id;
             txtPttName.Value = ptt.patient_firstname;
             txtPttLName.Value = ptt.patient_lastname;
+            txtPttNameE.Value = ptt.patient_firstname_e;
+            txtPttLNameE.Value = ptt.patient_lastname_e;
             txtRemark.Value = ptt.remark;
             txtLineID.Value = ptt.line_id;
             txtEmail.Value = ptt.email;
@@ -186,9 +189,44 @@ namespace clinic_ivf.gui
             //ic.setC1Combo(cboRg, ptt.f_patient_religion_id);
             chkChronic.Checked = ptt.status_chronic.Equals("1") ? true : false;
             chkDenyAllergy.Checked = ptt.status_deny_allergy.Equals("1") ? true : false;
+                        
+
+            pttO = ic.ivfDB.pttOldDB.selectByPk1(pttid);
+            txtHn.Value = pttO.PIDS;
+            txtPttId.Value = pttO.PID;
+            txtPttLNameE.Value = pttO.PName;
+            txtPttLNameE.Value = pttO.PSurname;
+
             
-            txtPttLNameE.Value = ptt.patient_lastname_e;
-            txtPttNameE.Value = ptt.patient_firstname_e;
+            txtIdOld.Value = pttO.PID;
+            
+            txtPttName.Value = pttO.OName;
+            txtPttLName.Value = pttO.OSurname;
+            //txtContFname1.Value = pttO.EmergencyPersonalContact;
+            txtDob.Value = pttO.DateOfBirth;
+            ic.setC1Combo(cboAgent, pttO.AgentID);
+            ic.setC1Combo(cboPttType, pttO.PatientTypeID);
+            //ic.setC1Combo(cboCrl, pttO.PaymentID);
+            ic.setC1Combo(cboSex, pttO.SexID);
+            ic.setC1Combo(cboMarital, pttO.MaritalID);
+            ic.setC1Combo(cboRg, pttO.Religion);
+            //cboProv.Value = pttO.Province;
+            //cboDist.Value = pttO.District;
+            //txtAddrNo.Value = pttO.Address;
+            //txtMoo.Value = pttO.Moo;
+            //txtRoad.Value = pttO.Road;
+            if (pttO.IDNumber.Length == 10)
+            {
+
+            }
+            //txtPid.Value = pttO.IDNumber.Length == 10 ? pttO.IDNumber : "";
+            //txtPaasport.Value = pttO.IDNumber.Length != 10 ? pttO.IDNumber : "";
+            txtPid.Value = pttO.IDNumber;
+            //cboName1Rl.Text = pttO.RelationshipID;
+            //ic.setC1Combo(cboName1Rl, pttO.RelationshipID);
+            //barcode.Text = txtHn.Text;
+            txtEmail.Value = pttO.Email;
+
 
             filenamepic = txtHn.Text;
             //ptt.patient_couple_f_patient_prefix_id = cboCouRel.SelectedItem

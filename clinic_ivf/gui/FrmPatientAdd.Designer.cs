@@ -32,7 +32,7 @@
             this.theme1 = new C1.Win.C1Themes.C1ThemeController();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
-            this.txtIoOld = new C1.Win.C1Input.C1TextBox();
+            this.txtIdOld = new C1.Win.C1Input.C1TextBox();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.cboAgent = new C1.Win.C1Input.C1ComboBox();
             this.btnVoid = new C1.Win.C1Input.C1Button();
@@ -190,7 +190,7 @@
             this.splitContainer2.Panel1.SuspendLayout();
             this.splitContainer2.Panel2.SuspendLayout();
             this.splitContainer2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.txtIoOld)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtIdOld)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cboAgent)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnVoid)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtPttLName)).BeginInit();
@@ -323,7 +323,7 @@
             // splitContainer2.Panel1
             // 
             this.splitContainer2.Panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.splitContainer2.Panel1.Controls.Add(this.txtIoOld);
+            this.splitContainer2.Panel1.Controls.Add(this.txtIdOld);
             this.splitContainer2.Panel1.Controls.Add(this.comboBox1);
             this.splitContainer2.Panel1.Controls.Add(this.cboAgent);
             this.splitContainer2.Panel1.Controls.Add(this.btnVoid);
@@ -399,19 +399,19 @@
             this.splitContainer2.TabIndex = 0;
             this.theme1.SetTheme(this.splitContainer2, "(default)");
             // 
-            // txtIoOld
+            // txtIdOld
             // 
-            this.txtIoOld.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtIoOld.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
-            this.txtIoOld.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.txtIoOld.Location = new System.Drawing.Point(458, 9);
-            this.txtIoOld.Name = "txtIoOld";
-            this.txtIoOld.Size = new System.Drawing.Size(30, 20);
-            this.txtIoOld.TabIndex = 619;
-            this.txtIoOld.Tag = null;
-            this.theme1.SetTheme(this.txtIoOld, "(default)");
-            this.txtIoOld.Visible = false;
-            this.txtIoOld.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            this.txtIdOld.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtIdOld.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
+            this.txtIdOld.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.txtIdOld.Location = new System.Drawing.Point(458, 9);
+            this.txtIdOld.Name = "txtIdOld";
+            this.txtIdOld.Size = new System.Drawing.Size(30, 20);
+            this.txtIdOld.TabIndex = 619;
+            this.txtIdOld.Tag = null;
+            this.theme1.SetTheme(this.txtIdOld, "(default)");
+            this.txtIdOld.Visible = false;
+            this.txtIdOld.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
             // 
             // comboBox1
             // 
@@ -2602,7 +2602,7 @@
             this.splitContainer2.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).EndInit();
             this.splitContainer2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.txtIoOld)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtIdOld)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cboAgent)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnVoid)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtPttLName)).EndInit();
@@ -2853,6 +2853,6 @@
         private System.Windows.Forms.Panel pnImage;
         private System.Windows.Forms.Panel pnVisit;
         private System.Windows.Forms.Panel panel1;
-        private C1.Win.C1Input.C1TextBox txtIoOld;
+        private C1.Win.C1Input.C1TextBox txtIdOld;
     }
 }
