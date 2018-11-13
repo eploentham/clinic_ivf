@@ -158,8 +158,9 @@ namespace clinic_ivf.gui
         private void BtnVisit_Click(object sender, EventArgs e)
         {
             //throw new NotImplementedException();
-            FrmVisitAdd frm = new FrmVisitAdd(ic, "", txtID.Text);
+            FrmVisitAdd frm = new FrmVisitAdd(ic, txtID.Text, "", txtIdOld.Text);
             frm.ShowDialog(this);
+            setGrfVs(txtHn.Text);
         }
 
         private void TC1_DoubleClick(object sender, EventArgs e)
@@ -273,6 +274,8 @@ namespace clinic_ivf.gui
             txtPaasport.KeyUp += TxtPid_KeyUp;
             txtPttNameE.KeyUp += TxtPid_KeyUp;
             txtPttLNameE.KeyUp += TxtPid_KeyUp;
+            txtPttName.KeyUp += TxtPid_KeyUp;
+            txtPttLName.KeyUp += TxtPid_KeyUp;
             txtDob.KeyUp += TxtPid_KeyUp;
             cboSex.KeyUp += TxtPid_KeyUp;
             cboMarital.KeyUp += TxtPid_KeyUp;
@@ -325,6 +328,14 @@ namespace clinic_ivf.gui
                 }
                 else if (sender.Equals(txtPttLNameE))
                 {
+                    txtPttName.Focus();
+                }
+                else if (sender.Equals(txtPttName))
+                {
+                    txtPttLName.Focus();
+                }
+                else if (sender.Equals(txtPttLName))
+                {
                     txtDob.Focus();
                 }
                 else if (sender.Equals(txtDob))
@@ -357,15 +368,15 @@ namespace clinic_ivf.gui
                 }
                 else if (sender.Equals(cboBloodG))
                 {
-                    CboNation.Focus();
+                    CboEduca.Focus();
                 }
                 else if (sender.Equals(CboNation))
                 {
-                    CboEduca.Focus();
+                    cboRace.Focus();
                 }
                 else if (sender.Equals(CboEduca))
                 {
-                    cboRace.Focus();
+                    CboNation.Focus();
                 }
                 else if (sender.Equals(cboRace))
                 {
@@ -401,6 +412,10 @@ namespace clinic_ivf.gui
                 }
                 else if (sender.Equals(txtMotherMobile))
                 {
+                    cboCouPrefix.Focus();
+                }
+                else if (sender.Equals(cboCouPrefix))
+                {
                     txtCouFname.Focus();
                 }
                 else if (sender.Equals(txtCouFname))
@@ -412,6 +427,10 @@ namespace clinic_ivf.gui
                     txtCouMobile.Focus();
                 }
                 else if (sender.Equals(txtCouMobile))
+                {
+                    cboCouRel.Focus();
+                }
+                else if (sender.Equals(cboCouRel))
                 {
                     cboName1Prefix.Focus();
                 }
@@ -427,7 +446,26 @@ namespace clinic_ivf.gui
                 {
                     txtContMobile1.Focus();
                 }
-                
+                else if (sender.Equals(txtContMobile1))
+                {
+                    cboName1Rl.Focus();
+                }
+                else if (sender.Equals(cboName1Rl))
+                {
+                    txtDrugAllergy.Focus();
+                }
+                else if (sender.Equals(txtDrugAllergy))
+                {
+                    cboCrl.Focus();
+                }
+                else if (sender.Equals(cboCrl))
+                {
+                    txtContract.Focus();
+                }
+                else if (sender.Equals(txtContract))
+                {
+                    txtInsurance.Focus();
+                }
                 //else if (sender.Equals(txtContMobile2))
                 //{
                 //    txtDrugAllergy.Focus();
@@ -671,6 +709,12 @@ namespace clinic_ivf.gui
             this.txtPttLNameE.Leave += new System.EventHandler(this.textBox_Leave);
             this.txtPttLNameE.Enter += new System.EventHandler(this.textBox_Enter);
 
+            this.txtPttName.Leave += new System.EventHandler(this.textBox_Leave);
+            this.txtPttName.Enter += new System.EventHandler(this.textBox_Enter);
+
+            this.txtPttLName.Leave += new System.EventHandler(this.textBox_Leave);
+            this.txtPttLName.Enter += new System.EventHandler(this.textBox_Enter);
+
             this.txtMobile1.Leave += new System.EventHandler(this.textBox_Leave);
             this.txtMobile1.Enter += new System.EventHandler(this.textBox_Enter);
 
@@ -692,17 +736,26 @@ namespace clinic_ivf.gui
             this.txtFatherLname.Leave += new System.EventHandler(this.textBox_Leave);
             this.txtFatherLname.Enter += new System.EventHandler(this.textBox_Enter);
 
+            this.txtFatherMobile.Leave += new System.EventHandler(this.textBox_Leave);
+            this.txtFatherMobile.Enter += new System.EventHandler(this.textBox_Enter);
+
             this.txtMotherFname.Leave += new System.EventHandler(this.textBox_Leave);
             this.txtMotherFname.Enter += new System.EventHandler(this.textBox_Enter);
 
             this.txtMotherLname.Leave += new System.EventHandler(this.textBox_Leave);
             this.txtMotherLname.Enter += new System.EventHandler(this.textBox_Enter);
 
+            this.txtMotherMobile.Leave += new System.EventHandler(this.textBox_Leave);
+            this.txtMotherMobile.Enter += new System.EventHandler(this.textBox_Enter);
+
             this.txtCouFname.Leave += new System.EventHandler(this.textBox_Leave);
             this.txtCouFname.Enter += new System.EventHandler(this.textBox_Enter);
 
             this.txtCouLname.Leave += new System.EventHandler(this.textBox_Leave);
-            this.txtCouLname.Enter += new System.EventHandler(this.textBox_Enter);   
+            this.txtCouLname.Enter += new System.EventHandler(this.textBox_Enter);
+
+            this.txtCouMobile.Leave += new System.EventHandler(this.textBox_Leave);
+            this.txtCouMobile.Enter += new System.EventHandler(this.textBox_Enter);
 
             this.txtContMobile1.Leave += new System.EventHandler(this.textBox_Leave);
             this.txtContMobile1.Enter += new System.EventHandler(this.textBox_Enter);
@@ -711,7 +764,16 @@ namespace clinic_ivf.gui
             this.txtContFname1.Enter += new System.EventHandler(this.textBox_Enter);
 
             this.txtContLname1.Leave += new System.EventHandler(this.textBox_Leave);
-            this.txtContLname1.Enter += new System.EventHandler(this.textBox_Enter);                        
+            this.txtContLname1.Enter += new System.EventHandler(this.textBox_Enter);
+
+            this.txtDrugAllergy.Leave += new System.EventHandler(this.textBox_Leave);
+            this.txtDrugAllergy.Enter += new System.EventHandler(this.textBox_Enter);
+
+            this.txtContract.Leave += new System.EventHandler(this.textBox_Leave);
+            this.txtContract.Enter += new System.EventHandler(this.textBox_Enter);
+
+            this.txtInsurance.Leave += new System.EventHandler(this.textBox_Leave);
+            this.txtInsurance.Enter += new System.EventHandler(this.textBox_Enter);
 
             this.cboBloodG.Leave += new System.EventHandler(this.textBox_Leave);
             this.cboBloodG.Enter += new System.EventHandler(this.textBox_Enter);
@@ -748,6 +810,9 @@ namespace clinic_ivf.gui
 
             this.cboSex.Leave += new System.EventHandler(this.textBox_Leave);
             this.cboSex.Enter += new System.EventHandler(this.textBox_Enter);
+
+            this.cboCrl.Leave += new System.EventHandler(this.textBox_Leave);
+            this.cboCrl.Enter += new System.EventHandler(this.textBox_Enter);
             //this.txtPid1.Enter += new System.EventHandler(this.textBox_Enter);
         }
         private void textBox_Leave(object sender, EventArgs e)
@@ -1115,7 +1180,7 @@ namespace clinic_ivf.gui
             ptt = ic.ivfDB.pttDB.selectByPk1(pttid);
             if (ptt.t_patient_id.Equals(""))
             {
-                ptt = ic.ivfDB.pttDB.selectByIDold(pttOldId);
+                //ptt = ic.ivfDB.pttDB.selectByIDold(pttOldId);
             }
 
             if (ptt.t_patient_id.Equals(""))

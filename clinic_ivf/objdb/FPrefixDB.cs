@@ -92,10 +92,10 @@ namespace clinic_ivf.objdb
         {
             FPrefix cop1 = new FPrefix();
             DataTable dt = new DataTable();
-            String sql = "select dept.* " +
-                "From " + fpf.table + " dept " +
+            String sql = "select fpf.* " +
+                "From " + fpf.table + " fpf " +
                 //"Left Join t_ssdata_visit ssv On ssv.ssdata_visit_id = bd.ssdata_visit_id " +
-                "Where dept." + fpf.pkField + " ='" + copId + "' ";
+                "Where fpf." + fpf.pkField + " ='" + copId + "' ";
             dt = conn.selectData(conn.conn, sql);
             cop1 = setPrefix(dt);
             return cop1;
@@ -114,10 +114,10 @@ namespace clinic_ivf.objdb
         public DataTable selectC1()
         {
             DataTable dt = new DataTable();
-            String sql = "select dept." + fpf.pkField + ",dept." + fpf.patient_prefix_description + " " +
-                "From " + fpf.table + " dept " +
+            String sql = "select fpf." + fpf.pkField + ",fpf." + fpf.patient_prefix_description + " " +
+                "From " + fpf.table + " fpf " +
                 " " +
-                "Where dept." + fpf.active + " ='1' ";
+                "Where fpf." + fpf.active + " ='1' ";
             dt = conn.selectData(conn.conn, sql);
 
             return dt;

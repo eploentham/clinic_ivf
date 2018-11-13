@@ -18,7 +18,7 @@ namespace clinic_ivf.gui
     public partial class FrmVisitAdd : Form
     {
         IvfControl ic;
-        String pttId = "", webcamname = "", vsid="";
+        String pttId = "", webcamname = "", vsid="", pttOid="";
         Patient ptt;
         PatientOld pttO;
         VisitOld vsOld;
@@ -35,12 +35,13 @@ namespace clinic_ivf.gui
         String filename = "";
         static String filenamepic = "", host = "", user = "", pass = "";
 
-        public FrmVisitAdd(IvfControl ic, String pttid, String vsid)
+        public FrmVisitAdd(IvfControl ic, String pttid, String vsid, String pttoid)
         {
             InitializeComponent();
             this.vsid = vsid;
             this.ic = ic;
             this.pttId = pttid;
+            this.pttOid = pttoid;
             initConfig();
         }
         private void initConfig()
@@ -77,7 +78,7 @@ namespace clinic_ivf.gui
             {
 
             }
-            setControl(pttId);
+            setControl(pttId, pttOid);
             //setFocusColor();
             //initGrfImg();
             //setGrfImg("");
@@ -126,8 +127,8 @@ namespace clinic_ivf.gui
                     //}
                     //}
                     
-                    //System.Threading.Thread.Sleep(2000);
-                    //this.Dispose();
+                    System.Threading.Thread.Sleep(500);
+                    this.Dispose();
                 }
             }
             else
@@ -152,9 +153,13 @@ namespace clinic_ivf.gui
             }
         }
 
-        private void setControl(String pttid)
+        private void setControl(String pttid, String pttOid)
         {
             ptt = ic.ivfDB.pttDB.selectByPk1(pttid);
+            if (ptt.t_patient_id.Equals(""))
+            {
+                ptt = ic.ivfDB.pttDB.selectByIDold(pttid);
+            }
             
             txtHn.Value = ptt.patient_hn;
             txtPttId.Value = ptt.t_patient_id;
@@ -191,7 +196,7 @@ namespace clinic_ivf.gui
             chkDenyAllergy.Checked = ptt.status_deny_allergy.Equals("1") ? true : false;
                         
 
-            pttO = ic.ivfDB.pttOldDB.selectByPk1(pttid);
+            pttO = ic.ivfDB.pttOldDB.selectByPk1(pttOid);
             txtHn.Value = pttO.PIDS;
             txtPttId.Value = pttO.PID;
             txtPttNameE.Value = pttO.PName;
@@ -258,7 +263,6 @@ namespace clinic_ivf.gui
             {
 
             }
-
         }
         private void setPic(Bitmap bitmap)
         {
@@ -269,13 +273,13 @@ namespace clinic_ivf.gui
         {
             vsOld = new VisitOld();
             vsOld.VN = txtID.Text;
-            vsOld.VSID = "165";
+            vsOld.VSID = "110";
             vsOld.PID = txtPttId.Text;
             vsOld.PIDS = txtHn.Text;
             vsOld.PName = cboPrefix.Text +" "+txtPttNameE.Text+" "+txtPttLNameE.Text;
             vsOld.OName = "";
             vsOld.VDate = DateTime.Now.ToString("yyyy-MM-dd");
-            vsOld.VStartTime = DateTime.Now.ToString("hh:MM:ss");
+            vsOld.VStartTime = DateTime.Now.ToString("hh:mm:ss");
             vsOld.VEndTime = "";
             vsOld.VUpdateTime = "";
             vsOld.LVSID = "";

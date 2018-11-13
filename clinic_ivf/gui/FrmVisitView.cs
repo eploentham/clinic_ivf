@@ -66,11 +66,17 @@ namespace clinic_ivf.gui
         private void BtnNew_Click(object sender, EventArgs e)
         {
             //throw new NotImplementedException();
-            openPatientAdd("","", "");
+            VisitAdd("","", "","");
         }
-        private void openPatientAdd(String pttId, String vsId, String name)
+        private void VisitAdd(String pttId, String vsId, String name, String pttOid)
         {
-            FrmVisitAdd frm = new FrmVisitAdd(ic, pttId, vsId);
+            long idold = 0, idnew = 0, id1=0, id2=0;
+            long.TryParse(pttId, out id1);
+            long.TryParse(pttOid, out id2);
+            idnew = id1 > id2 ? id1 : id2;
+            idold = id1 < id2 ? id2 : id1;
+            
+            FrmVisitAdd frm = new FrmVisitAdd(ic, idnew.ToString(), vsId, idold.ToString());
             String txt = "";
             if (!name.Equals(""))
             {
@@ -83,7 +89,10 @@ namespace clinic_ivf.gui
 
             //frm.FormBorderStyle = FormBorderStyle.None;
             frm.ShowDialog(this);
-            setGrfSearch();
+            chkHn.Checked = false;
+            chkVisit.Checked = true;
+            txtSearch.Value = "";
+            setGrfPtt("");
             
             //menu.AddNewTab(frm, txt);
         }
@@ -311,7 +320,7 @@ namespace clinic_ivf.gui
             //if (MessageBox.Show("ต้องการ แก้ไข Patient  \n  hn number " + chk + " \n name " + name, "", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == DialogResult.OK)
             //{
             //grfReq.Rows.Remove(grfReq.Row);
-            openPatientAdd(pttid, vn, name);
+            VisitAdd(pttid, vn, name, pttid);
             //}
         }
         private void FrmVisitView_Load(object sender, EventArgs e)
