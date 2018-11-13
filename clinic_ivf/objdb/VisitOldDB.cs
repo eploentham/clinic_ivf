@@ -104,9 +104,9 @@ namespace clinic_ivf.objdb
             sql = "Update " + vsold.table + " Set " +
                 " " + vsold.PName + " = '" + p.PName + "'" +
                 "," + vsold.OName + " = '" + p.OName.Replace("'", "''") + "'" +
-                "," + vsold.VDate + " = '" + p.VDate + "'" +
+                "," + vsold.VDate + " = '" + p.VDate + "' " +
                 
-                "Where " + vsold.pkField + "='" + p.PID + "'"
+                "Where " + vsold.pkField + "='" + p.VN + "'"
                 ;
 
             try
@@ -128,10 +128,18 @@ namespace clinic_ivf.objdb
             {
                 p.VN = genVN();
                 re = insert(p, userId);
+                if (re.Equals("1"))
+                {
+                    re = p.VN;
+                }
             }
             else
             {
                 re = update(p, userId);
+                if (re.Equals("1"))
+                {
+                    re = p.VN;
+                }
             }
 
             return re;

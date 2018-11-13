@@ -101,8 +101,8 @@ namespace clinic_ivf.gui
                 stt.Hide();
                 setVisitOld();
                 String re = ic.ivfDB.vsOldDB.insertVisitOld(vsOld, txtStfConfirmID.Text);
-                int chk = 0;
-                if (int.TryParse(re, out chk))
+                long chk = 0;
+                if (long.TryParse(re, out chk))
                 {
                     //if (!ic.iniC.statusAppDonor.Equals("1"))
                     //{
@@ -116,6 +116,7 @@ namespace clinic_ivf.gui
                     //    String re2 = ic.ivfDB.pttDB.updatePID(re, re1);
                     //    if (int.TryParse(re2, out chk))
                     //    {
+                    txtID.Value = re;
                     btnVisit.Text = "Save Visit";
                     btnVisit.Image = Resources.accept_database24;
                     //        txtID.Value = re;
@@ -124,8 +125,7 @@ namespace clinic_ivf.gui
                     //}
                     //}
                     //}
-
-
+                    
                     //System.Threading.Thread.Sleep(2000);
                     //this.Dispose();
                 }
@@ -194,7 +194,7 @@ namespace clinic_ivf.gui
             pttO = ic.ivfDB.pttOldDB.selectByPk1(pttid);
             txtHn.Value = pttO.PIDS;
             txtPttId.Value = pttO.PID;
-            txtPttLNameE.Value = pttO.PName;
+            txtPttNameE.Value = pttO.PName;
             txtPttLNameE.Value = pttO.PSurname;
 
             

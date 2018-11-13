@@ -181,6 +181,10 @@ namespace clinic_ivf.objdb
                 _rowsAffected = com.ExecuteNonQuery();
                 //_rowsAffected = (int)com.ExecuteScalar();
                 toReturn = sql.Substring(0, 1).ToLower() == "i" ? com.LastInsertedId.ToString() : _rowsAffected.ToString();
+                if (sql.IndexOf("Insert Into Visit")>=0)        //old program
+                {
+                    toReturn = _rowsAffected.ToString();
+                }
             }
             catch (Exception ex)
             {
