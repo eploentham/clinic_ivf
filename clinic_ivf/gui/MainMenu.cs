@@ -73,6 +73,15 @@ namespace clinic_ivf.gui
             menuAppn.Click += MenuAppn_Click;
             menuNurseDefault.Click += MenuNurseDefault_Click;
             menuExamiRoom.Click += MenuExamiRoom_Click;
+            menuDrugPatient.Click += MenuDrugPatient_Click;
+        }
+
+        private void MenuDrugPatient_Click(object sender, EventArgs e)
+        {
+            //throw new NotImplementedException();
+            FrmPharmaPttView frm = new FrmPharmaPttView(ic, this);
+            frm.FormBorderStyle = FormBorderStyle.None;
+            AddNewTab(frm, menuDrugPatient.Text + " ");
         }
 
         private void MenuExamiRoom_Click(object sender, EventArgs e)
@@ -330,7 +339,7 @@ namespace clinic_ivf.gui
         private void MainMenu_Load(object sender, EventArgs e)
         {
             
-            this.Text = "สวัสดี คุณ "+ic.user.staff_fname_t +" "+ic.user.staff_lname_t+" Update 2018-11-10 ";
+            this.Text = "สวัสดี คุณ "+ic.user.staff_fname_t +" "+ic.user.staff_lname_t+" Update 2018-11-14 ";
             //theme1.SetTheme(this, ic.theme);
             theme1.SetTheme(this, ic.theme);
             theme1.SetTheme(menuStrip1, ic.theme);

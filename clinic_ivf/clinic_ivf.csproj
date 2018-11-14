@@ -67,6 +67,12 @@
     <Reference Include="C1.Win.FlexChart.4, Version=4.0.20182.314, Culture=neutral, PublicKeyToken=3aa2920c09e0aefd" />
     <Reference Include="C1.Win.FlexReport.4, Version=4.0.20182.314, Culture=neutral, PublicKeyToken=944ae1ea0e47ca04, processorArchitecture=MSIL" />
     <Reference Include="C1.Win.FlexViewer.4, Version=4.0.20182.314, Culture=neutral, PublicKeyToken=944ae1ea0e47ca04, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.CrystalReports.Design, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.CrystalReports.Engine, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.Data.AdoDotNetInterop, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.ReportSource, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.Shared, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.Windows.Forms, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
     <Reference Include="INIFileParser, Version=2.5.2.0, Culture=neutral, PublicKeyToken=79af7b307b65cf3c, processorArchitecture=MSIL">
       <HintPath>..\packages\ini-parser.2.5.2\lib\net20\INIFileParser.dll</HintPath>
     </Reference>
@@ -77,6 +83,7 @@
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Web.Services" />
     <Reference Include="System.Windows.Forms.DataVisualization" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -226,6 +233,12 @@
     <Compile Include="gui\FrmPatientView.Designer.cs">
       <DependentUpon>FrmPatientView.cs</DependentUpon>
     </Compile>
+    <Compile Include="gui\FrmPharmaPttView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="gui\FrmPharmaPttView.Designer.cs">
+      <DependentUpon>FrmPharmaPttView.cs</DependentUpon>
+    </Compile>
     <Compile Include="gui\FrmPosition.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -243,6 +256,12 @@
     </Compile>
     <Compile Include="gui\FrmPrintPreview.Designer.cs">
       <DependentUpon>FrmPrintPreview.cs</DependentUpon>
+    </Compile>
+    <Compile Include="gui\FrmReport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="gui\FrmReport.Designer.cs">
+      <DependentUpon>FrmReport.cs</DependentUpon>
     </Compile>
     <Compile Include="gui\FrmSearchHn.cs">
       <SubType>Form</SubType>
@@ -319,11 +338,15 @@
     <Compile Include="objdb\FRelationDB.cs" />
     <Compile Include="objdb\FReligionDB.cs" />
     <Compile Include="objdb\FSexDB.cs" />
+    <Compile Include="objdb\JobPxDB.cs" />
+    <Compile Include="objdb\JobPxDetailDB.cs" />
     <Compile Include="objdb\PatientImageDB.cs" />
     <Compile Include="objdb\PatientOldDB.cs" />
     <Compile Include="objdb\VisitDB.cs" />
     <Compile Include="object1\AppointmentOld.cs" />
     <Compile Include="object1\DoctorOld.cs" />
+    <Compile Include="object1\JobPx.cs" />
+    <Compile Include="object1\JobPxDetail.cs" />
     <Compile Include="object1\PatientImage.cs" />
     <Compile Include="object1\Visit.cs" />
     <Compile Include="objdb\VisitQueueTransferDB.cs" />
@@ -379,6 +402,11 @@
     <Compile Include="object1\VisitQueueTransfer.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="report\sticker_drug.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>sticker_drug.xsd</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="gui\Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
@@ -445,6 +473,9 @@
     <EmbeddedResource Include="gui\FrmPatientView.resx">
       <DependentUpon>FrmPatientView.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="gui\FrmPharmaPttView.resx">
+      <DependentUpon>FrmPharmaPttView.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="gui\FrmPosition.resx">
       <DependentUpon>FrmPosition.cs</DependentUpon>
     </EmbeddedResource>
@@ -453,6 +484,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="gui\FrmPrintPreview.resx">
       <DependentUpon>FrmPrintPreview.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="gui\FrmReport.resx">
+      <DependentUpon>FrmReport.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="gui\FrmSearchHn.resx">
       <DependentUpon>FrmSearchHn.cs</DependentUpon>
@@ -510,6 +544,17 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="report\sticker_drug.xsc">
+      <DependentUpon>sticker_drug.xsd</DependentUpon>
+    </None>
+    <None Include="report\sticker_drug.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>sticker_drug.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="report\sticker_drug.xss">
+      <DependentUpon>sticker_drug.xsd</DependentUpon>
+    </None>
     <None Include="Resources\Add-ticket_24.png" />
   </ItemGroup>
   <ItemGroup>

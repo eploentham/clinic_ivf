@@ -23,6 +23,8 @@ namespace clinic_ivf.objdb
         public AgentOldDB agnOldDB;
         public PatientOldDB pttOldDB;
         public DoctorOldDB dtrOldDB;
+        public JobPxDB jobpxDB;
+        public JobPxDetailDB jobpxdDB;
 
         public FPrefixDB fpfDB;
         public FBloodGroupDB fbgDB;
@@ -74,6 +76,8 @@ namespace clinic_ivf.objdb
             dtrOldDB = new DoctorOldDB(conn);
             appnOldDB = new AppointmentOldDB(conn);
             pttImgDB = new PatientImageDB(conn);
+            jobpxDB = new JobPxDB(conn);
+            jobpxdDB = new JobPxDetailDB(conn);
 
             Console.WriteLine("ivfDB end");
         }

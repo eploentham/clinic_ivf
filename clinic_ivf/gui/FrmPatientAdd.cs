@@ -1505,7 +1505,7 @@ namespace clinic_ivf.gui
             //ic.iniC.sticker_donor_barcode_height = "25";
             rcLeft1.Width = int.TryParse(ic.iniC.sticker_donor_width, out chk) ? chk : 120;
             rcLeft1.Height = int.TryParse(ic.iniC.sticker_donor_height, out chk) ? chk : 90;
-            ic.iniC.sticker_donor_start_y = "33";     // 38
+            //ic.iniC.sticker_donor_start_y = "33";     // 38
             rcLeft1.Y = int.TryParse(ic.iniC.sticker_donor_start_y, out chk) ? chk : 63;
             rcLeft1.X = int.TryParse(ic.iniC.sticker_donor_start_x, out chk) ? chk : 52;
             RectangleF rcRight = rcLeft1;

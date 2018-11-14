@@ -26,6 +26,7 @@ namespace clinic_ivf.control
         public ConnectDB conn;
         public int grdViewFontSize = 0;
         public List<Department> lDept;
+        public Company cop;
 
         public IvfDB ivfDB;
         
@@ -76,7 +77,8 @@ namespace clinic_ivf.control
             user = new Staff();
             cStf = new Staff();
             sStf = new Staff();
-            
+            cop = new Company();
+
             GetConfig();
             conn = new ConnectDB(iniC);
             ftpC = new FtpClient(iniC.hostFTP, iniC.userFTP, iniC.passFTP);
@@ -97,6 +99,7 @@ namespace clinic_ivf.control
         public void getInit()
         {
             ivfDB.sexDB.getlSex();
+            cop = ivfDB.copDB.selectByCode1("001");
         }
         public void GetConfig()
         {
@@ -119,6 +122,7 @@ namespace clinic_ivf.control
             iniC.statusAppDonor = iniF.getIni("app", "statusAppDonor");
             iniC.themeApplication = iniF.getIni("app", "themeApplication");
             iniC.themeDonor = iniF.getIni("app", "themeDonor");
+            iniC.printerSticker = iniF.getIni("app", "printerSticker");
 
             iniC.sticker_donor_width = iniF.getIni("sticker_donor", "width");
             iniC.sticker_donor_height = iniF.getIni("sticker_donor", "height");
@@ -141,6 +145,7 @@ namespace clinic_ivf.control
             iniC.sticker_donor_gap = iniC.sticker_donor_gap.Equals("") ? "20" : iniC.sticker_donor_gap;
             iniC.sticker_donor_start_x = iniC.sticker_donor_start_x.Equals("") ? "52" : iniC.sticker_donor_start_x;
             iniC.patientaddpanel1weight = iniC.patientaddpanel1weight==null ? "300" : iniC.patientaddpanel1weight.Equals("") ? "300" : iniC.patientaddpanel1weight;
+            iniC.printerSticker = iniC.printerSticker.Equals("") ? "default" : iniC.printerSticker;
 
             iniC.hostFTP = iniC.hostFTP ==null ? "" : iniC.hostFTP;
             iniC.userFTP = iniC.userFTP == null ? "" : iniC.userFTP;

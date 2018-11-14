@@ -37,6 +37,7 @@
             this.menuNurse = new System.Windows.Forms.ToolStripMenuItem();
             this.menuReqLab = new System.Windows.Forms.ToolStripMenuItem();
             this.menuNurseDefault = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuExamiRoom = new System.Windows.Forms.ToolStripMenuItem();
             this.menuLab = new System.Windows.Forms.ToolStripMenuItem();
             this.menuLabAccept = new System.Windows.Forms.ToolStripMenuItem();
             this.menuLabOpu = new System.Windows.Forms.ToolStripMenuItem();
@@ -56,7 +57,8 @@
             this.tC1 = new C1.Win.C1Command.C1DockingTab();
             this.PageS = new C1.Win.C1Command.C1DockingTabPage();
             this.theme1 = new C1.Win.C1Themes.C1ThemeController();
-            this.menuExamiRoom = new System.Windows.Forms.ToolStripMenuItem();
+            this.pharmacyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuDrugPatient = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tCC1)).BeginInit();
             this.tCC1.SuspendLayout();
@@ -73,6 +75,7 @@
             this.menuRecept,
             this.menuNurse,
             this.menuLab,
+            this.pharmacyToolStripMenuItem,
             this.menuInit});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
@@ -101,19 +104,19 @@
             // menuPatient
             // 
             this.menuPatient.Name = "menuPatient";
-            this.menuPatient.Size = new System.Drawing.Size(145, 22);
+            this.menuPatient.Size = new System.Drawing.Size(180, 22);
             this.menuPatient.Text = "ประวัติคนไข้";
             // 
             // menuVisitNew
             // 
             this.menuVisitNew.Name = "menuVisitNew";
-            this.menuVisitNew.Size = new System.Drawing.Size(145, 22);
+            this.menuVisitNew.Size = new System.Drawing.Size(180, 22);
             this.menuVisitNew.Text = "ออก Visit";
             // 
             // menuAppn
             // 
             this.menuAppn.Name = "menuAppn";
-            this.menuAppn.Size = new System.Drawing.Size(145, 22);
+            this.menuAppn.Size = new System.Drawing.Size(180, 22);
             this.menuAppn.Text = "Appointment";
             // 
             // menuNurse
@@ -129,14 +132,20 @@
             // menuReqLab
             // 
             this.menuReqLab.Name = "menuReqLab";
-            this.menuReqLab.Size = new System.Drawing.Size(180, 22);
+            this.menuReqLab.Size = new System.Drawing.Size(174, 22);
             this.menuReqLab.Text = "Request Lab";
             // 
             // menuNurseDefault
             // 
             this.menuNurseDefault.Name = "menuNurseDefault";
-            this.menuNurseDefault.Size = new System.Drawing.Size(180, 22);
+            this.menuNurseDefault.Size = new System.Drawing.Size(174, 22);
             this.menuNurseDefault.Text = "Nurse Screen";
+            // 
+            // menuExamiRoom
+            // 
+            this.menuExamiRoom.Name = "menuExamiRoom";
+            this.menuExamiRoom.Size = new System.Drawing.Size(174, 22);
+            this.menuExamiRoom.Text = "Examination Room";
             // 
             // menuLab
             // 
@@ -287,11 +296,19 @@
             // 
             this.theme1.Theme = "BeigeOne";
             // 
-            // menuExamiRoom
+            // pharmacyToolStripMenuItem
             // 
-            this.menuExamiRoom.Name = "menuExamiRoom";
-            this.menuExamiRoom.Size = new System.Drawing.Size(180, 22);
-            this.menuExamiRoom.Text = "Examination Room";
+            this.pharmacyToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.menuDrugPatient});
+            this.pharmacyToolStripMenuItem.Name = "pharmacyToolStripMenuItem";
+            this.pharmacyToolStripMenuItem.Size = new System.Drawing.Size(72, 20);
+            this.pharmacyToolStripMenuItem.Text = "Pharmacy";
+            // 
+            // menuDrugPatient
+            // 
+            this.menuDrugPatient.Name = "menuDrugPatient";
+            this.menuDrugPatient.Size = new System.Drawing.Size(207, 22);
+            this.menuDrugPatient.Text = "ข้อมูลการจ่ายยา  ตามPatient";
             // 
             // MainMenu
             // 
@@ -347,5 +364,7 @@
         private System.Windows.Forms.ToolStripMenuItem menuAppn;
         private System.Windows.Forms.ToolStripMenuItem menuNurseDefault;
         private System.Windows.Forms.ToolStripMenuItem menuExamiRoom;
+        private System.Windows.Forms.ToolStripMenuItem pharmacyToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem menuDrugPatient;
     }
 }
