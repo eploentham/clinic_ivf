@@ -12,7 +12,7 @@
   <xs:element name="sticker_drug" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="sticker_drug" msprop:Generator_UserDSName="sticker_drug">
     <xs:complexType>
       <xs:choice minOccurs="0" maxOccurs="unbounded">
-        <xs:element name="sticker_drug" msprop:Generator_TableClassName="sticker_drugDataTable" msprop:Generator_TableVarName="tablesticker_drug" msprop:Generator_TablePropName="_sticker_drug" msprop:Generator_RowDeletingName="sticker_drugRowDeleting" msprop:Generator_RowChangingName="sticker_drugRowChanging" msprop:Generator_RowEvHandlerName="sticker_drugRowChangeEventHandler" msprop:Generator_RowDeletedName="sticker_drugRowDeleted" msprop:Generator_UserTableName="sticker_drug" msprop:Generator_RowChangedName="sticker_drugRowChanged" msprop:Generator_RowEvArgName="sticker_drugRowChangeEvent" msprop:Generator_RowClassName="sticker_drugRow">
+        <xs:element name="sticker_drug" msprop:Generator_TableClassName="sticker_drugDataTable" msprop:Generator_TableVarName="tablesticker_drug" msprop:Generator_RowChangedName="sticker_drugRowChanged" msprop:Generator_TablePropName="_sticker_drug" msprop:Generator_RowDeletingName="sticker_drugRowDeleting" msprop:Generator_RowChangingName="sticker_drugRowChanging" msprop:Generator_RowEvHandlerName="sticker_drugRowChangeEventHandler" msprop:Generator_RowDeletedName="sticker_drugRowDeleted" msprop:Generator_RowClassName="sticker_drugRow" msprop:Generator_UserTableName="sticker_drug" msprop:Generator_RowEvArgName="sticker_drugRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="hn" msdata:Caption="DataColumn1" msprop:Generator_ColumnVarNameInTable="columnhn" msprop:Generator_ColumnPropNameInRow="hn" msprop:Generator_ColumnPropNameInTable="hnColumn" msprop:Generator_UserColumnName="hn" type="xs:string" minOccurs="0" />
@@ -25,6 +25,7 @@
               <xs:element name="line2" msprop:Generator_ColumnVarNameInTable="columnline2" msprop:Generator_ColumnPropNameInRow="line2" msprop:Generator_ColumnPropNameInTable="line2Column" msprop:Generator_UserColumnName="line2" type="xs:string" minOccurs="0" />
               <xs:element name="patient_name" msprop:Generator_ColumnVarNameInTable="columnpatient_name" msprop:Generator_ColumnPropNameInRow="patient_name" msprop:Generator_ColumnPropNameInTable="patient_nameColumn" msprop:Generator_UserColumnName="patient_name" type="xs:string" minOccurs="0" />
               <xs:element name="unit_name" msprop:Generator_ColumnVarNameInTable="columnunit_name" msprop:Generator_ColumnPropNameInRow="unit_name" msprop:Generator_ColumnPropNameInTable="unit_nameColumn" msprop:Generator_UserColumnName="unit_name" type="xs:string" minOccurs="0" />
+              <xs:element name="qty" msprop:Generator_ColumnVarNameInTable="columnqty" msprop:Generator_ColumnPropNameInRow="qty" msprop:Generator_ColumnPropNameInTable="qtyColumn" msprop:Generator_UserColumnName="qty" type="xs:string" minOccurs="0" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>

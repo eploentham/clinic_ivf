@@ -299,6 +299,8 @@ namespace clinic_ivf.report {
             
             private global::System.Data.DataColumn columnunit_name;
             
+            private global::System.Data.DataColumn columnqty;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public sticker_drugDataTable() {
@@ -414,6 +416,14 @@ namespace clinic_ivf.report {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn qtyColumn {
+                get {
+                    return this.columnqty;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -449,7 +459,7 @@ namespace clinic_ivf.report {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public sticker_drugRow Addsticker_drugRow(string hn, string date, string drug_name, string frequency, string instruction, string sort1, string line1, string line2, string patient_name, string unit_name) {
+            public sticker_drugRow Addsticker_drugRow(string hn, string date, string drug_name, string frequency, string instruction, string sort1, string line1, string line2, string patient_name, string unit_name, string qty) {
                 sticker_drugRow rowsticker_drugRow = ((sticker_drugRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         hn,
@@ -461,7 +471,8 @@ namespace clinic_ivf.report {
                         line1,
                         line2,
                         patient_name,
-                        unit_name};
+                        unit_name,
+                        qty};
                 rowsticker_drugRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowsticker_drugRow);
                 return rowsticker_drugRow;
@@ -494,6 +505,7 @@ namespace clinic_ivf.report {
                 this.columnline2 = base.Columns["line2"];
                 this.columnpatient_name = base.Columns["patient_name"];
                 this.columnunit_name = base.Columns["unit_name"];
+                this.columnqty = base.Columns["qty"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -519,6 +531,8 @@ namespace clinic_ivf.report {
                 base.Columns.Add(this.columnpatient_name);
                 this.columnunit_name = new global::System.Data.DataColumn("unit_name", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnunit_name);
+                this.columnqty = new global::System.Data.DataColumn("qty", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnqty);
                 this.columnhn.Caption = "DataColumn1";
                 this.columndate.Caption = "DataColumn1";
                 this.columndrug_name.Caption = "DataColumn1";
@@ -827,6 +841,22 @@ namespace clinic_ivf.report {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public string qty {
+                get {
+                    try {
+                        return ((string)(this[this.tablesticker_drug.qtyColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'qty\' in table \'sticker_drug\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablesticker_drug.qtyColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public bool IshnNull() {
                 return this.IsNull(this.tablesticker_drug.hnColumn);
             }
@@ -943,6 +973,18 @@ namespace clinic_ivf.report {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public void Setunit_nameNull() {
                 this[this.tablesticker_drug.unit_nameColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public bool IsqtyNull() {
+                return this.IsNull(this.tablesticker_drug.qtyColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void SetqtyNull() {
+                this[this.tablesticker_drug.qtyColumn] = global::System.Convert.DBNull;
             }
         }
         
