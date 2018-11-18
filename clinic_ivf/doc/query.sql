@@ -1,3 +1,6 @@
+id_table=220  b_queue;
+
+
 CREATE TABLE `b_staff` (
   `staff_id` int(11) NOT NULL AUTO_INCREMENT,
   `staff_code` varchar(255) COLLATE utf8_bin DEFAULT NULL,
@@ -1252,3 +1255,4 @@ DEFAULT CHARACTER SET = utf8
 COLLATE = utf8_bin
 COMMENT = 'id=216';
 ALTER TABLE t_visit AUTO_INCREMENT = 2160000000;
+
