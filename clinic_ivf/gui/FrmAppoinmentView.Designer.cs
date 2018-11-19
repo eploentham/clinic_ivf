@@ -211,6 +211,7 @@
             this.txtDateEnd.TabIndex = 514;
             this.txtDateEnd.Tag = null;
             this.theme1.SetTheme(this.txtDateEnd, "(default)");
+            this.txtDateEnd.Visible = false;
             this.txtDateEnd.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
             // 
             // label1
@@ -225,6 +226,7 @@
             this.label1.TabIndex = 513;
             this.label1.Text = "Date End :";
             this.theme1.SetTheme(this.label1, "(default)");
+            this.label1.Visible = false;
             // 
             // txtDateStart
             // 

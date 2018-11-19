@@ -339,12 +339,17 @@ namespace clinic_ivf.gui
         private void MainMenu_Load(object sender, EventArgs e)
         {
             
-            this.Text = "สวัสดี คุณ "+ic.user.staff_fname_t +" "+ic.user.staff_lname_t+" Update 2018-11-15 ";
+            this.Text = "สวัสดี คุณ "+ic.user.staff_fname_t +" "+ic.user.staff_lname_t+" Update 2018-11-19 ";
             //theme1.SetTheme(this, ic.theme);
             theme1.SetTheme(this, ic.theme);
             theme1.SetTheme(menuStrip1, ic.theme);
             theme1.SetTheme(tC1, ic.theme);
-            if (ic.iniC.statusAppDonor.Equals("1"))
+            menuRecept.Visible = false;
+            menuNurse.Visible = false;
+            menuLab.Visible = false;
+            menuPharmacy.Visible = false;
+            menuInit.Visible = false;
+            if (ic.user.status_module_reception.Equals("1"))
             {
                 //theme1.SetTheme(panel1, "BeigeOne");menuStrip1
                 foreach (Control c in menuStrip1.Controls)
@@ -352,26 +357,56 @@ namespace clinic_ivf.gui
                     theme1.SetTheme(c, ic.theme);
                 }
                 menuRecept.Visible = true;
-                menuNurse.Visible = false;
-                menuLab.Visible = false;
-                menuInit.Visible = false;
-                menuRecept.Text = "Reception Donor";
+                if(ic.iniC.statusAppDonor.Equals("1"))
+                    menuRecept.Text = "Reception Donor";
             }
-            else
+            if (ic.user.status_module_nurse.Equals("1"))
             {
-                
-                //foreach (Control c in tC1.Controls)
-                //{
-                //    if (c is C1DockingTab) continue;
-                //    if (c is C1CommandDock) continue;
-                //    if (c is C1DockingTabPage) continue;
-                //    theme1.SetTheme(c, "Office2007Blue");
-                //}
-                menuRecept.Visible = true;
+                foreach (Control c in menuStrip1.Controls)
+                {
+                    theme1.SetTheme(c, ic.theme);
+                }
                 menuNurse.Visible = true;
+            }
+            if (ic.user.status_module_pharmacy.Equals("1"))
+            {
+                foreach (Control c in menuStrip1.Controls)
+                {
+                    theme1.SetTheme(c, ic.theme);
+                }
+                menuPharmacy.Visible = true;
+            }
+            if (ic.user.status_module_lab.Equals("1"))
+            {
+                foreach (Control c in menuStrip1.Controls)
+                {
+                    theme1.SetTheme(c, ic.theme);
+                }
                 menuLab.Visible = true;
+            }
+            if (ic.user.status_admin.Equals("1"))
+            {
+                foreach (Control c in menuStrip1.Controls)
+                {
+                    theme1.SetTheme(c, ic.theme);
+                }
                 menuInit.Visible = true;
             }
+            //else
+            //{
+
+            //    //foreach (Control c in tC1.Controls)
+            //    //{
+            //    //    if (c is C1DockingTab) continue;
+            //    //    if (c is C1CommandDock) continue;
+            //    //    if (c is C1DockingTabPage) continue;
+            //    //    theme1.SetTheme(c, "Office2007Blue");
+            //    //}
+            //    menuRecept.Visible = true;
+            //    menuNurse.Visible = true;
+            //    menuLab.Visible = true;
+            //    menuInit.Visible = true;
+            //}
 
         }
     }

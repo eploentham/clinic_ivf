@@ -21,11 +21,13 @@ namespace clinic_ivf.gui
 
         Color bg, fc;
         Font ff, ffB;
-
-        public FrmSetPassword(IvfControl ic)
+        public enum StatusPassword { login, confirm}
+        StatusPassword spass;
+        public FrmSetPassword(IvfControl ic, StatusPassword statuspassword)
         {
             InitializeComponent();
             this.ic = ic;
+            spass = statuspassword;
             initConfig();
         }
         private void initConfig()
@@ -70,9 +72,17 @@ namespace clinic_ivf.gui
         {
             if (MessageBox.Show("ต้องการ บันทึกช้อมูล ", "", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == DialogResult.OK)
             {
-                String re = ic.ivfDB.stfDB.updatePassword(ic.stfID, txtPassword.Text.Trim());
-                int chk = 0;
-                if (int.TryParse(re, out chk))
+                String re = "";
+                if(spass == StatusPassword.login)
+                {
+                    re = ic.ivfDB.stfDB.updatePassword(ic.stfID, txtPassword.Text.Trim());
+                }
+                else
+                {
+                    re = ic.ivfDB.stfDB.updatePasswordConfirm(ic.stfID, txtPassword.Text.Trim());
+                }
+                long chk = 0;
+                if (long.TryParse(re, out chk))
                 {
                     btnSave.Image = Resources.accept_database24;
                 }

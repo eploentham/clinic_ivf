@@ -53,6 +53,7 @@ namespace clinic_ivf.gui
             custommenu.MenuItems.Add("&ยกเลิก", new EventHandler(ContextMenu_void));
             btnVoid.Click += BtnVoid_Click;
             txtPasswordVoid.KeyUp += TxtPasswordVoid_KeyUp;
+            btnPasswordCompirm.Click += BtnPasswordCompirm_Click;
             //custommenu.MenuItems.Add("&ยกเลิก";
             //grdView.ContextMenu = custommenu;
             //bg = txtStfCode.BackColor;
@@ -92,7 +93,15 @@ namespace clinic_ivf.gui
             sep = new C1SuperErrorProvider();
             //stt.BackgroundGradient = C1.Win.C1SuperTooltip.BackgroundGradient.Gold;
         }
-        
+
+        private void BtnPasswordCompirm_Click(object sender, EventArgs e)
+        {
+            //throw new NotImplementedException();
+            ic.stfID = txtID.Text;
+            FrmSetPassword frm = new FrmSetPassword(ic, FrmSetPassword.StatusPassword.confirm);
+            frm.ShowDialog(this);
+        }
+
         private void ContextMenu_void(object sender, System.EventArgs e)
         {
             //FarPoint.Win.Spread.Row row = grdView.ActiveSheet.ActiveRow;
@@ -115,7 +124,7 @@ namespace clinic_ivf.gui
             grfStf.Dock = System.Windows.Forms.DockStyle.Fill;
             grfStf.Location = new System.Drawing.Point(0, 0);
 
-            FilterRow fr = new FilterRow(grfStf);
+            //FilterRow fr = new FilterRow(grfStf);
 
             grfStf.AfterDataRefresh += new System.ComponentModel.ListChangedEventHandler(this.StatusBar_AfterDataRefresh);
             grfStf.CellChanged += new C1.Win.C1FlexGrid.RowColEventHandler(this.grfStf_CellChanged);
@@ -196,6 +205,7 @@ namespace clinic_ivf.gui
             panelAdmin.Enabled = flag;
             panelModule.Enabled = flag;
             chkVoid.Enabled = flag;
+            btnPasswordCompirm.Enabled = flag;
         }
         void StatusBar_AfterDataRefresh(object sender, System.ComponentModel.ListChangedEventArgs e)
         {
@@ -301,7 +311,7 @@ namespace clinic_ivf.gui
         private void btnPassword_Click(object sender, EventArgs e)
         {
             ic.stfID = txtID.Text;
-            FrmSetPassword frm = new FrmSetPassword(ic);
+            FrmSetPassword frm = new FrmSetPassword(ic, FrmSetPassword.StatusPassword.login);
             frm.ShowDialog(this);
         }
 
@@ -329,8 +339,8 @@ namespace clinic_ivf.gui
             {
                 setStaff();
                 String re = ic.ivfDB.stfDB.insertStaff(stf,ic.user.staff_id);
-                int chk = 0;
-                if (int.TryParse(re, out chk))
+                long chk = 0;
+                if (long.TryParse(re, out chk))
                 {
                     ic.ivfDB.stfDB.getlStf();
                     btnSave.Image = Resources.accept_database24;
@@ -620,12 +630,14 @@ namespace clinic_ivf.gui
             cboPosi.Text = stf.posi_name_t;
             chkAdmin.Checked = stf.status_admin.Equals("2") ? true : false;
             chkUser.Checked = !stf.status_admin.Equals("2") ? true : false;
-            chkImpJob.Checked = stf.status_module_imp_job.Equals("1") ? true : false;
-            chkExpJob.Checked = stf.status_module_exp_job.Equals("1") ? true : false;
-            chkOtherJob.Checked = stf.status_module_other_job.Equals("1") ? true : false;
+            chkReception.Checked = stf.status_module_reception.Equals("1") ? true : false;
+            chkNurse.Checked = stf.status_module_nurse.Equals("1") ? true : false;
+            chkDoctor.Checked = stf.status_module_doctor.Equals("1") ? true : false;
             chkExpnAppv.Checked = stf.status_expense_appv.Equals("1") ? true : false;
             chkExpnD.Checked = stf.status_expense_draw.Equals("1") ? true : false;
             chkExpnP.Checked = stf.status_expense_pay.Equals("1") ? true : false;
+            chkPharmacy.Checked = stf.status_module_pharmacy.Equals("1") ? true : false;
+            chkLab.Checked = stf.status_module_lab.Equals("1") ? true : false;
             btnPassword.Show();
         }
         private void setStaff()
@@ -647,12 +659,14 @@ namespace clinic_ivf.gui
             stf.prefix_id = cboPrefix.SelectedItem == null ? "" :  ((ComboBoxItem)cboPrefix.SelectedItem).Value;
             stf.posi_id = cboPosi.SelectedItem == null ? "" : ((ComboBoxItem)cboPosi.SelectedItem).Value;
             stf.status_admin = chkAdmin.Checked ? "2" : "1";
-            stf.status_module_imp_job = chkImpJob.Checked ? "1" : "0";
-            stf.status_module_exp_job = chkExpJob.Checked ? "1" : "0";
-            stf.status_module_other_job = chkOtherJob.Checked ? "1" : "0";
+            stf.status_module_reception = chkReception.Checked ? "1" : "0";
+            stf.status_module_nurse = chkNurse.Checked ? "1" : "0";
+            stf.status_module_doctor = chkDoctor.Checked ? "1" : "0";
             stf.status_expense_appv = chkExpnAppv.Checked ? "1" : "0";
             stf.status_expense_draw = chkExpnD.Checked ? "1" : "0";
             stf.status_expense_pay = chkExpnP.Checked ? "1" : "0";
+            stf.status_module_pharmacy = chkPharmacy.Checked ? "1" : "0";
+            stf.status_module_lab = chkLab.Checked ? "1" : "0";
             //stf.logo = txtLogo.Value.ToString();
             //txtCopCode.Value = xC.ivfDB.copDB.cop.comp_id;
         }

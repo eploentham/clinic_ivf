@@ -560,6 +560,10 @@ namespace clinic_ivf.gui
                     String re = ic.ivfDB.pttDB.insertPatient(ptt, txtStfConfirmID.Text);
                     int chk = 0;
                     Patient ptt1 = new Patient();
+                    if (re.Equals("1")) // ตอน update
+                    {
+                        re = txtID.Text;
+                    }
                     ptt1 = ic.ivfDB.pttDB.selectByPk1(re);
                     txtID.Value = re;
                     txtPid.Focus();

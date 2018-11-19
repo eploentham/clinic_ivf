@@ -25,8 +25,8 @@ namespace clinic_ivf.gui
         Color bg, fc;
         Font ff, ffB;
 
-        int colID = 1, colpttId = 2, colPttHn = 4, colVsTime = 3, colVsCode = 4, colVsPttName = 5, colVsDoctor = 6, colVsSperm = 7, colVsDay1 = 8, colVsDay2 = 9, colVs1St = 10, colVsDay8=11, colVsDay11=12;
-        int colVsTVS = 13, colVsEndo = 14, colVsDC = 15, colVsOPU = 16, colVsET_FET = 17, colVsHCG = 18, colVsScreen = 19, colVsTrans = 20, colVsANC = 21, colVsAnes = 22, colVsRemark = 23;
+        int colID = 1, colpttId = 2, colVsTime = 3, colPttHn = 4, colVsCode = 5, colVsPttName = 6, colVsDoctor = 7, colVsSperm = 8, colVsDay1 = 9, colVsDay2 = 10, colVs1St = 11, colVsDay8=12, colVsDay11=13;
+        int colVsTVS = 14, colVsEndo = 15, colVsDC = 16, colVsOPU = 17, colVsET_FET = 18, colVsHCG = 19, colVsScreen = 20, colVsTrans = 21, colVsANC = 22, colVsAnes = 23, colVsRemark = 24;
 
         C1FlexGrid grfPtt;
         C1SuperTooltip stt;
@@ -376,19 +376,26 @@ namespace clinic_ivf.gui
             {
                 datestart1 = datestart.ToString("yyyy-MM-dd");
             }
-            if(DateTime.TryParse(txtDateEnd.Text, out dateend))
+            else
             {
-                dateend1 = dateend.ToString("yyyy-MM-dd");
+                datestart1 = ic.datetoDB(txtDateStart.Text);
             }
-            
+            dateend1 = datestart1;
+            //if(DateTime.TryParse(txtDateEnd.Text, out dateend))
+            //{
+            //    dateend1 = dateend.ToString("yyyy-MM-dd");
+            //}
+            //else
+            //{
+            //    dateend1 = ic.datetoDB(txtDateEnd.Text);
+            //}
             //String date = System.DateTime.Now.Year + "-" + System.DateTime.Now.ToString("MM-dd");
             dt = ic.ivfDB.appnOldDB.selectByDateDtr(datestart1, dateend1, cboDoctor.Text);
-
-
+            
             //grfExpn.Rows.Count = dt.Rows.Count + 1;
             
             grfPtt.Rows.Count = 2;
-            grfPtt.Cols.Count = 24;
+            grfPtt.Cols.Count = 25;
             grfPtt.Rows.Fixed = 2;
             grfPtt.AllowMerging = C1.Win.C1FlexGrid.AllowMergingEnum.FixedOnly;
             grfPtt.AllowMergingFixed = C1.Win.C1FlexGrid.AllowMergingEnum.Free;
@@ -503,7 +510,7 @@ namespace clinic_ivf.gui
             CellRange rng1 = grfPtt.GetCellRange(0, colVsTime, 1, colVsTime);
             rng1.Data = "Time";
             CellRange rng2 = grfPtt.GetCellRange(0, colPttHn, 1, colPttHn);
-            rng1.Data = "HN";
+            rng2.Data = "HN";
             CellRange rng3 = grfPtt.GetCellRange(0, colVsCode, 1, colVsCode);
             rng3.Data = "Code";
             CellRange rng4 = grfPtt.GetCellRange(0, colVsPttName, 1, colVsPttName);

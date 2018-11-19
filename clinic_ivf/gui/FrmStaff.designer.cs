@@ -35,6 +35,7 @@
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.panel2 = new System.Windows.Forms.Panel();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.btnPasswordCompirm = new C1.Win.C1Input.C1Button();
             this.txtPasswordVoid = new C1.Win.C1Input.C1TextBox();
             this.btnPosiAdd = new C1.Win.C1Input.C1Button();
             this.btnDeptAdd = new C1.Win.C1Input.C1Button();
@@ -42,9 +43,9 @@
             this.chkExpnP = new C1.Win.C1Input.C1CheckBox();
             this.chkExpnAppv = new C1.Win.C1Input.C1CheckBox();
             this.chkExpnD = new C1.Win.C1Input.C1CheckBox();
-            this.chkOtherJob = new C1.Win.C1Input.C1CheckBox();
-            this.chkExpJob = new C1.Win.C1Input.C1CheckBox();
-            this.chkImpJob = new C1.Win.C1Input.C1CheckBox();
+            this.chkDoctor = new C1.Win.C1Input.C1CheckBox();
+            this.chkNurse = new C1.Win.C1Input.C1CheckBox();
+            this.chkReception = new C1.Win.C1Input.C1CheckBox();
             this.label11 = new System.Windows.Forms.Label();
             this.panelAdmin = new System.Windows.Forms.Panel();
             this.chkUser = new System.Windows.Forms.RadioButton();
@@ -88,6 +89,8 @@
             this.txtID = new C1.Win.C1Input.C1TextBox();
             this.txtStfCode = new C1.Win.C1Input.C1TextBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.chkPharmacy = new C1.Win.C1Input.C1CheckBox();
+            this.chkLab = new C1.Win.C1Input.C1CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.theme1)).BeginInit();
             this.sB.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -96,6 +99,7 @@
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
             this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.btnPasswordCompirm)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtPasswordVoid)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnPosiAdd)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnDeptAdd)).BeginInit();
@@ -103,9 +107,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.chkExpnP)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkExpnAppv)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkExpnD)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.chkOtherJob)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.chkExpJob)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.chkImpJob)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chkDoctor)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chkNurse)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chkReception)).BeginInit();
             this.panelAdmin.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btnLogoPath)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnLogoView)).BeginInit();
@@ -128,6 +132,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.btnSave)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtID)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtStfCode)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chkPharmacy)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chkLab)).BeginInit();
             this.SuspendLayout();
             // 
             // theme1
@@ -204,6 +210,7 @@
             // groupBox1
             // 
             this.groupBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(87)))), ((int)(((byte)(87)))), ((int)(((byte)(87)))));
+            this.groupBox1.Controls.Add(this.btnPasswordCompirm);
             this.groupBox1.Controls.Add(this.txtPasswordVoid);
             this.groupBox1.Controls.Add(this.btnPosiAdd);
             this.groupBox1.Controls.Add(this.btnDeptAdd);
@@ -259,6 +266,20 @@
             this.groupBox1.Text = "groupBox1";
             this.theme1.SetTheme(this.groupBox1, "(default)");
             // 
+            // btnPasswordCompirm
+            // 
+            this.btnPasswordCompirm.Image = global::clinic_ivf.Properties.Resources.Female_user_edit_24;
+            this.btnPasswordCompirm.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnPasswordCompirm.Location = new System.Drawing.Point(276, 469);
+            this.btnPasswordCompirm.Name = "btnPasswordCompirm";
+            this.btnPasswordCompirm.Size = new System.Drawing.Size(158, 39);
+            this.btnPasswordCompirm.TabIndex = 258;
+            this.btnPasswordCompirm.Text = "set password compirm";
+            this.btnPasswordCompirm.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.theme1.SetTheme(this.btnPasswordCompirm, "(default)");
+            this.btnPasswordCompirm.UseVisualStyleBackColor = true;
+            this.btnPasswordCompirm.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            // 
             // txtPasswordVoid
             // 
             this.txtPasswordVoid.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(71)))), ((int)(((byte)(71)))));
@@ -304,16 +325,18 @@
             // panelModule
             // 
             this.panelModule.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(87)))), ((int)(((byte)(87)))), ((int)(((byte)(87)))));
+            this.panelModule.Controls.Add(this.chkLab);
+            this.panelModule.Controls.Add(this.chkPharmacy);
             this.panelModule.Controls.Add(this.chkExpnP);
             this.panelModule.Controls.Add(this.chkExpnAppv);
             this.panelModule.Controls.Add(this.chkExpnD);
-            this.panelModule.Controls.Add(this.chkOtherJob);
-            this.panelModule.Controls.Add(this.chkExpJob);
-            this.panelModule.Controls.Add(this.chkImpJob);
+            this.panelModule.Controls.Add(this.chkDoctor);
+            this.panelModule.Controls.Add(this.chkNurse);
+            this.panelModule.Controls.Add(this.chkReception);
             this.panelModule.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
-            this.panelModule.Location = new System.Drawing.Point(115, 569);
+            this.panelModule.Location = new System.Drawing.Point(21, 569);
             this.panelModule.Name = "panelModule";
-            this.panelModule.Size = new System.Drawing.Size(518, 68);
+            this.panelModule.Size = new System.Drawing.Size(621, 68);
             this.panelModule.TabIndex = 254;
             this.theme1.SetTheme(this.panelModule, "(default)");
             // 
@@ -371,59 +394,59 @@
             this.chkExpnD.Value = null;
             this.chkExpnD.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
             // 
-            // chkOtherJob
+            // chkDoctor
             // 
-            this.chkOtherJob.BackColor = System.Drawing.Color.Transparent;
-            this.chkOtherJob.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(71)))), ((int)(((byte)(71)))));
-            this.chkOtherJob.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.chkOtherJob.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.chkOtherJob.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
-            this.chkOtherJob.Location = new System.Drawing.Point(325, 10);
-            this.chkOtherJob.Name = "chkOtherJob";
-            this.chkOtherJob.Padding = new System.Windows.Forms.Padding(4, 1, 1, 1);
-            this.chkOtherJob.Size = new System.Drawing.Size(155, 24);
-            this.chkOtherJob.TabIndex = 231;
-            this.chkOtherJob.Text = "Module Other JOB";
-            this.theme1.SetTheme(this.chkOtherJob, "(default)");
-            this.chkOtherJob.UseVisualStyleBackColor = true;
-            this.chkOtherJob.Value = null;
-            this.chkOtherJob.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            this.chkDoctor.BackColor = System.Drawing.Color.Transparent;
+            this.chkDoctor.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(71)))), ((int)(((byte)(71)))));
+            this.chkDoctor.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.chkDoctor.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.chkDoctor.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
+            this.chkDoctor.Location = new System.Drawing.Point(270, 10);
+            this.chkDoctor.Name = "chkDoctor";
+            this.chkDoctor.Padding = new System.Windows.Forms.Padding(4, 1, 1, 1);
+            this.chkDoctor.Size = new System.Drawing.Size(121, 24);
+            this.chkDoctor.TabIndex = 231;
+            this.chkDoctor.Text = "Module Doctor";
+            this.theme1.SetTheme(this.chkDoctor, "(default)");
+            this.chkDoctor.UseVisualStyleBackColor = true;
+            this.chkDoctor.Value = null;
+            this.chkDoctor.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
             // 
-            // chkExpJob
+            // chkNurse
             // 
-            this.chkExpJob.BackColor = System.Drawing.Color.Transparent;
-            this.chkExpJob.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(71)))), ((int)(((byte)(71)))));
-            this.chkExpJob.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.chkExpJob.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.chkExpJob.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
-            this.chkExpJob.Location = new System.Drawing.Point(183, 10);
-            this.chkExpJob.Name = "chkExpJob";
-            this.chkExpJob.Padding = new System.Windows.Forms.Padding(4, 1, 1, 1);
-            this.chkExpJob.Size = new System.Drawing.Size(155, 24);
-            this.chkExpJob.TabIndex = 230;
-            this.chkExpJob.Text = "Module export JOB";
-            this.theme1.SetTheme(this.chkExpJob, "(default)");
-            this.chkExpJob.UseVisualStyleBackColor = true;
-            this.chkExpJob.Value = null;
-            this.chkExpJob.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            this.chkNurse.BackColor = System.Drawing.Color.Transparent;
+            this.chkNurse.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(71)))), ((int)(((byte)(71)))));
+            this.chkNurse.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.chkNurse.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.chkNurse.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
+            this.chkNurse.Location = new System.Drawing.Point(145, 10);
+            this.chkNurse.Name = "chkNurse";
+            this.chkNurse.Padding = new System.Windows.Forms.Padding(4, 1, 1, 1);
+            this.chkNurse.Size = new System.Drawing.Size(116, 24);
+            this.chkNurse.TabIndex = 230;
+            this.chkNurse.Text = "Module Nurse";
+            this.theme1.SetTheme(this.chkNurse, "(default)");
+            this.chkNurse.UseVisualStyleBackColor = true;
+            this.chkNurse.Value = null;
+            this.chkNurse.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
             // 
-            // chkImpJob
+            // chkReception
             // 
-            this.chkImpJob.BackColor = System.Drawing.Color.Transparent;
-            this.chkImpJob.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(71)))), ((int)(((byte)(71)))));
-            this.chkImpJob.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.chkImpJob.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.chkImpJob.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
-            this.chkImpJob.Location = new System.Drawing.Point(3, 10);
-            this.chkImpJob.Name = "chkImpJob";
-            this.chkImpJob.Padding = new System.Windows.Forms.Padding(4, 1, 1, 1);
-            this.chkImpJob.Size = new System.Drawing.Size(155, 24);
-            this.chkImpJob.TabIndex = 229;
-            this.chkImpJob.Text = "Module import JOB";
-            this.theme1.SetTheme(this.chkImpJob, "(default)");
-            this.chkImpJob.UseVisualStyleBackColor = true;
-            this.chkImpJob.Value = null;
-            this.chkImpJob.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            this.chkReception.BackColor = System.Drawing.Color.Transparent;
+            this.chkReception.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(71)))), ((int)(((byte)(71)))));
+            this.chkReception.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.chkReception.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.chkReception.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
+            this.chkReception.Location = new System.Drawing.Point(3, 10);
+            this.chkReception.Name = "chkReception";
+            this.chkReception.Padding = new System.Windows.Forms.Padding(4, 1, 1, 1);
+            this.chkReception.Size = new System.Drawing.Size(136, 24);
+            this.chkReception.TabIndex = 229;
+            this.chkReception.Text = "Module Reception";
+            this.theme1.SetTheme(this.chkReception, "(default)");
+            this.chkReception.UseVisualStyleBackColor = true;
+            this.chkReception.Value = null;
+            this.chkReception.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
             // 
             // label11
             // 
@@ -536,9 +559,9 @@
             this.btnPassword.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnPassword.Location = new System.Drawing.Point(115, 469);
             this.btnPassword.Name = "btnPassword";
-            this.btnPassword.Size = new System.Drawing.Size(113, 39);
+            this.btnPassword.Size = new System.Drawing.Size(139, 39);
             this.btnPassword.TabIndex = 232;
-            this.btnPassword.Text = "set password";
+            this.btnPassword.Text = "set password login";
             this.btnPassword.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.theme1.SetTheme(this.btnPassword, "(default)");
             this.btnPassword.UseVisualStyleBackColor = true;
@@ -906,9 +929,9 @@
             this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
             this.label3.Location = new System.Drawing.Point(18, 152);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(58, 16);
+            this.label3.Size = new System.Drawing.Size(51, 16);
             this.label3.TabIndex = 62;
-            this.label3.Text = "ชื่ออังกฤษ :";
+            this.label3.Text = "Name :";
             this.theme1.SetTheme(this.label3, "(default)");
             // 
             // txtStfFNameT
@@ -1010,6 +1033,42 @@
             this.label1.Text = "รหัส :";
             this.theme1.SetTheme(this.label1, "(default)");
             // 
+            // chkPharmacy
+            // 
+            this.chkPharmacy.BackColor = System.Drawing.Color.Transparent;
+            this.chkPharmacy.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(71)))), ((int)(((byte)(71)))));
+            this.chkPharmacy.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.chkPharmacy.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.chkPharmacy.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
+            this.chkPharmacy.Location = new System.Drawing.Point(393, 10);
+            this.chkPharmacy.Name = "chkPharmacy";
+            this.chkPharmacy.Padding = new System.Windows.Forms.Padding(4, 1, 1, 1);
+            this.chkPharmacy.Size = new System.Drawing.Size(121, 24);
+            this.chkPharmacy.TabIndex = 261;
+            this.chkPharmacy.Text = "Module Pharmacy";
+            this.theme1.SetTheme(this.chkPharmacy, "(default)");
+            this.chkPharmacy.UseVisualStyleBackColor = true;
+            this.chkPharmacy.Value = null;
+            this.chkPharmacy.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            // 
+            // chkLab
+            // 
+            this.chkLab.BackColor = System.Drawing.Color.Transparent;
+            this.chkLab.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(71)))), ((int)(((byte)(71)))));
+            this.chkLab.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.chkLab.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.chkLab.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
+            this.chkLab.Location = new System.Drawing.Point(521, 10);
+            this.chkLab.Name = "chkLab";
+            this.chkLab.Padding = new System.Windows.Forms.Padding(4, 1, 1, 1);
+            this.chkLab.Size = new System.Drawing.Size(93, 24);
+            this.chkLab.TabIndex = 262;
+            this.chkLab.Text = "Module LAB";
+            this.theme1.SetTheme(this.chkLab, "(default)");
+            this.chkLab.UseVisualStyleBackColor = true;
+            this.chkLab.Value = null;
+            this.chkLab.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            // 
             // FrmStaff
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1032,6 +1091,7 @@
             this.splitContainer1.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.btnPasswordCompirm)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtPasswordVoid)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnPosiAdd)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnDeptAdd)).EndInit();
@@ -1039,9 +1099,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.chkExpnP)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkExpnAppv)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkExpnD)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.chkOtherJob)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.chkExpJob)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.chkImpJob)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chkDoctor)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chkNurse)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chkReception)).EndInit();
             this.panelAdmin.ResumeLayout(false);
             this.panelAdmin.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btnLogoPath)).EndInit();
@@ -1065,6 +1125,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.btnSave)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtID)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtStfCode)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chkPharmacy)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chkLab)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1123,14 +1185,17 @@
         private System.Windows.Forms.RadioButton chkAdmin;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Panel panelModule;
-        private C1.Win.C1Input.C1CheckBox chkExpJob;
-        private C1.Win.C1Input.C1CheckBox chkImpJob;
-        private C1.Win.C1Input.C1CheckBox chkOtherJob;
+        private C1.Win.C1Input.C1CheckBox chkNurse;
+        private C1.Win.C1Input.C1CheckBox chkReception;
+        private C1.Win.C1Input.C1CheckBox chkDoctor;
         private C1.Win.C1Input.C1Button btnPosiAdd;
         private C1.Win.C1Input.C1Button btnDeptAdd;
         private C1.Win.C1Input.C1TextBox txtPasswordVoid;
         private C1.Win.C1Input.C1CheckBox chkExpnP;
         private C1.Win.C1Input.C1CheckBox chkExpnAppv;
         private C1.Win.C1Input.C1CheckBox chkExpnD;
+        private C1.Win.C1Input.C1Button btnPasswordCompirm;
+        private C1.Win.C1Input.C1CheckBox chkLab;
+        private C1.Win.C1Input.C1CheckBox chkPharmacy;
     }
 }

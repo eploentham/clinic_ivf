@@ -6,6 +6,7 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace clinic_ivf.objdb
 {
@@ -52,11 +53,11 @@ namespace clinic_ivf.objdb
             stf.logo = "logo";
             stf.posi_id = "posi_id";
             stf.dept_name = "dept_name";
-            stf.prefix_name_t = "prefix_name_t";
+            stf.prefix_name_t = "patient_prefix_description";
             stf.status_admin = "status_admin";
-            stf.status_module_imp_job = "status_module_imp_job";
-            stf.status_module_exp_job = "status_module_exp_job";
-            stf.status_module_other_job = "status_module_other_job";
+            stf.status_module_reception = "status_module_reception";
+            stf.status_module_nurse = "status_module_nurse";
+            stf.status_module_doctor = "status_module_doctor";
             stf.posi_name_t = "posi_name_t";
             stf.dept_name_t = "dept_name_t";
             stf.dept_id = "dept_id";
@@ -64,6 +65,8 @@ namespace clinic_ivf.objdb
             stf.status_expense_draw = "status_expense_draw";
             stf.status_expense_pay = "status_expense_pay";
             stf.password_confirm = "password_confirm";
+            stf.status_module_pharmacy = "status_module_pharmacy";
+            stf.status_module_lab = "status_module_lab";
 
             stf.table = "b_staff";
             stf.pkField = "staff_id";
@@ -154,17 +157,18 @@ namespace clinic_ivf.objdb
             p.logo = p.logo == null ? "" : p.logo;
             p.dept_name = p.dept_name == null ? "" : p.dept_name;
 
-
             p.status_admin = p.status_admin == null ? "0" : p.status_admin;
-            p.status_module_imp_job = p.status_module_imp_job == null ? "0" : p.status_module_imp_job;
-            p.status_module_exp_job = p.status_module_exp_job == null ? "0" : p.status_module_exp_job;
+            p.status_module_reception = p.status_module_reception == null ? "0" : p.status_module_reception;
+            p.status_module_nurse = p.status_module_nurse == null ? "0" : p.status_module_nurse;
             p.status_admin = p.status_admin.Equals("") ? "0" : p.status_admin;
-            p.status_module_imp_job = p.status_module_imp_job.Equals("") ? "0" : p.status_module_imp_job;
-            p.status_module_exp_job = p.status_module_exp_job.Equals("") ? "0" : p.status_module_exp_job;
-            p.status_module_other_job = p.status_module_other_job.Equals("") ? "0" : p.status_module_other_job;
+            p.status_module_reception = p.status_module_reception.Equals("") ? "0" : p.status_module_reception;
+            p.status_module_nurse = p.status_module_nurse.Equals("") ? "0" : p.status_module_nurse;
+            p.status_module_doctor = p.status_module_doctor.Equals("") ? "0" : p.status_module_doctor;
             p.status_expense_appv = p.status_expense_appv == null ? "0" : p.status_expense_appv;
             p.status_expense_draw = p.status_expense_draw == null ? "0" : p.status_expense_draw;
             p.status_expense_pay = p.status_expense_pay == null ? "0" : p.status_expense_pay;
+            p.status_module_pharmacy = p.status_module_pharmacy == null ? "0" : p.status_module_pharmacy;
+            p.status_module_lab = p.status_module_lab == null ? "0" : p.status_module_lab;
             //p.user_cancel = p.user_cancel == null ? "" : p.user_cancel;
         }
         public String insert(Staff p, String userId)
@@ -184,10 +188,11 @@ namespace clinic_ivf.objdb
                 stf.date_create + "," + stf.date_modi + "," + stf.date_cancel + "," +
                 stf.user_create + "," + stf.user_modi + "," + stf.user_cancel + "," +
                 stf.staff_lname_t + "," + stf.staff_lname_e + ", " + stf.pid + "," +
-                stf.logo + ", " + stf.posi_id + ", " + stf.dept_name + "," +
-                stf.status_admin + ", " + stf.status_module_imp_job + "," + stf.status_module_exp_job + "," +
-                stf.status_module_other_job + "," +
-                stf.status_expense_appv + "," + stf.status_expense_draw + "," + stf.status_expense_pay + " " +
+                stf.logo + ", " + stf.dept_name + "," +
+                stf.status_admin + ", " + stf.status_module_reception + "," + stf.status_module_nurse + "," +
+                stf.status_module_doctor + "," +
+                stf.status_expense_appv + "," + stf.status_expense_draw + "," + stf.status_expense_pay + ", " +
+                stf.status_module_pharmacy + "," + stf.status_module_lab + " "  +
                 ") " +
                 "Values ('" + p.staff_code + "','" + p.username + "','" + p.prefix_id + "'," +
                 "'" + p.staff_fname_t.Replace("'", "''") + "','" + p.staff_fname_e.Replace("'", "''") + "','" + p.password1 + "'," +
@@ -197,10 +202,11 @@ namespace clinic_ivf.objdb
                 "now(),'" + p.date_modi + "','" + p.date_cancel + "'," +
                 "'" + userId + "','" + p.user_modi + "','" + p.user_cancel + "', " +
                 "'" + p.staff_lname_t.Replace("'", "''") + "','" + p.staff_lname_e.Replace("'", "''") + "','" + p.pid + "'," +
-                "'" + p.logo + "','" + p.posi_id + "','" + p.dept_name.Replace("'", "''") + "'," +
-                "'" + p.status_admin + "','" + p.status_module_imp_job + "','" + p.status_module_exp_job.Replace("'", "''") + "'," +
-                "'" + p.status_module_other_job.Replace("'", "''") + "'," +
-                "'" + p.status_expense_appv + "','" + p.status_expense_draw + "','" + p.status_expense_pay.Replace("'", "''") + "' " +
+                "'" + p.logo + "','"  + p.dept_name.Replace("'", "''") + "'," +
+                "'" + p.status_admin + "','" + p.status_module_reception + "','" + p.status_module_nurse.Replace("'", "''") + "'," +
+                "'" + p.status_module_doctor.Replace("'", "''") + "'," +
+                "'" + p.status_expense_appv + "','" + p.status_expense_draw + "','" + p.status_expense_pay.Replace("'", "''") + "'," +
+                "'" + p.status_module_pharmacy + "','" + p.status_module_lab + "' " + 
                 ")";
             try
             {
@@ -244,12 +250,14 @@ namespace clinic_ivf.objdb
                 "," + stf.dept_id + " = '" + p.dept_id + "' " +
                 "," + stf.dept_name + " = '" + p.dept_name.Replace("'", "''") + "' " +
                 "," + stf.status_admin + " = '" + p.status_admin.Replace("'", "''") + "' " +
-                "," + stf.status_module_imp_job + " = '" + p.status_module_imp_job.Replace("'", "''") + "' " +
-                "," + stf.status_module_exp_job + " = '" + p.status_module_exp_job.Replace("'", "''") + "' " +
-                "," + stf.status_module_other_job + " = '" + p.status_module_other_job.Replace("'", "''") + "' " +
+                "," + stf.status_module_reception + " = '" + p.status_module_reception.Replace("'", "''") + "' " +
+                "," + stf.status_module_nurse + " = '" + p.status_module_nurse.Replace("'", "''") + "' " +
+                "," + stf.status_module_doctor + " = '" + p.status_module_doctor.Replace("'", "''") + "' " +
                 "," + stf.status_expense_appv + " = '" + p.status_expense_appv.Replace("'", "''") + "' " +
                 "," + stf.status_expense_draw + " = '" + p.status_expense_draw.Replace("'", "''") + "' " +
                 "," + stf.status_expense_pay + " = '" + p.status_expense_pay.Replace("'", "''") + "' " +
+                "," + stf.status_module_pharmacy + " = '" + p.status_module_pharmacy.Replace("'", "''") + "' " +
+                "," + stf.status_module_lab + " = '" + p.status_module_lab.Replace("'", "''") + "' " +
                 "Where " + stf.pkField + "='" + p.staff_id + "'"
                 ;
 
@@ -347,7 +355,7 @@ namespace clinic_ivf.objdb
         public DataTable selectAll1()
         {
             DataTable dt = new DataTable();
-            String sql = "Select stf.staff_id, stf.staff_code, concat( stf.staff_fname_t, ' ' , stf.staff_lname_t) as name" +
+            String sql = "Select stf.staff_id, stf.staff_code, concat( stf.staff_fname_e, ' ' , stf.staff_lname_e) as name" +
                 ", stf.mobile, stf.email, stf.posi_name " +
                 ", stf.dept_name, stf.remark, stf.pid, '' as dept_name_t, '' as posi_name_t " +
                 "From " + stf.table + " stf " +
@@ -360,8 +368,9 @@ namespace clinic_ivf.objdb
         public DataTable selectByPk(String copId)
         {
             DataTable dt = new DataTable();
-            String sql = "select stf.* " +
+            String sql = "select stf.*, pfx.prefix_name_t, '' as dept_name_t, '' as posi_name_t  " +
                 "From " + stf.table + " stf " +
+                "Left Join b_prefix pfx On stf.prefix_id = pfx.prefix_id " +
                 "Where stf." + stf.pkField + " ='" + copId + "' ";
             dt = conn.selectData(conn.conn, sql);
             return dt;
@@ -370,8 +379,9 @@ namespace clinic_ivf.objdb
         {
             Staff stf1 = new Staff();
             DataTable dt = new DataTable();
-            String sql = "select stf.* " +
+            String sql = "select stf.*, pfx.patient_prefix_description, '' as dept_name_t, '' as posi_name_t  " +
                 "From " + stf.table + " stf " +
+                "Left Join f_patient_prefix pfx On stf.prefix_id = pfx.f_patient_prefix_id " +
                 "Where stf." + stf.pkField + " ='" + copId + "' ";
             dt = conn.selectData(conn.conn, sql);
             stf1 = setStaff(dt);
@@ -387,9 +397,9 @@ namespace clinic_ivf.objdb
             //    "Left Join b_position posi On stf.posi_id = posi.posi_id " +
             //    "Left Join b_department dept On stf.dept_id = dept.dept_id " +
             //    "Where LOWER(stf." + stf.staff_code + ") like '" + copId.ToLower() + "%'  ";
-            String sql = "select stf.*, pfx.prefix_name_t, '' as dept_name_t, '' as posi_name_t " +
+            String sql = "select stf.*, pfx.patient_prefix_description, '' as dept_name_t, '' as posi_name_t " +
                 "From " + stf.table + " stf " +
-                "Left Join b_prefix pfx On stf.prefix_id = pfx.prefix_id " +
+                "Left Join f_patient_prefix pfx On stf.prefix_id = pfx.f_patient_prefix_id " +
                 "Where LOWER(stf." + stf.staff_code + ") like '" + copId.ToLower() + "%'  ";
             dt = conn.selectData(conn.conn, sql);
 
@@ -401,9 +411,9 @@ namespace clinic_ivf.objdb
         {
             Staff cop1 = new Staff();
             DataTable dt = new DataTable();
-            String sql = "select stf.*, pfx.prefix_name_t, '' as dept_name_t, '' as posi_name_t " +
+            String sql = "select stf.*, pfx.patient_prefix_description, '' as dept_name_t, '' as posi_name_t " +
                 "From " + stf.table + " stf " +
-                "Left Join b_prefix pfx On stf.prefix_id = pfx.prefix_id " +
+                "Left Join f_patient_prefix pfx On stf.prefix_id = pfx.f_patient_prefix_id " +
                 "Where stf." + stf.username + " ='" + username + "' ";
             dt = conn.selectData(conn.conn, sql);
             cop1 = setStaff(dt);
@@ -416,7 +426,7 @@ namespace clinic_ivf.objdb
             String sql = "select stf.* " +
                 "From " + stf.table + " stf " +
                 //"Left Join b_prefix pfx On stf.prefix_id = pfx.prefix_id " +
-                "Where stf." + stf.password1 + " ='" + pass + "' and " + stf.status_admin + "='2'";
+                "Where stf." + stf.password_confirm + " ='" + pass + "' and " + stf.status_admin + "='2'";
             dt = conn.selectData(conn.conn, sql);
             if (dt.Rows.Count > 0)
             {
@@ -431,9 +441,9 @@ namespace clinic_ivf.objdb
         {
             Staff cop1 = new Staff();
             DataTable dt = new DataTable();
-            String sql = "select stf.*, pfx.prefix_name_t, '' as dept_name_t, '' as posi_name_t  " +
+            String sql = "select stf.*, pfx.patient_prefix_description, '' as dept_name_t, '' as posi_name_t  " +
                 "From " + stf.table + " stf " +
-                "Left Join b_prefix pfx On stf.prefix_id = pfx.prefix_id " +
+                "Left Join f_patient_prefix pfx On stf.prefix_id = pfx.f_patient_prefix_id " +
                 "Where stf." + stf.password_confirm + " ='" + pass + "' ";
             dt = conn.selectData(conn.conn, sql);
             if (dt.Rows.Count > 0)
@@ -449,9 +459,9 @@ namespace clinic_ivf.objdb
         {
             Staff cop1 = new Staff();
             DataTable dt = new DataTable();
-            String sql = "select stf.*, pfx.prefix_name_t, '' as dept_name_t, '' as posi_name_t  " +
+            String sql = "select stf.*, pfx.patient_prefix_description, '' as dept_name_t, '' as posi_name_t  " +
                 "From " + stf.table + " stf " +
-                "Left Join b_prefix pfx On stf.prefix_id = pfx.prefix_id " +
+                "Left Join f_patient_prefix pfx On stf.prefix_id = pfx.f_patient_prefix_id " +
                 "Where stf." + stf.password_confirm + " ='" + pass + "' ";
             dt = conn.selectData(conn.conn, sql);
             if (dt.Rows.Count > 0)
@@ -468,29 +478,37 @@ namespace clinic_ivf.objdb
         {
             Staff cop1 = new Staff();
             DataTable dt = new DataTable();
-            cop1 = setStaff1(cop1);
-            if (username == null)
+            try
             {
-                return cop1;
+                cop1 = setStaff1(cop1);
+                if (username == null)
+                {
+                    return cop1;
+                }
+                if (password1 == null)
+                {
+                    return cop1;
+                }
+                if (username.Equals(""))
+                {
+                    return cop1;
+                }
+                if (password1.Equals(""))
+                {
+                    return cop1;
+                }
+                String sql = "select stf.*, pfx.patient_prefix_description, '' as dept_name_t, '' as posi_name_t " +
+                    "From " + stf.table + " stf " +
+                    "Left Join f_patient_prefix pfx On stf.prefix_id = pfx.f_patient_prefix_id " +
+                    "Where stf." + stf.username + " ='" + username + "' and " + stf.password1 + "='" + password1 + "' ";
+                dt = conn.selectData(conn.conn, sql);
+                cop1 = setStaff(dt);
             }
-            if (password1 == null)
+            catch (Exception ex)
             {
-                return cop1;
+                MessageBox.Show(""+ex.Message, "error");
             }
-            if (username.Equals(""))
-            {
-                return cop1;
-            }
-            if (password1.Equals(""))
-            {
-                return cop1;
-            }
-            String sql = "select stf.*, pfx.prefix_name_t, '' as dept_name_t, '' as posi_name_t " +
-                "From " + stf.table + " stf " +
-                "Left Join b_prefix pfx On stf.prefix_id = pfx.prefix_id " +
-                "Where stf." + stf.username + " ='" + username + "' and " + stf.password1 + "='" + password1 + "' ";
-            dt = conn.selectData(conn.conn, sql);
-            cop1 = setStaff(dt);
+            
             return cop1;
         }
         public Staff setStaff(DataTable dt)
@@ -526,11 +544,11 @@ namespace clinic_ivf.objdb
                 stf1.logo = dt.Rows[0][stf.logo].ToString();
                 stf1.posi_id = dt.Rows[0][stf.posi_id].ToString();
                 stf1.dept_name = dt.Rows[0][stf.dept_name].ToString();
-                stf1.prefix_name_t = dt.Rows[0][stf.prefix_name_t] != null ? dt.Rows[0][stf.prefix_name_t].ToString():"";
+                stf1.prefix_name_t = dt.Rows[0]["patient_prefix_description"] != null ? dt.Rows[0]["patient_prefix_description"].ToString():"";
                 stf1.status_admin = dt.Rows[0][stf.status_admin] != null ? dt.Rows[0][stf.status_admin].ToString():"";
-                stf1.status_module_imp_job = dt.Rows[0][stf.status_module_imp_job] != null ? dt.Rows[0][stf.status_module_imp_job].ToString():"";
-                stf1.status_module_exp_job = dt.Rows[0][stf.status_module_exp_job] != null ? dt.Rows[0][stf.status_module_exp_job].ToString():"";
-                stf1.status_module_other_job = dt.Rows[0][stf.status_module_other_job] != null ? dt.Rows[0][stf.status_module_other_job].ToString():"";
+                stf1.status_module_reception = dt.Rows[0][stf.status_module_reception] != null ? dt.Rows[0][stf.status_module_reception].ToString():"0";
+                stf1.status_module_nurse = dt.Rows[0][stf.status_module_nurse] != null ? dt.Rows[0][stf.status_module_nurse].ToString():"0";
+                stf1.status_module_doctor = dt.Rows[0][stf.status_module_doctor] != null ? dt.Rows[0][stf.status_module_doctor].ToString():"0";
                 stf1.posi_name = dt.Rows[0][stf.posi_name].ToString();
                 stf1.dept_name_t = dt.Rows[0][stf.dept_name_t] != null ? dt.Rows[0][stf.dept_name_t].ToString() : "";
                 stf1.posi_name_t = dt.Rows[0][stf.posi_name_t] != null ? dt.Rows[0][stf.posi_name_t].ToString() : "";
@@ -538,6 +556,10 @@ namespace clinic_ivf.objdb
                 stf1.status_expense_draw = dt.Rows[0][stf.status_expense_draw] != null ? dt.Rows[0][stf.status_expense_draw].ToString() : "";
                 stf1.status_expense_pay = dt.Rows[0][stf.status_expense_pay] != null ? dt.Rows[0][stf.status_expense_pay].ToString() : "";
                 stf1.password_confirm = dt.Rows[0][stf.password_confirm] != null ? dt.Rows[0][stf.password_confirm].ToString() : "";
+
+                stf1.status_module_pharmacy = dt.Rows[0][stf.status_module_pharmacy] != null ? dt.Rows[0][stf.status_module_pharmacy].ToString() : "0";
+                stf1.status_module_lab = dt.Rows[0][stf.status_module_lab] != null ? dt.Rows[0][stf.status_module_lab].ToString() : "0";
+                //stf1.prefix_name_t = "";
             }
             else
             {
@@ -577,13 +599,15 @@ namespace clinic_ivf.objdb
             stf1.dept_name = "";
             stf1.prefix_name_t = "";
             stf1.status_admin = "0";
-            stf1.status_module_imp_job = "0";
-            stf1.status_module_exp_job = "0";
-            stf1.status_module_other_job = "0";
+            stf1.status_module_reception = "0";
+            stf1.status_module_nurse = "0";
+            stf1.status_module_doctor = "0";
             stf1.status_expense_appv = "0";
             stf1.status_expense_draw = "0";
             stf1.status_expense_pay = "0";
             stf1.password_confirm = "";
+            stf1.status_module_pharmacy = "0";
+            stf1.status_module_lab = "0";
             return stf1;
         }
         public void setCboStaff(C1ComboBox c, String selected)

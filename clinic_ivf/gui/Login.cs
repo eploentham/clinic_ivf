@@ -77,7 +77,7 @@ namespace clinic_ivf.gui
         {
             //throw new NotImplementedException();
             stf = stfDB.selectByLogin(txtUserName.Text, txtPassword.Text);
-            if (stf.staff_fname_t.Length > 0)
+            if (stf.staff_id.Length > 0)
             {
                 ic.userId = stf.staff_id;
                 ic.user = stf;
@@ -125,10 +125,10 @@ namespace clinic_ivf.gui
             Staff stf1 = new Staff();
             if (txtUserName.Text.Length <= 0) return;
             stf1 = stfDB.selectByUsername(txtUserName.Text);
-            if (stf1.staff_fname_t.Length > 0)
+            if (stf1.staff_fname_e.Length > 0)
             {
                 btnOk.Image = Resources.Accept_Male_User24;
-                stt.Show("<p><b>สวัสดี</b></p>คุณ " + stf1.staff_fname_t + " " + stf1.staff_lname_t + "<br> กรุณา ป้อนรหัสผ่าน", txtUserName);
+                stt.Show("<p><b>สวัสดี</b></p>คุณ " + stf1.staff_fname_e + " " + stf1.staff_lname_e + "<br> กรุณา ป้อนรหัสผ่าน", txtUserName);
 
                 //stt.SetToolTip(txtUserName, "<p><b>สวัสดี</b></p>คุณ " + stf1.staff_fname_t + " " + stf1.staff_lname_t + "<br> กรุณา ป้อนรหัสผ่าน");
                 sep.Clear();

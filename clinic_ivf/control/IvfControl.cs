@@ -175,8 +175,26 @@ namespace clinic_ivf.control
                             DateSeparator = "-"
                         }
                     };
-                    dt1 = DateTime.Parse(dt.ToString());
-                    re = dt1.Year.ToString() + "-" + dt1.ToString("MM-dd");
+                    if(DateTime.TryParse(dt, out dt1))
+                    {
+                        re = dt1.Year.ToString() + "-" + dt1.ToString("MM-dd");
+                    }
+                    else
+                    {
+                        Thread.CurrentThread.CurrentCulture = new CultureInfo("th-TH")
+                        {
+                            DateTimeFormat =
+                            {
+                                DateSeparator = "-"
+                            }
+                        };
+                        if (DateTime.TryParse(dt, out dt1))
+                        {
+                            re = dt1.ToString("yyyy-MM-dd");
+                        }
+                    }
+                    //dt1 = DateTime.Parse(dt.ToString());
+                    
                 }
             }
             return re;

@@ -33,12 +33,14 @@ namespace clinic_ivf.object1
         public String dept_name_t { get; set; }
 
         public String status_admin { get; set; }
-        public String status_module_imp_job { get; set; }
-        public String status_module_exp_job { get; set; }
-        public String status_module_other_job { get; set; }
+        public String status_module_reception { get; set; }
+        public String status_module_nurse { get; set; }
+        public String status_module_doctor { get; set; }
         public String status_expense_draw { get; set; }
         public String status_expense_appv { get; set; }
         public String status_expense_pay { get; set; }
         public String password_confirm { get; set; }
+        public String status_module_pharmacy { get; set; }
+        public String status_module_lab { get; set; }
     }
 }
