@@ -40,6 +40,7 @@ namespace clinic_ivf.objdb
         public BContractPlansDB crlDB;
         public BServicePointDB bspDB;
         public PatientImageDB pttImgDB;
+        public OldJobSpecialDB oJsDB;
 
         public IvfDB(ConnectDB c)
         {
@@ -78,6 +79,7 @@ namespace clinic_ivf.objdb
             pttImgDB = new PatientImageDB(conn);
             jobpxDB = new JobPxDB(conn);
             jobpxdDB = new JobPxDetailDB(conn);
+            oJsDB = new OldJobSpecialDB(conn);
 
             Console.WriteLine("ivfDB end");
         }

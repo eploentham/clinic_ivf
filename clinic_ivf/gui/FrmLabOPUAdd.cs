@@ -100,6 +100,7 @@ namespace clinic_ivf.gui
         private void setControl()
         {
             lbReq = ic.ivfDB.lbReqDB.selectByPk1(reqId);
+
             txtHnFeMale.Value = lbReq.hn_female;
             txtHnMale.Value = lbReq.hn_male;
             txtNameFeMale.Value = lbReq.name_female;

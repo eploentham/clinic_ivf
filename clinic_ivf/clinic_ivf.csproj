@@ -340,6 +340,7 @@
     <Compile Include="objdb\FSexDB.cs" />
     <Compile Include="objdb\JobPxDB.cs" />
     <Compile Include="objdb\JobPxDetailDB.cs" />
+    <Compile Include="objdb\OldJobSpecialDB.cs" />
     <Compile Include="objdb\PatientImageDB.cs" />
     <Compile Include="objdb\PatientOldDB.cs" />
     <Compile Include="objdb\VisitDB.cs" />
@@ -347,6 +348,8 @@
     <Compile Include="object1\DoctorOld.cs" />
     <Compile Include="object1\JobPx.cs" />
     <Compile Include="object1\JobPxDetail.cs" />
+    <Compile Include="object1\OldJobSpecial.cs" />
+    <Compile Include="object1\OldJobSpecialDetail.cs" />
     <Compile Include="object1\PatientImage.cs" />
     <Compile Include="object1\Visit.cs" />
     <Compile Include="objdb\VisitQueueTransferDB.cs" />

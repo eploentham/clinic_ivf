@@ -23,7 +23,7 @@ namespace clinic_ivf.gui
         Font fEdit, fEditB;
         Color bg, fc;
         Font ff, ffB;
-        int colRqId = 1, colRqReqNum = 2, colRqHn = 3, colRqVn = 4, colRqName = 5, colRqDate = 6, colRqRemark = 7;
+        int colRqId = 1, colRqReqNum = 2, colRqHn = 3, colRqVn = 4, colRqName = 5, colPttName=6, colRqDate = 7, colRqRemark = 8;
 
         C1FlexGrid grfReq;
         C1SuperTooltip stt;
@@ -44,6 +44,8 @@ namespace clinic_ivf.gui
             //C1ThemeController.ApplicationTheme = ic.iniC.themeApplication;
             theme1.Theme = ic.iniC.themeApplication;
             theme1.SetTheme(sB, "BeigeOne");
+            txtDateEnd.Value = System.DateTime.Now;
+            txtDateStart.Value = System.DateTime.Now;
 
             sB1.Text = "";
             bg = txtHn.BackColor;
@@ -54,10 +56,18 @@ namespace clinic_ivf.gui
             sep = new C1SuperErrorProvider();
 
             //btnNew.Click += BtnNew_Click;
+            btnSearch.Click += BtnSearch_Click;
 
             initGrfReq();
             setGrfReq();
         }
+
+        private void BtnSearch_Click(object sender, EventArgs e)
+        {
+            //throw new NotImplementedException();
+            setGrfReq();
+        }
+
         private void initGrfReq()
         {
             grfReq = new C1FlexGrid();
@@ -102,11 +112,31 @@ namespace clinic_ivf.gui
         }
         private void setGrfReq()
         {
-            //grfDept.Rows.Count = 7;
+            String startdate = "", enddate = "";
+            DateTime datestart, dateend;
+            String datestart1 = "", dateend1 = "";
+            if (DateTime.TryParse(txtDateStart.Text, out datestart))
+            {
+                datestart1 = datestart.ToString("yyyy-MM-dd");
+            }
+            else
+            {
+                datestart1 = ic.datetoDB(txtDateStart.Text);
+            }
+            if (DateTime.TryParse(txtDateEnd.Text, out datestart))
+            {
+                dateend1 = datestart.ToString("yyyy-MM-dd");
+            }
+            else
+            {
+                dateend1 = ic.datetoDB(txtDateEnd.Text);
+            }
             grfReq.Clear();
+            grfReq.Cols.Count = 9;
+            grfReq.Rows.Count = 1;
             DataTable dt = new DataTable();
-
-            grfReq.DataSource = ic.ivfDB.lbReqDB.selectByReq1();
+            grfReq.DataSource = null;
+            dt = ic.ivfDB.oJsDB.selectByStatusUnAccept1(datestart1, dateend1);
             //grfExpn.Rows.Count = dt.Rows.Count + 1;
             //grfCu.Rows.Count = 41;
             //grfCu.Cols.Count = 4;
@@ -120,9 +150,9 @@ namespace clinic_ivf.gui
 
             grfReq.Cols[colRqHn].Width = 120;
             grfReq.Cols[colRqVn].Width = 120;
-            grfReq.Cols[colRqName].Width = 280;
+            grfReq.Cols[colRqName].Width = 120;
             grfReq.Cols[colRqDate].Width = 100;
-            //grfReq.Cols[colCuTime].Width = 80;
+            grfReq.Cols[colPttName].Width = 200;
 
             grfReq.ShowCursor = true;
             //grdFlex.Cols[colID].Caption = "no";
@@ -131,7 +161,8 @@ namespace clinic_ivf.gui
             grfReq.Cols[colRqReqNum].Caption = "req number";
             grfReq.Cols[colRqHn].Caption = "HN";
             grfReq.Cols[colRqVn].Caption = "VN";
-            grfReq.Cols[colRqName].Caption = "Name";
+            grfReq.Cols[colRqName].Caption = "LAB Name";
+            grfReq.Cols[colPttName].Caption = "Patient Name";
             grfReq.Cols[colRqDate].Caption = "Date";
             grfReq.Cols[colRqRemark].Caption = "Remark";
 
@@ -139,11 +170,22 @@ namespace clinic_ivf.gui
             //CellRange rg1 = grfBank.GetCellRange(1, colE, grfBank.Rows.Count, colE);
             //rg1.Style = grfBank.Styles["date"];
             //grfCu.Cols[colID].Visible = false;
-            for (int i = 1; i <= grfReq.Rows.Count - 1; i++)
+            int i = 1;
+            foreach (DataRow row in dt.Rows)
             {
-                grfReq[i, 0] = i;
+                Row row1 = grfReq.Rows.Add();
+                row1[colRqId] = row["ID"].ToString();
+                row1[colRqReqNum] = row["ID"].ToString();
+                row1[colRqHn] = row["PIDS"].ToString();
+                row1[colRqVn] = row["VN"].ToString();
+                row1[colRqName] = row["SName"].ToString();
+                row1[colPttName] = row["pttname"].ToString();
+                row1[colRqDate] = ic.datetoShow(row["Date"].ToString());
+                row1[0] = i;
+                i++;
             }
             grfReq.Cols[colRqId].Visible = false;
+            grfReq.Cols[colRqVn].Visible = false;
         }
         private void acceptLabOPUAdd(String reqId, String name)
         {
