@@ -129,5 +129,6 @@ namespace clinic_ivf.object1
         public String embryo_freez_position_6 { get; set; }
         public String embryo_freez_stage_6 { get; set; }
         public String req_id { get; set; }
+        public String status_opu { get; set; }
     }
 }

@@ -44,11 +44,15 @@ namespace clinic_ivf.objdb
         public DataTable selectByStatusUnAccept1(String startdate, String enddate)
         {
             DataTable dt = new DataTable();
-            String sql = "Select oJS.*, oJSd.SName, oJSd.SID, oJSd.ID, concat(SurfixName.SurfixName,' ',ptt.PName,' ',ptt.PSurname) as pttname  " +
+            String sql = "Select oJS.*, oJSd.SName, oJSd.SID, oJSd.ID as odsd_id, concat(SurfixName.SurfixName,' ',ptt.PName,' ',ptt.PSurname) as pttname" +
+                ", JobDoctor.DID, Doctor.Name as dtrname, Doctor.ID as dtrid, oJSd.status_req_accept, ifnull(lreq.remark,'') as remark  " +
                 "From " + oJS.table + " oJS " +
                 "Left Join JobSpecialDetail oJSd on oJS.Vn = oJSd.Vn " +
                 "Left Join Patient ptt on ptt.PID = oJS.PID " +
                 "Left Join SurfixName on SurfixName.SurfixID = ptt.SurfixID " +
+                "Left Join JobDoctor on JobDoctor.VN = oJS.VN "+
+                "Left join Doctor on JobDoctor.DName = Doctor.Name " +
+                "Left Join lab_t_request lreq on lreq.req_id = oJSd.req_id " +
                 "Where oJS." + oJS.Status + " ='1' and oJSd.SID=112 " +
                 "and oJS.Date >= '"+startdate+ "' and oJS.Date <='"+enddate+"'";
             dt = conn.selectData(conn.conn, sql);

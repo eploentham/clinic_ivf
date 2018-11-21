@@ -1256,3 +1256,26 @@ COLLATE = utf8_bin
 COMMENT = 'id=216';
 ALTER TABLE t_visit AUTO_INCREMENT = 2160000000;
 
+
+61-11-21
+ALTER TABLE `ivf`.`JobSpecialDetail` 
+ADD COLUMN `status_req_accept` VARCHAR(255) NULL DEFAULT 0 AFTER `FileName`,
+ADD COLUMN `req_id` INT NULL AFTER `status_req_accept`;
+
+ALTER TABLE `ivf`.`lab_t_request` 
+ADD COLUMN `doctor_id` INT NULL AFTER `result_staff_id`;
+
+ALTER TABLE `ivf`.`lab_t_request` 
+ADD COLUMN `lab_id` INT NULL AFTER `doctor_id`;
+
+ALTER TABLE lab_t_opu AUTO_INCREMENT = 2000000000;
+
+ALTER TABLE `ivf`.`lab_t_opu` 
+ADD COLUMN `status_opu` VARCHAR(255) NULL COMMENT '1=start;2=' AFTER `req_id`;
+
+ALTER TABLE `ivf`.`lab_t_opu` 
+ADD COLUMN `save_patient_staff_id` INT NULL AFTER `status_opu`,
+ADD COLUMN `save_maturation_staff_id` INT NULL AFTER `save_patient_staff_id`,
+ADD COLUMN `save_fetilization_staff_id` INT NULL AFTER `save_maturation_staff_id`,
+ADD COLUMN `save_sperm_prepa_staff_id` INT NULL AFTER `save_fetilization_staff_id`,
+ADD COLUMN `save_embryo_freezing_day_1_staff_id` INT NULL AFTER `save_sperm_prepa_staff_id`;

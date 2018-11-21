@@ -1,6 +1,7 @@
 ﻿using clinic_ivf.object1;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -142,6 +143,20 @@ namespace clinic_ivf.objdb
             opu.embryo_freez_position_6 = "embryo_freez_position_6";
             opu.embryo_freez_stage_6 = "embryo_freez_stage_6";
             opu.req_id = "req_id";
+            opu.status_opu = "status_opu";
+
+            opu.table = "lab_t_opu";
+            opu.pkField = "opu_id";
+        }
+        public DataTable selectByStatusProcess()
+        {
+            DataTable dt = new DataTable();
+            String sql = "select opu.* " +
+                "From " + opu.table + " opu " +
+                "Left Join Doctor on Doctor.ID = opu.doctor_id " +
+                "Where lbReq." + opu.status_opu + " ='0' ";
+            dt = conn.selectData(conn.conn, sql);
+            return dt;
         }
         private void chkNull(LabOpu p)
         {
@@ -184,6 +199,7 @@ namespace clinic_ivf.objdb
             int chk = 0;
 
             chkNull(p);
+            //opu.table = "lab_t_opu";
             sql = "Insert Into " + opu.table + "(" + opu.opu_code + "," + opu.embryo_freez_stage + "," + opu.embryoid_freez_position + "," +
                 opu.hn_male + "," + opu.hn_female + "," + opu.name_male + "," +
                 opu.active + "," + opu.remark + "," + opu.dob_female + "," +
@@ -191,7 +207,7 @@ namespace clinic_ivf.objdb
                 opu.doctor_id + "," + opu.proce_id + "," +
                 opu.date_create + "," + opu.date_modi + "," + opu.date_cancel + "," +
                 opu.user_create + "," + opu.user_modi + "," + opu.user_cancel + ", " +
-                opu.req_id + "," +
+                opu.req_id + "," + opu.status_opu + " " +
                 ") " +
                 "Values ('" + p.opu_code + "','" + p.embryo_freez_stage + "','" + p.embryoid_freez_position + "'," +
                 "'" + p.hn_male.Replace("'", "''") + "','" + p.hn_female.Replace("'", "''") + "','" + p.name_male + "'," +
@@ -200,7 +216,7 @@ namespace clinic_ivf.objdb
                 "'" + p.doctor_id + "','" + p.proce_id + "'," +
                 "now(),'" + p.date_modi + "','" + p.date_cancel + "'," +
                 "'" + userId + "','" + p.user_modi + "','" + p.user_cancel + "', " +
-                "'" + p.req_id + "' " +
+                "'" + p.req_id + "','1' " +
                 ")";
             try
             {

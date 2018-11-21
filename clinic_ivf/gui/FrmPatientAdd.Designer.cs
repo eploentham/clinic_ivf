@@ -423,6 +423,7 @@
             this.comboBox1.Size = new System.Drawing.Size(122, 21);
             this.comboBox1.TabIndex = 618;
             this.theme1.SetTheme(this.comboBox1, "(default)");
+            this.comboBox1.Visible = false;
             // 
             // cboAgent
             // 

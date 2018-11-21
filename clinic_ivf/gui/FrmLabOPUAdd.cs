@@ -19,7 +19,7 @@ namespace clinic_ivf.gui
     public partial class FrmLabOPUAdd : Form
     {
         IvfControl ic;
-        String reqId = "";
+        String reqId = "", opuId="";
         LabRequest lbReq;
 
         Font fEdit, fEditB;
@@ -31,11 +31,12 @@ namespace clinic_ivf.gui
         C1SuperTooltip stt;
         C1SuperErrorProvider sep;
 
-        public FrmLabOPUAdd(IvfControl ic, String reqid)
+        public FrmLabOPUAdd(IvfControl ic, String reqid, String opuid)
         {
             InitializeComponent();
             this.ic = ic;
             reqId = reqid;
+            opuId = opuid;
             initConfig();
         }
         private void initConfig()
@@ -99,13 +100,20 @@ namespace clinic_ivf.gui
         }
         private void setControl()
         {
-            lbReq = ic.ivfDB.lbReqDB.selectByPk1(reqId);
+            if (!reqId.Equals(""))
+            {
+                lbReq = ic.ivfDB.lbReqDB.selectByPk1(reqId);
 
-            txtHnFeMale.Value = lbReq.hn_female;
-            txtHnMale.Value = lbReq.hn_male;
-            txtNameFeMale.Value = lbReq.name_female;
-            txtNameMale.Value = lbReq.name_male;
-            txtLabReqCode.Value = lbReq.req_code;
+                txtHnFeMale.Value = lbReq.hn_female;
+                txtHnMale.Value = lbReq.hn_male;
+                txtNameFeMale.Value = lbReq.name_female;
+                txtNameMale.Value = lbReq.name_male;
+                txtLabReqCode.Value = lbReq.req_code;
+            }
+            else
+            {
+
+            }
         }
         private void BtnSave_Click(object sender, EventArgs e)
         {

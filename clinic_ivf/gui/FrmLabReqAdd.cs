@@ -82,8 +82,8 @@ namespace clinic_ivf.gui
                 stt.Hide();
                 setLabRequest();
                 String re = ic.ivfDB.lbReqDB.insertLabRequest(lbReq, txtStfConfirmID.Text);
-                int chk = 0;
-                if (int.TryParse(re, out chk))
+                long chk = 0;
+                if (long.TryParse(re, out chk))
                 {
                     btnReq.Image = Resources.accept_database24;
                     System.Threading.Thread.Sleep(2000);

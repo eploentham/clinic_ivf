@@ -123,6 +123,7 @@ namespace clinic_ivf.control
             iniC.themeApplication = iniF.getIni("app", "themeApplication");
             iniC.themeDonor = iniF.getIni("app", "themeDonor");
             iniC.printerSticker = iniF.getIni("app", "printerSticker");
+            iniC.timerlabreqaccept = iniF.getIni("app", "timerlabreqaccept");
 
             iniC.sticker_donor_width = iniF.getIni("sticker_donor", "width");
             iniC.sticker_donor_height = iniF.getIni("sticker_donor", "height");
@@ -132,6 +133,9 @@ namespace clinic_ivf.control
             iniC.sticker_donor_barcode_gap_y = iniF.getIni("sticker_donor", "barcode_gap_y");
             iniC.sticker_donor_gap = iniF.getIni("sticker_donor", "gap");
             iniC.sticker_donor_start_x = iniF.getIni("sticker_donor", "start_x");
+            iniC.status_show_border = iniF.getIni("sticker_donor", "status_show_border");
+            iniC.barcode_width_minus = iniF.getIni("sticker_donor", "barcode_width_minus");
+
             iniC.patientaddpanel1weight = iniF.getIni("app", "patientaddpanel1weight");
 
             iniC.grdViewFontName = iniC.grdViewFontName.Equals("") ? "Microsoft Sans Serif" : iniC.grdViewFontName;
@@ -146,6 +150,9 @@ namespace clinic_ivf.control
             iniC.sticker_donor_start_x = iniC.sticker_donor_start_x.Equals("") ? "52" : iniC.sticker_donor_start_x;
             iniC.patientaddpanel1weight = iniC.patientaddpanel1weight==null ? "300" : iniC.patientaddpanel1weight.Equals("") ? "300" : iniC.patientaddpanel1weight;
             iniC.printerSticker = iniC.printerSticker.Equals("") ? "default" : iniC.printerSticker;
+            iniC.status_show_border = iniC.status_show_border.Equals("") ? "0" : iniC.status_show_border;
+            iniC.barcode_width_minus = iniC.barcode_width_minus.Equals("") ? "0" : iniC.barcode_width_minus;
+            iniC.timerlabreqaccept = iniC.timerlabreqaccept.Equals("") ? "120" : iniC.timerlabreqaccept;
 
             iniC.hostFTP = iniC.hostFTP ==null ? "" : iniC.hostFTP;
             iniC.userFTP = iniC.userFTP == null ? "" : iniC.userFTP;

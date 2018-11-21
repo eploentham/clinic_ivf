@@ -47,13 +47,14 @@ namespace clinic_ivf.objdb
             lbReq.start_staff_id = "start_staff_id";
             lbReq.result_staff_id = "result_staff_id";
             lbReq.doctor_id = "doctor_id";
+            lbReq.lab_id = "lab_id";
 
             lbReq.table = "lab_t_request";
             lbReq.pkField = "req_id";
         }
         private void chkNull(LabRequest p)
         {
-            int chk = 0;
+            long chk = 0;
 
             p.date_modi = p.date_modi == null ? "" : p.date_modi;
             p.date_cancel = p.date_cancel == null ? "" : p.date_cancel;
@@ -74,12 +75,13 @@ namespace clinic_ivf.objdb
 
             p.status_req = p.status_req == null ? "0" : p.status_req;
 
-            p.item_id = int.TryParse(p.item_id, out chk) ? chk.ToString() : "0";
-            p.visit_id = int.TryParse(p.visit_id, out chk) ? chk.ToString() : "0";
-            p.accept_staff_id = int.TryParse(p.accept_staff_id, out chk) ? chk.ToString() : "0";
-            p.start_staff_id = int.TryParse(p.start_staff_id, out chk) ? chk.ToString() : "0";
-            p.result_staff_id = int.TryParse(p.result_staff_id, out chk) ? chk.ToString() : "0";
-            p.doctor_id = int.TryParse(p.doctor_id, out chk) ? chk.ToString() : "0";
+            p.item_id = long.TryParse(p.item_id, out chk) ? chk.ToString() : "0";
+            p.visit_id = long.TryParse(p.visit_id, out chk) ? chk.ToString() : "0";
+            p.accept_staff_id = long.TryParse(p.accept_staff_id, out chk) ? chk.ToString() : "0";
+            p.start_staff_id = long.TryParse(p.start_staff_id, out chk) ? chk.ToString() : "0";
+            p.result_staff_id = long.TryParse(p.result_staff_id, out chk) ? chk.ToString() : "0";
+            p.doctor_id = long.TryParse(p.doctor_id, out chk) ? chk.ToString() : "0";
+            p.lab_id = long.TryParse(p.lab_id, out chk) ? chk.ToString() : "0";
         }
         public DataTable selectByPk(String copId)
         {
@@ -111,6 +113,17 @@ namespace clinic_ivf.objdb
             dt = conn.selectData(conn.conn, sql);
             return dt;
         }
+        public DataTable selectByStatusReqAccept()
+        {
+            DataTable dt = new DataTable();
+            String sql = "select lbReq." + lbReq.req_id + ", lbReq." + lbReq.req_code + ", lbReq." + lbReq.hn_female + ", lbReq." + lbReq.vn + ", lbReq." + lbReq.name_female
+                + ", lbReq." + lbReq.req_date + ", lbReq." + lbReq.remark + ",lbReq." + lbReq.doctor_id+", Doctor.Name as dtr_name " +
+                "From " + lbReq.table + " lbReq " +
+                "Left Join Doctor on Doctor.ID = lbReq.doctor_id " +
+                "Where lbReq." + lbReq.status_req + " ='2' ";
+            dt = conn.selectData(conn.conn, sql);
+            return dt;
+        }
         public String UpdateStatusRequestAccept(String lbReqId, String userIdAccept)
         {
             DataTable dt = new DataTable();
@@ -120,6 +133,29 @@ namespace clinic_ivf.objdb
                 "," + lbReq.accept_date + "= now() " +
                 "," + lbReq.accept_staff_id + "='" + userIdAccept + "' " +
                 "Where " + lbReq.pkField + "='" + lbReqId + "'";
+            re = conn.ExecuteNonQuery(conn.conn, sql);
+            return re;
+        }
+        public String UpdateStatusRequestProcess(String lbReqId, String userIdAccept)
+        {
+            DataTable dt = new DataTable();
+            String re = "";
+            String sql = "Update " + lbReq.table + " Set " +
+                "" + lbReq.status_req + "='4' " +
+                "," + lbReq.start_date + "= now() " +
+                "," + lbReq.start_staff_id + "='" + userIdAccept + "' " +
+                "Where " + lbReq.pkField + "='" + lbReqId + "'";
+            re = conn.ExecuteNonQuery(conn.conn, sql);
+            return re;
+        }
+        public String UpdateStatusRequestAcceptOld(String oJsdId, String reqId)
+        {
+            DataTable dt = new DataTable();
+            String re = "";
+            String sql = "Update JobSpecialDetail Set " +
+                "status_req_accept='1' " +
+                ",req_id='" + reqId + "' " +
+                "Where id='" + oJsdId + "'";
             re = conn.ExecuteNonQuery(conn.conn, sql);
             return re;
         }
@@ -141,7 +177,7 @@ namespace clinic_ivf.objdb
                 lbReq.date_create + "," + lbReq.date_modi + "," + lbReq.date_cancel + "," +
                 lbReq.user_create + "," + lbReq.user_modi + "," + lbReq.user_cancel + ", " +
                 lbReq.accept_staff_id + "," + lbReq.start_staff_id + "," + lbReq.result_staff_id + ", " +
-                lbReq.doctor_id + "," +
+                lbReq.doctor_id + " " +
                 ") " +
                 "Values ('" + p.req_code + "','" + p.req_date + "','" + p.hn_male + "'," +
                 "'" + p.name_male.Replace("'", "''") + "','" + p.hn_female.Replace("'", "''") + "','" + p.name_female + "'," +

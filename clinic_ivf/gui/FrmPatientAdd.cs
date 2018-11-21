@@ -1485,7 +1485,19 @@ namespace clinic_ivf.gui
             text = text.Replace("\t", "   ");
             Image img = barcode.Image;
             //text = string.Format("{0}\r\n\r\n---oOoOoOo---\r\n\r\n{0}", text);
+            try
+            {
+                String[] aaa = text.Split('\n');
+                if (aaa[0].Length >= 33)
+                {
+                    text = aaa[0]+"\n"+" "+aaa[1] + " " + aaa[2];
+                }
+            }
+            catch (Exception ex)
+            {
 
+            }
+            
             // create pdf document
             _c1pdf.Clear();
             _c1pdf.DocumentInfo.Title = "";
@@ -1521,7 +1533,7 @@ namespace clinic_ivf.gui
             rcRight.X = rcMiddle.Right + chk;
             RectangleF rcBarcode1 = RenderParagraph("", titleFont, rcLeft1, rcLeft1, false);
             rcBarcode1.Height = int.TryParse(ic.iniC.sticker_donor_barcode_height, out chk) ? chk : 40;
-            rcBarcode1.Width = rcLeft1.Width - 10;
+            rcBarcode1.Width = rcLeft1.Width - (int.TryParse(ic.iniC.barcode_width_minus, out chk) ? chk :10);
             rcBarcode1.X = rcLeft1.X;
             rcBarcode1.X = rcBarcode1.X + (int.TryParse(ic.iniC.sticker_donor_barcode_gap_x, out chk) ? chk : 5);
             //rcBarcode1.Y = rcBarcode1.Y + (int.TryParse(ic.iniC.sticker_donor_barcode_gap_y, out chk) ? chk : 30);
@@ -1549,7 +1561,11 @@ namespace clinic_ivf.gui
                 _c1pdf.DrawString(hn, bodyFontB, Brushes.Black, rcMiddle);
                 _c1pdf.DrawString("\n" + text, bodyFont, Brushes.Black, rcMiddle);
                 _c1pdf.DrawImage(img, rcBarcodeM);
-                //_c1pdf.DrawRectangle(Pens.Silver, rcMiddle);
+                if (ic.iniC.status_show_border.Equals("1"))
+                {
+                    _c1pdf.DrawRectangle(Pens.Silver, rcMiddle);
+                }
+                
 
                 _c1pdf.DrawString(hn, bodyFontB, Brushes.Black, rcRight);
                 _c1pdf.DrawString("\n" + text, bodyFont, Brushes.Black, rcRight);
@@ -1648,6 +1664,7 @@ namespace clinic_ivf.gui
             {
                 theme1.SetTheme(sB, "Office2010Red");
             }
+            txtMoo.Value = System.DateTime.Now.Year.ToString();
             //theme1.SetTheme(splitContainer1, ic.theme);
             //theme1.SetTheme(splitContainer2, ic.theme);
             //theme1.SetTheme(grfDay2, ic.theme);
