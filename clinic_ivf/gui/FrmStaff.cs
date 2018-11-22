@@ -83,8 +83,9 @@ namespace clinic_ivf.gui
             setFocusColor();
             setFocus();
             cboPrefix = ic.ivfDB.fpfDB.setCboPrefix(cboPrefix);
-            cboDept = ic.ivfDB.deptDB.setCboDept(cboDept);
-            cboPosi = ic.ivfDB.posiDB.setCboPosi(cboPosi);
+            
+            ic.ivfDB.posiDB.setC1CboPosi(cboPosi);
+            ic.ivfDB.deptDB.setC1CboDept(cboDept);
             setControlEnable(false);
             btnVoid.Hide();
             btnPassword.Hide();
@@ -313,25 +314,7 @@ namespace clinic_ivf.gui
             ic.stfID = txtID.Text;
             FrmSetPassword frm = new FrmSetPassword(ic, FrmSetPassword.StatusPassword.login);
             frm.ShowDialog(this);
-        }
-
-        private void btnDeptAdd_Click(object sender, EventArgs e)
-        {
-            ic.deptID = ((ComboBoxItem)cboDept.SelectedItem).Value;
-            FrmDepartmentS frm = new FrmDepartmentS(ic);
-            frm.Show(this);
-            cboDept = ic.ivfDB.deptDB.setCboDept(cboDept);
-            cboDept.Text = stf.dept_name_t;
-        }
-
-        private void btnPosiAdd_Click(object sender, EventArgs e)
-        {
-            ic.posiID = ((ComboBoxItem)cboPosi.SelectedItem).Value;
-            FrmPositionS frm = new FrmPositionS(ic);
-            frm.Show(this);
-            cboPosi = ic.ivfDB.posiDB.setCboPosi(cboPosi);
-            cboPosi.Text = stf.posi_name_t;
-        }
+        }                
         
         private void btnSave_Click(object sender, EventArgs e)
         {
@@ -626,8 +609,10 @@ namespace clinic_ivf.gui
             txtUserName.Value = stf.username;
             txtLogo.Value = stf.logo;
             cboPrefix.Text = stf.prefix_name_t;
-            cboDept.Text = stf.dept_name_t;
-            cboPosi.Text = stf.posi_name_t;
+            //cboDept.Text = stf.dept_name_t;
+            //cboPosi.Text = stf.posi_name_t;
+            ic.setC1Combo(cboPosi, stf.posi_id);
+            ic.setC1Combo(cboDept, stf.dept_id);
             chkAdmin.Checked = stf.status_admin.Equals("2") ? true : false;
             chkUser.Checked = !stf.status_admin.Equals("2") ? true : false;
             chkReception.Checked = stf.status_module_reception.Equals("1") ? true : false;

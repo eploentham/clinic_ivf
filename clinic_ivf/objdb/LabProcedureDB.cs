@@ -289,17 +289,17 @@ namespace clinic_ivf.objdb
             String sql = "";
             if (statuslab == StatusLab.OPUProcedure)
             {
-                sql = "select dept." + proce.pkField + ",dept." + proce.proce_name_t + " " +
-                    "From " + proce.table + " dept " +
+                sql = "select proce." + proce.pkField + ",proce." + proce.proce_name_t + " " +
+                    "From " + proce.table + " proce " +
                     " " +
-                    "Where dept." + proce.active + " ='1'  and dept." + proce.status_lab + "='01'";
+                    "Where proce." + proce.active + " ='1'  and proce." + proce.status_lab + "='OPU'";
             }
             else if (statuslab == StatusLab.FETProcedure)
             {
-                sql = "select dept." + proce.pkField + ",dept." + proce.proce_name_t + " " +
-                    "From " + proce.table + " dept " +
+                sql = "select proce." + proce.pkField + ",proce." + proce.proce_name_t + " " +
+                    "From " + proce.table + " proce " +
                     " " +
-                    "Where dept." + proce.active + " ='1'  and dept." + proce.status_lab + "='02'";
+                    "Where proce." + proce.active + " ='1'  and proce." + proce.status_lab + "='FET'";
             }
             dt = conn.selectData(conn.conn, sql);
 

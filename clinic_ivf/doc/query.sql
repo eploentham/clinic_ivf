@@ -1279,3 +1279,9 @@ ADD COLUMN `save_maturation_staff_id` INT NULL AFTER `save_patient_staff_id`,
 ADD COLUMN `save_fetilization_staff_id` INT NULL AFTER `save_maturation_staff_id`,
 ADD COLUMN `save_sperm_prepa_staff_id` INT NULL AFTER `save_fetilization_staff_id`,
 ADD COLUMN `save_embryo_freezing_day_1_staff_id` INT NULL AFTER `save_sperm_prepa_staff_id`;
+
+ALTER TABLE `ivf`.`b_position` 
+ADD COLUMN `status_doctor` VARCHAR(255) NULL AFTER `sort1`,
+ADD COLUMN `status_embryologist` VARCHAR(255) NULL AFTER `status_doctor`;
+
+

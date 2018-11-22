@@ -175,6 +175,14 @@ namespace clinic_ivf.gui
             {
                 chkStatusDoctor.Checked = false;
             }
+            if (posi.status_embryologist.Equals("1"))
+            {
+                chkEmbryologist.Checked = true;
+            }
+            else
+            {
+                chkEmbryologist.Checked = false;
+            }
         }
         private void setControlEnable(Boolean flag)
         {
@@ -193,6 +201,7 @@ namespace clinic_ivf.gui
             //posi.posi_name_e = txtPosiNameE.Text;
             posi.remark = txtRemark.Text;
             posi.status_doctor = chkStatusDoctor.Checked == true ? "1" : "0";
+            posi.status_embryologist = chkEmbryologist.Checked == true ? "1" : "0";
         }
         private void grfPosi_AfterRowColChange(object sender, C1.Win.C1FlexGrid.RangeEventArgs e)
         {

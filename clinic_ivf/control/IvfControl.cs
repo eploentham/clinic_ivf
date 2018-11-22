@@ -249,6 +249,7 @@ namespace clinic_ivf.control
         {
             if (c.Items.Count == 0) return;
             c.SelectedIndex = c.SelectedItem == null ? 0 : c.SelectedIndex;
+            c.SelectedIndex = 0;
             foreach (ComboBoxItem item in c.Items)
             {
                 if (item.Value.Equals(data))

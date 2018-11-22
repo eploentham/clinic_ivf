@@ -1,4 +1,5 @@
-﻿using clinic_ivf.objdb;
+﻿using C1.Win.C1Input;
+using clinic_ivf.objdb;
 using clinic_ivf.object1;
 using System;
 using System.Collections.Generic;
@@ -284,7 +285,7 @@ namespace clinic_ivf.objdb
 
             return dt;
         }
-        public ComboBox setCboDept(ComboBox c)
+        public C1ComboBox setC1CboDept(C1ComboBox c)
         {
             ComboBoxItem item = new ComboBoxItem();
             DataTable dt = selectC1();

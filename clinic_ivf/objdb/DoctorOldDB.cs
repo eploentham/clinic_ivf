@@ -66,7 +66,7 @@ namespace clinic_ivf.objdb
                 lAgnO.Add(itm1);
             }
         }
-        public void setCboBsp(C1ComboBox c, String selected)
+        public void setCboDoctor(C1ComboBox c, String selected)
         {
             ComboBoxItem item = new ComboBoxItem();
             DataTable dt = selectAll();

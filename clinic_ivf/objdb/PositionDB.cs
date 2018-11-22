@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using C1.Win.C1Input;
 using clinic_ivf.object1;
 
 namespace clinic_ivf.objdb
@@ -39,6 +40,7 @@ namespace clinic_ivf.objdb
             posi.active = "active";
             posi.sort1 = "sort1";
             posi.status_doctor = "status_doctor";
+            posi.status_embryologist = "status_embryologist";
 
             posi.table = "b_position";
             posi.pkField = "posi_id";
@@ -63,21 +65,24 @@ namespace clinic_ivf.objdb
             p.posi_name_t = p.posi_name_t == null ? "" : p.posi_name_t;
             p.sort1 = p.sort1 == null ? "" : p.sort1;
             p.remark = p.remark == null ? "" : p.remark;
+            p.status_embryologist = p.status_embryologist == null ? "" : p.status_embryologist;
+
             //p.posi_name_e = int.TryParse(p.comp_id, out chk) ? chk.ToString() : "0";
             p.posi_id = int.TryParse(p.posi_id, out chk) ? chk.ToString() : "0";
             p.status_doctor = int.TryParse(p.status_doctor, out chk) ? chk.ToString() : "0";
+            //p.status_embryologist = int.TryParse(p.status_embryologist, out chk) ? chk.ToString() : "0";
 
             sql = "Insert Into " + posi.table + "(" + posi.posi_code + "," + posi.posi_name_t + "," + posi.posi_name_e + "," +
                 posi.sort1 + "," + posi.remark + "," + posi.date_create + "," +
                 posi.date_modi + "," + posi.date_cancel + "," + posi.user_create + "," +
                 posi.user_modi + "," + posi.user_cancel + "," + posi.active + ", " +
-                posi.status_doctor + " " +
+                posi.status_doctor + "," + posi.status_embryologist + " " +
                 ") " +
                 "Values ('" + p.posi_code + "','" + p.posi_name_t.Replace("'", "''") + "','" + p.posi_name_e + "'," +
                 "'" + p.sort1 + "','" + p.remark.Replace("'", "''") + "',now()," +
                 "'" + p.date_modi + "','" + p.date_cancel + "','" + userId + "'," +
                 "'" + p.user_modi + "','" + p.user_cancel + "','" + p.active + "', " +
-                "'" + p.status_doctor + "' " +
+                "'" + p.status_doctor + "','" + p.status_embryologist + "' " +
                 ")";
             try
             {
@@ -105,6 +110,7 @@ namespace clinic_ivf.objdb
             p.posi_name_t = p.posi_name_t == null ? "" : p.posi_name_t;
             p.sort1 = p.sort1 == null ? "" : p.sort1;
             p.remark = p.remark == null ? "" : p.remark;
+            p.status_embryologist = p.status_embryologist == null ? "0" : p.status_embryologist;
             //p.comp_id = int.TryParse(p.comp_id, out chk) ? chk.ToString() : "0";
             p.posi_id = int.TryParse(p.posi_id, out chk) ? chk.ToString() : "0";
             p.status_doctor = int.TryParse(p.status_doctor, out chk) ? chk.ToString() : "0";
@@ -117,8 +123,9 @@ namespace clinic_ivf.objdb
                 "," + posi.remark + " = '" + p.remark.Replace("'", "''") + "'" +
                 "," + posi.date_modi + " = now()" +
                 "," + posi.user_modi + " = '" + userId + "'" +
-                "," + posi.status_doctor + " = '" + userId + "'" +
-                "Where " + posi.pkField + "='" + p.status_doctor + "'"
+                "," + posi.status_doctor + " = '" + p.status_doctor + "'" +
+                "," + posi.status_embryologist + " = '" + p.status_embryologist + "'" +
+                "Where " + posi.pkField + "='" + p.posi_id + "'"
                 ;
 
             try
@@ -278,10 +285,11 @@ namespace clinic_ivf.objdb
                 dept1.date_modi = dt.Rows[0][posi.date_modi] != null ? dt.Rows[0][posi.date_modi].ToString() : "";
                 dept1.date_cancel = dt.Rows[0][posi.date_cancel] != null ? dt.Rows[0][posi.date_cancel].ToString() : "";
                 dept1.user_create = dt.Rows[0][posi.user_create] != null ? dt.Rows[0][posi.user_create].ToString() : "";
-                dept1.user_modi = dt.Rows[0][posi.user_create] != null ? dt.Rows[0][posi.user_modi].ToString() : "";
-                dept1.user_cancel = dt.Rows[0][posi.user_create] != null ? dt.Rows[0][posi.user_cancel].ToString() : "";
-                dept1.active = dt.Rows[0][posi.user_create] != null ? dt.Rows[0][posi.active].ToString() : "";
-                dept1.sort1 = dt.Rows[0][posi.user_create] != null ? dt.Rows[0][posi.sort1].ToString() : "";
+                dept1.user_modi = dt.Rows[0][posi.user_modi] != null ? dt.Rows[0][posi.user_modi].ToString() : "";
+                dept1.user_cancel = dt.Rows[0][posi.user_cancel] != null ? dt.Rows[0][posi.user_cancel].ToString() : "";
+                dept1.active = dt.Rows[0][posi.active] != null ? dt.Rows[0][posi.active].ToString() : "";
+                dept1.sort1 = dt.Rows[0][posi.sort1] != null ? dt.Rows[0][posi.sort1].ToString() : "";
+                dept1.status_embryologist = dt.Rows[0][posi.status_embryologist] != null ? dt.Rows[0][posi.status_embryologist].ToString() : "";
             }
             else
             {
@@ -299,6 +307,7 @@ namespace clinic_ivf.objdb
                 posi.active = "";
                 posi.sort1 = "";
                 posi.status_doctor = "";
+                posi.status_embryologist = "";
             }
 
             return dept1;
@@ -314,7 +323,7 @@ namespace clinic_ivf.objdb
 
             return dt;
         }
-        public ComboBox setCboPosi(ComboBox c)
+        public C1ComboBox setC1CboPosi(C1ComboBox c)
         {
             ComboBoxItem item = new ComboBoxItem();
             DataTable dt = selectC1();

@@ -40,6 +40,8 @@
             this.btnPosiAdd = new C1.Win.C1Input.C1Button();
             this.btnDeptAdd = new C1.Win.C1Input.C1Button();
             this.panelModule = new System.Windows.Forms.Panel();
+            this.chkLab = new C1.Win.C1Input.C1CheckBox();
+            this.chkPharmacy = new C1.Win.C1Input.C1CheckBox();
             this.chkExpnP = new C1.Win.C1Input.C1CheckBox();
             this.chkExpnAppv = new C1.Win.C1Input.C1CheckBox();
             this.chkExpnD = new C1.Win.C1Input.C1CheckBox();
@@ -67,8 +69,6 @@
             this.label17 = new System.Windows.Forms.Label();
             this.label16 = new System.Windows.Forms.Label();
             this.txtLogo = new C1.Win.C1Input.C1TextBox();
-            this.cboDept = new System.Windows.Forms.ComboBox();
-            this.cboPosi = new System.Windows.Forms.ComboBox();
             this.cboPrefix = new System.Windows.Forms.ComboBox();
             this.txtStfLNameE = new C1.Win.C1Input.C1TextBox();
             this.label10 = new System.Windows.Forms.Label();
@@ -89,8 +89,8 @@
             this.txtID = new C1.Win.C1Input.C1TextBox();
             this.txtStfCode = new C1.Win.C1Input.C1TextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.chkPharmacy = new C1.Win.C1Input.C1CheckBox();
-            this.chkLab = new C1.Win.C1Input.C1CheckBox();
+            this.cboPosi = new C1.Win.C1Input.C1ComboBox();
+            this.cboDept = new C1.Win.C1Input.C1ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.theme1)).BeginInit();
             this.sB.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -104,6 +104,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.btnPosiAdd)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnDeptAdd)).BeginInit();
             this.panelModule.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.chkLab)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chkPharmacy)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkExpnP)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkExpnAppv)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkExpnD)).BeginInit();
@@ -132,8 +134,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.btnSave)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtID)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtStfCode)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.chkPharmacy)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.chkLab)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cboPosi)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cboDept)).BeginInit();
             this.SuspendLayout();
             // 
             // theme1
@@ -210,6 +212,8 @@
             // groupBox1
             // 
             this.groupBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(87)))), ((int)(((byte)(87)))), ((int)(((byte)(87)))));
+            this.groupBox1.Controls.Add(this.cboDept);
+            this.groupBox1.Controls.Add(this.cboPosi);
             this.groupBox1.Controls.Add(this.btnPasswordCompirm);
             this.groupBox1.Controls.Add(this.txtPasswordVoid);
             this.groupBox1.Controls.Add(this.btnPosiAdd);
@@ -234,8 +238,6 @@
             this.groupBox1.Controls.Add(this.label17);
             this.groupBox1.Controls.Add(this.label16);
             this.groupBox1.Controls.Add(this.txtLogo);
-            this.groupBox1.Controls.Add(this.cboDept);
-            this.groupBox1.Controls.Add(this.cboPosi);
             this.groupBox1.Controls.Add(this.cboPrefix);
             this.groupBox1.Controls.Add(this.txtStfLNameE);
             this.groupBox1.Controls.Add(this.label10);
@@ -307,7 +309,7 @@
             this.theme1.SetTheme(this.btnPosiAdd, "(default)");
             this.btnPosiAdd.UseVisualStyleBackColor = true;
             this.btnPosiAdd.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
-            this.btnPosiAdd.Click += new System.EventHandler(this.btnPosiAdd_Click);
+            //this.btnPosiAdd.Click += new System.EventHandler(this.btnPosiAdd_Click);
             // 
             // btnDeptAdd
             // 
@@ -320,7 +322,7 @@
             this.theme1.SetTheme(this.btnDeptAdd, "(default)");
             this.btnDeptAdd.UseVisualStyleBackColor = true;
             this.btnDeptAdd.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
-            this.btnDeptAdd.Click += new System.EventHandler(this.btnDeptAdd_Click);
+            //this.btnDeptAdd.Click += new System.EventHandler(this.btnDeptAdd_Click);
             // 
             // panelModule
             // 
@@ -339,6 +341,42 @@
             this.panelModule.Size = new System.Drawing.Size(621, 68);
             this.panelModule.TabIndex = 254;
             this.theme1.SetTheme(this.panelModule, "(default)");
+            // 
+            // chkLab
+            // 
+            this.chkLab.BackColor = System.Drawing.Color.Transparent;
+            this.chkLab.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(71)))), ((int)(((byte)(71)))));
+            this.chkLab.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.chkLab.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.chkLab.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
+            this.chkLab.Location = new System.Drawing.Point(521, 10);
+            this.chkLab.Name = "chkLab";
+            this.chkLab.Padding = new System.Windows.Forms.Padding(4, 1, 1, 1);
+            this.chkLab.Size = new System.Drawing.Size(93, 24);
+            this.chkLab.TabIndex = 262;
+            this.chkLab.Text = "Module LAB";
+            this.theme1.SetTheme(this.chkLab, "(default)");
+            this.chkLab.UseVisualStyleBackColor = true;
+            this.chkLab.Value = null;
+            this.chkLab.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            // 
+            // chkPharmacy
+            // 
+            this.chkPharmacy.BackColor = System.Drawing.Color.Transparent;
+            this.chkPharmacy.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(71)))), ((int)(((byte)(71)))));
+            this.chkPharmacy.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.chkPharmacy.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.chkPharmacy.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
+            this.chkPharmacy.Location = new System.Drawing.Point(393, 10);
+            this.chkPharmacy.Name = "chkPharmacy";
+            this.chkPharmacy.Padding = new System.Windows.Forms.Padding(4, 1, 1, 1);
+            this.chkPharmacy.Size = new System.Drawing.Size(121, 24);
+            this.chkPharmacy.TabIndex = 261;
+            this.chkPharmacy.Text = "Module Pharmacy";
+            this.theme1.SetTheme(this.chkPharmacy, "(default)");
+            this.chkPharmacy.UseVisualStyleBackColor = true;
+            this.chkPharmacy.Value = null;
+            this.chkPharmacy.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
             // 
             // chkExpnP
             // 
@@ -737,30 +775,6 @@
             this.theme1.SetTheme(this.txtLogo, "(default)");
             this.txtLogo.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
             // 
-            // cboDept
-            // 
-            this.cboDept.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
-            this.cboDept.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.cboDept.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
-            this.cboDept.FormattingEnabled = true;
-            this.cboDept.Location = new System.Drawing.Point(115, 371);
-            this.cboDept.Name = "cboDept";
-            this.cboDept.Size = new System.Drawing.Size(207, 24);
-            this.cboDept.TabIndex = 12;
-            this.theme1.SetTheme(this.cboDept, "(default)");
-            // 
-            // cboPosi
-            // 
-            this.cboPosi.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
-            this.cboPosi.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.cboPosi.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
-            this.cboPosi.FormattingEnabled = true;
-            this.cboPosi.Location = new System.Drawing.Point(115, 344);
-            this.cboPosi.Name = "cboPosi";
-            this.cboPosi.Size = new System.Drawing.Size(207, 24);
-            this.cboPosi.TabIndex = 11;
-            this.theme1.SetTheme(this.cboPosi, "(default)");
-            // 
             // cboPrefix
             // 
             this.cboPrefix.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
@@ -1033,41 +1047,49 @@
             this.label1.Text = "รหัส :";
             this.theme1.SetTheme(this.label1, "(default)");
             // 
-            // chkPharmacy
+            // cboPosi
             // 
-            this.chkPharmacy.BackColor = System.Drawing.Color.Transparent;
-            this.chkPharmacy.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(71)))), ((int)(((byte)(71)))));
-            this.chkPharmacy.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.chkPharmacy.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.chkPharmacy.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
-            this.chkPharmacy.Location = new System.Drawing.Point(393, 10);
-            this.chkPharmacy.Name = "chkPharmacy";
-            this.chkPharmacy.Padding = new System.Windows.Forms.Padding(4, 1, 1, 1);
-            this.chkPharmacy.Size = new System.Drawing.Size(121, 24);
-            this.chkPharmacy.TabIndex = 261;
-            this.chkPharmacy.Text = "Module Pharmacy";
-            this.theme1.SetTheme(this.chkPharmacy, "(default)");
-            this.chkPharmacy.UseVisualStyleBackColor = true;
-            this.chkPharmacy.Value = null;
-            this.chkPharmacy.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            this.cboPosi.AllowSpinLoop = false;
+            this.cboPosi.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(71)))), ((int)(((byte)(71)))));
+            this.cboPosi.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.cboPosi.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(172)))), ((int)(((byte)(172)))), ((int)(((byte)(172)))));
+            this.cboPosi.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.cboPosi.GapHeight = 0;
+            this.cboPosi.ImagePadding = new System.Windows.Forms.Padding(0, 0, 0, 0);
+            this.cboPosi.ItemsDisplayMember = "";
+            this.cboPosi.ItemsValueMember = "";
+            this.cboPosi.Location = new System.Drawing.Point(118, 344);
+            this.cboPosi.Name = "cboPosi";
+            this.cboPosi.Size = new System.Drawing.Size(200, 20);
+            this.cboPosi.Style.DropDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
+            this.cboPosi.Style.DropDownBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(77)))), ((int)(((byte)(77)))), ((int)(((byte)(77)))));
+            this.cboPosi.Style.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.cboPosi.TabIndex = 259;
+            this.cboPosi.Tag = null;
+            this.theme1.SetTheme(this.cboPosi, "(default)");
+            this.cboPosi.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
             // 
-            // chkLab
+            // cboDept
             // 
-            this.chkLab.BackColor = System.Drawing.Color.Transparent;
-            this.chkLab.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(71)))), ((int)(((byte)(71)))));
-            this.chkLab.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.chkLab.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.chkLab.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
-            this.chkLab.Location = new System.Drawing.Point(521, 10);
-            this.chkLab.Name = "chkLab";
-            this.chkLab.Padding = new System.Windows.Forms.Padding(4, 1, 1, 1);
-            this.chkLab.Size = new System.Drawing.Size(93, 24);
-            this.chkLab.TabIndex = 262;
-            this.chkLab.Text = "Module LAB";
-            this.theme1.SetTheme(this.chkLab, "(default)");
-            this.chkLab.UseVisualStyleBackColor = true;
-            this.chkLab.Value = null;
-            this.chkLab.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            this.cboDept.AllowSpinLoop = false;
+            this.cboDept.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(71)))), ((int)(((byte)(71)))));
+            this.cboDept.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.cboDept.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(172)))), ((int)(((byte)(172)))), ((int)(((byte)(172)))));
+            this.cboDept.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.cboDept.GapHeight = 0;
+            this.cboDept.ImagePadding = new System.Windows.Forms.Padding(0);
+            this.cboDept.ItemsDisplayMember = "";
+            this.cboDept.ItemsValueMember = "";
+            this.cboDept.Location = new System.Drawing.Point(118, 373);
+            this.cboDept.Name = "cboDept";
+            this.cboDept.Size = new System.Drawing.Size(200, 20);
+            this.cboDept.Style.DropDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
+            this.cboDept.Style.DropDownBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(77)))), ((int)(((byte)(77)))), ((int)(((byte)(77)))));
+            this.cboDept.Style.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.cboDept.TabIndex = 260;
+            this.cboDept.Tag = null;
+            this.theme1.SetTheme(this.cboDept, "(default)");
+            this.cboDept.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
             // 
             // FrmStaff
             // 
@@ -1096,6 +1118,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.btnPosiAdd)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnDeptAdd)).EndInit();
             this.panelModule.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.chkLab)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chkPharmacy)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkExpnP)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkExpnAppv)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkExpnD)).EndInit();
@@ -1125,8 +1149,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.btnSave)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtID)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtStfCode)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.chkPharmacy)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.chkLab)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cboPosi)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cboDept)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1148,8 +1172,6 @@
         private System.Windows.Forms.Label label17;
         private System.Windows.Forms.Label label16;
         private C1.Win.C1Input.C1TextBox txtLogo;
-        private System.Windows.Forms.ComboBox cboDept;
-        private System.Windows.Forms.ComboBox cboPosi;
         private System.Windows.Forms.ComboBox cboPrefix;
         private C1.Win.C1Input.C1TextBox txtStfLNameE;
         private System.Windows.Forms.Label label10;
@@ -1197,5 +1219,7 @@
         private C1.Win.C1Input.C1Button btnPasswordCompirm;
         private C1.Win.C1Input.C1CheckBox chkLab;
         private C1.Win.C1Input.C1CheckBox chkPharmacy;
+        private C1.Win.C1Input.C1ComboBox cboPosi;
+        private C1.Win.C1Input.C1ComboBox cboDept;
     }
 }

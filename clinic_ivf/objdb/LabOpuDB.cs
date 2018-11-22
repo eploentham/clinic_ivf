@@ -34,7 +34,7 @@ namespace clinic_ivf.objdb
             opu.doctor_id = "doctor_id";
             opu.proce_id = "proce_id";
             opu.opu_date = "opu_date";
-            opu.no_of_opu = "no_of_opu";
+            //opu.no_of_opu = "no_of_opu";
             opu.matura_date = "matura_date";
             opu.matura_m_ii = "matura_m_ii";
             opu.matura_m_i = "matura_m_i";
@@ -49,7 +49,7 @@ namespace clinic_ivf.objdb
             opu.fertili_no_pn = "fertili_no_pn";
             opu.fertili_dead = "fertili_dead";
             opu.sperm_date = "sperm_date";
-            opu.sperm_vloume = "sperm_vloume";
+            opu.sperm_volume = "sperm_volume";
             opu.sperm_count = "sperm_count";
             opu.sperm_count_total = "sperm_count_total";
             opu.sperm_motile = "sperm_motile";
@@ -67,17 +67,17 @@ namespace clinic_ivf.objdb
             opu.embryo_freez_stage_0 = "embryo_freez_stage_0";
 
             opu.embryo_for_et_no_of_et = "embryo_for_et_no_of_et";
-            opu.embbryo_for_et_day = "embbryo_for_et_day";
-            opu.embbryo_for_et_date = "embbryo_for_et_date";
-            opu.embbryo_for_et_assisted = "embbryo_for_et_assisted";
-            opu.embbryo_for_et_remark = "embbryo_for_et_remark";
-            opu.embbryo_for_et_volume = "embbryo_for_et_volume";
-            opu.embbryo_for_et_catheter = "embbryo_for_et_catheter";
-            opu.embbryo_for_et_doctor = "embbryo_for_et_doctor";
-            opu.embbryo_for_et_embryologist_id = "embbryo_for_et_embryologist_id";
-            opu.embbryo_for_et_number_of_transfer = "embbryo_for_et_number_of_transfer";
-            opu.embbryo_for_et_number_of_freeze = "embbryo_for_et_number_of_freeze";
-            opu.embbryo_for_et_number_of_discard = "embbryo_for_et_number_of_discard";
+            opu.embryo_for_et_day = "embryo_for_et_day";
+            opu.embryo_for_et_date = "embryo_for_et_date";
+            opu.embryo_for_et_assisted = "embryo_for_et_assisted";
+            opu.embryo_for_et_remark = "embryo_for_et_remark";
+            opu.embryo_for_et_volume = "embryo_for_et_volume";
+            opu.embryo_for_et_catheter = "embryo_for_et_catheter";
+            opu.embryo_for_et_doctor = "embryo_for_et_doctor";
+            opu.embryo_for_et_embryologist_id = "embryo_for_et_embryologist_id";
+            opu.embryo_for_et_number_of_transfer = "embryo_for_et_number_of_transfer";
+            opu.embryo_for_et_number_of_freeze = "embryo_for_et_number_of_freeze";
+            opu.embryo_for_et_number_of_discard = "embryo_for_et_number_of_discard";
             opu.embryologist_report_id = "embryologist_report_id";
             opu.embryologist_approve_id = "embryologist_approve_id";
             opu.date_create = "date_create";
@@ -144,9 +144,37 @@ namespace clinic_ivf.objdb
             opu.embryo_freez_stage_6 = "embryo_freez_stage_6";
             opu.req_id = "req_id";
             opu.status_opu = "status_opu";
+            opu.doctor_name = "doctor_name";
+            opu.proce_name = "proce_name";
+            opu.matura_no_of_opu = "matura_no_of_opu";
+            opu.matura_post_mat = "matura_post_mat";
 
             opu.table = "lab_t_opu";
             opu.pkField = "opu_id";
+        }
+        public DataTable selectByPk(String copId)
+        {
+            DataTable dt = new DataTable();
+            String sql = "select opu.*,dtr.Name, proce.proce_name_t " +
+                "From " + opu.table + " opu " +
+                "Left Join Doctor dtr on dtr.ID = opu."+opu.doctor_id+" " +
+                "LEft Join lab_b_procedure proce on proce.proce_id = opu.proce_id " +
+                "Where opu." + opu.pkField + " ='" + copId + "' ";
+            dt = conn.selectData(conn.conn, sql);
+            return dt;
+        }
+        public LabOpu selectByPk1(String copId)
+        {
+            LabOpu lbReq1 = new LabOpu();
+            DataTable dt = new DataTable();
+            String sql = "select opu.*,dtr.Name, proce.proce_name_t " +
+                "From " + opu.table + " opu " +
+                "Left Join Doctor dtr on dtr.ID = opu."+opu.doctor_id+" " +
+                "LEft Join lab_b_procedure proce on proce.proce_id = opu.proce_id " +
+                "Where opu." + opu.pkField + " ='" + copId + "' ";
+            dt = conn.selectData(conn.conn, sql);
+            lbReq1 = setLabOPU(dt);
+            return lbReq1;
         }
         public DataTable selectByStatusProcess()
         {
@@ -154,7 +182,7 @@ namespace clinic_ivf.objdb
             String sql = "select opu.* " +
                 "From " + opu.table + " opu " +
                 "Left Join Doctor on Doctor.ID = opu.doctor_id " +
-                "Where lbReq." + opu.status_opu + " ='0' ";
+                "Where opu." + opu.status_opu + " ='1' and opu."+opu.active+"='1' ";
             dt = conn.selectData(conn.conn, sql);
             return dt;
         }
@@ -237,10 +265,10 @@ namespace clinic_ivf.objdb
 
             chkNull(p);
             sql = "Update " + opu.table + " Set " +
-                " " + opu.opu_code + " = '" + p.opu_code + "'" +
-                "," + opu.embryo_freez_stage + " = '" + p.embryo_freez_stage.Replace("'", "''") + "'" +
-                "," + opu.embryoid_freez_position + " = '" + p.embryoid_freez_position + "'" +
-                "," + opu.hn_male + " = '" + p.hn_male.Replace("'", "''") + "'" +
+                //" " + opu.opu_code + " = '" + p.opu_code + "'" +
+                //" " + opu.embryo_freez_stage + " = '" + p.embryo_freez_stage.Replace("'", "''") + "'" +
+                //"," + opu.embryoid_freez_position + " = '" + p.embryoid_freez_position + "'" +
+                " " + opu.hn_male + " = '" + p.hn_male.Replace("'", "''") + "'" +
                 "," + opu.hn_female + " = '" + p.hn_female.Replace("'", "''") + "'" +
                 "," + opu.name_male + " = '" + p.name_male.Replace("'", "''") + "'" +
                 "," + opu.dob_female + " = '" + p.dob_female.Replace("'", "''") + "'" +
@@ -265,6 +293,470 @@ namespace clinic_ivf.objdb
             }
 
             return re;
+        }
+        public String updateMatura(LabOpu p, String userId)
+        {
+            String re = "";
+            String sql = "";
+            int chk = 0;
+
+            chkNull(p);
+            sql = "Update " + opu.table + " Set " +
+                
+                " " + opu.matura_date + " = '" + p.matura_date.Replace("'", "''") + "'" +
+                "," + opu.matura_m_ii + " = '" + p.matura_m_ii.Replace("'", "''") + "'" +
+                "," + opu.matura_m_i + " = '" + p.matura_m_i.Replace("'", "''") + "'" +
+                "," + opu.matura_gv + " = '" + p.matura_gv.Replace("'", "''") + "'" +
+                "," + opu.matura_abmormal + " = '" + p.matura_abmormal.Replace("'", "''") + "'" +
+                "," + opu.matura_dead + " = '" + p.matura_dead.Replace("'", "''") + "'" +
+                "," + opu.matura_no_of_opu + " = '" + p.matura_no_of_opu + "'" +
+                "," + opu.matura_post_mat + " = '" + p.matura_post_mat + "'" +
+                
+                "Where " + opu.pkField + "='" + p.opu_id + "'"
+                ;
+
+            try
+            {
+                re = conn.ExecuteNonQuery(conn.conn, sql);
+            }
+            catch (Exception ex)
+            {
+                sql = ex.Message + " " + ex.InnerException;
+            }
+
+            return re;
+        }
+        public String updateFertili(LabOpu p, String userId)
+        {
+            String re = "";
+            String sql = "";
+            int chk = 0;
+
+            chkNull(p);
+            sql = "Update " + opu.table + " Set " +
+                
+                " " + opu.fertili_date + " = '" + p.fertili_date.Replace("'", "''") + "'" +
+                "," + opu.fertili_2_pn + " = '" + p.fertili_2_pn.Replace("'", "''") + "'" +
+                "," + opu.fertili_1_pn + " = '" + p.fertili_1_pn.Replace("'", "''") + "'" +
+                "," + opu.fertili_3_pn + " = '" + p.fertili_3_pn.Replace("'", "''") + "'" +
+                "," + opu.fertili_4_pn + " = '" + p.fertili_4_pn.Replace("'", "''") + "'" +
+                "," + opu.fertili_no_pn + " = '" + p.fertili_no_pn.Replace("'", "''") + "'" +
+                "," + opu.fertili_dead + " = '" + p.fertili_dead + "'" +
+                //"," + opu.matura_post_mat + " = '" + p.matura_post_mat + "'" +
+                
+                "Where " + opu.pkField + "='" + p.opu_id + "'"
+                ;
+
+            try
+            {
+                re = conn.ExecuteNonQuery(conn.conn, sql);
+            }
+            catch (Exception ex)
+            {
+                sql = ex.Message + " " + ex.InnerException;
+            }
+
+            return re;
+        }
+        public String updateSperm(LabOpu p, String userId)
+        {
+            String re = "";
+            String sql = "";
+            int chk = 0;
+
+            chkNull(p);
+            sql = "Update " + opu.table + " Set " +
+
+                " " + opu.sperm_date + " = '" + p.sperm_date.Replace("'", "''") + "'" +
+                "," + opu.sperm_volume + " = '" + p.sperm_volume.Replace("'", "''") + "'" +
+                "," + opu.sperm_count + " = '" + p.sperm_count.Replace("'", "''") + "'" +
+                "," + opu.sperm_count_total + " = '" + p.sperm_count_total.Replace("'", "''") + "'" +
+                "," + opu.sperm_motile + " = '" + p.sperm_motile.Replace("'", "''") + "'" +
+                "," + opu.sperm_motile_total + " = '" + p.sperm_motile_total.Replace("'", "''") + "'" +
+                "," + opu.sperm_motility + " = '" + p.sperm_motility + "'" +
+                "," + opu.sperm_fresh_sperm + " = '" + p.sperm_fresh_sperm + "'" +
+                "," + opu.sperm_frozen_sperm + " = '" + p.sperm_frozen_sperm + "'" +
+                "Where " + opu.pkField + "='" + p.opu_id + "'"
+                ;
+
+            try
+            {
+                re = conn.ExecuteNonQuery(conn.conn, sql);
+            }
+            catch (Exception ex)
+            {
+                sql = ex.Message + " " + ex.InnerException;
+            }
+
+            return re;
+        }
+        public String updateEmbryoEt(LabOpu p, String userId)
+        {
+            String re = "";
+            String sql = "";
+            int chk = 0;
+
+            chkNull(p);
+            sql = "Update " + opu.table + " Set " +
+
+                " " + opu.embryo_for_et_no_of_et + " = '" + p.embryo_for_et_no_of_et.Replace("'", "''") + "'" +
+                "," + opu.embryo_for_et_day + " = '" + p.embryo_for_et_day.Replace("'", "''") + "'" +
+                "," + opu.embryo_for_et_date + " = '" + p.embryo_for_et_date.Replace("'", "''") + "'" +
+                "," + opu.embryo_for_et_assisted + " = '" + p.embryo_for_et_assisted.Replace("'", "''") + "'" +
+                "," + opu.embryo_for_et_volume + " = '" + p.embryo_for_et_volume.Replace("'", "''") + "'" +
+                "," + opu.embryo_for_et_catheter + " = '" + p.embryo_for_et_catheter.Replace("'", "''") + "'" +
+                "," + opu.embryo_for_et_doctor + " = '" + p.embryo_for_et_doctor + "'" +
+                "," + opu.embryo_for_et_embryologist_id + " = '" + p.embryo_for_et_embryologist_id + "'" +
+                "," + opu.embryologist_approve_id + " = '" + p.embryologist_approve_id + "'" +
+                "," + opu.embryo_for_et_number_of_transfer + " = '" + p.embryo_for_et_number_of_transfer + "'" +
+                "," + opu.embryo_for_et_number_of_freeze + " = '" + p.embryo_for_et_number_of_freeze + "'" +
+                "," + opu.embryo_for_et_number_of_discard + " = '" + p.embryo_for_et_number_of_discard + "'" +
+                "," + opu.embryologist_report_id + " = '" + p.embryologist_report_id + "'" +
+                "Where " + opu.pkField + "='" + p.opu_id + "'"
+                ;
+
+            try
+            {
+                re = conn.ExecuteNonQuery(conn.conn, sql);
+            }
+            catch (Exception ex)
+            {
+                sql = ex.Message + " " + ex.InnerException;
+            }
+
+            return re;
+        }
+        public String updateEmbryoFreezDay1(LabOpu p, String userId)
+        {
+            String re = "";
+            String sql = "";
+            int chk = 0;
+
+            chkNull(p);
+            sql = "Update " + opu.table + " Set " +
+
+                " " + opu.embryo_freez_day_1 + " = '" + p.embryo_freez_day_1.Replace("'", "''") + "'" +
+                "," + opu.embryo_freez_date_1 + " = '" + p.embryo_freez_date_1.Replace("'", "''") + "'" +
+                "," + opu.embryo_freez_stage_1 + " = '" + p.embryo_freez_stage_1.Replace("'", "''") + "'" +
+                "," + opu.embryo_freez_no_og_1 + " = '" + p.embryo_freez_no_og_1.Replace("'", "''") + "'" +
+                "," + opu.embryo_freez_no_of_straw_1 + " = '" + p.embryo_freez_no_of_straw_1.Replace("'", "''") + "'" +
+                "," + opu.embryo_freez_position_1 + " = '" + p.embryo_freez_position_1.Replace("'", "''") + "'" +
+                "," + opu.embryo_freez_mothod_1 + " = '" + p.embryo_freez_mothod_1.Replace("'", "''") + "'" +
+                "," + opu.embryo_freez_freeze_media_1 + " = '" + p.embryo_freez_freeze_media_1 + "'" +
+
+                "Where " + opu.pkField + "='" + p.opu_id + "'"
+                ;
+
+            try
+            {
+                re = conn.ExecuteNonQuery(conn.conn, sql);
+            }
+            catch (Exception ex)
+            {
+                sql = ex.Message + " " + ex.InnerException;
+            }
+
+            return re;
+        }
+        public String updateEmbryoFreezDay0(LabOpu p, String userId)
+        {
+            String re = "";
+            String sql = "";
+            int chk = 0;
+
+            chkNull(p);
+            sql = "Update " + opu.table + " Set " +
+
+                " " + opu.embryo_freez_day_0 + " = '" + p.embryo_freez_day_0.Replace("'", "''") + "'" +
+                "," + opu.embryo_freez_date_0 + " = '" + p.embryo_freez_date_0.Replace("'", "''") + "'" +
+                "," + opu.embryo_freez_stage_0 + " = '" + p.embryo_freez_stage_0.Replace("'", "''") + "'" +
+                "," + opu.embryo_freez_no_og_0 + " = '" + p.embryo_freez_no_og_0.Replace("'", "''") + "'" +
+                "," + opu.embryo_freez_no_of_straw_0 + " = '" + p.embryo_freez_no_of_straw_0.Replace("'", "''") + "'" +
+                "," + opu.embryo_freez_position_0 + " = '" + p.embryo_freez_position_0.Replace("'", "''") + "'" +
+                "," + opu.embryo_freez_mothod_0 + " = '" + p.embryo_freez_mothod_0.Replace("'", "''") + "'" +
+                "," + opu.embryo_freez_freeze_media_0 + " = '" + p.embryo_freez_freeze_media_0 + "'" +
+                
+                "Where " + opu.pkField + "='" + p.opu_id + "'"
+                ;
+
+            try
+            {
+                re = conn.ExecuteNonQuery(conn.conn, sql);
+            }
+            catch (Exception ex)
+            {
+                sql = ex.Message + " " + ex.InnerException;
+            }
+
+            return re;
+        }
+        public LabOpu setLabOPU(DataTable dt)
+        {
+            LabOpu opu1 = new LabOpu();
+            if (dt.Rows.Count > 0)
+            {
+                //lbReq1.req_id = dt.Rows[0][lbReq.req_id].ToString();
+                opu1.opu_id = dt.Rows[0][opu.opu_id].ToString();
+                opu1.opu_code = dt.Rows[0][opu.opu_code].ToString();
+                opu1.embryo_freez_stage = dt.Rows[0][opu.embryo_freez_stage].ToString();
+                opu1.embryoid_freez_position = dt.Rows[0][opu.embryoid_freez_position].ToString();
+                opu1.hn_male = dt.Rows[0][opu.hn_male].ToString();
+                opu1.hn_female = dt.Rows[0][opu.hn_female].ToString();
+                opu1.name_male = dt.Rows[0][opu.name_male].ToString();
+                opu1.name_female = dt.Rows[0][opu.name_female].ToString();
+                opu1.dob_male = dt.Rows[0][opu.dob_male].ToString();
+                opu1.dob_female = dt.Rows[0][opu.dob_female].ToString();
+                opu1.doctor_id = dt.Rows[0][opu.doctor_id].ToString();
+                opu1.proce_id = dt.Rows[0][opu.proce_id].ToString();
+                opu1.opu_date = dt.Rows[0][opu.opu_date].ToString();
+                //opu1.no_of_opu = dt.Rows[0][opu.no_of_opu].ToString();
+                opu1.matura_date = dt.Rows[0][opu.matura_date].ToString();
+                opu1.matura_m_ii = dt.Rows[0][opu.matura_m_ii].ToString();
+                opu1.matura_m_i = dt.Rows[0][opu.matura_m_i].ToString();
+                opu1.matura_gv = dt.Rows[0][opu.matura_gv].ToString();
+                opu1.matura_abmormal = dt.Rows[0][opu.matura_abmormal].ToString();
+                opu1.matura_dead = dt.Rows[0][opu.matura_dead].ToString();
+                opu1.fertili_date = dt.Rows[0][opu.fertili_date].ToString();
+                opu1.fertili_2_pn = dt.Rows[0][opu.fertili_2_pn].ToString();
+                opu1.fertili_1_pn = dt.Rows[0][opu.fertili_1_pn].ToString();
+                opu1.fertili_3_pn = dt.Rows[0][opu.fertili_3_pn].ToString();
+                opu1.fertili_4_pn = dt.Rows[0][opu.fertili_4_pn].ToString();
+                opu1.fertili_no_pn = dt.Rows[0][opu.fertili_no_pn].ToString();
+                opu1.fertili_dead = dt.Rows[0][opu.fertili_dead].ToString();
+                opu1.sperm_date = dt.Rows[0][opu.sperm_date].ToString();
+                opu1.sperm_volume = dt.Rows[0][opu.sperm_volume].ToString();
+                opu1.sperm_count = dt.Rows[0][opu.sperm_count].ToString();
+                opu1.sperm_count_total = dt.Rows[0][opu.sperm_count_total].ToString();
+                opu1.sperm_motile = dt.Rows[0][opu.sperm_motile].ToString();
+                opu1.sperm_motile_total = dt.Rows[0][opu.sperm_motile_total].ToString();
+                opu1.sperm_motility = dt.Rows[0][opu.sperm_motility].ToString();
+                opu1.sperm_fresh_sperm = dt.Rows[0][opu.sperm_fresh_sperm].ToString();
+                opu1.sperm_frozen_sperm = dt.Rows[0][opu.sperm_frozen_sperm].ToString();
+                opu1.embryo_freez_date_0 = dt.Rows[0][opu.embryo_freez_date_0].ToString();
+                opu1.embryo_freez_day_0 = dt.Rows[0][opu.embryo_freez_day_0].ToString();
+                opu1.embryo_freez_no_og_0 = dt.Rows[0][opu.embryo_freez_no_og_0].ToString();
+                opu1.embryo_freez_no_of_straw_0 = dt.Rows[0][opu.embryo_freez_no_of_straw_0].ToString();
+                opu1.embryo_freez_mothod_0 = dt.Rows[0][opu.embryo_freez_mothod_0].ToString();
+                opu1.embryo_freez_freeze_media_0 = dt.Rows[0][opu.embryo_freez_freeze_media_0].ToString();
+                opu1.embryo_freez_position_0 = dt.Rows[0][opu.embryo_freez_position_0].ToString();
+                opu1.embryo_freez_stage_0 = dt.Rows[0][opu.embryo_freez_stage_0].ToString();
+
+                opu1.embryo_for_et_no_of_et = dt.Rows[0][opu.embryo_for_et_no_of_et].ToString();
+                opu1.embryo_for_et_day = dt.Rows[0][opu.embryo_for_et_day].ToString();
+                opu1.embryo_for_et_date = dt.Rows[0][opu.embryo_for_et_date].ToString();
+                opu1.embryo_for_et_assisted = dt.Rows[0][opu.embryo_for_et_assisted].ToString();
+                opu1.embryo_for_et_remark = dt.Rows[0][opu.embryo_for_et_remark].ToString();
+                opu1.embryo_for_et_volume = dt.Rows[0][opu.embryo_for_et_volume].ToString();
+                opu1.embryo_for_et_catheter = dt.Rows[0][opu.embryo_for_et_catheter].ToString();
+                opu1.embryo_for_et_doctor = dt.Rows[0][opu.embryo_for_et_doctor].ToString();
+                opu1.embryo_for_et_embryologist_id = dt.Rows[0][opu.embryo_for_et_embryologist_id].ToString();
+                opu1.embryo_for_et_number_of_transfer = dt.Rows[0][opu.embryo_for_et_number_of_transfer].ToString();
+                opu1.embryo_for_et_number_of_freeze = dt.Rows[0][opu.embryo_for_et_number_of_freeze].ToString();
+                opu1.embryo_for_et_number_of_discard = dt.Rows[0][opu.embryo_for_et_number_of_discard].ToString();
+                opu1.embryologist_report_id = dt.Rows[0][opu.embryologist_report_id].ToString();
+                opu1.embryologist_approve_id = dt.Rows[0][opu.embryologist_approve_id].ToString();
+                opu1.date_create = dt.Rows[0][opu.date_create].ToString();
+                opu1.date_modi = dt.Rows[0][opu.date_modi].ToString();
+                opu1.date_cancel = dt.Rows[0][opu.date_cancel].ToString();
+                opu1.user_create = dt.Rows[0][opu.user_create].ToString();
+                opu1.user_modi = dt.Rows[0][opu.user_modi].ToString();
+                opu1.user_cancel = dt.Rows[0][opu.user_cancel].ToString();
+                opu1.active = dt.Rows[0][opu.active].ToString();
+                opu1.remark = dt.Rows[0][opu.remark].ToString();
+
+                opu1.embryo_freez_date_1 = dt.Rows[0][opu.embryo_freez_date_1].ToString();
+                opu1.embryo_freez_day_1 = dt.Rows[0][opu.embryo_freez_day_1].ToString();
+                opu1.embryo_freez_no_og_1 = dt.Rows[0][opu.embryo_freez_no_og_1].ToString();
+                opu1.embryo_freez_no_of_straw_1 = dt.Rows[0][opu.embryo_freez_no_of_straw_1].ToString();
+                opu1.embryo_freez_mothod_1 = dt.Rows[0][opu.embryo_freez_mothod_1].ToString();
+                opu1.embryo_freez_freeze_media_1 = dt.Rows[0][opu.embryo_freez_freeze_media_1].ToString();
+                opu1.embryo_freez_position_1 = dt.Rows[0][opu.embryo_freez_position_1].ToString();
+                opu1.embryo_freez_stage_1 = dt.Rows[0][opu.embryo_freez_stage_1].ToString();
+
+                opu1.embryo_freez_date_2 = dt.Rows[0][opu.embryo_freez_date_2].ToString();
+                opu1.embryo_freez_day_2 = dt.Rows[0][opu.embryo_freez_day_2].ToString();
+                opu1.embryo_freez_no_og_2 = dt.Rows[0][opu.embryo_freez_no_og_2].ToString();
+                opu1.embryo_freez_no_of_straw_2 = dt.Rows[0][opu.embryo_freez_no_of_straw_2].ToString();
+                opu1.embryo_freez_mothod_2 = dt.Rows[0][opu.embryo_freez_mothod_2].ToString();
+                opu1.embryo_freez_freeze_media_2 = dt.Rows[0][opu.embryo_freez_freeze_media_2].ToString();
+                opu1.embryo_freez_position_2 = dt.Rows[0][opu.embryo_freez_position_2].ToString();
+                opu1.embryo_freez_stage_2 = dt.Rows[0][opu.embryo_freez_stage_2].ToString();
+
+                opu1.embryo_freez_date_3 = dt.Rows[0][opu.embryo_freez_date_3].ToString();
+                opu1.embryo_freez_day_3 = dt.Rows[0][opu.embryo_freez_day_3].ToString();
+                opu1.embryo_freez_no_og_3 = dt.Rows[0][opu.embryo_freez_no_og_3].ToString();
+                opu1.embryo_freez_no_of_straw_3 = dt.Rows[0][opu.embryo_freez_no_of_straw_3].ToString();
+                opu1.embryo_freez_mothod_3 = dt.Rows[0][opu.embryo_freez_mothod_3].ToString();
+                opu1.embryo_freez_freeze_media_3 = dt.Rows[0][opu.embryo_freez_freeze_media_3].ToString();
+                opu1.embryo_freez_position_3 = dt.Rows[0][opu.embryo_freez_position_3].ToString();
+                opu1.embryo_freez_stage_3 = dt.Rows[0][opu.embryo_freez_stage_3].ToString();
+
+                opu1.embryo_freez_date_4 = dt.Rows[0][opu.embryo_freez_date_4].ToString();
+                opu1.embryo_freez_day_4 = dt.Rows[0][opu.embryo_freez_day_4].ToString();
+                opu1.embryo_freez_no_og_4 = dt.Rows[0][opu.embryo_freez_no_og_4].ToString();
+                opu1.embryo_freez_no_of_straw_4 = dt.Rows[0][opu.embryo_freez_no_of_straw_4].ToString();
+                opu1.embryo_freez_mothod_4 = dt.Rows[0][opu.embryo_freez_mothod_4].ToString();
+                opu1.embryo_freez_freeze_media_4 = dt.Rows[0][opu.embryo_freez_freeze_media_4].ToString();
+                opu1.embryo_freez_position_4 = dt.Rows[0][opu.embryo_freez_position_4].ToString();
+                opu1.embryo_freez_stage_4 = dt.Rows[0][opu.embryo_freez_stage_4].ToString();
+
+                opu1.embryo_freez_date_5 = dt.Rows[0][opu.embryo_freez_date_5].ToString();
+                opu1.embryo_freez_day_5 = dt.Rows[0][opu.embryo_freez_day_5].ToString();
+                opu1.embryo_freez_no_og_5 = dt.Rows[0][opu.embryo_freez_no_og_5].ToString();
+                opu1.embryo_freez_no_of_straw_5 = dt.Rows[0][opu.embryo_freez_no_of_straw_5].ToString();
+                opu1.embryo_freez_mothod_5 = dt.Rows[0][opu.embryo_freez_mothod_5].ToString();
+                opu1.embryo_freez_freeze_media_5 = dt.Rows[0][opu.embryo_freez_freeze_media_5].ToString();
+                opu1.embryo_freez_position_5 = dt.Rows[0][opu.embryo_freez_position_5].ToString();
+                opu1.embryo_freez_stage_5 = dt.Rows[0][opu.embryo_freez_stage_5].ToString();
+
+                opu1.embryo_freez_date_6 = dt.Rows[0][opu.embryo_freez_date_6].ToString();
+                opu1.embryo_freez_day_6 = dt.Rows[0][opu.embryo_freez_day_6].ToString();
+                opu1.embryo_freez_no_og_6 = dt.Rows[0][opu.embryo_freez_no_og_6].ToString();
+                opu1.embryo_freez_no_of_straw_6 = dt.Rows[0][opu.embryo_freez_no_of_straw_6].ToString();
+                opu1.embryo_freez_mothod_6 = dt.Rows[0][opu.embryo_freez_mothod_6].ToString();
+                opu1.embryo_freez_freeze_media_6 = dt.Rows[0][opu.embryo_freez_freeze_media_6].ToString();
+                opu1.embryo_freez_position_6 = dt.Rows[0][opu.embryo_freez_position_6].ToString();
+                opu1.embryo_freez_stage_6 = dt.Rows[0][opu.embryo_freez_stage_6].ToString();
+                opu1.req_id = dt.Rows[0][opu.req_id].ToString();
+                opu1.status_opu = dt.Rows[0][opu.status_opu].ToString();
+                opu1.doctor_name = dt.Rows[0]["Name"].ToString();
+                opu1.proce_name = dt.Rows[0]["proce_name_t"].ToString();
+
+                opu1.matura_post_mat = dt.Rows[0][opu.matura_post_mat].ToString();
+                opu1.matura_no_of_opu = dt.Rows[0][opu.matura_no_of_opu].ToString();
+            }
+            else
+            {
+                opu1.opu_id = "";
+                opu1.opu_code = "";
+                opu1.embryo_freez_stage = "";
+                opu1.embryoid_freez_position = "";
+                opu1.hn_male = "";
+                opu1.hn_female = "";
+                opu1.name_male = "";
+                opu1.name_female = "";
+                opu1.dob_male = "";
+                opu1.dob_female = "";
+                opu1.doctor_id = "";
+                opu1.proce_id = "";
+                opu1.opu_date = "";
+                //opu1.no_of_opu = "";
+                opu1.matura_date = "";
+                opu1.matura_m_ii = "";
+                opu1.matura_m_i = "";
+                opu1.matura_gv = "";
+                opu1.matura_abmormal = "";
+                opu1.matura_dead = "";
+                opu1.fertili_date = "";
+                opu1.fertili_2_pn = "";
+                opu1.fertili_1_pn = "";
+                opu1.fertili_3_pn = "";
+                opu1.fertili_4_pn = "";
+                opu1.fertili_no_pn = "";
+                opu1.fertili_dead = "";
+                opu1.sperm_date = "";
+                opu1.sperm_volume = "";
+                opu1.sperm_count = "";
+                opu1.sperm_count_total = "";
+                opu1.sperm_motile = "";
+                opu1.sperm_motile_total = "";
+                opu1.sperm_motility = "";
+                opu1.sperm_fresh_sperm = "";
+                opu1.sperm_frozen_sperm = "";
+                opu1.embryo_freez_date_0 = "";
+                opu1.embryo_freez_day_0 = "";
+                opu1.embryo_freez_no_og_0 = "";
+                opu1.embryo_freez_no_of_straw_0 = "";
+                opu1.embryo_freez_mothod_0 = "";
+                opu1.embryo_freez_freeze_media_0 = "";
+                opu1.embryo_freez_position_0 = "";
+                opu1.embryo_freez_stage_0 = "";
+
+                opu1.embryo_for_et_no_of_et = "";
+                opu1.embryo_for_et_day = "";
+                opu1.embryo_for_et_date = "";
+                opu1.embryo_for_et_assisted = "";
+                opu1.embryo_for_et_remark = "";
+                opu1.embryo_for_et_volume = "";
+                opu1.embryo_for_et_catheter = "";
+                opu1.embryo_for_et_doctor = "";
+                opu1.embryo_for_et_embryologist_id = "";
+                opu1.embryo_for_et_number_of_transfer = "";
+                opu1.embryo_for_et_number_of_freeze = "";
+                opu1.embryo_for_et_number_of_discard = "";
+                opu1.embryologist_report_id = "";
+                opu1.embryologist_approve_id = "";
+                opu1.date_create = "";
+                opu1.date_modi = "";
+                opu1.date_cancel = "";
+                opu1.user_create = "";
+                opu1.user_modi = "";
+                opu1.user_cancel = "";
+                opu1.active = "";
+                opu1.remark = "";
+
+                opu1.embryo_freez_date_1 = "";
+                opu1.embryo_freez_day_1 = "";
+                opu1.embryo_freez_no_og_1 = "";
+                opu1.embryo_freez_no_of_straw_1 = "";
+                opu1.embryo_freez_mothod_1 = "";
+                opu1.embryo_freez_freeze_media_1 = "";
+                opu1.embryo_freez_position_1 = "";
+                opu1.embryo_freez_stage_1 = "";
+
+                opu1.embryo_freez_date_2 = "";
+                opu1.embryo_freez_day_2 = "";
+                opu1.embryo_freez_no_og_2 = "";
+                opu1.embryo_freez_no_of_straw_2 = "";
+                opu1.embryo_freez_mothod_2 = "";
+                opu1.embryo_freez_freeze_media_2 = "";
+                opu1.embryo_freez_position_2 = "";
+                opu1.embryo_freez_stage_2 = "";
+
+                opu1.embryo_freez_date_3 = "";
+                opu1.embryo_freez_day_3 = "";
+                opu1.embryo_freez_no_og_3 = "";
+                opu1.embryo_freez_no_of_straw_3 = "";
+                opu1.embryo_freez_mothod_3 = "";
+                opu1.embryo_freez_freeze_media_3 = "";
+                opu1.embryo_freez_position_3 = "";
+                opu1.embryo_freez_stage_3 = "";
+
+                opu1.embryo_freez_date_4 = "";
+                opu1.embryo_freez_day_4 = "";
+                opu1.embryo_freez_no_og_4 = "";
+                opu1.embryo_freez_no_of_straw_4 = "";
+                opu1.embryo_freez_mothod_4 = "";
+                opu1.embryo_freez_freeze_media_4 = "";
+                opu1.embryo_freez_position_4 = "";
+                opu1.embryo_freez_stage_4 = "";
+
+                opu1.embryo_freez_date_5 = "";
+                opu1.embryo_freez_day_5 = "";
+                opu1.embryo_freez_no_og_5 = "";
+                opu1.embryo_freez_no_of_straw_5 = "";
+                opu1.embryo_freez_mothod_5 = "";
+                opu1.embryo_freez_freeze_media_5 = "";
+                opu1.embryo_freez_position_5 = "";
+                opu1.embryo_freez_stage_5 = "";
+
+                opu1.embryo_freez_date_6 = "";
+                opu1.embryo_freez_day_6 = "";
+                opu1.embryo_freez_no_og_6 = "";
+                opu1.embryo_freez_no_of_straw_6 = "";
+                opu1.embryo_freez_mothod_6 = "";
+                opu1.embryo_freez_freeze_media_6 = "";
+                opu1.embryo_freez_position_6 = "";
+                opu1.embryo_freez_stage_6 = "";
+                opu1.req_id = "";
+                opu1.status_opu = "";
+                opu1.doctor_name = "";
+                opu1.proce_name = "";
+                opu1.matura_no_of_opu = "";
+                opu1.matura_post_mat = "";
+            }
+
+            return opu1;
         }
     }
 }

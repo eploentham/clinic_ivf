@@ -4,6 +4,7 @@ using C1.Win.C1SuperTooltip;
 using C1.Win.C1Themes;
 using clinic_ivf.control;
 using clinic_ivf.object1;
+using clinic_ivf.Properties;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -21,6 +22,7 @@ namespace clinic_ivf.gui
         IvfControl ic;
         String reqId = "", opuId="";
         LabRequest lbReq;
+        LabOpu opu;
 
         Font fEdit, fEditB;
         Color bg, fc;
@@ -55,14 +57,27 @@ namespace clinic_ivf.gui
 
             stt = new C1SuperTooltip();
             sep = new C1SuperErrorProvider();
+            opu = new LabOpu();
+            lbReq = new LabRequest();
 
             ic.ivfDB.proceDB.setCboLabProce(cboOpuProce, objdb.LabProcedureDB.StatusLab.OPUProcedure);
-            ic.setCboDay(CboEmbryoDay, "");
+            ic.ivfDB.dtrOldDB.setCboDoctor(cboDoctor, "");
+            ic.ivfDB.stfDB.setCbEmbryologist(cboEmbryoForEtEmbryologist, "");
+            ic.ivfDB.stfDB.setCbEmbryologist(cboEmbryologistAppv, "");
+            ic.ivfDB.stfDB.setCbEmbryologist(cboEmbryologistReport, "");
+            ic.setCboDay(CboEmbryoDay0, "");
+            ic.setCboDay(CboEmbryoDay1, "");
 
             setControl();
             //stt.BackgroundGradient = C1.Win.C1SuperTooltip.BackgroundGradient.Gold;
             
             btnSave.Click += BtnSave_Click;
+            btnSaveMatura.Click += BtnSaveMatura_Click;
+            btnSaveFertili.Click += BtnSaveFertili_Click;
+            btnSaveSperm.Click += BtnSaveSperm_Click;
+            btnSaveEmbryoEt.Click += BtnSaveEmbryoEt_Click;
+            btnSaveEmbryoFreezDay0.Click += BtnSaveEmbryoFreezDay0_Click;
+            btnSaveEmbryoFreezDay1.Click += BtnSaveEmbryoFreezDay1_Click;
 
             setFocusColor();
             initGrfDay2();
@@ -74,6 +89,157 @@ namespace clinic_ivf.gui
             setGrfDay5();
             setGrfDay6();
         }
+
+        private void BtnSaveEmbryoFreezDay1_Click(object sender, EventArgs e)
+        {
+            //throw new NotImplementedException();
+            if (MessageBox.Show("ต้องการ บันทึกช้อมูล Embryo for ET ", "", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == DialogResult.OK)
+            {
+                ic.cStf.staff_id = "";
+                FrmPasswordConfirm frm = new FrmPasswordConfirm(ic);
+                frm.ShowDialog(this);
+                if (!ic.cStf.staff_id.Equals(""))
+                {
+                    setOPUEmbryoFreezDay1();
+                    String re = ic.ivfDB.opuDB.updateEmbryoFreezDay1(opu, ic.user.staff_id);
+                    long chk1 = 0;
+                    if (long.TryParse(re, out chk1))
+                    {
+                        btnSave.Image = Resources.accept_database24;
+                    }
+                    else
+                    {
+                        btnSave.Image = Resources.accept_database24;
+                    }
+                }
+            }
+        }
+
+        private void BtnSaveEmbryoFreezDay0_Click(object sender, EventArgs e)
+        {
+            //throw new NotImplementedException();
+            if (MessageBox.Show("ต้องการ บันทึกช้อมูล Embryo for ET ", "", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == DialogResult.OK)
+            {
+                ic.cStf.staff_id = "";
+                FrmPasswordConfirm frm = new FrmPasswordConfirm(ic);
+                frm.ShowDialog(this);
+                if (!ic.cStf.staff_id.Equals(""))
+                {
+                    setOPUEmbryoFreezDay0();
+                    String re = ic.ivfDB.opuDB.updateEmbryoFreezDay0(opu, ic.user.staff_id);
+                    long chk1 = 0;
+                    if (long.TryParse(re, out chk1))
+                    {
+                        btnSave.Image = Resources.accept_database24;
+                    }
+                    else
+                    {
+                        btnSave.Image = Resources.accept_database24;
+                    }
+                }
+            }
+        }
+
+        private void BtnSaveEmbryoEt_Click(object sender, EventArgs e)
+        {
+            //throw new NotImplementedException();
+            if (MessageBox.Show("ต้องการ บันทึกช้อมูล Embryo for ET ", "", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == DialogResult.OK)
+            {
+                ic.cStf.staff_id = "";
+                FrmPasswordConfirm frm = new FrmPasswordConfirm(ic);
+                frm.ShowDialog(this);
+                if (!ic.cStf.staff_id.Equals(""))
+                {
+                    setOPUEmbryeEt();
+                    String re = ic.ivfDB.opuDB.updateEmbryoEt(opu, ic.user.staff_id);
+                    long chk1 = 0;
+                    if (long.TryParse(re, out chk1))
+                    {
+                        btnSave.Image = Resources.accept_database24;
+                    }
+                    else
+                    {
+                        btnSave.Image = Resources.accept_database24;
+                    }
+                }
+            }
+        }
+
+        private void BtnSaveSperm_Click(object sender, EventArgs e)
+        {
+            //throw new NotImplementedException();
+            if (MessageBox.Show("ต้องการ บันทึกช้อมูล Sperm Preparation ", "", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == DialogResult.OK)
+            {
+                ic.cStf.staff_id = "";
+                FrmPasswordConfirm frm = new FrmPasswordConfirm(ic);
+                frm.ShowDialog(this);
+                if (!ic.cStf.staff_id.Equals(""))
+                {
+                    setOPUSperm();
+                    String re = ic.ivfDB.opuDB.updateSperm(opu, ic.user.staff_id);
+                    long chk1 = 0;
+                    if (long.TryParse(re, out chk1))
+                    {
+                        btnSave.Image = Resources.accept_database24;
+                    }
+                    else
+                    {
+                        btnSave.Image = Resources.accept_database24;
+                    }
+                }
+            }
+        }
+
+        private void BtnSaveFertili_Click(object sender, EventArgs e)
+        {
+            //throw new NotImplementedException();
+            if (MessageBox.Show("ต้องการ บันทึกช้อมูล Fertilization ", "", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == DialogResult.OK)
+            {
+                ic.cStf.staff_id = "";
+                FrmPasswordConfirm frm = new FrmPasswordConfirm(ic);
+                frm.ShowDialog(this);
+                if (!ic.cStf.staff_id.Equals(""))
+                {
+                    setOPUFertilization();
+                    String re = ic.ivfDB.opuDB.updateFertili(opu, ic.user.staff_id);
+                    long chk1 = 0;
+                    if (long.TryParse(re, out chk1))
+                    {
+                        btnSave.Image = Resources.accept_database24;
+                    }
+                    else
+                    {
+                        btnSave.Image = Resources.accept_database24;
+                    }
+                }
+            }
+        }
+
+        private void BtnSaveMatura_Click(object sender, EventArgs e)
+        {
+            //throw new NotImplementedException();
+            if (MessageBox.Show("ต้องการ บันทึกช้อมูล Maturation ", "", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == DialogResult.OK)
+            {
+                ic.cStf.staff_id = "";
+                FrmPasswordConfirm frm = new FrmPasswordConfirm(ic);
+                frm.ShowDialog(this);
+                if (!ic.cStf.staff_id.Equals(""))
+                {
+                    setOPUMatura();
+                    String re = ic.ivfDB.opuDB.updateMatura(opu, ic.user.staff_id);
+                    long chk1 = 0;
+                    if (long.TryParse(re, out chk1))
+                    {
+                        btnSave.Image = Resources.accept_database24;
+                    }
+                    else
+                    {
+                        btnSave.Image = Resources.accept_database24;
+                    }
+                }
+            }
+        }
+
         private void setFocusColor()
         {
             this.txtHnFeMale.Leave += new System.EventHandler(this.textBox_Leave);
@@ -100,28 +266,287 @@ namespace clinic_ivf.gui
         }
         private void setControl()
         {
-            if (!reqId.Equals(""))
+            try
             {
-                lbReq = ic.ivfDB.lbReqDB.selectByPk1(reqId);
+                if (!reqId.Equals(""))
+                {
+                    lbReq = ic.ivfDB.lbReqDB.selectByPk1(reqId);
 
-                txtHnFeMale.Value = lbReq.hn_female;
-                txtHnMale.Value = lbReq.hn_male;
-                txtNameFeMale.Value = lbReq.name_female;
-                txtNameMale.Value = lbReq.name_male;
-                txtLabReqCode.Value = lbReq.req_code;
+                    txtHnFeMale.Value = lbReq.hn_female;
+                    txtHnMale.Value = lbReq.hn_male;
+                    txtNameFeMale.Value = lbReq.name_female;
+                    txtNameMale.Value = lbReq.name_male;
+                    txtLabReqCode.Value = lbReq.req_code;
+                }
+                else
+                {
+                    opu = ic.ivfDB.opuDB.selectByPk1(opuId);
+                    lbReq = ic.ivfDB.lbReqDB.selectByPk1(opu.req_id);
+
+                    txtID.Value = opu.opu_id;
+                    txtHnFeMale.Value = opu.hn_female;
+                    txtHnMale.Value = opu.hn_male;
+                    txtNameFeMale.Value = opu.name_female;
+                    txtNameMale.Value = opu.name_male;
+                    txtLabReqCode.Value = lbReq.req_code;
+                    txtDobFeMale.Value = opu.dob_female;
+                    txtDobMale.Value = opu.dob_male;
+                    ic.setC1Combo(cboDoctor, opu.doctor_id);
+                    txtOpuDate.Value = opu.opu_date;
+                    ic.setC1Combo(cboOpuProce, opu.proce_id);
+                    txtOpuCode.Value = opu.opu_code;
+
+                    txtMaturaNoofOpu.Value = opu.matura_no_of_opu;
+                    txtMaturaDate.Value = opu.matura_date;
+                    txtMaturaMii.Value = opu.matura_m_ii;
+                    txtMaturaMi.Value = opu.matura_m_i;
+                    txtMaturaGv.Value = opu.matura_gv;
+                    txtMaturaPostMat.Value = opu.matura_post_mat;
+                    txtMaturaAbnor.Value = opu.matura_abmormal;
+                    txtMaturaDead.Value = opu.matura_dead;
+
+                    txtFertiliDate.Value = opu.fertili_date;
+                    txtFertili2Pn.Value = opu.fertili_2_pn;
+                    txtFertili1Pn.Value = opu.fertili_1_pn;
+                    txtFertili3Pn.Value = opu.fertili_3_pn;
+                    txtFertili4Pn.Value = opu.fertili_4_pn;
+                    txtFertiliNoPn.Value = opu.fertili_no_pn;
+                    txtFertiliDead.Value = opu.fertili_dead;
+
+                    txtSpermDate.Value = opu.sperm_date;
+                    txtSpermVol.Value = opu.sperm_volume;
+                    txtSpermCnt.Value = opu.sperm_count;
+                    txtSpermTotalCnt.Value = opu.sperm_count_total;
+                    txtSpermMoti.Value = opu.sperm_motile;
+                    txtSpermMotiTotal.Value = opu.sperm_motile_total;
+                    txtSpermMotility.Value = opu.sperm_motility;
+                    chkSpermFresh.Value = opu.sperm_fresh_sperm.Equals("1") ? true : false;
+                    chkSpermFrozen.Value = opu.sperm_frozen_sperm.Equals("1") ? true : false;
+                    txtEmbryoForEtNO.Value = opu.embryo_for_et_no_of_et;
+                    txtEmbryoForEtDay.Value = opu.embryo_for_et_day;
+                    txtEmbryoForEtDate.Value = opu.embryo_for_et_date;
+                    txtEmbryoForEtAsseted.Value = opu.embryo_for_et_assisted;
+                    txtEmbryoForEtVolume.Value = opu.embryo_for_et_volume;
+                    txtEmbryoForEtCatheter.Value = opu.embryo_for_et_catheter;
+                    txtEmbryoForEtDoctor.Value = opu.embryo_for_et_doctor;
+                    txtEmbryoForEtNumTran.Value = opu.embryo_for_et_number_of_transfer;
+                    txtEmbryoForEtNumFreeze.Value = opu.embryo_for_et_number_of_freeze;
+                    txtEmbryoForEtNumDiscard.Value = opu.embryo_for_et_number_of_discard;
+                    //cboEmbryoForEtEmbryologist.Value = opu.embryo_for_et_embryologist_id;
+                    //cboEmbryologistReport.Value = opu.embryologist_report_id;
+                    //cboEmbryologistAppv.Value = opu.embryologist_approve_id;
+                    ic.setC1Combo(cboEmbryologistAppv, opu.embryologist_approve_id);
+                    ic.setC1Combo(cboEmbryologistReport, opu.embryologist_report_id);
+                    ic.setC1Combo(cboEmbryoForEtEmbryologist, opu.embryo_for_et_embryologist_id);
+                    ic.setC1Combo(CboEmbryoDay0, opu.embryo_freez_day_0);
+                    ic.setC1Combo(CboEmbryoDay1, opu.embryo_freez_day_1);
+                    txtEmbryoFreezDate0.Value = opu.embryo_freez_date_0;
+                    txtEmbryoFreezDate1.Value = opu.embryo_freez_date_1;
+                    txtEmbryoFreezStage0.Value = opu.embryo_freez_stage_0;
+                    txtEmbryoFreezStage1.Value = opu.embryo_freez_stage_1;
+                    txtEmbryoFreezNoOg0.Value = opu.embryo_freez_no_og_0;
+                    txtEmbryoFreezNoOg1.Value = opu.embryo_freez_no_og_1;
+                    txtEmbryoFreezNoStraw0.Value = opu.embryo_freez_no_of_straw_0;
+                    txtEmbryoFreezNoStraw1.Value = opu.embryo_freez_no_of_straw_1;
+                    txtEmbryoFreezPosi0.Value = opu.embryo_freez_position_0;
+                    txtEmbryoFreezPosi1.Value = opu.embryo_freez_position_1;
+                    txtEmbryoFreezMethod0.Value = opu.embryo_freez_mothod_0;
+                    txtEmbryoFreezMethod1.Value = opu.embryo_freez_mothod_1;
+                    txtEmbryoFreezMedia0.Value = opu.embryo_freez_freeze_media_0;
+                    txtEmbryoFreezMedia1.Value = opu.embryo_freez_freeze_media_1;
+
+                    txtRemark.Value = opu.remark;
+                    //CboEmbryoDay.Text = opu.emb
+                }
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(""+ex.Message, "");
+            }
+            
+        }
+        private void setOPU()
+        {
+            opu.opu_id = txtID.Text;
+            opu.hn_female = txtHnFeMale.Text;
+            opu.hn_male = txtHnMale.Text;
+            opu.name_female = txtNameFeMale.Text;
+            opu.name_male = txtNameMale.Text;
+            //lbReq.req_code = txtLabReqCode.Text;
+            opu.dob_female = txtDobFeMale.Text;
+            opu.dob_male = txtDobMale.Text;
+            ComboBoxItem item = new ComboBoxItem();
+            if (cboDoctor.SelectedItem != null)
+            {
+                item = (ComboBoxItem)cboDoctor.SelectedItem;
+                opu.doctor_id = item.Value;
             }
             else
             {
-
+                opu.doctor_id = "0";
             }
+            opu.opu_date = txtOpuDate.Text;
+            if (cboDoctor.SelectedItem != null)
+            {
+                item = (ComboBoxItem)cboOpuProce.SelectedItem;
+                opu.proce_id = item.Value;
+            }
+            else
+            {
+                opu.proce_id = "0";
+            }
+            opu.opu_code = txtOpuCode.Text;
+            opu.remark = txtRemark.Text;
+        }
+        private void setOPUMatura()
+        {
+            opu.opu_id = txtID.Text;
+            opu.matura_no_of_opu = txtMaturaNoofOpu.Text;
+            opu.matura_date = txtMaturaDate.Text;
+            opu.matura_m_ii = txtMaturaMii.Text;
+            opu.matura_m_i = txtMaturaMi.Text;
+            opu.matura_gv = txtMaturaGv.Text;
+            opu.matura_post_mat = txtMaturaPostMat.Text;
+            opu.matura_abmormal = txtMaturaAbnor.Text;            
+            opu.matura_dead = txtMaturaDead.Text;            
+        }
+        private void setOPUFertilization()
+        {
+            opu.opu_id = txtID.Text;
+            opu.fertili_date = txtFertiliDate.Text;
+            opu.fertili_2_pn = txtFertili2Pn.Text;
+            opu.fertili_1_pn = txtFertili1Pn.Text;
+            opu.fertili_3_pn = txtFertili3Pn.Text;
+            opu.fertili_4_pn = txtFertili4Pn.Text;
+            opu.fertili_no_pn = txtFertiliNoPn.Text;
+            opu.fertili_dead = txtFertiliDead.Text;
+            //opu.matura_dead = txtMaturaDead.Text;
+        }
+        private void setOPUSperm()
+        {
+            opu.opu_id = txtID.Text;
+            opu.sperm_date = txtSpermDate.Text;
+            opu.sperm_volume = txtSpermVol.Text;
+            opu.sperm_count = txtSpermCnt.Text;
+            opu.sperm_count_total = txtSpermTotalCnt.Text;
+            opu.sperm_motile = txtSpermMoti.Text;
+            opu.sperm_motile_total = txtSpermMotiTotal.Text;
+            opu.sperm_motility = txtSpermMotility.Text;
+            opu.sperm_fresh_sperm = chkSpermFresh.Checked ? "1" : "0";
+            opu.sperm_frozen_sperm = chkSpermFrozen.Checked ? "1" : "0";
+        }
+        private void setOPUEmbryeEt()
+        {
+            opu.opu_id = txtID.Text;
+            opu.embryo_for_et_no_of_et = txtEmbryoForEtNO.Text;
+            opu.embryo_for_et_day = txtEmbryoForEtDay.Text;
+            opu.embryo_for_et_date = txtEmbryoForEtDate.Text;
+            opu.embryo_for_et_assisted = txtEmbryoForEtAsseted.Text;
+            opu.embryo_for_et_volume = txtEmbryoForEtVolume.Text;
+            opu.embryo_for_et_catheter = txtEmbryoForEtCatheter.Text;
+            opu.embryo_for_et_doctor = txtEmbryoForEtDoctor.Text;
+            ComboBoxItem item = new ComboBoxItem();
+            if (cboEmbryoForEtEmbryologist.SelectedItem != null)
+            {
+                item = (ComboBoxItem)cboEmbryoForEtEmbryologist.SelectedItem;
+                opu.embryo_for_et_embryologist_id = item.Value;
+            }
+            else
+            {
+                opu.embryo_for_et_embryologist_id = "0";
+            }
+            if (cboEmbryologistReport.SelectedItem != null)
+            {
+                item = (ComboBoxItem)cboEmbryologistReport.SelectedItem;
+                opu.embryologist_report_id = item.Value;
+            }
+            else
+            {
+                opu.embryologist_report_id = "0";
+            }
+            if (cboEmbryologistAppv.SelectedItem != null)
+            {
+                item = (ComboBoxItem)cboEmbryologistAppv.SelectedItem;
+                opu.embryologist_approve_id = item.Value;
+            }
+            else
+            {
+                opu.embryologist_approve_id = "0";
+            }
+
+            opu.embryo_for_et_number_of_transfer = txtEmbryoForEtNumTran.Text;
+            opu.embryo_for_et_number_of_freeze = txtEmbryoForEtNumFreeze.Text;
+            opu.embryo_for_et_number_of_discard = txtEmbryoForEtNumDiscard.Text;
+        }
+        private void setOPUEmbryoFreezDay1()
+        {
+            opu.opu_id = txtID.Text;
+            ComboBoxItem item = new ComboBoxItem();
+            if (CboEmbryoDay1.SelectedItem != null)
+            {
+                item = (ComboBoxItem)CboEmbryoDay1.SelectedItem;
+                opu.embryo_freez_day_1 = item.Value;
+            }
+            else
+            {
+                opu.embryo_freez_day_1 = "0";
+            }
+
+            opu.embryo_freez_date_1 = txtEmbryoFreezDate1.Text;
+            opu.embryo_freez_stage_1 = txtEmbryoFreezStage1.Text;
+            opu.embryo_freez_no_og_1 = txtEmbryoFreezNoOg1.Text;
+            opu.embryo_freez_no_of_straw_1 = txtEmbryoFreezNoStraw1.Text;
+            opu.embryo_freez_position_1 = txtEmbryoFreezPosi1.Text;
+            opu.embryo_freez_mothod_1 = txtEmbryoFreezMethod1.Text;
+            opu.embryo_freez_freeze_media_1 = txtEmbryoFreezMedia1.Text;
+            //opu.matura_dead = txtMaturaDead.Text;
+        }
+        private void setOPUEmbryoFreezDay0()
+        {
+            opu.opu_id = txtID.Text;
+            ComboBoxItem item = new ComboBoxItem();
+            if (CboEmbryoDay0.SelectedItem != null)
+            {
+                item = (ComboBoxItem)CboEmbryoDay0.SelectedItem;
+                opu.embryo_freez_day_0 = item.Value;
+            }
+            else
+            {
+                opu.embryo_freez_day_0 = "0";
+            }
+
+            opu.embryo_freez_date_0 = txtEmbryoFreezDate0.Text;
+            opu.embryo_freez_stage_0 = txtEmbryoFreezStage0.Text;
+            opu.embryo_freez_no_og_0 = txtEmbryoFreezNoOg0.Text;
+            opu.embryo_freez_no_of_straw_0 = txtEmbryoFreezNoStraw0.Text;
+            opu.embryo_freez_position_0 = txtEmbryoFreezPosi0.Text;
+            opu.embryo_freez_mothod_0 = txtEmbryoFreezMethod0.Text;
+            opu.embryo_freez_freeze_media_0 = txtEmbryoFreezMedia0.Text;
+            //opu.matura_dead = txtMaturaDead.Text;
         }
         private void BtnSave_Click(object sender, EventArgs e)
         {
             //throw new NotImplementedException();
             if (MessageBox.Show("ต้องการ บันทึกช้อมูล ", "", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == DialogResult.OK)
             {
-                //setDeptment();
-                //String re = ic.ivfDB.posiDB.insertPosition(posi, ic.user.staff_id);
+                ic.cStf.staff_id = "";
+                FrmPasswordConfirm frm = new FrmPasswordConfirm(ic);
+                frm.ShowDialog(this);
+                if (!ic.cStf.staff_id.Equals(""))
+                {
+                    setOPU();
+                    String re = ic.ivfDB.opuDB.update(opu, ic.user.staff_id);
+                    long chk1 = 0;
+                    if (long.TryParse(re, out chk1))
+                    {
+                        btnSave.Image = Resources.accept_database24;
+                    }
+                    else
+                    {
+                        btnSave.Image = Resources.accept_database24;
+                    }
+                }
+                
                 //int chk = 0;
                 //if (int.TryParse(re, out chk))
                 //{

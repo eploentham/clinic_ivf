@@ -258,6 +258,7 @@ namespace clinic_ivf.objdb
                 "," + stf.status_expense_pay + " = '" + p.status_expense_pay.Replace("'", "''") + "' " +
                 "," + stf.status_module_pharmacy + " = '" + p.status_module_pharmacy.Replace("'", "''") + "' " +
                 "," + stf.status_module_lab + " = '" + p.status_module_lab.Replace("'", "''") + "' " +
+                //"," + stf.posi_id + " = '" + p.status_module_lab.Replace("'", "''") + "' " +
                 "Where " + stf.pkField + "='" + p.staff_id + "'"
                 ;
 
@@ -340,6 +341,18 @@ namespace clinic_ivf.objdb
             conn.ExecuteNonQuery(conn.conn, sql);
 
             return "1";
+        }
+        public DataTable selectAllEmbryo()
+        {
+            DataTable dt = new DataTable();
+            String sql = "select stf.*  " +
+                "From " + stf.table + " stf " +
+                "LEft Join b_position posi on posi.posi_id = stf.posi_id " +
+                " " +
+                "Where stf." + stf.active + " ='1' and posi.status_embryologist = '1' ";
+            dt = conn.selectData(conn.conn, sql);
+
+            return dt;
         }
         public DataTable selectAll()
         {
@@ -543,6 +556,7 @@ namespace clinic_ivf.objdb
                 stf1.pid = dt.Rows[0][stf.pid].ToString();
                 stf1.logo = dt.Rows[0][stf.logo].ToString();
                 stf1.posi_id = dt.Rows[0][stf.posi_id].ToString();
+                stf1.dept_id = dt.Rows[0][stf.dept_id].ToString();
                 stf1.dept_name = dt.Rows[0][stf.dept_name].ToString();
                 stf1.prefix_name_t = dt.Rows[0]["patient_prefix_description"] != null ? dt.Rows[0]["patient_prefix_description"].ToString():"";
                 stf1.status_admin = dt.Rows[0][stf.status_admin] != null ? dt.Rows[0][stf.status_admin].ToString():"";
@@ -625,6 +639,31 @@ namespace clinic_ivf.objdb
                 item = new ComboBoxItem();
                 item.Value = cus1.staff_id;
                 item.Text = cus1.staff_fname_t + " " + cus1.staff_lname_t;
+                c.Items.Add(item);
+                if (item.Value.Equals(selected))
+                {
+                    //c.SelectedItem = item.Value;
+                    c.SelectedText = item.Text;
+                    c.SelectedIndex = i + 1;
+                }
+                i++;
+            }
+        }
+        public void setCbEmbryologist(C1ComboBox c, String selected)
+        {
+            ComboBoxItem item = new ComboBoxItem();
+            DataTable dt = selectAllEmbryo();
+            int i = 0;
+            
+            item = new ComboBoxItem();
+            item.Value = "";
+            item.Text = "";
+            c.Items.Add(item);
+            foreach (DataRow row in dt.Rows)
+            {
+                item = new ComboBoxItem();
+                item.Value = row[stf.staff_id].ToString();
+                item.Text = row[stf.staff_fname_e].ToString() + " " + row[stf.staff_lname_e].ToString();
                 c.Items.Add(item);
                 if (item.Value.Equals(selected))
                 {

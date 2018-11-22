@@ -21,7 +21,7 @@ namespace clinic_ivf.object1
         public String doctor_id { get; set; }
         public String proce_id { get; set; }
         public String opu_date { get; set; }
-        public String no_of_opu { get; set; }
+        //public String no_of_opu { get; set; }
         public String matura_date { get; set; }
         public String matura_m_ii { get; set; }
         public String matura_m_i { get; set; }
@@ -36,7 +36,7 @@ namespace clinic_ivf.object1
         public String fertili_no_pn { get; set; }
         public String fertili_dead { get; set; }
         public String sperm_date { get; set; }
-        public String sperm_vloume { get; set; }
+        public String sperm_volume { get; set; }
         public String sperm_count { get; set; }
         public String sperm_count_total { get; set; }
         public String sperm_motile { get; set; }
@@ -53,17 +53,17 @@ namespace clinic_ivf.object1
         public String embryo_freez_position_0 { get; set; }
         public String embryo_freez_stage_0 { get; set; }
         public String embryo_for_et_no_of_et { get; set; }
-        public String embbryo_for_et_day { get; set; }
-        public String embbryo_for_et_date { get; set; }
-        public String embbryo_for_et_assisted { get; set; }
-        public String embbryo_for_et_remark { get; set; }
-        public String embbryo_for_et_volume { get; set; }
-        public String embbryo_for_et_catheter { get; set; }
-        public String embbryo_for_et_doctor { get; set; }
-        public String embbryo_for_et_embryologist_id { get; set; }
-        public String embbryo_for_et_number_of_transfer { get; set; }
-        public String embbryo_for_et_number_of_freeze { get; set; }
-        public String embbryo_for_et_number_of_discard { get; set; }
+        public String embryo_for_et_day { get; set; }
+        public String embryo_for_et_date { get; set; }
+        public String embryo_for_et_assisted { get; set; }
+        public String embryo_for_et_remark { get; set; }
+        public String embryo_for_et_volume { get; set; }
+        public String embryo_for_et_catheter { get; set; }
+        public String embryo_for_et_doctor { get; set; }
+        public String embryo_for_et_embryologist_id { get; set; }
+        public String embryo_for_et_number_of_transfer { get; set; }
+        public String embryo_for_et_number_of_freeze { get; set; }
+        public String embryo_for_et_number_of_discard { get; set; }
         public String embryologist_report_id { get; set; }
         public String embryologist_approve_id { get; set; }
         public String date_create { get; set; }
@@ -130,5 +130,11 @@ namespace clinic_ivf.object1
         public String embryo_freez_stage_6 { get; set; }
         public String req_id { get; set; }
         public String status_opu { get; set; }
+
+        public String doctor_name { get; set; }
+        public String proce_name { get; set; }
+
+        public String matura_no_of_opu { get; set; }
+        public String matura_post_mat { get; set; }
     }
 }

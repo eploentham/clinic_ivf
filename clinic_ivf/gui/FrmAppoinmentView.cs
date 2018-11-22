@@ -60,7 +60,7 @@ namespace clinic_ivf.gui
             imgTran = Resources.red_checkmark_png_51;
             txtDateStart.Value = DateTime.Now.ToString("yyyy-MM-dd");
             txtDateEnd.Value = DateTime.Now.ToString("yyyy-MM-dd");
-            ic.ivfDB.dtrOldDB.setCboBsp(cboDoctor,"");
+            ic.ivfDB.dtrOldDB.setCboDoctor(cboDoctor,"");
 
             btnSearch.Click += BtnSearch_Click;
             txtSearch.KeyUp += TxtSearch_KeyUp;

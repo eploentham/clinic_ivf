@@ -33,6 +33,7 @@
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.chkStatusDoctor = new C1.Win.C1Input.C1CheckBox();
             this.txtPasswordVoid = new C1.Win.C1Input.C1TextBox();
             this.btnNew = new C1.Win.C1Input.C1Button();
             this.chkVoid = new C1.Win.C1Input.C1CheckBox();
@@ -48,7 +49,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.sB = new System.Windows.Forms.StatusStrip();
             this.sB1 = new System.Windows.Forms.ToolStripStatusLabel();
-            this.chkStatusDoctor = new C1.Win.C1Input.C1CheckBox();
+            this.chkEmbryologist = new C1.Win.C1Input.C1CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.theme1)).BeginInit();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
@@ -56,6 +57,7 @@
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
             this.panel3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.chkStatusDoctor)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtPasswordVoid)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnNew)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkVoid)).BeginInit();
@@ -67,7 +69,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtID)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtPosiCode)).BeginInit();
             this.sB.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.chkStatusDoctor)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chkEmbryologist)).BeginInit();
             this.SuspendLayout();
             // 
             // theme1
@@ -126,6 +128,7 @@
             // panel3
             // 
             this.panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.panel3.Controls.Add(this.chkEmbryologist);
             this.panel3.Controls.Add(this.chkStatusDoctor);
             this.panel3.Controls.Add(this.txtPasswordVoid);
             this.panel3.Controls.Add(this.btnNew);
@@ -147,6 +150,24 @@
             this.panel3.Size = new System.Drawing.Size(564, 510);
             this.panel3.TabIndex = 0;
             this.theme1.SetTheme(this.panel3, "(default)");
+            // 
+            // chkStatusDoctor
+            // 
+            this.chkStatusDoctor.BackColor = System.Drawing.Color.Transparent;
+            this.chkStatusDoctor.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
+            this.chkStatusDoctor.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.chkStatusDoctor.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.chkStatusDoctor.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.chkStatusDoctor.Location = new System.Drawing.Point(124, 173);
+            this.chkStatusDoctor.Name = "chkStatusDoctor";
+            this.chkStatusDoctor.Padding = new System.Windows.Forms.Padding(4, 1, 1, 1);
+            this.chkStatusDoctor.Size = new System.Drawing.Size(99, 24);
+            this.chkStatusDoctor.TabIndex = 260;
+            this.chkStatusDoctor.Text = "เป้นแพทย์";
+            this.theme1.SetTheme(this.chkStatusDoctor, "(default)");
+            this.chkStatusDoctor.UseVisualStyleBackColor = true;
+            this.chkStatusDoctor.Value = null;
+            this.chkStatusDoctor.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
             // 
             // txtPasswordVoid
             // 
@@ -350,23 +371,23 @@
             this.sB1.Size = new System.Drawing.Size(118, 17);
             this.sB1.Text = "toolStripStatusLabel1";
             // 
-            // chkStatusDoctor
+            // chkEmbryologist
             // 
-            this.chkStatusDoctor.BackColor = System.Drawing.Color.Transparent;
-            this.chkStatusDoctor.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
-            this.chkStatusDoctor.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.chkStatusDoctor.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.chkStatusDoctor.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.chkStatusDoctor.Location = new System.Drawing.Point(124, 173);
-            this.chkStatusDoctor.Name = "chkStatusDoctor";
-            this.chkStatusDoctor.Padding = new System.Windows.Forms.Padding(4, 1, 1, 1);
-            this.chkStatusDoctor.Size = new System.Drawing.Size(155, 24);
-            this.chkStatusDoctor.TabIndex = 260;
-            this.chkStatusDoctor.Text = "เป้นแพทย์";
-            this.theme1.SetTheme(this.chkStatusDoctor, "(default)");
-            this.chkStatusDoctor.UseVisualStyleBackColor = true;
-            this.chkStatusDoctor.Value = null;
-            this.chkStatusDoctor.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            this.chkEmbryologist.BackColor = System.Drawing.Color.Transparent;
+            this.chkEmbryologist.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
+            this.chkEmbryologist.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.chkEmbryologist.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.chkEmbryologist.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.chkEmbryologist.Location = new System.Drawing.Point(229, 173);
+            this.chkEmbryologist.Name = "chkEmbryologist";
+            this.chkEmbryologist.Padding = new System.Windows.Forms.Padding(4, 1, 1, 1);
+            this.chkEmbryologist.Size = new System.Drawing.Size(155, 24);
+            this.chkEmbryologist.TabIndex = 261;
+            this.chkEmbryologist.Text = "Embryologist";
+            this.theme1.SetTheme(this.chkEmbryologist, "(default)");
+            this.chkEmbryologist.UseVisualStyleBackColor = true;
+            this.chkEmbryologist.Value = null;
+            this.chkEmbryologist.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
             // 
             // FrmPosition
             // 
@@ -386,6 +407,7 @@
             this.splitContainer1.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.chkStatusDoctor)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtPasswordVoid)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnNew)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkVoid)).EndInit();
@@ -398,7 +420,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtPosiCode)).EndInit();
             this.sB.ResumeLayout(false);
             this.sB.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.chkStatusDoctor)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chkEmbryologist)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -427,5 +449,6 @@
         private System.Windows.Forms.Label label1;
         private C1.Win.C1Input.C1TextBox txtPasswordVoid;
         private C1.Win.C1Input.C1CheckBox chkStatusDoctor;
+        private C1.Win.C1Input.C1CheckBox chkEmbryologist;
     }
 }

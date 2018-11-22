@@ -43,7 +43,7 @@ namespace clinic_ivf.gui
             btnReq.Image = Resources.Ticket_24;
 
             ic.ivfDB.itmDB.setCboItem(cboLabReq,"");
-            ic.ivfDB.dtrOldDB.setCboBsp(cboDoctor,"");
+            ic.ivfDB.dtrOldDB.setCboDoctor(cboDoctor,"");
 
             btnSearch.Click += BtnSearch_Click;
             btnReq.Click += BtnReq_Click;

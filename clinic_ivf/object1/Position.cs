@@ -23,5 +23,6 @@ namespace clinic_ivf.object1
         public String remark { get; set; }
         public String sort1 { get; set; }
         public String status_doctor { get; set; }
+        public String status_embryologist { get; set; }
     }
 }
