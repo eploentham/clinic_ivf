@@ -152,6 +152,17 @@ namespace clinic_ivf.objdb
             opu.table = "lab_t_opu";
             opu.pkField = "opu_id";
         }
+        public DataTable selectByPrintOPU(String copId)
+        {
+            DataTable dt = new DataTable();
+            String sql = "select opu.*,dtr.Name, proce.proce_name_t " +
+                "From " + opu.table + " opu " +
+                "Left Join Doctor dtr on dtr.ID = opu." + opu.doctor_id + " " +
+                "LEft Join lab_b_procedure proce on proce.proce_id = opu.proce_id " +
+                "Where opu." + opu.pkField + " ='" + copId + "' ";
+            dt = conn.selectData(conn.conn, sql);
+            return dt;
+        }
         public DataTable selectByPk(String copId)
         {
             DataTable dt = new DataTable();

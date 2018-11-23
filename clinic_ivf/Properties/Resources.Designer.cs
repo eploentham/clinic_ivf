@@ -93,6 +93,16 @@ namespace clinic_ivf.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap accept_database16 {
+            get {
+                object obj = ResourceManager.GetObject("accept_database16", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap accept_database24 {
             get {
                 object obj = ResourceManager.GetObject("accept_database24", resourceCulture);
@@ -136,6 +146,16 @@ namespace clinic_ivf.Properties {
         internal static System.Drawing.Bitmap Add_ticket_24 {
             get {
                 object obj = ResourceManager.GetObject("Add_ticket_24", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap add_to_database16 {
+            get {
+                object obj = ResourceManager.GetObject("add_to_database16", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -436,6 +456,16 @@ namespace clinic_ivf.Properties {
         internal static System.Drawing.Bitmap DeleteTableItems_large {
             get {
                 object obj = ResourceManager.GetObject("DeleteTableItems_large", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap download_database16 {
+            get {
+                object obj = ResourceManager.GetObject("download_database16", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

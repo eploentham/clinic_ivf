@@ -42,6 +42,7 @@ namespace clinic_ivf.objdb
         public PatientImageDB pttImgDB;
         public OldJobSpecialDB oJsDB;
         public LabOpuDB opuDB;
+        public LabOpuEmbryoDevDB opuEmDevDB;
 
         public IvfDB(ConnectDB c)
         {
@@ -82,6 +83,7 @@ namespace clinic_ivf.objdb
             jobpxdDB = new JobPxDetailDB(conn);
             oJsDB = new OldJobSpecialDB(conn);
             opuDB = new LabOpuDB(conn);
+            opuEmDevDB = new LabOpuEmbryoDevDB(conn);
 
             Console.WriteLine("ivfDB end");
         }

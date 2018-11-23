@@ -27,12 +27,15 @@ namespace clinic_ivf.gui
         Font fEdit, fEditB;
         Color bg, fc;
         Font ff, ffB;
-        int colID = 1, colNum = 2, colDesc = 3, colDesc2=4, colDesc3=5;
+        int colDay2ID = 1, colDay2Num = 2, colDay2Desc = 3, colDay2Desc1=4, colDay2Desc2=5, colDay2Edit=6;
+        int colDay3ID = 1, colDay3Num = 2, colDay3Desc = 3, colDay3Desc1 = 4, colDay3Desc2 = 5, colDay3Edit = 6;
+        int colDay5ID = 1, colDay5Num = 2, colDay5Desc = 3, colDay5Desc1 = 4, colDay5Desc2 = 5, colDay5Edit = 6;
+        int colDay6ID = 1, colDay6Num = 2, colDay6Desc = 3, colDay6Desc1 = 4, colDay6Desc2 = 5, colDay6Edit = 6;
 
         C1FlexGrid grfDay2, grfDay3, grfDay5, grfDay6;
         C1SuperTooltip stt;
         C1SuperErrorProvider sep;
-
+        Color color;
         public FrmLabOPUAdd(IvfControl ic, String reqid, String opuid)
         {
             InitializeComponent();
@@ -48,7 +51,8 @@ namespace clinic_ivf.gui
 
             //C1ThemeController.ApplicationTheme = ic.iniC.themeApplication;
             //theme1.Theme = C1ThemeController.ApplicationTheme;
-            theme1.SetTheme(sB, "BeigeOne");                       
+            theme1.SetTheme(sB, "BeigeOne");
+            color = ColorTranslator.FromHtml(ic.iniC.grfRowColor);
 
             sB1.Text = "";
             bg = txtHnFeMale.BackColor;
@@ -65,6 +69,10 @@ namespace clinic_ivf.gui
             ic.ivfDB.stfDB.setCbEmbryologist(cboEmbryoForEtEmbryologist, "");
             ic.ivfDB.stfDB.setCbEmbryologist(cboEmbryologistAppv, "");
             ic.ivfDB.stfDB.setCbEmbryologist(cboEmbryologistReport, "");
+            ic.ivfDB.stfDB.setCbEmbryologist(cboEmbryologistDay2, "");
+            ic.ivfDB.stfDB.setCbEmbryologist(cboEmbryologistDay3, "");
+            ic.ivfDB.stfDB.setCbEmbryologist(cboEmbryologistDay5, "");
+            ic.ivfDB.stfDB.setCbEmbryologist(cboEmbryologistDay6, "");
             ic.setCboDay(CboEmbryoDay0, "");
             ic.setCboDay(CboEmbryoDay1, "");
 
@@ -78,6 +86,11 @@ namespace clinic_ivf.gui
             btnSaveEmbryoEt.Click += BtnSaveEmbryoEt_Click;
             btnSaveEmbryoFreezDay0.Click += BtnSaveEmbryoFreezDay0_Click;
             btnSaveEmbryoFreezDay1.Click += BtnSaveEmbryoFreezDay1_Click;
+            btnSaveDay2.Click += BtnSaveDay2_Click;
+            btnSaveDay3.Click += BtnSaveDay3_Click;
+            btnSaveDay5.Click += BtnSaveDay5_Click;
+            btnSaveDay6.Click += BtnSaveDay6_Click;
+            btnPrint.Click += BtnPrint_Click;
 
             setFocusColor();
             initGrfDay2();
@@ -88,6 +101,322 @@ namespace clinic_ivf.gui
             setGrfDay3();
             setGrfDay5();
             setGrfDay6();
+        }
+
+        private void BtnPrint_Click(object sender, EventArgs e)
+        {
+            //throw new NotImplementedException();
+            FrmLabOPUPrint frm = new FrmLabOPUPrint(ic,txtID.Text);
+            frm.ShowDialog(this);
+        }
+
+        private void BtnSaveDay6_Click(object sender, EventArgs e)
+        {
+            //throw new NotImplementedException();
+            if (MessageBox.Show("ต้องการ บันทึกช้อมูล Day 6 Embryo Development  ", "", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == DialogResult.OK)
+            {
+                ic.cStf.staff_id = "";
+                Boolean chkSave = false;
+                FrmPasswordConfirm frm = new FrmPasswordConfirm(ic);
+                frm.ShowDialog(this);
+                if (!ic.cStf.staff_id.Equals(""))
+                {
+                    //setOPUEmbryoFreezDay1();
+                    //String re = ic.ivfDB.opuDB.updateEmbryoFreezDay1(opu, ic.user.staff_id);
+                    String re = "";
+                    int i = 1;
+                    foreach (Row row in grfDay6.Rows)
+                    {
+                        if (row[colDay6Edit] == null) continue;
+                        if (row[colDay6Edit].ToString().Equals("1"))
+                        {
+                            if (row[colDay6Desc] == null) continue;
+
+                            LabOpuEmbryoDev opuEmDev = new LabOpuEmbryoDev();
+                            opuEmDev.opu_embryo_dev_id = row[colDay6ID] != null ? row[colDay6ID].ToString() : "";
+                            opuEmDev.opu_fet_id = txtID.Text;
+                            opuEmDev.day = "6";
+                            opuEmDev.opu_embryo_dev_no = row[colDay6Num] != null ? row[colDay6Num].ToString() : i.ToString();
+                            opuEmDev.desc0 = row[colDay6Desc].ToString();
+                            opuEmDev.active = "1";
+                            opuEmDev.remark = "";
+                            opuEmDev.path_pic = "";
+                            opuEmDev.date_create = "";
+                            opuEmDev.date_modi = "";
+                            opuEmDev.date_cancel = "";
+                            opuEmDev.user_create = "";
+                            opuEmDev.user_modi = "";
+                            opuEmDev.user_cancel = "";
+                            opuEmDev.desc1 = row[colDay6Desc1] != null ? row[colDay6Desc1].ToString() : "";
+                            opuEmDev.desc2 = row[colDay6Desc2] != null ? row[colDay6Desc2].ToString() : "";
+                            opuEmDev.desc3 = "";
+                            ComboBoxItem item = new ComboBoxItem();
+                            if (cboEmbryologistDay6.SelectedItem != null)
+                            {
+                                item = (ComboBoxItem)cboEmbryologistDay6.SelectedItem;
+                                opuEmDev.staff_id = item.Value;
+                            }
+                            else
+                            {
+                                opuEmDev.staff_id = "0";
+                            }
+                            re = ic.ivfDB.opuEmDevDB.insertLabOpuEmbryoDev(opuEmDev, ic.cStf.staff_id);
+                            long chk = 0;
+                            if (long.TryParse(re, out chk))
+                            {
+                                chkSave = true;
+                                row[colDay6Edit] = "0";
+                                //MessageBox.Show("Error", "");
+                            }
+                        }
+                        i++;
+                    }
+                    long chk1 = 0;
+                    if (chkSave)
+                    {
+                        setGrfDay6();
+                        btnSaveDay5.Image = Resources.accept_database24;
+                    }
+                    else
+                    {
+                        btnSaveDay5.Image = Resources.accept_database24;
+                    }
+                }
+            }
+        }
+
+        private void BtnSaveDay5_Click(object sender, EventArgs e)
+        {
+            //throw new NotImplementedException();
+            if (MessageBox.Show("ต้องการ บันทึกช้อมูล Day 5 Embryo Development  ", "", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == DialogResult.OK)
+            {
+                ic.cStf.staff_id = "";
+                Boolean chkSave = false;
+                FrmPasswordConfirm frm = new FrmPasswordConfirm(ic);
+                frm.ShowDialog(this);
+                if (!ic.cStf.staff_id.Equals(""))
+                {
+                    //setOPUEmbryoFreezDay1();
+                    //String re = ic.ivfDB.opuDB.updateEmbryoFreezDay1(opu, ic.user.staff_id);
+                    String re = "";
+                    int i = 1;
+                    foreach (Row row in grfDay5.Rows)
+                    {
+                        if (row[colDay5Edit] == null) continue;
+                        if (row[colDay5Edit].ToString().Equals("1"))
+                        {
+                            if (row[colDay5Desc] == null) continue;
+
+                            LabOpuEmbryoDev opuEmDev = new LabOpuEmbryoDev();
+                            opuEmDev.opu_embryo_dev_id = row[colDay5ID] != null ? row[colDay5ID].ToString() : "";
+                            opuEmDev.opu_fet_id = txtID.Text;
+                            opuEmDev.day = "5";
+                            opuEmDev.opu_embryo_dev_no = row[colDay5Num] != null ? row[colDay5Num].ToString() : i.ToString();
+                            opuEmDev.desc0 = row[colDay5Desc].ToString();
+                            opuEmDev.active = "1";
+                            opuEmDev.remark = "";
+                            opuEmDev.path_pic = "";
+                            opuEmDev.date_create = "";
+                            opuEmDev.date_modi = "";
+                            opuEmDev.date_cancel = "";
+                            opuEmDev.user_create = "";
+                            opuEmDev.user_modi = "";
+                            opuEmDev.user_cancel = "";
+                            opuEmDev.desc1 = row[colDay5Desc1] != null ? row[colDay5Desc1].ToString() : "";
+                            opuEmDev.desc2 = row[colDay5Desc2] != null ? row[colDay5Desc2].ToString() : "";
+                            opuEmDev.desc3 = "";
+                            ComboBoxItem item = new ComboBoxItem();
+                            if (cboEmbryologistDay5.SelectedItem != null)
+                            {
+                                item = (ComboBoxItem)cboEmbryologistDay5.SelectedItem;
+                                opuEmDev.staff_id = item.Value;
+                            }
+                            else
+                            {
+                                opuEmDev.staff_id = "0";
+                            }
+                            re = ic.ivfDB.opuEmDevDB.insertLabOpuEmbryoDev(opuEmDev, ic.cStf.staff_id);
+                            long chk = 0;
+                            if (long.TryParse(re, out chk))
+                            {
+                                chkSave = true;
+                                row[colDay5Edit] = "0";
+                                //MessageBox.Show("Error", "");
+                            }
+                        }
+                        i++;
+                    }
+                    long chk1 = 0;
+                    if (chkSave)
+                    {
+                        setGrfDay5();
+                        btnSaveDay5.Image = Resources.accept_database24;
+                    }
+                    else
+                    {
+                        btnSaveDay5.Image = Resources.accept_database24;
+                    }
+                }
+            }
+        }
+
+        private void BtnSaveDay3_Click(object sender, EventArgs e)
+        {
+            //throw new NotImplementedException();
+            if (MessageBox.Show("ต้องการ บันทึกช้อมูล Day 3 Embryo Development  ", "", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == DialogResult.OK)
+            {
+                ic.cStf.staff_id = "";
+                Boolean chkSave = false;
+                FrmPasswordConfirm frm = new FrmPasswordConfirm(ic);
+                frm.ShowDialog(this);
+                if (!ic.cStf.staff_id.Equals(""))
+                {
+                    //setOPUEmbryoFreezDay1();
+                    //String re = ic.ivfDB.opuDB.updateEmbryoFreezDay1(opu, ic.user.staff_id);
+                    String re = "";
+                    int i = 1;
+                    foreach (Row row in grfDay3.Rows)
+                    {
+                        if (row[colDay3Edit] == null) continue;
+                        if (row[colDay3Edit].ToString().Equals("1"))
+                        {
+                            if (row[colDay3Desc] == null) continue;
+
+                            LabOpuEmbryoDev opuEmDev = new LabOpuEmbryoDev();
+                            opuEmDev.opu_embryo_dev_id = row[colDay3ID] != null ? row[colDay3ID].ToString() : "";
+                            opuEmDev.opu_fet_id = txtID.Text;
+                            opuEmDev.day = "3";
+                            opuEmDev.opu_embryo_dev_no = row[colDay3Num] != null ? row[colDay3Num].ToString() : i.ToString();
+                            opuEmDev.desc0 = row[colDay3Desc].ToString();
+                            opuEmDev.active = "1";
+                            opuEmDev.remark = "";
+                            opuEmDev.path_pic = "";
+                            opuEmDev.date_create = "";
+                            opuEmDev.date_modi = "";
+                            opuEmDev.date_cancel = "";
+                            opuEmDev.user_create = "";
+                            opuEmDev.user_modi = "";
+                            opuEmDev.user_cancel = "";
+                            opuEmDev.desc1 = row[colDay3Desc1] != null ? row[colDay3Desc1].ToString() : "";
+                            opuEmDev.desc2 = row[colDay3Desc2] != null ? row[colDay3Desc2].ToString() : "";
+                            opuEmDev.desc3 = "";
+                            ComboBoxItem item = new ComboBoxItem();
+                            if (cboEmbryologistDay3.SelectedItem != null)
+                            {
+                                item = (ComboBoxItem)cboEmbryologistDay3.SelectedItem;
+                                opuEmDev.staff_id = item.Value;
+                            }
+                            else
+                            {
+                                opuEmDev.staff_id = "0";
+                            }
+                            re = ic.ivfDB.opuEmDevDB.insertLabOpuEmbryoDev(opuEmDev, ic.cStf.staff_id);
+                            long chk = 0;
+                            if (long.TryParse(re, out chk))
+                            {
+                                row[colDay3Edit] = "0";
+                                //MessageBox.Show("Error", "");
+                                chkSave = true;
+                            }
+                            else
+                            {
+                                chkSave = false;
+                            }
+                        }
+                        i++;
+                    }
+                    long chk1 = 0;
+                    if (chkSave)
+                    {
+                        setGrfDay3();
+                        btnSaveDay3.Image = Resources.accept_database24;
+                    }
+                    else
+                    {
+                        btnSaveDay3.Image = Resources.accept_database24;
+                    }
+                }
+            }
+        }
+
+        private void BtnSaveDay2_Click(object sender, EventArgs e)
+        {
+            //throw new NotImplementedException();
+            if (MessageBox.Show("ต้องการ บันทึกช้อมูล Day 2 Embryo Development  ", "", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == DialogResult.OK)
+            {
+                ic.cStf.staff_id = "";
+                Boolean chkSave = false;
+                FrmPasswordConfirm frm = new FrmPasswordConfirm(ic);
+                frm.ShowDialog(this);
+                if (!ic.cStf.staff_id.Equals(""))
+                {
+                    //setOPUEmbryoFreezDay1();
+                    //String re = ic.ivfDB.opuDB.updateEmbryoFreezDay1(opu, ic.user.staff_id);
+                    String re = "";
+                    int i = 1;
+                    foreach (Row row in grfDay2.Rows)
+                    {
+                        if (row[colDay2Edit] == null) continue;
+                        if (row[colDay2Edit].ToString().Equals("1"))
+                        {
+                            if (row[colDay2Desc] == null) continue;
+
+                            LabOpuEmbryoDev opuEmDev = new LabOpuEmbryoDev();
+                            opuEmDev.opu_embryo_dev_id = row[colDay2ID] != null ? row[colDay2ID].ToString():"";
+                            opuEmDev.opu_fet_id = txtID.Text;
+                            opuEmDev.day = "2";
+                            opuEmDev.opu_embryo_dev_no = row[colDay2Num] != null ? row[colDay2Num].ToString(): i.ToString();
+                            opuEmDev.desc0 = row[colDay2Desc].ToString();
+                            opuEmDev.active = "1";
+                            opuEmDev.remark = "";
+                            opuEmDev.path_pic = "";
+                            opuEmDev.date_create = "";
+                            opuEmDev.date_modi = "";
+                            opuEmDev.date_cancel = "";
+                            opuEmDev.user_create = "";
+                            opuEmDev.user_modi = "";
+                            opuEmDev.user_cancel = "";
+                            opuEmDev.desc1 = row[colDay2Desc1]!=null ? row[colDay2Desc1].ToString() : "";
+                            opuEmDev.desc2 = row[colDay2Desc2] != null ? row[colDay2Desc2].ToString() : "";
+                            opuEmDev.desc3 = "";
+                            ComboBoxItem item = new ComboBoxItem();
+                            if (cboEmbryologistDay2.SelectedItem != null)
+                            {
+                                item = (ComboBoxItem)cboEmbryologistDay2.SelectedItem;
+                                opuEmDev.staff_id = item.Value;
+                            }
+                            else
+                            {
+                                opuEmDev.staff_id = "0";
+                            }
+                            re = ic.ivfDB.opuEmDevDB.insertLabOpuEmbryoDev(opuEmDev, ic.cStf.staff_id);
+                            long chk = 0;
+                            if (long.TryParse(re, out chk))
+                            {
+                                row[colDay2Edit] = "0";
+                                chkSave = true;
+                                //MessageBox.Show("Error", "");
+                            }
+                            else
+                            {
+                                chkSave = false;
+                            }
+                        }
+                        i++;
+                    }
+
+                    long chk1 = 0;
+                    if (chkSave)
+                    {
+                        setGrfDay2();
+                        btnSaveDay2.Image = Resources.accept_database24;
+                    }
+                    else
+                    {
+                        btnSaveDay2.Image = Resources.accept_database24;
+                    }
+                }
+            }
         }
 
         private void BtnSaveEmbryoFreezDay1_Click(object sender, EventArgs e)
@@ -571,18 +900,52 @@ namespace clinic_ivf.gui
 
             //FilterRow fr = new FilterRow(grfExpn);
 
-            //grfExpn.AfterRowColChange += GrfExpn_AfterRowColChange;
-            //grfExpnC.CellButtonClick += new C1.Win.C1FlexGrid.RowColEventHandler(this.grfDept_CellButtonClick);
-            //grfExpnC.CellChanged += new C1.Win.C1FlexGrid.RowColEventHandler(this.grfDept_CellChanged);
+            grfDay2.AfterRowColChange += GrfDay2_AfterRowColChange;
+            grfDay2.ChangeEdit += GrfDay2_ChangeEdit;
+            grfDay2.CellChanged += GrfDay2_CellChanged;
             ContextMenu menuGw = new ContextMenu();
             //menuGw.MenuItems.Add("&แก้ไข รายการเบิก", new EventHandler(ContextMenu_edit));
             //menuGw.MenuItems.Add("&แก้ไข", new EventHandler(ContextMenu_Gw_Edit));
             //menuGw.MenuItems.Add("&ยกเลิก", new EventHandler(ContextMenu_Gw_Cancel));
             grfDay2.ContextMenu = menuGw;
-            gbDay2.Controls.Add(grfDay2);
+            pn2Grf.Controls.Add(grfDay2);
 
             theme1.SetTheme(grfDay2, "Office2010Blue");
         }
+
+        private void GrfDay2_ChangeEdit(object sender, EventArgs e)
+        {
+            //throw new NotImplementedException();
+            if (grfDay2.Row == null) return;
+            if (grfDay2.Row < 0) return;
+            grfDay2[grfDay2.Row, colDay2Edit] = "1";
+            //grfDay2[grfDay2.Row, 0] = "1";
+            //grfDay2.Rows[grfDay2.Row].
+            grfDay2.Rows[grfDay2.Row].StyleNew.BackColor = color;
+            if(grfDay2.Col== colDay2Desc)
+            {
+                if ((grfDay2.Row + 1) == grfDay2.Rows.Count)
+                    grfDay2.Rows.Add();
+            }
+        }
+
+        private void GrfDay2_CellChanged(object sender, RowColEventArgs e)
+        {
+            //throw new NotImplementedException();
+            if (grfDay2.Row == null) return;
+            if (grfDay2.Row < 0) return;
+            
+        }
+
+        private void GrfDay2_AfterRowColChange(object sender, RangeEventArgs e)
+        {
+            //throw new NotImplementedException();
+            if (grfDay2.Row == null) return;
+            if (grfDay2.Row < 0) return;
+            //if (grfDay2.Row == grfDay2.Rows.Count)
+            //    grfDay2.Rows.Add();
+        }
+
         private void initGrfDay6()
         {
             grfDay6 = new C1FlexGrid();
@@ -592,7 +955,7 @@ namespace clinic_ivf.gui
 
             //FilterRow fr = new FilterRow(grfExpn);
 
-            //grfExpn.AfterRowColChange += GrfExpn_AfterRowColChange;
+            grfDay6.ChangeEdit += GrfDay6_ChangeEdit;
             //grfExpnC.CellButtonClick += new C1.Win.C1FlexGrid.RowColEventHandler(this.grfDept_CellButtonClick);
             //grfExpnC.CellChanged += new C1.Win.C1FlexGrid.RowColEventHandler(this.grfDept_CellChanged);
             ContextMenu menuGw = new ContextMenu();
@@ -600,10 +963,25 @@ namespace clinic_ivf.gui
             //menuGw.MenuItems.Add("&แก้ไข", new EventHandler(ContextMenu_Gw_Edit));
             //menuGw.MenuItems.Add("&ยกเลิก", new EventHandler(ContextMenu_Gw_Cancel));
             grfDay6.ContextMenu = menuGw;
-            gbDay6.Controls.Add(grfDay6);
+            pn6Grf.Controls.Add(grfDay6);
 
             theme1.SetTheme(grfDay6, "Office2010Blue");
         }
+
+        private void GrfDay6_ChangeEdit(object sender, EventArgs e)
+        {
+            //throw new NotImplementedException();
+            if (grfDay6.Row == null) return;
+            if (grfDay6.Row < 0) return;
+            grfDay6[grfDay6.Row, colDay6Edit] = "1";
+            grfDay6.Rows[grfDay6.Row].StyleNew.BackColor = color;
+            if (grfDay6.Col == colDay6Desc)
+            {
+                if ((grfDay6.Row + 1) == grfDay6.Rows.Count)
+                    grfDay6.Rows.Add();
+            }
+        }
+
         private void initGrfDay3()
         {
             grfDay3 = new C1FlexGrid();
@@ -613,7 +991,7 @@ namespace clinic_ivf.gui
 
             //FilterRow fr = new FilterRow(grfExpn);
 
-            //grfExpn.AfterRowColChange += GrfExpn_AfterRowColChange;
+            grfDay3.ChangeEdit += GrfDay3_ChangeEdit;
             //grfExpnC.CellButtonClick += new C1.Win.C1FlexGrid.RowColEventHandler(this.grfDept_CellButtonClick);
             //grfExpnC.CellChanged += new C1.Win.C1FlexGrid.RowColEventHandler(this.grfDept_CellChanged);
             ContextMenu menuGw = new ContextMenu();
@@ -621,10 +999,25 @@ namespace clinic_ivf.gui
             //menuGw.MenuItems.Add("&แก้ไข", new EventHandler(ContextMenu_Gw_Edit));
             //menuGw.MenuItems.Add("&ยกเลิก", new EventHandler(ContextMenu_Gw_Cancel));
             grfDay3.ContextMenu = menuGw;
-            gbDay3.Controls.Add(grfDay3);
+            pn3Grf.Controls.Add(grfDay3);
 
             theme1.SetTheme(grfDay3, "Office2010Silver");
         }
+
+        private void GrfDay3_ChangeEdit(object sender, EventArgs e)
+        {
+            //throw new NotImplementedException();
+            if (grfDay3.Row == null) return;
+            if (grfDay3.Row < 0) return;
+            grfDay3[grfDay3.Row, colDay3Edit] = "1";
+            grfDay3.Rows[grfDay3.Row].StyleNew.BackColor = color;
+            if (grfDay3.Col == colDay3Desc)
+            {
+                if ((grfDay3.Row + 1) == grfDay3.Rows.Count)
+                    grfDay3.Rows.Add();
+            }
+        }
+
         private void initGrfDay5()
         {
             grfDay5 = new C1FlexGrid();
@@ -634,7 +1027,7 @@ namespace clinic_ivf.gui
 
             //FilterRow fr = new FilterRow(grfExpn);
 
-            //grfExpn.AfterRowColChange += GrfExpn_AfterRowColChange;
+            grfDay5.ChangeEdit += GrfDay5_ChangeEdit;
             //grfExpnC.CellButtonClick += new C1.Win.C1FlexGrid.RowColEventHandler(this.grfDept_CellButtonClick);
             //grfExpnC.CellChanged += new C1.Win.C1FlexGrid.RowColEventHandler(this.grfDept_CellChanged);
             ContextMenu menuGw = new ContextMenu();
@@ -642,49 +1035,80 @@ namespace clinic_ivf.gui
             //menuGw.MenuItems.Add("&แก้ไข", new EventHandler(ContextMenu_Gw_Edit));
             //menuGw.MenuItems.Add("&ยกเลิก", new EventHandler(ContextMenu_Gw_Cancel));
             grfDay5.ContextMenu = menuGw;
-            gbDay5.Controls.Add(grfDay5);
+            pn5Grf.Controls.Add(grfDay5);
 
             theme1.SetTheme(grfDay5, "Office2010Red");
             //theme1.SetTheme(grfDay6, "Office2016DarkGray");
         }
+
+        private void GrfDay5_ChangeEdit(object sender, EventArgs e)
+        {
+            //throw new NotImplementedException();
+            if (grfDay5.Row == null) return;
+            if (grfDay5.Row < 0) return;
+            grfDay5[grfDay5.Row, colDay5Edit] = "1";
+            grfDay5.Rows[grfDay5.Row].StyleNew.BackColor = color;
+            if (grfDay5.Col == colDay5Desc)
+            {
+                if ((grfDay5.Row + 1) == grfDay5.Rows.Count)
+                    grfDay5.Rows.Add();
+            }
+        }
+
         private void setGrfDay2()
         {
             //grfDept.Rows.Count = 7;
             grfDay2.Clear();
             DataTable dt = new DataTable();
 
-            //grfExpn.DataSource = xC.xtDB.expndDB.selectAll1(cboYear.Text);
+            dt = ic.ivfDB.opuEmDevDB.selectByOpuFetId_Day(txtID.Text, objdb.LabOpuEmbryoDevDB.Day1.Day2);
             //grfExpn.Rows.Count = dt.Rows.Count + 1;
-            grfDay2.Rows.Count = 41;
-            grfDay2.Cols.Count = 64;
+            grfDay2.Rows.Count = 1;
+            grfDay2.Cols.Count = 7;
             C1TextBox txt = new C1TextBox();
             C1ComboBox cboproce = new C1ComboBox();
             //ic.ivfDB.itmDB.setCboItem(cboproce);
-            grfDay2.Cols[colID].Editor = txt;
-            grfDay2.Cols[colNum].Editor = txt;
-            grfDay2.Cols[colDesc].Editor = txt;
+            grfDay2.Cols[colDay2ID].Editor = txt;
+            grfDay2.Cols[colDay2Num].Editor = txt;
+            grfDay2.Cols[colDay2Desc].Editor = txt;
+            grfDay2.Cols[colDay2Desc1].Editor = txt;
+            grfDay2.Cols[colDay2Desc2].Editor = txt;
 
-            grfDay2.Cols[colNum].Width = 40;
-            grfDay2.Cols[colDesc].Width = 150;
+            grfDay2.Cols[colDay2Num].Width = 40;
+            grfDay2.Cols[colDay2Desc].Width = 100;
+            grfDay2.Cols[colDay2Desc1].Width = 50;
+            grfDay2.Cols[colDay2Desc2].Width = 50;
 
             grfDay2.ShowCursor = true;
             //grdFlex.Cols[colID].Caption = "no";
             //grfDept.Cols[colCode].Caption = "รหัส";
 
-            grfDay2.Cols[colNum].Caption = "no";
-            grfDay2.Cols[colDesc].Caption = "desc";
-            grfDay2.Cols[colDesc2].Caption = "desc2";
-            grfDay2.Cols[colDesc3].Caption = "desc3";
+            grfDay2.Cols[colDay2Num].Caption = "no";
+            grfDay2.Cols[colDay2Desc].Caption = "desc";
+            grfDay2.Cols[colDay2Desc1].Caption = "desc1";
+            grfDay2.Cols[colDay2Desc2].Caption = "desc2";
 
             Color color = ColorTranslator.FromHtml(ic.iniC.grfRowColor);
             //CellRange rg1 = grfBank.GetCellRange(1, colE, grfBank.Rows.Count, colE);
             //rg1.Style = grfBank.Styles["date"];
-            grfDay2.Cols[colID].Visible = false;
-            for (int i = 1; i <= 40; i++)
+            int i = 1;
+            String staffId = "";
+            foreach (DataRow row in dt.Rows)
             {
-                grfDay2[i, 0] = i;
+                Row row1 = grfDay2.Rows.Add();
+                staffId = row[ic.ivfDB.opuEmDevDB.opuEmDev.staff_id].ToString();
+                row1[colDay2ID] = row[ic.ivfDB.opuEmDevDB.opuEmDev.opu_embryo_dev_id].ToString();
+                row1[colDay2Num] = row[ic.ivfDB.opuEmDevDB.opuEmDev.opu_embryo_dev_no].ToString();
+                row1[colDay2Desc] = row[ic.ivfDB.opuEmDevDB.opuEmDev.desc0].ToString();
+                row1[colDay2Desc1] = row[ic.ivfDB.opuEmDevDB.opuEmDev.desc1].ToString();
+                row1[colDay2Desc2] = row[ic.ivfDB.opuEmDevDB.opuEmDev.desc2].ToString();
+                row1[0] = i;
+                i++;
             }
-            grfDay2.Cols[colNum].Visible = false;
+            grfDay2.Rows.Add();
+            grfDay2.Cols[colDay2ID].Visible = false;
+            grfDay2.Cols[colDay2Num].Visible = false;
+            ic.setC1Combo(cboEmbryologistDay2, staffId);
         }
         private void setGrfDay3()
         {
@@ -692,36 +1116,52 @@ namespace clinic_ivf.gui
             grfDay3.Clear();
             DataTable dt = new DataTable();
 
-            //grfExpn.DataSource = xC.xtDB.expndDB.selectAll1(cboYear.Text);
-            //grfExpn.Rows.Count = dt.Rows.Count + 1;
-            grfDay3.Rows.Count = 41;
-            grfDay3.Cols.Count = 4;
+            dt = ic.ivfDB.opuEmDevDB.selectByOpuFetId_Day(txtID.Text, objdb.LabOpuEmbryoDevDB.Day1.Day3);
+            grfDay3.Rows.Count = 1;
+            grfDay3.Cols.Count = 7;
             C1TextBox txt = new C1TextBox();
             //txt.dat
 
-            grfDay3.Cols[colID].Editor = txt;
-            grfDay3.Cols[colNum].Editor = txt;
-            grfDay3.Cols[colDesc].Editor = txt;
+            grfDay3.Cols[colDay3ID].Editor = txt;
+            grfDay3.Cols[colDay3Num].Editor = txt;
+            grfDay3.Cols[colDay3Desc].Editor = txt;
+            grfDay3.Cols[colDay3Desc1].Editor = txt;
+            grfDay3.Cols[colDay3Desc2].Editor = txt;
 
-            grfDay3.Cols[colNum].Width = 40;
-            grfDay3.Cols[colDesc].Width = 150;
+            grfDay3.Cols[colDay3Num].Width = 40;
+            grfDay3.Cols[colDay3Desc].Width = 100;
+            grfDay3.Cols[colDay3Desc1].Width = 50;
+            grfDay3.Cols[colDay3Desc2].Width = 50;
 
             grfDay3.ShowCursor = true;
             //grdFlex.Cols[colID].Caption = "no";
             //grfDept.Cols[colCode].Caption = "รหัส";
 
-            grfDay3.Cols[colNum].Caption = "no";
-            grfDay3.Cols[colDesc].Caption = "desc";
+            grfDay3.Cols[colDay3Num].Caption = "no";
+            grfDay3.Cols[colDay3Desc].Caption = "desc";
+            grfDay3.Cols[colDay3Desc1].Caption = "desc1";
+            grfDay3.Cols[colDay3Desc2].Caption = "desc2";
 
             Color color = ColorTranslator.FromHtml(ic.iniC.grfRowColor);
             //CellRange rg1 = grfBank.GetCellRange(1, colE, grfBank.Rows.Count, colE);
-            //rg1.Style = grfBank.Styles["date"];
-            grfDay3.Cols[colID].Visible = false;
-            for (int i = 1; i <= 40; i++)
+            int i = 0;
+            String staffId = "";
+            foreach (DataRow row in dt.Rows)
             {
-                grfDay3[i, 0] = i;
+                Row row1 = grfDay3.Rows.Add();
+                staffId = row[ic.ivfDB.opuEmDevDB.opuEmDev.staff_id].ToString();
+                row1[colDay3ID] = row[ic.ivfDB.opuEmDevDB.opuEmDev.opu_embryo_dev_id].ToString();
+                row1[colDay3Num] = row[ic.ivfDB.opuEmDevDB.opuEmDev.opu_embryo_dev_no].ToString();
+                row1[colDay3Desc] = row[ic.ivfDB.opuEmDevDB.opuEmDev.desc0].ToString();
+                row1[colDay3Desc1] = row[ic.ivfDB.opuEmDevDB.opuEmDev.desc1].ToString();
+                row1[colDay3Desc2] = row[ic.ivfDB.opuEmDevDB.opuEmDev.desc2].ToString();
+                row1[0] = i;
+                i++;
             }
-            grfDay3.Cols[colNum].Visible = false;
+            grfDay3.Rows.Add();
+            grfDay3.Cols[colDay3ID].Visible = false;
+            grfDay3.Cols[colDay3Num].Visible = false;
+            ic.setC1Combo(cboEmbryologistDay3, staffId);
         }
         private void setGrfDay5()
         {
@@ -729,73 +1169,109 @@ namespace clinic_ivf.gui
             grfDay5.Clear();
             DataTable dt = new DataTable();
 
-            //grfExpn.DataSource = xC.xtDB.expndDB.selectAll1(cboYear.Text);
-            //grfExpn.Rows.Count = dt.Rows.Count + 1;
-            grfDay5.Rows.Count = 41;
-            grfDay5.Cols.Count = 4;
+            dt = ic.ivfDB.opuEmDevDB.selectByOpuFetId_Day(txtID.Text, objdb.LabOpuEmbryoDevDB.Day1.Day5);
+            grfDay5.Rows.Count = 1;
+            grfDay5.Cols.Count = 7;
             C1TextBox txt = new C1TextBox();
             //txt.dat
 
-            grfDay5.Cols[colID].Editor = txt;
-            grfDay5.Cols[colNum].Editor = txt;
-            grfDay5.Cols[colDesc].Editor = txt;
+            grfDay5.Cols[colDay5ID].Editor = txt;
+            grfDay5.Cols[colDay5Num].Editor = txt;
+            grfDay5.Cols[colDay5Desc].Editor = txt;
+            grfDay5.Cols[colDay5Desc1].Editor = txt;
+            grfDay5.Cols[colDay5Desc2].Editor = txt;
 
-            grfDay5.Cols[colNum].Width = 40;
-            grfDay5.Cols[colDesc].Width = 150;
+            grfDay5.Cols[colDay5Num].Width = 40;
+            grfDay5.Cols[colDay5Desc].Width = 100;
+            grfDay5.Cols[colDay5Desc1].Width = 50;
+            grfDay5.Cols[colDay5Desc2].Width = 50;
 
             grfDay5.ShowCursor = true;
             //grdFlex.Cols[colID].Caption = "no";
             //grfDept.Cols[colCode].Caption = "รหัส";
 
-            grfDay5.Cols[colNum].Caption = "no";
-            grfDay5.Cols[colDesc].Caption = "desc";
+            grfDay5.Cols[colDay5Num].Caption = "no";
+            grfDay5.Cols[colDay5Desc].Caption = "desc";
+            grfDay5.Cols[colDay5Desc1].Caption = "desc1";
+            grfDay5.Cols[colDay5Desc2].Caption = "desc2";
 
             Color color = ColorTranslator.FromHtml(ic.iniC.grfRowColor);
             //CellRange rg1 = grfBank.GetCellRange(1, colE, grfBank.Rows.Count, colE);
             //rg1.Style = grfBank.Styles["date"];
-            grfDay5.Cols[colID].Visible = false;
-            for (int i = 1; i <= 40; i++)
+            int i = 0;
+            String staffId = "";
+            foreach (DataRow row in dt.Rows)
             {
-                grfDay5[i, 0] = i;
+                Row row1 = grfDay5.Rows.Add();
+                staffId = row[ic.ivfDB.opuEmDevDB.opuEmDev.staff_id].ToString();
+                row1[colDay5ID] = row[ic.ivfDB.opuEmDevDB.opuEmDev.opu_embryo_dev_id].ToString();
+                row1[colDay5Num] = row[ic.ivfDB.opuEmDevDB.opuEmDev.opu_embryo_dev_no].ToString();
+                row1[colDay5Desc] = row[ic.ivfDB.opuEmDevDB.opuEmDev.desc0].ToString();
+                row1[colDay5Desc1] = row[ic.ivfDB.opuEmDevDB.opuEmDev.desc1].ToString();
+                row1[colDay5Desc2] = row[ic.ivfDB.opuEmDevDB.opuEmDev.desc2].ToString();
+                row1[0] = i;
+                i++;
             }
-            grfDay5.Cols[colNum].Visible = false;
+            grfDay5.Rows.Add();
+            grfDay5.Cols[colDay5ID].Visible = false;
+            grfDay5.Cols[colDay5Num].Visible = false;
+            ic.setC1Combo(cboEmbryologistDay5, staffId);
         }
         private void setGrfDay6()
         {
             //grfDept.Rows.Count = 7;
             grfDay6.Clear();
             DataTable dt = new DataTable();
-
+            dt = ic.ivfDB.opuEmDevDB.selectByOpuFetId_Day(txtID.Text, objdb.LabOpuEmbryoDevDB.Day1.Day6);
             //grfExpn.DataSource = xC.xtDB.expndDB.selectAll1(cboYear.Text);
             //grfExpn.Rows.Count = dt.Rows.Count + 1;
-            grfDay6.Rows.Count = 41;
-            grfDay6.Cols.Count = 4;
+            grfDay6.Rows.Count = 1;
+            grfDay6.Cols.Count = 7;
             C1TextBox txt = new C1TextBox();
             //txt.dat
 
-            grfDay6.Cols[colID].Editor = txt;
-            grfDay6.Cols[colNum].Editor = txt;
-            grfDay6.Cols[colDesc].Editor = txt;
+            grfDay6.Cols[colDay6ID].Editor = txt;
+            grfDay6.Cols[colDay6Num].Editor = txt;
+            grfDay6.Cols[colDay6Desc].Editor = txt;
+            grfDay6.Cols[colDay6Desc1].Editor = txt;
+            grfDay6.Cols[colDay6Desc2].Editor = txt;
 
-            grfDay6.Cols[colNum].Width = 40;
-            grfDay6.Cols[colDesc].Width = 150;
+            grfDay6.Cols[colDay6Num].Width = 40;
+            grfDay6.Cols[colDay6Desc].Width = 100;
+            grfDay6.Cols[colDay6Desc1].Width = 50;
+            grfDay6.Cols[colDay6Desc2].Width = 50;
 
             grfDay6.ShowCursor = true;
             //grdFlex.Cols[colID].Caption = "no";
             //grfDept.Cols[colCode].Caption = "รหัส";
 
-            grfDay6.Cols[colNum].Caption = "no";
-            grfDay6.Cols[colDesc].Caption = "desc";
+            grfDay6.Cols[colDay6Num].Caption = "no";
+            grfDay6.Cols[colDay6Desc].Caption = "desc";
+            grfDay6.Cols[colDay6Desc1].Caption = "desc1";
+            grfDay6.Cols[colDay6Desc2].Caption = "desc2";
+
 
             Color color = ColorTranslator.FromHtml(ic.iniC.grfRowColor);
             //CellRange rg1 = grfBank.GetCellRange(1, colE, grfBank.Rows.Count, colE);
             //rg1.Style = grfBank.Styles["date"];
-            grfDay6.Cols[colID].Visible = false;
-            for(int i = 1; i <= 40; i++)
+            int i = 0;
+            String staffId = "";
+            foreach (DataRow row in dt.Rows)
             {
-                grfDay6[i, 0] = i;
+                Row row1 = grfDay6.Rows.Add();
+                staffId = row[ic.ivfDB.opuEmDevDB.opuEmDev.staff_id].ToString();
+                row1[colDay6ID] = row[ic.ivfDB.opuEmDevDB.opuEmDev.opu_embryo_dev_id].ToString();
+                row1[colDay6Num] = row[ic.ivfDB.opuEmDevDB.opuEmDev.opu_embryo_dev_no].ToString();
+                row1[colDay6Desc] = row[ic.ivfDB.opuEmDevDB.opuEmDev.desc0].ToString();
+                row1[colDay6Desc1] = row[ic.ivfDB.opuEmDevDB.opuEmDev.desc1].ToString();
+                row1[colDay6Desc2] = row[ic.ivfDB.opuEmDevDB.opuEmDev.desc2].ToString();
+                row1[0] = i;
+                i++;
             }
-            grfDay6.Cols[colNum].Visible = false;
+            grfDay6.Rows.Add();
+            grfDay6.Cols[colDay2ID].Visible = false;
+            grfDay6.Cols[colDay2Num].Visible = false;
+            ic.setC1Combo(cboEmbryologistDay6, staffId);
         }
         private void FrmLabOPUAdd_Load(object sender, EventArgs e)
         {

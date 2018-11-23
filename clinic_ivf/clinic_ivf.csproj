@@ -158,6 +158,12 @@
     <Compile Include="gui\FrmLabOPUAdd1.Designer.cs">
       <DependentUpon>FrmLabOPUAdd1.cs</DependentUpon>
     </Compile>
+    <Compile Include="gui\FrmLabOPUPrint.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="gui\FrmLabOPUPrint.Designer.cs">
+      <DependentUpon>FrmLabOPUPrint.cs</DependentUpon>
+    </Compile>
     <Compile Include="gui\FrmLabOpuProce.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -340,6 +346,7 @@
     <Compile Include="objdb\FSexDB.cs" />
     <Compile Include="objdb\JobPxDB.cs" />
     <Compile Include="objdb\JobPxDetailDB.cs" />
+    <Compile Include="objdb\LabOpuEmbryoDevDB.cs" />
     <Compile Include="objdb\OldJobSpecialDB.cs" />
     <Compile Include="objdb\PatientImageDB.cs" />
     <Compile Include="objdb\PatientOldDB.cs" />
@@ -348,6 +355,7 @@
     <Compile Include="object1\DoctorOld.cs" />
     <Compile Include="object1\JobPx.cs" />
     <Compile Include="object1\JobPxDetail.cs" />
+    <Compile Include="object1\LabOpuEmbryoDev.cs" />
     <Compile Include="object1\OldJobSpecial.cs" />
     <Compile Include="object1\OldJobSpecialDetail.cs" />
     <Compile Include="object1\PatientImage.cs" />
@@ -447,6 +455,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="gui\FrmLabOPUAdd1.resx">
       <DependentUpon>FrmLabOPUAdd1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="gui\FrmLabOPUPrint.resx">
+      <DependentUpon>FrmLabOPUPrint.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="gui\FrmLabOpuProce.resx">
       <DependentUpon>FrmLabOpuProce.cs</DependentUpon>
@@ -1190,6 +1201,15 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\red-checkmark-png-51.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\download-database16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\accept-database16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\add-to-database16.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
