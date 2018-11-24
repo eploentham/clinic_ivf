@@ -86,7 +86,7 @@ namespace clinic_ivf.object1
                 ftpRequest.Credentials = new NetworkCredential(user, pass);
                 /* When in doubt, use these options */
                 ftpRequest.UseBinary = true;
-                ftpRequest.UsePassive = true;
+                ftpRequest.UsePassive = false;
                 ftpRequest.KeepAlive = true;
                 /* Specify the Type of FTP Request */
                 ftpRequest.Method = WebRequestMethods.Ftp.UploadFile;

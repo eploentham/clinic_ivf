@@ -11,6 +11,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Security;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -32,7 +33,10 @@ namespace clinic_ivf.gui
         int colDay5ID = 1, colDay5Num = 2, colDay5Desc = 3, colDay5Desc1 = 4, colDay5Desc2 = 5, colDay5Edit = 6;
         int colDay6ID = 1, colDay6Num = 2, colDay6Desc = 3, colDay6Desc1 = 4, colDay6Desc2 = 5, colDay6Edit = 6;
 
+        int colDay2ImgId = 1, colDay2ImgPic = 3, colDay2ImgNun = 2, colDay2ImgDesc0 = 4, colDay2PathPic=5;
+
         C1FlexGrid grfDay2, grfDay3, grfDay5, grfDay6;
+        C1FlexGrid grfDay2Img;
         C1SuperTooltip stt;
         C1SuperErrorProvider sep;
         Color color;
@@ -91,6 +95,8 @@ namespace clinic_ivf.gui
             btnSaveDay5.Click += BtnSaveDay5_Click;
             btnSaveDay6.Click += BtnSaveDay6_Click;
             btnPrint.Click += BtnPrint_Click;
+            tC1.DoubleClick += TC1_DoubleClick;
+            tabDay2.DoubleClick += TabDay2_DoubleClick;
 
             setFocusColor();
             initGrfDay2();
@@ -101,6 +107,98 @@ namespace clinic_ivf.gui
             setGrfDay3();
             setGrfDay5();
             setGrfDay6();
+            initGrfDay2Img();
+            setGrfDay2Img();
+        }
+
+        private void TabDay2_DoubleClick(object sender, EventArgs e)
+        {
+            //throw new NotImplementedException();
+            OpenFileDialog ofd = new OpenFileDialog();
+            ofd.Filter = "Images (*.BMP;*.JPG;*.Jepg;*.Png;*.GIF)|*.BMP;*.JPG;*.Jepg;*.Png;*.GIF|Pdf Files|*.pdf|All files (*.*)|*.*";
+            ofd.Multiselect = true;
+            ofd.Title = "My Image Browser";
+            DialogResult dr = ofd.ShowDialog();
+            if (dr == System.Windows.Forms.DialogResult.OK)
+            {
+                //FrmPatientUpPic frm = new FrmPatientUpPic(ofd.FileNames);
+                //frm.ShowDialog(this);
+
+                // Read the files
+
+                //Row row1 = grfImg.Rows.Add();
+                //CellRange rg1 = grfImg.GetCellRange(grfImg.Rows.Count-1, colImg);
+                int i = 1;
+                grfDay2Img.AllowMerging = C1.Win.C1FlexGrid.AllowMergingEnum.RestrictRows;
+                grfDay2Img.Cols[colDay2ImgPic].AllowMerging = true;
+                //cc.Image
+                Column col = grfDay2Img.Cols[colDay2ImgPic];
+                col.DataType = typeof(Image);
+                foreach (String file in ofd.FileNames)
+                {
+                    // Create a PictureBox.
+                    try
+                    {
+                        Image loadedImage, resizedImage;
+                        String[] sur = file.Split('.');
+                        String ex = "";
+                        if (sur.Length == 2)
+                        {
+                            ex = sur[1];
+                        }
+                        if (!ex.Equals("pdf"))
+                        {
+                            loadedImage = Image.FromFile(file);
+                            int originalWidth = loadedImage.Width;
+                            int newWidth = 180;
+                            resizedImage = loadedImage.GetThumbnailImage(newWidth, (newWidth * loadedImage.Height) / originalWidth, null, IntPtr.Zero);
+                        }
+                        else
+                        {
+                            resizedImage = Resources.pdf_symbol_80_2;
+                        }
+                        grfDay2Img.Cols[colDay2ImgPic].ImageAndText = true;
+                        Row row1 = grfDay2Img.Rows.Add();
+                        int row = grfDay2Img.Rows.Count;
+
+                        int hei = grfDay2Img.Rows.DefaultSize;
+                        //grfImg.Rows[row-1].Height = hei*6;
+                        CellRange rg1 = grfDay2Img.GetCellRange(row - 1, colDay2ImgPic);
+
+                        //PictureBox pb = new PictureBox();                            
+
+                        grfDay2Img[row - 1, colDay2PathPic] = file;
+                        //grfDay2Img[row - 1, colBtn] = "send";
+
+                        grfDay2Img[row - 1, colDay2ImgPic] = resizedImage;
+
+                        i++;
+                    }
+                    catch (SecurityException ex)
+                    {
+                        // The user lacks appropriate permissions to read files, discover paths, etc.
+                        MessageBox.Show("Security error. Please contact your administrator for details.\n\n" +
+                            "Error message: " + ex.Message + "\n\n" +
+                            "Details (send to Support):\n\n" + ex.StackTrace
+                        );
+                    }
+                    catch (Exception ex)
+                    {
+                        // Could not load the image - probably related to Windows file system permissions.
+                        MessageBox.Show("Cannot display the image: " + file.Substring(file.LastIndexOf('\\'))
+                            + ". You may not have permission to read the file, or " +
+                            "it may be corrupt.\n\nReported error: " + ex.Message);
+                    }
+                }
+                grfDay2Img.AutoSizeCols();
+                grfDay2Img.AutoSizeRows();
+            }
+        }
+
+        private void TC1_DoubleClick(object sender, EventArgs e)
+        {
+            //throw new NotImplementedException();
+            
         }
 
         private void BtnPrint_Click(object sender, EventArgs e)
@@ -888,6 +986,116 @@ namespace clinic_ivf.gui
                 //setGrfPosi();
                 //setGrdView();
                 //this.Dispose();
+            }
+        }
+        private void setGrfDay2Img()
+        {
+            grfDay2Img.Clear();
+            grfDay2Img.DataSource = null;
+            grfDay2Img.Rows.Count = 1;
+            grfDay2Img.Cols.Count = 6;
+            DataTable dt = new DataTable();
+
+            //grfExpn.Rows.Count = dt.Rows.Count + 1;
+            //grfCu.Rows.Count = 41;
+            //grfCu.Cols.Count = 4;
+            C1TextBox txt = new C1TextBox();
+            Button btn = new Button();
+            btn.BackColor = Color.Gray;
+            //btn.Click += BtnEditor_Click;
+            PictureBox img = new PictureBox();
+            //C1ComboBox cboproce = new C1ComboBox();
+            //ic.ivfDB.itmDB.setCboItem(cboproce);
+            grfDay2Img.Cols[colDay2ImgId].Editor = txt;
+            grfDay2Img.Cols[colDay2ImgNun].Editor = txt;
+            grfDay2Img.Cols[colDay2ImgDesc0].Editor = txt;
+            grfDay2Img.Cols[colDay2PathPic].Editor = txt;
+            //grfDay2Img.Cols[colDay2ImgBtn].Editor = btn;
+            grfDay2Img.Cols[colDay2ImgPic].Editor = img;
+
+            grfDay2Img.Cols[colDay2ImgId].Width = 250;
+            grfDay2Img.Cols[colDay2ImgPic].Width = 100;
+            grfDay2Img.Cols[colDay2ImgDesc0].Width = 100;
+            grfDay2Img.Cols[colDay2ImgNun].Width = 100;
+            grfDay2Img.Cols[colDay2PathPic].Width = 100;
+            //grfDay2Img.Cols[colDay2ImgBtn].Width = 50;
+            //grfDay2Img.Cols[colPathPic].Width = 100;
+
+            grfDay2Img.ShowCursor = true;
+            //grdFlex.Cols[colID].Caption = "no";
+            //grfDept.Cols[colCode].Caption = "รหัส";
+
+            grfDay2Img.Cols[colDay2ImgNun].Caption = "HN";
+            grfDay2Img.Cols[colDay2ImgDesc0].Caption = "Desc1";
+            grfDay2Img.Cols[colDay2PathPic].Caption = "pathpic";
+            //grfDay2Img.Cols[colDesc3].Caption = "Desc3";
+            //grfDay2Img.Cols[colDay2ImgBtn].Caption = "send";
+
+            //Hashtable ht = new Hashtable();
+            //foreach (DataRow dr in dt.Rows)
+            //{
+            //    ht.Add(dr["CategoryID"], LoadImage(dr["Picture"] as byte[]));
+            //}
+            //grfImg.Cols[colImg].ImageMap = ht;
+            grfDay2Img.Cols[colDay2ImgPic].ImageAndText = false;
+
+            //ContextMenu menuGw = new ContextMenu();
+            //menuGw.MenuItems.Add("&แก้ไข Patient", new EventHandler(ContextMenu_edit));
+            //grfDay2Img.ContextMenu = menuGw;
+
+            Color color = ColorTranslator.FromHtml(ic.iniC.grfRowColor);
+            //CellRange rg1 = grfBank.GetCellRange(1, colE, grfBank.Rows.Count, colE);
+            //rg1.Style = grfBank.Styles["date"];
+            //grfCu.Cols[colID].Visible = false;
+            for (int i = 1; i <= grfDay2Img.Rows.Count - 1; i++)
+            {
+                grfDay2Img[i, 0] = i;
+                //if (i % 2 == 0)
+                //grfPtt.Rows[i].StyleNew.BackColor = color;
+            }
+            grfDay2Img.Cols[colDay2ImgId].Visible = false;
+            grfDay2Img.Cols[colDay2PathPic].Visible = false;
+            grfDay2Img.Cols[colDay2ImgPic].AllowEditing = false;
+            grfDay2Img.AutoSizeCols();
+            grfDay2Img.AutoSizeRows();
+            theme1.SetTheme(grfDay2Img, "Office2016Colorful");
+
+        }
+        private void initGrfDay2Img()
+        {
+            grfDay2Img = new C1FlexGrid();
+            grfDay2Img.Font = fEdit;
+            grfDay2Img.Dock = System.Windows.Forms.DockStyle.Fill;
+            grfDay2Img.Location = new System.Drawing.Point(0, 0);
+
+            //FilterRow fr = new FilterRow(grfExpn);
+
+            grfDay2Img.DoubleClick += GrfDay2Img_DoubleClick;
+            //grfDay2.ChangeEdit += GrfDay2_ChangeEdit;
+            //grfDay2.CellChanged += GrfDay2_CellChanged;
+            ContextMenu menuGw = new ContextMenu();
+            //menuGw.MenuItems.Add("&แก้ไข รายการเบิก", new EventHandler(ContextMenu_edit));
+            //menuGw.MenuItems.Add("&แก้ไข", new EventHandler(ContextMenu_Gw_Edit));
+            //menuGw.MenuItems.Add("&ยกเลิก", new EventHandler(ContextMenu_Gw_Cancel));
+            grfDay2Img.ContextMenu = menuGw;
+            pnGrf2Img.Controls.Add(grfDay2Img);
+
+            theme1.SetTheme(grfDay2Img, "Office2010Blue");
+        }
+
+        private void GrfDay2Img_DoubleClick(object sender, EventArgs e)
+        {
+            //throw new NotImplementedException();
+            if (grfDay2Img.Row < 0) return;
+            if (grfDay2Img.Col == colDay2ImgPic)
+            {
+                //MessageBox.Show("a "+grfImg[grfImg.Row, colImg].ToString(), "");
+                int row = 0;
+                //int.TryParse(grfImg[grfImg.Row, colImg].ToString(), out row);
+                int.TryParse(grfDay2Img.Row.ToString(), out row);
+                //row *= 4;
+                FrmShowImage frm = new FrmShowImage(ic, grfDay2Img[row, colDay2ID] != null ? grfDay2Img[row, colDay2ID].ToString() : "", "", grfDay2Img[row, colDay2PathPic].ToString(), FrmShowImage.statusModule.LabOPU);
+                frm.ShowDialog(this);
             }
         }
 

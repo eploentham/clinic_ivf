@@ -352,8 +352,10 @@ namespace clinic_ivf.control
             {
                 ex = sur[1];
             }
-            ftpC.createDirectory("images/" + pttId);
-            ftpC.upload("images/"+pttId + "/" + filenamenew + "." + ex, localpathandfilename);
+            //ftpC.createDirectory("images/" + pttId);
+            ftpC.createDirectory("" );
+            //ftpC.upload("images/"+pttId + "/" + filenamenew + "." + ex, localpathandfilename);
+            ftpC.upload("images." + ex, localpathandfilename);
         }
         public void saveFilePatientHNtoServer(String hn,String filename, Image pic)
         {

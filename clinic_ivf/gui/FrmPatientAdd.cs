@@ -877,7 +877,7 @@ namespace clinic_ivf.gui
                 //int.TryParse(grfImg[grfImg.Row, colImg].ToString(), out row);
                 int.TryParse(grfImg.Row.ToString(), out row);
                 //row *= 4;
-                FrmShowImage frm = new FrmShowImage(ic, grfImg[row, colID] !=null? grfImg[row, colID].ToString():"", pttOldId,grfImg[row, colPathPic].ToString());
+                FrmShowImage frm = new FrmShowImage(ic, grfImg[row, colID] !=null? grfImg[row, colID].ToString():"", pttOldId,grfImg[row, colPathPic].ToString(), FrmShowImage.statusModule.Patient);
                 frm.ShowDialog(this);
             }
         }

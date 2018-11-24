@@ -22,7 +22,7 @@ namespace clinic_ivf.gui
         TextBox txtDesc,txtId;
         Button btnSend;
         Label lb2;
-        int newWidth = 400;
+        int newWidth = 320;
         public Font fV1B, fV1;
         Font fEdit, fEditB;
 
@@ -34,8 +34,9 @@ namespace clinic_ivf.gui
         PatientOld pttOld;
         PatientImage pttImg;
         Image resizedImage;
+        public enum statusModule { Patient, LabOPU}
 
-        public FrmShowImage(IvfControl ic, String pttImgId, String pttOldId, String filename)
+        public FrmShowImage(IvfControl ic, String pttImgId, String pttOldId, String filename, statusModule statusmodule)
         {
             this.filename = filename;
             this.ic = ic;
@@ -56,7 +57,7 @@ namespace clinic_ivf.gui
             pttOld = ic.ivfDB.pttOldDB.selectByPk1(pttOldId);
             pttImg = ic.ivfDB.pttImgDB.selectByPk1(pttImgId);
 
-            this.Size = new System.Drawing.Size(800, 600);
+            this.Size = new System.Drawing.Size(1024, 768);
             fEdit = new Font(ic.iniC.grdViewFontName, ic.grdViewFontSize, FontStyle.Regular);
 
             //this.Location = pp;
@@ -104,8 +105,7 @@ namespace clinic_ivf.gui
             
             pnR.Controls.Add(btnSend);
             Controls.Add(panel1);
-
-
+            
             String[] sur = filename.Split('.');
             String ex = "";
             if (sur.Length == 2)
@@ -116,8 +116,15 @@ namespace clinic_ivf.gui
             {
                 loadedImage = Image.FromFile(filename);
                 int originalWidth = loadedImage.Width;
-                int newWidth = 180;
-                resizedImage = loadedImage.GetThumbnailImage(newWidth, (newWidth * loadedImage.Height) / originalWidth, null, IntPtr.Zero);
+                int newWidth = 480;
+                if (originalWidth > newWidth)
+                {
+                    resizedImage = loadedImage.GetThumbnailImage(newWidth, (newWidth * loadedImage.Height) / originalWidth, null, IntPtr.Zero);
+                }
+                else
+                {
+                    resizedImage = loadedImage;
+                }
             }
             else
             {

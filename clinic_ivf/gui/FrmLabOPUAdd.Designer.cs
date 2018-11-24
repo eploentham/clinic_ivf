@@ -210,14 +210,14 @@
             this.label49 = new System.Windows.Forms.Label();
             this.label48 = new System.Windows.Forms.Label();
             this.c1CommandDock1 = new C1.Win.C1Command.C1CommandDock();
-            this.c1DockingTab1 = new C1.Win.C1Command.C1DockingTab();
+            this.tC1 = new C1.Win.C1Command.C1DockingTab();
             this.tabDay2 = new C1.Win.C1Command.C1DockingTabPage();
             this.tabDay3 = new C1.Win.C1Command.C1DockingTabPage();
             this.tabDay5 = new C1.Win.C1Command.C1DockingTabPage();
             this.tabDay6 = new C1.Win.C1Command.C1DockingTabPage();
-            this.c1DockingTabPage5 = new C1.Win.C1Command.C1DockingTabPage();
             this.sB = new System.Windows.Forms.StatusStrip();
             this.sB1 = new System.Windows.Forms.ToolStripStatusLabel();
+            this.pnGrf2Img = new System.Windows.Forms.Panel();
             ((System.ComponentModel.ISupportInitialize)(this.theme1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.spMain)).BeginInit();
             this.spMain.Panel1.SuspendLayout();
@@ -345,8 +345,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtEmbryoForEtNO)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.c1CommandDock1)).BeginInit();
             this.c1CommandDock1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.c1DockingTab1)).BeginInit();
-            this.c1DockingTab1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.tC1)).BeginInit();
+            this.tC1.SuspendLayout();
+            this.tabDay2.SuspendLayout();
             this.sB.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -3172,7 +3173,7 @@
             // c1CommandDock1
             // 
             this.c1CommandDock1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.c1CommandDock1.Controls.Add(this.c1DockingTab1);
+            this.c1CommandDock1.Controls.Add(this.tC1);
             this.c1CommandDock1.Dock = System.Windows.Forms.DockStyle.Right;
             this.c1CommandDock1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
             this.c1CommandDock1.Id = 2;
@@ -3181,36 +3182,36 @@
             this.c1CommandDock1.Size = new System.Drawing.Size(197, 970);
             this.theme1.SetTheme(this.c1CommandDock1, "(default)");
             // 
-            // c1DockingTab1
+            // tC1
             // 
-            this.c1DockingTab1.Alignment = System.Windows.Forms.TabAlignment.Right;
-            this.c1DockingTab1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.c1DockingTab1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.c1DockingTab1.CanAutoHide = true;
-            this.c1DockingTab1.CanCloseTabs = true;
-            this.c1DockingTab1.CanMoveTabs = true;
-            this.c1DockingTab1.Controls.Add(this.tabDay2);
-            this.c1DockingTab1.Controls.Add(this.tabDay3);
-            this.c1DockingTab1.Controls.Add(this.tabDay5);
-            this.c1DockingTab1.Controls.Add(this.tabDay6);
-            this.c1DockingTab1.Controls.Add(this.c1DockingTabPage5);
-            this.c1DockingTab1.HotTrack = true;
-            this.c1DockingTab1.Location = new System.Drawing.Point(0, 0);
-            this.c1DockingTab1.Name = "c1DockingTab1";
-            this.c1DockingTab1.SelectedIndex = 4;
-            this.c1DockingTab1.ShowCaption = true;
-            this.c1DockingTab1.Size = new System.Drawing.Size(197, 970);
-            this.c1DockingTab1.TabIndex = 0;
-            this.c1DockingTab1.TabSizeMode = C1.Win.C1Command.TabSizeModeEnum.Fit;
-            this.c1DockingTab1.TabsShowFocusCues = false;
-            this.c1DockingTab1.TabsSpacing = 2;
-            this.c1DockingTab1.TabStyle = C1.Win.C1Command.TabStyleEnum.Office2007;
-            this.theme1.SetTheme(this.c1DockingTab1, "(default)");
+            this.tC1.Alignment = System.Windows.Forms.TabAlignment.Right;
+            this.tC1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.tC1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.tC1.CanAutoHide = true;
+            this.tC1.CanCloseTabs = true;
+            this.tC1.CanMoveTabs = true;
+            this.tC1.Controls.Add(this.tabDay2);
+            this.tC1.Controls.Add(this.tabDay3);
+            this.tC1.Controls.Add(this.tabDay5);
+            this.tC1.Controls.Add(this.tabDay6);
+            this.tC1.HotTrack = true;
+            this.tC1.Location = new System.Drawing.Point(0, 0);
+            this.tC1.Name = "tC1";
+            this.tC1.SelectedIndex = 4;
+            this.tC1.ShowCaption = true;
+            this.tC1.Size = new System.Drawing.Size(197, 970);
+            this.tC1.TabIndex = 0;
+            this.tC1.TabSizeMode = C1.Win.C1Command.TabSizeModeEnum.Fit;
+            this.tC1.TabsShowFocusCues = false;
+            this.tC1.TabsSpacing = 2;
+            this.tC1.TabStyle = C1.Win.C1Command.TabStyleEnum.Office2007;
+            this.theme1.SetTheme(this.tC1, "(default)");
             // 
             // tabDay2
             // 
             this.tabDay2.CaptionText = "Day2";
             this.tabDay2.CaptionVisible = true;
+            this.tabDay2.Controls.Add(this.pnGrf2Img);
             this.tabDay2.Image = global::clinic_ivf.Properties.Resources.FixErrors_small;
             this.tabDay2.Location = new System.Drawing.Point(4, 1);
             this.tabDay2.Name = "tabDay2";
@@ -3251,15 +3252,6 @@
             this.tabDay6.TabIndex = 3;
             this.tabDay6.Text = "Day6";
             // 
-            // c1DockingTabPage5
-            // 
-            this.c1DockingTabPage5.CaptionVisible = true;
-            this.c1DockingTabPage5.Location = new System.Drawing.Point(4, 1);
-            this.c1DockingTabPage5.Name = "c1DockingTabPage5";
-            this.c1DockingTabPage5.Size = new System.Drawing.Size(168, 968);
-            this.c1DockingTabPage5.TabIndex = 4;
-            this.c1DockingTabPage5.Text = "Page5";
-            // 
             // sB
             // 
             this.sB.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -3275,6 +3267,17 @@
             this.sB1.Name = "sB1";
             this.sB1.Size = new System.Drawing.Size(118, 17);
             this.sB1.Text = "toolStripStatusLabel1";
+            // 
+            // pnGrf2Img
+            // 
+            this.pnGrf2Img.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.pnGrf2Img.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pnGrf2Img.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.pnGrf2Img.Location = new System.Drawing.Point(0, 22);
+            this.pnGrf2Img.Name = "pnGrf2Img";
+            this.pnGrf2Img.Size = new System.Drawing.Size(168, 946);
+            this.pnGrf2Img.TabIndex = 0;
+            this.theme1.SetTheme(this.pnGrf2Img, "(default)");
             // 
             // FrmLabOPUAdd
             // 
@@ -3421,8 +3424,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtEmbryoForEtNO)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.c1CommandDock1)).EndInit();
             this.c1CommandDock1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.c1DockingTab1)).EndInit();
-            this.c1DockingTab1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.tC1)).EndInit();
+            this.tC1.ResumeLayout(false);
+            this.tabDay2.ResumeLayout(false);
             this.sB.ResumeLayout(false);
             this.sB.PerformLayout();
             this.ResumeLayout(false);
@@ -3536,12 +3540,11 @@
         private C1.Win.C1Input.C1Button btnEdit;
         private C1.Win.C1Input.C1Button btnSaveMatura;
         private C1.Win.C1Command.C1CommandDock c1CommandDock1;
-        private C1.Win.C1Command.C1DockingTab c1DockingTab1;
+        private C1.Win.C1Command.C1DockingTab tC1;
         private C1.Win.C1Command.C1DockingTabPage tabDay2;
         private C1.Win.C1Command.C1DockingTabPage tabDay3;
         private C1.Win.C1Command.C1DockingTabPage tabDay5;
         private C1.Win.C1Command.C1DockingTabPage tabDay6;
-        private C1.Win.C1Command.C1DockingTabPage c1DockingTabPage5;
         private System.Windows.Forms.SplitContainer splitContainer1;
         private System.Windows.Forms.SplitContainer splitContainer2;
         private System.Windows.Forms.SplitContainer splitContainer3;
@@ -3622,5 +3625,6 @@
         private System.Windows.Forms.Panel pn6;
         private C1.Win.C1Input.C1ComboBox cboEmbryologistDay6;
         private C1.Win.C1Input.C1Button btnSaveDay6;
+        private System.Windows.Forms.Panel pnGrf2Img;
     }
 }
