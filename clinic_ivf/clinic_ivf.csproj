@@ -110,11 +110,11 @@
     <Compile Include="gui\FrmAppoinmentView.Designer.cs">
       <DependentUpon>FrmAppoinmentView.cs</DependentUpon>
     </Compile>
-    <Compile Include="gui\FrmAppointmentAdd.cs">
+    <Compile Include="gui\FrmAppointmentDonorAdd.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="gui\FrmAppointmentAdd.Designer.cs">
-      <DependentUpon>FrmAppointmentAdd.cs</DependentUpon>
+    <Compile Include="gui\FrmAppointmentDonorAdd.Designer.cs">
+      <DependentUpon>FrmAppointmentDonorAdd.cs</DependentUpon>
     </Compile>
     <Compile Include="gui\FrmConvertData.cs">
       <SubType>Form</SubType>
@@ -348,6 +348,8 @@
     <Compile Include="objdb\JobPxDetailDB.cs" />
     <Compile Include="objdb\LabOpuEmbryoDevDB.cs" />
     <Compile Include="objdb\OldJobSpecialDB.cs" />
+    <Compile Include="objdb\PatientAppointmentDB.cs" />
+    <Compile Include="object1\PatientAppointment.cs" />
     <Compile Include="objdb\PatientImageDB.cs" />
     <Compile Include="objdb\PatientOldDB.cs" />
     <Compile Include="objdb\VisitDB.cs" />
@@ -432,8 +434,8 @@
     <EmbeddedResource Include="gui\FrmAppoinmentView.resx">
       <DependentUpon>FrmAppoinmentView.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="gui\FrmAppointmentAdd.resx">
-      <DependentUpon>FrmAppointmentAdd.cs</DependentUpon>
+    <EmbeddedResource Include="gui\FrmAppointmentDonorAdd.resx">
+      <DependentUpon>FrmAppointmentDonorAdd.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="gui\FrmConvertData.resx">
       <DependentUpon>FrmConvertData.cs</DependentUpon>

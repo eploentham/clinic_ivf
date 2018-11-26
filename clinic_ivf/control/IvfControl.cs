@@ -329,6 +329,29 @@ namespace clinic_ivf.control
 
             return c;
         }
+        public C1ComboBox setCboApmTime(C1ComboBox c)
+        {
+            ComboBoxItem item = new ComboBoxItem();
+
+            for(int i = 7; i <= 18; i++)
+            {
+                String val = "", txt = "";
+                val = i.ToString("00")+":00";
+                txt = val;
+                item = new ComboBoxItem();
+                item.Text = val;
+                item.Value = txt;
+
+                val = i.ToString("00") + ":30";
+                txt = val;
+                item = new ComboBoxItem();
+                item.Text = val;
+                item.Value = txt;
+                c.Items.Add(item);
+            }
+
+            return c;
+        }
         public void savePicPatienttoServer( String filename, Image pic)
         {
             if (File.Exists(@"temppic" + System.Drawing.Imaging.ImageFormat.Jpeg))

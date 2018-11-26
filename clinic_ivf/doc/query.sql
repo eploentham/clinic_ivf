@@ -1285,3 +1285,38 @@ ADD COLUMN `status_doctor` VARCHAR(255) NULL AFTER `sort1`,
 ADD COLUMN `status_embryologist` VARCHAR(255) NULL AFTER `status_doctor`;
 
 
+61-11-26
+CREATE TABLE t_patient_appointment
+(
+    t_patient_appointment_id int(11) NOT NULL AUTO_INCREMENT,
+    t_patient_id character varchar(255) COLLATE utf8_bin DEFAULT NULL,
+    patient_appoint_date_time varchar(255) COLLATE utf8_bin DEFAULT NULL,
+    patient_appointment_date varchar(255) COLLATE utf8_bin DEFAULT NULL,
+    patient_appointment_time varchar(255) COLLATE utf8_bin DEFAULT NULL,
+    patient_appointment character varchar(255) COLLATE utf8_bin DEFAULT NULL,
+    patient_appointment_doctor int(11)  DEFAULT NULL,
+    patient_appointment_servicepoint int(11)  DEFAULT NULL,
+    patient_appointment_notice varchar(255) COLLATE utf8_bin DEFAULT NULL,
+    patient_appointment_staff int(11)  DEFAULT NULL,
+    t_visit_id int(11) COLLATE pg_catalog."default",
+    patient_appointment_auto_visit varchar(255) COLLATE utf8_bin DEFAULT NULL,
+    b_visit_queue_setup_id int(11)  DEFAULT NULL,
+    patient_appointment_status varchar(255) COLLATE utf8_bin DEFAULT NULL,
+    patient_appointment_vn character varchar(255) COLLATE utf8_bin DEFAULT NULL,
+    patient_appointment_staff_record int(11)  DEFAULT NULL,
+    patient_appointment_record_date_time varchar(255) COLLATE utf8_bin DEFAULT NULL,
+    patient_appointment_staff_update varchar(255) COLLATE utf8_bin DEFAULT NULL,
+    patient_appointment_update_date_time varchar(255) COLLATE utf8_bin DEFAULT NULL,
+    patient_appointment_staff_cancel varchar(255) COLLATE utf8_bin DEFAULT NULL,
+    patient_appointment_cancel_date_time varchar(255) COLLATE utf8_bin DEFAULT NULL,
+    patient_appointment_active varchar(255) COLLATE utf8_bin DEFAULT NULL,
+    r_rp1853_aptype_id character int(11)  DEFAULT NULL,
+    patient_appointment_end_time varchar(255) COLLATE utf8_bin DEFAULT NULL,
+    appointment_confirm_date varchar(255) COLLATE utf8_bin DEFAULT NULL,
+    change_appointment_cause varchar(255) COLLATE utf8_bin DEFAULT NULL,
+    visit_id_make_appointment int(11)  DEFAULT NULL,
+    patient_appointment_clinic int(11)  DEFAULT NULL,
+    PRIMARY KEY (`t_patient_appointment_id`)
+)ENGINE=MyISAM AUTO_INCREMENT=2170000001 DEFAULT CHARSET=utf8 COLLATE=utf8_bin COMMENT='id=217';
+ALTER TABLE t_patient_appointment AUTO_INCREMENT = 2170000000;
+

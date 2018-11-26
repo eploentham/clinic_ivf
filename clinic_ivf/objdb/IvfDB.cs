@@ -43,6 +43,7 @@ namespace clinic_ivf.objdb
         public OldJobSpecialDB oJsDB;
         public LabOpuDB opuDB;
         public LabOpuEmbryoDevDB opuEmDevDB;
+        PatientAppointmentDB pApmDB;
 
         public IvfDB(ConnectDB c)
         {
@@ -84,6 +85,7 @@ namespace clinic_ivf.objdb
             oJsDB = new OldJobSpecialDB(conn);
             opuDB = new LabOpuDB(conn);
             opuEmDevDB = new LabOpuEmbryoDevDB(conn);
+            pApmDB = new PatientAppointmentDB(conn);
 
             Console.WriteLine("ivfDB end");
         }
