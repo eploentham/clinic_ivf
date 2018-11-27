@@ -22,6 +22,7 @@ namespace clinic_ivf.gui
         Patient ptt;
         PatientOld pttO;
         VisitOld vsOld;
+        Visit vs;
 
         Font fEdit, fEditB;
         Color bg, fc;
@@ -100,8 +101,18 @@ namespace clinic_ivf.gui
             if (btnVisit.Text.Equals("Confirm"))
             {
                 stt.Hide();
-                setVisitOld();
-                String re = ic.ivfDB.vsOldDB.insertVisitOld(vsOld, txtStfConfirmID.Text);
+                
+                String re = "";
+                if (ic.iniC.statusAppDonor.Equals("1"))
+                {
+                    setVisit();
+                    re = ic.ivfDB.vsDB.insertVisit(vs, txtStfConfirmID.Text);
+                }
+                else
+                {
+                    setVisitOld();
+                    re = ic.ivfDB.vsOldDB.insertVisitOld(vsOld, txtStfConfirmID.Text);
+                }
                 long chk = 0;
                 if (long.TryParse(re, out chk))
                 {
@@ -155,100 +166,86 @@ namespace clinic_ivf.gui
 
         private void setControl(String pttid, String pttOid)
         {
-            ptt = ic.ivfDB.pttDB.selectByPk1(pttid);
-            if (ptt.t_patient_id.Equals(""))
+            if (ic.iniC.statusAppDonor.Equals("1"))
             {
-                ptt = ic.ivfDB.pttDB.selectByIDold(pttid);
-            }
-            
-            txtHn.Value = ptt.patient_hn;
-            txtPttId.Value = ptt.t_patient_id;
-            txtPttName.Value = ptt.patient_firstname;
-            txtPttLName.Value = ptt.patient_lastname;
-            txtPttNameE.Value = ptt.patient_firstname_e;
-            txtPttLNameE.Value = ptt.patient_lastname_e;
-            txtRemark.Value = ptt.remark;
-            txtLineID.Value = ptt.line_id;
-            txtEmail.Value = ptt.email;
-            txtMobile1.Value = ptt.mobile1;
-            txtMobile2.Value = ptt.mobile2;
-            txtPid.Value = ptt.pid;
-            txtPaasport.Value = ptt.passport;
-                                   
-            txtRemark.Value = ptt.remark;
-            txtDob.Value = ptt.patient_birthday;
-            
-            ic.setC1Combo(cboPrefix, ptt.f_patient_prefix_id);
-            ic.setC1Combo(cboSex, ptt.f_sex_id);
-            ic.setC1Combo(cboMarital, ptt.f_patient_marriage_status_id);
-            ic.setC1Combo(cboBloodG, ptt.f_patient_blood_group_id);
-            ic.setC1Combo(CboNation, ptt.f_patient_nation_id);
-            ic.setC1Combo(CboEduca, ptt.f_patient_education_type_id);
-            ic.setC1Combo(cboRace, ptt.f_patient_race_id);
-            ic.setC1Combo(cboRg, ptt.f_patient_religion_id);
-            ic.setC1Combo(cboPttType, ptt.patient_type);
-            //ic.setC1Combo(cboBsp, ptt.patient_type);
+                ptt = ic.ivfDB.pttDB.selectByPk1(pttid);
+                if (ptt.t_patient_id.Equals(""))
+                {
+                    ptt = ic.ivfDB.pttDB.selectByIDold(pttid);
+                }
 
-            //ic.setC1Combo(cboCouPrefix, ptt.f_patient_religion_id);
-            //ic.setC1Combo(cboRg, ptt.f_patient_religion_id);
-            //ic.setC1Combo(cboRg, ptt.f_patient_religion_id);
-            chkChronic.Checked = ptt.status_chronic.Equals("1") ? true : false;
-            chkDenyAllergy.Checked = ptt.status_deny_allergy.Equals("1") ? true : false;
+                txtHn.Value = ptt.patient_hn;
+                txtPttId.Value = ptt.t_patient_id;
+                txtPttName.Value = ptt.patient_firstname;
+                txtPttLName.Value = ptt.patient_lastname;
+                txtPttNameE.Value = ptt.patient_firstname_e;
+                txtPttLNameE.Value = ptt.patient_lastname_e;
+                txtRemark.Value = ptt.remark;
+                txtLineID.Value = ptt.line_id;
+                txtEmail.Value = ptt.email;
+                txtMobile1.Value = ptt.mobile1;
+                txtMobile2.Value = ptt.mobile2;
+                txtPid.Value = ptt.pid;
+                txtPaasport.Value = ptt.passport;
+
+                txtRemark.Value = ptt.remark;
+                txtDob.Value = ptt.patient_birthday;
+
+                ic.setC1Combo(cboPrefix, ptt.f_patient_prefix_id);
+                ic.setC1Combo(cboSex, ptt.f_sex_id);
+                ic.setC1Combo(cboMarital, ptt.f_patient_marriage_status_id);
+                ic.setC1Combo(cboBloodG, ptt.f_patient_blood_group_id);
+                ic.setC1Combo(CboNation, ptt.f_patient_nation_id);
+                ic.setC1Combo(CboEduca, ptt.f_patient_education_type_id);
+                ic.setC1Combo(cboRace, ptt.f_patient_race_id);
+                ic.setC1Combo(cboRg, ptt.f_patient_religion_id);
+                ic.setC1Combo(cboPttType, ptt.patient_type);
+                //ic.setC1Combo(cboBsp, ptt.patient_type);
+
+                //ic.setC1Combo(cboCouPrefix, ptt.f_patient_religion_id);
+                //ic.setC1Combo(cboRg, ptt.f_patient_religion_id);
+                //ic.setC1Combo(cboRg, ptt.f_patient_religion_id);
+                chkChronic.Checked = ptt.status_chronic.Equals("1") ? true : false;
+                chkDenyAllergy.Checked = ptt.status_deny_allergy.Equals("1") ? true : false;
+            }
+            else
+            {
+                pttO = ic.ivfDB.pttOldDB.selectByPk1(pttOid);
+                txtHn.Value = pttO.PIDS;
+                txtPttId.Value = pttO.PID;
+                txtPttNameE.Value = pttO.PName;
+                txtPttLNameE.Value = pttO.PSurname;
+                
+                txtIdOld.Value = pttO.PID;
+
+                txtPttName.Value = pttO.OName;
+                txtPttLName.Value = pttO.OSurname;
+                //txtContFname1.Value = pttO.EmergencyPersonalContact;
+                txtDob.Value = pttO.DateOfBirth;
+                ic.setC1Combo(cboAgent, pttO.AgentID);
+                ic.setC1Combo(cboPttType, pttO.PatientTypeID);
+                //ic.setC1Combo(cboCrl, pttO.PaymentID);
+                ic.setC1Combo(cboSex, pttO.SexID);
+                ic.setC1Combo(cboMarital, pttO.MaritalID);
+                ic.setC1Combo(cboRg, pttO.Religion);
+                
+                if (pttO.IDNumber.Length == 10)
+                {
+
+                }
+                //txtPid.Value = pttO.IDNumber.Length == 10 ? pttO.IDNumber : "";
+                //txtPaasport.Value = pttO.IDNumber.Length != 10 ? pttO.IDNumber : "";
+                txtPid.Value = pttO.IDNumber;
+                //cboName1Rl.Text = pttO.RelationshipID;
+                //ic.setC1Combo(cboName1Rl, pttO.RelationshipID);
+                //barcode.Text = txtHn.Text;
+                txtEmail.Value = pttO.Email;
+                
+                filenamepic = txtHn.Text;
+
+                ic.setC1Combo(cboAgent, ptt.agent);
+            }
                         
-
-            pttO = ic.ivfDB.pttOldDB.selectByPk1(pttOid);
-            txtHn.Value = pttO.PIDS;
-            txtPttId.Value = pttO.PID;
-            txtPttNameE.Value = pttO.PName;
-            txtPttLNameE.Value = pttO.PSurname;
-
-            
-            txtIdOld.Value = pttO.PID;
-            
-            txtPttName.Value = pttO.OName;
-            txtPttLName.Value = pttO.OSurname;
-            //txtContFname1.Value = pttO.EmergencyPersonalContact;
-            txtDob.Value = pttO.DateOfBirth;
-            ic.setC1Combo(cboAgent, pttO.AgentID);
-            ic.setC1Combo(cboPttType, pttO.PatientTypeID);
-            //ic.setC1Combo(cboCrl, pttO.PaymentID);
-            ic.setC1Combo(cboSex, pttO.SexID);
-            ic.setC1Combo(cboMarital, pttO.MaritalID);
-            ic.setC1Combo(cboRg, pttO.Religion);
-            //cboProv.Value = pttO.Province;
-            //cboDist.Value = pttO.District;
-            //txtAddrNo.Value = pttO.Address;
-            //txtMoo.Value = pttO.Moo;
-            //txtRoad.Value = pttO.Road;
-            if (pttO.IDNumber.Length == 10)
-            {
-
-            }
-            //txtPid.Value = pttO.IDNumber.Length == 10 ? pttO.IDNumber : "";
-            //txtPaasport.Value = pttO.IDNumber.Length != 10 ? pttO.IDNumber : "";
-            txtPid.Value = pttO.IDNumber;
-            //cboName1Rl.Text = pttO.RelationshipID;
-            //ic.setC1Combo(cboName1Rl, pttO.RelationshipID);
-            //barcode.Text = txtHn.Text;
-            txtEmail.Value = pttO.Email;
-
-
-            filenamepic = txtHn.Text;
-            //ptt.patient_couple_f_patient_prefix_id = cboCouRel.SelectedItem
-
-            //host = ic.iniC.hostFTP;
-            //user = ic.iniC.userFTP;
-            //pass = ic.iniC.passFTP;
-            //MemoryStream stream = new MemoryStream();
-            //stream = ic.ftpC.download(DateTime.Now.Year.ToString()+"/"+txtHn.Text+"."+ System.Drawing.Imaging.ImageFormat.Jpeg);
-            ////image1 = new Image();
-            //Bitmap bitmap = new Bitmap(stream);
-            ////image1 = bitmap;
-            //picPtt.Image = bitmap;
-            //picPtt.SizeMode = PictureBoxSizeMode.StretchImage;
-
-            ic.setC1Combo(cboAgent, ptt.agent);
-            
             Thread threadA = new Thread(new ParameterizedThreadStart(ExecuteA));
             threadA.Start();
         }
@@ -285,9 +282,30 @@ namespace clinic_ivf.gui
             vsOld.LVSID = "";
             vsOld.IntLock = "0";
         }
+        private void setVisit()
+        {
+            vs = ic.ivfDB.vsDB.setVisit1(vs);
+            vs.t_visit_id = txtID.Text;
+            vs.visit_hn = txtHn.Text;
+            vs.t_patient_id = txtPttId.Text;
+            vs.patient_firstname = txtPttName.Text;
+            vs.patient_lastname = txtPttLName.Text;
+            vs.patient_firstname_e = txtPttNameE.Text;
+            vs.patient_lastname_e = txtPttLNameE.Text;
+            vs.remark = txtRemark.Text;
+            vs.line_id = txtLineID.Text;
+            vs.email = txtEmail.Text;
+            vs.mobile1 = txtMobile1.Text;
+            vs.mobile2 = txtMobile2.Text;
+            vs.t_patient_id = txtPid.Text;
+            vs.passport = txtPaasport.Text;
+
+            vs.remark = txtRemark.Text;
+            vs.patient_birthday = txtDob.Text;
+        }
         private void FrmVisitAdd_Load(object sender, EventArgs e)
         {
-
+            
         }
     }
 }

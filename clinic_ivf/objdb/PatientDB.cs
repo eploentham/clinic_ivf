@@ -143,7 +143,7 @@ namespace clinic_ivf.objdb
         }
         private void chkNull(Patient p)
         {
-            int chk = 0;
+            long chk = 0;
             decimal chk1 = 0;
 
             p.date_modi = p.date_modi == null ? "" : p.date_modi;
@@ -232,31 +232,31 @@ namespace clinic_ivf.objdb
             p.contract = p.contract == null ? "" : p.contract;
             p.insurance = p.insurance == null ? "" : p.insurance;
 
-            p.f_patient_prefix_id = int.TryParse(p.f_patient_prefix_id, out chk) ? chk.ToString() : "0";
-            p.f_sex_id = int.TryParse(p.f_sex_id, out chk) ? chk.ToString() : "0";
-            p.f_patient_marriage_status_id = int.TryParse(p.f_patient_marriage_status_id, out chk) ? chk.ToString() : "0";
-            p.f_patient_occupation_id = int.TryParse(p.f_patient_occupation_id, out chk) ? chk.ToString() : "0";
-            p.f_patient_race_id = int.TryParse(p.f_patient_race_id, out chk) ? chk.ToString() : "0";
-            p.f_patient_nation_id = int.TryParse(p.f_patient_nation_id, out chk) ? chk.ToString() : "0";
-            p.f_patient_religion_id = int.TryParse(p.f_patient_religion_id, out chk) ? chk.ToString() : "0";
-            p.f_patient_education_type_id = int.TryParse(p.f_patient_education_type_id, out chk) ? chk.ToString() : "0";
-            p.f_patient_family_status_id = int.TryParse(p.f_patient_family_status_id, out chk) ? chk.ToString() : "0";
-            p.f_patient_discharge_status_id = int.TryParse(p.f_patient_discharge_status_id, out chk) ? chk.ToString() : "0";
-            p.f_patient_blood_group_id = int.TryParse(p.f_patient_blood_group_id, out chk) ? chk.ToString() : "0";
-            p.f_patient_foreigner_id = int.TryParse(p.f_patient_foreigner_id, out chk) ? chk.ToString() : "0";
-            p.f_patient_area_status_id = int.TryParse(p.f_patient_area_status_id, out chk) ? chk.ToString() : "0";
-            p.f_patient_relation_id = int.TryParse(p.f_patient_relation_id, out chk) ? chk.ToString() : "0";
-            p.patient_contact_sex_id = int.TryParse(p.patient_contact_sex_id, out chk) ? chk.ToString() : "0";
-            p.t_health_family_id = int.TryParse(p.t_health_family_id, out chk) ? chk.ToString() : "0";
-            p.contact_id = int.TryParse(p.contact_id, out chk) ? chk.ToString() : "0";
-            p.contact_join_id = int.TryParse(p.contact_join_id, out chk) ? chk.ToString() : "0";
-            p.t_person_id = int.TryParse(p.t_person_id, out chk) ? chk.ToString() : "0";
-            p.patient_contact_f_patient_prefix_id = int.TryParse(p.patient_contact_f_patient_prefix_id, out chk) ? chk.ToString() : "0";
-            p.patient_couple_f_patient_prefix_id = int.TryParse(p.patient_couple_f_patient_prefix_id, out chk) ? chk.ToString() : "0";
-            p.patient_contact_f_patient_relation_id = int.TryParse(p.patient_contact_f_patient_relation_id, out chk) ? chk.ToString() : "0";
-            p.patient_coulpe_f_patient_relation_id = int.TryParse(p.patient_coulpe_f_patient_relation_id, out chk) ? chk.ToString() : "0";
-            p.b_contract_plans_id = int.TryParse(p.b_contract_plans_id, out chk) ? chk.ToString() : "0";
-            p.t_patient_id_old = int.TryParse(p.t_patient_id_old, out chk) ? chk.ToString() : "0";
+            p.f_patient_prefix_id = long.TryParse(p.f_patient_prefix_id, out chk) ? chk.ToString() : "0";
+            p.f_sex_id = long.TryParse(p.f_sex_id, out chk) ? chk.ToString() : "0";
+            p.f_patient_marriage_status_id = long.TryParse(p.f_patient_marriage_status_id, out chk) ? chk.ToString() : "0";
+            p.f_patient_occupation_id = long.TryParse(p.f_patient_occupation_id, out chk) ? chk.ToString() : "0";
+            p.f_patient_race_id = long.TryParse(p.f_patient_race_id, out chk) ? chk.ToString() : "0";
+            p.f_patient_nation_id = long.TryParse(p.f_patient_nation_id, out chk) ? chk.ToString() : "0";
+            p.f_patient_religion_id = long.TryParse(p.f_patient_religion_id, out chk) ? chk.ToString() : "0";
+            p.f_patient_education_type_id = long.TryParse(p.f_patient_education_type_id, out chk) ? chk.ToString() : "0";
+            p.f_patient_family_status_id = long.TryParse(p.f_patient_family_status_id, out chk) ? chk.ToString() : "0";
+            p.f_patient_discharge_status_id = long.TryParse(p.f_patient_discharge_status_id, out chk) ? chk.ToString() : "0";
+            p.f_patient_blood_group_id = long.TryParse(p.f_patient_blood_group_id, out chk) ? chk.ToString() : "0";
+            p.f_patient_foreigner_id = long.TryParse(p.f_patient_foreigner_id, out chk) ? chk.ToString() : "0";
+            p.f_patient_area_status_id = long.TryParse(p.f_patient_area_status_id, out chk) ? chk.ToString() : "0";
+            p.f_patient_relation_id = long.TryParse(p.f_patient_relation_id, out chk) ? chk.ToString() : "0";
+            p.patient_contact_sex_id = long.TryParse(p.patient_contact_sex_id, out chk) ? chk.ToString() : "0";
+            p.t_health_family_id = long.TryParse(p.t_health_family_id, out chk) ? chk.ToString() : "0";
+            p.contact_id = long.TryParse(p.contact_id, out chk) ? chk.ToString() : "0";
+            p.contact_join_id = long.TryParse(p.contact_join_id, out chk) ? chk.ToString() : "0";
+            p.t_person_id = long.TryParse(p.t_person_id, out chk) ? chk.ToString() : "0";
+            p.patient_contact_f_patient_prefix_id = long.TryParse(p.patient_contact_f_patient_prefix_id, out chk) ? chk.ToString() : "0";
+            p.patient_couple_f_patient_prefix_id = long.TryParse(p.patient_couple_f_patient_prefix_id, out chk) ? chk.ToString() : "0";
+            p.patient_contact_f_patient_relation_id = long.TryParse(p.patient_contact_f_patient_relation_id, out chk) ? chk.ToString() : "0";
+            p.patient_coulpe_f_patient_relation_id = long.TryParse(p.patient_coulpe_f_patient_relation_id, out chk) ? chk.ToString() : "0";
+            p.b_contract_plans_id = long.TryParse(p.b_contract_plans_id, out chk) ? chk.ToString() : "0";
+            p.t_patient_id_old = long.TryParse(p.t_patient_id_old, out chk) ? chk.ToString() : "0";
 
             p.latitude = decimal.TryParse(p.latitude, out chk1) ? chk1.ToString() : "0";
             p.longitude = decimal.TryParse(p.longitude, out chk1) ? chk1.ToString() : "0";
@@ -626,7 +626,7 @@ namespace clinic_ivf.objdb
             {
                 wherepassport = " or ( ptt." + ptt.passport + " like '%" + search.Trim() + "%' )";
             }
-            String sql = "select ptt." + ptt.t_patient_id + ",ptt." + ptt.patient_hn + ",CONCAT(IFNULL(fpp.patient_prefix_description,''),' ', ptt." + ptt.patient_firstname_e + ",' ',ptt." + ptt.patient_lastname_e + ") as name,ptt." + ptt.remark + " " +
+            String sql = "select ptt." + ptt.t_patient_id + " as PID,ptt." + ptt.patient_hn + " as PIDS,CONCAT(IFNULL(fpp.patient_prefix_description,''),' ', ptt." + ptt.patient_firstname_e + ",' ',ptt." + ptt.patient_lastname_e + ") as name,ptt." + ptt.remark + " as EmergencyPersonalContact " +
                 "From " + ptt.table + " ptt " +
                 "Left join f_patient_prefix fpp on fpp.f_patient_prefix_id = ptt.f_patient_prefix_id " +
                 "Where " + whereHN + whereName + wherepid+ wherenameE+ " and ptt."+ptt.active+ "='1'" +

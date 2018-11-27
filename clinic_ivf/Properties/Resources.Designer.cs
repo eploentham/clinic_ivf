@@ -1961,6 +1961,16 @@ namespace clinic_ivf.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
+        /// </summary>
+        internal static System.Drawing.Icon Treetog_I_Documents {
+            get {
+                object obj = ResourceManager.GetObject("Treetog_I_Documents", resourceCulture);
+                return ((System.Drawing.Icon)(obj));
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
         internal static System.Drawing.Bitmap Underline_small {

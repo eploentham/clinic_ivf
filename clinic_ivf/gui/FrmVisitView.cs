@@ -61,7 +61,7 @@ namespace clinic_ivf.gui
             txtSearch.KeyUp += TxtSearch_KeyUp;
 
             initGrfPtt();
-            setGrfPtt("");
+            setGrfPtt();
         }
         private void BtnNew_Click(object sender, EventArgs e)
         {
@@ -76,7 +76,7 @@ namespace clinic_ivf.gui
             idnew = id1 > id2 ? id1 : id2;
             idold = id1 < id2 ? id2 : id1;
             
-            FrmVisitAdd frm = new FrmVisitAdd(ic, idnew.ToString(), vsId, idold.ToString());
+            FrmVisitAdd frm = new FrmVisitAdd(ic, pttId, vsId, pttOid);
             String txt = "";
             if (!name.Equals(""))
             {
@@ -92,8 +92,8 @@ namespace clinic_ivf.gui
             chkHn.Checked = false;
             chkVisit.Checked = true;
             txtSearch.Value = "";
-            setGrfPtt("");
-            
+            setGrfPtt();
+
             //menu.AddNewTab(frm, txt);
         }
         private void TxtSearch_KeyUp(object sender, KeyEventArgs e)
@@ -103,7 +103,7 @@ namespace clinic_ivf.gui
             {
                 if (chkVisit.Checked)
                 {
-                    setGrfPtt(txtSearch.Text);
+                    setGrfPtt();
                 }
                 else
                 {
@@ -122,7 +122,7 @@ namespace clinic_ivf.gui
             {
                 if (chkVisit.Checked)
                 {
-                    setGrfPtt(txtSearch.Text);
+                    setGrfPtt();
                 }
                 else
                 {
@@ -160,6 +160,93 @@ namespace clinic_ivf.gui
             String vn = "";
 
             //grfAddr.DataSource = xC.iniDB.addrDB.selectByTableId1(vn);
+        }
+        private void setGrfPtt()
+        {
+            if (ic.iniC.statusAppDonor.Equals("1"))
+            {
+                setGrfPttDonor(txtSearch.Text);
+            }
+            else
+            {
+                setGrfPtt(txtSearch.Text);
+            }
+        }
+        private void setGrfPttDonor(String search)
+        {
+            //grfDept.Rows.Count = 7;
+            grfPtt.Clear();
+            DataTable dt = new DataTable();
+
+            if (search.Equals(""))
+            {
+                //String date = System.DateTime.Now.Year + "-" + System.DateTime.Now.ToString("MM-dd");
+                dt = ic.ivfDB.vsDB.selectCurrentVisit();
+            }
+            else
+            {
+                //grfPtt.DataSource = ic.ivfDB.vsOldDB.selectCurrentVisit(search);
+            }
+
+            //grfExpn.Rows.Count = dt.Rows.Count + 1;
+            grfPtt.Rows.Count = dt.Rows.Count + 1;
+            grfPtt.Cols.Count = 9;
+            C1TextBox txt = new C1TextBox();
+            //C1ComboBox cboproce = new C1ComboBox();
+            //ic.ivfDB.itmDB.setCboItem(cboproce);
+            grfPtt.Cols[colHn].Editor = txt;
+            grfPtt.Cols[colName].Editor = txt;
+            grfPtt.Cols[colVsDate].Editor = txt;
+
+            grfPtt.Cols[colVN].Width = 120;
+            grfPtt.Cols[colHn].Width = 120;
+            grfPtt.Cols[colName].Width = 300;
+            grfPtt.Cols[colVsDate].Width = 100;
+            grfPtt.Cols[colVsTime].Width = 80;
+            grfPtt.Cols[colVsEtime].Width = 80;
+            grfPtt.Cols[colStatus].Width = 200;
+
+            grfPtt.ShowCursor = true;
+            //grdFlex.Cols[colID].Caption = "no";
+            //grfDept.Cols[colCode].Caption = "รหัส";
+
+            grfPtt.Cols[colVN].Caption = "VN";
+            grfPtt.Cols[colHn].Caption = "HN";
+            grfPtt.Cols[colName].Caption = "Name";
+            grfPtt.Cols[colVsDate].Caption = "Date";
+            grfPtt.Cols[colVsTime].Caption = "Time visit";
+            grfPtt.Cols[colVsEtime].Caption = "Time finish";
+            grfPtt.Cols[colStatus].Caption = "Status";
+
+            ContextMenu menuGw = new ContextMenu();
+            menuGw.MenuItems.Add("&ออก Visit", new EventHandler(ContextMenu_edit));
+            grfPtt.ContextMenu = menuGw;
+
+            Color color = ColorTranslator.FromHtml(ic.iniC.grfRowColor);
+            //CellRange rg1 = grfBank.GetCellRange(1, colE, grfBank.Rows.Count, colE);
+            //rg1.Style = grfBank.Styles["date"];
+            //grfCu.Cols[colID].Visible = false;
+            int i = 1;
+            foreach (DataRow row in dt.Rows)
+            {
+                grfPtt[i, 0] = i;
+                grfPtt[i, colID] = row["id"].ToString();
+                grfPtt[i, colVN] = row["VN"].ToString();
+                grfPtt[i, colHn] = row["PIDS"].ToString();
+                grfPtt[i, colName] = row["PName"].ToString();
+                grfPtt[i, colVsDate] = ic.datetoShow(row["VDate"]);
+                grfPtt[i, colVsTime] = row["VStartTime"].ToString();
+                grfPtt[i, colVsEtime] = row["VEndTime"].ToString();
+                grfPtt[i, colStatus] = row["VName"].ToString();
+                //if (i % 2 == 0)
+                //    grfPtt.Rows[i].StyleNew.BackColor = color;
+                i++;
+            }
+            menuGw = new ContextMenu();
+            grfPtt.ContextMenu = menuGw;
+            grfPtt.Cols[colID].Visible = false;
+            theme1.SetTheme(grfPtt, ic.theme);
+
         }
         private void setGrfPtt(String search)
         {
@@ -315,12 +402,19 @@ namespace clinic_ivf.gui
             String hn = "", name = "", pttid = "", vn="";
             pttid = grfPtt[grfPtt.Row, colPttId] != null ? grfPtt[grfPtt.Row, colPttId].ToString() : "";
             vn = grfPtt[grfPtt.Row, colVN] != null ? grfPtt[grfPtt.Row, colVN].ToString() : "";
-            hn = grfPtt[grfPtt.Row, colHn] != null ? grfPtt[grfPtt.Row, colHn].ToString() : "";
-            name = grfPtt[grfPtt.Row, colName] != null ? grfPtt[grfPtt.Row, colName].ToString() : "";
+            hn = grfPtt[grfPtt.Row, colPttHn] != null ? grfPtt[grfPtt.Row, colPttHn].ToString() : "";
+            name = grfPtt[grfPtt.Row, colPttName] != null ? grfPtt[grfPtt.Row, colPttName].ToString() : "";
             //if (MessageBox.Show("ต้องการ แก้ไข Patient  \n  hn number " + chk + " \n name " + name, "", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == DialogResult.OK)
             //{
             //grfReq.Rows.Remove(grfReq.Row);
-            VisitAdd(pttid, vn, name, pttid);
+            if (ic.iniC.statusAppDonor.Equals("1"))
+            {
+                VisitAdd(pttid, vn, name, "");
+            }
+            else
+            {
+                VisitAdd("", vn, name, pttid);
+            }
             //}
         }
         private void FrmVisitView_Load(object sender, EventArgs e)
