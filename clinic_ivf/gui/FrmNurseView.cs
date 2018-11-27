@@ -53,8 +53,10 @@ namespace clinic_ivf.gui
             stt = new C1SuperTooltip();
             sep = new C1SuperErrorProvider();
 
+            txtDateStart.Value = System.DateTime.Now.Year + "-" + System.DateTime.Now.ToString("MM-dd");
             //btnNew.Click += BtnNew_Click;
             txtSearch.KeyUp += TxtSearch_KeyUp;
+            txtDateStart.ValueChanged += TxtDateStart_ValueChanged;
 
             initGrfQue();
             setGrfQue();
@@ -63,6 +65,13 @@ namespace clinic_ivf.gui
             initGrfFinish();
             setGrfFinish("");
         }
+
+        private void TxtDateStart_ValueChanged(object sender, EventArgs e)
+        {
+            //throw new NotImplementedException();
+            setGrfQue();
+        }
+
         private void TxtSearch_KeyUp(object sender, KeyEventArgs e)
         {
             //throw new NotImplementedException();
@@ -347,7 +356,7 @@ namespace clinic_ivf.gui
             if (search.Equals(""))
             {
                 //String date = System.DateTime.Now.Year + "-" + System.DateTime.Now.ToString("MM-dd");
-                dt = ic.ivfDB.vsDB.selectByStatusNurseWaiting();
+                dt = ic.ivfDB.vsDB.selectByStatusNurseWaiting(ic.datetoDB(txtDateStart.Text));
             }
             else
             {

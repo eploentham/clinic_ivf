@@ -65,6 +65,7 @@ namespace clinic_ivf.objdb
             pApm.lt_ovary = "lt_ovary";
             pApm.fsh = "fsh";
             pApm.remark = "remark";
+            pApm.dtr_name = "dtr_name";
 
             pApm.pkField = "t_patient_appointment_id";
             pApm.table = "t_patient_appointment";
@@ -147,7 +148,7 @@ namespace clinic_ivf.objdb
                 pApm.patient_appointment_cancel_date_time + "," + pApm.patient_appointment_active + "," + pApm.visit_id_make_appointment + "," +
                 pApm.e2 + "," + pApm.endo + "," + pApm.prl + "," +
                 pApm.lh + "," + pApm.rt_ovary + "," + pApm.lt_ovary + "," +
-                pApm.fsh + " " +
+                pApm.fsh + "," + pApm.t_patient_id + " " +
                 ") " +
                 "Values ('" + p.patient_appoint_date_time + "','" + p.patient_appointment_time.Replace("'", "''") + "','" + p.patient_appointment.Replace("'", "''") + "'," +
                 "'" + p.patient_appointment_doctor.Replace("'", "''") + "','" + p.patient_appointment_notice.Replace("'", "''") + "','" + p.patient_appointment_staff.Replace("'", "''") + "'," +
@@ -163,7 +164,7 @@ namespace clinic_ivf.objdb
                 "'" + p.patient_appointment_cancel_date_time + "','" + p.patient_appointment_active + "','" + p.visit_id_make_appointment + "', " +
                 "'" + p.e2 + "','" + p.endo + "','" + p.prl + "', " +
                 "'" + p.lh + "','" + p.rt_ovary + "','" + p.lt_ovary + "', " +
-                "'" + p.fsh + "' " +
+                "'" + p.fsh + "','" + p.t_patient_id + "' " +
                 ")";
 
                 re = conn.ExecuteNonQuery(conn.conn, sql);
@@ -178,9 +179,9 @@ namespace clinic_ivf.objdb
         {
             String re = "";
 
-            if (p.t_patient_id.Equals(""))
+            if (p.t_patient_appointment_id.Equals(""))
             {
-                re = insert(p, "");
+                re = insert(p, userId);
             }
             else
             {
@@ -282,37 +283,44 @@ namespace clinic_ivf.objdb
             DataTable dt = new DataTable();
             String sql = "select pApm.* " +
                 "From " + pApm.table + " pApm " +
-                "Where pApm." + pApm.patient_appointment_date + " >='" + date + "' and pApm." + pApm.patient_appointment_date + " <='" + date + "' and pApm." + pApm.active+"='1' ";
+                "Where pApm." + pApm.patient_appointment_date + " >='" + date + "' and pApm." + pApm.patient_appointment_date + " <='" + date + "' and pApm." + pApm.active+"='1' "+ "Order By " + 
+                pApm.patient_appointment_date + "," + pApm.patient_appointment_time;
             dt = conn.selectData(conn.conn, sql);
             return dt;
         }
         public DataTable selectByPtt(String pttid)
         {
             DataTable dt = new DataTable();
-            String sql = "select pApm.*,  bsp.service_point_description " +
+            String sql = "select pApm.*,  bsp.service_point_description,dtr.Name  as dtr_name " +
                 "From " + pApm.table + " pApm " +
                 "Left Join b_service_point bsp on bsp.b_service_point_id = pApm.patient_appointment_servicepoint " +
-                "Where pApm." + pApm.t_patient_id + " ='" + pttid + "' and pApm." + pApm.active + "='1' ";
+                "Left Join Doctor  dtr on pApm.patient_appointment_doctor = dtr.ID " +
+                "Where pApm." + pApm.t_patient_id + " ='" + pttid + "' and pApm." + pApm.active + "='1' "+ 
+                "Order By " + pApm.patient_appointment_date + "," + pApm.patient_appointment_time;
             dt = conn.selectData(conn.conn, sql);
             return dt;
         }
         public DataTable selectByVisitId(String vsid)
         {
             DataTable dt = new DataTable();
-            String sql = "select pApm.*,  bsp.service_point_description " +
+            String sql = "select pApm.*,  bsp.service_point_description,dtr.Name as dtr_name " +
                 "From " + pApm.table + " pApm " +
                 "Left Join b_service_point bsp on bsp.b_service_point_id = pApm.patient_appointment_servicepoint " +
-                "Where pApm." + pApm.t_visit_id + " ='" + vsid + "' and pApm." + pApm.active + "='1' ";
+                "Left Join Doctor  dtr on pApm.patient_appointment_doctor = dtr.ID " +
+                "Where pApm." + pApm.t_visit_id + " ='" + vsid + "' and pApm." + pApm.active + "='1' "+
+                "Order By " + pApm.patient_appointment_date + "," + pApm.patient_appointment_time;
             dt = conn.selectData(conn.conn, sql);
             return dt;
         }
         public DataTable selectByDay(String date)
         {
             DataTable dt = new DataTable();
-            String sql = "select pApm.*,  bsp.service_point_description " +
+            String sql = "select pApm.*,  bsp.service_point_description,dtr.Name  as dtr_name " +
                 "From " + pApm.table + " pApm " +
                 "Left Join b_service_point bsp on bsp.b_service_point_id = pApm.patient_appointment_servicepoint " +
-                "Where pApm." + pApm.patient_appointment_date + " ='" + date + "' and pApm." + pApm.active + "='1' ";
+                "Left Join Doctor  dtr on pApm.patient_appointment_doctor = dtr.ID " +
+                "Where pApm." + pApm.patient_appointment_date + " ='" + date + "' and pApm." + pApm.active + "='1' " +
+                "Order By "+ pApm.patient_appointment_date+","+ pApm.patient_appointment_time;
             dt = conn.selectData(conn.conn, sql);
             return dt;
         }
@@ -422,6 +430,7 @@ namespace clinic_ivf.objdb
             stf1.rt_ovary = "";
             stf1.lt_ovary = "";
             stf1.fsh = "";
+            stf1.dtr_name = "";
             return stf1;
         }
     }

@@ -569,7 +569,7 @@ namespace clinic_ivf.gui
                 row1[colPttHn] = row[ic.ivfDB.appnOldDB.appnOld.PIDS].ToString();
                 row1[colVsTime] = row[ic.ivfDB.appnOldDB.appnOld.AppTime].ToString();
                 row1[colVsCode] = "";
-                if (row[ic.ivfDB.appnOldDB.appnOld.OPU].ToString().Equals("1"))
+                if (row[ic.ivfDB.appnOldDB.appnOld.Doctor].ToString().Equals("1"))
                 {
                     row1[colVsDoctor] = imgCorr;
                 }

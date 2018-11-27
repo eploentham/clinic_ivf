@@ -32,7 +32,8 @@ namespace clinic_ivf.gui
         C1SuperTooltip stt;
         C1SuperErrorProvider sep;
         int colId = 1, colAppointment = 4, colDate = 2, colTime = 3, colDoctor = 5, colSp = 6, colNotice=7, colE2=8, colLh=9, colEndo=10, colPrl=10, colFsh=11, colRt=12, colLt=13;
-        
+        Image imgCorr, imgTran;
+
         public FrmAppointmentDonorAdd(IvfControl ic, String papmId, String pttid, String vsid)
         {
             InitializeComponent();
@@ -58,10 +59,15 @@ namespace clinic_ivf.gui
             bg = txtHn.BackColor;
             fc = txtHn.ForeColor;
             ff = txtHn.Font;
+            imgCorr = Resources.red_checkmark_png_16;
+            imgTran = Resources.red_checkmark_png_51;
+            ic.ivfDB.bspDB.setCboBsp(cboBsp, "");
+            ic.ivfDB.dtrOldDB.setCboDoctor(cboDoctor, "");
 
             cboTimepApm = ic.setCboApmTime(cboTimepApm);
             txtDatepApm.Value = System.DateTime.Now.Year.ToString() + "-" + System.DateTime.Now.ToString("MM-dd");
             btnSave.Click += BtnSave_Click;
+            txtDatepApm.ValueChanged += TxtDatepApm_ValueChanged;
 
             initGrfpApmAll();
             initGrfpApmVisit();
@@ -70,6 +76,12 @@ namespace clinic_ivf.gui
             setGrfpApmVisit();
             setGrfpApmDay();
             setControl();
+        }
+
+        private void TxtDatepApm_ValueChanged(object sender, EventArgs e)
+        {
+            //throw new NotImplementedException();
+            setGrfpApmDay();
         }
 
         private void BtnSave_Click(object sender, EventArgs e)
@@ -108,7 +120,10 @@ namespace clinic_ivf.gui
                     //}
 
                     System.Threading.Thread.Sleep(500);
-                    this.Dispose();
+                    setGrfpApmAll();
+                    setGrfpApmVisit();
+                    setGrfpApmDay();
+                    //this.Dispose();
                 }
             }
             else
@@ -136,6 +151,9 @@ namespace clinic_ivf.gui
         private void setControl()
         {
             ptt = ic.ivfDB.pttDB.selectByPk1(pttId);
+            vs = ic.ivfDB.vsDB.selectByPk1(vsId);
+            txtPttId.Value = ptt.t_patient_id;
+            txtVsId.Value = vs.t_visit_id;
             txtHn.Value = ptt.patient_hn;
             txtName.Value = ptt.Name;
             txtRemark.Value = ptt.remark;
@@ -202,6 +220,20 @@ namespace clinic_ivf.gui
             grfpApmAll.Cols[colNotice].Editor = txt;
             grfpApmAll.Cols[colAppointment].Editor = txt;
             grfpApmAll.Cols[colDoctor].Editor = txt;
+            Column colE21 = grfpApmAll.Cols[colE2];
+            colE21.DataType = typeof(Image);
+            Column colLh1 = grfpApmAll.Cols[colLh];
+            colLh1.DataType = typeof(Image);
+            Column colEndo1 = grfpApmAll.Cols[colEndo];
+            colEndo1.DataType = typeof(Image);
+            Column colPrl1 = grfpApmAll.Cols[colPrl];
+            colPrl1.DataType = typeof(Image);
+            Column colFsh1 = grfpApmAll.Cols[colFsh];
+            colFsh1.DataType = typeof(Image);
+            Column colRt1 = grfpApmAll.Cols[colRt];
+            colRt1.DataType = typeof(Image);
+            Column colLt1 = grfpApmAll.Cols[colLt];
+            colLt1.DataType = typeof(Image);
 
             grfpApmAll.Cols[colDate].Width = 100;
             grfpApmAll.Cols[colTime].Width = 80;
@@ -209,11 +241,13 @@ namespace clinic_ivf.gui
             grfpApmAll.Cols[colDoctor].Width = 100;
             grfpApmAll.Cols[colSp].Width = 80;
             grfpApmAll.Cols[colNotice].Width = 200;
-            grfpApmAll.Cols[colE2].Width = 80;
-            grfpApmAll.Cols[colLh].Width = 80;
-            grfpApmAll.Cols[colEndo].Width = 80;
-            grfpApmAll.Cols[colPrl].Width = 80;
-            grfpApmAll.Cols[colFsh].Width = 80;
+            grfpApmAll.Cols[colE2].Width = 60;
+            grfpApmAll.Cols[colLh].Width = 60;
+            grfpApmAll.Cols[colEndo].Width = 60;
+            grfpApmAll.Cols[colPrl].Width = 60;
+            grfpApmAll.Cols[colFsh].Width = 60;
+            grfpApmAll.Cols[colRt].Width = 60;
+            grfpApmAll.Cols[colLt].Width = 60;
 
             grfpApmAll.ShowCursor = true;
             //grdFlex.Cols[colID].Caption = "no";
@@ -250,21 +284,36 @@ namespace clinic_ivf.gui
                 row1[colDate] = ic.datetoShow(row[ic.ivfDB.pApmDB.pApm.patient_appointment_date].ToString());
                 row1[colTime] = row[ic.ivfDB.pApmDB.pApm.patient_appointment_time].ToString();
                 row1[colAppointment] = row[ic.ivfDB.pApmDB.pApm.patient_appointment].ToString();
-                row1[colDoctor] = row[ic.ivfDB.pApmDB.pApm.patient_appointment_doctor];
+                row1[colDoctor] = row[ic.ivfDB.pApmDB.pApm.dtr_name];
                 row1[colSp] = row["service_point_description"].ToString();
                 row1[colNotice] = row[ic.ivfDB.pApmDB.pApm.patient_appointment_notice].ToString();
 
-                row1[colE2] = row[ic.ivfDB.pApmDB.pApm.e2].ToString();
-                row1[colLh] = row[ic.ivfDB.pApmDB.pApm.lh].ToString();
-                row1[colEndo] = row[ic.ivfDB.pApmDB.pApm.endo].ToString();
-                row1[colPrl] = row[ic.ivfDB.pApmDB.pApm.prl].ToString();
-                row1[colFsh] = row[ic.ivfDB.pApmDB.pApm.fsh].ToString();
-                row1[colRt] = row[ic.ivfDB.pApmDB.pApm.rt_ovary].ToString();
-                row1[colLt] = row[ic.ivfDB.pApmDB.pApm.lt_ovary].ToString();
+                //row1[colE2] = row[ic.ivfDB.pApmDB.pApm.e2].ToString();
+                //row1[colLh] = row[ic.ivfDB.pApmDB.pApm.lh].ToString();
+                //row1[colEndo] = row[ic.ivfDB.pApmDB.pApm.endo].ToString();
+                //row1[colPrl] = row[ic.ivfDB.pApmDB.pApm.prl].ToString();
+                //row1[colFsh] = row[ic.ivfDB.pApmDB.pApm.fsh].ToString();
+                //row1[colRt] = row[ic.ivfDB.pApmDB.pApm.rt_ovary].ToString();
+                //row1[colLt] = row[ic.ivfDB.pApmDB.pApm.lt_ovary].ToString();
+
+                row1[colE2] = row[ic.ivfDB.pApmDB.pApm.e2] == null ? imgTran : row[ic.ivfDB.pApmDB.pApm.e2].ToString().Equals("1") ? imgCorr : imgTran;
+                row1[colLh] = row[ic.ivfDB.pApmDB.pApm.lh] == null ? imgTran : row[ic.ivfDB.pApmDB.pApm.lh].ToString().Equals("1") ? imgCorr : imgTran;
+                row1[colEndo] = row[ic.ivfDB.pApmDB.pApm.endo] == null ? imgTran : row[ic.ivfDB.pApmDB.pApm.endo].ToString().Equals("1") ? imgCorr : imgTran;
+                row1[colPrl] = row[ic.ivfDB.pApmDB.pApm.prl] == null ? imgTran : row[ic.ivfDB.pApmDB.pApm.prl].ToString().Equals("1") ? imgCorr : imgTran;
+                row1[colFsh] = row[ic.ivfDB.pApmDB.pApm.fsh] == null ? imgTran : row[ic.ivfDB.pApmDB.pApm.fsh].ToString().Equals("1") ? imgCorr : imgTran;
+                row1[colRt] = row[ic.ivfDB.pApmDB.pApm.rt_ovary] == null ? imgTran : row[ic.ivfDB.pApmDB.pApm.rt_ovary].ToString().Equals("1") ? imgCorr : imgTran;
+                row1[colLt] = row[ic.ivfDB.pApmDB.pApm.lt_ovary] == null ? imgTran : row[ic.ivfDB.pApmDB.pApm.lt_ovary].ToString().Equals("1") ? imgCorr : imgTran;
                 //if (i % 2 == 0)
                 //    grfPtt.Rows[i].StyleNew.BackColor = color;
                 i++;
             }
+            grfpApmAll.Cols[colE2].AllowEditing = false;
+            grfpApmAll.Cols[colLh].AllowEditing = false;
+            grfpApmAll.Cols[colEndo].AllowEditing = false;
+            grfpApmAll.Cols[colPrl].AllowEditing = false;
+            grfpApmAll.Cols[colFsh].AllowEditing = false;
+            grfpApmAll.Cols[colRt].AllowEditing = false;
+            grfpApmAll.Cols[colLt].AllowEditing = false;
             //menuGw = new ContextMenu();
             //grfpApmAll.ContextMenu = menuGw;
             grfpApmAll.Cols[colId].Visible = false;
@@ -277,7 +326,7 @@ namespace clinic_ivf.gui
             grfpApmVisit.Clear();
             DataTable dt = new DataTable();
 
-            dt = ic.ivfDB.pApmDB.selectByVisitId(pttId);
+            dt = ic.ivfDB.pApmDB.selectByVisitId(vsId);
 
             //grfExpn.Rows.Count = dt.Rows.Count + 1;
             grfpApmVisit.Rows.Count = 1;
@@ -288,6 +337,20 @@ namespace clinic_ivf.gui
             grfpApmVisit.Cols[colNotice].Editor = txt;
             grfpApmVisit.Cols[colAppointment].Editor = txt;
             grfpApmVisit.Cols[colDoctor].Editor = txt;
+            Column colE21 = grfpApmVisit.Cols[colE2];
+            colE21.DataType = typeof(Image);
+            Column colLh1 = grfpApmVisit.Cols[colLh];
+            colLh1.DataType = typeof(Image);
+            Column colEndo1 = grfpApmVisit.Cols[colEndo];
+            colEndo1.DataType = typeof(Image);
+            Column colPrl1 = grfpApmVisit.Cols[colPrl];
+            colPrl1.DataType = typeof(Image);
+            Column colFsh1 = grfpApmVisit.Cols[colFsh];
+            colFsh1.DataType = typeof(Image);
+            Column colRt1 = grfpApmVisit.Cols[colRt];
+            colRt1.DataType = typeof(Image);
+            Column colLt1 = grfpApmVisit.Cols[colLt];
+            colLt1.DataType = typeof(Image);
 
             grfpApmVisit.Cols[colDate].Width = 100;
             grfpApmVisit.Cols[colTime].Width = 80;
@@ -295,11 +358,13 @@ namespace clinic_ivf.gui
             grfpApmVisit.Cols[colDoctor].Width = 100;
             grfpApmVisit.Cols[colSp].Width = 80;
             grfpApmVisit.Cols[colNotice].Width = 200;
-            grfpApmVisit.Cols[colE2].Width = 80;
-            grfpApmVisit.Cols[colLh].Width = 80;
-            grfpApmVisit.Cols[colEndo].Width = 80;
-            grfpApmVisit.Cols[colPrl].Width = 80;
-            grfpApmVisit.Cols[colFsh].Width = 80;
+            grfpApmVisit.Cols[colE2].Width = 50;
+            grfpApmVisit.Cols[colLh].Width = 50;
+            grfpApmVisit.Cols[colEndo].Width = 50;
+            grfpApmVisit.Cols[colPrl].Width = 50;
+            grfpApmVisit.Cols[colFsh].Width = 50;
+            grfpApmVisit.Cols[colRt].Width = 50;
+            grfpApmVisit.Cols[colLt].Width = 50;
 
             grfpApmVisit.ShowCursor = true;
             //grdFlex.Cols[colID].Caption = "no";
@@ -336,23 +401,37 @@ namespace clinic_ivf.gui
                 row1[colDate] = ic.datetoShow(row[ic.ivfDB.pApmDB.pApm.patient_appointment_date].ToString());
                 row1[colTime] = row[ic.ivfDB.pApmDB.pApm.patient_appointment_time].ToString();
                 row1[colAppointment] = row[ic.ivfDB.pApmDB.pApm.patient_appointment].ToString();
-                row1[colDoctor] = row[ic.ivfDB.pApmDB.pApm.patient_appointment_doctor];
+                row1[colDoctor] = row[ic.ivfDB.pApmDB.pApm.dtr_name];
                 row1[colSp] = row["service_point_description"].ToString();
                 row1[colNotice] = row[ic.ivfDB.pApmDB.pApm.patient_appointment_notice].ToString();
 
-                row1[colE2] = row[ic.ivfDB.pApmDB.pApm.e2].ToString();
-                row1[colLh] = row[ic.ivfDB.pApmDB.pApm.lh].ToString();
-                row1[colEndo] = row[ic.ivfDB.pApmDB.pApm.endo].ToString();
-                row1[colPrl] = row[ic.ivfDB.pApmDB.pApm.prl].ToString();
-                row1[colFsh] = row[ic.ivfDB.pApmDB.pApm.fsh].ToString();
-                row1[colRt] = row[ic.ivfDB.pApmDB.pApm.rt_ovary].ToString();
-                row1[colLt] = row[ic.ivfDB.pApmDB.pApm.lt_ovary].ToString();
+                //row1[colE2] = row[ic.ivfDB.pApmDB.pApm.e2].ToString();
+                //row1[colLh] = row[ic.ivfDB.pApmDB.pApm.lh].ToString();
+                //row1[colEndo] = row[ic.ivfDB.pApmDB.pApm.endo].ToString();
+                //row1[colPrl] = row[ic.ivfDB.pApmDB.pApm.prl].ToString();
+                //row1[colFsh] = row[ic.ivfDB.pApmDB.pApm.fsh].ToString();
+                //row1[colRt] = row[ic.ivfDB.pApmDB.pApm.rt_ovary].ToString();
+                //row1[colLt] = row[ic.ivfDB.pApmDB.pApm.lt_ovary].ToString();
+                row1[colE2] = row[ic.ivfDB.pApmDB.pApm.e2] == null ? imgTran : row[ic.ivfDB.pApmDB.pApm.e2].ToString().Equals("1") ? imgCorr : imgTran;
+                row1[colLh] = row[ic.ivfDB.pApmDB.pApm.lh] == null ? imgTran : row[ic.ivfDB.pApmDB.pApm.lh].ToString().Equals("1") ? imgCorr : imgTran;
+                row1[colEndo] = row[ic.ivfDB.pApmDB.pApm.endo] == null ? imgTran : row[ic.ivfDB.pApmDB.pApm.endo].ToString().Equals("1") ? imgCorr : imgTran;
+                row1[colPrl] = row[ic.ivfDB.pApmDB.pApm.prl] == null ? imgTran : row[ic.ivfDB.pApmDB.pApm.prl].ToString().Equals("1") ? imgCorr : imgTran;
+                row1[colFsh] = row[ic.ivfDB.pApmDB.pApm.fsh] == null ? imgTran : row[ic.ivfDB.pApmDB.pApm.fsh].ToString().Equals("1") ? imgCorr : imgTran;
+                row1[colRt] = row[ic.ivfDB.pApmDB.pApm.rt_ovary] == null ? imgTran : row[ic.ivfDB.pApmDB.pApm.rt_ovary].ToString().Equals("1") ? imgCorr : imgTran;
+                row1[colLt] = row[ic.ivfDB.pApmDB.pApm.lt_ovary] == null ? imgTran : row[ic.ivfDB.pApmDB.pApm.lt_ovary].ToString().Equals("1") ? imgCorr : imgTran;
                 //if (i % 2 == 0)
                 //    grfPtt.Rows[i].StyleNew.BackColor = color;
                 i++;
             }
             //menuGw = new ContextMenu();
             //grfpApmVisit.ContextMenu = menuGw;
+            grfpApmVisit.Cols[colE2].AllowEditing = false;
+            grfpApmVisit.Cols[colLh].AllowEditing = false;
+            grfpApmVisit.Cols[colEndo].AllowEditing = false;
+            grfpApmVisit.Cols[colPrl].AllowEditing = false;
+            grfpApmVisit.Cols[colFsh].AllowEditing = false;
+            grfpApmVisit.Cols[colRt].AllowEditing = false;
+            grfpApmVisit.Cols[colLt].AllowEditing = false;
             grfpApmVisit.Cols[colId].Visible = false;
             theme1.SetTheme(grfpApmVisit, ic.theme);
 
@@ -363,7 +442,7 @@ namespace clinic_ivf.gui
             grfpApmDayAll.Clear();
             DataTable dt = new DataTable();
 
-            dt = ic.ivfDB.pApmDB.selectByDay(pttId);
+            dt = ic.ivfDB.pApmDB.selectByDay(ic.datetoDB(txtDatepApm.Text));
 
             //grfExpn.Rows.Count = dt.Rows.Count + 1;
             grfpApmDayAll.Rows.Count = 1;
@@ -374,6 +453,20 @@ namespace clinic_ivf.gui
             grfpApmDayAll.Cols[colNotice].Editor = txt;
             grfpApmDayAll.Cols[colAppointment].Editor = txt;
             grfpApmDayAll.Cols[colDoctor].Editor = txt;
+            Column colE21 = grfpApmDayAll.Cols[colE2];
+            colE21.DataType = typeof(Image);
+            Column colLh1 = grfpApmDayAll.Cols[colLh];
+            colLh1.DataType = typeof(Image);
+            Column colEndo1 = grfpApmDayAll.Cols[colEndo];
+            colEndo1.DataType = typeof(Image);
+            Column colPrl1 = grfpApmDayAll.Cols[colPrl];
+            colPrl1.DataType = typeof(Image);
+            Column colFsh1 = grfpApmDayAll.Cols[colFsh];
+            colFsh1.DataType = typeof(Image);
+            Column colRt1 = grfpApmDayAll.Cols[colRt];
+            colRt1.DataType = typeof(Image);
+            Column colLt1 = grfpApmDayAll.Cols[colLt];
+            colLt1.DataType = typeof(Image);
 
             grfpApmDayAll.Cols[colDate].Width = 100;
             grfpApmDayAll.Cols[colTime].Width = 80;
@@ -381,11 +474,13 @@ namespace clinic_ivf.gui
             grfpApmDayAll.Cols[colDoctor].Width = 100;
             grfpApmDayAll.Cols[colSp].Width = 80;
             grfpApmDayAll.Cols[colNotice].Width = 200;
-            grfpApmDayAll.Cols[colE2].Width = 80;
-            grfpApmDayAll.Cols[colLh].Width = 80;
-            grfpApmDayAll.Cols[colEndo].Width = 80;
-            grfpApmDayAll.Cols[colPrl].Width = 80;
-            grfpApmDayAll.Cols[colFsh].Width = 80;
+            grfpApmDayAll.Cols[colE2].Width = 50;
+            grfpApmDayAll.Cols[colLh].Width = 50;
+            grfpApmDayAll.Cols[colEndo].Width = 50;
+            grfpApmDayAll.Cols[colPrl].Width = 50;
+            grfpApmDayAll.Cols[colFsh].Width = 50;
+            grfpApmDayAll.Cols[colRt].Width = 50;
+            grfpApmDayAll.Cols[colLt].Width = 50;
 
             grfpApmDayAll.ShowCursor = true;
             //grdFlex.Cols[colID].Caption = "no";
@@ -422,23 +517,37 @@ namespace clinic_ivf.gui
                 row1[colDate] = ic.datetoShow(row[ic.ivfDB.pApmDB.pApm.patient_appointment_date].ToString());
                 row1[colTime] = row[ic.ivfDB.pApmDB.pApm.patient_appointment_time].ToString();
                 row1[colAppointment] = row[ic.ivfDB.pApmDB.pApm.patient_appointment].ToString();
-                row1[colDoctor] = row[ic.ivfDB.pApmDB.pApm.patient_appointment_doctor];
+                row1[colDoctor] = row[ic.ivfDB.pApmDB.pApm.dtr_name];
                 row1[colSp] = row["service_point_description"].ToString();
                 row1[colNotice] = row[ic.ivfDB.pApmDB.pApm.patient_appointment_notice].ToString();
 
-                row1[colE2] = row[ic.ivfDB.pApmDB.pApm.e2].ToString();
-                row1[colLh] = row[ic.ivfDB.pApmDB.pApm.lh].ToString();
-                row1[colEndo] = row[ic.ivfDB.pApmDB.pApm.endo].ToString();
-                row1[colPrl] = row[ic.ivfDB.pApmDB.pApm.prl].ToString();
-                row1[colFsh] = row[ic.ivfDB.pApmDB.pApm.fsh].ToString();
-                row1[colRt] = row[ic.ivfDB.pApmDB.pApm.rt_ovary].ToString();
-                row1[colLt] = row[ic.ivfDB.pApmDB.pApm.lt_ovary].ToString();
+                //row1[colE2] = row[ic.ivfDB.pApmDB.pApm.e2].ToString();
+                //row1[colLh] = row[ic.ivfDB.pApmDB.pApm.lh].ToString();
+                //row1[colEndo] = row[ic.ivfDB.pApmDB.pApm.endo].ToString();
+                //row1[colPrl] = row[ic.ivfDB.pApmDB.pApm.prl].ToString();
+                //row1[colFsh] = row[ic.ivfDB.pApmDB.pApm.fsh].ToString();
+                //row1[colRt] = row[ic.ivfDB.pApmDB.pApm.rt_ovary].ToString();
+                //row1[colLt] = row[ic.ivfDB.pApmDB.pApm.lt_ovary].ToString();
+                row1[colE2] = row[ic.ivfDB.pApmDB.pApm.e2] == null ? imgTran : row[ic.ivfDB.pApmDB.pApm.e2].ToString().Equals("1") ? imgCorr : imgTran;
+                row1[colLh] = row[ic.ivfDB.pApmDB.pApm.lh] == null ? imgTran : row[ic.ivfDB.pApmDB.pApm.lh].ToString().Equals("1") ? imgCorr : imgTran;
+                row1[colEndo] = row[ic.ivfDB.pApmDB.pApm.endo] == null ? imgTran : row[ic.ivfDB.pApmDB.pApm.endo].ToString().Equals("1") ? imgCorr : imgTran;
+                row1[colPrl] = row[ic.ivfDB.pApmDB.pApm.prl] == null ? imgTran : row[ic.ivfDB.pApmDB.pApm.prl].ToString().Equals("1") ? imgCorr : imgTran;
+                row1[colFsh] = row[ic.ivfDB.pApmDB.pApm.fsh] == null ? imgTran : row[ic.ivfDB.pApmDB.pApm.fsh].ToString().Equals("1") ? imgCorr : imgTran;
+                row1[colRt] = row[ic.ivfDB.pApmDB.pApm.rt_ovary] == null ? imgTran : row[ic.ivfDB.pApmDB.pApm.rt_ovary].ToString().Equals("1") ? imgCorr : imgTran;
+                row1[colLt] = row[ic.ivfDB.pApmDB.pApm.lt_ovary] == null ? imgTran : row[ic.ivfDB.pApmDB.pApm.lt_ovary].ToString().Equals("1") ? imgCorr : imgTran;
                 //if (i % 2 == 0)
                 //    grfPtt.Rows[i].StyleNew.BackColor = color;
                 i++;
             }
             //menuGw = new ContextMenu();
             //grfpApmDayAll.ContextMenu = menuGw;
+            grfpApmDayAll.Cols[colE2].AllowEditing = false;
+            grfpApmDayAll.Cols[colLh].AllowEditing = false;
+            grfpApmDayAll.Cols[colEndo].AllowEditing = false;
+            grfpApmDayAll.Cols[colPrl].AllowEditing = false;
+            grfpApmDayAll.Cols[colFsh].AllowEditing = false;
+            grfpApmDayAll.Cols[colRt].AllowEditing = false;
+            grfpApmDayAll.Cols[colLt].AllowEditing = false;
             grfpApmDayAll.Cols[colId].Visible = false;
             theme1.SetTheme(grfpApmDayAll, ic.theme);
 
@@ -447,14 +556,14 @@ namespace clinic_ivf.gui
         {
             pApm.t_patient_appointment_id = txtID.Text;
             pApm.t_patient_id = txtPttId.Text;
-            pApm.patient_appoint_date_time = "";
+            pApm.patient_appoint_date_time = System.DateTime.Now.Year.ToString() + "-" + System.DateTime.Now.ToString("MM-dd");
             pApm.patient_appointment_date = ic.datetoDB(txtDatepApm.Text);
             pApm.patient_appointment_time = cboTimepApm.Text;
             pApm.patient_appointment = txtAppointment.Text;
             pApm.patient_appointment_doctor = cboDoctor.SelectedItem == null ? "" : ((ComboBoxItem)cboDoctor.SelectedItem).Value;
             pApm.patient_appointment_servicepoint = cboBsp.SelectedItem == null ? "" : ((ComboBoxItem)cboBsp.SelectedItem).Value;
             pApm.patient_appointment_notice = txtRemark.Text;
-            pApm.patient_appointment_staff = "";
+            pApm.patient_appointment_staff = txtStfConfirmID.Text;
 
             pApm.t_visit_id = txtVsId.Text;
             pApm.patient_appointment_auto_visit = "";
@@ -485,12 +594,12 @@ namespace clinic_ivf.gui
 
             pApm.remark = "";
             pApm.e2 = chkE2.Checked ? "1" : "0";
-            pApm.endo = chkE2.Checked ? "1" : "0";
-            pApm.prl = chkE2.Checked ? "1" : "0";
-            pApm.lh = chkE2.Checked ? "1" : "0";
-            pApm.rt_ovary = chkE2.Checked ? "1" : "0";
-            pApm.lt_ovary = chkE2.Checked ? "1" : "0";
-            pApm.fsh = chkE2.Checked ? "1" : "0";
+            pApm.endo = chkEndo.Checked ? "1" : "0";
+            pApm.prl = chkPrl.Checked ? "1" : "0";
+            pApm.lh = chkLh.Checked ? "1" : "0";
+            pApm.rt_ovary = chkRt.Checked ? "1" : "0";
+            pApm.lt_ovary = chkLt.Checked ? "1" : "0";
+            pApm.fsh = chkFsh.Checked ? "1" : "0";
         }
         private void FrmAppointmentAdd_Load(object sender, EventArgs e)
         {

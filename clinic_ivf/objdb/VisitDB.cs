@@ -276,10 +276,10 @@ namespace clinic_ivf.objdb
 
             return dt;
         }
-        public DataTable selectByStatusNurseWaiting()
+        public DataTable selectByStatusNurseWaiting(String date)
         {
             DataTable dt = new DataTable();
-            String date = System.DateTime.Now.Year + "-" + System.DateTime.Now.ToString("MM-dd");
+            //String date = System.DateTime.Now.Year + "-" + System.DateTime.Now.ToString("MM-dd");
             String sql = "select vs.t_visit_id as id,vs.visit_vn as VN, vs.visit_hn as PIDS, CONCAT(IFNULL(fpp.patient_prefix_description,''),' ', ptt.patient_firstname_e ,' ',ptt.patient_lastname_e)  as PName" +
                 ", vs.visit_begin_visit_time as VDate, vs.visit_begin_visit_time as VStartTime, vs.visit_financial_discharge_time as VEndTime, '' as VName, bsp.service_point_description as VSID, vs.t_patient_id as PID " +
                 "From " + vs.table + " vs " +
