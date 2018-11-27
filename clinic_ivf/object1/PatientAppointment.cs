@@ -36,5 +36,12 @@ namespace clinic_ivf.object1
         public String change_appointment_cause { get; set; }
         public String visit_id_make_appointment { get; set; }
         public String patient_appointment_clinic { get; set; }
+        public String e2 { get; set; }
+        public String lh { get; set; }
+        public String endo { get; set; }
+        public String prl { get; set; }
+        public String fsh { get; set; }
+        public String rt_ovary { get; set; }
+        public String lt_ovary { get; set; }
     }
 }

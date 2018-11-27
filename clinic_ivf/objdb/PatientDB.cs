@@ -564,9 +564,11 @@ namespace clinic_ivf.objdb
         {
             Patient cop1 = new Patient();
             DataTable dt = new DataTable();
-            String sql = "select ptt.* " +
+            String sql = "select ptt.*,fpp.patient_prefix_description " +
                 "From " + ptt.table + " ptt " +
-                "Where ptt." + ptt.pkField + " ='" + pttId + "' ";
+                "Left join f_patient_prefix fpp on fpp.f_patient_prefix_id = ptt.f_patient_prefix_id " +                
+                "Where ptt." + ptt.pkField + " ='" + pttId + "' " +
+                "";
             dt = conn.selectData(conn.conn, sql);
             cop1 = setPatient(dt);
             return cop1;
@@ -583,7 +585,7 @@ namespace clinic_ivf.objdb
         public DataTable selectByDate1(String date)
         {
             DataTable dt = new DataTable();
-            String sql = "select ptt."+ptt.t_patient_id+",ptt."+ptt.patient_hn+ ",CONCAT(ptt." + ptt.patient_firstname+",' ',ptt."+ptt.patient_lastname+") as name,ptt."+ptt.remark+" " +
+            String sql = "select ptt."+ptt.t_patient_id+",ptt."+ptt.patient_hn+ ",CONCAT(,fpp.patient_prefix_description , ' ' , ptt." + ptt.patient_firstname+",' ',ptt."+ptt.patient_lastname+") as name,ptt."+ptt.remark+" " +
                 "From " + ptt.table + " ptt " +
                 "Left join f_patient_prefix fpp on fpp.f_patient_prefix_id = ptt.f_patient_prefix_id " +
                 "Where ptt." + ptt.patient_record_date_time + " >='" + date + " 00:00:00' and ptt." + ptt.patient_record_date_time + " <='" + date + " 23:59:59' " +
@@ -755,6 +757,7 @@ namespace clinic_ivf.objdb
                 ptt1.patient_coulpe_f_patient_relation_id = dt.Rows[0][ptt.patient_coulpe_f_patient_relation_id].ToString();
                 ptt1.b_contract_plans_id = dt.Rows[0][ptt.b_contract_plans_id].ToString();
                 ptt1.t_patient_id_old = dt.Rows[0][ptt.t_patient_id_old].ToString();
+                ptt1.Name = dt.Rows[0]["patient_prefix_description"].ToString() + " " + dt.Rows[0][ptt.patient_firstname_e].ToString()+" "+ dt.Rows[0][ptt.patient_lastname_e].ToString();
             }
             else
             {
@@ -878,6 +881,7 @@ namespace clinic_ivf.objdb
             stf1.patient_coulpe_f_patient_relation_id = "";
             stf1.b_contract_plans_id = "";
             stf1.t_patient_id_old = "";
+            stf1.Name = "";
             return stf1;
         }
     }

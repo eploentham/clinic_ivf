@@ -275,7 +275,7 @@ namespace clinic_ivf.gui
             vsOld.PIDS = txtHn.Text;
             vsOld.PName = cboPrefix.Text +" "+txtPttNameE.Text+" "+txtPttLNameE.Text;
             vsOld.OName = "";
-            vsOld.VDate = DateTime.Now.ToString("yyyy-MM-dd");
+            vsOld.VDate = DateTime.Now.Year.ToString()+"-"+ DateTime.Now.ToString("MM-dd");
             vsOld.VStartTime = DateTime.Now.ToString("hh:mm:ss");
             vsOld.VEndTime = "";
             vsOld.VUpdateTime = "";
@@ -284,24 +284,27 @@ namespace clinic_ivf.gui
         }
         private void setVisit()
         {
+            vs = new Visit();
             vs = ic.ivfDB.vsDB.setVisit1(vs);
             vs.t_visit_id = txtID.Text;
             vs.visit_hn = txtHn.Text;
             vs.t_patient_id = txtPttId.Text;
-            vs.patient_firstname = txtPttName.Text;
-            vs.patient_lastname = txtPttLName.Text;
-            vs.patient_firstname_e = txtPttNameE.Text;
-            vs.patient_lastname_e = txtPttLNameE.Text;
+            vs.b_service_point_id = cboBsp.SelectedItem == null ? "" : ((ComboBoxItem)cboBsp.SelectedItem).Value;
+            vs.visit_notice = txtComment.Text;
+            vs.visit_begin_visit_time = DateTime.Now.Year.ToString() + "-" + DateTime.Now.ToString("MM-dd hh:mm:ss");
+            vs.visit_vn = ic.ivfDB.copDB.genVNDoc();
             vs.remark = txtRemark.Text;
-            vs.line_id = txtLineID.Text;
-            vs.email = txtEmail.Text;
-            vs.mobile1 = txtMobile1.Text;
-            vs.mobile2 = txtMobile2.Text;
-            vs.t_patient_id = txtPid.Text;
-            vs.passport = txtPaasport.Text;
+            vs.f_visit_status_id = "1";
+            vs.visit_record_staff = txtStfConfirmID.Text;
+            
+            vs.f_visit_type_id = ic.iniC.statusAppDonor.Equals("1") ? "2" : "1";
+            //vs.mobile1 = txtMobile1.Text;
+            //vs.mobile2 = txtMobile2.Text;
+            //vs.t_patient_id = txtPid.Text;
+            //vs.passport = txtPaasport.Text;
 
-            vs.remark = txtRemark.Text;
-            vs.patient_birthday = txtDob.Text;
+            //vs.remark = txtRemark.Text;
+            //vs.patient_birthday = txtDob.Text;
         }
         private void FrmVisitAdd_Load(object sender, EventArgs e)
         {

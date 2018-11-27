@@ -73,7 +73,7 @@ namespace clinic_ivf.gui
         private void BtnNew_Click(object sender, EventArgs e)
         {
             //throw new NotImplementedException();
-            FrmAppointmentDonorAdd frm = new FrmAppointmentDonorAdd(ic,"");
+            FrmAppointmentDonorAdd frm = new FrmAppointmentDonorAdd(ic,"","","");
             frm.ShowDialog(this);
 
         }

@@ -66,5 +66,7 @@ namespace clinic_ivf.object1
         public String opu_doc { get; set; }
         public String hn_doc { get; set; }
         public String prefix_hn_doc { get; set; }
+        public String vn_doc { get; set; }
+        public String prefix_vn_doc { get; set; }
     }
 }

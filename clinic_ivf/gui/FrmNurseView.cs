@@ -57,7 +57,7 @@ namespace clinic_ivf.gui
             txtSearch.KeyUp += TxtSearch_KeyUp;
 
             initGrfQue();
-            setGrfQue("");
+            setGrfQue();
             initGrfDiag();
             setGrfDiag("");
             initGrfFinish();
@@ -155,10 +155,10 @@ namespace clinic_ivf.gui
             grfFinish.Cols[colStatus].Caption = "Status";
 
             ContextMenu menuGw = new ContextMenu();
-            menuGw.MenuItems.Add("&receive operation", new EventHandler(ContextMenu_edit));
-            menuGw.MenuItems.Add("&Order Entry", new EventHandler(ContextMenu_edit));
-            menuGw.MenuItems.Add("&Add Appointment", new EventHandler(ContextMenu_edit));
-            menuGw.MenuItems.Add("&Cancel Receive", new EventHandler(ContextMenu_edit));
+            menuGw.MenuItems.Add("&receive operation", new EventHandler(ContextMenu_Apm));
+            menuGw.MenuItems.Add("&Order Entry", new EventHandler(ContextMenu_Apm));
+            menuGw.MenuItems.Add("&Add Appointment", new EventHandler(ContextMenu_Apm));
+            menuGw.MenuItems.Add("&Cancel Receive", new EventHandler(ContextMenu_Apm));
             grfFinish.ContextMenu = menuGw;
 
             Color color = ColorTranslator.FromHtml(ic.iniC.grfRowColor);
@@ -264,10 +264,10 @@ namespace clinic_ivf.gui
             grfDiag.Cols[colStatus].Caption = "Status";
 
             ContextMenu menuGw = new ContextMenu();
-            menuGw.MenuItems.Add("&receive operation", new EventHandler(ContextMenu_edit));
-            menuGw.MenuItems.Add("&Order Entry", new EventHandler(ContextMenu_edit));
-            menuGw.MenuItems.Add("&Add Appointment", new EventHandler(ContextMenu_edit));
-            menuGw.MenuItems.Add("&Cancel Receive", new EventHandler(ContextMenu_edit));
+            menuGw.MenuItems.Add("&receive operation", new EventHandler(ContextMenu_Apm));
+            menuGw.MenuItems.Add("&Order Entry", new EventHandler(ContextMenu_Apm));
+            menuGw.MenuItems.Add("&Add Appointment", new EventHandler(ContextMenu_Apm));
+            menuGw.MenuItems.Add("&Cancel Receive", new EventHandler(ContextMenu_Apm));
             grfDiag.ContextMenu = menuGw;
 
             Color color = ColorTranslator.FromHtml(ic.iniC.grfRowColor);
@@ -328,6 +328,94 @@ namespace clinic_ivf.gui
 
             //grfAddr.DataSource = xC.iniDB.addrDB.selectByTableId1(vn);
         }
+        private void setGrfQue()
+        {
+            if (ic.iniC.statusAppDonor.Equals("1"))
+            {
+                setGrfQueDonor(txtSearch.Text);
+            }
+            else
+            {
+                setGrfQue(txtSearch.Text);
+            }
+        }
+        private void setGrfQueDonor(String search)
+        {
+            //grfDept.Rows.Count = 7;
+            grfQue.Clear();
+            DataTable dt = new DataTable();
+            if (search.Equals(""))
+            {
+                //String date = System.DateTime.Now.Year + "-" + System.DateTime.Now.ToString("MM-dd");
+                dt = ic.ivfDB.vsDB.selectByStatusNurseWaiting();
+            }
+            else
+            {
+                //grfPtt.DataSource = ic.ivfDB.vsOldDB.selectCurrentVisit(search);
+            }
+
+            //grfExpn.Rows.Count = dt.Rows.Count + 1;
+            grfQue.Rows.Count = dt.Rows.Count + 1;
+            grfQue.Cols.Count = 10;
+            C1TextBox txt = new C1TextBox();
+            //C1ComboBox cboproce = new C1ComboBox();
+            //ic.ivfDB.itmDB.setCboItem(cboproce);
+            grfQue.Cols[colPttHn].Editor = txt;
+            grfQue.Cols[colPttName].Editor = txt;
+            grfQue.Cols[colVsDate].Editor = txt;
+
+            grfQue.Cols[colVN].Width = 120;
+            grfQue.Cols[colPttHn].Width = 120;
+            grfQue.Cols[colPttName].Width = 300;
+            grfQue.Cols[colVsDate].Width = 100;
+            grfQue.Cols[colVsTime].Width = 80;
+            grfQue.Cols[colVsEtime].Width = 80;
+            grfQue.Cols[colStatus].Width = 200;
+
+            grfQue.ShowCursor = true;
+            //grdFlex.Cols[colID].Caption = "no";
+            //grfDept.Cols[colCode].Caption = "รหัส";
+
+            grfQue.Cols[colVN].Caption = "VN";
+            grfQue.Cols[colPttHn].Caption = "HN";
+            grfQue.Cols[colPttName].Caption = "Name";
+            grfQue.Cols[colVsDate].Caption = "Date";
+            grfQue.Cols[colVsTime].Caption = "Time visit";
+            grfQue.Cols[colVsEtime].Caption = "Time finish";
+            grfQue.Cols[colStatus].Caption = "Status";
+
+            ContextMenu menuGw = new ContextMenu();
+            menuGw.MenuItems.Add("&receive operation", new EventHandler(ContextMenu_Apm));
+            menuGw.MenuItems.Add("&Order Entry", new EventHandler(ContextMenu_order));
+            menuGw.MenuItems.Add("&Add Appointment", new EventHandler(ContextMenu_Apm));
+            menuGw.MenuItems.Add("&Cancel Receive", new EventHandler(ContextMenu_Apm));
+            grfQue.ContextMenu = menuGw;
+
+            Color color = ColorTranslator.FromHtml(ic.iniC.grfRowColor);
+            //CellRange rg1 = grfBank.GetCellRange(1, colE, grfBank.Rows.Count, colE);
+            //rg1.Style = grfBank.Styles["date"];
+            //grfCu.Cols[colID].Visible = false;
+            int i = 1;
+            foreach (DataRow row in dt.Rows)
+            {
+                grfQue[i, 0] = i;
+                grfQue[i, colID] = row["id"].ToString();
+                grfQue[i, colVN] = row["VN"].ToString();
+                grfQue[i, colPttHn] = row["PIDS"].ToString();
+                grfQue[i, colPttName] = row["PName"].ToString();
+                grfQue[i, colVsDate] = ic.datetoShow(row["VDate"]);
+                grfQue[i, colVsTime] = row["VStartTime"].ToString();
+                grfQue[i, colVsEtime] = row["VEndTime"].ToString();
+                grfQue[i, colStatus] = row["VName"].ToString();
+                grfQue[i, colPttId] = row["PID"].ToString();
+                //if (i % 2 == 0)
+                //    grfPtt.Rows[i].StyleNew.BackColor = color;
+                i++;
+            }
+            grfQue.Cols[colID].Visible = false;
+            //theme1.SetTheme(grfQue, ic.theme);
+
+        }
         private void setGrfQue(String search)
         {
             //grfDept.Rows.Count = 7;
@@ -374,10 +462,10 @@ namespace clinic_ivf.gui
             grfQue.Cols[colStatus].Caption = "Status";
 
             ContextMenu menuGw = new ContextMenu();
-            menuGw.MenuItems.Add("&receive operation", new EventHandler(ContextMenu_edit));
-            menuGw.MenuItems.Add("&Order Entry", new EventHandler(ContextMenu_order));
-            menuGw.MenuItems.Add("&Add Appointment", new EventHandler(ContextMenu_edit));
-            menuGw.MenuItems.Add("&Cancel Receive", new EventHandler(ContextMenu_edit));
+            //menuGw.MenuItems.Add("&receive operation", new EventHandler(ContextMenu_Apm));
+            //menuGw.MenuItems.Add("&Order Entry", new EventHandler(ContextMenu_order));
+            menuGw.MenuItems.Add("&Add Appointment", new EventHandler(ContextMenu_Apm));
+            //menuGw.MenuItems.Add("&Cancel Receive", new EventHandler(ContextMenu_Apm));
             grfQue.ContextMenu = menuGw;
 
             Color color = ColorTranslator.FromHtml(ic.iniC.grfRowColor);
@@ -405,17 +493,17 @@ namespace clinic_ivf.gui
             //theme1.SetTheme(grfQue, ic.theme);
 
         }
-        private void ContextMenu_edit(object sender, System.EventArgs e)
+        private void ContextMenu_Apm(object sender, System.EventArgs e)
         {
-            String chk = "", name = "", vn = "", pttId="";
+            String chk = "", name = "", vsid = "", pttId="";
 
-            vn = grfQue[grfQue.Row, colVN] != null ? grfQue[grfQue.Row, colVN].ToString() : "";
+            vsid = grfQue[grfQue.Row, colID] != null ? grfQue[grfQue.Row, colID].ToString() : "";
             pttId = grfQue[grfQue.Row, colPttId] != null ? grfQue[grfQue.Row, colPttId].ToString() : "";
             chk = grfQue[grfQue.Row, colPttHn] != null ? grfQue[grfQue.Row, colPttHn].ToString() : "";
             name = grfQue[grfQue.Row, colPttName] != null ? grfQue[grfQue.Row, colPttName].ToString() : "";
             //FrmNurseAdd frm = new FrmNurseAdd();
             //frm.ShowDialog(this);
-            openPatientAdd(pttId, vn, name);
+            openApmAdd(pttId, vsid, name);
             //if (MessageBox.Show("ต้องการ แก้ไข Patient  \n  hn number " + chk + " \n name " + name, "", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == DialogResult.OK)
             //{
             //grfReq.Rows.Remove(grfReq.Row);
@@ -433,28 +521,30 @@ namespace clinic_ivf.gui
             //FrmNurseAdd frm = new FrmNurseAdd();
             //frm.ShowDialog(this);
 
-            openPatientAdd(pttId, vn, name);
+            openNurseAdd(pttId, vn, name);
             //if (MessageBox.Show("ต้องการ แก้ไข Patient  \n  hn number " + chk + " \n name " + name, "", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == DialogResult.OK)
             //{
             //grfReq.Rows.Remove(grfReq.Row);
             //openPatientAdd(id, name);
             //}
         }
-        private void openPatientAdd(String pttId, String vn, String name)
+        private void openNurseAdd(String pttId, String vsid, String name)
         {
-            FrmNurseAdd frm = new FrmNurseAdd(ic, pttId, vn);
+            FrmNurseAdd frm = new FrmNurseAdd(ic, pttId, vsid);
             String txt = "";
             if (!name.Equals(""))
             {
                 txt = " " + name;
-            }
-            //else
-            //{
-            //    txt = "ป้อน Patient ใหม่ ";
-            //}
+            }            
 
             frm.FormBorderStyle = FormBorderStyle.None;
             menu.AddNewTab(frm, txt);
+        }
+        private void openApmAdd(String pttId, String vsid, String name)
+        {
+            FrmAppointmentDonorAdd frm = new FrmAppointmentDonorAdd(ic, "", pttId, vsid);
+            frm.ShowDialog(this);
+            
         }
         private void FrmNurseView_Load(object sender, EventArgs e)
         {

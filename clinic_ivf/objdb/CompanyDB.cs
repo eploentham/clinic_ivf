@@ -86,6 +86,8 @@ namespace clinic_ivf.objdb
             cop.opu_doc = "opu_doc";
             cop.hn_doc = "hn_doc";
             cop.prefix_hn_doc = "prefix_hn_doc";
+            cop.vn_doc = "vn_doc";
+            cop.prefix_vn_doc = "prefix_vn_doc";
 
             cop.table = "b_company";
             cop.pkField = "comp_id";
@@ -127,6 +129,8 @@ namespace clinic_ivf.objdb
             p.opu_doc = p.opu_doc == null ? "0" : p.opu_doc;
             p.hn_doc = p.hn_doc == null ? "0" : p.hn_doc;
             p.prefix_hn_doc = p.prefix_hn_doc == null ? "" : p.prefix_hn_doc;
+            p.vn_doc = p.vn_doc == null ? "0" : p.vn_doc;
+            p.prefix_vn_doc = p.prefix_vn_doc == null ? "" : p.prefix_vn_doc;
 
             p.amount_reserve = Decimal.TryParse(p.amount_reserve, out chk1) ? chk1.ToString() : "0";
             p.billing_doc = int.TryParse(p.billing_doc, out chk) ? chk.ToString() : "0";
@@ -556,6 +560,39 @@ namespace clinic_ivf.objdb
             doc = cop1.prefix_hn_doc + year.Substring(year.Length - 2, 2) + doc;
             return doc;
         }
+        public String genVNDoc()
+        {
+            String doc = "", year = "", sql = "";
+            Company cop1 = new Company();
+            cop1 = selectByCode1("001");
+            year = DateTime.Now.ToString("yyyy");
+            if (!year.Equals(cop1.year_curr))
+            {
+                sql = "Update " + cop.table + " Set " +
+                    " " + cop.year_curr + "='" + year + "' " +
+                    "," + cop.hn_doc + "=1 " +
+                    "Where " + cop.pkField + "='" + cop1.comp_id + "'";
+                conn.ExecuteNonQuery(conn.conn, sql);
+                //doc = "00001";
+            }
+
+            int chk = 0;
+            if (int.TryParse(cop1.vn_doc, out chk))
+            {
+                chk++;
+                doc = "00000" + chk;
+                doc = doc.Substring(doc.Length - 5, 5);
+                year = cop1.year_curr;
+
+                sql = "Update " + cop.table + " Set " +
+                "" + cop.hn_doc + "=" + chk +
+                " Where " + cop.pkField + "='" + cop1.comp_id + "'";
+                conn.ExecuteNonQuery(conn.conn, sql);
+            }
+            year = String.Concat(DateTime.Now.Year + 543);
+            doc = cop1.prefix_vn_doc + doc;
+            return doc;
+        }
         public String updateAmountReserve(String amt)
         {
             String sql = "",re="";
@@ -638,6 +675,8 @@ namespace clinic_ivf.objdb
                 cop1.opu_doc = dt.Rows[0][cop.opu_doc].ToString();
                 cop1.hn_doc = dt.Rows[0][cop.hn_doc].ToString();
                 cop1.prefix_hn_doc = dt.Rows[0][cop.prefix_hn_doc].ToString();
+                cop1.vn_doc = dt.Rows[0][cop.vn_doc].ToString();
+                cop1.prefix_vn_doc = dt.Rows[0][cop.prefix_vn_doc].ToString();
             }
             else
             {
@@ -707,6 +746,8 @@ namespace clinic_ivf.objdb
                 cop1.opu_doc = "";
                 cop1.hn_doc = "";
                 cop1.prefix_hn_doc = "";
+                cop1.vn_doc = "";
+                cop1.prefix_vn_doc = "";
             }
 
             return cop1;

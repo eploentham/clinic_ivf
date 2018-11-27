@@ -57,6 +57,13 @@ namespace clinic_ivf.objdb
             pApm.user_create = "user_create";
             pApm.user_modi = "user_modi";
             pApm.active = "active";            
+            pApm.e2 = "e2";
+            pApm.endo = "endo";
+            pApm.prl = "prl";
+            pApm.lh = "lh";
+            pApm.rt_ovary = "rt_ovary";
+            pApm.lt_ovary = "lt_ovary";
+            pApm.fsh = "fsh";
             pApm.remark = "remark";
 
             pApm.pkField = "t_patient_appointment_id";
@@ -97,6 +104,13 @@ namespace clinic_ivf.objdb
             p.change_appointment_cause = p.change_appointment_cause == null ? "" : p.change_appointment_cause;
 
             p.remark = p.remark == null ? "" : p.remark;
+            p.e2 = p.e2 == null ? "" : p.e2;
+            p.endo = p.endo == null ? "" : p.endo;
+            p.prl = p.prl == null ? "" : p.prl;
+            p.lh = p.lh == null ? "" : p.lh;
+            p.rt_ovary = p.rt_ovary == null ? "" : p.rt_ovary;
+            p.lt_ovary = p.lt_ovary == null ? "" : p.lt_ovary;
+            p.fsh = p.fsh == null ? "" : p.fsh;
 
             p.r_rp1853_aptype_id = long.TryParse(p.r_rp1853_aptype_id, out chk) ? chk.ToString() : "0";
             p.t_patient_id = long.TryParse(p.t_patient_id, out chk) ? chk.ToString() : "0";
@@ -131,7 +145,9 @@ namespace clinic_ivf.objdb
                 pApm.patient_appointment_servicepoint + "," + pApm.patient_appointment_staff_record + "," + pApm.patient_appointment_record_date_time + "," +
                 pApm.patient_appointment_staff_update + "," + pApm.patient_appointment_update_date_time + "," + pApm.patient_appointment_staff_cancel + "," +
                 pApm.patient_appointment_cancel_date_time + "," + pApm.patient_appointment_active + "," + pApm.visit_id_make_appointment + "," +
-                
+                pApm.e2 + "," + pApm.endo + "," + pApm.prl + "," +
+                pApm.lh + "," + pApm.rt_ovary + "," + pApm.lt_ovary + "," +
+                pApm.fsh + " " +
                 ") " +
                 "Values ('" + p.patient_appoint_date_time + "','" + p.patient_appointment_time.Replace("'", "''") + "','" + p.patient_appointment.Replace("'", "''") + "'," +
                 "'" + p.patient_appointment_doctor.Replace("'", "''") + "','" + p.patient_appointment_notice.Replace("'", "''") + "','" + p.patient_appointment_staff.Replace("'", "''") + "'," +
@@ -144,8 +160,10 @@ namespace clinic_ivf.objdb
                 "'" + p.patient_appointment_date + "'," +
                 "'" + p.patient_appointment_servicepoint + "','" + p.patient_appointment_staff_record + "','" + p.patient_appointment_record_date_time + "'," +
                 "'" + p.patient_appointment_staff_update + "','" + p.patient_appointment_update_date_time + "','" + p.patient_appointment_staff_cancel + "'," +
-                "'" + p.patient_appointment_cancel_date_time + "','" + p.patient_appointment_active + "','" + p.visit_id_make_appointment + "' " +
-                
+                "'" + p.patient_appointment_cancel_date_time + "','" + p.patient_appointment_active + "','" + p.visit_id_make_appointment + "', " +
+                "'" + p.e2 + "','" + p.endo + "','" + p.prl + "', " +
+                "'" + p.lh + "','" + p.rt_ovary + "','" + p.lt_ovary + "', " +
+                "'" + p.fsh + "' " +
                 ")";
 
                 re = conn.ExecuteNonQuery(conn.conn, sql);
@@ -205,7 +223,14 @@ namespace clinic_ivf.objdb
                 "," + pApm.patient_appointment_servicepoint + "='" + p.patient_appointment_servicepoint + "' " +
                 
                 "," + pApm.patient_appointment_staff_update + "='" + p.patient_appointment_staff_update + "' " +
-                "," + pApm.patient_appointment_update_date_time + "='" + p.patient_appointment_update_date_time + "' " +                
+                "," + pApm.patient_appointment_update_date_time + "='" + p.patient_appointment_update_date_time + "' " +
+                "," + pApm.e2 + "='" + p.e2 + "' " +
+                "," + pApm.endo + "='" + p.endo + "' " +
+                "," + pApm.prl + "='" + p.prl + "' " +
+                "," + pApm.lh + "='" + p.lh + "' " +
+                "," + pApm.rt_ovary + "='" + p.rt_ovary + "' " +
+                "," + pApm.lt_ovary + "='" + p.lt_ovary + "' " +
+                "," + pApm.fsh + "='" + p.fsh + "' " +
 
                 " Where " + pApm.pkField + " = '" + p.t_patient_id + "' "
                 ;
@@ -257,7 +282,37 @@ namespace clinic_ivf.objdb
             DataTable dt = new DataTable();
             String sql = "select pApm.* " +
                 "From " + pApm.table + " pApm " +
-                "Where pApm." + pApm.patient_appointment_date + " >='" + date + "' and pApm." + pApm.patient_appointment_date + " <='" + date + "'";
+                "Where pApm." + pApm.patient_appointment_date + " >='" + date + "' and pApm." + pApm.patient_appointment_date + " <='" + date + "' and pApm." + pApm.active+"='1' ";
+            dt = conn.selectData(conn.conn, sql);
+            return dt;
+        }
+        public DataTable selectByPtt(String pttid)
+        {
+            DataTable dt = new DataTable();
+            String sql = "select pApm.*,  bsp.service_point_description " +
+                "From " + pApm.table + " pApm " +
+                "Left Join b_service_point bsp on bsp.b_service_point_id = pApm.patient_appointment_servicepoint " +
+                "Where pApm." + pApm.t_patient_id + " ='" + pttid + "' and pApm." + pApm.active + "='1' ";
+            dt = conn.selectData(conn.conn, sql);
+            return dt;
+        }
+        public DataTable selectByVisitId(String vsid)
+        {
+            DataTable dt = new DataTable();
+            String sql = "select pApm.*,  bsp.service_point_description " +
+                "From " + pApm.table + " pApm " +
+                "Left Join b_service_point bsp on bsp.b_service_point_id = pApm.patient_appointment_servicepoint " +
+                "Where pApm." + pApm.t_visit_id + " ='" + vsid + "' and pApm." + pApm.active + "='1' ";
+            dt = conn.selectData(conn.conn, sql);
+            return dt;
+        }
+        public DataTable selectByDay(String date)
+        {
+            DataTable dt = new DataTable();
+            String sql = "select pApm.*,  bsp.service_point_description " +
+                "From " + pApm.table + " pApm " +
+                "Left Join b_service_point bsp on bsp.b_service_point_id = pApm.patient_appointment_servicepoint " +
+                "Where pApm." + pApm.patient_appointment_date + " ='" + date + "' and pApm." + pApm.active + "='1' ";
             dt = conn.selectData(conn.conn, sql);
             return dt;
         }
@@ -305,7 +360,13 @@ namespace clinic_ivf.objdb
                 ptt1.active = dt.Rows[0][pApm.active].ToString();
                 
                 ptt1.remark = dt.Rows[0][pApm.remark].ToString();
-                
+                ptt1.e2 = dt.Rows[0][pApm.e2].ToString();
+                ptt1.endo = dt.Rows[0][pApm.endo].ToString();
+                ptt1.prl = dt.Rows[0][pApm.prl].ToString();
+                ptt1.lh = dt.Rows[0][pApm.lh].ToString();
+                ptt1.rt_ovary = dt.Rows[0][pApm.rt_ovary].ToString();
+                ptt1.lt_ovary = dt.Rows[0][pApm.lt_ovary].ToString();
+                ptt1.fsh = dt.Rows[0][pApm.fsh].ToString();
             }
             else
             {
@@ -354,7 +415,13 @@ namespace clinic_ivf.objdb
             stf1.active = "";
             
             stf1.remark = "";
-            
+            stf1.e2 = "";
+            stf1.endo = "";
+            stf1.prl = "";
+            stf1.lh = "";
+            stf1.rt_ovary = "";
+            stf1.lt_ovary = "";
+            stf1.fsh = "";
             return stf1;
         }
     }
