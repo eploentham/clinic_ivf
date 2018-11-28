@@ -213,27 +213,28 @@
             this.tC1 = new C1.Win.C1Command.C1DockingTab();
             this.tabDay2 = new C1.Win.C1Command.C1DockingTabPage();
             this.pnGrf2Img1 = new System.Windows.Forms.Panel();
-            this.tabDay3 = new C1.Win.C1Command.C1DockingTabPage();
-            this.tabDay5 = new C1.Win.C1Command.C1DockingTabPage();
-            this.tabDay6 = new C1.Win.C1Command.C1DockingTabPage();
-            this.sB = new System.Windows.Forms.StatusStrip();
-            this.sB1 = new System.Windows.Forms.ToolStripStatusLabel();
-            this.panel1 = new System.Windows.Forms.Panel();
             this.pnGrf2Img = new System.Windows.Forms.Panel();
+            this.panel1 = new System.Windows.Forms.Panel();
             this.c1ComboBox1 = new C1.Win.C1Input.C1ComboBox();
             this.btnSaveImg2 = new C1.Win.C1Input.C1Button();
-            this.panel2 = new System.Windows.Forms.Panel();
+            this.tabDay3 = new C1.Win.C1Command.C1DockingTabPage();
             this.pnGrf3Img = new System.Windows.Forms.Panel();
+            this.panel2 = new System.Windows.Forms.Panel();
             this.c1ComboBox2 = new C1.Win.C1Input.C1ComboBox();
             this.btnSaveImg3 = new C1.Win.C1Input.C1Button();
+            this.tabDay5 = new C1.Win.C1Command.C1DockingTabPage();
             this.pnGrf5Img = new System.Windows.Forms.Panel();
             this.panel4 = new System.Windows.Forms.Panel();
             this.c1ComboBox3 = new C1.Win.C1Input.C1ComboBox();
             this.btnSaveImg5 = new C1.Win.C1Input.C1Button();
+            this.tabDay6 = new C1.Win.C1Command.C1DockingTabPage();
             this.pnGrf6Img = new System.Windows.Forms.Panel();
             this.panel6 = new System.Windows.Forms.Panel();
             this.c1ComboBox4 = new C1.Win.C1Input.C1ComboBox();
             this.btnSaveImg6 = new C1.Win.C1Input.C1Button();
+            this.sB = new System.Windows.Forms.StatusStrip();
+            this.sB1 = new System.Windows.Forms.ToolStripStatusLabel();
+            this.btnDay2ImgRef = new C1.Win.C1Input.C1Button();
             ((System.ComponentModel.ISupportInitialize)(this.theme1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.spMain)).BeginInit();
             this.spMain.Panel1.SuspendLayout();
@@ -365,22 +366,23 @@
             this.tC1.SuspendLayout();
             this.tabDay2.SuspendLayout();
             this.pnGrf2Img1.SuspendLayout();
-            this.tabDay3.SuspendLayout();
-            this.tabDay5.SuspendLayout();
-            this.tabDay6.SuspendLayout();
-            this.sB.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.c1ComboBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnSaveImg2)).BeginInit();
+            this.tabDay3.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.c1ComboBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnSaveImg3)).BeginInit();
+            this.tabDay5.SuspendLayout();
             this.panel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.c1ComboBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnSaveImg5)).BeginInit();
+            this.tabDay6.SuspendLayout();
             this.panel6.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.c1ComboBox4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnSaveImg6)).BeginInit();
+            this.sB.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.btnDay2ImgRef)).BeginInit();
             this.SuspendLayout();
             // 
             // theme1
@@ -3289,74 +3291,6 @@
             this.pnGrf2Img1.TabIndex = 0;
             this.theme1.SetTheme(this.pnGrf2Img1, "(default)");
             // 
-            // tabDay3
-            // 
-            this.tabDay3.CaptionText = "Day3";
-            this.tabDay3.CaptionVisible = true;
-            this.tabDay3.Controls.Add(this.pnGrf3Img);
-            this.tabDay3.Controls.Add(this.panel2);
-            this.tabDay3.Image = global::clinic_ivf.Properties.Resources.FixErrors_small;
-            this.tabDay3.Location = new System.Drawing.Point(4, 1);
-            this.tabDay3.Name = "tabDay3";
-            this.tabDay3.Size = new System.Drawing.Size(300, 968);
-            this.tabDay3.TabIndex = 1;
-            this.tabDay3.Text = "Day3";
-            // 
-            // tabDay5
-            // 
-            this.tabDay5.CaptionText = "Day5";
-            this.tabDay5.CaptionVisible = true;
-            this.tabDay5.Controls.Add(this.pnGrf5Img);
-            this.tabDay5.Controls.Add(this.panel4);
-            this.tabDay5.Image = global::clinic_ivf.Properties.Resources.maintenance16;
-            this.tabDay5.Location = new System.Drawing.Point(4, 1);
-            this.tabDay5.Name = "tabDay5";
-            this.tabDay5.Size = new System.Drawing.Size(300, 968);
-            this.tabDay5.TabIndex = 2;
-            this.tabDay5.Text = "Day5";
-            // 
-            // tabDay6
-            // 
-            this.tabDay6.CaptionText = "Day6";
-            this.tabDay6.CaptionVisible = true;
-            this.tabDay6.Controls.Add(this.pnGrf6Img);
-            this.tabDay6.Controls.Add(this.panel6);
-            this.tabDay6.Image = global::clinic_ivf.Properties.Resources.maintenance16;
-            this.tabDay6.Location = new System.Drawing.Point(4, 1);
-            this.tabDay6.Name = "tabDay6";
-            this.tabDay6.Size = new System.Drawing.Size(300, 968);
-            this.tabDay6.TabIndex = 3;
-            this.tabDay6.Text = "Day6";
-            // 
-            // sB
-            // 
-            this.sB.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.sB1});
-            this.sB.Location = new System.Drawing.Point(0, 970);
-            this.sB.Name = "sB";
-            this.sB.Size = new System.Drawing.Size(1640, 22);
-            this.sB.TabIndex = 9;
-            this.sB.Text = "statusStrip1";
-            // 
-            // sB1
-            // 
-            this.sB1.Name = "sB1";
-            this.sB1.Size = new System.Drawing.Size(118, 17);
-            this.sB1.Text = "toolStripStatusLabel1";
-            // 
-            // panel1
-            // 
-            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.panel1.Controls.Add(this.c1ComboBox1);
-            this.panel1.Controls.Add(this.btnSaveImg2);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.panel1.Location = new System.Drawing.Point(0, 902);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(300, 44);
-            this.panel1.TabIndex = 0;
-            this.theme1.SetTheme(this.panel1, "(default)");
-            // 
             // pnGrf2Img
             // 
             this.pnGrf2Img.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
@@ -3367,6 +3301,20 @@
             this.pnGrf2Img.Size = new System.Drawing.Size(300, 902);
             this.pnGrf2Img.TabIndex = 1;
             this.theme1.SetTheme(this.pnGrf2Img, "(default)");
+            // 
+            // panel1
+            // 
+            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.panel1.Controls.Add(this.btnDay2ImgRef);
+            this.panel1.Controls.Add(this.c1ComboBox1);
+            this.panel1.Controls.Add(this.btnSaveImg2);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panel1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.panel1.Location = new System.Drawing.Point(0, 902);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(300, 44);
+            this.panel1.TabIndex = 0;
+            this.theme1.SetTheme(this.panel1, "(default)");
             // 
             // c1ComboBox1
             // 
@@ -3403,6 +3351,30 @@
             this.btnSaveImg2.UseVisualStyleBackColor = true;
             this.btnSaveImg2.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
             // 
+            // tabDay3
+            // 
+            this.tabDay3.CaptionText = "Day3";
+            this.tabDay3.CaptionVisible = true;
+            this.tabDay3.Controls.Add(this.pnGrf3Img);
+            this.tabDay3.Controls.Add(this.panel2);
+            this.tabDay3.Image = global::clinic_ivf.Properties.Resources.FixErrors_small;
+            this.tabDay3.Location = new System.Drawing.Point(4, 1);
+            this.tabDay3.Name = "tabDay3";
+            this.tabDay3.Size = new System.Drawing.Size(300, 968);
+            this.tabDay3.TabIndex = 1;
+            this.tabDay3.Text = "Day3";
+            // 
+            // pnGrf3Img
+            // 
+            this.pnGrf3Img.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.pnGrf3Img.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pnGrf3Img.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.pnGrf3Img.Location = new System.Drawing.Point(0, 22);
+            this.pnGrf3Img.Name = "pnGrf3Img";
+            this.pnGrf3Img.Size = new System.Drawing.Size(300, 902);
+            this.pnGrf3Img.TabIndex = 1;
+            this.theme1.SetTheme(this.pnGrf3Img, "(default)");
+            // 
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
@@ -3415,17 +3387,6 @@
             this.panel2.Size = new System.Drawing.Size(300, 44);
             this.panel2.TabIndex = 0;
             this.theme1.SetTheme(this.panel2, "(default)");
-            // 
-            // pnGrf3Img
-            // 
-            this.pnGrf3Img.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.pnGrf3Img.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnGrf3Img.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.pnGrf3Img.Location = new System.Drawing.Point(0, 22);
-            this.pnGrf3Img.Name = "pnGrf3Img";
-            this.pnGrf3Img.Size = new System.Drawing.Size(300, 902);
-            this.pnGrf3Img.TabIndex = 1;
-            this.theme1.SetTheme(this.pnGrf3Img, "(default)");
             // 
             // c1ComboBox2
             // 
@@ -3461,6 +3422,19 @@
             this.theme1.SetTheme(this.btnSaveImg3, "(default)");
             this.btnSaveImg3.UseVisualStyleBackColor = true;
             this.btnSaveImg3.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            // 
+            // tabDay5
+            // 
+            this.tabDay5.CaptionText = "Day5";
+            this.tabDay5.CaptionVisible = true;
+            this.tabDay5.Controls.Add(this.pnGrf5Img);
+            this.tabDay5.Controls.Add(this.panel4);
+            this.tabDay5.Image = global::clinic_ivf.Properties.Resources.maintenance16;
+            this.tabDay5.Location = new System.Drawing.Point(4, 1);
+            this.tabDay5.Name = "tabDay5";
+            this.tabDay5.Size = new System.Drawing.Size(300, 968);
+            this.tabDay5.TabIndex = 2;
+            this.tabDay5.Text = "Day5";
             // 
             // pnGrf5Img
             // 
@@ -3521,6 +3495,19 @@
             this.btnSaveImg5.UseVisualStyleBackColor = true;
             this.btnSaveImg5.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
             // 
+            // tabDay6
+            // 
+            this.tabDay6.CaptionText = "Day6";
+            this.tabDay6.CaptionVisible = true;
+            this.tabDay6.Controls.Add(this.pnGrf6Img);
+            this.tabDay6.Controls.Add(this.panel6);
+            this.tabDay6.Image = global::clinic_ivf.Properties.Resources.maintenance16;
+            this.tabDay6.Location = new System.Drawing.Point(4, 1);
+            this.tabDay6.Name = "tabDay6";
+            this.tabDay6.Size = new System.Drawing.Size(300, 968);
+            this.tabDay6.TabIndex = 3;
+            this.tabDay6.Text = "Day6";
+            // 
             // pnGrf6Img
             // 
             this.pnGrf6Img.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
@@ -3579,6 +3566,35 @@
             this.theme1.SetTheme(this.btnSaveImg6, "(default)");
             this.btnSaveImg6.UseVisualStyleBackColor = true;
             this.btnSaveImg6.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            // 
+            // sB
+            // 
+            this.sB.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.sB1});
+            this.sB.Location = new System.Drawing.Point(0, 970);
+            this.sB.Name = "sB";
+            this.sB.Size = new System.Drawing.Size(1640, 22);
+            this.sB.TabIndex = 9;
+            this.sB.Text = "statusStrip1";
+            // 
+            // sB1
+            // 
+            this.sB1.Name = "sB1";
+            this.sB1.Size = new System.Drawing.Size(118, 17);
+            this.sB1.Text = "toolStripStatusLabel1";
+            // 
+            // btnDay2ImgRef
+            // 
+            this.btnDay2ImgRef.Image = global::clinic_ivf.Properties.Resources.refresh16;
+            this.btnDay2ImgRef.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnDay2ImgRef.Location = new System.Drawing.Point(252, 2);
+            this.btnDay2ImgRef.Name = "btnDay2ImgRef";
+            this.btnDay2ImgRef.Size = new System.Drawing.Size(24, 24);
+            this.btnDay2ImgRef.TabIndex = 546;
+            this.btnDay2ImgRef.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.theme1.SetTheme(this.btnDay2ImgRef, "(default)");
+            this.btnDay2ImgRef.UseVisualStyleBackColor = true;
+            this.btnDay2ImgRef.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
             // 
             // FrmLabOPUAdd
             // 
@@ -3729,23 +3745,24 @@
             this.tC1.ResumeLayout(false);
             this.tabDay2.ResumeLayout(false);
             this.pnGrf2Img1.ResumeLayout(false);
-            this.tabDay3.ResumeLayout(false);
-            this.tabDay5.ResumeLayout(false);
-            this.tabDay6.ResumeLayout(false);
-            this.sB.ResumeLayout(false);
-            this.sB.PerformLayout();
             this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.c1ComboBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnSaveImg2)).EndInit();
+            this.tabDay3.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.c1ComboBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnSaveImg3)).EndInit();
+            this.tabDay5.ResumeLayout(false);
             this.panel4.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.c1ComboBox3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnSaveImg5)).EndInit();
+            this.tabDay6.ResumeLayout(false);
             this.panel6.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.c1ComboBox4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnSaveImg6)).EndInit();
+            this.sB.ResumeLayout(false);
+            this.sB.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.btnDay2ImgRef)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -3959,5 +3976,6 @@
         private System.Windows.Forms.Panel panel6;
         private C1.Win.C1Input.C1ComboBox c1ComboBox4;
         private C1.Win.C1Input.C1Button btnSaveImg6;
+        private C1.Win.C1Input.C1Button btnDay2ImgRef;
     }
 }

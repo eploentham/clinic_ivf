@@ -89,6 +89,7 @@ namespace clinic_ivf.object1
                 ftpRequest.UsePassive = false;
                 ftpRequest.KeepAlive = true;
                 /* Specify the Type of FTP Request */
+                
                 ftpRequest.Method = WebRequestMethods.Ftp.UploadFile;
                 /* Establish Return Communication with the FTP Server */
 

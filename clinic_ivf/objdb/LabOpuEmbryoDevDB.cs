@@ -151,15 +151,61 @@ namespace clinic_ivf.objdb
 
             return re;
         }
-        public String updatePathPic(String id, String pathpic, String desc3)
+        public String VoidLabOpuEmbryoDev(String id, String userid)
         {
             String re = "";
             String sql = "";
             int chk = 0;
             sql = "Update " + opuEmDev.table + " Set " +
-                " " + opuEmDev.path_pic + " = '" + pathpic + "'" +
-                "," + opuEmDev.desc3 + " = '" + pathpic + "'" +
-                "Where " + opuEmDev.pkField + "='" + desc3 + "'";
+                " " + opuEmDev.active + " = '3'" +
+                "," + opuEmDev.date_cancel + " = now()" +
+                "," + opuEmDev.user_cancel + " = '"+ userid + "'" +
+                "Where " + opuEmDev.pkField + "='" + id + "'";
+            try
+            {
+                re = conn.ExecuteNonQuery(conn.conn, sql);
+            }
+            catch (Exception ex)
+            {
+                sql = ex.Message + " " + ex.InnerException;
+            }
+
+            return re;
+        }
+        public String updatePathPic(String id, String num, String filename, String desc3, String userid)
+        {
+            String re = "";
+            String sql = "";
+            int chk = 0;
+            sql = "Update " + opuEmDev.table + " Set " +
+                " " + opuEmDev.desc3 + " = '" + desc3 + "'" +
+                "," + opuEmDev.path_pic + " = '" + filename + "'" +
+                "," + opuEmDev.opu_embryo_dev_no + " = '" + num + "'" +
+                "," + opuEmDev.user_modi + " = '" + userid + "'" +
+                "," + opuEmDev.date_modi + " = now() " +
+                "Where " + opuEmDev.pkField + "='" + id + "'";
+            try
+            {
+                re = conn.ExecuteNonQuery(conn.conn, sql);
+            }
+            catch (Exception ex)
+            {
+                sql = ex.Message + " " + ex.InnerException;
+            }
+
+            return re;
+        }
+        public String updateNumDesc(String id, String num, String desc3, String userid)
+        {
+            String re = "";
+            String sql = "";
+            int chk = 0;
+            sql = "Update " + opuEmDev.table + " Set " +                
+                " " + opuEmDev.desc3 + " = '" + desc3 + "'" +
+                "," + opuEmDev.opu_embryo_dev_no + " = '" + num + "'" +
+                "," + opuEmDev.user_modi + " = '" + userid + "'" +
+                "," + opuEmDev.date_modi + " = now() " +
+                "Where " + opuEmDev.pkField + "='" + id + "'";
             try
             {
                 re = conn.ExecuteNonQuery(conn.conn, sql);
