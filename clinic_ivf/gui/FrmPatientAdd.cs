@@ -126,7 +126,7 @@ namespace clinic_ivf.gui
             initGrfImg();
             setGrfImg("");
             initGrfVs();
-            setGrfVs(txtHn.Text);
+            setGrfVs();
 
             btnPrnSticker.Click += BtnPrnSticker_Click;
             btnSave.Click += BtnSave_Click;
@@ -160,7 +160,7 @@ namespace clinic_ivf.gui
             //throw new NotImplementedException();
             FrmVisitAdd frm = new FrmVisitAdd(ic, txtID.Text, "", txtIdOld.Text);
             frm.ShowDialog(this);
-            setGrfVs(txtHn.Text);
+            setGrfVs();
         }
 
         private void TC1_DoubleClick(object sender, EventArgs e)
@@ -1032,6 +1032,93 @@ namespace clinic_ivf.gui
 
             theme1.SetTheme(grfVs, "Office2016DarkGray");
 
+        }
+        private void setGrfVs()
+        {
+            if (ic.iniC.statusAppDonor.Equals("1"))
+            {
+                setGrfVsDonor(txtHn.Text);
+            }
+            else
+            {
+                setGrfVs(txtHn.Text);
+            }
+        }
+        private void setGrfVsDonor(String search)
+        {
+            grfVs.Clear();
+            grfVs.Rows.Count = 1;
+            grfVs.Cols.Count = 6;
+            DataTable dt = ic.ivfDB.vsDB.selectByHN(search);
+
+            grfVs.Rows.Count = dt.Rows.Count + 1;
+            //grfCu.Rows.Count = 41;
+            //grfCu.Cols.Count = 4;
+            C1TextBox txt = new C1TextBox();
+            //Button btn = new Button();
+            //btn.BackColor = Color.Gray;
+            //btn.Click += BtnEditor_Click;
+            //C1ComboBox cboproce = new C1ComboBox();
+            //ic.ivfDB.itmDB.setCboItem(cboproce);
+            grfVs.Cols[colVsID].Editor = txt;
+            grfVs.Cols[colVsHn].Editor = txt;
+            grfVs.Cols[colVsVisitDate].Editor = txt;
+            grfVs.Cols[colVsVisitTime].Editor = txt;
+            //grfImg.Cols[colBtn].Editor = btn;
+
+            grfVs.Cols[colVsID].Width = 250;
+            grfVs.Cols[colVsHn].Width = 100;
+            grfVs.Cols[colVsVisitDate].Width = 100;
+            grfVs.Cols[colVsVisitTime].Width = 100;
+            grfVs.Cols[colVsStatus].Width = 250;
+            //grfImg.Cols[colBtn].Width = 50;
+            //grfImg.Cols[colPathPic].Width = 100;
+
+            grfVs.ShowCursor = true;
+            //grdFlex.Cols[colID].Caption = "no";
+            //grfDept.Cols[colCode].Caption = "รหัส";
+
+            grfVs.Cols[colVsID].Caption = "VN";
+            grfVs.Cols[colVsHn].Caption = "HN";
+            grfVs.Cols[colVsVisitDate].Caption = "visit date";
+            grfVs.Cols[colVsVisitTime].Caption = "visit time";
+            grfVs.Cols[colVsStatus].Caption = "Status";
+
+            //Hashtable ht = new Hashtable();
+            //foreach (DataRow dr in dt.Rows)
+            //{
+            //    ht.Add(dr["CategoryID"], LoadImage(dr["Picture"] as byte[]));
+            //}
+            //grfImg.Cols[colImg].ImageMap = ht;
+            //grfVs.Cols[colImg].ImageAndText = false;
+
+            ContextMenu menuGw = new ContextMenu();
+            menuGw.MenuItems.Add("&แก้ไข Patient", new EventHandler(ContextMenu_edit));
+            grfVs.ContextMenu = menuGw;
+
+            Color color = ColorTranslator.FromHtml(ic.iniC.grfRowColor);
+            //CellRange rg1 = grfBank.GetCellRange(1, colE, grfBank.Rows.Count, colE);
+            //rg1.Style = grfBank.Styles["date"];
+            //grfCu.Cols[colID].Visible = false;
+            int i = 1;
+            foreach (DataRow row in dt.Rows)
+            {
+                grfVs[i, colVsID] = row[ic.ivfDB.vsOldDB.vsold.VN].ToString();
+                grfVs[i, colVsHn] = row[ic.ivfDB.vsOldDB.vsold.PIDS].ToString();
+                grfVs[i, colVsVisitDate] = ic.datetoShow(row[ic.ivfDB.vsOldDB.vsold.VDate]);
+                grfVs[i, colVsVisitTime] = row[ic.ivfDB.vsOldDB.vsold.VStartTime].ToString();
+                grfVs[i, colVsStatus] = row["VName"].ToString();
+                grfVs[i, 0] = i;
+                i++;
+                //if (i % 2 == 0)
+                //grfPtt.Rows[i].StyleNew.BackColor = color;
+            }
+            //grfVs.Cols[colID].Visible = false;
+            //grfImg.Cols[colPathPic].Visible = false;
+            grfVs.Cols[colImg].AllowEditing = false;
+            grfVs.AutoSizeCols();
+            grfVs.AutoSizeRows();
+            theme1.SetTheme(grfImg, "Office2016DarkGray");
         }
         private void setGrfVs(String search)
         {

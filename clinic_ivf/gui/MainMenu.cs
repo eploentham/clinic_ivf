@@ -339,7 +339,7 @@ namespace clinic_ivf.gui
         private void MainMenu_Load(object sender, EventArgs e)
         {
             
-            this.Text = "สวัสดี คุณ "+ic.user.staff_fname_t +" "+ic.user.staff_lname_t+" Update 2018-11-23 ";
+            this.Text = "สวัสดี คุณ "+ic.user.staff_fname_t +" "+ic.user.staff_lname_t+" Update 2018-11-28 ";
             //theme1.SetTheme(this, ic.theme);
             theme1.SetTheme(this, ic.theme);
             theme1.SetTheme(menuStrip1, ic.theme);
@@ -384,7 +384,7 @@ namespace clinic_ivf.gui
                 }
                 menuLab.Visible = true;
             }
-            if (ic.user.status_admin.Equals("2"))
+            if (ic.user.status_admin.Equals("1"))
             {
                 foreach (Control c in menuStrip1.Controls)
                 {

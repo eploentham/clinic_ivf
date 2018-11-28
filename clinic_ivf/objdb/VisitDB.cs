@@ -292,6 +292,23 @@ namespace clinic_ivf.objdb
 
             return dt;
         }
+        public DataTable selectByHN(String hn)
+        {
+            DataTable dt = new DataTable();
+            //String date = System.DateTime.Now.Year + "-" + System.DateTime.Now.ToString("MM-dd");
+            String sql = "select vs.t_visit_id as id,vs.visit_vn as VN, vs.visit_hn as PIDS, CONCAT(IFNULL(fpp.patient_prefix_description,''),' ', ptt.patient_firstname_e ,' ',ptt.patient_lastname_e)  as PName" +
+                ", vs.visit_begin_visit_time as VDate, vs.visit_begin_visit_time as VStartTime, vs.visit_financial_discharge_time as VEndTime, '' as VName, bsp.service_point_description as VSID, vs.t_patient_id as PID " +
+                "From " + vs.table + " vs " +
+                "Left Join t_patient ptt on  ptt.t_patient_id = vs." + vs.t_patient_id + " " +
+                "Left join f_patient_prefix fpp on fpp.f_patient_prefix_id = ptt.f_patient_prefix_id " +
+                "Left Join b_service_point bsp on bsp.b_service_point_id = vs.b_service_point_id " +
+                " " +
+                "Where vs." + vs.visit_hn + " ='" + hn + "' " +
+                "Order By vs."+vs.t_visit_id;
+            dt = conn.selectData(conn.conn, sql);
+
+            return dt;
+        }
         public Visit setVisit(DataTable dt)
         {
             Visit vs1 = new Visit();

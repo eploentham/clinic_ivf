@@ -212,12 +212,28 @@
             this.c1CommandDock1 = new C1.Win.C1Command.C1CommandDock();
             this.tC1 = new C1.Win.C1Command.C1DockingTab();
             this.tabDay2 = new C1.Win.C1Command.C1DockingTabPage();
+            this.pnGrf2Img1 = new System.Windows.Forms.Panel();
             this.tabDay3 = new C1.Win.C1Command.C1DockingTabPage();
             this.tabDay5 = new C1.Win.C1Command.C1DockingTabPage();
             this.tabDay6 = new C1.Win.C1Command.C1DockingTabPage();
             this.sB = new System.Windows.Forms.StatusStrip();
             this.sB1 = new System.Windows.Forms.ToolStripStatusLabel();
+            this.panel1 = new System.Windows.Forms.Panel();
             this.pnGrf2Img = new System.Windows.Forms.Panel();
+            this.c1ComboBox1 = new C1.Win.C1Input.C1ComboBox();
+            this.btnSaveImg2 = new C1.Win.C1Input.C1Button();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.pnGrf3Img = new System.Windows.Forms.Panel();
+            this.c1ComboBox2 = new C1.Win.C1Input.C1ComboBox();
+            this.btnSaveImg3 = new C1.Win.C1Input.C1Button();
+            this.pnGrf5Img = new System.Windows.Forms.Panel();
+            this.panel4 = new System.Windows.Forms.Panel();
+            this.c1ComboBox3 = new C1.Win.C1Input.C1ComboBox();
+            this.btnSaveImg5 = new C1.Win.C1Input.C1Button();
+            this.pnGrf6Img = new System.Windows.Forms.Panel();
+            this.panel6 = new System.Windows.Forms.Panel();
+            this.c1ComboBox4 = new C1.Win.C1Input.C1ComboBox();
+            this.btnSaveImg6 = new C1.Win.C1Input.C1Button();
             ((System.ComponentModel.ISupportInitialize)(this.theme1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.spMain)).BeginInit();
             this.spMain.Panel1.SuspendLayout();
@@ -348,7 +364,23 @@
             ((System.ComponentModel.ISupportInitialize)(this.tC1)).BeginInit();
             this.tC1.SuspendLayout();
             this.tabDay2.SuspendLayout();
+            this.pnGrf2Img1.SuspendLayout();
+            this.tabDay3.SuspendLayout();
+            this.tabDay5.SuspendLayout();
+            this.tabDay6.SuspendLayout();
             this.sB.SuspendLayout();
+            this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.c1ComboBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnSaveImg2)).BeginInit();
+            this.panel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.c1ComboBox2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnSaveImg3)).BeginInit();
+            this.panel4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.c1ComboBox3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnSaveImg5)).BeginInit();
+            this.panel6.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.c1ComboBox4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnSaveImg6)).BeginInit();
             this.SuspendLayout();
             // 
             // theme1
@@ -524,7 +556,10 @@
             this.txtDobFeMale.Calendar.TodayBorderColor = System.Drawing.Color.White;
             this.txtDobFeMale.Calendar.TrailingForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
             this.txtDobFeMale.Calendar.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            this.txtDobFeMale.Culture = 1054;
+            this.txtDobFeMale.CurrentTimeZone = false;
             this.txtDobFeMale.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
+            this.txtDobFeMale.GMTOffset = System.TimeSpan.Parse("00:00:00");
             this.txtDobFeMale.ImagePadding = new System.Windows.Forms.Padding(0);
             this.txtDobFeMale.Location = new System.Drawing.Point(94, 63);
             this.txtDobFeMale.Name = "txtDobFeMale";
@@ -554,7 +589,10 @@
             this.txtDobMale.Calendar.TodayBorderColor = System.Drawing.Color.White;
             this.txtDobMale.Calendar.TrailingForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
             this.txtDobMale.Calendar.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            this.txtDobMale.Culture = 1054;
+            this.txtDobMale.CurrentTimeZone = false;
             this.txtDobMale.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
+            this.txtDobMale.GMTOffset = System.TimeSpan.Parse("00:00:00");
             this.txtDobMale.ImagePadding = new System.Windows.Forms.Padding(0);
             this.txtDobMale.Location = new System.Drawing.Point(444, 63);
             this.txtDobMale.Name = "txtDobMale";
@@ -644,7 +682,10 @@
             this.txtOpuDate.Calendar.TodayBorderColor = System.Drawing.Color.White;
             this.txtOpuDate.Calendar.TrailingForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
             this.txtOpuDate.Calendar.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            this.txtOpuDate.Culture = 1054;
+            this.txtOpuDate.CurrentTimeZone = false;
             this.txtOpuDate.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
+            this.txtOpuDate.GMTOffset = System.TimeSpan.Parse("00:00:00");
             this.txtOpuDate.ImagePadding = new System.Windows.Forms.Padding(0);
             this.txtOpuDate.Location = new System.Drawing.Point(754, 63);
             this.txtOpuDate.Name = "txtOpuDate";
@@ -996,7 +1037,10 @@
             this.txtEmbryoFreezDate1.Calendar.TodayBorderColor = System.Drawing.Color.White;
             this.txtEmbryoFreezDate1.Calendar.TrailingForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
             this.txtEmbryoFreezDate1.Calendar.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            this.txtEmbryoFreezDate1.Culture = 1054;
+            this.txtEmbryoFreezDate1.CurrentTimeZone = false;
             this.txtEmbryoFreezDate1.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
+            this.txtEmbryoFreezDate1.GMTOffset = System.TimeSpan.Parse("00:00:00");
             this.txtEmbryoFreezDate1.ImagePadding = new System.Windows.Forms.Padding(0);
             this.txtEmbryoFreezDate1.Location = new System.Drawing.Point(117, 34);
             this.txtEmbryoFreezDate1.Name = "txtEmbryoFreezDate1";
@@ -1272,7 +1316,10 @@
             this.txtEmbryoFreezDate0.Calendar.TodayBorderColor = System.Drawing.Color.White;
             this.txtEmbryoFreezDate0.Calendar.TrailingForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
             this.txtEmbryoFreezDate0.Calendar.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            this.txtEmbryoFreezDate0.Culture = 1054;
+            this.txtEmbryoFreezDate0.CurrentTimeZone = false;
             this.txtEmbryoFreezDate0.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
+            this.txtEmbryoFreezDate0.GMTOffset = System.TimeSpan.Parse("00:00:00");
             this.txtEmbryoFreezDate0.ImagePadding = new System.Windows.Forms.Padding(0);
             this.txtEmbryoFreezDate0.Location = new System.Drawing.Point(117, 34);
             this.txtEmbryoFreezDate0.Name = "txtEmbryoFreezDate0";
@@ -1752,11 +1799,14 @@
             this.txtSpermDate.Calendar.TodayBorderColor = System.Drawing.Color.White;
             this.txtSpermDate.Calendar.TrailingForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
             this.txtSpermDate.Calendar.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            this.txtSpermDate.Culture = 1054;
+            this.txtSpermDate.CurrentTimeZone = false;
             this.txtSpermDate.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
+            this.txtSpermDate.GMTOffset = System.TimeSpan.Parse("00:00:00");
             this.txtSpermDate.ImagePadding = new System.Windows.Forms.Padding(0);
             this.txtSpermDate.Location = new System.Drawing.Point(98, 14);
             this.txtSpermDate.Name = "txtSpermDate";
-            this.txtSpermDate.Size = new System.Drawing.Size(166, 18);
+            this.txtSpermDate.Size = new System.Drawing.Size(133, 18);
             this.txtSpermDate.TabIndex = 510;
             this.txtSpermDate.Tag = null;
             this.theme1.SetTheme(this.txtSpermDate, "(default)");
@@ -1993,11 +2043,14 @@
             this.txtFertiliDate.Calendar.TodayBorderColor = System.Drawing.Color.White;
             this.txtFertiliDate.Calendar.TrailingForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
             this.txtFertiliDate.Calendar.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            this.txtFertiliDate.Culture = 1054;
+            this.txtFertiliDate.CurrentTimeZone = false;
             this.txtFertiliDate.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
+            this.txtFertiliDate.GMTOffset = System.TimeSpan.Parse("00:00:00");
             this.txtFertiliDate.ImagePadding = new System.Windows.Forms.Padding(0);
             this.txtFertiliDate.Location = new System.Drawing.Point(98, 14);
             this.txtFertiliDate.Name = "txtFertiliDate";
-            this.txtFertiliDate.Size = new System.Drawing.Size(166, 18);
+            this.txtFertiliDate.Size = new System.Drawing.Size(133, 18);
             this.txtFertiliDate.TabIndex = 510;
             this.txtFertiliDate.Tag = null;
             this.theme1.SetTheme(this.txtFertiliDate, "(default)");
@@ -2263,11 +2316,15 @@
             this.txtMaturaDate.Calendar.TodayBorderColor = System.Drawing.Color.White;
             this.txtMaturaDate.Calendar.TrailingForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
             this.txtMaturaDate.Calendar.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            this.txtMaturaDate.Culture = 1054;
+            this.txtMaturaDate.CurrentTimeZone = false;
+            this.txtMaturaDate.DateTimeInput = false;
             this.txtMaturaDate.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
+            this.txtMaturaDate.GMTOffset = System.TimeSpan.Parse("00:00:00");
             this.txtMaturaDate.ImagePadding = new System.Windows.Forms.Padding(0);
             this.txtMaturaDate.Location = new System.Drawing.Point(98, 36);
             this.txtMaturaDate.Name = "txtMaturaDate";
-            this.txtMaturaDate.Size = new System.Drawing.Size(166, 18);
+            this.txtMaturaDate.Size = new System.Drawing.Size(133, 18);
             this.txtMaturaDate.TabIndex = 510;
             this.txtMaturaDate.Tag = null;
             this.theme1.SetTheme(this.txtMaturaDate, "(default)");
@@ -2294,9 +2351,9 @@
             this.label10.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
             this.label10.Location = new System.Drawing.Point(203, 16);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(71, 16);
+            this.label10.Size = new System.Drawing.Size(90, 16);
             this.label10.TabIndex = 503;
-            this.label10.Text = "(Rt = , Lt = )";
+            this.label10.Text = "(No=, Rt=, Lt=)";
             this.theme1.SetTheme(this.label10, "(default)");
             // 
             // txtMaturaNoofOpu
@@ -3177,9 +3234,9 @@
             this.c1CommandDock1.Dock = System.Windows.Forms.DockStyle.Right;
             this.c1CommandDock1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
             this.c1CommandDock1.Id = 2;
-            this.c1CommandDock1.Location = new System.Drawing.Point(1443, 0);
+            this.c1CommandDock1.Location = new System.Drawing.Point(1311, 0);
             this.c1CommandDock1.Name = "c1CommandDock1";
-            this.c1CommandDock1.Size = new System.Drawing.Size(197, 970);
+            this.c1CommandDock1.Size = new System.Drawing.Size(329, 970);
             this.theme1.SetTheme(this.c1CommandDock1, "(default)");
             // 
             // tC1
@@ -3199,7 +3256,7 @@
             this.tC1.Name = "tC1";
             this.tC1.SelectedIndex = 4;
             this.tC1.ShowCaption = true;
-            this.tC1.Size = new System.Drawing.Size(197, 970);
+            this.tC1.Size = new System.Drawing.Size(329, 970);
             this.tC1.TabIndex = 0;
             this.tC1.TabSizeMode = C1.Win.C1Command.TabSizeModeEnum.Fit;
             this.tC1.TabsShowFocusCues = false;
@@ -3211,22 +3268,37 @@
             // 
             this.tabDay2.CaptionText = "Day2";
             this.tabDay2.CaptionVisible = true;
-            this.tabDay2.Controls.Add(this.pnGrf2Img);
+            this.tabDay2.Controls.Add(this.pnGrf2Img1);
             this.tabDay2.Image = global::clinic_ivf.Properties.Resources.FixErrors_small;
             this.tabDay2.Location = new System.Drawing.Point(4, 1);
             this.tabDay2.Name = "tabDay2";
-            this.tabDay2.Size = new System.Drawing.Size(168, 968);
+            this.tabDay2.Size = new System.Drawing.Size(300, 968);
             this.tabDay2.TabIndex = 0;
             this.tabDay2.Text = "Day2";
+            // 
+            // pnGrf2Img1
+            // 
+            this.pnGrf2Img1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.pnGrf2Img1.Controls.Add(this.pnGrf2Img);
+            this.pnGrf2Img1.Controls.Add(this.panel1);
+            this.pnGrf2Img1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pnGrf2Img1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.pnGrf2Img1.Location = new System.Drawing.Point(0, 22);
+            this.pnGrf2Img1.Name = "pnGrf2Img1";
+            this.pnGrf2Img1.Size = new System.Drawing.Size(300, 946);
+            this.pnGrf2Img1.TabIndex = 0;
+            this.theme1.SetTheme(this.pnGrf2Img1, "(default)");
             // 
             // tabDay3
             // 
             this.tabDay3.CaptionText = "Day3";
             this.tabDay3.CaptionVisible = true;
+            this.tabDay3.Controls.Add(this.pnGrf3Img);
+            this.tabDay3.Controls.Add(this.panel2);
             this.tabDay3.Image = global::clinic_ivf.Properties.Resources.FixErrors_small;
             this.tabDay3.Location = new System.Drawing.Point(4, 1);
             this.tabDay3.Name = "tabDay3";
-            this.tabDay3.Size = new System.Drawing.Size(168, 968);
+            this.tabDay3.Size = new System.Drawing.Size(300, 968);
             this.tabDay3.TabIndex = 1;
             this.tabDay3.Text = "Day3";
             // 
@@ -3234,10 +3306,12 @@
             // 
             this.tabDay5.CaptionText = "Day5";
             this.tabDay5.CaptionVisible = true;
+            this.tabDay5.Controls.Add(this.pnGrf5Img);
+            this.tabDay5.Controls.Add(this.panel4);
             this.tabDay5.Image = global::clinic_ivf.Properties.Resources.maintenance16;
             this.tabDay5.Location = new System.Drawing.Point(4, 1);
             this.tabDay5.Name = "tabDay5";
-            this.tabDay5.Size = new System.Drawing.Size(168, 968);
+            this.tabDay5.Size = new System.Drawing.Size(300, 968);
             this.tabDay5.TabIndex = 2;
             this.tabDay5.Text = "Day5";
             // 
@@ -3245,10 +3319,12 @@
             // 
             this.tabDay6.CaptionText = "Day6";
             this.tabDay6.CaptionVisible = true;
+            this.tabDay6.Controls.Add(this.pnGrf6Img);
+            this.tabDay6.Controls.Add(this.panel6);
             this.tabDay6.Image = global::clinic_ivf.Properties.Resources.maintenance16;
             this.tabDay6.Location = new System.Drawing.Point(4, 1);
             this.tabDay6.Name = "tabDay6";
-            this.tabDay6.Size = new System.Drawing.Size(168, 968);
+            this.tabDay6.Size = new System.Drawing.Size(300, 968);
             this.tabDay6.TabIndex = 3;
             this.tabDay6.Text = "Day6";
             // 
@@ -3268,16 +3344,241 @@
             this.sB1.Size = new System.Drawing.Size(118, 17);
             this.sB1.Text = "toolStripStatusLabel1";
             // 
+            // panel1
+            // 
+            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.panel1.Controls.Add(this.c1ComboBox1);
+            this.panel1.Controls.Add(this.btnSaveImg2);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panel1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.panel1.Location = new System.Drawing.Point(0, 902);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(300, 44);
+            this.panel1.TabIndex = 0;
+            this.theme1.SetTheme(this.panel1, "(default)");
+            // 
             // pnGrf2Img
             // 
             this.pnGrf2Img.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
             this.pnGrf2Img.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnGrf2Img.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.pnGrf2Img.Location = new System.Drawing.Point(0, 22);
+            this.pnGrf2Img.Location = new System.Drawing.Point(0, 0);
             this.pnGrf2Img.Name = "pnGrf2Img";
-            this.pnGrf2Img.Size = new System.Drawing.Size(168, 946);
-            this.pnGrf2Img.TabIndex = 0;
+            this.pnGrf2Img.Size = new System.Drawing.Size(300, 902);
+            this.pnGrf2Img.TabIndex = 1;
             this.theme1.SetTheme(this.pnGrf2Img, "(default)");
+            // 
+            // c1ComboBox1
+            // 
+            this.c1ComboBox1.AllowSpinLoop = false;
+            this.c1ComboBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.c1ComboBox1.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
+            this.c1ComboBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.c1ComboBox1.GapHeight = 0;
+            this.c1ComboBox1.ImagePadding = new System.Windows.Forms.Padding(0);
+            this.c1ComboBox1.ItemsDisplayMember = "";
+            this.c1ComboBox1.ItemsValueMember = "";
+            this.c1ComboBox1.Location = new System.Drawing.Point(3, 6);
+            this.c1ComboBox1.Name = "c1ComboBox1";
+            this.c1ComboBox1.Size = new System.Drawing.Size(151, 20);
+            this.c1ComboBox1.Style.DropDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.c1ComboBox1.Style.DropDownBorderColor = System.Drawing.Color.Gainsboro;
+            this.c1ComboBox1.Style.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.c1ComboBox1.TabIndex = 545;
+            this.c1ComboBox1.Tag = null;
+            this.theme1.SetTheme(this.c1ComboBox1, "(default)");
+            this.c1ComboBox1.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            // 
+            // btnSaveImg2
+            // 
+            this.btnSaveImg2.Image = global::clinic_ivf.Properties.Resources.download_database16;
+            this.btnSaveImg2.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnSaveImg2.Location = new System.Drawing.Point(160, 2);
+            this.btnSaveImg2.Name = "btnSaveImg2";
+            this.btnSaveImg2.Size = new System.Drawing.Size(56, 28);
+            this.btnSaveImg2.TabIndex = 544;
+            this.btnSaveImg2.Text = "save";
+            this.btnSaveImg2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.theme1.SetTheme(this.btnSaveImg2, "(default)");
+            this.btnSaveImg2.UseVisualStyleBackColor = true;
+            this.btnSaveImg2.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            // 
+            // panel2
+            // 
+            this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.panel2.Controls.Add(this.c1ComboBox2);
+            this.panel2.Controls.Add(this.btnSaveImg3);
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panel2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.panel2.Location = new System.Drawing.Point(0, 924);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(300, 44);
+            this.panel2.TabIndex = 0;
+            this.theme1.SetTheme(this.panel2, "(default)");
+            // 
+            // pnGrf3Img
+            // 
+            this.pnGrf3Img.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.pnGrf3Img.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pnGrf3Img.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.pnGrf3Img.Location = new System.Drawing.Point(0, 22);
+            this.pnGrf3Img.Name = "pnGrf3Img";
+            this.pnGrf3Img.Size = new System.Drawing.Size(300, 902);
+            this.pnGrf3Img.TabIndex = 1;
+            this.theme1.SetTheme(this.pnGrf3Img, "(default)");
+            // 
+            // c1ComboBox2
+            // 
+            this.c1ComboBox2.AllowSpinLoop = false;
+            this.c1ComboBox2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.c1ComboBox2.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
+            this.c1ComboBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.c1ComboBox2.GapHeight = 0;
+            this.c1ComboBox2.ImagePadding = new System.Windows.Forms.Padding(0);
+            this.c1ComboBox2.ItemsDisplayMember = "";
+            this.c1ComboBox2.ItemsValueMember = "";
+            this.c1ComboBox2.Location = new System.Drawing.Point(3, 6);
+            this.c1ComboBox2.Name = "c1ComboBox2";
+            this.c1ComboBox2.Size = new System.Drawing.Size(151, 20);
+            this.c1ComboBox2.Style.DropDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.c1ComboBox2.Style.DropDownBorderColor = System.Drawing.Color.Gainsboro;
+            this.c1ComboBox2.Style.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.c1ComboBox2.TabIndex = 547;
+            this.c1ComboBox2.Tag = null;
+            this.theme1.SetTheme(this.c1ComboBox2, "(default)");
+            this.c1ComboBox2.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            // 
+            // btnSaveImg3
+            // 
+            this.btnSaveImg3.Image = global::clinic_ivf.Properties.Resources.download_database16;
+            this.btnSaveImg3.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnSaveImg3.Location = new System.Drawing.Point(160, 2);
+            this.btnSaveImg3.Name = "btnSaveImg3";
+            this.btnSaveImg3.Size = new System.Drawing.Size(56, 28);
+            this.btnSaveImg3.TabIndex = 546;
+            this.btnSaveImg3.Text = "save";
+            this.btnSaveImg3.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.theme1.SetTheme(this.btnSaveImg3, "(default)");
+            this.btnSaveImg3.UseVisualStyleBackColor = true;
+            this.btnSaveImg3.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            // 
+            // pnGrf5Img
+            // 
+            this.pnGrf5Img.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.pnGrf5Img.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pnGrf5Img.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.pnGrf5Img.Location = new System.Drawing.Point(0, 22);
+            this.pnGrf5Img.Name = "pnGrf5Img";
+            this.pnGrf5Img.Size = new System.Drawing.Size(300, 902);
+            this.pnGrf5Img.TabIndex = 3;
+            this.theme1.SetTheme(this.pnGrf5Img, "(default)");
+            // 
+            // panel4
+            // 
+            this.panel4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.panel4.Controls.Add(this.c1ComboBox3);
+            this.panel4.Controls.Add(this.btnSaveImg5);
+            this.panel4.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panel4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.panel4.Location = new System.Drawing.Point(0, 924);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(300, 44);
+            this.panel4.TabIndex = 2;
+            this.theme1.SetTheme(this.panel4, "(default)");
+            // 
+            // c1ComboBox3
+            // 
+            this.c1ComboBox3.AllowSpinLoop = false;
+            this.c1ComboBox3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.c1ComboBox3.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
+            this.c1ComboBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.c1ComboBox3.GapHeight = 0;
+            this.c1ComboBox3.ImagePadding = new System.Windows.Forms.Padding(0);
+            this.c1ComboBox3.ItemsDisplayMember = "";
+            this.c1ComboBox3.ItemsValueMember = "";
+            this.c1ComboBox3.Location = new System.Drawing.Point(3, 6);
+            this.c1ComboBox3.Name = "c1ComboBox3";
+            this.c1ComboBox3.Size = new System.Drawing.Size(151, 20);
+            this.c1ComboBox3.Style.DropDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.c1ComboBox3.Style.DropDownBorderColor = System.Drawing.Color.Gainsboro;
+            this.c1ComboBox3.Style.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.c1ComboBox3.TabIndex = 545;
+            this.c1ComboBox3.Tag = null;
+            this.theme1.SetTheme(this.c1ComboBox3, "(default)");
+            this.c1ComboBox3.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            // 
+            // btnSaveImg5
+            // 
+            this.btnSaveImg5.Image = global::clinic_ivf.Properties.Resources.download_database16;
+            this.btnSaveImg5.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnSaveImg5.Location = new System.Drawing.Point(160, 2);
+            this.btnSaveImg5.Name = "btnSaveImg5";
+            this.btnSaveImg5.Size = new System.Drawing.Size(56, 28);
+            this.btnSaveImg5.TabIndex = 544;
+            this.btnSaveImg5.Text = "save";
+            this.btnSaveImg5.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.theme1.SetTheme(this.btnSaveImg5, "(default)");
+            this.btnSaveImg5.UseVisualStyleBackColor = true;
+            this.btnSaveImg5.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            // 
+            // pnGrf6Img
+            // 
+            this.pnGrf6Img.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.pnGrf6Img.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pnGrf6Img.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.pnGrf6Img.Location = new System.Drawing.Point(0, 22);
+            this.pnGrf6Img.Name = "pnGrf6Img";
+            this.pnGrf6Img.Size = new System.Drawing.Size(300, 902);
+            this.pnGrf6Img.TabIndex = 3;
+            this.theme1.SetTheme(this.pnGrf6Img, "(default)");
+            // 
+            // panel6
+            // 
+            this.panel6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.panel6.Controls.Add(this.c1ComboBox4);
+            this.panel6.Controls.Add(this.btnSaveImg6);
+            this.panel6.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panel6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.panel6.Location = new System.Drawing.Point(0, 924);
+            this.panel6.Name = "panel6";
+            this.panel6.Size = new System.Drawing.Size(300, 44);
+            this.panel6.TabIndex = 2;
+            this.theme1.SetTheme(this.panel6, "(default)");
+            // 
+            // c1ComboBox4
+            // 
+            this.c1ComboBox4.AllowSpinLoop = false;
+            this.c1ComboBox4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.c1ComboBox4.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
+            this.c1ComboBox4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.c1ComboBox4.GapHeight = 0;
+            this.c1ComboBox4.ImagePadding = new System.Windows.Forms.Padding(0);
+            this.c1ComboBox4.ItemsDisplayMember = "";
+            this.c1ComboBox4.ItemsValueMember = "";
+            this.c1ComboBox4.Location = new System.Drawing.Point(3, 6);
+            this.c1ComboBox4.Name = "c1ComboBox4";
+            this.c1ComboBox4.Size = new System.Drawing.Size(151, 20);
+            this.c1ComboBox4.Style.DropDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.c1ComboBox4.Style.DropDownBorderColor = System.Drawing.Color.Gainsboro;
+            this.c1ComboBox4.Style.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.c1ComboBox4.TabIndex = 545;
+            this.c1ComboBox4.Tag = null;
+            this.theme1.SetTheme(this.c1ComboBox4, "(default)");
+            this.c1ComboBox4.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            // 
+            // btnSaveImg6
+            // 
+            this.btnSaveImg6.Image = global::clinic_ivf.Properties.Resources.download_database16;
+            this.btnSaveImg6.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnSaveImg6.Location = new System.Drawing.Point(160, 2);
+            this.btnSaveImg6.Name = "btnSaveImg6";
+            this.btnSaveImg6.Size = new System.Drawing.Size(56, 28);
+            this.btnSaveImg6.TabIndex = 544;
+            this.btnSaveImg6.Text = "save";
+            this.btnSaveImg6.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.theme1.SetTheme(this.btnSaveImg6, "(default)");
+            this.btnSaveImg6.UseVisualStyleBackColor = true;
+            this.btnSaveImg6.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
             // 
             // FrmLabOPUAdd
             // 
@@ -3427,8 +3728,24 @@
             ((System.ComponentModel.ISupportInitialize)(this.tC1)).EndInit();
             this.tC1.ResumeLayout(false);
             this.tabDay2.ResumeLayout(false);
+            this.pnGrf2Img1.ResumeLayout(false);
+            this.tabDay3.ResumeLayout(false);
+            this.tabDay5.ResumeLayout(false);
+            this.tabDay6.ResumeLayout(false);
             this.sB.ResumeLayout(false);
             this.sB.PerformLayout();
+            this.panel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.c1ComboBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnSaveImg2)).EndInit();
+            this.panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.c1ComboBox2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnSaveImg3)).EndInit();
+            this.panel4.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.c1ComboBox3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnSaveImg5)).EndInit();
+            this.panel6.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.c1ComboBox4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnSaveImg6)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -3625,6 +3942,22 @@
         private System.Windows.Forms.Panel pn6;
         private C1.Win.C1Input.C1ComboBox cboEmbryologistDay6;
         private C1.Win.C1Input.C1Button btnSaveDay6;
+        private System.Windows.Forms.Panel pnGrf2Img1;
+        private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Panel pnGrf2Img;
+        private C1.Win.C1Input.C1ComboBox c1ComboBox1;
+        private C1.Win.C1Input.C1Button btnSaveImg2;
+        private System.Windows.Forms.Panel pnGrf3Img;
+        private System.Windows.Forms.Panel panel2;
+        private C1.Win.C1Input.C1ComboBox c1ComboBox2;
+        private C1.Win.C1Input.C1Button btnSaveImg3;
+        private System.Windows.Forms.Panel pnGrf5Img;
+        private System.Windows.Forms.Panel panel4;
+        private C1.Win.C1Input.C1ComboBox c1ComboBox3;
+        private C1.Win.C1Input.C1Button btnSaveImg5;
+        private System.Windows.Forms.Panel pnGrf6Img;
+        private System.Windows.Forms.Panel panel6;
+        private C1.Win.C1Input.C1ComboBox c1ComboBox4;
+        private C1.Win.C1Input.C1Button btnSaveImg6;
     }
 }

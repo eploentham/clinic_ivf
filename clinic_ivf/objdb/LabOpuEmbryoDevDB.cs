@@ -151,6 +151,26 @@ namespace clinic_ivf.objdb
 
             return re;
         }
+        public String updatePathPic(String id, String pathpic, String desc3)
+        {
+            String re = "";
+            String sql = "";
+            int chk = 0;
+            sql = "Update " + opuEmDev.table + " Set " +
+                " " + opuEmDev.path_pic + " = '" + pathpic + "'" +
+                "," + opuEmDev.desc3 + " = '" + pathpic + "'" +
+                "Where " + opuEmDev.pkField + "='" + desc3 + "'";
+            try
+            {
+                re = conn.ExecuteNonQuery(conn.conn, sql);
+            }
+            catch (Exception ex)
+            {
+                sql = ex.Message + " " + ex.InnerException;
+            }
+
+            return re;
+        }
         public DataTable selectByOpuFetId_Day(String opufetid, Day1 day1)
         {
             DataTable dt = new DataTable();

@@ -362,6 +362,17 @@ namespace clinic_ivf.control
             ftpC.createDirectory("images/" + filename);
             ftpC.upload("images/" + filename + "/" +filename+"." + System.Drawing.Imaging.ImageFormat.Jpeg, @"temppic" + "." + System.Drawing.Imaging.ImageFormat.Jpeg);
         }
+        public void savePicOPUtoServer(String opuCode, String filename, String pathFile)
+        {
+            //if (File.Exists(@"temppic" + System.Drawing.Imaging.ImageFormat.Jpeg))
+            //{
+            //    File.Delete(@"temppic" + System.Drawing.Imaging.ImageFormat.Jpeg);
+            //}
+            //pathFile.Save(@"temppic." + System.Drawing.Imaging.ImageFormat.Jpeg, System.Drawing.Imaging.ImageFormat.Jpeg);
+            ftpC.createDirectory("images/" );
+            ftpC.createDirectory("images/" + opuCode);
+            ftpC.upload("images/" + opuCode + "/" + filename, pathFile);
+        }
         public void saveFilePatienttoServer(String pttId,String filenamenew, String localpathandfilename)
         {
             //if (File.Exists(@"temppic" + System.Drawing.Imaging.ImageFormat.Jpeg))

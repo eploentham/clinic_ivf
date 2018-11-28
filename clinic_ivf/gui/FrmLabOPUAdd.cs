@@ -10,9 +10,12 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
+using System.Net;
 using System.Security;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -97,6 +100,7 @@ namespace clinic_ivf.gui
             btnPrint.Click += BtnPrint_Click;
             tC1.DoubleClick += TC1_DoubleClick;
             tabDay2.DoubleClick += TabDay2_DoubleClick;
+            btnSaveImg2.Click += BtnSaveImg2_Click;
 
             setFocusColor();
             initGrfDay2();
@@ -109,6 +113,55 @@ namespace clinic_ivf.gui
             setGrfDay6();
             initGrfDay2Img();
             setGrfDay2Img();
+        }
+
+        private void BtnSaveImg2_Click(object sender, EventArgs e)
+        {
+            //throw new NotImplementedException();
+
+            grfDay2Img.AutoSizeCols();
+            grfDay2Img.AutoSizeRows();
+            //if (MessageBox.Show("ต้องการ บันทึกช้อมูล Day 6 Embryo Development  ", "", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == DialogResult.OK)
+            //{
+            //    ic.cStf.staff_id = "";
+            //    Boolean chkSave = false;
+            //    FrmPasswordConfirm frm = new FrmPasswordConfirm(ic);
+            //    frm.ShowDialog(this);
+            //    if (!ic.cStf.staff_id.Equals(""))
+            //    {
+            //        String re = "";
+            //        int i = 0;
+            //        foreach (Row row in grfDay2Img.Rows)
+            //        {
+            //            String id = row[colDay2ImgId] != null ? row[colDay2ImgId].ToString() : "";
+            //            String path = row[colDay2PathPic] != null ? row[colDay2PathPic].ToString() : "";
+            //            String desc = row[colDay2ImgDesc0] != null ? row[colDay2ImgDesc0].ToString() : "";
+            //            String no = row[colDay2ImgNun] != null ? row[colDay2ImgNun].ToString() : "";
+            //            i++;
+            //            if (i == 1) continue;
+            //            if (id.Equals(""))
+            //            {
+            //                if (no.Length > 0)
+            //                {
+            //                    String filename = "";
+            //                    String[] ext = path.Split('.');
+            //                    if(ext.Length>1)
+            //                    {
+            //                        re = ic.ivfDB.opuEmDevDB.updatePathPic(id, filename, desc);
+            //                        long chk = 0;
+            //                        if (long.TryParse(re, out chk))
+            //                        {
+            //                            filename = txtOpuCode.Text + "_day2_" + no + "." + ext[ext.Length - 1];
+            //                            ic.savePicOPUtoServer(txtOpuCode.Text, filename, path);
+            //                            grfDay2Img.Rows[i - 1].StyleNew.BackColor = color;
+            //                        }
+            //                    }
+            //                }
+            //            }
+            //            //i++;
+            //        }
+            //    }
+            //}
         }
 
         private void TabDay2_DoubleClick(object sender, EventArgs e)
@@ -163,10 +216,10 @@ namespace clinic_ivf.gui
 
                         int hei = grfDay2Img.Rows.DefaultSize;
                         //grfImg.Rows[row-1].Height = hei*6;
-                        CellRange rg1 = grfDay2Img.GetCellRange(row - 1, colDay2ImgPic);
+                        //CellRange rg1 = grfDay2Img.GetCellRange(row - 1, colDay2ImgPic);
 
-                        //PictureBox pb = new PictureBox();                            
-
+                        //PictureBox pb = new PictureBox();
+                        grfDay2Img[row - 1, colDay2ImgId] = "";
                         grfDay2Img[row - 1, colDay2PathPic] = file;
                         //grfDay2Img[row - 1, colBtn] = "send";
 
@@ -995,7 +1048,7 @@ namespace clinic_ivf.gui
             grfDay2Img.Rows.Count = 1;
             grfDay2Img.Cols.Count = 6;
             DataTable dt = new DataTable();
-
+            dt = ic.ivfDB.opuEmDevDB.selectByOpuFetId_Day(txtID.Text, objdb.LabOpuEmbryoDevDB.Day1.Day2);
             //grfExpn.Rows.Count = dt.Rows.Count + 1;
             //grfCu.Rows.Count = 41;
             //grfCu.Cols.Count = 4;
@@ -1025,7 +1078,7 @@ namespace clinic_ivf.gui
             //grdFlex.Cols[colID].Caption = "no";
             //grfDept.Cols[colCode].Caption = "รหัส";
 
-            grfDay2Img.Cols[colDay2ImgNun].Caption = "HN";
+            grfDay2Img.Cols[colDay2ImgNun].Caption = "No";
             grfDay2Img.Cols[colDay2ImgDesc0].Caption = "Desc1";
             grfDay2Img.Cols[colDay2PathPic].Caption = "pathpic";
             //grfDay2Img.Cols[colDesc3].Caption = "Desc3";
@@ -1044,22 +1097,138 @@ namespace clinic_ivf.gui
             //grfDay2Img.ContextMenu = menuGw;
 
             Color color = ColorTranslator.FromHtml(ic.iniC.grfRowColor);
+            grfDay2Img.AllowMerging = C1.Win.C1FlexGrid.AllowMergingEnum.RestrictRows;
+            grfDay2Img.Cols[colDay2ImgPic].AllowMerging = true;
             //CellRange rg1 = grfBank.GetCellRange(1, colE, grfBank.Rows.Count, colE);
             //rg1.Style = grfBank.Styles["date"];
             //grfCu.Cols[colID].Visible = false;
-            for (int i = 1; i <= grfDay2Img.Rows.Count - 1; i++)
+            int i = 0;
+            foreach (DataRow row in dt.Rows)
             {
-                grfDay2Img[i, 0] = i;
+                i++;
+                Row row1 = grfDay2Img.Rows.Add();
+                row1[colDay2ImgId] = row[ic.ivfDB.opuEmDevDB.opuEmDev.opu_embryo_dev_id].ToString();
+                row1[colDay2ImgNun] = row[ic.ivfDB.opuEmDevDB.opuEmDev.opu_embryo_dev_no].ToString();
+                row1[colDay2ImgDesc0] = row[ic.ivfDB.opuEmDevDB.opuEmDev.desc3].ToString();
+                row1[colDay2PathPic] = row[ic.ivfDB.opuEmDevDB.opuEmDev.path_pic].ToString();
+                if (row[ic.ivfDB.opuEmDevDB.opuEmDev.path_pic] != null && !row[ic.ivfDB.opuEmDevDB.opuEmDev.path_pic].ToString().Equals(""))
+                {
+                    //Thread threadA = new Thread(ExecuteA);
+                    //threadA.Start("");
+                    int ii = i;
+                    new Thread(() =>
+                    {
+                        Thread.CurrentThread.IsBackground = true;
+                        Image loadedImage=null, resizedImage;
+                        String aaa = row[ic.ivfDB.opuEmDevDB.opuEmDev.path_pic].ToString();
+                        FtpWebRequest ftpRequest = null;
+                        FtpWebResponse ftpResponse = null;
+                        Stream ftpStream = null;
+                        int bufferSize = 2048;
+                        MemoryStream stream = new MemoryStream();
+                        string host = null;
+                        string user = null;
+                        string pass = null;     //iniC.hostFTP, iniC.userFTP, iniC.passFTP
+                        host = ic.iniC.hostFTP; user = ic.iniC.userFTP; pass = ic.iniC.passFTP;
+                        try
+                        {
+                            /* Create an FTP Request */
+                            ftpRequest = (FtpWebRequest)FtpWebRequest.Create(host + "/" + aaa);
+                            /* Log in to the FTP Server with the User Name and Password Provided */
+                            ftpRequest.Credentials = new NetworkCredential(user, pass);
+                            /* When in doubt, use these options */
+                            ftpRequest.UseBinary = true;
+                            ftpRequest.UsePassive = false;
+                            ftpRequest.KeepAlive = true;
+                            /* Specify the Type of FTP Request */
+                            ftpRequest.Method = WebRequestMethods.Ftp.DownloadFile;
+                            /* Establish Return Communication with the FTP Server */
+                            ftpResponse = (FtpWebResponse)ftpRequest.GetResponse();
+                            /* Get the FTP Server's Response Stream */
+                            ftpStream = ftpResponse.GetResponseStream();
+                            /* Open a File Stream to Write the Downloaded File */
+                            //FileStream localFileStream = new FileStream(localFile, FileMode.Create);
+
+                            /* Buffer for the Downloaded Data */
+                            byte[] byteBuffer = new byte[bufferSize];
+                            int bytesRead = ftpStream.Read(byteBuffer, 0, bufferSize);
+
+                            /* Download the File by Writing the Buffered Data Until the Transfer is Complete */
+                            try
+                            {
+                                while (bytesRead > 0)
+                                {
+                                    //localFileStream.Write(byteBuffer, 0, bytesRead);
+                                    stream.Write(byteBuffer, 0, bytesRead);
+                                    bytesRead = ftpStream.Read(byteBuffer, 0, bufferSize);
+
+                                }
+                            }
+                            catch (Exception ex)
+                            {
+                                Console.WriteLine(ex.ToString());
+                            }
+                            loadedImage = new Bitmap(stream);
+                            /* Resource Cleanup */
+                            //localFileStream.Close();
+                            ftpStream.Close();
+                            ftpResponse.Close();
+                            ftpRequest = null;
+                        }
+                        catch (Exception ex) { Console.WriteLine(ex.ToString()); }
+                        grfDay2Img.Cols[colDay2ImgPic].ImageAndText = true;
+                        //grfDay2Img.AllowMerging = C1.Win.C1FlexGrid.AllowMergingEnum.RestrictRows;
+                        //grfDay2Img.Cols[colDay2ImgPic].AllowMerging = true;
+                        //loadedImage = new Bitmap(ic.ftpC.download(aaa));
+                        int originalWidth = loadedImage.Width;
+                        int newWidth = 180;
+                        resizedImage = loadedImage.GetThumbnailImage(newWidth, (newWidth * loadedImage.Height) / originalWidth, null, IntPtr.Zero);
+                        Column col = grfDay2Img.Cols[colDay2ImgPic];
+                        col.DataType = typeof(Image);
+                        row1[colDay2ImgPic] = resizedImage;
+                        //grfDay2Img.AutoSizeCols();
+                        //grfDay2Img.AutoSizeRows();
+                    }).Start();
+                }
+
+                //grfDay2Img[i, 0] = i;
                 //if (i % 2 == 0)
                 //grfPtt.Rows[i].StyleNew.BackColor = color;
             }
+            
+
             grfDay2Img.Cols[colDay2ImgId].Visible = false;
             grfDay2Img.Cols[colDay2PathPic].Visible = false;
-            grfDay2Img.Cols[colDay2ImgPic].AllowEditing = false;
+            //grfDay2Img.Cols[colDay2ImgPic].AllowEditing = false;
             grfDay2Img.AutoSizeCols();
             grfDay2Img.AutoSizeRows();
             theme1.SetTheme(grfDay2Img, "Office2016Colorful");
 
+        }
+        private void ExecuteA(String filename)
+        {
+            //Console.WriteLine("Executing parameterless thread!");
+            try
+            {
+                Image loadedImage, resizedImage;
+                loadedImage = new Bitmap(ic.ftpC.download(filename));
+                int originalWidth = loadedImage.Width;
+                int newWidth = 180;
+                resizedImage = loadedImage.GetThumbnailImage(newWidth, (newWidth * loadedImage.Height) / originalWidth, null, IntPtr.Zero);
+                grfDay2Img[1, colDay2ImgPic] = resizedImage;
+                //setPicGrfImg(obj, row, new Bitmap(ic.ftpC.download(filename)));
+            }
+            catch (Exception ex)
+            {
+
+            }
+        }
+        private void setPicGrfImg(C1FlexGrid grf, int row, Bitmap bitmap)
+        {
+            //picPtt.Image = bitmap;
+            //picPtt.SizeMode = PictureBoxSizeMode.StretchImage;
+
+            
         }
         private void initGrfDay2Img()
         {
