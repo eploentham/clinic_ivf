@@ -77,7 +77,7 @@
       <HintPath>..\packages\ini-parser.2.5.2\lib\net20\INIFileParser.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.VisualBasic" />
-    <Reference Include="MySql.Data, Version=8.0.13.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL" />
+    <Reference Include="MySql.Data, Version=8.0.12.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL" />
     <Reference Include="PresentationCore" />
     <Reference Include="ReachFramework" />
     <Reference Include="System" />
@@ -308,6 +308,9 @@
     <Compile Include="gui\FrmVisitView.Designer.cs">
       <DependentUpon>FrmVisitView.cs</DependentUpon>
     </Compile>
+    <Compile Include="gui\FrmWaiting.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="gui\Login.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -333,6 +336,7 @@
     <Compile Include="objdb\BServicePointDB.cs" />
     <Compile Include="objdb\DoctorOldDB.cs" />
     <Compile Include="objdb\FBloodGroupDB.cs" />
+    <Compile Include="objdb\FDocTypeDB.cs" />
     <Compile Include="objdb\FNationDB.cs" />
     <Compile Include="objdb\FPatientDischargeStatusDB.cs" />
     <Compile Include="objdb\FEducationTypeDB.cs" />
@@ -349,6 +353,7 @@
     <Compile Include="objdb\LabOpuEmbryoDevDB.cs" />
     <Compile Include="objdb\OldJobSpecialDB.cs" />
     <Compile Include="objdb\PatientAppointmentDB.cs" />
+    <Compile Include="object1\FDocType.cs" />
     <Compile Include="object1\PatientAppointment.cs" />
     <Compile Include="objdb\PatientImageDB.cs" />
     <Compile Include="objdb\PatientOldDB.cs" />
@@ -422,6 +427,14 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>LabOPU.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="report\LabOPUEmbryoDev.cs">
+      <DependentUpon>LabOPUEmbryoDev.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="report\LabOPUEmbryoDev.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>LabOPUEmbryoDev.xsd</DependentUpon>
     </Compile>
     <Compile Include="report\sticker_drug.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -578,6 +591,17 @@
     </None>
     <None Include="report\LabOPU.xss">
       <DependentUpon>LabOPU.xsd</DependentUpon>
+    </None>
+    <None Include="report\LabOPUEmbryoDev.xsc">
+      <DependentUpon>LabOPUEmbryoDev.xsd</DependentUpon>
+    </None>
+    <None Include="report\LabOPUEmbryoDev.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>LabOPUEmbryoDev.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="report\LabOPUEmbryoDev.xss">
+      <DependentUpon>LabOPUEmbryoDev.xsd</DependentUpon>
     </None>
     <None Include="report\sticker_drug.xsc">
       <DependentUpon>sticker_drug.xsd</DependentUpon>

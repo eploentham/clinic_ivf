@@ -88,13 +88,20 @@ namespace clinic_ivf.gui
         private void ContextMenu_edit(object sender, System.EventArgs e)
         {
             String chk = "", name="", id="";
+            
             id = grfReq[grfReq.Row, colRqId] != null ? grfReq[grfReq.Row, colRqId].ToString() : "";
             chk = grfReq[grfReq.Row, colRqReqNum] != null ? grfReq[grfReq.Row, colRqReqNum].ToString() : "";
             name = grfReq[grfReq.Row, colRqName] != null ? grfReq[grfReq.Row, colRqName].ToString() : "";
             if (MessageBox.Show("ต้องการ ป้อน LAB OPU  \n  req number " + chk+" \n name "+ name, "", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == DialogResult.OK)
             {
                 //grfReq.Rows.Remove(grfReq.Row);
+                Cursor curOld;
+                curOld = this.Cursor;
+                this.Cursor = Cursors.WaitCursor;
                 openLabOPUNew(id, name);
+                setGrfReq();
+                setGrfProc();
+                this.Cursor = curOld;
             }
         }
         private void GrfReq_AfterRowColChange(object sender, RangeEventArgs e)
@@ -215,7 +222,7 @@ namespace clinic_ivf.gui
             //grdFlex.Cols[colID].Caption = "no";
             //grfDept.Cols[colCode].Caption = "รหัส";
 
-            grfProc.Cols[colPcOpuNum].Caption = "req number";
+            grfProc.Cols[colPcOpuNum].Caption = "OPU number";
             grfProc.Cols[colPcHn].Caption = "HN";
             grfProc.Cols[colPcPttName].Caption = "VN";
             grfProc.Cols[colPcDate].Caption = "Name";
@@ -260,7 +267,11 @@ namespace clinic_ivf.gui
             if (MessageBox.Show("ต้องการ ป้อน LAB OPU  \n  opu number " + chk + " \n name " + name, "", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == DialogResult.OK)
             {
                 //grfReq.Rows.Remove(grfReq.Row);
+                Cursor curOld;
+                curOld = this.Cursor;
+                this.Cursor = Cursors.WaitCursor;
                 openLabOPUAdd(id, name);
+                this.Cursor = curOld;
             }
         }
         private void BtnNew_Click(object sender, EventArgs e)

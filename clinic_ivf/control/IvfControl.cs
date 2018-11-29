@@ -371,7 +371,7 @@ namespace clinic_ivf.control
             //pathFile.Save(@"temppic." + System.Drawing.Imaging.ImageFormat.Jpeg, System.Drawing.Imaging.ImageFormat.Jpeg);
             ftpC.createDirectory("images/");
             ftpC.createDirectory("images/" + opuCode);
-            ftpC.delete("images/" + opuCode + "/" + filename);
+            ftpC.delete(filename);
             
         }
         public void savePicOPUtoServer(String opuCode, String filename, String pathFile)

@@ -45,6 +45,7 @@ namespace clinic_ivf.objdb
         public LabOpuEmbryoDevDB opuEmDevDB;
         public PatientAppointmentDB pApmDB;
         public VisitDB vsDB;
+        public FDocTypeDB fdtDB;
 
         public IvfDB(ConnectDB c)
         {
@@ -88,6 +89,7 @@ namespace clinic_ivf.objdb
             opuEmDevDB = new LabOpuEmbryoDevDB(conn);
             pApmDB = new PatientAppointmentDB(conn);
             vsDB = new VisitDB(conn);
+            fdtDB = new FDocTypeDB(conn);
 
             Console.WriteLine("ivfDB end");
         }

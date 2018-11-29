@@ -26,12 +26,15 @@ namespace clinic_ivf.gui
         C1SuperTooltip stt;
         C1SuperErrorProvider sep;
         Color color;
+        public enum opuReport {OPUReport, OPUEmbryoDevReport };
+        opuReport opureport;
 
-        public FrmLabOPUPrint(IvfControl ic, String opuid)
+        public FrmLabOPUPrint(IvfControl ic, String opuid, opuReport opureport)
         {
             InitializeComponent();
             this.ic = ic;
             opuId = opuid;
+            this.opureport = opureport;
             initConfig();
         }
         private void initConfig()
@@ -58,32 +61,62 @@ namespace clinic_ivf.gui
             FrmReport frm = new FrmReport(ic);
             DataTable dt = new DataTable();
             DataTable dtdev = new DataTable();
-            dt = ic.ivfDB.opuDB.selectByPrintOPU(txtID.Text);
-            dtdev = ic.ivfDB.opuEmDevDB.selectByOpuFetId_Day(txtID.Text, objdb.LabOpuEmbryoDevDB.Day1.Day2);
-            for (int i = 1; i <= 40; i++)
+            if(opureport == opuReport.OPUReport)
             {
-                String col = "";
-                col = "embryo_dev_0_"+i.ToString("00");
-                dt.Columns.Add(col, typeof(String));
-                col = "embryo_dev_1_" + i.ToString("00");
-                dt.Columns.Add(col, typeof(String));
-            }
-            int j = 1;
-            foreach(DataRow row in dtdev.Rows)
-            {
-                String col = "embryo_dev_0_", vol="";
-                //col = "embryo_dev_0_" + j.ToString("00");
-                vol = "0"+row["opu_embryo_dev_no"].ToString();
-                vol = vol.Substring(vol.Length - 2);
-                col = col + vol;
-                dt.Rows[0][col] = row["desc0"].ToString();
-                //if (row["opu_embryo_dev_no"].ToString().Equals(""))
-                //{
+                dt = ic.ivfDB.opuDB.selectByPrintOPU(txtID.Text);
+                dtdev = ic.ivfDB.opuEmDevDB.selectByOpuFetId_Day(txtID.Text, objdb.LabOpuEmbryoDevDB.Day1.Day2);
+                for (int i = 1; i <= 40; i++)
+                {
+                    String col = "";
+                    col = "embryo_dev_0_" + i.ToString("00");
+                    dt.Columns.Add(col, typeof(String));
+                    col = "embryo_dev_1_" + i.ToString("00");
+                    dt.Columns.Add(col, typeof(String));
+                }
+                int j = 1;
+                foreach (DataRow row in dtdev.Rows)
+                {
+                    String col = "embryo_dev_0_", vol = "";
+                    //col = "embryo_dev_0_" + j.ToString("00");
+                    vol = "0" + row["opu_embryo_dev_no"].ToString();
+                    vol = vol.Substring(vol.Length - 2);
+                    col = col + vol;
+                    dt.Rows[0][col] = row["desc0"].ToString();
+                    //if (row["opu_embryo_dev_no"].ToString().Equals(""))
+                    //{
 
-                //}
-                j++;
+                    //}
+                    j++;
+                }
+                frm.setOPUReport(dt);
             }
-            frm.setOPUReport(dt);
+            else if (opureport == opuReport.OPUEmbryoDevReport)
+            {
+                dt = ic.ivfDB.opuEmDevDB.selectByOpuFetId_DayPrint(txtID.Text, objdb.LabOpuEmbryoDevDB.Day1.Day2);
+                if (dt.Rows.Count > 0)
+                {
+                    foreach(DataRow row in dt.Rows)
+                    {
+                        String path_pic = "", opuCode="";
+                        path_pic = row["no1_pathpic"] !=null ? row["no1_pathpic"].ToString() : "";
+                        opuCode = row["opu_code"] != null ? row["opu_code"].ToString() : "";
+                        if (!path_pic.Equals(""))
+                        {
+                            String[] ext = path_pic.Split('.');
+                            if (ext.Length > 0)
+                            {
+                                String filename = ext[0];
+                                String no = "", filename1 = "";
+                                no = filename.Substring(filename.Length - 2);
+                                no = no.Replace("_", "");
+                                filename1 = "embryo_dev_"+ no+"."+ ext[1];
+                                row["no1_pathpic"] = "D:\\source\\ivf\\clinic_ivf\\clinic_ivf\\bin\\Debug\\" + filename1;
+                            }
+                        }
+                    }
+                }
+                frm.setOPUEmbryoDevReport(dt);
+            }
             frm.ShowDialog(this);
         }
 

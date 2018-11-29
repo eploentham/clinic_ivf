@@ -152,6 +152,7 @@ namespace clinic_ivf.gui
                 //grfReq.Rows.Remove(grfReq.Row);
 
                 acceptLabOPUAdd(id, name, vn, dtrid, remark, hn, false);
+                setGrfReq();
             }
         }
         private void ContextMenu_Gw_Add(object sender, System.EventArgs e)
@@ -175,6 +176,7 @@ namespace clinic_ivf.gui
                 //grfReq.Rows.Remove(grfReq.Row);
 
                 acceptLabOPUAdd(id, name, vn, dtrid, remark, hn, true);
+                setGrfReq();
             }
         }
         private void GrfReq_AfterRowColChange(object sender, RangeEventArgs e)

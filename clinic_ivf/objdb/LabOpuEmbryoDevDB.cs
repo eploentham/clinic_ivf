@@ -180,7 +180,7 @@ namespace clinic_ivf.objdb
             sql = "Update " + opuEmDev.table + " Set " +
                 " " + opuEmDev.desc3 + " = '" + desc3 + "'" +
                 "," + opuEmDev.path_pic + " = '" + filename + "'" +
-                "," + opuEmDev.opu_embryo_dev_no + " = '" + num + "'" +
+                //"," + opuEmDev.opu_embryo_dev_no + " = '" + num + "'" +
                 "," + opuEmDev.user_modi + " = '" + userid + "'" +
                 "," + opuEmDev.date_modi + " = now() " +
                 "Where " + opuEmDev.pkField + "='" + id + "'";
@@ -202,7 +202,7 @@ namespace clinic_ivf.objdb
             int chk = 0;
             sql = "Update " + opuEmDev.table + " Set " +                
                 " " + opuEmDev.desc3 + " = '" + desc3 + "'" +
-                "," + opuEmDev.opu_embryo_dev_no + " = '" + num + "'" +
+                //"," + opuEmDev.opu_embryo_dev_no + " = '" + num + "'" +
                 "," + opuEmDev.user_modi + " = '" + userid + "'" +
                 "," + opuEmDev.date_modi + " = now() " +
                 "Where " + opuEmDev.pkField + "='" + id + "'";
@@ -215,6 +215,39 @@ namespace clinic_ivf.objdb
                 sql = ex.Message + " " + ex.InnerException;
             }
 
+            return re;
+        }
+        public String selectCntByOpuFetId_Day(String opufetid, Day1 day1)
+        {
+            DataTable dt = new DataTable();
+            String day = "", re="";
+            if (day1 == Day1.Day2)
+            {
+                day = "2";
+            }
+            else if (day1 == Day1.Day3)
+            {
+                day = "3";
+            }
+            else if (day1 == Day1.Day5)
+            {
+                day = "5";
+            }
+            else if (day1 == Day1.Day6)
+            {
+                day = "6";
+            }
+            String sql = "select count(1) as cnt  " +
+                "From " + opuEmDev.table + " opuEmDev " +
+                " " +
+                "Where opuEmDev." + opuEmDev.active + " ='1' and " + opuEmDev.opu_fet_id + "='" + opufetid + "' and " + opuEmDev.day + "='" + day + "' " +
+                "Order By opuEmDev." + opuEmDev.opu_embryo_dev_id;
+
+            dt = conn.selectData(conn.conn, sql);
+            if (dt.Rows.Count > 0)
+            {
+                re = dt.Rows[0]["cnt"].ToString();
+            }
             return re;
         }
         public DataTable selectByOpuFetId_Day(String opufetid, Day1 day1)
@@ -241,6 +274,40 @@ namespace clinic_ivf.objdb
                 "From " + opuEmDev.table + " opuEmDev " +
                 " " +
                 "Where opuEmDev." + opuEmDev.active + " ='1' and "+ opuEmDev.opu_fet_id+"='"+opufetid+"' and "+ opuEmDev.day+"='"+day+"' " +
+                "Order By opuEmDev." + opuEmDev.opu_embryo_dev_id;
+
+            dt = conn.selectData(conn.conn, sql);
+
+            return dt;
+        }
+        public DataTable selectByOpuFetId_DayPrint(String opufetid, Day1 day1)
+        {
+            DataTable dt = new DataTable();
+            String day = "";
+            if (day1 == Day1.Day2)
+            {
+                day = "2";
+            }
+            else if (day1 == Day1.Day3)
+            {
+                day = "3";
+            }
+            else if (day1 == Day1.Day5)
+            {
+                day = "5";
+            }
+            else if (day1 == Day1.Day6)
+            {
+                day = "6";
+            }
+            String sql = "select opu.hn_male, opu.hn_female, opu.name_male, opu.name_female, proce.proce_name_t as procedure1, dtr.Name as doctor, opu.opu_date as date_opu" +
+                ", opuEmDev.day as day1, opuEmDev.opu_embryo_dev_no as no1, opuEmDev.desc0  as no1_desc0, opuEmDev.path_pic as no1_pathpic, opuEmDev.desc1 as no1_desc1" +
+                ", opuEmDev.desc2 as no1_desc2, opuEmDev.desc3 as no1_desc3, opu.opu_id, opu.opu_code " +
+                "From " + opuEmDev.table + " opuEmDev " +
+                "Left Join lab_t_opu opu on opu.opu_id = opuEmDev.opu_fet_id " +
+                "Left Join lab_b_procedure proce on proce.proce_id = opu.proce_id " +
+                "Left Join Doctor dtr on dtr.ID = opu.doctor_id " +
+                "Where opuEmDev." + opuEmDev.active + " ='1' and " + opuEmDev.opu_fet_id + "='" + opufetid + "' and " + opuEmDev.day + "='" + day + "' " +
                 "Order By opuEmDev." + opuEmDev.opu_embryo_dev_id;
 
             dt = conn.selectData(conn.conn, sql);
