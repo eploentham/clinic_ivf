@@ -31,15 +31,15 @@
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.c1CheckBox1 = new C1.Win.C1Input.C1CheckBox();
-            this.c1ComboBox3 = new C1.Win.C1Input.C1ComboBox();
+            this.cboEmbryoDev2 = new C1.Win.C1Input.C1ComboBox();
             this.label7 = new System.Windows.Forms.Label();
-            this.c1ComboBox2 = new C1.Win.C1Input.C1ComboBox();
+            this.cboEmbryoDev1 = new C1.Win.C1Input.C1ComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.CboEmbryoDay0 = new C1.Win.C1Input.C1ComboBox();
+            this.cboEmbryoDay0 = new C1.Win.C1Input.C1ComboBox();
             this.label6 = new System.Windows.Forms.Label();
             this.label44 = new System.Windows.Forms.Label();
-            this.c1ComboBox1 = new C1.Win.C1Input.C1ComboBox();
+            this.cboEmbryoDay1 = new C1.Win.C1Input.C1ComboBox();
             this.txtID = new C1.Win.C1Input.C1TextBox();
             this.txtOpuCode = new C1.Win.C1Input.C1TextBox();
             this.label47 = new System.Windows.Forms.Label();
@@ -58,11 +58,11 @@
             this.groupBox1.SuspendLayout();
             this.groupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.c1CheckBox1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.c1ComboBox3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.c1ComboBox2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cboEmbryoDev2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cboEmbryoDev1)).BeginInit();
             this.groupBox2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.CboEmbryoDay0)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.c1ComboBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cboEmbryoDay0)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cboEmbryoDay1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtID)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtOpuCode)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnPrint)).BeginInit();
@@ -93,7 +93,7 @@
             this.groupBox1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox1.Location = new System.Drawing.Point(0, 0);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(651, 389);
+            this.groupBox1.Size = new System.Drawing.Size(651, 276);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "เงื่อนไข";
@@ -101,9 +101,9 @@
             // groupBox3
             // 
             this.groupBox3.Controls.Add(this.c1CheckBox1);
-            this.groupBox3.Controls.Add(this.c1ComboBox3);
+            this.groupBox3.Controls.Add(this.cboEmbryoDev2);
             this.groupBox3.Controls.Add(this.label7);
-            this.groupBox3.Controls.Add(this.c1ComboBox2);
+            this.groupBox3.Controls.Add(this.cboEmbryoDev1);
             this.groupBox3.Controls.Add(this.label1);
             this.groupBox3.Location = new System.Drawing.Point(232, 108);
             this.groupBox3.Name = "groupBox3";
@@ -123,26 +123,26 @@
             this.c1CheckBox1.UseVisualStyleBackColor = true;
             this.c1CheckBox1.Value = null;
             // 
-            // c1ComboBox3
+            // cboEmbryoDev2
             // 
-            this.c1ComboBox3.AllowSpinLoop = false;
-            this.c1ComboBox3.BorderColor = System.Drawing.SystemColors.WindowFrame;
-            this.c1ComboBox3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.c1ComboBox3.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
-            this.c1ComboBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.c1ComboBox3.GapHeight = 0;
-            this.c1ComboBox3.ImagePadding = new System.Windows.Forms.Padding(0);
-            this.c1ComboBox3.ItemsDisplayMember = "";
-            this.c1ComboBox3.ItemsValueMember = "";
-            this.c1ComboBox3.Location = new System.Drawing.Point(77, 47);
-            this.c1ComboBox3.Name = "c1ComboBox3";
-            this.c1ComboBox3.Size = new System.Drawing.Size(65, 20);
-            this.c1ComboBox3.Style.DropDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.c1ComboBox3.Style.DropDownBorderColor = System.Drawing.Color.Gainsboro;
-            this.c1ComboBox3.Style.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.c1ComboBox3.TabIndex = 550;
-            this.c1ComboBox3.Tag = null;
-            this.c1ComboBox3.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            this.cboEmbryoDev2.AllowSpinLoop = false;
+            this.cboEmbryoDev2.BorderColor = System.Drawing.SystemColors.WindowFrame;
+            this.cboEmbryoDev2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.cboEmbryoDev2.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
+            this.cboEmbryoDev2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.cboEmbryoDev2.GapHeight = 0;
+            this.cboEmbryoDev2.ImagePadding = new System.Windows.Forms.Padding(0);
+            this.cboEmbryoDev2.ItemsDisplayMember = "";
+            this.cboEmbryoDev2.ItemsValueMember = "";
+            this.cboEmbryoDev2.Location = new System.Drawing.Point(77, 47);
+            this.cboEmbryoDev2.Name = "cboEmbryoDev2";
+            this.cboEmbryoDev2.Size = new System.Drawing.Size(65, 20);
+            this.cboEmbryoDev2.Style.DropDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.cboEmbryoDev2.Style.DropDownBorderColor = System.Drawing.Color.Gainsboro;
+            this.cboEmbryoDev2.Style.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.cboEmbryoDev2.TabIndex = 550;
+            this.cboEmbryoDev2.Tag = null;
+            this.cboEmbryoDev2.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
             // 
             // label7
             // 
@@ -156,26 +156,26 @@
             this.label7.TabIndex = 549;
             this.label7.Text = "Day :";
             // 
-            // c1ComboBox2
+            // cboEmbryoDev1
             // 
-            this.c1ComboBox2.AllowSpinLoop = false;
-            this.c1ComboBox2.BorderColor = System.Drawing.SystemColors.WindowFrame;
-            this.c1ComboBox2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.c1ComboBox2.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
-            this.c1ComboBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.c1ComboBox2.GapHeight = 0;
-            this.c1ComboBox2.ImagePadding = new System.Windows.Forms.Padding(0);
-            this.c1ComboBox2.ItemsDisplayMember = "";
-            this.c1ComboBox2.ItemsValueMember = "";
-            this.c1ComboBox2.Location = new System.Drawing.Point(77, 21);
-            this.c1ComboBox2.Name = "c1ComboBox2";
-            this.c1ComboBox2.Size = new System.Drawing.Size(65, 20);
-            this.c1ComboBox2.Style.DropDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.c1ComboBox2.Style.DropDownBorderColor = System.Drawing.Color.Gainsboro;
-            this.c1ComboBox2.Style.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.c1ComboBox2.TabIndex = 548;
-            this.c1ComboBox2.Tag = null;
-            this.c1ComboBox2.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            this.cboEmbryoDev1.AllowSpinLoop = false;
+            this.cboEmbryoDev1.BorderColor = System.Drawing.SystemColors.WindowFrame;
+            this.cboEmbryoDev1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.cboEmbryoDev1.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
+            this.cboEmbryoDev1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.cboEmbryoDev1.GapHeight = 0;
+            this.cboEmbryoDev1.ImagePadding = new System.Windows.Forms.Padding(0);
+            this.cboEmbryoDev1.ItemsDisplayMember = "";
+            this.cboEmbryoDev1.ItemsValueMember = "";
+            this.cboEmbryoDev1.Location = new System.Drawing.Point(77, 21);
+            this.cboEmbryoDev1.Name = "cboEmbryoDev1";
+            this.cboEmbryoDev1.Size = new System.Drawing.Size(65, 20);
+            this.cboEmbryoDev1.Style.DropDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.cboEmbryoDev1.Style.DropDownBorderColor = System.Drawing.Color.Gainsboro;
+            this.cboEmbryoDev1.Style.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.cboEmbryoDev1.TabIndex = 548;
+            this.cboEmbryoDev1.Tag = null;
+            this.cboEmbryoDev1.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
             // 
             // label1
             // 
@@ -191,10 +191,10 @@
             // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.CboEmbryoDay0);
+            this.groupBox2.Controls.Add(this.cboEmbryoDay0);
             this.groupBox2.Controls.Add(this.label6);
             this.groupBox2.Controls.Add(this.label44);
-            this.groupBox2.Controls.Add(this.c1ComboBox1);
+            this.groupBox2.Controls.Add(this.cboEmbryoDay1);
             this.groupBox2.Location = new System.Drawing.Point(12, 108);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(200, 84);
@@ -202,26 +202,26 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Embryo Freezing";
             // 
-            // CboEmbryoDay0
+            // cboEmbryoDay0
             // 
-            this.CboEmbryoDay0.AllowSpinLoop = false;
-            this.CboEmbryoDay0.BorderColor = System.Drawing.SystemColors.WindowFrame;
-            this.CboEmbryoDay0.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.CboEmbryoDay0.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
-            this.CboEmbryoDay0.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.CboEmbryoDay0.GapHeight = 0;
-            this.CboEmbryoDay0.ImagePadding = new System.Windows.Forms.Padding(0);
-            this.CboEmbryoDay0.ItemsDisplayMember = "";
-            this.CboEmbryoDay0.ItemsValueMember = "";
-            this.CboEmbryoDay0.Location = new System.Drawing.Point(75, 19);
-            this.CboEmbryoDay0.Name = "CboEmbryoDay0";
-            this.CboEmbryoDay0.Size = new System.Drawing.Size(65, 20);
-            this.CboEmbryoDay0.Style.DropDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.CboEmbryoDay0.Style.DropDownBorderColor = System.Drawing.Color.Gainsboro;
-            this.CboEmbryoDay0.Style.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.CboEmbryoDay0.TabIndex = 546;
-            this.CboEmbryoDay0.Tag = null;
-            this.CboEmbryoDay0.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            this.cboEmbryoDay0.AllowSpinLoop = false;
+            this.cboEmbryoDay0.BorderColor = System.Drawing.SystemColors.WindowFrame;
+            this.cboEmbryoDay0.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.cboEmbryoDay0.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
+            this.cboEmbryoDay0.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.cboEmbryoDay0.GapHeight = 0;
+            this.cboEmbryoDay0.ImagePadding = new System.Windows.Forms.Padding(0);
+            this.cboEmbryoDay0.ItemsDisplayMember = "";
+            this.cboEmbryoDay0.ItemsValueMember = "";
+            this.cboEmbryoDay0.Location = new System.Drawing.Point(75, 19);
+            this.cboEmbryoDay0.Name = "cboEmbryoDay0";
+            this.cboEmbryoDay0.Size = new System.Drawing.Size(65, 20);
+            this.cboEmbryoDay0.Style.DropDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.cboEmbryoDay0.Style.DropDownBorderColor = System.Drawing.Color.Gainsboro;
+            this.cboEmbryoDay0.Style.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.cboEmbryoDay0.TabIndex = 546;
+            this.cboEmbryoDay0.Tag = null;
+            this.cboEmbryoDay0.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
             // 
             // label6
             // 
@@ -247,26 +247,26 @@
             this.label44.TabIndex = 545;
             this.label44.Text = "Day :";
             // 
-            // c1ComboBox1
+            // cboEmbryoDay1
             // 
-            this.c1ComboBox1.AllowSpinLoop = false;
-            this.c1ComboBox1.BorderColor = System.Drawing.SystemColors.WindowFrame;
-            this.c1ComboBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.c1ComboBox1.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
-            this.c1ComboBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.c1ComboBox1.GapHeight = 0;
-            this.c1ComboBox1.ImagePadding = new System.Windows.Forms.Padding(0);
-            this.c1ComboBox1.ItemsDisplayMember = "";
-            this.c1ComboBox1.ItemsValueMember = "";
-            this.c1ComboBox1.Location = new System.Drawing.Point(75, 45);
-            this.c1ComboBox1.Name = "c1ComboBox1";
-            this.c1ComboBox1.Size = new System.Drawing.Size(65, 20);
-            this.c1ComboBox1.Style.DropDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.c1ComboBox1.Style.DropDownBorderColor = System.Drawing.Color.Gainsboro;
-            this.c1ComboBox1.Style.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.c1ComboBox1.TabIndex = 548;
-            this.c1ComboBox1.Tag = null;
-            this.c1ComboBox1.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            this.cboEmbryoDay1.AllowSpinLoop = false;
+            this.cboEmbryoDay1.BorderColor = System.Drawing.SystemColors.WindowFrame;
+            this.cboEmbryoDay1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.cboEmbryoDay1.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
+            this.cboEmbryoDay1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.cboEmbryoDay1.GapHeight = 0;
+            this.cboEmbryoDay1.ImagePadding = new System.Windows.Forms.Padding(0);
+            this.cboEmbryoDay1.ItemsDisplayMember = "";
+            this.cboEmbryoDay1.ItemsValueMember = "";
+            this.cboEmbryoDay1.Location = new System.Drawing.Point(75, 45);
+            this.cboEmbryoDay1.Name = "cboEmbryoDay1";
+            this.cboEmbryoDay1.Size = new System.Drawing.Size(65, 20);
+            this.cboEmbryoDay1.Style.DropDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.cboEmbryoDay1.Style.DropDownBorderColor = System.Drawing.Color.Gainsboro;
+            this.cboEmbryoDay1.Style.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.cboEmbryoDay1.TabIndex = 548;
+            this.cboEmbryoDay1.Tag = null;
+            this.cboEmbryoDay1.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
             // 
             // txtID
             // 
@@ -311,7 +311,7 @@
             // 
             this.btnPrint.Image = global::clinic_ivf.Properties.Resources.print;
             this.btnPrint.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnPrint.Location = new System.Drawing.Point(560, 325);
+            this.btnPrint.Location = new System.Drawing.Point(548, 210);
             this.btnPrint.Name = "btnPrint";
             this.btnPrint.Size = new System.Drawing.Size(79, 39);
             this.btnPrint.TabIndex = 541;
@@ -426,9 +426,10 @@
             // 
             // sB
             // 
+            this.sB.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
             this.sB.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.sB1});
-            this.sB.Location = new System.Drawing.Point(0, 367);
+            this.sB.Location = new System.Drawing.Point(0, 254);
             this.sB.Name = "sB";
             this.sB.Size = new System.Drawing.Size(651, 22);
             this.sB.TabIndex = 10;
@@ -445,23 +446,24 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(651, 389);
+            this.ClientSize = new System.Drawing.Size(651, 276);
             this.Controls.Add(this.sB);
             this.Controls.Add(this.groupBox1);
             this.Name = "FrmLabOPUPrint";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "FrmLabOPUPrint";
+            this.Load += new System.EventHandler(this.FrmLabOPUPrint_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.c1CheckBox1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.c1ComboBox3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.c1ComboBox2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cboEmbryoDev2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cboEmbryoDev1)).EndInit();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.CboEmbryoDay0)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.c1ComboBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cboEmbryoDay0)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cboEmbryoDay1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtID)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtOpuCode)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnPrint)).EndInit();
@@ -493,14 +495,14 @@
         private System.Windows.Forms.Label label47;
         private C1.Win.C1Input.C1TextBox txtID;
         private System.Windows.Forms.Label label44;
-        private C1.Win.C1Input.C1ComboBox CboEmbryoDay0;
+        private C1.Win.C1Input.C1ComboBox cboEmbryoDay0;
         private System.Windows.Forms.Label label6;
-        private C1.Win.C1Input.C1ComboBox c1ComboBox1;
+        private C1.Win.C1Input.C1ComboBox cboEmbryoDay1;
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.GroupBox groupBox2;
-        private C1.Win.C1Input.C1ComboBox c1ComboBox3;
+        private C1.Win.C1Input.C1ComboBox cboEmbryoDev2;
         private System.Windows.Forms.Label label7;
-        private C1.Win.C1Input.C1ComboBox c1ComboBox2;
+        private C1.Win.C1Input.C1ComboBox cboEmbryoDev1;
         private System.Windows.Forms.Label label1;
         private C1.Win.C1Input.C1CheckBox c1CheckBox1;
         private C1.Win.C1Themes.C1ThemeController theme1;

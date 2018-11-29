@@ -30,6 +30,7 @@ namespace clinic_ivf.gui
         C1SuperTooltip stt;
         C1SuperErrorProvider sep;
         LabOpu opu;
+        Timer timer;
 
         public FrmLabOpuView(IvfControl ic, MainMenu m)
         {
@@ -57,10 +58,23 @@ namespace clinic_ivf.gui
             sep = new C1SuperErrorProvider();
             opu = new LabOpu();
 
+            int timerlab = 0;
+            int.TryParse(ic.iniC.timerlabreqaccept, out timerlab);
+            timer = new Timer();
+            timer.Interval = timerlab * 1000;
+            timer.Tick += Timer_Tick;
+            timer.Enabled = true;
+
             btnNew.Click += BtnNew_Click;
 
             initGrfReq();
             initGrfProc();
+            setGrfReq();
+            setGrfProc();
+        }
+        private void Timer_Tick(object sender, EventArgs e)
+        {
+            //throw new NotImplementedException();
             setGrfReq();
             setGrfProc();
         }
@@ -223,10 +237,10 @@ namespace clinic_ivf.gui
             //grfDept.Cols[colCode].Caption = "รหัส";
 
             grfProc.Cols[colPcOpuNum].Caption = "OPU number";
-            grfProc.Cols[colPcHn].Caption = "HN";
-            grfProc.Cols[colPcPttName].Caption = "VN";
-            grfProc.Cols[colPcDate].Caption = "Name";
-            grfProc.Cols[colPcRemark].Caption = "Date";
+            grfProc.Cols[colPcHn].Caption = "HN female";
+            grfProc.Cols[colPcPttName].Caption = "Patient Name";
+            grfProc.Cols[colPcDate].Caption = "OPU Date";
+            grfProc.Cols[colPcRemark].Caption = "Remark";
             //grfProc.Cols[colRqRemark].Caption = "Remark";
             //grfProc.Cols[colDtrName].Caption = "Doctor";
 

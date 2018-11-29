@@ -461,7 +461,7 @@ namespace clinic_ivf.report {
             
             private global::System.Data.DataColumn columnopu_code;
             
-            private global::System.Data.DataColumn columnDataColumn1113;
+            private global::System.Data.DataColumn columnembryo_freez_day_0;
             
             private global::System.Data.DataColumn columnembryo_for_et_embryologist;
             
@@ -470,6 +470,36 @@ namespace clinic_ivf.report {
             private global::System.Data.DataColumn columnembryologist_report;
             
             private global::System.Data.DataColumn columnremark;
+            
+            private global::System.Data.DataColumn columnembryo_freez_day_1;
+            
+            private global::System.Data.DataColumn columnembryo_freez_date_0;
+            
+            private global::System.Data.DataColumn columnembryo_freez_date_1;
+            
+            private global::System.Data.DataColumn columnembryo_freez_stage_0;
+            
+            private global::System.Data.DataColumn columnembryo_freez_stage_1;
+            
+            private global::System.Data.DataColumn columnembryo_freez_no_og_0;
+            
+            private global::System.Data.DataColumn columnembryo_freez_no_straw_0;
+            
+            private global::System.Data.DataColumn columnembryo_freez_no_straw_1;
+            
+            private global::System.Data.DataColumn columnembryo_freez_no_og_1;
+            
+            private global::System.Data.DataColumn columnembryo_freez_position_0;
+            
+            private global::System.Data.DataColumn columnembryo_freez_position_1;
+            
+            private global::System.Data.DataColumn columnembryo_freez_mothod_0;
+            
+            private global::System.Data.DataColumn columnembryo_freez_mothod_1;
+            
+            private global::System.Data.DataColumn columnembryo_freez_freeze_media_0;
+            
+            private global::System.Data.DataColumn columnembryo_freez_freeze_media_1;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
@@ -1234,9 +1264,9 @@ namespace clinic_ivf.report {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public global::System.Data.DataColumn DataColumn1113Column {
+            public global::System.Data.DataColumn embryo_freez_day_0Column {
                 get {
-                    return this.columnDataColumn1113;
+                    return this.columnembryo_freez_day_0;
                 }
             }
             
@@ -1269,6 +1299,126 @@ namespace clinic_ivf.report {
             public global::System.Data.DataColumn remarkColumn {
                 get {
                     return this.columnremark;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn embryo_freez_day_1Column {
+                get {
+                    return this.columnembryo_freez_day_1;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn embryo_freez_date_0Column {
+                get {
+                    return this.columnembryo_freez_date_0;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn embryo_freez_date_1Column {
+                get {
+                    return this.columnembryo_freez_date_1;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn embryo_freez_stage_0Column {
+                get {
+                    return this.columnembryo_freez_stage_0;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn embryo_freez_stage_1Column {
+                get {
+                    return this.columnembryo_freez_stage_1;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn embryo_freez_no_og_0Column {
+                get {
+                    return this.columnembryo_freez_no_og_0;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn embryo_freez_no_straw_0Column {
+                get {
+                    return this.columnembryo_freez_no_straw_0;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn embryo_freez_no_straw_1Column {
+                get {
+                    return this.columnembryo_freez_no_straw_1;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn embryo_freez_no_og_1Column {
+                get {
+                    return this.columnembryo_freez_no_og_1;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn embryo_freez_position_0Column {
+                get {
+                    return this.columnembryo_freez_position_0;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn embryo_freez_position_1Column {
+                get {
+                    return this.columnembryo_freez_position_1;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn embryo_freez_mothod_0Column {
+                get {
+                    return this.columnembryo_freez_mothod_0;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn embryo_freez_mothod_1Column {
+                get {
+                    return this.columnembryo_freez_mothod_1;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn embryo_freez_freeze_media_0Column {
+                get {
+                    return this.columnembryo_freez_freeze_media_0;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn embryo_freez_freeze_media_1Column {
+                get {
+                    return this.columnembryo_freez_freeze_media_1;
                 }
             }
             
@@ -1401,11 +1551,26 @@ namespace clinic_ivf.report {
                         string embryo_for_et_number_of_freeze, 
                         string embryo_for_et_number_of_discard, 
                         string opu_code, 
-                        string DataColumn1113, 
+                        string embryo_freez_day_0, 
                         string embryo_for_et_embryologist, 
                         string embryologist_appv, 
                         string embryologist_report, 
-                        string remark) {
+                        string remark, 
+                        string embryo_freez_day_1, 
+                        string embryo_freez_date_0, 
+                        string embryo_freez_date_1, 
+                        string embryo_freez_stage_0, 
+                        string embryo_freez_stage_1, 
+                        string embryo_freez_no_og_0, 
+                        string embryo_freez_no_straw_0, 
+                        string embryo_freez_no_straw_1, 
+                        string embryo_freez_no_og_1, 
+                        string embryo_freez_position_0, 
+                        string embryo_freez_position_1, 
+                        string embryo_freez_mothod_0, 
+                        string embryo_freez_mothod_1, 
+                        string embryo_freez_freeze_media_0, 
+                        string embryo_freez_freeze_media_1) {
                 lab_opuRow rowlab_opuRow = ((lab_opuRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         name_female,
@@ -1499,11 +1664,26 @@ namespace clinic_ivf.report {
                         embryo_for_et_number_of_freeze,
                         embryo_for_et_number_of_discard,
                         opu_code,
-                        DataColumn1113,
+                        embryo_freez_day_0,
                         embryo_for_et_embryologist,
                         embryologist_appv,
                         embryologist_report,
-                        remark};
+                        remark,
+                        embryo_freez_day_1,
+                        embryo_freez_date_0,
+                        embryo_freez_date_1,
+                        embryo_freez_stage_0,
+                        embryo_freez_stage_1,
+                        embryo_freez_no_og_0,
+                        embryo_freez_no_straw_0,
+                        embryo_freez_no_straw_1,
+                        embryo_freez_no_og_1,
+                        embryo_freez_position_0,
+                        embryo_freez_position_1,
+                        embryo_freez_mothod_0,
+                        embryo_freez_mothod_1,
+                        embryo_freez_freeze_media_0,
+                        embryo_freez_freeze_media_1};
                 rowlab_opuRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowlab_opuRow);
                 return rowlab_opuRow;
@@ -1617,11 +1797,26 @@ namespace clinic_ivf.report {
                 this.columnembryo_for_et_number_of_freeze = base.Columns["embryo_for_et_number_of_freeze"];
                 this.columnembryo_for_et_number_of_discard = base.Columns["embryo_for_et_number_of_discard"];
                 this.columnopu_code = base.Columns["opu_code"];
-                this.columnDataColumn1113 = base.Columns["DataColumn1113"];
+                this.columnembryo_freez_day_0 = base.Columns["embryo_freez_day_0"];
                 this.columnembryo_for_et_embryologist = base.Columns["embryo_for_et_embryologist"];
                 this.columnembryologist_appv = base.Columns["embryologist_appv"];
                 this.columnembryologist_report = base.Columns["embryologist_report"];
                 this.columnremark = base.Columns["remark"];
+                this.columnembryo_freez_day_1 = base.Columns["embryo_freez_day_1"];
+                this.columnembryo_freez_date_0 = base.Columns["embryo_freez_date_0"];
+                this.columnembryo_freez_date_1 = base.Columns["embryo_freez_date_1"];
+                this.columnembryo_freez_stage_0 = base.Columns["embryo_freez_stage_0"];
+                this.columnembryo_freez_stage_1 = base.Columns["embryo_freez_stage_1"];
+                this.columnembryo_freez_no_og_0 = base.Columns["embryo_freez_no_og_0"];
+                this.columnembryo_freez_no_straw_0 = base.Columns["embryo_freez_no_straw_0"];
+                this.columnembryo_freez_no_straw_1 = base.Columns["embryo_freez_no_straw_1"];
+                this.columnembryo_freez_no_og_1 = base.Columns["embryo_freez_no_og_1"];
+                this.columnembryo_freez_position_0 = base.Columns["embryo_freez_position_0"];
+                this.columnembryo_freez_position_1 = base.Columns["embryo_freez_position_1"];
+                this.columnembryo_freez_mothod_0 = base.Columns["embryo_freez_mothod_0"];
+                this.columnembryo_freez_mothod_1 = base.Columns["embryo_freez_mothod_1"];
+                this.columnembryo_freez_freeze_media_0 = base.Columns["embryo_freez_freeze_media_0"];
+                this.columnembryo_freez_freeze_media_1 = base.Columns["embryo_freez_freeze_media_1"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1809,8 +2004,8 @@ namespace clinic_ivf.report {
                 base.Columns.Add(this.columnembryo_for_et_number_of_discard);
                 this.columnopu_code = new global::System.Data.DataColumn("opu_code", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnopu_code);
-                this.columnDataColumn1113 = new global::System.Data.DataColumn("DataColumn1113", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnDataColumn1113);
+                this.columnembryo_freez_day_0 = new global::System.Data.DataColumn("embryo_freez_day_0", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnembryo_freez_day_0);
                 this.columnembryo_for_et_embryologist = new global::System.Data.DataColumn("embryo_for_et_embryologist", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnembryo_for_et_embryologist);
                 this.columnembryologist_appv = new global::System.Data.DataColumn("embryologist_appv", typeof(string), null, global::System.Data.MappingType.Element);
@@ -1819,6 +2014,36 @@ namespace clinic_ivf.report {
                 base.Columns.Add(this.columnembryologist_report);
                 this.columnremark = new global::System.Data.DataColumn("remark", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnremark);
+                this.columnembryo_freez_day_1 = new global::System.Data.DataColumn("embryo_freez_day_1", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnembryo_freez_day_1);
+                this.columnembryo_freez_date_0 = new global::System.Data.DataColumn("embryo_freez_date_0", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnembryo_freez_date_0);
+                this.columnembryo_freez_date_1 = new global::System.Data.DataColumn("embryo_freez_date_1", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnembryo_freez_date_1);
+                this.columnembryo_freez_stage_0 = new global::System.Data.DataColumn("embryo_freez_stage_0", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnembryo_freez_stage_0);
+                this.columnembryo_freez_stage_1 = new global::System.Data.DataColumn("embryo_freez_stage_1", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnembryo_freez_stage_1);
+                this.columnembryo_freez_no_og_0 = new global::System.Data.DataColumn("embryo_freez_no_og_0", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnembryo_freez_no_og_0);
+                this.columnembryo_freez_no_straw_0 = new global::System.Data.DataColumn("embryo_freez_no_straw_0", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnembryo_freez_no_straw_0);
+                this.columnembryo_freez_no_straw_1 = new global::System.Data.DataColumn("embryo_freez_no_straw_1", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnembryo_freez_no_straw_1);
+                this.columnembryo_freez_no_og_1 = new global::System.Data.DataColumn("embryo_freez_no_og_1", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnembryo_freez_no_og_1);
+                this.columnembryo_freez_position_0 = new global::System.Data.DataColumn("embryo_freez_position_0", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnembryo_freez_position_0);
+                this.columnembryo_freez_position_1 = new global::System.Data.DataColumn("embryo_freez_position_1", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnembryo_freez_position_1);
+                this.columnembryo_freez_mothod_0 = new global::System.Data.DataColumn("embryo_freez_mothod_0", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnembryo_freez_mothod_0);
+                this.columnembryo_freez_mothod_1 = new global::System.Data.DataColumn("embryo_freez_mothod_1", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnembryo_freez_mothod_1);
+                this.columnembryo_freez_freeze_media_0 = new global::System.Data.DataColumn("embryo_freez_freeze_media_0", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnembryo_freez_freeze_media_0);
+                this.columnembryo_freez_freeze_media_1 = new global::System.Data.DataColumn("embryo_freez_freeze_media_1", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnembryo_freez_freeze_media_1);
                 this.columnname_female.Caption = "DataColumn1";
                 this.columnhn_female.Caption = "DataColumn1";
                 this.columnname_male.Caption = "DataColumn1";
@@ -1909,7 +2134,7 @@ namespace clinic_ivf.report {
                 this.columnembryo_for_et_number_of_freeze.Caption = "DataColumn1";
                 this.columnembryo_for_et_number_of_discard.Caption = "DataColumn1";
                 this.columnopu_code.Caption = "DataColumn1";
-                this.columnDataColumn1113.Caption = "DataColumn1";
+                this.columnembryo_freez_day_0.Caption = "DataColumn1";
                 this.columnembryo_for_et_embryologist.Caption = "DataColumn1";
                 this.columnembryologist_appv.Caption = "DataColumn1";
                 this.columnembryologist_report.Caption = "DataColumn1";
@@ -3514,17 +3739,17 @@ namespace clinic_ivf.report {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public string DataColumn1113 {
+            public string embryo_freez_day_0 {
                 get {
                     try {
-                        return ((string)(this[this.tablelab_opu.DataColumn1113Column]));
+                        return ((string)(this[this.tablelab_opu.embryo_freez_day_0Column]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'DataColumn1113\' in table \'lab_opu\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'embryo_freez_day_0\' in table \'lab_opu\' is DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tablelab_opu.DataColumn1113Column] = value;
+                    this[this.tablelab_opu.embryo_freez_day_0Column] = value;
                 }
             }
             
@@ -3589,6 +3814,246 @@ namespace clinic_ivf.report {
                 }
                 set {
                     this[this.tablelab_opu.remarkColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public string embryo_freez_day_1 {
+                get {
+                    try {
+                        return ((string)(this[this.tablelab_opu.embryo_freez_day_1Column]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'embryo_freez_day_1\' in table \'lab_opu\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablelab_opu.embryo_freez_day_1Column] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public string embryo_freez_date_0 {
+                get {
+                    try {
+                        return ((string)(this[this.tablelab_opu.embryo_freez_date_0Column]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'embryo_freez_date_0\' in table \'lab_opu\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablelab_opu.embryo_freez_date_0Column] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public string embryo_freez_date_1 {
+                get {
+                    try {
+                        return ((string)(this[this.tablelab_opu.embryo_freez_date_1Column]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'embryo_freez_date_1\' in table \'lab_opu\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablelab_opu.embryo_freez_date_1Column] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public string embryo_freez_stage_0 {
+                get {
+                    try {
+                        return ((string)(this[this.tablelab_opu.embryo_freez_stage_0Column]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'embryo_freez_stage_0\' in table \'lab_opu\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablelab_opu.embryo_freez_stage_0Column] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public string embryo_freez_stage_1 {
+                get {
+                    try {
+                        return ((string)(this[this.tablelab_opu.embryo_freez_stage_1Column]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'embryo_freez_stage_1\' in table \'lab_opu\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablelab_opu.embryo_freez_stage_1Column] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public string embryo_freez_no_og_0 {
+                get {
+                    try {
+                        return ((string)(this[this.tablelab_opu.embryo_freez_no_og_0Column]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'embryo_freez_no_og_0\' in table \'lab_opu\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablelab_opu.embryo_freez_no_og_0Column] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public string embryo_freez_no_straw_0 {
+                get {
+                    try {
+                        return ((string)(this[this.tablelab_opu.embryo_freez_no_straw_0Column]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'embryo_freez_no_straw_0\' in table \'lab_opu\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablelab_opu.embryo_freez_no_straw_0Column] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public string embryo_freez_no_straw_1 {
+                get {
+                    try {
+                        return ((string)(this[this.tablelab_opu.embryo_freez_no_straw_1Column]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'embryo_freez_no_straw_1\' in table \'lab_opu\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablelab_opu.embryo_freez_no_straw_1Column] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public string embryo_freez_no_og_1 {
+                get {
+                    try {
+                        return ((string)(this[this.tablelab_opu.embryo_freez_no_og_1Column]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'embryo_freez_no_og_1\' in table \'lab_opu\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablelab_opu.embryo_freez_no_og_1Column] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public string embryo_freez_position_0 {
+                get {
+                    try {
+                        return ((string)(this[this.tablelab_opu.embryo_freez_position_0Column]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'embryo_freez_position_0\' in table \'lab_opu\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablelab_opu.embryo_freez_position_0Column] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public string embryo_freez_position_1 {
+                get {
+                    try {
+                        return ((string)(this[this.tablelab_opu.embryo_freez_position_1Column]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'embryo_freez_position_1\' in table \'lab_opu\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablelab_opu.embryo_freez_position_1Column] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public string embryo_freez_mothod_0 {
+                get {
+                    try {
+                        return ((string)(this[this.tablelab_opu.embryo_freez_mothod_0Column]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'embryo_freez_mothod_0\' in table \'lab_opu\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablelab_opu.embryo_freez_mothod_0Column] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public string embryo_freez_mothod_1 {
+                get {
+                    try {
+                        return ((string)(this[this.tablelab_opu.embryo_freez_mothod_1Column]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'embryo_freez_mothod_1\' in table \'lab_opu\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablelab_opu.embryo_freez_mothod_1Column] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public string embryo_freez_freeze_media_0 {
+                get {
+                    try {
+                        return ((string)(this[this.tablelab_opu.embryo_freez_freeze_media_0Column]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'embryo_freez_freeze_media_0\' in table \'lab_opu\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablelab_opu.embryo_freez_freeze_media_0Column] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public string embryo_freez_freeze_media_1 {
+                get {
+                    try {
+                        return ((string)(this[this.tablelab_opu.embryo_freez_freeze_media_1Column]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'embryo_freez_freeze_media_1\' in table \'lab_opu\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablelab_opu.embryo_freez_freeze_media_1Column] = value;
                 }
             }
             
@@ -4686,14 +5151,14 @@ namespace clinic_ivf.report {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public bool IsDataColumn1113Null() {
-                return this.IsNull(this.tablelab_opu.DataColumn1113Column);
+            public bool Isembryo_freez_day_0Null() {
+                return this.IsNull(this.tablelab_opu.embryo_freez_day_0Column);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public void SetDataColumn1113Null() {
-                this[this.tablelab_opu.DataColumn1113Column] = global::System.Convert.DBNull;
+            public void Setembryo_freez_day_0Null() {
+                this[this.tablelab_opu.embryo_freez_day_0Column] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -4742,6 +5207,186 @@ namespace clinic_ivf.report {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public void SetremarkNull() {
                 this[this.tablelab_opu.remarkColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public bool Isembryo_freez_day_1Null() {
+                return this.IsNull(this.tablelab_opu.embryo_freez_day_1Column);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void Setembryo_freez_day_1Null() {
+                this[this.tablelab_opu.embryo_freez_day_1Column] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public bool Isembryo_freez_date_0Null() {
+                return this.IsNull(this.tablelab_opu.embryo_freez_date_0Column);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void Setembryo_freez_date_0Null() {
+                this[this.tablelab_opu.embryo_freez_date_0Column] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public bool Isembryo_freez_date_1Null() {
+                return this.IsNull(this.tablelab_opu.embryo_freez_date_1Column);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void Setembryo_freez_date_1Null() {
+                this[this.tablelab_opu.embryo_freez_date_1Column] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public bool Isembryo_freez_stage_0Null() {
+                return this.IsNull(this.tablelab_opu.embryo_freez_stage_0Column);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void Setembryo_freez_stage_0Null() {
+                this[this.tablelab_opu.embryo_freez_stage_0Column] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public bool Isembryo_freez_stage_1Null() {
+                return this.IsNull(this.tablelab_opu.embryo_freez_stage_1Column);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void Setembryo_freez_stage_1Null() {
+                this[this.tablelab_opu.embryo_freez_stage_1Column] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public bool Isembryo_freez_no_og_0Null() {
+                return this.IsNull(this.tablelab_opu.embryo_freez_no_og_0Column);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void Setembryo_freez_no_og_0Null() {
+                this[this.tablelab_opu.embryo_freez_no_og_0Column] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public bool Isembryo_freez_no_straw_0Null() {
+                return this.IsNull(this.tablelab_opu.embryo_freez_no_straw_0Column);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void Setembryo_freez_no_straw_0Null() {
+                this[this.tablelab_opu.embryo_freez_no_straw_0Column] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public bool Isembryo_freez_no_straw_1Null() {
+                return this.IsNull(this.tablelab_opu.embryo_freez_no_straw_1Column);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void Setembryo_freez_no_straw_1Null() {
+                this[this.tablelab_opu.embryo_freez_no_straw_1Column] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public bool Isembryo_freez_no_og_1Null() {
+                return this.IsNull(this.tablelab_opu.embryo_freez_no_og_1Column);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void Setembryo_freez_no_og_1Null() {
+                this[this.tablelab_opu.embryo_freez_no_og_1Column] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public bool Isembryo_freez_position_0Null() {
+                return this.IsNull(this.tablelab_opu.embryo_freez_position_0Column);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void Setembryo_freez_position_0Null() {
+                this[this.tablelab_opu.embryo_freez_position_0Column] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public bool Isembryo_freez_position_1Null() {
+                return this.IsNull(this.tablelab_opu.embryo_freez_position_1Column);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void Setembryo_freez_position_1Null() {
+                this[this.tablelab_opu.embryo_freez_position_1Column] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public bool Isembryo_freez_mothod_0Null() {
+                return this.IsNull(this.tablelab_opu.embryo_freez_mothod_0Column);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void Setembryo_freez_mothod_0Null() {
+                this[this.tablelab_opu.embryo_freez_mothod_0Column] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public bool Isembryo_freez_mothod_1Null() {
+                return this.IsNull(this.tablelab_opu.embryo_freez_mothod_1Column);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void Setembryo_freez_mothod_1Null() {
+                this[this.tablelab_opu.embryo_freez_mothod_1Column] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public bool Isembryo_freez_freeze_media_0Null() {
+                return this.IsNull(this.tablelab_opu.embryo_freez_freeze_media_0Column);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void Setembryo_freez_freeze_media_0Null() {
+                this[this.tablelab_opu.embryo_freez_freeze_media_0Column] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public bool Isembryo_freez_freeze_media_1Null() {
+                return this.IsNull(this.tablelab_opu.embryo_freez_freeze_media_1Column);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void Setembryo_freez_freeze_media_1Null() {
+                this[this.tablelab_opu.embryo_freez_freeze_media_1Column] = global::System.Convert.DBNull;
             }
         }
         

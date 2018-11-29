@@ -28,7 +28,7 @@ namespace clinic_ivf.gui
         Color color;
         public enum opuReport {OPUReport, OPUEmbryoDevReport };
         opuReport opureport;
-
+        
         public FrmLabOPUPrint(IvfControl ic, String opuid, opuReport opureport)
         {
             InitializeComponent();
@@ -51,6 +51,10 @@ namespace clinic_ivf.gui
             bg = txtHnFeMale.BackColor;
             fc = txtHnFeMale.ForeColor;
             ff = txtHnFeMale.Font;
+            ic.setCboDay(cboEmbryoDay0, "");
+            ic.setCboDay(cboEmbryoDay1, "");
+            ic.setCboDayEmbryoDev(cboEmbryoDay0, "");
+            ic.setCboDayEmbryoDev(cboEmbryoDay1, "");
 
             btnPrint.Click += BtnPrint_Click;
         }
@@ -129,6 +133,10 @@ namespace clinic_ivf.gui
             txtNameFeMale.Value = opu.name_female;
             txtNameMale.Value = opu.name_male;
             txtOpuCode.Value = opu.opu_code;
+        }
+        private void FrmLabOPUPrint_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

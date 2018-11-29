@@ -84,8 +84,8 @@ namespace clinic_ivf.gui
             ic.ivfDB.fdtDB.setCboOPUMethod(cboEmbryoFreezMethod1);
             ic.ivfDB.fdtDB.setCboOPUStage(cboEmbryoFreezStage0);
             ic.ivfDB.fdtDB.setCboOPUStage(cboEmbryoFreezStage1);
-            ic.setCboDay(CboEmbryoDay0, "");
-            ic.setCboDay(CboEmbryoDay1, "");
+            ic.setCboDay(CboEmbryoFreezDay0, "");
+            ic.setCboDay(CboEmbryoFreezDay1, "");
 
             setControl();
             //stt.BackgroundGradient = C1.Win.C1SuperTooltip.BackgroundGradient.Gold;
@@ -114,8 +114,37 @@ namespace clinic_ivf.gui
             btnSaveImg6.Click += BtnSaveImg6_Click;
             btnDay6ImgRef.Click += BtnDay6ImgRef_Click;
             btnPrintOpuEmbryoDev.Click += BtnPrintOpuEmbryoDev_Click;
-
             txtMaturaNoofOpu.KeyUp += TxtMaturaNoofOpu_KeyUp;
+
+            txtMaturaMii.KeyPress += TxtMaturaMii_KeyPress;
+            txtMaturaMi.KeyPress += TxtMaturaMii_KeyPress;
+            txtMaturaGv.KeyPress += TxtMaturaMii_KeyPress;
+            txtMaturaNoofOpu.KeyPress += TxtMaturaNoofOpu_KeyPress;
+            txtMaturaPostMat.KeyPress += TxtMaturaMii_KeyPress;
+            txtMaturaAbnor.KeyPress += TxtMaturaMii_KeyPress;
+            txtMaturaDead.KeyPress += TxtMaturaMii_KeyPress;
+
+            txtFertili2Pn.KeyPress += TxtMaturaMii_KeyPress;
+            txtFertili1Pn.KeyPress += TxtMaturaMii_KeyPress;
+            txtFertili3Pn.KeyPress += TxtMaturaMii_KeyPress;
+            txtFertili4Pn.KeyPress += TxtMaturaMii_KeyPress;
+            txtFertiliNoPn.KeyPress += TxtMaturaMii_KeyPress;
+            txtFertiliDead.KeyPress += TxtMaturaMii_KeyPress;
+
+            txtSpermVol.KeyPress += TxtMaturaMii_KeyPress;
+            txtSpermCnt.KeyPress += TxtMaturaMii_KeyPress;
+            txtSpermTotalCnt.KeyPress += TxtMaturaMii_KeyPress;
+            txtSpermMoti.KeyPress += TxtMaturaMii_KeyPress;
+            txtSpermMotiTotal.KeyPress += TxtMaturaMii_KeyPress;
+            txtSpermMotility.KeyPress += TxtMaturaMii_KeyPress;
+
+            txtEmbryoFreezNoOg0.KeyPress += TxtMaturaMii_KeyPress;
+            txtEmbryoFreezNoStraw0.KeyPress += TxtMaturaMii_KeyPress;
+            txtEmbryoFreezNoOg1.KeyPress += TxtMaturaMii_KeyPress;
+            txtEmbryoFreezNoStraw1.KeyPress += TxtMaturaMii_KeyPress;
+            txtFertili1Pn.KeyPress += TxtMaturaMii_KeyPress;
+            txtFertili1Pn.KeyPress += TxtMaturaMii_KeyPress;
+            txtFertili1Pn.KeyPress += TxtMaturaMii_KeyPress;
 
             setFocusColor();
             initGrfDay2();
@@ -135,6 +164,37 @@ namespace clinic_ivf.gui
             initGrfDay6Img();
             setGrfDay6Img();
         }
+
+        private void TxtMaturaNoofOpu_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            //throw new NotImplementedException();
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != '.') && (e.KeyChar != ','))
+            {
+                e.Handled = true;
+            }
+
+            // only allow one decimal point
+            if ((e.KeyChar == '.') && ((sender as C1TextBox).Text.IndexOf('.') > -1))
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void TxtMaturaMii_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            //throw new NotImplementedException();
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != '.'))
+            {
+                e.Handled = true;
+            }
+
+            // only allow one decimal point
+            if ((e.KeyChar == '.') && ((sender as C1TextBox).Text.IndexOf('.') > -1))
+            {
+                e.Handled = true;
+            }
+        }
+
         private Boolean chkNoofOPU()
         {
             Boolean chk = true;
@@ -196,6 +256,9 @@ namespace clinic_ivf.gui
                                         frmW.Show();
                                         try
                                         {
+                                            setOPUMatura();
+                                            re = ic.ivfDB.opuDB.updateMatura(opu, ic.user.staff_id);
+
                                             frmW.pB.Minimum = 1;
                                             frmW.pB.Maximum = aaa;
                                             for (int i = 1; i <= aaa; i++)
@@ -1258,8 +1321,8 @@ namespace clinic_ivf.gui
                     ic.setC1Combo(cboEmbryologistAppv, opu.embryologist_approve_id);
                     ic.setC1Combo(cboEmbryologistReport, opu.embryologist_report_id);
                     ic.setC1Combo(cboEmbryoForEtEmbryologist, opu.embryo_for_et_embryologist_id);
-                    ic.setC1Combo(CboEmbryoDay0, opu.embryo_freez_day_0);
-                    ic.setC1Combo(CboEmbryoDay1, opu.embryo_freez_day_1);
+                    ic.setC1Combo(CboEmbryoFreezDay0, opu.embryo_freez_day_0);
+                    ic.setC1Combo(CboEmbryoFreezDay1, opu.embryo_freez_day_1);
                     txtEmbryoFreezDate0.Value = opu.embryo_freez_date_0;
                     txtEmbryoFreezDate1.Value = opu.embryo_freez_date_1;
                     //txtEmbryoFreezStage0.Value = opu.embryo_freez_stage_0;
@@ -1309,7 +1372,7 @@ namespace clinic_ivf.gui
             {
                 opu.doctor_id = "0";
             }
-            opu.opu_date = txtOpuDate.Text;
+            opu.opu_date = ic.datetoDB(txtOpuDate.Text);
             if (cboDoctor.SelectedItem != null)
             {
                 item = (ComboBoxItem)cboOpuProce.SelectedItem;
@@ -1406,9 +1469,9 @@ namespace clinic_ivf.gui
         {
             opu.opu_id = txtID.Text;
             ComboBoxItem item = new ComboBoxItem();
-            if (CboEmbryoDay1.SelectedItem != null)
+            if (CboEmbryoFreezDay1.SelectedItem != null)
             {
-                item = (ComboBoxItem)CboEmbryoDay1.SelectedItem;
+                item = (ComboBoxItem)CboEmbryoFreezDay1.SelectedItem;
                 opu.embryo_freez_day_1 = item.Value;
             }
             else
@@ -1448,9 +1511,9 @@ namespace clinic_ivf.gui
         {
             opu.opu_id = txtID.Text;
             ComboBoxItem item = new ComboBoxItem();
-            if (CboEmbryoDay0.SelectedItem != null)
+            if (CboEmbryoFreezDay0.SelectedItem != null)
             {
-                item = (ComboBoxItem)CboEmbryoDay0.SelectedItem;
+                item = (ComboBoxItem)CboEmbryoFreezDay0.SelectedItem;
                 opu.embryo_freez_day_0 = item.Value;
             }
             else

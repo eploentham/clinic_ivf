@@ -1,4 +1,5 @@
-﻿using System;
+﻿using clinic_ivf.Properties;
+using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
@@ -13,6 +14,7 @@ namespace clinic_ivf.gui
         public ProgressBar pB;
         Panel panel1;
         public Label lb;
+        PictureBox pic;
         public FrmWaiting()
         {
             initConfig();
@@ -36,10 +38,14 @@ namespace clinic_ivf.gui
 
             lb = new Label();
             lb.Dock = DockStyle.Top;
+            pic = new PictureBox();
+            pic.Dock = DockStyle.Top;
+            pic.Image = Resources.loading_transparent;
 
             Controls.Add(panel1);
             panel1.Controls.Add(pB);
             panel1.Controls.Add(lb);
+            panel1.Controls.Add(pic);
         }
     }
 }
