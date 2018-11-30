@@ -30,16 +30,12 @@
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.c1CheckBox1 = new C1.Win.C1Input.C1CheckBox();
+            this.chkEmbryoDev20 = new C1.Win.C1Input.C1CheckBox();
             this.cboEmbryoDev2 = new C1.Win.C1Input.C1ComboBox();
             this.label7 = new System.Windows.Forms.Label();
             this.cboEmbryoDev1 = new C1.Win.C1Input.C1ComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.cboEmbryoDay0 = new C1.Win.C1Input.C1ComboBox();
-            this.label6 = new System.Windows.Forms.Label();
-            this.label44 = new System.Windows.Forms.Label();
-            this.cboEmbryoDay1 = new C1.Win.C1Input.C1ComboBox();
             this.txtID = new C1.Win.C1Input.C1TextBox();
             this.txtOpuCode = new C1.Win.C1Input.C1TextBox();
             this.label47 = new System.Windows.Forms.Label();
@@ -55,14 +51,13 @@
             this.theme1 = new C1.Win.C1Themes.C1ThemeController();
             this.sB = new System.Windows.Forms.StatusStrip();
             this.sB1 = new System.Windows.Forms.ToolStripStatusLabel();
+            this.chkEmbryoFreez2Col = new C1.Win.C1Input.C1CheckBox();
             this.groupBox1.SuspendLayout();
             this.groupBox3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.c1CheckBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chkEmbryoDev20)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cboEmbryoDev2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cboEmbryoDev1)).BeginInit();
             this.groupBox2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.cboEmbryoDay0)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.cboEmbryoDay1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtID)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtOpuCode)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnPrint)).BeginInit();
@@ -72,6 +67,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtHnFeMale)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.theme1)).BeginInit();
             this.sB.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.chkEmbryoFreez2Col)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBox1
@@ -100,7 +96,7 @@
             // 
             // groupBox3
             // 
-            this.groupBox3.Controls.Add(this.c1CheckBox1);
+            this.groupBox3.Controls.Add(this.chkEmbryoDev20);
             this.groupBox3.Controls.Add(this.cboEmbryoDev2);
             this.groupBox3.Controls.Add(this.label7);
             this.groupBox3.Controls.Add(this.cboEmbryoDev1);
@@ -112,16 +108,16 @@
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Embryo Development";
             // 
-            // c1CheckBox1
+            // chkEmbryoDev20
             // 
-            this.c1CheckBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.c1CheckBox1.Location = new System.Drawing.Point(148, 19);
-            this.c1CheckBox1.Name = "c1CheckBox1";
-            this.c1CheckBox1.Size = new System.Drawing.Size(236, 24);
-            this.c1CheckBox1.TabIndex = 551;
-            this.c1CheckBox1.Text = "ข้อมูล Embryo มีมากกว่า 20 ให้แสดง ทั้งหมด";
-            this.c1CheckBox1.UseVisualStyleBackColor = true;
-            this.c1CheckBox1.Value = null;
+            this.chkEmbryoDev20.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.chkEmbryoDev20.Location = new System.Drawing.Point(148, 19);
+            this.chkEmbryoDev20.Name = "chkEmbryoDev20";
+            this.chkEmbryoDev20.Size = new System.Drawing.Size(236, 24);
+            this.chkEmbryoDev20.TabIndex = 551;
+            this.chkEmbryoDev20.Text = "ข้อมูล Embryo มีมากกว่า 20 ให้แสดง ทั้งหมด";
+            this.chkEmbryoDev20.UseVisualStyleBackColor = true;
+            this.chkEmbryoDev20.Value = null;
             // 
             // cboEmbryoDev2
             // 
@@ -152,9 +148,9 @@
             this.label7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
             this.label7.Location = new System.Drawing.Point(14, 49);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(39, 16);
+            this.label7.Size = new System.Drawing.Size(49, 16);
             this.label7.TabIndex = 549;
-            this.label7.Text = "Day :";
+            this.label7.Text = "Day 2 :";
             // 
             // cboEmbryoDev1
             // 
@@ -185,88 +181,19 @@
             this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
             this.label1.Location = new System.Drawing.Point(14, 23);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(39, 16);
+            this.label1.Size = new System.Drawing.Size(49, 16);
             this.label1.TabIndex = 547;
-            this.label1.Text = "Day :";
+            this.label1.Text = "Day 1 :";
             // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.cboEmbryoDay0);
-            this.groupBox2.Controls.Add(this.label6);
-            this.groupBox2.Controls.Add(this.label44);
-            this.groupBox2.Controls.Add(this.cboEmbryoDay1);
+            this.groupBox2.Controls.Add(this.chkEmbryoFreez2Col);
             this.groupBox2.Location = new System.Drawing.Point(12, 108);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(200, 84);
             this.groupBox2.TabIndex = 549;
             this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Embryo Freezing";
-            // 
-            // cboEmbryoDay0
-            // 
-            this.cboEmbryoDay0.AllowSpinLoop = false;
-            this.cboEmbryoDay0.BorderColor = System.Drawing.SystemColors.WindowFrame;
-            this.cboEmbryoDay0.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.cboEmbryoDay0.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
-            this.cboEmbryoDay0.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.cboEmbryoDay0.GapHeight = 0;
-            this.cboEmbryoDay0.ImagePadding = new System.Windows.Forms.Padding(0);
-            this.cboEmbryoDay0.ItemsDisplayMember = "";
-            this.cboEmbryoDay0.ItemsValueMember = "";
-            this.cboEmbryoDay0.Location = new System.Drawing.Point(75, 19);
-            this.cboEmbryoDay0.Name = "cboEmbryoDay0";
-            this.cboEmbryoDay0.Size = new System.Drawing.Size(65, 20);
-            this.cboEmbryoDay0.Style.DropDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.cboEmbryoDay0.Style.DropDownBorderColor = System.Drawing.Color.Gainsboro;
-            this.cboEmbryoDay0.Style.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.cboEmbryoDay0.TabIndex = 546;
-            this.cboEmbryoDay0.Tag = null;
-            this.cboEmbryoDay0.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.label6.Location = new System.Drawing.Point(12, 47);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(39, 16);
-            this.label6.TabIndex = 547;
-            this.label6.Text = "Day :";
-            // 
-            // label44
-            // 
-            this.label44.AutoSize = true;
-            this.label44.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.label44.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label44.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.label44.Location = new System.Drawing.Point(12, 21);
-            this.label44.Name = "label44";
-            this.label44.Size = new System.Drawing.Size(39, 16);
-            this.label44.TabIndex = 545;
-            this.label44.Text = "Day :";
-            // 
-            // cboEmbryoDay1
-            // 
-            this.cboEmbryoDay1.AllowSpinLoop = false;
-            this.cboEmbryoDay1.BorderColor = System.Drawing.SystemColors.WindowFrame;
-            this.cboEmbryoDay1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.cboEmbryoDay1.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
-            this.cboEmbryoDay1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.cboEmbryoDay1.GapHeight = 0;
-            this.cboEmbryoDay1.ImagePadding = new System.Windows.Forms.Padding(0);
-            this.cboEmbryoDay1.ItemsDisplayMember = "";
-            this.cboEmbryoDay1.ItemsValueMember = "";
-            this.cboEmbryoDay1.Location = new System.Drawing.Point(75, 45);
-            this.cboEmbryoDay1.Name = "cboEmbryoDay1";
-            this.cboEmbryoDay1.Size = new System.Drawing.Size(65, 20);
-            this.cboEmbryoDay1.Style.DropDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.cboEmbryoDay1.Style.DropDownBorderColor = System.Drawing.Color.Gainsboro;
-            this.cboEmbryoDay1.Style.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.cboEmbryoDay1.TabIndex = 548;
-            this.cboEmbryoDay1.Tag = null;
-            this.cboEmbryoDay1.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            this.groupBox2.Text = "Embryo Freezing Day";
             // 
             // txtID
             // 
@@ -442,6 +369,18 @@
             this.sB1.Size = new System.Drawing.Size(118, 17);
             this.sB1.Text = "toolStripStatusLabel1";
             // 
+            // chkEmbryoFreez2Col
+            // 
+            this.chkEmbryoFreez2Col.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.chkEmbryoFreez2Col.Location = new System.Drawing.Point(10, 23);
+            this.chkEmbryoFreez2Col.Name = "chkEmbryoFreez2Col";
+            this.chkEmbryoFreez2Col.Size = new System.Drawing.Size(180, 24);
+            this.chkEmbryoFreez2Col.TabIndex = 552;
+            this.chkEmbryoFreez2Col.Text = "ให้แสดง 2 column";
+            this.theme1.SetTheme(this.chkEmbryoFreez2Col, "(default)");
+            this.chkEmbryoFreez2Col.UseVisualStyleBackColor = false;
+            this.chkEmbryoFreez2Col.Value = null;
+            // 
             // FrmLabOPUPrint
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -457,13 +396,10 @@
             this.groupBox1.PerformLayout();
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.c1CheckBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chkEmbryoDev20)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cboEmbryoDev2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cboEmbryoDev1)).EndInit();
             this.groupBox2.ResumeLayout(false);
-            this.groupBox2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.cboEmbryoDay0)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.cboEmbryoDay1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtID)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtOpuCode)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnPrint)).EndInit();
@@ -474,6 +410,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.theme1)).EndInit();
             this.sB.ResumeLayout(false);
             this.sB.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.chkEmbryoFreez2Col)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -494,19 +431,16 @@
         private C1.Win.C1Input.C1TextBox txtOpuCode;
         private System.Windows.Forms.Label label47;
         private C1.Win.C1Input.C1TextBox txtID;
-        private System.Windows.Forms.Label label44;
-        private C1.Win.C1Input.C1ComboBox cboEmbryoDay0;
-        private System.Windows.Forms.Label label6;
-        private C1.Win.C1Input.C1ComboBox cboEmbryoDay1;
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.GroupBox groupBox2;
         private C1.Win.C1Input.C1ComboBox cboEmbryoDev2;
         private System.Windows.Forms.Label label7;
         private C1.Win.C1Input.C1ComboBox cboEmbryoDev1;
         private System.Windows.Forms.Label label1;
-        private C1.Win.C1Input.C1CheckBox c1CheckBox1;
+        private C1.Win.C1Input.C1CheckBox chkEmbryoDev20;
         private C1.Win.C1Themes.C1ThemeController theme1;
         private System.Windows.Forms.StatusStrip sB;
         private System.Windows.Forms.ToolStripStatusLabel sB1;
+        private C1.Win.C1Input.C1CheckBox chkEmbryoFreez2Col;
     }
 }

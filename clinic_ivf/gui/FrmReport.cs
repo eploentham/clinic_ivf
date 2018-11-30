@@ -16,7 +16,8 @@ namespace clinic_ivf.gui
     public partial class FrmReport : Form
     {
         IvfControl ic;
-
+        public enum flagEmbryoDev { onecolumn, twocolumn};
+        public enum flagEmbryoDevMore20 { More20, Days2 };
         public FrmReport(IvfControl ic)
         {
             InitializeComponent();
@@ -28,7 +29,7 @@ namespace clinic_ivf.gui
             ReportDocument rpt = new ReportDocument();
             try
             {
-                rpt.Load("lab_opu_embryo_dev.rpt");
+                rpt.Load("lab_opu_embryo_dev.rpt");                
                 rpt.SetDataSource(dt);
                 rpt.SetParameterValue("line1", ic.cop.comp_name_t);
                 rpt.SetParameterValue("line2", "โทรศัพท์ " + ic.cop.tele);
@@ -42,13 +43,35 @@ namespace clinic_ivf.gui
                 chk = ex.Message.ToString();
             }
         }
-        public void setOPUReport(DataTable dt)
+        public void setOPUReport(DataTable dt, flagEmbryoDev flagembryodev, flagEmbryoDevMore20 flagembryodevmore20)
         {
             String chk = "", printerDefault = "";
             ReportDocument rpt = new ReportDocument();
             try
             {
-                rpt.Load("lab_opu.rpt");
+                //rpt.Load("lab_opu.rpt");
+                if(flagembryodev == flagEmbryoDev.onecolumn)
+                {
+                    if(flagembryodevmore20 == flagEmbryoDevMore20.Days2)
+                    {
+                        rpt.Load("lab_opu.rpt");
+                    }
+                    else
+                    {
+                        rpt.Load("lab_opu_more_20.rpt");
+                    }
+                }
+                else
+                {
+                    if (flagembryodevmore20 == flagEmbryoDevMore20.Days2)
+                    {
+                        rpt.Load("lab_opu_freeze_2_column.rpt");
+                    }
+                    else
+                    {
+                        rpt.Load("lab_opu_freeze_2_column_more_20.rpt");
+                    }
+                }
                 rpt.SetDataSource(dt);
                 rpt.SetParameterValue("line1", ic.cop.comp_name_t);
                 rpt.SetParameterValue("line2", "โทรศัพท์ " + ic.cop.tele);

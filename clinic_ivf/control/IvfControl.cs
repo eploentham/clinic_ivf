@@ -408,9 +408,10 @@ namespace clinic_ivf.control
             //    File.Delete(@"temppic" + System.Drawing.Imaging.ImageFormat.Jpeg);
             //}
             //pathFile.Save(@"temppic." + System.Drawing.Imaging.ImageFormat.Jpeg, System.Drawing.Imaging.ImageFormat.Jpeg);
-            ftpC.createDirectory("images/" );
+            ftpC.createDirectory("images" );
             ftpC.createDirectory("images/" + opuCode);
             ftpC.delete("images/" + opuCode + "/" + filename);
+            //ftpC.upload( filename, pathFile);
             ftpC.upload("images/" + opuCode + "/" + filename, pathFile);
         }
         public void saveFilePatienttoServer(String pttId,String filenamenew, String localpathandfilename)

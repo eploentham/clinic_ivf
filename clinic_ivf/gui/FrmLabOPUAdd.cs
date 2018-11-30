@@ -1360,8 +1360,8 @@ namespace clinic_ivf.gui
             opu.name_female = txtNameFeMale.Text;
             opu.name_male = txtNameMale.Text;
             //lbReq.req_code = txtLabReqCode.Text;
-            opu.dob_female = txtDobFeMale.Text;
-            opu.dob_male = txtDobMale.Text;
+            opu.dob_female = ic.datetoDB(txtDobFeMale.Text);
+            opu.dob_male = ic.datetoDB(txtDobMale.Text);
             ComboBoxItem item = new ComboBoxItem();
             if (cboDoctor.SelectedItem != null)
             {
@@ -1389,7 +1389,7 @@ namespace clinic_ivf.gui
         {
             opu.opu_id = txtID.Text;
             opu.matura_no_of_opu = txtMaturaNoofOpu.Text;
-            opu.matura_date = txtMaturaDate.Text;
+            opu.matura_date = ic.datetoDB(txtMaturaDate.Text);
             opu.matura_m_ii = txtMaturaMii.Text;
             opu.matura_m_i = txtMaturaMi.Text;
             opu.matura_gv = txtMaturaGv.Text;
@@ -1400,7 +1400,7 @@ namespace clinic_ivf.gui
         private void setOPUFertilization()
         {
             opu.opu_id = txtID.Text;
-            opu.fertili_date = txtFertiliDate.Text;
+            opu.fertili_date = ic.datetoDB(txtFertiliDate.Text);
             opu.fertili_2_pn = txtFertili2Pn.Text;
             opu.fertili_1_pn = txtFertili1Pn.Text;
             opu.fertili_3_pn = txtFertili3Pn.Text;
@@ -1412,7 +1412,7 @@ namespace clinic_ivf.gui
         private void setOPUSperm()
         {
             opu.opu_id = txtID.Text;
-            opu.sperm_date = txtSpermDate.Text;
+            opu.sperm_date = ic.datetoDB(txtSpermDate.Text);
             opu.sperm_volume = txtSpermVol.Text;
             opu.sperm_count = txtSpermCnt.Text;
             opu.sperm_count_total = txtSpermTotalCnt.Text;
@@ -1427,7 +1427,7 @@ namespace clinic_ivf.gui
             opu.opu_id = txtID.Text;
             opu.embryo_for_et_no_of_et = txtEmbryoForEtNO.Text;
             opu.embryo_for_et_day = txtEmbryoForEtDay.Text;
-            opu.embryo_for_et_date = txtEmbryoForEtDate.Text;
+            opu.embryo_for_et_date = ic.datetoDB(txtEmbryoForEtDate.Text);
             opu.embryo_for_et_assisted = txtEmbryoForEtAsseted.Text;
             opu.embryo_for_et_volume = txtEmbryoForEtVolume.Text;
             opu.embryo_for_et_catheter = txtEmbryoForEtCatheter.Text;
@@ -1479,7 +1479,7 @@ namespace clinic_ivf.gui
                 opu.embryo_freez_day_1 = "0";
             }
 
-            opu.embryo_freez_date_1 = txtEmbryoFreezDate1.Text;
+            opu.embryo_freez_date_1 = ic.datetoDB(txtEmbryoFreezDate1.Text);
             //opu.embryo_freez_stage_1 = txtEmbryoFreezStage1.Text;
             
             if (cboEmbryoFreezStage1.SelectedItem != null)
@@ -1521,7 +1521,7 @@ namespace clinic_ivf.gui
                 opu.embryo_freez_day_0 = "0";
             }
 
-            opu.embryo_freez_date_0 = txtEmbryoFreezDate0.Text;
+            opu.embryo_freez_date_0 = ic.datetoDB(txtEmbryoFreezDate0.Text);
             //opu.embryo_freez_stage_0 = txtEmbryoFreezStage0.Text;
             if (cboEmbryoFreezStage0.SelectedItem != null)
             {
@@ -1805,6 +1805,7 @@ namespace clinic_ivf.gui
                     String pathfile = grfDay2Img[grfDay2Img.Row, colDay2PathPic].ToString();
                     String re = ic.ivfDB.opuEmDevDB.updatePathPic(id,"","","", ic.user.staff_id);
                     ic.delPicOPUtoServer(txtOpuCode.Text, pathfile);
+                    grfDay2Img[grfDay2Img.Row, colDay2PathPic] = "";
                 }
             }
         }

@@ -36,7 +36,7 @@ namespace clinic_ivf.object1
                 ftpRequest.Credentials = new NetworkCredential(user, pass);
                 /* When in doubt, use these options */
                 ftpRequest.UseBinary = true;
-                ftpRequest.UsePassive = true;
+                ftpRequest.UsePassive = false;
                 ftpRequest.KeepAlive = true;
                 /* Specify the Type of FTP Request */
                 ftpRequest.Method = WebRequestMethods.Ftp.DownloadFile;
@@ -204,15 +204,17 @@ namespace clinic_ivf.object1
             try
             {
                 /* Create an FTP Request */
-                ftpRequest = (FtpWebRequest)WebRequest.Create(host + "/" + newDirectory+"/");
+                //ftpRequest = (FtpWebRequest)WebRequest.Create(host + "/" + newDirectory+"/");
+                ftpRequest = (FtpWebRequest)WebRequest.Create(host + "/" + newDirectory);
                 //ftpRequest = (FtpWebRequest)WebRequest.Create(host + "/images/");
                 /* Log in to the FTP Server with the User Name and Password Provided */
                 ftpRequest.Credentials = new NetworkCredential(user, pass);
                 /* When in doubt, use these options */
                 ftpRequest.UseBinary = true;
                 ftpRequest.UsePassive = true;
-                ftpRequest.UsePassive = false;
+                //ftpRequest.UsePassive = false;
                 ftpRequest.KeepAlive = true;
+                //ftpRequest.EnableSsl = true;
                 /* Specify the Type of FTP Request */
                 ftpRequest.Method = WebRequestMethods.Ftp.MakeDirectory;
                 /* Establish Return Communication with the FTP Server */
