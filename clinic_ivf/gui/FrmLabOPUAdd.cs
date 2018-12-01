@@ -84,6 +84,8 @@ namespace clinic_ivf.gui
             ic.ivfDB.fdtDB.setCboOPUMethod(cboEmbryoFreezMethod1);
             ic.ivfDB.fdtDB.setCboOPUStage(cboEmbryoFreezStage0);
             ic.ivfDB.fdtDB.setCboOPUStage(cboEmbryoFreezStage1);
+            ic.ivfDB.fdtDB.setCboOPUFreezeMedia(cboEmbryoFreezMedia0);
+            ic.ivfDB.fdtDB.setCboOPUFreezeMedia(cboEmbryoFreezMedia1);
             ic.setCboDay(CboEmbryoFreezDay0, "");
             ic.setCboDay(CboEmbryoFreezDay1, "");
 
@@ -1076,7 +1078,7 @@ namespace clinic_ivf.gui
         private void BtnSaveEmbryoFreezDay1_Click(object sender, EventArgs e)
         {
             //throw new NotImplementedException();
-            if (MessageBox.Show("ต้องการ บันทึกช้อมูล Embryo for ET ", "", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == DialogResult.OK)
+            if (MessageBox.Show("ต้องการ บันทึกช้อมูล Embryo for Freezing Day1 ", "", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == DialogResult.OK)
             {
                 ic.cStf.staff_id = "";
                 FrmPasswordConfirm frm = new FrmPasswordConfirm(ic);
@@ -1101,7 +1103,7 @@ namespace clinic_ivf.gui
         private void BtnSaveEmbryoFreezDay0_Click(object sender, EventArgs e)
         {
             //throw new NotImplementedException();
-            if (MessageBox.Show("ต้องการ บันทึกช้อมูล Embryo for ET ", "", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == DialogResult.OK)
+            if (MessageBox.Show("ต้องการ บันทึกช้อมูล Embryo for Freezing Day0 ", "", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == DialogResult.OK)
             {
                 ic.cStf.staff_id = "";
                 FrmPasswordConfirm frm = new FrmPasswordConfirm(ic);
@@ -1339,8 +1341,10 @@ namespace clinic_ivf.gui
                     //txtEmbryoFreezMethod1.Value = opu.embryo_freez_mothod_1;
                     ic.setC1Combo(cboEmbryoFreezMethod1, opu.embryo_freez_mothod_1);
                     ic.setC1Combo(cboEmbryoFreezMethod0, opu.embryo_freez_mothod_0);
-                    txtEmbryoFreezMedia0.Value = opu.embryo_freez_freeze_media_0;
-                    txtEmbryoFreezMedia1.Value = opu.embryo_freez_freeze_media_1;
+                    ic.setC1Combo(cboEmbryoFreezMedia0, opu.embryo_freez_freeze_media_0);
+                    ic.setC1Combo(cboEmbryoFreezMedia1, opu.embryo_freez_freeze_media_1);
+                    //txtEmbryoFreezMedia0.Value = opu.embryo_freez_freeze_media_0;
+                    //txtEmbryoFreezMedia1.Value = opu.embryo_freez_freeze_media_1;
 
                     txtRemark.Value = opu.remark;
                     //CboEmbryoDay.Text = opu.emb
@@ -1504,7 +1508,17 @@ namespace clinic_ivf.gui
             {
                 opu.embryo_freez_stage_1 = "0";
             }
-            opu.embryo_freez_freeze_media_1 = txtEmbryoFreezMedia1.Text;
+            
+            if (cboEmbryoFreezMedia1.SelectedItem != null)
+            {
+                item = (ComboBoxItem)cboEmbryoFreezMedia1.SelectedItem;
+                opu.embryo_freez_freeze_media_1 = item.Value;
+            }
+            else
+            {
+                opu.embryo_freez_freeze_media_1 = "0";
+            }
+            //opu.embryo_freez_freeze_media_1 = txtEmbryoFreezMedia1.Text;
             //opu.matura_dead = txtMaturaDead.Text;
         }
         private void setOPUEmbryoFreezDay0()
@@ -1545,7 +1559,16 @@ namespace clinic_ivf.gui
             {
                 opu.embryo_freez_mothod_0 = "0";
             }
-            opu.embryo_freez_freeze_media_0 = txtEmbryoFreezMedia0.Text;
+            if (cboEmbryoFreezMedia0.SelectedItem != null)
+            {
+                item = (ComboBoxItem)cboEmbryoFreezMedia0.SelectedItem;
+                opu.embryo_freez_freeze_media_0 = item.Value;
+            }
+            else
+            {
+                opu.embryo_freez_freeze_media_0 = "0";
+            }
+            //opu.embryo_freez_freeze_media_0 = txtEmbryoFreezMedia0.Text;
             //opu.matura_dead = txtMaturaDead.Text;
         }
         private void BtnSave_Click(object sender, EventArgs e)

@@ -31,18 +31,20 @@
             this.theme1 = new C1.Win.C1Themes.C1ThemeController();
             this.gB = new System.Windows.Forms.GroupBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.chkVisit = new System.Windows.Forms.RadioButton();
+            this.chkHn = new System.Windows.Forms.RadioButton();
             this.label4 = new System.Windows.Forms.Label();
             this.txtSearch = new C1.Win.C1Input.C1TextBox();
             this.btnNew = new C1.Win.C1Input.C1Button();
             this.sB = new System.Windows.Forms.StatusStrip();
             this.sB1 = new System.Windows.Forms.ToolStripStatusLabel();
-            this.chkHn = new System.Windows.Forms.RadioButton();
-            this.chkVisit = new System.Windows.Forms.RadioButton();
+            this.chkToday = new C1.Win.C1Input.C1CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.theme1)).BeginInit();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtSearch)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnNew)).BeginInit();
             this.sB.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.chkToday)).BeginInit();
             this.SuspendLayout();
             // 
             // theme1
@@ -65,6 +67,7 @@
             // groupBox1
             // 
             this.groupBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.groupBox1.Controls.Add(this.chkToday);
             this.groupBox1.Controls.Add(this.chkVisit);
             this.groupBox1.Controls.Add(this.chkHn);
             this.groupBox1.Controls.Add(this.label4);
@@ -79,6 +82,40 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Search";
             this.theme1.SetTheme(this.groupBox1, "(default)");
+            // 
+            // chkVisit
+            // 
+            this.chkVisit.AutoSize = true;
+            this.chkVisit.BackColor = System.Drawing.Color.Transparent;
+            this.chkVisit.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
+            this.chkVisit.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(189)))), ((int)(((byte)(182)))));
+            this.chkVisit.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(189)))), ((int)(((byte)(182)))));
+            this.chkVisit.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.chkVisit.Location = new System.Drawing.Point(463, 22);
+            this.chkVisit.Name = "chkVisit";
+            this.chkVisit.Size = new System.Drawing.Size(62, 17);
+            this.chkVisit.TabIndex = 533;
+            this.chkVisit.TabStop = true;
+            this.chkVisit.Text = "ค้น Visit";
+            this.theme1.SetTheme(this.chkVisit, "(default)");
+            this.chkVisit.UseVisualStyleBackColor = false;
+            // 
+            // chkHn
+            // 
+            this.chkHn.AutoSize = true;
+            this.chkHn.BackColor = System.Drawing.Color.Transparent;
+            this.chkHn.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
+            this.chkHn.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(189)))), ((int)(((byte)(182)))));
+            this.chkHn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(189)))), ((int)(((byte)(182)))));
+            this.chkHn.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.chkHn.Location = new System.Drawing.Point(351, 21);
+            this.chkHn.Name = "chkHn";
+            this.chkHn.Size = new System.Drawing.Size(59, 17);
+            this.chkHn.TabIndex = 530;
+            this.chkHn.TabStop = true;
+            this.chkHn.Text = "ค้น HN";
+            this.theme1.SetTheme(this.chkHn, "(default)");
+            this.chkHn.UseVisualStyleBackColor = false;
             // 
             // label4
             // 
@@ -133,39 +170,24 @@
             this.sB1.Size = new System.Drawing.Size(118, 17);
             this.sB1.Text = "toolStripStatusLabel1";
             // 
-            // chkHn
+            // chkToday
             // 
-            this.chkHn.AutoSize = true;
-            this.chkHn.BackColor = System.Drawing.Color.Transparent;
-            this.chkHn.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
-            this.chkHn.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(189)))), ((int)(((byte)(182)))));
-            this.chkHn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(189)))), ((int)(((byte)(182)))));
-            this.chkHn.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.chkHn.Location = new System.Drawing.Point(351, 21);
-            this.chkHn.Name = "chkHn";
-            this.chkHn.Size = new System.Drawing.Size(59, 17);
-            this.chkHn.TabIndex = 530;
-            this.chkHn.TabStop = true;
-            this.chkHn.Text = "ค้น HN";
-            this.theme1.SetTheme(this.chkHn, "(default)");
-            this.chkHn.UseVisualStyleBackColor = false;
-            // 
-            // chkVisit
-            // 
-            this.chkVisit.AutoSize = true;
-            this.chkVisit.BackColor = System.Drawing.Color.Transparent;
-            this.chkVisit.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
-            this.chkVisit.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(189)))), ((int)(((byte)(182)))));
-            this.chkVisit.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(189)))), ((int)(((byte)(182)))));
-            this.chkVisit.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.chkVisit.Location = new System.Drawing.Point(463, 22);
-            this.chkVisit.Name = "chkVisit";
-            this.chkVisit.Size = new System.Drawing.Size(62, 17);
-            this.chkVisit.TabIndex = 533;
-            this.chkVisit.TabStop = true;
-            this.chkVisit.Text = "ค้น Visit";
-            this.theme1.SetTheme(this.chkVisit, "(default)");
-            this.chkVisit.UseVisualStyleBackColor = false;
+            this.chkToday.BackColor = System.Drawing.Color.Transparent;
+            this.chkToday.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
+            this.chkToday.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.chkToday.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.chkToday.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chkToday.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.chkToday.Location = new System.Drawing.Point(557, 19);
+            this.chkToday.Name = "chkToday";
+            this.chkToday.Padding = new System.Windows.Forms.Padding(4, 1, 1, 1);
+            this.chkToday.Size = new System.Drawing.Size(151, 24);
+            this.chkToday.TabIndex = 582;
+            this.chkToday.Text = "Today ยังไม่ได้ออก  visit";
+            this.theme1.SetTheme(this.chkToday, "(default)");
+            this.chkToday.UseVisualStyleBackColor = true;
+            this.chkToday.Value = null;
+            this.chkToday.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
             // 
             // FrmVisitView
             // 
@@ -185,6 +207,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.btnNew)).EndInit();
             this.sB.ResumeLayout(false);
             this.sB.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.chkToday)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -202,5 +225,6 @@
         private C1.Win.C1Input.C1Button btnNew;
         private System.Windows.Forms.RadioButton chkVisit;
         private System.Windows.Forms.RadioButton chkHn;
+        private C1.Win.C1Input.C1CheckBox chkToday;
     }
 }

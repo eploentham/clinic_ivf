@@ -69,7 +69,6 @@
             this.label64 = new System.Windows.Forms.Label();
             this.btnSaveEmbryoFreezDay1 = new C1.Win.C1Input.C1Button();
             this.txtEmbryoFreezDate1 = new C1.Win.C1Input.C1DateEdit();
-            this.txtEmbryoFreezMedia1 = new C1.Win.C1Input.C1TextBox();
             this.label65 = new System.Windows.Forms.Label();
             this.label66 = new System.Windows.Forms.Label();
             this.label67 = new System.Windows.Forms.Label();
@@ -87,7 +86,6 @@
             this.label45 = new System.Windows.Forms.Label();
             this.btnSaveEmbryoFreezDay0 = new C1.Win.C1Input.C1Button();
             this.txtEmbryoFreezDate0 = new C1.Win.C1Input.C1DateEdit();
-            this.txtEmbryoFreezMedia0 = new C1.Win.C1Input.C1TextBox();
             this.label43 = new System.Windows.Forms.Label();
             this.label46 = new System.Windows.Forms.Label();
             this.label42 = new System.Windows.Forms.Label();
@@ -240,6 +238,8 @@
             this.btnSaveImg6 = new C1.Win.C1Input.C1Button();
             this.sB = new System.Windows.Forms.StatusStrip();
             this.sB1 = new System.Windows.Forms.ToolStripStatusLabel();
+            this.cboEmbryoFreezMedia0 = new C1.Win.C1Input.C1ComboBox();
+            this.cboEmbryoFreezMedia1 = new C1.Win.C1Input.C1ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.theme1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.spMain)).BeginInit();
             this.spMain.Panel1.SuspendLayout();
@@ -274,7 +274,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.CboEmbryoFreezDay1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnSaveEmbryoFreezDay1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtEmbryoFreezDate1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtEmbryoFreezMedia1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtEmbryoFreezPosi1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtEmbryoFreezNoStraw1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtEmbryoFreezNoOg1)).BeginInit();
@@ -284,7 +283,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.CboEmbryoFreezDay0)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnSaveEmbryoFreezDay0)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtEmbryoFreezDate0)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtEmbryoFreezMedia0)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtEmbryoFreezPosi0)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtEmbryoFreezNoStraw0)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtEmbryoFreezNoOg0)).BeginInit();
@@ -393,6 +391,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.c1ComboBox4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnSaveImg6)).BeginInit();
             this.sB.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.cboEmbryoFreezMedia0)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cboEmbryoFreezMedia1)).BeginInit();
             this.SuspendLayout();
             // 
             // theme1
@@ -993,6 +993,7 @@
             // groupBox8
             // 
             this.groupBox8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.groupBox8.Controls.Add(this.cboEmbryoFreezMedia1);
             this.groupBox8.Controls.Add(this.cboEmbryoFreezMethod1);
             this.groupBox8.Controls.Add(this.cboEmbryoFreezStage1);
             this.groupBox8.Controls.Add(this.label63);
@@ -1000,7 +1001,6 @@
             this.groupBox8.Controls.Add(this.label64);
             this.groupBox8.Controls.Add(this.btnSaveEmbryoFreezDay1);
             this.groupBox8.Controls.Add(this.txtEmbryoFreezDate1);
-            this.groupBox8.Controls.Add(this.txtEmbryoFreezMedia1);
             this.groupBox8.Controls.Add(this.label65);
             this.groupBox8.Controls.Add(this.label66);
             this.groupBox8.Controls.Add(this.label67);
@@ -1112,7 +1112,7 @@
             // 
             this.btnSaveEmbryoFreezDay1.Image = global::clinic_ivf.Properties.Resources.download_database24;
             this.btnSaveEmbryoFreezDay1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnSaveEmbryoFreezDay1.Location = new System.Drawing.Point(209, 165);
+            this.btnSaveEmbryoFreezDay1.Location = new System.Drawing.Point(209, 102);
             this.btnSaveEmbryoFreezDay1.Name = "btnSaveEmbryoFreezDay1";
             this.btnSaveEmbryoFreezDay1.Size = new System.Drawing.Size(83, 39);
             this.btnSaveEmbryoFreezDay1.TabIndex = 537;
@@ -1166,19 +1166,6 @@
             this.txtEmbryoFreezDate1.Tag = null;
             this.theme1.SetTheme(this.txtEmbryoFreezDate1, "(default)");
             this.txtEmbryoFreezDate1.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
-            // 
-            // txtEmbryoFreezMedia1
-            // 
-            this.txtEmbryoFreezMedia1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtEmbryoFreezMedia1.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
-            this.txtEmbryoFreezMedia1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.txtEmbryoFreezMedia1.Location = new System.Drawing.Point(117, 165);
-            this.txtEmbryoFreezMedia1.Name = "txtEmbryoFreezMedia1";
-            this.txtEmbryoFreezMedia1.Size = new System.Drawing.Size(65, 20);
-            this.txtEmbryoFreezMedia1.TabIndex = 524;
-            this.txtEmbryoFreezMedia1.Tag = null;
-            this.theme1.SetTheme(this.txtEmbryoFreezMedia1, "(default)");
-            this.txtEmbryoFreezMedia1.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
             // 
             // label65
             // 
@@ -1300,6 +1287,7 @@
             // groupBox6
             // 
             this.groupBox6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.groupBox6.Controls.Add(this.cboEmbryoFreezMedia0);
             this.groupBox6.Controls.Add(this.cboEmbryoFreezMethod0);
             this.groupBox6.Controls.Add(this.cboEmbryoFreezStage0);
             this.groupBox6.Controls.Add(this.label44);
@@ -1307,7 +1295,6 @@
             this.groupBox6.Controls.Add(this.label45);
             this.groupBox6.Controls.Add(this.btnSaveEmbryoFreezDay0);
             this.groupBox6.Controls.Add(this.txtEmbryoFreezDate0);
-            this.groupBox6.Controls.Add(this.txtEmbryoFreezMedia0);
             this.groupBox6.Controls.Add(this.label43);
             this.groupBox6.Controls.Add(this.label46);
             this.groupBox6.Controls.Add(this.label42);
@@ -1419,7 +1406,7 @@
             // 
             this.btnSaveEmbryoFreezDay0.Image = global::clinic_ivf.Properties.Resources.download_database24;
             this.btnSaveEmbryoFreezDay0.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnSaveEmbryoFreezDay0.Location = new System.Drawing.Point(203, 165);
+            this.btnSaveEmbryoFreezDay0.Location = new System.Drawing.Point(209, 102);
             this.btnSaveEmbryoFreezDay0.Name = "btnSaveEmbryoFreezDay0";
             this.btnSaveEmbryoFreezDay0.Size = new System.Drawing.Size(83, 39);
             this.btnSaveEmbryoFreezDay0.TabIndex = 537;
@@ -1473,19 +1460,6 @@
             this.txtEmbryoFreezDate0.Tag = null;
             this.theme1.SetTheme(this.txtEmbryoFreezDate0, "(default)");
             this.txtEmbryoFreezDate0.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
-            // 
-            // txtEmbryoFreezMedia0
-            // 
-            this.txtEmbryoFreezMedia0.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtEmbryoFreezMedia0.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
-            this.txtEmbryoFreezMedia0.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.txtEmbryoFreezMedia0.Location = new System.Drawing.Point(117, 165);
-            this.txtEmbryoFreezMedia0.Name = "txtEmbryoFreezMedia0";
-            this.txtEmbryoFreezMedia0.Size = new System.Drawing.Size(65, 20);
-            this.txtEmbryoFreezMedia0.TabIndex = 524;
-            this.txtEmbryoFreezMedia0.Tag = null;
-            this.theme1.SetTheme(this.txtEmbryoFreezMedia0, "(default)");
-            this.txtEmbryoFreezMedia0.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
             // 
             // label43
             // 
@@ -3805,6 +3779,48 @@
             this.sB1.Size = new System.Drawing.Size(118, 17);
             this.sB1.Text = "toolStripStatusLabel1";
             // 
+            // cboEmbryoFreezMedia0
+            // 
+            this.cboEmbryoFreezMedia0.AllowSpinLoop = false;
+            this.cboEmbryoFreezMedia0.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.cboEmbryoFreezMedia0.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
+            this.cboEmbryoFreezMedia0.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.cboEmbryoFreezMedia0.GapHeight = 0;
+            this.cboEmbryoFreezMedia0.ImagePadding = new System.Windows.Forms.Padding(0);
+            this.cboEmbryoFreezMedia0.ItemsDisplayMember = "";
+            this.cboEmbryoFreezMedia0.ItemsValueMember = "";
+            this.cboEmbryoFreezMedia0.Location = new System.Drawing.Point(117, 165);
+            this.cboEmbryoFreezMedia0.Name = "cboEmbryoFreezMedia0";
+            this.cboEmbryoFreezMedia0.Size = new System.Drawing.Size(133, 20);
+            this.cboEmbryoFreezMedia0.Style.DropDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.cboEmbryoFreezMedia0.Style.DropDownBorderColor = System.Drawing.Color.Gainsboro;
+            this.cboEmbryoFreezMedia0.Style.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.cboEmbryoFreezMedia0.TabIndex = 541;
+            this.cboEmbryoFreezMedia0.Tag = null;
+            this.theme1.SetTheme(this.cboEmbryoFreezMedia0, "(default)");
+            this.cboEmbryoFreezMedia0.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            // 
+            // cboEmbryoFreezMedia1
+            // 
+            this.cboEmbryoFreezMedia1.AllowSpinLoop = false;
+            this.cboEmbryoFreezMedia1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.cboEmbryoFreezMedia1.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
+            this.cboEmbryoFreezMedia1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.cboEmbryoFreezMedia1.GapHeight = 0;
+            this.cboEmbryoFreezMedia1.ImagePadding = new System.Windows.Forms.Padding(0);
+            this.cboEmbryoFreezMedia1.ItemsDisplayMember = "";
+            this.cboEmbryoFreezMedia1.ItemsValueMember = "";
+            this.cboEmbryoFreezMedia1.Location = new System.Drawing.Point(117, 165);
+            this.cboEmbryoFreezMedia1.Name = "cboEmbryoFreezMedia1";
+            this.cboEmbryoFreezMedia1.Size = new System.Drawing.Size(133, 20);
+            this.cboEmbryoFreezMedia1.Style.DropDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.cboEmbryoFreezMedia1.Style.DropDownBorderColor = System.Drawing.Color.Gainsboro;
+            this.cboEmbryoFreezMedia1.Style.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.cboEmbryoFreezMedia1.TabIndex = 542;
+            this.cboEmbryoFreezMedia1.Tag = null;
+            this.theme1.SetTheme(this.cboEmbryoFreezMedia1, "(default)");
+            this.cboEmbryoFreezMedia1.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            // 
             // FrmLabOPUAdd
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -3852,7 +3868,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.CboEmbryoFreezDay1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnSaveEmbryoFreezDay1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtEmbryoFreezDate1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtEmbryoFreezMedia1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtEmbryoFreezPosi1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtEmbryoFreezNoStraw1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtEmbryoFreezNoOg1)).EndInit();
@@ -3863,7 +3878,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.CboEmbryoFreezDay0)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnSaveEmbryoFreezDay0)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtEmbryoFreezDate0)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtEmbryoFreezMedia0)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtEmbryoFreezPosi0)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtEmbryoFreezNoStraw0)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtEmbryoFreezNoOg0)).EndInit();
@@ -3977,6 +3991,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.btnSaveImg6)).EndInit();
             this.sB.ResumeLayout(false);
             this.sB.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.cboEmbryoFreezMedia0)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cboEmbryoFreezMedia1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -4064,7 +4080,6 @@
         private C1.Win.C1Input.C1TextBox txtSpermVol;
         private System.Windows.Forms.Label label32;
         private System.Windows.Forms.GroupBox groupBox5;
-        private C1.Win.C1Input.C1TextBox txtEmbryoFreezMedia0;
         private System.Windows.Forms.Label label46;
         private C1.Win.C1Input.C1TextBox txtEmbryoFreezPosi0;
         private C1.Win.C1Input.C1TextBox txtEmbryoFreezNoStraw0;
@@ -4136,7 +4151,6 @@
         private System.Windows.Forms.Label label64;
         private C1.Win.C1Input.C1Button btnSaveEmbryoFreezDay1;
         private C1.Win.C1Input.C1DateEdit txtEmbryoFreezDate1;
-        private C1.Win.C1Input.C1TextBox txtEmbryoFreezMedia1;
         private System.Windows.Forms.Label label65;
         private System.Windows.Forms.Label label66;
         private System.Windows.Forms.Label label67;
@@ -4196,5 +4210,7 @@
         private C1.Win.C1Input.C1ComboBox cboEmbryoFreezMethod1;
         private C1.Win.C1Input.C1ComboBox cboEmbryoFreezMethod0;
         private C1.Win.C1Input.C1TextBox txtMaturaNoofOpu1;
+        private C1.Win.C1Input.C1ComboBox cboEmbryoFreezMedia1;
+        private C1.Win.C1Input.C1ComboBox cboEmbryoFreezMedia0;
     }
 }

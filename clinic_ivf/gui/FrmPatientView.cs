@@ -52,6 +52,7 @@ namespace clinic_ivf.gui
 
             stt = new C1SuperTooltip();
             sep = new C1SuperErrorProvider();
+            chkToday.Checked = true;
 
             btnNew.Click += BtnNew_Click;
             txtSearch.KeyUp += TxtSearch_KeyUp;
@@ -119,6 +120,18 @@ namespace clinic_ivf.gui
                 String date = System.DateTime.Now.Year + "-" + System.DateTime.Now.ToString("MM-dd");
                 //grfPtt.DataSource = ic.ivfDB.pttDB.selectByDate1(date);
                 //grfPtt.DataSource = ic.ivfDB.pttDB.selectByDate1(date);
+                if (ic.iniC.statusAppDonor.Equals("1"))
+                {
+                    if (chkToday.Checked)
+                    {
+                        grfPtt.DataSource = ic.ivfDB.pttDB.selectBySearchDate(date);
+                    }
+                    
+                }
+                else
+                {
+
+                }
             }
             else
             {

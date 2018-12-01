@@ -260,6 +260,22 @@ namespace clinic_ivf.objdb
             cop1 = setVisit(dt);
             return cop1;
         }
+        public DataTable selectCurrentVisitNoVisit()
+        {
+            DataTable dt = new DataTable();
+            String date = System.DateTime.Now.Year + "-" + System.DateTime.Now.ToString("MM-dd");
+            String sql = "select IFNULL(vs.t_visit_id,'') as id,IFNULL(vs.visit_vn,'') as VN ,ptt.patient_hn as PIDS,CONCAT(IFNULL(fpp.patient_prefix_description,''),' ', ptt.patient_firstname_e ,' ',ptt.patient_lastname_e)  as PName" +
+                ", IFNULL(vs.visit_begin_visit_time,'') as VDate, IFNULL(vs.visit_begin_visit_time,'') as VStartTime, IFNULL(vs.visit_financial_discharge_time,'') as VEndTime, IFNULL(bsp.service_point_description,'') as VSID, '' as Vname " +
+                "From t_patient ptt  " +
+                "Left Join t_visit vs on  ptt.t_patient_id = vs." + vs.t_patient_id + " " +
+                "Left join f_patient_prefix fpp on fpp.f_patient_prefix_id = ptt.f_patient_prefix_id " +
+                "Left Join b_service_point bsp on bsp.b_service_point_id = vs.b_service_point_id " +
+                "Where ptt.patient_record_date_time  >='" + date + " 00:00:00' " +
+                "Order By vs.visit_begin_visit_time ";
+            dt = conn.selectData(conn.conn, sql);
+
+            return dt;
+        }
         public DataTable selectCurrentVisit()
         {
             DataTable dt = new DataTable();

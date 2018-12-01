@@ -593,6 +593,19 @@ namespace clinic_ivf.objdb
             dt = conn.selectData(conn.conn, sql);
             return dt;
         }
+        public DataTable selectBySearchDate(String date)
+        {
+            DataTable dt = new DataTable();
+            String whereHN = "", whereName = "", wherepid = "", wherepassport = "", wherenameE = "";
+            
+            String sql = "select ptt." + ptt.t_patient_id + " as PID,ptt." + ptt.patient_hn + " as PIDS,CONCAT(IFNULL(fpp.patient_prefix_description,''),' ', ptt." + ptt.patient_firstname_e + ",' ',ptt." + ptt.patient_lastname_e + ") as name,ptt." + ptt.remark + " as EmergencyPersonalContact " +
+                "From " + ptt.table + " ptt " +
+                "Left join f_patient_prefix fpp on fpp.f_patient_prefix_id = ptt.f_patient_prefix_id " +
+                "Where ptt." + ptt.patient_record_date_time + " >='" + date + " 00:00:00' and ptt." + ptt.patient_record_date_time + " <='" + date + " 23:59:59' " +
+                "Order By ptt." + ptt.t_patient_id;
+            dt = conn.selectData(conn.conn, sql);
+            return dt;
+        }
         public DataTable selectBySearch(String search)
         {
             DataTable dt = new DataTable();

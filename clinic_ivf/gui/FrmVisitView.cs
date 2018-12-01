@@ -59,10 +59,18 @@ namespace clinic_ivf.gui
 
             btnNew.Click += BtnNew_Click;
             txtSearch.KeyUp += TxtSearch_KeyUp;
+            chkToday.CheckedChanged += ChkToday_CheckedChanged;
 
             initGrfPtt();
             setGrfPtt();
         }
+
+        private void ChkToday_CheckedChanged(object sender, EventArgs e)
+        {
+            //throw new NotImplementedException();
+            setGrfPtt();
+        }
+
         private void BtnNew_Click(object sender, EventArgs e)
         {
             //throw new NotImplementedException();
@@ -181,7 +189,15 @@ namespace clinic_ivf.gui
             if (search.Equals(""))
             {
                 //String date = System.DateTime.Now.Year + "-" + System.DateTime.Now.ToString("MM-dd");
-                dt = ic.ivfDB.vsDB.selectCurrentVisit();
+                if (chkToday.Checked)
+                {
+                    dt = ic.ivfDB.vsDB.selectCurrentVisitNoVisit();
+                }
+                else
+                {
+                    dt = ic.ivfDB.vsDB.selectCurrentVisit();
+                }
+                
             }
             else
             {

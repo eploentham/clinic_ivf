@@ -36,11 +36,13 @@
             this.label4 = new System.Windows.Forms.Label();
             this.txtSearch = new C1.Win.C1Input.C1TextBox();
             this.btnNew = new C1.Win.C1Input.C1Button();
+            this.chkToday = new C1.Win.C1Input.C1CheckBox();
             this.sB.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.theme1)).BeginInit();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtSearch)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnNew)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chkToday)).BeginInit();
             this.SuspendLayout();
             // 
             // sB
@@ -79,6 +81,7 @@
             // groupBox1
             // 
             this.groupBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.groupBox1.Controls.Add(this.chkToday);
             this.groupBox1.Controls.Add(this.label4);
             this.groupBox1.Controls.Add(this.txtSearch);
             this.groupBox1.Controls.Add(this.btnNew);
@@ -129,6 +132,25 @@
             this.btnNew.UseVisualStyleBackColor = true;
             this.btnNew.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
             // 
+            // chkToday
+            // 
+            this.chkToday.BackColor = System.Drawing.Color.Transparent;
+            this.chkToday.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
+            this.chkToday.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.chkToday.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.chkToday.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chkToday.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.chkToday.Location = new System.Drawing.Point(346, 15);
+            this.chkToday.Name = "chkToday";
+            this.chkToday.Padding = new System.Windows.Forms.Padding(4, 1, 1, 1);
+            this.chkToday.Size = new System.Drawing.Size(104, 24);
+            this.chkToday.TabIndex = 581;
+            this.chkToday.Text = "Today";
+            this.theme1.SetTheme(this.chkToday, "(default)");
+            this.chkToday.UseVisualStyleBackColor = true;
+            this.chkToday.Value = null;
+            this.chkToday.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            // 
             // FrmPatientView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -147,6 +169,7 @@
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtSearch)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnNew)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chkToday)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -162,5 +185,6 @@
         private C1.Win.C1Input.C1Button btnNew;
         private System.Windows.Forms.Label label4;
         private C1.Win.C1Input.C1TextBox txtSearch;
+        private C1.Win.C1Input.C1CheckBox chkToday;
     }
 }
