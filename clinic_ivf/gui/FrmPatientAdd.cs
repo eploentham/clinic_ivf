@@ -98,12 +98,12 @@ namespace clinic_ivf.gui
 
             txtDob.Value = DateTime.Now.ToString("yyyy-MM-dd");
             ic.ivfDB.fpfDB.setCboPrefix(cboPrefix,"");
-            ic.ivfDB.fmsDB.setCboMarriage(cboMarital);
-            ic.ivfDB.fbgDB.setCboBloodGroup(cboBloodG);
-            ic.ivfDB.fpnDB.setCboNation(CboNation);
-            ic.ivfDB.fetDB.setCboEduca(CboEduca);
-            ic.ivfDB.frcDB.setCboRace(cboRace);
-            ic.ivfDB.frgDB.setCboReligion(cboRg);
+            ic.ivfDB.fmsDB.setCboMarriage(cboMarital, "");
+            ic.ivfDB.fbgDB.setCboBloodGroup(cboBloodG, "");
+            ic.ivfDB.fpnDB.setCboNation(CboNation, "");
+            ic.ivfDB.fetDB.setCboEduca(CboEduca, "");
+            ic.ivfDB.frcDB.setCboRace(cboRace, "");
+            ic.ivfDB.frgDB.setCboReligion(cboRg, "");
 
             ic.ivfDB.fpfDB.setCboPrefix(cboCouPrefix, "");
             ic.ivfDB.fpfDB.setCboPrefix(cboName1Prefix, "");
@@ -113,11 +113,11 @@ namespace clinic_ivf.gui
             ic.ivfDB.fpfDB.setCboPrefix(cboName1Prefix, "");
             ic.ivfDB.crlDB.setCboContractPlans(cboCrl);
 
-            ic.ivfDB.frlDB.setCboRelation(cboCouRel);
-            ic.ivfDB.frlDB.setCboRelation(cboName1Rl);
-            ic.ivfDB.agnOldDB.setCboAgent(cboAgent);
-            ic.ivfDB.agnOldDB.setCboAgent(comboBox1);
-            ic.ivfDB.sexDB.setCboSex(cboSex);
+            ic.ivfDB.frlDB.setCboRelation(cboCouRel, "");
+            ic.ivfDB.frlDB.setCboRelation(cboName1Rl, "");
+            ic.ivfDB.agnOldDB.setCboAgent(cboAgent, "");
+            //ic.ivfDB.agnOldDB.setCboAgent(comboBox1);
+            ic.ivfDB.sexDB.setCboSex(cboSex, "");
             ic.setCboPttType(cboPttType);
             ic.setCboPttGroup(cboPttGroup);
 
@@ -140,9 +140,13 @@ namespace clinic_ivf.gui
             btnSavePic.Click += BtnSavePic_Click;
             tC1.DoubleClick += TC1_DoubleClick;
             btnVisit.Click += BtnVisit_Click;
+            txtHeight.KeyPress += TxtHeight_KeyPress;
+            btnVoid.Click += BtnVoid_Click;
+
             setKeyEnter();
 
             btnCapture.Enabled = false;
+            cboAgent.Left = txtAgent.Left;
             if (ic.iniC.statusAppDonor.Equals("1"))
             {
                 txtAgent.Show();
@@ -156,6 +160,118 @@ namespace clinic_ivf.gui
             //picPtt.Load("54158.jpg");
             picPtt.SizeMode = PictureBoxSizeMode.StretchImage;
             //btnSavePic.Enabled = false;
+        }
+        private void setControlEnable(Boolean flag)
+        {
+            txtHn.Enabled = flag;
+            txtPid.Enabled = flag;
+            txtPaasport.Enabled = flag;
+            txtPttNameE.Enabled = flag;
+            txtPttLNameE.Enabled = flag;
+            txtPttName.Enabled = flag;
+            txtPttLName.Enabled = flag;
+            txtDob.Enabled = flag;
+            txtMobile1.Enabled = flag;
+            txtMobile2.Enabled = flag;
+            txtLineID.Enabled = flag;
+            txtRemark.Enabled = flag;
+            txtEmail.Enabled = flag;
+            txtORDescription.Enabled = flag;
+            txtCongenital.Enabled = flag;
+            txtNickName.Enabled = flag;
+            txtHeight.Enabled = flag;
+            txtAgent.Enabled = flag;
+
+            btnSave.Enabled = flag;
+            btnEdit.Enabled = flag;
+            btnWebCamOn.Enabled = flag;
+            btnCapture.Enabled = flag;
+            btnSavePic.Enabled = flag;
+            btnVoid.Enabled = flag;
+            btnPrint.Enabled = flag;
+
+            cboSex.Enabled = flag;
+            cboMarital.Enabled = flag;
+            cboBloodG.Enabled = flag;
+            CboEduca.Enabled = flag;
+            CboNation.Enabled = flag;
+            cboRace.Enabled = flag;
+            cboCouRel.Enabled = flag;
+            cboRg.Enabled = flag;
+            cboPttType.Enabled = flag;
+            cboPttGroup.Enabled = flag;
+            cboAgent.Enabled = flag;
+
+            chkOPU.Enabled = flag;
+            chkOR.Enabled = flag;
+            chkCongenital.Enabled = flag;
+            chkDenyAllergy.Enabled = flag;
+            chkChronic.Enabled = flag;
+        }
+        private void BtnVoid_Click(object sender, EventArgs e)
+        {
+            //throw new NotImplementedException();
+            if (btnVoid.Text.Equals("Confirm"))
+            {
+                stt.Hide();
+                setPatient();
+                //String re = ic.ivfDB.pttDB.insertPatient(ptt, txtStfConfirmID.Text);
+                if (ic.iniC.statusAppDonor.Equals("1"))
+                {
+                    String re = ic.ivfDB.pttDB.VoidPatient(txtID.Text, txtStfConfirmID.Text);
+                    int chk = 0;
+                    Patient ptt1 = new Patient();
+                    if (re.Equals("1")) // ตอน update
+                    {
+                        //re = txtID.Text;
+                        setControlEnable(false);
+                    }
+                }
+                else
+                {
+                    //String re = ic.ivfDB.pttOldDB.insertPatientOld(ptt, txtStfConfirmID.Text);
+                    //int chk = 0;
+                    //if (int.TryParse(re, out chk))
+                    //{
+                        
+                    //}
+                }
+            }
+            else
+            {
+                ic.cStf.staff_id = "";
+                FrmPasswordConfirm frm = new FrmPasswordConfirm(ic);
+                frm.ShowDialog(this);
+                if (!ic.cStf.staff_id.Equals(""))
+                {
+                    txtUserReq.Value = ic.cStf.staff_fname_t + " " + ic.cStf.staff_lname_t;
+                    txtStfConfirmID.Value = ic.cStf.staff_id;
+                    btnVoid.Text = "Confirm";
+                    //btnSave.Image = Resources.Add_ticket_24;
+                    stt.Show("<p><b>สวัสดี</b></p>คุณ " + ic.cStf.staff_fname_t + " " + ic.cStf.staff_lname_t + "<br> กรุณายินยันการ confirm อีกครั้ง", btnWebCamOn);
+                    btnVoid.Focus();
+                }
+                else
+                {
+                    btnVoid.Text = "Void";
+                    //btnSave.Image = Resources.download_database24;
+                }
+            }
+        }
+
+        private void TxtHeight_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            //throw new NotImplementedException();
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != '.'))
+            {
+                e.Handled = true;
+            }
+
+            // only allow one decimal point
+            if ((e.KeyChar == '.') && ((sender as C1TextBox).Text.IndexOf('.') > -1))
+            {
+                e.Handled = true;
+            }
         }
 
         private void BtnVisit_Click(object sender, EventArgs e)

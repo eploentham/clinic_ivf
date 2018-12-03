@@ -138,5 +138,33 @@ namespace clinic_ivf.objdb
             }
             return c;
         }
+        public C1ComboBox setCboReligion(C1ComboBox c, String selected)
+        {
+            ComboBoxItem item = new ComboBoxItem();
+            //DataTable dt = selectC1();
+            if (lFrl.Count <= 0) getlFRelation();
+            ComboBoxItem item1 = new ComboBoxItem();
+            item1.Text = "";
+            item1.Value = "000";
+            c.Items.Clear();
+            c.Items.Add(item1);
+            //for (int i = 0; i < dt.Rows.Count; i++)
+            int i = 0;
+            foreach (FReligion row in lFrl)
+            {
+                item = new ComboBoxItem();
+                item.Value = row.f_patient_religion_id;
+                item.Text = row.patient_religion_description;
+                c.Items.Add(item);
+                if (item.Value.Equals(selected))
+                {
+                    //c.SelectedItem = item.Value;
+                    c.SelectedText = item.Text;
+                    c.SelectedIndex = i + 1;
+                }
+                i++;
+            }
+            return c;
+        }
     }
 }

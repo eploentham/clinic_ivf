@@ -424,6 +424,25 @@ namespace clinic_ivf.objdb
 
             return dt;
         }
+        public DataTable selectByCheckList1(String pttId, String vsId)
+        {
+            DataTable dt = new DataTable();
+            //String date = System.DateTime.Now.Year + "-" + System.DateTime.Now.ToString("MM-dd");
+            String sql = "select CONCAT(IFNULL(fpp.patient_prefix_description,''),' ', ptt.patient_firstname_e ,' ',ptt.patient_lastname_e)  as ptt_name" +
+                ", ptt.patient_nickname as nick_name, vs.height as height, vs.bw, vs.bp, ptt.agent, vs.lmp, ptt.status_deny_allergy, ptt.status_or " +
+                ", ptt.status_opu, ptt.or_description, ptt.status_congenial_diseases,ptt.congenial_diseases_description, '' as g1, '' as p1, '' as a1, ptt.mobile1 as mobile " +
+                ",ptti.image_path as path_pic, '' as deny_allergy_description " +
+                "From " + vs.table + " vs " +
+                "Left Join t_patient ptt on  ptt.t_patient_id = vs." + vs.t_patient_id + " " +
+                "Left join f_patient_prefix fpp on fpp.f_patient_prefix_id = ptt.f_patient_prefix_id " +
+                "Left Join t_patient_image ptti on ptti.t_patient_id = ptt.t_patient_id " +
+                " " +
+                "Where vs." + vs.visit_hn + " ='" + pttId + "' and ptti.status_image = '1' " +
+                "Order By vs." + vs.t_visit_id;
+            dt = conn.selectData(conn.conn, sql);
+
+            return dt;
+        }
         public Visit setVisit(DataTable dt)
         {
             Visit vs1 = new Visit();

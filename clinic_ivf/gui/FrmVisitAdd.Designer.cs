@@ -32,10 +32,11 @@
             this.sB1 = new System.Windows.Forms.ToolStripStatusLabel();
             this.theme1 = new C1.Win.C1Themes.C1ThemeController();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.txtAgent = new C1.Win.C1Input.C1TextBox();
             this.chkCongenital = new C1.Win.C1Input.C1CheckBox();
             this.chkOR = new C1.Win.C1Input.C1CheckBox();
             this.label19 = new System.Windows.Forms.Label();
-            this.c1TextBox1 = new C1.Win.C1Input.C1TextBox();
+            this.txtCongenital = new C1.Win.C1Input.C1TextBox();
             this.label9 = new System.Windows.Forms.Label();
             this.txtNickName = new C1.Win.C1Input.C1TextBox();
             this.chkOPU = new C1.Win.C1Input.C1CheckBox();
@@ -44,6 +45,7 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.picPtt = new C1.Win.C1Input.C1PictureBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.label32 = new System.Windows.Forms.Label();
             this.label27 = new System.Windows.Forms.Label();
             this.txtBP = new C1.Win.C1Input.C1TextBox();
             this.label22 = new System.Windows.Forms.Label();
@@ -52,7 +54,7 @@
             this.txtHeight = new C1.Win.C1Input.C1TextBox();
             this.txtLMP = new C1.Win.C1Input.C1DateEdit();
             this.label18 = new System.Windows.Forms.Label();
-            this.c1Button1 = new C1.Win.C1Input.C1Button();
+            this.btnHnSearch = new C1.Win.C1Input.C1Button();
             this.label7 = new System.Windows.Forms.Label();
             this.txtHnFemale = new C1.Win.C1Input.C1TextBox();
             this.chkUrge = new C1.Win.C1Input.C1CheckBox();
@@ -140,12 +142,14 @@
             this.txtNickName1 = new C1.Win.C1Input.C1TextBox();
             this.panel2 = new System.Windows.Forms.Panel();
             this.picImg = new C1.Win.C1Input.C1PictureBox();
+            this.btnPrnCheckList1 = new C1.Win.C1Input.C1Button();
             this.sB.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.theme1)).BeginInit();
             this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtAgent)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkCongenital)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkOR)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.c1TextBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtCongenital)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtNickName)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkOPU)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cboAgent)).BeginInit();
@@ -156,7 +160,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtBW)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtHeight)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtLMP)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.c1Button1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnHnSearch)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtHnFemale)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkUrge)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtIdOld)).BeginInit();
@@ -212,6 +216,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtNickName1)).BeginInit();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picImg)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnPrnCheckList1)).BeginInit();
             this.SuspendLayout();
             // 
             // sB
@@ -237,10 +242,11 @@
             // groupBox1
             // 
             this.groupBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.groupBox1.Controls.Add(this.txtAgent);
             this.groupBox1.Controls.Add(this.chkCongenital);
             this.groupBox1.Controls.Add(this.chkOR);
             this.groupBox1.Controls.Add(this.label19);
-            this.groupBox1.Controls.Add(this.c1TextBox1);
+            this.groupBox1.Controls.Add(this.txtCongenital);
             this.groupBox1.Controls.Add(this.label9);
             this.groupBox1.Controls.Add(this.txtNickName);
             this.groupBox1.Controls.Add(this.chkOPU);
@@ -302,6 +308,19 @@
             this.groupBox1.Text = "Patient";
             this.theme1.SetTheme(this.groupBox1, "(default)");
             // 
+            // txtAgent
+            // 
+            this.txtAgent.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtAgent.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
+            this.txtAgent.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.txtAgent.Location = new System.Drawing.Point(83, 203);
+            this.txtAgent.Name = "txtAgent";
+            this.txtAgent.Size = new System.Drawing.Size(125, 20);
+            this.txtAgent.TabIndex = 689;
+            this.txtAgent.Tag = null;
+            this.theme1.SetTheme(this.txtAgent, "(default)");
+            this.txtAgent.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            // 
             // chkCongenital
             // 
             this.chkCongenital.BackColor = System.Drawing.Color.Transparent;
@@ -353,18 +372,18 @@
             this.label19.Text = "โรคประจำตัว :";
             this.theme1.SetTheme(this.label19, "(default)");
             // 
-            // c1TextBox1
+            // txtCongenital
             // 
-            this.c1TextBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.c1TextBox1.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
-            this.c1TextBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.c1TextBox1.Location = new System.Drawing.Point(278, 248);
-            this.c1TextBox1.Name = "c1TextBox1";
-            this.c1TextBox1.Size = new System.Drawing.Size(483, 20);
-            this.c1TextBox1.TabIndex = 681;
-            this.c1TextBox1.Tag = null;
-            this.theme1.SetTheme(this.c1TextBox1, "(default)");
-            this.c1TextBox1.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            this.txtCongenital.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtCongenital.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
+            this.txtCongenital.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.txtCongenital.Location = new System.Drawing.Point(278, 248);
+            this.txtCongenital.Name = "txtCongenital";
+            this.txtCongenital.Size = new System.Drawing.Size(483, 20);
+            this.txtCongenital.TabIndex = 681;
+            this.txtCongenital.Tag = null;
+            this.theme1.SetTheme(this.txtCongenital, "(default)");
+            this.txtCongenital.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
             // 
             // label9
             // 
@@ -469,6 +488,7 @@
             // groupBox2
             // 
             this.groupBox2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.groupBox2.Controls.Add(this.label32);
             this.groupBox2.Controls.Add(this.label27);
             this.groupBox2.Controls.Add(this.txtBP);
             this.groupBox2.Controls.Add(this.label22);
@@ -477,7 +497,7 @@
             this.groupBox2.Controls.Add(this.txtHeight);
             this.groupBox2.Controls.Add(this.txtLMP);
             this.groupBox2.Controls.Add(this.label18);
-            this.groupBox2.Controls.Add(this.c1Button1);
+            this.groupBox2.Controls.Add(this.btnHnSearch);
             this.groupBox2.Controls.Add(this.label7);
             this.groupBox2.Controls.Add(this.txtHnFemale);
             this.groupBox2.Controls.Add(this.chkUrge);
@@ -499,6 +519,19 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Visit";
             this.theme1.SetTheme(this.groupBox2, "(default)");
+            // 
+            // label32
+            // 
+            this.label32.AutoSize = true;
+            this.label32.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.label32.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label32.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.label32.Location = new System.Drawing.Point(638, 63);
+            this.label32.Name = "label32";
+            this.label32.Size = new System.Drawing.Size(11, 16);
+            this.label32.TabIndex = 688;
+            this.label32.Text = ".";
+            this.theme1.SetTheme(this.label32, "(default)");
             // 
             // label27
             // 
@@ -637,16 +670,16 @@
             this.label18.Text = "LMP :";
             this.theme1.SetTheme(this.label18, "(default)");
             // 
-            // c1Button1
+            // btnHnSearch
             // 
-            this.c1Button1.Location = new System.Drawing.Point(604, 60);
-            this.c1Button1.Name = "c1Button1";
-            this.c1Button1.Size = new System.Drawing.Size(28, 23);
-            this.c1Button1.TabIndex = 679;
-            this.c1Button1.Text = "...";
-            this.theme1.SetTheme(this.c1Button1, "(default)");
-            this.c1Button1.UseVisualStyleBackColor = true;
-            this.c1Button1.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            this.btnHnSearch.Location = new System.Drawing.Point(604, 60);
+            this.btnHnSearch.Name = "btnHnSearch";
+            this.btnHnSearch.Size = new System.Drawing.Size(28, 23);
+            this.btnHnSearch.TabIndex = 679;
+            this.btnHnSearch.Text = "...";
+            this.theme1.SetTheme(this.btnHnSearch, "(default)");
+            this.btnHnSearch.UseVisualStyleBackColor = true;
+            this.btnHnSearch.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
             // 
             // label7
             // 
@@ -1588,6 +1621,7 @@
             // panel3
             // 
             this.panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.panel3.Controls.Add(this.btnPrnCheckList1);
             this.panel3.Controls.Add(this.label36);
             this.panel3.Controls.Add(this.txtBP1);
             this.panel3.Controls.Add(this.label37);
@@ -1724,7 +1758,7 @@
             this.chkOR1.Location = new System.Drawing.Point(8, 174);
             this.chkOR1.Name = "chkOR1";
             this.chkOR1.Padding = new System.Windows.Forms.Padding(4, 1, 1, 1);
-            this.chkOR1.Size = new System.Drawing.Size(115, 24);
+            this.chkOR1.Size = new System.Drawing.Size(109, 24);
             this.chkOR1.TabIndex = 696;
             this.chkOR1.Text = "เคย ผ่าตัดหรือไม่";
             this.theme1.SetTheme(this.chkOR1, "(default)");
@@ -1956,6 +1990,20 @@
             this.picImg.TabIndex = 2;
             this.picImg.TabStop = false;
             // 
+            // btnPrnCheckList1
+            // 
+            this.btnPrnCheckList1.Image = global::clinic_ivf.Properties.Resources.Print_large;
+            this.btnPrnCheckList1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnPrnCheckList1.Location = new System.Drawing.Point(323, 358);
+            this.btnPrnCheckList1.Name = "btnPrnCheckList1";
+            this.btnPrnCheckList1.Size = new System.Drawing.Size(83, 33);
+            this.btnPrnCheckList1.TabIndex = 704;
+            this.btnPrnCheckList1.Text = "Print";
+            this.btnPrnCheckList1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.theme1.SetTheme(this.btnPrnCheckList1, "(default)");
+            this.btnPrnCheckList1.UseVisualStyleBackColor = true;
+            this.btnPrnCheckList1.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            // 
             // FrmVisitAdd
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1972,9 +2020,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.theme1)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtAgent)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkCongenital)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkOR)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.c1TextBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtCongenital)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtNickName)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkOPU)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cboAgent)).EndInit();
@@ -1986,7 +2035,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtBW)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtHeight)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtLMP)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.c1Button1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnHnSearch)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtHnFemale)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkUrge)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtIdOld)).EndInit();
@@ -2043,6 +2092,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtNickName1)).EndInit();
             this.panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.picImg)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnPrnCheckList1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -2121,13 +2171,13 @@
         private C1.Win.C1Input.C1CheckBox chkUrge;
         private System.Windows.Forms.Label label7;
         private C1.Win.C1Input.C1TextBox txtHnFemale;
-        private C1.Win.C1Input.C1Button c1Button1;
+        private C1.Win.C1Input.C1Button btnHnSearch;
         private System.Windows.Forms.Label label9;
         private C1.Win.C1Input.C1TextBox txtNickName;
         private C1.Win.C1Input.C1DateEdit txtLMP;
         private System.Windows.Forms.Label label18;
         private System.Windows.Forms.Label label19;
-        private C1.Win.C1Input.C1TextBox c1TextBox1;
+        private C1.Win.C1Input.C1TextBox txtCongenital;
         private System.Windows.Forms.Label label27;
         private C1.Win.C1Input.C1TextBox txtBP;
         private System.Windows.Forms.Label label22;
@@ -2162,5 +2212,8 @@
         private System.Windows.Forms.Label label37;
         private C1.Win.C1Input.C1TextBox txtBW1;
         private C1.Win.C1Input.C1PictureBox picImg;
+        private System.Windows.Forms.Label label32;
+        private C1.Win.C1Input.C1TextBox txtAgent;
+        private C1.Win.C1Input.C1Button btnPrnCheckList1;
     }
 }

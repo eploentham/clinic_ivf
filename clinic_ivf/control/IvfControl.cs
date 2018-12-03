@@ -109,6 +109,12 @@ namespace clinic_ivf.control
             iniC.passDB = iniF.getIni("connection", "passDB");            
             iniC.portDB = iniF.getIni("connection", "portDB");
 
+            iniC.hostDBEx = iniF.getIni("connection", "hostDBEx");
+            iniC.nameDBEx = iniF.getIni("connection", "nameDBEx");
+            iniC.userDBEx = iniF.getIni("connection", "userDBEx");
+            iniC.passDBEx = iniF.getIni("connection", "passDBEx");
+            iniC.portDBEx = iniF.getIni("connection", "portDBEx");
+
             iniC.hostFTP = iniF.getIni("ftp", "hostFTP");
             iniC.userFTP = iniF.getIni("ftp", "userFTP");
             iniC.passFTP = iniF.getIni("ftp", "passFTP");

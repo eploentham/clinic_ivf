@@ -13,6 +13,7 @@ namespace clinic_ivf.objdb
     {
         FBloodGroup fbg;
         ConnectDB conn;
+        public List<FBloodGroup> lFbg;
         public FBloodGroupDB(ConnectDB connorc_ma)
         {
             conn = connorc_ma;
@@ -20,6 +21,7 @@ namespace clinic_ivf.objdb
         }
         private void initConfig()
         {
+            lFbg = new List<FBloodGroup>();
             fbg = new FBloodGroup();
             fbg.f_patient_blood_group_id = "f_patient_blood_group_id";
             fbg.patient_blood_group_description = "patient_blood_group_description";
@@ -49,9 +51,9 @@ namespace clinic_ivf.objdb
             dt = conn.selectData(conn.conn, sql);
             return dt;
         }
-        public FPrefix selectByPk1(String copId)
+        public FBloodGroup selectByPk1(String copId)
         {
-            FPrefix cop1 = new FPrefix();
+            FBloodGroup cop1 = new FBloodGroup();
             DataTable dt = new DataTable();
             String sql = "select fbg.* " +
                 "From " + fbg.table + " fbg " +
@@ -61,13 +63,28 @@ namespace clinic_ivf.objdb
             cop1 = setBloodGroup(dt);
             return cop1;
         }
-        private FPrefix setBloodGroup(DataTable dt)
+        public void getlFBloodGroup()
         {
-            FPrefix dept1 = new FPrefix();
+            //lDept = new List<Position>();
+            lFbg.Clear();
+            DataTable dt = new DataTable();
+            dt = selectAll();
+            foreach (DataRow row in dt.Rows)
+            {
+                FBloodGroup itm1 = new FBloodGroup();
+                itm1.f_patient_blood_group_id = row[fbg.f_patient_blood_group_id].ToString();
+                itm1.patient_blood_group_description = row[fbg.patient_blood_group_description].ToString();
+
+                lFbg.Add(itm1);
+            }
+        }
+        private FBloodGroup setBloodGroup(DataTable dt)
+        {
+            FBloodGroup dept1 = new FBloodGroup();
             if (dt.Rows.Count > 0)
             {
-                dept1.f_patient_prefix_id = dt.Rows[0][fbg.f_patient_blood_group_id].ToString();
-                dept1.patient_prefix_description = dt.Rows[0][fbg.patient_blood_group_description].ToString();
+                dept1.f_patient_blood_group_id = dt.Rows[0][fbg.f_patient_blood_group_id].ToString();
+                dept1.patient_blood_group_description = dt.Rows[0][fbg.patient_blood_group_description].ToString();
             }
 
             return dept1;
@@ -101,6 +118,34 @@ namespace clinic_ivf.objdb
                 item.Value = row[fbg.f_patient_blood_group_id].ToString();
 
                 c.Items.Add(item);
+            }
+            return c;
+        }
+        public C1ComboBox setCboBloodGroup(C1ComboBox c, String selected)
+        {
+            ComboBoxItem item = new ComboBoxItem();
+            DataTable dt = selectC1();
+            if (lFbg.Count <= 0) getlFBloodGroup();
+            ComboBoxItem item1 = new ComboBoxItem();
+            item1.Text = "";
+            item1.Value = "000";
+            c.Items.Clear();
+            c.Items.Add(item1);
+            //for (int i = 0; i < dt.Rows.Count; i++)
+            int i = 0;
+            foreach (FBloodGroup row in lFbg)
+            {
+                item = new ComboBoxItem();
+                item.Value = row.f_patient_blood_group_id;
+                item.Text = row.patient_blood_group_description;
+                c.Items.Add(item);
+                if (item.Value.Equals(selected))
+                {
+                    //c.SelectedItem = item.Value;
+                    c.SelectedText = item.Text;
+                    c.SelectedIndex = i + 1;
+                }
+                i++;
             }
             return c;
         }

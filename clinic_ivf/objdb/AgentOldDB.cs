@@ -54,7 +54,7 @@ namespace clinic_ivf.objdb
             dt = conn.selectData(conn.conn, sql);
             return dt;
         }
-        public void getlSex()
+        public void getlAgent()
         {
             //lDept = new List<Position>();
             lAgnO.Clear();
@@ -121,6 +121,34 @@ namespace clinic_ivf.objdb
                 item.Value = row[agnO.agentid].ToString();
 
                 c.Items.Add(item);
+            }
+            return c;
+        }
+        public C1ComboBox setCboAgent(C1ComboBox c, String selected)
+        {
+            ComboBoxItem item = new ComboBoxItem();
+            //DataTable dt = selectC1();
+            if (lAgnO.Count <= 0) getlAgent();
+            ComboBoxItem item1 = new ComboBoxItem();
+            item1.Text = "";
+            item1.Value = "000";
+            c.Items.Clear();
+            c.Items.Add(item1);
+            //for (int i = 0; i < dt.Rows.Count; i++)
+            int i = 0;
+            foreach (AgentOld row in lAgnO)
+            {
+                item = new ComboBoxItem();
+                item.Value = row.agentid;
+                item.Text = row.agentname;
+                c.Items.Add(item);
+                if (item.Value.Equals(selected))
+                {
+                    //c.SelectedItem = item.Value;
+                    c.SelectedText = item.Text;
+                    c.SelectedIndex = i + 1;
+                }
+                i++;
             }
             return c;
         }

@@ -64,22 +64,37 @@ namespace clinic_ivf.gui
 
             txtDob.Value = DateTime.Now.ToString("yyyy-MM-dd");
             ic.ivfDB.fpfDB.setCboPrefix(cboPrefix,"");
-            ic.ivfDB.fmsDB.setCboMarriage(cboMarital);
-            ic.ivfDB.fbgDB.setCboBloodGroup(cboBloodG);
-            ic.ivfDB.fpnDB.setCboNation(CboNation);
-            ic.ivfDB.fetDB.setCboEduca(CboEduca);
-            ic.ivfDB.frcDB.setCboRace(cboRace);
-            ic.ivfDB.frgDB.setCboReligion(cboRg);
+            ic.ivfDB.fmsDB.setCboMarriage(cboMarital, "");
+            ic.ivfDB.fbgDB.setCboBloodGroup(cboBloodG, "");
+            ic.ivfDB.fpnDB.setCboNation(CboNation, "");
+            ic.ivfDB.fetDB.setCboEduca(CboEduca, "");
+            ic.ivfDB.frcDB.setCboRace(cboRace, "");
+            ic.ivfDB.frgDB.setCboReligion(cboRg, "");
             ic.setCboPttType(cboPttType);
             ic.ivfDB.bspDB.setCboBsp(cboBsp,"");
+            ic.ivfDB.agnOldDB.setCboAgent(cboAgent, "");
 
             btnVisit.Click += BtnVisit_Click;
+            btnHnSearch.Click += BtnHnSearch_Click;
+            tC.SelectedTabChanged += TC_SelectedTabChanged;
+            btnPrnCheckList1.Click += BtnPrnCheckList1_Click;
 
             if (pttId.Equals(""))
             {
 
             }
             setControl(pttId, pttOid);
+            txtAgent.Left = cboAgent.Left;
+            if (ic.iniC.statusAppDonor.Equals("1"))
+            {
+                txtAgent.Show();
+                cboAgent.Hide();
+            }
+            else
+            {
+                txtAgent.Hide();
+                cboAgent.Show();
+            }
             //setFocusColor();
             //initGrfImg();
             //setGrfImg("");
@@ -90,9 +105,49 @@ namespace clinic_ivf.gui
             //btnCapture.Click += BtnCapture_Click;
             //this.FormClosed += FrmPatientAdd_FormClosed;
             //btnPrvSticker.Click += BtnPrvSticker_Click;
-            
+
             //setKeyEnter();
-            
+
+        }
+
+        private void BtnPrnCheckList1_Click(object sender, EventArgs e)
+        {
+            //throw new NotImplementedException();
+            FrmReport frm = new FrmReport(ic);
+            DataTable dt = new DataTable();
+            dt = ic.ivfDB.vsDB.selectByCheckList1(txtPttId.Text, txtID.Text);
+            frm.setVisitCheckList1Report(dt);
+            frm.ShowDialog(this);
+        }
+
+        private void TC_SelectedTabChanged(object sender, EventArgs e)
+        {
+            //throw new NotImplementedException();
+            if(tC.SelectedTab == tabCheckList1)
+            {
+                chkDenyAllergy1.Checked = chkDenyAllergy.Checked;
+                chkOPU1.Checked = chkOPU.Checked;
+                chkOR1.Checked = chkOR.Checked;
+                chkCongenital1.Checked = chkCongenital.Checked;
+                txtCongenital1.Value = txtCongenital1.Text;
+                txtNickName1.Value = txtNickName.Text;
+                txtMobile11.Value = txtMobile1.Text;
+                txtHeight1.Value = txtHeight.Text;
+                txtBP1.Value = txtBP.Text;
+                txtBW1.Value = txtBW1.Text;
+                txtLMP1.Value = txtLMP.Text;
+                txtAgent1.Value = txtAgent.Text;
+                txtNickName1.Value = txtNickName.Text;
+            }
+        }
+
+        private void BtnHnSearch_Click(object sender, EventArgs e)
+        {
+            //throw new NotImplementedException();
+            FrmSearchHn frm = new FrmSearchHn(ic, FrmSearchHn.StatusConnection.hostEx);
+            frm.ShowDialog(this);
+            txtHnFemale.Value = ic.sVsOld.PIDS;
+            label32.Text = ic.sVsOld.PName;
         }
 
         private void BtnVisit_Click(object sender, EventArgs e)
@@ -200,21 +255,42 @@ namespace clinic_ivf.gui
                 ic.setC1Combo(cboRace, ptt.f_patient_race_id);
                 ic.setC1Combo(cboRg, ptt.f_patient_religion_id);
                 ic.setC1Combo(cboPttType, ptt.patient_type);
-                //ic.setC1Combo(cboBsp, ptt.patient_type);
+                ic.setC1Combo(cboAgent, ptt.agent);
+                txtAgent.Value = ptt.agent;
+                txtAgent1.Value = ptt.agent;
+                //ic.setC1Combo(cboBsp, ptt.patient_type);cboAgent
 
                 //ic.setC1Combo(cboCouPrefix, ptt.f_patient_religion_id);
                 //ic.setC1Combo(cboRg, ptt.f_patient_religion_id);
                 //ic.setC1Combo(cboRg, ptt.f_patient_religion_id);
                 chkChronic.Checked = ptt.status_chronic.Equals("1") ? true : false;
                 chkDenyAllergy.Checked = ptt.status_deny_allergy.Equals("1") ? true : false;
+                chkDenyAllergy1.Checked = chkDenyAllergy.Checked;
                 chkOPU.Checked = ptt.status_opu.Equals("1") ? true : false;
+                chkOPU1.Checked = chkOPU.Checked;
                 chkOR.Checked = ptt.status_or.Equals("1") ? true : false;
+                chkOR1.Checked = chkOR.Checked;
                 chkCongenital.Checked = ptt.status_congenial.Equals("1") ? true : false;
-
+                chkCongenital1.Checked = chkCongenital.Checked;
+                txtCongenital.Value = ptt.congenital_diseases_description;
+                txtCongenital1.Value = ptt.congenital_diseases_description;
+                txtORDescription1.Value = ptt.or_description;
+                stt.SetToolTip(chkOR, ptt.or_description);
+                stt.SetToolTip(chkOR, ptt.or_description);
+                txtNickName.Value = ptt.patient_nickname;
+                txtNickName1.Value = txtNickName.Text;
+                txtMobile11.Value = txtMobile1.Text;
+                txtHeight.Value = ptt.patient_height;
+                txtHeight1.Value = txtHeight.Text;
+                
                 vs = ic.ivfDB.vsDB.selectByPk1(vsid);
                 txtID.Value = vs.t_visit_id;
                 ic.setC1Combo(cboBsp, vs.b_service_point_id);
                 txtComment.Value = vs.visit_notice;
+                txtBP.Value = vs.bp;
+                txtBW.Value = vs.bw;
+                txtBP1.Value = txtBP.Text;
+                txtBW1.Value = txtBW1.Text;
                 //txtHnFemale.Text = 
             }
             else
@@ -320,6 +396,8 @@ namespace clinic_ivf.gui
         private void FrmVisitAdd_Load(object sender, EventArgs e)
         {
             tC.SelectedTab = tabVisit;
+            if (cboBsp.Items.Count > 0)
+                cboBsp.SelectedIndex = 3;
         }
     }
 }

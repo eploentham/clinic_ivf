@@ -138,5 +138,33 @@ namespace clinic_ivf.objdb
             }
             return c;
         }
+        public C1ComboBox setCboNation(C1ComboBox c, String selected)
+        {
+            ComboBoxItem item = new ComboBoxItem();
+            //DataTable dt = selectC1();
+            if (lFpn.Count <= 0) getlFNation();
+            ComboBoxItem item1 = new ComboBoxItem();
+            item1.Text = "";
+            item1.Value = "000";
+            c.Items.Clear();
+            c.Items.Add(item1);
+            //for (int i = 0; i < dt.Rows.Count; i++)
+            int i = 0;
+            foreach (FNation row in lFpn)
+            {
+                item = new ComboBoxItem();
+                item.Value = row.f_patient_nation_id;
+                item.Text = row.patient_nation_description;
+                c.Items.Add(item);
+                if (item.Value.Equals(selected))
+                {
+                    //c.SelectedItem = item.Value;
+                    c.SelectedText = item.Text;
+                    c.SelectedIndex = i + 1;
+                }
+                i++;
+            }
+            return c;
+        }
     }
 }

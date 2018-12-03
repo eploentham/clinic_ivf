@@ -2,6 +2,7 @@
 using C1.Win.C1Input;
 using C1.Win.C1SuperTooltip;
 using clinic_ivf.control;
+using clinic_ivf.objdb;
 using clinic_ivf.object1;
 using System;
 using System.Collections.Generic;
@@ -26,11 +27,13 @@ namespace clinic_ivf.gui
         C1FlexGrid grfCu, grfDay3, grfDay5, grfDay6;
         C1SuperTooltip stt;
         C1SuperErrorProvider sep;
-
-        public FrmSearchHn(IvfControl ic)
+        public enum StatusConnection {host, hostEx};
+        StatusConnection statusconn;
+        public FrmSearchHn(IvfControl ic, StatusConnection statusconn)
         {
             InitializeComponent();
             this.ic = ic;
+            this.statusconn = statusconn;
             initConfig();
         }
         private void initConfig()
@@ -124,7 +127,10 @@ namespace clinic_ivf.gui
             grfCu.Clear();
             DataTable dt = new DataTable();
             grfCu.DataSource = null;
-            dt = ic.ivfDB.vsOldDB.selectCurrentVisit();
+            ConnectDB con = new ConnectDB(ic.iniC);
+            //con.OpenConnectionEx();
+            dt = ic.ivfDB.vsOldDB.selectCurrentVisit(con.connEx);
+            //con.CloseConnectionEx();
             //grfExpn.Rows.Count = dt.Rows.Count + 1;
             grfCu.Rows.Count = 1;
             grfCu.Cols.Count = 7;

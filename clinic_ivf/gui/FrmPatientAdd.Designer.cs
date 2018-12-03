@@ -42,7 +42,6 @@
             this.txtNickName = new C1.Win.C1Input.C1TextBox();
             this.chkOPU = new C1.Win.C1Input.C1CheckBox();
             this.txtIdOld = new C1.Win.C1Input.C1TextBox();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.cboAgent = new C1.Win.C1Input.C1ComboBox();
             this.btnVoid = new C1.Win.C1Input.C1Button();
             this.label54 = new System.Windows.Forms.Label();
@@ -349,7 +348,6 @@
             this.splitContainer2.Panel1.Controls.Add(this.txtNickName);
             this.splitContainer2.Panel1.Controls.Add(this.chkOPU);
             this.splitContainer2.Panel1.Controls.Add(this.txtIdOld);
-            this.splitContainer2.Panel1.Controls.Add(this.comboBox1);
             this.splitContainer2.Panel1.Controls.Add(this.cboAgent);
             this.splitContainer2.Panel1.Controls.Add(this.btnVoid);
             this.splitContainer2.Panel1.Controls.Add(this.label54);
@@ -573,18 +571,6 @@
             this.txtIdOld.Visible = false;
             this.txtIdOld.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
             // 
-            // comboBox1
-            // 
-            this.comboBox1.BackColor = System.Drawing.Color.White;
-            this.comboBox1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(5, 54);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(122, 21);
-            this.comboBox1.TabIndex = 618;
-            this.theme1.SetTheme(this.comboBox1, "(default)");
-            this.comboBox1.Visible = false;
-            // 
             // cboAgent
             // 
             this.cboAgent.AllowSpinLoop = false;
@@ -595,7 +581,7 @@
             this.cboAgent.ImagePadding = new System.Windows.Forms.Padding(0);
             this.cboAgent.ItemsDisplayMember = "";
             this.cboAgent.ItemsValueMember = "";
-            this.cboAgent.Location = new System.Drawing.Point(68, 159);
+            this.cboAgent.Location = new System.Drawing.Point(76, 159);
             this.cboAgent.Name = "cboAgent";
             this.cboAgent.Size = new System.Drawing.Size(124, 20);
             this.cboAgent.Style.DropDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
@@ -3015,7 +3001,6 @@
         private C1.Win.C1Input.C1TextBox txtContLname1;
         private C1.Win.C1Input.C1TextBox txtContFname1;
         private C1.Win.C1Input.C1ComboBox cboAgent;
-        private System.Windows.Forms.ComboBox comboBox1;
         private C1.Win.C1Input.C1Button btnVisit;
         private C1.Win.C1Command.C1DockingTabPage tabImage;
         private System.Windows.Forms.Panel pnImage;

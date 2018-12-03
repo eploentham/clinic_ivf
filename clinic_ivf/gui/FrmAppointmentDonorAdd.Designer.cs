@@ -338,7 +338,7 @@
             this.txtAppointment.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtAppointment.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
             this.txtAppointment.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.txtAppointment.Location = new System.Drawing.Point(69, 116);
+            this.txtAppointment.Location = new System.Drawing.Point(69, 97);
             this.txtAppointment.Name = "txtAppointment";
             this.txtAppointment.Size = new System.Drawing.Size(620, 20);
             this.txtAppointment.TabIndex = 563;
@@ -352,7 +352,7 @@
             this.label9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
             this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label9.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.label9.Location = new System.Drawing.Point(6, 118);
+            this.label9.Location = new System.Drawing.Point(6, 99);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(28, 16);
             this.label9.TabIndex = 562;
@@ -399,9 +399,9 @@
             this.groupBox3.Controls.Add(this.tC);
             this.groupBox3.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.groupBox3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.groupBox3.Location = new System.Drawing.Point(3, 161);
+            this.groupBox3.Location = new System.Drawing.Point(3, 146);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(787, 446);
+            this.groupBox3.Size = new System.Drawing.Size(787, 461);
             this.groupBox3.TabIndex = 559;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "groupBox3";
@@ -419,7 +419,7 @@
             this.tC.Location = new System.Drawing.Point(3, 16);
             this.tC.Name = "tC";
             this.tC.SelectedIndex = 1;
-            this.tC.Size = new System.Drawing.Size(781, 427);
+            this.tC.Size = new System.Drawing.Size(781, 442);
             this.tC.TabIndex = 0;
             this.tC.TabSizeMode = C1.Win.C1Command.TabSizeModeEnum.Fit;
             this.tC.TabsShowFocusCues = false;
@@ -432,7 +432,7 @@
             this.tabVisit.Controls.Add(this.pnVisit);
             this.tabVisit.Location = new System.Drawing.Point(1, 1);
             this.tabVisit.Name = "tabVisit";
-            this.tabVisit.Size = new System.Drawing.Size(779, 402);
+            this.tabVisit.Size = new System.Drawing.Size(779, 417);
             this.tabVisit.TabIndex = 0;
             this.tabVisit.Text = "Visit";
             // 
@@ -443,7 +443,7 @@
             this.pnVisit.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
             this.pnVisit.Location = new System.Drawing.Point(0, 0);
             this.pnVisit.Name = "pnVisit";
-            this.pnVisit.Size = new System.Drawing.Size(779, 402);
+            this.pnVisit.Size = new System.Drawing.Size(779, 417);
             this.pnVisit.TabIndex = 0;
             this.theme1.SetTheme(this.pnVisit, "(default)");
             // 
@@ -452,7 +452,7 @@
             this.tabDay.Controls.Add(this.pnDay);
             this.tabDay.Location = new System.Drawing.Point(1, 1);
             this.tabDay.Name = "tabDay";
-            this.tabDay.Size = new System.Drawing.Size(779, 402);
+            this.tabDay.Size = new System.Drawing.Size(779, 417);
             this.tabDay.TabIndex = 1;
             this.tabDay.Text = "Day";
             // 
@@ -463,7 +463,7 @@
             this.pnDay.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
             this.pnDay.Location = new System.Drawing.Point(0, 0);
             this.pnDay.Name = "pnDay";
-            this.pnDay.Size = new System.Drawing.Size(779, 402);
+            this.pnDay.Size = new System.Drawing.Size(779, 417);
             this.pnDay.TabIndex = 1;
             this.theme1.SetTheme(this.pnDay, "(default)");
             // 
@@ -472,7 +472,7 @@
             this.txtRemarkpApm.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtRemarkpApm.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
             this.txtRemarkpApm.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.txtRemarkpApm.Location = new System.Drawing.Point(69, 139);
+            this.txtRemarkpApm.Location = new System.Drawing.Point(69, 120);
             this.txtRemarkpApm.Name = "txtRemarkpApm";
             this.txtRemarkpApm.Size = new System.Drawing.Size(620, 20);
             this.txtRemarkpApm.TabIndex = 558;
@@ -514,7 +514,7 @@
             this.label6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.label6.Location = new System.Drawing.Point(6, 141);
+            this.label6.Location = new System.Drawing.Point(6, 122);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(62, 16);
             this.label6.TabIndex = 557;
@@ -528,7 +528,7 @@
             this.chkEndo.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.chkEndo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.chkEndo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.chkEndo.Location = new System.Drawing.Point(474, 93);
+            this.chkEndo.Location = new System.Drawing.Point(527, 68);
             this.chkEndo.Name = "chkEndo";
             this.chkEndo.Padding = new System.Windows.Forms.Padding(4, 1, 1, 1);
             this.chkEndo.Size = new System.Drawing.Size(58, 24);
@@ -537,6 +537,7 @@
             this.theme1.SetTheme(this.chkEndo, "(default)");
             this.chkEndo.UseVisualStyleBackColor = true;
             this.chkEndo.Value = null;
+            this.chkEndo.Visible = false;
             this.chkEndo.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
             // 
             // chkLt
@@ -546,15 +547,16 @@
             this.chkLt.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.chkLt.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.chkLt.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.chkLt.Location = new System.Drawing.Point(610, 93);
+            this.chkLt.Location = new System.Drawing.Point(622, 67);
             this.chkLt.Name = "chkLt";
             this.chkLt.Padding = new System.Windows.Forms.Padding(4, 1, 1, 1);
-            this.chkLt.Size = new System.Drawing.Size(88, 24);
+            this.chkLt.Size = new System.Drawing.Size(67, 24);
             this.chkLt.TabIndex = 555;
             this.chkLt.Text = "Lt.Ovary";
             this.theme1.SetTheme(this.chkLt, "(default)");
             this.chkLt.UseVisualStyleBackColor = true;
             this.chkLt.Value = null;
+            this.chkLt.Visible = false;
             this.chkLt.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
             // 
             // chkRt
@@ -564,15 +566,16 @@
             this.chkRt.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.chkRt.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.chkRt.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.chkRt.Location = new System.Drawing.Point(538, 93);
+            this.chkRt.Location = new System.Drawing.Point(576, 68);
             this.chkRt.Name = "chkRt";
             this.chkRt.Padding = new System.Windows.Forms.Padding(4, 1, 1, 1);
-            this.chkRt.Size = new System.Drawing.Size(104, 24);
+            this.chkRt.Size = new System.Drawing.Size(77, 24);
             this.chkRt.TabIndex = 554;
             this.chkRt.Text = "Rt.Ovary";
             this.theme1.SetTheme(this.chkRt, "(default)");
             this.chkRt.UseVisualStyleBackColor = true;
             this.chkRt.Value = null;
+            this.chkRt.Visible = false;
             this.chkRt.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
             // 
             // chkPrl

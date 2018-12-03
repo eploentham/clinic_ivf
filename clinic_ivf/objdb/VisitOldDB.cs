@@ -1,4 +1,5 @@
 ﻿using clinic_ivf.object1;
+using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -189,6 +190,20 @@ namespace clinic_ivf.objdb
                 "Where vsold." + vsold.VDate + " ='"+ date + "' " +
                 "Order By vsold.VDate, vsold.VStartTime";
             dt = conn.selectData(conn.conn, sql);
+
+            return dt;
+        }
+        public DataTable selectCurrentVisit(MySqlConnection con)
+        {
+            DataTable dt = new DataTable();
+            String date = System.DateTime.Now.Year + "-" + System.DateTime.Now.ToString("MM-dd");
+            String sql = "select vsold.VN as id,vsold.VN, vsold.PIDS, vsold.PName, vsold.VDate, vsold.VStartTime, vsold.VEndTime, VStatus.VName, vsold.VSID " +
+                "From " + vsold.table + " vsold " +
+                "Left Join VStatus on  VStatus.VSID = vsold.VSID " +
+                " " +
+                "Where vsold." + vsold.VDate + " ='" + date + "' " +
+                "Order By vsold.VDate, vsold.VStartTime";
+            dt = conn.selectData(con, sql);
 
             return dt;
         }

@@ -51,9 +51,9 @@ namespace clinic_ivf.objdb
             dt = conn.selectData(conn.conn, sql);
             return dt;
         }
-        public FPrefix selectByPk1(String copId)
+        public FSex selectByPk1(String copId)
         {
-            FPrefix cop1 = new FPrefix();
+            FSex cop1 = new FSex();
             DataTable dt = new DataTable();
             String sql = "select sex.* " +
                 "From " + sex.table + " sex " +
@@ -63,13 +63,13 @@ namespace clinic_ivf.objdb
             cop1 = setSex(dt);
             return cop1;
         }
-        private FPrefix setSex(DataTable dt)
+        private FSex setSex(DataTable dt)
         {
-            FPrefix dept1 = new FPrefix();
+            FSex dept1 = new FSex();
             if (dt.Rows.Count > 0)
             {
-                dept1.f_patient_prefix_id = dt.Rows[0][sex.f_sex_id].ToString();
-                dept1.patient_prefix_description = dt.Rows[0][sex.sex_description].ToString();
+                dept1.f_sex_id = dt.Rows[0][sex.f_sex_id].ToString();
+                dept1.sex_description = dt.Rows[0][sex.sex_description].ToString();
             }
 
             return dept1;
@@ -131,6 +131,34 @@ namespace clinic_ivf.objdb
                 item.Value = row[sex.f_sex_id].ToString();
 
                 c.Items.Add(item);
+            }
+            return c;
+        }
+        public C1ComboBox setCboSex(C1ComboBox c, String selected)
+        {
+            ComboBoxItem item = new ComboBoxItem();
+            //DataTable dt = selectC1();
+            if (lSex.Count <= 0) getlSex();
+            ComboBoxItem item1 = new ComboBoxItem();
+            item1.Text = "";
+            item1.Value = "000";
+            c.Items.Clear();
+            c.Items.Add(item1);
+            //for (int i = 0; i < dt.Rows.Count; i++)
+            int i = 0;
+            foreach (FSex row in lSex)
+            {
+                item = new ComboBoxItem();
+                item.Value = row.f_sex_id;
+                item.Text = row.sex_description;
+                c.Items.Add(item);
+                if (item.Value.Equals(selected))
+                {
+                    //c.SelectedItem = item.Value;
+                    c.SelectedText = item.Text;
+                    c.SelectedIndex = i + 1;
+                }
+                i++;
             }
             return c;
         }

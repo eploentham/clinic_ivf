@@ -628,6 +628,7 @@ namespace clinic_ivf.objdb
                 "From " + ptt.table + " ptt " +
                 "Left join f_patient_prefix fpp on fpp.f_patient_prefix_id = ptt.f_patient_prefix_id " +
                 "Where ptt." + ptt.patient_record_date_time + " >='" + date + " 00:00:00' and ptt." + ptt.patient_record_date_time + " <='" + date + " 23:59:59' " +
+                " and ptt."+ptt.active + "='1' " +
                 "Order By ptt." + ptt.t_patient_id;
             dt = conn.selectData(conn.conn, sql);
             return dt;
