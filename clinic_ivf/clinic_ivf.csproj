@@ -441,6 +441,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>sticker_drug.xsd</DependentUpon>
     </Compile>
+    <Compile Include="report\Visit_Check_List1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Visit_Check_List1.xsd</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="gui\Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
@@ -613,6 +618,17 @@
     </None>
     <None Include="report\sticker_drug.xss">
       <DependentUpon>sticker_drug.xsd</DependentUpon>
+    </None>
+    <None Include="report\Visit_Check_List1.xsc">
+      <DependentUpon>Visit_Check_List1.xsd</DependentUpon>
+    </None>
+    <None Include="report\Visit_Check_List1.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>Visit_Check_List1.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="report\Visit_Check_List1.xss">
+      <DependentUpon>Visit_Check_List1.xsd</DependentUpon>
     </None>
     <None Include="Resources\Add-ticket_24.png" />
   </ItemGroup>
