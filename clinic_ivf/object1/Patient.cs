@@ -116,6 +116,14 @@ namespace clinic_ivf.object1
         public String b_contract_plans_id { get; set; }
         public String t_patient_id_old { get; set; }
         public String Name { get; set; }
+        public String status_opu { get; set; }
+        public String patient_nickname { get; set; }
+        public String patient_height { get; set; }
+        public String status_or { get; set; }
+        public String or_description { get; set; }
+        public String status_congenial { get; set; }
+        public String congenital_diseases_description { get; set; }
+        //public String patient_nickname { get; set; }
 
         //public String insurance { get; set; }
         public Age age = new Age(DateTime.Now);

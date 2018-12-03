@@ -46,6 +46,7 @@ namespace clinic_ivf.objdb
         public PatientAppointmentDB pApmDB;
         public VisitDB vsDB;
         public FDocTypeDB fdtDB;
+        //public PatientImageDB pttiDB;
 
         public IvfDB(ConnectDB c)
         {
@@ -90,6 +91,7 @@ namespace clinic_ivf.objdb
             pApmDB = new PatientAppointmentDB(conn);
             vsDB = new VisitDB(conn);
             fdtDB = new FDocTypeDB(conn);
+            //pttiDB = new PatientImageDB(conn);
 
             Console.WriteLine("ivfDB end");
         }

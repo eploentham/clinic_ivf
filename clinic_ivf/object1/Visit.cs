@@ -99,6 +99,12 @@ namespace clinic_ivf.object1
         public String visit_staff_observe { get; set; }
         public String visit_status_lab_approve { get; set; }
         public String visit_vn { get; set; }
-        
+        public String status_urge { get; set; }
+        public String patient_hn_1 { get; set; }
+        public String queue_id { get; set; }
+        public String lmp { get; set; }
+        public String height { get; set; }
+        public String bw { get; set; }
+        public String bp { get; set; }
     }
 }

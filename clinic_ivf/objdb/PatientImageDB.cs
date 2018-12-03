@@ -133,6 +133,7 @@ namespace clinic_ivf.objdb
 
             return re;
         }
+
         public String insertpatientImage(PatientImage p, String userId)
         {
             String re = "";
@@ -154,6 +155,15 @@ namespace clinic_ivf.objdb
             String sql = "select pttI.* " +
                 "From " + pttI.table + " pttI " +
                 "Where pttI." + pttI.pkField + " ='" + copId + "' ";
+            dt = conn.selectData(conn.conn, sql);
+            return dt;
+        }
+        public DataTable selectByPttID(String pttid)
+        {
+            DataTable dt = new DataTable();
+            String sql = "select pttI.* " +
+                "From " + pttI.table + " pttI " +
+                "Where pttI." + pttI.t_patient_id + " ='" + pttid + "' ";
             dt = conn.selectData(conn.conn, sql);
             return dt;
         }

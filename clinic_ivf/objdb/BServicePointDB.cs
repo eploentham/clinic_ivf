@@ -105,7 +105,7 @@ namespace clinic_ivf.objdb
         public void setCboBsp(C1ComboBox c, String selected)
         {
             ComboBoxItem item = new ComboBoxItem();
-            DataTable dt = selectAll();
+            //DataTable dt = selectAll();
             int i = 0;
             if (lBsp.Count <= 0) getlBsp();
             item = new ComboBoxItem();

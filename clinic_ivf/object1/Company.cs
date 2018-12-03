@@ -68,5 +68,7 @@ namespace clinic_ivf.object1
         public String prefix_hn_doc { get; set; }
         public String vn_doc { get; set; }
         public String prefix_vn_doc { get; set; }
+        public String queue_doc { get; set; }
+        public String current_date { get; set; }
     }
 }

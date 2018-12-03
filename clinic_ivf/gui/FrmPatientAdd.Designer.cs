@@ -32,6 +32,15 @@
             this.theme1 = new C1.Win.C1Themes.C1ThemeController();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
+            this.label19 = new System.Windows.Forms.Label();
+            this.txtHeight = new C1.Win.C1Input.C1TextBox();
+            this.chkCongenital = new C1.Win.C1Input.C1CheckBox();
+            this.txtORDescription = new C1.Win.C1Input.C1TextBox();
+            this.chkOR = new C1.Win.C1Input.C1CheckBox();
+            this.txtCongenital = new C1.Win.C1Input.C1TextBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.txtNickName = new C1.Win.C1Input.C1TextBox();
+            this.chkOPU = new C1.Win.C1Input.C1CheckBox();
             this.txtIdOld = new C1.Win.C1Input.C1TextBox();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.cboAgent = new C1.Win.C1Input.C1ComboBox();
@@ -190,6 +199,13 @@
             this.splitContainer2.Panel1.SuspendLayout();
             this.splitContainer2.Panel2.SuspendLayout();
             this.splitContainer2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtHeight)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chkCongenital)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtORDescription)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chkOR)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtCongenital)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtNickName)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chkOPU)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtIdOld)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cboAgent)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnVoid)).BeginInit();
@@ -323,6 +339,15 @@
             // splitContainer2.Panel1
             // 
             this.splitContainer2.Panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.splitContainer2.Panel1.Controls.Add(this.label19);
+            this.splitContainer2.Panel1.Controls.Add(this.txtHeight);
+            this.splitContainer2.Panel1.Controls.Add(this.chkCongenital);
+            this.splitContainer2.Panel1.Controls.Add(this.txtORDescription);
+            this.splitContainer2.Panel1.Controls.Add(this.chkOR);
+            this.splitContainer2.Panel1.Controls.Add(this.txtCongenital);
+            this.splitContainer2.Panel1.Controls.Add(this.label3);
+            this.splitContainer2.Panel1.Controls.Add(this.txtNickName);
+            this.splitContainer2.Panel1.Controls.Add(this.chkOPU);
             this.splitContainer2.Panel1.Controls.Add(this.txtIdOld);
             this.splitContainer2.Panel1.Controls.Add(this.comboBox1);
             this.splitContainer2.Panel1.Controls.Add(this.cboAgent);
@@ -399,12 +424,147 @@
             this.splitContainer2.TabIndex = 0;
             this.theme1.SetTheme(this.splitContainer2, "(default)");
             // 
+            // label19
+            // 
+            this.label19.AutoSize = true;
+            this.label19.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.label19.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label19.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.label19.Location = new System.Drawing.Point(605, 264);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(53, 16);
+            this.label19.TabIndex = 689;
+            this.label19.Text = "Height :";
+            this.theme1.SetTheme(this.label19, "(default)");
+            // 
+            // txtHeight
+            // 
+            this.txtHeight.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtHeight.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
+            this.txtHeight.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.txtHeight.Location = new System.Drawing.Point(693, 265);
+            this.txtHeight.Name = "txtHeight";
+            this.txtHeight.Size = new System.Drawing.Size(72, 20);
+            this.txtHeight.TabIndex = 688;
+            this.txtHeight.Tag = null;
+            this.theme1.SetTheme(this.txtHeight, "(default)");
+            this.txtHeight.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            // 
+            // chkCongenital
+            // 
+            this.chkCongenital.BackColor = System.Drawing.Color.Transparent;
+            this.chkCongenital.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
+            this.chkCongenital.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.chkCongenital.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.chkCongenital.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chkCongenital.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.chkCongenital.Location = new System.Drawing.Point(165, 261);
+            this.chkCongenital.Name = "chkCongenital";
+            this.chkCongenital.Padding = new System.Windows.Forms.Padding(4, 1, 1, 1);
+            this.chkCongenital.Size = new System.Drawing.Size(98, 24);
+            this.chkCongenital.TabIndex = 687;
+            this.chkCongenital.Text = "มีโรคประจำตัว";
+            this.theme1.SetTheme(this.chkCongenital, "(default)");
+            this.chkCongenital.UseVisualStyleBackColor = true;
+            this.chkCongenital.Value = null;
+            this.chkCongenital.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            // 
+            // txtORDescription
+            // 
+            this.txtORDescription.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtORDescription.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
+            this.txtORDescription.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.txtORDescription.Location = new System.Drawing.Point(268, 243);
+            this.txtORDescription.Name = "txtORDescription";
+            this.txtORDescription.Size = new System.Drawing.Size(331, 20);
+            this.txtORDescription.TabIndex = 686;
+            this.txtORDescription.Tag = null;
+            this.theme1.SetTheme(this.txtORDescription, "(default)");
+            this.txtORDescription.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            // 
+            // chkOR
+            // 
+            this.chkOR.BackColor = System.Drawing.Color.Transparent;
+            this.chkOR.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
+            this.chkOR.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.chkOR.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.chkOR.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chkOR.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.chkOR.Location = new System.Drawing.Point(165, 240);
+            this.chkOR.Name = "chkOR";
+            this.chkOR.Padding = new System.Windows.Forms.Padding(4, 1, 1, 1);
+            this.chkOR.Size = new System.Drawing.Size(115, 24);
+            this.chkOR.TabIndex = 685;
+            this.chkOR.Text = "เคย ผ่าตัดหรือไม่";
+            this.theme1.SetTheme(this.chkOR, "(default)");
+            this.chkOR.UseVisualStyleBackColor = true;
+            this.chkOR.Value = null;
+            this.chkOR.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            // 
+            // txtCongenital
+            // 
+            this.txtCongenital.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtCongenital.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
+            this.txtCongenital.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.txtCongenital.Location = new System.Drawing.Point(268, 265);
+            this.txtCongenital.Name = "txtCongenital";
+            this.txtCongenital.Size = new System.Drawing.Size(331, 20);
+            this.txtCongenital.TabIndex = 683;
+            this.txtCongenital.Tag = null;
+            this.theme1.SetTheme(this.txtCongenital, "(default)");
+            this.txtCongenital.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.label3.Location = new System.Drawing.Point(605, 242);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(81, 16);
+            this.label3.TabIndex = 678;
+            this.label3.Text = "Nick Name :";
+            this.theme1.SetTheme(this.label3, "(default)");
+            // 
+            // txtNickName
+            // 
+            this.txtNickName.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtNickName.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
+            this.txtNickName.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.txtNickName.Location = new System.Drawing.Point(693, 243);
+            this.txtNickName.Name = "txtNickName";
+            this.txtNickName.Size = new System.Drawing.Size(72, 20);
+            this.txtNickName.TabIndex = 677;
+            this.txtNickName.Tag = null;
+            this.theme1.SetTheme(this.txtNickName, "(default)");
+            this.txtNickName.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            // 
+            // chkOPU
+            // 
+            this.chkOPU.BackColor = System.Drawing.Color.Transparent;
+            this.chkOPU.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
+            this.chkOPU.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.chkOPU.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.chkOPU.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chkOPU.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.chkOPU.Location = new System.Drawing.Point(165, 221);
+            this.chkOPU.Name = "chkOPU";
+            this.chkOPU.Padding = new System.Windows.Forms.Padding(4, 1, 1, 1);
+            this.chkOPU.Size = new System.Drawing.Size(87, 24);
+            this.chkOPU.TabIndex = 676;
+            this.chkOPU.Text = "เคย OPU";
+            this.theme1.SetTheme(this.chkOPU, "(default)");
+            this.chkOPU.UseVisualStyleBackColor = true;
+            this.chkOPU.Value = null;
+            this.chkOPU.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            // 
             // txtIdOld
             // 
             this.txtIdOld.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtIdOld.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
             this.txtIdOld.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.txtIdOld.Location = new System.Drawing.Point(458, 9);
+            this.txtIdOld.Location = new System.Drawing.Point(188, 31);
             this.txtIdOld.Name = "txtIdOld";
             this.txtIdOld.Size = new System.Drawing.Size(30, 20);
             this.txtIdOld.TabIndex = 619;
@@ -612,9 +772,9 @@
             this.txtUserReq.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtUserReq.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
             this.txtUserReq.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.txtUserReq.Location = new System.Drawing.Point(543, 221);
+            this.txtUserReq.Location = new System.Drawing.Point(558, 221);
             this.txtUserReq.Name = "txtUserReq";
-            this.txtUserReq.Size = new System.Drawing.Size(207, 20);
+            this.txtUserReq.Size = new System.Drawing.Size(192, 20);
             this.txtUserReq.TabIndex = 604;
             this.txtUserReq.Tag = null;
             this.theme1.SetTheme(this.txtUserReq, "(default)");
@@ -946,7 +1106,7 @@
             this.chkChronic.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.chkChronic.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.chkChronic.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.chkChronic.Location = new System.Drawing.Point(201, 222);
+            this.chkChronic.Location = new System.Drawing.Point(253, 221);
             this.chkChronic.Name = "chkChronic";
             this.chkChronic.Padding = new System.Windows.Forms.Padding(4, 1, 1, 1);
             this.chkChronic.Size = new System.Drawing.Size(88, 24);
@@ -965,7 +1125,7 @@
             this.chkDenyAllergy.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.chkDenyAllergy.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.chkDenyAllergy.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.chkDenyAllergy.Location = new System.Drawing.Point(297, 222);
+            this.chkDenyAllergy.Location = new System.Drawing.Point(349, 221);
             this.chkDenyAllergy.Name = "chkDenyAllergy";
             this.chkDenyAllergy.Padding = new System.Windows.Forms.Padding(4, 1, 1, 1);
             this.chkDenyAllergy.Size = new System.Drawing.Size(104, 24);
@@ -2603,6 +2763,13 @@
             this.splitContainer2.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).EndInit();
             this.splitContainer2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.txtHeight)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chkCongenital)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtORDescription)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chkOR)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtCongenital)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtNickName)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chkOPU)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtIdOld)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cboAgent)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnVoid)).EndInit();
@@ -2855,5 +3022,14 @@
         private System.Windows.Forms.Panel pnVisit;
         private System.Windows.Forms.Panel panel1;
         private C1.Win.C1Input.C1TextBox txtIdOld;
+        private C1.Win.C1Input.C1CheckBox chkOPU;
+        private System.Windows.Forms.Label label3;
+        private C1.Win.C1Input.C1TextBox txtNickName;
+        private C1.Win.C1Input.C1TextBox txtCongenital;
+        private C1.Win.C1Input.C1CheckBox chkOR;
+        private C1.Win.C1Input.C1TextBox txtORDescription;
+        private C1.Win.C1Input.C1CheckBox chkCongenital;
+        private System.Windows.Forms.Label label19;
+        private C1.Win.C1Input.C1TextBox txtHeight;
     }
 }

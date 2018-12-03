@@ -18,6 +18,7 @@ using System.Diagnostics;
 using System.Drawing;
 using System.IO;
 using System.Linq;
+using System.Net;
 using System.Reflection;
 using System.Text;
 using System.Threading;
@@ -51,7 +52,8 @@ namespace clinic_ivf.gui
 
         String filename = "";
         static String filenamepic = "", host="", user="", pass="";
-        
+        Color color;
+        Boolean flagImg = false;
         public FrmPatientAdd(IvfControl ic, String pttid, String pttoldid, String vsoldid)
         {
             InitializeComponent();
@@ -80,6 +82,7 @@ namespace clinic_ivf.gui
             image1 = null;
             try
             {
+                color = ColorTranslator.FromHtml(ic.iniC.grfRowColor);
                 webcanDevice = new FilterInfoCollection(FilterCategory.VideoInputDevice);
                 ic.video = new VideoCaptureDevice();
                 foreach (FilterInfo device in webcanDevice)
@@ -94,7 +97,7 @@ namespace clinic_ivf.gui
             }
 
             txtDob.Value = DateTime.Now.ToString("yyyy-MM-dd");
-            ic.ivfDB.fpfDB.setCboPrefix(cboPrefix);
+            ic.ivfDB.fpfDB.setCboPrefix(cboPrefix,"");
             ic.ivfDB.fmsDB.setCboMarriage(cboMarital);
             ic.ivfDB.fbgDB.setCboBloodGroup(cboBloodG);
             ic.ivfDB.fpnDB.setCboNation(CboNation);
@@ -102,12 +105,12 @@ namespace clinic_ivf.gui
             ic.ivfDB.frcDB.setCboRace(cboRace);
             ic.ivfDB.frgDB.setCboReligion(cboRg);
 
-            ic.ivfDB.fpfDB.setCboPrefix(cboCouPrefix);
-            ic.ivfDB.fpfDB.setCboPrefix(cboName1Prefix);
-            ic.ivfDB.fpfDB.setCboPrefix(cboName1Prefix);
+            ic.ivfDB.fpfDB.setCboPrefix(cboCouPrefix, "");
+            ic.ivfDB.fpfDB.setCboPrefix(cboName1Prefix, "");
+            ic.ivfDB.fpfDB.setCboPrefix(cboName1Prefix, "");
 
-            ic.ivfDB.fpfDB.setCboPrefix(cboCouPrefix);
-            ic.ivfDB.fpfDB.setCboPrefix(cboName1Prefix);
+            ic.ivfDB.fpfDB.setCboPrefix(cboCouPrefix, "");
+            ic.ivfDB.fpfDB.setCboPrefix(cboName1Prefix, "");
             ic.ivfDB.crlDB.setCboContractPlans(cboCrl);
 
             ic.ivfDB.frlDB.setCboRelation(cboCouRel);
@@ -124,7 +127,7 @@ namespace clinic_ivf.gui
             setControl();
             setFocusColor();
             initGrfImg();
-            setGrfImg("");
+            setGrfImg();
             initGrfVs();
             setGrfVs();
 
@@ -169,91 +172,93 @@ namespace clinic_ivf.gui
             if(tC1.SelectedTab == tabImage)
             {
                 //MessageBox.Show("aaa", "");
-                OpenFileDialog ofd = new OpenFileDialog();
-                ofd.Filter = "Images (*.BMP;*.JPG;*.Jepg;*.Png;*.GIF)|*.BMP;*.JPG;*.Jepg;*.Png;*.GIF|Pdf Files|*.pdf|All files (*.*)|*.*";
-                ofd.Multiselect = true;
-                ofd.Title = "My Image Browser";
-                DialogResult dr = ofd.ShowDialog();
-                if (dr == System.Windows.Forms.DialogResult.OK)
-                {
-                    //FrmPatientUpPic frm = new FrmPatientUpPic(ofd.FileNames);
-                    //frm.ShowDialog(this);
+                //OpenFileDialog ofd = new OpenFileDialog();
+                //ofd.Filter = "Images (*.BMP;*.JPG;*.Jepg;*.Png;*.GIF)|*.BMP;*.JPG;*.Jepg;*.Png;*.GIF|Pdf Files|*.pdf|All files (*.*)|*.*";
+                //ofd.Multiselect = true;
+                //ofd.Title = "My Image Browser";
+                //DialogResult dr = ofd.ShowDialog();
+                //if (dr == System.Windows.Forms.DialogResult.OK)
+                //{
+                //    //FrmPatientUpPic frm = new FrmPatientUpPic(ofd.FileNames);
+                //    //frm.ShowDialog(this);
 
-                    // Read the files
+                //    // Read the files
 
-                    //Row row1 = grfImg.Rows.Add();
-                    //CellRange rg1 = grfImg.GetCellRange(grfImg.Rows.Count-1, colImg);
-                    int i = 1;
-                    grfImg.AllowMerging = C1.Win.C1FlexGrid.AllowMergingEnum.RestrictRows;
-                    grfImg.Cols[colImg].AllowMerging = true;
-                    //cc.Image
-                    Column col = grfImg.Cols[colImg];
-                    col.DataType = typeof(Image);
-                    foreach (String file in ofd.FileNames)
-                    {
-                        // Create a PictureBox.
-                        try
-                        {
-                            Image loadedImage, resizedImage;
-                            String[] sur = file.Split('.');
-                            String ex = "";
-                            if (sur.Length == 2)
-                            {
-                                ex = sur[1];
-                            }
-                            if (!ex.Equals("pdf"))
-                            {
-                                loadedImage = Image.FromFile(file);
-                                int originalWidth = loadedImage.Width;
-                                int newWidth = 180;
-                                resizedImage = loadedImage.GetThumbnailImage(newWidth, (newWidth * loadedImage.Height) / originalWidth, null, IntPtr.Zero);
-                            }
-                            else
-                            {
-                                resizedImage = Resources.pdf_symbol_80_2;
-                            }
-                            grfImg.Cols[colImg].ImageAndText = true;
-                            Row row1 = grfImg.Rows.Add();
-                            int row = grfImg.Rows.Count;
-                            
-                            int hei = grfImg.Rows.DefaultSize;
-                            //grfImg.Rows[row-1].Height = hei*6;
-                            CellRange rg1 = grfImg.GetCellRange(row - 1, colImg);
+                //    //Row row1 = grfImg.Rows.Add();
+                //    //CellRange rg1 = grfImg.GetCellRange(grfImg.Rows.Count-1, colImg);
+                //    int i = 1;
+                //    grfImg.AllowMerging = C1.Win.C1FlexGrid.AllowMergingEnum.RestrictRows;
+                //    grfImg.Cols[colImg].AllowMerging = true;
+                //    //cc.Image
+                //    Column col = grfImg.Cols[colImg];
+                //    col.DataType = typeof(Image);
+                //    foreach (String file in ofd.FileNames)
+                //    {
+                //        // Create a PictureBox.
+                //        try
+                //        {
+                //            Image loadedImage, resizedImage;
+                //            String[] sur = file.Split('.');
+                //            String ex = "";
+                //            if (sur.Length == 2)
+                //            {
+                //                ex = sur[1];
+                //            }
+                //            if (!ex.Equals("pdf"))
+                //            {
+                //                loadedImage = Image.FromFile(file);
+                //                int originalWidth = loadedImage.Width;
+                //                int newWidth = 180;
+                //                resizedImage = loadedImage.GetThumbnailImage(newWidth, (newWidth * loadedImage.Height) / originalWidth, null, IntPtr.Zero);
+                //            }
+                //            else
+                //            {
+                //                resizedImage = Resources.pdf_symbol_80_2;
+                //            }
+                //            grfImg.Cols[colImg].ImageAndText = true;
+                //            Row row1 = grfImg.Rows.Add();
+                //            int row = grfImg.Rows.Count;
 
-                            //PictureBox pb = new PictureBox();                            
-                            
-                            grfImg[row - 1, colPathPic] = file;
-                            grfImg[row - 1, colBtn] = "send";
-                            
-                            grfImg[row - 1, colImg] = resizedImage;
+                //            int hei = grfImg.Rows.DefaultSize;
+                //            //grfImg.Rows[row-1].Height = hei*6;
+                //            CellRange rg1 = grfImg.GetCellRange(row - 1, colImg);
 
-                            i++;
-                        }
-                        catch (SecurityException ex)
-                        {
-                            // The user lacks appropriate permissions to read files, discover paths, etc.
-                            MessageBox.Show("Security error. Please contact your administrator for details.\n\n" +
-                                "Error message: " + ex.Message + "\n\n" +
-                                "Details (send to Support):\n\n" + ex.StackTrace
-                            );
-                        }
-                        catch (Exception ex)
-                        {
-                            // Could not load the image - probably related to Windows file system permissions.
-                            MessageBox.Show("Cannot display the image: " + file.Substring(file.LastIndexOf('\\'))
-                                + ". You may not have permission to read the file, or " +
-                                "it may be corrupt.\n\nReported error: " + ex.Message);
-                        }
-                    }
-                    grfImg.AutoSizeCols();
-                    grfImg.AutoSizeRows();
-                }
-                grfImg.Cols[colDesc].Visible = true;
-                grfImg.Cols[colDesc2].Visible = false;
-                grfImg.Cols[colDesc3].Visible = false;
-                grfImg.Cols[colHn].Visible = false;
-                grfImg.Cols[colPathPic].Visible = true;
-                grfImg.Cols[colBtn].Visible = false;
+                //            //PictureBox pb = new PictureBox();                            
+
+                //            grfImg[row - 1, colPathPic] = file;
+                //            grfImg[row - 1, colBtn] = "send";
+
+                //            grfImg[row - 1, colImg] = resizedImage;
+
+                //            i++;
+                //        }
+                //        catch (SecurityException ex)
+                //        {
+                //            // The user lacks appropriate permissions to read files, discover paths, etc.
+                //            MessageBox.Show("Security error. Please contact your administrator for details.\n\n" +
+                //                "Error message: " + ex.Message + "\n\n" +
+                //                "Details (send to Support):\n\n" + ex.StackTrace
+                //            );
+                //        }
+                //        catch (Exception ex)
+                //        {
+                //            // Could not load the image - probably related to Windows file system permissions.
+                //            MessageBox.Show("Cannot display the image: " + file.Substring(file.LastIndexOf('\\'))
+                //                + ". You may not have permission to read the file, or " +
+                //                "it may be corrupt.\n\nReported error: " + ex.Message);
+                //        }
+                //    }
+                //    grfImg.AutoSizeCols();
+                //    grfImg.AutoSizeRows();
+                //}
+                //grfImg.Cols[colDesc].Visible = true;
+                //grfImg.Cols[colDesc2].Visible = false;
+                //grfImg.Cols[colDesc3].Visible = false;
+                //grfImg.Cols[colHn].Visible = false;
+                //grfImg.Cols[colPathPic].Visible = true;
+                //grfImg.Cols[colBtn].Visible = false;
+                grfImg.AutoSizeCols();
+                grfImg.AutoSizeRows();
             }
         }
 
@@ -856,16 +861,98 @@ namespace clinic_ivf.gui
             grfImg.DoubleClick += GrfImg_DoubleClick;
             //grfExpnC.CellChanged += new C1.Win.C1FlexGrid.RowColEventHandler(this.grfDept_CellChanged);
             ContextMenu menuGw = new ContextMenu();
-            //menuGw.MenuItems.Add("&แก้ไข รายการเบิก", new EventHandler(ContextMenu_edit));
-            //menuGw.MenuItems.Add("&แก้ไข", new EventHandler(ContextMenu_Gw_Edit));
-            //menuGw.MenuItems.Add("&ยกเลิก", new EventHandler(ContextMenu_Gw_Cancel));
+            menuGw.MenuItems.Add("&Upload รูปบัตรประชาชน", new EventHandler(ContextMenu_grfimg_upload_ptt));
+            menuGw.MenuItems.Add("&Upload สำเนาบัตรประชาชน ที่มีลายเซ็น", new EventHandler(ContextMenu_grfimg_upload_ptt));
+            menuGw.MenuItems.Add("&ยกเลิก", new EventHandler(ContextMenu_grfimg_Cancel));
             grfImg.ContextMenu = menuGw;
             pnImage.Controls.Add(grfImg);
 
             theme1.SetTheme(grfImg, "Office2016Colorful");
 
         }
+        private void ContextMenu_grfimg_upload_ptt(object sender, System.EventArgs e)
+        {
+            if (grfImg.Row < 0) return;
+            String pathfile1 = grfImg[grfImg.Row, colPathPic] != null ? grfImg[grfImg.Row, colPathPic].ToString() : "";
+            if (pathfile1.Length > 0)
+            {
+                MessageBox.Show("มีรูปภาพ อยู่แล้ว กรุณา ยกเลิก ก่อน Upload รูปใหม่ ", "");
+                return;
+            }
 
+            if (MessageBox.Show("ต้องการ Upload image to server ", "", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == DialogResult.OK)
+            {
+                OpenFileDialog ofd = new OpenFileDialog();
+                ofd.Filter = "Images (*.BMP;*.JPG;*.Jepg;*.Png;*.GIF)|*.BMP;*.JPG;*.Jepg;*.Png;*.GIF|Pdf Files|*.pdf|All files (*.*)|*.*";
+                ofd.Multiselect = false;
+                ofd.Title = "My Image Browser";
+                DialogResult dr = ofd.ShowDialog();
+                if (dr == System.Windows.Forms.DialogResult.OK)
+                {
+                    String id = grfImg[grfImg.Row, colID] != null ? grfImg[grfImg.Row, colID].ToString(): "";
+                    String pathfile = ofd.FileName;
+                    String desc = grfImg[grfImg.Row, colDesc] != null ? grfImg[grfImg.Row, colDesc].ToString() : "";
+                    String no = grfImg[grfImg.Row, colHn] != null ? grfImg[grfImg.Row, colHn].ToString() : "";
+                    if (pathfile.Length > 0)
+                    {
+                        ic.cStf.staff_id = "";
+                        FrmPasswordConfirm frm = new FrmPasswordConfirm(ic);
+                        frm.ShowDialog(this);
+                        if (!ic.cStf.staff_id.Equals(""))
+                        {
+                            String filename = "", re = "";
+                            String[] ext = pathfile.Split('.');
+                            if (ext.Length > 1)
+                            {
+                                filename =  txtHn.Text.Replace("-", "") + "_1"+ "." + ext[ext.Length - 1];
+                                PatientImage ptti = new PatientImage();
+                                ptti.patient_image_id = id;
+                                ptti.t_patient_id = txtID.Text;
+                                ptti.t_visit_id = "";
+                                ptti.desc1 = desc;
+                                ptti.desc2 = "";
+                                ptti.desc3 = "";
+                                ptti.desc4 = "";
+                                ptti.active = "1";
+                                ptti.remark = "";
+                                ptti.date_create = "";
+                                ptti.date_modi = "";
+                                ptti.date_cancel = "";
+                                ptti.user_create = "";
+                                ptti.user_modi = "";
+                                ptti.user_cancel = "";
+                                ptti.image_path = "images/" + txtHn.Text.Replace("-", "") + "/" + filename;
+                                ptti.status_image = "1";
+                                re = ic.ivfDB.pttImgDB.insertpatientImage(ptti, ic.cStf.staff_id);
+                                long chk = 0;
+                                if (long.TryParse(re, out chk))
+                                {
+                                    ic.savePicOPUtoServer(txtHn.Text.Replace("-",""), filename, pathfile);
+                                    grfImg.Rows[grfImg.Row].StyleNew.BackColor = color;
+                                    setGrfImg();
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        private void ContextMenu_grfimg_Cancel(object sender, System.EventArgs e)
+        {
+            if (MessageBox.Show("ต้องการ ยกเลิก ", "", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == DialogResult.OK)
+            {
+                String id = grfImg[grfImg.Row, colID].ToString();
+                ic.cStf.staff_id = "";
+                FrmPasswordConfirm frm = new FrmPasswordConfirm(ic);
+                frm.ShowDialog(this);
+                if (!ic.cStf.staff_id.Equals(""))
+                {
+                    String pathfile = grfImg[grfImg.Row, colPathPic].ToString();
+                    String re = ic.ivfDB.opuEmDevDB.updatePathPic(id, "", "", "", ic.user.staff_id);
+                    ic.delPicOPUtoServer(txtHn.Text.Replace("-", ""), pathfile);
+                }
+            }
+        }
         private void GrfImg_DoubleClick(object sender, EventArgs e)
         {
             //throw new NotImplementedException();
@@ -903,14 +990,14 @@ namespace clinic_ivf.gui
             if (e.NewRange.r1 < 0) return;
             if (e.NewRange.Data == null) return;
         }
-        private void setGrfImg(String search)
+        private void setGrfImg()
         {
             grfImg.Clear();
             grfImg.DataSource = null;
-            grfImg.Rows.Count = 1;
-            grfImg.Cols.Count = 9;
-            DataTable dt = new DataTable();            
-
+            grfImg.Rows.Count = 2;
+            grfImg.Cols.Count = 10;
+            DataTable dt = new DataTable();
+            dt = ic.ivfDB.pttImgDB.selectByPttID(pttId);
             //grfExpn.Rows.Count = dt.Rows.Count + 1;
             //grfCu.Rows.Count = 41;
             //grfCu.Cols.Count = 4;
@@ -954,17 +1041,84 @@ namespace clinic_ivf.gui
             //grfImg.Cols[colImg].ImageMap = ht;
             grfImg.Cols[colImg].ImageAndText = false;
 
-            ContextMenu menuGw = new ContextMenu();
-            menuGw.MenuItems.Add("&แก้ไข Patient", new EventHandler(ContextMenu_edit));
-            grfImg.ContextMenu = menuGw;
+            //ContextMenu menuGw = new ContextMenu();
+            //menuGw.MenuItems.Add("&แก้ไข Patient", new EventHandler(ContextMenu_edit));
+            //grfImg.ContextMenu = menuGw;
 
             Color color = ColorTranslator.FromHtml(ic.iniC.grfRowColor);
             //CellRange rg1 = grfBank.GetCellRange(1, colE, grfBank.Rows.Count, colE);
             //rg1.Style = grfBank.Styles["date"];
             //grfCu.Cols[colID].Visible = false;
-            for (int i = 1; i <= grfImg.Rows.Count - 1; i++)
+            int i = 0;
+            foreach (DataRow row in dt.Rows)
             {
+                i++;
+                Row row1 = grfImg.Rows.Add();
+                row1[colID] = row[ic.ivfDB.pttImgDB.pttI.patient_image_id].ToString();
+                row1[colDesc] = row[ic.ivfDB.pttImgDB.pttI.desc1].ToString();
+                row1[colPathPic] = row[ic.ivfDB.pttImgDB.pttI.image_path].ToString();
+                row1[colStatus] = row[ic.ivfDB.pttImgDB.pttI.status_image].ToString();
                 grfImg[i, 0] = i;
+                if (row[ic.ivfDB.pttImgDB.pttI.image_path] != null && !row[ic.ivfDB.pttImgDB.pttI.image_path].ToString().Equals(""))
+                {
+                    int ii = i;
+                    new Thread(() =>
+                    {
+                        Thread.CurrentThread.IsBackground = true;
+                        Image loadedImage = null, resizedImage;
+                        String aaa = row[ic.ivfDB.pttImgDB.pttI.image_path].ToString();
+                        FtpWebRequest ftpRequest = null;
+                        FtpWebResponse ftpResponse = null;
+                        Stream ftpStream = null;
+                        int bufferSize = 2048;
+                        MemoryStream stream = new MemoryStream();
+                        string host = null;
+                        string user = null;
+                        string pass = null;     //iniC.hostFTP, iniC.userFTP, iniC.passFTP
+                        host = ic.iniC.hostFTP; user = ic.iniC.userFTP; pass = ic.iniC.passFTP;
+                        try
+                        {
+                            ftpRequest = (FtpWebRequest)FtpWebRequest.Create(host + "/" + aaa);
+                            ftpRequest.Credentials = new NetworkCredential(user, pass);
+                            ftpRequest.UseBinary = true;
+                            ftpRequest.UsePassive = false;
+                            ftpRequest.KeepAlive = true;
+                            ftpRequest.Method = WebRequestMethods.Ftp.DownloadFile;
+                            ftpResponse = (FtpWebResponse)ftpRequest.GetResponse();
+                            ftpStream = ftpResponse.GetResponseStream();
+                            byte[] byteBuffer = new byte[bufferSize];
+                            int bytesRead = ftpStream.Read(byteBuffer, 0, bufferSize);
+                            try
+                            {
+                                while (bytesRead > 0)
+                                {
+                                    stream.Write(byteBuffer, 0, bytesRead);
+                                    bytesRead = ftpStream.Read(byteBuffer, 0, bufferSize);
+                                }
+                            }
+                            catch (Exception ex)
+                            {
+                                Console.WriteLine(ex.ToString());
+                            }
+                            loadedImage = new Bitmap(stream);
+                            ftpStream.Close();
+                            ftpResponse.Close();
+                            ftpRequest = null;
+                        }
+                        catch (Exception ex) { Console.WriteLine(ex.ToString()); }
+                        grfImg.Cols[colImg].ImageAndText = true;
+                        if (loadedImage != null)
+                        {
+                            int originalWidth = loadedImage.Width;
+                            int newWidth = 180;
+                            resizedImage = loadedImage.GetThumbnailImage(newWidth, (newWidth * loadedImage.Height) / originalWidth, null, IntPtr.Zero);
+                            Column col = grfImg.Cols[colImg];
+                            col.DataType = typeof(Image);
+                            row1[colImg] = resizedImage;
+                            flagImg = true;
+                        }
+                    }).Start();
+                }
                 //if (i % 2 == 0)
                     //grfPtt.Rows[i].StyleNew.BackColor = color;
             }
@@ -1264,6 +1418,14 @@ namespace clinic_ivf.gui
             ic.setC1Combo(cboCouRel, ptt.patient_coulpe_f_patient_relation_id);
             ic.setC1Combo(cboCrl, ptt.b_contract_plans_id);
             txtAgent.Value = ptt.agent;
+
+            chkOPU.Checked = ptt.status_opu.Equals("1") ? true : false;
+            txtNickName.Value = ptt.patient_nickname;
+            chkOR.Checked = ptt.status_or.Equals("1") ? true : false;
+            chkCongenital.Checked = ptt.status_congenial.Equals("1") ? true : false;
+            txtORDescription.Value = ptt.or_description;
+            txtCongenital.Value = ptt.congenital_diseases_description;
+            txtHeight.Value = ptt.patient_height;
             //txtEmail.Value = pttO.Email;
         }
         private void setControlPtt(String pttid)
@@ -1338,6 +1500,13 @@ namespace clinic_ivf.gui
             ic.setC1Combo(cboCouRel, ptt.patient_coulpe_f_patient_relation_id);
             ic.setC1Combo(cboCrl, ptt.b_contract_plans_id);
             ic.setC1Combo(cboAgent, ptt.agent);
+            txtNickName.Value = ptt.patient_nickname;
+            //txtNickName.Value = ptt.patient_nickname;
+            chkOR.Checked = ptt.status_or.Equals("1") ? true : false;
+            chkCongenital.Checked = ptt.status_congenial.Equals("1") ? true : false;
+            txtORDescription.Value = ptt.or_description;
+            txtCongenital.Value = ptt.congenital_diseases_description;
+            txtHeight.Value = ptt.patient_height;
 
             PatientOld pttO = new PatientOld();
             VisitOld vsOld = new VisitOld();
@@ -1507,9 +1676,13 @@ namespace clinic_ivf.gui
                 ptt.agent = cboAgent.SelectedItem == null ? "" : ((ComboBoxItem)cboAgent.SelectedItem).Value;
             }
 
-            //ptt.patient_contact_firstname = txtContFname1.Text;
-            //ptt.patient_contact_lastname = txtContLname1.Text;
-
+            ptt.status_opu = chkOPU.Checked == true ? "1" : "0";
+            ptt.patient_nickname = txtNickName.Text;
+            ptt.status_or = chkOR.Checked == true ? "1" : "0";
+            ptt.status_congenial = chkCongenital.Checked == true ? "1" : "0";
+            ptt.or_description = txtORDescription.Text;
+            ptt.congenital_diseases_description = txtCongenital.Text;
+            ptt.patient_height = txtHeight.Text;
         }
         private void DoPrint(C1PdfDocumentSource pds)
         {

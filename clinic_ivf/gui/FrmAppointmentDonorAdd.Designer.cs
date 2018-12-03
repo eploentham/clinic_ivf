@@ -37,6 +37,7 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.chkTvs = new C1.Win.C1Input.C1CheckBox();
             this.txtStfConfirmID = new C1.Win.C1Input.C1TextBox();
             this.txtUserReq = new C1.Win.C1Input.C1TextBox();
             this.label21 = new System.Windows.Forms.Label();
@@ -90,6 +91,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.c1Calendar1)).BeginInit();
             this.panel3.SuspendLayout();
             this.groupBox2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.chkTvs)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtStfConfirmID)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtUserReq)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtAppointment)).BeginInit();
@@ -239,6 +241,7 @@
             // groupBox2
             // 
             this.groupBox2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.groupBox2.Controls.Add(this.chkTvs);
             this.groupBox2.Controls.Add(this.txtStfConfirmID);
             this.groupBox2.Controls.Add(this.txtUserReq);
             this.groupBox2.Controls.Add(this.label21);
@@ -271,6 +274,24 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Appointment";
             this.theme1.SetTheme(this.groupBox2, "(default)");
+            // 
+            // chkTvs
+            // 
+            this.chkTvs.BackColor = System.Drawing.Color.Transparent;
+            this.chkTvs.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
+            this.chkTvs.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.chkTvs.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.chkTvs.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.chkTvs.Location = new System.Drawing.Point(463, 67);
+            this.chkTvs.Name = "chkTvs";
+            this.chkTvs.Padding = new System.Windows.Forms.Padding(4, 1, 1, 1);
+            this.chkTvs.Size = new System.Drawing.Size(58, 24);
+            this.chkTvs.TabIndex = 666;
+            this.chkTvs.Text = "TVS";
+            this.theme1.SetTheme(this.chkTvs, "(default)");
+            this.chkTvs.UseVisualStyleBackColor = true;
+            this.chkTvs.Value = null;
+            this.chkTvs.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
             // 
             // txtStfConfirmID
             // 
@@ -443,7 +464,7 @@
             this.pnDay.Location = new System.Drawing.Point(0, 0);
             this.pnDay.Name = "pnDay";
             this.pnDay.Size = new System.Drawing.Size(779, 402);
-            this.pnDay.TabIndex = 0;
+            this.pnDay.TabIndex = 1;
             this.theme1.SetTheme(this.pnDay, "(default)");
             // 
             // txtRemarkpApm
@@ -507,10 +528,10 @@
             this.chkEndo.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.chkEndo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.chkEndo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.chkEndo.Location = new System.Drawing.Point(218, 91);
+            this.chkEndo.Location = new System.Drawing.Point(474, 93);
             this.chkEndo.Name = "chkEndo";
             this.chkEndo.Padding = new System.Windows.Forms.Padding(4, 1, 1, 1);
-            this.chkEndo.Size = new System.Drawing.Size(104, 24);
+            this.chkEndo.Size = new System.Drawing.Size(58, 24);
             this.chkEndo.TabIndex = 556;
             this.chkEndo.Text = "Endo";
             this.theme1.SetTheme(this.chkEndo, "(default)");
@@ -525,10 +546,10 @@
             this.chkLt.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.chkLt.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.chkLt.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.chkLt.Location = new System.Drawing.Point(345, 65);
+            this.chkLt.Location = new System.Drawing.Point(610, 93);
             this.chkLt.Name = "chkLt";
             this.chkLt.Padding = new System.Windows.Forms.Padding(4, 1, 1, 1);
-            this.chkLt.Size = new System.Drawing.Size(104, 24);
+            this.chkLt.Size = new System.Drawing.Size(88, 24);
             this.chkLt.TabIndex = 555;
             this.chkLt.Text = "Lt.Ovary";
             this.theme1.SetTheme(this.chkLt, "(default)");
@@ -543,7 +564,7 @@
             this.chkRt.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.chkRt.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.chkRt.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.chkRt.Location = new System.Drawing.Point(218, 67);
+            this.chkRt.Location = new System.Drawing.Point(538, 93);
             this.chkRt.Name = "chkRt";
             this.chkRt.Padding = new System.Windows.Forms.Padding(4, 1, 1, 1);
             this.chkRt.Size = new System.Drawing.Size(104, 24);
@@ -561,10 +582,10 @@
             this.chkPrl.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.chkPrl.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.chkPrl.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.chkPrl.Location = new System.Drawing.Point(345, 91);
+            this.chkPrl.Location = new System.Drawing.Point(382, 67);
             this.chkPrl.Name = "chkPrl";
             this.chkPrl.Padding = new System.Windows.Forms.Padding(4, 1, 1, 1);
-            this.chkPrl.Size = new System.Drawing.Size(104, 24);
+            this.chkPrl.Size = new System.Drawing.Size(64, 24);
             this.chkPrl.TabIndex = 553;
             this.chkPrl.Text = "PRL";
             this.theme1.SetTheme(this.chkPrl, "(default)");
@@ -579,10 +600,10 @@
             this.chkFsh.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.chkFsh.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.chkFsh.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.chkFsh.Location = new System.Drawing.Point(474, 70);
+            this.chkFsh.Location = new System.Drawing.Point(278, 68);
             this.chkFsh.Name = "chkFsh";
             this.chkFsh.Padding = new System.Windows.Forms.Padding(4, 1, 1, 1);
-            this.chkFsh.Size = new System.Drawing.Size(104, 24);
+            this.chkFsh.Size = new System.Drawing.Size(64, 24);
             this.chkFsh.TabIndex = 552;
             this.chkFsh.Text = "FSH";
             this.theme1.SetTheme(this.chkFsh, "(default)");
@@ -597,10 +618,10 @@
             this.chkLh.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.chkLh.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.chkLh.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.chkLh.Location = new System.Drawing.Point(69, 91);
+            this.chkLh.Location = new System.Drawing.Point(174, 70);
             this.chkLh.Name = "chkLh";
             this.chkLh.Padding = new System.Windows.Forms.Padding(4, 1, 1, 1);
-            this.chkLh.Size = new System.Drawing.Size(104, 24);
+            this.chkLh.Size = new System.Drawing.Size(64, 24);
             this.chkLh.TabIndex = 551;
             this.chkLh.Text = "LH";
             this.theme1.SetTheme(this.chkLh, "(default)");
@@ -615,10 +636,10 @@
             this.chkE2.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.chkE2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.chkE2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.chkE2.Location = new System.Drawing.Point(69, 67);
+            this.chkE2.Location = new System.Drawing.Point(70, 70);
             this.chkE2.Name = "chkE2";
             this.chkE2.Padding = new System.Windows.Forms.Padding(4, 1, 1, 1);
-            this.chkE2.Size = new System.Drawing.Size(104, 24);
+            this.chkE2.Size = new System.Drawing.Size(64, 24);
             this.chkE2.TabIndex = 550;
             this.chkE2.Text = "E2";
             this.theme1.SetTheme(this.chkE2, "(default)");
@@ -684,18 +705,18 @@
             this.txtDatepApm.CurrentTimeZone = false;
             this.txtDatepApm.DateTimeInput = false;
             this.txtDatepApm.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
+            this.txtDatepApm.DisplayFormat.CalendarType = C1.Win.C1Input.CalendarType.ThaiBuddhistCalendar;
             this.txtDatepApm.DisplayFormat.FormatType = C1.Win.C1Input.FormatTypeEnum.ShortDate;
-            this.txtDatepApm.DisplayFormat.Inherit = ((C1.Win.C1Input.FormatInfoInheritFlags)((((((C1.Win.C1Input.FormatInfoInheritFlags.CustomFormat | C1.Win.C1Input.FormatInfoInheritFlags.NullText) 
+            this.txtDatepApm.DisplayFormat.Inherit = ((C1.Win.C1Input.FormatInfoInheritFlags)(((((C1.Win.C1Input.FormatInfoInheritFlags.CustomFormat | C1.Win.C1Input.FormatInfoInheritFlags.NullText) 
             | C1.Win.C1Input.FormatInfoInheritFlags.EmptyAsNull) 
             | C1.Win.C1Input.FormatInfoInheritFlags.TrimStart) 
-            | C1.Win.C1Input.FormatInfoInheritFlags.TrimEnd) 
-            | C1.Win.C1Input.FormatInfoInheritFlags.CalendarType)));
+            | C1.Win.C1Input.FormatInfoInheritFlags.TrimEnd)));
+            this.txtDatepApm.EditFormat.CalendarType = C1.Win.C1Input.CalendarType.ThaiBuddhistCalendar;
             this.txtDatepApm.EditFormat.FormatType = C1.Win.C1Input.FormatTypeEnum.ShortDate;
-            this.txtDatepApm.EditFormat.Inherit = ((C1.Win.C1Input.FormatInfoInheritFlags)((((((C1.Win.C1Input.FormatInfoInheritFlags.CustomFormat | C1.Win.C1Input.FormatInfoInheritFlags.NullText) 
+            this.txtDatepApm.EditFormat.Inherit = ((C1.Win.C1Input.FormatInfoInheritFlags)(((((C1.Win.C1Input.FormatInfoInheritFlags.CustomFormat | C1.Win.C1Input.FormatInfoInheritFlags.NullText) 
             | C1.Win.C1Input.FormatInfoInheritFlags.EmptyAsNull) 
             | C1.Win.C1Input.FormatInfoInheritFlags.TrimStart) 
-            | C1.Win.C1Input.FormatInfoInheritFlags.TrimEnd) 
-            | C1.Win.C1Input.FormatInfoInheritFlags.CalendarType)));
+            | C1.Win.C1Input.FormatInfoInheritFlags.TrimEnd)));
             this.txtDatepApm.GMTOffset = System.TimeSpan.Parse("00:00:00");
             this.txtDatepApm.ImagePadding = new System.Windows.Forms.Padding(0);
             this.txtDatepApm.Location = new System.Drawing.Point(69, 21);
@@ -977,6 +998,7 @@
             this.panel3.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.chkTvs)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtStfConfirmID)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtUserReq)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtAppointment)).EndInit();
@@ -1057,7 +1079,6 @@
         private C1.Win.C1Command.C1DockingTabPage tabVisit;
         private C1.Win.C1Command.C1DockingTabPage tabDay;
         private System.Windows.Forms.Panel pnVisit;
-        private System.Windows.Forms.Panel pnDay;
         private System.Windows.Forms.Label label8;
         private C1.Win.C1Input.C1ComboBox cboBsp;
         private System.Windows.Forms.Label label7;
@@ -1068,5 +1089,7 @@
         private System.Windows.Forms.Label label21;
         private C1.Win.C1Input.C1TextBox txtPttId;
         private C1.Win.C1Input.C1TextBox txtVsId;
+        private C1.Win.C1Input.C1CheckBox chkTvs;
+        private System.Windows.Forms.Panel pnDay;
     }
 }

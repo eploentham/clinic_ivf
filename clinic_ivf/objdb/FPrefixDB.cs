@@ -122,24 +122,32 @@ namespace clinic_ivf.objdb
 
             return dt;
         }
-        public C1ComboBox setCboPrefix(C1ComboBox c)
+        public C1ComboBox setCboPrefix(C1ComboBox c, String selected)
         {
             ComboBoxItem item = new ComboBoxItem();
-            DataTable dt = selectC1();
+            //DataTable dt = selectC1();
             //String aaa = "";
+            if (lFpf.Count <= 0) getlFPrefix();
             ComboBoxItem item1 = new ComboBoxItem();
             item1.Text = "";
-            item1.Value = "000";
+            item1.Value = "";
             c.Items.Clear();
             c.Items.Add(item1);
             //for (int i = 0; i < dt.Rows.Count; i++)
-            foreach (DataRow row in dt.Rows)
+            int i = 0;
+            foreach (FPrefix row in lFpf)
             {
                 item = new ComboBoxItem();
-                item.Text = row[fpf.patient_prefix_description].ToString();
-                item.Value = row[fpf.f_patient_prefix_id].ToString();
-
+                item.Value = row.f_patient_prefix_id;
+                item.Text = row.patient_prefix_description;
                 c.Items.Add(item);
+                if (item.Value.Equals(selected))
+                {
+                    //c.SelectedItem = item.Value;
+                    c.SelectedText = item.Text;
+                    c.SelectedIndex = i + 1;
+                }
+                i++;
             }
             return c;
         }

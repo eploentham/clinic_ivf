@@ -63,7 +63,7 @@ namespace clinic_ivf.gui
             image1 = null; 
 
             txtDob.Value = DateTime.Now.ToString("yyyy-MM-dd");
-            ic.ivfDB.fpfDB.setCboPrefix(cboPrefix);
+            ic.ivfDB.fpfDB.setCboPrefix(cboPrefix,"");
             ic.ivfDB.fmsDB.setCboMarriage(cboMarital);
             ic.ivfDB.fbgDB.setCboBloodGroup(cboBloodG);
             ic.ivfDB.fpnDB.setCboNation(CboNation);
@@ -207,6 +207,15 @@ namespace clinic_ivf.gui
                 //ic.setC1Combo(cboRg, ptt.f_patient_religion_id);
                 chkChronic.Checked = ptt.status_chronic.Equals("1") ? true : false;
                 chkDenyAllergy.Checked = ptt.status_deny_allergy.Equals("1") ? true : false;
+                chkOPU.Checked = ptt.status_opu.Equals("1") ? true : false;
+                chkOR.Checked = ptt.status_or.Equals("1") ? true : false;
+                chkCongenital.Checked = ptt.status_congenial.Equals("1") ? true : false;
+
+                vs = ic.ivfDB.vsDB.selectByPk1(vsid);
+                txtID.Value = vs.t_visit_id;
+                ic.setC1Combo(cboBsp, vs.b_service_point_id);
+                txtComment.Value = vs.visit_notice;
+                //txtHnFemale.Text = 
             }
             else
             {
@@ -298,17 +307,19 @@ namespace clinic_ivf.gui
             vs.visit_record_staff = txtStfConfirmID.Text;
             
             vs.f_visit_type_id = ic.iniC.statusAppDonor.Equals("1") ? "2" : "1";
-            //vs.mobile1 = txtMobile1.Text;
-            //vs.mobile2 = txtMobile2.Text;
-            //vs.t_patient_id = txtPid.Text;
-            //vs.passport = txtPaasport.Text;
+            vs.status_urge = chkUrge.Checked ? "1" : "0";
+            vs.patient_hn_1 = txtHnFemale.Text;
+            vs.lmp = ic.datetoDB(txtLMP.Text);
+            vs.height = txtHeight.Text;
 
-            //vs.remark = txtRemark.Text;
-            //vs.patient_birthday = txtDob.Text;
+            vs.bw = txtBW.Text;
+            vs.bp = txtBP.Text;
+            vs.queue_id = ic.ivfDB.copDB.genQueueDoc();
+            //vs.visit_notice = txtComment.Text;            
         }
         private void FrmVisitAdd_Load(object sender, EventArgs e)
         {
-            
+            tC.SelectedTab = tabVisit;
         }
     }
 }

@@ -49,7 +49,7 @@ namespace clinic_ivf.objdb
 
             return dt;
         }
-        public void getlBsp()
+        public void getlDtr()
         {
             //lDept = new List<Position>();
 
@@ -69,9 +69,9 @@ namespace clinic_ivf.objdb
         public void setCboDoctor(C1ComboBox c, String selected)
         {
             ComboBoxItem item = new ComboBoxItem();
-            DataTable dt = selectAll();
+            //DataTable dt = selectAll();
             int i = 0;
-            if (lAgnO.Count <= 0) getlBsp();
+            if (lAgnO.Count <= 0) getlDtr();
             item = new ComboBoxItem();
             item.Value = "";
             item.Text = "";

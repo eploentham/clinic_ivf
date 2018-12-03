@@ -137,6 +137,13 @@ namespace clinic_ivf.objdb
             ptt.patient_coulpe_f_patient_relation_id = "patient_coulpe_f_patient_relation_id";
             ptt.b_contract_plans_id = "b_contract_plans_id";
             ptt.t_patient_id_old = "t_patient_id_old";
+            ptt.status_opu = "status_opu";
+            ptt.patient_nickname = "patient_nickname";
+            ptt.patient_height = "patient_height";
+            ptt.status_or = "status_or";
+            ptt.or_description = "or_description";
+            ptt.status_congenial = "status_congenial_diseases";
+            ptt.congenital_diseases_description = "congenial_diseases_description";
 
             ptt.pkField = "t_patient_id";
             ptt.table = "t_patient";
@@ -208,7 +215,7 @@ namespace clinic_ivf.objdb
             p.patient_soi = p.patient_soi == null ? "" : p.patient_soi;
             p.patient_contact_soi = p.patient_contact_soi == null ? "" : p.patient_contact_soi;
             p.status_chronic = p.status_chronic == null ? "" : p.status_chronic;
-            p.status_hiv = p.status_hiv == null ? "" : p.status_hiv;
+            p.status_hiv = p.status_hiv == null ? "0" : p.status_hiv;
             p.patient_status_hiv = p.patient_status_hiv == null ? "" : p.patient_status_hiv;
             p.status_deny_allergy = p.status_deny_allergy == null ? "" : p.status_deny_allergy;
             p.line_id = p.line_id == null ? "" : p.line_id;
@@ -231,6 +238,13 @@ namespace clinic_ivf.objdb
             p.patient_lastname_e = p.patient_lastname_e == null ? "" : p.patient_lastname_e;
             p.contract = p.contract == null ? "" : p.contract;
             p.insurance = p.insurance == null ? "" : p.insurance;
+            p.status_opu = p.status_opu == null ? "0" : p.status_opu;
+            p.patient_height = p.patient_height == null ? "" : p.patient_height;
+            p.status_or = p.status_or == null ? "0" : p.status_or;
+            p.or_description = p.or_description == null ? "" : p.or_description;
+            p.status_congenial = p.status_congenial == null ? "" : p.status_congenial;
+            p.congenital_diseases_description = p.congenital_diseases_description == null ? "" : p.congenital_diseases_description;
+            p.patient_nickname = p.patient_nickname == null ? "" : p.patient_nickname;
 
             p.f_patient_prefix_id = long.TryParse(p.f_patient_prefix_id, out chk) ? chk.ToString() : "0";
             p.f_sex_id = long.TryParse(p.f_sex_id, out chk) ? chk.ToString() : "0";
@@ -310,7 +324,9 @@ namespace clinic_ivf.objdb
                 ptt.contract + "," + ptt.insurance + "," + ptt.patient_contact_f_patient_prefix_id + "," +
                 ptt.patient_couple_f_patient_prefix_id + "," + ptt.patient_contact_f_patient_relation_id + "," + ptt.patient_coulpe_f_patient_relation_id + "," +
                 ptt.b_contract_plans_id + "," + ptt.patient_father_mobile + "," + ptt.patient_mother_mobile + "," +
-                ptt.patient_couple_mobile + ","+ ptt.t_patient_id_old + " " +
+                ptt.patient_couple_mobile + ","+ ptt.t_patient_id_old + "," + ptt.status_opu + "," +
+                ptt.patient_nickname + "," + ptt.patient_height + "," + ptt.status_or + "," +
+                ptt.or_description + "," + ptt.status_congenial + "," + ptt.congenital_diseases_description + " " +
                 ") " +
                 "Values ('" + p.patient_hn + "','" + p.patient_firstname.Replace("'", "''") + "','" + p.patient_lastname.Replace("'", "''") + "'," +
                 "'" + p.patient_xn.Replace("'", "''") + "','" + p.patient_birthday.Replace("'", "''") + "','" + p.patient_house.Replace("'", "''") + "'," +
@@ -344,12 +360,14 @@ namespace clinic_ivf.objdb
                 "'" + p.f_patient_relation_id + "','" + p.patient_contact_sex_id + "','" + p.t_health_family_id + "'," +
                 "'" + p.contact_id + "','" + p.contact_join_id + "','" + p.t_person_id + "', " +
                 "'" + p.line_id + "','" + p.email + "','" + p.passport + "', " +
-                "'" + p.patient_type.Replace("'", "''") + "','" + p.patient_group.Replace("'", "''") + "','" + p.agent.Replace("'", "''") + "', " +
-                "'" + p.status_convert.Replace("'", "''") + "','" + p.patient_firstname_e.Replace("'", "''") + "','" + p.patient_lastname_e.Replace("'", "''") + "', " +
+                "'" + p.patient_type.Replace("'", "''") + "','" + p.patient_group.Replace("'", "''") + "','" + p.agent.Replace("'", "''") + "'," +
+                "'" + p.status_convert.Replace("'", "''") + "','" + p.patient_firstname_e.Replace("'", "''") + "','" + p.patient_lastname_e.Replace("'", "''") + "'," +
                 "'" + p.contract.Replace("'", "''") + "','" + p.insurance.Replace("'", "''") + "','" + p.patient_contact_f_patient_prefix_id + "', " +
                 "'" + p.patient_couple_f_patient_prefix_id.Replace("'", "''") + "','" + p.patient_contact_f_patient_relation_id.Replace("'", "''") + "','" + p.patient_coulpe_f_patient_relation_id.Replace("'", "''") + "', " +
-                "'" + p.b_contract_plans_id.Replace("'", "''") + "','" +p.patient_father_mobile+"','"+p.patient_mother_mobile+"', "+
-                "'" + p.patient_couple_mobile+"','" + p.t_patient_id_old + "' " +
+                "'" + p.b_contract_plans_id.Replace("'", "''") + "','" +p.patient_father_mobile+"','"+p.patient_mother_mobile+"',"+
+                "'" + p.patient_couple_mobile+"','" + p.t_patient_id_old + "','" + p.status_opu + "'," +
+                "'" + p.patient_nickname + "','" + p.patient_height + "','" + p.status_or + "'," +
+                "'" + p.or_description + "','" + p.status_congenial + "','" + p.congenital_diseases_description + "' " +
                 ")";
 
                 re = conn.ExecuteNonQuery(conn.conn, sql);
@@ -363,7 +381,6 @@ namespace clinic_ivf.objdb
         public String insertPatient(Patient p, String userId)
         {
             String re = "";
-
             if (p.t_patient_id.Equals(""))
             {
                 re = insert(p, "");
@@ -441,6 +458,15 @@ namespace clinic_ivf.objdb
                 "," + ptt.patient_contact_f_patient_relation_id + "='" + p.patient_contact_f_patient_relation_id.Replace("'", "''") + "' " +
                 "," + ptt.patient_coulpe_f_patient_relation_id + "='" + p.patient_coulpe_f_patient_relation_id.Replace("'", "''") + "' " +
                 "," + ptt.b_contract_plans_id + "='" + p.b_contract_plans_id.Replace("'", "''") + "' " +
+                "," + ptt.status_opu + "='" + p.status_opu.Replace("'", "''") + "' " +
+                "," + ptt.status_hiv + "='" + p.status_hiv.Replace("'", "''") + "' " +
+                "," + ptt.patient_nickname + "='" + p.patient_nickname.Replace("'", "''") + "' " +
+                "," + ptt.patient_height + "='" + p.patient_height.Replace("'", "''") + "' " +
+                "," + ptt.status_or + "='" + p.status_or.Replace("'", "''") + "' " +
+                "," + ptt.or_description + "='" + p.or_description.Replace("'", "''") + "' " +
+                "," + ptt.status_congenial + "='" + p.status_congenial.Replace("'", "''") + "' " +
+                "," + ptt.congenital_diseases_description + "='" + p.congenital_diseases_description.Replace("'", "''") + "' " +
+
                 " Where " +ptt.pkField + " = '" + p.t_patient_id + "' "
                 ;
             try
@@ -771,6 +797,14 @@ namespace clinic_ivf.objdb
                 ptt1.b_contract_plans_id = dt.Rows[0][ptt.b_contract_plans_id].ToString();
                 ptt1.t_patient_id_old = dt.Rows[0][ptt.t_patient_id_old].ToString();
                 ptt1.Name = dt.Rows[0]["patient_prefix_description"].ToString() + " " + dt.Rows[0][ptt.patient_firstname_e].ToString()+" "+ dt.Rows[0][ptt.patient_lastname_e].ToString();
+
+                ptt1.status_opu = dt.Rows[0][ptt.status_opu].ToString();
+                ptt1.patient_nickname = dt.Rows[0][ptt.patient_nickname].ToString();
+                ptt1.patient_height = dt.Rows[0][ptt.patient_height].ToString();
+                ptt1.status_or = dt.Rows[0][ptt.status_or].ToString();
+                ptt1.or_description = dt.Rows[0][ptt.or_description].ToString();
+                ptt1.status_congenial = dt.Rows[0][ptt.status_congenial].ToString();
+                ptt1.congenital_diseases_description = dt.Rows[0][ptt.congenital_diseases_description].ToString();
             }
             else
             {
@@ -895,6 +929,13 @@ namespace clinic_ivf.objdb
             stf1.b_contract_plans_id = "";
             stf1.t_patient_id_old = "";
             stf1.Name = "";
+            stf1.status_opu = "";
+            stf1.patient_nickname = "";
+            stf1.patient_height = "";
+            stf1.status_or = "";
+            stf1.or_description = "";
+            stf1.status_congenial = "";
+            stf1.congenital_diseases_description = "";
             return stf1;
         }
     }

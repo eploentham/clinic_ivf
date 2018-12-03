@@ -112,6 +112,13 @@ namespace clinic_ivf.objdb
             vs.visit_staff_observe = "visit_staff_observe";
             vs.visit_status_lab_approve = "visit_status_lab_approve";
             vs.visit_vn = "visit_vn";
+            vs.status_urge = "status_urge";
+            vs.patient_hn_1 = "patient_hn_1";
+            vs.queue_id = "queue_id";
+            vs.lmp = "lmp";
+            vs.height = "height";
+            vs.bp = "bp";
+            vs.bw = "bw";
 
             vs.table = "t_visit";
             vs.pkField = "t_visit_id";
@@ -155,7 +162,53 @@ namespace clinic_ivf.objdb
             p.status_prepare_discharge = p.status_prepare_discharge == null ? "" : p.status_prepare_discharge;
             p.prepare_discharge_date_time = p.prepare_discharge_date_time == null ? "" : p.prepare_discharge_date_time;
             p.prepare_discharge_message = p.prepare_discharge_message == null ? "" : p.prepare_discharge_message;
-            //p.visit_vn1 = p.visit_vn1 == null ? "" : p.visit_vn1;
+            p.status_urge = p.status_urge == null ? "0" : p.status_urge;
+            p.patient_hn_1 = p.patient_hn_1 == null ? "" : p.patient_hn_1;
+            p.lmp = p.lmp == null ? "" : p.lmp;
+            p.height = p.height == null ? "" : p.height;
+            p.bw = p.bw == null ? "" : p.bw;
+            p.bp = p.bp == null ? "" : p.bp;
+
+            p.ipd_discharge_doctor = p.ipd_discharge_doctor == null ? "" : p.ipd_discharge_doctor;
+            p.visit_ipd_reverse_date_time = p.visit_ipd_reverse_date_time == null ? "" : p.visit_ipd_reverse_date_time;
+            p.visit_ipd_staff_reverse = p.visit_ipd_staff_reverse == null ? "" : p.visit_ipd_staff_reverse;
+            p.visit_ipd_discharge_date_time = p.visit_ipd_discharge_date_time == null ? "" : p.visit_ipd_discharge_date_time;
+            p.visit_ipd_staff_discharge = p.visit_ipd_staff_discharge == null ? "" : p.visit_ipd_staff_discharge;
+            p.f_visit_service_type_id = p.f_visit_service_type_id == null ? "" : p.f_visit_service_type_id;
+            p.other_transportation = p.other_transportation == null ? "" : p.other_transportation;
+            p.f_transportation_type_id = p.f_transportation_type_id == null ? "" : p.f_transportation_type_id;
+            p.f_trama_status_id = p.f_trama_status_id == null ? "" : p.f_trama_status_id;
+            p.visit_doctor_reverse_date_time = p.visit_doctor_reverse_date_time == null ? "" : p.visit_doctor_reverse_date_time;
+            p.visit_staff_doctor_reverse = p.visit_staff_doctor_reverse == null ? "" : p.visit_staff_doctor_reverse;
+            p.visit_financial_reverse_date_time = p.visit_financial_reverse_date_time == null ? "" : p.visit_financial_reverse_date_time;
+            p.visit_staff_financial_reverse = p.visit_staff_financial_reverse == null ? "" : p.visit_staff_financial_reverse;
+            p.modify_discharge_datetime = p.modify_discharge_datetime == null ? "" : p.modify_discharge_datetime;
+            p.b_visit_room_id = p.b_visit_room_id == null ? "" : p.b_visit_room_id;
+            p.b_visit_bed_id = p.b_visit_bed_id == null ? "" : p.b_visit_bed_id;
+            p.visit_lab_approve_staff = p.visit_lab_approve_staff == null ? "" : p.visit_lab_approve_staff;
+            p.visit_status_lab_approve = p.visit_status_lab_approve == null ? "" : p.visit_status_lab_approve;
+            p.visit_have_scan_sn_dx = p.visit_have_scan_sn_dx == null ? "" : p.visit_have_scan_sn_dx;
+            p.service_location = p.service_location == null ? "" : p.service_location;
+            p.surveillance_case_id = p.surveillance_case_id == null ? "" : p.surveillance_case_id;
+            p.contact_join_namet = p.contact_join_namet == null ? "" : p.contact_join_namet;
+            p.contact_join_id = p.contact_join_id == null ? "" : p.contact_join_id;
+            p.contact_namet = p.contact_namet == null ? "" : p.contact_namet;
+            p.contact_id = p.contact_id == null ? "" : p.contact_id;
+            p.b_contract_plans_id = p.b_contract_plans_id == null ? "" : p.b_contract_plans_id;
+            p.visit_cause_appointment = p.visit_cause_appointment == null ? "" : p.visit_cause_appointment;
+            p.visit_cal_date_appointment = p.visit_cal_date_appointment == null ? "" : p.visit_cal_date_appointment;
+            p.visit_have_admit = p.visit_have_admit == null ? "" : p.visit_have_admit;
+            p.t_patient_appointment_id = p.t_patient_appointment_id == null ? "" : p.t_patient_appointment_id;
+            p.visit_have_refer = p.visit_have_refer == null ? "" : p.visit_have_refer;
+            //p.visit_have_appointment = p.visit_have_appointment == null ? "" : p.visit_have_appointment;
+            p.visit_emergency_staff = p.visit_emergency_staff == null ? "" : p.visit_emergency_staff;
+            p.f_emergency_status_id = p.f_emergency_status_id == null ? "" : p.f_emergency_status_id;
+            p.f_refer_cause_id = p.f_refer_cause_id == null ? "" : p.f_refer_cause_id;
+            p.b_ncd_group_id = p.b_ncd_group_id == null ? "" : p.b_ncd_group_id;
+            p.visit_ncd = p.visit_ncd == null ? "" : p.visit_ncd;
+            p.visit_lab_status_id = p.visit_lab_status_id == null ? "" : p.visit_lab_status_id;
+            //p.visit_cal_date_appointment1 = p.visit_cal_date_appointment1 == null ? "" : p.visit_cal_date_appointment1;
+
 
 
             p.t_visit_id = long.TryParse(p.t_visit_id, out chk) ? chk.ToString() : "0";
@@ -167,6 +220,7 @@ namespace clinic_ivf.objdb
             p.b_contract_plans_id = long.TryParse(p.b_contract_plans_id, out chk) ? chk.ToString() : "0";
             p.b_service_point_id = long.TryParse(p.b_service_point_id, out chk) ? chk.ToString() : "0";
             p.f_visit_opd_discharge_status_id = long.TryParse(p.f_visit_opd_discharge_status_id, out chk) ? chk.ToString() : "0";
+            p.queue_id = long.TryParse(p.queue_id, out chk) ? chk.ToString() : "0";
             //p.f_patient_prefix_id = long.TryParse(p.f_patient_prefix_id, out chk) ? chk.ToString() : "0";
 
         }
@@ -215,7 +269,52 @@ namespace clinic_ivf.objdb
                     "," + vs.b_contract_plans_id + "='" + p.b_contract_plans_id + "'" +
                     "," + vs.b_service_point_id + "='" + p.b_service_point_id + "'" +
                     "," + vs.f_visit_opd_discharge_status_id + "='" + p.f_visit_opd_discharge_status_id + "' " +
-                    //"," + vs.st + "='" + p.f_visit_opd_discharge_status_id + "' " +
+                    "," + vs.status_urge + "='" + p.status_urge + "' " +
+                    "," + vs.patient_hn_1 + "='" + p.patient_hn_1 + "' " +
+                    "," + vs.queue_id + "='" + p.queue_id + "' " +
+
+                    "," + vs.ipd_discharge_doctor + "='" + p.ipd_discharge_doctor + "' " +
+                    "," + vs.visit_ipd_reverse_date_time + "='" + p.visit_ipd_reverse_date_time + "' " +
+                    "," + vs.visit_ipd_staff_reverse + "='" + p.visit_ipd_staff_reverse + "' " +
+                    "," + vs.visit_ipd_discharge_date_time + "='" + p.visit_ipd_discharge_date_time + "' " +
+                    "," + vs.visit_ipd_staff_discharge + "='" + p.visit_ipd_staff_discharge + "' " +
+                    "," + vs.f_visit_service_type_id + "='" + p.f_visit_service_type_id + "' " +
+                    "," + vs.other_transportation + "='" + p.other_transportation + "' " +
+                    "," + vs.f_transportation_type_id + "='" + p.f_transportation_type_id + "' " +
+                    "," + vs.f_trama_status_id + "='" + p.f_trama_status_id + "' " +
+                    "," + vs.visit_doctor_reverse_date_time + "='" + p.visit_doctor_reverse_date_time + "' " +
+                    "," + vs.visit_staff_doctor_reverse + "='" + p.visit_staff_doctor_reverse + "' " +
+                    "," + vs.visit_financial_reverse_date_time + "='" + p.visit_financial_reverse_date_time + "' " +
+                    "," + vs.visit_staff_financial_reverse + "='" + p.visit_staff_financial_reverse + "' " +
+                    "," + vs.modify_discharge_datetime + "='" + p.modify_discharge_datetime + "' " +
+                    "," + vs.b_visit_room_id + "='" + p.b_visit_room_id + "' " +
+                    "," + vs.b_visit_bed_id + "='" + p.b_visit_bed_id + "' " +
+                    "," + vs.visit_lab_approve_staff + "='" + p.visit_lab_approve_staff + "' " +
+                    "," + vs.visit_status_lab_approve + "='" + p.visit_status_lab_approve + "' " +
+                    "," + vs.visit_have_scan_sn_dx + "='" + p.visit_have_scan_sn_dx + "' " +
+                    "," + vs.service_location + "='" + p.service_location + "' " +
+                    "," + vs.surveillance_case_id + "='" + p.surveillance_case_id + "' " +
+                    "," + vs.contact_join_namet + "='" + p.contact_join_namet + "' " +
+                    "," + vs.contact_join_id + "='" + p.contact_join_id + "' " +
+                    "," + vs.contact_namet + "='" + p.contact_namet + "' " +
+                    "," + vs.contact_id + "='" + p.contact_id + "' " +
+                    //"," + vs.b_contract_plans_id + "='" + p.b_contract_plans_id + "' " +
+                    "," + vs.visit_cause_appointment + "='" + p.visit_cause_appointment + "' " +
+                    "," + vs.visit_cal_date_appointment + "='" + p.visit_cal_date_appointment + "' " +
+                    "," + vs.visit_have_admit + "='" + p.visit_have_admit + "' " +
+                    //"," + vs.t_patient_appointment_id + "='" + p.t_patient_appointment_id + "' " +
+                    "," + vs.visit_have_refer + "='" + p.visit_have_refer + "' " +
+                    "," + vs.visit_emergency_staff + "='" + p.visit_emergency_staff + "' " +
+                    "," + vs.f_emergency_status_id + "='" + p.f_emergency_status_id + "' " +
+                    "," + vs.f_refer_cause_id + "='" + p.f_refer_cause_id + "' " +
+                    "," + vs.b_ncd_group_id + "='" + p.b_ncd_group_id + "' " +
+                    "," + vs.visit_ncd + "='" + p.visit_ncd + "' " +
+                    "," + vs.visit_lab_status_id + "='" + p.visit_lab_status_id + "' " +
+                    "," + vs.lmp + "='" + p.lmp + "' " +
+                    "," + vs.height + "='" + p.height + "' " +
+                    "," + vs.bp + "='" + p.bp + "' " +
+                    "," + vs.bw + "='" + p.bw + "' " +
+
                     "";
                 re = conn.ExecuteNonQuery(conn.conn, sql);
             }
@@ -421,6 +520,13 @@ namespace clinic_ivf.objdb
                 vs1.visit_staff_observe = dt.Rows[0][vs.visit_staff_observe].ToString();
                 vs1.visit_status_lab_approve = dt.Rows[0][vs.visit_status_lab_approve].ToString();
                 vs1.visit_vn = dt.Rows[0][vs.visit_vn].ToString();
+                vs1.status_urge = dt.Rows[0][vs.status_urge].ToString();
+                vs1.patient_hn_1 = dt.Rows[0][vs.patient_hn_1].ToString();
+                vs1.queue_id = dt.Rows[0][vs.queue_id].ToString();
+                vs1.lmp = dt.Rows[0][vs.lmp].ToString();
+                vs1.height = dt.Rows[0][vs.height].ToString();
+                vs1.bp = dt.Rows[0][vs.bp].ToString();
+                vs1.bw = dt.Rows[0][vs.bw].ToString();
             }
             else
             {
@@ -521,6 +627,13 @@ namespace clinic_ivf.objdb
             stf1.visit_staff_observe = "";
             stf1.visit_status_lab_approve = "";
             stf1.visit_vn = "";
+            stf1.status_urge = "";
+            stf1.patient_hn_1 = "";
+            stf1.queue_id = "";
+            stf1.lmp = "";
+            stf1.height = "";
+            stf1.bp = "";
+            stf1.bw = "";
             return stf1;
         }
     }

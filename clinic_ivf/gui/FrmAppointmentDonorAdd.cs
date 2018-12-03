@@ -152,11 +152,21 @@ namespace clinic_ivf.gui
         {
             ptt = ic.ivfDB.pttDB.selectByPk1(pttId);
             vs = ic.ivfDB.vsDB.selectByPk1(vsId);
+            pApm = ic.ivfDB.pApmDB.selectByPk1(pApmId);
             txtPttId.Value = ptt.t_patient_id;
             txtVsId.Value = vs.t_visit_id;
             txtHn.Value = ptt.patient_hn;
             txtName.Value = ptt.Name;
             txtRemark.Value = ptt.remark;
+
+            txtDatepApm.Value = pApm.patient_appointment_date;
+            ic.setC1Combo(cboTimepApm, pApm.patient_appointment_time);
+            ic.setC1Combo(cboBsp, pApm.patient_appointment_servicepoint);
+            chkE2.Checked = pApm.e2.Equals("1") ? true : false;
+            chkLh.Checked = pApm.lh.Equals("1") ? true : false;
+            chkFsh.Checked = pApm.fsh.Equals("1") ? true : false;
+            chkPrl.Checked = pApm.prl.Equals("1") ? true : false;
+            chkTvs.Checked = pApm.tvs.Equals("1") ? true : false;
         }
         private void initGrfpApmAll()
         {
@@ -600,6 +610,7 @@ namespace clinic_ivf.gui
             pApm.rt_ovary = chkRt.Checked ? "1" : "0";
             pApm.lt_ovary = chkLt.Checked ? "1" : "0";
             pApm.fsh = chkFsh.Checked ? "1" : "0";
+            pApm.tvs = chkTvs.Checked ? "1" : "0";
         }
         private void FrmAppointmentAdd_Load(object sender, EventArgs e)
         {
