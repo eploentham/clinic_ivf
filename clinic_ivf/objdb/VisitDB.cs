@@ -119,6 +119,7 @@ namespace clinic_ivf.objdb
             vs.height = "height";
             vs.bp = "bp";
             vs.bw = "bw";
+            vs.pulse = "pulse";
 
             vs.table = "t_visit";
             vs.pkField = "t_visit_id";
@@ -168,6 +169,7 @@ namespace clinic_ivf.objdb
             p.height = p.height == null ? "" : p.height;
             p.bw = p.bw == null ? "" : p.bw;
             p.bp = p.bp == null ? "" : p.bp;
+            p.pulse = p.pulse == null ? "" : p.pulse;
 
             p.ipd_discharge_doctor = p.ipd_discharge_doctor == null ? "" : p.ipd_discharge_doctor;
             p.visit_ipd_reverse_date_time = p.visit_ipd_reverse_date_time == null ? "" : p.visit_ipd_reverse_date_time;
@@ -314,6 +316,7 @@ namespace clinic_ivf.objdb
                     "," + vs.height + "='" + p.height + "' " +
                     "," + vs.bp + "='" + p.bp + "' " +
                     "," + vs.bw + "='" + p.bw + "' " +
+                    "," + vs.pulse + "='" + p.pulse + "' " +
 
                     "";
                 re = conn.ExecuteNonQuery(conn.conn, sql);
@@ -431,13 +434,13 @@ namespace clinic_ivf.objdb
             String sql = "select CONCAT(IFNULL(fpp.patient_prefix_description,''),' ', ptt.patient_firstname_e ,' ',ptt.patient_lastname_e)  as ptt_name" +
                 ", ptt.patient_nickname as nick_name, vs.height as height, vs.bw, vs.bp, ptt.agent, vs.lmp, ptt.status_deny_allergy, ptt.status_or " +
                 ", ptt.status_opu, ptt.or_description, ptt.status_congenial_diseases,ptt.congenial_diseases_description, '' as g1, '' as p1, '' as a1, ptt.mobile1 as mobile " +
-                ",ptti.image_path as path_pic, '' as deny_allergy_description " +
-                "From " + vs.table + " vs " +
-                "Left Join t_patient ptt on  ptt.t_patient_id = vs." + vs.t_patient_id + " " +
+                ",ptti.image_path as path_pic, '' as deny_allergy_description, vs.pulse " +
+                "From t_patient ptt " +
+                "Left Join t_visit vs on  ptt.t_patient_id = vs." + vs.t_patient_id + " " +
                 "Left join f_patient_prefix fpp on fpp.f_patient_prefix_id = ptt.f_patient_prefix_id " +
                 "Left Join t_patient_image ptti on ptti.t_patient_id = ptt.t_patient_id " +
                 " " +
-                "Where vs." + vs.visit_hn + " ='" + pttId + "' and ptti.status_image = '1' " +
+                "Where ptt.t_patient_id ='" + pttId + "' and ptti.status_image = '1' " +
                 "Order By vs." + vs.t_visit_id;
             dt = conn.selectData(conn.conn, sql);
 
@@ -546,6 +549,7 @@ namespace clinic_ivf.objdb
                 vs1.height = dt.Rows[0][vs.height].ToString();
                 vs1.bp = dt.Rows[0][vs.bp].ToString();
                 vs1.bw = dt.Rows[0][vs.bw].ToString();
+                vs1.pulse = dt.Rows[0][vs.pulse].ToString();
             }
             else
             {
@@ -653,6 +657,7 @@ namespace clinic_ivf.objdb
             stf1.height = "";
             stf1.bp = "";
             stf1.bw = "";
+            stf1.pulse = "";
             return stf1;
         }
     }

@@ -144,6 +144,7 @@ namespace clinic_ivf.objdb
             ptt.or_description = "or_description";
             ptt.status_congenial = "status_congenial_diseases";
             ptt.congenital_diseases_description = "congenial_diseases_description";
+            ptt.deny_allergy_description = "deny_allergy_description";
 
             ptt.pkField = "t_patient_id";
             ptt.table = "t_patient";
@@ -245,6 +246,7 @@ namespace clinic_ivf.objdb
             p.status_congenial = p.status_congenial == null ? "" : p.status_congenial;
             p.congenital_diseases_description = p.congenital_diseases_description == null ? "" : p.congenital_diseases_description;
             p.patient_nickname = p.patient_nickname == null ? "" : p.patient_nickname;
+            p.deny_allergy_description = p.deny_allergy_description == null ? "" : p.deny_allergy_description;
 
             p.f_patient_prefix_id = long.TryParse(p.f_patient_prefix_id, out chk) ? chk.ToString() : "0";
             p.f_sex_id = long.TryParse(p.f_sex_id, out chk) ? chk.ToString() : "0";
@@ -326,7 +328,8 @@ namespace clinic_ivf.objdb
                 ptt.b_contract_plans_id + "," + ptt.patient_father_mobile + "," + ptt.patient_mother_mobile + "," +
                 ptt.patient_couple_mobile + ","+ ptt.t_patient_id_old + "," + ptt.status_opu + "," +
                 ptt.patient_nickname + "," + ptt.patient_height + "," + ptt.status_or + "," +
-                ptt.or_description + "," + ptt.status_congenial + "," + ptt.congenital_diseases_description + " " +
+                ptt.or_description + "," + ptt.status_congenial + "," + ptt.congenital_diseases_description + "," +
+                ptt.deny_allergy_description + "," +
                 ") " +
                 "Values ('" + p.patient_hn + "','" + p.patient_firstname.Replace("'", "''") + "','" + p.patient_lastname.Replace("'", "''") + "'," +
                 "'" + p.patient_xn.Replace("'", "''") + "','" + p.patient_birthday.Replace("'", "''") + "','" + p.patient_house.Replace("'", "''") + "'," +
@@ -367,7 +370,8 @@ namespace clinic_ivf.objdb
                 "'" + p.b_contract_plans_id.Replace("'", "''") + "','" +p.patient_father_mobile+"','"+p.patient_mother_mobile+"',"+
                 "'" + p.patient_couple_mobile+"','" + p.t_patient_id_old + "','" + p.status_opu + "'," +
                 "'" + p.patient_nickname + "','" + p.patient_height + "','" + p.status_or + "'," +
-                "'" + p.or_description + "','" + p.status_congenial + "','" + p.congenital_diseases_description + "' " +
+                "'" + p.or_description + "','" + p.status_congenial + "','" + p.congenital_diseases_description + "'," +
+                "'" + p.deny_allergy_description + "' " +
                 ")";
 
                 re = conn.ExecuteNonQuery(conn.conn, sql);
@@ -466,6 +470,7 @@ namespace clinic_ivf.objdb
                 "," + ptt.or_description + "='" + p.or_description.Replace("'", "''") + "' " +
                 "," + ptt.status_congenial + "='" + p.status_congenial.Replace("'", "''") + "' " +
                 "," + ptt.congenital_diseases_description + "='" + p.congenital_diseases_description.Replace("'", "''") + "' " +
+                "," + ptt.deny_allergy_description + "='" + p.deny_allergy_description.Replace("'", "''") + "' " +
 
                 " Where " +ptt.pkField + " = '" + p.t_patient_id + "' "
                 ;
@@ -806,6 +811,7 @@ namespace clinic_ivf.objdb
                 ptt1.or_description = dt.Rows[0][ptt.or_description].ToString();
                 ptt1.status_congenial = dt.Rows[0][ptt.status_congenial].ToString();
                 ptt1.congenital_diseases_description = dt.Rows[0][ptt.congenital_diseases_description].ToString();
+                ptt1.deny_allergy_description = dt.Rows[0][ptt.deny_allergy_description].ToString();
             }
             else
             {
@@ -937,6 +943,7 @@ namespace clinic_ivf.objdb
             stf1.or_description = "";
             stf1.status_congenial = "";
             stf1.congenital_diseases_description = "";
+            stf1.deny_allergy_description = "";
             return stf1;
         }
     }

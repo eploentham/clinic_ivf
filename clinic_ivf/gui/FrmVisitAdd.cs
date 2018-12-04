@@ -7,7 +7,9 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
+using System.Net;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
@@ -115,7 +117,11 @@ namespace clinic_ivf.gui
             //throw new NotImplementedException();
             FrmReport frm = new FrmReport(ic);
             DataTable dt = new DataTable();
+            String path_pic = "";
             dt = ic.ivfDB.vsDB.selectByCheckList1(txtPttId.Text, txtID.Text);
+            //path_pic = dt.Rows[0]["path_pic"] != null ? dt.Rows[0]["path_pic"].ToString(): "";
+            path_pic = System.IO.Directory.GetCurrentDirectory() + "\\" + "check_list_1.jpg";
+            dt.Rows[0]["path_pic"] = path_pic;
             frm.setVisitCheckList1Report(dt);
             frm.ShowDialog(this);
         }
@@ -138,6 +144,7 @@ namespace clinic_ivf.gui
                 txtLMP1.Value = txtLMP.Text;
                 txtAgent1.Value = txtAgent.Text;
                 txtNickName1.Value = txtNickName.Text;
+                txtPulse1.Value = txtPulse.Text;
             }
         }
 
@@ -291,7 +298,79 @@ namespace clinic_ivf.gui
                 txtBW.Value = vs.bw;
                 txtBP1.Value = txtBP.Text;
                 txtBW1.Value = txtBW1.Text;
-                //txtHnFemale.Text = 
+                txtPulse.Value = vs.pulse;
+                txtPulse1.Value = txtPulse.Text;
+                PatientImage ptti = new PatientImage();
+                ptti = ic.ivfDB.pttImgDB.selectByPttIDStatus1(txtPttId.Text);
+
+                new Thread(() =>
+                {
+                    Thread.CurrentThread.IsBackground = true;
+                    Image loadedImage = null, resizedImage;
+                    String aaa = ptti.image_path;
+                    FtpWebRequest ftpRequest = null;
+                    FtpWebResponse ftpResponse = null;
+                    Stream ftpStream = null;
+                    int bufferSize = 2048;
+                    MemoryStream stream = new MemoryStream();
+                    string host = null;
+                    string user = null;
+                    string pass = null;     //iniC.hostFTP, iniC.userFTP, iniC.passFTP
+                    host = ic.iniC.hostFTP; user = ic.iniC.userFTP; pass = ic.iniC.passFTP;
+                    try
+                    {
+                        ftpRequest = (FtpWebRequest)FtpWebRequest.Create(host + "/" + aaa);
+                        ftpRequest.Credentials = new NetworkCredential(user, pass);
+                        ftpRequest.UseBinary = true;
+                        ftpRequest.UsePassive = false;
+                        ftpRequest.KeepAlive = true;
+                        ftpRequest.Method = WebRequestMethods.Ftp.DownloadFile;
+                        ftpResponse = (FtpWebResponse)ftpRequest.GetResponse();
+                        ftpStream = ftpResponse.GetResponseStream();
+                        byte[] byteBuffer = new byte[bufferSize];
+                        int bytesRead = ftpStream.Read(byteBuffer, 0, bufferSize);
+                        try
+                        {
+                            while (bytesRead > 0)
+                            {
+                                stream.Write(byteBuffer, 0, bytesRead);
+                                bytesRead = ftpStream.Read(byteBuffer, 0, bufferSize);
+                            }
+                        }
+                        catch (Exception ex)
+                        {
+                            Console.WriteLine(ex.ToString());
+                        }
+                        loadedImage = new Bitmap(stream);
+                        ftpStream.Close();
+                        ftpResponse.Close();
+                        ftpRequest = null;
+
+                        if (loadedImage != null)
+                        {
+                            String filename1 = "check_list_1.jpg";
+                            int originalWidth = loadedImage.Width;
+                            int newWidth = 180;
+                            resizedImage = loadedImage.GetThumbnailImage(newWidth, (newWidth * loadedImage.Height) / originalWidth, null, IntPtr.Zero);
+                            //Column col = grfImg.Cols[colImg];
+                            //col.DataType = typeof(Image);
+                            picImg.Image = loadedImage;
+                            if (File.Exists(filename1))
+                            {
+                                File.Delete(filename1);
+                                System.Threading.Thread.Sleep(200);
+                            }
+                            loadedImage.Save(filename1);
+                            txtFileName.Value = filename1;
+                            //loadedImage.sa
+                            //flagImg = true;
+                        }
+                    }
+                    catch (Exception ex) { Console.WriteLine(ex.ToString()); }
+                    //grfImg.Cols[colImg].ImageAndText = true;
+                    
+                }).Start();
+
             }
             else
             {
@@ -391,7 +470,7 @@ namespace clinic_ivf.gui
             vs.bw = txtBW.Text;
             vs.bp = txtBP.Text;
             vs.queue_id = ic.ivfDB.copDB.genQueueDoc();
-            //vs.visit_notice = txtComment.Text;            
+            vs.pulse = txtPulse.Text;            
         }
         private void FrmVisitAdd_Load(object sender, EventArgs e)
         {

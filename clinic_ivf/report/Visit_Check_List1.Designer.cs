@@ -319,6 +319,8 @@ namespace clinic_ivf.report {
             
             private global::System.Data.DataColumn columndeny_allergy_description;
             
+            private global::System.Data.DataColumn columnpulse;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public check_list1DataTable() {
@@ -514,6 +516,14 @@ namespace clinic_ivf.report {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn pulseColumn {
+                get {
+                    return this.columnpulse;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -569,7 +579,8 @@ namespace clinic_ivf.report {
                         string mobile, 
                         string path_pic, 
                         string ptt_name, 
-                        string deny_allergy_description) {
+                        string deny_allergy_description, 
+                        string pulse) {
                 check_list1Row rowcheck_list1Row = ((check_list1Row)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         nick_name,
@@ -591,7 +602,8 @@ namespace clinic_ivf.report {
                         mobile,
                         path_pic,
                         ptt_name,
-                        deny_allergy_description};
+                        deny_allergy_description,
+                        pulse};
                 rowcheck_list1Row.ItemArray = columnValuesArray;
                 this.Rows.Add(rowcheck_list1Row);
                 return rowcheck_list1Row;
@@ -634,6 +646,7 @@ namespace clinic_ivf.report {
                 this.columnpath_pic = base.Columns["path_pic"];
                 this.columnptt_name = base.Columns["ptt_name"];
                 this.columndeny_allergy_description = base.Columns["deny_allergy_description"];
+                this.columnpulse = base.Columns["pulse"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -679,6 +692,8 @@ namespace clinic_ivf.report {
                 base.Columns.Add(this.columnptt_name);
                 this.columndeny_allergy_description = new global::System.Data.DataColumn("deny_allergy_description", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columndeny_allergy_description);
+                this.columnpulse = new global::System.Data.DataColumn("pulse", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnpulse);
                 this.columnnick_name.Caption = "DataColumn1";
                 this.columnheight.Caption = "DataColumn1";
                 this.columnbw.Caption = "DataColumn1";
@@ -1160,6 +1175,22 @@ namespace clinic_ivf.report {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public string pulse {
+                get {
+                    try {
+                        return ((string)(this[this.tablecheck_list1.pulseColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'pulse\' in table \'check_list1\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablecheck_list1.pulseColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public bool Isnick_nameNull() {
                 return this.IsNull(this.tablecheck_list1.nick_nameColumn);
             }
@@ -1396,6 +1427,18 @@ namespace clinic_ivf.report {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public void Setdeny_allergy_descriptionNull() {
                 this[this.tablecheck_list1.deny_allergy_descriptionColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public bool IspulseNull() {
+                return this.IsNull(this.tablecheck_list1.pulseColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void SetpulseNull() {
+                this[this.tablecheck_list1.pulseColumn] = global::System.Convert.DBNull;
             }
         }
         

@@ -154,7 +154,7 @@ namespace clinic_ivf.control
             iniC.sticker_donor_barcode_gap_y = iniC.sticker_donor_barcode_gap_y.Equals("") ? "30" : iniC.sticker_donor_barcode_gap_y;
             iniC.sticker_donor_gap = iniC.sticker_donor_gap.Equals("") ? "20" : iniC.sticker_donor_gap;
             iniC.sticker_donor_start_x = iniC.sticker_donor_start_x.Equals("") ? "52" : iniC.sticker_donor_start_x;
-            iniC.patientaddpanel1weight = iniC.patientaddpanel1weight==null ? "300" : iniC.patientaddpanel1weight.Equals("") ? "300" : iniC.patientaddpanel1weight;
+            iniC.patientaddpanel1weight = iniC.patientaddpanel1weight==null ? "320" : iniC.patientaddpanel1weight.Equals("") ? "300" : iniC.patientaddpanel1weight;
             iniC.printerSticker = iniC.printerSticker.Equals("") ? "default" : iniC.printerSticker;
             iniC.status_show_border = iniC.status_show_border.Equals("") ? "0" : iniC.status_show_border;
             iniC.barcode_width_minus = iniC.barcode_width_minus.Equals("") ? "0" : iniC.barcode_width_minus;

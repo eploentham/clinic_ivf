@@ -142,6 +142,9 @@ namespace clinic_ivf.gui
             btnVisit.Click += BtnVisit_Click;
             txtHeight.KeyPress += TxtHeight_KeyPress;
             btnVoid.Click += BtnVoid_Click;
+            chkOR.CheckedChanged += ChkOR_CheckedChanged;
+            chkCongenital.CheckedChanged += ChkCongenital_CheckedChanged;
+            chkDenyAllergy.CheckedChanged += ChkDenyAllergy_CheckedChanged;
 
             setKeyEnter();
 
@@ -161,6 +164,25 @@ namespace clinic_ivf.gui
             picPtt.SizeMode = PictureBoxSizeMode.StretchImage;
             //btnSavePic.Enabled = false;
         }
+
+        private void ChkDenyAllergy_CheckedChanged(object sender, EventArgs e)
+        {
+            //throw new NotImplementedException();
+            txtDenyAllergyDesc.Enabled = chkDenyAllergy.Checked ? true : false;
+        }
+
+        private void ChkCongenital_CheckedChanged(object sender, EventArgs e)
+        {
+            //throw new NotImplementedException();
+            txtCongenital.Enabled = chkCongenital.Checked ? true : false;
+        }
+
+        private void ChkOR_CheckedChanged(object sender, EventArgs e)
+        {
+            //throw new NotImplementedException();
+            txtORDescription.Enabled = chkOR.Checked ? true : false;
+        }
+
         private void setControlEnable(Boolean flag)
         {
             txtHn.Enabled = flag;
@@ -278,7 +300,15 @@ namespace clinic_ivf.gui
         {
             //throw new NotImplementedException();
             FrmVisitAdd frm = new FrmVisitAdd(ic, txtID.Text, "", txtIdOld.Text);
-            frm.ShowDialog(this);
+            try
+            {
+                frm.ShowDialog(this);
+            }
+            catch(Exception ex)
+            {
+
+            }
+            
             setGrfVs();
         }
 
@@ -1516,6 +1546,8 @@ namespace clinic_ivf.gui
             //ic.setC1Combo(cboRg, ptt.f_patient_religion_id);
             chkChronic.Checked = ptt.status_chronic.Equals("1") ? true : false;
             chkDenyAllergy.Checked = ptt.status_deny_allergy.Equals("1") ? true : false;
+            txtDenyAllergyDesc.Enabled = chkDenyAllergy.Checked ? true : false;
+
             barcode.Text = txtHn.Text;
             filenamepic = txtHn.Text;
             txtContract.Value = ptt.contract;
@@ -1538,10 +1570,13 @@ namespace clinic_ivf.gui
             chkOPU.Checked = ptt.status_opu.Equals("1") ? true : false;
             txtNickName.Value = ptt.patient_nickname;
             chkOR.Checked = ptt.status_or.Equals("1") ? true : false;
+            txtORDescription.Enabled = chkOR.Checked ? true : false;
             chkCongenital.Checked = ptt.status_congenial.Equals("1") ? true : false;
+            txtCongenital.Enabled = chkCongenital.Checked ? true : false;
             txtORDescription.Value = ptt.or_description;
             txtCongenital.Value = ptt.congenital_diseases_description;
             txtHeight.Value = ptt.patient_height;
+            txtDenyAllergyDesc.Value = ptt.deny_allergy_description;
             //txtEmail.Value = pttO.Email;
         }
         private void setControlPtt(String pttid)
@@ -1623,6 +1658,7 @@ namespace clinic_ivf.gui
             txtORDescription.Value = ptt.or_description;
             txtCongenital.Value = ptt.congenital_diseases_description;
             txtHeight.Value = ptt.patient_height;
+            txtDenyAllergyDesc.Value = ptt.deny_allergy_description;
 
             PatientOld pttO = new PatientOld();
             VisitOld vsOld = new VisitOld();
@@ -1799,6 +1835,7 @@ namespace clinic_ivf.gui
             ptt.or_description = txtORDescription.Text;
             ptt.congenital_diseases_description = txtCongenital.Text;
             ptt.patient_height = txtHeight.Text;
+            ptt.deny_allergy_description = txtDenyAllergyDesc.Text;
         }
         private void DoPrint(C1PdfDocumentSource pds)
         {
@@ -2030,8 +2067,8 @@ namespace clinic_ivf.gui
         private void FrmPatientAdd_Load(object sender, EventArgs e)
         {
             tC1.SelectedTab = tabFamily;
-            splitContainer1.Panel1MinSize = 200;
-            splitContainer1.SplitterDistance = int.Parse(ic.iniC.patientaddpanel1weight);
+            splitMain.Panel1MinSize = 260;
+            splitMain.SplitterDistance = int.Parse(ic.iniC.patientaddpanel1weight);
             if (ic.iniC.statusAppDonor.Equals("1"))
             {
                 theme1.SetTheme(sB, ic.theme);

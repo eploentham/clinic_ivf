@@ -12,7 +12,7 @@
   <xs:element name="Visit_Check_List1" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="Visit_Check_List1" msprop:Generator_UserDSName="Visit_Check_List1">
     <xs:complexType>
       <xs:choice minOccurs="0" maxOccurs="unbounded">
-        <xs:element name="check_list1" msprop:Generator_TableClassName="check_list1DataTable" msprop:Generator_TableVarName="tablecheck_list1" msprop:Generator_RowChangedName="check_list1RowChanged" msprop:Generator_TablePropName="check_list1" msprop:Generator_RowDeletingName="check_list1RowDeleting" msprop:Generator_RowChangingName="check_list1RowChanging" msprop:Generator_RowEvHandlerName="check_list1RowChangeEventHandler" msprop:Generator_RowDeletedName="check_list1RowDeleted" msprop:Generator_RowClassName="check_list1Row" msprop:Generator_UserTableName="check_list1" msprop:Generator_RowEvArgName="check_list1RowChangeEvent">
+        <xs:element name="check_list1" msprop:Generator_TableClassName="check_list1DataTable" msprop:Generator_TableVarName="tablecheck_list1" msprop:Generator_TablePropName="check_list1" msprop:Generator_RowDeletingName="check_list1RowDeleting" msprop:Generator_RowChangingName="check_list1RowChanging" msprop:Generator_RowEvHandlerName="check_list1RowChangeEventHandler" msprop:Generator_RowDeletedName="check_list1RowDeleted" msprop:Generator_UserTableName="check_list1" msprop:Generator_RowChangedName="check_list1RowChanged" msprop:Generator_RowEvArgName="check_list1RowChangeEvent" msprop:Generator_RowClassName="check_list1Row">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="nick_name" msdata:Caption="DataColumn1" msprop:Generator_ColumnVarNameInTable="columnnick_name" msprop:Generator_ColumnPropNameInRow="nick_name" msprop:Generator_ColumnPropNameInTable="nick_nameColumn" msprop:Generator_UserColumnName="nick_name" type="xs:string" minOccurs="0" />
@@ -35,6 +35,7 @@
               <xs:element name="path_pic" msprop:Generator_ColumnVarNameInTable="columnpath_pic" msprop:Generator_ColumnPropNameInRow="path_pic" msprop:Generator_ColumnPropNameInTable="path_picColumn" msprop:Generator_UserColumnName="path_pic" type="xs:string" minOccurs="0" />
               <xs:element name="ptt_name" msprop:Generator_ColumnVarNameInTable="columnptt_name" msprop:Generator_ColumnPropNameInRow="ptt_name" msprop:Generator_ColumnPropNameInTable="ptt_nameColumn" msprop:Generator_UserColumnName="ptt_name" type="xs:string" minOccurs="0" />
               <xs:element name="deny_allergy_description" msprop:Generator_ColumnVarNameInTable="columndeny_allergy_description" msprop:Generator_ColumnPropNameInRow="deny_allergy_description" msprop:Generator_ColumnPropNameInTable="deny_allergy_descriptionColumn" msprop:Generator_UserColumnName="deny_allergy_description" type="xs:string" minOccurs="0" />
+              <xs:element name="pulse" msprop:Generator_ColumnVarNameInTable="columnpulse" msprop:Generator_ColumnPropNameInRow="pulse" msprop:Generator_ColumnPropNameInTable="pulseColumn" msprop:Generator_UserColumnName="pulse" type="xs:string" minOccurs="0" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>

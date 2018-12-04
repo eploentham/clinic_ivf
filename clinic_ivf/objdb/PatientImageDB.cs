@@ -167,6 +167,17 @@ namespace clinic_ivf.objdb
             dt = conn.selectData(conn.conn, sql);
             return dt;
         }
+        public PatientImage selectByPttIDStatus1(String pttid)
+        {
+            PatientImage cop1 = new PatientImage();
+            DataTable dt = new DataTable();
+            String sql = "select pttI.* " +
+                "From " + pttI.table + " pttI " +
+                "Where pttI." + pttI.t_patient_id + " ='" + pttid + "' and status_image='1' ";
+            dt = conn.selectData(conn.conn, sql);
+            cop1 = setPatientImage(dt);
+            return cop1;
+        }
         public PatientImage selectByPk1(String copId)
         {
             PatientImage cop1 = new PatientImage();

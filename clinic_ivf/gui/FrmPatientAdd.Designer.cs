@@ -30,7 +30,7 @@
         {
             this.components = new System.ComponentModel.Container();
             this.theme1 = new C1.Win.C1Themes.C1ThemeController();
-            this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this.splitMain = new System.Windows.Forms.SplitContainer();
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
             this.label19 = new System.Windows.Forms.Label();
             this.txtHeight = new C1.Win.C1Input.C1TextBox();
@@ -189,11 +189,12 @@
             this.printDialog1 = new System.Windows.Forms.PrintDialog();
             this.cPdf = new C1.Win.C1Document.C1PdfDocumentSource(this.components);
             this._c1pdf = new C1.C1Pdf.C1PdfDocument();
+            this.txtDenyAllergyDesc = new C1.Win.C1Input.C1TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.theme1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
-            this.splitContainer1.Panel1.SuspendLayout();
-            this.splitContainer1.Panel2.SuspendLayout();
-            this.splitContainer1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.splitMain)).BeginInit();
+            this.splitMain.Panel1.SuspendLayout();
+            this.splitMain.Panel2.SuspendLayout();
+            this.splitMain.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).BeginInit();
             this.splitContainer2.Panel1.SuspendLayout();
             this.splitContainer2.Panel2.SuspendLayout();
@@ -294,38 +295,39 @@
             ((System.ComponentModel.ISupportInitialize)(this.btnVisit)).BeginInit();
             this.tabImage.SuspendLayout();
             this.sB.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtDenyAllergyDesc)).BeginInit();
             this.SuspendLayout();
             // 
             // theme1
             // 
             this.theme1.Theme = "Office2013Red";
             // 
-            // splitContainer1
+            // splitMain
             // 
-            this.splitContainer1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.splitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.splitContainer1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.splitContainer1.Location = new System.Drawing.Point(0, 0);
-            this.splitContainer1.Name = "splitContainer1";
-            this.splitContainer1.Orientation = System.Windows.Forms.Orientation.Horizontal;
+            this.splitMain.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.splitMain.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitMain.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.splitMain.Location = new System.Drawing.Point(0, 0);
+            this.splitMain.Name = "splitMain";
+            this.splitMain.Orientation = System.Windows.Forms.Orientation.Horizontal;
             // 
-            // splitContainer1.Panel1
+            // splitMain.Panel1
             // 
-            this.splitContainer1.Panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.splitContainer1.Panel1.Controls.Add(this.splitContainer2);
-            this.splitContainer1.Panel1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.theme1.SetTheme(this.splitContainer1.Panel1, "(default)");
+            this.splitMain.Panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.splitMain.Panel1.Controls.Add(this.splitContainer2);
+            this.splitMain.Panel1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.theme1.SetTheme(this.splitMain.Panel1, "(default)");
             // 
-            // splitContainer1.Panel2
+            // splitMain.Panel2
             // 
-            this.splitContainer1.Panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.splitContainer1.Panel2.Controls.Add(this.tC1);
-            this.splitContainer1.Panel2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.theme1.SetTheme(this.splitContainer1.Panel2, "(default)");
-            this.splitContainer1.Size = new System.Drawing.Size(1457, 718);
-            this.splitContainer1.SplitterDistance = 294;
-            this.splitContainer1.TabIndex = 527;
-            this.theme1.SetTheme(this.splitContainer1, "(default)");
+            this.splitMain.Panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.splitMain.Panel2.Controls.Add(this.tC1);
+            this.splitMain.Panel2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.theme1.SetTheme(this.splitMain.Panel2, "(default)");
+            this.splitMain.Size = new System.Drawing.Size(1457, 718);
+            this.splitMain.SplitterDistance = 314;
+            this.splitMain.TabIndex = 527;
+            this.theme1.SetTheme(this.splitMain, "(default)");
             // 
             // splitContainer2
             // 
@@ -338,6 +340,7 @@
             // splitContainer2.Panel1
             // 
             this.splitContainer2.Panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.splitContainer2.Panel1.Controls.Add(this.txtDenyAllergyDesc);
             this.splitContainer2.Panel1.Controls.Add(this.label19);
             this.splitContainer2.Panel1.Controls.Add(this.txtHeight);
             this.splitContainer2.Panel1.Controls.Add(this.chkCongenital);
@@ -417,7 +420,7 @@
             this.splitContainer2.Panel2.Controls.Add(this.picPtt);
             this.splitContainer2.Panel2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
             this.theme1.SetTheme(this.splitContainer2.Panel2, "(default)");
-            this.splitContainer2.Size = new System.Drawing.Size(1457, 294);
+            this.splitContainer2.Size = new System.Drawing.Size(1457, 314);
             this.splitContainer2.SplitterDistance = 1153;
             this.splitContainer2.TabIndex = 0;
             this.theme1.SetTheme(this.splitContainer2, "(default)");
@@ -1092,7 +1095,7 @@
             this.chkChronic.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.chkChronic.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.chkChronic.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.chkChronic.Location = new System.Drawing.Point(253, 221);
+            this.chkChronic.Location = new System.Drawing.Point(268, 221);
             this.chkChronic.Name = "chkChronic";
             this.chkChronic.Padding = new System.Windows.Forms.Padding(4, 1, 1, 1);
             this.chkChronic.Size = new System.Drawing.Size(88, 24);
@@ -1111,12 +1114,12 @@
             this.chkDenyAllergy.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.chkDenyAllergy.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.chkDenyAllergy.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.chkDenyAllergy.Location = new System.Drawing.Point(349, 221);
+            this.chkDenyAllergy.Location = new System.Drawing.Point(165, 282);
             this.chkDenyAllergy.Name = "chkDenyAllergy";
             this.chkDenyAllergy.Padding = new System.Windows.Forms.Padding(4, 1, 1, 1);
-            this.chkDenyAllergy.Size = new System.Drawing.Size(104, 24);
+            this.chkDenyAllergy.Size = new System.Drawing.Size(88, 24);
             this.chkDenyAllergy.TabIndex = 580;
-            this.chkDenyAllergy.Text = "ปฎิเสธการแพ้ยา";
+            this.chkDenyAllergy.Text = "แพ้ยา";
             this.theme1.SetTheme(this.chkDenyAllergy, "(default)");
             this.chkDenyAllergy.UseVisualStyleBackColor = true;
             this.chkDenyAllergy.Value = null;
@@ -1514,7 +1517,7 @@
             this.picPtt.Dock = System.Windows.Forms.DockStyle.Fill;
             this.picPtt.Location = new System.Drawing.Point(0, 0);
             this.picPtt.Name = "picPtt";
-            this.picPtt.Size = new System.Drawing.Size(300, 294);
+            this.picPtt.Size = new System.Drawing.Size(300, 314);
             this.picPtt.TabIndex = 0;
             this.picPtt.TabStop = false;
             // 
@@ -1531,7 +1534,7 @@
             this.tC1.Location = new System.Drawing.Point(0, 0);
             this.tC1.Name = "tC1";
             this.tC1.SelectedIndex = 3;
-            this.tC1.Size = new System.Drawing.Size(1457, 420);
+            this.tC1.Size = new System.Drawing.Size(1457, 400);
             this.tC1.TabIndex = 0;
             this.tC1.TabSizeMode = C1.Win.C1Command.TabSizeModeEnum.Fit;
             this.tC1.TabsShowFocusCues = false;
@@ -1544,7 +1547,7 @@
             this.tabFamily.Controls.Add(this.groupBox1);
             this.tabFamily.Location = new System.Drawing.Point(1, 24);
             this.tabFamily.Name = "tabFamily";
-            this.tabFamily.Size = new System.Drawing.Size(1455, 395);
+            this.tabFamily.Size = new System.Drawing.Size(1455, 375);
             this.tabFamily.TabIndex = 0;
             this.tabFamily.Text = "Family";
             // 
@@ -1585,7 +1588,7 @@
             this.groupBox1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
             this.groupBox1.Location = new System.Drawing.Point(0, 0);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(1455, 395);
+            this.groupBox1.Size = new System.Drawing.Size(1455, 375);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.theme1.SetTheme(this.groupBox1, "(default)");
@@ -2026,7 +2029,7 @@
             this.tabAddress.Controls.Add(this.groupBox3);
             this.tabAddress.Location = new System.Drawing.Point(1, 24);
             this.tabAddress.Name = "tabAddress";
-            this.tabAddress.Size = new System.Drawing.Size(1455, 395);
+            this.tabAddress.Size = new System.Drawing.Size(1455, 375);
             this.tabAddress.TabIndex = 2;
             this.tabAddress.Text = "Address";
             // 
@@ -2630,7 +2633,7 @@
             this.tabVisit.Controls.Add(this.panel1);
             this.tabVisit.Location = new System.Drawing.Point(1, 24);
             this.tabVisit.Name = "tabVisit";
-            this.tabVisit.Size = new System.Drawing.Size(1455, 395);
+            this.tabVisit.Size = new System.Drawing.Size(1455, 375);
             this.tabVisit.TabIndex = 3;
             this.tabVisit.Text = "Visit";
             // 
@@ -2641,7 +2644,7 @@
             this.pnVisit.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
             this.pnVisit.Location = new System.Drawing.Point(0, 60);
             this.pnVisit.Name = "pnVisit";
-            this.pnVisit.Size = new System.Drawing.Size(1455, 335);
+            this.pnVisit.Size = new System.Drawing.Size(1455, 315);
             this.pnVisit.TabIndex = 1;
             this.theme1.SetTheme(this.pnVisit, "(default)");
             // 
@@ -2676,7 +2679,7 @@
             this.tabImage.Controls.Add(this.pnImage);
             this.tabImage.Location = new System.Drawing.Point(1, 24);
             this.tabImage.Name = "tabImage";
-            this.tabImage.Size = new System.Drawing.Size(1455, 395);
+            this.tabImage.Size = new System.Drawing.Size(1455, 375);
             this.tabImage.TabIndex = 4;
             this.tabImage.Text = "Image";
             // 
@@ -2687,7 +2690,7 @@
             this.pnImage.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
             this.pnImage.Location = new System.Drawing.Point(0, 0);
             this.pnImage.Name = "pnImage";
-            this.pnImage.Size = new System.Drawing.Size(1455, 395);
+            this.pnImage.Size = new System.Drawing.Size(1455, 375);
             this.pnImage.TabIndex = 0;
             this.theme1.SetTheme(this.pnImage, "(default)");
             // 
@@ -2729,21 +2732,34 @@
             this._c1pdf.UseFastTextOut = true;
             this._c1pdf.UseFontShaping = true;
             // 
+            // txtDenyAllergyDesc
+            // 
+            this.txtDenyAllergyDesc.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtDenyAllergyDesc.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
+            this.txtDenyAllergyDesc.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.txtDenyAllergyDesc.Location = new System.Drawing.Point(268, 287);
+            this.txtDenyAllergyDesc.Name = "txtDenyAllergyDesc";
+            this.txtDenyAllergyDesc.Size = new System.Drawing.Size(331, 20);
+            this.txtDenyAllergyDesc.TabIndex = 690;
+            this.txtDenyAllergyDesc.Tag = null;
+            this.theme1.SetTheme(this.txtDenyAllergyDesc, "(default)");
+            this.txtDenyAllergyDesc.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            // 
             // FrmPatientAdd
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1457, 740);
-            this.Controls.Add(this.splitContainer1);
+            this.Controls.Add(this.splitMain);
             this.Controls.Add(this.sB);
             this.Name = "FrmPatientAdd";
             this.Text = "FrmPatientAdd";
             this.Load += new System.EventHandler(this.FrmPatientAdd_Load);
             ((System.ComponentModel.ISupportInitialize)(this.theme1)).EndInit();
-            this.splitContainer1.Panel1.ResumeLayout(false);
-            this.splitContainer1.Panel2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
-            this.splitContainer1.ResumeLayout(false);
+            this.splitMain.Panel1.ResumeLayout(false);
+            this.splitMain.Panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.splitMain)).EndInit();
+            this.splitMain.ResumeLayout(false);
             this.splitContainer2.Panel1.ResumeLayout(false);
             this.splitContainer2.Panel1.PerformLayout();
             this.splitContainer2.Panel2.ResumeLayout(false);
@@ -2849,6 +2865,7 @@
             this.tabImage.ResumeLayout(false);
             this.sB.ResumeLayout(false);
             this.sB.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtDenyAllergyDesc)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -2859,7 +2876,7 @@
         private C1.Win.C1Themes.C1ThemeController theme1;
         private System.Windows.Forms.StatusStrip sB;
         private System.Windows.Forms.ToolStripStatusLabel sB1;
-        private System.Windows.Forms.SplitContainer splitContainer1;
+        private System.Windows.Forms.SplitContainer splitMain;
         private System.Windows.Forms.SplitContainer splitContainer2;
         private C1.Win.C1Input.C1PictureBox picPtt;
         private C1.Win.C1Input.C1TextBox txtPttNameE;
@@ -3016,5 +3033,6 @@
         private C1.Win.C1Input.C1CheckBox chkCongenital;
         private System.Windows.Forms.Label label19;
         private C1.Win.C1Input.C1TextBox txtHeight;
+        private C1.Win.C1Input.C1TextBox txtDenyAllergyDesc;
     }
 }
