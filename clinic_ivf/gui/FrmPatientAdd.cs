@@ -169,18 +169,21 @@ namespace clinic_ivf.gui
         {
             //throw new NotImplementedException();
             txtAllergyDesc.Enabled = chkDenyAllergy.Checked ? true : false;
+            txtAllergyDesc.Focus();
         }
 
         private void ChkCongenital_CheckedChanged(object sender, EventArgs e)
         {
             //throw new NotImplementedException();
             txtCongenital.Enabled = chkCongenital.Checked ? true : false;
+            txtCongenital.Focus();
         }
 
         private void ChkOR_CheckedChanged(object sender, EventArgs e)
         {
             //throw new NotImplementedException();
             txtORDescription.Enabled = chkOR.Checked ? true : false;
+            txtORDescription.Focus();
         }
 
         private void setControlEnable(Boolean flag)
@@ -968,6 +971,33 @@ namespace clinic_ivf.gui
 
             this.cboCrl.Leave += new System.EventHandler(this.textBox_Leave);
             this.cboCrl.Enter += new System.EventHandler(this.textBox_Enter);
+
+            this.txtInsurance.Leave += new System.EventHandler(this.textBox_Leave);
+            this.txtInsurance.Enter += new System.EventHandler(this.textBox_Enter);
+
+            this.txtORDescription.Leave += new System.EventHandler(this.textBox_Leave);
+            this.txtORDescription.Enter += new System.EventHandler(this.textBox_Enter);
+
+            this.txtCongenital.Leave += new System.EventHandler(this.textBox_Leave);
+            this.txtCongenital.Enter += new System.EventHandler(this.textBox_Enter);
+
+            this.txtAllergyDesc.Leave += new System.EventHandler(this.textBox_Leave);
+            this.txtAllergyDesc.Enter += new System.EventHandler(this.textBox_Enter);
+
+            this.txtNickName.Leave += new System.EventHandler(this.textBox_Leave);
+            this.txtNickName.Enter += new System.EventHandler(this.textBox_Enter);
+
+            this.txtHeight.Leave += new System.EventHandler(this.textBox_Leave);
+            this.txtHeight.Enter += new System.EventHandler(this.textBox_Enter);
+
+            //this.txtRemark.Leave += new System.EventHandler(this.textBox_Leave);
+            //this.txtRemark.Enter += new System.EventHandler(this.textBox_Enter);
+
+            //this.txtAgent.Leave += new System.EventHandler(this.textBox_Leave);
+            //this.txtAgent.Enter += new System.EventHandler(this.textBox_Enter);
+
+            //this.txtHeight.Leave += new System.EventHandler(this.textBox_Leave);
+            //this.txtHeight.Enter += new System.EventHandler(this.textBox_Enter);
             //this.txtPid1.Enter += new System.EventHandler(this.textBox_Enter);
         }
         private void textBox_Leave(object sender, EventArgs e)

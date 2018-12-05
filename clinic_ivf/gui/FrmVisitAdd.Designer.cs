@@ -124,6 +124,7 @@
             this.tabVisit = new C1.Win.C1Command.C1DockingTabPage();
             this.tabCheckList1 = new C1.Win.C1Command.C1DockingTabPage();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.txtAllergy = new C1.Win.C1Input.C1TextBox();
             this.label41 = new System.Windows.Forms.Label();
             this.label40 = new System.Windows.Forms.Label();
             this.txtFileName = new C1.Win.C1Input.C1TextBox();
@@ -152,7 +153,6 @@
             this.txtNickName1 = new C1.Win.C1Input.C1TextBox();
             this.panel2 = new System.Windows.Forms.Panel();
             this.picImg = new C1.Win.C1Input.C1PictureBox();
-            this.txtAllergy = new C1.Win.C1Input.C1TextBox();
             this.sB.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.theme1)).BeginInit();
             this.groupBox1.SuspendLayout();
@@ -212,6 +212,7 @@
             this.tabVisit.SuspendLayout();
             this.tabCheckList1.SuspendLayout();
             this.panel3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtAllergy)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtFileName)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtPulse1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnPrnCheckList1)).BeginInit();
@@ -230,7 +231,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtNickName1)).BeginInit();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picImg)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtAllergy)).BeginInit();
             this.SuspendLayout();
             // 
             // sB
@@ -1726,6 +1726,19 @@
             this.panel3.TabIndex = 0;
             this.theme1.SetTheme(this.panel3, "(default)");
             // 
+            // txtAllergy
+            // 
+            this.txtAllergy.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtAllergy.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
+            this.txtAllergy.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.txtAllergy.Location = new System.Drawing.Point(123, 122);
+            this.txtAllergy.Name = "txtAllergy";
+            this.txtAllergy.Size = new System.Drawing.Size(287, 20);
+            this.txtAllergy.TabIndex = 712;
+            this.txtAllergy.Tag = null;
+            this.theme1.SetTheme(this.txtAllergy, "(default)");
+            this.txtAllergy.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            // 
             // label41
             // 
             this.label41.AutoSize = true;
@@ -2145,19 +2158,6 @@
             this.picImg.TabIndex = 2;
             this.picImg.TabStop = false;
             // 
-            // txtAllergy
-            // 
-            this.txtAllergy.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtAllergy.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
-            this.txtAllergy.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.txtAllergy.Location = new System.Drawing.Point(123, 122);
-            this.txtAllergy.Name = "txtAllergy";
-            this.txtAllergy.Size = new System.Drawing.Size(287, 20);
-            this.txtAllergy.TabIndex = 712;
-            this.txtAllergy.Tag = null;
-            this.theme1.SetTheme(this.txtAllergy, "(default)");
-            this.txtAllergy.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
-            // 
             // FrmVisitAdd
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -2232,6 +2232,7 @@
             this.tabCheckList1.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtAllergy)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtFileName)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtPulse1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnPrnCheckList1)).EndInit();
@@ -2250,7 +2251,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtNickName1)).EndInit();
             this.panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.picImg)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtAllergy)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
