@@ -122,6 +122,13 @@ namespace clinic_ivf.gui
             //path_pic = dt.Rows[0]["path_pic"] != null ? dt.Rows[0]["path_pic"].ToString(): "";
             path_pic = System.IO.Directory.GetCurrentDirectory() + "\\" + "check_list_1.jpg";
             dt.Rows[0]["path_pic"] = path_pic;
+            dt.Rows[0]["mobile"] = txtMobile11.Text;
+            dt.Rows[0]["pulse"] = txtPulse1.Text;
+            dt.Rows[0]["height"] = txtHeight1.Text;
+            dt.Rows[0]["bw"] = txtBW1.Text;
+            dt.Rows[0]["bp"] = txtBP1.Text;
+            dt.Rows[0]["lmp"] = txtLMP1.Text;
+            dt.Rows[0]["path_pic"] = path_pic;
             frm.setVisitCheckList1Report(dt);
             frm.ShowDialog(this);
         }
@@ -140,7 +147,7 @@ namespace clinic_ivf.gui
                 txtMobile11.Value = txtMobile1.Text;
                 txtHeight1.Value = txtHeight.Text;
                 txtBP1.Value = txtBP.Text;
-                txtBW1.Value = txtBW1.Text;
+                txtBW1.Value = txtBW.Text;
                 txtLMP1.Value = txtLMP.Text;
                 txtAgent1.Value = txtAgent.Text;
                 txtNickName1.Value = txtNickName.Text;
@@ -283,7 +290,8 @@ namespace clinic_ivf.gui
                 txtCongenital1.Value = ptt.congenital_diseases_description;
                 txtORDescription1.Value = ptt.or_description;
                 stt.SetToolTip(chkOR, ptt.or_description);
-                stt.SetToolTip(chkOR, ptt.or_description);
+                stt.SetToolTip(chkDenyAllergy, ptt.allergy_description);
+                stt.SetToolTip(chkCongenital, ptt.congenital_diseases_description);
                 txtNickName.Value = ptt.patient_nickname;
                 txtNickName1.Value = txtNickName.Text;
                 txtMobile11.Value = txtMobile1.Text;
@@ -300,6 +308,8 @@ namespace clinic_ivf.gui
                 txtBW1.Value = txtBW1.Text;
                 txtPulse.Value = vs.pulse;
                 txtPulse1.Value = txtPulse.Text;
+                txtAllergy.Value = ptt.allergy_description;
+                //txtAllergyDesc1.Value = txtAllergy.Text;
                 PatientImage ptti = new PatientImage();
                 ptti = ic.ivfDB.pttImgDB.selectByPttIDStatus1(txtPttId.Text);
 

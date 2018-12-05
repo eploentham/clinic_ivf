@@ -45,6 +45,8 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.picPtt = new C1.Win.C1Input.C1PictureBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.label43 = new System.Windows.Forms.Label();
+            this.label42 = new System.Windows.Forms.Label();
             this.label38 = new System.Windows.Forms.Label();
             this.txtPulse = new C1.Win.C1Input.C1TextBox();
             this.label32 = new System.Windows.Forms.Label();
@@ -122,11 +124,11 @@
             this.tabVisit = new C1.Win.C1Command.C1DockingTabPage();
             this.tabCheckList1 = new C1.Win.C1Command.C1DockingTabPage();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.label41 = new System.Windows.Forms.Label();
+            this.label40 = new System.Windows.Forms.Label();
             this.txtFileName = new C1.Win.C1Input.C1TextBox();
             this.label39 = new System.Windows.Forms.Label();
             this.txtPulse1 = new C1.Win.C1Input.C1TextBox();
-            this.txtDenyAllergyDesc1 = new C1.Win.C1Input.C1TextBox();
-            this.c1CheckBox1 = new C1.Win.C1Input.C1CheckBox();
             this.btnPrnCheckList1 = new C1.Win.C1Input.C1Button();
             this.label36 = new System.Windows.Forms.Label();
             this.txtBP1 = new C1.Win.C1Input.C1TextBox();
@@ -150,10 +152,7 @@
             this.txtNickName1 = new C1.Win.C1Input.C1TextBox();
             this.panel2 = new System.Windows.Forms.Panel();
             this.picImg = new C1.Win.C1Input.C1PictureBox();
-            this.label40 = new System.Windows.Forms.Label();
-            this.label41 = new System.Windows.Forms.Label();
-            this.label42 = new System.Windows.Forms.Label();
-            this.label43 = new System.Windows.Forms.Label();
+            this.txtAllergy = new C1.Win.C1Input.C1TextBox();
             this.sB.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.theme1)).BeginInit();
             this.groupBox1.SuspendLayout();
@@ -215,8 +214,6 @@
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtFileName)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtPulse1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtDenyAllergyDesc1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.c1CheckBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnPrnCheckList1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtBP1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtBW1)).BeginInit();
@@ -233,6 +230,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtNickName1)).BeginInit();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picImg)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtAllergy)).BeginInit();
             this.SuspendLayout();
             // 
             // sB
@@ -539,6 +537,32 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Visit";
             this.theme1.SetTheme(this.groupBox2, "(default)");
+            // 
+            // label43
+            // 
+            this.label43.AutoSize = true;
+            this.label43.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.label43.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label43.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.label43.Location = new System.Drawing.Point(748, 88);
+            this.label43.Name = "label43";
+            this.label43.Size = new System.Drawing.Size(52, 16);
+            this.label43.TabIndex = 713;
+            this.label43.Text = "mm/Hg";
+            this.theme1.SetTheme(this.label43, "(default)");
+            // 
+            // label42
+            // 
+            this.label42.AutoSize = true;
+            this.label42.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.label42.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label42.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.label42.Location = new System.Drawing.Point(932, 88);
+            this.label42.Name = "label42";
+            this.label42.Size = new System.Drawing.Size(51, 16);
+            this.label42.TabIndex = 712;
+            this.label42.Text = "ครั้ง/นาที";
+            this.theme1.SetTheme(this.label42, "(default)");
             // 
             // label38
             // 
@@ -1667,13 +1691,12 @@
             // panel3
             // 
             this.panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.panel3.Controls.Add(this.txtAllergy);
             this.panel3.Controls.Add(this.label41);
             this.panel3.Controls.Add(this.label40);
             this.panel3.Controls.Add(this.txtFileName);
             this.panel3.Controls.Add(this.label39);
             this.panel3.Controls.Add(this.txtPulse1);
-            this.panel3.Controls.Add(this.txtDenyAllergyDesc1);
-            this.panel3.Controls.Add(this.c1CheckBox1);
             this.panel3.Controls.Add(this.btnPrnCheckList1);
             this.panel3.Controls.Add(this.label36);
             this.panel3.Controls.Add(this.txtBP1);
@@ -1702,6 +1725,32 @@
             this.panel3.Size = new System.Drawing.Size(417, 410);
             this.panel3.TabIndex = 0;
             this.theme1.SetTheme(this.panel3, "(default)");
+            // 
+            // label41
+            // 
+            this.label41.AutoSize = true;
+            this.label41.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.label41.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label41.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.label41.Location = new System.Drawing.Point(167, 353);
+            this.label41.Name = "label41";
+            this.label41.Size = new System.Drawing.Size(51, 16);
+            this.label41.TabIndex = 711;
+            this.label41.Text = "ครั้ง/นาที";
+            this.theme1.SetTheme(this.label41, "(default)");
+            // 
+            // label40
+            // 
+            this.label40.AutoSize = true;
+            this.label40.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.label40.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label40.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.label40.Location = new System.Drawing.Point(6, 379);
+            this.label40.Name = "label40";
+            this.label40.Size = new System.Drawing.Size(65, 16);
+            this.label40.TabIndex = 710;
+            this.label40.Text = "filename :";
+            this.theme1.SetTheme(this.label40, "(default)");
             // 
             // txtFileName
             // 
@@ -1741,38 +1790,6 @@
             this.txtPulse1.Tag = null;
             this.theme1.SetTheme(this.txtPulse1, "(default)");
             this.txtPulse1.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
-            // 
-            // txtDenyAllergyDesc1
-            // 
-            this.txtDenyAllergyDesc1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtDenyAllergyDesc1.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
-            this.txtDenyAllergyDesc1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.txtDenyAllergyDesc1.Location = new System.Drawing.Point(123, 230);
-            this.txtDenyAllergyDesc1.Name = "txtDenyAllergyDesc1";
-            this.txtDenyAllergyDesc1.Size = new System.Drawing.Size(287, 20);
-            this.txtDenyAllergyDesc1.TabIndex = 706;
-            this.txtDenyAllergyDesc1.Tag = null;
-            this.theme1.SetTheme(this.txtDenyAllergyDesc1, "(default)");
-            this.txtDenyAllergyDesc1.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
-            // 
-            // c1CheckBox1
-            // 
-            this.c1CheckBox1.BackColor = System.Drawing.Color.Transparent;
-            this.c1CheckBox1.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
-            this.c1CheckBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.c1CheckBox1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.c1CheckBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.c1CheckBox1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.c1CheckBox1.Location = new System.Drawing.Point(8, 226);
-            this.c1CheckBox1.Name = "c1CheckBox1";
-            this.c1CheckBox1.Padding = new System.Windows.Forms.Padding(4, 1, 1, 1);
-            this.c1CheckBox1.Size = new System.Drawing.Size(104, 24);
-            this.c1CheckBox1.TabIndex = 705;
-            this.c1CheckBox1.Text = "แพ้ยา";
-            this.theme1.SetTheme(this.c1CheckBox1, "(default)");
-            this.c1CheckBox1.UseVisualStyleBackColor = true;
-            this.c1CheckBox1.Value = null;
-            this.c1CheckBox1.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
             // 
             // btnPrnCheckList1
             // 
@@ -1912,7 +1929,7 @@
             this.chkOPU1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.chkOPU1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.chkOPU1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.chkOPU1.Location = new System.Drawing.Point(89, 148);
+            this.chkOPU1.Location = new System.Drawing.Point(9, 148);
             this.chkOPU1.Name = "chkOPU1";
             this.chkOPU1.Padding = new System.Windows.Forms.Padding(4, 1, 1, 1);
             this.chkOPU1.Size = new System.Drawing.Size(104, 24);
@@ -1931,12 +1948,12 @@
             this.chkDenyAllergy1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.chkDenyAllergy1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.chkDenyAllergy1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.chkDenyAllergy1.Location = new System.Drawing.Point(89, 118);
+            this.chkDenyAllergy1.Location = new System.Drawing.Point(8, 118);
             this.chkDenyAllergy1.Name = "chkDenyAllergy1";
             this.chkDenyAllergy1.Padding = new System.Windows.Forms.Padding(4, 1, 1, 1);
             this.chkDenyAllergy1.Size = new System.Drawing.Size(104, 24);
             this.chkDenyAllergy1.TabIndex = 694;
-            this.chkDenyAllergy1.Text = "ปฎิเสธการแพ้ยา";
+            this.chkDenyAllergy1.Text = "แพ้ยา";
             this.theme1.SetTheme(this.chkDenyAllergy1, "(default)");
             this.chkDenyAllergy1.UseVisualStyleBackColor = true;
             this.chkDenyAllergy1.Value = null;
@@ -2128,57 +2145,18 @@
             this.picImg.TabIndex = 2;
             this.picImg.TabStop = false;
             // 
-            // label40
+            // txtAllergy
             // 
-            this.label40.AutoSize = true;
-            this.label40.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.label40.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label40.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.label40.Location = new System.Drawing.Point(6, 379);
-            this.label40.Name = "label40";
-            this.label40.Size = new System.Drawing.Size(65, 16);
-            this.label40.TabIndex = 710;
-            this.label40.Text = "filename :";
-            this.theme1.SetTheme(this.label40, "(default)");
-            // 
-            // label41
-            // 
-            this.label41.AutoSize = true;
-            this.label41.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.label41.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label41.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.label41.Location = new System.Drawing.Point(167, 353);
-            this.label41.Name = "label41";
-            this.label41.Size = new System.Drawing.Size(51, 16);
-            this.label41.TabIndex = 711;
-            this.label41.Text = "ครั้ง/นาที";
-            this.theme1.SetTheme(this.label41, "(default)");
-            // 
-            // label42
-            // 
-            this.label42.AutoSize = true;
-            this.label42.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.label42.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label42.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.label42.Location = new System.Drawing.Point(932, 88);
-            this.label42.Name = "label42";
-            this.label42.Size = new System.Drawing.Size(51, 16);
-            this.label42.TabIndex = 712;
-            this.label42.Text = "ครั้ง/นาที";
-            this.theme1.SetTheme(this.label42, "(default)");
-            // 
-            // label43
-            // 
-            this.label43.AutoSize = true;
-            this.label43.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.label43.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label43.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.label43.Location = new System.Drawing.Point(748, 88);
-            this.label43.Name = "label43";
-            this.label43.Size = new System.Drawing.Size(52, 16);
-            this.label43.TabIndex = 713;
-            this.label43.Text = "mm/Hg";
-            this.theme1.SetTheme(this.label43, "(default)");
+            this.txtAllergy.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtAllergy.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
+            this.txtAllergy.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.txtAllergy.Location = new System.Drawing.Point(123, 122);
+            this.txtAllergy.Name = "txtAllergy";
+            this.txtAllergy.Size = new System.Drawing.Size(287, 20);
+            this.txtAllergy.TabIndex = 712;
+            this.txtAllergy.Tag = null;
+            this.theme1.SetTheme(this.txtAllergy, "(default)");
+            this.txtAllergy.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
             // 
             // FrmVisitAdd
             // 
@@ -2256,8 +2234,6 @@
             this.panel3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtFileName)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtPulse1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtDenyAllergyDesc1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.c1CheckBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnPrnCheckList1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtBP1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtBW1)).EndInit();
@@ -2274,6 +2250,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtNickName1)).EndInit();
             this.panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.picImg)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtAllergy)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -2396,8 +2373,6 @@
         private System.Windows.Forms.Label label32;
         private C1.Win.C1Input.C1TextBox txtAgent;
         private C1.Win.C1Input.C1Button btnPrnCheckList1;
-        private C1.Win.C1Input.C1TextBox txtDenyAllergyDesc1;
-        private C1.Win.C1Input.C1CheckBox c1CheckBox1;
         private System.Windows.Forms.Label label38;
         private C1.Win.C1Input.C1TextBox txtPulse;
         private System.Windows.Forms.Label label39;
@@ -2407,5 +2382,6 @@
         private System.Windows.Forms.Label label41;
         private System.Windows.Forms.Label label40;
         private System.Windows.Forms.Label label43;
+        private C1.Win.C1Input.C1TextBox txtAllergy;
     }
 }

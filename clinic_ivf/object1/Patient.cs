@@ -123,7 +123,7 @@ namespace clinic_ivf.object1
         public String or_description { get; set; }
         public String status_congenial { get; set; }
         public String congenital_diseases_description { get; set; }
-        public String deny_allergy_description { get; set; }
+        public String allergy_description { get; set; }
 
         //public String insurance { get; set; }
         public Age age = new Age(DateTime.Now);

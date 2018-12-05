@@ -32,6 +32,7 @@
             this.theme1 = new C1.Win.C1Themes.C1ThemeController();
             this.splitMain = new System.Windows.Forms.SplitContainer();
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
+            this.txtAllergyDesc = new C1.Win.C1Input.C1TextBox();
             this.label19 = new System.Windows.Forms.Label();
             this.txtHeight = new C1.Win.C1Input.C1TextBox();
             this.chkCongenital = new C1.Win.C1Input.C1CheckBox();
@@ -189,7 +190,6 @@
             this.printDialog1 = new System.Windows.Forms.PrintDialog();
             this.cPdf = new C1.Win.C1Document.C1PdfDocumentSource(this.components);
             this._c1pdf = new C1.C1Pdf.C1PdfDocument();
-            this.txtDenyAllergyDesc = new C1.Win.C1Input.C1TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.theme1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitMain)).BeginInit();
             this.splitMain.Panel1.SuspendLayout();
@@ -199,6 +199,7 @@
             this.splitContainer2.Panel1.SuspendLayout();
             this.splitContainer2.Panel2.SuspendLayout();
             this.splitContainer2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtAllergyDesc)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtHeight)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkCongenital)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtORDescription)).BeginInit();
@@ -295,7 +296,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.btnVisit)).BeginInit();
             this.tabImage.SuspendLayout();
             this.sB.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.txtDenyAllergyDesc)).BeginInit();
             this.SuspendLayout();
             // 
             // theme1
@@ -340,7 +340,7 @@
             // splitContainer2.Panel1
             // 
             this.splitContainer2.Panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.splitContainer2.Panel1.Controls.Add(this.txtDenyAllergyDesc);
+            this.splitContainer2.Panel1.Controls.Add(this.txtAllergyDesc);
             this.splitContainer2.Panel1.Controls.Add(this.label19);
             this.splitContainer2.Panel1.Controls.Add(this.txtHeight);
             this.splitContainer2.Panel1.Controls.Add(this.chkCongenital);
@@ -424,6 +424,19 @@
             this.splitContainer2.SplitterDistance = 1153;
             this.splitContainer2.TabIndex = 0;
             this.theme1.SetTheme(this.splitContainer2, "(default)");
+            // 
+            // txtAllergyDesc
+            // 
+            this.txtAllergyDesc.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtAllergyDesc.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
+            this.txtAllergyDesc.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.txtAllergyDesc.Location = new System.Drawing.Point(268, 287);
+            this.txtAllergyDesc.Name = "txtAllergyDesc";
+            this.txtAllergyDesc.Size = new System.Drawing.Size(331, 20);
+            this.txtAllergyDesc.TabIndex = 690;
+            this.txtAllergyDesc.Tag = null;
+            this.theme1.SetTheme(this.txtAllergyDesc, "(default)");
+            this.txtAllergyDesc.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
             // 
             // label19
             // 
@@ -2732,19 +2745,6 @@
             this._c1pdf.UseFastTextOut = true;
             this._c1pdf.UseFontShaping = true;
             // 
-            // txtDenyAllergyDesc
-            // 
-            this.txtDenyAllergyDesc.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtDenyAllergyDesc.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
-            this.txtDenyAllergyDesc.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.txtDenyAllergyDesc.Location = new System.Drawing.Point(268, 287);
-            this.txtDenyAllergyDesc.Name = "txtDenyAllergyDesc";
-            this.txtDenyAllergyDesc.Size = new System.Drawing.Size(331, 20);
-            this.txtDenyAllergyDesc.TabIndex = 690;
-            this.txtDenyAllergyDesc.Tag = null;
-            this.theme1.SetTheme(this.txtDenyAllergyDesc, "(default)");
-            this.txtDenyAllergyDesc.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
-            // 
             // FrmPatientAdd
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -2765,6 +2765,7 @@
             this.splitContainer2.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).EndInit();
             this.splitContainer2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.txtAllergyDesc)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtHeight)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkCongenital)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtORDescription)).EndInit();
@@ -2865,7 +2866,6 @@
             this.tabImage.ResumeLayout(false);
             this.sB.ResumeLayout(false);
             this.sB.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.txtDenyAllergyDesc)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -3033,6 +3033,6 @@
         private C1.Win.C1Input.C1CheckBox chkCongenital;
         private System.Windows.Forms.Label label19;
         private C1.Win.C1Input.C1TextBox txtHeight;
-        private C1.Win.C1Input.C1TextBox txtDenyAllergyDesc;
+        private C1.Win.C1Input.C1TextBox txtAllergyDesc;
     }
 }

@@ -168,7 +168,7 @@ namespace clinic_ivf.gui
         private void ChkDenyAllergy_CheckedChanged(object sender, EventArgs e)
         {
             //throw new NotImplementedException();
-            txtDenyAllergyDesc.Enabled = chkDenyAllergy.Checked ? true : false;
+            txtAllergyDesc.Enabled = chkDenyAllergy.Checked ? true : false;
         }
 
         private void ChkCongenital_CheckedChanged(object sender, EventArgs e)
@@ -1007,9 +1007,10 @@ namespace clinic_ivf.gui
             grfImg.DoubleClick += GrfImg_DoubleClick;
             //grfExpnC.CellChanged += new C1.Win.C1FlexGrid.RowColEventHandler(this.grfDept_CellChanged);
             ContextMenu menuGw = new ContextMenu();
-            menuGw.MenuItems.Add("&Upload รูปบัตรประชาชน", new EventHandler(ContextMenu_grfimg_upload_ptt));
-            menuGw.MenuItems.Add("&Upload สำเนาบัตรประชาชน ที่มีลายเซ็น", new EventHandler(ContextMenu_grfimg_upload_ptt));
-            menuGw.MenuItems.Add("&ยกเลิก", new EventHandler(ContextMenu_grfimg_Cancel));
+            menuGw.MenuItems.Add("Upload รูปบัตรประชาชน", new EventHandler(ContextMenu_grfimg_upload_ptt));
+            menuGw.MenuItems.Add("Upload สำเนาบัตรประชาชน ที่มีลายเซ็น", new EventHandler(ContextMenu_grfimg_upload_ptt));
+            menuGw.MenuItems.Add("Upload รูป Passport", new EventHandler(ContextMenu_grfimg_upload_ptt));
+            menuGw.MenuItems.Add("ยกเลิก", new EventHandler(ContextMenu_grfimg_Cancel));
             grfImg.ContextMenu = menuGw;
             pnImage.Controls.Add(grfImg);
 
@@ -1019,6 +1020,7 @@ namespace clinic_ivf.gui
         private void ContextMenu_grfimg_upload_ptt(object sender, System.EventArgs e)
         {
             if (grfImg.Row < 0) return;
+            
             String pathfile1 = grfImg[grfImg.Row, colPathPic] != null ? grfImg[grfImg.Row, colPathPic].ToString() : "";
             if (pathfile1.Length > 0)
             {
@@ -1046,11 +1048,13 @@ namespace clinic_ivf.gui
                         frm.ShowDialog(this);
                         if (!ic.cStf.staff_id.Equals(""))
                         {
-                            String filename = "", re = "";
+                            String filename = "", re = "", status="";
                             String[] ext = pathfile.Split('.');
                             if (ext.Length > 1)
                             {
-                                filename =  txtHn.Text.Replace("-", "") + "_1"+ "." + ext[ext.Length - 1];
+                                MenuItem aa = (MenuItem)sender;
+                                status = aa.Text.Equals("Upload รูปบัตรประชาชน") ? "1" : aa.Text.Equals("Upload สำเนาบัตรประชาชน ที่มีลายเซ็น") ? "2" : aa.Text.Equals("Upload รูป Passport") ? "3" : "";
+                                filename =  txtHn.Text.Replace("-", "") + "_"+ status + "." + ext[ext.Length - 1];
                                 PatientImage ptti = new PatientImage();
                                 ptti.patient_image_id = id;
                                 ptti.t_patient_id = txtID.Text;
@@ -1546,7 +1550,7 @@ namespace clinic_ivf.gui
             //ic.setC1Combo(cboRg, ptt.f_patient_religion_id);
             chkChronic.Checked = ptt.status_chronic.Equals("1") ? true : false;
             chkDenyAllergy.Checked = ptt.status_deny_allergy.Equals("1") ? true : false;
-            txtDenyAllergyDesc.Enabled = chkDenyAllergy.Checked ? true : false;
+            txtAllergyDesc.Enabled = chkDenyAllergy.Checked ? true : false;
 
             barcode.Text = txtHn.Text;
             filenamepic = txtHn.Text;
@@ -1576,7 +1580,7 @@ namespace clinic_ivf.gui
             txtORDescription.Value = ptt.or_description;
             txtCongenital.Value = ptt.congenital_diseases_description;
             txtHeight.Value = ptt.patient_height;
-            txtDenyAllergyDesc.Value = ptt.deny_allergy_description;
+            txtAllergyDesc.Value = ptt.allergy_description;
             //txtEmail.Value = pttO.Email;
         }
         private void setControlPtt(String pttid)
@@ -1658,7 +1662,7 @@ namespace clinic_ivf.gui
             txtORDescription.Value = ptt.or_description;
             txtCongenital.Value = ptt.congenital_diseases_description;
             txtHeight.Value = ptt.patient_height;
-            txtDenyAllergyDesc.Value = ptt.deny_allergy_description;
+            txtAllergyDesc.Value = ptt.allergy_description;
 
             PatientOld pttO = new PatientOld();
             VisitOld vsOld = new VisitOld();
@@ -1835,7 +1839,7 @@ namespace clinic_ivf.gui
             ptt.or_description = txtORDescription.Text;
             ptt.congenital_diseases_description = txtCongenital.Text;
             ptt.patient_height = txtHeight.Text;
-            ptt.deny_allergy_description = txtDenyAllergyDesc.Text;
+            ptt.allergy_description = txtAllergyDesc.Text;
         }
         private void DoPrint(C1PdfDocumentSource pds)
         {
