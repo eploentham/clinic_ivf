@@ -67,6 +67,10 @@ namespace clinic_ivf.objdb
             pApm.remark = "remark";
             pApm.dtr_name = "dtr_name";
             pApm.tvs = "tvs";
+            pApm.repeat_e2 = "repeat_e2";
+            pApm.repeat_prl = "repeat_prl";
+            pApm.repeat_lh = "repeat_lh";
+            pApm.repeat_fsh = "repeat_fsh";
 
             pApm.pkField = "t_patient_appointment_id";
             pApm.table = "t_patient_appointment";
@@ -114,6 +118,10 @@ namespace clinic_ivf.objdb
             p.lt_ovary = p.lt_ovary == null ? "" : p.lt_ovary;
             p.fsh = p.fsh == null ? "0" : p.fsh;
             p.tvs = p.tvs == null ? "0" : p.tvs;
+            p.repeat_e2 = p.e2 == null ? "0" : p.repeat_e2;
+            p.repeat_prl = p.repeat_prl == null ? "0" : p.repeat_prl;
+            p.repeat_lh = p.repeat_lh == null ? "0" : p.repeat_lh;
+            p.repeat_fsh = p.repeat_fsh == null ? "0" : p.repeat_fsh;
 
             p.r_rp1853_aptype_id = long.TryParse(p.r_rp1853_aptype_id, out chk) ? chk.ToString() : "0";
             p.t_patient_id = long.TryParse(p.t_patient_id, out chk) ? chk.ToString() : "0";
@@ -150,7 +158,9 @@ namespace clinic_ivf.objdb
                 pApm.patient_appointment_cancel_date_time + "," + pApm.patient_appointment_active + "," + pApm.visit_id_make_appointment + "," +
                 pApm.e2 + "," + pApm.endo + "," + pApm.prl + "," +
                 pApm.lh + "," + pApm.rt_ovary + "," + pApm.lt_ovary + "," +
-                pApm.fsh + "," + pApm.t_patient_id + "," + pApm.tvs + " " +
+                pApm.fsh + "," + pApm.t_patient_id + "," + pApm.tvs + "," +
+                pApm.repeat_e2 + "," + pApm.repeat_prl + "," + pApm.repeat_lh + "," +
+                pApm.repeat_fsh + " " +
                 ") " +
                 "Values ('" + p.patient_appoint_date_time + "','" + p.patient_appointment_time.Replace("'", "''") + "','" + p.patient_appointment.Replace("'", "''") + "'," +
                 "'" + p.patient_appointment_doctor.Replace("'", "''") + "','" + p.patient_appointment_notice.Replace("'", "''") + "','" + p.patient_appointment_staff.Replace("'", "''") + "'," +
@@ -163,10 +173,12 @@ namespace clinic_ivf.objdb
                 "'" + p.patient_appointment_date + "'," +
                 "'" + p.patient_appointment_servicepoint + "','" + p.patient_appointment_staff_record + "','" + p.patient_appointment_record_date_time + "'," +
                 "'" + p.patient_appointment_staff_update + "','" + p.patient_appointment_update_date_time + "','" + p.patient_appointment_staff_cancel + "'," +
-                "'" + p.patient_appointment_cancel_date_time + "','" + p.patient_appointment_active + "','" + p.visit_id_make_appointment + "', " +
-                "'" + p.e2 + "','" + p.endo + "','" + p.prl + "', " +
-                "'" + p.lh + "','" + p.rt_ovary + "','" + p.lt_ovary + "', " +
-                "'" + p.fsh + "','" + p.t_patient_id + "','" + p.tvs + "' " +
+                "'" + p.patient_appointment_cancel_date_time + "','" + p.patient_appointment_active + "','" + p.visit_id_make_appointment + "'," +
+                "'" + p.e2 + "','" + p.endo + "','" + p.prl + "'," +
+                "'" + p.lh + "','" + p.rt_ovary + "','" + p.lt_ovary + "'," +
+                "'" + p.fsh + "','" + p.t_patient_id + "','" + p.tvs + "'," +
+                "'" + p.repeat_e2 + "','" + p.repeat_prl + "','" + p.repeat_lh + "'," +
+                "'" + p.repeat_fsh + "' " +
                 ")";
 
                 re = conn.ExecuteNonQuery(conn.conn, sql);
@@ -235,8 +247,12 @@ namespace clinic_ivf.objdb
                 "," + pApm.lt_ovary + "='" + p.lt_ovary + "' " +
                 "," + pApm.fsh + "='" + p.fsh + "' " +
                 "," + pApm.tvs + "='" + p.tvs + "' " +
+                "," + pApm.repeat_e2 + "='" + p.repeat_e2 + "' " +
+                "," + pApm.repeat_prl + "='" + p.repeat_prl + "' " +
+                "," + pApm.repeat_lh + "='" + p.repeat_lh + "' " +
+                "," + pApm.repeat_fsh + "='" + p.repeat_fsh + "' " +
 
-                " Where " + pApm.pkField + " = '" + p.t_patient_id + "' "
+                " Where " + pApm.pkField + " = '" + p.t_patient_appointment_id + "' "
                 ;
             try
             {
@@ -379,6 +395,10 @@ namespace clinic_ivf.objdb
                 ptt1.lt_ovary = dt.Rows[0][pApm.lt_ovary].ToString();
                 ptt1.fsh = dt.Rows[0][pApm.fsh].ToString();
                 ptt1.tvs = dt.Rows[0][pApm.tvs].ToString();
+                ptt1.repeat_e2 = dt.Rows[0][pApm.repeat_e2].ToString();
+                ptt1.repeat_prl = dt.Rows[0][pApm.repeat_prl].ToString();
+                ptt1.repeat_lh = dt.Rows[0][pApm.repeat_lh].ToString();
+                ptt1.repeat_fsh = dt.Rows[0][pApm.repeat_fsh].ToString();
             }
             else
             {
@@ -436,6 +456,10 @@ namespace clinic_ivf.objdb
             stf1.fsh = "";
             stf1.dtr_name = "";
             stf1.tvs = "";
+            stf1.repeat_e2 = "";
+            stf1.repeat_prl = "";
+            stf1.repeat_lh = "";
+            stf1.repeat_fsh = "";
             return stf1;
         }
     }

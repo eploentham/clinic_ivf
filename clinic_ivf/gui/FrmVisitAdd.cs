@@ -480,7 +480,8 @@ namespace clinic_ivf.gui
             vs.bw = txtBW.Text;
             vs.bp = txtBP.Text;
             vs.queue_id = ic.ivfDB.copDB.genQueueDoc();
-            vs.pulse = txtPulse.Text;            
+            vs.pulse = txtPulse.Text;
+            vs.status_nurse = "1";
         }
         private void FrmVisitAdd_Load(object sender, EventArgs e)
         {

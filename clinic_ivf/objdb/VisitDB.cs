@@ -120,6 +120,7 @@ namespace clinic_ivf.objdb
             vs.bp = "bp";
             vs.bw = "bw";
             vs.pulse = "pulse";
+            vs.status_nurse = "status_nurse";
 
             vs.table = "t_visit";
             vs.pkField = "t_visit_id";
@@ -170,6 +171,7 @@ namespace clinic_ivf.objdb
             p.bw = p.bw == null ? "" : p.bw;
             p.bp = p.bp == null ? "" : p.bp;
             p.pulse = p.pulse == null ? "" : p.pulse;
+            p.status_nurse = p.status_nurse == null ? "0" : p.status_nurse;
 
             p.ipd_discharge_doctor = p.ipd_discharge_doctor == null ? "" : p.ipd_discharge_doctor;
             p.visit_ipd_reverse_date_time = p.visit_ipd_reverse_date_time == null ? "" : p.visit_ipd_reverse_date_time;
@@ -317,7 +319,7 @@ namespace clinic_ivf.objdb
                     "," + vs.bp + "='" + p.bp + "' " +
                     "," + vs.bw + "='" + p.bw + "' " +
                     "," + vs.pulse + "='" + p.pulse + "' " +
-
+                    "," + vs.status_nurse + "='" + p.status_nurse + "' " +
                     "";
                 re = conn.ExecuteNonQuery(conn.conn, sql);
             }
@@ -362,6 +364,23 @@ namespace clinic_ivf.objdb
             cop1 = setVisit(dt);
             return cop1;
         }
+        public String updateCloseStatusNurse(String vsid )
+        {
+            String re = "", err="";
+            String sql = "update " + vs.table +
+                "Set " + vs.status_nurse + " ='2' " +
+                "Where vs." + vs.pkField + " ='" + vsid + "' ";
+            try
+            {
+                re = conn.ExecuteNonQuery(conn.conn, sql);
+            }
+            catch(Exception ex)
+            {
+                err = ex.Message;
+            }
+            
+            return re;
+        }
         public DataTable selectCurrentVisitNoVisit()
         {
             DataTable dt = new DataTable();
@@ -394,6 +413,22 @@ namespace clinic_ivf.objdb
 
             return dt;
         }
+        public DataTable selectByStatusNurseFinish(String date)
+        {
+            DataTable dt = new DataTable();
+            //String date = System.DateTime.Now.Year + "-" + System.DateTime.Now.ToString("MM-dd");
+            String sql = "select vs.t_visit_id as id,vs.visit_vn as VN, vs.visit_hn as PIDS, CONCAT(IFNULL(fpp.patient_prefix_description,''),' ', ptt.patient_firstname_e ,' ',ptt.patient_lastname_e)  as PName" +
+                ", vs.visit_begin_visit_time as VDate, vs.visit_begin_visit_time as VStartTime, vs.visit_financial_discharge_time as VEndTime, '' as VName, bsp.service_point_description as VSID, vs.t_patient_id as PID " +
+                "From " + vs.table + " vs " +
+                "Left Join t_patient ptt on  ptt.t_patient_id = vs." + vs.t_patient_id + " " +
+                "Left join f_patient_prefix fpp on fpp.f_patient_prefix_id = ptt.f_patient_prefix_id " +
+                "Left Join b_service_point bsp on bsp.b_service_point_id = vs.b_service_point_id " +
+                "Where vs." + vs.visit_begin_visit_time + " >='" + date + " 00:00:00'  and vs.b_service_point_id = '2120000002' and " + vs.status_nurse + " = '2' " +
+                "Order By vs.visit_begin_visit_time ";
+            dt = conn.selectData(conn.conn, sql);
+
+            return dt;
+        }
         public DataTable selectByStatusNurseWaiting(String date)
         {
             DataTable dt = new DataTable();
@@ -404,7 +439,7 @@ namespace clinic_ivf.objdb
                 "Left Join t_patient ptt on  ptt.t_patient_id = vs." + vs.t_patient_id + " " +
                 "Left join f_patient_prefix fpp on fpp.f_patient_prefix_id = ptt.f_patient_prefix_id " +
                 "Left Join b_service_point bsp on bsp.b_service_point_id = vs.b_service_point_id " +
-                "Where vs." + vs.visit_begin_visit_time + " >='" + date + " 00:00:00'  and vs.b_service_point_id = '2120000002' " +
+                "Where vs." + vs.visit_begin_visit_time + " >='" + date + " 00:00:00'  and vs.b_service_point_id = '2120000002' and "+vs.status_nurse+" <> '2' " +
                 "Order By vs.visit_begin_visit_time ";
             dt = conn.selectData(conn.conn, sql);
 
@@ -550,6 +585,7 @@ namespace clinic_ivf.objdb
                 vs1.bp = dt.Rows[0][vs.bp].ToString();
                 vs1.bw = dt.Rows[0][vs.bw].ToString();
                 vs1.pulse = dt.Rows[0][vs.pulse].ToString();
+                vs1.status_nurse = dt.Rows[0][vs.status_nurse].ToString();
             }
             else
             {
@@ -658,6 +694,7 @@ namespace clinic_ivf.objdb
             stf1.bp = "";
             stf1.bw = "";
             stf1.pulse = "";
+            stf1.status_nurse = "";
             return stf1;
         }
     }

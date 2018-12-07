@@ -240,6 +240,7 @@ namespace clinic_ivf.gui
             {
                 stt.Hide();
                 setPatient();
+                btnVoid.Text = "Void";
                 //String re = ic.ivfDB.pttDB.insertPatient(ptt, txtStfConfirmID.Text);
                 if (ic.iniC.statusAppDonor.Equals("1"))
                 {

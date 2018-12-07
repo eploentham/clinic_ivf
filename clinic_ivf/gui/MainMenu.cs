@@ -339,7 +339,7 @@ namespace clinic_ivf.gui
         private void MainMenu_Load(object sender, EventArgs e)
         {
             
-            this.Text = "สวัสดี คุณ "+ic.user.staff_fname_t +" "+ic.user.staff_lname_t+" Update 2018-12-06 ";
+            this.Text = "สวัสดี คุณ "+ic.user.staff_fname_t +" "+ic.user.staff_lname_t+" Update 2018-12-07 ";
             //theme1.SetTheme(this, ic.theme);
             theme1.SetTheme(this, ic.theme);
             theme1.SetTheme(menuStrip1, ic.theme);

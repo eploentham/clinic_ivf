@@ -212,6 +212,22 @@ namespace clinic_ivf.control
             }
             return re;
         }
+        public String timetoShow(Object dt)
+        {
+            DateTime dt1 = new DateTime();
+            MySqlDateTime dtm = new MySqlDateTime();
+            String re = "";
+            if (dt != null)
+            {
+                if (DateTime.TryParse(dt.ToString(), out dt1))
+                {
+                    re = dt1.ToString("hh:mm:ss");
+                }
+
+
+            }
+            return re;
+        }
         public String datetoShow(Object dt)
         {
             DateTime dt1 = new DateTime();
@@ -366,7 +382,7 @@ namespace clinic_ivf.control
         {
             ComboBoxItem item = new ComboBoxItem();
 
-            for(int i = 7; i <= 18; i++)
+            for(int i = 6; i <= 18; i++)
             {
                 String val = "", txt = "";
                 val = i.ToString("00")+":00";

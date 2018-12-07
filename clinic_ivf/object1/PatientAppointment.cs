@@ -45,5 +45,9 @@ namespace clinic_ivf.object1
         public String lt_ovary { get; set; }
         public String dtr_name { get; set; }
         public String tvs { get; set; }
+        public String repeat_e2 { get; set; }
+        public String repeat_lh { get; set; }
+        public String repeat_prl { get; set; }
+        public String repeat_fsh { get; set; }
     }
 }

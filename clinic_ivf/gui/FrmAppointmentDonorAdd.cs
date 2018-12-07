@@ -68,6 +68,7 @@ namespace clinic_ivf.gui
             txtDatepApm.Value = System.DateTime.Now.Year.ToString() + "-" + System.DateTime.Now.ToString("MM-dd");
             btnSave.Click += BtnSave_Click;
             txtDatepApm.ValueChanged += TxtDatepApm_ValueChanged;
+            btnVoid.Click += BtnVoid_Click;
 
             initGrfpApmAll();
             initGrfpApmVisit();
@@ -76,6 +77,61 @@ namespace clinic_ivf.gui
             setGrfpApmVisit();
             setGrfpApmDay();
             setControl();
+        }
+
+        private void BtnVoid_Click(object sender, EventArgs e)
+        {
+            //throw new NotImplementedException();
+            if (btnVoid.Text.Equals("Confirm"))
+            {
+                stt.Hide();
+                btnVoid.Text = "Void";
+                //setPatient();
+                //String re = ic.ivfDB.pttDB.insertPatient(ptt, txtStfConfirmID.Text);
+                if (ic.iniC.statusAppDonor.Equals("1"))
+                {
+                    String re = ic.ivfDB.pApmDB.VoidPatientAppointment(txtID.Text, txtStfConfirmID.Text);
+                    int chk = 0;
+                    //Patient ptt1 = new Patient();
+                    if (re.Equals("1")) // ตอน update
+                    {
+                        setGrfpApmAll();
+                        setGrfpApmVisit();
+                        setGrfpApmDay();
+                        //re = txtID.Text;
+                        //setControlEnable(false);
+                    }
+                }
+                else
+                {
+                    //String re = ic.ivfDB.pttOldDB.insertPatientOld(ptt, txtStfConfirmID.Text);
+                    //int chk = 0;
+                    //if (int.TryParse(re, out chk))
+                    //{
+
+                    //}
+                }
+            }
+            else
+            {
+                ic.cStf.staff_id = "";
+                FrmPasswordConfirm frm = new FrmPasswordConfirm(ic);
+                frm.ShowDialog(this);
+                if (!ic.cStf.staff_id.Equals(""))
+                {
+                    txtUserReq.Value = ic.cStf.staff_fname_t + " " + ic.cStf.staff_lname_t;
+                    txtStfConfirmID.Value = ic.cStf.staff_id;
+                    btnVoid.Text = "Confirm";
+                    //btnSave.Image = Resources.Add_ticket_24;
+                    stt.Show("<p><b>สวัสดี</b></p>คุณ " + ic.cStf.staff_fname_t + " " + ic.cStf.staff_lname_t + "<br> กรุณายินยันการ confirm อีกครั้ง", btnSave);
+                    btnVoid.Focus();
+                }
+                else
+                {
+                    btnVoid.Text = "Void";
+                    //btnSave.Image = Resources.download_database24;
+                }
+            }
         }
 
         private void TxtDatepApm_ValueChanged(object sender, EventArgs e)
@@ -109,6 +165,7 @@ namespace clinic_ivf.gui
                     //    String re2 = ic.ivfDB.pttDB.updatePID(re, re1);
                     //    if (int.TryParse(re2, out chk))
                     //    {
+                    re = ic.ivfDB.vsDB.updateCloseStatusNurse(txtVsId.Text);
                     txtID.Value = re;
                     btnSave.Text = "Save";
                     btnSave.Image = Resources.accept_database24;
@@ -167,6 +224,14 @@ namespace clinic_ivf.gui
             chkFsh.Checked = pApm.fsh.Equals("1") ? true : false;
             chkPrl.Checked = pApm.prl.Equals("1") ? true : false;
             chkTvs.Checked = pApm.tvs.Equals("1") ? true : false;
+
+            chkRE2.Checked = pApm.repeat_e2.Equals("1") ? true : false;
+            chkRLh.Checked = pApm.repeat_lh.Equals("1") ? true : false;
+            chkRFsh.Checked = pApm.repeat_fsh.Equals("1") ? true : false;
+            chkRPrl.Checked = pApm.repeat_prl.Equals("1") ? true : false;
+            txtRemark.Value = pApm.remark;
+            ic.setC1Combo(cboDoctor, pApm.patient_appointment_doctor);
+            txtID.Value = pApm.t_patient_appointment_id;
         }
         private void initGrfpApmAll()
         {
@@ -394,9 +459,9 @@ namespace clinic_ivf.gui
             grfpApmVisit.Cols[colRt].Caption = "Rt";
             grfpApmVisit.Cols[colLt].Caption = "Lt";
 
-            //ContextMenu menuGw = new ContextMenu();
-            //menuGw.MenuItems.Add("&ออก Visit", new EventHandler(ContextMenu_edit));
-            //grfpApmVisit.ContextMenu = menuGw;
+            ContextMenu menuGw = new ContextMenu();
+            menuGw.MenuItems.Add("แก้ไข Appointment", new EventHandler(ContextMenu_edit));
+            grfpApmVisit.ContextMenu = menuGw;
 
             Color color = ColorTranslator.FromHtml(ic.iniC.grfRowColor);
             //CellRange rg1 = grfBank.GetCellRange(1, colE, grfBank.Rows.Count, colE);
@@ -445,6 +510,20 @@ namespace clinic_ivf.gui
             grfpApmVisit.Cols[colId].Visible = false;
             theme1.SetTheme(grfpApmVisit, ic.theme);
 
+        }
+        private void ContextMenu_edit(object sender, System.EventArgs e)
+        {
+            String chk = "", name = "", id = "";
+            id = grfpApmVisit[grfpApmVisit.Row, colId] != null ? grfpApmVisit[grfpApmVisit.Row, colId].ToString() : "";
+            pApmId = id;
+            setControl();
+            //chk = grfPtt[grfPtt.Row, colPttHn] != null ? grfPtt[grfPtt.Row, colPttHn].ToString() : "";
+            //name = grfPtt[grfPtt.Row, colVsPttName] != null ? grfPtt[grfPtt.Row, colVsPttName].ToString() : "";
+            //if (MessageBox.Show("ต้องการ แก้ไข Patient  \n  hn number " + chk + " \n name " + name, "", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == DialogResult.OK)
+            //{
+            //grfReq.Rows.Remove(grfReq.Row);
+            //openPatientAdd(id, name);
+            //}
         }
         private void setGrfpApmDay()
         {
@@ -611,6 +690,11 @@ namespace clinic_ivf.gui
             pApm.lt_ovary = chkLt.Checked ? "1" : "0";
             pApm.fsh = chkFsh.Checked ? "1" : "0";
             pApm.tvs = chkTvs.Checked ? "1" : "0";
+
+            pApm.repeat_e2 = chkRE2.Checked ? "1" : "0";
+            pApm.repeat_prl = chkRPrl.Checked ? "1" : "0";
+            pApm.repeat_lh = chkRLh.Checked ? "1" : "0";
+            pApm.repeat_fsh = chkRFsh.Checked ? "1" : "0";
         }
         private void FrmAppointmentAdd_Load(object sender, EventArgs e)
         {

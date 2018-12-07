@@ -107,5 +107,6 @@ namespace clinic_ivf.object1
         public String bw { get; set; }
         public String bp { get; set; }
         public String pulse { get; set; }
+        public String status_nurse { get; set; }
     }
 }
