@@ -1,4 +1,5 @@
 ﻿using clinic_ivf.object1;
+using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -113,6 +114,12 @@ namespace clinic_ivf.objdb
         public DataTable selectByDateDtr(String startDate, String endDate, String doctor)
         {
             DataTable dt = new DataTable();
+            dt = selectByDateDtr(conn.conn, startDate, endDate, doctor);
+            return dt;
+        }
+        public DataTable selectByDateDtr(MySqlConnection con, String startDate, String endDate, String doctor)
+        {
+            DataTable dt = new DataTable();
             String wheredate = "", sql="", wheredoctor="";
             wheredate = " appnOld." + appnOld.AppDate + " >='" + startDate + " 00:00:00' and appnOld." + appnOld.AppDate + " <='" + endDate + " 23:59:59'";
             wheredoctor = !doctor.Equals("") ? " and appnOld." + appnOld.Doctor+" like '%"+ doctor + "%'":"";
@@ -122,7 +129,7 @@ namespace clinic_ivf.objdb
             "Where "+ wheredate+ wheredoctor+
             " Order By "+ appnOld.AppDate+ ", aaa" ;
             
-            dt = conn.selectData(conn.conn, sql);
+            dt = conn.selectData(con, sql);
             return dt;
         }
         public AppointmentOld selectByPk1(String copId)

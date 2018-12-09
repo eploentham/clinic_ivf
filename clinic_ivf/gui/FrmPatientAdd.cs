@@ -39,6 +39,7 @@ namespace clinic_ivf.gui
         Font ff, ffB;
         int colID = 1, colHn = 2, colImg = 3, colDesc = 4, colDesc2 = 5, colDesc3 = 6, colPathPic = 7, colBtn=8, colStatus=9;
         int colVsID = 1, colVsHn = 2, colVsVisitDate = 3, colVsVisitTime=4, colVsStatus=5;
+        int colpApmId = 1, colpApmDate = 2, colpApmTime = 3, colpApmRemark = 4;
 
         //C1FlexGrid grfDay2, grfDay3, grfDay5, grfDay6;
         C1SuperTooltip stt;
@@ -48,7 +49,7 @@ namespace clinic_ivf.gui
         FtpClient ff1;
         Bitmap img;
         Image image1;
-        C1FlexGrid grfImg, grfVs;
+        C1FlexGrid grfImg, grfVs, grfpApm;
 
         String filename = "";
         static String filenamepic = "", host="", user="", pass="";
@@ -124,12 +125,15 @@ namespace clinic_ivf.gui
             cboAgent.AutoCompleteSource = AutoCompleteSource.ListItems;
             cboAgent.AutoCompleteMode = AutoCompleteMode.Suggest;
 
+            initGrfpApm();
             setControl();
             setFocusColor();
             initGrfImg();
             setGrfImg();
             initGrfVs();
             setGrfVs();
+            
+            //setGrfpApmDonor("");
 
             btnPrnSticker.Click += BtnPrnSticker_Click;
             btnSave.Click += BtnSave_Click;
@@ -1532,6 +1536,112 @@ namespace clinic_ivf.gui
             theme1.SetTheme(grfImg, "Office2016DarkGray");
 
         }
+        private void initGrfpApm()
+        {
+            grfpApm = new C1FlexGrid();
+            grfpApm.Font = fEdit;
+            grfpApm.Dock = System.Windows.Forms.DockStyle.Fill;
+            grfpApm.Location = new System.Drawing.Point(0, 0);
+
+            //FilterRow fr = new FilterRow(grfExpn);
+
+            //grfVs.AfterRowColChange += GrfImg_AfterRowColChange;
+            //grfVs.MouseDown += GrfImg_MouseDown;
+            //grfVs.DoubleClick += GrfImg_DoubleClick;
+            //grfExpnC.CellChanged += new C1.Win.C1FlexGrid.RowColEventHandler(this.grfDept_CellChanged);
+            ContextMenu menuGw = new ContextMenu();
+            //menuGw.MenuItems.Add("&แก้ไข รายการเบิก", new EventHandler(ContextMenu_edit));
+            //menuGw.MenuItems.Add("&แก้ไข", new EventHandler(ContextMenu_Gw_Edit));
+            //menuGw.MenuItems.Add("&ยกเลิก", new EventHandler(ContextMenu_Gw_Cancel));
+            grfpApm.ContextMenu = menuGw;
+            pnApm.Controls.Add(grfpApm);
+
+            theme1.SetTheme(grfpApm, "Office2016DarkGray");
+
+        }
+        private void setGrfpApmDonor(String search)
+        {
+            grfpApm.Clear();
+            grfpApm.Rows.Count = 1;
+            grfpApm.Cols.Count = 6;
+            DataTable dt = ic.ivfDB.pApmDB.selectByPtt(search);
+
+            grfpApm.Rows.Count = dt.Rows.Count + 1;
+            //grfCu.Rows.Count = 41;
+            //grfCu.Cols.Count = 4;
+            C1TextBox txt = new C1TextBox();
+            //Button btn = new Button();
+            //btn.BackColor = Color.Gray;
+            //btn.Click += BtnEditor_Click;
+            //C1ComboBox cboproce = new C1ComboBox();
+            //ic.ivfDB.itmDB.setCboItem(cboproce);
+            grfpApm.Cols[colpApmId].Editor = txt;
+            grfpApm.Cols[colpApmDate].Editor = txt;
+            grfpApm.Cols[colpApmTime].Editor = txt;
+            grfpApm.Cols[colpApmRemark].Editor = txt;
+            //grfImg.Cols[colBtn].Editor = btn;
+
+            grfpApm.Cols[colpApmId].Width = 250;
+            grfpApm.Cols[colpApmDate].Width = 100;
+            grfpApm.Cols[colpApmTime].Width = 100;
+            grfpApm.Cols[colpApmRemark].Width = 200;
+            //grfpApm.Cols[colVsStatus].Width = 250;
+            //grfImg.Cols[colBtn].Width = 50;
+            //grfImg.Cols[colPathPic].Width = 100;
+
+            grfpApm.ShowCursor = true;
+            //grdFlex.Cols[colID].Caption = "no";
+            //grfDept.Cols[colCode].Caption = "รหัส";
+
+            grfpApm.Cols[colpApmDate].Caption = "Date";
+            grfpApm.Cols[colpApmTime].Caption = "Time";
+            grfpApm.Cols[colpApmRemark].Caption = "Remark";
+            
+            //Hashtable ht = new Hashtable();
+            //foreach (DataRow dr in dt.Rows)
+            //{
+            //    ht.Add(dr["CategoryID"], LoadImage(dr["Picture"] as byte[]));
+            //}
+            //grfImg.Cols[colImg].ImageMap = ht;
+            //grfVs.Cols[colImg].ImageAndText = false;
+
+            ContextMenu menuGw = new ContextMenu();
+            menuGw.MenuItems.Add("&แก้ไข Appointment", new EventHandler(ContextMenu_edit_papm));
+            grfpApm.ContextMenu = menuGw;
+
+            Color color = ColorTranslator.FromHtml(ic.iniC.grfRowColor);
+            //CellRange rg1 = grfBank.GetCellRange(1, colE, grfBank.Rows.Count, colE);
+            //rg1.Style = grfBank.Styles["date"];
+            //grfCu.Cols[colID].Visible = false;
+            int i = 1;
+            foreach (DataRow row in dt.Rows)
+            {
+                grfpApm[i, colpApmId] = row[ic.ivfDB.pApmDB.pApm.t_patient_appointment_id].ToString();
+                grfpApm[i, colpApmDate] = row[ic.ivfDB.pApmDB.pApm.patient_appointment_date].ToString();
+                grfpApm[i, colpApmTime] = ic.datetoShow(row[ic.ivfDB.pApmDB.pApm.patient_appointment_time]);
+                grfpApm[i, colpApmRemark] = row[ic.ivfDB.pApmDB.pApm.remark].ToString();
+
+                grfpApm[i, 0] = i;
+                i++;
+                //if (i % 2 == 0)
+                //grfPtt.Rows[i].StyleNew.BackColor = color;
+            }
+            //grfVs.Cols[colID].Visible = false;
+            //grfImg.Cols[colPathPic].Visible = false;
+            grfpApm.Cols[colImg].AllowEditing = false;
+            grfpApm.AutoSizeCols();
+            grfpApm.AutoSizeRows();
+            theme1.SetTheme(grfpApm, "Office2016DarkGray");
+        }
+        private void ContextMenu_edit_papm(object sender, System.EventArgs e)
+        {
+            String chk = "", name = "", id = "";
+            id = grfpApm[grfpApm.Row, colpApmId] != null ? grfpApm[grfpApm.Row, colpApmId].ToString() : "";
+            FrmAppointmentDonorAdd frm = new FrmAppointmentDonorAdd(ic, id, txtID.Text,"");
+            frm.ShowDialog(this);
+            frm.Dispose();
+            setGrfpApmDonor(txtID.Text);
+        }
         private void setControlDonor(String pttid)
         {
             ptt = ic.ivfDB.pttDB.selectByPk1(pttid);
@@ -1616,6 +1726,7 @@ namespace clinic_ivf.gui
             txtG.Value = ptt.g;
             txtP.Value = ptt.p;
             txtA.Value = ptt.a;
+            setGrfpApmDonor(ptt.t_patient_id);
             //txtEmail.Value = pttO.Email;
         }
         private void setControlPtt(String pttid)

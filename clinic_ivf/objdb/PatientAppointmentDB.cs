@@ -352,10 +352,12 @@ namespace clinic_ivf.objdb
 
             dateEnd = !date2.Equals("") ? date2 : date1;
 
-            String sql = "select pApm.*,  bsp.service_point_description,dtr.Name  as dtr_name " +
+            String sql = "select pApm.*,  bsp.service_point_description,dtr.Name  as dtr_name,CONCAT(IFNULL(fpp.patient_prefix_description,'') , ' ' , ptt.patient_firstname ,' ',ptt.patient_lastname) as PatientName, ptt.patient_hn " +
                 "From " + pApm.table + " pApm " +
                 "Left Join b_service_point bsp on bsp.b_service_point_id = pApm.patient_appointment_servicepoint " +
                 "Left Join Doctor  dtr on pApm.patient_appointment_doctor = dtr.ID " +
+                "Left Join t_patient ptt on ptt.t_patient_id = pApm.t_patient_id " +
+                "Left join f_patient_prefix fpp on fpp.f_patient_prefix_id = ptt.f_patient_prefix_id " +
                 "Where pApm." + pApm.patient_appointment_date + " >='" + dateStart + "' and pApm."+pApm.patient_appointment_date+ " <='" + dateEnd + "' and pApm." + pApm.active + "='1' " +
                 "Order By "+ pApm.patient_appointment_date+","+ pApm.patient_appointment_time;
             dt = conn.selectData(con, sql);

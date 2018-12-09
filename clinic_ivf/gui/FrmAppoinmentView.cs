@@ -397,7 +397,7 @@ namespace clinic_ivf.gui
             if (ic.iniC.statusAppDonor.Equals("1"))
             {
                 dtD = ic.ivfDB.pApmDB.selectByDay(datestart1, dateend1);
-                dt = ic.ivfDB.appnOldDB.selectByDateDtr(datestart1, dateend1, cboDoctor.Text);
+                dt = ic.ivfDB.appnOldDB.selectByDateDtr(con.connEx, datestart1, dateend1, cboDoctor.Text);
             }
             else
             {
@@ -619,6 +619,21 @@ namespace clinic_ivf.gui
                                 
                 //if (i % 2 == 0)
                 //    grfPtt.Rows[i].StyleNew.BackColor = color;
+                i++;
+            }
+            foreach (DataRow row in dtD.Rows)
+            {
+                Row row1 = grfPtt.Rows.Add();
+                row1[0] = i;
+                row1[colID] = row[ic.ivfDB.pApmDB.pApm.t_patient_appointment_id].ToString();
+                row1[colVsPttName] = row["PatientName"].ToString();
+                row1[colpttId] = row[ic.ivfDB.pApmDB.pApm.t_patient_id].ToString();
+                row1[colPttHn] = row["patient_hn"].ToString();
+                row1[colVsTime] = row[ic.ivfDB.pApmDB.pApm.patient_appointment_time].ToString();
+
+                row1[colVsTVS] = row[ic.ivfDB.pApmDB.pApm.tvs].ToString();
+                row1[colVsOPU] = row[ic.ivfDB.pApmDB.pApm.opu].ToString();
+                row1[colVsAnes] = row[ic.ivfDB.pApmDB.pApm.doctor_anes].ToString();
                 i++;
             }
             grfPtt.Cols[colVsDay8].AllowEditing = false;
