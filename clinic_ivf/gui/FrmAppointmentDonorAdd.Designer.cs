@@ -37,6 +37,7 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.chkOPU = new C1.Win.C1Input.C1CheckBox();
             this.chkRPrl = new C1.Win.C1Input.C1CheckBox();
             this.chkRFsh = new C1.Win.C1Input.C1CheckBox();
             this.chkRLh = new C1.Win.C1Input.C1CheckBox();
@@ -85,6 +86,7 @@
             this.c1Button1 = new C1.Win.C1Input.C1Button();
             this.label4 = new System.Windows.Forms.Label();
             this.txtHn = new C1.Win.C1Input.C1TextBox();
+            this.cboDtrAnes = new C1.Win.C1Input.C1ComboBox();
             this.sB.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.theme1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
@@ -95,6 +97,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.c1Calendar1)).BeginInit();
             this.panel3.SuspendLayout();
             this.groupBox2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.chkOPU)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkRPrl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkRFsh)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkRLh)).BeginInit();
@@ -131,6 +134,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtName)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.c1Button1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtHn)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cboDtrAnes)).BeginInit();
             this.SuspendLayout();
             // 
             // sB
@@ -249,6 +253,8 @@
             // groupBox2
             // 
             this.groupBox2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.groupBox2.Controls.Add(this.cboDtrAnes);
+            this.groupBox2.Controls.Add(this.chkOPU);
             this.groupBox2.Controls.Add(this.chkRPrl);
             this.groupBox2.Controls.Add(this.chkRFsh);
             this.groupBox2.Controls.Add(this.chkRLh);
@@ -287,6 +293,24 @@
             this.groupBox2.Text = "Appointment";
             this.theme1.SetTheme(this.groupBox2, "(default)");
             // 
+            // chkOPU
+            // 
+            this.chkOPU.BackColor = System.Drawing.Color.Transparent;
+            this.chkOPU.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
+            this.chkOPU.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.chkOPU.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.chkOPU.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.chkOPU.Location = new System.Drawing.Point(466, 67);
+            this.chkOPU.Name = "chkOPU";
+            this.chkOPU.Padding = new System.Windows.Forms.Padding(4, 1, 1, 1);
+            this.chkOPU.Size = new System.Drawing.Size(58, 24);
+            this.chkOPU.TabIndex = 671;
+            this.chkOPU.Text = "OPU";
+            this.theme1.SetTheme(this.chkOPU, "(default)");
+            this.chkOPU.UseVisualStyleBackColor = true;
+            this.chkOPU.Value = null;
+            this.chkOPU.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            // 
             // chkRPrl
             // 
             this.chkRPrl.BackColor = System.Drawing.Color.Transparent;
@@ -294,7 +318,7 @@
             this.chkRPrl.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.chkRPrl.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.chkRPrl.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.chkRPrl.Location = new System.Drawing.Point(382, 93);
+            this.chkRPrl.Location = new System.Drawing.Point(316, 93);
             this.chkRPrl.Name = "chkRPrl";
             this.chkRPrl.Padding = new System.Windows.Forms.Padding(4, 1, 1, 1);
             this.chkRPrl.Size = new System.Drawing.Size(98, 24);
@@ -312,7 +336,7 @@
             this.chkRFsh.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.chkRFsh.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.chkRFsh.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.chkRFsh.Location = new System.Drawing.Point(278, 93);
+            this.chkRFsh.Location = new System.Drawing.Point(217, 93);
             this.chkRFsh.Name = "chkRFsh";
             this.chkRFsh.Padding = new System.Windows.Forms.Padding(4, 1, 1, 1);
             this.chkRFsh.Size = new System.Drawing.Size(98, 24);
@@ -330,7 +354,7 @@
             this.chkRLh.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.chkRLh.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.chkRLh.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.chkRLh.Location = new System.Drawing.Point(174, 93);
+            this.chkRLh.Location = new System.Drawing.Point(113, 93);
             this.chkRLh.Name = "chkRLh";
             this.chkRLh.Padding = new System.Windows.Forms.Padding(4, 1, 1, 1);
             this.chkRLh.Size = new System.Drawing.Size(98, 24);
@@ -348,7 +372,7 @@
             this.chkRE2.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.chkRE2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.chkRE2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.chkRE2.Location = new System.Drawing.Point(70, 93);
+            this.chkRE2.Location = new System.Drawing.Point(9, 93);
             this.chkRE2.Name = "chkRE2";
             this.chkRE2.Padding = new System.Windows.Forms.Padding(4, 1, 1, 1);
             this.chkRE2.Size = new System.Drawing.Size(98, 24);
@@ -366,7 +390,7 @@
             this.chkTvs.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.chkTvs.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.chkTvs.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.chkTvs.Location = new System.Drawing.Point(463, 67);
+            this.chkTvs.Location = new System.Drawing.Point(397, 67);
             this.chkTvs.Name = "chkTvs";
             this.chkTvs.Padding = new System.Windows.Forms.Padding(4, 1, 1, 1);
             this.chkTvs.Size = new System.Drawing.Size(58, 24);
@@ -612,7 +636,7 @@
             this.chkEndo.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.chkEndo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.chkEndo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.chkEndo.Location = new System.Drawing.Point(527, 68);
+            this.chkEndo.Location = new System.Drawing.Point(704, 146);
             this.chkEndo.Name = "chkEndo";
             this.chkEndo.Padding = new System.Windows.Forms.Padding(4, 1, 1, 1);
             this.chkEndo.Size = new System.Drawing.Size(58, 24);
@@ -631,7 +655,7 @@
             this.chkLt.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.chkLt.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.chkLt.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.chkLt.Location = new System.Drawing.Point(622, 67);
+            this.chkLt.Location = new System.Drawing.Point(704, 103);
             this.chkLt.Name = "chkLt";
             this.chkLt.Padding = new System.Windows.Forms.Padding(4, 1, 1, 1);
             this.chkLt.Size = new System.Drawing.Size(67, 24);
@@ -650,7 +674,7 @@
             this.chkRt.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.chkRt.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.chkRt.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.chkRt.Location = new System.Drawing.Point(576, 68);
+            this.chkRt.Location = new System.Drawing.Point(704, 124);
             this.chkRt.Name = "chkRt";
             this.chkRt.Padding = new System.Windows.Forms.Padding(4, 1, 1, 1);
             this.chkRt.Size = new System.Drawing.Size(77, 24);
@@ -669,7 +693,7 @@
             this.chkPrl.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.chkPrl.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.chkPrl.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.chkPrl.Location = new System.Drawing.Point(382, 67);
+            this.chkPrl.Location = new System.Drawing.Point(316, 67);
             this.chkPrl.Name = "chkPrl";
             this.chkPrl.Padding = new System.Windows.Forms.Padding(4, 1, 1, 1);
             this.chkPrl.Size = new System.Drawing.Size(64, 24);
@@ -687,7 +711,7 @@
             this.chkFsh.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.chkFsh.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.chkFsh.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.chkFsh.Location = new System.Drawing.Point(278, 68);
+            this.chkFsh.Location = new System.Drawing.Point(217, 68);
             this.chkFsh.Name = "chkFsh";
             this.chkFsh.Padding = new System.Windows.Forms.Padding(4, 1, 1, 1);
             this.chkFsh.Size = new System.Drawing.Size(64, 24);
@@ -705,7 +729,7 @@
             this.chkLh.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.chkLh.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.chkLh.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.chkLh.Location = new System.Drawing.Point(174, 70);
+            this.chkLh.Location = new System.Drawing.Point(113, 70);
             this.chkLh.Name = "chkLh";
             this.chkLh.Padding = new System.Windows.Forms.Padding(4, 1, 1, 1);
             this.chkLh.Size = new System.Drawing.Size(64, 24);
@@ -723,7 +747,7 @@
             this.chkE2.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.chkE2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.chkE2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.chkE2.Location = new System.Drawing.Point(70, 70);
+            this.chkE2.Location = new System.Drawing.Point(9, 70);
             this.chkE2.Name = "chkE2";
             this.chkE2.Padding = new System.Windows.Forms.Padding(4, 1, 1, 1);
             this.chkE2.Size = new System.Drawing.Size(64, 24);
@@ -808,7 +832,7 @@
             this.txtDatepApm.ImagePadding = new System.Windows.Forms.Padding(0);
             this.txtDatepApm.Location = new System.Drawing.Point(69, 21);
             this.txtDatepApm.Name = "txtDatepApm";
-            this.txtDatepApm.Size = new System.Drawing.Size(164, 18);
+            this.txtDatepApm.Size = new System.Drawing.Size(124, 18);
             this.txtDatepApm.TabIndex = 546;
             this.txtDatepApm.Tag = null;
             this.theme1.SetTheme(this.txtDatepApm, "(default)");
@@ -1062,6 +1086,27 @@
             this.theme1.SetTheme(this.txtHn, "(default)");
             this.txtHn.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
             // 
+            // cboDtrAnes
+            // 
+            this.cboDtrAnes.AllowSpinLoop = false;
+            this.cboDtrAnes.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.cboDtrAnes.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
+            this.cboDtrAnes.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.cboDtrAnes.GapHeight = 0;
+            this.cboDtrAnes.ImagePadding = new System.Windows.Forms.Padding(0);
+            this.cboDtrAnes.ItemsDisplayMember = "";
+            this.cboDtrAnes.ItemsValueMember = "";
+            this.cboDtrAnes.Location = new System.Drawing.Point(530, 68);
+            this.cboDtrAnes.Name = "cboDtrAnes";
+            this.cboDtrAnes.Size = new System.Drawing.Size(168, 20);
+            this.cboDtrAnes.Style.DropDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.cboDtrAnes.Style.DropDownBorderColor = System.Drawing.Color.Gainsboro;
+            this.cboDtrAnes.Style.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.cboDtrAnes.TabIndex = 672;
+            this.cboDtrAnes.Tag = null;
+            this.theme1.SetTheme(this.cboDtrAnes, "(default)");
+            this.cboDtrAnes.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            // 
             // FrmAppointmentDonorAdd
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1085,6 +1130,7 @@
             this.panel3.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.chkOPU)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkRPrl)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkRFsh)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkRLh)).EndInit();
@@ -1122,6 +1168,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtName)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.c1Button1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtHn)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cboDtrAnes)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1190,5 +1237,7 @@
         private C1.Win.C1Input.C1CheckBox chkRE2;
         private C1.Win.C1Input.C1CheckBox chkRPrl;
         private C1.Win.C1Input.C1CheckBox chkRFsh;
+        private C1.Win.C1Input.C1CheckBox chkOPU;
+        private C1.Win.C1Input.C1ComboBox cboDtrAnes;
     }
 }

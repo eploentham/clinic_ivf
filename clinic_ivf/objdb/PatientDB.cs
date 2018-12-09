@@ -145,6 +145,10 @@ namespace clinic_ivf.objdb
             ptt.status_congenial = "status_congenial_diseases";
             ptt.congenital_diseases_description = "congenial_diseases_description";
             ptt.allergy_description = "allergy_description";
+            ptt.status_g = "status_g";
+            ptt.p = "p";
+            ptt.a = "a";
+            ptt.g = "g";
 
             ptt.pkField = "t_patient_id";
             ptt.table = "t_patient";
@@ -247,6 +251,10 @@ namespace clinic_ivf.objdb
             p.congenital_diseases_description = p.congenital_diseases_description == null ? "" : p.congenital_diseases_description;
             p.patient_nickname = p.patient_nickname == null ? "" : p.patient_nickname;
             p.allergy_description = p.allergy_description == null ? "" : p.allergy_description;
+            p.status_g = p.status_g == null ? "0" : p.status_g;
+            p.g = p.g == null ? "" : p.g;
+            p.p = p.p == null ? "" : p.p;
+            p.a = p.a == null ? "" : p.a;
 
             p.f_patient_prefix_id = long.TryParse(p.f_patient_prefix_id, out chk) ? chk.ToString() : "0";
             p.f_sex_id = long.TryParse(p.f_sex_id, out chk) ? chk.ToString() : "0";
@@ -329,7 +337,8 @@ namespace clinic_ivf.objdb
                 ptt.patient_couple_mobile + ","+ ptt.t_patient_id_old + "," + ptt.status_opu + "," +
                 ptt.patient_nickname + "," + ptt.patient_height + "," + ptt.status_or + "," +
                 ptt.or_description + "," + ptt.status_congenial + "," + ptt.congenital_diseases_description + "," +
-                ptt.allergy_description + " " +
+                ptt.allergy_description + "," + ptt.status_g + "," + ptt.p + "," +
+                ptt.a + " " +
                 ") " +
                 "Values ('" + p.patient_hn + "','" + p.patient_firstname.Replace("'", "''") + "','" + p.patient_lastname.Replace("'", "''") + "'," +
                 "'" + p.patient_xn.Replace("'", "''") + "','" + p.patient_birthday.Replace("'", "''") + "','" + p.patient_house.Replace("'", "''") + "'," +
@@ -371,7 +380,8 @@ namespace clinic_ivf.objdb
                 "'" + p.patient_couple_mobile+"','" + p.t_patient_id_old + "','" + p.status_opu + "'," +
                 "'" + p.patient_nickname + "','" + p.patient_height + "','" + p.status_or + "'," +
                 "'" + p.or_description + "','" + p.status_congenial + "','" + p.congenital_diseases_description + "'," +
-                "'" + p.allergy_description + "' " +
+                "'" + p.allergy_description + "','" + p.status_g + "','" + p.p + "'," +
+                "'" + p.a + "','" + p.g + "' " +
                 ")";
 
                 re = conn.ExecuteNonQuery(conn.conn, sql);
@@ -471,7 +481,10 @@ namespace clinic_ivf.objdb
                 "," + ptt.status_congenial + "='" + p.status_congenial.Replace("'", "''") + "' " +
                 "," + ptt.congenital_diseases_description + "='" + p.congenital_diseases_description.Replace("'", "''") + "' " +
                 "," + ptt.allergy_description + "='" + p.allergy_description.Replace("'", "''") + "' " +
-
+                "," + ptt.status_g + "='" + p.status_g.Replace("'", "''") + "' " +
+                "," + ptt.p + "='" + p.p.Replace("'", "''") + "' " +
+                "," + ptt.a + "='" + p.a.Replace("'", "''") + "' " +
+                "," + ptt.g + "='" + p.g.Replace("'", "''") + "' " +
                 " Where " +ptt.pkField + " = '" + p.t_patient_id + "' "
                 ;
             try
@@ -812,6 +825,10 @@ namespace clinic_ivf.objdb
                 ptt1.status_congenial = dt.Rows[0][ptt.status_congenial].ToString();
                 ptt1.congenital_diseases_description = dt.Rows[0][ptt.congenital_diseases_description].ToString();
                 ptt1.allergy_description = dt.Rows[0][ptt.allergy_description].ToString();
+                ptt1.status_g = dt.Rows[0][ptt.status_g].ToString();
+                ptt1.p = dt.Rows[0][ptt.p].ToString();
+                ptt1.a = dt.Rows[0][ptt.a].ToString();
+                ptt1.g = dt.Rows[0][ptt.g].ToString();
             }
             else
             {
@@ -944,6 +961,10 @@ namespace clinic_ivf.objdb
             stf1.status_congenial = "";
             stf1.congenital_diseases_description = "";
             stf1.allergy_description = "";
+            stf1.status_g = "";
+            stf1.p = "";
+            stf1.a = "";
+            stf1.g = "";
             return stf1;
         }
     }

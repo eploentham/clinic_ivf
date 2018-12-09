@@ -63,6 +63,7 @@ namespace clinic_ivf.gui
             imgTran = Resources.red_checkmark_png_51;
             ic.ivfDB.bspDB.setCboBsp(cboBsp, "");
             ic.ivfDB.dtrOldDB.setCboDoctor(cboDoctor, "");
+            ic.ivfDB.pApmDB.setCboDoctorAnes(cboDtrAnes);
 
             cboTimepApm = ic.setCboApmTime(cboTimepApm);
             txtDatepApm.Value = System.DateTime.Now.Year.ToString() + "-" + System.DateTime.Now.ToString("MM-dd");
@@ -215,8 +216,10 @@ namespace clinic_ivf.gui
             txtHn.Value = ptt.patient_hn;
             txtName.Value = ptt.Name;
             txtRemark.Value = ptt.remark;
-
-            txtDatepApm.Value = pApm.patient_appointment_date;
+            if (!pApm.t_patient_appointment_id.Equals(""))
+            {
+                txtDatepApm.Value = pApm.patient_appointment_date;
+            }
             ic.setC1Combo(cboTimepApm, pApm.patient_appointment_time);
             ic.setC1Combo(cboBsp, pApm.patient_appointment_servicepoint);
             chkE2.Checked = pApm.e2.Equals("1") ? true : false;
@@ -232,6 +235,8 @@ namespace clinic_ivf.gui
             txtRemark.Value = pApm.remark;
             ic.setC1Combo(cboDoctor, pApm.patient_appointment_doctor);
             txtID.Value = pApm.t_patient_appointment_id;
+            chkOPU.Checked = pApm.opu.Equals("1") ? true : false;
+            ic.setC1Combo(cboDtrAnes, pApm.doctor_anes);
         }
         private void initGrfpApmAll()
         {
@@ -531,7 +536,7 @@ namespace clinic_ivf.gui
             grfpApmDayAll.Clear();
             DataTable dt = new DataTable();
 
-            dt = ic.ivfDB.pApmDB.selectByDay(ic.datetoDB(txtDatepApm.Text));
+            dt = ic.ivfDB.pApmDB.selectByDay(ic.datetoDB(txtDatepApm.Text), ic.datetoDB(txtDatepApm.Text));
 
             //grfExpn.Rows.Count = dt.Rows.Count + 1;
             grfpApmDayAll.Rows.Count = 1;
@@ -695,6 +700,7 @@ namespace clinic_ivf.gui
             pApm.repeat_prl = chkRPrl.Checked ? "1" : "0";
             pApm.repeat_lh = chkRLh.Checked ? "1" : "0";
             pApm.repeat_fsh = chkRFsh.Checked ? "1" : "0";
+            pApm.opu = chkOPU.Checked ? "1" : "0";
         }
         private void FrmAppointmentAdd_Load(object sender, EventArgs e)
         {

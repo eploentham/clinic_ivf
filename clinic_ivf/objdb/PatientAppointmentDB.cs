@@ -1,4 +1,6 @@
-﻿using clinic_ivf.object1;
+﻿using C1.Win.C1Input;
+using clinic_ivf.object1;
+using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -71,6 +73,8 @@ namespace clinic_ivf.objdb
             pApm.repeat_prl = "repeat_prl";
             pApm.repeat_lh = "repeat_lh";
             pApm.repeat_fsh = "repeat_fsh";
+            pApm.opu = "opu";
+            pApm.doctor_anes = "doctor_anes";
 
             pApm.pkField = "t_patient_appointment_id";
             pApm.table = "t_patient_appointment";
@@ -108,6 +112,7 @@ namespace clinic_ivf.objdb
             p.patient_appointment_end_time = p.patient_appointment_end_time == null ? "" : p.patient_appointment_end_time;
             p.appointment_confirm_date = p.appointment_confirm_date == null ? "" : p.appointment_confirm_date;
             p.change_appointment_cause = p.change_appointment_cause == null ? "" : p.change_appointment_cause;
+            p.doctor_anes = p.doctor_anes == null ? "" : p.doctor_anes;
 
             p.remark = p.remark == null ? "" : p.remark;
             p.e2 = p.e2 == null ? "0" : p.e2;
@@ -122,6 +127,7 @@ namespace clinic_ivf.objdb
             p.repeat_prl = p.repeat_prl == null ? "0" : p.repeat_prl;
             p.repeat_lh = p.repeat_lh == null ? "0" : p.repeat_lh;
             p.repeat_fsh = p.repeat_fsh == null ? "0" : p.repeat_fsh;
+            p.opu = p.opu == null ? "0" : p.opu;
 
             p.r_rp1853_aptype_id = long.TryParse(p.r_rp1853_aptype_id, out chk) ? chk.ToString() : "0";
             p.t_patient_id = long.TryParse(p.t_patient_id, out chk) ? chk.ToString() : "0";
@@ -160,7 +166,7 @@ namespace clinic_ivf.objdb
                 pApm.lh + "," + pApm.rt_ovary + "," + pApm.lt_ovary + "," +
                 pApm.fsh + "," + pApm.t_patient_id + "," + pApm.tvs + "," +
                 pApm.repeat_e2 + "," + pApm.repeat_prl + "," + pApm.repeat_lh + "," +
-                pApm.repeat_fsh + " " +
+                pApm.repeat_fsh + "," + pApm.opu + "," + pApm.doctor_anes + " " +
                 ") " +
                 "Values ('" + p.patient_appoint_date_time + "','" + p.patient_appointment_time.Replace("'", "''") + "','" + p.patient_appointment.Replace("'", "''") + "'," +
                 "'" + p.patient_appointment_doctor.Replace("'", "''") + "','" + p.patient_appointment_notice.Replace("'", "''") + "','" + p.patient_appointment_staff.Replace("'", "''") + "'," +
@@ -178,7 +184,7 @@ namespace clinic_ivf.objdb
                 "'" + p.lh + "','" + p.rt_ovary + "','" + p.lt_ovary + "'," +
                 "'" + p.fsh + "','" + p.t_patient_id + "','" + p.tvs + "'," +
                 "'" + p.repeat_e2 + "','" + p.repeat_prl + "','" + p.repeat_lh + "'," +
-                "'" + p.repeat_fsh + "' " +
+                "'" + p.repeat_fsh + "','" + p.opu + "','" + p.doctor_anes + "' " +
                 ")";
 
                 re = conn.ExecuteNonQuery(conn.conn, sql);
@@ -251,7 +257,8 @@ namespace clinic_ivf.objdb
                 "," + pApm.repeat_prl + "='" + p.repeat_prl + "' " +
                 "," + pApm.repeat_lh + "='" + p.repeat_lh + "' " +
                 "," + pApm.repeat_fsh + "='" + p.repeat_fsh + "' " +
-
+                "," + pApm.opu + "='" + p.opu + "' " +
+                "," + pApm.doctor_anes + "='" + p.doctor_anes + "' " +
                 " Where " + pApm.pkField + " = '" + p.t_patient_appointment_id + "' "
                 ;
             try
@@ -331,17 +338,60 @@ namespace clinic_ivf.objdb
             dt = conn.selectData(conn.conn, sql);
             return dt;
         }
-        public DataTable selectByDay(String date)
+        public DataTable selectByDay(String date1, String date2)
         {
             DataTable dt = new DataTable();
+            dt = selectByDay(conn.conn, date1, date2);
+                            
+            return dt;
+        }
+        public DataTable selectByDay(MySqlConnection con, String date1, String date2)
+        {
+            String dateStart = "", dateEnd = "";
+            DataTable dt = new DataTable();
+
+            dateEnd = !date2.Equals("") ? date2 : date1;
+
             String sql = "select pApm.*,  bsp.service_point_description,dtr.Name  as dtr_name " +
                 "From " + pApm.table + " pApm " +
                 "Left Join b_service_point bsp on bsp.b_service_point_id = pApm.patient_appointment_servicepoint " +
                 "Left Join Doctor  dtr on pApm.patient_appointment_doctor = dtr.ID " +
-                "Where pApm." + pApm.patient_appointment_date + " ='" + date + "' and pApm." + pApm.active + "='1' " +
+                "Where pApm." + pApm.patient_appointment_date + " >='" + dateStart + "' and pApm."+pApm.patient_appointment_date+ " <='" + dateEnd + "' and pApm." + pApm.active + "='1' " +
                 "Order By "+ pApm.patient_appointment_date+","+ pApm.patient_appointment_time;
-            dt = conn.selectData(conn.conn, sql);
+            dt = conn.selectData(con, sql);
             return dt;
+        }
+        public DataTable selectDoctorAnes()
+        {
+            DataTable dt = new DataTable();
+            String sql = "select Distinct pApm."+pApm.doctor_anes +" "+
+                "From " + pApm.table + " pApm " +
+                " " +
+                "Where pApm." + pApm.active + " ='1' ";
+            dt = conn.selectData(conn.conn, sql);
+
+            return dt;
+        }
+        public C1ComboBox setCboDoctorAnes(C1ComboBox c)
+        {
+            ComboBoxItem item = new ComboBoxItem();
+            DataTable dt = selectDoctorAnes();
+            //String aaa = "";
+            ComboBoxItem item1 = new ComboBoxItem();
+            item1.Text = "";
+            item1.Value = "";
+            c.Items.Clear();
+            c.Items.Add(item1);
+            //for (int i = 0; i < dt.Rows.Count; i++)
+            foreach (DataRow row in dt.Rows)
+            {
+                item = new ComboBoxItem();
+                item.Text = row[pApm.doctor_anes].ToString();
+                item.Value = row[pApm.doctor_anes].ToString();
+
+                c.Items.Add(item);
+            }
+            return c;
         }
         public PatientAppointment setPatient(DataTable dt)
         {
@@ -399,6 +449,8 @@ namespace clinic_ivf.objdb
                 ptt1.repeat_prl = dt.Rows[0][pApm.repeat_prl].ToString();
                 ptt1.repeat_lh = dt.Rows[0][pApm.repeat_lh].ToString();
                 ptt1.repeat_fsh = dt.Rows[0][pApm.repeat_fsh].ToString();
+                ptt1.opu = dt.Rows[0][pApm.opu].ToString();
+                ptt1.doctor_anes = dt.Rows[0][pApm.doctor_anes].ToString();
             }
             else
             {
@@ -460,6 +512,8 @@ namespace clinic_ivf.objdb
             stf1.repeat_prl = "";
             stf1.repeat_lh = "";
             stf1.repeat_fsh = "";
+            stf1.opu = "";
+            stf1.doctor_anes = "";
             return stf1;
         }
     }

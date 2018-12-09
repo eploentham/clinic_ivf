@@ -1612,6 +1612,10 @@ namespace clinic_ivf.gui
             txtCongenital.Value = ptt.congenital_diseases_description;
             txtHeight.Value = ptt.patient_height;
             txtAllergyDesc.Value = ptt.allergy_description;
+            chkStatusG.Checked = ptt.status_g.Equals("1") ? true : false;
+            txtG.Value = ptt.g;
+            txtP.Value = ptt.p;
+            txtA.Value = ptt.a;
             //txtEmail.Value = pttO.Email;
         }
         private void setControlPtt(String pttid)
@@ -1871,6 +1875,10 @@ namespace clinic_ivf.gui
             ptt.congenital_diseases_description = txtCongenital.Text;
             ptt.patient_height = txtHeight.Text;
             ptt.allergy_description = txtAllergyDesc.Text;
+            ptt.status_g = chkStatusG.Checked == true ? "1" : "0";
+            ptt.g = txtG.Text;
+            ptt.p = txtP.Text;
+            ptt.a = txtA.Text;
         }
         private void DoPrint(C1PdfDocumentSource pds)
         {

@@ -32,6 +32,12 @@
             this.theme1 = new C1.Win.C1Themes.C1ThemeController();
             this.splitMain = new System.Windows.Forms.SplitContainer();
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
+            this.txtA = new C1.Win.C1Input.C1TextBox();
+            this.label27 = new System.Windows.Forms.Label();
+            this.txtP = new C1.Win.C1Input.C1TextBox();
+            this.label20 = new System.Windows.Forms.Label();
+            this.txtG = new C1.Win.C1Input.C1TextBox();
+            this.chkStatusG = new C1.Win.C1Input.C1CheckBox();
             this.txtAllergyDesc = new C1.Win.C1Input.C1TextBox();
             this.label19 = new System.Windows.Forms.Label();
             this.txtHeight = new C1.Win.C1Input.C1TextBox();
@@ -190,6 +196,10 @@
             this.printDialog1 = new System.Windows.Forms.PrintDialog();
             this.cPdf = new C1.Win.C1Document.C1PdfDocumentSource(this.components);
             this._c1pdf = new C1.C1Pdf.C1PdfDocument();
+            this.tabApm = new C1.Win.C1Command.C1DockingTabPage();
+            this.pnApm = new System.Windows.Forms.Panel();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.btnApm = new C1.Win.C1Input.C1Button();
             ((System.ComponentModel.ISupportInitialize)(this.theme1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitMain)).BeginInit();
             this.splitMain.Panel1.SuspendLayout();
@@ -199,6 +209,10 @@
             this.splitContainer2.Panel1.SuspendLayout();
             this.splitContainer2.Panel2.SuspendLayout();
             this.splitContainer2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtA)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtP)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtG)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chkStatusG)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtAllergyDesc)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtHeight)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkCongenital)).BeginInit();
@@ -296,6 +310,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.btnVisit)).BeginInit();
             this.tabImage.SuspendLayout();
             this.sB.SuspendLayout();
+            this.tabApm.SuspendLayout();
+            this.panel3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.btnApm)).BeginInit();
             this.SuspendLayout();
             // 
             // theme1
@@ -340,6 +357,12 @@
             // splitContainer2.Panel1
             // 
             this.splitContainer2.Panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.splitContainer2.Panel1.Controls.Add(this.txtA);
+            this.splitContainer2.Panel1.Controls.Add(this.label27);
+            this.splitContainer2.Panel1.Controls.Add(this.txtP);
+            this.splitContainer2.Panel1.Controls.Add(this.label20);
+            this.splitContainer2.Panel1.Controls.Add(this.txtG);
+            this.splitContainer2.Panel1.Controls.Add(this.chkStatusG);
             this.splitContainer2.Panel1.Controls.Add(this.txtAllergyDesc);
             this.splitContainer2.Panel1.Controls.Add(this.label19);
             this.splitContainer2.Panel1.Controls.Add(this.txtHeight);
@@ -425,6 +448,90 @@
             this.splitContainer2.TabIndex = 0;
             this.theme1.SetTheme(this.splitContainer2, "(default)");
             // 
+            // txtA
+            // 
+            this.txtA.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtA.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
+            this.txtA.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.txtA.Location = new System.Drawing.Point(111, 287);
+            this.txtA.Name = "txtA";
+            this.txtA.Size = new System.Drawing.Size(48, 20);
+            this.txtA.TabIndex = 696;
+            this.txtA.Tag = null;
+            this.theme1.SetTheme(this.txtA, "(default)");
+            this.txtA.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            // 
+            // label27
+            // 
+            this.label27.AutoSize = true;
+            this.label27.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.label27.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label27.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.label27.Location = new System.Drawing.Point(14, 286);
+            this.label27.Name = "label27";
+            this.label27.Size = new System.Drawing.Size(34, 16);
+            this.label27.TabIndex = 695;
+            this.label27.Text = "แท้ง :";
+            this.theme1.SetTheme(this.label27, "(default)");
+            // 
+            // txtP
+            // 
+            this.txtP.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtP.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
+            this.txtP.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.txtP.Location = new System.Drawing.Point(111, 265);
+            this.txtP.Name = "txtP";
+            this.txtP.Size = new System.Drawing.Size(48, 20);
+            this.txtP.TabIndex = 694;
+            this.txtP.Tag = null;
+            this.theme1.SetTheme(this.txtP, "(default)");
+            this.txtP.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            // 
+            // label20
+            // 
+            this.label20.AutoSize = true;
+            this.label20.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.label20.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label20.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.label20.Location = new System.Drawing.Point(14, 267);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(80, 16);
+            this.label20.TabIndex = 693;
+            this.label20.Text = "ผ่าตัดคอดกี่คน :";
+            this.theme1.SetTheme(this.label20, "(default)");
+            // 
+            // txtG
+            // 
+            this.txtG.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtG.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
+            this.txtG.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.txtG.Location = new System.Drawing.Point(111, 243);
+            this.txtG.Name = "txtG";
+            this.txtG.Size = new System.Drawing.Size(48, 20);
+            this.txtG.TabIndex = 692;
+            this.txtG.Tag = null;
+            this.theme1.SetTheme(this.txtG, "(default)");
+            this.txtG.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            // 
+            // chkStatusG
+            // 
+            this.chkStatusG.BackColor = System.Drawing.Color.Transparent;
+            this.chkStatusG.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
+            this.chkStatusG.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.chkStatusG.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.chkStatusG.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chkStatusG.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.chkStatusG.Location = new System.Drawing.Point(13, 240);
+            this.chkStatusG.Name = "chkStatusG";
+            this.chkStatusG.Padding = new System.Windows.Forms.Padding(4, 1, 1, 1);
+            this.chkStatusG.Size = new System.Drawing.Size(94, 24);
+            this.chkStatusG.TabIndex = 691;
+            this.chkStatusG.Text = "มีบุตรหรือยัง";
+            this.theme1.SetTheme(this.chkStatusG, "(default)");
+            this.chkStatusG.UseVisualStyleBackColor = true;
+            this.chkStatusG.Value = null;
+            this.chkStatusG.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            // 
             // txtAllergyDesc
             // 
             this.txtAllergyDesc.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
@@ -456,7 +563,7 @@
             this.txtHeight.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtHeight.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
             this.txtHeight.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.txtHeight.Location = new System.Drawing.Point(693, 265);
+            this.txtHeight.Location = new System.Drawing.Point(699, 265);
             this.txtHeight.Name = "txtHeight";
             this.txtHeight.Size = new System.Drawing.Size(72, 20);
             this.txtHeight.TabIndex = 688;
@@ -546,7 +653,7 @@
             this.txtNickName.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtNickName.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
             this.txtNickName.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.txtNickName.Location = new System.Drawing.Point(693, 243);
+            this.txtNickName.Location = new System.Drawing.Point(699, 243);
             this.txtNickName.Name = "txtNickName";
             this.txtNickName.Size = new System.Drawing.Size(72, 20);
             this.txtNickName.TabIndex = 677;
@@ -955,7 +1062,7 @@
             this.btnPrint.Items.Add(this.btnPrnSticker);
             this.btnPrint.Items.Add(this.btnPrvSticker);
             this.btnPrint.Items.Add(this.dropDownItem3);
-            this.btnPrint.Location = new System.Drawing.Point(55, 206);
+            this.btnPrint.Location = new System.Drawing.Point(67, 204);
             this.btnPrint.Name = "btnPrint";
             this.btnPrint.Size = new System.Drawing.Size(98, 35);
             this.btnPrint.TabIndex = 592;
@@ -1542,11 +1649,12 @@
             this.tC1.Controls.Add(this.tabAddress);
             this.tC1.Controls.Add(this.tabVisit);
             this.tC1.Controls.Add(this.tabImage);
+            this.tC1.Controls.Add(this.tabApm);
             this.tC1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tC1.HotTrack = true;
             this.tC1.Location = new System.Drawing.Point(0, 0);
             this.tC1.Name = "tC1";
-            this.tC1.SelectedIndex = 3;
+            this.tC1.SelectedIndex = 4;
             this.tC1.Size = new System.Drawing.Size(1457, 400);
             this.tC1.TabIndex = 0;
             this.tC1.TabSizeMode = C1.Win.C1Command.TabSizeModeEnum.Fit;
@@ -2655,9 +2763,9 @@
             this.pnVisit.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
             this.pnVisit.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnVisit.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.pnVisit.Location = new System.Drawing.Point(0, 60);
+            this.pnVisit.Location = new System.Drawing.Point(0, 41);
             this.pnVisit.Name = "pnVisit";
-            this.pnVisit.Size = new System.Drawing.Size(1455, 315);
+            this.pnVisit.Size = new System.Drawing.Size(1455, 334);
             this.pnVisit.TabIndex = 1;
             this.theme1.SetTheme(this.pnVisit, "(default)");
             // 
@@ -2669,7 +2777,7 @@
             this.panel1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1455, 60);
+            this.panel1.Size = new System.Drawing.Size(1455, 41);
             this.panel1.TabIndex = 0;
             this.theme1.SetTheme(this.panel1, "(default)");
             // 
@@ -2677,7 +2785,7 @@
             // 
             this.btnVisit.Image = global::clinic_ivf.Properties.Resources.users24;
             this.btnVisit.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnVisit.Location = new System.Drawing.Point(43, 12);
+            this.btnVisit.Location = new System.Drawing.Point(50, 3);
             this.btnVisit.Name = "btnVisit";
             this.btnVisit.Size = new System.Drawing.Size(83, 33);
             this.btnVisit.TabIndex = 619;
@@ -2745,6 +2853,53 @@
             this._c1pdf.UseFastTextOut = true;
             this._c1pdf.UseFontShaping = true;
             // 
+            // tabApm
+            // 
+            this.tabApm.Controls.Add(this.pnApm);
+            this.tabApm.Controls.Add(this.panel3);
+            this.tabApm.Location = new System.Drawing.Point(1, 24);
+            this.tabApm.Name = "tabApm";
+            this.tabApm.Size = new System.Drawing.Size(1455, 375);
+            this.tabApm.TabIndex = 5;
+            this.tabApm.Text = "Appointment";
+            // 
+            // pnApm
+            // 
+            this.pnApm.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.pnApm.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pnApm.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.pnApm.Location = new System.Drawing.Point(0, 41);
+            this.pnApm.Name = "pnApm";
+            this.pnApm.Size = new System.Drawing.Size(1455, 334);
+            this.pnApm.TabIndex = 3;
+            this.theme1.SetTheme(this.pnApm, "(default)");
+            // 
+            // panel3
+            // 
+            this.panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.panel3.Controls.Add(this.btnApm);
+            this.panel3.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.panel3.Location = new System.Drawing.Point(0, 0);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(1455, 41);
+            this.panel3.TabIndex = 2;
+            this.theme1.SetTheme(this.panel3, "(default)");
+            // 
+            // btnApm
+            // 
+            this.btnApm.Image = global::clinic_ivf.Properties.Resources.users24;
+            this.btnApm.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnApm.Location = new System.Drawing.Point(50, 3);
+            this.btnApm.Name = "btnApm";
+            this.btnApm.Size = new System.Drawing.Size(132, 33);
+            this.btnApm.TabIndex = 619;
+            this.btnApm.Text = "new Appointment";
+            this.btnApm.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.theme1.SetTheme(this.btnApm, "(default)");
+            this.btnApm.UseVisualStyleBackColor = true;
+            this.btnApm.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            // 
             // FrmPatientAdd
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -2765,6 +2920,10 @@
             this.splitContainer2.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).EndInit();
             this.splitContainer2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.txtA)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtP)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtG)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chkStatusG)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtAllergyDesc)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtHeight)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkCongenital)).EndInit();
@@ -2866,6 +3025,9 @@
             this.tabImage.ResumeLayout(false);
             this.sB.ResumeLayout(false);
             this.sB.PerformLayout();
+            this.tabApm.ResumeLayout(false);
+            this.panel3.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.btnApm)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -3034,5 +3196,15 @@
         private System.Windows.Forms.Label label19;
         private C1.Win.C1Input.C1TextBox txtHeight;
         private C1.Win.C1Input.C1TextBox txtAllergyDesc;
+        private C1.Win.C1Input.C1TextBox txtG;
+        private C1.Win.C1Input.C1CheckBox chkStatusG;
+        private C1.Win.C1Input.C1TextBox txtA;
+        private System.Windows.Forms.Label label27;
+        private C1.Win.C1Input.C1TextBox txtP;
+        private System.Windows.Forms.Label label20;
+        private C1.Win.C1Command.C1DockingTabPage tabApm;
+        private System.Windows.Forms.Panel pnApm;
+        private System.Windows.Forms.Panel panel3;
+        private C1.Win.C1Input.C1Button btnApm;
     }
 }

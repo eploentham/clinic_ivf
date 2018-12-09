@@ -2,6 +2,7 @@
 using C1.Win.C1Input;
 using C1.Win.C1SuperTooltip;
 using clinic_ivf.control;
+using clinic_ivf.objdb;
 using clinic_ivf.Properties;
 using System;
 using System.Collections.Generic;
@@ -370,6 +371,9 @@ namespace clinic_ivf.gui
             //grfDept.Rows.Count = 7;
             grfPtt.Clear();
             DataTable dt = new DataTable();
+            DataTable dtD = new DataTable();
+            ConnectDB con = new ConnectDB(ic.iniC);
+
             DateTime datestart, dateend;
             String datestart1="", dateend1="";
             if (DateTime.TryParse(txtDateStart.Text, out datestart))
@@ -390,7 +394,16 @@ namespace clinic_ivf.gui
             //    dateend1 = ic.datetoDB(txtDateEnd.Text);
             //}
             //String date = System.DateTime.Now.Year + "-" + System.DateTime.Now.ToString("MM-dd");
-            dt = ic.ivfDB.appnOldDB.selectByDateDtr(datestart1, dateend1, cboDoctor.Text);
+            if (ic.iniC.statusAppDonor.Equals("1"))
+            {
+                dtD = ic.ivfDB.pApmDB.selectByDay(datestart1, dateend1);
+                dt = ic.ivfDB.appnOldDB.selectByDateDtr(datestart1, dateend1, cboDoctor.Text);
+            }
+            else
+            {
+                dtD = ic.ivfDB.pApmDB.selectByDay(con.connEx,datestart1, dateend1);
+                dt = ic.ivfDB.appnOldDB.selectByDateDtr(datestart1, dateend1, cboDoctor.Text);
+            }
             
             //grfExpn.Rows.Count = dt.Rows.Count + 1;
             
@@ -600,7 +613,8 @@ namespace clinic_ivf.gui
                 row1[colVsScreen] = "";
                 row1[colVsTrans] = "";
                 row1[colVsANC] = "";
-                row1[colVsAnes] = row[ic.ivfDB.appnOldDB.appnOld.Doctor].ToString();
+                //row1[colVsAnes] = row[ic.ivfDB.appnOldDB.appnOld.Doctor].ToString();
+                row1[colVsAnes] = "";
                 row1[colVsRemark] = "";
                                 
                 //if (i % 2 == 0)

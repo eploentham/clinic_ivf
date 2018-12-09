@@ -49,5 +49,7 @@ namespace clinic_ivf.object1
         public String repeat_lh { get; set; }
         public String repeat_prl { get; set; }
         public String repeat_fsh { get; set; }
+        public String opu { get; set; }
+        public String doctor_anes { get; set; }
     }
 }
