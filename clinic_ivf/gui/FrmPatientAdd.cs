@@ -149,6 +149,7 @@ namespace clinic_ivf.gui
             chkOR.CheckedChanged += ChkOR_CheckedChanged;
             chkCongenital.CheckedChanged += ChkCongenital_CheckedChanged;
             chkDenyAllergy.CheckedChanged += ChkDenyAllergy_CheckedChanged;
+            btnApm.Click += BtnApm_Click;
 
             setKeyEnter();
 
@@ -167,6 +168,14 @@ namespace clinic_ivf.gui
             //picPtt.Load("54158.jpg");
             picPtt.SizeMode = PictureBoxSizeMode.StretchImage;
             //btnSavePic.Enabled = false;
+        }
+
+        private void BtnApm_Click(object sender, EventArgs e)
+        {
+            //throw new NotImplementedException();
+            FrmAppointmentDonorAdd frm = new FrmAppointmentDonorAdd(ic, "", txtID.Text, "");
+            frm.ShowDialog(this);
+            setGrfpApmDonor(txtID.Text);
         }
 
         private void ChkDenyAllergy_CheckedChanged(object sender, EventArgs e)

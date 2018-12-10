@@ -42,6 +42,12 @@
             this.label11 = new System.Windows.Forms.Label();
             this.btnNew = new C1.Win.C1Input.C1Button();
             this.gb = new System.Windows.Forms.GroupBox();
+            this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this.pmpAmp = new System.Windows.Forms.Panel();
+            this.pnDtr = new System.Windows.Forms.Panel();
+            this.tC = new C1.Win.C1Command.C1DockingTab();
+            this.tabAll = new C1.Win.C1Command.C1DockingTabPage();
+            this.pnAll = new System.Windows.Forms.Panel();
             this.sB = new System.Windows.Forms.StatusStrip();
             this.sB1 = new System.Windows.Forms.ToolStripStatusLabel();
             ((System.ComponentModel.ISupportInitialize)(this.theme1)).BeginInit();
@@ -53,6 +59,15 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtDateEnd)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtDateStart)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnNew)).BeginInit();
+            this.gb.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
+            this.splitContainer1.Panel1.SuspendLayout();
+            this.splitContainer1.Panel2.SuspendLayout();
+            this.splitContainer1.SuspendLayout();
+            this.pnDtr.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.tC)).BeginInit();
+            this.tC.SuspendLayout();
+            this.tabAll.SuspendLayout();
             this.sB.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -249,6 +264,7 @@
             this.txtDateStart.Calendar.TrailingForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
             this.txtDateStart.Calendar.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
             this.txtDateStart.Culture = 1054;
+            this.txtDateStart.CurrentTimeZone = false;
             this.txtDateStart.DateTimeInput = false;
             this.txtDateStart.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
             this.txtDateStart.DisplayFormat.CustomFormat = "dd-MM-yyyy";
@@ -257,6 +273,13 @@
             | C1.Win.C1Input.FormatInfoInheritFlags.TrimStart) 
             | C1.Win.C1Input.FormatInfoInheritFlags.TrimEnd) 
             | C1.Win.C1Input.FormatInfoInheritFlags.CalendarType)));
+            this.txtDateStart.EditFormat.FormatType = C1.Win.C1Input.FormatTypeEnum.ShortDate;
+            this.txtDateStart.EditFormat.Inherit = ((C1.Win.C1Input.FormatInfoInheritFlags)(((((C1.Win.C1Input.FormatInfoInheritFlags.CustomFormat | C1.Win.C1Input.FormatInfoInheritFlags.NullText) 
+            | C1.Win.C1Input.FormatInfoInheritFlags.EmptyAsNull) 
+            | C1.Win.C1Input.FormatInfoInheritFlags.TrimStart) 
+            | C1.Win.C1Input.FormatInfoInheritFlags.CalendarType)));
+            this.txtDateStart.EditFormat.TrimEnd = false;
+            this.txtDateStart.GMTOffset = System.TimeSpan.Parse("00:00:00");
             this.txtDateStart.ImagePadding = new System.Windows.Forms.Padding(0);
             this.txtDateStart.Location = new System.Drawing.Point(90, 20);
             this.txtDateStart.Name = "txtDateStart";
@@ -293,6 +316,7 @@
             // gb
             // 
             this.gb.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.gb.Controls.Add(this.splitContainer1);
             this.gb.Dock = System.Windows.Forms.DockStyle.Fill;
             this.gb.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
             this.gb.Location = new System.Drawing.Point(0, 54);
@@ -302,6 +326,93 @@
             this.gb.TabStop = false;
             this.gb.Text = "Appointment";
             this.theme1.SetTheme(this.gb, "(default)");
+            // 
+            // splitContainer1
+            // 
+            this.splitContainer1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.splitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitContainer1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.splitContainer1.Location = new System.Drawing.Point(3, 16);
+            this.splitContainer1.Name = "splitContainer1";
+            this.splitContainer1.Orientation = System.Windows.Forms.Orientation.Horizontal;
+            // 
+            // splitContainer1.Panel1
+            // 
+            this.splitContainer1.Panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.splitContainer1.Panel1.Controls.Add(this.pmpAmp);
+            this.splitContainer1.Panel1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.theme1.SetTheme(this.splitContainer1.Panel1, "(default)");
+            // 
+            // splitContainer1.Panel2
+            // 
+            this.splitContainer1.Panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.splitContainer1.Panel2.Controls.Add(this.pnDtr);
+            this.splitContainer1.Panel2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.theme1.SetTheme(this.splitContainer1.Panel2, "(default)");
+            this.splitContainer1.Size = new System.Drawing.Size(1068, 659);
+            this.splitContainer1.SplitterDistance = 431;
+            this.splitContainer1.TabIndex = 0;
+            this.theme1.SetTheme(this.splitContainer1, "(default)");
+            // 
+            // pmpAmp
+            // 
+            this.pmpAmp.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.pmpAmp.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pmpAmp.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.pmpAmp.Location = new System.Drawing.Point(0, 0);
+            this.pmpAmp.Name = "pmpAmp";
+            this.pmpAmp.Size = new System.Drawing.Size(1068, 431);
+            this.pmpAmp.TabIndex = 0;
+            this.theme1.SetTheme(this.pmpAmp, "(default)");
+            // 
+            // pnDtr
+            // 
+            this.pnDtr.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.pnDtr.Controls.Add(this.tC);
+            this.pnDtr.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pnDtr.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.pnDtr.Location = new System.Drawing.Point(0, 0);
+            this.pnDtr.Name = "pnDtr";
+            this.pnDtr.Size = new System.Drawing.Size(1068, 224);
+            this.pnDtr.TabIndex = 0;
+            this.theme1.SetTheme(this.pnDtr, "(default)");
+            // 
+            // tC
+            // 
+            this.tC.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.tC.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.tC.Controls.Add(this.tabAll);
+            this.tC.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tC.HotTrack = true;
+            this.tC.Location = new System.Drawing.Point(0, 0);
+            this.tC.Name = "tC";
+            this.tC.Size = new System.Drawing.Size(1068, 224);
+            this.tC.TabIndex = 0;
+            this.tC.TabSizeMode = C1.Win.C1Command.TabSizeModeEnum.Fit;
+            this.tC.TabsShowFocusCues = false;
+            this.tC.TabsSpacing = 2;
+            this.tC.TabStyle = C1.Win.C1Command.TabStyleEnum.Office2007;
+            this.theme1.SetTheme(this.tC, "(default)");
+            // 
+            // tabAll
+            // 
+            this.tabAll.Controls.Add(this.pnAll);
+            this.tabAll.Location = new System.Drawing.Point(1, 24);
+            this.tabAll.Name = "tabAll";
+            this.tabAll.Size = new System.Drawing.Size(1066, 199);
+            this.tabAll.TabIndex = 0;
+            this.tabAll.Text = "ทั้งหมด";
+            // 
+            // pnAll
+            // 
+            this.pnAll.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.pnAll.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pnAll.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.pnAll.Location = new System.Drawing.Point(0, 0);
+            this.pnAll.Name = "pnAll";
+            this.pnAll.Size = new System.Drawing.Size(1066, 199);
+            this.pnAll.TabIndex = 0;
+            this.theme1.SetTheme(this.pnAll, "(default)");
             // 
             // sB
             // 
@@ -340,6 +451,15 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtDateEnd)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtDateStart)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnNew)).EndInit();
+            this.gb.ResumeLayout(false);
+            this.splitContainer1.Panel1.ResumeLayout(false);
+            this.splitContainer1.Panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
+            this.splitContainer1.ResumeLayout(false);
+            this.pnDtr.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.tC)).EndInit();
+            this.tC.ResumeLayout(false);
+            this.tabAll.ResumeLayout(false);
             this.sB.ResumeLayout(false);
             this.sB.PerformLayout();
             this.ResumeLayout(false);
@@ -365,5 +485,11 @@
         private System.Windows.Forms.GroupBox gb;
         private System.Windows.Forms.Label label4;
         private C1.Win.C1Input.C1TextBox txtSearch;
+        private System.Windows.Forms.SplitContainer splitContainer1;
+        private System.Windows.Forms.Panel pmpAmp;
+        private System.Windows.Forms.Panel pnDtr;
+        private C1.Win.C1Command.C1DockingTab tC;
+        private C1.Win.C1Command.C1DockingTabPage tabAll;
+        private System.Windows.Forms.Panel pnAll;
     }
 }

@@ -1,4 +1,5 @@
-﻿using C1.Win.C1FlexGrid;
+﻿using C1.Win.C1Command;
+using C1.Win.C1FlexGrid;
 using C1.Win.C1Input;
 using C1.Win.C1SuperTooltip;
 using clinic_ivf.control;
@@ -27,12 +28,15 @@ namespace clinic_ivf.gui
         Font ff, ffB;
 
         int colID = 1, colpttId = 2, colVsTime = 3, colPttHn = 4, colVsCode = 5, colVsPttName = 6, colVsDoctor = 7, colVsSperm = 8, colVsDay1 = 9, colVsDay2 = 10, colVs1St = 11, colVsDay8=12, colVsDay11=13;
-        int colVsTVS = 14, colVsEndo = 15, colVsDC = 16, colVsOPU = 17, colVsET_FET = 18, colVsHCG = 19, colVsScreen = 20, colVsTrans = 21, colVsANC = 22, colVsAnes = 23, colVsRemark = 24;
+        int colVsTVS = 14, colVsEndo = 15, colVsDC = 16, colVsOPU = 17, colVsET_FET = 18, colVsHCG = 19, colVsScreen = 20, colVsTrans = 21, colVsANC = 22, colVsAnes = 23, colVsRemark = 24, colVsStatus=25;
+        
+        int colpApmPttName = 1;
 
         C1FlexGrid grfPtt;
         C1SuperTooltip stt;
         C1SuperErrorProvider sep;
         Image imgCorr, imgTran;
+        
 
         public FrmAppoinmentView(IvfControl ic, MainMenu m)
         {
@@ -57,6 +61,7 @@ namespace clinic_ivf.gui
 
             stt = new C1SuperTooltip();
             sep = new C1SuperErrorProvider();
+            
             imgCorr = Resources.red_checkmark_png_16;
             imgTran = Resources.red_checkmark_png_51;
             txtDateStart.Value = DateTime.Now.ToString("yyyy-MM-dd");
@@ -66,9 +71,19 @@ namespace clinic_ivf.gui
             btnSearch.Click += BtnSearch_Click;
             txtSearch.KeyUp += TxtSearch_KeyUp;
             btnNew.Click += BtnNew_Click;
+            //txtDateStart.ValueChanged += TxtDateStart_ValueChanged;
+            //txtDateStart.
 
+            initTcDtr1();
+            //initTcDtr();
             initGrfPtt();
             setGrfPtt();
+        }
+
+        private void TxtDateStart_ValueChanged(object sender, EventArgs e)
+        {
+            //throw new NotImplementedException();
+            
         }
 
         private void BtnNew_Click(object sender, EventArgs e)
@@ -84,11 +99,224 @@ namespace clinic_ivf.gui
             //throw new NotImplementedException();
 
         }
+        private void setSearch()
+        {
+            Cursor curOld = this.Cursor;
+            this.Cursor = Cursors.WaitCursor;
+            gb.Visible = false;
+            tC.Visible = false;
+            try
+            {
+                setGrfPtt();
+                initTcDtr1();
+            }
+            catch(Exception ex)
+            {
 
+            }
+            gb.Visible = true;
+            tC.Visible = true;
+            this.Cursor = curOld;
+        }
         private void BtnSearch_Click(object sender, EventArgs e)
         {
             //throw new NotImplementedException();
-            setGrfPtt();
+            setSearch();
+        }
+        private void initTcDtr1()
+        {
+            String datestart1 = "", dateend1 = "";
+            DateTime datestart, dateend;
+            if (DateTime.TryParse(txtDateStart.Text, out datestart))
+            {
+                datestart1 = datestart.ToString("yyyy-MM-dd");
+            }
+            else
+            {
+                datestart1 = ic.datetoDB(txtDateStart.Text);
+            }
+            dateend1 = datestart1;
+            //foreach(C1DockingTabPage tab in tC.TabPages)
+            //{
+            //    if (!tab.Name.Equals("tabAll"))
+            //    {
+            //        tC.TabPages.Remove(tab);
+            //    }
+            //}
+            int cnt = 0;
+            cnt = tC.TabCount;
+            for (int i = 0; i < cnt; i++)
+            {
+                C1DockingTabPage tab;
+                tC.SelectedIndex = tC.TabCount;
+                tab = tC.SelectedTab;
+                if (!tab.Name.Equals("tabAll"))
+                {
+                    tC.TabPages.Remove(tab);
+                }
+            }
+            foreach(Control aaa in pnAll.Controls)
+            {
+                if(aaa is C1FlexGrid)
+                {
+                    pnAll.Controls.Remove(aaa);
+                }
+            }
+            DataTable dt = new DataTable();
+            DataTable dtD = new DataTable();
+            C1TextBox txt = new C1TextBox();
+            C1FlexGrid grfAll = new C1FlexGrid();
+            grfAll = new C1FlexGrid();
+            grfAll.Font = fEdit;
+            grfAll.Dock = DockStyle.Fill;
+            grfAll.Rows.Count = 1;
+            grfAll.Cols.Count = 2;
+            grfAll.Cols[colpApmPttName].Editor = txt;
+            grfAll.Cols[colpApmPttName].Width = 320;
+            grfAll.Cols[colpApmPttName].Caption = "Description";
+            pnAll.Controls.Add(grfAll);
+
+
+            if (ic.iniC.statusAppDonor.Equals("1"))
+            {
+                dtD = ic.ivfDB.pApmDB.selectByDayGroupByDtr(datestart1, dateend1);
+                dt = ic.ivfDB.appnOldDB.selectByDateDtrGroupByDtr(ic.conn.connEx, datestart1, dateend1);
+            }
+            else
+            {
+                dtD = ic.ivfDB.pApmDB.selectByDayGroupByDtr(ic.conn.connEx,datestart1, dateend1);
+                dt = ic.ivfDB.appnOldDB.selectByDateDtrGroupByDtr(datestart1, dateend1);
+            }
+            foreach (DataRow row in dt.Rows)
+            {
+                String name = row["dtr_name"].ToString();
+                String id = row["patient_appointment_doctor"].ToString();
+                Boolean chk = false;
+                foreach (DataRow rowD in dtD.Rows)
+                {
+                    String nameD = rowD["dtr_name"].ToString();
+                    String idD = rowD["patient_appointment_doctor"].ToString();
+                    if (!nameD.ToLower().Equals(name.ToLower()))
+                    {
+                        chk = true;
+                    }
+                    else
+                    {
+                        chk = false;
+                        break;
+                    }
+                }
+                if (chk)
+                {
+                    //DataRow rowN = new DataRow();
+                    DataRow rowN = dtD.Rows.Add();
+                    rowN["dtr_name"] = name;
+                    row["patient_appointment_doctor"] = id;
+                }
+            }
+
+            foreach (DataRow row in dtD.Rows)
+            {
+                C1DockingTabPage tabpage = new C1DockingTabPage();
+                C1FlexGrid grf = new C1FlexGrid();
+                grf = new C1FlexGrid();
+                grf.Font = fEdit;
+                grf.Dock = DockStyle.Fill;
+                grf.Rows.Count = 1;
+                grf.Cols.Count = 2;
+                grf.Name = "grf"+row["patient_appointment_doctor"].ToString();
+                
+                grf.Cols[colpApmPttName].Editor = txt;
+                grf.Cols[colpApmPttName].Width = 320;
+                grf.Cols[colpApmPttName].Caption = "Description";
+                DataTable dt1 = new DataTable();
+                DataTable dt2 = new DataTable();
+                String dtrid = "";
+                dtrid = row["patient_appointment_doctor"].ToString();
+                if (ic.iniC.statusAppDonor.Equals("1"))
+                {
+                    dt1 = ic.ivfDB.pApmDB.selectByDayDtrId(ic.conn.conn, datestart1, dateend1, dtrid);
+                    dt2 = ic.ivfDB.appnOldDB.selectByDateDtr(ic.conn.connEx, datestart1, dateend1, dtrid);
+                }
+                else
+                {
+
+                }
+                foreach (DataRow row1 in dt2.Rows)
+                {
+                    Row rowAll = grfAll.Rows.Add();
+                    rowAll[colpApmPttName] = row1["PatientName"].ToString();
+                }
+                foreach (DataRow row1 in dt1.Rows)
+                {
+                    Row rowdtr = grf.Rows.Add();
+                    rowdtr[colpApmPttName] = row1["PatientName"].ToString();
+
+                    Row rowAll = grfAll.Rows.Add();
+                    rowAll[colpApmPttName] = row1["PatientName"].ToString();
+                }
+                
+                tabpage.Controls.Add(grf);
+                tabpage.Text = row["dtr_name"].ToString();
+                theme1.SetTheme(grf, "Office2010Blue");
+                //tab.Name
+                tC.TabPages.Add(tabpage);
+            }
+        }
+        private void initTcDtr()
+        {
+            String datestart1 = "", dateend1 = "";
+            DateTime datestart, dateend;
+            if (DateTime.TryParse(txtDateStart.Text, out datestart))
+            {
+                datestart1 = datestart.ToString("yyyy-MM-dd");
+            }
+            else
+            {
+                datestart1 = ic.datetoDB(txtDateStart.Text);
+            }
+            dateend1 = datestart1;
+            DataTable dt = new DataTable();
+            DataTable dtD = new DataTable();            
+            
+            if (ic.iniC.statusAppDonor.Equals("1"))
+            {
+                dtD = ic.ivfDB.pApmDB.selectByDayGroupByDtr(datestart1, dateend1);
+            }
+            else
+            {
+
+            }
+            C1DockingTab tcDtr = new C1DockingTab();
+            tcDtr.Font = fEdit;
+            tcDtr.Dock = DockStyle.Fill;            
+            theme1.SetTheme(tcDtr, "Office2013Red");
+            Int32 cnt = 0;
+            cnt = dtD.Rows.Count;
+            if (cnt > 0)
+            {
+                for (int i = 0; i < cnt; i++)
+                {
+                    //if (i > (cnt-1)) continue;
+                    C1DockingTabPage tabpage = new C1DockingTabPage();
+                    tabpage.Name = "tab" + i;
+                    //tabpage.Text = "dtr_name";
+                    tabpage.Text = dtD.Rows[i]["dtr_name"].ToString();
+                    //theme1.SetTheme(tab, "Office2016Colorful");
+                    tcDtr.Controls.Add(tabpage);
+                    //tcDtr.TabPages.Add(dtD.Rows[i]["dtr_name"].ToString());
+                    C1FlexGrid grf;
+                    grf = new C1FlexGrid();
+                    grf.Font = fEdit;
+                    grf.Dock = DockStyle.Fill;
+                    ////grf.Location = new Point(0, 0);
+                    //grf.Name = "grf" + i;
+                    tabpage.Controls.Add(grf);
+                    //theme1.SetTheme(grf, "Office2010Blue");
+                    //tcDtr.Controls.Add(new C1DockingTabPage());
+                }
+            }            
+            pnDtr.Controls.Add(tcDtr);
         }
         private void initGrfPtt()
         {
@@ -108,7 +336,7 @@ namespace clinic_ivf.gui
             //menuGw.MenuItems.Add("&แก้ไข", new EventHandler(ContextMenu_Gw_Edit));
             //menuGw.MenuItems.Add("&ยกเลิก", new EventHandler(ContextMenu_Gw_Cancel));
             grfPtt.ContextMenu = menuGw;
-            gb.Controls.Add(grfPtt);
+            pmpAmp.Controls.Add(grfPtt);
 
             theme1.SetTheme(grfPtt, "Office2010Blue");
 
@@ -408,7 +636,7 @@ namespace clinic_ivf.gui
             //grfExpn.Rows.Count = dt.Rows.Count + 1;
             
             grfPtt.Rows.Count = 2;
-            grfPtt.Cols.Count = 25;
+            grfPtt.Cols.Count = 26;
             grfPtt.Rows.Fixed = 2;
             grfPtt.AllowMerging = C1.Win.C1FlexGrid.AllowMergingEnum.FixedOnly;
             grfPtt.AllowMergingFixed = C1.Win.C1FlexGrid.AllowMergingEnum.Free;
@@ -449,8 +677,8 @@ namespace clinic_ivf.gui
             grfPtt.Cols[colVsAnes].Editor = txt;
             grfPtt.Cols[colVsRemark].Editor = txt;
             //grfPtt.Cols[colVsAppn].Editor = txt;
-            Column col = grfPtt.Cols[colVsDoctor];
-            col.DataType = typeof(Image);
+            //Column col = grfPtt.Cols[colVsDoctor];
+            //col.DataType = typeof(Image);
             Column colOPU = grfPtt.Cols[colVsOPU];
             colOPU.DataType = typeof(Image);
             Column colTVS = grfPtt.Cols[colVsTVS];
@@ -550,13 +778,13 @@ namespace clinic_ivf.gui
             grfPtt[1, colVsDay2] = "Bld/TVS";
             grfPtt[1, colVs1St] = "Inject";
             grfPtt[1, colVsDay8] = "Bld/TVS";
-            grfPtt[1, colVsDay11] = "Bld/TVS";
+            grfPtt[1, colVsDay11] = "Bld/TVS.";
             grfPtt[1, colVsEndo] = "Scan";
             grfPtt[1, colVsHCG] = "Scan";
             grfPtt[1, colVsTrans] = "Sperm";
 
             ContextMenu menuGw = new ContextMenu();
-            menuGw.MenuItems.Add("&แก้ไข Patient", new EventHandler(ContextMenu_edit));
+            menuGw.MenuItems.Add("&แก้ไข Appointment", new EventHandler(ContextMenu_edit));
             grfPtt.ContextMenu = menuGw;
 
             Color color = ColorTranslator.FromHtml(ic.iniC.grfRowColor);
@@ -582,21 +810,26 @@ namespace clinic_ivf.gui
                 row1[colPttHn] = row[ic.ivfDB.appnOldDB.appnOld.PIDS].ToString();
                 row1[colVsTime] = row[ic.ivfDB.appnOldDB.appnOld.AppTime].ToString();
                 row1[colVsCode] = "";
-                if (row[ic.ivfDB.appnOldDB.appnOld.Doctor].ToString().Equals("1"))
-                {
-                    row1[colVsDoctor] = imgCorr;
-                }
-                else
-                {
-                    row1[colVsDoctor] = imgTran;
-                }
+                row1[colVsDoctor] = row[ic.ivfDB.appnOldDB.appnOld.Doctor].ToString();
+                row1[colVsStatus] = "1";
+                row1[colVsTVS] = row[ic.ivfDB.appnOldDB.appnOld.TVS].ToString().Equals("1") ? imgCorr : imgTran;
+                row1[colVsET_FET] = row[ic.ivfDB.appnOldDB.appnOld.ET_FET].ToString().Equals("1") ? imgCorr : imgTran;
+                row1[colVsET_FET] = row[ic.ivfDB.appnOldDB.appnOld.HormoneTest].ToString().Equals("1") ? imgCorr : imgTran;
+                //if (row[ic.ivfDB.appnOldDB.appnOld.TVS].ToString().Equals("1"))
+                //{
+                //    row1[colVsTVS] = imgCorr;
+                //}
+                //else
+                //{
+                //    row1[colVsTVS] = imgTran;
+                //}
                 row1[colVsSperm] = "";
                 row1[colVsDay1] = "";
                 row1[colVsDay2] = "";
                 row1[colVs1St] = "";
                 row1[colVsDay8] = "";
                 row1[colVsDay11] = "";
-                row1[colVsTVS] = "";
+                //row1[colVsTVS] = "";
                 row1[colVsEndo] = "";
                 row1[colVsDC] = "";
                 if (row[ic.ivfDB.appnOldDB.appnOld.OPU].ToString().Equals("1"))
@@ -608,7 +841,7 @@ namespace clinic_ivf.gui
                     row1[colVsOPU] = imgTran;
                 }
                 
-                row1[colVsET_FET] = "";
+                //row1[colVsET_FET] = "";
                 row1[colVsHCG] = "";
                 row1[colVsScreen] = "";
                 row1[colVsTrans] = "";
@@ -634,6 +867,8 @@ namespace clinic_ivf.gui
                 row1[colVsTVS] = row[ic.ivfDB.pApmDB.pApm.tvs].ToString();
                 row1[colVsOPU] = row[ic.ivfDB.pApmDB.pApm.opu].ToString();
                 row1[colVsAnes] = row[ic.ivfDB.pApmDB.pApm.doctor_anes].ToString();
+                row1[colVsDoctor] = row[ic.ivfDB.pApmDB.pApm.dtr_name].ToString();
+                row1[colVsStatus] = "2";
                 i++;
             }
             grfPtt.Cols[colVsDay8].AllowEditing = false;
@@ -647,15 +882,19 @@ namespace clinic_ivf.gui
             grfPtt.Cols[colVsOPU].AllowEditing = false;
             grfPtt.Cols[colID].Visible = false;
             grfPtt.Cols[colpttId].Visible = false;
+            grfPtt.Cols[colVsStatus].Visible = false;
             theme1.SetTheme(grfPtt, ic.theme);
 
         }
         private void ContextMenu_edit(object sender, System.EventArgs e)
         {
-            String chk = "", name = "", id = "";
-            id = grfPtt[grfPtt.Row, colpttId] != null ? grfPtt[grfPtt.Row, colpttId].ToString() : "";
-            chk = grfPtt[grfPtt.Row, colPttHn] != null ? grfPtt[grfPtt.Row, colPttHn].ToString() : "";
+            String pttId = "", name = "", id = "";
+            id = grfPtt[grfPtt.Row, colID] != null ? grfPtt[grfPtt.Row, colID].ToString() : "";
+            pttId = grfPtt[grfPtt.Row, colpttId] != null ? grfPtt[grfPtt.Row, colpttId].ToString() : "";
             name = grfPtt[grfPtt.Row, colVsPttName] != null ? grfPtt[grfPtt.Row, colVsPttName].ToString() : "";
+            FrmAppointmentDonorAdd frm = new FrmAppointmentDonorAdd(ic, id, pttId, "");
+            frm.ShowDialog(this);
+            setGrfPtt();
             //if (MessageBox.Show("ต้องการ แก้ไข Patient  \n  hn number " + chk + " \n name " + name, "", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == DialogResult.OK)
             //{
             //grfReq.Rows.Remove(grfReq.Row);

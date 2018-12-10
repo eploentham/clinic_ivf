@@ -338,6 +338,25 @@ namespace clinic_ivf.objdb
             dt = conn.selectData(conn.conn, sql);
             return dt;
         }
+        public DataTable selectByDayDtrId(MySqlConnection con, String date1, String date2, String dtrid)
+        {
+            String dateStart = "", dateEnd = "";
+            DataTable dt = new DataTable();
+            dateStart = date1;
+            dateEnd = !date2.Equals("") ? date2 : date1;
+
+            String sql = "select pApm.*,  bsp.service_point_description,dtr.Name  as dtr_name,CONCAT(IFNULL(fpp.patient_prefix_description,'') , ' ' , ptt.patient_firstname_e ,' ',ptt.patient_lastname_e) as PatientName, ptt.patient_hn " +
+                "From " + pApm.table + " pApm " +
+                "Left Join b_service_point bsp on bsp.b_service_point_id = pApm.patient_appointment_servicepoint " +
+                "Left Join Doctor  dtr on pApm.patient_appointment_doctor = dtr.ID " +
+                "Left Join t_patient ptt on ptt.t_patient_id = pApm.t_patient_id " +
+                "Left join f_patient_prefix fpp on fpp.f_patient_prefix_id = ptt.f_patient_prefix_id " +
+                "Where pApm." + pApm.patient_appointment_date + " >='" + dateStart + "' and pApm." + pApm.patient_appointment_date + " <='" + dateEnd + "' and pApm." + pApm.active + "='1' " +
+                "and pApm.patient_appointment_doctor = '"+ dtrid+"' " +
+                "Order By " + pApm.patient_appointment_date + "," + pApm.patient_appointment_time;
+            dt = conn.selectData(con, sql);
+            return dt;
+        }
         public DataTable selectByDay(String date1, String date2)
         {
             DataTable dt = new DataTable();
@@ -349,10 +368,10 @@ namespace clinic_ivf.objdb
         {
             String dateStart = "", dateEnd = "";
             DataTable dt = new DataTable();
-
+            dateStart = date1;
             dateEnd = !date2.Equals("") ? date2 : date1;
 
-            String sql = "select pApm.*,  bsp.service_point_description,dtr.Name  as dtr_name,CONCAT(IFNULL(fpp.patient_prefix_description,'') , ' ' , ptt.patient_firstname ,' ',ptt.patient_lastname) as PatientName, ptt.patient_hn " +
+            String sql = "select pApm.*,  bsp.service_point_description,dtr.Name  as dtr_name,CONCAT(IFNULL(fpp.patient_prefix_description,'') , ' ' , ptt.patient_firstname_e ,' ',ptt.patient_lastname_e) as PatientName, ptt.patient_hn " +
                 "From " + pApm.table + " pApm " +
                 "Left Join b_service_point bsp on bsp.b_service_point_id = pApm.patient_appointment_servicepoint " +
                 "Left Join Doctor  dtr on pApm.patient_appointment_doctor = dtr.ID " +
@@ -360,6 +379,32 @@ namespace clinic_ivf.objdb
                 "Left join f_patient_prefix fpp on fpp.f_patient_prefix_id = ptt.f_patient_prefix_id " +
                 "Where pApm." + pApm.patient_appointment_date + " >='" + dateStart + "' and pApm."+pApm.patient_appointment_date+ " <='" + dateEnd + "' and pApm." + pApm.active + "='1' " +
                 "Order By "+ pApm.patient_appointment_date+","+ pApm.patient_appointment_time;
+            dt = conn.selectData(con, sql);
+            return dt;
+        }
+        public DataTable selectByDayGroupByDtr(String date1, String date2)
+        {
+            DataTable dt = new DataTable();
+            dt = selectByDayGroupByDtr(conn.conn, date1, date2);
+
+            return dt;
+        }
+        public DataTable selectByDayGroupByDtr(MySqlConnection con, String date1, String date2)
+        {
+            String dateStart = "", dateEnd = "";
+            DataTable dt = new DataTable();
+            dateStart = date1;
+            dateEnd = !date2.Equals("") ? date2 : date1;
+
+            String sql = "select dtr.Name  as dtr_name, pApm.patient_appointment_doctor " +
+                "From " + pApm.table + " pApm " +
+                "Left Join b_service_point bsp on bsp.b_service_point_id = pApm.patient_appointment_servicepoint " +
+                "Left Join Doctor  dtr on pApm.patient_appointment_doctor = dtr.ID " +
+                "Left Join t_patient ptt on ptt.t_patient_id = pApm.t_patient_id " +
+                "Left join f_patient_prefix fpp on fpp.f_patient_prefix_id = ptt.f_patient_prefix_id " +
+                "Where pApm." + pApm.patient_appointment_date + " >='" + dateStart + "' and pApm." + pApm.patient_appointment_date + " <='" + dateEnd + "' and pApm." + pApm.active + "='1' " +
+                "Group By dtr.Name " +
+                "Order By dtr.Name" ;
             dt = conn.selectData(con, sql);
             return dt;
         }

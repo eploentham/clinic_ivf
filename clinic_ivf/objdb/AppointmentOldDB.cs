@@ -111,6 +111,29 @@ namespace clinic_ivf.objdb
             dt = conn.selectData(conn.conn, sql);
             return dt;
         }
+        public DataTable selectByDateDtrGroupByDtr(String startDate, String endDate)
+        {
+            DataTable dt = new DataTable();
+            dt = selectByDateDtrGroupByDtr(conn.conn, startDate, endDate);
+            return dt;
+        }
+        public DataTable selectByDateDtrGroupByDtr(MySqlConnection con, String startDate, String endDate)
+        {
+            DataTable dt = new DataTable();
+            String wheredate = "", sql = "", wheredoctor = "";
+            wheredate = " appnOld." + appnOld.AppDate + " >='" + startDate + " 00:00:00' and appnOld." + appnOld.AppDate + " <='" + endDate + " 23:59:59'";
+            //wheredoctor = !doctor.Equals("") ? " and appnOld." + appnOld.Doctor + " like '%" + doctor + "%'" : "";
+            sql = "select appnOld.Doctor  as dtr_name, Doctor.ID as patient_appointment_doctor " +
+                "From " + appnOld.table + " appnOld " +
+                "Left Join Doctor on Doctor.Name = appnOld.Doctor " +
+            //"Left Join t_ssdata_visit ssv On ssv.ssdata_visit_id = bd.ssdata_visit_id " +
+            "Where " + wheredate + wheredoctor +
+            "Group By appnOld.Doctor " +
+            " Order By appnOld.Doctor";
+
+            dt = conn.selectData(con, sql);
+            return dt;
+        }
         public DataTable selectByDateDtr(String startDate, String endDate, String doctor)
         {
             DataTable dt = new DataTable();
@@ -122,10 +145,10 @@ namespace clinic_ivf.objdb
             DataTable dt = new DataTable();
             String wheredate = "", sql="", wheredoctor="";
             wheredate = " appnOld." + appnOld.AppDate + " >='" + startDate + " 00:00:00' and appnOld." + appnOld.AppDate + " <='" + endDate + " 23:59:59'";
-            wheredoctor = !doctor.Equals("") ? " and appnOld." + appnOld.Doctor+" like '%"+ doctor + "%'":"";
+            wheredoctor = !doctor.Equals("") ? " and appnOld." + appnOld.ID+" like '%"+ doctor + "%'":"";
             sql = "select appnOld.*, STR_TO_DATE(AppTime, '%h:%i %p')  as aaa " +
                 "From " + appnOld.table + " appnOld " +
-            //"Left Join t_ssdata_visit ssv On ssv.ssdata_visit_id = bd.ssdata_visit_id " +
+                "Left Join Doctor  On LOWER(Doctor.Name) = LOWER(appnOld.Doctor) " +
             "Where "+ wheredate+ wheredoctor+
             " Order By "+ appnOld.AppDate+ ", aaa" ;
             

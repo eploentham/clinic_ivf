@@ -37,6 +37,7 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.cboDtrAnes = new C1.Win.C1Input.C1ComboBox();
             this.chkOPU = new C1.Win.C1Input.C1CheckBox();
             this.chkRPrl = new C1.Win.C1Input.C1CheckBox();
             this.chkRFsh = new C1.Win.C1Input.C1CheckBox();
@@ -83,10 +84,9 @@
             this.label5 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.txtName = new C1.Win.C1Input.C1TextBox();
-            this.c1Button1 = new C1.Win.C1Input.C1Button();
+            this.btnSearch = new C1.Win.C1Input.C1Button();
             this.label4 = new System.Windows.Forms.Label();
             this.txtHn = new C1.Win.C1Input.C1TextBox();
-            this.cboDtrAnes = new C1.Win.C1Input.C1ComboBox();
             this.sB.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.theme1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
@@ -97,6 +97,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.c1Calendar1)).BeginInit();
             this.panel3.SuspendLayout();
             this.groupBox2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.cboDtrAnes)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkOPU)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkRPrl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkRFsh)).BeginInit();
@@ -132,9 +133,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtID)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtDob)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtName)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.c1Button1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnSearch)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtHn)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.cboDtrAnes)).BeginInit();
             this.SuspendLayout();
             // 
             // sB
@@ -292,6 +292,27 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Appointment";
             this.theme1.SetTheme(this.groupBox2, "(default)");
+            // 
+            // cboDtrAnes
+            // 
+            this.cboDtrAnes.AllowSpinLoop = false;
+            this.cboDtrAnes.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.cboDtrAnes.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
+            this.cboDtrAnes.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.cboDtrAnes.GapHeight = 0;
+            this.cboDtrAnes.ImagePadding = new System.Windows.Forms.Padding(0);
+            this.cboDtrAnes.ItemsDisplayMember = "";
+            this.cboDtrAnes.ItemsValueMember = "";
+            this.cboDtrAnes.Location = new System.Drawing.Point(530, 68);
+            this.cboDtrAnes.Name = "cboDtrAnes";
+            this.cboDtrAnes.Size = new System.Drawing.Size(168, 20);
+            this.cboDtrAnes.Style.DropDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.cboDtrAnes.Style.DropDownBorderColor = System.Drawing.Color.Gainsboro;
+            this.cboDtrAnes.Style.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.cboDtrAnes.TabIndex = 672;
+            this.cboDtrAnes.Tag = null;
+            this.theme1.SetTheme(this.cboDtrAnes, "(default)");
+            this.cboDtrAnes.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
             // 
             // chkOPU
             // 
@@ -865,7 +886,7 @@
             this.groupBox1.Controls.Add(this.label5);
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.txtName);
-            this.groupBox1.Controls.Add(this.c1Button1);
+            this.groupBox1.Controls.Add(this.btnSearch);
             this.groupBox1.Controls.Add(this.label4);
             this.groupBox1.Controls.Add(this.txtHn);
             this.groupBox1.Dock = System.Windows.Forms.DockStyle.Top;
@@ -1049,16 +1070,16 @@
             this.theme1.SetTheme(this.txtName, "(default)");
             this.txtName.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
             // 
-            // c1Button1
+            // btnSearch
             // 
-            this.c1Button1.Location = new System.Drawing.Point(313, 18);
-            this.c1Button1.Name = "c1Button1";
-            this.c1Button1.Size = new System.Drawing.Size(28, 23);
-            this.c1Button1.TabIndex = 540;
-            this.c1Button1.Text = "...";
-            this.theme1.SetTheme(this.c1Button1, "(default)");
-            this.c1Button1.UseVisualStyleBackColor = true;
-            this.c1Button1.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            this.btnSearch.Location = new System.Drawing.Point(313, 18);
+            this.btnSearch.Name = "btnSearch";
+            this.btnSearch.Size = new System.Drawing.Size(28, 23);
+            this.btnSearch.TabIndex = 540;
+            this.btnSearch.Text = "...";
+            this.theme1.SetTheme(this.btnSearch, "(default)");
+            this.btnSearch.UseVisualStyleBackColor = true;
+            this.btnSearch.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
             // 
             // label4
             // 
@@ -1086,27 +1107,6 @@
             this.theme1.SetTheme(this.txtHn, "(default)");
             this.txtHn.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
             // 
-            // cboDtrAnes
-            // 
-            this.cboDtrAnes.AllowSpinLoop = false;
-            this.cboDtrAnes.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.cboDtrAnes.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
-            this.cboDtrAnes.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.cboDtrAnes.GapHeight = 0;
-            this.cboDtrAnes.ImagePadding = new System.Windows.Forms.Padding(0);
-            this.cboDtrAnes.ItemsDisplayMember = "";
-            this.cboDtrAnes.ItemsValueMember = "";
-            this.cboDtrAnes.Location = new System.Drawing.Point(530, 68);
-            this.cboDtrAnes.Name = "cboDtrAnes";
-            this.cboDtrAnes.Size = new System.Drawing.Size(168, 20);
-            this.cboDtrAnes.Style.DropDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.cboDtrAnes.Style.DropDownBorderColor = System.Drawing.Color.Gainsboro;
-            this.cboDtrAnes.Style.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.cboDtrAnes.TabIndex = 672;
-            this.cboDtrAnes.Tag = null;
-            this.theme1.SetTheme(this.cboDtrAnes, "(default)");
-            this.cboDtrAnes.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
-            // 
             // FrmAppointmentDonorAdd
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1130,6 +1130,7 @@
             this.panel3.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.cboDtrAnes)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkOPU)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkRPrl)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkRFsh)).EndInit();
@@ -1166,9 +1167,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtID)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtDob)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtName)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.c1Button1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnSearch)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtHn)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.cboDtrAnes)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1190,7 +1190,7 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label2;
         private C1.Win.C1Input.C1TextBox txtName;
-        private C1.Win.C1Input.C1Button c1Button1;
+        private C1.Win.C1Input.C1Button btnSearch;
         private System.Windows.Forms.Label label4;
         private C1.Win.C1Input.C1TextBox txtHn;
         private C1.Win.C1Input.C1ComboBox cboDoctor;
