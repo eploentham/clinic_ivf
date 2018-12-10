@@ -743,7 +743,7 @@ namespace clinic_ivf.gui
             grfPtt.Cols[colVsOPU].Caption = "OPU";
             grfPtt.Cols[colVsET_FET].Caption = "ET/FET";
             grfPtt.Cols[colVsHCG].Caption = "HCG";
-            grfPtt.Cols[colVsScreen].Caption = "Screen";
+            grfPtt.Cols[colVsScreen].Caption = "TESE PRP";
             grfPtt.Cols[colVsTrans].Caption = "Trans";
             grfPtt.Cols[colVsANC].Caption = "ANC";
             grfPtt.Cols[colVsAnes].Caption = "Anes";
@@ -883,6 +883,7 @@ namespace clinic_ivf.gui
             grfPtt.Cols[colID].Visible = false;
             grfPtt.Cols[colpttId].Visible = false;
             grfPtt.Cols[colVsStatus].Visible = false;
+            grfPtt.Cols[colVsEndo].Visible = false;
             theme1.SetTheme(grfPtt, ic.theme);
 
         }
