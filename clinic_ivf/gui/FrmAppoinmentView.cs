@@ -98,18 +98,61 @@ namespace clinic_ivf.gui
                         form.Controls.Add(txt);
                         form.Size = new Size(400, 300);
                         String txt1 = "";
+                        Boolean chk = false;
                         foreach(Control con in tabpage.Controls)
                         {
-                            if(con is C1FlexGrid)
+                            if (con is C1DockingTabPage)
                             {
-                                C1FlexGrid grf = (C1FlexGrid)con;
-                                foreach (Row row in grf.Rows)
+                                if (tabpage.Text.Equals("ทั้งหมด"))
                                 {
-                                    txt1 = row["PatientName"].ToString()+Environment.NewLine;
+                                    foreach (Control con1 in con.Controls)
+                                    {
+                                        if (con1 is Panel)
+                                        {
+                                            //C1FlexGrid aa = (C1FlexGrid)con1;
+                                            foreach (Control con2 in con1.Controls)
+                                            {
+                                                if (con2 is C1FlexGrid)
+                                                {
+                                                    C1FlexGrid aa = (C1FlexGrid)con2;
+                                                    foreach (Row row in aa.Rows)
+                                                    {
+                                                        txt1 += row[colpApmPttName].ToString() + Environment.NewLine;
+                                                    }
+                                                    chk = true;
+                                                    break;
+                                                }
+                                            }
+                                        }
+                                        //txt1 += row[colpApmPttName].ToString() + Environment.NewLine;
+                                    }
+                                }
+                                else
+                                {
+                                    foreach (Control con1 in con.Controls)
+                                    {
+                                        txt1 = "";
+                                        if (con1 is C1FlexGrid)
+                                        {
+                                            C1FlexGrid aa = (C1FlexGrid)con1;
+                                            //txt1 = aa.Name;
+                                            String id = "";
+                                            id = ic.ivfDB.dtrOldDB.getlDtrIDByName(tabpage.Text);
+                                            if (id.Equals(aa.Name.Replace("grf","")))
+                                            {
+                                                foreach (Row row in aa.Rows)
+                                                {
+                                                    txt1 += row[colpApmPttName].ToString() + Environment.NewLine;
+                                                }
+                                                chk = true;
+                                            }
+                                        }
+                                    }
                                 }
                             }
+                            if (chk) break;
                         }
-                        txt.Text = txt1;
+                        txt.Text = tabpage.Text+"["+ txtDateStart .Text+ "]"+Environment.NewLine+txt1;
                         // form.Controls.Add(...);
                         form.StartPosition = FormStartPosition.CenterScreen;
                         form.ShowDialog();
@@ -216,6 +259,7 @@ namespace clinic_ivf.gui
             grfAll.Cols[colpApmPttName].Editor = txt;
             grfAll.Cols[colpApmPttName].Width = 320;
             grfAll.Cols[colpApmPttName].Caption = "Description";
+            grfAll.Name = "grfAll";
             pnAll.Controls.Add(grfAll);
             
             if (ic.iniC.statusAppDonor.Equals("1"))
@@ -266,7 +310,7 @@ namespace clinic_ivf.gui
                 grf.Rows.Count = 1;
                 grf.Cols.Count = 2;
                 grf.Name = "grf"+row["patient_appointment_doctor"].ToString();
-                
+
                 grf.Cols[colpApmPttName].Editor = txt;
                 grf.Cols[colpApmPttName].Width = 320;
                 grf.Cols[colpApmPttName].Caption = "Description";

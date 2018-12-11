@@ -338,7 +338,7 @@ namespace clinic_ivf.objdb
                 ptt.patient_nickname + "," + ptt.patient_height + "," + ptt.status_or + "," +
                 ptt.or_description + "," + ptt.status_congenial + "," + ptt.congenital_diseases_description + "," +
                 ptt.allergy_description + "," + ptt.status_g + "," + ptt.p + "," +
-                ptt.a + " " +
+                ptt.a + "," + ptt.g + " " +
                 ") " +
                 "Values ('" + p.patient_hn + "','" + p.patient_firstname.Replace("'", "''") + "','" + p.patient_lastname.Replace("'", "''") + "'," +
                 "'" + p.patient_xn.Replace("'", "''") + "','" + p.patient_birthday.Replace("'", "''") + "','" + p.patient_house.Replace("'", "''") + "'," +
