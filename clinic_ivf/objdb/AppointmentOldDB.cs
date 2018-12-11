@@ -147,11 +147,19 @@ namespace clinic_ivf.objdb
             wheredate = " appnOld." + appnOld.AppDate + " >='" + startDate + " 00:00:00' and appnOld." + appnOld.AppDate + " <='" + endDate + " 23:59:59'";
             wheredoctor = !doctor.Equals("") ? " and appnOld." + appnOld.ID+" like '%"+ doctor + "%'":"";
             sql = "select appnOld.*, STR_TO_DATE(AppTime, '%h:%i %p')  as aaa " +
+            //sql = "select appnOld.*, case length(AppTime)  when 5 then AppTime when 4 then concat('0',AppTime) else AppTime end as aaa " +
+            //sql = "select appnOld.* " +
                 "From " + appnOld.table + " appnOld " +
                 "Left Join Doctor  On LOWER(Doctor.Name) = LOWER(appnOld.Doctor) " +
-            "Where "+ wheredate+ wheredoctor+
-            " Order By "+ appnOld.AppDate+ ", aaa" ;
-            
+            "Where " + wheredate + wheredoctor +
+            " Order By " + appnOld.AppDate + ",aaa ";
+
+            sql = "select appnOld.* " +
+                "From " + appnOld.table + " appnOld " +
+                //"Left Join Doctor  On LOWER(Doctor.Name) = LOWER(appnOld.Doctor) " +
+            "Where " + wheredate + wheredoctor +
+            " Order By " + appnOld.AppDate + " ";
+
             dt = conn.selectData(con, sql);
             return dt;
         }

@@ -71,6 +71,7 @@ namespace clinic_ivf.gui
             btnSearch.Click += BtnSearch_Click;
             txtSearch.KeyUp += TxtSearch_KeyUp;
             btnNew.Click += BtnNew_Click;
+            tC.DoubleClick += TC_DoubleClick;
             //txtDateStart.ValueChanged += TxtDateStart_ValueChanged;
             //txtDateStart.
 
@@ -78,6 +79,47 @@ namespace clinic_ivf.gui
             //initTcDtr();
             initGrfPtt();
             setGrfPtt();
+        }
+
+        private void TC_DoubleClick(object sender, EventArgs e)
+        {
+            //throw new NotImplementedException();
+            try
+            {
+                C1DockingTab tabpage = (C1DockingTab)sender;
+                if (tC.SelectedTab.Text.Equals(tabpage.Text))
+                {
+                    using (Form form = new Form())
+                    {
+                        form.Text = "Copy ...";
+                        TextBox txt = new TextBox();
+                        txt.Dock = DockStyle.Fill;
+                        txt.Multiline = true;
+                        form.Controls.Add(txt);
+                        form.Size = new Size(400, 300);
+                        String txt1 = "";
+                        foreach(Control con in tabpage.Controls)
+                        {
+                            if(con is C1FlexGrid)
+                            {
+                                C1FlexGrid grf = (C1FlexGrid)con;
+                                foreach (Row row in grf.Rows)
+                                {
+                                    txt1 = row["PatientName"].ToString()+Environment.NewLine;
+                                }
+                            }
+                        }
+                        txt.Text = txt1;
+                        // form.Controls.Add(...);
+                        form.StartPosition = FormStartPosition.CenterScreen;
+                        form.ShowDialog();
+                    }
+                }
+            }
+            catch(Exception ex)
+            {
+
+            }
         }
 
         private void TxtDateStart_ValueChanged(object sender, EventArgs e)
@@ -175,8 +217,7 @@ namespace clinic_ivf.gui
             grfAll.Cols[colpApmPttName].Width = 320;
             grfAll.Cols[colpApmPttName].Caption = "Description";
             pnAll.Controls.Add(grfAll);
-
-
+            
             if (ic.iniC.statusAppDonor.Equals("1"))
             {
                 dtD = ic.ivfDB.pApmDB.selectByDayGroupByDtr(datestart1, dateend1);
@@ -258,6 +299,7 @@ namespace clinic_ivf.gui
                 
                 tabpage.Controls.Add(grf);
                 tabpage.Text = row["dtr_name"].ToString();
+                //tabpage.Name
                 theme1.SetTheme(grf, "Office2010Blue");
                 //tab.Name
                 tC.TabPages.Add(tabpage);
