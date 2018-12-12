@@ -114,6 +114,8 @@ namespace clinic_ivf.gui
                     //Patient ptt1 = new Patient();
                     if (re.Equals("1")) // ตอน update
                     {
+                        re = ic.ivfDB.vsDB.updateOpenStatusNurse(txtVsId.Text);
+                        re = ic.ivfDB.vsDB.updateStatusVoidAppointment(txtVsId.Text);
                         setGrfpApmAll();
                         setGrfpApmVisit();
                         setGrfpApmDay();
@@ -168,10 +170,12 @@ namespace clinic_ivf.gui
                 String re = "";
                 setPatientAppointment();
                 re = ic.ivfDB.pApmDB.insertPatientAppointment(pApm, txtStfConfirmID.Text);
-                                
+                
+                //txtID.Value = (!txtID.Text.Equals("") && re.Equals("1")) ? re : "";        //update
                 long chk = 0;
                 if (long.TryParse(re, out chk))
                 {
+                    txtID.Value = txtID.Text.Equals("") ? re : txtID.Text;
                     //if (!ic.iniC.statusAppDonor.Equals("1"))
                     //{
                     //String re1 = ic.ivfDB.pttOldDB.insertPatientOld(ptt, txtStfConfirmID.Text);
@@ -185,6 +189,7 @@ namespace clinic_ivf.gui
                     //    if (int.TryParse(re2, out chk))
                     //    {
                     re = ic.ivfDB.vsDB.updateCloseStatusNurse(txtVsId.Text);
+                    re = ic.ivfDB.vsDB.updateStatusAppointment(txtVsId.Text, txtID.Text);
                     txtID.Value = re;
                     btnSave.Text = "Save";
                     btnSave.Image = Resources.accept_database24;
@@ -734,12 +739,14 @@ namespace clinic_ivf.gui
             pApm.repeat_lh = chkRLh.Checked ? "1" : "0";
             pApm.repeat_fsh = chkRFsh.Checked ? "1" : "0";
             pApm.opu = chkOPU.Checked ? "1" : "0";
-
+            pApm.doctor_anes = cboDtrAnes.Text;
             return chk;
         }
         private void FrmAppointmentAdd_Load(object sender, EventArgs e)
         {
             tC.SelectedTab = tabVisit;
+            cboTimepApm.AutoCompleteMode = AutoCompleteMode.Suggest;
+            cboTimepApm.AutoCompleteSource = AutoCompleteSource.ListItems;
         }
     }
 }

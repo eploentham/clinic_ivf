@@ -364,19 +364,72 @@ namespace clinic_ivf.objdb
             cop1 = setVisit(dt);
             return cop1;
         }
+        public String updateStatusVoidAppointment(String vsid)
+        {
+            String re = "", err = "";
+            String sql = "update " + vs.table + " " +
+                "Set " + vs.visit_have_appointment + " ='' " +
+                "," + vs.t_patient_appointment_id + "='' " +
+                "Where " + vs.pkField + " ='" + vsid + "' ";
+            try
+            {
+                re = conn.ExecuteNonQuery(conn.conn, sql);
+            }
+            catch (Exception ex)
+            {
+                err = ex.Message;
+            }
+
+            return re;
+        }
+        public String updateStatusAppointment(String vsid, String papmid)
+        {
+            String re = "", err = "";
+            String sql = "update " + vs.table + " " +
+                "Set " + vs.visit_have_appointment + " ='1' " +
+                ","+vs.t_patient_appointment_id+"='"+ papmid+"' "+
+                "Where " + vs.pkField + " ='" + vsid + "' ";
+            try
+            {
+                re = conn.ExecuteNonQuery(conn.conn, sql);
+            }
+            catch (Exception ex)
+            {
+                err = ex.Message;
+            }
+
+            return re;
+        }
+        public String updateOpenStatusNurse(String vsid)
+        {
+            String re = "", err = "";
+            String sql = "update " + vs.table + " " +
+                "Set " + vs.status_nurse + " ='1' " +
+                "Where " + vs.pkField + " ='" + vsid + "' ";
+            try
+            {
+                re = conn.ExecuteNonQuery(conn.conn, sql);
+            }
+            catch (Exception ex)
+            {
+                err = ex.Message;
+            }
+
+            return re;
+        }
         public String updateCloseStatusNurse(String vsid )
         {
             String re = "", err="";
-            String sql = "update " + vs.table +
+            String sql = "update " + vs.table +" " +
                 "Set " + vs.status_nurse + " ='2' " +
-                "Where vs." + vs.pkField + " ='" + vsid + "' ";
+                "Where " + vs.pkField + " ='" + vsid + "' ";
             try
             {
                 re = conn.ExecuteNonQuery(conn.conn, sql);
             }
             catch(Exception ex)
             {
-                err = ex.Message;
+                err = ex.Message+ex.InnerException;
             }
             
             return re;
@@ -403,10 +456,13 @@ namespace clinic_ivf.objdb
             String date = System.DateTime.Now.Year + "-" + System.DateTime.Now.ToString("MM-dd");
             String sql = "select vs.t_visit_id as id,vs.visit_vn as VN ,ptt.patient_hn as PIDS,CONCAT(IFNULL(fpp.patient_prefix_description,''),' ', ptt.patient_firstname_e ,' ',ptt.patient_lastname_e)  as PName" +
                 ", vs.visit_begin_visit_time as VDate, vs.visit_begin_visit_time as VStartTime, vs.visit_financial_discharge_time as VEndTime, bsp.service_point_description as VSID, '' as Vname " +
+                //", IFNULL(papm.patitent_appointment_date,'') as patitent_appointment_date, IFNULL(papm.patitent_appointment_time ,'') as patitent_appointment_time" +
+                //", IFNULL(papm.patitent_appointment,'') as patitent_appointment, IFNULL(vs.visit_have_appointment,'') as visit_have_appointment " +
                 "From " + vs.table + " vs " +
                 "Left Join t_patient ptt on  ptt.t_patient_id = vs."+vs.t_patient_id +" "+
                 "Left join f_patient_prefix fpp on fpp.f_patient_prefix_id = ptt.f_patient_prefix_id " +
                 "Left Join b_service_point bsp on bsp.b_service_point_id = vs.b_service_point_id " +
+                //"Left Join t_patient_appointment papm on vs."+vs.t_patient_appointment_id+ "=papm."+vs.t_patient_appointment_id+" " +
                 "Where vs." + vs.visit_begin_visit_time + " >='" + date + " 00:00:00' " +
                 "Order By vs.visit_begin_visit_time ";
             dt = conn.selectData(conn.conn, sql);
@@ -419,10 +475,14 @@ namespace clinic_ivf.objdb
             //String date = System.DateTime.Now.Year + "-" + System.DateTime.Now.ToString("MM-dd");
             String sql = "select vs.t_visit_id as id,vs.visit_vn as VN, vs.visit_hn as PIDS, CONCAT(IFNULL(fpp.patient_prefix_description,''),' ', ptt.patient_firstname_e ,' ',ptt.patient_lastname_e)  as PName" +
                 ", vs.visit_begin_visit_time as VDate, vs.visit_begin_visit_time as VStartTime, vs.visit_financial_discharge_time as VEndTime, '' as VName, bsp.service_point_description as VSID, vs.t_patient_id as PID " +
+                ", vs.t_patient_appointment_id " +
+                ", IFNULL(papm.patient_appointment_date,'') as patient_appointment_date, IFNULL(papm.patient_appointment_time ,'') as patient_appointment_time" +
+                ", IFNULL(papm.patient_appointment,'') as patient_appointment, IFNULL(vs.visit_have_appointment,'') as visit_have_appointment " +
                 "From " + vs.table + " vs " +
                 "Left Join t_patient ptt on  ptt.t_patient_id = vs." + vs.t_patient_id + " " +
                 "Left join f_patient_prefix fpp on fpp.f_patient_prefix_id = ptt.f_patient_prefix_id " +
                 "Left Join b_service_point bsp on bsp.b_service_point_id = vs.b_service_point_id " +
+                "Left Join t_patient_appointment papm on vs." + vs.t_patient_appointment_id + "=papm." + vs.t_patient_appointment_id + " " +
                 "Where vs." + vs.visit_begin_visit_time + " >='" + date + " 00:00:00'  and vs.b_service_point_id = '2120000002' and " + vs.status_nurse + " = '2' " +
                 "Order By vs.visit_begin_visit_time ";
             dt = conn.selectData(conn.conn, sql);

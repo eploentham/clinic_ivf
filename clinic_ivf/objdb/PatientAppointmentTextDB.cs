@@ -117,11 +117,11 @@ namespace clinic_ivf.objdb
 
             return re;
         }
-        public String insertDepartment(Department p, String userId)
+        public String insertPatientAppointmentText(PatientAppointmentText p, String userId)
         {
             String re = "";
 
-            if (p.dept_id.Equals(""))
+            if (p.patient_appointment_text_id.Equals(""))
             {
                 re = insert(p, userId);
             }

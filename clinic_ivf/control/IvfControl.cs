@@ -390,6 +390,7 @@ namespace clinic_ivf.control
                 item = new ComboBoxItem();
                 item.Text = val;
                 item.Value = txt;
+                c.Items.Add(item);
 
                 val = i.ToString("00") + ":30";
                 txt = val;

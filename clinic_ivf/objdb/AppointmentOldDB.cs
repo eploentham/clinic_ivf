@@ -154,11 +154,11 @@ namespace clinic_ivf.objdb
             "Where " + wheredate + wheredoctor +
             " Order By " + appnOld.AppDate + ",aaa ";
 
-            sql = "select appnOld.* " +
-                "From " + appnOld.table + " appnOld " +
-                //"Left Join Doctor  On LOWER(Doctor.Name) = LOWER(appnOld.Doctor) " +
-            "Where " + wheredate + wheredoctor +
-            " Order By " + appnOld.AppDate + " ";
+            //sql = "select appnOld.* " +
+            //    "From " + appnOld.table + " appnOld " +
+            //    //"Left Join Doctor  On LOWER(Doctor.Name) = LOWER(appnOld.Doctor) " +
+            //"Where " + wheredate + wheredoctor +
+            //" Order By " + appnOld.AppDate + " ";
 
             dt = conn.selectData(con, sql);
             return dt;

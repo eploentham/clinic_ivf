@@ -432,6 +432,10 @@ namespace clinic_ivf.objdb
             //for (int i = 0; i < dt.Rows.Count; i++)
             foreach (DataRow row in dt.Rows)
             {
+                if (row[pApm.doctor_anes].ToString().Equals(""))
+                {
+                    continue;
+                }
                 item = new ComboBoxItem();
                 item.Text = row[pApm.doctor_anes].ToString();
                 item.Value = row[pApm.doctor_anes].ToString();

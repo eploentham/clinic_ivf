@@ -2,6 +2,7 @@
 using C1.Win.C1Input;
 using C1.Win.C1SuperTooltip;
 using clinic_ivf.control;
+using clinic_ivf.object1;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -72,6 +73,8 @@ namespace clinic_ivf.gui
             //throw new NotImplementedException();
             if(tC.SelectedTab == tabFinish)
             {
+                setGrfQue();
+                setGrfDiag("");
                 setGrfFinish();
             }
         }
@@ -80,6 +83,7 @@ namespace clinic_ivf.gui
         {
             //throw new NotImplementedException();
             setGrfQue();
+            setGrfFinish();
         }
 
         private void TxtSearch_KeyUp(object sender, KeyEventArgs e)
@@ -189,6 +193,7 @@ namespace clinic_ivf.gui
             menuGw.MenuItems.Add("&Order Entry", new EventHandler(ContextMenu_Apm));
             menuGw.MenuItems.Add("&Add Appointment", new EventHandler(ContextMenu_Finish_Apm));
             menuGw.MenuItems.Add("&Cancel Receive", new EventHandler(ContextMenu_Apm));
+            
             grfFinish.ContextMenu = menuGw;
 
             Color color = ColorTranslator.FromHtml(ic.iniC.grfRowColor);
@@ -210,6 +215,14 @@ namespace clinic_ivf.gui
                     grfFinish[i, colVsEtime] = row["VEndTime"].ToString();
                     grfFinish[i, colStatus] = row["VName"].ToString();
                     grfFinish[i, colPttId] = row["PID"].ToString();
+                    if (row[ic.ivfDB.vsDB.vs.visit_have_appointment].ToString().Equals("1"))
+                    {
+                        String txt1 = "";
+                        txt1 = "นัดวันที่  "+ic.datetoShow(row["patient_appointment_date"].ToString())+" "+ row["patient_appointment_time"].ToString() + " " + row["patient_appointment"].ToString();
+                        CellNote note = new CellNote(txt1);
+                        CellRange rg = grfFinish.GetCellRange(i, colVN);
+                        rg.UserData = note;
+                    }
                     //if (i % 2 == 0)
                     //    grfPtt.Rows[i].StyleNew.BackColor = color;
                     i++;
@@ -220,6 +233,7 @@ namespace clinic_ivf.gui
                 }
                 
             }
+            CellNoteManager mgr = new CellNoteManager(grfFinish);
             grfFinish.Cols[colID].Visible = false;
             grfFinish.Cols[colPttId].Visible = false;
             //theme1.SetTheme(grfFinish, ic.theme);
@@ -505,6 +519,7 @@ namespace clinic_ivf.gui
             menuGw.MenuItems.Add("&Order Entry", new EventHandler(ContextMenu_order));
             menuGw.MenuItems.Add("&Add Appointment", new EventHandler(ContextMenu_Apm));
             menuGw.MenuItems.Add("&Cancel Receive", new EventHandler(ContextMenu_Apm));
+            menuGw.MenuItems.Add("&No Appointment Close Operation", new EventHandler(ContextMenu_NO_Apm));
             grfQue.ContextMenu = menuGw;
 
             Color color = ColorTranslator.FromHtml(ic.iniC.grfRowColor);
@@ -634,6 +649,29 @@ namespace clinic_ivf.gui
             //grfReq.Rows.Remove(grfReq.Row);
             //openPatientAdd(id, name);
             //}
+        }
+        private void ContextMenu_NO_Apm(object sender, System.EventArgs e)
+        {
+            String chk = "", name = "", vsid = "", pttId = "";
+
+            vsid = grfQue[grfQue.Row, colID] != null ? grfQue[grfQue.Row, colID].ToString() : "";
+            pttId = grfQue[grfQue.Row, colPttId] != null ? grfQue[grfQue.Row, colPttId].ToString() : "";
+            chk = grfQue[grfQue.Row, colPttHn] != null ? grfQue[grfQue.Row, colPttHn].ToString() : "";
+            name = grfQue[grfQue.Row, colPttName] != null ? grfQue[grfQue.Row, colPttName].ToString() : "";
+            //FrmNurseAdd frm = new FrmNurseAdd();
+            //frm.ShowDialog(this);
+            //openApmAdd(pttId, vsid, name);
+            if (MessageBox.Show("ต้องการ Close Operation  \n  hn number " + chk + " \n name " + name, "", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == DialogResult.OK)
+            {
+                String re = "";
+                re = ic.ivfDB.vsDB.updateCloseStatusNurse(vsid);
+                if (re.Equals("1"))
+                {
+                    setGrfQue();
+                }
+                //grfReq.Rows.Remove(grfReq.Row);
+                //openPatientAdd(id, name);
+            }
         }
         private void ContextMenu_Apm(object sender, System.EventArgs e)
         {

@@ -782,6 +782,8 @@
             // cboTimepApm
             // 
             this.cboTimepApm.AllowSpinLoop = false;
+            this.cboTimepApm.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
+            this.cboTimepApm.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.cboTimepApm.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.cboTimepApm.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
             this.cboTimepApm.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
