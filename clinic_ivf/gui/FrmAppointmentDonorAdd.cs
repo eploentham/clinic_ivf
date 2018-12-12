@@ -666,12 +666,25 @@ namespace clinic_ivf.gui
             theme1.SetTheme(grfpApmDayAll, ic.theme);
 
         }
-        private void setPatientAppointment()
+        private Boolean setPatientAppointment()
         {
+            Boolean chk = false;
             pApm.t_patient_appointment_id = txtID.Text;
             pApm.t_patient_id = txtPttId.Text;
             pApm.patient_appoint_date_time = System.DateTime.Now.Year.ToString() + "-" + System.DateTime.Now.ToString("MM-dd");
-            pApm.patient_appointment_date = ic.datetoDB(txtDatepApm.Text);
+            DateTime dt = new DateTime();
+            if(DateTime.TryParse(txtDatepApm.Text, out dt))
+            {
+                pApm.patient_appointment_date = ic.datetoDB(txtDatepApm.Text);
+            }
+            else
+            {
+                chk = false;
+            }
+            if (cboTimepApm.Text.Equals(""))
+            {
+                chk = false;
+            }
             pApm.patient_appointment_time = cboTimepApm.Text;
             pApm.patient_appointment = txtAppointment.Text;
             pApm.patient_appointment_doctor = cboDoctor.SelectedItem == null ? "" : ((ComboBoxItem)cboDoctor.SelectedItem).Value;
@@ -721,6 +734,8 @@ namespace clinic_ivf.gui
             pApm.repeat_lh = chkRLh.Checked ? "1" : "0";
             pApm.repeat_fsh = chkRFsh.Checked ? "1" : "0";
             pApm.opu = chkOPU.Checked ? "1" : "0";
+
+            return chk;
         }
         private void FrmAppointmentAdd_Load(object sender, EventArgs e)
         {

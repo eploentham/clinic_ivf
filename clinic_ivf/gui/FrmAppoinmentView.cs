@@ -30,7 +30,7 @@ namespace clinic_ivf.gui
         int colID = 1, colpttId = 2, colVsTime = 3, colPttHn = 4, colVsCode = 5, colVsPttName = 6, colVsDoctor = 7, colVsSperm = 8, colVsDay1 = 9, colVsDay2 = 10, colVs1St = 11, colVsDay8=12, colVsDay11=13;
         int colVsTVS = 14, colVsEndo = 15, colVsDC = 16, colVsOPU = 17, colVsET_FET = 18, colVsHCG = 19, colVsScreen = 20, colVsTrans = 21, colVsANC = 22, colVsAnes = 23, colVsRemark = 24, colVsStatus=25;
         
-        int colpApmPttName = 1;
+        int colpApmPttId = 1,colpApmPttName = 2;
 
         C1FlexGrid grfPtt;
         C1SuperTooltip stt;
@@ -277,6 +277,7 @@ namespace clinic_ivf.gui
                 String name = row["dtr_name"].ToString();
                 String id = row["patient_appointment_doctor"].ToString();
                 Boolean chk = false;
+                
                 foreach (DataRow rowD in dtD.Rows)
                 {
                     String nameD = rowD["dtr_name"].ToString();
@@ -327,20 +328,32 @@ namespace clinic_ivf.gui
                 {
 
                 }
+                //int i = 1;
                 foreach (DataRow row1 in dt2.Rows)
                 {
                     Row rowAll = grfAll.Rows.Add();
                     rowAll[colpApmPttName] = row1["PatientName"].ToString();
+                    rowAll[0] = (grfAll.Rows.Count-1);
+
+                    Row rowdtr = grf.Rows.Add();
+                    rowdtr[colpApmPttName] = row1["PatientName"].ToString();
+                    rowdtr[0] = (grf.Rows.Count-1);
+                    //i++;
                 }
+                //i = 1;
                 foreach (DataRow row1 in dt1.Rows)
                 {
                     Row rowdtr = grf.Rows.Add();
                     rowdtr[colpApmPttName] = row1["PatientName"].ToString();
+                    rowdtr[0] = (grf.Rows.Count-1);
 
                     Row rowAll = grfAll.Rows.Add();
                     rowAll[colpApmPttName] = row1["PatientName"].ToString();
+                    rowAll[0] = (grfAll.Rows.Count-1);
+                    //i++;
                 }
-                
+                grf.Cols[colpApmPttId
+                    ].Visible = false;
                 tabpage.Controls.Add(grf);
                 tabpage.Text = row["dtr_name"].ToString();
                 //tabpage.Name

@@ -353,6 +353,7 @@
     <Compile Include="objdb\LabOpuEmbryoDevDB.cs" />
     <Compile Include="objdb\OldJobSpecialDB.cs" />
     <Compile Include="objdb\PatientAppointmentDB.cs" />
+    <Compile Include="objdb\PatientAppointmentTextDB.cs" />
     <Compile Include="object1\FDocType.cs" />
     <Compile Include="object1\PatientAppointment.cs" />
     <Compile Include="objdb\PatientImageDB.cs" />
@@ -365,6 +366,7 @@
     <Compile Include="object1\LabOpuEmbryoDev.cs" />
     <Compile Include="object1\OldJobSpecial.cs" />
     <Compile Include="object1\OldJobSpecialDetail.cs" />
+    <Compile Include="object1\PatientAppointmentText.cs" />
     <Compile Include="object1\PatientImage.cs" />
     <Compile Include="object1\Visit.cs" />
     <Compile Include="objdb\VisitQueueTransferDB.cs" />
