@@ -1,4 +1,5 @@
-﻿using System;
+﻿using clinic_ivf.control;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,9 +13,17 @@ namespace clinic_ivf.gui
 {
     public partial class FrmLabOPUReq : Form
     {
-        public FrmLabOPUReq()
+        IvfControl ic;
+
+        public FrmLabOPUReq(IvfControl ic)
         {
             InitializeComponent();
+            this.ic = ic;
+        }
+
+        private void FrmLabOPUReq_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }
