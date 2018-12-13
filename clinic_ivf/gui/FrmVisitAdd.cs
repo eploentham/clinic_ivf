@@ -380,7 +380,6 @@ namespace clinic_ivf.gui
                     //grfImg.Cols[colImg].ImageAndText = true;
                     
                 }).Start();
-
             }
             else
             {

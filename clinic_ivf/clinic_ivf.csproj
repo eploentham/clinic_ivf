@@ -173,6 +173,12 @@
     <Compile Include="gui\FrmLabOpuProce.Designer.cs">
       <DependentUpon>FrmLabOpuProce.cs</DependentUpon>
     </Compile>
+    <Compile Include="gui\FrmLabOPUReq.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="gui\FrmLabOPUReq.Designer.cs">
+      <DependentUpon>FrmLabOPUReq.cs</DependentUpon>
+    </Compile>
     <Compile Include="gui\FrmLabOpuView.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -442,6 +448,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>LabOPUEmbryoDev.xsd</DependentUpon>
     </Compile>
+    <Compile Include="report\OPDcardOLD.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>OPDcardOLD.xsd</DependentUpon>
+    </Compile>
     <Compile Include="report\sticker_drug.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -490,6 +501,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="gui\FrmLabOpuProce.resx">
       <DependentUpon>FrmLabOpuProce.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="gui\FrmLabOPUReq.resx">
+      <DependentUpon>FrmLabOPUReq.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="gui\FrmLabOpuView.resx">
       <DependentUpon>FrmLabOpuView.cs</DependentUpon>
@@ -616,6 +630,17 @@
     </None>
     <None Include="report\LabOPUEmbryoDev.xss">
       <DependentUpon>LabOPUEmbryoDev.xsd</DependentUpon>
+    </None>
+    <None Include="report\OPDcardOLD.xsc">
+      <DependentUpon>OPDcardOLD.xsd</DependentUpon>
+    </None>
+    <None Include="report\OPDcardOLD.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>OPDcardOLD.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="report\OPDcardOLD.xss">
+      <DependentUpon>OPDcardOLD.xsd</DependentUpon>
     </None>
     <None Include="report\sticker_drug.xsc">
       <DependentUpon>sticker_drug.xsd</DependentUpon>
