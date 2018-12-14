@@ -118,7 +118,7 @@ namespace clinic_ivf.control
             iniC.hostFTP = iniF.getIni("ftp", "hostFTP");
             iniC.userFTP = iniF.getIni("ftp", "userFTP");
             iniC.passFTP = iniF.getIni("ftp", "passFTP");
-            iniC.portFTP = iniF.getIni("connection", "portFTP");
+            iniC.portFTP = iniF.getIni("ftp", "portFTP");
 
             iniC.grdViewFontSize = iniF.getIni("app", "grdViewFontSize");
             iniC.grdViewFontName = iniF.getIni("app", "grdViewFontName");
