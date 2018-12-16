@@ -31,5 +31,16 @@ namespace clinic_ivf.object1
         public String Other { get; set; }
         public String OtherRemark { get; set; }
         public String Comment { get; set; }
+        public String e2 { get; set; }
+        public String lh { get; set; }
+        public String endo { get; set; }
+        public String prl { get; set; }
+        public String fsh { get; set; }
+        public String rt_ovary { get; set; }
+        public String lt_ovary { get; set; }
+        public String day1 { get; set; }
+        public String et { get; set; }
+        public String et_time { get; set; }
+        public String tvs_time { get; set; }
     }
 }

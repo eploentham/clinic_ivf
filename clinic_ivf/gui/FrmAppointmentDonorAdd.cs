@@ -66,12 +66,14 @@ namespace clinic_ivf.gui
             ic.ivfDB.pApmDB.setCboDoctorAnes(cboDtrAnes);
 
             cboTimepApm = ic.setCboApmTime(cboTimepApm);
+            cboTvsTime = ic.setCboApmTime(cboTvsTime);
             txtDatepApm.Value = System.DateTime.Now.Year.ToString() + "-" + System.DateTime.Now.ToString("MM-dd");
             btnSave.Click += BtnSave_Click;
             txtDatepApm.ValueChanged += TxtDatepApm_ValueChanged;
             btnVoid.Click += BtnVoid_Click;
             chkOPU.CheckedChanged += ChkOPU_CheckedChanged;
             btnSearch.Click += BtnSearch_Click;
+            chkTvs.CheckedChanged += ChkTvs_CheckedChanged;
 
             initGrfpApmAll();
             initGrfpApmVisit();
@@ -80,6 +82,12 @@ namespace clinic_ivf.gui
             setGrfpApmVisit();
             setGrfpApmDay();
             setControl();
+        }
+
+        private void ChkTvs_CheckedChanged(object sender, EventArgs e)
+        {
+            //throw new NotImplementedException();
+            txtTvsDay.Enabled = chkTvs.Checked ? true : false;
         }
 
         private void BtnSearch_Click(object sender, EventArgs e)
@@ -261,7 +269,9 @@ namespace clinic_ivf.gui
             chkOPU.Checked = pApm.opu.Equals("1") ? true : false;
             ic.setC1Combo(cboDtrAnes, pApm.doctor_anes);
             cboDtrAnes.Enabled = chkOPU.Checked ? true : false;
-            
+            txtTvsDay.Value = pApm.tvs_day;
+            txtTvsDay.Enabled = chkTvs.Checked ? true : false;
+            ic.setC1Combo(cboTvsTime, pApm.tvs_time);
         }
         private void initGrfpApmAll()
         {
@@ -740,6 +750,8 @@ namespace clinic_ivf.gui
             pApm.repeat_fsh = chkRFsh.Checked ? "1" : "0";
             pApm.opu = chkOPU.Checked ? "1" : "0";
             pApm.doctor_anes = cboDtrAnes.Text;
+            pApm.tvs_day = txtTvsDay.Text;
+            pApm.tvs_time = cboTvsTime.Text;
             return chk;
         }
         private void FrmAppointmentAdd_Load(object sender, EventArgs e)

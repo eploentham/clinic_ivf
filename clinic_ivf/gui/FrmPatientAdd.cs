@@ -1625,10 +1625,13 @@ namespace clinic_ivf.gui
             int i = 1;
             foreach (DataRow row in dt.Rows)
             {
+                String appn = "";
+                appn = ic.ivfDB.genAppointmentRemarkPttDonor(row);
                 grfpApm[i, colpApmId] = row[ic.ivfDB.pApmDB.pApm.t_patient_appointment_id].ToString();
                 grfpApm[i, colpApmDate] = row[ic.ivfDB.pApmDB.pApm.patient_appointment_date].ToString();
                 grfpApm[i, colpApmTime] = ic.datetoShow(row[ic.ivfDB.pApmDB.pApm.patient_appointment_time]);
-                grfpApm[i, colpApmRemark] = row[ic.ivfDB.pApmDB.pApm.remark].ToString();
+                //grfpApm[i, colpApmRemark] = row[ic.ivfDB.pApmDB.pApm.remark].ToString();
+                grfpApm[i, colpApmRemark] = appn;
 
                 grfpApm[i, 0] = i;
                 i++;

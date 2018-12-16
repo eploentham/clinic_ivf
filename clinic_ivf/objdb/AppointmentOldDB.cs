@@ -47,6 +47,17 @@ namespace clinic_ivf.objdb
             appnOld.Other = "Other";
             appnOld.OtherRemark = "OtherRemark";
             appnOld.Comment = "Comment";
+            appnOld.e2 = "e2";
+            appnOld.lh = "lh";
+            appnOld.endo = "endo";
+            appnOld.prl = "prl";
+            appnOld.fsh = "fsh";
+            appnOld.rt_ovary = "rt_ovary";
+            appnOld.lt_ovary = "lt_ovary";
+            appnOld.day1 = "day1";
+            appnOld.et = "et";
+            appnOld.et_time = "et_time";
+            appnOld.tvs_time = "tvs_time";
 
             appnOld.table = "Appointment";
             appnOld.pkField = "ID";
@@ -78,6 +89,9 @@ namespace clinic_ivf.objdb
             p.OtherRemark = p.OtherRemark == null ? "" : p.OtherRemark;
             p.Comment = p.Comment == null ? "" : p.Comment;
             p.remark = p.remark == null ? "" : p.remark;
+            p.day1 = p.day1 == null ? "" : p.day1;
+            p.et_time = p.et_time == null ? "" : p.et_time;
+            p.tvs_time = p.tvs_time == null ? "" : p.tvs_time;
 
             p.ID = int.TryParse(p.ID, out chk) ? chk.ToString() : "0";
             p.PID = int.TryParse(p.PID, out chk) ? chk.ToString() : "0";
@@ -88,6 +102,14 @@ namespace clinic_ivf.objdb
             p.ET_FET = int.TryParse(p.ET_FET, out chk) ? chk.ToString() : "0";
             p.BetaHCG = int.TryParse(p.BetaHCG, out chk) ? chk.ToString() : "0";
             p.Other = int.TryParse(p.Other, out chk) ? chk.ToString() : "0";
+            p.e2 = int.TryParse(p.e2, out chk) ? chk.ToString() : "0";
+            p.lh = int.TryParse(p.lh, out chk) ? chk.ToString() : "0";
+            p.endo = int.TryParse(p.endo, out chk) ? chk.ToString() : "0";
+            p.prl = int.TryParse(p.prl, out chk) ? chk.ToString() : "0";
+            p.fsh = int.TryParse(p.fsh, out chk) ? chk.ToString() : "0";
+            p.rt_ovary = int.TryParse(p.rt_ovary, out chk) ? chk.ToString() : "0";
+            p.lt_ovary = int.TryParse(p.lt_ovary, out chk) ? chk.ToString() : "0";
+            p.et = int.TryParse(p.et, out chk) ? chk.ToString() : "0";
             //p.item_billing_subgroop_id = int.TryParse(p.item_billing_subgroop_id, out chk) ? chk.ToString() : "0";
         }
         public DataTable selectAll()
@@ -203,6 +225,18 @@ namespace clinic_ivf.objdb
                 vsold1.Other = dt.Rows[0][appnOld.Other].ToString();
                 vsold1.OtherRemark = dt.Rows[0][appnOld.OtherRemark].ToString();
                 vsold1.Comment = dt.Rows[0][appnOld.Comment].ToString();
+                vsold1.e2 = dt.Rows[0][appnOld.e2].ToString();
+                vsold1.lh = dt.Rows[0][appnOld.lh].ToString();
+                vsold1.endo = dt.Rows[0][appnOld.endo].ToString();
+                vsold1.prl = dt.Rows[0][appnOld.prl].ToString();
+                vsold1.fsh = dt.Rows[0][appnOld.fsh].ToString();
+                vsold1.rt_ovary = dt.Rows[0][appnOld.rt_ovary].ToString();
+                vsold1.lt_ovary = dt.Rows[0][appnOld.lt_ovary].ToString();
+                vsold1.day1 = dt.Rows[0][appnOld.day1].ToString();
+                vsold1.et = dt.Rows[0][appnOld.et].ToString();
+                vsold1.et_time = dt.Rows[0][appnOld.et_time].ToString();
+                vsold1.tvs_time = dt.Rows[0][appnOld.tvs_time].ToString();
+                //vsold1.Comment = dt.Rows[0][appnOld.Comment].ToString();
             }
             else
             {
@@ -235,6 +269,17 @@ namespace clinic_ivf.objdb
             stf1.Other = "";
             stf1.OtherRemark = "";
             stf1.Comment = "";
+            stf1.e2 = "";
+            stf1.lh = "";
+            stf1.endo = "";
+            stf1.prl = "";
+            stf1.fsh = "";
+            stf1.rt_ovary = "";
+            stf1.lt_ovary = "";
+            stf1.day1 = "";
+            stf1.et = "";
+            stf1.et_time = "";
+            stf1.tvs_time = "";
 
             return stf1;
         }

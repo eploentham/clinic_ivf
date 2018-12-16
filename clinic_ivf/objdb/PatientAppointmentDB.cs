@@ -75,6 +75,9 @@ namespace clinic_ivf.objdb
             pApm.repeat_fsh = "repeat_fsh";
             pApm.opu = "opu";
             pApm.doctor_anes = "doctor_anes";
+            pApm.tvs_day = "tvs_day";
+            pApm.tvs_time = "tvs_time";
+            pApm.opu_time = "opu_time";
 
             pApm.pkField = "t_patient_appointment_id";
             pApm.table = "t_patient_appointment";
@@ -113,6 +116,9 @@ namespace clinic_ivf.objdb
             p.appointment_confirm_date = p.appointment_confirm_date == null ? "" : p.appointment_confirm_date;
             p.change_appointment_cause = p.change_appointment_cause == null ? "" : p.change_appointment_cause;
             p.doctor_anes = p.doctor_anes == null ? "" : p.doctor_anes;
+            p.tvs_day = p.tvs_day == null ? "" : p.tvs_day;
+            p.tvs_time = p.tvs_time == null ? "" : p.tvs_time;
+            p.opu_time = p.opu_time == null ? "" : p.opu_time;
 
             p.remark = p.remark == null ? "" : p.remark;
             p.e2 = p.e2 == null ? "0" : p.e2;
@@ -166,7 +172,8 @@ namespace clinic_ivf.objdb
                 pApm.lh + "," + pApm.rt_ovary + "," + pApm.lt_ovary + "," +
                 pApm.fsh + "," + pApm.t_patient_id + "," + pApm.tvs + "," +
                 pApm.repeat_e2 + "," + pApm.repeat_prl + "," + pApm.repeat_lh + "," +
-                pApm.repeat_fsh + "," + pApm.opu + "," + pApm.doctor_anes + " " +
+                pApm.repeat_fsh + "," + pApm.opu + "," + pApm.doctor_anes + "," +
+                pApm.tvs_day + "," + pApm.tvs_time + "," + pApm.opu_time + " " +
                 ") " +
                 "Values ('" + p.patient_appoint_date_time + "','" + p.patient_appointment_time.Replace("'", "''") + "','" + p.patient_appointment.Replace("'", "''") + "'," +
                 "'" + p.patient_appointment_doctor.Replace("'", "''") + "','" + p.patient_appointment_notice.Replace("'", "''") + "','" + p.patient_appointment_staff.Replace("'", "''") + "'," +
@@ -184,7 +191,8 @@ namespace clinic_ivf.objdb
                 "'" + p.lh + "','" + p.rt_ovary + "','" + p.lt_ovary + "'," +
                 "'" + p.fsh + "','" + p.t_patient_id + "','" + p.tvs + "'," +
                 "'" + p.repeat_e2 + "','" + p.repeat_prl + "','" + p.repeat_lh + "'," +
-                "'" + p.repeat_fsh + "','" + p.opu + "','" + p.doctor_anes + "' " +
+                "'" + p.repeat_fsh + "','" + p.opu + "','" + p.doctor_anes + "'," +
+                "'" + p.tvs_day + "','" + p.tvs_time + "','" + p.opu_time + "' " +
                 ")";
 
                 re = conn.ExecuteNonQuery(conn.conn, sql);
@@ -259,6 +267,9 @@ namespace clinic_ivf.objdb
                 "," + pApm.repeat_fsh + "='" + p.repeat_fsh + "' " +
                 "," + pApm.opu + "='" + p.opu + "' " +
                 "," + pApm.doctor_anes + "='" + p.doctor_anes + "' " +
+                "," + pApm.tvs_day + "='" + p.tvs_day + "' " +
+                "," + pApm.tvs_time + "='" + p.tvs_time + "' " +
+                "," + pApm.opu_time + "='" + p.opu_time + "' " +
                 " Where " + pApm.pkField + " = '" + p.t_patient_appointment_id + "' "
                 ;
             try
@@ -502,6 +513,9 @@ namespace clinic_ivf.objdb
                 ptt1.repeat_fsh = dt.Rows[0][pApm.repeat_fsh].ToString();
                 ptt1.opu = dt.Rows[0][pApm.opu].ToString();
                 ptt1.doctor_anes = dt.Rows[0][pApm.doctor_anes].ToString();
+                ptt1.tvs_day = dt.Rows[0][pApm.tvs_day].ToString();
+                ptt1.tvs_time = dt.Rows[0][pApm.tvs_time].ToString();
+                ptt1.opu_time = dt.Rows[0][pApm.opu_time].ToString();
             }
             else
             {
@@ -565,6 +579,9 @@ namespace clinic_ivf.objdb
             stf1.repeat_fsh = "";
             stf1.opu = "";
             stf1.doctor_anes = "";
+            stf1.tvs_day = "";
+            stf1.tvs_time = "";
+            stf1.opu_time = "";
             return stf1;
         }
     }

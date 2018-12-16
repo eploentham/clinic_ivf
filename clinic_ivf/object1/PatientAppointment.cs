@@ -51,5 +51,8 @@ namespace clinic_ivf.object1
         public String repeat_fsh { get; set; }
         public String opu { get; set; }
         public String doctor_anes { get; set; }
+        public String tvs_day { get; set; }
+        public String tvs_time { get; set; }
+        public String opu_time { get; set; }
     }
 }

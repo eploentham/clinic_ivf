@@ -47,6 +47,7 @@ namespace clinic_ivf.control
         String soapTaxId = "";
         public String theme="";
         public String FixJobCode = "IMP", FixEccCode = "CC";
+        public String StartupPath = "";
 
         public VideoCaptureDevice video;
 
@@ -72,6 +73,7 @@ namespace clinic_ivf.control
             {
                 appName = Environment.CurrentDirectory + "\\" + Application.ProductName + ".ini";
             }
+            StartupPath = System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetEntryAssembly().Location);
             iniF = new IniFile(appName);
             iniC = new InitConfig();
             user = new Staff();
@@ -95,6 +97,11 @@ namespace clinic_ivf.control
             {
                 theme = iniC.themeApplication;
             }
+        }
+        public static string GetCurrentExecutingDirectory(System.Reflection.Assembly assembly)
+        {
+            string filePath = new Uri(System.Reflection.Assembly.GetExecutingAssembly().CodeBase).LocalPath;
+            return Path.GetDirectoryName(filePath);
         }
         public void getInit()
         {
@@ -382,7 +389,7 @@ namespace clinic_ivf.control
         {
             ComboBoxItem item = new ComboBoxItem();
 
-            for(int i = 6; i <= 18; i++)
+            for(int i = 5; i <= 18; i++)
             {
                 String val = "", txt = "";
                 val = i.ToString("00")+":00";
@@ -496,5 +503,6 @@ namespace clinic_ivf.control
             }
             return equals;
         }
+        
     }
 }

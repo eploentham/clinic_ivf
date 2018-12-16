@@ -378,6 +378,7 @@
     <Compile Include="object1\OldJobSpecialDetail.cs" />
     <Compile Include="object1\PatientAppointmentText.cs" />
     <Compile Include="object1\PatientImage.cs" />
+    <Compile Include="object1\RDNIDWRAPPER.cs" />
     <Compile Include="object1\Visit.cs" />
     <Compile Include="objdb\VisitQueueTransferDB.cs" />
     <Compile Include="object1\AgentOld.cs" />

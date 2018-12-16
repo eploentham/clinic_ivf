@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -94,6 +95,30 @@ namespace clinic_ivf.objdb
             pApmtDB = new PatientAppointmentTextDB(conn);
 
             Console.WriteLine("ivfDB end");
+        }
+        public String genAppointmentRemarkPtt(DataRow row1)
+        {
+            String re = "";
+            String hormo = "", tvs = "", opu = "", fet = "", beta = "", other = "", appn = "";
+            hormo = row1[appnOldDB.appnOld.HormoneTest].ToString().Equals("1") ? "Hormone Test " : "";
+            tvs = row1[appnOldDB.appnOld.TVS].ToString().Equals("1") ? "TVS " : "";
+            opu = row1[appnOldDB.appnOld.OPU].ToString().Equals("1") ? row1[appnOldDB.appnOld.OPUTime] != null ? "OPU [" + row1[appnOldDB.appnOld.OPUTime].ToString() + "]" : "OPU " + row1[appnOldDB.appnOld.OPUTime].ToString() : "";
+            beta = row1[appnOldDB.appnOld.BetaHCG].ToString().Equals("1") ? "Beta HCG " : "";
+            fet = row1[appnOldDB.appnOld.ET_FET].ToString().Equals("1") ? row1[appnOldDB.appnOld.ET_FET_Time] != null ? "ET/FET [" + row1[appnOldDB.appnOld.ET_FET_Time].ToString() + "]" : "ET/FET" : "";
+            other = row1[appnOldDB.appnOld.Other].ToString().Equals("1") ? row1[appnOldDB.appnOld.OtherRemark] != null ? "Other " + row1[appnOldDB.appnOld.OtherRemark].ToString() : "Other " : "";
+            appn = row1["aaa"].ToString() + " " + hormo + " " + tvs + " " + opu + " " + beta + " " + fet + " " + other;
+            return appn;
+        }
+        public String genAppointmentRemarkPttDonor(DataRow row1)
+        {
+            String e2 = "", lh = "", prl = "", fsh = "", appn = "", opu = "";
+            e2 = row1[pApmDB.pApm.e2].ToString().Equals("1") ? "E2 " : "";
+            lh = row1[pApmDB.pApm.lh].ToString().Equals("1") ? "LH " : "";
+            prl = row1[pApmDB.pApm.prl].ToString().Equals("1") ? "PRL " : "";
+            fsh = row1[pApmDB.pApm.fsh].ToString().Equals("1") ? "FSH " : "";
+            opu = row1[pApmDB.pApm.opu].ToString().Equals("1") ? "OPU " + row1[pApmDB.pApm.doctor_anes] != null ? row1[pApmDB.pApm.doctor_anes].ToString() : "" : "";
+            appn = row1[pApmDB.pApm.patient_appointment_time].ToString() + " " + e2 + " " + lh + " " + prl + " " + fsh;
+            return appn;
         }
     }
 }
