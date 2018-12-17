@@ -20,7 +20,7 @@ namespace clinic_ivf.objdb
 
         MySqlCommand comNoClose = new MySqlCommand();
 
-        public int _rowsAffected = 0;
+        public long _rowsAffected = 0;
         private InitConfig initC;
         public Staff user;
 

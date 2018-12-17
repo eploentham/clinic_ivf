@@ -113,6 +113,12 @@
     <Compile Include="gui\FrmAppoinmentView.Designer.cs">
       <DependentUpon>FrmAppoinmentView.cs</DependentUpon>
     </Compile>
+    <Compile Include="gui\FrmAppointmentAdd.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="gui\FrmAppointmentAdd.Designer.cs">
+      <DependentUpon>FrmAppointmentAdd.cs</DependentUpon>
+    </Compile>
     <Compile Include="gui\FrmAppointmentDonorAdd.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -472,6 +478,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="gui\FrmAppoinmentView.resx">
       <DependentUpon>FrmAppoinmentView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="gui\FrmAppointmentAdd.resx">
+      <DependentUpon>FrmAppointmentAdd.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="gui\FrmAppointmentDonorAdd.resx">
       <DependentUpon>FrmAppointmentDonorAdd.cs</DependentUpon>
