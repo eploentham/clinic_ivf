@@ -388,8 +388,11 @@ namespace clinic_ivf.control
         public C1ComboBox setCboApmTime(C1ComboBox c)
         {
             ComboBoxItem item = new ComboBoxItem();
-
-            for(int i = 5; i <= 18; i++)
+            item = new ComboBoxItem();
+            item.Text = "";
+            item.Value = "";
+            c.Items.Add(item);
+            for (int i = 5; i <= 18; i++)
             {
                 String val = "", txt = "";
                 val = i.ToString("00")+":00";

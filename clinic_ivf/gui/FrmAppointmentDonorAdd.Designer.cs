@@ -35,9 +35,14 @@
             this.panel2 = new System.Windows.Forms.Panel();
             this.c1Calendar1 = new C1.Win.C1Schedule.C1Calendar();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.panel5 = new System.Windows.Forms.Panel();
+            this.panel4 = new System.Windows.Forms.Panel();
             this.m_picPhoto = new System.Windows.Forms.PictureBox();
             this.panel3 = new System.Windows.Forms.Panel();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.label13 = new System.Windows.Forms.Label();
+            this.cboOPUTime = new C1.Win.C1Input.C1ComboBox();
+            this.label12 = new System.Windows.Forms.Label();
             this.cboTvsTime = new C1.Win.C1Input.C1ComboBox();
             this.label11 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
@@ -101,9 +106,11 @@
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.c1Calendar1)).BeginInit();
             this.panel1.SuspendLayout();
+            this.panel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.m_picPhoto)).BeginInit();
             this.panel3.SuspendLayout();
             this.groupBox2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.cboOPUTime)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cboTvsTime)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtTvsDay)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cboDtrAnes)).BeginInit();
@@ -238,7 +245,8 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.panel1.Controls.Add(this.m_picPhoto);
+            this.panel1.Controls.Add(this.panel5);
+            this.panel1.Controls.Add(this.panel4);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panel1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
             this.panel1.Location = new System.Drawing.Point(0, 190);
@@ -247,10 +255,33 @@
             this.panel1.TabIndex = 0;
             this.theme1.SetTheme(this.panel1, "(default)");
             // 
+            // panel5
+            // 
+            this.panel5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.panel5.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.panel5.Location = new System.Drawing.Point(0, 185);
+            this.panel5.Name = "panel5";
+            this.panel5.Size = new System.Drawing.Size(211, 332);
+            this.panel5.TabIndex = 14;
+            this.theme1.SetTheme(this.panel5, "(default)");
+            // 
+            // panel4
+            // 
+            this.panel4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.panel4.Controls.Add(this.m_picPhoto);
+            this.panel4.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.panel4.Location = new System.Drawing.Point(0, 0);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(211, 185);
+            this.panel4.TabIndex = 13;
+            this.theme1.SetTheme(this.panel4, "(default)");
+            // 
             // m_picPhoto
             // 
             this.m_picPhoto.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.m_picPhoto.Location = new System.Drawing.Point(12, 10);
+            this.m_picPhoto.Location = new System.Drawing.Point(9, 3);
             this.m_picPhoto.Name = "m_picPhoto";
             this.m_picPhoto.Size = new System.Drawing.Size(143, 172);
             this.m_picPhoto.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -273,6 +304,9 @@
             // groupBox2
             // 
             this.groupBox2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.groupBox2.Controls.Add(this.label13);
+            this.groupBox2.Controls.Add(this.cboOPUTime);
+            this.groupBox2.Controls.Add(this.label12);
             this.groupBox2.Controls.Add(this.cboTvsTime);
             this.groupBox2.Controls.Add(this.label11);
             this.groupBox2.Controls.Add(this.label10);
@@ -317,6 +351,55 @@
             this.groupBox2.Text = "Appointment";
             this.theme1.SetTheme(this.groupBox2, "(default)");
             // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label13.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.label13.Location = new System.Drawing.Point(233, 126);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(67, 16);
+            this.label13.TabIndex = 679;
+            this.label13.Text = "anes Dr.  :";
+            this.theme1.SetTheme(this.label13, "(default)");
+            // 
+            // cboOPUTime
+            // 
+            this.cboOPUTime.AllowSpinLoop = false;
+            this.cboOPUTime.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
+            this.cboOPUTime.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.cboOPUTime.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.cboOPUTime.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
+            this.cboOPUTime.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.cboOPUTime.GapHeight = 0;
+            this.cboOPUTime.ImagePadding = new System.Windows.Forms.Padding(0);
+            this.cboOPUTime.ItemsDisplayMember = "";
+            this.cboOPUTime.ItemsValueMember = "";
+            this.cboOPUTime.Location = new System.Drawing.Point(116, 124);
+            this.cboOPUTime.Name = "cboOPUTime";
+            this.cboOPUTime.Size = new System.Drawing.Size(67, 20);
+            this.cboOPUTime.Style.DropDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.cboOPUTime.Style.DropDownBorderColor = System.Drawing.Color.Gainsboro;
+            this.cboOPUTime.Style.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.cboOPUTime.TabIndex = 678;
+            this.cboOPUTime.Tag = null;
+            this.theme1.SetTheme(this.cboOPUTime, "(default)");
+            this.cboOPUTime.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label12.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.label12.Location = new System.Drawing.Point(71, 126);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(39, 16);
+            this.label12.TabIndex = 677;
+            this.label12.Text = "time :";
+            this.theme1.SetTheme(this.label12, "(default)");
+            // 
             // cboTvsTime
             // 
             this.cboTvsTime.AllowSpinLoop = false;
@@ -329,7 +412,7 @@
             this.cboTvsTime.ImagePadding = new System.Windows.Forms.Padding(0);
             this.cboTvsTime.ItemsDisplayMember = "";
             this.cboTvsTime.ItemsValueMember = "";
-            this.cboTvsTime.Location = new System.Drawing.Point(576, 95);
+            this.cboTvsTime.Location = new System.Drawing.Point(116, 150);
             this.cboTvsTime.Name = "cboTvsTime";
             this.cboTvsTime.Size = new System.Drawing.Size(67, 20);
             this.cboTvsTime.Style.DropDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
@@ -346,7 +429,7 @@
             this.label11.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
             this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label11.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.label11.Location = new System.Drawing.Point(531, 99);
+            this.label11.Location = new System.Drawing.Point(71, 154);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(39, 16);
             this.label11.TabIndex = 675;
@@ -359,7 +442,7 @@
             this.label10.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
             this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label10.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.label10.Location = new System.Drawing.Point(442, 99);
+            this.label10.Location = new System.Drawing.Point(233, 154);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(31, 16);
             this.label10.TabIndex = 674;
@@ -371,7 +454,7 @@
             this.txtTvsDay.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtTvsDay.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
             this.txtTvsDay.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.txtTvsDay.Location = new System.Drawing.Point(477, 97);
+            this.txtTvsDay.Location = new System.Drawing.Point(306, 152);
             this.txtTvsDay.Name = "txtTvsDay";
             this.txtTvsDay.Size = new System.Drawing.Size(47, 20);
             this.txtTvsDay.TabIndex = 673;
@@ -389,7 +472,7 @@
             this.cboDtrAnes.ImagePadding = new System.Windows.Forms.Padding(0);
             this.cboDtrAnes.ItemsDisplayMember = "";
             this.cboDtrAnes.ItemsValueMember = "";
-            this.cboDtrAnes.Location = new System.Drawing.Point(530, 68);
+            this.cboDtrAnes.Location = new System.Drawing.Point(306, 124);
             this.cboDtrAnes.Name = "cboDtrAnes";
             this.cboDtrAnes.Size = new System.Drawing.Size(168, 20);
             this.cboDtrAnes.Style.DropDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
@@ -407,7 +490,7 @@
             this.chkOPU.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.chkOPU.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.chkOPU.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.chkOPU.Location = new System.Drawing.Point(466, 67);
+            this.chkOPU.Location = new System.Drawing.Point(9, 123);
             this.chkOPU.Name = "chkOPU";
             this.chkOPU.Padding = new System.Windows.Forms.Padding(4, 1, 1, 1);
             this.chkOPU.Size = new System.Drawing.Size(58, 24);
@@ -425,7 +508,7 @@
             this.chkRPrl.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.chkRPrl.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.chkRPrl.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.chkRPrl.Location = new System.Drawing.Point(293, 97);
+            this.chkRPrl.Location = new System.Drawing.Point(282, 97);
             this.chkRPrl.Name = "chkRPrl";
             this.chkRPrl.Padding = new System.Windows.Forms.Padding(4, 1, 1, 1);
             this.chkRPrl.Size = new System.Drawing.Size(98, 24);
@@ -497,7 +580,7 @@
             this.chkTvs.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.chkTvs.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.chkTvs.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.chkTvs.Location = new System.Drawing.Point(396, 96);
+            this.chkTvs.Location = new System.Drawing.Point(9, 151);
             this.chkTvs.Name = "chkTvs";
             this.chkTvs.Padding = new System.Windows.Forms.Padding(4, 1, 1, 1);
             this.chkTvs.Size = new System.Drawing.Size(51, 24);
@@ -553,7 +636,7 @@
             this.txtAppointment.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtAppointment.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
             this.txtAppointment.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.txtAppointment.Location = new System.Drawing.Point(69, 130);
+            this.txtAppointment.Location = new System.Drawing.Point(69, 183);
             this.txtAppointment.Name = "txtAppointment";
             this.txtAppointment.Size = new System.Drawing.Size(620, 20);
             this.txtAppointment.TabIndex = 563;
@@ -567,7 +650,7 @@
             this.label9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
             this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label9.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.label9.Location = new System.Drawing.Point(6, 132);
+            this.label9.Location = new System.Drawing.Point(6, 185);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(28, 16);
             this.label9.TabIndex = 562;
@@ -614,9 +697,9 @@
             this.groupBox3.Controls.Add(this.tC);
             this.groupBox3.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.groupBox3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.groupBox3.Location = new System.Drawing.Point(3, 176);
+            this.groupBox3.Location = new System.Drawing.Point(3, 226);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(787, 431);
+            this.groupBox3.Size = new System.Drawing.Size(787, 381);
             this.groupBox3.TabIndex = 559;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "groupBox3";
@@ -634,7 +717,7 @@
             this.tC.Location = new System.Drawing.Point(3, 16);
             this.tC.Name = "tC";
             this.tC.SelectedIndex = 1;
-            this.tC.Size = new System.Drawing.Size(781, 412);
+            this.tC.Size = new System.Drawing.Size(781, 362);
             this.tC.TabIndex = 0;
             this.tC.TabSizeMode = C1.Win.C1Command.TabSizeModeEnum.Fit;
             this.tC.TabsShowFocusCues = false;
@@ -647,7 +730,7 @@
             this.tabVisit.Controls.Add(this.pnVisit);
             this.tabVisit.Location = new System.Drawing.Point(1, 1);
             this.tabVisit.Name = "tabVisit";
-            this.tabVisit.Size = new System.Drawing.Size(779, 387);
+            this.tabVisit.Size = new System.Drawing.Size(779, 337);
             this.tabVisit.TabIndex = 0;
             this.tabVisit.Text = "Visit";
             // 
@@ -658,7 +741,7 @@
             this.pnVisit.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
             this.pnVisit.Location = new System.Drawing.Point(0, 0);
             this.pnVisit.Name = "pnVisit";
-            this.pnVisit.Size = new System.Drawing.Size(779, 387);
+            this.pnVisit.Size = new System.Drawing.Size(779, 337);
             this.pnVisit.TabIndex = 0;
             this.theme1.SetTheme(this.pnVisit, "(default)");
             // 
@@ -667,7 +750,7 @@
             this.tabDay.Controls.Add(this.pnDay);
             this.tabDay.Location = new System.Drawing.Point(1, 1);
             this.tabDay.Name = "tabDay";
-            this.tabDay.Size = new System.Drawing.Size(779, 387);
+            this.tabDay.Size = new System.Drawing.Size(779, 337);
             this.tabDay.TabIndex = 1;
             this.tabDay.Text = "Day";
             // 
@@ -678,7 +761,7 @@
             this.pnDay.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
             this.pnDay.Location = new System.Drawing.Point(0, 0);
             this.pnDay.Name = "pnDay";
-            this.pnDay.Size = new System.Drawing.Size(779, 387);
+            this.pnDay.Size = new System.Drawing.Size(779, 337);
             this.pnDay.TabIndex = 1;
             this.theme1.SetTheme(this.pnDay, "(default)");
             // 
@@ -687,7 +770,7 @@
             this.txtRemarkpApm.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtRemarkpApm.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
             this.txtRemarkpApm.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.txtRemarkpApm.Location = new System.Drawing.Point(69, 153);
+            this.txtRemarkpApm.Location = new System.Drawing.Point(69, 206);
             this.txtRemarkpApm.Name = "txtRemarkpApm";
             this.txtRemarkpApm.Size = new System.Drawing.Size(620, 20);
             this.txtRemarkpApm.TabIndex = 558;
@@ -729,7 +812,7 @@
             this.label6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.label6.Location = new System.Drawing.Point(6, 155);
+            this.label6.Location = new System.Drawing.Point(6, 208);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(62, 16);
             this.label6.TabIndex = 557;
@@ -1216,10 +1299,12 @@
             this.panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.c1Calendar1)).EndInit();
             this.panel1.ResumeLayout(false);
+            this.panel4.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.m_picPhoto)).EndInit();
             this.panel3.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.cboOPUTime)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cboTvsTime)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtTvsDay)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cboDtrAnes)).EndInit();
@@ -1336,5 +1421,10 @@
         private System.Windows.Forms.Label label10;
         private C1.Win.C1Input.C1ComboBox cboTvsTime;
         private System.Windows.Forms.Label label11;
+        private C1.Win.C1Input.C1ComboBox cboOPUTime;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.Panel panel5;
+        private System.Windows.Forms.Panel panel4;
+        private System.Windows.Forms.Label label13;
     }
 }

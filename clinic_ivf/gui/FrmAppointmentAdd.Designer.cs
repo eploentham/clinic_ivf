@@ -31,7 +31,6 @@
             this.theme1 = new C1.Win.C1Themes.C1ThemeController();
             this.sB = new System.Windows.Forms.StatusStrip();
             this.sB1 = new System.Windows.Forms.ToolStripStatusLabel();
-            this.tabDay = new C1.Win.C1Command.C1DockingTabPage();
             this.pnDay = new System.Windows.Forms.Panel();
             this.txtRemarkpApm = new C1.Win.C1Input.C1TextBox();
             this.btnVoid = new C1.Win.C1Input.C1Button();
@@ -64,9 +63,6 @@
             this.txtHn = new C1.Win.C1Input.C1TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.pnVisit = new System.Windows.Forms.Panel();
-            this.statusStrip1 = new System.Windows.Forms.StatusStrip();
-            this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
-            this.c1ThemeController1 = new C1.Win.C1Themes.C1ThemeController();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.panel2 = new System.Windows.Forms.Panel();
             this.c1Calendar1 = new C1.Win.C1Schedule.C1Calendar();
@@ -95,9 +91,9 @@
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.tC = new C1.Win.C1Command.C1DockingTab();
             this.tabVisit = new C1.Win.C1Command.C1DockingTabPage();
+            this.tabDay = new C1.Win.C1Command.C1DockingTabPage();
             ((System.ComponentModel.ISupportInitialize)(this.theme1)).BeginInit();
             this.sB.SuspendLayout();
-            this.tabDay.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtRemarkpApm)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnVoid)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnSave)).BeginInit();
@@ -120,8 +116,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtName)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnSearch)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtHn)).BeginInit();
-            this.statusStrip1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.c1ThemeController1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -149,6 +143,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.tC)).BeginInit();
             this.tC.SuspendLayout();
             this.tabVisit.SuspendLayout();
+            this.tabDay.SuspendLayout();
             this.SuspendLayout();
             // 
             // theme1
@@ -173,15 +168,6 @@
             this.sB1.Size = new System.Drawing.Size(118, 17);
             this.sB1.Text = "toolStripStatusLabel1";
             // 
-            // tabDay
-            // 
-            this.tabDay.Controls.Add(this.pnDay);
-            this.tabDay.Location = new System.Drawing.Point(1, 1);
-            this.tabDay.Name = "tabDay";
-            this.tabDay.Size = new System.Drawing.Size(779, 387);
-            this.tabDay.TabIndex = 1;
-            this.tabDay.Text = "Day";
-            // 
             // pnDay
             // 
             this.pnDay.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
@@ -191,7 +177,6 @@
             this.pnDay.Name = "pnDay";
             this.pnDay.Size = new System.Drawing.Size(779, 387);
             this.pnDay.TabIndex = 1;
-            this.c1ThemeController1.SetTheme(this.pnDay, "(default)");
             this.theme1.SetTheme(this.pnDay, "(default)");
             // 
             // txtRemarkpApm
@@ -205,7 +190,6 @@
             this.txtRemarkpApm.TabIndex = 558;
             this.txtRemarkpApm.Tag = null;
             this.theme1.SetTheme(this.txtRemarkpApm, "(default)");
-            this.c1ThemeController1.SetTheme(this.txtRemarkpApm, "(default)");
             this.txtRemarkpApm.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
             // 
             // btnVoid
@@ -219,7 +203,6 @@
             this.btnVoid.Text = "Void";
             this.btnVoid.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.theme1.SetTheme(this.btnVoid, "(default)");
-            this.c1ThemeController1.SetTheme(this.btnVoid, "(default)");
             this.btnVoid.UseVisualStyleBackColor = true;
             this.btnVoid.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
             // 
@@ -234,7 +217,6 @@
             this.btnSave.Text = "Save";
             this.btnSave.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.theme1.SetTheme(this.btnSave, "(default)");
-            this.c1ThemeController1.SetTheme(this.btnSave, "(default)");
             this.btnSave.UseVisualStyleBackColor = true;
             this.btnSave.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
             // 
@@ -250,7 +232,6 @@
             this.label6.TabIndex = 557;
             this.label6.Text = "Remark :";
             this.theme1.SetTheme(this.label6, "(default)");
-            this.c1ThemeController1.SetTheme(this.label6, "(default)");
             // 
             // chkEndo
             // 
@@ -266,7 +247,6 @@
             this.chkEndo.TabIndex = 556;
             this.chkEndo.Text = "Endo";
             this.theme1.SetTheme(this.chkEndo, "(default)");
-            this.c1ThemeController1.SetTheme(this.chkEndo, "(default)");
             this.chkEndo.UseVisualStyleBackColor = true;
             this.chkEndo.Value = null;
             this.chkEndo.Visible = false;
@@ -286,7 +266,6 @@
             this.chkLt.TabIndex = 555;
             this.chkLt.Text = "Lt.Ovary";
             this.theme1.SetTheme(this.chkLt, "(default)");
-            this.c1ThemeController1.SetTheme(this.chkLt, "(default)");
             this.chkLt.UseVisualStyleBackColor = true;
             this.chkLt.Value = null;
             this.chkLt.Visible = false;
@@ -306,7 +285,6 @@
             this.chkRt.TabIndex = 554;
             this.chkRt.Text = "Rt.Ovary";
             this.theme1.SetTheme(this.chkRt, "(default)");
-            this.c1ThemeController1.SetTheme(this.chkRt, "(default)");
             this.chkRt.UseVisualStyleBackColor = true;
             this.chkRt.Value = null;
             this.chkRt.Visible = false;
@@ -326,7 +304,6 @@
             this.chkPrl.TabIndex = 553;
             this.chkPrl.Text = "PRL";
             this.theme1.SetTheme(this.chkPrl, "(default)");
-            this.c1ThemeController1.SetTheme(this.chkPrl, "(default)");
             this.chkPrl.UseVisualStyleBackColor = true;
             this.chkPrl.Value = null;
             this.chkPrl.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
@@ -345,7 +322,6 @@
             this.chkFsh.TabIndex = 552;
             this.chkFsh.Text = "FSH";
             this.theme1.SetTheme(this.chkFsh, "(default)");
-            this.c1ThemeController1.SetTheme(this.chkFsh, "(default)");
             this.chkFsh.UseVisualStyleBackColor = true;
             this.chkFsh.Value = null;
             this.chkFsh.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
@@ -364,7 +340,6 @@
             this.chkLh.TabIndex = 551;
             this.chkLh.Text = "LH";
             this.theme1.SetTheme(this.chkLh, "(default)");
-            this.c1ThemeController1.SetTheme(this.chkLh, "(default)");
             this.chkLh.UseVisualStyleBackColor = true;
             this.chkLh.Value = null;
             this.chkLh.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
@@ -383,7 +358,6 @@
             this.chkE2.TabIndex = 550;
             this.chkE2.Text = "E2";
             this.theme1.SetTheme(this.chkE2, "(default)");
-            this.c1ThemeController1.SetTheme(this.chkE2, "(default)");
             this.chkE2.UseVisualStyleBackColor = true;
             this.chkE2.Value = null;
             this.chkE2.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
@@ -409,7 +383,6 @@
             this.cboTimepApm.TabIndex = 549;
             this.cboTimepApm.Tag = null;
             this.theme1.SetTheme(this.cboTimepApm, "(default)");
-            this.c1ThemeController1.SetTheme(this.cboTimepApm, "(default)");
             this.cboTimepApm.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
             // 
             // label3
@@ -424,7 +397,6 @@
             this.label3.TabIndex = 548;
             this.label3.Text = "Time :";
             this.theme1.SetTheme(this.label3, "(default)");
-            this.c1ThemeController1.SetTheme(this.label3, "(default)");
             // 
             // txtDatepApm
             // 
@@ -469,7 +441,6 @@
             this.txtDatepApm.Size = new System.Drawing.Size(124, 18);
             this.txtDatepApm.TabIndex = 546;
             this.txtDatepApm.Tag = null;
-            this.c1ThemeController1.SetTheme(this.txtDatepApm, "(default)");
             this.theme1.SetTheme(this.txtDatepApm, "(default)");
             this.txtDatepApm.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
             // 
@@ -499,7 +470,6 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Patient";
             this.theme1.SetTheme(this.groupBox1, "(default)");
-            this.c1ThemeController1.SetTheme(this.groupBox1, "(default)");
             // 
             // txtPttId
             // 
@@ -512,7 +482,6 @@
             this.txtPttId.TabIndex = 553;
             this.txtPttId.Tag = null;
             this.theme1.SetTheme(this.txtPttId, "(default)");
-            this.c1ThemeController1.SetTheme(this.txtPttId, "(default)");
             this.txtPttId.Visible = false;
             this.txtPttId.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
             // 
@@ -527,7 +496,6 @@
             this.txtVsId.TabIndex = 552;
             this.txtVsId.Tag = null;
             this.theme1.SetTheme(this.txtVsId, "(default)");
-            this.c1ThemeController1.SetTheme(this.txtVsId, "(default)");
             this.txtVsId.Visible = false;
             this.txtVsId.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
             // 
@@ -542,7 +510,6 @@
             this.txtRemark.TabIndex = 551;
             this.txtRemark.Tag = null;
             this.theme1.SetTheme(this.txtRemark, "(default)");
-            this.c1ThemeController1.SetTheme(this.txtRemark, "(default)");
             this.txtRemark.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
             // 
             // label52
@@ -557,7 +524,6 @@
             this.label52.TabIndex = 550;
             this.label52.Text = "Remark :";
             this.theme1.SetTheme(this.label52, "(default)");
-            this.c1ThemeController1.SetTheme(this.label52, "(default)");
             // 
             // cboDoctor
             // 
@@ -578,7 +544,6 @@
             this.cboDoctor.TabIndex = 547;
             this.cboDoctor.Tag = null;
             this.theme1.SetTheme(this.cboDoctor, "(default)");
-            this.c1ThemeController1.SetTheme(this.cboDoctor, "(default)");
             this.cboDoctor.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
             // 
             // label8
@@ -593,7 +558,6 @@
             this.label8.TabIndex = 546;
             this.label8.Text = "Doctor :";
             this.theme1.SetTheme(this.label8, "(default)");
-            this.c1ThemeController1.SetTheme(this.label8, "(default)");
             // 
             // txtID
             // 
@@ -606,7 +570,6 @@
             this.txtID.TabIndex = 545;
             this.txtID.Tag = null;
             this.theme1.SetTheme(this.txtID, "(default)");
-            this.c1ThemeController1.SetTheme(this.txtID, "(default)");
             this.txtID.Visible = false;
             this.txtID.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
             // 
@@ -637,7 +600,6 @@
             this.txtDob.Size = new System.Drawing.Size(207, 18);
             this.txtDob.TabIndex = 544;
             this.txtDob.Tag = null;
-            this.c1ThemeController1.SetTheme(this.txtDob, "(default)");
             this.theme1.SetTheme(this.txtDob, "(default)");
             this.txtDob.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
             // 
@@ -653,7 +615,6 @@
             this.label5.TabIndex = 543;
             this.label5.Text = "day of birth :";
             this.theme1.SetTheme(this.label5, "(default)");
-            this.c1ThemeController1.SetTheme(this.label5, "(default)");
             // 
             // label2
             // 
@@ -667,7 +628,6 @@
             this.label2.TabIndex = 542;
             this.label2.Text = "name :";
             this.theme1.SetTheme(this.label2, "(default)");
-            this.c1ThemeController1.SetTheme(this.label2, "(default)");
             // 
             // txtName
             // 
@@ -680,7 +640,6 @@
             this.txtName.TabIndex = 541;
             this.txtName.Tag = null;
             this.theme1.SetTheme(this.txtName, "(default)");
-            this.c1ThemeController1.SetTheme(this.txtName, "(default)");
             this.txtName.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
             // 
             // btnSearch
@@ -691,7 +650,6 @@
             this.btnSearch.TabIndex = 540;
             this.btnSearch.Text = "...";
             this.theme1.SetTheme(this.btnSearch, "(default)");
-            this.c1ThemeController1.SetTheme(this.btnSearch, "(default)");
             this.btnSearch.UseVisualStyleBackColor = true;
             this.btnSearch.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
             // 
@@ -707,7 +665,6 @@
             this.label4.TabIndex = 539;
             this.label4.Text = "HN :";
             this.theme1.SetTheme(this.label4, "(default)");
-            this.c1ThemeController1.SetTheme(this.label4, "(default)");
             // 
             // txtHn
             // 
@@ -720,7 +677,6 @@
             this.txtHn.TabIndex = 538;
             this.txtHn.Tag = null;
             this.theme1.SetTheme(this.txtHn, "(default)");
-            this.c1ThemeController1.SetTheme(this.txtHn, "(default)");
             this.txtHn.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
             // 
             // label1
@@ -735,7 +691,6 @@
             this.label1.TabIndex = 545;
             this.label1.Text = "Date :";
             this.theme1.SetTheme(this.label1, "(default)");
-            this.c1ThemeController1.SetTheme(this.label1, "(default)");
             // 
             // pnVisit
             // 
@@ -746,31 +701,7 @@
             this.pnVisit.Name = "pnVisit";
             this.pnVisit.Size = new System.Drawing.Size(779, 387);
             this.pnVisit.TabIndex = 0;
-            this.c1ThemeController1.SetTheme(this.pnVisit, "(default)");
             this.theme1.SetTheme(this.pnVisit, "(default)");
-            // 
-            // statusStrip1
-            // 
-            this.statusStrip1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(222)))), ((int)(((byte)(222)))));
-            this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripStatusLabel1});
-            this.statusStrip1.Location = new System.Drawing.Point(0, 685);
-            this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(1008, 22);
-            this.statusStrip1.TabIndex = 529;
-            this.statusStrip1.Text = "statusStrip1";
-            this.theme1.SetTheme(this.statusStrip1, "(default)");
-            this.c1ThemeController1.SetTheme(this.statusStrip1, "Office2013DarkGray");
-            // 
-            // toolStripStatusLabel1
-            // 
-            this.toolStripStatusLabel1.Name = "toolStripStatusLabel1";
-            this.toolStripStatusLabel1.Size = new System.Drawing.Size(118, 17);
-            this.toolStripStatusLabel1.Text = "toolStripStatusLabel1";
-            // 
-            // c1ThemeController1
-            // 
-            this.c1ThemeController1.Theme = "Office2013Red";
             // 
             // splitContainer1
             // 
@@ -786,7 +717,6 @@
             this.splitContainer1.Panel1.Controls.Add(this.panel2);
             this.splitContainer1.Panel1.Controls.Add(this.panel1);
             this.splitContainer1.Panel1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.c1ThemeController1.SetTheme(this.splitContainer1.Panel1, "(default)");
             this.theme1.SetTheme(this.splitContainer1.Panel1, "(default)");
             // 
             // splitContainer1.Panel2
@@ -794,13 +724,11 @@
             this.splitContainer1.Panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
             this.splitContainer1.Panel2.Controls.Add(this.panel3);
             this.splitContainer1.Panel2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.c1ThemeController1.SetTheme(this.splitContainer1.Panel2, "(default)");
             this.theme1.SetTheme(this.splitContainer1.Panel2, "(default)");
             this.splitContainer1.Size = new System.Drawing.Size(1008, 707);
             this.splitContainer1.SplitterDistance = 211;
             this.splitContainer1.TabIndex = 530;
             this.theme1.SetTheme(this.splitContainer1, "(default)");
-            this.c1ThemeController1.SetTheme(this.splitContainer1, "(default)");
             // 
             // panel2
             // 
@@ -812,7 +740,6 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(211, 190);
             this.panel2.TabIndex = 1;
-            this.c1ThemeController1.SetTheme(this.panel2, "(default)");
             this.theme1.SetTheme(this.panel2, "(default)");
             // 
             // c1Calendar1
@@ -841,7 +768,6 @@
             this.c1Calendar1.Size = new System.Drawing.Size(200, 190);
             this.c1Calendar1.TabIndex = 0;
             this.theme1.SetTheme(this.c1Calendar1, "(default)");
-            this.c1ThemeController1.SetTheme(this.c1Calendar1, "(default)");
             this.c1Calendar1.VisualStyle = C1.Win.C1Schedule.UI.VisualStyle.Custom;
             // 
             // panel1
@@ -854,7 +780,6 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(211, 517);
             this.panel1.TabIndex = 0;
-            this.c1ThemeController1.SetTheme(this.panel1, "(default)");
             this.theme1.SetTheme(this.panel1, "(default)");
             // 
             // m_picPhoto
@@ -878,7 +803,6 @@
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(793, 707);
             this.panel3.TabIndex = 0;
-            this.c1ThemeController1.SetTheme(this.panel3, "(default)");
             this.theme1.SetTheme(this.panel3, "(default)");
             // 
             // groupBox2
@@ -927,7 +851,6 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Appointment";
             this.theme1.SetTheme(this.groupBox2, "(default)");
-            this.c1ThemeController1.SetTheme(this.groupBox2, "(default)");
             // 
             // cboTvsTime
             // 
@@ -950,7 +873,6 @@
             this.cboTvsTime.TabIndex = 676;
             this.cboTvsTime.Tag = null;
             this.theme1.SetTheme(this.cboTvsTime, "(default)");
-            this.c1ThemeController1.SetTheme(this.cboTvsTime, "(default)");
             this.cboTvsTime.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
             // 
             // label11
@@ -965,7 +887,6 @@
             this.label11.TabIndex = 675;
             this.label11.Text = "time :";
             this.theme1.SetTheme(this.label11, "(default)");
-            this.c1ThemeController1.SetTheme(this.label11, "(default)");
             // 
             // label10
             // 
@@ -979,7 +900,6 @@
             this.label10.TabIndex = 674;
             this.label10.Text = "day";
             this.theme1.SetTheme(this.label10, "(default)");
-            this.c1ThemeController1.SetTheme(this.label10, "(default)");
             // 
             // txtTvsDay
             // 
@@ -992,7 +912,6 @@
             this.txtTvsDay.TabIndex = 673;
             this.txtTvsDay.Tag = null;
             this.theme1.SetTheme(this.txtTvsDay, "(default)");
-            this.c1ThemeController1.SetTheme(this.txtTvsDay, "(default)");
             this.txtTvsDay.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
             // 
             // cboDtrAnes
@@ -1014,7 +933,6 @@
             this.cboDtrAnes.TabIndex = 672;
             this.cboDtrAnes.Tag = null;
             this.theme1.SetTheme(this.cboDtrAnes, "(default)");
-            this.c1ThemeController1.SetTheme(this.cboDtrAnes, "(default)");
             this.cboDtrAnes.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
             // 
             // chkOPU
@@ -1031,7 +949,6 @@
             this.chkOPU.TabIndex = 671;
             this.chkOPU.Text = "OPU";
             this.theme1.SetTheme(this.chkOPU, "(default)");
-            this.c1ThemeController1.SetTheme(this.chkOPU, "(default)");
             this.chkOPU.UseVisualStyleBackColor = true;
             this.chkOPU.Value = null;
             this.chkOPU.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
@@ -1050,7 +967,6 @@
             this.chkRPrl.TabIndex = 670;
             this.chkRPrl.Text = "Repeat PRL";
             this.theme1.SetTheme(this.chkRPrl, "(default)");
-            this.c1ThemeController1.SetTheme(this.chkRPrl, "(default)");
             this.chkRPrl.UseVisualStyleBackColor = true;
             this.chkRPrl.Value = null;
             this.chkRPrl.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
@@ -1069,7 +985,6 @@
             this.chkRFsh.TabIndex = 669;
             this.chkRFsh.Text = "Repeat FSH";
             this.theme1.SetTheme(this.chkRFsh, "(default)");
-            this.c1ThemeController1.SetTheme(this.chkRFsh, "(default)");
             this.chkRFsh.UseVisualStyleBackColor = true;
             this.chkRFsh.Value = null;
             this.chkRFsh.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
@@ -1088,7 +1003,6 @@
             this.chkRLh.TabIndex = 668;
             this.chkRLh.Text = "Repeat LH";
             this.theme1.SetTheme(this.chkRLh, "(default)");
-            this.c1ThemeController1.SetTheme(this.chkRLh, "(default)");
             this.chkRLh.UseVisualStyleBackColor = true;
             this.chkRLh.Value = null;
             this.chkRLh.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
@@ -1107,7 +1021,6 @@
             this.chkRE2.TabIndex = 667;
             this.chkRE2.Text = "Repeat E2";
             this.theme1.SetTheme(this.chkRE2, "(default)");
-            this.c1ThemeController1.SetTheme(this.chkRE2, "(default)");
             this.chkRE2.UseVisualStyleBackColor = true;
             this.chkRE2.Value = null;
             this.chkRE2.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
@@ -1126,7 +1039,6 @@
             this.chkTvs.TabIndex = 666;
             this.chkTvs.Text = "TVS";
             this.theme1.SetTheme(this.chkTvs, "(default)");
-            this.c1ThemeController1.SetTheme(this.chkTvs, "(default)");
             this.chkTvs.UseVisualStyleBackColor = true;
             this.chkTvs.Value = null;
             this.chkTvs.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
@@ -1142,7 +1054,6 @@
             this.txtStfConfirmID.TabIndex = 665;
             this.txtStfConfirmID.Tag = null;
             this.theme1.SetTheme(this.txtStfConfirmID, "(default)");
-            this.c1ThemeController1.SetTheme(this.txtStfConfirmID, "(default)");
             this.txtStfConfirmID.Visible = false;
             this.txtStfConfirmID.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
             // 
@@ -1157,7 +1068,6 @@
             this.txtUserReq.TabIndex = 664;
             this.txtUserReq.Tag = null;
             this.theme1.SetTheme(this.txtUserReq, "(default)");
-            this.c1ThemeController1.SetTheme(this.txtUserReq, "(default)");
             this.txtUserReq.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
             // 
             // label21
@@ -1172,7 +1082,6 @@
             this.label21.TabIndex = 663;
             this.label21.Text = "user  :";
             this.theme1.SetTheme(this.label21, "(default)");
-            this.c1ThemeController1.SetTheme(this.label21, "(default)");
             // 
             // txtAppointment
             // 
@@ -1185,7 +1094,6 @@
             this.txtAppointment.TabIndex = 563;
             this.txtAppointment.Tag = null;
             this.theme1.SetTheme(this.txtAppointment, "(default)");
-            this.c1ThemeController1.SetTheme(this.txtAppointment, "(default)");
             this.txtAppointment.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
             // 
             // label9
@@ -1200,7 +1108,6 @@
             this.label9.TabIndex = 562;
             this.label9.Text = "นัด :";
             this.theme1.SetTheme(this.label9, "(default)");
-            this.c1ThemeController1.SetTheme(this.label9, "(default)");
             // 
             // cboBsp
             // 
@@ -1221,7 +1128,6 @@
             this.cboBsp.TabIndex = 561;
             this.cboBsp.Tag = null;
             this.theme1.SetTheme(this.cboBsp, "(default)");
-            this.c1ThemeController1.SetTheme(this.cboBsp, "(default)");
             this.cboBsp.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
             // 
             // label7
@@ -1236,7 +1142,6 @@
             this.label7.TabIndex = 560;
             this.label7.Text = "Station :";
             this.theme1.SetTheme(this.label7, "(default)");
-            this.c1ThemeController1.SetTheme(this.label7, "(default)");
             // 
             // groupBox3
             // 
@@ -1251,7 +1156,6 @@
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "groupBox3";
             this.theme1.SetTheme(this.groupBox3, "(default)");
-            this.c1ThemeController1.SetTheme(this.groupBox3, "(default)");
             // 
             // tC
             // 
@@ -1272,7 +1176,6 @@
             this.tC.TabsSpacing = 2;
             this.tC.TabStyle = C1.Win.C1Command.TabStyleEnum.Office2007;
             this.theme1.SetTheme(this.tC, "(default)");
-            this.c1ThemeController1.SetTheme(this.tC, "(default)");
             // 
             // tabVisit
             // 
@@ -1283,21 +1186,29 @@
             this.tabVisit.TabIndex = 0;
             this.tabVisit.Text = "Visit";
             // 
+            // tabDay
+            // 
+            this.tabDay.Controls.Add(this.pnDay);
+            this.tabDay.Location = new System.Drawing.Point(1, 1);
+            this.tabDay.Name = "tabDay";
+            this.tabDay.Size = new System.Drawing.Size(779, 387);
+            this.tabDay.TabIndex = 1;
+            this.tabDay.Text = "Day";
+            // 
             // FrmAppointmentAdd
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1008, 729);
-            this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.splitContainer1);
             this.Controls.Add(this.sB);
             this.Name = "FrmAppointmentAdd";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FrmAppointmentAdd";
+            this.Load += new System.EventHandler(this.FrmAppointmentAdd_Load);
             ((System.ComponentModel.ISupportInitialize)(this.theme1)).EndInit();
             this.sB.ResumeLayout(false);
             this.sB.PerformLayout();
-            this.tabDay.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.txtRemarkpApm)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnVoid)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnSave)).EndInit();
@@ -1321,9 +1232,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtName)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnSearch)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtHn)).EndInit();
-            this.statusStrip1.ResumeLayout(false);
-            this.statusStrip1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.c1ThemeController1)).EndInit();
             this.splitContainer1.Panel1.ResumeLayout(false);
             this.splitContainer1.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
@@ -1352,6 +1260,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.tC)).EndInit();
             this.tC.ResumeLayout(false);
             this.tabVisit.ResumeLayout(false);
+            this.tabDay.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1364,7 +1273,6 @@
         private System.Windows.Forms.ToolStripStatusLabel sB1;
         private C1.Win.C1Command.C1DockingTabPage tabDay;
         private System.Windows.Forms.Panel pnDay;
-        private C1.Win.C1Themes.C1ThemeController c1ThemeController1;
         private C1.Win.C1Input.C1TextBox txtRemarkpApm;
         private C1.Win.C1Input.C1Button btnVoid;
         private C1.Win.C1Input.C1Button btnSave;
@@ -1396,8 +1304,6 @@
         private C1.Win.C1Input.C1TextBox txtHn;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Panel pnVisit;
-        private System.Windows.Forms.StatusStrip statusStrip1;
-        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel1;
         private System.Windows.Forms.SplitContainer splitContainer1;
         private System.Windows.Forms.Panel panel2;
         private C1.Win.C1Schedule.C1Calendar c1Calendar1;

@@ -416,7 +416,7 @@ namespace clinic_ivf.gui
                 
                 filenamepic = txtHn.Text;
 
-                ic.setC1Combo(cboAgent, ptt.agent);
+                ic.setC1Combo(cboAgent, pttO.AgentID);
             }
                         
             Thread threadA = new Thread(new ParameterizedThreadStart(ExecuteA));

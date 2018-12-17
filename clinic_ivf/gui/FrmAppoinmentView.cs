@@ -1046,6 +1046,7 @@ namespace clinic_ivf.gui
             grfPtt.Cols[colVsEndo].Visible = false;
             grfPtt.Cols[colVsCode].Visible = false;
             grfPtt.Cols[colVs1St].Visible = false;
+            grfPtt.Cols[colVsDoctor].Visible = false;
 
             theme1.SetTheme(grfPtt, ic.theme);
 

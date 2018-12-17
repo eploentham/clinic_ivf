@@ -1572,7 +1572,7 @@ namespace clinic_ivf.gui
         {
             grfpApm.Clear();
             grfpApm.Rows.Count = 1;
-            grfpApm.Cols.Count = 6;
+            grfpApm.Cols.Count = 5;
             DataTable dt = ic.ivfDB.pApmDB.selectByPtt(search);
 
             grfpApm.Rows.Count = dt.Rows.Count + 1;
@@ -1593,7 +1593,7 @@ namespace clinic_ivf.gui
             grfpApm.Cols[colpApmId].Width = 250;
             grfpApm.Cols[colpApmDate].Width = 100;
             grfpApm.Cols[colpApmTime].Width = 100;
-            grfpApm.Cols[colpApmRemark].Width = 200;
+            grfpApm.Cols[colpApmRemark].Width = 300;
             //grfpApm.Cols[colVsStatus].Width = 250;
             //grfImg.Cols[colBtn].Width = 50;
             //grfImg.Cols[colPathPic].Width = 100;
@@ -1628,8 +1628,8 @@ namespace clinic_ivf.gui
                 String appn = "";
                 appn = ic.ivfDB.genAppointmentRemarkPttDonor(row);
                 grfpApm[i, colpApmId] = row[ic.ivfDB.pApmDB.pApm.t_patient_appointment_id].ToString();
-                grfpApm[i, colpApmDate] = row[ic.ivfDB.pApmDB.pApm.patient_appointment_date].ToString();
-                grfpApm[i, colpApmTime] = ic.datetoShow(row[ic.ivfDB.pApmDB.pApm.patient_appointment_time]);
+                grfpApm[i, colpApmDate] = ic.datetoShow(row[ic.ivfDB.pApmDB.pApm.patient_appointment_date]);
+                grfpApm[i, colpApmTime] = row[ic.ivfDB.pApmDB.pApm.patient_appointment_time].ToString();
                 //grfpApm[i, colpApmRemark] = row[ic.ivfDB.pApmDB.pApm.remark].ToString();
                 grfpApm[i, colpApmRemark] = appn;
 
@@ -1638,11 +1638,11 @@ namespace clinic_ivf.gui
                 //if (i % 2 == 0)
                 //grfPtt.Rows[i].StyleNew.BackColor = color;
             }
-            //grfVs.Cols[colID].Visible = false;
+            grfpApm.Cols[colpApmId].Visible = false;
             //grfImg.Cols[colPathPic].Visible = false;
-            grfpApm.Cols[colImg].AllowEditing = false;
-            grfpApm.AutoSizeCols();
-            grfpApm.AutoSizeRows();
+            //grfpApm.Cols[colImg].AllowEditing = false;
+            //grfpApm.AutoSizeCols();
+            //grfpApm.AutoSizeRows();
             theme1.SetTheme(grfpApm, "Office2016DarkGray");
         }
         private void ContextMenu_edit_papm(object sender, System.EventArgs e)

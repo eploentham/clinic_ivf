@@ -67,6 +67,7 @@ namespace clinic_ivf.gui
 
             cboTimepApm = ic.setCboApmTime(cboTimepApm);
             cboTvsTime = ic.setCboApmTime(cboTvsTime);
+            cboOPUTime = ic.setCboApmTime(cboOPUTime);
             txtDatepApm.Value = System.DateTime.Now.Year.ToString() + "-" + System.DateTime.Now.ToString("MM-dd");
             btnSave.Click += BtnSave_Click;
             txtDatepApm.ValueChanged += TxtDatepApm_ValueChanged;
@@ -82,12 +83,14 @@ namespace clinic_ivf.gui
             setGrfpApmVisit();
             setGrfpApmDay();
             setControl();
+            
         }
 
         private void ChkTvs_CheckedChanged(object sender, EventArgs e)
         {
             //throw new NotImplementedException();
             txtTvsDay.Enabled = chkTvs.Checked ? true : false;
+            cboTvsTime.Enabled = chkTvs.Checked ? true : false;
         }
 
         private void BtnSearch_Click(object sender, EventArgs e)
@@ -104,6 +107,7 @@ namespace clinic_ivf.gui
         {
             //throw new NotImplementedException();
             cboDtrAnes.Enabled = chkOPU.Checked ? true : false;
+            cboOPUTime.Enabled = chkOPU.Checked ? true : false;
         }
 
         private void BtnVoid_Click(object sender, EventArgs e)
@@ -272,6 +276,9 @@ namespace clinic_ivf.gui
             txtTvsDay.Value = pApm.tvs_day;
             txtTvsDay.Enabled = chkTvs.Checked ? true : false;
             ic.setC1Combo(cboTvsTime, pApm.tvs_time);
+            ic.setC1Combo(cboOPUTime, pApm.opu_time);
+            ChkTvs_CheckedChanged(null, null);
+            ChkOPU_CheckedChanged(null, null);
         }
         private void initGrfpApmAll()
         {
@@ -283,7 +290,7 @@ namespace clinic_ivf.gui
             //FilterRow fr = new FilterRow(grfExpn);
             
             //grfpApmAll.ContextMenu = menuGw;
-            panel1.Controls.Add(grfpApmAll);
+            panel5.Controls.Add(grfpApmAll);
 
             theme1.SetTheme(grfpApmAll, "Office2016Colorful");
 
@@ -752,6 +759,7 @@ namespace clinic_ivf.gui
             pApm.doctor_anes = cboDtrAnes.Text;
             pApm.tvs_day = txtTvsDay.Text;
             pApm.tvs_time = cboTvsTime.Text;
+            pApm.opu_time = cboOPUTime.Text;
             return chk;
         }
         private void FrmAppointmentAdd_Load(object sender, EventArgs e)
