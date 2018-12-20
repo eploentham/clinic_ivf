@@ -16,6 +16,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Diagnostics;
 using System.Drawing;
+using System.Drawing.Imaging;
 using System.IO;
 using System.Linq;
 using System.Net;
@@ -51,10 +52,10 @@ namespace clinic_ivf.gui
         Image image1;
         C1FlexGrid grfImg, grfVs, grfpApm;
 
-        String filename = "";
+        String filename = "", picIDCard="pic_id_card.jpg";
         static String filenamepic = "", host="", user="", pass="";
         Color color;
-        Boolean flagImg = false;
+        Boolean flagImg = false, flagReadCard=false;
         String _CardReaderTFK2700 = "";
         enum NID_FIELD
         {
@@ -88,6 +89,14 @@ namespace clinic_ivf.gui
             ISSUE_NUM,  //12345678901234 //14-Char
             END
         };
+        RDNID mRDNIDWRAPPER = new RDNID();
+        string StartupPath = System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetEntryAssembly().Location);
+
+        public static string GetCurrentExecutingDirectory(System.Reflection.Assembly assembly)
+        {
+            string filePath = new Uri(System.Reflection.Assembly.GetExecutingAssembly().CodeBase).LocalPath;
+            return Path.GetDirectoryName(filePath);
+        }
         public FrmPatientAdd(IvfControl ic, String pttid, String pttoldid, String vsoldid)
         {
             InitializeComponent();
@@ -123,6 +132,10 @@ namespace clinic_ivf.gui
                 {
                     webcamname = device.Name;
                     //video.NewFrame += Video_NewFrame;
+                }
+                if (File.Exists(picIDCard))
+                {
+                    File.Delete(picIDCard);
                 }
             }
             catch (Exception ex)
@@ -201,6 +214,7 @@ namespace clinic_ivf.gui
             }
             //picPtt.Load("54158.jpg");
             picPtt.SizeMode = PictureBoxSizeMode.StretchImage;
+            
             //btnSavePic.Enabled = false;
         }
 
@@ -783,21 +797,55 @@ namespace clinic_ivf.gui
                 else
                 {
                     String re = ic.ivfDB.pttOldDB.insertPatientOld(ptt, txtStfConfirmID.Text);
-                    int chk = 0;
-                    if (int.TryParse(re, out chk))
+                    long chk = 0;
+                    if (long.TryParse(re, out chk))
                     {
                         if (!ic.iniC.statusAppDonor.Equals("1"))
                         {
                             //String re1 = ic.ivfDB.pttOldDB.insertPatientOld(ptt, txtStfConfirmID.Text);
                             String re1 = ic.ivfDB.pttDB.insertPatient(ptt, txtStfConfirmID.Text);
-                            if (int.TryParse(re1, out chk))
+                            if (long.TryParse(re1, out chk))
                             {
                                 if (txtID.Text.Equals(""))
                                 {
+                                    if (flagReadCard)
+                                    {
+                                        PatientImage ptti = new PatientImage();
+                                        ptti.patient_image_id = "";
+                                        ptti.t_patient_id = txtID.Text;
+                                        ptti.t_visit_id = "";
+                                        ptti.desc1 = "รูป ภาพถ่ายจากบัตรประชาชน";
+                                        ptti.desc2 = "";
+                                        ptti.desc3 = "";
+                                        ptti.desc4 = "";
+                                        ptti.active = "1";
+                                        ptti.remark = "";
+                                        ptti.date_create = "";
+                                        ptti.date_modi = "";
+                                        ptti.date_cancel = "";
+                                        ptti.user_create = "";
+                                        ptti.user_modi = "";
+                                        ptti.user_cancel = "";
+                                        ptti.image_path = "images/" + txtHn.Text.Replace("-", "") + "/" + picIDCard;
+                                        ptti.status_image = "5";
+                                        re = ic.ivfDB.pttImgDB.insertpatientImage(ptti, ic.cStf.staff_id);
+                                        //long chk = 0;
+                                        if (long.TryParse(re, out chk))
+                                        {
+                                            ic.savePicOPUtoServer(txtHn.Text.Replace("-", ""), filename, picIDCard);
+                                            grfImg.Rows[grfImg.Row].StyleNew.BackColor = color;
+                                            setGrfImg();
+                                            if (File.Exists(picIDCard))
+                                            {
+                                                File.Delete(picIDCard);
+                                            }
+                                        }
+                                    }
+
                                     PatientOld pttOld = new PatientOld();
                                     pttOld = ic.ivfDB.pttOldDB.selectByPk1(re);
                                     String re2 = ic.ivfDB.pttDB.updatePID(re1, re, pttOld.PIDS);
-                                    if (int.TryParse(re2, out chk))
+                                    if (long.TryParse(re2, out chk))
                                     {
                                         btnSave.Text = "Save";
                                         btnSave.Image = Resources.accept_database24;
@@ -2282,119 +2330,134 @@ namespace clinic_ivf.gui
         }
         protected int ReadCard()
         {
-            byte[] Licinfo = new byte[1024];
-            RDNID.getLicenseInfoRD(Licinfo);
-            m_lblDLXInfo.Text = aByteToString(Licinfo);
-            //String strTerminal = m_ListReaderCard.GetItemText(m_ListReaderCard.SelectedItem);
-            String strTerminal = _CardReaderTFK2700;
-            IntPtr obj = ic.selectReader(strTerminal);
-            
-            Int32 nInsertCard = 0;
-            nInsertCard = RDNID.connectCardRD(obj);
-            if (nInsertCard != 0)
+            try
             {
-                String m;
-                m = String.Format(" error no {0} ", nInsertCard);
-                MessageBox.Show(m);
+                byte[] Licinfo = new byte[1024];
+                RDNID.getLicenseInfoRD(Licinfo);
+                m_lblDLXInfo.Text = aByteToString(Licinfo);
+                //String strTerminal = m_ListReaderCard.GetItemText(m_ListReaderCard.SelectedItem);
+                String strTerminal = _CardReaderTFK2700;
+                IntPtr obj = ic.selectReader(strTerminal);
 
-                RDNID.disconnectCardRD(obj);
-                RDNID.deselectReaderRD(obj);
-                return nInsertCard;
-            }
-
-            byte[] id = new byte[30];
-            int res = RDNID.getNIDNumberRD(obj, id);
-            if (res != DefineConstants.NID_SUCCESS)
-                return res;
-            String NIDNum = aByteToString(id);
-
-
-
-            byte[] data = new byte[1024];
-            res = RDNID.getNIDTextRD(obj, data, data.Length);
-            if (res != DefineConstants.NID_SUCCESS)
-                return res;
-
-            String NIDData = aByteToString(data);
-            if (NIDData == "")
-            {
-                MessageBox.Show("Read Text error");
-            }
-            else
-            {
-                string[] fields = NIDData.Split('#');
-
-                //m_txtID.Text = NIDNum;                             // or use m_txtID.Text = fields[(int)NID_FIELD.NID_Number];
-                txtPid.Value = NIDNum;
-                String fullname = fields[(int)NID_FIELD.TITLE_T] + " " +
-                                    fields[(int)NID_FIELD.NAME_T] + " " +
-                                    fields[(int)NID_FIELD.MIDNAME_T] + " " +
-                                    fields[(int)NID_FIELD.SURNAME_T];
-                //m_txtFullNameT.Text = fullname;
-                txtPttName.Value = fields[(int)NID_FIELD.NAME_T] + " " + fields[(int)NID_FIELD.MIDNAME_T] + " ";
-                txtPttLName.Value = fields[(int)NID_FIELD.SURNAME_T];
-                txtPttNameE.Value = fields[(int)NID_FIELD.NAME_E] + " " + fields[(int)NID_FIELD.MIDNAME_E] + " ";
-                txtPttLNameE.Value = fields[(int)NID_FIELD.SURNAME_E];
-                //fullname = fields[(int)NID_FIELD.TITLE_E] + " " +
-                //                    fields[(int)NID_FIELD.NAME_E] + " " +
-                //                    fields[(int)NID_FIELD.MIDNAME_E] + " " +
-                //                    fields[(int)NID_FIELD.SURNAME_E];
-                //m_txtFullNameE.Text = fullname;
-
-                //m_txtBrithDate.Text = ic._yyyymmdd_(fields[(int)NID_FIELD.BIRTH_DATE]);
-                String dob = fields[(int)NID_FIELD.BIRTH_DATE];
-                txtAddrNo.Value = fields[(int)NID_FIELD.HOME_NO];
-                txtMoo.Value = fields[(int)NID_FIELD.MOO];
-                txtRoad.Value = fields[(int)NID_FIELD.TROK] + " " + fields[(int)NID_FIELD.SOI] + " "+ fields[(int)NID_FIELD.ROAD];
-                //m_txtAddress.Text = fields[(int)NID_FIELD.HOME_NO] + "   " +
-                //                        fields[(int)NID_FIELD.MOO] + "   " +
-                //                        fields[(int)NID_FIELD.TROK] + "   " +
-                //                        fields[(int)NID_FIELD.SOI] + "   " +
-                //                        fields[(int)NID_FIELD.ROAD] + "   " +
-                //                        fields[(int)NID_FIELD.TUMBON] + "   " +
-                //                        fields[(int)NID_FIELD.AMPHOE] + "   " +
-                //                        fields[(int)NID_FIELD.PROVINCE] + "   "
-                                        ;
-                if (fields[(int)NID_FIELD.GENDER] == "1")
+                Int32 nInsertCard = 0;
+                nInsertCard = RDNID.connectCardRD(obj);
+                if (nInsertCard != 0)
                 {
-                    //m_txtGender.Text = "ชาย";
-                    cboSex.SelectedIndex = 0;
+                    String m;
+                    m = String.Format(" error no {0} ", nInsertCard);
+                    MessageBox.Show(m);
+
+                    RDNID.disconnectCardRD(obj);
+                    RDNID.deselectReaderRD(obj);
+                    return nInsertCard;
+                }
+
+                byte[] id = new byte[30];
+                int res = RDNID.getNIDNumberRD(obj, id);
+                if (res != DefineConstants.NID_SUCCESS)
+                    return res;
+                String NIDNum = aByteToString(id);
+
+                byte[] data = new byte[1024];
+                res = RDNID.getNIDTextRD(obj, data, data.Length);
+                if (res != DefineConstants.NID_SUCCESS)
+                    return res;
+
+                String NIDData = aByteToString(data);
+                if (NIDData == "")
+                {
+                    MessageBox.Show("Read Text error");
                 }
                 else
                 {
-                    //m_txtGender.Text = "หญิง";
-                    cboSex.SelectedIndex = 1;
+                    string[] fields = NIDData.Split('#');
+
+                    //m_txtID.Text = NIDNum;                             // or use m_txtID.Text = fields[(int)NID_FIELD.NID_Number];
+                    txtPid.Value = NIDNum;
+                    String fullname = fields[(int)NID_FIELD.TITLE_T] + " " +
+                                        fields[(int)NID_FIELD.NAME_T] + " " +
+                                        fields[(int)NID_FIELD.MIDNAME_T] + " " +
+                                        fields[(int)NID_FIELD.SURNAME_T];
+                    //m_txtFullNameT.Text = fullname;
+                    txtPttName.Value = fields[(int)NID_FIELD.NAME_T] + " " + fields[(int)NID_FIELD.MIDNAME_T] + " ";
+                    txtPttLName.Value = fields[(int)NID_FIELD.SURNAME_T];
+                    txtPttNameE.Value = fields[(int)NID_FIELD.NAME_E] + " " + fields[(int)NID_FIELD.MIDNAME_E] + " ";
+                    txtPttLNameE.Value = fields[(int)NID_FIELD.SURNAME_E];
+                    //fullname = fields[(int)NID_FIELD.TITLE_E] + " " +
+                    //                    fields[(int)NID_FIELD.NAME_E] + " " +
+                    //                    fields[(int)NID_FIELD.MIDNAME_E] + " " +
+                    //                    fields[(int)NID_FIELD.SURNAME_E];
+                    //m_txtFullNameE.Text = fullname;
+
+                    //m_txtBrithDate.Text = ic._yyyymmdd_(fields[(int)NID_FIELD.BIRTH_DATE]);
+                    String dob = fields[(int)NID_FIELD.BIRTH_DATE];
+                    if (dob.Length >= 8)
+                    {
+                        dob = dob.Substring(0, 4) + "-" + dob.Substring(4, 2) + "-" + dob.Substring(dob.Length - 2);
+                        txtDob.Value = dob;
+                    }
+                    txtAddrNo.Value = fields[(int)NID_FIELD.HOME_NO];
+                    txtMoo.Value = fields[(int)NID_FIELD.MOO];
+                    txtRoad.Value = fields[(int)NID_FIELD.TROK] + " " + fields[(int)NID_FIELD.SOI] + " " + fields[(int)NID_FIELD.ROAD] + " " + fields[(int)NID_FIELD.TUMBON] + " " + fields[(int)NID_FIELD.AMPHOE] + " " + fields[(int)NID_FIELD.PROVINCE];
+                    //m_txtAddress.Text = fields[(int)NID_FIELD.HOME_NO] + "   " +
+                    //                        fields[(int)NID_FIELD.MOO] + "   " +
+                    //                        fields[(int)NID_FIELD.TROK] + "   " +
+                    //                        fields[(int)NID_FIELD.SOI] + "   " +
+                    //                        fields[(int)NID_FIELD.ROAD] + "   " +
+                    //                        fields[(int)NID_FIELD.TUMBON] + "   " +
+                    //                        fields[(int)NID_FIELD.AMPHOE] + "   " +
+                    //                        fields[(int)NID_FIELD.PROVINCE] + "   "
+                    ;
+                    if (fields[(int)NID_FIELD.GENDER] == "1")
+                    {
+                        //m_txtGender.Text = "ชาย";
+                        cboSex.SelectedIndex = 1;
+                        cboPrefix.Text = "Mr.";
+                    }
+                    else
+                    {
+                        //m_txtGender.Text = "หญิง";
+                        cboSex.SelectedIndex = 2;
+                        cboPrefix.Text = "Miss";
+                    }
+                    //m_txtIssueDate.Text = _yyyymmdd_(fields[(int)NID_FIELD.ISSUE_DATE]);
+                    //m_txtExpiryDate.Text = _yyyymmdd_(fields[(int)NID_FIELD.EXPIRY_DATE]);
+                    //if ("99999999" == m_txtExpiryDate.Text)
+                    //    m_txtExpiryDate.Text = "99999999 ตลอดชีพ";
+                    //m_txtIssueNum.Text = fields[(int)NID_FIELD.ISSUE_NUM];
                 }
-                //m_txtIssueDate.Text = _yyyymmdd_(fields[(int)NID_FIELD.ISSUE_DATE]);
-                //m_txtExpiryDate.Text = _yyyymmdd_(fields[(int)NID_FIELD.EXPIRY_DATE]);
-                //if ("99999999" == m_txtExpiryDate.Text)
-                //    m_txtExpiryDate.Text = "99999999 ตลอดชีพ";
-                //m_txtIssueNum.Text = fields[(int)NID_FIELD.ISSUE_NUM];
+
+                byte[] NIDPicture = new byte[1024 * 5];
+                int imgsize = NIDPicture.Length;
+                res = RDNID.getNIDPhotoRD(obj, NIDPicture, out imgsize);
+                if (res != DefineConstants.NID_SUCCESS)
+                    return res;
+
+                byte[] byteImage = NIDPicture;
+                if (byteImage == null)
+                {
+                    MessageBox.Show("Read Photo error");
+                }
+                else
+                {
+                    //m_picPhoto
+                    Image img = Image.FromStream(new MemoryStream(byteImage));
+                    //Bitmap MyImage = new Bitmap(img, m_picPhoto.Width - 2, m_picPhoto.Height - 2);
+                    Bitmap MyImage = new Bitmap(img, picPtt.Width - 2, picPtt.Height - 2);
+                    //m_picPhoto.Image = (Image)MyImage;
+                    picPtt.Image = (Image)MyImage;
+                    img.Save(picIDCard, ImageFormat.Jpeg);
+                    flagReadCard = true;
+                }
+
+                RDNID.disconnectCardRD(obj);
+                RDNID.deselectReaderRD(obj);
             }
-
-            byte[] NIDPicture = new byte[1024 * 5];
-            int imgsize = NIDPicture.Length;
-            res = RDNID.getNIDPhotoRD(obj, NIDPicture, out imgsize);
-            if (res != DefineConstants.NID_SUCCESS)
-                return res;
-
-            byte[] byteImage = NIDPicture;
-            if (byteImage == null)
+            catch(Exception ex)
             {
-                MessageBox.Show("Read Photo error");
+                MessageBox.Show("ReadCard " + ex.Message, "");
             }
-            else
-            {
-                //m_picPhoto
-                Image img = Image.FromStream(new MemoryStream(byteImage));
-                //Bitmap MyImage = new Bitmap(img, m_picPhoto.Width - 2, m_picPhoto.Height - 2);
-                Bitmap MyImage = new Bitmap(img, picPtt.Width - 2, picPtt.Height - 2);
-                //m_picPhoto.Image = (Image)MyImage;
-                picPtt.Image = (Image)MyImage;
-            }
-
-            RDNID.disconnectCardRD(obj);
-            RDNID.deselectReaderRD(obj);
+            
             return 0;
         }
         private void FrmPatientAdd_Load(object sender, EventArgs e)

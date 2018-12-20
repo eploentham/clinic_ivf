@@ -539,6 +539,37 @@ namespace clinic_ivf.control
         }
         public String ListCardReader()
         {
+            string fileName = StartupPath + "\\RDNIDLib.DLX";
+            if (System.IO.File.Exists(fileName) == false)
+            {
+                MessageBox.Show("RDNIDLib.DLX not found");
+            }
+
+            System.Version version = System.Reflection.Assembly.GetExecutingAssembly().GetName().Version;
+            //this.Text = String.Format("R&D NID Card VC# {0}.{1}.{2}.{3}", version.Major, version.Minor, version.Build, version.Revision);
+
+
+            byte[] _lic = String2Byte(fileName);
+
+            int nres = 0;
+            nres = RDNID.openNIDLibRD(_lic);
+            if (nres != 0)
+            {
+                String m;
+                m = String.Format(" error no {0} ", nres);
+                MessageBox.Show(m);
+            }
+
+            byte[] Licinfo = new byte[1024];
+
+            RDNID.getLicenseInfoRD(Licinfo);
+
+            //m_lblDLXInfo.Text = aByteToString(Licinfo);
+
+            byte[] Softinfo = new byte[1024];
+            RDNID.getSoftwareInfoRD(Softinfo);
+            //m_lblSoftwareInfo.Text = aByteToString(Softinfo);
+
             String re = "";
             byte[] szReaders = new byte[1024 * 2];
             int size = szReaders.Length;

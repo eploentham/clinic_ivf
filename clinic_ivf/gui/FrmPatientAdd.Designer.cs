@@ -32,6 +32,7 @@
             this.theme1 = new C1.Win.C1Themes.C1ThemeController();
             this.splitMain = new System.Windows.Forms.SplitContainer();
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
+            this.btnSmartcard = new C1.Win.C1Input.C1Button();
             this.txtA = new C1.Win.C1Input.C1TextBox();
             this.label27 = new System.Windows.Forms.Label();
             this.txtP = new C1.Win.C1Input.C1TextBox();
@@ -116,6 +117,7 @@
             this.tC1 = new C1.Win.C1Command.C1DockingTab();
             this.tabFamily = new C1.Win.C1Command.C1DockingTabPage();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.m_lblDLXInfo = new System.Windows.Forms.Label();
             this.cboName1Rl = new C1.Win.C1Input.C1ComboBox();
             this.label33 = new System.Windows.Forms.Label();
             this.cboName1Prefix = new C1.Win.C1Input.C1ComboBox();
@@ -200,8 +202,6 @@
             this.printDialog1 = new System.Windows.Forms.PrintDialog();
             this.cPdf = new C1.Win.C1Document.C1PdfDocumentSource(this.components);
             this._c1pdf = new C1.C1Pdf.C1PdfDocument();
-            this.btnSmartcard = new C1.Win.C1Input.C1Button();
-            this.m_lblDLXInfo = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.theme1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitMain)).BeginInit();
             this.splitMain.Panel1.SuspendLayout();
@@ -211,6 +211,7 @@
             this.splitContainer2.Panel1.SuspendLayout();
             this.splitContainer2.Panel2.SuspendLayout();
             this.splitContainer2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.btnSmartcard)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtA)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtP)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtG)).BeginInit();
@@ -315,7 +316,6 @@
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btnApm)).BeginInit();
             this.sB.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.btnSmartcard)).BeginInit();
             this.SuspendLayout();
             // 
             // theme1
@@ -451,6 +451,20 @@
             this.splitContainer2.SplitterDistance = 1153;
             this.splitContainer2.TabIndex = 0;
             this.theme1.SetTheme(this.splitContainer2, "(default)");
+            // 
+            // btnSmartcard
+            // 
+            this.btnSmartcard.Image = global::clinic_ivf.Properties.Resources.webpage24;
+            this.btnSmartcard.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnSmartcard.Location = new System.Drawing.Point(777, 274);
+            this.btnSmartcard.Name = "btnSmartcard";
+            this.btnSmartcard.Size = new System.Drawing.Size(93, 33);
+            this.btnSmartcard.TabIndex = 697;
+            this.btnSmartcard.Text = "Smard card";
+            this.btnSmartcard.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.theme1.SetTheme(this.btnSmartcard, "(default)");
+            this.btnSmartcard.UseVisualStyleBackColor = true;
+            this.btnSmartcard.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
             // 
             // txtA
             // 
@@ -1719,6 +1733,17 @@
             this.groupBox1.TabStop = false;
             this.theme1.SetTheme(this.groupBox1, "(default)");
             // 
+            // m_lblDLXInfo
+            // 
+            this.m_lblDLXInfo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.m_lblDLXInfo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.m_lblDLXInfo.Location = new System.Drawing.Point(9, 226);
+            this.m_lblDLXInfo.Name = "m_lblDLXInfo";
+            this.m_lblDLXInfo.Size = new System.Drawing.Size(635, 49);
+            this.m_lblDLXInfo.TabIndex = 611;
+            this.m_lblDLXInfo.Text = "DLX Info";
+            this.theme1.SetTheme(this.m_lblDLXInfo, "(default)");
+            // 
             // cboName1Rl
             // 
             this.cboName1Rl.AllowSpinLoop = false;
@@ -2905,29 +2930,6 @@
             this._c1pdf.UseFastTextOut = true;
             this._c1pdf.UseFontShaping = true;
             // 
-            // btnSmartcard
-            // 
-            this.btnSmartcard.Image = global::clinic_ivf.Properties.Resources.webpage24;
-            this.btnSmartcard.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnSmartcard.Location = new System.Drawing.Point(777, 274);
-            this.btnSmartcard.Name = "btnSmartcard";
-            this.btnSmartcard.Size = new System.Drawing.Size(93, 33);
-            this.btnSmartcard.TabIndex = 697;
-            this.btnSmartcard.Text = "Smard card";
-            this.btnSmartcard.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.theme1.SetTheme(this.btnSmartcard, "(default)");
-            this.btnSmartcard.UseVisualStyleBackColor = true;
-            this.btnSmartcard.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
-            // 
-            // m_lblDLXInfo
-            // 
-            this.m_lblDLXInfo.Location = new System.Drawing.Point(9, 226);
-            this.m_lblDLXInfo.Name = "m_lblDLXInfo";
-            this.m_lblDLXInfo.Size = new System.Drawing.Size(635, 49);
-            this.m_lblDLXInfo.TabIndex = 611;
-            this.m_lblDLXInfo.Text = "DLX Info";
-            this.theme1.SetTheme(this.m_lblDLXInfo, "(default)");
-            // 
             // FrmPatientAdd
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -2948,6 +2950,7 @@
             this.splitContainer2.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).EndInit();
             this.splitContainer2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.btnSmartcard)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtA)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtP)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtG)).EndInit();
@@ -3056,7 +3059,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.btnApm)).EndInit();
             this.sB.ResumeLayout(false);
             this.sB.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.btnSmartcard)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
