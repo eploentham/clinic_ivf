@@ -11,11 +11,11 @@ using System.Windows.Forms;
 
 namespace clinic_ivf.gui
 {
-    public partial class FrmLabOPUReq : Form
+    public partial class FrmLabReq : Form
     {
         IvfControl ic;
 
-        public FrmLabOPUReq(IvfControl ic)
+        public FrmLabReq(IvfControl ic)
         {
             InitializeComponent();
             this.ic = ic;

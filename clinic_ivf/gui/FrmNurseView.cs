@@ -687,7 +687,7 @@ namespace clinic_ivf.gui
             //openApmAdd(pttId, vsid, name);
             if (MessageBox.Show("ต้องการป้อน LAB request FORM A\n  hn number " + chk + " \n name " + name, "", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == DialogResult.OK)
             {
-                FrmLabOPUReq frm = new FrmLabOPUReq(ic);
+                FrmLabReq frm = new FrmLabReq(ic);
                 frm.ShowDialog(this);
                 //grfReq.Rows.Remove(grfReq.Row);
                 //openPatientAdd(id, name);
