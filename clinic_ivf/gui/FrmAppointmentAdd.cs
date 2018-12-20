@@ -26,12 +26,7 @@ namespace clinic_ivf.gui
         Font ff, ffB;
         PatientAppointment pApm;
         Patient ptt;
-
-        private void FrmAppointmentAdd_Load(object sender, EventArgs e)
-        {
-
-        }
-
+        
         Visit vs;
 
         C1SuperTooltip stt;
@@ -66,6 +61,10 @@ namespace clinic_ivf.gui
             ff = txtHn.Font;
             imgCorr = Resources.red_checkmark_png_16;
             imgTran = Resources.red_checkmark_png_51;
+        }
+        private void FrmAppointmentAdd_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }
