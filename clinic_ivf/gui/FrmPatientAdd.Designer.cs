@@ -191,15 +191,17 @@
             this.btnVisit = new C1.Win.C1Input.C1Button();
             this.tabImage = new C1.Win.C1Command.C1DockingTabPage();
             this.pnImage = new System.Windows.Forms.Panel();
+            this.tabApm = new C1.Win.C1Command.C1DockingTabPage();
+            this.pnApm = new System.Windows.Forms.Panel();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.btnApm = new C1.Win.C1Input.C1Button();
             this.sB = new System.Windows.Forms.StatusStrip();
             this.sB1 = new System.Windows.Forms.ToolStripStatusLabel();
             this.printDialog1 = new System.Windows.Forms.PrintDialog();
             this.cPdf = new C1.Win.C1Document.C1PdfDocumentSource(this.components);
             this._c1pdf = new C1.C1Pdf.C1PdfDocument();
-            this.tabApm = new C1.Win.C1Command.C1DockingTabPage();
-            this.pnApm = new System.Windows.Forms.Panel();
-            this.panel3 = new System.Windows.Forms.Panel();
-            this.btnApm = new C1.Win.C1Input.C1Button();
+            this.btnSmartcard = new C1.Win.C1Input.C1Button();
+            this.m_lblDLXInfo = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.theme1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitMain)).BeginInit();
             this.splitMain.Panel1.SuspendLayout();
@@ -309,10 +311,11 @@
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btnVisit)).BeginInit();
             this.tabImage.SuspendLayout();
-            this.sB.SuspendLayout();
             this.tabApm.SuspendLayout();
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btnApm)).BeginInit();
+            this.sB.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.btnSmartcard)).BeginInit();
             this.SuspendLayout();
             // 
             // theme1
@@ -357,6 +360,7 @@
             // splitContainer2.Panel1
             // 
             this.splitContainer2.Panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.splitContainer2.Panel1.Controls.Add(this.btnSmartcard);
             this.splitContainer2.Panel1.Controls.Add(this.txtA);
             this.splitContainer2.Panel1.Controls.Add(this.label27);
             this.splitContainer2.Panel1.Controls.Add(this.txtP);
@@ -1675,6 +1679,7 @@
             // groupBox1
             // 
             this.groupBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.groupBox1.Controls.Add(this.m_lblDLXInfo);
             this.groupBox1.Controls.Add(this.cboName1Rl);
             this.groupBox1.Controls.Add(this.label33);
             this.groupBox1.Controls.Add(this.cboName1Prefix);
@@ -2815,44 +2820,6 @@
             this.pnImage.TabIndex = 0;
             this.theme1.SetTheme(this.pnImage, "(default)");
             // 
-            // sB
-            // 
-            this.sB.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(222)))), ((int)(((byte)(222)))));
-            this.sB.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.sB1});
-            this.sB.Location = new System.Drawing.Point(0, 718);
-            this.sB.Name = "sB";
-            this.sB.Size = new System.Drawing.Size(1457, 22);
-            this.sB.TabIndex = 526;
-            this.sB.Text = "statusStrip1";
-            this.theme1.SetTheme(this.sB, "Office2013DarkGray");
-            // 
-            // sB1
-            // 
-            this.sB1.Name = "sB1";
-            this.sB1.Size = new System.Drawing.Size(118, 17);
-            this.sB1.Text = "toolStripStatusLabel1";
-            // 
-            // printDialog1
-            // 
-            this.printDialog1.UseEXDialog = true;
-            // 
-            // _c1pdf
-            // 
-            this._c1pdf.DocumentInfo.Author = "";
-            this._c1pdf.DocumentInfo.CreationDate = new System.DateTime(((long)(0)));
-            this._c1pdf.DocumentInfo.Creator = "";
-            this._c1pdf.DocumentInfo.Keywords = "";
-            this._c1pdf.DocumentInfo.Producer = "ComponentOne C1Pdf";
-            this._c1pdf.DocumentInfo.Subject = "";
-            this._c1pdf.DocumentInfo.Title = "";
-            this._c1pdf.MaxHeaderBookmarkLevel = 0;
-            this._c1pdf.PdfVersion = "1.3";
-            this._c1pdf.RefDC = null;
-            this._c1pdf.RotateAngle = 0F;
-            this._c1pdf.UseFastTextOut = true;
-            this._c1pdf.UseFontShaping = true;
-            // 
             // tabApm
             // 
             this.tabApm.Controls.Add(this.pnApm);
@@ -2899,6 +2866,67 @@
             this.theme1.SetTheme(this.btnApm, "(default)");
             this.btnApm.UseVisualStyleBackColor = true;
             this.btnApm.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            // 
+            // sB
+            // 
+            this.sB.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(222)))), ((int)(((byte)(222)))));
+            this.sB.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.sB1});
+            this.sB.Location = new System.Drawing.Point(0, 718);
+            this.sB.Name = "sB";
+            this.sB.Size = new System.Drawing.Size(1457, 22);
+            this.sB.TabIndex = 526;
+            this.sB.Text = "statusStrip1";
+            this.theme1.SetTheme(this.sB, "Office2013DarkGray");
+            // 
+            // sB1
+            // 
+            this.sB1.Name = "sB1";
+            this.sB1.Size = new System.Drawing.Size(118, 17);
+            this.sB1.Text = "toolStripStatusLabel1";
+            // 
+            // printDialog1
+            // 
+            this.printDialog1.UseEXDialog = true;
+            // 
+            // _c1pdf
+            // 
+            this._c1pdf.DocumentInfo.Author = "";
+            this._c1pdf.DocumentInfo.CreationDate = new System.DateTime(((long)(0)));
+            this._c1pdf.DocumentInfo.Creator = "";
+            this._c1pdf.DocumentInfo.Keywords = "";
+            this._c1pdf.DocumentInfo.Producer = "ComponentOne C1Pdf";
+            this._c1pdf.DocumentInfo.Subject = "";
+            this._c1pdf.DocumentInfo.Title = "";
+            this._c1pdf.MaxHeaderBookmarkLevel = 0;
+            this._c1pdf.PdfVersion = "1.3";
+            this._c1pdf.RefDC = null;
+            this._c1pdf.RotateAngle = 0F;
+            this._c1pdf.UseFastTextOut = true;
+            this._c1pdf.UseFontShaping = true;
+            // 
+            // btnSmartcard
+            // 
+            this.btnSmartcard.Image = global::clinic_ivf.Properties.Resources.webpage24;
+            this.btnSmartcard.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnSmartcard.Location = new System.Drawing.Point(777, 274);
+            this.btnSmartcard.Name = "btnSmartcard";
+            this.btnSmartcard.Size = new System.Drawing.Size(93, 33);
+            this.btnSmartcard.TabIndex = 697;
+            this.btnSmartcard.Text = "Smard card";
+            this.btnSmartcard.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.theme1.SetTheme(this.btnSmartcard, "(default)");
+            this.btnSmartcard.UseVisualStyleBackColor = true;
+            this.btnSmartcard.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            // 
+            // m_lblDLXInfo
+            // 
+            this.m_lblDLXInfo.Location = new System.Drawing.Point(9, 226);
+            this.m_lblDLXInfo.Name = "m_lblDLXInfo";
+            this.m_lblDLXInfo.Size = new System.Drawing.Size(635, 49);
+            this.m_lblDLXInfo.TabIndex = 611;
+            this.m_lblDLXInfo.Text = "DLX Info";
+            this.theme1.SetTheme(this.m_lblDLXInfo, "(default)");
             // 
             // FrmPatientAdd
             // 
@@ -3023,11 +3051,12 @@
             this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.btnVisit)).EndInit();
             this.tabImage.ResumeLayout(false);
-            this.sB.ResumeLayout(false);
-            this.sB.PerformLayout();
             this.tabApm.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.btnApm)).EndInit();
+            this.sB.ResumeLayout(false);
+            this.sB.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.btnSmartcard)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -3206,5 +3235,7 @@
         private System.Windows.Forms.Panel pnApm;
         private System.Windows.Forms.Panel panel3;
         private C1.Win.C1Input.C1Button btnApm;
+        private C1.Win.C1Input.C1Button btnSmartcard;
+        private System.Windows.Forms.Label m_lblDLXInfo;
     }
 }

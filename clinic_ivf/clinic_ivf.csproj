@@ -619,6 +619,9 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="RDNIDLib.DLX">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Include="report\LabOPU.xsc">
       <DependentUpon>LabOPU.xsd</DependentUpon>
     </None>
@@ -1305,6 +1308,11 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\arrow_true_1.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="RDNIDlib.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

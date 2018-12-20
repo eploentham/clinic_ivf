@@ -55,6 +55,39 @@ namespace clinic_ivf.gui
         static String filenamepic = "", host="", user="", pass="";
         Color color;
         Boolean flagImg = false;
+        String _CardReaderTFK2700 = "";
+        enum NID_FIELD
+        {
+            NID_Number,   //1234567890123#
+
+            TITLE_T,    //Thai title#
+            NAME_T,     //Thai name#
+            MIDNAME_T,  //Thai mid name#
+            SURNAME_T,  //Thai surname#
+
+            TITLE_E,    //Eng title#
+            NAME_E,     //Eng name#
+            MIDNAME_E,  //Eng mid name#
+            SURNAME_E,  //Eng surname#
+
+            HOME_NO,    //12/34#
+            MOO,        //10#
+            TROK,       //ตรอกxxx#
+            SOI,        //ซอยxxx#
+            ROAD,       //ถนนxxx#
+            TUMBON,     //ตำบลxxx#
+            AMPHOE,     //อำเภอxxx#
+            PROVINCE,   //จังหวัดxxx#
+
+            GENDER,     //1#			//1=male,2=female
+
+            BIRTH_DATE, //25200131#	    //YYYYMMDD 
+            ISSUE_PLACE,//xxxxxxx#      //
+            ISSUE_DATE, //25580131#     //YYYYMMDD 
+            EXPIRY_DATE,//25680130      //YYYYMMDD 
+            ISSUE_NUM,  //12345678901234 //14-Char
+            END
+        };
         public FrmPatientAdd(IvfControl ic, String pttid, String pttoldid, String vsoldid)
         {
             InitializeComponent();
@@ -150,6 +183,7 @@ namespace clinic_ivf.gui
             chkCongenital.CheckedChanged += ChkCongenital_CheckedChanged;
             chkDenyAllergy.CheckedChanged += ChkDenyAllergy_CheckedChanged;
             btnApm.Click += BtnApm_Click;
+            btnSmartcard.Click += BtnSmartcard_Click;
 
             setKeyEnter();
 
@@ -168,6 +202,12 @@ namespace clinic_ivf.gui
             //picPtt.Load("54158.jpg");
             picPtt.SizeMode = PictureBoxSizeMode.StretchImage;
             //btnSavePic.Enabled = false;
+        }
+
+        private void BtnSmartcard_Click(object sender, EventArgs e)
+        {
+            //throw new NotImplementedException();
+            ReadCard();
         }
 
         private void BtnApm_Click(object sender, EventArgs e)
@@ -2230,6 +2270,133 @@ namespace clinic_ivf.gui
         {
             return RenderParagraph(text, font, rcPage, rc, false, false);
         }
+        static string aByteToString(byte[] b)
+        {
+            Encoding ut = Encoding.GetEncoding(874); // 874 for Thai langauge
+            int i;
+            for (i = 0; b[i] != 0; i++) ;
+
+            string s = ut.GetString(b);
+            s = s.Substring(0, i);
+            return s;
+        }
+        protected int ReadCard()
+        {
+            byte[] Licinfo = new byte[1024];
+            RDNID.getLicenseInfoRD(Licinfo);
+            m_lblDLXInfo.Text = aByteToString(Licinfo);
+            //String strTerminal = m_ListReaderCard.GetItemText(m_ListReaderCard.SelectedItem);
+            String strTerminal = _CardReaderTFK2700;
+            IntPtr obj = ic.selectReader(strTerminal);
+            
+            Int32 nInsertCard = 0;
+            nInsertCard = RDNID.connectCardRD(obj);
+            if (nInsertCard != 0)
+            {
+                String m;
+                m = String.Format(" error no {0} ", nInsertCard);
+                MessageBox.Show(m);
+
+                RDNID.disconnectCardRD(obj);
+                RDNID.deselectReaderRD(obj);
+                return nInsertCard;
+            }
+
+            byte[] id = new byte[30];
+            int res = RDNID.getNIDNumberRD(obj, id);
+            if (res != DefineConstants.NID_SUCCESS)
+                return res;
+            String NIDNum = aByteToString(id);
+
+
+
+            byte[] data = new byte[1024];
+            res = RDNID.getNIDTextRD(obj, data, data.Length);
+            if (res != DefineConstants.NID_SUCCESS)
+                return res;
+
+            String NIDData = aByteToString(data);
+            if (NIDData == "")
+            {
+                MessageBox.Show("Read Text error");
+            }
+            else
+            {
+                string[] fields = NIDData.Split('#');
+
+                //m_txtID.Text = NIDNum;                             // or use m_txtID.Text = fields[(int)NID_FIELD.NID_Number];
+                txtPid.Value = NIDNum;
+                String fullname = fields[(int)NID_FIELD.TITLE_T] + " " +
+                                    fields[(int)NID_FIELD.NAME_T] + " " +
+                                    fields[(int)NID_FIELD.MIDNAME_T] + " " +
+                                    fields[(int)NID_FIELD.SURNAME_T];
+                //m_txtFullNameT.Text = fullname;
+                txtPttName.Value = fields[(int)NID_FIELD.NAME_T] + " " + fields[(int)NID_FIELD.MIDNAME_T] + " ";
+                txtPttLName.Value = fields[(int)NID_FIELD.SURNAME_T];
+                txtPttNameE.Value = fields[(int)NID_FIELD.NAME_E] + " " + fields[(int)NID_FIELD.MIDNAME_E] + " ";
+                txtPttLNameE.Value = fields[(int)NID_FIELD.SURNAME_E];
+                //fullname = fields[(int)NID_FIELD.TITLE_E] + " " +
+                //                    fields[(int)NID_FIELD.NAME_E] + " " +
+                //                    fields[(int)NID_FIELD.MIDNAME_E] + " " +
+                //                    fields[(int)NID_FIELD.SURNAME_E];
+                //m_txtFullNameE.Text = fullname;
+
+                //m_txtBrithDate.Text = ic._yyyymmdd_(fields[(int)NID_FIELD.BIRTH_DATE]);
+                String dob = fields[(int)NID_FIELD.BIRTH_DATE];
+                txtAddrNo.Value = fields[(int)NID_FIELD.HOME_NO];
+                txtMoo.Value = fields[(int)NID_FIELD.MOO];
+                txtRoad.Value = fields[(int)NID_FIELD.TROK] + " " + fields[(int)NID_FIELD.SOI] + " "+ fields[(int)NID_FIELD.ROAD];
+                //m_txtAddress.Text = fields[(int)NID_FIELD.HOME_NO] + "   " +
+                //                        fields[(int)NID_FIELD.MOO] + "   " +
+                //                        fields[(int)NID_FIELD.TROK] + "   " +
+                //                        fields[(int)NID_FIELD.SOI] + "   " +
+                //                        fields[(int)NID_FIELD.ROAD] + "   " +
+                //                        fields[(int)NID_FIELD.TUMBON] + "   " +
+                //                        fields[(int)NID_FIELD.AMPHOE] + "   " +
+                //                        fields[(int)NID_FIELD.PROVINCE] + "   "
+                                        ;
+                if (fields[(int)NID_FIELD.GENDER] == "1")
+                {
+                    //m_txtGender.Text = "ชาย";
+                    cboSex.SelectedIndex = 0;
+                }
+                else
+                {
+                    //m_txtGender.Text = "หญิง";
+                    cboSex.SelectedIndex = 1;
+                }
+                //m_txtIssueDate.Text = _yyyymmdd_(fields[(int)NID_FIELD.ISSUE_DATE]);
+                //m_txtExpiryDate.Text = _yyyymmdd_(fields[(int)NID_FIELD.EXPIRY_DATE]);
+                //if ("99999999" == m_txtExpiryDate.Text)
+                //    m_txtExpiryDate.Text = "99999999 ตลอดชีพ";
+                //m_txtIssueNum.Text = fields[(int)NID_FIELD.ISSUE_NUM];
+            }
+
+            byte[] NIDPicture = new byte[1024 * 5];
+            int imgsize = NIDPicture.Length;
+            res = RDNID.getNIDPhotoRD(obj, NIDPicture, out imgsize);
+            if (res != DefineConstants.NID_SUCCESS)
+                return res;
+
+            byte[] byteImage = NIDPicture;
+            if (byteImage == null)
+            {
+                MessageBox.Show("Read Photo error");
+            }
+            else
+            {
+                //m_picPhoto
+                Image img = Image.FromStream(new MemoryStream(byteImage));
+                //Bitmap MyImage = new Bitmap(img, m_picPhoto.Width - 2, m_picPhoto.Height - 2);
+                Bitmap MyImage = new Bitmap(img, picPtt.Width - 2, picPtt.Height - 2);
+                //m_picPhoto.Image = (Image)MyImage;
+                picPtt.Image = (Image)MyImage;
+            }
+
+            RDNID.disconnectCardRD(obj);
+            RDNID.deselectReaderRD(obj);
+            return 0;
+        }
         private void FrmPatientAdd_Load(object sender, EventArgs e)
         {
             tC1.SelectedTab = tabFamily;
@@ -2244,6 +2411,7 @@ namespace clinic_ivf.gui
                 theme1.SetTheme(sB, "Office2010Red");
             }
             txtMoo.Value = System.DateTime.Now.Year.ToString();
+            _CardReaderTFK2700 = ic.ListCardReader();
             //theme1.SetTheme(splitContainer1, ic.theme);
             //theme1.SetTheme(splitContainer2, ic.theme);
             //theme1.SetTheme(grfDay2, ic.theme);
