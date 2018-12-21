@@ -11,6 +11,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -33,6 +34,7 @@ namespace clinic_ivf.gui
         C1SuperErrorProvider sep;
         int colId = 1, colAppointment = 4, colDate = 2, colTime = 3, colDoctor = 5, colSp = 6, colNotice=7, colE2=8, colLh=9, colEndo=10, colPrl=10, colFsh=11, colRt=12, colLt=13;
         Image imgCorr, imgTran;
+        static String filenamepic = "";
 
         public FrmAppointmentDonorAdd(IvfControl ic, String papmId, String pttid, String vsid)
         {
@@ -279,6 +281,28 @@ namespace clinic_ivf.gui
             ic.setC1Combo(cboOPUTime, pApm.opu_time);
             ChkTvs_CheckedChanged(null, null);
             ChkOPU_CheckedChanged(null, null);
+            PatientImage pttI = new PatientImage();
+            pttI = ic.ivfDB.pttImgDB.selectByPttIDStatus4(txtID.Text);
+            filenamepic = pttI.image_path;
+            Thread threadA = new Thread(new ParameterizedThreadStart(ExecuteA));
+            threadA.Start();
+        }
+        private void ExecuteA(Object obj)
+        {
+            //Console.WriteLine("Executing parameterless thread!");
+            try
+            {
+                setPic(new Bitmap(ic.ftpC.download(filenamepic)));
+            }
+            catch (Exception ex)
+            {
+
+            }
+        }
+        private void setPic(Bitmap bitmap)
+        {
+            m_picPhoto.Image = bitmap;
+            m_picPhoto.SizeMode = PictureBoxSizeMode.StretchImage;
         }
         private void initGrfpApmAll()
         {

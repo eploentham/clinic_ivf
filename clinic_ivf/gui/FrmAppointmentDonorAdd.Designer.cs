@@ -260,9 +260,9 @@
             this.panel5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
             this.panel5.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.panel5.Location = new System.Drawing.Point(0, 185);
+            this.panel5.Location = new System.Drawing.Point(0, 216);
             this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(211, 332);
+            this.panel5.Size = new System.Drawing.Size(211, 301);
             this.panel5.TabIndex = 14;
             this.theme1.SetTheme(this.panel5, "(default)");
             // 
@@ -274,7 +274,7 @@
             this.panel4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
             this.panel4.Location = new System.Drawing.Point(0, 0);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(211, 185);
+            this.panel4.Size = new System.Drawing.Size(211, 216);
             this.panel4.TabIndex = 13;
             this.theme1.SetTheme(this.panel4, "(default)");
             // 
@@ -283,7 +283,7 @@
             this.m_picPhoto.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.m_picPhoto.Location = new System.Drawing.Point(9, 3);
             this.m_picPhoto.Name = "m_picPhoto";
-            this.m_picPhoto.Size = new System.Drawing.Size(143, 172);
+            this.m_picPhoto.Size = new System.Drawing.Size(162, 207);
             this.m_picPhoto.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.m_picPhoto.TabIndex = 12;
             this.m_picPhoto.TabStop = false;
