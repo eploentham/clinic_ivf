@@ -33,16 +33,18 @@
             this.theme1 = new C1.Win.C1Themes.C1ThemeController();
             this.gB = new System.Windows.Forms.GroupBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.chkToday = new C1.Win.C1Input.C1CheckBox();
             this.label4 = new System.Windows.Forms.Label();
             this.txtSearch = new C1.Win.C1Input.C1TextBox();
             this.btnNew = new C1.Win.C1Input.C1Button();
-            this.chkToday = new C1.Win.C1Input.C1CheckBox();
+            this.btnSmartcard = new C1.Win.C1Input.C1Button();
             this.sB.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.theme1)).BeginInit();
             this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.chkToday)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtSearch)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnNew)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.chkToday)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnSmartcard)).BeginInit();
             this.SuspendLayout();
             // 
             // sB
@@ -81,6 +83,7 @@
             // groupBox1
             // 
             this.groupBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.groupBox1.Controls.Add(this.btnSmartcard);
             this.groupBox1.Controls.Add(this.chkToday);
             this.groupBox1.Controls.Add(this.label4);
             this.groupBox1.Controls.Add(this.txtSearch);
@@ -94,6 +97,25 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Search";
             this.theme1.SetTheme(this.groupBox1, "(default)");
+            // 
+            // chkToday
+            // 
+            this.chkToday.BackColor = System.Drawing.Color.Transparent;
+            this.chkToday.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
+            this.chkToday.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.chkToday.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.chkToday.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chkToday.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.chkToday.Location = new System.Drawing.Point(346, 15);
+            this.chkToday.Name = "chkToday";
+            this.chkToday.Padding = new System.Windows.Forms.Padding(4, 1, 1, 1);
+            this.chkToday.Size = new System.Drawing.Size(104, 24);
+            this.chkToday.TabIndex = 581;
+            this.chkToday.Text = "Today";
+            this.theme1.SetTheme(this.chkToday, "(default)");
+            this.chkToday.UseVisualStyleBackColor = true;
+            this.chkToday.Value = null;
+            this.chkToday.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
             // 
             // label4
             // 
@@ -132,24 +154,19 @@
             this.btnNew.UseVisualStyleBackColor = true;
             this.btnNew.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
             // 
-            // chkToday
+            // btnSmartcard
             // 
-            this.chkToday.BackColor = System.Drawing.Color.Transparent;
-            this.chkToday.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
-            this.chkToday.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.chkToday.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.chkToday.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chkToday.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.chkToday.Location = new System.Drawing.Point(346, 15);
-            this.chkToday.Name = "chkToday";
-            this.chkToday.Padding = new System.Windows.Forms.Padding(4, 1, 1, 1);
-            this.chkToday.Size = new System.Drawing.Size(104, 24);
-            this.chkToday.TabIndex = 581;
-            this.chkToday.Text = "Today";
-            this.theme1.SetTheme(this.chkToday, "(default)");
-            this.chkToday.UseVisualStyleBackColor = true;
-            this.chkToday.Value = null;
-            this.chkToday.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            this.btnSmartcard.Image = global::clinic_ivf.Properties.Resources.webpage24;
+            this.btnSmartcard.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnSmartcard.Location = new System.Drawing.Point(456, 11);
+            this.btnSmartcard.Name = "btnSmartcard";
+            this.btnSmartcard.Size = new System.Drawing.Size(93, 33);
+            this.btnSmartcard.TabIndex = 698;
+            this.btnSmartcard.Text = "Smard card";
+            this.btnSmartcard.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.theme1.SetTheme(this.btnSmartcard, "(default)");
+            this.btnSmartcard.UseVisualStyleBackColor = true;
+            this.btnSmartcard.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
             // 
             // FrmPatientView
             // 
@@ -167,9 +184,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.theme1)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.chkToday)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtSearch)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnNew)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.chkToday)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnSmartcard)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -186,5 +204,6 @@
         private System.Windows.Forms.Label label4;
         private C1.Win.C1Input.C1TextBox txtSearch;
         private C1.Win.C1Input.C1CheckBox chkToday;
+        private C1.Win.C1Input.C1Button btnSmartcard;
     }
 }

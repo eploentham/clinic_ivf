@@ -597,8 +597,9 @@ namespace clinic_ivf.objdb
         {
             Patient cop1 = new Patient();
             DataTable dt = new DataTable();
-            String sql = "select ptt.* " +
+            String sql = "select ptt.*,fpp.patient_prefix_description  " +
                 "From " + ptt.table + " ptt " +
+                "Left join f_patient_prefix fpp on fpp.f_patient_prefix_id = ptt.f_patient_prefix_id " +
                 "Where ptt." + ptt.t_patient_id_old + " ='" + pttId + "' ";
             dt = conn.selectData(conn.conn, sql);
             cop1 = setPatient(dt);
@@ -613,6 +614,19 @@ namespace clinic_ivf.objdb
                 "Left join f_patient_prefix fpp on fpp.f_patient_prefix_id = ptt.f_patient_prefix_id " +                
                 "Where ptt." + ptt.pkField + " ='" + pttId + "' " +
                 "";
+            dt = conn.selectData(conn.conn, sql);
+            cop1 = setPatient(dt);
+            return cop1;
+        }
+        public Patient selectByPID(String pttId)
+        {
+            Patient cop1 = new Patient();
+            DataTable dt = new DataTable();
+            String sql = "select ptt.*,fpp.patient_prefix_description " +
+                "From " + ptt.table + " ptt " +
+                "Left join f_patient_prefix fpp on fpp.f_patient_prefix_id = ptt.f_patient_prefix_id " +
+                "Where ptt." + ptt.pid + " ='" + pttId + "' " +
+                "limit 0,1";
             dt = conn.selectData(conn.conn, sql);
             cop1 = setPatient(dt);
             return cop1;
@@ -829,6 +843,7 @@ namespace clinic_ivf.objdb
                 ptt1.p = dt.Rows[0][ptt.p].ToString();
                 ptt1.a = dt.Rows[0][ptt.a].ToString();
                 ptt1.g = dt.Rows[0][ptt.g].ToString();
+                //ptt1.pid = dt.Rows[0][ptt.pid].ToString();
             }
             else
             {
@@ -836,7 +851,7 @@ namespace clinic_ivf.objdb
             }
             return ptt1;
         }
-        private Patient setPatient1(Patient stf1)
+        public Patient setPatient1(Patient stf1)
         {
             stf1.t_patient_id = "";
             stf1.patient_hn = "";

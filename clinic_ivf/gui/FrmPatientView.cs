@@ -56,9 +56,16 @@ namespace clinic_ivf.gui
 
             btnNew.Click += BtnNew_Click;
             txtSearch.KeyUp += TxtSearch_KeyUp;
+            btnSmartcard.Click += BtnSmartcard_Click;
 
             initGrfPtt();
             setGrfPtt("");
+        }
+
+        private void BtnSmartcard_Click(object sender, EventArgs e)
+        {
+            //throw new NotImplementedException();
+
         }
 
         private void TxtSearch_KeyUp(object sender, KeyEventArgs e)

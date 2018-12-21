@@ -122,6 +122,7 @@ namespace clinic_ivf.gui
 
             stt = new C1SuperTooltip();
             sep = new C1SuperErrorProvider();
+            ptt = new Patient();
             image1 = null;
             try
             {
@@ -1742,9 +1743,20 @@ namespace clinic_ivf.gui
             frm.Dispose();
             setGrfpApmDonor(txtID.Text);
         }
-        private void setControlDonor(String pttid)
+        private void setControlDonor(String pttid, String pid)
         {
-            ptt = ic.ivfDB.pttDB.selectByPk1(pttid);
+            ptt = ic.ivfDB.pttDB.setPatient1(ptt);
+            if (!pttid.Equals(""))
+            {
+                ptt = ic.ivfDB.pttDB.selectByPk1(pttid);
+            }
+            else
+            {
+                if (!pid.Equals(""))
+                {
+                    ptt = ic.ivfDB.pttDB.selectByPID(pid);
+                }
+            }
 
             if (ptt.t_patient_id.Equals(""))
             {
@@ -1964,7 +1976,7 @@ namespace clinic_ivf.gui
             //pttO1 = ic.ivfDB.pttOldDB.selectByPk1(pttid);
             if (ic.iniC.statusAppDonor.Equals("1"))
             {
-                setControlDonor(pttId);
+                setControlDonor(pttId,"");
             }
             else
             {
@@ -2446,8 +2458,12 @@ namespace clinic_ivf.gui
                     Bitmap MyImage = new Bitmap(img, picPtt.Width - 2, picPtt.Height - 2);
                     //m_picPhoto.Image = (Image)MyImage;
                     picPtt.Image = (Image)MyImage;
-                    img.Save(picIDCard, ImageFormat.Jpeg);
-                    flagReadCard = true;
+                    setControlDonor("", txtPid.Text);
+                    if (txtID.Text.Equals(""))
+                    {
+                        img.Save(picIDCard, ImageFormat.Jpeg);
+                        flagReadCard = true;
+                    }
                 }
 
                 RDNID.disconnectCardRD(obj);

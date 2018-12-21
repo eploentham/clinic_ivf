@@ -240,9 +240,11 @@ namespace clinic_ivf.gui
                 ptt = ic.ivfDB.pttDB.selectByPk1(pttid);
                 if (ptt.t_patient_id.Equals(""))
                 {
-                    ptt = ic.ivfDB.pttDB.selectByIDold(pttid);
+                    if (!pttOid.Equals(""))
+                    {
+                        ptt = ic.ivfDB.pttDB.selectByIDold(pttOid);
+                    }
                 }
-
                 txtHn.Value = ptt.patient_hn;
                 txtPttId.Value = ptt.t_patient_id;
                 txtPttName.Value = ptt.patient_firstname;

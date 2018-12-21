@@ -1743,6 +1743,7 @@
             this.m_lblDLXInfo.TabIndex = 611;
             this.m_lblDLXInfo.Text = "DLX Info";
             this.theme1.SetTheme(this.m_lblDLXInfo, "(default)");
+            this.m_lblDLXInfo.Visible = false;
             // 
             // cboName1Rl
             // 
