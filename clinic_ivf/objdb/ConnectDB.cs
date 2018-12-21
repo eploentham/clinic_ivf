@@ -76,7 +76,12 @@ namespace clinic_ivf.objdb
             catch (Exception ex)
             {
                 MessageBox.Show("HResult " + ex.HResult + "\n" + "Message" + ex.Message + "\n" + sql, "Error");
+                if (con.State == ConnectionState.Open)
+                {
+                    //con.Close();
+                }
                 throw new Exception(ex.Message, ex);
+                
             }
             finally
             {

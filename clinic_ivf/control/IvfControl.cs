@@ -346,7 +346,20 @@ namespace clinic_ivf.control
                 }
             }
         }
-        
+        public void setC1ComboByName(C1ComboBox c, String data)
+        {
+            if (c.Items.Count == 0) return;
+            c.SelectedIndex = c.SelectedItem == null ? 0 : c.SelectedIndex;
+            c.SelectedIndex = 0;
+            foreach (ComboBoxItem item in c.Items)
+            {
+                if (item.Text.Equals(data))
+                {
+                    c.SelectedItem = item;
+                    break;
+                }
+            }
+        }
         public String getC1Combo(C1ComboBox c, String data)
         {
             String re = "";
@@ -587,7 +600,7 @@ namespace clinic_ivf.control
             }
             return re;
         }
-        static string aByteToString(byte[] b)
+        public string aByteToString(byte[] b)
         {
             Encoding ut = Encoding.GetEncoding(874); // 874 for Thai langauge
             int i;
