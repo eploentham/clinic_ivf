@@ -23,6 +23,7 @@ namespace clinic_ivf.objdb
         public long _rowsAffected = 0;
         private InitConfig initC;
         public Staff user;
+        public String _IPAddress = "";
 
         public ConnectDB(InitConfig initc)
         {

@@ -16,6 +16,8 @@ using System.IO;
 using System.Reflection;
 using C1.Win.C1Document;
 using MySql.Data.Types;
+using System.Net;
+using System.Net.Sockets;
 
 namespace clinic_ivf.control
 {
@@ -53,6 +55,7 @@ namespace clinic_ivf.control
 
         public VisitOld sVsOld;
         public Age age;
+        public String _IPAddress = "";
         //public FtpClient ftpC;
         public enum NID_FIELD
         {
@@ -138,6 +141,8 @@ namespace clinic_ivf.control
         {
             ivfDB.sexDB.getlSex();
             cop = ivfDB.copDB.selectByCode1("001");
+            _IPAddress = GetLocalIPAddress();
+            conn._IPAddress = _IPAddress;
         }
         public void GetConfig()
         {
@@ -660,7 +665,18 @@ namespace clinic_ivf.control
             s = _dd + " " + _tm + " " + _yyyy;
             return s;
         }
-
+        public static string GetLocalIPAddress()
+        {
+            var host = Dns.GetHostEntry(Dns.GetHostName());
+            foreach (var ip in host.AddressList)
+            {
+                if (ip.AddressFamily == AddressFamily.InterNetwork)
+                {
+                    return ip.ToString();
+                }
+            }
+            throw new Exception("No network adapters with an IPv4 address in the system!");
+        }
 
     }
 }

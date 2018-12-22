@@ -21,7 +21,7 @@ namespace clinic_ivf.object1
         public String user_create { get; set; }
         public String user_modi { get; set; }
         public String user_cancel { get; set; }
-
+        
         Random r = new Random();
         public String getGenID()
         {

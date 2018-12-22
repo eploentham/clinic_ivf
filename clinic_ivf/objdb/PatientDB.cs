@@ -294,9 +294,10 @@ namespace clinic_ivf.objdb
             int chk = 0;
             //p.date_create = "";
             chkNull(p);
-            
+            String user = userId + "@" + conn._IPAddress;
             try
             {
+                //userId = userId + "@" + conn._IPAddress
                 sql = "Insert Into " + ptt.table + "(" + ptt.patient_hn + "," + ptt.patient_firstname + "," + ptt.patient_lastname + "," +
                 ptt.patient_xn + "," + ptt.patient_birthday + "," + ptt.patient_house + "," +
                 ptt.active + "," + ptt.remark + "," + ptt.patient_road + "," +
@@ -346,7 +347,7 @@ namespace clinic_ivf.objdb
                 "'" + p.patient_moo.Replace("'", "''") + "','" + p.patient_tambon + "','" + p.patient_amphur + "'," +
                 "'" + p.patient_changwat + "','" + p.patient_father_firstname.Replace("'", "''") + "','" + p.patient_mother_firstname.Replace("'", "''") + "'," +
                 "now(),'" + p.date_modi + "','" + p.date_cancel + "', " +
-                "'" + userId + "','" + p.user_modi + "','" + p.user_cancel + "', " +
+                "'" + user + "','" + p.user_modi + "','" + p.user_cancel + "', " +
                 "'" + p.patient_couple_firstname.Replace("'", "''") + "','" + p.patient_move_in_date_time + "','" + p.patient_discharge_date_time + "'," +
                 "'" + p.patient_father_pid + "','" + p.patient_mather_pid + "','" + p.patient_couple_pid + "'," +
                 "'" + p.patient_community_status + "','" + p.patient_private_doctor + "','" + p.pid + "'," +
@@ -413,7 +414,7 @@ namespace clinic_ivf.objdb
             p.active = "1";
             //p.ssdata_id = "";
             int chk = 0;
-
+            String user = userId + "@" + conn._IPAddress;
             chkNull(p);
             sql = "Update "+ptt.table + " " +
                 //" Set "+ptt.patient_hn + "='"+p.patient_hn + "' " +
@@ -485,6 +486,8 @@ namespace clinic_ivf.objdb
                 "," + ptt.p + "='" + p.p.Replace("'", "''") + "' " +
                 "," + ptt.a + "='" + p.a.Replace("'", "''") + "' " +
                 "," + ptt.g + "='" + p.g.Replace("'", "''") + "' " +
+                "," + ptt.date_modi + "=now() " +
+                "," + ptt.user_modi + "='" + user + "' " +
                 " Where " +ptt.pkField + " = '" + p.t_patient_id + "' "
                 ;
             try
