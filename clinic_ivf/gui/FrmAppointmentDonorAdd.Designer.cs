@@ -412,7 +412,7 @@
             this.cboTvsTime.ImagePadding = new System.Windows.Forms.Padding(0);
             this.cboTvsTime.ItemsDisplayMember = "";
             this.cboTvsTime.ItemsValueMember = "";
-            this.cboTvsTime.Location = new System.Drawing.Point(116, 150);
+            this.cboTvsTime.Location = new System.Drawing.Point(306, 152);
             this.cboTvsTime.Name = "cboTvsTime";
             this.cboTvsTime.Size = new System.Drawing.Size(67, 20);
             this.cboTvsTime.Style.DropDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
@@ -429,7 +429,7 @@
             this.label11.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
             this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label11.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.label11.Location = new System.Drawing.Point(71, 154);
+            this.label11.Location = new System.Drawing.Point(237, 156);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(39, 16);
             this.label11.TabIndex = 675;
@@ -442,7 +442,7 @@
             this.label10.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
             this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label10.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.label10.Location = new System.Drawing.Point(233, 154);
+            this.label10.Location = new System.Drawing.Point(71, 154);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(31, 16);
             this.label10.TabIndex = 674;
@@ -454,7 +454,7 @@
             this.txtTvsDay.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtTvsDay.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
             this.txtTvsDay.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.txtTvsDay.Location = new System.Drawing.Point(306, 152);
+            this.txtTvsDay.Location = new System.Drawing.Point(116, 152);
             this.txtTvsDay.Name = "txtTvsDay";
             this.txtTvsDay.Size = new System.Drawing.Size(47, 20);
             this.txtTvsDay.TabIndex = 673;

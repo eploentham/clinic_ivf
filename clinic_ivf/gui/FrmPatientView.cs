@@ -170,7 +170,6 @@ namespace clinic_ivf.gui
                     {
                         grfPtt.DataSource = ic.ivfDB.pttDB.selectBySearchDate(date);
                     }
-                    
                 }
                 else
                 {

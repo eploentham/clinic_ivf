@@ -22,8 +22,14 @@ namespace clinic_ivf
             IvfControl ic = new IvfControl();
             FrmSplash spl = new FrmSplash();
             spl.Show();
+            try
+            {
+                Application.Run(new gui.MainMenu(ic, spl));
+            }
+            catch(Exception ex)
+            {
 
-            Application.Run(new gui.MainMenu(ic, spl));
+            }
         }
     }
 }

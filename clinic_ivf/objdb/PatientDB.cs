@@ -295,6 +295,10 @@ namespace clinic_ivf.objdb
             //p.date_create = "";
             chkNull(p);
             String user = userId + "@" + conn._IPAddress;
+            if (p.t_patient_id_old.Equals("") || p.t_patient_id_old.Equals("0"))
+            {
+                p.t_patient_id_old = "-1";
+            }
             try
             {
                 //userId = userId + "@" + conn._IPAddress
@@ -398,11 +402,11 @@ namespace clinic_ivf.objdb
             String re = "";
             if (p.t_patient_id.Equals(""))
             {
-                re = insert(p, "");
+                re = insert(p, userId);
             }
             else
             {
-                re = update(p, "");
+                re = update(p, userId);
             }
 
             return re;
@@ -580,7 +584,7 @@ namespace clinic_ivf.objdb
             String re = "";
             String sql = "Update " + ptt.table + " Set " +
                 "" + ptt.t_patient_id_old + "='"+ pid + "' " +
-                "," + ptt.patient_hn + "='" + hn + "' " +
+                //"," + ptt.patient_hn + "='" + hn + "' " +
                 "Where " + ptt.pkField + "='" + pttId + "'";
             
             re = conn.ExecuteNonQuery(conn.conn, sql);

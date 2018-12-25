@@ -55,7 +55,7 @@ namespace clinic_ivf.gui
         String filename = "", picIDCard="pic_id_card.jpg";
         static String filenamepic = "", host="", user="", pass="";
         Color color;
-        Boolean flagImg = false, flagReadCard=false;
+        Boolean flagImg = false, flagReadCard=false, flagHavOldPttNoPtt=false;
         String _CardReaderTFK2700 = "";
         enum NID_FIELD
         {
@@ -678,11 +678,11 @@ namespace clinic_ivf.gui
                 }
                 else if (sender.Equals(txtDrugAllergy))
                 {
-                    cboCrl.Focus();
+                    txtContract.Focus();
                 }
                 else if (sender.Equals(cboCrl))
                 {
-                    txtContract.Focus();
+                    txtEmerContact.Focus();
                 }
                 else if (sender.Equals(txtContract))
                 {
@@ -790,7 +790,7 @@ namespace clinic_ivf.gui
                     {
                         PatientImage ptti = new PatientImage();
                         ptti.patient_image_id = "";
-                        ptti.t_patient_id = txtID.Text;
+                        ptti.t_patient_id = re;
                         ptti.t_visit_id = "";
                         ptti.desc1 = "รูป ภาพถ่ายจากบัตรประชาชน";
                         ptti.desc2 = "";
@@ -831,66 +831,86 @@ namespace clinic_ivf.gui
                 }
                 else
                 {
+                    ptt.t_patient_id_old = txtIdOld.Text;
+                    String[] name = txtEmerContact.Text.Split(' ');
+                    if (name.Length > 0)
+                    {
+                        ptt.patient_contact_firstname = name[0];
+                        ptt.patient_contact_lastname = name[1];
+                    }
+
                     String re = ic.ivfDB.pttOldDB.insertPatientOld(ptt, txtStfConfirmID.Text);
                     long chk = 0;
                     if (long.TryParse(re, out chk))
                     {
+                        if (re.Equals("1")) // ตอน update
+                        {
+                            re = ptt.t_patient_id_old;
+                        }
                         if (!ic.iniC.statusAppDonor.Equals("1"))
                         {
                             //String re1 = ic.ivfDB.pttOldDB.insertPatientOld(ptt, txtStfConfirmID.Text);
                             String re1 = ic.ivfDB.pttDB.insertPatient(ptt, txtStfConfirmID.Text);
                             if (long.TryParse(re1, out chk))
                             {
-                                if (txtID.Text.Equals(""))
+                                if (re1.Equals("1")) // ตอน update
                                 {
-                                    if (flagReadCard)
+                                    re1 = txtID.Text;
+                                }
+                                
+                                if (flagReadCard)
+                                {
+                                    PatientImage ptti = new PatientImage();
+                                    ptti.patient_image_id = "";
+                                    ptti.t_patient_id = re1;
+                                    ptti.t_visit_id = "";
+                                    ptti.desc1 = "รูป ภาพถ่ายจากบัตรประชาชน";
+                                    ptti.desc2 = "";
+                                    ptti.desc3 = "";
+                                    ptti.desc4 = "";
+                                    ptti.active = "1";
+                                    ptti.remark = "";
+                                    ptti.date_create = "";
+                                    ptti.date_modi = "";
+                                    ptti.date_cancel = "";
+                                    ptti.user_create = "";
+                                    ptti.user_modi = "";
+                                    ptti.user_cancel = "";
+                                    ptti.image_path = "images/" + txtHn.Text.Replace("-", "") + "/" + picIDCard;
+                                    ptti.status_image = "4";
+                                    re = ic.ivfDB.pttImgDB.insertpatientImage(ptti, ic.cStf.staff_id);
+                                    //long chk = 0;
+                                    if (long.TryParse(re, out chk))
                                     {
-                                        PatientImage ptti = new PatientImage();
-                                        ptti.patient_image_id = "";
-                                        ptti.t_patient_id = txtID.Text;
-                                        ptti.t_visit_id = "";
-                                        ptti.desc1 = "รูป ภาพถ่ายจากบัตรประชาชน";
-                                        ptti.desc2 = "";
-                                        ptti.desc3 = "";
-                                        ptti.desc4 = "";
-                                        ptti.active = "1";
-                                        ptti.remark = "";
-                                        ptti.date_create = "";
-                                        ptti.date_modi = "";
-                                        ptti.date_cancel = "";
-                                        ptti.user_create = "";
-                                        ptti.user_modi = "";
-                                        ptti.user_cancel = "";
-                                        ptti.image_path = "images/" + txtHn.Text.Replace("-", "") + "/" + picIDCard;
-                                        ptti.status_image = "4";
-                                        re = ic.ivfDB.pttImgDB.insertpatientImage(ptti, ic.cStf.staff_id);
-                                        //long chk = 0;
-                                        if (long.TryParse(re, out chk))
+                                        ic.savePicOPUtoServer(txtHn.Text.Replace("-", ""), filename, picIDCard);
+                                        grfImg.Rows[grfImg.Row].StyleNew.BackColor = color;
+                                        setGrfImg();
+                                        if (File.Exists(picIDCard))
                                         {
-                                            ic.savePicOPUtoServer(txtHn.Text.Replace("-", ""), filename, picIDCard);
-                                            grfImg.Rows[grfImg.Row].StyleNew.BackColor = color;
-                                            setGrfImg();
-                                            if (File.Exists(picIDCard))
-                                            {
-                                                File.Delete(picIDCard);
-                                            }
+                                            File.Delete(picIDCard);
                                         }
-                                        flagReadCard = false;
                                     }
+                                    flagReadCard = false;
+                                }
 
-                                    PatientOld pttOld = new PatientOld();
-                                    pttOld = ic.ivfDB.pttOldDB.selectByPk1(re);
-                                    String re2 = ic.ivfDB.pttDB.updatePID(re1, re, pttOld.PIDS);
-                                    if (long.TryParse(re2, out chk))
+                                PatientOld pttOld = new PatientOld();
+                                pttOld = ic.ivfDB.pttOldDB.selectByPk1(re);
+                                String re2 = ic.ivfDB.pttDB.updatePID(re1, re, pttOld.PIDS);
+                                if (long.TryParse(re2, out chk))
+                                {
+                                    btnSave.Text = "Save";
+                                    btnSave.Image = Resources.accept_database24;
+                                    txtID.Value = re;
+                                    txtPid.Focus();
+                                    txtHn.Value = pttOld.PIDS;
+                                    barcode.Text = txtHn.Text;
+                                    if(tabVisit.Enabled == false)
                                     {
-                                        btnSave.Text = "Save";
-                                        btnSave.Image = Resources.accept_database24;
-                                        txtID.Value = re;
-                                        txtPid.Focus();
-                                        txtHn.Value = pttOld.PIDS;
-                                        barcode.Text = txtHn.Text;
+                                        tabVisit.Enabled = true;
+                                        flagHavOldPttNoPtt = false;
                                     }
                                 }
+                                
                             }
                         }
                         //System.Threading.Thread.Sleep(2000);
@@ -1876,18 +1896,8 @@ namespace clinic_ivf.gui
             setGrfpApmDonor(ptt.t_patient_id);
             //txtEmail.Value = pttO.Email;
         }
-        private void setControlPtt(String pttid)
+        private void setControlPatient(Patient ptt)
         {
-            ptt = ic.ivfDB.pttDB.selectByPk1(pttid);
-            if (ptt.t_patient_id.Equals(""))
-            {
-                //ptt = ic.ivfDB.pttDB.selectByIDold(pttOldId);
-            }
-
-            if (ptt.t_patient_id.Equals(""))
-            {
-                btnWebCamOn.Enabled = false;
-            }
             txtHn.Value = ptt.patient_hn;
             txtID.Value = ptt.t_patient_id;
             txtPttName.Value = ptt.patient_firstname;
@@ -1956,6 +1966,21 @@ namespace clinic_ivf.gui
             txtCongenital.Value = ptt.congenital_diseases_description;
             txtHeight.Value = ptt.patient_height;
             txtAllergyDesc.Value = ptt.allergy_description;
+            txtEmerContact.Value = ptt.patient_contact_firstname + " " + ptt.patient_contact_lastname;
+        }
+        private void setControlPtt(String pttid)
+        {
+            ptt = ic.ivfDB.pttDB.selectByPk1(pttid);
+            if (ptt.t_patient_id.Equals(""))
+            {
+                ptt = ic.ivfDB.pttDB.selectByIDold(pttid);
+            }
+
+            if (ptt.t_patient_id.Equals(""))
+            {
+                btnWebCamOn.Enabled = false;
+            }
+            setControlPatient(ptt);
 
             PatientOld pttO = new PatientOld();
             VisitOld vsOld = new VisitOld();
@@ -1999,11 +2024,29 @@ namespace clinic_ivf.gui
             }
             //txtPid.Value = pttO.IDNumber.Length == 10 ? pttO.IDNumber : "";
             //txtPaasport.Value = pttO.IDNumber.Length != 10 ? pttO.IDNumber : "";
-            txtPid.Value = pttO.IDNumber;
+            //txtPid.Value = pttO.IDNumber;
             //cboName1Rl.Text = pttO.RelationshipID;
             ic.setC1Combo(cboName1Rl, pttO.RelationshipID);
             barcode.Text = txtHn.Text;
             txtEmail.Value = pttO.Email;
+            ic.setC1Combo(cboPrefix, pttO.SurfixID);
+            txtEmerContact.Value = pttO.EmergencyPersonalContact;
+            if (txtID.Text.Equals("") && !pttid.Equals(""))
+            {
+                Patient id1 = ic.ivfDB.pttDB.selectByIDold(pttid);
+                txtID.Value = id1.t_patient_id;
+                if (!id1.t_patient_id.Equals(""))
+                {
+                    setControlPatient(id1);
+                    flagHavOldPttNoPtt = false;
+                    tabVisit.Enabled = true;
+                }
+                else
+                {
+                    flagHavOldPttNoPtt = true;
+                    tabVisit.Enabled = false;
+                }
+            }
         }
         private void setControl()
         {
@@ -2017,7 +2060,6 @@ namespace clinic_ivf.gui
             {
                 setControlPtt(pttOldId);
             }
-
 
             //ptt.patient_couple_f_patient_prefix_id = cboCouRel.SelectedItem
 
@@ -2066,8 +2108,14 @@ namespace clinic_ivf.gui
         private void setPatient()
         {
             ptt.t_patient_id = txtID.Text;
-            
-            ptt.patient_hn = txtID.Text.Equals("") ? ic.ivfDB.copDB.genHNDoc() : txtHn.Text;
+            if (ic.iniC.statusAppDonor.Equals("1"))
+            {
+                ptt.patient_hn = txtID.Text.Equals("") ? ic.ivfDB.copDB.genHNDoc() : txtHn.Text;
+            }
+            else
+            {
+                ptt.patient_hn = txtHn.Text;
+            }
             ptt.patient_firstname = txtPttName.Text;
             ptt.patient_lastname = txtPttLName.Text;
             ptt.remark = txtRemark.Text;
@@ -2140,6 +2188,12 @@ namespace clinic_ivf.gui
             ptt.g = txtG.Text;
             ptt.p = txtP.Text;
             ptt.a = txtA.Text;
+            //String[] name = txtEmerContact.Text.Split(' ');
+            //if (name.Length > 0)
+            //{
+            //    ptt.patient_contact_firstname = name[0];
+            //    ptt.patient_contact_lastname = name[1];
+            //}
         }
         private void DoPrint(C1PdfDocumentSource pds)
         {
@@ -2578,7 +2632,14 @@ namespace clinic_ivf.gui
         }
         private void FrmPatientAdd_Load(object sender, EventArgs e)
         {
-            tC1.SelectedTab = tabFamily;
+            if (ic.iniC.statusAppDonor.Equals("1"))
+            {
+                tC1.SelectedTab = tabFamily;
+            }
+            else
+            {
+                tC1.SelectedTab = tabAddress;
+            }
             splitMain.Panel1MinSize = 260;
             splitMain.SplitterDistance = int.Parse(ic.iniC.patientaddpanel1weight);
             if (ic.iniC.statusAppDonor.Equals("1"))

@@ -252,7 +252,7 @@ namespace clinic_ivf.objdb
                 "," + pttO.OSurname + "='" + p.OSurname + "' " +
                 "," + pttO.PatientTypeID + "='" + p.PatientTypeID + "' " +
                 "," + pttO.PaymentID + "='" + p.PaymentID + "' " +
-                "," + pttO.PIDS + "='" + p.PIDS + "' " +
+                //"," + pttO.PIDS + "='" + p.PIDS + "' " +
                 "," + pttO.PName + "='" + p.PName + "' " +
                 "," + pttO.Province + "='" + p.Province + "' " +
                 "," + pttO.PSurname + "='" + p.PSurname + "' " +
@@ -290,7 +290,6 @@ namespace clinic_ivf.objdb
             {
                 re = update(p, "");
             }
-
             return re;
         }
         public String insertPatientOld(Patient p, String userId)
@@ -308,13 +307,13 @@ namespace clinic_ivf.objdb
             {
                 re = update(pttO1, "");
             }
-
             return re;
         }
         public PatientOld setPatientToOLD(Patient ptt)
         {
             PatientOld pttO1 = new PatientOld();
             pttO1.Address = ptt.patient_house;
+            //pttO1.PIDS = ptt.patient_hn;
             pttO1.Age = ptt.AgeStringShort().Replace("Y",".").Replace("M", ".").Replace("D", ".");
             pttO1.AgentID = ptt.agent;
             pttO1.Allergy = ptt.patient_drugallergy;
@@ -337,7 +336,7 @@ namespace clinic_ivf.objdb
             pttO1.EPSubDistrict = "";
             pttO1.EPZipcode = "";
             pttO1.HomePhoneNo = ptt.mobile2;
-            pttO1.IDNumber = ptt.pid;
+            pttO1.IDNumber = ptt.passport;
             pttO1.IDType = "";
             pttO1.InsuranceName = ptt.insurance;
             String mat = "";
@@ -352,9 +351,8 @@ namespace clinic_ivf.objdb
             pttO1.PatientTypeID = ptt.patient_type;
             pttO1.PaymentID = ptt.b_contract_plans_id;
             
-                pttO1.PID = ptt.t_patient_id;
-                pttO1.PIDS = ptt.patient_hn;
-            
+            pttO1.PID = ptt.t_patient_id_old;
+            pttO1.PIDS = ptt.patient_hn;
             
             pttO1.PName = ptt.patient_firstname_e;
             pttO1.Province = "";
