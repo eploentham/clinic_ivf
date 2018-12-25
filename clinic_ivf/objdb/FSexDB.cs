@@ -103,7 +103,8 @@ namespace clinic_ivf.objdb
         public String getList(String id)
         {
             String re = "";
-            foreach(FSex sex in lSex)
+            if (lSex.Count <= 0) getlSex();
+            foreach (FSex sex in lSex)
             {
                 if (sex.f_sex_id.Equals(id))
                 {

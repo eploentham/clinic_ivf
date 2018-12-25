@@ -128,8 +128,6 @@
             this.txtInsurance = new C1.Win.C1Input.C1TextBox();
             this.label56 = new System.Windows.Forms.Label();
             this.txtContract = new C1.Win.C1Input.C1TextBox();
-            this.label55 = new System.Windows.Forms.Label();
-            this.cboCrl = new C1.Win.C1Input.C1ComboBox();
             this.label34 = new System.Windows.Forms.Label();
             this.txtDrugAllergy = new C1.Win.C1Input.C1TextBox();
             this.cboCouPrefix = new C1.Win.C1Input.C1ComboBox();
@@ -202,6 +200,10 @@
             this.printDialog1 = new System.Windows.Forms.PrintDialog();
             this.cPdf = new C1.Win.C1Document.C1PdfDocumentSource(this.components);
             this._c1pdf = new C1.C1Pdf.C1PdfDocument();
+            this.label28 = new System.Windows.Forms.Label();
+            this.txtEmerContact = new C1.Win.C1Input.C1TextBox();
+            this.label55 = new System.Windows.Forms.Label();
+            this.cboCrl = new C1.Win.C1Input.C1ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.theme1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitMain)).BeginInit();
             this.splitMain.Panel1.SuspendLayout();
@@ -274,7 +276,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtContFname1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtInsurance)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtContract)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.cboCrl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtDrugAllergy)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cboCouPrefix)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cboCouRel)).BeginInit();
@@ -316,6 +317,8 @@
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btnApm)).BeginInit();
             this.sB.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtEmerContact)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cboCrl)).BeginInit();
             this.SuspendLayout();
             // 
             // theme1
@@ -1704,8 +1707,6 @@
             this.groupBox1.Controls.Add(this.txtInsurance);
             this.groupBox1.Controls.Add(this.label56);
             this.groupBox1.Controls.Add(this.txtContract);
-            this.groupBox1.Controls.Add(this.label55);
-            this.groupBox1.Controls.Add(this.cboCrl);
             this.groupBox1.Controls.Add(this.label34);
             this.groupBox1.Controls.Add(this.txtDrugAllergy);
             this.groupBox1.Controls.Add(this.cboCouPrefix);
@@ -1890,40 +1891,6 @@
             this.txtContract.Tag = null;
             this.theme1.SetTheme(this.txtContract, "(default)");
             this.txtContract.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
-            // 
-            // label55
-            // 
-            this.label55.AutoSize = true;
-            this.label55.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.label55.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label55.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.label55.Location = new System.Drawing.Point(7, 150);
-            this.label55.Name = "label55";
-            this.label55.Size = new System.Drawing.Size(115, 16);
-            this.label55.TabIndex = 599;
-            this.label55.Text = "Payment Method :";
-            this.theme1.SetTheme(this.label55, "(default)");
-            // 
-            // cboCrl
-            // 
-            this.cboCrl.AllowSpinLoop = false;
-            this.cboCrl.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.cboCrl.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
-            this.cboCrl.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.cboCrl.GapHeight = 0;
-            this.cboCrl.ImagePadding = new System.Windows.Forms.Padding(0);
-            this.cboCrl.ItemsDisplayMember = "";
-            this.cboCrl.ItemsValueMember = "";
-            this.cboCrl.Location = new System.Drawing.Point(180, 148);
-            this.cboCrl.Name = "cboCrl";
-            this.cboCrl.Size = new System.Drawing.Size(188, 20);
-            this.cboCrl.Style.DropDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.cboCrl.Style.DropDownBorderColor = System.Drawing.Color.Gainsboro;
-            this.cboCrl.Style.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.cboCrl.TabIndex = 598;
-            this.cboCrl.Tag = null;
-            this.theme1.SetTheme(this.cboCrl, "(default)");
-            this.cboCrl.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
             // 
             // label34
             // 
@@ -2485,6 +2452,10 @@
             // groupBox3
             // 
             this.groupBox3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.groupBox3.Controls.Add(this.label55);
+            this.groupBox3.Controls.Add(this.cboCrl);
+            this.groupBox3.Controls.Add(this.label28);
+            this.groupBox3.Controls.Add(this.txtEmerContact);
             this.groupBox3.Controls.Add(this.label44);
             this.groupBox3.Controls.Add(this.txtLon);
             this.groupBox3.Controls.Add(this.label43);
@@ -2931,6 +2902,66 @@
             this._c1pdf.UseFastTextOut = true;
             this._c1pdf.UseFontShaping = true;
             // 
+            // label28
+            // 
+            this.label28.AutoSize = true;
+            this.label28.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.label28.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label28.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.label28.Location = new System.Drawing.Point(13, 134);
+            this.label28.Name = "label28";
+            this.label28.Size = new System.Drawing.Size(131, 16);
+            this.label28.TabIndex = 603;
+            this.label28.Text = "Emergency Contact :";
+            this.theme1.SetTheme(this.label28, "(default)");
+            // 
+            // txtEmerContact
+            // 
+            this.txtEmerContact.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtEmerContact.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
+            this.txtEmerContact.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.txtEmerContact.Location = new System.Drawing.Point(150, 132);
+            this.txtEmerContact.Name = "txtEmerContact";
+            this.txtEmerContact.Size = new System.Drawing.Size(497, 20);
+            this.txtEmerContact.TabIndex = 602;
+            this.txtEmerContact.Tag = null;
+            this.theme1.SetTheme(this.txtEmerContact, "(default)");
+            this.txtEmerContact.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            // 
+            // label55
+            // 
+            this.label55.AutoSize = true;
+            this.label55.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.label55.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label55.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.label55.Location = new System.Drawing.Point(308, 45);
+            this.label55.Name = "label55";
+            this.label55.Size = new System.Drawing.Size(115, 16);
+            this.label55.TabIndex = 605;
+            this.label55.Text = "Payment Method :";
+            this.theme1.SetTheme(this.label55, "(default)");
+            // 
+            // cboCrl
+            // 
+            this.cboCrl.AllowSpinLoop = false;
+            this.cboCrl.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.cboCrl.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
+            this.cboCrl.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.cboCrl.GapHeight = 0;
+            this.cboCrl.ImagePadding = new System.Windows.Forms.Padding(0);
+            this.cboCrl.ItemsDisplayMember = "";
+            this.cboCrl.ItemsValueMember = "";
+            this.cboCrl.Location = new System.Drawing.Point(481, 43);
+            this.cboCrl.Name = "cboCrl";
+            this.cboCrl.Size = new System.Drawing.Size(188, 20);
+            this.cboCrl.Style.DropDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.cboCrl.Style.DropDownBorderColor = System.Drawing.Color.Gainsboro;
+            this.cboCrl.Style.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.cboCrl.TabIndex = 604;
+            this.cboCrl.Tag = null;
+            this.theme1.SetTheme(this.cboCrl, "(default)");
+            this.cboCrl.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            // 
             // FrmPatientAdd
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -3015,7 +3046,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtContFname1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtInsurance)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtContract)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.cboCrl)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtDrugAllergy)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cboCouPrefix)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cboCouRel)).EndInit();
@@ -3060,6 +3090,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.btnApm)).EndInit();
             this.sB.ResumeLayout(false);
             this.sB.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtEmerContact)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cboCrl)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -3203,8 +3235,6 @@
         private C1.Win.C1Input.C1TextBox txtInsurance;
         private System.Windows.Forms.Label label56;
         private C1.Win.C1Input.C1TextBox txtContract;
-        private System.Windows.Forms.Label label55;
-        private C1.Win.C1Input.C1ComboBox cboCrl;
         private C1.Win.C1Input.C1ComboBox cboName1Rl;
         private System.Windows.Forms.Label label33;
         private C1.Win.C1Input.C1ComboBox cboName1Prefix;
@@ -3240,5 +3270,9 @@
         private C1.Win.C1Input.C1Button btnApm;
         private C1.Win.C1Input.C1Button btnSmartcard;
         private System.Windows.Forms.Label m_lblDLXInfo;
+        private System.Windows.Forms.Label label28;
+        private C1.Win.C1Input.C1TextBox txtEmerContact;
+        private System.Windows.Forms.Label label55;
+        private C1.Win.C1Input.C1ComboBox cboCrl;
     }
 }
