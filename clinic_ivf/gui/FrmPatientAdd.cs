@@ -2483,12 +2483,12 @@ namespace clinic_ivf.gui
                             Bitmap MyImage = new Bitmap(img, picPtt.Width - 2, picPtt.Height - 2);
                             //m_picPhoto.Image = (Image)MyImage;
                             picPtt.Image = (Image)MyImage;
-                            setControlDonor("", txtPid.Text);
-                            if (txtID.Text.Equals(""))
-                            {
+                            //setControlDonor("", txtPid.Text);
+                            //if (txtID.Text.Equals(""))
+                            //{
                                 img.Save(picIDCard, ImageFormat.Jpeg);
                                 flagReadCard = true;
-                            }
+                            //}
                         }
                     }
                     else
@@ -2560,12 +2560,9 @@ namespace clinic_ivf.gui
                                 //}
                             }
                         }
-                        
                     }
                 }
-
-                
-
+                                
                 RDNID.disconnectCardRD(obj);
                 RDNID.deselectReaderRD(obj);
             }
