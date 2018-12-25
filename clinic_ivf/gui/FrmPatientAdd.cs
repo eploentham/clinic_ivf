@@ -833,7 +833,7 @@ namespace clinic_ivf.gui
                 {
                     ptt.t_patient_id_old = txtIdOld.Text;
                     String[] name = txtEmerContact.Text.Split(' ');
-                    if (name.Length > 0)
+                    if (name.Length > 1)
                     {
                         ptt.patient_contact_firstname = name[0];
                         ptt.patient_contact_lastname = name[1];
@@ -900,7 +900,8 @@ namespace clinic_ivf.gui
                                 {
                                     btnSave.Text = "Save";
                                     btnSave.Image = Resources.accept_database24;
-                                    txtID.Value = re;
+                                    txtID.Value = re1;
+                                    
                                     txtPid.Focus();
                                     txtHn.Value = pttOld.PIDS;
                                     barcode.Text = txtHn.Text;
@@ -2013,6 +2014,7 @@ namespace clinic_ivf.gui
             ic.setC1Combo(cboSex, pttO.SexID);
             ic.setC1Combo(cboMarital, pttO.MaritalID);
             ic.setC1Combo(cboRg, pttO.Religion);
+            ic.setC1ComboByName(CboNation, pttO.Nationality);
             cboProv.Value = pttO.Province;
             cboDist.Value = pttO.District;
             txtAddrNo.Value = pttO.Address;
@@ -2029,6 +2031,7 @@ namespace clinic_ivf.gui
             ic.setC1Combo(cboName1Rl, pttO.RelationshipID);
             barcode.Text = txtHn.Text;
             txtEmail.Value = pttO.Email;
+            txtPaasport.Value = pttO.IDNumber;
             ic.setC1Combo(cboPrefix, pttO.SurfixID);
             txtEmerContact.Value = pttO.EmergencyPersonalContact;
             if (txtID.Text.Equals("") && !pttid.Equals(""))
@@ -2647,7 +2650,7 @@ namespace clinic_ivf.gui
             {
                 theme1.SetTheme(sB, "Office2010Red");
             }
-            txtMoo.Value = System.DateTime.Now.Year.ToString();
+            txtLat1.Value = System.DateTime.Now.Year.ToString();
             //_CardReaderTFK2700 = ic.ListCardReader();
             //theme1.SetTheme(splitContainer1, ic.theme);
             //theme1.SetTheme(splitContainer2, ic.theme);

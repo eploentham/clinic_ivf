@@ -178,26 +178,26 @@ namespace clinic_ivf.objdb
             p.visit_ipd_staff_reverse = p.visit_ipd_staff_reverse == null ? "" : p.visit_ipd_staff_reverse;
             p.visit_ipd_discharge_date_time = p.visit_ipd_discharge_date_time == null ? "" : p.visit_ipd_discharge_date_time;
             p.visit_ipd_staff_discharge = p.visit_ipd_staff_discharge == null ? "" : p.visit_ipd_staff_discharge;
-            p.f_visit_service_type_id = p.f_visit_service_type_id == null ? "" : p.f_visit_service_type_id;
+            //p.f_visit_service_type_id = p.f_visit_service_type_id == null ? "" : p.f_visit_service_type_id;
             p.other_transportation = p.other_transportation == null ? "" : p.other_transportation;
-            p.f_transportation_type_id = p.f_transportation_type_id == null ? "" : p.f_transportation_type_id;
-            p.f_trama_status_id = p.f_trama_status_id == null ? "" : p.f_trama_status_id;
+            //p.f_transportation_type_id = p.f_transportation_type_id == null ? "" : p.f_transportation_type_id;
+            //p.f_trama_status_id = p.f_trama_status_id == null ? "" : p.f_trama_status_id;
             p.visit_doctor_reverse_date_time = p.visit_doctor_reverse_date_time == null ? "" : p.visit_doctor_reverse_date_time;
             p.visit_staff_doctor_reverse = p.visit_staff_doctor_reverse == null ? "" : p.visit_staff_doctor_reverse;
             p.visit_financial_reverse_date_time = p.visit_financial_reverse_date_time == null ? "" : p.visit_financial_reverse_date_time;
             p.visit_staff_financial_reverse = p.visit_staff_financial_reverse == null ? "" : p.visit_staff_financial_reverse;
             p.modify_discharge_datetime = p.modify_discharge_datetime == null ? "" : p.modify_discharge_datetime;
-            p.b_visit_room_id = p.b_visit_room_id == null ? "" : p.b_visit_room_id;
-            p.b_visit_bed_id = p.b_visit_bed_id == null ? "" : p.b_visit_bed_id;
+            //p.b_visit_room_id = p.b_visit_room_id == null ? "" : p.b_visit_room_id;
+            //p.b_visit_bed_id = p.b_visit_bed_id == null ? "" : p.b_visit_bed_id;
             p.visit_lab_approve_staff = p.visit_lab_approve_staff == null ? "" : p.visit_lab_approve_staff;
             p.visit_status_lab_approve = p.visit_status_lab_approve == null ? "" : p.visit_status_lab_approve;
             p.visit_have_scan_sn_dx = p.visit_have_scan_sn_dx == null ? "" : p.visit_have_scan_sn_dx;
             p.service_location = p.service_location == null ? "" : p.service_location;
-            p.surveillance_case_id = p.surveillance_case_id == null ? "" : p.surveillance_case_id;
+            //p.surveillance_case_id = p.surveillance_case_id == null ? "" : p.surveillance_case_id;
             p.contact_join_namet = p.contact_join_namet == null ? "" : p.contact_join_namet;
-            p.contact_join_id = p.contact_join_id == null ? "" : p.contact_join_id;
+            //p.contact_join_id = p.contact_join_id == null ? "" : p.contact_join_id;
             p.contact_namet = p.contact_namet == null ? "" : p.contact_namet;
-            p.contact_id = p.contact_id == null ? "" : p.contact_id;
+            //p.contact_id = p.contact_id == null ? "" : p.contact_id;
             p.b_contract_plans_id = p.b_contract_plans_id == null ? "" : p.b_contract_plans_id;
             p.visit_cause_appointment = p.visit_cause_appointment == null ? "" : p.visit_cause_appointment;
             p.visit_cal_date_appointment = p.visit_cal_date_appointment == null ? "" : p.visit_cal_date_appointment;
@@ -206,11 +206,11 @@ namespace clinic_ivf.objdb
             p.visit_have_refer = p.visit_have_refer == null ? "" : p.visit_have_refer;
             //p.visit_have_appointment = p.visit_have_appointment == null ? "" : p.visit_have_appointment;
             p.visit_emergency_staff = p.visit_emergency_staff == null ? "" : p.visit_emergency_staff;
-            p.f_emergency_status_id = p.f_emergency_status_id == null ? "" : p.f_emergency_status_id;
-            p.f_refer_cause_id = p.f_refer_cause_id == null ? "" : p.f_refer_cause_id;
-            p.b_ncd_group_id = p.b_ncd_group_id == null ? "" : p.b_ncd_group_id;
+            //p.f_emergency_status_id = p.f_emergency_status_id == null ? "" : p.f_emergency_status_id;
+            //p.f_refer_cause_id = p.f_refer_cause_id == null ? "" : p.f_refer_cause_id;
+            //p.b_ncd_group_id = p.b_ncd_group_id == null ? "" : p.b_ncd_group_id;
             p.visit_ncd = p.visit_ncd == null ? "" : p.visit_ncd;
-            p.visit_lab_status_id = p.visit_lab_status_id == null ? "" : p.visit_lab_status_id;
+            //p.visit_lab_status_id = p.visit_lab_status_id == null ? "" : p.visit_lab_status_id;
             //p.visit_cal_date_appointment1 = p.visit_cal_date_appointment1 == null ? "" : p.visit_cal_date_appointment1;
 
 
@@ -225,8 +225,18 @@ namespace clinic_ivf.objdb
             p.b_service_point_id = long.TryParse(p.b_service_point_id, out chk) ? chk.ToString() : "0";
             p.f_visit_opd_discharge_status_id = long.TryParse(p.f_visit_opd_discharge_status_id, out chk) ? chk.ToString() : "0";
             p.queue_id = long.TryParse(p.queue_id, out chk) ? chk.ToString() : "0";
-            //p.f_patient_prefix_id = long.TryParse(p.f_patient_prefix_id, out chk) ? chk.ToString() : "0";
-
+            p.f_visit_service_type_id = long.TryParse(p.f_visit_service_type_id, out chk) ? chk.ToString() : "0";
+            p.f_transportation_type_id = long.TryParse(p.f_transportation_type_id, out chk) ? chk.ToString() : "0";
+            p.f_trama_status_id = long.TryParse(p.f_trama_status_id, out chk) ? chk.ToString() : "0";
+            p.b_visit_room_id = long.TryParse(p.b_visit_room_id, out chk) ? chk.ToString() : "0";
+            p.b_visit_bed_id = long.TryParse(p.b_visit_bed_id, out chk) ? chk.ToString() : "0";
+            p.surveillance_case_id = long.TryParse(p.surveillance_case_id, out chk) ? chk.ToString() : "0";
+            p.contact_join_id = long.TryParse(p.contact_join_id, out chk) ? chk.ToString() : "0";
+            p.contact_id = long.TryParse(p.contact_id, out chk) ? chk.ToString() : "0";
+            p.f_emergency_status_id = long.TryParse(p.f_emergency_status_id, out chk) ? chk.ToString() : "0";
+            p.f_refer_cause_id = long.TryParse(p.f_refer_cause_id, out chk) ? chk.ToString() : "0";
+            p.b_ncd_group_id = long.TryParse(p.b_ncd_group_id, out chk) ? chk.ToString() : "0";
+            p.visit_lab_status_id = long.TryParse(p.visit_lab_status_id, out chk) ? chk.ToString() : "0";
         }
         public String insert(Visit p, String userId)
         {

@@ -171,7 +171,7 @@ namespace clinic_ivf.gui
             {
                 stt.Hide();
                 
-                String re = "";
+                String re = "",re1="";
                 if (ic.iniC.statusAppDonor.Equals("1"))
                 {
                     setVisit();
@@ -181,6 +181,13 @@ namespace clinic_ivf.gui
                 {
                     setVisitOld();
                     re = ic.ivfDB.vsOldDB.insertVisitOld(vsOld, txtStfConfirmID.Text);
+                    long chk1 = 0;
+                    if (long.TryParse(re, out chk1))
+                    {
+                        setVisit();
+                        vs.visit_vn = re;
+                        re1 = ic.ivfDB.vsDB.insertVisit(vs, txtStfConfirmID.Text);
+                    }
                 }
                 long chk = 0;
                 if (long.TryParse(re, out chk))
@@ -385,6 +392,7 @@ namespace clinic_ivf.gui
             }
             else
             {
+                label7.Text = "HN donor :";
                 pttO = ic.ivfDB.pttOldDB.selectByPk1(pttOid);
                 txtHn.Value = pttO.PIDS;
                 txtPttId.Value = pttO.PID;
@@ -403,14 +411,14 @@ namespace clinic_ivf.gui
                 ic.setC1Combo(cboSex, pttO.SexID);
                 ic.setC1Combo(cboMarital, pttO.MaritalID);
                 ic.setC1Combo(cboRg, pttO.Religion);
-                
+                ic.setC1Combo(cboPrefix, pttO.SurfixID);
                 if (pttO.IDNumber.Length == 10)
                 {
 
                 }
                 //txtPid.Value = pttO.IDNumber.Length == 10 ? pttO.IDNumber : "";
                 //txtPaasport.Value = pttO.IDNumber.Length != 10 ? pttO.IDNumber : "";
-                txtPid.Value = pttO.IDNumber;
+                txtPaasport.Value = pttO.IDNumber;
                 //cboName1Rl.Text = pttO.RelationshipID;
                 //ic.setC1Combo(cboName1Rl, pttO.RelationshipID);
                 //barcode.Text = txtHn.Text;
@@ -451,7 +459,7 @@ namespace clinic_ivf.gui
             vsOld.PName = cboPrefix.Text +" "+txtPttNameE.Text+" "+txtPttLNameE.Text;
             vsOld.OName = "";
             vsOld.VDate = DateTime.Now.Year.ToString()+"-"+ DateTime.Now.ToString("MM-dd");
-            vsOld.VStartTime = DateTime.Now.ToString("hh:mm:ss");
+            vsOld.VStartTime = DateTime.Now.ToString("HH:mm:ss");
             vsOld.VEndTime = "";
             vsOld.VUpdateTime = "";
             vsOld.LVSID = "";
