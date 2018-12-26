@@ -54,5 +54,14 @@ namespace clinic_ivf.object1
         public String tvs_day { get; set; }
         public String tvs_time { get; set; }
         public String opu_time { get; set; }
+        public String et { get; set; }
+        public String et_time { get; set; }
+        public String fet { get; set; }
+        public String fet_time { get; set; }
+        public String hormone_test { get; set; }
+        public String other { get; set; }
+        public String beta_hgc { get; set; }
+        public String other_remark { get; set; }
+
     }
 }

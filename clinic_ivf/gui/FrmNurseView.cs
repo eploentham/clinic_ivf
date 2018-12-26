@@ -606,9 +606,10 @@ namespace clinic_ivf.gui
 
             ContextMenu menuGw = new ContextMenu();
             //menuGw.MenuItems.Add("&receive operation", new EventHandler(ContextMenu_Apm));
-            //menuGw.MenuItems.Add("&Order Entry", new EventHandler(ContextMenu_order));
+            menuGw.MenuItems.Add("&LAB request FORM A", new EventHandler(ContextMenu_LAB_req_formA_Ptt));
             menuGw.MenuItems.Add("&Add Appointment", new EventHandler(ContextMenu_Apm_Ptt));
-            //menuGw.MenuItems.Add("&Cancel Receive", new EventHandler(ContextMenu_Apm));
+            menuGw.MenuItems.Add("&Cancel Receive", new EventHandler(ContextMenu_Apm_Ptt));
+            menuGw.MenuItems.Add("&No Appointment Close Operation", new EventHandler(ContextMenu_NO_Apm_Ptt));
             grfQue.ContextMenu = menuGw;
 
             Color color = ColorTranslator.FromHtml(ic.iniC.grfRowColor);
@@ -672,6 +673,46 @@ namespace clinic_ivf.gui
                 {
                     setGrfQue();
                 }                
+            }
+        }
+        private void ContextMenu_NO_Apm_Ptt(object sender, System.EventArgs e)
+        {
+            String chk = "", name = "", vsid = "", pttId = "";
+
+            vsid = grfQue[grfQue.Row, colID] != null ? grfQue[grfQue.Row, colID].ToString() : "";
+            pttId = grfQue[grfQue.Row, colPttId] != null ? grfQue[grfQue.Row, colPttId].ToString() : "";
+            chk = grfQue[grfQue.Row, colPttHn] != null ? grfQue[grfQue.Row, colPttHn].ToString() : "";
+            name = grfQue[grfQue.Row, colPttName] != null ? grfQue[grfQue.Row, colPttName].ToString() : "";
+            //FrmNurseAdd frm = new FrmNurseAdd();
+            //frm.ShowDialog(this);
+            //openApmAdd(pttId, vsid, name);
+            if (MessageBox.Show("ต้องการ Close Operation    \n  hn number " + chk + " \n name " + name, "", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == DialogResult.OK)
+            {
+                String re = "";
+                re = ic.ivfDB.vsDB.updateCloseStatusNurse(vsid);
+                if (re.Equals("1"))
+                {
+                    setGrfQue();
+                }
+            }
+        }
+        private void ContextMenu_LAB_req_formA_Ptt(object sender, System.EventArgs e)
+        {
+            String chk = "", name = "", vsid = "", pttId = "";
+
+            vsid = grfQue[grfQue.Row, colID] != null ? grfQue[grfQue.Row, colID].ToString() : "";
+            pttId = grfQue[grfQue.Row, colPttId] != null ? grfQue[grfQue.Row, colPttId].ToString() : "";
+            chk = grfQue[grfQue.Row, colPttHn] != null ? grfQue[grfQue.Row, colPttHn].ToString() : "";
+            name = grfQue[grfQue.Row, colPttName] != null ? grfQue[grfQue.Row, colPttName].ToString() : "";
+            //FrmNurseAdd frm = new FrmNurseAdd();
+            //frm.ShowDialog(this);
+            //openApmAdd(pttId, vsid, name);
+            if (MessageBox.Show("ต้องการป้อน LAB request FORM A\n  hn number " + chk + " \n name " + name, "", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == DialogResult.OK)
+            {
+                FrmLabReq frm = new FrmLabReq(ic);
+                frm.ShowDialog(this);
+                //grfReq.Rows.Remove(grfReq.Row);
+                //openPatientAdd(id, name);
             }
         }
         private void ContextMenu_LAB_req_formA(object sender, System.EventArgs e)

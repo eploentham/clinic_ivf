@@ -78,6 +78,14 @@ namespace clinic_ivf.objdb
             pApm.tvs_day = "tvs_day";
             pApm.tvs_time = "tvs_time";
             pApm.opu_time = "opu_time";
+            pApm.et = "et";
+            pApm.et_time = "et_time";
+            pApm.fet = "fet";
+            pApm.fet_time = "fet_time";
+            pApm.hormone_test = "hormone_test";
+            pApm.other = "other";
+            pApm.beta_hgc = "beta_hgc";
+            pApm.other_remark = "other_remark";
 
             pApm.pkField = "t_patient_appointment_id";
             pApm.table = "t_patient_appointment";
@@ -119,6 +127,9 @@ namespace clinic_ivf.objdb
             p.tvs_day = p.tvs_day == null ? "" : p.tvs_day;
             p.tvs_time = p.tvs_time == null ? "" : p.tvs_time;
             p.opu_time = p.opu_time == null ? "" : p.opu_time;
+            p.other_remark = p.other_remark == null ? "" : p.other_remark;
+            p.fet_time = p.fet_time == null ? "" : p.fet_time;
+            p.et_time = p.et_time == null ? "" : p.et_time;
 
             p.remark = p.remark == null ? "" : p.remark;
             p.e2 = p.e2 == null ? "0" : p.e2;
@@ -134,6 +145,11 @@ namespace clinic_ivf.objdb
             p.repeat_lh = p.repeat_lh == null ? "0" : p.repeat_lh;
             p.repeat_fsh = p.repeat_fsh == null ? "0" : p.repeat_fsh;
             p.opu = p.opu == null ? "0" : p.opu;
+            p.et = p.et == null ? "0" : p.et;
+            p.fet = p.fet == null ? "0" : p.fet;
+            p.hormone_test = p.hormone_test == null ? "0" : p.hormone_test;
+            p.other = p.other == null ? "0" : p.other;
+            p.beta_hgc = p.beta_hgc == null ? "0" : p.beta_hgc;
 
             p.r_rp1853_aptype_id = long.TryParse(p.r_rp1853_aptype_id, out chk) ? chk.ToString() : "0";
             p.t_patient_id = long.TryParse(p.t_patient_id, out chk) ? chk.ToString() : "0";
@@ -173,7 +189,9 @@ namespace clinic_ivf.objdb
                 pApm.fsh + "," + pApm.t_patient_id + "," + pApm.tvs + "," +
                 pApm.repeat_e2 + "," + pApm.repeat_prl + "," + pApm.repeat_lh + "," +
                 pApm.repeat_fsh + "," + pApm.opu + "," + pApm.doctor_anes + "," +
-                pApm.tvs_day + "," + pApm.tvs_time + "," + pApm.opu_time + " " +
+                pApm.et + "," + pApm.et_time + "," + pApm.fet + "," +
+                pApm.fet_time + "," + pApm.hormone_test + "," + pApm.other + "," +
+                pApm.beta_hgc + "," + pApm.other_remark + "," + pApm.opu_time + " " +
                 ") " +
                 "Values ('" + p.patient_appoint_date_time + "','" + p.patient_appointment_time.Replace("'", "''") + "','" + p.patient_appointment.Replace("'", "''") + "'," +
                 "'" + p.patient_appointment_doctor.Replace("'", "''") + "','" + p.patient_appointment_notice.Replace("'", "''") + "','" + p.patient_appointment_staff.Replace("'", "''") + "'," +
@@ -192,7 +210,10 @@ namespace clinic_ivf.objdb
                 "'" + p.fsh + "','" + p.t_patient_id + "','" + p.tvs + "'," +
                 "'" + p.repeat_e2 + "','" + p.repeat_prl + "','" + p.repeat_lh + "'," +
                 "'" + p.repeat_fsh + "','" + p.opu + "','" + p.doctor_anes + "'," +
-                "'" + p.tvs_day + "','" + p.tvs_time + "','" + p.opu_time + "' " +
+                "'" + p.tvs_day + "','" + p.tvs_time + "','" + p.opu_time + "'," +
+                "'" + p.et + "','" + p.et_time + "','" + p.fet + "'," +
+                "'" + p.fet_time + "','" + p.hormone_test + "','" + p.other + "'," +
+                "'" + p.beta_hgc + "','" + p.other_remark.Replace("'", "''") + "','" + p.opu_time + "' " +
                 ")";
 
                 re = conn.ExecuteNonQuery(conn.conn, sql);
@@ -270,6 +291,14 @@ namespace clinic_ivf.objdb
                 "," + pApm.tvs_day + "='" + p.tvs_day + "' " +
                 "," + pApm.tvs_time + "='" + p.tvs_time + "' " +
                 "," + pApm.opu_time + "='" + p.opu_time + "' " +
+                "," + pApm.et + "='" + p.et + "' " +
+                "," + pApm.et_time + "='" + p.et_time + "' " +
+                "," + pApm.fet + "='" + p.fet + "' " +
+                "," + pApm.fet_time + "='" + p.fet_time + "' " +
+                "," + pApm.hormone_test + "='" + p.hormone_test + "' " +
+                "," + pApm.other + "='" + p.other + "' " +
+                "," + pApm.beta_hgc + "='" + p.beta_hgc + "' " +
+                "," + pApm.other_remark + "='" + p.other_remark.Replace("'", "''") + "' " +
                 " Where " + pApm.pkField + " = '" + p.t_patient_appointment_id + "' "
                 ;
             try
@@ -516,6 +545,14 @@ namespace clinic_ivf.objdb
                 ptt1.tvs_day = dt.Rows[0][pApm.tvs_day].ToString();
                 ptt1.tvs_time = dt.Rows[0][pApm.tvs_time].ToString();
                 ptt1.opu_time = dt.Rows[0][pApm.opu_time].ToString();
+                ptt1.et = dt.Rows[0][pApm.et].ToString();
+                ptt1.et_time = dt.Rows[0][pApm.et_time].ToString();
+                ptt1.fet = dt.Rows[0][pApm.fet].ToString();
+                ptt1.fet_time = dt.Rows[0][pApm.fet_time].ToString();
+                ptt1.hormone_test = dt.Rows[0][pApm.hormone_test].ToString();
+                ptt1.other = dt.Rows[0][pApm.other].ToString();
+                ptt1.beta_hgc = dt.Rows[0][pApm.beta_hgc].ToString();
+                ptt1.other_remark = dt.Rows[0][pApm.other_remark].ToString();
             }
             else
             {
@@ -582,6 +619,14 @@ namespace clinic_ivf.objdb
             stf1.tvs_day = "";
             stf1.tvs_time = "";
             stf1.opu_time = "";
+            stf1.et = "";
+            stf1.et_time = "";
+            stf1.fet = "";
+            stf1.fet_time = "";
+            stf1.hormone_test = "";
+            stf1.other = "";
+            stf1.beta_hgc = "";
+            stf1.other_remark = "";
             return stf1;
         }
     }
