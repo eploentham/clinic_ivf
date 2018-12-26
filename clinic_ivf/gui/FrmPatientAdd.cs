@@ -193,6 +193,7 @@ namespace clinic_ivf.gui
             chkDenyAllergy.CheckedChanged += ChkDenyAllergy_CheckedChanged;
             btnApm.Click += BtnApm_Click;
             btnSmartcard.Click += BtnSmartcard_Click;
+            btnPrnOPDCard.Click += BtnPrnOPDCard_Click;
 
             setKeyEnter();
 
@@ -213,6 +214,17 @@ namespace clinic_ivf.gui
             
             //btnSavePic.Enabled = false;
         }
+
+        private void BtnPrnOPDCard_Click(object sender, EventArgs e)
+        {
+            //throw new NotImplementedException();
+            DataTable dt = new DataTable();
+            dt = ic.ivfDB.pttOldDB.selectByOpdCard(txtIdOld.Text);
+            FrmReport frm = new FrmReport(ic);
+            frm.setOPDCardOldReport(dt);
+            frm.ShowDialog(this);
+        }
+
         public static string GetCurrentExecutingDirectory(System.Reflection.Assembly assembly)
         {
             string filePath = new Uri(System.Reflection.Assembly.GetExecutingAssembly().CodeBase).LocalPath;

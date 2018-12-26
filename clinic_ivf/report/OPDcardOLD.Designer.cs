@@ -279,65 +279,65 @@ namespace clinic_ivf.report {
         [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
         public partial class OPDcardDataTable : global::System.Data.TypedTableBase<OPDcardRow> {
             
-            private global::System.Data.DataColumn columnpid;
+            private global::System.Data.DataColumn columnPID;
             
-            private global::System.Data.DataColumn columnpids;
+            private global::System.Data.DataColumn columnPIDS;
             
-            private global::System.Data.DataColumn columnname;
+            private global::System.Data.DataColumn columnnamee;
             
             private global::System.Data.DataColumn columnage;
             
-            private global::System.Data.DataColumn columnidnumber;
+            private global::System.Data.DataColumn columnIDNumber;
             
-            private global::System.Data.DataColumn columndob;
+            private global::System.Data.DataColumn columnDateOfBirth;
             
-            private global::System.Data.DataColumn columnmarital;
+            private global::System.Data.DataColumn columnMaritalID;
             
-            private global::System.Data.DataColumn columnnationality;
+            private global::System.Data.DataColumn columnNationality;
             
-            private global::System.Data.DataColumn columnaddress;
+            private global::System.Data.DataColumn columnAddress;
             
-            private global::System.Data.DataColumn columnsoi;
+            private global::System.Data.DataColumn columnSoi;
             
-            private global::System.Data.DataColumn columndistrict;
+            private global::System.Data.DataColumn columnDistrict;
             
-            private global::System.Data.DataColumn columnhome_phone;
+            private global::System.Data.DataColumn columnHomePhoneNo;
             
-            private global::System.Data.DataColumn columnemail;
+            private global::System.Data.DataColumn columnEmail;
             
-            private global::System.Data.DataColumn columncompany_name;
+            private global::System.Data.DataColumn columnCompanyName;
             
-            private global::System.Data.DataColumn columnemer_contact;
+            private global::System.Data.DataColumn columnEmergencyPersonalContact;
             
-            private global::System.Data.DataColumn columnemer_relationship;
+            private global::System.Data.DataColumn columnRelationshipID;
             
-            private global::System.Data.DataColumn columnemer_address;
+            private global::System.Data.DataColumn columnEPAddress;
             
-            private global::System.Data.DataColumn columnemer_amphur;
+            private global::System.Data.DataColumn columnEPSubDistrict;
             
-            private global::System.Data.DataColumn columnemer_district;
+            private global::System.Data.DataColumn columnProvince;
             
-            private global::System.Data.DataColumn columnemer_province;
+            private global::System.Data.DataColumn columnEPProvince;
             
-            private global::System.Data.DataColumn columnemer_home_phone;
+            private global::System.Data.DataColumn columnEPHomePhoneNo;
             
-            private global::System.Data.DataColumn columnemer_email;
+            private global::System.Data.DataColumn columnEPEmail;
             
-            private global::System.Data.DataColumn columnpayment_method;
+            private global::System.Data.DataColumn columnPaymentID;
             
-            private global::System.Data.DataColumn columncontract_name;
+            private global::System.Data.DataColumn columnContractName;
             
-            private global::System.Data.DataColumn columnreligion;
+            private global::System.Data.DataColumn columnReligion;
             
-            private global::System.Data.DataColumn columnrace;
+            private global::System.Data.DataColumn columnRace;
             
-            private global::System.Data.DataColumn columnmoo;
+            private global::System.Data.DataColumn columnMoo;
             
-            private global::System.Data.DataColumn columnamphur;
+            private global::System.Data.DataColumn columnSubDistrict;
             
             private global::System.Data.DataColumn columnzipcode;
             
-            private global::System.Data.DataColumn columnroad;
+            private global::System.Data.DataColumn columnRoad;
             
             private global::System.Data.DataColumn columnmobile;
             
@@ -350,6 +350,48 @@ namespace clinic_ivf.report {
             private global::System.Data.DataColumn columnemer_zipcode;
             
             private global::System.Data.DataColumn columninsurance_name;
+            
+            private global::System.Data.DataColumn columnnamet;
+            
+            private global::System.Data.DataColumn columnBuildingVillage;
+            
+            private global::System.Data.DataColumn columnZipCode;
+            
+            private global::System.Data.DataColumn columnMobilePhoneNo;
+            
+            private global::System.Data.DataColumn columnOccupation;
+            
+            private global::System.Data.DataColumn columnCompanyPhoneNo;
+            
+            private global::System.Data.DataColumn columnRelationshipOther;
+            
+            private global::System.Data.DataColumn columnEPRoad;
+            
+            private global::System.Data.DataColumn columnEPDistrict;
+            
+            private global::System.Data.DataColumn columnEPZipcode;
+            
+            private global::System.Data.DataColumn columnEPMobilePhoneNo;
+            
+            private global::System.Data.DataColumn columnInsuranceName;
+            
+            private global::System.Data.DataColumn columnAllergy;
+            
+            private global::System.Data.DataColumn columnAgentID;
+            
+            private global::System.Data.DataColumn columnAgentName;
+            
+            private global::System.Data.DataColumn columnPaymentName;
+            
+            private global::System.Data.DataColumn columnRelationshipName;
+            
+            private global::System.Data.DataColumn columnSurfixName;
+            
+            private global::System.Data.DataColumn columnSexName;
+            
+            private global::System.Data.DataColumn columnMaritalName;
+            
+            private global::System.Data.DataColumn columnaddress1;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
@@ -386,25 +428,25 @@ namespace clinic_ivf.report {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public global::System.Data.DataColumn pidColumn {
+            public global::System.Data.DataColumn PIDColumn {
                 get {
-                    return this.columnpid;
+                    return this.columnPID;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public global::System.Data.DataColumn pidsColumn {
+            public global::System.Data.DataColumn PIDSColumn {
                 get {
-                    return this.columnpids;
+                    return this.columnPIDS;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public global::System.Data.DataColumn nameColumn {
+            public global::System.Data.DataColumn nameeColumn {
                 get {
-                    return this.columnname;
+                    return this.columnnamee;
                 }
             }
             
@@ -418,193 +460,193 @@ namespace clinic_ivf.report {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public global::System.Data.DataColumn idnumberColumn {
+            public global::System.Data.DataColumn IDNumberColumn {
                 get {
-                    return this.columnidnumber;
+                    return this.columnIDNumber;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public global::System.Data.DataColumn dobColumn {
+            public global::System.Data.DataColumn DateOfBirthColumn {
                 get {
-                    return this.columndob;
+                    return this.columnDateOfBirth;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public global::System.Data.DataColumn maritalColumn {
+            public global::System.Data.DataColumn MaritalIDColumn {
                 get {
-                    return this.columnmarital;
+                    return this.columnMaritalID;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public global::System.Data.DataColumn nationalityColumn {
+            public global::System.Data.DataColumn NationalityColumn {
                 get {
-                    return this.columnnationality;
+                    return this.columnNationality;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public global::System.Data.DataColumn addressColumn {
+            public global::System.Data.DataColumn AddressColumn {
                 get {
-                    return this.columnaddress;
+                    return this.columnAddress;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public global::System.Data.DataColumn soiColumn {
+            public global::System.Data.DataColumn SoiColumn {
                 get {
-                    return this.columnsoi;
+                    return this.columnSoi;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public global::System.Data.DataColumn districtColumn {
+            public global::System.Data.DataColumn DistrictColumn {
                 get {
-                    return this.columndistrict;
+                    return this.columnDistrict;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public global::System.Data.DataColumn home_phoneColumn {
+            public global::System.Data.DataColumn HomePhoneNoColumn {
                 get {
-                    return this.columnhome_phone;
+                    return this.columnHomePhoneNo;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public global::System.Data.DataColumn emailColumn {
+            public global::System.Data.DataColumn EmailColumn {
                 get {
-                    return this.columnemail;
+                    return this.columnEmail;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public global::System.Data.DataColumn company_nameColumn {
+            public global::System.Data.DataColumn CompanyNameColumn {
                 get {
-                    return this.columncompany_name;
+                    return this.columnCompanyName;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public global::System.Data.DataColumn emer_contactColumn {
+            public global::System.Data.DataColumn EmergencyPersonalContactColumn {
                 get {
-                    return this.columnemer_contact;
+                    return this.columnEmergencyPersonalContact;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public global::System.Data.DataColumn emer_relationshipColumn {
+            public global::System.Data.DataColumn RelationshipIDColumn {
                 get {
-                    return this.columnemer_relationship;
+                    return this.columnRelationshipID;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public global::System.Data.DataColumn emer_addressColumn {
+            public global::System.Data.DataColumn EPAddressColumn {
                 get {
-                    return this.columnemer_address;
+                    return this.columnEPAddress;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public global::System.Data.DataColumn emer_amphurColumn {
+            public global::System.Data.DataColumn EPSubDistrictColumn {
                 get {
-                    return this.columnemer_amphur;
+                    return this.columnEPSubDistrict;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public global::System.Data.DataColumn emer_districtColumn {
+            public global::System.Data.DataColumn ProvinceColumn {
                 get {
-                    return this.columnemer_district;
+                    return this.columnProvince;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public global::System.Data.DataColumn emer_provinceColumn {
+            public global::System.Data.DataColumn EPProvinceColumn {
                 get {
-                    return this.columnemer_province;
+                    return this.columnEPProvince;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public global::System.Data.DataColumn emer_home_phoneColumn {
+            public global::System.Data.DataColumn EPHomePhoneNoColumn {
                 get {
-                    return this.columnemer_home_phone;
+                    return this.columnEPHomePhoneNo;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public global::System.Data.DataColumn emer_emailColumn {
+            public global::System.Data.DataColumn EPEmailColumn {
                 get {
-                    return this.columnemer_email;
+                    return this.columnEPEmail;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public global::System.Data.DataColumn payment_methodColumn {
+            public global::System.Data.DataColumn PaymentIDColumn {
                 get {
-                    return this.columnpayment_method;
+                    return this.columnPaymentID;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public global::System.Data.DataColumn contract_nameColumn {
+            public global::System.Data.DataColumn ContractNameColumn {
                 get {
-                    return this.columncontract_name;
+                    return this.columnContractName;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public global::System.Data.DataColumn religionColumn {
+            public global::System.Data.DataColumn ReligionColumn {
                 get {
-                    return this.columnreligion;
+                    return this.columnReligion;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public global::System.Data.DataColumn raceColumn {
+            public global::System.Data.DataColumn RaceColumn {
                 get {
-                    return this.columnrace;
+                    return this.columnRace;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public global::System.Data.DataColumn mooColumn {
+            public global::System.Data.DataColumn MooColumn {
                 get {
-                    return this.columnmoo;
+                    return this.columnMoo;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public global::System.Data.DataColumn amphurColumn {
+            public global::System.Data.DataColumn SubDistrictColumn {
                 get {
-                    return this.columnamphur;
+                    return this.columnSubDistrict;
                 }
             }
             
@@ -618,9 +660,9 @@ namespace clinic_ivf.report {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public global::System.Data.DataColumn roadColumn {
+            public global::System.Data.DataColumn RoadColumn {
                 get {
-                    return this.columnroad;
+                    return this.columnRoad;
                 }
             }
             
@@ -674,6 +716,174 @@ namespace clinic_ivf.report {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn nametColumn {
+                get {
+                    return this.columnnamet;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn BuildingVillageColumn {
+                get {
+                    return this.columnBuildingVillage;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn ZipCodeColumn {
+                get {
+                    return this.columnZipCode;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn MobilePhoneNoColumn {
+                get {
+                    return this.columnMobilePhoneNo;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn OccupationColumn {
+                get {
+                    return this.columnOccupation;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn CompanyPhoneNoColumn {
+                get {
+                    return this.columnCompanyPhoneNo;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn RelationshipOtherColumn {
+                get {
+                    return this.columnRelationshipOther;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn EPRoadColumn {
+                get {
+                    return this.columnEPRoad;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn EPDistrictColumn {
+                get {
+                    return this.columnEPDistrict;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn EPZipcodeColumn {
+                get {
+                    return this.columnEPZipcode;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn EPMobilePhoneNoColumn {
+                get {
+                    return this.columnEPMobilePhoneNo;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn InsuranceNameColumn {
+                get {
+                    return this.columnInsuranceName;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn AllergyColumn {
+                get {
+                    return this.columnAllergy;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn AgentIDColumn {
+                get {
+                    return this.columnAgentID;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn AgentNameColumn {
+                get {
+                    return this.columnAgentName;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn PaymentNameColumn {
+                get {
+                    return this.columnPaymentName;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn RelationshipNameColumn {
+                get {
+                    return this.columnRelationshipName;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn SurfixNameColumn {
+                get {
+                    return this.columnSurfixName;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn SexNameColumn {
+                get {
+                    return this.columnSexName;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn MaritalNameColumn {
+                get {
+                    return this.columnMaritalName;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn address1Column {
+                get {
+                    return this.columnaddress1;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -710,80 +920,122 @@ namespace clinic_ivf.report {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public OPDcardRow AddOPDcardRow(
-                        string pid, 
-                        string pids, 
-                        string name, 
+                        string PID, 
+                        string PIDS, 
+                        string namee, 
                         string age, 
-                        string idnumber, 
-                        string dob, 
-                        string marital, 
-                        string nationality, 
-                        string address, 
-                        string soi, 
-                        string district, 
-                        string home_phone, 
-                        string email, 
-                        string company_name, 
-                        string emer_contact, 
-                        string emer_relationship, 
-                        string emer_address, 
-                        string emer_amphur, 
-                        string emer_district, 
-                        string emer_province, 
-                        string emer_home_phone, 
-                        string emer_email, 
-                        string payment_method, 
-                        string contract_name, 
-                        string religion, 
-                        string race, 
-                        string moo, 
-                        string amphur, 
+                        string IDNumber, 
+                        string DateOfBirth, 
+                        string MaritalID, 
+                        string Nationality, 
+                        string Address, 
+                        string Soi, 
+                        string District, 
+                        string HomePhoneNo, 
+                        string Email, 
+                        string CompanyName, 
+                        string EmergencyPersonalContact, 
+                        string RelationshipID, 
+                        string EPAddress, 
+                        string EPSubDistrict, 
+                        string Province, 
+                        string EPProvince, 
+                        string EPHomePhoneNo, 
+                        string EPEmail, 
+                        string PaymentID, 
+                        string ContractName, 
+                        string Religion, 
+                        string Race, 
+                        string Moo, 
+                        string SubDistrict, 
                         string zipcode, 
-                        string road, 
+                        string Road, 
                         string mobile, 
                         string occupation, 
                         string description, 
                         string emer_road, 
                         string emer_zipcode, 
-                        string insurance_name) {
+                        string insurance_name, 
+                        string namet, 
+                        string BuildingVillage, 
+                        string ZipCode1, 
+                        string MobilePhoneNo, 
+                        string Occupation1, 
+                        string CompanyPhoneNo, 
+                        string RelationshipOther, 
+                        string EPRoad, 
+                        string EPDistrict, 
+                        string EPZipcode, 
+                        string EPMobilePhoneNo, 
+                        string InsuranceName, 
+                        string Allergy, 
+                        string AgentID, 
+                        string AgentName, 
+                        string PaymentName, 
+                        string RelationshipName, 
+                        string SurfixName, 
+                        string SexName, 
+                        string MaritalName, 
+                        string address1) {
                 OPDcardRow rowOPDcardRow = ((OPDcardRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
-                        pid,
-                        pids,
-                        name,
+                        PID,
+                        PIDS,
+                        namee,
                         age,
-                        idnumber,
-                        dob,
-                        marital,
-                        nationality,
-                        address,
-                        soi,
-                        district,
-                        home_phone,
-                        email,
-                        company_name,
-                        emer_contact,
-                        emer_relationship,
-                        emer_address,
-                        emer_amphur,
-                        emer_district,
-                        emer_province,
-                        emer_home_phone,
-                        emer_email,
-                        payment_method,
-                        contract_name,
-                        religion,
-                        race,
-                        moo,
-                        amphur,
+                        IDNumber,
+                        DateOfBirth,
+                        MaritalID,
+                        Nationality,
+                        Address,
+                        Soi,
+                        District,
+                        HomePhoneNo,
+                        Email,
+                        CompanyName,
+                        EmergencyPersonalContact,
+                        RelationshipID,
+                        EPAddress,
+                        EPSubDistrict,
+                        Province,
+                        EPProvince,
+                        EPHomePhoneNo,
+                        EPEmail,
+                        PaymentID,
+                        ContractName,
+                        Religion,
+                        Race,
+                        Moo,
+                        SubDistrict,
                         zipcode,
-                        road,
+                        Road,
                         mobile,
                         occupation,
                         description,
                         emer_road,
                         emer_zipcode,
-                        insurance_name};
+                        insurance_name,
+                        namet,
+                        BuildingVillage,
+                        ZipCode1,
+                        MobilePhoneNo,
+                        Occupation1,
+                        CompanyPhoneNo,
+                        RelationshipOther,
+                        EPRoad,
+                        EPDistrict,
+                        EPZipcode,
+                        EPMobilePhoneNo,
+                        InsuranceName,
+                        Allergy,
+                        AgentID,
+                        AgentName,
+                        PaymentName,
+                        RelationshipName,
+                        SurfixName,
+                        SexName,
+                        MaritalName,
+                        address1};
                 rowOPDcardRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowOPDcardRow);
                 return rowOPDcardRow;
@@ -806,107 +1058,128 @@ namespace clinic_ivf.report {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             internal void InitVars() {
-                this.columnpid = base.Columns["pid"];
-                this.columnpids = base.Columns["pids"];
-                this.columnname = base.Columns["name"];
+                this.columnPID = base.Columns["PID"];
+                this.columnPIDS = base.Columns["PIDS"];
+                this.columnnamee = base.Columns["namee"];
                 this.columnage = base.Columns["age"];
-                this.columnidnumber = base.Columns["idnumber"];
-                this.columndob = base.Columns["dob"];
-                this.columnmarital = base.Columns["marital"];
-                this.columnnationality = base.Columns["nationality"];
-                this.columnaddress = base.Columns["address"];
-                this.columnsoi = base.Columns["soi"];
-                this.columndistrict = base.Columns["district"];
-                this.columnhome_phone = base.Columns["home_phone"];
-                this.columnemail = base.Columns["email"];
-                this.columncompany_name = base.Columns["company_name"];
-                this.columnemer_contact = base.Columns["emer_contact"];
-                this.columnemer_relationship = base.Columns["emer_relationship"];
-                this.columnemer_address = base.Columns["emer_address"];
-                this.columnemer_amphur = base.Columns["emer_amphur"];
-                this.columnemer_district = base.Columns["emer_district"];
-                this.columnemer_province = base.Columns["emer_province"];
-                this.columnemer_home_phone = base.Columns["emer_home_phone"];
-                this.columnemer_email = base.Columns["emer_email"];
-                this.columnpayment_method = base.Columns["payment_method"];
-                this.columncontract_name = base.Columns["contract_name"];
-                this.columnreligion = base.Columns["religion"];
-                this.columnrace = base.Columns["race"];
-                this.columnmoo = base.Columns["moo"];
-                this.columnamphur = base.Columns["amphur"];
+                this.columnIDNumber = base.Columns["IDNumber"];
+                this.columnDateOfBirth = base.Columns["DateOfBirth"];
+                this.columnMaritalID = base.Columns["MaritalID"];
+                this.columnNationality = base.Columns["Nationality"];
+                this.columnAddress = base.Columns["Address"];
+                this.columnSoi = base.Columns["Soi"];
+                this.columnDistrict = base.Columns["District"];
+                this.columnHomePhoneNo = base.Columns["HomePhoneNo"];
+                this.columnEmail = base.Columns["Email"];
+                this.columnCompanyName = base.Columns["CompanyName"];
+                this.columnEmergencyPersonalContact = base.Columns["EmergencyPersonalContact"];
+                this.columnRelationshipID = base.Columns["RelationshipID"];
+                this.columnEPAddress = base.Columns["EPAddress"];
+                this.columnEPSubDistrict = base.Columns["EPSubDistrict"];
+                this.columnProvince = base.Columns["Province"];
+                this.columnEPProvince = base.Columns["EPProvince"];
+                this.columnEPHomePhoneNo = base.Columns["EPHomePhoneNo"];
+                this.columnEPEmail = base.Columns["EPEmail"];
+                this.columnPaymentID = base.Columns["PaymentID"];
+                this.columnContractName = base.Columns["ContractName"];
+                this.columnReligion = base.Columns["Religion"];
+                this.columnRace = base.Columns["Race"];
+                this.columnMoo = base.Columns["Moo"];
+                this.columnSubDistrict = base.Columns["SubDistrict"];
                 this.columnzipcode = base.Columns["zipcode"];
-                this.columnroad = base.Columns["road"];
+                this.columnRoad = base.Columns["Road"];
                 this.columnmobile = base.Columns["mobile"];
                 this.columnoccupation = base.Columns["occupation"];
                 this.columndescription = base.Columns["description"];
                 this.columnemer_road = base.Columns["emer_road"];
                 this.columnemer_zipcode = base.Columns["emer_zipcode"];
                 this.columninsurance_name = base.Columns["insurance_name"];
+                this.columnnamet = base.Columns["namet"];
+                this.columnBuildingVillage = base.Columns["BuildingVillage"];
+                this.columnZipCode = base.Columns["ZipCode"];
+                this.columnMobilePhoneNo = base.Columns["MobilePhoneNo"];
+                this.columnOccupation = base.Columns["Occupation"];
+                this.columnCompanyPhoneNo = base.Columns["CompanyPhoneNo"];
+                this.columnRelationshipOther = base.Columns["RelationshipOther"];
+                this.columnEPRoad = base.Columns["EPRoad"];
+                this.columnEPDistrict = base.Columns["EPDistrict"];
+                this.columnEPZipcode = base.Columns["EPZipcode"];
+                this.columnEPMobilePhoneNo = base.Columns["EPMobilePhoneNo"];
+                this.columnInsuranceName = base.Columns["InsuranceName"];
+                this.columnAllergy = base.Columns["Allergy"];
+                this.columnAgentID = base.Columns["AgentID"];
+                this.columnAgentName = base.Columns["AgentName"];
+                this.columnPaymentName = base.Columns["PaymentName"];
+                this.columnRelationshipName = base.Columns["RelationshipName"];
+                this.columnSurfixName = base.Columns["SurfixName"];
+                this.columnSexName = base.Columns["SexName"];
+                this.columnMaritalName = base.Columns["MaritalName"];
+                this.columnaddress1 = base.Columns["address1"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             private void InitClass() {
-                this.columnpid = new global::System.Data.DataColumn("pid", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnpid);
-                this.columnpids = new global::System.Data.DataColumn("pids", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnpids);
-                this.columnname = new global::System.Data.DataColumn("name", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnname);
+                this.columnPID = new global::System.Data.DataColumn("PID", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnPID);
+                this.columnPIDS = new global::System.Data.DataColumn("PIDS", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnPIDS);
+                this.columnnamee = new global::System.Data.DataColumn("namee", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnnamee);
                 this.columnage = new global::System.Data.DataColumn("age", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnage);
-                this.columnidnumber = new global::System.Data.DataColumn("idnumber", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnidnumber);
-                this.columndob = new global::System.Data.DataColumn("dob", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columndob);
-                this.columnmarital = new global::System.Data.DataColumn("marital", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnmarital);
-                this.columnnationality = new global::System.Data.DataColumn("nationality", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnnationality);
-                this.columnaddress = new global::System.Data.DataColumn("address", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnaddress);
-                this.columnsoi = new global::System.Data.DataColumn("soi", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnsoi);
-                this.columndistrict = new global::System.Data.DataColumn("district", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columndistrict);
-                this.columnhome_phone = new global::System.Data.DataColumn("home_phone", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnhome_phone);
-                this.columnemail = new global::System.Data.DataColumn("email", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnemail);
-                this.columncompany_name = new global::System.Data.DataColumn("company_name", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columncompany_name);
-                this.columnemer_contact = new global::System.Data.DataColumn("emer_contact", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnemer_contact);
-                this.columnemer_relationship = new global::System.Data.DataColumn("emer_relationship", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnemer_relationship);
-                this.columnemer_address = new global::System.Data.DataColumn("emer_address", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnemer_address);
-                this.columnemer_amphur = new global::System.Data.DataColumn("emer_amphur", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnemer_amphur);
-                this.columnemer_district = new global::System.Data.DataColumn("emer_district", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnemer_district);
-                this.columnemer_province = new global::System.Data.DataColumn("emer_province", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnemer_province);
-                this.columnemer_home_phone = new global::System.Data.DataColumn("emer_home_phone", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnemer_home_phone);
-                this.columnemer_email = new global::System.Data.DataColumn("emer_email", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnemer_email);
-                this.columnpayment_method = new global::System.Data.DataColumn("payment_method", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnpayment_method);
-                this.columncontract_name = new global::System.Data.DataColumn("contract_name", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columncontract_name);
-                this.columnreligion = new global::System.Data.DataColumn("religion", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnreligion);
-                this.columnrace = new global::System.Data.DataColumn("race", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnrace);
-                this.columnmoo = new global::System.Data.DataColumn("moo", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnmoo);
-                this.columnamphur = new global::System.Data.DataColumn("amphur", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnamphur);
+                this.columnIDNumber = new global::System.Data.DataColumn("IDNumber", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnIDNumber);
+                this.columnDateOfBirth = new global::System.Data.DataColumn("DateOfBirth", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnDateOfBirth);
+                this.columnMaritalID = new global::System.Data.DataColumn("MaritalID", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnMaritalID);
+                this.columnNationality = new global::System.Data.DataColumn("Nationality", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnNationality);
+                this.columnAddress = new global::System.Data.DataColumn("Address", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnAddress);
+                this.columnSoi = new global::System.Data.DataColumn("Soi", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnSoi);
+                this.columnDistrict = new global::System.Data.DataColumn("District", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnDistrict);
+                this.columnHomePhoneNo = new global::System.Data.DataColumn("HomePhoneNo", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnHomePhoneNo);
+                this.columnEmail = new global::System.Data.DataColumn("Email", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnEmail);
+                this.columnCompanyName = new global::System.Data.DataColumn("CompanyName", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnCompanyName);
+                this.columnEmergencyPersonalContact = new global::System.Data.DataColumn("EmergencyPersonalContact", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnEmergencyPersonalContact);
+                this.columnRelationshipID = new global::System.Data.DataColumn("RelationshipID", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnRelationshipID);
+                this.columnEPAddress = new global::System.Data.DataColumn("EPAddress", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnEPAddress);
+                this.columnEPSubDistrict = new global::System.Data.DataColumn("EPSubDistrict", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnEPSubDistrict);
+                this.columnProvince = new global::System.Data.DataColumn("Province", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnProvince);
+                this.columnEPProvince = new global::System.Data.DataColumn("EPProvince", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnEPProvince);
+                this.columnEPHomePhoneNo = new global::System.Data.DataColumn("EPHomePhoneNo", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnEPHomePhoneNo);
+                this.columnEPEmail = new global::System.Data.DataColumn("EPEmail", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnEPEmail);
+                this.columnPaymentID = new global::System.Data.DataColumn("PaymentID", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnPaymentID);
+                this.columnContractName = new global::System.Data.DataColumn("ContractName", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnContractName);
+                this.columnReligion = new global::System.Data.DataColumn("Religion", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnReligion);
+                this.columnRace = new global::System.Data.DataColumn("Race", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnRace);
+                this.columnMoo = new global::System.Data.DataColumn("Moo", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnMoo);
+                this.columnSubDistrict = new global::System.Data.DataColumn("SubDistrict", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnSubDistrict);
                 this.columnzipcode = new global::System.Data.DataColumn("zipcode", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnzipcode);
-                this.columnroad = new global::System.Data.DataColumn("road", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnroad);
+                this.columnRoad = new global::System.Data.DataColumn("Road", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnRoad);
                 this.columnmobile = new global::System.Data.DataColumn("mobile", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnmobile);
                 this.columnoccupation = new global::System.Data.DataColumn("occupation", typeof(string), null, global::System.Data.MappingType.Element);
@@ -919,36 +1192,78 @@ namespace clinic_ivf.report {
                 base.Columns.Add(this.columnemer_zipcode);
                 this.columninsurance_name = new global::System.Data.DataColumn("insurance_name", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columninsurance_name);
-                this.columnpid.Caption = "DataColumn1";
-                this.columnpids.Caption = "DataColumn1";
-                this.columnname.Caption = "DataColumn1";
+                this.columnnamet = new global::System.Data.DataColumn("namet", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnnamet);
+                this.columnBuildingVillage = new global::System.Data.DataColumn("BuildingVillage", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnBuildingVillage);
+                this.columnZipCode = new global::System.Data.DataColumn("ZipCode", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnZipCode);
+                this.columnMobilePhoneNo = new global::System.Data.DataColumn("MobilePhoneNo", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnMobilePhoneNo);
+                this.columnOccupation = new global::System.Data.DataColumn("Occupation", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnOccupation);
+                this.columnCompanyPhoneNo = new global::System.Data.DataColumn("CompanyPhoneNo", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnCompanyPhoneNo);
+                this.columnRelationshipOther = new global::System.Data.DataColumn("RelationshipOther", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnRelationshipOther);
+                this.columnEPRoad = new global::System.Data.DataColumn("EPRoad", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnEPRoad);
+                this.columnEPDistrict = new global::System.Data.DataColumn("EPDistrict", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnEPDistrict);
+                this.columnEPZipcode = new global::System.Data.DataColumn("EPZipcode", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnEPZipcode);
+                this.columnEPMobilePhoneNo = new global::System.Data.DataColumn("EPMobilePhoneNo", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnEPMobilePhoneNo);
+                this.columnInsuranceName = new global::System.Data.DataColumn("InsuranceName", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnInsuranceName);
+                this.columnAllergy = new global::System.Data.DataColumn("Allergy", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnAllergy);
+                this.columnAgentID = new global::System.Data.DataColumn("AgentID", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnAgentID);
+                this.columnAgentName = new global::System.Data.DataColumn("AgentName", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnAgentName);
+                this.columnPaymentName = new global::System.Data.DataColumn("PaymentName", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnPaymentName);
+                this.columnRelationshipName = new global::System.Data.DataColumn("RelationshipName", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnRelationshipName);
+                this.columnSurfixName = new global::System.Data.DataColumn("SurfixName", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnSurfixName);
+                this.columnSexName = new global::System.Data.DataColumn("SexName", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnSexName);
+                this.columnMaritalName = new global::System.Data.DataColumn("MaritalName", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnMaritalName);
+                this.columnaddress1 = new global::System.Data.DataColumn("address1", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnaddress1);
+                this.columnPID.Caption = "DataColumn1";
+                this.columnPIDS.Caption = "DataColumn1";
+                this.columnnamee.Caption = "DataColumn1";
                 this.columnage.Caption = "DataColumn1";
-                this.columnidnumber.Caption = "DataColumn1";
-                this.columndob.Caption = "DataColumn1";
-                this.columnmarital.Caption = "DataColumn1";
-                this.columnnationality.Caption = "DataColumn1";
-                this.columnaddress.Caption = "DataColumn1";
-                this.columnsoi.Caption = "DataColumn1";
-                this.columndistrict.Caption = "DataColumn1";
-                this.columnhome_phone.Caption = "DataColumn1";
-                this.columnemail.Caption = "DataColumn1";
-                this.columncompany_name.Caption = "DataColumn1";
-                this.columnemer_contact.Caption = "DataColumn1";
-                this.columnemer_relationship.Caption = "DataColumn1";
-                this.columnemer_address.Caption = "DataColumn1";
-                this.columnemer_amphur.Caption = "DataColumn1";
-                this.columnemer_district.Caption = "DataColumn1";
-                this.columnemer_province.Caption = "DataColumn1";
-                this.columnemer_home_phone.Caption = "DataColumn1";
-                this.columnemer_email.Caption = "DataColumn1";
-                this.columnpayment_method.Caption = "DataColumn1";
-                this.columncontract_name.Caption = "DataColumn1";
-                this.columnreligion.Caption = "DataColumn1";
-                this.columnrace.Caption = "DataColumn1";
-                this.columnmoo.Caption = "DataColumn1";
-                this.columnamphur.Caption = "DataColumn1";
+                this.columnIDNumber.Caption = "DataColumn1";
+                this.columnDateOfBirth.Caption = "DataColumn1";
+                this.columnMaritalID.Caption = "DataColumn1";
+                this.columnNationality.Caption = "DataColumn1";
+                this.columnAddress.Caption = "DataColumn1";
+                this.columnSoi.Caption = "DataColumn1";
+                this.columnDistrict.Caption = "DataColumn1";
+                this.columnHomePhoneNo.Caption = "DataColumn1";
+                this.columnEmail.Caption = "DataColumn1";
+                this.columnCompanyName.Caption = "DataColumn1";
+                this.columnEmergencyPersonalContact.Caption = "DataColumn1";
+                this.columnRelationshipID.Caption = "DataColumn1";
+                this.columnEPAddress.Caption = "DataColumn1";
+                this.columnEPSubDistrict.Caption = "DataColumn1";
+                this.columnProvince.Caption = "DataColumn1";
+                this.columnEPProvince.Caption = "DataColumn1";
+                this.columnEPHomePhoneNo.Caption = "DataColumn1";
+                this.columnEPEmail.Caption = "DataColumn1";
+                this.columnPaymentID.Caption = "DataColumn1";
+                this.columnContractName.Caption = "DataColumn1";
+                this.columnReligion.Caption = "DataColumn1";
+                this.columnRace.Caption = "DataColumn1";
+                this.columnMoo.Caption = "DataColumn1";
+                this.columnSubDistrict.Caption = "DataColumn1";
                 this.columnzipcode.Caption = "DataColumn1";
-                this.columnroad.Caption = "DataColumn1";
+                this.columnRoad.Caption = "DataColumn1";
                 this.columnmobile.Caption = "DataColumn1";
             }
             
@@ -1092,49 +1407,49 @@ namespace clinic_ivf.report {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public string pid {
+            public string PID {
                 get {
                     try {
-                        return ((string)(this[this.tableOPDcard.pidColumn]));
+                        return ((string)(this[this.tableOPDcard.PIDColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'pid\' in table \'OPDcard\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'PID\' in table \'OPDcard\' is DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableOPDcard.pidColumn] = value;
+                    this[this.tableOPDcard.PIDColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public string pids {
+            public string PIDS {
                 get {
                     try {
-                        return ((string)(this[this.tableOPDcard.pidsColumn]));
+                        return ((string)(this[this.tableOPDcard.PIDSColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'pids\' in table \'OPDcard\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'PIDS\' in table \'OPDcard\' is DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableOPDcard.pidsColumn] = value;
+                    this[this.tableOPDcard.PIDSColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public string name {
+            public string namee {
                 get {
                     try {
-                        return ((string)(this[this.tableOPDcard.nameColumn]));
+                        return ((string)(this[this.tableOPDcard.nameeColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'name\' in table \'OPDcard\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'namee\' in table \'OPDcard\' is DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableOPDcard.nameColumn] = value;
+                    this[this.tableOPDcard.nameeColumn] = value;
                 }
             }
             
@@ -1156,385 +1471,385 @@ namespace clinic_ivf.report {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public string idnumber {
+            public string IDNumber {
                 get {
                     try {
-                        return ((string)(this[this.tableOPDcard.idnumberColumn]));
+                        return ((string)(this[this.tableOPDcard.IDNumberColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'idnumber\' in table \'OPDcard\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'IDNumber\' in table \'OPDcard\' is DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableOPDcard.idnumberColumn] = value;
+                    this[this.tableOPDcard.IDNumberColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public string dob {
+            public string DateOfBirth {
                 get {
                     try {
-                        return ((string)(this[this.tableOPDcard.dobColumn]));
+                        return ((string)(this[this.tableOPDcard.DateOfBirthColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'dob\' in table \'OPDcard\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'DateOfBirth\' in table \'OPDcard\' is DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableOPDcard.dobColumn] = value;
+                    this[this.tableOPDcard.DateOfBirthColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public string marital {
+            public string MaritalID {
                 get {
                     try {
-                        return ((string)(this[this.tableOPDcard.maritalColumn]));
+                        return ((string)(this[this.tableOPDcard.MaritalIDColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'marital\' in table \'OPDcard\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'MaritalID\' in table \'OPDcard\' is DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableOPDcard.maritalColumn] = value;
+                    this[this.tableOPDcard.MaritalIDColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public string nationality {
+            public string Nationality {
                 get {
                     try {
-                        return ((string)(this[this.tableOPDcard.nationalityColumn]));
+                        return ((string)(this[this.tableOPDcard.NationalityColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'nationality\' in table \'OPDcard\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'Nationality\' in table \'OPDcard\' is DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableOPDcard.nationalityColumn] = value;
+                    this[this.tableOPDcard.NationalityColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public string address {
+            public string Address {
                 get {
                     try {
-                        return ((string)(this[this.tableOPDcard.addressColumn]));
+                        return ((string)(this[this.tableOPDcard.AddressColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'address\' in table \'OPDcard\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'Address\' in table \'OPDcard\' is DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableOPDcard.addressColumn] = value;
+                    this[this.tableOPDcard.AddressColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public string soi {
+            public string Soi {
                 get {
                     try {
-                        return ((string)(this[this.tableOPDcard.soiColumn]));
+                        return ((string)(this[this.tableOPDcard.SoiColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'soi\' in table \'OPDcard\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'Soi\' in table \'OPDcard\' is DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableOPDcard.soiColumn] = value;
+                    this[this.tableOPDcard.SoiColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public string district {
+            public string District {
                 get {
                     try {
-                        return ((string)(this[this.tableOPDcard.districtColumn]));
+                        return ((string)(this[this.tableOPDcard.DistrictColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'district\' in table \'OPDcard\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'District\' in table \'OPDcard\' is DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableOPDcard.districtColumn] = value;
+                    this[this.tableOPDcard.DistrictColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public string home_phone {
+            public string HomePhoneNo {
                 get {
                     try {
-                        return ((string)(this[this.tableOPDcard.home_phoneColumn]));
+                        return ((string)(this[this.tableOPDcard.HomePhoneNoColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'home_phone\' in table \'OPDcard\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'HomePhoneNo\' in table \'OPDcard\' is DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableOPDcard.home_phoneColumn] = value;
+                    this[this.tableOPDcard.HomePhoneNoColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public string email {
+            public string Email {
                 get {
                     try {
-                        return ((string)(this[this.tableOPDcard.emailColumn]));
+                        return ((string)(this[this.tableOPDcard.EmailColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'email\' in table \'OPDcard\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'Email\' in table \'OPDcard\' is DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableOPDcard.emailColumn] = value;
+                    this[this.tableOPDcard.EmailColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public string company_name {
+            public string CompanyName {
                 get {
                     try {
-                        return ((string)(this[this.tableOPDcard.company_nameColumn]));
+                        return ((string)(this[this.tableOPDcard.CompanyNameColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'company_name\' in table \'OPDcard\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'CompanyName\' in table \'OPDcard\' is DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableOPDcard.company_nameColumn] = value;
+                    this[this.tableOPDcard.CompanyNameColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public string emer_contact {
+            public string EmergencyPersonalContact {
                 get {
                     try {
-                        return ((string)(this[this.tableOPDcard.emer_contactColumn]));
+                        return ((string)(this[this.tableOPDcard.EmergencyPersonalContactColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'emer_contact\' in table \'OPDcard\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'EmergencyPersonalContact\' in table \'OPDcard\' is DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableOPDcard.emer_contactColumn] = value;
+                    this[this.tableOPDcard.EmergencyPersonalContactColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public string emer_relationship {
+            public string RelationshipID {
                 get {
                     try {
-                        return ((string)(this[this.tableOPDcard.emer_relationshipColumn]));
+                        return ((string)(this[this.tableOPDcard.RelationshipIDColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'emer_relationship\' in table \'OPDcard\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'RelationshipID\' in table \'OPDcard\' is DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableOPDcard.emer_relationshipColumn] = value;
+                    this[this.tableOPDcard.RelationshipIDColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public string emer_address {
+            public string EPAddress {
                 get {
                     try {
-                        return ((string)(this[this.tableOPDcard.emer_addressColumn]));
+                        return ((string)(this[this.tableOPDcard.EPAddressColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'emer_address\' in table \'OPDcard\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'EPAddress\' in table \'OPDcard\' is DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableOPDcard.emer_addressColumn] = value;
+                    this[this.tableOPDcard.EPAddressColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public string emer_amphur {
+            public string EPSubDistrict {
                 get {
                     try {
-                        return ((string)(this[this.tableOPDcard.emer_amphurColumn]));
+                        return ((string)(this[this.tableOPDcard.EPSubDistrictColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'emer_amphur\' in table \'OPDcard\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'EPSubDistrict\' in table \'OPDcard\' is DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableOPDcard.emer_amphurColumn] = value;
+                    this[this.tableOPDcard.EPSubDistrictColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public string emer_district {
+            public string Province {
                 get {
                     try {
-                        return ((string)(this[this.tableOPDcard.emer_districtColumn]));
+                        return ((string)(this[this.tableOPDcard.ProvinceColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'emer_district\' in table \'OPDcard\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'Province\' in table \'OPDcard\' is DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableOPDcard.emer_districtColumn] = value;
+                    this[this.tableOPDcard.ProvinceColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public string emer_province {
+            public string EPProvince {
                 get {
                     try {
-                        return ((string)(this[this.tableOPDcard.emer_provinceColumn]));
+                        return ((string)(this[this.tableOPDcard.EPProvinceColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'emer_province\' in table \'OPDcard\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'EPProvince\' in table \'OPDcard\' is DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableOPDcard.emer_provinceColumn] = value;
+                    this[this.tableOPDcard.EPProvinceColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public string emer_home_phone {
+            public string EPHomePhoneNo {
                 get {
                     try {
-                        return ((string)(this[this.tableOPDcard.emer_home_phoneColumn]));
+                        return ((string)(this[this.tableOPDcard.EPHomePhoneNoColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'emer_home_phone\' in table \'OPDcard\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'EPHomePhoneNo\' in table \'OPDcard\' is DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableOPDcard.emer_home_phoneColumn] = value;
+                    this[this.tableOPDcard.EPHomePhoneNoColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public string emer_email {
+            public string EPEmail {
                 get {
                     try {
-                        return ((string)(this[this.tableOPDcard.emer_emailColumn]));
+                        return ((string)(this[this.tableOPDcard.EPEmailColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'emer_email\' in table \'OPDcard\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'EPEmail\' in table \'OPDcard\' is DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableOPDcard.emer_emailColumn] = value;
+                    this[this.tableOPDcard.EPEmailColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public string payment_method {
+            public string PaymentID {
                 get {
                     try {
-                        return ((string)(this[this.tableOPDcard.payment_methodColumn]));
+                        return ((string)(this[this.tableOPDcard.PaymentIDColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'payment_method\' in table \'OPDcard\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'PaymentID\' in table \'OPDcard\' is DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableOPDcard.payment_methodColumn] = value;
+                    this[this.tableOPDcard.PaymentIDColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public string contract_name {
+            public string ContractName {
                 get {
                     try {
-                        return ((string)(this[this.tableOPDcard.contract_nameColumn]));
+                        return ((string)(this[this.tableOPDcard.ContractNameColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'contract_name\' in table \'OPDcard\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'ContractName\' in table \'OPDcard\' is DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableOPDcard.contract_nameColumn] = value;
+                    this[this.tableOPDcard.ContractNameColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public string religion {
+            public string Religion {
                 get {
                     try {
-                        return ((string)(this[this.tableOPDcard.religionColumn]));
+                        return ((string)(this[this.tableOPDcard.ReligionColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'religion\' in table \'OPDcard\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'Religion\' in table \'OPDcard\' is DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableOPDcard.religionColumn] = value;
+                    this[this.tableOPDcard.ReligionColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public string race {
+            public string Race {
                 get {
                     try {
-                        return ((string)(this[this.tableOPDcard.raceColumn]));
+                        return ((string)(this[this.tableOPDcard.RaceColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'race\' in table \'OPDcard\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'Race\' in table \'OPDcard\' is DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableOPDcard.raceColumn] = value;
+                    this[this.tableOPDcard.RaceColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public string moo {
+            public string Moo {
                 get {
                     try {
-                        return ((string)(this[this.tableOPDcard.mooColumn]));
+                        return ((string)(this[this.tableOPDcard.MooColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'moo\' in table \'OPDcard\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'Moo\' in table \'OPDcard\' is DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableOPDcard.mooColumn] = value;
+                    this[this.tableOPDcard.MooColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public string amphur {
+            public string SubDistrict {
                 get {
                     try {
-                        return ((string)(this[this.tableOPDcard.amphurColumn]));
+                        return ((string)(this[this.tableOPDcard.SubDistrictColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'amphur\' in table \'OPDcard\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'SubDistrict\' in table \'OPDcard\' is DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableOPDcard.amphurColumn] = value;
+                    this[this.tableOPDcard.SubDistrictColumn] = value;
                 }
             }
             
@@ -1556,17 +1871,17 @@ namespace clinic_ivf.report {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public string road {
+            public string Road {
                 get {
                     try {
-                        return ((string)(this[this.tableOPDcard.roadColumn]));
+                        return ((string)(this[this.tableOPDcard.RoadColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'road\' in table \'OPDcard\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'Road\' in table \'OPDcard\' is DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableOPDcard.roadColumn] = value;
+                    this[this.tableOPDcard.RoadColumn] = value;
                 }
             }
             
@@ -1668,38 +1983,374 @@ namespace clinic_ivf.report {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public bool IspidNull() {
-                return this.IsNull(this.tableOPDcard.pidColumn);
+            public string namet {
+                get {
+                    try {
+                        return ((string)(this[this.tableOPDcard.nametColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'namet\' in table \'OPDcard\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableOPDcard.nametColumn] = value;
+                }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public void SetpidNull() {
-                this[this.tableOPDcard.pidColumn] = global::System.Convert.DBNull;
+            public string BuildingVillage {
+                get {
+                    try {
+                        return ((string)(this[this.tableOPDcard.BuildingVillageColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'BuildingVillage\' in table \'OPDcard\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableOPDcard.BuildingVillageColumn] = value;
+                }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public bool IspidsNull() {
-                return this.IsNull(this.tableOPDcard.pidsColumn);
+            public string ZipCode {
+                get {
+                    try {
+                        return ((string)(this[this.tableOPDcard.ZipCodeColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'ZipCode\' in table \'OPDcard\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableOPDcard.ZipCodeColumn] = value;
+                }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public void SetpidsNull() {
-                this[this.tableOPDcard.pidsColumn] = global::System.Convert.DBNull;
+            public string MobilePhoneNo {
+                get {
+                    try {
+                        return ((string)(this[this.tableOPDcard.MobilePhoneNoColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'MobilePhoneNo\' in table \'OPDcard\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableOPDcard.MobilePhoneNoColumn] = value;
+                }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public bool IsnameNull() {
-                return this.IsNull(this.tableOPDcard.nameColumn);
+            public string Occupation {
+                get {
+                    try {
+                        return ((string)(this[this.tableOPDcard.OccupationColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'Occupation\' in table \'OPDcard\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableOPDcard.OccupationColumn] = value;
+                }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public void SetnameNull() {
-                this[this.tableOPDcard.nameColumn] = global::System.Convert.DBNull;
+            public string CompanyPhoneNo {
+                get {
+                    try {
+                        return ((string)(this[this.tableOPDcard.CompanyPhoneNoColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'CompanyPhoneNo\' in table \'OPDcard\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableOPDcard.CompanyPhoneNoColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public string RelationshipOther {
+                get {
+                    try {
+                        return ((string)(this[this.tableOPDcard.RelationshipOtherColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'RelationshipOther\' in table \'OPDcard\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableOPDcard.RelationshipOtherColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public string EPRoad {
+                get {
+                    try {
+                        return ((string)(this[this.tableOPDcard.EPRoadColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'EPRoad\' in table \'OPDcard\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableOPDcard.EPRoadColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public string EPDistrict {
+                get {
+                    try {
+                        return ((string)(this[this.tableOPDcard.EPDistrictColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'EPDistrict\' in table \'OPDcard\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableOPDcard.EPDistrictColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public string EPZipcode {
+                get {
+                    try {
+                        return ((string)(this[this.tableOPDcard.EPZipcodeColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'EPZipcode\' in table \'OPDcard\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableOPDcard.EPZipcodeColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public string EPMobilePhoneNo {
+                get {
+                    try {
+                        return ((string)(this[this.tableOPDcard.EPMobilePhoneNoColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'EPMobilePhoneNo\' in table \'OPDcard\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableOPDcard.EPMobilePhoneNoColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public string InsuranceName {
+                get {
+                    try {
+                        return ((string)(this[this.tableOPDcard.InsuranceNameColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'InsuranceName\' in table \'OPDcard\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableOPDcard.InsuranceNameColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public string Allergy {
+                get {
+                    try {
+                        return ((string)(this[this.tableOPDcard.AllergyColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'Allergy\' in table \'OPDcard\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableOPDcard.AllergyColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public string AgentID {
+                get {
+                    try {
+                        return ((string)(this[this.tableOPDcard.AgentIDColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'AgentID\' in table \'OPDcard\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableOPDcard.AgentIDColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public string AgentName {
+                get {
+                    try {
+                        return ((string)(this[this.tableOPDcard.AgentNameColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'AgentName\' in table \'OPDcard\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableOPDcard.AgentNameColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public string PaymentName {
+                get {
+                    try {
+                        return ((string)(this[this.tableOPDcard.PaymentNameColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'PaymentName\' in table \'OPDcard\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableOPDcard.PaymentNameColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public string RelationshipName {
+                get {
+                    try {
+                        return ((string)(this[this.tableOPDcard.RelationshipNameColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'RelationshipName\' in table \'OPDcard\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableOPDcard.RelationshipNameColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public string SurfixName {
+                get {
+                    try {
+                        return ((string)(this[this.tableOPDcard.SurfixNameColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'SurfixName\' in table \'OPDcard\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableOPDcard.SurfixNameColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public string SexName {
+                get {
+                    try {
+                        return ((string)(this[this.tableOPDcard.SexNameColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'SexName\' in table \'OPDcard\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableOPDcard.SexNameColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public string MaritalName {
+                get {
+                    try {
+                        return ((string)(this[this.tableOPDcard.MaritalNameColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'MaritalName\' in table \'OPDcard\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableOPDcard.MaritalNameColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public string address1 {
+                get {
+                    try {
+                        return ((string)(this[this.tableOPDcard.address1Column]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'address1\' in table \'OPDcard\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableOPDcard.address1Column] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public bool IsPIDNull() {
+                return this.IsNull(this.tableOPDcard.PIDColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void SetPIDNull() {
+                this[this.tableOPDcard.PIDColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public bool IsPIDSNull() {
+                return this.IsNull(this.tableOPDcard.PIDSColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void SetPIDSNull() {
+                this[this.tableOPDcard.PIDSColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public bool IsnameeNull() {
+                return this.IsNull(this.tableOPDcard.nameeColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void SetnameeNull() {
+                this[this.tableOPDcard.nameeColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1716,290 +2367,290 @@ namespace clinic_ivf.report {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public bool IsidnumberNull() {
-                return this.IsNull(this.tableOPDcard.idnumberColumn);
+            public bool IsIDNumberNull() {
+                return this.IsNull(this.tableOPDcard.IDNumberColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public void SetidnumberNull() {
-                this[this.tableOPDcard.idnumberColumn] = global::System.Convert.DBNull;
+            public void SetIDNumberNull() {
+                this[this.tableOPDcard.IDNumberColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public bool IsdobNull() {
-                return this.IsNull(this.tableOPDcard.dobColumn);
+            public bool IsDateOfBirthNull() {
+                return this.IsNull(this.tableOPDcard.DateOfBirthColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public void SetdobNull() {
-                this[this.tableOPDcard.dobColumn] = global::System.Convert.DBNull;
+            public void SetDateOfBirthNull() {
+                this[this.tableOPDcard.DateOfBirthColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public bool IsmaritalNull() {
-                return this.IsNull(this.tableOPDcard.maritalColumn);
+            public bool IsMaritalIDNull() {
+                return this.IsNull(this.tableOPDcard.MaritalIDColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public void SetmaritalNull() {
-                this[this.tableOPDcard.maritalColumn] = global::System.Convert.DBNull;
+            public void SetMaritalIDNull() {
+                this[this.tableOPDcard.MaritalIDColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public bool IsnationalityNull() {
-                return this.IsNull(this.tableOPDcard.nationalityColumn);
+            public bool IsNationalityNull() {
+                return this.IsNull(this.tableOPDcard.NationalityColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public void SetnationalityNull() {
-                this[this.tableOPDcard.nationalityColumn] = global::System.Convert.DBNull;
+            public void SetNationalityNull() {
+                this[this.tableOPDcard.NationalityColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public bool IsaddressNull() {
-                return this.IsNull(this.tableOPDcard.addressColumn);
+            public bool IsAddressNull() {
+                return this.IsNull(this.tableOPDcard.AddressColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public void SetaddressNull() {
-                this[this.tableOPDcard.addressColumn] = global::System.Convert.DBNull;
+            public void SetAddressNull() {
+                this[this.tableOPDcard.AddressColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public bool IssoiNull() {
-                return this.IsNull(this.tableOPDcard.soiColumn);
+            public bool IsSoiNull() {
+                return this.IsNull(this.tableOPDcard.SoiColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public void SetsoiNull() {
-                this[this.tableOPDcard.soiColumn] = global::System.Convert.DBNull;
+            public void SetSoiNull() {
+                this[this.tableOPDcard.SoiColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public bool IsdistrictNull() {
-                return this.IsNull(this.tableOPDcard.districtColumn);
+            public bool IsDistrictNull() {
+                return this.IsNull(this.tableOPDcard.DistrictColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public void SetdistrictNull() {
-                this[this.tableOPDcard.districtColumn] = global::System.Convert.DBNull;
+            public void SetDistrictNull() {
+                this[this.tableOPDcard.DistrictColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public bool Ishome_phoneNull() {
-                return this.IsNull(this.tableOPDcard.home_phoneColumn);
+            public bool IsHomePhoneNoNull() {
+                return this.IsNull(this.tableOPDcard.HomePhoneNoColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public void Sethome_phoneNull() {
-                this[this.tableOPDcard.home_phoneColumn] = global::System.Convert.DBNull;
+            public void SetHomePhoneNoNull() {
+                this[this.tableOPDcard.HomePhoneNoColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public bool IsemailNull() {
-                return this.IsNull(this.tableOPDcard.emailColumn);
+            public bool IsEmailNull() {
+                return this.IsNull(this.tableOPDcard.EmailColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public void SetemailNull() {
-                this[this.tableOPDcard.emailColumn] = global::System.Convert.DBNull;
+            public void SetEmailNull() {
+                this[this.tableOPDcard.EmailColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public bool Iscompany_nameNull() {
-                return this.IsNull(this.tableOPDcard.company_nameColumn);
+            public bool IsCompanyNameNull() {
+                return this.IsNull(this.tableOPDcard.CompanyNameColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public void Setcompany_nameNull() {
-                this[this.tableOPDcard.company_nameColumn] = global::System.Convert.DBNull;
+            public void SetCompanyNameNull() {
+                this[this.tableOPDcard.CompanyNameColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public bool Isemer_contactNull() {
-                return this.IsNull(this.tableOPDcard.emer_contactColumn);
+            public bool IsEmergencyPersonalContactNull() {
+                return this.IsNull(this.tableOPDcard.EmergencyPersonalContactColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public void Setemer_contactNull() {
-                this[this.tableOPDcard.emer_contactColumn] = global::System.Convert.DBNull;
+            public void SetEmergencyPersonalContactNull() {
+                this[this.tableOPDcard.EmergencyPersonalContactColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public bool Isemer_relationshipNull() {
-                return this.IsNull(this.tableOPDcard.emer_relationshipColumn);
+            public bool IsRelationshipIDNull() {
+                return this.IsNull(this.tableOPDcard.RelationshipIDColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public void Setemer_relationshipNull() {
-                this[this.tableOPDcard.emer_relationshipColumn] = global::System.Convert.DBNull;
+            public void SetRelationshipIDNull() {
+                this[this.tableOPDcard.RelationshipIDColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public bool Isemer_addressNull() {
-                return this.IsNull(this.tableOPDcard.emer_addressColumn);
+            public bool IsEPAddressNull() {
+                return this.IsNull(this.tableOPDcard.EPAddressColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public void Setemer_addressNull() {
-                this[this.tableOPDcard.emer_addressColumn] = global::System.Convert.DBNull;
+            public void SetEPAddressNull() {
+                this[this.tableOPDcard.EPAddressColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public bool Isemer_amphurNull() {
-                return this.IsNull(this.tableOPDcard.emer_amphurColumn);
+            public bool IsEPSubDistrictNull() {
+                return this.IsNull(this.tableOPDcard.EPSubDistrictColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public void Setemer_amphurNull() {
-                this[this.tableOPDcard.emer_amphurColumn] = global::System.Convert.DBNull;
+            public void SetEPSubDistrictNull() {
+                this[this.tableOPDcard.EPSubDistrictColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public bool Isemer_districtNull() {
-                return this.IsNull(this.tableOPDcard.emer_districtColumn);
+            public bool IsProvinceNull() {
+                return this.IsNull(this.tableOPDcard.ProvinceColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public void Setemer_districtNull() {
-                this[this.tableOPDcard.emer_districtColumn] = global::System.Convert.DBNull;
+            public void SetProvinceNull() {
+                this[this.tableOPDcard.ProvinceColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public bool Isemer_provinceNull() {
-                return this.IsNull(this.tableOPDcard.emer_provinceColumn);
+            public bool IsEPProvinceNull() {
+                return this.IsNull(this.tableOPDcard.EPProvinceColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public void Setemer_provinceNull() {
-                this[this.tableOPDcard.emer_provinceColumn] = global::System.Convert.DBNull;
+            public void SetEPProvinceNull() {
+                this[this.tableOPDcard.EPProvinceColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public bool Isemer_home_phoneNull() {
-                return this.IsNull(this.tableOPDcard.emer_home_phoneColumn);
+            public bool IsEPHomePhoneNoNull() {
+                return this.IsNull(this.tableOPDcard.EPHomePhoneNoColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public void Setemer_home_phoneNull() {
-                this[this.tableOPDcard.emer_home_phoneColumn] = global::System.Convert.DBNull;
+            public void SetEPHomePhoneNoNull() {
+                this[this.tableOPDcard.EPHomePhoneNoColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public bool Isemer_emailNull() {
-                return this.IsNull(this.tableOPDcard.emer_emailColumn);
+            public bool IsEPEmailNull() {
+                return this.IsNull(this.tableOPDcard.EPEmailColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public void Setemer_emailNull() {
-                this[this.tableOPDcard.emer_emailColumn] = global::System.Convert.DBNull;
+            public void SetEPEmailNull() {
+                this[this.tableOPDcard.EPEmailColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public bool Ispayment_methodNull() {
-                return this.IsNull(this.tableOPDcard.payment_methodColumn);
+            public bool IsPaymentIDNull() {
+                return this.IsNull(this.tableOPDcard.PaymentIDColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public void Setpayment_methodNull() {
-                this[this.tableOPDcard.payment_methodColumn] = global::System.Convert.DBNull;
+            public void SetPaymentIDNull() {
+                this[this.tableOPDcard.PaymentIDColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public bool Iscontract_nameNull() {
-                return this.IsNull(this.tableOPDcard.contract_nameColumn);
+            public bool IsContractNameNull() {
+                return this.IsNull(this.tableOPDcard.ContractNameColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public void Setcontract_nameNull() {
-                this[this.tableOPDcard.contract_nameColumn] = global::System.Convert.DBNull;
+            public void SetContractNameNull() {
+                this[this.tableOPDcard.ContractNameColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public bool IsreligionNull() {
-                return this.IsNull(this.tableOPDcard.religionColumn);
+            public bool IsReligionNull() {
+                return this.IsNull(this.tableOPDcard.ReligionColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public void SetreligionNull() {
-                this[this.tableOPDcard.religionColumn] = global::System.Convert.DBNull;
+            public void SetReligionNull() {
+                this[this.tableOPDcard.ReligionColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public bool IsraceNull() {
-                return this.IsNull(this.tableOPDcard.raceColumn);
+            public bool IsRaceNull() {
+                return this.IsNull(this.tableOPDcard.RaceColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public void SetraceNull() {
-                this[this.tableOPDcard.raceColumn] = global::System.Convert.DBNull;
+            public void SetRaceNull() {
+                this[this.tableOPDcard.RaceColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public bool IsmooNull() {
-                return this.IsNull(this.tableOPDcard.mooColumn);
+            public bool IsMooNull() {
+                return this.IsNull(this.tableOPDcard.MooColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public void SetmooNull() {
-                this[this.tableOPDcard.mooColumn] = global::System.Convert.DBNull;
+            public void SetMooNull() {
+                this[this.tableOPDcard.MooColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public bool IsamphurNull() {
-                return this.IsNull(this.tableOPDcard.amphurColumn);
+            public bool IsSubDistrictNull() {
+                return this.IsNull(this.tableOPDcard.SubDistrictColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public void SetamphurNull() {
-                this[this.tableOPDcard.amphurColumn] = global::System.Convert.DBNull;
+            public void SetSubDistrictNull() {
+                this[this.tableOPDcard.SubDistrictColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -2016,14 +2667,14 @@ namespace clinic_ivf.report {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public bool IsroadNull() {
-                return this.IsNull(this.tableOPDcard.roadColumn);
+            public bool IsRoadNull() {
+                return this.IsNull(this.tableOPDcard.RoadColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public void SetroadNull() {
-                this[this.tableOPDcard.roadColumn] = global::System.Convert.DBNull;
+            public void SetRoadNull() {
+                this[this.tableOPDcard.RoadColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -2096,6 +2747,258 @@ namespace clinic_ivf.report {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public void Setinsurance_nameNull() {
                 this[this.tableOPDcard.insurance_nameColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public bool IsnametNull() {
+                return this.IsNull(this.tableOPDcard.nametColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void SetnametNull() {
+                this[this.tableOPDcard.nametColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public bool IsBuildingVillageNull() {
+                return this.IsNull(this.tableOPDcard.BuildingVillageColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void SetBuildingVillageNull() {
+                this[this.tableOPDcard.BuildingVillageColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public bool IsZipCodeNull() {
+                return this.IsNull(this.tableOPDcard.ZipCodeColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void SetZipCodeNull() {
+                this[this.tableOPDcard.ZipCodeColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public bool IsMobilePhoneNoNull() {
+                return this.IsNull(this.tableOPDcard.MobilePhoneNoColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void SetMobilePhoneNoNull() {
+                this[this.tableOPDcard.MobilePhoneNoColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public bool IsOccupationNull() {
+                return this.IsNull(this.tableOPDcard.OccupationColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void SetOccupationNull() {
+                this[this.tableOPDcard.OccupationColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public bool IsCompanyPhoneNoNull() {
+                return this.IsNull(this.tableOPDcard.CompanyPhoneNoColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void SetCompanyPhoneNoNull() {
+                this[this.tableOPDcard.CompanyPhoneNoColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public bool IsRelationshipOtherNull() {
+                return this.IsNull(this.tableOPDcard.RelationshipOtherColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void SetRelationshipOtherNull() {
+                this[this.tableOPDcard.RelationshipOtherColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public bool IsEPRoadNull() {
+                return this.IsNull(this.tableOPDcard.EPRoadColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void SetEPRoadNull() {
+                this[this.tableOPDcard.EPRoadColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public bool IsEPDistrictNull() {
+                return this.IsNull(this.tableOPDcard.EPDistrictColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void SetEPDistrictNull() {
+                this[this.tableOPDcard.EPDistrictColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public bool IsEPZipcodeNull() {
+                return this.IsNull(this.tableOPDcard.EPZipcodeColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void SetEPZipcodeNull() {
+                this[this.tableOPDcard.EPZipcodeColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public bool IsEPMobilePhoneNoNull() {
+                return this.IsNull(this.tableOPDcard.EPMobilePhoneNoColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void SetEPMobilePhoneNoNull() {
+                this[this.tableOPDcard.EPMobilePhoneNoColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public bool IsInsuranceNameNull() {
+                return this.IsNull(this.tableOPDcard.InsuranceNameColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void SetInsuranceNameNull() {
+                this[this.tableOPDcard.InsuranceNameColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public bool IsAllergyNull() {
+                return this.IsNull(this.tableOPDcard.AllergyColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void SetAllergyNull() {
+                this[this.tableOPDcard.AllergyColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public bool IsAgentIDNull() {
+                return this.IsNull(this.tableOPDcard.AgentIDColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void SetAgentIDNull() {
+                this[this.tableOPDcard.AgentIDColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public bool IsAgentNameNull() {
+                return this.IsNull(this.tableOPDcard.AgentNameColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void SetAgentNameNull() {
+                this[this.tableOPDcard.AgentNameColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public bool IsPaymentNameNull() {
+                return this.IsNull(this.tableOPDcard.PaymentNameColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void SetPaymentNameNull() {
+                this[this.tableOPDcard.PaymentNameColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public bool IsRelationshipNameNull() {
+                return this.IsNull(this.tableOPDcard.RelationshipNameColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void SetRelationshipNameNull() {
+                this[this.tableOPDcard.RelationshipNameColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public bool IsSurfixNameNull() {
+                return this.IsNull(this.tableOPDcard.SurfixNameColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void SetSurfixNameNull() {
+                this[this.tableOPDcard.SurfixNameColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public bool IsSexNameNull() {
+                return this.IsNull(this.tableOPDcard.SexNameColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void SetSexNameNull() {
+                this[this.tableOPDcard.SexNameColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public bool IsMaritalNameNull() {
+                return this.IsNull(this.tableOPDcard.MaritalNameColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void SetMaritalNameNull() {
+                this[this.tableOPDcard.MaritalNameColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public bool Isaddress1Null() {
+                return this.IsNull(this.tableOPDcard.address1Column);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void Setaddress1Null() {
+                this[this.tableOPDcard.address1Column] = global::System.Convert.DBNull;
             }
         }
         

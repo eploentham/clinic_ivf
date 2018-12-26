@@ -77,7 +77,7 @@
             this.btnPrint = new C1.Win.C1Input.C1SplitButton();
             this.btnPrnSticker = new C1.Win.C1Input.DropDownItem();
             this.btnPrvSticker = new C1.Win.C1Input.DropDownItem();
-            this.dropDownItem3 = new C1.Win.C1Input.DropDownItem();
+            this.btnPrnOPDCard = new C1.Win.C1Input.DropDownItem();
             this.btnSavePic = new C1.Win.C1Input.C1Button();
             this.btnCapture = new C1.Win.C1Input.C1Button();
             this.btnWebCamOn = new C1.Win.C1Input.C1Button();
@@ -1082,7 +1082,7 @@
             this.btnPrint.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnPrint.Items.Add(this.btnPrnSticker);
             this.btnPrint.Items.Add(this.btnPrvSticker);
-            this.btnPrint.Items.Add(this.dropDownItem3);
+            this.btnPrint.Items.Add(this.btnPrnOPDCard);
             this.btnPrint.Location = new System.Drawing.Point(67, 204);
             this.btnPrint.Name = "btnPrint";
             this.btnPrint.Size = new System.Drawing.Size(98, 35);
@@ -1102,9 +1102,9 @@
             this.btnPrvSticker.Image = global::clinic_ivf.Properties.Resources.printer_orange48;
             this.btnPrvSticker.Text = "Preview Sticker";
             // 
-            // dropDownItem3
+            // btnPrnOPDCard
             // 
-            this.dropDownItem3.Text = "dropDownItem3";
+            this.btnPrnOPDCard.Text = "Print OPD Card";
             // 
             // btnSavePic
             // 
@@ -3161,7 +3161,7 @@
         private C1.Win.C1Input.C1SplitButton btnPrint;
         private C1.Win.C1Input.DropDownItem btnPrnSticker;
         private C1.Win.C1Input.DropDownItem btnPrvSticker;
-        private C1.Win.C1Input.DropDownItem dropDownItem3;
+        private C1.Win.C1Input.DropDownItem btnPrnOPDCard;
         private System.Windows.Forms.Label label25;
         private C1.Win.C1Input.C1ComboBox cboRace;
         private System.Windows.Forms.Label label26;

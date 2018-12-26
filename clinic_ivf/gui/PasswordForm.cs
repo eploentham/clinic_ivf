@@ -31,5 +31,10 @@ namespace clinic_ivf.gui
             using (PasswordForm f = new PasswordForm())
                 return f.EnterPassword(fileName);
         }
+
+        private void PasswordForm_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

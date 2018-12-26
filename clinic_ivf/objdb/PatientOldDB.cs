@@ -447,6 +447,24 @@ namespace clinic_ivf.objdb
             cop1 = setPatient(dt);
             return cop1;
         }
+        public DataTable selectByOpdCard(String pttId)
+        {
+            DataTable dt = new DataTable();
+            String sql = "select pttO.*, agt.AgentName, paym.PaymentName,rsn.RelationshipName,sfn.SurfixName, sex.SexName, marn.MaritalName" +
+                ",CONCAT(IFNULL(sfn.SurfixName,''),' ', ptt." + pttO.PName + ",' ',ptt." + pttO.PSurname + ") as namee  " +
+                ",CONCAT(IFNULL(sfn.SurfixName,''),' ', ptt." + pttO.OName + ",' ',ptt." + pttO.OSurname + ") as namet  " +
+                ",CONCAT(IFNULL(pttO.Address,''),' ', IFNULL(ptt." + pttO.BuildingVillage + ",' ') ,' ',IFNULL(ptt." + pttO.Moo + ",' ') ,' ',IFNULL(ptt." + pttO.Soi + ",' ') ,' ',IFNULL(ptt." + pttO.Road + ",' ' ) ,' ',IFNULL(ptt." + pttO.SubDistrict + ",' ') as address1  " +
+                "From " + pttO.table + " pttO " +
+                "Left join Agent agt on agt.AgentID = pttO.AgentID " +
+                "Left Join PaymentMethod paym on paym.PaymentID = pttO.PaymentID " +
+                "Left Join RelationshipName rsn on rsn.RelationshipID = pttO.RelationshipID " +
+                "Left Join SurfixName sfn on sfn.SurfixID = pttO.SurfixID " +
+                "Left Join SexName sex on sex.SexID = pttO.SexID " +
+                "Left Join MaritalName marn on marn.MaritalID = pttO.MaritalID " +
+                "Where pttO." + pttO.pkField + " ='" + pttId + "' ";
+            dt = conn.selectData(conn.conn, sql);
+            return dt;
+        }
         public String selectByMaxPID()
         {
             PatientOld cop1 = new PatientOld();
