@@ -220,8 +220,10 @@ namespace clinic_ivf.gui
             //throw new NotImplementedException();
             DataTable dt = new DataTable();
             dt = ic.ivfDB.pttOldDB.selectByOpdCard(txtIdOld.Text);
+            PatientOld pttO = new PatientOld();
+            pttO = ic.ivfDB.pttOldDB.selectByPk1(txtIdOld.Text);
             FrmReport frm = new FrmReport(ic);
-            frm.setOPDCardOldReport(dt);
+            frm.setOPDCardOldReport(dt, pttO.AgeStringShort());
             frm.ShowDialog(this);
         }
 

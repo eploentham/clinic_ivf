@@ -61,5 +61,30 @@ namespace clinic_ivf.object1
 
         public String table { get; set; }
         public String pkField { get; set; }
+
+        public Age age = new Age(DateTime.Now);
+        public String AgeString()
+        {
+            String re = "";
+            DateTime dtB;
+            if (DateTime.TryParse(DateOfBirth, out dtB))
+            {
+                age = new Age(dtB);
+                re = age.AgeString;
+            }
+            return re;
+        }
+        public String AgeStringShort()
+        {
+            String re = "";
+            DateTime dtB;
+            if (DateTime.TryParse(DateOfBirth, out dtB))
+            {
+                age = new Age(dtB);
+                //re = age.AgeString.Replace("Years", "Y").Replace("Year", "Y").Replace("Months", "M").Replace("Month", "M").Replace("Days", "D").Replace("Day", "D");
+                re = age.Years + "." + age.Months + "." + age.Days;
+            }
+            return re;
+        }
     }
 }

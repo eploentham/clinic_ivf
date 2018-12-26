@@ -451,9 +451,10 @@ namespace clinic_ivf.objdb
         {
             DataTable dt = new DataTable();
             String sql = "select pttO.*, agt.AgentName, paym.PaymentName,rsn.RelationshipName,sfn.SurfixName, sex.SexName, marn.MaritalName" +
-                ",CONCAT(IFNULL(sfn.SurfixName,''),' ', ptt." + pttO.PName + ",' ',ptt." + pttO.PSurname + ") as namee  " +
-                ",CONCAT(IFNULL(sfn.SurfixName,''),' ', ptt." + pttO.OName + ",' ',ptt." + pttO.OSurname + ") as namet  " +
-                ",CONCAT(IFNULL(pttO.Address,''),' ', IFNULL(ptt." + pttO.BuildingVillage + ",' ') ,' ',IFNULL(ptt." + pttO.Moo + ",' ') ,' ',IFNULL(ptt." + pttO.Soi + ",' ') ,' ',IFNULL(ptt." + pttO.Road + ",' ' ) ,' ',IFNULL(ptt." + pttO.SubDistrict + ",' ') as address1  " +
+                ",CONCAT(IFNULL(sfn.SurfixName,''),' ', pttO." + pttO.PName + ",' ',pttO." + pttO.PSurname + ") as namee  " +
+                ",CONCAT(IFNULL(sfn.SurfixName,''),' ', pttO." + pttO.OName + ",' ',pttO." + pttO.OSurname + ") as namet  " +
+                ",CONCAT(IFNULL(pttO.Address,''),' ', IFNULL(pttO." + pttO.BuildingVillage + ",' ') ,' ',IFNULL(pttO." + pttO.Moo + ",' ') ,' ',IFNULL(pttO." + pttO.Soi + ",' ') ,' ',IFNULL(pttO." + pttO.Road + ",' ' ) ,' ',IFNULL(pttO." + pttO.SubDistrict + ",' ')) as address1  " +
+                ",CONCAT(IFNULL(pttO.EPAddress,''),' ', IFNULL(pttO." + pttO.EPRoad + ",' ') ,' ',IFNULL(pttO." + pttO.EPSubDistrict + ",' ') ,' ',IFNULL(pttO." + pttO.EPDistrict + ",' ') ,' ',IFNULL(pttO." + pttO.EPProvince + ",' ' ) ,' ',IFNULL(pttO." + pttO.EPZipcode + ",' ')) as ep_address1  " +
                 "From " + pttO.table + " pttO " +
                 "Left join Agent agt on agt.AgentID = pttO.AgentID " +
                 "Left Join PaymentMethod paym on paym.PaymentID = pttO.PaymentID " +

@@ -393,6 +393,8 @@ namespace clinic_ivf.report {
             
             private global::System.Data.DataColumn columnaddress1;
             
+            private global::System.Data.DataColumn columnep_address1;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public OPDcardDataTable() {
@@ -884,6 +886,14 @@ namespace clinic_ivf.report {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn ep_address1Column {
+                get {
+                    return this.columnep_address1;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -976,7 +986,8 @@ namespace clinic_ivf.report {
                         string SurfixName, 
                         string SexName, 
                         string MaritalName, 
-                        string address1) {
+                        string address1, 
+                        string ep_address1) {
                 OPDcardRow rowOPDcardRow = ((OPDcardRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         PID,
@@ -1035,7 +1046,8 @@ namespace clinic_ivf.report {
                         SurfixName,
                         SexName,
                         MaritalName,
-                        address1};
+                        address1,
+                        ep_address1};
                 rowOPDcardRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowOPDcardRow);
                 return rowOPDcardRow;
@@ -1115,6 +1127,7 @@ namespace clinic_ivf.report {
                 this.columnSexName = base.Columns["SexName"];
                 this.columnMaritalName = base.Columns["MaritalName"];
                 this.columnaddress1 = base.Columns["address1"];
+                this.columnep_address1 = base.Columns["ep_address1"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1234,6 +1247,8 @@ namespace clinic_ivf.report {
                 base.Columns.Add(this.columnMaritalName);
                 this.columnaddress1 = new global::System.Data.DataColumn("address1", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnaddress1);
+                this.columnep_address1 = new global::System.Data.DataColumn("ep_address1", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnep_address1);
                 this.columnPID.Caption = "DataColumn1";
                 this.columnPIDS.Caption = "DataColumn1";
                 this.columnnamee.Caption = "DataColumn1";
@@ -2319,6 +2334,22 @@ namespace clinic_ivf.report {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public string ep_address1 {
+                get {
+                    try {
+                        return ((string)(this[this.tableOPDcard.ep_address1Column]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'ep_address1\' in table \'OPDcard\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableOPDcard.ep_address1Column] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public bool IsPIDNull() {
                 return this.IsNull(this.tableOPDcard.PIDColumn);
             }
@@ -2999,6 +3030,18 @@ namespace clinic_ivf.report {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public void Setaddress1Null() {
                 this[this.tableOPDcard.address1Column] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public bool Isep_address1Null() {
+                return this.IsNull(this.tableOPDcard.ep_address1Column);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void Setep_address1Null() {
+                this[this.tableOPDcard.ep_address1Column] = global::System.Convert.DBNull;
             }
         }
         

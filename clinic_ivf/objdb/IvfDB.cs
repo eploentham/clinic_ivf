@@ -111,12 +111,14 @@ namespace clinic_ivf.objdb
         }
         public String genAppointmentRemarkPttDonor(DataRow row1)
         {
-            String e2 = "", lh = "", prl = "", fsh = "", appn = "", opu = "";
+            String e2 = "", lh = "", prl = "", fsh = "", appn = "", opu = "", tvs="";
+            tvs = row1[pApmDB.pApm.tvs].ToString().Equals("1") ? "TVS Day "+ row1[pApmDB.pApm.tvs_day].ToString()+" [Time "+ row1[pApmDB.pApm.tvs_time].ToString() : "]";
+            tvs = row1[pApmDB.pApm.tvs_day].ToString();
             e2 = row1[pApmDB.pApm.e2].ToString().Equals("1") ? "E2 " : "";
             lh = row1[pApmDB.pApm.lh].ToString().Equals("1") ? "LH " : "";
             prl = row1[pApmDB.pApm.prl].ToString().Equals("1") ? "PRL " : "";
             fsh = row1[pApmDB.pApm.fsh].ToString().Equals("1") ? "FSH " : "";
-            opu = row1[pApmDB.pApm.opu].ToString().Equals("1") ? "OPU " + row1[pApmDB.pApm.doctor_anes] != null ? row1[pApmDB.pApm.doctor_anes].ToString() : "" : "";
+            opu = row1[pApmDB.pApm.opu].ToString().Equals("1") ? "OPU [Time " + row1[pApmDB.pApm.opu_time].ToString()+"] " + row1[pApmDB.pApm.doctor_anes].ToString() : "";
             appn = row1[pApmDB.pApm.patient_appointment_time].ToString() + " " + e2 + " " + lh + " " + prl + " " + fsh;
             return appn;
         }

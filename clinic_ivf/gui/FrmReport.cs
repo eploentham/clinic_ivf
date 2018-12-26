@@ -23,7 +23,7 @@ namespace clinic_ivf.gui
             InitializeComponent();
             this.ic = ic;
         }
-        public void setOPDCardOldReport(DataTable dt)
+        public void setOPDCardOldReport(DataTable dt, String age)
         {
             String chk = "", printerDefault = "";
             ReportDocument rpt = new ReportDocument();
@@ -31,10 +31,10 @@ namespace clinic_ivf.gui
             {
                 rpt.Load("opd_card_old.rpt");
                 rpt.SetDataSource(dt);
-                //rpt.SetParameterValue("line1", ic.cop.comp_name_t);
-                //rpt.SetParameterValue("line2", "โทรศัพท์ " + ic.cop.tele);
-                //rpt.SetParameterValue("report_name", " Embryo development");
-                //rpt.SetParameterValue("date1", "" + date1);
+                rpt.SetParameterValue("line1", ic.cop.comp_name_t);
+                rpt.SetParameterValue("line2", "โทรศัพท์ " + ic.cop.tele);
+                rpt.SetParameterValue("report_name", " OPD Record ");
+                rpt.SetParameterValue("age1", "" + age);
                 this.crystalReportViewer1.ReportSource = rpt;
                 this.crystalReportViewer1.Refresh();
             }

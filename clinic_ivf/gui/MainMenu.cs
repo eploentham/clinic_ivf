@@ -318,28 +318,28 @@ namespace clinic_ivf.gui
             //theme1.SetTheme(tC1, "Office2010Green");
         }
 
-        protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
-        {
-            // ...
-            if (keyData == (Keys.Escape))
-            {
-                appExit();
-                //if (MessageBox.Show("ต้องการออกจากโปรแกรม1", "ออกจากโปรแกรม", MessageBoxButtons.OKCancel, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.OK)
-                //{
-                //    Close();
-                //    return true;
-                //}
-            }
-            else
-            {
-                //keyData
-            }
-            return base.ProcessCmdKey(ref msg, keyData);
-        }
+        //protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
+        //{
+        //    // ...
+        //    if (keyData == (Keys.Escape))
+        //    {
+        //        appExit();
+        //        //if (MessageBox.Show("ต้องการออกจากโปรแกรม1", "ออกจากโปรแกรม", MessageBoxButtons.OKCancel, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.OK)
+        //        //{
+        //        //    Close();
+        //        //    return true;
+        //        //}
+        //    }
+        //    else
+        //    {
+        //        //keyData
+        //    }
+        //    return base.ProcessCmdKey(ref msg, keyData);
+        //}
         private void MainMenu_Load(object sender, EventArgs e)
         {
             
-            this.Text = ic.iniC.statusAppDonor.Equals("1") ? "โปรแกรมClinic IVF Donor " +"สวัสดี คุณ "+ic.user.staff_fname_t +" "+ic.user.staff_lname_t+" Update 2018-12-25 "
+            this.Text = ic.iniC.statusAppDonor.Equals("1") ? "โปรแกรมClinic IVF Donor " +"สวัสดี คุณ "+ic.user.staff_fname_t +" "+ic.user.staff_lname_t+" Update 2018-12-26 "
                 : "โปรแกรมClinic IVF " + "สวัสดี คุณ " + ic.user.staff_fname_t + " " + ic.user.staff_lname_t + " Update 2018-12-25 ";
             //theme1.SetTheme(this, ic.theme);
             theme1.SetTheme(this, ic.theme);
