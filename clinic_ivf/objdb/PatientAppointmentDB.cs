@@ -150,6 +150,7 @@ namespace clinic_ivf.objdb
             p.hormone_test = p.hormone_test == null ? "0" : p.hormone_test;
             p.other = p.other == null ? "0" : p.other;
             p.beta_hgc = p.beta_hgc == null ? "0" : p.beta_hgc;
+            p.patient_appointment_doctor = p.patient_appointment_doctor == null ? "0" : p.patient_appointment_doctor;
 
             p.r_rp1853_aptype_id = long.TryParse(p.r_rp1853_aptype_id, out chk) ? chk.ToString() : "0";
             p.t_patient_id = long.TryParse(p.t_patient_id, out chk) ? chk.ToString() : "0";
@@ -158,7 +159,7 @@ namespace clinic_ivf.objdb
             p.patient_appointment_clinic = long.TryParse(p.patient_appointment_clinic, out chk) ? chk.ToString() : "0";
             p.visit_id_make_appointment = long.TryParse(p.visit_id_make_appointment, out chk) ? chk.ToString() : "0";
             p.patient_appointment_staff = long.TryParse(p.patient_appointment_staff, out chk) ? chk.ToString() : "0";
-
+            p.patient_appointment_doctor = long.TryParse(p.patient_appointment_doctor, out chk) ? chk.ToString() : "0";
         }
         public String insert(PatientAppointment p, String userId)
         {
@@ -169,7 +170,7 @@ namespace clinic_ivf.objdb
             int chk = 0;
             //p.date_create = "";
             chkNull(p);
-
+            p.patient_appointment_staff_record = userId;
             try
             {
                 sql = "Insert Into " + pApm.table + "(" + pApm.patient_appoint_date_time + "," + pApm.patient_appointment_time + "," + pApm.patient_appointment + "," +
@@ -189,9 +190,10 @@ namespace clinic_ivf.objdb
                 pApm.fsh + "," + pApm.t_patient_id + "," + pApm.tvs + "," +
                 pApm.repeat_e2 + "," + pApm.repeat_prl + "," + pApm.repeat_lh + "," +
                 pApm.repeat_fsh + "," + pApm.opu + "," + pApm.doctor_anes + "," +
+                pApm.tvs_day + "," + pApm.tvs_time + "," + pApm.opu_time + "," +
                 pApm.et + "," + pApm.et_time + "," + pApm.fet + "," +
                 pApm.fet_time + "," + pApm.hormone_test + "," + pApm.other + "," +
-                pApm.beta_hgc + "," + pApm.other_remark + "," + pApm.opu_time + " " +
+                pApm.beta_hgc + "," + pApm.other_remark + " " +
                 ") " +
                 "Values ('" + p.patient_appoint_date_time + "','" + p.patient_appointment_time.Replace("'", "''") + "','" + p.patient_appointment.Replace("'", "''") + "'," +
                 "'" + p.patient_appointment_doctor.Replace("'", "''") + "','" + p.patient_appointment_notice.Replace("'", "''") + "','" + p.patient_appointment_staff.Replace("'", "''") + "'," +
@@ -213,7 +215,7 @@ namespace clinic_ivf.objdb
                 "'" + p.tvs_day + "','" + p.tvs_time + "','" + p.opu_time + "'," +
                 "'" + p.et + "','" + p.et_time + "','" + p.fet + "'," +
                 "'" + p.fet_time + "','" + p.hormone_test + "','" + p.other + "'," +
-                "'" + p.beta_hgc + "','" + p.other_remark.Replace("'", "''") + "','" + p.opu_time + "' " +
+                "'" + p.beta_hgc + "','" + p.other_remark.Replace("'", "''") + "' " +
                 ")";
 
                 re = conn.ExecuteNonQuery(conn.conn, sql);

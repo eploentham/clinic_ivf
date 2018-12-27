@@ -171,6 +171,7 @@ namespace clinic_ivf.control
             iniC.statusAppDonor = iniF.getIni("app", "statusAppDonor");
             iniC.themeApplication = iniF.getIni("app", "themeApplication");
             iniC.themeDonor = iniF.getIni("app", "themeDonor");
+            iniC.themeDonor1 = iniF.getIni("app", "themeDonor1");
             iniC.printerSticker = iniF.getIni("app", "printerSticker");
             iniC.timerlabreqaccept = iniF.getIni("app", "timerlabreqaccept");
 
@@ -210,6 +211,7 @@ namespace clinic_ivf.control
 
             iniC.themeApplication = iniC.themeApplication == null ? "Office2007Blue" : iniC.themeApplication .Equals("") ? "Office2007Blue" : iniC.themeApplication;
             iniC.themeDonor = iniC.themeDonor == null ? "Office2007Blue" : iniC.themeDonor.Equals("") ? "Office2007Blue" : iniC.themeDonor;
+            iniC.themeDonor1 = iniC.themeDonor1 == null ? "MacBlue" : iniC.themeDonor1.Equals("") ? "MacBlue" : iniC.themeDonor1;
 
             iniC.statusAppDonor = iniC.statusAppDonor == null ? "1" : iniC.statusAppDonor.Equals("") ? "1" : iniC.statusAppDonor;
 

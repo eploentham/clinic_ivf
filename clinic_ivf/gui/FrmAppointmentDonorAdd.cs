@@ -85,9 +85,46 @@ namespace clinic_ivf.gui
             setGrfpApmVisit();
             setGrfpApmDay();
             setControl();
-            
+            setTheme();
         }
+        private void setTheme()
+        {
+            theme1.SetTheme(groupBox1, ic.iniC.themeDonor1);
+            theme1.SetTheme(groupBox2, ic.iniC.themeDonor1);
+            theme1.SetTheme(groupBox3, ic.iniC.themeDonor1);
+            theme1.SetTheme(panel3, ic.iniC.themeDonor1);
+            theme1.SetTheme(panel2, ic.iniC.themeDonor1);
+            theme1.SetTheme(panel4, ic.iniC.themeDonor1);
+            theme1.SetTheme(splitContainer1, ic.iniC.themeDonor1);
+            foreach (Control ctl in groupBox1.Controls)
+            {
+                theme1.SetTheme(ctl, ic.iniC.themeDonor1);
+            }
+            foreach (Control ctl in groupBox2.Controls)
+            {
+                theme1.SetTheme(ctl, ic.iniC.themeDonor1);
+            }
+            foreach (Control ctl in groupBox3.Controls)
+            {
+                theme1.SetTheme(ctl, ic.iniC.themeDonor1);
+            }
+            foreach (Control ctl in panel2.Controls)
+            {
+                theme1.SetTheme(ctl, ic.iniC.themeDonor1);
+            }
+            foreach (Control ctl in panel4.Controls)
+            {
+                try
+                {
+                    theme1.SetTheme(ctl, ic.iniC.themeDonor1);
+                }
+                catch(Exception ex)
+                {
 
+                }
+                
+            }
+        }
         private void ChkTvs_CheckedChanged(object sender, EventArgs e)
         {
             //throw new NotImplementedException();

@@ -78,6 +78,9 @@ namespace clinic_ivf.gui
             chkOPU.CheckedChanged += ChkOPU_CheckedChanged;
             btnSearch.Click += BtnSearch_Click;
             chkTvs.CheckedChanged += ChkTvs_CheckedChanged;
+            chkFET.CheckedChanged += ChkFET_CheckedChanged;
+            chkET.CheckedChanged += ChkET_CheckedChanged;
+            chkOther.CheckedChanged += ChkOther_CheckedChanged;
 
             initGrfpApmAll();
             initGrfpApmVisit();
@@ -86,6 +89,78 @@ namespace clinic_ivf.gui
             setGrfpApmVisit();
             setGrfpApmDay();
             setControl();
+            setTheme();
+        }
+
+        private void ChkOther_CheckedChanged(object sender, EventArgs e)
+        {
+            //throw new NotImplementedException();
+            txtOther.Enabled = chkOther.Checked ? true : false;
+        }
+
+        private void ChkET_CheckedChanged(object sender, EventArgs e)
+        {
+            //throw new NotImplementedException();
+            //cboETTime
+            cboETTime.Enabled = chkET.Checked ? true : false;
+        }
+
+        private void ChkFET_CheckedChanged(object sender, EventArgs e)
+        {
+            //throw new NotImplementedException();
+            //txtTvsDay.Enabled = chkTvs.Checked ? true : false;
+            cboFETTime.Enabled = chkFET.Checked ? true : false;
+        }
+
+        private void setTheme()
+        {
+            theme1.SetTheme(groupBox1, ic.iniC.themeApplication);
+            theme1.SetTheme(groupBox2, ic.iniC.themeApplication);
+            theme1.SetTheme(groupBox3, ic.iniC.themeApplication);
+            theme1.SetTheme(panel3, ic.iniC.themeApplication);
+            theme1.SetTheme(panel2, ic.iniC.themeApplication);
+            theme1.SetTheme(panel4, ic.iniC.themeApplication);
+            theme1.SetTheme(splitContainer1, ic.iniC.themeApplication);
+            foreach (Control ctl in groupBox1.Controls)
+            {
+                theme1.SetTheme(ctl, ic.iniC.themeApplication);
+            }
+            foreach (Control ctl in groupBox2.Controls)
+            {
+                theme1.SetTheme(ctl, ic.iniC.themeApplication);
+            }
+            foreach (Control ctl in groupBox3.Controls)
+            {
+                theme1.SetTheme(ctl, ic.iniC.themeApplication);
+            }
+            foreach (Control ctl in panel2.Controls)
+            {
+                theme1.SetTheme(ctl, ic.iniC.themeApplication);
+            }
+            foreach (Control ctl in tabPtt.Controls)
+            {
+                theme1.SetTheme(ctl, ic.iniC.themeApplication);
+            }
+            foreach (Control ctl in tabDonor.Controls)
+            {
+                theme1.SetTheme(ctl, ic.iniC.themeApplication);
+            }
+            foreach (Control ctl in tabVisit.Controls)
+            {
+                theme1.SetTheme(ctl, ic.iniC.themeApplication);
+            }
+            foreach (Control ctl in panel4.Controls)
+            {
+                try
+                {
+                    theme1.SetTheme(ctl, ic.iniC.themeApplication);
+                }
+                catch (Exception ex)
+                {
+
+                }
+
+            }
         }
         private void ChkTvs_CheckedChanged(object sender, EventArgs e)
         {
@@ -268,6 +343,10 @@ namespace clinic_ivf.gui
             chkRLh.Checked = pApm.repeat_lh.Equals("1") ? true : false;
             chkRFsh.Checked = pApm.repeat_fsh.Equals("1") ? true : false;
             chkRPrl.Checked = pApm.repeat_prl.Equals("1") ? true : false;
+
+            chkET.Checked = pApm.e2.Equals("1") ? true : false;
+            chkFET.Checked = pApm.e2.Equals("1") ? true : false;
+            chkOther.Checked = pApm.e2.Equals("1") ? true : false;
             txtRemark.Value = pApm.remark;
             ic.setC1Combo(cboDoctor, pApm.patient_appointment_doctor);
             txtID.Value = pApm.t_patient_appointment_id;

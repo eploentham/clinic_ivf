@@ -99,8 +99,6 @@ namespace clinic_ivf.objdb
             String re = "";
             String sql = "";
             int chk = 0;
-
-
             chkNull(p);
             sql = "Update " + vsold.table + " Set " +
                 " " + vsold.PName + " = '" + p.PName + "'" +
@@ -108,6 +106,28 @@ namespace clinic_ivf.objdb
                 "," + vsold.VDate + " = '" + p.VDate + "' " +
                 
                 "Where " + vsold.pkField + "='" + p.VN + "'"
+                ;
+
+            try
+            {
+                re = conn.ExecuteNonQuery(conn.conn, sql);
+            }
+            catch (Exception ex)
+            {
+                sql = ex.Message + " " + ex.InnerException;
+            }
+
+            return re;
+        }
+        public String updateVEndTimeNull(String vn)
+        {
+            String re = "";
+            String sql = "";
+            int chk = 0;
+            
+            sql = "Update " + vsold.table + " Set " +
+                " " + vsold.VEndTime + " = null " +
+                "Where " + vsold.pkField + "='" + vn + "'"
                 ;
 
             try

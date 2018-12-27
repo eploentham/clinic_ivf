@@ -1,4 +1,6 @@
-﻿using C1.Win.C1SuperTooltip;
+﻿using C1.Win.C1Command;
+using C1.Win.C1SuperTooltip;
+using C1.Win.C1Themes;
 using clinic_ivf.control;
 using clinic_ivf.object1;
 using clinic_ivf.Properties;
@@ -75,6 +77,7 @@ namespace clinic_ivf.gui
             ic.setCboPttType(cboPttType);
             ic.ivfDB.bspDB.setCboBsp(cboBsp,"");
             ic.ivfDB.agnOldDB.setCboAgent(cboAgent, "");
+            ic.ivfDB.sexDB.setCboSex(cboSex);
 
             btnVisit.Click += BtnVisit_Click;
             btnHnSearch.Click += BtnHnSearch_Click;
@@ -96,7 +99,8 @@ namespace clinic_ivf.gui
             {
                 txtAgent.Hide();
                 cboAgent.Show();
-            }
+            }//tC
+            setTheme();
             //setFocusColor();
             //initGrfImg();
             //setGrfImg("");
@@ -111,7 +115,77 @@ namespace clinic_ivf.gui
             //setKeyEnter();
 
         }
-
+        private void setTheme()
+        {
+            
+            if (ic.iniC.statusAppDonor.Equals("0"))
+            {
+                theme1.SetTheme(this, ic.iniC.themeApplication);
+                theme1.SetTheme(panel3, ic.iniC.themeApplication);
+                theme1.SetTheme(groupBox1, ic.iniC.themeApplication);
+                theme1.SetTheme(tC, ic.iniC.themeApplication);
+                //theme1.SetTheme(tabVisit, ic.iniC.themeApplication);
+            }
+            else
+            {
+                theme1.SetTheme(this, ic.iniC.themeDonor1);
+                theme1.SetTheme(panel3, ic.iniC.themeDonor1);
+                theme1.SetTheme(groupBox1, ic.iniC.themeDonor1);
+                theme1.SetTheme(tC, ic.iniC.themeDonor1);
+                //theme1.SetTheme(tabVisit, ic.iniC.themeDonor1);
+                //foreach(C1DockingTabPage tab in tC.TabPages)
+                //{
+                //    theme1.SetTheme(tab, ic.iniC.themeDonor1);
+                //}
+            }
+            //theme1.SetTheme(tabVisit, ic.iniC.themeApplication);
+            foreach (Control ctl in groupBox1.Controls)
+            {
+                if (ic.iniC.statusAppDonor.Equals("0"))
+                {
+                    theme1.SetTheme(ctl, ic.iniC.themeApplication);
+                }
+                else
+                {
+                    theme1.SetTheme(ctl, ic.iniC.themeDonor1);
+                }
+            }
+            foreach (Control ctl in groupBox2.Controls)
+            {
+                if (ic.iniC.statusAppDonor.Equals("0"))
+                {
+                    theme1.SetTheme(ctl, ic.iniC.themeApplication);
+                }
+                else
+                {
+                    theme1.SetTheme(ctl, ic.iniC.themeDonor1);
+                }
+            }
+            foreach (Control ctl in panel3.Controls)
+            {
+                if (ic.iniC.statusAppDonor.Equals("0"))
+                {
+                    theme1.SetTheme(ctl, ic.iniC.themeApplication);
+                }
+                else
+                {
+                    theme1.SetTheme(ctl, ic.iniC.themeDonor1);
+                }
+            }
+            if (ic.iniC.statusAppDonor.Equals("0"))
+            {
+                //theme1.SetTheme(this, ic.iniC.themeApplication);
+                C1ThemeController.ApplicationTheme = ic.iniC.themeApplication;
+                theme1.SetTheme(label28, ic.iniC.themeApplication);
+                theme1.SetTheme(label28, ic.iniC.themeApplication);
+            }
+            else
+            {
+                //theme1.SetTheme(this, ic.iniC.themeDonor1);
+                C1ThemeController.ApplicationTheme = ic.iniC.themeDonor1;
+                theme1.SetTheme(label28, ic.iniC.themeDonor1);
+            }
+        }
         private void BtnPrnCheckList1_Click(object sender, EventArgs e)
         {
             //throw new NotImplementedException();
@@ -186,6 +260,7 @@ namespace clinic_ivf.gui
                     {
                         setVisit();
                         vs.visit_vn = re;
+                        re = ic.ivfDB.vsOldDB.updateVEndTimeNull(vsOld.VN);
                         re1 = ic.ivfDB.vsDB.insertVisit(vs, txtStfConfirmID.Text);
                     }
                 }
@@ -239,7 +314,146 @@ namespace clinic_ivf.gui
                 }
             }
         }
+        private void setControlPtt(Patient ptt)
+        {
+            txtHn.Value = ptt.patient_hn;
+            txtPttId.Value = ptt.t_patient_id;
+            txtPttName.Value = ptt.patient_firstname;
+            txtPttLName.Value = ptt.patient_lastname;
+            txtPttNameE.Value = ptt.patient_firstname_e;
+            txtPttLNameE.Value = ptt.patient_lastname_e;
+            txtRemark.Value = ptt.remark;
+            txtLineID.Value = ptt.line_id;
+            txtEmail.Value = ptt.email;
+            txtMobile1.Value = ptt.mobile1;
+            txtMobile2.Value = ptt.mobile2;
+            txtPid.Value = ptt.pid;
+            txtPaasport.Value = ptt.passport;
 
+            txtRemark.Value = ptt.remark;
+            txtDob.Value = ptt.patient_birthday;
+
+            ic.setC1Combo(cboPrefix, ptt.f_patient_prefix_id);
+            ic.setC1Combo(cboSex, ptt.f_sex_id);
+            ic.setC1Combo(cboMarital, ptt.f_patient_marriage_status_id);
+            ic.setC1Combo(cboBloodG, ptt.f_patient_blood_group_id);
+            ic.setC1Combo(CboNation, ptt.f_patient_nation_id);
+            ic.setC1Combo(CboEduca, ptt.f_patient_education_type_id);
+            ic.setC1Combo(cboRace, ptt.f_patient_race_id);
+            ic.setC1Combo(cboRg, ptt.f_patient_religion_id);
+            ic.setC1Combo(cboPttType, ptt.patient_type);
+            ic.setC1Combo(cboAgent, ptt.agent);
+            txtAgent.Value = ptt.agent;
+            txtAgent1.Value = ptt.agent;
+            //ic.setC1Combo(cboBsp, ptt.patient_type);cboAgent
+
+            //ic.setC1Combo(cboCouPrefix, ptt.f_patient_religion_id);
+            //ic.setC1Combo(cboRg, ptt.f_patient_religion_id);
+            //ic.setC1Combo(cboRg, ptt.f_patient_religion_id);
+            chkChronic.Checked = ptt.status_chronic.Equals("1") ? true : false;
+            chkDenyAllergy.Checked = ptt.status_deny_allergy.Equals("1") ? true : false;
+            chkDenyAllergy1.Checked = chkDenyAllergy.Checked;
+            chkOPU.Checked = ptt.status_opu.Equals("1") ? true : false;
+            chkOPU1.Checked = chkOPU.Checked;
+            chkOR.Checked = ptt.status_or.Equals("1") ? true : false;
+            chkOR1.Checked = chkOR.Checked;
+            chkCongenital.Checked = ptt.status_congenial.Equals("1") ? true : false;
+            chkCongenital1.Checked = chkCongenital.Checked;
+            txtCongenital.Value = ptt.congenital_diseases_description;
+            txtCongenital1.Value = ptt.congenital_diseases_description;
+            txtORDescription1.Value = ptt.or_description;
+            stt.SetToolTip(chkOR, ptt.or_description);
+            stt.SetToolTip(chkDenyAllergy, ptt.allergy_description);
+            stt.SetToolTip(chkCongenital, ptt.congenital_diseases_description);
+            txtNickName.Value = ptt.patient_nickname;
+            txtNickName1.Value = txtNickName.Text;
+            txtMobile11.Value = txtMobile1.Text;
+            txtHeight.Value = ptt.patient_height;
+            txtHeight1.Value = txtHeight.Text;
+
+            vs = ic.ivfDB.vsDB.selectByPk1(vsid);
+            txtID.Value = vs.t_visit_id;
+            ic.setC1Combo(cboBsp, vs.b_service_point_id);
+            txtComment.Value = vs.visit_notice;
+            txtBP.Value = vs.bp;
+            txtBW.Value = vs.bw;
+            txtBP1.Value = txtBP.Text;
+            txtBW1.Value = txtBW1.Text;
+            txtPulse.Value = vs.pulse;
+            txtPulse1.Value = txtPulse.Text;
+            txtAllergy.Value = ptt.allergy_description;
+            //txtAllergyDesc1.Value = txtAllergy.Text;
+            PatientImage ptti = new PatientImage();
+            ptti = ic.ivfDB.pttImgDB.selectByPttIDStatus1(txtPttId.Text);
+
+            new Thread(() =>
+            {
+                Thread.CurrentThread.IsBackground = true;
+                Image loadedImage = null, resizedImage;
+                String aaa = ptti.image_path;
+                FtpWebRequest ftpRequest = null;
+                FtpWebResponse ftpResponse = null;
+                Stream ftpStream = null;
+                int bufferSize = 2048;
+                MemoryStream stream = new MemoryStream();
+                string host = null;
+                string user = null;
+                string pass = null;     //iniC.hostFTP, iniC.userFTP, iniC.passFTP
+                host = ic.iniC.hostFTP; user = ic.iniC.userFTP; pass = ic.iniC.passFTP;
+                try
+                {
+                    ftpRequest = (FtpWebRequest)FtpWebRequest.Create(host + "/" + aaa);
+                    ftpRequest.Credentials = new NetworkCredential(user, pass);
+                    ftpRequest.UseBinary = true;
+                    ftpRequest.UsePassive = false;
+                    ftpRequest.KeepAlive = true;
+                    ftpRequest.Method = WebRequestMethods.Ftp.DownloadFile;
+                    ftpResponse = (FtpWebResponse)ftpRequest.GetResponse();
+                    ftpStream = ftpResponse.GetResponseStream();
+                    byte[] byteBuffer = new byte[bufferSize];
+                    int bytesRead = ftpStream.Read(byteBuffer, 0, bufferSize);
+                    try
+                    {
+                        while (bytesRead > 0)
+                        {
+                            stream.Write(byteBuffer, 0, bytesRead);
+                            bytesRead = ftpStream.Read(byteBuffer, 0, bufferSize);
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine(ex.ToString());
+                    }
+                    loadedImage = new Bitmap(stream);
+                    ftpStream.Close();
+                    ftpResponse.Close();
+                    ftpRequest = null;
+
+                    if (loadedImage != null)
+                    {
+                        String filename1 = "check_list_1.jpg";
+                        int originalWidth = loadedImage.Width;
+                        int newWidth = 180;
+                        resizedImage = loadedImage.GetThumbnailImage(newWidth, (newWidth * loadedImage.Height) / originalWidth, null, IntPtr.Zero);
+                        //Column col = grfImg.Cols[colImg];
+                        //col.DataType = typeof(Image);
+                        picImg.Image = loadedImage;
+                        if (File.Exists(filename1))
+                        {
+                            File.Delete(filename1);
+                            System.Threading.Thread.Sleep(200);
+                        }
+                        loadedImage.Save(filename1);
+                        txtFileName.Value = filename1;
+                        //loadedImage.sa
+                        //flagImg = true;
+                    }
+                }
+                catch (Exception ex) { Console.WriteLine(ex.ToString()); }
+                //grfImg.Cols[colImg].ImageAndText = true;
+
+            }).Start();
+        }
         private void setControl(String pttid, String pttOid)
         {
             if (ic.iniC.statusAppDonor.Equals("1"))
@@ -252,199 +466,71 @@ namespace clinic_ivf.gui
                         ptt = ic.ivfDB.pttDB.selectByIDold(pttOid);
                     }
                 }
-                txtHn.Value = ptt.patient_hn;
-                txtPttId.Value = ptt.t_patient_id;
-                txtPttName.Value = ptt.patient_firstname;
-                txtPttLName.Value = ptt.patient_lastname;
-                txtPttNameE.Value = ptt.patient_firstname_e;
-                txtPttLNameE.Value = ptt.patient_lastname_e;
-                txtRemark.Value = ptt.remark;
-                txtLineID.Value = ptt.line_id;
-                txtEmail.Value = ptt.email;
-                txtMobile1.Value = ptt.mobile1;
-                txtMobile2.Value = ptt.mobile2;
-                txtPid.Value = ptt.pid;
-                txtPaasport.Value = ptt.passport;
-
-                txtRemark.Value = ptt.remark;
-                txtDob.Value = ptt.patient_birthday;
-
-                ic.setC1Combo(cboPrefix, ptt.f_patient_prefix_id);
-                ic.setC1Combo(cboSex, ptt.f_sex_id);
-                ic.setC1Combo(cboMarital, ptt.f_patient_marriage_status_id);
-                ic.setC1Combo(cboBloodG, ptt.f_patient_blood_group_id);
-                ic.setC1Combo(CboNation, ptt.f_patient_nation_id);
-                ic.setC1Combo(CboEduca, ptt.f_patient_education_type_id);
-                ic.setC1Combo(cboRace, ptt.f_patient_race_id);
-                ic.setC1Combo(cboRg, ptt.f_patient_religion_id);
-                ic.setC1Combo(cboPttType, ptt.patient_type);
-                ic.setC1Combo(cboAgent, ptt.agent);
-                txtAgent.Value = ptt.agent;
-                txtAgent1.Value = ptt.agent;
-                //ic.setC1Combo(cboBsp, ptt.patient_type);cboAgent
-
-                //ic.setC1Combo(cboCouPrefix, ptt.f_patient_religion_id);
-                //ic.setC1Combo(cboRg, ptt.f_patient_religion_id);
-                //ic.setC1Combo(cboRg, ptt.f_patient_religion_id);
-                chkChronic.Checked = ptt.status_chronic.Equals("1") ? true : false;
-                chkDenyAllergy.Checked = ptt.status_deny_allergy.Equals("1") ? true : false;
-                chkDenyAllergy1.Checked = chkDenyAllergy.Checked;
-                chkOPU.Checked = ptt.status_opu.Equals("1") ? true : false;
-                chkOPU1.Checked = chkOPU.Checked;
-                chkOR.Checked = ptt.status_or.Equals("1") ? true : false;
-                chkOR1.Checked = chkOR.Checked;
-                chkCongenital.Checked = ptt.status_congenial.Equals("1") ? true : false;
-                chkCongenital1.Checked = chkCongenital.Checked;
-                txtCongenital.Value = ptt.congenital_diseases_description;
-                txtCongenital1.Value = ptt.congenital_diseases_description;
-                txtORDescription1.Value = ptt.or_description;
-                stt.SetToolTip(chkOR, ptt.or_description);
-                stt.SetToolTip(chkDenyAllergy, ptt.allergy_description);
-                stt.SetToolTip(chkCongenital, ptt.congenital_diseases_description);
-                txtNickName.Value = ptt.patient_nickname;
-                txtNickName1.Value = txtNickName.Text;
-                txtMobile11.Value = txtMobile1.Text;
-                txtHeight.Value = ptt.patient_height;
-                txtHeight1.Value = txtHeight.Text;
-                
-                vs = ic.ivfDB.vsDB.selectByPk1(vsid);
-                txtID.Value = vs.t_visit_id;
-                ic.setC1Combo(cboBsp, vs.b_service_point_id);
-                txtComment.Value = vs.visit_notice;
-                txtBP.Value = vs.bp;
-                txtBW.Value = vs.bw;
-                txtBP1.Value = txtBP.Text;
-                txtBW1.Value = txtBW1.Text;
-                txtPulse.Value = vs.pulse;
-                txtPulse1.Value = txtPulse.Text;
-                txtAllergy.Value = ptt.allergy_description;
-                //txtAllergyDesc1.Value = txtAllergy.Text;
-                PatientImage ptti = new PatientImage();
-                ptti = ic.ivfDB.pttImgDB.selectByPttIDStatus1(txtPttId.Text);
-
-                new Thread(() =>
-                {
-                    Thread.CurrentThread.IsBackground = true;
-                    Image loadedImage = null, resizedImage;
-                    String aaa = ptti.image_path;
-                    FtpWebRequest ftpRequest = null;
-                    FtpWebResponse ftpResponse = null;
-                    Stream ftpStream = null;
-                    int bufferSize = 2048;
-                    MemoryStream stream = new MemoryStream();
-                    string host = null;
-                    string user = null;
-                    string pass = null;     //iniC.hostFTP, iniC.userFTP, iniC.passFTP
-                    host = ic.iniC.hostFTP; user = ic.iniC.userFTP; pass = ic.iniC.passFTP;
-                    try
-                    {
-                        ftpRequest = (FtpWebRequest)FtpWebRequest.Create(host + "/" + aaa);
-                        ftpRequest.Credentials = new NetworkCredential(user, pass);
-                        ftpRequest.UseBinary = true;
-                        ftpRequest.UsePassive = false;
-                        ftpRequest.KeepAlive = true;
-                        ftpRequest.Method = WebRequestMethods.Ftp.DownloadFile;
-                        ftpResponse = (FtpWebResponse)ftpRequest.GetResponse();
-                        ftpStream = ftpResponse.GetResponseStream();
-                        byte[] byteBuffer = new byte[bufferSize];
-                        int bytesRead = ftpStream.Read(byteBuffer, 0, bufferSize);
-                        try
-                        {
-                            while (bytesRead > 0)
-                            {
-                                stream.Write(byteBuffer, 0, bytesRead);
-                                bytesRead = ftpStream.Read(byteBuffer, 0, bufferSize);
-                            }
-                        }
-                        catch (Exception ex)
-                        {
-                            Console.WriteLine(ex.ToString());
-                        }
-                        loadedImage = new Bitmap(stream);
-                        ftpStream.Close();
-                        ftpResponse.Close();
-                        ftpRequest = null;
-
-                        if (loadedImage != null)
-                        {
-                            String filename1 = "check_list_1.jpg";
-                            int originalWidth = loadedImage.Width;
-                            int newWidth = 180;
-                            resizedImage = loadedImage.GetThumbnailImage(newWidth, (newWidth * loadedImage.Height) / originalWidth, null, IntPtr.Zero);
-                            //Column col = grfImg.Cols[colImg];
-                            //col.DataType = typeof(Image);
-                            picImg.Image = loadedImage;
-                            if (File.Exists(filename1))
-                            {
-                                File.Delete(filename1);
-                                System.Threading.Thread.Sleep(200);
-                            }
-                            loadedImage.Save(filename1);
-                            txtFileName.Value = filename1;
-                            //loadedImage.sa
-                            //flagImg = true;
-                        }
-                    }
-                    catch (Exception ex) { Console.WriteLine(ex.ToString()); }
-                    //grfImg.Cols[colImg].ImageAndText = true;
-                    
-                }).Start();
+                setControlPtt(ptt);
             }
             else
             {
                 label7.Text = "HN donor :";
                 ptt = ic.ivfDB.pttDB.selectByPk1(pttid);
                 pttO = ic.ivfDB.pttOldDB.selectByPk1(pttOid);
-                txtHn.Value = pttO.PIDS;
-                txtPttId.Value = ptt.t_patient_id;
-                txtPttNameE.Value = pttO.PName;
-                txtPttLNameE.Value = pttO.PSurname;
-                
-                txtIdOld.Value = pttO.PID;
-
-                txtPttName.Value = pttO.OName;
-                txtPttLName.Value = pttO.OSurname;
-                //txtContFname1.Value = pttO.EmergencyPersonalContact;
-                txtDob.Value = pttO.DateOfBirth;
-                ic.setC1Combo(cboAgent, pttO.AgentID);
-                ic.setC1Combo(cboPttType, pttO.PatientTypeID);
-                //ic.setC1Combo(cboCrl, pttO.PaymentID);
-                ic.setC1Combo(cboSex, pttO.SexID);
-                ic.setC1Combo(cboMarital, pttO.MaritalID);
-                ic.setC1Combo(cboRg, pttO.Religion);
-                ic.setC1Combo(cboPrefix, pttO.SurfixID);
-                if (pttO.IDNumber.Length == 10)
+                txtPttO.Value = pttO.PID;
+                if (ptt.t_patient_id.Equals(""))
                 {
+                    txtHn.Value = pttO.PIDS;
+                    txtPttId.Value = ptt.t_patient_id;
+                    txtPttNameE.Value = pttO.PName;
+                    txtPttLNameE.Value = pttO.PSurname;
 
+                    //txtIdOld.Value = pttO.PID;
+
+                    txtPttName.Value = pttO.OName;
+                    txtPttLName.Value = pttO.OSurname;
+                    //txtContFname1.Value = pttO.EmergencyPersonalContact;
+                    txtDob.Value = pttO.DateOfBirth;
+                    ic.setC1Combo(cboAgent, pttO.AgentID);
+                    ic.setC1Combo(cboPttType, pttO.PatientTypeID);
+                    //ic.setC1Combo(cboCrl, pttO.PaymentID);
+                    ic.setC1Combo(cboSex, pttO.SexID);
+                    ic.setC1Combo(cboMarital, pttO.MaritalID);
+                    ic.setC1Combo(cboRg, pttO.Religion);
+                    ic.setC1Combo(cboPrefix, pttO.SurfixID);
+                    if (pttO.IDNumber.Length == 10)
+                    {
+
+                    }
+                    //txtPid.Value = pttO.IDNumber.Length == 10 ? pttO.IDNumber : "";
+                    //txtPaasport.Value = pttO.IDNumber.Length != 10 ? pttO.IDNumber : "";
+                    txtPaasport.Value = pttO.IDNumber;
+                    //cboName1Rl.Text = pttO.RelationshipID;
+                    //ic.setC1Combo(cboName1Rl, pttO.RelationshipID);
+                    //barcode.Text = txtHn.Text;
+                    txtEmail.Value = pttO.Email;
+
+                    filenamepic = txtHn.Text;
+
+                    ic.setC1Combo(cboAgent, pttO.AgentID);
                 }
-                //txtPid.Value = pttO.IDNumber.Length == 10 ? pttO.IDNumber : "";
-                //txtPaasport.Value = pttO.IDNumber.Length != 10 ? pttO.IDNumber : "";
-                txtPaasport.Value = pttO.IDNumber;
-                //cboName1Rl.Text = pttO.RelationshipID;
-                //ic.setC1Combo(cboName1Rl, pttO.RelationshipID);
-                //barcode.Text = txtHn.Text;
-                txtEmail.Value = pttO.Email;
-                
-                filenamepic = txtHn.Text;
-
-                ic.setC1Combo(cboAgent, pttO.AgentID);
+                else
+                {
+                    setControlPtt(ptt);
+                }
             }
                         
-            Thread threadA = new Thread(new ParameterizedThreadStart(ExecuteA));
-            threadA.Start();
+            //Thread threadA = new Thread(new ParameterizedThreadStart(ExecuteA));
+            //threadA.Start();
         }
-        private void ExecuteA(Object obj)
-        {
-            //Console.WriteLine("Executing parameterless thread!");
-            try
-            {
-                setPic(new Bitmap(ic.ftpC.download(DateTime.Now.Year.ToString() + "/" + filenamepic + "." + System.Drawing.Imaging.ImageFormat.Jpeg)));
-            }
-            catch (Exception ex)
-            {
+        //private void ExecuteA(Object obj)
+        //{
+        //    //Console.WriteLine("Executing parameterless thread!");
+        //    try
+        //    {
+        //        setPic(new Bitmap(ic.ftpC.download(DateTime.Now.Year.ToString() + "/" + filenamepic + "." + System.Drawing.Imaging.ImageFormat.Jpeg)));
+        //    }
+        //    catch (Exception ex)
+        //    {
 
-            }
-        }
+        //    }
+        //}
         private void setPic(Bitmap bitmap)
         {
             picPtt.Image = bitmap;
@@ -455,7 +541,7 @@ namespace clinic_ivf.gui
             vsOld = new VisitOld();
             vsOld.VN = txtID.Text;
             vsOld.VSID = "110";
-            vsOld.PID = txtPttId.Text;
+            vsOld.PID = txtPttO.Text;
             vsOld.PIDS = txtHn.Text;
             vsOld.PName = cboPrefix.Text +" "+txtPttNameE.Text+" "+txtPttLNameE.Text;
             vsOld.OName = "";

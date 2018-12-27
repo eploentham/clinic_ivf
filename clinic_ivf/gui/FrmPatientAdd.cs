@@ -174,7 +174,7 @@ namespace clinic_ivf.gui
             setGrfImg();
             initGrfVs();
             setGrfVs();
-            
+            setGrfpApmDonor("");
             //setGrfpApmDonor("");
 
             btnPrnSticker.Click += BtnPrnSticker_Click;
@@ -241,9 +241,18 @@ namespace clinic_ivf.gui
         private void BtnApm_Click(object sender, EventArgs e)
         {
             //throw new NotImplementedException();
-            FrmAppointmentDonorAdd frm = new FrmAppointmentDonorAdd(ic, "", txtID.Text, "");
-            frm.ShowDialog(this);
-            setGrfpApmDonor(txtID.Text);
+            if (ic.iniC.statusAppDonor.Equals("1"))
+            {
+                FrmAppointmentDonorAdd frm = new FrmAppointmentDonorAdd(ic, "", txtID.Text, "");
+                frm.ShowDialog(this);
+                setGrfpApmDonor(txtID.Text);
+            }
+            else
+            {
+                FrmAppointmentAdd frm = new FrmAppointmentAdd(ic, "", txtID.Text, "");
+                frm.ShowDialog(this);
+                setGrfpApmDonor(txtID.Text);
+            }
         }
 
         private void ChkDenyAllergy_CheckedChanged(object sender, EventArgs e)
