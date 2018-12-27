@@ -393,9 +393,10 @@ namespace clinic_ivf.gui
             else
             {
                 label7.Text = "HN donor :";
+                ptt = ic.ivfDB.pttDB.selectByPk1(pttid);
                 pttO = ic.ivfDB.pttOldDB.selectByPk1(pttOid);
                 txtHn.Value = pttO.PIDS;
-                txtPttId.Value = pttO.PID;
+                txtPttId.Value = ptt.t_patient_id;
                 txtPttNameE.Value = pttO.PName;
                 txtPttLNameE.Value = pttO.PSurname;
                 

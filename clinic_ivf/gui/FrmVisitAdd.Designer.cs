@@ -153,6 +153,7 @@
             this.txtNickName1 = new C1.Win.C1Input.C1TextBox();
             this.panel2 = new System.Windows.Forms.Panel();
             this.picImg = new C1.Win.C1Input.C1PictureBox();
+            this.txtPttO = new C1.Win.C1Input.C1TextBox();
             this.sB.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.theme1)).BeginInit();
             this.groupBox1.SuspendLayout();
@@ -231,6 +232,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtNickName1)).BeginInit();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picImg)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtPttO)).BeginInit();
             this.SuspendLayout();
             // 
             // sB
@@ -502,6 +504,7 @@
             // groupBox2
             // 
             this.groupBox2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.groupBox2.Controls.Add(this.txtPttO);
             this.groupBox2.Controls.Add(this.label43);
             this.groupBox2.Controls.Add(this.label42);
             this.groupBox2.Controls.Add(this.label38);
@@ -2158,6 +2161,20 @@
             this.picImg.TabIndex = 2;
             this.picImg.TabStop = false;
             // 
+            // txtPttO
+            // 
+            this.txtPttO.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtPttO.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
+            this.txtPttO.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.txtPttO.Location = new System.Drawing.Point(388, 19);
+            this.txtPttO.Name = "txtPttO";
+            this.txtPttO.Size = new System.Drawing.Size(30, 20);
+            this.txtPttO.TabIndex = 714;
+            this.txtPttO.Tag = null;
+            this.theme1.SetTheme(this.txtPttO, "(default)");
+            this.txtPttO.Visible = false;
+            this.txtPttO.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            // 
             // FrmVisitAdd
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -2251,6 +2268,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtNickName1)).EndInit();
             this.panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.picImg)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtPttO)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -2383,5 +2401,6 @@
         private System.Windows.Forms.Label label40;
         private System.Windows.Forms.Label label43;
         private C1.Win.C1Input.C1TextBox txtAllergy;
+        private C1.Win.C1Input.C1TextBox txtPttO;
     }
 }
