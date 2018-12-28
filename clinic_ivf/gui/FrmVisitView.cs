@@ -435,7 +435,17 @@ namespace clinic_ivf.gui
         }
         private void FrmVisitView_Load(object sender, EventArgs e)
         {
-
+            theme1.SetTheme(groupBox1, ic.theme);
+            theme1.SetTheme(gB, ic.theme);
+            
+            foreach (Control c in groupBox1.Controls)
+            {
+                theme1.SetTheme(c, ic.theme);
+            }
+            foreach (Control c in gB.Controls)
+            {
+                theme1.SetTheme(c, ic.theme);
+            }
         }
     }
 }

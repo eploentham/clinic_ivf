@@ -88,15 +88,15 @@
             this.chkHormoneTest = new C1.Win.C1Input.C1CheckBox();
             this.tabDonor = new C1.Win.C1Command.C1DockingTabPage();
             this.label15 = new System.Windows.Forms.Label();
-            this.c1ComboBox1 = new C1.Win.C1Input.C1ComboBox();
+            this.cboOPUTimeDonor = new C1.Win.C1Input.C1ComboBox();
             this.label16 = new System.Windows.Forms.Label();
-            this.c1ComboBox2 = new C1.Win.C1Input.C1ComboBox();
+            this.cboTvsTimeDonor = new C1.Win.C1Input.C1ComboBox();
             this.label17 = new System.Windows.Forms.Label();
             this.label18 = new System.Windows.Forms.Label();
-            this.c1TextBox1 = new C1.Win.C1Input.C1TextBox();
+            this.txtTvsDayDonor = new C1.Win.C1Input.C1TextBox();
             this.cboDtrAnes = new C1.Win.C1Input.C1ComboBox();
-            this.c1CheckBox1 = new C1.Win.C1Input.C1CheckBox();
-            this.c1CheckBox2 = new C1.Win.C1Input.C1CheckBox();
+            this.chkOPUDonor = new C1.Win.C1Input.C1CheckBox();
+            this.chkTvsDonor = new C1.Win.C1Input.C1CheckBox();
             this.chkRPrl = new C1.Win.C1Input.C1CheckBox();
             this.chkRFsh = new C1.Win.C1Input.C1CheckBox();
             this.chkRLh = new C1.Win.C1Input.C1CheckBox();
@@ -162,12 +162,12 @@
             ((System.ComponentModel.ISupportInitialize)(this.chkET)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkHormoneTest)).BeginInit();
             this.tabDonor.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.c1ComboBox1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.c1ComboBox2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.c1TextBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cboOPUTimeDonor)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cboTvsTimeDonor)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtTvsDayDonor)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cboDtrAnes)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.c1CheckBox1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.c1CheckBox2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chkOPUDonor)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chkTvsDonor)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkRPrl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkRFsh)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkRLh)).BeginInit();
@@ -1135,15 +1135,15 @@
             // tabDonor
             // 
             this.tabDonor.Controls.Add(this.label15);
-            this.tabDonor.Controls.Add(this.c1ComboBox1);
+            this.tabDonor.Controls.Add(this.cboOPUTimeDonor);
             this.tabDonor.Controls.Add(this.label16);
-            this.tabDonor.Controls.Add(this.c1ComboBox2);
+            this.tabDonor.Controls.Add(this.cboTvsTimeDonor);
             this.tabDonor.Controls.Add(this.label17);
             this.tabDonor.Controls.Add(this.label18);
-            this.tabDonor.Controls.Add(this.c1TextBox1);
+            this.tabDonor.Controls.Add(this.txtTvsDayDonor);
             this.tabDonor.Controls.Add(this.cboDtrAnes);
-            this.tabDonor.Controls.Add(this.c1CheckBox1);
-            this.tabDonor.Controls.Add(this.c1CheckBox2);
+            this.tabDonor.Controls.Add(this.chkOPUDonor);
+            this.tabDonor.Controls.Add(this.chkTvsDonor);
             this.tabDonor.Controls.Add(this.chkRPrl);
             this.tabDonor.Controls.Add(this.chkRFsh);
             this.tabDonor.Controls.Add(this.chkRLh);
@@ -1171,28 +1171,28 @@
             this.label15.Text = "anes Dr.  :";
             this.theme1.SetTheme(this.label15, "(default)");
             // 
-            // c1ComboBox1
+            // cboOPUTimeDonor
             // 
-            this.c1ComboBox1.AllowSpinLoop = false;
-            this.c1ComboBox1.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
-            this.c1ComboBox1.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
-            this.c1ComboBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.c1ComboBox1.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
-            this.c1ComboBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.c1ComboBox1.GapHeight = 0;
-            this.c1ComboBox1.ImagePadding = new System.Windows.Forms.Padding(0);
-            this.c1ComboBox1.ItemsDisplayMember = "";
-            this.c1ComboBox1.ItemsValueMember = "";
-            this.c1ComboBox1.Location = new System.Drawing.Point(113, 63);
-            this.c1ComboBox1.Name = "c1ComboBox1";
-            this.c1ComboBox1.Size = new System.Drawing.Size(67, 20);
-            this.c1ComboBox1.Style.DropDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.c1ComboBox1.Style.DropDownBorderColor = System.Drawing.Color.Gainsboro;
-            this.c1ComboBox1.Style.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.c1ComboBox1.TabIndex = 688;
-            this.c1ComboBox1.Tag = null;
-            this.theme1.SetTheme(this.c1ComboBox1, "(default)");
-            this.c1ComboBox1.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            this.cboOPUTimeDonor.AllowSpinLoop = false;
+            this.cboOPUTimeDonor.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
+            this.cboOPUTimeDonor.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.cboOPUTimeDonor.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.cboOPUTimeDonor.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
+            this.cboOPUTimeDonor.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.cboOPUTimeDonor.GapHeight = 0;
+            this.cboOPUTimeDonor.ImagePadding = new System.Windows.Forms.Padding(0);
+            this.cboOPUTimeDonor.ItemsDisplayMember = "";
+            this.cboOPUTimeDonor.ItemsValueMember = "";
+            this.cboOPUTimeDonor.Location = new System.Drawing.Point(113, 63);
+            this.cboOPUTimeDonor.Name = "cboOPUTimeDonor";
+            this.cboOPUTimeDonor.Size = new System.Drawing.Size(67, 20);
+            this.cboOPUTimeDonor.Style.DropDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.cboOPUTimeDonor.Style.DropDownBorderColor = System.Drawing.Color.Gainsboro;
+            this.cboOPUTimeDonor.Style.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.cboOPUTimeDonor.TabIndex = 688;
+            this.cboOPUTimeDonor.Tag = null;
+            this.theme1.SetTheme(this.cboOPUTimeDonor, "(default)");
+            this.cboOPUTimeDonor.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
             // 
             // label16
             // 
@@ -1207,28 +1207,28 @@
             this.label16.Text = "time :";
             this.theme1.SetTheme(this.label16, "(default)");
             // 
-            // c1ComboBox2
+            // cboTvsTimeDonor
             // 
-            this.c1ComboBox2.AllowSpinLoop = false;
-            this.c1ComboBox2.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
-            this.c1ComboBox2.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
-            this.c1ComboBox2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.c1ComboBox2.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
-            this.c1ComboBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.c1ComboBox2.GapHeight = 0;
-            this.c1ComboBox2.ImagePadding = new System.Windows.Forms.Padding(0);
-            this.c1ComboBox2.ItemsDisplayMember = "";
-            this.c1ComboBox2.ItemsValueMember = "";
-            this.c1ComboBox2.Location = new System.Drawing.Point(303, 91);
-            this.c1ComboBox2.Name = "c1ComboBox2";
-            this.c1ComboBox2.Size = new System.Drawing.Size(67, 20);
-            this.c1ComboBox2.Style.DropDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.c1ComboBox2.Style.DropDownBorderColor = System.Drawing.Color.Gainsboro;
-            this.c1ComboBox2.Style.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.c1ComboBox2.TabIndex = 686;
-            this.c1ComboBox2.Tag = null;
-            this.theme1.SetTheme(this.c1ComboBox2, "(default)");
-            this.c1ComboBox2.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            this.cboTvsTimeDonor.AllowSpinLoop = false;
+            this.cboTvsTimeDonor.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
+            this.cboTvsTimeDonor.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.cboTvsTimeDonor.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.cboTvsTimeDonor.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
+            this.cboTvsTimeDonor.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.cboTvsTimeDonor.GapHeight = 0;
+            this.cboTvsTimeDonor.ImagePadding = new System.Windows.Forms.Padding(0);
+            this.cboTvsTimeDonor.ItemsDisplayMember = "";
+            this.cboTvsTimeDonor.ItemsValueMember = "";
+            this.cboTvsTimeDonor.Location = new System.Drawing.Point(303, 91);
+            this.cboTvsTimeDonor.Name = "cboTvsTimeDonor";
+            this.cboTvsTimeDonor.Size = new System.Drawing.Size(67, 20);
+            this.cboTvsTimeDonor.Style.DropDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.cboTvsTimeDonor.Style.DropDownBorderColor = System.Drawing.Color.Gainsboro;
+            this.cboTvsTimeDonor.Style.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.cboTvsTimeDonor.TabIndex = 686;
+            this.cboTvsTimeDonor.Tag = null;
+            this.theme1.SetTheme(this.cboTvsTimeDonor, "(default)");
+            this.cboTvsTimeDonor.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
             // 
             // label17
             // 
@@ -1256,18 +1256,18 @@
             this.label18.Text = "day";
             this.theme1.SetTheme(this.label18, "(default)");
             // 
-            // c1TextBox1
+            // txtTvsDayDonor
             // 
-            this.c1TextBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.c1TextBox1.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
-            this.c1TextBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.c1TextBox1.Location = new System.Drawing.Point(113, 91);
-            this.c1TextBox1.Name = "c1TextBox1";
-            this.c1TextBox1.Size = new System.Drawing.Size(47, 20);
-            this.c1TextBox1.TabIndex = 683;
-            this.c1TextBox1.Tag = null;
-            this.theme1.SetTheme(this.c1TextBox1, "(default)");
-            this.c1TextBox1.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            this.txtTvsDayDonor.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtTvsDayDonor.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
+            this.txtTvsDayDonor.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.txtTvsDayDonor.Location = new System.Drawing.Point(113, 91);
+            this.txtTvsDayDonor.Name = "txtTvsDayDonor";
+            this.txtTvsDayDonor.Size = new System.Drawing.Size(47, 20);
+            this.txtTvsDayDonor.TabIndex = 683;
+            this.txtTvsDayDonor.Tag = null;
+            this.theme1.SetTheme(this.txtTvsDayDonor, "(default)");
+            this.txtTvsDayDonor.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
             // 
             // cboDtrAnes
             // 
@@ -1290,41 +1290,41 @@
             this.theme1.SetTheme(this.cboDtrAnes, "(default)");
             this.cboDtrAnes.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
             // 
-            // c1CheckBox1
+            // chkOPUDonor
             // 
-            this.c1CheckBox1.BackColor = System.Drawing.Color.Transparent;
-            this.c1CheckBox1.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
-            this.c1CheckBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.c1CheckBox1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.c1CheckBox1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.c1CheckBox1.Location = new System.Drawing.Point(6, 62);
-            this.c1CheckBox1.Name = "c1CheckBox1";
-            this.c1CheckBox1.Padding = new System.Windows.Forms.Padding(4, 1, 1, 1);
-            this.c1CheckBox1.Size = new System.Drawing.Size(58, 24);
-            this.c1CheckBox1.TabIndex = 681;
-            this.c1CheckBox1.Text = "OPU";
-            this.theme1.SetTheme(this.c1CheckBox1, "(default)");
-            this.c1CheckBox1.UseVisualStyleBackColor = true;
-            this.c1CheckBox1.Value = null;
-            this.c1CheckBox1.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            this.chkOPUDonor.BackColor = System.Drawing.Color.Transparent;
+            this.chkOPUDonor.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
+            this.chkOPUDonor.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.chkOPUDonor.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.chkOPUDonor.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.chkOPUDonor.Location = new System.Drawing.Point(6, 62);
+            this.chkOPUDonor.Name = "chkOPUDonor";
+            this.chkOPUDonor.Padding = new System.Windows.Forms.Padding(4, 1, 1, 1);
+            this.chkOPUDonor.Size = new System.Drawing.Size(58, 24);
+            this.chkOPUDonor.TabIndex = 681;
+            this.chkOPUDonor.Text = "OPU";
+            this.theme1.SetTheme(this.chkOPUDonor, "(default)");
+            this.chkOPUDonor.UseVisualStyleBackColor = true;
+            this.chkOPUDonor.Value = null;
+            this.chkOPUDonor.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
             // 
-            // c1CheckBox2
+            // chkTvsDonor
             // 
-            this.c1CheckBox2.BackColor = System.Drawing.Color.Transparent;
-            this.c1CheckBox2.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
-            this.c1CheckBox2.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.c1CheckBox2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.c1CheckBox2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.c1CheckBox2.Location = new System.Drawing.Point(6, 90);
-            this.c1CheckBox2.Name = "c1CheckBox2";
-            this.c1CheckBox2.Padding = new System.Windows.Forms.Padding(4, 1, 1, 1);
-            this.c1CheckBox2.Size = new System.Drawing.Size(51, 24);
-            this.c1CheckBox2.TabIndex = 680;
-            this.c1CheckBox2.Text = "TVS";
-            this.theme1.SetTheme(this.c1CheckBox2, "(default)");
-            this.c1CheckBox2.UseVisualStyleBackColor = true;
-            this.c1CheckBox2.Value = null;
-            this.c1CheckBox2.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            this.chkTvsDonor.BackColor = System.Drawing.Color.Transparent;
+            this.chkTvsDonor.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
+            this.chkTvsDonor.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.chkTvsDonor.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.chkTvsDonor.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.chkTvsDonor.Location = new System.Drawing.Point(6, 90);
+            this.chkTvsDonor.Name = "chkTvsDonor";
+            this.chkTvsDonor.Padding = new System.Windows.Forms.Padding(4, 1, 1, 1);
+            this.chkTvsDonor.Size = new System.Drawing.Size(51, 24);
+            this.chkTvsDonor.TabIndex = 680;
+            this.chkTvsDonor.Text = "TVS";
+            this.theme1.SetTheme(this.chkTvsDonor, "(default)");
+            this.chkTvsDonor.UseVisualStyleBackColor = true;
+            this.chkTvsDonor.Value = null;
+            this.chkTvsDonor.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
             // 
             // chkRPrl
             // 
@@ -1684,12 +1684,12 @@
             ((System.ComponentModel.ISupportInitialize)(this.chkHormoneTest)).EndInit();
             this.tabDonor.ResumeLayout(false);
             this.tabDonor.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.c1ComboBox1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.c1ComboBox2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.c1TextBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cboOPUTimeDonor)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cboTvsTimeDonor)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtTvsDayDonor)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cboDtrAnes)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.c1CheckBox1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.c1CheckBox2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chkOPUDonor)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chkTvsDonor)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkRPrl)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkRFsh)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkRLh)).EndInit();
@@ -1790,15 +1790,15 @@
         private C1.Win.C1Input.C1CheckBox chkRLh;
         private C1.Win.C1Input.C1CheckBox chkRE2;
         private System.Windows.Forms.Label label15;
-        private C1.Win.C1Input.C1ComboBox c1ComboBox1;
+        private C1.Win.C1Input.C1ComboBox cboOPUTimeDonor;
         private System.Windows.Forms.Label label16;
-        private C1.Win.C1Input.C1ComboBox c1ComboBox2;
+        private C1.Win.C1Input.C1ComboBox cboTvsTimeDonor;
         private System.Windows.Forms.Label label17;
         private System.Windows.Forms.Label label18;
-        private C1.Win.C1Input.C1TextBox c1TextBox1;
+        private C1.Win.C1Input.C1TextBox txtTvsDayDonor;
         private C1.Win.C1Input.C1ComboBox cboDtrAnes;
-        private C1.Win.C1Input.C1CheckBox c1CheckBox1;
-        private C1.Win.C1Input.C1CheckBox c1CheckBox2;
+        private C1.Win.C1Input.C1CheckBox chkOPUDonor;
+        private C1.Win.C1Input.C1CheckBox chkTvsDonor;
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.PictureBox m_picPhoto;
         private System.Windows.Forms.Panel panel5;

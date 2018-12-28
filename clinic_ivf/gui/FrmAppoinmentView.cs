@@ -1192,7 +1192,16 @@ namespace clinic_ivf.gui
         }
         private void FrmAppoinmentView_Load(object sender, EventArgs e)
         {
-
+            theme1.SetTheme(groupBox1, ic.theme);
+            theme1.SetTheme(gb, ic.theme);
+            foreach (Control c in groupBox1.Controls)
+            {
+                theme1.SetTheme(c, ic.theme);
+            }
+            foreach (Control c in gb.Controls)
+            {
+                theme1.SetTheme(c, ic.theme);
+            }
         }
     }
 }

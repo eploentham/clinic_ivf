@@ -81,6 +81,8 @@ namespace clinic_ivf.gui
             chkFET.CheckedChanged += ChkFET_CheckedChanged;
             chkET.CheckedChanged += ChkET_CheckedChanged;
             chkOther.CheckedChanged += ChkOther_CheckedChanged;
+            chkOPUDonor.CheckedChanged += ChkOPUDonor_CheckedChanged;
+            chkTvsDonor.CheckedChanged += ChkTvsDonor_CheckedChanged;
 
             initGrfpApmAll();
             initGrfpApmVisit();
@@ -90,6 +92,20 @@ namespace clinic_ivf.gui
             setGrfpApmDay();
             setControl();
             setTheme();
+        }
+
+        private void ChkTvsDonor_CheckedChanged(object sender, EventArgs e)
+        {
+            //throw new NotImplementedException();
+            txtTvsDayDonor.Enabled = chkTvsDonor.Checked ? true : false;
+            cboTvsTimeDonor.Enabled = chkTvsDonor.Checked ? true : false;
+        }
+
+        private void ChkOPUDonor_CheckedChanged(object sender, EventArgs e)
+        {
+            //throw new NotImplementedException();
+            cboOPUTimeDonor.Enabled = chkOPUDonor.Checked ? true : false;
+            cboDtrAnes.Enabled = chkOPUDonor.Checked ? true : false;
         }
 
         private void ChkOther_CheckedChanged(object sender, EventArgs e)
@@ -182,7 +198,7 @@ namespace clinic_ivf.gui
         private void ChkOPU_CheckedChanged(object sender, EventArgs e)
         {
             //throw new NotImplementedException();
-            cboDtrAnes.Enabled = chkOPU.Checked ? true : false;
+            txtOPURemark.Enabled = chkOPU.Checked ? true : false;
             cboOPUTime.Enabled = chkOPU.Checked ? true : false;
         }
 
@@ -359,6 +375,11 @@ namespace clinic_ivf.gui
             ic.setC1Combo(cboOPUTime, pApm.opu_time);
             ChkTvs_CheckedChanged(null, null);
             ChkOPU_CheckedChanged(null, null);
+            ChkFET_CheckedChanged(null, null);
+            ChkET_CheckedChanged(null, null);
+            ChkOther_CheckedChanged(null, null);
+            ChkTvsDonor_CheckedChanged(null, null);
+            ChkOPUDonor_CheckedChanged(null, null);
             PatientImage pttI = new PatientImage();
             pttI = ic.ivfDB.pttImgDB.selectByPttIDStatus4(txtID.Text);
             filenamepic = pttI.image_path;
