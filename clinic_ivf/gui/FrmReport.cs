@@ -23,6 +23,34 @@ namespace clinic_ivf.gui
             InitializeComponent();
             this.ic = ic;
         }
+        public void setAppoitmentDailyReport(DataTable dt)
+        {
+            String chk = "", printerDefault = "";
+            ReportDocument rpt = new ReportDocument();
+            try
+            {
+                if (ic.iniC.statusAppDonor.Equals("1"))
+                {
+                    rpt.Load("Appointment_daily_old.rpt");
+                }
+                else
+                {
+                    rpt.Load("Appointment_daily.rpt");
+                }
+                    
+                rpt.SetDataSource(dt);
+                rpt.SetParameterValue("line1", ic.cop.comp_name_t);
+                rpt.SetParameterValue("line2", "โทรศัพท์ " + ic.cop.tele);
+                rpt.SetParameterValue("report_name", " Appointment Daily Report ");
+                //rpt.SetParameterValue("age1", "" + age);
+                this.crystalReportViewer1.ReportSource = rpt;
+                this.crystalReportViewer1.Refresh();
+            }
+            catch (Exception ex)
+            {
+                chk = ex.Message.ToString();
+            }
+        }
         public void setOPDCardOldReport(DataTable dt, String age)
         {
             String chk = "", printerDefault = "";

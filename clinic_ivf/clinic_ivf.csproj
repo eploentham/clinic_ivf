@@ -628,6 +628,13 @@
     <None Include="RDNIDLib.DLX">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <None Include="report\Appointment_daily.xsc">
+      <DependentUpon>Appointment_daily.xsd</DependentUpon>
+    </None>
+    <None Include="report\Appointment_daily.xsd" />
+    <None Include="report\Appointment_daily.xss">
+      <DependentUpon>Appointment_daily.xsd</DependentUpon>
+    </None>
     <None Include="report\LabOPU.xsc">
       <DependentUpon>LabOPU.xsd</DependentUpon>
     </None>
@@ -1319,6 +1326,10 @@
     <Content Include="RDNIDlib.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <None Include="Resources\arrow_true.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{C0C07587-41A7-46C8-8FBD-3F9C8EBE2DDC}" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

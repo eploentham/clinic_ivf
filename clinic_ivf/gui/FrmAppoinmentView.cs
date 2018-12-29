@@ -74,6 +74,7 @@ namespace clinic_ivf.gui
             txtSearch.KeyUp += TxtSearch_KeyUp;
             btnNew.Click += BtnNew_Click;
             tC.DoubleClick += TC_DoubleClick;
+            btnPrint.Click += BtnPrint_Click;
             //txtDateStart.ValueChanged += TxtDateStart_ValueChanged;
             //txtDateStart.
 
@@ -82,6 +83,35 @@ namespace clinic_ivf.gui
             initGrfPtt();
             //setGrfPtt();
             setGrf();
+        }
+
+        private void BtnPrint_Click(object sender, EventArgs e)
+        {
+            //throw new NotImplementedException();
+            FrmReport frm = new FrmReport(ic);
+            DataTable dt = new DataTable();
+            DateTime datestart, dateend;
+            String datestart1 = "", dateend1 = "";
+            if (DateTime.TryParse(txtDateStart.Text, out datestart))
+            {
+                datestart1 = datestart.ToString("yyyy-MM-dd");
+            }
+            else
+            {
+                datestart1 = ic.datetoDB(txtDateStart.Text);
+            }
+            dateend1 = datestart1;
+            if (ic.iniC.statusAppDonor.Equals("1"))
+            {
+                dt = ic.ivfDB.pApmDB.selectByDay(datestart1, dateend1);
+            }
+            else
+            {
+                dt = ic.ivfDB.appnOldDB.selectByDateDtr(datestart1, dateend1, cboDoctor.Text);
+            }
+                
+            frm.setAppoitmentDailyReport(dt);
+            frm.ShowDialog(this);
         }
 
         private void TC_DoubleClick(object sender, EventArgs e)

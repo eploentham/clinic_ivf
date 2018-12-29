@@ -50,6 +50,7 @@
             this.pnAll = new System.Windows.Forms.Panel();
             this.sB = new System.Windows.Forms.StatusStrip();
             this.sB1 = new System.Windows.Forms.ToolStripStatusLabel();
+            this.btnPrint = new C1.Win.C1Input.C1Button();
             ((System.ComponentModel.ISupportInitialize)(this.theme1)).BeginInit();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtSearch)).BeginInit();
@@ -69,6 +70,7 @@
             this.tC.SuspendLayout();
             this.tabAll.SuspendLayout();
             this.sB.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.btnPrint)).BeginInit();
             this.SuspendLayout();
             // 
             // theme1
@@ -78,6 +80,7 @@
             // groupBox1
             // 
             this.groupBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.groupBox1.Controls.Add(this.btnPrint);
             this.groupBox1.Controls.Add(this.label4);
             this.groupBox1.Controls.Add(this.txtSearch);
             this.groupBox1.Controls.Add(this.label6);
@@ -105,7 +108,7 @@
             this.label4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.label4.Location = new System.Drawing.Point(721, 20);
+            this.label4.Location = new System.Drawing.Point(676, 20);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(36, 16);
             this.label4.TabIndex = 554;
@@ -117,7 +120,7 @@
             this.txtSearch.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtSearch.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
             this.txtSearch.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.txtSearch.Location = new System.Drawing.Point(763, 18);
+            this.txtSearch.Location = new System.Drawing.Point(718, 18);
             this.txtSearch.Name = "txtSearch";
             this.txtSearch.Size = new System.Drawing.Size(90, 20);
             this.txtSearch.TabIndex = 553;
@@ -131,7 +134,7 @@
             this.label6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.label6.Location = new System.Drawing.Point(442, 21);
+            this.label6.Location = new System.Drawing.Point(397, 21);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(54, 16);
             this.label6.TabIndex = 552;
@@ -148,7 +151,7 @@
             this.cboDoctor.ImagePadding = new System.Windows.Forms.Padding(0);
             this.cboDoctor.ItemsDisplayMember = "";
             this.cboDoctor.ItemsValueMember = "";
-            this.cboDoctor.Location = new System.Drawing.Point(502, 19);
+            this.cboDoctor.Location = new System.Drawing.Point(457, 19);
             this.cboDoctor.Name = "cboDoctor";
             this.cboDoctor.Size = new System.Drawing.Size(207, 20);
             this.cboDoctor.Style.DropDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
@@ -164,7 +167,7 @@
             this.txtHn.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtHn.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
             this.txtHn.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.txtHn.Location = new System.Drawing.Point(893, 19);
+            this.txtHn.Location = new System.Drawing.Point(848, 19);
             this.txtHn.Name = "txtHn";
             this.txtHn.Size = new System.Drawing.Size(29, 20);
             this.txtHn.TabIndex = 521;
@@ -175,7 +178,7 @@
             // 
             // btnSearch
             // 
-            this.btnSearch.Location = new System.Drawing.Point(859, 18);
+            this.btnSearch.Location = new System.Drawing.Point(814, 18);
             this.btnSearch.Name = "btnSearch";
             this.btnSearch.Size = new System.Drawing.Size(28, 23);
             this.btnSearch.TabIndex = 517;
@@ -220,7 +223,7 @@
             | C1.Win.C1Input.FormatInfoInheritFlags.TrimEnd) 
             | C1.Win.C1Input.FormatInfoInheritFlags.CalendarType)));
             this.txtDateEnd.ImagePadding = new System.Windows.Forms.Padding(0);
-            this.txtDateEnd.Location = new System.Drawing.Point(299, 20);
+            this.txtDateEnd.Location = new System.Drawing.Point(279, 20);
             this.txtDateEnd.Name = "txtDateEnd";
             this.txtDateEnd.Size = new System.Drawing.Size(105, 18);
             this.txtDateEnd.TabIndex = 514;
@@ -235,7 +238,7 @@
             this.label1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.label1.Location = new System.Drawing.Point(223, 21);
+            this.label1.Location = new System.Drawing.Point(203, 21);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(70, 16);
             this.label1.TabIndex = 513;
@@ -430,6 +433,20 @@
             this.sB1.Size = new System.Drawing.Size(118, 17);
             this.sB1.Text = "toolStripStatusLabel1";
             // 
+            // btnPrint
+            // 
+            this.btnPrint.Image = global::clinic_ivf.Properties.Resources.print;
+            this.btnPrint.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnPrint.Location = new System.Drawing.Point(883, 12);
+            this.btnPrint.Name = "btnPrint";
+            this.btnPrint.Size = new System.Drawing.Size(79, 36);
+            this.btnPrint.TabIndex = 555;
+            this.btnPrint.Text = "Print";
+            this.btnPrint.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.theme1.SetTheme(this.btnPrint, "(default)");
+            this.btnPrint.UseVisualStyleBackColor = true;
+            this.btnPrint.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            // 
             // FrmAppoinmentView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -462,6 +479,7 @@
             this.tabAll.ResumeLayout(false);
             this.sB.ResumeLayout(false);
             this.sB.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.btnPrint)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -491,5 +509,6 @@
         private C1.Win.C1Command.C1DockingTab tC;
         private C1.Win.C1Command.C1DockingTabPage tabAll;
         private System.Windows.Forms.Panel pnAll;
+        private C1.Win.C1Input.C1Button btnPrint;
     }
 }

@@ -223,6 +223,16 @@ namespace clinic_ivf.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap arrow_true {
+            get {
+                object obj = ResourceManager.GetObject("arrow_true", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap arrow_true_1 {
             get {
                 object obj = ResourceManager.GetObject("arrow_true_1", resourceCulture);

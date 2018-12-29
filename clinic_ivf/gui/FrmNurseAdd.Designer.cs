@@ -30,6 +30,8 @@
         {
             this.theme1 = new C1.Win.C1Themes.C1ThemeController();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.txtAllergy = new C1.Win.C1Input.C1TextBox();
+            this.label6 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.txtDoctor = new C1.Win.C1Input.C1TextBox();
             this.label2 = new System.Windows.Forms.Label();
@@ -57,10 +59,9 @@
             this.tabCert = new C1.Win.C1Command.C1DockingTabPage();
             this.sB = new System.Windows.Forms.StatusStrip();
             this.sB1 = new System.Windows.Forms.ToolStripStatusLabel();
-            this.txtAllergy = new C1.Win.C1Input.C1TextBox();
-            this.label6 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.theme1)).BeginInit();
             this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtAllergy)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtDoctor)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtVn)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtBg)).BeginInit();
@@ -76,7 +77,6 @@
             this.tC.SuspendLayout();
             this.tabDrug.SuspendLayout();
             this.sB.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.txtAllergy)).BeginInit();
             this.SuspendLayout();
             // 
             // theme1
@@ -115,6 +115,32 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Patient";
             this.theme1.SetTheme(this.groupBox1, "(default)");
+            // 
+            // txtAllergy
+            // 
+            this.txtAllergy.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtAllergy.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
+            this.txtAllergy.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.txtAllergy.Location = new System.Drawing.Point(724, 67);
+            this.txtAllergy.Name = "txtAllergy";
+            this.txtAllergy.Size = new System.Drawing.Size(383, 20);
+            this.txtAllergy.TabIndex = 695;
+            this.txtAllergy.Tag = null;
+            this.theme1.SetTheme(this.txtAllergy, "(default)");
+            this.txtAllergy.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.label6.Location = new System.Drawing.Point(664, 69);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(56, 16);
+            this.label6.TabIndex = 694;
+            this.label6.Text = "Allergy :";
+            this.theme1.SetTheme(this.label6, "(default)");
             // 
             // label3
             // 
@@ -455,32 +481,6 @@
             this.sB1.Size = new System.Drawing.Size(118, 17);
             this.sB1.Text = "toolStripStatusLabel1";
             // 
-            // txtAllergy
-            // 
-            this.txtAllergy.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtAllergy.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
-            this.txtAllergy.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.txtAllergy.Location = new System.Drawing.Point(724, 67);
-            this.txtAllergy.Name = "txtAllergy";
-            this.txtAllergy.Size = new System.Drawing.Size(383, 20);
-            this.txtAllergy.TabIndex = 695;
-            this.txtAllergy.Tag = null;
-            this.theme1.SetTheme(this.txtAllergy, "(default)");
-            this.txtAllergy.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.label6.Location = new System.Drawing.Point(664, 69);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(56, 16);
-            this.label6.TabIndex = 694;
-            this.label6.Text = "Allergy :";
-            this.theme1.SetTheme(this.label6, "(default)");
-            // 
             // FrmNurseAdd
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -495,6 +495,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.theme1)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtAllergy)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtDoctor)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtVn)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtBg)).EndInit();
@@ -511,7 +512,6 @@
             this.tabDrug.ResumeLayout(false);
             this.sB.ResumeLayout(false);
             this.sB.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.txtAllergy)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
