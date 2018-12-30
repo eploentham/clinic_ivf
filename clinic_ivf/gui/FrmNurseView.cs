@@ -191,7 +191,7 @@ namespace clinic_ivf.gui
             ContextMenu menuGw = new ContextMenu();
             menuGw.MenuItems.Add("&receive operation", new EventHandler(ContextMenu_Apm));
             menuGw.MenuItems.Add("&Order Entry", new EventHandler(ContextMenu_Apm));
-            menuGw.MenuItems.Add("&Add Appointment", new EventHandler(ContextMenu_Finish_Apm));
+            menuGw.MenuItems.Add("&Edit Appointment", new EventHandler(ContextMenu_Finish_Apm));
             menuGw.MenuItems.Add("&Cancel Receive", new EventHandler(ContextMenu_Apm));
             
             grfFinish.ContextMenu = menuGw;
@@ -287,7 +287,7 @@ namespace clinic_ivf.gui
             ContextMenu menuGw = new ContextMenu();
             menuGw.MenuItems.Add("&receive operation", new EventHandler(ContextMenu_Apm));
             menuGw.MenuItems.Add("&Order Entry", new EventHandler(ContextMenu_Apm));
-            menuGw.MenuItems.Add("&Add Appointment", new EventHandler(ContextMenu_Apm));
+            menuGw.MenuItems.Add("&Edit Appointment", new EventHandler(ContextMenu_Apm_Finish));
             menuGw.MenuItems.Add("&Cancel Receive", new EventHandler(ContextMenu_Apm));
             grfFinish.ContextMenu = menuGw;
 
@@ -734,9 +734,28 @@ namespace clinic_ivf.gui
                 //openPatientAdd(id, name);
             }
         }
+        private void ContextMenu_Apm_Finish(object sender, System.EventArgs e)
+        {
+            String chk = "", name = "", vsid = "", pttId = "";
+            if (grfFinish.Row < 0) return;
+
+            vsid = grfFinish[grfFinish.Row, colID] != null ? grfFinish[grfFinish.Row, colID].ToString() : "";
+            pttId = grfFinish[grfFinish.Row, colPttId] != null ? grfFinish[grfFinish.Row, colPttId].ToString() : "";
+            chk = grfFinish[grfFinish.Row, colPttHn] != null ? grfFinish[grfFinish.Row, colPttHn].ToString() : "";
+            name = grfFinish[grfFinish.Row, colPttName] != null ? grfFinish[grfFinish.Row, colPttName].ToString() : "";
+            //FrmNurseAdd frm = new FrmNurseAdd();
+            //frm.ShowDialog(this);
+            openApmAdd(pttId, vsid, name);
+            //if (MessageBox.Show("ต้องการ แก้ไข Patient  \n  hn number " + chk + " \n name " + name, "", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == DialogResult.OK)
+            //{
+            //grfReq.Rows.Remove(grfReq.Row);
+            //openPatientAdd(id, name);
+            //}
+        }
         private void ContextMenu_Apm(object sender, System.EventArgs e)
         {
             String chk = "", name = "", vsid = "", pttId="";
+            if (grfQue.Row < 0) return;
 
             vsid = grfQue[grfQue.Row, colID] != null ? grfQue[grfQue.Row, colID].ToString() : "";
             pttId = grfQue[grfQue.Row, colPttId] != null ? grfQue[grfQue.Row, colPttId].ToString() : "";

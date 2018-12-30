@@ -28,6 +28,8 @@ namespace clinic_ivf.gui
         Font ff, ffB;
         PatientAppointment pApm;
         Patient ptt;
+        AppointmentOld pApmO;
+        PatientOld pttO;
         
         Visit vs;
 
@@ -51,6 +53,8 @@ namespace clinic_ivf.gui
             pApm = new PatientAppointment();
             ptt = new Patient();
             vs = new Visit();
+            pApmO = new AppointmentOld();
+            pttO = new PatientOld();
             fEdit = new Font(ic.iniC.grdViewFontName, ic.grdViewFontSize, FontStyle.Regular);
             fEditB = new Font(ic.iniC.grdViewFontName, ic.grdViewFontSize, FontStyle.Bold);
 
@@ -71,6 +75,11 @@ namespace clinic_ivf.gui
             cboTimepApm = ic.setCboApmTime(cboTimepApm);
             cboTvsTime = ic.setCboApmTime(cboTvsTime);
             cboOPUTime = ic.setCboApmTime(cboOPUTime);
+            ic.setCboApmTime(cboETTime);
+            ic.setCboApmTime(cboFETTime);
+            ic.setCboApmTime(cboOPUTimeDonor);
+            ic.setCboApmTime(cboTvsTimeDonor);
+
             txtDatepApm.Value = System.DateTime.Now.Year.ToString() + "-" + System.DateTime.Now.ToString("MM-dd");
             btnSave.Click += BtnSave_Click;
             txtDatepApm.ValueChanged += TxtDatepApm_ValueChanged;
@@ -87,10 +96,12 @@ namespace clinic_ivf.gui
             initGrfpApmAll();
             initGrfpApmVisit();
             initGrfpApmDayAll();
+            
+            setControl();
             setGrfpApmAll();
             setGrfpApmVisit();
             setGrfpApmDay();
-            setControl();
+
             setTheme();
         }
 
@@ -272,6 +283,47 @@ namespace clinic_ivf.gui
             {
                 stt.Hide();
                 String re = "";
+                // check ว่า มี patient ยัง ถ้ายังไม่มี ให้ insert patient
+                //เป็นการเอา ข้อมูลจาก database เดิม
+                Patient pttTemp = new Patient();
+                pttTemp = ic.ivfDB.pttDB.selectByIdOld(txtPttIdOld.Text);
+                if (pttTemp.t_patient_id.Equals(""))
+                {
+                    C1ComboBox cbo = new C1ComboBox();
+                    ic.ivfDB.fpnDB.setCboNation(cbo, "");
+                    
+                    pttO = ic.ivfDB.pttOldDB.selectByPk1(pttId);
+                    ic.setC1ComboByName(cbo, pttO.Nationality);
+                    pttTemp = new Patient();
+                    pttTemp = ic.ivfDB.pttDB.setPatient1(pttTemp);
+                    pttTemp.t_patient_id_old = pttO.PID;
+                    pttTemp.patient_hn = pttO.PIDS;
+                    pttTemp.patient_firstname_e = pttO.PName;
+                    pttTemp.patient_lastname_e = pttO.PSurname;
+                    pttTemp.patient_firstname = pttO.OName;
+                    pttTemp.patient_lastname = pttO.OSurname;
+                    pttTemp.f_patient_prefix_id = pttO.SurfixID;
+
+                    pttTemp.f_sex_id = pttO.SexID;
+                    pttTemp.passport = pttO.IDNumber;
+                    pttTemp.patient_birthday = ic.datetoDB(pttO.DateOfBirth);
+                    pttTemp.email = pttO.Email;
+                    pttTemp.f_patient_nation_id = cbo.SelectedItem == null ? "" : ((ComboBoxItem)cbo.SelectedItem).Value;
+                    String[] name = pttO.EmergencyPersonalContact.Split(' ');
+                    if (name.Length > 1)
+                    {
+                        pttTemp.patient_contact_firstname = name[0];
+                        pttTemp.patient_contact_lastname = name[1];
+                    }
+                    ic.ivfDB.agnOldDB.setCboAgent(cbo, "");
+                    ic.setC1Combo(cbo, pttO.AgentID);
+                    pttTemp.agent = cbo.SelectedItem == null ? "" : ((ComboBoxItem)cbo.SelectedItem).Value;
+                    String re1 = ic.ivfDB.pttDB.insertPatient(pttTemp, txtStfConfirmID.Text);
+                    ptt.t_patient_id = re1;
+                    txtPttId.Value = re1;
+                    //pttTemp.patient_birthday = pttO.DateOfBirth;
+                    //pttTemp.patient_birthday = pttO.DateOfBirth;
+                }
                 setPatientAppointment();
                 re = ic.ivfDB.pApmDB.insertPatientAppointment(pApm, txtStfConfirmID.Text);
 
@@ -280,9 +332,12 @@ namespace clinic_ivf.gui
                 if (long.TryParse(re, out chk))
                 {
                     txtID.Value = txtID.Text.Equals("") ? re : txtID.Text;
+                    setAppointmentOld();
                     //if (!ic.iniC.statusAppDonor.Equals("1"))
                     //{
-                    //String re1 = ic.ivfDB.pttOldDB.insertPatientOld(ptt, txtStfConfirmID.Text);
+                    String re1 = ic.ivfDB.pApmOldDB.insertAppointmentOld(pApmO, txtStfConfirmID.Text);
+                    txtIDOld.Value = re1;
+                    String re2 = ic.ivfDB.pApmDB.updateAppointmentIdOld(txtID.Text, re1);
                     //if (int.TryParse(re1, out chk))
                     //{
                     //if (txtID.Text.Equals(""))
@@ -338,6 +393,10 @@ namespace clinic_ivf.gui
             ptt = ic.ivfDB.pttDB.selectByPk1(pttId);
             vs = ic.ivfDB.vsDB.selectByPk1(vsId);
             pApm = ic.ivfDB.pApmDB.selectByPk1(pApmId);
+            if (ptt.t_patient_id.Equals(""))
+            {
+                ptt = ic.ivfDB.pttDB.selectByIDold(pttId);
+            }
             txtPttId.Value = ptt.t_patient_id;
             txtVsId.Value = vs.t_visit_id;
             txtHn.Value = ptt.patient_hn;
@@ -359,7 +418,7 @@ namespace clinic_ivf.gui
             chkRLh.Checked = pApm.repeat_lh.Equals("1") ? true : false;
             chkRFsh.Checked = pApm.repeat_fsh.Equals("1") ? true : false;
             chkRPrl.Checked = pApm.repeat_prl.Equals("1") ? true : false;
-
+            chkSperm.Checked = pApm.sperm_collect.Equals("1") ? true : false;
             chkET.Checked = pApm.e2.Equals("1") ? true : false;
             chkFET.Checked = pApm.e2.Equals("1") ? true : false;
             chkOther.Checked = pApm.e2.Equals("1") ? true : false;
@@ -380,6 +439,13 @@ namespace clinic_ivf.gui
             ChkOther_CheckedChanged(null, null);
             ChkTvsDonor_CheckedChanged(null, null);
             ChkOPUDonor_CheckedChanged(null, null);
+
+            pttO = ic.ivfDB.pttOldDB.selectByPk1(pttId);
+            txtPttIdOld.Value = pttO.PID;
+            txtHn.Value = pttO.PIDS;
+            txtName.Value = pttO.FullName;
+
+            txtOPURemark.Value = "Not Allow to drink or eat from (งดน้ำ งดอาหาร ตั้งแต่เวลา)";
             PatientImage pttI = new PatientImage();
             pttI = ic.ivfDB.pttImgDB.selectByPttIDStatus4(txtID.Text);
             filenamepic = pttI.image_path;
@@ -454,7 +520,7 @@ namespace clinic_ivf.gui
             grfpApmAll.Clear();
             DataTable dt = new DataTable();
 
-            dt = ic.ivfDB.pApmDB.selectByPtt(pttId);
+            dt = ic.ivfDB.pApmDB.selectByPtt(ptt.t_patient_id);
 
             //grfExpn.Rows.Count = dt.Rows.Count + 1;
             grfpApmAll.Rows.Count = 1;
@@ -512,9 +578,9 @@ namespace clinic_ivf.gui
             grfpApmAll.Cols[colRt].Caption = "Rt";
             grfpApmAll.Cols[colLt].Caption = "Lt";
 
-            //ContextMenu menuGw = new ContextMenu();
-            //menuGw.MenuItems.Add("&ออก Visit", new EventHandler(ContextMenu_edit));
-            //grfpApmAll.ContextMenu = menuGw;
+            ContextMenu menuGw = new ContextMenu();
+            menuGw.MenuItems.Add("แก้ไข Appointment", new EventHandler(ContextMenu_edit_papm));
+            grfpApmAll.ContextMenu = menuGw;
 
             Color color = ColorTranslator.FromHtml(ic.iniC.grfRowColor);
             //CellRange rg1 = grfBank.GetCellRange(1, colE, grfBank.Rows.Count, colE);
@@ -687,13 +753,15 @@ namespace clinic_ivf.gui
             id = grfpApmVisit[grfpApmVisit.Row, colId] != null ? grfpApmVisit[grfpApmVisit.Row, colId].ToString() : "";
             pApmId = id;
             setControl();
-            //chk = grfPtt[grfPtt.Row, colPttHn] != null ? grfPtt[grfPtt.Row, colPttHn].ToString() : "";
-            //name = grfPtt[grfPtt.Row, colVsPttName] != null ? grfPtt[grfPtt.Row, colVsPttName].ToString() : "";
-            //if (MessageBox.Show("ต้องการ แก้ไข Patient  \n  hn number " + chk + " \n name " + name, "", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == DialogResult.OK)
-            //{
-            //grfReq.Rows.Remove(grfReq.Row);
-            //openPatientAdd(id, name);
-            //}
+            
+        }
+        private void ContextMenu_edit_papm(object sender, System.EventArgs e)
+        {
+            String chk = "", name = "", id = "";
+            id = grfpApmAll[grfpApmAll.Row, colId] != null ? grfpApmAll[grfpApmAll.Row, colId].ToString() : "";
+            pApmId = id;
+            setControl();
+
         }
         private void setGrfpApmDay()
         {
@@ -811,6 +879,34 @@ namespace clinic_ivf.gui
             theme1.SetTheme(grfpApmDayAll, ic.theme);
 
         }
+        private void setAppointmentOld()
+        {
+            pApmO.ID = "";
+            pApmO.PID = txtPttIdOld.Text;
+            pApmO.PIDS = txtHn.Text;
+            pApmO.AppDate = ic.datetoDB(txtDatepApm.Text);
+            pApmO.AppTime = cboTimepApm.Text;
+            pApmO.Doctor = cboDoctor.Text;
+            pApmO.Comment = txtRemark.Text;
+            pApmO.MobilePhoneNo = "";
+            pApmO.DateOfBirth = ic.datetoDB(txtDob.Text);
+            pApmO.HormoneTest= chkHormoneTest.Checked ? "1" : "0";
+            pApmO.BetaHCG = chkHCG.Checked ? "1" : "0";
+            pApmO.et = chkET.Checked ? "1" : "0";
+            pApmO.OPU = chkOPU.Checked ? "1" : "0";
+            pApmO.TVS = chkTvs.Checked ? "1" : "0";
+            pApmO.sperm_colloect = chkSperm.Checked ? "1" : "0";
+            pApmO.ET_FET = chkFET.Checked ? "1" : "0";
+            pApmO.Other = chkOther.Checked ? "1" : "0";
+            pApmO.et_time = cboETTime.Text;
+            pApmO.ET_FET_Time = cboFETTime.Text;
+            pApmO.tvs_time = cboTvsTime.Text;
+            pApmO.OPUTime = cboOPUTime.Text;
+            pApmO.day1 = txtTvsDay.Text;
+            pApmO.OtherRemark = txtOther.Text;
+            pApmO.Status = "1";
+            pApmO.OPURemark = txtOPURemark.Text;
+        }
         private Boolean setPatientAppointment()
         {
             Boolean chk = false;
@@ -883,6 +979,7 @@ namespace clinic_ivf.gui
             pApm.tvs_day = txtTvsDay.Text;
             pApm.tvs_time = cboTvsTime.Text;
             pApm.opu_time = cboOPUTime.Text;
+            pApm.sperm_collect = chkSperm.Checked ? "1" : "0";
             return chk;
         }
         private void FrmAppointmentAdd_Load(object sender, EventArgs e)

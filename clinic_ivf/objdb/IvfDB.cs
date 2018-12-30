@@ -37,7 +37,7 @@ namespace clinic_ivf.objdb
         public FRelationDB frlDB;
         public FReligionDB frgDB;
         public FPatientRaceDB fprDB;
-        public AppointmentOldDB appnOldDB;
+        public AppointmentOldDB pApmOldDB;
         public BContractPlansDB crlDB;
         public BServicePointDB bspDB;
         public PatientImageDB pttImgDB;
@@ -48,6 +48,7 @@ namespace clinic_ivf.objdb
         public VisitDB vsDB;
         public FDocTypeDB fdtDB;
         public PatientAppointmentTextDB pApmtDB;
+        //public AppointmentOldDB pApmoDB;
 
         public IvfDB(ConnectDB c)
         {
@@ -82,7 +83,7 @@ namespace clinic_ivf.objdb
             crlDB = new BContractPlansDB(conn);
             bspDB = new BServicePointDB(conn);
             dtrOldDB = new DoctorOldDB(conn);
-            appnOldDB = new AppointmentOldDB(conn);
+            pApmOldDB = new AppointmentOldDB(conn);
             pttImgDB = new PatientImageDB(conn);
             jobpxDB = new JobPxDB(conn);
             jobpxdDB = new JobPxDetailDB(conn);
@@ -100,12 +101,12 @@ namespace clinic_ivf.objdb
         {
             String re = "";
             String hormo = "", tvs = "", opu = "", fet = "", beta = "", other = "", appn = "";
-            hormo = row1[appnOldDB.appnOld.HormoneTest].ToString().Equals("1") ? "Hormone Test " : "";
-            tvs = row1[appnOldDB.appnOld.TVS].ToString().Equals("1") ? "TVS " : "";
-            opu = row1[appnOldDB.appnOld.OPU].ToString().Equals("1") ? row1[appnOldDB.appnOld.OPUTime] != null ? "OPU [" + row1[appnOldDB.appnOld.OPUTime].ToString() + "]" : "OPU " + row1[appnOldDB.appnOld.OPUTime].ToString() : "";
-            beta = row1[appnOldDB.appnOld.BetaHCG].ToString().Equals("1") ? "Beta HCG " : "";
-            fet = row1[appnOldDB.appnOld.ET_FET].ToString().Equals("1") ? row1[appnOldDB.appnOld.ET_FET_Time] != null ? "ET/FET [" + row1[appnOldDB.appnOld.ET_FET_Time].ToString() + "]" : "ET/FET" : "";
-            other = row1[appnOldDB.appnOld.Other].ToString().Equals("1") ? row1[appnOldDB.appnOld.OtherRemark] != null ? "Other " + row1[appnOldDB.appnOld.OtherRemark].ToString() : "Other " : "";
+            hormo = row1[pApmOldDB.pApmO.HormoneTest].ToString().Equals("1") ? "Hormone Test " : "";
+            tvs = row1[pApmOldDB.pApmO.TVS].ToString().Equals("1") ? "TVS " : "";
+            opu = row1[pApmOldDB.pApmO.OPU].ToString().Equals("1") ? row1[pApmOldDB.pApmO.OPUTime] != null ? "OPU [" + row1[pApmOldDB.pApmO.OPUTime].ToString() + "]" : "OPU " + row1[pApmOldDB.pApmO.OPUTime].ToString() : "";
+            beta = row1[pApmOldDB.pApmO.BetaHCG].ToString().Equals("1") ? "Beta HCG " : "";
+            fet = row1[pApmOldDB.pApmO.ET_FET].ToString().Equals("1") ? row1[pApmOldDB.pApmO.ET_FET_Time] != null ? "ET/FET [" + row1[pApmOldDB.pApmO.ET_FET_Time].ToString() + "]" : "ET/FET" : "";
+            other = row1[pApmOldDB.pApmO.Other].ToString().Equals("1") ? row1[pApmOldDB.pApmO.OtherRemark] != null ? "Other " + row1[pApmOldDB.pApmO.OtherRemark].ToString() : "Other " : "";
             appn = row1["aaa"].ToString() + " " + hormo + " " + tvs + " " + opu + " " + beta + " " + fet + " " + other;
             return appn;
         }

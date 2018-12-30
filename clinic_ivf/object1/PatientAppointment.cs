@@ -62,6 +62,7 @@ namespace clinic_ivf.object1
         public String other { get; set; }
         public String beta_hgc { get; set; }
         public String other_remark { get; set; }
-
+        public String sperm_collect { get; set; }
+        public String appoitment_id_old { get; set; }
     }
 }

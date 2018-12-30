@@ -74,7 +74,8 @@ namespace clinic_ivf.gui
             txtSearch.KeyUp += TxtSearch_KeyUp;
             btnNew.Click += BtnNew_Click;
             tC.DoubleClick += TC_DoubleClick;
-            btnPrint.Click += BtnPrint_Click;
+            btnPrnDonor.Click += BtnPrint_Click;
+            btnPrnPtt.Click += BtnPrnPtt_Click;
             //txtDateStart.ValueChanged += TxtDateStart_ValueChanged;
             //txtDateStart.
 
@@ -83,6 +84,29 @@ namespace clinic_ivf.gui
             initGrfPtt();
             //setGrfPtt();
             setGrf();
+        }
+
+        private void BtnPrnPtt_Click(object sender, EventArgs e)
+        {
+            //throw new NotImplementedException();
+            FrmReport frm = new FrmReport(ic);
+            DataTable dt = new DataTable();
+            DateTime datestart, dateend;
+            String datestart1 = "", dateend1 = "";
+            if (DateTime.TryParse(txtDateStart.Text, out datestart))
+            {
+                datestart1 = datestart.ToString("yyyy-MM-dd");
+            }
+            else
+            {
+                datestart1 = ic.datetoDB(txtDateStart.Text);
+            }
+            dateend1 = datestart1;
+            
+            dt = ic.ivfDB.pApmOldDB.selectByDateDtr(datestart1, dateend1, cboDoctor.Text);
+            
+            frm.setAppoitmentDailyReport(dt);
+            frm.ShowDialog(this);
         }
 
         private void BtnPrint_Click(object sender, EventArgs e)
@@ -101,14 +125,9 @@ namespace clinic_ivf.gui
                 datestart1 = ic.datetoDB(txtDateStart.Text);
             }
             dateend1 = datestart1;
-            if (ic.iniC.statusAppDonor.Equals("1"))
-            {
-                dt = ic.ivfDB.pApmDB.selectByDay(datestart1, dateend1);
-            }
-            else
-            {
-                dt = ic.ivfDB.appnOldDB.selectByDateDtr(datestart1, dateend1, cboDoctor.Text);
-            }
+            
+            dt = ic.ivfDB.pApmDB.selectByDay(datestart1, dateend1);
+            
                 
             frm.setAppoitmentDailyReport(dt);
             frm.ShowDialog(this);
@@ -207,8 +226,16 @@ namespace clinic_ivf.gui
         private void BtnNew_Click(object sender, EventArgs e)
         {
             //throw new NotImplementedException();
-            FrmAppointmentDonorAdd frm = new FrmAppointmentDonorAdd(ic,"","","");
-            frm.ShowDialog(this);
+            if (ic.iniC.statusAppDonor.Equals(""))
+            {
+                FrmAppointmentDonorAdd frm = new FrmAppointmentDonorAdd(ic, "", "", "");
+                frm.ShowDialog(this);
+            }
+            else
+            {
+                FrmAppointmentAdd frm = new FrmAppointmentAdd(ic, "", "", "");
+                frm.ShowDialog(this);
+            }
 
         }
 
@@ -255,12 +282,12 @@ namespace clinic_ivf.gui
             if (ic.iniC.statusAppDonor.Equals("1"))
             {
                 dtD = ic.ivfDB.pApmDB.selectByDay(datestart1, dateend1);
-                dt = ic.ivfDB.appnOldDB.selectByDateDtr(con.connEx, datestart1, dateend1, cboDoctor.Text);
+                dt = ic.ivfDB.pApmOldDB.selectByDateDtr(con.connEx, datestart1, dateend1, cboDoctor.Text);
             }
             else
             {
                 dtD = ic.ivfDB.pApmDB.selectByDay(con.connEx, datestart1, dateend1);
-                dt = ic.ivfDB.appnOldDB.selectByDateDtr(datestart1, dateend1, cboDoctor.Text);
+                dt = ic.ivfDB.pApmOldDB.selectByDateDtr(datestart1, dateend1, cboDoctor.Text);
             }
 
             setGrfPtt(con, dt, dtD);
@@ -347,12 +374,12 @@ namespace clinic_ivf.gui
             if (ic.iniC.statusAppDonor.Equals("1"))
             {
                 dtD = ic.ivfDB.pApmDB.selectByDayGroupByDtr(datestart1, dateend1);
-                dt = ic.ivfDB.appnOldDB.selectByDateDtrGroupByDtr(ic.conn.connEx, datestart1, dateend1);
+                dt = ic.ivfDB.pApmOldDB.selectByDateDtrGroupByDtr(ic.conn.connEx, datestart1, dateend1);
             }
             else
             {
                 dtD = ic.ivfDB.pApmDB.selectByDayGroupByDtr(ic.conn.connEx,datestart1, dateend1);
-                dt = ic.ivfDB.appnOldDB.selectByDateDtrGroupByDtr(datestart1, dateend1);
+                dt = ic.ivfDB.pApmOldDB.selectByDateDtrGroupByDtr(datestart1, dateend1);
             }
             foreach (DataRow row in dt.Rows)
             {
@@ -404,7 +431,7 @@ namespace clinic_ivf.gui
                 if (ic.iniC.statusAppDonor.Equals("1"))
                 {
                     dt1 = ic.ivfDB.pApmDB.selectByDayDtrId(ic.conn.conn, datestart1, dateend1, dtrid);
-                    dt2 = ic.ivfDB.appnOldDB.selectByDateDtr(ic.conn.connEx, datestart1, dateend1, dtrid);
+                    dt2 = ic.ivfDB.pApmOldDB.selectByDateDtr(ic.conn.connEx, datestart1, dateend1, dtrid);
                 }
                 else
                 {
@@ -1047,34 +1074,34 @@ namespace clinic_ivf.gui
             {
                 Row row1 = grfPtt.Rows.Add();
                 String hormo="", tvs="", opu="", fet="", beta="", other="", appn = "";
-                hormo = row[ic.ivfDB.appnOldDB.appnOld.HormoneTest].ToString().Equals("1") ? "Hormone Test " : "";
-                tvs = row[ic.ivfDB.appnOldDB.appnOld.TVS].ToString().Equals("1") ? "TVS " : "";
-                opu = row[ic.ivfDB.appnOldDB.appnOld.OPU].ToString().Equals("1") ? "OPU " + row[ic.ivfDB.appnOldDB.appnOld.OPUTime] != null ? row[ic.ivfDB.appnOldDB.appnOld.OPUTime].ToString()+ row[ic.ivfDB.appnOldDB.appnOld.OPURemark]!=null ? row[ic.ivfDB.appnOldDB.appnOld.OPURemark].ToString() : "" : "" : "";
-                beta = row[ic.ivfDB.appnOldDB.appnOld.BetaHCG].ToString().Equals("1") ? "Beta HCG " : "";
-                fet = row[ic.ivfDB.appnOldDB.appnOld.ET_FET].ToString().Equals("1") ? "ET/FET " + row[ic.ivfDB.appnOldDB.appnOld.ET_FET_Time] != null ? row[ic.ivfDB.appnOldDB.appnOld.ET_FET_Time].ToString() : "" : "";
-                other = row[ic.ivfDB.appnOldDB.appnOld.Other].ToString().Equals("1") ? "Other " + row[ic.ivfDB.appnOldDB.appnOld.OtherRemark] != null ? row[ic.ivfDB.appnOldDB.appnOld.OtherRemark].ToString() : "" : "";
+                hormo = row[ic.ivfDB.pApmOldDB.pApmO.HormoneTest].ToString().Equals("1") ? "Hormone Test " : "";
+                tvs = row[ic.ivfDB.pApmOldDB.pApmO.TVS].ToString().Equals("1") ? "TVS " : "";
+                opu = row[ic.ivfDB.pApmOldDB.pApmO.OPU].ToString().Equals("1") ? "OPU " + row[ic.ivfDB.pApmOldDB.pApmO.OPUTime] != null ? row[ic.ivfDB.pApmOldDB.pApmO.OPUTime].ToString()+ row[ic.ivfDB.pApmOldDB.pApmO.OPURemark]!=null ? row[ic.ivfDB.pApmOldDB.pApmO.OPURemark].ToString() : "" : "" : "";
+                beta = row[ic.ivfDB.pApmOldDB.pApmO.BetaHCG].ToString().Equals("1") ? "Beta HCG " : "";
+                fet = row[ic.ivfDB.pApmOldDB.pApmO.ET_FET].ToString().Equals("1") ? "ET/FET " + row[ic.ivfDB.pApmOldDB.pApmO.ET_FET_Time] != null ? row[ic.ivfDB.pApmOldDB.pApmO.ET_FET_Time].ToString() : "" : "";
+                other = row[ic.ivfDB.pApmOldDB.pApmO.Other].ToString().Equals("1") ? "Other " + row[ic.ivfDB.pApmOldDB.pApmO.OtherRemark] != null ? row[ic.ivfDB.pApmOldDB.pApmO.OtherRemark].ToString() : "" : "";
                 appn = hormo + tvs + opu + beta + fet + other;
 
                 row1[0] = i;
-                row1[colID] = row[ic.ivfDB.appnOldDB.appnOld.ID].ToString();
-                row1[colVsPttName] = row[ic.ivfDB.appnOldDB.appnOld.PatientName].ToString();
-                row1[colpttId] = row[ic.ivfDB.appnOldDB.appnOld.PID].ToString();
-                row1[colPttHn] = row[ic.ivfDB.appnOldDB.appnOld.PIDS].ToString();
-                row1[colVsTime] = row[ic.ivfDB.appnOldDB.appnOld.AppTime].ToString();
+                row1[colID] = row[ic.ivfDB.pApmOldDB.pApmO.ID].ToString();
+                row1[colVsPttName] = row[ic.ivfDB.pApmOldDB.pApmO.PatientName].ToString();
+                row1[colpttId] = row[ic.ivfDB.pApmOldDB.pApmO.PID].ToString();
+                row1[colPttHn] = row[ic.ivfDB.pApmOldDB.pApmO.PIDS].ToString();
+                row1[colVsTime] = row[ic.ivfDB.pApmOldDB.pApmO.AppTime].ToString();
                 row1[colVsCode] = "";
-                row1[colVsDoctor] = row[ic.ivfDB.appnOldDB.appnOld.Doctor].ToString();
+                row1[colVsDoctor] = row[ic.ivfDB.pApmOldDB.pApmO.Doctor].ToString();
                 row1[colVsStatus] = "1";
-                row1[colVsTVS] = row[ic.ivfDB.appnOldDB.appnOld.TVS].ToString().Equals("1") ? imgCorr : imgTran;
-                row1[colVsET] = row[ic.ivfDB.appnOldDB.appnOld.ET_FET].ToString().Equals("1") ? imgCorr : imgTran;
-                row1[colVsHCG] = row[ic.ivfDB.appnOldDB.appnOld.BetaHCG].ToString().Equals("1") ? imgCorr : imgTran;
-                row1[colVsOPU] = row[ic.ivfDB.appnOldDB.appnOld.OPU].ToString().Equals("1") ? imgCorr : imgTran;
-                if (row[ic.ivfDB.appnOldDB.appnOld.OPU].ToString().Equals("1"))
+                row1[colVsTVS] = row[ic.ivfDB.pApmOldDB.pApmO.TVS].ToString().Equals("1") ? imgCorr : imgTran;
+                row1[colVsET] = row[ic.ivfDB.pApmOldDB.pApmO.ET_FET].ToString().Equals("1") ? imgCorr : imgTran;
+                row1[colVsHCG] = row[ic.ivfDB.pApmOldDB.pApmO.BetaHCG].ToString().Equals("1") ? imgCorr : imgTran;
+                row1[colVsOPU] = row[ic.ivfDB.pApmOldDB.pApmO.OPU].ToString().Equals("1") ? imgCorr : imgTran;
+                if (row[ic.ivfDB.pApmOldDB.pApmO.OPU].ToString().Equals("1"))
                 {
                     CellNote note = new CellNote(opu);
                     CellRange rg = grfPtt.GetCellRange(grfPtt.Rows.Count - 1, colVsOPU);
                     rg.UserData = note;
                 }
-                if (row[ic.ivfDB.appnOldDB.appnOld.BetaHCG].ToString().Equals("1"))
+                if (row[ic.ivfDB.pApmOldDB.pApmO.BetaHCG].ToString().Equals("1"))
                 {
                     CellNote note = new CellNote(beta);
                     CellRange rg = grfPtt.GetCellRange(grfPtt.Rows.Count - 1, colVsHCG);

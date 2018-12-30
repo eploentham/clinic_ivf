@@ -31,11 +31,11 @@ namespace clinic_ivf.gui
             {
                 if (ic.iniC.statusAppDonor.Equals("1"))
                 {
-                    rpt.Load("Appointment_daily_old.rpt");
+                    rpt.Load("Appointment_daily_donor.rpt");
                 }
                 else
                 {
-                    rpt.Load("Appointment_daily.rpt");
+                    rpt.Load("Appointment_daily_old.rpt");
                 }
                     
                 rpt.SetDataSource(dt);

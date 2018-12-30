@@ -441,7 +441,9 @@ namespace clinic_ivf.objdb
             PatientOld cop1 = new PatientOld();
             DataTable dt = new DataTable();
             String sql = "select pttO.* " +
+                ",CONCAT(IFNULL(sfn.SurfixName,''),' ', pttO." + pttO.PName + ",' ',pttO." + pttO.PSurname + ") as namee  " +
                 "From " + pttO.table + " pttO " +
+                "Left Join SurfixName sfn on sfn.SurfixID = pttO.SurfixID " +
                 "Where pttO." + pttO.pkField + " ='" + pttId + "' ";
             dt = conn.selectData(conn.conn, sql);
             cop1 = setPatient(dt);
@@ -564,6 +566,7 @@ namespace clinic_ivf.objdb
                 ptt1.SubDistrict = dt.Rows[0][pttO.SubDistrict].ToString();
                 ptt1.SurfixID = dt.Rows[0][pttO.SurfixID].ToString();
                 ptt1.ZipCode = dt.Rows[0][pttO.ZipCode].ToString();
+                ptt1.FullName = dt.Rows[0]["namee"].ToString();
             }
             else
             {
@@ -623,6 +626,7 @@ namespace clinic_ivf.objdb
             stf1.SubDistrict = "";
             stf1.SurfixID = "";
             stf1.ZipCode = "";
+            stf1.FullName = "";
             return stf1;
         }
     }

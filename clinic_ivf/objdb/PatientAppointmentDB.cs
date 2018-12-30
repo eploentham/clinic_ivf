@@ -86,6 +86,8 @@ namespace clinic_ivf.objdb
             pApm.other = "other";
             pApm.beta_hgc = "beta_hgc";
             pApm.other_remark = "other_remark";
+            pApm.sperm_collect = "sperm_collect";
+            pApm.appoitment_id_old = "appointment_id_old";
 
             pApm.pkField = "t_patient_appointment_id";
             pApm.table = "t_patient_appointment";
@@ -151,6 +153,7 @@ namespace clinic_ivf.objdb
             p.other = p.other == null ? "0" : p.other;
             p.beta_hgc = p.beta_hgc == null ? "0" : p.beta_hgc;
             p.patient_appointment_doctor = p.patient_appointment_doctor == null ? "0" : p.patient_appointment_doctor;
+            p.sperm_collect = p.sperm_collect == null ? "0" : p.sperm_collect;
 
             p.r_rp1853_aptype_id = long.TryParse(p.r_rp1853_aptype_id, out chk) ? chk.ToString() : "0";
             p.t_patient_id = long.TryParse(p.t_patient_id, out chk) ? chk.ToString() : "0";
@@ -160,6 +163,7 @@ namespace clinic_ivf.objdb
             p.visit_id_make_appointment = long.TryParse(p.visit_id_make_appointment, out chk) ? chk.ToString() : "0";
             p.patient_appointment_staff = long.TryParse(p.patient_appointment_staff, out chk) ? chk.ToString() : "0";
             p.patient_appointment_doctor = long.TryParse(p.patient_appointment_doctor, out chk) ? chk.ToString() : "0";
+            p.appoitment_id_old = long.TryParse(p.appoitment_id_old, out chk) ? chk.ToString() : "0";
         }
         public String insert(PatientAppointment p, String userId)
         {
@@ -171,6 +175,7 @@ namespace clinic_ivf.objdb
             //p.date_create = "";
             chkNull(p);
             p.patient_appointment_staff_record = userId;
+            pApm.appoitment_id_old = "appointment_id_old";
             try
             {
                 sql = "Insert Into " + pApm.table + "(" + pApm.patient_appoint_date_time + "," + pApm.patient_appointment_time + "," + pApm.patient_appointment + "," +
@@ -193,7 +198,8 @@ namespace clinic_ivf.objdb
                 pApm.tvs_day + "," + pApm.tvs_time + "," + pApm.opu_time + "," +
                 pApm.et + "," + pApm.et_time + "," + pApm.fet + "," +
                 pApm.fet_time + "," + pApm.hormone_test + "," + pApm.other + "," +
-                pApm.beta_hgc + "," + pApm.other_remark + " " +
+                pApm.beta_hgc + "," + pApm.other_remark + "," + pApm.sperm_collect + "," +
+                pApm.appoitment_id_old + " " +
                 ") " +
                 "Values ('" + p.patient_appoint_date_time + "','" + p.patient_appointment_time.Replace("'", "''") + "','" + p.patient_appointment.Replace("'", "''") + "'," +
                 "'" + p.patient_appointment_doctor.Replace("'", "''") + "','" + p.patient_appointment_notice.Replace("'", "''") + "','" + p.patient_appointment_staff.Replace("'", "''") + "'," +
@@ -215,7 +221,8 @@ namespace clinic_ivf.objdb
                 "'" + p.tvs_day + "','" + p.tvs_time + "','" + p.opu_time + "'," +
                 "'" + p.et + "','" + p.et_time + "','" + p.fet + "'," +
                 "'" + p.fet_time + "','" + p.hormone_test + "','" + p.other + "'," +
-                "'" + p.beta_hgc + "','" + p.other_remark.Replace("'", "''") + "' " +
+                "'" + p.beta_hgc + "','" + p.other_remark.Replace("'", "''") + "','" + p.sperm_collect.Replace("'", "''") + "'," +
+                "'" + p.appoitment_id_old + "' " +
                 ")";
 
                 re = conn.ExecuteNonQuery(conn.conn, sql);
@@ -301,6 +308,7 @@ namespace clinic_ivf.objdb
                 "," + pApm.other + "='" + p.other + "' " +
                 "," + pApm.beta_hgc + "='" + p.beta_hgc + "' " +
                 "," + pApm.other_remark + "='" + p.other_remark.Replace("'", "''") + "' " +
+                "," + pApm.sperm_collect + "='" + p.sperm_collect.Replace("'", "''") + "' " +
                 " Where " + pApm.pkField + " = '" + p.t_patient_appointment_id + "' "
                 ;
             try
@@ -322,6 +330,16 @@ namespace clinic_ivf.objdb
                 "," + pApm.date_cancel + "=now() " +
                 "," + pApm.user_cancel + "='" + userIdVoid + "' " +
                 "Where " + pApm.pkField + "='" + pttId + "'";
+            conn.ExecuteNonQuery(conn.conn, sql);
+
+            return "1";
+        }
+        public String updateAppointmentIdOld(String pApmId, String pApmIdOld)
+        {
+            DataTable dt = new DataTable();
+            String sql = "Update " + pApm.table + " Set " +
+                " " + pApm.appoitment_id_old + "='" + pApmIdOld + "' " +
+                "Where " + pApm.pkField + "='" + pApmId + "'";
             conn.ExecuteNonQuery(conn.conn, sql);
 
             return "1";
@@ -555,6 +573,7 @@ namespace clinic_ivf.objdb
                 ptt1.other = dt.Rows[0][pApm.other].ToString();
                 ptt1.beta_hgc = dt.Rows[0][pApm.beta_hgc].ToString();
                 ptt1.other_remark = dt.Rows[0][pApm.other_remark].ToString();
+                ptt1.sperm_collect = dt.Rows[0][pApm.sperm_collect].ToString();
             }
             else
             {
@@ -629,6 +648,7 @@ namespace clinic_ivf.objdb
             stf1.other = "";
             stf1.beta_hgc = "";
             stf1.other_remark = "";
+            stf1.sperm_collect = "";
             return stf1;
         }
     }

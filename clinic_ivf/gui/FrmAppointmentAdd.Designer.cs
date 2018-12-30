@@ -40,6 +40,7 @@
             this.label3 = new System.Windows.Forms.Label();
             this.txtDatepApm = new C1.Win.C1Input.C1DateEdit();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.txtPttIdOld = new C1.Win.C1Input.C1TextBox();
             this.txtPttId = new C1.Win.C1Input.C1TextBox();
             this.txtVsId = new C1.Win.C1Input.C1TextBox();
             this.txtRemark = new C1.Win.C1Input.C1TextBox();
@@ -67,6 +68,7 @@
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.tC1 = new C1.Win.C1Command.C1DockingTab();
             this.tabPtt = new C1.Win.C1Command.C1DockingTabPage();
+            this.chkSperm = new C1.Win.C1Input.C1CheckBox();
             this.txtOther = new C1.Win.C1Input.C1TextBox();
             this.label14 = new System.Windows.Forms.Label();
             this.cboFETTime = new C1.Win.C1Input.C1ComboBox();
@@ -116,6 +118,7 @@
             this.tC = new C1.Win.C1Command.C1DockingTab();
             this.tabVisit = new C1.Win.C1Command.C1DockingTabPage();
             this.tabDay = new C1.Win.C1Command.C1DockingTabPage();
+            this.txtIDOld = new C1.Win.C1Input.C1TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.theme1)).BeginInit();
             this.sB.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtRemarkpApm)).BeginInit();
@@ -124,6 +127,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.cboTimepApm)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtDatepApm)).BeginInit();
             this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtPttIdOld)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtPttId)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtVsId)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtRemark)).BeginInit();
@@ -147,6 +151,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.tC1)).BeginInit();
             this.tC1.SuspendLayout();
             this.tabPtt.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.chkSperm)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtOther)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cboFETTime)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkFET)).BeginInit();
@@ -185,6 +190,7 @@
             this.tC.SuspendLayout();
             this.tabVisit.SuspendLayout();
             this.tabDay.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtIDOld)).BeginInit();
             this.SuspendLayout();
             // 
             // theme1
@@ -359,6 +365,7 @@
             // groupBox1
             // 
             this.groupBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.groupBox1.Controls.Add(this.txtPttIdOld);
             this.groupBox1.Controls.Add(this.txtPttId);
             this.groupBox1.Controls.Add(this.txtVsId);
             this.groupBox1.Controls.Add(this.txtRemark);
@@ -382,6 +389,20 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Patient";
             this.theme1.SetTheme(this.groupBox1, "(default)");
+            // 
+            // txtPttIdOld
+            // 
+            this.txtPttIdOld.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtPttIdOld.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
+            this.txtPttIdOld.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.txtPttIdOld.Location = new System.Drawing.Point(518, 63);
+            this.txtPttIdOld.Name = "txtPttIdOld";
+            this.txtPttIdOld.Size = new System.Drawing.Size(30, 20);
+            this.txtPttIdOld.TabIndex = 554;
+            this.txtPttIdOld.Tag = null;
+            this.theme1.SetTheme(this.txtPttIdOld, "(default)");
+            this.txtPttIdOld.Visible = false;
+            this.txtPttIdOld.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
             // 
             // txtPttId
             // 
@@ -744,6 +765,7 @@
             // groupBox2
             // 
             this.groupBox2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.groupBox2.Controls.Add(this.txtIDOld);
             this.groupBox2.Controls.Add(this.tC1);
             this.groupBox2.Controls.Add(this.txtStfConfirmID);
             this.groupBox2.Controls.Add(this.txtUserReq);
@@ -791,6 +813,7 @@
             // 
             // tabPtt
             // 
+            this.tabPtt.Controls.Add(this.chkSperm);
             this.tabPtt.Controls.Add(this.txtOther);
             this.tabPtt.Controls.Add(this.label14);
             this.tabPtt.Controls.Add(this.cboFETTime);
@@ -815,6 +838,24 @@
             this.tabPtt.Size = new System.Drawing.Size(678, 118);
             this.tabPtt.TabIndex = 0;
             this.tabPtt.Text = "Patient";
+            // 
+            // chkSperm
+            // 
+            this.chkSperm.BackColor = System.Drawing.Color.Transparent;
+            this.chkSperm.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
+            this.chkSperm.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.chkSperm.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.chkSperm.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.chkSperm.Location = new System.Drawing.Point(370, 83);
+            this.chkSperm.Name = "chkSperm";
+            this.chkSperm.Padding = new System.Windows.Forms.Padding(4, 1, 1, 1);
+            this.chkSperm.Size = new System.Drawing.Size(114, 24);
+            this.chkSperm.TabIndex = 704;
+            this.chkSperm.Text = "Sperm Collect";
+            this.theme1.SetTheme(this.chkSperm, "(default)");
+            this.chkSperm.UseVisualStyleBackColor = true;
+            this.chkSperm.Value = null;
+            this.chkSperm.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
             // 
             // txtOther
             // 
@@ -1622,6 +1663,20 @@
             this.tabDay.TabIndex = 1;
             this.tabDay.Text = "Day";
             // 
+            // txtIDOld
+            // 
+            this.txtIDOld.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtIDOld.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
+            this.txtIDOld.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.txtIDOld.Location = new System.Drawing.Point(227, 19);
+            this.txtIDOld.Name = "txtIDOld";
+            this.txtIDOld.Size = new System.Drawing.Size(30, 20);
+            this.txtIDOld.TabIndex = 686;
+            this.txtIDOld.Tag = null;
+            this.theme1.SetTheme(this.txtIDOld, "(default)");
+            this.txtIDOld.Visible = false;
+            this.txtIDOld.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            // 
             // FrmAppointmentAdd
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1643,6 +1698,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtDatepApm)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtPttIdOld)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtPttId)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtVsId)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtRemark)).EndInit();
@@ -1668,6 +1724,7 @@
             this.tC1.ResumeLayout(false);
             this.tabPtt.ResumeLayout(false);
             this.tabPtt.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.chkSperm)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtOther)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cboFETTime)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkFET)).EndInit();
@@ -1707,6 +1764,7 @@
             this.tC.ResumeLayout(false);
             this.tabVisit.ResumeLayout(false);
             this.tabDay.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.txtIDOld)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1802,5 +1860,8 @@
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.PictureBox m_picPhoto;
         private System.Windows.Forms.Panel panel5;
+        private C1.Win.C1Input.C1CheckBox chkSperm;
+        private C1.Win.C1Input.C1TextBox txtPttIdOld;
+        private C1.Win.C1Input.C1TextBox txtIDOld;
     }
 }

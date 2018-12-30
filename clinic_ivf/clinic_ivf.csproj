@@ -439,6 +439,14 @@
     <Compile Include="object1\VisitQueueTransfer.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="report\Appointment_daily_old.cs">
+      <DependentUpon>Appointment_daily_old.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="report\Appointment_daily_old.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Appointment_daily_old.xsd</DependentUpon>
+    </Compile>
     <Compile Include="report\LabOPU.cs">
       <DependentUpon>LabOPU.xsd</DependentUpon>
     </Compile>
@@ -634,6 +642,17 @@
     <None Include="report\Appointment_daily.xsd" />
     <None Include="report\Appointment_daily.xss">
       <DependentUpon>Appointment_daily.xsd</DependentUpon>
+    </None>
+    <None Include="report\Appointment_daily_old.xsc">
+      <DependentUpon>Appointment_daily_old.xsd</DependentUpon>
+    </None>
+    <None Include="report\Appointment_daily_old.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>Appointment_daily_old.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="report\Appointment_daily_old.xss">
+      <DependentUpon>Appointment_daily_old.xsd</DependentUpon>
     </None>
     <None Include="report\LabOPU.xsc">
       <DependentUpon>LabOPU.xsd</DependentUpon>

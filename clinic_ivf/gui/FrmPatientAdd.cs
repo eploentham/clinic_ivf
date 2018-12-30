@@ -873,6 +873,7 @@ namespace clinic_ivf.gui
                         if (!ic.iniC.statusAppDonor.Equals("1"))
                         {
                             //String re1 = ic.ivfDB.pttOldDB.insertPatientOld(ptt, txtStfConfirmID.Text);
+                            ptt.t_patient_id_old = "";
                             String re1 = ic.ivfDB.pttDB.insertPatient(ptt, txtStfConfirmID.Text);
                             if (long.TryParse(re1, out chk))
                             {

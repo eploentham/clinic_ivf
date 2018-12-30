@@ -638,6 +638,19 @@ namespace clinic_ivf.objdb
             cop1 = setPatient(dt);
             return cop1;
         }
+        public Patient selectByIdOld(String pttId)
+        {
+            Patient cop1 = new Patient();
+            DataTable dt = new DataTable();
+            String sql = "select ptt.*,fpp.patient_prefix_description " +
+                "From " + ptt.table + " ptt " +
+                "Left join f_patient_prefix fpp on fpp.f_patient_prefix_id = ptt.f_patient_prefix_id " +
+                "Where ptt." + ptt.t_patient_id_old + " ='" + pttId + "' " +
+                "limit 0,1";
+            dt = conn.selectData(conn.conn, sql);
+            cop1 = setPatient(dt);
+            return cop1;
+        }
         public DataTable selectByDate(String date)
         {
             DataTable dt = new DataTable();

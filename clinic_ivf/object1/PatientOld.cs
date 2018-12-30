@@ -58,6 +58,7 @@ namespace clinic_ivf.object1
         public String SubDistrict { get; set; }
         public String SurfixID { get; set; }
         public String ZipCode { get; set; }
+        public String FullName { get; set; }
 
         public String table { get; set; }
         public String pkField { get; set; }

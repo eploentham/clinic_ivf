@@ -50,7 +50,9 @@
             this.pnAll = new System.Windows.Forms.Panel();
             this.sB = new System.Windows.Forms.StatusStrip();
             this.sB1 = new System.Windows.Forms.ToolStripStatusLabel();
-            this.btnPrint = new C1.Win.C1Input.C1Button();
+            this.c1SplitButton1 = new C1.Win.C1Input.C1SplitButton();
+            this.btnPrnPtt = new C1.Win.C1Input.DropDownItem();
+            this.btnPrnDonor = new C1.Win.C1Input.DropDownItem();
             ((System.ComponentModel.ISupportInitialize)(this.theme1)).BeginInit();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtSearch)).BeginInit();
@@ -70,7 +72,7 @@
             this.tC.SuspendLayout();
             this.tabAll.SuspendLayout();
             this.sB.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.btnPrint)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.c1SplitButton1)).BeginInit();
             this.SuspendLayout();
             // 
             // theme1
@@ -80,7 +82,7 @@
             // groupBox1
             // 
             this.groupBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.groupBox1.Controls.Add(this.btnPrint);
+            this.groupBox1.Controls.Add(this.c1SplitButton1);
             this.groupBox1.Controls.Add(this.label4);
             this.groupBox1.Controls.Add(this.txtSearch);
             this.groupBox1.Controls.Add(this.label6);
@@ -433,19 +435,30 @@
             this.sB1.Size = new System.Drawing.Size(118, 17);
             this.sB1.Text = "toolStripStatusLabel1";
             // 
-            // btnPrint
+            // c1SplitButton1
             // 
-            this.btnPrint.Image = global::clinic_ivf.Properties.Resources.print;
-            this.btnPrint.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnPrint.Location = new System.Drawing.Point(883, 12);
-            this.btnPrint.Name = "btnPrint";
-            this.btnPrint.Size = new System.Drawing.Size(79, 36);
-            this.btnPrint.TabIndex = 555;
-            this.btnPrint.Text = "Print";
-            this.btnPrint.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.theme1.SetTheme(this.btnPrint, "(default)");
-            this.btnPrint.UseVisualStyleBackColor = true;
-            this.btnPrint.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            this.c1SplitButton1.Image = global::clinic_ivf.Properties.Resources.print;
+            this.c1SplitButton1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.c1SplitButton1.Items.Add(this.btnPrnPtt);
+            this.c1SplitButton1.Items.Add(this.btnPrnDonor);
+            this.c1SplitButton1.Location = new System.Drawing.Point(872, 14);
+            this.c1SplitButton1.Name = "c1SplitButton1";
+            this.c1SplitButton1.Size = new System.Drawing.Size(95, 32);
+            this.c1SplitButton1.TabIndex = 593;
+            this.c1SplitButton1.Text = "Print";
+            this.theme1.SetTheme(this.c1SplitButton1, "(default)");
+            this.c1SplitButton1.UseVisualStyleBackColor = true;
+            this.c1SplitButton1.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            // 
+            // btnPrnPtt
+            // 
+            this.btnPrnPtt.Image = global::clinic_ivf.Properties.Resources.printer_blue24;
+            this.btnPrnPtt.Text = "Print Patient";
+            // 
+            // btnPrnDonor
+            // 
+            this.btnPrnDonor.Image = global::clinic_ivf.Properties.Resources.printer_orange48;
+            this.btnPrnDonor.Text = "Print Donor";
             // 
             // FrmAppoinmentView
             // 
@@ -479,7 +492,7 @@
             this.tabAll.ResumeLayout(false);
             this.sB.ResumeLayout(false);
             this.sB.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.btnPrint)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.c1SplitButton1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -509,6 +522,8 @@
         private C1.Win.C1Command.C1DockingTab tC;
         private C1.Win.C1Command.C1DockingTabPage tabAll;
         private System.Windows.Forms.Panel pnAll;
-        private C1.Win.C1Input.C1Button btnPrint;
+        private C1.Win.C1Input.C1SplitButton c1SplitButton1;
+        private C1.Win.C1Input.DropDownItem btnPrnPtt;
+        private C1.Win.C1Input.DropDownItem btnPrnDonor;
     }
 }

@@ -12,7 +12,7 @@
   <xs:element name="Appointment_daily" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="Appointment_daily" msprop:Generator_UserDSName="Appointment_daily">
     <xs:complexType>
       <xs:choice minOccurs="0" maxOccurs="unbounded">
-        <xs:element name="appointment_daily" msprop:Generator_TableClassName="appointment_dailyDataTable" msprop:Generator_TableVarName="tableappointment_daily" msprop:Generator_RowChangedName="appointment_dailyRowChanged" msprop:Generator_TablePropName="appointment_daily" msprop:Generator_RowDeletingName="appointment_dailyRowDeleting" msprop:Generator_RowChangingName="appointment_dailyRowChanging" msprop:Generator_RowEvHandlerName="appointment_dailyRowChangeEventHandler" msprop:Generator_RowDeletedName="appointment_dailyRowDeleted" msprop:Generator_RowClassName="appointment_dailyRow" msprop:Generator_UserTableName="appointment_daily" msprop:Generator_RowEvArgName="appointment_dailyRowChangeEvent">
+        <xs:element name="appointment_daily" msprop:Generator_TableClassName="appointment_dailyDataTable" msprop:Generator_TableVarName="tableappointment_daily" msprop:Generator_TablePropName="appointment_daily" msprop:Generator_RowDeletingName="appointment_dailyRowDeleting" msprop:Generator_RowChangingName="appointment_dailyRowChanging" msprop:Generator_RowEvHandlerName="appointment_dailyRowChangeEventHandler" msprop:Generator_RowDeletedName="appointment_dailyRowDeleted" msprop:Generator_UserTableName="appointment_daily" msprop:Generator_RowChangedName="appointment_dailyRowChanged" msprop:Generator_RowEvArgName="appointment_dailyRowChangeEvent" msprop:Generator_RowClassName="appointment_dailyRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="patient_hn" msdata:Caption="DataColumn1" msprop:Generator_ColumnVarNameInTable="columnpatient_hn" msprop:Generator_ColumnPropNameInRow="patient_hn" msprop:Generator_ColumnPropNameInTable="patient_hnColumn" msprop:Generator_UserColumnName="patient_hn" type="xs:string" minOccurs="0" />
@@ -50,6 +50,7 @@
               <xs:element name="hormone_test" msprop:Generator_ColumnVarNameInTable="columnhormone_test" msprop:Generator_ColumnPropNameInRow="hormone_test" msprop:Generator_ColumnPropNameInTable="hormone_testColumn" msprop:Generator_UserColumnName="hormone_test" type="xs:string" minOccurs="0" />
               <xs:element name="other" msprop:Generator_ColumnVarNameInTable="columnother" msprop:Generator_ColumnPropNameInRow="other" msprop:Generator_ColumnPropNameInTable="otherColumn" msprop:Generator_UserColumnName="other" type="xs:string" minOccurs="0" />
               <xs:element name="other_remark" msprop:Generator_ColumnVarNameInTable="columnother_remark" msprop:Generator_ColumnPropNameInRow="other_remark" msprop:Generator_ColumnPropNameInTable="other_remarkColumn" msprop:Generator_UserColumnName="other_remark" type="xs:string" minOccurs="0" />
+              <xs:element name="tvs_day" msprop:Generator_ColumnVarNameInTable="columntvs_day" msprop:Generator_ColumnPropNameInRow="tvs_day" msprop:Generator_ColumnPropNameInTable="tvs_dayColumn" msprop:Generator_UserColumnName="tvs_day" type="xs:string" minOccurs="0" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>
