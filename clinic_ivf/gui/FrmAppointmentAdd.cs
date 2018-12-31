@@ -92,6 +92,7 @@ namespace clinic_ivf.gui
             chkOther.CheckedChanged += ChkOther_CheckedChanged;
             chkOPUDonor.CheckedChanged += ChkOPUDonor_CheckedChanged;
             chkTvsDonor.CheckedChanged += ChkTvsDonor_CheckedChanged;
+            btnPrint.Click += BtnPrint_Click;
 
             initGrfpApmAll();
             initGrfpApmVisit();
@@ -103,6 +104,12 @@ namespace clinic_ivf.gui
             setGrfpApmDay();
 
             setTheme();
+        }
+
+        private void BtnPrint_Click(object sender, EventArgs e)
+        {
+            //throw new NotImplementedException();
+
         }
 
         private void ChkTvsDonor_CheckedChanged(object sender, EventArgs e)

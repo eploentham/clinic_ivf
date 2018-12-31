@@ -1323,3 +1323,12 @@ ALTER TABLE t_patient_appointment AUTO_INCREMENT = 2170000000;
 
 
 c# mysql error MessageUnable to convert MySQL date/time value to System.DateTime
+
+
+select *
+from Appointment
+where PIDS like '%83491%';
+
+update Appointment
+Set Status = '0'
+Where ID = '16282'

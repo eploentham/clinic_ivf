@@ -25,10 +25,11 @@ namespace clinic_ivf.gui
         }
         public void setAppoitmentDailyReport(DataTable dt)
         {
-            String chk = "", printerDefault = "";
+            String chk = "", printerDefault = "", err="";
             ReportDocument rpt = new ReportDocument();
             try
             {
+                err = "00"+ ic.iniC.statusAppDonor;
                 if (ic.iniC.statusAppDonor.Equals("1"))
                 {
                     rpt.Load("Appointment_daily_donor.rpt");
@@ -37,18 +38,22 @@ namespace clinic_ivf.gui
                 {
                     rpt.Load("Appointment_daily_old.rpt");
                 }
-                    
+                err = "01";
                 rpt.SetDataSource(dt);
+                err = "02";
                 rpt.SetParameterValue("line1", ic.cop.comp_name_t);
                 rpt.SetParameterValue("line2", "โทรศัพท์ " + ic.cop.tele);
                 rpt.SetParameterValue("report_name", " Appointment Daily Report ");
+                err = "03";
                 //rpt.SetParameterValue("age1", "" + age);
                 this.crystalReportViewer1.ReportSource = rpt;
+                err = "04";
                 this.crystalReportViewer1.Refresh();
             }
             catch (Exception ex)
             {
                 chk = ex.Message.ToString();
+                MessageBox.Show("error "+ ex.Message, "err "+ err);
             }
         }
         public void setOPDCardOldReport(DataTable dt, String age)
@@ -69,6 +74,7 @@ namespace clinic_ivf.gui
             catch (Exception ex)
             {
                 chk = ex.Message.ToString();
+                MessageBox.Show("error " + ex.Message, "");
             }
         }
         public void setVisitCheckList1Report(DataTable dt)
@@ -89,6 +95,7 @@ namespace clinic_ivf.gui
             catch (Exception ex)
             {
                 chk = ex.Message.ToString();
+                MessageBox.Show("error " + ex.Message, "");
             }
         }
         public void setOPUEmbryoDevReport(DataTable dt)
@@ -109,6 +116,7 @@ namespace clinic_ivf.gui
             catch (Exception ex)
             {
                 chk = ex.Message.ToString();
+                MessageBox.Show("error " + ex.Message, "");
             }
         }
         public void setOPUReport(DataTable dt, flagEmbryoDev flagembryodev, flagEmbryoDevMore20 flagembryodevmore20)
@@ -151,6 +159,7 @@ namespace clinic_ivf.gui
             catch (Exception ex)
             {
                 chk = ex.Message.ToString();
+                MessageBox.Show("error " + ex.Message, "");
             }
         }
         public void setStickerDrugReport(String date, DataTable dt)
@@ -188,6 +197,7 @@ namespace clinic_ivf.gui
             catch (Exception ex)
             {
                 chk = ex.Message.ToString();
+                MessageBox.Show("error " + ex.Message, "");
             }
         }
         private void FrmReport_Load(object sender, EventArgs e)
