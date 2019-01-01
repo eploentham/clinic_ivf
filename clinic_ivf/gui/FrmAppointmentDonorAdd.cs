@@ -241,7 +241,7 @@ namespace clinic_ivf.gui
                     //    {
                     re = ic.ivfDB.vsDB.updateCloseStatusNurse(txtVsId.Text);
                     re = ic.ivfDB.vsDB.updateStatusAppointment(txtVsId.Text, txtID.Text);
-                    txtID.Value = re;
+                    //txtID.Value = re;
                     btnSave.Text = "Save";
                     btnSave.Image = Resources.accept_database24;
                     //        txtID.Value = re;

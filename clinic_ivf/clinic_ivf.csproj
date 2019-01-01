@@ -179,11 +179,11 @@
     <Compile Include="gui\FrmLabOpuProce.Designer.cs">
       <DependentUpon>FrmLabOpuProce.cs</DependentUpon>
     </Compile>
-    <Compile Include="gui\FrmLabReq.cs">
+    <Compile Include="gui\FrmLabFormA.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="gui\FrmLabReq.Designer.cs">
-      <DependentUpon>FrmLabReq.cs</DependentUpon>
+    <Compile Include="gui\FrmLabFormA.Designer.cs">
+      <DependentUpon>FrmLabFormA.cs</DependentUpon>
     </Compile>
     <Compile Include="gui\FrmLabOpuView.cs">
       <SubType>Form</SubType>
@@ -365,12 +365,14 @@
     <Compile Include="objdb\FSexDB.cs" />
     <Compile Include="objdb\JobPxDB.cs" />
     <Compile Include="objdb\JobPxDetailDB.cs" />
+    <Compile Include="objdb\LabFormADB.cs" />
     <Compile Include="objdb\LabOpuEmbryoDevDB.cs" />
     <Compile Include="objdb\OldJobSpecialDB.cs" />
     <Compile Include="objdb\PatientAppointmentDB.cs" />
     <Compile Include="objdb\PatientAppointmentTextDB.cs" />
     <Compile Include="object1\CellNoteManager.cs" />
     <Compile Include="object1\FDocType.cs" />
+    <Compile Include="object1\LabFormA.cs" />
     <Compile Include="object1\PatientAppointment.cs" />
     <Compile Include="objdb\PatientImageDB.cs" />
     <Compile Include="objdb\PatientOldDB.cs" />
@@ -523,8 +525,8 @@
     <EmbeddedResource Include="gui\FrmLabOpuProce.resx">
       <DependentUpon>FrmLabOpuProce.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="gui\FrmLabReq.resx">
-      <DependentUpon>FrmLabReq.cs</DependentUpon>
+    <EmbeddedResource Include="gui\FrmLabFormA.resx">
+      <DependentUpon>FrmLabFormA.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="gui\FrmLabOpuView.resx">
       <DependentUpon>FrmLabOpuView.cs</DependentUpon>

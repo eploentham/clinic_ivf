@@ -48,7 +48,7 @@ namespace clinic_ivf.objdb
         public VisitDB vsDB;
         public FDocTypeDB fdtDB;
         public PatientAppointmentTextDB pApmtDB;
-        //public AppointmentOldDB pApmoDB;
+        public LabFormADB lFormaDB;
 
         public IvfDB(ConnectDB c)
         {
@@ -94,6 +94,7 @@ namespace clinic_ivf.objdb
             vsDB = new VisitDB(conn);
             fdtDB = new FDocTypeDB(conn);
             pApmtDB = new PatientAppointmentTextDB(conn);
+            lFormaDB = new LabFormADB(conn);
 
             Console.WriteLine("ivfDB end");
         }
