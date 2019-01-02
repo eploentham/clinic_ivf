@@ -23,6 +23,62 @@ namespace clinic_ivf.gui
             InitializeComponent();
             this.ic = ic;
         }
+        public void setAppointmentPatient(DataTable dt)
+        {
+            String chk = "", printerDefault = "", err = "";
+            ReportDocument rpt = new ReportDocument();
+            try
+            {
+                err = "00" + ic.iniC.statusAppDonor;
+
+                rpt.Load("Appointment_Patient.rpt");
+
+                err = "01";
+                rpt.SetDataSource(dt);
+                err = "02";
+                rpt.SetParameterValue("line1", ic.cop.comp_name_t);
+                rpt.SetParameterValue("line2", "โทรศัพท์ " + ic.cop.tele);
+                rpt.SetParameterValue("report_name", " Appointment/ใบแพทย์นัด ");
+                err = "03";
+                //rpt.SetParameterValue("age1", "" + age);
+                this.crystalReportViewer1.ReportSource = rpt;
+                err = "04";
+                this.crystalReportViewer1.Refresh();
+            }
+            catch (Exception ex)
+            {
+                chk = ex.Message.ToString();
+                MessageBox.Show("error " + ex.Message, "err " + err);
+            }
+        }
+        public void setLabFormAReport(DataTable dt)
+        {
+            String chk = "", printerDefault = "", err = "";
+            ReportDocument rpt = new ReportDocument();
+            try
+            {
+                err = "00" + ic.iniC.statusAppDonor;
+                
+                rpt.Load("lab_form_a.rpt");
+                
+                err = "01";
+                rpt.SetDataSource(dt);
+                err = "02";
+                rpt.SetParameterValue("line1", ic.cop.comp_name_t);
+                rpt.SetParameterValue("line2", "โทรศัพท์ " + ic.cop.tele);
+                rpt.SetParameterValue("report_name", " Laboratory Request Form ");
+                err = "03";
+                //rpt.SetParameterValue("age1", "" + age);
+                this.crystalReportViewer1.ReportSource = rpt;
+                err = "04";
+                this.crystalReportViewer1.Refresh();
+            }
+            catch (Exception ex)
+            {
+                chk = ex.Message.ToString();
+                MessageBox.Show("error " + ex.Message, "err " + err);
+            }
+        }
         public void setAppoitmentDailyReport(DataTable dt)
         {
             String chk = "", printerDefault = "", err="";

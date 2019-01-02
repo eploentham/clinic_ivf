@@ -477,7 +477,10 @@ namespace clinic_ivf.gui
             DataTable dt = new DataTable();
             if (search.Equals(""))
             {
-                //String date = System.DateTime.Now.Year + "-" + System.DateTime.Now.ToString("MM-dd");
+                String date = System.DateTime.Now.Year + "-" + System.DateTime.Now.ToString("MM-dd");
+                //MessageBox.Show("date "+date, "");
+                String date1 = ic.datetoDB(txtDateStart.Text);
+                //MessageBox.Show("date1"+date1, "date "+date);
                 dt = ic.ivfDB.vsDB.selectByStatusNurseWaiting(ic.datetoDB(txtDateStart.Text));
             }
             else
@@ -730,7 +733,7 @@ namespace clinic_ivf.gui
             //openApmAdd(pttId, vsid, name);
             if (MessageBox.Show("ต้องการป้อน LAB request FORM A\n  hn number " + chk + " \n name " + name, "", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == DialogResult.OK)
             {
-                FrmLabFormA frm = new FrmLabFormA(ic,"", pttId, vsid,"");
+                FrmLabFormA frm = new FrmLabFormA(ic,"", pttId, "", vsid);
                 frm.ShowDialog(this);
                 //grfReq.Rows.Remove(grfReq.Row);
                 //openPatientAdd(id, name);

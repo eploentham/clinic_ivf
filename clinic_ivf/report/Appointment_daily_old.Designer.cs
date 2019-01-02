@@ -319,11 +319,11 @@ namespace clinic_ivf.report {
             
             private global::System.Data.DataColumn columntvs_time;
             
-            private global::System.Data.DataColumn columnDataColumn14;
+            private global::System.Data.DataColumn columnprl;
             
-            private global::System.Data.DataColumn columnDataColumn13;
+            private global::System.Data.DataColumn columnfsh;
             
-            private global::System.Data.DataColumn columnDataColumn12;
+            private global::System.Data.DataColumn columnendo;
             
             private global::System.Data.DataColumn columnDataColumn11;
             
@@ -524,25 +524,25 @@ namespace clinic_ivf.report {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public global::System.Data.DataColumn DataColumn14Column {
+            public global::System.Data.DataColumn prlColumn {
                 get {
-                    return this.columnDataColumn14;
+                    return this.columnprl;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public global::System.Data.DataColumn DataColumn13Column {
+            public global::System.Data.DataColumn fshColumn {
                 get {
-                    return this.columnDataColumn13;
+                    return this.columnfsh;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public global::System.Data.DataColumn DataColumn12Column {
+            public global::System.Data.DataColumn endoColumn {
                 get {
-                    return this.columnDataColumn12;
+                    return this.columnendo;
                 }
             }
             
@@ -620,9 +620,9 @@ namespace clinic_ivf.report {
                         string et, 
                         string et_time, 
                         string tvs_time, 
-                        string DataColumn14, 
-                        string DataColumn13, 
-                        string DataColumn12, 
+                        string prl, 
+                        string fsh, 
+                        string endo, 
                         string DataColumn11, 
                         string DataColumn1) {
                 appointment_daily_oldRow rowappointment_daily_oldRow = ((appointment_daily_oldRow)(this.NewRow()));
@@ -647,9 +647,9 @@ namespace clinic_ivf.report {
                         et,
                         et_time,
                         tvs_time,
-                        DataColumn14,
-                        DataColumn13,
-                        DataColumn12,
+                        prl,
+                        fsh,
+                        endo,
                         DataColumn11,
                         DataColumn1};
                 rowappointment_daily_oldRow.ItemArray = columnValuesArray;
@@ -694,9 +694,9 @@ namespace clinic_ivf.report {
                 this.columnet = base.Columns["et"];
                 this.columnet_time = base.Columns["et_time"];
                 this.columntvs_time = base.Columns["tvs_time"];
-                this.columnDataColumn14 = base.Columns["DataColumn14"];
-                this.columnDataColumn13 = base.Columns["DataColumn13"];
-                this.columnDataColumn12 = base.Columns["DataColumn12"];
+                this.columnprl = base.Columns["prl"];
+                this.columnfsh = base.Columns["fsh"];
+                this.columnendo = base.Columns["endo"];
                 this.columnDataColumn11 = base.Columns["DataColumn11"];
                 this.columnDataColumn1 = base.Columns["DataColumn1"];
             }
@@ -744,12 +744,12 @@ namespace clinic_ivf.report {
                 base.Columns.Add(this.columnet_time);
                 this.columntvs_time = new global::System.Data.DataColumn("tvs_time", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columntvs_time);
-                this.columnDataColumn14 = new global::System.Data.DataColumn("DataColumn14", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnDataColumn14);
-                this.columnDataColumn13 = new global::System.Data.DataColumn("DataColumn13", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnDataColumn13);
-                this.columnDataColumn12 = new global::System.Data.DataColumn("DataColumn12", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnDataColumn12);
+                this.columnprl = new global::System.Data.DataColumn("prl", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnprl);
+                this.columnfsh = new global::System.Data.DataColumn("fsh", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnfsh);
+                this.columnendo = new global::System.Data.DataColumn("endo", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnendo);
                 this.columnDataColumn11 = new global::System.Data.DataColumn("DataColumn11", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnDataColumn11);
                 this.columnDataColumn1 = new global::System.Data.DataColumn("DataColumn1", typeof(string), null, global::System.Data.MappingType.Element);
@@ -774,9 +774,9 @@ namespace clinic_ivf.report {
                 this.columnet.Caption = "DataColumn1";
                 this.columnet_time.Caption = "DataColumn1";
                 this.columntvs_time.Caption = "DataColumn1";
-                this.columnDataColumn14.Caption = "DataColumn1";
-                this.columnDataColumn13.Caption = "DataColumn1";
-                this.columnDataColumn12.Caption = "DataColumn1";
+                this.columnprl.Caption = "DataColumn1";
+                this.columnfsh.Caption = "DataColumn1";
+                this.columnendo.Caption = "DataColumn1";
                 this.columnDataColumn11.Caption = "DataColumn1";
             }
             
@@ -1240,49 +1240,49 @@ namespace clinic_ivf.report {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public string DataColumn14 {
+            public string prl {
                 get {
                     try {
-                        return ((string)(this[this.tableappointment_daily_old.DataColumn14Column]));
+                        return ((string)(this[this.tableappointment_daily_old.prlColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'DataColumn14\' in table \'appointment_daily_old\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'prl\' in table \'appointment_daily_old\' is DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableappointment_daily_old.DataColumn14Column] = value;
+                    this[this.tableappointment_daily_old.prlColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public string DataColumn13 {
+            public string fsh {
                 get {
                     try {
-                        return ((string)(this[this.tableappointment_daily_old.DataColumn13Column]));
+                        return ((string)(this[this.tableappointment_daily_old.fshColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'DataColumn13\' in table \'appointment_daily_old\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'fsh\' in table \'appointment_daily_old\' is DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableappointment_daily_old.DataColumn13Column] = value;
+                    this[this.tableappointment_daily_old.fshColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public string DataColumn12 {
+            public string endo {
                 get {
                     try {
-                        return ((string)(this[this.tableappointment_daily_old.DataColumn12Column]));
+                        return ((string)(this[this.tableappointment_daily_old.endoColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'DataColumn12\' in table \'appointment_daily_old\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'endo\' in table \'appointment_daily_old\' is DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableappointment_daily_old.DataColumn12Column] = value;
+                    this[this.tableappointment_daily_old.endoColumn] = value;
                 }
             }
             
@@ -1560,38 +1560,38 @@ namespace clinic_ivf.report {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public bool IsDataColumn14Null() {
-                return this.IsNull(this.tableappointment_daily_old.DataColumn14Column);
+            public bool IsprlNull() {
+                return this.IsNull(this.tableappointment_daily_old.prlColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public void SetDataColumn14Null() {
-                this[this.tableappointment_daily_old.DataColumn14Column] = global::System.Convert.DBNull;
+            public void SetprlNull() {
+                this[this.tableappointment_daily_old.prlColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public bool IsDataColumn13Null() {
-                return this.IsNull(this.tableappointment_daily_old.DataColumn13Column);
+            public bool IsfshNull() {
+                return this.IsNull(this.tableappointment_daily_old.fshColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public void SetDataColumn13Null() {
-                this[this.tableappointment_daily_old.DataColumn13Column] = global::System.Convert.DBNull;
+            public void SetfshNull() {
+                this[this.tableappointment_daily_old.fshColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public bool IsDataColumn12Null() {
-                return this.IsNull(this.tableappointment_daily_old.DataColumn12Column);
+            public bool IsendoNull() {
+                return this.IsNull(this.tableappointment_daily_old.endoColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public void SetDataColumn12Null() {
-                this[this.tableappointment_daily_old.DataColumn12Column] = global::System.Convert.DBNull;
+            public void SetendoNull() {
+                this[this.tableappointment_daily_old.endoColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]

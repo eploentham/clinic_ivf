@@ -364,6 +364,21 @@ namespace clinic_ivf.objdb
             cop1 = setPatient(dt);
             return cop1;
         }
+        public DataTable selectAppointmentByPk(String pttId)
+        {
+            DataTable dt = new DataTable();
+            String sql = "select pApm.*,  bsp.service_point_description,dtr.Name  as Doctor " +
+                ",CONCAT(IFNULL(fpp.patient_prefix_description,'') , ' ' , ptt.patient_firstname_e ,' ',ptt.patient_lastname_e) as PatientName, ptt.patient_hn as hn " +
+                ", service_point_description as appointment_servicepoint, service_point_description as appointment_clinic " +
+                "From " + pApm.table + " pApm " +
+                "Left Join b_service_point bsp on bsp.b_service_point_id = pApm.patient_appointment_servicepoint " +
+                "Left Join Doctor  dtr on pApm.patient_appointment_doctor = dtr.ID " +
+                "Left Join t_patient ptt on ptt.t_patient_id = pApm.t_patient_id " +
+                "Left join f_patient_prefix fpp on fpp.f_patient_prefix_id = ptt.f_patient_prefix_id " +
+                "Where pApm." + pApm.pkField + " ='" + pttId + "' ";
+            dt = conn.selectData(conn.conn, sql);
+            return dt;
+        }
         public DataTable selectByDate(String date)
         {
             DataTable dt = new DataTable();

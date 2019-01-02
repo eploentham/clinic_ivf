@@ -681,19 +681,9 @@
             // 
             // 
             // 
-            this.txtLMP.Calendar.ArrowColor = System.Drawing.Color.Black;
-            this.txtLMP.Calendar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.txtLMP.Calendar.DayNamesFont = new System.Drawing.Font("Tahoma", 8F);
             this.txtLMP.Calendar.Font = new System.Drawing.Font("Tahoma", 8F);
-            this.txtLMP.Calendar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.txtLMP.Calendar.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(71)))), ((int)(((byte)(47)))));
-            this.txtLMP.Calendar.SelectionForeColor = System.Drawing.Color.White;
-            this.txtLMP.Calendar.TitleBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(230)))));
-            this.txtLMP.Calendar.TitleFont = new System.Drawing.Font("Tahoma", 8F);
-            this.txtLMP.Calendar.TitleForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.txtLMP.Calendar.TodayBorderColor = System.Drawing.Color.White;
-            this.txtLMP.Calendar.TrailingForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
-            this.txtLMP.Calendar.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            this.txtLMP.Calendar.VisualStyle = C1.Win.C1Input.VisualStyle.Office2007Blue;
+            this.txtLMP.Calendar.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2007Blue;
             this.txtLMP.Culture = 1054;
             this.txtLMP.CurrentTimeZone = false;
             this.txtLMP.DisplayFormat.FormatType = C1.Win.C1Input.FormatTypeEnum.ShortDate;
@@ -1448,19 +1438,9 @@
             // 
             // 
             // 
-            this.txtDob.Calendar.ArrowColor = System.Drawing.Color.Black;
-            this.txtDob.Calendar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.txtDob.Calendar.DayNamesFont = new System.Drawing.Font("Tahoma", 8F);
             this.txtDob.Calendar.Font = new System.Drawing.Font("Tahoma", 8F);
-            this.txtDob.Calendar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.txtDob.Calendar.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(71)))), ((int)(((byte)(47)))));
-            this.txtDob.Calendar.SelectionForeColor = System.Drawing.Color.White;
-            this.txtDob.Calendar.TitleBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(230)))));
-            this.txtDob.Calendar.TitleFont = new System.Drawing.Font("Tahoma", 8F);
-            this.txtDob.Calendar.TitleForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.txtDob.Calendar.TodayBorderColor = System.Drawing.Color.White;
-            this.txtDob.Calendar.TrailingForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
-            this.txtDob.Calendar.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            this.txtDob.Calendar.VisualStyle = C1.Win.C1Input.VisualStyle.Office2007Blue;
+            this.txtDob.Calendar.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2007Blue;
             this.txtDob.Culture = 1033;
             this.txtDob.DisplayFormat.FormatType = C1.Win.C1Input.FormatTypeEnum.ShortDate;
             this.txtDob.DisplayFormat.Inherit = ((C1.Win.C1Input.FormatInfoInheritFlags)((((((C1.Win.C1Input.FormatInfoInheritFlags.CustomFormat | C1.Win.C1Input.FormatInfoInheritFlags.NullText) 
@@ -1570,7 +1550,7 @@
             this.tC.TabSizeMode = C1.Win.C1Command.TabSizeModeEnum.Fit;
             this.tC.TabsShowFocusCues = false;
             this.tC.TabsSpacing = 2;
-            this.tC.VisualStyle = C1.Win.C1Command.VisualStyle.Office2010Blue;
+            this.tC.VisualStyle = C1.Win.C1Command.VisualStyle.Custom;
             this.tC.VisualStyleBase = C1.Win.C1Command.VisualStyle.Office2010Blue;
             // 
             // tabVisit
@@ -1893,19 +1873,9 @@
             // 
             // 
             // 
-            this.txtLMP1.Calendar.ArrowColor = System.Drawing.Color.Black;
-            this.txtLMP1.Calendar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.txtLMP1.Calendar.DayNamesFont = new System.Drawing.Font("Tahoma", 8F);
             this.txtLMP1.Calendar.Font = new System.Drawing.Font("Tahoma", 8F);
-            this.txtLMP1.Calendar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.txtLMP1.Calendar.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(71)))), ((int)(((byte)(47)))));
-            this.txtLMP1.Calendar.SelectionForeColor = System.Drawing.Color.White;
-            this.txtLMP1.Calendar.TitleBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(230)))));
-            this.txtLMP1.Calendar.TitleFont = new System.Drawing.Font("Tahoma", 8F);
-            this.txtLMP1.Calendar.TitleForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.txtLMP1.Calendar.TodayBorderColor = System.Drawing.Color.White;
-            this.txtLMP1.Calendar.TrailingForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
-            this.txtLMP1.Calendar.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            this.txtLMP1.Calendar.VisualStyle = C1.Win.C1Input.VisualStyle.Office2007Blue;
+            this.txtLMP1.Calendar.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2007Blue;
             this.txtLMP1.Culture = 1054;
             this.txtLMP1.CurrentTimeZone = false;
             this.txtLMP1.DisplayFormat.FormatType = C1.Win.C1Input.FormatTypeEnum.ShortDate;

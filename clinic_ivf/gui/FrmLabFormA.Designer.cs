@@ -49,7 +49,7 @@
             this.txtDobMale = new C1.Win.C1Input.C1DateEdit();
             this.cboDoctor = new C1.Win.C1Input.C1ComboBox();
             this.label8 = new System.Windows.Forms.Label();
-            this.txtLformADate = new C1.Win.C1Input.C1DateEdit();
+            this.txtFormADate = new C1.Win.C1Input.C1DateEdit();
             this.label31 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
@@ -64,12 +64,10 @@
             this.txtHnFeMale = new C1.Win.C1Input.C1TextBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.pnSpermFreezing = new System.Windows.Forms.Panel();
-            this.txtSpermFreezingDateEnd = new C1.Win.C1Input.C1DateEdit();
             this.label23 = new System.Windows.Forms.Label();
             this.label24 = new System.Windows.Forms.Label();
             this.txtSpermFreezingDateStart = new C1.Win.C1Input.C1DateEdit();
             this.pnSpermAnalysis = new System.Windows.Forms.Panel();
-            this.txtSpermAnalysisDateEnd = new C1.Win.C1Input.C1DateEdit();
             this.label22 = new System.Windows.Forms.Label();
             this.label21 = new System.Windows.Forms.Label();
             this.txtSpermAnalysisDateStart = new C1.Win.C1Input.C1DateEdit();
@@ -93,9 +91,7 @@
             this.groupBox6 = new System.Windows.Forms.GroupBox();
             this.pnFreshSprem = new System.Windows.Forms.Panel();
             this.label12 = new System.Windows.Forms.Label();
-            this.txtFreshSpermColTime = new C1.Win.C1Input.C1DateEdit();
             this.label13 = new System.Windows.Forms.Label();
-            this.txtFreshSpermEndTime = new C1.Win.C1Input.C1DateEdit();
             this.btnPrint = new C1.Win.C1Input.C1Button();
             this.gbEmbryoFresh = new System.Windows.Forms.GroupBox();
             this.chkEmbryoFreezingDay5 = new System.Windows.Forms.RadioButton();
@@ -125,6 +121,14 @@
             this.txtPasaTeseDate = new C1.Win.C1Input.C1DateEdit();
             this.label25 = new System.Windows.Forms.Label();
             this.label20 = new System.Windows.Forms.Label();
+            this.txtFreshSpermColTime = new C1.Win.C1Input.C1TextBox();
+            this.txtFreshSpermEndTime = new C1.Win.C1Input.C1TextBox();
+            this.txtSpermAnalysisDateEnd = new C1.Win.C1Input.C1TextBox();
+            this.txtSpermFreezingDateEnd = new C1.Win.C1Input.C1TextBox();
+            this.label18 = new System.Windows.Forms.Label();
+            this.txtSpermAnalysisTimeStart = new C1.Win.C1Input.C1TextBox();
+            this.label19 = new System.Windows.Forms.Label();
+            this.txtSpermFreezingTimeStart = new C1.Win.C1Input.C1TextBox();
             this.sB.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.theme1)).BeginInit();
             this.groupBox1.SuspendLayout();
@@ -142,7 +146,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtDobFeMale)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtDobMale)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cboDoctor)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtLformADate)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtFormADate)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtNameMale)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtNameFeMale)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.c1Button1)).BeginInit();
@@ -150,10 +154,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtHnFeMale)).BeginInit();
             this.groupBox2.SuspendLayout();
             this.pnSpermFreezing.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.txtSpermFreezingDateEnd)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtSpermFreezingDateStart)).BeginInit();
             this.pnSpermAnalysis.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.txtSpermAnalysisDateEnd)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtSpermAnalysisDateStart)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkSpermFreezing)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkSpermAnalysis)).BeginInit();
@@ -168,8 +170,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtEmbryoTranferDate)).BeginInit();
             this.groupBox6.SuspendLayout();
             this.pnFreshSprem.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.txtFreshSpermColTime)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtFreshSpermEndTime)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnPrint)).BeginInit();
             this.gbEmbryoFresh.SuspendLayout();
             this.gbEmbryoTranfer.SuspendLayout();
@@ -186,6 +186,12 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtOPUDate)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtIUIDate)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtPasaTeseDate)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtFreshSpermColTime)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtFreshSpermEndTime)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtSpermAnalysisDateEnd)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtSpermFreezingDateEnd)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtSpermAnalysisTimeStart)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtSpermFreezingTimeStart)).BeginInit();
             this.SuspendLayout();
             // 
             // sB
@@ -194,7 +200,7 @@
             this.sB1});
             this.sB.Location = new System.Drawing.Point(0, 688);
             this.sB.Name = "sB";
-            this.sB.Size = new System.Drawing.Size(1071, 22);
+            this.sB.Size = new System.Drawing.Size(1059, 22);
             this.sB.TabIndex = 10;
             this.sB.Text = "statusStrip1";
             // 
@@ -228,7 +234,7 @@
             this.groupBox1.Controls.Add(this.txtDobMale);
             this.groupBox1.Controls.Add(this.cboDoctor);
             this.groupBox1.Controls.Add(this.label8);
-            this.groupBox1.Controls.Add(this.txtLformADate);
+            this.groupBox1.Controls.Add(this.txtFormADate);
             this.groupBox1.Controls.Add(this.label31);
             this.groupBox1.Controls.Add(this.label6);
             this.groupBox1.Controls.Add(this.label5);
@@ -245,7 +251,7 @@
             this.groupBox1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
             this.groupBox1.Location = new System.Drawing.Point(0, 0);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(1071, 111);
+            this.groupBox1.Size = new System.Drawing.Size(1059, 111);
             this.groupBox1.TabIndex = 11;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Patient";
@@ -312,7 +318,7 @@
             this.txtStfConfirmID.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtStfConfirmID.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
             this.txtStfConfirmID.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.txtStfConfirmID.Location = new System.Drawing.Point(626, 85);
+            this.txtStfConfirmID.Location = new System.Drawing.Point(602, 85);
             this.txtStfConfirmID.Name = "txtStfConfirmID";
             this.txtStfConfirmID.Size = new System.Drawing.Size(30, 20);
             this.txtStfConfirmID.TabIndex = 608;
@@ -326,7 +332,7 @@
             this.txtUserReq.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtUserReq.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
             this.txtUserReq.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.txtUserReq.Location = new System.Drawing.Point(766, 85);
+            this.txtUserReq.Location = new System.Drawing.Point(742, 85);
             this.txtUserReq.Name = "txtUserReq";
             this.txtUserReq.Size = new System.Drawing.Size(192, 20);
             this.txtUserReq.TabIndex = 607;
@@ -340,7 +346,7 @@
             this.label26.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
             this.label26.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label26.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.label26.Location = new System.Drawing.Point(672, 87);
+            this.label26.Location = new System.Drawing.Point(648, 87);
             this.label26.Name = "label26";
             this.label26.Size = new System.Drawing.Size(43, 16);
             this.label26.TabIndex = 606;
@@ -349,7 +355,7 @@
             // 
             // bnMaleSearch
             // 
-            this.bnMaleSearch.Location = new System.Drawing.Point(639, 18);
+            this.bnMaleSearch.Location = new System.Drawing.Point(615, 18);
             this.bnMaleSearch.Name = "bnMaleSearch";
             this.bnMaleSearch.Size = new System.Drawing.Size(28, 23);
             this.bnMaleSearch.TabIndex = 540;
@@ -363,7 +369,7 @@
             this.txtLabFormACode.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtLabFormACode.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
             this.txtLabFormACode.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.txtLabFormACode.Location = new System.Drawing.Point(765, 63);
+            this.txtLabFormACode.Location = new System.Drawing.Point(741, 63);
             this.txtLabFormACode.Name = "txtLabFormACode";
             this.txtLabFormACode.Size = new System.Drawing.Size(207, 20);
             this.txtLabFormACode.TabIndex = 539;
@@ -377,7 +383,7 @@
             this.label62.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
             this.label62.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label62.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.label62.Location = new System.Drawing.Point(672, 63);
+            this.label62.Location = new System.Drawing.Point(648, 63);
             this.label62.Name = "label62";
             this.label62.Size = new System.Drawing.Size(91, 16);
             this.label62.TabIndex = 538;
@@ -402,7 +408,7 @@
             // 
             this.btnEdit.Image = global::clinic_ivf.Properties.Resources.lock24;
             this.btnEdit.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnEdit.Location = new System.Drawing.Point(978, 12);
+            this.btnEdit.Location = new System.Drawing.Point(961, 12);
             this.btnEdit.Name = "btnEdit";
             this.btnEdit.Size = new System.Drawing.Size(83, 39);
             this.btnEdit.TabIndex = 536;
@@ -416,7 +422,7 @@
             // 
             this.btnSave.Image = global::clinic_ivf.Properties.Resources.download_database24;
             this.btnSave.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnSave.Location = new System.Drawing.Point(978, 57);
+            this.btnSave.Location = new System.Drawing.Point(961, 57);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(83, 39);
             this.btnSave.TabIndex = 535;
@@ -508,7 +514,7 @@
             | C1.Win.C1Input.FormatInfoInheritFlags.TrimEnd)));
             this.txtDobMale.GMTOffset = System.TimeSpan.Parse("00:00:00");
             this.txtDobMale.ImagePadding = new System.Windows.Forms.Padding(0);
-            this.txtDobMale.Location = new System.Drawing.Point(430, 63);
+            this.txtDobMale.Location = new System.Drawing.Point(406, 63);
             this.txtDobMale.Name = "txtDobMale";
             this.txtDobMale.Size = new System.Drawing.Size(128, 18);
             this.txtDobMale.TabIndex = 533;
@@ -526,7 +532,7 @@
             this.cboDoctor.ImagePadding = new System.Windows.Forms.Padding(0);
             this.cboDoctor.ItemsDisplayMember = "";
             this.cboDoctor.ItemsValueMember = "";
-            this.cboDoctor.Location = new System.Drawing.Point(766, 19);
+            this.cboDoctor.Location = new System.Drawing.Point(742, 19);
             this.cboDoctor.Name = "cboDoctor";
             this.cboDoctor.Size = new System.Drawing.Size(207, 20);
             this.cboDoctor.Style.DropDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
@@ -543,57 +549,57 @@
             this.label8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
             this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label8.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.label8.Location = new System.Drawing.Point(672, 21);
+            this.label8.Location = new System.Drawing.Point(648, 21);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(54, 16);
             this.label8.TabIndex = 529;
             this.label8.Text = "Doctor :";
             this.theme1.SetTheme(this.label8, "(default)");
             // 
-            // txtLformADate
+            // txtFormADate
             // 
-            this.txtLformADate.AllowSpinLoop = false;
-            this.txtLformADate.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtFormADate.AllowSpinLoop = false;
+            this.txtFormADate.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             // 
             // 
             // 
-            this.txtLformADate.Calendar.ArrowColor = System.Drawing.Color.Black;
-            this.txtLformADate.Calendar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.txtLformADate.Calendar.DayNamesFont = new System.Drawing.Font("Tahoma", 8F);
-            this.txtLformADate.Calendar.Font = new System.Drawing.Font("Tahoma", 8F);
-            this.txtLformADate.Calendar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.txtLformADate.Calendar.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(71)))), ((int)(((byte)(47)))));
-            this.txtLformADate.Calendar.SelectionForeColor = System.Drawing.Color.White;
-            this.txtLformADate.Calendar.TitleBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(230)))));
-            this.txtLformADate.Calendar.TitleFont = new System.Drawing.Font("Tahoma", 8F);
-            this.txtLformADate.Calendar.TitleForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.txtLformADate.Calendar.TodayBorderColor = System.Drawing.Color.White;
-            this.txtLformADate.Calendar.TrailingForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
-            this.txtLformADate.Calendar.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
-            this.txtLformADate.Culture = 1054;
-            this.txtLformADate.CurrentTimeZone = false;
-            this.txtLformADate.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
-            this.txtLformADate.DisplayFormat.CalendarType = C1.Win.C1Input.CalendarType.GregorianCalendar;
-            this.txtLformADate.DisplayFormat.FormatType = C1.Win.C1Input.FormatTypeEnum.ShortDate;
-            this.txtLformADate.DisplayFormat.Inherit = ((C1.Win.C1Input.FormatInfoInheritFlags)(((((C1.Win.C1Input.FormatInfoInheritFlags.CustomFormat | C1.Win.C1Input.FormatInfoInheritFlags.NullText) 
+            this.txtFormADate.Calendar.ArrowColor = System.Drawing.Color.Black;
+            this.txtFormADate.Calendar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.txtFormADate.Calendar.DayNamesFont = new System.Drawing.Font("Tahoma", 8F);
+            this.txtFormADate.Calendar.Font = new System.Drawing.Font("Tahoma", 8F);
+            this.txtFormADate.Calendar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.txtFormADate.Calendar.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(71)))), ((int)(((byte)(47)))));
+            this.txtFormADate.Calendar.SelectionForeColor = System.Drawing.Color.White;
+            this.txtFormADate.Calendar.TitleBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(230)))));
+            this.txtFormADate.Calendar.TitleFont = new System.Drawing.Font("Tahoma", 8F);
+            this.txtFormADate.Calendar.TitleForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.txtFormADate.Calendar.TodayBorderColor = System.Drawing.Color.White;
+            this.txtFormADate.Calendar.TrailingForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
+            this.txtFormADate.Calendar.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            this.txtFormADate.Culture = 1054;
+            this.txtFormADate.CurrentTimeZone = false;
+            this.txtFormADate.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
+            this.txtFormADate.DisplayFormat.CalendarType = C1.Win.C1Input.CalendarType.GregorianCalendar;
+            this.txtFormADate.DisplayFormat.FormatType = C1.Win.C1Input.FormatTypeEnum.ShortDate;
+            this.txtFormADate.DisplayFormat.Inherit = ((C1.Win.C1Input.FormatInfoInheritFlags)(((((C1.Win.C1Input.FormatInfoInheritFlags.CustomFormat | C1.Win.C1Input.FormatInfoInheritFlags.NullText) 
             | C1.Win.C1Input.FormatInfoInheritFlags.EmptyAsNull) 
             | C1.Win.C1Input.FormatInfoInheritFlags.TrimStart) 
             | C1.Win.C1Input.FormatInfoInheritFlags.TrimEnd)));
-            this.txtLformADate.EditFormat.CalendarType = C1.Win.C1Input.CalendarType.GregorianCalendar;
-            this.txtLformADate.EditFormat.FormatType = C1.Win.C1Input.FormatTypeEnum.ShortDate;
-            this.txtLformADate.EditFormat.Inherit = ((C1.Win.C1Input.FormatInfoInheritFlags)(((((C1.Win.C1Input.FormatInfoInheritFlags.CustomFormat | C1.Win.C1Input.FormatInfoInheritFlags.NullText) 
+            this.txtFormADate.EditFormat.CalendarType = C1.Win.C1Input.CalendarType.GregorianCalendar;
+            this.txtFormADate.EditFormat.FormatType = C1.Win.C1Input.FormatTypeEnum.ShortDate;
+            this.txtFormADate.EditFormat.Inherit = ((C1.Win.C1Input.FormatInfoInheritFlags)(((((C1.Win.C1Input.FormatInfoInheritFlags.CustomFormat | C1.Win.C1Input.FormatInfoInheritFlags.NullText) 
             | C1.Win.C1Input.FormatInfoInheritFlags.EmptyAsNull) 
             | C1.Win.C1Input.FormatInfoInheritFlags.TrimStart) 
             | C1.Win.C1Input.FormatInfoInheritFlags.TrimEnd)));
-            this.txtLformADate.GMTOffset = System.TimeSpan.Parse("00:00:00");
-            this.txtLformADate.ImagePadding = new System.Windows.Forms.Padding(0);
-            this.txtLformADate.Location = new System.Drawing.Point(766, 41);
-            this.txtLformADate.Name = "txtLformADate";
-            this.txtLformADate.Size = new System.Drawing.Size(128, 18);
-            this.txtLformADate.TabIndex = 528;
-            this.txtLformADate.Tag = null;
-            this.theme1.SetTheme(this.txtLformADate, "(default)");
-            this.txtLformADate.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            this.txtFormADate.GMTOffset = System.TimeSpan.Parse("00:00:00");
+            this.txtFormADate.ImagePadding = new System.Windows.Forms.Padding(0);
+            this.txtFormADate.Location = new System.Drawing.Point(742, 41);
+            this.txtFormADate.Name = "txtFormADate";
+            this.txtFormADate.Size = new System.Drawing.Size(128, 18);
+            this.txtFormADate.TabIndex = 528;
+            this.txtFormADate.Tag = null;
+            this.theme1.SetTheme(this.txtFormADate, "(default)");
+            this.txtFormADate.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
             // 
             // label31
             // 
@@ -601,7 +607,7 @@
             this.label31.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
             this.label31.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label31.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.label31.Location = new System.Drawing.Point(672, 43);
+            this.label31.Location = new System.Drawing.Point(648, 43);
             this.label31.Name = "label31";
             this.label31.Size = new System.Drawing.Size(91, 16);
             this.label31.TabIndex = 527;
@@ -665,7 +671,7 @@
             this.txtNameMale.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtNameMale.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
             this.txtNameMale.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.txtNameMale.Location = new System.Drawing.Point(430, 41);
+            this.txtNameMale.Location = new System.Drawing.Point(406, 41);
             this.txtNameMale.Name = "txtNameMale";
             this.txtNameMale.Size = new System.Drawing.Size(207, 20);
             this.txtNameMale.TabIndex = 518;
@@ -715,7 +721,7 @@
             this.txtHnMale.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtHnMale.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
             this.txtHnMale.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.txtHnMale.Location = new System.Drawing.Point(430, 19);
+            this.txtHnMale.Location = new System.Drawing.Point(406, 19);
             this.txtHnMale.Name = "txtHnMale";
             this.txtHnMale.Size = new System.Drawing.Size(207, 20);
             this.txtHnMale.TabIndex = 514;
@@ -766,7 +772,7 @@
             this.groupBox2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
             this.groupBox2.Location = new System.Drawing.Point(0, 111);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(1071, 577);
+            this.groupBox2.Size = new System.Drawing.Size(1059, 577);
             this.groupBox2.TabIndex = 12;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Description";
@@ -775,61 +781,18 @@
             // pnSpermFreezing
             // 
             this.pnSpermFreezing.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.pnSpermFreezing.Controls.Add(this.label19);
+            this.pnSpermFreezing.Controls.Add(this.txtSpermFreezingTimeStart);
             this.pnSpermFreezing.Controls.Add(this.txtSpermFreezingDateEnd);
             this.pnSpermFreezing.Controls.Add(this.label23);
             this.pnSpermFreezing.Controls.Add(this.label24);
             this.pnSpermFreezing.Controls.Add(this.txtSpermFreezingDateStart);
             this.pnSpermFreezing.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.pnSpermFreezing.Location = new System.Drawing.Point(186, 483);
+            this.pnSpermFreezing.Location = new System.Drawing.Point(186, 474);
             this.pnSpermFreezing.Name = "pnSpermFreezing";
-            this.pnSpermFreezing.Size = new System.Drawing.Size(542, 37);
+            this.pnSpermFreezing.Size = new System.Drawing.Size(655, 37);
             this.pnSpermFreezing.TabIndex = 728;
             this.theme1.SetTheme(this.pnSpermFreezing, "(default)");
-            // 
-            // txtSpermFreezingDateEnd
-            // 
-            this.txtSpermFreezingDateEnd.AllowSpinLoop = false;
-            this.txtSpermFreezingDateEnd.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            // 
-            // 
-            // 
-            this.txtSpermFreezingDateEnd.Calendar.ArrowColor = System.Drawing.Color.Black;
-            this.txtSpermFreezingDateEnd.Calendar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.txtSpermFreezingDateEnd.Calendar.DayNamesFont = new System.Drawing.Font("Tahoma", 8F);
-            this.txtSpermFreezingDateEnd.Calendar.Font = new System.Drawing.Font("Tahoma", 8F);
-            this.txtSpermFreezingDateEnd.Calendar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.txtSpermFreezingDateEnd.Calendar.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(71)))), ((int)(((byte)(47)))));
-            this.txtSpermFreezingDateEnd.Calendar.SelectionForeColor = System.Drawing.Color.White;
-            this.txtSpermFreezingDateEnd.Calendar.TitleBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(230)))));
-            this.txtSpermFreezingDateEnd.Calendar.TitleFont = new System.Drawing.Font("Tahoma", 8F);
-            this.txtSpermFreezingDateEnd.Calendar.TitleForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.txtSpermFreezingDateEnd.Calendar.TodayBorderColor = System.Drawing.Color.White;
-            this.txtSpermFreezingDateEnd.Calendar.TrailingForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
-            this.txtSpermFreezingDateEnd.Calendar.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
-            this.txtSpermFreezingDateEnd.Culture = 1054;
-            this.txtSpermFreezingDateEnd.CurrentTimeZone = false;
-            this.txtSpermFreezingDateEnd.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
-            this.txtSpermFreezingDateEnd.DisplayFormat.CalendarType = C1.Win.C1Input.CalendarType.GregorianCalendar;
-            this.txtSpermFreezingDateEnd.DisplayFormat.FormatType = C1.Win.C1Input.FormatTypeEnum.ShortTime;
-            this.txtSpermFreezingDateEnd.DisplayFormat.Inherit = ((C1.Win.C1Input.FormatInfoInheritFlags)(((((C1.Win.C1Input.FormatInfoInheritFlags.CustomFormat | C1.Win.C1Input.FormatInfoInheritFlags.NullText) 
-            | C1.Win.C1Input.FormatInfoInheritFlags.EmptyAsNull) 
-            | C1.Win.C1Input.FormatInfoInheritFlags.TrimStart) 
-            | C1.Win.C1Input.FormatInfoInheritFlags.TrimEnd)));
-            this.txtSpermFreezingDateEnd.EditFormat.CalendarType = C1.Win.C1Input.CalendarType.GregorianCalendar;
-            this.txtSpermFreezingDateEnd.EditFormat.FormatType = C1.Win.C1Input.FormatTypeEnum.ShortTime;
-            this.txtSpermFreezingDateEnd.EditFormat.Inherit = ((C1.Win.C1Input.FormatInfoInheritFlags)(((((C1.Win.C1Input.FormatInfoInheritFlags.CustomFormat | C1.Win.C1Input.FormatInfoInheritFlags.NullText) 
-            | C1.Win.C1Input.FormatInfoInheritFlags.EmptyAsNull) 
-            | C1.Win.C1Input.FormatInfoInheritFlags.TrimStart) 
-            | C1.Win.C1Input.FormatInfoInheritFlags.TrimEnd)));
-            this.txtSpermFreezingDateEnd.GMTOffset = System.TimeSpan.Parse("00:00:00");
-            this.txtSpermFreezingDateEnd.ImagePadding = new System.Windows.Forms.Padding(0);
-            this.txtSpermFreezingDateEnd.Location = new System.Drawing.Point(418, 8);
-            this.txtSpermFreezingDateEnd.Name = "txtSpermFreezingDateEnd";
-            this.txtSpermFreezingDateEnd.Size = new System.Drawing.Size(106, 18);
-            this.txtSpermFreezingDateEnd.TabIndex = 724;
-            this.txtSpermFreezingDateEnd.Tag = null;
-            this.theme1.SetTheme(this.txtSpermFreezingDateEnd, "(default)");
-            this.txtSpermFreezingDateEnd.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
             // 
             // label23
             // 
@@ -837,7 +800,7 @@
             this.label23.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
             this.label23.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label23.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.label23.Location = new System.Drawing.Point(329, 8);
+            this.label23.Location = new System.Drawing.Point(457, 9);
             this.label23.Name = "label23";
             this.label23.Size = new System.Drawing.Size(83, 16);
             this.label23.TabIndex = 723;
@@ -850,7 +813,7 @@
             this.label24.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
             this.label24.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label24.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.label24.Location = new System.Drawing.Point(6, 8);
+            this.label24.Location = new System.Drawing.Point(6, 9);
             this.label24.Name = "label24";
             this.label24.Size = new System.Drawing.Size(104, 16);
             this.label24.TabIndex = 722;
@@ -879,6 +842,7 @@
             this.txtSpermFreezingDateStart.Calendar.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
             this.txtSpermFreezingDateStart.Culture = 1054;
             this.txtSpermFreezingDateStart.CurrentTimeZone = false;
+            this.txtSpermFreezingDateStart.DateTimeInput = false;
             this.txtSpermFreezingDateStart.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
             this.txtSpermFreezingDateStart.DisplayFormat.CalendarType = C1.Win.C1Input.CalendarType.GregorianCalendar;
             this.txtSpermFreezingDateStart.DisplayFormat.FormatType = C1.Win.C1Input.FormatTypeEnum.ShortDate;
@@ -896,7 +860,7 @@
             this.txtSpermFreezingDateStart.ImagePadding = new System.Windows.Forms.Padding(0);
             this.txtSpermFreezingDateStart.Location = new System.Drawing.Point(116, 8);
             this.txtSpermFreezingDateStart.Name = "txtSpermFreezingDateStart";
-            this.txtSpermFreezingDateStart.Size = new System.Drawing.Size(176, 18);
+            this.txtSpermFreezingDateStart.Size = new System.Drawing.Size(125, 18);
             this.txtSpermFreezingDateStart.TabIndex = 721;
             this.txtSpermFreezingDateStart.Tag = null;
             this.theme1.SetTheme(this.txtSpermFreezingDateStart, "(default)");
@@ -905,61 +869,18 @@
             // pnSpermAnalysis
             // 
             this.pnSpermAnalysis.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.pnSpermAnalysis.Controls.Add(this.txtSpermAnalysisDateEnd);
+            this.pnSpermAnalysis.Controls.Add(this.label18);
+            this.pnSpermAnalysis.Controls.Add(this.txtSpermAnalysisTimeStart);
             this.pnSpermAnalysis.Controls.Add(this.label22);
+            this.pnSpermAnalysis.Controls.Add(this.txtSpermAnalysisDateEnd);
             this.pnSpermAnalysis.Controls.Add(this.label21);
             this.pnSpermAnalysis.Controls.Add(this.txtSpermAnalysisDateStart);
             this.pnSpermAnalysis.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.pnSpermAnalysis.Location = new System.Drawing.Point(186, 450);
+            this.pnSpermAnalysis.Location = new System.Drawing.Point(186, 441);
             this.pnSpermAnalysis.Name = "pnSpermAnalysis";
-            this.pnSpermAnalysis.Size = new System.Drawing.Size(543, 27);
+            this.pnSpermAnalysis.Size = new System.Drawing.Size(656, 27);
             this.pnSpermAnalysis.TabIndex = 724;
             this.theme1.SetTheme(this.pnSpermAnalysis, "(default)");
-            // 
-            // txtSpermAnalysisDateEnd
-            // 
-            this.txtSpermAnalysisDateEnd.AllowSpinLoop = false;
-            this.txtSpermAnalysisDateEnd.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            // 
-            // 
-            // 
-            this.txtSpermAnalysisDateEnd.Calendar.ArrowColor = System.Drawing.Color.Black;
-            this.txtSpermAnalysisDateEnd.Calendar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.txtSpermAnalysisDateEnd.Calendar.DayNamesFont = new System.Drawing.Font("Tahoma", 8F);
-            this.txtSpermAnalysisDateEnd.Calendar.Font = new System.Drawing.Font("Tahoma", 8F);
-            this.txtSpermAnalysisDateEnd.Calendar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.txtSpermAnalysisDateEnd.Calendar.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(71)))), ((int)(((byte)(47)))));
-            this.txtSpermAnalysisDateEnd.Calendar.SelectionForeColor = System.Drawing.Color.White;
-            this.txtSpermAnalysisDateEnd.Calendar.TitleBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(230)))));
-            this.txtSpermAnalysisDateEnd.Calendar.TitleFont = new System.Drawing.Font("Tahoma", 8F);
-            this.txtSpermAnalysisDateEnd.Calendar.TitleForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.txtSpermAnalysisDateEnd.Calendar.TodayBorderColor = System.Drawing.Color.White;
-            this.txtSpermAnalysisDateEnd.Calendar.TrailingForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
-            this.txtSpermAnalysisDateEnd.Calendar.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
-            this.txtSpermAnalysisDateEnd.Culture = 1054;
-            this.txtSpermAnalysisDateEnd.CurrentTimeZone = false;
-            this.txtSpermAnalysisDateEnd.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
-            this.txtSpermAnalysisDateEnd.DisplayFormat.CalendarType = C1.Win.C1Input.CalendarType.GregorianCalendar;
-            this.txtSpermAnalysisDateEnd.DisplayFormat.FormatType = C1.Win.C1Input.FormatTypeEnum.ShortTime;
-            this.txtSpermAnalysisDateEnd.DisplayFormat.Inherit = ((C1.Win.C1Input.FormatInfoInheritFlags)(((((C1.Win.C1Input.FormatInfoInheritFlags.CustomFormat | C1.Win.C1Input.FormatInfoInheritFlags.NullText) 
-            | C1.Win.C1Input.FormatInfoInheritFlags.EmptyAsNull) 
-            | C1.Win.C1Input.FormatInfoInheritFlags.TrimStart) 
-            | C1.Win.C1Input.FormatInfoInheritFlags.TrimEnd)));
-            this.txtSpermAnalysisDateEnd.EditFormat.CalendarType = C1.Win.C1Input.CalendarType.GregorianCalendar;
-            this.txtSpermAnalysisDateEnd.EditFormat.FormatType = C1.Win.C1Input.FormatTypeEnum.ShortTime;
-            this.txtSpermAnalysisDateEnd.EditFormat.Inherit = ((C1.Win.C1Input.FormatInfoInheritFlags)(((((C1.Win.C1Input.FormatInfoInheritFlags.CustomFormat | C1.Win.C1Input.FormatInfoInheritFlags.NullText) 
-            | C1.Win.C1Input.FormatInfoInheritFlags.EmptyAsNull) 
-            | C1.Win.C1Input.FormatInfoInheritFlags.TrimStart) 
-            | C1.Win.C1Input.FormatInfoInheritFlags.TrimEnd)));
-            this.txtSpermAnalysisDateEnd.GMTOffset = System.TimeSpan.Parse("00:00:00");
-            this.txtSpermAnalysisDateEnd.ImagePadding = new System.Windows.Forms.Padding(0);
-            this.txtSpermAnalysisDateEnd.Location = new System.Drawing.Point(422, 3);
-            this.txtSpermAnalysisDateEnd.Name = "txtSpermAnalysisDateEnd";
-            this.txtSpermAnalysisDateEnd.Size = new System.Drawing.Size(106, 18);
-            this.txtSpermAnalysisDateEnd.TabIndex = 720;
-            this.txtSpermAnalysisDateEnd.Tag = null;
-            this.theme1.SetTheme(this.txtSpermAnalysisDateEnd, "(default)");
-            this.txtSpermAnalysisDateEnd.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
             // 
             // label22
             // 
@@ -967,7 +888,7 @@
             this.label22.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
             this.label22.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label22.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.label22.Location = new System.Drawing.Point(333, 3);
+            this.label22.Location = new System.Drawing.Point(461, 5);
             this.label22.Name = "label22";
             this.label22.Size = new System.Drawing.Size(83, 16);
             this.label22.TabIndex = 719;
@@ -980,7 +901,7 @@
             this.label21.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
             this.label21.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label21.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.label21.Location = new System.Drawing.Point(10, 3);
+            this.label21.Location = new System.Drawing.Point(10, 5);
             this.label21.Name = "label21";
             this.label21.Size = new System.Drawing.Size(104, 16);
             this.label21.TabIndex = 718;
@@ -1009,6 +930,7 @@
             this.txtSpermAnalysisDateStart.Calendar.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
             this.txtSpermAnalysisDateStart.Culture = 1054;
             this.txtSpermAnalysisDateStart.CurrentTimeZone = false;
+            this.txtSpermAnalysisDateStart.DateTimeInput = false;
             this.txtSpermAnalysisDateStart.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
             this.txtSpermAnalysisDateStart.DisplayFormat.CalendarType = C1.Win.C1Input.CalendarType.GregorianCalendar;
             this.txtSpermAnalysisDateStart.DisplayFormat.FormatType = C1.Win.C1Input.FormatTypeEnum.ShortDate;
@@ -1026,7 +948,7 @@
             this.txtSpermAnalysisDateStart.ImagePadding = new System.Windows.Forms.Padding(0);
             this.txtSpermAnalysisDateStart.Location = new System.Drawing.Point(120, 3);
             this.txtSpermAnalysisDateStart.Name = "txtSpermAnalysisDateStart";
-            this.txtSpermAnalysisDateStart.Size = new System.Drawing.Size(176, 18);
+            this.txtSpermAnalysisDateStart.Size = new System.Drawing.Size(121, 18);
             this.txtSpermAnalysisDateStart.TabIndex = 717;
             this.txtSpermAnalysisDateStart.Tag = null;
             this.theme1.SetTheme(this.txtSpermAnalysisDateStart, "(default)");
@@ -1040,7 +962,7 @@
             this.chkSpermFreezing.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.chkSpermFreezing.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.chkSpermFreezing.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.chkSpermFreezing.Location = new System.Drawing.Point(11, 485);
+            this.chkSpermFreezing.Location = new System.Drawing.Point(11, 476);
             this.chkSpermFreezing.Name = "chkSpermFreezing";
             this.chkSpermFreezing.Padding = new System.Windows.Forms.Padding(4, 1, 1, 1);
             this.chkSpermFreezing.Size = new System.Drawing.Size(140, 24);
@@ -1059,7 +981,7 @@
             this.chkSpermAnalysis.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.chkSpermAnalysis.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.chkSpermAnalysis.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.chkSpermAnalysis.Location = new System.Drawing.Point(11, 450);
+            this.chkSpermAnalysis.Location = new System.Drawing.Point(11, 441);
             this.chkSpermAnalysis.Name = "chkSpermAnalysis";
             this.chkSpermAnalysis.Padding = new System.Windows.Forms.Padding(4, 1, 1, 1);
             this.chkSpermAnalysis.Size = new System.Drawing.Size(140, 24);
@@ -1080,7 +1002,7 @@
             this.groupBox7.Controls.Add(this.txtEmbryoTranferDate);
             this.groupBox7.Controls.Add(this.label14);
             this.groupBox7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.groupBox7.Location = new System.Drawing.Point(11, 311);
+            this.groupBox7.Location = new System.Drawing.Point(11, 303);
             this.groupBox7.Name = "groupBox7";
             this.groupBox7.Size = new System.Drawing.Size(1056, 130);
             this.groupBox7.TabIndex = 13;
@@ -1425,10 +1347,10 @@
             // pnFreshSprem
             // 
             this.pnFreshSprem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.pnFreshSprem.Controls.Add(this.txtFreshSpermEndTime);
             this.pnFreshSprem.Controls.Add(this.label12);
             this.pnFreshSprem.Controls.Add(this.txtFreshSpermColTime);
             this.pnFreshSprem.Controls.Add(this.label13);
-            this.pnFreshSprem.Controls.Add(this.txtFreshSpermEndTime);
             this.pnFreshSprem.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
             this.pnFreshSprem.Location = new System.Drawing.Point(159, 40);
             this.pnFreshSprem.Name = "pnFreshSprem";
@@ -1449,52 +1371,6 @@
             this.label12.Text = "Collect time :";
             this.theme1.SetTheme(this.label12, "(default)");
             // 
-            // txtFreshSpermColTime
-            // 
-            this.txtFreshSpermColTime.AllowSpinLoop = false;
-            this.txtFreshSpermColTime.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            // 
-            // 
-            // 
-            this.txtFreshSpermColTime.Calendar.ArrowColor = System.Drawing.Color.Black;
-            this.txtFreshSpermColTime.Calendar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.txtFreshSpermColTime.Calendar.DayNamesFont = new System.Drawing.Font("Tahoma", 8F);
-            this.txtFreshSpermColTime.Calendar.Font = new System.Drawing.Font("Tahoma", 8F);
-            this.txtFreshSpermColTime.Calendar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.txtFreshSpermColTime.Calendar.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(71)))), ((int)(((byte)(47)))));
-            this.txtFreshSpermColTime.Calendar.SelectionForeColor = System.Drawing.Color.White;
-            this.txtFreshSpermColTime.Calendar.TitleBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(230)))));
-            this.txtFreshSpermColTime.Calendar.TitleFont = new System.Drawing.Font("Tahoma", 8F);
-            this.txtFreshSpermColTime.Calendar.TitleForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.txtFreshSpermColTime.Calendar.TodayBorderColor = System.Drawing.Color.White;
-            this.txtFreshSpermColTime.Calendar.TrailingForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
-            this.txtFreshSpermColTime.Calendar.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
-            this.txtFreshSpermColTime.Culture = 1054;
-            this.txtFreshSpermColTime.CurrentTimeZone = false;
-            this.txtFreshSpermColTime.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
-            this.txtFreshSpermColTime.DisplayFormat.CalendarType = C1.Win.C1Input.CalendarType.GregorianCalendar;
-            this.txtFreshSpermColTime.DisplayFormat.FormatType = C1.Win.C1Input.FormatTypeEnum.ShortTime;
-            this.txtFreshSpermColTime.DisplayFormat.Inherit = ((C1.Win.C1Input.FormatInfoInheritFlags)(((((C1.Win.C1Input.FormatInfoInheritFlags.CustomFormat | C1.Win.C1Input.FormatInfoInheritFlags.NullText) 
-            | C1.Win.C1Input.FormatInfoInheritFlags.EmptyAsNull) 
-            | C1.Win.C1Input.FormatInfoInheritFlags.TrimStart) 
-            | C1.Win.C1Input.FormatInfoInheritFlags.TrimEnd)));
-            this.txtFreshSpermColTime.EditFormat.CalendarType = C1.Win.C1Input.CalendarType.GregorianCalendar;
-            this.txtFreshSpermColTime.EditFormat.FormatType = C1.Win.C1Input.FormatTypeEnum.ShortTime;
-            this.txtFreshSpermColTime.EditFormat.Inherit = ((C1.Win.C1Input.FormatInfoInheritFlags)(((((C1.Win.C1Input.FormatInfoInheritFlags.CustomFormat | C1.Win.C1Input.FormatInfoInheritFlags.NullText) 
-            | C1.Win.C1Input.FormatInfoInheritFlags.EmptyAsNull) 
-            | C1.Win.C1Input.FormatInfoInheritFlags.TrimStart) 
-            | C1.Win.C1Input.FormatInfoInheritFlags.TrimEnd)));
-            this.txtFreshSpermColTime.FormatType = C1.Win.C1Input.FormatTypeEnum.ShortTime;
-            this.txtFreshSpermColTime.GMTOffset = System.TimeSpan.Parse("00:00:00");
-            this.txtFreshSpermColTime.ImagePadding = new System.Windows.Forms.Padding(0);
-            this.txtFreshSpermColTime.Location = new System.Drawing.Point(86, 6);
-            this.txtFreshSpermColTime.Name = "txtFreshSpermColTime";
-            this.txtFreshSpermColTime.Size = new System.Drawing.Size(106, 18);
-            this.txtFreshSpermColTime.TabIndex = 710;
-            this.txtFreshSpermColTime.Tag = null;
-            this.theme1.SetTheme(this.txtFreshSpermColTime, "(default)");
-            this.txtFreshSpermColTime.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
-            // 
             // label13
             // 
             this.label13.AutoSize = true;
@@ -1508,56 +1384,11 @@
             this.label13.Text = "Finish time :";
             this.theme1.SetTheme(this.label13, "(default)");
             // 
-            // txtFreshSpermEndTime
-            // 
-            this.txtFreshSpermEndTime.AllowSpinLoop = false;
-            this.txtFreshSpermEndTime.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            // 
-            // 
-            // 
-            this.txtFreshSpermEndTime.Calendar.ArrowColor = System.Drawing.Color.Black;
-            this.txtFreshSpermEndTime.Calendar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.txtFreshSpermEndTime.Calendar.DayNamesFont = new System.Drawing.Font("Tahoma", 8F);
-            this.txtFreshSpermEndTime.Calendar.Font = new System.Drawing.Font("Tahoma", 8F);
-            this.txtFreshSpermEndTime.Calendar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.txtFreshSpermEndTime.Calendar.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(71)))), ((int)(((byte)(47)))));
-            this.txtFreshSpermEndTime.Calendar.SelectionForeColor = System.Drawing.Color.White;
-            this.txtFreshSpermEndTime.Calendar.TitleBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(230)))));
-            this.txtFreshSpermEndTime.Calendar.TitleFont = new System.Drawing.Font("Tahoma", 8F);
-            this.txtFreshSpermEndTime.Calendar.TitleForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.txtFreshSpermEndTime.Calendar.TodayBorderColor = System.Drawing.Color.White;
-            this.txtFreshSpermEndTime.Calendar.TrailingForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
-            this.txtFreshSpermEndTime.Calendar.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
-            this.txtFreshSpermEndTime.Culture = 1054;
-            this.txtFreshSpermEndTime.CurrentTimeZone = false;
-            this.txtFreshSpermEndTime.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
-            this.txtFreshSpermEndTime.DisplayFormat.CalendarType = C1.Win.C1Input.CalendarType.GregorianCalendar;
-            this.txtFreshSpermEndTime.DisplayFormat.FormatType = C1.Win.C1Input.FormatTypeEnum.ShortTime;
-            this.txtFreshSpermEndTime.DisplayFormat.Inherit = ((C1.Win.C1Input.FormatInfoInheritFlags)(((((C1.Win.C1Input.FormatInfoInheritFlags.CustomFormat | C1.Win.C1Input.FormatInfoInheritFlags.NullText) 
-            | C1.Win.C1Input.FormatInfoInheritFlags.EmptyAsNull) 
-            | C1.Win.C1Input.FormatInfoInheritFlags.TrimStart) 
-            | C1.Win.C1Input.FormatInfoInheritFlags.TrimEnd)));
-            this.txtFreshSpermEndTime.EditFormat.CalendarType = C1.Win.C1Input.CalendarType.GregorianCalendar;
-            this.txtFreshSpermEndTime.EditFormat.FormatType = C1.Win.C1Input.FormatTypeEnum.ShortTime;
-            this.txtFreshSpermEndTime.EditFormat.Inherit = ((C1.Win.C1Input.FormatInfoInheritFlags)(((((C1.Win.C1Input.FormatInfoInheritFlags.CustomFormat | C1.Win.C1Input.FormatInfoInheritFlags.NullText) 
-            | C1.Win.C1Input.FormatInfoInheritFlags.EmptyAsNull) 
-            | C1.Win.C1Input.FormatInfoInheritFlags.TrimStart) 
-            | C1.Win.C1Input.FormatInfoInheritFlags.TrimEnd)));
-            this.txtFreshSpermEndTime.GMTOffset = System.TimeSpan.Parse("00:00:00");
-            this.txtFreshSpermEndTime.ImagePadding = new System.Windows.Forms.Padding(0);
-            this.txtFreshSpermEndTime.Location = new System.Drawing.Point(275, 4);
-            this.txtFreshSpermEndTime.Name = "txtFreshSpermEndTime";
-            this.txtFreshSpermEndTime.Size = new System.Drawing.Size(106, 18);
-            this.txtFreshSpermEndTime.TabIndex = 712;
-            this.txtFreshSpermEndTime.Tag = null;
-            this.theme1.SetTheme(this.txtFreshSpermEndTime, "(default)");
-            this.txtFreshSpermEndTime.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
-            // 
             // btnPrint
             // 
             this.btnPrint.Image = global::clinic_ivf.Properties.Resources.print;
             this.btnPrint.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnPrint.Location = new System.Drawing.Point(966, 19);
+            this.btnPrint.Location = new System.Drawing.Point(953, 19);
             this.btnPrint.Name = "btnPrint";
             this.btnPrint.Size = new System.Drawing.Size(79, 34);
             this.btnPrint.TabIndex = 728;
@@ -2021,7 +1852,7 @@
             | C1.Win.C1Input.FormatInfoInheritFlags.TrimEnd)));
             this.txtIUIDate.GMTOffset = System.TimeSpan.Parse("00:00:00");
             this.txtIUIDate.ImagePadding = new System.Windows.Forms.Padding(0);
-            this.txtIUIDate.Location = new System.Drawing.Point(108, 552);
+            this.txtIUIDate.Location = new System.Drawing.Point(108, 543);
             this.txtIUIDate.Name = "txtIUIDate";
             this.txtIUIDate.Size = new System.Drawing.Size(176, 18);
             this.txtIUIDate.TabIndex = 724;
@@ -2066,7 +1897,7 @@
             | C1.Win.C1Input.FormatInfoInheritFlags.TrimEnd)));
             this.txtPasaTeseDate.GMTOffset = System.TimeSpan.Parse("00:00:00");
             this.txtPasaTeseDate.ImagePadding = new System.Windows.Forms.Padding(0);
-            this.txtPasaTeseDate.Location = new System.Drawing.Point(108, 526);
+            this.txtPasaTeseDate.Location = new System.Drawing.Point(108, 517);
             this.txtPasaTeseDate.Name = "txtPasaTeseDate";
             this.txtPasaTeseDate.Size = new System.Drawing.Size(176, 18);
             this.txtPasaTeseDate.TabIndex = 723;
@@ -2080,7 +1911,7 @@
             this.label25.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
             this.label25.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label25.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.label25.Location = new System.Drawing.Point(12, 552);
+            this.label25.Location = new System.Drawing.Point(12, 543);
             this.label25.Name = "label25";
             this.label25.Size = new System.Drawing.Size(30, 16);
             this.label25.TabIndex = 722;
@@ -2093,18 +1924,128 @@
             this.label20.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
             this.label20.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label20.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.label20.Location = new System.Drawing.Point(12, 526);
+            this.label20.Location = new System.Drawing.Point(12, 517);
             this.label20.Name = "label20";
             this.label20.Size = new System.Drawing.Size(90, 16);
             this.label20.TabIndex = 711;
             this.label20.Text = "PESA/TESE :";
             this.theme1.SetTheme(this.label20, "(default)");
             // 
+            // txtFreshSpermColTime
+            // 
+            this.txtFreshSpermColTime.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtFreshSpermColTime.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
+            this.txtFreshSpermColTime.EditMask = "00:00";
+            this.txtFreshSpermColTime.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.txtFreshSpermColTime.Location = new System.Drawing.Point(92, 6);
+            this.txtFreshSpermColTime.Name = "txtFreshSpermColTime";
+            this.txtFreshSpermColTime.Size = new System.Drawing.Size(91, 20);
+            this.txtFreshSpermColTime.TabIndex = 730;
+            this.txtFreshSpermColTime.Tag = null;
+            this.theme1.SetTheme(this.txtFreshSpermColTime, "(default)");
+            this.txtFreshSpermColTime.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            // 
+            // txtFreshSpermEndTime
+            // 
+            this.txtFreshSpermEndTime.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtFreshSpermEndTime.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
+            this.txtFreshSpermEndTime.EditMask = "00:00";
+            this.txtFreshSpermEndTime.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.txtFreshSpermEndTime.Location = new System.Drawing.Point(281, 6);
+            this.txtFreshSpermEndTime.Name = "txtFreshSpermEndTime";
+            this.txtFreshSpermEndTime.Size = new System.Drawing.Size(91, 20);
+            this.txtFreshSpermEndTime.TabIndex = 731;
+            this.txtFreshSpermEndTime.Tag = null;
+            this.theme1.SetTheme(this.txtFreshSpermEndTime, "(default)");
+            this.txtFreshSpermEndTime.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            // 
+            // txtSpermAnalysisDateEnd
+            // 
+            this.txtSpermAnalysisDateEnd.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtSpermAnalysisDateEnd.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
+            this.txtSpermAnalysisDateEnd.EditMask = "00:00";
+            this.txtSpermAnalysisDateEnd.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.txtSpermAnalysisDateEnd.Location = new System.Drawing.Point(544, 3);
+            this.txtSpermAnalysisDateEnd.Name = "txtSpermAnalysisDateEnd";
+            this.txtSpermAnalysisDateEnd.Size = new System.Drawing.Size(91, 20);
+            this.txtSpermAnalysisDateEnd.TabIndex = 732;
+            this.txtSpermAnalysisDateEnd.Tag = null;
+            this.theme1.SetTheme(this.txtSpermAnalysisDateEnd, "(default)");
+            this.txtSpermAnalysisDateEnd.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            // 
+            // txtSpermFreezingDateEnd
+            // 
+            this.txtSpermFreezingDateEnd.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtSpermFreezingDateEnd.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
+            this.txtSpermFreezingDateEnd.EditMask = "00:00";
+            this.txtSpermFreezingDateEnd.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.txtSpermFreezingDateEnd.Location = new System.Drawing.Point(544, 8);
+            this.txtSpermFreezingDateEnd.Name = "txtSpermFreezingDateEnd";
+            this.txtSpermFreezingDateEnd.Size = new System.Drawing.Size(91, 20);
+            this.txtSpermFreezingDateEnd.TabIndex = 733;
+            this.txtSpermFreezingDateEnd.Tag = null;
+            this.theme1.SetTheme(this.txtSpermFreezingDateEnd, "(default)");
+            this.txtSpermFreezingDateEnd.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            // 
+            // label18
+            // 
+            this.label18.AutoSize = true;
+            this.label18.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.label18.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label18.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.label18.Location = new System.Drawing.Point(256, 5);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(75, 16);
+            this.label18.TabIndex = 733;
+            this.label18.Text = "Time Start :";
+            this.theme1.SetTheme(this.label18, "(default)");
+            // 
+            // txtSpermAnalysisTimeStart
+            // 
+            this.txtSpermAnalysisTimeStart.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtSpermAnalysisTimeStart.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
+            this.txtSpermAnalysisTimeStart.EditMask = "00:00";
+            this.txtSpermAnalysisTimeStart.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.txtSpermAnalysisTimeStart.Location = new System.Drawing.Point(339, 3);
+            this.txtSpermAnalysisTimeStart.Name = "txtSpermAnalysisTimeStart";
+            this.txtSpermAnalysisTimeStart.Size = new System.Drawing.Size(91, 20);
+            this.txtSpermAnalysisTimeStart.TabIndex = 734;
+            this.txtSpermAnalysisTimeStart.Tag = null;
+            this.theme1.SetTheme(this.txtSpermAnalysisTimeStart, "(default)");
+            this.txtSpermAnalysisTimeStart.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            // 
+            // label19
+            // 
+            this.label19.AutoSize = true;
+            this.label19.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.label19.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label19.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.label19.Location = new System.Drawing.Point(256, 9);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(75, 16);
+            this.label19.TabIndex = 735;
+            this.label19.Text = "Time Start :";
+            this.theme1.SetTheme(this.label19, "(default)");
+            // 
+            // txtSpermFreezingTimeStart
+            // 
+            this.txtSpermFreezingTimeStart.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtSpermFreezingTimeStart.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
+            this.txtSpermFreezingTimeStart.EditMask = "00:00";
+            this.txtSpermFreezingTimeStart.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.txtSpermFreezingTimeStart.Location = new System.Drawing.Point(339, 8);
+            this.txtSpermFreezingTimeStart.Name = "txtSpermFreezingTimeStart";
+            this.txtSpermFreezingTimeStart.Size = new System.Drawing.Size(91, 20);
+            this.txtSpermFreezingTimeStart.TabIndex = 736;
+            this.txtSpermFreezingTimeStart.Tag = null;
+            this.theme1.SetTheme(this.txtSpermFreezingTimeStart, "(default)");
+            this.txtSpermFreezingTimeStart.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            // 
             // FrmLabFormA
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1071, 710);
+            this.ClientSize = new System.Drawing.Size(1059, 710);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.sB);
@@ -2131,7 +2072,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtDobFeMale)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtDobMale)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cboDoctor)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtLformADate)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtFormADate)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtNameMale)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtNameFeMale)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.c1Button1)).EndInit();
@@ -2141,11 +2082,9 @@
             this.groupBox2.PerformLayout();
             this.pnSpermFreezing.ResumeLayout(false);
             this.pnSpermFreezing.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.txtSpermFreezingDateEnd)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtSpermFreezingDateStart)).EndInit();
             this.pnSpermAnalysis.ResumeLayout(false);
             this.pnSpermAnalysis.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.txtSpermAnalysisDateEnd)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtSpermAnalysisDateStart)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkSpermFreezing)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkSpermAnalysis)).EndInit();
@@ -2164,8 +2103,6 @@
             this.groupBox6.PerformLayout();
             this.pnFreshSprem.ResumeLayout(false);
             this.pnFreshSprem.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.txtFreshSpermColTime)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtFreshSpermEndTime)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnPrint)).EndInit();
             this.gbEmbryoFresh.ResumeLayout(false);
             this.gbEmbryoFresh.PerformLayout();
@@ -2185,6 +2122,12 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtOPUDate)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtIUIDate)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtPasaTeseDate)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtFreshSpermColTime)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtFreshSpermEndTime)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtSpermAnalysisDateEnd)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtSpermFreezingDateEnd)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtSpermAnalysisTimeStart)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtSpermFreezingTimeStart)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -2205,7 +2148,7 @@
         private C1.Win.C1Input.C1DateEdit txtDobMale;
         private C1.Win.C1Input.C1ComboBox cboDoctor;
         private System.Windows.Forms.Label label8;
-        private C1.Win.C1Input.C1DateEdit txtLformADate;
+        private C1.Win.C1Input.C1DateEdit txtFormADate;
         private System.Windows.Forms.Label label31;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label5;
@@ -2236,9 +2179,7 @@
         private System.Windows.Forms.RadioButton chkNgsDay5;
         private System.Windows.Forms.RadioButton chkNgsDay3;
         private C1.Win.C1Input.C1CheckBox chkSpermHa;
-        private C1.Win.C1Input.C1DateEdit txtFreshSpermEndTime;
         private System.Windows.Forms.Label label13;
-        private C1.Win.C1Input.C1DateEdit txtFreshSpermColTime;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Label label11;
         private C1.Win.C1Input.C1TextBox txtNoofOocyteLt;
@@ -2275,12 +2216,10 @@
         private C1.Win.C1Input.C1TextBox txtFETNo;
         private C1.Win.C1Input.C1CheckBox chkEmbryoGlue;
         private System.Windows.Forms.Panel pnSpermAnalysis;
-        private C1.Win.C1Input.C1DateEdit txtSpermAnalysisDateEnd;
         private System.Windows.Forms.Label label22;
         private System.Windows.Forms.Label label21;
         private C1.Win.C1Input.C1DateEdit txtSpermAnalysisDateStart;
         private System.Windows.Forms.Panel pnSpermFreezing;
-        private C1.Win.C1Input.C1DateEdit txtSpermFreezingDateEnd;
         private System.Windows.Forms.Label label23;
         private System.Windows.Forms.Label label24;
         private C1.Win.C1Input.C1DateEdit txtSpermFreezingDateStart;
@@ -2289,5 +2228,13 @@
         private C1.Win.C1Input.C1TextBox txtVsId;
         private C1.Win.C1Input.C1TextBox txtVnOld;
         private C1.Win.C1Input.C1TextBox txtHnOld;
+        private C1.Win.C1Input.C1TextBox txtFreshSpermColTime;
+        private C1.Win.C1Input.C1TextBox txtFreshSpermEndTime;
+        private C1.Win.C1Input.C1TextBox txtSpermFreezingDateEnd;
+        private C1.Win.C1Input.C1TextBox txtSpermAnalysisDateEnd;
+        private System.Windows.Forms.Label label19;
+        private C1.Win.C1Input.C1TextBox txtSpermFreezingTimeStart;
+        private System.Windows.Forms.Label label18;
+        private C1.Win.C1Input.C1TextBox txtSpermAnalysisTimeStart;
     }
 }

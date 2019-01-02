@@ -66,6 +66,7 @@
             this.m_picPhoto = new System.Windows.Forms.PictureBox();
             this.panel3 = new System.Windows.Forms.Panel();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.btnPrint = new C1.Win.C1Input.C1Button();
             this.txtIDOld = new C1.Win.C1Input.C1TextBox();
             this.tC1 = new C1.Win.C1Command.C1DockingTab();
             this.tabPtt = new C1.Win.C1Command.C1DockingTabPage();
@@ -119,7 +120,6 @@
             this.tC = new C1.Win.C1Command.C1DockingTab();
             this.tabVisit = new C1.Win.C1Command.C1DockingTabPage();
             this.tabDay = new C1.Win.C1Command.C1DockingTabPage();
-            this.btnPrint = new C1.Win.C1Input.C1Button();
             ((System.ComponentModel.ISupportInitialize)(this.theme1)).BeginInit();
             this.sB.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtRemarkpApm)).BeginInit();
@@ -149,6 +149,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.m_picPhoto)).BeginInit();
             this.panel3.SuspendLayout();
             this.groupBox2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.btnPrint)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtIDOld)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tC1)).BeginInit();
             this.tC1.SuspendLayout();
@@ -192,7 +193,6 @@
             this.tC.SuspendLayout();
             this.tabVisit.SuspendLayout();
             this.tabDay.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.btnPrint)).BeginInit();
             this.SuspendLayout();
             // 
             // theme1
@@ -795,6 +795,20 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Appointment";
             this.theme1.SetTheme(this.groupBox2, "(default)");
+            // 
+            // btnPrint
+            // 
+            this.btnPrint.Image = global::clinic_ivf.Properties.Resources.print;
+            this.btnPrint.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnPrint.Location = new System.Drawing.Point(704, 140);
+            this.btnPrint.Name = "btnPrint";
+            this.btnPrint.Size = new System.Drawing.Size(79, 34);
+            this.btnPrint.TabIndex = 687;
+            this.btnPrint.Text = "Print";
+            this.btnPrint.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.theme1.SetTheme(this.btnPrint, "(default)");
+            this.btnPrint.UseVisualStyleBackColor = true;
+            this.btnPrint.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
             // 
             // txtIDOld
             // 
@@ -1680,20 +1694,6 @@
             this.tabDay.TabIndex = 1;
             this.tabDay.Text = "Day";
             // 
-            // btnPrint
-            // 
-            this.btnPrint.Image = global::clinic_ivf.Properties.Resources.print;
-            this.btnPrint.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnPrint.Location = new System.Drawing.Point(704, 140);
-            this.btnPrint.Name = "btnPrint";
-            this.btnPrint.Size = new System.Drawing.Size(79, 34);
-            this.btnPrint.TabIndex = 687;
-            this.btnPrint.Text = "Print";
-            this.btnPrint.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.theme1.SetTheme(this.btnPrint, "(default)");
-            this.btnPrint.UseVisualStyleBackColor = true;
-            this.btnPrint.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
-            // 
             // FrmAppointmentAdd
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1737,6 +1737,7 @@
             this.panel3.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.btnPrint)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtIDOld)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tC1)).EndInit();
             this.tC1.ResumeLayout(false);
@@ -1782,7 +1783,6 @@
             this.tC.ResumeLayout(false);
             this.tabVisit.ResumeLayout(false);
             this.tabDay.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.btnPrint)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

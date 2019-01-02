@@ -72,6 +72,10 @@ namespace clinic_ivf.objdb
             lformA.hn_female = "hn_female";
             lformA.name_male = "name_male";
             lformA.name_female = "name_female";
+            lformA.fresh_sperm_collect_time = "fresh_sperm_collect_time";
+            lformA.fresh_sperm_end_time = "fresh_sperm_end_time";
+            lformA.doctor_id = "doctor_id";
+            lformA.form_a_date = "form_a_date";
 
             lformA.pkField = "form_a_id";
             lformA.table = "lab_t_form_a";
@@ -130,8 +134,9 @@ namespace clinic_ivf.objdb
             p.hn_female = p.hn_female == null ? "" : p.hn_female;
             p.name_male = p.name_male == null ? "" : p.name_male;
             p.name_female = p.name_female == null ? "" : p.name_female;
-
-            //p.remark = p.remark == null ? "" : p.remark;
+            p.fresh_sperm_collect_time = p.fresh_sperm_collect_time == null ? "" : p.fresh_sperm_collect_time;
+            p.fresh_sperm_end_time = p.fresh_sperm_end_time == null ? "" : p.fresh_sperm_end_time;
+            p.form_a_date = p.form_a_date == null ? "" : p.form_a_date;
             //p.e2 = p.e2 == null ? "0" : p.e2;
             //p.endo = p.endo == null ? "0" : p.endo;
             //p.prl = p.prl == null ? "0" : p.prl;
@@ -156,7 +161,8 @@ namespace clinic_ivf.objdb
             p.t_patient_id = long.TryParse(p.t_patient_id, out chk) ? chk.ToString() : "0";
             p.t_visit_id = long.TryParse(p.t_visit_id, out chk) ? chk.ToString() : "0";
             p.vn_old = long.TryParse(p.vn_old, out chk) ? chk.ToString() : "0";
-            
+            p.doctor_id = long.TryParse(p.doctor_id, out chk) ? chk.ToString() : "0";
+
         }
         public String insert(LabFormA p, String userId)
         {
@@ -218,7 +224,10 @@ namespace clinic_ivf.objdb
                     "," + lformA.hn_female + "='" + p.hn_female + "' " +
                     "," + lformA.name_male + "='" + p.name_male + "' " +
                     "," + lformA.name_female + "='" + p.name_female + "' " +
-
+                    "," + lformA.fresh_sperm_collect_time + "='" + p.fresh_sperm_collect_time + "' " +
+                    "," + lformA.fresh_sperm_end_time + "='" + p.fresh_sperm_end_time + "' " +
+                    "," + lformA.doctor_id + "='" + p.doctor_id + "' " +
+                    "," + lformA.form_a_date + "='" + p.form_a_date + "' " +
                     "";
                 re = conn.ExecuteNonQuery(conn.conn, sql);
             }
@@ -275,22 +284,20 @@ namespace clinic_ivf.objdb
                     "," + lformA.spern_freezing_date_end + "='" + p.spern_freezing_date_end + "'" +
                     "," + lformA.active + "='" + p.active + "' " +
                     "," + lformA.remark + "='" + p.remark.Replace("'", "''") + "' " +
-                    "," + lformA.date_create + "=now() " +
-                    "," + lformA.date_modi + "='" + p.date_modi + "' " +
-
-                    "," + lformA.date_cancel + "='" + p.date_cancel + "' " +
-                    "," + lformA.user_create + "='" + userId + "' " +
-                    "," + lformA.user_modi + "='" + p.user_modi + "' " +
-                    "," + lformA.user_cancel + "='" + p.user_cancel + "' " +
+                    "," + lformA.date_modi + "=now() " +
+                    "," + lformA.user_modi + "='" + userId + "' " +
                     "," + lformA.vn_old + "='" + p.vn_old + "' " +
                     "," + lformA.hn_old + "='" + p.hn_old + "' " +
-                    "," + lformA.form_a_code + "='" + p.form_a_code + "' " +
+                    //"," + lformA.form_a_code + "='" + p.form_a_code + "' " +
                     "," + lformA.status_assist_hatching + "='" + p.status_assist_hatching + "' " +
                     "," + lformA.hn_male + "='" + p.hn_male + "' " +
                     "," + lformA.hn_female + "='" + p.hn_female + "' " +
                     "," + lformA.name_male + "='" + p.name_male + "' " +
                     "," + lformA.name_female + "='" + p.name_female + "' " +
-
+                    "," + lformA.fresh_sperm_collect_time + "='" + p.fresh_sperm_collect_time + "' " +
+                    "," + lformA.fresh_sperm_end_time + "='" + p.fresh_sperm_end_time + "' " +
+                    "," + lformA.doctor_id + "='" + p.doctor_id + "' " +
+                    "," + lformA.form_a_date + "='" + p.form_a_date + "' " +
                 " Where " + lformA.pkField + " = '" + p.form_a_id + "' "
                 ;
             try
@@ -307,16 +314,31 @@ namespace clinic_ivf.objdb
         {
             String re = "";
 
-            if (p.t_visit_id.Equals(""))
+            if (p.form_a_id.Equals(""))
             {
                 re = insert(p, "");
             }
             else
             {
-                //re = update(p, "");
+                re = update(p, "");
             }
 
             return re;
+        }
+        public DataTable selectReportByPk(String pttId)
+        {
+            DataTable dt = new DataTable();
+            String sql = "select lformA.*,CONCAT(IFNULL(sfn.SurfixName,''),' ', ptt_f.PName ,' ',ptt_f.PSurname ) as name_female  " +
+                ",CONCAT(IFNULL(sfnm.SurfixName,''),' ', ptt_m.PName ,' ',ptt_m.PSurname ) as name_male, dtr.Name as doctor_name " +
+                "From " + lformA.table + " lformA " +
+                "Left Join Patient as ptt_f on ptt_f.PIDS = lformA.hn_female " +
+                "Left Join SurfixName sfn on sfn.SurfixID = ptt_f.SurfixID " +
+                "Left Join Patient as ptt_m on ptt_m.PIDS = lformA.hn_male " +
+                "Left Join SurfixName sfnm on sfnm.SurfixID = ptt_m.SurfixID " +
+                "Left Join Doctor as dtr on dtr.ID = lformA.doctor_id " +
+                "Where lformA." + lformA.pkField + " ='" + pttId + "' ";
+            dt = conn.selectData(conn.conn, sql);
+            return dt;
         }
         public DataTable selectByPk(String pttId)
         {
@@ -334,6 +356,17 @@ namespace clinic_ivf.objdb
             String sql = "select lformA.* " +
                 "From " + lformA.table + " lformA " +
                 "Where lformA." + lformA.pkField + " ='" + pttId + "' ";
+            dt = conn.selectData(conn.conn, sql);
+            cop1 = setLabFormA(dt);
+            return cop1;
+        }
+        public LabFormA selectByVnOld(String pttId)
+        {
+            LabFormA cop1 = new LabFormA();
+            DataTable dt = new DataTable();
+            String sql = "select lformA.* " +
+                "From " + lformA.table + " lformA " +
+                "Where lformA." + lformA.vn_old + " ='" + pttId + "' ";
             dt = conn.selectData(conn.conn, sql);
             cop1 = setLabFormA(dt);
             return cop1;
@@ -394,6 +427,10 @@ namespace clinic_ivf.objdb
                 vs1.hn_female = dt.Rows[0][lformA.hn_female].ToString();
                 vs1.name_male = dt.Rows[0][lformA.name_male].ToString();
                 vs1.name_female = dt.Rows[0][lformA.name_female].ToString();
+                vs1.fresh_sperm_collect_time = dt.Rows[0][lformA.fresh_sperm_collect_time].ToString();
+                vs1.fresh_sperm_end_time = dt.Rows[0][lformA.fresh_sperm_end_time].ToString();
+                vs1.doctor_id = dt.Rows[0][lformA.doctor_id].ToString();
+                vs1.form_a_date = dt.Rows[0][lformA.form_a_date].ToString();
             }
             else
             {
@@ -454,6 +491,10 @@ namespace clinic_ivf.objdb
             lforma1.hn_female = "";
             lforma1.name_male = "";
             lforma1.name_female = "";
+            lforma1.fresh_sperm_collect_time = "";
+            lforma1.fresh_sperm_end_time = "";
+            lforma1.doctor_id = "";
+            lforma1.form_a_date = "";
             return lforma1;
         }
     }

@@ -90,6 +90,8 @@ namespace clinic_ivf.objdb
             cop.prefix_vn_doc = "prefix_vn_doc";
             cop.queue_doc = "queue_doc";
             cop.current_date = "current_date1";
+            cop.form_a_doc = "form_a_doc";
+            cop.prefix_form_a_doc = "prefix_form_a";
 
             cop.table = "b_company";
             cop.pkField = "comp_id";
@@ -135,6 +137,7 @@ namespace clinic_ivf.objdb
             p.prefix_vn_doc = p.prefix_vn_doc == null ? "" : p.prefix_vn_doc;
             p.queue_doc = p.queue_doc == null ? "0" : p.queue_doc;
             p.current_date = p.current_date == null ? "" : p.current_date;
+            p.prefix_form_a_doc = p.prefix_form_a_doc == null ? "" : p.prefix_form_a_doc;
 
             p.amount_reserve = Decimal.TryParse(p.amount_reserve, out chk1) ? chk1.ToString() : "0";
             p.billing_doc = int.TryParse(p.billing_doc, out chk) ? chk.ToString() : "0";
@@ -142,6 +145,7 @@ namespace clinic_ivf.objdb
             p.billing_cover_doc = int.TryParse(p.billing_cover_doc, out chk) ? chk.ToString() : "0";
             p.cash_draw_doc = int.TryParse(p.cash_draw_doc, out chk) ? chk.ToString() : "0";
             p.req_doc = int.TryParse(p.req_doc, out chk) ? chk.ToString() : "0";
+            p.form_a_doc = int.TryParse(p.form_a_doc, out chk) ? chk.ToString() : "0";
         }
         public String insert(Company p, String userId)
         {
@@ -630,6 +634,39 @@ namespace clinic_ivf.objdb
             //doc = doc;
             return doc;
         }
+        public String genFormADoc()
+        {
+            String doc = "", year = "", sql = "";
+            Company cop1 = new Company();
+            cop1 = selectByCode1("001");
+            year = DateTime.Now.ToString("yyyy");
+            if (!year.Equals(cop1.year_curr))
+            {
+                sql = "Update " + cop.table + " Set " +
+                    " " + cop.year_curr + "='" + year + "' " +
+                    "," + cop.form_a_doc + "=1 " +
+                    "Where " + cop.pkField + "='" + cop1.comp_id + "'";
+                conn.ExecuteNonQuery(conn.conn, sql);
+                //doc = "00001";
+            }
+
+            int chk = 0;
+            if (int.TryParse(cop1.form_a_doc, out chk))
+            {
+                chk++;
+                doc = "00000" + chk;
+                doc = doc.Substring(doc.Length - 5, 5);
+                year = cop1.year_curr;
+
+                sql = "Update " + cop.table + " Set " +
+                "" + cop.form_a_doc + "=" + chk +
+                " Where " + cop.pkField + "='" + cop1.comp_id + "'";
+                conn.ExecuteNonQuery(conn.conn, sql);
+            }
+            year = String.Concat(DateTime.Now.Year + 543);
+            doc = cop1.prefix_vn_doc + doc;
+            return doc;
+        }
         public String updateAmountReserve(String amt)
         {
             String sql = "",re="";
@@ -716,6 +753,8 @@ namespace clinic_ivf.objdb
                 cop1.prefix_vn_doc = dt.Rows[0][cop.prefix_vn_doc].ToString();
                 cop1.queue_doc = dt.Rows[0][cop.queue_doc].ToString();
                 cop1.current_date = dt.Rows[0][cop.current_date].ToString();
+                cop1.form_a_doc = dt.Rows[0][cop.form_a_doc].ToString();
+                cop1.prefix_form_a_doc = dt.Rows[0][cop.prefix_form_a_doc].ToString();
             }
             else
             {
@@ -789,6 +828,8 @@ namespace clinic_ivf.objdb
                 cop1.prefix_vn_doc = "";
                 cop1.queue_doc = "";
                 cop1.current_date = "";
+                cop1.form_a_doc = "";
+                cop1.prefix_form_a_doc = "";
             }
 
             return cop1;
