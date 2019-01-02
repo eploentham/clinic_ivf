@@ -109,7 +109,14 @@ namespace clinic_ivf.gui
         private void BtnPrint_Click(object sender, EventArgs e)
         {
             //throw new NotImplementedException();
+            FrmReport frm = new FrmReport(ic);
+            DataTable dt = new DataTable();
+            DataTable dtOld = new DataTable();
+            dt = ic.ivfDB.pApmDB.selectAppointmentByPk(txtID.Text);
+            dtOld = ic.ivfDB.pApmOldDB.selectAppointmentByPk(txtID.Text);
 
+            frm.setAppointmentPatient(dt);
+            frm.ShowDialog(this);
         }
 
         private void ChkTvsDonor_CheckedChanged(object sender, EventArgs e)
@@ -343,7 +350,8 @@ namespace clinic_ivf.gui
                     //if (!ic.iniC.statusAppDonor.Equals("1"))
                     //{
                     String re1 = ic.ivfDB.pApmOldDB.insertAppointmentOld(pApmO, txtStfConfirmID.Text);
-                    txtIDOld.Value = re1;
+                    //txtIDOld.Value = re1;
+                    txtIDOld.Value = txtIDOld.Text.Equals("") ? re1 : txtIDOld.Text;
                     String re2 = ic.ivfDB.pApmDB.updateAppointmentIdOld(txtID.Text, re1);
                     //if (int.TryParse(re1, out chk))
                     //{
@@ -354,9 +362,9 @@ namespace clinic_ivf.gui
                     //    String re2 = ic.ivfDB.pttDB.updatePID(re, re1);
                     //    if (int.TryParse(re2, out chk))
                     //    {
-                    re = ic.ivfDB.vsDB.updateCloseStatusNurse(txtVsId.Text);
-                    re = ic.ivfDB.vsDB.updateStatusAppointment(txtVsId.Text, txtID.Text);
-                    txtID.Value = re;
+                    String re4 = ic.ivfDB.vsDB.updateCloseStatusNurse(txtVsId.Text);
+                    String re3 = ic.ivfDB.vsDB.updateStatusAppointment(txtVsId.Text, txtID.Text);
+                    
                     btnSave.Text = "Save";
                     btnSave.Image = Resources.accept_database24;
                     //        txtID.Value = re;
@@ -888,7 +896,7 @@ namespace clinic_ivf.gui
         }
         private void setAppointmentOld()
         {
-            pApmO.ID = "";
+            pApmO.ID = txtIDOld.Text;
             pApmO.PID = txtPttIdOld.Text;
             pApmO.PIDS = txtHn.Text;
             pApmO.AppDate = ic.datetoDB(txtDatepApm.Text);
@@ -937,7 +945,7 @@ namespace clinic_ivf.gui
             pApm.patient_appointment = txtAppointment.Text;
             pApm.patient_appointment_doctor = cboDoctor.SelectedItem == null ? "" : ((ComboBoxItem)cboDoctor.SelectedItem).Value;
             pApm.patient_appointment_servicepoint = cboBsp.SelectedItem == null ? "" : ((ComboBoxItem)cboBsp.SelectedItem).Value;
-            pApm.patient_appointment_notice = txtRemark.Text;
+            pApm.patient_appointment_notice = txtRemarkpApm.Text;
             pApm.patient_appointment_staff = txtStfConfirmID.Text;
 
             pApm.t_visit_id = txtVsId.Text;
@@ -969,11 +977,11 @@ namespace clinic_ivf.gui
 
             pApm.remark = "";
             pApm.e2 = chkE2.Checked ? "1" : "0";
-            //pApm.endo = chkEndo.Checked ? "1" : "0";
+            pApm.beta_hgc = chkHCG.Checked ? "1" : "0";
             pApm.prl = chkPrl.Checked ? "1" : "0";
             pApm.lh = chkLh.Checked ? "1" : "0";
-            //pApm.rt_ovary = chkRt.Checked ? "1" : "0";
-            //pApm.lt_ovary = chkLt.Checked ? "1" : "0";
+            pApm.fet = chkFET.Checked ? "1" : "0";
+            pApm.hormone_test = chkHormoneTest.Checked ? "1" : "0";
             pApm.fsh = chkFsh.Checked ? "1" : "0";
             pApm.tvs = chkTvs.Checked ? "1" : "0";
 
@@ -986,6 +994,8 @@ namespace clinic_ivf.gui
             pApm.tvs_day = txtTvsDay.Text;
             pApm.tvs_time = cboTvsTime.Text;
             pApm.opu_time = cboOPUTime.Text;
+            pApm.et_time = cboETTime.Text;
+            pApm.fet_time = cboFETTime.Text;
             pApm.sperm_collect = chkSperm.Checked ? "1" : "0";
             return chk;
         }

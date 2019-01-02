@@ -138,7 +138,7 @@ namespace clinic_ivf.objdb
             int chk = 0;
             //p.date_create = "";
             chkNull(p);
-            pApmO.sperm_colloect = "sperm_collect";
+            //pApmO.sperm_colloect = "sperm_collect";
             //p.patient_appointment_staff_record = userId;
             try
             {
@@ -178,7 +178,10 @@ namespace clinic_ivf.objdb
                     pApmO.tvs_time + "='" + p.tvs_time + "'," +
                     pApmO.sperm_colloect + "='" + p.sperm_colloect + "' " +
                     " ";
-
+                if (p.DateOfBirth.Equals(""))
+                {
+                    sql = sql.Replace(pApmO.DateOfBirth + "=''", pApmO.DateOfBirth+"=null");
+                }
                 re = conn.ExecuteNonQuery(conn.conn, sql);
             }
             catch (Exception ex)
@@ -198,42 +201,45 @@ namespace clinic_ivf.objdb
             chkNull(p);
             sql = "Update " + pApmO.table + " Set " +
                 //" Set "+pApm.patient_appoint_date_time + "='"+p.patient_appoint_date_time + "' " +
-                pApmO.PID + "='" + p.PID + "'," +
-                    pApmO.PIDS + "='" + p.PIDS + "'," +
-                    pApmO.AppTime + "='" + p.AppTime + "'," +
-                    pApmO.AppDate + "='" + p.AppDate + "'," +
-                    pApmO.Doctor + "='" + p.Doctor.Replace("'", "''") + "'," +
-                    pApmO.Status + "='" + p.Status + "'," +
-                    pApmO.PatientName + "='" + p.PatientName.Replace("'", "''") + "'," +
-                    pApmO.MobilePhoneNo + "='" + p.MobilePhoneNo + "'," +
-                    pApmO.PName + "='" + p.PName.Replace("'", "''") + "'," +
-                    pApmO.PSurname + "='" + p.PSurname.Replace("'", "''") + "'," +
-                    pApmO.DateOfBirth + "='" + p.DateOfBirth + "'," +
-                    pApmO.HormoneTest + "='" + p.HormoneTest + "'," +
-                    pApmO.TVS + "='" + p.TVS + "'," +
-                    pApmO.OPU + "='" + p.OPU + "'," +
-                    pApmO.OPUTime + "='" + p.OPUTime + "'," +
-                    pApmO.OPURemark + "='" + p.OPURemark.Replace("'", "''") + "'," +
-                    pApmO.ET_FET + "='" + p.ET_FET + "'," +
-                    pApmO.ET_FET_Time + "='" + p.ET_FET_Time + "'," +
-                    pApmO.BetaHCG + "='" + p.BetaHCG + "'," +
-                    pApmO.Other + "='" + p.Other.Replace("'", "''") + "'," +
-                    pApmO.OtherRemark + "='" + p.OtherRemark.Replace("'", "''") + "'," +
-                    pApmO.Comment + "='" + p.Comment.Replace("'", "''") + "'," +
-                    pApmO.e2 + "='" + p.e2 + "'," +
-                    pApmO.lh + "='" + p.lh + "'," +
-                    pApmO.endo + "='" + p.endo + "'," +
-                    pApmO.prl + "='" + p.prl + "'," +
-                    pApmO.fsh + "='" + p.fsh + "'," +
-                    pApmO.rt_ovary + "='" + p.rt_ovary + "'," +
-                    pApmO.lt_ovary + "='" + p.lt_ovary + "'," +
-                    pApmO.day1 + "='" + p.day1 + "'," +
-                    pApmO.et + "='" + p.et + "'," +
-                    pApmO.et_time + "='" + p.et_time + "'," +
-                    pApmO.tvs_time + "='" + p.tvs_time + "'," +
-                    pApmO.sperm_colloect + "='" + p.sperm_colloect + "' " +
-                " Where " + pApmO.pkField + " = '" + p.ID + "' "
-                ;
+            pApmO.PID + "='" + p.PID + "'," +
+                pApmO.PIDS + "='" + p.PIDS + "'," +
+                pApmO.AppTime + "='" + p.AppTime + "'," +
+                pApmO.AppDate + "='" + p.AppDate + "'," +
+                pApmO.Doctor + "='" + p.Doctor.Replace("'", "''") + "'," +
+                pApmO.Status + "='" + p.Status + "'," +
+                pApmO.PatientName + "='" + p.PatientName.Replace("'", "''") + "'," +
+                pApmO.MobilePhoneNo + "='" + p.MobilePhoneNo + "'," +
+                pApmO.PName + "='" + p.PName.Replace("'", "''") + "'," +
+                pApmO.PSurname + "='" + p.PSurname.Replace("'", "''") + "'," +
+                pApmO.DateOfBirth + "='" + p.DateOfBirth + "'," +
+                pApmO.HormoneTest + "='" + p.HormoneTest + "'," +
+                pApmO.TVS + "='" + p.TVS + "'," +
+                pApmO.OPU + "='" + p.OPU + "'," +
+                pApmO.OPUTime + "='" + p.OPUTime + "'," +
+                pApmO.OPURemark + "='" + p.OPURemark.Replace("'", "''") + "'," +
+                pApmO.ET_FET + "='" + p.ET_FET + "'," +
+                pApmO.ET_FET_Time + "='" + p.ET_FET_Time + "'," +
+                pApmO.BetaHCG + "='" + p.BetaHCG + "'," +
+                pApmO.Other + "='" + p.Other.Replace("'", "''") + "'," +
+                pApmO.OtherRemark + "='" + p.OtherRemark.Replace("'", "''") + "'," +
+                pApmO.Comment + "='" + p.Comment.Replace("'", "''") + "'," +
+                pApmO.e2 + "='" + p.e2 + "'," +
+                pApmO.lh + "='" + p.lh + "'," +
+                pApmO.endo + "='" + p.endo + "'," +
+                pApmO.prl + "='" + p.prl + "'," +
+                pApmO.fsh + "='" + p.fsh + "'," +
+                pApmO.rt_ovary + "='" + p.rt_ovary + "'," +
+                pApmO.lt_ovary + "='" + p.lt_ovary + "'," +
+                pApmO.day1 + "='" + p.day1 + "'," +
+                pApmO.et + "='" + p.et + "'," +
+                pApmO.et_time + "='" + p.et_time + "'," +
+                pApmO.tvs_time + "='" + p.tvs_time + "'," +
+                pApmO.sperm_colloect + "='" + p.sperm_colloect + "' " +
+            " Where " + pApmO.pkField + " = '" + p.ID + "' ";
+            if (p.DateOfBirth.Equals(""))
+            {
+                sql = sql.Replace(pApmO.DateOfBirth + "=''", pApmO.DateOfBirth + "=null");
+            }
             try
             {
                 re = conn.ExecuteNonQuery(conn.conn, sql);
@@ -262,6 +268,16 @@ namespace clinic_ivf.objdb
                 "From " + pApmO.table + " appnOld ";
             //"Left Join t_ssdata_visit ssv On ssv.ssdata_visit_id = bd.ssdata_visit_id " +
             //"Where sex." + agnO.pkField + " ='" + copId + "' ";
+            dt = conn.selectData(conn.conn, sql);
+            return dt;
+        }
+        public DataTable selectAppointmentByPk(String copId)
+        {
+            DataTable dt = new DataTable();
+            String sql = "select appnOld.*,appnOld.AppDate as patient_appointment_date,appnOld.AppTime as patient_appointment_time " +
+                "From " + pApmO.table + " appnOld "+
+            //"Left Join t_ssdata_visit ssv On ssv.ssdata_visit_id = bd.ssdata_visit_id " +
+            "Where appnOld." + pApmO.pkField + " ='" + copId + "' ";
             dt = conn.selectData(conn.conn, sql);
             return dt;
         }

@@ -129,7 +129,15 @@ namespace clinic_ivf.gui
             grfCu.DataSource = null;
             ConnectDB con = new ConnectDB(ic.iniC);
             //con.OpenConnectionEx();
-            dt = ic.ivfDB.vsOldDB.selectCurrentVisit(con.connEx);
+            if (ic.iniC.statusAppDonor.Equals("1"))
+            {
+                dt = ic.ivfDB.vsOldDB.selectCurrentVisit(con.connEx);
+            }
+            else
+            {
+                dt = ic.ivfDB.vsOldDB.selectCurrentVisit(con.conn);
+            }
+                
             //con.CloseConnectionEx();
             //grfExpn.Rows.Count = dt.Rows.Count + 1;
             grfCu.Rows.Count = 1;

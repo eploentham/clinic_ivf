@@ -7,7 +7,7 @@
     <ProjectGuid>{7D208141-0F7C-4B94-8BBA-D4B4FA8685A4}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <RootNamespace>clinic_ivf</RootNamespace>
-    <AssemblyName>clinic_ivf_donor</AssemblyName>
+    <AssemblyName>clinic_ivf_ptt</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -449,6 +449,14 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Appointment_daily_old.xsd</DependentUpon>
     </Compile>
+    <Compile Include="report\Appointment_patient.cs">
+      <DependentUpon>Appointment_patient.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="report\Appointment_patient.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Appointment_patient.xsd</DependentUpon>
+    </Compile>
     <Compile Include="report\LabOPU.cs">
       <DependentUpon>LabOPU.xsd</DependentUpon>
     </Compile>
@@ -464,6 +472,14 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>LabOPUEmbryoDev.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="report\Lab_Form_A.cs">
+      <DependentUpon>Lab_Form_A.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="report\Lab_Form_A.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Lab_Form_A.xsd</DependentUpon>
     </Compile>
     <Compile Include="report\OPDcardOLD.cs">
       <DependentUpon>OPDcardOLD.xsd</DependentUpon>
@@ -656,6 +672,17 @@
     <None Include="report\Appointment_daily_old.xss">
       <DependentUpon>Appointment_daily_old.xsd</DependentUpon>
     </None>
+    <None Include="report\Appointment_patient.xsc">
+      <DependentUpon>Appointment_patient.xsd</DependentUpon>
+    </None>
+    <None Include="report\Appointment_patient.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>Appointment_patient.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="report\Appointment_patient.xss">
+      <DependentUpon>Appointment_patient.xsd</DependentUpon>
+    </None>
     <None Include="report\LabOPU.xsc">
       <DependentUpon>LabOPU.xsd</DependentUpon>
     </None>
@@ -677,6 +704,17 @@
     </None>
     <None Include="report\LabOPUEmbryoDev.xss">
       <DependentUpon>LabOPUEmbryoDev.xsd</DependentUpon>
+    </None>
+    <None Include="report\Lab_Form_A.xsc">
+      <DependentUpon>Lab_Form_A.xsd</DependentUpon>
+    </None>
+    <None Include="report\Lab_Form_A.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>Lab_Form_A.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="report\Lab_Form_A.xss">
+      <DependentUpon>Lab_Form_A.xsd</DependentUpon>
     </None>
     <None Include="report\OPDcardOLD.xsc">
       <DependentUpon>OPDcardOLD.xsd</DependentUpon>
@@ -1347,6 +1385,8 @@
     <Content Include="RDNIDlib.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <None Include="Resources\arrow_true_24.jpg" />
+    <None Include="Resources\arrow_true1.jpg" />
     <None Include="Resources\arrow_true.jpg" />
   </ItemGroup>
   <ItemGroup>

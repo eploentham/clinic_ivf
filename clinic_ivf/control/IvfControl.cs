@@ -257,6 +257,47 @@ namespace clinic_ivf.control
             }
             return re;
         }
+        public String dateTimetoDB(String dt)
+        {
+            DateTime dt1 = new DateTime();
+            String re = "", tim="";
+            if (dt != null)
+            {
+                if (!dt.Equals(""))
+                {
+                    // Thread แบบนี้ ทำให้ โปรแกรม ที่ไปลงที Xtrim ไม่เอา date ผิด
+                    Thread.CurrentThread.CurrentCulture = new CultureInfo("en-us")
+                    {
+                        DateTimeFormat =
+                        {
+                            DateSeparator = "-"
+                        }
+                    };
+                    if (DateTime.TryParse(dt, out dt1))
+                    {
+                        re = dt1.Year.ToString() + "-" + dt1.ToString("MM-dd");
+                    }
+                    else
+                    {
+                        Thread.CurrentThread.CurrentCulture = new CultureInfo("th-TH")
+                        {
+                            DateTimeFormat =
+                            {
+                                DateSeparator = "-"
+                            }
+                        };
+                        if (DateTime.TryParse(dt, out dt1))
+                        {
+                            re = dt1.ToString("yyyy-MM-dd");
+                        }
+                    }
+                    //dt1 = DateTime.Parse(dt.ToString());
+
+                }
+                tim = dt1.ToString("HH:mm:ss");
+            }
+            return re+" "+ tim;
+        }
         public String timetoShow(Object dt)
         {
             DateTime dt1 = new DateTime();

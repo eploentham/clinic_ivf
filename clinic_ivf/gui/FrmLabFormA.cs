@@ -39,6 +39,8 @@ namespace clinic_ivf.gui
             stt = new C1SuperTooltip();
             sep = new C1SuperErrorProvider();
 
+            ic.ivfDB.dtrOldDB.setCboDoctor(cboDoctor, "");
+            txtFormADate.Value = DateTime.Now.Year + "-" + DateTime.Now.ToString("MM-dd");
             setControl();
 
             btnSave.Click += BtnSave_Click;
@@ -50,6 +52,9 @@ namespace clinic_ivf.gui
             chkSpermAnalysis.CheckStateChanged += ChkSpermAnalysis_CheckStateChanged;
             chkSpermFreezing.CheckStateChanged += ChkSpermFreezing_CheckStateChanged;
             chkFreshSprem.CheckStateChanged += ChkFreshSprem_CheckStateChanged;
+            bnMaleSearch.Click += BnMaleSearch_Click;
+            btnPrint.Click += BtnPrint_Click;
+
             ChkEmbryoTranfer_CheckStateChanged(null, null);
             ChkNgs_CheckedChanged(null, null);
             ChkEmbryoFresh_CheckStateChanged(null, null);
@@ -57,9 +62,38 @@ namespace clinic_ivf.gui
             ChkSpermAnalysis_CheckStateChanged(null, null);
             ChkSpermFreezing_CheckStateChanged(null, null);
         }
+
+        private void BtnPrint_Click(object sender, EventArgs e)
+        {
+            //throw new NotImplementedException();
+            FrmReport frm = new FrmReport(ic);
+            DataTable dt = new DataTable();
+            dt = ic.ivfDB.lFormaDB.selectReportByPk(txtID.Text);
+
+            frm.setLabFormAReport(dt);
+            frm.ShowDialog(this);
+        }
+
+        private void BnMaleSearch_Click(object sender, EventArgs e)
+        {
+            //throw new NotImplementedException();
+            FrmSearchHn frm = new FrmSearchHn(ic, FrmSearchHn.StatusConnection.hostEx);
+            frm.ShowDialog(this);
+            txtHnMale.Value = ic.sVsOld.PIDS;
+            txtNameMale.Value = ic.sVsOld.PName;
+        }
+
         private void setLabFormA()
         {
             lFormA.form_a_id = txtID.Text;
+            if (lFormA.form_a_id.Equals(""))
+            {
+                lFormA.form_a_code = ic.ivfDB.copDB.genFormADoc();
+            }
+            else
+            {
+                lFormA.form_a_code = txtLabFormACode.Text;
+            }
             lFormA.t_patient_id = txtPttId.Text;
             lFormA.t_visit_id = txtVsId.Text;
             lFormA.opu_date = ic.datetoDB(txtOPUDate.Text);
@@ -70,6 +104,7 @@ namespace clinic_ivf.gui
             lFormA.status_sperm_ha = chkSpermHa.Checked ? "1" : "0";
             lFormA.status_pgs = chkPgs.Checked ? "1" : "0";
             lFormA.status_ngs = chkNgs.Checked ? "1" : "0";
+            //lFormA.status_frozen_sperm = "";
             lFormA.ngs_day = chkNgs.Checked ? chkNgsDay3.Checked ? "3": "5" : "0";
             lFormA.status_embryo_tranfer = chkEmbryoTranfer.Checked ? "1" : "0";
             lFormA.embryo_tranfer_fresh_cycle = chkEmbryoTranfer.Checked ? chkEmbryoTranferFresh.Checked ? "1" : "2" : "0";
@@ -90,10 +125,10 @@ namespace clinic_ivf.gui
             lFormA.pasa_tese_date = txtPasaTeseDate.Text;
             lFormA.iui_date = txtIUIDate.Text;
             lFormA.lab_t_form_acol = "";
-            lFormA.sperm_analysis_date_start = ic.datetoDB(txtSpermAnalysisDateStart.Text);
-            lFormA.sperm_analysis_date_end = ic.datetoDB(txtSpermAnalysisDateEnd.Text);
-            lFormA.spern_freezing_date_start = ic.datetoDB(txtSpermFreezingDateStart.Text);
-            lFormA.spern_freezing_date_end = ic.datetoDB(txtSpermFreezingDateEnd.Text);
+            lFormA.sperm_analysis_date_start = ic.datetoDB(txtSpermAnalysisDateStart.Text) +" "+ txtSpermAnalysisTimeStart.Text.Trim();
+            lFormA.sperm_analysis_date_end = txtSpermAnalysisDateEnd.Text;
+            lFormA.spern_freezing_date_start = ic.datetoDB(txtSpermFreezingDateStart.Text) + " " + txtSpermFreezingTimeStart.Text.Trim();
+            lFormA.spern_freezing_date_end = txtSpermFreezingDateEnd.Text;
             lFormA.active = "1";
             lFormA.remark = "";
             lFormA.date_create = "";
@@ -109,6 +144,10 @@ namespace clinic_ivf.gui
             lFormA.hn_male = txtHnMale.Text;
             lFormA.name_female = txtNameFeMale.Text;
             lFormA.name_male = txtNameMale.Text;
+            lFormA.fresh_sperm_collect_time = txtFreshSpermColTime.Text;
+            lFormA.fresh_sperm_end_time = txtFreshSpermEndTime.Text;
+            lFormA.doctor_id = cboDoctor.SelectedItem == null ? "" : ((ComboBoxItem)cboDoctor.SelectedItem).Value;
+            lFormA.form_a_date = ic.datetoDB(txtFormADate.Text);
         }
         private void BtnSave_Click(object sender, EventArgs e)
         {
@@ -126,8 +165,8 @@ namespace clinic_ivf.gui
                 if (long.TryParse(re, out chk))
                 {
                     txtID.Value = txtID.Text.Equals("") ? re : txtID.Text;
-                                        
-                    txtID.Value = re;
+                    
+                    //txtID.Value = re;
                     btnSave.Text = "Save";
                     btnSave.Image = Resources.accept_database24;
                     
@@ -224,6 +263,10 @@ namespace clinic_ivf.gui
         private void setControl()
         {
             lFormA = ic.ivfDB.lFormaDB.selectByPk1(lformaId);
+            if (lFormA.form_a_id.Equals(""))
+            {
+                lFormA = ic.ivfDB.lFormaDB.selectByVnOld(vsidOld);
+            }
             if (!lFormA.form_a_id.Equals(""))
             {
                 setControl1();
@@ -243,6 +286,7 @@ namespace clinic_ivf.gui
                         txtHnFeMale.Value = pttO.PIDS;
                         txtNameFeMale.Value = pttO.FullName;
                         txtHnOld.Value = pttO.PIDS;
+                        txtVnOld.Value = vsidOld;
                     }
                 }
             }
@@ -250,6 +294,7 @@ namespace clinic_ivf.gui
         private void setControl1()
         {
             txtID.Value = lFormA.form_a_id;
+            txtLabFormACode.Value = lFormA.form_a_code;
             txtPttId.Value = lFormA.t_patient_id;
             txtVsId.Value = lFormA.t_visit_id;
             txtVnOld.Value = lFormA.vn_old;
@@ -266,7 +311,7 @@ namespace clinic_ivf.gui
             chkFreshSprem.Checked = lFormA.status_fresh_sperm.Equals("1") ? true : false;
             txtFreshSpermColTime.Value = lFormA.fresh_sperm_collect_time;
             txtFreshSpermEndTime.Value = lFormA.fresh_sperm_end_time;
-            chkFrozenSperm.Checked = lFormA.status_fresh_sperm.Equals("1") ? true : false;
+            chkFrozenSperm.Checked = lFormA.status_frozen_sperm.Equals("1") ? true : false;
             chkSpermHa.Checked = lFormA.status_sperm_ha.Equals("1") ? true : false;
             chkPgs.Checked = lFormA.status_pgs.Equals("1") ? true : false;
             chkNgs.Checked = lFormA.status_ngs.Equals("1") ? true : false;
@@ -274,8 +319,8 @@ namespace clinic_ivf.gui
             chkNgsDay5.Checked = lFormA.ngs_day.Equals("5") ? true : false;
             chkEmbryoTranfer.Checked = lFormA.status_embryo_tranfer.Equals("1") ? true : false;
             chkEmbryoTranferFresh.Checked = lFormA.embryo_tranfer_fresh_cycle.Equals("1") ? true : false;
-            chkEmbryoTranferFrozen.Checked = lFormA.embryo_tranfer_frozen_cycle.Equals("1") ? true : false;
-            chkEmbryoFreezing.Checked = lFormA.status_embryo_freezing.Equals("5") ? true : false;
+            chkEmbryoTranferFrozen.Checked = lFormA.embryo_tranfer_fresh_cycle.Equals("2") ? true : false;
+            chkEmbryoFreezing.Checked = lFormA.status_embryo_freezing.Equals("1") ? true : false;
             chkEmbryoFreezingDay1.Checked = lFormA.embryo_freezing_day.Equals("1") ? true : false;
             chkEmbryoFreezingDay3.Checked = lFormA.embryo_freezing_day.Equals("3") ? true : false;
             chkEmbryoFreezingDay5.Checked = lFormA.embryo_freezing_day.Equals("5") ? true : false;
@@ -293,12 +338,21 @@ namespace clinic_ivf.gui
             chkSpermAnalysis.Checked = lFormA.status_sperm_analysis.Equals("1") ? true : false;
             chkSpermFreezing.Checked = lFormA.status_spern_freezing.Equals("1") ? true : false;
             txtSpermAnalysisDateStart.Value = lFormA.sperm_analysis_date_start;
+            if (lFormA.sperm_analysis_date_start.Length > 5)
+            {
+                txtSpermAnalysisTimeStart.Value = lFormA.sperm_analysis_date_start.Substring(lFormA.sperm_analysis_date_start.Length-5);
+            }
             txtSpermAnalysisDateEnd.Value = lFormA.sperm_analysis_date_end;
             txtSpermFreezingDateStart.Value = lFormA.spern_freezing_date_start;
+            if (lFormA.spern_freezing_date_start.Length > 5)
+            {
+                txtSpermFreezingTimeStart.Value = lFormA.spern_freezing_date_start.Substring(lFormA.spern_freezing_date_start.Length - 5);
+            }
             txtSpermFreezingDateEnd.Value = lFormA.spern_freezing_date_end;
             txtPasaTeseDate.Value = lFormA.pasa_tese_date;
             txtIUIDate.Value = lFormA.iui_date;
-
+            ic.setC1Combo(cboDoctor, lFormA.doctor_id);
+            txtFormADate.Value = lFormA.form_a_date;
         }
         private void FrmLabOPUReq_Load(object sender, EventArgs e)
         {
