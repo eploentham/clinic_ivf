@@ -429,6 +429,7 @@ namespace clinic_ivf.objdb
                 "," + opu.embryo_for_et_number_of_freeze + " = '" + p.embryo_for_et_number_of_freeze + "'" +
                 "," + opu.embryo_for_et_number_of_discard + " = '" + p.embryo_for_et_number_of_discard + "'" +
                 "," + opu.embryologist_report_id + " = '" + p.embryologist_report_id + "'" +
+                "," + opu.remark + " = '" + p.remark.Replace("'","''") + "'" +
                 "Where " + opu.pkField + "='" + p.opu_id + "'"
                 ;
 
