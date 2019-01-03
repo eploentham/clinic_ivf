@@ -214,7 +214,7 @@ namespace clinic_ivf.objdb
             p.user_cancel = p.user_cancel == null ? "" : p.user_cancel;
 
             p.opu_code = p.opu_code == null ? "" : p.opu_code;
-            p.embryo_freez_stage = p.embryo_freez_stage == null ? "" : p.embryo_freez_stage;
+            //p.embryo_freez_stage = p.embryo_freez_stage == null ? "" : p.embryo_freez_stage;
             p.embryoid_freez_position = p.embryoid_freez_position == null ? "" : p.embryoid_freez_position;
             p.hn_male = p.hn_male == null ? "" : p.hn_male;
             p.hn_female = p.hn_female == null ? "" : p.hn_female;
@@ -232,7 +232,7 @@ namespace clinic_ivf.objdb
             p.doctor_id = int.TryParse(p.doctor_id, out chk) ? chk.ToString() : "0";
             p.proce_id = int.TryParse(p.proce_id, out chk) ? chk.ToString() : "0";
             p.req_id = int.TryParse(p.req_id, out chk) ? chk.ToString() : "0";
-
+            p.embryo_freez_stage = int.TryParse(p.embryo_freez_stage, out chk) ? chk.ToString() : "0";
             //p.status_lab = p.status_lab == null ? "0" : p.status_lab;
         }
         public String insert(LabOpu p, String userId)

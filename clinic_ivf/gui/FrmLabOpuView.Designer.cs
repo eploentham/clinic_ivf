@@ -58,6 +58,7 @@
             this.tcLabView = new C1.Win.C1Command.C1DockingTab();
             this.tabLabAccept = new C1.Win.C1Command.C1DockingTabPage();
             this.tabProcess = new C1.Win.C1Command.C1DockingTabPage();
+            this.panel2 = new System.Windows.Forms.Panel();
             this.tabLabFinish = new C1.Win.C1Command.C1DockingTabPage();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
@@ -68,7 +69,6 @@
             this.c1DateEdit5 = new C1.Win.C1Input.C1DateEdit();
             this.label3 = new System.Windows.Forms.Label();
             this.c1Button3 = new C1.Win.C1Input.C1Button();
-            this.panel2 = new System.Windows.Forms.Panel();
             this.sB.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.theme1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.c1TextBox14)).BeginInit();
@@ -521,6 +521,17 @@
             this.tabProcess.TabIndex = 2;
             this.tabProcess.Text = "Process";
             // 
+            // panel2
+            // 
+            this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.panel2.Location = new System.Drawing.Point(0, 0);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(1210, 702);
+            this.panel2.TabIndex = 0;
+            this.theme1.SetTheme(this.panel2, "(default)");
+            // 
             // tabLabFinish
             // 
             this.tabLabFinish.Controls.Add(this.groupBox3);
@@ -685,17 +696,6 @@
             this.theme1.SetTheme(this.c1Button3, "(default)");
             this.c1Button3.UseVisualStyleBackColor = true;
             this.c1Button3.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
-            // 
-            // panel2
-            // 
-            this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.panel2.Location = new System.Drawing.Point(0, 0);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1210, 702);
-            this.panel2.TabIndex = 0;
-            this.theme1.SetTheme(this.panel2, "(default)");
             // 
             // FrmLabOpuView
             // 

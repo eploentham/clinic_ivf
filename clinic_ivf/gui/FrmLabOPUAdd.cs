@@ -147,6 +147,7 @@ namespace clinic_ivf.gui
             txtFertili1Pn.KeyPress += TxtMaturaMii_KeyPress;
             txtFertili1Pn.KeyPress += TxtMaturaMii_KeyPress;
             txtFertili1Pn.KeyPress += TxtMaturaMii_KeyPress;
+            btnHnSearch.Click += BtnHnSearch_Click;
 
             setFocusColor();
             initGrfDay2();
@@ -165,6 +166,15 @@ namespace clinic_ivf.gui
             setGrfDay5Img();
             initGrfDay6Img();
             setGrfDay6Img();
+        }
+
+        private void BtnHnSearch_Click(object sender, EventArgs e)
+        {
+            //throw new NotImplementedException();
+            FrmSearchHn frm = new FrmSearchHn(ic, FrmSearchHn.StatusConnection.host);
+            frm.ShowDialog(this);
+            txtHnMale.Value = ic.sVsOld.PIDS;
+            txtNameMale.Value = ic.sVsOld.PName;
         }
 
         private void TxtMaturaNoofOpu_KeyPress(object sender, KeyPressEventArgs e)
@@ -1249,6 +1259,32 @@ namespace clinic_ivf.gui
             a.BackColor = ic.cTxtFocus;
             a.Font = new Font(ff, FontStyle.Bold);
         }
+        private void setControlFirstTime(Boolean flag)
+        {
+            txtMaturaDate.Enabled = flag;
+            txtMaturaMii.Enabled = flag;
+            txtMaturaMi.Enabled = flag;
+            txtMaturaGv.Enabled = flag;
+            txtMaturaPostMat.Enabled = flag;
+            txtMaturaAbnor.Enabled = flag;
+            txtMaturaDead.Enabled = flag;
+
+            groupBox3.Enabled = flag;
+            groupBox4.Enabled = flag;
+            groupBox5.Enabled = flag;
+            groupBox7.Enabled = flag;
+            gbDay2.Enabled = flag;
+            gbDay3.Enabled = flag;
+            gbDay5.Enabled = flag;
+            gbDay6.Enabled = flag;
+            pnGrf6Img.Enabled = flag;
+            pnGrf5Img.Enabled = flag;
+            pnGrf3Img.Enabled = flag;
+            pnGrf2Img.Enabled = flag;
+
+            btnPrintOpuEmbryoDev.Enabled = flag;
+            btnPrint.Enabled = flag;
+        }
         private void setControl()
         {
             try
@@ -1262,11 +1298,13 @@ namespace clinic_ivf.gui
                     txtNameFeMale.Value = lbReq.name_female;
                     txtNameMale.Value = lbReq.name_male;
                     txtLabReqCode.Value = lbReq.req_code;
+                    setControlFirstTime(false);
                 }
                 else
                 {
                     opu = ic.ivfDB.opuDB.selectByPk1(opuId);
                     lbReq = ic.ivfDB.lbReqDB.selectByPk1(opu.req_id);
+                    txtMaturaNoofOpu.Enabled = false;
 
                     txtID.Value = opu.opu_id;
                     txtHnFeMale.Value = opu.hn_female;

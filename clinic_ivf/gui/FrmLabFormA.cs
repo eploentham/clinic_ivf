@@ -52,7 +52,7 @@ namespace clinic_ivf.gui
             chkSpermAnalysis.CheckStateChanged += ChkSpermAnalysis_CheckStateChanged;
             chkSpermFreezing.CheckStateChanged += ChkSpermFreezing_CheckStateChanged;
             chkFreshSprem.CheckStateChanged += ChkFreshSprem_CheckStateChanged;
-            bnMaleSearch.Click += BnMaleSearch_Click;
+            btnMaleSearch.Click += BtnMaleSearch_Click;
             btnPrint.Click += BtnPrint_Click;
 
             ChkEmbryoTranfer_CheckStateChanged(null, null);
@@ -74,7 +74,7 @@ namespace clinic_ivf.gui
             frm.ShowDialog(this);
         }
 
-        private void BnMaleSearch_Click(object sender, EventArgs e)
+        private void BtnMaleSearch_Click(object sender, EventArgs e)
         {
             //throw new NotImplementedException();
             FrmSearchHn frm = new FrmSearchHn(ic, FrmSearchHn.StatusConnection.hostEx);
