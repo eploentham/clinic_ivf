@@ -1535,7 +1535,7 @@ namespace clinic_ivf.gui
                     }
                     else
                     {
-                        setControlFirstTime(true);
+                        setControlFirstTime(false);
                     }
                     setControl1();
                 }

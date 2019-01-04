@@ -463,6 +463,7 @@
             // cboDoctor
             // 
             this.cboDoctor.AllowSpinLoop = false;
+            this.cboDoctor.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
             this.cboDoctor.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.cboDoctor.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
             this.cboDoctor.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));

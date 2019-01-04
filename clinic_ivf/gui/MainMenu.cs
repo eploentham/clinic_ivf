@@ -340,8 +340,8 @@ namespace clinic_ivf.gui
         {
             String date = "";
             date = DateTime.Now.Year+"-"+ DateTime.Now.ToString("MM-dd");
-            this.Text = ic.iniC.statusAppDonor.Equals("1") ? "โปรแกรมClinic IVF Donor " +"สวัสดี คุณ "+ic.user.staff_fname_t +" "+ic.user.staff_lname_t+" Update 2019-01-02-1 "
-                : "โปรแกรมClinic IVF " + "สวัสดี คุณ " + ic.user.staff_fname_t + " " + ic.user.staff_lname_t + " Update 2019-01-02-1 "+ date;
+            this.Text = ic.iniC.statusAppDonor.Equals("1") ? "โปรแกรมClinic IVF Donor " +"สวัสดี คุณ "+ic.user.staff_fname_t +" "+ic.user.staff_lname_t+" Update 2019-01-04 "
+                : "โปรแกรมClinic IVF " + "สวัสดี คุณ " + ic.user.staff_fname_t + " " + ic.user.staff_lname_t + " Update 2019-01-04 "+ date;
             //theme1.SetTheme(this, ic.theme);
             theme1.SetTheme(this, ic.theme);
             theme1.SetTheme(menuStrip1, ic.theme);

@@ -449,7 +449,6 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Appointment_daily_old.xsd</DependentUpon>
     </Compile>
-
     <Compile Include="report\LabFormA.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -462,7 +461,6 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Appointment_patient.xsd</DependentUpon>
-
     </Compile>
     <Compile Include="report\LabOPU.cs">
       <DependentUpon>LabOPU.xsd</DependentUpon>
@@ -679,7 +677,6 @@
     <None Include="report\Appointment_daily_old.xss">
       <DependentUpon>Appointment_daily_old.xsd</DependentUpon>
     </None>
-
     <None Include="report\LabFormA.xsc">
       <DependentUpon>LabFormA.xsd</DependentUpon>
     </None>
@@ -701,7 +698,6 @@
     </None>
     <None Include="report\Appointment_patient.xss">
       <DependentUpon>Appointment_patient.xsd</DependentUpon>
-
     </None>
     <None Include="report\LabOPU.xsc">
       <DependentUpon>LabOPU.xsd</DependentUpon>

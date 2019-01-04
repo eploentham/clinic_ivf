@@ -278,15 +278,15 @@ namespace clinic_ivf.gui
             id = grfProc[grfProc.Row, colPcId] != null ? grfProc[grfProc.Row, colPcId].ToString() : "";
             chk = grfProc[grfProc.Row, colPcOpuNum] != null ? grfProc[grfProc.Row, colPcOpuNum].ToString() : "";
             name = grfProc[grfProc.Row, colPcPttName] != null ? grfProc[grfProc.Row, colPcPttName].ToString() : "";
-            if (MessageBox.Show("ต้องการ ป้อน LAB OPU  \n  opu number " + chk + " \n name " + name, "", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == DialogResult.OK)
-            {
+            //if (MessageBox.Show("ต้องการ ป้อน LAB OPU  \n  opu number " + chk + " \n name " + name, "", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == DialogResult.OK)
+            //{
                 //grfReq.Rows.Remove(grfReq.Row);
                 Cursor curOld;
                 curOld = this.Cursor;
                 this.Cursor = Cursors.WaitCursor;
                 openLabOPUAdd(id, name);
                 this.Cursor = curOld;
-            }
+            //}
         }
         private void BtnNew_Click(object sender, EventArgs e)
         {
