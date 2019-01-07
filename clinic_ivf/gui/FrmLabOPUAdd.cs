@@ -82,8 +82,8 @@ namespace clinic_ivf.gui
             ic.ivfDB.stfDB.setCbEmbryologist(cboEmbryologistDay6, "");
             ic.ivfDB.fdtDB.setCboOPUMethod(cboEmbryoFreezMethod0);
             ic.ivfDB.fdtDB.setCboOPUMethod(cboEmbryoFreezMethod1);
-            ic.ivfDB.fdtDB.setCboOPUStage(cboEmbryoFreezStage0);
-            ic.ivfDB.fdtDB.setCboOPUStage(cboEmbryoFreezStage1);
+            ic.ivfDB.fdtDB.setCboOPUStage(cboEmbryoFreezStage0,"");
+            ic.ivfDB.fdtDB.setCboOPUStage(cboEmbryoFreezStage1,"");
             ic.ivfDB.fdtDB.setCboOPUFreezeMedia(cboEmbryoFreezMedia0);
             ic.ivfDB.fdtDB.setCboOPUFreezeMedia(cboEmbryoFreezMedia1);
             ic.setCboDay(CboEmbryoFreezDay0, "");
@@ -392,6 +392,10 @@ namespace clinic_ivf.gui
             if ((e.KeyChar == '.') && ((sender as C1TextBox).Text.IndexOf('.') > -1))
             {
                 e.Handled = true;
+            }
+            if ((e.KeyChar == '-') && ((sender as C1TextBox).Text.Length==0))
+            {
+                e.Handled = false;
             }
         }
 
@@ -1535,7 +1539,7 @@ namespace clinic_ivf.gui
                     }
                     else
                     {
-                        setControlFirstTime(false);
+                        setControlFirstTime(true);
                     }
                     setControl1();
                 }
@@ -1651,6 +1655,7 @@ namespace clinic_ivf.gui
             //txtEmbryoFreezMedia1.Value = opu.embryo_freez_freeze_media_1;
 
             txtRemark.Value = opu.remark;
+            txtDatePicEmbryo.Value = opu.date_pic_embryo;
             //CboEmbryoDay.Text = opu.emb
         }
         private void setOPU()
@@ -3036,12 +3041,14 @@ namespace clinic_ivf.gui
             grfDay2.Rows.Count = 1;
             grfDay2.Cols.Count = 7;
             C1TextBox txt = new C1TextBox();
-            C1ComboBox cboproce = new C1ComboBox();
-            //ic.ivfDB.itmDB.setCboItem(cboproce);
+            C1ComboBox cboday3 = new C1ComboBox();
+            C1ComboBox cboday3desc1 = new C1ComboBox();
+            ic.ivfDB.fdtDB.setCboOPUStageDay3(cboday3,"");
+            ic.ivfDB.fdtDB.setCboOPUStageDay3Desc1(cboday3desc1, "");
             grfDay2.Cols[colDay2ID].Editor = txt;
             grfDay2.Cols[colDay2Num].Editor = txt;
-            grfDay2.Cols[colDay2Desc].Editor = txt;
-            grfDay2.Cols[colDay2Desc1].Editor = txt;
+            grfDay2.Cols[colDay2Desc].Editor = cboday3;
+            grfDay2.Cols[colDay2Desc1].Editor = cboday3desc1;
             grfDay2.Cols[colDay2Desc2].Editor = txt;
 
             grfDay2.Cols[colDay2Num].Width = 40;
@@ -3090,12 +3097,14 @@ namespace clinic_ivf.gui
             grfDay3.Rows.Count = 1;
             grfDay3.Cols.Count = 7;
             C1TextBox txt = new C1TextBox();
-            //txt.dat
-
+            C1ComboBox cboday3 = new C1ComboBox();
+            C1ComboBox cboday3desc1 = new C1ComboBox();
+            ic.ivfDB.fdtDB.setCboOPUStageDay3(cboday3, "");
+            ic.ivfDB.fdtDB.setCboOPUStageDay3Desc1(cboday3desc1, "");
             grfDay3.Cols[colDay3ID].Editor = txt;
             grfDay3.Cols[colDay3Num].Editor = txt;
-            grfDay3.Cols[colDay3Desc].Editor = txt;
-            grfDay3.Cols[colDay3Desc1].Editor = txt;
+            grfDay3.Cols[colDay3Desc].Editor = cboday3;
+            grfDay3.Cols[colDay3Desc1].Editor = cboday3desc1;
             grfDay3.Cols[colDay3Desc2].Editor = txt;
 
             grfDay3.Cols[colDay3Num].Width = 40;
@@ -3143,12 +3152,14 @@ namespace clinic_ivf.gui
             grfDay5.Rows.Count = 1;
             grfDay5.Cols.Count = 7;
             C1TextBox txt = new C1TextBox();
-            //txt.dat
-
+            C1ComboBox cboday5 = new C1ComboBox();
+            C1ComboBox cboday3desc1 = new C1ComboBox();
+            ic.ivfDB.fdtDB.setCboOPUStageDay5(cboday5, "");
+            ic.ivfDB.fdtDB.setCboOPUStageDay3Desc1(cboday3desc1, "");
             grfDay5.Cols[colDay5ID].Editor = txt;
             grfDay5.Cols[colDay5Num].Editor = txt;
-            grfDay5.Cols[colDay5Desc].Editor = txt;
-            grfDay5.Cols[colDay5Desc1].Editor = txt;
+            grfDay5.Cols[colDay5Desc].Editor = cboday5;
+            grfDay5.Cols[colDay5Desc1].Editor = cboday3desc1;
             grfDay5.Cols[colDay5Desc2].Editor = txt;
 
             grfDay5.Cols[colDay5Num].Width = 40;
@@ -3198,12 +3209,14 @@ namespace clinic_ivf.gui
             grfDay6.Rows.Count = 1;
             grfDay6.Cols.Count = 7;
             C1TextBox txt = new C1TextBox();
-            //txt.dat
-
+            C1ComboBox cboday5 = new C1ComboBox();
+            C1ComboBox cboday3desc1 = new C1ComboBox();
+            ic.ivfDB.fdtDB.setCboOPUStageDay5(cboday5, "");
+            ic.ivfDB.fdtDB.setCboOPUStageDay3Desc1(cboday3desc1, "");
             grfDay6.Cols[colDay6ID].Editor = txt;
             grfDay6.Cols[colDay6Num].Editor = txt;
-            grfDay6.Cols[colDay6Desc].Editor = txt;
-            grfDay6.Cols[colDay6Desc1].Editor = txt;
+            grfDay6.Cols[colDay6Desc].Editor = cboday5;
+            grfDay6.Cols[colDay6Desc1].Editor = cboday3desc1;
             grfDay6.Cols[colDay6Desc2].Editor = txt;
 
             grfDay6.Cols[colDay6Num].Width = 40;

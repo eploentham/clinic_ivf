@@ -148,6 +148,7 @@ namespace clinic_ivf.objdb
             opu.proce_name = "proce_name";
             opu.matura_no_of_opu = "matura_no_of_opu";
             opu.matura_post_mat = "matura_post_mat";
+            opu.date_pic_embryo = "date_pic_embryo";
 
             opu.table = "lab_t_opu";
             opu.pkField = "opu_id";
@@ -223,6 +224,7 @@ namespace clinic_ivf.objdb
             p.dob_male = p.dob_male == null ? "" : p.dob_male;
             p.dob_female = p.dob_female == null ? "" : p.dob_female;
             p.opu_date = p.opu_date == null ? "" : p.opu_date;
+            p.date_pic_embryo = p.date_pic_embryo == null ? "" : p.date_pic_embryo;
             //p.sort1 = p.sort1 == null ? "" : p.sort1;
             //p.sort1 = p.sort1 == null ? "" : p.sort1;
 
@@ -252,7 +254,7 @@ namespace clinic_ivf.objdb
                 opu.doctor_id + "," + opu.proce_id + "," +
                 opu.date_create + "," + opu.date_modi + "," + opu.date_cancel + "," +
                 opu.user_create + "," + opu.user_modi + "," + opu.user_cancel + ", " +
-                opu.req_id + "," + opu.status_opu + " " +
+                opu.req_id + "," + opu.status_opu + "," + opu.date_pic_embryo + " " +
                 ") " +
                 "Values ('" + p.opu_code + "','" + p.embryo_freez_stage + "','" + p.embryoid_freez_position + "'," +
                 "'" + p.hn_male.Replace("'", "''") + "','" + p.hn_female.Replace("'", "''") + "','" + p.name_male + "'," +
@@ -261,8 +263,8 @@ namespace clinic_ivf.objdb
                 "'" + p.doctor_id + "','" + p.proce_id + "'," +
                 "now(),'" + p.date_modi + "','" + p.date_cancel + "'," +
                 "'" + userId + "','" + p.user_modi + "','" + p.user_cancel + "', " +
-                "'" + p.req_id + "','1' " +
-                ")";
+                "'" + p.req_id + "','1','" + p.date_pic_embryo + "' " +
+               ")";
             try
             {
                 re = conn.ExecuteNonQuery(conn.conn, sql);
@@ -296,9 +298,9 @@ namespace clinic_ivf.objdb
                 "," + opu.doctor_id + " = '" + p.doctor_id + "'" +
                 "," + opu.proce_id + " = '" + p.proce_id + "'" + 
                 "," + opu.date_modi + " = now()" +
-                "," + opu.user_modi + " = '" + userId + "' " +                
-                "Where " + opu.pkField + "='" + p.opu_id + "'"
-                ;
+                "," + opu.user_modi + " = '" + userId + "' " +
+                "," + opu.date_pic_embryo + " = '" + p.date_pic_embryo + "' " +
+                "Where " + opu.pkField + "='" + p.opu_id + "'";
 
             try
             {
@@ -642,6 +644,7 @@ namespace clinic_ivf.objdb
 
                 opu1.matura_post_mat = dt.Rows[0][opu.matura_post_mat].ToString();
                 opu1.matura_no_of_opu = dt.Rows[0][opu.matura_no_of_opu].ToString();
+                opu1.date_pic_embryo = dt.Rows[0][opu.date_pic_embryo].ToString();
             }
             else
             {
@@ -772,6 +775,7 @@ namespace clinic_ivf.objdb
                 opu1.proce_name = "";
                 opu1.matura_no_of_opu = "";
                 opu1.matura_post_mat = "";
+                opu1.date_pic_embryo = "";
             }
 
             return opu1;
