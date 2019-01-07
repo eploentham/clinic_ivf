@@ -29,6 +29,7 @@ namespace clinic_ivf.gui
         Color color;
         public enum opuReport {OPUReport, OPUEmbryoDevReport };
         opuReport opureport;
+        String aaa = "₀₁₂₃₄₅₆₇₈₉";
         
         public FrmLabOPUPrint(IvfControl ic, String opuid, opuReport opureport)
         {
@@ -76,185 +77,195 @@ namespace clinic_ivf.gui
         private void BtnPrint_Click(object sender, EventArgs e)
         {
             //throw new NotImplementedException();
+            if (opureport == opuReport.OPUReport)
+            {
+                setOPUReport();
+                //frm.setOPUReport(dt);
+            }
+            else if (opureport == opuReport.OPUEmbryoDevReport)
+            {
+                setEmbryoDev();
+            }
             
+        }
+        private void setOPUReport()
+        {
             FrmReport frm = new FrmReport(ic);
             DataTable dt = new DataTable();
             DataTable dtdev1 = new DataTable();
             DataTable dtdev2 = new DataTable();
-            if (opureport == opuReport.OPUReport)
+            if (!chkEmbryoDev20.Checked && cboEmbryoDev2.Text.Equals(""))
             {
-                if (!chkEmbryoDev20.Checked && cboEmbryoDev2.Text.Equals(""))
+                MessageBox.Show("กรุณา เลือก Day 2", "");
+                return;
+            }
+            dt = ic.ivfDB.opuDB.selectByPrintOPU(txtID.Text);
+            if (cboEmbryoDev1.Text.Equals("2"))
+            {
+                dtdev1 = ic.ivfDB.opuEmDevDB.selectByOpuFetId_Day(txtID.Text, objdb.LabOpuEmbryoDevDB.Day1.Day2);
+            }
+            else if (cboEmbryoDev1.Text.Equals("3"))
+            {
+                dtdev1 = ic.ivfDB.opuEmDevDB.selectByOpuFetId_Day(txtID.Text, objdb.LabOpuEmbryoDevDB.Day1.Day3);
+            }
+            else if (cboEmbryoDev1.Text.Equals("5"))
+            {
+                dtdev1 = ic.ivfDB.opuEmDevDB.selectByOpuFetId_Day(txtID.Text, objdb.LabOpuEmbryoDevDB.Day1.Day5);
+            }
+            else if (cboEmbryoDev1.Text.Equals("6"))
+            {
+                dtdev1 = ic.ivfDB.opuEmDevDB.selectByOpuFetId_Day(txtID.Text, objdb.LabOpuEmbryoDevDB.Day1.Day6);
+            }
+            if (!chkEmbryoDev20.Checked && !cboEmbryoDev2.Text.Equals(""))
+            {
+                if (cboEmbryoDev2.Text.Equals("2"))
                 {
-                    MessageBox.Show("กรุณา เลือก Day 2", "");
-                    return;
+                    dtdev2 = ic.ivfDB.opuEmDevDB.selectByOpuFetId_Day(txtID.Text, objdb.LabOpuEmbryoDevDB.Day1.Day2);
                 }
-                dt = ic.ivfDB.opuDB.selectByPrintOPU(txtID.Text);
-                if (cboEmbryoDev1.Text.Equals("2"))
+                else if (cboEmbryoDev2.Text.Equals("3"))
                 {
-                    dtdev1 = ic.ivfDB.opuEmDevDB.selectByOpuFetId_Day(txtID.Text, objdb.LabOpuEmbryoDevDB.Day1.Day2);
+                    dtdev2 = ic.ivfDB.opuEmDevDB.selectByOpuFetId_Day(txtID.Text, objdb.LabOpuEmbryoDevDB.Day1.Day3);
                 }
-                else if (cboEmbryoDev1.Text.Equals("3"))
+                else if (cboEmbryoDev2.Text.Equals("5"))
                 {
-                    dtdev1 = ic.ivfDB.opuEmDevDB.selectByOpuFetId_Day(txtID.Text, objdb.LabOpuEmbryoDevDB.Day1.Day3);
+                    dtdev2 = ic.ivfDB.opuEmDevDB.selectByOpuFetId_Day(txtID.Text, objdb.LabOpuEmbryoDevDB.Day1.Day5);
                 }
-                else if (cboEmbryoDev1.Text.Equals("5"))
+                else if (cboEmbryoDev2.Text.Equals("6"))
                 {
-                    dtdev1 = ic.ivfDB.opuEmDevDB.selectByOpuFetId_Day(txtID.Text, objdb.LabOpuEmbryoDevDB.Day1.Day5);
+                    dtdev2 = ic.ivfDB.opuEmDevDB.selectByOpuFetId_Day(txtID.Text, objdb.LabOpuEmbryoDevDB.Day1.Day6);
                 }
-                else if (cboEmbryoDev1.Text.Equals("6"))
-                {
-                    dtdev1 = ic.ivfDB.opuEmDevDB.selectByOpuFetId_Day(txtID.Text, objdb.LabOpuEmbryoDevDB.Day1.Day6);
-                }
-                if (!chkEmbryoDev20.Checked && !cboEmbryoDev2.Text.Equals(""))
-                {
-                    if (cboEmbryoDev2.Text.Equals("2"))
-                    {
-                        dtdev2 = ic.ivfDB.opuEmDevDB.selectByOpuFetId_Day(txtID.Text, objdb.LabOpuEmbryoDevDB.Day1.Day2);
-                    }
-                    else if (cboEmbryoDev2.Text.Equals("3"))
-                    {
-                        dtdev2 = ic.ivfDB.opuEmDevDB.selectByOpuFetId_Day(txtID.Text, objdb.LabOpuEmbryoDevDB.Day1.Day3);
-                    }
-                    else if (cboEmbryoDev2.Text.Equals("5"))
-                    {
-                        dtdev2 = ic.ivfDB.opuEmDevDB.selectByOpuFetId_Day(txtID.Text, objdb.LabOpuEmbryoDevDB.Day1.Day5);
-                    }
-                    else if (cboEmbryoDev2.Text.Equals("6"))
-                    {
-                        dtdev2 = ic.ivfDB.opuEmDevDB.selectByOpuFetId_Day(txtID.Text, objdb.LabOpuEmbryoDevDB.Day1.Day6);
-                    }
-                }
-                for (int i = 1; i <= 40; i++)
-                {
-                    String col = "";
-                    col = "embryo_dev_0_" + i.ToString("00");
-                    dt.Columns.Add(col, typeof(String));
-                    col = "embryo_dev_1_" + i.ToString("00");
-                    dt.Columns.Add(col, typeof(String));
-                }
-                int j = 1;
-                String col11 = "embryo_dev_1_name";
-                dt.Columns.Add(col11, typeof(String));
-                col11 = "embryo_dev_0_name";
-                dt.Columns.Add(col11, typeof(String));
-                if (!cboEmbryoDev1.Text.Equals("") && dt.Rows.Count>0)
-                {
-                    dt.Rows[0]["embryo_dev_0_name"] = "Embryo Development (Day " + cboEmbryoDev1.Text + ")";
-                }
-                if (!cboEmbryoDev2.Text.Equals("") && dt.Rows.Count > 0)
-                {
-                    dt.Rows[0]["embryo_dev_1_name"] = "Embryo Development (Day " + cboEmbryoDev2.Text + ")";
-                }
-                foreach (DataRow row in dtdev1.Rows)
+            }
+            for (int i = 1; i <= 40; i++)
+            {
+                String col = "";
+                col = "embryo_dev_0_" + i.ToString("00");
+                dt.Columns.Add(col, typeof(String));
+                col = "embryo_dev_1_" + i.ToString("00");
+                dt.Columns.Add(col, typeof(String));
+            }
+            int j = 1;
+            String col11 = "embryo_dev_1_name";
+            dt.Columns.Add(col11, typeof(String));
+            col11 = "embryo_dev_0_name";
+            dt.Columns.Add(col11, typeof(String));
+            if (!cboEmbryoDev1.Text.Equals("") && dt.Rows.Count > 0)
+            {
+                dt.Rows[0]["embryo_dev_0_name"] = "Embryo Development (Day " + cboEmbryoDev1.Text + ")";
+            }
+            if (!cboEmbryoDev2.Text.Equals("") && dt.Rows.Count > 0)
+            {
+                dt.Rows[0]["embryo_dev_1_name"] = "Embryo Development (Day " + cboEmbryoDev2.Text + ")";
+            }
+            foreach (DataRow row in dtdev1.Rows)
+            {
+                if (j > 40) continue;
+                String col = "embryo_dev_0_", vol = "";
+                //col = "embryo_dev_0_" + j.ToString("00");
+                vol = "0" + row["opu_embryo_dev_no"].ToString();
+                vol = vol.Substring(vol.Length - 2);
+                col = col + vol;
+                dt.Rows[0][col] = row["desc0"].ToString();
+
+                j++;
+            }
+            j = 1;
+            if (!chkEmbryoDev20.Checked && dtdev2.Rows.Count > 0)
+            {
+                foreach (DataRow row in dtdev2.Rows)
                 {
                     if (j > 40) continue;
-                    String col = "embryo_dev_0_", vol = "";
+                    String col = "embryo_dev_1_", vol = "";
                     //col = "embryo_dev_0_" + j.ToString("00");
                     vol = "0" + row["opu_embryo_dev_no"].ToString();
                     vol = vol.Substring(vol.Length - 2);
                     col = col + vol;
                     dt.Rows[0][col] = row["desc0"].ToString();
-                    
+
                     j++;
                 }
-                j = 1;
-                if (!chkEmbryoDev20.Checked && dtdev2.Rows.Count > 0)
+            }
+            if (chkEmbryoFreez2Col.Checked)
+            {
+                if (chkEmbryoDev20.Checked)
                 {
-                    foreach (DataRow row in dtdev2.Rows)
-                    {
-                        if (j > 40) continue;
-                        String col = "embryo_dev_1_", vol = "";
-                        //col = "embryo_dev_0_" + j.ToString("00");
-                        vol = "0" + row["opu_embryo_dev_no"].ToString();
-                        vol = vol.Substring(vol.Length - 2);
-                        col = col + vol;
-                        dt.Rows[0][col] = row["desc0"].ToString();
-
-                        j++;
-                    }
-                }
-                if (chkEmbryoFreez2Col.Checked)
-                {
-                    if (chkEmbryoDev20.Checked)
-                    {
-                        frm.setOPUReport(dt, FrmReport.flagEmbryoDev.twocolumn, FrmReport.flagEmbryoDevMore20.More20);
-                    }
-                    else
-                    {
-                        frm.setOPUReport(dt, FrmReport.flagEmbryoDev.twocolumn, FrmReport.flagEmbryoDevMore20.Days2);
-                    }
+                    frm.setOPUReport(dt, FrmReport.flagEmbryoDev.twocolumn, FrmReport.flagEmbryoDevMore20.More20);
                 }
                 else
                 {
-                    if (chkEmbryoDev20.Checked)
-                    {
-                        frm.setOPUReport(dt, FrmReport.flagEmbryoDev.onecolumn, FrmReport.flagEmbryoDevMore20.More20);
-                    }
-                    else
-                    {
-                        frm.setOPUReport(dt, FrmReport.flagEmbryoDev.onecolumn, FrmReport.flagEmbryoDevMore20.Days2);
-                    }
+                    frm.setOPUReport(dt, FrmReport.flagEmbryoDev.twocolumn, FrmReport.flagEmbryoDevMore20.Days2);
                 }
-                //frm.setOPUReport(dt);
             }
-            else if (opureport == opuReport.OPUEmbryoDevReport)
+            else
             {
-                FrmWaiting frmW = new FrmWaiting();
-                frmW.Show();
-                try
+                if (chkEmbryoDev20.Checked)
                 {
-                    int i = 0;
-                    dt = ic.ivfDB.opuEmDevDB.selectByOpuFetId_DayPrint(txtID.Text, objdb.LabOpuEmbryoDevDB.Day1.Day2);
-                    if (dt.Rows.Count > 0)
-                    {
-                        frmW.pB.Minimum = 1;
-                        frmW.pB.Maximum = dt.Rows.Count;
-                        foreach (DataRow row in dt.Rows)
-                        {
-                            String path_pic = "", opuCode = "";
-                            path_pic = row["no1_pathpic"] != null ? row["no1_pathpic"].ToString() : "";
-                            opuCode = row["opu_code"] != null ? row["opu_code"].ToString() : "";
-                            if (!path_pic.Equals(""))
-                            {
-                                MemoryStream stream = ic.ftpC.download(path_pic);
-                                Image loadedImage = new Bitmap(stream);
-                                String[] ext = path_pic.Split('.');
-                                if (ext.Length > 0)
-                                {
-                                    String filename = ext[0];
-                                    String no = "", filename1 = "";
-                                    no = filename.Substring(filename.Length - 2);
-                                    no = no.Replace("_", "");
-                                    filename1 = "embryo_dev_" + no + "." + ext[1];
-                                    if (File.Exists(filename1))
-                                    {
-                                        File.Delete(filename1);
-                                        System.Threading.Thread.Sleep(200);
-                                    }
-                                    loadedImage.Save(filename1);
-                                    row["no1_pathpic"] = System.IO.Directory.GetCurrentDirectory() + "\\" + filename1;
-                                }
-                            }
-                            i++;
-                            frmW.pB.Value = i;
-                        }
-                    }
-                    
-                    frm.setOPUEmbryoDevReport(dt);
-                    
+                    frm.setOPUReport(dt, FrmReport.flagEmbryoDev.onecolumn, FrmReport.flagEmbryoDevMore20.More20);
                 }
-                catch (Exception ex)
+                else
                 {
-                    MessageBox.Show(""+ex.Message, "");
-                }
-                finally
-                {
-                    frmW.Dispose();
+                    frm.setOPUReport(dt, FrmReport.flagEmbryoDev.onecolumn, FrmReport.flagEmbryoDevMore20.Days2);
                 }
             }
             frm.ShowDialog(this);
         }
+        private void setEmbryoDev()
+        {
+            FrmReport frm = new FrmReport(ic);
+            DataTable dt = new DataTable();
+            FrmWaiting frmW = new FrmWaiting();
+            frmW.Show();
+            try
+            {
+                int i = 0;
+                dt = ic.ivfDB.opuEmDevDB.selectByOpuFetId_DayPrint(txtID.Text, objdb.LabOpuEmbryoDevDB.Day1.Day2);
+                if (dt.Rows.Count > 0)
+                {
+                    frmW.pB.Minimum = 1;
+                    frmW.pB.Maximum = dt.Rows.Count;
+                    foreach (DataRow row in dt.Rows)
+                    {
+                        String path_pic = "", opuCode = "";
+                        path_pic = row["no1_pathpic"] != null ? row["no1_pathpic"].ToString() : "";
+                        opuCode = row["opu_code"] != null ? row["opu_code"].ToString() : "";
+                        if (!path_pic.Equals(""))
+                        {
+                            MemoryStream stream = ic.ftpC.download(path_pic);
+                            Image loadedImage = new Bitmap(stream);
+                            String[] ext = path_pic.Split('.');
+                            if (ext.Length > 0)
+                            {
+                                String filename = ext[0];
+                                String no = "", filename1 = "";
+                                no = filename.Substring(filename.Length - 2);
+                                no = no.Replace("_", "");
+                                filename1 = "embryo_dev_" + no + "." + ext[1];
+                                if (File.Exists(filename1))
+                                {
+                                    File.Delete(filename1);
+                                    System.Threading.Thread.Sleep(200);
+                                }
+                                loadedImage.Save(filename1);
+                                row["no1_pathpic"] = System.IO.Directory.GetCurrentDirectory() + "\\" + filename1;
+                            }
+                        }
+                        i++;
+                        frmW.pB.Value = i;
+                    }
+                }
 
+                frm.setOPUEmbryoDevReport(dt);
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("" + ex.Message, "");
+            }
+            finally
+            {
+                frmW.Dispose();
+            }
+            frm.ShowDialog(this);
+        }
         private void setControl()
         {
             opu = ic.ivfDB.opuDB.selectByPk1(opuId);

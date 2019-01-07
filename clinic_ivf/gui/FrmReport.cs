@@ -39,6 +39,7 @@ namespace clinic_ivf.gui
                 rpt.SetParameterValue("line1", ic.cop.comp_name_t);
                 rpt.SetParameterValue("line2", "โทรศัพท์ " + ic.cop.tele);
                 rpt.SetParameterValue("report_name", " Appointment/ใบแพทย์นัด ");
+
                 err = "03";
                 //rpt.SetParameterValue("age1", "" + age);
                 this.crystalReportViewer1.ReportSource = rpt;
