@@ -2164,7 +2164,7 @@ namespace clinic_ivf.gui
             ptt.f_patient_marriage_status_id = cboMarital.SelectedItem == null ? "" : ((ComboBoxItem)cboMarital.SelectedItem).Value;
             ptt.f_patient_blood_group_id = cboBloodG.SelectedItem == null ? "" : ((ComboBoxItem)cboBloodG.SelectedItem).Value;
             ptt.f_patient_nation_id = CboNation.SelectedItem == null ? "" : ((ComboBoxItem)CboNation.SelectedItem).Value;
-            ptt.f_patient_race_id = cboRace.SelectedItem == null ? "" : ((ComboBoxItem)cboRace.SelectedItem).Value;
+            ptt.f_patient_race_id = /*cboRace.SelectedItem == null ? "" : ((ComboBoxItem)cboRace.SelectedItem).Value;*/
             ptt.f_patient_religion_id = cboRg.SelectedItem == null ? "" : ((ComboBoxItem)cboRg.SelectedItem).Value;
             ptt.f_patient_education_type_id = CboEduca.SelectedItem == null ? "" : ((ComboBoxItem)CboEduca.SelectedItem).Value;
 
