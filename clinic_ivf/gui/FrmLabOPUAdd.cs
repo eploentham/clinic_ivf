@@ -88,10 +88,217 @@ namespace clinic_ivf.gui
             ic.ivfDB.fdtDB.setCboOPUFreezeMedia(cboEmbryoFreezMedia1);
             ic.setCboDay(CboEmbryoFreezDay0, "");
             ic.setCboDay(CboEmbryoFreezDay1, "");
+            ic.ivfDB.opuDB.setCboRemark(cboRemark);
 
-            
             //stt.BackgroundGradient = C1.Win.C1SuperTooltip.BackgroundGradient.Gold;
+
+            setClick();
+            txtMaturaNoofOpu.KeyUp += TxtMaturaNoofOpu_KeyUp;
+
+            txtMaturaDate.KeyUp += TxtMaturaDate_KeyUp;
+            txtMaturaMii.KeyUp += TxtMaturaDate_KeyUp;
+            txtMaturaMi.KeyUp += TxtMaturaDate_KeyUp;
+            txtMaturaGv.KeyUp += TxtMaturaDate_KeyUp;
+            txtMaturaPostMat.KeyUp += TxtMaturaDate_KeyUp;
+            txtMaturaAbnor.KeyUp += TxtMaturaDate_KeyUp;
+            txtMaturaDead.KeyUp += TxtMaturaDate_KeyUp;
+            txtFertiliDate.KeyUp += TxtFertiliDate_KeyUp;
+            txtFertili2Pn.KeyUp += TxtFertiliDate_KeyUp;
+            txtFertili1Pn.KeyUp += TxtFertiliDate_KeyUp;
+            txtFertili3Pn.KeyUp += TxtFertiliDate_KeyUp;
+            txtFertili4Pn.KeyUp += TxtFertiliDate_KeyUp;
+            txtFertiliNoPn.KeyUp += TxtFertiliDate_KeyUp;
+            txtFertiliDead.KeyUp += TxtFertiliDate_KeyUp;
+            txtSpermDate.KeyUp += TxtSpermDate_KeyUp;
+            txtSpermCnt.KeyUp += TxtSpermDate_KeyUp;
+            txtSpermTotalCnt.KeyUp += TxtSpermDate_KeyUp;
+            txtSpermMoti.KeyUp += TxtSpermDate_KeyUp;
+            txtSpermMotiTotal.KeyUp += TxtSpermDate_KeyUp;
+            txtSpermMotility.KeyUp += TxtSpermDate_KeyUp;
+            txtSpermVol.KeyUp += TxtSpermDate_KeyUp;
+            txtEmbryoFreezNoOg0.KeyUp += TxtEmbryoFreezNoOg0_KeyUp;
+            txtEmbryoFreezNoStraw0.KeyUp += TxtEmbryoFreezNoOg0_KeyUp;
+            txtEmbryoFreezNoOg1.KeyUp += TxtEmbryoFreezNoOg0_KeyUp;
+            txtEmbryoFreezNoStraw1.KeyUp += TxtEmbryoFreezNoOg0_KeyUp;
+            txtEmbryoForEtNO.KeyUp += TxtEmbryoForEtNO_KeyUp;
+            setKeyPress();
             
+            btnHnSearch.Click += BtnHnSearch_Click;
+
+            setFocusColor();
+            initGrf();
+            setControl();
+            setGrf();
+            
+        }
+
+        private void TxtEmbryoForEtNO_KeyUp(object sender, KeyEventArgs e)
+        {
+            //throw new NotImplementedException();
+            if ((e.KeyCode == Keys.Enter))
+            {
+                if (sender.Equals(txtEmbryoForEtNO))
+                {
+                    txtEmbryoForEtDay.Focus();
+                }
+                else if (sender.Equals(txtEmbryoForEtDay))
+                {
+                    txtEmbryoForEtDate.Focus();
+                }
+                else if (sender.Equals(txtEmbryoForEtDate))
+                {
+                    txtEmbryoForEtVolume.Focus();
+                }
+                else if (sender.Equals(txtEmbryoForEtVolume))
+                {
+                    txtEmbryoForEtCatheter.Focus();
+                }
+                else if (sender.Equals(txtEmbryoForEtCatheter))
+                {
+                    txtEmbryoForEtDoctor.Focus();
+                }
+                else if (sender.Equals(txtEmbryoForEtDoctor))
+                {
+                    txtEmbryoForEtNumTran.Focus();
+                }
+                else if (sender.Equals(txtEmbryoForEtNumTran))
+                {
+                    txtEmbryoForEtNumFreeze.Focus();
+                }
+                else if (sender.Equals(txtEmbryoForEtNumFreeze))
+                {
+                    txtEmbryoForEtAsseted.Focus();
+                }
+                else if (sender.Equals(txtEmbryoForEtAsseted))
+                {
+                    //txtRemark.Focus();
+                }
+
+            }
+        }
+
+        private void TxtEmbryoFreezNoOg0_KeyUp(object sender, KeyEventArgs e)
+        {
+            //throw new NotImplementedException();
+            if ((e.KeyCode == Keys.Enter))
+            {
+                if (sender.Equals(txtEmbryoFreezNoOg0))
+                {
+                    txtEmbryoFreezNoStraw0.Focus();
+                }
+                else if (sender.Equals(txtEmbryoFreezNoStraw0))
+                {
+                    txtEmbryoFreezPosi0.Focus();
+                }
+                else if (sender.Equals(txtEmbryoFreezNoOg1))
+                {
+                    txtEmbryoFreezNoStraw1.Focus();
+                }
+                else if (sender.Equals(txtEmbryoFreezNoStraw1))
+                {
+                    txtEmbryoFreezPosi1.Focus();
+                }
+            }
+        }
+
+        private void TxtSpermDate_KeyUp(object sender, KeyEventArgs e)
+        {
+            //throw new NotImplementedException();
+            if ((e.KeyCode == Keys.Enter))
+            {
+                if (sender.Equals(txtSpermDate))
+                {
+                    txtSpermVol.Focus();
+                }
+                else if (sender.Equals(txtSpermVol))
+                {
+                    txtSpermCnt.Focus();
+                }
+                else if (sender.Equals(txtSpermCnt))
+                {
+                    txtSpermTotalCnt.Focus();
+                }
+                else if (sender.Equals(txtSpermTotalCnt))
+                {
+                    txtSpermMoti.Focus();
+                }
+                else if (sender.Equals(txtSpermMoti))
+                {
+                    txtSpermMotiTotal.Focus();
+                }
+                else if (sender.Equals(txtSpermMotiTotal))
+                {
+                    txtSpermMotility.Focus();
+                }
+            }
+        }
+
+        private void TxtFertiliDate_KeyUp(object sender, KeyEventArgs e)
+        {
+            //throw new NotImplementedException();
+            if ((e.KeyCode == Keys.Enter))
+            {
+                if (sender.Equals(txtFertiliDate))
+                {
+                    txtFertili2Pn.Focus();
+                }
+                else if (sender.Equals(txtFertili2Pn))
+                {
+                    txtFertili1Pn.Focus();
+                }
+                else if (sender.Equals(txtFertili1Pn))
+                {
+                    txtFertili3Pn.Focus();
+                }
+                else if (sender.Equals(txtFertili3Pn))
+                {
+                    txtFertili4Pn.Focus();
+                }
+                else if (sender.Equals(txtFertili4Pn))
+                {
+                    txtFertiliNoPn.Focus();
+                }
+                else if (sender.Equals(txtFertiliNoPn))
+                {
+                    txtFertiliDead.Focus();
+                }
+            }
+        }
+
+        private void TxtMaturaDate_KeyUp(object sender, KeyEventArgs e)
+        {
+            //throw new NotImplementedException();
+            if ((e.KeyCode == Keys.Enter))
+            {
+                if (sender.Equals(txtMaturaDate))
+                {
+                    txtMaturaMii.Focus();
+                }
+                else if (sender.Equals(txtMaturaMii))
+                {
+                    txtMaturaMi.Focus();
+                }
+                else if (sender.Equals(txtMaturaMi))
+                {
+                    txtMaturaGv.Focus();
+                }
+                else if (sender.Equals(txtMaturaGv))
+                {
+                    txtMaturaPostMat.Focus();
+                }
+                else if (sender.Equals(txtMaturaPostMat))
+                {
+                    txtMaturaAbnor.Focus();
+                }
+                else if (sender.Equals(txtMaturaAbnor))
+                {
+                    txtMaturaDead.Focus();
+                }
+            }
+        }
+
+        private void setClick()
+        {
             btnSave.Click += BtnSave_Click;
             btnSaveMatura.Click += BtnSaveMatura_Click;
             btnSaveFertili.Click += BtnSaveFertili_Click;
@@ -118,8 +325,9 @@ namespace clinic_ivf.gui
             btnSaveImg6.Click += BtnSaveImg6_Click;
             btnDay6ImgRef.Click += BtnDay6ImgRef_Click;
             btnPrintOpuEmbryoDev.Click += BtnPrintOpuEmbryoDev_Click;
-            txtMaturaNoofOpu.KeyUp += TxtMaturaNoofOpu_KeyUp;
-
+        }
+        private void setKeyPress()
+        {
             txtMaturaMii.KeyPress += TxtMaturaMii_KeyPress;
             txtMaturaMi.KeyPress += TxtMaturaMii_KeyPress;
             txtMaturaGv.KeyPress += TxtMaturaMii_KeyPress;
@@ -149,9 +357,9 @@ namespace clinic_ivf.gui
             txtFertili1Pn.KeyPress += TxtMaturaMii_KeyPress;
             txtFertili1Pn.KeyPress += TxtMaturaMii_KeyPress;
             txtFertili1Pn.KeyPress += TxtMaturaMii_KeyPress;
-            btnHnSearch.Click += BtnHnSearch_Click;
-
-            setFocusColor();
+        }
+        private void initGrf()
+        {
             initGrfDay2();
             initGrfDay3();
             initGrfDay5();
@@ -160,12 +368,14 @@ namespace clinic_ivf.gui
             initGrfDay3Img();
             initGrfDay5Img();
             initGrfDay6Img();
-            setControl();
+        }
+        private void setGrf()
+        {
             setGrfDay2();
             setGrfDay3();
             setGrfDay5();
             setGrfDay6();
-            
+
             setGrfDay2Img();
             setGrfDay3Img();
             setGrfDay5Img();
@@ -541,6 +751,7 @@ namespace clinic_ivf.gui
                     createEmbryoDev();
                     setControlFirstTime(true);
                 }
+                txtMaturaDate.Focus();
             }
         }
 
@@ -1654,7 +1865,8 @@ namespace clinic_ivf.gui
             //txtEmbryoFreezMedia0.Value = opu.embryo_freez_freeze_media_0;
             //txtEmbryoFreezMedia1.Value = opu.embryo_freez_freeze_media_1;
 
-            txtRemark.Value = opu.remark;
+            //txtRemark.Value = opu.remark;
+            ic.setC1ComboByName(cboRemark, opu.remark);
             txtDatePicEmbryo.Value = opu.date_pic_embryo;
             //CboEmbryoDay.Text = opu.emb
         }
@@ -1689,7 +1901,7 @@ namespace clinic_ivf.gui
                 opu.proce_id = "0";
             }
             opu.opu_code = txtOpuCode.Text;
-            opu.remark = txtRemark.Text;
+            opu.remark = cboRemark.SelectedItem == null ? "" : ((ComboBoxItem)cboRemark.SelectedItem).Text;
         }
         private void setOPUMatura()
         {
@@ -1738,35 +1950,13 @@ namespace clinic_ivf.gui
             opu.embryo_for_et_volume = txtEmbryoForEtVolume.Text;
             opu.embryo_for_et_catheter = txtEmbryoForEtCatheter.Text;
             opu.embryo_for_et_doctor = txtEmbryoForEtDoctor.Text;
-            ComboBoxItem item = new ComboBoxItem();
-            if (cboEmbryoForEtEmbryologist.SelectedItem != null)
-            {
-                item = (ComboBoxItem)cboEmbryoForEtEmbryologist.SelectedItem;
-                opu.embryo_for_et_embryologist_id = item.Value;
-            }
-            else
-            {
-                opu.embryo_for_et_embryologist_id = "0";
-            }
-            if (cboEmbryologistReport.SelectedItem != null)
-            {
-                item = (ComboBoxItem)cboEmbryologistReport.SelectedItem;
-                opu.embryologist_report_id = item.Value;
-            }
-            else
-            {
-                opu.embryologist_report_id = "0";
-            }
-            if (cboEmbryologistAppv.SelectedItem != null)
-            {
-                item = (ComboBoxItem)cboEmbryologistAppv.SelectedItem;
-                opu.embryologist_approve_id = item.Value;
-            }
-            else
-            {
-                opu.embryologist_approve_id = "0";
-            }
-            opu.remark = txtRemark.Text;
+            
+            opu.embryo_for_et_embryologist_id = cboEmbryoForEtEmbryologist.SelectedItem == null ? "0" : ((ComboBoxItem)cboEmbryoForEtEmbryologist.SelectedItem).Value;
+            opu.embryologist_report_id = cboEmbryologistReport.SelectedItem == null ? "0" : ((ComboBoxItem)cboEmbryologistReport.SelectedItem).Value;
+            opu.embryologist_approve_id = cboEmbryologistAppv.SelectedItem == null ? "0" : ((ComboBoxItem)cboEmbryologistAppv.SelectedItem).Value;
+            
+            //opu.remark = txtRemark.Text;
+            opu.remark = cboRemark.SelectedItem == null ? "" : ((ComboBoxItem)cboRemark.SelectedItem).Text;
             opu.embryo_for_et_number_of_transfer = txtEmbryoForEtNumTran.Text;
             opu.embryo_for_et_number_of_freeze = txtEmbryoForEtNumFreeze.Text;
             opu.embryo_for_et_number_of_discard = txtEmbryoForEtNumDiscard.Text;
@@ -3043,6 +3233,10 @@ namespace clinic_ivf.gui
             C1TextBox txt = new C1TextBox();
             C1ComboBox cboday3 = new C1ComboBox();
             C1ComboBox cboday3desc1 = new C1ComboBox();
+            cboday3.AutoCompleteMode = AutoCompleteMode.Suggest;
+            cboday3.AutoCompleteSource = AutoCompleteSource.ListItems;
+            cboday3desc1.AutoCompleteMode = AutoCompleteMode.Suggest;
+            cboday3desc1.AutoCompleteSource = AutoCompleteSource.ListItems;
             ic.ivfDB.fdtDB.setCboOPUStageDay3(cboday3,"");
             ic.ivfDB.fdtDB.setCboOPUStageDay3Desc1(cboday3desc1, "");
             grfDay2.Cols[colDay2ID].Editor = txt;
@@ -3099,6 +3293,10 @@ namespace clinic_ivf.gui
             C1TextBox txt = new C1TextBox();
             C1ComboBox cboday3 = new C1ComboBox();
             C1ComboBox cboday3desc1 = new C1ComboBox();
+            cboday3.AutoCompleteMode = AutoCompleteMode.Suggest;
+            cboday3.AutoCompleteSource = AutoCompleteSource.ListItems;
+            cboday3desc1.AutoCompleteMode = AutoCompleteMode.Suggest;
+            cboday3desc1.AutoCompleteSource = AutoCompleteSource.ListItems;
             ic.ivfDB.fdtDB.setCboOPUStageDay3(cboday3, "");
             ic.ivfDB.fdtDB.setCboOPUStageDay3Desc1(cboday3desc1, "");
             grfDay3.Cols[colDay3ID].Editor = txt;
@@ -3154,6 +3352,10 @@ namespace clinic_ivf.gui
             C1TextBox txt = new C1TextBox();
             C1ComboBox cboday5 = new C1ComboBox();
             C1ComboBox cboday3desc1 = new C1ComboBox();
+            cboday5.AutoCompleteMode = AutoCompleteMode.Suggest;
+            cboday5.AutoCompleteSource = AutoCompleteSource.ListItems;
+            cboday3desc1.AutoCompleteMode = AutoCompleteMode.Suggest;
+            cboday3desc1.AutoCompleteSource = AutoCompleteSource.ListItems;
             ic.ivfDB.fdtDB.setCboOPUStageDay5(cboday5, "");
             ic.ivfDB.fdtDB.setCboOPUStageDay3Desc1(cboday3desc1, "");
             grfDay5.Cols[colDay5ID].Editor = txt;
@@ -3211,6 +3413,10 @@ namespace clinic_ivf.gui
             C1TextBox txt = new C1TextBox();
             C1ComboBox cboday5 = new C1ComboBox();
             C1ComboBox cboday3desc1 = new C1ComboBox();
+            cboday5.AutoCompleteMode = AutoCompleteMode.Suggest;
+            cboday5.AutoCompleteSource = AutoCompleteSource.ListItems;
+            cboday3desc1.AutoCompleteMode = AutoCompleteMode.Suggest;
+            cboday3desc1.AutoCompleteSource = AutoCompleteSource.ListItems;
             ic.ivfDB.fdtDB.setCboOPUStageDay5(cboday5, "");
             ic.ivfDB.fdtDB.setCboOPUStageDay3Desc1(cboday3desc1, "");
             grfDay6.Cols[colDay6ID].Editor = txt;

@@ -31,6 +31,8 @@
             this.theme1 = new C1.Win.C1Themes.C1ThemeController();
             this.spMain = new System.Windows.Forms.SplitContainer();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.txtDatePicEmbryo = new C1.Win.C1Input.C1DateEdit();
+            this.label71 = new System.Windows.Forms.Label();
             this.btnPrintOpuEmbryoDev = new C1.Win.C1Input.C1Button();
             this.btnPrint = new C1.Win.C1Input.C1Button();
             this.txtLabReqCode = new C1.Win.C1Input.C1TextBox();
@@ -188,7 +190,6 @@
             this.cboEmbryoForEtEmbryologist = new C1.Win.C1Input.C1ComboBox();
             this.label61 = new System.Windows.Forms.Label();
             this.label60 = new System.Windows.Forms.Label();
-            this.txtRemark = new C1.Win.C1Input.C1TextBox();
             this.txtEmbryoForEtNumDiscard = new C1.Win.C1Input.C1TextBox();
             this.txtEmbryoForEtNumFreeze = new C1.Win.C1Input.C1TextBox();
             this.txtEmbryoForEtNumTran = new C1.Win.C1Input.C1TextBox();
@@ -240,14 +241,14 @@
             this.btnSaveImg6 = new C1.Win.C1Input.C1Button();
             this.sB = new System.Windows.Forms.StatusStrip();
             this.sB1 = new System.Windows.Forms.ToolStripStatusLabel();
-            this.txtDatePicEmbryo = new C1.Win.C1Input.C1DateEdit();
-            this.label71 = new System.Windows.Forms.Label();
+            this.cboRemark = new C1.Win.C1Input.C1ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.theme1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.spMain)).BeginInit();
             this.spMain.Panel1.SuspendLayout();
             this.spMain.Panel2.SuspendLayout();
             this.spMain.SuspendLayout();
             this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtDatePicEmbryo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnPrintOpuEmbryoDev)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnPrint)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtLabReqCode)).BeginInit();
@@ -358,7 +359,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.cboEmbryologistAppv)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cboEmbryologistReport)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cboEmbryoForEtEmbryologist)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtRemark)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtEmbryoForEtNumDiscard)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtEmbryoForEtNumFreeze)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtEmbryoForEtNumTran)).BeginInit();
@@ -395,7 +395,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.c1ComboBox4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnSaveImg6)).BeginInit();
             this.sB.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.txtDatePicEmbryo)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cboRemark)).BeginInit();
             this.SuspendLayout();
             // 
             // theme1
@@ -471,6 +471,64 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Patient";
             this.theme1.SetTheme(this.groupBox1, "(default)");
+            // 
+            // txtDatePicEmbryo
+            // 
+            this.txtDatePicEmbryo.AllowSpinLoop = false;
+            this.txtDatePicEmbryo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            // 
+            // 
+            // 
+            this.txtDatePicEmbryo.Calendar.ArrowColor = System.Drawing.Color.Black;
+            this.txtDatePicEmbryo.Calendar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.txtDatePicEmbryo.Calendar.DayNamesFont = new System.Drawing.Font("Tahoma", 8F);
+            this.txtDatePicEmbryo.Calendar.Font = new System.Drawing.Font("Tahoma", 8F);
+            this.txtDatePicEmbryo.Calendar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.txtDatePicEmbryo.Calendar.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(71)))), ((int)(((byte)(47)))));
+            this.txtDatePicEmbryo.Calendar.SelectionForeColor = System.Drawing.Color.White;
+            this.txtDatePicEmbryo.Calendar.TitleBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(230)))));
+            this.txtDatePicEmbryo.Calendar.TitleFont = new System.Drawing.Font("Tahoma", 8F);
+            this.txtDatePicEmbryo.Calendar.TitleForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.txtDatePicEmbryo.Calendar.TodayBorderColor = System.Drawing.Color.White;
+            this.txtDatePicEmbryo.Calendar.TrailingForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
+            this.txtDatePicEmbryo.Calendar.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            this.txtDatePicEmbryo.Culture = 1054;
+            this.txtDatePicEmbryo.CurrentTimeZone = false;
+            this.txtDatePicEmbryo.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
+            this.txtDatePicEmbryo.DisplayFormat.CalendarType = C1.Win.C1Input.CalendarType.GregorianCalendar;
+            this.txtDatePicEmbryo.DisplayFormat.FormatType = C1.Win.C1Input.FormatTypeEnum.ShortDate;
+            this.txtDatePicEmbryo.DisplayFormat.Inherit = ((C1.Win.C1Input.FormatInfoInheritFlags)(((((C1.Win.C1Input.FormatInfoInheritFlags.CustomFormat | C1.Win.C1Input.FormatInfoInheritFlags.NullText) 
+            | C1.Win.C1Input.FormatInfoInheritFlags.EmptyAsNull) 
+            | C1.Win.C1Input.FormatInfoInheritFlags.TrimStart) 
+            | C1.Win.C1Input.FormatInfoInheritFlags.TrimEnd)));
+            this.txtDatePicEmbryo.EditFormat.CalendarType = C1.Win.C1Input.CalendarType.GregorianCalendar;
+            this.txtDatePicEmbryo.EditFormat.FormatType = C1.Win.C1Input.FormatTypeEnum.ShortDate;
+            this.txtDatePicEmbryo.EditFormat.Inherit = ((C1.Win.C1Input.FormatInfoInheritFlags)(((((C1.Win.C1Input.FormatInfoInheritFlags.CustomFormat | C1.Win.C1Input.FormatInfoInheritFlags.NullText) 
+            | C1.Win.C1Input.FormatInfoInheritFlags.EmptyAsNull) 
+            | C1.Win.C1Input.FormatInfoInheritFlags.TrimStart) 
+            | C1.Win.C1Input.FormatInfoInheritFlags.TrimEnd)));
+            this.txtDatePicEmbryo.GMTOffset = System.TimeSpan.Parse("00:00:00");
+            this.txtDatePicEmbryo.ImagePadding = new System.Windows.Forms.Padding(0);
+            this.txtDatePicEmbryo.Location = new System.Drawing.Point(164, 83);
+            this.txtDatePicEmbryo.Name = "txtDatePicEmbryo";
+            this.txtDatePicEmbryo.Size = new System.Drawing.Size(137, 18);
+            this.txtDatePicEmbryo.TabIndex = 543;
+            this.txtDatePicEmbryo.Tag = null;
+            this.theme1.SetTheme(this.txtDatePicEmbryo, "(default)");
+            this.txtDatePicEmbryo.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            // 
+            // label71
+            // 
+            this.label71.AutoSize = true;
+            this.label71.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.label71.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label71.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.label71.Location = new System.Drawing.Point(8, 85);
+            this.label71.Name = "label71";
+            this.label71.Size = new System.Drawing.Size(114, 16);
+            this.label71.TabIndex = 542;
+            this.label71.Text = "Date pic Embryo :";
+            this.theme1.SetTheme(this.label71, "(default)");
             // 
             // btnPrintOpuEmbryoDev
             // 
@@ -687,6 +745,7 @@
             // cboDoctor
             // 
             this.cboDoctor.AllowSpinLoop = false;
+            this.cboDoctor.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
             this.cboDoctor.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.cboDoctor.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
             this.cboDoctor.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
@@ -779,6 +838,8 @@
             // cboOpuProce
             // 
             this.cboOpuProce.AllowSpinLoop = false;
+            this.cboOpuProce.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
+            this.cboOpuProce.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.cboOpuProce.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.cboOpuProce.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
             this.cboOpuProce.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
@@ -1027,6 +1088,8 @@
             // cboEmbryoFreezMedia1
             // 
             this.cboEmbryoFreezMedia1.AllowSpinLoop = false;
+            this.cboEmbryoFreezMedia1.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
+            this.cboEmbryoFreezMedia1.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.cboEmbryoFreezMedia1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.cboEmbryoFreezMedia1.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
             this.cboEmbryoFreezMedia1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
@@ -1048,6 +1111,8 @@
             // cboEmbryoFreezMethod1
             // 
             this.cboEmbryoFreezMethod1.AllowSpinLoop = false;
+            this.cboEmbryoFreezMethod1.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
+            this.cboEmbryoFreezMethod1.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.cboEmbryoFreezMethod1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.cboEmbryoFreezMethod1.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
             this.cboEmbryoFreezMethod1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
@@ -1069,6 +1134,8 @@
             // cboEmbryoFreezStage1
             // 
             this.cboEmbryoFreezStage1.AllowSpinLoop = false;
+            this.cboEmbryoFreezStage1.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
+            this.cboEmbryoFreezStage1.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.cboEmbryoFreezStage1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.cboEmbryoFreezStage1.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
             this.cboEmbryoFreezStage1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
@@ -1227,9 +1294,9 @@
             this.label67.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
             this.label67.Location = new System.Drawing.Point(9, 79);
             this.label67.Name = "label67";
-            this.label67.Size = new System.Drawing.Size(104, 16);
+            this.label67.Size = new System.Drawing.Size(99, 16);
             this.label67.TabIndex = 512;
-            this.label67.Text = "No. og Embryo :";
+            this.label67.Text = "No. of Embryo :";
             this.theme1.SetTheme(this.label67, "(default)");
             // 
             // label68
@@ -1342,6 +1409,8 @@
             // cboEmbryoFreezMedia0
             // 
             this.cboEmbryoFreezMedia0.AllowSpinLoop = false;
+            this.cboEmbryoFreezMedia0.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
+            this.cboEmbryoFreezMedia0.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.cboEmbryoFreezMedia0.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.cboEmbryoFreezMedia0.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
             this.cboEmbryoFreezMedia0.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
@@ -1363,6 +1432,8 @@
             // cboEmbryoFreezMethod0
             // 
             this.cboEmbryoFreezMethod0.AllowSpinLoop = false;
+            this.cboEmbryoFreezMethod0.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
+            this.cboEmbryoFreezMethod0.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.cboEmbryoFreezMethod0.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.cboEmbryoFreezMethod0.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
             this.cboEmbryoFreezMethod0.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
@@ -1384,6 +1455,8 @@
             // cboEmbryoFreezStage0
             // 
             this.cboEmbryoFreezStage0.AllowSpinLoop = false;
+            this.cboEmbryoFreezStage0.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
+            this.cboEmbryoFreezStage0.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.cboEmbryoFreezStage0.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.cboEmbryoFreezStage0.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
             this.cboEmbryoFreezStage0.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
@@ -1542,9 +1615,9 @@
             this.label42.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
             this.label42.Location = new System.Drawing.Point(9, 79);
             this.label42.Name = "label42";
-            this.label42.Size = new System.Drawing.Size(104, 16);
+            this.label42.Size = new System.Drawing.Size(99, 16);
             this.label42.TabIndex = 512;
-            this.label42.Text = "No. og Embryo :";
+            this.label42.Text = "No. of Embryo :";
             this.theme1.SetTheme(this.label42, "(default)");
             // 
             // label41
@@ -2976,13 +3049,13 @@
             // groupBox7
             // 
             this.groupBox7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.groupBox7.Controls.Add(this.cboRemark);
             this.groupBox7.Controls.Add(this.btnSaveEmbryoEt);
             this.groupBox7.Controls.Add(this.cboEmbryologistAppv);
             this.groupBox7.Controls.Add(this.cboEmbryologistReport);
             this.groupBox7.Controls.Add(this.cboEmbryoForEtEmbryologist);
             this.groupBox7.Controls.Add(this.label61);
             this.groupBox7.Controls.Add(this.label60);
-            this.groupBox7.Controls.Add(this.txtRemark);
             this.groupBox7.Controls.Add(this.txtEmbryoForEtNumDiscard);
             this.groupBox7.Controls.Add(this.txtEmbryoForEtNumFreeze);
             this.groupBox7.Controls.Add(this.txtEmbryoForEtNumTran);
@@ -3032,6 +3105,8 @@
             // cboEmbryologistAppv
             // 
             this.cboEmbryologistAppv.AllowSpinLoop = false;
+            this.cboEmbryologistAppv.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
+            this.cboEmbryologistAppv.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.cboEmbryologistAppv.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.cboEmbryologistAppv.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
             this.cboEmbryologistAppv.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
@@ -3053,6 +3128,8 @@
             // cboEmbryologistReport
             // 
             this.cboEmbryologistReport.AllowSpinLoop = false;
+            this.cboEmbryologistReport.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
+            this.cboEmbryologistReport.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.cboEmbryologistReport.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.cboEmbryologistReport.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
             this.cboEmbryologistReport.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
@@ -3074,6 +3151,8 @@
             // cboEmbryoForEtEmbryologist
             // 
             this.cboEmbryoForEtEmbryologist.AllowSpinLoop = false;
+            this.cboEmbryoForEtEmbryologist.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
+            this.cboEmbryoForEtEmbryologist.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.cboEmbryoForEtEmbryologist.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.cboEmbryoForEtEmbryologist.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
             this.cboEmbryoForEtEmbryologist.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
@@ -3098,7 +3177,7 @@
             this.label61.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
             this.label61.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label61.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.label61.Location = new System.Drawing.Point(421, 106);
+            this.label61.Location = new System.Drawing.Point(426, 106);
             this.label61.Name = "label61";
             this.label61.Size = new System.Drawing.Size(147, 16);
             this.label61.TabIndex = 541;
@@ -3117,19 +3196,6 @@
             this.label60.TabIndex = 538;
             this.label60.Text = "Embryologist report :";
             this.theme1.SetTheme(this.label60, "(default)");
-            // 
-            // txtRemark
-            // 
-            this.txtRemark.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtRemark.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
-            this.txtRemark.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.txtRemark.Location = new System.Drawing.Point(85, 100);
-            this.txtRemark.Name = "txtRemark";
-            this.txtRemark.Size = new System.Drawing.Size(337, 20);
-            this.txtRemark.TabIndex = 529;
-            this.txtRemark.Tag = null;
-            this.theme1.SetTheme(this.txtRemark, "(default)");
-            this.txtRemark.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
             // 
             // txtEmbryoForEtNumDiscard
             // 
@@ -3826,63 +3892,28 @@
             this.sB1.Size = new System.Drawing.Size(118, 17);
             this.sB1.Text = "toolStripStatusLabel1";
             // 
-            // txtDatePicEmbryo
+            // cboRemark
             // 
-            this.txtDatePicEmbryo.AllowSpinLoop = false;
-            this.txtDatePicEmbryo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            // 
-            // 
-            // 
-            this.txtDatePicEmbryo.Calendar.ArrowColor = System.Drawing.Color.Black;
-            this.txtDatePicEmbryo.Calendar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.txtDatePicEmbryo.Calendar.DayNamesFont = new System.Drawing.Font("Tahoma", 8F);
-            this.txtDatePicEmbryo.Calendar.Font = new System.Drawing.Font("Tahoma", 8F);
-            this.txtDatePicEmbryo.Calendar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.txtDatePicEmbryo.Calendar.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(71)))), ((int)(((byte)(47)))));
-            this.txtDatePicEmbryo.Calendar.SelectionForeColor = System.Drawing.Color.White;
-            this.txtDatePicEmbryo.Calendar.TitleBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(230)))));
-            this.txtDatePicEmbryo.Calendar.TitleFont = new System.Drawing.Font("Tahoma", 8F);
-            this.txtDatePicEmbryo.Calendar.TitleForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.txtDatePicEmbryo.Calendar.TodayBorderColor = System.Drawing.Color.White;
-            this.txtDatePicEmbryo.Calendar.TrailingForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
-            this.txtDatePicEmbryo.Calendar.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
-            this.txtDatePicEmbryo.Culture = 1054;
-            this.txtDatePicEmbryo.CurrentTimeZone = false;
-            this.txtDatePicEmbryo.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
-            this.txtDatePicEmbryo.DisplayFormat.CalendarType = C1.Win.C1Input.CalendarType.GregorianCalendar;
-            this.txtDatePicEmbryo.DisplayFormat.FormatType = C1.Win.C1Input.FormatTypeEnum.ShortDate;
-            this.txtDatePicEmbryo.DisplayFormat.Inherit = ((C1.Win.C1Input.FormatInfoInheritFlags)(((((C1.Win.C1Input.FormatInfoInheritFlags.CustomFormat | C1.Win.C1Input.FormatInfoInheritFlags.NullText) 
-            | C1.Win.C1Input.FormatInfoInheritFlags.EmptyAsNull) 
-            | C1.Win.C1Input.FormatInfoInheritFlags.TrimStart) 
-            | C1.Win.C1Input.FormatInfoInheritFlags.TrimEnd)));
-            this.txtDatePicEmbryo.EditFormat.CalendarType = C1.Win.C1Input.CalendarType.GregorianCalendar;
-            this.txtDatePicEmbryo.EditFormat.FormatType = C1.Win.C1Input.FormatTypeEnum.ShortDate;
-            this.txtDatePicEmbryo.EditFormat.Inherit = ((C1.Win.C1Input.FormatInfoInheritFlags)(((((C1.Win.C1Input.FormatInfoInheritFlags.CustomFormat | C1.Win.C1Input.FormatInfoInheritFlags.NullText) 
-            | C1.Win.C1Input.FormatInfoInheritFlags.EmptyAsNull) 
-            | C1.Win.C1Input.FormatInfoInheritFlags.TrimStart) 
-            | C1.Win.C1Input.FormatInfoInheritFlags.TrimEnd)));
-            this.txtDatePicEmbryo.GMTOffset = System.TimeSpan.Parse("00:00:00");
-            this.txtDatePicEmbryo.ImagePadding = new System.Windows.Forms.Padding(0);
-            this.txtDatePicEmbryo.Location = new System.Drawing.Point(164, 83);
-            this.txtDatePicEmbryo.Name = "txtDatePicEmbryo";
-            this.txtDatePicEmbryo.Size = new System.Drawing.Size(137, 18);
-            this.txtDatePicEmbryo.TabIndex = 543;
-            this.txtDatePicEmbryo.Tag = null;
-            this.theme1.SetTheme(this.txtDatePicEmbryo, "(default)");
-            this.txtDatePicEmbryo.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
-            // 
-            // label71
-            // 
-            this.label71.AutoSize = true;
-            this.label71.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.label71.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label71.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.label71.Location = new System.Drawing.Point(8, 85);
-            this.label71.Name = "label71";
-            this.label71.Size = new System.Drawing.Size(114, 16);
-            this.label71.TabIndex = 542;
-            this.label71.Text = "Date pic Embryo :";
-            this.theme1.SetTheme(this.label71, "(default)");
+            this.cboRemark.AllowSpinLoop = false;
+            this.cboRemark.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
+            this.cboRemark.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.cboRemark.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.cboRemark.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
+            this.cboRemark.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.cboRemark.GapHeight = 0;
+            this.cboRemark.ImagePadding = new System.Windows.Forms.Padding(0);
+            this.cboRemark.ItemsDisplayMember = "";
+            this.cboRemark.ItemsValueMember = "";
+            this.cboRemark.Location = new System.Drawing.Point(85, 100);
+            this.cboRemark.Name = "cboRemark";
+            this.cboRemark.Size = new System.Drawing.Size(337, 20);
+            this.cboRemark.Style.DropDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.cboRemark.Style.DropDownBorderColor = System.Drawing.Color.Gainsboro;
+            this.cboRemark.Style.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.cboRemark.TabIndex = 546;
+            this.cboRemark.Tag = null;
+            this.theme1.SetTheme(this.cboRemark, "(default)");
+            this.cboRemark.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
             // 
             // FrmLabOPUAdd
             // 
@@ -3902,6 +3933,7 @@
             this.spMain.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtDatePicEmbryo)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnPrintOpuEmbryoDev)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnPrint)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtLabReqCode)).EndInit();
@@ -4018,7 +4050,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.cboEmbryologistAppv)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cboEmbryologistReport)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cboEmbryoForEtEmbryologist)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtRemark)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtEmbryoForEtNumDiscard)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtEmbryoForEtNumFreeze)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtEmbryoForEtNumTran)).EndInit();
@@ -4056,7 +4087,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.btnSaveImg6)).EndInit();
             this.sB.ResumeLayout(false);
             this.sB.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.txtDatePicEmbryo)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cboRemark)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -4176,7 +4207,6 @@
         private System.Windows.Forms.GroupBox groupBox7;
         private System.Windows.Forms.Label label61;
         private System.Windows.Forms.Label label60;
-        private C1.Win.C1Input.C1TextBox txtRemark;
         private C1.Win.C1Input.C1TextBox txtEmbryoForEtNumDiscard;
         private C1.Win.C1Input.C1TextBox txtEmbryoForEtNumFreeze;
         private C1.Win.C1Input.C1TextBox txtEmbryoForEtNumTran;
@@ -4278,5 +4308,6 @@
         private C1.Win.C1Input.C1ComboBox cboEmbryoFreezMedia0;
         private C1.Win.C1Input.C1DateEdit txtDatePicEmbryo;
         private System.Windows.Forms.Label label71;
+        private C1.Win.C1Input.C1ComboBox cboRemark;
     }
 }

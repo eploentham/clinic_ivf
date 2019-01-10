@@ -57,6 +57,19 @@ namespace clinic_ivf.gui
             ic.setCboDayEmbryoDev(cboEmbryoDev1, "");
             ic.setCboDayEmbryoDev(cboEmbryoDev2, "");
 
+            if (opureport == opuReport.OPUEmbryoDevReport)
+            {
+                groupBox2.Hide();
+                label7.Hide();
+                cboEmbryoDev2.Hide();
+                chkEmbryoDev20.Hide();
+                label1.Text = "Day :";
+            }
+            else
+            {
+                groupBox2.Show();
+            }
+
             btnPrint.Click += BtnPrint_Click;
             chkEmbryoDev20.CheckedChanged += ChkEmbryoDev20_CheckedChanged;
         }
@@ -217,7 +230,24 @@ namespace clinic_ivf.gui
             try
             {
                 int i = 0;
-                dt = ic.ivfDB.opuEmDevDB.selectByOpuFetId_DayPrint(txtID.Text, objdb.LabOpuEmbryoDevDB.Day1.Day2);
+                String day = "";
+                day = cboEmbryoDev1.SelectedItem == null ? "" : ((ComboBoxItem)cboEmbryoDev1.SelectedItem).Value;
+                if (day.Equals("2"))
+                {
+                    dt = ic.ivfDB.opuEmDevDB.selectByOpuFetId_DayPrint(txtID.Text, objdb.LabOpuEmbryoDevDB.Day1.Day2);
+                }
+                else if (day.Equals("3"))
+                {
+                    dt = ic.ivfDB.opuEmDevDB.selectByOpuFetId_DayPrint(txtID.Text, objdb.LabOpuEmbryoDevDB.Day1.Day3);
+                }
+                else if (day.Equals("5"))
+                {
+                    dt = ic.ivfDB.opuEmDevDB.selectByOpuFetId_DayPrint(txtID.Text, objdb.LabOpuEmbryoDevDB.Day1.Day5);
+                }
+                else if (day.Equals("6"))
+                {
+                    dt = ic.ivfDB.opuEmDevDB.selectByOpuFetId_DayPrint(txtID.Text, objdb.LabOpuEmbryoDevDB.Day1.Day6);
+                }
                 if (dt.Rows.Count > 0)
                 {
                     frmW.pB.Minimum = 1;

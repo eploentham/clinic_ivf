@@ -24,7 +24,7 @@ namespace clinic_ivf.gui
         Font ff, ffB;
         int colCuHn = 2, colCuVn1 = 1, colCuName = 3, colCuDate=4, colCuTime=5, colDept=6;
 
-        C1FlexGrid grfCu, grfDay3, grfDay5, grfDay6;
+        C1FlexGrid grfCu, grfHn, grfDay5, grfDay6;
         C1SuperTooltip stt;
         C1SuperErrorProvider sep;
         public enum StatusConnection {host, hostEx};
@@ -56,15 +56,26 @@ namespace clinic_ivf.gui
             btnOk.Click += BtnOk_Click;
 
             initGrfCu();
+            initGrfHn();
             setGrfCu();
             tC1.SelectedTab = tabCurrent;
             btnSearch.Click += BtnSearch_Click;
+            txtHnMale.KeyUp += TxtHnMale_KeyUp;
+        }
+
+        private void TxtHnMale_KeyUp(object sender, KeyEventArgs e)
+        {
+            //throw new NotImplementedException();
+            if(txtHnMale.Text.Length > 3)
+            {
+                setGrfHn(txtHnMale.Text);
+            }
         }
 
         private void BtnSearch_Click(object sender, EventArgs e)
         {
             //throw new NotImplementedException();
-
+            setGrfHn(txtHnMale.Text);
         }
 
         private void BtnOk_Click(object sender, EventArgs e)
@@ -77,7 +88,121 @@ namespace clinic_ivf.gui
             Close();
             //return true;
         }
+        private void initGrfHn()
+        {
+            grfHn = new C1FlexGrid();
+            grfHn.Font = fEdit;
+            grfHn.Dock = System.Windows.Forms.DockStyle.Fill;
+            grfHn.Location = new System.Drawing.Point(0, 0);
 
+            //FilterRow fr = new FilterRow(grfExpn);
+
+            grfHn.AfterRowColChange += GrfHn_AfterRowColChange;
+            //grfExpnC.CellButtonClick += new C1.Win.C1FlexGrid.RowColEventHandler(this.grfDept_CellButtonClick);
+            //grfExpnC.CellChanged += new C1.Win.C1FlexGrid.RowColEventHandler(this.grfDept_CellChanged);
+            ContextMenu menuGw = new ContextMenu();
+
+            grfHn.ContextMenu = menuGw;
+            gbHn.Controls.Add(grfHn);
+
+            theme1.SetTheme(grfHn, "Office2010Red");
+        }
+        private void GrfHn_AfterRowColChange(object sender, RangeEventArgs e)
+        {
+            //throw new NotImplementedException();
+            if (e.NewRange.r1 < 0) return;
+            if (e.NewRange.Data == null) return;
+            String vn = "";
+            vn = grfHn[e.NewRange.r1, colCuVn1] != null ? grfHn[e.NewRange.r1, colCuVn1].ToString() : "";
+            if (!vn.Equals(""))
+            {
+                ic.sVsOld = new VisitOld();
+                ic.sVsOld.PName = grfHn[grfHn.Row, colCuName] != null ? grfHn[grfHn.Row, colCuName].ToString() : "";
+                ic.sVsOld.VN = grfHn[grfHn.Row, colCuVn1] != null ? grfHn[grfHn.Row, colCuVn1].ToString() : "";
+                ic.sVsOld.PIDS = grfHn[grfHn.Row, colCuHn] != null ? grfHn[grfHn.Row, colCuHn].ToString() : "";
+
+                txtHn.Value = ic.sVsOld.PIDS;
+                txtName.Value = ic.sVsOld.PName;
+                txtVn.Value = ic.sVsOld.VN;
+            }
+            //grfAddr.DataSource = xC.iniDB.addrDB.selectByTableId1(vn);
+        }
+        private void setGrfHn(String hn)
+        {
+            //grfDept.Rows.Count = 7;
+            grfHn.Clear();
+            DataTable dt = new DataTable();
+            grfHn.DataSource = null;
+            ConnectDB con = new ConnectDB(ic.iniC);
+            //con.OpenConnectionEx();
+            if (ic.iniC.statusAppDonor.Equals("1"))
+            {
+                dt = ic.ivfDB.vsOldDB.selectCurrentVisit(con.connEx);
+            }
+            else
+            {
+                if (hn.Equals(""))
+                {
+                    dt = ic.ivfDB.vsOldDB.selectCurrentVisit(con.conn);
+                }
+                else
+                {
+                    dt = ic.ivfDB.vsOldDB.selectLikeByHN(hn, con.conn);
+                }
+            }
+
+            //con.CloseConnectionEx();
+            //grfExpn.Rows.Count = dt.Rows.Count + 1;
+            grfHn.Rows.Count = 1;
+            grfHn.Cols.Count = 7;
+            C1TextBox txt = new C1TextBox();
+            C1ComboBox cboproce = new C1ComboBox();
+            //ic.ivfDB.itmDB.setCboItem(cboproce);
+            grfHn.Cols[colCuHn].Editor = txt;
+            grfHn.Cols[colCuVn1].Editor = txt;
+            grfHn.Cols[colCuName].Editor = txt;
+
+            grfHn.Cols[colCuHn].Width = 100;
+            grfHn.Cols[colCuVn1].Width = 100;
+            grfHn.Cols[colCuName].Width = 280;
+            grfHn.Cols[colCuDate].Width = 100;
+            grfHn.Cols[colCuTime].Width = 80;
+            grfHn.Cols[colDept].Width = 120;
+            //grfHn.Cols[colCuTime].Width = 80;
+
+            grfHn.ShowCursor = true;
+            //grdFlex.Cols[colID].Caption = "no";
+            //grfDept.Cols[colCode].Caption = "รหัส";
+
+            grfHn.Cols[colCuHn].Caption = "HN";
+            grfHn.Cols[colCuVn1].Caption = "VN";
+            grfHn.Cols[colCuName].Caption = "Name";
+            grfHn.Cols[colCuDate].Caption = "Date";
+            grfHn.Cols[colCuTime].Caption = "Time";
+            grfHn.Cols[colDept].Caption = "dept";
+
+            Color color = ColorTranslator.FromHtml(ic.iniC.grfRowColor);
+            //CellRange rg1 = grfBank.GetCellRange(1, colE, grfBank.Rows.Count, colE);
+            //rg1.Style = grfBank.Styles["date"];
+            //grfHn.Cols[colID].Visible = false;
+            for (int i = 0; i <= dt.Rows.Count - 1; i++)
+            {
+                Row row = grfHn.Rows.Add();
+                row[0] = i;
+                row[colCuVn1] = dt.Rows[i]["VN"].ToString();
+                row[colCuHn] = dt.Rows[i]["PIDS"].ToString();
+                row[colCuName] = dt.Rows[i]["PName"].ToString();
+                row[colCuDate] = ic.datetoShow(dt.Rows[i]["VDate"].ToString());
+                row[colCuTime] = dt.Rows[i]["VStartTime"].ToString();
+                row[colDept] = dt.Rows[i]["VName"].ToString();
+            }
+            grfHn.Cols[colCuHn].AllowEditing = false;
+            grfHn.Cols[colCuVn1].AllowEditing = false;
+            grfHn.Cols[colCuName].AllowEditing = false;
+            grfHn.Cols[colCuDate].AllowEditing = false;
+            grfHn.Cols[colCuTime].AllowEditing = false;
+            grfHn.Cols[colDept].AllowEditing = false;
+        }
         private void initGrfCu()
         {
             grfCu = new C1FlexGrid();
@@ -91,9 +216,7 @@ namespace clinic_ivf.gui
             //grfExpnC.CellButtonClick += new C1.Win.C1FlexGrid.RowColEventHandler(this.grfDept_CellButtonClick);
             //grfExpnC.CellChanged += new C1.Win.C1FlexGrid.RowColEventHandler(this.grfDept_CellChanged);
             ContextMenu menuGw = new ContextMenu();
-            //menuGw.MenuItems.Add("&แก้ไข รายการเบิก", new EventHandler(ContextMenu_edit));
-            //menuGw.MenuItems.Add("&แก้ไข", new EventHandler(ContextMenu_Gw_Edit));
-            //menuGw.MenuItems.Add("&ยกเลิก", new EventHandler(ContextMenu_Gw_Cancel));
+            
             grfCu.ContextMenu = menuGw;
             gbCu.Controls.Add(grfCu);
 
