@@ -184,6 +184,7 @@
             this.cboEmbryologistDay6 = new C1.Win.C1Input.C1ComboBox();
             this.btnSaveDay6 = new C1.Win.C1Input.C1Button();
             this.groupBox7 = new System.Windows.Forms.GroupBox();
+            this.cboRemark = new C1.Win.C1Input.C1ComboBox();
             this.btnSaveEmbryoEt = new C1.Win.C1Input.C1Button();
             this.cboEmbryologistAppv = new C1.Win.C1Input.C1ComboBox();
             this.cboEmbryologistReport = new C1.Win.C1Input.C1ComboBox();
@@ -241,7 +242,11 @@
             this.btnSaveImg6 = new C1.Win.C1Input.C1Button();
             this.sB = new System.Windows.Forms.StatusStrip();
             this.sB1 = new System.Windows.Forms.ToolStripStatusLabel();
-            this.cboRemark = new C1.Win.C1Input.C1ComboBox();
+            this.label72 = new System.Windows.Forms.Label();
+            this.txtNameDonor = new C1.Win.C1Input.C1TextBox();
+            this.btnDonorSearch = new C1.Win.C1Input.C1Button();
+            this.label73 = new System.Windows.Forms.Label();
+            this.txtHnDonor = new C1.Win.C1Input.C1TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.theme1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.spMain)).BeginInit();
             this.spMain.Panel1.SuspendLayout();
@@ -355,6 +360,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.cboEmbryologistDay6)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnSaveDay6)).BeginInit();
             this.groupBox7.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.cboRemark)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnSaveEmbryoEt)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cboEmbryologistAppv)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cboEmbryologistReport)).BeginInit();
@@ -395,7 +401,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.c1ComboBox4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnSaveImg6)).BeginInit();
             this.sB.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.cboRemark)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtNameDonor)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnDonorSearch)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtHnDonor)).BeginInit();
             this.SuspendLayout();
             // 
             // theme1
@@ -424,7 +432,7 @@
             this.spMain.Panel2.Controls.Add(this.spLeft);
             this.spMain.Panel2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
             this.theme1.SetTheme(this.spMain.Panel2, "(default)");
-            this.spMain.Size = new System.Drawing.Size(1640, 916);
+            this.spMain.Size = new System.Drawing.Size(1769, 916);
             this.spMain.SplitterDistance = 116;
             this.spMain.TabIndex = 10;
             this.theme1.SetTheme(this.spMain, "(default)");
@@ -432,6 +440,11 @@
             // groupBox1
             // 
             this.groupBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.groupBox1.Controls.Add(this.label72);
+            this.groupBox1.Controls.Add(this.txtNameDonor);
+            this.groupBox1.Controls.Add(this.btnDonorSearch);
+            this.groupBox1.Controls.Add(this.label73);
+            this.groupBox1.Controls.Add(this.txtHnDonor);
             this.groupBox1.Controls.Add(this.txtDatePicEmbryo);
             this.groupBox1.Controls.Add(this.label71);
             this.groupBox1.Controls.Add(this.btnPrintOpuEmbryoDev);
@@ -466,7 +479,7 @@
             this.groupBox1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
             this.groupBox1.Location = new System.Drawing.Point(0, 0);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(1640, 116);
+            this.groupBox1.Size = new System.Drawing.Size(1769, 116);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Patient";
@@ -1036,8 +1049,8 @@
             this.spLeft.Panel2.Controls.Add(this.spBody);
             this.spLeft.Panel2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
             this.theme1.SetTheme(this.spLeft.Panel2, "(default)");
-            this.spLeft.Size = new System.Drawing.Size(1640, 796);
-            this.spLeft.SplitterDistance = 655;
+            this.spLeft.Size = new System.Drawing.Size(1769, 796);
+            this.spLeft.SplitterDistance = 706;
             this.spLeft.TabIndex = 0;
             this.theme1.SetTheme(this.spLeft, "(default)");
             // 
@@ -1050,7 +1063,7 @@
             this.groupBox5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
             this.groupBox5.Location = new System.Drawing.Point(0, 567);
             this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Size = new System.Drawing.Size(655, 275);
+            this.groupBox5.Size = new System.Drawing.Size(706, 275);
             this.groupBox5.TabIndex = 516;
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "Embryo Freezing";
@@ -1078,7 +1091,7 @@
             this.groupBox8.Controls.Add(this.txtEmbryoFreezNoOg1);
             this.groupBox8.Dock = System.Windows.Forms.DockStyle.Right;
             this.groupBox8.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.groupBox8.Location = new System.Drawing.Point(354, 16);
+            this.groupBox8.Location = new System.Drawing.Point(405, 16);
             this.groupBox8.Name = "groupBox8";
             this.groupBox8.Size = new System.Drawing.Size(298, 256);
             this.groupBox8.TabIndex = 540;
@@ -1728,7 +1741,7 @@
             this.groupBox4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
             this.groupBox4.Location = new System.Drawing.Point(0, 372);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(655, 195);
+            this.groupBox4.Size = new System.Drawing.Size(706, 195);
             this.groupBox4.TabIndex = 515;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Sperm preparation";
@@ -2098,7 +2111,7 @@
             this.groupBox3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
             this.groupBox3.Location = new System.Drawing.Point(0, 200);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(655, 172);
+            this.groupBox3.Size = new System.Drawing.Size(706, 172);
             this.groupBox3.TabIndex = 514;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Fertilization";
@@ -2358,7 +2371,7 @@
             this.groupBox2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
             this.groupBox2.Location = new System.Drawing.Point(0, 0);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(655, 200);
+            this.groupBox2.Size = new System.Drawing.Size(706, 200);
             this.groupBox2.TabIndex = 513;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Maturation";
@@ -2667,7 +2680,7 @@
             this.spBody.Panel2.Controls.Add(this.groupBox7);
             this.spBody.Panel2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
             this.theme1.SetTheme(this.spBody.Panel2, "(default)");
-            this.spBody.Size = new System.Drawing.Size(981, 796);
+            this.spBody.Size = new System.Drawing.Size(1059, 796);
             this.spBody.SplitterDistance = 651;
             this.spBody.TabIndex = 0;
             this.theme1.SetTheme(this.spBody, "(default)");
@@ -2693,8 +2706,8 @@
             this.splitContainer1.Panel2.Controls.Add(this.splitContainer3);
             this.splitContainer1.Panel2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
             this.theme1.SetTheme(this.splitContainer1.Panel2, "(default)");
-            this.splitContainer1.Size = new System.Drawing.Size(981, 651);
-            this.splitContainer1.SplitterDistance = 472;
+            this.splitContainer1.Size = new System.Drawing.Size(1059, 651);
+            this.splitContainer1.SplitterDistance = 509;
             this.splitContainer1.TabIndex = 0;
             this.theme1.SetTheme(this.splitContainer1, "(default)");
             // 
@@ -2719,8 +2732,8 @@
             this.splitContainer2.Panel2.Controls.Add(this.gbDay3);
             this.splitContainer2.Panel2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
             this.theme1.SetTheme(this.splitContainer2.Panel2, "(default)");
-            this.splitContainer2.Size = new System.Drawing.Size(472, 651);
-            this.splitContainer2.SplitterDistance = 229;
+            this.splitContainer2.Size = new System.Drawing.Size(509, 651);
+            this.splitContainer2.SplitterDistance = 246;
             this.splitContainer2.TabIndex = 0;
             this.theme1.SetTheme(this.splitContainer2, "(default)");
             // 
@@ -2733,7 +2746,7 @@
             this.gbDay2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
             this.gbDay2.Location = new System.Drawing.Point(0, 0);
             this.gbDay2.Name = "gbDay2";
-            this.gbDay2.Size = new System.Drawing.Size(229, 651);
+            this.gbDay2.Size = new System.Drawing.Size(246, 651);
             this.gbDay2.TabIndex = 2;
             this.gbDay2.TabStop = false;
             this.gbDay2.Text = "Day 2 Embryo Development ";
@@ -2746,7 +2759,7 @@
             this.pn2Grf.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
             this.pn2Grf.Location = new System.Drawing.Point(3, 16);
             this.pn2Grf.Name = "pn2Grf";
-            this.pn2Grf.Size = new System.Drawing.Size(223, 592);
+            this.pn2Grf.Size = new System.Drawing.Size(240, 592);
             this.pn2Grf.TabIndex = 1;
             this.theme1.SetTheme(this.pn2Grf, "(default)");
             // 
@@ -2759,7 +2772,7 @@
             this.pn2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
             this.pn2.Location = new System.Drawing.Point(3, 608);
             this.pn2.Name = "pn2";
-            this.pn2.Size = new System.Drawing.Size(223, 40);
+            this.pn2.Size = new System.Drawing.Size(240, 40);
             this.pn2.TabIndex = 0;
             this.theme1.SetTheme(this.pn2, "(default)");
             // 
@@ -2807,7 +2820,7 @@
             this.gbDay3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
             this.gbDay3.Location = new System.Drawing.Point(0, 0);
             this.gbDay3.Name = "gbDay3";
-            this.gbDay3.Size = new System.Drawing.Size(239, 651);
+            this.gbDay3.Size = new System.Drawing.Size(259, 651);
             this.gbDay3.TabIndex = 3;
             this.gbDay3.TabStop = false;
             this.gbDay3.Text = "Day 3 Embryo Development ";
@@ -2820,7 +2833,7 @@
             this.pn3Grf.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
             this.pn3Grf.Location = new System.Drawing.Point(3, 16);
             this.pn3Grf.Name = "pn3Grf";
-            this.pn3Grf.Size = new System.Drawing.Size(233, 592);
+            this.pn3Grf.Size = new System.Drawing.Size(253, 592);
             this.pn3Grf.TabIndex = 1;
             this.theme1.SetTheme(this.pn3Grf, "(default)");
             // 
@@ -2833,7 +2846,7 @@
             this.pn3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
             this.pn3.Location = new System.Drawing.Point(3, 608);
             this.pn3.Name = "pn3";
-            this.pn3.Size = new System.Drawing.Size(233, 40);
+            this.pn3.Size = new System.Drawing.Size(253, 40);
             this.pn3.TabIndex = 0;
             this.theme1.SetTheme(this.pn3, "(default)");
             // 
@@ -2893,8 +2906,8 @@
             this.splitContainer3.Panel2.Controls.Add(this.gbDay6);
             this.splitContainer3.Panel2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
             this.theme1.SetTheme(this.splitContainer3.Panel2, "(default)");
-            this.splitContainer3.Size = new System.Drawing.Size(505, 651);
-            this.splitContainer3.SplitterDistance = 237;
+            this.splitContainer3.Size = new System.Drawing.Size(546, 651);
+            this.splitContainer3.SplitterDistance = 256;
             this.splitContainer3.TabIndex = 0;
             this.theme1.SetTheme(this.splitContainer3, "(default)");
             // 
@@ -2907,7 +2920,7 @@
             this.gbDay5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
             this.gbDay5.Location = new System.Drawing.Point(0, 0);
             this.gbDay5.Name = "gbDay5";
-            this.gbDay5.Size = new System.Drawing.Size(237, 651);
+            this.gbDay5.Size = new System.Drawing.Size(256, 651);
             this.gbDay5.TabIndex = 4;
             this.gbDay5.TabStop = false;
             this.gbDay5.Text = "Day 5 Embryo Development ";
@@ -2920,7 +2933,7 @@
             this.pn5Grf.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
             this.pn5Grf.Location = new System.Drawing.Point(3, 16);
             this.pn5Grf.Name = "pn5Grf";
-            this.pn5Grf.Size = new System.Drawing.Size(231, 592);
+            this.pn5Grf.Size = new System.Drawing.Size(250, 592);
             this.pn5Grf.TabIndex = 1;
             this.theme1.SetTheme(this.pn5Grf, "(default)");
             // 
@@ -2933,7 +2946,7 @@
             this.pn5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
             this.pn5.Location = new System.Drawing.Point(3, 608);
             this.pn5.Name = "pn5";
-            this.pn5.Size = new System.Drawing.Size(231, 40);
+            this.pn5.Size = new System.Drawing.Size(250, 40);
             this.pn5.TabIndex = 0;
             this.theme1.SetTheme(this.pn5, "(default)");
             // 
@@ -2981,7 +2994,7 @@
             this.gbDay6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
             this.gbDay6.Location = new System.Drawing.Point(0, 0);
             this.gbDay6.Name = "gbDay6";
-            this.gbDay6.Size = new System.Drawing.Size(264, 651);
+            this.gbDay6.Size = new System.Drawing.Size(286, 651);
             this.gbDay6.TabIndex = 5;
             this.gbDay6.TabStop = false;
             this.gbDay6.Text = "Day 6 Embryo Development ";
@@ -2994,7 +3007,7 @@
             this.pn6Grf.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
             this.pn6Grf.Location = new System.Drawing.Point(3, 16);
             this.pn6Grf.Name = "pn6Grf";
-            this.pn6Grf.Size = new System.Drawing.Size(258, 592);
+            this.pn6Grf.Size = new System.Drawing.Size(280, 592);
             this.pn6Grf.TabIndex = 1;
             this.theme1.SetTheme(this.pn6Grf, "(default)");
             // 
@@ -3007,7 +3020,7 @@
             this.pn6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
             this.pn6.Location = new System.Drawing.Point(3, 608);
             this.pn6.Name = "pn6";
-            this.pn6.Size = new System.Drawing.Size(258, 40);
+            this.pn6.Size = new System.Drawing.Size(280, 40);
             this.pn6.TabIndex = 0;
             this.theme1.SetTheme(this.pn6, "(default)");
             // 
@@ -3082,11 +3095,34 @@
             this.groupBox7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
             this.groupBox7.Location = new System.Drawing.Point(0, 0);
             this.groupBox7.Name = "groupBox7";
-            this.groupBox7.Size = new System.Drawing.Size(981, 141);
+            this.groupBox7.Size = new System.Drawing.Size(1059, 141);
             this.groupBox7.TabIndex = 2;
             this.groupBox7.TabStop = false;
             this.groupBox7.Text = "Embryo for ET";
             this.theme1.SetTheme(this.groupBox7, "(default)");
+            // 
+            // cboRemark
+            // 
+            this.cboRemark.AllowSpinLoop = false;
+            this.cboRemark.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
+            this.cboRemark.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.cboRemark.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.cboRemark.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
+            this.cboRemark.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.cboRemark.GapHeight = 0;
+            this.cboRemark.ImagePadding = new System.Windows.Forms.Padding(0);
+            this.cboRemark.ItemsDisplayMember = "";
+            this.cboRemark.ItemsValueMember = "";
+            this.cboRemark.Location = new System.Drawing.Point(85, 100);
+            this.cboRemark.Name = "cboRemark";
+            this.cboRemark.Size = new System.Drawing.Size(337, 20);
+            this.cboRemark.Style.DropDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.cboRemark.Style.DropDownBorderColor = System.Drawing.Color.Gainsboro;
+            this.cboRemark.Style.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.cboRemark.TabIndex = 546;
+            this.cboRemark.Tag = null;
+            this.theme1.SetTheme(this.cboRemark, "(default)");
+            this.cboRemark.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
             // 
             // btnSaveEmbryoEt
             // 
@@ -3490,7 +3526,7 @@
             this.c1CommandDock1.Dock = System.Windows.Forms.DockStyle.Right;
             this.c1CommandDock1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
             this.c1CommandDock1.Id = 2;
-            this.c1CommandDock1.Location = new System.Drawing.Point(1311, 0);
+            this.c1CommandDock1.Location = new System.Drawing.Point(1440, 0);
             this.c1CommandDock1.Name = "c1CommandDock1";
             this.c1CommandDock1.Size = new System.Drawing.Size(329, 916);
             this.theme1.SetTheme(this.c1CommandDock1, "(default)");
@@ -3882,7 +3918,7 @@
             this.sB1});
             this.sB.Location = new System.Drawing.Point(0, 916);
             this.sB.Name = "sB";
-            this.sB.Size = new System.Drawing.Size(1640, 22);
+            this.sB.Size = new System.Drawing.Size(1769, 22);
             this.sB.TabIndex = 9;
             this.sB.Text = "statusStrip1";
             // 
@@ -3892,34 +3928,74 @@
             this.sB1.Size = new System.Drawing.Size(118, 17);
             this.sB1.Text = "toolStripStatusLabel1";
             // 
-            // cboRemark
+            // label72
             // 
-            this.cboRemark.AllowSpinLoop = false;
-            this.cboRemark.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
-            this.cboRemark.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
-            this.cboRemark.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.cboRemark.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
-            this.cboRemark.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.cboRemark.GapHeight = 0;
-            this.cboRemark.ImagePadding = new System.Windows.Forms.Padding(0);
-            this.cboRemark.ItemsDisplayMember = "";
-            this.cboRemark.ItemsValueMember = "";
-            this.cboRemark.Location = new System.Drawing.Point(85, 100);
-            this.cboRemark.Name = "cboRemark";
-            this.cboRemark.Size = new System.Drawing.Size(337, 20);
-            this.cboRemark.Style.DropDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.cboRemark.Style.DropDownBorderColor = System.Drawing.Color.Gainsboro;
-            this.cboRemark.Style.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.cboRemark.TabIndex = 546;
-            this.cboRemark.Tag = null;
-            this.theme1.SetTheme(this.cboRemark, "(default)");
-            this.cboRemark.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            this.label72.AutoSize = true;
+            this.label72.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.label72.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label72.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.label72.Location = new System.Drawing.Point(1233, 43);
+            this.label72.Name = "label72";
+            this.label72.Size = new System.Drawing.Size(48, 16);
+            this.label72.TabIndex = 548;
+            this.label72.Text = "name :";
+            this.theme1.SetTheme(this.label72, "(default)");
+            // 
+            // txtNameHonor
+            // 
+            this.txtNameDonor.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtNameDonor.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
+            this.txtNameDonor.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.txtNameDonor.Location = new System.Drawing.Point(1337, 41);
+            this.txtNameDonor.Name = "txtNameHonor";
+            this.txtNameDonor.Size = new System.Drawing.Size(207, 20);
+            this.txtNameDonor.TabIndex = 547;
+            this.txtNameDonor.Tag = null;
+            this.theme1.SetTheme(this.txtNameDonor, "(default)");
+            this.txtNameDonor.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            // 
+            // btnDonorSearch
+            // 
+            this.btnDonorSearch.Location = new System.Drawing.Point(1303, 18);
+            this.btnDonorSearch.Name = "btnDonorSearch";
+            this.btnDonorSearch.Size = new System.Drawing.Size(28, 23);
+            this.btnDonorSearch.TabIndex = 546;
+            this.btnDonorSearch.Text = "...";
+            this.theme1.SetTheme(this.btnDonorSearch, "(default)");
+            this.btnDonorSearch.UseVisualStyleBackColor = true;
+            this.btnDonorSearch.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            // 
+            // label73
+            // 
+            this.label73.AutoSize = true;
+            this.label73.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.label73.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label73.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.label73.Location = new System.Drawing.Point(1233, 21);
+            this.label73.Name = "label73";
+            this.label73.Size = new System.Drawing.Size(72, 16);
+            this.label73.TabIndex = 545;
+            this.label73.Text = "HN donor :";
+            this.theme1.SetTheme(this.label73, "(default)");
+            // 
+            // txtHnDonor
+            // 
+            this.txtHnDonor.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtHnDonor.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
+            this.txtHnDonor.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.txtHnDonor.Location = new System.Drawing.Point(1337, 19);
+            this.txtHnDonor.Name = "txtHnDonor";
+            this.txtHnDonor.Size = new System.Drawing.Size(207, 20);
+            this.txtHnDonor.TabIndex = 544;
+            this.txtHnDonor.Tag = null;
+            this.theme1.SetTheme(this.txtHnDonor, "(default)");
+            this.txtHnDonor.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
             // 
             // FrmLabOPUAdd
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1640, 938);
+            this.ClientSize = new System.Drawing.Size(1769, 938);
             this.Controls.Add(this.c1CommandDock1);
             this.Controls.Add(this.spMain);
             this.Controls.Add(this.sB);
@@ -4046,6 +4122,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.btnSaveDay6)).EndInit();
             this.groupBox7.ResumeLayout(false);
             this.groupBox7.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.cboRemark)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnSaveEmbryoEt)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cboEmbryologistAppv)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cboEmbryologistReport)).EndInit();
@@ -4087,7 +4164,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.btnSaveImg6)).EndInit();
             this.sB.ResumeLayout(false);
             this.sB.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.cboRemark)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtNameDonor)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnDonorSearch)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtHnDonor)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -4309,5 +4388,10 @@
         private C1.Win.C1Input.C1DateEdit txtDatePicEmbryo;
         private System.Windows.Forms.Label label71;
         private C1.Win.C1Input.C1ComboBox cboRemark;
+        private System.Windows.Forms.Label label72;
+        private C1.Win.C1Input.C1TextBox txtNameDonor;
+        private C1.Win.C1Input.C1Button btnDonorSearch;
+        private System.Windows.Forms.Label label73;
+        private C1.Win.C1Input.C1TextBox txtHnDonor;
     }
 }

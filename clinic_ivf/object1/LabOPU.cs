@@ -137,5 +137,7 @@ namespace clinic_ivf.object1
         public String matura_no_of_opu { get; set; }
         public String matura_post_mat { get; set; }
         public String date_pic_embryo { get; set; }
+        public String hn_donor { get; set; }
+        public String name_donor { get; set; }
     }
 }

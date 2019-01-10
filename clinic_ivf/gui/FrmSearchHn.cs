@@ -147,7 +147,14 @@ namespace clinic_ivf.gui
                 }
                 else
                 {
-                    dt = ic.ivfDB.vsOldDB.selectLikeByHN(hn, con.conn);
+                    if(statusconn == StatusConnection.hostEx)
+                    {
+                        dt = ic.ivfDB.pttDB.selectBySearchEx(hn);
+                    }
+                    else
+                    {
+                        dt = ic.ivfDB.vsOldDB.selectLikeByHN(hn, con.conn);
+                    }
                 }
             }
 

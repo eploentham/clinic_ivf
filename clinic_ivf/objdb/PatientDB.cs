@@ -728,6 +728,49 @@ namespace clinic_ivf.objdb
             dt = conn.selectData(conn.conn, sql);
             return dt;
         }
+        public DataTable selectBySearchEx(String search)
+        {
+            DataTable dt = new DataTable();
+            String whereHN = "", whereName = "", wherepid = "", wherepassport = "", wherenameE = "";
+            if (!search.Equals(""))
+            {
+                whereHN = " ptt." + ptt.patient_hn + " like '%" + search.Trim().ToUpper() + "%'";
+            }
+            if (!search.Equals(""))
+            {
+                String[] txt = search.Split(' ');
+                if (txt.Length == 2)
+                {
+                    whereName = " or ( lcase(ptt." + ptt.patient_firstname + ") like '%" + txt[0].Trim().ToLower() + "%') and ( lcase(ptt." + ptt.patient_lastname + ") like '%" + txt[1].Trim().ToLower() + "%')";
+                    wherenameE = " or ( lcase(ptt." + ptt.patient_firstname_e + ") like '%" + txt[0].Trim().ToLower() + "%') and ( lcase(ptt." + ptt.patient_lastname_e + ") like '%" + txt[1].Trim().ToLower() + "%')";
+                }
+                else if (txt.Length == 1)
+                {
+                    whereName = " or ( lcase(ptt." + ptt.patient_firstname + ") like '%" + txt[0].Trim().ToLower() + "%') or ( lcase(ptt." + ptt.patient_lastname + ") like '%" + txt[0].Trim().ToLower() + "%')";
+                    wherenameE = " or ( lcase(ptt." + ptt.patient_firstname_e + ") like '%" + txt[0].Trim().ToLower() + "%') or ( lcase(ptt." + ptt.patient_lastname_e + ") like '%" + txt[0].Trim().ToLower() + "%')";
+                }
+                else
+                {
+                    whereName = " or ( lcase(ptt." + ptt.patient_firstname + ") like '%" + search.Trim().ToLower() + "%') or ( lcase(ptt." + ptt.patient_lastname + ") like '%" + search.Trim().ToLower() + "%')";
+                    wherenameE = " or ( lcase(ptt." + ptt.patient_firstname_e + ") like '%" + search.Trim().ToLower() + "%') or ( lcase(ptt." + ptt.patient_lastname_e + ") like '%" + search.Trim().ToLower() + "%')";
+                }
+            }
+            if (!search.Equals(""))
+            {
+                wherepid = " or ( ptt." + ptt.pid + " like '%" + search.Trim() + "%' )";
+            }
+            if (!search.Equals(""))
+            {
+                wherepassport = " or ( ptt." + ptt.passport + " like '%" + search.Trim() + "%' )";
+            }
+            String sql = "select '' as VN, '' as VDate, '' as VStartTime, '' as VName, ptt." + ptt.t_patient_id + " as PID,ptt." + ptt.patient_hn + " as PIDS,CONCAT(IFNULL(fpp.patient_prefix_description,''),' ', ptt." + ptt.patient_firstname_e + ",' ',ptt." + ptt.patient_lastname_e + ") as PName,ptt." + ptt.remark + " as EmergencyPersonalContact " +
+                "From " + ptt.table + " ptt " +
+                "Left join f_patient_prefix fpp on fpp.f_patient_prefix_id = ptt.f_patient_prefix_id " +
+                "Where " + whereHN + whereName + wherepid + wherenameE + " and ptt." + ptt.active + "='1'" +
+                "Order By ptt." + ptt.t_patient_id;
+            dt = conn.selectData(conn.connEx, sql);
+            return dt;
+        }
         public Patient setPatient(DataTable dt)
         {
             Patient ptt1 = new Patient();

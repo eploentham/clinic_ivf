@@ -225,7 +225,7 @@ namespace clinic_ivf.objdb
             //lDept = new List<Position>();
             lStageDay5.Clear();
             DataTable dt = new DataTable();
-            dt = selectOPUStageDay3();
+            dt = selectOPUStageDay5();
             //FDocType itm = new FDocType();
             //itm.doc_type_id = "";
             //itm.doc_type_name = "";
