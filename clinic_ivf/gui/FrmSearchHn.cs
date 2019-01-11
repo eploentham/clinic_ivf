@@ -149,7 +149,7 @@ namespace clinic_ivf.gui
                 {
                     if(statusconn == StatusConnection.hostEx)
                     {
-                        dt = ic.ivfDB.pttDB.selectBySearchEx(hn);
+                        dt = ic.ivfDB.vsDB.selectByHNEx(hn);
                     }
                     else
                     {
