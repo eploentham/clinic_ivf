@@ -43,6 +43,8 @@ namespace clinic_ivf.gui
         C1SuperErrorProvider sep;
         Color color;
         Boolean flagDay2Img=false, flagDay3Img = false, flagDay5Img = false, flagDay6Img = false;
+        private bool prefixSeen;
+
         public FrmLabOPUAdd(IvfControl ic, String reqid, String opuid)
         {
             InitializeComponent();
@@ -132,7 +134,25 @@ namespace clinic_ivf.gui
             setGrf();
             
         }
-        
+        protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
+        {
+            // ...
+            if (prefixSeen)
+            {
+                if (keyData == (Keys.Alt | Keys.Control | Keys.S))
+                {
+                    MessageBox.Show("Got it!");
+                }
+                prefixSeen = false;
+                return true;
+            }
+            if (keyData == (Keys.Alt | Keys.Control | Keys.K))
+            {
+                prefixSeen = true;
+                return true;
+            }
+            return base.ProcessCmdKey(ref msg, keyData);
+        }
         private void TxtEmbryoForEtNO_KeyUp(object sender, KeyEventArgs e)
         {
             //throw new NotImplementedException();
@@ -3247,6 +3267,9 @@ namespace clinic_ivf.gui
             grfDay2.Cols[colDay2Desc].Width = 100;
             grfDay2.Cols[colDay2Desc1].Width = 50;
             grfDay2.Cols[colDay2Desc2].Width = 50;
+            grfDay2.Cols[colDay2Desc].AllowSorting = false;
+            grfDay2.Cols[colDay2Desc1].AllowSorting = false;
+            grfDay2.Cols[colDay2Desc2].AllowSorting = false;
 
             grfDay2.ShowCursor = true;
             //grdFlex.Cols[colID].Caption = "no";
@@ -3307,6 +3330,9 @@ namespace clinic_ivf.gui
             grfDay3.Cols[colDay3Desc].Width = 100;
             grfDay3.Cols[colDay3Desc1].Width = 50;
             grfDay3.Cols[colDay3Desc2].Width = 50;
+            grfDay3.Cols[colDay3Desc].AllowSorting = false;
+            grfDay3.Cols[colDay3Desc1].AllowSorting = false;
+            grfDay3.Cols[colDay3Desc2].AllowSorting = false;
 
             grfDay3.ShowCursor = true;
             //grdFlex.Cols[colID].Caption = "no";
@@ -3375,6 +3401,9 @@ namespace clinic_ivf.gui
             grfDay5.Cols[colDay5Desc].Caption = "desc";
             grfDay5.Cols[colDay5Desc1].Caption = "desc1";
             grfDay5.Cols[colDay5Desc2].Caption = "desc2";
+            grfDay5.Cols[colDay5Desc].AllowSorting = false;
+            grfDay5.Cols[colDay5Desc1].AllowSorting = false;
+            grfDay5.Cols[colDay5Desc2].AllowSorting = false;
 
             Color color = ColorTranslator.FromHtml(ic.iniC.grfRowColor);
             //CellRange rg1 = grfBank.GetCellRange(1, colE, grfBank.Rows.Count, colE);
@@ -3436,7 +3465,9 @@ namespace clinic_ivf.gui
             grfDay6.Cols[colDay6Desc].Caption = "desc";
             grfDay6.Cols[colDay6Desc1].Caption = "desc1";
             grfDay6.Cols[colDay6Desc2].Caption = "desc2";
-
+            grfDay6.Cols[colDay6Desc].AllowSorting = false;
+            grfDay6.Cols[colDay6Desc1].AllowSorting = false;
+            grfDay6.Cols[colDay6Desc2].AllowSorting = false;
 
             Color color = ColorTranslator.FromHtml(ic.iniC.grfRowColor);
             //CellRange rg1 = grfBank.GetCellRange(1, colE, grfBank.Rows.Count, colE);

@@ -25,7 +25,7 @@ namespace clinic_ivf.gui
         Font fEdit, fEditB;
         Color bg, fc;
         Font ff, ffB;
-        int colRqId = 1, colRqReqNum = 2, colRqHn = 3, colRqVn = 4, colRqName = 5, colPttName=6, colRqDate = 7, colRqRemark = 9, colDtrName=8, colDtrId=10, colStatusReq=11;
+        int colRqId = 1, colRqReqNum = 2, colRqHn = 3, colRqVn = 4, colRqName = 5, colPttName=6, colRqDate = 7, colRqRemark = 9, colDtrName=8, colDtrId=10, colStatusReq=11, colDob=12;
 
         C1FlexGrid grfReq;
         C1SuperTooltip stt;
@@ -84,7 +84,7 @@ namespace clinic_ivf.gui
             //throw new NotImplementedException();
             setGrfReq();
         }
-        private void setLabRequest(String pttName, String vn, String doctorId, String remark, String hn)
+        private void setLabRequest(String pttName, String vn, String doctorId, String remark, String hn, String dobfemale)
         {
             lbReq.req_id = "";
             lbReq.req_code = ic.ivfDB.copDB.genReqDoc();
@@ -108,6 +108,12 @@ namespace clinic_ivf.gui
             lbReq.user_modi = "";
             lbReq.user_cancel = "";
             lbReq.item_id = "112";      //OPU
+            lbReq.lab_id = "";
+            lbReq.dob_donor = "";
+            lbReq.dob_female = dobfemale;
+            lbReq.dob_male = "";
+            lbReq.hn_donor = "";
+            lbReq.name_donor = "";
             lbReq.doctor_id = doctorId;
         }
         private void initGrfReq()
@@ -133,7 +139,7 @@ namespace clinic_ivf.gui
         }
         private void ContextMenu_edit(object sender, System.EventArgs e)
         {
-            String chk = "", name = "", id = "", vn = "", remark = "", dtrid = "", dtrname = "", hn = "", statusReq = "";
+            String chk = "", name = "", id = "", vn = "", remark = "", dtrid = "", dtrname = "", hn = "", statusReq = "", dob="";
             id = grfReq[grfReq.Row, colRqId] != null ? grfReq[grfReq.Row, colRqId].ToString() : "";
             chk = grfReq[grfReq.Row, colRqReqNum] != null ? grfReq[grfReq.Row, colRqReqNum].ToString() : "";
             name = grfReq[grfReq.Row, colPttName] != null ? grfReq[grfReq.Row, colPttName].ToString() : "";
@@ -143,6 +149,7 @@ namespace clinic_ivf.gui
             dtrname = grfReq[grfReq.Row, colDtrName] != null ? grfReq[grfReq.Row, colDtrName].ToString() : "";
             hn = grfReq[grfReq.Row, colRqHn] != null ? grfReq[grfReq.Row, colRqHn].ToString() : "";
             statusReq = grfReq[grfReq.Row, colStatusReq] != null ? grfReq[grfReq.Row, colStatusReq].ToString() : "";
+            dob = grfReq[grfReq.Row, colDob] != null ? grfReq[grfReq.Row, colDob].ToString() : "";
             if (statusReq.Equals("1"))
             {
                 MessageBox.Show("รับ request ไปแล้ว", "");
@@ -152,13 +159,13 @@ namespace clinic_ivf.gui
             {
                 //grfReq.Rows.Remove(grfReq.Row);
 
-                acceptLabOPUAdd(id, name, vn, dtrid, remark, hn, false);
+                acceptLabOPUAdd(id, name, vn, dtrid, remark, hn, false, dob);
                 setGrfReq();
             }
         }
         private void ContextMenu_Gw_Add(object sender, System.EventArgs e)
         {
-            String chk = "", name = "", id = "", vn = "", remark = "", dtrid = "", dtrname = "", hn = "", statusReq = "";
+            String chk = "", name = "", id = "", vn = "", remark = "", dtrid = "", dtrname = "", hn = "", statusReq = "", dob="";
             id = grfReq[grfReq.Row, colRqId] != null ? grfReq[grfReq.Row, colRqId].ToString() : "";
             chk = grfReq[grfReq.Row, colRqReqNum] != null ? grfReq[grfReq.Row, colRqReqNum].ToString() : "";
             name = grfReq[grfReq.Row, colPttName] != null ? grfReq[grfReq.Row, colPttName].ToString() : "";
@@ -168,6 +175,7 @@ namespace clinic_ivf.gui
             dtrname = grfReq[grfReq.Row, colDtrName] != null ? grfReq[grfReq.Row, colDtrName].ToString() : "";
             hn = grfReq[grfReq.Row, colRqHn] != null ? grfReq[grfReq.Row, colRqHn].ToString() : "";
             statusReq = grfReq[grfReq.Row, colStatusReq] != null ? grfReq[grfReq.Row, colStatusReq].ToString() : "";
+            dob = grfReq[grfReq.Row, colDob] != null ? grfReq[grfReq.Row, colDob].ToString() : "";
             if (statusReq.Equals("1"))
             {
                 MessageBox.Show("รับ request ไปแล้ว", "");
@@ -177,7 +185,7 @@ namespace clinic_ivf.gui
             {
                 //grfReq.Rows.Remove(grfReq.Row);
 
-                acceptLabOPUAdd(id, name, vn, dtrid, remark, hn, true);
+                acceptLabOPUAdd(id, name, vn, dtrid, remark, hn, true, dob);
                 setGrfReq();
             }
         }
@@ -216,7 +224,7 @@ namespace clinic_ivf.gui
                     dateend1 = ic.datetoDB(txtDateEnd.Text);
                 }
                 grfReq.Clear();
-                grfReq.Cols.Count = 12;
+                grfReq.Cols.Count = 13;
                 grfReq.Rows.Count = 1;
                 DataTable dt = new DataTable();
                 grfReq.DataSource = null;
@@ -272,7 +280,7 @@ namespace clinic_ivf.gui
                     row1[colDtrName] = row["dtrname"].ToString();
                     row1[colRqRemark] = row["remark"].ToString();
                     row1[colStatusReq] = row["status_req_accept"].ToString();
-
+                    row1[colDob] = row["dob"].ToString();
                     row1[0] = i;
                     if (row["status_req_accept"].ToString().Equals("1"))
                     {
@@ -308,28 +316,29 @@ namespace clinic_ivf.gui
             opu.name_male = "";
             opu.name_female = lbreq.name_female;
             opu.remark = lbreq.remark;
-            opu.dob_female = "";
+            opu.dob_female = lbreq.dob_female;
             opu.dob_male = "";
             opu.doctor_id = lbreq.doctor_id;
             opu.proce_id = "";
             opu.opu_date = DateTime.Now.Year.ToString() + "-" + System.DateTime.Now.ToString("MM-dd");
             opu.req_id = reqid;
+            //opu.dob_female = lbreq.dob_female;
             return opu;
         }
-        private void acceptLabOPUAdd(String reqid,String name, String vn, String dtrid, String remark, String hn, Boolean flagOpen)
+        private void acceptLabOPUAdd(String reqid,String name, String vn, String dtrid, String remark, String hn, Boolean flagOpen, String dobfemale)
         {
             ic.cStf.staff_id = "";
             FrmPasswordConfirm frm = new FrmPasswordConfirm(ic);
             frm.ShowDialog(this);
             if (!ic.cStf.staff_id.Equals(""))
             {
-                setLabRequest(name, vn, dtrid, remark, hn);
+                setLabRequest(name, vn, dtrid, remark, hn, dobfemale);
                 String re = ic.ivfDB.lbReqDB.insertLabRequest(lbReq, "");
                 long chk1 = 0;
                 if (long.TryParse(re, out chk1))
                 {
                     String re1 = ic.ivfDB.lbReqDB.UpdateStatusRequestAccept(re, ic.cStf.staff_id);
-                    re1 = ic.ivfDB.lbReqDB.UpdateStatusRequestProcess(re, ic.cStf.staff_id);
+                    String re4 = ic.ivfDB.lbReqDB.UpdateStatusRequestProcess(re, ic.cStf.staff_id);
                     String re2 = ic.ivfDB.lbReqDB.UpdateStatusRequestAcceptOld(reqid, re);
                     if (long.TryParse(re2, out chk1))
                     {

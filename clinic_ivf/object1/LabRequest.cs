@@ -35,5 +35,11 @@ namespace clinic_ivf.object1
         public String result_staff_id { get; set; }
         public String doctor_id { get; set; }
         public String lab_id { get; set; }
+        public String dob_female { get; set; }
+        public String dob_male { get; set; }
+        public String hn_donor { get; set; }
+        public String name_donor { get; set; }
+        public String dob_donor { get; set; }
+        
     }
 }

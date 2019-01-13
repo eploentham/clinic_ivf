@@ -48,6 +48,11 @@ namespace clinic_ivf.objdb
             lbReq.result_staff_id = "result_staff_id";
             lbReq.doctor_id = "doctor_id";
             lbReq.lab_id = "lab_id";
+            lbReq.dob_donor = "dob_donor";
+            lbReq.dob_female = "dob_female";
+            lbReq.dob_male = "dob_male";
+            lbReq.hn_donor = "hn_donor";
+            lbReq.name_donor = "name_donor";
 
             lbReq.table = "lab_t_request";
             lbReq.pkField = "req_id";
@@ -72,6 +77,11 @@ namespace clinic_ivf.objdb
             p.start_date = p.start_date == null ? "" : p.start_date;
             p.result_date = p.result_date == null ? "" : p.result_date;
             p.remark = p.remark == null ? "" : p.remark;
+            p.dob_donor = p.dob_donor == null ? "" : p.dob_donor;
+            p.dob_female = p.dob_female == null ? "" : p.dob_female;
+            p.dob_male = p.dob_male == null ? "" : p.dob_male;
+            p.hn_donor = p.hn_donor == null ? "" : p.hn_donor;
+            p.name_donor = p.name_donor == null ? "" : p.name_donor;
 
             p.status_req = p.status_req == null ? "0" : p.status_req;
 
@@ -169,26 +179,39 @@ namespace clinic_ivf.objdb
 
             chkNull(p);
             //p.req_code = genReqDoc();
-            sql = "Insert Into " + lbReq.table + "(" + lbReq.req_code + "," + lbReq.req_date + "," + lbReq.hn_male + "," +
-                lbReq.name_male + "," + lbReq.hn_female + "," + lbReq.name_female + "," +
-                lbReq.active + "," + lbReq.remark + "," + lbReq.status_req + "," +
-                lbReq.accept_date + "," + lbReq.start_date + "," + lbReq.result_date + "," +
-                lbReq.visit_id + "," + lbReq.vn + "," + lbReq.item_id + "," +
-                lbReq.date_create + "," + lbReq.date_modi + "," + lbReq.date_cancel + "," +
-                lbReq.user_create + "," + lbReq.user_modi + "," + lbReq.user_cancel + ", " +
-                lbReq.accept_staff_id + "," + lbReq.start_staff_id + "," + lbReq.result_staff_id + ", " +
-                lbReq.doctor_id + " " +
-                ") " +
-                "Values ('" + p.req_code + "','" + p.req_date + "','" + p.hn_male + "'," +
-                "'" + p.name_male.Replace("'", "''") + "','" + p.hn_female.Replace("'", "''") + "','" + p.name_female + "'," +
-                "'" + p.active + "','" + p.remark + "','" + p.status_req + "'," +
-                "'" + p.accept_date + "','" + p.start_date + "','" + p.result_date + "'," +
-                "'" + p.visit_id + "','" + p.vn + "','" + p.item_id + "'," +
-                "now(),'" + p.date_modi + "','" + p.date_cancel + "'," +
-                "'" + userId + "','" + p.user_modi + "','" + p.user_cancel + "', " +
-                "'" + p.accept_staff_id + "','" + p.start_staff_id + "','" + p.result_staff_id + "', " +
-                "'" + p.doctor_id + "' " +
-                ")";
+            sql = "Insert Into " + lbReq.table + " Set " + 
+                lbReq.req_code + " = '" + p.req_code + "'," +
+                lbReq.req_date + "= '" + p.req_date + "'," +
+                lbReq.hn_male + "= '" + p.hn_male + "'," +
+                lbReq.name_male + "= '" + p.name_male.Replace("'", "''") + "'," +
+                lbReq.hn_female + "= '" + p.hn_female.Replace("'", "''") + "'," +
+                lbReq.name_female + "= '" + p.name_female + "'," +
+                lbReq.active + "= '" + p.active + "'," +
+                lbReq.remark + "= '" + p.remark + "'," +
+                lbReq.status_req + "= '" + p.status_req + "'," +
+                lbReq.accept_date + "= '" + p.accept_date + "'," +
+                lbReq.start_date + "= '" + p.start_date + "'," +
+                lbReq.result_date + "= '" + p.result_date + "'," +
+                lbReq.visit_id + "= '" + p.visit_id + "'," +
+                lbReq.vn + "= '" + p.vn + "'," +
+                lbReq.item_id + "= '" + p.item_id + "'," +
+                lbReq.date_create + "= now()," + 
+                lbReq.date_modi + "= '" + p.date_modi + "'," +
+                lbReq.date_cancel + "= '" + p.date_cancel + "'," +
+                lbReq.user_create + "= '" + userId + "'," +
+                lbReq.user_modi + "= '" + p.user_modi + "'," +
+                lbReq.user_cancel + "= '" + p.user_cancel + "'," +
+                lbReq.accept_staff_id + "= '" + p.accept_staff_id + "'," +
+                lbReq.start_staff_id + "= '" + p.start_staff_id + "'," +
+                lbReq.result_staff_id + "= '" + p.result_staff_id + "'," +
+                lbReq.doctor_id + " = '" + p.doctor_id + "' " +
+                lbReq.dob_donor + " = '" + p.dob_donor + "' " +
+                lbReq.dob_female + " = '" + p.dob_female + "' " +
+                lbReq.dob_male + " = '" + p.dob_male + "' " +
+                lbReq.hn_donor + " = '" + p.hn_donor + "' " +
+                lbReq.name_donor + " = '" + p.name_donor.Replace("'", "''") + "' " +
+                lbReq.lab_id + " = '" + p.lab_id + "' " +
+                "";
             try
             {
                 re = conn.ExecuteNonQuery(conn.conn, sql);

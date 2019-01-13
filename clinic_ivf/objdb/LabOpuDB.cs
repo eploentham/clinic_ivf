@@ -282,26 +282,33 @@ namespace clinic_ivf.objdb
 
             chkNull(p);
             //opu.table = "lab_t_opu";
-            sql = "Insert Into " + opu.table + "(" + opu.opu_code + "," + opu.embryo_freez_stage + "," + opu.embryoid_freez_position + "," +
-                opu.hn_male + "," + opu.hn_female + "," + opu.name_male + "," +
-                opu.active + "," + opu.remark + "," + opu.dob_female + "," +
-                opu.name_female + "," + opu.dob_male + "," + opu.opu_date + "," +
-                opu.doctor_id + "," + opu.proce_id + "," +
-                opu.date_create + "," + opu.date_modi + "," + opu.date_cancel + "," +
-                opu.user_create + "," + opu.user_modi + "," + opu.user_cancel + ", " +
-                opu.req_id + "," + opu.status_opu + "," + opu.date_pic_embryo + "," +
-                opu.hn_donor + "," + opu.name_donor + "," +
-                ") " +
-                "Values ('" + p.opu_code + "','" + p.embryo_freez_stage + "','" + p.embryoid_freez_position + "'," +
-                "'" + p.hn_male.Replace("'", "''") + "','" + p.hn_female.Replace("'", "''") + "','" + p.name_male + "'," +
-                "'" + p.active + "','" + p.remark + "','" + p.dob_female + "'," +
-                "'" + p.name_female + "','" + p.dob_male + "','" + p.opu_date + "'," +
-                "'" + p.doctor_id + "','" + p.proce_id + "'," +
-                "now(),'" + p.date_modi + "','" + p.date_cancel + "'," +
-                "'" + userId + "','" + p.user_modi + "','" + p.user_cancel + "', " +
-                "'" + p.req_id + "','1','" + p.date_pic_embryo + "'," +
-                "'" + p.hn_donor + "','" + p.name_donor + "' " +
-               ")";
+            sql = "Insert Into " + opu.table + " Set " +
+                " " + opu.opu_code + " = '" + p.opu_code + "'" +
+                "," + opu.embryo_freez_stage + " = '" + p.embryo_freez_stage + "'" +
+                "," + opu.embryoid_freez_position + " = '" + p.embryoid_freez_position + "'" +
+                "," + opu.hn_male + " = '" + p.hn_male.Replace("'", "''") + "'" +
+                "," + opu.hn_female + " = '" + p.hn_female.Replace("'", "''") + "'" +
+                "," + opu.name_male + " = '" + p.name_male.Replace("'", "''") + "'" +
+                "," + opu.active + " = '" + p.active + "'" +
+                "," + opu.remark + " = '" + p.remark + "'" +
+                "," + opu.dob_female + " = '" + p.dob_female + "'" +
+                "," + opu.name_female + " = '" + p.name_female + "'" +
+                "," + opu.dob_male + " = '" + p.dob_male + "'" +
+                "," + opu.opu_date + " = '" + p.opu_date + "'" +
+                "," + opu.doctor_id + " = '" + p.doctor_id + "'" +
+                "," + opu.proce_id + " = '" + p.proce_id + "'" +
+                "," + opu.date_create + " = now()" +
+                "," + opu.date_modi + " = '" + p.date_modi + "'" +
+                "," + opu.date_cancel + " = '" + p.date_cancel + "'" +
+                "," + opu.user_create + " = '" + userId + "'" +
+                "," + opu.user_modi + " = '" + p.user_modi + "'" +
+                "," + opu.user_cancel + " = '" + p.user_cancel + "'" +
+                "," + opu.req_id + " = '" + p.req_id + "'" +
+                "," + opu.status_opu + " = '1'" +
+                "," + opu.date_pic_embryo + " = '" + p.date_pic_embryo + "'" +
+                "," + opu.hn_donor + " = '" + p.hn_donor + "'" +
+                "," + opu.name_donor + " = '" + p.name_donor + "'" +
+               "";
             try
             {
                 re = conn.ExecuteNonQuery(conn.conn, sql);

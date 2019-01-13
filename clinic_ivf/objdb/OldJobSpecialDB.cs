@@ -45,7 +45,7 @@ namespace clinic_ivf.objdb
         {
             DataTable dt = new DataTable();
             String sql = "Select oJS.*, oJSd.SName, oJSd.SID, oJSd.ID as odsd_id, concat(SurfixName.SurfixName,' ',ptt.PName,' ',ptt.PSurname) as pttname" +
-                ", JobDoctor.DID, Doctor.Name as dtrname, Doctor.ID as dtrid, oJSd.status_req_accept, ifnull(lreq.remark,'') as remark  " +
+                ", JobDoctor.DID, Doctor.Name as dtrname, Doctor.ID as dtrid, oJSd.status_req_accept, ifnull(lreq.remark,'') as remark, DateOfBirth as dob  " +
                 "From " + oJS.table + " oJS " +
                 "Left Join JobSpecialDetail oJSd on oJS.Vn = oJSd.Vn " +
                 "Left Join Patient ptt on ptt.PID = oJS.PID " +
