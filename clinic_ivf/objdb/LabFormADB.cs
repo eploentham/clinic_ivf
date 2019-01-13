@@ -1,4 +1,5 @@
-﻿using clinic_ivf.object1;
+﻿using C1.Win.C1Input;
+using clinic_ivf.object1;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -76,6 +77,11 @@ namespace clinic_ivf.objdb
             lformA.fresh_sperm_end_time = "fresh_sperm_end_time";
             lformA.doctor_id = "doctor_id";
             lformA.form_a_date = "form_a_date";
+            lformA.hn_donor = "hn_donor";
+            lformA.name_donor = "name_donor";
+            lformA.dob_donor = "dob_donor";
+            lformA.dob_female = "dob_female";
+            lformA.dob_male = "dob_male";
 
             lformA.pkField = "form_a_id";
             lformA.table = "lab_t_form_a";
@@ -137,11 +143,11 @@ namespace clinic_ivf.objdb
             p.fresh_sperm_collect_time = p.fresh_sperm_collect_time == null ? "" : p.fresh_sperm_collect_time;
             p.fresh_sperm_end_time = p.fresh_sperm_end_time == null ? "" : p.fresh_sperm_end_time;
             p.form_a_date = p.form_a_date == null ? "" : p.form_a_date;
-            //p.e2 = p.e2 == null ? "0" : p.e2;
-            //p.endo = p.endo == null ? "0" : p.endo;
-            //p.prl = p.prl == null ? "0" : p.prl;
-            //p.lh = p.lh == null ? "0" : p.lh;
-            //p.rt_ovary = p.rt_ovary == null ? "00" : p.rt_ovary;
+            p.hn_donor = p.hn_donor == null ? "" : p.hn_donor;
+            p.name_donor = p.name_donor == null ? "" : p.name_donor;
+            p.dob_donor = p.dob_donor == null ? "" : p.dob_donor;
+            p.dob_female = p.dob_female == null ? "" : p.dob_female;
+            p.dob_male = p.dob_male == null ? "" : p.dob_male;
             //p.lt_ovary = p.lt_ovary == null ? "" : p.lt_ovary;
             //p.fsh = p.fsh == null ? "0" : p.fsh;
             //p.tvs = p.tvs == null ? "0" : p.tvs;
@@ -228,6 +234,11 @@ namespace clinic_ivf.objdb
                     "," + lformA.fresh_sperm_end_time + "='" + p.fresh_sperm_end_time + "' " +
                     "," + lformA.doctor_id + "='" + p.doctor_id + "' " +
                     "," + lformA.form_a_date + "='" + p.form_a_date + "' " +
+                    "," + lformA.hn_donor + "='" + p.hn_donor + "' " +
+                    "," + lformA.name_donor + "='" + p.name_donor + "' " +
+                    "," + lformA.dob_donor + "='" + p.dob_donor + "' " +
+                    "," + lformA.dob_female + "='" + p.dob_female + "' " +
+                    "," + lformA.dob_male + "='" + p.dob_male + "' " +
                     "";
                 re = conn.ExecuteNonQuery(conn.conn, sql);
             }
@@ -298,6 +309,11 @@ namespace clinic_ivf.objdb
                     "," + lformA.fresh_sperm_end_time + "='" + p.fresh_sperm_end_time + "' " +
                     "," + lformA.doctor_id + "='" + p.doctor_id + "' " +
                     "," + lformA.form_a_date + "='" + p.form_a_date + "' " +
+                    "," + lformA.hn_donor + "='" + p.hn_donor + "' " +
+                    "," + lformA.name_donor + "='" + p.name_donor + "' " +
+                    "," + lformA.dob_donor + "='" + p.dob_donor + "' " +
+                    "," + lformA.dob_female + "='" + p.dob_female + "' " +
+                    "," + lformA.dob_male + "='" + p.dob_male + "' " +
                 " Where " + lformA.pkField + " = '" + p.form_a_id + "' "
                 ;
             try
@@ -371,6 +387,38 @@ namespace clinic_ivf.objdb
             cop1 = setLabFormA(dt);
             return cop1;
         }
+        public DataTable selectDistinctByRemark()
+        {
+            DataTable dt = new DataTable();
+            String sql = "select distinct lformA.remark " +
+                "From " + lformA.table + " lformA " +
+                "Where lformA." + lformA.active + "='1' ";
+            dt = conn.selectData(conn.conn, sql);
+            return dt;
+        }
+        public C1ComboBox setCboRemark(C1ComboBox c)
+        {
+            ComboBoxItem item = new ComboBoxItem();
+            DataTable dt = selectDistinctByRemark();
+            //String aaa = "";
+            ComboBoxItem item1 = new ComboBoxItem();
+            //item1.Text = "";
+            //item1.Value = "";
+            c.Items.Clear();
+            //c.Items.Add(item1);
+            //for (int i = 0; i < dt.Rows.Count; i++)
+            int i = 0;
+            foreach (DataRow row in dt.Rows)
+            {
+                item = new ComboBoxItem();
+                item.Text = row[lformA.remark].ToString();
+                item.Value = i.ToString();
+
+                c.Items.Add(item);
+                i++;
+            }
+            return c;
+        }
         public LabFormA setLabFormA(DataTable dt)
         {
             LabFormA vs1 = new LabFormA();
@@ -431,6 +479,11 @@ namespace clinic_ivf.objdb
                 vs1.fresh_sperm_end_time = dt.Rows[0][lformA.fresh_sperm_end_time].ToString();
                 vs1.doctor_id = dt.Rows[0][lformA.doctor_id].ToString();
                 vs1.form_a_date = dt.Rows[0][lformA.form_a_date].ToString();
+                vs1.hn_donor = dt.Rows[0][lformA.hn_donor].ToString();
+                vs1.name_donor = dt.Rows[0][lformA.name_donor].ToString();
+                vs1.dob_donor = dt.Rows[0][lformA.dob_donor].ToString();
+                vs1.dob_female = dt.Rows[0][lformA.dob_female].ToString();
+                vs1.dob_male = dt.Rows[0][lformA.dob_male].ToString();
             }
             else
             {
@@ -495,6 +548,11 @@ namespace clinic_ivf.objdb
             lforma1.fresh_sperm_end_time = "";
             lforma1.doctor_id = "";
             lforma1.form_a_date = "";
+            lforma1.hn_donor = "";
+            lforma1.name_donor = "";
+            lforma1.dob_donor = "";
+            lforma1.dob_female = "";
+            lforma1.dob_male = "";
             return lforma1;
         }
     }

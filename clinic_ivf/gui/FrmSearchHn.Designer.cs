@@ -30,6 +30,8 @@
         {
             this.theme1 = new C1.Win.C1Themes.C1ThemeController();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.txtDOB = new C1.Win.C1Input.C1TextBox();
             this.btnOk = new C1.Win.C1Input.C1Button();
             this.label5 = new System.Windows.Forms.Label();
             this.txtVn = new C1.Win.C1Input.C1TextBox();
@@ -55,6 +57,7 @@
             this.sB1 = new System.Windows.Forms.ToolStripStatusLabel();
             ((System.ComponentModel.ISupportInitialize)(this.theme1)).BeginInit();
             this.groupBox2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtDOB)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnOk)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtVn)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtName)).BeginInit();
@@ -79,6 +82,8 @@
             // groupBox2
             // 
             this.groupBox2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.groupBox2.Controls.Add(this.label6);
+            this.groupBox2.Controls.Add(this.txtDOB);
             this.groupBox2.Controls.Add(this.btnOk);
             this.groupBox2.Controls.Add(this.label5);
             this.groupBox2.Controls.Add(this.txtVn);
@@ -90,17 +95,43 @@
             this.groupBox2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
             this.groupBox2.Location = new System.Drawing.Point(0, 0);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(944, 69);
+            this.groupBox2.Size = new System.Drawing.Size(944, 63);
             this.groupBox2.TabIndex = 526;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Search Patient";
             this.theme1.SetTheme(this.groupBox2, "(default)");
             // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.label6.Location = new System.Drawing.Point(510, 21);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(46, 16);
+            this.label6.TabIndex = 528;
+            this.label6.Text = "DOB  :";
+            this.theme1.SetTheme(this.label6, "(default)");
+            // 
+            // txtDOB
+            // 
+            this.txtDOB.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtDOB.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
+            this.txtDOB.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.txtDOB.Location = new System.Drawing.Point(562, 19);
+            this.txtDOB.Name = "txtDOB";
+            this.txtDOB.Size = new System.Drawing.Size(95, 20);
+            this.txtDOB.TabIndex = 527;
+            this.txtDOB.Tag = null;
+            this.theme1.SetTheme(this.txtDOB, "(default)");
+            this.txtDOB.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            // 
             // btnOk
             // 
             this.btnOk.Image = global::clinic_ivf.Properties.Resources.Female_user_search_24;
             this.btnOk.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnOk.Location = new System.Drawing.Point(774, 14);
+            this.btnOk.Location = new System.Drawing.Point(844, 14);
             this.btnOk.Name = "btnOk";
             this.btnOk.Size = new System.Drawing.Size(83, 43);
             this.btnOk.TabIndex = 526;
@@ -116,7 +147,7 @@
             this.label5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.label5.Location = new System.Drawing.Point(594, 21);
+            this.label5.Location = new System.Drawing.Point(664, 21);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(33, 16);
             this.label5.TabIndex = 525;
@@ -128,7 +159,7 @@
             this.txtVn.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtVn.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
             this.txtVn.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.txtVn.Location = new System.Drawing.Point(633, 19);
+            this.txtVn.Location = new System.Drawing.Point(703, 19);
             this.txtVn.Name = "txtVn";
             this.txtVn.Size = new System.Drawing.Size(124, 20);
             this.txtVn.TabIndex = 524;
@@ -142,7 +173,7 @@
             this.label2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.label2.Location = new System.Drawing.Point(264, 21);
+            this.label2.Location = new System.Drawing.Point(179, 21);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(48, 16);
             this.label2.TabIndex = 523;
@@ -154,7 +185,7 @@
             this.txtName.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtName.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
             this.txtName.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.txtName.Location = new System.Drawing.Point(318, 19);
+            this.txtName.Location = new System.Drawing.Point(233, 19);
             this.txtName.Name = "txtName";
             this.txtName.Size = new System.Drawing.Size(268, 20);
             this.txtName.TabIndex = 522;
@@ -168,7 +199,7 @@
             this.label3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.label3.Location = new System.Drawing.Point(40, 21);
+            this.label3.Location = new System.Drawing.Point(13, 21);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(37, 16);
             this.label3.TabIndex = 521;
@@ -180,7 +211,7 @@
             this.txtHn.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtHn.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
             this.txtHn.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.txtHn.Location = new System.Drawing.Point(91, 19);
+            this.txtHn.Location = new System.Drawing.Point(52, 19);
             this.txtHn.Name = "txtHn";
             this.txtHn.Size = new System.Drawing.Size(124, 20);
             this.txtHn.TabIndex = 520;
@@ -196,10 +227,10 @@
             this.tC1.Controls.Add(this.tabSearch);
             this.tC1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tC1.HotTrack = true;
-            this.tC1.Location = new System.Drawing.Point(0, 69);
+            this.tC1.Location = new System.Drawing.Point(0, 63);
             this.tC1.Name = "tC1";
             this.tC1.SelectedIndex = 1;
-            this.tC1.Size = new System.Drawing.Size(944, 445);
+            this.tC1.Size = new System.Drawing.Size(944, 451);
             this.tC1.TabIndex = 527;
             this.tC1.TabSizeMode = C1.Win.C1Command.TabSizeModeEnum.Fit;
             this.tC1.TabsShowFocusCues = false;
@@ -212,7 +243,7 @@
             this.tabCurrent.Controls.Add(this.gbCu);
             this.tabCurrent.Location = new System.Drawing.Point(1, 24);
             this.tabCurrent.Name = "tabCurrent";
-            this.tabCurrent.Size = new System.Drawing.Size(942, 420);
+            this.tabCurrent.Size = new System.Drawing.Size(942, 426);
             this.tabCurrent.TabIndex = 0;
             this.tabCurrent.Text = "current visit";
             // 
@@ -223,7 +254,7 @@
             this.gbCu.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
             this.gbCu.Location = new System.Drawing.Point(0, 0);
             this.gbCu.Name = "gbCu";
-            this.gbCu.Size = new System.Drawing.Size(942, 420);
+            this.gbCu.Size = new System.Drawing.Size(942, 426);
             this.gbCu.TabIndex = 0;
             this.gbCu.TabStop = false;
             this.gbCu.Text = "groupBox2";
@@ -234,7 +265,7 @@
             this.tabSearch.Controls.Add(this.panel1);
             this.tabSearch.Location = new System.Drawing.Point(1, 24);
             this.tabSearch.Name = "tabSearch";
-            this.tabSearch.Size = new System.Drawing.Size(942, 420);
+            this.tabSearch.Size = new System.Drawing.Size(942, 426);
             this.tabSearch.TabIndex = 1;
             this.tabSearch.Text = "search hn";
             // 
@@ -247,7 +278,7 @@
             this.panel1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(942, 420);
+            this.panel1.Size = new System.Drawing.Size(942, 426);
             this.panel1.TabIndex = 0;
             this.theme1.SetTheme(this.panel1, "(default)");
             // 
@@ -258,7 +289,7 @@
             this.gbHn.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
             this.gbHn.Location = new System.Drawing.Point(0, 57);
             this.gbHn.Name = "gbHn";
-            this.gbHn.Size = new System.Drawing.Size(942, 363);
+            this.gbHn.Size = new System.Drawing.Size(942, 369);
             this.gbHn.TabIndex = 528;
             this.gbHn.TabStop = false;
             this.gbHn.Text = "groupBox3";
@@ -444,6 +475,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.theme1)).EndInit();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtDOB)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnOk)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtVn)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtName)).EndInit();
@@ -493,5 +525,7 @@
         private System.Windows.Forms.Label label5;
         private C1.Win.C1Input.C1TextBox txtVn;
         private C1.Win.C1Input.C1Button btnOk;
+        private System.Windows.Forms.Label label6;
+        private C1.Win.C1Input.C1TextBox txtDOB;
     }
 }

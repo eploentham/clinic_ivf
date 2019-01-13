@@ -20,5 +20,6 @@ namespace clinic_ivf.object1
         public String VUpdateTime { get; set; }
         public String LVSID { get; set; }
         public String IntLock { get; set; }
+        public String dob { get; set; }
     }
 }

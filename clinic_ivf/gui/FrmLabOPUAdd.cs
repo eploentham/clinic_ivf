@@ -1987,7 +1987,7 @@ namespace clinic_ivf.gui
             opu.embryologist_approve_id = cboEmbryologistAppv.SelectedItem == null ? "0" : ((ComboBoxItem)cboEmbryologistAppv.SelectedItem).Value;
             
             //opu.remark = txtRemark.Text;
-            opu.remark = cboRemark.SelectedItem == null ? "" : ((ComboBoxItem)cboRemark.SelectedItem).Text;
+            opu.remark = cboRemark.Text;
             opu.embryo_for_et_number_of_transfer = txtEmbryoForEtNumTran.Text;
             opu.embryo_for_et_number_of_freeze = txtEmbryoForEtNumFreeze.Text;
             opu.embryo_for_et_number_of_discard = txtEmbryoForEtNumDiscard.Text;

@@ -40,6 +40,7 @@ namespace clinic_ivf.gui
             sep = new C1SuperErrorProvider();
 
             ic.ivfDB.dtrOldDB.setCboDoctor(cboDoctor, "");
+            ic.ivfDB.lFormaDB.setCboRemark(cboRemark);
             txtFormADate.Value = DateTime.Now.Year + "-" + DateTime.Now.ToString("MM-dd");
             setControl();
 
@@ -54,6 +55,7 @@ namespace clinic_ivf.gui
             chkFreshSprem.CheckStateChanged += ChkFreshSprem_CheckStateChanged;
             btnMaleSearch.Click += BtnMaleSearch_Click;
             btnPrint.Click += BtnPrint_Click;
+            btmDonorSearch.Click += BtmDonorSearch_Click;
 
             ChkEmbryoTranfer_CheckStateChanged(null, null);
             ChkNgs_CheckedChanged(null, null);
@@ -61,6 +63,16 @@ namespace clinic_ivf.gui
             ChkFET_CheckedChanged(null, null);
             ChkSpermAnalysis_CheckStateChanged(null, null);
             ChkSpermFreezing_CheckStateChanged(null, null);
+        }
+
+        private void BtmDonorSearch_Click(object sender, EventArgs e)
+        {
+            //throw new NotImplementedException();
+            FrmSearchHn frm = new FrmSearchHn(ic, FrmSearchHn.StatusConnection.hostEx);
+            frm.ShowDialog(this);
+            txtHnDonor.Value = ic.sVsOld.PIDS;
+            txtNameDonor.Value = ic.sVsOld.PName;
+            txtDonorDob.Value = ic.sVsOld.dob;
         }
 
         private void BtnPrint_Click(object sender, EventArgs e)
@@ -77,10 +89,11 @@ namespace clinic_ivf.gui
         private void BtnMaleSearch_Click(object sender, EventArgs e)
         {
             //throw new NotImplementedException();
-            FrmSearchHn frm = new FrmSearchHn(ic, FrmSearchHn.StatusConnection.hostEx);
+            FrmSearchHn frm = new FrmSearchHn(ic, FrmSearchHn.StatusConnection.host);
             frm.ShowDialog(this);
             txtHnMale.Value = ic.sVsOld.PIDS;
             txtNameMale.Value = ic.sVsOld.PName;
+            txtDobMale.Value = ic.sVsOld.dob;
         }
 
         private void setLabFormA()
@@ -148,6 +161,12 @@ namespace clinic_ivf.gui
             lFormA.fresh_sperm_end_time = txtFreshSpermEndTime.Text;
             lFormA.doctor_id = cboDoctor.SelectedItem == null ? "" : ((ComboBoxItem)cboDoctor.SelectedItem).Value;
             lFormA.form_a_date = ic.datetoDB(txtFormADate.Text);
+            lFormA.remark = cboRemark.Text;
+            lFormA.hn_donor = txtHnDonor.Text;
+            lFormA.name_donor = txtNameDonor.Text;
+            lFormA.dob_donor = ic.datetoDB(txtDonorDob.Text);
+            lFormA.dob_female = ic.datetoDB(txtDobFeMale.Text);
+            lFormA.dob_male = ic.datetoDB(txtDobMale.Text);
         }
         private void BtnSave_Click(object sender, EventArgs e)
         {
@@ -279,12 +298,14 @@ namespace clinic_ivf.gui
                     ptt = ic.ivfDB.pttDB.selectByPk1(pttid);
                     txtHnFeMale.Value = ptt.patient_hn;
                     txtNameFeMale.Value = ptt.Name;
+                    //txtDobFeMale.Value = ptt.d
                     if (ptt.t_patient_id.Equals(""))
                     {
                         PatientOld pttO = new PatientOld();
                         pttO = ic.ivfDB.pttOldDB.selectByPk1(pttid);
                         txtHnFeMale.Value = pttO.PIDS;
                         txtNameFeMale.Value = pttO.FullName;
+                        txtDobFeMale.Value = pttO.DateOfBirth;
                         txtHnOld.Value = pttO.PIDS;
                         txtVnOld.Value = vsidOld;
                     }
@@ -353,6 +374,12 @@ namespace clinic_ivf.gui
             txtIUIDate.Value = lFormA.iui_date;
             ic.setC1Combo(cboDoctor, lFormA.doctor_id);
             txtFormADate.Value = lFormA.form_a_date;
+            cboRemark.Value = lFormA.remark;
+            txtHnDonor.Value = lFormA.hn_donor;
+            txtNameDonor.Value = lFormA.name_donor;
+            txtDonorDob.Value = lFormA.dob_donor;
+            txtDobFeMale.Value = lFormA.dob_female;
+            txtDobMale.Value = lFormA.dob_male;
         }
         private void FrmLabOPUReq_Load(object sender, EventArgs e)
         {

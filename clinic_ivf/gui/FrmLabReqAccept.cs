@@ -110,7 +110,7 @@ namespace clinic_ivf.gui
             lbReq.item_id = "112";      //OPU
             lbReq.lab_id = "";
             lbReq.dob_donor = "";
-            lbReq.dob_female = dobfemale;
+            lbReq.dob_female = ic.datetoDB(dobfemale);
             lbReq.dob_male = "";
             lbReq.hn_donor = "";
             lbReq.name_donor = "";
@@ -306,22 +306,26 @@ namespace clinic_ivf.gui
         {
             LabOpu opu = new LabOpu();
             LabRequest lbreq = new LabRequest();
+            LabFormA lformA = new LabFormA();
             lbreq = ic.ivfDB.lbReqDB.selectByPk1(reqid);
+            lformA = ic.ivfDB.lFormaDB.selectByVnOld(lbreq.vn);
             opu.opu_id = "";
             opu.opu_code = ic.ivfDB.copDB.genOPUDoc();
             opu.embryo_freez_stage = "";
             opu.embryoid_freez_position = "";
-            opu.hn_male = "";
+            opu.hn_male = lformA.hn_male;
             opu.hn_female = lbreq.hn_female;
-            opu.name_male = "";
+            opu.name_male = lformA.name_male;
             opu.name_female = lbreq.name_female;
             opu.remark = lbreq.remark;
-            opu.dob_female = lbreq.dob_female;
-            opu.dob_male = "";
+            opu.dob_female = lformA.dob_female;
+            opu.dob_male = lformA.dob_male;
             opu.doctor_id = lbreq.doctor_id;
             opu.proce_id = "";
             opu.opu_date = DateTime.Now.Year.ToString() + "-" + System.DateTime.Now.ToString("MM-dd");
             opu.req_id = reqid;
+            opu.hn_donor = lformA.hn_donor;
+            opu.name_donor = lformA.name_donor;
             //opu.dob_female = lbreq.dob_female;
             return opu;
         }

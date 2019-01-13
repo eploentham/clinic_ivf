@@ -1,4 +1,5 @@
-﻿using clinic_ivf.object1;
+﻿using C1.Win.C1Input;
+using clinic_ivf.object1;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -134,6 +135,15 @@ namespace clinic_ivf.objdb
             dt = conn.selectData(conn.conn, sql);
             return dt;
         }
+        public DataTable selectDistinctByRemark()
+        {
+            DataTable dt = new DataTable();
+            String sql = "select distinct lbReq.remark " +
+                "From " + lbReq.table + " lbReq " +
+                "Where lbReq." + lbReq.active + "='1' ";
+            dt = conn.selectData(conn.conn, sql);
+            return dt;
+        }
         public String UpdateStatusRequestAccept(String lbReqId, String userIdAccept)
         {
             DataTable dt = new DataTable();
@@ -204,12 +214,12 @@ namespace clinic_ivf.objdb
                 lbReq.accept_staff_id + "= '" + p.accept_staff_id + "'," +
                 lbReq.start_staff_id + "= '" + p.start_staff_id + "'," +
                 lbReq.result_staff_id + "= '" + p.result_staff_id + "'," +
-                lbReq.doctor_id + " = '" + p.doctor_id + "' " +
-                lbReq.dob_donor + " = '" + p.dob_donor + "' " +
-                lbReq.dob_female + " = '" + p.dob_female + "' " +
-                lbReq.dob_male + " = '" + p.dob_male + "' " +
-                lbReq.hn_donor + " = '" + p.hn_donor + "' " +
-                lbReq.name_donor + " = '" + p.name_donor.Replace("'", "''") + "' " +
+                lbReq.doctor_id + " = '" + p.doctor_id + "'," +
+                lbReq.dob_donor + " = '" + p.dob_donor + "'," +
+                lbReq.dob_female + " = '" + p.dob_female + "'," +
+                lbReq.dob_male + " = '" + p.dob_male + "'," +
+                lbReq.hn_donor + " = '" + p.hn_donor + "'," +
+                lbReq.name_donor + " = '" + p.name_donor.Replace("'", "''") + "'," +
                 lbReq.lab_id + " = '" + p.lab_id + "' " +
                 "";
             try
@@ -237,6 +247,29 @@ namespace clinic_ivf.objdb
             }
 
             return re;
+        }
+        public C1ComboBox setCboRemark(C1ComboBox c)
+        {
+            ComboBoxItem item = new ComboBoxItem();
+            DataTable dt = selectDistinctByRemark();
+            //String aaa = "";
+            ComboBoxItem item1 = new ComboBoxItem();
+            item1.Text = "";
+            item1.Value = "";
+            c.Items.Clear();
+            c.Items.Add(item1);
+            //for (int i = 0; i < dt.Rows.Count; i++)
+            int i = 0;
+            foreach (DataRow row in dt.Rows)
+            {
+                item = new ComboBoxItem();
+                item.Text = row[lbReq.remark].ToString();
+                item.Value = i.ToString();
+
+                c.Items.Add(item);
+                i++;
+            }
+            return c;
         }
         public LabRequest setLabRequest(DataTable dt)
         {

@@ -63,5 +63,10 @@ namespace clinic_ivf.object1
         public String fresh_sperm_end_time { get; set; }
         public String doctor_id { get; set; }
         public String form_a_date { get; set; }
+        public String hn_donor { get; set; }
+        public String name_donor { get; set; }
+        public String dob_donor { get; set; }
+        public String dob_female { get; set; }
+        public String dob_male { get; set; }
     }
 }
