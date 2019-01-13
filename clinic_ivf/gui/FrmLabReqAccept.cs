@@ -25,7 +25,7 @@ namespace clinic_ivf.gui
         Font fEdit, fEditB;
         Color bg, fc;
         Font ff, ffB;
-        int colRqId = 1, colRqReqNum = 2, colRqHn = 3, colRqVn = 4, colRqName = 5, colPttName=6, colRqDate = 7, colRqRemark = 9, colDtrName=8, colDtrId=10, colStatusReq=11, colDob=12;
+        int colRqId = 1, colRqReqNum = 2, colRqHn = 3, colRqVn = 4, colRqName = 5, colPttName=6, colRqDate = 7, colRqRemark = 9, colDtrName=8, colDtrId=10, colRqStatusReq=11, colRqDob=12, colRqName1=13;
 
         C1FlexGrid grfReq;
         C1SuperTooltip stt;
@@ -148,8 +148,8 @@ namespace clinic_ivf.gui
             dtrid = grfReq[grfReq.Row, colDtrId] != null ? grfReq[grfReq.Row, colDtrId].ToString() : "";
             dtrname = grfReq[grfReq.Row, colDtrName] != null ? grfReq[grfReq.Row, colDtrName].ToString() : "";
             hn = grfReq[grfReq.Row, colRqHn] != null ? grfReq[grfReq.Row, colRqHn].ToString() : "";
-            statusReq = grfReq[grfReq.Row, colStatusReq] != null ? grfReq[grfReq.Row, colStatusReq].ToString() : "";
-            dob = grfReq[grfReq.Row, colDob] != null ? grfReq[grfReq.Row, colDob].ToString() : "";
+            statusReq = grfReq[grfReq.Row, colRqStatusReq] != null ? grfReq[grfReq.Row, colRqStatusReq].ToString() : "";
+            dob = grfReq[grfReq.Row, colRqDob] != null ? grfReq[grfReq.Row, colRqDob].ToString() : "";
             if (statusReq.Equals("1"))
             {
                 MessageBox.Show("รับ request ไปแล้ว", "");
@@ -174,8 +174,8 @@ namespace clinic_ivf.gui
             dtrid = grfReq[grfReq.Row, colDtrId] != null ? grfReq[grfReq.Row, colDtrId].ToString() : "";
             dtrname = grfReq[grfReq.Row, colDtrName] != null ? grfReq[grfReq.Row, colDtrName].ToString() : "";
             hn = grfReq[grfReq.Row, colRqHn] != null ? grfReq[grfReq.Row, colRqHn].ToString() : "";
-            statusReq = grfReq[grfReq.Row, colStatusReq] != null ? grfReq[grfReq.Row, colStatusReq].ToString() : "";
-            dob = grfReq[grfReq.Row, colDob] != null ? grfReq[grfReq.Row, colDob].ToString() : "";
+            statusReq = grfReq[grfReq.Row, colRqStatusReq] != null ? grfReq[grfReq.Row, colRqStatusReq].ToString() : "";
+            dob = grfReq[grfReq.Row, colRqDob] != null ? grfReq[grfReq.Row, colRqDob].ToString() : "";
             if (statusReq.Equals("1"))
             {
                 MessageBox.Show("รับ request ไปแล้ว", "");
@@ -279,8 +279,8 @@ namespace clinic_ivf.gui
                     row1[colDtrId] = row["dtrid"].ToString();
                     row1[colDtrName] = row["dtrname"].ToString();
                     row1[colRqRemark] = row["remark"].ToString();
-                    row1[colStatusReq] = row["status_req_accept"].ToString();
-                    row1[colDob] = row["dob"].ToString();
+                    row1[colRqStatusReq] = row["status_req_accept"].ToString();
+                    row1[colRqDob] = row["dob"].ToString();
                     row1[0] = i;
                     if (row["status_req_accept"].ToString().Equals("1"))
                     {
@@ -292,7 +292,8 @@ namespace clinic_ivf.gui
                 grfReq.Cols[colRqId].Visible = false;
                 grfReq.Cols[colRqVn].Visible = false;
                 grfReq.Cols[colDtrId].Visible = false;
-                grfReq.Cols[colStatusReq].Visible = false;
+                grfReq.Cols[colRqStatusReq].Visible = false;
+                grfReq.Cols[colRqDob].Visible = false;
             }
             catch (Exception ex)
             {
