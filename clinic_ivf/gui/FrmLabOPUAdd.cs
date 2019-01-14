@@ -3010,9 +3010,11 @@ namespace clinic_ivf.gui
                         {
                             String filename = "", re = "";
                             String[] ext = pathfile.Split('.');
-                            if (ext.Length > 1)
-                            {
-                                filename = txtOpuCode.Text + "_day2_" + no + "." + ext[ext.Length - 1];
+                            //var name = Path.GetFileNameWithoutExtension(fileFullName); // Get the name only
+                            var extension = Path.GetExtension(pathfile);
+                            //if (ext.Length > 1)
+                            //{
+                                filename = txtOpuCode.Text + "_day2_" + no + extension;
                                 re = ic.ivfDB.opuEmDevDB.updatePathPic(id, no, "images/" + txtOpuCode.Text + "/" + filename, desc, ic.cStf.staff_id);
                                 long chk = 0;
                                 if (long.TryParse(re, out chk))
@@ -3021,7 +3023,7 @@ namespace clinic_ivf.gui
                                     grfDay6Img.Rows[grfDay6Img.Row].StyleNew.BackColor = color;
                                     setGrfDay6Img();
                                 }
-                            }
+                            //}
                         }
                     }
                 }

@@ -113,6 +113,11 @@ namespace clinic_ivf.gui
                 return;
             }
             dt = ic.ivfDB.opuDB.selectByPrintOPU(txtID.Text);
+            if (dt.Rows.Count <= 0)
+            {
+                MessageBox.Show("No Data"+dt.Rows.Count, "");
+                return;
+            }
             if (cboEmbryoDev1.Text.Equals("2"))
             {
                 dtdev1 = ic.ivfDB.opuEmDevDB.selectByOpuFetId_Day(txtID.Text, objdb.LabOpuEmbryoDevDB.Day1.Day2);
@@ -197,6 +202,30 @@ namespace clinic_ivf.gui
                     j++;
                 }
             }
+            String date1 = "";
+            date1 = ic.datetoShow(dt.Rows[0][ic.ivfDB.opuDB.opu.dob_female].ToString());
+            dt.Rows[0][ic.ivfDB.opuDB.opu.dob_female] = date1;
+            date1 = ic.datetoShow(dt.Rows[0][ic.ivfDB.opuDB.opu.dob_male].ToString());
+            dt.Rows[0][ic.ivfDB.opuDB.opu.dob_male] = date1;
+            date1 = ic.datetoShow(dt.Rows[0][ic.ivfDB.opuDB.opu.matura_date].ToString());
+            dt.Rows[0][ic.ivfDB.opuDB.opu.matura_date] = date1;
+            date1 = ic.datetoShow(dt.Rows[0][ic.ivfDB.opuDB.opu.fertili_date].ToString());
+            dt.Rows[0][ic.ivfDB.opuDB.opu.fertili_date] = date1;
+            date1 = ic.datetoShow(dt.Rows[0][ic.ivfDB.opuDB.opu.embryo_for_et_date].ToString());
+            dt.Rows[0][ic.ivfDB.opuDB.opu.embryo_for_et_date] = date1;
+            date1 = ic.datetoShow(dt.Rows[0][ic.ivfDB.opuDB.opu.embryo_freez_date_2].ToString());
+            dt.Rows[0][ic.ivfDB.opuDB.opu.embryo_freez_date_2] = date1;
+            date1 = ic.datetoShow(dt.Rows[0][ic.ivfDB.opuDB.opu.embryo_freez_date_3].ToString());
+            dt.Rows[0][ic.ivfDB.opuDB.opu.embryo_freez_date_3] = date1;
+            date1 = ic.datetoShow(dt.Rows[0][ic.ivfDB.opuDB.opu.embryo_freez_date_5].ToString());
+            dt.Rows[0][ic.ivfDB.opuDB.opu.embryo_freez_date_5] = date1;
+            date1 = ic.datetoShow(dt.Rows[0][ic.ivfDB.opuDB.opu.embryo_freez_date_6].ToString());
+            dt.Rows[0][ic.ivfDB.opuDB.opu.embryo_freez_date_6] = date1;
+            date1 = ic.datetoShow(dt.Rows[0][ic.ivfDB.opuDB.opu.embryo_freez_date_0].ToString());
+            dt.Rows[0][ic.ivfDB.opuDB.opu.embryo_freez_date_0] = date1;
+            date1 = ic.datetoShow(dt.Rows[0][ic.ivfDB.opuDB.opu.embryo_freez_date_1].ToString());
+            dt.Rows[0][ic.ivfDB.opuDB.opu.embryo_freez_date_1] = date1;
+
             if (chkEmbryoFreez2Col.Checked)
             {
                 if (chkEmbryoDev20.Checked)
@@ -262,13 +291,15 @@ namespace clinic_ivf.gui
                             MemoryStream stream = ic.ftpC.download(path_pic);
                             Image loadedImage = new Bitmap(stream);
                             String[] ext = path_pic.Split('.');
-                            if (ext.Length > 0)
-                            {
-                                String filename = ext[0];
+                            var extension = Path.GetExtension(path_pic);
+                            var name = Path.GetFileNameWithoutExtension(path_pic); // Get the name only
+                            //if (ext.Length > 0)
+                            //{
+                                String filename = name;
                                 String no = "", filename1 = "";
                                 no = filename.Substring(filename.Length - 2);
                                 no = no.Replace("_", "");
-                                filename1 = "embryo_dev_" + no + "." + ext[1];
+                                filename1 = "embryo_dev_" + no + extension;
                                 if (File.Exists(filename1))
                                 {
                                     File.Delete(filename1);
@@ -276,7 +307,7 @@ namespace clinic_ivf.gui
                                 }
                                 loadedImage.Save(filename1);
                                 row["no1_pathpic"] = System.IO.Directory.GetCurrentDirectory() + "\\" + filename1;
-                            }
+                            //}
                         }
                         i++;
                         frmW.pB.Value = i;
