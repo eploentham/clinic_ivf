@@ -291,7 +291,7 @@ namespace clinic_ivf.report {
             
             private global::System.Data.DataColumn columndob_male;
             
-            private global::System.Data.DataColumn columnproce_name;
+            private global::System.Data.DataColumn columnproce_name_t;
             
             private global::System.Data.DataColumn columnopu_date;
             
@@ -553,6 +553,10 @@ namespace clinic_ivf.report {
             
             private global::System.Data.DataColumn columnembryo_dev_0_40;
             
+            private global::System.Data.DataColumn columnembryo_freez_freeze_media_0_name;
+            
+            private global::System.Data.DataColumn columnembryo_freez_freeze_media_1_name;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public lab_opuDataTable() {
@@ -636,9 +640,9 @@ namespace clinic_ivf.report {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public global::System.Data.DataColumn proce_nameColumn {
+            public global::System.Data.DataColumn proce_name_tColumn {
                 get {
-                    return this.columnproce_name;
+                    return this.columnproce_name_t;
                 }
             }
             
@@ -1684,6 +1688,22 @@ namespace clinic_ivf.report {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn embryo_freez_freeze_media_0_nameColumn {
+                get {
+                    return this.columnembryo_freez_freeze_media_0_name;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn embryo_freez_freeze_media_1_nameColumn {
+                get {
+                    return this.columnembryo_freez_freeze_media_1_name;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -1726,7 +1746,7 @@ namespace clinic_ivf.report {
                         string hn_male, 
                         string dob_female, 
                         string dob_male, 
-                        string proce_name, 
+                        string proce_name_t, 
                         string opu_date, 
                         string doctor_name, 
                         string matura_no_of_opu, 
@@ -1856,7 +1876,9 @@ namespace clinic_ivf.report {
                         string embryo_dev_0_37, 
                         string embryo_dev_0_38, 
                         string embryo_dev_0_39, 
-                        string embryo_dev_0_40) {
+                        string embryo_dev_0_40, 
+                        string embryo_freez_freeze_media_0_name, 
+                        string embryo_freez_freeze_media_1_name) {
                 lab_opuRow rowlab_opuRow = ((lab_opuRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         name_female,
@@ -1865,7 +1887,7 @@ namespace clinic_ivf.report {
                         hn_male,
                         dob_female,
                         dob_male,
-                        proce_name,
+                        proce_name_t,
                         opu_date,
                         doctor_name,
                         matura_no_of_opu,
@@ -1995,7 +2017,9 @@ namespace clinic_ivf.report {
                         embryo_dev_0_37,
                         embryo_dev_0_38,
                         embryo_dev_0_39,
-                        embryo_dev_0_40};
+                        embryo_dev_0_40,
+                        embryo_freez_freeze_media_0_name,
+                        embryo_freez_freeze_media_1_name};
                 rowlab_opuRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowlab_opuRow);
                 return rowlab_opuRow;
@@ -2024,7 +2048,7 @@ namespace clinic_ivf.report {
                 this.columnhn_male = base.Columns["hn_male"];
                 this.columndob_female = base.Columns["dob_female"];
                 this.columndob_male = base.Columns["dob_male"];
-                this.columnproce_name = base.Columns["proce_name"];
+                this.columnproce_name_t = base.Columns["proce_name_t"];
                 this.columnopu_date = base.Columns["opu_date"];
                 this.columndoctor_name = base.Columns["doctor_name"];
                 this.columnmatura_no_of_opu = base.Columns["matura_no_of_opu"];
@@ -2155,6 +2179,8 @@ namespace clinic_ivf.report {
                 this.columnembryo_dev_0_38 = base.Columns["embryo_dev_0_38"];
                 this.columnembryo_dev_0_39 = base.Columns["embryo_dev_0_39"];
                 this.columnembryo_dev_0_40 = base.Columns["embryo_dev_0_40"];
+                this.columnembryo_freez_freeze_media_0_name = base.Columns["embryo_freez_freeze_media_0_name"];
+                this.columnembryo_freez_freeze_media_1_name = base.Columns["embryo_freez_freeze_media_1_name"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -2172,8 +2198,8 @@ namespace clinic_ivf.report {
                 base.Columns.Add(this.columndob_female);
                 this.columndob_male = new global::System.Data.DataColumn("dob_male", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columndob_male);
-                this.columnproce_name = new global::System.Data.DataColumn("proce_name", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnproce_name);
+                this.columnproce_name_t = new global::System.Data.DataColumn("proce_name_t", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnproce_name_t);
                 this.columnopu_date = new global::System.Data.DataColumn("opu_date", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnopu_date);
                 this.columndoctor_name = new global::System.Data.DataColumn("doctor_name", typeof(string), null, global::System.Data.MappingType.Element);
@@ -2434,13 +2460,17 @@ namespace clinic_ivf.report {
                 base.Columns.Add(this.columnembryo_dev_0_39);
                 this.columnembryo_dev_0_40 = new global::System.Data.DataColumn("embryo_dev_0_40", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnembryo_dev_0_40);
+                this.columnembryo_freez_freeze_media_0_name = new global::System.Data.DataColumn("embryo_freez_freeze_media_0_name", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnembryo_freez_freeze_media_0_name);
+                this.columnembryo_freez_freeze_media_1_name = new global::System.Data.DataColumn("embryo_freez_freeze_media_1_name", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnembryo_freez_freeze_media_1_name);
                 this.columnname_female.Caption = "DataColumn1";
                 this.columnhn_female.Caption = "DataColumn1";
                 this.columnname_male.Caption = "DataColumn1";
                 this.columnhn_male.Caption = "DataColumn1";
                 this.columndob_female.Caption = "DataColumn1";
                 this.columndob_male.Caption = "DataColumn1";
-                this.columnproce_name.Caption = "DataColumn1";
+                this.columnproce_name_t.Caption = "DataColumn1";
                 this.columnopu_date.Caption = "DataColumn1";
                 this.columndoctor_name.Caption = "DataColumn1";
                 this.columnmatura_no_of_opu.Caption = "DataColumn1";
@@ -2784,17 +2814,17 @@ namespace clinic_ivf.report {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public string proce_name {
+            public string proce_name_t {
                 get {
                     try {
-                        return ((string)(this[this.tablelab_opu.proce_nameColumn]));
+                        return ((string)(this[this.tablelab_opu.proce_name_tColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'proce_name\' in table \'lab_opu\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'proce_name_t\' in table \'lab_opu\' is DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tablelab_opu.proce_nameColumn] = value;
+                    this[this.tablelab_opu.proce_name_tColumn] = value;
                 }
             }
             
@@ -4883,6 +4913,40 @@ namespace clinic_ivf.report {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public string embryo_freez_freeze_media_0_name {
+                get {
+                    try {
+                        return ((string)(this[this.tablelab_opu.embryo_freez_freeze_media_0_nameColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'embryo_freez_freeze_media_0_name\' in table \'lab_opu\' is DBN" +
+                                "ull.", e);
+                    }
+                }
+                set {
+                    this[this.tablelab_opu.embryo_freez_freeze_media_0_nameColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public string embryo_freez_freeze_media_1_name {
+                get {
+                    try {
+                        return ((string)(this[this.tablelab_opu.embryo_freez_freeze_media_1_nameColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'embryo_freez_freeze_media_1_name\' in table \'lab_opu\' is DBN" +
+                                "ull.", e);
+                    }
+                }
+                set {
+                    this[this.tablelab_opu.embryo_freez_freeze_media_1_nameColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public bool Isname_femaleNull() {
                 return this.IsNull(this.tablelab_opu.name_femaleColumn);
             }
@@ -4955,14 +5019,14 @@ namespace clinic_ivf.report {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public bool Isproce_nameNull() {
-                return this.IsNull(this.tablelab_opu.proce_nameColumn);
+            public bool Isproce_name_tNull() {
+                return this.IsNull(this.tablelab_opu.proce_name_tColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public void Setproce_nameNull() {
-                this[this.tablelab_opu.proce_nameColumn] = global::System.Convert.DBNull;
+            public void Setproce_name_tNull() {
+                this[this.tablelab_opu.proce_name_tColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -6523,6 +6587,30 @@ namespace clinic_ivf.report {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public void Setembryo_dev_0_40Null() {
                 this[this.tablelab_opu.embryo_dev_0_40Column] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public bool Isembryo_freez_freeze_media_0_nameNull() {
+                return this.IsNull(this.tablelab_opu.embryo_freez_freeze_media_0_nameColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void Setembryo_freez_freeze_media_0_nameNull() {
+                this[this.tablelab_opu.embryo_freez_freeze_media_0_nameColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public bool Isembryo_freez_freeze_media_1_nameNull() {
+                return this.IsNull(this.tablelab_opu.embryo_freez_freeze_media_1_nameColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void Setembryo_freez_freeze_media_1_nameNull() {
+                this[this.tablelab_opu.embryo_freez_freeze_media_1_nameColumn] = global::System.Convert.DBNull;
             }
         }
         

@@ -277,6 +277,7 @@ namespace clinic_ivf.gui
                     }
                 }
             }
+            frm.FormBorderStyle = FormBorderStyle.None;
             C1DockingTabPage tab = new C1DockingTabPage();
             tab.SuspendLayout();
             frm.TopLevel = false;

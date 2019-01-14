@@ -315,7 +315,8 @@ namespace clinic_ivf.gui
         }
         private void openLabOPUAdd(String opdId, String name)
         {
-            FrmLabOPUAdd frm = new FrmLabOPUAdd(ic, "", opdId);
+            //FrmLabOPUAdd frm = new FrmLabOPUAdd(ic, "", opdId);
+            FrmLabOPUAdd2 frm = new FrmLabOPUAdd2(ic, "", opdId);
             String txt = "";
             if (!name.Equals(""))
             {
@@ -344,7 +345,8 @@ namespace clinic_ivf.gui
                     String re1 = ic.ivfDB.opuDB.insert(opu, ic.cStf.staff_id);
                     if (long.TryParse(re1, out chk1))
                     {
-                        FrmLabOPUAdd frm = new FrmLabOPUAdd(ic, "", re1);
+                        //FrmLabOPUAdd frm = new FrmLabOPUAdd(ic, "", re1);
+                        FrmLabOPUAdd2 frm = new FrmLabOPUAdd2(ic, "", re1);
                         String txt = "";
                         if (!name.Equals(""))
                         {

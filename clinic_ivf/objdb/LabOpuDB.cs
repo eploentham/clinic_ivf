@@ -159,9 +159,11 @@ namespace clinic_ivf.objdb
         public DataTable selectByPrintOPU(String copId)
         {
             DataTable dt = new DataTable();
-            String sql = "select opu.*,dtr.Name, proce.proce_name_t,opu.embryo_freez_no_of_straw_0 as straw0, opu.embryo_freez_no_of_straw_1 as straw1 " +
+            String sql = "select opu.*,dtr.Name as doctor_name, proce.proce_name_t,opu.embryo_freez_no_of_straw_0 as straw0, opu.embryo_freez_no_of_straw_1 as straw1 " +
                 ", fdt0.doc_type_name as embryo_freez_mothod_0_name, fdt1.doc_type_name as embryo_freez_mothod_1_name " +
                 ", fdt_stage_0.doc_type_name as embryo_freez_stage_0_name, fdt_stage_1.doc_type_name as embryo_freez_stage_1_name " +
+                ", fdt_freeze_0.doc_type_name as embryo_freez_freeze_media_0_name " +
+                //", fdt_freeze_1.doc_type_name as embryo_freez_freeze_media_1_name " +
                 "From " + opu.table + " opu " +
                 "Left Join Doctor dtr on dtr.ID = opu." + opu.doctor_id + " " +
                 "Left Join lab_b_procedure proce on proce.proce_id = opu.proce_id " +
@@ -169,6 +171,8 @@ namespace clinic_ivf.objdb
                 "Left Join f_doc_type fdt1 on fdt1.doc_type_id = opu.embryo_freez_mothod_1 " +
                 "Left Join f_doc_type fdt_stage_0 on fdt_stage_0.doc_type_id = opu.embryo_freez_stage_0 " +
                 "Left Join f_doc_type fdt_stage_1 on fdt_stage_1.doc_type_id = opu.embryo_freez_stage_1 " +
+                "Left Join f_doc_type fdt_freeze_0 on opu.embryo_freez_freeze_media_0 = fdt_freeze_0.doc_type_id " +
+                //"Left Join f_doc_type fdt_freeze_1 on opu.embryo_freez_freeze_media_1 = fdt_freeze_1.doc_type_id " +
                 "Where opu." + opu.pkField + " ='" + copId + "' ";
             dt = conn.selectData(conn.conn, sql);
             return dt;

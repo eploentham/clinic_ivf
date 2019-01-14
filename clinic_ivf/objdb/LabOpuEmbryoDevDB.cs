@@ -41,6 +41,8 @@ namespace clinic_ivf.objdb
             opuEmDev.desc2 = "desc2";
             opuEmDev.desc3 = "desc3";
             opuEmDev.staff_id = "staff_id";
+            opuEmDev.checked_id = "checked_id";
+            opuEmDev.embryo_dev_date = "embryo_dev_date";
 
             opuEmDev.table = "lab_t_opu_embryo_dev";
             opuEmDev.pkField = "opu_embryo_dev_id";
@@ -56,9 +58,11 @@ namespace clinic_ivf.objdb
             p.user_create = p.user_create == null ? "" : p.user_create;
             p.user_modi = p.user_modi == null ? "" : p.user_modi;
             p.user_cancel = p.user_cancel == null ? "" : p.user_cancel;
+
             p.opu_fet_id = long.TryParse(p.opu_fet_id, out chk) ? chk.ToString() : "0";
             p.opu_embryo_dev_no = long.TryParse(p.opu_embryo_dev_no, out chk) ? chk.ToString() : "0";
             p.staff_id = long.TryParse(p.staff_id, out chk) ? chk.ToString() : "0";
+            p.checked_id = long.TryParse(p.checked_id, out chk) ? chk.ToString() : "0";
 
             p.day = p.day == null ? "0" : p.day;
             p.desc0 = p.desc0 == null ? "" : p.desc0;
@@ -68,7 +72,8 @@ namespace clinic_ivf.objdb
             p.desc1 = p.desc1 == null ? "" : p.desc1;
             p.desc2 = p.desc2 == null ? "" : p.desc2;
             p.desc3 = p.desc3 == null ? "" : p.desc3;
-            
+            p.embryo_dev_date = p.embryo_dev_date == null ? "" : p.embryo_dev_date;
+
             //p.user_cancel = p.user_cancel == null ? "" : p.user_cancel;
         }
         public String insert(LabOpuEmbryoDev p, String userId)
@@ -81,18 +86,24 @@ namespace clinic_ivf.objdb
 
             chkNull(p);
             //opuEmDev.desc0 = "desc0";
-            sql = "Insert Into " + opuEmDev.table + "(" + opuEmDev.opu_fet_id + "," + opuEmDev.day + "," + opuEmDev.opu_embryo_dev_no + "," +
-                opuEmDev.desc0 + "," + opuEmDev.active + "," + opuEmDev.remark + "," +
-                opuEmDev.path_pic + "," + opuEmDev.date_create + "," + opuEmDev.user_create + "," +
-                opuEmDev.desc1 + "," + opuEmDev.desc2 + "," + opuEmDev.desc3 + "," +
-                opuEmDev.staff_id + " " +
-
-                ") " +
-                "Values ('" + p.opu_fet_id + "','" + p.day + "','" + p.opu_embryo_dev_no + "'," +
-                "'" + p.desc0.Replace("'", "''") + "','" + p.active.Replace("'", "''") + "','" + p.remark + "'," +
-                "'" + p.path_pic + "',now(),'" + userId + "'," +
-                "'" + p.desc1 + "','" + p.desc2 + "','" + p.desc3 + "'," +
-                "'" + p.staff_id + "' " +
+            sql = "Insert Into " + opuEmDev.table + " Set " + 
+                " " + opuEmDev.opu_fet_id + "='"+ p.opu_fet_id + "'" +
+                "," + opuEmDev.day + "='" + p.day + "'" +
+                "," + opuEmDev.opu_embryo_dev_no + "='" + p.opu_embryo_dev_no + "'" +
+                "," + opuEmDev.desc0 + "='" + p.desc0.Replace("'", "''") + "'" +
+                "," + opuEmDev.active + "='" + p.active + "'" +
+                "," + opuEmDev.remark + "='" + p.remark + "'" +
+                "," + opuEmDev.path_pic + "='" + p.path_pic + "'" +
+                "," + opuEmDev.date_create + "=now()" +
+                "," + opuEmDev.user_create + "='" + userId + "'" +
+                "," + opuEmDev.desc1 + "='" + p.desc1.Replace("'", "''") + "'" +
+                "," + opuEmDev.desc2 + "='" + p.desc2.Replace("'", "''") + "'" +
+                "," + opuEmDev.desc3 + "='" + p.desc3.Replace("'", "''") + "'" +
+                "," + opuEmDev.staff_id + "='" + p.staff_id + "'" +
+                "," + opuEmDev.checked_id + "='" + p.checked_id + "'" +
+                "," + opuEmDev.embryo_dev_date + "='" + p.embryo_dev_date + "'" +
+                " " +
+               
                 ")";
             try
             {
@@ -121,7 +132,8 @@ namespace clinic_ivf.objdb
                 "," + opuEmDev.desc2 + " = '" + p.desc2.Replace("'", "''") + "'" +
                 "," + opuEmDev.desc3 + " = '" + p.desc3.Replace("'", "''") + "'" +
                 "," + opuEmDev.staff_id + " = '" + p.staff_id + "'" +
-                //"," + opuEmDev.posi_id + " = '" + p.status_module_lab.Replace("'", "''") + "' " +
+                "," + opuEmDev.checked_id + "='" + p.checked_id + "'" +
+                "," + opuEmDev.embryo_dev_date + "='" + p.embryo_dev_date + "'" +
                 "Where " + opuEmDev.pkField + "='" + p.opu_embryo_dev_id + "'"
                 ;
 
