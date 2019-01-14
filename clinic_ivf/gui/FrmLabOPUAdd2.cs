@@ -99,7 +99,7 @@ namespace clinic_ivf.gui
             //stt.BackgroundGradient = C1.Win.C1SuperTooltip.BackgroundGradient.Gold;
 
             setClick();
-            txtMaturaNoofOpu.KeyUp += TxtMaturaNoofOpu_KeyUp;
+            txtMaturaNoofOpu1.KeyUp += TxtMaturaNoofOpu_KeyUp;       //txtMaturaNoofOpu
 
             txtMaturaDate.KeyUp += TxtMaturaDate_KeyUp;
             txtMaturaMii.KeyUp += TxtMaturaDate_KeyUp;
@@ -671,14 +671,14 @@ namespace clinic_ivf.gui
         }
         private void createEmbryoDev()
         {
-            String[] ext = txtMaturaNoofOpu.Text.Split(',');
+            String[] ext = txtMaturaNoofOpu1.Text.Split(',');
             int rt = 0, lt = 0, cntDay2 = 0, embryoNo = 0;
             if (int.TryParse(ext[0], out rt))
             {
                 if (int.TryParse(ext[1], out lt))
                 {
                     embryoNo = (rt + lt);
-                    txtMaturaNoofOpu1.Value = embryoNo.ToString();
+                    txtMaturaNoofOpu.Value = embryoNo.ToString() + "["+ txtMaturaNoofOpu1.Text+"]";
                     String cnt = "", re = "";
                     cnt = ic.ivfDB.opuEmDevDB.selectCntByOpuFetId_Day(txtID.Text, objdb.LabOpuEmbryoDevDB.Day1.Day2);
                     if (int.TryParse(cnt, out cntDay2))
@@ -1965,30 +1965,34 @@ namespace clinic_ivf.gui
             //lbReq.req_code = txtLabReqCode.Text;
             opu.dob_female = ic.datetoDB(txtDobFeMale.Text);
             opu.dob_male = ic.datetoDB(txtDobMale.Text);
-            ComboBoxItem item = new ComboBoxItem();
-            if (cboDoctor.SelectedItem != null)
-            {
-                item = (ComboBoxItem)cboDoctor.SelectedItem;
-                opu.doctor_id = item.Value;
-            }
-            else
-            {
-                opu.doctor_id = "0";
-            }
+            //ComboBoxItem item = new ComboBoxItem();
+            //if (cboDoctor.SelectedItem != null)
+            //{
+            //    item = (ComboBoxItem)cboDoctor.SelectedItem;
+            //    opu.doctor_id = item.Value;
+            //}
+            //else
+            //{
+            //    opu.doctor_id = "0";
+            //}
             opu.opu_date = ic.datetoDB(txtOpuDate.Text);
-            if (cboDoctor.SelectedItem != null)
-            {
-                item = (ComboBoxItem)cboOpuProce.SelectedItem;
-                opu.proce_id = item.Value;
-            }
-            else
-            {
-                opu.proce_id = "0";
-            }
+            //if (cboDoctor.SelectedItem != null)
+            //{
+            //    item = (ComboBoxItem)cboOpuProce.SelectedItem;
+            //    opu.proce_id = item.Value;
+            //}
+            //else
+            //{
+            //    opu.proce_id = "0";
+            //}
+            opu.doctor_id = cboDoctor.SelectedItem == null ? "" : ((ComboBoxItem)cboDoctor.SelectedItem).Value;
+            opu.proce_id = cboOpuProce.SelectedItem == null ? "" : ((ComboBoxItem)cboOpuProce.SelectedItem).Value;
             opu.opu_code = txtOpuCode.Text;
-            opu.remark = cboRemark.SelectedItem == null ? "" : ((ComboBoxItem)cboRemark.SelectedItem).Text;
+            opu.remark = cboRemark.Text;
+            opu.embryo_for_et_remark = cboRemark.Text;
             opu.hn_donor = txtHnDonor.Text;
             opu.name_donor = txtNameDonor.Text;
+            opu.date_pic_embryo = ic.datetoDB(txtDatePicEmbryo.Text);
         }
         private void setOPUMatura()
         {
@@ -2047,106 +2051,112 @@ namespace clinic_ivf.gui
             opu.embryo_for_et_number_of_transfer = txtEmbryoForEtNumTran.Text;
             opu.embryo_for_et_number_of_freeze = txtEmbryoForEtNumFreeze.Text;
             opu.embryo_for_et_number_of_discard = txtEmbryoForEtNumDiscard.Text;
+            opu.embryo_for_et_remark = cboRemark.Text;
         }
         private void setOPUEmbryoFreezDay1()
         {
             opu.opu_id = txtID.Text;
-            ComboBoxItem item = new ComboBoxItem();
-            if (CboEmbryoFreezDay1.SelectedItem != null)
-            {
-                item = (ComboBoxItem)CboEmbryoFreezDay1.SelectedItem;
-                opu.embryo_freez_day_1 = item.Value;
-            }
-            else
-            {
-                opu.embryo_freez_day_1 = "0";
-            }
-
+            //ComboBoxItem item = new ComboBoxItem();
+            //if (CboEmbryoFreezDay1.SelectedItem != null)
+            //{
+            //    item = (ComboBoxItem)CboEmbryoFreezDay1.SelectedItem;
+            //    opu.embryo_freez_day_1 = item.Value;
+            //}
+            //else
+            //{
+            //    opu.embryo_freez_day_1 = "0";
+            //}
+            opu.embryo_freez_day_1 = CboEmbryoFreezDay1.SelectedItem == null ? "" : ((ComboBoxItem)CboEmbryoFreezDay1.SelectedItem).Value;
             opu.embryo_freez_date_1 = ic.datetoDB(txtEmbryoFreezDate1.Text);
             //opu.embryo_freez_stage_1 = txtEmbryoFreezStage1.Text;
 
-            if (cboEmbryoFreezStage1.SelectedItem != null)
-            {
-                item = (ComboBoxItem)cboEmbryoFreezStage1.SelectedItem;
-                opu.embryo_freez_stage_1 = item.Value;
-            }
-            else
-            {
-                opu.embryo_freez_stage_1 = "0";
-            }
+            //if (cboEmbryoFreezStage1.SelectedItem != null)
+            //{
+            //    item = (ComboBoxItem)cboEmbryoFreezStage1.SelectedItem;
+            //    opu.embryo_freez_stage_1 = item.Value;
+            //}
+            //else
+            //{
+            //    opu.embryo_freez_stage_1 = "0";
+            //}
+            opu.embryo_freez_stage_1 = cboEmbryoFreezStage1.SelectedItem == null ? "" : ((ComboBoxItem)cboEmbryoFreezStage1.SelectedItem).Value;
             opu.embryo_freez_no_og_1 = txtEmbryoFreezNoOg1.Text;
             opu.embryo_freez_no_of_straw_1 = txtEmbryoFreezNoStraw1.Text;
             opu.embryo_freez_position_1 = txtEmbryoFreezPosi1.Text;
             //opu.embryo_freez_mothod_1 = txtEmbryoFreezMethod1.Text;
-            if (cboEmbryoFreezMethod1.SelectedItem != null)
-            {
-                item = (ComboBoxItem)cboEmbryoFreezMethod1.SelectedItem;
-                opu.embryo_freez_mothod_1 = item.Value;
-            }
-            else
-            {
-                opu.embryo_freez_stage_1 = "0";
-            }
-
-            if (cboEmbryoFreezMedia1.SelectedItem != null)
-            {
-                item = (ComboBoxItem)cboEmbryoFreezMedia1.SelectedItem;
-                opu.embryo_freez_freeze_media_1 = item.Value;
-            }
-            else
-            {
-                opu.embryo_freez_freeze_media_1 = "0";
-            }
+            //if (cboEmbryoFreezMethod1.SelectedItem != null)
+            //{
+            //    item = (ComboBoxItem)cboEmbryoFreezMethod1.SelectedItem;
+            //    opu.embryo_freez_mothod_1 = item.Value;
+            //}
+            //else
+            //{
+            //    opu.embryo_freez_stage_1 = "0";
+            //}
+            opu.embryo_freez_mothod_1 = cboEmbryoFreezMethod1.SelectedItem == null ? "" : ((ComboBoxItem)cboEmbryoFreezMethod1.SelectedItem).Value;
+            //if (cboEmbryoFreezMedia1.SelectedItem != null)
+            //{
+            //    item = (ComboBoxItem)cboEmbryoFreezMedia1.SelectedItem;
+            //    opu.embryo_freez_freeze_media_1 = item.Value;
+            //}
+            //else
+            //{
+            //    opu.embryo_freez_freeze_media_1 = "0";
+            //}
+            opu.embryo_freez_freeze_media_1 = cboEmbryoFreezMedia1.SelectedItem == null ? "" : ((ComboBoxItem)cboEmbryoFreezMedia1.SelectedItem).Value;
             //opu.embryo_freez_freeze_media_1 = txtEmbryoFreezMedia1.Text;
             //opu.matura_dead = txtMaturaDead.Text;
         }
         private void setOPUEmbryoFreezDay0()
         {
             opu.opu_id = txtID.Text;
-            ComboBoxItem item = new ComboBoxItem();
-            if (CboEmbryoFreezDay0.SelectedItem != null)
-            {
-                item = (ComboBoxItem)CboEmbryoFreezDay0.SelectedItem;
-                opu.embryo_freez_day_0 = item.Value;
-            }
-            else
-            {
-                opu.embryo_freez_day_0 = "0";
-            }
-
+            //ComboBoxItem item = new ComboBoxItem();
+            //if (CboEmbryoFreezDay0.SelectedItem != null)
+            //{
+            //    item = (ComboBoxItem)CboEmbryoFreezDay0.SelectedItem;
+            //    opu.embryo_freez_day_0 = item.Value;
+            //}
+            //else
+            //{
+            //    opu.embryo_freez_day_0 = "0";
+            //}
+            opu.embryo_freez_day_0 = CboEmbryoFreezDay0.SelectedItem == null ? "" : ((ComboBoxItem)CboEmbryoFreezDay0.SelectedItem).Value;
             opu.embryo_freez_date_0 = ic.datetoDB(txtEmbryoFreezDate0.Text);
             //opu.embryo_freez_stage_0 = txtEmbryoFreezStage0.Text;
-            if (cboEmbryoFreezStage0.SelectedItem != null)
-            {
-                item = (ComboBoxItem)cboEmbryoFreezStage0.SelectedItem;
-                opu.embryo_freez_stage_0 = item.Value;
-            }
-            else
-            {
-                opu.embryo_freez_stage_0 = "0";
-            }
+            //if (cboEmbryoFreezStage0.SelectedItem != null)
+            //{
+            //    item = (ComboBoxItem)cboEmbryoFreezStage0.SelectedItem;
+            //    opu.embryo_freez_stage_0 = item.Value;
+            //}
+            //else
+            //{
+            //    opu.embryo_freez_stage_0 = "0";
+            //}
+            opu.embryo_freez_stage_0 = cboEmbryoFreezStage0.SelectedItem == null ? "" : ((ComboBoxItem)cboEmbryoFreezStage0.SelectedItem).Value;
             opu.embryo_freez_no_og_0 = txtEmbryoFreezNoOg0.Text;
             opu.embryo_freez_no_of_straw_0 = txtEmbryoFreezNoStraw0.Text;
             opu.embryo_freez_position_0 = txtEmbryoFreezPosi0.Text;
             //opu.embryo_freez_mothod_0 = txtEmbryoFreezMethod0.Text;
-            if (cboEmbryoFreezMethod0.SelectedItem != null)
-            {
-                item = (ComboBoxItem)cboEmbryoFreezMethod0.SelectedItem;
-                opu.embryo_freez_mothod_0 = item.Value;
-            }
-            else
-            {
-                opu.embryo_freez_mothod_0 = "0";
-            }
-            if (cboEmbryoFreezMedia0.SelectedItem != null)
-            {
-                item = (ComboBoxItem)cboEmbryoFreezMedia0.SelectedItem;
-                opu.embryo_freez_freeze_media_0 = item.Value;
-            }
-            else
-            {
-                opu.embryo_freez_freeze_media_0 = "0";
-            }
+            //if (cboEmbryoFreezMethod0.SelectedItem != null)
+            //{
+            //    item = (ComboBoxItem)cboEmbryoFreezMethod0.SelectedItem;
+            //    opu.embryo_freez_mothod_0 = item.Value;
+            //}
+            //else
+            //{
+            //    opu.embryo_freez_mothod_0 = "0";
+            //}
+            opu.embryo_freez_mothod_0 = cboEmbryoFreezMethod0.SelectedItem == null ? "" : ((ComboBoxItem)cboEmbryoFreezMethod0.SelectedItem).Value;
+            //if (cboEmbryoFreezMedia0.SelectedItem != null)
+            //{
+            //    item = (ComboBoxItem)cboEmbryoFreezMedia0.SelectedItem;
+            //    opu.embryo_freez_freeze_media_0 = item.Value;
+            //}
+            //else
+            //{
+            //    opu.embryo_freez_freeze_media_0 = "0";
+            //}
+            opu.embryo_freez_freeze_media_0 = cboEmbryoFreezMedia0.SelectedItem == null ? "" : ((ComboBoxItem)cboEmbryoFreezMedia0.SelectedItem).Value;
             //opu.embryo_freez_freeze_media_0 = txtEmbryoFreezMedia0.Text;
             //opu.matura_dead = txtMaturaDead.Text;
         }
