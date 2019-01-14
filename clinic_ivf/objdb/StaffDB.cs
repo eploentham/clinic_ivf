@@ -624,6 +624,22 @@ namespace clinic_ivf.objdb
             stf1.status_module_lab = "0";
             return stf1;
         }
+        public String getStaffNameBylStf(String selected)
+        {
+            String re = "";
+            int i = 0;
+            if (lStf.Count <= 0) getlStf();            
+            foreach (Staff cus1 in lStf)
+            {
+                if (cus1.staff_id.Equals(selected))
+                {
+                    re = cus1.staff_fname_t + " " + cus1.staff_lname_t;
+                    break;
+                }
+                i++;
+            }
+            return re;
+        }
         public void setCboStaff(C1ComboBox c, String selected)
         {
             ComboBoxItem item = new ComboBoxItem();

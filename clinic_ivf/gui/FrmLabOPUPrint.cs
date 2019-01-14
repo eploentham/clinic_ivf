@@ -166,6 +166,13 @@ namespace clinic_ivf.gui
             dt.Columns.Add(col11, typeof(String));
             col11 = "embryo_dev_0_name";
             dt.Columns.Add(col11, typeof(String));
+            dt.Columns.Add("embryo_dev_0_date", typeof(String));
+            dt.Columns.Add("embryo_dev_1_date", typeof(String));
+            dt.Columns.Add("embryo_dev_0_staff_name", typeof(String));
+            dt.Columns.Add("embryo_dev_1_staff_name", typeof(String));
+            dt.Columns.Add("embryo_dev_0_checked_name", typeof(String));
+            dt.Columns.Add("embryo_dev_1_checked_name", typeof(String));
+
             if (!cboEmbryoDev1.Text.Equals("") && dt.Rows.Count > 0)
             {
                 dt.Rows[0]["embryo_dev_0_name"] = "Embryo Development (Day " + cboEmbryoDev1.Text + ")";
@@ -174,18 +181,24 @@ namespace clinic_ivf.gui
             {
                 dt.Rows[0]["embryo_dev_1_name"] = "Embryo Development (Day " + cboEmbryoDev2.Text + ")";
             }
+            String stfid = "", checkedid = "", embryodevdate = "";
             foreach (DataRow row in dtdev1.Rows)
             {
                 if (j > 40) continue;
                 String col = "embryo_dev_0_", vol = "";
-                //col = "embryo_dev_0_" + j.ToString("00");
+                stfid = ""; checkedid = ""; embryodevdate = "";
                 vol = "0" + row["opu_embryo_dev_no"].ToString();
                 vol = vol.Substring(vol.Length - 2);
                 col = col + vol;
                 dt.Rows[0][col] = row["desc0"].ToString();
-
+                stfid = row["staff_id"].ToString();
+                checkedid = row["checked_id"].ToString();
+                embryodevdate = row["embryo_dev_date"].ToString();
                 j++;
             }
+            dt.Rows[0]["embryo_dev_0_staff_name"] = ic.ivfDB.stfDB.getStaffNameBylStf(stfid);
+            dt.Rows[0]["embryo_dev_0_checked_name"] = ic.ivfDB.stfDB.getStaffNameBylStf(checkedid);
+            dt.Rows[0]["embryo_dev_0_date"] = ic.datetimetoShow(embryodevdate);
             j = 1;
             if (!chkEmbryoDev20.Checked && dtdev2.Rows.Count > 0)
             {
@@ -193,15 +206,20 @@ namespace clinic_ivf.gui
                 {
                     if (j > 40) continue;
                     String col = "embryo_dev_1_", vol = "";
-                    //col = "embryo_dev_0_" + j.ToString("00");
+                    stfid = ""; checkedid = ""; embryodevdate = "";
                     vol = "0" + row["opu_embryo_dev_no"].ToString();
                     vol = vol.Substring(vol.Length - 2);
                     col = col + vol;
                     dt.Rows[0][col] = row["desc0"].ToString();
-
+                    stfid = row["staff_id"].ToString();
+                    checkedid = row["checked_id"].ToString();
+                    embryodevdate = row["embryo_dev_date"].ToString();
                     j++;
                 }
             }
+            dt.Rows[0]["embryo_dev_1_staff_name"] = ic.ivfDB.stfDB.getStaffNameBylStf(stfid);
+            dt.Rows[0]["embryo_dev_1_checked_name"] = ic.ivfDB.stfDB.getStaffNameBylStf(checkedid);
+            dt.Rows[0]["embryo_dev_1_date"] = ic.datetimetoShow(embryodevdate);
             String date1 = "";
             date1 = ic.datetoShow(dt.Rows[0][ic.ivfDB.opuDB.opu.dob_female].ToString());
             dt.Rows[0][ic.ivfDB.opuDB.opu.dob_female] = date1;

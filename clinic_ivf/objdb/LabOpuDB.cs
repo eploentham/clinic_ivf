@@ -172,7 +172,7 @@ namespace clinic_ivf.objdb
                 "Left Join f_doc_type fdt_stage_0 on fdt_stage_0.doc_type_id = opu.embryo_freez_stage_0 " +
                 "Left Join f_doc_type fdt_stage_1 on fdt_stage_1.doc_type_id = opu.embryo_freez_stage_1 " +
                 "Left Join f_doc_type fdt_freeze_0 on opu.embryo_freez_freeze_media_0 = fdt_freeze_0.doc_type_id " +
-                //"Left Join f_doc_type fdt_freeze_1 on opu.embryo_freez_freeze_media_1 = fdt_freeze_1.doc_type_id " +
+                //"Left Join b_satff stf_embryo_dev_0 on opu.embryo_freez_freeze_media_1 = fdt_freeze_1.doc_type_id " +
                 "Where opu." + opu.pkField + " ='" + copId + "' ";
             dt = conn.selectData(conn.conn, sql);
             return dt;
