@@ -592,7 +592,7 @@ namespace clinic_ivf.gui
         private void BtnDonorSearch_Click(object sender, EventArgs e)
         {
             //throw new NotImplementedException();
-            FrmSearchHn frm = new FrmSearchHn(ic, FrmSearchHn.StatusConnection.hostEx);
+            FrmSearchHn frm = new FrmSearchHn(ic, FrmSearchHn.StatusConnection.hostEx, FrmSearchHn.StatusSearch.DonorSearch);
             frm.ShowDialog(this);
             txtHnDonor.Value = ic.sVsOld.PIDS;
             txtNameDonor.Value = ic.sVsOld.PName;
@@ -600,7 +600,7 @@ namespace clinic_ivf.gui
         private void BtnHnSearch_Click(object sender, EventArgs e)
         {
             //throw new NotImplementedException();
-            FrmSearchHn frm = new FrmSearchHn(ic, FrmSearchHn.StatusConnection.host);
+            FrmSearchHn frm = new FrmSearchHn(ic, FrmSearchHn.StatusConnection.host, FrmSearchHn.StatusSearch.PttSearch);
             frm.ShowDialog(this);
             txtHnMale.Value = ic.sVsOld.PIDS;
             txtNameMale.Value = ic.sVsOld.PName;

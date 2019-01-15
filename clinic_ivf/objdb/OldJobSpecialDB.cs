@@ -53,8 +53,9 @@ namespace clinic_ivf.objdb
                 "Left Join JobDoctor on JobDoctor.VN = oJS.VN "+
                 "Left join Doctor on JobDoctor.DName = Doctor.Name " +
                 "Left Join lab_t_request lreq on lreq.req_id = oJSd.req_id " +
-                "Where oJS." + oJS.Status + " ='1' and oJSd.SID=112 " +
-                "and oJS.Date >= '"+startdate+ "' and oJS.Date <='"+enddate+"'";
+                "Where oJS." + oJS.Status + " ='1' and oJSd.SID in (112,160) " +
+                "and oJS.Date >= '"+startdate+ "' and oJS.Date <='"+enddate+"' " +
+                "Order By oJSd.ID";
             dt = conn.selectData(conn.conn, sql);
             return dt;
         }

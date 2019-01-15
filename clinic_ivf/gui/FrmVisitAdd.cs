@@ -232,7 +232,7 @@ namespace clinic_ivf.gui
         private void BtnHnSearch_Click(object sender, EventArgs e)
         {
             //throw new NotImplementedException();
-            FrmSearchHn frm = new FrmSearchHn(ic, FrmSearchHn.StatusConnection.hostEx);
+            FrmSearchHn frm = new FrmSearchHn(ic, FrmSearchHn.StatusConnection.hostEx, FrmSearchHn.StatusSearch.PttSearch);
             frm.ShowDialog(this);
             txtHnFemale.Value = ic.sVsOld.PIDS;
             label32.Text = ic.sVsOld.PName;

@@ -201,7 +201,7 @@ namespace clinic_ivf.gui
             //throw new NotImplementedException();
             FrmLabFetView frm = new FrmLabFetView(ic, this);
             frm.FormBorderStyle = FormBorderStyle.None;
-            AddNewTab(frm, menuLabOpu.Text + " ");
+            AddNewTab(frm, menuLabFet.Text + " ");
         }
 
         private void MenuLabOpu_Click(object sender, EventArgs e)

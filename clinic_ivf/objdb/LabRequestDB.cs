@@ -54,6 +54,7 @@ namespace clinic_ivf.objdb
             lbReq.dob_male = "dob_male";
             lbReq.hn_donor = "hn_donor";
             lbReq.name_donor = "name_donor";
+            lbReq.request_id = "request_id";
 
             lbReq.table = "lab_t_request";
             lbReq.pkField = "req_id";
@@ -93,6 +94,7 @@ namespace clinic_ivf.objdb
             p.result_staff_id = long.TryParse(p.result_staff_id, out chk) ? chk.ToString() : "0";
             p.doctor_id = long.TryParse(p.doctor_id, out chk) ? chk.ToString() : "0";
             p.lab_id = long.TryParse(p.lab_id, out chk) ? chk.ToString() : "0";
+            p.request_id = long.TryParse(p.request_id, out chk) ? chk.ToString() : "0";
         }
         public DataTable selectByPk(String copId)
         {
@@ -189,38 +191,39 @@ namespace clinic_ivf.objdb
 
             chkNull(p);
             //p.req_code = genReqDoc();
-            sql = "Insert Into " + lbReq.table + " Set " + 
-                lbReq.req_code + " = '" + p.req_code + "'," +
-                lbReq.req_date + "= '" + p.req_date + "'," +
-                lbReq.hn_male + "= '" + p.hn_male + "'," +
-                lbReq.name_male + "= '" + p.name_male.Replace("'", "''") + "'," +
-                lbReq.hn_female + "= '" + p.hn_female.Replace("'", "''") + "'," +
-                lbReq.name_female + "= '" + p.name_female + "'," +
-                lbReq.active + "= '" + p.active + "'," +
-                lbReq.remark + "= '" + p.remark + "'," +
-                lbReq.status_req + "= '" + p.status_req + "'," +
-                lbReq.accept_date + "= '" + p.accept_date + "'," +
-                lbReq.start_date + "= '" + p.start_date + "'," +
-                lbReq.result_date + "= '" + p.result_date + "'," +
-                lbReq.visit_id + "= '" + p.visit_id + "'," +
-                lbReq.vn + "= '" + p.vn + "'," +
-                lbReq.item_id + "= '" + p.item_id + "'," +
-                lbReq.date_create + "= now()," + 
-                lbReq.date_modi + "= '" + p.date_modi + "'," +
-                lbReq.date_cancel + "= '" + p.date_cancel + "'," +
-                lbReq.user_create + "= '" + userId + "'," +
-                lbReq.user_modi + "= '" + p.user_modi + "'," +
-                lbReq.user_cancel + "= '" + p.user_cancel + "'," +
-                lbReq.accept_staff_id + "= '" + p.accept_staff_id + "'," +
-                lbReq.start_staff_id + "= '" + p.start_staff_id + "'," +
-                lbReq.result_staff_id + "= '" + p.result_staff_id + "'," +
-                lbReq.doctor_id + " = '" + p.doctor_id + "'," +
-                lbReq.dob_donor + " = '" + p.dob_donor + "'," +
-                lbReq.dob_female + " = '" + p.dob_female + "'," +
-                lbReq.dob_male + " = '" + p.dob_male + "'," +
-                lbReq.hn_donor + " = '" + p.hn_donor + "'," +
-                lbReq.name_donor + " = '" + p.name_donor.Replace("'", "''") + "'," +
-                lbReq.lab_id + " = '" + p.lab_id + "' " +
+            sql = "Insert Into " + lbReq.table + " Set " +
+                " " + lbReq.req_code + " = '" + p.req_code + "'" +
+                "," + lbReq.req_date + "= '" + p.req_date + "'" +
+                "," + lbReq.hn_male + "= '" + p.hn_male + "'" +
+                "," + lbReq.name_male + "= '" + p.name_male.Replace("'", "''") + "'" +
+                "," + lbReq.hn_female + "= '" + p.hn_female.Replace("'", "''") + "'" +
+                "," + lbReq.name_female + "= '" + p.name_female + "'" +
+                "," + lbReq.active + "= '" + p.active + "'" +
+                "," + lbReq.remark + "= '" + p.remark + "'" +
+                "," + lbReq.status_req + "= '" + p.status_req + "'" +
+                "," + lbReq.accept_date + "= '" + p.accept_date + "'" +
+                "," + lbReq.start_date + "= '" + p.start_date + "'" +
+                "," + lbReq.result_date + "= '" + p.result_date + "'" +
+                "," + lbReq.visit_id + "= '" + p.visit_id + "'" +
+                "," + lbReq.vn + "= '" + p.vn + "'" +
+                "," + lbReq.item_id + "= '" + p.item_id + "'" +
+                "," + lbReq.date_create + "= now()" +
+                "," + lbReq.date_modi + "= '" + p.date_modi + "'" +
+                "," + lbReq.date_cancel + "= '" + p.date_cancel + "'" +
+                "," + lbReq.user_create + "= '" + userId + "'" +
+                "," + lbReq.user_modi + "= '" + p.user_modi + "'" +
+                "," + lbReq.user_cancel + "= '" + p.user_cancel + "'" +
+                "," + lbReq.accept_staff_id + "= '" + p.accept_staff_id + "'" +
+                "," + lbReq.start_staff_id + "= '" + p.start_staff_id + "'" +
+                "," + lbReq.result_staff_id + "= '" + p.result_staff_id + "'" +
+                "," + lbReq.doctor_id + " = '" + p.doctor_id + "'" +
+                "," + lbReq.dob_donor + " = '" + p.dob_donor + "'" +
+                "," + lbReq.dob_female + " = '" + p.dob_female + "'" +
+                "," + lbReq.dob_male + " = '" + p.dob_male + "'" +
+                "," + lbReq.hn_donor + " = '" + p.hn_donor + "'" +
+                "," + lbReq.name_donor + " = '" + p.name_donor.Replace("'", "''") + "'" +
+                "," + lbReq.lab_id + " = '" + p.lab_id + "'" +
+                ","+lbReq.request_id + " = '" + p.request_id + "' " +
                 "";
             try
             {

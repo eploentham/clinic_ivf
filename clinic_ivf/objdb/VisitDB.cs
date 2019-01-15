@@ -460,6 +460,25 @@ namespace clinic_ivf.objdb
 
             return dt;
         }
+        public DataTable selectCurrentVisitEx()
+        {
+            DataTable dt = new DataTable();
+            String date = System.DateTime.Now.Year + "-" + System.DateTime.Now.ToString("MM-dd");
+            String sql = "select vs.t_visit_id as id,vs.visit_vn as VN ,ptt.patient_hn as PIDS,CONCAT(IFNULL(fpp.patient_prefix_description,''),' ', ptt.patient_firstname_e ,' ',ptt.patient_lastname_e)  as PName" +
+                ", vs.visit_begin_visit_time as VDate, vs.visit_begin_visit_time as VStartTime, vs.visit_financial_discharge_time as VEndTime, bsp.service_point_description as VSID, '' as Vname, '' as dob " +
+                //", IFNULL(papm.patitent_appointment_date,'') as patitent_appointment_date, IFNULL(papm.patitent_appointment_time ,'') as patitent_appointment_time" +
+                //", IFNULL(papm.patitent_appointment,'') as patitent_appointment, IFNULL(vs.visit_have_appointment,'') as visit_have_appointment " +
+                "From " + vs.table + " vs " +
+                "Left Join t_patient ptt on  ptt.t_patient_id = vs." + vs.t_patient_id + " " +
+                "Left join f_patient_prefix fpp on fpp.f_patient_prefix_id = ptt.f_patient_prefix_id " +
+                "Left Join b_service_point bsp on bsp.b_service_point_id = vs.b_service_point_id " +
+                //"Left Join t_patient_appointment papm on vs."+vs.t_patient_appointment_id+ "=papm."+vs.t_patient_appointment_id+" " +
+                "Where vs." + vs.visit_begin_visit_time + " >='" + date + " 00:00:00' " +
+                "Order By vs.visit_begin_visit_time ";
+            dt = conn.selectData(conn.connEx, sql);
+
+            return dt;
+        }
         public DataTable selectCurrentVisit()
         {
             DataTable dt = new DataTable();

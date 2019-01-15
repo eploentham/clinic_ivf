@@ -84,7 +84,7 @@ namespace clinic_ivf.gui
             //throw new NotImplementedException();
             setGrfReq();
         }
-        private void setLabRequest(String pttName, String vn, String doctorId, String remark, String hn, String dobfemale)
+        private void setLabRequest(String pttName, String vn, String doctorId, String remark, String hn, String dobfemale, String reqid)
         {
             lbReq.req_id = "";
             lbReq.req_code = ic.ivfDB.copDB.genReqDoc();
@@ -115,6 +115,7 @@ namespace clinic_ivf.gui
             lbReq.hn_donor = "";
             lbReq.name_donor = "";
             lbReq.doctor_id = doctorId;
+            lbReq.request_id = reqid;
         }
         private void initGrfReq()
         {
@@ -337,7 +338,7 @@ namespace clinic_ivf.gui
             frm.ShowDialog(this);
             if (!ic.cStf.staff_id.Equals(""))
             {
-                setLabRequest(name, vn, dtrid, remark, hn, dobfemale);
+                setLabRequest(name, vn, dtrid, remark, hn, dobfemale, reqid);
                 String re = ic.ivfDB.lbReqDB.insertLabRequest(lbReq, "");
                 long chk1 = 0;
                 if (long.TryParse(re, out chk1))

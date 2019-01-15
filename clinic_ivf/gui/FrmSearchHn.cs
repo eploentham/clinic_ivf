@@ -28,13 +28,15 @@ namespace clinic_ivf.gui
         C1SuperTooltip stt;
         C1SuperErrorProvider sep;
         public enum StatusConnection {host, hostEx};
-        //public enum StatusSearch { NewProgram, hostEx };
+        public enum StatusSearch { PttSearch, DonorSearch };
         StatusConnection statusconn;
-        public FrmSearchHn(IvfControl ic, StatusConnection statusconn)
+        StatusSearch statussearch;
+        public FrmSearchHn(IvfControl ic, StatusConnection statusconn, StatusSearch statussearch)
         {
             InitializeComponent();
             this.ic = ic;
             this.statusconn = statusconn;
+            this.statussearch = statussearch;
             initConfig();
         }
         private void initConfig()
@@ -273,7 +275,14 @@ namespace clinic_ivf.gui
             }
             else
             {
-                dt = ic.ivfDB.vsOldDB.selectCurrentVisit(con.conn);
+                if (statusconn == StatusConnection.hostEx)
+                {
+                    dt = ic.ivfDB.vsDB.selectCurrentVisitEx();
+                }
+                else
+                {
+                    dt = ic.ivfDB.vsOldDB.selectCurrentVisit(con.conn);
+                }
             }
                 
             //con.CloseConnectionEx();
