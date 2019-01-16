@@ -185,7 +185,7 @@ namespace clinic_ivf.gui
             btnPrvSticker.Click += BtnPrvSticker_Click;
             btnSavePic.Click += BtnSavePic_Click;
             tC1.DoubleClick += TC1_DoubleClick;
-            btnVisit.Click += BtnVisit_Click;
+            btnVisit1.Click += BtnVisit_Click;
             txtHeight.KeyPress += TxtHeight_KeyPress;
             btnVoid.Click += BtnVoid_Click;
             chkOR.CheckedChanged += ChkOR_CheckedChanged;
