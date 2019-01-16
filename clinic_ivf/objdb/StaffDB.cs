@@ -192,7 +192,7 @@ namespace clinic_ivf.objdb
                 stf.status_admin + ", " + stf.status_module_reception + "," + stf.status_module_nurse + "," +
                 stf.status_module_doctor + "," +
                 stf.status_expense_appv + "," + stf.status_expense_draw + "," + stf.status_expense_pay + ", " +
-                stf.status_module_pharmacy + "," + stf.status_module_lab + " "  +
+                stf.status_module_pharmacy + "," + stf.status_module_lab + ","  + stf.dept_id + " " +
                 ") " +
                 "Values ('" + p.staff_code + "','" + p.username + "','" + p.prefix_id + "'," +
                 "'" + p.staff_fname_t.Replace("'", "''") + "','" + p.staff_fname_e.Replace("'", "''") + "','" + p.password1 + "'," +
@@ -206,7 +206,7 @@ namespace clinic_ivf.objdb
                 "'" + p.status_admin + "','" + p.status_module_reception + "','" + p.status_module_nurse.Replace("'", "''") + "'," +
                 "'" + p.status_module_doctor.Replace("'", "''") + "'," +
                 "'" + p.status_expense_appv + "','" + p.status_expense_draw + "','" + p.status_expense_pay.Replace("'", "''") + "'," +
-                "'" + p.status_module_pharmacy + "','" + p.status_module_lab + "' " + 
+                "'" + p.status_module_pharmacy + "','" + p.status_module_lab + "','" + p.dept_id + "' " +
                 ")";
             try
             {
@@ -555,7 +555,7 @@ namespace clinic_ivf.objdb
                 stf1.user_cancel = dt.Rows[0][stf.user_cancel].ToString();
                 stf1.pid = dt.Rows[0][stf.pid].ToString();
                 stf1.logo = dt.Rows[0][stf.logo].ToString();
-                stf1.posi_id = dt.Rows[0][stf.posi_id].ToString();
+                //stf1.posi_id = dt.Rows[0][stf.posi_id].ToString();
                 stf1.dept_id = dt.Rows[0][stf.dept_id].ToString();
                 stf1.dept_name = dt.Rows[0][stf.dept_name].ToString();
                 stf1.prefix_name_t = dt.Rows[0]["patient_prefix_description"] != null ? dt.Rows[0]["patient_prefix_description"].ToString():"";
