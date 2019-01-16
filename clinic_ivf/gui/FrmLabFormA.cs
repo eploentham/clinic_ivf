@@ -123,7 +123,7 @@ namespace clinic_ivf.gui
             lFormA.embryo_tranfer_fresh_cycle = chkEmbryoTranfer.Checked ? chkEmbryoTranferFresh.Checked ? "1" : "2" : "0";
             lFormA.embryo_tranfer_frozen_cycle = "";
             lFormA.status_embryo_freezing = chkEmbryoFreezing.Checked ? "1" : "0";
-            lFormA.embryo_freezing_day = chkEmbryoFreezing.Checked ? chkEmbryoFreezingDay1.Checked ? "1" : chkEmbryoFreezingDay3.Checked ? "3" : "5" : "0";
+            lFormA.embryo_freezing_day = chkEmbryoFreezing.Checked ? chkEmbryoFreezingDay1.Checked ? "1" : chkEmbryoFreezingDay3.Checked ? "3" : chkEmbryoFreezingDay2.Checked ? "2" : "5" : "0";
             lFormA.embryo_tranfer_date =  ic.datetoDB(txtEmbryoTranferDate.Text);
             lFormA.status_et_no_to_tranfer = chkETNotoTranfer.Checked ? "1" : "0";
             lFormA.status_fet = chkFET.Checked ? "1" : "0";
@@ -206,16 +206,15 @@ namespace clinic_ivf.gui
                     MessageBox.Show("กรุณาเลือก Embryo Tranfer", "");
                     return;
                 }
-                if (chkEmbryoFreezing.Checked && chkEmbryoFreezingDay1.Checked == false && chkEmbryoFreezingDay3.Checked == false && chkEmbryoFreezingDay5.Checked == false)
+                if (chkEmbryoFreezing.Checked && chkEmbryoFreezingDay1.Checked == false && chkEmbryoFreezingDay2.Checked == false && chkEmbryoFreezingDay3.Checked == false && chkEmbryoFreezingDay5.Checked == false)
                 {
                     MessageBox.Show("กรุณาเลือก Embryo Freezing", "");
                     return;
                 }
                 if (chkFreshSprem.Checked && txtFreshSpermColTime.Text.Equals("") && txtFreshSpermEndTime.Text.Equals(""))
                 {
-                    
                     MessageBox.Show("กรุณาเลือก Fresh Sperm", "");
-                    return;
+                    //return;
                 }
                 ic.cStf.staff_id = "";
                 FrmPasswordConfirm frm = new FrmPasswordConfirm(ic);
@@ -345,6 +344,7 @@ namespace clinic_ivf.gui
             chkEmbryoFreezingDay1.Checked = lFormA.embryo_freezing_day.Equals("1") ? true : false;
             chkEmbryoFreezingDay3.Checked = lFormA.embryo_freezing_day.Equals("3") ? true : false;
             chkEmbryoFreezingDay5.Checked = lFormA.embryo_freezing_day.Equals("5") ? true : false;
+            chkEmbryoFreezingDay2.Checked = lFormA.embryo_freezing_day.Equals("2") ? true : false;
 
             txtEmbryoTranferDate.Value = lFormA.embryo_tranfer_date;
             chkETNotoTranfer.Checked = lFormA.status_et_no_to_tranfer.Equals("1") ? true : false;

@@ -191,7 +191,7 @@ namespace clinic_ivf.gui
                 vol = "0" + row["opu_embryo_dev_no"].ToString();
                 vol = vol.Substring(vol.Length - 2);
                 col = col + vol;
-                dt.Rows[0][col] = j+". "+row["desc0"].ToString();
+                dt.Rows[0][col] = j+". "+row["desc0"].ToString()+" " + row["desc1"].ToString();
                 stfid = row["staff_id"].ToString();
                 checkedid = row["checked_id"].ToString();
                 embryodevdate = row["embryo_dev_date"].ToString();
@@ -203,7 +203,8 @@ namespace clinic_ivf.gui
             dt.Columns.Remove("embryo_for_et_embryologist_id");
             dt.Columns.Add("embryo_for_et_embryologist_id", typeof(String));
             dt.Rows[0]["embryo_for_et_embryologist_id"] = ic.ivfDB.stfDB.getStaffNameBylStf(etName);
-            dt.Rows[0]["embryo_dev_0_date"] = ic.datetimetoShow(embryodevdate);
+            //dt.Rows[0]["embryo_dev_0_date"] = ic.datetimetoShow(embryodevdate);
+            dt.Rows[0]["embryo_dev_0_date"] = ic.datetoShow(embryodevdate);
             j = 1;
             if (!chkEmbryoDev20.Checked && dtdev2.Rows.Count > 0)
             {
@@ -225,7 +226,7 @@ namespace clinic_ivf.gui
             }
             dt.Rows[0]["embryo_dev_1_staff_name"] = ic.ivfDB.stfDB.getStaffNameBylStf(stfid);
             dt.Rows[0]["embryo_dev_1_checked_name"] = ic.ivfDB.stfDB.getStaffNameBylStf(checkedid);
-            dt.Rows[0]["embryo_dev_1_date"] = ic.datetimetoShow(embryodevdate);
+            dt.Rows[0]["embryo_dev_1_date"] = ic.datetoShow(embryodevdate);
             String date1 = "";
             date1 = ic.datetoShow(dt.Rows[0][ic.ivfDB.opuDB.opu.dob_female].ToString());
             dt.Rows[0][ic.ivfDB.opuDB.opu.dob_female] = date1;
@@ -341,7 +342,9 @@ namespace clinic_ivf.gui
                         frmW.pB.Value = i;
                     }
                 }
-
+                String date1 = "";
+                date1 = ic.datetoShow(dt.Rows[0][ic.ivfDB.opuDB.opu.opu_date].ToString());
+                dt.Rows[0][ic.ivfDB.opuDB.opu.opu_date] = date1;
                 frm.setOPUEmbryoDevReport(dt);
 
             }
