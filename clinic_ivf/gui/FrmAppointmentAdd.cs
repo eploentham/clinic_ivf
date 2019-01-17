@@ -115,6 +115,10 @@ namespace clinic_ivf.gui
             dt = ic.ivfDB.pApmDB.selectAppointmentByPk(txtID.Text);
             dtOld = ic.ivfDB.pApmOldDB.selectAppointmentByPk(txtID.Text);
 
+            String date1 = "";
+            date1 = ic.datetoShow(dt.Rows[0][ic.ivfDB.pApmDB.pApm.patient_appointment_date].ToString());
+            dt.Rows[0][ic.ivfDB.pApmDB.pApm.patient_appointment_date] = date1;
+
             frm.setAppointmentPatient(dt);
             frm.ShowDialog(this);
         }
@@ -131,6 +135,7 @@ namespace clinic_ivf.gui
             //throw new NotImplementedException();
             cboOPUTimeDonor.Enabled = chkOPUDonor.Checked ? true : false;
             cboDtrAnes.Enabled = chkOPUDonor.Checked ? true : false;
+            
         }
 
         private void ChkOther_CheckedChanged(object sender, EventArgs e)
@@ -225,6 +230,10 @@ namespace clinic_ivf.gui
             //throw new NotImplementedException();
             txtOPURemark.Enabled = chkOPU.Checked ? true : false;
             cboOPUTime.Enabled = chkOPU.Checked ? true : false;
+            if (chkOPU.Checked)
+            {
+                txtRemarkpApm.Value = "Not Allow to drink or eat from (งดน้ำ งดอาหาร ตั้งแต่เวลา)";
+            }
         }
 
         private void BtnVoid_Click(object sender, EventArgs e)
@@ -447,6 +456,17 @@ namespace clinic_ivf.gui
             txtTvsDay.Enabled = chkTvs.Checked ? true : false;
             ic.setC1Combo(cboTvsTime, pApm.tvs_time);
             ic.setC1Combo(cboOPUTime, pApm.opu_time);
+            chkHormoneTest.Checked = pApm.hormone_test.Equals("1") ? true : false;
+            chkHCG.Checked = pApm.beta_hgc.Equals("1") ? true : false;
+            chkOther.Checked = pApm.other.Equals("1") ? true : false;
+            txtOther.Value = pApm.other_remark;
+            ic.setC1Combo(cboETTime, pApm.et_time);
+            ic.setC1Combo(cboFETTime, pApm.fet_time);
+            ic.setC1Combo(cboOPUTime, pApm.opu_time);
+            ic.setC1Combo(cboTvsTime, pApm.tvs_time);
+            txtTvsDay.Value = pApm.tvs_day;
+            //chkOPU
+
             ChkTvs_CheckedChanged(null, null);
             ChkOPU_CheckedChanged(null, null);
             ChkFET_CheckedChanged(null, null);
@@ -461,6 +481,11 @@ namespace clinic_ivf.gui
             txtName.Value = pttO.FullName;
 
             txtOPURemark.Value = "Not Allow to drink or eat from (งดน้ำ งดอาหาร ตั้งแต่เวลา)";
+
+            if (pApm.patient_appointment_servicepoint.Equals("") && cboBsp.Items.Count>3)
+            {
+                cboBsp.SelectedIndex = 3;
+            }
             PatientImage pttI = new PatientImage();
             pttI = ic.ivfDB.pttImgDB.selectByPttIDStatus4(txtID.Text);
             filenamepic = pttI.image_path;
@@ -653,6 +678,14 @@ namespace clinic_ivf.gui
             DataTable dt = new DataTable();
 
             dt = ic.ivfDB.pApmDB.selectByVisitId(vsId);
+            if(dt.Rows.Count <= 0)
+            {
+                VisitOld vsOld = new VisitOld();
+                vsOld = ic.ivfDB.vsOldDB.selectByPk1(vsId);
+                Patient ptt = new Patient();
+                ptt = ic.ivfDB.pttDB.selectByIdOld(vsOld.PID);
+                dt = ic.ivfDB.pApmDB.selectByPtt(ptt.t_patient_id);
+            }
 
             //grfExpn.Rows.Count = dt.Rows.Count + 1;
             grfpApmVisit.Rows.Count = 1;
@@ -921,6 +954,9 @@ namespace clinic_ivf.gui
             pApmO.OtherRemark = txtOther.Text;
             pApmO.Status = "1";
             pApmO.OPURemark = txtOPURemark.Text;
+            pApmO.PatientName = txtName.Text;
+            pApmO.PName = txtName.Text;
+            pApmO.PSurname = ptt.patient_firstname_e;
         }
         private Boolean setPatientAppointment()
         {
@@ -997,6 +1033,10 @@ namespace clinic_ivf.gui
             pApm.et_time = cboETTime.Text;
             pApm.fet_time = cboFETTime.Text;
             pApm.sperm_collect = chkSperm.Checked ? "1" : "0";
+            pApm.other = chkOther.Checked ? "1" : "0";
+            pApm.other_remark = txtOther.Text;
+            pApm.et = chkET.Checked ? "1" : "0";
+            //pApm.opu = chkET.Checked ? "1" : "0";
             return chk;
         }
         private void FrmAppointmentAdd_Load(object sender, EventArgs e)

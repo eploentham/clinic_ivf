@@ -154,6 +154,10 @@
             this.txtNickName1 = new C1.Win.C1Input.C1TextBox();
             this.panel2 = new System.Windows.Forms.Panel();
             this.picImg = new C1.Win.C1Input.C1PictureBox();
+            this.txtHnMale = new C1.Win.C1Input.C1TextBox();
+            this.label44 = new System.Windows.Forms.Label();
+            this.btnHnMaleSearch = new C1.Win.C1Input.C1Button();
+            this.label45 = new System.Windows.Forms.Label();
             this.sB.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.theme1)).BeginInit();
             this.groupBox1.SuspendLayout();
@@ -233,6 +237,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtNickName1)).BeginInit();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picImg)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtHnMale)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnHnMaleSearch)).BeginInit();
             this.SuspendLayout();
             // 
             // sB
@@ -506,6 +512,10 @@
             // groupBox2
             // 
             this.groupBox2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.groupBox2.Controls.Add(this.label45);
+            this.groupBox2.Controls.Add(this.btnHnMaleSearch);
+            this.groupBox2.Controls.Add(this.label44);
+            this.groupBox2.Controls.Add(this.txtHnMale);
             this.groupBox2.Controls.Add(this.txtPttO);
             this.groupBox2.Controls.Add(this.label43);
             this.groupBox2.Controls.Add(this.label42);
@@ -548,7 +558,7 @@
             this.txtPttO.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtPttO.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
             this.txtPttO.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.txtPttO.Location = new System.Drawing.Point(388, 19);
+            this.txtPttO.Location = new System.Drawing.Point(354, 19);
             this.txtPttO.Name = "txtPttO";
             this.txtPttO.Size = new System.Drawing.Size(30, 20);
             this.txtPttO.TabIndex = 714;
@@ -820,7 +830,7 @@
             this.txtIdOld.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtIdOld.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
             this.txtIdOld.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.txtIdOld.Location = new System.Drawing.Point(347, 19);
+            this.txtIdOld.Location = new System.Drawing.Point(329, 19);
             this.txtIdOld.Name = "txtIdOld";
             this.txtIdOld.Size = new System.Drawing.Size(30, 20);
             this.txtIdOld.TabIndex = 675;
@@ -834,7 +844,7 @@
             this.txtPttId.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtPttId.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
             this.txtPttId.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.txtPttId.Location = new System.Drawing.Point(311, 19);
+            this.txtPttId.Location = new System.Drawing.Point(300, 19);
             this.txtPttId.Name = "txtPttId";
             this.txtPttId.Size = new System.Drawing.Size(30, 20);
             this.txtPttId.TabIndex = 648;
@@ -2177,6 +2187,56 @@
             this.picImg.TabIndex = 2;
             this.picImg.TabStop = false;
             // 
+            // txtHnMale
+            // 
+            this.txtHnMale.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtHnMale.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
+            this.txtHnMale.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.txtHnMale.Location = new System.Drawing.Point(457, 19);
+            this.txtHnMale.Name = "txtHnMale";
+            this.txtHnMale.Size = new System.Drawing.Size(141, 20);
+            this.txtHnMale.TabIndex = 715;
+            this.txtHnMale.Tag = null;
+            this.theme1.SetTheme(this.txtHnMale, "(default)");
+            this.txtHnMale.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            // 
+            // label44
+            // 
+            this.label44.AutoSize = true;
+            this.label44.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.label44.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label44.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.label44.Location = new System.Drawing.Point(377, 21);
+            this.label44.Name = "label44";
+            this.label44.Size = new System.Drawing.Size(67, 16);
+            this.label44.TabIndex = 716;
+            this.label44.Text = "HN male :";
+            this.theme1.SetTheme(this.label44, "(default)");
+            // 
+            // btnHnMaleSearch
+            // 
+            this.btnHnMaleSearch.Location = new System.Drawing.Point(604, 18);
+            this.btnHnMaleSearch.Name = "btnHnMaleSearch";
+            this.btnHnMaleSearch.Size = new System.Drawing.Size(28, 23);
+            this.btnHnMaleSearch.TabIndex = 717;
+            this.btnHnMaleSearch.Text = "...";
+            this.theme1.SetTheme(this.btnHnMaleSearch, "(default)");
+            this.btnHnMaleSearch.UseVisualStyleBackColor = true;
+            this.btnHnMaleSearch.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            // 
+            // label45
+            // 
+            this.label45.AutoSize = true;
+            this.label45.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.label45.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label45.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.label45.Location = new System.Drawing.Point(639, 21);
+            this.label45.Name = "label45";
+            this.label45.Size = new System.Drawing.Size(11, 16);
+            this.label45.TabIndex = 718;
+            this.label45.Text = ".";
+            this.theme1.SetTheme(this.label45, "(default)");
+            // 
             // FrmVisitAdd
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -2273,6 +2333,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtNickName1)).EndInit();
             this.panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.picImg)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtHnMale)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnHnMaleSearch)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -2406,5 +2468,9 @@
         private System.Windows.Forms.Label label43;
         private C1.Win.C1Input.C1TextBox txtAllergy;
         private C1.Win.C1Input.C1TextBox txtPttO;
+        private System.Windows.Forms.Label label45;
+        private C1.Win.C1Input.C1Button btnHnMaleSearch;
+        private System.Windows.Forms.Label label44;
+        private C1.Win.C1Input.C1TextBox txtHnMale;
     }
 }

@@ -82,6 +82,8 @@ namespace clinic_ivf.objdb
             lformA.dob_donor = "dob_donor";
             lformA.dob_female = "dob_female";
             lformA.dob_male = "dob_male";
+            lformA.y_selection = "y_selection";
+            lformA.x_selection = "x_selection";
 
             lformA.pkField = "form_a_id";
             lformA.table = "lab_t_form_a";
@@ -148,8 +150,8 @@ namespace clinic_ivf.objdb
             p.dob_donor = p.dob_donor == null ? "" : p.dob_donor;
             p.dob_female = p.dob_female == null ? "" : p.dob_female;
             p.dob_male = p.dob_male == null ? "" : p.dob_male;
-            //p.lt_ovary = p.lt_ovary == null ? "" : p.lt_ovary;
-            //p.fsh = p.fsh == null ? "0" : p.fsh;
+            p.y_selection = p.y_selection == null ? "0" : p.y_selection;
+            p.x_selection = p.x_selection == null ? "0" : p.x_selection;
             //p.tvs = p.tvs == null ? "0" : p.tvs;
             //p.repeat_e2 = p.e2 == null ? "0" : p.repeat_e2;
             //p.repeat_prl = p.repeat_prl == null ? "0" : p.repeat_prl;
@@ -239,6 +241,8 @@ namespace clinic_ivf.objdb
                     "," + lformA.dob_donor + "='" + p.dob_donor + "' " +
                     "," + lformA.dob_female + "='" + p.dob_female + "' " +
                     "," + lformA.dob_male + "='" + p.dob_male + "' " +
+                    "," + lformA.y_selection + "='" + p.y_selection + "' " +
+                    "," + lformA.x_selection + "='" + p.x_selection + "' " +
                     "";
                 re = conn.ExecuteNonQuery(conn.conn, sql);
             }
@@ -314,6 +318,8 @@ namespace clinic_ivf.objdb
                     "," + lformA.dob_donor + "='" + p.dob_donor + "' " +
                     "," + lformA.dob_female + "='" + p.dob_female + "' " +
                     "," + lformA.dob_male + "='" + p.dob_male + "' " +
+                    "," + lformA.y_selection + "='" + p.y_selection + "' " +
+                    "," + lformA.x_selection + "='" + p.x_selection + "' " +
                 " Where " + lformA.pkField + " = '" + p.form_a_id + "' "
                 ;
             try
@@ -484,6 +490,8 @@ namespace clinic_ivf.objdb
                 vs1.dob_donor = dt.Rows[0][lformA.dob_donor].ToString();
                 vs1.dob_female = dt.Rows[0][lformA.dob_female].ToString();
                 vs1.dob_male = dt.Rows[0][lformA.dob_male].ToString();
+                vs1.y_selection = dt.Rows[0][lformA.y_selection].ToString();
+                vs1.x_selection = dt.Rows[0][lformA.x_selection].ToString();
             }
             else
             {
@@ -553,6 +561,8 @@ namespace clinic_ivf.objdb
             lforma1.dob_donor = "";
             lforma1.dob_female = "";
             lforma1.dob_male = "";
+            lforma1.y_selection = "";
+            lforma1.x_selection = "";
             return lforma1;
         }
     }

@@ -68,5 +68,7 @@ namespace clinic_ivf.object1
         public String dob_donor { get; set; }
         public String dob_female { get; set; }
         public String dob_male { get; set; }
+        public String y_selection { get; set; }
+        public String x_selection { get; set; }
     }
 }

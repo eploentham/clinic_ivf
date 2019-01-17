@@ -121,6 +121,7 @@ namespace clinic_ivf.objdb
             vs.bw = "bw";
             vs.pulse = "pulse";
             vs.status_nurse = "status_nurse";
+            vs.patient_hn_male = "patient_hn_male";
 
             vs.table = "t_visit";
             vs.pkField = "t_visit_id";
@@ -178,7 +179,7 @@ namespace clinic_ivf.objdb
             p.visit_ipd_staff_reverse = p.visit_ipd_staff_reverse == null ? "" : p.visit_ipd_staff_reverse;
             p.visit_ipd_discharge_date_time = p.visit_ipd_discharge_date_time == null ? "" : p.visit_ipd_discharge_date_time;
             p.visit_ipd_staff_discharge = p.visit_ipd_staff_discharge == null ? "" : p.visit_ipd_staff_discharge;
-            //p.f_visit_service_type_id = p.f_visit_service_type_id == null ? "" : p.f_visit_service_type_id;
+            p.patient_hn_male = p.patient_hn_male == null ? "" : p.patient_hn_male;
             p.other_transportation = p.other_transportation == null ? "" : p.other_transportation;
             //p.f_transportation_type_id = p.f_transportation_type_id == null ? "" : p.f_transportation_type_id;
             //p.f_trama_status_id = p.f_trama_status_id == null ? "" : p.f_trama_status_id;
@@ -330,6 +331,7 @@ namespace clinic_ivf.objdb
                     "," + vs.bw + "='" + p.bw + "' " +
                     "," + vs.pulse + "='" + p.pulse + "' " +
                     "," + vs.status_nurse + "='" + p.status_nurse + "' " +
+                    "," + vs.patient_hn_male + "='" + p.patient_hn_male + "' " +
                     "";
                 re = conn.ExecuteNonQuery(conn.conn, sql);
             }
@@ -695,6 +697,7 @@ namespace clinic_ivf.objdb
                 vs1.bw = dt.Rows[0][vs.bw].ToString();
                 vs1.pulse = dt.Rows[0][vs.pulse].ToString();
                 vs1.status_nurse = dt.Rows[0][vs.status_nurse].ToString();
+                vs1.patient_hn_male = dt.Rows[0][vs.patient_hn_male].ToString();
             }
             else
             {
@@ -804,6 +807,7 @@ namespace clinic_ivf.objdb
             stf1.bw = "";
             stf1.pulse = "";
             stf1.status_nurse = "";
+            stf1.patient_hn_male = "";
             return stf1;
         }
     }

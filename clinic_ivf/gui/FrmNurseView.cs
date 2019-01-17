@@ -57,7 +57,8 @@ namespace clinic_ivf.gui
             txtDateStart.Value = System.DateTime.Now.Year + "-" + System.DateTime.Now.ToString("MM-dd");
             //btnNew.Click += BtnNew_Click;
             txtSearch.KeyUp += TxtSearch_KeyUp;
-            txtDateStart.ValueChanged += TxtDateStart_ValueChanged;
+            //txtDateStart.ValueChanged += TxtDateStart_ValueChanged;
+            txtDateStart.DropDownClosed += TxtDateStart_DropDownClosed;
             tC.SelectedTabChanged += TC_SelectedTabChanged;
 
             initGrfQue();
@@ -65,6 +66,13 @@ namespace clinic_ivf.gui
             initGrfDiag();
             setGrfDiag("");
             initGrfFinish();
+            setGrfFinish();
+        }
+
+        private void TxtDateStart_DropDownClosed(object sender, DropDownClosedEventArgs e)
+        {
+            //throw new NotImplementedException();
+            setGrfQue();
             setGrfFinish();
         }
 
@@ -79,12 +87,13 @@ namespace clinic_ivf.gui
             }
         }
 
-        private void TxtDateStart_ValueChanged(object sender, EventArgs e)
-        {
-            //throw new NotImplementedException();
-            setGrfQue();
-            setGrfFinish();
-        }
+        //private void TxtDateStart_ValueChanged(object sender, EventArgs e)
+        //{
+        //    //throw new NotImplementedException();
+        //    //txtDateStart.Text
+        //    setGrfQue();
+        //    setGrfFinish();
+        //}
 
         private void TxtSearch_KeyUp(object sender, KeyEventArgs e)
         {
@@ -570,8 +579,10 @@ namespace clinic_ivf.gui
             DataTable dt = new DataTable();
             if (search.Equals(""))
             {
-                //String date = System.DateTime.Now.Year + "-" + System.DateTime.Now.ToString("MM-dd");
-                dt = ic.ivfDB.vsOldDB.selectByStatusNurseWaiting();
+                String date = "";
+                DateTime dt11 = DateTime.Parse(txtDateStart.Text);
+                date = dt11.Year + "-" + dt11.ToString("MM-dd");
+                dt = ic.ivfDB.vsOldDB.selectByDate(date);
             }
             else
             {
@@ -634,10 +645,17 @@ namespace clinic_ivf.gui
                 grfQue[i, colVsEtime] = row["VEndTime"].ToString();
                 grfQue[i, colStatus] = row["VName"].ToString();
                 grfQue[i, colPttId] = row["PID"].ToString();
+                if (!row[ic.ivfDB.vsOldDB.vsold.form_a_id].ToString().Equals("0"))
+                {
+                    CellNote note = new CellNote("ส่ง Lab Request Foam A");
+                    CellRange rg = grfQue.GetCellRange(i, colVN);
+                    rg.UserData = note;
+                }
                 //if (i % 2 == 0)
                 //    grfPtt.Rows[i].StyleNew.BackColor = color;
                 i++;
             }
+            CellNoteManager mgr = new CellNoteManager(grfQue);
             grfQue.Cols[colID].Visible = false;
             //theme1.SetTheme(grfQue, ic.theme);
 
@@ -683,7 +701,7 @@ namespace clinic_ivf.gui
         private void ContextMenu_NO_Apm_Ptt(object sender, System.EventArgs e)
         {
             String chk = "", name = "", vsid = "", pttId = "";
-
+            if (grfQue.Row < 0) return;
             vsid = grfQue[grfQue.Row, colID] != null ? grfQue[grfQue.Row, colID].ToString() : "";
             pttId = grfQue[grfQue.Row, colPttId] != null ? grfQue[grfQue.Row, colPttId].ToString() : "";
             chk = grfQue[grfQue.Row, colPttHn] != null ? grfQue[grfQue.Row, colPttHn].ToString() : "";
@@ -704,7 +722,7 @@ namespace clinic_ivf.gui
         private void ContextMenu_LAB_req_formA_Ptt_finish(object sender, System.EventArgs e)
         {
             String chk = "", name = "", vsid = "", pttId = "";
-
+            if (grfFinish.Row < 0) return;
             vsid = grfFinish[grfFinish.Row, colID] != null ? grfFinish[grfFinish.Row, colID].ToString() : "";
             pttId = grfFinish[grfFinish.Row, colPttId] != null ? grfFinish[grfFinish.Row, colPttId].ToString() : "";
             chk = grfFinish[grfFinish.Row, colPttHn] != null ? grfFinish[grfFinish.Row, colPttHn].ToString() : "";
@@ -723,7 +741,7 @@ namespace clinic_ivf.gui
         private void ContextMenu_LAB_req_formA_Ptt(object sender, System.EventArgs e)
         {
             String chk = "", name = "", vsid = "", pttId = "";
-
+            if (grfQue.Row < 0) return;
             vsid = grfQue[grfQue.Row, colID] != null ? grfQue[grfQue.Row, colID].ToString() : "";
             pttId = grfQue[grfQue.Row, colPttId] != null ? grfQue[grfQue.Row, colPttId].ToString() : "";
             chk = grfQue[grfQue.Row, colPttHn] != null ? grfQue[grfQue.Row, colPttHn].ToString() : "";
@@ -735,6 +753,7 @@ namespace clinic_ivf.gui
             {
                 FrmLabFormA frm = new FrmLabFormA(ic,"", pttId, "", vsid);
                 frm.ShowDialog(this);
+                setGrfQue();
                 //grfReq.Rows.Remove(grfReq.Row);
                 //openPatientAdd(id, name);
             }
@@ -797,7 +816,7 @@ namespace clinic_ivf.gui
         private void ContextMenu_Apm_Ptt(object sender, System.EventArgs e)
         {
             String chk = "", name = "", vsid = "", pttId = "";
-
+            if (grfQue.Row < 0) return;
             vsid = grfQue[grfQue.Row, colID] != null ? grfQue[grfQue.Row, colID].ToString() : "";
             pttId = grfQue[grfQue.Row, colPttId] != null ? grfQue[grfQue.Row, colPttId].ToString() : "";
             chk = grfQue[grfQue.Row, colPttHn] != null ? grfQue[grfQue.Row, colPttHn].ToString() : "";

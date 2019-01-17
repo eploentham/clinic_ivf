@@ -81,6 +81,33 @@ namespace clinic_ivf.gui
             FrmReport frm = new FrmReport(ic);
             DataTable dt = new DataTable();
             dt = ic.ivfDB.lFormaDB.selectReportByPk(txtID.Text);
+            String date1 = "";
+            date1 = ic.datetoShow(dt.Rows[0][ic.ivfDB.lFormaDB.lformA.opu_date].ToString());
+            dt.Rows[0][ic.ivfDB.lFormaDB.lformA.opu_date] = date1;
+            date1 = ic.datetoShow(dt.Rows[0][ic.ivfDB.lFormaDB.lformA.embryo_freezing_day].ToString());
+            dt.Rows[0][ic.ivfDB.lFormaDB.lformA.embryo_freezing_day] = date1;
+            date1 = ic.datetoShow(dt.Rows[0][ic.ivfDB.lFormaDB.lformA.embryo_tranfer_date].ToString());
+            dt.Rows[0][ic.ivfDB.lFormaDB.lformA.embryo_tranfer_date] = date1;
+            date1 = ic.datetoShow(dt.Rows[0][ic.ivfDB.lFormaDB.lformA.fet1_no_date_freezing].ToString());
+            dt.Rows[0][ic.ivfDB.lFormaDB.lformA.fet1_no_date_freezing] = date1;
+            date1 = ic.datetoShow(dt.Rows[0][ic.ivfDB.lFormaDB.lformA.dob_male].ToString());
+            dt.Rows[0][ic.ivfDB.lFormaDB.lformA.dob_male] = date1;
+            date1 = ic.datetoShow(dt.Rows[0][ic.ivfDB.lFormaDB.lformA.dob_female].ToString());
+            dt.Rows[0][ic.ivfDB.lFormaDB.lformA.dob_female] = date1;
+            date1 = ic.datetoShow(dt.Rows[0][ic.ivfDB.lFormaDB.lformA.spern_freezing_date_start].ToString());
+            dt.Rows[0][ic.ivfDB.lFormaDB.lformA.spern_freezing_date_start] = date1;
+            date1 = ic.datetoShow(dt.Rows[0][ic.ivfDB.lFormaDB.lformA.spern_freezing_date_end].ToString());
+            dt.Rows[0][ic.ivfDB.lFormaDB.lformA.spern_freezing_date_end] = date1;
+            date1 = ic.datetoShow(dt.Rows[0][ic.ivfDB.lFormaDB.lformA.iui_date].ToString());
+            dt.Rows[0][ic.ivfDB.lFormaDB.lformA.iui_date] = date1;
+            date1 = ic.datetoShow(dt.Rows[0][ic.ivfDB.lFormaDB.lformA.pasa_tese_date].ToString());
+            dt.Rows[0][ic.ivfDB.lFormaDB.lformA.pasa_tese_date] = date1;
+            date1 = ic.datetoShow(dt.Rows[0][ic.ivfDB.lFormaDB.lformA.sperm_analysis_date_start].ToString());
+            dt.Rows[0][ic.ivfDB.lFormaDB.lformA.sperm_analysis_date_start] = date1;
+            date1 = ic.datetoShow(dt.Rows[0][ic.ivfDB.lFormaDB.lformA.sperm_analysis_date_end].ToString());
+            dt.Rows[0][ic.ivfDB.lFormaDB.lformA.sperm_analysis_date_end] = date1;
+            date1 = ic.datetoShow(dt.Rows[0][ic.ivfDB.lFormaDB.lformA.fet_no_date_freezing].ToString());
+            dt.Rows[0][ic.ivfDB.lFormaDB.lformA.fet_no_date_freezing] = date1;
 
             frm.setLabFormAReport(dt);
             frm.ShowDialog(this);
@@ -167,6 +194,8 @@ namespace clinic_ivf.gui
             lFormA.dob_donor = ic.datetoDB(txtDonorDob.Text);
             lFormA.dob_female = ic.datetoDB(txtDobFeMale.Text);
             lFormA.dob_male = ic.datetoDB(txtDobMale.Text);
+            lFormA.y_selection = chkYselet.Checked ? "1" : "0";
+            lFormA.x_selection = chkXselet.Checked ? "1" : "0";
         }
         private void BtnSave_Click(object sender, EventArgs e)
         {
@@ -184,12 +213,10 @@ namespace clinic_ivf.gui
                 if (long.TryParse(re, out chk))
                 {
                     txtID.Value = txtID.Text.Equals("") ? re : txtID.Text;
-                    
+                    ic.ivfDB.vsOldDB.updateFormA(txtVnOld.Text, txtID.Text);
                     //txtID.Value = re;
                     btnSave.Text = "Save";
                     btnSave.Image = Resources.accept_database24;
-                    
-
                     System.Threading.Thread.Sleep(500);
                     
                 }
@@ -301,12 +328,26 @@ namespace clinic_ivf.gui
                     if (ptt.t_patient_id.Equals(""))
                     {
                         PatientOld pttO = new PatientOld();
+                        Visit vs = new Visit();
+                        Patient pttD = new Patient();
                         pttO = ic.ivfDB.pttOldDB.selectByPk1(pttid);
+                        vs = ic.ivfDB.vsDB.selectByPk1(vsid);
+                        
                         txtHnFeMale.Value = pttO.PIDS;
                         txtNameFeMale.Value = pttO.FullName;
                         txtDobFeMale.Value = pttO.DateOfBirth;
                         txtHnOld.Value = pttO.PIDS;
                         txtVnOld.Value = vsidOld;
+                        if (!vs.patient_hn_1.Equals(""))
+                        {
+                            pttD = ic.ivfDB.pttDB.selectExByPk1(vs.patient_hn_1);
+                            txtHnDonor.Value = vs.patient_hn_1;
+                            txtNameDonor.Value = pttD.patient_firstname_e + " " + pttD.patient_lastname_e;
+                        }
+                        else
+                        {
+
+                        }
                     }
                 }
             }
@@ -380,6 +421,8 @@ namespace clinic_ivf.gui
             txtDonorDob.Value = lFormA.dob_donor;
             txtDobFeMale.Value = lFormA.dob_female;
             txtDobMale.Value = lFormA.dob_male;
+            chkYselet.Checked = lFormA.y_selection.Equals("1") ? true : false;
+            chkXselet.Checked = lFormA.x_selection.Equals("1") ? true : false;
         }
         private void FrmLabOPUReq_Load(object sender, EventArgs e)
         {

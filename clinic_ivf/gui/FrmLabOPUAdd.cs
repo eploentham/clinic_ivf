@@ -3377,17 +3377,17 @@ namespace clinic_ivf.gui
             grfDay5.Cols.Count = 7;
             C1TextBox txt = new C1TextBox();
             C1ComboBox cboday5 = new C1ComboBox();
-            C1ComboBox cboday3desc1 = new C1ComboBox();
+            C1ComboBox cboday5desc1 = new C1ComboBox();
             cboday5.AutoCompleteMode = AutoCompleteMode.Suggest;
             cboday5.AutoCompleteSource = AutoCompleteSource.ListItems;
-            cboday3desc1.AutoCompleteMode = AutoCompleteMode.Suggest;
-            cboday3desc1.AutoCompleteSource = AutoCompleteSource.ListItems;
+            cboday5desc1.AutoCompleteMode = AutoCompleteMode.Suggest;
+            cboday5desc1.AutoCompleteSource = AutoCompleteSource.ListItems;
             ic.ivfDB.fdtDB.setCboOPUStageDay5(cboday5, "");
-            ic.ivfDB.fdtDB.setCboOPUStageDay3Desc1(cboday3desc1, "");
+            ic.ivfDB.fdtDB.setCboOPUStageDay5Desc1(cboday5desc1, "");
             grfDay5.Cols[colDay5ID].Editor = txt;
             grfDay5.Cols[colDay5Num].Editor = txt;
             grfDay5.Cols[colDay5Desc].Editor = cboday5;
-            grfDay5.Cols[colDay5Desc1].Editor = cboday3desc1;
+            grfDay5.Cols[colDay5Desc1].Editor = cboday5desc1;
             grfDay5.Cols[colDay5Desc2].Editor = txt;
 
             grfDay5.Cols[colDay5Num].Width = 40;
@@ -3441,17 +3441,17 @@ namespace clinic_ivf.gui
             grfDay6.Cols.Count = 7;
             C1TextBox txt = new C1TextBox();
             C1ComboBox cboday5 = new C1ComboBox();
-            C1ComboBox cboday3desc1 = new C1ComboBox();
+            C1ComboBox cboday5desc1 = new C1ComboBox();
             cboday5.AutoCompleteMode = AutoCompleteMode.Suggest;
             cboday5.AutoCompleteSource = AutoCompleteSource.ListItems;
-            cboday3desc1.AutoCompleteMode = AutoCompleteMode.Suggest;
-            cboday3desc1.AutoCompleteSource = AutoCompleteSource.ListItems;
+            cboday5desc1.AutoCompleteMode = AutoCompleteMode.Suggest;
+            cboday5desc1.AutoCompleteSource = AutoCompleteSource.ListItems;
             ic.ivfDB.fdtDB.setCboOPUStageDay5(cboday5, "");
-            ic.ivfDB.fdtDB.setCboOPUStageDay3Desc1(cboday3desc1, "");
+            ic.ivfDB.fdtDB.setCboOPUStageDay5Desc1(cboday5desc1, "");
             grfDay6.Cols[colDay6ID].Editor = txt;
             grfDay6.Cols[colDay6Num].Editor = txt;
             grfDay6.Cols[colDay6Desc].Editor = cboday5;
-            grfDay6.Cols[colDay6Desc1].Editor = cboday3desc1;
+            grfDay6.Cols[colDay6Desc1].Editor = cboday5desc1;
             grfDay6.Cols[colDay6Desc2].Editor = txt;
 
             grfDay6.Cols[colDay6Num].Width = 40;

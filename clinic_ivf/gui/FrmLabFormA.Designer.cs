@@ -109,6 +109,7 @@
             this.label13 = new System.Windows.Forms.Label();
             this.btnPrint = new C1.Win.C1Input.C1Button();
             this.gbEmbryoFresh = new System.Windows.Forms.GroupBox();
+            this.chkEmbryoFreezingDay2 = new System.Windows.Forms.RadioButton();
             this.chkEmbryoFreezingDay5 = new System.Windows.Forms.RadioButton();
             this.chkEmbryoFreezingDay3 = new System.Windows.Forms.RadioButton();
             this.chkEmbryoFreezingDay1 = new System.Windows.Forms.RadioButton();
@@ -136,7 +137,8 @@
             this.txtPasaTeseDate = new C1.Win.C1Input.C1DateEdit();
             this.label25 = new System.Windows.Forms.Label();
             this.label20 = new System.Windows.Forms.Label();
-            this.chkEmbryoFreezingDay2 = new System.Windows.Forms.RadioButton();
+            this.chkYselet = new C1.Win.C1Input.C1CheckBox();
+            this.chkXselet = new C1.Win.C1Input.C1CheckBox();
             this.sB.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.theme1)).BeginInit();
             this.groupBox1.SuspendLayout();
@@ -205,6 +207,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtOPUDate)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtIUIDate)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtPasaTeseDate)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chkYselet)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chkXselet)).BeginInit();
             this.SuspendLayout();
             // 
             // sB
@@ -1516,6 +1520,8 @@
             // groupBox6
             // 
             this.groupBox6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.groupBox6.Controls.Add(this.chkXselet);
+            this.groupBox6.Controls.Add(this.chkYselet);
             this.groupBox6.Controls.Add(this.pnFreshSprem);
             this.groupBox6.Controls.Add(this.btnPrint);
             this.groupBox6.Controls.Add(this.gbEmbryoFresh);
@@ -1640,6 +1646,23 @@
             this.gbEmbryoFresh.TabIndex = 716;
             this.gbEmbryoFresh.TabStop = false;
             this.theme1.SetTheme(this.gbEmbryoFresh, "(default)");
+            // 
+            // chkEmbryoFreezingDay2
+            // 
+            this.chkEmbryoFreezingDay2.AutoSize = true;
+            this.chkEmbryoFreezingDay2.BackColor = System.Drawing.Color.Transparent;
+            this.chkEmbryoFreezingDay2.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
+            this.chkEmbryoFreezingDay2.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(189)))), ((int)(((byte)(182)))));
+            this.chkEmbryoFreezingDay2.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(189)))), ((int)(((byte)(182)))));
+            this.chkEmbryoFreezingDay2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.chkEmbryoFreezingDay2.Location = new System.Drawing.Point(108, 15);
+            this.chkEmbryoFreezingDay2.Name = "chkEmbryoFreezingDay2";
+            this.chkEmbryoFreezingDay2.Size = new System.Drawing.Size(53, 17);
+            this.chkEmbryoFreezingDay2.TabIndex = 537;
+            this.chkEmbryoFreezingDay2.TabStop = true;
+            this.chkEmbryoFreezingDay2.Text = "Day 1";
+            this.theme1.SetTheme(this.chkEmbryoFreezingDay2, "(default)");
+            this.chkEmbryoFreezingDay2.UseVisualStyleBackColor = false;
             // 
             // chkEmbryoFreezingDay5
             // 
@@ -2156,22 +2179,43 @@
             this.label20.Text = "PESA/TESE :";
             this.theme1.SetTheme(this.label20, "(default)");
             // 
-            // chkEmbryoFreezingDay2
+            // chkYselet
             // 
-            this.chkEmbryoFreezingDay2.AutoSize = true;
-            this.chkEmbryoFreezingDay2.BackColor = System.Drawing.Color.Transparent;
-            this.chkEmbryoFreezingDay2.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
-            this.chkEmbryoFreezingDay2.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(189)))), ((int)(((byte)(182)))));
-            this.chkEmbryoFreezingDay2.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(189)))), ((int)(((byte)(182)))));
-            this.chkEmbryoFreezingDay2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.chkEmbryoFreezingDay2.Location = new System.Drawing.Point(108, 15);
-            this.chkEmbryoFreezingDay2.Name = "chkEmbryoFreezingDay2";
-            this.chkEmbryoFreezingDay2.Size = new System.Drawing.Size(53, 17);
-            this.chkEmbryoFreezingDay2.TabIndex = 537;
-            this.chkEmbryoFreezingDay2.TabStop = true;
-            this.chkEmbryoFreezingDay2.Text = "Day 1";
-            this.theme1.SetTheme(this.chkEmbryoFreezingDay2, "(default)");
-            this.chkEmbryoFreezingDay2.UseVisualStyleBackColor = false;
+            this.chkYselet.BackColor = System.Drawing.Color.Transparent;
+            this.chkYselet.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
+            this.chkYselet.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.chkYselet.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.chkYselet.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chkYselet.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.chkYselet.Location = new System.Drawing.Point(480, 83);
+            this.chkYselet.Name = "chkYselet";
+            this.chkYselet.Padding = new System.Windows.Forms.Padding(4, 1, 1, 1);
+            this.chkYselet.Size = new System.Drawing.Size(140, 24);
+            this.chkYselet.TabIndex = 730;
+            this.chkYselet.Text = "Y Celection";
+            this.theme1.SetTheme(this.chkYselet, "(default)");
+            this.chkYselet.UseVisualStyleBackColor = true;
+            this.chkYselet.Value = null;
+            this.chkYselet.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            // 
+            // chkXselet
+            // 
+            this.chkXselet.BackColor = System.Drawing.Color.Transparent;
+            this.chkXselet.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
+            this.chkXselet.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.chkXselet.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.chkXselet.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chkXselet.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.chkXselet.Location = new System.Drawing.Point(689, 83);
+            this.chkXselet.Name = "chkXselet";
+            this.chkXselet.Padding = new System.Windows.Forms.Padding(4, 1, 1, 1);
+            this.chkXselet.Size = new System.Drawing.Size(140, 24);
+            this.chkXselet.TabIndex = 731;
+            this.chkXselet.Text = "X Celection";
+            this.theme1.SetTheme(this.chkXselet, "(default)");
+            this.chkXselet.UseVisualStyleBackColor = true;
+            this.chkXselet.Value = null;
+            this.chkXselet.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
             // 
             // FrmLabFormA
             // 
@@ -2265,6 +2309,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtOPUDate)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtIUIDate)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtPasaTeseDate)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chkYselet)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chkXselet)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -2381,5 +2427,7 @@
         private C1.Win.C1Input.C1TextBox txtHnDonor;
         private C1.Win.C1Input.C1TextBox txtDonorDob;
         private System.Windows.Forms.RadioButton chkEmbryoFreezingDay2;
+        private C1.Win.C1Input.C1CheckBox chkXselet;
+        private C1.Win.C1Input.C1CheckBox chkYselet;
     }
 }

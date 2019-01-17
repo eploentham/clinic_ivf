@@ -21,5 +21,6 @@ namespace clinic_ivf.object1
         public String LVSID { get; set; }
         public String IntLock { get; set; }
         public String dob { get; set; }
+        public String form_a_id { get; set; }
     }
 }

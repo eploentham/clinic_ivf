@@ -15,7 +15,7 @@ namespace clinic_ivf.objdb
         ConnectDB conn;
         public List<FDocType> lFreezeMedia;
         public List<FDocType> lMethod;
-        public List<FDocType> lStage, lStageDay3, lStageDau3Desc1, lStageDay5;
+        public List<FDocType> lStage, lStageDay3, lStageDau3Desc1, lStageDay5, lStageDau5Desc1;
         //public List<FDocType> lFreezeMedia;
 
         public FDocTypeDB(ConnectDB c)
@@ -32,6 +32,7 @@ namespace clinic_ivf.objdb
             lStageDay3 = new List<FDocType>();
             lStageDau3Desc1 = new List<FDocType>();
             lStageDay5 = new List<FDocType>();
+            lStageDau5Desc1 = new List<FDocType>();
             fdt.doc_type_id = "doc_type_id";
             fdt.doc_type_code = "doc_type_code";
             fdt.doc_type_name = "doc_type_name";
@@ -114,6 +115,17 @@ namespace clinic_ivf.objdb
                 "From " + fdt.table + " fdt " +
                 " " +
                 "Where fdt." + fdt.active + " ='1' and fdt." + fdt.status_combo + "='opu_stage_day5'";
+            dt = conn.selectData(conn.conn, sql);
+
+            return dt;
+        }
+        public DataTable selectOPUStageDay5Desc1()
+        {
+            DataTable dt = new DataTable();
+            String sql = "select fdt.*  " +
+                "From " + fdt.table + " fdt " +
+                " " +
+                "Where fdt." + fdt.active + " ='1' and fdt." + fdt.status_combo + "='opu_stage_day5_desc1'";
             dt = conn.selectData(conn.conn, sql);
 
             return dt;
@@ -237,6 +249,21 @@ namespace clinic_ivf.objdb
                 itm1.doc_type_name = row[fdt.doc_type_name].ToString();
 
                 lStageDay5.Add(itm1);
+            }
+        }
+        public void getlOPUStageDay5Desc1()
+        {
+            //lDept = new List<Position>();
+            lStageDau5Desc1.Clear();
+            DataTable dt = new DataTable();
+            dt = selectOPUStageDay5Desc1();            
+            foreach (DataRow row in dt.Rows)
+            {
+                FDocType itm1 = new FDocType();
+                itm1.doc_type_id = row[fdt.doc_type_id].ToString();
+                itm1.doc_type_name = row[fdt.doc_type_name].ToString();
+
+                lStageDau3Desc1.Add(itm1);
             }
         }
         public FDocType selectByPk1(String copId)
@@ -415,6 +442,34 @@ namespace clinic_ivf.objdb
             c.Items.Add(item1);
             int i = 0;
             foreach (FDocType row in lStageDay5)
+            {
+                item = new ComboBoxItem();
+                item.Value = row.doc_type_id;
+                item.Text = row.doc_type_name;
+                c.Items.Add(item);
+                if (item.Value.Equals(selected))
+                {
+                    //c.SelectedItem = item.Value;
+                    c.SelectedText = item.Text;
+                    c.SelectedIndex = i + 1;
+                }
+                i++;
+            }
+            return c;
+        }
+        public C1ComboBox setCboOPUStageDay5Desc1(C1ComboBox c, String selected)
+        {
+            ComboBoxItem item = new ComboBoxItem();
+            //DataTable dt = selectOPUStage();
+            if (lStageDau5Desc1.Count <= 0) getlOPUStageDay5Desc1();
+            //String aaa = "";
+            ComboBoxItem item1 = new ComboBoxItem();
+            item1.Text = "";
+            item1.Value = "000";
+            c.Items.Clear();
+            c.Items.Add(item1);
+            int i = 0;
+            foreach (FDocType row in lStageDau5Desc1)
             {
                 item = new ComboBoxItem();
                 item.Value = row.doc_type_id;

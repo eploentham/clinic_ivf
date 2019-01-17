@@ -83,6 +83,7 @@ namespace clinic_ivf.gui
             btnHnSearch.Click += BtnHnSearch_Click;
             tC.SelectedTabChanged += TC_SelectedTabChanged;
             btnPrnCheckList1.Click += BtnPrnCheckList1_Click;
+            btnHnMaleSearch.Click += BtnHnMaleSearch_Click;
 
             if (pttId.Equals(""))
             {
@@ -115,6 +116,16 @@ namespace clinic_ivf.gui
             //setKeyEnter();
 
         }
+
+        private void BtnHnMaleSearch_Click(object sender, EventArgs e)
+        {
+            //throw new NotImplementedException();
+            FrmSearchHn frm = new FrmSearchHn(ic, FrmSearchHn.StatusConnection.hostEx, FrmSearchHn.StatusSearch.PttSearch);
+            frm.ShowDialog(this);
+            txtHnMale.Value = ic.sVsOld.PIDS;
+            label45.Text = ic.sVsOld.PName;
+        }
+
         private void setTheme()
         {
             
@@ -382,7 +393,8 @@ namespace clinic_ivf.gui
             txtPulse.Value = vs.pulse;
             txtPulse1.Value = txtPulse.Text;
             txtAllergy.Value = ptt.allergy_description;
-            //txtAllergyDesc1.Value = txtAllergy.Text;
+            txtHnMale.Value = vs.patient_hn_male;
+            txtHnFemale.Value = vs.patient_hn_1;
             PatientImage ptti = new PatientImage();
             ptti = ic.ivfDB.pttImgDB.selectByPttIDStatus1(txtPttId.Text);
 
@@ -578,6 +590,7 @@ namespace clinic_ivf.gui
             vs.queue_id = ic.ivfDB.copDB.genQueueDoc();
             vs.pulse = txtPulse.Text;
             vs.status_nurse = "1";
+            vs.patient_hn_male = txtHnMale.Text;
         }
         private void FrmVisitAdd_Load(object sender, EventArgs e)
         {
