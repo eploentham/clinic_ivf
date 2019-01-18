@@ -665,7 +665,7 @@ namespace clinic_ivf.objdb
                 i++;
             }
         }
-        public void setCbEmbryologist(C1ComboBox c, String selected)
+        public void setCboEmbryologist(C1ComboBox c, String selected)
         {
             ComboBoxItem item = new ComboBoxItem();
             DataTable dt = selectAllEmbryo();

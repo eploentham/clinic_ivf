@@ -74,17 +74,17 @@ namespace clinic_ivf.gui
 
             ic.ivfDB.proceDB.setCboLabProce(cboOpuProce, objdb.LabProcedureDB.StatusLab.OPUProcedure);
             ic.ivfDB.dtrOldDB.setCboDoctor(cboDoctor, "");
-            ic.ivfDB.stfDB.setCbEmbryologist(cboEmbryoForEtEmbryologist, "");
-            ic.ivfDB.stfDB.setCbEmbryologist(cboEmbryologistAppv, "");
-            ic.ivfDB.stfDB.setCbEmbryologist(cboEmbryologistReport, "");
-            ic.ivfDB.stfDB.setCbEmbryologist(cboEmbryologistDay2, "");
-            ic.ivfDB.stfDB.setCbEmbryologist(cboEmbryologistDay3, "");
-            ic.ivfDB.stfDB.setCbEmbryologist(cboEmbryologistDay5, "");
-            ic.ivfDB.stfDB.setCbEmbryologist(cboEmbryologistDay6, "");
-            ic.ivfDB.stfDB.setCbEmbryologist(cboCheckedDay2, "");
-            ic.ivfDB.stfDB.setCbEmbryologist(cboCheckedDay3, "");
-            ic.ivfDB.stfDB.setCbEmbryologist(cboCheckedDay5, "");
-            ic.ivfDB.stfDB.setCbEmbryologist(cboCheckedDay6, "");
+            ic.ivfDB.stfDB.setCboEmbryologist(cboEmbryoForEtEmbryologist, "");
+            ic.ivfDB.stfDB.setCboEmbryologist(cboEmbryologistAppv, "");
+            ic.ivfDB.stfDB.setCboEmbryologist(cboEmbryologistReport, "");
+            ic.ivfDB.stfDB.setCboEmbryologist(cboEmbryologistDay2, "");
+            ic.ivfDB.stfDB.setCboEmbryologist(cboEmbryologistDay3, "");
+            ic.ivfDB.stfDB.setCboEmbryologist(cboEmbryologistDay5, "");
+            ic.ivfDB.stfDB.setCboEmbryologist(cboEmbryologistDay6, "");
+            ic.ivfDB.stfDB.setCboEmbryologist(cboCheckedDay2, "");
+            ic.ivfDB.stfDB.setCboEmbryologist(cboCheckedDay3, "");
+            ic.ivfDB.stfDB.setCboEmbryologist(cboCheckedDay5, "");
+            ic.ivfDB.stfDB.setCboEmbryologist(cboCheckedDay6, "");
 
             ic.ivfDB.fdtDB.setCboOPUMethod(cboEmbryoFreezMethod0);
             ic.ivfDB.fdtDB.setCboOPUMethod(cboEmbryoFreezMethod1);

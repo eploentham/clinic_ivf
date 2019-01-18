@@ -28,7 +28,7 @@ namespace clinic_ivf.gui
         private void BtnNew_Click(object sender, EventArgs e)
         {
             //throw new NotImplementedException();
-            FrmLabFetAdd frm = new FrmLabFetAdd(ic);
+            FrmLabFetAdd1 frm = new FrmLabFetAdd1(ic,"","");
             String txt = "ป้อน LAB FET ใหม่";
 
             frm.FormBorderStyle = FormBorderStyle.None;

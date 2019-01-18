@@ -149,6 +149,12 @@
     <Compile Include="gui\FrmLabFetAdd.Designer.cs">
       <DependentUpon>FrmLabFetAdd.cs</DependentUpon>
     </Compile>
+    <Compile Include="gui\FrmLabFetAdd1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="gui\FrmLabFetAdd1.Designer.cs">
+      <DependentUpon>FrmLabFetAdd1.cs</DependentUpon>
+    </Compile>
     <Compile Include="gui\FrmLabFetView.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -371,6 +377,7 @@
     <Compile Include="objdb\FSexDB.cs" />
     <Compile Include="objdb\JobPxDB.cs" />
     <Compile Include="objdb\JobPxDetailDB.cs" />
+    <Compile Include="objdb\LabFetDB.cs" />
     <Compile Include="objdb\LabFormADB.cs" />
     <Compile Include="objdb\LabOpuEmbryoDevDB.cs" />
     <Compile Include="objdb\OldJobSpecialDB.cs" />
@@ -378,6 +385,7 @@
     <Compile Include="objdb\PatientAppointmentTextDB.cs" />
     <Compile Include="object1\CellNoteManager.cs" />
     <Compile Include="object1\FDocType.cs" />
+    <Compile Include="object1\LabFet.cs" />
     <Compile Include="object1\LabFormA.cs" />
     <Compile Include="object1\PatientAppointment.cs" />
     <Compile Include="objdb\PatientImageDB.cs" />
@@ -536,6 +544,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="gui\FrmLabFetAdd.resx">
       <DependentUpon>FrmLabFetAdd.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="gui\FrmLabFetAdd1.resx">
+      <DependentUpon>FrmLabFetAdd1.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="gui\FrmLabFetView.resx">
       <DependentUpon>FrmLabFetView.cs</DependentUpon>
