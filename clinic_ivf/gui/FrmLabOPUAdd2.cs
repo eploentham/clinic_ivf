@@ -43,6 +43,7 @@ namespace clinic_ivf.gui
         Color color;
         Boolean flagDay2Img = false, flagDay3Img = false, flagDay5Img = false, flagDay6Img = false;
         private bool prefixSeen;
+        String theme2 = "Office2007Blue";       //Office2016Black       BeigeOne
 
         public FrmLabOPUAdd2(IvfControl ic, String reqid, String opuid)
         {
@@ -72,8 +73,9 @@ namespace clinic_ivf.gui
             opu = new LabOpu();
             lbReq = new LabRequest();
 
-            ic.ivfDB.proceDB.setCboLabProce(cboOpuProce, objdb.LabProcedureDB.StatusLab.OPUProcedure);
+            ic.ivfDB.proceDB.setCboLabProce(cboOpuProce, objdb.LabProcedureDB.StatusLab.OPUProcedure);//cboEmbryoForEtDoctor
             ic.ivfDB.dtrOldDB.setCboDoctor(cboDoctor, "");
+            ic.ivfDB.dtrOldDB.setCboDoctor(cboEmbryoForEtDoctor, "");
             ic.ivfDB.stfDB.setCboEmbryologist(cboEmbryoForEtEmbryologist, "");
             ic.ivfDB.stfDB.setCboEmbryologist(cboEmbryologistAppv, "");
             ic.ivfDB.stfDB.setCboEmbryologist(cboEmbryologistReport, "");
@@ -131,12 +133,168 @@ namespace clinic_ivf.gui
 
             btnHnSearch.Click += BtnHnSearch_Click;
             btnDonorSearch.Click += BtnDonorSearch_Click;
-
+            
             setFocusColor();
             initGrf();
             setControl();
             setGrf();
+            setTheme();
+        }
+        private void setTheme()
+        {
+            theme1.SetTheme(sB, "BeigeOne");
+            theme1.SetTheme(this, theme2);
+            theme1.SetTheme(groupBox1, theme2);
+            theme1.SetTheme(groupBox3, theme2);
+            theme1.SetTheme(groupBox4, theme2);
+            theme1.SetTheme(groupBox5, theme2);
+            theme1.SetTheme(groupBox7, theme2);
+            theme1.SetTheme(groupBox2, theme2);
+            theme1.SetTheme(c1CommandDock2, theme2);
+            theme1.SetTheme(tC1, theme2);
+            theme1.SetTheme(gbDay2, theme2);
+            theme1.SetTheme(gbDay3, theme2);
+            theme1.SetTheme(gbDay5, theme2);
+            theme1.SetTheme(gbDay6, theme2);
+            theme1.SetTheme(panel3, theme2);
+            theme1.SetTheme(panel4, theme2);
+            theme1.SetTheme(panel5, theme2);
+            theme1.SetTheme(panel6, theme2);
 
+            theme1.SetTheme(pn2, theme2);
+            theme1.SetTheme(pn5, theme2);
+            theme1.SetTheme(pn3, theme2);
+            theme1.SetTheme(pn6, theme2);
+            theme1.SetTheme(pnGrf2Img, theme2);
+            theme1.SetTheme(pnGrf3Img, theme2);
+            theme1.SetTheme(pnGrf5Img, theme2);
+            theme1.SetTheme(pnGrf6Img, theme2);
+            theme1.SetTheme(pn2Grf, theme2);
+            theme1.SetTheme(pn3Grf, theme2);
+            theme1.SetTheme(pn5Grf, theme2);
+            theme1.SetTheme(pn6Grf, theme2);
+            //theme1.SetTheme(groupBox2, theme2);
+            theme1.SetTheme(groupBox3, theme2);
+            theme1.SetTheme(groupBox4, theme2);
+            theme1.SetTheme(groupBox5, theme2);
+            theme1.SetTheme(groupBox6, theme2);
+            theme1.SetTheme(groupBox8, theme2);
+            theme1.SetTheme(panel4, theme2);
+            //theme1.SetTheme(panel5, theme2);
+            theme1.SetTheme(panel6, theme2);
+            theme1.SetTheme(splitContainer1, theme2);
+            theme1.SetTheme(splitContainer2, theme2);
+            theme1.SetTheme(splitContainer3, theme2);
+            //theme1.SetTheme(splitContainer4, theme2);
+            //theme1.SetTheme(splitContainer5, theme2);
+
+            foreach (Control ctl in groupBox1.Controls)
+            {
+                theme1.SetTheme(ctl, theme2);
+            }
+            foreach (Control ctl in groupBox3.Controls)
+            {
+                theme1.SetTheme(ctl, theme2);
+            }
+            foreach (Control ctl in groupBox4.Controls)
+            {
+                theme1.SetTheme(ctl, theme2);
+            }
+            foreach (Control ctl in groupBox5.Controls)
+            {
+                theme1.SetTheme(ctl, theme2);
+            }
+            foreach (Control ctl in groupBox7.Controls)
+            {
+                theme1.SetTheme(ctl, theme2);
+            }
+            foreach (Control ctl in groupBox2.Controls)
+            {
+                theme1.SetTheme(ctl, theme2);
+            }
+            //foreach (ComboBoxItemList ctl in cboOpuProce.Items) 
+            //{
+            //    theme1.SetTheme(ctl, theme2);
+            //}
+            foreach (Control ctl in pn2.Controls)
+            {
+                theme1.SetTheme(ctl, theme2);
+            }
+            foreach (Control ctl in pn3.Controls)
+            {
+                theme1.SetTheme(ctl, theme2);
+            }
+            foreach (Control ctl in pn5.Controls)
+            {
+                theme1.SetTheme(ctl, theme2);
+            }
+            foreach (Control ctl in pn6.Controls)
+            {
+                theme1.SetTheme(ctl, theme2);
+            }
+            foreach (Control ctl in panel3.Controls)
+            {
+                theme1.SetTheme(ctl, theme2);
+            }
+            foreach (Control ctl in panel4.Controls)
+            {
+                theme1.SetTheme(ctl, theme2);
+            }
+            foreach (Control ctl in panel5.Controls)
+            {
+                theme1.SetTheme(ctl, theme2);
+            }
+            foreach (Control ctl in panel6.Controls)
+            {
+                theme1.SetTheme(ctl, theme2);
+            }
+            foreach (Control ctl in pn2.Controls)
+            {
+                theme1.SetTheme(ctl, theme2);
+            }
+            foreach (Control ctl in pn3.Controls)
+            {
+                theme1.SetTheme(ctl, theme2);
+            }
+            foreach (Control ctl in pn5.Controls)
+            {
+                theme1.SetTheme(ctl, theme2);
+            }
+            foreach (Control ctl in pn6.Controls)
+            {
+                theme1.SetTheme(ctl, theme2);
+            }
+            foreach (Control ctl in pnGrf2Img.Controls)
+            {
+                theme1.SetTheme(ctl, theme2);
+            }
+            foreach (Control ctl in pnGrf3Img.Controls)
+            {
+                theme1.SetTheme(ctl, theme2);
+            }
+            foreach (Control ctl in pnGrf5Img.Controls)
+            {
+                theme1.SetTheme(ctl, theme2);
+            }
+            foreach (Control ctl in pnGrf6Img.Controls)
+            {
+                theme1.SetTheme(ctl, theme2);
+            }
+            foreach (Control ctl in groupBox6.Controls)
+            {
+                theme1.SetTheme(ctl, theme2);
+            }
+            foreach (Control ctl in groupBox8.Controls)
+            {
+                theme1.SetTheme(ctl, theme2);
+            }
+            theme1.SetTheme(cboOpuProce, theme2);
+            theme1.SetTheme(cboDoctor, theme2);
+            theme1.SetTheme(cboRemark, theme2);
+            theme1.SetTheme(grfDay2, theme2);
+            theme1.SetTheme(grfDay3, theme2);
+            theme1.SetTheme(grfDay5, theme2);
+            theme1.SetTheme(grfDay6, theme2);
         }
         protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
         {
@@ -1865,6 +2023,7 @@ namespace clinic_ivf.gui
             txtDobFeMale.Value = opu.dob_female;
             txtDobMale.Value = opu.dob_male;
             ic.setC1Combo(cboDoctor, opu.doctor_id);
+            ic.setC1Combo(cboEmbryoForEtDoctor, opu.embryo_for_et_doctor);
             txtOpuDate.Value = opu.opu_date;
             ic.setC1Combo(cboOpuProce, opu.proce_id);
             txtOpuCode.Value = opu.opu_code;
@@ -1917,7 +2076,7 @@ namespace clinic_ivf.gui
             txtEmbryoForEtAsseted.Value = opu.embryo_for_et_assisted;
             txtEmbryoForEtVolume.Value = opu.embryo_for_et_volume;
             txtEmbryoForEtCatheter.Value = opu.embryo_for_et_catheter;
-            txtEmbryoForEtDoctor.Value = opu.embryo_for_et_doctor;
+            //txtEmbryoForEtDoctor.Value = opu.embryo_for_et_doctor;
             txtEmbryoForEtNumTran.Value = opu.embryo_for_et_number_of_transfer;
             txtEmbryoForEtNumFreeze.Value = opu.embryo_for_et_number_of_freeze;
             txtEmbryoForEtNumDiscard.Value = opu.embryo_for_et_number_of_discard;
@@ -2040,8 +2199,9 @@ namespace clinic_ivf.gui
             opu.embryo_for_et_assisted = txtEmbryoForEtAsseted.Text;
             opu.embryo_for_et_volume = txtEmbryoForEtVolume.Text;
             opu.embryo_for_et_catheter = txtEmbryoForEtCatheter.Text;
-            opu.embryo_for_et_doctor = txtEmbryoForEtDoctor.Text;
+            //opu.embryo_for_et_doctor = txtEmbryoForEtDoctor.Text;
 
+            opu.embryo_for_et_doctor = cboEmbryoForEtDoctor.SelectedItem == null ? "0" : ((ComboBoxItem)cboEmbryoForEtDoctor.SelectedItem).Value;
             opu.embryo_for_et_embryologist_id = cboEmbryoForEtEmbryologist.SelectedItem == null ? "0" : ((ComboBoxItem)cboEmbryoForEtEmbryologist.SelectedItem).Value;
             opu.embryologist_report_id = cboEmbryologistReport.SelectedItem == null ? "0" : ((ComboBoxItem)cboEmbryologistReport.SelectedItem).Value;
             opu.embryologist_approve_id = cboEmbryologistAppv.SelectedItem == null ? "0" : ((ComboBoxItem)cboEmbryologistAppv.SelectedItem).Value;

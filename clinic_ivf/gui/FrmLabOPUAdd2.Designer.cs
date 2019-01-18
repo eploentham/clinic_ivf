@@ -267,6 +267,7 @@
             this.txtHnMale = new C1.Win.C1Input.C1TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.txtHnFeMale = new C1.Win.C1Input.C1TextBox();
+            this.cboEmbryoForEtDoctor = new C1.Win.C1Input.C1ComboBox();
             this.sB.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.theme1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.c1CommandDock2)).BeginInit();
@@ -429,6 +430,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.btnHnSearch)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtHnMale)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtHnFeMale)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cboEmbryoForEtDoctor)).BeginInit();
             this.SuspendLayout();
             // 
             // sB
@@ -3331,6 +3333,7 @@
             // groupBox7
             // 
             this.groupBox7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.groupBox7.Controls.Add(this.cboEmbryoForEtDoctor);
             this.groupBox7.Controls.Add(this.cboRemark);
             this.groupBox7.Controls.Add(this.btnSaveEmbryoEt);
             this.groupBox7.Controls.Add(this.cboEmbryologistAppv);
@@ -3546,12 +3549,13 @@
             this.txtEmbryoForEtDoctor.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtEmbryoForEtDoctor.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
             this.txtEmbryoForEtDoctor.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.txtEmbryoForEtDoctor.Location = new System.Drawing.Point(311, 58);
+            this.txtEmbryoForEtDoctor.Location = new System.Drawing.Point(724, 57);
             this.txtEmbryoForEtDoctor.Name = "txtEmbryoForEtDoctor";
             this.txtEmbryoForEtDoctor.Size = new System.Drawing.Size(99, 20);
             this.txtEmbryoForEtDoctor.TabIndex = 524;
             this.txtEmbryoForEtDoctor.Tag = null;
             this.theme1.SetTheme(this.txtEmbryoForEtDoctor, "(default)");
+            this.txtEmbryoForEtDoctor.Visible = false;
             this.txtEmbryoForEtDoctor.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
             // 
             // txtEmbryoForEtCatheter
@@ -4439,6 +4443,29 @@
             this.theme1.SetTheme(this.txtHnFeMale, "(default)");
             this.txtHnFeMale.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
             // 
+            // cboEmbryoForEtDoctor
+            // 
+            this.cboEmbryoForEtDoctor.AllowSpinLoop = false;
+            this.cboEmbryoForEtDoctor.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
+            this.cboEmbryoForEtDoctor.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.cboEmbryoForEtDoctor.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.cboEmbryoForEtDoctor.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
+            this.cboEmbryoForEtDoctor.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.cboEmbryoForEtDoctor.GapHeight = 0;
+            this.cboEmbryoForEtDoctor.ImagePadding = new System.Windows.Forms.Padding(0);
+            this.cboEmbryoForEtDoctor.ItemsDisplayMember = "";
+            this.cboEmbryoForEtDoctor.ItemsValueMember = "";
+            this.cboEmbryoForEtDoctor.Location = new System.Drawing.Point(311, 57);
+            this.cboEmbryoForEtDoctor.Name = "cboEmbryoForEtDoctor";
+            this.cboEmbryoForEtDoctor.Size = new System.Drawing.Size(127, 20);
+            this.cboEmbryoForEtDoctor.Style.DropDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.cboEmbryoForEtDoctor.Style.DropDownBorderColor = System.Drawing.Color.Gainsboro;
+            this.cboEmbryoForEtDoctor.Style.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.cboEmbryoForEtDoctor.TabIndex = 547;
+            this.cboEmbryoForEtDoctor.Tag = null;
+            this.theme1.SetTheme(this.cboEmbryoForEtDoctor, "(default)");
+            this.cboEmbryoForEtDoctor.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            // 
             // FrmLabOPUAdd2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -4624,6 +4651,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.btnHnSearch)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtHnMale)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtHnFeMale)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cboEmbryoForEtDoctor)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -4870,5 +4898,6 @@
         private System.Windows.Forms.Label label83;
         private System.Windows.Forms.Label label84;
         private System.Windows.Forms.Label label85;
+        private C1.Win.C1Input.C1ComboBox cboEmbryoForEtDoctor;
     }
 }

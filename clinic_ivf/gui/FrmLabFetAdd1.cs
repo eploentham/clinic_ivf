@@ -59,54 +59,10 @@ namespace clinic_ivf.gui
 
             //C1ThemeController.ApplicationTheme = ic.iniC.themeApplication;
             //theme1.Theme = C1ThemeController.ApplicationTheme;
-            theme1.SetTheme(sB, "BeigeOne");
-            theme1.SetTheme(this, "Office2016Black");
-            theme1.SetTheme(groupBox1, "Office2016Black");
-            theme1.SetTheme(groupBox3, "Office2016Black");
-            theme1.SetTheme(groupBox4, "Office2016Black");
-            theme1.SetTheme(groupBox5, "Office2016Black");
-            theme1.SetTheme(groupBox7, "Office2016Black");
-            theme1.SetTheme(groupBox2, "Office2016Black");
-            theme1.SetTheme(c1CommandDock1, "Office2016Black");
-            theme1.SetTheme(tC1, "Office2016Black");
-            theme1.SetTheme(gbDay2, "Office2016Black");
-            theme1.SetTheme(gbDay3, "Office2016Black");
-            theme1.SetTheme(gbDay5, "Office2016Black");
-            theme1.SetTheme(gbDay6, "Office2016Black");
-            theme1.SetTheme(pn2, "Office2016Black");
-            theme1.SetTheme(pn5, "Office2016Black");
-            theme1.SetTheme(pn3, "Office2016Black");
-            theme1.SetTheme(pn6, "Office2016Black");
-            theme1.SetTheme(panel3, "Office2016Black");
-            theme1.SetTheme(panel4, "Office2016Black");
-            theme1.SetTheme(panel5, "Office2016Black");
-            theme1.SetTheme(panel6, "Office2016Black");
-            foreach (Control ctl in groupBox1.Controls)
-            {
-                theme1.SetTheme(ctl, "Office2016Black");
-            }
-            foreach (Control ctl in groupBox3.Controls)
-            {
-                theme1.SetTheme(ctl, "Office2016Black");
-            }
-            foreach (Control ctl in groupBox4.Controls)
-            {
-                theme1.SetTheme(ctl, "Office2016Black");
-            }
-            foreach (Control ctl in groupBox5.Controls)
-            {
-                theme1.SetTheme(ctl, "Office2016Black");
-            }
-            foreach (Control ctl in groupBox7.Controls)
-            {
-                theme1.SetTheme(ctl, "Office2016Black");
-            }
-            foreach (ComboBoxItemList ctl in cboOpuProce.Items)
-            {
-                theme1.SetTheme(ctl, "Office2016Black");
-            }
+            
             color = ColorTranslator.FromHtml(ic.iniC.grfRowColor);
-
+            cboRemark.DropDownOpened += CboRemark_DropDownOpened;
+            cboRemark.DropDownClosed += CboRemark_DropDownClosed;
 
 
             sB1.Text = "";
@@ -143,13 +99,115 @@ namespace clinic_ivf.gui
 
             btnHnSearch.Click += BtnHnSearch_Click;
             btnDonorSearch.Click += BtnDonorSearch_Click;
-
+            setTheme();
             setFocusColor();
             initGrf();
             setControl();
             setGrf();
 
         }
+        private void setTheme()
+        {
+            theme1.SetTheme(sB, "BeigeOne");
+            theme1.SetTheme(this, "Office2016Black");
+            theme1.SetTheme(groupBox1, "Office2016Black");
+            theme1.SetTheme(groupBox3, "Office2016Black");
+            theme1.SetTheme(groupBox4, "Office2016Black");
+            theme1.SetTheme(groupBox5, "Office2016Black");
+            theme1.SetTheme(groupBox7, "Office2016Black");
+            theme1.SetTheme(groupBox2, "Office2016Black");
+            theme1.SetTheme(c1CommandDock1, "Office2016Black");
+            theme1.SetTheme(tC1, "Office2016Black");
+            theme1.SetTheme(gbDay2, "Office2016Black");
+            theme1.SetTheme(gbDay3, "Office2016Black");
+            theme1.SetTheme(gbDay5, "Office2016Black");
+            theme1.SetTheme(gbDay6, "Office2016Black");
+            theme1.SetTheme(pn2, "Office2016Black");
+            theme1.SetTheme(pn5, "Office2016Black");
+            theme1.SetTheme(pn3, "Office2016Black");
+            theme1.SetTheme(pn6, "Office2016Black");
+            theme1.SetTheme(panel3, "Office2016Black");
+            theme1.SetTheme(panel4, "Office2016Black");
+            theme1.SetTheme(panel5, "Office2016Black");
+            theme1.SetTheme(panel6, "Office2016Black");
+            theme1.SetTheme(splitContainer1, "Office2016Black");
+            theme1.SetTheme(splitContainer2, "Office2016Black");
+            theme1.SetTheme(splitContainer3, "Office2016Black");
+            theme1.SetTheme(splitContainer4, "Office2016Black");
+            theme1.SetTheme(splitContainer5, "Office2016Black");
+
+            foreach (Control ctl in groupBox1.Controls)
+            {
+                theme1.SetTheme(ctl, "Office2016Black");
+            }
+            foreach (Control ctl in groupBox3.Controls)
+            {
+                theme1.SetTheme(ctl, "Office2016Black");
+            }
+            foreach (Control ctl in groupBox4.Controls)
+            {
+                theme1.SetTheme(ctl, "Office2016Black");
+            }
+            foreach (Control ctl in groupBox5.Controls)
+            {
+                theme1.SetTheme(ctl, "Office2016Black");
+            }
+            foreach (Control ctl in groupBox7.Controls)
+            {
+                theme1.SetTheme(ctl, "Office2016Black");
+            }
+            //foreach (ComboBoxItemList ctl in cboOpuProce.Items) 
+            //{
+            //    theme1.SetTheme(ctl, "Office2016Black");
+            //}
+            foreach (Control ctl in pn2.Controls)
+            {
+                theme1.SetTheme(ctl, "Office2016Black");
+            }
+            foreach (Control ctl in pn3.Controls)
+            {
+                theme1.SetTheme(ctl, "Office2016Black");
+            }
+            foreach (Control ctl in pn5.Controls)
+            {
+                theme1.SetTheme(ctl, "Office2016Black");
+            }
+            foreach (Control ctl in pn6.Controls)
+            {
+                theme1.SetTheme(ctl, "Office2016Black");
+            }
+            foreach (Control ctl in panel3.Controls)
+            {
+                theme1.SetTheme(ctl, "Office2016Black");
+            }
+            foreach (Control ctl in panel4.Controls)
+            {
+                theme1.SetTheme(ctl, "Office2016Black");
+            }
+            foreach (Control ctl in panel5.Controls)
+            {
+                theme1.SetTheme(ctl, "Office2016Black");
+            }
+            foreach (Control ctl in panel6.Controls)
+            {
+                theme1.SetTheme(ctl, "Office2016Black");
+            }
+            theme1.SetTheme(cboOpuProce, "ExpressionDark");
+            theme1.SetTheme(cboDoctor, "ExpressionDark");
+            theme1.SetTheme(cboRemark, "ExpressionDark");
+        }
+        private void CboRemark_DropDownClosed(object sender, DropDownClosedEventArgs e)
+        {
+            //throw new NotImplementedException();
+            //theme1.SetTheme(cboRemark, "Office2016Black");
+        }
+
+        private void CboRemark_DropDownOpened(object sender, EventArgs e)
+        {
+            //throw new NotImplementedException();
+            //theme1.SetTheme(cboOpuProce, "ExpressionDark");
+        }
+
         private void BtnDonorSearch_Click(object sender, EventArgs e)
         {
             //throw new NotImplementedException();
