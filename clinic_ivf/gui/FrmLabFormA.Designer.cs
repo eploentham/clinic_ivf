@@ -102,6 +102,8 @@
             this.txtEmbryoTranferDate = new C1.Win.C1Input.C1DateEdit();
             this.label14 = new System.Windows.Forms.Label();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
+            this.chkXselet = new C1.Win.C1Input.C1CheckBox();
+            this.chkYselet = new C1.Win.C1Input.C1CheckBox();
             this.pnFreshSprem = new System.Windows.Forms.Panel();
             this.txtFreshSpermEndTime = new C1.Win.C1Input.C1TextBox();
             this.label12 = new System.Windows.Forms.Label();
@@ -137,8 +139,6 @@
             this.txtPasaTeseDate = new C1.Win.C1Input.C1DateEdit();
             this.label25 = new System.Windows.Forms.Label();
             this.label20 = new System.Windows.Forms.Label();
-            this.chkYselet = new C1.Win.C1Input.C1CheckBox();
-            this.chkXselet = new C1.Win.C1Input.C1CheckBox();
             this.sB.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.theme1)).BeginInit();
             this.groupBox1.SuspendLayout();
@@ -188,6 +188,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtFETNo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtEmbryoTranferDate)).BeginInit();
             this.groupBox6.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.chkXselet)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chkYselet)).BeginInit();
             this.pnFreshSprem.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtFreshSpermEndTime)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtFreshSpermColTime)).BeginInit();
@@ -207,8 +209,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtOPUDate)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtIUIDate)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtPasaTeseDate)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.chkYselet)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.chkXselet)).BeginInit();
             this.SuspendLayout();
             // 
             // sB
@@ -1550,6 +1550,44 @@
             this.groupBox6.Text = "OPU";
             this.theme1.SetTheme(this.groupBox6, "(default)");
             // 
+            // chkXselet
+            // 
+            this.chkXselet.BackColor = System.Drawing.Color.Transparent;
+            this.chkXselet.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
+            this.chkXselet.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.chkXselet.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.chkXselet.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chkXselet.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.chkXselet.Location = new System.Drawing.Point(689, 83);
+            this.chkXselet.Name = "chkXselet";
+            this.chkXselet.Padding = new System.Windows.Forms.Padding(4, 1, 1, 1);
+            this.chkXselet.Size = new System.Drawing.Size(140, 24);
+            this.chkXselet.TabIndex = 731;
+            this.chkXselet.Text = "X Selection";
+            this.theme1.SetTheme(this.chkXselet, "(default)");
+            this.chkXselet.UseVisualStyleBackColor = true;
+            this.chkXselet.Value = null;
+            this.chkXselet.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            // 
+            // chkYselet
+            // 
+            this.chkYselet.BackColor = System.Drawing.Color.Transparent;
+            this.chkYselet.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
+            this.chkYselet.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.chkYselet.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.chkYselet.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chkYselet.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.chkYselet.Location = new System.Drawing.Point(480, 83);
+            this.chkYselet.Name = "chkYselet";
+            this.chkYselet.Padding = new System.Windows.Forms.Padding(4, 1, 1, 1);
+            this.chkYselet.Size = new System.Drawing.Size(140, 24);
+            this.chkYselet.TabIndex = 730;
+            this.chkYselet.Text = "Y Selection";
+            this.theme1.SetTheme(this.chkYselet, "(default)");
+            this.chkYselet.UseVisualStyleBackColor = true;
+            this.chkYselet.Value = null;
+            this.chkYselet.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            // 
             // pnFreshSprem
             // 
             this.pnFreshSprem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
@@ -2179,44 +2217,6 @@
             this.label20.Text = "PESA/TESE :";
             this.theme1.SetTheme(this.label20, "(default)");
             // 
-            // chkYselet
-            // 
-            this.chkYselet.BackColor = System.Drawing.Color.Transparent;
-            this.chkYselet.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
-            this.chkYselet.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.chkYselet.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.chkYselet.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chkYselet.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.chkYselet.Location = new System.Drawing.Point(480, 83);
-            this.chkYselet.Name = "chkYselet";
-            this.chkYselet.Padding = new System.Windows.Forms.Padding(4, 1, 1, 1);
-            this.chkYselet.Size = new System.Drawing.Size(140, 24);
-            this.chkYselet.TabIndex = 730;
-            this.chkYselet.Text = "Y Celection";
-            this.theme1.SetTheme(this.chkYselet, "(default)");
-            this.chkYselet.UseVisualStyleBackColor = true;
-            this.chkYselet.Value = null;
-            this.chkYselet.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
-            // 
-            // chkXselet
-            // 
-            this.chkXselet.BackColor = System.Drawing.Color.Transparent;
-            this.chkXselet.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
-            this.chkXselet.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.chkXselet.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.chkXselet.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chkXselet.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.chkXselet.Location = new System.Drawing.Point(689, 83);
-            this.chkXselet.Name = "chkXselet";
-            this.chkXselet.Padding = new System.Windows.Forms.Padding(4, 1, 1, 1);
-            this.chkXselet.Size = new System.Drawing.Size(140, 24);
-            this.chkXselet.TabIndex = 731;
-            this.chkXselet.Text = "X Celection";
-            this.theme1.SetTheme(this.chkXselet, "(default)");
-            this.chkXselet.UseVisualStyleBackColor = true;
-            this.chkXselet.Value = null;
-            this.chkXselet.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
-            // 
             // FrmLabFormA
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -2286,6 +2286,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtEmbryoTranferDate)).EndInit();
             this.groupBox6.ResumeLayout(false);
             this.groupBox6.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.chkXselet)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chkYselet)).EndInit();
             this.pnFreshSprem.ResumeLayout(false);
             this.pnFreshSprem.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtFreshSpermEndTime)).EndInit();
@@ -2309,8 +2311,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtOPUDate)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtIUIDate)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtPasaTeseDate)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.chkYselet)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.chkXselet)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

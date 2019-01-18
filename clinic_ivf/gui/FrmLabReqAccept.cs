@@ -116,6 +116,7 @@ namespace clinic_ivf.gui
             lbReq.name_donor = "";
             lbReq.doctor_id = doctorId;
             lbReq.request_id = reqid;
+            lbReq.foam_a_id = "";
         }
         private void initGrfReq()
         {

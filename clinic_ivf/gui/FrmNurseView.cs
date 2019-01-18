@@ -318,10 +318,17 @@ namespace clinic_ivf.gui
                 grfFinish[i, colVsEtime] = row["VEndTime"].ToString();
                 grfFinish[i, colStatus] = row["VName"].ToString();
                 grfFinish[i, colPttId] = row["PID"].ToString();
+                if (!row[ic.ivfDB.vsOldDB.vsold.form_a_id].ToString().Equals("0"))
+                {
+                    CellNote note = new CellNote("ส่ง Lab Request Foam A");
+                    CellRange rg = grfFinish.GetCellRange(i, colVN);
+                    rg.UserData = note;
+                }
                 //if (i % 2 == 0)
                 //    grfPtt.Rows[i].StyleNew.BackColor = color;
                 i++;
             }
+            CellNoteManager mgr = new CellNoteManager(grfFinish);
             grfFinish.Cols[colID].Visible = false;
             grfFinish.Cols[colPttId].Visible = false;
             //theme1.SetTheme(grfFinish, ic.theme);

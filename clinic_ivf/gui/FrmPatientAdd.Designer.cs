@@ -2963,7 +2963,7 @@
             this.groupBox2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
             this.groupBox2.Location = new System.Drawing.Point(3, 3);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(1045, 119);
+            this.groupBox2.Size = new System.Drawing.Size(923, 119);
             this.groupBox2.TabIndex = 620;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Visit";
@@ -3039,7 +3039,7 @@
             this.label29.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
             this.label29.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label29.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.label29.Location = new System.Drawing.Point(748, 88);
+            this.label29.Location = new System.Drawing.Point(666, 88);
             this.label29.Name = "label29";
             this.label29.Size = new System.Drawing.Size(52, 16);
             this.label29.TabIndex = 713;
@@ -3052,7 +3052,7 @@
             this.label35.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
             this.label35.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label35.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.label35.Location = new System.Drawing.Point(932, 88);
+            this.label35.Location = new System.Drawing.Point(850, 88);
             this.label35.Name = "label35";
             this.label35.Size = new System.Drawing.Size(51, 16);
             this.label35.TabIndex = 712;
@@ -3065,7 +3065,7 @@
             this.label58.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
             this.label58.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label58.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.label58.Location = new System.Drawing.Point(805, 88);
+            this.label58.Location = new System.Drawing.Point(723, 88);
             this.label58.Name = "label58";
             this.label58.Size = new System.Drawing.Size(48, 16);
             this.label58.TabIndex = 690;
@@ -3077,7 +3077,7 @@
             this.c1TextBox5.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.c1TextBox5.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
             this.c1TextBox5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.c1TextBox5.Location = new System.Drawing.Point(854, 85);
+            this.c1TextBox5.Location = new System.Drawing.Point(772, 85);
             this.c1TextBox5.Name = "c1TextBox5";
             this.c1TextBox5.Size = new System.Drawing.Size(72, 20);
             this.c1TextBox5.TabIndex = 689;
@@ -3104,7 +3104,7 @@
             this.label60.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
             this.label60.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label60.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.label60.Location = new System.Drawing.Point(639, 88);
+            this.label60.Location = new System.Drawing.Point(557, 88);
             this.label60.Name = "label60";
             this.label60.Size = new System.Drawing.Size(32, 16);
             this.label60.TabIndex = 687;
@@ -3116,7 +3116,7 @@
             this.c1TextBox7.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.c1TextBox7.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
             this.c1TextBox7.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.c1TextBox7.Location = new System.Drawing.Point(675, 85);
+            this.c1TextBox7.Location = new System.Drawing.Point(593, 85);
             this.c1TextBox7.Name = "c1TextBox7";
             this.c1TextBox7.Size = new System.Drawing.Size(72, 20);
             this.c1TextBox7.TabIndex = 686;
@@ -3130,7 +3130,7 @@
             this.label61.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
             this.label61.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label61.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.label61.Location = new System.Drawing.Point(504, 88);
+            this.label61.Location = new System.Drawing.Point(422, 88);
             this.label61.Name = "label61";
             this.label61.Size = new System.Drawing.Size(36, 16);
             this.label61.TabIndex = 685;
@@ -3142,7 +3142,7 @@
             this.c1TextBox11.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.c1TextBox11.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
             this.c1TextBox11.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.c1TextBox11.Location = new System.Drawing.Point(549, 85);
+            this.c1TextBox11.Location = new System.Drawing.Point(467, 85);
             this.c1TextBox11.Name = "c1TextBox11";
             this.c1TextBox11.Size = new System.Drawing.Size(72, 20);
             this.c1TextBox11.TabIndex = 684;
@@ -3156,7 +3156,7 @@
             this.label62.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
             this.label62.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label62.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.label62.Location = new System.Drawing.Point(365, 87);
+            this.label62.Location = new System.Drawing.Point(283, 87);
             this.label62.Name = "label62";
             this.label62.Size = new System.Drawing.Size(53, 16);
             this.label62.TabIndex = 683;
@@ -3168,7 +3168,7 @@
             this.c1TextBox12.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.c1TextBox12.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
             this.c1TextBox12.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.c1TextBox12.Location = new System.Drawing.Point(424, 85);
+            this.c1TextBox12.Location = new System.Drawing.Point(342, 85);
             this.c1TextBox12.Name = "c1TextBox12";
             this.c1TextBox12.Size = new System.Drawing.Size(72, 20);
             this.c1TextBox12.TabIndex = 682;
@@ -3214,7 +3214,7 @@
             this.c1DateEdit1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.c1DateEdit1.GMTOffset = System.TimeSpan.Parse("00:00:00");
             this.c1DateEdit1.ImagePadding = new System.Windows.Forms.Padding(0);
-            this.c1DateEdit1.Location = new System.Drawing.Point(233, 85);
+            this.c1DateEdit1.Location = new System.Drawing.Point(151, 85);
             this.c1DateEdit1.Name = "c1DateEdit1";
             this.c1DateEdit1.Size = new System.Drawing.Size(119, 20);
             this.c1DateEdit1.TabIndex = 681;
@@ -3228,7 +3228,7 @@
             this.label63.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
             this.label63.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label63.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.label63.Location = new System.Drawing.Point(186, 87);
+            this.label63.Location = new System.Drawing.Point(104, 87);
             this.label63.Name = "label63";
             this.label63.Size = new System.Drawing.Size(41, 16);
             this.label63.TabIndex = 680;
@@ -3280,7 +3280,7 @@
             this.chkUrge.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.chkUrge.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.chkUrge.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.chkUrge.Location = new System.Drawing.Point(101, 83);
+            this.chkUrge.Location = new System.Drawing.Point(19, 83);
             this.chkUrge.Name = "chkUrge";
             this.chkUrge.Padding = new System.Windows.Forms.Padding(4, 1, 1, 1);
             this.chkUrge.Size = new System.Drawing.Size(81, 24);
@@ -3357,7 +3357,7 @@
             // 
             this.btnVisit.Image = global::clinic_ivf.Properties.Resources.users24;
             this.btnVisit.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnVisit.Location = new System.Drawing.Point(957, 13);
+            this.btnVisit.Location = new System.Drawing.Point(821, 11);
             this.btnVisit.Name = "btnVisit";
             this.btnVisit.Size = new System.Drawing.Size(82, 33);
             this.btnVisit.TabIndex = 645;

@@ -41,5 +41,7 @@ namespace clinic_ivf.object1
         public String name_donor { get; set; }
         public String dob_donor { get; set; }
         public String request_id { get; set; }
+        public String foam_a_id { get; set; }
+
     }
 }
