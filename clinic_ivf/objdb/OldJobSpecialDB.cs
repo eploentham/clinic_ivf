@@ -63,7 +63,7 @@ namespace clinic_ivf.objdb
         {
             String re = "";
             DataTable dt = new DataTable();
-            String sql = "Select oJS.SID  " +
+            String sql = "Select oJSd.ID  " +
                 "From " + oJS.table + " oJS " +
                 "Left Join JobSpecialDetail oJSd on oJS.Vn = oJSd.Vn " +
                 "Left Join Patient ptt on ptt.PID = oJS.PID " +
@@ -77,7 +77,7 @@ namespace clinic_ivf.objdb
             dt = conn.selectData(conn.conn, sql);
             if (dt.Rows.Count > 0)
             {
-                re = dt.Rows[0]["SID"].ToString();
+                re = dt.Rows[0]["ID"].ToString();
             }
             return re;
         }
@@ -85,7 +85,7 @@ namespace clinic_ivf.objdb
         {
             String re = "";
             DataTable dt = new DataTable();
-            String sql = "Select oJS.SID  " +
+            String sql = "Select oJSd.ID  " +
                 "From " + oJS.table + " oJS " +
                 "Left Join JobSpecialDetail oJSd on oJS.Vn = oJSd.Vn " +
                 "Left Join Patient ptt on ptt.PID = oJS.PID " +
@@ -99,7 +99,7 @@ namespace clinic_ivf.objdb
             dt = conn.selectData(conn.conn, sql);
             if (dt.Rows.Count > 0)
             {
-                re = dt.Rows[0]["SID"].ToString();
+                re = dt.Rows[0]["ID"].ToString();
             }
             return re;
         }

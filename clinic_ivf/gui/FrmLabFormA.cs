@@ -211,17 +211,19 @@ namespace clinic_ivf.gui
                 DateTime dt = new DateTime();
                 if(DateTime.TryParse(ic.datetoDB(txtOPUDate.Text), out dt))
                 {
-                    reqid = ic.ivfDB.oJsDB.selectByStatusOPU(vsid);
+                    reqid = ic.ivfDB.oJsDB.selectByStatusOPU(txtVnOld.Text);
                     LabRequest lbReq = ic.ivfDB.setLabRequest(txtNameFeMale.Text, txtVnOld.Text, cboDoctor.SelectedItem == null ? "" : ((ComboBoxItem)cboDoctor.SelectedItem).Value
                     , cboRemark.Text, txtHnOld.Text, ic.datetoDB(txtDobFeMale.Text), reqid, "112");
+                    lbReq.foam_a_id = re;
                     String re1 = ic.ivfDB.lbReqDB.insertLabRequest(lbReq, txtStfConfirmID.Text);
                 }
                 reqid = "";
                 if (DateTime.TryParse(ic.datetoDB(txtEmbryoTranferDate.Text), out dt))
                 {
-                    reqid = ic.ivfDB.oJsDB.selectByStatusFET(vsid);
+                    reqid = ic.ivfDB.oJsDB.selectByStatusFET(txtVnOld.Text);
                     LabRequest lbReq = ic.ivfDB.setLabRequest(txtNameFeMale.Text, txtVnOld.Text, cboDoctor.SelectedItem == null ? "" : ((ComboBoxItem)cboDoctor.SelectedItem).Value
                     , cboRemark.Text, txtHnOld.Text, ic.datetoDB(txtDobFeMale.Text), reqid, "160");
+                    lbReq.foam_a_id = re;
                     String re1 = ic.ivfDB.lbReqDB.insertLabRequest(lbReq, txtStfConfirmID.Text);
                 }
                 //txtID.Value = (!txtID.Text.Equals("") && re.Equals("1")) ? re : "";        //update

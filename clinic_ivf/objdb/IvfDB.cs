@@ -127,6 +127,46 @@ namespace clinic_ivf.objdb
             appn = row1[pApmDB.pApm.patient_appointment_time].ToString() + " " + e2 + " " + lh + " " + prl + " " + fsh;
             return appn;
         }
+        public String datetoDB(String dt)
+        {
+            DateTime dt1 = new DateTime();
+            String re = "";
+            if (dt != null)
+            {
+                if (!dt.Equals(""))
+                {
+                    // Thread แบบนี้ ทำให้ โปรแกรม ที่ไปลงที Xtrim ไม่เอา date ผิด
+                    Thread.CurrentThread.CurrentCulture = new CultureInfo("en-us")
+                    {
+                        DateTimeFormat =
+                        {
+                            DateSeparator = "-"
+                        }
+                    };
+                    if (DateTime.TryParse(dt, out dt1))
+                    {
+                        re = dt1.Year.ToString() + "-" + dt1.ToString("MM-dd");
+                    }
+                    else
+                    {
+                        Thread.CurrentThread.CurrentCulture = new CultureInfo("th-TH")
+                        {
+                            DateTimeFormat =
+                            {
+                                DateSeparator = "-"
+                            }
+                        };
+                        if (DateTime.TryParse(dt, out dt1))
+                        {
+                            re = dt1.ToString("yyyy-MM-dd");
+                        }
+                    }
+                    //dt1 = DateTime.Parse(dt.ToString());
+
+                }
+            }
+            return re;
+        }
         public String dateTimetoDB(String dt)
         {
             DateTime dt1 = new DateTime();
