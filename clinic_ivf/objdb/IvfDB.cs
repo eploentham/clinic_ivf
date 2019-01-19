@@ -1,8 +1,11 @@
-﻿using System;
+﻿using clinic_ivf.object1;
+using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Globalization;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace clinic_ivf.objdb
@@ -123,6 +126,84 @@ namespace clinic_ivf.objdb
             opu = row1[pApmDB.pApm.opu].ToString().Equals("1") ? "OPU [Time " + row1[pApmDB.pApm.opu_time].ToString()+"] " + row1[pApmDB.pApm.doctor_anes].ToString() : "";
             appn = row1[pApmDB.pApm.patient_appointment_time].ToString() + " " + e2 + " " + lh + " " + prl + " " + fsh;
             return appn;
+        }
+        public String dateTimetoDB(String dt)
+        {
+            DateTime dt1 = new DateTime();
+            String re = "", tim = "";
+            if (dt != null)
+            {
+                if (!dt.Equals(""))
+                {
+                    // Thread แบบนี้ ทำให้ โปรแกรม ที่ไปลงที Xtrim ไม่เอา date ผิด
+                    Thread.CurrentThread.CurrentCulture = new CultureInfo("en-us")
+                    {
+                        DateTimeFormat =
+                        {
+                            DateSeparator = "-"
+                        }
+                    };
+                    if (DateTime.TryParse(dt, out dt1))
+                    {
+                        re = dt1.Year.ToString() + "-" + dt1.ToString("MM-dd");
+                    }
+                    else
+                    {
+                        Thread.CurrentThread.CurrentCulture = new CultureInfo("th-TH")
+                        {
+                            DateTimeFormat =
+                            {
+                                DateSeparator = "-"
+                            }
+                        };
+                        if (DateTime.TryParse(dt, out dt1))
+                        {
+                            re = dt1.ToString("yyyy-MM-dd");
+                        }
+                    }
+                    //dt1 = DateTime.Parse(dt.ToString());
+
+                }
+                tim = dt1.ToString("HH:mm:ss");
+            }
+            return re + " " + tim;
+        }
+        public LabRequest setLabRequest(String pttName, String vn, String doctorId, String remark, String hn, String dobfemale, String reqid, String itmcode)
+        {
+            LabRequest lbReq = new LabRequest();
+            lbReq.req_id = "";
+            lbReq.req_code = copDB.genReqDoc();
+            lbReq.req_date = System.DateTime.Now.Year.ToString() + "-" + System.DateTime.Now.ToString("MM-dd");
+            lbReq.hn_male = "";
+            lbReq.name_male = "";
+            lbReq.hn_female = hn;
+            lbReq.name_female = pttName;
+            lbReq.status_req = "1";
+            lbReq.accept_date = "";
+            lbReq.start_date = "";
+            lbReq.result_date = "";
+            lbReq.visit_id = "";
+            lbReq.vn = vn;
+            lbReq.active = "1";
+            lbReq.remark = remark;
+            lbReq.date_create = "";
+            lbReq.date_modi = "";
+            lbReq.date_cancel = "";
+            lbReq.user_create = "";
+            lbReq.user_modi = "";
+            lbReq.user_cancel = "";
+            //lbReq.item_id = "112";      //OPU
+            lbReq.lab_id = "";
+            lbReq.dob_donor = "";
+            lbReq.dob_female = datetoDB(dobfemale);
+            lbReq.dob_male = "";
+            lbReq.hn_donor = "";
+            lbReq.name_donor = "";
+            lbReq.doctor_id = doctorId;
+            lbReq.request_id = reqid;
+            lbReq.item_id = itmcode;
+            lbReq.foam_a_id = "";
+            return lbReq;
         }
     }
 }

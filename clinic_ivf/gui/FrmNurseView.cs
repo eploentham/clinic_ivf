@@ -734,16 +734,22 @@ namespace clinic_ivf.gui
             pttId = grfFinish[grfFinish.Row, colPttId] != null ? grfFinish[grfFinish.Row, colPttId].ToString() : "";
             chk = grfFinish[grfFinish.Row, colPttHn] != null ? grfFinish[grfFinish.Row, colPttHn].ToString() : "";
             name = grfFinish[grfFinish.Row, colPttName] != null ? grfFinish[grfFinish.Row, colPttName].ToString() : "";
-            //FrmNurseAdd frm = new FrmNurseAdd();
-            //frm.ShowDialog(this);
-            //openApmAdd(pttId, vsid, name);
-            if (MessageBox.Show("ต้องการป้อน LAB request FORM A\n  hn number " + chk + " \n name " + name, "", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == DialogResult.OK)
-            {
-                FrmLabFormA frm = new FrmLabFormA(ic, "", pttId,"", vsid);
+            //reqid = ic.ivfDB.oJsDB.selectByStatusOPU(vsid);
+            //if (!reqid.Equals(""))
+            //{
+                FrmLabFormA frm = new FrmLabFormA(ic, "", pttId, "", vsid);
                 frm.ShowDialog(this);
+                setGrfFinish("");
+            //}
+                //FrmNurseAdd frm = new FrmNurseAdd();
+                //frm.ShowDialog(this);
+                //openApmAdd(pttId, vsid, name);
+            //if (MessageBox.Show("ต้องการป้อน LAB request FORM A\n  hn number " + chk + " \n name " + name, "", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == DialogResult.OK)
+            //{
+                
                 //grfReq.Rows.Remove(grfReq.Row);
                 //openPatientAdd(id, name);
-            }
+            //}
         }
         private void ContextMenu_LAB_req_formA_Ptt(object sender, System.EventArgs e)
         {
@@ -753,17 +759,22 @@ namespace clinic_ivf.gui
             pttId = grfQue[grfQue.Row, colPttId] != null ? grfQue[grfQue.Row, colPttId].ToString() : "";
             chk = grfQue[grfQue.Row, colPttHn] != null ? grfQue[grfQue.Row, colPttHn].ToString() : "";
             name = grfQue[grfQue.Row, colPttName] != null ? grfQue[grfQue.Row, colPttName].ToString() : "";
+            //reqid = ic.ivfDB.oJsDB.selectByStatusOPU(vsid);
+            //if (!reqid.Equals(""))
+            //{
+                FrmLabFormA frm = new FrmLabFormA(ic, "", pttId, "", vsid);
+                frm.ShowDialog(this);
+                setGrfQue();
+            //}
             //FrmNurseAdd frm = new FrmNurseAdd();
             //frm.ShowDialog(this);
             //openApmAdd(pttId, vsid, name);
-            if (MessageBox.Show("ต้องการป้อน LAB request FORM A\n  hn number " + chk + " \n name " + name, "", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == DialogResult.OK)
-            {
-                FrmLabFormA frm = new FrmLabFormA(ic,"", pttId, "", vsid);
-                frm.ShowDialog(this);
-                setGrfQue();
+            //if (MessageBox.Show("ต้องการป้อน LAB request FORM A\n  hn number " + chk + " \n name " + name, "", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == DialogResult.OK)
+            //{
+                
                 //grfReq.Rows.Remove(grfReq.Row);
                 //openPatientAdd(id, name);
-            }
+            //}
         }
         private void ContextMenu_LAB_req_formA(object sender, System.EventArgs e)
         {

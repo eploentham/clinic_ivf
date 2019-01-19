@@ -184,7 +184,7 @@ namespace clinic_ivf.gui
             {
                 theme1.SetTheme(ctl, "Office2016Black");
             }
-            foreach (ComboBoxItemList ctl in cboOpuProce.Items)
+            foreach (ComboBoxItem ctl in cboOpuProce.Items)
             {
                 theme1.SetTheme(ctl, "Office2016Black");
             }

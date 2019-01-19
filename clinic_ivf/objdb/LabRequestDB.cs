@@ -55,7 +55,7 @@ namespace clinic_ivf.objdb
             lbReq.hn_donor = "hn_donor";
             lbReq.name_donor = "name_donor";
             lbReq.request_id = "request_id";
-            lbReq.foam_a_id = "reqfoam_a_iduest_id";
+            lbReq.foam_a_id = "form_a_id";
 
             lbReq.table = "lab_t_request";
             lbReq.pkField = "req_id";
@@ -192,6 +192,7 @@ namespace clinic_ivf.objdb
             int chk = 0;
 
             chkNull(p);
+            lbReq.foam_a_id = "form_a_id";
             //p.req_code = genReqDoc();
             sql = "Insert Into " + lbReq.table + " Set " +
                 " " + lbReq.req_code + " = '" + p.req_code + "'" +
