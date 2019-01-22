@@ -35,6 +35,8 @@
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.panel2 = new System.Windows.Forms.Panel();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.cboDept = new C1.Win.C1Input.C1ComboBox();
+            this.cboPosi = new C1.Win.C1Input.C1ComboBox();
             this.btnPasswordCompirm = new C1.Win.C1Input.C1Button();
             this.txtPasswordVoid = new C1.Win.C1Input.C1TextBox();
             this.btnPosiAdd = new C1.Win.C1Input.C1Button();
@@ -89,8 +91,6 @@
             this.txtID = new C1.Win.C1Input.C1TextBox();
             this.txtStfCode = new C1.Win.C1Input.C1TextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.cboPosi = new C1.Win.C1Input.C1ComboBox();
-            this.cboDept = new C1.Win.C1Input.C1ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.theme1)).BeginInit();
             this.sB.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -99,6 +99,8 @@
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
             this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.cboDept)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cboPosi)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnPasswordCompirm)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtPasswordVoid)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnPosiAdd)).BeginInit();
@@ -134,8 +136,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.btnSave)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtID)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtStfCode)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.cboPosi)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.cboDept)).BeginInit();
             this.SuspendLayout();
             // 
             // theme1
@@ -268,6 +268,50 @@
             this.groupBox1.Text = "groupBox1";
             this.theme1.SetTheme(this.groupBox1, "(default)");
             // 
+            // cboDept
+            // 
+            this.cboDept.AllowSpinLoop = false;
+            this.cboDept.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(71)))), ((int)(((byte)(71)))));
+            this.cboDept.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.cboDept.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(172)))), ((int)(((byte)(172)))), ((int)(((byte)(172)))));
+            this.cboDept.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.cboDept.GapHeight = 0;
+            this.cboDept.ImagePadding = new System.Windows.Forms.Padding(0);
+            this.cboDept.ItemsDisplayMember = "";
+            this.cboDept.ItemsValueMember = "";
+            this.cboDept.Location = new System.Drawing.Point(118, 373);
+            this.cboDept.Name = "cboDept";
+            this.cboDept.Size = new System.Drawing.Size(200, 20);
+            this.cboDept.Style.DropDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
+            this.cboDept.Style.DropDownBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(77)))), ((int)(((byte)(77)))), ((int)(((byte)(77)))));
+            this.cboDept.Style.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.cboDept.TabIndex = 260;
+            this.cboDept.Tag = null;
+            this.theme1.SetTheme(this.cboDept, "(default)");
+            this.cboDept.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            // 
+            // cboPosi
+            // 
+            this.cboPosi.AllowSpinLoop = false;
+            this.cboPosi.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(71)))), ((int)(((byte)(71)))));
+            this.cboPosi.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.cboPosi.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(172)))), ((int)(((byte)(172)))), ((int)(((byte)(172)))));
+            this.cboPosi.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.cboPosi.GapHeight = 0;
+            this.cboPosi.ImagePadding = new System.Windows.Forms.Padding(0);
+            this.cboPosi.ItemsDisplayMember = "";
+            this.cboPosi.ItemsValueMember = "";
+            this.cboPosi.Location = new System.Drawing.Point(118, 344);
+            this.cboPosi.Name = "cboPosi";
+            this.cboPosi.Size = new System.Drawing.Size(200, 20);
+            this.cboPosi.Style.DropDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
+            this.cboPosi.Style.DropDownBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(77)))), ((int)(((byte)(77)))), ((int)(((byte)(77)))));
+            this.cboPosi.Style.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.cboPosi.TabIndex = 259;
+            this.cboPosi.Tag = null;
+            this.theme1.SetTheme(this.cboPosi, "(default)");
+            this.cboPosi.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            // 
             // btnPasswordCompirm
             // 
             this.btnPasswordCompirm.Image = global::clinic_ivf.Properties.Resources.Female_user_edit_24;
@@ -276,7 +320,7 @@
             this.btnPasswordCompirm.Name = "btnPasswordCompirm";
             this.btnPasswordCompirm.Size = new System.Drawing.Size(158, 39);
             this.btnPasswordCompirm.TabIndex = 258;
-            this.btnPasswordCompirm.Text = "set password compirm";
+            this.btnPasswordCompirm.Text = "set password comfirm";
             this.btnPasswordCompirm.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.theme1.SetTheme(this.btnPasswordCompirm, "(default)");
             this.btnPasswordCompirm.UseVisualStyleBackColor = true;
@@ -309,7 +353,6 @@
             this.theme1.SetTheme(this.btnPosiAdd, "(default)");
             this.btnPosiAdd.UseVisualStyleBackColor = true;
             this.btnPosiAdd.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
-            //this.btnPosiAdd.Click += new System.EventHandler(this.btnPosiAdd_Click);
             // 
             // btnDeptAdd
             // 
@@ -322,7 +365,6 @@
             this.theme1.SetTheme(this.btnDeptAdd, "(default)");
             this.btnDeptAdd.UseVisualStyleBackColor = true;
             this.btnDeptAdd.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
-            //this.btnDeptAdd.Click += new System.EventHandler(this.btnDeptAdd_Click);
             // 
             // panelModule
             // 
@@ -1047,50 +1089,6 @@
             this.label1.Text = "รหัส :";
             this.theme1.SetTheme(this.label1, "(default)");
             // 
-            // cboPosi
-            // 
-            this.cboPosi.AllowSpinLoop = false;
-            this.cboPosi.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(71)))), ((int)(((byte)(71)))));
-            this.cboPosi.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.cboPosi.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(172)))), ((int)(((byte)(172)))), ((int)(((byte)(172)))));
-            this.cboPosi.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.cboPosi.GapHeight = 0;
-            this.cboPosi.ImagePadding = new System.Windows.Forms.Padding(0, 0, 0, 0);
-            this.cboPosi.ItemsDisplayMember = "";
-            this.cboPosi.ItemsValueMember = "";
-            this.cboPosi.Location = new System.Drawing.Point(118, 344);
-            this.cboPosi.Name = "cboPosi";
-            this.cboPosi.Size = new System.Drawing.Size(200, 20);
-            this.cboPosi.Style.DropDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
-            this.cboPosi.Style.DropDownBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(77)))), ((int)(((byte)(77)))), ((int)(((byte)(77)))));
-            this.cboPosi.Style.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.cboPosi.TabIndex = 259;
-            this.cboPosi.Tag = null;
-            this.theme1.SetTheme(this.cboPosi, "(default)");
-            this.cboPosi.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
-            // 
-            // cboDept
-            // 
-            this.cboDept.AllowSpinLoop = false;
-            this.cboDept.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(71)))), ((int)(((byte)(71)))));
-            this.cboDept.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.cboDept.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(172)))), ((int)(((byte)(172)))), ((int)(((byte)(172)))));
-            this.cboDept.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.cboDept.GapHeight = 0;
-            this.cboDept.ImagePadding = new System.Windows.Forms.Padding(0);
-            this.cboDept.ItemsDisplayMember = "";
-            this.cboDept.ItemsValueMember = "";
-            this.cboDept.Location = new System.Drawing.Point(118, 373);
-            this.cboDept.Name = "cboDept";
-            this.cboDept.Size = new System.Drawing.Size(200, 20);
-            this.cboDept.Style.DropDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
-            this.cboDept.Style.DropDownBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(77)))), ((int)(((byte)(77)))), ((int)(((byte)(77)))));
-            this.cboDept.Style.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.cboDept.TabIndex = 260;
-            this.cboDept.Tag = null;
-            this.theme1.SetTheme(this.cboDept, "(default)");
-            this.cboDept.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
-            // 
             // FrmStaff
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1113,6 +1111,8 @@
             this.splitContainer1.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.cboDept)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cboPosi)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnPasswordCompirm)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtPasswordVoid)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnPosiAdd)).EndInit();
@@ -1149,8 +1149,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.btnSave)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtID)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtStfCode)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.cboPosi)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.cboDept)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

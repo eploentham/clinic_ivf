@@ -31,6 +31,7 @@ namespace clinic_ivf.gui
             this.vsid = vsid;
             this.pttid = pttid;
             this.vsidOld = vsidOld;
+            //this.reqid = reqid;
             initConfig();
         }
         private void initConfig()
@@ -203,11 +204,28 @@ namespace clinic_ivf.gui
             if (btnSave.Text.Equals("Confirm"))
             {
                 stt.Hide();
-                String re = "";
+                String re = "", reqid = "";
                 
                 setLabFormA();
                 re = ic.ivfDB.lFormaDB.insertLabFormA(lFormA, txtStfConfirmID.Text);
-
+                DateTime dt = new DateTime();
+                if(DateTime.TryParse(ic.datetoDB(txtOPUDate.Text), out dt))
+                {
+                    reqid = ic.ivfDB.oJsDB.selectByStatusOPU(txtVnOld.Text);
+                    LabRequest lbReq = ic.ivfDB.setLabRequest(txtNameFeMale.Text, txtVnOld.Text, cboDoctor.SelectedItem == null ? "" : ((ComboBoxItem)cboDoctor.SelectedItem).Value
+                    , cboRemark.Text, txtHnOld.Text, ic.datetoDB(txtDobFeMale.Text), reqid, "112");
+                    lbReq.foam_a_id = re;
+                    String re1 = ic.ivfDB.lbReqDB.insertLabRequest(lbReq, txtStfConfirmID.Text);
+                }
+                reqid = "";
+                if (DateTime.TryParse(ic.datetoDB(txtEmbryoTranferDate.Text), out dt))
+                {
+                    reqid = ic.ivfDB.oJsDB.selectByStatusFET(txtVnOld.Text);
+                    LabRequest lbReq = ic.ivfDB.setLabRequest(txtNameFeMale.Text, txtVnOld.Text, cboDoctor.SelectedItem == null ? "" : ((ComboBoxItem)cboDoctor.SelectedItem).Value
+                    , cboRemark.Text, txtHnOld.Text, ic.datetoDB(txtDobFeMale.Text), reqid, "160");
+                    lbReq.foam_a_id = re;
+                    String re1 = ic.ivfDB.lbReqDB.insertLabRequest(lbReq, txtStfConfirmID.Text);
+                }
                 //txtID.Value = (!txtID.Text.Equals("") && re.Equals("1")) ? re : "";        //update
                 long chk = 0;
                 if (long.TryParse(re, out chk))
@@ -218,7 +236,6 @@ namespace clinic_ivf.gui
                     btnSave.Text = "Save";
                     btnSave.Image = Resources.accept_database24;
                     System.Threading.Thread.Sleep(500);
-                    
                 }
             }
             else
