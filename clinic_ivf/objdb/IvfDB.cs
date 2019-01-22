@@ -242,7 +242,7 @@ namespace clinic_ivf.objdb
             lbReq.doctor_id = doctorId;
             lbReq.request_id = reqid;
             lbReq.item_id = itmcode;
-            lbReq.foam_a_id = "";
+            lbReq.form_a_id = "";
             return lbReq;
         }
     }

@@ -414,7 +414,32 @@ namespace clinic_ivf.gui
                 }
             }
         }
-
+        private Boolean calFertili()
+        {
+            Boolean re = true;
+            int ferti = 0, sum=0, pn2=0,pn1=0,pn3=0,pn4=0,nopn=0, dead=0;
+            if(int.TryParse(txtMaturaMii.Text, out ferti))
+            {
+                int.TryParse(txtFertili2Pn.Text, out pn2);
+                int.TryParse(txtFertili1Pn.Text, out pn1);
+                int.TryParse(txtFertili3Pn.Text, out pn3);
+                int.TryParse(txtFertili4Pn.Text, out pn4);
+                int.TryParse(txtFertiliNoPn.Text, out nopn);
+                int.TryParse(txtFertiliDead.Text, out dead);
+                sum = pn2 + pn1 + pn3 +pn4 + nopn + dead;
+                if(ferti != sum)
+                {
+                    MessageBox.Show("ผมรวมของ Fertili ไม่เท่ากับ Matura MII", "");
+                }
+                re = false;
+            }
+            else
+            {
+                re = false;
+                MessageBox.Show("ไม่สามารถหาผลรวมของค่า Fertitli ได้", "");
+            }
+            return re;
+        }
         private void TxtFertiliDate_KeyUp(object sender, KeyEventArgs e)
         {
             //throw new NotImplementedException();
@@ -443,6 +468,10 @@ namespace clinic_ivf.gui
                 else if (sender.Equals(txtFertiliNoPn))
                 {
                     txtFertiliDead.Focus();
+                }
+                else if (sender.Equals(txtFertiliDead))
+                {
+                    calFertili();
                 }
             }
         }
@@ -1873,6 +1902,7 @@ namespace clinic_ivf.gui
             //if (MessageBox.Show("ต้องการ บันทึกช้อมูล Fertilization ", "", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == DialogResult.OK)
             //{
             ic.cStf.staff_id = "";
+            calFertili();
             FrmPasswordConfirm frm = new FrmPasswordConfirm(ic);
             frm.ShowDialog(this);
             if (!ic.cStf.staff_id.Equals(""))
@@ -3530,6 +3560,7 @@ namespace clinic_ivf.gui
             grfDay2.Rows.Add();
             grfDay2.Cols[colDay2ID].Visible = false;
             grfDay2.Cols[colDay2Num].Visible = false;
+            grfDay5.Cols[colDay2Edit].Visible = false;
             ic.setC1Combo(cboEmbryologistDay2, staffId);
             ic.setC1Combo(cboCheckedDay2, checkId);
             txtDay2Date.Value = dateday2;
@@ -3596,6 +3627,7 @@ namespace clinic_ivf.gui
             grfDay3.Rows.Add();
             grfDay3.Cols[colDay3ID].Visible = false;
             grfDay3.Cols[colDay3Num].Visible = false;
+            grfDay5.Cols[colDay3Edit].Visible = false;
             ic.setC1Combo(cboEmbryologistDay3, staffId);
             ic.setC1Combo(cboCheckedDay3, checkId);
             txtDay3Date.Value = dateday;
@@ -3663,6 +3695,7 @@ namespace clinic_ivf.gui
             grfDay5.Rows.Add();
             grfDay5.Cols[colDay5ID].Visible = false;
             grfDay5.Cols[colDay5Num].Visible = false;
+            grfDay5.Cols[colDay5Edit].Visible = false;
             ic.setC1Combo(cboEmbryologistDay5, staffId);
             ic.setC1Combo(cboCheckedDay5, checkId);
             txtDay5Date.Value = dateday;
@@ -3731,6 +3764,7 @@ namespace clinic_ivf.gui
             grfDay6.Rows.Add();
             grfDay6.Cols[colDay2ID].Visible = false;
             grfDay6.Cols[colDay2Num].Visible = false;
+            grfDay5.Cols[colDay6Edit].Visible = false;
             ic.setC1Combo(cboEmbryologistDay6, staffId);
             ic.setC1Combo(cboCheckedDay6, checkId);
             txtDay6Date.Value = dateday;

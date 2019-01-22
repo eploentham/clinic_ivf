@@ -70,5 +70,7 @@ namespace clinic_ivf.object1
         public String dob_male { get; set; }
         public String y_selection { get; set; }
         public String x_selection { get; set; }
+        public String status_wait_confirm_day1 { get; set; }
+        public String status_wait_confirm_opu_date { get; set; }
     }
 }

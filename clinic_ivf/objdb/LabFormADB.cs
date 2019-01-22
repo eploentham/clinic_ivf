@@ -84,6 +84,8 @@ namespace clinic_ivf.objdb
             lformA.dob_male = "dob_male";
             lformA.y_selection = "y_selection";
             lformA.x_selection = "x_selection";
+            lformA.status_wait_confirm_day1 = "status_wait_confirm_day1";
+            lformA.status_wait_confirm_opu_date = "status_wait_confirm_opu_date";
 
             lformA.pkField = "form_a_id";
             lformA.table = "lab_t_form_a";
@@ -152,8 +154,8 @@ namespace clinic_ivf.objdb
             p.dob_male = p.dob_male == null ? "" : p.dob_male;
             p.y_selection = p.y_selection == null ? "0" : p.y_selection;
             p.x_selection = p.x_selection == null ? "0" : p.x_selection;
-            //p.tvs = p.tvs == null ? "0" : p.tvs;
-            //p.repeat_e2 = p.e2 == null ? "0" : p.repeat_e2;
+            p.status_wait_confirm_day1 = p.status_wait_confirm_day1 == null ? "0" : p.status_wait_confirm_day1;
+            p.status_wait_confirm_opu_date = p.status_wait_confirm_opu_date == null ? "0" : p.status_wait_confirm_opu_date;
             //p.repeat_prl = p.repeat_prl == null ? "0" : p.repeat_prl;
             //p.repeat_lh = p.repeat_lh == null ? "0" : p.repeat_lh;
             //p.repeat_fsh = p.repeat_fsh == null ? "0" : p.repeat_fsh;
@@ -243,6 +245,8 @@ namespace clinic_ivf.objdb
                     "," + lformA.dob_male + "='" + p.dob_male + "' " +
                     "," + lformA.y_selection + "='" + p.y_selection + "' " +
                     "," + lformA.x_selection + "='" + p.x_selection + "' " +
+                    "," + lformA.status_wait_confirm_day1 + "='" + p.status_wait_confirm_day1 + "' " +
+                    "," + lformA.status_wait_confirm_opu_date + "='" + p.status_wait_confirm_opu_date + "' " +
                     "";
                 re = conn.ExecuteNonQuery(conn.conn, sql);
             }
@@ -320,6 +324,8 @@ namespace clinic_ivf.objdb
                     "," + lformA.dob_male + "='" + p.dob_male + "' " +
                     "," + lformA.y_selection + "='" + p.y_selection + "' " +
                     "," + lformA.x_selection + "='" + p.x_selection + "' " +
+                    "," + lformA.status_wait_confirm_day1 + "='" + p.status_wait_confirm_day1 + "' " +
+                    "," + lformA.status_wait_confirm_opu_date + "='" + p.status_wait_confirm_opu_date + "' " +
                 " Where " + lformA.pkField + " = '" + p.form_a_id + "' "
                 ;
             try
@@ -492,6 +498,8 @@ namespace clinic_ivf.objdb
                 vs1.dob_male = dt.Rows[0][lformA.dob_male].ToString();
                 vs1.y_selection = dt.Rows[0][lformA.y_selection].ToString();
                 vs1.x_selection = dt.Rows[0][lformA.x_selection].ToString();
+                vs1.status_wait_confirm_day1 = dt.Rows[0][lformA.status_wait_confirm_day1].ToString();
+                vs1.status_wait_confirm_opu_date = dt.Rows[0][lformA.status_wait_confirm_opu_date].ToString();
             }
             else
             {
@@ -563,6 +571,8 @@ namespace clinic_ivf.objdb
             lforma1.dob_male = "";
             lforma1.y_selection = "";
             lforma1.x_selection = "";
+            lforma1.status_wait_confirm_day1 = "";
+            lforma1.status_wait_confirm_opu_date = "";
             return lforma1;
         }
     }

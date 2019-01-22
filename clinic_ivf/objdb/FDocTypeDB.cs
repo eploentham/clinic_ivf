@@ -263,7 +263,7 @@ namespace clinic_ivf.objdb
                 itm1.doc_type_id = row[fdt.doc_type_id].ToString();
                 itm1.doc_type_name = row[fdt.doc_type_name].ToString();
 
-                lStageDau3Desc1.Add(itm1);
+                lStageDau5Desc1.Add(itm1);
             }
         }
         public FDocType selectByPk1(String copId)

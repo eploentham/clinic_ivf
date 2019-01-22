@@ -229,31 +229,31 @@ namespace clinic_ivf.gui
             dt.Rows[0]["embryo_dev_1_date"] = ic.datetoShow(embryodevdate);
             String date1 = "";
             date1 = ic.datetoShow(dt.Rows[0][ic.ivfDB.opuDB.opu.dob_female].ToString());
-            dt.Rows[0][ic.ivfDB.opuDB.opu.dob_female] = date1;
+            dt.Rows[0][ic.ivfDB.opuDB.opu.dob_female] = date1.Replace("-","/");
             date1 = ic.datetoShow(dt.Rows[0][ic.ivfDB.opuDB.opu.dob_male].ToString());
-            dt.Rows[0][ic.ivfDB.opuDB.opu.dob_male] = date1;
+            dt.Rows[0][ic.ivfDB.opuDB.opu.dob_male] = date1.Replace("-", "/");
             date1 = ic.datetoShow(dt.Rows[0][ic.ivfDB.opuDB.opu.matura_date].ToString());
-            dt.Rows[0][ic.ivfDB.opuDB.opu.matura_date] = date1;
+            dt.Rows[0][ic.ivfDB.opuDB.opu.matura_date] = date1.Replace("-", "/");
             date1 = ic.datetoShow(dt.Rows[0][ic.ivfDB.opuDB.opu.fertili_date].ToString());
-            dt.Rows[0][ic.ivfDB.opuDB.opu.fertili_date] = date1;
+            dt.Rows[0][ic.ivfDB.opuDB.opu.fertili_date] = date1.Replace("-", "/");
             date1 = ic.datetoShow(dt.Rows[0][ic.ivfDB.opuDB.opu.embryo_for_et_date].ToString());
-            dt.Rows[0][ic.ivfDB.opuDB.opu.embryo_for_et_date] = date1;
+            dt.Rows[0][ic.ivfDB.opuDB.opu.embryo_for_et_date] = date1.Replace("-", "/");
             date1 = ic.datetoShow(dt.Rows[0][ic.ivfDB.opuDB.opu.embryo_freez_date_2].ToString());
-            dt.Rows[0][ic.ivfDB.opuDB.opu.embryo_freez_date_2] = date1;
+            dt.Rows[0][ic.ivfDB.opuDB.opu.embryo_freez_date_2] = date1.Replace("-", "/");
             date1 = ic.datetoShow(dt.Rows[0][ic.ivfDB.opuDB.opu.embryo_freez_date_3].ToString());
-            dt.Rows[0][ic.ivfDB.opuDB.opu.embryo_freez_date_3] = date1;
+            dt.Rows[0][ic.ivfDB.opuDB.opu.embryo_freez_date_3] = date1.Replace("-", "/");
             date1 = ic.datetoShow(dt.Rows[0][ic.ivfDB.opuDB.opu.embryo_freez_date_5].ToString());
-            dt.Rows[0][ic.ivfDB.opuDB.opu.embryo_freez_date_5] = date1;
+            dt.Rows[0][ic.ivfDB.opuDB.opu.embryo_freez_date_5] = date1.Replace("-", "/");
             date1 = ic.datetoShow(dt.Rows[0][ic.ivfDB.opuDB.opu.embryo_freez_date_6].ToString());
-            dt.Rows[0][ic.ivfDB.opuDB.opu.embryo_freez_date_6] = date1;
+            dt.Rows[0][ic.ivfDB.opuDB.opu.embryo_freez_date_6] = date1.Replace("-", "/");
             date1 = ic.datetoShow(dt.Rows[0][ic.ivfDB.opuDB.opu.embryo_freez_date_0].ToString());
-            dt.Rows[0][ic.ivfDB.opuDB.opu.embryo_freez_date_0] = date1;
+            dt.Rows[0][ic.ivfDB.opuDB.opu.embryo_freez_date_0] = date1.Replace("-", "/");
             date1 = ic.datetoShow(dt.Rows[0][ic.ivfDB.opuDB.opu.embryo_freez_date_1].ToString());
-            dt.Rows[0][ic.ivfDB.opuDB.opu.embryo_freez_date_1] = date1;
+            dt.Rows[0][ic.ivfDB.opuDB.opu.embryo_freez_date_1] = date1.Replace("-", "/");
             date1 = ic.datetoShow(dt.Rows[0][ic.ivfDB.opuDB.opu.date_pic_embryo].ToString());
-            dt.Rows[0][ic.ivfDB.opuDB.opu.opu_date] = date1;
+            dt.Rows[0][ic.ivfDB.opuDB.opu.opu_date] = date1.Replace("-", "/");
             date1 = ic.datetoShow(dt.Rows[0][ic.ivfDB.opuDB.opu.sperm_date].ToString());
-            dt.Rows[0][ic.ivfDB.opuDB.opu.sperm_date] = date1;
+            dt.Rows[0][ic.ivfDB.opuDB.opu.sperm_date] = date1.Replace("-", "/");
 
             if (chkEmbryoFreez2Col.Checked)
             {
@@ -344,7 +344,7 @@ namespace clinic_ivf.gui
                 }
                 String date1 = "";
                 date1 = ic.datetoShow(dt.Rows[0][ic.ivfDB.opuDB.opu.opu_date].ToString());
-                dt.Rows[0][ic.ivfDB.opuDB.opu.opu_date] = date1;
+                dt.Rows[0][ic.ivfDB.opuDB.opu.opu_date] = date1.Replace("-", "/");
                 frm.setOPUEmbryoDevReport(dt);
 
             }

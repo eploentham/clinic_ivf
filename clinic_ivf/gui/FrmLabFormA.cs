@@ -137,7 +137,7 @@ namespace clinic_ivf.gui
             }
             lFormA.t_patient_id = txtPttId.Text;
             lFormA.t_visit_id = txtVsId.Text;
-            lFormA.opu_date = ic.datetoDB(txtOPUDate.Text);
+            lFormA.opu_date = ic.dateTimetoDB1(txtOPUDate.Value);
             lFormA.no_of_oocyte_rt = txtNoofOocyteRt.Text;
             lFormA.no_of_oocyte_lt = txtNoofOocyteLt.Text;
             lFormA.status_fresh_sperm = chkFreshSprem.Checked ? "1" : "0";
@@ -197,6 +197,8 @@ namespace clinic_ivf.gui
             lFormA.dob_male = ic.datetoDB(txtDobMale.Text);
             lFormA.y_selection = chkYselet.Checked ? "1" : "0";
             lFormA.x_selection = chkXselet.Checked ? "1" : "0";
+            lFormA.status_wait_confirm_day1 = chkWaitDay1.Checked ? "1" : "0";
+            lFormA.status_wait_confirm_opu_date = chkWaitOpuDate.Checked ? "1" : "0";
         }
         private void BtnSave_Click(object sender, EventArgs e)
         {
@@ -209,23 +211,23 @@ namespace clinic_ivf.gui
                 setLabFormA();
                 re = ic.ivfDB.lFormaDB.insertLabFormA(lFormA, txtStfConfirmID.Text);
                 DateTime dt = new DateTime();
-                if(DateTime.TryParse(ic.datetoDB(txtOPUDate.Text), out dt))
-                {
-                    reqid = ic.ivfDB.oJsDB.selectByStatusOPU(txtVnOld.Text);
-                    LabRequest lbReq = ic.ivfDB.setLabRequest(txtNameFeMale.Text, txtVnOld.Text, cboDoctor.SelectedItem == null ? "" : ((ComboBoxItem)cboDoctor.SelectedItem).Value
-                    , cboRemark.Text, txtHnOld.Text, ic.datetoDB(txtDobFeMale.Text), reqid, "112");
-                    lbReq.foam_a_id = re;
-                    String re1 = ic.ivfDB.lbReqDB.insertLabRequest(lbReq, txtStfConfirmID.Text);
-                }
+                String dt1 = "";
+                //if(DateTime.TryParse(ic.datetoDB(txtOPUDate.Text), out dt))
+                //{
+                //    dt1 = ic.datetoDB(txtOPUDate.Text);
+                //}
+                reqid = ic.ivfDB.oJsDB.selectByStatusOPU(txtVnOld.Text);
+                LabRequest lbReq = ic.ivfDB.setLabRequest(txtNameFeMale.Text, txtVnOld.Text, cboDoctor.SelectedItem == null ? "" : ((ComboBoxItem)cboDoctor.SelectedItem).Value, cboRemark.Text, txtHnOld.Text, ic.datetoDB(txtDobFeMale.Text), reqid, "112");
+                lbReq.form_a_id = re;
+                String re1 = ic.ivfDB.lbReqDB.insertLabRequest(lbReq, txtStfConfirmID.Text);
+
                 reqid = "";
-                if (DateTime.TryParse(ic.datetoDB(txtEmbryoTranferDate.Text), out dt))
-                {
-                    reqid = ic.ivfDB.oJsDB.selectByStatusFET(txtVnOld.Text);
-                    LabRequest lbReq = ic.ivfDB.setLabRequest(txtNameFeMale.Text, txtVnOld.Text, cboDoctor.SelectedItem == null ? "" : ((ComboBoxItem)cboDoctor.SelectedItem).Value
-                    , cboRemark.Text, txtHnOld.Text, ic.datetoDB(txtDobFeMale.Text), reqid, "160");
-                    lbReq.foam_a_id = re;
-                    String re1 = ic.ivfDB.lbReqDB.insertLabRequest(lbReq, txtStfConfirmID.Text);
-                }
+                lbReq = new LabRequest();
+                reqid = ic.ivfDB.oJsDB.selectByStatusFET(txtVnOld.Text);
+                lbReq = ic.ivfDB.setLabRequest(txtNameFeMale.Text, txtVnOld.Text, cboDoctor.SelectedItem == null ? "" : ((ComboBoxItem)cboDoctor.SelectedItem).Value, cboRemark.Text, txtHnOld.Text, ic.datetoDB(txtDobFeMale.Text), reqid, "160");
+                lbReq.form_a_id = re;
+                String re2 = ic.ivfDB.lbReqDB.insertLabRequest(lbReq, txtStfConfirmID.Text);
+                
                 //txtID.Value = (!txtID.Text.Equals("") && re.Equals("1")) ? re : "";        //update
                 long chk = 0;
                 if (long.TryParse(re, out chk))
@@ -440,6 +442,9 @@ namespace clinic_ivf.gui
             txtDobMale.Value = lFormA.dob_male;
             chkYselet.Checked = lFormA.y_selection.Equals("1") ? true : false;
             chkXselet.Checked = lFormA.x_selection.Equals("1") ? true : false;
+            chkWaitDay1.Checked = lFormA.status_wait_confirm_day1.Equals("1") ? true : false;
+            chkWaitOpuDate.Checked = lFormA.status_wait_confirm_opu_date.Equals("1") ? true : false;
+            chkConfirmOpuDate.Checked = lFormA.status_wait_confirm_opu_date.Equals("1") ? false : true;
         }
         private void FrmLabOPUReq_Load(object sender, EventArgs e)
         {

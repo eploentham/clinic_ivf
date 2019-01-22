@@ -55,11 +55,7 @@ namespace clinic_ivf.objdb
             lbReq.hn_donor = "hn_donor";
             lbReq.name_donor = "name_donor";
             lbReq.request_id = "request_id";
-<<<<<<< HEAD
-            lbReq.foam_a_id = "foam_a_id";
-=======
-            lbReq.foam_a_id = "form_a_id";
->>>>>>> 6e187e3fedc868fa17357affaaa43bc01fbb3740
+            lbReq.form_a_id = "form_a_id";
 
             lbReq.table = "lab_t_request";
             lbReq.pkField = "req_id";
@@ -100,7 +96,7 @@ namespace clinic_ivf.objdb
             p.doctor_id = long.TryParse(p.doctor_id, out chk) ? chk.ToString() : "0";
             p.lab_id = long.TryParse(p.lab_id, out chk) ? chk.ToString() : "0";
             p.request_id = long.TryParse(p.request_id, out chk) ? chk.ToString() : "0";
-            p.foam_a_id = long.TryParse(p.foam_a_id, out chk) ? chk.ToString() : "0";
+            p.form_a_id = long.TryParse(p.form_a_id, out chk) ? chk.ToString() : "0";
         }
         public DataTable selectByPk(String copId)
         {
@@ -196,7 +192,7 @@ namespace clinic_ivf.objdb
             int chk = 0;
 
             chkNull(p);
-            lbReq.foam_a_id = "form_a_id";
+            lbReq.form_a_id = "form_a_id";
             //p.req_code = genReqDoc();
             sql = "Insert Into " + lbReq.table + " Set " +
                 " " + lbReq.req_code + " = '" + p.req_code + "'" +
@@ -231,7 +227,7 @@ namespace clinic_ivf.objdb
                 "," + lbReq.name_donor + " = '" + p.name_donor.Replace("'", "''") + "'" +
                 "," + lbReq.lab_id + " = '" + p.lab_id + "'" +
                 "," + lbReq.request_id + " = '" + p.request_id + "' " +
-                "," + lbReq.foam_a_id + " = '" + p.foam_a_id + "' " +
+                "," + lbReq.form_a_id + " = '" + p.form_a_id + "' " +
                 "";
             try
             {
@@ -313,7 +309,7 @@ namespace clinic_ivf.objdb
                 lbReq1.start_staff_id = dt.Rows[0][lbReq.start_staff_id].ToString();
                 lbReq1.result_staff_id = dt.Rows[0][lbReq.result_staff_id].ToString();
                 lbReq1.doctor_id = dt.Rows[0][lbReq.doctor_id].ToString();
-                lbReq1.foam_a_id = dt.Rows[0][lbReq.foam_a_id].ToString();
+                lbReq1.form_a_id = dt.Rows[0][lbReq.form_a_id].ToString();
                 lbReq1.request_id = dt.Rows[0][lbReq.request_id].ToString();
             }
             else
@@ -345,7 +341,7 @@ namespace clinic_ivf.objdb
                 lbReq1.result_staff_id = "";
                 lbReq1.doctor_id = "";
                 lbReq1.request_id = "";
-                lbReq1.foam_a_id = "";
+                lbReq1.form_a_id = "";
             }
 
             return lbReq1;
