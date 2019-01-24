@@ -1583,7 +1583,7 @@
             this.chkXselet.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.chkXselet.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.chkXselet.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.chkXselet.Location = new System.Drawing.Point(689, 83);
+            this.chkXselet.Location = new System.Drawing.Point(679, 100);
             this.chkXselet.Name = "chkXselet";
             this.chkXselet.Padding = new System.Windows.Forms.Padding(4, 1, 1, 1);
             this.chkXselet.Size = new System.Drawing.Size(140, 24);
@@ -1674,7 +1674,7 @@
             this.label13.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
             this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label13.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.label13.Location = new System.Drawing.Point(198, 6);
+            this.label13.Location = new System.Drawing.Point(198, 8);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(77, 16);
             this.label13.TabIndex = 711;
@@ -1898,7 +1898,7 @@
             this.label11.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
             this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label11.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.label11.Location = new System.Drawing.Point(696, 16);
+            this.label11.Location = new System.Drawing.Point(709, 33);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(27, 16);
             this.label11.TabIndex = 708;
@@ -1910,7 +1910,7 @@
             this.txtNoofOocyteLt.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtNoofOocyteLt.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
             this.txtNoofOocyteLt.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.txtNoofOocyteLt.Location = new System.Drawing.Point(732, 14);
+            this.txtNoofOocyteLt.Location = new System.Drawing.Point(745, 31);
             this.txtNoofOocyteLt.Name = "txtNoofOocyteLt";
             this.txtNoofOocyteLt.Size = new System.Drawing.Size(84, 20);
             this.txtNoofOocyteLt.TabIndex = 707;
@@ -1924,7 +1924,7 @@
             this.label10.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
             this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label10.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.label10.Location = new System.Drawing.Point(561, 16);
+            this.label10.Location = new System.Drawing.Point(574, 33);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(30, 16);
             this.label10.TabIndex = 706;
@@ -1949,7 +1949,7 @@
             this.txtNoofOocyteRt.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtNoofOocyteRt.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
             this.txtNoofOocyteRt.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.txtNoofOocyteRt.Location = new System.Drawing.Point(604, 14);
+            this.txtNoofOocyteRt.Location = new System.Drawing.Point(617, 31);
             this.txtNoofOocyteRt.Name = "txtNoofOocyteRt";
             this.txtNoofOocyteRt.Size = new System.Drawing.Size(84, 20);
             this.txtNoofOocyteRt.TabIndex = 704;
@@ -2107,7 +2107,7 @@
             | C1.Win.C1Input.FormatInfoInheritFlags.TrimStart) 
             | C1.Win.C1Input.FormatInfoInheritFlags.TrimEnd)));
             this.txtOPUDate.ImagePadding = new System.Windows.Forms.Padding(0);
-            this.txtOPUDate.Location = new System.Drawing.Point(349, 14);
+            this.txtOPUDate.Location = new System.Drawing.Point(361, 15);
             this.txtOPUDate.Name = "txtOPUDate";
             this.txtOPUDate.Size = new System.Drawing.Size(173, 18);
             this.txtOPUDate.TabIndex = 697;
@@ -2121,7 +2121,7 @@
             this.label7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
             this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.label7.Location = new System.Drawing.Point(266, 16);
+            this.label7.Location = new System.Drawing.Point(278, 17);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(73, 16);
             this.label7.TabIndex = 696;
@@ -2250,7 +2250,7 @@
             this.panel1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
             this.panel1.Location = new System.Drawing.Point(12, 16);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(527, 46);
+            this.panel1.Size = new System.Drawing.Size(548, 46);
             this.panel1.TabIndex = 734;
             this.theme1.SetTheme(this.panel1, "(default)");
             // 

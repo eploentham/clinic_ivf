@@ -86,6 +86,11 @@ namespace clinic_ivf.objdb
             lformA.x_selection = "x_selection";
             lformA.status_wait_confirm_day1 = "status_wait_confirm_day1";
             lformA.status_wait_confirm_opu_date = "status_wait_confirm_opu_date";
+            lformA.req_id_et = "req_id_et";
+            lformA.req_id_fet = "req_id_fet";
+            lformA.req_id_iui = "req_id_iui";
+            lformA.req_id_opu = "req_id_opu";
+            lformA.req_id_pesa_tese = "req_id_pesa_tese";
 
             lformA.pkField = "form_a_id";
             lformA.table = "lab_t_form_a";
@@ -172,6 +177,11 @@ namespace clinic_ivf.objdb
             p.t_visit_id = long.TryParse(p.t_visit_id, out chk) ? chk.ToString() : "0";
             p.vn_old = long.TryParse(p.vn_old, out chk) ? chk.ToString() : "0";
             p.doctor_id = long.TryParse(p.doctor_id, out chk) ? chk.ToString() : "0";
+            p.req_id_et = long.TryParse(p.req_id_et, out chk) ? chk.ToString() : "0";
+            p.req_id_fet = long.TryParse(p.req_id_fet, out chk) ? chk.ToString() : "0";
+            p.req_id_iui = long.TryParse(p.req_id_iui, out chk) ? chk.ToString() : "0";
+            p.req_id_opu = long.TryParse(p.req_id_opu, out chk) ? chk.ToString() : "0";
+            p.req_id_pesa_tese = long.TryParse(p.req_id_pesa_tese, out chk) ? chk.ToString() : "0";
 
         }
         public String insert(LabFormA p, String userId)
@@ -247,6 +257,11 @@ namespace clinic_ivf.objdb
                     "," + lformA.x_selection + "='" + p.x_selection + "' " +
                     "," + lformA.status_wait_confirm_day1 + "='" + p.status_wait_confirm_day1 + "' " +
                     "," + lformA.status_wait_confirm_opu_date + "='" + p.status_wait_confirm_opu_date + "' " +
+                    "," + lformA.req_id_et + "='" + p.req_id_et + "' " +
+                    "," + lformA.req_id_fet + "='" + p.req_id_fet + "' " +
+                    "," + lformA.req_id_iui + "='" + p.req_id_iui + "' " +
+                    "," + lformA.req_id_opu + "='" + p.req_id_opu + "' " +
+                    "," + lformA.req_id_pesa_tese + "='" + p.req_id_pesa_tese + "' " +
                     "";
                 re = conn.ExecuteNonQuery(conn.conn, sql);
             }
@@ -351,6 +366,101 @@ namespace clinic_ivf.objdb
                 re = update(p, "");
             }
 
+            return re;
+        }
+        public String updateReqIdOPU(String id, String reqid)
+        {
+            String re = "";
+            String sql = "";
+            
+            sql = "Update " + lformA.table + " " +
+                //" Set "+lformA.patient_appoint_date_time + "='"+p.patient_appoint_date_time + "' " +
+                "Set " + lformA.req_id_opu + "='" + reqid + "' " +                    
+                " Where " + lformA.pkField + " = '" + id + "' ";
+            try
+            {
+                re = conn.ExecuteNonQuery(conn.conn, sql);
+            }
+            catch (Exception ex)
+            {
+                sql = ex.Message + " " + ex.InnerException;
+            }
+            return re;
+        }
+        public String updateReqIdFet(String id, String reqid)
+        {
+            String re = "";
+            String sql = "";
+
+            sql = "Update " + lformA.table + " " +
+                //" Set "+lformA.patient_appoint_date_time + "='"+p.patient_appoint_date_time + "' " +
+                "Set " + lformA.req_id_fet + "='" + reqid + "' " +
+                " Where " + lformA.pkField + " = '" + id + "' ";
+            try
+            {
+                re = conn.ExecuteNonQuery(conn.conn, sql);
+            }
+            catch (Exception ex)
+            {
+                sql = ex.Message + " " + ex.InnerException;
+            }
+            return re;
+        }
+        public String updateReqIdET(String id, String reqid)
+        {
+            String re = "";
+            String sql = "";
+
+            sql = "Update " + lformA.table + " " +
+                //" Set "+lformA.patient_appoint_date_time + "='"+p.patient_appoint_date_time + "' " +
+                "Set " + lformA.req_id_et + "='" + reqid + "' " +
+                " Where " + lformA.pkField + " = '" + id + "' ";
+            try
+            {
+                re = conn.ExecuteNonQuery(conn.conn, sql);
+            }
+            catch (Exception ex)
+            {
+                sql = ex.Message + " " + ex.InnerException;
+            }
+            return re;
+        }
+        public String updateReqIdIUI(String id, String reqid)
+        {
+            String re = "";
+            String sql = "";
+
+            sql = "Update " + lformA.table + " " +
+                //" Set "+lformA.patient_appoint_date_time + "='"+p.patient_appoint_date_time + "' " +
+                "Set " + lformA.req_id_iui + "='" + reqid + "' " +
+                " Where " + lformA.pkField + " = '" + id + "' ";
+            try
+            {
+                re = conn.ExecuteNonQuery(conn.conn, sql);
+            }
+            catch (Exception ex)
+            {
+                sql = ex.Message + " " + ex.InnerException;
+            }
+            return re;
+        }
+        public String updateReqIdPESATESE(String id, String reqid)
+        {
+            String re = "";
+            String sql = "";
+
+            sql = "Update " + lformA.table + " " +
+                //" Set "+lformA.patient_appoint_date_time + "='"+p.patient_appoint_date_time + "' " +
+                "Set " + lformA.req_id_pesa_tese + "='" + reqid + "' " +
+                " Where " + lformA.pkField + " = '" + id + "' ";
+            try
+            {
+                re = conn.ExecuteNonQuery(conn.conn, sql);
+            }
+            catch (Exception ex)
+            {
+                sql = ex.Message + " " + ex.InnerException;
+            }
             return re;
         }
         public DataTable selectReportByPk(String pttId)
@@ -500,6 +610,11 @@ namespace clinic_ivf.objdb
                 vs1.x_selection = dt.Rows[0][lformA.x_selection].ToString();
                 vs1.status_wait_confirm_day1 = dt.Rows[0][lformA.status_wait_confirm_day1].ToString();
                 vs1.status_wait_confirm_opu_date = dt.Rows[0][lformA.status_wait_confirm_opu_date].ToString();
+                vs1.req_id_et = dt.Rows[0][lformA.req_id_et].ToString();
+                vs1.req_id_fet = dt.Rows[0][lformA.req_id_fet].ToString();
+                vs1.req_id_iui = dt.Rows[0][lformA.req_id_iui].ToString();
+                vs1.req_id_opu = dt.Rows[0][lformA.req_id_opu].ToString();
+                vs1.req_id_pesa_tese = dt.Rows[0][lformA.req_id_pesa_tese].ToString();
             }
             else
             {
@@ -573,6 +688,11 @@ namespace clinic_ivf.objdb
             lforma1.x_selection = "";
             lforma1.status_wait_confirm_day1 = "";
             lforma1.status_wait_confirm_opu_date = "";
+            lforma1.req_id_et = "";
+            lforma1.req_id_fet = "";
+            lforma1.req_id_iui = "";
+            lforma1.req_id_opu = "";
+            lforma1.req_id_pesa_tese = "";
             return lforma1;
         }
     }

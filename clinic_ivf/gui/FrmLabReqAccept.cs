@@ -25,7 +25,7 @@ namespace clinic_ivf.gui
         Font fEdit, fEditB;
         Color bg, fc;
         Font ff, ffB;
-        int colRqId = 1, colRqReqNum = 2, colRqHn = 3, colRqVn = 4, colRqItmName = 5, colPttName=6, colRqDate = 7, colRqRemark = 9, colDtrName=8, colDtrId=10, colRqStatusReq=11, colRqDob=12, colRqItmCode=13;
+        int colRqId = 1, colRqReqNum = 2, colRqHn = 3, colRqVn = 4, colRqItmName = 5, colPttName=6, colRqDate = 7, colRqRemark = 9, colDtrName=8, colDtrId=10, colRqStatusReq=11, colRqDob=12, colRqItmCode=13, colRqOPUdate=14;
 
         C1FlexGrid grfReq;
         C1SuperTooltip stt;
@@ -195,7 +195,7 @@ namespace clinic_ivf.gui
                     dateend1 = ic.datetoDB(txtDateEnd.Text);
                 }
                 grfReq.Clear();
-                grfReq.Cols.Count = 14;
+                grfReq.Cols.Count = 15;
                 grfReq.Rows.Count = 1;
                 DataTable dt = new DataTable();
                 grfReq.DataSource = null;
@@ -217,6 +217,7 @@ namespace clinic_ivf.gui
                 grfReq.Cols[colRqDate].Width = 100;
                 grfReq.Cols[colPttName].Width = 200;
                 grfReq.Cols[colDtrName].Width = 200;
+                grfReq.Cols[colRqOPUdate].Width = 120;
 
                 grfReq.ShowCursor = true;
                 //grdFlex.Cols[colID].Caption = "no";
@@ -231,6 +232,7 @@ namespace clinic_ivf.gui
                 grfReq.Cols[colRqRemark].Caption = "Remark";
                 grfReq.Cols[colDtrId].Caption = "Remark";
                 grfReq.Cols[colDtrName].Caption = "Doctor";
+                grfReq.Cols[colRqOPUdate].Caption = "OPU Date";
 
                 Color color = ColorTranslator.FromHtml(ic.iniC.grfRowColor);
                 //CellRange rg1 = grfBank.GetCellRange(1, colE, grfBank.Rows.Count, colE);
@@ -258,7 +260,21 @@ namespace clinic_ivf.gui
                     {
                         grfReq.Rows[i].StyleNew.BackColor = color;
                     }
-
+                    if (row["status_wait_confirm_opu_date"].ToString().Equals("1"))
+                    {
+                        //grfReq.Rows[i].StyleNew.BackColor = ColorTranslator.FromHtml(ic.iniC.grfRowColor);
+                        String txt1 = "";
+                        txt1 = "รอ confirm วัน เวลา OPU จากทาง พยาบาล";
+                        CellNote note = new CellNote(txt1);
+                        CellRange rg = grfReq.GetCellRange(i, colRqHn);
+                        rg.UserData = note;
+                        grfReq.Rows[i].StyleNew.BackColor = Color.Yellow;
+                    }
+                    else if (row["status_wait_confirm_opu_date"].ToString().Equals("2"))
+                    {
+                        grfReq.Rows[i].StyleNew.BackColor = Color.Green;
+                    }
+                    
                     i++;
                 }
                 grfReq.Cols[colRqId].Visible = false;
@@ -267,6 +283,7 @@ namespace clinic_ivf.gui
                 grfReq.Cols[colRqStatusReq].Visible = false;
                 grfReq.Cols[colRqDob].Visible = false;
                 grfReq.Cols[colRqItmCode].Visible = false;
+                CellNoteManager mgr = new CellNoteManager(grfReq);
             }
             catch (Exception ex)
             {

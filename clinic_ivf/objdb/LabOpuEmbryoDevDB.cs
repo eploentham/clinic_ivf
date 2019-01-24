@@ -104,7 +104,7 @@ namespace clinic_ivf.objdb
                 "," + opuEmDev.embryo_dev_date + "='" + p.embryo_dev_date + "'" +
                 " " +
                
-                ")";
+                "";
             try
             {
                 re = conn.ExecuteNonQuery(conn.conn, sql);

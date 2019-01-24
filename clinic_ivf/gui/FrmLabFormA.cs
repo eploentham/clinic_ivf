@@ -82,7 +82,8 @@ namespace clinic_ivf.gui
             FrmReport frm = new FrmReport(ic);
             DataTable dt = new DataTable();
             dt = ic.ivfDB.lFormaDB.selectReportByPk(txtID.Text);
-            String date1 = "";
+            String date1 = "", txt1 = "";
+            if (dt.Rows.Count <= 0) return;
             date1 = ic.datetoShow(dt.Rows[0][ic.ivfDB.lFormaDB.lformA.opu_date].ToString());
             dt.Rows[0][ic.ivfDB.lFormaDB.lformA.opu_date] = date1;
             date1 = ic.datetoShow(dt.Rows[0][ic.ivfDB.lFormaDB.lformA.embryo_freezing_day].ToString());
@@ -109,7 +110,12 @@ namespace clinic_ivf.gui
             dt.Rows[0][ic.ivfDB.lFormaDB.lformA.sperm_analysis_date_end] = date1;
             date1 = ic.datetoShow(dt.Rows[0][ic.ivfDB.lFormaDB.lformA.fet_no_date_freezing].ToString());
             dt.Rows[0][ic.ivfDB.lFormaDB.lformA.fet_no_date_freezing] = date1;
-
+            if (dt.Rows[0]["status_wait_confirm_opu_date"].ToString().Equals("1"))
+            {
+                txt1 = "รอ confirm วัน เวลา OPU จากทาง พยาบาล";
+            }
+            dt.Columns.Add("note1", typeof(String));
+            dt.Rows[0]["note1"] = txt1;
             frm.setLabFormAReport(dt);
             frm.ShowDialog(this);
         }
@@ -198,7 +204,7 @@ namespace clinic_ivf.gui
             lFormA.y_selection = chkYselet.Checked ? "1" : "0";
             lFormA.x_selection = chkXselet.Checked ? "1" : "0";
             lFormA.status_wait_confirm_day1 = chkWaitDay1.Checked ? "1" : "0";
-            lFormA.status_wait_confirm_opu_date = chkWaitOpuDate.Checked ? "1" : "0";
+            lFormA.status_wait_confirm_opu_date = chkWaitOpuDate.Checked ? chkConfirmOpuDate.Checked ? "2" : "1" : "0";
         }
         private void BtnSave_Click(object sender, EventArgs e)
         {
@@ -216,18 +222,36 @@ namespace clinic_ivf.gui
                 //{
                 //    dt1 = ic.datetoDB(txtOPUDate.Text);
                 //}
-                reqid = ic.ivfDB.oJsDB.selectByStatusOPU(txtVnOld.Text);
-                LabRequest lbReq = ic.ivfDB.setLabRequest(txtNameFeMale.Text, txtVnOld.Text, cboDoctor.SelectedItem == null ? "" : ((ComboBoxItem)cboDoctor.SelectedItem).Value, cboRemark.Text, txtHnOld.Text, ic.datetoDB(txtDobFeMale.Text), reqid, "112");
-                lbReq.form_a_id = re;
-                String re1 = ic.ivfDB.lbReqDB.insertLabRequest(lbReq, txtStfConfirmID.Text);
+                if (txtID.Text.Equals(""))
+                {
+                    LabRequest lbReq = new LabRequest();
+                    if (chkWaitOpuDate.Checked)
+                    {
+                        reqid = ic.ivfDB.oJsDB.selectByStatusOPU(txtVnOld.Text);
+                        lbReq = ic.ivfDB.setLabRequest(txtNameFeMale.Text, txtVnOld.Text, cboDoctor.SelectedItem == null ? "" : ((ComboBoxItem)cboDoctor.SelectedItem).Value, cboRemark.Text, txtHnOld.Text, ic.datetoDB(txtDobFeMale.Text), reqid, "112");
+                        lbReq.form_a_id = re;
+                        String re1 = ic.ivfDB.lbReqDB.insertLabRequest(lbReq, txtStfConfirmID.Text);
+                        ic.ivfDB.lFormaDB.updateReqIdOPU(re, re1);
+                    }
 
-                reqid = "";
-                lbReq = new LabRequest();
-                reqid = ic.ivfDB.oJsDB.selectByStatusFET(txtVnOld.Text);
-                lbReq = ic.ivfDB.setLabRequest(txtNameFeMale.Text, txtVnOld.Text, cboDoctor.SelectedItem == null ? "" : ((ComboBoxItem)cboDoctor.SelectedItem).Value, cboRemark.Text, txtHnOld.Text, ic.datetoDB(txtDobFeMale.Text), reqid, "160");
-                lbReq.form_a_id = re;
-                String re2 = ic.ivfDB.lbReqDB.insertLabRequest(lbReq, txtStfConfirmID.Text);
-                
+                    if (chkETNotoTranfer.Checked || chkFET.Checked)
+                    {
+                        reqid = "";
+                        lbReq = new LabRequest();
+                        reqid = ic.ivfDB.oJsDB.selectByStatusFET(txtVnOld.Text);
+                        lbReq = ic.ivfDB.setLabRequest(txtNameFeMale.Text, txtVnOld.Text, cboDoctor.SelectedItem == null ? "" : ((ComboBoxItem)cboDoctor.SelectedItem).Value, cboRemark.Text, txtHnOld.Text, ic.datetoDB(txtDobFeMale.Text), reqid, "160");
+                        lbReq.form_a_id = re;
+                        String re2 = ic.ivfDB.lbReqDB.insertLabRequest(lbReq, txtStfConfirmID.Text);
+                        if (chkFET.Checked)
+                        {
+                            ic.ivfDB.lFormaDB.updateReqIdFet(re, re2);
+                        }
+                    }
+                }
+                else
+                {
+                    //String re1 = ic.ivfDB.lbReqDB.insertLabRequest(lbReq, txtStfConfirmID.Text);
+                }
                 //txtID.Value = (!txtID.Text.Equals("") && re.Equals("1")) ? re : "";        //update
                 long chk = 0;
                 if (long.TryParse(re, out chk))

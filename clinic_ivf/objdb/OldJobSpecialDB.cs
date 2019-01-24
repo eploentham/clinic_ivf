@@ -45,7 +45,8 @@ namespace clinic_ivf.objdb
         {
             DataTable dt = new DataTable();
             String sql = "Select oJS.*, oJSd.SName, oJSd.SID, oJSd.ID as odsd_id, concat(SurfixName.SurfixName,' ',ptt.PName,' ',ptt.PSurname) as pttname" +
-                ", JobDoctor.DID, Doctor.Name as dtrname, Doctor.ID as dtrid, oJSd.status_req_accept, ifnull(lreq.remark,'') as remark, DateOfBirth as dob  " +
+                ", JobDoctor.DID, Doctor.Name as dtrname, Doctor.ID as dtrid, oJSd.status_req_accept, ifnull(lreq.remark,'') as remark, DateOfBirth as dob" +
+                ", lforma.status_wait_confirm_day1,lreq.form_a_id,oJSd.req_id , vsold.form_a_id, ptt.PIDS,lforma.status_wait_confirm_day1,lforma.status_wait_confirm_opu_date  " +
                 "From " + oJS.table + " oJS " +
                 "Left Join JobSpecialDetail oJSd on oJS.Vn = oJSd.Vn " +
                 "Left Join Patient ptt on ptt.PID = oJS.PID " +
@@ -53,6 +54,8 @@ namespace clinic_ivf.objdb
                 "Left Join JobDoctor on JobDoctor.VN = oJS.VN "+
                 "Left join Doctor on JobDoctor.DName = Doctor.Name " +
                 "Left Join lab_t_request lreq on lreq.req_id = oJSd.req_id " +
+                "Left Join Visit vsold on oJSd.VN = vsold.VN " +
+                "Left Join lab_t_form_a lforma on vsold.form_a_id = lforma.form_a_id " +
                 "Where oJS." + oJS.Status + " ='1' and oJSd.SID in (112,160) " +
                 "and oJS.Date >= '"+startdate+ "' and oJS.Date <='"+enddate+"' " +
                 "Order By oJSd.ID";

@@ -87,8 +87,8 @@ namespace clinic_ivf.objdb
                 stf1.staff_code = row[stf.staff_code].ToString();
                 stf1.staff_fname_t = row[stf.staff_fname_t].ToString();
                 stf1.staff_lname_t = row[stf.staff_lname_t].ToString();
-                //cus1.c = row[dept.dept_parent_id].ToString();
-                //cus1.remark = row[dept.remark].ToString();
+                stf1.staff_fname_e = row[stf.staff_fname_e].ToString();
+                stf1.staff_lname_e = row[stf.staff_lname_e].ToString();
                 //cus1.date_create = row[dept.date_create].ToString();
                 //cus1.date_modi = row[dept.date_modi].ToString();
                 //cus1.date_cancel = row[dept.date_cancel].ToString();
@@ -633,7 +633,7 @@ namespace clinic_ivf.objdb
             {
                 if (cus1.staff_id.Equals(selected))
                 {
-                    re = cus1.staff_fname_t + " " + cus1.staff_lname_t;
+                    re = cus1.staff_fname_e + " " + cus1.staff_lname_e;
                     break;
                 }
                 i++;
@@ -654,7 +654,7 @@ namespace clinic_ivf.objdb
             {
                 item = new ComboBoxItem();
                 item.Value = cus1.staff_id;
-                item.Text = cus1.staff_fname_t + " " + cus1.staff_lname_t;
+                item.Text = cus1.staff_fname_e + " " + cus1.staff_lname_e;
                 c.Items.Add(item);
                 if (item.Value.Equals(selected))
                 {

@@ -192,7 +192,7 @@ namespace clinic_ivf.objdb
             int chk = 0;
 
             chkNull(p);
-            lbReq.form_a_id = "form_a_id";
+            //lbReq.form_a_id = "form_a_id";
             //p.req_code = genReqDoc();
             sql = "Insert Into " + lbReq.table + " Set " +
                 " " + lbReq.req_code + " = '" + p.req_code + "'" +

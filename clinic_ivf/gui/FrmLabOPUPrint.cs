@@ -204,7 +204,7 @@ namespace clinic_ivf.gui
             dt.Columns.Add("embryo_for_et_embryologist_id", typeof(String));
             dt.Rows[0]["embryo_for_et_embryologist_id"] = ic.ivfDB.stfDB.getStaffNameBylStf(etName);
             //dt.Rows[0]["embryo_dev_0_date"] = ic.datetimetoShow(embryodevdate);
-            dt.Rows[0]["embryo_dev_0_date"] = ic.datetoShow(embryodevdate);
+            dt.Rows[0]["embryo_dev_0_date"] = ic.datetoShow(embryodevdate).Replace("-", "/");
             j = 1;
             if (!chkEmbryoDev20.Checked && dtdev2.Rows.Count > 0)
             {
@@ -226,7 +226,7 @@ namespace clinic_ivf.gui
             }
             dt.Rows[0]["embryo_dev_1_staff_name"] = ic.ivfDB.stfDB.getStaffNameBylStf(stfid);
             dt.Rows[0]["embryo_dev_1_checked_name"] = ic.ivfDB.stfDB.getStaffNameBylStf(checkedid);
-            dt.Rows[0]["embryo_dev_1_date"] = ic.datetoShow(embryodevdate);
+            dt.Rows[0]["embryo_dev_1_date"] = ic.datetoShow(embryodevdate).Replace("-", "/");
             String date1 = "";
             date1 = ic.datetoShow(dt.Rows[0][ic.ivfDB.opuDB.opu.dob_female].ToString());
             dt.Rows[0][ic.ivfDB.opuDB.opu.dob_female] = date1.Replace("-","/");

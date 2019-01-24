@@ -72,5 +72,10 @@ namespace clinic_ivf.object1
         public String x_selection { get; set; }
         public String status_wait_confirm_day1 { get; set; }
         public String status_wait_confirm_opu_date { get; set; }
+        public String req_id_opu { get; set; }
+        public String req_id_et { get; set; }
+        public String req_id_fet { get; set; }
+        public String req_id_iui { get; set; }
+        public String req_id_pesa_tese { get; set; }
     }
 }

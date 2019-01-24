@@ -139,6 +139,8 @@ namespace clinic_ivf.gui
             setControl();
             setGrf();
             setTheme();
+            char c = '\u00B5';
+            label86.Text = c.ToString();
         }
         private void setTheme()
         {
@@ -299,19 +301,26 @@ namespace clinic_ivf.gui
         protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
         {
             // ...
-            if (prefixSeen)
+            //if (prefixSeen)
+            //{
+            //    if (keyData == (Keys.Alt | Keys.Control | Keys.S))
+            //    {
+            //        MessageBox.Show("Got it!");
+            //    }
+            //    prefixSeen = false;
+            //    return true;
+            //}
+            //if (keyData == (Keys.Alt | Keys.Control | Keys.K))
+            //{
+            //    prefixSeen = true;
+            //    return true;
+            //}
+            switch (keyData)
             {
-                if (keyData == (Keys.Alt | Keys.Control | Keys.S))
-                {
-                    MessageBox.Show("Got it!");
-                }
-                prefixSeen = false;
-                return true;
-            }
-            if (keyData == (Keys.Alt | Keys.Control | Keys.K))
-            {
-                prefixSeen = true;
-                return true;
+                case Keys.S | Keys.Control :
+                    // ... Process Shift+Ctrl+Alt+B ...
+                    MessageBox.Show("1111", "");
+                    return true; // signal that we've processed this key
             }
             return base.ProcessCmdKey(ref msg, keyData);
         }
@@ -833,7 +842,7 @@ namespace clinic_ivf.gui
             String txt = "";
             try
             {
-                String[] ext = txtMaturaNoofOpu.Text.Split(',');
+                String[] ext = txtMaturaNoofOpu1.Text.Split(',');
                 int rt = 0, lt = 0;
                 if (!int.TryParse(ext[0], out rt))
                 {
@@ -3383,6 +3392,7 @@ namespace clinic_ivf.gui
             //throw new NotImplementedException();
             if (grfDay2.Row == null) return;
             if (grfDay2.Row < 0) return;
+
             //if (grfDay2.Row == grfDay2.Rows.Count)
             //    grfDay2.Rows.Add();
         }
@@ -3560,7 +3570,7 @@ namespace clinic_ivf.gui
             grfDay2.Rows.Add();
             grfDay2.Cols[colDay2ID].Visible = false;
             grfDay2.Cols[colDay2Num].Visible = false;
-            grfDay5.Cols[colDay2Edit].Visible = false;
+            grfDay2.Cols[colDay2Edit].Visible = false;
             ic.setC1Combo(cboEmbryologistDay2, staffId);
             ic.setC1Combo(cboCheckedDay2, checkId);
             txtDay2Date.Value = dateday2;
@@ -3627,7 +3637,7 @@ namespace clinic_ivf.gui
             grfDay3.Rows.Add();
             grfDay3.Cols[colDay3ID].Visible = false;
             grfDay3.Cols[colDay3Num].Visible = false;
-            grfDay5.Cols[colDay3Edit].Visible = false;
+            grfDay3.Cols[colDay3Edit].Visible = false;
             ic.setC1Combo(cboEmbryologistDay3, staffId);
             ic.setC1Combo(cboCheckedDay3, checkId);
             txtDay3Date.Value = dateday;
@@ -3764,7 +3774,7 @@ namespace clinic_ivf.gui
             grfDay6.Rows.Add();
             grfDay6.Cols[colDay2ID].Visible = false;
             grfDay6.Cols[colDay2Num].Visible = false;
-            grfDay5.Cols[colDay6Edit].Visible = false;
+            grfDay6.Cols[colDay6Edit].Visible = false;
             ic.setC1Combo(cboEmbryologistDay6, staffId);
             ic.setC1Combo(cboCheckedDay6, checkId);
             txtDay6Date.Value = dateday;
