@@ -140,7 +140,7 @@ namespace clinic_ivf.gui
             setGrf();
             setTheme();
             char c = '\u00B5';
-            label86.Text = c.ToString();
+            label86.Text = c.ToString()+"l";
         }
         private void setTheme()
         {
@@ -319,7 +319,10 @@ namespace clinic_ivf.gui
             {
                 case Keys.S | Keys.Control :
                     // ... Process Shift+Ctrl+Alt+B ...
-                    MessageBox.Show("1111", "");
+                    //MessageBox.Show("1111", "");
+                    return true; // signal that we've processed this key
+                case Keys.C | Keys.Control :
+                    //MessageBox.Show("2222 ", "");
                     return true; // signal that we've processed this key
             }
             return base.ProcessCmdKey(ref msg, keyData);
@@ -407,20 +410,21 @@ namespace clinic_ivf.gui
                 }
                 else if (sender.Equals(txtSpermCnt))
                 {
-                    txtSpermTotalCnt.Focus();
-                }
-                else if (sender.Equals(txtSpermTotalCnt))
-                {
-                    txtSpermMoti.Focus();
-                }
-                else if (sender.Equals(txtSpermMoti))
-                {
-                    txtSpermMotiTotal.Focus();
-                }
-                else if (sender.Equals(txtSpermMotiTotal))
-                {
+                    //txtSpermTotalCnt.Focus();
                     txtSpermMotility.Focus();
                 }
+                //else if (sender.Equals(txtSpermTotalCnt))
+                //{
+                //    txtSpermMoti.Focus();
+                //}
+                //else if (sender.Equals(txtSpermMoti))
+                //{
+                //    txtSpermMotiTotal.Focus();
+                //}
+                //else if (sender.Equals(txtSpermMotiTotal))
+                //{
+                //    txtSpermMotility.Focus();
+                //}
             }
         }
         private Boolean calFertili()
@@ -492,6 +496,12 @@ namespace clinic_ivf.gui
             {
                 if (sender.Equals(txtMaturaDate))
                 {
+                    DateTime dt = new DateTime();
+                    if(DateTime.TryParse(txtMaturaDate.Text, out dt))
+                    {
+                        txtFertiliDate.Value = dt.AddDays(1);
+                        txtSpermDate.Value = dt;
+                    }
                     txtMaturaMii.Focus();
                 }
                 else if (sender.Equals(txtMaturaMii))
@@ -834,8 +844,36 @@ namespace clinic_ivf.gui
             {
                 e.Handled = false;
             }
+            if ((sender == txtSpermVol) || (sender == txtSpermCnt))
+            {
+                calSperm();
+            }
+            if ((sender == txtSpermMotility) || (sender == txtSpermCnt))
+            {
+                calMotile();
+            }
         }
-
+        private void calSperm()
+        {
+            int vol = 0, cnt = 0, total = 0;
+            int.TryParse(txtSpermVol.Text, out vol);
+            int.TryParse(txtSpermCnt.Text, out cnt);
+            //int.TryParse(txtSpermVol.Text, out vol);
+            total = vol * cnt;
+            txtSpermTotalCnt.Value = total;
+        }
+        private void calMotile()
+        {
+            int motility = 0, cnt = 0, total = 0, vol=0, motile=0;
+            int.TryParse(txtSpermVol.Text, out vol);
+            int.TryParse(txtSpermMotility.Text, out motility);
+            int.TryParse(txtSpermCnt.Text, out cnt);
+            //int.TryParse(txtSpermVol.Text, out vol);
+            motile = (motility * cnt) / 100;
+            total = motile * vol;
+            txtSpermMoti.Value = motile;
+            txtSpermMotiTotal.Value = total;
+        }
         private Boolean chkNoofOPU()
         {
             Boolean chk = true;
@@ -907,7 +945,6 @@ namespace clinic_ivf.gui
                                                 LabOpuEmbryoDev opuEmDev = new LabOpuEmbryoDev();
                                                 opuEmDev.opu_embryo_dev_id = "";
                                                 opuEmDev.opu_fet_id = txtID.Text;
-                                                opuEmDev.day = "2";
                                                 opuEmDev.opu_embryo_dev_no = i.ToString();
                                                 opuEmDev.desc0 = "";
                                                 opuEmDev.active = "1";
@@ -922,6 +959,7 @@ namespace clinic_ivf.gui
                                                 opuEmDev.desc1 = "";
                                                 opuEmDev.desc2 = "";
                                                 opuEmDev.desc3 = "";
+                                                opuEmDev.day = "2";
                                                 re = ic.ivfDB.opuEmDevDB.insertLabOpuEmbryoDev(opuEmDev, ic.cStf.staff_id);
                                                 opuEmDev.day = "3";
                                                 re = ic.ivfDB.opuEmDevDB.insertLabOpuEmbryoDev(opuEmDev, ic.cStf.staff_id);
@@ -976,6 +1014,7 @@ namespace clinic_ivf.gui
                 if (chkNoofOPU())
                 {
                     createEmbryoDev();
+
                     setControlFirstTime(true);
                 }
                 txtMaturaDate.Focus();
@@ -3353,6 +3392,7 @@ namespace clinic_ivf.gui
             grfDay2.AfterRowColChange += GrfDay2_AfterRowColChange;
             grfDay2.ChangeEdit += GrfDay2_ChangeEdit;
             grfDay2.CellChanged += GrfDay2_CellChanged;
+            
             //ContextMenu menuGw = new ContextMenu();
             //menuGw.MenuItems.Add("&Upload image", new EventHandler(ContextMenu_grfday2_upload));
             //menuGw.MenuItems.Add("&Save description", new EventHandler(ContextMenu_grfday2_save));

@@ -198,6 +198,7 @@
             this.cboEmbryologistDay6 = new C1.Win.C1Input.C1ComboBox();
             this.btnSaveDay6 = new C1.Win.C1Input.C1Button();
             this.groupBox7 = new System.Windows.Forms.GroupBox();
+            this.label86 = new System.Windows.Forms.Label();
             this.cboEmbryoForEtDoctor = new C1.Win.C1Input.C1ComboBox();
             this.cboRemark = new C1.Win.C1Input.C1ComboBox();
             this.btnSaveEmbryoEt = new C1.Win.C1Input.C1Button();
@@ -264,7 +265,6 @@
             this.txtHnMale = new C1.Win.C1Input.C1TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.txtHnFeMale = new C1.Win.C1Input.C1TextBox();
-            this.label86 = new System.Windows.Forms.Label();
             this.sB.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.theme1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.c1CommandDock2)).BeginInit();
@@ -1485,7 +1485,7 @@
             // 
             this.btnSaveSperm.Image = global::clinic_ivf.Properties.Resources.download_database24;
             this.btnSaveSperm.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnSaveSperm.Location = new System.Drawing.Point(237, 145);
+            this.btnSaveSperm.Location = new System.Drawing.Point(527, 91);
             this.btnSaveSperm.Name = "btnSaveSperm";
             this.btnSaveSperm.Size = new System.Drawing.Size(83, 39);
             this.btnSaveSperm.TabIndex = 537;
@@ -1501,7 +1501,7 @@
             this.label38.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
             this.label38.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label38.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.label38.Location = new System.Drawing.Point(203, 145);
+            this.label38.Location = new System.Drawing.Point(203, 80);
             this.label38.Name = "label38";
             this.label38.Size = new System.Drawing.Size(28, 16);
             this.label38.TabIndex = 530;
@@ -1514,7 +1514,7 @@
             this.label37.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
             this.label37.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label37.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.label37.Location = new System.Drawing.Point(203, 124);
+            this.label37.Location = new System.Drawing.Point(464, 102);
             this.label37.Name = "label37";
             this.label37.Size = new System.Drawing.Size(40, 16);
             this.label37.TabIndex = 529;
@@ -1527,7 +1527,7 @@
             this.label36.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
             this.label36.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label36.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.label36.Location = new System.Drawing.Point(203, 102);
+            this.label36.Location = new System.Drawing.Point(464, 80);
             this.label36.Name = "label36";
             this.label36.Size = new System.Drawing.Size(61, 16);
             this.label36.TabIndex = 528;
@@ -1540,7 +1540,7 @@
             this.label35.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
             this.label35.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label35.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.label35.Location = new System.Drawing.Point(203, 80);
+            this.label35.Location = new System.Drawing.Point(464, 58);
             this.label35.Name = "label35";
             this.label35.Size = new System.Drawing.Size(40, 16);
             this.label35.TabIndex = 527;
@@ -1580,7 +1580,7 @@
             this.chkSpermFrozen.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.chkSpermFrozen.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.chkSpermFrozen.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.chkSpermFrozen.Location = new System.Drawing.Point(132, 166);
+            this.chkSpermFrozen.Location = new System.Drawing.Point(132, 105);
             this.chkSpermFrozen.Name = "chkSpermFrozen";
             this.chkSpermFrozen.Padding = new System.Windows.Forms.Padding(4, 1, 1, 1);
             this.chkSpermFrozen.Size = new System.Drawing.Size(104, 24);
@@ -1598,7 +1598,7 @@
             this.chkSpermFresh.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.chkSpermFresh.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.chkSpermFresh.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.chkSpermFresh.Location = new System.Drawing.Point(12, 166);
+            this.chkSpermFresh.Location = new System.Drawing.Point(12, 105);
             this.chkSpermFresh.Name = "chkSpermFresh";
             this.chkSpermFresh.Padding = new System.Windows.Forms.Padding(4, 1, 1, 1);
             this.chkSpermFresh.Size = new System.Drawing.Size(104, 24);
@@ -1614,7 +1614,7 @@
             this.txtSpermMotility.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtSpermMotility.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
             this.txtSpermMotility.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.txtSpermMotility.Location = new System.Drawing.Point(98, 143);
+            this.txtSpermMotility.Location = new System.Drawing.Point(98, 78);
             this.txtSpermMotility.Name = "txtSpermMotility";
             this.txtSpermMotility.Size = new System.Drawing.Size(99, 20);
             this.txtSpermMotility.TabIndex = 522;
@@ -1627,7 +1627,7 @@
             this.txtSpermMotiTotal.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtSpermMotiTotal.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
             this.txtSpermMotiTotal.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.txtSpermMotiTotal.Location = new System.Drawing.Point(98, 122);
+            this.txtSpermMotiTotal.Location = new System.Drawing.Point(359, 100);
             this.txtSpermMotiTotal.Name = "txtSpermMotiTotal";
             this.txtSpermMotiTotal.Size = new System.Drawing.Size(99, 20);
             this.txtSpermMotiTotal.TabIndex = 520;
@@ -1640,7 +1640,7 @@
             this.txtSpermMoti.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtSpermMoti.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
             this.txtSpermMoti.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.txtSpermMoti.Location = new System.Drawing.Point(98, 100);
+            this.txtSpermMoti.Location = new System.Drawing.Point(359, 78);
             this.txtSpermMoti.Name = "txtSpermMoti";
             this.txtSpermMoti.Size = new System.Drawing.Size(99, 20);
             this.txtSpermMoti.TabIndex = 519;
@@ -1653,7 +1653,7 @@
             this.txtSpermTotalCnt.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtSpermTotalCnt.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
             this.txtSpermTotalCnt.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.txtSpermTotalCnt.Location = new System.Drawing.Point(98, 78);
+            this.txtSpermTotalCnt.Location = new System.Drawing.Point(359, 56);
             this.txtSpermTotalCnt.Name = "txtSpermTotalCnt";
             this.txtSpermTotalCnt.Size = new System.Drawing.Size(99, 20);
             this.txtSpermTotalCnt.TabIndex = 518;
@@ -1680,7 +1680,7 @@
             this.label19.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
             this.label19.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label19.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.label19.Location = new System.Drawing.Point(9, 145);
+            this.label19.Location = new System.Drawing.Point(9, 80);
             this.label19.Name = "label19";
             this.label19.Size = new System.Drawing.Size(55, 16);
             this.label19.TabIndex = 516;
@@ -1693,7 +1693,7 @@
             this.label25.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
             this.label25.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label25.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.label25.Location = new System.Drawing.Point(9, 124);
+            this.label25.Location = new System.Drawing.Point(270, 102);
             this.label25.Name = "label25";
             this.label25.Size = new System.Drawing.Size(84, 16);
             this.label25.TabIndex = 514;
@@ -1706,7 +1706,7 @@
             this.label27.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
             this.label27.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label27.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.label27.Location = new System.Drawing.Point(9, 102);
+            this.label27.Location = new System.Drawing.Point(270, 80);
             this.label27.Name = "label27";
             this.label27.Size = new System.Drawing.Size(50, 16);
             this.label27.TabIndex = 513;
@@ -1719,7 +1719,7 @@
             this.label28.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
             this.label28.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label28.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.label28.Location = new System.Drawing.Point(9, 80);
+            this.label28.Location = new System.Drawing.Point(270, 58);
             this.label28.Name = "label28";
             this.label28.Size = new System.Drawing.Size(80, 16);
             this.label28.TabIndex = 512;
@@ -3279,6 +3279,19 @@
             this.groupBox7.Text = "Embryo for ET";
             this.theme1.SetTheme(this.groupBox7, "(default)");
             // 
+            // label86
+            // 
+            this.label86.AutoSize = true;
+            this.label86.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.label86.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label86.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.label86.Location = new System.Drawing.Point(416, 16);
+            this.label86.Name = "label86";
+            this.label86.Size = new System.Drawing.Size(11, 16);
+            this.label86.TabIndex = 548;
+            this.label86.Text = ".";
+            this.theme1.SetTheme(this.label86, "(default)");
+            // 
             // cboEmbryoForEtDoctor
             // 
             this.cboEmbryoForEtDoctor.AllowSpinLoop = false;
@@ -4371,19 +4384,6 @@
             this.txtHnFeMale.Tag = null;
             this.theme1.SetTheme(this.txtHnFeMale, "(default)");
             this.txtHnFeMale.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
-            // 
-            // label86
-            // 
-            this.label86.AutoSize = true;
-            this.label86.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.label86.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label86.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.label86.Location = new System.Drawing.Point(416, 16);
-            this.label86.Name = "label86";
-            this.label86.Size = new System.Drawing.Size(11, 16);
-            this.label86.TabIndex = 548;
-            this.label86.Text = ".";
-            this.theme1.SetTheme(this.label86, "(default)");
             // 
             // FrmLabOPUAdd2
             // 

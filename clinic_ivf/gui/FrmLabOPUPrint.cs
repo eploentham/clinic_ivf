@@ -217,7 +217,7 @@ namespace clinic_ivf.gui
                     vol = "0" + row["opu_embryo_dev_no"].ToString();
                     vol = vol.Substring(vol.Length - 2);
                     col = col + vol;
-                    dt.Rows[0][col] = j + ". " + row["desc0"].ToString();
+                    dt.Rows[0][col] = j + ". " + row["desc0"].ToString() + " " + row["desc1"].ToString();
                     stfid = row["staff_id"].ToString();
                     checkedid = row["checked_id"].ToString();
                     embryodevdate = row["embryo_dev_date"].ToString();
@@ -250,7 +250,7 @@ namespace clinic_ivf.gui
             dt.Rows[0][ic.ivfDB.opuDB.opu.embryo_freez_date_0] = date1.Replace("-", "/");
             date1 = ic.datetoShow(dt.Rows[0][ic.ivfDB.opuDB.opu.embryo_freez_date_1].ToString());
             dt.Rows[0][ic.ivfDB.opuDB.opu.embryo_freez_date_1] = date1.Replace("-", "/");
-            date1 = ic.datetoShow(dt.Rows[0][ic.ivfDB.opuDB.opu.date_pic_embryo].ToString());
+            date1 = ic.datetoShow(dt.Rows[0][ic.ivfDB.opuDB.opu.opu_date].ToString());
             dt.Rows[0][ic.ivfDB.opuDB.opu.opu_date] = date1.Replace("-", "/");
             date1 = ic.datetoShow(dt.Rows[0][ic.ivfDB.opuDB.opu.sperm_date].ToString());
             dt.Rows[0][ic.ivfDB.opuDB.opu.sperm_date] = date1.Replace("-", "/");
