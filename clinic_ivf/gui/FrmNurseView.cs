@@ -60,6 +60,7 @@ namespace clinic_ivf.gui
             //txtDateStart.ValueChanged += TxtDateStart_ValueChanged;
             txtDateStart.DropDownClosed += TxtDateStart_DropDownClosed;
             tC.SelectedTabChanged += TC_SelectedTabChanged;
+            btnSearch.Click += BtnSearch_Click;
 
             initGrfQue();
             setGrfQue();
@@ -67,6 +68,19 @@ namespace clinic_ivf.gui
             setGrfDiag("");
             initGrfFinish();
             setGrfFinish();
+        }
+
+        private void BtnSearch_Click(object sender, EventArgs e)
+        {
+            //throw new NotImplementedException();
+            if (tC.SelectedTab == tabFinish)
+            {
+                setGrfFinish();
+            }
+            else if (tC.SelectedTab == tabWaiting)
+            {
+                setGrfQue();
+            }
         }
 
         private void TxtDateStart_DropDownClosed(object sender, DropDownClosedEventArgs e)
@@ -256,7 +270,7 @@ namespace clinic_ivf.gui
             if (search.Equals(""))
             {
                 //String date = System.DateTime.Now.Year + "-" + System.DateTime.Now.ToString("MM-dd");
-                dt = ic.ivfDB.vsOldDB.selectByStatusNurseFinish();
+                dt = ic.ivfDB.vsOldDB.selectByStatusNurseFinish(ic.datetoDB(txtDateStart.Text));
             }
             else
             {

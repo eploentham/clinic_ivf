@@ -62,6 +62,40 @@ namespace clinic_ivf.objdb
             dt = conn.selectData(conn.conn, sql);
             return dt;
         }
+        public String chkByOPU(String vn)
+        {
+            String re = "";
+            DataTable dt = new DataTable();
+            String sql = "Select oJSd.ID  " +
+                "From " + oJS.table + " oJS " +
+                "Left Join JobSpecialDetail oJSd on oJS.Vn = oJSd.Vn " +
+                "Where oJSd.SID in (112) " +
+                "and oJS.VN ='" + vn + "'" +
+                "Order By oJSd.ID";
+            dt = conn.selectData(conn.conn, sql);
+            if (dt.Rows.Count > 0)
+            {
+                re = dt.Rows[0]["ID"].ToString();
+            }
+            return re;
+        }
+        public String chkByFET(String vn)
+        {
+            String re = "";
+            DataTable dt = new DataTable();
+            String sql = "Select oJSd.ID  " +
+                "From " + oJS.table + " oJS " +
+                "Left Join JobSpecialDetail oJSd on oJS.Vn = oJSd.Vn " +
+                "Where oJSd.SID in (160) " +
+                "and oJS.VN ='" + vn + "'" +
+                "Order By oJSd.ID";
+            dt = conn.selectData(conn.conn, sql);
+            if (dt.Rows.Count > 0)
+            {
+                re = dt.Rows[0]["ID"].ToString();
+            }
+            return re;
+        }
         public String selectByStatusOPU(String vn)
         {
             String re = "";

@@ -71,6 +71,7 @@ namespace clinic_ivf.gui
 
             initGrfReq();
             setGrfReq();
+            
         }
 
         private void Timer_Tick(object sender, EventArgs e)
@@ -293,33 +294,7 @@ namespace clinic_ivf.gui
             gB.Enabled = true;
             groupBox1.Enabled = true;
         }
-        private LabOpu setOPU(String reqid)
-        {
-            LabOpu opu = new LabOpu();
-            LabRequest lbreq = new LabRequest();
-            LabFormA lformA = new LabFormA();
-            lbreq = ic.ivfDB.lbReqDB.selectByPk1(reqid);
-            lformA = ic.ivfDB.lFormaDB.selectByVnOld(lbreq.vn);
-            opu.opu_id = "";
-            opu.opu_code = ic.ivfDB.copDB.genOPUDoc();
-            opu.embryo_freez_stage = "";
-            opu.embryoid_freez_position = "";
-            opu.hn_male = lformA.hn_male;
-            opu.hn_female = lbreq.hn_female;
-            opu.name_male = lformA.name_male;
-            opu.name_female = lbreq.name_female;
-            opu.remark = lbreq.remark;
-            opu.dob_female = lformA.dob_female;
-            opu.dob_male = lformA.dob_male;
-            opu.doctor_id = lbreq.doctor_id;
-            opu.proce_id = "";
-            opu.opu_date = DateTime.Now.Year.ToString() + "-" + System.DateTime.Now.ToString("MM-dd");
-            opu.req_id = reqid;
-            opu.hn_donor = lformA.hn_donor;
-            opu.name_donor = lformA.name_donor;
-            //opu.dob_female = lbreq.dob_female;
-            return opu;
-        }
+        
         private void acceptLabOPUAdd(String reqid,String name, String vn, String dtrid, String remark, String hn, Boolean flagOpen, String dobfemale, String itmcode)
         {
             ic.cStf.staff_id = "";
@@ -355,7 +330,7 @@ namespace clinic_ivf.gui
                         //opu.proce_id = "";
                         //opu.opu_date = DateTime.Now.Year.ToString()+"-"+ System.DateTime.Now.ToString("MM-dd");
                         //opu.req_id = reqId;
-                        LabOpu opu = setOPU(re);
+                        LabOpu opu = ic.ivfDB.setOPU(re);
                         String re3 = ic.ivfDB.opuDB.insert(opu, ic.cStf.staff_id);
                         if (long.TryParse(re3, out chk1))
                         {

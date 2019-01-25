@@ -72,11 +72,11 @@
             this.btnSave = new C1.Win.C1Input.C1Button();
             this.txtDobFeMale = new C1.Win.C1Input.C1DateEdit();
             this.txtDobMale = new C1.Win.C1Input.C1DateEdit();
-            this.txtOpuCode = new C1.Win.C1Input.C1TextBox();
+            this.txtFetCode = new C1.Win.C1Input.C1TextBox();
             this.label47 = new System.Windows.Forms.Label();
             this.cboDoctor = new C1.Win.C1Input.C1ComboBox();
             this.label8 = new System.Windows.Forms.Label();
-            this.txtOpuDate = new C1.Win.C1Input.C1DateEdit();
+            this.txtFetDate = new C1.Win.C1Input.C1DateEdit();
             this.label31 = new System.Windows.Forms.Label();
             this.cboOpuProce = new C1.Win.C1Input.C1ComboBox();
             this.label7 = new System.Windows.Forms.Label();
@@ -232,9 +232,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.btnSave)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtDobFeMale)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtDobMale)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtOpuCode)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtFetCode)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cboDoctor)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtOpuDate)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtFetDate)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cboOpuProce)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtNameMale)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtNameFeMale)).BeginInit();
@@ -718,11 +718,11 @@
             this.groupBox1.Controls.Add(this.btnSave);
             this.groupBox1.Controls.Add(this.txtDobFeMale);
             this.groupBox1.Controls.Add(this.txtDobMale);
-            this.groupBox1.Controls.Add(this.txtOpuCode);
+            this.groupBox1.Controls.Add(this.txtFetCode);
             this.groupBox1.Controls.Add(this.label47);
             this.groupBox1.Controls.Add(this.cboDoctor);
             this.groupBox1.Controls.Add(this.label8);
-            this.groupBox1.Controls.Add(this.txtOpuDate);
+            this.groupBox1.Controls.Add(this.txtFetDate);
             this.groupBox1.Controls.Add(this.label31);
             this.groupBox1.Controls.Add(this.cboOpuProce);
             this.groupBox1.Controls.Add(this.label7);
@@ -1056,16 +1056,16 @@
             // 
             // txtOpuCode
             // 
-            this.txtOpuCode.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtOpuCode.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
-            this.txtOpuCode.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.txtOpuCode.Location = new System.Drawing.Point(754, 83);
-            this.txtOpuCode.Name = "txtOpuCode";
-            this.txtOpuCode.Size = new System.Drawing.Size(207, 20);
-            this.txtOpuCode.TabIndex = 532;
-            this.txtOpuCode.Tag = null;
-            this.theme1.SetTheme(this.txtOpuCode, "(default)");
-            this.txtOpuCode.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            this.txtFetCode.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtFetCode.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
+            this.txtFetCode.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.txtFetCode.Location = new System.Drawing.Point(754, 83);
+            this.txtFetCode.Name = "txtOpuCode";
+            this.txtFetCode.Size = new System.Drawing.Size(207, 20);
+            this.txtFetCode.TabIndex = 532;
+            this.txtFetCode.Tag = null;
+            this.theme1.SetTheme(this.txtFetCode, "(default)");
+            this.txtFetCode.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
             // 
             // label47
             // 
@@ -1117,48 +1117,48 @@
             // 
             // txtOpuDate
             // 
-            this.txtOpuDate.AllowSpinLoop = false;
-            this.txtOpuDate.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtFetDate.AllowSpinLoop = false;
+            this.txtFetDate.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             // 
             // 
             // 
-            this.txtOpuDate.Calendar.ArrowColor = System.Drawing.Color.Black;
-            this.txtOpuDate.Calendar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.txtOpuDate.Calendar.DayNamesFont = new System.Drawing.Font("Tahoma", 8F);
-            this.txtOpuDate.Calendar.Font = new System.Drawing.Font("Tahoma", 8F);
-            this.txtOpuDate.Calendar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.txtOpuDate.Calendar.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(71)))), ((int)(((byte)(47)))));
-            this.txtOpuDate.Calendar.SelectionForeColor = System.Drawing.Color.White;
-            this.txtOpuDate.Calendar.TitleBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(230)))));
-            this.txtOpuDate.Calendar.TitleFont = new System.Drawing.Font("Tahoma", 8F);
-            this.txtOpuDate.Calendar.TitleForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.txtOpuDate.Calendar.TodayBorderColor = System.Drawing.Color.White;
-            this.txtOpuDate.Calendar.TrailingForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
-            this.txtOpuDate.Calendar.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
-            this.txtOpuDate.Culture = 1054;
-            this.txtOpuDate.CurrentTimeZone = false;
-            this.txtOpuDate.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
-            this.txtOpuDate.DisplayFormat.CalendarType = C1.Win.C1Input.CalendarType.GregorianCalendar;
-            this.txtOpuDate.DisplayFormat.FormatType = C1.Win.C1Input.FormatTypeEnum.ShortDate;
-            this.txtOpuDate.DisplayFormat.Inherit = ((C1.Win.C1Input.FormatInfoInheritFlags)(((((C1.Win.C1Input.FormatInfoInheritFlags.CustomFormat | C1.Win.C1Input.FormatInfoInheritFlags.NullText) 
+            this.txtFetDate.Calendar.ArrowColor = System.Drawing.Color.Black;
+            this.txtFetDate.Calendar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.txtFetDate.Calendar.DayNamesFont = new System.Drawing.Font("Tahoma", 8F);
+            this.txtFetDate.Calendar.Font = new System.Drawing.Font("Tahoma", 8F);
+            this.txtFetDate.Calendar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.txtFetDate.Calendar.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(71)))), ((int)(((byte)(47)))));
+            this.txtFetDate.Calendar.SelectionForeColor = System.Drawing.Color.White;
+            this.txtFetDate.Calendar.TitleBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(230)))));
+            this.txtFetDate.Calendar.TitleFont = new System.Drawing.Font("Tahoma", 8F);
+            this.txtFetDate.Calendar.TitleForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.txtFetDate.Calendar.TodayBorderColor = System.Drawing.Color.White;
+            this.txtFetDate.Calendar.TrailingForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
+            this.txtFetDate.Calendar.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            this.txtFetDate.Culture = 1054;
+            this.txtFetDate.CurrentTimeZone = false;
+            this.txtFetDate.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
+            this.txtFetDate.DisplayFormat.CalendarType = C1.Win.C1Input.CalendarType.GregorianCalendar;
+            this.txtFetDate.DisplayFormat.FormatType = C1.Win.C1Input.FormatTypeEnum.ShortDate;
+            this.txtFetDate.DisplayFormat.Inherit = ((C1.Win.C1Input.FormatInfoInheritFlags)(((((C1.Win.C1Input.FormatInfoInheritFlags.CustomFormat | C1.Win.C1Input.FormatInfoInheritFlags.NullText) 
             | C1.Win.C1Input.FormatInfoInheritFlags.EmptyAsNull) 
             | C1.Win.C1Input.FormatInfoInheritFlags.TrimStart) 
             | C1.Win.C1Input.FormatInfoInheritFlags.TrimEnd)));
-            this.txtOpuDate.EditFormat.CalendarType = C1.Win.C1Input.CalendarType.GregorianCalendar;
-            this.txtOpuDate.EditFormat.FormatType = C1.Win.C1Input.FormatTypeEnum.ShortDate;
-            this.txtOpuDate.EditFormat.Inherit = ((C1.Win.C1Input.FormatInfoInheritFlags)(((((C1.Win.C1Input.FormatInfoInheritFlags.CustomFormat | C1.Win.C1Input.FormatInfoInheritFlags.NullText) 
+            this.txtFetDate.EditFormat.CalendarType = C1.Win.C1Input.CalendarType.GregorianCalendar;
+            this.txtFetDate.EditFormat.FormatType = C1.Win.C1Input.FormatTypeEnum.ShortDate;
+            this.txtFetDate.EditFormat.Inherit = ((C1.Win.C1Input.FormatInfoInheritFlags)(((((C1.Win.C1Input.FormatInfoInheritFlags.CustomFormat | C1.Win.C1Input.FormatInfoInheritFlags.NullText) 
             | C1.Win.C1Input.FormatInfoInheritFlags.EmptyAsNull) 
             | C1.Win.C1Input.FormatInfoInheritFlags.TrimStart) 
             | C1.Win.C1Input.FormatInfoInheritFlags.TrimEnd)));
-            this.txtOpuDate.GMTOffset = System.TimeSpan.Parse("00:00:00");
-            this.txtOpuDate.ImagePadding = new System.Windows.Forms.Padding(0);
-            this.txtOpuDate.Location = new System.Drawing.Point(754, 63);
-            this.txtOpuDate.Name = "txtOpuDate";
-            this.txtOpuDate.Size = new System.Drawing.Size(207, 18);
-            this.txtOpuDate.TabIndex = 528;
-            this.txtOpuDate.Tag = null;
-            this.theme1.SetTheme(this.txtOpuDate, "(default)");
-            this.txtOpuDate.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            this.txtFetDate.GMTOffset = System.TimeSpan.Parse("00:00:00");
+            this.txtFetDate.ImagePadding = new System.Windows.Forms.Padding(0);
+            this.txtFetDate.Location = new System.Drawing.Point(754, 63);
+            this.txtFetDate.Name = "txtOpuDate";
+            this.txtFetDate.Size = new System.Drawing.Size(207, 18);
+            this.txtFetDate.TabIndex = 528;
+            this.txtFetDate.Tag = null;
+            this.theme1.SetTheme(this.txtFetDate, "(default)");
+            this.txtFetDate.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
             // 
             // label31
             // 
@@ -3149,9 +3149,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.btnSave)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtDobFeMale)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtDobMale)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtOpuCode)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtFetCode)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cboDoctor)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtOpuDate)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtFetDate)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cboOpuProce)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtNameMale)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtNameFeMale)).EndInit();
@@ -3296,11 +3296,11 @@
         private C1.Win.C1Input.C1Button btnSave;
         private C1.Win.C1Input.C1DateEdit txtDobFeMale;
         private C1.Win.C1Input.C1DateEdit txtDobMale;
-        private C1.Win.C1Input.C1TextBox txtOpuCode;
+        private C1.Win.C1Input.C1TextBox txtFetCode;
         private System.Windows.Forms.Label label47;
         private C1.Win.C1Input.C1ComboBox cboDoctor;
         private System.Windows.Forms.Label label8;
-        private C1.Win.C1Input.C1DateEdit txtOpuDate;
+        private C1.Win.C1Input.C1DateEdit txtFetDate;
         private System.Windows.Forms.Label label31;
         private C1.Win.C1Input.C1ComboBox cboOpuProce;
         private System.Windows.Forms.Label label7;

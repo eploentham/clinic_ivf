@@ -86,7 +86,7 @@
             this.txtSpermAnalysisDateStart = new C1.Win.C1Input.C1DateEdit();
             this.chkSpermFreezing = new C1.Win.C1Input.C1CheckBox();
             this.chkSpermAnalysis = new C1.Win.C1Input.C1CheckBox();
-            this.groupBox7 = new System.Windows.Forms.GroupBox();
+            this.gbETFET = new System.Windows.Forms.GroupBox();
             this.chkAssistHatching = new C1.Win.C1Input.C1CheckBox();
             this.chkEmbryoGlue = new C1.Win.C1Input.C1CheckBox();
             this.pnFET = new System.Windows.Forms.Panel();
@@ -101,7 +101,12 @@
             this.label15 = new System.Windows.Forms.Label();
             this.txtEmbryoTranferDate = new C1.Win.C1Input.C1DateEdit();
             this.label14 = new System.Windows.Forms.Label();
-            this.groupBox6 = new System.Windows.Forms.GroupBox();
+            this.gbOPU = new System.Windows.Forms.GroupBox();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.chkConfirmOpuDate = new System.Windows.Forms.RadioButton();
+            this.chkWaitOpuDate = new System.Windows.Forms.RadioButton();
+            this.txtOPUDate = new C1.Win.C1Input.C1DateEdit();
+            this.label7 = new System.Windows.Forms.Label();
             this.chkWaitDay1 = new C1.Win.C1Input.C1CheckBox();
             this.chkXselet = new C1.Win.C1Input.C1CheckBox();
             this.chkYselet = new C1.Win.C1Input.C1CheckBox();
@@ -134,15 +139,10 @@
             this.chkPgs = new C1.Win.C1Input.C1CheckBox();
             this.chkFrozenSperm = new C1.Win.C1Input.C1CheckBox();
             this.chkFreshSprem = new C1.Win.C1Input.C1CheckBox();
-            this.txtOPUDate = new C1.Win.C1Input.C1DateEdit();
-            this.label7 = new System.Windows.Forms.Label();
             this.txtIUIDate = new C1.Win.C1Input.C1DateEdit();
             this.txtPasaTeseDate = new C1.Win.C1Input.C1DateEdit();
             this.label25 = new System.Windows.Forms.Label();
             this.label20 = new System.Windows.Forms.Label();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.chkWaitOpuDate = new System.Windows.Forms.RadioButton();
-            this.chkConfirmOpuDate = new System.Windows.Forms.RadioButton();
             this.sB.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.theme1)).BeginInit();
             this.groupBox1.SuspendLayout();
@@ -182,7 +182,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtSpermAnalysisDateStart)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkSpermFreezing)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkSpermAnalysis)).BeginInit();
-            this.groupBox7.SuspendLayout();
+            this.gbETFET.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chkAssistHatching)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkEmbryoGlue)).BeginInit();
             this.pnFET.SuspendLayout();
@@ -191,7 +191,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtFET1No)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtFETNo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtEmbryoTranferDate)).BeginInit();
-            this.groupBox6.SuspendLayout();
+            this.gbOPU.SuspendLayout();
+            this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtOPUDate)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkWaitDay1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkXselet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkYselet)).BeginInit();
@@ -211,10 +213,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.chkPgs)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkFrozenSperm)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkFreshSprem)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtOPUDate)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtIUIDate)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtPasaTeseDate)).BeginInit();
-            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // sB
@@ -856,8 +856,8 @@
             this.groupBox2.Controls.Add(this.pnSpermAnalysis);
             this.groupBox2.Controls.Add(this.chkSpermFreezing);
             this.groupBox2.Controls.Add(this.chkSpermAnalysis);
-            this.groupBox2.Controls.Add(this.groupBox7);
-            this.groupBox2.Controls.Add(this.groupBox6);
+            this.groupBox2.Controls.Add(this.gbETFET);
+            this.groupBox2.Controls.Add(this.gbOPU);
             this.groupBox2.Controls.Add(this.txtIUIDate);
             this.groupBox2.Controls.Add(this.txtPasaTeseDate);
             this.groupBox2.Controls.Add(this.label25);
@@ -1202,25 +1202,25 @@
             this.chkSpermAnalysis.Value = null;
             this.chkSpermAnalysis.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
             // 
-            // groupBox7
+            // gbETFET
             // 
-            this.groupBox7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.groupBox7.Controls.Add(this.chkAssistHatching);
-            this.groupBox7.Controls.Add(this.chkEmbryoGlue);
-            this.groupBox7.Controls.Add(this.pnFET);
-            this.groupBox7.Controls.Add(this.chkFET);
-            this.groupBox7.Controls.Add(this.chkETNotoTranfer);
-            this.groupBox7.Controls.Add(this.label15);
-            this.groupBox7.Controls.Add(this.txtEmbryoTranferDate);
-            this.groupBox7.Controls.Add(this.label14);
-            this.groupBox7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.groupBox7.Location = new System.Drawing.Point(11, 303);
-            this.groupBox7.Name = "groupBox7";
-            this.groupBox7.Size = new System.Drawing.Size(1056, 130);
-            this.groupBox7.TabIndex = 13;
-            this.groupBox7.TabStop = false;
-            this.groupBox7.Text = "ET FET";
-            this.theme1.SetTheme(this.groupBox7, "(default)");
+            this.gbETFET.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.gbETFET.Controls.Add(this.chkAssistHatching);
+            this.gbETFET.Controls.Add(this.chkEmbryoGlue);
+            this.gbETFET.Controls.Add(this.pnFET);
+            this.gbETFET.Controls.Add(this.chkFET);
+            this.gbETFET.Controls.Add(this.chkETNotoTranfer);
+            this.gbETFET.Controls.Add(this.label15);
+            this.gbETFET.Controls.Add(this.txtEmbryoTranferDate);
+            this.gbETFET.Controls.Add(this.label14);
+            this.gbETFET.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.gbETFET.Location = new System.Drawing.Point(11, 303);
+            this.gbETFET.Name = "gbETFET";
+            this.gbETFET.Size = new System.Drawing.Size(1056, 130);
+            this.gbETFET.TabIndex = 13;
+            this.gbETFET.TabStop = false;
+            this.gbETFET.Text = "ET FET";
+            this.theme1.SetTheme(this.gbETFET, "(default)");
             // 
             // chkAssistHatching
             // 
@@ -1523,38 +1523,143 @@
             this.label14.Text = "Embryo Tranfer Date :";
             this.theme1.SetTheme(this.label14, "(default)");
             // 
-            // groupBox6
+            // gbOPU
             // 
-            this.groupBox6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.groupBox6.Controls.Add(this.panel1);
-            this.groupBox6.Controls.Add(this.chkWaitDay1);
-            this.groupBox6.Controls.Add(this.chkXselet);
-            this.groupBox6.Controls.Add(this.chkYselet);
-            this.groupBox6.Controls.Add(this.pnFreshSprem);
-            this.groupBox6.Controls.Add(this.btnPrint);
-            this.groupBox6.Controls.Add(this.gbEmbryoFresh);
-            this.groupBox6.Controls.Add(this.gbEmbryoTranfer);
-            this.groupBox6.Controls.Add(this.gbNgs);
-            this.groupBox6.Controls.Add(this.chkSpermHa);
-            this.groupBox6.Controls.Add(this.label11);
-            this.groupBox6.Controls.Add(this.txtNoofOocyteLt);
-            this.groupBox6.Controls.Add(this.label10);
-            this.groupBox6.Controls.Add(this.label9);
-            this.groupBox6.Controls.Add(this.txtNoofOocyteRt);
-            this.groupBox6.Controls.Add(this.chkEmbryoFreezing);
-            this.groupBox6.Controls.Add(this.chkEmbryoTranfer);
-            this.groupBox6.Controls.Add(this.chkNgs);
-            this.groupBox6.Controls.Add(this.chkPgs);
-            this.groupBox6.Controls.Add(this.chkFrozenSperm);
-            this.groupBox6.Controls.Add(this.chkFreshSprem);
-            this.groupBox6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.groupBox6.Location = new System.Drawing.Point(12, 19);
-            this.groupBox6.Name = "groupBox6";
-            this.groupBox6.Size = new System.Drawing.Size(1055, 283);
-            this.groupBox6.TabIndex = 725;
-            this.groupBox6.TabStop = false;
-            this.groupBox6.Text = "OPU";
-            this.theme1.SetTheme(this.groupBox6, "(default)");
+            this.gbOPU.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.gbOPU.Controls.Add(this.panel1);
+            this.gbOPU.Controls.Add(this.chkWaitDay1);
+            this.gbOPU.Controls.Add(this.chkXselet);
+            this.gbOPU.Controls.Add(this.chkYselet);
+            this.gbOPU.Controls.Add(this.pnFreshSprem);
+            this.gbOPU.Controls.Add(this.btnPrint);
+            this.gbOPU.Controls.Add(this.gbEmbryoFresh);
+            this.gbOPU.Controls.Add(this.gbEmbryoTranfer);
+            this.gbOPU.Controls.Add(this.gbNgs);
+            this.gbOPU.Controls.Add(this.chkSpermHa);
+            this.gbOPU.Controls.Add(this.label11);
+            this.gbOPU.Controls.Add(this.txtNoofOocyteLt);
+            this.gbOPU.Controls.Add(this.label10);
+            this.gbOPU.Controls.Add(this.label9);
+            this.gbOPU.Controls.Add(this.txtNoofOocyteRt);
+            this.gbOPU.Controls.Add(this.chkEmbryoFreezing);
+            this.gbOPU.Controls.Add(this.chkEmbryoTranfer);
+            this.gbOPU.Controls.Add(this.chkNgs);
+            this.gbOPU.Controls.Add(this.chkPgs);
+            this.gbOPU.Controls.Add(this.chkFrozenSperm);
+            this.gbOPU.Controls.Add(this.chkFreshSprem);
+            this.gbOPU.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.gbOPU.Location = new System.Drawing.Point(12, 19);
+            this.gbOPU.Name = "gbOPU";
+            this.gbOPU.Size = new System.Drawing.Size(1055, 283);
+            this.gbOPU.TabIndex = 725;
+            this.gbOPU.TabStop = false;
+            this.gbOPU.Text = "OPU";
+            this.theme1.SetTheme(this.gbOPU, "(default)");
+            // 
+            // panel1
+            // 
+            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.panel1.Controls.Add(this.chkConfirmOpuDate);
+            this.panel1.Controls.Add(this.chkWaitOpuDate);
+            this.panel1.Controls.Add(this.txtOPUDate);
+            this.panel1.Controls.Add(this.label7);
+            this.panel1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.panel1.Location = new System.Drawing.Point(12, 16);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(548, 46);
+            this.panel1.TabIndex = 734;
+            this.theme1.SetTheme(this.panel1, "(default)");
+            // 
+            // chkConfirmOpuDate
+            // 
+            this.chkConfirmOpuDate.AutoSize = true;
+            this.chkConfirmOpuDate.BackColor = System.Drawing.Color.Transparent;
+            this.chkConfirmOpuDate.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
+            this.chkConfirmOpuDate.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(189)))), ((int)(((byte)(182)))));
+            this.chkConfirmOpuDate.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(189)))), ((int)(((byte)(182)))));
+            this.chkConfirmOpuDate.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.chkConfirmOpuDate.Location = new System.Drawing.Point(137, 15);
+            this.chkConfirmOpuDate.Name = "chkConfirmOpuDate";
+            this.chkConfirmOpuDate.Size = new System.Drawing.Size(121, 17);
+            this.chkConfirmOpuDate.TabIndex = 537;
+            this.chkConfirmOpuDate.TabStop = true;
+            this.chkConfirmOpuDate.Text = "ยืนยัน วัน Opu Date";
+            this.theme1.SetTheme(this.chkConfirmOpuDate, "(default)");
+            this.chkConfirmOpuDate.UseVisualStyleBackColor = false;
+            // 
+            // chkWaitOpuDate
+            // 
+            this.chkWaitOpuDate.AutoSize = true;
+            this.chkWaitOpuDate.BackColor = System.Drawing.Color.Transparent;
+            this.chkWaitOpuDate.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
+            this.chkWaitOpuDate.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(189)))), ((int)(((byte)(182)))));
+            this.chkWaitOpuDate.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(189)))), ((int)(((byte)(182)))));
+            this.chkWaitOpuDate.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.chkWaitOpuDate.Location = new System.Drawing.Point(5, 15);
+            this.chkWaitOpuDate.Name = "chkWaitOpuDate";
+            this.chkWaitOpuDate.Size = new System.Drawing.Size(124, 17);
+            this.chkWaitOpuDate.TabIndex = 536;
+            this.chkWaitOpuDate.TabStop = true;
+            this.chkWaitOpuDate.Text = "รอ Confirm Opu Date";
+            this.theme1.SetTheme(this.chkWaitOpuDate, "(default)");
+            this.chkWaitOpuDate.UseVisualStyleBackColor = false;
+            // 
+            // txtOPUDate
+            // 
+            this.txtOPUDate.AllowSpinLoop = false;
+            this.txtOPUDate.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            // 
+            // 
+            // 
+            this.txtOPUDate.Calendar.ArrowColor = System.Drawing.Color.Black;
+            this.txtOPUDate.Calendar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.txtOPUDate.Calendar.DayNamesFont = new System.Drawing.Font("Tahoma", 8F);
+            this.txtOPUDate.Calendar.Font = new System.Drawing.Font("Tahoma", 8F);
+            this.txtOPUDate.Calendar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.txtOPUDate.Calendar.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(71)))), ((int)(((byte)(47)))));
+            this.txtOPUDate.Calendar.SelectionForeColor = System.Drawing.Color.White;
+            this.txtOPUDate.Calendar.TitleBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(230)))));
+            this.txtOPUDate.Calendar.TitleFont = new System.Drawing.Font("Tahoma", 8F);
+            this.txtOPUDate.Calendar.TitleForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.txtOPUDate.Calendar.TodayBorderColor = System.Drawing.Color.White;
+            this.txtOPUDate.Calendar.TrailingForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
+            this.txtOPUDate.Calendar.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            this.txtOPUDate.CalendarType = C1.Win.C1Input.CalendarType.GregorianCalendar;
+            this.txtOPUDate.Culture = 1054;
+            this.txtOPUDate.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
+            this.txtOPUDate.DisplayFormat.CalendarType = C1.Win.C1Input.CalendarType.GregorianCalendar;
+            this.txtOPUDate.DisplayFormat.FormatType = C1.Win.C1Input.FormatTypeEnum.ShortDateShortTime;
+            this.txtOPUDate.DisplayFormat.Inherit = ((C1.Win.C1Input.FormatInfoInheritFlags)(((((C1.Win.C1Input.FormatInfoInheritFlags.CustomFormat | C1.Win.C1Input.FormatInfoInheritFlags.NullText) 
+            | C1.Win.C1Input.FormatInfoInheritFlags.EmptyAsNull) 
+            | C1.Win.C1Input.FormatInfoInheritFlags.TrimStart) 
+            | C1.Win.C1Input.FormatInfoInheritFlags.TrimEnd)));
+            this.txtOPUDate.EditFormat.CalendarType = C1.Win.C1Input.CalendarType.GregorianCalendar;
+            this.txtOPUDate.EditFormat.FormatType = C1.Win.C1Input.FormatTypeEnum.ShortDateShortTime;
+            this.txtOPUDate.EditFormat.Inherit = ((C1.Win.C1Input.FormatInfoInheritFlags)(((((C1.Win.C1Input.FormatInfoInheritFlags.CustomFormat | C1.Win.C1Input.FormatInfoInheritFlags.NullText) 
+            | C1.Win.C1Input.FormatInfoInheritFlags.EmptyAsNull) 
+            | C1.Win.C1Input.FormatInfoInheritFlags.TrimStart) 
+            | C1.Win.C1Input.FormatInfoInheritFlags.TrimEnd)));
+            this.txtOPUDate.ImagePadding = new System.Windows.Forms.Padding(0);
+            this.txtOPUDate.Location = new System.Drawing.Point(361, 15);
+            this.txtOPUDate.Name = "txtOPUDate";
+            this.txtOPUDate.Size = new System.Drawing.Size(173, 18);
+            this.txtOPUDate.TabIndex = 697;
+            this.txtOPUDate.Tag = null;
+            this.theme1.SetTheme(this.txtOPUDate, "(default)");
+            this.txtOPUDate.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.label7.Location = new System.Drawing.Point(278, 17);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(73, 16);
+            this.label7.TabIndex = 696;
+            this.label7.Text = "OPU date :";
+            this.theme1.SetTheme(this.label7, "(default)");
             // 
             // chkWaitDay1
             // 
@@ -2071,63 +2176,6 @@
             this.chkFreshSprem.Value = null;
             this.chkFreshSprem.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
             // 
-            // txtOPUDate
-            // 
-            this.txtOPUDate.AllowSpinLoop = false;
-            this.txtOPUDate.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            // 
-            // 
-            // 
-            this.txtOPUDate.Calendar.ArrowColor = System.Drawing.Color.Black;
-            this.txtOPUDate.Calendar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.txtOPUDate.Calendar.DayNamesFont = new System.Drawing.Font("Tahoma", 8F);
-            this.txtOPUDate.Calendar.Font = new System.Drawing.Font("Tahoma", 8F);
-            this.txtOPUDate.Calendar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.txtOPUDate.Calendar.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(71)))), ((int)(((byte)(47)))));
-            this.txtOPUDate.Calendar.SelectionForeColor = System.Drawing.Color.White;
-            this.txtOPUDate.Calendar.TitleBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(230)))));
-            this.txtOPUDate.Calendar.TitleFont = new System.Drawing.Font("Tahoma", 8F);
-            this.txtOPUDate.Calendar.TitleForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.txtOPUDate.Calendar.TodayBorderColor = System.Drawing.Color.White;
-            this.txtOPUDate.Calendar.TrailingForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
-            this.txtOPUDate.Calendar.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
-            this.txtOPUDate.CalendarType = C1.Win.C1Input.CalendarType.GregorianCalendar;
-            this.txtOPUDate.Culture = 1054;
-            this.txtOPUDate.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
-            this.txtOPUDate.DisplayFormat.CalendarType = C1.Win.C1Input.CalendarType.GregorianCalendar;
-            this.txtOPUDate.DisplayFormat.FormatType = C1.Win.C1Input.FormatTypeEnum.ShortDateShortTime;
-            this.txtOPUDate.DisplayFormat.Inherit = ((C1.Win.C1Input.FormatInfoInheritFlags)(((((C1.Win.C1Input.FormatInfoInheritFlags.CustomFormat | C1.Win.C1Input.FormatInfoInheritFlags.NullText) 
-            | C1.Win.C1Input.FormatInfoInheritFlags.EmptyAsNull) 
-            | C1.Win.C1Input.FormatInfoInheritFlags.TrimStart) 
-            | C1.Win.C1Input.FormatInfoInheritFlags.TrimEnd)));
-            this.txtOPUDate.EditFormat.CalendarType = C1.Win.C1Input.CalendarType.GregorianCalendar;
-            this.txtOPUDate.EditFormat.FormatType = C1.Win.C1Input.FormatTypeEnum.ShortDateShortTime;
-            this.txtOPUDate.EditFormat.Inherit = ((C1.Win.C1Input.FormatInfoInheritFlags)(((((C1.Win.C1Input.FormatInfoInheritFlags.CustomFormat | C1.Win.C1Input.FormatInfoInheritFlags.NullText) 
-            | C1.Win.C1Input.FormatInfoInheritFlags.EmptyAsNull) 
-            | C1.Win.C1Input.FormatInfoInheritFlags.TrimStart) 
-            | C1.Win.C1Input.FormatInfoInheritFlags.TrimEnd)));
-            this.txtOPUDate.ImagePadding = new System.Windows.Forms.Padding(0);
-            this.txtOPUDate.Location = new System.Drawing.Point(361, 15);
-            this.txtOPUDate.Name = "txtOPUDate";
-            this.txtOPUDate.Size = new System.Drawing.Size(173, 18);
-            this.txtOPUDate.TabIndex = 697;
-            this.txtOPUDate.Tag = null;
-            this.theme1.SetTheme(this.txtOPUDate, "(default)");
-            this.txtOPUDate.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.label7.Location = new System.Drawing.Point(278, 17);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(73, 16);
-            this.label7.TabIndex = 696;
-            this.label7.Text = "OPU date :";
-            this.theme1.SetTheme(this.label7, "(default)");
-            // 
             // txtIUIDate
             // 
             this.txtIUIDate.AllowSpinLoop = false;
@@ -2240,54 +2288,6 @@
             this.label20.Text = "PESA/TESE :";
             this.theme1.SetTheme(this.label20, "(default)");
             // 
-            // panel1
-            // 
-            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.panel1.Controls.Add(this.chkConfirmOpuDate);
-            this.panel1.Controls.Add(this.chkWaitOpuDate);
-            this.panel1.Controls.Add(this.txtOPUDate);
-            this.panel1.Controls.Add(this.label7);
-            this.panel1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.panel1.Location = new System.Drawing.Point(12, 16);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(548, 46);
-            this.panel1.TabIndex = 734;
-            this.theme1.SetTheme(this.panel1, "(default)");
-            // 
-            // chkWaitOpuDate
-            // 
-            this.chkWaitOpuDate.AutoSize = true;
-            this.chkWaitOpuDate.BackColor = System.Drawing.Color.Transparent;
-            this.chkWaitOpuDate.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
-            this.chkWaitOpuDate.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(189)))), ((int)(((byte)(182)))));
-            this.chkWaitOpuDate.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(189)))), ((int)(((byte)(182)))));
-            this.chkWaitOpuDate.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.chkWaitOpuDate.Location = new System.Drawing.Point(5, 15);
-            this.chkWaitOpuDate.Name = "chkWaitOpuDate";
-            this.chkWaitOpuDate.Size = new System.Drawing.Size(124, 17);
-            this.chkWaitOpuDate.TabIndex = 536;
-            this.chkWaitOpuDate.TabStop = true;
-            this.chkWaitOpuDate.Text = "รอ Confirm Opu Date";
-            this.theme1.SetTheme(this.chkWaitOpuDate, "(default)");
-            this.chkWaitOpuDate.UseVisualStyleBackColor = false;
-            // 
-            // chkConfirmOpuDate
-            // 
-            this.chkConfirmOpuDate.AutoSize = true;
-            this.chkConfirmOpuDate.BackColor = System.Drawing.Color.Transparent;
-            this.chkConfirmOpuDate.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
-            this.chkConfirmOpuDate.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(189)))), ((int)(((byte)(182)))));
-            this.chkConfirmOpuDate.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(189)))), ((int)(((byte)(182)))));
-            this.chkConfirmOpuDate.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.chkConfirmOpuDate.Location = new System.Drawing.Point(137, 15);
-            this.chkConfirmOpuDate.Name = "chkConfirmOpuDate";
-            this.chkConfirmOpuDate.Size = new System.Drawing.Size(121, 17);
-            this.chkConfirmOpuDate.TabIndex = 537;
-            this.chkConfirmOpuDate.TabStop = true;
-            this.chkConfirmOpuDate.Text = "ยืนยัน วัน Opu Date";
-            this.theme1.SetTheme(this.chkConfirmOpuDate, "(default)");
-            this.chkConfirmOpuDate.UseVisualStyleBackColor = false;
-            // 
             // FrmLabFormA
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -2344,8 +2344,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtSpermAnalysisDateStart)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkSpermFreezing)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkSpermAnalysis)).EndInit();
-            this.groupBox7.ResumeLayout(false);
-            this.groupBox7.PerformLayout();
+            this.gbETFET.ResumeLayout(false);
+            this.gbETFET.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chkAssistHatching)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkEmbryoGlue)).EndInit();
             this.pnFET.ResumeLayout(false);
@@ -2355,8 +2355,11 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtFET1No)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtFETNo)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtEmbryoTranferDate)).EndInit();
-            this.groupBox6.ResumeLayout(false);
-            this.groupBox6.PerformLayout();
+            this.gbOPU.ResumeLayout(false);
+            this.gbOPU.PerformLayout();
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtOPUDate)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkWaitDay1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkXselet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkYselet)).EndInit();
@@ -2380,11 +2383,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.chkPgs)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkFrozenSperm)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkFreshSprem)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtOPUDate)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtIUIDate)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtPasaTeseDate)).EndInit();
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -2424,7 +2424,7 @@
         private System.Windows.Forms.Label label25;
         private C1.Win.C1Input.C1DateEdit txtIUIDate;
         private C1.Win.C1Input.C1DateEdit txtPasaTeseDate;
-        private System.Windows.Forms.GroupBox groupBox6;
+        private System.Windows.Forms.GroupBox gbOPU;
         private System.Windows.Forms.GroupBox gbEmbryoFresh;
         private System.Windows.Forms.RadioButton chkEmbryoFreezingDay5;
         private System.Windows.Forms.RadioButton chkEmbryoFreezingDay3;
@@ -2451,7 +2451,7 @@
         private C1.Win.C1Input.C1CheckBox chkFreshSprem;
         private C1.Win.C1Input.C1DateEdit txtOPUDate;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.GroupBox groupBox7;
+        private System.Windows.Forms.GroupBox gbETFET;
         private System.Windows.Forms.Label label15;
         private C1.Win.C1Input.C1DateEdit txtEmbryoTranferDate;
         private System.Windows.Forms.Label label14;

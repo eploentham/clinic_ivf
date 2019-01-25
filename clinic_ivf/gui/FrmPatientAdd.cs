@@ -144,7 +144,7 @@ namespace clinic_ivf.gui
             ic.ivfDB.fmsDB.setCboMarriage(cboMarital, "");
             ic.ivfDB.fbgDB.setCboBloodGroup(cboBloodG, "");
             ic.ivfDB.fpnDB.setCboNation(CboNation, "");
-            ic.ivfDB.fetDB.setCboEduca(CboEduca, "");
+            ic.ivfDB.ffetDB.setCboEduca(CboEduca, "");
             ic.ivfDB.frcDB.setCboRace(cboRace, "");
             ic.ivfDB.frgDB.setCboReligion(cboRg, "");
 

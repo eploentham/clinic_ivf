@@ -23,7 +23,7 @@ namespace clinic_ivf.gui
         Font fEdit, fEditB;
         Color bg, fc;
         Font ff, ffB;
-        int colRqId = 1, colRqReqNum = 2, colRqHn = 3, colRqVn = 4, colRqName = 5, colRqDate = 6, colRqRemark = 7, colOpuId=8, colDtrName=9;
+        int colRqId = 1, colRqReqNum = 2, colRqHn = 3, colRqVn = 4, colRqName = 5, colRqLabName=6, colRqDate = 7, colRqRemark = 8, colOpuId=9, colDtrName=10;
         int colPcId = 1, colPcOpuNum = 2, colPcHn = 3, colPcPttName = 4, colPcDate = 5, colPcRemark = 6;
 
         C1FlexGrid grfReq, grfProc;
@@ -106,8 +106,8 @@ namespace clinic_ivf.gui
             id = grfReq[grfReq.Row, colRqId] != null ? grfReq[grfReq.Row, colRqId].ToString() : "";
             chk = grfReq[grfReq.Row, colRqReqNum] != null ? grfReq[grfReq.Row, colRqReqNum].ToString() : "";
             name = grfReq[grfReq.Row, colRqName] != null ? grfReq[grfReq.Row, colRqName].ToString() : "";
-            if (MessageBox.Show("ต้องการ ป้อน LAB OPU  \n  req number " + chk+" \n name "+ name, "", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == DialogResult.OK)
-            {
+            //if (MessageBox.Show("ต้องการ ป้อน LAB OPU  \n  req number " + chk+" \n name "+ name, "", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == DialogResult.OK)
+            //{
                 //grfReq.Rows.Remove(grfReq.Row);
                 Cursor curOld;
                 curOld = this.Cursor;
@@ -116,7 +116,7 @@ namespace clinic_ivf.gui
                 setGrfReq();
                 setGrfProc();
                 this.Cursor = curOld;
-            }
+            //}
         }
         private void GrfReq_AfterRowColChange(object sender, RangeEventArgs e)
         {
@@ -136,7 +136,7 @@ namespace clinic_ivf.gui
             dt = ic.ivfDB.lbReqDB.selectByStatusReqAccept();
             //grfExpn.Rows.Count = dt.Rows.Count + 1;
             grfReq.Rows.Count = 1;
-            grfReq.Cols.Count = 10;
+            grfReq.Cols.Count = 11;
             C1TextBox txt = new C1TextBox();
             //C1ComboBox cboproce = new C1ComboBox();
             //ic.ivfDB.itmDB.setCboItem(cboproce);
@@ -151,6 +151,7 @@ namespace clinic_ivf.gui
             grfReq.Cols[colRqDate].Width = 100;
             grfReq.Cols[colDtrName].Width = 200;
             grfReq.Cols[colRqRemark].Width = 200;
+            grfReq.Cols[colRqLabName].Width = 120;
             grfReq.ShowCursor = true;
             //grdFlex.Cols[colID].Caption = "no";
             //grfDept.Cols[colCode].Caption = "รหัส";
@@ -162,6 +163,7 @@ namespace clinic_ivf.gui
             grfReq.Cols[colRqDate].Caption = "Date";
             grfReq.Cols[colRqRemark].Caption = "Remark";
             grfReq.Cols[colDtrName].Caption = "Doctor";
+            grfReq.Cols[colRqLabName].Caption = "Lab Name";
 
             Color color = ColorTranslator.FromHtml(ic.iniC.grfRowColor);
             //CellRange rg1 = grfBank.GetCellRange(1, colE, grfBank.Rows.Count, colE);
@@ -178,12 +180,28 @@ namespace clinic_ivf.gui
                 row1[colRqName] = row[ic.ivfDB.lbReqDB.lbReq.name_female].ToString();
                 row1[colRqDate] = row[ic.ivfDB.lbReqDB.lbReq.req_date].ToString();
                 row1[colRqRemark] = row[ic.ivfDB.lbReqDB.lbReq.remark].ToString();
+                row1[colRqLabName] = row["SName"].ToString();
                 row1[colOpuId] = "";
                 row1[colDtrName] = row["dtr_name"].ToString();
                 row1[0] = i;
+                if (row["status_wait_confirm_opu_date"].ToString().Equals("1"))
+                {
+                    //grfReq.Rows[i].StyleNew.BackColor = ColorTranslator.FromHtml(ic.iniC.grfRowColor);
+                    String txt1 = "";
+                    txt1 = "รอ confirm วัน เวลา OPU จากทาง พยาบาล";
+                    CellNote note = new CellNote(txt1);
+                    CellRange rg = grfReq.GetCellRange(i, colRqHn);
+                    rg.UserData = note;
+                    grfReq.Rows[i].StyleNew.BackColor = Color.Yellow;
+                }
+                else if (row["status_wait_confirm_opu_date"].ToString().Equals("2"))
+                {
+                    grfReq.Rows[i].StyleNew.BackColor = Color.Green;
+                }
                 i++;
             }
             grfReq.Cols[colRqId].Visible = false;
+            CellNoteManager mgr = new CellNoteManager(grfReq);
             //grfReq.Cols[coldt].Visible = false;
         }
         private void initGrfProc()
@@ -293,7 +311,7 @@ namespace clinic_ivf.gui
             //throw new NotImplementedException();
             openLabOPUNew("","");
         }
-        private void setOPU(String reqid)
+        private void setOPU1(String reqid)
         {
             LabRequest lbreq = new LabRequest();
             lbreq = ic.ivfDB.lbReqDB.selectByPk1(reqid);
@@ -326,7 +344,6 @@ namespace clinic_ivf.gui
             {
                 txt = "ป้อน LAB OPU ใหม่ ";
             }
-
             frm.FormBorderStyle = FormBorderStyle.None;
             menu.AddNewTab(frm, txt);
         }
@@ -341,8 +358,8 @@ namespace clinic_ivf.gui
                 long chk1 = 0;
                 if (long.TryParse(re, out chk1))
                 {
-                    setOPU(reqId);
-                    String re1 = ic.ivfDB.opuDB.insert(opu, ic.cStf.staff_id);
+                    LabOpu opu1 = ic.ivfDB.setOPU(reqId);
+                    String re1 = ic.ivfDB.opuDB.insert(opu1, ic.cStf.staff_id);
                     if (long.TryParse(re1, out chk1))
                     {
                         //FrmLabOPUAdd frm = new FrmLabOPUAdd(ic, "", re1);
@@ -360,10 +377,8 @@ namespace clinic_ivf.gui
                         frm.FormBorderStyle = FormBorderStyle.None;
                         menu.AddNewTab(frm, txt);
                     }
-                    
                 }
             }
-            
         }
         private void FrmLabOpuView_Load(object sender, EventArgs e)
         {

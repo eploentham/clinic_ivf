@@ -132,10 +132,13 @@ namespace clinic_ivf.objdb
         {
             DataTable dt = new DataTable();
             String sql = "select lbReq." + lbReq.req_id + ", lbReq." + lbReq.req_code + ", lbReq." + lbReq.hn_female + ", lbReq." + lbReq.vn + ", lbReq." + lbReq.name_female
-                + ", lbReq." + lbReq.req_date + ", lbReq." + lbReq.remark + ",lbReq." + lbReq.doctor_id+", Doctor.Name as dtr_name " +
+                + ", lbReq." + lbReq.req_date + ", lbReq." + lbReq.remark + ",lbReq." + lbReq.doctor_id+", Doctor.Name as dtr_name, spi.SName " +
+                ",lforma.status_wait_confirm_day1,lforma.status_wait_confirm_opu_date,lbReq.form_a_id " +
                 "From " + lbReq.table + " lbReq " +
                 "Left Join Doctor on Doctor.ID = lbReq.doctor_id " +
-                "Where lbReq." + lbReq.status_req + " ='2' ";
+                "Left Join SpecialItem spi on lbReq.item_id = spi.SID " +
+                "Left Join lab_t_form_a lforma on lbReq.form_a_id = lforma.form_a_id " +
+                "Where lbReq." + lbReq.status_req + " ='1' ";
             dt = conn.selectData(conn.conn, sql);
             return dt;
         }

@@ -36,7 +36,7 @@ namespace clinic_ivf.objdb
         public FMarriageStatusDB fmsDB;
         public FRaceDB frcDB;
         public FNationDB fpnDB;
-        public FEducationTypeDB fetDB;
+        public FEducationTypeDB ffetDB;
         public FRelationDB frlDB;
         public FReligionDB frgDB;
         public FPatientRaceDB fprDB;
@@ -52,6 +52,7 @@ namespace clinic_ivf.objdb
         public FDocTypeDB fdtDB;
         public PatientAppointmentTextDB pApmtDB;
         public LabFormADB lFormaDB;
+        public LabFetDB fetDB;
 
         public IvfDB(ConnectDB c)
         {
@@ -75,7 +76,7 @@ namespace clinic_ivf.objdb
             sexDB = new FSexDB(conn);
             fmsDB = new FMarriageStatusDB(conn);
             fpnDB = new FNationDB(conn);
-            fetDB = new FEducationTypeDB(conn);
+            ffetDB = new FEducationTypeDB(conn);
             frlDB = new FRelationDB(conn);
             frgDB = new FReligionDB(conn);
             fprDB = new FPatientRaceDB(conn);
@@ -98,6 +99,7 @@ namespace clinic_ivf.objdb
             fdtDB = new FDocTypeDB(conn);
             pApmtDB = new PatientAppointmentTextDB(conn);
             lFormaDB = new LabFormADB(conn);
+            fetDB = new LabFetDB(conn);
 
             Console.WriteLine("ivfDB end");
         }
@@ -244,6 +246,33 @@ namespace clinic_ivf.objdb
             lbReq.item_id = itmcode;
             lbReq.form_a_id = "";
             return lbReq;
+        }
+        public LabOpu setOPU(String reqid)
+        {
+            LabOpu opu = new LabOpu();
+            LabRequest lbreq = new LabRequest();
+            LabFormA lformA = new LabFormA();
+            lbreq = lbReqDB.selectByPk1(reqid);
+            lformA = lFormaDB.selectByVnOld(lbreq.vn);
+            opu.opu_id = "";
+            opu.opu_code = copDB.genOPUDoc();
+            opu.embryo_freez_stage = "";
+            opu.embryoid_freez_position = "";
+            opu.hn_male = lformA.hn_male;
+            opu.hn_female = lbreq.hn_female;
+            opu.name_male = lformA.name_male;
+            opu.name_female = lbreq.name_female;
+            opu.remark = lbreq.remark;
+            opu.dob_female = lformA.dob_female;
+            opu.dob_male = lformA.dob_male;
+            opu.doctor_id = lbreq.doctor_id;
+            opu.proce_id = "";
+            opu.opu_date = DateTime.Now.Year.ToString() + "-" + System.DateTime.Now.ToString("MM-dd");
+            opu.req_id = reqid;
+            opu.hn_donor = lformA.hn_donor;
+            opu.name_donor = lformA.name_donor;
+            //opu.dob_female = lbreq.dob_female;
+            return opu;
         }
     }
 }

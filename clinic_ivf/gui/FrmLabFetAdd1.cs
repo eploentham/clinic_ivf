@@ -23,9 +23,9 @@ namespace clinic_ivf.gui
     public partial class FrmLabFetAdd1 : Form
     {
         IvfControl ic;
-        String reqId = "", opuId = "";
+        String reqId = "", fetId = "";
         LabRequest lbReq;
-        LabOpu opu;
+        LabFet fet;
 
         Font fEdit, fEditB;
         Color bg, fc;
@@ -44,12 +44,12 @@ namespace clinic_ivf.gui
         Boolean flagDay2Img = false, flagDay3Img = false, flagDay5Img = false, flagDay6Img = false;
         private bool prefixSeen;
 
-        public FrmLabFetAdd1(IvfControl ic, String reqid, String opuid)
+        public FrmLabFetAdd1(IvfControl ic, String reqid, String fetid)
         {
             InitializeComponent();
             this.ic = ic;
             reqId = reqid;
-            opuId = opuid;
+            fetId = fetid;
             initConfig();
         }
         private void initConfig()
@@ -72,7 +72,7 @@ namespace clinic_ivf.gui
 
             stt = new C1SuperTooltip();
             sep = new C1SuperErrorProvider();
-            opu = new LabOpu();
+            fet = new LabFet();
             lbReq = new LabRequest();
 
             ic.ivfDB.proceDB.setCboLabProce(cboOpuProce, objdb.LabProcedureDB.StatusLab.OPUProcedure);
@@ -533,10 +533,10 @@ namespace clinic_ivf.gui
         {
             try
             {
-                if (!opuId.Equals(""))
+                if (!fetId.Equals(""))
                 {
-                    opu = ic.ivfDB.opuDB.selectByPk1(opuId);
-                    lbReq = ic.ivfDB.lbReqDB.selectByPk1(opu.req_id);
+                    fet = ic.ivfDB.fetDB.selectByPk1(fetId);
+                    lbReq = ic.ivfDB.lbReqDB.selectByPk1(fet.req_id);
                     DataTable dt = new DataTable();
                     dt = ic.ivfDB.opuEmDevDB.selectByOpuFetId_Day(txtID.Text, objdb.LabOpuEmbryoDevDB.Day1.Day2);
                     if (dt.Rows.Count > 0)
@@ -568,41 +568,41 @@ namespace clinic_ivf.gui
         }
         private void setControl1()
         {
-            txtID.Value = opu.opu_id;
-            txtHnFeMale.Value = opu.hn_female;
-            txtHnMale.Value = opu.hn_male;
-            txtNameFeMale.Value = opu.name_female;
-            txtNameMale.Value = opu.name_male;
+            txtID.Value = fet.fet_id;
+            txtHnFeMale.Value = fet.hn_female;
+            txtHnMale.Value = fet.hn_male;
+            txtNameFeMale.Value = fet.name_female;
+            txtNameMale.Value = fet.name_male;
             txtLabReqCode.Value = lbReq.req_code;
-            txtDobFeMale.Value = opu.dob_female;
-            txtDobMale.Value = opu.dob_male;
-            ic.setC1Combo(cboDoctor, opu.doctor_id);
-            txtOpuDate.Value = opu.opu_date;
-            ic.setC1Combo(cboOpuProce, opu.proce_id);
-            txtOpuCode.Value = opu.opu_code;
-            txtHnDonor.Value = opu.hn_donor;
-            txtNameDonor.Value = opu.name_donor;
+            txtDobFeMale.Value = fet.dob_female;
+            txtDobMale.Value = fet.dob_male;
+            ic.setC1Combo(cboDoctor, fet.doctor_id);
+            txtFetDate.Value = fet.fet_date;
+            ic.setC1Combo(cboOpuProce, fet.proce_id);
+            txtFetCode.Value = fet.fet_code;
+            txtHnDonor.Value = fet.hn_donor;
+            txtNameDonor.Value = fet.name_donor;
             
-            txtEmbryoForEtNO.Value = opu.embryo_for_et_no_of_et;
-            txtEmbryoForEtDay.Value = opu.embryo_for_et_day;
-            txtEmbryoForEtDate.Value = ic.datetoShow(opu.embryo_for_et_date);
-            txtEmbryoForEtAsseted.Value = opu.embryo_for_et_assisted;
-            txtEmbryoForEtVolume.Value = opu.embryo_for_et_volume;
-            txtEmbryoForEtCatheter.Value = opu.embryo_for_et_catheter;
-            txtEmbryoForEtDoctor.Value = opu.embryo_for_et_doctor;
-            txtEmbryoForEtNumTran.Value = opu.embryo_for_et_number_of_transfer;
-            txtEmbryoForEtNumFreeze.Value = opu.embryo_for_et_number_of_freeze;
-            txtEmbryoForEtNumDiscard.Value = opu.embryo_for_et_number_of_discard;
+            txtEmbryoForEtNO.Value = fet.embryo_for_et_no_of_et;
+            txtEmbryoForEtDay.Value = fet.embryo_for_et_day;
+            txtEmbryoForEtDate.Value = ic.datetoShow(fet.embryo_for_et_date);
+            txtEmbryoForEtAsseted.Value = fet.embryo_for_et_assisted;
+            txtEmbryoForEtVolume.Value = fet.embryo_for_et_volume;
+            txtEmbryoForEtCatheter.Value = fet.embryo_for_et_catheter;
+            txtEmbryoForEtDoctor.Value = fet.embryo_for_et_doctor;
+            txtEmbryoForEtNumTran.Value = fet.embryo_for_et_number_of_transfer;
+            txtEmbryoForEtNumFreeze.Value = fet.embryo_for_et_number_of_freeze;
+            txtEmbryoForEtNumDiscard.Value = fet.embryo_for_et_number_of_discard;
             //cboEmbryoForEtEmbryologist.Value = opu.embryo_for_et_embryologist_id;
             //cboEmbryologistReport.Value = opu.embryologist_report_id;
             //cboEmbryologistAppv.Value = opu.embryologist_approve_id;
-            ic.setC1Combo(cboEmbryologistAppv, opu.embryologist_approve_id);
-            ic.setC1Combo(cboEmbryologistReport, opu.embryologist_report_id);
-            ic.setC1Combo(cboEmbryoForEtEmbryologist, opu.embryo_for_et_embryologist_id);            
+            ic.setC1Combo(cboEmbryologistAppv, fet.embryologist_approve_id);
+            ic.setC1Combo(cboEmbryologistReport, fet.embryologist_report_id);
+            ic.setC1Combo(cboEmbryoForEtEmbryologist, fet.embryo_for_et_embryologist_id);            
 
             //txtRemark.Value = opu.remark;
-            ic.setC1ComboByName(cboRemark, opu.remark);
-            txtDatePicEmbryo.Value = opu.date_pic_embryo;
+            ic.setC1ComboByName(cboRemark, fet.remark);
+            txtDatePicEmbryo.Value = fet.date_pic_embryo;
             //CboEmbryoDay.Text = opu.emb
         }
         private void initGrf()
@@ -697,12 +697,12 @@ namespace clinic_ivf.gui
                                     String[] ext = path.Split('.');
                                     if (ext.Length > 1)
                                     {
-                                        filename = txtOpuCode.Text + "_day3_" + no + "." + ext[ext.Length - 1];
-                                        re = ic.ivfDB.opuEmDevDB.updatePathPic(id, no, "images/" + txtOpuCode.Text + "/" + filename, desc, ic.cStf.staff_id);
+                                        filename = txtFetCode.Text + "_day3_" + no + "." + ext[ext.Length - 1];
+                                        re = ic.ivfDB.opuEmDevDB.updatePathPic(id, no, "images/" + txtFetCode.Text + "/" + filename, desc, ic.cStf.staff_id);
                                         long chk = 0;
                                         if (long.TryParse(re, out chk))
                                         {
-                                            ic.savePicOPUtoServer(txtOpuCode.Text, filename, path);
+                                            ic.savePicOPUtoServer(txtFetCode.Text, filename, path);
                                             grfDay3Img.Rows[i - 1].StyleNew.BackColor = color;
                                         }
                                     }
@@ -753,13 +753,13 @@ namespace clinic_ivf.gui
                                     String[] ext = path.Split('.');
                                     if (ext.Length > 1)
                                     {
-                                        filename = txtOpuCode.Text + "_day5_" + no + "." + ext[ext.Length - 1];
-                                        re = ic.ivfDB.opuEmDevDB.updatePathPic(id, no, "images/" + txtOpuCode.Text + "/" + filename, desc, ic.cStf.staff_id);
+                                        filename = txtFetCode.Text + "_day5_" + no + "." + ext[ext.Length - 1];
+                                        re = ic.ivfDB.opuEmDevDB.updatePathPic(id, no, "images/" + txtFetCode.Text + "/" + filename, desc, ic.cStf.staff_id);
                                         long chk = 0;
                                         if (long.TryParse(re, out chk))
                                         {
 
-                                            ic.savePicOPUtoServer(txtOpuCode.Text, filename, path);
+                                            ic.savePicOPUtoServer(txtFetCode.Text, filename, path);
                                             grfDay5Img.Rows[i - 1].StyleNew.BackColor = color;
                                         }
                                     }
@@ -810,13 +810,13 @@ namespace clinic_ivf.gui
                                     String[] ext = path.Split('.');
                                     if (ext.Length > 1)
                                     {
-                                        filename = txtOpuCode.Text + "_day6_" + no + "." + ext[ext.Length - 1];
-                                        re = ic.ivfDB.opuEmDevDB.updatePathPic(id, no, "images/" + txtOpuCode.Text + "/" + filename, desc, ic.cStf.staff_id);
+                                        filename = txtFetCode.Text + "_day6_" + no + "." + ext[ext.Length - 1];
+                                        re = ic.ivfDB.opuEmDevDB.updatePathPic(id, no, "images/" + txtFetCode.Text + "/" + filename, desc, ic.cStf.staff_id);
                                         long chk = 0;
                                         if (long.TryParse(re, out chk))
                                         {
 
-                                            ic.savePicOPUtoServer(txtOpuCode.Text, filename, path);
+                                            ic.savePicOPUtoServer(txtFetCode.Text, filename, path);
                                             grfDay6Img.Rows[i - 1].StyleNew.BackColor = color;
                                         }
                                     }
@@ -1254,12 +1254,12 @@ namespace clinic_ivf.gui
                                     String[] ext = path.Split('.');
                                     if (ext.Length > 1)
                                     {
-                                        filename = txtOpuCode.Text + "_day2_" + no + "." + ext[ext.Length - 1];
-                                        re = ic.ivfDB.opuEmDevDB.updatePathPic(id, no, "images/" + txtOpuCode.Text + "/" + filename, desc, ic.cStf.staff_id);
+                                        filename = txtFetCode.Text + "_day2_" + no + "." + ext[ext.Length - 1];
+                                        re = ic.ivfDB.opuEmDevDB.updatePathPic(id, no, "images/" + txtFetCode.Text + "/" + filename, desc, ic.cStf.staff_id);
                                         long chk = 0;
                                         if (long.TryParse(re, out chk))
                                         {
-                                            ic.savePicOPUtoServer(txtOpuCode.Text, filename, path);
+                                            ic.savePicOPUtoServer(txtFetCode.Text, filename, path);
                                             grfDay2Img.Rows[i - 1].StyleNew.BackColor = color;
                                         }
                                     }
@@ -1645,7 +1645,7 @@ namespace clinic_ivf.gui
             if (!ic.cStf.staff_id.Equals(""))
             {
                 setOPUEmbryeEt();
-                String re = ic.ivfDB.opuDB.updateEmbryoEt(opu, ic.user.staff_id);
+                String re = ic.ivfDB.fetDB.updateEmbryoEt(fet, ic.user.staff_id);
                 long chk1 = 0;
                 if (long.TryParse(re, out chk1))
                 {
@@ -1668,7 +1668,7 @@ namespace clinic_ivf.gui
             if (!ic.cStf.staff_id.Equals(""))
             {
                 setOPU();
-                String re = ic.ivfDB.opuDB.update(opu, ic.user.staff_id);
+                String re = ic.ivfDB.fetDB.update(fet, ic.user.staff_id);
                 long chk1 = 0;
                 if (long.TryParse(re, out chk1))
                 {
@@ -1683,47 +1683,47 @@ namespace clinic_ivf.gui
         }
         private void setOPU()
         {
-            opu.opu_id = txtID.Text;
-            opu.hn_female = txtHnFeMale.Text;
-            opu.hn_male = txtHnMale.Text;
-            opu.name_female = txtNameFeMale.Text;
-            opu.name_male = txtNameMale.Text;
+            fet.fet_id = txtID.Text;
+            fet.hn_female = txtHnFeMale.Text;
+            fet.hn_male = txtHnMale.Text;
+            fet.name_female = txtNameFeMale.Text;
+            fet.name_male = txtNameMale.Text;
             //lbReq.req_code = txtLabReqCode.Text;
-            opu.dob_female = ic.datetoDB(txtDobFeMale.Text);
-            opu.dob_male = ic.datetoDB(txtDobMale.Text);
+            fet.dob_female = ic.datetoDB(txtDobFeMale.Text);
+            fet.dob_male = ic.datetoDB(txtDobMale.Text);
             
-            opu.opu_date = ic.datetoDB(txtOpuDate.Text);
+            fet.fet_date = ic.datetoDB(txtFetDate.Text);
             
-            opu.doctor_id = cboDoctor.SelectedItem == null ? "" : ((ComboBoxItem)cboDoctor.SelectedItem).Value;
-            opu.proce_id = cboOpuProce.SelectedItem == null ? "" : ((ComboBoxItem)cboOpuProce.SelectedItem).Value;
-            opu.opu_code = txtOpuCode.Text;
-            opu.remark = cboRemark.Text;
-            opu.embryo_for_et_remark = cboRemark.Text;
-            opu.hn_donor = txtHnDonor.Text;
-            opu.name_donor = txtNameDonor.Text;
-            opu.date_pic_embryo = ic.datetoDB(txtDatePicEmbryo.Text);
+            fet.doctor_id = cboDoctor.SelectedItem == null ? "" : ((ComboBoxItem)cboDoctor.SelectedItem).Value;
+            fet.proce_id = cboOpuProce.SelectedItem == null ? "" : ((ComboBoxItem)cboOpuProce.SelectedItem).Value;
+            fet.fet_code = txtFetCode.Text;
+            fet.remark = cboRemark.Text;
+            fet.embryo_for_et_remark = cboRemark.Text;
+            fet.hn_donor = txtHnDonor.Text;
+            fet.name_donor = txtNameDonor.Text;
+            fet.date_pic_embryo = ic.datetoDB(txtDatePicEmbryo.Text);
         }
         private void setOPUEmbryeEt()
         {
-            opu.opu_id = txtID.Text;
-            opu.embryo_for_et_no_of_et = txtEmbryoForEtNO.Text;
-            opu.embryo_for_et_day = txtEmbryoForEtDay.Text;
-            opu.embryo_for_et_date = ic.datetoDB(txtEmbryoForEtDate.Text);
-            opu.embryo_for_et_assisted = txtEmbryoForEtAsseted.Text;
-            opu.embryo_for_et_volume = txtEmbryoForEtVolume.Text;
-            opu.embryo_for_et_catheter = txtEmbryoForEtCatheter.Text;
-            opu.embryo_for_et_doctor = txtEmbryoForEtDoctor.Text;
+            fet.fet_id = txtID.Text;
+            fet.embryo_for_et_no_of_et = txtEmbryoForEtNO.Text;
+            fet.embryo_for_et_day = txtEmbryoForEtDay.Text;
+            fet.embryo_for_et_date = ic.datetoDB(txtEmbryoForEtDate.Text);
+            fet.embryo_for_et_assisted = txtEmbryoForEtAsseted.Text;
+            fet.embryo_for_et_volume = txtEmbryoForEtVolume.Text;
+            fet.embryo_for_et_catheter = txtEmbryoForEtCatheter.Text;
+            fet.embryo_for_et_doctor = txtEmbryoForEtDoctor.Text;
 
-            opu.embryo_for_et_embryologist_id = cboEmbryoForEtEmbryologist.SelectedItem == null ? "0" : ((ComboBoxItem)cboEmbryoForEtEmbryologist.SelectedItem).Value;
-            opu.embryologist_report_id = cboEmbryologistReport.SelectedItem == null ? "0" : ((ComboBoxItem)cboEmbryologistReport.SelectedItem).Value;
-            opu.embryologist_approve_id = cboEmbryologistAppv.SelectedItem == null ? "0" : ((ComboBoxItem)cboEmbryologistAppv.SelectedItem).Value;
+            fet.embryo_for_et_embryologist_id = cboEmbryoForEtEmbryologist.SelectedItem == null ? "0" : ((ComboBoxItem)cboEmbryoForEtEmbryologist.SelectedItem).Value;
+            fet.embryologist_report_id = cboEmbryologistReport.SelectedItem == null ? "0" : ((ComboBoxItem)cboEmbryologistReport.SelectedItem).Value;
+            fet.embryologist_approve_id = cboEmbryologistAppv.SelectedItem == null ? "0" : ((ComboBoxItem)cboEmbryologistAppv.SelectedItem).Value;
 
             //opu.remark = txtRemark.Text;
-            opu.remark = cboRemark.Text;
-            opu.embryo_for_et_number_of_transfer = txtEmbryoForEtNumTran.Text;
-            opu.embryo_for_et_number_of_freeze = txtEmbryoForEtNumFreeze.Text;
-            opu.embryo_for_et_number_of_discard = txtEmbryoForEtNumDiscard.Text;
-            opu.embryo_for_et_remark = cboRemark.Text;
+            fet.remark = cboRemark.Text;
+            fet.embryo_for_et_number_of_transfer = txtEmbryoForEtNumTran.Text;
+            fet.embryo_for_et_number_of_freeze = txtEmbryoForEtNumFreeze.Text;
+            fet.embryo_for_et_number_of_discard = txtEmbryoForEtNumDiscard.Text;
+            fet.embryo_for_et_remark = cboRemark.Text;
         }
         private void setGrfDay2Img()
         {
@@ -1901,12 +1901,12 @@ namespace clinic_ivf.gui
                             String[] ext = pathfile.Split('.');
                             if (ext.Length > 1)
                             {
-                                filename = txtOpuCode.Text + "_day2_" + no + "." + ext[ext.Length - 1];
-                                re = ic.ivfDB.opuEmDevDB.updatePathPic(id, no, "images/" + txtOpuCode.Text + "/" + filename, desc, ic.cStf.staff_id);
+                                filename = txtFetCode.Text + "_day2_" + no + "." + ext[ext.Length - 1];
+                                re = ic.ivfDB.opuEmDevDB.updatePathPic(id, no, "images/" + txtFetCode.Text + "/" + filename, desc, ic.cStf.staff_id);
                                 long chk = 0;
                                 if (long.TryParse(re, out chk))
                                 {
-                                    ic.savePicOPUtoServer(txtOpuCode.Text, filename, pathfile);
+                                    ic.savePicOPUtoServer(txtFetCode.Text, filename, pathfile);
                                     grfDay2Img.Rows[grfDay2Img.Row].StyleNew.BackColor = color;
                                     setGrfDay2Img();
                                 }
@@ -1944,7 +1944,7 @@ namespace clinic_ivf.gui
                 {
                     String pathfile = grfDay2Img[grfDay2Img.Row, colDay2PathPic].ToString();
                     String re = ic.ivfDB.opuEmDevDB.updatePathPic(id, "", "", "", ic.user.staff_id);
-                    ic.delPicOPUtoServer(txtOpuCode.Text, pathfile);
+                    ic.delPicOPUtoServer(txtFetCode.Text, pathfile);
                     grfDay2Img[grfDay2Img.Row, colDay2PathPic] = "";
                 }
             }
@@ -2141,12 +2141,12 @@ namespace clinic_ivf.gui
                             String[] ext = pathfile.Split('.');
                             if (ext.Length > 1)
                             {
-                                filename = txtOpuCode.Text + "_day2_" + no + "." + ext[ext.Length - 1];
-                                re = ic.ivfDB.opuEmDevDB.updatePathPic(id, no, "images/" + txtOpuCode.Text + "/" + filename, desc, ic.cStf.staff_id);
+                                filename = txtFetCode.Text + "_day2_" + no + "." + ext[ext.Length - 1];
+                                re = ic.ivfDB.opuEmDevDB.updatePathPic(id, no, "images/" + txtFetCode.Text + "/" + filename, desc, ic.cStf.staff_id);
                                 long chk = 0;
                                 if (long.TryParse(re, out chk))
                                 {
-                                    ic.savePicOPUtoServer(txtOpuCode.Text, filename, pathfile);
+                                    ic.savePicOPUtoServer(txtFetCode.Text, filename, pathfile);
                                     grfDay3Img.Rows[grfDay3Img.Row].StyleNew.BackColor = color;
                                     setGrfDay3Img();
                                 }
@@ -2184,7 +2184,7 @@ namespace clinic_ivf.gui
                 {
                     String pathfile = grfDay3Img[grfDay3Img.Row, colDay2PathPic].ToString();
                     String re = ic.ivfDB.opuEmDevDB.updatePathPic(id, "", "", "", ic.user.staff_id);
-                    ic.delPicOPUtoServer(txtOpuCode.Text, pathfile);
+                    ic.delPicOPUtoServer(txtFetCode.Text, pathfile);
                 }
             }
         }
@@ -2380,12 +2380,12 @@ namespace clinic_ivf.gui
                             String[] ext = pathfile.Split('.');
                             if (ext.Length > 1)
                             {
-                                filename = txtOpuCode.Text + "_day2_" + no + "." + ext[ext.Length - 1];
-                                re = ic.ivfDB.opuEmDevDB.updatePathPic(id, no, "images/" + txtOpuCode.Text + "/" + filename, desc, ic.cStf.staff_id);
+                                filename = txtFetCode.Text + "_day2_" + no + "." + ext[ext.Length - 1];
+                                re = ic.ivfDB.opuEmDevDB.updatePathPic(id, no, "images/" + txtFetCode.Text + "/" + filename, desc, ic.cStf.staff_id);
                                 long chk = 0;
                                 if (long.TryParse(re, out chk))
                                 {
-                                    ic.savePicOPUtoServer(txtOpuCode.Text, filename, pathfile);
+                                    ic.savePicOPUtoServer(txtFetCode.Text, filename, pathfile);
                                     grfDay5Img.Rows[grfDay5Img.Row].StyleNew.BackColor = color;
                                     setGrfDay5Img();
                                 }
@@ -2423,7 +2423,7 @@ namespace clinic_ivf.gui
                 {
                     String pathfile = grfDay5Img[grfDay5Img.Row, colDay2PathPic].ToString();
                     String re = ic.ivfDB.opuEmDevDB.updatePathPic(id, "", "", "", ic.user.staff_id);
-                    ic.delPicOPUtoServer(txtOpuCode.Text, pathfile);
+                    ic.delPicOPUtoServer(txtFetCode.Text, pathfile);
                 }
             }
         }
@@ -2621,12 +2621,12 @@ namespace clinic_ivf.gui
                             var extension = Path.GetExtension(pathfile);
                             //if (ext.Length > 1)
                             //{
-                            filename = txtOpuCode.Text + "_day2_" + no + extension;
-                            re = ic.ivfDB.opuEmDevDB.updatePathPic(id, no, "images/" + txtOpuCode.Text + "/" + filename, desc, ic.cStf.staff_id);
+                            filename = txtFetCode.Text + "_day2_" + no + extension;
+                            re = ic.ivfDB.opuEmDevDB.updatePathPic(id, no, "images/" + txtFetCode.Text + "/" + filename, desc, ic.cStf.staff_id);
                             long chk = 0;
                             if (long.TryParse(re, out chk))
                             {
-                                ic.savePicOPUtoServer(txtOpuCode.Text, filename, pathfile);
+                                ic.savePicOPUtoServer(txtFetCode.Text, filename, pathfile);
                                 grfDay6Img.Rows[grfDay6Img.Row].StyleNew.BackColor = color;
                                 setGrfDay6Img();
                             }
@@ -2664,7 +2664,7 @@ namespace clinic_ivf.gui
                 {
                     String pathfile = grfDay6Img[grfDay6Img.Row, colDay2PathPic].ToString();
                     String re = ic.ivfDB.opuEmDevDB.updatePathPic(id, "", "", "", ic.user.staff_id);
-                    ic.delPicOPUtoServer(txtOpuCode.Text, pathfile);
+                    ic.delPicOPUtoServer(txtFetCode.Text, pathfile);
                 }
             }
         }

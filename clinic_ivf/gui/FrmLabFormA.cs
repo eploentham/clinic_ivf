@@ -22,6 +22,7 @@ namespace clinic_ivf.gui
 
         C1SuperTooltip stt;
         C1SuperErrorProvider sep;
+        String statusOPU = "", statusFET = "";
 
         public FrmLabFormA(IvfControl ic, String lformaId, String pttid, String vsid, String vsidOld)
         {
@@ -64,6 +65,17 @@ namespace clinic_ivf.gui
             ChkFET_CheckedChanged(null, null);
             ChkSpermAnalysis_CheckStateChanged(null, null);
             ChkSpermFreezing_CheckStateChanged(null, null);
+            statusOPU = ic.ivfDB.oJsDB.chkByOPU(vsidOld);
+            statusFET = ic.ivfDB.oJsDB.chkByFET(vsidOld);
+
+            if (statusOPU.Equals(""))
+            {
+                gbOPU.Enabled = false;
+            }
+            if (statusFET.Equals(""))
+            {
+                gbETFET.Enabled = false;
+            }
         }
 
         private void BtmDonorSearch_Click(object sender, EventArgs e)
