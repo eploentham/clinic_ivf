@@ -43,6 +43,7 @@ namespace clinic_ivf.gui
 
             ic.ivfDB.dtrOldDB.setCboDoctor(cboDoctor, "");
             ic.ivfDB.lFormaDB.setCboRemark(cboRemark);
+            ic.ivfDB.lFormaDB.setCboOPUWaitRemark(cboOPUWaitRemark);
             txtFormADate.Value = DateTime.Now.Year + "-" + DateTime.Now.ToString("MM-dd");
             setControl();
 
@@ -67,7 +68,10 @@ namespace clinic_ivf.gui
             ChkSpermFreezing_CheckStateChanged(null, null);
             statusOPU = ic.ivfDB.oJsDB.chkByOPU(vsidOld);
             statusFET = ic.ivfDB.oJsDB.chkByFET(vsidOld);
-
+            chkOPUActive.CheckedChanged += ChkOPUActive_CheckedChanged;
+            chkOPUUnActive.CheckedChanged += ChkOPUUnActive_CheckedChanged;
+            chkOPUActiveWait.CheckedChanged += ChkOPUActiveWait_CheckedChanged;
+            ChkOPUActive_CheckedChanged(null, null);
             if (statusOPU.Equals(""))
             {
                 gbOPU.Enabled = false;
@@ -78,6 +82,38 @@ namespace clinic_ivf.gui
             }
         }
 
+        private void ChkOPUActiveWait_CheckedChanged(object sender, EventArgs e)
+        {
+            //throw new NotImplementedException();
+            chkOPUWaitRemark();
+        }
+
+        private void ChkOPUUnActive_CheckedChanged(object sender, EventArgs e)
+        {
+            //throw new NotImplementedException();
+            chkOPUWaitRemark();
+        }
+
+        private void ChkOPUActive_CheckedChanged(object sender, EventArgs e)
+        {
+            //throw new NotImplementedException();
+            chkOPUWaitRemark();
+        }
+        private void chkOPUWaitRemark()
+        {
+            if (chkOPUActive.Checked)
+            {
+                cboOPUWaitRemark.Hide();
+            }
+            else if (chkOPUUnActive.Checked)
+            {
+                cboOPUWaitRemark.Show();
+            }
+            else if (chkOPUActiveWait.Checked)
+            {
+                cboOPUWaitRemark.Show();
+            }
+        }
         private void BtmDonorSearch_Click(object sender, EventArgs e)
         {
             //throw new NotImplementedException();
@@ -216,65 +252,17 @@ namespace clinic_ivf.gui
             lFormA.y_selection = chkYselet.Checked ? "1" : "0";
             lFormA.x_selection = chkXselet.Checked ? "1" : "0";
             lFormA.status_wait_confirm_day1 = chkWaitDay1.Checked ? "1" : "0";
-            lFormA.status_wait_confirm_opu_date = chkWaitOpuDate.Checked ? chkConfirmOpuDate.Checked ? "2" : "1" : "0";
+            lFormA.status_wait_confirm_opu_date = chkConfirmOpuDate.Checked ? chkWaitOpuDate.Checked ? "1" : "2" : "0";
+            lFormA.opu_time = txtOPUTime.Text;
+            lFormA.status_opu_active = chkOPUActive.Checked ? "1" : chkOPUUnActive.Checked ? "3" : chkOPUActiveWait.Checked ? "2": "0";
+            lFormA.opu_wait_remark = cboOPUWaitRemark.Text;
         }
         private void BtnSave_Click(object sender, EventArgs e)
         {
             //throw new NotImplementedException();
             if (btnSave.Text.Equals("Confirm"))
             {
-                stt.Hide();
-                String re = "", reqid = "";
                 
-                setLabFormA();
-                re = ic.ivfDB.lFormaDB.insertLabFormA(lFormA, txtStfConfirmID.Text);
-                DateTime dt = new DateTime();
-                String dt1 = "";
-                //if(DateTime.TryParse(ic.datetoDB(txtOPUDate.Text), out dt))
-                //{
-                //    dt1 = ic.datetoDB(txtOPUDate.Text);
-                //}
-                if (txtID.Text.Equals(""))
-                {
-                    LabRequest lbReq = new LabRequest();
-                    if (chkWaitOpuDate.Checked)
-                    {
-                        reqid = ic.ivfDB.oJsDB.selectByStatusOPU(txtVnOld.Text);
-                        lbReq = ic.ivfDB.setLabRequest(txtNameFeMale.Text, txtVnOld.Text, cboDoctor.SelectedItem == null ? "" : ((ComboBoxItem)cboDoctor.SelectedItem).Value, cboRemark.Text, txtHnOld.Text, ic.datetoDB(txtDobFeMale.Text), reqid, "112");
-                        lbReq.form_a_id = re;
-                        String re1 = ic.ivfDB.lbReqDB.insertLabRequest(lbReq, txtStfConfirmID.Text);
-                        ic.ivfDB.lFormaDB.updateReqIdOPU(re, re1);
-                    }
-
-                    if (chkETNotoTranfer.Checked || chkFET.Checked)
-                    {
-                        reqid = "";
-                        lbReq = new LabRequest();
-                        reqid = ic.ivfDB.oJsDB.selectByStatusFET(txtVnOld.Text);
-                        lbReq = ic.ivfDB.setLabRequest(txtNameFeMale.Text, txtVnOld.Text, cboDoctor.SelectedItem == null ? "" : ((ComboBoxItem)cboDoctor.SelectedItem).Value, cboRemark.Text, txtHnOld.Text, ic.datetoDB(txtDobFeMale.Text), reqid, "160");
-                        lbReq.form_a_id = re;
-                        String re2 = ic.ivfDB.lbReqDB.insertLabRequest(lbReq, txtStfConfirmID.Text);
-                        if (chkFET.Checked)
-                        {
-                            ic.ivfDB.lFormaDB.updateReqIdFet(re, re2);
-                        }
-                    }
-                }
-                else
-                {
-                    //String re1 = ic.ivfDB.lbReqDB.insertLabRequest(lbReq, txtStfConfirmID.Text);
-                }
-                //txtID.Value = (!txtID.Text.Equals("") && re.Equals("1")) ? re : "";        //update
-                long chk = 0;
-                if (long.TryParse(re, out chk))
-                {
-                    txtID.Value = txtID.Text.Equals("") ? re : txtID.Text;
-                    ic.ivfDB.vsOldDB.updateFormA(txtVnOld.Text, txtID.Text);
-                    //txtID.Value = re;
-                    btnSave.Text = "Save";
-                    btnSave.Image = Resources.accept_database24;
-                    System.Threading.Thread.Sleep(500);
-                }
             }
             else
             {
@@ -308,7 +296,59 @@ namespace clinic_ivf.gui
                     btnSave.Text = "Confirm";
                     btnSave.Image = Resources.Add_ticket_24;
                     stt.Show("<p><b>สวัสดี</b></p>คุณ " + ic.cStf.staff_fname_t + " " + ic.cStf.staff_lname_t + "<br> กรุณายินยันการ confirm อีกครั้ง", btnPrint);
-                    btnSave.Focus();
+                    //btnSave.Focus();
+                    stt.Hide();
+                    String re = "", reqid = "";
+
+                    setLabFormA();
+                    re = ic.ivfDB.lFormaDB.insertLabFormA(lFormA, txtStfConfirmID.Text);
+                    DateTime dt = new DateTime();
+                    String dt1 = "";
+                    //if(DateTime.TryParse(ic.datetoDB(txtOPUDate.Text), out dt))
+                    //{
+                    //    dt1 = ic.datetoDB(txtOPUDate.Text);
+                    //}
+                    if (txtID.Text.Equals(""))
+                    {
+                        LabRequest lbReq = new LabRequest();
+                        if (chkWaitOpuDate.Checked)
+                        {
+                            reqid = ic.ivfDB.oJsDB.selectByStatusOPU(txtVnOld.Text);
+                            lbReq = ic.ivfDB.setLabRequest(txtNameFeMale.Text, txtVnOld.Text, cboDoctor.SelectedItem == null ? "" : ((ComboBoxItem)cboDoctor.SelectedItem).Value, cboRemark.Text, txtHnOld.Text, ic.datetoDB(txtDobFeMale.Text), reqid, "112");
+                            lbReq.form_a_id = re;
+                            String re1 = ic.ivfDB.lbReqDB.insertLabRequest(lbReq, txtStfConfirmID.Text);
+                            ic.ivfDB.lFormaDB.updateReqIdOPU(re, re1);
+                        }
+
+                        if (chkETNotoTranfer.Checked || chkFET.Checked)
+                        {
+                            reqid = "";
+                            lbReq = new LabRequest();
+                            reqid = ic.ivfDB.oJsDB.selectByStatusFET(txtVnOld.Text);
+                            lbReq = ic.ivfDB.setLabRequest(txtNameFeMale.Text, txtVnOld.Text, cboDoctor.SelectedItem == null ? "" : ((ComboBoxItem)cboDoctor.SelectedItem).Value, cboRemark.Text, txtHnOld.Text, ic.datetoDB(txtDobFeMale.Text), reqid, "160");
+                            lbReq.form_a_id = re;
+                            String re2 = ic.ivfDB.lbReqDB.insertLabRequest(lbReq, txtStfConfirmID.Text);
+                            if (chkFET.Checked)
+                            {
+                                ic.ivfDB.lFormaDB.updateReqIdFet(re, re2);
+                            }
+                        }
+                    }
+                    else
+                    {
+                        //String re1 = ic.ivfDB.lbReqDB.insertLabRequest(lbReq, txtStfConfirmID.Text);
+                    }
+                    //txtID.Value = (!txtID.Text.Equals("") && re.Equals("1")) ? re : "";        //update
+                    long chk = 0;
+                    if (long.TryParse(re, out chk))
+                    {
+                        txtID.Value = txtID.Text.Equals("") ? re : txtID.Text;
+                        ic.ivfDB.vsOldDB.updateFormA(txtVnOld.Text, txtID.Text);
+                        //txtID.Value = re;
+                        btnSave.Text = "Save";
+                        btnSave.Image = Resources.accept_database24;
+                        System.Threading.Thread.Sleep(500);
+                    }
                 }
                 else
                 {
@@ -481,6 +521,12 @@ namespace clinic_ivf.gui
             chkWaitDay1.Checked = lFormA.status_wait_confirm_day1.Equals("1") ? true : false;
             chkWaitOpuDate.Checked = lFormA.status_wait_confirm_opu_date.Equals("1") ? true : false;
             chkConfirmOpuDate.Checked = lFormA.status_wait_confirm_opu_date.Equals("1") ? false : true;
+            txtOPUTime.Value = lFormA.opu_time;
+
+            chkOPUActive.Checked = lFormA.status_opu_active.Equals("1") ? true : false;
+            chkOPUUnActive.Checked = lFormA.status_opu_active.Equals("3") ? true : false;
+            chkOPUActiveWait.Checked = lFormA.status_opu_active.Equals("2") ? true : false;
+            cboOPUWaitRemark.Value = lFormA.opu_wait_remark;
         }
         private void FrmLabOPUReq_Load(object sender, EventArgs e)
         {

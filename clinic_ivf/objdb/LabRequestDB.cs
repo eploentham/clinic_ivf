@@ -133,7 +133,7 @@ namespace clinic_ivf.objdb
             DataTable dt = new DataTable();
             String sql = "select lbReq." + lbReq.req_id + ", lbReq." + lbReq.req_code + ", lbReq." + lbReq.hn_female + ", lbReq." + lbReq.vn + ", lbReq." + lbReq.name_female
                 + ", lbReq." + lbReq.req_date + ", lbReq." + lbReq.remark + ",lbReq." + lbReq.doctor_id+", Doctor.Name as dtr_name, spi.SName " +
-                ",lforma.status_wait_confirm_day1,lforma.status_wait_confirm_opu_date,lbReq.form_a_id " +
+                ",lforma.status_wait_confirm_day1,lforma.status_wait_confirm_opu_date,lbReq.form_a_id, lforma.opu_wait_remark, lforma.remark as form_a_remark,lforma.status_opu_active,lforma.opu_time " +
                 "From " + lbReq.table + " lbReq " +
                 "Left Join Doctor on Doctor.ID = lbReq.doctor_id " +
                 "Left Join SpecialItem spi on lbReq.item_id = spi.SID " +

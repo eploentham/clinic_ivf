@@ -185,6 +185,9 @@ namespace clinic_ivf.control
             iniC.sticker_donor_start_x = iniF.getIni("sticker_donor", "start_x");
             iniC.status_show_border = iniF.getIni("sticker_donor", "status_show_border");
             iniC.barcode_width_minus = iniF.getIni("sticker_donor", "barcode_width_minus");
+            iniC.grfRowRed = iniF.getIni("app", "grfRowRed");
+            iniC.grfRowGreen = iniF.getIni("app", "grfRowGreen");
+            iniC.grfRowYellow = iniF.getIni("app", "grfRowYellow");
 
             iniC.patientaddpanel1weight = iniF.getIni("app", "patientaddpanel1weight");
 
@@ -212,6 +215,9 @@ namespace clinic_ivf.control
             iniC.themeApplication = iniC.themeApplication == null ? "Office2007Blue" : iniC.themeApplication .Equals("") ? "Office2007Blue" : iniC.themeApplication;
             iniC.themeDonor = iniC.themeDonor == null ? "Office2007Blue" : iniC.themeDonor.Equals("") ? "Office2007Blue" : iniC.themeDonor;
             iniC.themeDonor1 = iniC.themeDonor1 == null ? "MacBlue" : iniC.themeDonor1.Equals("") ? "MacBlue" : iniC.themeDonor1;
+            iniC.grfRowRed = iniC.grfRowRed == null ? "#FF0266" : iniC.grfRowRed.Equals("") ? "#FF0266" : iniC.grfRowRed;
+            iniC.grfRowGreen = iniC.grfRowGreen == null ? "#7CB342" : iniC.grfRowGreen.Equals("") ? "#7CB342" : iniC.grfRowGreen;
+            iniC.grfRowYellow = iniC.grfRowYellow == null ? "#FFDE03" : iniC.grfRowYellow.Equals("") ? "#FFDE03" : iniC.grfRowYellow;
 
             iniC.statusAppDonor = iniC.statusAppDonor == null ? "1" : iniC.statusAppDonor.Equals("") ? "1" : iniC.statusAppDonor;
 

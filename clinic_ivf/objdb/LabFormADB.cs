@@ -91,6 +91,9 @@ namespace clinic_ivf.objdb
             lformA.req_id_iui = "req_id_iui";
             lformA.req_id_opu = "req_id_opu";
             lformA.req_id_pesa_tese = "req_id_pesa_tese";
+            lformA.opu_time = "opu_time";
+            lformA.status_opu_active = "status_opu_active";
+            lformA.opu_wait_remark = "opu_wait_remark";
 
             lformA.pkField = "form_a_id";
             lformA.table = "lab_t_form_a";
@@ -161,9 +164,9 @@ namespace clinic_ivf.objdb
             p.x_selection = p.x_selection == null ? "0" : p.x_selection;
             p.status_wait_confirm_day1 = p.status_wait_confirm_day1 == null ? "0" : p.status_wait_confirm_day1;
             p.status_wait_confirm_opu_date = p.status_wait_confirm_opu_date == null ? "0" : p.status_wait_confirm_opu_date;
-            //p.repeat_prl = p.repeat_prl == null ? "0" : p.repeat_prl;
-            //p.repeat_lh = p.repeat_lh == null ? "0" : p.repeat_lh;
-            //p.repeat_fsh = p.repeat_fsh == null ? "0" : p.repeat_fsh;
+            p.opu_time = p.opu_time == null ? "" : p.opu_time;
+            p.status_opu_active = p.status_opu_active == null ? "0" : p.status_opu_active;
+            p.opu_wait_remark = p.opu_wait_remark == null ? "" : p.opu_wait_remark;
             //p.opu = p.opu == null ? "0" : p.opu;
             //p.et = p.et == null ? "0" : p.et;
             //p.fet = p.fet == null ? "0" : p.fet;
@@ -262,6 +265,9 @@ namespace clinic_ivf.objdb
                     "," + lformA.req_id_iui + "='" + p.req_id_iui + "' " +
                     "," + lformA.req_id_opu + "='" + p.req_id_opu + "' " +
                     "," + lformA.req_id_pesa_tese + "='" + p.req_id_pesa_tese + "' " +
+                    "," + lformA.opu_time + "='" + p.opu_time + "' " +
+                    "," + lformA.status_opu_active + "='" + p.status_opu_active + "' " +
+                    "," + lformA.opu_wait_remark + "='" + p.opu_wait_remark + "' " +
                     "";
                 re = conn.ExecuteNonQuery(conn.conn, sql);
             }
@@ -341,6 +347,9 @@ namespace clinic_ivf.objdb
                     "," + lformA.x_selection + "='" + p.x_selection + "' " +
                     "," + lformA.status_wait_confirm_day1 + "='" + p.status_wait_confirm_day1 + "' " +
                     "," + lformA.status_wait_confirm_opu_date + "='" + p.status_wait_confirm_opu_date + "' " +
+                    "," + lformA.opu_time + "='" + p.opu_time + "' " +
+                    "," + lformA.status_opu_active + "='" + p.status_opu_active + "' " +
+                    "," + lformA.opu_wait_remark + "='" + p.opu_wait_remark + "' " +
                 " Where " + lformA.pkField + " = '" + p.form_a_id + "' "
                 ;
             try
@@ -541,6 +550,38 @@ namespace clinic_ivf.objdb
             }
             return c;
         }
+        public DataTable selectDistinctByOPUWaitRemark()
+        {
+            DataTable dt = new DataTable();
+            String sql = "select distinct lformA.opu_wait_remark " +
+                "From " + lformA.table + " lformA " +
+                "Where lformA." + lformA.active + "='1' ";
+            dt = conn.selectData(conn.conn, sql);
+            return dt;
+        }
+        public C1ComboBox setCboOPUWaitRemark(C1ComboBox c)
+        {
+            ComboBoxItem item = new ComboBoxItem();
+            DataTable dt = selectDistinctByOPUWaitRemark();
+            //String aaa = "";
+            ComboBoxItem item1 = new ComboBoxItem();
+            //item1.Text = "";
+            //item1.Value = "";
+            c.Items.Clear();
+            //c.Items.Add(item1);
+            //for (int i = 0; i < dt.Rows.Count; i++)
+            int i = 0;
+            foreach (DataRow row in dt.Rows)
+            {
+                item = new ComboBoxItem();
+                item.Text = row[lformA.opu_wait_remark].ToString();
+                item.Value = i.ToString();
+
+                c.Items.Add(item);
+                i++;
+            }
+            return c;
+        }
         public LabFormA setLabFormA(DataTable dt)
         {
             LabFormA vs1 = new LabFormA();
@@ -615,6 +656,9 @@ namespace clinic_ivf.objdb
                 vs1.req_id_iui = dt.Rows[0][lformA.req_id_iui].ToString();
                 vs1.req_id_opu = dt.Rows[0][lformA.req_id_opu].ToString();
                 vs1.req_id_pesa_tese = dt.Rows[0][lformA.req_id_pesa_tese].ToString();
+                vs1.opu_time = dt.Rows[0][lformA.opu_time].ToString();
+                vs1.status_opu_active = dt.Rows[0][lformA.status_opu_active].ToString();
+                vs1.opu_wait_remark = dt.Rows[0][lformA.opu_wait_remark].ToString();
             }
             else
             {
@@ -693,6 +737,9 @@ namespace clinic_ivf.objdb
             lforma1.req_id_iui = "";
             lforma1.req_id_opu = "";
             lforma1.req_id_pesa_tese = "";
+            lforma1.opu_time = "";
+            lforma1.status_opu_active = "";
+            lforma1.opu_wait_remark = "";
             return lforma1;
         }
     }

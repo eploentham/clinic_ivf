@@ -170,6 +170,7 @@ namespace clinic_ivf.gui
             //rg1.Style = grfBank.Styles["date"];
             //grfCu.Cols[colID].Visible = false;
             int i = 1;
+            String chk = "";
             foreach (DataRow row in dt.Rows)
             {
                 Row row1 = grfReq.Rows.Add();
@@ -184,19 +185,46 @@ namespace clinic_ivf.gui
                 row1[colOpuId] = "";
                 row1[colDtrName] = row["dtr_name"].ToString();
                 row1[0] = i;
-                if (row["status_wait_confirm_opu_date"].ToString().Equals("1"))
+                if (row[ic.ivfDB.lbReqDB.lbReq.hn_female].ToString().Equals("HN-84208/61"))
                 {
-                    //grfReq.Rows[i].StyleNew.BackColor = ColorTranslator.FromHtml(ic.iniC.grfRowColor);
-                    String txt1 = "";
-                    txt1 = "รอ confirm วัน เวลา OPU จากทาง พยาบาล";
+                    chk = "";
+                }
+                String txt1 = "";
+                if (row["status_opu_active"].ToString().Equals("1"))
+                {
+                    if (row["status_wait_confirm_opu_date"].ToString().Equals("1"))
+                    {
+                        //grfReq.Rows[i].StyleNew.BackColor = ColorTranslator.FromHtml(ic.iniC.grfRowColor);
+                        txt1 = "รอ confirm วัน เวลา OPU จากทาง พยาบาล " + row["form_a_remark"].ToString();
+                        CellNote note = new CellNote(txt1);
+                        CellRange rg = grfReq.GetCellRange(i, colRqHn);
+                        rg.UserData = note;
+                        grfReq.Rows[i].StyleNew.BackColor = ColorTranslator.FromHtml(ic.iniC.grfRowGreen);
+                    }
+                    else if (row["status_wait_confirm_opu_date"].ToString().Equals("0"))
+                    {
+                        txt1 = "รอ confirm วัน เวลา OPU จากทาง พยาบาล " + row["form_a_remark"].ToString();
+                        CellNote note = new CellNote(txt1);
+                        CellRange rg = grfReq.GetCellRange(i, colRqHn);
+                        rg.UserData = note;
+                        grfReq.Rows[i].StyleNew.BackColor = ColorTranslator.FromHtml(ic.iniC.grfRowYellow);
+                    }
+                }
+                else if (row["status_opu_active"].ToString().Equals("2"))
+                {
+                    txt1 = "Wait " + row["opu_wait_remark"].ToString() +" "+ row["form_a_remark"].ToString();
                     CellNote note = new CellNote(txt1);
                     CellRange rg = grfReq.GetCellRange(i, colRqHn);
                     rg.UserData = note;
-                    grfReq.Rows[i].StyleNew.BackColor = Color.Yellow;
+                    grfReq.Rows[i].StyleNew.BackColor = ColorTranslator.FromHtml(ic.iniC.grfRowYellow);
                 }
-                else if (row["status_wait_confirm_opu_date"].ToString().Equals("2"))
+                else if (row["status_opu_active"].ToString().Equals("3"))
                 {
-                    grfReq.Rows[i].StyleNew.BackColor = Color.Green;
+                    txt1 = "Wait " + row["opu_wait_remark"].ToString() + " " + row["form_a_remark"].ToString();
+                    CellNote note = new CellNote(txt1);
+                    CellRange rg = grfReq.GetCellRange(i, colRqHn);
+                    rg.UserData = note;
+                    grfReq.Rows[i].StyleNew.BackColor = ColorTranslator.FromHtml(ic.iniC.grfRowRed);
                 }
                 i++;
             }

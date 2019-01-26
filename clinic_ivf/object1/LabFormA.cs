@@ -77,5 +77,8 @@ namespace clinic_ivf.object1
         public String req_id_fet { get; set; }
         public String req_id_iui { get; set; }
         public String req_id_pesa_tese { get; set; }
+        public String opu_time { get; set; }
+        public String status_opu_active { get; set; }
+        public String opu_wait_remark { get; set; }
     }
 }

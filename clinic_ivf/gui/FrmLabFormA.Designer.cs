@@ -143,6 +143,13 @@
             this.txtPasaTeseDate = new C1.Win.C1Input.C1DateEdit();
             this.label25 = new System.Windows.Forms.Label();
             this.label20 = new System.Windows.Forms.Label();
+            this.label29 = new System.Windows.Forms.Label();
+            this.txtOPUTime = new C1.Win.C1Input.C1TextBox();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.chkOPUUnActive = new System.Windows.Forms.RadioButton();
+            this.chkOPUActive = new System.Windows.Forms.RadioButton();
+            this.chkOPUActiveWait = new System.Windows.Forms.RadioButton();
+            this.cboOPUWaitRemark = new C1.Win.C1Input.C1ComboBox();
             this.sB.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.theme1)).BeginInit();
             this.groupBox1.SuspendLayout();
@@ -215,6 +222,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.chkFreshSprem)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtIUIDate)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtPasaTeseDate)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtOPUTime)).BeginInit();
+            this.groupBox3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.cboOPUWaitRemark)).BeginInit();
             this.SuspendLayout();
             // 
             // sB
@@ -1216,7 +1226,7 @@
             this.gbETFET.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
             this.gbETFET.Location = new System.Drawing.Point(11, 303);
             this.gbETFET.Name = "gbETFET";
-            this.gbETFET.Size = new System.Drawing.Size(1056, 130);
+            this.gbETFET.Size = new System.Drawing.Size(1042, 130);
             this.gbETFET.TabIndex = 13;
             this.gbETFET.TabStop = false;
             this.gbETFET.Text = "ET FET";
@@ -1526,6 +1536,7 @@
             // gbOPU
             // 
             this.gbOPU.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.gbOPU.Controls.Add(this.groupBox3);
             this.gbOPU.Controls.Add(this.panel1);
             this.gbOPU.Controls.Add(this.chkWaitDay1);
             this.gbOPU.Controls.Add(this.chkXselet);
@@ -1550,7 +1561,7 @@
             this.gbOPU.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
             this.gbOPU.Location = new System.Drawing.Point(12, 19);
             this.gbOPU.Name = "gbOPU";
-            this.gbOPU.Size = new System.Drawing.Size(1055, 283);
+            this.gbOPU.Size = new System.Drawing.Size(1041, 283);
             this.gbOPU.TabIndex = 725;
             this.gbOPU.TabStop = false;
             this.gbOPU.Text = "OPU";
@@ -1559,14 +1570,16 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.panel1.Controls.Add(this.txtOPUTime);
+            this.panel1.Controls.Add(this.label29);
             this.panel1.Controls.Add(this.chkConfirmOpuDate);
             this.panel1.Controls.Add(this.chkWaitOpuDate);
             this.panel1.Controls.Add(this.txtOPUDate);
             this.panel1.Controls.Add(this.label7);
             this.panel1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.panel1.Location = new System.Drawing.Point(12, 16);
+            this.panel1.Location = new System.Drawing.Point(7, 16);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(548, 46);
+            this.panel1.Size = new System.Drawing.Size(632, 46);
             this.panel1.TabIndex = 734;
             this.theme1.SetTheme(this.panel1, "(default)");
             // 
@@ -1578,12 +1591,12 @@
             this.chkConfirmOpuDate.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(189)))), ((int)(((byte)(182)))));
             this.chkConfirmOpuDate.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(189)))), ((int)(((byte)(182)))));
             this.chkConfirmOpuDate.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.chkConfirmOpuDate.Location = new System.Drawing.Point(137, 15);
+            this.chkConfirmOpuDate.Location = new System.Drawing.Point(334, 15);
             this.chkConfirmOpuDate.Name = "chkConfirmOpuDate";
-            this.chkConfirmOpuDate.Size = new System.Drawing.Size(121, 17);
+            this.chkConfirmOpuDate.Size = new System.Drawing.Size(124, 17);
             this.chkConfirmOpuDate.TabIndex = 537;
             this.chkConfirmOpuDate.TabStop = true;
-            this.chkConfirmOpuDate.Text = "ยืนยัน วัน Opu Date";
+            this.chkConfirmOpuDate.Text = "ยืนยัน วัน OPU Date";
             this.theme1.SetTheme(this.chkConfirmOpuDate, "(default)");
             this.chkConfirmOpuDate.UseVisualStyleBackColor = false;
             // 
@@ -1595,12 +1608,12 @@
             this.chkWaitOpuDate.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(189)))), ((int)(((byte)(182)))));
             this.chkWaitOpuDate.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(189)))), ((int)(((byte)(182)))));
             this.chkWaitOpuDate.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.chkWaitOpuDate.Location = new System.Drawing.Point(5, 15);
+            this.chkWaitOpuDate.Location = new System.Drawing.Point(202, 15);
             this.chkWaitOpuDate.Name = "chkWaitOpuDate";
-            this.chkWaitOpuDate.Size = new System.Drawing.Size(124, 17);
+            this.chkWaitOpuDate.Size = new System.Drawing.Size(127, 17);
             this.chkWaitOpuDate.TabIndex = 536;
             this.chkWaitOpuDate.TabStop = true;
-            this.chkWaitOpuDate.Text = "รอ Confirm Opu Date";
+            this.chkWaitOpuDate.Text = "รอ Confirm OPU Date";
             this.theme1.SetTheme(this.chkWaitOpuDate, "(default)");
             this.chkWaitOpuDate.UseVisualStyleBackColor = false;
             // 
@@ -1626,23 +1639,25 @@
             this.txtOPUDate.Calendar.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
             this.txtOPUDate.CalendarType = C1.Win.C1Input.CalendarType.GregorianCalendar;
             this.txtOPUDate.Culture = 1054;
+            this.txtOPUDate.CurrentTimeZone = false;
             this.txtOPUDate.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
             this.txtOPUDate.DisplayFormat.CalendarType = C1.Win.C1Input.CalendarType.GregorianCalendar;
-            this.txtOPUDate.DisplayFormat.FormatType = C1.Win.C1Input.FormatTypeEnum.ShortDateShortTime;
+            this.txtOPUDate.DisplayFormat.FormatType = C1.Win.C1Input.FormatTypeEnum.ShortDate;
             this.txtOPUDate.DisplayFormat.Inherit = ((C1.Win.C1Input.FormatInfoInheritFlags)(((((C1.Win.C1Input.FormatInfoInheritFlags.CustomFormat | C1.Win.C1Input.FormatInfoInheritFlags.NullText) 
             | C1.Win.C1Input.FormatInfoInheritFlags.EmptyAsNull) 
             | C1.Win.C1Input.FormatInfoInheritFlags.TrimStart) 
             | C1.Win.C1Input.FormatInfoInheritFlags.TrimEnd)));
             this.txtOPUDate.EditFormat.CalendarType = C1.Win.C1Input.CalendarType.GregorianCalendar;
-            this.txtOPUDate.EditFormat.FormatType = C1.Win.C1Input.FormatTypeEnum.ShortDateShortTime;
+            this.txtOPUDate.EditFormat.FormatType = C1.Win.C1Input.FormatTypeEnum.ShortDate;
             this.txtOPUDate.EditFormat.Inherit = ((C1.Win.C1Input.FormatInfoInheritFlags)(((((C1.Win.C1Input.FormatInfoInheritFlags.CustomFormat | C1.Win.C1Input.FormatInfoInheritFlags.NullText) 
             | C1.Win.C1Input.FormatInfoInheritFlags.EmptyAsNull) 
             | C1.Win.C1Input.FormatInfoInheritFlags.TrimStart) 
             | C1.Win.C1Input.FormatInfoInheritFlags.TrimEnd)));
+            this.txtOPUDate.GMTOffset = System.TimeSpan.Parse("00:00:00");
             this.txtOPUDate.ImagePadding = new System.Windows.Forms.Padding(0);
-            this.txtOPUDate.Location = new System.Drawing.Point(361, 15);
+            this.txtOPUDate.Location = new System.Drawing.Point(88, 15);
             this.txtOPUDate.Name = "txtOPUDate";
-            this.txtOPUDate.Size = new System.Drawing.Size(173, 18);
+            this.txtOPUDate.Size = new System.Drawing.Size(110, 18);
             this.txtOPUDate.TabIndex = 697;
             this.txtOPUDate.Tag = null;
             this.theme1.SetTheme(this.txtOPUDate, "(default)");
@@ -1654,7 +1669,7 @@
             this.label7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
             this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.label7.Location = new System.Drawing.Point(278, 17);
+            this.label7.Location = new System.Drawing.Point(5, 17);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(73, 16);
             this.label7.TabIndex = 696;
@@ -2003,7 +2018,7 @@
             this.label11.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
             this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label11.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.label11.Location = new System.Drawing.Point(709, 33);
+            this.label11.Location = new System.Drawing.Point(780, 32);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(27, 16);
             this.label11.TabIndex = 708;
@@ -2015,7 +2030,7 @@
             this.txtNoofOocyteLt.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtNoofOocyteLt.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
             this.txtNoofOocyteLt.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.txtNoofOocyteLt.Location = new System.Drawing.Point(745, 31);
+            this.txtNoofOocyteLt.Location = new System.Drawing.Point(816, 30);
             this.txtNoofOocyteLt.Name = "txtNoofOocyteLt";
             this.txtNoofOocyteLt.Size = new System.Drawing.Size(84, 20);
             this.txtNoofOocyteLt.TabIndex = 707;
@@ -2029,7 +2044,7 @@
             this.label10.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
             this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label10.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.label10.Location = new System.Drawing.Point(574, 33);
+            this.label10.Location = new System.Drawing.Point(645, 32);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(30, 16);
             this.label10.TabIndex = 706;
@@ -2054,7 +2069,7 @@
             this.txtNoofOocyteRt.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtNoofOocyteRt.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
             this.txtNoofOocyteRt.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.txtNoofOocyteRt.Location = new System.Drawing.Point(617, 31);
+            this.txtNoofOocyteRt.Location = new System.Drawing.Point(688, 30);
             this.txtNoofOocyteRt.Name = "txtNoofOocyteRt";
             this.txtNoofOocyteRt.Size = new System.Drawing.Size(84, 20);
             this.txtNoofOocyteRt.TabIndex = 704;
@@ -2288,6 +2303,121 @@
             this.label20.Text = "PESA/TESE :";
             this.theme1.SetTheme(this.label20, "(default)");
             // 
+            // label29
+            // 
+            this.label29.AutoSize = true;
+            this.label29.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.label29.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label29.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.label29.Location = new System.Drawing.Point(470, 16);
+            this.label29.Name = "label29";
+            this.label29.Size = new System.Drawing.Size(77, 16);
+            this.label29.TabIndex = 707;
+            this.label29.Text = "OPU Time :";
+            this.theme1.SetTheme(this.label29, "(default)");
+            // 
+            // txtOPUTime
+            // 
+            this.txtOPUTime.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtOPUTime.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
+            this.txtOPUTime.EditMask = "00:00";
+            this.txtOPUTime.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.txtOPUTime.Location = new System.Drawing.Point(553, 13);
+            this.txtOPUTime.Name = "txtOPUTime";
+            this.txtOPUTime.Size = new System.Drawing.Size(71, 20);
+            this.txtOPUTime.TabIndex = 732;
+            this.txtOPUTime.Tag = null;
+            this.theme1.SetTheme(this.txtOPUTime, "(default)");
+            this.txtOPUTime.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            // 
+            // groupBox3
+            // 
+            this.groupBox3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.groupBox3.Controls.Add(this.cboOPUWaitRemark);
+            this.groupBox3.Controls.Add(this.chkOPUActiveWait);
+            this.groupBox3.Controls.Add(this.chkOPUUnActive);
+            this.groupBox3.Controls.Add(this.chkOPUActive);
+            this.groupBox3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.groupBox3.Location = new System.Drawing.Point(603, 236);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(429, 41);
+            this.groupBox3.TabIndex = 735;
+            this.groupBox3.TabStop = false;
+            this.groupBox3.Text = "สถานะ";
+            this.theme1.SetTheme(this.groupBox3, "(default)");
+            // 
+            // chkOPUUnActive
+            // 
+            this.chkOPUUnActive.AutoSize = true;
+            this.chkOPUUnActive.BackColor = System.Drawing.Color.Transparent;
+            this.chkOPUUnActive.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
+            this.chkOPUUnActive.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(189)))), ((int)(((byte)(182)))));
+            this.chkOPUUnActive.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(189)))), ((int)(((byte)(182)))));
+            this.chkOPUUnActive.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.chkOPUUnActive.Location = new System.Drawing.Point(88, 15);
+            this.chkOPUUnActive.Name = "chkOPUUnActive";
+            this.chkOPUUnActive.Size = new System.Drawing.Size(57, 17);
+            this.chkOPUUnActive.TabIndex = 535;
+            this.chkOPUUnActive.TabStop = true;
+            this.chkOPUUnActive.Text = "ยกเลิก";
+            this.theme1.SetTheme(this.chkOPUUnActive, "(default)");
+            this.chkOPUUnActive.UseVisualStyleBackColor = false;
+            // 
+            // chkOPUActive
+            // 
+            this.chkOPUActive.AutoSize = true;
+            this.chkOPUActive.BackColor = System.Drawing.Color.Transparent;
+            this.chkOPUActive.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
+            this.chkOPUActive.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(189)))), ((int)(((byte)(182)))));
+            this.chkOPUActive.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(189)))), ((int)(((byte)(182)))));
+            this.chkOPUActive.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.chkOPUActive.Location = new System.Drawing.Point(19, 15);
+            this.chkOPUActive.Name = "chkOPUActive";
+            this.chkOPUActive.Size = new System.Drawing.Size(56, 17);
+            this.chkOPUActive.TabIndex = 534;
+            this.chkOPUActive.TabStop = true;
+            this.chkOPUActive.Text = "ใช้งาน";
+            this.theme1.SetTheme(this.chkOPUActive, "(default)");
+            this.chkOPUActive.UseVisualStyleBackColor = false;
+            // 
+            // chkOPUActiveWait
+            // 
+            this.chkOPUActiveWait.AutoSize = true;
+            this.chkOPUActiveWait.BackColor = System.Drawing.Color.Transparent;
+            this.chkOPUActiveWait.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
+            this.chkOPUActiveWait.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(189)))), ((int)(((byte)(182)))));
+            this.chkOPUActiveWait.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(189)))), ((int)(((byte)(182)))));
+            this.chkOPUActiveWait.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.chkOPUActiveWait.Location = new System.Drawing.Point(161, 15);
+            this.chkOPUActiveWait.Name = "chkOPUActiveWait";
+            this.chkOPUActiveWait.Size = new System.Drawing.Size(37, 17);
+            this.chkOPUActiveWait.TabIndex = 536;
+            this.chkOPUActiveWait.TabStop = true;
+            this.chkOPUActiveWait.Text = "รอ";
+            this.theme1.SetTheme(this.chkOPUActiveWait, "(default)");
+            this.chkOPUActiveWait.UseVisualStyleBackColor = false;
+            // 
+            // cboOPUWaitRemark
+            // 
+            this.cboOPUWaitRemark.AllowSpinLoop = false;
+            this.cboOPUWaitRemark.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.cboOPUWaitRemark.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
+            this.cboOPUWaitRemark.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.cboOPUWaitRemark.GapHeight = 0;
+            this.cboOPUWaitRemark.ImagePadding = new System.Windows.Forms.Padding(0);
+            this.cboOPUWaitRemark.ItemsDisplayMember = "";
+            this.cboOPUWaitRemark.ItemsValueMember = "";
+            this.cboOPUWaitRemark.Location = new System.Drawing.Point(204, 16);
+            this.cboOPUWaitRemark.Name = "cboOPUWaitRemark";
+            this.cboOPUWaitRemark.Size = new System.Drawing.Size(207, 20);
+            this.cboOPUWaitRemark.Style.DropDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.cboOPUWaitRemark.Style.DropDownBorderColor = System.Drawing.Color.Gainsboro;
+            this.cboOPUWaitRemark.Style.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.cboOPUWaitRemark.TabIndex = 618;
+            this.cboOPUWaitRemark.Tag = null;
+            this.theme1.SetTheme(this.cboOPUWaitRemark, "(default)");
+            this.cboOPUWaitRemark.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            // 
             // FrmLabFormA
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -2385,6 +2515,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.chkFreshSprem)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtIUIDate)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtPasaTeseDate)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtOPUTime)).EndInit();
+            this.groupBox3.ResumeLayout(false);
+            this.groupBox3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.cboOPUWaitRemark)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -2507,5 +2641,12 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.RadioButton chkConfirmOpuDate;
         private System.Windows.Forms.RadioButton chkWaitOpuDate;
+        private System.Windows.Forms.Label label29;
+        private C1.Win.C1Input.C1TextBox txtOPUTime;
+        private System.Windows.Forms.GroupBox groupBox3;
+        private System.Windows.Forms.RadioButton chkOPUUnActive;
+        private System.Windows.Forms.RadioButton chkOPUActive;
+        private System.Windows.Forms.RadioButton chkOPUActiveWait;
+        private C1.Win.C1Input.C1ComboBox cboOPUWaitRemark;
     }
 }
