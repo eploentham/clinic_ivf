@@ -100,7 +100,7 @@ namespace clinic_ivf.gui
             //grfExpnC.CellButtonClick += new C1.Win.C1FlexGrid.RowColEventHandler(this.grfDept_CellButtonClick);
             //grfExpnC.CellChanged += new C1.Win.C1FlexGrid.RowColEventHandler(this.grfDept_CellChanged);
             ContextMenu menuGw = new ContextMenu();
-            menuGw.MenuItems.Add("ป้อน LAB &OPU", new EventHandler(ContextMenu_edit));
+            menuGw.MenuItems.Add("ป้อน LAB OPU/FET", new EventHandler(ContextMenu_edit));
             //menuGw.MenuItems.Add("&แก้ไข", new EventHandler(ContextMenu_Gw_Edit));
             //menuGw.MenuItems.Add("&ยกเลิก", new EventHandler(ContextMenu_Gw_Cancel));
             grfReq.ContextMenu = menuGw;
@@ -300,7 +300,7 @@ namespace clinic_ivf.gui
             grfProc.Clear();
             DataTable dt = new DataTable();
 
-            dt = ic.ivfDB.opuDB.selectByStatusProcess();
+            dt = ic.ivfDB.opuDB.selectByStatusProcess1();
             //grfExpn.Rows.Count = dt.Rows.Count + 1;
             grfProc.Rows.Count = 1;
             grfProc.Cols.Count = 7;

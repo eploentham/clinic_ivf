@@ -577,9 +577,9 @@
             this.groupBox3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
             this.groupBox3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.groupBox3.Location = new System.Drawing.Point(0, 66);
+            this.groupBox3.Location = new System.Drawing.Point(0, 46);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(1210, 636);
+            this.groupBox3.Size = new System.Drawing.Size(1210, 656);
             this.groupBox3.TabIndex = 2;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "groupBox2";
@@ -599,7 +599,7 @@
             this.groupBox2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
             this.groupBox2.Location = new System.Drawing.Point(0, 0);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(1210, 66);
+            this.groupBox2.Size = new System.Drawing.Size(1210, 46);
             this.groupBox2.TabIndex = 1;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Search";
@@ -610,7 +610,7 @@
             this.c1TextBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.c1TextBox1.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
             this.c1TextBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.c1TextBox1.Location = new System.Drawing.Point(519, 27);
+            this.c1TextBox1.Location = new System.Drawing.Point(519, 16);
             this.c1TextBox1.Name = "c1TextBox1";
             this.c1TextBox1.Size = new System.Drawing.Size(29, 20);
             this.c1TextBox1.TabIndex = 522;
@@ -621,7 +621,7 @@
             // 
             // btnSearchF
             // 
-            this.btnSearchF.Location = new System.Drawing.Point(471, 24);
+            this.btnSearchF.Location = new System.Drawing.Point(471, 13);
             this.btnSearchF.Name = "btnSearchF";
             this.btnSearchF.Size = new System.Drawing.Size(28, 23);
             this.btnSearchF.TabIndex = 517;
@@ -652,7 +652,7 @@
             this.c1DateEdit3.Calendar.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
             this.c1DateEdit3.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
             this.c1DateEdit3.ImagePadding = new System.Windows.Forms.Padding(0);
-            this.c1DateEdit3.Location = new System.Drawing.Point(323, 26);
+            this.c1DateEdit3.Location = new System.Drawing.Point(323, 15);
             this.c1DateEdit3.Name = "c1DateEdit3";
             this.c1DateEdit3.Size = new System.Drawing.Size(129, 18);
             this.c1DateEdit3.TabIndex = 514;
@@ -666,7 +666,7 @@
             this.label2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.label2.Location = new System.Drawing.Point(247, 27);
+            this.label2.Location = new System.Drawing.Point(247, 16);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(70, 16);
             this.label2.TabIndex = 513;
@@ -695,7 +695,7 @@
             this.c1DateEdit5.Calendar.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
             this.c1DateEdit5.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
             this.c1DateEdit5.ImagePadding = new System.Windows.Forms.Padding(0);
-            this.c1DateEdit5.Location = new System.Drawing.Point(90, 26);
+            this.c1DateEdit5.Location = new System.Drawing.Point(90, 15);
             this.c1DateEdit5.Name = "c1DateEdit5";
             this.c1DateEdit5.Size = new System.Drawing.Size(129, 18);
             this.c1DateEdit5.TabIndex = 512;
@@ -709,7 +709,7 @@
             this.label3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.label3.Location = new System.Drawing.Point(11, 27);
+            this.label3.Location = new System.Drawing.Point(11, 16);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(73, 16);
             this.label3.TabIndex = 511;
@@ -718,9 +718,9 @@
             // 
             // c1Button3
             // 
-            this.c1Button3.Location = new System.Drawing.Point(960, 19);
+            this.c1Button3.Location = new System.Drawing.Point(630, 15);
             this.c1Button3.Name = "c1Button3";
-            this.c1Button3.Size = new System.Drawing.Size(86, 31);
+            this.c1Button3.Size = new System.Drawing.Size(86, 24);
             this.c1Button3.TabIndex = 0;
             this.c1Button3.Text = "ป้อนใหม่";
             this.theme1.SetTheme(this.c1Button3, "(default)");

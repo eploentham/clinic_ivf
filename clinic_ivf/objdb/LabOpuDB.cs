@@ -204,10 +204,28 @@ namespace clinic_ivf.objdb
         public DataTable selectByStatusProcess()
         {
             DataTable dt = new DataTable();
-            String sql = "select opu.* " +
+            String sql = "select opu."+ opu.opu_id + ", opu."+ opu.opu_code+",opu."+ opu.hn_female+",opu."+ opu.name_female+",opu."+ opu.opu_date+"opu."+ opu.remark +
                 "From " + opu.table + " opu " +
                 "Left Join Doctor on Doctor.ID = opu.doctor_id " +
                 "Where opu." + opu.status_opu + " ='1' and opu."+opu.active+"='1' ";
+            dt = conn.selectData(conn.conn, sql);
+            return dt;
+        }
+        public DataTable selectByStatusProcess1()
+        {
+            DataTable dt = new DataTable();
+            String sql = "select opu." + opu.opu_id + ", opu." + opu.opu_code + ",opu." + opu.hn_female + ",opu." + opu.name_female + ",opu." + opu.opu_date + ",opu." + opu.remark+" " +
+                "From " + opu.table + " opu " +
+                "Left Join Doctor on Doctor.ID = opu.doctor_id " +
+                "Where opu." + opu.status_opu + " ='1' and opu." + opu.active + "='1' " +
+                //"Order By opu." + opu.opu_id + " " +
+                "Union " +
+                "select fet.fet_id , fet.fet_code ,fet.hn_female ,fet.name_female,fet.fet_date ,fet.remark " +
+                "From lab_t_fet fet " +
+                "Left Join Doctor on Doctor.ID = fet.doctor_id " +
+                "Where fet.status_fet ='1' and fet.active + '1' " +
+                //"Order By fet.fet_id  ";
+                "  ";
             dt = conn.selectData(conn.conn, sql);
             return dt;
         }
