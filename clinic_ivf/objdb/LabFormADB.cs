@@ -94,6 +94,8 @@ namespace clinic_ivf.objdb
             lformA.opu_time = "opu_time";
             lformA.status_opu_active = "status_opu_active";
             lformA.opu_wait_remark = "opu_wait_remark";
+            lformA.opu_remark = "opu_remark";
+            lformA.fet_remark = "fet_remark";
 
             lformA.pkField = "form_a_id";
             lformA.table = "lab_t_form_a";
@@ -167,8 +169,8 @@ namespace clinic_ivf.objdb
             p.opu_time = p.opu_time == null ? "" : p.opu_time;
             p.status_opu_active = p.status_opu_active == null ? "0" : p.status_opu_active;
             p.opu_wait_remark = p.opu_wait_remark == null ? "" : p.opu_wait_remark;
-            //p.opu = p.opu == null ? "0" : p.opu;
-            //p.et = p.et == null ? "0" : p.et;
+            p.opu_remark = p.opu_remark == null ? "" : p.opu_remark;
+            p.fet_remark = p.fet_remark == null ? "" : p.fet_remark;
             //p.fet = p.fet == null ? "0" : p.fet;
             //p.hormone_test = p.hormone_test == null ? "0" : p.hormone_test;
             //p.other = p.other == null ? "0" : p.other;
@@ -268,6 +270,8 @@ namespace clinic_ivf.objdb
                     "," + lformA.opu_time + "='" + p.opu_time + "' " +
                     "," + lformA.status_opu_active + "='" + p.status_opu_active + "' " +
                     "," + lformA.opu_wait_remark + "='" + p.opu_wait_remark + "' " +
+                    "," + lformA.opu_remark + "='" + p.opu_remark + "' " +
+                    "," + lformA.fet_remark + "='" + p.fet_remark + "' " +
                     "";
                 re = conn.ExecuteNonQuery(conn.conn, sql);
             }
@@ -350,6 +354,8 @@ namespace clinic_ivf.objdb
                     "," + lformA.opu_time + "='" + p.opu_time + "' " +
                     "," + lformA.status_opu_active + "='" + p.status_opu_active + "' " +
                     "," + lformA.opu_wait_remark + "='" + p.opu_wait_remark + "' " +
+                    "," + lformA.opu_remark + "='" + p.opu_remark + "' " +
+                    "," + lformA.fet_remark + "='" + p.fet_remark + "' " +
                 " Where " + lformA.pkField + " = '" + p.form_a_id + "' "
                 ;
             try
@@ -659,6 +665,8 @@ namespace clinic_ivf.objdb
                 vs1.opu_time = dt.Rows[0][lformA.opu_time].ToString();
                 vs1.status_opu_active = dt.Rows[0][lformA.status_opu_active].ToString();
                 vs1.opu_wait_remark = dt.Rows[0][lformA.opu_wait_remark].ToString();
+                vs1.opu_remark = dt.Rows[0][lformA.opu_remark].ToString();
+                vs1.fet_remark = dt.Rows[0][lformA.fet_remark].ToString();
             }
             else
             {
@@ -740,6 +748,8 @@ namespace clinic_ivf.objdb
             lforma1.opu_time = "";
             lforma1.status_opu_active = "";
             lforma1.opu_wait_remark = "";
+            lforma1.opu_remark = "";
+            lforma1.fet_remark = "";
             return lforma1;
         }
     }

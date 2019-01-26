@@ -72,5 +72,7 @@ namespace clinic_ivf.object1
         public String current_date { get; set; }
         public String form_a_doc { get; set; }
         public String prefix_form_a_doc { get; set; }
+        public String fet_doc { get; set; }
+        public String prefix_fet_doc { get; set; }
     }
 }

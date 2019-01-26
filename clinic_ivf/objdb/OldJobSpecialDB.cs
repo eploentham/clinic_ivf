@@ -46,7 +46,8 @@ namespace clinic_ivf.objdb
             DataTable dt = new DataTable();
             String sql = "Select oJS.*, oJSd.SName, oJSd.SID, oJSd.ID as odsd_id, concat(SurfixName.SurfixName,' ',ptt.PName,' ',ptt.PSurname) as pttname" +
                 ", JobDoctor.DID, Doctor.Name as dtrname, Doctor.ID as dtrid, oJSd.status_req_accept, ifnull(lreq.remark,'') as remark, DateOfBirth as dob" +
-                ", lforma.status_wait_confirm_day1,lreq.form_a_id,oJSd.req_id , vsold.form_a_id, ptt.PIDS,lforma.status_wait_confirm_day1,lforma.status_wait_confirm_opu_date  " +
+                ", lforma.status_wait_confirm_day1,lreq.form_a_id,oJSd.req_id , vsold.form_a_id, ptt.PIDS,lforma.status_wait_confirm_day1,lforma.status_wait_confirm_opu_date " +
+                ", lreq.req_code " +
                 "From " + oJS.table + " oJS " +
                 "Left Join JobSpecialDetail oJSd on oJS.Vn = oJSd.Vn " +
                 "Left Join Patient ptt on ptt.PID = oJS.PID " +
@@ -58,6 +59,29 @@ namespace clinic_ivf.objdb
                 "Left Join lab_t_form_a lforma on vsold.form_a_id = lforma.form_a_id " +
                 "Where oJS." + oJS.Status + " ='1' and oJSd.SID in (112,160) " +
                 "and oJS.Date >= '"+startdate+ "' and oJS.Date <='"+enddate+"' " +
+                "Order By oJSd.ID";
+            dt = conn.selectData(conn.conn, sql);
+            return dt;
+        }
+        public DataTable selectByStatusUnAccept2(String startdate, String enddate)
+        {
+            DataTable dt = new DataTable();
+            String sql = "Select oJS.*, oJSd.SName, oJSd.SID, oJSd.ID as odsd_id, concat(SurfixName.SurfixName,' ',ptt.PName,' ',ptt.PSurname) as name_female" +
+                ", JobDoctor.DID, Doctor.Name as dtr_name, Doctor.ID as dtrid, oJSd.status_req_accept, ifnull(lreq.remark,'') as remark, DateOfBirth as dob" +
+                ", lforma.status_wait_confirm_day1,lreq.form_a_id,oJSd.req_id , vsold.form_a_id, ptt.PIDS,lforma.status_wait_confirm_day1,lforma.status_wait_confirm_opu_date " +
+                ", lreq.req_code, ptt.PIDS as hn_female, lreq.req_date, lreq.remark, lforma.status_opu_active, lforma.status_wait_confirm_opu_date, lforma.opu_wait_remark, lforma.remark as form_a_remark " +
+                ", lforma.opu_date, lforma.opu_time, lforma.opu_remark, lforma.fet_remark " +
+                "From " + oJS.table + " oJS " +
+                "Left Join JobSpecialDetail oJSd on oJS.Vn = oJSd.Vn " +
+                "Left Join Patient ptt on ptt.PID = oJS.PID " +
+                "Left Join SurfixName on SurfixName.SurfixID = ptt.SurfixID " +
+                "Left Join JobDoctor on JobDoctor.VN = oJS.VN " +
+                "Left join Doctor on JobDoctor.DName = Doctor.Name " +
+                "Left Join lab_t_request lreq on lreq.req_id = oJSd.req_id " +
+                "Left Join Visit vsold on oJSd.VN = vsold.VN " +
+                "Left Join lab_t_form_a lforma on vsold.form_a_id = lforma.form_a_id " +
+                "Where oJS." + oJS.Status + " ='1' and oJSd.SID in (112,160) " +
+                "and oJS.Date >= '" + startdate + "' and oJS.Date <='" + enddate + "' " +
                 "Order By oJSd.ID";
             dt = conn.selectData(conn.conn, sql);
             return dt;

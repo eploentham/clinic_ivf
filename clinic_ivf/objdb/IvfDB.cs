@@ -274,5 +274,32 @@ namespace clinic_ivf.objdb
             //opu.dob_female = lbreq.dob_female;
             return opu;
         }
+        public LabFet setFET(String reqid)
+        {
+            LabFet opu = new LabFet();
+            LabRequest lbreq = new LabRequest();
+            LabFormA lformA = new LabFormA();
+            lbreq = lbReqDB.selectByPk1(reqid);
+            lformA = lFormaDB.selectByVnOld(lbreq.vn);
+            opu.fet_id = "";
+            opu.fet_code = copDB.genFEFDoc();
+            //opu.embryo_freez_stage = "";
+            //opu.embryoid_freez_position = "";
+            opu.hn_male = lformA.hn_male;
+            opu.hn_female = lbreq.hn_female;
+            opu.name_male = lformA.name_male;
+            opu.name_female = lbreq.name_female;
+            opu.remark = lbreq.remark;
+            opu.dob_female = lformA.dob_female;
+            opu.dob_male = lformA.dob_male;
+            opu.doctor_id = lbreq.doctor_id;
+            opu.proce_id = "";
+            opu.fet_date = DateTime.Now.Year.ToString() + "-" + System.DateTime.Now.ToString("MM-dd");
+            opu.req_id = reqid;
+            opu.hn_donor = lformA.hn_donor;
+            opu.name_donor = lformA.name_donor;
+            //opu.dob_female = lbreq.dob_female;
+            return opu;
+        }
     }
 }

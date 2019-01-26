@@ -252,10 +252,12 @@ namespace clinic_ivf.gui
             lFormA.y_selection = chkYselet.Checked ? "1" : "0";
             lFormA.x_selection = chkXselet.Checked ? "1" : "0";
             lFormA.status_wait_confirm_day1 = chkWaitDay1.Checked ? "1" : "0";
-            lFormA.status_wait_confirm_opu_date = chkConfirmOpuDate.Checked ? chkWaitOpuDate.Checked ? "1" : "2" : "0";
+            lFormA.status_wait_confirm_opu_date = chkConfirmOpuDate.Checked ? "2" : chkWaitOpuDate.Checked ? "1" : "0";
             lFormA.opu_time = txtOPUTime.Text;
             lFormA.status_opu_active = chkOPUActive.Checked ? "1" : chkOPUUnActive.Checked ? "3" : chkOPUActiveWait.Checked ? "2": "0";
             lFormA.opu_wait_remark = cboOPUWaitRemark.Text;
+            lFormA.opu_remark = txtOPURemark.Text;
+            lFormA.fet_remark = txtFETRemark.Text;
         }
         private void BtnSave_Click(object sender, EventArgs e)
         {
@@ -520,13 +522,15 @@ namespace clinic_ivf.gui
             chkXselet.Checked = lFormA.x_selection.Equals("1") ? true : false;
             chkWaitDay1.Checked = lFormA.status_wait_confirm_day1.Equals("1") ? true : false;
             chkWaitOpuDate.Checked = lFormA.status_wait_confirm_opu_date.Equals("1") ? true : false;
-            chkConfirmOpuDate.Checked = lFormA.status_wait_confirm_opu_date.Equals("1") ? false : true;
+            chkConfirmOpuDate.Checked = lFormA.status_wait_confirm_opu_date.Equals("2") ? true : false;
             txtOPUTime.Value = lFormA.opu_time;
 
             chkOPUActive.Checked = lFormA.status_opu_active.Equals("1") ? true : false;
             chkOPUUnActive.Checked = lFormA.status_opu_active.Equals("3") ? true : false;
             chkOPUActiveWait.Checked = lFormA.status_opu_active.Equals("2") ? true : false;
             cboOPUWaitRemark.Value = lFormA.opu_wait_remark;
+            txtOPURemark.Value = lFormA.opu_remark;
+            txtFETRemark.Value = lFormA.fet_remark;
         }
         private void FrmLabOPUReq_Load(object sender, EventArgs e)
         {

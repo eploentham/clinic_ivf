@@ -165,7 +165,6 @@
             this.menuLabAccept.Name = "menuLabAccept";
             this.menuLabAccept.Size = new System.Drawing.Size(180, 22);
             this.menuLabAccept.Text = "Accept Lab";
-            this.menuLabAccept.Visible = false;
             // 
             // menuLabOpu
             // 
