@@ -30,6 +30,7 @@
         {
             this.theme1 = new C1.Win.C1Themes.C1ThemeController();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.btnSearch = new C1.Win.C1Input.C1Button();
             this.label11 = new System.Windows.Forms.Label();
             this.txtDateStart = new C1.Win.C1Input.C1DateEdit();
             this.label4 = new System.Windows.Forms.Label();
@@ -45,9 +46,9 @@
             this.pnFinish = new System.Windows.Forms.Panel();
             this.sB = new System.Windows.Forms.StatusStrip();
             this.sB1 = new System.Windows.Forms.ToolStripStatusLabel();
-            this.btnSearch = new C1.Win.C1Input.C1Button();
             ((System.ComponentModel.ISupportInitialize)(this.theme1)).BeginInit();
             this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.btnSearch)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtDateStart)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtSearch)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnNew)).BeginInit();
@@ -58,7 +59,6 @@
             this.tabDiag.SuspendLayout();
             this.tabFinish.SuspendLayout();
             this.sB.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.btnSearch)).BeginInit();
             this.SuspendLayout();
             // 
             // theme1
@@ -83,6 +83,17 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Search";
             this.theme1.SetTheme(this.groupBox1, "(default)");
+            // 
+            // btnSearch
+            // 
+            this.btnSearch.Location = new System.Drawing.Point(598, 18);
+            this.btnSearch.Name = "btnSearch";
+            this.btnSearch.Size = new System.Drawing.Size(28, 23);
+            this.btnSearch.TabIndex = 535;
+            this.btnSearch.Text = "...";
+            this.theme1.SetTheme(this.btnSearch, "(default)");
+            this.btnSearch.UseVisualStyleBackColor = true;
+            this.btnSearch.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
             // 
             // label11
             // 
@@ -137,6 +148,13 @@
             this.txtDateStart.ImagePadding = new System.Windows.Forms.Padding(0);
             this.txtDateStart.Location = new System.Drawing.Point(450, 21);
             this.txtDateStart.Name = "txtDateStart";
+            this.txtDateStart.ParseInfo.EmptyAsNull = true;
+            this.txtDateStart.ParseInfo.Inherit = ((C1.Win.C1Input.ParseInfoInheritFlags)(((((((C1.Win.C1Input.ParseInfoInheritFlags.CaseSensitive | C1.Win.C1Input.ParseInfoInheritFlags.FormatType) 
+            | C1.Win.C1Input.ParseInfoInheritFlags.CustomFormat) 
+            | C1.Win.C1Input.ParseInfoInheritFlags.NullText) 
+            | C1.Win.C1Input.ParseInfoInheritFlags.ErrorMessage) 
+            | C1.Win.C1Input.ParseInfoInheritFlags.TrimStart) 
+            | C1.Win.C1Input.ParseInfoInheritFlags.TrimEnd)));
             this.txtDateStart.Size = new System.Drawing.Size(142, 18);
             this.txtDateStart.TabIndex = 533;
             this.txtDateStart.Tag = null;
@@ -288,17 +306,6 @@
             this.sB1.Size = new System.Drawing.Size(118, 17);
             this.sB1.Text = "toolStripStatusLabel1";
             // 
-            // btnSearch
-            // 
-            this.btnSearch.Location = new System.Drawing.Point(598, 18);
-            this.btnSearch.Name = "btnSearch";
-            this.btnSearch.Size = new System.Drawing.Size(28, 23);
-            this.btnSearch.TabIndex = 535;
-            this.btnSearch.Text = "...";
-            this.theme1.SetTheme(this.btnSearch, "(default)");
-            this.btnSearch.UseVisualStyleBackColor = true;
-            this.btnSearch.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
-            // 
             // FrmNurseView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -313,6 +320,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.theme1)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.btnSearch)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtDateStart)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtSearch)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnNew)).EndInit();
@@ -324,7 +332,6 @@
             this.tabFinish.ResumeLayout(false);
             this.sB.ResumeLayout(false);
             this.sB.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.btnSearch)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

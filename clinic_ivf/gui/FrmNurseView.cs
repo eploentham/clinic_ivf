@@ -86,6 +86,12 @@ namespace clinic_ivf.gui
         private void TxtDateStart_DropDownClosed(object sender, DropDownClosedEventArgs e)
         {
             //throw new NotImplementedException();
+            if (txtDateStart.Text.Equals(""))
+            {
+                grfQue.Rows.Count = 1;
+                grfFinish.Rows.Count = 1;
+                return;
+            }
             setGrfQue();
             setGrfFinish();
         }
@@ -114,7 +120,25 @@ namespace clinic_ivf.gui
             //throw new NotImplementedException();
             if (e.KeyCode == Keys.Enter)
             {
-                setGrfQue(txtSearch.Text);
+                if (txtDateStart.Text.Equals(""))
+                {
+                    if (tabWaiting.IsSelected)
+                    {
+
+                    }
+                    else if (tabDiag.IsSelected)
+                    {
+
+                    }
+                    else if (tabFinish.IsSelected)
+                    {
+                        setGrfFinish();
+                    }
+                }
+                else
+                {
+                    setGrfQue(txtSearch.Text);
+                }
             }
             else
             {
@@ -179,6 +203,10 @@ namespace clinic_ivf.gui
             else
             {
                 //grfPtt.DataSource = ic.ivfDB.vsOldDB.selectCurrentVisit(search);
+                if (txtDateStart.Text.Equals(""))
+                {
+
+                }
             }
 
             //grfExpn.Rows.Count = dt.Rows.Count + 1;
@@ -275,6 +303,10 @@ namespace clinic_ivf.gui
             else
             {
                 //grfPtt.DataSource = ic.ivfDB.vsOldDB.selectCurrentVisit(search);
+                if (txtDateStart.Text.Equals(""))
+                {
+                    dt = ic.ivfDB.vsOldDB.selectByStatusNurseFinishLike(search);
+                }
             }
 
             //grfExpn.Rows.Count = dt.Rows.Count + 1;
@@ -601,9 +633,13 @@ namespace clinic_ivf.gui
             if (search.Equals(""))
             {
                 String date = "";
-                DateTime dt11 = DateTime.Parse(txtDateStart.Text);
-                date = dt11.Year + "-" + dt11.ToString("MM-dd");
-                dt = ic.ivfDB.vsOldDB.selectByDate(date);
+                DateTime dt11 = new  DateTime();
+                if(DateTime.TryParse(txtDateStart.Text, out dt11))
+                {
+                    date = dt11.Year + "-" + dt11.ToString("MM-dd");
+                    dt = ic.ivfDB.vsOldDB.selectByDate(date);
+                }
+                
             }
             else
             {

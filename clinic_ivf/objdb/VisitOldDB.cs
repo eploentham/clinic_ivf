@@ -358,6 +358,58 @@ namespace clinic_ivf.objdb
             }
             return dt;
         }
+        public DataTable selectByStatusNurseFinishLike(String search)
+        {
+            DataTable dt = new DataTable();
+            String whereHN = "", whereName = "", wherepid = "", wherepassport = "", wherenameE = "";
+            //String date = System.DateTime.Now.Year + "-" + System.DateTime.Now.ToString("MM-dd");
+            if (search.Equals(""))
+            {
+                dt = selectByStatusNurseFinish();
+            }
+            else
+            {
+                if (!search.Equals(""))
+                {
+                    whereHN = " ptt.PIDS  like '%" + search.Trim().ToUpper() + "%'";
+                }
+                if (!search.Equals(""))
+                {
+                    String[] txt = search.Split(' ');
+                    if (txt.Length == 2)
+                    {
+                        whereName = " or ( lcase(ptt.OName) like '%" + txt[0].Trim().ToLower() + "%') and ( lcase(ptt.OSurname) like '%" + txt[1].Trim().ToLower() + "%')";
+                        wherenameE = " or ( lcase(ptt.PName) like '%" + txt[0].Trim().ToLower() + "%') and ( lcase(ptt.PSurname) like '%" + txt[1].Trim().ToLower() + "%')";
+                        wherenameE += " or ( lcase(ptt.PName) like '%" + txt[0].Trim().ToLower() + " " + txt[1].Trim().ToLower() + "%') ";
+                    }
+                    else if (txt.Length == 1)
+                    {
+                        whereName = " or ( lcase(ptt.OName) like '%" + txt[0].Trim().ToLower() + "%') or ( lcase(ptt.OSurname) like '%" + txt[0].Trim().ToLower() + "%')";
+                        wherenameE = " or ( lcase(ptt.PName) like '%" + txt[0].Trim().ToLower() + "%') or ( lcase(ptt.PSurname) like '%" + txt[0].Trim().ToLower() + "%')";
+                    }
+                    else
+                    {
+                        whereName = " or ( lcase(ptt.OName) like '%" + search.Trim().ToLower() + "%') or ( lcase(ptt.OSurname) like '%" + search.Trim().ToLower() + "%')";
+                        wherenameE = " or ( lcase(ptt.PName) like '%" + search.Trim().ToLower() + "%') or ( lcase(ptt.PSurname) like '%" + search.Trim().ToLower() + "%')";
+                    }
+                }
+                if (!search.Equals(""))
+                {
+                    wherepid = " or ( ptt.IDNumber  like '%" + search.Trim() + "%' )";
+                }
+                String sql = "select vsold.VN as id,vsold.VN, vsold.PIDS, vsold.PName, vsold.VDate, vsold.VStartTime, vsold.VEndTime, VStatus.VName, vsold.VSID, vsold.PID, ptt.DateOfBirth as dob " +
+                ",vsold.form_a_id " +
+                "From " + vsold.table + " vsold " +
+                "Left Join VStatus on  VStatus.VSID = vsold.VSID " +
+                "Left Join Patient ptt on  vsold.PID = ptt.PID " +
+                "Left join SurfixName fpp on fpp.SurfixID = ptt.SurfixID " +
+                //"Where vsold." + vsold.VDate + " ='" + search + "' and vsold.VSID in ('999','166','165') " +
+                "Where " + whereHN + whereName + wherepid + wherenameE + " " +
+                "Order By vsold.VDate, vsold.VStartTime";
+                dt = conn.selectData(conn.conn, sql);
+            }
+            return dt;
+        }
         public String genVN()
         {
             DataTable dt = new DataTable();
