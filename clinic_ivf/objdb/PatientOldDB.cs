@@ -1,4 +1,5 @@
 ﻿using clinic_ivf.object1;
+using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -425,6 +426,50 @@ namespace clinic_ivf.objdb
                 "Where " + whereHN + whereName + wherepid + wherenameE+" " +
                 "Order By ptt." + pttO.PID;
             dt = conn.selectData(conn.conn, sql);
+            return dt;
+        }
+        public DataTable selectBySearch1(String search, MySqlConnection con)
+        {
+            DataTable dt = new DataTable();
+            String whereHN = "", whereName = "", wherepid = "", wherepassport = "", wherenameE = "";
+            if (!search.Equals(""))
+            {
+                whereHN = " ptt." + pttO.PIDS + " like '%" + search.Trim().ToUpper() + "%'";
+            }
+            if (!search.Equals(""))
+            {
+                String[] txt = search.Split(' ');
+                if (txt.Length == 2)
+                {
+                    whereName = " or ( lcase(ptt." + pttO.OName + ") like '%" + txt[0].Trim().ToLower() + "%') and ( lcase(ptt." + pttO.OSurname + ") like '%" + txt[1].Trim().ToLower() + "%')";
+                    wherenameE = " or ( lcase(ptt." + pttO.PName + ") like '%" + txt[0].Trim().ToLower() + "%') and ( lcase(ptt." + pttO.PSurname + ") like '%" + txt[1].Trim().ToLower() + "%')";
+                    wherenameE += " or ( lcase(ptt." + pttO.PName + ") like '%" + txt[0].Trim().ToLower() + " " + txt[1].Trim().ToLower() + "%') ";
+                }
+                else if (txt.Length == 1)
+                {
+                    whereName = " or ( lcase(ptt." + pttO.OName + ") like '%" + txt[0].Trim().ToLower() + "%') or ( lcase(ptt." + pttO.OSurname + ") like '%" + txt[0].Trim().ToLower() + "%')";
+                    wherenameE = " or ( lcase(ptt." + pttO.PName + ") like '%" + txt[0].Trim().ToLower() + "%') or ( lcase(ptt." + pttO.PSurname + ") like '%" + txt[0].Trim().ToLower() + "%')";
+                }
+                else
+                {
+                    whereName = " or ( lcase(ptt." + pttO.OName + ") like '%" + search.Trim().ToLower() + "%') or ( lcase(ptt." + pttO.OSurname + ") like '%" + search.Trim().ToLower() + "%')";
+                    wherenameE = " or ( lcase(ptt." + pttO.PName + ") like '%" + search.Trim().ToLower() + "%') or ( lcase(ptt." + pttO.PSurname + ") like '%" + search.Trim().ToLower() + "%')";
+                }
+            }
+            if (!search.Equals(""))
+            {
+                wherepid = " or ( ptt." + pttO.IDNumber + " like '%" + search.Trim() + "%' )";
+            }
+            //if (!search.Equals(""))
+            //{
+            //    wherepassport = " or ( ptt." + pttO.passport + " like '%" + search.Trim() + "%' )";
+            //}
+            String sql = "select '' as id,'' as VN, '' as VDate, '' as VStartTime, '' as VEndTime, '' as VName, '' as VSID, ptt." + pttO.PID + ",ptt." + pttO.PIDS + ",CONCAT(IFNULL(fpp.SurfixName,''),' ', ptt." + pttO.PName + ",' ',ptt." + pttO.PSurname + ") as PName,ptt." + pttO.EmergencyPersonalContact + ",ptt.DateOfBirth as dob " +
+                "From " + pttO.table + " ptt " +
+                "Left join SurfixName fpp on fpp.SurfixID = ptt.SurfixID " +
+                "Where " + whereHN + whereName + wherepid + wherenameE + " " +
+                "Order By ptt." + pttO.PID;
+            dt = conn.selectData(con, sql);
             return dt;
         }
         public DataTable selectByPk(String pttId)

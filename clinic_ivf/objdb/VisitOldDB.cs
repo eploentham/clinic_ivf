@@ -219,6 +219,20 @@ namespace clinic_ivf.objdb
 
             return dt;
         }
+        public DataTable selectLikeByHNMale(String hn, MySqlConnection con)
+        {
+            DataTable dt = new DataTable();
+            //String date = System.DateTime.Now.Year + "-" + System.DateTime.Now.ToString("MM-dd");
+            String sql = "select '' as id,'' as VN, Patient.PIDS, vsold.PName, vsold.VDate, vsold.VStartTime, vsold.VEndTime, VStatus.VName, vsold.VSID, Patient.DateOfBirth as dob " +
+                "From " + vsold.table + " vsold " +
+                "Left Join VStatus on  VStatus.VSID = vsold.VSID " +
+                "Left Join Patient on  vsold.PID = Patient.PID  " +
+                "Where vsold." + vsold.PIDS + " like ('%" + hn + "%') " +
+                "Order By vsold.VN ";
+            dt = conn.selectData(con, sql);
+
+            return dt;
+        }
         public DataTable selectByHN(String hn)
         {
             DataTable dt = new DataTable();

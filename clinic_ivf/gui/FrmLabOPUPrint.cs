@@ -226,6 +226,7 @@ namespace clinic_ivf.gui
             }
             dt.Rows[0]["embryo_dev_1_staff_name"] = ic.ivfDB.stfDB.getStaffNameBylStf(stfid);
             dt.Rows[0]["embryo_dev_1_checked_name"] = ic.ivfDB.stfDB.getStaffNameBylStf(checkedid);
+            dt.Rows[0]["embryo_for_et_doctor"] = ic.ivfDB.dtrOldDB.getlDtrNameByID(dt.Rows[0]["embryo_for_et_doctor"].ToString());
             dt.Rows[0]["embryo_dev_1_date"] = ic.datetoShow(embryodevdate).Replace("-", "/");
             String date1 = "";
             date1 = ic.datetoShow(dt.Rows[0][ic.ivfDB.opuDB.opu.dob_female].ToString());

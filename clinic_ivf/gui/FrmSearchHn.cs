@@ -29,9 +29,11 @@ namespace clinic_ivf.gui
         C1SuperErrorProvider sep;
         public enum StatusConnection {host, hostEx};
         public enum StatusSearch { PttSearch, DonorSearch };
+        public enum StatusSearchTable { PttSearch, VisitSearch };
         StatusConnection statusconn;
         StatusSearch statussearch;
-        public FrmSearchHn(IvfControl ic, StatusConnection statusconn, StatusSearch statussearch)
+        StatusSearchTable statussearchtable;
+        public FrmSearchHn(IvfControl ic, StatusConnection statusconn, StatusSearch statussearch, StatusSearchTable statussearchtable)
         {
             InitializeComponent();
             this.ic = ic;
@@ -159,7 +161,14 @@ namespace clinic_ivf.gui
                     }
                     else
                     {
-                        dt = ic.ivfDB.vsOldDB.selectLikeByHN(hn, con.conn);
+                        if (statussearchtable == StatusSearchTable.VisitSearch)
+                        {
+                            dt = ic.ivfDB.vsOldDB.selectLikeByHN(hn, con.conn);
+                        }
+                        else
+                        {
+                            dt = ic.ivfDB.pttOldDB.selectBySearch1(hn, con.conn);
+                        }
                     }
                 }
             }

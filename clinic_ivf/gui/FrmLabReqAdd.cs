@@ -114,7 +114,7 @@ namespace clinic_ivf.gui
         private void BtnSearch_Click(object sender, EventArgs e)
         {
             //throw new NotImplementedException();
-            FrmSearchHn frm = new FrmSearchHn(ic, FrmSearchHn.StatusConnection.host, FrmSearchHn.StatusSearch.PttSearch);
+            FrmSearchHn frm = new FrmSearchHn(ic, FrmSearchHn.StatusConnection.host, FrmSearchHn.StatusSearch.PttSearch, FrmSearchHn.StatusSearchTable.VisitSearch);
             frm.ShowDialog(this);
             txtHn.Value = ic.sVsOld.PIDS;
             txtName.Value = ic.sVsOld.PName;

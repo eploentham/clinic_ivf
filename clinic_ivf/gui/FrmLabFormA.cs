@@ -117,7 +117,7 @@ namespace clinic_ivf.gui
         private void BtmDonorSearch_Click(object sender, EventArgs e)
         {
             //throw new NotImplementedException();
-            FrmSearchHn frm = new FrmSearchHn(ic, FrmSearchHn.StatusConnection.hostEx, FrmSearchHn.StatusSearch.DonorSearch);
+            FrmSearchHn frm = new FrmSearchHn(ic, FrmSearchHn.StatusConnection.hostEx, FrmSearchHn.StatusSearch.DonorSearch, FrmSearchHn.StatusSearchTable.VisitSearch);
             frm.ShowDialog(this);
             txtHnDonor.Value = ic.sVsOld.PIDS;
             txtNameDonor.Value = ic.sVsOld.PName;
@@ -171,7 +171,7 @@ namespace clinic_ivf.gui
         private void BtnMaleSearch_Click(object sender, EventArgs e)
         {
             //throw new NotImplementedException();
-            FrmSearchHn frm = new FrmSearchHn(ic, FrmSearchHn.StatusConnection.host, FrmSearchHn.StatusSearch.PttSearch);
+            FrmSearchHn frm = new FrmSearchHn(ic, FrmSearchHn.StatusConnection.host, FrmSearchHn.StatusSearch.PttSearch, FrmSearchHn.StatusSearchTable.VisitSearch);
             frm.ShowDialog(this);
             txtHnMale.Value = ic.sVsOld.PIDS;
             txtNameMale.Value = ic.sVsOld.PName;
@@ -313,7 +313,7 @@ namespace clinic_ivf.gui
                     if (txtID.Text.Equals(""))
                     {
                         LabRequest lbReq = new LabRequest();
-                        if (chkWaitOpuDate.Checked)
+                        if ((gbOPU.Enabled && chkWaitOpuDate.Checked) || (gbOPU.Enabled && chkConfirmOpuDate.Checked))
                         {
                             reqid = ic.ivfDB.oJsDB.selectByStatusOPU(txtVnOld.Text);
                             lbReq = ic.ivfDB.setLabRequest(txtNameFeMale.Text, txtVnOld.Text, cboDoctor.SelectedItem == null ? "" : ((ComboBoxItem)cboDoctor.SelectedItem).Value, cboRemark.Text, txtHnOld.Text, ic.datetoDB(txtDobFeMale.Text), reqid, "112");

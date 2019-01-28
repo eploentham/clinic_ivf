@@ -120,7 +120,7 @@ namespace clinic_ivf.gui
         private void BtnHnMaleSearch_Click(object sender, EventArgs e)
         {
             //throw new NotImplementedException();
-            FrmSearchHn frm = new FrmSearchHn(ic, FrmSearchHn.StatusConnection.hostEx, FrmSearchHn.StatusSearch.PttSearch);
+            FrmSearchHn frm = new FrmSearchHn(ic, FrmSearchHn.StatusConnection.hostEx, FrmSearchHn.StatusSearch.PttSearch, FrmSearchHn.StatusSearchTable.VisitSearch);
             frm.ShowDialog(this);
             txtHnMale.Value = ic.sVsOld.PIDS;
             label45.Text = ic.sVsOld.PName;
@@ -243,7 +243,7 @@ namespace clinic_ivf.gui
         private void BtnHnSearch_Click(object sender, EventArgs e)
         {
             //throw new NotImplementedException();
-            FrmSearchHn frm = new FrmSearchHn(ic, FrmSearchHn.StatusConnection.hostEx, FrmSearchHn.StatusSearch.PttSearch);
+            FrmSearchHn frm = new FrmSearchHn(ic, FrmSearchHn.StatusConnection.hostEx, FrmSearchHn.StatusSearch.PttSearch, FrmSearchHn.StatusSearchTable.VisitSearch);
             frm.ShowDialog(this);
             txtHnFemale.Value = ic.sVsOld.PIDS;
             label32.Text = ic.sVsOld.PName;
