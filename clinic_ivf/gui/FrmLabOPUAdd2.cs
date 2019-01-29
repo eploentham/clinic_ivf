@@ -97,6 +97,7 @@ namespace clinic_ivf.gui
             ic.setCboDay(CboEmbryoFreezDay0, "");
             ic.setCboDay(CboEmbryoFreezDay1, "");
             ic.ivfDB.opuDB.setCboRemark(cboRemark);
+            ic.ivfDB.opuDB.setCboRemark1(cboRemark1);
 
             //stt.BackgroundGradient = C1.Win.C1SuperTooltip.BackgroundGradient.Gold;
 
@@ -293,6 +294,7 @@ namespace clinic_ivf.gui
             theme1.SetTheme(cboOpuProce, theme2);
             theme1.SetTheme(cboDoctor, theme2);
             theme1.SetTheme(cboRemark, theme2);
+            theme1.SetTheme(cboRemark1, theme2);
             theme1.SetTheme(grfDay2, theme2);
             theme1.SetTheme(grfDay3, theme2);
             theme1.SetTheme(grfDay5, theme2);
@@ -2193,6 +2195,7 @@ namespace clinic_ivf.gui
 
             //txtRemark.Value = opu.remark;
             ic.setC1ComboByName(cboRemark, opu.remark);
+            ic.setC1ComboByName(cboRemark1, opu.remark_1);
             txtDatePicEmbryo.Value = opu.date_pic_embryo;
             //CboEmbryoDay.Text = opu.emb
         }
@@ -2234,6 +2237,7 @@ namespace clinic_ivf.gui
             opu.hn_donor = txtHnDonor.Text;
             opu.name_donor = txtNameDonor.Text;
             opu.date_pic_embryo = ic.datetoDB(txtDatePicEmbryo.Text);
+            opu.remark_1 = cboRemark1.Text;
         }
         private void setOPUMatura()
         {
@@ -2294,6 +2298,7 @@ namespace clinic_ivf.gui
             opu.embryo_for_et_number_of_freeze = txtEmbryoForEtNumFreeze.Text;
             opu.embryo_for_et_number_of_discard = txtEmbryoForEtNumDiscard.Text;
             opu.embryo_for_et_remark = cboRemark.Text;
+            opu.remark_1 = cboRemark1.Text;
         }
         private void setOPUEmbryoFreezDay1()
         {

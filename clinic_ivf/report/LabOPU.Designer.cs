@@ -569,6 +569,8 @@ namespace clinic_ivf.report {
             
             private global::System.Data.DataColumn columnembryo_for_et_embryologist_name;
             
+            private global::System.Data.DataColumn columnremark_1;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public lab_opuDataTable() {
@@ -1764,6 +1766,14 @@ namespace clinic_ivf.report {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn remark_1Column {
+                get {
+                    return this.columnremark_1;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -1944,7 +1954,8 @@ namespace clinic_ivf.report {
                         string embryo_dev_1_staff_name, 
                         string embryo_dev_1_checked_name, 
                         string embryo_for_et_embryologist_id, 
-                        string embryo_for_et_embryologist_name) {
+                        string embryo_for_et_embryologist_name, 
+                        string remark_1) {
                 lab_opuRow rowlab_opuRow = ((lab_opuRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         name_female,
@@ -2091,7 +2102,8 @@ namespace clinic_ivf.report {
                         embryo_dev_1_staff_name,
                         embryo_dev_1_checked_name,
                         embryo_for_et_embryologist_id,
-                        embryo_for_et_embryologist_name};
+                        embryo_for_et_embryologist_name,
+                        remark_1};
                 rowlab_opuRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowlab_opuRow);
                 return rowlab_opuRow;
@@ -2259,6 +2271,7 @@ namespace clinic_ivf.report {
                 this.columnembryo_dev_1_checked_name = base.Columns["embryo_dev_1_checked_name"];
                 this.columnembryo_for_et_embryologist_id = base.Columns["embryo_for_et_embryologist_id"];
                 this.columnembryo_for_et_embryologist_name = base.Columns["embryo_for_et_embryologist_name"];
+                this.columnremark_1 = base.Columns["remark_1"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -2554,6 +2567,8 @@ namespace clinic_ivf.report {
                 base.Columns.Add(this.columnembryo_for_et_embryologist_id);
                 this.columnembryo_for_et_embryologist_name = new global::System.Data.DataColumn("embryo_for_et_embryologist_name", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnembryo_for_et_embryologist_name);
+                this.columnremark_1 = new global::System.Data.DataColumn("remark_1", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnremark_1);
                 this.columnname_female.Caption = "DataColumn1";
                 this.columnhn_female.Caption = "DataColumn1";
                 this.columnname_male.Caption = "DataColumn1";
@@ -5135,6 +5150,22 @@ namespace clinic_ivf.report {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public string remark_1 {
+                get {
+                    try {
+                        return ((string)(this[this.tablelab_opu.remark_1Column]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'remark_1\' in table \'lab_opu\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablelab_opu.remark_1Column] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public bool Isname_femaleNull() {
                 return this.IsNull(this.tablelab_opu.name_femaleColumn);
             }
@@ -6871,6 +6902,18 @@ namespace clinic_ivf.report {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public void Setembryo_for_et_embryologist_nameNull() {
                 this[this.tablelab_opu.embryo_for_et_embryologist_nameColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public bool Isremark_1Null() {
+                return this.IsNull(this.tablelab_opu.remark_1Column);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void Setremark_1Null() {
+                this[this.tablelab_opu.remark_1Column] = global::System.Convert.DBNull;
             }
         }
         

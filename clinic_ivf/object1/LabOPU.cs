@@ -139,5 +139,6 @@ namespace clinic_ivf.object1
         public String date_pic_embryo { get; set; }
         public String hn_donor { get; set; }
         public String name_donor { get; set; }
+        public String remark_1 { get; set; }
     }
 }

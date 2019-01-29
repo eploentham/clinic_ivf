@@ -152,6 +152,7 @@ namespace clinic_ivf.objdb
             opu.date_pic_embryo = "date_pic_embryo";
             opu.hn_donor = "hn_donor";
             opu.name_donor = "name_donor";
+            opu.remark_1 = "remark_1";
 
             opu.table = "lab_t_opu";
             opu.pkField = "opu_id";
@@ -238,6 +239,15 @@ namespace clinic_ivf.objdb
             dt = conn.selectData(conn.conn, sql);
             return dt;
         }
+        public DataTable selectDistinctByRemark1()
+        {
+            DataTable dt = new DataTable();
+            String sql = "select distinct opu."+opu.remark_1 +" "+
+                "From " + opu.table + " opu " +
+                "Where opu." + opu.active + "='1' ";
+            dt = conn.selectData(conn.conn, sql);
+            return dt;
+        }
         public C1ComboBox setCboRemark(C1ComboBox c)
         {
             ComboBoxItem item = new ComboBoxItem();
@@ -254,6 +264,29 @@ namespace clinic_ivf.objdb
             {
                 item = new ComboBoxItem();
                 item.Text = row[opu.remark].ToString();
+                item.Value = i.ToString();
+
+                c.Items.Add(item);
+                i++;
+            }
+            return c;
+        }
+        public C1ComboBox setCboRemark1(C1ComboBox c)
+        {
+            ComboBoxItem item = new ComboBoxItem();
+            DataTable dt = selectDistinctByRemark1();
+            //String aaa = "";
+            ComboBoxItem item1 = new ComboBoxItem();
+            item1.Text = "";
+            item1.Value = "";
+            c.Items.Clear();
+            c.Items.Add(item1);
+            //for (int i = 0; i < dt.Rows.Count; i++)
+            int i = 0;
+            foreach (DataRow row in dt.Rows)
+            {
+                item = new ComboBoxItem();
+                item.Text = row[opu.remark_1].ToString();
                 item.Value = i.ToString();
 
                 c.Items.Add(item);
@@ -286,7 +319,7 @@ namespace clinic_ivf.objdb
             p.name_donor = p.name_donor == null ? "" : p.name_donor;
 
             p.remark = p.remark == null ? "" : p.remark;
-            //p.sort1 = p.sort1 == null ? "" : p.sort1;
+            p.remark_1 = p.remark_1 == null ? "" : p.remark_1;
 
             p.doctor_id = int.TryParse(p.doctor_id, out chk) ? chk.ToString() : "0";
             p.proce_id = int.TryParse(p.proce_id, out chk) ? chk.ToString() : "0";
@@ -330,6 +363,7 @@ namespace clinic_ivf.objdb
                 "," + opu.date_pic_embryo + " = '" + p.date_pic_embryo + "'" +
                 "," + opu.hn_donor + " = '" + p.hn_donor + "'" +
                 "," + opu.name_donor + " = '" + p.name_donor + "'" +
+                "," + opu.remark_1 + " = '" + p.remark_1 + "'" +
                "";
             try
             {
@@ -368,6 +402,7 @@ namespace clinic_ivf.objdb
                 "," + opu.date_pic_embryo + " = '" + p.date_pic_embryo + "' " +
                 "," + opu.hn_donor + " = '" + p.hn_donor + "' " +
                 "," + opu.name_donor + " = '" + p.name_donor + "' " +
+                "," + opu.remark_1 + " = '" + p.remark_1 + "' " +
                 "Where " + opu.pkField + "='" + p.opu_id + "'";
 
             try
@@ -501,6 +536,7 @@ namespace clinic_ivf.objdb
                 "," + opu.embryologist_report_id + " = '" + p.embryologist_report_id + "'" +
                 "," + opu.remark + " = '" + p.remark.Replace("'","''") + "'" +
                 "," + opu.embryo_for_et_remark + " = '" + p.embryo_for_et_remark.Replace("'", "''") + "'" +
+                "," + opu.remark_1 + " = '" + p.remark_1.Replace("'", "''") + "'" +
                 "Where " + opu.pkField + "='" + p.opu_id + "'"
                 ;
 
@@ -716,6 +752,7 @@ namespace clinic_ivf.objdb
                 opu1.date_pic_embryo = dt.Rows[0][opu.date_pic_embryo].ToString();
                 opu1.hn_donor = dt.Rows[0][opu.hn_donor].ToString();
                 opu1.name_donor = dt.Rows[0][opu.name_donor].ToString();
+                opu1.remark_1 = dt.Rows[0][opu.remark_1].ToString();
             }
             else
             {
@@ -849,6 +886,7 @@ namespace clinic_ivf.objdb
                 opu1.date_pic_embryo = "";
                 opu1.hn_donor = "";
                 opu1.name_donor = "";
+                opu1.remark_1 = "";
             }
 
             return opu1;
