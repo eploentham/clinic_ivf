@@ -325,7 +325,9 @@ namespace clinic_ivf.objdb
             p.proce_id = int.TryParse(p.proce_id, out chk) ? chk.ToString() : "0";
             p.req_id = int.TryParse(p.req_id, out chk) ? chk.ToString() : "0";
             p.embryo_freez_stage = int.TryParse(p.embryo_freez_stage, out chk) ? chk.ToString() : "0";
-            //p.status_lab = p.status_lab == null ? "0" : p.status_lab;
+            p.embryo_for_et_embryologist_id = int.TryParse(p.embryo_for_et_embryologist_id, out chk) ? chk.ToString() : "0";
+            p.embryologist_approve_id = int.TryParse(p.embryologist_approve_id, out chk) ? chk.ToString() : "0";
+            //p.embryo_for_et_embryologist_id = p.embryo_for_et_embryologist_id == null ? "0" : p.embryo_for_et_embryologist_id;
         }
         public String insert(LabOpu p, String userId)
         {

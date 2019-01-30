@@ -23,7 +23,7 @@ namespace clinic_ivf.gui
         Font fEdit, fEditB;
         Color bg, fc;
         Font ff, ffB;
-        int colRqId = 1, colRqReqNum = 2, colRqHn = 3, colRqVn = 4, colRqName = 5, colRqLabName=6, colRqDate = 7, colRqRemark = 8, colOpuId=9, colDtrName=10, colOPUDate=11, colOPUTime=12;
+        int colRqId = 1, colRqReqNum = 2, colRqHn = 3, colRqVn = 4, colRqName = 5, colRqLabName=6, colRqDate = 7, colRqRemark = 8, colOpuId=9, colDtrName=10, colOPUDate=11, colOPUTime=12, colOPUTimeModi=13;
         int colPcId = 1, colPcOpuNum = 2, colPcHn = 3, colPcPttName = 4, colPcDate = 5, colPcRemark = 6;
 
         C1FlexGrid grfReq, grfProc;
@@ -101,12 +101,22 @@ namespace clinic_ivf.gui
             //grfExpnC.CellChanged += new C1.Win.C1FlexGrid.RowColEventHandler(this.grfDept_CellChanged);
             ContextMenu menuGw = new ContextMenu();
             menuGw.MenuItems.Add("ป้อน LAB OPU/FET", new EventHandler(ContextMenu_edit));
-            //menuGw.MenuItems.Add("&แก้ไข", new EventHandler(ContextMenu_Gw_Edit));
+            menuGw.MenuItems.Add("รับทราบการเปลี่ยนแปลงเวลา", new EventHandler(ContextMenu_Gw_time_modi));
             //menuGw.MenuItems.Add("&ยกเลิก", new EventHandler(ContextMenu_Gw_Cancel));
             grfReq.ContextMenu = menuGw;
             gB.Controls.Add(grfReq);
 
             theme1.SetTheme(grfReq, "Office2010Blue");
+        }
+        private void ContextMenu_Gw_time_modi(object sender, System.EventArgs e)
+        {
+            String chk = "", name = "", id = "";
+
+            id = grfReq[grfReq.Row, colRqId] != null ? grfReq[grfReq.Row, colRqId].ToString() : "";
+            chk = grfReq[grfReq.Row, colRqReqNum] != null ? grfReq[grfReq.Row, colRqReqNum].ToString() : "";
+            name = grfReq[grfReq.Row, colRqName] != null ? grfReq[grfReq.Row, colRqName].ToString() : "";
+            FrmMabOPUTimeModi frm = new FrmMabOPUTimeModi(ic, id, id);
+            frm.ShowDialog(this);
         }
         private void ContextMenu_edit(object sender, System.EventArgs e)
         {
@@ -163,7 +173,7 @@ namespace clinic_ivf.gui
             dt = ic.ivfDB.oJsDB.selectByStatusUnAccept2(datestart1, dateend1);
             //grfExpn.Rows.Count = dt.Rows.Count + 1;
             grfReq.Rows.Count = 1;
-            grfReq.Cols.Count = 13;
+            grfReq.Cols.Count = 14;
             C1TextBox txt = new C1TextBox();
             //C1ComboBox cboproce = new C1ComboBox();
             //ic.ivfDB.itmDB.setCboItem(cboproce);
@@ -181,6 +191,7 @@ namespace clinic_ivf.gui
             grfReq.Cols[colRqLabName].Width = 120;
             grfReq.Cols[colOPUDate].Width = 100;
             grfReq.Cols[colOPUTime].Width = 60;
+            grfReq.Cols[colOPUTimeModi].Width = 60;
             grfReq.ShowCursor = true;
             //grdFlex.Cols[colID].Caption = "no";
             //grfDept.Cols[colCode].Caption = "รหัส";
@@ -195,6 +206,7 @@ namespace clinic_ivf.gui
             grfReq.Cols[colRqLabName].Caption = "Lab Name";
             grfReq.Cols[colOPUDate].Caption = "OPU Date";
             grfReq.Cols[colOPUTime].Caption = "OPU Time";
+            grfReq.Cols[colOPUTimeModi].Caption = "opu time old";
 
             Color color = ColorTranslator.FromHtml(ic.iniC.grfRowColor);
             //CellRange rg1 = grfBank.GetCellRange(1, colE, grfBank.Rows.Count, colE);
@@ -214,6 +226,7 @@ namespace clinic_ivf.gui
                 row1[colRqRemark] = row["form_a_remark"].ToString();
                 row1[colOPUDate] = ic.datetoShow(row[ic.ivfDB.lFormaDB.lformA.opu_date].ToString());
                 row1[colOPUTime] = row[ic.ivfDB.lFormaDB.lformA.opu_time].ToString();
+                row1[colOPUTimeModi] = row[ic.ivfDB.lFormaDB.lformA.opu_time_modi].ToString();
                 row1[colRqLabName] = row["SName"].ToString();
                 if (row["SName"].ToString().Trim().Equals("OPU"))
                 {
@@ -237,6 +250,11 @@ namespace clinic_ivf.gui
                     {
                         //grfReq.Rows[i].StyleNew.BackColor = ColorTranslator.FromHtml(ic.iniC.grfRowColor);
                         txt1 = "confirm วัน เวลา OPU จากทาง พยาบาล " + row["form_a_remark"].ToString();
+                        if (row[ic.ivfDB.lFormaDB.lformA.status_opu_time_modi].ToString().Equals("1"))
+                        {
+                            txt1 = txt1 + " มีการเปลี่ยนแปลง เวลา OPU จาก " + row[ic.ivfDB.lFormaDB.lformA.opu_time_modi].ToString() + " -> " + row[ic.ivfDB.lFormaDB.lformA.opu_time].ToString();
+                        }
+                        
                         CellNote note = new CellNote(txt1);
                         CellRange rg = grfReq.GetCellRange(i, colRqHn);
                         rg.UserData = note;
@@ -245,6 +263,10 @@ namespace clinic_ivf.gui
                     else if (row["status_wait_confirm_opu_date"].ToString().Equals("1"))
                     {
                         txt1 = "รอ confirm วัน เวลา OPU จากทาง พยาบาล " + row["form_a_remark"].ToString();
+                        if (row[ic.ivfDB.lFormaDB.lformA.status_opu_time_modi].ToString().Equals("1"))
+                        {
+                            txt1 = txt1 + " มีการเปลี่ยนแปลง เวลา OPU จาก " + row[ic.ivfDB.lFormaDB.lformA.opu_time_modi].ToString() + " -> " + row[ic.ivfDB.lFormaDB.lformA.opu_time].ToString();
+                        }
                         CellNote note = new CellNote(txt1);
                         CellRange rg = grfReq.GetCellRange(i, colRqHn);
                         rg.UserData = note;
@@ -254,6 +276,10 @@ namespace clinic_ivf.gui
                 else if (row["status_opu_active"].ToString().Equals("2"))
                 {
                     txt1 = "Wait " + row["opu_wait_remark"].ToString() +" "+ row["form_a_remark"].ToString();
+                    if (row[ic.ivfDB.lFormaDB.lformA.status_opu_time_modi].ToString().Equals("1"))
+                    {
+                        txt1 = txt1 + " มีการเปลี่ยนแปลง เวลา OPU จาก " + row[ic.ivfDB.lFormaDB.lformA.opu_time_modi].ToString() + " -> " + row[ic.ivfDB.lFormaDB.lformA.opu_time].ToString();
+                    }
                     CellNote note = new CellNote(txt1);
                     CellRange rg = grfReq.GetCellRange(i, colRqHn);
                     rg.UserData = note;
@@ -262,6 +288,10 @@ namespace clinic_ivf.gui
                 else if (row["status_opu_active"].ToString().Equals("3"))
                 {
                     txt1 = "Void " + row["opu_wait_remark"].ToString() + " " + row["form_a_remark"].ToString();
+                    if (row[ic.ivfDB.lFormaDB.lformA.status_opu_time_modi].ToString().Equals("1"))
+                    {
+                        txt1 = txt1 + " มีการเปลี่ยนแปลง เวลา OPU จาก " + row[ic.ivfDB.lFormaDB.lformA.opu_time_modi].ToString() + " -> " + row[ic.ivfDB.lFormaDB.lformA.opu_time].ToString();
+                    }
                     CellNote note = new CellNote(txt1);
                     CellRange rg = grfReq.GetCellRange(i, colRqHn);
                     rg.UserData = note;

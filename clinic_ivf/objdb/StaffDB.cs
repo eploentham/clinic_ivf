@@ -689,6 +689,13 @@ namespace clinic_ivf.objdb
                 }
                 i++;
             }
+            if (selected.Equals(""))
+            {
+                if (c.Items.Count > 0)
+                {
+                    c.SelectedIndex = 0;
+                }
+            }
         }
     }
 }

@@ -72,6 +72,14 @@ namespace clinic_ivf.gui
             chkOPUUnActive.CheckedChanged += ChkOPUUnActive_CheckedChanged;
             chkOPUActiveWait.CheckedChanged += ChkOPUActiveWait_CheckedChanged;
             ChkOPUActive_CheckedChanged(null, null);
+            chkFetActive.CheckedChanged += ChkFetActive_CheckedChanged;
+            chkFetUnActive.CheckedChanged += ChkFetUnActive_CheckedChanged;
+            chkFetActiveWait.CheckedChanged += ChkFetActiveWait_CheckedChanged;
+            ChkFetActive_CheckedChanged(null, null);
+            
+            chkOpuTimeModi.CheckedChanged += ChkOpuTimeModi_CheckedChanged;
+            chkOpuTimeModi.Checked = false;
+            ChkOpuTimeModi_CheckedChanged(null, null);
             if (statusOPU.Equals(""))
             {
                 gbOPU.Enabled = false;
@@ -80,6 +88,43 @@ namespace clinic_ivf.gui
             {
                 gbETFET.Enabled = false;
             }
+            //lbMessage.Hide();
+            lbMessage1.Text = "";
+            sB1.Text = "";
+        }
+
+        private void ChkOpuTimeModi_CheckedChanged(object sender, EventArgs e)
+        {
+            //throw new NotImplementedException();
+            if (chkOpuTimeModi.Checked)
+            {
+                txtOPUTimeModi.Show();
+                label33.Show();
+                txtOPUTimeModi.Value = txtOPUTime.Text;
+            }
+            else
+            {
+                txtOPUTimeModi.Hide();
+                label33.Hide();
+            }
+        }
+
+        private void ChkFetActiveWait_CheckedChanged(object sender, EventArgs e)
+        {
+            //throw new NotImplementedException();
+            chkFetWaitRemark();
+        }
+
+        private void ChkFetUnActive_CheckedChanged(object sender, EventArgs e)
+        {
+            //throw new NotImplementedException();
+            chkFetWaitRemark();
+        }
+
+        private void ChkFetActive_CheckedChanged(object sender, EventArgs e)
+        {
+            //throw new NotImplementedException();
+            chkFetWaitRemark();
         }
 
         private void ChkOPUActiveWait_CheckedChanged(object sender, EventArgs e)
@@ -98,6 +143,21 @@ namespace clinic_ivf.gui
         {
             //throw new NotImplementedException();
             chkOPUWaitRemark();
+        }
+        private void chkFetWaitRemark()
+        {
+            if (chkFetActive.Checked)
+            {
+                cboFetWaitRemark.Hide();
+            }
+            else if (chkFetUnActive.Checked)
+            {
+                cboFetWaitRemark.Show();
+            }
+            else if (chkFetActiveWait.Checked)
+            {
+                cboFetWaitRemark.Show();
+            }
         }
         private void chkOPUWaitRemark()
         {
@@ -258,6 +318,12 @@ namespace clinic_ivf.gui
             lFormA.opu_wait_remark = cboOPUWaitRemark.Text;
             lFormA.opu_remark = txtOPURemark.Text;
             lFormA.fet_remark = txtFETRemark.Text;
+            lFormA.fet_wait_remark = cboFetWaitRemark.Text;
+            lFormA.status_fet_active = chkFetActive.Checked ? "1" : chkFetUnActive.Checked ? "3" : chkFetActiveWait.Checked ? "2" : "0";
+            lFormA.status_wait_confirm_fet_date = chkConfirmFetDate.Checked ? "2" : chkWaitFetDate.Checked ? "1" : "0";
+            lFormA.opu_time_modi = txtOPUTimeModi.Text;
+            lFormA.status_opu_time_modi = chkOpuTimeModi.Checked ? "1" : "0";
+            
         }
         private void BtnSave_Click(object sender, EventArgs e)
         {
@@ -461,7 +527,7 @@ namespace clinic_ivf.gui
             txtNameFeMale.Value = lFormA.name_female;
             txtNameMale.Value = lFormA.name_male;
             txtHnMale.Value = lFormA.hn_male;
-            txtLabFormACode.Value = lFormA.form_a_code;
+            //txtLabFormACode.Value = lFormA.form_a_code;
 
             txtOPUDate.Value = lFormA.opu_date;
             txtNoofOocyteLt.Value = lFormA.no_of_oocyte_lt;
@@ -531,6 +597,35 @@ namespace clinic_ivf.gui
             cboOPUWaitRemark.Value = lFormA.opu_wait_remark;
             txtOPURemark.Value = lFormA.opu_remark;
             txtFETRemark.Value = lFormA.fet_remark;
+            chkFetActiveWait.Checked = lFormA.status_fet_active.Equals("2") ? true : false;     //chkWaitFetDate
+            chkFetActive.Checked = lFormA.status_fet_active.Equals("1") ? true : false;
+            chkFetUnActive.Checked = lFormA.status_fet_active.Equals("3") ? true : false;
+            cboFetWaitRemark.Value = lFormA.fet_wait_remark;
+            chkWaitFetDate.Checked = lFormA.status_wait_confirm_fet_date.Equals("1") ? true : false;
+            chkConfirmFetDate.Checked = lFormA.status_wait_confirm_fet_date.Equals("2") ? true : false;
+            txtOPUTimeModi.Value = lFormA.opu_time_modi;
+            if (lFormA.status_opu_time_modi.Equals("2"))
+            {
+                lbMessage.Visible = true;
+                lbMessage.Show();
+                lbMessage.Text = "LAB ได้รับทราบ การแก้ไขเวลา OPU Time ";
+                lbMessage.ForeColor = Color.Black;
+
+            }
+            else if (lFormA.status_opu_time_modi.Equals("1"))
+            {
+                lbMessage.Visible = true;
+                lbMessage.Show();
+                lbMessage.Text = "รอ LAB รับทราบ แก้ไขเวลา OPU Time ";
+                lbMessage.ForeColor = Color.Red;
+            }
+            else
+            {
+                lbMessage.Visible = false;
+                lbMessage.Hide();
+                lbMessage.Text = "";
+                lbMessage.ForeColor = Color.Black;
+            }
         }
         private void FrmLabOPUReq_Load(object sender, EventArgs e)
         {

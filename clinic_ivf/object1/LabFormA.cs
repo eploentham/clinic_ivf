@@ -82,5 +82,10 @@ namespace clinic_ivf.object1
         public String opu_wait_remark { get; set; }
         public String opu_remark { get; set; }
         public String fet_remark { get; set; }
+        public String status_fet_active { get; set; }
+        public String fet_wait_remark { get; set; }
+        public String status_wait_confirm_fet_date { get; set; }
+        public String opu_time_modi { get; set; }
+        public String status_opu_time_modi { get; set; }
     }
 }
