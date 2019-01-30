@@ -133,31 +133,31 @@ namespace clinic_ivf.gui
             String date1 = "", txt1 = "";
             if (dt.Rows.Count <= 0) return;
             date1 = ic.datetoShow(dt.Rows[0][ic.ivfDB.lFormaDB.lformA.opu_date].ToString());
-            dt.Rows[0][ic.ivfDB.lFormaDB.lformA.opu_date] = date1;
+            dt.Rows[0][ic.ivfDB.lFormaDB.lformA.opu_date] = date1.Replace("-","/");
             date1 = ic.datetoShow(dt.Rows[0][ic.ivfDB.lFormaDB.lformA.embryo_freezing_day].ToString());
-            dt.Rows[0][ic.ivfDB.lFormaDB.lformA.embryo_freezing_day] = date1;
+            dt.Rows[0][ic.ivfDB.lFormaDB.lformA.embryo_freezing_day] = date1.Replace("-", "/");
             date1 = ic.datetoShow(dt.Rows[0][ic.ivfDB.lFormaDB.lformA.embryo_tranfer_date].ToString());
-            dt.Rows[0][ic.ivfDB.lFormaDB.lformA.embryo_tranfer_date] = date1;
+            dt.Rows[0][ic.ivfDB.lFormaDB.lformA.embryo_tranfer_date] = date1.Replace("-", "/");
             date1 = ic.datetoShow(dt.Rows[0][ic.ivfDB.lFormaDB.lformA.fet1_no_date_freezing].ToString());
-            dt.Rows[0][ic.ivfDB.lFormaDB.lformA.fet1_no_date_freezing] = date1;
+            dt.Rows[0][ic.ivfDB.lFormaDB.lformA.fet1_no_date_freezing] = date1.Replace("-", "/");
             date1 = ic.datetoShow(dt.Rows[0][ic.ivfDB.lFormaDB.lformA.dob_male].ToString());
-            dt.Rows[0][ic.ivfDB.lFormaDB.lformA.dob_male] = date1;
+            dt.Rows[0][ic.ivfDB.lFormaDB.lformA.dob_male] = date1.Replace("-", "/");
             date1 = ic.datetoShow(dt.Rows[0][ic.ivfDB.lFormaDB.lformA.dob_female].ToString());
-            dt.Rows[0][ic.ivfDB.lFormaDB.lformA.dob_female] = date1;
+            dt.Rows[0][ic.ivfDB.lFormaDB.lformA.dob_female] = date1.Replace("-", "/");
             date1 = ic.datetoShow(dt.Rows[0][ic.ivfDB.lFormaDB.lformA.spern_freezing_date_start].ToString());
-            dt.Rows[0][ic.ivfDB.lFormaDB.lformA.spern_freezing_date_start] = date1;
+            dt.Rows[0][ic.ivfDB.lFormaDB.lformA.spern_freezing_date_start] = date1.Replace("-", "/");
             date1 = ic.datetoShow(dt.Rows[0][ic.ivfDB.lFormaDB.lformA.spern_freezing_date_end].ToString());
-            dt.Rows[0][ic.ivfDB.lFormaDB.lformA.spern_freezing_date_end] = date1;
+            dt.Rows[0][ic.ivfDB.lFormaDB.lformA.spern_freezing_date_end] = date1.Replace("-", "/");
             date1 = ic.datetoShow(dt.Rows[0][ic.ivfDB.lFormaDB.lformA.iui_date].ToString());
-            dt.Rows[0][ic.ivfDB.lFormaDB.lformA.iui_date] = date1;
+            dt.Rows[0][ic.ivfDB.lFormaDB.lformA.iui_date] = date1.Replace("-", "/");
             date1 = ic.datetoShow(dt.Rows[0][ic.ivfDB.lFormaDB.lformA.pasa_tese_date].ToString());
-            dt.Rows[0][ic.ivfDB.lFormaDB.lformA.pasa_tese_date] = date1;
+            dt.Rows[0][ic.ivfDB.lFormaDB.lformA.pasa_tese_date] = date1.Replace("-", "/");
             date1 = ic.datetoShow(dt.Rows[0][ic.ivfDB.lFormaDB.lformA.sperm_analysis_date_start].ToString());
-            dt.Rows[0][ic.ivfDB.lFormaDB.lformA.sperm_analysis_date_start] = date1;
+            dt.Rows[0][ic.ivfDB.lFormaDB.lformA.sperm_analysis_date_start] = date1.Replace("-", "/");
             date1 = ic.datetoShow(dt.Rows[0][ic.ivfDB.lFormaDB.lformA.sperm_analysis_date_end].ToString());
-            dt.Rows[0][ic.ivfDB.lFormaDB.lformA.sperm_analysis_date_end] = date1;
+            dt.Rows[0][ic.ivfDB.lFormaDB.lformA.sperm_analysis_date_end] = date1.Replace("-","/");
             date1 = ic.datetoShow(dt.Rows[0][ic.ivfDB.lFormaDB.lformA.fet_no_date_freezing].ToString());
-            dt.Rows[0][ic.ivfDB.lFormaDB.lformA.fet_no_date_freezing] = date1;
+            dt.Rows[0][ic.ivfDB.lFormaDB.lformA.fet_no_date_freezing] = date1.Replace("-", "/");
             if (dt.Rows[0]["status_wait_confirm_opu_date"].ToString().Equals("1"))
             {
                 txt1 = "รอ confirm วัน เวลา OPU จากทาง พยาบาล";
@@ -191,7 +191,7 @@ namespace clinic_ivf.gui
             }
             lFormA.t_patient_id = txtPttId.Text;
             lFormA.t_visit_id = txtVsId.Text;
-            lFormA.opu_date = ic.dateTimetoDB1(txtOPUDate.Value);
+            lFormA.opu_date = ic.datetoDB(txtOPUDate.Text);
             lFormA.no_of_oocyte_rt = txtNoofOocyteRt.Text;
             lFormA.no_of_oocyte_lt = txtNoofOocyteLt.Text;
             lFormA.status_fresh_sperm = chkFreshSprem.Checked ? "1" : "0";

@@ -87,6 +87,8 @@
             this.chkSpermFreezing = new C1.Win.C1Input.C1CheckBox();
             this.chkSpermAnalysis = new C1.Win.C1Input.C1CheckBox();
             this.gbETFET = new System.Windows.Forms.GroupBox();
+            this.label32 = new System.Windows.Forms.Label();
+            this.txtFETRemark = new C1.Win.C1Input.C1TextBox();
             this.chkAssistHatching = new C1.Win.C1Input.C1CheckBox();
             this.chkEmbryoGlue = new C1.Win.C1Input.C1CheckBox();
             this.pnFET = new System.Windows.Forms.Panel();
@@ -102,6 +104,8 @@
             this.txtEmbryoTranferDate = new C1.Win.C1Input.C1DateEdit();
             this.label14 = new System.Windows.Forms.Label();
             this.gbOPU = new System.Windows.Forms.GroupBox();
+            this.label30 = new System.Windows.Forms.Label();
+            this.txtOPURemark = new C1.Win.C1Input.C1TextBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.cboOPUWaitRemark = new C1.Win.C1Input.C1ComboBox();
             this.chkOPUActiveWait = new System.Windows.Forms.RadioButton();
@@ -150,10 +154,15 @@
             this.txtPasaTeseDate = new C1.Win.C1Input.C1DateEdit();
             this.label25 = new System.Windows.Forms.Label();
             this.label20 = new System.Windows.Forms.Label();
-            this.label30 = new System.Windows.Forms.Label();
-            this.txtOPURemark = new C1.Win.C1Input.C1TextBox();
-            this.label32 = new System.Windows.Forms.Label();
-            this.txtFETRemark = new C1.Win.C1Input.C1TextBox();
+            this.chkNoNgs = new C1.Win.C1Input.C1CheckBox();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.radioButton1 = new System.Windows.Forms.RadioButton();
+            this.radioButton2 = new System.Windows.Forms.RadioButton();
+            this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.c1ComboBox1 = new C1.Win.C1Input.C1ComboBox();
+            this.radioButton3 = new System.Windows.Forms.RadioButton();
+            this.radioButton4 = new System.Windows.Forms.RadioButton();
+            this.radioButton5 = new System.Windows.Forms.RadioButton();
             this.sB.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.theme1)).BeginInit();
             this.groupBox1.SuspendLayout();
@@ -194,6 +203,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.chkSpermFreezing)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkSpermAnalysis)).BeginInit();
             this.gbETFET.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtFETRemark)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkAssistHatching)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkEmbryoGlue)).BeginInit();
             this.pnFET.SuspendLayout();
@@ -203,6 +213,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtFETNo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtEmbryoTranferDate)).BeginInit();
             this.gbOPU.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtOPURemark)).BeginInit();
             this.groupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.cboOPUWaitRemark)).BeginInit();
             this.panel1.SuspendLayout();
@@ -229,15 +240,17 @@
             ((System.ComponentModel.ISupportInitialize)(this.chkFreshSprem)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtIUIDate)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtPasaTeseDate)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtOPURemark)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtFETRemark)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chkNoNgs)).BeginInit();
+            this.panel2.SuspendLayout();
+            this.groupBox4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.c1ComboBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // sB
             // 
             this.sB.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.sB1});
-            this.sB.Location = new System.Drawing.Point(0, 688);
+            this.sB.Location = new System.Drawing.Point(0, 680);
             this.sB.Name = "sB";
             this.sB.Size = new System.Drawing.Size(1059, 22);
             this.sB.TabIndex = 10;
@@ -882,7 +895,7 @@
             this.groupBox2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
             this.groupBox2.Location = new System.Drawing.Point(0, 111);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(1059, 577);
+            this.groupBox2.Size = new System.Drawing.Size(1059, 569);
             this.groupBox2.TabIndex = 12;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Description";
@@ -898,7 +911,7 @@
             this.cboRemark.ImagePadding = new System.Windows.Forms.Padding(0);
             this.cboRemark.ItemsDisplayMember = "";
             this.cboRemark.ItemsValueMember = "";
-            this.cboRemark.Location = new System.Drawing.Point(358, 543);
+            this.cboRemark.Location = new System.Drawing.Point(358, 539);
             this.cboRemark.Name = "cboRemark";
             this.cboRemark.Size = new System.Drawing.Size(463, 20);
             this.cboRemark.Style.DropDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
@@ -915,7 +928,7 @@
             this.label27.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
             this.label27.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label27.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.label27.Location = new System.Drawing.Point(290, 545);
+            this.label27.Location = new System.Drawing.Point(290, 541);
             this.label27.Name = "label27";
             this.label27.Size = new System.Drawing.Size(62, 16);
             this.label27.TabIndex = 729;
@@ -932,9 +945,9 @@
             this.pnSpermFreezing.Controls.Add(this.label24);
             this.pnSpermFreezing.Controls.Add(this.txtSpermFreezingDateStart);
             this.pnSpermFreezing.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.pnSpermFreezing.Location = new System.Drawing.Point(186, 474);
+            this.pnSpermFreezing.Location = new System.Drawing.Point(186, 486);
             this.pnSpermFreezing.Name = "pnSpermFreezing";
-            this.pnSpermFreezing.Size = new System.Drawing.Size(655, 37);
+            this.pnSpermFreezing.Size = new System.Drawing.Size(655, 28);
             this.pnSpermFreezing.TabIndex = 728;
             this.theme1.SetTheme(this.pnSpermFreezing, "(default)");
             // 
@@ -944,7 +957,7 @@
             this.label19.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
             this.label19.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label19.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.label19.Location = new System.Drawing.Point(256, 9);
+            this.label19.Location = new System.Drawing.Point(256, 6);
             this.label19.Name = "label19";
             this.label19.Size = new System.Drawing.Size(75, 16);
             this.label19.TabIndex = 735;
@@ -957,7 +970,10 @@
             this.txtSpermFreezingTimeStart.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
             this.txtSpermFreezingTimeStart.EditMask = "00:00";
             this.txtSpermFreezingTimeStart.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.txtSpermFreezingTimeStart.Location = new System.Drawing.Point(339, 8);
+            this.txtSpermFreezingTimeStart.Location = new System.Drawing.Point(339, 5);
+            this.txtSpermFreezingTimeStart.MaskInfo.EmptyAsNull = true;
+            this.txtSpermFreezingTimeStart.MaskInfo.Inherit = ((C1.Win.C1Input.MaskInfoInheritFlags)((C1.Win.C1Input.MaskInfoInheritFlags.CaseSensitive | C1.Win.C1Input.MaskInfoInheritFlags.ErrorMessage)));
+            this.txtSpermFreezingTimeStart.MaskInfo.SaveBlanks = true;
             this.txtSpermFreezingTimeStart.Name = "txtSpermFreezingTimeStart";
             this.txtSpermFreezingTimeStart.Size = new System.Drawing.Size(91, 20);
             this.txtSpermFreezingTimeStart.TabIndex = 736;
@@ -971,7 +987,10 @@
             this.txtSpermFreezingDateEnd.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
             this.txtSpermFreezingDateEnd.EditMask = "00:00";
             this.txtSpermFreezingDateEnd.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.txtSpermFreezingDateEnd.Location = new System.Drawing.Point(544, 8);
+            this.txtSpermFreezingDateEnd.Location = new System.Drawing.Point(544, 5);
+            this.txtSpermFreezingDateEnd.MaskInfo.EmptyAsNull = true;
+            this.txtSpermFreezingDateEnd.MaskInfo.Inherit = ((C1.Win.C1Input.MaskInfoInheritFlags)((C1.Win.C1Input.MaskInfoInheritFlags.CaseSensitive | C1.Win.C1Input.MaskInfoInheritFlags.ErrorMessage)));
+            this.txtSpermFreezingDateEnd.MaskInfo.SaveBlanks = true;
             this.txtSpermFreezingDateEnd.Name = "txtSpermFreezingDateEnd";
             this.txtSpermFreezingDateEnd.Size = new System.Drawing.Size(91, 20);
             this.txtSpermFreezingDateEnd.TabIndex = 733;
@@ -985,7 +1004,7 @@
             this.label23.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
             this.label23.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label23.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.label23.Location = new System.Drawing.Point(457, 9);
+            this.label23.Location = new System.Drawing.Point(457, 6);
             this.label23.Name = "label23";
             this.label23.Size = new System.Drawing.Size(83, 16);
             this.label23.TabIndex = 723;
@@ -998,7 +1017,7 @@
             this.label24.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
             this.label24.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label24.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.label24.Location = new System.Drawing.Point(6, 9);
+            this.label24.Location = new System.Drawing.Point(6, 6);
             this.label24.Name = "label24";
             this.label24.Size = new System.Drawing.Size(104, 16);
             this.label24.TabIndex = 722;
@@ -1043,7 +1062,7 @@
             | C1.Win.C1Input.FormatInfoInheritFlags.TrimEnd)));
             this.txtSpermFreezingDateStart.GMTOffset = System.TimeSpan.Parse("00:00:00");
             this.txtSpermFreezingDateStart.ImagePadding = new System.Windows.Forms.Padding(0);
-            this.txtSpermFreezingDateStart.Location = new System.Drawing.Point(116, 8);
+            this.txtSpermFreezingDateStart.Location = new System.Drawing.Point(116, 5);
             this.txtSpermFreezingDateStart.Name = "txtSpermFreezingDateStart";
             this.txtSpermFreezingDateStart.Size = new System.Drawing.Size(125, 18);
             this.txtSpermFreezingDateStart.TabIndex = 721;
@@ -1061,7 +1080,7 @@
             this.pnSpermAnalysis.Controls.Add(this.label21);
             this.pnSpermAnalysis.Controls.Add(this.txtSpermAnalysisDateStart);
             this.pnSpermAnalysis.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.pnSpermAnalysis.Location = new System.Drawing.Point(186, 441);
+            this.pnSpermAnalysis.Location = new System.Drawing.Point(186, 454);
             this.pnSpermAnalysis.Name = "pnSpermAnalysis";
             this.pnSpermAnalysis.Size = new System.Drawing.Size(656, 27);
             this.pnSpermAnalysis.TabIndex = 724;
@@ -1087,6 +1106,9 @@
             this.txtSpermAnalysisTimeStart.EditMask = "00:00";
             this.txtSpermAnalysisTimeStart.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
             this.txtSpermAnalysisTimeStart.Location = new System.Drawing.Point(339, 3);
+            this.txtSpermAnalysisTimeStart.MaskInfo.EmptyAsNull = true;
+            this.txtSpermAnalysisTimeStart.MaskInfo.Inherit = ((C1.Win.C1Input.MaskInfoInheritFlags)((C1.Win.C1Input.MaskInfoInheritFlags.CaseSensitive | C1.Win.C1Input.MaskInfoInheritFlags.ErrorMessage)));
+            this.txtSpermAnalysisTimeStart.MaskInfo.SaveBlanks = true;
             this.txtSpermAnalysisTimeStart.Name = "txtSpermAnalysisTimeStart";
             this.txtSpermAnalysisTimeStart.Size = new System.Drawing.Size(91, 20);
             this.txtSpermAnalysisTimeStart.TabIndex = 734;
@@ -1114,6 +1136,9 @@
             this.txtSpermAnalysisDateEnd.EditMask = "00:00";
             this.txtSpermAnalysisDateEnd.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
             this.txtSpermAnalysisDateEnd.Location = new System.Drawing.Point(544, 3);
+            this.txtSpermAnalysisDateEnd.MaskInfo.EmptyAsNull = true;
+            this.txtSpermAnalysisDateEnd.MaskInfo.Inherit = ((C1.Win.C1Input.MaskInfoInheritFlags)((C1.Win.C1Input.MaskInfoInheritFlags.CaseSensitive | C1.Win.C1Input.MaskInfoInheritFlags.ErrorMessage)));
+            this.txtSpermAnalysisDateEnd.MaskInfo.SaveBlanks = true;
             this.txtSpermAnalysisDateEnd.Name = "txtSpermAnalysisDateEnd";
             this.txtSpermAnalysisDateEnd.Size = new System.Drawing.Size(91, 20);
             this.txtSpermAnalysisDateEnd.TabIndex = 732;
@@ -1188,7 +1213,7 @@
             this.chkSpermFreezing.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.chkSpermFreezing.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.chkSpermFreezing.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.chkSpermFreezing.Location = new System.Drawing.Point(11, 476);
+            this.chkSpermFreezing.Location = new System.Drawing.Point(11, 488);
             this.chkSpermFreezing.Name = "chkSpermFreezing";
             this.chkSpermFreezing.Padding = new System.Windows.Forms.Padding(4, 1, 1, 1);
             this.chkSpermFreezing.Size = new System.Drawing.Size(140, 24);
@@ -1207,7 +1232,7 @@
             this.chkSpermAnalysis.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.chkSpermAnalysis.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.chkSpermAnalysis.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.chkSpermAnalysis.Location = new System.Drawing.Point(11, 441);
+            this.chkSpermAnalysis.Location = new System.Drawing.Point(11, 455);
             this.chkSpermAnalysis.Name = "chkSpermAnalysis";
             this.chkSpermAnalysis.Padding = new System.Windows.Forms.Padding(4, 1, 1, 1);
             this.chkSpermAnalysis.Size = new System.Drawing.Size(140, 24);
@@ -1221,8 +1246,6 @@
             // gbETFET
             // 
             this.gbETFET.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.gbETFET.Controls.Add(this.label32);
-            this.gbETFET.Controls.Add(this.txtFETRemark);
             this.gbETFET.Controls.Add(this.chkAssistHatching);
             this.gbETFET.Controls.Add(this.chkEmbryoGlue);
             this.gbETFET.Controls.Add(this.pnFET);
@@ -1232,13 +1255,39 @@
             this.gbETFET.Controls.Add(this.txtEmbryoTranferDate);
             this.gbETFET.Controls.Add(this.label14);
             this.gbETFET.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.gbETFET.Location = new System.Drawing.Point(11, 303);
+            this.gbETFET.Location = new System.Drawing.Point(11, 280);
             this.gbETFET.Name = "gbETFET";
-            this.gbETFET.Size = new System.Drawing.Size(1042, 130);
+            this.gbETFET.Size = new System.Drawing.Size(1042, 169);
             this.gbETFET.TabIndex = 13;
             this.gbETFET.TabStop = false;
             this.gbETFET.Text = "ET FET";
             this.theme1.SetTheme(this.gbETFET, "(default)");
+            // 
+            // label32
+            // 
+            this.label32.AutoSize = true;
+            this.label32.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.label32.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label32.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.label32.Location = new System.Drawing.Point(346, 36);
+            this.label32.Name = "label32";
+            this.label32.Size = new System.Drawing.Size(91, 16);
+            this.label32.TabIndex = 739;
+            this.label32.Text = "FET Remark :";
+            this.theme1.SetTheme(this.label32, "(default)");
+            // 
+            // txtFETRemark
+            // 
+            this.txtFETRemark.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtFETRemark.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
+            this.txtFETRemark.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.txtFETRemark.Location = new System.Drawing.Point(458, 34);
+            this.txtFETRemark.Name = "txtFETRemark";
+            this.txtFETRemark.Size = new System.Drawing.Size(422, 20);
+            this.txtFETRemark.TabIndex = 738;
+            this.txtFETRemark.Tag = null;
+            this.theme1.SetTheme(this.txtFETRemark, "(default)");
+            this.txtFETRemark.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
             // 
             // chkAssistHatching
             // 
@@ -1248,7 +1297,7 @@
             this.chkAssistHatching.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.chkAssistHatching.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.chkAssistHatching.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.chkAssistHatching.Location = new System.Drawing.Point(661, 61);
+            this.chkAssistHatching.Location = new System.Drawing.Point(529, 19);
             this.chkAssistHatching.Name = "chkAssistHatching";
             this.chkAssistHatching.Padding = new System.Windows.Forms.Padding(4, 1, 1, 1);
             this.chkAssistHatching.Size = new System.Drawing.Size(140, 24);
@@ -1267,7 +1316,7 @@
             this.chkEmbryoGlue.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.chkEmbryoGlue.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.chkEmbryoGlue.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.chkEmbryoGlue.Location = new System.Drawing.Point(515, 61);
+            this.chkEmbryoGlue.Location = new System.Drawing.Point(383, 19);
             this.chkEmbryoGlue.Name = "chkEmbryoGlue";
             this.chkEmbryoGlue.Padding = new System.Windows.Forms.Padding(4, 1, 1, 1);
             this.chkEmbryoGlue.Size = new System.Drawing.Size(140, 24);
@@ -1281,7 +1330,11 @@
             // pnFET
             // 
             this.pnFET.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.pnFET.Controls.Add(this.groupBox4);
+            this.pnFET.Controls.Add(this.panel2);
+            this.pnFET.Controls.Add(this.label32);
             this.pnFET.Controls.Add(this.txtFET1NoDateFreezing);
+            this.pnFET.Controls.Add(this.txtFETRemark);
             this.pnFET.Controls.Add(this.txtFETNoDateFreezing);
             this.pnFET.Controls.Add(this.label17);
             this.pnFET.Controls.Add(this.label16);
@@ -1290,7 +1343,7 @@
             this.pnFET.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
             this.pnFET.Location = new System.Drawing.Point(103, 59);
             this.pnFET.Name = "pnFET";
-            this.pnFET.Size = new System.Drawing.Size(393, 65);
+            this.pnFET.Size = new System.Drawing.Size(930, 104);
             this.pnFET.TabIndex = 13;
             this.theme1.SetTheme(this.pnFET, "(default)");
             // 
@@ -1544,6 +1597,7 @@
             // gbOPU
             // 
             this.gbOPU.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.gbOPU.Controls.Add(this.chkNoNgs);
             this.gbOPU.Controls.Add(this.label30);
             this.gbOPU.Controls.Add(this.txtOPURemark);
             this.gbOPU.Controls.Add(this.groupBox3);
@@ -1569,13 +1623,39 @@
             this.gbOPU.Controls.Add(this.chkFrozenSperm);
             this.gbOPU.Controls.Add(this.chkFreshSprem);
             this.gbOPU.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.gbOPU.Location = new System.Drawing.Point(12, 19);
+            this.gbOPU.Location = new System.Drawing.Point(12, 14);
             this.gbOPU.Name = "gbOPU";
-            this.gbOPU.Size = new System.Drawing.Size(1041, 283);
+            this.gbOPU.Size = new System.Drawing.Size(1041, 260);
             this.gbOPU.TabIndex = 725;
             this.gbOPU.TabStop = false;
             this.gbOPU.Text = "OPU";
             this.theme1.SetTheme(this.gbOPU, "(default)");
+            // 
+            // label30
+            // 
+            this.label30.AutoSize = true;
+            this.label30.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.label30.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label30.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.label30.Location = new System.Drawing.Point(424, 191);
+            this.label30.Name = "label30";
+            this.label30.Size = new System.Drawing.Size(94, 16);
+            this.label30.TabIndex = 737;
+            this.label30.Text = "OPU Remark :";
+            this.theme1.SetTheme(this.label30, "(default)");
+            // 
+            // txtOPURemark
+            // 
+            this.txtOPURemark.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtOPURemark.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
+            this.txtOPURemark.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.txtOPURemark.Location = new System.Drawing.Point(528, 189);
+            this.txtOPURemark.Name = "txtOPURemark";
+            this.txtOPURemark.Size = new System.Drawing.Size(486, 20);
+            this.txtOPURemark.TabIndex = 736;
+            this.txtOPURemark.Tag = null;
+            this.theme1.SetTheme(this.txtOPURemark, "(default)");
+            this.txtOPURemark.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
             // 
             // groupBox3
             // 
@@ -1585,7 +1665,7 @@
             this.groupBox3.Controls.Add(this.chkOPUUnActive);
             this.groupBox3.Controls.Add(this.chkOPUActive);
             this.groupBox3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.groupBox3.Location = new System.Drawing.Point(603, 236);
+            this.groupBox3.Location = new System.Drawing.Point(603, 214);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(429, 41);
             this.groupBox3.TabIndex = 735;
@@ -1688,6 +1768,9 @@
             this.txtOPUTime.EditMask = "00:00";
             this.txtOPUTime.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
             this.txtOPUTime.Location = new System.Drawing.Point(553, 13);
+            this.txtOPUTime.MaskInfo.EmptyAsNull = true;
+            this.txtOPUTime.MaskInfo.Inherit = ((C1.Win.C1Input.MaskInfoInheritFlags)((C1.Win.C1Input.MaskInfoInheritFlags.CaseSensitive | C1.Win.C1Input.MaskInfoInheritFlags.ErrorMessage)));
+            this.txtOPUTime.MaskInfo.SaveBlanks = true;
             this.txtOPUTime.Name = "txtOPUTime";
             this.txtOPUTime.Size = new System.Drawing.Size(71, 20);
             this.txtOPUTime.TabIndex = 732;
@@ -1809,7 +1892,7 @@
             this.chkWaitDay1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.chkWaitDay1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.chkWaitDay1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.chkWaitDay1.Location = new System.Drawing.Point(699, 179);
+            this.chkWaitDay1.Location = new System.Drawing.Point(679, 157);
             this.chkWaitDay1.Name = "chkWaitDay1";
             this.chkWaitDay1.Padding = new System.Windows.Forms.Padding(4, 1, 1, 1);
             this.chkWaitDay1.Size = new System.Drawing.Size(140, 24);
@@ -1868,7 +1951,7 @@
             this.pnFreshSprem.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
             this.pnFreshSprem.Location = new System.Drawing.Point(159, 64);
             this.pnFreshSprem.Name = "pnFreshSprem";
-            this.pnFreshSprem.Size = new System.Drawing.Size(401, 34);
+            this.pnFreshSprem.Size = new System.Drawing.Size(401, 30);
             this.pnFreshSprem.TabIndex = 729;
             this.theme1.SetTheme(this.pnFreshSprem, "(default)");
             // 
@@ -1879,6 +1962,9 @@
             this.txtFreshSpermEndTime.EditMask = "00:00";
             this.txtFreshSpermEndTime.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
             this.txtFreshSpermEndTime.Location = new System.Drawing.Point(281, 6);
+            this.txtFreshSpermEndTime.MaskInfo.EmptyAsNull = true;
+            this.txtFreshSpermEndTime.MaskInfo.Inherit = ((C1.Win.C1Input.MaskInfoInheritFlags)((C1.Win.C1Input.MaskInfoInheritFlags.CaseSensitive | C1.Win.C1Input.MaskInfoInheritFlags.ErrorMessage)));
+            this.txtFreshSpermEndTime.MaskInfo.SaveBlanks = true;
             this.txtFreshSpermEndTime.Name = "txtFreshSpermEndTime";
             this.txtFreshSpermEndTime.Size = new System.Drawing.Size(91, 20);
             this.txtFreshSpermEndTime.TabIndex = 731;
@@ -1906,6 +1992,9 @@
             this.txtFreshSpermColTime.EditMask = "00:00";
             this.txtFreshSpermColTime.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
             this.txtFreshSpermColTime.Location = new System.Drawing.Point(92, 6);
+            this.txtFreshSpermColTime.MaskInfo.EmptyAsNull = true;
+            this.txtFreshSpermColTime.MaskInfo.Inherit = ((C1.Win.C1Input.MaskInfoInheritFlags)((C1.Win.C1Input.MaskInfoInheritFlags.CaseSensitive | C1.Win.C1Input.MaskInfoInheritFlags.ErrorMessage)));
+            this.txtFreshSpermColTime.MaskInfo.SaveBlanks = true;
             this.txtFreshSpermColTime.Name = "txtFreshSpermColTime";
             this.txtFreshSpermColTime.Size = new System.Drawing.Size(91, 20);
             this.txtFreshSpermColTime.TabIndex = 730;
@@ -1948,9 +2037,9 @@
             this.gbEmbryoFresh.Controls.Add(this.chkEmbryoFreezingDay3);
             this.gbEmbryoFresh.Controls.Add(this.chkEmbryoFreezingDay1);
             this.gbEmbryoFresh.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.gbEmbryoFresh.Location = new System.Drawing.Point(159, 237);
+            this.gbEmbryoFresh.Location = new System.Drawing.Point(159, 218);
             this.gbEmbryoFresh.Name = "gbEmbryoFresh";
-            this.gbEmbryoFresh.Size = new System.Drawing.Size(399, 37);
+            this.gbEmbryoFresh.Size = new System.Drawing.Size(399, 30);
             this.gbEmbryoFresh.TabIndex = 716;
             this.gbEmbryoFresh.TabStop = false;
             this.theme1.SetTheme(this.gbEmbryoFresh, "(default)");
@@ -1963,12 +2052,12 @@
             this.chkEmbryoFreezingDay2.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(189)))), ((int)(((byte)(182)))));
             this.chkEmbryoFreezingDay2.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(189)))), ((int)(((byte)(182)))));
             this.chkEmbryoFreezingDay2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.chkEmbryoFreezingDay2.Location = new System.Drawing.Point(108, 15);
+            this.chkEmbryoFreezingDay2.Location = new System.Drawing.Point(108, 10);
             this.chkEmbryoFreezingDay2.Name = "chkEmbryoFreezingDay2";
             this.chkEmbryoFreezingDay2.Size = new System.Drawing.Size(53, 17);
             this.chkEmbryoFreezingDay2.TabIndex = 537;
             this.chkEmbryoFreezingDay2.TabStop = true;
-            this.chkEmbryoFreezingDay2.Text = "Day 1";
+            this.chkEmbryoFreezingDay2.Text = "Day 2";
             this.theme1.SetTheme(this.chkEmbryoFreezingDay2, "(default)");
             this.chkEmbryoFreezingDay2.UseVisualStyleBackColor = false;
             // 
@@ -1980,7 +2069,7 @@
             this.chkEmbryoFreezingDay5.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(189)))), ((int)(((byte)(182)))));
             this.chkEmbryoFreezingDay5.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(189)))), ((int)(((byte)(182)))));
             this.chkEmbryoFreezingDay5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.chkEmbryoFreezingDay5.Location = new System.Drawing.Point(283, 15);
+            this.chkEmbryoFreezingDay5.Location = new System.Drawing.Point(283, 10);
             this.chkEmbryoFreezingDay5.Name = "chkEmbryoFreezingDay5";
             this.chkEmbryoFreezingDay5.Size = new System.Drawing.Size(53, 17);
             this.chkEmbryoFreezingDay5.TabIndex = 536;
@@ -1997,7 +2086,7 @@
             this.chkEmbryoFreezingDay3.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(189)))), ((int)(((byte)(182)))));
             this.chkEmbryoFreezingDay3.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(189)))), ((int)(((byte)(182)))));
             this.chkEmbryoFreezingDay3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.chkEmbryoFreezingDay3.Location = new System.Drawing.Point(198, 15);
+            this.chkEmbryoFreezingDay3.Location = new System.Drawing.Point(198, 10);
             this.chkEmbryoFreezingDay3.Name = "chkEmbryoFreezingDay3";
             this.chkEmbryoFreezingDay3.Size = new System.Drawing.Size(53, 17);
             this.chkEmbryoFreezingDay3.TabIndex = 535;
@@ -2014,7 +2103,7 @@
             this.chkEmbryoFreezingDay1.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(189)))), ((int)(((byte)(182)))));
             this.chkEmbryoFreezingDay1.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(189)))), ((int)(((byte)(182)))));
             this.chkEmbryoFreezingDay1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.chkEmbryoFreezingDay1.Location = new System.Drawing.Point(38, 15);
+            this.chkEmbryoFreezingDay1.Location = new System.Drawing.Point(48, 10);
             this.chkEmbryoFreezingDay1.Name = "chkEmbryoFreezingDay1";
             this.chkEmbryoFreezingDay1.Size = new System.Drawing.Size(53, 17);
             this.chkEmbryoFreezingDay1.TabIndex = 534;
@@ -2029,9 +2118,9 @@
             this.gbEmbryoTranfer.Controls.Add(this.chkEmbryoTranferFrozen);
             this.gbEmbryoTranfer.Controls.Add(this.chkEmbryoTranferFresh);
             this.gbEmbryoTranfer.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.gbEmbryoTranfer.Location = new System.Drawing.Point(159, 199);
+            this.gbEmbryoTranfer.Location = new System.Drawing.Point(159, 183);
             this.gbEmbryoTranfer.Name = "gbEmbryoTranfer";
-            this.gbEmbryoTranfer.Size = new System.Drawing.Size(256, 37);
+            this.gbEmbryoTranfer.Size = new System.Drawing.Size(256, 28);
             this.gbEmbryoTranfer.TabIndex = 715;
             this.gbEmbryoTranfer.TabStop = false;
             this.theme1.SetTheme(this.gbEmbryoTranfer, "(default)");
@@ -2044,7 +2133,7 @@
             this.chkEmbryoTranferFrozen.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(189)))), ((int)(((byte)(182)))));
             this.chkEmbryoTranferFrozen.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(189)))), ((int)(((byte)(182)))));
             this.chkEmbryoTranferFrozen.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.chkEmbryoTranferFrozen.Location = new System.Drawing.Point(135, 15);
+            this.chkEmbryoTranferFrozen.Location = new System.Drawing.Point(148, 8);
             this.chkEmbryoTranferFrozen.Name = "chkEmbryoTranferFrozen";
             this.chkEmbryoTranferFrozen.Size = new System.Drawing.Size(86, 17);
             this.chkEmbryoTranferFrozen.TabIndex = 535;
@@ -2061,7 +2150,7 @@
             this.chkEmbryoTranferFresh.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(189)))), ((int)(((byte)(182)))));
             this.chkEmbryoTranferFresh.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(189)))), ((int)(((byte)(182)))));
             this.chkEmbryoTranferFresh.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.chkEmbryoTranferFresh.Location = new System.Drawing.Point(35, 15);
+            this.chkEmbryoTranferFresh.Location = new System.Drawing.Point(48, 8);
             this.chkEmbryoTranferFresh.Name = "chkEmbryoTranferFresh";
             this.chkEmbryoTranferFresh.Size = new System.Drawing.Size(80, 17);
             this.chkEmbryoTranferFresh.TabIndex = 534;
@@ -2076,9 +2165,9 @@
             this.gbNgs.Controls.Add(this.chkNgsDay5);
             this.gbNgs.Controls.Add(this.chkNgsDay3);
             this.gbNgs.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.gbNgs.Location = new System.Drawing.Point(159, 151);
+            this.gbNgs.Location = new System.Drawing.Point(159, 148);
             this.gbNgs.Name = "gbNgs";
-            this.gbNgs.Size = new System.Drawing.Size(256, 41);
+            this.gbNgs.Size = new System.Drawing.Size(256, 32);
             this.gbNgs.TabIndex = 714;
             this.gbNgs.TabStop = false;
             this.gbNgs.Text = "Biopsy";
@@ -2092,7 +2181,7 @@
             this.chkNgsDay5.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(189)))), ((int)(((byte)(182)))));
             this.chkNgsDay5.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(189)))), ((int)(((byte)(182)))));
             this.chkNgsDay5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.chkNgsDay5.Location = new System.Drawing.Point(135, 15);
+            this.chkNgsDay5.Location = new System.Drawing.Point(150, 10);
             this.chkNgsDay5.Name = "chkNgsDay5";
             this.chkNgsDay5.Size = new System.Drawing.Size(53, 17);
             this.chkNgsDay5.TabIndex = 535;
@@ -2109,7 +2198,7 @@
             this.chkNgsDay3.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(189)))), ((int)(((byte)(182)))));
             this.chkNgsDay3.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(189)))), ((int)(((byte)(182)))));
             this.chkNgsDay3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.chkNgsDay3.Location = new System.Drawing.Point(35, 15);
+            this.chkNgsDay3.Location = new System.Drawing.Point(50, 10);
             this.chkNgsDay3.Name = "chkNgsDay3";
             this.chkNgsDay3.Size = new System.Drawing.Size(53, 17);
             this.chkNgsDay3.TabIndex = 534;
@@ -2126,7 +2215,7 @@
             this.chkSpermHa.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.chkSpermHa.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.chkSpermHa.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.chkSpermHa.Location = new System.Drawing.Point(297, 97);
+            this.chkSpermHa.Location = new System.Drawing.Point(297, 100);
             this.chkSpermHa.Name = "chkSpermHa";
             this.chkSpermHa.Padding = new System.Windows.Forms.Padding(4, 1, 1, 1);
             this.chkSpermHa.Size = new System.Drawing.Size(140, 24);
@@ -2210,7 +2299,7 @@
             this.chkEmbryoFreezing.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.chkEmbryoFreezing.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.chkEmbryoFreezing.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.chkEmbryoFreezing.Location = new System.Drawing.Point(9, 245);
+            this.chkEmbryoFreezing.Location = new System.Drawing.Point(9, 221);
             this.chkEmbryoFreezing.Name = "chkEmbryoFreezing";
             this.chkEmbryoFreezing.Padding = new System.Windows.Forms.Padding(4, 1, 1, 1);
             this.chkEmbryoFreezing.Size = new System.Drawing.Size(140, 24);
@@ -2229,7 +2318,7 @@
             this.chkEmbryoTranfer.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.chkEmbryoTranfer.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.chkEmbryoTranfer.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.chkEmbryoTranfer.Location = new System.Drawing.Point(10, 208);
+            this.chkEmbryoTranfer.Location = new System.Drawing.Point(9, 185);
             this.chkEmbryoTranfer.Name = "chkEmbryoTranfer";
             this.chkEmbryoTranfer.Padding = new System.Windows.Forms.Padding(4, 1, 1, 1);
             this.chkEmbryoTranfer.Size = new System.Drawing.Size(140, 24);
@@ -2248,7 +2337,7 @@
             this.chkNgs.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.chkNgs.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.chkNgs.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.chkNgs.Location = new System.Drawing.Point(10, 166);
+            this.chkNgs.Location = new System.Drawing.Point(9, 156);
             this.chkNgs.Name = "chkNgs";
             this.chkNgs.Padding = new System.Windows.Forms.Padding(4, 1, 1, 1);
             this.chkNgs.Size = new System.Drawing.Size(140, 24);
@@ -2286,7 +2375,7 @@
             this.chkFrozenSperm.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.chkFrozenSperm.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.chkFrozenSperm.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.chkFrozenSperm.Location = new System.Drawing.Point(10, 97);
+            this.chkFrozenSperm.Location = new System.Drawing.Point(9, 100);
             this.chkFrozenSperm.Name = "chkFrozenSperm";
             this.chkFrozenSperm.Padding = new System.Windows.Forms.Padding(4, 1, 1, 1);
             this.chkFrozenSperm.Size = new System.Drawing.Size(140, 24);
@@ -2305,7 +2394,7 @@
             this.chkFreshSprem.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.chkFreshSprem.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.chkFreshSprem.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.chkFreshSprem.Location = new System.Drawing.Point(10, 68);
+            this.chkFreshSprem.Location = new System.Drawing.Point(9, 68);
             this.chkFreshSprem.Name = "chkFreshSprem";
             this.chkFreshSprem.Padding = new System.Windows.Forms.Padding(4, 1, 1, 1);
             this.chkFreshSprem.Size = new System.Drawing.Size(140, 24);
@@ -2351,7 +2440,7 @@
             | C1.Win.C1Input.FormatInfoInheritFlags.TrimStart) 
             | C1.Win.C1Input.FormatInfoInheritFlags.TrimEnd)));
             this.txtIUIDate.ImagePadding = new System.Windows.Forms.Padding(0);
-            this.txtIUIDate.Location = new System.Drawing.Point(108, 543);
+            this.txtIUIDate.Location = new System.Drawing.Point(108, 539);
             this.txtIUIDate.Name = "txtIUIDate";
             this.txtIUIDate.Size = new System.Drawing.Size(176, 18);
             this.txtIUIDate.TabIndex = 724;
@@ -2408,7 +2497,7 @@
             this.label25.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
             this.label25.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label25.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.label25.Location = new System.Drawing.Point(12, 543);
+            this.label25.Location = new System.Drawing.Point(12, 539);
             this.label25.Name = "label25";
             this.label25.Size = new System.Drawing.Size(30, 16);
             this.label25.TabIndex = 722;
@@ -2428,63 +2517,164 @@
             this.label20.Text = "PESA/TESE :";
             this.theme1.SetTheme(this.label20, "(default)");
             // 
-            // label30
+            // chkNoNgs
             // 
-            this.label30.AutoSize = true;
-            this.label30.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.label30.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label30.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.label30.Location = new System.Drawing.Point(424, 218);
-            this.label30.Name = "label30";
-            this.label30.Size = new System.Drawing.Size(94, 16);
-            this.label30.TabIndex = 737;
-            this.label30.Text = "OPU Remark :";
-            this.theme1.SetTheme(this.label30, "(default)");
+            this.chkNoNgs.BackColor = System.Drawing.Color.Transparent;
+            this.chkNoNgs.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
+            this.chkNoNgs.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.chkNoNgs.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.chkNoNgs.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chkNoNgs.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.chkNoNgs.Location = new System.Drawing.Point(480, 157);
+            this.chkNoNgs.Name = "chkNoNgs";
+            this.chkNoNgs.Padding = new System.Windows.Forms.Padding(4, 1, 1, 1);
+            this.chkNoNgs.Size = new System.Drawing.Size(108, 24);
+            this.chkNoNgs.TabIndex = 738;
+            this.chkNoNgs.Text = "No NGS";
+            this.theme1.SetTheme(this.chkNoNgs, "(default)");
+            this.chkNoNgs.UseVisualStyleBackColor = true;
+            this.chkNoNgs.Value = null;
+            this.chkNoNgs.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
             // 
-            // txtOPURemark
+            // panel2
             // 
-            this.txtOPURemark.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtOPURemark.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
-            this.txtOPURemark.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.txtOPURemark.Location = new System.Drawing.Point(528, 216);
-            this.txtOPURemark.Name = "txtOPURemark";
-            this.txtOPURemark.Size = new System.Drawing.Size(486, 20);
-            this.txtOPURemark.TabIndex = 736;
-            this.txtOPURemark.Tag = null;
-            this.theme1.SetTheme(this.txtOPURemark, "(default)");
-            this.txtOPURemark.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.panel2.Controls.Add(this.radioButton1);
+            this.panel2.Controls.Add(this.radioButton2);
+            this.panel2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.panel2.Location = new System.Drawing.Point(202, 8);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(710, 25);
+            this.panel2.TabIndex = 740;
+            this.theme1.SetTheme(this.panel2, "(default)");
             // 
-            // label32
+            // radioButton1
             // 
-            this.label32.AutoSize = true;
-            this.label32.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.label32.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label32.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.label32.Location = new System.Drawing.Point(502, 106);
-            this.label32.Name = "label32";
-            this.label32.Size = new System.Drawing.Size(91, 16);
-            this.label32.TabIndex = 739;
-            this.label32.Text = "FET Remark :";
-            this.theme1.SetTheme(this.label32, "(default)");
+            this.radioButton1.AutoSize = true;
+            this.radioButton1.BackColor = System.Drawing.Color.Transparent;
+            this.radioButton1.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
+            this.radioButton1.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(189)))), ((int)(((byte)(182)))));
+            this.radioButton1.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(189)))), ((int)(((byte)(182)))));
+            this.radioButton1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.radioButton1.Location = new System.Drawing.Point(138, 5);
+            this.radioButton1.Name = "radioButton1";
+            this.radioButton1.Size = new System.Drawing.Size(121, 17);
+            this.radioButton1.TabIndex = 539;
+            this.radioButton1.TabStop = true;
+            this.radioButton1.Text = "ยืนยัน วัน FET Date";
+            this.theme1.SetTheme(this.radioButton1, "(default)");
+            this.radioButton1.UseVisualStyleBackColor = false;
             // 
-            // txtFETRemark
+            // radioButton2
             // 
-            this.txtFETRemark.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtFETRemark.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
-            this.txtFETRemark.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.txtFETRemark.Location = new System.Drawing.Point(614, 104);
-            this.txtFETRemark.Name = "txtFETRemark";
-            this.txtFETRemark.Size = new System.Drawing.Size(422, 20);
-            this.txtFETRemark.TabIndex = 738;
-            this.txtFETRemark.Tag = null;
-            this.theme1.SetTheme(this.txtFETRemark, "(default)");
-            this.txtFETRemark.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            this.radioButton2.AutoSize = true;
+            this.radioButton2.BackColor = System.Drawing.Color.Transparent;
+            this.radioButton2.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
+            this.radioButton2.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(189)))), ((int)(((byte)(182)))));
+            this.radioButton2.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(189)))), ((int)(((byte)(182)))));
+            this.radioButton2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.radioButton2.Location = new System.Drawing.Point(6, 5);
+            this.radioButton2.Name = "radioButton2";
+            this.radioButton2.Size = new System.Drawing.Size(124, 17);
+            this.radioButton2.TabIndex = 538;
+            this.radioButton2.TabStop = true;
+            this.radioButton2.Text = "รอ Confirm FET Date";
+            this.theme1.SetTheme(this.radioButton2, "(default)");
+            this.radioButton2.UseVisualStyleBackColor = false;
+            // 
+            // groupBox4
+            // 
+            this.groupBox4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.groupBox4.Controls.Add(this.c1ComboBox1);
+            this.groupBox4.Controls.Add(this.radioButton3);
+            this.groupBox4.Controls.Add(this.radioButton4);
+            this.groupBox4.Controls.Add(this.radioButton5);
+            this.groupBox4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.groupBox4.Location = new System.Drawing.Point(493, 58);
+            this.groupBox4.Name = "groupBox4";
+            this.groupBox4.Size = new System.Drawing.Size(429, 41);
+            this.groupBox4.TabIndex = 741;
+            this.groupBox4.TabStop = false;
+            this.groupBox4.Text = "สถานะ";
+            this.theme1.SetTheme(this.groupBox4, "(default)");
+            // 
+            // c1ComboBox1
+            // 
+            this.c1ComboBox1.AllowSpinLoop = false;
+            this.c1ComboBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.c1ComboBox1.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
+            this.c1ComboBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.c1ComboBox1.GapHeight = 0;
+            this.c1ComboBox1.ImagePadding = new System.Windows.Forms.Padding(0);
+            this.c1ComboBox1.ItemsDisplayMember = "";
+            this.c1ComboBox1.ItemsValueMember = "";
+            this.c1ComboBox1.Location = new System.Drawing.Point(204, 16);
+            this.c1ComboBox1.Name = "c1ComboBox1";
+            this.c1ComboBox1.Size = new System.Drawing.Size(207, 20);
+            this.c1ComboBox1.Style.DropDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.c1ComboBox1.Style.DropDownBorderColor = System.Drawing.Color.Gainsboro;
+            this.c1ComboBox1.Style.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.c1ComboBox1.TabIndex = 618;
+            this.c1ComboBox1.Tag = null;
+            this.theme1.SetTheme(this.c1ComboBox1, "(default)");
+            this.c1ComboBox1.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            // 
+            // radioButton3
+            // 
+            this.radioButton3.AutoSize = true;
+            this.radioButton3.BackColor = System.Drawing.Color.Transparent;
+            this.radioButton3.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
+            this.radioButton3.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(189)))), ((int)(((byte)(182)))));
+            this.radioButton3.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(189)))), ((int)(((byte)(182)))));
+            this.radioButton3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.radioButton3.Location = new System.Drawing.Point(161, 15);
+            this.radioButton3.Name = "radioButton3";
+            this.radioButton3.Size = new System.Drawing.Size(37, 17);
+            this.radioButton3.TabIndex = 536;
+            this.radioButton3.TabStop = true;
+            this.radioButton3.Text = "รอ";
+            this.theme1.SetTheme(this.radioButton3, "(default)");
+            this.radioButton3.UseVisualStyleBackColor = false;
+            // 
+            // radioButton4
+            // 
+            this.radioButton4.AutoSize = true;
+            this.radioButton4.BackColor = System.Drawing.Color.Transparent;
+            this.radioButton4.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
+            this.radioButton4.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(189)))), ((int)(((byte)(182)))));
+            this.radioButton4.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(189)))), ((int)(((byte)(182)))));
+            this.radioButton4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.radioButton4.Location = new System.Drawing.Point(88, 15);
+            this.radioButton4.Name = "radioButton4";
+            this.radioButton4.Size = new System.Drawing.Size(57, 17);
+            this.radioButton4.TabIndex = 535;
+            this.radioButton4.TabStop = true;
+            this.radioButton4.Text = "ยกเลิก";
+            this.theme1.SetTheme(this.radioButton4, "(default)");
+            this.radioButton4.UseVisualStyleBackColor = false;
+            // 
+            // radioButton5
+            // 
+            this.radioButton5.AutoSize = true;
+            this.radioButton5.BackColor = System.Drawing.Color.Transparent;
+            this.radioButton5.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
+            this.radioButton5.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(189)))), ((int)(((byte)(182)))));
+            this.radioButton5.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(189)))), ((int)(((byte)(182)))));
+            this.radioButton5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.radioButton5.Location = new System.Drawing.Point(19, 15);
+            this.radioButton5.Name = "radioButton5";
+            this.radioButton5.Size = new System.Drawing.Size(56, 17);
+            this.radioButton5.TabIndex = 534;
+            this.radioButton5.TabStop = true;
+            this.radioButton5.Text = "ใช้งาน";
+            this.theme1.SetTheme(this.radioButton5, "(default)");
+            this.radioButton5.UseVisualStyleBackColor = false;
             // 
             // FrmLabFormA
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1059, 710);
+            this.ClientSize = new System.Drawing.Size(1059, 702);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.sB);
@@ -2538,6 +2728,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.chkSpermAnalysis)).EndInit();
             this.gbETFET.ResumeLayout(false);
             this.gbETFET.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtFETRemark)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkAssistHatching)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkEmbryoGlue)).EndInit();
             this.pnFET.ResumeLayout(false);
@@ -2549,6 +2740,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtEmbryoTranferDate)).EndInit();
             this.gbOPU.ResumeLayout(false);
             this.gbOPU.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtOPURemark)).EndInit();
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.cboOPUWaitRemark)).EndInit();
@@ -2581,8 +2773,12 @@
             ((System.ComponentModel.ISupportInitialize)(this.chkFreshSprem)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtIUIDate)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtPasaTeseDate)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtOPURemark)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtFETRemark)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chkNoNgs)).EndInit();
+            this.panel2.ResumeLayout(false);
+            this.panel2.PerformLayout();
+            this.groupBox4.ResumeLayout(false);
+            this.groupBox4.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.c1ComboBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -2716,5 +2912,14 @@
         private C1.Win.C1Input.C1TextBox txtOPURemark;
         private System.Windows.Forms.Label label32;
         private C1.Win.C1Input.C1TextBox txtFETRemark;
+        private C1.Win.C1Input.C1CheckBox chkNoNgs;
+        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.RadioButton radioButton1;
+        private System.Windows.Forms.RadioButton radioButton2;
+        private System.Windows.Forms.GroupBox groupBox4;
+        private C1.Win.C1Input.C1ComboBox c1ComboBox1;
+        private System.Windows.Forms.RadioButton radioButton3;
+        private System.Windows.Forms.RadioButton radioButton4;
+        private System.Windows.Forms.RadioButton radioButton5;
     }
 }

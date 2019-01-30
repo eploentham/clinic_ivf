@@ -370,6 +370,7 @@ namespace clinic_ivf.control
             {
                 if(DateTime.TryParse(dt.ToString(),out dt1))
                 {
+                    if (dt1.Year < 1900) return "";
                     re = dt1.ToString("dd-MM-yyyy");
                 }
             }
