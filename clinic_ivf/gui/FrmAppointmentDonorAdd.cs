@@ -217,46 +217,7 @@ namespace clinic_ivf.gui
             //throw new NotImplementedException();
             if (btnSave.Text.Equals("Confirm"))
             {
-                stt.Hide();
-                String re = "";
-                setPatientAppointment();
-                re = ic.ivfDB.pApmDB.insertPatientAppointment(pApm, txtStfConfirmID.Text);
                 
-                //txtID.Value = (!txtID.Text.Equals("") && re.Equals("1")) ? re : "";        //update
-                long chk = 0;
-                if (long.TryParse(re, out chk))
-                {
-                    txtID.Value = txtID.Text.Equals("") ? re : txtID.Text;
-                    //if (!ic.iniC.statusAppDonor.Equals("1"))
-                    //{
-                    //String re1 = ic.ivfDB.pttOldDB.insertPatientOld(ptt, txtStfConfirmID.Text);
-                    //if (int.TryParse(re1, out chk))
-                    //{
-                    //if (txtID.Text.Equals(""))
-                    //{
-                    //    //PatientOld pttOld = new PatientOld();
-                    //    //pttOld = ic.ivfDB.pttOldDB.selectByPk1(re1);
-                    //    String re2 = ic.ivfDB.pttDB.updatePID(re, re1);
-                    //    if (int.TryParse(re2, out chk))
-                    //    {
-                    re = ic.ivfDB.vsDB.updateCloseStatusNurse(txtVsId.Text);
-                    re = ic.ivfDB.vsDB.updateStatusAppointment(txtVsId.Text, txtID.Text);
-                    //txtID.Value = re;
-                    btnSave.Text = "Save";
-                    btnSave.Image = Resources.accept_database24;
-                    //        txtID.Value = re;
-                    //        txtPid.Focus();
-                    //    }
-                    //}
-                    //}
-                    //}
-
-                    System.Threading.Thread.Sleep(500);
-                    setGrfpApmAll();
-                    setGrfpApmVisit();
-                    setGrfpApmDay();
-                    //this.Dispose();
-                }
             }
             else
             {
@@ -271,6 +232,47 @@ namespace clinic_ivf.gui
                     btnSave.Image = Resources.Add_ticket_24;
                     stt.Show("<p><b>สวัสดี</b></p>คุณ " + ic.cStf.staff_fname_t + " " + ic.cStf.staff_lname_t + "<br> กรุณายินยันการ confirm อีกครั้ง", txtAppointment);
                     btnSave.Focus();
+
+                    stt.Hide();
+                    String re = "";
+                    setPatientAppointment();
+                    re = ic.ivfDB.pApmDB.insertPatientAppointment(pApm, txtStfConfirmID.Text);
+
+                    //txtID.Value = (!txtID.Text.Equals("") && re.Equals("1")) ? re : "";        //update
+                    long chk = 0;
+                    if (long.TryParse(re, out chk))
+                    {
+                        txtID.Value = txtID.Text.Equals("") ? re : txtID.Text;
+                        //if (!ic.iniC.statusAppDonor.Equals("1"))
+                        //{
+                        //String re1 = ic.ivfDB.pttOldDB.insertPatientOld(ptt, txtStfConfirmID.Text);
+                        //if (int.TryParse(re1, out chk))
+                        //{
+                        //if (txtID.Text.Equals(""))
+                        //{
+                        //    //PatientOld pttOld = new PatientOld();
+                        //    //pttOld = ic.ivfDB.pttOldDB.selectByPk1(re1);
+                        //    String re2 = ic.ivfDB.pttDB.updatePID(re, re1);
+                        //    if (int.TryParse(re2, out chk))
+                        //    {
+                        re = ic.ivfDB.vsDB.updateCloseStatusNurse(txtVsId.Text);
+                        re = ic.ivfDB.vsDB.updateStatusAppointment(txtVsId.Text, txtID.Text);
+                        //txtID.Value = re;
+                        btnSave.Text = "Save";
+                        btnSave.Image = Resources.accept_database24;
+                        //        txtID.Value = re;
+                        //        txtPid.Focus();
+                        //    }
+                        //}
+                        //}
+                        //}
+
+                        System.Threading.Thread.Sleep(500);
+                        setGrfpApmAll();
+                        setGrfpApmVisit();
+                        setGrfpApmDay();
+                        //this.Dispose();
+                    }
                 }
                 else
                 {

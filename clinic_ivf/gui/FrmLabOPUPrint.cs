@@ -278,29 +278,32 @@ namespace clinic_ivf.gui
                     frm.setOPUReport(dt, FrmReport.flagEmbryoDev.onecolumn, FrmReport.flagEmbryoDevMore20.Days2);
                 }
             }
-            dt.Rows[0][ic.ivfDB.opuDB.opu.matura_m_ii] = dt.Rows[0][ic.ivfDB.opuDB.opu.matura_m_ii].ToString().Equals("") ? dt.Rows[0][ic.ivfDB.opuDB.opu.matura_m_ii].ToString().Replace("", "-") : dt.Rows[0][ic.ivfDB.opuDB.opu.matura_m_ii].ToString();
-            dt.Rows[0][ic.ivfDB.opuDB.opu.matura_m_i] = dt.Rows[0][ic.ivfDB.opuDB.opu.matura_m_i].ToString().Equals("") ? dt.Rows[0][ic.ivfDB.opuDB.opu.matura_m_i].ToString().Replace("", "-") : dt.Rows[0][ic.ivfDB.opuDB.opu.matura_m_i].ToString();
-            dt.Rows[0][ic.ivfDB.opuDB.opu.matura_gv] = dt.Rows[0][ic.ivfDB.opuDB.opu.matura_gv].ToString().Equals("") ? dt.Rows[0][ic.ivfDB.opuDB.opu.matura_gv].ToString().Replace("", "-") : dt.Rows[0][ic.ivfDB.opuDB.opu.matura_gv].ToString();
-            dt.Rows[0][ic.ivfDB.opuDB.opu.matura_post_mat] = dt.Rows[0][ic.ivfDB.opuDB.opu.matura_post_mat].ToString().Equals("") ? dt.Rows[0][ic.ivfDB.opuDB.opu.matura_post_mat].ToString().Replace("", "-") : dt.Rows[0][ic.ivfDB.opuDB.opu.matura_post_mat].ToString();
-            dt.Rows[0][ic.ivfDB.opuDB.opu.matura_abmormal] = dt.Rows[0][ic.ivfDB.opuDB.opu.matura_abmormal].ToString().Equals("") ? dt.Rows[0][ic.ivfDB.opuDB.opu.matura_abmormal].ToString().Replace("", "-") : dt.Rows[0][ic.ivfDB.opuDB.opu.matura_abmormal].ToString();
-            dt.Rows[0][ic.ivfDB.opuDB.opu.matura_dead] = dt.Rows[0][ic.ivfDB.opuDB.opu.matura_dead].ToString().Equals("") ? dt.Rows[0][ic.ivfDB.opuDB.opu.matura_dead].ToString().Replace("", "-") : dt.Rows[0][ic.ivfDB.opuDB.opu.matura_dead].ToString();
+            dt.Rows[0][ic.ivfDB.opuDB.opu.matura_m_ii] = dt.Rows[0][ic.ivfDB.opuDB.opu.matura_m_ii].ToString().Equals("") ? "-" : dt.Rows[0][ic.ivfDB.opuDB.opu.matura_m_ii].ToString();
+            dt.Rows[0][ic.ivfDB.opuDB.opu.matura_m_i] = dt.Rows[0][ic.ivfDB.opuDB.opu.matura_m_i].ToString().Equals("") ? "-" : dt.Rows[0][ic.ivfDB.opuDB.opu.matura_m_i].ToString();
+            dt.Rows[0][ic.ivfDB.opuDB.opu.matura_gv] = dt.Rows[0][ic.ivfDB.opuDB.opu.matura_gv].ToString().Equals("") ? "-" : dt.Rows[0][ic.ivfDB.opuDB.opu.matura_gv].ToString();
+            dt.Rows[0][ic.ivfDB.opuDB.opu.matura_post_mat] = dt.Rows[0][ic.ivfDB.opuDB.opu.matura_post_mat].ToString().Equals("") ? "-" : dt.Rows[0][ic.ivfDB.opuDB.opu.matura_post_mat].ToString();
+            dt.Rows[0][ic.ivfDB.opuDB.opu.matura_abmormal] = dt.Rows[0][ic.ivfDB.opuDB.opu.matura_abmormal].ToString().Equals("") ? "-" : dt.Rows[0][ic.ivfDB.opuDB.opu.matura_abmormal].ToString();
+            dt.Rows[0][ic.ivfDB.opuDB.opu.matura_dead] = dt.Rows[0][ic.ivfDB.opuDB.opu.matura_dead].ToString().Equals("") ? "-" : dt.Rows[0][ic.ivfDB.opuDB.opu.matura_dead].ToString();
 
-            dt.Rows[0][ic.ivfDB.opuDB.opu.fertili_2_pn] = dt.Rows[0][ic.ivfDB.opuDB.opu.fertili_2_pn].ToString().Equals("") ? dt.Rows[0][ic.ivfDB.opuDB.opu.fertili_2_pn].ToString().Replace("", "-") : dt.Rows[0][ic.ivfDB.opuDB.opu.fertili_2_pn].ToString();
-            dt.Rows[0][ic.ivfDB.opuDB.opu.fertili_1_pn] = dt.Rows[0][ic.ivfDB.opuDB.opu.fertili_1_pn].ToString().Equals("") ? dt.Rows[0][ic.ivfDB.opuDB.opu.fertili_1_pn].ToString().Replace("", "-") : dt.Rows[0][ic.ivfDB.opuDB.opu.fertili_1_pn].ToString();
-            dt.Rows[0][ic.ivfDB.opuDB.opu.fertili_3_pn] = dt.Rows[0][ic.ivfDB.opuDB.opu.fertili_3_pn].ToString().Equals("") ? dt.Rows[0][ic.ivfDB.opuDB.opu.fertili_3_pn].ToString().Replace("", "-") : dt.Rows[0][ic.ivfDB.opuDB.opu.fertili_3_pn].ToString();
-            dt.Rows[0][ic.ivfDB.opuDB.opu.fertili_4_pn] = dt.Rows[0][ic.ivfDB.opuDB.opu.fertili_4_pn].ToString().Equals("") ? dt.Rows[0][ic.ivfDB.opuDB.opu.fertili_4_pn].ToString().Replace("", "-") : dt.Rows[0][ic.ivfDB.opuDB.opu.fertili_4_pn].ToString();
-            dt.Rows[0][ic.ivfDB.opuDB.opu.fertili_no_pn] = dt.Rows[0][ic.ivfDB.opuDB.opu.fertili_no_pn].ToString().Equals("") ? dt.Rows[0][ic.ivfDB.opuDB.opu.fertili_no_pn].ToString().Replace("", "-") : dt.Rows[0][ic.ivfDB.opuDB.opu.fertili_no_pn].ToString();
-            dt.Rows[0][ic.ivfDB.opuDB.opu.fertili_dead] = dt.Rows[0][ic.ivfDB.opuDB.opu.fertili_dead].ToString().Equals("") ? dt.Rows[0][ic.ivfDB.opuDB.opu.fertili_dead].ToString().Replace("", "-") : dt.Rows[0][ic.ivfDB.opuDB.opu.fertili_dead].ToString();
+            dt.Rows[0][ic.ivfDB.opuDB.opu.fertili_2_pn] = dt.Rows[0][ic.ivfDB.opuDB.opu.fertili_2_pn].ToString().Equals("") ? "-" : dt.Rows[0][ic.ivfDB.opuDB.opu.fertili_2_pn].ToString();
+            dt.Rows[0][ic.ivfDB.opuDB.opu.fertili_1_pn] = dt.Rows[0][ic.ivfDB.opuDB.opu.fertili_1_pn].ToString().Equals("") ? "-" : dt.Rows[0][ic.ivfDB.opuDB.opu.fertili_1_pn].ToString();
+            dt.Rows[0][ic.ivfDB.opuDB.opu.fertili_3_pn] = dt.Rows[0][ic.ivfDB.opuDB.opu.fertili_3_pn].ToString().Equals("") ? "-" : dt.Rows[0][ic.ivfDB.opuDB.opu.fertili_3_pn].ToString();
+            dt.Rows[0][ic.ivfDB.opuDB.opu.fertili_4_pn] = dt.Rows[0][ic.ivfDB.opuDB.opu.fertili_4_pn].ToString().Equals("") ? "-" : dt.Rows[0][ic.ivfDB.opuDB.opu.fertili_4_pn].ToString();
+            dt.Rows[0][ic.ivfDB.opuDB.opu.fertili_no_pn] = dt.Rows[0][ic.ivfDB.opuDB.opu.fertili_no_pn].ToString().Equals("") ? "-" : dt.Rows[0][ic.ivfDB.opuDB.opu.fertili_no_pn].ToString();
+            dt.Rows[0][ic.ivfDB.opuDB.opu.fertili_dead] = dt.Rows[0][ic.ivfDB.opuDB.opu.fertili_dead].ToString().Equals("") ? "-" : dt.Rows[0][ic.ivfDB.opuDB.opu.fertili_dead].ToString();
 
-            dt.Rows[0][ic.ivfDB.opuDB.opu.embryo_for_et_no_of_et] = dt.Rows[0][ic.ivfDB.opuDB.opu.embryo_for_et_no_of_et].ToString().Equals("") ? dt.Rows[0][ic.ivfDB.opuDB.opu.embryo_for_et_no_of_et].ToString().Replace("", "-") : dt.Rows[0][ic.ivfDB.opuDB.opu.embryo_for_et_no_of_et].ToString();
-            dt.Rows[0][ic.ivfDB.opuDB.opu.embryo_for_et_day] = dt.Rows[0][ic.ivfDB.opuDB.opu.embryo_for_et_day].ToString().Equals("") ? dt.Rows[0][ic.ivfDB.opuDB.opu.embryo_for_et_day].ToString().Replace("", "-") : dt.Rows[0][ic.ivfDB.opuDB.opu.embryo_for_et_day].ToString();
-            dt.Rows[0][ic.ivfDB.opuDB.opu.embryo_for_et_date] = dt.Rows[0][ic.ivfDB.opuDB.opu.embryo_for_et_date].ToString().Equals("") ? dt.Rows[0][ic.ivfDB.opuDB.opu.embryo_for_et_date].ToString().Replace("", "-") : dt.Rows[0][ic.ivfDB.opuDB.opu.embryo_for_et_date].ToString();
-            dt.Rows[0][ic.ivfDB.opuDB.opu.embryo_for_et_assisted] = dt.Rows[0][ic.ivfDB.opuDB.opu.embryo_for_et_assisted].ToString().Equals("") ? dt.Rows[0][ic.ivfDB.opuDB.opu.embryo_for_et_assisted].ToString().Replace("", "-") : dt.Rows[0][ic.ivfDB.opuDB.opu.embryo_for_et_assisted].ToString();
-            dt.Rows[0][ic.ivfDB.opuDB.opu.embryo_for_et_volume] = dt.Rows[0][ic.ivfDB.opuDB.opu.embryo_for_et_volume].ToString().Equals("") ? dt.Rows[0][ic.ivfDB.opuDB.opu.embryo_for_et_volume].ToString().Replace("", "-") : dt.Rows[0][ic.ivfDB.opuDB.opu.embryo_for_et_volume].ToString();
-            dt.Rows[0][ic.ivfDB.opuDB.opu.embryo_for_et_catheter] = dt.Rows[0][ic.ivfDB.opuDB.opu.embryo_for_et_catheter].ToString().Equals("") ? dt.Rows[0][ic.ivfDB.opuDB.opu.embryo_for_et_catheter].ToString().Replace("", "-") : dt.Rows[0][ic.ivfDB.opuDB.opu.embryo_for_et_catheter].ToString();
-            dt.Rows[0][ic.ivfDB.opuDB.opu.embryo_for_et_number_of_discard] = dt.Rows[0][ic.ivfDB.opuDB.opu.embryo_for_et_number_of_discard].ToString().Equals("") ? dt.Rows[0][ic.ivfDB.opuDB.opu.embryo_for_et_number_of_discard].ToString().Replace("", "-") : dt.Rows[0][ic.ivfDB.opuDB.opu.embryo_for_et_number_of_discard].ToString();
-            dt.Rows[0][ic.ivfDB.opuDB.opu.embryo_for_et_number_of_freeze] = dt.Rows[0][ic.ivfDB.opuDB.opu.embryo_for_et_number_of_freeze].ToString().Equals("") ? dt.Rows[0][ic.ivfDB.opuDB.opu.embryo_for_et_number_of_freeze].ToString().Replace("", "-") : dt.Rows[0][ic.ivfDB.opuDB.opu.embryo_for_et_number_of_freeze].ToString();
-            dt.Rows[0][ic.ivfDB.opuDB.opu.embryo_for_et_number_of_discard] = dt.Rows[0][ic.ivfDB.opuDB.opu.embryo_for_et_number_of_discard].ToString().Equals("") ? dt.Rows[0][ic.ivfDB.opuDB.opu.embryo_for_et_number_of_discard].ToString().Replace("", "-") : dt.Rows[0][ic.ivfDB.opuDB.opu.embryo_for_et_number_of_discard].ToString();
+            dt.Rows[0][ic.ivfDB.opuDB.opu.embryo_for_et_no_of_et] = dt.Rows[0][ic.ivfDB.opuDB.opu.embryo_for_et_no_of_et].ToString().Equals("") ? "-" : dt.Rows[0][ic.ivfDB.opuDB.opu.embryo_for_et_no_of_et].ToString();
+            dt.Rows[0][ic.ivfDB.opuDB.opu.embryo_for_et_day] = dt.Rows[0][ic.ivfDB.opuDB.opu.embryo_for_et_day].ToString().Equals("") ? "-" : dt.Rows[0][ic.ivfDB.opuDB.opu.embryo_for_et_day].ToString();
+            dt.Rows[0][ic.ivfDB.opuDB.opu.embryo_for_et_date] = dt.Rows[0][ic.ivfDB.opuDB.opu.embryo_for_et_date].ToString().Equals("") ? "-" : dt.Rows[0][ic.ivfDB.opuDB.opu.embryo_for_et_date].ToString();
+            dt.Rows[0][ic.ivfDB.opuDB.opu.embryo_for_et_assisted] = dt.Rows[0][ic.ivfDB.opuDB.opu.embryo_for_et_assisted].ToString().Equals("") ? "-" : dt.Rows[0][ic.ivfDB.opuDB.opu.embryo_for_et_assisted].ToString();
+            dt.Rows[0][ic.ivfDB.opuDB.opu.embryo_for_et_volume] = dt.Rows[0][ic.ivfDB.opuDB.opu.embryo_for_et_volume].ToString().Equals("") ? "-" : dt.Rows[0][ic.ivfDB.opuDB.opu.embryo_for_et_volume].ToString();
+            dt.Rows[0][ic.ivfDB.opuDB.opu.embryo_for_et_catheter] = dt.Rows[0][ic.ivfDB.opuDB.opu.embryo_for_et_catheter].ToString().Equals("") ? "-" : dt.Rows[0][ic.ivfDB.opuDB.opu.embryo_for_et_catheter].ToString();
+            dt.Rows[0][ic.ivfDB.opuDB.opu.embryo_for_et_number_of_discard] = dt.Rows[0][ic.ivfDB.opuDB.opu.embryo_for_et_number_of_discard].ToString().Equals("") ? "-" : dt.Rows[0][ic.ivfDB.opuDB.opu.embryo_for_et_number_of_discard].ToString();
+            dt.Rows[0][ic.ivfDB.opuDB.opu.embryo_for_et_number_of_freeze] = dt.Rows[0][ic.ivfDB.opuDB.opu.embryo_for_et_number_of_freeze].ToString().Equals("") ? "-" : dt.Rows[0][ic.ivfDB.opuDB.opu.embryo_for_et_number_of_freeze].ToString();
+            dt.Rows[0][ic.ivfDB.opuDB.opu.embryo_for_et_number_of_discard] = dt.Rows[0][ic.ivfDB.opuDB.opu.embryo_for_et_number_of_discard].ToString().Equals("") ? "-" : dt.Rows[0][ic.ivfDB.opuDB.opu.embryo_for_et_number_of_discard].ToString();
+            dt.Rows[0]["matura_m_ii"] = "-";
+            dt.Rows[0]["embryo_dev_1_staff_name"] = "Eklapop";
+            //dt.AcceptChanges();
             frm.ShowDialog(this);
         }
         private void setEmbryoDev()

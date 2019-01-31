@@ -320,6 +320,7 @@ namespace clinic_ivf.gui
             switch (keyData)
             {
                 case Keys.S | Keys.Control :
+                    saveLabOPU();
                     // ... Process Shift+Ctrl+Alt+B ...
                     //MessageBox.Show("1111", "");
                     return true; // signal that we've processed this key
@@ -1500,7 +1501,71 @@ namespace clinic_ivf.gui
             FrmLabOPUPrint frm = new FrmLabOPUPrint(ic, txtID.Text, FrmLabOPUPrint.opuReport.OPUReport);
             frm.ShowDialog(this);
         }
+        private Boolean saveDay6()
+        {
+            Boolean chkSave = false;
+            String staff_id = "", check_id = "", dateday6 = "";
+            staff_id = cboEmbryologistDay6.SelectedItem == null ? "" : ((ComboBoxItem)cboEmbryologistDay6.SelectedItem).Value;
+            String re1 = ic.ivfDB.opuEmDevDB.updateStff(txtID.Text, "6", staff_id);
 
+            check_id = cboCheckedDay6.SelectedItem == null ? "" : ((ComboBoxItem)cboCheckedDay6.SelectedItem).Value;
+            String re2 = ic.ivfDB.opuEmDevDB.updateChecked(txtID.Text, "6", check_id);
+
+            DateTime dtday6 = new DateTime();
+            if (DateTime.TryParse(txtDay6Date.Text, out dtday6))
+            {
+                dateday6 = ic.dateTimetoDB1(dtday6);
+                String re3 = ic.ivfDB.opuEmDevDB.updateDevDate(txtID.Text, "6", dateday6);
+            }
+            //setOPUEmbryoFreezDay1();
+            //String re = ic.ivfDB.opuDB.updateEmbryoFreezDay1(opu, ic.user.staff_id);
+            String re = "";
+            int i = 1;
+            foreach (Row row in grfDay6.Rows)
+            {
+                if (row[colDay6Edit] == null) continue;
+                if (row[colDay6Edit].ToString().Equals("1"))
+                {
+                    if (row[colDay6Desc] == null) continue;
+
+                    LabOpuEmbryoDev opuEmDev = new LabOpuEmbryoDev();
+                    opuEmDev.opu_embryo_dev_id = row[colDay6ID] != null ? row[colDay6ID].ToString() : "";
+                    opuEmDev.opu_fet_id = txtID.Text;
+                    opuEmDev.day = "6";
+                    opuEmDev.opu_embryo_dev_no = row[colDay6Num] != null ? row[colDay6Num].ToString() : i.ToString();
+                    opuEmDev.desc0 = row[colDay6Desc].ToString();
+                    opuEmDev.active = "1";
+                    opuEmDev.remark = "";
+                    opuEmDev.path_pic = "";
+                    opuEmDev.date_create = "";
+                    opuEmDev.date_modi = "";
+                    opuEmDev.date_cancel = "";
+                    opuEmDev.user_create = "";
+                    opuEmDev.user_modi = "";
+                    opuEmDev.user_cancel = "";
+                    opuEmDev.desc1 = row[colDay6Desc1] != null ? row[colDay6Desc1].ToString() : "";
+                    opuEmDev.desc2 = row[colDay6Desc2] != null ? row[colDay6Desc2].ToString() : "";
+                    opuEmDev.desc3 = "";
+
+                    //opuEmDev.staff_id = cboEmbryologistDay6.SelectedItem == null ? "" : ((ComboBoxItem)cboEmbryologistDay6.SelectedItem).Value;
+                    //opuEmDev.checked_id = cboCheckedDay6.SelectedItem == null ? "" : ((ComboBoxItem)cboCheckedDay6.SelectedItem).Value;
+                    //opuEmDev.embryo_dev_date = ic.dateTimetoDB(txtDay6Date.Text);
+                    opuEmDev.staff_id = "";
+                    opuEmDev.checked_id = "";
+                    opuEmDev.embryo_dev_date = "";
+                    re = ic.ivfDB.opuEmDevDB.insertLabOpuEmbryoDev(opuEmDev, ic.cStf.staff_id);
+                    long chk = 0;
+                    if (long.TryParse(re, out chk))
+                    {
+                        chkSave = true;
+                        row[colDay6Edit] = "0";
+                        //MessageBox.Show("Error", "");
+                    }
+                }
+                i++;
+            }
+            return chkSave;
+        }
         private void BtnSaveDay6_Click(object sender, EventArgs e)
         {
             //throw new NotImplementedException();
@@ -1512,66 +1577,7 @@ namespace clinic_ivf.gui
             frm.ShowDialog(this);
             if (!ic.cStf.staff_id.Equals(""))
             {
-                String staff_id = "", check_id = "", dateday6 = "";
-                staff_id = cboEmbryologistDay6.SelectedItem == null ? "" : ((ComboBoxItem)cboEmbryologistDay6.SelectedItem).Value;
-                String re1 = ic.ivfDB.opuEmDevDB.updateStff(txtID.Text, "6", staff_id);
-                
-                check_id = cboCheckedDay6.SelectedItem == null ? "" : ((ComboBoxItem)cboCheckedDay6.SelectedItem).Value;
-                String re2 = ic.ivfDB.opuEmDevDB.updateChecked(txtID.Text, "6", check_id);
-                
-                DateTime dtday6 = new DateTime();
-                if (DateTime.TryParse(txtDay6Date.Text, out dtday6))
-                {
-                    dateday6 = ic.dateTimetoDB1(dtday6);
-                    String re3 = ic.ivfDB.opuEmDevDB.updateDevDate(txtID.Text, "6", dateday6);
-                }
-                //setOPUEmbryoFreezDay1();
-                //String re = ic.ivfDB.opuDB.updateEmbryoFreezDay1(opu, ic.user.staff_id);
-                String re = "";
-                int i = 1;
-                foreach (Row row in grfDay6.Rows)
-                {
-                    if (row[colDay6Edit] == null) continue;
-                    if (row[colDay6Edit].ToString().Equals("1"))
-                    {
-                        if (row[colDay6Desc] == null) continue;
-
-                        LabOpuEmbryoDev opuEmDev = new LabOpuEmbryoDev();
-                        opuEmDev.opu_embryo_dev_id = row[colDay6ID] != null ? row[colDay6ID].ToString() : "";
-                        opuEmDev.opu_fet_id = txtID.Text;
-                        opuEmDev.day = "6";
-                        opuEmDev.opu_embryo_dev_no = row[colDay6Num] != null ? row[colDay6Num].ToString() : i.ToString();
-                        opuEmDev.desc0 = row[colDay6Desc].ToString();
-                        opuEmDev.active = "1";
-                        opuEmDev.remark = "";
-                        opuEmDev.path_pic = "";
-                        opuEmDev.date_create = "";
-                        opuEmDev.date_modi = "";
-                        opuEmDev.date_cancel = "";
-                        opuEmDev.user_create = "";
-                        opuEmDev.user_modi = "";
-                        opuEmDev.user_cancel = "";
-                        opuEmDev.desc1 = row[colDay6Desc1] != null ? row[colDay6Desc1].ToString() : "";
-                        opuEmDev.desc2 = row[colDay6Desc2] != null ? row[colDay6Desc2].ToString() : "";
-                        opuEmDev.desc3 = "";
-                        
-                        //opuEmDev.staff_id = cboEmbryologistDay6.SelectedItem == null ? "" : ((ComboBoxItem)cboEmbryologistDay6.SelectedItem).Value;
-                        //opuEmDev.checked_id = cboCheckedDay6.SelectedItem == null ? "" : ((ComboBoxItem)cboCheckedDay6.SelectedItem).Value;
-                        //opuEmDev.embryo_dev_date = ic.dateTimetoDB(txtDay6Date.Text);
-                        opuEmDev.staff_id = "";
-                        opuEmDev.checked_id = "";
-                        opuEmDev.embryo_dev_date = "";
-                        re = ic.ivfDB.opuEmDevDB.insertLabOpuEmbryoDev(opuEmDev, ic.cStf.staff_id);
-                        long chk = 0;
-                        if (long.TryParse(re, out chk))
-                        {
-                            chkSave = true;
-                            row[colDay6Edit] = "0";
-                            //MessageBox.Show("Error", "");
-                        }
-                    }
-                    i++;
-                }
+                chkSave = saveDay6();
                 long chk1 = 0;
                 if (chkSave)
                 {
@@ -1586,7 +1592,70 @@ namespace clinic_ivf.gui
             }
             //}
         }
+        private Boolean saveDay5()
+        {
+            Boolean chkSave = false;
+            String staff_id = "", check_id = "", dateday5 = "";
+            staff_id = cboEmbryologistDay5.SelectedItem == null ? "" : ((ComboBoxItem)cboEmbryologistDay5.SelectedItem).Value;
+            String re1 = ic.ivfDB.opuEmDevDB.updateStff(txtID.Text, "5", staff_id);
+            check_id = cboCheckedDay5.SelectedItem == null ? "" : ((ComboBoxItem)cboCheckedDay5.SelectedItem).Value;
+            String re2 = ic.ivfDB.opuEmDevDB.updateChecked(txtID.Text, "5", check_id);
+            DateTime dtday5 = new DateTime();
+            if (DateTime.TryParse(txtDay5Date.Text, out dtday5))
+            {
+                dateday5 = ic.dateTimetoDB1(dtday5);
+                String re3 = ic.ivfDB.opuEmDevDB.updateDevDate(txtID.Text, "5", dateday5);
+            }
 
+            //setOPUEmbryoFreezDay1();
+            //String re = ic.ivfDB.opuDB.updateEmbryoFreezDay1(opu, ic.user.staff_id);
+            String re = "";
+            int i = 1;
+            foreach (Row row in grfDay5.Rows)
+            {
+                if (row[colDay5Edit] == null) continue;
+                if (row[colDay5Edit].ToString().Equals("1"))
+                {
+                    if (row[colDay5Desc] == null) continue;
+
+                    LabOpuEmbryoDev opuEmDev = new LabOpuEmbryoDev();
+                    opuEmDev.opu_embryo_dev_id = row[colDay5ID] != null ? row[colDay5ID].ToString() : "";
+                    opuEmDev.opu_fet_id = txtID.Text;
+                    opuEmDev.day = "5";
+                    opuEmDev.opu_embryo_dev_no = row[colDay5Num] != null ? row[colDay5Num].ToString() : i.ToString();
+                    opuEmDev.desc0 = row[colDay5Desc].ToString();
+                    opuEmDev.active = "1";
+                    opuEmDev.remark = "";
+                    opuEmDev.path_pic = "";
+                    opuEmDev.date_create = "";
+                    opuEmDev.date_modi = "";
+                    opuEmDev.date_cancel = "";
+                    opuEmDev.user_create = "";
+                    opuEmDev.user_modi = "";
+                    opuEmDev.user_cancel = "";
+                    opuEmDev.desc1 = row[colDay5Desc1] != null ? row[colDay5Desc1].ToString() : "";
+                    opuEmDev.desc2 = row[colDay5Desc2] != null ? row[colDay5Desc2].ToString() : "";
+                    opuEmDev.desc3 = "";
+
+                    //opuEmDev.staff_id = cboEmbryologistDay5.SelectedItem == null ? "" : ((ComboBoxItem)cboEmbryologistDay5.SelectedItem).Value;
+                    //opuEmDev.checked_id = cboCheckedDay5.SelectedItem == null ? "" : ((ComboBoxItem)cboCheckedDay5.SelectedItem).Value;
+                    //opuEmDev.embryo_dev_date = ic.dateTimetoDB(txtDay5Date.Text);
+                    opuEmDev.staff_id = "";
+                    opuEmDev.checked_id = "";
+                    opuEmDev.embryo_dev_date = "";
+                    re = ic.ivfDB.opuEmDevDB.insertLabOpuEmbryoDev(opuEmDev, ic.cStf.staff_id);
+                    long chk = 0;
+                    if (long.TryParse(re, out chk))
+                    {
+                        chkSave = true;
+                        row[colDay5Edit] = "0";
+                        //MessageBox.Show("Error", "");
+                    }
+                }
+                i++;
+            }
+            return chkSave;
+        }
         private void BtnSaveDay5_Click(object sender, EventArgs e)
         {
             //throw new NotImplementedException();
@@ -1598,65 +1667,7 @@ namespace clinic_ivf.gui
             frm.ShowDialog(this);
             if (!ic.cStf.staff_id.Equals(""))
             {
-                String staff_id = "", check_id = "", dateday5 = "";
-                staff_id = cboEmbryologistDay5.SelectedItem == null ? "" : ((ComboBoxItem)cboEmbryologistDay5.SelectedItem).Value;
-                String re1 = ic.ivfDB.opuEmDevDB.updateStff(txtID.Text, "5", staff_id);
-                check_id = cboCheckedDay5.SelectedItem == null ? "" : ((ComboBoxItem)cboCheckedDay5.SelectedItem).Value;
-                String re2 = ic.ivfDB.opuEmDevDB.updateChecked(txtID.Text, "5", check_id);
-                DateTime dtday5 = new DateTime();
-                if (DateTime.TryParse(txtDay5Date.Text, out dtday5))
-                {
-                    dateday5 = ic.dateTimetoDB1(dtday5);
-                    String re3 = ic.ivfDB.opuEmDevDB.updateDevDate(txtID.Text, "5", dateday5);
-                }
-
-                //setOPUEmbryoFreezDay1();
-                //String re = ic.ivfDB.opuDB.updateEmbryoFreezDay1(opu, ic.user.staff_id);
-                String re = "";
-                int i = 1;
-                foreach (Row row in grfDay5.Rows)
-                {
-                    if (row[colDay5Edit] == null) continue;
-                    if (row[colDay5Edit].ToString().Equals("1"))
-                    {
-                        if (row[colDay5Desc] == null) continue;
-
-                        LabOpuEmbryoDev opuEmDev = new LabOpuEmbryoDev();
-                        opuEmDev.opu_embryo_dev_id = row[colDay5ID] != null ? row[colDay5ID].ToString() : "";
-                        opuEmDev.opu_fet_id = txtID.Text;
-                        opuEmDev.day = "5";
-                        opuEmDev.opu_embryo_dev_no = row[colDay5Num] != null ? row[colDay5Num].ToString() : i.ToString();
-                        opuEmDev.desc0 = row[colDay5Desc].ToString();
-                        opuEmDev.active = "1";
-                        opuEmDev.remark = "";
-                        opuEmDev.path_pic = "";
-                        opuEmDev.date_create = "";
-                        opuEmDev.date_modi = "";
-                        opuEmDev.date_cancel = "";
-                        opuEmDev.user_create = "";
-                        opuEmDev.user_modi = "";
-                        opuEmDev.user_cancel = "";
-                        opuEmDev.desc1 = row[colDay5Desc1] != null ? row[colDay5Desc1].ToString() : "";
-                        opuEmDev.desc2 = row[colDay5Desc2] != null ? row[colDay5Desc2].ToString() : "";
-                        opuEmDev.desc3 = "";
-
-                        //opuEmDev.staff_id = cboEmbryologistDay5.SelectedItem == null ? "" : ((ComboBoxItem)cboEmbryologistDay5.SelectedItem).Value;
-                        //opuEmDev.checked_id = cboCheckedDay5.SelectedItem == null ? "" : ((ComboBoxItem)cboCheckedDay5.SelectedItem).Value;
-                        //opuEmDev.embryo_dev_date = ic.dateTimetoDB(txtDay5Date.Text);
-                        opuEmDev.staff_id = "";
-                        opuEmDev.checked_id = "";
-                        opuEmDev.embryo_dev_date = "";
-                        re = ic.ivfDB.opuEmDevDB.insertLabOpuEmbryoDev(opuEmDev, ic.cStf.staff_id);
-                        long chk = 0;
-                        if (long.TryParse(re, out chk))
-                        {
-                            chkSave = true;
-                            row[colDay5Edit] = "0";
-                            //MessageBox.Show("Error", "");
-                        }
-                    }
-                    i++;
-                }
+                chkSave = saveDay5();
                 long chk1 = 0;
                 if (chkSave)
                 {
@@ -1671,7 +1682,74 @@ namespace clinic_ivf.gui
             }
             //}
         }
+        private Boolean saveDay3()
+        {
+            Boolean chkSave = false;
+            String staff_id = "", check_id = "", dateday3 = "";
+            staff_id = cboEmbryologistDay3.SelectedItem == null ? "" : ((ComboBoxItem)cboEmbryologistDay3.SelectedItem).Value;
+            String re1 = ic.ivfDB.opuEmDevDB.updateStff(txtID.Text, "3", staff_id);
 
+            check_id = cboCheckedDay3.SelectedItem == null ? "" : ((ComboBoxItem)cboCheckedDay3.SelectedItem).Value;
+            String re2 = ic.ivfDB.opuEmDevDB.updateChecked(txtID.Text, "3", check_id);
+            DateTime dtday3 = new DateTime();
+            if (DateTime.TryParse(txtDay3Date.Text, out dtday3))
+            {
+                dateday3 = ic.dateTimetoDB1(dtday3);
+                String re3 = ic.ivfDB.opuEmDevDB.updateDevDate(txtID.Text, "3", dateday3);
+            }
+            //setOPUEmbryoFreezDay1();
+            //String re = ic.ivfDB.opuDB.updateEmbryoFreezDay1(opu, ic.user.staff_id);
+            String re = "";
+            int i = 1;
+            foreach (Row row in grfDay3.Rows)
+            {
+                if (row[colDay3Edit] == null) continue;
+                if (row[colDay3Edit].ToString().Equals("1"))
+                {
+                    if (row[colDay3Desc] == null) continue;
+
+                    LabOpuEmbryoDev opuEmDev = new LabOpuEmbryoDev();
+                    opuEmDev.opu_embryo_dev_id = row[colDay3ID] != null ? row[colDay3ID].ToString() : "";
+                    opuEmDev.opu_fet_id = txtID.Text;
+                    opuEmDev.day = "3";
+                    opuEmDev.opu_embryo_dev_no = row[colDay3Num] != null ? row[colDay3Num].ToString() : i.ToString();
+                    opuEmDev.desc0 = row[colDay3Desc].ToString();
+                    opuEmDev.active = "1";
+                    opuEmDev.remark = "";
+                    opuEmDev.path_pic = "";
+                    opuEmDev.date_create = "";
+                    opuEmDev.date_modi = "";
+                    opuEmDev.date_cancel = "";
+                    opuEmDev.user_create = "";
+                    opuEmDev.user_modi = "";
+                    opuEmDev.user_cancel = "";
+                    opuEmDev.desc1 = row[colDay3Desc1] != null ? row[colDay3Desc1].ToString() : "";
+                    opuEmDev.desc2 = row[colDay3Desc2] != null ? row[colDay3Desc2].ToString() : "";
+                    opuEmDev.desc3 = "";
+
+                    //opuEmDev.staff_id = cboEmbryologistDay3.SelectedItem == null ? "" : ((ComboBoxItem)cboEmbryologistDay3.SelectedItem).Value;
+                    //opuEmDev.checked_id = cboCheckedDay3.SelectedItem == null ? "" : ((ComboBoxItem)cboCheckedDay3.SelectedItem).Value;
+                    //opuEmDev.embryo_dev_date = ic.dateTimetoDB(txtDay3Date.Text);
+                    opuEmDev.staff_id = "";
+                    opuEmDev.checked_id = "";
+                    opuEmDev.embryo_dev_date = "";
+                    re = ic.ivfDB.opuEmDevDB.insertLabOpuEmbryoDev(opuEmDev, ic.cStf.staff_id);
+                    long chk = 0;
+                    if (long.TryParse(re, out chk))
+                    {
+                        row[colDay3Edit] = "0";
+                        //MessageBox.Show("Error", "");
+                        chkSave = true;
+                    }
+                    else
+                    {
+                        chkSave = false;
+                    }
+                }
+                i++;
+            }
+            return chkSave;
+        }
         private void BtnSaveDay3_Click(object sender, EventArgs e)
         {
             //throw new NotImplementedException();
@@ -1683,69 +1761,7 @@ namespace clinic_ivf.gui
             frm.ShowDialog(this);
             if (!ic.cStf.staff_id.Equals(""))
             {
-                String staff_id = "", check_id = "", dateday3 = "";
-                staff_id = cboEmbryologistDay3.SelectedItem == null ? "" : ((ComboBoxItem)cboEmbryologistDay3.SelectedItem).Value;
-                String re1 = ic.ivfDB.opuEmDevDB.updateStff(txtID.Text, "3", staff_id);
-                
-                check_id = cboCheckedDay3.SelectedItem == null ? "" : ((ComboBoxItem)cboCheckedDay3.SelectedItem).Value;
-                String re2 = ic.ivfDB.opuEmDevDB.updateChecked(txtID.Text, "3", check_id);
-                DateTime dtday3 = new DateTime();
-                if (DateTime.TryParse(txtDay3Date.Text, out dtday3))
-                {
-                    dateday3 = ic.dateTimetoDB1(dtday3);
-                    String re3 = ic.ivfDB.opuEmDevDB.updateDevDate(txtID.Text, "3", dateday3);
-                }
-                //setOPUEmbryoFreezDay1();
-                //String re = ic.ivfDB.opuDB.updateEmbryoFreezDay1(opu, ic.user.staff_id);
-                String re = "";
-                int i = 1;
-                foreach (Row row in grfDay3.Rows)
-                {
-                    if (row[colDay3Edit] == null) continue;
-                    if (row[colDay3Edit].ToString().Equals("1"))
-                    {
-                        if (row[colDay3Desc] == null) continue;
-
-                        LabOpuEmbryoDev opuEmDev = new LabOpuEmbryoDev();
-                        opuEmDev.opu_embryo_dev_id = row[colDay3ID] != null ? row[colDay3ID].ToString() : "";
-                        opuEmDev.opu_fet_id = txtID.Text;
-                        opuEmDev.day = "3";
-                        opuEmDev.opu_embryo_dev_no = row[colDay3Num] != null ? row[colDay3Num].ToString() : i.ToString();
-                        opuEmDev.desc0 = row[colDay3Desc].ToString();
-                        opuEmDev.active = "1";
-                        opuEmDev.remark = "";
-                        opuEmDev.path_pic = "";
-                        opuEmDev.date_create = "";
-                        opuEmDev.date_modi = "";
-                        opuEmDev.date_cancel = "";
-                        opuEmDev.user_create = "";
-                        opuEmDev.user_modi = "";
-                        opuEmDev.user_cancel = "";
-                        opuEmDev.desc1 = row[colDay3Desc1] != null ? row[colDay3Desc1].ToString() : "";
-                        opuEmDev.desc2 = row[colDay3Desc2] != null ? row[colDay3Desc2].ToString() : "";
-                        opuEmDev.desc3 = "";
-
-                        //opuEmDev.staff_id = cboEmbryologistDay3.SelectedItem == null ? "" : ((ComboBoxItem)cboEmbryologistDay3.SelectedItem).Value;
-                        //opuEmDev.checked_id = cboCheckedDay3.SelectedItem == null ? "" : ((ComboBoxItem)cboCheckedDay3.SelectedItem).Value;
-                        //opuEmDev.embryo_dev_date = ic.dateTimetoDB(txtDay3Date.Text);
-                        opuEmDev.staff_id = "";
-                        opuEmDev.checked_id = "";
-                        opuEmDev.embryo_dev_date = "";
-                        re = ic.ivfDB.opuEmDevDB.insertLabOpuEmbryoDev(opuEmDev, ic.cStf.staff_id);
-                        long chk = 0;
-                        if (long.TryParse(re, out chk))
-                        {
-                            row[colDay3Edit] = "0";
-                            //MessageBox.Show("Error", "");
-                            chkSave = true;
-                        }
-                        else
-                        {
-                            chkSave = false;
-                        }
-                    }
-                    i++;
-                }
+                chkSave = saveDay3();
                 long chk1 = 0;
                 if (chkSave)
                 {
@@ -1760,7 +1776,75 @@ namespace clinic_ivf.gui
             }
             //}
         }
+        private Boolean saveDay2()
+        {
+            Boolean chkSave = false;
+            String staff_id = "", check_id = "", dateday2 = "";
+            staff_id = cboEmbryologistDay2.SelectedItem == null ? "" : ((ComboBoxItem)cboEmbryologistDay2.SelectedItem).Value;
+            String re1 = ic.ivfDB.opuEmDevDB.updateStff(txtID.Text, "2", staff_id);
 
+            check_id = cboCheckedDay2.SelectedItem == null ? "" : ((ComboBoxItem)cboCheckedDay2.SelectedItem).Value;
+            String re2 = ic.ivfDB.opuEmDevDB.updateChecked(txtID.Text, "2", check_id);
+
+            DateTime dtday2 = new DateTime();
+            if (DateTime.TryParse(txtDay2Date.Text, out dtday2))
+            {
+                dateday2 = ic.dateTimetoDB1(dtday2);
+                String re3 = ic.ivfDB.opuEmDevDB.updateDevDate(txtID.Text, "2", dateday2);
+            }
+            //setOPUEmbryoFreezDay1();
+            //String re = ic.ivfDB.opuDB.updateEmbryoFreezDay1(opu, ic.user.staff_id);
+            String re = "";
+            int i = 1;
+            foreach (Row row in grfDay2.Rows)
+            {
+                if (row[colDay2Edit] == null) continue;
+                if (row[colDay2Edit].ToString().Equals("1"))
+                {
+                    if (row[colDay2Desc] == null) continue;
+
+                    LabOpuEmbryoDev opuEmDev = new LabOpuEmbryoDev();
+                    opuEmDev.opu_embryo_dev_id = row[colDay2ID] != null ? row[colDay2ID].ToString() : "";
+                    opuEmDev.opu_fet_id = txtID.Text;
+                    opuEmDev.day = "2";
+                    opuEmDev.opu_embryo_dev_no = row[colDay2Num] != null ? row[colDay2Num].ToString() : i.ToString();
+                    opuEmDev.desc0 = row[colDay2Desc].ToString();
+                    opuEmDev.active = "1";
+                    opuEmDev.remark = "";
+                    opuEmDev.path_pic = "";
+                    opuEmDev.date_create = "";
+                    opuEmDev.date_modi = "";
+                    opuEmDev.date_cancel = "";
+                    opuEmDev.user_create = "";
+                    opuEmDev.user_modi = "";
+                    opuEmDev.user_cancel = "";
+                    opuEmDev.desc1 = row[colDay2Desc1] != null ? row[colDay2Desc1].ToString() : "";
+                    opuEmDev.desc2 = row[colDay2Desc2] != null ? row[colDay2Desc2].ToString() : "";
+                    opuEmDev.desc3 = "";
+
+                    //opuEmDev.staff_id = cboEmbryologistDay2.SelectedItem == null ? "" : ((ComboBoxItem)cboEmbryologistDay2.SelectedItem).Value;
+                    //opuEmDev.checked_id = cboCheckedDay2.SelectedItem == null ? "" : ((ComboBoxItem)cboCheckedDay2.SelectedItem).Value;
+                    //opuEmDev.embryo_dev_date = ic.dateTimetoDB(txtDay2Date.Text);
+                    opuEmDev.staff_id = "";
+                    opuEmDev.checked_id = "";
+                    opuEmDev.embryo_dev_date = "";
+                    re = ic.ivfDB.opuEmDevDB.insertLabOpuEmbryoDev(opuEmDev, ic.cStf.staff_id);
+                    long chk = 0;
+                    if (long.TryParse(re, out chk))
+                    {
+                        row[colDay2Edit] = "0";
+                        chkSave = true;
+                        //MessageBox.Show("Error", "");
+                    }
+                    else
+                    {
+                        chkSave = false;
+                    }
+                }
+                i++;
+            }
+            return chkSave;
+        }
         private void BtnSaveDay2_Click(object sender, EventArgs e)
         {
             //throw new NotImplementedException();
@@ -1772,70 +1856,7 @@ namespace clinic_ivf.gui
             frm.ShowDialog(this);
             if (!ic.cStf.staff_id.Equals(""))
             {
-                String staff_id = "", check_id = "", dateday2 = "";
-                staff_id = cboEmbryologistDay2.SelectedItem == null ? "" : ((ComboBoxItem)cboEmbryologistDay2.SelectedItem).Value;
-                String re1 = ic.ivfDB.opuEmDevDB.updateStff(txtID.Text, "2", staff_id);
-                
-                check_id = cboCheckedDay2.SelectedItem == null ? "" : ((ComboBoxItem)cboCheckedDay2.SelectedItem).Value;
-                String re2 = ic.ivfDB.opuEmDevDB.updateChecked(txtID.Text, "2", check_id);
-                
-                DateTime dtday2 = new DateTime();
-                if (DateTime.TryParse(txtDay2Date.Text, out dtday2))
-                {
-                    dateday2 = ic.dateTimetoDB1(dtday2);
-                    String re3 = ic.ivfDB.opuEmDevDB.updateDevDate(txtID.Text, "2", dateday2);
-                }
-                //setOPUEmbryoFreezDay1();
-                //String re = ic.ivfDB.opuDB.updateEmbryoFreezDay1(opu, ic.user.staff_id);
-                String re = "";
-                int i = 1;
-                foreach (Row row in grfDay2.Rows)
-                {
-                    if (row[colDay2Edit] == null) continue;
-                    if (row[colDay2Edit].ToString().Equals("1"))
-                    {
-                        if (row[colDay2Desc] == null) continue;
-
-                        LabOpuEmbryoDev opuEmDev = new LabOpuEmbryoDev();
-                        opuEmDev.opu_embryo_dev_id = row[colDay2ID] != null ? row[colDay2ID].ToString() : "";
-                        opuEmDev.opu_fet_id = txtID.Text;
-                        opuEmDev.day = "2";
-                        opuEmDev.opu_embryo_dev_no = row[colDay2Num] != null ? row[colDay2Num].ToString() : i.ToString();
-                        opuEmDev.desc0 = row[colDay2Desc].ToString();
-                        opuEmDev.active = "1";
-                        opuEmDev.remark = "";
-                        opuEmDev.path_pic = "";
-                        opuEmDev.date_create = "";
-                        opuEmDev.date_modi = "";
-                        opuEmDev.date_cancel = "";
-                        opuEmDev.user_create = "";
-                        opuEmDev.user_modi = "";
-                        opuEmDev.user_cancel = "";
-                        opuEmDev.desc1 = row[colDay2Desc1] != null ? row[colDay2Desc1].ToString() : "";
-                        opuEmDev.desc2 = row[colDay2Desc2] != null ? row[colDay2Desc2].ToString() : "";
-                        opuEmDev.desc3 = "";
-                        
-                        //opuEmDev.staff_id = cboEmbryologistDay2.SelectedItem == null ? "" : ((ComboBoxItem)cboEmbryologistDay2.SelectedItem).Value;
-                        //opuEmDev.checked_id = cboCheckedDay2.SelectedItem == null ? "" : ((ComboBoxItem)cboCheckedDay2.SelectedItem).Value;
-                        //opuEmDev.embryo_dev_date = ic.dateTimetoDB(txtDay2Date.Text);
-                        opuEmDev.staff_id = "";
-                        opuEmDev.checked_id = "";
-                        opuEmDev.embryo_dev_date = "";
-                        re = ic.ivfDB.opuEmDevDB.insertLabOpuEmbryoDev(opuEmDev, ic.cStf.staff_id);
-                        long chk = 0;
-                        if (long.TryParse(re, out chk))
-                        {
-                            row[colDay2Edit] = "0";
-                            chkSave = true;
-                            //MessageBox.Show("Error", "");
-                        }
-                        else
-                        {
-                            chkSave = false;
-                        }
-                    }
-                    i++;
-                }
+                chkSave = saveDay2();
 
                 long chk1 = 0;
                 if (chkSave)
@@ -2078,6 +2099,7 @@ namespace clinic_ivf.gui
                 {
                     opu = ic.ivfDB.opuDB.selectByPk1(opuId);
                     lbReq = ic.ivfDB.lbReqDB.selectByPk1(opu.req_id);
+                    setControl1();
                     DataTable dt = new DataTable();
                     dt = ic.ivfDB.opuEmDevDB.selectByOpuFetId_Day(txtID.Text, objdb.LabOpuEmbryoDevDB.Day1.Day2);
                     if (dt.Rows.Count > 0)
@@ -2088,7 +2110,7 @@ namespace clinic_ivf.gui
                     {
                         setControlFirstTime(false);
                     }
-                    setControl1();
+                    
                 }
                 else
                 {
@@ -2428,19 +2450,50 @@ namespace clinic_ivf.gui
             frm.ShowDialog(this);
             if (!ic.cStf.staff_id.Equals(""))
             {
-                setOPU();
-                String re = ic.ivfDB.opuDB.update(opu, ic.user.staff_id);
-                long chk1 = 0;
-                if (long.TryParse(re, out chk1))
-                {
-                    btnSave.Image = Resources.accept_database24;
-                }
-                else
-                {
-                    btnSave.Image = Resources.accept_database24;
-                }
+                //setOPU();
+                //String re = ic.ivfDB.opuDB.update(opu, ic.user.staff_id);
+                //long chk1 = 0;
+                //if (long.TryParse(re, out chk1))
+                //{
+                //    btnSave.Image = Resources.accept_database24;
+                //}
+                //else
+                //{
+                //    btnSave.Image = Resources.accept_database24;
+                //}
             }
             //}
+        }
+        private void saveLabOPU()
+        {
+            setOPU();
+            String re = ic.ivfDB.opuDB.update(opu, ic.user.staff_id);
+            long chk1 = 0;
+            if (long.TryParse(re, out chk1))
+            {
+                setOPUEmbryeEt();
+                String re1 = ic.ivfDB.opuDB.updateEmbryoEt(opu, ic.user.staff_id);
+                setOPUMatura();
+                String re2 = ic.ivfDB.opuDB.updateMatura(opu, ic.user.staff_id);
+                setOPUFertilization();
+                String re3 = ic.ivfDB.opuDB.updateFertili(opu, ic.user.staff_id);
+                setOPUEmbryoFreezDay0();
+                String r4 = ic.ivfDB.opuDB.updateEmbryoFreezDay0(opu, ic.user.staff_id);
+                setOPUEmbryoFreezDay1();
+                String r5 = ic.ivfDB.opuDB.updateEmbryoFreezDay1(opu, ic.user.staff_id);
+                setOPUSperm();
+                String re6 = ic.ivfDB.opuDB.updateSperm(opu, ic.user.staff_id);
+
+                saveDay2();
+                saveDay3();
+                saveDay5();
+                saveDay6();
+                btnSave.Image = Resources.accept_database24;
+            }
+            else
+            {
+                btnSave.Image = Resources.accept_database24;
+            }
         }
         private void setGrfDay2Img()
         {
