@@ -66,6 +66,16 @@ namespace clinic_ivf.gui
             tC1.SelectedTab = tabCurrent;
             btnSearch.Click += BtnSearch_Click;
             txtHnMale.KeyUp += TxtHnMale_KeyUp;
+            tC1.Click += TC1_Click;
+        }
+
+        private void TC1_Click(object sender, EventArgs e)
+        {
+            //throw new NotImplementedException();
+            if(tC1.SelectedTab == tabSearch)
+            {
+                txtHnMale.Focus();
+            }
         }
 
         private void TxtHnMale_KeyUp(object sender, KeyEventArgs e)

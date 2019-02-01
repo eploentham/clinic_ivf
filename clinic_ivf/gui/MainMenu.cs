@@ -74,6 +74,14 @@ namespace clinic_ivf.gui
             menuNurseDefault.Click += MenuNurseDefault_Click;
             menuExamiRoom.Click += MenuExamiRoom_Click;
             menuDrugPatient.Click += MenuDrugPatient_Click;
+            menuReqLabFormA.Click += MenuReqLabFormA_Click;
+        }
+
+        private void MenuReqLabFormA_Click(object sender, EventArgs e)
+        {
+            //throw new NotImplementedException();
+            FrmLabFormA frm = new FrmLabFormA(ic,"","","","");
+            frm.ShowDialog(this);
         }
 
         private void MenuDrugPatient_Click(object sender, EventArgs e)

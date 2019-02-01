@@ -59,6 +59,7 @@ namespace clinic_ivf.gui
             btnMaleSearch.Click += BtnMaleSearch_Click;
             btnPrint.Click += BtnPrint_Click;
             btmDonorSearch.Click += BtmDonorSearch_Click;
+            btnFemaleSearch.Click += BtnFemaleSearch_Click;
 
             ChkEmbryoTranfer_CheckStateChanged(null, null);
             ChkNgs_CheckedChanged(null, null);
@@ -66,8 +67,7 @@ namespace clinic_ivf.gui
             ChkFET_CheckedChanged(null, null);
             ChkSpermAnalysis_CheckStateChanged(null, null);
             ChkSpermFreezing_CheckStateChanged(null, null);
-            statusOPU = ic.ivfDB.oJsDB.chkByOPU(vsidOld);
-            statusFET = ic.ivfDB.oJsDB.chkByFET(vsidOld);
+            
             chkOPUActive.CheckedChanged += ChkOPUActive_CheckedChanged;
             chkOPUUnActive.CheckedChanged += ChkOPUUnActive_CheckedChanged;
             chkOPUActiveWait.CheckedChanged += ChkOPUActiveWait_CheckedChanged;
@@ -80,6 +80,11 @@ namespace clinic_ivf.gui
             chkOpuTimeModi.CheckedChanged += ChkOpuTimeModi_CheckedChanged;
             chkOpuTimeModi.Checked = false;
             ChkOpuTimeModi_CheckedChanged(null, null);
+
+            //statusOPU = ic.ivfDB.oJsDB.chkByOPU(vsidOld);
+            //statusFET = ic.ivfDB.oJsDB.chkByFET(vsidOld);
+            statusOPU = "-";
+            statusFET = "-";
             if (statusOPU.Equals(""))
             {
                 gbOPU.Enabled = false;
@@ -91,6 +96,18 @@ namespace clinic_ivf.gui
             //lbMessage.Hide();
             lbMessage1.Text = "";
             sB1.Text = "";
+        }
+
+        private void BtnFemaleSearch_Click(object sender, EventArgs e)
+        {
+            //throw new NotImplementedException();
+            ic.sVsOld.PIDS = "";
+            ic.sVsOld.PName = "";
+            FrmSearchHn frm = new FrmSearchHn(ic, FrmSearchHn.StatusConnection.host, FrmSearchHn.StatusSearch.PttSearch, FrmSearchHn.StatusSearchTable.PttSearch);
+            frm.ShowDialog(this);
+            txtHnFeMale.Value = ic.sVsOld.PIDS;
+            txtNameFeMale.Value = ic.sVsOld.PName;
+            txtDobFeMale.Value = ic.sVsOld.dob;
         }
 
         private void ChkOpuTimeModi_CheckedChanged(object sender, EventArgs e)
@@ -231,7 +248,9 @@ namespace clinic_ivf.gui
         private void BtnMaleSearch_Click(object sender, EventArgs e)
         {
             //throw new NotImplementedException();
-            FrmSearchHn frm = new FrmSearchHn(ic, FrmSearchHn.StatusConnection.host, FrmSearchHn.StatusSearch.PttSearch, FrmSearchHn.StatusSearchTable.VisitSearch);
+            ic.sVsOld.PIDS = "";
+            ic.sVsOld.PName = "";
+            FrmSearchHn frm = new FrmSearchHn(ic, FrmSearchHn.StatusConnection.host, FrmSearchHn.StatusSearch.PttSearch, FrmSearchHn.StatusSearchTable.PttSearch);
             frm.ShowDialog(this);
             txtHnMale.Value = ic.sVsOld.PIDS;
             txtNameMale.Value = ic.sVsOld.PName;
