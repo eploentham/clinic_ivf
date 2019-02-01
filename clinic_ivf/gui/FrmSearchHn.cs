@@ -118,20 +118,41 @@ namespace clinic_ivf.gui
             //throw new NotImplementedException();
             if (e.NewRange.r1 < 0) return;
             if (e.NewRange.Data == null) return;
-            String vn = "";
-            vn = grfHn[e.NewRange.r1, colCuVn1] != null ? grfHn[e.NewRange.r1, colCuVn1].ToString() : "";
-            if (!vn.Equals(""))
-            {
-                ic.sVsOld = new VisitOld();
-                ic.sVsOld.PName = grfHn[grfHn.Row, colCuName] != null ? grfHn[grfHn.Row, colCuName].ToString() : "";
-                ic.sVsOld.VN = grfHn[grfHn.Row, colCuVn1] != null ? grfHn[grfHn.Row, colCuVn1].ToString() : "";
-                ic.sVsOld.PIDS = grfHn[grfHn.Row, colCuHn] != null ? grfHn[grfHn.Row, colCuHn].ToString() : "";
-                ic.sVsOld.dob = grfHn[grfHn.Row, colDOb] != null ? grfHn[grfHn.Row, colDOb].ToString() : "";
+            String vn = "", hn="";
 
-                txtHn.Value = ic.sVsOld.PIDS;
-                txtName.Value = ic.sVsOld.PName;
-                txtVn.Value = ic.sVsOld.VN;
-                txtDOB.Value = ic.sVsOld.dob;
+            if (statussearchtable == StatusSearchTable.VisitSearch)
+            {
+                vn = grfHn[e.NewRange.r1, colCuVn1] != null ? grfHn[e.NewRange.r1, colCuVn1].ToString() : "";
+                if (!vn.Equals(""))
+                {
+                    ic.sVsOld = new VisitOld();
+                    ic.sVsOld.PName = grfHn[grfHn.Row, colCuName] != null ? grfHn[grfHn.Row, colCuName].ToString() : "";
+                    ic.sVsOld.VN = grfHn[grfHn.Row, colCuVn1] != null ? grfHn[grfHn.Row, colCuVn1].ToString() : "";
+                    ic.sVsOld.PIDS = grfHn[grfHn.Row, colCuHn] != null ? grfHn[grfHn.Row, colCuHn].ToString() : "";
+                    ic.sVsOld.dob = grfHn[grfHn.Row, colDOb] != null ? grfHn[grfHn.Row, colDOb].ToString() : "";
+
+                    txtHn.Value = ic.sVsOld.PIDS;
+                    txtName.Value = ic.sVsOld.PName;
+                    txtVn.Value = ic.sVsOld.VN;
+                    txtDOB.Value = ic.sVsOld.dob;
+                }
+            }
+            else if(statussearchtable == StatusSearchTable.PttSearch)
+            {
+                hn = grfHn[e.NewRange.r1, colCuHn] != null ? grfHn[e.NewRange.r1, colCuHn].ToString() : "";
+                if (!vn.Equals(""))
+                {
+                    ic.sVsOld = new VisitOld();
+                    ic.sVsOld.PName = grfHn[grfHn.Row, colCuName] != null ? grfHn[grfHn.Row, colCuName].ToString() : "";
+                    ic.sVsOld.VN = "";
+                    ic.sVsOld.PIDS = grfHn[grfHn.Row, colCuHn] != null ? grfHn[grfHn.Row, colCuHn].ToString() : "";
+                    ic.sVsOld.dob = grfHn[grfHn.Row, colDOb] != null ? grfHn[grfHn.Row, colDOb].ToString() : "";
+
+                    txtHn.Value = ic.sVsOld.PIDS;
+                    txtName.Value = ic.sVsOld.PName;
+                    txtVn.Value = ic.sVsOld.VN;
+                    txtDOB.Value = ic.sVsOld.dob;
+                }
             }
             //grfAddr.DataSource = xC.iniDB.addrDB.selectByTableId1(vn);
         }

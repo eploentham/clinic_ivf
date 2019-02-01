@@ -44,6 +44,7 @@ namespace clinic_ivf.gui
         Boolean flagDay2Img = false, flagDay3Img = false, flagDay5Img = false, flagDay6Img = false;
         private bool prefixSeen;
         String theme2 = "Office2007Blue";       //Office2016Black       BeigeOne
+        
 
         public FrmLabOPUAdd2(IvfControl ic, String reqid, String opuid)
         {
@@ -510,6 +511,10 @@ namespace clinic_ivf.gui
                     {
                         txtFertiliDate.Value = dt.AddDays(1);
                         txtSpermDate.Value = dt;
+                        txtDay2Date.Value = dt.AddDays(2);
+                        txtDay3Date.Value = dt.AddDays(3);
+                        txtDay5Date.Value = dt.AddDays(5);
+                        txtDay6Date.Value = dt.AddDays(6);
                     }
                     txtMaturaMii.Focus();
                 }
