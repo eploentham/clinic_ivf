@@ -23,7 +23,7 @@ namespace clinic_ivf.gui
         Font fEdit, fEditB;
         Color bg, fc;
         Font ff, ffB;
-        int colRqId = 1, colRqReqNum = 2, colRqHn = 3, colRqVn = 4, colRqName = 5, colRqLabName=6, colRqDate = 7, colRqRemark = 8, colOpuId=9, colDtrName=10, colOPUDate=11, colOPUTime=12, colOPUTimeModi=13;
+        int colRqId = 1, colRqReqNum = 2, colRqHn = 3, colRqVn = 4, colRqName = 5, colRqHnMale=6, colRqNameMale=7, colRqLabName=8, colRqDate =9, colRqRemark = 10, colOpuId=11, colDtrName=12, colOPUDate=13, colOPUTime=14, colOPUTimeModi=15;
         int colPcId = 1, colPcOpuNum = 2, colPcHn = 3, colPcPttName = 4, colPcDate = 5, colPcRemark = 6;
 
         C1FlexGrid grfReq, grfProc;
@@ -173,7 +173,7 @@ namespace clinic_ivf.gui
             dt = ic.ivfDB.oJsDB.selectByStatusUnAccept2(datestart1, dateend1);
             //grfExpn.Rows.Count = dt.Rows.Count + 1;
             grfReq.Rows.Count = 1;
-            grfReq.Cols.Count = 14;
+            grfReq.Cols.Count = 16;
             C1TextBox txt = new C1TextBox();
             //C1ComboBox cboproce = new C1ComboBox();
             //ic.ivfDB.itmDB.setCboItem(cboproce);
@@ -182,16 +182,18 @@ namespace clinic_ivf.gui
             grfReq.Cols[colRqVn].Editor = txt;
             grfReq.Cols[colRqName].Editor = txt;
 
-            grfReq.Cols[colRqHn].Width = 120;
+            grfReq.Cols[colRqHn].Width = 100;
             grfReq.Cols[colRqVn].Width = 120;
             grfReq.Cols[colRqName].Width = 280;
             grfReq.Cols[colRqDate].Width = 100;
             grfReq.Cols[colDtrName].Width = 200;
             grfReq.Cols[colRqRemark].Width = 200;
-            grfReq.Cols[colRqLabName].Width = 120;
+            grfReq.Cols[colRqLabName].Width = 80;
             grfReq.Cols[colOPUDate].Width = 100;
             grfReq.Cols[colOPUTime].Width = 60;
             grfReq.Cols[colOPUTimeModi].Width = 60;
+            grfReq.Cols[colRqHnMale].Width = 100;
+            grfReq.Cols[colRqNameMale].Width = 280;
             grfReq.ShowCursor = true;
             //grdFlex.Cols[colID].Caption = "no";
             //grfDept.Cols[colCode].Caption = "รหัส";
@@ -207,6 +209,8 @@ namespace clinic_ivf.gui
             grfReq.Cols[colOPUDate].Caption = "OPU Date";
             grfReq.Cols[colOPUTime].Caption = "OPU Time";
             grfReq.Cols[colOPUTimeModi].Caption = "opu time old";
+            grfReq.Cols[colRqHnMale].Caption = "HN male";
+            grfReq.Cols[colRqNameMale].Caption = "Name male";
 
             Color color = ColorTranslator.FromHtml(ic.iniC.grfRowColor);
             //CellRange rg1 = grfBank.GetCellRange(1, colE, grfBank.Rows.Count, colE);
@@ -222,12 +226,14 @@ namespace clinic_ivf.gui
                 row1[colRqHn] = row[ic.ivfDB.lbReqDB.lbReq.hn_female].ToString();
                 row1[colRqVn] = row[ic.ivfDB.lbReqDB.lbReq.vn].ToString();
                 row1[colRqName] = row[ic.ivfDB.lbReqDB.lbReq.name_female].ToString();
-                row1[colRqDate] = row[ic.ivfDB.lbReqDB.lbReq.req_date].ToString();
+                row1[colRqDate] = ic.datetoShow(row[ic.ivfDB.lbReqDB.lbReq.req_date].ToString());
                 row1[colRqRemark] = row["form_a_remark"].ToString();
                 row1[colOPUDate] = ic.datetoShow(row[ic.ivfDB.lFormaDB.lformA.opu_date].ToString());
                 row1[colOPUTime] = row[ic.ivfDB.lFormaDB.lformA.opu_time].ToString();
                 row1[colOPUTimeModi] = row[ic.ivfDB.lFormaDB.lformA.opu_time_modi].ToString();
                 row1[colRqLabName] = row["SName"].ToString();
+                row1[colRqHnMale] = row["hn_male"].ToString();
+                row1[colRqNameMale] = row["name_male"].ToString();
                 if (row["SName"].ToString().Trim().Equals("OPU"))
                 {
                     row1[colRqRemark] = row["opu_remark"].ToString()+" "+row["form_a_remark"].ToString();
@@ -300,6 +306,7 @@ namespace clinic_ivf.gui
                 i++;
             }
             grfReq.Cols[colRqId].Visible = false;
+            grfReq.Cols[colRqVn].Visible = false;
             CellNoteManager mgr = new CellNoteManager(grfReq);
             //grfReq.Cols[coldt].Visible = false;
         }
