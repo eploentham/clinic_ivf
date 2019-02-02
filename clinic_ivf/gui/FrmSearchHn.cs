@@ -54,6 +54,8 @@ namespace clinic_ivf.gui
             bg = txtHnMale.BackColor;
             fc = txtHnMale.ForeColor;
             ff = txtHnMale.Font;
+            txtHn.Value = "-";
+            txtName.Value = "-";
 
             stt = new C1SuperTooltip();
             sep = new C1SuperErrorProvider();
@@ -74,6 +76,8 @@ namespace clinic_ivf.gui
             //throw new NotImplementedException();
             if(tC1.SelectedTab == tabSearch)
             {
+                txtHn.Value = "-";
+                txtName.Value = "-";
                 txtHnMale.Focus();
             }
         }
@@ -150,7 +154,7 @@ namespace clinic_ivf.gui
             else if(statussearchtable == StatusSearchTable.PttSearch)
             {
                 hn = grfHn[e.NewRange.r1, colCuHn] != null ? grfHn[e.NewRange.r1, colCuHn].ToString() : "";
-                if (!vn.Equals(""))
+                if (!hn.Equals(""))
                 {
                     ic.sVsOld = new VisitOld();
                     ic.sVsOld.PName = grfHn[grfHn.Row, colCuName] != null ? grfHn[grfHn.Row, colCuName].ToString() : "";
@@ -283,9 +287,10 @@ namespace clinic_ivf.gui
             //throw new NotImplementedException();
             if (e.NewRange.r1 < 0) return;
             if (e.NewRange.Data == null) return;
-            String vn = "";
+            String vn = "", hn="";
             vn = grfCu[e.NewRange.r1, colCuVn1] != null ? grfCu[e.NewRange.r1, colCuVn1].ToString() : "";
-            if (!vn.Equals(""))
+            hn = grfCu[e.NewRange.r1, colCuHn] != null ? grfCu[e.NewRange.r1, colCuHn].ToString() : "";
+            if (!hn.Equals(""))
             {
                 ic.sVsOld = new VisitOld();
                 ic.sVsOld.PName = grfCu[grfCu.Row, colCuName]!= null ? grfCu[grfCu.Row, colCuName].ToString() : "";

@@ -349,8 +349,8 @@ namespace clinic_ivf.gui
         {
             String date = "";
             date = DateTime.Now.Year+"-"+ DateTime.Now.ToString("MM-dd");
-            this.Text = ic.iniC.statusAppDonor.Equals("1") ? "โปรแกรมClinic IVF Donor " +"สวัสดี คุณ "+ic.user.staff_fname_t +" "+ic.user.staff_lname_t+" Update 2019-01-31 "
-                : "โปรแกรมClinic IVF " + "สวัสดี คุณ " + ic.user.staff_fname_t + " " + ic.user.staff_lname_t + " Update 2019-01-31 format date "+ date;
+            this.Text = ic.iniC.statusAppDonor.Equals("1") ? "โปรแกรมClinic IVF Donor " +"สวัสดี คุณ "+ic.user.staff_fname_t +" "+ic.user.staff_lname_t+" Update 2019-02-01 "
+                : "โปรแกรมClinic IVF " + "สวัสดี คุณ " + ic.user.staff_fname_t + " " + ic.user.staff_lname_t + " Update 2019-02-01 format date "+ date;
             //theme1.SetTheme(this, ic.theme);
             theme1.SetTheme(this, ic.theme);
             theme1.SetTheme(menuStrip1, ic.theme);
@@ -360,49 +360,57 @@ namespace clinic_ivf.gui
             menuLab.Visible = false;
             menuPharmacy.Visible = false;
             menuInit.Visible = false;
-            if (ic.user.status_module_reception.Equals("1"))
+            try
             {
-                //theme1.SetTheme(panel1, "BeigeOne");menuStrip1
-                foreach (Control c in menuStrip1.Controls)
+                if (ic.user.status_module_reception.Equals("1"))
                 {
-                    theme1.SetTheme(c, ic.theme);
+                    //theme1.SetTheme(panel1, "BeigeOne");menuStrip1
+                    foreach (Control c in menuStrip1.Controls)
+                    {
+                        theme1.SetTheme(c, ic.theme);
+                    }
+                    menuRecept.Visible = true;
+                    if (ic.iniC.statusAppDonor.Equals("1"))
+                        menuRecept.Text = "Reception Donor";
                 }
-                menuRecept.Visible = true;
-                if(ic.iniC.statusAppDonor.Equals("1"))
-                    menuRecept.Text = "Reception Donor";
+                if (ic.user.status_module_nurse.Equals("1"))
+                {
+                    foreach (Control c in menuStrip1.Controls)
+                    {
+                        theme1.SetTheme(c, ic.theme);
+                    }
+                    menuNurse.Visible = true;
+                }
+                if (ic.user.status_module_pharmacy.Equals("1"))
+                {
+                    foreach (Control c in menuStrip1.Controls)
+                    {
+                        theme1.SetTheme(c, ic.theme);
+                    }
+                    menuPharmacy.Visible = true;
+                }
+                if (ic.user.status_module_lab.Equals("1"))
+                {
+                    foreach (Control c in menuStrip1.Controls)
+                    {
+                        theme1.SetTheme(c, ic.theme);
+                    }
+                    menuLab.Visible = true;
+                }
+                if (ic.user.status_admin.Equals("1"))
+                {
+                    foreach (Control c in menuStrip1.Controls)
+                    {
+                        theme1.SetTheme(c, ic.theme);
+                    }
+                    menuInit.Visible = true;
+                }
             }
-            if (ic.user.status_module_nurse.Equals("1"))
+            catch(Exception ex)
             {
-                foreach (Control c in menuStrip1.Controls)
-                {
-                    theme1.SetTheme(c, ic.theme);
-                }
-                menuNurse.Visible = true;
+                MessageBox.Show(""+ex.Message, "");
             }
-            if (ic.user.status_module_pharmacy.Equals("1"))
-            {
-                foreach (Control c in menuStrip1.Controls)
-                {
-                    theme1.SetTheme(c, ic.theme);
-                }
-                menuPharmacy.Visible = true;
-            }
-            if (ic.user.status_module_lab.Equals("1"))
-            {
-                foreach (Control c in menuStrip1.Controls)
-                {
-                    theme1.SetTheme(c, ic.theme);
-                }
-                menuLab.Visible = true;
-            }
-            if (ic.user.status_admin.Equals("1"))
-            {
-                foreach (Control c in menuStrip1.Controls)
-                {
-                    theme1.SetTheme(c, ic.theme);
-                }
-                menuInit.Visible = true;
-            }
+            
             //else
             //{
 

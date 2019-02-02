@@ -234,7 +234,7 @@ namespace clinic_ivf.gui
             date1 = ic.datetoShow(dt.Rows[0][ic.ivfDB.opuDB.opu.dob_male].ToString());
             dt.Rows[0][ic.ivfDB.opuDB.opu.dob_male] = date1.Replace("-", "/");
             date1 = ic.datetoShow(dt.Rows[0][ic.ivfDB.opuDB.opu.matura_date].ToString());
-            dt.Rows[0][ic.ivfDB.opuDB.opu.matura_date] = date1.Replace("-", "/");
+            dt.Rows[0][ic.ivfDB.opuDB.opu.matura_date] = date1.Replace("-", "/").Replace("2001", "99999");
             date1 = ic.datetoShow(dt.Rows[0][ic.ivfDB.opuDB.opu.fertili_date].ToString());
             dt.Rows[0][ic.ivfDB.opuDB.opu.fertili_date] = date1.Replace("-", "/");
             date1 = ic.datetoShow(dt.Rows[0][ic.ivfDB.opuDB.opu.embryo_for_et_date].ToString());
@@ -256,28 +256,6 @@ namespace clinic_ivf.gui
             date1 = ic.datetoShow(dt.Rows[0][ic.ivfDB.opuDB.opu.sperm_date].ToString());
             dt.Rows[0][ic.ivfDB.opuDB.opu.sperm_date] = date1.Replace("-", "/");
 
-            if (chkEmbryoFreez2Col.Checked)
-            {
-                if (chkEmbryoDev20.Checked)
-                {
-                    frm.setOPUReport(dt, FrmReport.flagEmbryoDev.twocolumn, FrmReport.flagEmbryoDevMore20.More20);
-                }
-                else
-                {
-                    frm.setOPUReport(dt, FrmReport.flagEmbryoDev.twocolumn, FrmReport.flagEmbryoDevMore20.Days2);
-                }
-            }
-            else
-            {
-                if (chkEmbryoDev20.Checked)
-                {
-                    frm.setOPUReport(dt, FrmReport.flagEmbryoDev.onecolumn, FrmReport.flagEmbryoDevMore20.More20);
-                }
-                else
-                {
-                    frm.setOPUReport(dt, FrmReport.flagEmbryoDev.onecolumn, FrmReport.flagEmbryoDevMore20.Days2);
-                }
-            }
             dt.Rows[0][ic.ivfDB.opuDB.opu.matura_m_ii] = dt.Rows[0][ic.ivfDB.opuDB.opu.matura_m_ii].ToString().Equals("") ? "-" : dt.Rows[0][ic.ivfDB.opuDB.opu.matura_m_ii].ToString();
             dt.Rows[0][ic.ivfDB.opuDB.opu.matura_m_i] = dt.Rows[0][ic.ivfDB.opuDB.opu.matura_m_i].ToString().Equals("") ? "-" : dt.Rows[0][ic.ivfDB.opuDB.opu.matura_m_i].ToString();
             dt.Rows[0][ic.ivfDB.opuDB.opu.matura_gv] = dt.Rows[0][ic.ivfDB.opuDB.opu.matura_gv].ToString().Equals("") ? "-" : dt.Rows[0][ic.ivfDB.opuDB.opu.matura_gv].ToString();
@@ -301,8 +279,31 @@ namespace clinic_ivf.gui
             dt.Rows[0][ic.ivfDB.opuDB.opu.embryo_for_et_number_of_discard] = dt.Rows[0][ic.ivfDB.opuDB.opu.embryo_for_et_number_of_discard].ToString().Equals("") ? "-" : dt.Rows[0][ic.ivfDB.opuDB.opu.embryo_for_et_number_of_discard].ToString();
             dt.Rows[0][ic.ivfDB.opuDB.opu.embryo_for_et_number_of_freeze] = dt.Rows[0][ic.ivfDB.opuDB.opu.embryo_for_et_number_of_freeze].ToString().Equals("") ? "-" : dt.Rows[0][ic.ivfDB.opuDB.opu.embryo_for_et_number_of_freeze].ToString();
             dt.Rows[0][ic.ivfDB.opuDB.opu.embryo_for_et_number_of_discard] = dt.Rows[0][ic.ivfDB.opuDB.opu.embryo_for_et_number_of_discard].ToString().Equals("") ? "-" : dt.Rows[0][ic.ivfDB.opuDB.opu.embryo_for_et_number_of_discard].ToString();
-            dt.Rows[0]["matura_m_ii"] = "-";
-            dt.Rows[0]["embryo_dev_1_staff_name"] = "Eklapop";
+
+            if (chkEmbryoFreez2Col.Checked)
+            {
+                if (chkEmbryoDev20.Checked)
+                {
+                    frm.setOPUReport(dt, FrmReport.flagEmbryoDev.twocolumn, FrmReport.flagEmbryoDevMore20.More20);
+                }
+                else
+                {
+                    frm.setOPUReport(dt, FrmReport.flagEmbryoDev.twocolumn, FrmReport.flagEmbryoDevMore20.Days2);
+                }
+            }
+            else
+            {
+                if (chkEmbryoDev20.Checked)
+                {
+                    frm.setOPUReport(dt, FrmReport.flagEmbryoDev.onecolumn, FrmReport.flagEmbryoDevMore20.More20);
+                }
+                else
+                {
+                    frm.setOPUReport(dt, FrmReport.flagEmbryoDev.onecolumn, FrmReport.flagEmbryoDevMore20.Days2);
+                }
+            }
+            
+            
             //dt.AcceptChanges();
             frm.ShowDialog(this);
         }
@@ -351,18 +352,20 @@ namespace clinic_ivf.gui
                             var name = Path.GetFileNameWithoutExtension(path_pic); // Get the name only
                             //if (ext.Length > 0)
                             //{
-                                String filename = name;
-                                String no = "", filename1 = "";
-                                no = filename.Substring(filename.Length - 2);
-                                no = no.Replace("_", "");
-                                filename1 = "embryo_dev_" + no + extension;
-                                if (File.Exists(filename1))
-                                {
-                                    File.Delete(filename1);
-                                    System.Threading.Thread.Sleep(200);
-                                }
-                                loadedImage.Save(filename1);
-                                row["no1_pathpic"] = System.IO.Directory.GetCurrentDirectory() + "\\" + filename1;
+                            String filename = name;
+                            String no = "", filename1 = "",st="";
+                            no = filename.Substring(filename.Length - 2);
+                            no = no.Replace("_", "");
+                            filename1 = "embryo_dev_" + no + extension;
+                            if (File.Exists(filename1))
+                            {
+                                File.Delete(filename1);
+                                System.Threading.Thread.Sleep(200);
+                            }
+                            loadedImage.Save(filename1);
+                            row["no1_pathpic"] = System.IO.Directory.GetCurrentDirectory() + "\\" + filename1;
+                            st = row["no1_desc2"].ToString();
+                            row["no1_desc2"] = "st# " + st;
                             //}
                         }
                         i++;

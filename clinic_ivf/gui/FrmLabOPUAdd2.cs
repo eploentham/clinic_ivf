@@ -2473,26 +2473,46 @@ namespace clinic_ivf.gui
         {
             setOPU();
             String re = ic.ivfDB.opuDB.update(opu, ic.user.staff_id);
+            sB1.Text = "Save OPU";
+            Application.DoEvents();
             long chk1 = 0;
             if (long.TryParse(re, out chk1))
             {
                 setOPUEmbryeEt();
                 String re1 = ic.ivfDB.opuDB.updateEmbryoEt(opu, ic.user.staff_id);
+                sB1.Text = "Save ET";
+                Application.DoEvents();
                 setOPUMatura();
                 String re2 = ic.ivfDB.opuDB.updateMatura(opu, ic.user.staff_id);
+                sB1.Text = "Save Matura";
+                Application.DoEvents();
                 setOPUFertilization();
                 String re3 = ic.ivfDB.opuDB.updateFertili(opu, ic.user.staff_id);
+                sB1.Text = "Save Fertili";
+                Application.DoEvents();
                 setOPUEmbryoFreezDay0();
                 String r4 = ic.ivfDB.opuDB.updateEmbryoFreezDay0(opu, ic.user.staff_id);
+                sB1.Text = "Save Freez Day0";
+                Application.DoEvents();
                 setOPUEmbryoFreezDay1();
                 String r5 = ic.ivfDB.opuDB.updateEmbryoFreezDay1(opu, ic.user.staff_id);
+                sB1.Text = "Save Freez Day1";
+                Application.DoEvents();
                 setOPUSperm();
                 String re6 = ic.ivfDB.opuDB.updateSperm(opu, ic.user.staff_id);
-
+                sB1.Text = "Save Sperm";
+                Application.DoEvents();
                 saveDay2();
+                sB1.Text = "Save Da2";
+                Application.DoEvents();
                 saveDay3();
+                sB1.Text = "Save Day3";
+                Application.DoEvents();
                 saveDay5();
+                sB1.Text = "Save Day5";
+                Application.DoEvents();
                 saveDay6();
+                sB1.Text = "Save OPU success";
                 btnSave.Image = Resources.accept_database24;
             }
             else
