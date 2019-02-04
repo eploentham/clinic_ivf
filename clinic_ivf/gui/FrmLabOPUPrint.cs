@@ -315,6 +315,7 @@ namespace clinic_ivf.gui
             frmW.Show();
             try
             {
+                //MessageBox.Show("aaaaa", "");
                 int i = 0;
                 String day = "";
                 day = cboEmbryoDev1.SelectedItem == null ? "" : ((ComboBoxItem)cboEmbryoDev1.SelectedItem).Value;
@@ -376,7 +377,7 @@ namespace clinic_ivf.gui
                 date1 = ic.datetoShow(dt.Rows[0][ic.ivfDB.opuDB.opu.opu_date].ToString());
                 dt.Rows[0][ic.ivfDB.opuDB.opu.opu_date] = date1.Replace("-", "/");
                 frm.setOPUEmbryoDevReport(dt);
-
+                //MessageBox.Show("bbbbbb", "");
             }
             catch (Exception ex)
             {

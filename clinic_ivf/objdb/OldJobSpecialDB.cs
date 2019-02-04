@@ -83,7 +83,7 @@ namespace clinic_ivf.objdb
                 "Left Join Visit vsold on oJSd.VN = vsold.VN " +
                 "Left Join lab_t_form_a lforma on vsold.form_a_id = lforma.form_a_id " +
                 "Where oJS." + oJS.Status + " ='1' and oJSd.SID in (112,160) and oJS.status_req = '0' " +
-                "and lreq.req_date >= '" + startdate + "' and lreq.req_date <='" + enddate + "' " +
+                "and lreq.req_date >= '" + startdate + "' and lreq.req_date <='" + enddate + "' and lreq.status_req in ('0','1','2') " +
                 "Order By lforma.form_a_id ,oJSd.ID";
             dt = conn.selectData(conn.conn, sql);
             return dt;

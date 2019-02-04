@@ -80,8 +80,10 @@ namespace clinic_ivf.gui
         private void MenuReqLabFormA_Click(object sender, EventArgs e)
         {
             //throw new NotImplementedException();
-            FrmLabFormA frm = new FrmLabFormA(ic,"","","","");
-            frm.ShowDialog(this);
+            FrmLabFormAView frm = new FrmLabFormAView(ic, this);
+            frm.FormBorderStyle = FormBorderStyle.None;
+            AddNewTab(frm, menuReqLabFormA.Text + " ");
+            //frm.ShowDialog(this);
         }
 
         private void MenuDrugPatient_Click(object sender, EventArgs e)
@@ -349,8 +351,8 @@ namespace clinic_ivf.gui
         {
             String date = "";
             date = DateTime.Now.Year+"-"+ DateTime.Now.ToString("MM-dd");
-            this.Text = ic.iniC.statusAppDonor.Equals("1") ? "โปรแกรมClinic IVF Donor " +"สวัสดี คุณ "+ic.user.staff_fname_t +" "+ic.user.staff_lname_t+" Update 2019-02-01 "
-                : "โปรแกรมClinic IVF " + "สวัสดี คุณ " + ic.user.staff_fname_t + " " + ic.user.staff_lname_t + " Update 2019-02-01 format date "+ date;
+            this.Text = ic.iniC.statusAppDonor.Equals("1") ? "โปรแกรมClinic IVF Donor " +"สวัสดี คุณ "+ic.user.staff_fname_t +" "+ic.user.staff_lname_t+" Update 2019-02-04 "
+                : "โปรแกรมClinic IVF " + "สวัสดี คุณ " + ic.user.staff_fname_t + " " + ic.user.staff_lname_t + " Update 2019-02-04 format date "+ date;
             //theme1.SetTheme(this, ic.theme);
             theme1.SetTheme(this, ic.theme);
             theme1.SetTheme(menuStrip1, ic.theme);

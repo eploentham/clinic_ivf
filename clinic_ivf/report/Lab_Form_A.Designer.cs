@@ -373,6 +373,8 @@ namespace clinic_ivf.report {
             
             private global::System.Data.DataColumn columnnote1;
             
+            private global::System.Data.DataColumn columnopu_time;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public lab_form_aDataTable() {
@@ -784,6 +786,14 @@ namespace clinic_ivf.report {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn opu_timeColumn {
+                get {
+                    return this.columnopu_time;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -866,7 +876,8 @@ namespace clinic_ivf.report {
                         string iui_date, 
                         string fresh_sperm_collect_time, 
                         string fet1_no_date_freezing, 
-                        string note1) {
+                        string note1, 
+                        string opu_time) {
                 lab_form_aRow rowlab_form_aRow = ((lab_form_aRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         form_a_id,
@@ -915,7 +926,8 @@ namespace clinic_ivf.report {
                         iui_date,
                         fresh_sperm_collect_time,
                         fet1_no_date_freezing,
-                        note1};
+                        note1,
+                        opu_time};
                 rowlab_form_aRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowlab_form_aRow);
                 return rowlab_form_aRow;
@@ -985,6 +997,7 @@ namespace clinic_ivf.report {
                 this.columnfresh_sperm_collect_time = base.Columns["fresh_sperm_collect_time"];
                 this.columnfet1_no_date_freezing = base.Columns["fet1_no_date_freezing"];
                 this.columnnote1 = base.Columns["note1"];
+                this.columnopu_time = base.Columns["opu_time"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1084,6 +1097,8 @@ namespace clinic_ivf.report {
                 base.Columns.Add(this.columnfet1_no_date_freezing);
                 this.columnnote1 = new global::System.Data.DataColumn("note1", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnnote1);
+                this.columnopu_time = new global::System.Data.DataColumn("opu_time", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnopu_time);
                 this.columnform_a_id.Caption = "DataColumn1";
                 this.columnhn_female.Caption = "DataColumn1";
                 this.columnname_female.Caption = "DataColumn1";
@@ -2020,6 +2035,22 @@ namespace clinic_ivf.report {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public string opu_time {
+                get {
+                    try {
+                        return ((string)(this[this.tablelab_form_a.opu_timeColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'opu_time\' in table \'lab_form_a\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablelab_form_a.opu_timeColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public bool Isform_a_idNull() {
                 return this.IsNull(this.tablelab_form_a.form_a_idColumn);
             }
@@ -2580,6 +2611,18 @@ namespace clinic_ivf.report {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public void Setnote1Null() {
                 this[this.tablelab_form_a.note1Column] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public bool Isopu_timeNull() {
+                return this.IsNull(this.tablelab_form_a.opu_timeColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void Setopu_timeNull() {
+                this[this.tablelab_form_a.opu_timeColumn] = global::System.Convert.DBNull;
             }
         }
         

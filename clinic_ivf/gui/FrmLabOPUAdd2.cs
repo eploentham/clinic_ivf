@@ -345,7 +345,10 @@ namespace clinic_ivf.gui
                     {
                         txt = grfDay6[grfDay6.Row, grfDay6.Col].ToString();
                     }
-                    Clipboard.SetText(txt);
+                    if (!txt.Equals(""))
+                    {
+                        Clipboard.SetText(txt);
+                    }
                     return true; // signal that we've processed this key
             }
             return base.ProcessCmdKey(ref msg, keyData);
@@ -3541,7 +3544,7 @@ namespace clinic_ivf.gui
             grfDay2.ChangeEdit += GrfDay2_ChangeEdit;
             grfDay2.CellChanged += GrfDay2_CellChanged;
             grfDay2.KeyDown += GrfDay2_KeyDown;
-
+            grfDay2.GotFocus += GrfDay2_GotFocus;
             //ContextMenu menuGw = new ContextMenu();
             //menuGw.MenuItems.Add("&Upload image", new EventHandler(ContextMenu_grfday2_upload));
             //menuGw.MenuItems.Add("&Save description", new EventHandler(ContextMenu_grfday2_save));
@@ -3552,11 +3555,21 @@ namespace clinic_ivf.gui
             theme1.SetTheme(grfDay2, "Office2010Blue");
         }
 
+        private void GrfDay2_GotFocus(object sender, EventArgs e)
+        {
+            //throw new NotImplementedException();
+            grf2Focus = true;
+            grf3Focus = false;
+            grf5Focus = false;
+            grf6Focus = false;
+        }
+
         private void GrfDay2_KeyDown(object sender, KeyEventArgs e)
         {
             //throw new NotImplementedException();
             if (e.KeyCode == Keys.C && e.Modifiers == Keys.Control)
             {
+                grf2Focus = true;
                 //String txt = "";
                 //txt = grfDay2[grfDay2.Row, grfDay2.Col].ToString();
                 //Clipboard.SetText(txt);
@@ -3621,6 +3634,7 @@ namespace clinic_ivf.gui
 
             grfDay6.ChangeEdit += GrfDay6_ChangeEdit;
             grfDay6.KeyDown += GrfDay6_KeyDown;
+            grfDay6.GotFocus += GrfDay6_GotFocus;
             //grfExpnC.CellButtonClick += new C1.Win.C1FlexGrid.RowColEventHandler(this.grfDept_CellButtonClick);
             //grfExpnC.CellChanged += new C1.Win.C1FlexGrid.RowColEventHandler(this.grfDept_CellChanged);
             ContextMenu menuGw = new ContextMenu();
@@ -3631,6 +3645,15 @@ namespace clinic_ivf.gui
             pn6Grf.Controls.Add(grfDay6);
 
             theme1.SetTheme(grfDay6, "Office2010Blue");
+        }
+
+        private void GrfDay6_GotFocus(object sender, EventArgs e)
+        {
+            //throw new NotImplementedException();
+            grf2Focus = false;
+            grf3Focus = false;
+            grf5Focus = false;
+            grf6Focus = true;
         }
 
         private void GrfDay6_KeyDown(object sender, KeyEventArgs e)
@@ -3682,6 +3705,7 @@ namespace clinic_ivf.gui
 
             grfDay3.ChangeEdit += GrfDay3_ChangeEdit;
             grfDay3.KeyDown += GrfDay3_KeyDown;
+            grfDay3.GotFocus += GrfDay3_GotFocus;
             //grfExpnC.CellButtonClick += new C1.Win.C1FlexGrid.RowColEventHandler(this.grfDept_CellButtonClick);
             //grfExpnC.CellChanged += new C1.Win.C1FlexGrid.RowColEventHandler(this.grfDept_CellChanged);
             ContextMenu menuGw = new ContextMenu();
@@ -3692,6 +3716,15 @@ namespace clinic_ivf.gui
             pn3Grf.Controls.Add(grfDay3);
 
             theme1.SetTheme(grfDay3, "Office2010Silver");
+        }
+
+        private void GrfDay3_GotFocus(object sender, EventArgs e)
+        {
+            //throw new NotImplementedException();
+            grf2Focus = false;
+            grf3Focus = true;
+            grf5Focus = false;
+            grf6Focus = false;
         }
 
         private void GrfDay3_KeyDown(object sender, KeyEventArgs e)
@@ -3743,6 +3776,7 @@ namespace clinic_ivf.gui
 
             grfDay5.ChangeEdit += GrfDay5_ChangeEdit;
             grfDay5.KeyDown += GrfDay5_KeyDown;
+            grfDay5.GotFocus += GrfDay5_GotFocus;
             //grfExpnC.CellButtonClick += new C1.Win.C1FlexGrid.RowColEventHandler(this.grfDept_CellButtonClick);
             //grfExpnC.CellChanged += new C1.Win.C1FlexGrid.RowColEventHandler(this.grfDept_CellChanged);
             ContextMenu menuGw = new ContextMenu();
@@ -3754,6 +3788,15 @@ namespace clinic_ivf.gui
 
             theme1.SetTheme(grfDay5, "Office2010Red");
             //theme1.SetTheme(grfDay6, "Office2016DarkGray");
+        }
+
+        private void GrfDay5_GotFocus(object sender, EventArgs e)
+        {
+            //throw new NotImplementedException();
+            grf2Focus = false;
+            grf3Focus = false;
+            grf5Focus = true;
+            grf6Focus = false;
         }
 
         private void GrfDay5_KeyDown(object sender, KeyEventArgs e)

@@ -82,6 +82,7 @@ namespace clinic_ivf.gui
             ChkOpuTimeModi_CheckedChanged(null, null);
             chkOPUActive.Checked = true;
             chkFetActive.Checked = true;
+            chkConfirmFetDate.Checked = true;
             //statusOPU = ic.ivfDB.oJsDB.chkByOPU(vsidOld);
             //statusFET = ic.ivfDB.oJsDB.chkByFET(vsidOld);
             statusOPU = "-";

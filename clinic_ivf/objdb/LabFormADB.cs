@@ -527,10 +527,24 @@ namespace clinic_ivf.objdb
             dt = conn.selectData(conn.conn, sql);
             return dt;
         }
-        public DataTable selectReportByDate(String pttId)
+        public DataTable selectReportByDate(String datestart, String dateend, String hnfemale)
         {
             DataTable dt = new DataTable();
-            String sql = "select lformA.*,CONCAT(IFNULL(sfn.SurfixName,''),' ', ptt_f.PName ,' ',ptt_f.PSurname ) as name_female  " +
+            String sql = "",wheredate = "", wherehnfemale = "";
+
+            if (!hnfemale.Equals(""))
+            {
+                wherehnfemale = " and "+ lformA.hn_female+" like '%"+"%' ";
+            }
+            if(!datestart.Equals("") && !dateend.Equals(""))
+            {
+                wheredate = " lformA."+lformA.form_a_date+" >= '"+datestart+ "'  and lformA." + lformA.form_a_date+"<='"+dateend+"'";
+            }
+            else if(!datestart.Equals("") && dateend.Equals(""))
+            {
+                wheredate = " lformA." + lformA.form_a_date + " = '" + datestart + "' ";
+            }
+            sql = "select lformA.*,CONCAT(IFNULL(sfn.SurfixName,''),' ', ptt_f.PName ,' ',ptt_f.PSurname ) as name_female  " +
                 ",CONCAT(IFNULL(sfnm.SurfixName,''),' ', ptt_m.PName ,' ',ptt_m.PSurname ) as name_male, dtr.Name as doctor_name " +
                 "From " + lformA.table + " lformA " +
                 "Left Join Patient as ptt_f on ptt_f.PIDS = lformA.hn_female " +
@@ -538,7 +552,9 @@ namespace clinic_ivf.objdb
                 "Left Join Patient as ptt_m on ptt_m.PIDS = lformA.hn_male " +
                 "Left Join SurfixName sfnm on sfnm.SurfixID = ptt_m.SurfixID " +
                 "Left Join Doctor as dtr on dtr.ID = lformA.doctor_id " +
-                "Where lformA." + lformA.pkField + " ='" + pttId + "' ";
+                "Where " +
+                " " + wheredate + " " + wherehnfemale +
+                " and lformA." + lformA.active+"='1'";
             dt = conn.selectData(conn.conn, sql);
             return dt;
         }

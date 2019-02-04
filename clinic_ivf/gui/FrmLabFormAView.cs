@@ -43,6 +43,8 @@ namespace clinic_ivf.gui
             //C1ThemeController.ApplicationTheme = ic.iniC.themeApplication;
             theme1.Theme = ic.iniC.themeApplication;
             theme1.SetTheme(sB, "BeigeOne");
+            txtDateStart.Value = DateTime.Now;
+            txtDateEnd.Value = DateTime.Now;
             //theme1.SetTheme(tC, "Office2010Blue");
             sB1.Text = "";
             bg = txtDateStart.BackColor;
@@ -51,8 +53,25 @@ namespace clinic_ivf.gui
 
             stt = new C1SuperTooltip();
             sep = new C1SuperErrorProvider();
-
+            btnNew.Click += BtnNew_Click;
+            btnSearch.Click += BtnSearch_Click;
+            initGrfQue();
+            setGrfQue();
         }
+
+        private void BtnSearch_Click(object sender, EventArgs e)
+        {
+            //throw new NotImplementedException();
+            setGrfQue();
+        }
+
+        private void BtnNew_Click(object sender, EventArgs e)
+        {
+            //throw new NotImplementedException();
+            FrmLabFormA frm = new FrmLabFormA(ic, "", "", "", "");
+            frm.ShowDialog(this);
+        }
+
         private void initGrfQue()
         {
             grfQue = new C1FlexGrid();
@@ -68,7 +87,7 @@ namespace clinic_ivf.gui
             ContextMenu menuGw = new ContextMenu();
             
             grfQue.ContextMenu = menuGw;
-            groupBox1.Controls.Add(grfQue);
+            groupBox2.Controls.Add(grfQue);
 
             theme1.SetTheme(grfQue, "Office2010Red");
 
@@ -82,26 +101,27 @@ namespace clinic_ivf.gui
 
             //grfAddr.DataSource = xC.iniDB.addrDB.selectByTableId1(vn);
         }
-        private void setGrfQue(String search)
+        private void setGrfQue()
         {
             //grfDept.Rows.Count = 7;
             grfQue.Clear();
             DataTable dt1 = new DataTable();
             DataTable dt = new DataTable();
-            if (search.Equals(""))
-            {
-                String date = "";
-                DateTime dt11 = new DateTime();
-                if (DateTime.TryParse(txtDateStart.Text, out dt11))
-                {
-                    date = dt11.Year + "-" + dt11.ToString("MM-dd");
-                    dt = ic.ivfDB.vsOldDB.selectByDate(date);
-                }
-            }
-            else
-            {
-                //grfPtt.DataSource = ic.ivfDB.vsOldDB.selectCurrentVisit(search);
-            }
+            dt = ic.ivfDB.lFormaDB.selectReportByDate(ic.datetoDB(txtDateStart.Text), ic.datetoDB(txtDateEnd.Text), txtSearch.Text.Trim());
+            //if (search.Equals(""))
+            //{
+            //    String date = "";
+            //    DateTime dt11 = new DateTime();
+            //    if (DateTime.TryParse(txtDateStart.Text, out dt11))
+            //    {
+            //        date = dt11.Year + "-" + dt11.ToString("MM-dd");
+            //        dt = ic.ivfDB.vsOldDB.selectByDate(date);
+            //    }
+            //}
+            //else
+            //{
+            //    //grfPtt.DataSource = ic.ivfDB.vsOldDB.selectCurrentVisit(search);
+            //}
 
             //grfExpn.Rows.Count = dt.Rows.Count + 1;
             grfQue.Rows.Count = dt.Rows.Count + 1;
