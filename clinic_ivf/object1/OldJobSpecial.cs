@@ -16,6 +16,6 @@ namespace clinic_ivf.object1
         public String Date { get; set; }
         public String PID { get; set; }
         public String PIDS { get; set; }
-        
+        public String status_req { get; set; }
     }
 }

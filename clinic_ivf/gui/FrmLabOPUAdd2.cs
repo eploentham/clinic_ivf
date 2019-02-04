@@ -42,6 +42,7 @@ namespace clinic_ivf.gui
         C1SuperErrorProvider sep;
         Color color;
         Boolean flagDay2Img = false, flagDay3Img = false, flagDay5Img = false, flagDay6Img = false;
+        Boolean grf2Focus = false, grf3Focus = false, grf5Focus = false, grf6Focus = false;
         private bool prefixSeen;
         String theme2 = "Office2007Blue";       //Office2016Black       BeigeOne
         
@@ -327,6 +328,24 @@ namespace clinic_ivf.gui
                     return true; // signal that we've processed this key
                 case Keys.C | Keys.Control :
                     //MessageBox.Show("2222 ", "");
+                    String txt = "";
+                    if (grf2Focus)
+                    {
+                        txt = grfDay2[grfDay2.Row, grfDay2.Col].ToString();
+                    }
+                    else if (grf3Focus)
+                    {
+                        txt = grfDay3[grfDay3.Row, grfDay3.Col].ToString();
+                    }
+                    else if (grf5Focus)
+                    {
+                        txt = grfDay5[grfDay5.Row, grfDay5.Col].ToString();
+                    }
+                    else if (grf6Focus)
+                    {
+                        txt = grfDay6[grfDay6.Row, grfDay6.Col].ToString();
+                    }
+                    Clipboard.SetText(txt);
                     return true; // signal that we've processed this key
             }
             return base.ProcessCmdKey(ref msg, keyData);
@@ -446,7 +465,7 @@ namespace clinic_ivf.gui
                 sum = pn2 + pn1 + pn3 +pn4 + nopn + dead;
                 if(ferti != sum)
                 {
-                    MessageBox.Show("ผมรวมของ Fertili ไม่เท่ากับ Matura MII", "");
+                    MessageBox.Show("ผลรวมของ Fertili ไม่เท่ากับ Matura MII", "");
                 }
                 re = false;
             }
@@ -601,7 +620,30 @@ namespace clinic_ivf.gui
             txtFertili1Pn.KeyPress += TxtMaturaMii_KeyPress;
             txtFertili1Pn.KeyPress += TxtMaturaMii_KeyPress;
             txtFertili1Pn.KeyPress += TxtMaturaMii_KeyPress;
+            txtSpermVol.KeyUp += TxtSpermVol_KeyUp;
+            txtSpermCnt.KeyUp += TxtSpermCnt_KeyUp;
+            txtSpermMotility.KeyUp += TxtSpermMotility_KeyUp;
         }
+
+        private void TxtSpermMotility_KeyUp(object sender, KeyEventArgs e)
+        {
+            //throw new NotImplementedException();
+            calMotile();
+        }
+
+        private void TxtSpermCnt_KeyUp(object sender, KeyEventArgs e)
+        {
+            //throw new NotImplementedException();
+            calSperm();
+            calMotile();
+        }
+
+        private void TxtSpermVol_KeyUp(object sender, KeyEventArgs e)
+        {
+            //throw new NotImplementedException();
+            calSperm();
+        }
+
         private void initGrf()
         {
             initGrfDay2();
@@ -862,35 +904,43 @@ namespace clinic_ivf.gui
             {
                 e.Handled = false;
             }
-            if ((sender == txtSpermVol) || (sender == txtSpermCnt))
-            {
-                calSperm();
-            }
-            if ((sender == txtSpermMotility) || (sender == txtSpermCnt))
-            {
-                calMotile();
-            }
+            //if ((sender == txtSpermVol) || (sender == txtSpermCnt))
+            //{
+            //    calSperm();
+            //}
+            //if ((sender == txtSpermMotility) || (sender == txtSpermCnt))
+            //{
+            //    calMotile();
+            //}
         }
         private void calSperm()
         {
-            int vol = 0, cnt = 0, total = 0;
-            int.TryParse(txtSpermVol.Text, out vol);
-            int.TryParse(txtSpermCnt.Text, out cnt);
+            Decimal vol = 0, cnt = 0, total = 0;
+            Decimal.TryParse(txtSpermVol.Text, out vol);
+            Decimal.TryParse(txtSpermCnt.Text, out cnt);
             //int.TryParse(txtSpermVol.Text, out vol);
             total = vol * cnt;
-            txtSpermTotalCnt.Value = total;
+            int chk = 0;
+            if(int.TryParse(total.ToString(), out chk))
+            {
+                txtSpermTotalCnt.Value = chk;
+            }
+            else
+            {
+                txtSpermTotalCnt.Value = total;
+            }
         }
         private void calMotile()
         {
-            int motility = 0, cnt = 0, total = 0, vol=0, motile=0;
-            int.TryParse(txtSpermVol.Text, out vol);
-            int.TryParse(txtSpermMotility.Text, out motility);
-            int.TryParse(txtSpermCnt.Text, out cnt);
+            Decimal motility = 0, cnt = 0, total = 0, vol=0, motile=0;
+            Decimal.TryParse(txtSpermVol.Text, out vol);
+            Decimal.TryParse(txtSpermMotility.Text, out motility);
+            Decimal.TryParse(txtSpermCnt.Text, out cnt);
             //int.TryParse(txtSpermVol.Text, out vol);
             motile = (motility * cnt) / 100;
             total = motile * vol;
-            txtSpermMoti.Value = motile;
-            txtSpermMotiTotal.Value = total;
+            txtSpermMoti.Value = motile.ToString().Replace(".0","");
+            txtSpermMotiTotal.Value = total.ToString().Replace(".0", "");
         }
         private Boolean chkNoofOPU()
         {
@@ -3507,7 +3557,9 @@ namespace clinic_ivf.gui
             //throw new NotImplementedException();
             if (e.KeyCode == Keys.C && e.Modifiers == Keys.Control)
             {
-                Clipboard.SetText(grfDay2[grfDay6.Row, grfDay2.Col].ToString());
+                //String txt = "";
+                //txt = grfDay2[grfDay2.Row, grfDay2.Col].ToString();
+                //Clipboard.SetText(txt);
             }
             else if (e.KeyCode == Keys.V && e.Modifiers == Keys.Control)
             {
@@ -3526,6 +3578,10 @@ namespace clinic_ivf.gui
             if (grfDay2.Row == null) return;
             if (grfDay2.Row < 0) return;
             grfDay2[grfDay2.Row, colDay2Edit] = "1";
+            grf2Focus = true;
+            grf3Focus = false;
+            grf5Focus = false;
+            grf6Focus = false;
             //grfDay2[grfDay2.Row, 0] = "1";
             //grfDay2.Rows[grfDay2.Row].
             grfDay2.Rows[grfDay2.Row].StyleNew.BackColor = color;
@@ -3582,7 +3638,9 @@ namespace clinic_ivf.gui
             //throw new NotImplementedException();
             if (e.KeyCode == Keys.C && e.Modifiers == Keys.Control)
             {
-                Clipboard.SetText(grfDay6[grfDay6.Row, grfDay6.Col].ToString());
+                //String txt = "";
+                //txt = grfDay6[grfDay6.Row, grfDay6.Col].ToString();
+                //Clipboard.SetText(txt);
             }
             else if (e.KeyCode == Keys.V && e.Modifiers == Keys.Control)
             {
@@ -3601,6 +3659,10 @@ namespace clinic_ivf.gui
             if (grfDay6.Row == null) return;
             if (grfDay6.Row < 0) return;
             grfDay6[grfDay6.Row, colDay6Edit] = "1";
+            grf2Focus = false;
+            grf3Focus = false;
+            grf5Focus = false;
+            grf6Focus = true;
             grfDay6.Rows[grfDay6.Row].StyleNew.BackColor = color;
             if (grfDay6.Col == colDay6Desc)
             {
@@ -3637,7 +3699,9 @@ namespace clinic_ivf.gui
             //throw new NotImplementedException();
             if (e.KeyCode == Keys.C && e.Modifiers == Keys.Control)
             {
-                Clipboard.SetText(grfDay3[grfDay3.Row, grfDay3.Col].ToString());
+                //String txt = "";
+                //txt = grfDay3[grfDay3.Row, grfDay3.Col].ToString();
+                //Clipboard.SetText(txt);
             }
             else if (e.KeyCode == Keys.V && e.Modifiers == Keys.Control)
             {
@@ -3656,6 +3720,10 @@ namespace clinic_ivf.gui
             if (grfDay3.Row == null) return;
             if (grfDay3.Row < 0) return;
             grfDay3[grfDay3.Row, colDay3Edit] = "1";
+            grf2Focus = false;
+            grf3Focus = true;
+            grf5Focus = false;
+            grf6Focus = false;
             grfDay3.Rows[grfDay3.Row].StyleNew.BackColor = color;
             if (grfDay3.Col == colDay3Desc)
             {
@@ -3693,7 +3761,9 @@ namespace clinic_ivf.gui
             //throw new NotImplementedException();
             if (e.KeyCode == Keys.C && e.Modifiers == Keys.Control)
             {
-                Clipboard.SetText(grfDay5[grfDay5.Row, grfDay5.Col].ToString());
+                //String txt = "";
+                //txt = grfDay5[grfDay5.Row, grfDay5.Col].ToString();
+                //Clipboard.SetText(txt);
             }
             else if (e.KeyCode == Keys.V && e.Modifiers == Keys.Control)
             {
@@ -3712,6 +3782,10 @@ namespace clinic_ivf.gui
             if (grfDay5.Row == null) return;
             if (grfDay5.Row < 0) return;
             grfDay5[grfDay5.Row, colDay5Edit] = "1";
+            grf2Focus = false;
+            grf3Focus = false;
+            grf5Focus = true;
+            grf6Focus = false;
             grfDay5.Rows[grfDay5.Row].StyleNew.BackColor = color;
             if (grfDay5.Col == colDay5Desc)
             {

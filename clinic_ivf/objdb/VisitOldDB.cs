@@ -292,6 +292,22 @@ namespace clinic_ivf.objdb
 
             return dt;
         }
+        public DataTable selectByHnFormA(String hn)
+        {
+            DataTable dt = new DataTable();
+            //String date = System.DateTime.Now.Year + "-" + System.DateTime.Now.ToString("MM-dd");
+            String sql = "select vsold.form_a_id as id,vsold.VN, vsold.PIDS, vsold.PName, vsold.VDate, vsold.VStartTime, vsold.VEndTime, VStatus.VName, vsold.VSID, vsold.PID, Patient.DateOfBirth as dob" +
+                ",vsold.form_a_id " +
+                "From " + vsold.table + " vsold " +
+                "Left Join VStatus on  VStatus.VSID = vsold.VSID " +
+                "Left Join Patient on  vsold.PID = Patient.PID " +
+                "Left Join lab_t_form_a lforma on lforma.hn_female = Patient.PIDS " +
+                "Where vsold." + vsold.PIDS + " like '%" + hn + "%' and vsold.form_a_id <> 0 " +
+                "Order By vsold.VDate, vsold.VStartTime";
+            dt = conn.selectData(conn.conn, sql);
+
+            return dt;
+        }
         public DataTable selectByDate(String date)
         {
             DataTable dt = new DataTable();

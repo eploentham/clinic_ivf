@@ -25,8 +25,9 @@ namespace clinic_ivf.gui
         Font ff, ffB;
 
         int colID = 1, colVN = 2, colPttHn = 3, colPttName = 4, colVsDate = 5, colVsTime = 6, colVsEtime = 7, colStatus = 8, colPttId=9;
+        int colSID = 1, colSVN = 2, colSPttHn = 3, colSPttName = 4, colSVsDate = 5, colSVsTime = 6, colSVsEtime = 7, colSStatus = 8, colSPttId = 9;
 
-        C1FlexGrid grfQue, grfDiag, grfFinish;
+        C1FlexGrid grfQue, grfDiag, grfFinish, grfSearch;
         C1SuperTooltip stt;
         C1SuperErrorProvider sep;
 
@@ -68,18 +69,26 @@ namespace clinic_ivf.gui
             setGrfDiag("");
             initGrfFinish();
             setGrfFinish();
+            initGrfSearch();
         }
 
         private void BtnSearch_Click(object sender, EventArgs e)
         {
             //throw new NotImplementedException();
-            if (tC.SelectedTab == tabFinish)
+            if (chkLabFormA.Checked)
             {
-                setGrfFinish();
+                
             }
-            else if (tC.SelectedTab == tabWaiting)
+            else
             {
-                setGrfQue();
+                if (tC.SelectedTab == tabFinish)
+                {
+                    setGrfFinish();
+                }
+                else if (tC.SelectedTab == tabWaiting)
+                {
+                    setGrfQue();
+                }
             }
         }
 
@@ -142,9 +151,16 @@ namespace clinic_ivf.gui
             }
             else
             {
-                if (txtSearch.Text.Length >= 2)
+                if (txtSearch.Text.Length > 3)
                 {
-                    setGrfQue(txtSearch.Text);
+                    if (chkLabFormA.Checked)
+                    {
+                        setGrfSearch(txtSearch.Text);
+                    }
+                    else
+                    {
+                        setGrfQue(txtSearch.Text);
+                    }
                 }
             }
         }
@@ -487,6 +503,120 @@ namespace clinic_ivf.gui
             //theme1.SetTheme(grfDiag, ic.theme);
 
         }
+        private void initGrfSearch()
+        {
+            grfSearch = new C1FlexGrid();
+            grfSearch.Font = fEdit;
+            grfSearch.Dock = System.Windows.Forms.DockStyle.Fill;
+            grfSearch.Location = new System.Drawing.Point(0, 0);
+
+            //FilterRow fr = new FilterRow(grfExpn);
+
+            //grfSearch.AfterRowColChange += GrfReq_AfterRowColChange;
+            //grfExpnC.CellButtonClick += new C1.Win.C1FlexGrid.RowColEventHandler(this.grfDept_CellButtonClick);
+            //grfExpnC.CellChanged += new C1.Win.C1FlexGrid.RowColEventHandler(this.grfDept_CellChanged);
+            ContextMenu menuGw = new ContextMenu();
+            //menuGw.MenuItems.Add("&แก้ไข รายการเบิก", new EventHandler(ContextMenu_edit));
+            grfSearch.ContextMenu = menuGw;
+            pnSearch.Controls.Add(grfSearch);
+            grfSearch.Rows.Count = 1;
+            theme1.SetTheme(pnSearch, "Office2010Red");
+
+        }
+        private void setGrfSearch(String search)
+        {
+            //grfDept.Rows.Count = 7;
+            tC.SelectedTab = tabSearch;
+            grfSearch.Clear();
+            DataTable dt1 = new DataTable();
+            DataTable dt = new DataTable();
+            if (search.Equals(""))
+            {
+                String date = "";
+                DateTime dt11 = new DateTime();
+                if (DateTime.TryParse(txtDateStart.Text, out dt11))
+                {
+                    date = dt11.Year + "-" + dt11.ToString("MM-dd");
+                    dt = ic.ivfDB.vsOldDB.selectByHnFormA(date);
+                }
+            }
+            else
+            {
+                dt = ic.ivfDB.vsOldDB.selectByHnFormA(search);
+                //grfPtt.DataSource = ic.ivfDB.vsOldDB.selectCurrentVisit(search);
+            }
+
+            //grfExpn.Rows.Count = dt.Rows.Count + 1;
+            grfSearch.Rows.Count = dt.Rows.Count + 1;
+            grfSearch.Cols.Count = 10;
+            C1TextBox txt = new C1TextBox();
+            //C1ComboBox cboproce = new C1ComboBox();
+            //ic.ivfDB.itmDB.setCboItem(cboproce);
+            grfSearch.Cols[colPttHn].Editor = txt;
+            grfSearch.Cols[colPttName].Editor = txt;
+            grfSearch.Cols[colVsDate].Editor = txt;
+
+            grfSearch.Cols[colVN].Width = 120;
+            grfSearch.Cols[colPttHn].Width = 120;
+            grfSearch.Cols[colPttName].Width = 300;
+            grfSearch.Cols[colVsDate].Width = 100;
+            grfSearch.Cols[colVsTime].Width = 80;
+            grfSearch.Cols[colVsEtime].Width = 80;
+            grfSearch.Cols[colStatus].Width = 200;
+
+            grfSearch.ShowCursor = true;
+            //grdFlex.Cols[colID].Caption = "no";
+            //grfDept.Cols[colCode].Caption = "รหัส";
+
+            grfSearch.Cols[colVN].Caption = "VN";
+            grfSearch.Cols[colPttHn].Caption = "HN";
+            grfSearch.Cols[colPttName].Caption = "Name";
+            grfSearch.Cols[colVsDate].Caption = "Date";
+            grfSearch.Cols[colVsTime].Caption = "Time visit";
+            grfSearch.Cols[colVsEtime].Caption = "Time finish";
+            grfSearch.Cols[colStatus].Caption = "Status";
+
+            ContextMenu menuGw = new ContextMenu();
+            //menuGw.MenuItems.Add("&receive operation", new EventHandler(ContextMenu_Apm));
+            //menuGw.MenuItems.Add("&receive operation", new EventHandler(ContextMenu_Apm));
+            menuGw.MenuItems.Add("&LAB request FORM A", new EventHandler(ContextMenu_LAB_req_formA_Ptt));
+            //menuGw.MenuItems.Add("&Add Appointment", new EventHandler(ContextMenu_Apm_Ptt));
+            //menuGw.MenuItems.Add("&Cancel Receive", new EventHandler(ContextMenu_Apm_Ptt));
+            //menuGw.MenuItems.Add("&No Appointment Close Operation", new EventHandler(ContextMenu_NO_Apm_Ptt));
+            grfSearch.ContextMenu = menuGw;
+
+            Color color = ColorTranslator.FromHtml(ic.iniC.grfRowColor);
+            //CellRange rg1 = grfBank.GetCellRange(1, colE, grfBank.Rows.Count, colE);
+            //rg1.Style = grfBank.Styles["date"];
+            //grfCu.Cols[colID].Visible = false;
+            int i = 1;
+            foreach (DataRow row in dt.Rows)
+            {
+                grfSearch[i, 0] = i;
+                grfSearch[i, colID] = row["id"].ToString();
+                grfSearch[i, colVN] = row["VN"].ToString();
+                grfSearch[i, colPttHn] = row["PIDS"].ToString();
+                grfSearch[i, colPttName] = row["PName"].ToString();
+                grfSearch[i, colVsDate] = ic.datetoShow(row["VDate"]);
+                grfSearch[i, colVsTime] = row["VStartTime"].ToString();
+                grfSearch[i, colVsEtime] = row["VEndTime"].ToString();
+                grfSearch[i, colStatus] = row["VName"].ToString();
+                grfSearch[i, colPttId] = row["PID"].ToString();
+                if (!row[ic.ivfDB.vsOldDB.vsold.form_a_id].ToString().Equals("0"))
+                {
+                    CellNote note = new CellNote("ส่ง Lab Request Foam A");
+                    CellRange rg = grfSearch.GetCellRange(i, colVN);
+                    rg.UserData = note;
+                }
+                //if (i % 2 == 0)
+                //    grfPtt.Rows[i].StyleNew.BackColor = color;
+                i++;
+            }
+            CellNoteManager mgr = new CellNoteManager(grfSearch);
+            grfSearch.Cols[colID].Visible = false;
+            //theme1.SetTheme(grfQue, ic.theme);
+
+        }
         private void initGrfQue()
         {
             grfQue = new C1FlexGrid();
@@ -639,7 +769,6 @@ namespace clinic_ivf.gui
                     date = dt11.Year + "-" + dt11.ToString("MM-dd");
                     dt = ic.ivfDB.vsOldDB.selectByDate(date);
                 }
-                
             }
             else
             {

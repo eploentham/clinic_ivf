@@ -40,7 +40,7 @@ namespace clinic_ivf.objdb
             opu.matura_m_ii = "matura_m_ii";
             opu.matura_m_i = "matura_m_i";
             opu.matura_gv = "matura_gv";
-            opu.matura_abmormal = "matura_abmormal";
+            opu.matura_abmormal = "matura_abnormal";
             opu.matura_dead = "matura_dead";
             opu.fertili_date = "fertili_date";
             opu.fertili_2_pn = "fertili_2_pn";

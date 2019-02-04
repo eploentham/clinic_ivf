@@ -39,6 +39,7 @@ namespace clinic_ivf.gui
             this.ic = ic;
             this.statusconn = statusconn;
             this.statussearch = statussearch;
+            this.statussearchtable = statussearchtable;
             initConfig();
         }
         private void initConfig()

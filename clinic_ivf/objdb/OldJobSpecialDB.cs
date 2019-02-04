@@ -27,7 +27,8 @@ namespace clinic_ivf.objdb
             oJS.Total_Price = "Total_Price";
             oJS.Date = "Date";
             oJS.PID = "PID";
-            oJS.PIDS = "PIDS";            
+            oJS.PIDS = "PIDS";
+            oJS.status_req = "status_req";
 
             oJS.table = "JobSpecial";
             oJS.pkField = "VN";
@@ -81,7 +82,7 @@ namespace clinic_ivf.objdb
                 "Left Join lab_t_request lreq on lreq.request_id = oJSd.ID  " +
                 "Left Join Visit vsold on oJSd.VN = vsold.VN " +
                 "Left Join lab_t_form_a lforma on vsold.form_a_id = lforma.form_a_id " +
-                "Where oJS." + oJS.Status + " ='1' and oJSd.SID in (112,160) " +
+                "Where oJS." + oJS.Status + " ='1' and oJSd.SID in (112,160) and oJS.status_req = '0' " +
                 "and lreq.req_date >= '" + startdate + "' and lreq.req_date <='" + enddate + "' " +
                 "Order By lforma.form_a_id ,oJSd.ID";
             dt = conn.selectData(conn.conn, sql);
@@ -176,6 +177,17 @@ namespace clinic_ivf.objdb
             cop1 = setVisitOld(dt);
             return cop1;
         }
+        public String UpdateStatusRequestAccept(String oJsdId, String reqId)
+        {
+            DataTable dt = new DataTable();
+            String re = "";
+            String sql = "Update JobSpecialDetail Set " +
+                "status_req_accept='1' " +
+                ",req_id='" + reqId + "' " +
+                "Where id='" + oJsdId + "'";
+            re = conn.ExecuteNonQuery(conn.conn, sql);
+            return re;
+        }
         public OldJobSpecial setVisitOld(DataTable dt)
         {
             OldJobSpecial vsold1 = new OldJobSpecial();
@@ -189,6 +201,7 @@ namespace clinic_ivf.objdb
                 vsold1.Date = dt.Rows[0][oJS.Date].ToString();
                 vsold1.PID = dt.Rows[0][oJS.PID].ToString();
                 vsold1.PIDS = dt.Rows[0][oJS.PIDS].ToString();
+                vsold1.status_req = dt.Rows[0][oJS.status_req].ToString();
             }
             else
             {
@@ -206,7 +219,7 @@ namespace clinic_ivf.objdb
             stf1.Date = "";
             stf1.PID = "";
             stf1.PIDS = "";
-
+            stf1.status_req = "";
             return stf1;
         }
     }

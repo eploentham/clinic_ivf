@@ -23,7 +23,7 @@ namespace clinic_ivf.gui
         Font fEdit, fEditB;
         Color bg, fc;
         Font ff, ffB;
-        int colRqId = 1, colRqReqNum = 2, colRqHn = 3, colRqVn = 4, colRqName = 5, colRqHnMale=6, colRqNameMale=7, colRqLabName=8, colRqDate =9, colRqRemark = 10, colOpuId=11, colDtrName=12, colOPUDate=13, colOPUTime=14, colOPUTimeModi=15;
+        int colRqId = 1, colRqReqNum = 2, colRqHn = 3, colRqVn = 4, colRqName = 5, colRqHnMale=6, colRqNameMale=7, colRqHnDonor=8, colRqNameDonor=9, colRqLabName=10, colRqDate =11, colRqRemark = 12, colOpuId=13, colDtrName=14, colOPUDate=15, colOPUTime=16, colOPUTimeModi=17;
         int colPcId = 1, colPcOpuNum = 2, colPcHn = 3, colPcPttName = 4, colPcDate = 5, colPcRemark = 6;
 
         C1FlexGrid grfReq, grfProc;
@@ -173,7 +173,7 @@ namespace clinic_ivf.gui
             dt = ic.ivfDB.oJsDB.selectByStatusUnAccept2(datestart1, dateend1);
             //grfExpn.Rows.Count = dt.Rows.Count + 1;
             grfReq.Rows.Count = 1;
-            grfReq.Cols.Count = 16;
+            grfReq.Cols.Count = 18;
             C1TextBox txt = new C1TextBox();
             //C1ComboBox cboproce = new C1ComboBox();
             //ic.ivfDB.itmDB.setCboItem(cboproce);
@@ -190,10 +190,12 @@ namespace clinic_ivf.gui
             grfReq.Cols[colRqRemark].Width = 200;
             grfReq.Cols[colRqLabName].Width = 80;
             grfReq.Cols[colOPUDate].Width = 100;
-            grfReq.Cols[colOPUTime].Width = 60;
-            grfReq.Cols[colOPUTimeModi].Width = 60;
+            grfReq.Cols[colOPUTime].Width = 70;
+            grfReq.Cols[colOPUTimeModi].Width = 70;
             grfReq.Cols[colRqHnMale].Width = 100;
             grfReq.Cols[colRqNameMale].Width = 280;
+            grfReq.Cols[colRqHnDonor].Width = 100;
+            grfReq.Cols[colRqNameDonor].Width = 280;
             grfReq.ShowCursor = true;
             //grdFlex.Cols[colID].Caption = "no";
             //grfDept.Cols[colCode].Caption = "รหัส";
@@ -211,6 +213,8 @@ namespace clinic_ivf.gui
             grfReq.Cols[colOPUTimeModi].Caption = "opu time old";
             grfReq.Cols[colRqHnMale].Caption = "HN male";
             grfReq.Cols[colRqNameMale].Caption = "Name male";
+            grfReq.Cols[colRqHnDonor].Caption = "HN male";
+            grfReq.Cols[colRqNameDonor].Caption = "Name male";
 
             Color color = ColorTranslator.FromHtml(ic.iniC.grfRowColor);
             //CellRange rg1 = grfBank.GetCellRange(1, colE, grfBank.Rows.Count, colE);
@@ -234,6 +238,8 @@ namespace clinic_ivf.gui
                 row1[colRqLabName] = row["SName"].ToString();
                 row1[colRqHnMale] = row["hn_male"].ToString();
                 row1[colRqNameMale] = row["name_male"].ToString();
+                row1[colRqHnDonor] = row["hn_donor"].ToString();
+                row1[colRqNameDonor] = row["name_donor"].ToString();
                 if (row["SName"].ToString().Trim().Equals("OPU"))
                 {
                     row1[colRqRemark] = row["opu_remark"].ToString()+" "+row["form_a_remark"].ToString();

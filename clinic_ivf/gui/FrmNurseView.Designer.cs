@@ -46,6 +46,9 @@
             this.pnFinish = new System.Windows.Forms.Panel();
             this.sB = new System.Windows.Forms.StatusStrip();
             this.sB1 = new System.Windows.Forms.ToolStripStatusLabel();
+            this.tabSearch = new C1.Win.C1Command.C1DockingTabPage();
+            this.chkLabFormA = new C1.Win.C1Input.C1CheckBox();
+            this.pnSearch = new System.Windows.Forms.Panel();
             ((System.ComponentModel.ISupportInitialize)(this.theme1)).BeginInit();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btnSearch)).BeginInit();
@@ -59,6 +62,8 @@
             this.tabDiag.SuspendLayout();
             this.tabFinish.SuspendLayout();
             this.sB.SuspendLayout();
+            this.tabSearch.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.chkLabFormA)).BeginInit();
             this.SuspendLayout();
             // 
             // theme1
@@ -68,6 +73,7 @@
             // groupBox1
             // 
             this.groupBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.groupBox1.Controls.Add(this.chkLabFormA);
             this.groupBox1.Controls.Add(this.btnSearch);
             this.groupBox1.Controls.Add(this.label11);
             this.groupBox1.Controls.Add(this.txtDateStart);
@@ -86,7 +92,7 @@
             // 
             // btnSearch
             // 
-            this.btnSearch.Location = new System.Drawing.Point(598, 18);
+            this.btnSearch.Location = new System.Drawing.Point(678, 17);
             this.btnSearch.Name = "btnSearch";
             this.btnSearch.Size = new System.Drawing.Size(28, 23);
             this.btnSearch.TabIndex = 535;
@@ -101,7 +107,7 @@
             this.label11.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
             this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label11.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.label11.Location = new System.Drawing.Point(371, 21);
+            this.label11.Location = new System.Drawing.Point(251, 21);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(73, 16);
             this.label11.TabIndex = 534;
@@ -146,7 +152,7 @@
             | C1.Win.C1Input.FormatInfoInheritFlags.CalendarType)));
             this.txtDateStart.GMTOffset = System.TimeSpan.Parse("00:00:00");
             this.txtDateStart.ImagePadding = new System.Windows.Forms.Padding(0);
-            this.txtDateStart.Location = new System.Drawing.Point(450, 21);
+            this.txtDateStart.Location = new System.Drawing.Point(330, 21);
             this.txtDateStart.Name = "txtDateStart";
             this.txtDateStart.ParseInfo.EmptyAsNull = true;
             this.txtDateStart.ParseInfo.Inherit = ((C1.Win.C1Input.ParseInfoInheritFlags)(((((((C1.Win.C1Input.ParseInfoInheritFlags.CaseSensitive | C1.Win.C1Input.ParseInfoInheritFlags.FormatType) 
@@ -181,7 +187,7 @@
             this.txtSearch.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
             this.txtSearch.Location = new System.Drawing.Point(82, 19);
             this.txtSearch.Name = "txtSearch";
-            this.txtSearch.Size = new System.Drawing.Size(246, 20);
+            this.txtSearch.Size = new System.Drawing.Size(157, 20);
             this.txtSearch.TabIndex = 531;
             this.txtSearch.Tag = null;
             this.theme1.SetTheme(this.txtSearch, "(default)");
@@ -217,11 +223,12 @@
             this.tC.Controls.Add(this.tabWaiting);
             this.tC.Controls.Add(this.tabDiag);
             this.tC.Controls.Add(this.tabFinish);
+            this.tC.Controls.Add(this.tabSearch);
             this.tC.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tC.HotTrack = true;
             this.tC.Location = new System.Drawing.Point(0, 0);
             this.tC.Name = "tC";
-            this.tC.SelectedIndex = 1;
+            this.tC.SelectedIndex = 3;
             this.tC.Size = new System.Drawing.Size(1071, 624);
             this.tC.TabIndex = 0;
             this.tC.TabSizeMode = C1.Win.C1Command.TabSizeModeEnum.Fit;
@@ -306,6 +313,45 @@
             this.sB1.Size = new System.Drawing.Size(118, 17);
             this.sB1.Text = "toolStripStatusLabel1";
             // 
+            // tabSearch
+            // 
+            this.tabSearch.Controls.Add(this.pnSearch);
+            this.tabSearch.Location = new System.Drawing.Point(1, 24);
+            this.tabSearch.Name = "tabSearch";
+            this.tabSearch.Size = new System.Drawing.Size(1069, 599);
+            this.tabSearch.TabIndex = 3;
+            this.tabSearch.Text = "Search";
+            // 
+            // chkLabFormA
+            // 
+            this.chkLabFormA.BackColor = System.Drawing.Color.Transparent;
+            this.chkLabFormA.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
+            this.chkLabFormA.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.chkLabFormA.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.chkLabFormA.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chkLabFormA.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.chkLabFormA.Location = new System.Drawing.Point(516, 19);
+            this.chkLabFormA.Name = "chkLabFormA";
+            this.chkLabFormA.Padding = new System.Windows.Forms.Padding(4, 1, 1, 1);
+            this.chkLabFormA.Size = new System.Drawing.Size(140, 24);
+            this.chkLabFormA.TabIndex = 731;
+            this.chkLabFormA.Text = "ค้นหา Lab Form A";
+            this.theme1.SetTheme(this.chkLabFormA, "(default)");
+            this.chkLabFormA.UseVisualStyleBackColor = true;
+            this.chkLabFormA.Value = null;
+            this.chkLabFormA.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            // 
+            // pnSearch
+            // 
+            this.pnSearch.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.pnSearch.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pnSearch.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.pnSearch.Location = new System.Drawing.Point(0, 0);
+            this.pnSearch.Name = "pnSearch";
+            this.pnSearch.Size = new System.Drawing.Size(1069, 599);
+            this.pnSearch.TabIndex = 0;
+            this.theme1.SetTheme(this.pnSearch, "(default)");
+            // 
             // FrmNurseView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -332,6 +378,8 @@
             this.tabFinish.ResumeLayout(false);
             this.sB.ResumeLayout(false);
             this.sB.PerformLayout();
+            this.tabSearch.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.chkLabFormA)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -357,5 +405,8 @@
         private System.Windows.Forms.Panel pnDiag;
         private System.Windows.Forms.Panel pnFinish;
         private C1.Win.C1Input.C1Button btnSearch;
+        private C1.Win.C1Command.C1DockingTabPage tabSearch;
+        private C1.Win.C1Input.C1CheckBox chkLabFormA;
+        private System.Windows.Forms.Panel pnSearch;
     }
 }
