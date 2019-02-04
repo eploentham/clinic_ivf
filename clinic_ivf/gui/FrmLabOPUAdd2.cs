@@ -2204,6 +2204,7 @@ namespace clinic_ivf.gui
             txtOpuCode.Value = opu.opu_code;
             txtHnDonor.Value = opu.hn_donor;
             txtNameDonor.Value = opu.name_donor;
+            txtDobDonor.Value = opu.dob_donor;
 
             txtMaturaNoofOpu.Value = opu.matura_no_of_opu;
             try
@@ -2329,6 +2330,7 @@ namespace clinic_ivf.gui
             opu.name_donor = txtNameDonor.Text;
             opu.date_pic_embryo = ic.datetoDB(txtDatePicEmbryo.Text);
             opu.remark_1 = cboRemark1.Text;
+            opu.dob_donor = ic.datetoDB(txtDobDonor.Text);
         }
         private void setOPUMatura()
         {

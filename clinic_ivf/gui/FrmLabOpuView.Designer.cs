@@ -69,6 +69,9 @@
             this.c1DateEdit5 = new C1.Win.C1Input.C1DateEdit();
             this.label3 = new System.Windows.Forms.Label();
             this.c1Button3 = new C1.Win.C1Input.C1Button();
+            this.c1SplitButton1 = new C1.Win.C1Input.C1SplitButton();
+            this.dropDownItem1 = new C1.Win.C1Input.DropDownItem();
+            this.dropDownItem2 = new C1.Win.C1Input.DropDownItem();
             this.sB.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.theme1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.c1TextBox14)).BeginInit();
@@ -96,6 +99,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.c1DateEdit3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.c1DateEdit5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.c1Button3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.c1SplitButton1)).BeginInit();
             this.SuspendLayout();
             // 
             // sB
@@ -344,6 +348,7 @@
             // groupBox1
             // 
             this.groupBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.groupBox1.Controls.Add(this.c1SplitButton1);
             this.groupBox1.Controls.Add(this.txtHn);
             this.groupBox1.Controls.Add(this.btnSearchA);
             this.groupBox1.Controls.Add(this.txtDateEnd);
@@ -727,6 +732,27 @@
             this.c1Button3.UseVisualStyleBackColor = true;
             this.c1Button3.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
             // 
+            // c1SplitButton1
+            // 
+            this.c1SplitButton1.Items.Add(this.dropDownItem1);
+            this.c1SplitButton1.Items.Add(this.dropDownItem2);
+            this.c1SplitButton1.Location = new System.Drawing.Point(725, 26);
+            this.c1SplitButton1.Name = "c1SplitButton1";
+            this.c1SplitButton1.Size = new System.Drawing.Size(115, 23);
+            this.c1SplitButton1.TabIndex = 523;
+            this.c1SplitButton1.Text = "c1SplitButton1";
+            this.theme1.SetTheme(this.c1SplitButton1, "(default)");
+            this.c1SplitButton1.UseVisualStyleBackColor = true;
+            this.c1SplitButton1.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            // 
+            // dropDownItem1
+            // 
+            this.dropDownItem1.Text = "dropDownItem1";
+            // 
+            // dropDownItem2
+            // 
+            this.dropDownItem2.Text = "dropDownItem2";
+            // 
             // FrmLabOpuView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -767,6 +793,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.c1DateEdit3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.c1DateEdit5)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.c1Button3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.c1SplitButton1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -815,5 +842,8 @@
         private C1.Win.C1Input.C1Button c1Button3;
         private C1.Win.C1Command.C1DockingTabPage tabProcess;
         private System.Windows.Forms.Panel panel2;
+        private C1.Win.C1Input.C1SplitButton c1SplitButton1;
+        private C1.Win.C1Input.DropDownItem dropDownItem1;
+        private C1.Win.C1Input.DropDownItem dropDownItem2;
     }
 }

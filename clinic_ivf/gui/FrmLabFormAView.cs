@@ -23,7 +23,7 @@ namespace clinic_ivf.gui
         Font fEdit, fEditB;
         Color bg, fc;
         Font ff, ffB;
-        int colID = 1, colVN = 2, colPttHn = 3, colPttName = 4, colVsDate = 5, colVsTime = 6, colVsEtime = 7, colStatus = 8, colPttId = 9;
+        int colID = 1, colCode = 2, colPttHn = 3, colPttName = 4, colFormADate = 5, colHnMale = 6, colNameMale = 7, colDtrName = 8, colPttId = 9;
 
         C1FlexGrid grfQue;
         C1SuperTooltip stt;
@@ -82,16 +82,26 @@ namespace clinic_ivf.gui
             //FilterRow fr = new FilterRow(grfExpn);
 
             grfQue.AfterRowColChange += GrfReq_AfterRowColChange;
-            //grfExpnC.CellButtonClick += new C1.Win.C1FlexGrid.RowColEventHandler(this.grfDept_CellButtonClick);
+            grfQue.DoubleClick += GrfQue_DoubleClick;
             //grfExpnC.CellChanged += new C1.Win.C1FlexGrid.RowColEventHandler(this.grfDept_CellChanged);
-            ContextMenu menuGw = new ContextMenu();
-            
-            grfQue.ContextMenu = menuGw;
-            groupBox2.Controls.Add(grfQue);
+            //ContextMenu menuGw = new ContextMenu();
+
+            //grfQue.ContextMenu = menuGw;
+            panel1.Controls.Add(grfQue);
 
             theme1.SetTheme(grfQue, "Office2010Red");
 
         }
+
+        private void GrfQue_DoubleClick(object sender, EventArgs e)
+        {
+            //throw new NotImplementedException();
+            String id = "";
+            id = grfQue[grfQue.Row, colID].ToString();
+            FrmLabFormA frm = new FrmLabFormA(ic, id,"","","");
+            frm.ShowDialog(this);
+        }
+
         private void GrfReq_AfterRowColChange(object sender, RangeEventArgs e)
         {
             //throw new NotImplementedException();
@@ -131,36 +141,36 @@ namespace clinic_ivf.gui
             //ic.ivfDB.itmDB.setCboItem(cboproce);
             grfQue.Cols[colPttHn].Editor = txt;
             grfQue.Cols[colPttName].Editor = txt;
-            grfQue.Cols[colVsDate].Editor = txt;
+            grfQue.Cols[colFormADate].Editor = txt;
 
-            grfQue.Cols[colVN].Width = 120;
-            grfQue.Cols[colPttHn].Width = 120;
-            grfQue.Cols[colPttName].Width = 300;
-            grfQue.Cols[colVsDate].Width = 100;
-            grfQue.Cols[colVsTime].Width = 80;
-            grfQue.Cols[colVsEtime].Width = 80;
-            grfQue.Cols[colStatus].Width = 200;
+            grfQue.Cols[colCode].Width = 100;
+            grfQue.Cols[colPttHn].Width = 100;
+            grfQue.Cols[colPttName].Width = 250;
+            grfQue.Cols[colFormADate].Width = 100;
+            grfQue.Cols[colHnMale].Width = 100;
+            grfQue.Cols[colNameMale].Width = 250;
+            grfQue.Cols[colDtrName].Width = 200;
 
             grfQue.ShowCursor = true;
             //grdFlex.Cols[colID].Caption = "no";
             //grfDept.Cols[colCode].Caption = "รหัส";
 
-            grfQue.Cols[colVN].Caption = "VN";
+            grfQue.Cols[colCode].Caption = "DOC";
             grfQue.Cols[colPttHn].Caption = "HN";
             grfQue.Cols[colPttName].Caption = "Name";
-            grfQue.Cols[colVsDate].Caption = "Date";
-            grfQue.Cols[colVsTime].Caption = "Time visit";
-            grfQue.Cols[colVsEtime].Caption = "Time finish";
-            grfQue.Cols[colStatus].Caption = "Status";
+            grfQue.Cols[colFormADate].Caption = "Date";
+            grfQue.Cols[colHnMale].Caption = "HN Male";
+            grfQue.Cols[colNameMale].Caption = "Name Male";
+            grfQue.Cols[colDtrName].Caption = "Doctor ";
 
-            ContextMenu menuGw = new ContextMenu();
+            //ContextMenu menuGw = new ContextMenu();
             //menuGw.MenuItems.Add("&receive operation", new EventHandler(ContextMenu_Apm));
             //menuGw.MenuItems.Add("&receive operation", new EventHandler(ContextMenu_Apm));
-            //menuGw.MenuItems.Add("&LAB request FORM A", new EventHandler(ContextMenu_LAB_req_formA_Ptt));
+            //menuGw.MenuItems.Add("LAB request FORM A", new EventHandler(ContextMenu_LAB_req_formA_Ptt));
             //menuGw.MenuItems.Add("&Add Appointment", new EventHandler(ContextMenu_Apm_Ptt));
             //menuGw.MenuItems.Add("&Cancel Receive", new EventHandler(ContextMenu_Apm_Ptt));
             //menuGw.MenuItems.Add("&No Appointment Close Operation", new EventHandler(ContextMenu_NO_Apm_Ptt));
-            grfQue.ContextMenu = menuGw;
+            //grfQue.ContextMenu = menuGw;
 
             Color color = ColorTranslator.FromHtml(ic.iniC.grfRowColor);
             //CellRange rg1 = grfBank.GetCellRange(1, colE, grfBank.Rows.Count, colE);
@@ -170,19 +180,19 @@ namespace clinic_ivf.gui
             foreach (DataRow row in dt.Rows)
             {
                 grfQue[i, 0] = i;
-                grfQue[i, colID] = row["id"].ToString();
-                grfQue[i, colVN] = row["VN"].ToString();
-                grfQue[i, colPttHn] = row["PIDS"].ToString();
-                grfQue[i, colPttName] = row["PName"].ToString();
-                grfQue[i, colVsDate] = ic.datetoShow(row["VDate"]);
-                grfQue[i, colVsTime] = row["VStartTime"].ToString();
-                grfQue[i, colVsEtime] = row["VEndTime"].ToString();
-                grfQue[i, colStatus] = row["VName"].ToString();
-                grfQue[i, colPttId] = row["PID"].ToString();
+                grfQue[i, colID] = row["form_a_id"].ToString();
+                grfQue[i, colCode] = row["form_a_code"].ToString();
+                grfQue[i, colPttHn] = row["hn_female"].ToString();
+                grfQue[i, colPttName] = row["name_female"].ToString();
+                grfQue[i, colFormADate] = ic.datetoShow(row["form_a_date"]);
+                grfQue[i, colHnMale] = row["hn_male"].ToString();
+                grfQue[i, colNameMale] = row["name_male"].ToString();
+                grfQue[i, colDtrName] = row["doctor_name"].ToString();
+                grfQue[i, colPttId] = "";
                 if (!row[ic.ivfDB.vsOldDB.vsold.form_a_id].ToString().Equals("0"))
                 {
                     CellNote note = new CellNote("ส่ง Lab Request Foam A");
-                    CellRange rg = grfQue.GetCellRange(i, colVN);
+                    CellRange rg = grfQue.GetCellRange(i, colCode);
                     rg.UserData = note;
                 }
                 //if (i % 2 == 0)
@@ -191,7 +201,12 @@ namespace clinic_ivf.gui
             }
             CellNoteManager mgr = new CellNoteManager(grfQue);
             grfQue.Cols[colID].Visible = false;
+            grfQue.Cols[colPttId].Visible = false;
             //theme1.SetTheme(grfQue, ic.theme);
+
+        }
+        private void ContextMenu_LAB_req_formA_Ptt(object sender, System.EventArgs e)
+        {
 
         }
         private void FrmLabFormAView_Load(object sender, EventArgs e)

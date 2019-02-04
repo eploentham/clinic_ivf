@@ -210,14 +210,15 @@ namespace clinic_ivf.objdb
             }
             return re + " " + tim;
         }
-        public LabRequest setLabRequest(String pttName, String vn, String doctorId, String remark, String hn, String dobfemale, String reqid, String itmcode)
+        public LabRequest setLabRequest(String pttName, String vn, String doctorId, String remark, String hn, String dobfemale, String reqid, String itmcode
+            ,String hnmale, String namemale, String hndonor, String namedonor)
         {
             LabRequest lbReq = new LabRequest();
             lbReq.req_id = "";
             lbReq.req_code = copDB.genReqDoc();
             lbReq.req_date = System.DateTime.Now.Year.ToString() + "-" + System.DateTime.Now.ToString("MM-dd");
-            lbReq.hn_male = "";
-            lbReq.name_male = "";
+            lbReq.hn_male = hnmale;
+            lbReq.name_male = namemale;
             lbReq.hn_female = hn;
             lbReq.name_female = pttName;
             lbReq.status_req = "1";
@@ -236,11 +237,11 @@ namespace clinic_ivf.objdb
             lbReq.user_cancel = "";
             //lbReq.item_id = "112";      //OPU
             lbReq.lab_id = "";
-            lbReq.dob_donor = "";
-            lbReq.dob_female = datetoDB(dobfemale);
+            lbReq.dob_donor = datetoDB(dobfemale);
+            lbReq.dob_female = "";
             lbReq.dob_male = "";
-            lbReq.hn_donor = "";
-            lbReq.name_donor = "";
+            lbReq.hn_donor = hndonor;
+            lbReq.name_donor = namedonor;
             lbReq.doctor_id = doctorId;
             lbReq.request_id = reqid;
             lbReq.item_id = itmcode;
@@ -271,7 +272,7 @@ namespace clinic_ivf.objdb
             opu.req_id = reqid;
             opu.hn_donor = lformA.hn_donor;
             opu.name_donor = lformA.name_donor;
-            //opu.dob_female = lbreq.dob_female;
+            opu.dob_donor = lbreq.dob_donor;
             return opu;
         }
         public LabFet setFET(String reqid)

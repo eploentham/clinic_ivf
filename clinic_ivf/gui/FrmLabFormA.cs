@@ -402,8 +402,10 @@ namespace clinic_ivf.gui
                         LabRequest lbReq = new LabRequest();
                         if ((gbOPU.Enabled && chkWaitOpuDate.Checked) || (gbOPU.Enabled && chkConfirmOpuDate.Checked))
                         {
+                            String dtrid = "";
+                            dtrid = cboDoctor.SelectedItem == null ? "" : ((ComboBoxItem)cboDoctor.SelectedItem).Value;
                             reqid = ic.ivfDB.oJsDB.selectByStatusOPU(txtVnOld.Text);
-                            lbReq = ic.ivfDB.setLabRequest(txtNameFeMale.Text, txtVnOld.Text, cboDoctor.SelectedItem == null ? "" : ((ComboBoxItem)cboDoctor.SelectedItem).Value, cboRemark.Text, txtHnOld.Text, ic.datetoDB(txtDobFeMale.Text), reqid, "112");
+                            lbReq = ic.ivfDB.setLabRequest(txtNameFeMale.Text, txtVnOld.Text, dtrid, cboRemark.Text, txtHnOld.Text, ic.datetoDB(txtDobFeMale.Text), reqid, "112", txtHnMale.Text, txtNameMale.Text, txtHnDonor.Text, txtNameDonor.Text);
                             lbReq.form_a_id = re;
                             String re1 = ic.ivfDB.lbReqDB.insertLabRequest(lbReq, txtStfConfirmID.Text);
                             ic.ivfDB.lFormaDB.updateReqIdOPU(re, re1);
@@ -411,10 +413,12 @@ namespace clinic_ivf.gui
 
                         if (chkETNotoTranfer.Checked || chkFET.Checked)
                         {
+                            String dtrid = "";
+                            dtrid = cboDoctor.SelectedItem == null ? "" : ((ComboBoxItem)cboDoctor.SelectedItem).Value;
                             reqid = "";
                             lbReq = new LabRequest();
                             reqid = ic.ivfDB.oJsDB.selectByStatusFET(txtVnOld.Text);
-                            lbReq = ic.ivfDB.setLabRequest(txtNameFeMale.Text, txtVnOld.Text, cboDoctor.SelectedItem == null ? "" : ((ComboBoxItem)cboDoctor.SelectedItem).Value, cboRemark.Text, txtHnOld.Text, ic.datetoDB(txtDobFeMale.Text), reqid, "160");
+                            lbReq = ic.ivfDB.setLabRequest(txtNameFeMale.Text, txtVnOld.Text, dtrid, cboRemark.Text, txtHnOld.Text, ic.datetoDB(txtDobFeMale.Text), reqid, "160", txtHnMale.Text, txtNameMale.Text, txtHnDonor.Text, txtNameDonor.Text);
                             lbReq.form_a_id = re;
                             String re2 = ic.ivfDB.lbReqDB.insertLabRequest(lbReq, txtStfConfirmID.Text);
                             if (chkFET.Checked)

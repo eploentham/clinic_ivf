@@ -153,6 +153,7 @@ namespace clinic_ivf.objdb
             opu.hn_donor = "hn_donor";
             opu.name_donor = "name_donor";
             opu.remark_1 = "remark_1";
+            opu.dob_donor = "dob_donor";
 
             opu.table = "lab_t_opu";
             opu.pkField = "opu_id";
@@ -320,6 +321,7 @@ namespace clinic_ivf.objdb
 
             p.remark = p.remark == null ? "" : p.remark;
             p.remark_1 = p.remark_1 == null ? "" : p.remark_1;
+            p.dob_donor = p.dob_donor == null ? "" : p.dob_donor;
 
             p.doctor_id = int.TryParse(p.doctor_id, out chk) ? chk.ToString() : "0";
             p.proce_id = int.TryParse(p.proce_id, out chk) ? chk.ToString() : "0";
@@ -366,6 +368,7 @@ namespace clinic_ivf.objdb
                 "," + opu.hn_donor + " = '" + p.hn_donor + "'" +
                 "," + opu.name_donor + " = '" + p.name_donor + "'" +
                 "," + opu.remark_1 + " = '" + p.remark_1 + "'" +
+                "," + opu.dob_donor + " = '" + p.dob_donor + "'" +
                "";
             try
             {
@@ -405,6 +408,7 @@ namespace clinic_ivf.objdb
                 "," + opu.hn_donor + " = '" + p.hn_donor + "' " +
                 "," + opu.name_donor + " = '" + p.name_donor + "' " +
                 "," + opu.remark_1 + " = '" + p.remark_1 + "' " +
+                "," + opu.dob_donor + " = '" + p.dob_donor + "'" +
                 "Where " + opu.pkField + "='" + p.opu_id + "'";
 
             try
@@ -755,6 +759,7 @@ namespace clinic_ivf.objdb
                 opu1.hn_donor = dt.Rows[0][opu.hn_donor].ToString();
                 opu1.name_donor = dt.Rows[0][opu.name_donor].ToString();
                 opu1.remark_1 = dt.Rows[0][opu.remark_1].ToString();
+                opu1.dob_donor = dt.Rows[0][opu.dob_donor].ToString();
             }
             else
             {
@@ -889,6 +894,7 @@ namespace clinic_ivf.objdb
                 opu1.hn_donor = "";
                 opu1.name_donor = "";
                 opu1.remark_1 = "";
+                opu1.dob_donor = "";
             }
 
             return opu1;
