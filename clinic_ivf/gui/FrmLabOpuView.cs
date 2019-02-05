@@ -213,8 +213,8 @@ namespace clinic_ivf.gui
             grfReq.Cols[colOPUTimeModi].Caption = "opu time old";
             grfReq.Cols[colRqHnMale].Caption = "HN male";
             grfReq.Cols[colRqNameMale].Caption = "Name male";
-            grfReq.Cols[colRqHnDonor].Caption = "HN male";
-            grfReq.Cols[colRqNameDonor].Caption = "Name male";
+            grfReq.Cols[colRqHnDonor].Caption = "HN donor";
+            grfReq.Cols[colRqNameDonor].Caption = "Name donor";
 
             Color color = ColorTranslator.FromHtml(ic.iniC.grfRowColor);
             //CellRange rg1 = grfBank.GetCellRange(1, colE, grfBank.Rows.Count, colE);
