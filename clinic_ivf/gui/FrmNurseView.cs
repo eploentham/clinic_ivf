@@ -63,6 +63,7 @@ namespace clinic_ivf.gui
             txtDateStart.DropDownClosed += TxtDateStart_DropDownClosed;
             tC.SelectedTabChanged += TC_SelectedTabChanged;
             btnSearch.Click += BtnSearch_Click;
+            txtSearch.KeyUp += TxtSearch_KeyUp1;
 
             initGrfQue();
             setGrfQue();
@@ -74,12 +75,21 @@ namespace clinic_ivf.gui
             initGrfLab();
         }
 
+        private void TxtSearch_KeyUp1(object sender, KeyEventArgs e)
+        {
+            //throw new NotImplementedException();
+            if(e.KeyCode == Keys.Enter)
+            {
+                setGrfSearch(txtSearch.Text.Trim());
+            }
+        }
+
         private void BtnSearch_Click(object sender, EventArgs e)
         {
             //throw new NotImplementedException();
             if (chkLabFormA.Checked)
             {
-                
+                setGrfSearch(txtSearch.Text.Trim());
             }
             else
             {
@@ -544,7 +554,7 @@ namespace clinic_ivf.gui
             }
             else
             {
-                dt = ic.ivfDB.vsOldDB.selectByHnFormA(search);
+                dt = ic.ivfDB.vsOldDB.selectByHNLike(search);
                 //grfPtt.DataSource = ic.ivfDB.vsOldDB.selectCurrentVisit(search);
             }
 
@@ -581,7 +591,7 @@ namespace clinic_ivf.gui
             ContextMenu menuGw = new ContextMenu();
             //menuGw.MenuItems.Add("&receive operation", new EventHandler(ContextMenu_Apm));
             //menuGw.MenuItems.Add("&receive operation", new EventHandler(ContextMenu_Apm));
-            menuGw.MenuItems.Add("&LAB request FORM A", new EventHandler(ContextMenu_LAB_req_formA_Ptt));
+            menuGw.MenuItems.Add("&LAB request FORM A", new EventHandler(ContextMenu_LAB_req_formA_Ptt_search));
             //menuGw.MenuItems.Add("&Add Appointment", new EventHandler(ContextMenu_Apm_Ptt));
             //menuGw.MenuItems.Add("&Cancel Receive", new EventHandler(ContextMenu_Apm_Ptt));
             //menuGw.MenuItems.Add("&No Appointment Close Operation", new EventHandler(ContextMenu_NO_Apm_Ptt));
@@ -1054,6 +1064,20 @@ namespace clinic_ivf.gui
                 //grfReq.Rows.Remove(grfReq.Row);
                 //openPatientAdd(id, name);
             //}
+        }
+        private void ContextMenu_LAB_req_formA_Ptt_search(object sender, System.EventArgs e)
+        {
+            String chk = "", name = "", vsid = "", pttId = "";
+            if (grfSearch.Row < 0) return;
+            vsid = grfSearch[grfSearch.Row, colSID] != null ? grfSearch[grfSearch.Row, colSID].ToString() : "";
+            pttId = grfSearch[grfSearch.Row, colPttId] != null ? grfSearch[grfSearch.Row, colPttId].ToString() : "";
+            chk = grfSearch[grfSearch.Row, colPttHn] != null ? grfSearch[grfSearch.Row, colPttHn].ToString() : "";
+            name = grfSearch[grfSearch.Row, colPttName] != null ? grfSearch[grfSearch.Row, colPttName].ToString() : "";
+            
+            FrmLabFormA frm = new FrmLabFormA(ic, "", pttId, "", vsid);
+            frm.ShowDialog(this);
+            setGrfSearch(txtSearch.Text.Trim());
+            
         }
         private void ContextMenu_LAB_req_formA_Ptt(object sender, System.EventArgs e)
         {

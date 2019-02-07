@@ -32,6 +32,7 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.tC = new C1.Win.C1Command.C1DockingTab();
             this.tabWaiting = new C1.Win.C1Command.C1DockingTabPage();
+            this.pnQue = new System.Windows.Forms.Panel();
             this.tabDiag = new C1.Win.C1Command.C1DockingTabPage();
             this.pnDiag = new System.Windows.Forms.Panel();
             this.tabFinish = new C1.Win.C1Command.C1DockingTabPage();
@@ -39,17 +40,16 @@
             this.tabLab = new C1.Win.C1Command.C1DockingTabPage();
             this.pnLab = new System.Windows.Forms.Panel();
             this.tabSearch = new C1.Win.C1Command.C1DockingTabPage();
-            this.sB = new System.Windows.Forms.StatusStrip();
-            this.sB1 = new System.Windows.Forms.ToolStripStatusLabel();
-            this.pnQue = new System.Windows.Forms.Panel();
-            this.panel3 = new System.Windows.Forms.Panel();
             this.pnSearch = new System.Windows.Forms.Panel();
+            this.panel3 = new System.Windows.Forms.Panel();
             this.chkLabFormA = new C1.Win.C1Input.C1CheckBox();
             this.btnSearch = new C1.Win.C1Input.C1Button();
             this.label11 = new System.Windows.Forms.Label();
             this.txtDateStart = new C1.Win.C1Input.C1DateEdit();
             this.label4 = new System.Windows.Forms.Label();
             this.txtSearch = new C1.Win.C1Input.C1TextBox();
+            this.sB = new System.Windows.Forms.StatusStrip();
+            this.sB1 = new System.Windows.Forms.ToolStripStatusLabel();
             ((System.ComponentModel.ISupportInitialize)(this.theme1)).BeginInit();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tC)).BeginInit();
@@ -59,12 +59,12 @@
             this.tabFinish.SuspendLayout();
             this.tabLab.SuspendLayout();
             this.tabSearch.SuspendLayout();
-            this.sB.SuspendLayout();
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chkLabFormA)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnSearch)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtDateStart)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtSearch)).BeginInit();
+            this.sB.SuspendLayout();
             this.SuspendLayout();
             // 
             // theme1
@@ -113,6 +113,17 @@
             this.tabWaiting.Size = new System.Drawing.Size(1069, 653);
             this.tabWaiting.TabIndex = 0;
             this.tabWaiting.Text = "waiting in queue";
+            // 
+            // pnQue
+            // 
+            this.pnQue.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.pnQue.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pnQue.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.pnQue.Location = new System.Drawing.Point(0, 0);
+            this.pnQue.Name = "pnQue";
+            this.pnQue.Size = new System.Drawing.Size(1069, 653);
+            this.pnQue.TabIndex = 2;
+            this.theme1.SetTheme(this.pnQue, "(default)");
             // 
             // tabDiag
             // 
@@ -184,32 +195,16 @@
             this.tabSearch.TabIndex = 3;
             this.tabSearch.Text = "Search";
             // 
-            // sB
+            // pnSearch
             // 
-            this.sB.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.sB1});
-            this.sB.Location = new System.Drawing.Point(0, 678);
-            this.sB.Name = "sB";
-            this.sB.Size = new System.Drawing.Size(1071, 22);
-            this.sB.TabIndex = 526;
-            this.sB.Text = "statusStrip1";
-            // 
-            // sB1
-            // 
-            this.sB1.Name = "sB1";
-            this.sB1.Size = new System.Drawing.Size(118, 17);
-            this.sB1.Text = "toolStripStatusLabel1";
-            // 
-            // pnQue
-            // 
-            this.pnQue.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.pnQue.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnQue.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.pnQue.Location = new System.Drawing.Point(0, 0);
-            this.pnQue.Name = "pnQue";
-            this.pnQue.Size = new System.Drawing.Size(1069, 653);
-            this.pnQue.TabIndex = 2;
-            this.theme1.SetTheme(this.pnQue, "(default)");
+            this.pnSearch.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.pnSearch.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pnSearch.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.pnSearch.Location = new System.Drawing.Point(0, 36);
+            this.pnSearch.Name = "pnSearch";
+            this.pnSearch.Size = new System.Drawing.Size(1069, 617);
+            this.pnSearch.TabIndex = 2;
+            this.theme1.SetTheme(this.pnSearch, "(default)");
             // 
             // panel3
             // 
@@ -228,17 +223,6 @@
             this.panel3.TabIndex = 1;
             this.theme1.SetTheme(this.panel3, "(default)");
             // 
-            // pnSearch
-            // 
-            this.pnSearch.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.pnSearch.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnSearch.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.pnSearch.Location = new System.Drawing.Point(0, 36);
-            this.pnSearch.Name = "pnSearch";
-            this.pnSearch.Size = new System.Drawing.Size(1069, 617);
-            this.pnSearch.TabIndex = 2;
-            this.theme1.SetTheme(this.pnSearch, "(default)");
-            // 
             // chkLabFormA
             // 
             this.chkLabFormA.BackColor = System.Drawing.Color.Transparent;
@@ -247,7 +231,7 @@
             this.chkLabFormA.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.chkLabFormA.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.chkLabFormA.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.chkLabFormA.Location = new System.Drawing.Point(511, 6);
+            this.chkLabFormA.Location = new System.Drawing.Point(483, 6);
             this.chkLabFormA.Name = "chkLabFormA";
             this.chkLabFormA.Padding = new System.Windows.Forms.Padding(4, 1, 1, 1);
             this.chkLabFormA.Size = new System.Drawing.Size(140, 24);
@@ -260,7 +244,7 @@
             // 
             // btnSearch
             // 
-            this.btnSearch.Location = new System.Drawing.Point(673, 4);
+            this.btnSearch.Location = new System.Drawing.Point(744, 5);
             this.btnSearch.Name = "btnSearch";
             this.btnSearch.Size = new System.Drawing.Size(28, 23);
             this.btnSearch.TabIndex = 736;
@@ -361,6 +345,22 @@
             this.theme1.SetTheme(this.txtSearch, "(default)");
             this.txtSearch.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
             // 
+            // sB
+            // 
+            this.sB.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.sB1});
+            this.sB.Location = new System.Drawing.Point(0, 678);
+            this.sB.Name = "sB";
+            this.sB.Size = new System.Drawing.Size(1071, 22);
+            this.sB.TabIndex = 526;
+            this.sB.Text = "statusStrip1";
+            // 
+            // sB1
+            // 
+            this.sB1.Name = "sB1";
+            this.sB1.Size = new System.Drawing.Size(118, 17);
+            this.sB1.Text = "toolStripStatusLabel1";
+            // 
             // FrmNurseView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -380,14 +380,14 @@
             this.tabFinish.ResumeLayout(false);
             this.tabLab.ResumeLayout(false);
             this.tabSearch.ResumeLayout(false);
-            this.sB.ResumeLayout(false);
-            this.sB.PerformLayout();
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chkLabFormA)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnSearch)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtDateStart)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtSearch)).EndInit();
+            this.sB.ResumeLayout(false);
+            this.sB.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 

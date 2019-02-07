@@ -248,6 +248,21 @@ namespace clinic_ivf.objdb
 
             return dt;
         }
+        public DataTable selectByHNLike(String hn)
+        {
+            DataTable dt = new DataTable();
+            //String date = System.DateTime.Now.Year + "-" + System.DateTime.Now.ToString("MM-dd");
+            String sql = "select vsold.VN as id,vsold.VN, vsold.PIDS, vsold.PName, vsold.VDate, vsold.VStartTime, vsold.VEndTime, VStatus.VName, vsold.VSID, vsold.PID, Patient.DateOfBirth as dob " +
+                ",vsold.form_a_id " +
+                "From " + vsold.table + " vsold " +
+                "Left Join VStatus on  VStatus.VSID = vsold.VSID " +
+                "Left Join Patient on  vsold.PID = Patient.PID " +
+                "Where vsold." + vsold.PIDS + " like '%" + hn + "%' " +
+                "Order By vsold.VN desc ";
+            dt = conn.selectData(conn.conn, sql);
+
+            return dt;
+        }
         public DataTable selectCurrentVisit()
         {
             DataTable dt = new DataTable();
