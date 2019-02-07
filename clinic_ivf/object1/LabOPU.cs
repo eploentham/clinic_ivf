@@ -141,5 +141,6 @@ namespace clinic_ivf.object1
         public String name_donor { get; set; }
         public String remark_1 { get; set; }
         public String dob_donor { get; set; }
+        public String approve_result_staff_id { get; set; }
     }
 }

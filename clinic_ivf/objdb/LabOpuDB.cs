@@ -154,6 +154,7 @@ namespace clinic_ivf.objdb
             opu.name_donor = "name_donor";
             opu.remark_1 = "remark_1";
             opu.dob_donor = "dob_donor";
+            opu.approve_result_staff_id = "approve_result_staff_id";
 
             opu.table = "lab_t_opu";
             opu.pkField = "opu_id";
@@ -297,7 +298,7 @@ namespace clinic_ivf.objdb
         }
         private void chkNull(LabOpu p)
         {
-            int chk = 0;
+            long chk = 0;
 
             p.date_modi = p.date_modi == null ? "" : p.date_modi;
             p.date_cancel = p.date_cancel == null ? "" : p.date_cancel;
@@ -323,13 +324,14 @@ namespace clinic_ivf.objdb
             p.remark_1 = p.remark_1 == null ? "" : p.remark_1;
             p.dob_donor = p.dob_donor == null ? "" : p.dob_donor;
 
-            p.doctor_id = int.TryParse(p.doctor_id, out chk) ? chk.ToString() : "0";
-            p.proce_id = int.TryParse(p.proce_id, out chk) ? chk.ToString() : "0";
-            p.req_id = int.TryParse(p.req_id, out chk) ? chk.ToString() : "0";
-            p.embryo_freez_stage = int.TryParse(p.embryo_freez_stage, out chk) ? chk.ToString() : "0";
-            p.embryo_for_et_embryologist_id = int.TryParse(p.embryo_for_et_embryologist_id, out chk) ? chk.ToString() : "0";
-            p.embryologist_approve_id = int.TryParse(p.embryologist_approve_id, out chk) ? chk.ToString() : "0";
-            p.embryologist_report_id = int.TryParse(p.embryologist_report_id, out chk) ? chk.ToString() : "0";
+            p.doctor_id = long.TryParse(p.doctor_id, out chk) ? chk.ToString() : "0";
+            p.proce_id = long.TryParse(p.proce_id, out chk) ? chk.ToString() : "0";
+            p.req_id = long.TryParse(p.req_id, out chk) ? chk.ToString() : "0";
+            p.embryo_freez_stage = long.TryParse(p.embryo_freez_stage, out chk) ? chk.ToString() : "0";
+            p.embryo_for_et_embryologist_id = long.TryParse(p.embryo_for_et_embryologist_id, out chk) ? chk.ToString() : "0";
+            p.embryologist_approve_id = long.TryParse(p.embryologist_approve_id, out chk) ? chk.ToString() : "0";
+            p.embryologist_report_id = long.TryParse(p.embryologist_report_id, out chk) ? chk.ToString() : "0";
+            p.approve_result_staff_id = long.TryParse(p.approve_result_staff_id, out chk) ? chk.ToString() : "0";
         }
         public String insert(LabOpu p, String userId)
         {
@@ -621,6 +623,29 @@ namespace clinic_ivf.objdb
 
             return re;
         }
+        public String updateStatusOPUApproveResult(String opuid, String userId)
+        {
+            String re = "";
+            String sql = "";
+            int chk = 0;
+
+            //chkNull(p);
+            sql = "Update " + opu.table + " Set " +
+                " " + opu.status_opu + " = '2'" +
+                "," + opu.approve_result_staff_id + " = '" + userId + "'" +
+                "Where " + opu.pkField + "='" + opuid + "'"
+                ;
+            try
+            {
+                re = conn.ExecuteNonQuery(conn.conn, sql);
+            }
+            catch (Exception ex)
+            {
+                sql = ex.Message + " " + ex.InnerException;
+            }
+
+            return re;
+        }
         public LabOpu setLabOPU(DataTable dt)
         {
             LabOpu opu1 = new LabOpu();
@@ -760,6 +785,7 @@ namespace clinic_ivf.objdb
                 opu1.name_donor = dt.Rows[0][opu.name_donor].ToString();
                 opu1.remark_1 = dt.Rows[0][opu.remark_1].ToString();
                 opu1.dob_donor = dt.Rows[0][opu.dob_donor].ToString();
+                opu1.approve_result_staff_id = dt.Rows[0][opu.approve_result_staff_id].ToString();
             }
             else
             {
@@ -895,6 +921,7 @@ namespace clinic_ivf.objdb
                 opu1.name_donor = "";
                 opu1.remark_1 = "";
                 opu1.dob_donor = "";
+                opu1.approve_result_staff_id = "";
             }
 
             return opu1;

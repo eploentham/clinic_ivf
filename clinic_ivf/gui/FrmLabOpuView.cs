@@ -170,7 +170,7 @@ namespace clinic_ivf.gui
                 dateend1 = ic.datetoDB(txtDateEnd.Text);
             }
             //dt = ic.ivfDB.lbReqDB.selectByStatusReqAccept();
-            dt = ic.ivfDB.oJsDB.selectByStatusUnAccept2(datestart1, dateend1);
+            dt = ic.ivfDB.lbReqDB.selectByStatusUnAccept3(datestart1, dateend1);
             //grfExpn.Rows.Count = dt.Rows.Count + 1;
             grfReq.Rows.Count = 1;
             grfReq.Cols.Count = 18;

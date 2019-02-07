@@ -87,5 +87,8 @@ namespace clinic_ivf.object1
         public String status_wait_confirm_fet_date { get; set; }
         public String opu_time_modi { get; set; }
         public String status_opu_time_modi { get; set; }
+        public String fet_day { get; set; }
+        public String fet1_day { get; set; }
+        public String frozen_sperm_date { get; set; }
     }
 }

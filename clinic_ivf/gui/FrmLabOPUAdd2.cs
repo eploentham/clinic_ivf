@@ -136,7 +136,9 @@ namespace clinic_ivf.gui
 
             btnHnSearch.Click += BtnHnSearch_Click;
             btnDonorSearch.Click += BtnDonorSearch_Click;
-            
+            btnApproveResult.Click += BtnApproveResult_Click;
+
+
             setFocusColor();
             initGrf();
             setControl();
@@ -145,6 +147,29 @@ namespace clinic_ivf.gui
             char c = '\u00B5';
             label86.Text = c.ToString()+"l";
         }
+
+        private void BtnApproveResult_Click(object sender, EventArgs e)
+        {
+            //throw new NotImplementedException();
+            if (MessageBox.Show("ต้องการ ส่งผล LAB OPU ให้ทางพยาบาล  ", "", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == DialogResult.OK)
+            {
+                ic.cStf.staff_id = "";
+                Boolean chkSave = false;
+                FrmPasswordConfirm frm = new FrmPasswordConfirm(ic);
+                frm.ShowDialog(this);
+                if (!ic.cStf.staff_id.Equals(""))
+                {
+                    long chk1 = 0;
+                    String re = ic.ivfDB.opuDB.updateStatusOPUApproveResult(txtID.Text, ic.user.staff_id);
+                    if (long.TryParse(re, out chk1))
+                    {
+                        MessageBox.Show("ส่งผล LAB OPU ให้ทางพยาบาล เรียบร้อย ", "");       //clinic_ivf.Properties.Resources.Female_user_accept_24
+                        btnApproveResult.Image = Resources.Female_user_accept_24;
+                    }
+                }
+            }
+        }
+
         private void setTheme()
         {
             theme1.SetTheme(sB, "BeigeOne");
@@ -2290,6 +2315,19 @@ namespace clinic_ivf.gui
             ic.setC1ComboByName(cboRemark1, opu.remark_1);
             txtDatePicEmbryo.Value = opu.date_pic_embryo;
             //CboEmbryoDay.Text = opu.emb
+            if (opu.status_opu.Equals("2"))
+            {
+                btnApproveResult.Image = Resources.Female_user_accept_24;
+                btnApproveResult.Text = "รายงานผล เรียบร้อย";
+                String appr = "";
+                appr = ic.ivfDB.stfDB.getStaffNameBylStf(opu.approve_result_staff_id);
+                txtApproveResult.Value = appr;
+            }
+            else
+            {
+                btnApproveResult.Image = Resources.Female_user_add_24;
+                btnApproveResult.Text = "รอ รายงานผล ";
+            }
         }
         private void setOPU()
         {

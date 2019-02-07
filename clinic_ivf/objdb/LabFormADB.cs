@@ -101,6 +101,9 @@ namespace clinic_ivf.objdb
             lformA.status_wait_confirm_fet_date = "status_wait_confirm_fet_date";
             lformA.opu_time_modi = "opu_time_modi";
             lformA.status_opu_time_modi = "status_opu_time_modi";
+            lformA.fet_day = "fet_day";
+            lformA.fet1_day = "fet1_day";
+            lformA.frozen_sperm_date = "frozen_sperm_date";
 
             lformA.pkField = "form_a_id";
             lformA.table = "lab_t_form_a";
@@ -181,7 +184,9 @@ namespace clinic_ivf.objdb
             p.status_wait_confirm_fet_date = p.status_wait_confirm_fet_date == null ? "0" : p.status_wait_confirm_fet_date;
             p.opu_time_modi = p.opu_time_modi == null ? "" : p.opu_time_modi;
             p.status_opu_time_modi = p.status_opu_time_modi == null ? "0" : p.status_opu_time_modi;
-            //p.sperm_collect = p.sperm_collect == null ? "0" : p.sperm_collect;
+            p.fet1_day = p.fet1_day == null ? "" : p.fet1_day;
+            p.fet_day = p.fet_day == null ? "" : p.fet_day;
+            p.frozen_sperm_date = p.frozen_sperm_date == null ? "" : p.frozen_sperm_date;
 
             p.t_patient_id = long.TryParse(p.t_patient_id, out chk) ? chk.ToString() : "0";
             p.t_visit_id = long.TryParse(p.t_visit_id, out chk) ? chk.ToString() : "0";
@@ -282,6 +287,9 @@ namespace clinic_ivf.objdb
                     "," + lformA.status_wait_confirm_fet_date + "='" + p.status_wait_confirm_fet_date + "' " +
                     "," + lformA.opu_time_modi + "='" + p.opu_time_modi + "' " +
                     "," + lformA.status_opu_time_modi + "='" + p.status_opu_time_modi + "' " +
+                    "," + lformA.fet1_day + "='" + p.fet1_day + "' " +
+                    "," + lformA.fet_day + "='" + p.fet_day + "' " +
+                    "," + lformA.frozen_sperm_date + "='" + p.frozen_sperm_date + "' " +
                     "";
                 re = conn.ExecuteNonQuery(conn.conn, sql);
             }
@@ -371,6 +379,9 @@ namespace clinic_ivf.objdb
                     "," + lformA.status_wait_confirm_fet_date + "='" + p.status_wait_confirm_fet_date + "' " +
                     "," + lformA.opu_time_modi + "='" + p.opu_time_modi + "' " +
                     "," + lformA.status_opu_time_modi + "='" + p.status_opu_time_modi + "' " +
+                    "," + lformA.fet1_day + "='" + p.fet1_day + "' " +
+                    "," + lformA.fet_day + "='" + p.fet_day + "' " +
+                    "," + lformA.frozen_sperm_date + "='" + p.frozen_sperm_date + "' " +
                 " Where " + lformA.pkField + " = '" + p.form_a_id + "' "
                 ;
             try
@@ -534,7 +545,7 @@ namespace clinic_ivf.objdb
 
             if (!hnfemale.Equals(""))
             {
-                wherehnfemale = " and "+ lformA.hn_female+" like '%"+"%' ";
+                wherehnfemale = " and "+ lformA.hn_female+" like '%"+ hnfemale + "%' ";
             }
             if(!datestart.Equals("") && !dateend.Equals(""))
             {
@@ -543,6 +554,10 @@ namespace clinic_ivf.objdb
             else if(!datestart.Equals("") && dateend.Equals(""))
             {
                 wheredate = " lformA." + lformA.form_a_date + " = '" + datestart + "' ";
+            }
+            if((hnfemale.Length>0) && (datestart.Length==0) && (dateend.Length==0))
+            {
+                wherehnfemale = wherehnfemale.Replace("and", "");
             }
             sql = "select lformA.*,CONCAT(IFNULL(sfn.SurfixName,''),' ', ptt_f.PName ,' ',ptt_f.PSurname ) as name_female  " +
                 ",CONCAT(IFNULL(sfnm.SurfixName,''),' ', ptt_m.PName ,' ',ptt_m.PSurname ) as name_male, dtr.Name as doctor_name " +
@@ -780,6 +795,9 @@ namespace clinic_ivf.objdb
                 vs1.status_wait_confirm_fet_date = dt.Rows[0][lformA.status_wait_confirm_fet_date].ToString();
                 vs1.opu_time_modi = dt.Rows[0][lformA.opu_time_modi].ToString();
                 vs1.status_opu_time_modi = dt.Rows[0][lformA.status_opu_time_modi].ToString();
+                vs1.fet_day = dt.Rows[0][lformA.fet_day].ToString();
+                vs1.fet1_day = dt.Rows[0][lformA.fet1_day].ToString();
+                vs1.frozen_sperm_date = dt.Rows[0][lformA.frozen_sperm_date].ToString();
             }
             else
             {
@@ -868,6 +886,9 @@ namespace clinic_ivf.objdb
             lforma1.status_wait_confirm_fet_date = "";
             lforma1.opu_time_modi = "";
             lforma1.status_opu_time_modi = "";
+            lforma1.fet1_day = "";
+            lforma1.fet_day = "";
+            lforma1.frozen_sperm_date = "";
             return lforma1;
         }
     }

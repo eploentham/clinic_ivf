@@ -44,6 +44,8 @@ namespace clinic_ivf.gui
             ic.ivfDB.dtrOldDB.setCboDoctor(cboDoctor, "");
             ic.ivfDB.lFormaDB.setCboRemark(cboRemark);
             ic.ivfDB.lFormaDB.setCboOPUWaitRemark(cboOPUWaitRemark);
+            ic.setCboDay(cboFetDay, "");
+            ic.setCboDay(cboFet1Day, "");
             txtFormADate.Value = DateTime.Now.Year + "-" + DateTime.Now.ToString("MM-dd");
             setControl();
 
@@ -60,6 +62,7 @@ namespace clinic_ivf.gui
             btnPrint.Click += BtnPrint_Click;
             btmDonorSearch.Click += BtmDonorSearch_Click;
             btnFemaleSearch.Click += BtnFemaleSearch_Click;
+            chkFrozenSperm.CheckStateChanged += ChkFrozenSperm_CheckStateChanged;
 
             ChkEmbryoTranfer_CheckStateChanged(null, null);
             ChkNgs_CheckedChanged(null, null);
@@ -80,9 +83,11 @@ namespace clinic_ivf.gui
             chkOpuTimeModi.CheckedChanged += ChkOpuTimeModi_CheckedChanged;
             chkOpuTimeModi.Checked = false;
             ChkOpuTimeModi_CheckedChanged(null, null);
+            ChkFrozenSperm_CheckStateChanged(null, null);
             chkOPUActive.Checked = true;
             chkFetActive.Checked = true;
             chkConfirmFetDate.Checked = true;
+            chkWaitOpuDate.Checked = true;
             //statusOPU = ic.ivfDB.oJsDB.chkByOPU(vsidOld);
             //statusFET = ic.ivfDB.oJsDB.chkByFET(vsidOld);
             statusOPU = "-";
@@ -99,6 +104,19 @@ namespace clinic_ivf.gui
             lbMessage1.Text = "";
             sB1.Text = "";
         }
+
+        private void ChkFrozenSperm_CheckStateChanged(object sender, EventArgs e)
+        {
+            //throw new NotImplementedException();
+            if (chkFrozenSperm.Checked)
+            {
+                txtFrozenSpermDate.Enabled = true;
+            }
+            else
+            {
+                txtFrozenSpermDate.Enabled = false;
+            }
+        }                
 
         private void BtnFemaleSearch_Click(object sender, EventArgs e)
         {
@@ -344,7 +362,9 @@ namespace clinic_ivf.gui
             lFormA.status_wait_confirm_fet_date = chkConfirmFetDate.Checked ? "2" : chkWaitFetDate.Checked ? "1" : "0";
             lFormA.opu_time_modi = txtOPUTimeModi.Text;
             lFormA.status_opu_time_modi = chkOpuTimeModi.Checked ? "1" : "0";
-            
+            lFormA.fet_day = cboFetDay.SelectedItem == null ? "" : ((ComboBoxItem)cboFetDay.SelectedItem).Value;
+            lFormA.fet1_day = cboFet1Day.SelectedItem == null ? "" : ((ComboBoxItem)cboFet1Day.SelectedItem).Value;
+            lFormA.frozen_sperm_date = ic.datetoDB(txtFrozenSpermDate.Text);
         }
         private void BtnSave_Click(object sender, EventArgs e)
         {
@@ -408,7 +428,7 @@ namespace clinic_ivf.gui
                             lbReq = ic.ivfDB.setLabRequest(txtNameFeMale.Text, txtVnOld.Text, dtrid, cboRemark.Text, txtHnOld.Text, ic.datetoDB(txtDobFeMale.Text), reqid, "112", txtHnMale.Text, txtNameMale.Text, txtHnDonor.Text, txtNameDonor.Text);
                             lbReq.form_a_id = re;
                             String re1 = ic.ivfDB.lbReqDB.insertLabRequest(lbReq, txtStfConfirmID.Text);
-                            ic.ivfDB.lFormaDB.updateReqIdOPU(re, re1);
+                            String re2 = ic.ivfDB.lFormaDB.updateReqIdOPU(re, re1);
                         }
 
                         if (chkETNotoTranfer.Checked || chkFET.Checked)
@@ -423,7 +443,7 @@ namespace clinic_ivf.gui
                             String re2 = ic.ivfDB.lbReqDB.insertLabRequest(lbReq, txtStfConfirmID.Text);
                             if (chkFET.Checked)
                             {
-                                ic.ivfDB.lFormaDB.updateReqIdFet(re, re2);
+                                String re3 = ic.ivfDB.lFormaDB.updateReqIdFet(re, re2);
                             }
                         }
                     }
@@ -651,6 +671,10 @@ namespace clinic_ivf.gui
                 lbMessage.Text = "";
                 lbMessage.ForeColor = Color.Black;
             }
+            txtFrozenSpermDate.Value = lFormA.frozen_sperm_date;
+            ic.setC1Combo(cboFetDay, lFormA.fet_day);
+            ic.setC1Combo(cboFet1Day, lFormA.fet1_day);
+            
         }
         private void FrmLabOPUReq_Load(object sender, EventArgs e)
         {

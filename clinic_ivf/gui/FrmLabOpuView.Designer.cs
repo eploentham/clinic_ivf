@@ -69,9 +69,6 @@
             this.c1DateEdit5 = new C1.Win.C1Input.C1DateEdit();
             this.label3 = new System.Windows.Forms.Label();
             this.c1Button3 = new C1.Win.C1Input.C1Button();
-            this.c1SplitButton1 = new C1.Win.C1Input.C1SplitButton();
-            this.dropDownItem1 = new C1.Win.C1Input.DropDownItem();
-            this.dropDownItem2 = new C1.Win.C1Input.DropDownItem();
             this.sB.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.theme1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.c1TextBox14)).BeginInit();
@@ -99,7 +96,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.c1DateEdit3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.c1DateEdit5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.c1Button3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.c1SplitButton1)).BeginInit();
             this.SuspendLayout();
             // 
             // sB
@@ -337,9 +333,9 @@
             this.gB.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
             this.gB.Dock = System.Windows.Forms.DockStyle.Fill;
             this.gB.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.gB.Location = new System.Drawing.Point(0, 66);
+            this.gB.Location = new System.Drawing.Point(0, 47);
             this.gB.Name = "gB";
-            this.gB.Size = new System.Drawing.Size(1210, 636);
+            this.gB.Size = new System.Drawing.Size(1210, 655);
             this.gB.TabIndex = 1;
             this.gB.TabStop = false;
             this.gB.Text = "groupBox2";
@@ -348,7 +344,6 @@
             // groupBox1
             // 
             this.groupBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.groupBox1.Controls.Add(this.c1SplitButton1);
             this.groupBox1.Controls.Add(this.txtHn);
             this.groupBox1.Controls.Add(this.btnSearchA);
             this.groupBox1.Controls.Add(this.txtDateEnd);
@@ -360,7 +355,7 @@
             this.groupBox1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
             this.groupBox1.Location = new System.Drawing.Point(0, 0);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(1210, 66);
+            this.groupBox1.Size = new System.Drawing.Size(1210, 47);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Search";
@@ -371,7 +366,7 @@
             this.txtHn.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtHn.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
             this.txtHn.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.txtHn.Location = new System.Drawing.Point(519, 27);
+            this.txtHn.Location = new System.Drawing.Point(519, 18);
             this.txtHn.Name = "txtHn";
             this.txtHn.Size = new System.Drawing.Size(29, 20);
             this.txtHn.TabIndex = 522;
@@ -382,7 +377,7 @@
             // 
             // btnSearchA
             // 
-            this.btnSearchA.Location = new System.Drawing.Point(471, 24);
+            this.btnSearchA.Location = new System.Drawing.Point(471, 15);
             this.btnSearchA.Name = "btnSearchA";
             this.btnSearchA.Size = new System.Drawing.Size(28, 23);
             this.btnSearchA.TabIndex = 517;
@@ -428,7 +423,7 @@
             | C1.Win.C1Input.FormatInfoInheritFlags.TrimEnd)));
             this.txtDateEnd.GMTOffset = System.TimeSpan.Parse("00:00:00");
             this.txtDateEnd.ImagePadding = new System.Windows.Forms.Padding(0);
-            this.txtDateEnd.Location = new System.Drawing.Point(323, 26);
+            this.txtDateEnd.Location = new System.Drawing.Point(323, 17);
             this.txtDateEnd.Name = "txtDateEnd";
             this.txtDateEnd.Size = new System.Drawing.Size(129, 18);
             this.txtDateEnd.TabIndex = 514;
@@ -442,7 +437,7 @@
             this.label1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.label1.Location = new System.Drawing.Point(247, 27);
+            this.label1.Location = new System.Drawing.Point(247, 18);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(70, 16);
             this.label1.TabIndex = 513;
@@ -486,7 +481,7 @@
             | C1.Win.C1Input.FormatInfoInheritFlags.TrimEnd)));
             this.txtDateStart.GMTOffset = System.TimeSpan.Parse("00:00:00");
             this.txtDateStart.ImagePadding = new System.Windows.Forms.Padding(0);
-            this.txtDateStart.Location = new System.Drawing.Point(90, 26);
+            this.txtDateStart.Location = new System.Drawing.Point(90, 17);
             this.txtDateStart.Name = "txtDateStart";
             this.txtDateStart.Size = new System.Drawing.Size(129, 18);
             this.txtDateStart.TabIndex = 512;
@@ -500,7 +495,7 @@
             this.label11.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
             this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label11.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.label11.Location = new System.Drawing.Point(11, 27);
+            this.label11.Location = new System.Drawing.Point(11, 18);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(73, 16);
             this.label11.TabIndex = 511;
@@ -509,7 +504,7 @@
             // 
             // btnNew
             // 
-            this.btnNew.Location = new System.Drawing.Point(960, 19);
+            this.btnNew.Location = new System.Drawing.Point(960, 10);
             this.btnNew.Name = "btnNew";
             this.btnNew.Size = new System.Drawing.Size(86, 31);
             this.btnNew.TabIndex = 0;
@@ -732,27 +727,6 @@
             this.c1Button3.UseVisualStyleBackColor = true;
             this.c1Button3.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
             // 
-            // c1SplitButton1
-            // 
-            this.c1SplitButton1.Items.Add(this.dropDownItem1);
-            this.c1SplitButton1.Items.Add(this.dropDownItem2);
-            this.c1SplitButton1.Location = new System.Drawing.Point(725, 26);
-            this.c1SplitButton1.Name = "c1SplitButton1";
-            this.c1SplitButton1.Size = new System.Drawing.Size(115, 23);
-            this.c1SplitButton1.TabIndex = 523;
-            this.c1SplitButton1.Text = "c1SplitButton1";
-            this.theme1.SetTheme(this.c1SplitButton1, "(default)");
-            this.c1SplitButton1.UseVisualStyleBackColor = true;
-            this.c1SplitButton1.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
-            // 
-            // dropDownItem1
-            // 
-            this.dropDownItem1.Text = "dropDownItem1";
-            // 
-            // dropDownItem2
-            // 
-            this.dropDownItem2.Text = "dropDownItem2";
-            // 
             // FrmLabOpuView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -793,7 +767,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.c1DateEdit3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.c1DateEdit5)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.c1Button3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.c1SplitButton1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -842,8 +815,5 @@
         private C1.Win.C1Input.C1Button c1Button3;
         private C1.Win.C1Command.C1DockingTabPage tabProcess;
         private System.Windows.Forms.Panel panel2;
-        private C1.Win.C1Input.C1SplitButton c1SplitButton1;
-        private C1.Win.C1Input.DropDownItem dropDownItem1;
-        private C1.Win.C1Input.DropDownItem dropDownItem2;
     }
 }

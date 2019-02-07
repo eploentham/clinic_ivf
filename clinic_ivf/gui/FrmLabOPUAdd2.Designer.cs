@@ -232,6 +232,8 @@
             this.label49 = new System.Windows.Forms.Label();
             this.label48 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.txtDobDonor = new C1.Win.C1Input.C1DateEdit();
+            this.label88 = new System.Windows.Forms.Label();
             this.label72 = new System.Windows.Forms.Label();
             this.txtNameDonor = new C1.Win.C1Input.C1TextBox();
             this.btnDonorSearch = new C1.Win.C1Input.C1Button();
@@ -267,8 +269,9 @@
             this.txtHnMale = new C1.Win.C1Input.C1TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.txtHnFeMale = new C1.Win.C1Input.C1TextBox();
-            this.txtDobDonor = new C1.Win.C1Input.C1DateEdit();
-            this.label88 = new System.Windows.Forms.Label();
+            this.btnApproveResult = new C1.Win.C1Input.C1Button();
+            this.txtApproveResult = new C1.Win.C1Input.C1TextBox();
+            this.label89 = new System.Windows.Forms.Label();
             this.sB.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.theme1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.c1CommandDock2)).BeginInit();
@@ -408,6 +411,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtEmbryoForEtDay)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtEmbryoForEtNO)).BeginInit();
             this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtDobDonor)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtNameDonor)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnDonorSearch)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtHnDonor)).BeginInit();
@@ -429,7 +433,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.btnHnSearch)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtHnMale)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtHnFeMale)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtDobDonor)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnApproveResult)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtApproveResult)).BeginInit();
             this.SuspendLayout();
             // 
             // sB
@@ -2340,6 +2345,7 @@
             | C1.Win.C1Input.FormatInfoInheritFlags.EmptyAsNull) 
             | C1.Win.C1Input.FormatInfoInheritFlags.TrimStart) 
             | C1.Win.C1Input.FormatInfoInheritFlags.TrimEnd)));
+            this.txtMaturaDate.EmptyAsNull = true;
             this.txtMaturaDate.GMTOffset = System.TimeSpan.Parse("00:00:00");
             this.txtMaturaDate.ImagePadding = new System.Windows.Forms.Padding(0);
             this.txtMaturaDate.Location = new System.Drawing.Point(98, 36);
@@ -2575,6 +2581,7 @@
             | C1.Win.C1Input.FormatInfoInheritFlags.EmptyAsNull) 
             | C1.Win.C1Input.FormatInfoInheritFlags.TrimStart) 
             | C1.Win.C1Input.FormatInfoInheritFlags.TrimEnd)));
+            this.txtDay2Date.EmptyAsNull = true;
             this.txtDay2Date.GMTOffset = System.TimeSpan.Parse("00:00:00");
             this.txtDay2Date.ImagePadding = new System.Windows.Forms.Padding(0);
             this.txtDay2Date.Location = new System.Drawing.Point(75, 49);
@@ -2785,6 +2792,7 @@
             | C1.Win.C1Input.FormatInfoInheritFlags.EmptyAsNull) 
             | C1.Win.C1Input.FormatInfoInheritFlags.TrimStart) 
             | C1.Win.C1Input.FormatInfoInheritFlags.TrimEnd)));
+            this.txtDay3Date.EmptyAsNull = true;
             this.txtDay3Date.GMTOffset = System.TimeSpan.Parse("00:00:00");
             this.txtDay3Date.ImagePadding = new System.Windows.Forms.Padding(0);
             this.txtDay3Date.Location = new System.Drawing.Point(72, 47);
@@ -2995,6 +3003,7 @@
             | C1.Win.C1Input.FormatInfoInheritFlags.EmptyAsNull) 
             | C1.Win.C1Input.FormatInfoInheritFlags.TrimStart) 
             | C1.Win.C1Input.FormatInfoInheritFlags.TrimEnd)));
+            this.txtDay5Date.EmptyAsNull = true;
             this.txtDay5Date.GMTOffset = System.TimeSpan.Parse("00:00:00");
             this.txtDay5Date.ImagePadding = new System.Windows.Forms.Padding(0);
             this.txtDay5Date.Location = new System.Drawing.Point(71, 47);
@@ -3179,6 +3188,7 @@
             | C1.Win.C1Input.FormatInfoInheritFlags.EmptyAsNull) 
             | C1.Win.C1Input.FormatInfoInheritFlags.TrimStart) 
             | C1.Win.C1Input.FormatInfoInheritFlags.TrimEnd)));
+            this.txtDay6Date.EmptyAsNull = true;
             this.txtDay6Date.GMTOffset = System.TimeSpan.Parse("00:00:00");
             this.txtDay6Date.ImagePadding = new System.Windows.Forms.Padding(0);
             this.txtDay6Date.Location = new System.Drawing.Point(74, 51);
@@ -3785,6 +3795,9 @@
             // groupBox1
             // 
             this.groupBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.groupBox1.Controls.Add(this.label89);
+            this.groupBox1.Controls.Add(this.txtApproveResult);
+            this.groupBox1.Controls.Add(this.btnApproveResult);
             this.groupBox1.Controls.Add(this.txtDobDonor);
             this.groupBox1.Controls.Add(this.label88);
             this.groupBox1.Controls.Add(this.label72);
@@ -3831,6 +3844,65 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Patient";
             this.theme1.SetTheme(this.groupBox1, "(default)");
+            // 
+            // txtDobDonor
+            // 
+            this.txtDobDonor.AllowSpinLoop = false;
+            this.txtDobDonor.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            // 
+            // 
+            // 
+            this.txtDobDonor.Calendar.ArrowColor = System.Drawing.Color.Black;
+            this.txtDobDonor.Calendar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.txtDobDonor.Calendar.DayNamesFont = new System.Drawing.Font("Tahoma", 8F);
+            this.txtDobDonor.Calendar.Font = new System.Drawing.Font("Tahoma", 8F);
+            this.txtDobDonor.Calendar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.txtDobDonor.Calendar.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(71)))), ((int)(((byte)(47)))));
+            this.txtDobDonor.Calendar.SelectionForeColor = System.Drawing.Color.White;
+            this.txtDobDonor.Calendar.TitleBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(230)))));
+            this.txtDobDonor.Calendar.TitleFont = new System.Drawing.Font("Tahoma", 8F);
+            this.txtDobDonor.Calendar.TitleForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.txtDobDonor.Calendar.TodayBorderColor = System.Drawing.Color.White;
+            this.txtDobDonor.Calendar.TrailingForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
+            this.txtDobDonor.Calendar.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            this.txtDobDonor.Culture = 1054;
+            this.txtDobDonor.CurrentTimeZone = false;
+            this.txtDobDonor.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
+            this.txtDobDonor.DisplayFormat.CalendarType = C1.Win.C1Input.CalendarType.GregorianCalendar;
+            this.txtDobDonor.DisplayFormat.FormatType = C1.Win.C1Input.FormatTypeEnum.ShortDate;
+            this.txtDobDonor.DisplayFormat.Inherit = ((C1.Win.C1Input.FormatInfoInheritFlags)(((((C1.Win.C1Input.FormatInfoInheritFlags.CustomFormat | C1.Win.C1Input.FormatInfoInheritFlags.NullText) 
+            | C1.Win.C1Input.FormatInfoInheritFlags.EmptyAsNull) 
+            | C1.Win.C1Input.FormatInfoInheritFlags.TrimStart) 
+            | C1.Win.C1Input.FormatInfoInheritFlags.TrimEnd)));
+            this.txtDobDonor.EditFormat.CalendarType = C1.Win.C1Input.CalendarType.GregorianCalendar;
+            this.txtDobDonor.EditFormat.FormatType = C1.Win.C1Input.FormatTypeEnum.ShortDate;
+            this.txtDobDonor.EditFormat.Inherit = ((C1.Win.C1Input.FormatInfoInheritFlags)(((((C1.Win.C1Input.FormatInfoInheritFlags.CustomFormat | C1.Win.C1Input.FormatInfoInheritFlags.NullText) 
+            | C1.Win.C1Input.FormatInfoInheritFlags.EmptyAsNull) 
+            | C1.Win.C1Input.FormatInfoInheritFlags.TrimStart) 
+            | C1.Win.C1Input.FormatInfoInheritFlags.TrimEnd)));
+            this.txtDobDonor.EmptyAsNull = true;
+            this.txtDobDonor.GMTOffset = System.TimeSpan.Parse("00:00:00");
+            this.txtDobDonor.ImagePadding = new System.Windows.Forms.Padding(0);
+            this.txtDobDonor.Location = new System.Drawing.Point(1337, 57);
+            this.txtDobDonor.Name = "txtDobDonor";
+            this.txtDobDonor.Size = new System.Drawing.Size(207, 18);
+            this.txtDobDonor.TabIndex = 550;
+            this.txtDobDonor.Tag = null;
+            this.theme1.SetTheme(this.txtDobDonor, "(default)");
+            this.txtDobDonor.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            // 
+            // label88
+            // 
+            this.label88.AutoSize = true;
+            this.label88.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.label88.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label88.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.label88.Location = new System.Drawing.Point(1235, 59);
+            this.label88.Name = "label88";
+            this.label88.Size = new System.Drawing.Size(79, 16);
+            this.label88.TabIndex = 549;
+            this.label88.Text = "day of birth :";
+            this.theme1.SetTheme(this.label88, "(default)");
             // 
             // label72
             // 
@@ -4084,6 +4156,7 @@
             | C1.Win.C1Input.FormatInfoInheritFlags.EmptyAsNull) 
             | C1.Win.C1Input.FormatInfoInheritFlags.TrimStart) 
             | C1.Win.C1Input.FormatInfoInheritFlags.TrimEnd)));
+            this.txtDobFeMale.EmptyAsNull = true;
             this.txtDobFeMale.GMTOffset = System.TimeSpan.Parse("00:00:00");
             this.txtDobFeMale.ImagePadding = new System.Windows.Forms.Padding(0);
             this.txtDobFeMale.Location = new System.Drawing.Point(94, 57);
@@ -4129,6 +4202,7 @@
             | C1.Win.C1Input.FormatInfoInheritFlags.EmptyAsNull) 
             | C1.Win.C1Input.FormatInfoInheritFlags.TrimStart) 
             | C1.Win.C1Input.FormatInfoInheritFlags.TrimEnd)));
+            this.txtDobMale.EmptyAsNull = true;
             this.txtDobMale.GMTOffset = System.TimeSpan.Parse("00:00:00");
             this.txtDobMale.ImagePadding = new System.Windows.Forms.Padding(0);
             this.txtDobMale.Location = new System.Drawing.Point(444, 57);
@@ -4235,6 +4309,7 @@
             | C1.Win.C1Input.FormatInfoInheritFlags.EmptyAsNull) 
             | C1.Win.C1Input.FormatInfoInheritFlags.TrimStart) 
             | C1.Win.C1Input.FormatInfoInheritFlags.TrimEnd)));
+            this.txtOpuDate.EmptyAsNull = true;
             this.txtOpuDate.GMTOffset = System.TimeSpan.Parse("00:00:00");
             this.txtOpuDate.ImagePadding = new System.Windows.Forms.Padding(0);
             this.txtOpuDate.Location = new System.Drawing.Point(754, 57);
@@ -4435,63 +4510,45 @@
             this.theme1.SetTheme(this.txtHnFeMale, "(default)");
             this.txtHnFeMale.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
             // 
-            // txtDobDonor
+            // btnApproveResult
             // 
-            this.txtDobDonor.AllowSpinLoop = false;
-            this.txtDobDonor.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.btnApproveResult.Image = global::clinic_ivf.Properties.Resources.Female_user_add_24;
+            this.btnApproveResult.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnApproveResult.Location = new System.Drawing.Point(1559, 14);
+            this.btnApproveResult.Name = "btnApproveResult";
+            this.btnApproveResult.Size = new System.Drawing.Size(128, 39);
+            this.btnApproveResult.TabIndex = 551;
+            this.btnApproveResult.Text = "รายงานผล";
+            this.btnApproveResult.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.theme1.SetTheme(this.btnApproveResult, "(default)");
+            this.btnApproveResult.UseVisualStyleBackColor = true;
+            this.btnApproveResult.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
             // 
+            // txtApproveResult
             // 
+            this.txtApproveResult.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtApproveResult.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
+            this.txtApproveResult.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.txtApproveResult.Location = new System.Drawing.Point(1527, 78);
+            this.txtApproveResult.Name = "txtApproveResult";
+            this.txtApproveResult.Size = new System.Drawing.Size(212, 20);
+            this.txtApproveResult.TabIndex = 552;
+            this.txtApproveResult.Tag = null;
+            this.theme1.SetTheme(this.txtApproveResult, "(default)");
+            this.txtApproveResult.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
             // 
-            this.txtDobDonor.Calendar.ArrowColor = System.Drawing.Color.Black;
-            this.txtDobDonor.Calendar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.txtDobDonor.Calendar.DayNamesFont = new System.Drawing.Font("Tahoma", 8F);
-            this.txtDobDonor.Calendar.Font = new System.Drawing.Font("Tahoma", 8F);
-            this.txtDobDonor.Calendar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.txtDobDonor.Calendar.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(71)))), ((int)(((byte)(47)))));
-            this.txtDobDonor.Calendar.SelectionForeColor = System.Drawing.Color.White;
-            this.txtDobDonor.Calendar.TitleBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(230)))));
-            this.txtDobDonor.Calendar.TitleFont = new System.Drawing.Font("Tahoma", 8F);
-            this.txtDobDonor.Calendar.TitleForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.txtDobDonor.Calendar.TodayBorderColor = System.Drawing.Color.White;
-            this.txtDobDonor.Calendar.TrailingForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
-            this.txtDobDonor.Calendar.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
-            this.txtDobDonor.Culture = 1054;
-            this.txtDobDonor.CurrentTimeZone = false;
-            this.txtDobDonor.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
-            this.txtDobDonor.DisplayFormat.CalendarType = C1.Win.C1Input.CalendarType.GregorianCalendar;
-            this.txtDobDonor.DisplayFormat.FormatType = C1.Win.C1Input.FormatTypeEnum.ShortDate;
-            this.txtDobDonor.DisplayFormat.Inherit = ((C1.Win.C1Input.FormatInfoInheritFlags)(((((C1.Win.C1Input.FormatInfoInheritFlags.CustomFormat | C1.Win.C1Input.FormatInfoInheritFlags.NullText) 
-            | C1.Win.C1Input.FormatInfoInheritFlags.EmptyAsNull) 
-            | C1.Win.C1Input.FormatInfoInheritFlags.TrimStart) 
-            | C1.Win.C1Input.FormatInfoInheritFlags.TrimEnd)));
-            this.txtDobDonor.EditFormat.CalendarType = C1.Win.C1Input.CalendarType.GregorianCalendar;
-            this.txtDobDonor.EditFormat.FormatType = C1.Win.C1Input.FormatTypeEnum.ShortDate;
-            this.txtDobDonor.EditFormat.Inherit = ((C1.Win.C1Input.FormatInfoInheritFlags)(((((C1.Win.C1Input.FormatInfoInheritFlags.CustomFormat | C1.Win.C1Input.FormatInfoInheritFlags.NullText) 
-            | C1.Win.C1Input.FormatInfoInheritFlags.EmptyAsNull) 
-            | C1.Win.C1Input.FormatInfoInheritFlags.TrimStart) 
-            | C1.Win.C1Input.FormatInfoInheritFlags.TrimEnd)));
-            this.txtDobDonor.GMTOffset = System.TimeSpan.Parse("00:00:00");
-            this.txtDobDonor.ImagePadding = new System.Windows.Forms.Padding(0);
-            this.txtDobDonor.Location = new System.Drawing.Point(1337, 59);
-            this.txtDobDonor.Name = "txtDobDonor";
-            this.txtDobDonor.Size = new System.Drawing.Size(207, 18);
-            this.txtDobDonor.TabIndex = 550;
-            this.txtDobDonor.Tag = null;
-            this.theme1.SetTheme(this.txtDobDonor, "(default)");
-            this.txtDobDonor.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            // label89
             // 
-            // label88
-            // 
-            this.label88.AutoSize = true;
-            this.label88.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.label88.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label88.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.label88.Location = new System.Drawing.Point(1235, 59);
-            this.label88.Name = "label88";
-            this.label88.Size = new System.Drawing.Size(79, 16);
-            this.label88.TabIndex = 549;
-            this.label88.Text = "day of birth :";
-            this.theme1.SetTheme(this.label88, "(default)");
+            this.label89.AutoSize = true;
+            this.label89.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.label89.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label89.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.label89.Location = new System.Drawing.Point(1556, 58);
+            this.label89.Name = "label89";
+            this.label89.Size = new System.Drawing.Size(69, 16);
+            this.label89.TabIndex = 553;
+            this.label89.Text = "ผู้รายงานผล :";
+            this.theme1.SetTheme(this.label89, "(default)");
             // 
             // FrmLabOPUAdd2
             // 
@@ -4655,6 +4712,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtEmbryoForEtNO)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtDobDonor)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtNameDonor)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnDonorSearch)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtHnDonor)).EndInit();
@@ -4676,7 +4734,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.btnHnSearch)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtHnMale)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtHnFeMale)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtDobDonor)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnApproveResult)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtApproveResult)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -4925,5 +4984,8 @@
         private System.Windows.Forms.Label label87;
         private C1.Win.C1Input.C1DateEdit txtDobDonor;
         private System.Windows.Forms.Label label88;
+        private C1.Win.C1Input.C1Button btnApproveResult;
+        private C1.Win.C1Input.C1TextBox txtApproveResult;
+        private System.Windows.Forms.Label label89;
     }
 }

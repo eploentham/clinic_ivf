@@ -26,8 +26,9 @@ namespace clinic_ivf.gui
 
         int colID = 1, colVN = 2, colPttHn = 3, colPttName = 4, colVsDate = 5, colVsTime = 6, colVsEtime = 7, colStatus = 8, colPttId=9;
         int colSID = 1, colSVN = 2, colSPttHn = 3, colSPttName = 4, colSVsDate = 5, colSVsTime = 6, colSVsEtime = 7, colSStatus = 8, colSPttId = 9;
+        int colRID = 1, colRVN = 2, colRPttHn = 3, colRPttName = 4, colRVsDate = 5, colRPttId = 6;
 
-        C1FlexGrid grfQue, grfDiag, grfFinish, grfSearch;
+        C1FlexGrid grfQue, grfDiag, grfFinish, grfSearch, grfLab;
         C1SuperTooltip stt;
         C1SuperErrorProvider sep;
 
@@ -70,6 +71,7 @@ namespace clinic_ivf.gui
             initGrfFinish();
             setGrfFinish();
             initGrfSearch();
+            initGrfLab();
         }
 
         private void BtnSearch_Click(object sender, EventArgs e)
@@ -617,6 +619,129 @@ namespace clinic_ivf.gui
             //theme1.SetTheme(grfQue, ic.theme);
 
         }
+        private void initGrfLab()
+        {
+            grfLab = new C1FlexGrid();
+            grfLab.Font = fEdit;
+            grfLab.Dock = System.Windows.Forms.DockStyle.Fill;
+            grfLab.Location = new System.Drawing.Point(0, 0);
+            grfLab.Rows.Count = 1;
+            //FilterRow fr = new FilterRow(grfExpn);
+
+            grfLab.AfterRowColChange += GrfLab_AfterRowColChange;
+            //grfExpnC.CellButtonClick += new C1.Win.C1FlexGrid.RowColEventHandler(this.grfDept_CellButtonClick);
+            //grfExpnC.CellChanged += new C1.Win.C1FlexGrid.RowColEventHandler(this.grfDept_CellChanged);
+            ContextMenu menuGw = new ContextMenu();
+            //menuGw.MenuItems.Add("&แก้ไข รายการเบิก", new EventHandler(ContextMenu_edit));
+            //menuGw.MenuItems.Add("&แก้ไข", new EventHandler(ContextMenu_Gw_Edit));
+            //menuGw.MenuItems.Add("&ยกเลิก", new EventHandler(ContextMenu_Gw_Cancel));
+            grfLab.ContextMenu = menuGw;
+            pnLab.Controls.Add(grfLab);
+
+            theme1.SetTheme(grfLab, "Office2007Blue");
+
+            theme1.SetTheme(pnLab, "Office2007Blue");
+            //theme1.SetTheme(tabFinish, "Office2010Blue");
+
+        }
+        private void setGrfLab(String search)
+        {
+            //grfDept.Rows.Count = 7;
+            grfLab.Clear();
+            DataTable dt1 = new DataTable();
+            DataTable dt = new DataTable();
+            if (search.Equals(""))
+            {
+                String date = "";
+                DateTime dt11 = new DateTime();
+                if (DateTime.TryParse(txtDateStart.Text, out dt11))
+                {
+                    date = dt11.Year + "-" + dt11.ToString("MM-dd");
+                    dt = ic.ivfDB.vsOldDB.selectByDate(date);
+                }
+            }
+            else
+            {
+                //grfPtt.DataSource = ic.ivfDB.vsOldDB.selectCurrentVisit(search);
+            }
+
+            //grfExpn.Rows.Count = dt.Rows.Count + 1;
+            grfLab.Rows.Count = dt.Rows.Count + 1;
+            grfLab.Cols.Count = 10;
+            C1TextBox txt = new C1TextBox();
+            //C1ComboBox cboproce = new C1ComboBox();
+            //ic.ivfDB.itmDB.setCboItem(cboproce);
+            grfLab.Cols[colPttHn].Editor = txt;
+            grfLab.Cols[colPttName].Editor = txt;
+            grfLab.Cols[colVsDate].Editor = txt;
+
+            grfLab.Cols[colVN].Width = 120;
+            grfLab.Cols[colPttHn].Width = 120;
+            grfLab.Cols[colPttName].Width = 300;
+            grfLab.Cols[colVsDate].Width = 100;
+            grfLab.Cols[colVsTime].Width = 80;
+            grfLab.Cols[colVsEtime].Width = 80;
+            grfLab.Cols[colStatus].Width = 200;
+
+            grfLab.ShowCursor = true;
+            //grdFlex.Cols[colID].Caption = "no";
+            //grfDept.Cols[colCode].Caption = "รหัส";
+
+            grfLab.Cols[colVN].Caption = "VN";
+            grfLab.Cols[colPttHn].Caption = "HN";
+            grfLab.Cols[colPttName].Caption = "Name";
+            grfLab.Cols[colVsDate].Caption = "Date";
+            grfLab.Cols[colVsTime].Caption = "Time visit";
+            grfLab.Cols[colVsEtime].Caption = "Time finish";
+            grfLab.Cols[colStatus].Caption = "Status";
+
+            ContextMenu menuGw = new ContextMenu();
+            //menuGw.MenuItems.Add("&receive operation", new EventHandler(ContextMenu_Apm));
+            menuGw.MenuItems.Add("&receive operation", new EventHandler(ContextMenu_Apm));
+            menuGw.MenuItems.Add("&LAB request FORM A", new EventHandler(ContextMenu_LAB_req_formA_Ptt));
+            menuGw.MenuItems.Add("&Add Appointment", new EventHandler(ContextMenu_Apm_Ptt));
+            menuGw.MenuItems.Add("&Cancel Receive", new EventHandler(ContextMenu_Apm_Ptt));
+            menuGw.MenuItems.Add("&No Appointment Close Operation", new EventHandler(ContextMenu_NO_Apm_Ptt));
+            grfLab.ContextMenu = menuGw;
+
+            Color color = ColorTranslator.FromHtml(ic.iniC.grfRowColor);
+            //CellRange rg1 = grfBank.GetCellRange(1, colE, grfBank.Rows.Count, colE);
+            //rg1.Style = grfBank.Styles["date"];
+            //grfCu.Cols[colID].Visible = false;
+            int i = 1;
+            foreach (DataRow row in dt.Rows)
+            {
+                grfLab[i, 0] = i;
+                grfLab[i, colID] = row["id"].ToString();
+                grfLab[i, colVN] = row["VN"].ToString();
+                grfLab[i, colPttHn] = row["PIDS"].ToString();
+                grfLab[i, colPttName] = row["PName"].ToString();
+                grfLab[i, colVsDate] = ic.datetoShow(row["VDate"]);
+                grfLab[i, colVsTime] = row["VStartTime"].ToString();
+                grfLab[i, colVsEtime] = row["VEndTime"].ToString();
+                grfLab[i, colStatus] = row["VName"].ToString();
+                grfLab[i, colPttId] = row["PID"].ToString();
+                if (!row[ic.ivfDB.vsOldDB.vsold.form_a_id].ToString().Equals("0"))
+                {
+                    CellNote note = new CellNote("ส่ง Lab Request Foam A");
+                    CellRange rg = grfLab.GetCellRange(i, colVN);
+                    rg.UserData = note;
+                }
+                //if (i % 2 == 0)
+                //    grfPtt.Rows[i].StyleNew.BackColor = color;
+                i++;
+            }
+            CellNoteManager mgr = new CellNoteManager(grfLab);
+            grfLab.Cols[colID].Visible = false;
+            //theme1.SetTheme(grfQue, ic.theme);
+
+        }
+        private void GrfLab_AfterRowColChange(object sender, RangeEventArgs e)
+        {
+            //throw new NotImplementedException();
+
+        }
+
         private void initGrfQue()
         {
             grfQue = new C1FlexGrid();

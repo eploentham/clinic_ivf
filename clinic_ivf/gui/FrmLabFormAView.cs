@@ -81,7 +81,7 @@ namespace clinic_ivf.gui
 
             //FilterRow fr = new FilterRow(grfExpn);
 
-            grfQue.AfterRowColChange += GrfReq_AfterRowColChange;
+            //grfQue.AfterRowColChange += GrfReq_AfterRowColChange;
             grfQue.DoubleClick += GrfQue_DoubleClick;
             //grfExpnC.CellChanged += new C1.Win.C1FlexGrid.RowColEventHandler(this.grfDept_CellChanged);
             //ContextMenu menuGw = new ContextMenu();
@@ -136,12 +136,12 @@ namespace clinic_ivf.gui
             //grfExpn.Rows.Count = dt.Rows.Count + 1;
             grfQue.Rows.Count = dt.Rows.Count + 1;
             grfQue.Cols.Count = 10;
-            C1TextBox txt = new C1TextBox();
+            //C1TextBox txt = new C1TextBox();
             //C1ComboBox cboproce = new C1ComboBox();
             //ic.ivfDB.itmDB.setCboItem(cboproce);
-            grfQue.Cols[colPttHn].Editor = txt;
-            grfQue.Cols[colPttName].Editor = txt;
-            grfQue.Cols[colFormADate].Editor = txt;
+            //grfQue.Cols[colPttHn].Editor = txt;
+            //grfQue.Cols[colPttName].Editor = txt;
+            //grfQue.Cols[colFormADate].Editor = txt;
 
             grfQue.Cols[colCode].Width = 100;
             grfQue.Cols[colPttHn].Width = 100;
@@ -163,10 +163,10 @@ namespace clinic_ivf.gui
             grfQue.Cols[colNameMale].Caption = "Name Male";
             grfQue.Cols[colDtrName].Caption = "Doctor ";
 
-            //ContextMenu menuGw = new ContextMenu();
+            ContextMenu menuGw = new ContextMenu();
             //menuGw.MenuItems.Add("&receive operation", new EventHandler(ContextMenu_Apm));
             //menuGw.MenuItems.Add("&receive operation", new EventHandler(ContextMenu_Apm));
-            //menuGw.MenuItems.Add("LAB request FORM A", new EventHandler(ContextMenu_LAB_req_formA_Ptt));
+            menuGw.MenuItems.Add("LAB request FORM A", new EventHandler(ContextMenu_LAB_req_formA_Ptt));
             //menuGw.MenuItems.Add("&Add Appointment", new EventHandler(ContextMenu_Apm_Ptt));
             //menuGw.MenuItems.Add("&Cancel Receive", new EventHandler(ContextMenu_Apm_Ptt));
             //menuGw.MenuItems.Add("&No Appointment Close Operation", new EventHandler(ContextMenu_NO_Apm_Ptt));
@@ -202,12 +202,16 @@ namespace clinic_ivf.gui
             CellNoteManager mgr = new CellNoteManager(grfQue);
             grfQue.Cols[colID].Visible = false;
             grfQue.Cols[colPttId].Visible = false;
+            grfQue.SelectionMode = SelectionModeEnum.Row;
             //theme1.SetTheme(grfQue, ic.theme);
 
         }
         private void ContextMenu_LAB_req_formA_Ptt(object sender, System.EventArgs e)
         {
-
+            //String id = "";
+            //id = grfQue[grfQue.Row, colID].ToString();
+            //FrmLabFormA frm = new FrmLabFormA(ic, id, "", "", "");
+            //frm.ShowDialog(this);
         }
         private void FrmLabFormAView_Load(object sender, EventArgs e)
         {

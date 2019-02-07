@@ -87,9 +87,15 @@
             this.chkSpermFreezing = new C1.Win.C1Input.C1CheckBox();
             this.chkSpermAnalysis = new C1.Win.C1Input.C1CheckBox();
             this.gbETFET = new System.Windows.Forms.GroupBox();
+            this.txtEmbryoTranferTime = new C1.Win.C1Input.C1TextBox();
+            this.label34 = new System.Windows.Forms.Label();
             this.chkAssistHatching = new C1.Win.C1Input.C1CheckBox();
             this.chkEmbryoGlue = new C1.Win.C1Input.C1CheckBox();
             this.pnFET = new System.Windows.Forms.Panel();
+            this.label36 = new System.Windows.Forms.Label();
+            this.cboFetDay = new C1.Win.C1Input.C1ComboBox();
+            this.label35 = new System.Windows.Forms.Label();
+            this.cboFet1Day = new C1.Win.C1Input.C1ComboBox();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.cboFetWaitRemark = new C1.Win.C1Input.C1ComboBox();
             this.chkFetActiveWait = new System.Windows.Forms.RadioButton();
@@ -112,6 +118,7 @@
             this.txtEmbryoTranferDate = new C1.Win.C1Input.C1DateEdit();
             this.label14 = new System.Windows.Forms.Label();
             this.gbOPU = new System.Windows.Forms.GroupBox();
+            this.txtFrozenSpermDate = new C1.Win.C1Input.C1DateEdit();
             this.lbMessage = new System.Windows.Forms.Label();
             this.lbMessage1 = new System.Windows.Forms.Label();
             this.chkOpuTimeModi = new C1.Win.C1Input.C1CheckBox();
@@ -169,8 +176,6 @@
             this.txtPasaTeseDate = new C1.Win.C1Input.C1DateEdit();
             this.label25 = new System.Windows.Forms.Label();
             this.label20 = new System.Windows.Forms.Label();
-            this.label34 = new System.Windows.Forms.Label();
-            this.txtEmbryoTranferTime = new C1.Win.C1Input.C1TextBox();
             this.sB.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.theme1)).BeginInit();
             this.groupBox1.SuspendLayout();
@@ -211,9 +216,12 @@
             ((System.ComponentModel.ISupportInitialize)(this.chkSpermFreezing)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkSpermAnalysis)).BeginInit();
             this.gbETFET.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtEmbryoTranferTime)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkAssistHatching)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkEmbryoGlue)).BeginInit();
             this.pnFET.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.cboFetDay)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cboFet1Day)).BeginInit();
             this.groupBox4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.cboFetWaitRemark)).BeginInit();
             this.panel2.SuspendLayout();
@@ -224,6 +232,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtFETNo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtEmbryoTranferDate)).BeginInit();
             this.gbOPU.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtFrozenSpermDate)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkOpuTimeModi)).BeginInit();
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtOPURemark)).BeginInit();
@@ -253,7 +262,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.chkFreshSprem)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtIUIDate)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtPasaTeseDate)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtEmbryoTranferTime)).BeginInit();
             this.SuspendLayout();
             // 
             // sB
@@ -1070,6 +1078,7 @@
             | C1.Win.C1Input.FormatInfoInheritFlags.EmptyAsNull) 
             | C1.Win.C1Input.FormatInfoInheritFlags.TrimStart) 
             | C1.Win.C1Input.FormatInfoInheritFlags.TrimEnd)));
+            this.txtSpermFreezingDateStart.EmptyAsNull = true;
             this.txtSpermFreezingDateStart.GMTOffset = System.TimeSpan.Parse("00:00:00");
             this.txtSpermFreezingDateStart.ImagePadding = new System.Windows.Forms.Padding(0);
             this.txtSpermFreezingDateStart.Location = new System.Drawing.Point(116, 5);
@@ -1205,6 +1214,7 @@
             | C1.Win.C1Input.FormatInfoInheritFlags.EmptyAsNull) 
             | C1.Win.C1Input.FormatInfoInheritFlags.TrimStart) 
             | C1.Win.C1Input.FormatInfoInheritFlags.TrimEnd)));
+            this.txtSpermAnalysisDateStart.EmptyAsNull = true;
             this.txtSpermAnalysisDateStart.GMTOffset = System.TimeSpan.Parse("00:00:00");
             this.txtSpermAnalysisDateStart.ImagePadding = new System.Windows.Forms.Padding(0);
             this.txtSpermAnalysisDateStart.Location = new System.Drawing.Point(120, 3);
@@ -1275,6 +1285,36 @@
             this.gbETFET.Text = "ET FET";
             this.theme1.SetTheme(this.gbETFET, "(default)");
             // 
+            // txtEmbryoTranferTime
+            // 
+            this.txtEmbryoTranferTime.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtEmbryoTranferTime.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
+            this.txtEmbryoTranferTime.EditMask = "00:00";
+            this.txtEmbryoTranferTime.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.txtEmbryoTranferTime.Location = new System.Drawing.Point(373, 16);
+            this.txtEmbryoTranferTime.MaskInfo.EmptyAsNull = true;
+            this.txtEmbryoTranferTime.MaskInfo.Inherit = ((C1.Win.C1Input.MaskInfoInheritFlags)((C1.Win.C1Input.MaskInfoInheritFlags.CaseSensitive | C1.Win.C1Input.MaskInfoInheritFlags.ErrorMessage)));
+            this.txtEmbryoTranferTime.MaskInfo.SaveBlanks = true;
+            this.txtEmbryoTranferTime.Name = "txtEmbryoTranferTime";
+            this.txtEmbryoTranferTime.Size = new System.Drawing.Size(57, 20);
+            this.txtEmbryoTranferTime.TabIndex = 733;
+            this.txtEmbryoTranferTime.Tag = null;
+            this.theme1.SetTheme(this.txtEmbryoTranferTime, "(default)");
+            this.txtEmbryoTranferTime.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            // 
+            // label34
+            // 
+            this.label34.AutoSize = true;
+            this.label34.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.label34.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label34.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.label34.Location = new System.Drawing.Point(290, 18);
+            this.label34.Name = "label34";
+            this.label34.Size = new System.Drawing.Size(74, 16);
+            this.label34.TabIndex = 732;
+            this.label34.Text = "FET Time :";
+            this.theme1.SetTheme(this.label34, "(default)");
+            // 
             // chkAssistHatching
             // 
             this.chkAssistHatching.BackColor = System.Drawing.Color.Transparent;
@@ -1316,6 +1356,10 @@
             // pnFET
             // 
             this.pnFET.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.pnFET.Controls.Add(this.label36);
+            this.pnFET.Controls.Add(this.cboFetDay);
+            this.pnFET.Controls.Add(this.label35);
+            this.pnFET.Controls.Add(this.cboFet1Day);
             this.pnFET.Controls.Add(this.groupBox4);
             this.pnFET.Controls.Add(this.panel2);
             this.pnFET.Controls.Add(this.label32);
@@ -1333,6 +1377,74 @@
             this.pnFET.TabIndex = 13;
             this.theme1.SetTheme(this.pnFET, "(default)");
             // 
+            // label36
+            // 
+            this.label36.AutoSize = true;
+            this.label36.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.label36.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label36.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.label36.Location = new System.Drawing.Point(339, 8);
+            this.label36.Name = "label36";
+            this.label36.Size = new System.Drawing.Size(39, 16);
+            this.label36.TabIndex = 745;
+            this.label36.Text = "Day :";
+            this.theme1.SetTheme(this.label36, "(default)");
+            // 
+            // cboFetDay
+            // 
+            this.cboFetDay.AllowSpinLoop = false;
+            this.cboFetDay.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.cboFetDay.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
+            this.cboFetDay.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.cboFetDay.GapHeight = 0;
+            this.cboFetDay.ImagePadding = new System.Windows.Forms.Padding(0);
+            this.cboFetDay.ItemsDisplayMember = "";
+            this.cboFetDay.ItemsValueMember = "";
+            this.cboFetDay.Location = new System.Drawing.Point(390, 7);
+            this.cboFetDay.Name = "cboFetDay";
+            this.cboFetDay.Size = new System.Drawing.Size(86, 20);
+            this.cboFetDay.Style.DropDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.cboFetDay.Style.DropDownBorderColor = System.Drawing.Color.Gainsboro;
+            this.cboFetDay.Style.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.cboFetDay.TabIndex = 744;
+            this.cboFetDay.Tag = null;
+            this.theme1.SetTheme(this.cboFetDay, "(default)");
+            this.cboFetDay.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            // 
+            // label35
+            // 
+            this.label35.AutoSize = true;
+            this.label35.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.label35.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label35.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.label35.Location = new System.Drawing.Point(339, 34);
+            this.label35.Name = "label35";
+            this.label35.Size = new System.Drawing.Size(39, 16);
+            this.label35.TabIndex = 743;
+            this.label35.Text = "Day :";
+            this.theme1.SetTheme(this.label35, "(default)");
+            // 
+            // cboFet1Day
+            // 
+            this.cboFet1Day.AllowSpinLoop = false;
+            this.cboFet1Day.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.cboFet1Day.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
+            this.cboFet1Day.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.cboFet1Day.GapHeight = 0;
+            this.cboFet1Day.ImagePadding = new System.Windows.Forms.Padding(0);
+            this.cboFet1Day.ItemsDisplayMember = "";
+            this.cboFet1Day.ItemsValueMember = "";
+            this.cboFet1Day.Location = new System.Drawing.Point(390, 33);
+            this.cboFet1Day.Name = "cboFet1Day";
+            this.cboFet1Day.Size = new System.Drawing.Size(86, 20);
+            this.cboFet1Day.Style.DropDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.cboFet1Day.Style.DropDownBorderColor = System.Drawing.Color.Gainsboro;
+            this.cboFet1Day.Style.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.cboFet1Day.TabIndex = 742;
+            this.cboFet1Day.Tag = null;
+            this.theme1.SetTheme(this.cboFet1Day, "(default)");
+            this.cboFet1Day.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            // 
             // groupBox4
             // 
             this.groupBox4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
@@ -1341,9 +1453,9 @@
             this.groupBox4.Controls.Add(this.chkFetUnActive);
             this.groupBox4.Controls.Add(this.chkFetActive);
             this.groupBox4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.groupBox4.Location = new System.Drawing.Point(498, 39);
+            this.groupBox4.Location = new System.Drawing.Point(498, 44);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(415, 41);
+            this.groupBox4.Size = new System.Drawing.Size(415, 36);
             this.groupBox4.TabIndex = 741;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "สถานะ FET";
@@ -1359,7 +1471,7 @@
             this.cboFetWaitRemark.ImagePadding = new System.Windows.Forms.Padding(0);
             this.cboFetWaitRemark.ItemsDisplayMember = "";
             this.cboFetWaitRemark.ItemsValueMember = "";
-            this.cboFetWaitRemark.Location = new System.Drawing.Point(204, 16);
+            this.cboFetWaitRemark.Location = new System.Drawing.Point(204, 12);
             this.cboFetWaitRemark.Name = "cboFetWaitRemark";
             this.cboFetWaitRemark.Size = new System.Drawing.Size(207, 20);
             this.cboFetWaitRemark.Style.DropDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
@@ -1378,7 +1490,7 @@
             this.chkFetActiveWait.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(189)))), ((int)(((byte)(182)))));
             this.chkFetActiveWait.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(189)))), ((int)(((byte)(182)))));
             this.chkFetActiveWait.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.chkFetActiveWait.Location = new System.Drawing.Point(161, 15);
+            this.chkFetActiveWait.Location = new System.Drawing.Point(161, 14);
             this.chkFetActiveWait.Name = "chkFetActiveWait";
             this.chkFetActiveWait.Size = new System.Drawing.Size(37, 17);
             this.chkFetActiveWait.TabIndex = 536;
@@ -1395,7 +1507,7 @@
             this.chkFetUnActive.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(189)))), ((int)(((byte)(182)))));
             this.chkFetUnActive.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(189)))), ((int)(((byte)(182)))));
             this.chkFetUnActive.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.chkFetUnActive.Location = new System.Drawing.Point(88, 15);
+            this.chkFetUnActive.Location = new System.Drawing.Point(88, 14);
             this.chkFetUnActive.Name = "chkFetUnActive";
             this.chkFetUnActive.Size = new System.Drawing.Size(57, 17);
             this.chkFetUnActive.TabIndex = 535;
@@ -1412,7 +1524,7 @@
             this.chkFetActive.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(189)))), ((int)(((byte)(182)))));
             this.chkFetActive.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(189)))), ((int)(((byte)(182)))));
             this.chkFetActive.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.chkFetActive.Location = new System.Drawing.Point(19, 15);
+            this.chkFetActive.Location = new System.Drawing.Point(19, 14);
             this.chkFetActive.Name = "chkFetActive";
             this.chkFetActive.Size = new System.Drawing.Size(56, 17);
             this.chkFetActive.TabIndex = 534;
@@ -1427,9 +1539,9 @@
             this.panel2.Controls.Add(this.chkConfirmFetDate);
             this.panel2.Controls.Add(this.chkWaitFetDate);
             this.panel2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.panel2.Location = new System.Drawing.Point(202, 8);
+            this.panel2.Location = new System.Drawing.Point(526, 8);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(710, 25);
+            this.panel2.Size = new System.Drawing.Size(267, 25);
             this.panel2.TabIndex = 740;
             this.theme1.SetTheme(this.panel2, "(default)");
             this.panel2.Visible = false;
@@ -1505,17 +1617,16 @@
             this.txtFET1NoDateFreezing.CurrentTimeZone = false;
             this.txtFET1NoDateFreezing.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
             this.txtFET1NoDateFreezing.DisplayFormat.CalendarType = C1.Win.C1Input.CalendarType.GregorianCalendar;
-            this.txtFET1NoDateFreezing.DisplayFormat.EmptyAsNull = true;
             this.txtFET1NoDateFreezing.DisplayFormat.FormatType = C1.Win.C1Input.FormatTypeEnum.ShortDate;
             this.txtFET1NoDateFreezing.DisplayFormat.Inherit = ((C1.Win.C1Input.FormatInfoInheritFlags)((((C1.Win.C1Input.FormatInfoInheritFlags.CustomFormat | C1.Win.C1Input.FormatInfoInheritFlags.NullText) 
             | C1.Win.C1Input.FormatInfoInheritFlags.TrimStart) 
             | C1.Win.C1Input.FormatInfoInheritFlags.TrimEnd)));
             this.txtFET1NoDateFreezing.EditFormat.CalendarType = C1.Win.C1Input.CalendarType.GregorianCalendar;
-            this.txtFET1NoDateFreezing.EditFormat.EmptyAsNull = true;
             this.txtFET1NoDateFreezing.EditFormat.FormatType = C1.Win.C1Input.FormatTypeEnum.ShortDate;
             this.txtFET1NoDateFreezing.EditFormat.Inherit = ((C1.Win.C1Input.FormatInfoInheritFlags)((((C1.Win.C1Input.FormatInfoInheritFlags.CustomFormat | C1.Win.C1Input.FormatInfoInheritFlags.NullText) 
             | C1.Win.C1Input.FormatInfoInheritFlags.TrimStart) 
             | C1.Win.C1Input.FormatInfoInheritFlags.TrimEnd)));
+            this.txtFET1NoDateFreezing.EmptyAsNull = true;
             this.txtFET1NoDateFreezing.GMTOffset = System.TimeSpan.Parse("00:00:00");
             this.txtFET1NoDateFreezing.ImagePadding = new System.Windows.Forms.Padding(0);
             this.txtFET1NoDateFreezing.Location = new System.Drawing.Point(205, 34);
@@ -1574,6 +1685,7 @@
             | C1.Win.C1Input.FormatInfoInheritFlags.EmptyAsNull) 
             | C1.Win.C1Input.FormatInfoInheritFlags.TrimStart) 
             | C1.Win.C1Input.FormatInfoInheritFlags.TrimEnd)));
+            this.txtFETNoDateFreezing.EmptyAsNull = true;
             this.txtFETNoDateFreezing.GMTOffset = System.TimeSpan.Parse("00:00:00");
             this.txtFETNoDateFreezing.ImagePadding = new System.Windows.Forms.Padding(0);
             this.txtFETNoDateFreezing.Location = new System.Drawing.Point(205, 8);
@@ -1707,17 +1819,16 @@
             this.txtEmbryoTranferDate.CurrentTimeZone = false;
             this.txtEmbryoTranferDate.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
             this.txtEmbryoTranferDate.DisplayFormat.CalendarType = C1.Win.C1Input.CalendarType.GregorianCalendar;
-            this.txtEmbryoTranferDate.DisplayFormat.EmptyAsNull = true;
             this.txtEmbryoTranferDate.DisplayFormat.FormatType = C1.Win.C1Input.FormatTypeEnum.ShortDate;
             this.txtEmbryoTranferDate.DisplayFormat.Inherit = ((C1.Win.C1Input.FormatInfoInheritFlags)((((C1.Win.C1Input.FormatInfoInheritFlags.CustomFormat | C1.Win.C1Input.FormatInfoInheritFlags.NullText) 
             | C1.Win.C1Input.FormatInfoInheritFlags.TrimStart) 
             | C1.Win.C1Input.FormatInfoInheritFlags.TrimEnd)));
             this.txtEmbryoTranferDate.EditFormat.CalendarType = C1.Win.C1Input.CalendarType.GregorianCalendar;
-            this.txtEmbryoTranferDate.EditFormat.EmptyAsNull = true;
             this.txtEmbryoTranferDate.EditFormat.FormatType = C1.Win.C1Input.FormatTypeEnum.ShortDate;
             this.txtEmbryoTranferDate.EditFormat.Inherit = ((C1.Win.C1Input.FormatInfoInheritFlags)((((C1.Win.C1Input.FormatInfoInheritFlags.CustomFormat | C1.Win.C1Input.FormatInfoInheritFlags.NullText) 
             | C1.Win.C1Input.FormatInfoInheritFlags.TrimStart) 
             | C1.Win.C1Input.FormatInfoInheritFlags.TrimEnd)));
+            this.txtEmbryoTranferDate.EmptyAsNull = true;
             this.txtEmbryoTranferDate.GMTOffset = System.TimeSpan.Parse("00:00:00");
             this.txtEmbryoTranferDate.ImagePadding = new System.Windows.Forms.Padding(0);
             this.txtEmbryoTranferDate.Location = new System.Drawing.Point(167, 16);
@@ -1744,6 +1855,7 @@
             // gbOPU
             // 
             this.gbOPU.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.gbOPU.Controls.Add(this.txtFrozenSpermDate);
             this.gbOPU.Controls.Add(this.lbMessage);
             this.gbOPU.Controls.Add(this.lbMessage1);
             this.gbOPU.Controls.Add(this.chkOpuTimeModi);
@@ -1779,6 +1891,53 @@
             this.gbOPU.TabStop = false;
             this.gbOPU.Text = "OPU";
             this.theme1.SetTheme(this.gbOPU, "(default)");
+            // 
+            // txtFrozenSpermDate
+            // 
+            this.txtFrozenSpermDate.AllowSpinLoop = false;
+            this.txtFrozenSpermDate.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            // 
+            // 
+            // 
+            this.txtFrozenSpermDate.Calendar.ArrowColor = System.Drawing.Color.Black;
+            this.txtFrozenSpermDate.Calendar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.txtFrozenSpermDate.Calendar.DayNamesFont = new System.Drawing.Font("Tahoma", 8F);
+            this.txtFrozenSpermDate.Calendar.Font = new System.Drawing.Font("Tahoma", 8F);
+            this.txtFrozenSpermDate.Calendar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.txtFrozenSpermDate.Calendar.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(71)))), ((int)(((byte)(47)))));
+            this.txtFrozenSpermDate.Calendar.SelectionForeColor = System.Drawing.Color.White;
+            this.txtFrozenSpermDate.Calendar.TitleBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(230)))));
+            this.txtFrozenSpermDate.Calendar.TitleFont = new System.Drawing.Font("Tahoma", 8F);
+            this.txtFrozenSpermDate.Calendar.TitleForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.txtFrozenSpermDate.Calendar.TodayBorderColor = System.Drawing.Color.White;
+            this.txtFrozenSpermDate.Calendar.TrailingForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
+            this.txtFrozenSpermDate.Calendar.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            this.txtFrozenSpermDate.CalendarType = C1.Win.C1Input.CalendarType.GregorianCalendar;
+            this.txtFrozenSpermDate.Culture = 1054;
+            this.txtFrozenSpermDate.CurrentTimeZone = false;
+            this.txtFrozenSpermDate.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
+            this.txtFrozenSpermDate.DisplayFormat.CalendarType = C1.Win.C1Input.CalendarType.GregorianCalendar;
+            this.txtFrozenSpermDate.DisplayFormat.FormatType = C1.Win.C1Input.FormatTypeEnum.ShortDate;
+            this.txtFrozenSpermDate.DisplayFormat.Inherit = ((C1.Win.C1Input.FormatInfoInheritFlags)(((((C1.Win.C1Input.FormatInfoInheritFlags.CustomFormat | C1.Win.C1Input.FormatInfoInheritFlags.NullText) 
+            | C1.Win.C1Input.FormatInfoInheritFlags.EmptyAsNull) 
+            | C1.Win.C1Input.FormatInfoInheritFlags.TrimStart) 
+            | C1.Win.C1Input.FormatInfoInheritFlags.TrimEnd)));
+            this.txtFrozenSpermDate.EditFormat.CalendarType = C1.Win.C1Input.CalendarType.GregorianCalendar;
+            this.txtFrozenSpermDate.EditFormat.FormatType = C1.Win.C1Input.FormatTypeEnum.ShortDate;
+            this.txtFrozenSpermDate.EditFormat.Inherit = ((C1.Win.C1Input.FormatInfoInheritFlags)(((((C1.Win.C1Input.FormatInfoInheritFlags.CustomFormat | C1.Win.C1Input.FormatInfoInheritFlags.NullText) 
+            | C1.Win.C1Input.FormatInfoInheritFlags.EmptyAsNull) 
+            | C1.Win.C1Input.FormatInfoInheritFlags.TrimStart) 
+            | C1.Win.C1Input.FormatInfoInheritFlags.TrimEnd)));
+            this.txtFrozenSpermDate.EmptyAsNull = true;
+            this.txtFrozenSpermDate.GMTOffset = System.TimeSpan.Parse("00:00:00");
+            this.txtFrozenSpermDate.ImagePadding = new System.Windows.Forms.Padding(0);
+            this.txtFrozenSpermDate.Location = new System.Drawing.Point(159, 95);
+            this.txtFrozenSpermDate.Name = "txtFrozenSpermDate";
+            this.txtFrozenSpermDate.Size = new System.Drawing.Size(110, 18);
+            this.txtFrozenSpermDate.TabIndex = 744;
+            this.txtFrozenSpermDate.Tag = null;
+            this.theme1.SetTheme(this.txtFrozenSpermDate, "(default)");
+            this.txtFrozenSpermDate.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
             // 
             // lbMessage
             // 
@@ -2132,6 +2291,7 @@
             | C1.Win.C1Input.FormatInfoInheritFlags.EmptyAsNull) 
             | C1.Win.C1Input.FormatInfoInheritFlags.TrimStart) 
             | C1.Win.C1Input.FormatInfoInheritFlags.TrimEnd)));
+            this.txtOPUDate.EmptyAsNull = true;
             this.txtOPUDate.GMTOffset = System.TimeSpan.Parse("00:00:00");
             this.txtOPUDate.ImagePadding = new System.Windows.Forms.Padding(0);
             this.txtOPUDate.Location = new System.Drawing.Point(79, 7);
@@ -2486,7 +2646,7 @@
             this.chkSpermHa.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.chkSpermHa.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.chkSpermHa.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.chkSpermHa.Location = new System.Drawing.Point(297, 89);
+            this.chkSpermHa.Location = new System.Drawing.Point(296, 89);
             this.chkSpermHa.Name = "chkSpermHa";
             this.chkSpermHa.Padding = new System.Windows.Forms.Padding(4, 1, 1, 1);
             this.chkSpermHa.Size = new System.Drawing.Size(140, 24);
@@ -2777,36 +2937,6 @@
             this.label20.Text = "PESA/TESE :";
             this.theme1.SetTheme(this.label20, "(default)");
             // 
-            // label34
-            // 
-            this.label34.AutoSize = true;
-            this.label34.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.label34.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label34.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.label34.Location = new System.Drawing.Point(290, 18);
-            this.label34.Name = "label34";
-            this.label34.Size = new System.Drawing.Size(74, 16);
-            this.label34.TabIndex = 732;
-            this.label34.Text = "FET Time :";
-            this.theme1.SetTheme(this.label34, "(default)");
-            // 
-            // txtEmbryoTranferTime
-            // 
-            this.txtEmbryoTranferTime.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtEmbryoTranferTime.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
-            this.txtEmbryoTranferTime.EditMask = "00:00";
-            this.txtEmbryoTranferTime.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.txtEmbryoTranferTime.Location = new System.Drawing.Point(373, 16);
-            this.txtEmbryoTranferTime.MaskInfo.EmptyAsNull = true;
-            this.txtEmbryoTranferTime.MaskInfo.Inherit = ((C1.Win.C1Input.MaskInfoInheritFlags)((C1.Win.C1Input.MaskInfoInheritFlags.CaseSensitive | C1.Win.C1Input.MaskInfoInheritFlags.ErrorMessage)));
-            this.txtEmbryoTranferTime.MaskInfo.SaveBlanks = true;
-            this.txtEmbryoTranferTime.Name = "txtEmbryoTranferTime";
-            this.txtEmbryoTranferTime.Size = new System.Drawing.Size(57, 20);
-            this.txtEmbryoTranferTime.TabIndex = 733;
-            this.txtEmbryoTranferTime.Tag = null;
-            this.theme1.SetTheme(this.txtEmbryoTranferTime, "(default)");
-            this.txtEmbryoTranferTime.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
-            // 
             // FrmLabFormA
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -2865,10 +2995,13 @@
             ((System.ComponentModel.ISupportInitialize)(this.chkSpermAnalysis)).EndInit();
             this.gbETFET.ResumeLayout(false);
             this.gbETFET.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtEmbryoTranferTime)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkAssistHatching)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkEmbryoGlue)).EndInit();
             this.pnFET.ResumeLayout(false);
             this.pnFET.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.cboFetDay)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cboFet1Day)).EndInit();
             this.groupBox4.ResumeLayout(false);
             this.groupBox4.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.cboFetWaitRemark)).EndInit();
@@ -2882,6 +3015,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtEmbryoTranferDate)).EndInit();
             this.gbOPU.ResumeLayout(false);
             this.gbOPU.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtFrozenSpermDate)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkOpuTimeModi)).EndInit();
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
@@ -2918,7 +3052,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.chkFreshSprem)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtIUIDate)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtPasaTeseDate)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtEmbryoTranferTime)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -3069,5 +3202,10 @@
         private System.Windows.Forms.Label lbMessage;
         private C1.Win.C1Input.C1TextBox txtEmbryoTranferTime;
         private System.Windows.Forms.Label label34;
+        private System.Windows.Forms.Label label35;
+        private C1.Win.C1Input.C1ComboBox cboFet1Day;
+        private System.Windows.Forms.Label label36;
+        private C1.Win.C1Input.C1ComboBox cboFetDay;
+        private C1.Win.C1Input.C1DateEdit txtFrozenSpermDate;
     }
 }

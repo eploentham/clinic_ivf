@@ -375,6 +375,12 @@ namespace clinic_ivf.report {
             
             private global::System.Data.DataColumn columnopu_time;
             
+            private global::System.Data.DataColumn columnfrozen_sperm_date;
+            
+            private global::System.Data.DataColumn columnfet_day;
+            
+            private global::System.Data.DataColumn columnfet1_day;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public lab_form_aDataTable() {
@@ -794,6 +800,30 @@ namespace clinic_ivf.report {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn frozen_sperm_dateColumn {
+                get {
+                    return this.columnfrozen_sperm_date;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn fet_dayColumn {
+                get {
+                    return this.columnfet_day;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn fet1_dayColumn {
+                get {
+                    return this.columnfet1_day;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -877,7 +907,10 @@ namespace clinic_ivf.report {
                         string fresh_sperm_collect_time, 
                         string fet1_no_date_freezing, 
                         string note1, 
-                        string opu_time) {
+                        string opu_time, 
+                        string frozen_sperm_date, 
+                        string fet_day, 
+                        string fet1_day) {
                 lab_form_aRow rowlab_form_aRow = ((lab_form_aRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         form_a_id,
@@ -927,7 +960,10 @@ namespace clinic_ivf.report {
                         fresh_sperm_collect_time,
                         fet1_no_date_freezing,
                         note1,
-                        opu_time};
+                        opu_time,
+                        frozen_sperm_date,
+                        fet_day,
+                        fet1_day};
                 rowlab_form_aRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowlab_form_aRow);
                 return rowlab_form_aRow;
@@ -998,6 +1034,9 @@ namespace clinic_ivf.report {
                 this.columnfet1_no_date_freezing = base.Columns["fet1_no_date_freezing"];
                 this.columnnote1 = base.Columns["note1"];
                 this.columnopu_time = base.Columns["opu_time"];
+                this.columnfrozen_sperm_date = base.Columns["frozen_sperm_date"];
+                this.columnfet_day = base.Columns["fet_day"];
+                this.columnfet1_day = base.Columns["fet1_day"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1099,6 +1138,12 @@ namespace clinic_ivf.report {
                 base.Columns.Add(this.columnnote1);
                 this.columnopu_time = new global::System.Data.DataColumn("opu_time", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnopu_time);
+                this.columnfrozen_sperm_date = new global::System.Data.DataColumn("frozen_sperm_date", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnfrozen_sperm_date);
+                this.columnfet_day = new global::System.Data.DataColumn("fet_day", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnfet_day);
+                this.columnfet1_day = new global::System.Data.DataColumn("fet1_day", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnfet1_day);
                 this.columnform_a_id.Caption = "DataColumn1";
                 this.columnhn_female.Caption = "DataColumn1";
                 this.columnname_female.Caption = "DataColumn1";
@@ -2051,6 +2096,54 @@ namespace clinic_ivf.report {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public string frozen_sperm_date {
+                get {
+                    try {
+                        return ((string)(this[this.tablelab_form_a.frozen_sperm_dateColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'frozen_sperm_date\' in table \'lab_form_a\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablelab_form_a.frozen_sperm_dateColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public string fet_day {
+                get {
+                    try {
+                        return ((string)(this[this.tablelab_form_a.fet_dayColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'fet_day\' in table \'lab_form_a\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablelab_form_a.fet_dayColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public string fet1_day {
+                get {
+                    try {
+                        return ((string)(this[this.tablelab_form_a.fet1_dayColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'fet1_day\' in table \'lab_form_a\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablelab_form_a.fet1_dayColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public bool Isform_a_idNull() {
                 return this.IsNull(this.tablelab_form_a.form_a_idColumn);
             }
@@ -2623,6 +2716,42 @@ namespace clinic_ivf.report {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public void Setopu_timeNull() {
                 this[this.tablelab_form_a.opu_timeColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public bool Isfrozen_sperm_dateNull() {
+                return this.IsNull(this.tablelab_form_a.frozen_sperm_dateColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void Setfrozen_sperm_dateNull() {
+                this[this.tablelab_form_a.frozen_sperm_dateColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public bool Isfet_dayNull() {
+                return this.IsNull(this.tablelab_form_a.fet_dayColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void Setfet_dayNull() {
+                this[this.tablelab_form_a.fet_dayColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public bool Isfet1_dayNull() {
+                return this.IsNull(this.tablelab_form_a.fet1_dayColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void Setfet1_dayNull() {
+                this[this.tablelab_form_a.fet1_dayColumn] = global::System.Convert.DBNull;
             }
         }
         
