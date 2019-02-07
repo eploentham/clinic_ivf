@@ -204,6 +204,19 @@ namespace clinic_ivf.objdb
             lbReq1 = setLabOPU(dt);
             return lbReq1;
         }
+        public LabOpu selectByReqID(String copId)
+        {
+            LabOpu lbReq1 = new LabOpu();
+            DataTable dt = new DataTable();
+            String sql = "select opu.*,dtr.Name, proce.proce_name_t " +
+                "From " + opu.table + " opu " +
+                "Left Join Doctor dtr on dtr.ID = opu." + opu.doctor_id + " " +
+                "LEft Join lab_b_procedure proce on proce.proce_id = opu.proce_id " +
+                "Where opu." + opu.req_id + " ='" + copId + "' ";
+            dt = conn.selectData(conn.conn, sql);
+            lbReq1 = setLabOPU(dt);
+            return lbReq1;
+        }
         public DataTable selectByStatusProcess()
         {
             DataTable dt = new DataTable();

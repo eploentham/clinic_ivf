@@ -163,8 +163,14 @@ namespace clinic_ivf.gui
                     String re = ic.ivfDB.opuDB.updateStatusOPUApproveResult(txtID.Text, ic.user.staff_id);
                     if (long.TryParse(re, out chk1))
                     {
-                        MessageBox.Show("ส่งผล LAB OPU ให้ทางพยาบาล เรียบร้อย ", "");       //clinic_ivf.Properties.Resources.Female_user_accept_24
-                        btnApproveResult.Image = Resources.Female_user_accept_24;
+                        LabRequest req = new LabRequest();
+                        req = ic.ivfDB.lbReqDB.selectByPk1(opu.req_id);
+                        String re1 = ic.ivfDB.lbReqDB.UpdateStatusRequestResult(req.req_id, ic.cStf.staff_id);
+                        if (long.TryParse(re1, out chk1))
+                        {
+                            MessageBox.Show("ส่งผล LAB OPU ให้ทางพยาบาล เรียบร้อย ", "");       //clinic_ivf.Properties.Resources.Female_user_accept_24
+                            btnApproveResult.Image = Resources.Female_user_accept_24;
+                        }
                     }
                 }
             }
@@ -2193,7 +2199,6 @@ namespace clinic_ivf.gui
                     {
                         setControlFirstTime(false);
                     }
-                    
                 }
                 else
                 {

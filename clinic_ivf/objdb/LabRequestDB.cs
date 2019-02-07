@@ -175,6 +175,39 @@ namespace clinic_ivf.objdb
             dt = conn.selectData(conn.conn, sql);
             return dt;
         }
+        public DataTable selectByStatusResult(String startdate, String enddate, String hn)
+        {
+            DataTable dt = new DataTable();
+            String wheredate = "", wherehn = "";
+            if (hn.Length > 0)
+            {
+                wherehn = " and lreq."+ lbReq.hn_female+" like '%"+hn+"%'";
+            }
+            if (startdate.Length > 0)
+            {
+                wheredate = " and lreq.req_date >= '" + startdate + "' and lreq.req_date <= '" + enddate + "' ";
+            }
+            String sql = "Select lreq.req_id, concat(SurfixName.SurfixName,' ',ptt.PName,' ',ptt.PSurname) as name_female" +
+                ", Doctor.ID, Doctor.Name as dtr_name, Doctor.ID as dtrid, ifnull(lreq.remark,'') as remark, DateOfBirth as dob" +
+                ", lforma.status_wait_confirm_day1,lreq.form_a_id,lreq.req_id , lforma.form_a_id, ptt.PIDS,lforma.status_wait_confirm_day1,lforma.status_wait_confirm_opu_date " +
+                ", lreq.req_code, ptt.PIDS as hn_female, lreq.req_date, lreq.remark, lforma.status_opu_active, lforma.status_wait_confirm_opu_date, lforma.opu_wait_remark, lforma.remark as form_a_remark " +
+                ", lforma.opu_date, lforma.opu_time, lforma.opu_remark, lforma.fet_remark, lforma.opu_time_modi, lforma.status_opu_time_modi, lforma.hn_male, lforma.name_male, lforma.hn_donor" +
+                ", lforma.name_donor,lreq.vn, lreq.item_id, si.SName " +
+                "From lab_t_request lreq " +
+                "Left Join lab_t_form_a lforma on lreq.form_a_id = lforma.form_a_id  " +
+                "Left Join Patient ptt on lreq.hn_female = ptt.PIDS " +
+                "Left Join SurfixName on SurfixName.SurfixID = ptt.SurfixID  " +
+                "Left join Doctor on lforma.doctor_id = Doctor.ID  " +
+                "Left join SpecialItem si on lreq.item_id = si.SID " +
+                //"Left Join lab_t_request lreq on lreq.req_id = oJSd.req_id " +
+                //"Left Join lab_t_request lreq on lreq.request_id = oJSd.ID  " +
+                //"Left Join Visit vsold on oJSd.VN = vsold.VN " +
+                //"Left Join lab_t_form_a lforma on vsold.form_a_id = lforma.form_a_id " +
+                "Where  lreq.status_req = '5' " + wheredate + wherehn +
+                "Order By lforma.form_a_id ";
+            dt = conn.selectData(conn.conn, sql);
+            return dt;
+        }
         public String UpdateStatusRequestAccept(String lbReqId, String userIdAccept)
         {
             DataTable dt = new DataTable();
@@ -195,6 +228,18 @@ namespace clinic_ivf.objdb
                 "" + lbReq.status_req + "='4' " +
                 "," + lbReq.start_date + "= now() " +
                 "," + lbReq.start_staff_id + "='" + userIdAccept + "' " +
+                "Where " + lbReq.pkField + "='" + lbReqId + "'";
+            re = conn.ExecuteNonQuery(conn.conn, sql);
+            return re;
+        }
+        public String UpdateStatusRequestResult(String lbReqId, String userIdAccept)
+        {
+            DataTable dt = new DataTable();
+            String re = "";
+            String sql = "Update " + lbReq.table + " Set " +
+                "" + lbReq.status_req + "='5' " +
+                "," + lbReq.result_date + "= now() " +
+                "," + lbReq.result_staff_id + "='" + userIdAccept + "' " +
                 "Where " + lbReq.pkField + "='" + lbReqId + "'";
             re = conn.ExecuteNonQuery(conn.conn, sql);
             return re;

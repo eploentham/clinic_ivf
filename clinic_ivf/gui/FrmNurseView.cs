@@ -57,6 +57,7 @@ namespace clinic_ivf.gui
             sep = new C1SuperErrorProvider();
 
             txtDateStart.Value = System.DateTime.Now.Year + "-" + System.DateTime.Now.ToString("MM-dd");
+            txtLabResultDate.Value = System.DateTime.Now.Year + "-" + System.DateTime.Now.ToString("MM-dd");
             //btnNew.Click += BtnNew_Click;
             txtSearch.KeyUp += TxtSearch_KeyUp;
             //txtDateStart.ValueChanged += TxtDateStart_ValueChanged;
@@ -64,6 +65,7 @@ namespace clinic_ivf.gui
             tC.SelectedTabChanged += TC_SelectedTabChanged;
             btnSearch.Click += BtnSearch_Click;
             txtSearch.KeyUp += TxtSearch_KeyUp1;
+            txtLabResultDate.KeyUp += TxtLabResultDate_KeyUp;
 
             initGrfQue();
             setGrfQue();
@@ -73,6 +75,15 @@ namespace clinic_ivf.gui
             setGrfFinish();
             initGrfSearch();
             initGrfLab();
+        }
+
+        private void TxtLabResultDate_KeyUp(object sender, KeyEventArgs e)
+        {
+            //throw new NotImplementedException();
+            if (e.KeyCode == Keys.Enter)
+            {
+                setGrfLab(txtLabResultHn.Text.Trim());
+            }
         }
 
         private void TxtSearch_KeyUp1(object sender, KeyEventArgs e)
@@ -667,11 +678,16 @@ namespace clinic_ivf.gui
                 if (DateTime.TryParse(txtDateStart.Text, out dt11))
                 {
                     date = dt11.Year + "-" + dt11.ToString("MM-dd");
-                    dt = ic.ivfDB.vsOldDB.selectByDate(date);
+                    dt = ic.ivfDB.lbReqDB.selectByStatusResult(date, date,"");
                 }
             }
             else
             {
+                String date1 = "";
+                DateTime dt11 = new DateTime();
+                DateTime.TryParse(txtLabResultDate.Text, out dt11);
+                date1 = dt11.Year.ToString()+"-"+ dt11.ToString("MM-dd");
+                dt = ic.ivfDB.lbReqDB.selectByStatusResult(date1, date1,search);
                 //grfPtt.DataSource = ic.ivfDB.vsOldDB.selectCurrentVisit(search);
             }
 
@@ -707,11 +723,11 @@ namespace clinic_ivf.gui
 
             ContextMenu menuGw = new ContextMenu();
             //menuGw.MenuItems.Add("&receive operation", new EventHandler(ContextMenu_Apm));
-            menuGw.MenuItems.Add("&receive operation", new EventHandler(ContextMenu_Apm));
-            menuGw.MenuItems.Add("&LAB request FORM A", new EventHandler(ContextMenu_LAB_req_formA_Ptt));
-            menuGw.MenuItems.Add("&Add Appointment", new EventHandler(ContextMenu_Apm_Ptt));
-            menuGw.MenuItems.Add("&Cancel Receive", new EventHandler(ContextMenu_Apm_Ptt));
-            menuGw.MenuItems.Add("&No Appointment Close Operation", new EventHandler(ContextMenu_NO_Apm_Ptt));
+            menuGw.MenuItems.Add("Result LAB OPU", new EventHandler(ContextMenu_Result_Lab_OPU));
+            //menuGw.MenuItems.Add("&LAB request FORM A", new EventHandler(ContextMenu_LAB_req_formA_Ptt));
+            //menuGw.MenuItems.Add("&Add Appointment", new EventHandler(ContextMenu_Apm_Ptt));
+            //menuGw.MenuItems.Add("&Cancel Receive", new EventHandler(ContextMenu_Apm_Ptt));
+            //menuGw.MenuItems.Add("&No Appointment Close Operation", new EventHandler(ContextMenu_NO_Apm_Ptt));
             grfLab.ContextMenu = menuGw;
 
             Color color = ColorTranslator.FromHtml(ic.iniC.grfRowColor);
@@ -722,27 +738,30 @@ namespace clinic_ivf.gui
             foreach (DataRow row in dt.Rows)
             {
                 grfLab[i, 0] = i;
-                grfLab[i, colID] = row["id"].ToString();
-                grfLab[i, colVN] = row["VN"].ToString();
-                grfLab[i, colPttHn] = row["PIDS"].ToString();
-                grfLab[i, colPttName] = row["PName"].ToString();
-                grfLab[i, colVsDate] = ic.datetoShow(row["VDate"]);
-                grfLab[i, colVsTime] = row["VStartTime"].ToString();
-                grfLab[i, colVsEtime] = row["VEndTime"].ToString();
-                grfLab[i, colStatus] = row["VName"].ToString();
-                grfLab[i, colPttId] = row["PID"].ToString();
-                if (!row[ic.ivfDB.vsOldDB.vsold.form_a_id].ToString().Equals("0"))
-                {
-                    CellNote note = new CellNote("ส่ง Lab Request Foam A");
-                    CellRange rg = grfLab.GetCellRange(i, colVN);
-                    rg.UserData = note;
-                }
+                grfLab[i, colRID] = row["req_id"].ToString();
+                grfLab[i, colRVN] = row["VN"].ToString();
+                grfLab[i, colRPttHn] = row["PIDS"].ToString();
+                grfLab[i, colRPttName] = row["PName"].ToString();
+                //grfLab[i, colVsDate] = ic.datetoShow(row["VDate"]);
+                //grfLab[i, colVsTime] = row["VStartTime"].ToString();
+                //grfLab[i, colVsEtime] = row["VEndTime"].ToString();
+                //grfLab[i, colStatus] = row["VName"].ToString();
+                //grfLab[i, colPttId] = row["PID"].ToString();
+                //if (!row[ic.ivfDB.vsOldDB.vsold.form_a_id].ToString().Equals("0"))
+                //{
+                //    CellNote note = new CellNote("ส่ง Lab Request Foam A");
+                //    CellRange rg = grfLab.GetCellRange(i, colVN);
+                //    rg.UserData = note;
+                //}
                 //if (i % 2 == 0)
                 //    grfPtt.Rows[i].StyleNew.BackColor = color;
                 i++;
             }
             CellNoteManager mgr = new CellNoteManager(grfLab);
-            grfLab.Cols[colID].Visible = false;
+            grfLab.Cols[colRID].Visible = false;
+            grfLab.Cols[colRVN].AllowEditing = false;
+            grfLab.Cols[colRPttHn].AllowEditing = false;
+            grfLab.Cols[colRPttName].AllowEditing = false;
             //theme1.SetTheme(grfQue, ic.theme);
 
         }
@@ -1039,6 +1058,33 @@ namespace clinic_ivf.gui
                     setGrfQue();
                 }
             }
+        }
+        private void ContextMenu_Result_Lab_OPU(object sender, System.EventArgs e)
+        {
+            String chk = "", name = "", reqid = "", pttId = "";
+            if (grfLab.Row < 0) return;
+
+            reqid = grfLab[grfLab.Row, colRID] != null ? grfLab[grfLab.Row, colRID].ToString() : "";
+            LabRequest req = new LabRequest();
+            req = ic.ivfDB.lbReqDB.selectByPk1(reqid);
+            LabOpu opu = new LabOpu();
+            opu = ic.ivfDB.opuDB.selectByPk1(req.req_id);
+            FrmLabOPUAdd2 frm = new FrmLabOPUAdd2(ic,"", opu.opu_id);
+            String txt = "";
+            if (!name.Equals(""))
+            {
+                txt = " " + name;
+            }
+
+            frm.FormBorderStyle = FormBorderStyle.None;
+            menu.AddNewTab(frm, txt);
+            //pttId = grfLab[grfLab.Row, colPttId] != null ? grfLab[grfLab.Row, colPttId].ToString() : "";
+            //chk = grfLab[grfLab.Row, colPttHn] != null ? grfLab[grfLab.Row, colPttHn].ToString() : "";
+            //name = grfLab[grfLab.Row, colPttName] != null ? grfLab[grfLab.Row, colPttName].ToString() : "";
+            //FrmNurseAdd frm = new FrmNurseAdd();
+            //frm.ShowDialog(this);
+            //openApmAdd(pttId, vsid, name);
+
         }
         private void ContextMenu_LAB_req_formA_Ptt_finish(object sender, System.EventArgs e)
         {
