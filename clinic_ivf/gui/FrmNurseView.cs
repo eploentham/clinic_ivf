@@ -31,6 +31,7 @@ namespace clinic_ivf.gui
         C1FlexGrid grfQue, grfDiag, grfFinish, grfSearch, grfLab;
         C1SuperTooltip stt;
         C1SuperErrorProvider sep;
+        Timer timer;
 
         public FrmNurseView(IvfControl ic, MainMenu m)
         {
@@ -75,6 +76,20 @@ namespace clinic_ivf.gui
             setGrfFinish();
             initGrfSearch();
             initGrfLab();
+
+            int timerlab = 0;
+            int.TryParse(ic.iniC.timerlabreqaccept, out timerlab);
+            timer = new Timer();
+            timer.Interval = timerlab * 1000;
+            timer.Tick += Timer_Tick;
+            timer.Enabled = true;
+        }
+
+        private void Timer_Tick(object sender, EventArgs e)
+        {
+            //throw new NotImplementedException();
+            setGrfQue();
+            setGrfSearch(txtSearch.Text.Trim());
         }
 
         private void TxtLabResultDate_KeyUp(object sender, KeyEventArgs e)
