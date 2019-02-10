@@ -339,7 +339,7 @@ namespace clinic_ivf.report {
             
             private global::System.Data.DataColumn columnremark;
             
-            private global::System.Data.DataColumn columnDataColumn11;
+            private global::System.Data.DataColumn columnembryo_freezing_embryo_max;
             
             private global::System.Data.DataColumn columnDataColumn1;
             
@@ -618,9 +618,9 @@ namespace clinic_ivf.report {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public global::System.Data.DataColumn DataColumn11Column {
+            public global::System.Data.DataColumn embryo_freezing_embryo_maxColumn {
                 get {
-                    return this.columnDataColumn11;
+                    return this.columnembryo_freezing_embryo_max;
                 }
             }
             
@@ -700,7 +700,7 @@ namespace clinic_ivf.report {
                         string embryo_transfer_fresh_day5, 
                         string discard, 
                         string remark, 
-                        string DataColumn11, 
+                        string embryo_freezing_embryo_max, 
                         string DataColumn1) {
                 lab_form_day1Row rowlab_form_day1Row = ((lab_form_day1Row)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
@@ -734,7 +734,7 @@ namespace clinic_ivf.report {
                         embryo_transfer_fresh_day5,
                         discard,
                         remark,
-                        DataColumn11,
+                        embryo_freezing_embryo_max,
                         DataColumn1};
                 rowlab_form_day1Row.ItemArray = columnValuesArray;
                 this.Rows.Add(rowlab_form_day1Row);
@@ -788,7 +788,7 @@ namespace clinic_ivf.report {
                 this.columnembryo_transfer_fresh_day5 = base.Columns["embryo_transfer_fresh_day5"];
                 this.columndiscard = base.Columns["discard"];
                 this.columnremark = base.Columns["remark"];
-                this.columnDataColumn11 = base.Columns["DataColumn11"];
+                this.columnembryo_freezing_embryo_max = base.Columns["embryo_freezing_embryo_max"];
                 this.columnDataColumn1 = base.Columns["DataColumn1"];
             }
             
@@ -855,8 +855,8 @@ namespace clinic_ivf.report {
                 base.Columns.Add(this.columndiscard);
                 this.columnremark = new global::System.Data.DataColumn("remark", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnremark);
-                this.columnDataColumn11 = new global::System.Data.DataColumn("DataColumn11", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnDataColumn11);
+                this.columnembryo_freezing_embryo_max = new global::System.Data.DataColumn("embryo_freezing_embryo_max", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnembryo_freezing_embryo_max);
                 this.columnDataColumn1 = new global::System.Data.DataColumn("DataColumn1", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnDataColumn1);
                 this.columnform_day1_id.Caption = "DataColumn1";
@@ -889,7 +889,7 @@ namespace clinic_ivf.report {
                 this.columnembryo_transfer_fresh_day5.Caption = "DataColumn1";
                 this.columndiscard.Caption = "DataColumn1";
                 this.columnremark.Caption = "DataColumn1";
-                this.columnDataColumn11.Caption = "DataColumn1";
+                this.columnembryo_freezing_embryo_max.Caption = "DataColumn1";
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1516,17 +1516,18 @@ namespace clinic_ivf.report {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public string DataColumn11 {
+            public string embryo_freezing_embryo_max {
                 get {
                     try {
-                        return ((string)(this[this.tablelab_form_day1.DataColumn11Column]));
+                        return ((string)(this[this.tablelab_form_day1.embryo_freezing_embryo_maxColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'DataColumn11\' in table \'lab_form_day1\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'embryo_freezing_embryo_max\' in table \'lab_form_day1\' is DBN" +
+                                "ull.", e);
                     }
                 }
                 set {
-                    this[this.tablelab_form_day1.DataColumn11Column] = value;
+                    this[this.tablelab_form_day1.embryo_freezing_embryo_maxColumn] = value;
                 }
             }
             
@@ -1908,14 +1909,14 @@ namespace clinic_ivf.report {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public bool IsDataColumn11Null() {
-                return this.IsNull(this.tablelab_form_day1.DataColumn11Column);
+            public bool Isembryo_freezing_embryo_maxNull() {
+                return this.IsNull(this.tablelab_form_day1.embryo_freezing_embryo_maxColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public void SetDataColumn11Null() {
-                this[this.tablelab_form_day1.DataColumn11Column] = global::System.Convert.DBNull;
+            public void Setembryo_freezing_embryo_maxNull() {
+                this[this.tablelab_form_day1.embryo_freezing_embryo_maxColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]

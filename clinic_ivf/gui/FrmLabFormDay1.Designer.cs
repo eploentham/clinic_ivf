@@ -30,6 +30,7 @@
         {
             this.theme1 = new C1.Win.C1Themes.C1ThemeController();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.btnPrint = new C1.Win.C1Input.C1Button();
             this.txtDonorDob = new C1.Win.C1Input.C1TextBox();
             this.txtNameDonor = new C1.Win.C1Input.C1TextBox();
             this.btmDonorSearch = new C1.Win.C1Input.C1Button();
@@ -78,7 +79,7 @@
             this.panel3 = new System.Windows.Forms.Panel();
             this.cboEmbryoFreezingDay = new C1.Win.C1Input.C1ComboBox();
             this.label16 = new System.Windows.Forms.Label();
-            this.txtEmbryoFreezingEmbryo = new C1.Win.C1Input.C1TextBox();
+            this.txtEmbryoFreezingEmbryoMax = new C1.Win.C1Input.C1TextBox();
             this.label15 = new System.Windows.Forms.Label();
             this.chkEmbryoFreezingDay = new C1.Win.C1Input.C1CheckBox();
             this.pnBiopsy = new System.Windows.Forms.Panel();
@@ -100,9 +101,9 @@
             this.chkNoBiopsy = new System.Windows.Forms.RadioButton();
             this.sB = new System.Windows.Forms.StatusStrip();
             this.sB1 = new System.Windows.Forms.ToolStripStatusLabel();
-            this.btnPrint = new C1.Win.C1Input.C1Button();
             ((System.ComponentModel.ISupportInitialize)(this.theme1)).BeginInit();
             this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.btnPrint)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtDonorDob)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtNameDonor)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btmDonorSearch)).BeginInit();
@@ -136,7 +137,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.chkEmbryoGlue)).BeginInit();
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.cboEmbryoFreezingDay)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtEmbryoFreezingEmbryo)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtEmbryoFreezingEmbryoMax)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkEmbryoFreezingDay)).BeginInit();
             this.pnBiopsy.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtNgsMax)).BeginInit();
@@ -147,7 +148,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.chkNgs)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkPgsMin)).BeginInit();
             this.sB.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.btnPrint)).BeginInit();
             this.SuspendLayout();
             // 
             // theme1
@@ -194,6 +194,20 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Patient";
             this.theme1.SetTheme(this.groupBox1, "(default)");
+            // 
+            // btnPrint
+            // 
+            this.btnPrint.Image = global::clinic_ivf.Properties.Resources.print;
+            this.btnPrint.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnPrint.Location = new System.Drawing.Point(956, 65);
+            this.btnPrint.Name = "btnPrint";
+            this.btnPrint.Size = new System.Drawing.Size(79, 34);
+            this.btnPrint.TabIndex = 729;
+            this.btnPrint.Text = "Print";
+            this.btnPrint.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.theme1.SetTheme(this.btnPrint, "(default)");
+            this.btnPrint.UseVisualStyleBackColor = true;
+            this.btnPrint.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
             // 
             // txtDonorDob
             // 
@@ -917,7 +931,7 @@
             this.panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
             this.panel3.Controls.Add(this.cboEmbryoFreezingDay);
             this.panel3.Controls.Add(this.label16);
-            this.panel3.Controls.Add(this.txtEmbryoFreezingEmbryo);
+            this.panel3.Controls.Add(this.txtEmbryoFreezingEmbryoMax);
             this.panel3.Controls.Add(this.label15);
             this.panel3.Controls.Add(this.chkEmbryoFreezingDay);
             this.panel3.Controls.Add(this.pnBiopsy);
@@ -964,18 +978,18 @@
             this.label16.Text = "embryos";
             this.theme1.SetTheme(this.label16, "(default)");
             // 
-            // txtEmbryoFreezingEmbryo
+            // txtEmbryoFreezingEmbryoMax
             // 
-            this.txtEmbryoFreezingEmbryo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtEmbryoFreezingEmbryo.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
-            this.txtEmbryoFreezingEmbryo.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.txtEmbryoFreezingEmbryo.Location = new System.Drawing.Point(417, 153);
-            this.txtEmbryoFreezingEmbryo.Name = "txtEmbryoFreezingEmbryo";
-            this.txtEmbryoFreezingEmbryo.Size = new System.Drawing.Size(78, 20);
-            this.txtEmbryoFreezingEmbryo.TabIndex = 755;
-            this.txtEmbryoFreezingEmbryo.Tag = null;
-            this.theme1.SetTheme(this.txtEmbryoFreezingEmbryo, "(default)");
-            this.txtEmbryoFreezingEmbryo.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            this.txtEmbryoFreezingEmbryoMax.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtEmbryoFreezingEmbryoMax.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
+            this.txtEmbryoFreezingEmbryoMax.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.txtEmbryoFreezingEmbryoMax.Location = new System.Drawing.Point(417, 153);
+            this.txtEmbryoFreezingEmbryoMax.Name = "txtEmbryoFreezingEmbryoMax";
+            this.txtEmbryoFreezingEmbryoMax.Size = new System.Drawing.Size(78, 20);
+            this.txtEmbryoFreezingEmbryoMax.TabIndex = 755;
+            this.txtEmbryoFreezingEmbryoMax.Tag = null;
+            this.theme1.SetTheme(this.txtEmbryoFreezingEmbryoMax, "(default)");
+            this.txtEmbryoFreezingEmbryoMax.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
             // 
             // label15
             // 
@@ -1282,20 +1296,6 @@
             this.sB1.Size = new System.Drawing.Size(118, 17);
             this.sB1.Text = "toolStripStatusLabel1";
             // 
-            // btnPrint
-            // 
-            this.btnPrint.Image = global::clinic_ivf.Properties.Resources.print;
-            this.btnPrint.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnPrint.Location = new System.Drawing.Point(956, 65);
-            this.btnPrint.Name = "btnPrint";
-            this.btnPrint.Size = new System.Drawing.Size(79, 34);
-            this.btnPrint.TabIndex = 729;
-            this.btnPrint.Text = "Print";
-            this.btnPrint.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.theme1.SetTheme(this.btnPrint, "(default)");
-            this.btnPrint.UseVisualStyleBackColor = true;
-            this.btnPrint.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
-            // 
             // FrmLabFormDay1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1310,6 +1310,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.theme1)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.btnPrint)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtDonorDob)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtNameDonor)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btmDonorSearch)).EndInit();
@@ -1347,7 +1348,7 @@
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.cboEmbryoFreezingDay)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtEmbryoFreezingEmbryo)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtEmbryoFreezingEmbryoMax)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkEmbryoFreezingDay)).EndInit();
             this.pnBiopsy.ResumeLayout(false);
             this.pnBiopsy.PerformLayout();
@@ -1361,7 +1362,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.chkPgsMin)).EndInit();
             this.sB.ResumeLayout(false);
             this.sB.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.btnPrint)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1424,7 +1424,7 @@
         private C1.Win.C1Input.C1TextBox txtNgsMax;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Label label16;
-        private C1.Win.C1Input.C1TextBox txtEmbryoFreezingEmbryo;
+        private C1.Win.C1Input.C1TextBox txtEmbryoFreezingEmbryoMax;
         private System.Windows.Forms.Label label15;
         private C1.Win.C1Input.C1CheckBox chkEmbryoGlue;
         private C1.Win.C1Input.C1CheckBox chkBlastocyst;

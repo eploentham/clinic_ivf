@@ -113,7 +113,72 @@ namespace clinic_ivf.gui
             DataTable dt = new DataTable();
 
             dt.NewRow();
-            dt.Columns.Add("", typeof(String));
+            dt.Columns.Add("form_day1_id", typeof(String));
+            dt.Columns.Add("hn_female", typeof(String));
+            dt.Columns.Add("name_female", typeof(String));
+            dt.Columns.Add("hn_male", typeof(String));
+            dt.Columns.Add("name_male", typeof(String));
+            dt.Columns.Add("dob_female", typeof(String));
+            dt.Columns.Add("dob_male", typeof(String));
+            dt.Columns.Add("doctor_name", typeof(String));
+            dt.Columns.Add("date_request", typeof(String));
+            dt.Columns.Add("fertili_2_pn", typeof(String));
+            dt.Columns.Add("status_biopsy", typeof(String));
+            dt.Columns.Add("pgs", typeof(String));
+            dt.Columns.Add("ngs", typeof(String));
+            dt.Columns.Add("pgs_min", typeof(String));
+            dt.Columns.Add("pgs_max", typeof(String));
+            dt.Columns.Add("ngs_7_pair", typeof(String));
+            dt.Columns.Add("ngs_23_pair", typeof(String));
+            dt.Columns.Add("ngs_min", typeof(String));
+            dt.Columns.Add("ngs_max", typeof(String));
+            dt.Columns.Add("embryo_freezing_day", typeof(String));
+            dt.Columns.Add("embryo_freezing_embryo", typeof(String));
+            dt.Columns.Add("blastocyst", typeof(String));
+            dt.Columns.Add("morula", typeof(String));
+            dt.Columns.Add("cleavage", typeof(String));
+            dt.Columns.Add("embryo_transfer_fresh_cycle", typeof(String));
+            dt.Columns.Add("embryo_glue", typeof(String));
+            dt.Columns.Add("embryo_transfer_fresh_day3", typeof(String));
+            dt.Columns.Add("embryo_transfer_fresh_day5", typeof(String));
+            dt.Columns.Add("discard", typeof(String));
+            dt.Columns.Add("remark", typeof(String));
+            //dt.Columns.Add("", typeof(String));
+            //dt.Columns.Add("", typeof(String));
+            //dt.Columns.Add("", typeof(String));
+            //dt.Columns.Add("", typeof(String));
+            dt.Rows[0]["form_day1_id"] = "";
+            dt.Rows[0]["hn_female"] = txtHnFeMale.Text;
+            dt.Rows[0]["name_female"] = txtNameFeMale.Text;
+            dt.Rows[0]["hn_male"] = txtHnMale.Text;
+            dt.Rows[0]["name_male"] = txtNameMale.Text;
+            dt.Rows[0]["dob_female"] = txtDobFeMale.Text;
+            dt.Rows[0]["dob_male"] = txtDobMale.Text;
+            dt.Rows[0]["doctor_name"] = cboDoctor.SelectedItem == null ? "" : ((ComboBoxItem)cboDoctor.SelectedItem).Value;
+            dt.Rows[0]["date_request"] = "";
+            dt.Rows[0]["fertili_2_pn"] = txtFertili2Pn.Text;
+            dt.Rows[0]["status_biopsy"] = chkBiopsy.Checked == true ? "1" : "0";
+            dt.Rows[0]["pgs"] = chkPgsMin.Checked == true ? "1" : "0";
+            dt.Rows[0]["ngs"] = chkNgs.Checked == true ? "1" : "0";
+            dt.Rows[0]["pgs_min"] = txtPgsMin.Text;
+            dt.Rows[0]["pgs_max"] = txtPgsMax.Text;
+            dt.Rows[0]["ngs_7_pair"] = chkNgs7Pair.Checked == true ? "1" : "0";
+            dt.Rows[0]["ngs_23_pair"] = chkNgs23Pair.Checked == true ? "1" : "0";
+            dt.Rows[0]["ngs_min"] = txtNgsMin.Text;
+            dt.Rows[0]["ngs_max"] = txtNgsMax.Text;
+            dt.Rows[0]["embryo_freezing_day"]= chkEmbryoFreezingDay.Checked == true ? "1" : "0";
+            dt.Rows[0]["embryo_freezing_embryo"]= cboEmbryoFreezingDay.SelectedItem == null ? "" : ((ComboBoxItem)cboEmbryoFreezingDay.SelectedItem).Value;
+            dt.Rows[0]["blastocyst"] = chkBlastocyst.Checked == true ? "1" : "0";
+            dt.Rows[0]["morula"] = chkMorula.Checked == true ? "1" : "0";
+            dt.Rows[0]["cleavage"] = chkCleavage.Checked == true ? "1" : "0";
+            dt.Rows[0]["embryo_transfer_fresh_cycle"] = chkEmbryoTransferFresh.Checked == true ? "1" : "0";
+            dt.Rows[0]["embryo_glue"] = chkEmbryoGlue.Checked == true ? "1" : "0";
+            dt.Rows[0]["embryo_transfer_fresh_day3"] = chkEmbryoTransferFreshDay3.Checked == true ? "1" : "0";
+            dt.Rows[0]["embryo_transfer_fresh_day5"] = chkEmbryoTransferFreshDay5.Checked == true ? "1" : "0";
+            dt.Rows[0]["discard"] = chkDiscard.Checked == true ? "1" : "0";
+            dt.Rows[0]["remark"] = txtRemark.Text;
+            dt.Rows[0]["embryo_freezing_embryo_max"] = txtEmbryoFreezingEmbryoMax.Text;
+            //dt.Rows[0][""]
             FrmReport frm = new FrmReport(ic);
             frm.setLabFormDay1Report(dt);
             frm.ShowDialog(this);
@@ -189,14 +254,14 @@ namespace clinic_ivf.gui
             if (chkEmbryoFreezingDay.Checked)
             {
                 cboEmbryoFreezingDay.Enabled = true;
-                txtEmbryoFreezingEmbryo.Enabled = true;
+                txtEmbryoFreezingEmbryoMax.Enabled = true;
                 label15.Enabled = true;
                 label16.Enabled = true;
             }
             else
             {
                 cboEmbryoFreezingDay.Enabled = false;
-                txtEmbryoFreezingEmbryo.Enabled = false;
+                txtEmbryoFreezingEmbryoMax.Enabled = false;
                 label15.Enabled = false;
                 label16.Enabled = false;
             }
