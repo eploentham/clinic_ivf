@@ -167,7 +167,7 @@ namespace clinic_ivf.gui
             //menuGw.MenuItems.Add("&receive operation", new EventHandler(ContextMenu_Apm));
             //menuGw.MenuItems.Add("&receive operation", new EventHandler(ContextMenu_Apm));
             menuGw.MenuItems.Add("LAB request FORM A", new EventHandler(ContextMenu_LAB_req_formA_Ptt));
-            //menuGw.MenuItems.Add("&Add Appointment", new EventHandler(ContextMenu_Apm_Ptt));
+            menuGw.MenuItems.Add("LAB Form Day1", new EventHandler(ContextMenu_Form_day1));
             //menuGw.MenuItems.Add("&Cancel Receive", new EventHandler(ContextMenu_Apm_Ptt));
             //menuGw.MenuItems.Add("&No Appointment Close Operation", new EventHandler(ContextMenu_NO_Apm_Ptt));
             //grfQue.ContextMenu = menuGw;
@@ -212,6 +212,25 @@ namespace clinic_ivf.gui
             //id = grfQue[grfQue.Row, colID].ToString();
             //FrmLabFormA frm = new FrmLabFormA(ic, id, "", "", "");
             //frm.ShowDialog(this);
+        }
+        private void ContextMenu_Form_day1(object sender, System.EventArgs e)
+        {
+            String chk = "", name = "", id = "";
+
+            //id = grfReq[grfReq.Row, colRqId] != null ? grfReq[grfReq.Row, colRqId].ToString() : "";
+            //chk = grfReq[grfReq.Row, colRqReqNum] != null ? grfReq[grfReq.Row, colRqReqNum].ToString() : "";
+            //name = grfReq[grfReq.Row, colRqName] != null ? grfReq[grfReq.Row, colRqName].ToString() : "";
+            ////if (MessageBox.Show("ต้องการ ป้อน LAB OPU  \n  req number " + chk+" \n name "+ name, "", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == DialogResult.OK)
+            ////{
+            ////grfReq.Rows.Remove(grfReq.Row);
+            //Cursor curOld;
+            //curOld = this.Cursor;
+            //this.Cursor = Cursors.WaitCursor;
+            //openLabOPUNew(id, name);
+            //setGrfReq();
+            //setGrfProc();
+            //this.Cursor = curOld;
+            //}
         }
         private void FrmLabFormAView_Load(object sender, EventArgs e)
         {

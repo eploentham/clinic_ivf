@@ -113,21 +113,22 @@ namespace clinic_ivf.gui
         private void BtnSearch_Click(object sender, EventArgs e)
         {
             //throw new NotImplementedException();
-            if (chkLabFormA.Checked)
-            {
-                setGrfSearch(txtSearch.Text.Trim());
-            }
-            else
-            {
-                if (tC.SelectedTab == tabFinish)
-                {
-                    setGrfFinish();
-                }
-                else if (tC.SelectedTab == tabWaiting)
-                {
-                    setGrfQue();
-                }
-            }
+            //if (chkLabFormA.Checked)
+            //{
+            //    setGrfSearch(txtSearch.Text.Trim());
+            //}
+            //else
+            //{
+            //    if (tC.SelectedTab == tabFinish)
+            //    {
+            //        setGrfFinish();
+            //    }
+            //    else if (tC.SelectedTab == tabWaiting)
+            //    {
+            //        setGrfQue();
+            //    }
+            //}
+            setGrfSearch(txtSearch.Text);
         }
 
         private void TxtDateStart_DropDownClosed(object sender, DropDownClosedEventArgs e)
@@ -618,6 +619,7 @@ namespace clinic_ivf.gui
             //menuGw.MenuItems.Add("&receive operation", new EventHandler(ContextMenu_Apm));
             //menuGw.MenuItems.Add("&receive operation", new EventHandler(ContextMenu_Apm));
             menuGw.MenuItems.Add("&LAB request FORM A", new EventHandler(ContextMenu_LAB_req_formA_Ptt_search));
+            menuGw.MenuItems.Add("LAB Form Day1", new EventHandler(ContextMenu_Form_day1));
             //menuGw.MenuItems.Add("&Add Appointment", new EventHandler(ContextMenu_Apm_Ptt));
             //menuGw.MenuItems.Add("&Cancel Receive", new EventHandler(ContextMenu_Apm_Ptt));
             //menuGw.MenuItems.Add("&No Appointment Close Operation", new EventHandler(ContextMenu_NO_Apm_Ptt));
@@ -654,6 +656,13 @@ namespace clinic_ivf.gui
             grfSearch.Cols[colID].Visible = false;
             //theme1.SetTheme(grfQue, ic.theme);
 
+        }
+        private void ContextMenu_Form_day1(object sender, System.EventArgs e)
+        {
+            String vnold = "";
+            vnold = grfSearch[grfSearch.Row, colID].ToString();
+            FrmLabFormDay1 frm = new FrmLabFormDay1(ic,"","","", vnold);
+            frm.ShowDialog(this);
         }
         private void initGrfLab()
         {
@@ -1279,7 +1288,6 @@ namespace clinic_ivf.gui
                 FrmAppointmentAdd frm = new FrmAppointmentAdd(ic, "", pttId, vsid);
                 frm.ShowDialog(this);
             }
-            
         }
         private void FrmNurseView_Load(object sender, EventArgs e)
         {

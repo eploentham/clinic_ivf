@@ -38,6 +38,13 @@
             this.tabFinish = new C1.Win.C1Command.C1DockingTabPage();
             this.pnFinish = new System.Windows.Forms.Panel();
             this.tabLab = new C1.Win.C1Command.C1DockingTabPage();
+            this.pnLab = new System.Windows.Forms.Panel();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.btnLabResultSearch = new C1.Win.C1Input.C1Button();
+            this.label1 = new System.Windows.Forms.Label();
+            this.txtLabResultDate = new C1.Win.C1Input.C1DateEdit();
+            this.label2 = new System.Windows.Forms.Label();
+            this.txtLabResultHn = new C1.Win.C1Input.C1TextBox();
             this.tabSearch = new C1.Win.C1Command.C1DockingTabPage();
             this.pnSearch = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
@@ -49,13 +56,6 @@
             this.txtSearch = new C1.Win.C1Input.C1TextBox();
             this.sB = new System.Windows.Forms.StatusStrip();
             this.sB1 = new System.Windows.Forms.ToolStripStatusLabel();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.btnLabResultSearch = new C1.Win.C1Input.C1Button();
-            this.label1 = new System.Windows.Forms.Label();
-            this.txtLabResultDate = new C1.Win.C1Input.C1DateEdit();
-            this.label2 = new System.Windows.Forms.Label();
-            this.txtLabResultHn = new C1.Win.C1Input.C1TextBox();
-            this.pnLab = new System.Windows.Forms.Panel();
             ((System.ComponentModel.ISupportInitialize)(this.theme1)).BeginInit();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tC)).BeginInit();
@@ -64,6 +64,10 @@
             this.tabDiag.SuspendLayout();
             this.tabFinish.SuspendLayout();
             this.tabLab.SuspendLayout();
+            this.panel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.btnLabResultSearch)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtLabResultDate)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtLabResultHn)).BeginInit();
             this.tabSearch.SuspendLayout();
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chkLabFormA)).BeginInit();
@@ -71,10 +75,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtDateStart)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtSearch)).BeginInit();
             this.sB.SuspendLayout();
-            this.panel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.btnLabResultSearch)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtLabResultDate)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtLabResultHn)).BeginInit();
             this.SuspendLayout();
             // 
             // theme1
@@ -184,6 +184,137 @@
             this.tabLab.Size = new System.Drawing.Size(1069, 653);
             this.tabLab.TabIndex = 4;
             this.tabLab.Text = "Lab Result";
+            // 
+            // pnLab
+            // 
+            this.pnLab.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.pnLab.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pnLab.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.pnLab.Location = new System.Drawing.Point(0, 36);
+            this.pnLab.Name = "pnLab";
+            this.pnLab.Size = new System.Drawing.Size(1069, 617);
+            this.pnLab.TabIndex = 3;
+            this.theme1.SetTheme(this.pnLab, "(default)");
+            // 
+            // panel2
+            // 
+            this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.panel2.Controls.Add(this.btnLabResultSearch);
+            this.panel2.Controls.Add(this.label1);
+            this.panel2.Controls.Add(this.txtLabResultDate);
+            this.panel2.Controls.Add(this.label2);
+            this.panel2.Controls.Add(this.txtLabResultHn);
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.panel2.Location = new System.Drawing.Point(0, 0);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(1069, 36);
+            this.panel2.TabIndex = 2;
+            this.theme1.SetTheme(this.panel2, "(default)");
+            // 
+            // btnLabResultSearch
+            // 
+            this.btnLabResultSearch.Location = new System.Drawing.Point(488, 5);
+            this.btnLabResultSearch.Name = "btnLabResultSearch";
+            this.btnLabResultSearch.Size = new System.Drawing.Size(28, 23);
+            this.btnLabResultSearch.TabIndex = 736;
+            this.btnLabResultSearch.Text = "...";
+            this.theme1.SetTheme(this.btnLabResultSearch, "(default)");
+            this.btnLabResultSearch.UseVisualStyleBackColor = true;
+            this.btnLabResultSearch.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.label1.Location = new System.Drawing.Point(246, 8);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(73, 16);
+            this.label1.TabIndex = 735;
+            this.label1.Text = "Date Start :";
+            this.theme1.SetTheme(this.label1, "(default)");
+            // 
+            // txtLabResultDate
+            // 
+            this.txtLabResultDate.AllowSpinLoop = false;
+            this.txtLabResultDate.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            // 
+            // 
+            // 
+            this.txtLabResultDate.Calendar.ArrowColor = System.Drawing.Color.Black;
+            this.txtLabResultDate.Calendar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.txtLabResultDate.Calendar.DayNamesFont = new System.Drawing.Font("Tahoma", 8F);
+            this.txtLabResultDate.Calendar.Font = new System.Drawing.Font("Tahoma", 8F);
+            this.txtLabResultDate.Calendar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.txtLabResultDate.Calendar.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(71)))), ((int)(((byte)(47)))));
+            this.txtLabResultDate.Calendar.SelectionForeColor = System.Drawing.Color.White;
+            this.txtLabResultDate.Calendar.TitleBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(230)))));
+            this.txtLabResultDate.Calendar.TitleFont = new System.Drawing.Font("Tahoma", 8F);
+            this.txtLabResultDate.Calendar.TitleForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.txtLabResultDate.Calendar.TodayBorderColor = System.Drawing.Color.White;
+            this.txtLabResultDate.Calendar.TrailingForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
+            this.txtLabResultDate.Calendar.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            this.txtLabResultDate.Culture = 1054;
+            this.txtLabResultDate.CurrentTimeZone = false;
+            this.txtLabResultDate.DateTimeInput = false;
+            this.txtLabResultDate.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
+            this.txtLabResultDate.DisplayFormat.CustomFormat = "dd-MM-yyyy";
+            this.txtLabResultDate.DisplayFormat.FormatType = C1.Win.C1Input.FormatTypeEnum.ShortDate;
+            this.txtLabResultDate.DisplayFormat.Inherit = ((C1.Win.C1Input.FormatInfoInheritFlags)(((((C1.Win.C1Input.FormatInfoInheritFlags.NullText | C1.Win.C1Input.FormatInfoInheritFlags.EmptyAsNull) 
+            | C1.Win.C1Input.FormatInfoInheritFlags.TrimStart) 
+            | C1.Win.C1Input.FormatInfoInheritFlags.TrimEnd) 
+            | C1.Win.C1Input.FormatInfoInheritFlags.CalendarType)));
+            this.txtLabResultDate.EditFormat.CustomFormat = "dd-MM-yyyy";
+            this.txtLabResultDate.EditFormat.FormatType = C1.Win.C1Input.FormatTypeEnum.ShortDate;
+            this.txtLabResultDate.EditFormat.Inherit = ((C1.Win.C1Input.FormatInfoInheritFlags)(((((C1.Win.C1Input.FormatInfoInheritFlags.NullText | C1.Win.C1Input.FormatInfoInheritFlags.EmptyAsNull) 
+            | C1.Win.C1Input.FormatInfoInheritFlags.TrimStart) 
+            | C1.Win.C1Input.FormatInfoInheritFlags.TrimEnd) 
+            | C1.Win.C1Input.FormatInfoInheritFlags.CalendarType)));
+            this.txtLabResultDate.EmptyAsNull = true;
+            this.txtLabResultDate.GMTOffset = System.TimeSpan.Parse("00:00:00");
+            this.txtLabResultDate.ImagePadding = new System.Windows.Forms.Padding(0);
+            this.txtLabResultDate.Location = new System.Drawing.Point(325, 8);
+            this.txtLabResultDate.Name = "txtLabResultDate";
+            this.txtLabResultDate.ParseInfo.EmptyAsNull = false;
+            this.txtLabResultDate.ParseInfo.Inherit = ((C1.Win.C1Input.ParseInfoInheritFlags)(((((((C1.Win.C1Input.ParseInfoInheritFlags.CaseSensitive | C1.Win.C1Input.ParseInfoInheritFlags.FormatType) 
+            | C1.Win.C1Input.ParseInfoInheritFlags.CustomFormat) 
+            | C1.Win.C1Input.ParseInfoInheritFlags.NullText) 
+            | C1.Win.C1Input.ParseInfoInheritFlags.ErrorMessage) 
+            | C1.Win.C1Input.ParseInfoInheritFlags.TrimStart) 
+            | C1.Win.C1Input.ParseInfoInheritFlags.TrimEnd)));
+            this.txtLabResultDate.Size = new System.Drawing.Size(142, 18);
+            this.txtLabResultDate.TabIndex = 734;
+            this.txtLabResultDate.Tag = null;
+            this.theme1.SetTheme(this.txtLabResultDate, "(default)");
+            this.txtLabResultDate.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.label2.Location = new System.Drawing.Point(7, 8);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(36, 16);
+            this.label2.TabIndex = 733;
+            this.label2.Text = "key :";
+            this.theme1.SetTheme(this.label2, "(default)");
+            // 
+            // txtLabResultHn
+            // 
+            this.txtLabResultHn.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtLabResultHn.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
+            this.txtLabResultHn.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.txtLabResultHn.Location = new System.Drawing.Point(77, 6);
+            this.txtLabResultHn.Name = "txtLabResultHn";
+            this.txtLabResultHn.Size = new System.Drawing.Size(157, 20);
+            this.txtLabResultHn.TabIndex = 732;
+            this.txtLabResultHn.Tag = null;
+            this.theme1.SetTheme(this.txtLabResultHn, "(default)");
+            this.txtLabResultHn.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
             // 
             // tabSearch
             // 
@@ -307,6 +438,7 @@
             this.txtDateStart.ImagePadding = new System.Windows.Forms.Padding(0);
             this.txtDateStart.Location = new System.Drawing.Point(325, 8);
             this.txtDateStart.Name = "txtDateStart";
+            this.txtDateStart.ParseInfo.EmptyAsNull = false;
             this.txtDateStart.ParseInfo.Inherit = ((C1.Win.C1Input.ParseInfoInheritFlags)(((((((C1.Win.C1Input.ParseInfoInheritFlags.CaseSensitive | C1.Win.C1Input.ParseInfoInheritFlags.FormatType) 
             | C1.Win.C1Input.ParseInfoInheritFlags.CustomFormat) 
             | C1.Win.C1Input.ParseInfoInheritFlags.NullText) 
@@ -361,136 +493,6 @@
             this.sB1.Size = new System.Drawing.Size(118, 17);
             this.sB1.Text = "toolStripStatusLabel1";
             // 
-            // panel2
-            // 
-            this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.panel2.Controls.Add(this.btnLabResultSearch);
-            this.panel2.Controls.Add(this.label1);
-            this.panel2.Controls.Add(this.txtLabResultDate);
-            this.panel2.Controls.Add(this.label2);
-            this.panel2.Controls.Add(this.txtLabResultHn);
-            this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.panel2.Location = new System.Drawing.Point(0, 0);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1069, 36);
-            this.panel2.TabIndex = 2;
-            this.theme1.SetTheme(this.panel2, "(default)");
-            // 
-            // btnLabResultSearch
-            // 
-            this.btnLabResultSearch.Location = new System.Drawing.Point(488, 5);
-            this.btnLabResultSearch.Name = "btnLabResultSearch";
-            this.btnLabResultSearch.Size = new System.Drawing.Size(28, 23);
-            this.btnLabResultSearch.TabIndex = 736;
-            this.btnLabResultSearch.Text = "...";
-            this.theme1.SetTheme(this.btnLabResultSearch, "(default)");
-            this.btnLabResultSearch.UseVisualStyleBackColor = true;
-            this.btnLabResultSearch.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.label1.Location = new System.Drawing.Point(246, 8);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(73, 16);
-            this.label1.TabIndex = 735;
-            this.label1.Text = "Date Start :";
-            this.theme1.SetTheme(this.label1, "(default)");
-            // 
-            // txtLabResultDate
-            // 
-            this.txtLabResultDate.AllowSpinLoop = false;
-            this.txtLabResultDate.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            // 
-            // 
-            // 
-            this.txtLabResultDate.Calendar.ArrowColor = System.Drawing.Color.Black;
-            this.txtLabResultDate.Calendar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.txtLabResultDate.Calendar.DayNamesFont = new System.Drawing.Font("Tahoma", 8F);
-            this.txtLabResultDate.Calendar.Font = new System.Drawing.Font("Tahoma", 8F);
-            this.txtLabResultDate.Calendar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.txtLabResultDate.Calendar.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(71)))), ((int)(((byte)(47)))));
-            this.txtLabResultDate.Calendar.SelectionForeColor = System.Drawing.Color.White;
-            this.txtLabResultDate.Calendar.TitleBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(230)))));
-            this.txtLabResultDate.Calendar.TitleFont = new System.Drawing.Font("Tahoma", 8F);
-            this.txtLabResultDate.Calendar.TitleForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.txtLabResultDate.Calendar.TodayBorderColor = System.Drawing.Color.White;
-            this.txtLabResultDate.Calendar.TrailingForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
-            this.txtLabResultDate.Calendar.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
-            this.txtLabResultDate.Culture = 1054;
-            this.txtLabResultDate.CurrentTimeZone = false;
-            this.txtLabResultDate.DateTimeInput = false;
-            this.txtLabResultDate.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
-            this.txtLabResultDate.DisplayFormat.CustomFormat = "dd-MM-yyyy";
-            this.txtLabResultDate.DisplayFormat.FormatType = C1.Win.C1Input.FormatTypeEnum.ShortDate;
-            this.txtLabResultDate.DisplayFormat.Inherit = ((C1.Win.C1Input.FormatInfoInheritFlags)(((((C1.Win.C1Input.FormatInfoInheritFlags.NullText | C1.Win.C1Input.FormatInfoInheritFlags.EmptyAsNull) 
-            | C1.Win.C1Input.FormatInfoInheritFlags.TrimStart) 
-            | C1.Win.C1Input.FormatInfoInheritFlags.TrimEnd) 
-            | C1.Win.C1Input.FormatInfoInheritFlags.CalendarType)));
-            this.txtLabResultDate.EditFormat.CustomFormat = "dd-MM-yyyy";
-            this.txtLabResultDate.EditFormat.FormatType = C1.Win.C1Input.FormatTypeEnum.ShortDate;
-            this.txtLabResultDate.EditFormat.Inherit = ((C1.Win.C1Input.FormatInfoInheritFlags)(((((C1.Win.C1Input.FormatInfoInheritFlags.NullText | C1.Win.C1Input.FormatInfoInheritFlags.EmptyAsNull) 
-            | C1.Win.C1Input.FormatInfoInheritFlags.TrimStart) 
-            | C1.Win.C1Input.FormatInfoInheritFlags.TrimEnd) 
-            | C1.Win.C1Input.FormatInfoInheritFlags.CalendarType)));
-            this.txtLabResultDate.EmptyAsNull = true;
-            this.txtLabResultDate.GMTOffset = System.TimeSpan.Parse("00:00:00");
-            this.txtLabResultDate.ImagePadding = new System.Windows.Forms.Padding(0);
-            this.txtLabResultDate.Location = new System.Drawing.Point(325, 8);
-            this.txtLabResultDate.Name = "txtLabResultDate";
-            this.txtLabResultDate.ParseInfo.Inherit = ((C1.Win.C1Input.ParseInfoInheritFlags)(((((((C1.Win.C1Input.ParseInfoInheritFlags.CaseSensitive | C1.Win.C1Input.ParseInfoInheritFlags.FormatType) 
-            | C1.Win.C1Input.ParseInfoInheritFlags.CustomFormat) 
-            | C1.Win.C1Input.ParseInfoInheritFlags.NullText) 
-            | C1.Win.C1Input.ParseInfoInheritFlags.ErrorMessage) 
-            | C1.Win.C1Input.ParseInfoInheritFlags.TrimStart) 
-            | C1.Win.C1Input.ParseInfoInheritFlags.TrimEnd)));
-            this.txtLabResultDate.Size = new System.Drawing.Size(142, 18);
-            this.txtLabResultDate.TabIndex = 734;
-            this.txtLabResultDate.Tag = null;
-            this.theme1.SetTheme(this.txtLabResultDate, "(default)");
-            this.txtLabResultDate.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.label2.Location = new System.Drawing.Point(7, 8);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(36, 16);
-            this.label2.TabIndex = 733;
-            this.label2.Text = "key :";
-            this.theme1.SetTheme(this.label2, "(default)");
-            // 
-            // txtLabResultHn
-            // 
-            this.txtLabResultHn.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtLabResultHn.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
-            this.txtLabResultHn.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.txtLabResultHn.Location = new System.Drawing.Point(77, 6);
-            this.txtLabResultHn.Name = "txtLabResultHn";
-            this.txtLabResultHn.Size = new System.Drawing.Size(157, 20);
-            this.txtLabResultHn.TabIndex = 732;
-            this.txtLabResultHn.Tag = null;
-            this.theme1.SetTheme(this.txtLabResultHn, "(default)");
-            this.txtLabResultHn.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
-            // 
-            // pnLab
-            // 
-            this.pnLab.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.pnLab.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnLab.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.pnLab.Location = new System.Drawing.Point(0, 36);
-            this.pnLab.Name = "pnLab";
-            this.pnLab.Size = new System.Drawing.Size(1069, 617);
-            this.pnLab.TabIndex = 3;
-            this.theme1.SetTheme(this.pnLab, "(default)");
-            // 
             // FrmNurseView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -509,6 +511,11 @@
             this.tabDiag.ResumeLayout(false);
             this.tabFinish.ResumeLayout(false);
             this.tabLab.ResumeLayout(false);
+            this.panel2.ResumeLayout(false);
+            this.panel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.btnLabResultSearch)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtLabResultDate)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtLabResultHn)).EndInit();
             this.tabSearch.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
@@ -518,11 +525,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtSearch)).EndInit();
             this.sB.ResumeLayout(false);
             this.sB.PerformLayout();
-            this.panel2.ResumeLayout(false);
-            this.panel2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.btnLabResultSearch)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtLabResultDate)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtLabResultHn)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

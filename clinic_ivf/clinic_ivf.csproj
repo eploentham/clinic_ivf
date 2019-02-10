@@ -233,6 +233,12 @@
     <Compile Include="gui\FrmLabReqView.Designer.cs">
       <DependentUpon>FrmLabReqView.cs</DependentUpon>
     </Compile>
+    <Compile Include="gui\FrmLabFormDay1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="gui\FrmLabFormDay1.Designer.cs">
+      <DependentUpon>FrmLabFormDay1.cs</DependentUpon>
+    </Compile>
     <Compile Include="gui\FrmMabOPUTimeModi.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -507,6 +513,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Lab_Form_A.xsd</DependentUpon>
     </Compile>
+    <Compile Include="report\Lab_Form_Day1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Lab_Form_Day1.xsd</DependentUpon>
+    </Compile>
     <Compile Include="report\OPDcardOLD.cs">
       <DependentUpon>OPDcardOLD.xsd</DependentUpon>
     </Compile>
@@ -560,6 +571,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="gui\FrmLabFormAView.resx">
       <DependentUpon>FrmLabFormAView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="gui\FrmLabFormDay1.resx">
+      <DependentUpon>FrmLabFormDay1.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="gui\FrmLabOPUAdd.resx">
       <DependentUpon>FrmLabOPUAdd.cs</DependentUpon>
@@ -753,6 +767,17 @@
     </None>
     <None Include="report\Lab_Form_A.xss">
       <DependentUpon>Lab_Form_A.xsd</DependentUpon>
+    </None>
+    <None Include="report\Lab_Form_Day1.xsc">
+      <DependentUpon>Lab_Form_Day1.xsd</DependentUpon>
+    </None>
+    <None Include="report\Lab_Form_Day1.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>Lab_Form_Day1.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="report\Lab_Form_Day1.xss">
+      <DependentUpon>Lab_Form_Day1.xsd</DependentUpon>
     </None>
     <None Include="report\OPDcardOLD.xsc">
       <DependentUpon>OPDcardOLD.xsd</DependentUpon>

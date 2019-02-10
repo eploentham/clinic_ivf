@@ -365,6 +365,7 @@ namespace clinic_ivf.gui
             lFormA.fet_day = cboFetDay.SelectedItem == null ? "" : ((ComboBoxItem)cboFetDay.SelectedItem).Value;
             lFormA.fet1_day = cboFet1Day.SelectedItem == null ? "" : ((ComboBoxItem)cboFet1Day.SelectedItem).Value;
             lFormA.frozen_sperm_date = ic.datetoDB(txtFrozenSpermDate.Text);
+            lFormA.staff_req_id = txtStfConfirmID.Text;
         }
         private void BtnSave_Click(object sender, EventArgs e)
         {
@@ -400,7 +401,7 @@ namespace clinic_ivf.gui
                 frm.ShowDialog(this);
                 if (!ic.cStf.staff_id.Equals(""))
                 {
-                    txtUserReq.Value = ic.cStf.staff_fname_t + " " + ic.cStf.staff_lname_t;
+                    txtUserReq.Value = ic.cStf.staff_fname_e + " " + ic.cStf.staff_lname_e;
                     txtStfConfirmID.Value = ic.cStf.staff_id;
                     btnSave.Text = "Confirm";
                     btnSave.Image = Resources.Add_ticket_24;
@@ -674,7 +675,10 @@ namespace clinic_ivf.gui
             txtFrozenSpermDate.Value = lFormA.frozen_sperm_date;
             ic.setC1Combo(cboFetDay, lFormA.fet_day);
             ic.setC1Combo(cboFet1Day, lFormA.fet1_day);
-            
+            txtUserReq.Value = lFormA.staff_req_id;
+            //txtDobFeMale.Value = lFormA.dob_female;
+            //txtDobMale.Value = lFormA.dob_male;
+
         }
         private void FrmLabOPUReq_Load(object sender, EventArgs e)
         {

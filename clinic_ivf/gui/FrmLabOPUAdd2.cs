@@ -705,7 +705,7 @@ namespace clinic_ivf.gui
         private void TabDay6_DoubleClick(object sender, EventArgs e)
         {
             //throw new NotImplementedException();
-            if (flagDay5Img)
+            if (flagDay6Img)
             {
                 MessageBox.Show("ได้เคยนำเข้าแล้ว กรุณานำเข้าที่ละรายการ", "");
                 return;

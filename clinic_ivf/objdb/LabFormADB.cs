@@ -104,6 +104,7 @@ namespace clinic_ivf.objdb
             lformA.fet_day = "fet_day";
             lformA.fet1_day = "fet1_day";
             lformA.frozen_sperm_date = "frozen_sperm_date";
+            lformA.staff_req_id = "staff_req_id";
 
             lformA.pkField = "form_a_id";
             lformA.table = "lab_t_form_a";
@@ -197,6 +198,7 @@ namespace clinic_ivf.objdb
             p.req_id_iui = long.TryParse(p.req_id_iui, out chk) ? chk.ToString() : "0";
             p.req_id_opu = long.TryParse(p.req_id_opu, out chk) ? chk.ToString() : "0";
             p.req_id_pesa_tese = long.TryParse(p.req_id_pesa_tese, out chk) ? chk.ToString() : "0";
+            p.staff_req_id = long.TryParse(p.staff_req_id, out chk) ? chk.ToString() : "0";
 
         }
         public String insert(LabFormA p, String userId)
@@ -290,6 +292,7 @@ namespace clinic_ivf.objdb
                     "," + lformA.fet1_day + "='" + p.fet1_day + "' " +
                     "," + lformA.fet_day + "='" + p.fet_day + "' " +
                     "," + lformA.frozen_sperm_date + "='" + p.frozen_sperm_date + "' " +
+                    "," + lformA.staff_req_id + "='" + p.staff_req_id + "' " +
                     "";
                 re = conn.ExecuteNonQuery(conn.conn, sql);
             }
@@ -382,6 +385,7 @@ namespace clinic_ivf.objdb
                     "," + lformA.fet1_day + "='" + p.fet1_day + "' " +
                     "," + lformA.fet_day + "='" + p.fet_day + "' " +
                     "," + lformA.frozen_sperm_date + "='" + p.frozen_sperm_date + "' " +
+                    "," + lformA.staff_req_id + "='" + p.staff_req_id + "' " +
                 " Where " + lformA.pkField + " = '" + p.form_a_id + "' "
                 ;
             try
@@ -798,6 +802,7 @@ namespace clinic_ivf.objdb
                 vs1.fet_day = dt.Rows[0][lformA.fet_day].ToString();
                 vs1.fet1_day = dt.Rows[0][lformA.fet1_day].ToString();
                 vs1.frozen_sperm_date = dt.Rows[0][lformA.frozen_sperm_date].ToString();
+                vs1.staff_req_id = dt.Rows[0][lformA.staff_req_id].ToString();
             }
             else
             {
@@ -889,6 +894,7 @@ namespace clinic_ivf.objdb
             lforma1.fet1_day = "";
             lforma1.fet_day = "";
             lforma1.frozen_sperm_date = "";
+            lforma1.staff_req_id = "";
             return lforma1;
         }
     }

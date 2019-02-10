@@ -227,6 +227,24 @@ namespace clinic_ivf.objdb
             dt = conn.selectData(conn.conn, sql);
             return dt;
         }
+        public DataTable selectBySearch(String search)
+        {
+            DataTable dt = new DataTable();
+            String sql = "select opu." + opu.opu_id + ", opu." + opu.opu_code + ",opu." + opu.hn_female + ",opu." + opu.name_female + ",opu." + opu.opu_date + ",opu." + opu.remark + " " +
+                "From " + opu.table + " opu " +
+                "Left Join Doctor on Doctor.ID = opu.doctor_id " +
+                "Where opu." + opu.active + "='1' and (opu."+opu.hn_female+" like '%"+search+ "%' or opu." + opu.hn_male + " like '%" + search + "%' or opu." + opu.hn_donor + " like '%" + search + "%') " +
+                //"Order By opu." + opu.opu_id + " " +
+                "Union " +
+                "select fet.fet_id , fet.fet_code ,fet.hn_female ,fet.name_female,fet.fet_date ,fet.remark " +
+                "From lab_t_fet fet " +
+                "Left Join Doctor on Doctor.ID = fet.doctor_id " +
+                "Where  fet.active + '1' and fet." + opu.hn_female + " like '%" + search + "%' " +
+                //"Order By fet.fet_id  ";
+                "  ";
+            dt = conn.selectData(conn.conn, sql);
+            return dt;
+        }
         public DataTable selectByStatusProcess1()
         {
             DataTable dt = new DataTable();
