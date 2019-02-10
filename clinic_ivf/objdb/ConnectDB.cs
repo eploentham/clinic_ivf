@@ -24,6 +24,7 @@ namespace clinic_ivf.objdb
         private InitConfig initC;
         public Staff user;
         public String _IPAddress = "";
+        //public SqlCommand comStore;
 
         public ConnectDB(InitConfig initc)
         {

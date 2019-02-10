@@ -379,6 +379,9 @@
     <Compile Include="objdb\BContractPlansDB.cs" />
     <Compile Include="objdb\BContractPayerDB.cs" />
     <Compile Include="objdb\BServicePointDB.cs" />
+    <Compile Include="objdb\DocGroupScanDB.cs" />
+    <Compile Include="objdb\DocGroupSubScanDB.cs" />
+    <Compile Include="objdb\DocScanDB.cs" />
     <Compile Include="objdb\DoctorOldDB.cs" />
     <Compile Include="objdb\FBloodGroupDB.cs" />
     <Compile Include="objdb\FDocTypeDB.cs" />
@@ -402,6 +405,9 @@
     <Compile Include="objdb\PatientAppointmentDB.cs" />
     <Compile Include="objdb\PatientAppointmentTextDB.cs" />
     <Compile Include="object1\CellNoteManager.cs" />
+    <Compile Include="object1\DocGroupScan.cs" />
+    <Compile Include="object1\DocGroupSubScan.cs" />
+    <Compile Include="object1\DocScan.cs" />
     <Compile Include="object1\FDocType.cs" />
     <Compile Include="object1\LabFet.cs" />
     <Compile Include="object1\LabFormA.cs" />
