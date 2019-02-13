@@ -112,7 +112,9 @@ namespace clinic_ivf.gui
             //throw new NotImplementedException();
             DataTable dt = new DataTable();
 
-            dt.NewRow();
+            //dt.NewRow();
+            //DataRow toInsert = dt.NewRow();
+            dt.Rows.InsertAt(dt.NewRow(), 0);
             dt.Columns.Add("form_day1_id", typeof(String));
             dt.Columns.Add("hn_female", typeof(String));
             dt.Columns.Add("name_female", typeof(String));
@@ -143,7 +145,7 @@ namespace clinic_ivf.gui
             dt.Columns.Add("embryo_transfer_fresh_day5", typeof(String));
             dt.Columns.Add("discard", typeof(String));
             dt.Columns.Add("remark", typeof(String));
-            //dt.Columns.Add("", typeof(String));
+            dt.Columns.Add("embryo_freezing_embryo_max", typeof(String));
             //dt.Columns.Add("", typeof(String));
             //dt.Columns.Add("", typeof(String));
             //dt.Columns.Add("", typeof(String));

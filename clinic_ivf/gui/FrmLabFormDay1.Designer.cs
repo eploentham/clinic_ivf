@@ -1305,6 +1305,7 @@
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.sB);
             this.Name = "FrmLabFormDay1";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FrmLabFormDay1";
             this.Load += new System.EventHandler(this.FrmLabFormDay1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.theme1)).EndInit();
