@@ -137,7 +137,9 @@ namespace clinic_ivf.gui
             btnHnSearch.Click += BtnHnSearch_Click;
             btnDonorSearch.Click += BtnDonorSearch_Click;
             btnApproveResult.Click += BtnApproveResult_Click;
-
+            btnResultDay1.Click += BtnResultDay1_Click;
+            btnResultDay3.Click += BtnResultDay3_Click;
+            btnResultDay5.Click += BtnResultDay5_Click;
 
             setFocusColor();
             initGrf();
@@ -146,6 +148,90 @@ namespace clinic_ivf.gui
             setTheme();
             char c = '\u00B5';
             label86.Text = c.ToString()+"l";
+        }
+
+        private void BtnResultDay5_Click(object sender, EventArgs e)
+        {
+            //throw new NotImplementedException();
+            if (MessageBox.Show("ต้องการ ส่งผล LAB OPU Day 5 ให้ทางพยาบาล  ", "", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == DialogResult.OK)
+            {
+                ic.cStf.staff_id = "";
+                Boolean chkSave = false;
+                FrmPasswordConfirm frm = new FrmPasswordConfirm(ic);
+                frm.ShowDialog(this);
+                if (!ic.cStf.staff_id.Equals(""))
+                {
+                    long chk1 = 0;
+                    String re = ic.ivfDB.opuDB.updateStatusOPUApproveResultDay5(txtID.Text, ic.user.staff_id);
+                    if (long.TryParse(re, out chk1))
+                    {
+                        LabRequest req = new LabRequest();
+                        req = ic.ivfDB.lbReqDB.selectByPk1(opu.req_id);
+                        String re1 = ic.ivfDB.lbReqDB.UpdateStatusRequestResult(req.req_id, ic.cStf.staff_id);
+                        if (long.TryParse(re1, out chk1))
+                        {
+                            MessageBox.Show("ส่งผล LAB OPU ให้ทางพยาบาล เรียบร้อย ", "");       //clinic_ivf.Properties.Resources.Female_user_accept_24
+                            btnApproveResult.Image = Resources.Female_user_accept_24;
+                        }
+                    }
+                }
+            }
+        }
+
+        private void BtnResultDay3_Click(object sender, EventArgs e)
+        {
+            //throw new NotImplementedException();
+            if (MessageBox.Show("ต้องการ ส่งผล LAB OPU Day 3 ให้ทางพยาบาล  ", "", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == DialogResult.OK)
+            {
+                ic.cStf.staff_id = "";
+                Boolean chkSave = false;
+                FrmPasswordConfirm frm = new FrmPasswordConfirm(ic);
+                frm.ShowDialog(this);
+                if (!ic.cStf.staff_id.Equals(""))
+                {
+                    long chk1 = 0;
+                    String re = ic.ivfDB.opuDB.updateStatusOPUApproveResultDay3(txtID.Text, ic.user.staff_id);
+                    if (long.TryParse(re, out chk1))
+                    {
+                        LabRequest req = new LabRequest();
+                        req = ic.ivfDB.lbReqDB.selectByPk1(opu.req_id);
+                        String re1 = ic.ivfDB.lbReqDB.UpdateStatusRequestResult(req.req_id, ic.cStf.staff_id);
+                        if (long.TryParse(re1, out chk1))
+                        {
+                            MessageBox.Show("ส่งผล LAB OPU ให้ทางพยาบาล เรียบร้อย ", "");       //clinic_ivf.Properties.Resources.Female_user_accept_24
+                            btnApproveResult.Image = Resources.Female_user_accept_24;
+                        }
+                    }
+                }
+            }
+        }
+
+        private void BtnResultDay1_Click(object sender, EventArgs e)
+        {
+            //throw new NotImplementedException();
+            if (MessageBox.Show("ต้องการ ส่งผล LAB OPU Day 1 ให้ทางพยาบาล  ", "", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == DialogResult.OK)
+            {
+                ic.cStf.staff_id = "";
+                Boolean chkSave = false;
+                FrmPasswordConfirm frm = new FrmPasswordConfirm(ic);
+                frm.ShowDialog(this);
+                if (!ic.cStf.staff_id.Equals(""))
+                {
+                    long chk1 = 0;
+                    String re = ic.ivfDB.opuDB.updateStatusOPUApproveResultDay1(txtID.Text, ic.user.staff_id);
+                    if (long.TryParse(re, out chk1))
+                    {
+                        LabRequest req = new LabRequest();
+                        req = ic.ivfDB.lbReqDB.selectByPk1(opu.req_id);
+                        String re1 = ic.ivfDB.lbReqDB.UpdateStatusRequestResult(req.req_id, ic.cStf.staff_id);
+                        if (long.TryParse(re1, out chk1))
+                        {
+                            MessageBox.Show("ส่งผล LAB OPU ให้ทางพยาบาล เรียบร้อย ", "");       //clinic_ivf.Properties.Resources.Female_user_accept_24
+                            btnApproveResult.Image = Resources.Female_user_accept_24;
+                        }
+                    }
+                }
+            }
         }
 
         private void BtnApproveResult_Click(object sender, EventArgs e)

@@ -232,6 +232,9 @@
             this.label49 = new System.Windows.Forms.Label();
             this.label48 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.label89 = new System.Windows.Forms.Label();
+            this.txtApproveResult = new C1.Win.C1Input.C1TextBox();
+            this.btnApproveResult = new C1.Win.C1Input.C1Button();
             this.txtDobDonor = new C1.Win.C1Input.C1DateEdit();
             this.label88 = new System.Windows.Forms.Label();
             this.label72 = new System.Windows.Forms.Label();
@@ -269,9 +272,9 @@
             this.txtHnMale = new C1.Win.C1Input.C1TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.txtHnFeMale = new C1.Win.C1Input.C1TextBox();
-            this.btnApproveResult = new C1.Win.C1Input.C1Button();
-            this.txtApproveResult = new C1.Win.C1Input.C1TextBox();
-            this.label89 = new System.Windows.Forms.Label();
+            this.btnResultDay1 = new C1.Win.C1Input.C1Button();
+            this.btnResultDay3 = new C1.Win.C1Input.C1Button();
+            this.btnResultDay5 = new C1.Win.C1Input.C1Button();
             this.sB.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.theme1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.c1CommandDock2)).BeginInit();
@@ -411,6 +414,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtEmbryoForEtDay)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtEmbryoForEtNO)).BeginInit();
             this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtApproveResult)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnApproveResult)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtDobDonor)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtNameDonor)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnDonorSearch)).BeginInit();
@@ -433,8 +438,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.btnHnSearch)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtHnMale)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtHnFeMale)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.btnApproveResult)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtApproveResult)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnResultDay1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnResultDay3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnResultDay5)).BeginInit();
             this.SuspendLayout();
             // 
             // sB
@@ -1840,6 +1846,7 @@
             // groupBox3
             // 
             this.groupBox3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.groupBox3.Controls.Add(this.btnResultDay1);
             this.groupBox3.Controls.Add(this.btnSaveFertili);
             this.groupBox3.Controls.Add(this.txtFertiliDead);
             this.groupBox3.Controls.Add(this.txtFertiliNoPn);
@@ -2703,6 +2710,7 @@
             // pn3
             // 
             this.pn3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.pn3.Controls.Add(this.btnResultDay3);
             this.pn3.Controls.Add(this.label83);
             this.pn3.Controls.Add(this.label76);
             this.pn3.Controls.Add(this.label77);
@@ -2914,6 +2922,7 @@
             // pn5
             // 
             this.pn5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.pn5.Controls.Add(this.btnResultDay5);
             this.pn5.Controls.Add(this.label84);
             this.pn5.Controls.Add(this.label78);
             this.pn5.Controls.Add(this.label79);
@@ -3845,6 +3854,46 @@
             this.groupBox1.Text = "Patient";
             this.theme1.SetTheme(this.groupBox1, "(default)");
             // 
+            // label89
+            // 
+            this.label89.AutoSize = true;
+            this.label89.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.label89.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label89.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.label89.Location = new System.Drawing.Point(1556, 58);
+            this.label89.Name = "label89";
+            this.label89.Size = new System.Drawing.Size(69, 16);
+            this.label89.TabIndex = 553;
+            this.label89.Text = "ผู้รายงานผล :";
+            this.theme1.SetTheme(this.label89, "(default)");
+            // 
+            // txtApproveResult
+            // 
+            this.txtApproveResult.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtApproveResult.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
+            this.txtApproveResult.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.txtApproveResult.Location = new System.Drawing.Point(1527, 78);
+            this.txtApproveResult.Name = "txtApproveResult";
+            this.txtApproveResult.Size = new System.Drawing.Size(212, 20);
+            this.txtApproveResult.TabIndex = 552;
+            this.txtApproveResult.Tag = null;
+            this.theme1.SetTheme(this.txtApproveResult, "(default)");
+            this.txtApproveResult.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            // 
+            // btnApproveResult
+            // 
+            this.btnApproveResult.Image = global::clinic_ivf.Properties.Resources.Female_user_add_24;
+            this.btnApproveResult.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnApproveResult.Location = new System.Drawing.Point(1559, 14);
+            this.btnApproveResult.Name = "btnApproveResult";
+            this.btnApproveResult.Size = new System.Drawing.Size(128, 39);
+            this.btnApproveResult.TabIndex = 551;
+            this.btnApproveResult.Text = "รายงานผล";
+            this.btnApproveResult.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.theme1.SetTheme(this.btnApproveResult, "(default)");
+            this.btnApproveResult.UseVisualStyleBackColor = true;
+            this.btnApproveResult.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            // 
             // txtDobDonor
             // 
             this.txtDobDonor.AllowSpinLoop = false;
@@ -4510,45 +4559,47 @@
             this.theme1.SetTheme(this.txtHnFeMale, "(default)");
             this.txtHnFeMale.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
             // 
-            // btnApproveResult
+            // btnResultDay1
             // 
-            this.btnApproveResult.Image = global::clinic_ivf.Properties.Resources.Female_user_add_24;
-            this.btnApproveResult.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnApproveResult.Location = new System.Drawing.Point(1559, 14);
-            this.btnApproveResult.Name = "btnApproveResult";
-            this.btnApproveResult.Size = new System.Drawing.Size(128, 39);
-            this.btnApproveResult.TabIndex = 551;
-            this.btnApproveResult.Text = "รายงานผล";
-            this.btnApproveResult.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.theme1.SetTheme(this.btnApproveResult, "(default)");
-            this.btnApproveResult.UseVisualStyleBackColor = true;
-            this.btnApproveResult.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            this.btnResultDay1.Image = global::clinic_ivf.Properties.Resources.Female_user_add_24;
+            this.btnResultDay1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnResultDay1.Location = new System.Drawing.Point(395, 127);
+            this.btnResultDay1.Name = "btnResultDay1";
+            this.btnResultDay1.Size = new System.Drawing.Size(128, 39);
+            this.btnResultDay1.TabIndex = 552;
+            this.btnResultDay1.Text = "รายงานผล Day1";
+            this.btnResultDay1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.theme1.SetTheme(this.btnResultDay1, "(default)");
+            this.btnResultDay1.UseVisualStyleBackColor = true;
+            this.btnResultDay1.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
             // 
-            // txtApproveResult
+            // btnResultDay3
             // 
-            this.txtApproveResult.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtApproveResult.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
-            this.txtApproveResult.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.txtApproveResult.Location = new System.Drawing.Point(1527, 78);
-            this.txtApproveResult.Name = "txtApproveResult";
-            this.txtApproveResult.Size = new System.Drawing.Size(212, 20);
-            this.txtApproveResult.TabIndex = 552;
-            this.txtApproveResult.Tag = null;
-            this.theme1.SetTheme(this.txtApproveResult, "(default)");
-            this.txtApproveResult.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            this.btnResultDay3.Image = global::clinic_ivf.Properties.Resources.Female_user_add_24;
+            this.btnResultDay3.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnResultDay3.Location = new System.Drawing.Point(280, 36);
+            this.btnResultDay3.Name = "btnResultDay3";
+            this.btnResultDay3.Size = new System.Drawing.Size(49, 28);
+            this.btnResultDay3.TabIndex = 554;
+            this.btnResultDay3.Text = "รายงานผล";
+            this.btnResultDay3.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.theme1.SetTheme(this.btnResultDay3, "(default)");
+            this.btnResultDay3.UseVisualStyleBackColor = true;
+            this.btnResultDay3.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
             // 
-            // label89
+            // btnResultDay5
             // 
-            this.label89.AutoSize = true;
-            this.label89.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.label89.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label89.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.label89.Location = new System.Drawing.Point(1556, 58);
-            this.label89.Name = "label89";
-            this.label89.Size = new System.Drawing.Size(69, 16);
-            this.label89.TabIndex = 553;
-            this.label89.Text = "ผู้รายงานผล :";
-            this.theme1.SetTheme(this.label89, "(default)");
+            this.btnResultDay5.Image = global::clinic_ivf.Properties.Resources.Female_user_add_24;
+            this.btnResultDay5.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnResultDay5.Location = new System.Drawing.Point(281, 36);
+            this.btnResultDay5.Name = "btnResultDay5";
+            this.btnResultDay5.Size = new System.Drawing.Size(49, 28);
+            this.btnResultDay5.TabIndex = 555;
+            this.btnResultDay5.Text = "รายงานผล";
+            this.btnResultDay5.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.theme1.SetTheme(this.btnResultDay5, "(default)");
+            this.btnResultDay5.UseVisualStyleBackColor = true;
+            this.btnResultDay5.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
             // 
             // FrmLabOPUAdd2
             // 
@@ -4712,6 +4763,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtEmbryoForEtNO)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtApproveResult)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnApproveResult)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtDobDonor)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtNameDonor)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnDonorSearch)).EndInit();
@@ -4734,8 +4787,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.btnHnSearch)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtHnMale)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtHnFeMale)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.btnApproveResult)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtApproveResult)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnResultDay1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnResultDay3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnResultDay5)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -4987,5 +5041,8 @@
         private C1.Win.C1Input.C1Button btnApproveResult;
         private C1.Win.C1Input.C1TextBox txtApproveResult;
         private System.Windows.Forms.Label label89;
+        private C1.Win.C1Input.C1Button btnResultDay1;
+        private C1.Win.C1Input.C1Button btnResultDay3;
+        private C1.Win.C1Input.C1Button btnResultDay5;
     }
 }

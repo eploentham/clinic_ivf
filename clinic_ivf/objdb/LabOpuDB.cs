@@ -155,6 +155,15 @@ namespace clinic_ivf.objdb
             opu.remark_1 = "remark_1";
             opu.dob_donor = "dob_donor";
             opu.approve_result_staff_id = "approve_result_staff_id";
+            opu.status_approve_result_day1 = "status_approve_result_day1";
+            opu.status_approve_result_day3 = "status_approve_result_day3";
+            opu.status_approve_result_day5 = "status_approve_result_day5";
+            opu.approve_result_day1_staff_id = "approve_result_day1_staff_id";
+            opu.approve_result_day3_staff_id = "approve_result_day3_staff_id";
+            opu.approve_result_day5_staff_id = "approve_result_day5_staff_id";
+            opu.approve_result_day1_date = "approve_result_day1_date";
+            opu.approve_result_day3_date = "approve_result_day3_date";
+            opu.approve_result_day5_date = "approve_result_day5_date";
 
             opu.table = "lab_t_opu";
             opu.pkField = "opu_id";
@@ -677,6 +686,78 @@ namespace clinic_ivf.objdb
 
             return re;
         }
+        public String updateStatusOPUApproveResultDay1(String opuid, String userId)
+        {
+            String re = "";
+            String sql = "";
+            int chk = 0;
+
+            //chkNull(p);
+            sql = "Update " + opu.table + " Set " +
+                " " + opu.status_approve_result_day1 + " = '1'" +
+                "," + opu.approve_result_day1_staff_id + " = '" + userId + "'" +
+                "," + opu.approve_result_day1_date + " = now()" +
+                "Where " + opu.pkField + "='" + opuid + "'"
+                ;
+            try
+            {
+                re = conn.ExecuteNonQuery(conn.conn, sql);
+            }
+            catch (Exception ex)
+            {
+                sql = ex.Message + " " + ex.InnerException;
+            }
+
+            return re;
+        }
+        public String updateStatusOPUApproveResultDay3(String opuid, String userId)
+        {
+            String re = "";
+            String sql = "";
+            int chk = 0;
+
+            //chkNull(p);
+            sql = "Update " + opu.table + " Set " +
+                " " + opu.status_approve_result_day3 + " = '1'" +
+                "," + opu.approve_result_day3_staff_id + " = '" + userId + "'" +
+                "," + opu.approve_result_day3_date + " = now()" +
+                "Where " + opu.pkField + "='" + opuid + "'"
+                ;
+            try
+            {
+                re = conn.ExecuteNonQuery(conn.conn, sql);
+            }
+            catch (Exception ex)
+            {
+                sql = ex.Message + " " + ex.InnerException;
+            }
+
+            return re;
+        }
+        public String updateStatusOPUApproveResultDay5(String opuid, String userId)
+        {
+            String re = "";
+            String sql = "";
+            int chk = 0;
+
+            //chkNull(p);
+            sql = "Update " + opu.table + " Set " +
+                " " + opu.status_approve_result_day5 + " = '1'" +
+                "," + opu.approve_result_day5_staff_id + " = '" + userId + "'" +
+                "," + opu.approve_result_day5_date + " = now()" +
+                "Where " + opu.pkField + "='" + opuid + "'"
+                ;
+            try
+            {
+                re = conn.ExecuteNonQuery(conn.conn, sql);
+            }
+            catch (Exception ex)
+            {
+                sql = ex.Message + " " + ex.InnerException;
+            }
+
+            return re;
+        }
         public LabOpu setLabOPU(DataTable dt)
         {
             LabOpu opu1 = new LabOpu();
@@ -817,6 +898,15 @@ namespace clinic_ivf.objdb
                 opu1.remark_1 = dt.Rows[0][opu.remark_1].ToString();
                 opu1.dob_donor = dt.Rows[0][opu.dob_donor].ToString();
                 opu1.approve_result_staff_id = dt.Rows[0][opu.approve_result_staff_id].ToString();
+                opu1.status_approve_result_day1 = dt.Rows[0][opu.status_approve_result_day1].ToString();
+                opu1.status_approve_result_day3 = dt.Rows[0][opu.status_approve_result_day3].ToString();
+                opu1.status_approve_result_day5 = dt.Rows[0][opu.status_approve_result_day5].ToString();
+                opu1.approve_result_day1_staff_id = dt.Rows[0][opu.approve_result_day1_staff_id].ToString();
+                opu1.approve_result_day3_staff_id = dt.Rows[0][opu.approve_result_day3_staff_id].ToString();
+                opu1.approve_result_day5_staff_id = dt.Rows[0][opu.approve_result_day5_staff_id].ToString();
+                opu1.approve_result_day1_date = dt.Rows[0][opu.approve_result_day1_date].ToString();
+                opu1.approve_result_day3_date = dt.Rows[0][opu.approve_result_day3_date].ToString();
+                opu1.approve_result_day5_date = dt.Rows[0][opu.approve_result_day5_date].ToString();
             }
             else
             {
@@ -953,6 +1043,15 @@ namespace clinic_ivf.objdb
                 opu1.remark_1 = "";
                 opu1.dob_donor = "";
                 opu1.approve_result_staff_id = "";
+                opu1.status_approve_result_day1 = "";
+                opu1.status_approve_result_day3 = "";
+                opu1.status_approve_result_day5 = "";
+                opu1.approve_result_day1_staff_id = "";
+                opu1.approve_result_day3_staff_id = "";
+                opu1.approve_result_day5_staff_id = "";
+                opu1.approve_result_day1_date = "";
+                opu1.approve_result_day3_date = "";
+                opu1.approve_result_day5_date = "";
             }
 
             return opu1;
