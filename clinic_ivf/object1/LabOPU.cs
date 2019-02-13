@@ -151,5 +151,6 @@ namespace clinic_ivf.object1
         public String approve_result_day1_date { get; set; }
         public String approve_result_day3_date { get; set; }
         public String approve_result_day5_date { get; set; }
+        public String opu_time { get; set; }
     }
 }

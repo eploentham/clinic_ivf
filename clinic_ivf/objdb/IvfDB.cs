@@ -268,7 +268,9 @@ namespace clinic_ivf.objdb
             opu.dob_male = lformA.dob_male;
             opu.doctor_id = lbreq.doctor_id;
             opu.proce_id = "";
-            opu.opu_date = DateTime.Now.Year.ToString() + "-" + System.DateTime.Now.ToString("MM-dd");
+            //opu.opu_date = DateTime.Now.Year.ToString() + "-" + System.DateTime.Now.ToString("MM-dd");
+            opu.opu_date = lformA.opu_date;
+            opu.opu_time = lformA.opu_time;
             opu.req_id = reqid;
             opu.hn_donor = lformA.hn_donor;
             opu.name_donor = lformA.name_donor;

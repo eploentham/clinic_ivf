@@ -140,6 +140,9 @@ namespace clinic_ivf.gui
             btnResultDay1.Click += BtnResultDay1_Click;
             btnResultDay3.Click += BtnResultDay3_Click;
             btnResultDay5.Click += BtnResultDay5_Click;
+            btnResultDay1.MouseMove += BtnResultDay1_MouseMove;
+            btnResultDay3.MouseMove += BtnResultDay3_MouseMove;
+            btnResultDay5.MouseMove += BtnResultDay5_MouseMove;
 
             setFocusColor();
             initGrf();
@@ -148,6 +151,63 @@ namespace clinic_ivf.gui
             setTheme();
             char c = '\u00B5';
             label86.Text = c.ToString()+"l";
+        }
+
+        private void BtnResultDay5_MouseMove(object sender, MouseEventArgs e)
+        {
+            //throw new NotImplementedException();
+            if (!opu.status_approve_result_day5.Equals(""))
+            {
+                string text = "";
+                StringBuilder tip = new StringBuilder();
+
+                // append general 'get help' tip
+                tip.AppendFormat("<b>{0}</b> options.", "ได้ส่ง ผลLAB day5 ไป เมื่อวันที่ " + ic.datetoShow(opu.approve_result_day5_date));
+                tip.AppendFormat("<b>{0}</b> options.", "staff " + ic.ivfDB.stfDB.getStaffNameBylStf(opu.approve_result_day5_staff_id));
+                tip.Append("<hr noshade size=1 color=lightBlue>");
+                tip.AppendFormat("<table><tr><td><img src='{0}'><td>{1}</table>", "res://helpToolStripButton.Image", "Press <b>F1</b> for more help.");
+
+                text = tip.ToString();
+                stt.SetToolTip(btnResultDay3, text);
+            }
+        }
+
+        private void BtnResultDay3_MouseMove(object sender, MouseEventArgs e)
+        {
+            //throw new NotImplementedException();
+            if (!opu.status_approve_result_day3.Equals(""))
+            {
+                string text = "";
+                StringBuilder tip = new StringBuilder();
+
+                // append general 'get help' tip
+                tip.AppendFormat("<b>{0}</b> options.", "ได้ส่ง ผลLAB day3 ไป เมื่อวันที่ " + ic.datetoShow(opu.approve_result_day3_date));
+                tip.AppendFormat("<b>{0}</b> options.", "staff " + ic.ivfDB.stfDB.getStaffNameBylStf(opu.approve_result_day3_staff_id));
+                tip.Append("<hr noshade size=1 color=lightBlue>");
+                tip.AppendFormat("<table><tr><td><img src='{0}'><td>{1}</table>", "res://helpToolStripButton.Image", "Press <b>F1</b> for more help.");
+
+                text = tip.ToString();
+                stt.SetToolTip(btnResultDay3, text);
+            }
+        }
+
+        private void BtnResultDay1_MouseMove(object sender, MouseEventArgs e)
+        {
+            //throw new NotImplementedException();
+            if (!opu.status_approve_result_day1.Equals(""))
+            {
+                string text = "";
+                StringBuilder tip = new StringBuilder();
+
+                // append general 'get help' tip
+                tip.AppendFormat("<b>{0}</b> options.", "ได้ส่ง ผลLAB day1 ไป เมื่อวันที่ "+ic.datetoShow(opu.approve_result_day1_date));
+                tip.AppendFormat("<b>{0}</b> options.", "staff " + ic.ivfDB.stfDB.getStaffNameBylStf(opu.approve_result_day1_staff_id));
+                tip.Append("<hr noshade size=1 color=lightBlue>");
+                tip.AppendFormat("<table><tr><td><img src='{0}'><td>{1}</table>", "res://helpToolStripButton.Image", "Press <b>F1</b> for more help.");
+
+                text = tip.ToString();
+                stt.SetToolTip(btnResultDay1, text);
+            }
         }
 
         private void BtnResultDay5_Click(object sender, EventArgs e)
@@ -2419,6 +2479,7 @@ namespace clinic_ivf.gui
                 btnApproveResult.Image = Resources.Female_user_add_24;
                 btnApproveResult.Text = "รอ รายงานผล ";
             }
+            txtOpuTime.Value = opu.opu_time;
         }
         private void setOPU()
         {
@@ -3995,8 +4056,8 @@ namespace clinic_ivf.gui
 
             grfDay2.Cols[colDay2Num].Width = 40;
             grfDay2.Cols[colDay2Desc].Width = 100;
-            grfDay2.Cols[colDay2Desc1].Width = 50;
-            grfDay2.Cols[colDay2Desc2].Width = 50;
+            grfDay2.Cols[colDay2Desc1].Width = 70;
+            grfDay2.Cols[colDay2Desc2].Width = 70;
             grfDay2.Cols[colDay2Desc].AllowSorting = false;
             grfDay2.Cols[colDay2Desc1].AllowSorting = false;
             grfDay2.Cols[colDay2Desc2].AllowSorting = false;
@@ -4064,8 +4125,8 @@ namespace clinic_ivf.gui
 
             grfDay3.Cols[colDay3Num].Width = 40;
             grfDay3.Cols[colDay3Desc].Width = 100;
-            grfDay3.Cols[colDay3Desc1].Width = 50;
-            grfDay3.Cols[colDay3Desc2].Width = 50;
+            grfDay3.Cols[colDay3Desc1].Width = 70;
+            grfDay3.Cols[colDay3Desc2].Width = 70;
             grfDay3.Cols[colDay3Desc].AllowSorting = false;
             grfDay3.Cols[colDay3Desc1].AllowSorting = false;
             grfDay3.Cols[colDay3Desc2].AllowSorting = false;
@@ -4132,8 +4193,8 @@ namespace clinic_ivf.gui
 
             grfDay5.Cols[colDay5Num].Width = 40;
             grfDay5.Cols[colDay5Desc].Width = 100;
-            grfDay5.Cols[colDay5Desc1].Width = 50;
-            grfDay5.Cols[colDay5Desc2].Width = 50;
+            grfDay5.Cols[colDay5Desc1].Width = 70;
+            grfDay5.Cols[colDay5Desc2].Width = 70;
 
             grfDay5.ShowCursor = true;
             //grdFlex.Cols[colID].Caption = "no";
@@ -4202,8 +4263,8 @@ namespace clinic_ivf.gui
 
             grfDay6.Cols[colDay6Num].Width = 40;
             grfDay6.Cols[colDay6Desc].Width = 100;
-            grfDay6.Cols[colDay6Desc1].Width = 50;
-            grfDay6.Cols[colDay6Desc2].Width = 50;
+            grfDay6.Cols[colDay6Desc1].Width = 70;
+            grfDay6.Cols[colDay6Desc2].Width = 70;
 
             grfDay6.ShowCursor = true;
             //grdFlex.Cols[colID].Caption = "no";
@@ -4244,6 +4305,44 @@ namespace clinic_ivf.gui
             ic.setC1Combo(cboCheckedDay6, checkId);
             txtDay6Date.Value = dateday;
             grfDay6.AutoClipboard = true;
+        }
+        private void AddTipsToToolStrip(ToolStrip toolStrip)
+        {
+            // do not show the default tooltips
+            toolStrip.ShowItemToolTips = false;
+
+            // att Html tooltips to each item in the toolStrip
+            foreach (ToolStripItem item in toolStrip.Items)
+            {
+                // get tooltip text
+                string text = item.ToolTipText;
+                if (text != null && text.Length > 0)
+                {
+                    // get tooltip image
+                    string image = string.Empty;
+                    if (item.Image != null)
+                    {
+                        string imageName = item.Name + ".Image";
+                        image = "res://" + imageName;
+                    }
+
+                    // build tip
+                    StringBuilder tip = new StringBuilder();
+                    //tip.AppendFormat("<table><tr><td><img src='{0}'><td style='font:bold 11pt Tahoma'>{1}</table>", image, System.Web.HttpUtility.HtmlEncode(text));
+
+                    //// append general 'get help' tip
+                    //if (item != this.helpToolStripButton)
+                    //{
+                    //    tip.Append("<hr noshade size=1 color=lightBlue>");
+                    //    tip.AppendFormat("<table><tr><td><img src='{0}'><td>{1}</table>",
+                    //        "res://helpToolStripButton.Image",
+                    //        "Press <b>F1</b> for more help.");
+                    //}
+
+                    // assign tooltip to item
+                    stt.SetToolTip(item, tip.ToString());
+                }
+            }
         }
         private void FrmLabOPUAdd2_Load(object sender, EventArgs e)
         {

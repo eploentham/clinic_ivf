@@ -985,7 +985,7 @@ namespace clinic_ivf.gui
 
             ContextMenu menuGw = new ContextMenu();
             //menuGw.MenuItems.Add("&receive operation", new EventHandler(ContextMenu_Apm));
-            menuGw.MenuItems.Add("&receive operation", new EventHandler(ContextMenu_Apm));
+            menuGw.MenuItems.Add("receive operation", new EventHandler(ContextMenu_order));
             menuGw.MenuItems.Add("&LAB request FORM A", new EventHandler(ContextMenu_LAB_req_formA_Ptt));
             menuGw.MenuItems.Add("&Add Appointment", new EventHandler(ContextMenu_Apm_Ptt));
             menuGw.MenuItems.Add("&Cancel Receive", new EventHandler(ContextMenu_Apm_Ptt));

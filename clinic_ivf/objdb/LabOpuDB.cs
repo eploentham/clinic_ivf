@@ -164,6 +164,7 @@ namespace clinic_ivf.objdb
             opu.approve_result_day1_date = "approve_result_day1_date";
             opu.approve_result_day3_date = "approve_result_day3_date";
             opu.approve_result_day5_date = "approve_result_day5_date";
+            opu.opu_time = "opu_time";
 
             opu.table = "lab_t_opu";
             opu.pkField = "opu_id";
@@ -363,6 +364,7 @@ namespace clinic_ivf.objdb
             p.remark = p.remark == null ? "" : p.remark;
             p.remark_1 = p.remark_1 == null ? "" : p.remark_1;
             p.dob_donor = p.dob_donor == null ? "" : p.dob_donor;
+            p.opu_time = p.opu_time == null ? "" : p.opu_time;
 
             p.doctor_id = long.TryParse(p.doctor_id, out chk) ? chk.ToString() : "0";
             p.proce_id = long.TryParse(p.proce_id, out chk) ? chk.ToString() : "0";
@@ -411,6 +413,7 @@ namespace clinic_ivf.objdb
                 "," + opu.name_donor + " = '" + p.name_donor + "'" +
                 "," + opu.remark_1 + " = '" + p.remark_1 + "'" +
                 "," + opu.dob_donor + " = '" + p.dob_donor + "'" +
+                "," + opu.opu_time + " = '" + p.opu_time + "'" +
                "";
             try
             {
@@ -433,8 +436,8 @@ namespace clinic_ivf.objdb
             sql = "Update " + opu.table + " Set " +
                 //" " + opu.opu_code + " = '" + p.opu_code + "'" +
                 //" " + opu.embryo_freez_stage + " = '" + p.embryo_freez_stage.Replace("'", "''") + "'" +
-                //"," + opu.embryoid_freez_position + " = '" + p.embryoid_freez_position + "'" +
-                " " + opu.hn_male + " = '" + p.hn_male.Replace("'", "''") + "'" +
+                " " + opu.opu_time + " = '" + p.opu_time + "'" +
+                ", " + opu.hn_male + " = '" + p.hn_male.Replace("'", "''") + "'" +
                 "," + opu.hn_female + " = '" + p.hn_female.Replace("'", "''") + "'" +
                 "," + opu.name_male + " = '" + p.name_male.Replace("'", "''") + "'" +
                 "," + opu.dob_female + " = '" + p.dob_female.Replace("'", "''") + "'" +
@@ -907,6 +910,7 @@ namespace clinic_ivf.objdb
                 opu1.approve_result_day1_date = dt.Rows[0][opu.approve_result_day1_date].ToString();
                 opu1.approve_result_day3_date = dt.Rows[0][opu.approve_result_day3_date].ToString();
                 opu1.approve_result_day5_date = dt.Rows[0][opu.approve_result_day5_date].ToString();
+                opu1.opu_time = dt.Rows[0][opu.opu_time].ToString();
             }
             else
             {
@@ -1052,6 +1056,7 @@ namespace clinic_ivf.objdb
                 opu1.approve_result_day1_date = "";
                 opu1.approve_result_day3_date = "";
                 opu1.approve_result_day5_date = "";
+                opu1.opu_time = "";
             }
 
             return opu1;

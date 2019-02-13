@@ -26,7 +26,7 @@ namespace clinic_ivf.gui
         Color bg, fc;
         Font ff, ffB;
 
-        C1FlexGrid grfDrug, grfLab, grfAppt, grfCert;
+        C1FlexGrid grfBloodLab, grfLab, grfAppt, grfCert;
         C1SuperTooltip stt;
         C1SuperErrorProvider sep;
 
@@ -61,7 +61,7 @@ namespace clinic_ivf.gui
             setControl(vsid);
             //btnNew.Click += BtnNew_Click;
             //txtSearch.KeyUp += TxtSearch_KeyUp;
-
+            initGrfOrderBloodLab();
             //initGrfPtt();
             //setGrfPtt("");
         }
@@ -77,26 +77,26 @@ namespace clinic_ivf.gui
             txtAllergy.Value = pttOld.Allergy;
             //txtBg.Value = pttOld.b
         }
-        private void initGrfPtt()
+        private void initGrfOrderBloodLab()
         {
-            grfDrug = new C1FlexGrid();
-            grfDrug.Font = fEdit;
-            grfDrug.Dock = System.Windows.Forms.DockStyle.Fill;
-            grfDrug.Location = new System.Drawing.Point(0, 0);
+            grfBloodLab = new C1FlexGrid();
+            grfBloodLab.Font = fEdit;
+            grfBloodLab.Dock = System.Windows.Forms.DockStyle.Fill;
+            grfBloodLab.Location = new System.Drawing.Point(0, 0);
 
             //FilterRow fr = new FilterRow(grfExpn);
 
-            grfDrug.AfterRowColChange += GrfMed_AfterRowColChange;
+            grfBloodLab.AfterRowColChange += GrfMed_AfterRowColChange;
             //grfExpnC.CellButtonClick += new C1.Win.C1FlexGrid.RowColEventHandler(this.grfDept_CellButtonClick);
             //grfExpnC.CellChanged += new C1.Win.C1FlexGrid.RowColEventHandler(this.grfDept_CellChanged);
             ContextMenu menuGw = new ContextMenu();
             //menuGw.MenuItems.Add("&แก้ไข รายการเบิก", new EventHandler(ContextMenu_edit));
             //menuGw.MenuItems.Add("&แก้ไข", new EventHandler(ContextMenu_Gw_Edit));
             //menuGw.MenuItems.Add("&ยกเลิก", new EventHandler(ContextMenu_Gw_Cancel));
-            grfDrug.ContextMenu = menuGw;
-            pnDrug.Controls.Add(grfDrug);
+            grfBloodLab.ContextMenu = menuGw;
+            pnDrug.Controls.Add(grfBloodLab);
 
-            theme1.SetTheme(grfDrug, "Office2010Blue");
+            theme1.SetTheme(grfBloodLab, "Office2010Blue");
 
         }
 
@@ -109,6 +109,7 @@ namespace clinic_ivf.gui
         private void FrmNurseAdd_Load(object sender, EventArgs e)
         {
             tC.SelectedTab = tabDrug;
+            tabOrder.SelectedTab = tabBloodLab;
         }
     }
 }
