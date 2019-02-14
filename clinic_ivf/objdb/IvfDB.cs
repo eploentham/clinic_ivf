@@ -19,15 +19,15 @@ namespace clinic_ivf.objdb
         public PositionDB posiDB;
         //public PrefixDB pfxDB;
         public LabProcedureDB proceDB;
-        public VisitOldDB vsOldDB;
+        public OldVisitDB vsOldDB;
         public BItemDB itmDB;
         public LabRequestDB lbReqDB;
         public CompanyDB copDB;
         public PatientDB pttDB;
         public AgentOldDB agnOldDB;
-        public PatientOldDB pttOldDB;
+        public OldPatientDB pttOldDB;
         public DoctorOldDB dtrOldDB;
-        public JobPxDB jobpxDB;
+        public OldJobPxDB oJobpxDB;
         public JobPxDetailDB jobpxdDB;
 
         public FPrefixDB fpfDB;
@@ -44,7 +44,7 @@ namespace clinic_ivf.objdb
         public BContractPlansDB crlDB;
         public BServicePointDB bspDB;
         public PatientImageDB pttImgDB;
-        public OldJobSpecialDB oJsDB;
+        
         public LabOpuDB opuDB;
         public LabOpuEmbryoDevDB opuEmDevDB;
         public PatientAppointmentDB pApmDB;
@@ -61,8 +61,10 @@ namespace clinic_ivf.objdb
         public OldPackageDetailDB oPkgdDB;
         public OldGroupDrugDetailDB oGudDB;
         public OldJobLabDetailDB oJlabdDB;
+        public OldJobSpecialDB oJsDB;
         public OldJobSpecialDetailDB ojsdDB;
         public OldJobPxDetailDB oJpxdDB;
+        public OldJobLabDB oJlabDB;
 
         public IvfDB(ConnectDB c)
         {
@@ -77,7 +79,7 @@ namespace clinic_ivf.objdb
             posiDB = new PositionDB(conn);
             //pfxDB = new PrefixDB(conn);
             proceDB = new LabProcedureDB(conn);
-            vsOldDB = new VisitOldDB(conn);
+            vsOldDB = new OldVisitDB(conn);
             itmDB = new BItemDB(conn);
             lbReqDB = new LabRequestDB(conn);
             copDB = new CompanyDB(conn);
@@ -92,14 +94,14 @@ namespace clinic_ivf.objdb
             fprDB = new FPatientRaceDB(conn);
             frcDB = new FRaceDB(conn);
             pttDB = new PatientDB(conn);
-            pttOldDB = new PatientOldDB(conn);
+            pttOldDB = new OldPatientDB(conn);
             agnOldDB = new AgentOldDB(conn);
             crlDB = new BContractPlansDB(conn);
             bspDB = new BServicePointDB(conn);
             dtrOldDB = new DoctorOldDB(conn);
             pApmOldDB = new AppointmentOldDB(conn);
             pttImgDB = new PatientImageDB(conn);
-            jobpxDB = new JobPxDB(conn);
+            oJobpxDB = new OldJobPxDB(conn);
             jobpxdDB = new JobPxDetailDB(conn);
             oJsDB = new OldJobSpecialDB(conn);
             opuDB = new LabOpuDB(conn);
@@ -120,6 +122,7 @@ namespace clinic_ivf.objdb
             oJlabdDB = new OldJobLabDetailDB(conn);
             ojsdDB = new OldJobSpecialDetailDB(conn);
             oJpxdDB = new OldJobPxDetailDB(conn);
+            oJlabDB = new OldJobLabDB(conn);
 
             Console.WriteLine("ivfDB end");
         }
@@ -323,6 +326,27 @@ namespace clinic_ivf.objdb
             opu.name_donor = lformA.name_donor;
             //opu.dob_female = lbreq.dob_female;
             return opu;
+        }
+        public void calIncludeExtraPricePx(String vn)
+        {
+            String include = "", extra = "";
+            include = oJpxdDB.selectSumIncludePriceByVN(vn);
+            extra = oJpxdDB.selectSumExtraPriceByVN(vn);
+            oJobpxDB.updateIncludePriceFormDetail(include, extra, vn);
+        }
+        public void calIncludeExtraPricelab(String vn)
+        {
+            String include = "", extra = "";
+            include = oJlabdDB.selectSumIncludePriceByVN(vn);
+            extra = oJlabdDB.selectSumExtraPriceByVN(vn);
+            oJlabDB.updateIncludePriceFormDetail(include, extra, vn);
+        }
+        public void calIncludeExtraPriceSpecial(String vn)
+        {
+            String include = "", extra = "";
+            include = ojsdDB.selectSumIncludePriceByVN(vn);
+            extra = ojsdDB.selectSumExtraPriceByVN(vn);
+            oJsDB.updateIncludePriceFormDetail(include, extra, vn);
         }
     }
 }

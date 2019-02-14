@@ -60,5 +60,56 @@ namespace clinic_ivf.objdb
             dt = conn.selectData(conn.conn, sql);
             return dt;
         }
+        public String selectSumIncludePriceByVN(String copId)
+        {
+            String re = "0";
+            DataTable dt = new DataTable();
+            String sql = "select sum(ojsd." + ojsd.Price + ") as Include_Pkg_Price " +
+                "From " + ojsd.table + " ojsd " +
+                "Where ojsd." + ojsd.VN + " ='" + copId + "' and Extra='0' "
+                ;
+            dt = conn.selectData(conn.conn, sql);
+            if (dt.Rows.Count > 0)
+            {
+                re = dt.Rows[0]["Include_Pkg_Price"] != null ? dt.Rows[0]["Include_Pkg_Price"].ToString() : "0";
+            }
+            return re;
+        }
+        public String selectSumExtraPriceByVN(String copId)
+        {
+            String re = "0";
+            DataTable dt = new DataTable();
+            String sql = "select sum(ojsd." + ojsd.Price + ") as Extra_Pkg_Price " +
+                "From " + ojsd.table + " ojsd " +
+                "Where ojsd." + ojsd.VN + " ='" + copId + "' and Extra='1' "
+                ;
+            dt = conn.selectData(conn.conn, sql);
+            if (dt.Rows.Count > 0)
+            {
+                re = dt.Rows[0]["Extra_Pkg_Price"] != null ? dt.Rows[0]["Extra_Pkg_Price"].ToString() : "0";
+            }
+            return re;
+        }
+        public String updateStatusCloseJobSpecial(String vn)
+        {
+            String re = "";
+            String sql = "";
+            int chk = 0;
+
+            sql = "Update " + ojsd.table + " Set " +
+                " " + ojsd.Status + " = '2'" +
+                "Where " + ojsd.VN + "='" + vn + "'"
+                ;
+            try
+            {
+                re = conn.ExecuteNonQuery(conn.conn, sql);
+            }
+            catch (Exception ex)
+            {
+                sql = ex.Message + " " + ex.InnerException;
+            }
+
+            return re;
+        }
     }
 }

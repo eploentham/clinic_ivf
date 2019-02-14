@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace clinic_ivf.objdb
 {
-    public class PatientOldDB
+    public class OldPatientDB
     {
         public PatientOld pttO;
         ConnectDB conn;
@@ -20,7 +20,7 @@ namespace clinic_ivf.objdb
         FRelationDB frlDB;
         FRaceDB fracDB;
         FReligionDB frgDB;
-        public PatientOldDB(ConnectDB c)
+        public OldPatientDB(ConnectDB c)
         {
             conn = c;
             initConfig();

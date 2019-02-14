@@ -9,20 +9,20 @@ using System.Threading.Tasks;
 
 namespace clinic_ivf.objdb
 {
-    public class JobPxDB
+    public class OldJobPxDB
     {
-        public JobPx jobpx;
+        public OldJobPx jobpx;
         ConnectDB conn;
-        public List<JobPx> lJobPx;
-        public JobPxDB(ConnectDB c)
+        public List<OldJobPx> lJobPx;
+        public OldJobPxDB(ConnectDB c)
         {
             conn = c;
             initConfig();
         }
         private void initConfig()
         {
-            jobpx = new JobPx();
-            lJobPx = new List<JobPx>();
+            jobpx = new OldJobPx();
+            lJobPx = new List<OldJobPx>();
             jobpx.VN = "VN";
             jobpx.Status = "Status";
             jobpx.Include_Pkg_Price = "Include_Pkg_Price";
@@ -35,7 +35,7 @@ namespace clinic_ivf.objdb
             jobpx.table = "JobPx";
             jobpx.pkField = "VN";
         }
-        private void chkNull(JobPx p)
+        private void chkNull(OldJobPx p)
         {
             long chk = 0;
             decimal chk1 = 0;
@@ -94,6 +94,54 @@ namespace clinic_ivf.objdb
             dt = conn.selectData(conn.conn, sql);
             return dt;
         }
+        public String updateIncludePriceFormDetail(String inprice, String exprice, String vn)
+        {
+            String re = "";
+            String sql = "";
+            int chk = 0;
+            Decimal inprice1 = 0, exprice1 = 0, total = 0; ;
+            Decimal.TryParse(inprice, out inprice1);
+            Decimal.TryParse(exprice, out exprice1);
+            total = inprice1 + exprice1;
+            sql = "Update " + jobpx.table + " Set " +
+                " " + jobpx.Include_Pkg_Price + " = '"+ inprice + "'" +
+                "," + jobpx.Extra_Pkg_Price + " = '" + exprice + "'" +
+                "," + jobpx.Total_Price + " = '" + total + "'" +
+                "," + jobpx.Status + " = '2'" +
+                "Where " + jobpx.VN + "='" + vn + "'"
+                ;
+            try
+            {
+                re = conn.ExecuteNonQuery(conn.conn, sql);
+            }
+            catch (Exception ex)
+            {
+                sql = ex.Message + " " + ex.InnerException;
+            }
+
+            return re;
+        }
+        public String updateStatusCloseJobPx(String vn)
+        {
+            String re = "";
+            String sql = "";
+            int chk = 0;
+                        
+            sql = "Update " + jobpx.table + " Set " +
+                " " + jobpx.Status + " = '3'" +
+                "Where " + jobpx.VN + "='" + vn + "'"
+                ;
+            try
+            {
+                re = conn.ExecuteNonQuery(conn.conn, sql);
+            }
+            catch (Exception ex)
+            {
+                sql = ex.Message + " " + ex.InnerException;
+            }
+
+            return re;
+        }
         public void getlStf()
         {
             //lDept = new List<Position>();
@@ -103,7 +151,7 @@ namespace clinic_ivf.objdb
             dt = selectAll();
             foreach (DataRow row in dt.Rows)
             {
-                JobPx itm1 = new JobPx();
+                OldJobPx itm1 = new OldJobPx();
                 itm1.VN = row[jobpx.VN].ToString();
                 itm1.Status = row[jobpx.Status].ToString();
                 itm1.Include_Pkg_Price = row[jobpx.Include_Pkg_Price].ToString();
@@ -126,7 +174,7 @@ namespace clinic_ivf.objdb
             item.Value = "";
             item.Text = "";
             c.Items.Add(item);
-            foreach (JobPx cus1 in lJobPx)
+            foreach (OldJobPx cus1 in lJobPx)
             {
                 item = new ComboBoxItem();
                 item.Value = cus1.VN;

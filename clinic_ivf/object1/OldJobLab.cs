@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace clinic_ivf.object1
 {
-    public class JobPx:Persistent
+    public class OldJobLab:Persistent
     {
         public String VN { get; set; }
         public String Status { get; set; }

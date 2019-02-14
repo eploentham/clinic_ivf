@@ -68,5 +68,35 @@ namespace clinic_ivf.objdb
             dt = conn.selectData(conn.conn, sql);
             return dt;
         }
+        public String selectSumIncludePriceByVN(String copId)
+        {
+            String re = "0";
+            DataTable dt = new DataTable();
+            String sql = "select sum(jlabD." + jlabD.Price + ") as Include_Pkg_Price " +
+                "From " + jlabD.table + " jlabD " +
+                "Where jlabD." + jlabD.VN + " ='" + copId + "' and Extra='0' "
+                ;
+            dt = conn.selectData(conn.conn, sql);
+            if (dt.Rows.Count > 0)
+            {
+                re = dt.Rows[0]["Include_Pkg_Price"] != null ? dt.Rows[0]["Include_Pkg_Price"].ToString() : "0";
+            }
+            return re;
+        }
+        public String selectSumExtraPriceByVN(String copId)
+        {
+            String re = "0";
+            DataTable dt = new DataTable();
+            String sql = "select sum(jlabD." + jlabD.Price + ") as Extra_Pkg_Price " +
+                "From " + jlabD.table + " jlabD " +
+                "Where jlabD." + jlabD.VN + " ='" + copId + "' and Extra='1' "
+                ;
+            dt = conn.selectData(conn.conn, sql);
+            if (dt.Rows.Count > 0)
+            {
+                re = dt.Rows[0]["Extra_Pkg_Price"] != null ? dt.Rows[0]["Extra_Pkg_Price"].ToString() : "0";
+            }
+            return re;
+        }
     }
 }

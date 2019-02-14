@@ -245,5 +245,53 @@ namespace clinic_ivf.objdb
             stf1.status_req = "";
             return stf1;
         }
+        public String updateIncludePriceFormDetail(String inprice, String exprice, String vn)
+        {
+            String re = "";
+            String sql = "";
+            int chk = 0;
+            Decimal inprice1 = 0, exprice1 = 0, total = 0; ;
+            Decimal.TryParse(inprice, out inprice1);
+            Decimal.TryParse(exprice, out exprice1);
+            total = inprice1 + exprice1;
+            sql = "Update " + oJS.table + " Set " +
+                " " + oJS.Include_Pkg_Price + " = '" + inprice + "'" +
+                "," + oJS.Extra_Pkg_Price + " = '" + exprice + "'" +
+                "," + oJS.Total_Price + " = '" + total + "'" +
+                //"," + ojlab.Status + " = '2'" +
+                "Where " + oJS.VN + "='" + vn + "'"
+                ;
+            try
+            {
+                re = conn.ExecuteNonQuery(conn.conn, sql);
+            }
+            catch (Exception ex)
+            {
+                sql = ex.Message + " " + ex.InnerException;
+            }
+
+            return re;
+        }
+        public String updateStatusCloseJobPx(String vn)
+        {
+            String re = "";
+            String sql = "";
+            int chk = 0;
+
+            sql = "Update " + oJS.table + " Set " +
+                " " + oJS.Status + " = '999'" +
+                "Where " + oJS.VN + "='" + vn + "'"
+                ;
+            try
+            {
+                re = conn.ExecuteNonQuery(conn.conn, sql);
+            }
+            catch (Exception ex)
+            {
+                sql = ex.Message + " " + ex.InnerException;
+            }
+
+            return re;
+        }
     }
 }

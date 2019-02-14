@@ -396,7 +396,8 @@
     <Compile Include="objdb\FRelationDB.cs" />
     <Compile Include="objdb\FReligionDB.cs" />
     <Compile Include="objdb\FSexDB.cs" />
-    <Compile Include="objdb\JobPxDB.cs" />
+    <Compile Include="objdb\OldJobLabDB.cs" />
+    <Compile Include="objdb\OldJobPxDB.cs" />
     <Compile Include="objdb\JobPxDetailDB.cs" />
     <Compile Include="objdb\LabFetDB.cs" />
     <Compile Include="objdb\LabFormADB.cs" />
@@ -423,6 +424,7 @@
     <Compile Include="object1\LabFet.cs" />
     <Compile Include="object1\LabFormA.cs" />
     <Compile Include="object1\OldGroupDrugHeader.cs" />
+    <Compile Include="object1\OldJobLab.cs" />
     <Compile Include="object1\OldJobLabDetail.cs" />
     <Compile Include="object1\OldJobPxDetail.cs" />
     <Compile Include="object1\OldLabItem.cs" />
@@ -432,11 +434,11 @@
     <Compile Include="object1\OldStockDrug.cs" />
     <Compile Include="object1\PatientAppointment.cs" />
     <Compile Include="objdb\PatientImageDB.cs" />
-    <Compile Include="objdb\PatientOldDB.cs" />
+    <Compile Include="objdb\OldPatientDB.cs" />
     <Compile Include="objdb\VisitDB.cs" />
     <Compile Include="object1\AppointmentOld.cs" />
     <Compile Include="object1\DoctorOld.cs" />
-    <Compile Include="object1\JobPx.cs" />
+    <Compile Include="object1\OldJobPx.cs" />
     <Compile Include="object1\JobPxDetail.cs" />
     <Compile Include="object1\LabOpuEmbryoDev.cs" />
     <Compile Include="object1\OldJobSpecial.cs" />
@@ -464,7 +466,7 @@
     <Compile Include="objdb\PositionDB.cs" />
     <Compile Include="objdb\PrefixDB.cs" />
     <Compile Include="objdb\StaffDB.cs" />
-    <Compile Include="objdb\VisitOldDB.cs" />
+    <Compile Include="objdb\OldVisitDB.cs" />
     <Compile Include="object1\ComboBoxItem.cs" />
     <Compile Include="object1\Company.cs" />
     <Compile Include="object1\Department.cs" />

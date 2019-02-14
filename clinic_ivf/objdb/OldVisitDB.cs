@@ -9,12 +9,12 @@ using System.Threading.Tasks;
 
 namespace clinic_ivf.objdb
 {
-    public class VisitOldDB
+    public class OldVisitDB
     {
         public VisitOld vsold;
         ConnectDB conn;
 
-        public VisitOldDB(ConnectDB c)
+        public OldVisitDB(ConnectDB c)
         {
             conn = c;
             initConfig();
@@ -149,6 +149,145 @@ namespace clinic_ivf.objdb
 
             sql = "Update " + vsold.table + " Set " +
                 " " + vsold.form_a_id + " = '"+ formaid + "' " +
+                "Where " + vsold.pkField + "='" + vn + "'";
+            try
+            {
+                re = conn.ExecuteNonQuery(conn.conn, sql);
+            }
+            catch (Exception ex)
+            {
+                sql = ex.Message + " " + ex.InnerException;
+            }
+
+            return re;
+        }
+        public String updateStatusSendtoCashier(String vn)
+        {
+            String re = "";
+            String sql = "";
+            int chk = 0;
+
+            sql = "Update " + vsold.table + " Set " +
+                " " + vsold.LVSID + " = " + vsold.VSID + " " +
+                "Where " + vsold.pkField + "='" + vn + "'";
+            try
+            {
+                re = conn.ExecuteNonQuery(conn.conn, sql);
+                sql = "Update " + vsold.table + " Set " +
+                " " + vsold.VSID + " = '160' " +
+                "Where " + vsold.pkField + "='" + vn + "'";
+                re = conn.ExecuteNonQuery(conn.conn, sql);
+            }
+            catch (Exception ex)
+            {
+                sql = ex.Message + " " + ex.InnerException;
+            }
+
+            return re;
+        }
+        public String updateStatusCashierReceive(String vn)
+        {
+            String re = "";
+            String sql = "";
+            int chk = 0;
+
+            sql = "Update " + vsold.table + " Set " +
+                " " + vsold.LVSID + " = " + vsold.VSID + " " +
+                "Where " + vsold.pkField + "='" + vn + "'";
+            try
+            {
+                re = conn.ExecuteNonQuery(conn.conn, sql);
+                sql = "Update " + vsold.table + " Set " +
+                " " + vsold.VSID + " = '165' " +
+                "Where " + vsold.pkField + "='" + vn + "'";
+                re = conn.ExecuteNonQuery(conn.conn, sql);
+            }
+            catch (Exception ex)
+            {
+                sql = ex.Message + " " + ex.InnerException;
+            }
+
+            return re;
+        }
+        public String updateStatusVoidVisit(String vn)
+        {
+            String re = "";
+            String sql = "";
+            int chk = 0;
+
+            sql = "Update " + vsold.table + " Set " +
+                " " + vsold.VSID + " = '998' " +
+                "Where " + vsold.pkField + "='" + vn + "'";
+            try
+            {
+                re = conn.ExecuteNonQuery(conn.conn, sql);                
+            }
+            catch (Exception ex)
+            {
+                sql = ex.Message + " " + ex.InnerException;
+            }
+
+            return re;
+        }
+        public String updateStatusNurseReceive(String vn)
+        {
+            String re = "";
+            String sql = "";
+            int chk = 0;
+
+            sql = "Update " + vsold.table + " Set " +
+                " " + vsold.LVSID + " = " + vsold.VSID + " " +
+                "Where " + vsold.pkField + "='" + vn + "'";
+            try
+            {
+                re = conn.ExecuteNonQuery(conn.conn, sql);
+                sql = "Update " + vsold.table + " Set " +
+                " " + vsold.VSID + " = '110' " +
+                "Where " + vsold.pkField + "='" + vn + "'";
+                re = conn.ExecuteNonQuery(conn.conn, sql);
+
+            }
+            catch (Exception ex)
+            {
+                sql = ex.Message + " " + ex.InnerException;
+            }
+
+            return re;
+        }
+        public String updateStatusNurseComfirm(String vn)
+        {
+            String re = "";
+            String sql = "";
+            int chk = 0;
+
+            sql = "Update " + vsold.table + " Set " +
+                " " + vsold.LVSID + " = " + vsold.VSID + " " +
+                "Where " + vsold.pkField + "='" + vn + "'";
+            try
+            {
+                re = conn.ExecuteNonQuery(conn.conn, sql);
+                sql = "Update " + vsold.table + " Set " +
+                " " + vsold.VSID + " = '111' " +
+                "Where " + vsold.pkField + "='" + vn + "'";
+                re = conn.ExecuteNonQuery(conn.conn, sql);
+
+            }
+            catch (Exception ex)
+            {
+                sql = ex.Message + " " + ex.InnerException;
+            }
+
+            return re;
+        }
+        public String updateStatusNurseAutoComfirm(String vn)
+        {
+            String re = "";
+            String sql = "";
+            int chk = 0;
+
+            sql = "Update " + vsold.table + " Set " +
+                " " + vsold.LVSID + " = '110' " +
+                "," + vsold.LVSID + " = '111' " +
                 "Where " + vsold.pkField + "='" + vn + "'";
             try
             {
