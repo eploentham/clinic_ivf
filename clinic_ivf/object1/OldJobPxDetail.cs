@@ -6,23 +6,21 @@ using System.Threading.Tasks;
 
 namespace clinic_ivf.object1
 {
-    public class OldJobSpecialDetail:Persistent
+    public class OldJobPxDetail:Persistent
     {
         public String ID { get; set; }
         public String VN { get; set; }
-        public String SID { get; set; }
-        public String SName { get; set; }
+        public String DUID { get; set; }
+        public String QTY { get; set; }
         public String Extra { get; set; }
         public String Price { get; set; }
         public String Status { get; set; }
         public String PID { get; set; }
         public String PIDS { get; set; }
-        public String W1UID { get; set; }
-        public String W2UID { get; set; }
-        public String W3UID { get; set; }
-        public String W4UID { get; set; }
-        public String FileName { get; set; }
-        public String status_req_accept { get; set; }
-        public String req_id { get; set; }
+        public String DUName { get; set; }
+        public String Comment { get; set; }
+        public String TUsage { get; set; }
+        public String EUsage { get; set; }
+        
     }
 }

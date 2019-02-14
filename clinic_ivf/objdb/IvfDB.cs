@@ -57,6 +57,12 @@ namespace clinic_ivf.objdb
         public OldSpecialItemDB oSItmDB;
         public OldStockDrugDB oStkdDB;
         public OldGroupDrugHeaderDB oGrpDb;
+        public OldPackageHeaderDB oPkgDB;
+        public OldPackageDetailDB oPkgdDB;
+        public OldGroupDrugDetailDB oGudDB;
+        public OldJobLabDetailDB oJlabdDB;
+        public OldJobSpecialDetailDB ojsdDB;
+        public OldJobPxDetailDB oJpxdDB;
 
         public IvfDB(ConnectDB c)
         {
@@ -108,6 +114,12 @@ namespace clinic_ivf.objdb
             oSItmDB = new OldSpecialItemDB(conn);
             oStkdDB = new OldStockDrugDB(conn);
             oGrpDb = new OldGroupDrugHeaderDB(conn);
+            oPkgDB = new OldPackageHeaderDB(conn);
+            oPkgdDB = new OldPackageDetailDB(conn);
+            oGudDB = new OldGroupDrugDetailDB(conn);
+            oJlabdDB = new OldJobLabDetailDB(conn);
+            ojsdDB = new OldJobSpecialDetailDB(conn);
+            oJpxdDB = new OldJobPxDetailDB(conn);
 
             Console.WriteLine("ivfDB end");
         }

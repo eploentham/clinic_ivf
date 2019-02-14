@@ -27,7 +27,7 @@ namespace clinic_ivf.objdb
             oGuh.table = "GroupDrugHeader";
             oGuh.pkField = "GDID";
         }
-        public DataTable selectBySockDrug1()
+        public DataTable selectByGrpDrugH1()
         {
             DataTable dt = new DataTable();
             String sql = "select oGuh." + oGuh.GDID + ",oGuh." + oGuh.GroupName + " " +
