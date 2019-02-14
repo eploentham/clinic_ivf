@@ -54,21 +54,25 @@
             this.tC = new C1.Win.C1Command.C1DockingTab();
             this.tabDrug = new C1.Win.C1Command.C1DockingTabPage();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
-            this.pnOrder = new System.Windows.Forms.Panel();
+            this.pnOrder1 = new System.Windows.Forms.Panel();
             this.tabOrder = new C1.Win.C1Command.C1DockingTab();
             this.tabBloodLab = new C1.Win.C1Command.C1DockingTabPage();
-            this.panel2 = new System.Windows.Forms.Panel();
+            this.pnBloodLab = new System.Windows.Forms.Panel();
             this.tabSpermLab = new C1.Win.C1Command.C1DockingTabPage();
+            this.pnSperm = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
             this.tabEmbryoLab = new C1.Win.C1Command.C1DockingTabPage();
             this.panel4 = new System.Windows.Forms.Panel();
+            this.pnEmbryo = new System.Windows.Forms.Panel();
             this.tabGeneticLab = new C1.Win.C1Command.C1DockingTabPage();
-            this.panel5 = new System.Windows.Forms.Panel();
+            this.pnGenetic = new System.Windows.Forms.Panel();
             this.tabSpecialItem = new C1.Win.C1Command.C1DockingTabPage();
-            this.panel6 = new System.Windows.Forms.Panel();
+            this.pnSpecial = new System.Windows.Forms.Panel();
             this.tabRx = new C1.Win.C1Command.C1DockingTabPage();
-            this.panel7 = new System.Windows.Forms.Panel();
-            this.pnDrug = new System.Windows.Forms.Panel();
+            this.pnRx = new System.Windows.Forms.Panel();
+            this.tabRxSet = new C1.Win.C1Command.C1DockingTabPage();
+            this.pnRxSet = new System.Windows.Forms.Panel();
+            this.pnOrder = new System.Windows.Forms.Panel();
             this.tabLab = new C1.Win.C1Command.C1DockingTabPage();
             this.tabApp = new C1.Win.C1Command.C1DockingTabPage();
             this.tabCert = new C1.Win.C1Command.C1DockingTabPage();
@@ -95,15 +99,17 @@
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
-            this.pnOrder.SuspendLayout();
+            this.pnOrder1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tabOrder)).BeginInit();
             this.tabOrder.SuspendLayout();
             this.tabBloodLab.SuspendLayout();
             this.tabSpermLab.SuspendLayout();
             this.tabEmbryoLab.SuspendLayout();
+            this.panel4.SuspendLayout();
             this.tabGeneticLab.SuspendLayout();
             this.tabSpecialItem.SuspendLayout();
             this.tabRx.SuspendLayout();
+            this.tabRxSet.SuspendLayout();
             this.sB.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -469,14 +475,14 @@
             // splitContainer1.Panel1
             // 
             this.splitContainer1.Panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.splitContainer1.Panel1.Controls.Add(this.pnOrder);
+            this.splitContainer1.Panel1.Controls.Add(this.pnOrder1);
             this.splitContainer1.Panel1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
             this.theme1.SetTheme(this.splitContainer1.Panel1, "(default)");
             // 
             // splitContainer1.Panel2
             // 
             this.splitContainer1.Panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.splitContainer1.Panel2.Controls.Add(this.pnDrug);
+            this.splitContainer1.Panel2.Controls.Add(this.pnOrder);
             this.splitContainer1.Panel2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
             this.theme1.SetTheme(this.splitContainer1.Panel2, "(default)");
             this.splitContainer1.Size = new System.Drawing.Size(1146, 603);
@@ -484,17 +490,17 @@
             this.splitContainer1.TabIndex = 0;
             this.theme1.SetTheme(this.splitContainer1, "(default)");
             // 
-            // pnOrder
+            // pnOrder1
             // 
-            this.pnOrder.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.pnOrder.Controls.Add(this.tabOrder);
-            this.pnOrder.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnOrder.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.pnOrder.Location = new System.Drawing.Point(0, 0);
-            this.pnOrder.Name = "pnOrder";
-            this.pnOrder.Size = new System.Drawing.Size(554, 603);
-            this.pnOrder.TabIndex = 0;
-            this.theme1.SetTheme(this.pnOrder, "(default)");
+            this.pnOrder1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.pnOrder1.Controls.Add(this.tabOrder);
+            this.pnOrder1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pnOrder1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.pnOrder1.Location = new System.Drawing.Point(0, 0);
+            this.pnOrder1.Name = "pnOrder1";
+            this.pnOrder1.Size = new System.Drawing.Size(554, 603);
+            this.pnOrder1.TabIndex = 0;
+            this.theme1.SetTheme(this.pnOrder1, "(default)");
             // 
             // tabOrder
             // 
@@ -507,11 +513,13 @@
             this.tabOrder.Controls.Add(this.tabGeneticLab);
             this.tabOrder.Controls.Add(this.tabSpecialItem);
             this.tabOrder.Controls.Add(this.tabRx);
+            this.tabOrder.Controls.Add(this.tabRxSet);
             this.tabOrder.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tabOrder.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tabOrder.HotTrack = true;
             this.tabOrder.Location = new System.Drawing.Point(0, 0);
             this.tabOrder.Name = "tabOrder";
-            this.tabOrder.SelectedIndex = 5;
+            this.tabOrder.SelectedIndex = 6;
             this.tabOrder.Size = new System.Drawing.Size(554, 603);
             this.tabOrder.TabIndex = 0;
             this.tabOrder.TabSizeMode = C1.Win.C1Command.TabSizeModeEnum.Fit;
@@ -522,34 +530,46 @@
             // 
             // tabBloodLab
             // 
-            this.tabBloodLab.Controls.Add(this.panel2);
+            this.tabBloodLab.Controls.Add(this.pnBloodLab);
             this.tabBloodLab.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.tabBloodLab.Location = new System.Drawing.Point(24, 1);
+            this.tabBloodLab.Location = new System.Drawing.Point(25, 1);
             this.tabBloodLab.Name = "tabBloodLab";
-            this.tabBloodLab.Size = new System.Drawing.Size(529, 601);
+            this.tabBloodLab.Size = new System.Drawing.Size(528, 601);
             this.tabBloodLab.TabIndex = 0;
             this.tabBloodLab.Text = "Blood Lab";
             // 
-            // panel2
+            // pnBloodLab
             // 
-            this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.panel2.Location = new System.Drawing.Point(0, 0);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(529, 601);
-            this.panel2.TabIndex = 0;
-            this.theme1.SetTheme(this.panel2, "(default)");
+            this.pnBloodLab.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.pnBloodLab.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pnBloodLab.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.pnBloodLab.Location = new System.Drawing.Point(0, 0);
+            this.pnBloodLab.Name = "pnBloodLab";
+            this.pnBloodLab.Size = new System.Drawing.Size(528, 601);
+            this.pnBloodLab.TabIndex = 0;
+            this.theme1.SetTheme(this.pnBloodLab, "(default)");
             // 
             // tabSpermLab
             // 
+            this.tabSpermLab.Controls.Add(this.pnSperm);
             this.tabSpermLab.Controls.Add(this.panel3);
             this.tabSpermLab.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.tabSpermLab.Location = new System.Drawing.Point(24, 1);
+            this.tabSpermLab.Location = new System.Drawing.Point(25, 1);
             this.tabSpermLab.Name = "tabSpermLab";
-            this.tabSpermLab.Size = new System.Drawing.Size(529, 601);
+            this.tabSpermLab.Size = new System.Drawing.Size(528, 601);
             this.tabSpermLab.TabIndex = 1;
             this.tabSpermLab.Text = "Sperm Lab";
+            // 
+            // pnSperm
+            // 
+            this.pnSperm.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.pnSperm.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pnSperm.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.pnSperm.Location = new System.Drawing.Point(0, 0);
+            this.pnSperm.Name = "pnSperm";
+            this.pnSperm.Size = new System.Drawing.Size(528, 601);
+            this.pnSperm.TabIndex = 1;
+            this.theme1.SetTheme(this.pnSperm, "(default)");
             // 
             // panel3
             // 
@@ -558,7 +578,7 @@
             this.panel3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
             this.panel3.Location = new System.Drawing.Point(0, 0);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(529, 601);
+            this.panel3.Size = new System.Drawing.Size(528, 601);
             this.panel3.TabIndex = 0;
             this.theme1.SetTheme(this.panel3, "(default)");
             // 
@@ -566,96 +586,128 @@
             // 
             this.tabEmbryoLab.Controls.Add(this.panel4);
             this.tabEmbryoLab.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.tabEmbryoLab.Location = new System.Drawing.Point(24, 1);
+            this.tabEmbryoLab.Location = new System.Drawing.Point(25, 1);
             this.tabEmbryoLab.Name = "tabEmbryoLab";
-            this.tabEmbryoLab.Size = new System.Drawing.Size(529, 601);
+            this.tabEmbryoLab.Size = new System.Drawing.Size(528, 601);
             this.tabEmbryoLab.TabIndex = 2;
             this.tabEmbryoLab.Text = "Embryo Lab";
             // 
             // panel4
             // 
             this.panel4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.panel4.Controls.Add(this.pnEmbryo);
             this.panel4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
             this.panel4.Location = new System.Drawing.Point(0, 0);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(529, 601);
+            this.panel4.Size = new System.Drawing.Size(528, 601);
             this.panel4.TabIndex = 0;
             this.theme1.SetTheme(this.panel4, "(default)");
             // 
+            // pnEmbryo
+            // 
+            this.pnEmbryo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.pnEmbryo.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pnEmbryo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.pnEmbryo.Location = new System.Drawing.Point(0, 0);
+            this.pnEmbryo.Name = "pnEmbryo";
+            this.pnEmbryo.Size = new System.Drawing.Size(528, 601);
+            this.pnEmbryo.TabIndex = 0;
+            this.theme1.SetTheme(this.pnEmbryo, "(default)");
+            // 
             // tabGeneticLab
             // 
-            this.tabGeneticLab.Controls.Add(this.panel5);
+            this.tabGeneticLab.Controls.Add(this.pnGenetic);
             this.tabGeneticLab.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.tabGeneticLab.Location = new System.Drawing.Point(24, 1);
+            this.tabGeneticLab.Location = new System.Drawing.Point(25, 1);
             this.tabGeneticLab.Name = "tabGeneticLab";
-            this.tabGeneticLab.Size = new System.Drawing.Size(529, 601);
+            this.tabGeneticLab.Size = new System.Drawing.Size(528, 601);
             this.tabGeneticLab.TabIndex = 3;
             this.tabGeneticLab.Text = "Genetic Lab";
             // 
-            // panel5
+            // pnGenetic
             // 
-            this.panel5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.panel5.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.panel5.Location = new System.Drawing.Point(0, 0);
-            this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(529, 601);
-            this.panel5.TabIndex = 0;
-            this.theme1.SetTheme(this.panel5, "(default)");
+            this.pnGenetic.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.pnGenetic.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pnGenetic.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.pnGenetic.Location = new System.Drawing.Point(0, 0);
+            this.pnGenetic.Name = "pnGenetic";
+            this.pnGenetic.Size = new System.Drawing.Size(528, 601);
+            this.pnGenetic.TabIndex = 0;
+            this.theme1.SetTheme(this.pnGenetic, "(default)");
             // 
             // tabSpecialItem
             // 
-            this.tabSpecialItem.Controls.Add(this.panel6);
+            this.tabSpecialItem.Controls.Add(this.pnSpecial);
             this.tabSpecialItem.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.tabSpecialItem.Location = new System.Drawing.Point(24, 1);
+            this.tabSpecialItem.Location = new System.Drawing.Point(25, 1);
             this.tabSpecialItem.Name = "tabSpecialItem";
-            this.tabSpecialItem.Size = new System.Drawing.Size(529, 601);
+            this.tabSpecialItem.Size = new System.Drawing.Size(528, 601);
             this.tabSpecialItem.TabIndex = 4;
             this.tabSpecialItem.Text = "Special Item";
             // 
-            // panel6
+            // pnSpecial
             // 
-            this.panel6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.panel6.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.panel6.Location = new System.Drawing.Point(0, 0);
-            this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(529, 601);
-            this.panel6.TabIndex = 0;
-            this.theme1.SetTheme(this.panel6, "(default)");
+            this.pnSpecial.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.pnSpecial.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pnSpecial.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.pnSpecial.Location = new System.Drawing.Point(0, 0);
+            this.pnSpecial.Name = "pnSpecial";
+            this.pnSpecial.Size = new System.Drawing.Size(528, 601);
+            this.pnSpecial.TabIndex = 0;
+            this.theme1.SetTheme(this.pnSpecial, "(default)");
             // 
             // tabRx
             // 
-            this.tabRx.Controls.Add(this.panel7);
+            this.tabRx.Controls.Add(this.pnRx);
             this.tabRx.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.tabRx.Location = new System.Drawing.Point(24, 1);
+            this.tabRx.Location = new System.Drawing.Point(25, 1);
             this.tabRx.Name = "tabRx";
-            this.tabRx.Size = new System.Drawing.Size(529, 601);
+            this.tabRx.Size = new System.Drawing.Size(528, 601);
             this.tabRx.TabIndex = 5;
             this.tabRx.Text = "Rx Item";
             // 
-            // panel7
+            // pnRx
             // 
-            this.panel7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.panel7.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.panel7.Location = new System.Drawing.Point(0, 0);
-            this.panel7.Name = "panel7";
-            this.panel7.Size = new System.Drawing.Size(529, 601);
-            this.panel7.TabIndex = 0;
-            this.theme1.SetTheme(this.panel7, "(default)");
+            this.pnRx.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.pnRx.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pnRx.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.pnRx.Location = new System.Drawing.Point(0, 0);
+            this.pnRx.Name = "pnRx";
+            this.pnRx.Size = new System.Drawing.Size(528, 601);
+            this.pnRx.TabIndex = 0;
+            this.theme1.SetTheme(this.pnRx, "(default)");
             // 
-            // pnDrug
+            // tabRxSet
             // 
-            this.pnDrug.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.pnDrug.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnDrug.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.pnDrug.Location = new System.Drawing.Point(0, 0);
-            this.pnDrug.Name = "pnDrug";
-            this.pnDrug.Size = new System.Drawing.Size(588, 603);
-            this.pnDrug.TabIndex = 0;
-            this.theme1.SetTheme(this.pnDrug, "(default)");
+            this.tabRxSet.Controls.Add(this.pnRxSet);
+            this.tabRxSet.Location = new System.Drawing.Point(25, 1);
+            this.tabRxSet.Name = "tabRxSet";
+            this.tabRxSet.Size = new System.Drawing.Size(528, 601);
+            this.tabRxSet.TabIndex = 6;
+            this.tabRxSet.Text = "Rx Set ยาชุด";
+            // 
+            // pnRxSet
+            // 
+            this.pnRxSet.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.pnRxSet.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pnRxSet.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.pnRxSet.Location = new System.Drawing.Point(0, 0);
+            this.pnRxSet.Name = "pnRxSet";
+            this.pnRxSet.Size = new System.Drawing.Size(528, 601);
+            this.pnRxSet.TabIndex = 0;
+            this.theme1.SetTheme(this.pnRxSet, "(default)");
+            // 
+            // pnOrder
+            // 
+            this.pnOrder.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.pnOrder.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pnOrder.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.pnOrder.Location = new System.Drawing.Point(0, 0);
+            this.pnOrder.Name = "pnOrder";
+            this.pnOrder.Size = new System.Drawing.Size(588, 603);
+            this.pnOrder.TabIndex = 0;
+            this.theme1.SetTheme(this.pnOrder, "(default)");
             // 
             // tabLab
             // 
@@ -730,15 +782,17 @@
             this.splitContainer1.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
-            this.pnOrder.ResumeLayout(false);
+            this.pnOrder1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.tabOrder)).EndInit();
             this.tabOrder.ResumeLayout(false);
             this.tabBloodLab.ResumeLayout(false);
             this.tabSpermLab.ResumeLayout(false);
             this.tabEmbryoLab.ResumeLayout(false);
+            this.panel4.ResumeLayout(false);
             this.tabGeneticLab.ResumeLayout(false);
             this.tabSpecialItem.ResumeLayout(false);
             this.tabRx.ResumeLayout(false);
+            this.tabRxSet.ResumeLayout(false);
             this.sB.ResumeLayout(false);
             this.sB.PerformLayout();
             this.ResumeLayout(false);
@@ -779,8 +833,8 @@
         private C1.Win.C1Input.C1TextBox txtAllergy;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.SplitContainer splitContainer1;
+        private System.Windows.Forms.Panel pnOrder1;
         private System.Windows.Forms.Panel pnOrder;
-        private System.Windows.Forms.Panel pnDrug;
         private C1.Win.C1Command.C1DockingTab tabOrder;
         private C1.Win.C1Command.C1DockingTabPage tabBloodLab;
         private C1.Win.C1Command.C1DockingTabPage tabSpermLab;
@@ -788,11 +842,15 @@
         private C1.Win.C1Command.C1DockingTabPage tabGeneticLab;
         private C1.Win.C1Command.C1DockingTabPage tabSpecialItem;
         private C1.Win.C1Command.C1DockingTabPage tabRx;
-        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.Panel pnBloodLab;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Panel panel4;
-        private System.Windows.Forms.Panel panel5;
-        private System.Windows.Forms.Panel panel6;
-        private System.Windows.Forms.Panel panel7;
+        private System.Windows.Forms.Panel pnSpecial;
+        private System.Windows.Forms.Panel pnRx;
+        private System.Windows.Forms.Panel pnSperm;
+        private System.Windows.Forms.Panel pnEmbryo;
+        private System.Windows.Forms.Panel pnGenetic;
+        private C1.Win.C1Command.C1DockingTabPage tabRxSet;
+        private System.Windows.Forms.Panel pnRxSet;
     }
 }

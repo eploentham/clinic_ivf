@@ -512,7 +512,7 @@ namespace clinic_ivf.gui
             grfDiag.Cols[colStatus].Caption = "Status";
 
             ContextMenu menuGw = new ContextMenu();
-            menuGw.MenuItems.Add("&receive operation", new EventHandler(ContextMenu_Apm));
+            menuGw.MenuItems.Add("Receive operation", new EventHandler(ContextMenu_order));
             menuGw.MenuItems.Add("&Order Entry", new EventHandler(ContextMenu_Apm));
             menuGw.MenuItems.Add("&Add Appointment", new EventHandler(ContextMenu_Apm));
             menuGw.MenuItems.Add("&Cancel Receive", new EventHandler(ContextMenu_Apm));
@@ -944,6 +944,7 @@ namespace clinic_ivf.gui
                 DateTime dt11 = new  DateTime();
                 if(DateTime.TryParse(txtDateStart.Text, out dt11))
                 {
+                    //dt11 = dt11.AddDays(-1);
                     date = dt11.Year + "-" + dt11.ToString("MM-dd");
                     dt = ic.ivfDB.vsOldDB.selectByDate(date);
                 }

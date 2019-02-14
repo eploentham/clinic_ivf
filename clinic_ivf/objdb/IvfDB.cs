@@ -53,6 +53,10 @@ namespace clinic_ivf.objdb
         public PatientAppointmentTextDB pApmtDB;
         public LabFormADB lFormaDB;
         public LabFetDB fetDB;
+        public OldLabItemDB oLabiDB;
+        public OldSpecialItemDB oSItmDB;
+        public OldStockDrugDB oStkdDB;
+        public OldGroupDrugHeaderDB oGrpDb;
 
         public IvfDB(ConnectDB c)
         {
@@ -100,6 +104,10 @@ namespace clinic_ivf.objdb
             pApmtDB = new PatientAppointmentTextDB(conn);
             lFormaDB = new LabFormADB(conn);
             fetDB = new LabFetDB(conn);
+            oLabiDB = new OldLabItemDB(conn);
+            oSItmDB = new OldSpecialItemDB(conn);
+            oStkdDB = new OldStockDrugDB(conn);
+            oGrpDb = new OldGroupDrugHeaderDB(conn);
 
             Console.WriteLine("ivfDB end");
         }
