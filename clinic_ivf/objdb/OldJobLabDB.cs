@@ -1,6 +1,7 @@
 ﻿using clinic_ivf.object1;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -77,6 +78,41 @@ namespace clinic_ivf.objdb
             catch (Exception ex)
             {
                 sql = ex.Message + " " + ex.InnerException;
+            }
+
+            return re;
+        }
+        public String setJobLab(String vn, String hn, String pid)
+        {
+        //    $query = $this->db->query('select VN from JobLab Where VN="'. $VN. '"');
+        //  $date = date("Y-m-d", time());
+        //    if ($query->num_rows() == 0) {
+        //    $PID = $this->session->userdata['PID'];
+        //    $PIDS = $this->session->userdata['PIDS'];
+        //    $this->db->query('insert into JobLab set VN="'. $VN. '", Status="114", date="'. $date. '", PID="'. $PID. '", PIDS="'. $PIDS. '"');
+        //        return 1;
+        //    } else {
+        //        return 0;
+        //    };
+            DataTable dt = new DataTable();
+            String re = "", sql = "";
+            sql = "select " + ojlab.VN + " from " + ojlab.table + " Where " + ojlab.VN + "='" + vn + "'";
+            dt = conn.selectData(conn.conn, sql);
+            if (dt.Rows.Count <= 0)
+            {
+                sql = "insert into " + ojlab.table + " set VN='" + vn + "'" +
+                    ", Status='114'" +
+                    ", date=date(now()) " +
+                    ", PID='" + pid + "'" +
+                    ", PIDS='" + hn + "' ";
+                try
+                {
+                    re = conn.ExecuteNonQuery(conn.conn, sql);
+                }
+                catch (Exception ex)
+                {
+                    sql = ex.Message + " " + ex.InnerException;
+                }
             }
 
             return re;

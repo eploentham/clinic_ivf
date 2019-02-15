@@ -27,7 +27,7 @@ namespace clinic_ivf.objdb
         public AgentOldDB agnOldDB;
         public OldPatientDB pttOldDB;
         public DoctorOldDB dtrOldDB;
-        public OldJobPxDB oJobpxDB;
+        
         public JobPxDetailDB jobpxdDB;
 
         public FPrefixDB fpfDB;
@@ -63,8 +63,12 @@ namespace clinic_ivf.objdb
         public OldJobLabDetailDB oJlabdDB;
         public OldJobSpecialDB oJsDB;
         public OldJobSpecialDetailDB ojsdDB;
+        public OldJobPxDB oJpxDB;
         public OldJobPxDetailDB oJpxdDB;
         public OldJobLabDB oJlabDB;
+        public OldPackageSoldDB opkgsDB;
+        public OldPackageDepositDB oPkgdpDB;
+        public OldPackageDepositDetailDB oPkgdpdDB;
 
         public IvfDB(ConnectDB c)
         {
@@ -101,7 +105,7 @@ namespace clinic_ivf.objdb
             dtrOldDB = new DoctorOldDB(conn);
             pApmOldDB = new AppointmentOldDB(conn);
             pttImgDB = new PatientImageDB(conn);
-            oJobpxDB = new OldJobPxDB(conn);
+            oJpxDB = new OldJobPxDB(conn);
             jobpxdDB = new JobPxDetailDB(conn);
             oJsDB = new OldJobSpecialDB(conn);
             opuDB = new LabOpuDB(conn);
@@ -123,6 +127,9 @@ namespace clinic_ivf.objdb
             ojsdDB = new OldJobSpecialDetailDB(conn);
             oJpxdDB = new OldJobPxDetailDB(conn);
             oJlabDB = new OldJobLabDB(conn);
+            opkgsDB = new OldPackageSoldDB(conn);
+            oPkgdpDB = new OldPackageDepositDB(conn);
+            oPkgdpdDB = new OldPackageDepositDetailDB(conn);
 
             Console.WriteLine("ivfDB end");
         }
@@ -332,7 +339,7 @@ namespace clinic_ivf.objdb
             String include = "", extra = "";
             include = oJpxdDB.selectSumIncludePriceByVN(vn);
             extra = oJpxdDB.selectSumExtraPriceByVN(vn);
-            oJobpxDB.updateIncludePriceFormDetail(include, extra, vn);
+            oJpxDB.updateIncludePriceFormDetail(include, extra, vn);
         }
         public void calIncludeExtraPricelab(String vn)
         {
@@ -347,6 +354,68 @@ namespace clinic_ivf.objdb
             include = ojsdDB.selectSumIncludePriceByVN(vn);
             extra = ojsdDB.selectSumExtraPriceByVN(vn);
             oJsDB.updateIncludePriceFormDetail(include, extra, vn);
+        }
+        public void setPx(String vn, String hn, String pid, String drugid)
+        {
+            oJpxDB.setJobPx(vn, hn, pid);
+
+        }
+        public void PackageClose(String pkgsid)
+        {
+            //    $this->package->set_packageStatus2($PCKSID);
+                    //$this->db->query("UPDATE PackageSold Set Status='3' Where PCKSID='".$PCKSID."'");
+        //            $uSq1 = "UPDATE PackageDeposit SET isPCKclosed = 1 WHERE PCKSID = '$PCKSID'";
+        //$           uSq2 = "UPDATE PackageDepositDetail SET isPCKclosed = 1 WHERE PCKSID = '$PCKSID'";
+            //$this->package->close_packageDPS($PCKSID);
+            opkgsDB.updateStatus3(pkgsid);
+            oPkgdpDB.updateStatusDPS(pkgsid);
+            oPkgdpdDB.updateStatusDPS(pkgsid);
+
+        }
+        public void PackageAdd(OldPackageSold opkgs)
+        {
+            opkgsDB.insert(opkgs, "");
+        }
+        public void PxSetAdd(String gdid, String pid, String pids, String vn, String extra)
+        {
+            //$queGD = $this->package->get_groupDrugDetail($_POST['GDID']);
+            //foreach ($queGD->result() as $row) {
+            //$aData['DUID'] = $row->DUID;
+            //$aData['QTY'] = $row->QTY;
+
+            //$this->package->clear_JobPx_package($VN, $aData['DUID']);
+            //$this->px->add_jobpxdetail($aData);
+            //$this->package->update_jobPx_package($VN, $aData['DUID'], $aData['QTY'], $aData['Extra']);
+            //}
+
+            DataTable dtDrugSet = new DataTable();
+            dtDrugSet = oGudDB.selectByGdId(gdid);
+            foreach(DataRow row in dtDrugSet.Rows)
+            {
+                String duid = "", qty = "";
+                duid = row["DUID"].ToString();
+                qty = row["QTY"].ToString();
+                JobPxDetail oJpxd = new JobPxDetail();
+                OldStockDrug ostkD = new OldStockDrug();
+                Decimal price1 = 0, qty1 = 0;
+                Decimal.TryParse(ostkD.Price, out price1);
+                Decimal.TryParse(qty, out qty1);
+                ostkD = oStkdDB.selectByPk1(duid);
+                oJpxd.VN = "VN";
+                oJpxd.DUID = duid;
+                oJpxd.QTY = qty;
+                oJpxd.Extra = extra;
+                oJpxd.Price = String.Concat(price1*qty1);
+                oJpxd.Status = "Status";
+                oJpxd.PID = "PID";
+                oJpxd.PIDS = "PIDS";
+                oJpxd.DUName = ostkD.DUName;
+                oJpxd.Comment = "Comment";
+                oJpxd.TUsage = ostkD.TUsage;
+                oJpxd.EUsage = ostkD.EUsage;
+                oJpxdDB.insert(oJpxd, "");
+            }
+
         }
     }
 }

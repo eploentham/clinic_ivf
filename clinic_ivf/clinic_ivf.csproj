@@ -409,10 +409,13 @@
     <Compile Include="objdb\LabOpuEmbryoDevDB.cs" />
     <Compile Include="objdb\OldJobSpecialDB.cs" />
     <Compile Include="objdb\OldGroupDrugHeaderDB.cs" />
+    <Compile Include="objdb\OldPackageDepositDB.cs" />
     <Compile Include="objdb\OldPackageDetailDB.cs" />
     <Compile Include="objdb\OldPackageHeaderDB.cs" />
+    <Compile Include="objdb\OldPackageSoldDB.cs" />
     <Compile Include="objdb\OldSpecialItemDB.cs" />
     <Compile Include="objdb\OldStockDrugDB.cs" />
+    <Compile Include="objdb\OldPackageDepositDetailDB.cs" />
     <Compile Include="objdb\PatientAppointmentDB.cs" />
     <Compile Include="objdb\PatientAppointmentTextDB.cs" />
     <Compile Include="object1\CellNoteManager.cs" />
@@ -430,8 +433,11 @@
     <Compile Include="object1\OldLabItem.cs" />
     <Compile Include="object1\OldPackageDetail.cs" />
     <Compile Include="object1\OldPackageHeader.cs" />
+    <Compile Include="object1\OldPackageSold.cs" />
     <Compile Include="object1\OldSpecialItem.cs" />
     <Compile Include="object1\OldStockDrug.cs" />
+    <Compile Include="object1\OldPackageDeposit.cs" />
+    <Compile Include="object1\PackageDepositDetail.cs" />
     <Compile Include="object1\PatientAppointment.cs" />
     <Compile Include="objdb\PatientImageDB.cs" />
     <Compile Include="objdb\OldPatientDB.cs" />

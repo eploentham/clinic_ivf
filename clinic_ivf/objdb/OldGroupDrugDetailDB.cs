@@ -39,7 +39,7 @@ namespace clinic_ivf.objdb
             dt = conn.selectData(conn.conn, sql);
             return dt;
         }
-        public DataTable selectGuId(String id)
+        public DataTable selectByGdId(String id)
         {
             DataTable dt = new DataTable();
             String sql = "select oGuD.* " +

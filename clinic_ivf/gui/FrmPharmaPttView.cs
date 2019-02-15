@@ -118,7 +118,7 @@ namespace clinic_ivf.gui
                 DataTable dt = new DataTable();
                 startDate = dtStart.Year + "-" + dtStart.ToString("MM-dd");
                 endDate = dtEnd.Year + "-" + dtEnd.ToString("MM-dd");
-                dt = ic.ivfDB.oJobpxDB.selectByDate(startDate, endDate, txtSearch.Text);
+                dt = ic.ivfDB.oJpxDB.selectByDate(startDate, endDate, txtSearch.Text);
                 //grfExpn.Rows.Count = dt.Rows.Count + 1;
                 //grfCu.Rows.Count = 41;
                 //grfCu.Cols.Count = 4;

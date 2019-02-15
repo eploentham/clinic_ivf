@@ -30,6 +30,7 @@
         {
             this.theme1 = new C1.Win.C1Themes.C1ThemeController();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.btnClose = new C1.Win.C1Input.C1Button();
             this.txtAllergy = new C1.Win.C1Input.C1TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -59,7 +60,6 @@
             this.tabPackage = new C1.Win.C1Command.C1DockingTabPage();
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
             this.pnPackage = new System.Windows.Forms.Panel();
-            this.pnPackageD = new System.Windows.Forms.Panel();
             this.tabBloodLab = new C1.Win.C1Command.C1DockingTabPage();
             this.pnBloodLab = new System.Windows.Forms.Panel();
             this.tabSpermLab = new C1.Win.C1Command.C1DockingTabPage();
@@ -84,9 +84,35 @@
             this.tabCert = new C1.Win.C1Command.C1DockingTabPage();
             this.sB = new System.Windows.Forms.StatusStrip();
             this.sB1 = new System.Windows.Forms.ToolStripStatusLabel();
-            this.btnClose = new C1.Win.C1Input.C1Button();
+            this.txtIdOld = new C1.Win.C1Input.C1TextBox();
+            this.txtVnOld = new C1.Win.C1Input.C1TextBox();
+            this.c1DockingTab1 = new C1.Win.C1Command.C1DockingTab();
+            this.c1DockingTabPage1 = new C1.Win.C1Command.C1DockingTabPage();
+            this.c1DockingTabPage2 = new C1.Win.C1Command.C1DockingTabPage();
+            this.pnPackageD = new System.Windows.Forms.Panel();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.label7 = new System.Windows.Forms.Label();
+            this.txtPkgName = new C1.Win.C1Input.C1TextBox();
+            this.cboSellThruID = new C1.Win.C1Input.C1ComboBox();
+            this.label8 = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
+            this.txtPrice = new C1.Win.C1Input.C1TextBox();
+            this.label12 = new System.Windows.Forms.Label();
+            this.txtPayment1 = new C1.Win.C1Input.C1TextBox();
+            this.label13 = new System.Windows.Forms.Label();
+            this.txtPayment2 = new C1.Win.C1Input.C1TextBox();
+            this.label14 = new System.Windows.Forms.Label();
+            this.txtPayment3 = new C1.Win.C1Input.C1TextBox();
+            this.label15 = new System.Windows.Forms.Label();
+            this.txtPayment4 = new C1.Win.C1Input.C1TextBox();
+            this.btnPkgOrder = new C1.Win.C1Input.C1Button();
+            this.txtPkgId = new C1.Win.C1Input.C1TextBox();
+            this.c1DockingTabPage3 = new C1.Win.C1Command.C1DockingTabPage();
+            this.panel5 = new System.Windows.Forms.Panel();
+            this.btnRxSetOrder = new C1.Win.C1Input.C1Button();
             ((System.ComponentModel.ISupportInitialize)(this.theme1)).BeginInit();
             this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.btnClose)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtAllergy)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtDoctor)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtVn)).BeginInit();
@@ -127,7 +153,24 @@
             this.splitContainer3.Panel2.SuspendLayout();
             this.splitContainer3.SuspendLayout();
             this.sB.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.btnClose)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtIdOld)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtVnOld)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.c1DockingTab1)).BeginInit();
+            this.c1DockingTab1.SuspendLayout();
+            this.c1DockingTabPage1.SuspendLayout();
+            this.c1DockingTabPage2.SuspendLayout();
+            this.panel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtPkgName)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cboSellThruID)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtPrice)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtPayment1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtPayment2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtPayment3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtPayment4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnPkgOrder)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtPkgId)).BeginInit();
+            this.panel5.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.btnRxSetOrder)).BeginInit();
             this.SuspendLayout();
             // 
             // theme1
@@ -137,6 +180,8 @@
             // groupBox1
             // 
             this.groupBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.groupBox1.Controls.Add(this.txtVnOld);
+            this.groupBox1.Controls.Add(this.txtIdOld);
             this.groupBox1.Controls.Add(this.btnClose);
             this.groupBox1.Controls.Add(this.txtAllergy);
             this.groupBox1.Controls.Add(this.label6);
@@ -167,6 +212,20 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Patient";
             this.theme1.SetTheme(this.groupBox1, "(default)");
+            // 
+            // btnClose
+            // 
+            this.btnClose.Image = global::clinic_ivf.Properties.Resources.Add_ticket_24;
+            this.btnClose.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnClose.Location = new System.Drawing.Point(1016, 15);
+            this.btnClose.Name = "btnClose";
+            this.btnClose.Size = new System.Drawing.Size(80, 31);
+            this.btnClose.TabIndex = 696;
+            this.btnClose.Text = "Finish";
+            this.btnClose.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.theme1.SetTheme(this.btnClose, "(default)");
+            this.btnClose.UseVisualStyleBackColor = true;
+            this.btnClose.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
             // 
             // txtAllergy
             // 
@@ -575,11 +634,11 @@
             // splitContainer2.Panel2
             // 
             this.splitContainer2.Panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.splitContainer2.Panel2.Controls.Add(this.pnPackageD);
+            this.splitContainer2.Panel2.Controls.Add(this.c1DockingTab1);
             this.splitContainer2.Panel2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
             this.theme1.SetTheme(this.splitContainer2.Panel2, "(default)");
             this.splitContainer2.Size = new System.Drawing.Size(528, 623);
-            this.splitContainer2.SplitterDistance = 251;
+            this.splitContainer2.SplitterDistance = 290;
             this.splitContainer2.TabIndex = 0;
             this.theme1.SetTheme(this.splitContainer2, "(default)");
             // 
@@ -590,20 +649,9 @@
             this.pnPackage.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
             this.pnPackage.Location = new System.Drawing.Point(0, 0);
             this.pnPackage.Name = "pnPackage";
-            this.pnPackage.Size = new System.Drawing.Size(528, 251);
+            this.pnPackage.Size = new System.Drawing.Size(528, 290);
             this.pnPackage.TabIndex = 0;
             this.theme1.SetTheme(this.pnPackage, "(default)");
-            // 
-            // pnPackageD
-            // 
-            this.pnPackageD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.pnPackageD.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnPackageD.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.pnPackageD.Location = new System.Drawing.Point(0, 0);
-            this.pnPackageD.Name = "pnPackageD";
-            this.pnPackageD.Size = new System.Drawing.Size(528, 368);
-            this.pnPackageD.TabIndex = 0;
-            this.theme1.SetTheme(this.pnPackageD, "(default)");
             // 
             // tabBloodLab
             // 
@@ -783,6 +831,7 @@
             // splitContainer3.Panel2
             // 
             this.splitContainer3.Panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.splitContainer3.Panel2.Controls.Add(this.panel5);
             this.splitContainer3.Panel2.Controls.Add(this.pnRxSetD);
             this.splitContainer3.Panel2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
             this.theme1.SetTheme(this.splitContainer3.Panel2, "(default)");
@@ -805,11 +854,11 @@
             // pnRxSetD
             // 
             this.pnRxSetD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.pnRxSetD.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pnRxSetD.Dock = System.Windows.Forms.DockStyle.Top;
             this.pnRxSetD.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
             this.pnRxSetD.Location = new System.Drawing.Point(0, 0);
             this.pnRxSetD.Name = "pnRxSetD";
-            this.pnRxSetD.Size = new System.Drawing.Size(528, 345);
+            this.pnRxSetD.Size = new System.Drawing.Size(528, 305);
             this.pnRxSetD.TabIndex = 0;
             this.theme1.SetTheme(this.pnRxSetD, "(default)");
             // 
@@ -864,19 +913,363 @@
             this.sB1.Size = new System.Drawing.Size(118, 17);
             this.sB1.Text = "toolStripStatusLabel1";
             // 
-            // btnClose
+            // txtIdOld
             // 
-            this.btnClose.Image = global::clinic_ivf.Properties.Resources.Add_ticket_24;
-            this.btnClose.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnClose.Location = new System.Drawing.Point(1016, 15);
-            this.btnClose.Name = "btnClose";
-            this.btnClose.Size = new System.Drawing.Size(80, 31);
-            this.btnClose.TabIndex = 696;
-            this.btnClose.Text = "Finish";
-            this.btnClose.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.theme1.SetTheme(this.btnClose, "(default)");
-            this.btnClose.UseVisualStyleBackColor = true;
-            this.btnClose.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            this.txtIdOld.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtIdOld.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
+            this.txtIdOld.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.txtIdOld.Location = new System.Drawing.Point(53, 73);
+            this.txtIdOld.Name = "txtIdOld";
+            this.txtIdOld.Size = new System.Drawing.Size(30, 20);
+            this.txtIdOld.TabIndex = 697;
+            this.txtIdOld.Tag = null;
+            this.theme1.SetTheme(this.txtIdOld, "(default)");
+            this.txtIdOld.Visible = false;
+            this.txtIdOld.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            // 
+            // txtVnOld
+            // 
+            this.txtVnOld.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtVnOld.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
+            this.txtVnOld.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.txtVnOld.Location = new System.Drawing.Point(89, 73);
+            this.txtVnOld.Name = "txtVnOld";
+            this.txtVnOld.Size = new System.Drawing.Size(30, 20);
+            this.txtVnOld.TabIndex = 698;
+            this.txtVnOld.Tag = null;
+            this.theme1.SetTheme(this.txtVnOld, "(default)");
+            this.txtVnOld.Visible = false;
+            this.txtVnOld.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            // 
+            // c1DockingTab1
+            // 
+            this.c1DockingTab1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.c1DockingTab1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.c1DockingTab1.Controls.Add(this.c1DockingTabPage1);
+            this.c1DockingTab1.Controls.Add(this.c1DockingTabPage2);
+            this.c1DockingTab1.Controls.Add(this.c1DockingTabPage3);
+            this.c1DockingTab1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.c1DockingTab1.HotTrack = true;
+            this.c1DockingTab1.Location = new System.Drawing.Point(0, 0);
+            this.c1DockingTab1.Name = "c1DockingTab1";
+            this.c1DockingTab1.SelectedIndex = 2;
+            this.c1DockingTab1.Size = new System.Drawing.Size(528, 329);
+            this.c1DockingTab1.TabIndex = 1;
+            this.c1DockingTab1.TabSizeMode = C1.Win.C1Command.TabSizeModeEnum.Fit;
+            this.c1DockingTab1.TabsShowFocusCues = false;
+            this.c1DockingTab1.TabsSpacing = 2;
+            this.c1DockingTab1.TabStyle = C1.Win.C1Command.TabStyleEnum.Office2007;
+            this.theme1.SetTheme(this.c1DockingTab1, "(default)");
+            // 
+            // c1DockingTabPage1
+            // 
+            this.c1DockingTabPage1.Controls.Add(this.panel2);
+            this.c1DockingTabPage1.Location = new System.Drawing.Point(1, 25);
+            this.c1DockingTabPage1.Name = "c1DockingTabPage1";
+            this.c1DockingTabPage1.Size = new System.Drawing.Size(526, 303);
+            this.c1DockingTabPage1.TabIndex = 0;
+            this.c1DockingTabPage1.Text = "สั่งการ";
+            // 
+            // c1DockingTabPage2
+            // 
+            this.c1DockingTabPage2.Controls.Add(this.pnPackageD);
+            this.c1DockingTabPage2.Location = new System.Drawing.Point(1, 25);
+            this.c1DockingTabPage2.Name = "c1DockingTabPage2";
+            this.c1DockingTabPage2.Size = new System.Drawing.Size(526, 303);
+            this.c1DockingTabPage2.TabIndex = 1;
+            this.c1DockingTabPage2.Text = "รายละเอียด";
+            // 
+            // pnPackageD
+            // 
+            this.pnPackageD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.pnPackageD.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pnPackageD.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.pnPackageD.Location = new System.Drawing.Point(0, 0);
+            this.pnPackageD.Name = "pnPackageD";
+            this.pnPackageD.Size = new System.Drawing.Size(526, 303);
+            this.pnPackageD.TabIndex = 1;
+            this.theme1.SetTheme(this.pnPackageD, "(default)");
+            // 
+            // panel2
+            // 
+            this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.panel2.Controls.Add(this.txtPkgId);
+            this.panel2.Controls.Add(this.btnPkgOrder);
+            this.panel2.Controls.Add(this.label15);
+            this.panel2.Controls.Add(this.txtPayment4);
+            this.panel2.Controls.Add(this.label14);
+            this.panel2.Controls.Add(this.txtPayment3);
+            this.panel2.Controls.Add(this.label13);
+            this.panel2.Controls.Add(this.txtPayment2);
+            this.panel2.Controls.Add(this.label12);
+            this.panel2.Controls.Add(this.txtPayment1);
+            this.panel2.Controls.Add(this.label9);
+            this.panel2.Controls.Add(this.txtPrice);
+            this.panel2.Controls.Add(this.cboSellThruID);
+            this.panel2.Controls.Add(this.label8);
+            this.panel2.Controls.Add(this.label7);
+            this.panel2.Controls.Add(this.txtPkgName);
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.panel2.Location = new System.Drawing.Point(0, 0);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(526, 303);
+            this.panel2.TabIndex = 0;
+            this.theme1.SetTheme(this.panel2, "(default)");
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.label7.Location = new System.Drawing.Point(13, 44);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(106, 16);
+            this.label7.TabIndex = 677;
+            this.label7.Text = "Package Name:";
+            this.theme1.SetTheme(this.label7, "(default)");
+            // 
+            // txtPkgName
+            // 
+            this.txtPkgName.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtPkgName.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
+            this.txtPkgName.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.txtPkgName.Location = new System.Drawing.Point(181, 42);
+            this.txtPkgName.Name = "txtPkgName";
+            this.txtPkgName.Size = new System.Drawing.Size(253, 20);
+            this.txtPkgName.TabIndex = 676;
+            this.txtPkgName.Tag = null;
+            this.theme1.SetTheme(this.txtPkgName, "(default)");
+            this.txtPkgName.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            // 
+            // cboSellThruID
+            // 
+            this.cboSellThruID.AllowSpinLoop = false;
+            this.cboSellThruID.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
+            this.cboSellThruID.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.cboSellThruID.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.cboSellThruID.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
+            this.cboSellThruID.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.cboSellThruID.GapHeight = 0;
+            this.cboSellThruID.ImagePadding = new System.Windows.Forms.Padding(0);
+            this.cboSellThruID.ItemsDisplayMember = "";
+            this.cboSellThruID.ItemsValueMember = "";
+            this.cboSellThruID.Location = new System.Drawing.Point(181, 16);
+            this.cboSellThruID.Name = "cboSellThruID";
+            this.cboSellThruID.Size = new System.Drawing.Size(241, 20);
+            this.cboSellThruID.Style.DropDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.cboSellThruID.Style.DropDownBorderColor = System.Drawing.Color.Gainsboro;
+            this.cboSellThruID.Style.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.cboSellThruID.TabIndex = 679;
+            this.cboSellThruID.Tag = null;
+            this.theme1.SetTheme(this.cboSellThruID, "(default)");
+            this.cboSellThruID.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.label8.Location = new System.Drawing.Point(13, 18);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(154, 16);
+            this.label8.TabIndex = 678;
+            this.label8.Text = "Patient Comes Through :";
+            this.theme1.SetTheme(this.label8, "(default)");
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label9.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.label9.Location = new System.Drawing.Point(13, 70);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(45, 16);
+            this.label9.TabIndex = 681;
+            this.label9.Text = "Price :";
+            this.theme1.SetTheme(this.label9, "(default)");
+            // 
+            // txtPrice
+            // 
+            this.txtPrice.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtPrice.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
+            this.txtPrice.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.txtPrice.Location = new System.Drawing.Point(181, 68);
+            this.txtPrice.Name = "txtPrice";
+            this.txtPrice.Size = new System.Drawing.Size(253, 20);
+            this.txtPrice.TabIndex = 680;
+            this.txtPrice.Tag = null;
+            this.theme1.SetTheme(this.txtPrice, "(default)");
+            this.txtPrice.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label12.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.label12.Location = new System.Drawing.Point(13, 119);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(77, 16);
+            this.label12.TabIndex = 683;
+            this.label12.Text = "Payment 1 :";
+            this.theme1.SetTheme(this.label12, "(default)");
+            // 
+            // txtPayment1
+            // 
+            this.txtPayment1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtPayment1.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
+            this.txtPayment1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.txtPayment1.Location = new System.Drawing.Point(107, 117);
+            this.txtPayment1.Name = "txtPayment1";
+            this.txtPayment1.Size = new System.Drawing.Size(253, 20);
+            this.txtPayment1.TabIndex = 682;
+            this.txtPayment1.Tag = null;
+            this.theme1.SetTheme(this.txtPayment1, "(default)");
+            this.txtPayment1.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label13.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.label13.Location = new System.Drawing.Point(13, 145);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(77, 16);
+            this.label13.TabIndex = 685;
+            this.label13.Text = "Payment 2 :";
+            this.theme1.SetTheme(this.label13, "(default)");
+            // 
+            // txtPayment2
+            // 
+            this.txtPayment2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtPayment2.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
+            this.txtPayment2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.txtPayment2.Location = new System.Drawing.Point(107, 143);
+            this.txtPayment2.Name = "txtPayment2";
+            this.txtPayment2.Size = new System.Drawing.Size(253, 20);
+            this.txtPayment2.TabIndex = 684;
+            this.txtPayment2.Tag = null;
+            this.theme1.SetTheme(this.txtPayment2, "(default)");
+            this.txtPayment2.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.label14.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label14.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.label14.Location = new System.Drawing.Point(13, 171);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(77, 16);
+            this.label14.TabIndex = 687;
+            this.label14.Text = "Payment 3 :";
+            this.theme1.SetTheme(this.label14, "(default)");
+            // 
+            // txtPayment3
+            // 
+            this.txtPayment3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtPayment3.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
+            this.txtPayment3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.txtPayment3.Location = new System.Drawing.Point(107, 169);
+            this.txtPayment3.Name = "txtPayment3";
+            this.txtPayment3.Size = new System.Drawing.Size(253, 20);
+            this.txtPayment3.TabIndex = 686;
+            this.txtPayment3.Tag = null;
+            this.theme1.SetTheme(this.txtPayment3, "(default)");
+            this.txtPayment3.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.label15.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label15.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.label15.Location = new System.Drawing.Point(13, 197);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(77, 16);
+            this.label15.TabIndex = 689;
+            this.label15.Text = "Payment 4 :";
+            this.theme1.SetTheme(this.label15, "(default)");
+            // 
+            // txtPayment4
+            // 
+            this.txtPayment4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtPayment4.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
+            this.txtPayment4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.txtPayment4.Location = new System.Drawing.Point(107, 195);
+            this.txtPayment4.Name = "txtPayment4";
+            this.txtPayment4.Size = new System.Drawing.Size(253, 20);
+            this.txtPayment4.TabIndex = 688;
+            this.txtPayment4.Tag = null;
+            this.theme1.SetTheme(this.txtPayment4, "(default)");
+            this.txtPayment4.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            // 
+            // btnPkgOrder
+            // 
+            this.btnPkgOrder.Image = global::clinic_ivf.Properties.Resources.Add_ticket_24;
+            this.btnPkgOrder.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnPkgOrder.Location = new System.Drawing.Point(433, 259);
+            this.btnPkgOrder.Name = "btnPkgOrder";
+            this.btnPkgOrder.Size = new System.Drawing.Size(80, 31);
+            this.btnPkgOrder.TabIndex = 697;
+            this.btnPkgOrder.Text = "สั่งการ";
+            this.btnPkgOrder.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.theme1.SetTheme(this.btnPkgOrder, "(default)");
+            this.btnPkgOrder.UseVisualStyleBackColor = true;
+            this.btnPkgOrder.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            // 
+            // txtPkgId
+            // 
+            this.txtPkgId.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtPkgId.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
+            this.txtPkgId.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.txtPkgId.Location = new System.Drawing.Point(145, 42);
+            this.txtPkgId.Name = "txtPkgId";
+            this.txtPkgId.Size = new System.Drawing.Size(30, 20);
+            this.txtPkgId.TabIndex = 699;
+            this.txtPkgId.Tag = null;
+            this.theme1.SetTheme(this.txtPkgId, "(default)");
+            this.txtPkgId.Visible = false;
+            this.txtPkgId.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            // 
+            // c1DockingTabPage3
+            // 
+            this.c1DockingTabPage3.Location = new System.Drawing.Point(1, 25);
+            this.c1DockingTabPage3.Name = "c1DockingTabPage3";
+            this.c1DockingTabPage3.Size = new System.Drawing.Size(526, 303);
+            this.c1DockingTabPage3.TabIndex = 2;
+            this.c1DockingTabPage3.Text = "Package เก่า";
+            // 
+            // panel5
+            // 
+            this.panel5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.panel5.Controls.Add(this.btnRxSetOrder);
+            this.panel5.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.panel5.Location = new System.Drawing.Point(0, 305);
+            this.panel5.Name = "panel5";
+            this.panel5.Size = new System.Drawing.Size(528, 40);
+            this.panel5.TabIndex = 2;
+            this.theme1.SetTheme(this.panel5, "(default)");
+            // 
+            // btnRxSetOrder
+            // 
+            this.btnRxSetOrder.Image = global::clinic_ivf.Properties.Resources.Add_ticket_24;
+            this.btnRxSetOrder.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnRxSetOrder.Location = new System.Drawing.Point(434, 6);
+            this.btnRxSetOrder.Name = "btnRxSetOrder";
+            this.btnRxSetOrder.Size = new System.Drawing.Size(80, 30);
+            this.btnRxSetOrder.TabIndex = 698;
+            this.btnRxSetOrder.Text = "สั่งการ";
+            this.btnRxSetOrder.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.theme1.SetTheme(this.btnRxSetOrder, "(default)");
+            this.btnRxSetOrder.UseVisualStyleBackColor = true;
+            this.btnRxSetOrder.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
             // 
             // FrmNurseAdd
             // 
@@ -892,6 +1285,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.theme1)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.btnClose)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtAllergy)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtDoctor)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtVn)).EndInit();
@@ -933,7 +1327,25 @@
             this.splitContainer3.ResumeLayout(false);
             this.sB.ResumeLayout(false);
             this.sB.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.btnClose)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtIdOld)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtVnOld)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.c1DockingTab1)).EndInit();
+            this.c1DockingTab1.ResumeLayout(false);
+            this.c1DockingTabPage1.ResumeLayout(false);
+            this.c1DockingTabPage2.ResumeLayout(false);
+            this.panel2.ResumeLayout(false);
+            this.panel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtPkgName)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cboSellThruID)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtPrice)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtPayment1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtPayment2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtPayment3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtPayment4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnPkgOrder)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtPkgId)).EndInit();
+            this.panel5.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.btnRxSetOrder)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -993,10 +1405,35 @@
         private C1.Win.C1Command.C1DockingTabPage tabPackage;
         private System.Windows.Forms.SplitContainer splitContainer2;
         private System.Windows.Forms.Panel pnPackage;
-        private System.Windows.Forms.Panel pnPackageD;
         private System.Windows.Forms.SplitContainer splitContainer3;
         private System.Windows.Forms.Panel pnRxSet;
         private System.Windows.Forms.Panel pnRxSetD;
         private C1.Win.C1Input.C1Button btnClose;
+        private C1.Win.C1Input.C1TextBox txtIdOld;
+        private C1.Win.C1Input.C1TextBox txtVnOld;
+        private C1.Win.C1Command.C1DockingTab c1DockingTab1;
+        private C1.Win.C1Command.C1DockingTabPage c1DockingTabPage1;
+        private System.Windows.Forms.Panel panel2;
+        private C1.Win.C1Command.C1DockingTabPage c1DockingTabPage2;
+        private System.Windows.Forms.Panel pnPackageD;
+        private System.Windows.Forms.Label label7;
+        private C1.Win.C1Input.C1TextBox txtPkgName;
+        private C1.Win.C1Input.C1ComboBox cboSellThruID;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Label label15;
+        private C1.Win.C1Input.C1TextBox txtPayment4;
+        private System.Windows.Forms.Label label14;
+        private C1.Win.C1Input.C1TextBox txtPayment3;
+        private System.Windows.Forms.Label label13;
+        private C1.Win.C1Input.C1TextBox txtPayment2;
+        private System.Windows.Forms.Label label12;
+        private C1.Win.C1Input.C1TextBox txtPayment1;
+        private System.Windows.Forms.Label label9;
+        private C1.Win.C1Input.C1TextBox txtPrice;
+        private C1.Win.C1Input.C1Button btnPkgOrder;
+        private C1.Win.C1Input.C1TextBox txtPkgId;
+        private C1.Win.C1Command.C1DockingTabPage c1DockingTabPage3;
+        private System.Windows.Forms.Panel panel5;
+        private C1.Win.C1Input.C1Button btnRxSetOrder;
     }
 }

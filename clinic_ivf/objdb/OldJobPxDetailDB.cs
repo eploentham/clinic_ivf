@@ -62,6 +62,43 @@ namespace clinic_ivf.objdb
             p.Price = decimal.TryParse(p.Price, out chk1) ? chk.ToString() : "0";
             //p.PIDS = decimal.TryParse(p.PIDS, out chk1) ? chk.ToString() : "0";
         }
+        public String insert(JobPxDetail p, String userId)
+        {
+            String re = "";
+            String sql = "";
+            p.active = "1";
+            //p.ssdata_id = "";
+            int chk = 0;
+
+            chkNull(p);
+            //lbReq.form_a_id = "form_a_id";
+            //p.req_code = genReqDoc();
+            sql = "Insert Into " + oJpxd.table + " Set " +
+                " " + oJpxd.VN + " = '" + p.VN + "'" +
+                "," + oJpxd.DUID + "= '" + p.DUID + "'" +
+                "," + oJpxd.QTY + "= '" + p.QTY + "'" +
+                "," + oJpxd.Extra + "= '" + p.Extra.Replace("'", "''") + "'" +
+                "," + oJpxd.Price + "= '" + p.Price.Replace("'", "''") + "'" +
+                "," + oJpxd.Status + "= '" + p.Status + "'" +
+                "," + oJpxd.PID + "= '" + p.PID + "'" +
+                "," + oJpxd.PIDS + "= '" + p.PIDS + "'" +
+                "," + oJpxd.DUName + "= '" + p.DUName.Replace("'", "''") + "'" +
+                "," + oJpxd.Comment + "= '" + p.Comment.Replace("'", "''") + "'" +
+                "," + oJpxd.TUsage + "= '" + p.TUsage.Replace("'", "''") + "'" +
+                "," + oJpxd.EUsage + "= '" + p.EUsage.Replace("'", "''") + "'" +
+                
+                "";
+            try
+            {
+                re = conn.ExecuteNonQuery(conn.conn, sql);
+            }
+            catch (Exception ex)
+            {
+                sql = ex.Message + " " + ex.InnerException;
+            }
+
+            return re;
+        }
         public DataTable selectByPk(String copId)
         {
             DataTable dt = new DataTable();

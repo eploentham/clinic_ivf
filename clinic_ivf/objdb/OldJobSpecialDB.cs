@@ -245,6 +245,38 @@ namespace clinic_ivf.objdb
             stf1.status_req = "";
             return stf1;
         }
+        public String setJobSpecial(String vn, String hn, String pid)
+        {
+        //  $query = $this->db->query('select VN from JobSpecial Where VN="'. $VN. '"');
+        //  $date = date("Y-m-d", time());
+        //    if ($query->num_rows() == 0) {
+        //    $PID = $this->session->userdata['PID'];
+        //    $PIDS = $this->session->userdata['PIDS'];
+        //    $this->db->query('insert into JobSpecial set VN="'. $VN. '", Status="1", date="'. $date. '", PID="'. $PID. '", PIDS="'. $PIDS. '"');
+        //    }
+            DataTable dt = new DataTable();
+            String re = "", sql = "";
+            sql = "select " + oJS.VN + " from " + oJS.table + " Where " + oJS.VN + "='" + vn + "'";
+            dt = conn.selectData(conn.conn, sql);
+            if (dt.Rows.Count <= 0)
+            {
+                sql = "insert into "+oJS.table+" set VN='" + vn + "'" +
+                    ", Status='1'" +
+                    ", date=date(now()) " +
+                    ", PID='" + pid + "'" +
+                    ", PIDS='" + hn + "' ";
+                try
+                {
+                    re = conn.ExecuteNonQuery(conn.conn, sql);
+                }
+                catch (Exception ex)
+                {
+                    sql = ex.Message + " " + ex.InnerException;
+                }
+            }
+
+            return re;
+        }
         public String updateIncludePriceFormDetail(String inprice, String exprice, String vn)
         {
             String re = "";

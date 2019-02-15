@@ -70,6 +70,9 @@ namespace clinic_ivf.gui
             stt = new C1SuperTooltip();
             sep = new C1SuperErrorProvider();
 
+            tabOrder.Click += TabOrder_Click;
+            btnPkgOrder.Click += BtnPkgOrder_Click;
+
             setControl(vsid);
             //btnNew.Click += BtnNew_Click;
             //txtSearch.KeyUp += TxtSearch_KeyUp;
@@ -96,6 +99,56 @@ namespace clinic_ivf.gui
             //initGrfPtt();
             //setGrfPtt("");
         }
+
+        private void BtnPkgOrder_Click(object sender, EventArgs e)
+        {
+            //throw new NotImplementedException();
+            if (grfRxSetD.Rows.Count > 0)
+            {
+                String gdid = "";
+                gdid = grfRxSet[grfRxSet.Row, colBlId].ToString();
+                ic.ivfDB.PxSetAdd(gdid, txtIdOld.Text, txtHn.Text, txtVnOld.Text, "");
+                setGrfOrder(txtVnOld.Text);
+            }
+        }
+
+        private void TabOrder_Click(object sender, EventArgs e)
+        {
+            //throw new NotImplementedException();
+            if(tabOrder.SelectedTab == tabRx)
+            {
+                ic.ivfDB.oJpxDB.setJobPx(txtVnOld.Text, txtHn.Text, txtIdOld.Text);
+            }
+            else if (tabOrder.SelectedTab == tabSpecialItem)
+            {
+                ic.ivfDB.oJsDB.setJobSpecial(txtVnOld.Text, txtHn.Text, txtIdOld.Text);
+            }
+            else if (tabOrder.SelectedTab == tabGeneticLab)
+            {
+                ic.ivfDB.oJlabDB.setJobLab(txtVnOld.Text, txtHn.Text, txtIdOld.Text);
+            }
+            else if (tabOrder.SelectedTab == tabEmbryoLab)
+            {
+                ic.ivfDB.oJlabDB.setJobLab(txtVnOld.Text, txtHn.Text, txtIdOld.Text);
+            }
+            else if (tabOrder.SelectedTab == tabSpermLab)
+            {
+                ic.ivfDB.oJlabDB.setJobLab(txtVnOld.Text, txtHn.Text, txtIdOld.Text);
+            }
+            else if (tabOrder.SelectedTab == tabBloodLab)
+            {
+                ic.ivfDB.oJlabDB.setJobLab(txtVnOld.Text, txtHn.Text, txtIdOld.Text);
+            }
+            else if (tabOrder.SelectedTab == tabRxSet)
+            {
+                btnPkgOrder.Enabled = false;
+            }
+            else if (tabOrder.SelectedTab == tabPackage)
+            {
+
+            }
+        }
+
         private void setControl(String vsid)
         {
             vsOld = ic.ivfDB.vsOldDB.selectByPk1(vsid);
@@ -106,6 +159,8 @@ namespace clinic_ivf.gui
             txtPttName.Value = vsOld.PName;
             txtDob.Value = ic.datetoShow(pttOld.DateOfBirth) + " ["+ptt.AgeStringShort()+"]";
             txtAllergy.Value = pttOld.Allergy;
+            txtIdOld.Value = pttOld.PID;
+            txtVnOld.Value = vsOld.VN;
             //txtBg.Value = pttOld.b
         }
         private void initGrfOrder()
@@ -384,7 +439,7 @@ namespace clinic_ivf.gui
             grfPackage.Cols[colBlPrice].Editor = txt;
             grfPackage.Cols[colBlRemark].Editor = txt;
 
-            grfPackage.Cols[colBlName].Width = 220;
+            grfPackage.Cols[colBlName].Width = 320;
             grfPackage.Cols[colBlInclude].Width = 120;
             grfPackage.Cols[colBlPrice].Width = 80;
             grfPackage.Cols[colBlRemark].Width = 100;
@@ -395,23 +450,22 @@ namespace clinic_ivf.gui
 
             grfPackage.Cols[colBlName].Caption = "Name";
             grfPackage.Cols[colBlInclude].Caption = "Include";
-            grfPackage.Cols[colBlPrice].Caption = "QTY";
+            grfPackage.Cols[colBlPrice].Caption = "Price";
             grfPackage.Cols[colBlRemark].Caption = "Remark";
 
             Color color = ColorTranslator.FromHtml(ic.iniC.grfRowColor);
             //CellRange rg1 = grfBank.GetCellRange(1, colE, grfBank.Rows.Count, colE);
             //rg1.Style = grfBank.Styles["date"];
             //grfCu.Cols[colID].Visible = false;
-            int i = 1;
-            foreach (DataRow row in dt.Rows)
+            int i = 0;
+            foreach (Row row in grfPackage.Rows)
             {
                 try
                 {
-                    grfPackage[i, 0] = i;
-
-                    //if (i % 2 == 0)
-                    //    grfPtt.Rows[i].StyleNew.BackColor = color;
                     i++;
+                    if (i == 1) continue;
+                    if (i == 2) continue;
+                    row[0] = (i - 2);
                 }
                 catch (Exception ex)
                 {
@@ -497,7 +551,7 @@ namespace clinic_ivf.gui
             //grfDept.Rows.Count = 7;
             grfRxSetD.Clear();
             DataTable dt = new DataTable();
-            dt = ic.ivfDB.oGudDB.selectGuId(id);
+            dt = ic.ivfDB.oGudDB.selectByGdId(id);
 
             //grfExpn.Rows.Count = dt.Rows.Count + 1;
             //grfEmbryo.Rows.Count = dt.Rows.Count + 1;
@@ -557,7 +611,9 @@ namespace clinic_ivf.gui
             grfRxSetD.Cols[colRxQty].AllowEditing = false;
             //grfRxSetD.Cols[colBlRemark].AllowEditing = false;
             //theme1.SetTheme(grfFinish, ic.theme);
-
+            
+            if (dt.Rows.Count>0)
+                btnPkgOrder.Enabled = true;
         }
         private void initGrfRxSet()
         {
@@ -587,6 +643,7 @@ namespace clinic_ivf.gui
             //throw new NotImplementedException();
             if (grfRxSet.Row < 0) return;
             if (grfRxSet[grfRxSet.Row, colBlId] == null) return;
+            btnPkgOrder.Enabled = false;
             String id = grfRxSet[grfRxSet.Row, colBlId].ToString();
             setGrfRxSetD(id);
 
@@ -613,7 +670,7 @@ namespace clinic_ivf.gui
             grfRxSet.Cols[colBlPrice].Editor = txt;
             grfRxSet.Cols[colBlRemark].Editor = txt;
 
-            grfRxSet.Cols[colBlName].Width = 220;
+            grfRxSet.Cols[colBlName].Width = 320;
             grfRxSet.Cols[colBlInclude].Width = 120;
             grfRxSet.Cols[colBlPrice].Width = 80;
             grfRxSet.Cols[colBlRemark].Width = 100;
@@ -624,23 +681,22 @@ namespace clinic_ivf.gui
 
             grfRxSet.Cols[colBlName].Caption = "Name";
             grfRxSet.Cols[colBlInclude].Caption = "Include";
-            grfRxSet.Cols[colBlPrice].Caption = "QTY";
+            grfRxSet.Cols[colBlPrice].Caption = "Price";
             grfRxSet.Cols[colBlRemark].Caption = "Remark";
 
             Color color = ColorTranslator.FromHtml(ic.iniC.grfRowColor);
             //CellRange rg1 = grfBank.GetCellRange(1, colE, grfBank.Rows.Count, colE);
             //rg1.Style = grfBank.Styles["date"];
             //grfCu.Cols[colID].Visible = false;
-            int i = 1;
-            foreach (DataRow row in dt.Rows)
+            int i = 0;
+            foreach (Row row in grfRxSet.Rows)
             {
                 try
                 {
-                    grfRxSet[i, 0] = i;
-
-                    //if (i % 2 == 0)
-                    //    grfPtt.Rows[i].StyleNew.BackColor = color;
                     i++;
+                    if (i == 1) continue;
+                    if (i == 2) continue;
+                    row[0] = (i - 2);
                 }
                 catch (Exception ex)
                 {
@@ -672,13 +728,19 @@ namespace clinic_ivf.gui
             //grfExpnC.CellButtonClick += new C1.Win.C1FlexGrid.RowColEventHandler(this.grfDept_CellButtonClick);
             //grfExpnC.CellChanged += new C1.Win.C1FlexGrid.RowColEventHandler(this.grfDept_CellChanged);
             ContextMenu menuGw = new ContextMenu();
-            //menuGw.MenuItems.Add("&แก้ไข รายการเบิก", new EventHandler(ContextMenu_edit));
+            menuGw.MenuItems.Add("สั่งการ", new EventHandler(ContextMenu_order_rx));
             //menuGw.MenuItems.Add("&แก้ไข", new EventHandler(ContextMenu_Gw_Edit));
             //menuGw.MenuItems.Add("&ยกเลิก", new EventHandler(ContextMenu_Gw_Cancel));
             grfRx.ContextMenu = menuGw;
             pnRx.Controls.Add(grfRx);
 
             theme1.SetTheme(grfRx, "Office2010Black");
+
+        }
+        private void ContextMenu_order_rx(object sender, System.EventArgs e)
+        {
+            String chk = "", name = "", drugid = "";
+            drugid = grfRx[grfRx.Row, colBlId] != null ? grfRx[grfRx.Row, colBlId].ToString() : "";
 
         }
         private void setGrfRx()
@@ -702,7 +764,7 @@ namespace clinic_ivf.gui
             grfRx.Cols[colBlPrice].Editor = txt;
             grfRx.Cols[colBlRemark].Editor = txt;
 
-            grfRx.Cols[colBlName].Width = 220;
+            grfRx.Cols[colBlName].Width = 320;
             grfRx.Cols[colBlInclude].Width = 120;
             grfRx.Cols[colBlPrice].Width = 80;
             grfRx.Cols[colBlRemark].Width = 100;
@@ -713,23 +775,22 @@ namespace clinic_ivf.gui
 
             grfRx.Cols[colBlName].Caption = "Name";
             grfRx.Cols[colBlInclude].Caption = "Include";
-            grfRx.Cols[colBlPrice].Caption = "QTY";
+            grfRx.Cols[colBlPrice].Caption = "Price";
             grfRx.Cols[colBlRemark].Caption = "Remark";
 
             Color color = ColorTranslator.FromHtml(ic.iniC.grfRowColor);
             //CellRange rg1 = grfBank.GetCellRange(1, colE, grfBank.Rows.Count, colE);
             //rg1.Style = grfBank.Styles["date"];
             //grfCu.Cols[colID].Visible = false;
-            int i = 1;
-            foreach (DataRow row in dt.Rows)
+            int i = 0;
+            foreach (Row row in grfRx.Rows)
             {
                 try
                 {
-                    grfRx[i, 0] = i;
-
-                    //if (i % 2 == 0)
-                    //    grfPtt.Rows[i].StyleNew.BackColor = color;
                     i++;
+                    if (i == 1) continue;
+                    if (i == 2) continue;
+                    row[0] = (i - 2);
                 }
                 catch (Exception ex)
                 {
@@ -791,7 +852,7 @@ namespace clinic_ivf.gui
             grfSpecial.Cols[colBlPrice].Editor = txt;
             grfSpecial.Cols[colBlRemark].Editor = txt;
 
-            grfSpecial.Cols[colBlName].Width = 220;
+            grfSpecial.Cols[colBlName].Width = 320;
             grfSpecial.Cols[colBlInclude].Width = 120;
             grfSpecial.Cols[colBlPrice].Width = 80;
             grfSpecial.Cols[colBlRemark].Width = 100;
@@ -802,23 +863,22 @@ namespace clinic_ivf.gui
 
             grfSpecial.Cols[colBlName].Caption = "Name";
             grfSpecial.Cols[colBlInclude].Caption = "Include";
-            grfSpecial.Cols[colBlPrice].Caption = "QTY";
+            grfSpecial.Cols[colBlPrice].Caption = "Price";
             grfSpecial.Cols[colBlRemark].Caption = "Remark";
 
             Color color = ColorTranslator.FromHtml(ic.iniC.grfRowColor);
             //CellRange rg1 = grfBank.GetCellRange(1, colE, grfBank.Rows.Count, colE);
             //rg1.Style = grfBank.Styles["date"];
             //grfCu.Cols[colID].Visible = false;
-            int i = 1;
-            foreach (DataRow row in dt.Rows)
+            int i = 0;
+            foreach (Row row in grfSpecial.Rows)
             {
                 try
                 {
-                    grfSpecial[i, 0] = i;
-
-                    //if (i % 2 == 0)
-                    //    grfPtt.Rows[i].StyleNew.BackColor = color;
                     i++;
+                    if (i == 1) continue;
+                    if (i == 2) continue;
+                    row[0] = (i - 2);
                 }
                 catch (Exception ex)
                 {
@@ -880,7 +940,7 @@ namespace clinic_ivf.gui
             grfGenetic.Cols[colBlPrice].Editor = txt;
             grfGenetic.Cols[colBlRemark].Editor = txt;
 
-            grfGenetic.Cols[colBlName].Width = 220;
+            grfGenetic.Cols[colBlName].Width = 320;
             grfGenetic.Cols[colBlInclude].Width = 120;
             grfGenetic.Cols[colBlPrice].Width = 80;
             grfGenetic.Cols[colBlRemark].Width = 100;
@@ -891,23 +951,22 @@ namespace clinic_ivf.gui
 
             grfGenetic.Cols[colBlName].Caption = "Name";
             grfGenetic.Cols[colBlInclude].Caption = "Include";
-            grfGenetic.Cols[colBlPrice].Caption = "QTY";
+            grfGenetic.Cols[colBlPrice].Caption = "Price";
             grfGenetic.Cols[colBlRemark].Caption = "Remark";
 
             Color color = ColorTranslator.FromHtml(ic.iniC.grfRowColor);
             //CellRange rg1 = grfBank.GetCellRange(1, colE, grfBank.Rows.Count, colE);
             //rg1.Style = grfBank.Styles["date"];
             //grfCu.Cols[colID].Visible = false;
-            int i = 1;
-            foreach (DataRow row in dt.Rows)
+            int i = 0;
+            foreach (Row row in grfGenetic.Rows)
             {
                 try
                 {
-                    grfGenetic[i, 0] = i;
-
-                    //if (i % 2 == 0)
-                    //    grfPtt.Rows[i].StyleNew.BackColor = color;
                     i++;
+                    if (i == 1) continue;
+                    if (i == 2) continue;
+                    row[0] = (i - 2);
                 }
                 catch (Exception ex)
                 {
@@ -969,7 +1028,7 @@ namespace clinic_ivf.gui
             grfEmbryo.Cols[colBlPrice].Editor = txt;
             grfEmbryo.Cols[colBlRemark].Editor = txt;
 
-            grfEmbryo.Cols[colBlName].Width = 220;
+            grfEmbryo.Cols[colBlName].Width = 320;
             grfEmbryo.Cols[colBlInclude].Width = 120;
             grfEmbryo.Cols[colBlPrice].Width = 80;
             grfEmbryo.Cols[colBlRemark].Width = 100;
@@ -980,23 +1039,22 @@ namespace clinic_ivf.gui
 
             grfEmbryo.Cols[colBlName].Caption = "Name";
             grfEmbryo.Cols[colBlInclude].Caption = "Include";
-            grfEmbryo.Cols[colBlPrice].Caption = "QTY";
+            grfEmbryo.Cols[colBlPrice].Caption = "Price";
             grfEmbryo.Cols[colBlRemark].Caption = "Remark";
 
             Color color = ColorTranslator.FromHtml(ic.iniC.grfRowColor);
             //CellRange rg1 = grfBank.GetCellRange(1, colE, grfBank.Rows.Count, colE);
             //rg1.Style = grfBank.Styles["date"];
             //grfCu.Cols[colID].Visible = false;
-            int i = 1;
-            foreach (DataRow row in dt.Rows)
+            int i = 0;
+            foreach (Row row in grfEmbryo.Rows)
             {
                 try
                 {
-                    grfEmbryo[i, 0] = i;
-
-                    //if (i % 2 == 0)
-                    //    grfPtt.Rows[i].StyleNew.BackColor = color;
                     i++;
+                    if (i == 1) continue;
+                    if (i == 2) continue;
+                    row[0] = (i - 2);
                 }
                 catch (Exception ex)
                 {
@@ -1058,7 +1116,7 @@ namespace clinic_ivf.gui
             grfSperm.Cols[colBlPrice].Editor = txt;
             grfSperm.Cols[colBlRemark].Editor = txt;
 
-            grfSperm.Cols[colBlName].Width = 220;
+            grfSperm.Cols[colBlName].Width = 320;
             grfSperm.Cols[colBlInclude].Width = 120;
             grfSperm.Cols[colBlPrice].Width = 80;
             grfSperm.Cols[colBlRemark].Width = 100;
@@ -1069,23 +1127,22 @@ namespace clinic_ivf.gui
 
             grfSperm.Cols[colBlName].Caption = "Name";
             grfSperm.Cols[colBlInclude].Caption = "Include";
-            grfSperm.Cols[colBlPrice].Caption = "QTY";
+            grfSperm.Cols[colBlPrice].Caption = "Price";
             grfSperm.Cols[colBlRemark].Caption = "Remark";
 
             Color color = ColorTranslator.FromHtml(ic.iniC.grfRowColor);
             //CellRange rg1 = grfBank.GetCellRange(1, colE, grfBank.Rows.Count, colE);
             //rg1.Style = grfBank.Styles["date"];
             //grfCu.Cols[colID].Visible = false;
-            int i = 1;
-            foreach (DataRow row in dt.Rows)
+            int i = 0;
+            foreach (Row row in grfSperm.Rows)
             {
                 try
                 {
-                    grfSperm[i, 0] = i;
-                    
-                    //if (i % 2 == 0)
-                    //    grfPtt.Rows[i].StyleNew.BackColor = color;
                     i++;
+                    if (i == 1) continue;
+                    if (i == 2) continue;
+                    row[0] = (i - 2);
                 }
                 catch (Exception ex)
                 {
@@ -1138,16 +1195,18 @@ namespace clinic_ivf.gui
             grfBloodLab.DataSource = dt;
             grfBloodLab.Cols.Count = 6;
             C1TextBox txt = new C1TextBox();
+            C1TextBox num = new C1TextBox();
             C1CheckBox chk = new C1CheckBox();
             chk.Text = "Include Package";
+            num.FormatType = FormatTypeEnum.Currency;
             //C1ComboBox cboproce = new C1ComboBox();
             //ic.ivfDB.itmDB.setCboItem(cboproce);
             grfBloodLab.Cols[colBlName].Editor = txt;
             grfBloodLab.Cols[colBlInclude].Editor = txt;
-            grfBloodLab.Cols[colBlPrice].Editor = txt;
+            grfBloodLab.Cols[colBlPrice].Editor = num;
             grfBloodLab.Cols[colBlRemark].Editor = txt;
 
-            grfBloodLab.Cols[colBlName].Width = 220;
+            grfBloodLab.Cols[colBlName].Width = 330;
             grfBloodLab.Cols[colBlInclude].Width = 120;
             grfBloodLab.Cols[colBlPrice].Width = 80;
             grfBloodLab.Cols[colBlRemark].Width = 100;
@@ -1165,18 +1224,24 @@ namespace clinic_ivf.gui
             //CellRange rg1 = grfBank.GetCellRange(1, colE, grfBank.Rows.Count, colE);
             //rg1.Style = grfBank.Styles["date"];
             //grfCu.Cols[colID].Visible = false;
-            int i = 1;
-            foreach (DataRow row in dt.Rows)
+            int i = 0;
+            foreach (Row row in grfBloodLab.Rows)
             {
                 try
                 {
-                    grfBloodLab[i, 0] = i;
+                    i++;
+                    if (i == 1) continue;
+                    if (i == 2) continue;
+                    row[0] = (i-2);
+                    //decimal aaa = 0;
+                    //Decimal.TryParse(row[colBlPrice].ToString(), out aaa);
+                    //row[colBlPrice] = aaa.ToString("#,##0");
                     //grfBloodLab[i, colBlId] = row[ic.ivfDB.oLabiDB.labI.LID].ToString();
                     //grfBloodLab[i, colBlName] = row[ic.ivfDB.oLabiDB.labI.LName].ToString();
                     ////grfBloodLab[i, colBlInclude] = false;
                     //grfBloodLab[i, colBlQty] = row[ic.ivfDB.oLabiDB.labI.QTY].ToString();
                     //grfBloodLab[i, colBlRemark] = "";
-                    
+
                     //if (row[ic.ivfDB.vsDB.vs.visit_have_appointment].ToString().Equals("1"))
                     //{
                     //    String txt1 = "";
@@ -1187,7 +1252,7 @@ namespace clinic_ivf.gui
                     //}
                     //if (i % 2 == 0)
                     //    grfPtt.Rows[i].StyleNew.BackColor = color;
-                    i++;
+
                 }
                 catch (Exception ex)
                 {
