@@ -37,6 +37,17 @@ namespace clinic_ivf.objdb
             dt = conn.selectData(conn.conn, sql);
             return dt;
         }
+        public OldPackageHeader selectByPk1(String copId)
+        {
+            OldPackageHeader stf1 = new OldPackageHeader();
+            DataTable dt = new DataTable();
+            String sql = "select oPkg.*  " +
+                "From " + oPkg.table + " oPkg " +
+                "Where oPkg." + oPkg.pkField + " ='" + copId + "' ";
+            dt = conn.selectData(conn.conn, sql);
+            stf1 = setPackageHeader(dt);
+            return stf1;
+        }
         public DataTable selectAll()
         {
             DataTable dt = new DataTable();
@@ -46,6 +57,29 @@ namespace clinic_ivf.objdb
                 "Order By oPkg." + oPkg.PackageName;
             dt = conn.selectData(conn.conn, sql);
             return dt;
+        }
+        public OldPackageHeader setPackageHeader(DataTable dt)
+        {
+            OldPackageHeader ostkd1 = new OldPackageHeader();
+            if (dt.Rows.Count > 0)
+            {
+                ostkd1.PCKID = dt.Rows[0][oPkg.PCKID].ToString();
+                ostkd1.PackageName = dt.Rows[0][oPkg.PackageName].ToString();
+                ostkd1.Price = dt.Rows[0][oPkg.Price].ToString();                
+
+            }
+            else
+            {
+                setPackageHeader1(ostkd1);
+            }
+            return ostkd1;
+        }
+        private OldPackageHeader setPackageHeader1(OldPackageHeader stf1)
+        {
+            stf1.PCKID = "";
+            stf1.PackageName = "";
+            stf1.Price = "";
+            return stf1;
         }
     }
 }

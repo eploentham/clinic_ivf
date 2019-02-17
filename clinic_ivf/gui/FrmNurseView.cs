@@ -89,7 +89,7 @@ namespace clinic_ivf.gui
         {
             //throw new NotImplementedException();
             setGrfQue();
-            setGrfSearch(txtSearch.Text.Trim());
+            //setGrfSearch(txtSearch.Text.Trim());
         }
 
         private void TxtLabResultDate_KeyUp(object sender, KeyEventArgs e)
@@ -397,6 +397,7 @@ namespace clinic_ivf.gui
             ContextMenu menuGw = new ContextMenu();
             menuGw.MenuItems.Add("Receive operation", new EventHandler(ContextMenu_order_finish));
             menuGw.MenuItems.Add("&LAB request FORM A", new EventHandler(ContextMenu_LAB_req_formA_Ptt_finish));
+            menuGw.MenuItems.Add("LAB Form Day1", new EventHandler(ContextMenu_Form_day1));
             menuGw.MenuItems.Add("&Order Entry", new EventHandler(ContextMenu_Apm));
             menuGw.MenuItems.Add("&Edit Appointment", new EventHandler(ContextMenu_Apm_Finish));
             menuGw.MenuItems.Add("&Cancel Receive", new EventHandler(ContextMenu_Apm));

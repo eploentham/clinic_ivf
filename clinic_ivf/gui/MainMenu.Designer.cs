@@ -38,6 +38,7 @@
             this.menuReqLab = new System.Windows.Forms.ToolStripMenuItem();
             this.menuNurseDefault = new System.Windows.Forms.ToolStripMenuItem();
             this.menuExamiRoom = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuReqLabFormA = new System.Windows.Forms.ToolStripMenuItem();
             this.menuLab = new System.Windows.Forms.ToolStripMenuItem();
             this.menuLabAccept = new System.Windows.Forms.ToolStripMenuItem();
             this.menuLabOpu = new System.Windows.Forms.ToolStripMenuItem();
@@ -47,6 +48,7 @@
             this.menuTestForm = new System.Windows.Forms.ToolStripMenuItem();
             this.menuPharmacy = new System.Windows.Forms.ToolStripMenuItem();
             this.menuDrugPatient = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuCashier = new System.Windows.Forms.ToolStripMenuItem();
             this.menuInit = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStaff = new System.Windows.Forms.ToolStripMenuItem();
             this.menuDept = new System.Windows.Forms.ToolStripMenuItem();
@@ -59,7 +61,7 @@
             this.tC1 = new C1.Win.C1Command.C1DockingTab();
             this.PageS = new C1.Win.C1Command.C1DockingTabPage();
             this.theme1 = new C1.Win.C1Themes.C1ThemeController();
-            this.menuReqLabFormA = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuCashierDefault = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tCC1)).BeginInit();
             this.tCC1.SuspendLayout();
@@ -77,6 +79,7 @@
             this.menuNurse,
             this.menuLab,
             this.menuPharmacy,
+            this.menuCashier,
             this.menuInit});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
@@ -149,6 +152,12 @@
             this.menuExamiRoom.Size = new System.Drawing.Size(182, 22);
             this.menuExamiRoom.Text = "Examination Room";
             // 
+            // menuReqLabFormA
+            // 
+            this.menuReqLabFormA.Name = "menuReqLabFormA";
+            this.menuReqLabFormA.Size = new System.Drawing.Size(182, 22);
+            this.menuReqLabFormA.Text = "Request LAB Form A";
+            // 
             // menuLab
             // 
             this.menuLab.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -211,6 +220,14 @@
             this.menuDrugPatient.Name = "menuDrugPatient";
             this.menuDrugPatient.Size = new System.Drawing.Size(207, 22);
             this.menuDrugPatient.Text = "ข้อมูลการจ่ายยา  ตามPatient";
+            // 
+            // menuCashier
+            // 
+            this.menuCashier.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.menuCashierDefault});
+            this.menuCashier.Name = "menuCashier";
+            this.menuCashier.Size = new System.Drawing.Size(58, 20);
+            this.menuCashier.Text = "Cashier";
             // 
             // menuInit
             // 
@@ -312,11 +329,11 @@
             // 
             this.theme1.Theme = "BeigeOne";
             // 
-            // menuReqLabFormA
+            // menuCashierDefault
             // 
-            this.menuReqLabFormA.Name = "menuReqLabFormA";
-            this.menuReqLabFormA.Size = new System.Drawing.Size(182, 22);
-            this.menuReqLabFormA.Text = "Request LAB Form A";
+            this.menuCashierDefault.Name = "menuCashierDefault";
+            this.menuCashierDefault.Size = new System.Drawing.Size(180, 22);
+            this.menuCashierDefault.Text = "Cashier Screen";
             // 
             // MainMenu
             // 
@@ -375,5 +392,7 @@
         private System.Windows.Forms.ToolStripMenuItem menuPharmacy;
         private System.Windows.Forms.ToolStripMenuItem menuDrugPatient;
         private System.Windows.Forms.ToolStripMenuItem menuReqLabFormA;
+        private System.Windows.Forms.ToolStripMenuItem menuCashier;
+        private System.Windows.Forms.ToolStripMenuItem menuCashierDefault;
     }
 }

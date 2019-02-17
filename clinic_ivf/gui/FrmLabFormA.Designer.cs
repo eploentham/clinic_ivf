@@ -87,7 +87,7 @@
             this.chkSpermFreezing = new C1.Win.C1Input.C1CheckBox();
             this.chkSpermAnalysis = new C1.Win.C1Input.C1CheckBox();
             this.gbETFET = new System.Windows.Forms.GroupBox();
-            this.c1Button2 = new C1.Win.C1Input.C1Button();
+            this.btnPrintFet = new C1.Win.C1Input.C1Button();
             this.txtEmbryoTranferTime = new C1.Win.C1Input.C1TextBox();
             this.label34 = new System.Windows.Forms.Label();
             this.chkAssistHatching = new C1.Win.C1Input.C1CheckBox();
@@ -119,7 +119,7 @@
             this.txtEmbryoTranferDate = new C1.Win.C1Input.C1DateEdit();
             this.label14 = new System.Windows.Forms.Label();
             this.gbOPU = new System.Windows.Forms.GroupBox();
-            this.c1Button1 = new C1.Win.C1Input.C1Button();
+            this.btnPrintOPU = new C1.Win.C1Input.C1Button();
             this.txtFrozenSpermDate = new C1.Win.C1Input.C1DateEdit();
             this.lbMessage = new System.Windows.Forms.Label();
             this.lbMessage1 = new System.Windows.Forms.Label();
@@ -218,7 +218,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.chkSpermFreezing)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkSpermAnalysis)).BeginInit();
             this.gbETFET.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.c1Button2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnPrintFet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtEmbryoTranferTime)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkAssistHatching)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkEmbryoGlue)).BeginInit();
@@ -235,7 +235,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtFETNo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtEmbryoTranferDate)).BeginInit();
             this.gbOPU.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.c1Button1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnPrintOPU)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtFrozenSpermDate)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkOpuTimeModi)).BeginInit();
             this.panel3.SuspendLayout();
@@ -1270,7 +1270,7 @@
             // gbETFET
             // 
             this.gbETFET.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.gbETFET.Controls.Add(this.c1Button2);
+            this.gbETFET.Controls.Add(this.btnPrintFet);
             this.gbETFET.Controls.Add(this.txtEmbryoTranferTime);
             this.gbETFET.Controls.Add(this.label34);
             this.gbETFET.Controls.Add(this.chkAssistHatching);
@@ -1290,19 +1290,19 @@
             this.gbETFET.Text = "ET FET";
             this.theme1.SetTheme(this.gbETFET, "(default)");
             // 
-            // c1Button2
+            // btnPrintFet
             // 
-            this.c1Button2.Image = global::clinic_ivf.Properties.Resources.printer_orange24;
-            this.c1Button2.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.c1Button2.Location = new System.Drawing.Point(924, 22);
-            this.c1Button2.Name = "c1Button2";
-            this.c1Button2.Size = new System.Drawing.Size(97, 35);
-            this.c1Button2.TabIndex = 746;
-            this.c1Button2.Text = "Print FET";
-            this.c1Button2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.theme1.SetTheme(this.c1Button2, "(default)");
-            this.c1Button2.UseVisualStyleBackColor = true;
-            this.c1Button2.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            this.btnPrintFet.Image = global::clinic_ivf.Properties.Resources.printer_orange24;
+            this.btnPrintFet.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnPrintFet.Location = new System.Drawing.Point(924, 22);
+            this.btnPrintFet.Name = "btnPrintFet";
+            this.btnPrintFet.Size = new System.Drawing.Size(97, 35);
+            this.btnPrintFet.TabIndex = 746;
+            this.btnPrintFet.Text = "Print FET";
+            this.btnPrintFet.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.theme1.SetTheme(this.btnPrintFet, "(default)");
+            this.btnPrintFet.UseVisualStyleBackColor = true;
+            this.btnPrintFet.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
             // 
             // txtEmbryoTranferTime
             // 
@@ -1878,7 +1878,7 @@
             // gbOPU
             // 
             this.gbOPU.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.gbOPU.Controls.Add(this.c1Button1);
+            this.gbOPU.Controls.Add(this.btnPrintOPU);
             this.gbOPU.Controls.Add(this.txtFrozenSpermDate);
             this.gbOPU.Controls.Add(this.lbMessage);
             this.gbOPU.Controls.Add(this.lbMessage1);
@@ -1916,19 +1916,19 @@
             this.gbOPU.Text = "OPU";
             this.theme1.SetTheme(this.gbOPU, "(default)");
             // 
-            // c1Button1
+            // btnPrintOPU
             // 
-            this.c1Button1.Image = global::clinic_ivf.Properties.Resources.printer_orange24;
-            this.c1Button1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.c1Button1.Location = new System.Drawing.Point(925, 137);
-            this.c1Button1.Name = "c1Button1";
-            this.c1Button1.Size = new System.Drawing.Size(97, 35);
-            this.c1Button1.TabIndex = 745;
-            this.c1Button1.Text = "Print OPU";
-            this.c1Button1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.theme1.SetTheme(this.c1Button1, "(default)");
-            this.c1Button1.UseVisualStyleBackColor = true;
-            this.c1Button1.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            this.btnPrintOPU.Image = global::clinic_ivf.Properties.Resources.printer_orange24;
+            this.btnPrintOPU.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnPrintOPU.Location = new System.Drawing.Point(925, 137);
+            this.btnPrintOPU.Name = "btnPrintOPU";
+            this.btnPrintOPU.Size = new System.Drawing.Size(97, 35);
+            this.btnPrintOPU.TabIndex = 745;
+            this.btnPrintOPU.Text = "Print OPU";
+            this.btnPrintOPU.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.theme1.SetTheme(this.btnPrintOPU, "(default)");
+            this.btnPrintOPU.UseVisualStyleBackColor = true;
+            this.btnPrintOPU.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
             // 
             // txtFrozenSpermDate
             // 
@@ -3033,7 +3033,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.chkSpermAnalysis)).EndInit();
             this.gbETFET.ResumeLayout(false);
             this.gbETFET.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.c1Button2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnPrintFet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtEmbryoTranferTime)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkAssistHatching)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkEmbryoGlue)).EndInit();
@@ -3054,7 +3054,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtEmbryoTranferDate)).EndInit();
             this.gbOPU.ResumeLayout(false);
             this.gbOPU.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.c1Button1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnPrintOPU)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtFrozenSpermDate)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkOpuTimeModi)).EndInit();
             this.panel3.ResumeLayout(false);
@@ -3247,7 +3247,7 @@
         private System.Windows.Forms.Label label36;
         private C1.Win.C1Input.C1ComboBox cboFetDay;
         private C1.Win.C1Input.C1DateEdit txtFrozenSpermDate;
-        private C1.Win.C1Input.C1Button c1Button2;
-        private C1.Win.C1Input.C1Button c1Button1;
+        private C1.Win.C1Input.C1Button btnPrintFet;
+        private C1.Win.C1Input.C1Button btnPrintOPU;
     }
 }

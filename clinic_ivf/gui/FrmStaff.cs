@@ -624,6 +624,7 @@ namespace clinic_ivf.gui
             chkPharmacy.Checked = stf.status_module_pharmacy.Equals("1") ? true : false;
             chkLab.Checked = stf.status_module_lab.Equals("1") ? true : false;
             btnPassword.Show();
+            chkCashier.Checked = stf.status_module_cashier.Equals("1") ? true : false;
         }
         private void setStaff()
         {
@@ -652,7 +653,7 @@ namespace clinic_ivf.gui
             stf.status_expense_pay = chkExpnP.Checked ? "1" : "0";
             stf.status_module_pharmacy = chkPharmacy.Checked ? "1" : "0";
             stf.status_module_lab = chkLab.Checked ? "1" : "0";
-            //stf.logo = txtLogo.Value.ToString();
+            stf.status_module_cashier = chkCashier.Checked ? "1" : "0";
             //txtCopCode.Value = xC.ivfDB.copDB.cop.comp_id;
         }
         //private void setEnable(Boolean flag)

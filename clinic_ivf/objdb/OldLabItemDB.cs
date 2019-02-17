@@ -59,6 +59,17 @@ namespace clinic_ivf.objdb
             dt = conn.selectData(conn.conn, sql);
             return dt;
         }
+        public OldLabItem selectByPk1(String pttId)
+        {
+            OldLabItem labi1 = new OldLabItem();
+            DataTable dt = new DataTable();
+            String sql = "select labI.* " +
+                "From " + labI.table + " labI " +
+                "Where labI." + labI.pkField + " ='" + pttId + "' ";
+            dt = conn.selectData(conn.conn, sql);
+            labi1 = setLabItem(dt);
+            return labi1;
+        }
         public DataTable selectByBloodLab1()
         {
             DataTable dt = new DataTable();
@@ -158,6 +169,73 @@ namespace clinic_ivf.objdb
                 "Order By labI." + labI.LName;
             dt = conn.selectData(conn.conn, sql);
             return dt;
+        }
+        public OldLabItem setLabItem(DataTable dt)
+        {
+            OldLabItem vsold1 = new OldLabItem();
+            if (dt.Rows.Count > 0)
+            {
+                vsold1.LID = dt.Rows[0][labI.LID].ToString();
+                vsold1.LGID = dt.Rows[0][labI.LGID].ToString();
+                vsold1.LName = dt.Rows[0][labI.LName].ToString();
+                vsold1.WorkTime = dt.Rows[0][labI.WorkTime].ToString();
+                vsold1.Price = dt.Rows[0][labI.Price].ToString();
+                vsold1.SP1N = dt.Rows[0][labI.SP1N].ToString();
+                vsold1.SP2N = dt.Rows[0][labI.SP2N].ToString();
+                vsold1.SP3N = dt.Rows[0][labI.SP3N].ToString();
+                vsold1.SP4N = dt.Rows[0][labI.SP4N].ToString();
+                vsold1.SP5N = dt.Rows[0][labI.SP5N].ToString();
+                vsold1.SP6N = dt.Rows[0][labI.SP6N].ToString();
+                vsold1.SP7N = dt.Rows[0][labI.SP7N].ToString();
+                vsold1.SP1T = dt.Rows[0][labI.SP1T].ToString();
+                vsold1.SP2T = dt.Rows[0][labI.SP2T].ToString();
+                vsold1.SP3T = dt.Rows[0][labI.SP3T].ToString();
+                vsold1.SP4T = dt.Rows[0][labI.SP4T].ToString();
+                vsold1.SP5T = dt.Rows[0][labI.SP5T].ToString();
+                vsold1.SP6T = dt.Rows[0][labI.SP6T].ToString();
+                vsold1.SP7T = dt.Rows[0][labI.SP7T].ToString();
+                vsold1.SubItem = dt.Rows[0][labI.SubItem].ToString();
+                vsold1.WorkerGroup1 = dt.Rows[0][labI.WorkerGroup1].ToString();
+                vsold1.WorkerGroup2 = dt.Rows[0][labI.WorkerGroup2].ToString();
+                vsold1.WorkerGroup3 = dt.Rows[0][labI.WorkerGroup3].ToString();
+                vsold1.WorkerGroup4 = dt.Rows[0][labI.WorkerGroup4].ToString();
+                vsold1.QTY = dt.Rows[0][labI.QTY].ToString();
+                //vsold1.form_a_id = dt.Rows[0][labI.form_a_id].ToString();
+            }
+            else
+            {
+                setLabItem1(vsold1);
+            }
+            return vsold1;
+        }
+        private OldLabItem setLabItem1(OldLabItem stf1)
+        {
+            stf1.LID = "";
+            stf1.LGID = "";
+            stf1.LName = "";
+            stf1.WorkTime = "";
+            stf1.Price = "";
+            stf1.SP1N = "";
+            stf1.SP1T = "";
+            stf1.SP2N = "";
+            stf1.SP2T = "";
+            stf1.SP3N = "";
+            stf1.SP3T = "";
+            stf1.SP4N = "";
+            stf1.SP4T = "";
+            stf1.SP5N = "";
+            stf1.SP5T = "";
+            stf1.SP6N = "";
+            stf1.SP6T = "";
+            stf1.SP7N = "";
+            stf1.SP7T = "";
+            stf1.SubItem = "";
+            stf1.WorkerGroup1 = "";
+            stf1.WorkerGroup2 = "";
+            stf1.WorkerGroup3 = "";
+            stf1.WorkerGroup4 = "";
+            stf1.QTY = "";
+            return stf1;
         }
     }
 }

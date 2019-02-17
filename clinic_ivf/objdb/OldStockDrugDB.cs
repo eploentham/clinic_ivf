@@ -81,7 +81,7 @@ namespace clinic_ivf.objdb
         public DataTable selectBySockDrug1()
         {
             DataTable dt = new DataTable();
-            String sql = "select ostkD." + ostkD.DUID + ",ostkD." + ostkD.DUName + ",ostkD." + ostkD.Price + " " +
+            String sql = "select ostkD." + ostkD.DUID + ",ostkD." + ostkD.DUName + ",ostkD." + ostkD.Price + ", '' as qty " +
                 "From " + ostkD.table + " ostkD " +
                 "Where active = '1' " +
                 "Order By ostkD." + ostkD.DUName;

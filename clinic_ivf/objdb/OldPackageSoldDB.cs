@@ -1,6 +1,7 @@
 ﻿using clinic_ivf.object1;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -91,7 +92,7 @@ namespace clinic_ivf.objdb
                 "," + opkgs.PCKID + "= '" + p.PCKID + "'" +
                 "," + opkgs.PackageName + "= '" + p.PackageName.Replace("'", "''") + "'" +
                 "," + opkgs.Price + "= '" + p.Price.Replace("'", "''") + "'" +
-                "," + opkgs.Date + "= '" + p.Date + "'" +
+                "," + opkgs.Date + "= now()" +
                 "," + opkgs.PaymentTimes + "= '" + p.PaymentTimes + "'" +
                 "," + opkgs.Status + "= '" + p.Status + "'" +
                 "," + opkgs.Payment1 + "= '" + p.Payment1 + "'" +
@@ -158,6 +159,89 @@ namespace clinic_ivf.objdb
             }
 
             return re;
+        }
+        public DataTable selectByPk(String pttId)
+        {
+            DataTable dt = new DataTable();
+            String sql = "select opkgs.* " +
+                "From " + opkgs.table + " opkgs " +
+                "Where opkgs." + opkgs.pkField + " ='" + pttId + "' ";
+            dt = conn.selectData(conn.conn, sql);
+            return dt;
+        }
+        public OldPackageSold selectByPk1(String pttId)
+        {
+            OldPackageSold labi1 = new OldPackageSold();
+            DataTable dt = new DataTable();
+            String sql = "select opkgs.* " +
+                "From " + opkgs.table + " opkgs " +
+                "Where opkgs." + opkgs.pkField + " ='" + pttId + "' ";
+            dt = conn.selectData(conn.conn, sql);
+            labi1 = setLabItem(dt);
+            return labi1;
+        }
+        public DataTable selectByVN(String pttId)
+        {
+            DataTable dt = new DataTable();
+            String sql = "select opkgs.* " +
+                "From " + opkgs.table + " opkgs " +
+                "Where opkgs." + opkgs.VN + " ='" + pttId + "' ";
+            dt = conn.selectData(conn.conn, sql);
+            return dt;
+        }
+        public OldPackageSold setLabItem(DataTable dt)
+        {
+            OldPackageSold opkgs1 = new OldPackageSold();
+            if (dt.Rows.Count > 0)
+            {
+                opkgs1.PCKSID = dt.Rows[0][opkgs.PCKSID].ToString();
+                opkgs1.PID = dt.Rows[0][opkgs.PID].ToString();
+                opkgs1.SellThruID = dt.Rows[0][opkgs.SellThruID].ToString();
+                opkgs1.PCKID = dt.Rows[0][opkgs.PCKID].ToString();
+                opkgs1.PackageName = dt.Rows[0][opkgs.PackageName].ToString();
+                opkgs1.Price = dt.Rows[0][opkgs.Price].ToString();
+                opkgs1.Date = dt.Rows[0][opkgs.Date].ToString();
+                opkgs1.PaymentTimes = dt.Rows[0][opkgs.PaymentTimes].ToString();
+                opkgs1.Status = dt.Rows[0][opkgs.Status].ToString();
+                opkgs1.Payment1 = dt.Rows[0][opkgs.Payment1].ToString();
+                opkgs1.Payment2 = dt.Rows[0][opkgs.Payment2].ToString();
+                opkgs1.Payment3 = dt.Rows[0][opkgs.Payment3].ToString();
+                opkgs1.Payment4 = dt.Rows[0][opkgs.Payment4].ToString();
+                opkgs1.P1BDetailID = dt.Rows[0][opkgs.P1BDetailID].ToString();
+                opkgs1.P2BDetailID = dt.Rows[0][opkgs.P2BDetailID].ToString();
+                opkgs1.P3BDetailID = dt.Rows[0][opkgs.P3BDetailID].ToString();
+                opkgs1.P4BDetailID = dt.Rows[0][opkgs.P4BDetailID].ToString();
+                opkgs1.VN = dt.Rows[0][opkgs.VN].ToString();
+                
+            }
+            else
+            {
+                setLabItem1(opkgs1);
+            }
+            return opkgs1;
+        }
+        private OldPackageSold setLabItem1(OldPackageSold stf1)
+        {
+            stf1.PCKSID = "";
+            stf1.PID = "";
+            stf1.SellThruID = "";
+            stf1.PCKID = "";
+            stf1.PackageName = "";
+            stf1.Price = "";
+            stf1.Date = "";
+            stf1.PaymentTimes = "";
+            stf1.Status = "";
+            stf1.Payment1 = "";
+            stf1.Payment2 = "";
+            stf1.Payment3 = "";
+            stf1.Payment4 = "";
+            stf1.P1BDetailID = "";
+            stf1.P2BDetailID = "";
+            stf1.P3BDetailID = "";
+            stf1.P4BDetailID = "";
+            stf1.VN = "";
+            
+            return stf1;
         }
     }
 }

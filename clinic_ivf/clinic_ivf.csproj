@@ -125,6 +125,18 @@
     <Compile Include="gui\FrmAppointmentDonorAdd.Designer.cs">
       <DependentUpon>FrmAppointmentDonorAdd.cs</DependentUpon>
     </Compile>
+    <Compile Include="gui\FrmCashierAdd.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="gui\FrmCashierAdd.Designer.cs">
+      <DependentUpon>FrmCashierAdd.cs</DependentUpon>
+    </Compile>
+    <Compile Include="gui\FrmCashierView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="gui\FrmCashierView.Designer.cs">
+      <DependentUpon>FrmCashierView.cs</DependentUpon>
+    </Compile>
     <Compile Include="gui\FrmConvertData.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -396,6 +408,8 @@
     <Compile Include="objdb\FRelationDB.cs" />
     <Compile Include="objdb\FReligionDB.cs" />
     <Compile Include="objdb\FSexDB.cs" />
+    <Compile Include="objdb\OldBilldetailDB.cs" />
+    <Compile Include="objdb\OldBillheaderDB.cs" />
     <Compile Include="objdb\OldJobLabDB.cs" />
     <Compile Include="objdb\OldJobPxDB.cs" />
     <Compile Include="objdb\JobPxDetailDB.cs" />
@@ -416,6 +430,7 @@
     <Compile Include="objdb\OldSpecialItemDB.cs" />
     <Compile Include="objdb\OldStockDrugDB.cs" />
     <Compile Include="objdb\OldPackageDepositDetailDB.cs" />
+    <Compile Include="objdb\OldPackageSellThruDB.cs" />
     <Compile Include="objdb\PatientAppointmentDB.cs" />
     <Compile Include="objdb\PatientAppointmentTextDB.cs" />
     <Compile Include="object1\CellNoteManager.cs" />
@@ -423,6 +438,10 @@
     <Compile Include="object1\DocGroupSubScan.cs" />
     <Compile Include="object1\DocScan.cs" />
     <Compile Include="object1\FDocType.cs" />
+    <Compile Include="object1\FilterRowUnBound.cs" />
+    <Compile Include="object1\OldBilldetail.cs" />
+    <Compile Include="object1\OldBillheader.cs" />
+    <Compile Include="object1\OldCreditCardAccount.cs" />
     <Compile Include="object1\OldGroupDrugDetail.cs" />
     <Compile Include="object1\LabFet.cs" />
     <Compile Include="object1\LabFormA.cs" />
@@ -438,6 +457,7 @@
     <Compile Include="object1\OldStockDrug.cs" />
     <Compile Include="object1\OldPackageDeposit.cs" />
     <Compile Include="object1\PackageDepositDetail.cs" />
+    <Compile Include="object1\OldPackageSellThru.cs" />
     <Compile Include="object1\PatientAppointment.cs" />
     <Compile Include="objdb\PatientImageDB.cs" />
     <Compile Include="objdb\OldPatientDB.cs" />
@@ -583,6 +603,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="gui\FrmAppointmentDonorAdd.resx">
       <DependentUpon>FrmAppointmentDonorAdd.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="gui\FrmCashierAdd.resx">
+      <DependentUpon>FrmCashierAdd.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="gui\FrmCashierView.resx">
+      <DependentUpon>FrmCashierView.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="gui\FrmConvertData.resx">
       <DependentUpon>FrmConvertData.cs</DependentUpon>

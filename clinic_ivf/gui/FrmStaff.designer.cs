@@ -91,6 +91,7 @@
             this.txtID = new C1.Win.C1Input.C1TextBox();
             this.txtStfCode = new C1.Win.C1Input.C1TextBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.chkCashier = new C1.Win.C1Input.C1CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.theme1)).BeginInit();
             this.sB.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -136,6 +137,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.btnSave)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtID)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtStfCode)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chkCashier)).BeginInit();
             this.SuspendLayout();
             // 
             // theme1
@@ -369,6 +371,7 @@
             // panelModule
             // 
             this.panelModule.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(87)))), ((int)(((byte)(87)))), ((int)(((byte)(87)))));
+            this.panelModule.Controls.Add(this.chkCashier);
             this.panelModule.Controls.Add(this.chkLab);
             this.panelModule.Controls.Add(this.chkPharmacy);
             this.panelModule.Controls.Add(this.chkExpnP);
@@ -1089,6 +1092,24 @@
             this.label1.Text = "รหัส :";
             this.theme1.SetTheme(this.label1, "(default)");
             // 
+            // chkCashier
+            // 
+            this.chkCashier.BackColor = System.Drawing.Color.Transparent;
+            this.chkCashier.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(71)))), ((int)(((byte)(71)))));
+            this.chkCashier.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.chkCashier.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.chkCashier.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
+            this.chkCashier.Location = new System.Drawing.Point(521, 40);
+            this.chkCashier.Name = "chkCashier";
+            this.chkCashier.Padding = new System.Windows.Forms.Padding(4, 1, 1, 1);
+            this.chkCashier.Size = new System.Drawing.Size(93, 24);
+            this.chkCashier.TabIndex = 263;
+            this.chkCashier.Text = "Module Cashier";
+            this.theme1.SetTheme(this.chkCashier, "(default)");
+            this.chkCashier.UseVisualStyleBackColor = true;
+            this.chkCashier.Value = null;
+            this.chkCashier.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            // 
             // FrmStaff
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1149,6 +1170,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.btnSave)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtID)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtStfCode)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chkCashier)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1219,5 +1241,6 @@
         private C1.Win.C1Input.C1CheckBox chkPharmacy;
         private C1.Win.C1Input.C1ComboBox cboPosi;
         private C1.Win.C1Input.C1ComboBox cboDept;
+        private C1.Win.C1Input.C1CheckBox chkCashier;
     }
 }

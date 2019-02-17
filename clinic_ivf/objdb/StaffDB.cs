@@ -67,6 +67,7 @@ namespace clinic_ivf.objdb
             stf.password_confirm = "password_confirm";
             stf.status_module_pharmacy = "status_module_pharmacy";
             stf.status_module_lab = "status_module_lab";
+            stf.status_module_cashier = "status_module_cashier";
 
             stf.table = "b_staff";
             stf.pkField = "staff_id";
@@ -169,7 +170,7 @@ namespace clinic_ivf.objdb
             p.status_expense_pay = p.status_expense_pay == null ? "0" : p.status_expense_pay;
             p.status_module_pharmacy = p.status_module_pharmacy == null ? "0" : p.status_module_pharmacy;
             p.status_module_lab = p.status_module_lab == null ? "0" : p.status_module_lab;
-            //p.user_cancel = p.user_cancel == null ? "" : p.user_cancel;
+            p.status_module_cashier = p.status_module_cashier == null ? "0" : p.status_module_cashier;
         }
         public String insert(Staff p, String userId)
         {
@@ -192,7 +193,8 @@ namespace clinic_ivf.objdb
                 stf.status_admin + ", " + stf.status_module_reception + "," + stf.status_module_nurse + "," +
                 stf.status_module_doctor + "," +
                 stf.status_expense_appv + "," + stf.status_expense_draw + "," + stf.status_expense_pay + ", " +
-                stf.status_module_pharmacy + "," + stf.status_module_lab + ","  + stf.dept_id + " " +
+                stf.status_module_pharmacy + "," + stf.status_module_lab + ","  + stf.dept_id + "," +
+                stf.status_module_cashier + "," +
                 ") " +
                 "Values ('" + p.staff_code + "','" + p.username + "','" + p.prefix_id + "'," +
                 "'" + p.staff_fname_t.Replace("'", "''") + "','" + p.staff_fname_e.Replace("'", "''") + "','" + p.password1 + "'," +
@@ -206,7 +208,8 @@ namespace clinic_ivf.objdb
                 "'" + p.status_admin + "','" + p.status_module_reception + "','" + p.status_module_nurse.Replace("'", "''") + "'," +
                 "'" + p.status_module_doctor.Replace("'", "''") + "'," +
                 "'" + p.status_expense_appv + "','" + p.status_expense_draw + "','" + p.status_expense_pay.Replace("'", "''") + "'," +
-                "'" + p.status_module_pharmacy + "','" + p.status_module_lab + "','" + p.dept_id + "' " +
+                "'" + p.status_module_pharmacy + "','" + p.status_module_lab + "','" + p.dept_id + "'," +
+                "'" + p.status_module_cashier + "','" +
                 ")";
             try
             {
@@ -258,7 +261,7 @@ namespace clinic_ivf.objdb
                 "," + stf.status_expense_pay + " = '" + p.status_expense_pay.Replace("'", "''") + "' " +
                 "," + stf.status_module_pharmacy + " = '" + p.status_module_pharmacy.Replace("'", "''") + "' " +
                 "," + stf.status_module_lab + " = '" + p.status_module_lab.Replace("'", "''") + "' " +
-                //"," + stf.posi_id + " = '" + p.status_module_lab.Replace("'", "''") + "' " +
+                "," + stf.status_module_cashier + " = '" + p.status_module_cashier.Replace("'", "''") + "' " +
                 "Where " + stf.pkField + "='" + p.staff_id + "'"
                 ;
 
@@ -573,7 +576,7 @@ namespace clinic_ivf.objdb
 
                 stf1.status_module_pharmacy = dt.Rows[0][stf.status_module_pharmacy] != null ? dt.Rows[0][stf.status_module_pharmacy].ToString() : "0";
                 stf1.status_module_lab = dt.Rows[0][stf.status_module_lab] != null ? dt.Rows[0][stf.status_module_lab].ToString() : "0";
-                //stf1.prefix_name_t = "";
+                stf1.status_module_cashier = dt.Rows[0][stf.status_module_cashier] != null ? dt.Rows[0][stf.status_module_cashier].ToString() : "0";
             }
             else
             {
@@ -622,6 +625,7 @@ namespace clinic_ivf.objdb
             stf1.password_confirm = "";
             stf1.status_module_pharmacy = "0";
             stf1.status_module_lab = "0";
+            stf1.status_module_cashier = "0";
             return stf1;
         }
         public String getStaffNameBylStf(String selected)

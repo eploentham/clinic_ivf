@@ -41,6 +41,71 @@ namespace clinic_ivf.objdb
             ojsd.table = "JobSpecialDetail";
             ojsd.pkField = "ID";
         }
+        private void chkNull(OldJobSpecialDetail p)
+        {
+            long chk = 0;
+            decimal chk1 = 0;
+            
+            p.SName = p.SName == null ? "" : p.SName;
+            //p.Extra = p.Extra == null ? "0" : p.Extra;
+            p.Status = p.Status == null ? "" : p.Status;
+            p.PIDS = p.PIDS == null ? "" : p.PIDS;
+            p.status_req_accept = p.status_req_accept == null ? "" : p.status_req_accept;            
+
+            p.SID = long.TryParse(p.SID, out chk) ? chk.ToString() : "0";
+            p.VN = long.TryParse(p.VN, out chk) ? chk.ToString() : "0";
+            p.PID = long.TryParse(p.PID, out chk) ? chk.ToString() : "0";
+            p.PIDS = long.TryParse(p.PIDS, out chk) ? chk.ToString() : "0";
+            p.W1UID = long.TryParse(p.W1UID, out chk) ? chk.ToString() : "0";
+            p.W2UID = long.TryParse(p.W2UID, out chk) ? chk.ToString() : "0";
+            p.W3UID = long.TryParse(p.W3UID, out chk) ? chk.ToString() : "0";
+            p.W4UID = long.TryParse(p.W4UID, out chk) ? chk.ToString() : "0";
+            p.req_id = long.TryParse(p.req_id, out chk) ? chk.ToString() : "0";
+            p.Extra = long.TryParse(p.Extra, out chk) ? chk.ToString() : "0";
+
+
+            p.Price = decimal.TryParse(p.Price, out chk1) ? chk.ToString() : "0";
+            //p.PIDS = decimal.TryParse(p.PIDS, out chk1) ? chk.ToString() : "0";
+        }
+        public String insert(OldJobSpecialDetail p, String userId)
+        {
+            String re = "";
+            String sql = "";
+            p.active = "1";
+            //p.ssdata_id = "";
+            int chk = 0;
+
+            chkNull(p);
+            //lbReq.form_a_id = "form_a_id";
+            //p.req_code = genReqDoc();
+            sql = "Insert Into " + ojsd.table + " Set " +
+                " " + ojsd.VN + " = '" + p.VN + "'" +
+                "," + ojsd.SID + "= '" + p.SID + "'" +
+                "," + ojsd.SName + "= '" + p.SName.Replace("'", "''") + "'" +
+                "," + ojsd.Extra + "= '" + p.Extra + "'" +
+                "," + ojsd.Price + "= '" + p.Price + "'" +
+                "," + ojsd.Status + "= '" + p.Status + "'" +
+                "," + ojsd.PID + "= '" + p.PID + "'" +
+                "," + ojsd.PIDS + "= '" + p.PIDS.Replace("'", "''") + "'" +
+                "," + ojsd.W1UID + "= '" + p.W1UID.Replace("'", "''") + "'" +
+                "," + ojsd.W2UID + "= '" + p.W2UID.Replace("'", "''") + "'" +
+                "," + ojsd.W3UID + "= '" + p.W3UID.Replace("'", "''") + "'" +
+                "," + ojsd.W4UID + "= '" + p.W4UID.Replace("'", "''") + "'" +
+                "," + ojsd.FileName + "= '" + p.FileName.Replace("'", "''") + "'" +
+                "," + ojsd.status_req_accept + "= '" + p.status_req_accept.Replace("'", "''") + "'" +
+                "," + ojsd.req_id + "= '" + p.req_id.Replace("'", "''") + "'" +
+                "";
+            try
+            {
+                re = conn.ExecuteNonQuery(conn.conn, sql);
+            }
+            catch (Exception ex)
+            {
+                sql = ex.Message + " " + ex.InnerException;
+            }
+
+            return re;
+        }
         public DataTable selectByPk(String copId)
         {
             DataTable dt = new DataTable();

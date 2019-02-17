@@ -34,6 +34,26 @@ namespace clinic_ivf.objdb
             sitm.table = "SpecialItem";
             sitm.pkField = "SID";
         }
+        public DataTable selectByPk(String pttId)
+        {
+            DataTable dt = new DataTable();
+            String sql = "select sitm.* " +
+                "From " + sitm.table + " sitm " +
+                "Where sitm." + sitm.pkField + " ='" + pttId + "' ";
+            dt = conn.selectData(conn.conn, sql);
+            return dt;
+        }
+        public OldSpecialItem selectByPk1(String pttId)
+        {
+            OldSpecialItem labi1 = new OldSpecialItem();
+            DataTable dt = new DataTable();
+            String sql = "select sitm.* " +
+                "From " + sitm.table + " sitm " +
+                "Where sitm." + sitm.pkField + " ='" + pttId + "' ";
+            dt = conn.selectData(conn.conn, sql);
+            labi1 = setSpecialItem(dt);
+            return labi1;
+        }
         public DataTable selectBySpecialItem1()
         {
             DataTable dt = new DataTable();
@@ -43,6 +63,42 @@ namespace clinic_ivf.objdb
                 "Order By sitm." + sitm.SName;
             dt = conn.selectData(conn.conn, sql);
             return dt;
+        }
+        public OldSpecialItem setSpecialItem(DataTable dt)
+        {
+            OldSpecialItem sitm1 = new OldSpecialItem();
+            if (dt.Rows.Count > 0)
+            {
+                sitm1.SID = dt.Rows[0][sitm.SID].ToString();
+                sitm1.SName = dt.Rows[0][sitm.SName].ToString();
+                sitm1.Price = dt.Rows[0][sitm.Price].ToString();
+                sitm1.W1GID = dt.Rows[0][sitm.W1GID].ToString();
+                sitm1.W2GID = dt.Rows[0][sitm.W2GID].ToString();
+                sitm1.W3GID = dt.Rows[0][sitm.W3GID].ToString();
+                sitm1.W4GID = dt.Rows[0][sitm.W4GID].ToString();
+                sitm1.isActive = dt.Rows[0][sitm.isActive].ToString();
+                sitm1.BillGroupID = dt.Rows[0][sitm.BillGroupID].ToString();
+                
+            }
+            else
+            {
+                setSpecialItem1(sitm1);
+            }
+            return sitm1;
+        }
+        private OldSpecialItem setSpecialItem1(OldSpecialItem stf1)
+        {
+            stf1.SID = "";
+            stf1.SName = "";
+            stf1.Price = "";
+            stf1.W1GID = "";
+            stf1.W2GID = "";
+            stf1.W3GID = "";
+            stf1.W4GID = "";
+            stf1.isActive = "";
+            stf1.BillGroupID = "";
+            
+            return stf1;
         }
     }
 }

@@ -70,8 +70,10 @@ namespace clinic_ivf.gui
             stt = new C1SuperTooltip();
             sep = new C1SuperErrorProvider();
 
+            ic.ivfDB.opkgstDB.setCboSex(cboSellThruID, "");
             tabOrder.Click += TabOrder_Click;
             btnPkgOrder.Click += BtnPkgOrder_Click;
+            btnRxSetOrder.Click += BtnRxSetOrder_Click;
 
             setControl(vsid);
             //btnNew.Click += BtnNew_Click;
@@ -100,7 +102,7 @@ namespace clinic_ivf.gui
             //setGrfPtt("");
         }
 
-        private void BtnPkgOrder_Click(object sender, EventArgs e)
+        private void BtnRxSetOrder_Click(object sender, EventArgs e)
         {
             //throw new NotImplementedException();
             if (grfRxSetD.Rows.Count > 0)
@@ -110,6 +112,32 @@ namespace clinic_ivf.gui
                 ic.ivfDB.PxSetAdd(gdid, txtIdOld.Text, txtHn.Text, txtVnOld.Text, "");
                 setGrfOrder(txtVnOld.Text);
             }
+        }
+
+        private void BtnPkgOrder_Click(object sender, EventArgs e)
+        {
+            //throw new NotImplementedException();
+            OldPackageSold opkgs = new OldPackageSold();
+            opkgs.PCKSID = "";
+            opkgs.PID = txtHn.Text;
+            opkgs.SellThruID = cboSellThruID.SelectedItem == null ? "" : ((ComboBoxItem)cboSellThruID.SelectedItem).Value;
+            opkgs.PCKID = txtPkgId.Text;
+            opkgs.PackageName = txtPkgName.Text;
+            opkgs.Price = txtPrice.Text;
+            opkgs.Date = "";
+            opkgs.PaymentTimes = "";
+            opkgs.Status = "1";
+            opkgs.Payment1 = txtPayment1.Text;
+            opkgs.Payment2 = txtPayment2.Text;
+            opkgs.Payment3 = txtPayment3.Text;
+            opkgs.Payment4 = txtPayment4.Text;
+            opkgs.P1BDetailID = "";
+            opkgs.P2BDetailID = "";
+            opkgs.P3BDetailID = "";
+            opkgs.P4BDetailID = "";
+            opkgs.VN = txtVnOld.Text;
+            ic.ivfDB.PackageAdd(opkgs);
+            setGrfOrder(txtVn.Text);
         }
 
         private void TabOrder_Click(object sender, EventArgs e)
@@ -176,7 +204,7 @@ namespace clinic_ivf.gui
             //grfExpnC.CellButtonClick += new C1.Win.C1FlexGrid.RowColEventHandler(this.grfDept_CellButtonClick);
             //grfExpnC.CellChanged += new C1.Win.C1FlexGrid.RowColEventHandler(this.grfDept_CellChanged);
             ContextMenu menuGw = new ContextMenu();
-            //menuGw.MenuItems.Add("&แก้ไข รายการเบิก", new EventHandler(ContextMenu_edit));
+            menuGw.MenuItems.Add("ยกเลิกรายการ", new EventHandler(ContextMenu_or_void));
             //menuGw.MenuItems.Add("&แก้ไข", new EventHandler(ContextMenu_Gw_Edit));
             //menuGw.MenuItems.Add("&ยกเลิก", new EventHandler(ContextMenu_Gw_Cancel));
             grfOrder.ContextMenu = menuGw;
@@ -185,18 +213,26 @@ namespace clinic_ivf.gui
             theme1.SetTheme(grfOrder, "GreenHouse");
 
         }
+        private void ContextMenu_or_void(object sender, System.EventArgs e)
+        {
+            if (grfOrder.Row <= 0) return;
+            if (grfOrder[grfOrder.Row, colBlId] == null) return;
+
+        }
         private void setGrfOrder(String vn)
         {
             //grfDept.Rows.Count = 7;
             grfOrder.Clear();
             DataTable dtAll = new DataTable();
-            DataTable dt = new DataTable();
+            DataTable dtl = new DataTable();
             DataTable dts = new DataTable();
             DataTable dtpx = new DataTable();
-            dt = ic.ivfDB.oJlabdDB.selectByVN(vn);
+            DataTable dtpkg = new DataTable();
+            dtl = ic.ivfDB.oJlabdDB.selectByVN(vn);
             dts = ic.ivfDB.ojsdDB.selectByVN(vn);
             dtpx = ic.ivfDB.oJpxdDB.selectByVN(vn);
-                                                                                 
+            dtpkg = ic.ivfDB.opkgsDB.selectByVN(vn);
+
             //grfExpn.Rows.Count = dt.Rows.Count + 1;
             //grfEmbryo.Rows.Count = dt.Rows.Count + 1;
 
@@ -207,7 +243,7 @@ namespace clinic_ivf.gui
             dtAll.Columns.Add("qty", typeof(String));
             dtAll.Columns.Add("status", typeof(String));
             
-            foreach (DataRow row in dt.Rows)
+            foreach (DataRow row in dtl.Rows)
             {
                 DataRow row1 = dtAll.NewRow();
                 row1["id"] = row["ID"];
@@ -215,8 +251,27 @@ namespace clinic_ivf.gui
                 row1["name"] = row["LName"];
                 row1["price"] = "";
                 row1["qty"] = row["QTY"];
-                row1["status"] = "bloodlab";
-                dtAll.Rows.InsertAt(row1, dt.Rows.Count);               
+                if (row["LGID"].ToString().Equals("1"))
+                {
+                    row1["status"] = "bloodlab";
+                }
+                else if (row["LGID"].ToString().Equals("2"))
+                {
+                    row1["status"] = "";
+                }
+                else if (row["LGID"].ToString().Equals("3"))
+                {
+                    row1["status"] = "Sperm Lab";
+                }
+                else if (row["LGID"].ToString().Equals("4"))
+                {
+                    row1["status"] = "Embryo Lab";
+                }
+                else if (row["LGID"].ToString().Equals("5"))
+                {
+                    row1["status"] = "Genetic Lab";
+                }
+                dtAll.Rows.InsertAt(row1, dtl.Rows.Count);               
                 
             }
             foreach (DataRow row in dts.Rows)
@@ -228,7 +283,7 @@ namespace clinic_ivf.gui
                 row1["price"] = row["Price"];
                 row1["qty"] = "";
                 row1["status"] = "specialitem";
-                dtAll.Rows.InsertAt(row1, dt.Rows.Count);
+                dtAll.Rows.InsertAt(row1, dtl.Rows.Count);
 
             }
             foreach (DataRow row in dtpx.Rows)
@@ -240,7 +295,19 @@ namespace clinic_ivf.gui
                 row1["price"] = row["Price"];
                 row1["qty"] = row["QTY"];
                 row1["status"] = "px";
-                dtAll.Rows.InsertAt(row1, dt.Rows.Count);
+                dtAll.Rows.InsertAt(row1, dtl.Rows.Count);
+
+            }
+            foreach (DataRow row in dtpkg.Rows)
+            {
+                DataRow row1 = dtAll.NewRow();
+                row1["id"] = row["PCKSID"];
+                row1["lgid"] = row["PCKID"];
+                row1["name"] = row["PackageName"];
+                row1["price"] = row["Price"];
+                row1["qty"] = "1";
+                row1["status"] = "package";
+                dtAll.Rows.InsertAt(row1, dtl.Rows.Count);
 
             }
             grfOrder.DataSource = dtAll;
@@ -274,7 +341,7 @@ namespace clinic_ivf.gui
             //rg1.Style = grfBank.Styles["date"];
             //grfCu.Cols[colID].Visible = false;
             int i = 1;
-            foreach (DataRow row in dt.Rows)
+            foreach (DataRow row in dtl.Rows)
             {
                 try
                 {
@@ -497,7 +564,7 @@ namespace clinic_ivf.gui
             //grfExpnC.CellButtonClick += new C1.Win.C1FlexGrid.RowColEventHandler(this.grfDept_CellButtonClick);
             //grfExpnC.CellChanged += new C1.Win.C1FlexGrid.RowColEventHandler(this.grfDept_CellChanged);
             ContextMenu menuGw = new ContextMenu();
-            //menuGw.MenuItems.Add("&แก้ไข รายการเบิก", new EventHandler(ContextMenu_edit));
+            //menuGw.MenuItems.Add("สั่งการ", new EventHandler(ContextMenu_order_pkg));
             //menuGw.MenuItems.Add("&แก้ไข", new EventHandler(ContextMenu_Gw_Edit));
             //menuGw.MenuItems.Add("&ยกเลิก", new EventHandler(ContextMenu_Gw_Cancel));
             grfPackage.ContextMenu = menuGw;
@@ -506,7 +573,15 @@ namespace clinic_ivf.gui
             theme1.SetTheme(grfPackage, "GreenHouse");
 
         }
-
+        private void ContextMenu_order_pkg(object sender, System.EventArgs e)
+        {
+            if (grfPackage.Row <= 0) return;
+            if (grfPackage[grfPackage.Row, colBlId] == null) return;
+            String pkgid = "";
+            pkgid = grfPackage[grfPackage.Row, colBlId].ToString();
+            ic.ivfDB.SpecialAdd(pkgid, "1", txtIdOld.Text, txtHn.Text, txtVnOld.Text, "", "", "", "", "");
+            setGrfOrder(txtVnOld.Text);
+        }
         private void GrfPackage_AfterRowColChange(object sender, RangeEventArgs e)
         {
             //throw new NotImplementedException();
@@ -515,6 +590,12 @@ namespace clinic_ivf.gui
 
             String id = "";
             id = grfPackage[grfPackage.Row, colBlId].ToString();
+            OldPackageHeader opkg = new OldPackageHeader();
+            opkg = ic.ivfDB.oPkgDB.selectByPk1(id);
+            txtPkgName.Value = opkg.PackageName;
+            txtPkgId.Value = opkg.PCKID;
+            txtPrice.Value = opkg.Price;
+
             setGrfpackageD(id);
         }
         
@@ -628,7 +709,7 @@ namespace clinic_ivf.gui
             //grfExpnC.CellButtonClick += new C1.Win.C1FlexGrid.RowColEventHandler(this.grfDept_CellButtonClick);
             //grfExpnC.CellChanged += new C1.Win.C1FlexGrid.RowColEventHandler(this.grfDept_CellChanged);
             ContextMenu menuGw = new ContextMenu();
-            //menuGw.MenuItems.Add("&แก้ไข รายการเบิก", new EventHandler(ContextMenu_edit));
+            menuGw.MenuItems.Add("สั่งการ", new EventHandler(ContextMenu_order_rx_set));
             //menuGw.MenuItems.Add("&แก้ไข", new EventHandler(ContextMenu_Gw_Edit));
             //menuGw.MenuItems.Add("&ยกเลิก", new EventHandler(ContextMenu_Gw_Cancel));
             grfRxSet.ContextMenu = menuGw;
@@ -637,7 +718,18 @@ namespace clinic_ivf.gui
             theme1.SetTheme(grfRxSet, "Office2016DarkGray");
 
         }
-
+        private void ContextMenu_order_rx_set(object sender, System.EventArgs e)
+        {
+            if (grfRxSetD.Rows.Count > 0)
+            {
+                if (grfRxSet.Row <= 0) return;
+                if (grfRxSet[grfRxSet.Row, colBlId] == null) return;
+                String gdid = "";
+                gdid = grfRxSet[grfRxSet.Row, colBlId].ToString();
+                ic.ivfDB.PxSetAdd(gdid, txtIdOld.Text, txtHn.Text, txtVnOld.Text, "");
+                setGrfOrder(txtVnOld.Text);
+            }
+        }
         private void GrfRxSet_AfterRowColChange(object sender, RangeEventArgs e)
         {
             //throw new NotImplementedException();
@@ -722,9 +814,11 @@ namespace clinic_ivf.gui
             grfRx.Dock = System.Windows.Forms.DockStyle.Fill;
             grfRx.Location = new System.Drawing.Point(0, 0);
 
-            FilterRow fr = new FilterRow(grfRx);
+            //FilterRowUnBound fr = new FilterRowUnBound(grfRx);
 
-            grfRx.AfterRowColChange += GrfMed_AfterRowColChange;
+            grfRx.DoubleClick += GrfRx_DoubleClick;
+            //grfRx.AfterFilter += GrfRx_AfterFilter;
+
             //grfExpnC.CellButtonClick += new C1.Win.C1FlexGrid.RowColEventHandler(this.grfDept_CellButtonClick);
             //grfExpnC.CellChanged += new C1.Win.C1FlexGrid.RowColEventHandler(this.grfDept_CellChanged);
             ContextMenu menuGw = new ContextMenu();
@@ -737,32 +831,62 @@ namespace clinic_ivf.gui
             theme1.SetTheme(grfRx, "Office2010Black");
 
         }
+
+        private void GrfRx_AfterFilter(object sender, EventArgs e)
+        {
+            //throw new NotImplementedException();
+            for (int col = grfRx.Cols.Fixed; col < grfRx.Cols.Count; ++col)
+            {
+                var filter = grfRx.Cols[col].ActiveFilter;
+            }
+        }
+
+        private void GrfRx_DoubleClick(object sender, EventArgs e)
+        {
+            //throw new NotImplementedException();
+            if (grfRx.Row < 0) return;
+            String duid = "";
+        }
+
         private void ContextMenu_order_rx(object sender, System.EventArgs e)
         {
-            String chk = "", name = "", drugid = "";
+            String chk = "", name = "", drugid = "",qty="";
             drugid = grfRx[grfRx.Row, colBlId] != null ? grfRx[grfRx.Row, colBlId].ToString() : "";
-
+            qty = grfRx[grfRx.Row, colBlRemark] != null ? grfRx[grfRx.Row, colBlRemark].ToString() : "";
+            //if (qty.Equals(""))
+            //{
+            //    sep.SetError(grfRx, "333");
+            //}
+            //else
+            //{
+            qty = "0";
+            //sep.Clear();
+            ic.ivfDB.PxAdd(drugid, qty, txtIdOld.Text, txtHn.Text, txtVnOld.Text, "");
+            setGrfOrder(txtVn.Text);
+            //}
+            //ic.ivfDB.PxAdd(drugid,)
         }
         private void setGrfRx()
         {
             //grfDept.Rows.Count = 7;
-            grfRx.Clear();
+            //grfRx.Clear();
             DataTable dt = new DataTable();
             dt = ic.ivfDB.oStkdDB.selectBySockDrug1();
-
+            
             //grfExpn.Rows.Count = dt.Rows.Count + 1;
             //grfEmbryo.Rows.Count = dt.Rows.Count + 1;
-            grfRx.DataSource = dt;
+            //grfRx.DataSource = dt;
             grfRx.Cols.Count = 6;
-            C1TextBox txt = new C1TextBox();
-            C1CheckBox chk = new C1CheckBox();
-            chk.Text = "Include Package";
+            grfRx.Rows.Count = dt.Rows.Count+2;
+            //C1TextBox txt = new C1TextBox();
+            //C1CheckBox chk = new C1CheckBox();
+            //chk.Text = "Include Package";
             //C1ComboBox cboproce = new C1ComboBox();
             //ic.ivfDB.itmDB.setCboItem(cboproce);
-            grfRx.Cols[colBlName].Editor = txt;
-            grfRx.Cols[colBlInclude].Editor = txt;
-            grfRx.Cols[colBlPrice].Editor = txt;
-            grfRx.Cols[colBlRemark].Editor = txt;
+            //grfRx.Cols[colBlName].Editor = txt;
+            //grfRx.Cols[colBlInclude].Editor = txt;
+            //grfRx.Cols[colBlPrice].Editor = txt;
+            //grfRx.Cols[colBlRemark].Editor = txt;
 
             grfRx.Cols[colBlName].Width = 320;
             grfRx.Cols[colBlInclude].Width = 120;
@@ -776,21 +900,30 @@ namespace clinic_ivf.gui
             grfRx.Cols[colBlName].Caption = "Name";
             grfRx.Cols[colBlInclude].Caption = "Include";
             grfRx.Cols[colBlPrice].Caption = "Price";
-            grfRx.Cols[colBlRemark].Caption = "Remark";
+            grfRx.Cols[colBlRemark].Caption = "QTY";
 
             Color color = ColorTranslator.FromHtml(ic.iniC.grfRowColor);
             //CellRange rg1 = grfBank.GetCellRange(1, colE, grfBank.Rows.Count, colE);
             //rg1.Style = grfBank.Styles["date"];
             //grfCu.Cols[colID].Visible = false;
-            int i = 0;
-            foreach (Row row in grfRx.Rows)
+            int i = 1;
+            foreach (DataRow row in dt.Rows)
             {
                 try
                 {
                     i++;
-                    if (i == 1) continue;
-                    if (i == 2) continue;
-                    row[0] = (i - 2);
+                    grfRx[i,colBlId] = row["DUID"].ToString();
+                    grfRx[i, colBlName] = row["DUName"].ToString();
+                    grfRx[i, colBlPrice] = row["Price"].ToString();
+                    grfRx[i, colBlRemark] = "";
+                    //Row row1 = grfRx.Rows.Add();
+                    //row1[colBlId] = row["DUID"].ToString();
+                    //row1[colBlName] = row["DUName"].ToString();
+                    //row1[colBlPrice] = row["Price"].ToString();
+                    //row1[colBlRemark] = "";
+                    //if (i == 1) continue;
+                    //if (i == 2) continue;
+                    grfRx[i, 0] = (i - 2);
                 }
                 catch (Exception ex)
                 {
@@ -802,10 +935,11 @@ namespace clinic_ivf.gui
             grfRx.Cols[colBlId].Visible = false;
             grfRx.Cols[colBlInclude].Visible = false;
             //grfRx.Cols[colBlPrice].Visible = false;
-
+            FilterRowUnBound fr = new FilterRowUnBound(grfRx);
             grfRx.Cols[colBlName].AllowEditing = false;
             grfRx.Cols[colBlPrice].AllowEditing = false;
-            grfRx.Cols[colBlRemark].AllowEditing = false;
+            grfRx.Cols[colBlRemark].AllowEditing = true;
+            grfRx.AllowFiltering = true;
             //theme1.SetTheme(grfFinish, ic.theme);
 
         }
@@ -822,7 +956,7 @@ namespace clinic_ivf.gui
             //grfExpnC.CellButtonClick += new C1.Win.C1FlexGrid.RowColEventHandler(this.grfDept_CellButtonClick);
             //grfExpnC.CellChanged += new C1.Win.C1FlexGrid.RowColEventHandler(this.grfDept_CellChanged);
             ContextMenu menuGw = new ContextMenu();
-            //menuGw.MenuItems.Add("&แก้ไข รายการเบิก", new EventHandler(ContextMenu_edit));
+            menuGw.MenuItems.Add("สั่งการ", new EventHandler(ContextMenu_order_se_set));
             //menuGw.MenuItems.Add("&แก้ไข", new EventHandler(ContextMenu_Gw_Edit));
             //menuGw.MenuItems.Add("&ยกเลิก", new EventHandler(ContextMenu_Gw_Cancel));
             grfSpecial.ContextMenu = menuGw;
@@ -830,6 +964,15 @@ namespace clinic_ivf.gui
 
             theme1.SetTheme(grfSpecial, "Office2010Barbie");
 
+        }
+        private void ContextMenu_order_se_set(object sender, System.EventArgs e)
+        {
+            if (grfSpecial.Row <= 0) return;
+            if (grfSpecial[grfSpecial.Row, colBlId] == null) return;
+            String labid = "";
+            labid = grfSpecial[grfSpecial.Row, colBlId].ToString();
+            ic.ivfDB.SpecialAdd(labid, "1", txtIdOld.Text, txtHn.Text, txtVnOld.Text, "", "", "", "", "");
+            setGrfOrder(txtVnOld.Text);
         }
         private void setGrfSpecial()
         {
@@ -910,7 +1053,7 @@ namespace clinic_ivf.gui
             //grfExpnC.CellButtonClick += new C1.Win.C1FlexGrid.RowColEventHandler(this.grfDept_CellButtonClick);
             //grfExpnC.CellChanged += new C1.Win.C1FlexGrid.RowColEventHandler(this.grfDept_CellChanged);
             ContextMenu menuGw = new ContextMenu();
-            //menuGw.MenuItems.Add("&แก้ไข รายการเบิก", new EventHandler(ContextMenu_edit));
+            menuGw.MenuItems.Add("สั่งการ", new EventHandler(ContextMenu_order_ge_set));
             //menuGw.MenuItems.Add("&แก้ไข", new EventHandler(ContextMenu_Gw_Edit));
             //menuGw.MenuItems.Add("&ยกเลิก", new EventHandler(ContextMenu_Gw_Cancel));
             grfGenetic.ContextMenu = menuGw;
@@ -918,6 +1061,15 @@ namespace clinic_ivf.gui
 
             theme1.SetTheme(grfGenetic, "RainerOrange");
 
+        }
+        private void ContextMenu_order_ge_set(object sender, System.EventArgs e)
+        {
+            if (grfGenetic.Row <= 0) return;
+            if (grfGenetic[grfGenetic.Row, colBlId] == null) return;
+            String labid = "";
+            labid = grfGenetic[grfGenetic.Row, colBlId].ToString();
+            ic.ivfDB.LabAdd(labid, "1", txtIdOld.Text, txtHn.Text, txtVnOld.Text, "", "", "", "", "", "", "", "");
+            setGrfOrder(txtVnOld.Text);
         }
         private void setGrfGenetic()
         {
@@ -998,7 +1150,7 @@ namespace clinic_ivf.gui
             //grfExpnC.CellButtonClick += new C1.Win.C1FlexGrid.RowColEventHandler(this.grfDept_CellButtonClick);
             //grfExpnC.CellChanged += new C1.Win.C1FlexGrid.RowColEventHandler(this.grfDept_CellChanged);
             ContextMenu menuGw = new ContextMenu();
-            //menuGw.MenuItems.Add("&แก้ไข รายการเบิก", new EventHandler(ContextMenu_edit));
+            menuGw.MenuItems.Add("สั่งการ", new EventHandler(ContextMenu_order_em_set));
             //menuGw.MenuItems.Add("&แก้ไข", new EventHandler(ContextMenu_Gw_Edit));
             //menuGw.MenuItems.Add("&ยกเลิก", new EventHandler(ContextMenu_Gw_Cancel));
             grfEmbryo.ContextMenu = menuGw;
@@ -1006,6 +1158,15 @@ namespace clinic_ivf.gui
 
             theme1.SetTheme(grfEmbryo, "ShinyBlue");
 
+        }
+        private void ContextMenu_order_em_set(object sender, System.EventArgs e)
+        {
+            if (grfEmbryo.Row <= 0) return;
+            if (grfEmbryo[grfEmbryo.Row, colBlId] == null) return;
+            String labid = "";
+            labid = grfEmbryo[grfEmbryo.Row, colBlId].ToString();
+            ic.ivfDB.LabAdd(labid, "1", txtIdOld.Text, txtHn.Text, txtVnOld.Text, "", "", "", "", "", "", "", "");
+            setGrfOrder(txtVnOld.Text);
         }
         private void setGrfEmbryo()
         {
@@ -1086,7 +1247,7 @@ namespace clinic_ivf.gui
             //grfExpnC.CellButtonClick += new C1.Win.C1FlexGrid.RowColEventHandler(this.grfDept_CellButtonClick);
             //grfExpnC.CellChanged += new C1.Win.C1FlexGrid.RowColEventHandler(this.grfDept_CellChanged);
             ContextMenu menuGw = new ContextMenu();
-            //menuGw.MenuItems.Add("&แก้ไข รายการเบิก", new EventHandler(ContextMenu_edit));
+            menuGw.MenuItems.Add("สั่งการ", new EventHandler(ContextMenu_order_sp_set));
             //menuGw.MenuItems.Add("&แก้ไข", new EventHandler(ContextMenu_Gw_Edit));
             //menuGw.MenuItems.Add("&ยกเลิก", new EventHandler(ContextMenu_Gw_Cancel));
             grfSperm.ContextMenu = menuGw;
@@ -1094,6 +1255,15 @@ namespace clinic_ivf.gui
 
             theme1.SetTheme(grfSperm, "Office2010Green");
 
+        }
+        private void ContextMenu_order_sp_set(object sender, System.EventArgs e)
+        {
+            if (grfSperm.Row <= 0) return;
+            if (grfSperm[grfSperm.Row, colBlId] == null) return;
+            String labid = "";
+            labid = grfSperm[grfSperm.Row, colBlId].ToString();
+            ic.ivfDB.LabAdd(labid, "1", txtIdOld.Text, txtHn.Text, txtVnOld.Text, "", "", "", "", "", "", "", "");
+            setGrfOrder(txtVnOld.Text);
         }
         private void setGrfSperm()
         {
@@ -1170,11 +1340,11 @@ namespace clinic_ivf.gui
 
             FilterRow fr = new FilterRow(grfBloodLab);
 
-            grfBloodLab.AfterRowColChange += GrfMed_AfterRowColChange;
+            grfBloodLab.DoubleClick += GrfBloodLab_DoubleClick;
             //grfExpnC.CellButtonClick += new C1.Win.C1FlexGrid.RowColEventHandler(this.grfDept_CellButtonClick);
             //grfExpnC.CellChanged += new C1.Win.C1FlexGrid.RowColEventHandler(this.grfDept_CellChanged);
             ContextMenu menuGw = new ContextMenu();
-            //menuGw.MenuItems.Add("&แก้ไข รายการเบิก", new EventHandler(ContextMenu_edit));
+            menuGw.MenuItems.Add("สั่งการ", new EventHandler(ContextMenu_order_bl_set));
             //menuGw.MenuItems.Add("&แก้ไข", new EventHandler(ContextMenu_Gw_Edit));
             //menuGw.MenuItems.Add("&ยกเลิก", new EventHandler(ContextMenu_Gw_Cancel));
             grfBloodLab.ContextMenu = menuGw;
@@ -1183,6 +1353,21 @@ namespace clinic_ivf.gui
             theme1.SetTheme(grfBloodLab, "Office2010Red");
 
         }
+        private void ContextMenu_order_bl_set(object sender, System.EventArgs e)
+        {
+            if (grfBloodLab.Row <= 0) return;
+            if (grfBloodLab[grfBloodLab.Row, colBlId] == null) return;
+            String labid = "";
+            labid = grfBloodLab[grfBloodLab.Row, colBlId].ToString();
+            ic.ivfDB.LabAdd(labid,"1", txtIdOld.Text, txtHn.Text, txtVnOld.Text, "","", "", "", "", "", "", "");
+            setGrfOrder(txtVnOld.Text);
+        }
+        private void GrfBloodLab_DoubleClick(object sender, EventArgs e)
+        {
+            //throw new NotImplementedException();
+
+        }
+
         private void setGrfBloodLab()
         {
             //grfDept.Rows.Count = 7;

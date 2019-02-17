@@ -75,6 +75,15 @@ namespace clinic_ivf.gui
             menuExamiRoom.Click += MenuExamiRoom_Click;
             menuDrugPatient.Click += MenuDrugPatient_Click;
             menuReqLabFormA.Click += MenuReqLabFormA_Click;
+            menuCashierDefault.Click += MenuCashierDefault_Click;
+        }
+
+        private void MenuCashierDefault_Click(object sender, EventArgs e)
+        {
+            //throw new NotImplementedException();
+            FrmCashierView frm = new FrmCashierView(ic, this);
+            frm.FormBorderStyle = FormBorderStyle.None;
+            AddNewTab(frm, menuCashierDefault.Text + " ");
         }
 
         private void MenuReqLabFormA_Click(object sender, EventArgs e)
@@ -351,8 +360,8 @@ namespace clinic_ivf.gui
         {
             String date = "";
             date = DateTime.Now.Year+"-"+ DateTime.Now.ToString("MM-dd");
-            this.Text = ic.iniC.statusAppDonor.Equals("1") ? "โปรแกรมClinic IVF Donor " +"สวัสดี คุณ "+ic.user.staff_fname_t +" "+ic.user.staff_lname_t+" Update 2019-02-13 "
-                : "โปรแกรมClinic IVF " + "สวัสดี คุณ " + ic.user.staff_fname_t + " " + ic.user.staff_lname_t + " Update 2019-02-13 format date "+ date;
+            this.Text = ic.iniC.statusAppDonor.Equals("1") ? "โปรแกรมClinic IVF Donor " +"สวัสดี คุณ "+ic.user.staff_fname_t +" "+ic.user.staff_lname_t+" Update 2019-02-17 "
+                : "โปรแกรมClinic IVF " + "สวัสดี คุณ " + ic.user.staff_fname_t + " " + ic.user.staff_lname_t + " Update 2019-02-17 format date "+ date;
             //theme1.SetTheme(this, ic.theme);
             theme1.SetTheme(this, ic.theme);
             theme1.SetTheme(menuStrip1, ic.theme);
@@ -406,6 +415,14 @@ namespace clinic_ivf.gui
                         theme1.SetTheme(c, ic.theme);
                     }
                     menuInit.Visible = true;
+                }
+                if (ic.user.status_module_cashier.Equals("1"))
+                {
+                    foreach (Control c in menuStrip1.Controls)
+                    {
+                        theme1.SetTheme(c, ic.theme);
+                    }
+                    menuCashier.Visible = true;
                 }
             }
             catch(Exception ex)

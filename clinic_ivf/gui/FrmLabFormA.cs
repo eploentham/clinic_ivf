@@ -63,6 +63,10 @@ namespace clinic_ivf.gui
             btmDonorSearch.Click += BtmDonorSearch_Click;
             btnFemaleSearch.Click += BtnFemaleSearch_Click;
             chkFrozenSperm.CheckStateChanged += ChkFrozenSperm_CheckStateChanged;
+            btnPrintOPU.Click += BtnPrintOPU_Click;
+            btnPrintFet.Click += BtnPrintFet_Click;
+            chkNgs.Click += ChkNgs_Click;
+            chkNoNgs.Click += ChkNoNgs_Click;
 
             ChkEmbryoTranfer_CheckStateChanged(null, null);
             ChkNgs_CheckedChanged(null, null);
@@ -103,6 +107,106 @@ namespace clinic_ivf.gui
             //lbMessage.Hide();
             lbMessage1.Text = "";
             sB1.Text = "";
+        }
+
+        private void ChkNoNgs_Click(object sender, EventArgs e)
+        {
+            //throw new NotImplementedException();
+            if (chkNoNgs.Checked) chkNoNgs.Checked = false;
+        }
+
+        private void ChkNgs_Click(object sender, EventArgs e)
+        {
+            //throw new NotImplementedException();
+            if (chkNgs.Checked) chkNgs.Checked = false;
+        }
+
+        private void BtnPrintFet_Click(object sender, EventArgs e)
+        {
+            //throw new NotImplementedException();
+            FrmReport frm = new FrmReport(ic);
+            DataTable dt = new DataTable();
+            dt = ic.ivfDB.lFormaDB.selectReportByPk(txtID.Text);
+            String date1 = "", txt1 = "";
+            if (dt.Rows.Count <= 0) return;
+            date1 = ic.datetoShow(dt.Rows[0][ic.ivfDB.lFormaDB.lformA.opu_date].ToString());
+            dt.Rows[0][ic.ivfDB.lFormaDB.lformA.opu_date] = date1.Replace("-", "/");
+            date1 = ic.datetoShow(dt.Rows[0][ic.ivfDB.lFormaDB.lformA.embryo_freezing_day].ToString());
+            dt.Rows[0][ic.ivfDB.lFormaDB.lformA.embryo_freezing_day] = date1.Replace("-", "/");
+            date1 = ic.datetoShow(dt.Rows[0][ic.ivfDB.lFormaDB.lformA.embryo_tranfer_date].ToString());
+            dt.Rows[0][ic.ivfDB.lFormaDB.lformA.embryo_tranfer_date] = date1.Replace("-", "/");
+            date1 = ic.datetoShow(dt.Rows[0][ic.ivfDB.lFormaDB.lformA.fet1_no_date_freezing].ToString());
+            dt.Rows[0][ic.ivfDB.lFormaDB.lformA.fet1_no_date_freezing] = date1.Replace("-", "/");
+            date1 = ic.datetoShow(dt.Rows[0][ic.ivfDB.lFormaDB.lformA.dob_male].ToString());
+            dt.Rows[0][ic.ivfDB.lFormaDB.lformA.dob_male] = date1.Replace("-", "/");
+            date1 = ic.datetoShow(dt.Rows[0][ic.ivfDB.lFormaDB.lformA.dob_female].ToString());
+            dt.Rows[0][ic.ivfDB.lFormaDB.lformA.dob_female] = date1.Replace("-", "/");
+            date1 = ic.datetoShow(dt.Rows[0][ic.ivfDB.lFormaDB.lformA.spern_freezing_date_start].ToString());
+            dt.Rows[0][ic.ivfDB.lFormaDB.lformA.spern_freezing_date_start] = date1.Replace("-", "/");
+            date1 = ic.datetoShow(dt.Rows[0][ic.ivfDB.lFormaDB.lformA.spern_freezing_date_end].ToString());
+            dt.Rows[0][ic.ivfDB.lFormaDB.lformA.spern_freezing_date_end] = date1.Replace("-", "/");
+            date1 = ic.datetoShow(dt.Rows[0][ic.ivfDB.lFormaDB.lformA.iui_date].ToString());
+            dt.Rows[0][ic.ivfDB.lFormaDB.lformA.iui_date] = date1.Replace("-", "/");
+            date1 = ic.datetoShow(dt.Rows[0][ic.ivfDB.lFormaDB.lformA.pasa_tese_date].ToString());
+            dt.Rows[0][ic.ivfDB.lFormaDB.lformA.pasa_tese_date] = date1.Replace("-", "/");
+            date1 = ic.datetoShow(dt.Rows[0][ic.ivfDB.lFormaDB.lformA.sperm_analysis_date_start].ToString());
+            dt.Rows[0][ic.ivfDB.lFormaDB.lformA.sperm_analysis_date_start] = date1.Replace("-", "/");
+            date1 = ic.datetoShow(dt.Rows[0][ic.ivfDB.lFormaDB.lformA.sperm_analysis_date_end].ToString());
+            dt.Rows[0][ic.ivfDB.lFormaDB.lformA.sperm_analysis_date_end] = date1.Replace("-", "/");
+            date1 = ic.datetoShow(dt.Rows[0][ic.ivfDB.lFormaDB.lformA.fet_no_date_freezing].ToString());
+            dt.Rows[0][ic.ivfDB.lFormaDB.lformA.fet_no_date_freezing] = date1.Replace("-", "/");
+            if (dt.Rows[0]["status_wait_confirm_opu_date"].ToString().Equals("1"))
+            {
+                txt1 = "รอ confirm วัน เวลา OPU จากทาง พยาบาล";
+            }
+            dt.Columns.Add("note1", typeof(String));
+            dt.Rows[0]["note1"] = txt1;
+            frm.setLabFormAFetReport(dt);
+            frm.ShowDialog(this);
+        }
+
+        private void BtnPrintOPU_Click(object sender, EventArgs e)
+        {
+            //throw new NotImplementedException();
+            FrmReport frm = new FrmReport(ic);
+            DataTable dt = new DataTable();
+            dt = ic.ivfDB.lFormaDB.selectReportByPk(txtID.Text);
+            String date1 = "", txt1 = "";
+            if (dt.Rows.Count <= 0) return;
+            date1 = ic.datetoShow(dt.Rows[0][ic.ivfDB.lFormaDB.lformA.opu_date].ToString());
+            dt.Rows[0][ic.ivfDB.lFormaDB.lformA.opu_date] = date1.Replace("-", "/");
+            date1 = ic.datetoShow(dt.Rows[0][ic.ivfDB.lFormaDB.lformA.embryo_freezing_day].ToString());
+            dt.Rows[0][ic.ivfDB.lFormaDB.lformA.embryo_freezing_day] = date1.Replace("-", "/");
+            date1 = ic.datetoShow(dt.Rows[0][ic.ivfDB.lFormaDB.lformA.embryo_tranfer_date].ToString());
+            dt.Rows[0][ic.ivfDB.lFormaDB.lformA.embryo_tranfer_date] = date1.Replace("-", "/");
+            date1 = ic.datetoShow(dt.Rows[0][ic.ivfDB.lFormaDB.lformA.fet1_no_date_freezing].ToString());
+            dt.Rows[0][ic.ivfDB.lFormaDB.lformA.fet1_no_date_freezing] = date1.Replace("-", "/");
+            date1 = ic.datetoShow(dt.Rows[0][ic.ivfDB.lFormaDB.lformA.dob_male].ToString());
+            dt.Rows[0][ic.ivfDB.lFormaDB.lformA.dob_male] = date1.Replace("-", "/");
+            date1 = ic.datetoShow(dt.Rows[0][ic.ivfDB.lFormaDB.lformA.dob_female].ToString());
+            dt.Rows[0][ic.ivfDB.lFormaDB.lformA.dob_female] = date1.Replace("-", "/");
+            date1 = ic.datetoShow(dt.Rows[0][ic.ivfDB.lFormaDB.lformA.spern_freezing_date_start].ToString());
+            dt.Rows[0][ic.ivfDB.lFormaDB.lformA.spern_freezing_date_start] = date1.Replace("-", "/");
+            date1 = ic.datetoShow(dt.Rows[0][ic.ivfDB.lFormaDB.lformA.spern_freezing_date_end].ToString());
+            dt.Rows[0][ic.ivfDB.lFormaDB.lformA.spern_freezing_date_end] = date1.Replace("-", "/");
+            date1 = ic.datetoShow(dt.Rows[0][ic.ivfDB.lFormaDB.lformA.iui_date].ToString());
+            dt.Rows[0][ic.ivfDB.lFormaDB.lformA.iui_date] = date1.Replace("-", "/");
+            date1 = ic.datetoShow(dt.Rows[0][ic.ivfDB.lFormaDB.lformA.pasa_tese_date].ToString());
+            dt.Rows[0][ic.ivfDB.lFormaDB.lformA.pasa_tese_date] = date1.Replace("-", "/");
+            date1 = ic.datetoShow(dt.Rows[0][ic.ivfDB.lFormaDB.lformA.sperm_analysis_date_start].ToString());
+            dt.Rows[0][ic.ivfDB.lFormaDB.lformA.sperm_analysis_date_start] = date1.Replace("-", "/");
+            date1 = ic.datetoShow(dt.Rows[0][ic.ivfDB.lFormaDB.lformA.sperm_analysis_date_end].ToString());
+            dt.Rows[0][ic.ivfDB.lFormaDB.lformA.sperm_analysis_date_end] = date1.Replace("-", "/");
+            date1 = ic.datetoShow(dt.Rows[0][ic.ivfDB.lFormaDB.lformA.fet_no_date_freezing].ToString());
+            dt.Rows[0][ic.ivfDB.lFormaDB.lformA.fet_no_date_freezing] = date1.Replace("-", "/");
+            if (dt.Rows[0]["status_wait_confirm_opu_date"].ToString().Equals("1"))
+            {
+                txt1 = "รอ confirm วัน เวลา OPU จากทาง พยาบาล";
+            }
+            dt.Columns.Add("note1", typeof(String));
+            dt.Rows[0]["note1"] = txt1;
+            frm.setLabFormAOPUReport(dt);
+            frm.ShowDialog(this);
         }
 
         private void ChkFrozenSperm_CheckStateChanged(object sender, EventArgs e)
