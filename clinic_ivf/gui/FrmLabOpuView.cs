@@ -99,27 +99,7 @@ namespace clinic_ivf.gui
             setGrfReq();
             setGrfProc();
         }
-        private void initGrfSearch()
-        {
-            grfSearch = new C1FlexGrid();
-            grfSearch.Font = fEdit;
-            grfSearch.Dock = System.Windows.Forms.DockStyle.Fill;
-            grfSearch.Location = new System.Drawing.Point(0, 0);
-
-            //FilterRow fr = new FilterRow(grfExpn);
-
-            grfSearch.AfterRowColChange += GrfReq_AfterRowColChange;
-            //grfExpnC.CellButtonClick += new C1.Win.C1FlexGrid.RowColEventHandler(this.grfDept_CellButtonClick);
-            //grfExpnC.CellChanged += new C1.Win.C1FlexGrid.RowColEventHandler(this.grfDept_CellChanged);
-            ContextMenu menuGw = new ContextMenu();
-            menuGw.MenuItems.Add("ป้อน LAB OPU/FET", new EventHandler(ContextMenu_edit));
-            //menuGw.MenuItems.Add("รับทราบการเปลี่ยนแปลงเวลา", new EventHandler(ContextMenu_Gw_time_modi));
-            //menuGw.MenuItems.Add("&ยกเลิก", new EventHandler(ContextMenu_Gw_Cancel));
-            grfSearch.ContextMenu = menuGw;
-            pnSearch.Controls.Add(grfSearch);
-
-            theme1.SetTheme(grfSearch, "Office2010Blue");
-        }
+        
         private void setGrfSearch()
         {
             grfSearch.DataSource = null;

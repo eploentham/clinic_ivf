@@ -85,7 +85,7 @@ namespace clinic_ivf.gui
             //grfExpnC.CellButtonClick += new C1.Win.C1FlexGrid.RowColEventHandler(this.grfDept_CellButtonClick);
             //grfExpnC.CellChanged += new C1.Win.C1FlexGrid.RowColEventHandler(this.grfDept_CellChanged);
             ContextMenu menuGw = new ContextMenu();
-            //menuGw.MenuItems.Add("&แก้ไข รายการเบิก", new EventHandler(ContextMenu_edit));
+            menuGw.MenuItems.Add("ออก บิล", new EventHandler(ContextMenu_edit_bill));
             //menuGw.MenuItems.Add("&แก้ไข", new EventHandler(ContextMenu_Gw_Edit));
             //menuGw.MenuItems.Add("&ยกเลิก", new EventHandler(ContextMenu_Gw_Cancel));
             grfQue.ContextMenu = menuGw;
@@ -96,6 +96,14 @@ namespace clinic_ivf.gui
             //theme1.SetTheme(tabDiag, "Office2010Blue");
             //theme1.SetTheme(tabFinish, "Office2010Blue");
 
+        }
+        private void ContextMenu_edit_bill(object sender, System.EventArgs e)
+        {
+            String chk = "", name = "", id = "";
+
+            id = grfQue[grfQue.Row, colID] != null ? grfQue[grfQue.Row, colID].ToString() : "";
+            name = grfQue[grfQue.Row, colPttName] != null ? grfQue[grfQue.Row, colPttName].ToString() : "";
+            openBillNew(id, name);
         }
         private void setGrfQue()
         {
@@ -112,7 +120,7 @@ namespace clinic_ivf.gui
             //    {
             //        //dt11 = dt11.AddDays(-1);
             //        date = dt11.Year + "-" + dt11.ToString("MM-dd");
-                    
+
             //    }
             //}
             //else
@@ -121,6 +129,12 @@ namespace clinic_ivf.gui
             //}
 
             //grfExpn.Rows.Count = dt.Rows.Count + 1;
+            ContextMenu menuGw = new ContextMenu();
+            menuGw.MenuItems.Add("ออก บิล", new EventHandler(ContextMenu_edit_bill));
+            //menuGw.MenuItems.Add("&แก้ไข", new EventHandler(ContextMenu_Gw_Edit));
+            //menuGw.MenuItems.Add("&ยกเลิก", new EventHandler(ContextMenu_Gw_Cancel));
+            grfQue.ContextMenu = menuGw;
+
             grfQue.Rows.Count = dt.Rows.Count + 1;
             grfQue.Cols.Count = 10;
             C1TextBox txt = new C1TextBox();
@@ -149,8 +163,7 @@ namespace clinic_ivf.gui
             grfQue.Cols[colVsTime].Caption = "Time visit";
             grfQue.Cols[colVsEtime].Caption = "Time finish";
             grfQue.Cols[colStatus].Caption = "Status";
-
-            ContextMenu menuGw = new ContextMenu();
+            
             //menuGw.MenuItems.Add("&receive operation", new EventHandler(ContextMenu_Apm));
             //menuGw.MenuItems.Add("receive operation", new EventHandler(ContextMenu_order));
             //menuGw.MenuItems.Add("&LAB request FORM A", new EventHandler(ContextMenu_LAB_req_formA_Ptt));
@@ -190,6 +203,12 @@ namespace clinic_ivf.gui
             grfQue.Cols[colID].Visible = false;
             //theme1.SetTheme(grfQue, ic.theme);
 
+        }
+        private void openBillNew(String reqId, String name)
+        {
+            FrmCashierAdd frm = new FrmCashierAdd(ic, "", reqId);
+            frm.FormBorderStyle = FormBorderStyle.None;
+            menu.AddNewTab(frm, name);
         }
         private void FrmCashierView_Load(object sender, EventArgs e)
         {

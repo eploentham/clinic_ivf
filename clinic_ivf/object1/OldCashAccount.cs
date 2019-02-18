@@ -6,11 +6,12 @@ using System.Threading.Tasks;
 
 namespace clinic_ivf.object1
 {
-    public class OldCreditCardAccount:Persistent
+    public class OldCashAccount:Persistent
     {
-        public String CreditCardID { get; set; }
-        public String CreditCardName { get; set; }
+        public String CashID { get; set; }
+        public String CashName { get; set; }
         public String IntLock { get; set; }
+        public String active { get; set; }
 
     }
 }
