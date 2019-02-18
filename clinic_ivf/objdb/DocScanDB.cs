@@ -48,6 +48,7 @@ namespace clinic_ivf.objdb
             dsc.an_date = "an_date";
             dsc.status_ipd = "status_ipd";
             dsc.an_cnt = "an_cnt";
+            dsc.folder_ftp = "folder_ftp";
 
             dsc.table = "t_doc_scan";
             dsc.pkField = "doc_scan_id";
@@ -227,6 +228,7 @@ namespace clinic_ivf.objdb
             p.an_date = p.an_date == null ? "" : p.an_date;
             p.status_ipd = p.status_ipd == null ? "" : p.status_ipd;
             p.an_cnt = p.an_cnt == null ? "" : p.an_cnt;
+            p.folder_ftp = p.folder_ftp == null ? "" : p.folder_ftp;
 
             p.doc_group_id = long.TryParse(p.doc_group_id, out chk) ? chk.ToString() : "0";
             p.row_no = long.TryParse(p.row_no, out chk) ? chk.ToString() : "0";
@@ -238,65 +240,73 @@ namespace clinic_ivf.objdb
         {
             String re = "";
             String sql = "";
-            DataTable dt = new DataTable();
+            //DataTable dt = new DataTable();
             p.active = "1";
             //p.ssdata_id = "";
             int chk = 0;
             chkNull(p);
-            //sql = "Insert Into " + dsc.table + " (" + dsc.doc_group_id + "," + dsc.active + "," + dsc.row_no + "," +
-            //    dsc.host_ftp + "," + dsc.image_path + "," + dsc.hn + "," +
-            //    dsc.vn + "," + dsc.visit_date + "," + dsc.remark + "," +
-            //    dsc.date_create + "," + dsc.date_modi + "," + dsc.date_cancel + "," +
-            //    dsc.user_create + "," + dsc.user_modi + "," + dsc.user_cancel + "," +
-            //    dsc.an + "," + dsc.doc_group_sub_id + "," + dsc.pre_no + "," +
-            //    dsc.an_date + "," + dsc.status_ipd + "," + dsc.an_cnt + " " +
-            //    ") " +
-            //    "Values ('" + p.doc_group_id + "','1','" + p.row_no + "',"+
-            //    "'"+ p.host_ftp + "','" + p.image_path + "','" + p.hn + "'," +
-            //    "'" + p.vn + "','" + p.visit_date + "','" + p.remark + "'," +
-            //    "convert(varchar, getdate(), 23),'" + p.date_modi + "','" + p.date_cancel + "'," +
-            //    "'" + userId + "','" + p.user_modi + "','" + p.user_cancel + "'," +
-            //    "'" + p.an + "','" + p.doc_group_sub_id + "','" + p.pre_no + "'," +
-            //    "'" + p.an_date + "','" + p.status_ipd + "','" + p.an_cnt + "' " +
-            //    ")";
-            //try
-            //{
-            //    conn.comStore = new System.Data.SqlClient.SqlCommand();
-            //    conn.comStore.Connection = conn.conn;
-            //    conn.comStore.CommandText = "insert_doc_scan";
-            //    conn.comStore.CommandType = CommandType.StoredProcedure;
-            //    conn.comStore.Parameters.AddWithValue("doc_group_id", p.doc_group_id);
-            //    conn.comStore.Parameters.AddWithValue("host_ftp", p.host_ftp);
-            //    conn.comStore.Parameters.AddWithValue("hn", p.hn);
-            //    conn.comStore.Parameters.AddWithValue("vn", p.vn);
-            //    conn.comStore.Parameters.AddWithValue("remark", p.remark);
-            //    conn.comStore.Parameters.AddWithValue("user_create", userId);
-            //    conn.comStore.Parameters.AddWithValue("an", p.an);
-            //    conn.comStore.Parameters.AddWithValue("doc_group_sub_id", p.doc_group_sub_id);
-            //    conn.comStore.Parameters.AddWithValue("pre_no", p.pre_no);
-            //    conn.comStore.Parameters.AddWithValue("an_date", p.an_date);
-            //    conn.comStore.Parameters.AddWithValue("status_ipd", p.status_ipd);
-            //    conn.comStore.Parameters.AddWithValue("ext", p.image_path);
-            //    conn.comStore.Parameters.AddWithValue("visit_date", p.visit_date);
-            //    SqlParameter retval =  conn.comStore.Parameters.Add("row_no1", SqlDbType.VarChar, 50);
-            //    retval.Value = "";
-            //    retval.Direction = ParameterDirection.Output;
+            sql = "Insert Into " + dsc.table + " set " +
+                "" + dsc.doc_group_id + "= '" + p.doc_group_id + "'" +
+                "," + dsc.active + "= '" + p.active + "'" +
+                "," + dsc.row_no + "= '" + p.row_no + "'" +
+                "," + dsc.host_ftp + "= '" + p.host_ftp + "'" +
+                "," + dsc.image_path + "= '" + p.image_path + "'" +
+                "," + dsc.hn + "= '" + p.hn + "'" +
+                "," + dsc.vn + "= '" + p.vn + "'" +
+                "," + dsc.visit_date + "= '" + p.visit_date + "'" +
+                "," + dsc.remark + "= '" + p.remark + "'" +
+                "," + dsc.date_create + "= now()" +
+                "," + dsc.date_modi + "= '" +
+                "," + dsc.date_cancel + "= ''" +
+                "," + dsc.user_create + "= '" + userId + "'" +
+                "," + dsc.user_modi + "= ''" +
+                "," + dsc.user_cancel + "= ''" +
+                "," + dsc.an + "= '" + p.an + "'" +
+                "," + dsc.doc_group_sub_id + "= '" + p.doc_group_sub_id + "'" +
+                "," + dsc.pre_no + "= '" + p.pre_no + "'" +
+                "," + dsc.an_date + "= '" + p.an_date + "'" +
+                "," + dsc.status_ipd + "= '" + p.status_ipd + "'" +
+                "," + dsc.an_cnt + " " + "= '" + p.an_cnt + "'" +
+                "," + dsc.folder_ftp + " " + "= '" + p.folder_ftp + "'" +
+                "";
+            try
+            {
+                //    conn.comStore = new System.Data.SqlClient.SqlCommand();
+                //    conn.comStore.Connection = conn.conn;
+                //    conn.comStore.CommandText = "insert_doc_scan";
+                //    conn.comStore.CommandType = CommandType.StoredProcedure;
+                //    conn.comStore.Parameters.AddWithValue("doc_group_id", p.doc_group_id);
+                //    conn.comStore.Parameters.AddWithValue("host_ftp", p.host_ftp);
+                //    conn.comStore.Parameters.AddWithValue("hn", p.hn);
+                //    conn.comStore.Parameters.AddWithValue("vn", p.vn);
+                //    conn.comStore.Parameters.AddWithValue("remark", p.remark);
+                //    conn.comStore.Parameters.AddWithValue("user_create", userId);
+                //    conn.comStore.Parameters.AddWithValue("an", p.an);
+                //    conn.comStore.Parameters.AddWithValue("doc_group_sub_id", p.doc_group_sub_id);
+                //    conn.comStore.Parameters.AddWithValue("pre_no", p.pre_no);
+                //    conn.comStore.Parameters.AddWithValue("an_date", p.an_date);
+                //    conn.comStore.Parameters.AddWithValue("status_ipd", p.status_ipd);
+                //    conn.comStore.Parameters.AddWithValue("ext", p.image_path);
+                //    conn.comStore.Parameters.AddWithValue("visit_date", p.visit_date);
+                //    SqlParameter retval =  conn.comStore.Parameters.Add("row_no1", SqlDbType.VarChar, 50);
+                //    retval.Value = "";
+                //    retval.Direction = ParameterDirection.Output;
 
-
-            //    conn.conn.Open();
-            //    conn.comStore.ExecuteNonQuery();
-            //    re = (String)conn.comStore.Parameters["row_no1"].Value;
-            //    //string retunvalue = (string)sqlcomm.Parameters["@b"].Value;
-            //}
-            //catch (Exception ex)
-            //{
-            //    sql = ex.Message + " " + ex.InnerException;
-            //}
-            //finally
-            //{
-            //    conn.conn.Close();
-            //    conn.comStore.Dispose();
-            //}
+                re = conn.ExecuteNonQuery(conn.conn, sql);
+                //conn.Open();
+                //    conn.comStore.ExecuteNonQuery();
+                //    re = (String)conn.comStore.Parameters["row_no1"].Value;
+                //    //string retunvalue = (string)sqlcomm.Parameters["@b"].Value;
+            }
+            catch (Exception ex)
+            {
+                sql = ex.Message + " " + ex.InnerException;
+            }
+            finally
+            {
+                conn.conn.Close();
+                //conn.comStore.Dispose();
+            }
             return re;
         }
         public String update(DocScan p, String userId)
@@ -314,7 +324,7 @@ namespace clinic_ivf.objdb
                 "," + dsc.vn + " = '" + p.vn + "'" +
                 "," + dsc.visit_date + " = '" + p.visit_date + "'" +
                 "," + dsc.remark + " = '" + p.remark + "'" +
-                "," + dsc.date_modi + " = convert(varchar, getdate(), 23)" +
+                "," + dsc.date_modi + " = now()" +
                 "," + dsc.user_modi + " = '" + userId + "'" +
                 "," + dsc.an + " = '" + p.an + "'" +
                 "," + dsc.doc_group_sub_id + " = '" + p.doc_group_sub_id + "'" +
@@ -322,6 +332,7 @@ namespace clinic_ivf.objdb
                 "," + dsc.an_date + " = '" + p.an_date + "'" +
                 "," + dsc.status_ipd + " = '" + p.status_ipd + "'" +
                 "," + dsc.an_cnt + " = '" + p.an_cnt + "'" +
+                "," + dsc.folder_ftp + " = '" + p.folder_ftp + "'" +
                 "Where " + dsc.pkField + "='" + p.doc_scan_id + "'"
                 ;
 
@@ -401,6 +412,7 @@ namespace clinic_ivf.objdb
                 dgs1.an_date = dt.Rows[0][dsc.an_date].ToString();
                 dgs1.status_ipd = dt.Rows[0][dsc.status_ipd].ToString();
                 dgs1.an_cnt = dt.Rows[0][dsc.an_cnt].ToString();
+                dgs1.folder_ftp = dt.Rows[0][dsc.an_cnt].ToString();
             }
             else
             {
@@ -432,6 +444,7 @@ namespace clinic_ivf.objdb
             dgs1.an_date = "";
             dgs1.status_ipd = "";
             dgs1.an_cnt = "";
+            dgs1.folder_ftp = "";
             return dgs1;
         }
         //public void setCboBsp(C1ComboBox c, String selected)
