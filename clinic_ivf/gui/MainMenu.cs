@@ -76,6 +76,33 @@ namespace clinic_ivf.gui
             menuDrugPatient.Click += MenuDrugPatient_Click;
             menuReqLabFormA.Click += MenuReqLabFormA_Click;
             menuCashierDefault.Click += MenuCashierDefault_Click;
+            menuDocGroupScan.Click += MenuDocGroupScan_Click;
+            menuDocGroupSubScan.Click += MenuDocGroupSubScan_Click;
+            menuMedicalRecordDocScan.Click += MenuMedicalRecordDocScan_Click;
+        }
+
+        private void MenuMedicalRecordDocScan_Click(object sender, EventArgs e)
+        {
+            //throw new NotImplementedException();
+            FrmScanAdd frm = new FrmScanAdd(ic);
+            frm.FormBorderStyle = FormBorderStyle.None;
+            AddNewTab(frm, menuMedicalRecordDocScan.Text + " ");
+        }
+
+        private void MenuDocGroupSubScan_Click(object sender, EventArgs e)
+        {
+            //throw new NotImplementedException();
+            FrmDocGroupSub frm = new FrmDocGroupSub(ic);
+            frm.FormBorderStyle = FormBorderStyle.None;
+            AddNewTab(frm, menuDocGroupSubScan.Text + " ");
+        }
+
+        private void MenuDocGroupScan_Click(object sender, EventArgs e)
+        {
+            //throw new NotImplementedException();
+            FrmDocGroupScan frm = new FrmDocGroupScan(ic);
+            frm.FormBorderStyle = FormBorderStyle.None;
+            AddNewTab(frm, menuDocGroupScan.Text + " ");
         }
 
         private void MenuCashierDefault_Click(object sender, EventArgs e)

@@ -1334,3 +1334,6 @@ Set Status = '0'
 Where ID = '16282'
 
 https://windowsreport.com/windows-10-ftp-client-wont-work/#.XDKS5lwzaUk
+
+ALTER TABLE ivf.b_doc_group_scan AUTO_INCREMENT = 2210000000;
+ALTER TABLE ivf.b_doc_group_sub_scan AUTO_INCREMENT = 2220000000;

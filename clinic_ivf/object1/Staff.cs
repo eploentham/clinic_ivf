@@ -43,5 +43,6 @@ namespace clinic_ivf.object1
         public String status_module_pharmacy { get; set; }
         public String status_module_lab { get; set; }
         public String status_module_cashier { get; set; }
+        public String status_module_medicalrecord { get; set; }
     }
 }

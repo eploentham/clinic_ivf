@@ -188,7 +188,8 @@ namespace clinic_ivf.control
             iniC.grfRowRed = iniF.getIni("app", "grfRowRed");
             iniC.grfRowGreen = iniF.getIni("app", "grfRowGreen");
             iniC.grfRowYellow = iniF.getIni("app", "grfRowYellow");
-
+            iniC.timerImgScanNew = iniF.getIni("app", "timerImgScanNew");
+            iniC.pathImageScan = iniF.getIni("app", "pathImageScan");
             iniC.patientaddpanel1weight = iniF.getIni("app", "patientaddpanel1weight");
 
             iniC.grdViewFontName = iniC.grdViewFontName.Equals("") ? "Microsoft Sans Serif" : iniC.grdViewFontName;
@@ -220,6 +221,8 @@ namespace clinic_ivf.control
             iniC.grfRowYellow = iniC.grfRowYellow == null ? "#FFDE03" : iniC.grfRowYellow.Equals("") ? "#FFDE03" : iniC.grfRowYellow;
 
             iniC.statusAppDonor = iniC.statusAppDonor == null ? "1" : iniC.statusAppDonor.Equals("") ? "1" : iniC.statusAppDonor;
+            iniC.timerImgScanNew = iniC.timerImgScanNew == null ? "2" : iniC.timerImgScanNew.Equals("") ? "0" : iniC.timerImgScanNew;
+            iniC.pathImageScan = iniC.pathImageScan == null ? "d:\\images" : iniC.pathImageScan.Equals("") ? "d:\\images" : iniC.pathImageScan;
 
             int.TryParse(iniC.grdViewFontSize, out grdViewFontSize);
         }
@@ -780,6 +783,19 @@ namespace clinic_ivf.control
             }
             throw new Exception("No network adapters with an IPv4 address in the system!");
         }
+        public Image RotateImage(Image img)
+        {
+            var bmp = new Bitmap(img);
 
+            using (Graphics gfx = Graphics.FromImage(bmp))
+            {
+                gfx.Clear(Color.White);
+                gfx.DrawImage(img, 0, 0, img.Width, img.Height);
+            }
+
+            bmp.RotateFlip(RotateFlipType.Rotate270FlipNone);
+            //bmp.Dispose();
+            return bmp;
+        }
     }
 }

@@ -49,7 +49,7 @@ namespace clinic_ivf.objdb
             dsc.status_ipd = "status_ipd";
             dsc.an_cnt = "an_cnt";
 
-            dsc.table = "doc_scan";
+            dsc.table = "t_doc_scan";
             dsc.pkField = "doc_scan_id";
         }
         public void getlBsp()

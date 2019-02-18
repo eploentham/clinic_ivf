@@ -75,7 +75,7 @@ namespace clinic_ivf.gui
             initGrfProc();
             setGrfReq();
             setGrfProc();
-            initGrfSearch();
+            //initGrfSearch();
         }
 
         private void TxtSearch_KeyUp(object sender, KeyEventArgs e)

@@ -155,6 +155,18 @@
     <Compile Include="gui\FrmDepartmentS.designer.cs">
       <DependentUpon>FrmDepartmentS.cs</DependentUpon>
     </Compile>
+    <Compile Include="gui\FrmDocGroupScan.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="gui\FrmDocGroupScan.designer.cs">
+      <DependentUpon>FrmDocGroupScan.cs</DependentUpon>
+    </Compile>
+    <Compile Include="gui\FrmDocGroupSub.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="gui\FrmDocGroupSub.designer.cs">
+      <DependentUpon>FrmDocGroupSub.cs</DependentUpon>
+    </Compile>
     <Compile Include="gui\FrmLabFetAdd.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -325,6 +337,24 @@
     </Compile>
     <Compile Include="gui\FrmReport.Designer.cs">
       <DependentUpon>FrmReport.cs</DependentUpon>
+    </Compile>
+    <Compile Include="gui\FrmScanAdd.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="gui\FrmScanAdd.designer.cs">
+      <DependentUpon>FrmScanAdd.cs</DependentUpon>
+    </Compile>
+    <Compile Include="gui\FrmScanAddView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="gui\FrmScanAddView.designer.cs">
+      <DependentUpon>FrmScanAddView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="gui\FrmScanView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="gui\FrmScanView.designer.cs">
+      <DependentUpon>FrmScanView.cs</DependentUpon>
     </Compile>
     <Compile Include="gui\FrmSearchHn.cs">
       <SubType>Form</SubType>
@@ -622,6 +652,12 @@
     <EmbeddedResource Include="gui\FrmDepartmentS.resx">
       <DependentUpon>FrmDepartmentS.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="gui\FrmDocGroupScan.resx">
+      <DependentUpon>FrmDocGroupScan.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="gui\FrmDocGroupSub.resx">
+      <DependentUpon>FrmDocGroupSub.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="gui\FrmLabFetAdd.resx">
       <DependentUpon>FrmLabFetAdd.cs</DependentUpon>
     </EmbeddedResource>
@@ -705,6 +741,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="gui\FrmReport.resx">
       <DependentUpon>FrmReport.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="gui\FrmScanAdd.resx">
+      <DependentUpon>FrmScanAdd.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="gui\FrmScanAddView.resx">
+      <DependentUpon>FrmScanAddView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="gui\FrmScanView.resx">
+      <DependentUpon>FrmScanView.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="gui\FrmSearchHn.resx">
       <DependentUpon>FrmSearchHn.cs</DependentUpon>

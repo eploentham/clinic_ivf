@@ -31,7 +31,7 @@ namespace clinic_ivf.objdb
             dgss.doc_group_id = "doc_group_id";
             dgss.remark = "remark";
 
-            dgss.table = "doc_group_sub_scan";
+            dgss.table = "b_doc_group_sub_scan";
             dgss.pkField = "doc_group_sub_id";
         }
         public void getlBsp()
@@ -97,7 +97,7 @@ namespace clinic_ivf.objdb
             DataTable dt = new DataTable();
             String sql = "select dgss.*, dgs.doc_group_name " +
                 "From " + dgss.table + " dgss " +
-                "Left Join doc_group_scan dgs On dgs.doc_group_id = dgss.doc_group_id " +
+                "Left Join b_doc_group_scan dgs On dgs.doc_group_id = dgss.doc_group_id " +
                 " Where dgss." + dgss.active + " ='1' " +
                 "Order By dgss.doc_group_id, dgss.doc_group_sub_id ";
             dt = conn.selectData(conn.conn, sql);

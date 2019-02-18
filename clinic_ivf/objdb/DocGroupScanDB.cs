@@ -31,7 +31,7 @@ namespace clinic_ivf.objdb
             dgs.remark = "remark";
             dgs.status_opd = "status_opd";
 
-            dgs.table = "doc_group_scan";
+            dgs.table = "b_doc_group_scan";
             dgs.pkField = "doc_group_id";
         }
         public void getlBsp()

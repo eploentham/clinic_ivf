@@ -70,6 +70,9 @@ namespace clinic_ivf.objdb
         public OldPackageDepositDB oPkgdpDB;
         public OldPackageDepositDetailDB oPkgdpdDB;
         public OldPackageSellThruDB opkgstDB;
+        public DocGroupScanDB dgsDB;
+        public DocGroupSubScanDB dgssDB;
+        public DocScanDB dscDB;
 
         public IvfDB(ConnectDB c)
         {
@@ -132,6 +135,9 @@ namespace clinic_ivf.objdb
             oPkgdpDB = new OldPackageDepositDB(conn);
             oPkgdpdDB = new OldPackageDepositDetailDB(conn);
             opkgstDB = new OldPackageSellThruDB(conn);
+            dgsDB = new DocGroupScanDB(conn);
+            dgssDB = new DocGroupSubScanDB(conn);
+            dscDB = new DocScanDB(conn);
 
             Console.WriteLine("ivfDB end");
         }
