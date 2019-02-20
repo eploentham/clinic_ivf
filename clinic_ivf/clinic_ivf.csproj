@@ -344,11 +344,11 @@
     <Compile Include="gui\FrmScanAdd.designer.cs">
       <DependentUpon>FrmScanAdd.cs</DependentUpon>
     </Compile>
-    <Compile Include="gui\FrmScanAddView.cs">
+    <Compile Include="gui\FrmScanAddEdit.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="gui\FrmScanAddView.designer.cs">
-      <DependentUpon>FrmScanAddView.cs</DependentUpon>
+    <Compile Include="gui\FrmScanAddEdit.designer.cs">
+      <DependentUpon>FrmScanAddEdit.cs</DependentUpon>
     </Compile>
     <Compile Include="gui\FrmScanView.cs">
       <SubType>Form</SubType>
@@ -745,8 +745,8 @@
     <EmbeddedResource Include="gui\FrmScanAdd.resx">
       <DependentUpon>FrmScanAdd.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="gui\FrmScanAddView.resx">
-      <DependentUpon>FrmScanAddView.cs</DependentUpon>
+    <EmbeddedResource Include="gui\FrmScanAddEdit.resx">
+      <DependentUpon>FrmScanAddEdit.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="gui\FrmScanView.resx">
       <DependentUpon>FrmScanView.cs</DependentUpon>

@@ -152,14 +152,14 @@ namespace clinic_ivf.objdb
 
             return dt;
         }
-        public DataTable selectByAn(String hn, String an)
+        public DataTable selectByVn(String hn, String an)
         {
             DocScan cop1 = new DocScan();
             DataTable dt = new DataTable();
             String sql = "select * " +
                 "From " + dsc.table + " dsc " +
                 //"Left Join f_patient_prefix pfx On stf.prefix_id = pfx.f_patient_prefix_id " +
-                "Where dsc." + dsc.hn + " ='" + hn + "' and dsc." + dsc.an + "='" + an + "' and dsc." + dsc.active + "='1'" +
+                "Where dsc." + dsc.hn + " ='" + hn + "' and dsc." + dsc.vn + "='" + an + "' and dsc." + dsc.active + "='1'" +
                 "Order By doc_group_id ";
             dt = conn.selectData(conn.conn, sql);
 
@@ -256,7 +256,7 @@ namespace clinic_ivf.objdb
                 "," + dsc.visit_date + "= '" + p.visit_date + "'" +
                 "," + dsc.remark + "= '" + p.remark + "'" +
                 "," + dsc.date_create + "= now()" +
-                "," + dsc.date_modi + "= '" +
+                "," + dsc.date_modi + "= ''" +
                 "," + dsc.date_cancel + "= ''" +
                 "," + dsc.user_create + "= '" + userId + "'" +
                 "," + dsc.user_modi + "= ''" +
@@ -358,6 +358,27 @@ namespace clinic_ivf.objdb
             else
             {
                 re = update(p, "");
+            }
+
+            return re;
+        }
+        public String updateImagepath(String image_path, String id)
+        {
+            String re = "";
+            String sql = "";
+            int chk = 0;
+            //chkNull(p);
+            sql = "Update " + dsc.table + " Set " +
+                " " + dsc.image_path + " = '" + image_path + "'" +
+                "Where " + dsc.pkField + "='" + id + "'"
+                ;
+            try
+            {
+                re = conn.ExecuteNonQuery(conn.conn, sql);
+            }
+            catch (Exception ex)
+            {
+                sql = ex.Message + " " + ex.InnerException;
             }
 
             return re;

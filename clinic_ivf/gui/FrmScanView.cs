@@ -448,10 +448,11 @@ namespace clinic_ivf.gui
 
             clearGrf();
             String statusOPD = "", vsDate="", vn="", an="", anDate="", hn="", preno="";
-            statusOPD = grfVs[e.NewRange.r1, colVsStatus] != null ? grfVs[e.NewRange.r1, colVsStatus].ToString() : "";
-            preno = grfVs[e.NewRange.r1, colVsPreno] != null ? grfVs[e.NewRange.r1, colVsPreno].ToString() : "";
+            //statusOPD = grfVs[e.NewRange.r1, colVsStatus] != null ? grfVs[e.NewRange.r1, colVsStatus].ToString() : "";
+            //preno = grfVs[e.NewRange.r1, colVsPreno] != null ? grfVs[e.NewRange.r1, colVsPreno].ToString() : "";
             vsDate = grfVs[e.NewRange.r1, colVsVsDate] != null ? grfVs[e.NewRange.r1, colVsVsDate].ToString() : "";
             txtVisitDate.Value = vsDate;
+            statusOPD = "OPD";
             if (statusOPD.Equals("OPD"))
             {
                 chkIPD.Checked = false;
@@ -472,17 +473,17 @@ namespace clinic_ivf.gui
             Image stffnoteL, stffnoteR;
             if (vsDate.Length > 8)
             {
-                String preno1 = preno;
-                dd = vsDate.Substring(0, 2);
-                mm = vsDate.Substring(3,2);
-                yy = vsDate.Substring(vsDate.Length - 4);
-                file = "\\\\172.25.10.5\\image\\OPD\\"+ yy+"\\"+mm+"\\"+dd+"\\";
-                preno1 = "000000"+ preno1;
-                preno1 = preno1.Substring(preno1.Length- 6);
-                stffnoteL = Image.FromFile(file+ preno1+"R.JPG");
-                stffnoteR = Image.FromFile(file+ preno1+ "S.JPG");
-                picL.Image = stffnoteL;
-                picR.Image = stffnoteR;
+                //String preno1 = preno;
+                //dd = vsDate.Substring(0, 2);
+                //mm = vsDate.Substring(3,2);
+                //yy = vsDate.Substring(vsDate.Length - 4);
+                //file = "\\\\172.25.10.5\\image\\OPD\\"+ yy+"\\"+mm+"\\"+dd+"\\";
+                //preno1 = "000000"+ preno1;
+                //preno1 = preno1.Substring(preno1.Length- 6);
+                //stffnoteL = Image.FromFile(file+ preno1+"R.JPG");
+                //stffnoteR = Image.FromFile(file+ preno1+ "S.JPG");
+                //picL.Image = stffnoteL;
+                //picR.Image = stffnoteR;
             }
             DataTable dtOrder = new DataTable();
             vn = grfVs[e.NewRange.r1, colVsVn] != null ? grfVs[e.NewRange.r1, colVsVn].ToString() : "";
@@ -520,7 +521,7 @@ namespace clinic_ivf.gui
             }
             GC.Collect();
             DataTable dt = new DataTable();
-            dt = ic.ivfDB.dscDB.selectByAn(txtHn.Text, an);
+            dt = ic.ivfDB.dscDB.selectByVn(txtHn.Text, vn);
             if (dt.Rows.Count > 0)
             {
                 try
@@ -536,11 +537,12 @@ namespace clinic_ivf.gui
                     foreach (DataRow row in dt.Rows)
                     {
                         if (findTrue) break;
-                        String dgssid = "", filename = "", ftphost = "", id = "";
+                        String dgssid = "", filename = "", ftphost = "", id = "", folder="";
                         id = row[ic.ivfDB.dscDB.dsc.doc_scan_id].ToString();
                         dgssid = row[ic.ivfDB.dscDB.dsc.doc_group_sub_id].ToString();
                         filename = row[ic.ivfDB.dscDB.dsc.image_path].ToString();
                         ftphost = row[ic.ivfDB.dscDB.dsc.host_ftp].ToString();
+                        folder = row[ic.ivfDB.dscDB.dsc.folder_ftp].ToString();
                         foreach (Control con in panel3.Controls)
                         {
                             if (findTrue) break;
@@ -573,7 +575,7 @@ namespace clinic_ivf.gui
                                                                     MemoryStream stream;
                                                                     Image loadedImage, resizedImage;
                                                                     stream = new MemoryStream();
-                                                                    stream = ftp.download(filename);
+                                                                    stream = ftp.download(ftphost, folder+"//"+filename);
 
                                                                     //loadedImage = Image.FromFile(filename);
                                                                     
@@ -680,7 +682,7 @@ namespace clinic_ivf.gui
             grfVs.Cols[colVsPreno].Editor = text;
 
             grfVs.Cols[colVsVsDate].Width = 100;
-            grfVs.Cols[colVsVn].Width = 80;
+            grfVs.Cols[colVsVn].Width = 120;
             grfVs.Cols[colVsDept].Width = 100;
             grfVs.Cols[colVsPreno].Width = 100;
             grfVs.Cols[colVsStatus].Width = 60;
@@ -691,7 +693,7 @@ namespace clinic_ivf.gui
             grfVs.Cols[colVsDept].Caption = "แผนก";
             grfVs.Cols[colVsPreno].Caption = "";
             grfVs.Cols[colVsPreno].Visible = false;
-            grfVs.Cols[colVsVn].Visible = false;
+            grfVs.Cols[colVsVn].Visible = true;
             grfVs.Cols[colVsAn].Visible = false;
             grfVs.Cols[colVsAndate].Visible = false;
             grfVs.Rows[0].Visible = false;
@@ -700,9 +702,10 @@ namespace clinic_ivf.gui
             grfVs.Cols[colVsVn].AllowEditing = false;
             grfVs.Cols[colVsDept].AllowEditing = false;
             grfVs.Cols[colVsPreno].AllowEditing = false;
+            if (txtHn.Text.Length <= 0) return;
 
             DataTable dt = new DataTable();
-            //dt = ic.ivfDB.vsDB.selectVisitByHn3(txtHn.Text);
+            dt = ic.ivfDB.vsOldDB.selectByHN(txtHn.Text);
             int i = 1, j = 1, row = grfVs.Rows.Count;
             //txtVN.Value = dt.Rows.Count;
             //txtName.Value = "";
@@ -712,15 +715,15 @@ namespace clinic_ivf.gui
                 Row rowa = grfVs.Rows.Add();
                 String status = "", vn = "";
                 
-                status = row1["MNC_PAT_FLAG"] != null ? row1["MNC_PAT_FLAG"].ToString().Equals("O") ? "OPD" : "IPD" : "-";
-                vn = row1["MNC_VN_NO"].ToString() + "/" + row1["MNC_VN_SEQ"].ToString() + "(" + row1["MNC_VN_SUM"].ToString() + ")" ;
-                rowa[colVsVsDate] = ic.datetoShow(row1["mnc_date"]);
-                rowa[colVsVn] = vn;
+                //status = row1["MNC_PAT_FLAG"] != null ? row1["MNC_PAT_FLAG"].ToString().Equals("O") ? "OPD" : "IPD" : "-";
+                //vn = row1["MNC_VN_NO"].ToString() + "/" + row1["MNC_VN_SEQ"].ToString() + "(" + row1["MNC_VN_SUM"].ToString() + ")" ;
+                rowa[colVsVsDate] = ic.datetoShow(row1["VDate"]);
+                //rowa[colVsVn] = vn;
                 rowa[colVsStatus] = status;
-                rowa[colVsPreno] = row1["mnc_pre_no"].ToString();
-                rowa[colVsDept] = row1["MNC_SHIF_MEMO"].ToString();
-                rowa[colVsAn] = row1["mnc_an_no"].ToString()+"/"+ row1["mnc_an_yr"].ToString();
-                rowa[colVsAndate] = ic.datetoShow(row1["mnc_ad_date"].ToString());
+                rowa[colVsVn] = row1["VN"].ToString();
+                //rowa[colVsDept] = row1["MNC_SHIF_MEMO"].ToString();
+                //rowa[colVsAn] = row1["mnc_an_no"].ToString()+"/"+ row1["mnc_an_yr"].ToString();
+                //rowa[colVsAndate] = ic.datetoShow(row1["mnc_ad_date"].ToString());
             }
             //ContextMenu menuGw = new ContextMenu();
             //menuGw.MenuItems.Add("&ยกเลิก รูปภาพนี้", new EventHandler(ContextMenu_Void));

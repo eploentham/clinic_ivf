@@ -229,7 +229,7 @@ namespace clinic_ivf.gui
             //throw new NotImplementedException();
             ic.sVsOld.PIDS = "";
             ic.sVsOld.PName = "";
-            FrmSearchHn frm = new FrmSearchHn(ic, FrmSearchHn.StatusConnection.host, FrmSearchHn.StatusSearch.PttSearch, FrmSearchHn.StatusSearchTable.PttSearch);
+            FrmSearchHn frm = new FrmSearchHn(ic, FrmSearchHn.StatusConnection.host, FrmSearchHn.StatusSearch.PttSearch, FrmSearchHn.StatusSearchTable.VisitSearch);
             frm.ShowDialog(this);
             //String[] an = ic.sPtt.an.Split('/');
             //if (an.Length > 1)
@@ -244,7 +244,7 @@ namespace clinic_ivf.gui
             //}
             txtHn.Value = ic.sVsOld.PIDS;
             txtName.Value = ic.sVsOld.PName;
-            //txtVN.Value = ic.sPtt.vn;
+            txtVN.Value = ic.sVsOld.VN;
             //txtVisitDate.Value = ic.sPtt.visitDate;
             //txtPreNo.Value = ic.sPtt.preno;
             
@@ -722,7 +722,7 @@ namespace clinic_ivf.gui
                     //}
                     dsc.host_ftp = ic.iniC.hostFTP;
                     //dsc.image_path = txtHn.Text + "//" + txtHn.Text + "_" + dgssid + "_" + dsc.row_no + "." + ext[ext.Length - 1];
-                    dsc.image_path = ext;
+                    dsc.image_path = "";
                     dsc.doc_group_sub_id = dgssid;
                     dsc.pre_no = txtPreNo.Text;
                     dsc.an = txtAN.Text;
@@ -734,15 +734,17 @@ namespace clinic_ivf.gui
                         dsc.an_date = "";
                     }
                     dsc.status_ipd = chkIPD.Checked ? "I" : "O";
+                    dsc.folder_ftp = ic.iniC.folderFTP;
                     String re = ic.ivfDB.dscDB.insertDocScan(dsc, ic.userId);
-                    dsc.image_path = txtHn.Text + "//" + txtHn.Text + "_" + re + ext;
+                    dsc.image_path = txtVN.Text + "//" + txtHn.Text.Replace("/","-") + "_"+ txtVN.Text + "_" + re + ext;
+                    String re1 = ic.ivfDB.dscDB.updateImagepath(dsc.image_path, re);
                     FtpClient ftp = new FtpClient(ic.iniC.hostFTP, ic.iniC.userFTP, ic.iniC.passFTP);
                     //MessageBox.Show("111", "");
-                    ftp.createDirectory(txtHn.Text);
+                    ftp.createDirectory(ic.iniC.folderFTP+"//"+ txtVN.Text);
                     //MessageBox.Show("222", "");
                     ftp.delete(dsc.image_path);
                     //MessageBox.Show("333", "");
-                    ftp.upload(dsc.image_path, filename);
+                    ftp.upload(ic.iniC.folderFTP+"//"+dsc.image_path, filename);
                     Boolean findTrue = false;
                     foreach(Control con in this.Controls)
                     {

@@ -162,6 +162,7 @@ namespace clinic_ivf.control
             iniC.userFTP = iniF.getIni("ftp", "userFTP");
             iniC.passFTP = iniF.getIni("ftp", "passFTP");
             iniC.portFTP = iniF.getIni("ftp", "portFTP");
+            iniC.folderFTP = iniF.getIni("ftp", "folderFTP");
 
             iniC.grdViewFontSize = iniF.getIni("app", "grdViewFontSize");
             iniC.grdViewFontName = iniF.getIni("app", "grdViewFontName");
@@ -191,6 +192,7 @@ namespace clinic_ivf.control
             iniC.timerImgScanNew = iniF.getIni("app", "timerImgScanNew");
             iniC.pathImageScan = iniF.getIni("app", "pathImageScan");
             iniC.patientaddpanel1weight = iniF.getIni("app", "patientaddpanel1weight");
+            
 
             iniC.grdViewFontName = iniC.grdViewFontName.Equals("") ? "Microsoft Sans Serif" : iniC.grdViewFontName;
 
@@ -223,7 +225,7 @@ namespace clinic_ivf.control
             iniC.statusAppDonor = iniC.statusAppDonor == null ? "1" : iniC.statusAppDonor.Equals("") ? "1" : iniC.statusAppDonor;
             iniC.timerImgScanNew = iniC.timerImgScanNew == null ? "2" : iniC.timerImgScanNew.Equals("") ? "0" : iniC.timerImgScanNew;
             iniC.pathImageScan = iniC.pathImageScan == null ? "d:\\images" : iniC.pathImageScan.Equals("") ? "d:\\images" : iniC.pathImageScan;
-
+            iniC.folderFTP = iniC.folderFTP == null ? "images_medical_record" : iniC.folderFTP.Equals("") ? "images_medical_record" : iniC.folderFTP;
             int.TryParse(iniC.grdViewFontSize, out grdViewFontSize);
         }
         public String datetoDB(String dt)
