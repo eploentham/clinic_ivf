@@ -102,7 +102,7 @@
             // 
             this.btnDel.Image = global::clinic_ivf.Properties.Resources.trash24;
             this.btnDel.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnDel.Location = new System.Drawing.Point(884, 13);
+            this.btnDel.Location = new System.Drawing.Point(934, 10);
             this.btnDel.Name = "btnDel";
             this.btnDel.Size = new System.Drawing.Size(71, 30);
             this.btnDel.TabIndex = 555;
@@ -151,9 +151,20 @@
             // 
             // 
             // 
+            this.txtAnDate.Calendar.ArrowColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
+            this.txtAnDate.Calendar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(87)))), ((int)(((byte)(87)))), ((int)(((byte)(87)))));
+            this.txtAnDate.Calendar.DayNamesColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
+            this.txtAnDate.Calendar.DayNamesFont = new System.Drawing.Font("Tahoma", 8F);
             this.txtAnDate.Calendar.Font = new System.Drawing.Font("Tahoma", 8F);
-            this.txtAnDate.Calendar.VisualStyle = C1.Win.C1Input.VisualStyle.Office2007Blue;
-            this.txtAnDate.Calendar.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2007Blue;
+            this.txtAnDate.Calendar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
+            this.txtAnDate.Calendar.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(162)))), ((int)(((byte)(162)))), ((int)(((byte)(162)))));
+            this.txtAnDate.Calendar.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.txtAnDate.Calendar.TitleBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(87)))), ((int)(((byte)(87)))), ((int)(((byte)(87)))));
+            this.txtAnDate.Calendar.TitleFont = new System.Drawing.Font("Tahoma", 8F);
+            this.txtAnDate.Calendar.TitleForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
+            this.txtAnDate.Calendar.TodayBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
+            this.txtAnDate.Calendar.TrailingForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(172)))), ((int)(((byte)(172)))), ((int)(((byte)(172)))));
+            this.txtAnDate.Calendar.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
             this.txtAnDate.Culture = 1054;
             this.txtAnDate.CurrentTimeZone = false;
             this.txtAnDate.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(172)))), ((int)(((byte)(172)))), ((int)(((byte)(172)))));
@@ -197,9 +208,9 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.BackColor = System.Drawing.Color.White;
+            this.label3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(87)))), ((int)(((byte)(87)))), ((int)(((byte)(87)))));
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(118)))), ((int)(((byte)(135)))));
+            this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
             this.label3.Location = new System.Drawing.Point(244, 39);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(36, 16);
@@ -228,9 +239,20 @@
             // 
             // 
             // 
+            this.txtVisitDate.Calendar.ArrowColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
+            this.txtVisitDate.Calendar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(87)))), ((int)(((byte)(87)))), ((int)(((byte)(87)))));
+            this.txtVisitDate.Calendar.DayNamesColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
+            this.txtVisitDate.Calendar.DayNamesFont = new System.Drawing.Font("Tahoma", 8F);
             this.txtVisitDate.Calendar.Font = new System.Drawing.Font("Tahoma", 8F);
-            this.txtVisitDate.Calendar.VisualStyle = C1.Win.C1Input.VisualStyle.Office2007Blue;
-            this.txtVisitDate.Calendar.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2007Blue;
+            this.txtVisitDate.Calendar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
+            this.txtVisitDate.Calendar.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(162)))), ((int)(((byte)(162)))), ((int)(((byte)(162)))));
+            this.txtVisitDate.Calendar.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.txtVisitDate.Calendar.TitleBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(87)))), ((int)(((byte)(87)))), ((int)(((byte)(87)))));
+            this.txtVisitDate.Calendar.TitleFont = new System.Drawing.Font("Tahoma", 8F);
+            this.txtVisitDate.Calendar.TitleForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
+            this.txtVisitDate.Calendar.TodayBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
+            this.txtVisitDate.Calendar.TrailingForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(172)))), ((int)(((byte)(172)))), ((int)(((byte)(172)))));
+            this.txtVisitDate.Calendar.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
             this.txtVisitDate.Culture = 1054;
             this.txtVisitDate.CurrentTimeZone = false;
             this.txtVisitDate.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(172)))), ((int)(((byte)(172)))), ((int)(((byte)(172)))));
@@ -259,9 +281,9 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.BackColor = System.Drawing.Color.White;
+            this.label6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(87)))), ((int)(((byte)(87)))), ((int)(((byte)(87)))));
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(118)))), ((int)(((byte)(135)))));
+            this.label6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
             this.label6.Location = new System.Drawing.Point(535, 39);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(71, 16);
@@ -273,7 +295,7 @@
             // 
             this.btnOpen.Image = global::clinic_ivf.Properties.Resources.Open_Large;
             this.btnOpen.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnOpen.Location = new System.Drawing.Point(981, 12);
+            this.btnOpen.Location = new System.Drawing.Point(1014, 9);
             this.btnOpen.Name = "btnOpen";
             this.btnOpen.Size = new System.Drawing.Size(71, 30);
             this.btnOpen.TabIndex = 546;
@@ -297,9 +319,9 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.BackColor = System.Drawing.Color.White;
+            this.label2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(87)))), ((int)(((byte)(87)))), ((int)(((byte)(87)))));
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(118)))), ((int)(((byte)(135)))));
+            this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
             this.label2.Location = new System.Drawing.Point(10, 39);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(36, 16);
@@ -349,9 +371,9 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.BackColor = System.Drawing.Color.White;
+            this.label4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(87)))), ((int)(((byte)(87)))), ((int)(((byte)(87)))));
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(118)))), ((int)(((byte)(135)))));
+            this.label4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
             this.label4.Location = new System.Drawing.Point(10, 15);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(37, 16);
@@ -386,7 +408,7 @@
             // 
             // sB
             // 
-            this.sB.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.sB.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(87)))), ((int)(((byte)(87)))), ((int)(((byte)(87)))));
             this.sB.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.sB1});
             this.sB.Location = new System.Drawing.Point(0, 712);

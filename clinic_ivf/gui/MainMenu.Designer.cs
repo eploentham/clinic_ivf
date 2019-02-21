@@ -50,6 +50,11 @@
             this.menuDrugPatient = new System.Windows.Forms.ToolStripMenuItem();
             this.menuCashier = new System.Windows.Forms.ToolStripMenuItem();
             this.menuCashierDefault = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuMedicalRecord = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuMedicalRecordInit = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuDocGroupScan = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuDocGroupSubScan = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuMedicalRecordDocScan = new System.Windows.Forms.ToolStripMenuItem();
             this.menuInit = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStaff = new System.Windows.Forms.ToolStripMenuItem();
             this.menuDept = new System.Windows.Forms.ToolStripMenuItem();
@@ -58,15 +63,11 @@
             this.menuOpuProce = new System.Windows.Forms.ToolStripMenuItem();
             this.menuFetProce = new System.Windows.Forms.ToolStripMenuItem();
             this.convertPatientDonorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuMedicalRecord = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuMedicalRecordInit = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuDocGroupScan = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuDocGroupSubScan = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuMedicalRecordDocScan = new System.Windows.Forms.ToolStripMenuItem();
             this.tCC1 = new C1.Win.C1Command.C1CommandDock();
             this.tC1 = new C1.Win.C1Command.C1DockingTab();
             this.PageS = new C1.Win.C1Command.C1DockingTabPage();
             this.theme1 = new C1.Win.C1Themes.C1ThemeController();
+            this.menuMedicalRecordView = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tCC1)).BeginInit();
             this.tCC1.SuspendLayout();
@@ -241,6 +242,43 @@
             this.menuCashierDefault.Size = new System.Drawing.Size(151, 22);
             this.menuCashierDefault.Text = "Cashier Screen";
             // 
+            // menuMedicalRecord
+            // 
+            this.menuMedicalRecord.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.menuMedicalRecordInit,
+            this.menuMedicalRecordDocScan,
+            this.menuMedicalRecordView});
+            this.menuMedicalRecord.Name = "menuMedicalRecord";
+            this.menuMedicalRecord.Size = new System.Drawing.Size(66, 20);
+            this.menuMedicalRecord.Text = "เวชระเบียน";
+            // 
+            // menuMedicalRecordInit
+            // 
+            this.menuMedicalRecordInit.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.menuDocGroupScan,
+            this.menuDocGroupSubScan});
+            this.menuMedicalRecordInit.Name = "menuMedicalRecordInit";
+            this.menuMedicalRecordInit.Size = new System.Drawing.Size(238, 22);
+            this.menuMedicalRecordInit.Text = "กำหนดค่า";
+            // 
+            // menuDocGroupScan
+            // 
+            this.menuDocGroupScan.Name = "menuDocGroupScan";
+            this.menuDocGroupScan.Size = new System.Drawing.Size(146, 22);
+            this.menuDocGroupScan.Text = "กลุ่มเอกสารหลัก";
+            // 
+            // menuDocGroupSubScan
+            // 
+            this.menuDocGroupSubScan.Name = "menuDocGroupSubScan";
+            this.menuDocGroupSubScan.Size = new System.Drawing.Size(146, 22);
+            this.menuDocGroupSubScan.Text = "กลุ่มเอกสารย่อย";
+            // 
+            // menuMedicalRecordDocScan
+            // 
+            this.menuMedicalRecordDocScan.Name = "menuMedicalRecordDocScan";
+            this.menuMedicalRecordDocScan.Size = new System.Drawing.Size(238, 22);
+            this.menuMedicalRecordDocScan.Text = "Scan เอกสาร เวชระเบียน (scanใหม่)";
+            // 
             // menuInit
             // 
             this.menuInit.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -298,42 +336,6 @@
             this.convertPatientDonorToolStripMenuItem.Size = new System.Drawing.Size(192, 22);
             this.convertPatientDonorToolStripMenuItem.Text = "Convert Patient Donor";
             // 
-            // menuMedicalRecord
-            // 
-            this.menuMedicalRecord.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.menuMedicalRecordInit,
-            this.menuMedicalRecordDocScan});
-            this.menuMedicalRecord.Name = "menuMedicalRecord";
-            this.menuMedicalRecord.Size = new System.Drawing.Size(66, 20);
-            this.menuMedicalRecord.Text = "เวชระเบียน";
-            // 
-            // menuMedicalRecordInit
-            // 
-            this.menuMedicalRecordInit.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.menuDocGroupScan,
-            this.menuDocGroupSubScan});
-            this.menuMedicalRecordInit.Name = "menuMedicalRecordInit";
-            this.menuMedicalRecordInit.Size = new System.Drawing.Size(184, 22);
-            this.menuMedicalRecordInit.Text = "กำหนดค่า";
-            // 
-            // menuDocGroupScan
-            // 
-            this.menuDocGroupScan.Name = "menuDocGroupScan";
-            this.menuDocGroupScan.Size = new System.Drawing.Size(146, 22);
-            this.menuDocGroupScan.Text = "กลุ่มเอกสารหลัก";
-            // 
-            // menuDocGroupSubScan
-            // 
-            this.menuDocGroupSubScan.Name = "menuDocGroupSubScan";
-            this.menuDocGroupSubScan.Size = new System.Drawing.Size(146, 22);
-            this.menuDocGroupSubScan.Text = "กลุ่มเอกสารย่อย";
-            // 
-            // menuMedicalRecordDocScan
-            // 
-            this.menuMedicalRecordDocScan.Name = "menuMedicalRecordDocScan";
-            this.menuMedicalRecordDocScan.Size = new System.Drawing.Size(184, 22);
-            this.menuMedicalRecordDocScan.Text = "Scan เอกสาร เวชระเบียน";
-            // 
             // tCC1
             // 
             this.tCC1.Controls.Add(this.tC1);
@@ -376,6 +378,12 @@
             // theme1
             // 
             this.theme1.Theme = "BeigeOne";
+            // 
+            // menuMedicalRecordView
+            // 
+            this.menuMedicalRecordView.Name = "menuMedicalRecordView";
+            this.menuMedicalRecordView.Size = new System.Drawing.Size(238, 22);
+            this.menuMedicalRecordView.Text = "Scan ดูเวชระเบียน";
             // 
             // MainMenu
             // 
@@ -441,5 +449,6 @@
         private System.Windows.Forms.ToolStripMenuItem menuMedicalRecordDocScan;
         private System.Windows.Forms.ToolStripMenuItem menuDocGroupScan;
         private System.Windows.Forms.ToolStripMenuItem menuDocGroupSubScan;
+        private System.Windows.Forms.ToolStripMenuItem menuMedicalRecordView;
     }
 }
