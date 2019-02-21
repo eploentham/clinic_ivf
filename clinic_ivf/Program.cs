@@ -22,9 +22,10 @@ namespace clinic_ivf
             IvfControl ic = new IvfControl();
             FrmSplash spl = new FrmSplash();
             spl.Show();
+            //MessageBox.Show("444", "");
             //try
             //{
-                Application.Run(new gui.MainMenu(ic, spl));
+            Application.Run(new gui.MainMenu(ic, spl));
             //}
             //catch(Exception ex)
             //{

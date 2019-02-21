@@ -27,6 +27,7 @@ namespace clinic_ivf.gui
         public MainMenu(IvfControl ic, FrmSplash splash)
         {
             this.ic = ic;
+            //MessageBox.Show("111", "");
             InitializeComponent();
             login = new Login(ic, splash);
             login.ShowDialog(this);
@@ -407,6 +408,7 @@ namespace clinic_ivf.gui
             menuLab.Visible = false;
             menuPharmacy.Visible = false;
             menuInit.Visible = false;
+            //MessageBox.Show("222", "");
             try
             {
                 if (ic.user.status_module_reception.Equals("1"))
@@ -465,7 +467,7 @@ namespace clinic_ivf.gui
             {
                 MessageBox.Show(""+ex.Message, "");
             }
-            
+            //MessageBox.Show("333", "");
             //else
             //{
 
