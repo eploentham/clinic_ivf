@@ -293,21 +293,21 @@ namespace clinic_ivf.objdb
             }
             else
             {
-                posi.posi_code = "";
-                posi.posi_name_t = "";
-                posi.posi_name_e = "";
+                dept1.posi_code = "";
+                dept1.posi_name_t = "";
+                dept1.posi_name_e = "";
                 //posi.dept_parent_id = "dept_parent_id";
-                posi.remark = "";
-                posi.date_create = "";
-                posi.date_modi = "";
-                posi.date_cancel = "";
-                posi.user_create = "";
-                posi.user_modi = "";
-                posi.user_cancel = "";
-                posi.active = "";
-                posi.sort1 = "";
-                posi.status_doctor = "";
-                posi.status_embryologist = "";
+                dept1.remark = "";
+                dept1.date_create = "";
+                dept1.date_modi = "";
+                dept1.date_cancel = "";
+                dept1.user_create = "";
+                dept1.user_modi = "";
+                dept1.user_cancel = "";
+                dept1.active = "";
+                dept1.sort1 = "";
+                dept1.status_doctor = "";
+                dept1.status_embryologist = "";
             }
 
             return dept1;
