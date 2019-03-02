@@ -73,6 +73,8 @@ namespace clinic_ivf.objdb
         public DocGroupScanDB dgsDB;
         public DocGroupSubScanDB dgssDB;
         public DocScanDB dscDB;
+        public OldBilldetailDB obildDB;
+        public OldBillheaderDB obilhDB;
 
         public IvfDB(ConnectDB c)
         {
