@@ -59,13 +59,129 @@ namespace clinic_ivf.gui
             ff = txtHn.Font;
             ic.ivfDB.ocaDB.setCboCashAccount(cboAccCash, "");
             ic.ivfDB.occa.setCboCreditCardAccount(cboAccCredit, "");
+            ic.ivfDB.obilgDB.setCboGroupType(cboGrpType, "0");
+            txtCreditCharge.Value = ic.iniC.creditCharge;
 
             stt = new C1SuperTooltip();
             sep = new C1SuperErrorProvider();
-            initGrfBillD();
 
+            chkDiscount.CheckedChanged += ChkDiscount_CheckedChanged;
+            chkDiscountPer.CheckedChanged += ChkDiscountPer_CheckedChanged;
+            //txtAmt.KeyPress += TxtAmt_KeyPress;
+            txtDiscount.KeyPress += TxtDiscount_KeyPress;
+            txtAmt.KeyUp += TxtAmt_KeyUp;
+            txtDiscount.KeyUp += TxtDiscount_KeyUp;
+            txtTotalCash.KeyUp += TxtTotalCash_KeyUp;
+            txtTotalCredit.KeyUp += TxtTotalCredit_KeyUp;
+            //txtTotalCash.KeyPress += TxtTotalCash_KeyPress;
+            //txtTotalCredit.KeyPress += TxtTotalCredit_KeyPress;
+
+            ChkDiscountPer_CheckedChanged(null, null);
+            initGrfBillD();
+            setChkDiscount(false);
             setControl();
+            
         }
+
+        private void TxtTotalCredit_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            //throw new NotImplementedException();
+            //if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != '.'))
+            //{
+            //    e.Handled = true;
+            //}
+
+            //// only allow one decimal point
+            //if ((e.KeyChar == '.') && ((sender as C1TextBox).Text.IndexOf('.') > -1))
+            //{
+            //    e.Handled = true;
+            //}
+            //if ((e.KeyChar == '-') && ((sender as C1TextBox).Text.Length == 0))
+            //{
+            //    e.Handled = false;
+            //}
+        }
+
+        private void TxtTotalCash_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            //throw new NotImplementedException();
+            //if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != '.'))
+            //{
+            //    e.Handled = true;
+            //}
+
+            //// only allow one decimal point
+            //if ((e.KeyChar == '.') && ((sender as C1TextBox).Text.IndexOf('.') > -1))
+            //{
+            //    e.Handled = true;
+            //}
+            //if ((e.KeyChar == '-') && ((sender as C1TextBox).Text.Length == 0))
+            //{
+            //    e.Handled = false;
+            //}
+        }
+
+        private void TxtTotalCredit_KeyUp(object sender, KeyEventArgs e)
+        {
+            //throw new NotImplementedException();
+            calTotalCash();
+        }
+
+        private void TxtTotalCash_KeyUp(object sender, KeyEventArgs e)
+        {
+            //throw new NotImplementedException();
+            calTotalCredit();
+        }
+
+        private void TxtDiscount_KeyUp(object sender, KeyEventArgs e)
+        {
+            //throw new NotImplementedException();
+            calTotal();
+        }
+
+        private void TxtAmt_KeyUp(object sender, KeyEventArgs e)
+        {
+            //throw new NotImplementedException();
+            calTotal();
+        }
+
+        private void TxtDiscount_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            //throw new NotImplementedException();
+            
+        }
+
+        private void TxtAmt_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            //throw new NotImplementedException();
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != '.'))
+            {
+                e.Handled = true;
+            }
+
+            // only allow one decimal point
+            if ((e.KeyChar == '.') && ((sender as C1TextBox).Text.IndexOf('.') > -1))
+            {
+                e.Handled = true;
+            }
+            if ((e.KeyChar == '-') && ((sender as C1TextBox).Text.Length == 0))
+            {
+                e.Handled = false;
+            }
+        }
+
+        private void ChkDiscountPer_CheckedChanged(object sender, EventArgs e)
+        {
+            //throw new NotImplementedException();
+            txtDiscountAmt.Enabled = chkDiscountPer.Checked ? true : false;
+        }
+
+        private void ChkDiscount_CheckedChanged(object sender, EventArgs e)
+        {
+            //throw new NotImplementedException();
+            setChkDiscount(chkDiscount.Checked);
+        }
+
         private void setControl()
         {
             ovs = ic.ivfDB.vsOldDB.selectByPk1(vnold);
@@ -81,6 +197,8 @@ namespace clinic_ivf.gui
             txtHnOld.Value = ovs.PIDS;
 
             setGrfBillD();
+            calTotal();
+            calTotalCredit();
         }
         private void initGrfBillD()
         {
@@ -154,7 +272,7 @@ namespace clinic_ivf.gui
             grfBillD.ContextMenu = menuGw;
 
             grfBillD.Rows.Count = dt.Rows.Count + 2;
-            grfBillD.Cols.Count = 7;
+            grfBillD.Cols.Count = 8;
             C1TextBox txt = new C1TextBox();
             //C1ComboBox cboproce = new C1ComboBox();
             //ic.ivfDB.itmDB.setCboItem(cboproce);
@@ -204,9 +322,28 @@ namespace clinic_ivf.gui
                 i++;
             }
             CellNoteManager mgr = new CellNoteManager(grfBillD);
+            grfBillD.Cols[colBilId].Visible = false;
             grfBillD.Cols[colId].Visible = false;
+            grfBillD.Cols[colDiscount].AllowEditing = false;
+            grfBillD.Cols[colAmt].AllowEditing = false;
+            grfBillD.Cols[colNetAmt].AllowEditing = false;
+            grfBillD.Cols[colGrpName].AllowEditing = false;
             //theme1.SetTheme(grfQue, ic.theme);
-
+            txtAmt.Value = calAmt().ToString("0.00");
+        }
+        private Decimal calAmt()
+        {
+            Decimal amt = 0, amt1=0;
+            String chk = "";
+            foreach (Row row in grfBillD.Rows)
+            {
+                if (row[colName] == null) continue;
+                if (row[colName].ToString().Equals("")) continue;
+                chk = row[colNetAmt].ToString();
+                Decimal.TryParse(chk, out amt);
+                amt1 += amt;
+            }
+            return amt1;
         }
         private void UpdateTotals()
         {
@@ -215,6 +352,44 @@ namespace clinic_ivf.gui
             grfBillD.Subtotal(AggregateEnum.Sum, 0,-1, colNetAmt);
             //grfBillD.Subtotal(AggregateEnum.Sum, 0, -1, colAmt, " d");
 
+        }
+        private void setChkDiscount(Boolean flag)
+        {
+            txtDiscount.Enabled = flag;
+            pnDiscount.Enabled = flag;
+        }
+        private void calTotal()
+        {
+            Decimal amt = 0, total = 0, discount=0;
+            Decimal.TryParse(txtAmt.Text, out amt);
+            Decimal.TryParse(txtDiscount.Text, out discount);
+            //Decimal.TryParse(txtAmt.Text, out amt);
+            total = amt - discount;
+            txtTotal.Value = total.ToString("0.00");
+            txtTotalCash.Value = total.ToString("0.00");
+            txtTotalCredit.Value = "0";
+        }
+        private void calTotalCredit()
+        {
+            Decimal total = 0, cash=0, credit=0, per=0, paycredit=0;
+            Decimal.TryParse(txtTotal.Text, out total);
+            Decimal.TryParse(txtTotalCash.Text, out cash);
+            Decimal.TryParse(txtCreditCharge.Text, out per);
+            credit = total - cash;
+            paycredit = credit * per / 100;
+            txtTotalCredit.Value = credit.ToString("0.00");
+            txtPayCreditCard.Value = paycredit.ToString("0.00");
+        }
+        private void calTotalCash()
+        {
+            Decimal total = 0, cash = 0, credit = 0, per = 0, paycredit = 0;
+            Decimal.TryParse(txtTotal.Text, out total);
+            Decimal.TryParse(txtTotalCredit.Text, out credit);
+            Decimal.TryParse(txtCreditCharge.Text, out per);
+            cash = total - credit;
+            paycredit = credit * per / 100;
+            txtTotalCash.Value = cash.ToString("0.00");
+            txtPayCreditCard.Value = paycredit.ToString("0.00");
         }
         private void FrmCashierAdd_Load(object sender, EventArgs e)
         {

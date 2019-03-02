@@ -29,8 +29,11 @@
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.txtHnOld = new C1.Win.C1Input.C1TextBox();
             this.txtVnOld = new C1.Win.C1Input.C1TextBox();
+            this.txtVsId = new C1.Win.C1Input.C1TextBox();
             this.txtIdOld = new C1.Win.C1Input.C1TextBox();
+            this.txtPttId = new C1.Win.C1Input.C1TextBox();
             this.btnClose = new C1.Win.C1Input.C1Button();
             this.txtAllergy = new C1.Win.C1Input.C1TextBox();
             this.label6 = new System.Windows.Forms.Label();
@@ -63,7 +66,7 @@
             this.chkDiscount = new C1.Win.C1Input.C1CheckBox();
             this.label18 = new System.Windows.Forms.Label();
             this.txtTotalCredit = new C1.Win.C1Input.C1TextBox();
-            this.panel4 = new System.Windows.Forms.Panel();
+            this.pnDiscount = new System.Windows.Forms.Panel();
             this.txtDiscountAmt = new C1.Win.C1Input.C1TextBox();
             this.chkDiscountPer = new System.Windows.Forms.RadioButton();
             this.chkDiscountCash = new System.Windows.Forms.RadioButton();
@@ -85,12 +88,18 @@
             this.label8 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.txtPayName = new C1.Win.C1Input.C1TextBox();
-            this.txtHnOld = new C1.Win.C1Input.C1TextBox();
-            this.txtVsId = new C1.Win.C1Input.C1TextBox();
-            this.txtPttId = new C1.Win.C1Input.C1TextBox();
+            this.label19 = new System.Windows.Forms.Label();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.radioButton1 = new System.Windows.Forms.RadioButton();
+            this.radioButton2 = new System.Windows.Forms.RadioButton();
+            this.cboGrpType = new C1.Win.C1Input.C1ComboBox();
+            this.btnChargeAdd = new C1.Win.C1Input.C1Button();
             this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtHnOld)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtVnOld)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtVsId)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtIdOld)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtPttId)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnClose)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtAllergy)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtDoctor)).BeginInit();
@@ -110,7 +119,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtPayCreditCard)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkDiscount)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtTotalCredit)).BeginInit();
-            this.panel4.SuspendLayout();
+            this.pnDiscount.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtDiscountAmt)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtAmt)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtTotalCash)).BeginInit();
@@ -122,9 +131,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtDiscount)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cboAccCash)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtPayName)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtHnOld)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtVsId)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtPttId)).BeginInit();
+            this.panel3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.cboGrpType)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnChargeAdd)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBox1
@@ -166,6 +175,20 @@
             this.groupBox1.Text = "Patient";
             this.theme1.SetTheme(this.groupBox1, "(default)");
             // 
+            // txtHnOld
+            // 
+            this.txtHnOld.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtHnOld.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
+            this.txtHnOld.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.txtHnOld.Location = new System.Drawing.Point(17, 68);
+            this.txtHnOld.Name = "txtHnOld";
+            this.txtHnOld.Size = new System.Drawing.Size(30, 20);
+            this.txtHnOld.TabIndex = 615;
+            this.txtHnOld.Tag = null;
+            this.theme1.SetTheme(this.txtHnOld, "(default)");
+            this.txtHnOld.Visible = false;
+            this.txtHnOld.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            // 
             // txtVnOld
             // 
             this.txtVnOld.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
@@ -180,6 +203,20 @@
             this.txtVnOld.Visible = false;
             this.txtVnOld.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
             // 
+            // txtVsId
+            // 
+            this.txtVsId.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtVsId.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
+            this.txtVsId.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.txtVsId.Location = new System.Drawing.Point(161, 68);
+            this.txtVsId.Name = "txtVsId";
+            this.txtVsId.Size = new System.Drawing.Size(30, 20);
+            this.txtVsId.TabIndex = 614;
+            this.txtVsId.Tag = null;
+            this.theme1.SetTheme(this.txtVsId, "(default)");
+            this.txtVsId.Visible = false;
+            this.txtVsId.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            // 
             // txtIdOld
             // 
             this.txtIdOld.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
@@ -193,6 +230,20 @@
             this.theme1.SetTheme(this.txtIdOld, "(default)");
             this.txtIdOld.Visible = false;
             this.txtIdOld.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            // 
+            // txtPttId
+            // 
+            this.txtPttId.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtPttId.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
+            this.txtPttId.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.txtPttId.Location = new System.Drawing.Point(125, 68);
+            this.txtPttId.Name = "txtPttId";
+            this.txtPttId.Size = new System.Drawing.Size(30, 20);
+            this.txtPttId.TabIndex = 613;
+            this.txtPttId.Tag = null;
+            this.theme1.SetTheme(this.txtPttId, "(default)");
+            this.txtPttId.Visible = false;
+            this.txtPttId.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
             // 
             // btnClose
             // 
@@ -529,12 +580,14 @@
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.panel2.Controls.Add(this.btnChargeAdd);
+            this.panel2.Controls.Add(this.panel3);
             this.panel2.Controls.Add(this.label9);
             this.panel2.Controls.Add(this.txtPayCreditCard);
             this.panel2.Controls.Add(this.chkDiscount);
             this.panel2.Controls.Add(this.label18);
             this.panel2.Controls.Add(this.txtTotalCredit);
-            this.panel2.Controls.Add(this.panel4);
+            this.panel2.Controls.Add(this.pnDiscount);
             this.panel2.Controls.Add(this.label17);
             this.panel2.Controls.Add(this.txtAmt);
             this.panel2.Controls.Add(this.label16);
@@ -569,17 +622,18 @@
             this.label9.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
             this.label9.Location = new System.Drawing.Point(780, 125);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(123, 16);
+            this.label9.Size = new System.Drawing.Size(78, 16);
             this.label9.TabIndex = 754;
-            this.label9.Text = "ยอดชำระ credit card :";
+            this.label9.Text = "ยอด charge :";
             this.theme1.SetTheme(this.label9, "(default)");
             // 
             // txtPayCreditCard
             // 
             this.txtPayCreditCard.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtPayCreditCard.DataType = typeof(decimal);
             this.txtPayCreditCard.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
             this.txtPayCreditCard.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.txtPayCreditCard.Location = new System.Drawing.Point(913, 123);
+            this.txtPayCreditCard.Location = new System.Drawing.Point(864, 123);
             this.txtPayCreditCard.Name = "txtPayCreditCard";
             this.txtPayCreditCard.Size = new System.Drawing.Size(141, 20);
             this.txtPayCreditCard.TabIndex = 753;
@@ -622,6 +676,7 @@
             // txtTotalCredit
             // 
             this.txtTotalCredit.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtTotalCredit.DataType = typeof(decimal);
             this.txtTotalCredit.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
             this.txtTotalCredit.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
             this.txtTotalCredit.Location = new System.Drawing.Point(633, 123);
@@ -632,18 +687,18 @@
             this.theme1.SetTheme(this.txtTotalCredit, "(default)");
             this.txtTotalCredit.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
             // 
-            // panel4
+            // pnDiscount
             // 
-            this.panel4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.panel4.Controls.Add(this.txtDiscountAmt);
-            this.panel4.Controls.Add(this.chkDiscountPer);
-            this.panel4.Controls.Add(this.chkDiscountCash);
-            this.panel4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.panel4.Location = new System.Drawing.Point(353, 45);
-            this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(249, 23);
-            this.panel4.TabIndex = 747;
-            this.theme1.SetTheme(this.panel4, "(default)");
+            this.pnDiscount.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.pnDiscount.Controls.Add(this.txtDiscountAmt);
+            this.pnDiscount.Controls.Add(this.chkDiscountPer);
+            this.pnDiscount.Controls.Add(this.chkDiscountCash);
+            this.pnDiscount.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.pnDiscount.Location = new System.Drawing.Point(353, 45);
+            this.pnDiscount.Name = "pnDiscount";
+            this.pnDiscount.Size = new System.Drawing.Size(255, 23);
+            this.pnDiscount.TabIndex = 747;
+            this.theme1.SetTheme(this.pnDiscount, "(default)");
             // 
             // txtDiscountAmt
             // 
@@ -734,6 +789,7 @@
             // txtTotalCash
             // 
             this.txtTotalCash.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtTotalCash.DataType = typeof(decimal);
             this.txtTotalCash.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
             this.txtTotalCash.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
             this.txtTotalCash.Location = new System.Drawing.Point(208, 123);
@@ -875,6 +931,7 @@
             // txtDiscount
             // 
             this.txtDiscount.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtDiscount.DataType = typeof(decimal);
             this.txtDiscount.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
             this.txtDiscount.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
             this.txtDiscount.Location = new System.Drawing.Point(208, 48);
@@ -947,47 +1004,101 @@
             this.theme1.SetTheme(this.txtPayName, "(default)");
             this.txtPayName.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
             // 
-            // txtHnOld
+            // label19
             // 
-            this.txtHnOld.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtHnOld.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
-            this.txtHnOld.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.txtHnOld.Location = new System.Drawing.Point(17, 68);
-            this.txtHnOld.Name = "txtHnOld";
-            this.txtHnOld.Size = new System.Drawing.Size(30, 20);
-            this.txtHnOld.TabIndex = 615;
-            this.txtHnOld.Tag = null;
-            this.theme1.SetTheme(this.txtHnOld, "(default)");
-            this.txtHnOld.Visible = false;
-            this.txtHnOld.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            this.label19.AutoSize = true;
+            this.label19.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.label19.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label19.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.label19.Location = new System.Drawing.Point(3, 3);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(44, 16);
+            this.label19.TabIndex = 749;
+            this.label19.Text = "จากยอด";
+            this.theme1.SetTheme(this.label19, "(default)");
             // 
-            // txtVsId
+            // panel3
             // 
-            this.txtVsId.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtVsId.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
-            this.txtVsId.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.txtVsId.Location = new System.Drawing.Point(161, 68);
-            this.txtVsId.Name = "txtVsId";
-            this.txtVsId.Size = new System.Drawing.Size(30, 20);
-            this.txtVsId.TabIndex = 614;
-            this.txtVsId.Tag = null;
-            this.theme1.SetTheme(this.txtVsId, "(default)");
-            this.txtVsId.Visible = false;
-            this.txtVsId.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            this.panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.panel3.Controls.Add(this.cboGrpType);
+            this.panel3.Controls.Add(this.radioButton2);
+            this.panel3.Controls.Add(this.radioButton1);
+            this.panel3.Controls.Add(this.label19);
+            this.panel3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.panel3.Location = new System.Drawing.Point(614, 45);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(440, 23);
+            this.panel3.TabIndex = 750;
+            this.theme1.SetTheme(this.panel3, "(default)");
             // 
-            // txtPttId
+            // radioButton1
             // 
-            this.txtPttId.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtPttId.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
-            this.txtPttId.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.txtPttId.Location = new System.Drawing.Point(125, 68);
-            this.txtPttId.Name = "txtPttId";
-            this.txtPttId.Size = new System.Drawing.Size(30, 20);
-            this.txtPttId.TabIndex = 613;
-            this.txtPttId.Tag = null;
-            this.theme1.SetTheme(this.txtPttId, "(default)");
-            this.txtPttId.Visible = false;
-            this.txtPttId.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            this.radioButton1.AutoSize = true;
+            this.radioButton1.BackColor = System.Drawing.Color.Transparent;
+            this.radioButton1.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
+            this.radioButton1.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(189)))), ((int)(((byte)(182)))));
+            this.radioButton1.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(189)))), ((int)(((byte)(182)))));
+            this.radioButton1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.radioButton1.Location = new System.Drawing.Point(53, 3);
+            this.radioButton1.Name = "radioButton1";
+            this.radioButton1.Size = new System.Drawing.Size(58, 17);
+            this.radioButton1.TabIndex = 750;
+            this.radioButton1.Text = "ทั้งหมด";
+            this.theme1.SetTheme(this.radioButton1, "(default)");
+            this.radioButton1.UseVisualStyleBackColor = false;
+            // 
+            // radioButton2
+            // 
+            this.radioButton2.AutoSize = true;
+            this.radioButton2.BackColor = System.Drawing.Color.Transparent;
+            this.radioButton2.Checked = true;
+            this.radioButton2.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
+            this.radioButton2.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(189)))), ((int)(((byte)(182)))));
+            this.radioButton2.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(189)))), ((int)(((byte)(182)))));
+            this.radioButton2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.radioButton2.Location = new System.Drawing.Point(126, 3);
+            this.radioButton2.Name = "radioButton2";
+            this.radioButton2.Size = new System.Drawing.Size(76, 17);
+            this.radioButton2.TabIndex = 751;
+            this.radioButton2.Text = "เฉพาะกลุ่ม";
+            this.theme1.SetTheme(this.radioButton2, "(default)");
+            this.radioButton2.UseVisualStyleBackColor = false;
+            // 
+            // cboGrpType
+            // 
+            this.cboGrpType.AllowSpinLoop = false;
+            this.cboGrpType.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
+            this.cboGrpType.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.cboGrpType.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.cboGrpType.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
+            this.cboGrpType.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.cboGrpType.GapHeight = 0;
+            this.cboGrpType.ImagePadding = new System.Windows.Forms.Padding(0);
+            this.cboGrpType.ItemsDisplayMember = "";
+            this.cboGrpType.ItemsValueMember = "";
+            this.cboGrpType.Location = new System.Drawing.Point(208, 1);
+            this.cboGrpType.Name = "cboGrpType";
+            this.cboGrpType.Size = new System.Drawing.Size(229, 20);
+            this.cboGrpType.Style.DropDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.cboGrpType.Style.DropDownBorderColor = System.Drawing.Color.Gainsboro;
+            this.cboGrpType.Style.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.cboGrpType.TabIndex = 752;
+            this.cboGrpType.Tag = null;
+            this.theme1.SetTheme(this.cboGrpType, "(default)");
+            this.cboGrpType.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            // 
+            // btnChargeAdd
+            // 
+            this.btnChargeAdd.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnChargeAdd.Location = new System.Drawing.Point(1011, 121);
+            this.btnChargeAdd.Name = "btnChargeAdd";
+            this.btnChargeAdd.Size = new System.Drawing.Size(26, 24);
+            this.btnChargeAdd.TabIndex = 755;
+            this.btnChargeAdd.Text = "...";
+            this.btnChargeAdd.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.theme1.SetTheme(this.btnChargeAdd, "(default)");
+            this.btnChargeAdd.UseVisualStyleBackColor = true;
+            this.btnChargeAdd.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
             // 
             // FrmCashierAdd
             // 
@@ -1004,8 +1115,11 @@
             this.Load += new System.EventHandler(this.FrmCashierAdd_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtHnOld)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtVnOld)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtVsId)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtIdOld)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtPttId)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnClose)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtAllergy)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtDoctor)).EndInit();
@@ -1027,8 +1141,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtPayCreditCard)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkDiscount)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtTotalCredit)).EndInit();
-            this.panel4.ResumeLayout(false);
-            this.panel4.PerformLayout();
+            this.pnDiscount.ResumeLayout(false);
+            this.pnDiscount.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtDiscountAmt)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtAmt)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtTotalCash)).EndInit();
@@ -1040,9 +1154,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtDiscount)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cboAccCash)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtPayName)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtHnOld)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtVsId)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtPttId)).EndInit();
+            this.panel3.ResumeLayout(false);
+            this.panel3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.cboGrpType)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnChargeAdd)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1098,7 +1213,7 @@
         private C1.Win.C1Input.C1TextBox txtTotalCash;
         private System.Windows.Forms.Label label17;
         private C1.Win.C1Input.C1TextBox txtAmt;
-        private System.Windows.Forms.Panel panel4;
+        private System.Windows.Forms.Panel pnDiscount;
         private System.Windows.Forms.RadioButton chkDiscountPer;
         private System.Windows.Forms.RadioButton chkDiscountCash;
         private C1.Win.C1Input.C1TextBox txtDiscountAmt;
@@ -1110,5 +1225,11 @@
         private C1.Win.C1Input.C1TextBox txtHnOld;
         private C1.Win.C1Input.C1TextBox txtVsId;
         private C1.Win.C1Input.C1TextBox txtPttId;
+        private System.Windows.Forms.Label label19;
+        private System.Windows.Forms.Panel panel3;
+        private System.Windows.Forms.RadioButton radioButton2;
+        private System.Windows.Forms.RadioButton radioButton1;
+        private C1.Win.C1Input.C1ComboBox cboGrpType;
+        private C1.Win.C1Input.C1Button btnChargeAdd;
     }
 }

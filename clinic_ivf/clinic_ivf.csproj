@@ -439,6 +439,7 @@
     <Compile Include="objdb\FReligionDB.cs" />
     <Compile Include="objdb\FSexDB.cs" />
     <Compile Include="objdb\OldBilldetailDB.cs" />
+    <Compile Include="objdb\OldBillGroupDB.cs" />
     <Compile Include="objdb\OldBillheaderDB.cs" />
     <Compile Include="objdb\OldCashAccountDB.cs" />
     <Compile Include="objdb\OldCreditCardAccountDB.cs" />
@@ -472,6 +473,7 @@
     <Compile Include="object1\FDocType.cs" />
     <Compile Include="object1\FilterRowUnBound.cs" />
     <Compile Include="object1\OldBilldetail.cs" />
+    <Compile Include="object1\OldBillGroup.cs" />
     <Compile Include="object1\OldBillheader.cs" />
     <Compile Include="object1\OldCashAccount.cs" />
     <Compile Include="object1\OldCreditCardAccount.cs" />

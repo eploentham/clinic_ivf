@@ -56,6 +56,7 @@ namespace clinic_ivf.control
         public VisitOld sVsOld;
         public Age age;
         public String _IPAddress = "";
+        public Decimal CreditCharge = 0;
         //public FtpClient ftpC;
         public enum NID_FIELD
         {
@@ -192,7 +193,8 @@ namespace clinic_ivf.control
             iniC.timerImgScanNew = iniF.getIni("app", "timerImgScanNew");
             iniC.pathImageScan = iniF.getIni("app", "pathImageScan");
             iniC.patientaddpanel1weight = iniF.getIni("app", "patientaddpanel1weight");
-            
+            iniC.creditCharge = iniF.getIni("app", "creditCharge");
+
 
             iniC.grdViewFontName = iniC.grdViewFontName.Equals("") ? "Microsoft Sans Serif" : iniC.grdViewFontName;
 
@@ -226,7 +228,9 @@ namespace clinic_ivf.control
             iniC.timerImgScanNew = iniC.timerImgScanNew == null ? "2" : iniC.timerImgScanNew.Equals("") ? "0" : iniC.timerImgScanNew;
             iniC.pathImageScan = iniC.pathImageScan == null ? "d:\\images" : iniC.pathImageScan.Equals("") ? "d:\\images" : iniC.pathImageScan;
             iniC.folderFTP = iniC.folderFTP == null ? "images_medical_record" : iniC.folderFTP.Equals("") ? "images_medical_record" : iniC.folderFTP;
+            iniC.creditCharge = iniC.creditCharge == null ? "3" : iniC.creditCharge.Equals("") ? "3" : iniC.creditCharge;
             int.TryParse(iniC.grdViewFontSize, out grdViewFontSize);
+            Decimal.TryParse(iniC.creditCharge, out CreditCharge);
         }
         public String datetoDB(String dt)
         {
