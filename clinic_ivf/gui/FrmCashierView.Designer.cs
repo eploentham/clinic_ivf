@@ -33,6 +33,7 @@
             this.theme1 = new C1.Win.C1Themes.C1ThemeController();
             this.tC = new C1.Win.C1Command.C1DockingTab();
             this.c1DockingTabPage1 = new C1.Win.C1Command.C1DockingTabPage();
+            this.pnQue = new System.Windows.Forms.Panel();
             this.c1DockingTabPage2 = new C1.Win.C1Command.C1DockingTabPage();
             this.c1DockingTabPage3 = new C1.Win.C1Command.C1DockingTabPage();
             this.pnSearch = new System.Windows.Forms.Panel();
@@ -43,12 +44,13 @@
             this.txtDateStart = new C1.Win.C1Input.C1DateEdit();
             this.label4 = new System.Windows.Forms.Label();
             this.txtSearch = new C1.Win.C1Input.C1TextBox();
-            this.pnQue = new System.Windows.Forms.Panel();
+            this.pnFinish = new System.Windows.Forms.Panel();
             this.sB.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.theme1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tC)).BeginInit();
             this.tC.SuspendLayout();
             this.c1DockingTabPage1.SuspendLayout();
+            this.c1DockingTabPage2.SuspendLayout();
             this.c1DockingTabPage3.SuspendLayout();
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chkLabFormA)).BeginInit();
@@ -105,8 +107,20 @@
             this.c1DockingTabPage1.TabIndex = 0;
             this.c1DockingTabPage1.Text = "Waiting in Process";
             // 
+            // pnQue
+            // 
+            this.pnQue.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.pnQue.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pnQue.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.pnQue.Location = new System.Drawing.Point(0, 0);
+            this.pnQue.Name = "pnQue";
+            this.pnQue.Size = new System.Drawing.Size(1072, 697);
+            this.pnQue.TabIndex = 0;
+            this.theme1.SetTheme(this.pnQue, "(default)");
+            // 
             // c1DockingTabPage2
             // 
+            this.c1DockingTabPage2.Controls.Add(this.pnFinish);
             this.c1DockingTabPage2.Location = new System.Drawing.Point(1, 24);
             this.c1DockingTabPage2.Name = "c1DockingTabPage2";
             this.c1DockingTabPage2.Size = new System.Drawing.Size(1072, 697);
@@ -274,16 +288,16 @@
             this.theme1.SetTheme(this.txtSearch, "(default)");
             this.txtSearch.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
             // 
-            // pnQue
+            // pnFinish
             // 
-            this.pnQue.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.pnQue.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnQue.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.pnQue.Location = new System.Drawing.Point(0, 0);
-            this.pnQue.Name = "pnQue";
-            this.pnQue.Size = new System.Drawing.Size(1072, 697);
-            this.pnQue.TabIndex = 0;
-            this.theme1.SetTheme(this.pnQue, "(default)");
+            this.pnFinish.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.pnFinish.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pnFinish.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.pnFinish.Location = new System.Drawing.Point(0, 0);
+            this.pnFinish.Name = "pnFinish";
+            this.pnFinish.Size = new System.Drawing.Size(1072, 697);
+            this.pnFinish.TabIndex = 0;
+            this.theme1.SetTheme(this.pnFinish, "(default)");
             // 
             // FrmCashierView
             // 
@@ -301,6 +315,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.tC)).EndInit();
             this.tC.ResumeLayout(false);
             this.c1DockingTabPage1.ResumeLayout(false);
+            this.c1DockingTabPage2.ResumeLayout(false);
             this.c1DockingTabPage3.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
@@ -331,5 +346,6 @@
         private System.Windows.Forms.Label label4;
         private C1.Win.C1Input.C1TextBox txtSearch;
         private System.Windows.Forms.Panel pnQue;
+        private System.Windows.Forms.Panel pnFinish;
     }
 }

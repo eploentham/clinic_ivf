@@ -144,6 +144,8 @@ namespace clinic_ivf.objdb
             dscDB = new DocScanDB(conn);
             ocaDB = new OldCashAccountDB(conn);
             occa = new OldCreditCardAccountDB(conn);
+            obildDB = new OldBilldetailDB(conn);
+            obilhDB = new OldBillheaderDB(conn);
 
             Console.WriteLine("ivfDB end");
         }

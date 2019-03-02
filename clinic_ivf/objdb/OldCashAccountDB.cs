@@ -23,11 +23,13 @@ namespace clinic_ivf.objdb
         private void initConfig()
         {
             oca = new OldCashAccount();
+            lFpf = new List<OldCashAccount>();
             oca.CashID = "CashID";
             oca.CashName = "CashName";
             oca.IntLock = "IntLock";
+            oca.active = "active";
 
-            oca.table = "OldCashAccount";
+            oca.table = "CashAccount";
             oca.pkField = "CashID";
         }
         public DataTable selectByCreditCardName()

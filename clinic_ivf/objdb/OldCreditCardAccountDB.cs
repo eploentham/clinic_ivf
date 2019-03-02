@@ -23,11 +23,13 @@ namespace clinic_ivf.objdb
         private void initConfig()
         {
             occa = new OldCreditCardAccount();
+            lFpf = new List<OldCreditCardAccount>();
             occa.CreditCardID = "CreditCardID";
             occa.CreditCardName = "CreditCardName";
             occa.IntLock = "IntLock";
+            occa.active = "active";
 
-            occa.table = "OldCreditCardAccount";
+            occa.table = "CreditCardAccount";
             occa.pkField = "CreditCardID";
         }
         public DataTable selectByCreditCardName()
