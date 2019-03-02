@@ -75,6 +75,8 @@ namespace clinic_ivf.objdb
         public DocScanDB dscDB;
         public OldBilldetailDB obildDB;
         public OldBillheaderDB obilhDB;
+        public OldCashAccountDB ocaDB;
+        public OldCreditCardAccountDB occa;
 
         public IvfDB(ConnectDB c)
         {
@@ -140,6 +142,8 @@ namespace clinic_ivf.objdb
             dgsDB = new DocGroupScanDB(conn);
             dgssDB = new DocGroupSubScanDB(conn);
             dscDB = new DocScanDB(conn);
+            ocaDB = new OldCashAccountDB(conn);
+            occa = new OldCreditCardAccountDB(conn);
 
             Console.WriteLine("ivfDB end");
         }
