@@ -167,7 +167,7 @@ namespace clinic_ivf.gui
             ic.setCboPttType(cboPttType);
             ic.setCboPttGroup(cboPttGroup);
 
-            ic.ivfDB.bspDB.setCboBsp(cboVisitBsp, "");
+            ic.ivfDB.bspDB.setCboBsp(cboVisitBsp, "2120000002");
             ic.setCboPttType(cboVisitPttType);
 
             cboAgent.AutoCompleteSource = AutoCompleteSource.ListItems;
@@ -201,6 +201,8 @@ namespace clinic_ivf.gui
             btnSmartcard.Click += BtnSmartcard_Click;
             btnPrnOPDCard.Click += BtnPrnOPDCard_Click;
             btnVisit.Click += BtnVisit_Click;
+            btnHnMaleSearch.Click += BtnHnMaleSearch_Click;
+            btnVisitVoid.Click += BtnVisitVoid_Click;
 
             setKeyEnter();
 
@@ -222,6 +224,40 @@ namespace clinic_ivf.gui
             //btnSavePic.Enabled = false;
         }
 
+        private void BtnVisitVoid_Click(object sender, EventArgs e)
+        {
+            //throw new NotImplementedException();
+            ic.cStf.staff_id = "";
+            FrmPasswordConfirm frm = new FrmPasswordConfirm(ic);
+            frm.ShowDialog(this);
+            if (!ic.cStf.staff_id.Equals(""))
+            {
+                long chk1 = 0;
+                String re = "", re1 = "";
+                if (ic.iniC.statusAppDonor.Equals("1"))
+                {
+
+                }
+                else
+                {
+                    re = ic.ivfDB.vsOldDB.updateStatusVoidVisit(txtVn.Text);
+                    re1 = ic.ivfDB.vsDB.updateStatusVoidVisit(txtVisitID.Text);
+                    setGrfVs(txtHn.Text);
+                }
+            }
+        }
+
+        private void BtnHnMaleSearch_Click(object sender, EventArgs e)
+        {
+            //throw new NotImplementedException();
+            ic.sVsOld.PIDS = "";
+            ic.sVsOld.PName = "";
+            FrmSearchHn frm = new FrmSearchHn(ic, FrmSearchHn.StatusConnection.host, FrmSearchHn.StatusSearch.PttSearch, FrmSearchHn.StatusSearchTable.PttSearch);
+            frm.ShowDialog(this);
+            txtVisitHnMale.Value = ic.sVsOld.PIDS;
+            label71.Text = ic.sVsOld.PName;
+        }
+
         private void BtnVisit_Click(object sender, EventArgs e)
         {
             //throw new NotImplementedException();
@@ -240,7 +276,68 @@ namespace clinic_ivf.gui
                 btnVisit.Text = "Confirm";
                 btnVisit.Image = Resources.Add_ticket_24;
                 stt.Show("<p><b>สวัสดี</b></p>คุณ " + ic.cStf.staff_fname_t + " " + ic.cStf.staff_lname_t + "<br> กรุณายินยันการ confirm อีกครั้ง", cboPttType);
-                btnVisit.Focus();
+                //btnVisit.Focus();
+                stt.Hide();
+
+                String re = "", re1 = "";
+                if (ic.iniC.statusAppDonor.Equals("1"))
+                {
+                    setVisit();
+                    re = ic.ivfDB.vsDB.insertVisit(vs, txtStfConfirmID.Text);
+                }
+                else
+                {
+                    if (txtVisitID.Text.Equals(""))
+                    {
+                        setVisitOld();
+                        re = ic.ivfDB.vsOldDB.insertVisitOld(vsOld, txtStfConfirmID.Text);
+                        long chk1 = 0;
+                        if (long.TryParse(re, out chk1))
+                        {
+                            setVisit();
+                            vs.visit_vn = re;
+                            re = ic.ivfDB.vsOldDB.updateVEndTimeNull(vsOld.VN);
+                            re1 = ic.ivfDB.vsDB.insertVisit(vs, txtStfConfirmID.Text);
+                        }
+                    }
+                    else
+                    {
+                        setVisit();
+                        //vs.visit_vn = re;
+                        //re = ic.ivfDB.vsOldDB.updateVEndTimeNull(vsOld.VN);
+                        re1 = ic.ivfDB.vsDB.insertVisit(vs, txtStfConfirmID.Text);
+                    }
+                    
+                }
+                long chk = 0;
+                if (long.TryParse(re, out chk))
+                {
+                    //if (!ic.iniC.statusAppDonor.Equals("1"))
+                    //{
+                    //String re1 = ic.ivfDB.pttOldDB.insertPatientOld(ptt, txtStfConfirmID.Text);
+                    //if (int.TryParse(re1, out chk))
+                    //{
+                    //if (txtID.Text.Equals(""))
+                    //{
+                    //    //PatientOld pttOld = new PatientOld();
+                    //    //pttOld = ic.ivfDB.pttOldDB.selectByPk1(re1);
+                    //    String re2 = ic.ivfDB.pttDB.updatePID(re, re1);
+                    //    if (int.TryParse(re2, out chk))
+                    //    {
+                    txtID.Value = re;
+                    btnVisit.Text = "Save Visit";
+                    btnVisit.Image = Resources.accept_database24;
+                    setGrfVs(txtHn.Text);
+                    //        txtID.Value = re;
+                    //        txtPid.Focus();
+                    //    }
+                    //}
+                    //}
+                    //}
+
+                    //System.Threading.Thread.Sleep(500);
+                    //this.Dispose();
+                }
             }
             else
             {
@@ -1528,10 +1625,11 @@ namespace clinic_ivf.gui
             theme1.SetTheme(grfImg, "Office2016Colorful");
 
         }
-        private void ContextMenu_edit(object sender, System.EventArgs e)
+        private void ContextMenu_edit_visit(object sender, System.EventArgs e)
         {
             String chk = "", name = "", id = "";
-            //id = grfPtt[grfPtt.Row, colPttId] != null ? grfPtt[grfPtt.Row, colPttId].ToString() : "";
+            id = grfVs[grfVs.Row, colVsID] != null ? grfVs[grfVs.Row, colVsID].ToString() : "";
+            setControlVisit(id);
             //chk = grfPtt[grfPtt.Row, colPttHn] != null ? grfPtt[grfPtt.Row, colPttHn].ToString() : "";
             //name = grfPtt[grfPtt.Row, colPttName] != null ? grfPtt[grfPtt.Row, colPttName].ToString() : "";
             //if (MessageBox.Show("ต้องการ แก้ไข Patient  \n  hn number " + chk + " \n name " + name, "", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == DialogResult.OK)
@@ -1645,7 +1743,7 @@ namespace clinic_ivf.gui
             //grfVs.Cols[colImg].ImageAndText = false;
 
             ContextMenu menuGw = new ContextMenu();
-            menuGw.MenuItems.Add("&แก้ไข Patient", new EventHandler(ContextMenu_edit));
+            menuGw.MenuItems.Add("&แก้ไข Patient", new EventHandler(ContextMenu_edit_visit));
             grfVs.ContextMenu = menuGw;
 
             Color color = ColorTranslator.FromHtml(ic.iniC.grfRowColor);
@@ -1721,7 +1819,7 @@ namespace clinic_ivf.gui
             //grfVs.Cols[colImg].ImageAndText = false;
 
             ContextMenu menuGw = new ContextMenu();
-            menuGw.MenuItems.Add("&แก้ไข Patient", new EventHandler(ContextMenu_edit));
+            menuGw.MenuItems.Add("แก้ไข Visit", new EventHandler(ContextMenu_edit_visit));
             grfVs.ContextMenu = menuGw;
 
             Color color = ColorTranslator.FromHtml(ic.iniC.grfRowColor);
@@ -1955,6 +2053,23 @@ namespace clinic_ivf.gui
             txtA.Value = ptt.a;
             setGrfpApmDonor(ptt.t_patient_id);
             //txtEmail.Value = pttO.Email;
+        }
+        private void setControlVisit(String vsid)
+        {
+            Visit vs = new Visit();
+            vs = ic.ivfDB.vsDB.selectByVn(vsid);
+            txtVisitID.Value = vs.t_visit_id;
+            chkVisitUrge.Checked = vs.status_urge.Equals("1") ? true : false;
+            txtHnFemale.Value = vs.patient_hn_1;
+            txtVisitLMP.Value = vs.lmp;
+            txtVisitHeight.Value = vs.height;
+            txtVisitBW.Value = vs.bw;
+            txtVisitBP.Value = vs.bp;
+            txtVisitPulse.Value = vs.pulse;
+            txtVisitHnMale.Value = vs.patient_hn_male;
+            txtVn.Value = vs.visit_vn;
+            ic.setC1Combo(cboBsp, vs.b_service_point_id);
+            txtVisitComment.Value = vs.visit_notice;
         }
         private void setControlPatient(Patient ptt)
         {
@@ -2694,7 +2809,7 @@ namespace clinic_ivf.gui
             vsOld = new VisitOld();
             vsOld.VN = txtID.Text;
             vsOld.VSID = "110";
-            vsOld.PID = txtPttO.Text;
+            vsOld.PID = txtIdOld.Text;
             vsOld.PIDS = txtHn.Text;
             vsOld.PName = cboPrefix.Text + " " + txtPttNameE.Text + " " + txtPttLNameE.Text;
             vsOld.OName = "";
@@ -2709,27 +2824,35 @@ namespace clinic_ivf.gui
         {
             vs = new Visit();
             vs = ic.ivfDB.vsDB.setVisit1(vs);
-            vs.t_visit_id = txtID.Text;
+            vs.t_visit_id = txtVisitID.Text;
             vs.visit_hn = txtHn.Text;
-            vs.t_patient_id = txtPttId.Text;
+            vs.t_patient_id = txtID.Text;
             vs.b_service_point_id = cboVisitBsp.SelectedItem == null ? "" : ((ComboBoxItem)cboVisitBsp.SelectedItem).Value;
             vs.visit_notice = txtVisitComment.Text;
             vs.visit_begin_visit_time = DateTime.Now.Year.ToString() + "-" + DateTime.Now.ToString("MM-dd hh:mm:ss");
-            vs.visit_vn = ic.ivfDB.copDB.genVNDoc();
-            vs.remark = txtRemark.Text;
+            if (txtVisitID.Text.Equals(""))
+            {
+                vs.visit_vn = ic.ivfDB.copDB.genVNDoc();
+                vs.queue_id = ic.ivfDB.copDB.genQueueDoc();
+            }
+            else
+            {
+                vs.visit_vn = txtVn.Text;
+            }
+            vs.visit_notice = txtVisitComment.Text;
             vs.f_visit_status_id = "1";
             vs.visit_record_staff = txtStfConfirmID.Text;
 
             vs.f_visit_type_id = ic.iniC.statusAppDonor.Equals("1") ? "2" : "1";
             vs.status_urge = chkVisitUrge.Checked ? "1" : "0";
             vs.patient_hn_1 = txtHnFemale.Text;
-            vs.lmp = ic.datetoDB(txtLMP.Text);
-            vs.height = txtHeight.Text;
+            vs.lmp = ic.datetoDB(txtVisitLMP.Text);
+            vs.height = txtVisitHeight.Text;
 
-            vs.bw = txtBW.Text;
-            vs.bp = txtBP.Text;
-            vs.queue_id = ic.ivfDB.copDB.genQueueDoc();
-            vs.pulse = txtPulse.Text;
+            vs.bw = txtVisitBW.Text;
+            vs.bp = txtVisitBP.Text;
+            
+            vs.pulse = txtVisitPulse.Text;
             vs.status_nurse = "1";
             vs.patient_hn_male = txtVisitHnMale.Text;
         }
@@ -2741,7 +2864,7 @@ namespace clinic_ivf.gui
             }
             else
             {
-                tC1.SelectedTab = tabAddress;
+                tC1.SelectedTab = tabVisit;
             }
             splitMain.Panel1MinSize = 260;
             splitMain.SplitterDistance = int.Parse(ic.iniC.patientaddpanel1weight);

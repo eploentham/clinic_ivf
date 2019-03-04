@@ -215,7 +215,7 @@
             this.label64 = new System.Windows.Forms.Label();
             this.txtVisitHnFemale = new C1.Win.C1Input.C1TextBox();
             this.chkVisitUrge = new C1.Win.C1Input.C1CheckBox();
-            this.c1TextBox14 = new C1.Win.C1Input.C1TextBox();
+            this.txtVn = new C1.Win.C1Input.C1TextBox();
             this.txtVisitPttId = new C1.Win.C1Input.C1TextBox();
             this.label68 = new System.Windows.Forms.Label();
             this.cboVisitPttType = new C1.Win.C1Input.C1ComboBox();
@@ -253,6 +253,7 @@
             this.printDialog1 = new System.Windows.Forms.PrintDialog();
             this.cPdf = new C1.Win.C1Document.C1PdfDocumentSource(this.components);
             this._c1pdf = new C1.C1Pdf.C1PdfDocument();
+            this.btnVisitVoid = new C1.Win.C1Input.C1Button();
             ((System.ComponentModel.ISupportInitialize)(this.theme1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitMain)).BeginInit();
             this.splitMain.Panel1.SuspendLayout();
@@ -374,7 +375,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.btnHnSearch)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtVisitHnFemale)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkVisitUrge)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.c1TextBox14)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtVn)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtVisitPttId)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cboVisitPttType)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnVisit)).BeginInit();
@@ -400,6 +401,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtBP)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtPulse)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtPttO)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnVisitVoid)).BeginInit();
             this.SuspendLayout();
             // 
             // theme1
@@ -2928,6 +2930,7 @@
             // groupBox2
             // 
             this.groupBox2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.groupBox2.Controls.Add(this.btnVisitVoid);
             this.groupBox2.Controls.Add(this.label71);
             this.groupBox2.Controls.Add(this.btnHnMaleSearch);
             this.groupBox2.Controls.Add(this.label72);
@@ -2950,7 +2953,7 @@
             this.groupBox2.Controls.Add(this.label64);
             this.groupBox2.Controls.Add(this.txtVisitHnFemale);
             this.groupBox2.Controls.Add(this.chkVisitUrge);
-            this.groupBox2.Controls.Add(this.c1TextBox14);
+            this.groupBox2.Controls.Add(this.txtVn);
             this.groupBox2.Controls.Add(this.txtVisitPttId);
             this.groupBox2.Controls.Add(this.label68);
             this.groupBox2.Controls.Add(this.cboVisitPttType);
@@ -3292,19 +3295,19 @@
             this.chkVisitUrge.Value = null;
             this.chkVisitUrge.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
             // 
-            // c1TextBox14
+            // txtVn
             // 
-            this.c1TextBox14.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.c1TextBox14.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
-            this.c1TextBox14.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.c1TextBox14.Location = new System.Drawing.Point(320, 19);
-            this.c1TextBox14.Name = "c1TextBox14";
-            this.c1TextBox14.Size = new System.Drawing.Size(30, 20);
-            this.c1TextBox14.TabIndex = 675;
-            this.c1TextBox14.Tag = null;
-            this.theme1.SetTheme(this.c1TextBox14, "(default)");
-            this.c1TextBox14.Visible = false;
-            this.c1TextBox14.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            this.txtVn.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtVn.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
+            this.txtVn.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.txtVn.Location = new System.Drawing.Point(320, 19);
+            this.txtVn.Name = "txtVn";
+            this.txtVn.Size = new System.Drawing.Size(30, 20);
+            this.txtVn.TabIndex = 675;
+            this.txtVn.Tag = null;
+            this.theme1.SetTheme(this.txtVn, "(default)");
+            this.txtVn.Visible = false;
+            this.txtVn.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
             // 
             // txtVisitPttId
             // 
@@ -3820,6 +3823,20 @@
             this._c1pdf.UseFastTextOut = true;
             this._c1pdf.UseFontShaping = true;
             // 
+            // btnVisitVoid
+            // 
+            this.btnVisitVoid.Image = global::clinic_ivf.Properties.Resources.Female_user_remove_24;
+            this.btnVisitVoid.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnVisitVoid.Location = new System.Drawing.Point(821, 50);
+            this.btnVisitVoid.Name = "btnVisitVoid";
+            this.btnVisitVoid.Size = new System.Drawing.Size(82, 33);
+            this.btnVisitVoid.TabIndex = 723;
+            this.btnVisitVoid.Text = "Void Visit";
+            this.btnVisitVoid.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.theme1.SetTheme(this.btnVisitVoid, "(default)");
+            this.btnVisitVoid.UseVisualStyleBackColor = true;
+            this.btnVisitVoid.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            // 
             // FrmPatientAdd
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -3956,7 +3973,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.btnHnSearch)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtVisitHnFemale)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkVisitUrge)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.c1TextBox14)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtVn)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtVisitPttId)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cboVisitPttType)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnVisit)).EndInit();
@@ -3983,6 +4000,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtBP)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtPulse)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtPttO)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnVisitVoid)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -4200,7 +4218,7 @@
         private System.Windows.Forms.Label label64;
         private C1.Win.C1Input.C1TextBox txtVisitHnFemale;
         private C1.Win.C1Input.C1CheckBox chkVisitUrge;
-        private C1.Win.C1Input.C1TextBox c1TextBox14;
+        private C1.Win.C1Input.C1TextBox txtVn;
         private C1.Win.C1Input.C1TextBox txtVisitPttId;
         private System.Windows.Forms.Label label68;
         private C1.Win.C1Input.C1ComboBox cboVisitPttType;
@@ -4214,5 +4232,6 @@
         private C1.Win.C1Input.C1Button btnHnMaleSearch;
         private System.Windows.Forms.Label label72;
         private C1.Win.C1Input.C1TextBox txtVisitHnMale;
+        private C1.Win.C1Input.C1Button btnVisitVoid;
     }
 }

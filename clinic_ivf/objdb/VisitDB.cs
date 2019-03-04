@@ -317,7 +317,7 @@ namespace clinic_ivf.objdb
                     "," + vs.visit_cause_appointment + "='" + p.visit_cause_appointment + "' " +
                     "," + vs.visit_cal_date_appointment + "='" + p.visit_cal_date_appointment + "' " +
                     "," + vs.visit_have_admit + "='" + p.visit_have_admit + "' " +
-                    //"," + vs.t_patient_appointment_id + "='" + p.t_patient_appointment_id + "' " +
+                    //"," + vs.remark + "='" + p.remark.Replace("'","''") + "' " +
                     "," + vs.visit_have_refer + "='" + p.visit_have_refer + "' " +
                     "," + vs.visit_emergency_staff + "='" + p.visit_emergency_staff + "' " +
                     "," + vs.f_emergency_status_id + "='" + p.f_emergency_status_id + "' " +
@@ -341,6 +341,32 @@ namespace clinic_ivf.objdb
             }
             return re;
         }
+        public String update(Visit p, String userId)
+        {
+            String re = "", err = "";
+            String sql = "update " + vs.table + " " +
+                "Set " + 
+                " " + vs.lmp + "='" + p.lmp + "' " +
+                "," + vs.height + "='" + p.height + "' " +
+                "," + vs.bp + "='" + p.bp + "' " +
+                "," + vs.bw + "='" + p.bw + "' " +
+                "," + vs.pulse + "='" + p.pulse + "' " +
+                "," + vs.patient_hn_male + "='" + p.patient_hn_male + "' " +
+                "," + vs.status_urge + "='" + p.status_urge + "' " +
+                "," + vs.patient_hn_1 + "='" + p.patient_hn_1 + "' " +
+                "," + vs.visit_notice + "='" + p.visit_notice.Replace("'", "''") + "' " +
+                "Where " + vs.pkField + " ='" + p.t_visit_id + "' ";
+            try
+            {
+                re = conn.ExecuteNonQuery(conn.conn, sql);
+            }
+            catch (Exception ex)
+            {
+                err = ex.Message+" "+ex.InnerException;
+            }
+
+            return re;
+        }
         public String insertVisit(Visit p, String userId)
         {
             String re = "";
@@ -351,7 +377,7 @@ namespace clinic_ivf.objdb
             }
             else
             {
-                //re = update(p, "");
+                re = update(p, "");
             }
 
             return re;
@@ -372,6 +398,17 @@ namespace clinic_ivf.objdb
             String sql = "select vs.* " +
                 "From " + vs.table + " vs " +
                 "Where vs." + vs.pkField + " ='" + pttId + "' ";
+            dt = conn.selectData(conn.conn, sql);
+            cop1 = setVisit(dt);
+            return cop1;
+        }
+        public Visit selectByVn(String pttId)
+        {
+            Visit cop1 = new Visit();
+            DataTable dt = new DataTable();
+            String sql = "select vs.* " +
+                "From " + vs.table + " vs " +
+                "Where vs." + vs.visit_vn + " ='" + pttId + "' ";
             dt = conn.selectData(conn.conn, sql);
             cop1 = setVisit(dt);
             return cop1;
@@ -444,6 +481,24 @@ namespace clinic_ivf.objdb
                 err = ex.Message+ex.InnerException;
             }
             
+            return re;
+        }
+        public String updateStatusVoidVisit(String vsid)
+        {
+            String re = "", err = "";
+            String sql = "update " + vs.table + " " +
+                "Set " + vs.f_visit_status_id + " ='4' " +
+                
+                "Where " + vs.pkField + " ='" + vsid + "' ";
+            try
+            {
+                re = conn.ExecuteNonQuery(conn.conn, sql);
+            }
+            catch (Exception ex)
+            {
+                err = ex.Message;
+            }
+
             return re;
         }
         public DataTable selectCurrentVisitNoVisit()

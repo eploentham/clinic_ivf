@@ -75,7 +75,7 @@ namespace clinic_ivf.gui
             ic.ivfDB.frcDB.setCboRace(cboRace, "");
             ic.ivfDB.frgDB.setCboReligion(cboRg, "");
             ic.setCboPttType(cboPttType);
-            ic.ivfDB.bspDB.setCboBsp(cboBsp,"");
+            ic.ivfDB.bspDB.setCboBsp(cboBsp, "2120000002");
             ic.ivfDB.agnOldDB.setCboAgent(cboAgent, "");
             ic.ivfDB.sexDB.setCboSex(cboSex);
 
@@ -120,6 +120,8 @@ namespace clinic_ivf.gui
         private void BtnHnMaleSearch_Click(object sender, EventArgs e)
         {
             //throw new NotImplementedException();
+            ic.sVsOld.PIDS = "";
+            ic.sVsOld.PName = "";
             FrmSearchHn frm = new FrmSearchHn(ic, FrmSearchHn.StatusConnection.hostEx, FrmSearchHn.StatusSearch.PttSearch, FrmSearchHn.StatusSearchTable.VisitSearch);
             frm.ShowDialog(this);
             txtHnMale.Value = ic.sVsOld.PIDS;
