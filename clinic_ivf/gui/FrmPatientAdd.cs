@@ -57,6 +57,9 @@ namespace clinic_ivf.gui
         Color color;
         Boolean flagImg = false, flagReadCard=false, flagHavOldPttNoPtt=false;
         String _CardReaderTFK2700 = "";
+        VisitOld vsOld;
+        Visit vs;
+
         enum NID_FIELD
         {
             NID_Number,   //1234567890123#
@@ -164,6 +167,9 @@ namespace clinic_ivf.gui
             ic.setCboPttType(cboPttType);
             ic.setCboPttGroup(cboPttGroup);
 
+            ic.ivfDB.bspDB.setCboBsp(cboVisitBsp, "");
+            ic.setCboPttType(cboVisitPttType);
+
             cboAgent.AutoCompleteSource = AutoCompleteSource.ListItems;
             cboAgent.AutoCompleteMode = AutoCompleteMode.Suggest;
 
@@ -185,7 +191,7 @@ namespace clinic_ivf.gui
             btnPrvSticker.Click += BtnPrvSticker_Click;
             btnSavePic.Click += BtnSavePic_Click;
             tC1.DoubleClick += TC1_DoubleClick;
-            btnVisit1.Click += BtnVisit_Click;
+            btnVisitNew.Click += BtnVisitNew_Click;
             txtHeight.KeyPress += TxtHeight_KeyPress;
             btnVoid.Click += BtnVoid_Click;
             chkOR.CheckedChanged += ChkOR_CheckedChanged;
@@ -194,6 +200,7 @@ namespace clinic_ivf.gui
             btnApm.Click += BtnApm_Click;
             btnSmartcard.Click += BtnSmartcard_Click;
             btnPrnOPDCard.Click += BtnPrnOPDCard_Click;
+            btnVisit.Click += BtnVisit_Click;
 
             setKeyEnter();
 
@@ -213,6 +220,34 @@ namespace clinic_ivf.gui
             picPtt.SizeMode = PictureBoxSizeMode.StretchImage;
             
             //btnSavePic.Enabled = false;
+        }
+
+        private void BtnVisit_Click(object sender, EventArgs e)
+        {
+            //throw new NotImplementedException();
+
+            if (txtID.Text.Equals(""))
+            {
+
+            }
+            ic.cStf.staff_id = "";
+            FrmPasswordConfirm frm = new FrmPasswordConfirm(ic);
+            frm.ShowDialog(this);
+            if (!ic.cStf.staff_id.Equals(""))
+            {
+                txtUserReq.Value = ic.cStf.staff_fname_t + " " + ic.cStf.staff_lname_t;
+                txtStfConfirmID.Value = ic.cStf.staff_id;
+                btnVisit.Text = "Confirm";
+                btnVisit.Image = Resources.Add_ticket_24;
+                stt.Show("<p><b>สวัสดี</b></p>คุณ " + ic.cStf.staff_fname_t + " " + ic.cStf.staff_lname_t + "<br> กรุณายินยันการ confirm อีกครั้ง", cboPttType);
+                btnVisit.Focus();
+            }
+            else
+            {
+                btnVisit.Text = "new Visit";
+                btnVisit.Image = Resources.download_database24;
+            }
+            
         }
 
         private void BtnPrnOPDCard_Click(object sender, EventArgs e)
@@ -390,7 +425,7 @@ namespace clinic_ivf.gui
             }
         }
 
-        private void BtnVisit_Click(object sender, EventArgs e)
+        private void BtnVisitNew_Click(object sender, EventArgs e)
         {
             //throw new NotImplementedException();
             FrmVisitAdd frm = new FrmVisitAdd(ic, txtID.Text, "", txtIdOld.Text);
@@ -2071,7 +2106,7 @@ namespace clinic_ivf.gui
                 else
                 {
                     flagHavOldPttNoPtt = true;
-                    tabVisit.Enabled = false;
+                    //tabVisit.Enabled = false;
                 }
             }
         }
@@ -2653,6 +2688,50 @@ namespace clinic_ivf.gui
             }
             
             return 0;
+        }
+        private void setVisitOld()
+        {
+            vsOld = new VisitOld();
+            vsOld.VN = txtID.Text;
+            vsOld.VSID = "110";
+            vsOld.PID = txtPttO.Text;
+            vsOld.PIDS = txtHn.Text;
+            vsOld.PName = cboPrefix.Text + " " + txtPttNameE.Text + " " + txtPttLNameE.Text;
+            vsOld.OName = "";
+            vsOld.VDate = DateTime.Now.Year.ToString() + "-" + DateTime.Now.ToString("MM-dd");
+            vsOld.VStartTime = DateTime.Now.ToString("HH:mm:ss");
+            vsOld.VEndTime = "";
+            vsOld.VUpdateTime = "";
+            vsOld.LVSID = "";
+            vsOld.IntLock = "0";
+        }
+        private void setVisit()
+        {
+            vs = new Visit();
+            vs = ic.ivfDB.vsDB.setVisit1(vs);
+            vs.t_visit_id = txtID.Text;
+            vs.visit_hn = txtHn.Text;
+            vs.t_patient_id = txtPttId.Text;
+            vs.b_service_point_id = cboVisitBsp.SelectedItem == null ? "" : ((ComboBoxItem)cboVisitBsp.SelectedItem).Value;
+            vs.visit_notice = txtVisitComment.Text;
+            vs.visit_begin_visit_time = DateTime.Now.Year.ToString() + "-" + DateTime.Now.ToString("MM-dd hh:mm:ss");
+            vs.visit_vn = ic.ivfDB.copDB.genVNDoc();
+            vs.remark = txtRemark.Text;
+            vs.f_visit_status_id = "1";
+            vs.visit_record_staff = txtStfConfirmID.Text;
+
+            vs.f_visit_type_id = ic.iniC.statusAppDonor.Equals("1") ? "2" : "1";
+            vs.status_urge = chkVisitUrge.Checked ? "1" : "0";
+            vs.patient_hn_1 = txtHnFemale.Text;
+            vs.lmp = ic.datetoDB(txtLMP.Text);
+            vs.height = txtHeight.Text;
+
+            vs.bw = txtBW.Text;
+            vs.bp = txtBP.Text;
+            vs.queue_id = ic.ivfDB.copDB.genQueueDoc();
+            vs.pulse = txtPulse.Text;
+            vs.status_nurse = "1";
+            vs.patient_hn_male = txtVisitHnMale.Text;
         }
         private void FrmPatientAdd_Load(object sender, EventArgs e)
         {

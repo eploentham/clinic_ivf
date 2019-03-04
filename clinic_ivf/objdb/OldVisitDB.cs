@@ -211,6 +211,13 @@ namespace clinic_ivf.objdb
         }
         public String updateStatusVoidVisit(String vn)
         {
+            //function cancel_visit($VN)
+              //      $this->db->query('update Visit set VSID="998" Where VN="'.$VN.'"');
+              //$date = date("Y-m-d", time());
+              //$query =$this->db->query('select PID from Visit Where VN="'.$VN.'"');
+              //$row =$query->row();
+              //$PID =$row->PID;
+              //$this->db->query('update Appointment Set Status=1 Where PID="'.$PID.'" and AppDate="'.$date.'"');
             String re = "";
             String sql = "";
             int chk = 0;
@@ -381,7 +388,7 @@ namespace clinic_ivf.objdb
                 "From " + vsold.table + " vsold " +
                 "Left Join VStatus on  VStatus.VSID = vsold.VSID " +
                 "Left Join Patient on  vsold.PID = Patient.PID " +
-                "Where vsold." + vsold.PIDS + " ='" + hn + "' " +
+                "Where vsold." + vsold.PIDS + " ='" + hn + "' and vsold.PID <> 0 " +
                 "Order By vsold.VN ";
             dt = conn.selectData(conn.conn, sql);
 

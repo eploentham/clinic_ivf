@@ -148,5 +148,24 @@ namespace clinic_ivf.objdb
 
             return re;
         }
+        public String delete(String vn)
+        {
+            String re = "";
+            String sql = "";
+
+            sql = "Delete From " + obilld.table + " Where " +
+                " " + obilld.VN + " = '" + vn + "'"
+            ;
+            try
+            {
+                re = conn.ExecuteNonQuery(conn.conn, sql);
+            }
+            catch (Exception ex)
+            {
+                sql = ex.Message + " " + ex.InnerException;
+            }
+
+            return re;
+        }
     }
 }

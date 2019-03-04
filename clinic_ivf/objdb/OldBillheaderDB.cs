@@ -72,6 +72,19 @@ namespace clinic_ivf.objdb
             dt = conn.selectData(conn.conn, sql);
             return dt;
         }
+        public String selectMaxBill()
+        {
+            String re = "";
+            DataTable dt = new DataTable();
+            String sql = "select max(obillh." + obillh.BillNo + ") as " + obillh.BillNo +
+                "From " + obillh.table + " obillh ";                
+            dt = conn.selectData(conn.conn, sql);
+            if (dt.Rows.Count > 0)
+            {
+                re = dt.Rows[0][obillh.BillNo].ToString();
+            }
+            return re;
+        }
         private void chkNull(OldBillheader p)
         {
             long chk = 0;
@@ -205,6 +218,24 @@ namespace clinic_ivf.objdb
             //    //re = update(p, "");
             //}
 
+            return re;
+        }
+        public String delete(String vn)
+        {
+            String re = "";
+            String sql = "";
+            
+            sql = "Delete From " + obillh.table + " Where " +
+                " " + obillh.VN + " = '" + vn + "'" 
+            ;
+            try
+            {
+                re = conn.ExecuteNonQuery(conn.conn, sql);
+            }
+            catch (Exception ex)
+            {
+                sql = ex.Message + " " + ex.InnerException;
+            }
             return re;
         }
     }

@@ -513,5 +513,10 @@ namespace clinic_ivf.objdb
 
             ojsdDB.insert(ojsd, "");
         }
+        public void DeleteBill(String vn)
+        {
+            obilhDB.delete(vn);
+            obildDB.delete(vn);
+        }
     }
 }

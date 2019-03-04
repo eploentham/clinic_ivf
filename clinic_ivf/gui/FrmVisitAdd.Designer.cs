@@ -45,6 +45,10 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.picPtt = new C1.Win.C1Input.C1PictureBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.label45 = new System.Windows.Forms.Label();
+            this.btnHnMaleSearch = new C1.Win.C1Input.C1Button();
+            this.label44 = new System.Windows.Forms.Label();
+            this.txtHnMale = new C1.Win.C1Input.C1TextBox();
             this.txtPttO = new C1.Win.C1Input.C1TextBox();
             this.label43 = new System.Windows.Forms.Label();
             this.label42 = new System.Windows.Forms.Label();
@@ -154,10 +158,6 @@
             this.txtNickName1 = new C1.Win.C1Input.C1TextBox();
             this.panel2 = new System.Windows.Forms.Panel();
             this.picImg = new C1.Win.C1Input.C1PictureBox();
-            this.txtHnMale = new C1.Win.C1Input.C1TextBox();
-            this.label44 = new System.Windows.Forms.Label();
-            this.btnHnMaleSearch = new C1.Win.C1Input.C1Button();
-            this.label45 = new System.Windows.Forms.Label();
             this.sB.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.theme1)).BeginInit();
             this.groupBox1.SuspendLayout();
@@ -171,6 +171,8 @@
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picPtt)).BeginInit();
             this.groupBox2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.btnHnMaleSearch)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtHnMale)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtPttO)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtPulse)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtBP)).BeginInit();
@@ -237,8 +239,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtNickName1)).BeginInit();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picImg)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtHnMale)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.btnHnMaleSearch)).BeginInit();
             this.SuspendLayout();
             // 
             // sB
@@ -552,6 +552,56 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Visit";
             this.theme1.SetTheme(this.groupBox2, "(default)");
+            // 
+            // label45
+            // 
+            this.label45.AutoSize = true;
+            this.label45.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.label45.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label45.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.label45.Location = new System.Drawing.Point(639, 21);
+            this.label45.Name = "label45";
+            this.label45.Size = new System.Drawing.Size(11, 16);
+            this.label45.TabIndex = 718;
+            this.label45.Text = ".";
+            this.theme1.SetTheme(this.label45, "(default)");
+            // 
+            // btnHnMaleSearch
+            // 
+            this.btnHnMaleSearch.Location = new System.Drawing.Point(604, 18);
+            this.btnHnMaleSearch.Name = "btnHnMaleSearch";
+            this.btnHnMaleSearch.Size = new System.Drawing.Size(28, 23);
+            this.btnHnMaleSearch.TabIndex = 717;
+            this.btnHnMaleSearch.Text = "...";
+            this.theme1.SetTheme(this.btnHnMaleSearch, "(default)");
+            this.btnHnMaleSearch.UseVisualStyleBackColor = true;
+            this.btnHnMaleSearch.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            // 
+            // label44
+            // 
+            this.label44.AutoSize = true;
+            this.label44.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.label44.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label44.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.label44.Location = new System.Drawing.Point(377, 21);
+            this.label44.Name = "label44";
+            this.label44.Size = new System.Drawing.Size(67, 16);
+            this.label44.TabIndex = 716;
+            this.label44.Text = "HN male :";
+            this.theme1.SetTheme(this.label44, "(default)");
+            // 
+            // txtHnMale
+            // 
+            this.txtHnMale.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtHnMale.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
+            this.txtHnMale.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.txtHnMale.Location = new System.Drawing.Point(457, 19);
+            this.txtHnMale.Name = "txtHnMale";
+            this.txtHnMale.Size = new System.Drawing.Size(141, 20);
+            this.txtHnMale.TabIndex = 715;
+            this.txtHnMale.Tag = null;
+            this.theme1.SetTheme(this.txtHnMale, "(default)");
+            this.txtHnMale.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
             // 
             // txtPttO
             // 
@@ -2187,56 +2237,6 @@
             this.picImg.TabIndex = 2;
             this.picImg.TabStop = false;
             // 
-            // txtHnMale
-            // 
-            this.txtHnMale.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtHnMale.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
-            this.txtHnMale.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.txtHnMale.Location = new System.Drawing.Point(457, 19);
-            this.txtHnMale.Name = "txtHnMale";
-            this.txtHnMale.Size = new System.Drawing.Size(141, 20);
-            this.txtHnMale.TabIndex = 715;
-            this.txtHnMale.Tag = null;
-            this.theme1.SetTheme(this.txtHnMale, "(default)");
-            this.txtHnMale.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
-            // 
-            // label44
-            // 
-            this.label44.AutoSize = true;
-            this.label44.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.label44.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label44.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.label44.Location = new System.Drawing.Point(377, 21);
-            this.label44.Name = "label44";
-            this.label44.Size = new System.Drawing.Size(67, 16);
-            this.label44.TabIndex = 716;
-            this.label44.Text = "HN male :";
-            this.theme1.SetTheme(this.label44, "(default)");
-            // 
-            // btnHnMaleSearch
-            // 
-            this.btnHnMaleSearch.Location = new System.Drawing.Point(604, 18);
-            this.btnHnMaleSearch.Name = "btnHnMaleSearch";
-            this.btnHnMaleSearch.Size = new System.Drawing.Size(28, 23);
-            this.btnHnMaleSearch.TabIndex = 717;
-            this.btnHnMaleSearch.Text = "...";
-            this.theme1.SetTheme(this.btnHnMaleSearch, "(default)");
-            this.btnHnMaleSearch.UseVisualStyleBackColor = true;
-            this.btnHnMaleSearch.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
-            // 
-            // label45
-            // 
-            this.label45.AutoSize = true;
-            this.label45.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.label45.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label45.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.label45.Location = new System.Drawing.Point(639, 21);
-            this.label45.Name = "label45";
-            this.label45.Size = new System.Drawing.Size(11, 16);
-            this.label45.TabIndex = 718;
-            this.label45.Text = ".";
-            this.theme1.SetTheme(this.label45, "(default)");
-            // 
             // FrmVisitAdd
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -2266,6 +2266,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.picPtt)).EndInit();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.btnHnMaleSearch)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtHnMale)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtPttO)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtPulse)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtBP)).EndInit();
@@ -2333,8 +2335,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtNickName1)).EndInit();
             this.panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.picImg)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtHnMale)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.btnHnMaleSearch)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
