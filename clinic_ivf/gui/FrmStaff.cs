@@ -645,7 +645,7 @@ namespace clinic_ivf.gui
             stf.dept_id = cboDept.SelectedItem == null ? "" : ((ComboBoxItem)cboDept.SelectedItem).Value;
             stf.prefix_id = cboPrefix.SelectedItem == null ? "" :  ((ComboBoxItem)cboPrefix.SelectedItem).Value;
             stf.posi_id = cboPosi.SelectedItem == null ? "" : ((ComboBoxItem)cboPosi.SelectedItem).Value;
-            stf.status_admin = chkAdmin.Checked ? "2" : "1";
+            stf.status_admin = chkAdmin.Checked ? "1" : "1";
             stf.status_module_reception = chkReception.Checked ? "1" : "0";
             stf.status_module_nurse = chkNurse.Checked ? "1" : "0";
             stf.status_module_doctor = chkDoctor.Checked ? "1" : "0";
