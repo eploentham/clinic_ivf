@@ -189,7 +189,7 @@ namespace clinic_ivf.gui
                 grfQue[i, colNameMale] = row["name_male"].ToString();
                 grfQue[i, colDtrName] = row["doctor_name"].ToString();
                 grfQue[i, colPttId] = "";
-                if (!row[ic.ivfDB.vsOldDB.vsold.form_a_id].ToString().Equals("0"))
+                if (!row[ic.ivfDB.ovsDB.vsold.form_a_id].ToString().Equals("0"))
                 {
                     CellNote note = new CellNote("ส่ง Lab Request Foam A");
                     CellRange rg = grfQue.GetCellRange(i, colCode);

@@ -353,14 +353,14 @@ namespace clinic_ivf.gui
             if (search.Equals(""))
             {
                 //String date = System.DateTime.Now.Year + "-" + System.DateTime.Now.ToString("MM-dd");
-                dt = ic.ivfDB.vsOldDB.selectByStatusNurseFinish(ic.datetoDB(txtDateStart.Text));
+                dt = ic.ivfDB.ovsDB.selectByStatusNurseFinish(ic.datetoDB(txtDateStart.Text));
             }
             else
             {
                 //grfPtt.DataSource = ic.ivfDB.vsOldDB.selectCurrentVisit(search);
                 if (txtDateStart.Text.Equals(""))
                 {
-                    dt = ic.ivfDB.vsOldDB.selectByStatusNurseFinishLike(search);
+                    dt = ic.ivfDB.ovsDB.selectByStatusNurseFinishLike(search);
                 }
             }
 
@@ -420,7 +420,7 @@ namespace clinic_ivf.gui
                 grfFinish[i, colVsEtime] = row["VEndTime"].ToString();
                 grfFinish[i, colStatus] = row["VName"].ToString();
                 grfFinish[i, colPttId] = row["PID"].ToString();
-                if (!row[ic.ivfDB.vsOldDB.vsold.form_a_id].ToString().Equals("0"))
+                if (!row[ic.ivfDB.ovsDB.vsold.form_a_id].ToString().Equals("0"))
                 {
                     CellNote note = new CellNote("ส่ง Lab Request Foam A");
                     CellRange rg = grfFinish.GetCellRange(i, colVN);
@@ -475,7 +475,7 @@ namespace clinic_ivf.gui
             if (search.Equals(""))
             {
                 //String date = System.DateTime.Now.Year + "-" + System.DateTime.Now.ToString("MM-dd");
-                dt = ic.ivfDB.vsOldDB.selectByStatusNurseDiag();
+                dt = ic.ivfDB.ovsDB.selectByStatusNurseDiag();
             }
             else
             {
@@ -577,12 +577,12 @@ namespace clinic_ivf.gui
                 if (DateTime.TryParse(txtDateStart.Text, out dt11))
                 {
                     date = dt11.Year + "-" + dt11.ToString("MM-dd");
-                    dt = ic.ivfDB.vsOldDB.selectByHnFormA(date);
+                    dt = ic.ivfDB.ovsDB.selectByHnFormA(date);
                 }
             }
             else
             {
-                dt = ic.ivfDB.vsOldDB.selectByHNLike(search);
+                dt = ic.ivfDB.ovsDB.selectByHNLike(search);
                 //grfPtt.DataSource = ic.ivfDB.vsOldDB.selectCurrentVisit(search);
             }
 
@@ -643,7 +643,7 @@ namespace clinic_ivf.gui
                 grfSearch[i, colVsEtime] = row["VEndTime"].ToString();
                 grfSearch[i, colStatus] = row["VName"].ToString();
                 grfSearch[i, colPttId] = row["PID"].ToString();
-                if (!row[ic.ivfDB.vsOldDB.vsold.form_a_id].ToString().Equals("0"))
+                if (!row[ic.ivfDB.ovsDB.vsold.form_a_id].ToString().Equals("0"))
                 {
                     CellNote note = new CellNote("ส่ง Lab Request Foam A");
                     CellRange rg = grfSearch.GetCellRange(i, colVN);
@@ -947,7 +947,7 @@ namespace clinic_ivf.gui
                 {
                     //dt11 = dt11.AddDays(-1);
                     date = dt11.Year + "-" + dt11.ToString("MM-dd");
-                    dt = ic.ivfDB.vsOldDB.selectByDate(date);
+                    dt = ic.ivfDB.ovsDB.selectByDate(date);
                 }
             }
             else
@@ -1011,7 +1011,7 @@ namespace clinic_ivf.gui
                 grfQue[i, colVsEtime] = row["VEndTime"].ToString();
                 grfQue[i, colStatus] = row["VName"].ToString();
                 grfQue[i, colPttId] = row["PID"].ToString();
-                if (!row[ic.ivfDB.vsOldDB.vsold.form_a_id].ToString().Equals("0"))
+                if (!row[ic.ivfDB.ovsDB.vsold.form_a_id].ToString().Equals("0"))
                 {
                     CellNote note = new CellNote("ส่ง Lab Request Foam A");
                     CellRange rg = grfQue.GetCellRange(i, colVN);

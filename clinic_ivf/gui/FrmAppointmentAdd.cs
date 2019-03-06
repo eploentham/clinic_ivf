@@ -683,7 +683,7 @@ namespace clinic_ivf.gui
             if(dt.Rows.Count <= 0)
             {
                 VisitOld vsOld = new VisitOld();
-                vsOld = ic.ivfDB.vsOldDB.selectByPk1(vsId);
+                vsOld = ic.ivfDB.ovsDB.selectByPk1(vsId);
                 Patient ptt = new Patient();
                 ptt = ic.ivfDB.pttDB.selectByIdOld(vsOld.PID);
                 dt = ic.ivfDB.pApmDB.selectByPtt(ptt.t_patient_id);

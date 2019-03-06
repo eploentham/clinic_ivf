@@ -705,7 +705,7 @@ namespace clinic_ivf.gui
             if (txtHn.Text.Length <= 0) return;
 
             DataTable dt = new DataTable();
-            dt = ic.ivfDB.vsOldDB.selectByHN(txtHn.Text);
+            dt = ic.ivfDB.ovsDB.selectByHN(txtHn.Text);
             int i = 1, j = 1, row = grfVs.Rows.Count;
             //txtVN.Value = dt.Rows.Count;
             //txtName.Value = "";

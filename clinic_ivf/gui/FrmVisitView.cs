@@ -302,7 +302,7 @@ namespace clinic_ivf.gui
             if (search.Equals(""))
             {
                 //String date = System.DateTime.Now.Year + "-" + System.DateTime.Now.ToString("MM-dd");
-                dt = ic.ivfDB.vsOldDB.selectCurrentVisit();
+                dt = ic.ivfDB.ovsDB.selectCurrentVisit();
             }
             else
             {

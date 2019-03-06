@@ -184,7 +184,7 @@ namespace clinic_ivf.gui
 
         private void setControl()
         {
-            ovs = ic.ivfDB.vsOldDB.selectByPk1(vnold);
+            ovs = ic.ivfDB.ovsDB.selectByPk1(vnold);
             optt = ic.ivfDB.pttOldDB.selectByPk1(ovs.PID);
             txtHn.Value = optt.PIDS;
             txtPttNameE.Value = optt.FullName;
@@ -214,7 +214,7 @@ namespace clinic_ivf.gui
             grfBillD.AfterDataRefresh += GrfBillD_AfterDataRefresh;
             ContextMenu menuGw = new ContextMenu();
             menuGw.MenuItems.Add("ออก บิล", new EventHandler(ContextMenu_edit_bill));
-            //menuGw.MenuItems.Add("&แก้ไข", new EventHandler(ContextMenu_Gw_Edit));
+            menuGw.MenuItems.Add("ส่งกลับ", new EventHandler(ContextMenu_send_back));
             //menuGw.MenuItems.Add("&ยกเลิก", new EventHandler(ContextMenu_Gw_Cancel));
             grfBillD.ContextMenu = menuGw;
             grfBillD.SubtotalPosition = SubtotalPositionEnum.BelowData;
@@ -232,14 +232,15 @@ namespace clinic_ivf.gui
             //throw new NotImplementedException();
             UpdateTotals();
         }
-
         private void ContextMenu_edit_bill(object sender, System.EventArgs e)
+        {
+
+        }
+        private void ContextMenu_send_back(object sender, System.EventArgs e)
         {
             String chk = "", name = "", id = "";
 
-            //id = grfQue[grfQue.Row, colID] != null ? grfQue[grfQue.Row, colID].ToString() : "";
-            //name = grfQue[grfQue.Row, colPttName] != null ? grfQue[grfQue.Row, colPttName].ToString() : "";
-            //openBillNew(id, name);
+            
         }
         private void setGrfBillD()
         {

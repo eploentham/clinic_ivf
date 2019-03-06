@@ -12,6 +12,7 @@ namespace clinic_ivf.objdb
     {
         public OldSpecialItem sitm;
         ConnectDB conn;
+        public List<OldSpecialItem> loBilg;
 
         public OldSpecialItemDB(ConnectDB c)
         {
@@ -20,6 +21,7 @@ namespace clinic_ivf.objdb
         }
         private void initConfig()
         {
+            loBilg = new List<OldSpecialItem>();
             sitm = new OldSpecialItem();
             sitm.SID= "SID";
             sitm.SName= "SName";
@@ -33,6 +35,65 @@ namespace clinic_ivf.objdb
 
             sitm.table = "SpecialItem";
             sitm.pkField = "SID";
+        }
+        public String getList(String id)
+        {
+            String re = "";
+            if (loBilg.Count <= 0)
+            {
+                getlCreditCardAccount();
+            }
+            foreach (OldSpecialItem sex in loBilg)
+            {
+                if (sex.SID.Equals(id))
+                {
+                    re = sex.SName;
+                    break;
+                }
+            }
+            return re;
+        }
+        public String getBillGroupID(String id)
+        {
+            String re = "";
+            if (loBilg.Count <= 0)
+            {
+                getlCreditCardAccount();
+            }
+            foreach (OldSpecialItem sex in loBilg)
+            {
+                if (sex.SID.Equals(id))
+                {
+                    re = sex.BillGroupID;
+                    break;
+                }
+            }
+            return re;
+        }
+        public void getlCreditCardAccount()
+        {
+            //lDept = new List<Position>();
+            loBilg.Clear();
+            DataTable dt = new DataTable();
+            dt = selectAll();
+            foreach (DataRow row in dt.Rows)
+            {
+                OldSpecialItem itm1 = new OldSpecialItem();
+                itm1.SID = row[sitm.SID].ToString();
+                itm1.SName = row[sitm.SName].ToString();
+                itm1.BillGroupID = row[sitm.BillGroupID].ToString();
+                loBilg.Add(sitm);
+            }
+        }
+        public DataTable selectAll()
+        {
+            DataTable dt = new DataTable();
+            String sql = "select sitm.*  " +
+                "From " + sitm.table + " sitm " +
+                " " ;
+            dt = conn.selectData(conn.conn, sql);
+
+            return dt;
         }
         public DataTable selectByPk(String pttId)
         {

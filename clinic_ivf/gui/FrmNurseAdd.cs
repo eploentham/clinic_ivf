@@ -179,7 +179,7 @@ namespace clinic_ivf.gui
 
         private void setControl(String vsid)
         {
-            vsOld = ic.ivfDB.vsOldDB.selectByPk1(vsid);
+            vsOld = ic.ivfDB.ovsDB.selectByPk1(vsid);
             pttOld = ic.ivfDB.pttOldDB.selectByPk1(vsOld.PID);
             ptt.patient_birthday = pttOld.DateOfBirth;
             txtHn.Value = vsOld.PIDS;

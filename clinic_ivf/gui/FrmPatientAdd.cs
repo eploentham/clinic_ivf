@@ -240,7 +240,7 @@ namespace clinic_ivf.gui
                 }
                 else
                 {
-                    re = ic.ivfDB.vsOldDB.updateStatusVoidVisit(txtVn.Text);
+                    re = ic.ivfDB.ovsDB.updateStatusVoidVisit(txtVn.Text);
                     re1 = ic.ivfDB.vsDB.updateStatusVoidVisit(txtVisitID.Text);
                     setGrfVs(txtHn.Text);
                 }
@@ -290,13 +290,13 @@ namespace clinic_ivf.gui
                     if (txtVisitID.Text.Equals(""))
                     {
                         setVisitOld();
-                        re = ic.ivfDB.vsOldDB.insertVisitOld(vsOld, txtStfConfirmID.Text);
+                        re = ic.ivfDB.ovsDB.insertVisitOld(vsOld, txtStfConfirmID.Text);
                         long chk1 = 0;
                         if (long.TryParse(re, out chk1))
                         {
                             setVisit();
                             vs.visit_vn = re;
-                            re = ic.ivfDB.vsOldDB.updateVEndTimeNull(vsOld.VN);
+                            re = ic.ivfDB.ovsDB.updateVEndTimeNull(vsOld.VN);
                             re1 = ic.ivfDB.vsDB.insertVisit(vs, txtStfConfirmID.Text);
                         }
                     }
@@ -1753,10 +1753,10 @@ namespace clinic_ivf.gui
             int i = 1;
             foreach (DataRow row in dt.Rows)
             {
-                grfVs[i, colVsID] = row[ic.ivfDB.vsOldDB.vsold.VN].ToString();
-                grfVs[i, colVsHn] = row[ic.ivfDB.vsOldDB.vsold.PIDS].ToString();
-                grfVs[i, colVsVisitDate] = ic.datetoShow(row[ic.ivfDB.vsOldDB.vsold.VDate]);
-                grfVs[i, colVsVisitTime] = row[ic.ivfDB.vsOldDB.vsold.VStartTime].ToString();
+                grfVs[i, colVsID] = row[ic.ivfDB.ovsDB.vsold.VN].ToString();
+                grfVs[i, colVsHn] = row[ic.ivfDB.ovsDB.vsold.PIDS].ToString();
+                grfVs[i, colVsVisitDate] = ic.datetoShow(row[ic.ivfDB.ovsDB.vsold.VDate]);
+                grfVs[i, colVsVisitTime] = row[ic.ivfDB.ovsDB.vsold.VStartTime].ToString();
                 grfVs[i, colVsStatus] = row["VName"].ToString();
                 grfVs[i, 0] = i;
                 i++;
@@ -1775,7 +1775,7 @@ namespace clinic_ivf.gui
             grfVs.Clear();
             grfVs.Rows.Count = 1;
             grfVs.Cols.Count = 6;
-            DataTable dt = ic.ivfDB.vsOldDB.selectByHN(search);
+            DataTable dt = ic.ivfDB.ovsDB.selectByHN(search);
 
             grfVs.Rows.Count = dt.Rows.Count + 1;
             //grfCu.Rows.Count = 41;
@@ -1829,10 +1829,10 @@ namespace clinic_ivf.gui
             int i = 1;
             foreach(DataRow row in dt.Rows)
             {
-                grfVs[i, colVsID] = row[ic.ivfDB.vsOldDB.vsold.VN].ToString();
-                grfVs[i, colVsHn] = row[ic.ivfDB.vsOldDB.vsold.PIDS].ToString();
-                grfVs[i, colVsVisitDate] = ic.datetoShow(row[ic.ivfDB.vsOldDB.vsold.VDate]);
-                grfVs[i, colVsVisitTime] = row[ic.ivfDB.vsOldDB.vsold.VStartTime].ToString();
+                grfVs[i, colVsID] = row[ic.ivfDB.ovsDB.vsold.VN].ToString();
+                grfVs[i, colVsHn] = row[ic.ivfDB.ovsDB.vsold.PIDS].ToString();
+                grfVs[i, colVsVisitDate] = ic.datetoShow(row[ic.ivfDB.ovsDB.vsold.VDate]);
+                grfVs[i, colVsVisitTime] = row[ic.ivfDB.ovsDB.vsold.VStartTime].ToString();
                 grfVs[i, colVsStatus] = row["VName"].ToString();
                 grfVs[i, 0] = i;
                 i++;
@@ -2161,7 +2161,7 @@ namespace clinic_ivf.gui
             VisitOld vsOld = new VisitOld();
             if (pttid.Equals(""))
             {
-                vsOld = ic.ivfDB.vsOldDB.selectByPk1(vsoldId);
+                vsOld = ic.ivfDB.ovsDB.selectByPk1(vsoldId);
                 pttid = vsOld.PID;
             }
 

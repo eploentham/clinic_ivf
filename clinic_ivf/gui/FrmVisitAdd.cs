@@ -267,13 +267,13 @@ namespace clinic_ivf.gui
                 else
                 {
                     setVisitOld();
-                    re = ic.ivfDB.vsOldDB.insertVisitOld(vsOld, txtStfConfirmID.Text);
+                    re = ic.ivfDB.ovsDB.insertVisitOld(vsOld, txtStfConfirmID.Text);
                     long chk1 = 0;
                     if (long.TryParse(re, out chk1))
                     {
                         setVisit();
                         vs.visit_vn = re;
-                        re = ic.ivfDB.vsOldDB.updateVEndTimeNull(vsOld.VN);
+                        re = ic.ivfDB.ovsDB.updateVEndTimeNull(vsOld.VN);
                         re1 = ic.ivfDB.vsDB.insertVisit(vs, txtStfConfirmID.Text);
                     }
                 }

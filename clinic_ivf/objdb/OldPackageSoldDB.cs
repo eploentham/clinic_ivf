@@ -139,6 +139,56 @@ namespace clinic_ivf.objdb
 
             return re;
         }
+        public String updateP4321(String vn)
+        {
+            DataTable dt = new DataTable();
+            String re = "";
+            String sql = "";
+            int chk = 0;
+
+            sql = "Select * from PackageSold Where VN = '" + vn + "'";
+            dt = conn.selectData(conn.conn, sql);
+            if (dt.Rows.Count > 0)
+            {
+                if(int.TryParse(dt.Rows[0][opkgs.P4BDetailID].ToString(), out chk))
+                {
+                    if (chk > 0)
+                    {
+                        sql = "Update PackageSold set P4BDetailID=0 Where VN='"+vn+"' and P4BDetailID != 9999";
+                        re = conn.ExecuteNonQuery(conn.conn, sql);
+                    }
+                    else
+                    {
+                        if (int.TryParse(dt.Rows[0][opkgs.P3BDetailID].ToString(), out chk))
+                        {
+                            if (chk > 0)
+                            {
+                                sql = "Update PackageSold set P3BDetailID=0 Where VN='" + vn + "' and P3BDetailID != 9999";
+                                re = conn.ExecuteNonQuery(conn.conn, sql);
+                            }
+                            else
+                            {
+                                if (int.TryParse(dt.Rows[0][opkgs.P2BDetailID].ToString(), out chk))
+                                {
+                                    if (chk > 0)
+                                    {
+                                        sql = "Update PackageSold set P2BDetailID=0 Where VN='" + vn + "' and P2BDetailID != 9999";
+                                        re = conn.ExecuteNonQuery(conn.conn, sql);
+                                    }
+                                    else
+                                    {
+                                        sql = "Update PackageSold set P1BDetailID=0 Where VN='" + vn + "' and P1BDetailID != 9999";
+                                        re = conn.ExecuteNonQuery(conn.conn, sql);
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
+            return re;
+        }
         public String delePackage(String pkgid)
         {
             //$this->db->query('delete from PackageSold Where PCKSID="' . $ID . '"');
@@ -186,6 +236,15 @@ namespace clinic_ivf.objdb
             String sql = "select opkgs.* " +
                 "From " + opkgs.table + " opkgs " +
                 "Where opkgs." + opkgs.VN + " ='" + pttId + "' ";
+            dt = conn.selectData(conn.conn, sql);
+            return dt;
+        }
+        public DataTable selectByPID(String pttId)
+        {
+            DataTable dt = new DataTable();
+            String sql = "select opkgs.* " +
+                "From " + opkgs.table + " opkgs " +
+                "Where opkgs." + opkgs.PID + " ='" + pttId + "' and Status<>3 ";
             dt = conn.selectData(conn.conn, sql);
             return dt;
         }

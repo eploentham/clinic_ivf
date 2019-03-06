@@ -181,13 +181,13 @@ namespace clinic_ivf.gui
             //con.OpenConnectionEx();
             if (ic.iniC.statusAppDonor.Equals("1"))
             {
-                dt = ic.ivfDB.vsOldDB.selectCurrentVisit(con.connEx);
+                dt = ic.ivfDB.ovsDB.selectCurrentVisit(con.connEx);
             }
             else
             {
                 if (hn.Equals(""))
                 {
-                    dt = ic.ivfDB.vsOldDB.selectCurrentVisit(con.conn);
+                    dt = ic.ivfDB.ovsDB.selectCurrentVisit(con.conn);
                 }
                 else
                 {
@@ -199,7 +199,7 @@ namespace clinic_ivf.gui
                     {
                         if (statussearchtable == StatusSearchTable.VisitSearch)
                         {
-                            dt = ic.ivfDB.vsOldDB.selectLikeByHN(hn, con.conn);
+                            dt = ic.ivfDB.ovsDB.selectLikeByHN(hn, con.conn);
                         }
                         else
                         {
@@ -317,7 +317,7 @@ namespace clinic_ivf.gui
             //con.OpenConnectionEx();
             if (ic.iniC.statusAppDonor.Equals("1"))
             {
-                dt = ic.ivfDB.vsOldDB.selectCurrentVisit(con.connEx);
+                dt = ic.ivfDB.ovsDB.selectCurrentVisit(con.connEx);
             }
             else
             {
@@ -327,7 +327,7 @@ namespace clinic_ivf.gui
                 }
                 else
                 {
-                    dt = ic.ivfDB.vsOldDB.selectCurrentVisit(con.conn);
+                    dt = ic.ivfDB.ovsDB.selectCurrentVisit(con.conn);
                 }
             }
                 

@@ -108,6 +108,26 @@ namespace clinic_ivf.objdb
             dt = conn.selectData(conn.conn, sql);
             return dt;
         }
+        public DataTable selectExtra1ByVN(String copId)
+        {
+            DataTable dt = new DataTable();
+            String sql = "select oJpxd.* " +
+                "From " + oJpxd.table + " oJpxd " +
+                "Where oJpxd." + oJpxd.VN + " ='" + copId + "' and Extra='1' " +
+                "Order By oJpxd." + oJpxd.DUName;
+            dt = conn.selectData(conn.conn, sql);
+            return dt;
+        }
+        public DataTable selectExtra0ByVN(String copId)
+        {
+            DataTable dt = new DataTable();
+            String sql = "select oJpxd.* " +
+                "From " + oJpxd.table + " oJpxd " +
+                "Where oJpxd." + oJpxd.VN + " ='" + copId + "' and Extra='0' " +
+                "Order By oJpxd." + oJpxd.DUName;
+            dt = conn.selectData(conn.conn, sql);
+            return dt;
+        }
         public DataTable selectByVN(String copId)
         {
             DataTable dt = new DataTable();

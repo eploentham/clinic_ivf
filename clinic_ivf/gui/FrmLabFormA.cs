@@ -561,7 +561,7 @@ namespace clinic_ivf.gui
                     if (long.TryParse(re, out chk))
                     {
                         txtID.Value = txtID.Text.Equals("") ? re : txtID.Text;
-                        ic.ivfDB.vsOldDB.updateFormA(txtVnOld.Text, txtID.Text);
+                        ic.ivfDB.ovsDB.updateFormA(txtVnOld.Text, txtID.Text);
                         //txtID.Value = re;
                         btnSave.Text = "Save";
                         btnSave.Image = Resources.accept_database24;

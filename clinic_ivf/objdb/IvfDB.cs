@@ -19,7 +19,7 @@ namespace clinic_ivf.objdb
         public PositionDB posiDB;
         //public PrefixDB pfxDB;
         public LabProcedureDB proceDB;
-        public OldVisitDB vsOldDB;
+        public OldVisitDB ovsDB;
         public BItemDB itmDB;
         public LabRequestDB lbReqDB;
         public CompanyDB copDB;
@@ -92,7 +92,7 @@ namespace clinic_ivf.objdb
             posiDB = new PositionDB(conn);
             //pfxDB = new PrefixDB(conn);
             proceDB = new LabProcedureDB(conn);
-            vsOldDB = new OldVisitDB(conn);
+            ovsDB = new OldVisitDB(conn);
             itmDB = new BItemDB(conn);
             lbReqDB = new LabRequestDB(conn);
             copDB = new CompanyDB(conn);
@@ -517,6 +517,288 @@ namespace clinic_ivf.objdb
         {
             obilhDB.delete(vn);
             obildDB.delete(vn);
+        }
+        public void getBill(String vn)
+        {
+            /* Step 1.
+             * $this->db->query('delete from DebtorHeader Where VN="'.$VN.'"');
+             * $this->db->query('delete from DebtorDetail Where VN="'.$VN.'"');
+             * $this->db->query('delete from BillHeader Where VN="'.$VN.'"');
+             * $this->db->query('delete from BillDetail Where VN="'.$VN.'"');
+            */
+            DataTable dt = new DataTable();
+            String re = "";
+            String sql = "delete from DebtorHeader Where VN='"+vn+"'";
+            re = conn.ExecuteNonQuery(conn.conn, sql);
+            sql = "delete from DebtorDetail Where VN='" + vn + "'";
+            re = conn.ExecuteNonQuery(conn.conn, sql);
+            sql = "";
+            DeleteBill(vn);
+            /* Step 2.
+             * Update PackageSold
+             * $queryP = $this->db->query('Select * from PackageSold Where VN="'.$VN.'"');
+             * if ($queryP->num_rows()>0){
+             * $rowP=$queryP->row();
+             * if ($rowP->P4BDetailID > 0){
+             * $this->db->query('Update PackageSold set P4BDetailID=0 Where VN="'.$VN.'" and P4BDetailID!=9999');
+             * } else {
+             * if ($rowP->P3BDetailID > 0){
+             *  $this->db->query('Update PackageSold set P3BDetailID=0 Where VN="'.$VN.'" and P3BDetailID!=9999');
+             *  } else {
+             *  if ($rowP->P2BDetailID > 0){
+             *  $this->db->query('Update PackageSold set P2BDetailID=0 Where VN="'.$VN.'" and P2BDetailID!=9999');
+             *  } else {
+             *  $this->db->query('Update PackageSold set P1BDetailID=0 Where VN="'.$VN.'" and P1BDetailID!=9999');
+             *  }   }   }   };
+            */
+            opkgsDB.updateP4321(vn);
+            /* Step 3.
+             * get visit
+             * 
+             */
+            VisitOld ovs = new VisitOld();
+            ovs = ovsDB.selectByPk1(vn);
+            /* Step 4.
+             * set Include_Pkg_Price, Extra_Pkg_Price
+             * $query = $this->db->query('Select Include_Pkg_Price, Extra_Pkg_Price from JobLab Where VN="' . $VN . '"');
+             * if ($query->num_rows() != 0) {
+             * $row = $query->row();
+             * $Include_Pkg_Price = $row->Include_Pkg_Price;
+             * $Extra_Pkg_Price = $row->Extra_Pkg_Price;
+             * };
+             * $query = $this->db->query('Select Include_Pkg_Price, Extra_Pkg_Price from JobPx Where VN="' . $VN . '"');
+             * if ($query->num_rows() != 0) {
+             * $row = $query->row();
+             * $Include_Pkg_Price = $row->Include_Pkg_Price + $Include_Pkg_Price;
+             * $Extra_Pkg_Price = $row->Extra_Pkg_Price + $Extra_Pkg_Price;
+             * };
+             * $query = $this->db->query('Select Include_Pkg_Price, Extra_Pkg_Price from JobSpecial Where VN="' . $VN . '"');
+             * if ($query->num_rows() != 0) {
+             * $row = $query->row();
+             * $Include_Pkg_Price = $row->Include_Pkg_Price + $Include_Pkg_Price;
+             * $Extra_Pkg_Price = $row->Extra_Pkg_Price + $Extra_Pkg_Price;
+             * };
+             *                     
+             */
+            Decimal inclab = 0, extlab = 0, incpx = 0, extpx = 0, incspe = 0, extspe = 0, inc=0, ext=0;
+            int chk = 0;
+            sql = "Select Include_Pkg_Price, Extra_Pkg_Price from JobLab Where VN='"+vn+"'";
+            dt = conn.selectData(conn.conn,sql);
+            if (dt.Rows.Count > 0)
+            {
+                Decimal.TryParse(dt.Rows[0]["Include_Pkg_Price"].ToString(), out inclab);
+                Decimal.TryParse(dt.Rows[0]["Extra_Pkg_Price"].ToString(), out extlab);
+            }
+            sql = "Select Include_Pkg_Price, Extra_Pkg_Price from JobPx Where VN='" + vn + "'";
+            dt = conn.selectData(conn.conn, sql);
+            if (dt.Rows.Count > 0)
+            {
+                Decimal.TryParse(dt.Rows[0]["Include_Pkg_Price"].ToString(), out incpx);
+                Decimal.TryParse(dt.Rows[0]["Extra_Pkg_Price"].ToString(), out extpx);
+            }
+            sql = "Select Include_Pkg_Price, Extra_Pkg_Price from JobSpecial Where VN='" + vn + "'";
+            dt = conn.selectData(conn.conn, sql);
+            if (dt.Rows.Count > 0)
+            {
+                Decimal.TryParse(dt.Rows[0]["Include_Pkg_Price"].ToString(), out incspe);
+                Decimal.TryParse(dt.Rows[0]["Extra_Pkg_Price"].ToString(), out extspe);
+            }
+            inc = inclab + incpx + incspe;
+            ext = extlab + extpx + extspe;
+            /* Step 5.
+             * insert Bill Header
+             * insert Bill Detail
+             * $date = date("Y-m-d", time());
+             * $time = date("H:i:s", time());
+             * $status = "1";
+             * $this->db->query('Insert into BillHeader Set  BillNo="'.$BillNo.'", VN="' . $VN . '", PName="' . $PName . '", OName="' . $OName . '", PID="' . $PID . '", PIDS="' . $PIDS . '"
+             * , Include_Pkg_Price="' . $Include_Pkg_Price . '", Extra_Pkg_Price="' . $Extra_Pkg_Price . '", Date="' . $date . '", Time="' . $time . '", Status=1');
+             * $query=$this->db->query('Select * from PackageSold Where PID="'.$PID.'" and Status<>3');
+             * if ($query->num_rows()>0){
+             * $this->db->query('insert into BillDetail Set VN="' . $VN . '", Name="Package", Extra="0", Price="0", Total="0", GroupType="Package"');
+             * }
+             * 
+             */
+            DateTime dt11 = DateTime.Now;
+            String date = "", time="";
+            date = dt11.Year + "-" + dt11.ToString("MM-dd");
+            time = dt11.ToString("HH-mm-ss");
+            OldBillheader obillh = new OldBillheader();
+            obillh.VN = vn;
+            obillh.BillNo = "";
+            obillh.PName = ovs.PName;
+            obillh.Date = date;
+            obillh.Time = time;
+            obillh.PID = ovs.PID;
+            obillh.PIDS = ovs.PIDS;
+            obillh.Include_Pkg_Price = inc.ToString();
+            obillh.Extra_Pkg_Price = ext.ToString();
+            obillh.Total = "";
+            obillh.Discount = "";
+            obillh.CreditCardType = "";
+            obillh.CreditCardNumber = "";
+            obillh.Status = "1";
+            obillh.CreditAgent = "CrediAgent";
+            obillh.OName = ovs.OName;
+            obillh.BID = "";
+            obillh.PaymentBy = "";
+            obillh.CashID = "";
+            obillh.CreditCardID = "";
+            obillh.SepCash = "";
+            obillh.SepCredit = "";
+            obillh.ExtBillNo = "";
+            obillh.IntLock = "";
+            obilhDB.insertBillHeader(obillh, "");
+            //sql = "Select * from PackageSold Where PID='"+ ovs.PID+ "' and Status<>3'";
+            dt = opkgsDB.selectByPID(vn);
+            if (dt.Rows.Count > 0)
+            {
+                foreach(DataRow row in dt.Rows)
+                {
+                    OldBilldetail obilld = new OldBilldetail();
+                    obilld.ID = "";
+                    obilld.VN = row["VN"].ToString(); ;
+                    obilld.Name = "Package";
+                    obilld.Extra = "0";
+                    obilld.Price = "0";
+                    obilld.Total = "0";
+                    obilld.GroupType = "Package";
+                    obilld.Comment = "";
+                    obildDB.insertBillDetail(obilld, "");
+                }
+            }
+            if (inc != 0)
+            {
+                dt = oJlabdDB.selectBillExtra0ByVN(vn);
+                if (dt.Rows.Count > 0)
+                {
+                    foreach (DataRow row in dt.Rows)
+                    {
+                        String grp3 = "", grp4 = "", grp = "";
+                        grp3 = obilgDB.getList("3");
+                        grp4 = obilgDB.getList("4");
+
+                        grp = row["LGID"].ToString().Equals("1") ? grp3 : grp4;
+
+                        OldBilldetail obilld = new OldBilldetail();
+                        obilld.ID = "";
+                        obilld.VN = row["VN"].ToString();
+                        obilld.Name = row["LName"].ToString();
+                        obilld.Extra = "0";
+                        obilld.Price = row["Price"].ToString();
+                        obilld.Total = "0";
+                        obilld.GroupType = grp;
+                        obilld.Comment = "";
+                        obildDB.insertBillDetail(obilld, "");
+                    }
+                }
+                dt = oJpxdDB.selectExtra0ByVN(vn);
+                if (dt.Rows.Count > 0)
+                {
+                    foreach (DataRow row in dt.Rows)
+                    {
+                        String grp1 = "", grp4 = "", grp = "";
+                        grp1 = obilgDB.getList("1");
+                        OldBilldetail obilld = new OldBilldetail();
+                        obilld.ID = "";
+                        obilld.VN = row["VN"].ToString();
+                        obilld.Name = row["DUName"].ToString();
+                        obilld.Extra = "0";
+                        obilld.Price = row["Price"].ToString();
+                        obilld.Total = "0";
+                        obilld.GroupType = grp1;
+                        obilld.Comment = "";
+                        obildDB.insertBillDetail(obilld, "");
+                    }
+                }
+                dt = ojsdDB.selectExtra0ByVN(vn);
+                if (dt.Rows.Count > 0)
+                {
+                    foreach (DataRow row in dt.Rows)
+                    {
+                        String grp1 = "", grp4 = "", grp = "";
+                        grp1 = oSItmDB.getBillGroupID(row["SID"].ToString());
+                        grp = obilgDB.getList(grp1);
+                        OldBilldetail obilld = new OldBilldetail();
+                        obilld.ID = "";
+                        obilld.VN = row["VN"].ToString();
+                        obilld.Name = row["DUName"].ToString();
+                        obilld.Extra = "0";
+                        obilld.Price = row["Price"].ToString();
+                        obilld.Total = "0";
+                        obilld.GroupType = grp;
+                        obilld.Comment = "";
+                        obildDB.insertBillDetail(obilld, "");
+                    }
+                }
+            }
+            if (ext != 0)
+            {
+                dt = oJlabdDB.selectBillExtra1ByVN(vn);
+                if (dt.Rows.Count > 0)
+                {
+                    foreach (DataRow row in dt.Rows)
+                    {
+                        String grp3 = "", grp4 = "", grp = "";
+                        grp3 = obilgDB.getList("3");
+                        grp4 = obilgDB.getList("4");
+
+                        grp = row["LGID"].ToString().Equals("1") ? grp3 : grp4;
+
+                        OldBilldetail obilld = new OldBilldetail();
+                        obilld.ID = "";
+                        obilld.VN = row["VN"].ToString();
+                        obilld.Name = row["LName"].ToString();
+                        obilld.Extra = "1";
+                        obilld.Price = row["Price"].ToString();
+                        obilld.Total = row["Price"].ToString();
+                        obilld.GroupType = grp;
+                        obilld.Comment = "";
+                        obildDB.insertBillDetail(obilld, "");
+                    }
+                }
+                dt = oJpxdDB.selectExtra1ByVN(vn);
+                if (dt.Rows.Count > 0)
+                {
+                    foreach (DataRow row in dt.Rows)
+                    {
+                        String grp1 = "", grp4 = "", grp = "";
+                        grp1 = obilgDB.getList("1");
+                        OldBilldetail obilld = new OldBilldetail();
+                        obilld.ID = "";
+                        obilld.VN = row["VN"].ToString();
+                        obilld.Name = row["DUName"].ToString();
+                        obilld.Extra = "0";
+                        obilld.Price = row["Price"].ToString();
+                        obilld.Total = row["Price"].ToString();
+                        obilld.GroupType = grp1;
+                        obilld.Comment = "";
+                        obildDB.insertBillDetail(obilld, "");
+                    }
+                }
+                dt = ojsdDB.selectExtra1ByVN(vn);
+                if (dt.Rows.Count > 0)
+                {
+                    foreach (DataRow row in dt.Rows)
+                    {
+                        String grp1 = "", grp4 = "", grp = "";
+                        grp1 = oSItmDB.getBillGroupID(row["SID"].ToString());
+                        grp = obilgDB.getList(grp1);
+                        OldBilldetail obilld = new OldBilldetail();
+                        obilld.ID = "";
+                        obilld.VN = row["VN"].ToString();
+                        obilld.Name = row["DUName"].ToString();
+                        obilld.Extra = "0";
+                        obilld.Price = row["Price"].ToString();
+                        obilld.Total = row["Price"].ToString();
+                        obilld.GroupType = grp;
+                        obilld.Comment = "";
+                        obildDB.insertBillDetail(obilld, "");
+                    }
+                }
+            }
+            sql = "update BillHeader Set Total=Extra_Pkg_Price Where VN='"+vn+"'";
+            re = conn.ExecuteNonQuery(conn.conn, sql);
         }
     }
 }

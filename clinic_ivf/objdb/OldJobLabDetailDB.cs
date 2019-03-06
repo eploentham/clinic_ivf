@@ -150,6 +150,28 @@ namespace clinic_ivf.objdb
             dt = conn.selectData(conn.conn, sql);
             return dt;
         }
+        public DataTable selectBillExtra0ByVN(String pttId)
+        {
+            DataTable dt = new DataTable();
+            String sql = "select jlabD.* " +
+                "From " + jlabD.table + " jlabD " +
+                //"Left Join labItem li on jlabD.LID = li.LID " +
+                "Where jlabD." + jlabD.VN + " ='" + pttId + "' and Extra='0' and SubItem is null " +
+                "Order By jlabD." + jlabD.LID;
+            dt = conn.selectData(conn.conn, sql);
+            return dt;
+        }
+        public DataTable selectBillExtra1ByVN(String pttId)
+        {
+            DataTable dt = new DataTable();
+            String sql = "select jlabD.* " +
+                "From " + jlabD.table + " jlabD " +
+                //"Left Join labItem li on jlabD.LID = li.LID " +
+                "Where jlabD." + jlabD.VN + " ='" + pttId + "' and Extra='1' and SubItem is null " +
+                "Order By jlabD." + jlabD.LID;
+            dt = conn.selectData(conn.conn, sql);
+            return dt;
+        }
         public String selectSumIncludePriceByVN(String copId)
         {
             String re = "0";

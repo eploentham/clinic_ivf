@@ -88,7 +88,7 @@ namespace clinic_ivf.gui
             //grfExpnC.CellChanged += new C1.Win.C1FlexGrid.RowColEventHandler(this.grfDept_CellChanged);
             ContextMenu menuGw = new ContextMenu();
             menuGw.MenuItems.Add("ออก บิล", new EventHandler(ContextMenu_edit_billfinish));
-            //menuGw.MenuItems.Add("&แก้ไข", new EventHandler(ContextMenu_Gw_Edit));
+            menuGw.MenuItems.Add("ส่งกลับ", new EventHandler(ContextMenu_send_back));
             //menuGw.MenuItems.Add("&ยกเลิก", new EventHandler(ContextMenu_Gw_Cancel));
             grfFinish.ContextMenu = menuGw;
             pnFinish.Controls.Add(grfFinish);
@@ -105,7 +105,7 @@ namespace clinic_ivf.gui
             grfFinish.Clear();
             DataTable dt1 = new DataTable();
             DataTable dt = new DataTable();
-            dt = ic.ivfDB.vsOldDB.selectByStatusCashierFinish();
+            dt = ic.ivfDB.ovsDB.selectByStatusCashierFinish();
             //if (search.Equals(""))
             //{
             //    String date = "";
@@ -183,7 +183,7 @@ namespace clinic_ivf.gui
                 grfFinish[i, colVsEtime] = row["VEndTime"].ToString();
                 grfFinish[i, colStatus] = row["VName"].ToString();
                 grfFinish[i, colPttId] = row["PID"].ToString();
-                if (!row[ic.ivfDB.vsOldDB.vsold.form_a_id].ToString().Equals("0"))
+                if (!row[ic.ivfDB.ovsDB.vsold.form_a_id].ToString().Equals("0"))
                 {
                     CellNote note = new CellNote("ส่ง Lab Request Foam A");
                     CellRange rg = grfFinish.GetCellRange(i, colVN);
@@ -223,6 +223,12 @@ namespace clinic_ivf.gui
             //theme1.SetTheme(tabFinish, "Office2010Blue");
 
         }
+        private void ContextMenu_send_back(object sender, System.EventArgs e)
+        {
+            String chk = "", name = "", id = "";
+
+
+        }
         private void ContextMenu_edit_billfinish(object sender, System.EventArgs e)
         {
             String chk = "", name = "", id = "";
@@ -245,7 +251,7 @@ namespace clinic_ivf.gui
             grfQue.Clear();
             DataTable dt1 = new DataTable();
             DataTable dt = new DataTable();
-            dt = ic.ivfDB.vsOldDB.selectByStatusCashierWaiting();
+            dt = ic.ivfDB.ovsDB.selectByStatusCashierWaiting();
             //if (search.Equals(""))
             //{
             //    String date = "";
@@ -323,7 +329,7 @@ namespace clinic_ivf.gui
                 grfQue[i, colVsEtime] = row["VEndTime"].ToString();
                 grfQue[i, colStatus] = row["VName"].ToString();
                 grfQue[i, colPttId] = row["PID"].ToString();
-                if (!row[ic.ivfDB.vsOldDB.vsold.form_a_id].ToString().Equals("0"))
+                if (!row[ic.ivfDB.ovsDB.vsold.form_a_id].ToString().Equals("0"))
                 {
                     CellNote note = new CellNote("ส่ง Lab Request Foam A");
                     CellRange rg = grfQue.GetCellRange(i, colVN);
