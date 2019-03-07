@@ -1,4 +1,5 @@
-﻿using clinic_ivf.object1;
+﻿using C1.Win.C1Input;
+using clinic_ivf.object1;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -149,6 +150,8 @@ namespace clinic_ivf.objdb
             ptt.p = "p";
             ptt.a = "a";
             ptt.g = "g";
+            ptt.emercontact = "emercontact";
+            ptt.patient_country = "patient_country";
 
             ptt.pkField = "t_patient_id";
             ptt.table = "t_patient";
@@ -255,6 +258,8 @@ namespace clinic_ivf.objdb
             p.g = p.g == null ? "" : p.g;
             p.p = p.p == null ? "" : p.p;
             p.a = p.a == null ? "" : p.a;
+            p.emercontact = p.emercontact == null ? "" : p.emercontact;
+            p.patient_country = p.patient_country == null ? "" : p.patient_country;
 
             p.f_patient_prefix_id = long.TryParse(p.f_patient_prefix_id, out chk) ? chk.ToString() : "0";
             p.f_sex_id = long.TryParse(p.f_sex_id, out chk) ? chk.ToString() : "0";
@@ -343,7 +348,8 @@ namespace clinic_ivf.objdb
                 ptt.patient_nickname + "," + ptt.patient_height + "," + ptt.status_or + "," +
                 ptt.or_description + "," + ptt.status_congenial + "," + ptt.congenital_diseases_description + "," +
                 ptt.allergy_description + "," + ptt.status_g + "," + ptt.p + "," +
-                ptt.a + "," + ptt.g + " " +
+                ptt.a + "," + ptt.g + "," + ptt.emercontact + "," +
+                ptt.patient_country + " " +
                 ") " +
                 "Values ('" + p.patient_hn + "','" + p.patient_firstname.Replace("'", "''") + "','" + p.patient_lastname.Replace("'", "''") + "'," +
                 "'" + p.patient_xn.Replace("'", "''") + "','" + p.patient_birthday.Replace("'", "''") + "','" + p.patient_house.Replace("'", "''") + "'," +
@@ -386,7 +392,8 @@ namespace clinic_ivf.objdb
                 "'" + p.patient_nickname + "','" + p.patient_height + "','" + p.status_or + "'," +
                 "'" + p.or_description + "','" + p.status_congenial + "','" + p.congenital_diseases_description + "'," +
                 "'" + p.allergy_description + "','" + p.status_g + "','" + p.p + "'," +
-                "'" + p.a + "','" + p.g + "' " +
+                "'" + p.a + "','" + p.g + "','" + p.emercontact + "'," +
+                "'" + p.patient_country + "','" +
                 ")";
 
                 re = conn.ExecuteNonQuery(conn.conn, sql);
@@ -492,6 +499,8 @@ namespace clinic_ivf.objdb
                 "," + ptt.g + "='" + p.g.Replace("'", "''") + "' " +
                 "," + ptt.date_modi + "=now() " +
                 "," + ptt.user_modi + "='" + user + "' " +
+                "," + ptt.emercontact + "='" + p.emercontact.Replace("'", "''") + "' " +
+                "," + ptt.patient_country + "='" + p.patient_country.Replace("'", "''") + "' " +
                 " Where " +ptt.pkField + " = '" + p.t_patient_id + "' "
                 ;
             try
@@ -590,6 +599,70 @@ namespace clinic_ivf.objdb
             re = conn.ExecuteNonQuery(conn.conn, sql);
 
             return re;
+        }
+        public C1ComboBox setCboCountry(C1ComboBox c)
+        {
+            ComboBoxItem item = new ComboBoxItem();
+            DataTable dt = selectDistinctByCountry();
+            //String aaa = "";
+            ComboBoxItem item1 = new ComboBoxItem();
+            item1.Text = "";
+            item1.Value = "";
+            c.Items.Clear();
+            c.Items.Add(item1);
+            //for (int i = 0; i < dt.Rows.Count; i++)
+            int i = 0;
+            foreach (DataRow row in dt.Rows)
+            {
+                item = new ComboBoxItem();
+                item.Text = row[ptt.patient_country].ToString();
+                item.Value = i.ToString();
+
+                c.Items.Add(item);
+                i++;
+            }
+            return c;
+        }
+        public DataTable selectDistinctByCountry()
+        {
+            DataTable dt = new DataTable();
+            String sql = "select distinct ptt." + ptt.patient_country +
+                " From " + ptt.table + " ptt " +
+                "Where ptt." + ptt.active + "='1' ";
+            dt = conn.selectData(conn.conn, sql);
+            return dt;
+        }
+        public C1ComboBox setCboDistric(C1ComboBox c)
+        {
+            ComboBoxItem item = new ComboBoxItem();
+            DataTable dt = selectDistinctByDistric();
+            //String aaa = "";
+            ComboBoxItem item1 = new ComboBoxItem();
+            item1.Text = "";
+            item1.Value = "";
+            c.Items.Clear();
+            c.Items.Add(item1);
+            //for (int i = 0; i < dt.Rows.Count; i++)
+            int i = 0;
+            foreach (DataRow row in dt.Rows)
+            {
+                item = new ComboBoxItem();
+                item.Text = row[ptt.patient_tambon].ToString();
+                item.Value = i.ToString();
+
+                c.Items.Add(item);
+                i++;
+            }
+            return c;
+        }
+        public DataTable selectDistinctByDistric()
+        {
+            DataTable dt = new DataTable();
+            String sql = "select distinct ptt."+ptt.patient_tambon +
+                " From " + ptt.table + " ptt " +
+                "Where ptt." + ptt.active + "='1' ";
+            dt = conn.selectData(conn.conn, sql);
+            return dt;
         }
         public DataTable selectByPk(String pttId)
         {
@@ -919,7 +992,8 @@ namespace clinic_ivf.objdb
                 ptt1.p = dt.Rows[0][ptt.p].ToString();
                 ptt1.a = dt.Rows[0][ptt.a].ToString();
                 ptt1.g = dt.Rows[0][ptt.g].ToString();
-                //ptt1.pid = dt.Rows[0][ptt.pid].ToString();
+                ptt1.emercontact = dt.Rows[0][ptt.emercontact].ToString();
+                ptt1.patient_country = dt.Rows[0][ptt.patient_country].ToString();
             }
             else
             {
@@ -1056,6 +1130,8 @@ namespace clinic_ivf.objdb
             stf1.p = "";
             stf1.a = "";
             stf1.g = "";
+            stf1.emercontact = "";
+            stf1.patient_country = "";
             return stf1;
         }
     }

@@ -254,6 +254,8 @@
             this.printDialog1 = new System.Windows.Forms.PrintDialog();
             this.cPdf = new C1.Win.C1Document.C1PdfDocumentSource(this.components);
             this._c1pdf = new C1.C1Pdf.C1PdfDocument();
+            this.tabImgOld = new C1.Win.C1Command.C1DockingTabPage();
+            this.pnImgOld = new System.Windows.Forms.Panel();
             ((System.ComponentModel.ISupportInitialize)(this.theme1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitMain)).BeginInit();
             this.splitMain.Panel1.SuspendLayout();
@@ -402,6 +404,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtBP)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtPulse)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtPttO)).BeginInit();
+            this.tabImgOld.SuspendLayout();
             this.SuspendLayout();
             // 
             // theme1
@@ -1754,11 +1757,12 @@
             this.tC1.Controls.Add(this.tabVisit);
             this.tC1.Controls.Add(this.tabImage);
             this.tC1.Controls.Add(this.tabApm);
+            this.tC1.Controls.Add(this.tabImgOld);
             this.tC1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tC1.HotTrack = true;
             this.tC1.Location = new System.Drawing.Point(0, 0);
             this.tC1.Name = "tC1";
-            this.tC1.SelectedIndex = 4;
+            this.tC1.SelectedIndex = 5;
             this.tC1.Size = new System.Drawing.Size(1457, 400);
             this.tC1.TabIndex = 0;
             this.tC1.TabSizeMode = C1.Win.C1Command.TabSizeModeEnum.Fit;
@@ -3841,6 +3845,26 @@
             this._c1pdf.UseFastTextOut = true;
             this._c1pdf.UseFontShaping = true;
             // 
+            // tabImgOld
+            // 
+            this.tabImgOld.Controls.Add(this.pnImgOld);
+            this.tabImgOld.Location = new System.Drawing.Point(1, 24);
+            this.tabImgOld.Name = "tabImgOld";
+            this.tabImgOld.Size = new System.Drawing.Size(1455, 375);
+            this.tabImgOld.TabIndex = 6;
+            this.tabImgOld.Text = "Image Old";
+            // 
+            // pnImgOld
+            // 
+            this.pnImgOld.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.pnImgOld.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pnImgOld.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.pnImgOld.Location = new System.Drawing.Point(0, 0);
+            this.pnImgOld.Name = "pnImgOld";
+            this.pnImgOld.Size = new System.Drawing.Size(1455, 375);
+            this.pnImgOld.TabIndex = 0;
+            this.theme1.SetTheme(this.pnImgOld, "(default)");
+            // 
             // FrmPatientAdd
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -4005,6 +4029,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtBP)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtPulse)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtPttO)).EndInit();
+            this.tabImgOld.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -4237,5 +4262,7 @@
         private System.Windows.Forms.Label label72;
         private C1.Win.C1Input.C1TextBox txtVisitHnMale;
         private C1.Win.C1Input.C1Button btnVisitVoid;
+        private C1.Win.C1Command.C1DockingTabPage tabImgOld;
+        private System.Windows.Forms.Panel pnImgOld;
     }
 }

@@ -129,7 +129,8 @@ namespace clinic_ivf.object1
         public String a { get; set; }
         public String g { get; set; }
 
-        //public String insurance { get; set; }
+        public String emercontact { get; set; }
+        public String patient_country { get; set; }
         public Age age = new Age(DateTime.Now);
         public String AgeString()
         {            

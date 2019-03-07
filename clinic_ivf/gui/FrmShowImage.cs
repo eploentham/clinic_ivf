@@ -4,6 +4,7 @@ using clinic_ivf.Properties;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -105,18 +106,22 @@ namespace clinic_ivf.gui
             
             pnR.Controls.Add(btnSend);
             Controls.Add(panel1);
-            
-            String[] sur = filename.Split('.');
-            String ex = "";
-            if (sur.Length == 2)
-            {
-                ex = sur[1];
-            }
-            if (!ex.Equals("pdf"))
+            String ext = Path.GetExtension(filename);
+            //String[] sur = filename.Split('.');
+            //String ex = "";
+            //if (sur.Length == 2)
+            //{
+            //    ex = sur[1];
+            //}
+            if (ext.IndexOf("pdf")<0)
             {
                 try
                 {
-                    loadedImage = Image.FromFile(filename);
+                    MemoryStream stream = new MemoryStream();
+                    //loadedImage = Image.FromFile(filename);
+                    stream = ic.ftpC.download(filename);
+                    Bitmap bitmap = new Bitmap(stream);
+                    loadedImage = bitmap;
                     int originalWidth = loadedImage.Width;
                     int newWidth = 480;
                     if (originalWidth > newWidth)
@@ -132,7 +137,6 @@ namespace clinic_ivf.gui
                 {
 
                 }
-                
             }
             else
             {

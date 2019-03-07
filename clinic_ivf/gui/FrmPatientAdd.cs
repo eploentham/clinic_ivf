@@ -50,7 +50,7 @@ namespace clinic_ivf.gui
         FtpClient ff1;
         Bitmap img;
         Image image1;
-        C1FlexGrid grfImg, grfVs, grfpApm;
+        C1FlexGrid grfImg, grfVs, grfpApm, grfImgOld;
 
         String filename = "", picIDCard="pic_id_card.jpg";
         static String filenamepic = "", host="", user="", pass="";
@@ -169,6 +169,8 @@ namespace clinic_ivf.gui
 
             ic.ivfDB.bspDB.setCboBsp(cboVisitBsp, "2120000002");
             ic.setCboPttType(cboVisitPttType);
+            ic.ivfDB.pttDB.setCboDistric(cboDist);
+            ic.ivfDB.pttDB.setCboCountry(cboCou);
 
             cboAgent.AutoCompleteSource = AutoCompleteSource.ListItems;
             cboAgent.AutoCompleteMode = AutoCompleteMode.Suggest;
@@ -181,6 +183,7 @@ namespace clinic_ivf.gui
             initGrfVs();
             setGrfVs();
             setGrfpApmDonor("");
+            initGrfImgOld();
             //setGrfpApmDonor("");
 
             btnPrnSticker.Click += BtnPrnSticker_Click;
@@ -987,12 +990,12 @@ namespace clinic_ivf.gui
                 else
                 {
                     ptt.t_patient_id_old = txtIdOld.Text;
-                    String[] name = txtEmerContact.Text.Split(' ');
-                    if (name.Length > 1)
-                    {
-                        ptt.patient_contact_firstname = name[0];
-                        ptt.patient_contact_lastname = name[1];
-                    }
+                    //String[] name = txtEmerContact.Text.Split(' ');
+                    //if (name.Length > 1)
+                    //{
+                    //    ptt.patient_contact_firstname = name[0];
+                    //    ptt.patient_contact_lastname = name[1];
+                    //}
 
                     String re = ic.ivfDB.pttOldDB.insertPatientOld(ptt, txtStfConfirmID.Text);
                     long chk = 0;
@@ -1088,6 +1091,7 @@ namespace clinic_ivf.gui
                     btnSave.Image = Resources.Add_ticket_24;
                     stt.Show("<p><b>สวัสดี</b></p>คุณ " + ic.cStf.staff_fname_t + " " + ic.cStf.staff_lname_t + "<br> กรุณายินยันการ confirm อีกครั้ง", btnWebCamOn);
                     btnSave.Focus();
+
                 }
                 else
                 {
@@ -1338,6 +1342,30 @@ namespace clinic_ivf.gui
                 ic.video = null;
             }
         }
+        private void initGrfImgOld()
+        {
+            grfImgOld = new C1FlexGrid();
+            grfImgOld.Font = fEdit;
+            grfImgOld.Dock = System.Windows.Forms.DockStyle.Fill;
+            grfImgOld.Location = new System.Drawing.Point(0, 0);
+
+            //FilterRow fr = new FilterRow(grfExpn);
+
+            //grfImg.AfterRowColChange += GrfImg_AfterRowColChange;
+            //grfImg.MouseDown += GrfImg_MouseDown;
+            grfImgOld.DoubleClick += GrfImg_DoubleClick;
+            //grfExpnC.CellChanged += new C1.Win.C1FlexGrid.RowColEventHandler(this.grfDept_CellChanged);
+            //ContextMenu menuGw = new ContextMenu();
+            //menuGw.MenuItems.Add("Upload รูปบัตรประชาชน", new EventHandler(ContextMenu_grfimg_upload_ptt));
+            //menuGw.MenuItems.Add("Upload สำเนาบัตรประชาชน ที่มีลายเซ็น", new EventHandler(ContextMenu_grfimg_upload_ptt));
+            //menuGw.MenuItems.Add("Upload รูป Passport", new EventHandler(ContextMenu_grfimg_upload_ptt));
+            //menuGw.MenuItems.Add("ยกเลิก", new EventHandler(ContextMenu_grfimg_Cancel));
+            //grfImgOld.ContextMenu = menuGw;
+            pnImgOld.Controls.Add(grfImgOld);
+
+            theme1.SetTheme(grfImg, "Office2016Colorful");
+
+        }
         private void initGrfImg()
         {
             grfImg = new C1FlexGrid();
@@ -1400,12 +1428,7 @@ namespace clinic_ivf.gui
                             {
                                 MenuItem aa = (MenuItem)sender;
                                 status = aa.Text.Equals("Upload รูปบัตรประชาชน") ? "1" : aa.Text.Equals("Upload สำเนาบัตรประชาชน ที่มีลายเซ็น") ? "2" : aa.Text.Equals("Upload รูป Passport") ? "3" : "";
-<<<<<<< HEAD
-                                //String ext = Path.GetExtension(ofd.FileName);
                                 filename =  txtHn.Text.Replace("-", "").Replace("/", "") + "_"+ status + ext;
-=======
-                                filename =  txtHn.Text.Replace("-", "").Replace("/", "") + "_"+ status + "." + ext[ext.Length - 1];
->>>>>>> 831d26ce4f106453b23d9f64b9c252e3bdbdd5a6
                                 PatientImage ptti = new PatientImage();
                                 ptti.patient_image_id = id;
                                 ptti.t_patient_id = txtID.Text;
@@ -1492,6 +1515,146 @@ namespace clinic_ivf.gui
             if (e.NewRange.r1 < 0) return;
             if (e.NewRange.Data == null) return;
         }
+        private void setGrfImgOld()
+        {
+            grfImgOld.Clear();
+            grfImgOld.DataSource = null;
+            grfImgOld.Rows.Count = 2;
+            grfImgOld.Cols.Count = 10;
+            DataTable dt = new DataTable();
+            dt = ic.ivfDB.pttImgDB.selectByPttID(txtID.Text);
+            //grfExpn.Rows.Count = dt.Rows.Count + 1;
+            //grfCu.Rows.Count = 41;
+            //grfCu.Cols.Count = 4;
+            C1TextBox txt = new C1TextBox();
+            Button btn = new Button();
+            btn.BackColor = Color.Gray;
+            btn.Click += BtnEditor_Click;
+            //PictureBox img = new PictureBox();
+            //C1ComboBox cboproce = new C1ComboBox();
+            //ic.ivfDB.itmDB.setCboItem(cboproce);
+            grfImgOld.Cols[colHn].Editor = txt;
+            grfImgOld.Cols[colDesc].Editor = txt;
+            grfImgOld.Cols[colDesc2].Editor = txt;
+            grfImgOld.Cols[colDesc3].Editor = txt;
+            grfImgOld.Cols[colBtn].Editor = btn;
+            //grfImgOld.Cols[colImg].Editor = img;
+
+            grfImgOld.Cols[colHn].Width = 250;
+            grfImgOld.Cols[colImg].Width = 100;
+            grfImgOld.Cols[colDesc].Width = 100;
+            grfImgOld.Cols[colDesc2].Width = 100;
+            grfImgOld.Cols[colDesc3].Width = 100;
+            grfImgOld.Cols[colBtn].Width = 50;
+            grfImgOld.Cols[colPathPic].Width = 100;
+
+            grfImgOld.ShowCursor = true;
+            //grdFlex.Cols[colID].Caption = "no";
+            //grfDept.Cols[colCode].Caption = "รหัส";
+
+            grfImgOld.Cols[colHn].Caption = "HN";
+            grfImgOld.Cols[colDesc].Caption = "Desc1";
+            grfImgOld.Cols[colDesc2].Caption = "Desc2";
+            grfImgOld.Cols[colDesc3].Caption = "Desc3";
+            grfImgOld.Cols[colBtn].Caption = "send";
+
+            //Hashtable ht = new Hashtable();
+            //foreach (DataRow dr in dt.Rows)
+            //{
+            //    ht.Add(dr["CategoryID"], LoadImage(dr["Picture"] as byte[]));
+            //}
+            //grfImgOld.Cols[colImg].ImageMap = ht;
+            grfImgOld.Cols[colImg].ImageAndText = false;
+
+            //ContextMenu menuGw = new ContextMenu();
+            //menuGw.MenuItems.Add("&แก้ไข Patient", new EventHandler(ContextMenu_edit));
+            //grfImgOld.ContextMenu = menuGw;
+
+            Color color = ColorTranslator.FromHtml(ic.iniC.grfRowColor);
+            //CellRange rg1 = grfBank.GetCellRange(1, colE, grfBank.Rows.Count, colE);
+            //rg1.Style = grfBank.Styles["date"];
+            //grfCu.Cols[colID].Visible = false;
+            int i = 0;
+            foreach (DataRow row in dt.Rows)
+            {
+                i++;
+                Row row1 = grfImgOld.Rows.Add();
+                row1[colID] = row[ic.ivfDB.pttImgDB.pttI.patient_image_id].ToString();
+                row1[colDesc] = row[ic.ivfDB.pttImgDB.pttI.desc1].ToString();
+                row1[colPathPic] = row[ic.ivfDB.pttImgDB.pttI.image_path].ToString();
+                row1[colStatus] = row[ic.ivfDB.pttImgDB.pttI.status_image].ToString();
+                grfImgOld[i, 0] = i;
+                if (row[ic.ivfDB.pttImgDB.pttI.image_path] != null && !row[ic.ivfDB.pttImgDB.pttI.image_path].ToString().Equals(""))
+                {
+                    int ii = i;
+                    new Thread(() =>
+                    {
+                        Thread.CurrentThread.IsBackground = true;
+                        Image loadedImage = null, resizedImage;
+                        String aaa = row[ic.ivfDB.pttImgDB.pttI.image_path].ToString();
+                        FtpWebRequest ftpRequest = null;
+                        FtpWebResponse ftpResponse = null;
+                        Stream ftpStream = null;
+                        int bufferSize = 2048;
+                        MemoryStream stream = new MemoryStream();
+                        string host = null;
+                        string user = null;
+                        string pass = null;     //iniC.hostFTP, iniC.userFTP, iniC.passFTP
+                        host = ic.iniC.hostFTP; user = ic.iniC.userFTP; pass = ic.iniC.passFTP;
+                        try
+                        {
+                            ftpRequest = (FtpWebRequest)FtpWebRequest.Create(host + "/" + aaa);
+                            ftpRequest.Credentials = new NetworkCredential(user, pass);
+                            ftpRequest.UseBinary = true;
+                            ftpRequest.UsePassive = false;
+                            ftpRequest.KeepAlive = true;
+                            ftpRequest.Method = WebRequestMethods.Ftp.DownloadFile;
+                            ftpResponse = (FtpWebResponse)ftpRequest.GetResponse();
+                            ftpStream = ftpResponse.GetResponseStream();
+                            byte[] byteBuffer = new byte[bufferSize];
+                            int bytesRead = ftpStream.Read(byteBuffer, 0, bufferSize);
+                            try
+                            {
+                                while (bytesRead > 0)
+                                {
+                                    stream.Write(byteBuffer, 0, bytesRead);
+                                    bytesRead = ftpStream.Read(byteBuffer, 0, bufferSize);
+                                }
+                            }
+                            catch (Exception ex)
+                            {
+                                Console.WriteLine(ex.ToString());
+                            }
+                            loadedImage = new Bitmap(stream);
+                            ftpStream.Close();
+                            ftpResponse.Close();
+                            ftpRequest = null;
+                        }
+                        catch (Exception ex) { Console.WriteLine(ex.ToString()); }
+                        grfImgOld.Cols[colImg].ImageAndText = true;
+                        if (loadedImage != null)
+                        {
+                            int originalWidth = loadedImage.Width;
+                            int newWidth = 180;
+                            resizedImage = loadedImage.GetThumbnailImage(newWidth, (newWidth * loadedImage.Height) / originalWidth, null, IntPtr.Zero);
+                            Column col = grfImgOld.Cols[colImg];
+                            col.DataType = typeof(Image);
+                            row1[colImg] = resizedImage;
+                            flagImg = true;
+                        }
+                    }).Start();
+                }
+                //if (i % 2 == 0)
+                //grfPtt.Rows[i].StyleNew.BackColor = color;
+            }
+            grfImgOld.Cols[colID].Visible = false;
+            //grfImgOld.Cols[colPathPic].Visible = false;
+            grfImgOld.Cols[colImg].AllowEditing = false;
+            grfImgOld.AutoSizeCols();
+            grfImgOld.AutoSizeRows();
+            theme1.SetTheme(grfImgOld, "Office2016Colorful");
+
+        }
         private void setGrfImg()
         {
             grfImg.Clear();
@@ -1507,7 +1670,7 @@ namespace clinic_ivf.gui
             Button btn = new Button();
             btn.BackColor = Color.Gray;
             btn.Click += BtnEditor_Click;
-            PictureBox img = new PictureBox();
+            //PictureBox img = new PictureBox();
             //C1ComboBox cboproce = new C1ComboBox();
             //ic.ivfDB.itmDB.setCboItem(cboproce);
             grfImg.Cols[colHn].Editor = txt;
@@ -1515,7 +1678,7 @@ namespace clinic_ivf.gui
             grfImg.Cols[colDesc2].Editor = txt;
             grfImg.Cols[colDesc3].Editor = txt;
             grfImg.Cols[colBtn].Editor = btn;
-            grfImg.Cols[colImg].Editor = img;
+            //grfImg.Cols[colImg].Editor = img;
 
             grfImg.Cols[colHn].Width = 250;
             grfImg.Cols[colImg].Width = 100;
@@ -2116,6 +2279,8 @@ namespace clinic_ivf.gui
             ic.setC1Combo(cboPttType, ptt.patient_type);
             ic.setC1Combo(cboPttGroup, ptt.patient_group);
             ic.setC1Combo(cboName1Prefix, ptt.patient_contact_f_patient_prefix_id);
+            ic.setC1ComboByName(cboDist, ptt.patient_tambon);
+            ic.setC1ComboByName(cboCou, ptt.patient_country);
             //ic.setC1Combo(cboCouPrefix, ptt.f_patient_religion_id);
             //ic.setC1Combo(cboRg, ptt.f_patient_religion_id);
             //ic.setC1Combo(cboRg, ptt.f_patient_religion_id);
@@ -2148,7 +2313,8 @@ namespace clinic_ivf.gui
             txtCongenital.Value = ptt.congenital_diseases_description;
             txtHeight.Value = ptt.patient_height;
             txtAllergyDesc.Value = ptt.allergy_description;
-            txtEmerContact.Value = ptt.patient_contact_firstname + " " + ptt.patient_contact_lastname;
+            
+            txtEmerContact.Value = ptt.emercontact;
         }
         private void setControlPtt(String pttid)
         {
@@ -2187,7 +2353,7 @@ namespace clinic_ivf.gui
             txtPttLNameE.Value = pttO.PSurname;
             txtPttName.Value = pttO.OName;
             txtPttLName.Value = pttO.OSurname;
-            txtContFname1.Value = pttO.EmergencyPersonalContact;
+            //txtContFname1.Value = pttO.EmergencyPersonalContact;
             txtDob.Value = pttO.DateOfBirth;
             ic.setC1Combo(cboAgent, pttO.AgentID);
             ic.setC1Combo(cboPttType, pttO.PatientTypeID);
@@ -2197,7 +2363,8 @@ namespace clinic_ivf.gui
             ic.setC1Combo(cboRg, pttO.Religion);
             ic.setC1ComboByName(CboNation, pttO.Nationality);
             cboProv.Value = pttO.Province;
-            cboDist.Value = pttO.District;
+            //cboDist.Value = pttO.District;
+            //ic.setC1ComboByName(cboDist, pttO.District);
             txtAddrNo.Value = pttO.Address;
             txtMoo.Value = pttO.Moo;
             txtRoad.Value = pttO.Road;
@@ -2214,7 +2381,10 @@ namespace clinic_ivf.gui
             txtEmail.Value = pttO.Email;
             txtPaasport.Value = pttO.IDNumber;
             ic.setC1Combo(cboPrefix, pttO.SurfixID);
-            txtEmerContact.Value = pttO.EmergencyPersonalContact;
+            if (txtEmerContact.Text.Equals(""))
+            {
+                txtEmerContact.Value = pttO.EmergencyPersonalContact;
+            }
             if (txtID.Text.Equals("") && !pttid.Equals(""))
             {
                 Patient id1 = ic.ivfDB.pttDB.selectByIDold(pttid);
@@ -2372,6 +2542,9 @@ namespace clinic_ivf.gui
             ptt.g = txtG.Text;
             ptt.p = txtP.Text;
             ptt.a = txtA.Text;
+            ptt.emercontact = txtEmerContact.Text;
+            ptt.patient_tambon = cboDist.Text;
+            ptt.patient_country = cboCou.Text;
             //String[] name = txtEmerContact.Text.Split(' ');
             //if (name.Length > 0)
             //{
