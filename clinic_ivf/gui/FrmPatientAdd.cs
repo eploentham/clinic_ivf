@@ -1400,8 +1400,12 @@ namespace clinic_ivf.gui
                             {
                                 MenuItem aa = (MenuItem)sender;
                                 status = aa.Text.Equals("Upload รูปบัตรประชาชน") ? "1" : aa.Text.Equals("Upload สำเนาบัตรประชาชน ที่มีลายเซ็น") ? "2" : aa.Text.Equals("Upload รูป Passport") ? "3" : "";
+<<<<<<< HEAD
                                 //String ext = Path.GetExtension(ofd.FileName);
                                 filename =  txtHn.Text.Replace("-", "").Replace("/", "") + "_"+ status + ext;
+=======
+                                filename =  txtHn.Text.Replace("-", "").Replace("/", "") + "_"+ status + "." + ext[ext.Length - 1];
+>>>>>>> 831d26ce4f106453b23d9f64b9c252e3bdbdd5a6
                                 PatientImage ptti = new PatientImage();
                                 ptti.patient_image_id = id;
                                 ptti.t_patient_id = txtID.Text;
@@ -1445,8 +1449,9 @@ namespace clinic_ivf.gui
                 if (!ic.cStf.staff_id.Equals(""))
                 {
                     String pathfile = grfImg[grfImg.Row, colPathPic].ToString();
-                    String re = ic.ivfDB.opuEmDevDB.updatePathPic(id, "", "", "", ic.user.staff_id);
-                    ic.delPicOPUtoServer(txtHn.Text.Replace("-", ""), pathfile);
+                    String re = ic.ivfDB.pttImgDB.updateVoid(id, ic.user.staff_id);
+                    ic.delPicOPUtoServer(txtHn.Text.Replace("-", "").Replace("/", ""), pathfile);
+                    setGrfImg();
                 }
             }
         }
@@ -1494,7 +1499,7 @@ namespace clinic_ivf.gui
             grfImg.Rows.Count = 2;
             grfImg.Cols.Count = 10;
             DataTable dt = new DataTable();
-            dt = ic.ivfDB.pttImgDB.selectByPttID(pttId);
+            dt = ic.ivfDB.pttImgDB.selectByPttID(txtID.Text);
             //grfExpn.Rows.Count = dt.Rows.Count + 1;
             //grfCu.Rows.Count = 41;
             //grfCu.Cols.Count = 4;
