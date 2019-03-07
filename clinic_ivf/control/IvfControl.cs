@@ -803,5 +803,10 @@ namespace clinic_ivf.control
             //bmp.Dispose();
             return bmp;
         }
+        public void getBillVN(String vn)
+        {
+            ivfDB.DeleteBill(vn);
+            ivfDB.getBill(vn);
+        }
     }
 }

@@ -160,7 +160,7 @@ namespace clinic_ivf.gui
             ic.ivfDB.crlDB.setCboContractPlans(cboCrl);
 
             ic.ivfDB.frlDB.setCboRelation(cboCouRel, "");
-            ic.ivfDB.frlDB.setCboRelation(cboName1Rl, "");
+            ic.ivfDB.frlDB.setCboRelation(cboName1Rl, "1");
             ic.ivfDB.agnOldDB.setCboAgent(cboAgent, "");
             //ic.ivfDB.agnOldDB.setCboAgent(comboBox1);
             ic.ivfDB.sexDB.setCboSex(cboSex, "");
@@ -1394,12 +1394,14 @@ namespace clinic_ivf.gui
                         if (!ic.cStf.staff_id.Equals(""))
                         {
                             String filename = "", re = "", status="";
-                            String[] ext = pathfile.Split('.');
+                            //String[] ext = pathfile.Split('.');
+                            String ext = Path.GetExtension(ofd.FileName);
                             if (ext.Length > 1)
                             {
                                 MenuItem aa = (MenuItem)sender;
                                 status = aa.Text.Equals("Upload รูปบัตรประชาชน") ? "1" : aa.Text.Equals("Upload สำเนาบัตรประชาชน ที่มีลายเซ็น") ? "2" : aa.Text.Equals("Upload รูป Passport") ? "3" : "";
-                                filename =  txtHn.Text.Replace("-", "") + "_"+ status + "." + ext[ext.Length - 1];
+                                //String ext = Path.GetExtension(ofd.FileName);
+                                filename =  txtHn.Text.Replace("-", "").Replace("/", "") + "_"+ status + ext;
                                 PatientImage ptti = new PatientImage();
                                 ptti.patient_image_id = id;
                                 ptti.t_patient_id = txtID.Text;
@@ -1416,13 +1418,13 @@ namespace clinic_ivf.gui
                                 ptti.user_create = "";
                                 ptti.user_modi = "";
                                 ptti.user_cancel = "";
-                                ptti.image_path = "images/" + txtHn.Text.Replace("-", "") + "/" + filename;
+                                ptti.image_path = "images/" + txtHn.Text.Replace("-", "").Replace("/", "") + "/" + filename;
                                 ptti.status_image = "1";
                                 re = ic.ivfDB.pttImgDB.insertpatientImage(ptti, ic.cStf.staff_id);
                                 long chk = 0;
                                 if (long.TryParse(re, out chk))
                                 {
-                                    ic.savePicOPUtoServer(txtHn.Text.Replace("-",""), filename, pathfile);
+                                    ic.savePicOPUtoServer(txtHn.Text.Replace("-","").Replace("/", ""), filename, pathfile);
                                     grfImg.Rows[grfImg.Row].StyleNew.BackColor = color;
                                     setGrfImg();
                                 }

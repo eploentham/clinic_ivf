@@ -235,14 +235,17 @@ namespace clinic_ivf.gui
 
             id = grfFinish[grfFinish.Row, colID] != null ? grfFinish[grfFinish.Row, colID].ToString() : "";
             name = grfFinish[grfFinish.Row, colPttName] != null ? grfFinish[grfFinish.Row, colPttName].ToString() : "";
+            
             openBillNew(id, name);
         }
         private void ContextMenu_edit_bill(object sender, System.EventArgs e)
         {
-            String chk = "", name = "", id = "";
+            String chk = "", name = "", id = "", vn="";
 
             id = grfQue[grfQue.Row, colID] != null ? grfQue[grfQue.Row, colID].ToString() : "";
+            vn = grfQue[grfQue.Row, colVN] != null ? grfQue[grfQue.Row, colVN].ToString() : "";
             name = grfQue[grfQue.Row, colPttName] != null ? grfQue[grfQue.Row, colPttName].ToString() : "";
+            ic.getBillVN(vn);
             openBillNew(id, name);
         }
         private void setGrfQue()

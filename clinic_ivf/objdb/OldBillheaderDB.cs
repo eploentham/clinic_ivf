@@ -95,7 +95,7 @@ namespace clinic_ivf.objdb
             p.BillNo = p.BillNo == null ? "" : p.BillNo;
             p.Date = p.Date == null ? "" : p.Date;
             p.Time = p.Time == null ? "" : p.Time;
-            p.CreditCardType = p.CreditCardType == null ? "0" : p.CreditCardType;
+            //p.CreditCardType = p.CreditCardType == null ? "0" : p.CreditCardType;
             p.CreditCardNumber = p.CreditCardNumber == null ? "" : p.CreditCardNumber;
             //p.Status = p.Status == null ? "" : p.Status;
             p.OName = p.OName == null ? "" : p.OName;
@@ -104,6 +104,7 @@ namespace clinic_ivf.objdb
             //p.EUsage = p.EUsage == null ? "" : p.EUsage;
             //p.EUsage = p.EUsage == null ? "" : p.EUsage;
 
+            p.CreditCardType = long.TryParse(p.CreditCardType, out chk) ? chk.ToString() : "0";
             p.CreditAgent = long.TryParse(p.CreditAgent, out chk) ? chk.ToString() : "0";
             p.VN = long.TryParse(p.VN, out chk) ? chk.ToString() : "0";
             p.Status = long.TryParse(p.Status, out chk) ? chk.ToString() : "0";

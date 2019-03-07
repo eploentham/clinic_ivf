@@ -69,8 +69,8 @@ namespace clinic_ivf.objdb
             p.VN = long.TryParse(p.VN, out chk) ? chk.ToString() : "0";
             
 
-            p.Price = decimal.TryParse(p.Price, out chk1) ? chk.ToString() : "0";            
-            p.Total = decimal.TryParse(p.Total, out chk1) ? chk.ToString() : "0";
+            p.Price = decimal.TryParse(p.Price, out chk1) ? chk1.ToString() : "0";            
+            p.Total = decimal.TryParse(p.Total, out chk1) ? chk1.ToString() : "0";
             
         }
         public String insert(OldBilldetail p, String userId)
@@ -137,7 +137,7 @@ namespace clinic_ivf.objdb
         {
             String re = "";
 
-            if (p.VN.Equals(""))
+            if (p.ID.Equals(""))
             {
                 re = insert(p, "");
             }

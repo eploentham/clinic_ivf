@@ -622,7 +622,7 @@ namespace clinic_ivf.objdb
             DateTime dt11 = DateTime.Now;
             String date = "", time="";
             date = dt11.Year + "-" + dt11.ToString("MM-dd");
-            time = dt11.ToString("HH-mm-ss");
+            time = dt11.ToString("HH:mm:ss");
             OldBillheader obillh = new OldBillheader();
             obillh.VN = vn;
             obillh.BillNo = "";
@@ -722,7 +722,7 @@ namespace clinic_ivf.objdb
                         OldBilldetail obilld = new OldBilldetail();
                         obilld.ID = "";
                         obilld.VN = row["VN"].ToString();
-                        obilld.Name = row["DUName"].ToString();
+                        obilld.Name = row["SName"].ToString();
                         obilld.Extra = "0";
                         obilld.Price = row["Price"].ToString();
                         obilld.Total = "0";
@@ -787,7 +787,7 @@ namespace clinic_ivf.objdb
                         OldBilldetail obilld = new OldBilldetail();
                         obilld.ID = "";
                         obilld.VN = row["VN"].ToString();
-                        obilld.Name = row["DUName"].ToString();
+                        obilld.Name = row["SName"].ToString();
                         obilld.Extra = "0";
                         obilld.Price = row["Price"].ToString();
                         obilld.Total = row["Price"].ToString();
