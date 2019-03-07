@@ -114,17 +114,25 @@ namespace clinic_ivf.gui
             }
             if (!ex.Equals("pdf"))
             {
-                loadedImage = Image.FromFile(filename);
-                int originalWidth = loadedImage.Width;
-                int newWidth = 480;
-                if (originalWidth > newWidth)
+                try
                 {
-                    resizedImage = loadedImage.GetThumbnailImage(newWidth, (newWidth * loadedImage.Height) / originalWidth, null, IntPtr.Zero);
+                    loadedImage = Image.FromFile(filename);
+                    int originalWidth = loadedImage.Width;
+                    int newWidth = 480;
+                    if (originalWidth > newWidth)
+                    {
+                        resizedImage = loadedImage.GetThumbnailImage(newWidth, (newWidth * loadedImage.Height) / originalWidth, null, IntPtr.Zero);
+                    }
+                    else
+                    {
+                        resizedImage = loadedImage;
+                    }
                 }
-                else
+                catch(Exception ex1)
                 {
-                    resizedImage = loadedImage;
+
                 }
+                
             }
             else
             {

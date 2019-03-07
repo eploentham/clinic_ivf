@@ -81,13 +81,15 @@ namespace clinic_ivf.objdb
                 pttI.desc2 + "," + pttI.desc3 + "," + pttI.desc4 + "," +
                 pttI.remark + "," + pttI.image_path + "," + pttI.status_image + "," +
                 pttI.date_create + "," + pttI.date_modi + "," + pttI.date_cancel + ", " +
-                pttI.user_create + "," + pttI.user_modi + "," + pttI.user_cancel + " " +
+                pttI.user_create + "," + pttI.user_modi + "," + pttI.user_cancel + "," +
+                pttI.active + " " +
                 ") " +
                 "Values ('" + p.t_patient_id + "','" + p.t_visit_id.Replace("'", "''") + "','" + p.desc1.Replace("'", "''") + "'," +
                 "'" + p.desc2.Replace("'", "''") + "','" + p.desc3.Replace("'", "''") + "','" + p.desc4.Replace("'", "''") + "'," +
                 "'" + p.remark.Replace("'", "''") + "','" + p.image_path + "','" + p.status_image + "'," +
                 "now(),'" + p.date_modi + "','" + p.date_cancel + "', " +
-                "'" + userId + "','" + p.user_modi + "','" + p.user_cancel + "' " +
+                "'" + userId + "','" + p.user_modi + "','" + p.user_cancel + "'," +
+                "'1'" +
                 ")";
             try
             {
@@ -149,6 +151,33 @@ namespace clinic_ivf.objdb
 
             return re;
         }
+        public String updateVoid(String id, String userId)
+        {
+            String re = "";
+            String sql = "";
+            int chk = 0;
+
+
+            //chkNull(p);
+            sql = "Update " + pttI.table + " Set " +
+                " " + pttI.active + " = '3'" +
+                "," + pttI.date_cancel + " = now()" +
+                "," + pttI.user_cancel + " = '" + userId + "'" +
+
+                "Where " + pttI.pkField + "='" + id + "'"
+                ;
+
+            try
+            {
+                re = conn.ExecuteNonQuery(conn.conn, sql);
+            }
+            catch (Exception ex)
+            {
+                sql = ex.Message + " " + ex.InnerException;
+            }
+
+            return re;
+        }
         public DataTable selectByPk(String copId)
         {
             DataTable dt = new DataTable();
@@ -163,7 +192,7 @@ namespace clinic_ivf.objdb
             DataTable dt = new DataTable();
             String sql = "select pttI.* " +
                 "From " + pttI.table + " pttI " +
-                "Where pttI." + pttI.t_patient_id + " ='" + pttid + "' ";
+                "Where pttI." + pttI.t_patient_id + " ='" + pttid + "' and "+pttI.active+"='1'";
             dt = conn.selectData(conn.conn, sql);
             return dt;
         }
