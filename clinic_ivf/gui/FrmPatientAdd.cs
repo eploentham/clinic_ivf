@@ -184,6 +184,7 @@ namespace clinic_ivf.gui
             setGrfVs();
             setGrfpApmDonor("");
             initGrfImgOld();
+            setGrfImgOld();
             //setGrfpApmDonor("");
 
             btnPrnSticker.Click += BtnPrnSticker_Click;
@@ -546,6 +547,8 @@ namespace clinic_ivf.gui
             //throw new NotImplementedException();
             if(tC1.SelectedTab == tabImage)
             {
+                grfImg.AutoSizeCols();
+                grfImg.AutoSizeRows();
                 //MessageBox.Show("aaa", "");
                 //OpenFileDialog ofd = new OpenFileDialog();
                 //ofd.Filter = "Images (*.BMP;*.JPG;*.Jepg;*.Png;*.GIF)|*.BMP;*.JPG;*.Jepg;*.Png;*.GIF|Pdf Files|*.pdf|All files (*.*)|*.*";
@@ -634,6 +637,11 @@ namespace clinic_ivf.gui
                 //grfImg.Cols[colBtn].Visible = false;
                 grfImg.AutoSizeCols();
                 grfImg.AutoSizeRows();
+            }
+            else if (tC1.SelectedTab == tabImgOld)
+            {
+                grfImgOld.AutoSizeCols();
+                grfImgOld.AutoSizeRows();
             }
         }
 
@@ -1353,7 +1361,7 @@ namespace clinic_ivf.gui
 
             //grfImg.AfterRowColChange += GrfImg_AfterRowColChange;
             //grfImg.MouseDown += GrfImg_MouseDown;
-            grfImgOld.DoubleClick += GrfImg_DoubleClick;
+            grfImgOld.DoubleClick += GrfImgOld_DoubleClick;
             //grfExpnC.CellChanged += new C1.Win.C1FlexGrid.RowColEventHandler(this.grfDept_CellChanged);
             //ContextMenu menuGw = new ContextMenu();
             //menuGw.MenuItems.Add("Upload รูปบัตรประชาชน", new EventHandler(ContextMenu_grfimg_upload_ptt));
@@ -1366,6 +1374,23 @@ namespace clinic_ivf.gui
             theme1.SetTheme(grfImg, "Office2016Colorful");
 
         }
+
+        private void GrfImgOld_DoubleClick(object sender, EventArgs e)
+        {
+            //throw new NotImplementedException();
+            if (grfImgOld.Row < 0) return;
+            if (grfImgOld.Col == colImg)
+            {
+                //MessageBox.Show("a "+grfImg[grfImg.Row, colImg].ToString(), "");
+                int row = 0;
+                //int.TryParse(grfImg[grfImg.Row, colImg].ToString(), out row);
+                int.TryParse(grfImgOld.Row.ToString(), out row);
+                //row *= 4;
+                FrmShowImage frm = new FrmShowImage(ic, grfImgOld[row, colID] != null ? grfImgOld[row, colID].ToString() : pttOldId, "", "/images/images_old/uploads/" + txtIdOld.Text + "/" + grfImgOld[row, colPathPic].ToString(), FrmShowImage.statusModule.Patient);
+                frm.ShowDialog(this);
+            }
+        }
+
         private void initGrfImg()
         {
             grfImg = new C1FlexGrid();
@@ -1522,7 +1547,7 @@ namespace clinic_ivf.gui
             grfImgOld.Rows.Count = 2;
             grfImgOld.Cols.Count = 10;
             DataTable dt = new DataTable();
-            dt = ic.ivfDB.pttImgDB.selectByPttID(txtID.Text);
+            dt = ic.ivfDB.ofpDB.selectByPID(txtIdOld.Text);
             //grfExpn.Rows.Count = dt.Rows.Count + 1;
             //grfCu.Rows.Count = 41;
             //grfCu.Cols.Count = 4;
@@ -1564,7 +1589,7 @@ namespace clinic_ivf.gui
             //    ht.Add(dr["CategoryID"], LoadImage(dr["Picture"] as byte[]));
             //}
             //grfImgOld.Cols[colImg].ImageMap = ht;
-            grfImgOld.Cols[colImg].ImageAndText = false;
+            //grfImgOld.Cols[colImg].ImageAndText = false;
 
             //ContextMenu menuGw = new ContextMenu();
             //menuGw.MenuItems.Add("&แก้ไข Patient", new EventHandler(ContextMenu_edit));
@@ -1579,19 +1604,19 @@ namespace clinic_ivf.gui
             {
                 i++;
                 Row row1 = grfImgOld.Rows.Add();
-                row1[colID] = row[ic.ivfDB.pttImgDB.pttI.patient_image_id].ToString();
-                row1[colDesc] = row[ic.ivfDB.pttImgDB.pttI.desc1].ToString();
-                row1[colPathPic] = row[ic.ivfDB.pttImgDB.pttI.image_path].ToString();
-                row1[colStatus] = row[ic.ivfDB.pttImgDB.pttI.status_image].ToString();
+                row1[colID] = row[ic.ivfDB.ofpDB.ofp.ID].ToString();
+                //row1[colDesc] = row[ic.ivfDB.pttImgDB.pttI.desc1].ToString();
+                row1[colPathPic] = row[ic.ivfDB.ofpDB.ofp.Filename].ToString();
+                //row1[colStatus] = row[ic.ivfDB.ofpDB.ofp.status_image].ToString();
                 grfImgOld[i, 0] = i;
-                if (row[ic.ivfDB.pttImgDB.pttI.image_path] != null && !row[ic.ivfDB.pttImgDB.pttI.image_path].ToString().Equals(""))
+                if (row[ic.ivfDB.ofpDB.ofp.Filename] != null && !row[ic.ivfDB.ofpDB.ofp.Filename].ToString().Equals(""))
                 {
                     int ii = i;
                     new Thread(() =>
                     {
                         Thread.CurrentThread.IsBackground = true;
                         Image loadedImage = null, resizedImage;
-                        String aaa = row[ic.ivfDB.pttImgDB.pttI.image_path].ToString();
+                        String aaa = row[ic.ivfDB.ofpDB.ofp.Filename].ToString();
                         FtpWebRequest ftpRequest = null;
                         FtpWebResponse ftpResponse = null;
                         Stream ftpStream = null;
@@ -1603,7 +1628,7 @@ namespace clinic_ivf.gui
                         host = ic.iniC.hostFTP; user = ic.iniC.userFTP; pass = ic.iniC.passFTP;
                         try
                         {
-                            ftpRequest = (FtpWebRequest)FtpWebRequest.Create(host + "/" + aaa);
+                            ftpRequest = (FtpWebRequest)FtpWebRequest.Create(host + "/images/images_old/uploads/" + txtIdOld.Text +"/"+ aaa);
                             ftpRequest.Credentials = new NetworkCredential(user, pass);
                             ftpRequest.UseBinary = true;
                             ftpRequest.UsePassive = false;
@@ -1631,7 +1656,7 @@ namespace clinic_ivf.gui
                             ftpRequest = null;
                         }
                         catch (Exception ex) { Console.WriteLine(ex.ToString()); }
-                        grfImgOld.Cols[colImg].ImageAndText = true;
+                        //grfImgOld.Cols[colImg].ImageAndText = true;
                         if (loadedImage != null)
                         {
                             int originalWidth = loadedImage.Width;
@@ -1704,7 +1729,7 @@ namespace clinic_ivf.gui
             //    ht.Add(dr["CategoryID"], LoadImage(dr["Picture"] as byte[]));
             //}
             //grfImg.Cols[colImg].ImageMap = ht;
-            grfImg.Cols[colImg].ImageAndText = false;
+            //grfImg.Cols[colImg].ImageAndText = false;
 
             //ContextMenu menuGw = new ContextMenu();
             //menuGw.MenuItems.Add("&แก้ไข Patient", new EventHandler(ContextMenu_edit));
@@ -1727,7 +1752,7 @@ namespace clinic_ivf.gui
                 if (row[ic.ivfDB.pttImgDB.pttI.image_path] != null && !row[ic.ivfDB.pttImgDB.pttI.image_path].ToString().Equals(""))
                 {
                     int ii = i;
-                    new Thread(() =>
+                    Thread pump = new Thread(() =>
                     {
                         Thread.CurrentThread.IsBackground = true;
                         Image loadedImage = null, resizedImage;
@@ -1771,7 +1796,7 @@ namespace clinic_ivf.gui
                             ftpRequest = null;
                         }
                         catch (Exception ex) { Console.WriteLine(ex.ToString()); }
-                        grfImg.Cols[colImg].ImageAndText = true;
+                        //grfImg.Cols[colImg].ImageAndText = true;
                         if (loadedImage != null)
                         {
                             int originalWidth = loadedImage.Width;
@@ -1781,17 +1806,23 @@ namespace clinic_ivf.gui
                             col.DataType = typeof(Image);
                             row1[colImg] = resizedImage;
                             flagImg = true;
+                            //grfImg.AutoSizeCols();
+                            //grfImg.AutoSizeRows();
                         }
-                    }).Start();
+                    });
+                    pump.Start();
+                    //pump.Join();
+                    //grfImg.AutoSizeCols();
+                    //grfImg.AutoSizeRows();
                 }
                 //if (i % 2 == 0)
-                    //grfPtt.Rows[i].StyleNew.BackColor = color;
+                //grfPtt.Rows[i].StyleNew.BackColor = color;
             }
             grfImg.Cols[colID].Visible = false;
             //grfImg.Cols[colPathPic].Visible = false;
             grfImg.Cols[colImg].AllowEditing = false;
-            grfImg.AutoSizeCols();
-            grfImg.AutoSizeRows();
+            //grfImg.AutoSizeCols();
+            //grfImg.AutoSizeRows();
             theme1.SetTheme(grfImg, "Office2016Colorful");
 
         }
@@ -3057,6 +3088,8 @@ namespace clinic_ivf.gui
                 theme1.SetTheme(sB, "Office2010Red");
             }
             txtLat1.Value = System.DateTime.Now.Year.ToString();
+            grfImg.AutoSizeCols();
+            grfImg.AutoSizeRows();
             //_CardReaderTFK2700 = ic.ListCardReader();
             //theme1.SetTheme(splitContainer1, ic.theme);
             //theme1.SetTheme(splitContainer2, ic.theme);

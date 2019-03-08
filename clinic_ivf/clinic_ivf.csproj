@@ -443,6 +443,7 @@
     <Compile Include="objdb\OldBillheaderDB.cs" />
     <Compile Include="objdb\OldCashAccountDB.cs" />
     <Compile Include="objdb\OldCreditCardAccountDB.cs" />
+    <Compile Include="objdb\OldFilePatientDB.cs" />
     <Compile Include="objdb\OldJobLabDB.cs" />
     <Compile Include="objdb\OldJobPxDB.cs" />
     <Compile Include="objdb\JobPxDetailDB.cs" />
@@ -477,6 +478,7 @@
     <Compile Include="object1\OldBillheader.cs" />
     <Compile Include="object1\OldCashAccount.cs" />
     <Compile Include="object1\OldCreditCardAccount.cs" />
+    <Compile Include="object1\OldFilePatient.cs" />
     <Compile Include="object1\OldGroupDrugDetail.cs" />
     <Compile Include="object1\LabFet.cs" />
     <Compile Include="object1\LabFormA.cs" />

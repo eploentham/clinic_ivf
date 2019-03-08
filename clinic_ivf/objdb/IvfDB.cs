@@ -78,6 +78,7 @@ namespace clinic_ivf.objdb
         public OldCashAccountDB ocaDB;
         public OldCreditCardAccountDB occa;
         public OldBillGroupDB obilgDB;
+        public OldFilePatientDB ofpDB;
 
         public IvfDB(ConnectDB c)
         {
@@ -148,6 +149,7 @@ namespace clinic_ivf.objdb
             obildDB = new OldBilldetailDB(conn);
             obilhDB = new OldBillheaderDB(conn);
             obilgDB = new OldBillGroupDB(conn);
+            ofpDB = new OldFilePatientDB(conn);
 
             Console.WriteLine("ivfDB end");
         }

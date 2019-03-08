@@ -37,7 +37,8 @@ namespace clinic_ivf.objdb
             DataTable dt = new DataTable();
             String sql = "select ofp.* " +
                 "From " + ofp.table + " ofp " +
-                "Where ofp." + ofp.PID + " ='" + copId + "' ";
+                "Where ofp." + ofp.PID + " ='" + copId + "' " +
+                "Order By ofp.ID ";
             dt = conn.selectData(conn.conn, sql);
             return dt;
         }
