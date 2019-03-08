@@ -116,7 +116,7 @@ namespace clinic_ivf.gui
             bg = txtPttNameE.BackColor;
             fc = txtPttNameE.ForeColor;
             ff = txtPttNameE.Font;
-            ff1 = new FtpClient(ic.iniC.hostFTP, ic.iniC.userFTP, ic.iniC.passFTP);
+            ff1 = new FtpClient(ic.iniC.hostFTP, ic.iniC.userFTP, ic.iniC.passFTP,ic.ftpUsePassive);
 
             stt = new C1SuperTooltip();
             sep = new C1SuperErrorProvider();
@@ -1631,7 +1631,7 @@ namespace clinic_ivf.gui
                             ftpRequest = (FtpWebRequest)FtpWebRequest.Create(host + "/images/images_old/uploads/" + txtIdOld.Text +"/"+ aaa);
                             ftpRequest.Credentials = new NetworkCredential(user, pass);
                             ftpRequest.UseBinary = true;
-                            ftpRequest.UsePassive = false;
+                            ftpRequest.UsePassive = ic.ftpUsePassive;
                             ftpRequest.KeepAlive = true;
                             ftpRequest.Method = WebRequestMethods.Ftp.DownloadFile;
                             ftpResponse = (FtpWebResponse)ftpRequest.GetResponse();
@@ -1771,7 +1771,8 @@ namespace clinic_ivf.gui
                             ftpRequest = (FtpWebRequest)FtpWebRequest.Create(host + "/" + aaa);
                             ftpRequest.Credentials = new NetworkCredential(user, pass);
                             ftpRequest.UseBinary = true;
-                            ftpRequest.UsePassive = false;
+                            //ftpRequest.UsePassive = false;
+                            ftpRequest.UsePassive = ic.ftpUsePassive;
                             ftpRequest.KeepAlive = true;
                             ftpRequest.Method = WebRequestMethods.Ftp.DownloadFile;
                             ftpResponse = (FtpWebResponse)ftpRequest.GetResponse();
@@ -1789,13 +1790,18 @@ namespace clinic_ivf.gui
                             catch (Exception ex)
                             {
                                 Console.WriteLine(ex.ToString());
+                                MessageBox.Show("setGrfImg 1 " + ex.Message+"\n "+ aaa, "host "+ ic.iniC.hostFTP+ " user "+user + " pas  " + pass);
                             }
                             loadedImage = new Bitmap(stream);
                             ftpStream.Close();
                             ftpResponse.Close();
                             ftpRequest = null;
                         }
-                        catch (Exception ex) { Console.WriteLine(ex.ToString()); }
+                        catch (Exception ex)
+                        {
+                            Console.WriteLine(ex.ToString());
+                            MessageBox.Show("setGrfImg 2 " + ex.Message + "\n " + aaa, "host " + ic.iniC.hostFTP + " user " + user + " pas  " + pass);
+                        }
                         //grfImg.Cols[colImg].ImageAndText = true;
                         if (loadedImage != null)
                         {

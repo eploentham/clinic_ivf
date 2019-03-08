@@ -60,7 +60,7 @@ namespace clinic_ivf.gui
             bg = txtPttNameE.BackColor;
             fc = txtPttNameE.ForeColor;
             ff = txtPttNameE.Font;
-            ff1 = new FtpClient(ic.iniC.hostFTP, ic.iniC.userFTP, ic.iniC.passFTP);
+            ff1 = new FtpClient(ic.iniC.hostFTP, ic.iniC.userFTP, ic.iniC.passFTP,ic.ftpUsePassive);
 
             stt = new C1SuperTooltip();
             sep = new C1SuperErrorProvider();
@@ -419,7 +419,7 @@ namespace clinic_ivf.gui
                     ftpRequest = (FtpWebRequest)FtpWebRequest.Create(host + "/" + aaa);
                     ftpRequest.Credentials = new NetworkCredential(user, pass);
                     ftpRequest.UseBinary = true;
-                    ftpRequest.UsePassive = false;
+                    ftpRequest.UsePassive = ic.ftpUsePassive;
                     ftpRequest.KeepAlive = true;
                     ftpRequest.Method = WebRequestMethods.Ftp.DownloadFile;
                     ftpResponse = (FtpWebResponse)ftpRequest.GetResponse();

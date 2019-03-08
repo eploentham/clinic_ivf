@@ -57,6 +57,7 @@ namespace clinic_ivf.control
         public Age age;
         public String _IPAddress = "";
         public Decimal CreditCharge = 0;
+        public Boolean ftpUsePassive = false;
         //public FtpClient ftpC;
         public enum NID_FIELD
         {
@@ -118,7 +119,7 @@ namespace clinic_ivf.control
 
             GetConfig();
             conn = new ConnectDB(iniC);
-            ftpC = new FtpClient(iniC.hostFTP, iniC.userFTP, iniC.passFTP);
+            ftpC = new FtpClient(iniC.hostFTP, iniC.userFTP, iniC.passFTP,ftpUsePassive);
 
             //ivfDB = new IvfDB(conn);
 
@@ -164,6 +165,7 @@ namespace clinic_ivf.control
             iniC.passFTP = iniF.getIni("ftp", "passFTP");
             iniC.portFTP = iniF.getIni("ftp", "portFTP");
             iniC.folderFTP = iniF.getIni("ftp", "folderFTP");
+            iniC.usePassiveFTP = iniF.getIni("ftp", "usePassiveFTP");
 
             iniC.grdViewFontSize = iniF.getIni("app", "grdViewFontSize");
             iniC.grdViewFontName = iniF.getIni("app", "grdViewFontName");
@@ -229,8 +231,10 @@ namespace clinic_ivf.control
             iniC.pathImageScan = iniC.pathImageScan == null ? "d:\\images" : iniC.pathImageScan.Equals("") ? "d:\\images" : iniC.pathImageScan;
             iniC.folderFTP = iniC.folderFTP == null ? "images_medical_record" : iniC.folderFTP.Equals("") ? "images_medical_record" : iniC.folderFTP;
             iniC.creditCharge = iniC.creditCharge == null ? "3" : iniC.creditCharge.Equals("") ? "3" : iniC.creditCharge;
+            iniC.usePassiveFTP = iniC.usePassiveFTP == null ? "false" : iniC.usePassiveFTP.Equals("") ? "false" : iniC.usePassiveFTP;
             int.TryParse(iniC.grdViewFontSize, out grdViewFontSize);
             Decimal.TryParse(iniC.creditCharge, out CreditCharge);
+            Boolean.TryParse(iniC.usePassiveFTP, out ftpUsePassive);
         }
         public String datetoDB(String dt)
         {

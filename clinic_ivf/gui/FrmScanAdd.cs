@@ -738,7 +738,7 @@ namespace clinic_ivf.gui
                     String re = ic.ivfDB.dscDB.insertDocScan(dsc, ic.userId);
                     dsc.image_path = txtVN.Text + "//" + txtHn.Text.Replace("/","-") + "_"+ txtVN.Text + "_" + re + ext;
                     String re1 = ic.ivfDB.dscDB.updateImagepath(dsc.image_path, re);
-                    FtpClient ftp = new FtpClient(ic.iniC.hostFTP, ic.iniC.userFTP, ic.iniC.passFTP);
+                    FtpClient ftp = new FtpClient(ic.iniC.hostFTP, ic.iniC.userFTP, ic.iniC.passFTP, ic.ftpUsePassive);
                     //MessageBox.Show("111", "");
                     ftp.createDirectory(ic.iniC.folderFTP+"//"+ txtVN.Text);
                     //MessageBox.Show("222", "");

@@ -532,7 +532,7 @@ namespace clinic_ivf.gui
                     //MemoryStream stream;
                     //Image loadedImage, resizedImage;
                     C1FlexGrid grf1;
-                    FtpClient ftp = new FtpClient(ic.iniC.hostFTP, ic.iniC.userFTP, ic.iniC.passFTP);
+                    FtpClient ftp = new FtpClient(ic.iniC.hostFTP, ic.iniC.userFTP, ic.iniC.passFTP, ic.ftpUsePassive);
                     Boolean findTrue = false;
                     foreach (DataRow row in dt.Rows)
                     {

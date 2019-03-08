@@ -17,11 +17,12 @@ namespace clinic_ivf.object1
         FtpWebResponse ftpResponse = null;
         Stream ftpStream = null;
         int bufferSize = 2048;
-
+        Boolean ftpUsePassive = false;
         /* Construct Object */
-        public FtpClient(string hostIP, string userName, string password)
+        public FtpClient(string hostIP, string userName, string password, Boolean ftpUsePassive)
         {
             host = hostIP; user = userName; pass = password;
+            this.ftpUsePassive = ftpUsePassive;
         }
 
         /* Download File */
@@ -36,7 +37,7 @@ namespace clinic_ivf.object1
                 ftpRequest.Credentials = new NetworkCredential(user, pass);
                 /* When in doubt, use these options */
                 ftpRequest.UseBinary = true;
-                ftpRequest.UsePassive = false;
+                ftpRequest.UsePassive = ftpUsePassive;
                 ftpRequest.KeepAlive = true;
                 /* Specify the Type of FTP Request */
                 ftpRequest.Method = WebRequestMethods.Ftp.DownloadFile;
@@ -85,7 +86,7 @@ namespace clinic_ivf.object1
                 ftpRequest.Credentials = new NetworkCredential(user, pass);
                 /* When in doubt, use these options */
                 ftpRequest.UseBinary = true;
-                ftpRequest.UsePassive = false;
+                ftpRequest.UsePassive = ftpUsePassive;
                 ftpRequest.KeepAlive = true;
                 /* Specify the Type of FTP Request */
                 ftpRequest.Method = WebRequestMethods.Ftp.DownloadFile;
@@ -136,7 +137,7 @@ namespace clinic_ivf.object1
                 ftpRequest.Credentials = new NetworkCredential(user, pass);
                 /* When in doubt, use these options */
                 ftpRequest.UseBinary = true;
-                ftpRequest.UsePassive = false;
+                ftpRequest.UsePassive = ftpUsePassive;
                 ftpRequest.KeepAlive = true;
                 /* Specify the Type of FTP Request */
                 
@@ -184,7 +185,7 @@ namespace clinic_ivf.object1
                 ftpRequest.Credentials = new NetworkCredential(user, pass);
                 /* When in doubt, use these options */
                 ftpRequest.UseBinary = true;
-                ftpRequest.UsePassive = true;
+                ftpRequest.UsePassive = ftpUsePassive;
                 ftpRequest.KeepAlive = true;
                 /* Specify the Type of FTP Request */
                 ftpRequest.Method = WebRequestMethods.Ftp.DeleteFile;
@@ -208,7 +209,7 @@ namespace clinic_ivf.object1
                 ftpRequest.Credentials = new NetworkCredential(user, pass);
                 /* When in doubt, use these options */
                 ftpRequest.UseBinary = true;
-                ftpRequest.UsePassive = true;
+                ftpRequest.UsePassive = ftpUsePassive;
                 ftpRequest.KeepAlive = true;
                 /* Specify the Type of FTP Request */
                 ftpRequest.Method = WebRequestMethods.Ftp.RemoveDirectory;
@@ -232,7 +233,7 @@ namespace clinic_ivf.object1
                 ftpRequest.Credentials = new NetworkCredential(user, pass);
                 /* When in doubt, use these options */
                 ftpRequest.UseBinary = true;
-                ftpRequest.UsePassive = true;
+                ftpRequest.UsePassive = ftpUsePassive;
                 ftpRequest.KeepAlive = true;
                 /* Specify the Type of FTP Request */
                 ftpRequest.Method = WebRequestMethods.Ftp.Rename;
@@ -262,7 +263,7 @@ namespace clinic_ivf.object1
                 /* When in doubt, use these options */
                 ftpRequest.UseBinary = true;
                 //ftpRequest.UsePassive = true;
-                ftpRequest.UsePassive = false;
+                ftpRequest.UsePassive = ftpUsePassive;
                 ftpRequest.KeepAlive = true;
                 //ftpRequest.EnableSsl = true;
                 /* Specify the Type of FTP Request */
@@ -292,7 +293,7 @@ namespace clinic_ivf.object1
                 ftpRequest.Credentials = new NetworkCredential(user, pass);
                 /* When in doubt, use these options */
                 ftpRequest.UseBinary = true;
-                ftpRequest.UsePassive = true;
+                ftpRequest.UsePassive = ftpUsePassive;
                 ftpRequest.KeepAlive = true;
                 /* Specify the Type of FTP Request */
                 ftpRequest.Method = WebRequestMethods.Ftp.GetDateTimestamp;
@@ -331,7 +332,7 @@ namespace clinic_ivf.object1
                 ftpRequest.Credentials = new NetworkCredential(user, pass);
                 /* When in doubt, use these options */
                 ftpRequest.UseBinary = true;
-                ftpRequest.UsePassive = true;
+                ftpRequest.UsePassive = ftpUsePassive;
                 ftpRequest.KeepAlive = true;
                 /* Specify the Type of FTP Request */
                 ftpRequest.Method = WebRequestMethods.Ftp.GetFileSize;
@@ -370,7 +371,7 @@ namespace clinic_ivf.object1
                 ftpRequest.Credentials = new NetworkCredential(user, pass);
                 /* When in doubt, use these options */
                 ftpRequest.UseBinary = true;
-                ftpRequest.UsePassive = true;
+                ftpRequest.UsePassive = ftpUsePassive;
                 ftpRequest.KeepAlive = true;
                 /* Specify the Type of FTP Request */
                 ftpRequest.Method = WebRequestMethods.Ftp.ListDirectory;
@@ -410,7 +411,7 @@ namespace clinic_ivf.object1
                 ftpRequest.Credentials = new NetworkCredential(user, pass);
                 /* When in doubt, use these options */
                 ftpRequest.UseBinary = true;
-                ftpRequest.UsePassive = true;
+                ftpRequest.UsePassive = ftpUsePassive;
                 ftpRequest.KeepAlive = true;
                 /* Specify the Type of FTP Request */
                 ftpRequest.Method = WebRequestMethods.Ftp.ListDirectoryDetails;

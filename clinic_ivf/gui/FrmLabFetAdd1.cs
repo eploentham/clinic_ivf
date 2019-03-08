@@ -1799,7 +1799,7 @@ namespace clinic_ivf.gui
                             ftpRequest = (FtpWebRequest)FtpWebRequest.Create(host + "/" + aaa);
                             ftpRequest.Credentials = new NetworkCredential(user, pass);
                             ftpRequest.UseBinary = true;
-                            ftpRequest.UsePassive = false;
+                            ftpRequest.UsePassive = ic.ftpUsePassive;
                             ftpRequest.KeepAlive = true;
                             ftpRequest.Method = WebRequestMethods.Ftp.DownloadFile;
                             ftpResponse = (FtpWebResponse)ftpRequest.GetResponse();
@@ -2038,7 +2038,7 @@ namespace clinic_ivf.gui
                             ftpRequest = (FtpWebRequest)FtpWebRequest.Create(host + "/" + aaa);
                             ftpRequest.Credentials = new NetworkCredential(user, pass);
                             ftpRequest.UseBinary = true;
-                            ftpRequest.UsePassive = false;
+                            ftpRequest.UsePassive = ic.ftpUsePassive;
                             ftpRequest.KeepAlive = true;
                             ftpRequest.Method = WebRequestMethods.Ftp.DownloadFile;
                             ftpResponse = (FtpWebResponse)ftpRequest.GetResponse();
@@ -2277,7 +2277,7 @@ namespace clinic_ivf.gui
                             ftpRequest = (FtpWebRequest)FtpWebRequest.Create(host + "/" + aaa);
                             ftpRequest.Credentials = new NetworkCredential(user, pass);
                             ftpRequest.UseBinary = true;
-                            ftpRequest.UsePassive = false;
+                            ftpRequest.UsePassive = ic.ftpUsePassive;
                             ftpRequest.KeepAlive = true;
                             ftpRequest.Method = WebRequestMethods.Ftp.DownloadFile;
                             ftpResponse = (FtpWebResponse)ftpRequest.GetResponse();
@@ -2516,7 +2516,7 @@ namespace clinic_ivf.gui
                             ftpRequest = (FtpWebRequest)FtpWebRequest.Create(host + "/" + aaa);
                             ftpRequest.Credentials = new NetworkCredential(user, pass);
                             ftpRequest.UseBinary = true;
-                            ftpRequest.UsePassive = false;
+                            ftpRequest.UsePassive = ic.ftpUsePassive;
                             ftpRequest.KeepAlive = true;
                             ftpRequest.Method = WebRequestMethods.Ftp.DownloadFile;
                             ftpResponse = (FtpWebResponse)ftpRequest.GetResponse();
