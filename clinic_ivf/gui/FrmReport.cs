@@ -23,6 +23,27 @@ namespace clinic_ivf.gui
             InitializeComponent();
             this.ic = ic;
         }
+        public void setPrintBill(DataTable dt)
+        {
+            String chk = "", printerDefault = "";
+            ReportDocument rpt = new ReportDocument();
+            try
+            {
+                rpt.Load("print_bill.rpt");
+                rpt.SetDataSource(dt);
+                rpt.SetParameterValue("line1", ic.cop.comp_name_t);
+                rpt.SetParameterValue("line2", "โทรศัพท์ " + ic.cop.tele);
+                rpt.SetParameterValue("report_name", " Embryo development");
+                //rpt.SetParameterValue("date1", "" + date1);
+                this.crystalReportViewer1.ReportSource = rpt;
+                this.crystalReportViewer1.Refresh();
+            }
+            catch (Exception ex)
+            {
+                chk = ex.Message.ToString();
+                MessageBox.Show("error " + ex.Message, "");
+            }
+        }
         public void setLabFormDay1Report(DataTable dt)
         {
             String chk = "", printerDefault = "", err = "";
@@ -317,13 +338,14 @@ namespace clinic_ivf.gui
                         printerDefault = printer;
                 }
                 //Properties.Settings.Default["PrinterName"] = ic.iniC.printerSticker;
-                                
+                
                 PrinterSettings settings1 = new PrinterSettings();
                 settings1.PrinterName = ic.iniC.printerSticker;
+                
 
                 String date1 = "";
                 date1 = DateTime.Now.Year + "-" + DateTime.Now.ToString("MM-dd HH:mm:ss");
-
+                date1 = ic.datetimetoShow(date1);
                 rpt.Load("sticker_drug.rpt");
 
                 rpt.SetDataSource(dt);

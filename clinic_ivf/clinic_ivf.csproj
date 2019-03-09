@@ -616,6 +616,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>OPDcardOLD.xsd</DependentUpon>
     </Compile>
+    <Compile Include="report\print_bill.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>print_bill.xsd</DependentUpon>
+    </Compile>
     <Compile Include="report\sticker_drug.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -900,6 +905,17 @@
     </None>
     <None Include="report\OPDcardOLD.xss">
       <DependentUpon>OPDcardOLD.xsd</DependentUpon>
+    </None>
+    <None Include="report\print_bill.xsc">
+      <DependentUpon>print_bill.xsd</DependentUpon>
+    </None>
+    <None Include="report\print_bill.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>print_bill.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="report\print_bill.xss">
+      <DependentUpon>print_bill.xsd</DependentUpon>
     </None>
     <None Include="report\sticker_drug.xsc">
       <DependentUpon>sticker_drug.xsd</DependentUpon>

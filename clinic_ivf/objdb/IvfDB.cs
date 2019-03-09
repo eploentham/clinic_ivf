@@ -802,5 +802,314 @@ namespace clinic_ivf.objdb
             sql = "update BillHeader Set Total=Extra_Pkg_Price Where VN='"+vn+"'";
             re = conn.ExecuteNonQuery(conn.conn, sql);
         }
+        public DataTable printBill(String vn)
+        {
+            //$chk = "";
+            //$sql = 'select VN, ExtBillNo, IntLock, Year(Date)+543 as F1, date_format(Date,"%m") as F2 from BillHeader Where VN="'. $_POST['VN']. '"';
+            //$result = mysql_query($sql, $link);
+            //$row = mysql_fetch_row($result);
+            //$VN =$row[0];
+            //$ExtBillNo =$row[1];
+            //$IntLock =$row[2];
+            //$F1 =$row[3];
+            //$F1 = substr($F1, -2);
+            //$F2 =$row[4];
+            //$F1 =$F1.$F2."0000";
+            //if ($ExtBillNo == null and $IntLock == 0){
+            //  $sql2 = "Select max(ExtBillNo) from BillHeader";
+            //  $result2 = mysql_query($sql2, $link);
+            //  $row2 = mysql_fetch_row($result2);
+            //  $MaxBill =$row2[0];
+            //    if ($F1 >$MaxBill){
+            //    $ExtBillNo =$F1 + 1;
+            //    } else {
+            //    $ExtBillNo =$MaxBill + 1;
+            //    }
+            //  $sql3 = 'Update BillHeader Set ExtBillNo="'.$ExtBillNo.'" where VN="'.$VN.'"';
+            //    mysql_query($sql3, $link);
+            //}
+            DataTable dt = new DataTable();
+            long chk1 = 0, chk2 = 0;
+            String re = "", extBill="", intLock="", f1="",f2="", maxBill="", billNo="";
+            String sql = "select VN, ExtBillNo, IntLock, Year(Date)+543 as F1, date_format(Date,'%m') as F2 from BillHeader Where VN='"+vn+"'";
+            dt = conn.selectData(conn.conn, sql);
+            if (dt.Rows.Count > 0)
+            {
+                extBill = dt.Rows[0]["ExtBillNo"].ToString();
+                intLock = dt.Rows[0]["IntLock"].ToString();
+                f1 = dt.Rows[0]["F1"].ToString();
+                f2 = dt.Rows[0]["F2"].ToString();
+                f1 = f1.Length >= 4 ? f1.Substring(2,2) : f1;
+                f1 += f2 + "0000";
+                if(extBill.Equals("") && intLock.Equals("0"))
+                {
+                    sql = "Select max(ExtBillNo) as ExtBillNo from BillHeader";
+                    dt = conn.selectData(conn.conn, sql);
+                    if (dt.Rows.Count > 0)
+                    {
+                        maxBill = dt.Rows[0]["ExtBillNo"].ToString();
+                        long.TryParse(f1, out chk1);
+                        long.TryParse(maxBill, out chk2);
+                        billNo = (chk1 < chk2) ? (chk1 + 1).ToString() : (chk2 + 1).ToString();
+                        sql = "Update BillHeader Set ExtBillNo='"+ billNo + "' where VN='"+vn+"'";
+                        String re1 = conn.ExecuteNonQuery(conn.conn, sql);
+                        if(!long.TryParse(re1, out chk1))
+                        {
+                            re = "update ExtBillNo error ";
+                        }
+                    }
+                }
+                else
+                {
+                    re = "extBill "+extBill+ " intLock "+ intLock;
+                }
+            }
+            else
+            {
+                re = "No Bill in vn "+vn;
+            }
+            //            $sql = 'select * from BillHeader Where VN="'. $_POST['VN']. '"';
+            //$result = mysql_query($sql, $link);
+            //$pdf->SetFont('freeserif', '', 9, '', true);
+            //            set_time_limit(0);
+            //            while ($row = mysql_fetch_array($result)) {
+            //    $PName = $row['PName'];
+            //    $PIDS = $row['PIDS'];
+            //    $IntLock =$row['IntLock'];
+            //    $WTotal = convert_number_to_words(round($row['Total'])). ' baht';
+            //    $Total = number_format($row['Total'], 2, '.', ',');
+            //    $billno = "RE".floor($row['BillNo'] / 10000). "-";
+            //                if ($row['BillNo'] % 10000 < 10) {
+            //        $billno = $billno. "000". $row['BillNo'] % 10000;
+            //                } else {
+            //                    if ($row['BillNo'] % 10000 < 100) {
+            //        $billno = $billno. "00". $row['BillNo'] % 10000;
+            //                    } else {
+            //                        if ($row['BillNo'] % 10000 < 1000) {
+            //        $billno = $billno. "0". $row['BillNo'] % 10000;
+            //                        } else {
+            //        //1. bug running
+            //        //$billno = $billno . $row['BillNo'] % 100;     -1
+            //        $billno = $billno. $row['BillNo'] % 10000;   //     +1
+            //                        };
+            //                    };
+            //                };
+            //  $ExtBillNo =$row['ExtBillNo'];
+            //                if ($ExtBillNo != 0){
+            //    $extbillno = "IVF".floor($row['ExtBillNo'] / 10000). "-";
+            //                    if ($row['ExtBillNo'] % 10000 < 10) {
+            //        $extbillno = $extbillno. "000". $row['ExtBillNo'] % 10000;
+            //                    } else {
+            //                        if ($row['ExtBillNo'] % 10000 < 100) {
+            //        $extbillno = $extbillno. "00". $row['ExtBillNo'] % 10000;
+            //                        } else {
+            //                            if ($row['ExtBillNo'] % 10000 < 1000) {
+            //        $extbillno = $extbillno. "0". $row['ExtBillNo'] % 10000;
+            //                            } else {
+            //        //1. bug running
+            //        //$extbillno = $billno . $row['ExtBillNo'] % 100;   -1
+            //        //$extbillno = $billno . $row['ExtBillNo'] % 10000;     //   +1
+            //        $extbillno = $extbillno. $row['ExtBillNo'] % 10000;     //   +2
+            //                            };
+            //                        };
+            //                    };
+            //                }
+            //	$PaymentBy =$row['PaymentBy'];
+            //                if ($PaymentBy == "NULL"){
+            //		$PaymentBy = "";
+            //                } else {
+            //		$PaymentBy = '<tr><td>รับชำระเงินจาก/Receive Payment From </td><td>'.$PaymentBy.'</td><td width="30%" align="right">&nbsp;</td></tr>';
+            //                };
+            //	$CashID =$row['CashID'];
+            //	$CreditCardID =$row['CreditCardID'];
+            //                if ($CashID != 0 && $CreditCardID == 0){
+            //		$Payment2 = "เงินสด/Cash";
+            //                };
+            //                if ($CreditCardID != 0 && $CashID == 0){
+            //		$Payment2 = "เครดิตการ์ด/Credit Card";
+            //                };
+            //                if ($CreditCardID != 0 && $CashID != 0){
+            //		$Payment2 = "เงินสดและเครดิตการ์ด/Cash and Credit Card";
+            //                };            };
+            String pname = "", pids = "", wtotal = "", total = "", billno = "", billdoc="", billextno="", billextdoc="", payby="", cashid="", pay2="", creditid="";
+            Decimal total1 = 0;
+            sql = "select * from BillHeader Where VN='"+vn+"' ";
+            dt = conn.selectData(conn.conn, sql);
+            if (dt.Rows.Count > 0)
+            {
+                pname = dt.Rows[0]["PName"].ToString();
+                pids = dt.Rows[0]["PIDS"].ToString();
+                intLock = dt.Rows[0]["IntLock"].ToString();
+                wtotal = dt.Rows[0]["Total"].ToString();
+                total = dt.Rows[0]["Total"].ToString();
+                billno = dt.Rows[0]["BillNo"].ToString();
+                Decimal.TryParse(total, out total1);
+                total = total1.ToString("0.00");
+                billdoc = "RE"+billno.Substring(0, 4)+"-"+ billno.Substring(4);
+
+                billextno = dt.Rows[0]["ExtBillNo"].ToString();
+                billextdoc = "RE" + billextno.Substring(0, 4) + "-" + billextno.Substring(4);
+
+                payby = "รับชำระเงินจาก/Receive Payment From  " + dt.Rows[0]["PaymentBy"].ToString();
+                cashid = dt.Rows[0]["CashID"].ToString();
+                creditid = dt.Rows[0]["CreditCardID"].ToString();
+                if(!cashid.Equals("0") && creditid.Equals("0")){
+                    pay2 = "เงินสด/Cash ";
+                }
+                else if (cashid.Equals("0") && !creditid.Equals("0"))
+                {
+                    pay2 = "เครดิตการ์ด/Credit Card ";
+                }
+                else if (!cashid.Equals("0") && !creditid.Equals("0"))
+                {
+                    pay2 = "เงินสดและเครดิตการ์ด/Cash and Credit Card ";
+                }
+            }
+            String grpname = "";
+            DataTable dtprn = new DataTable();
+            DataTable dtb0 = new DataTable();
+            DataTable dtb_99 = new DataTable();
+            DataTable dtb99 = new DataTable();
+            DataTable dtb102 = new DataTable();
+            dtprn.Columns.Add("col1", typeof(String));
+            dtprn.Columns.Add("col2", typeof(String));
+            dtprn.Columns.Add("col3", typeof(String));
+            dtprn.Columns.Add("col4", typeof(String));
+            dtprn.Columns.Add("sort1", typeof(String));
+            dtprn.Columns.Add("fond_bold", typeof(String));
+            sql = "Select Name from BillGroup Where ID=0";
+            dt = conn.selectData(conn.conn, sql);
+            String name = "", total111="", comm="";
+            Decimal total1111 = 0;
+            if (dt.Rows.Count > 0)
+            {
+                foreach(DataRow row in dt.Rows)
+                {
+                    grpname = dt.Rows[0]["Name"].ToString();
+                    sql = "Select * from BillDetail Where Total<>0 and VN='"+vn+"' and GroupType='"+ grpname + "'";
+                    dtb0 = conn.selectData(conn.conn, sql);
+                    if (dtb0.Rows.Count > 0)
+                    {
+                        DataRow row1 = dtprn.NewRow();
+                        row1["col1"] = grpname;
+                        row1["sort1"] = "";
+                        row1["fond_bold"] = "1";
+                        dtprn.Rows.Add(row1);
+                        foreach (DataRow dr in dtb0.Rows)
+                        {
+                            name = dr["Name"].ToString();
+                            total111 = dr["Total"].ToString();
+                            comm = dr["Comment"].ToString();
+                            Decimal.TryParse(total111, out total1111);
+                            DataRow row11 = dtprn.NewRow();
+                            row11["col1"] = name+" "+ comm;
+                            row11["col2"] = total1111.ToString("0.00");
+                            row11["col3"] = "";
+                            row11["col4"] = total1111.ToString("0.00");
+                            row11["sort1"] = "";
+                            row11["fond_bold"] = "";
+                            dtprn.Rows.Add(row11);
+                        }
+                    }
+                }
+            }
+
+            sql = "Select Name from BillGroup Where ID<99 and ID>0";
+            dt = conn.selectData(conn.conn, sql);
+            if (dt.Rows.Count > 0)
+            {
+                foreach (DataRow row in dt.Rows)
+                {
+                    grpname = dt.Rows[0]["Name"].ToString();
+                    sql = "Select sum(Total) as Total1 from BillDetail Where VN='" + vn + "' and GroupType='" + grpname + "'";
+                    dtb0 = conn.selectData(conn.conn, sql);
+                    if (dtb0.Rows.Count > 0)
+                    {
+                        total111 = dtb0.Rows[0]["Total1"].ToString();
+                        //name = dt.Rows[0]["Name"].ToString();
+                        //comm = dt.Rows[0]["Comment"].ToString();
+                        Decimal.TryParse(total111, out total1111);
+                        DataRow row11 = dtprn.NewRow();
+                        row11["col1"] = grpname;
+                        row11["col2"] = total1111.ToString("0.00");
+                        row11["col3"] = "";
+                        row11["col4"] = total1111.ToString("0.00");
+                        row11["sort1"] = "";
+                        row11["fond_bold"] = "1";
+                        dtprn.Rows.Add(row11);
+                    }
+                }
+            }
+
+            sql = "Select Name from BillGroup Where ID=99";
+            dt = conn.selectData(conn.conn, sql);
+            if (dt.Rows.Count > 0)
+            {
+                foreach (DataRow row in dt.Rows)
+                {
+                    grpname = dt.Rows[0]["Name"].ToString();
+                    sql = "Select * from BillDetail Where Total<>0 and VN='" + vn + "' and GroupType='" + grpname + "'";
+                    dtb0 = conn.selectData(conn.conn, sql);
+                    if (dtb0.Rows.Count > 0)
+                    {
+                        DataRow row1 = dtprn.NewRow();
+                        row1["col1"] = grpname;
+                        row1["sort1"] = "";
+                        row1["fond_bold"] = "1";
+                        dtprn.Rows.Add(row1);
+                        foreach (DataRow dr in dtb0.Rows)
+                        {
+                            name = dr["Name"].ToString();
+                            total111 = dr["Total"].ToString();
+                            comm = dr["Comment"].ToString();
+                            Decimal.TryParse(total111, out total1111);
+                            DataRow row11 = dtprn.NewRow();
+                            row11["col1"] = name;
+                            row11["col2"] = total1111.ToString("0.00");
+                            row11["col3"] = "";
+                            row11["col4"] = comm;
+                            row11["sort1"] = "";
+                            row11["fond_bold"] = "";
+                            dtprn.Rows.Add(row11);
+                        }
+                    }
+                }
+            }
+
+            sql = "Select Name from BillGroup Where ID=102";
+            dt = conn.selectData(conn.conn, sql);
+            if (dt.Rows.Count > 0)
+            {
+                foreach (DataRow row in dt.Rows)
+                {
+                    grpname = dt.Rows[0]["Name"].ToString();
+                    sql = "Select * from BillDetail Where Total<>0 and VN='" + vn + "' and GroupType='" + grpname + "'";
+                    dtb0 = conn.selectData(conn.conn, sql);
+                    if (dtb0.Rows.Count > 0)
+                    {
+                        DataRow row1 = dtprn.NewRow();
+                        row1["col1"] = "Other Service";
+                        dtprn.Rows.Add(row1);
+                        foreach (DataRow dr in dtb0.Rows)
+                        {
+                            name = dr["Name"].ToString();
+                            total111 = dr["Total"].ToString();
+                            //comm = dr["Comment"].ToString();
+                            Decimal.TryParse(total111, out total1111);
+                            DataRow row11 = dtprn.NewRow();
+                            row11["col1"] = name + " " + comm;
+                            row11["col2"] = total1111.ToString("0.00");
+                            row11["col3"] = "";
+                            row11["col4"] = total1111.ToString("0.00");
+                            row11["sort1"] = "";
+                            row11["fond_bold"] = "";
+                            dtprn.Rows.Add(row11);
+                        }
+                    }
+                }
+            }
+
+            return dtprn;
+        }
     }
 }

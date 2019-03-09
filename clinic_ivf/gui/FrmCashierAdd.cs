@@ -73,6 +73,8 @@ namespace clinic_ivf.gui
             txtDiscount.KeyUp += TxtDiscount_KeyUp;
             txtTotalCash.KeyUp += TxtTotalCash_KeyUp;
             txtTotalCredit.KeyUp += TxtTotalCredit_KeyUp;
+            btnClose.Click += BtnClose_Click;
+            txtCreditCharge.KeyUp += TxtCreditCharge_KeyUp;
             //txtTotalCash.KeyPress += TxtTotalCash_KeyPress;
             //txtTotalCredit.KeyPress += TxtTotalCredit_KeyPress;
 
@@ -80,6 +82,23 @@ namespace clinic_ivf.gui
             initGrfBillD();
             setChkDiscount(false);
             setControl();
+            
+        }
+
+        private void TxtCreditCharge_KeyUp(object sender, KeyEventArgs e)
+        {
+            //throw new NotImplementedException();
+            calTotalCash();
+        }
+
+        private void BtnClose_Click(object sender, EventArgs e)
+        {
+            //throw new NotImplementedException();
+            DataTable dt = new DataTable();
+            dt = ic.ivfDB.printBill(txtVn.Text);
+            FrmReport frm = new FrmReport(ic);
+            frm.setPrintBill(dt);
+            frm.ShowDialog(this);
             
         }
 
