@@ -214,7 +214,7 @@ namespace clinic_ivf.gui
             txtVsId.Value = ovs.VN;
             txtVnOld.Value = ovs.VN;
             txtHnOld.Value = ovs.PIDS;
-
+            txtVn.Value = ovs.VN;
             setGrfBillD();
             calTotal();
             calTotalCredit();

@@ -291,6 +291,10 @@ namespace clinic_ivf.report {
             
             private global::System.Data.DataColumn columnsort1;
             
+            private global::System.Data.DataColumn columngrp;
+            
+            private global::System.Data.DataColumn columngrp_name;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public print_billDataTable() {
@@ -374,6 +378,22 @@ namespace clinic_ivf.report {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn grpColumn {
+                get {
+                    return this.columngrp;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn grp_nameColumn {
+                get {
+                    return this.columngrp_name;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -409,7 +429,7 @@ namespace clinic_ivf.report {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public print_billRow Addprint_billRow(string col1, string col2, string col3, string col4, string font_bold, string sort1) {
+            public print_billRow Addprint_billRow(string col1, string col2, string col3, string col4, string font_bold, string sort1, string grp, string grp_name) {
                 print_billRow rowprint_billRow = ((print_billRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         col1,
@@ -417,7 +437,9 @@ namespace clinic_ivf.report {
                         col3,
                         col4,
                         font_bold,
-                        sort1};
+                        sort1,
+                        grp,
+                        grp_name};
                 rowprint_billRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowprint_billRow);
                 return rowprint_billRow;
@@ -446,6 +468,8 @@ namespace clinic_ivf.report {
                 this.columncol4 = base.Columns["col4"];
                 this.columnfont_bold = base.Columns["font_bold"];
                 this.columnsort1 = base.Columns["sort1"];
+                this.columngrp = base.Columns["grp"];
+                this.columngrp_name = base.Columns["grp_name"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -463,6 +487,10 @@ namespace clinic_ivf.report {
                 base.Columns.Add(this.columnfont_bold);
                 this.columnsort1 = new global::System.Data.DataColumn("sort1", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnsort1);
+                this.columngrp = new global::System.Data.DataColumn("grp", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columngrp);
+                this.columngrp_name = new global::System.Data.DataColumn("grp_name", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columngrp_name);
                 this.ExtendedProperties.Add("Generator_TablePropName", "_print_bill");
                 this.ExtendedProperties.Add("Generator_UserTableName", "print_bill");
             }
@@ -703,6 +731,38 @@ namespace clinic_ivf.report {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public string grp {
+                get {
+                    try {
+                        return ((string)(this[this.tableprint_bill.grpColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'grp\' in table \'print_bill\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableprint_bill.grpColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public string grp_name {
+                get {
+                    try {
+                        return ((string)(this[this.tableprint_bill.grp_nameColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'grp_name\' in table \'print_bill\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableprint_bill.grp_nameColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public bool Iscol1Null() {
                 return this.IsNull(this.tableprint_bill.col1Column);
             }
@@ -771,6 +831,30 @@ namespace clinic_ivf.report {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public void Setsort1Null() {
                 this[this.tableprint_bill.sort1Column] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public bool IsgrpNull() {
+                return this.IsNull(this.tableprint_bill.grpColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void SetgrpNull() {
+                this[this.tableprint_bill.grpColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public bool Isgrp_nameNull() {
+                return this.IsNull(this.tableprint_bill.grp_nameColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void Setgrp_nameNull() {
+                this[this.tableprint_bill.grp_nameColumn] = global::System.Convert.DBNull;
             }
         }
         

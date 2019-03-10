@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace clinic_ivf.objdb
 {
@@ -948,7 +949,15 @@ namespace clinic_ivf.objdb
                 billdoc = "RE"+billno.Substring(0, 4)+"-"+ billno.Substring(4);
 
                 billextno = dt.Rows[0]["ExtBillNo"].ToString();
-                billextdoc = "RE" + billextno.Substring(0, 4) + "-" + billextno.Substring(4);
+                try
+                {
+                    billextdoc = "RE" + billextno.Substring(0, 4) + "-" + billextno.Substring(4);
+                }
+                catch(Exception ex)
+                {
+                    MessageBox.Show(""+ex.Message, "ExtBillNo");
+                }
+                
 
                 payby = "รับชำระเงินจาก/Receive Payment From  " + dt.Rows[0]["PaymentBy"].ToString();
                 cashid = dt.Rows[0]["CashID"].ToString();
@@ -977,6 +986,8 @@ namespace clinic_ivf.objdb
             dtprn.Columns.Add("col4", typeof(String));
             dtprn.Columns.Add("sort1", typeof(String));
             dtprn.Columns.Add("fond_bold", typeof(String));
+            dtprn.Columns.Add("grp", typeof(String));
+            dtprn.Columns.Add("grp_name", typeof(String));
             sql = "Select Name from BillGroup Where ID=0";
             dt = conn.selectData(conn.conn, sql);
             String name = "", total111="", comm="";
@@ -985,16 +996,21 @@ namespace clinic_ivf.objdb
             {
                 foreach(DataRow row in dt.Rows)
                 {
-                    grpname = dt.Rows[0]["Name"].ToString();
+                    grpname = row["Name"].ToString();
                     sql = "Select * from BillDetail Where Total<>0 and VN='"+vn+"' and GroupType='"+ grpname + "'";
                     dtb0 = conn.selectData(conn.conn, sql);
                     if (dtb0.Rows.Count > 0)
                     {
-                        DataRow row1 = dtprn.NewRow();
-                        row1["col1"] = grpname;
-                        row1["sort1"] = "";
-                        row1["fond_bold"] = "1";
-                        dtprn.Rows.Add(row1);
+                        //DataRow row1 = dtprn.NewRow();
+                        //row1["col1"] = grpname;
+                        //row1["sort1"] = "";
+                        //row1["fond_bold"] = "1";
+                        //row1["sort1"] = "1000";
+                        //row1["fond_bold"] = "";
+                        //row1["grp"] = "1";
+                        //row1["grp_name"] = grpname;
+                        //dtprn.Rows.Add(row1);
+                        int i = 1001;
                         foreach (DataRow dr in dtb0.Rows)
                         {
                             name = dr["Name"].ToString();
@@ -1006,9 +1022,12 @@ namespace clinic_ivf.objdb
                             row11["col2"] = total1111.ToString("0.00");
                             row11["col3"] = "";
                             row11["col4"] = total1111.ToString("0.00");
-                            row11["sort1"] = "";
+                            row11["sort1"] = i.ToString();
                             row11["fond_bold"] = "";
+                            row11["grp"] = "1";
+                            row11["grp_name"] = grpname;
                             dtprn.Rows.Add(row11);
+                            i++;
                         }
                     }
                 }
@@ -1018,9 +1037,10 @@ namespace clinic_ivf.objdb
             dt = conn.selectData(conn.conn, sql);
             if (dt.Rows.Count > 0)
             {
+                int i = 2001;
                 foreach (DataRow row in dt.Rows)
                 {
-                    grpname = dt.Rows[0]["Name"].ToString();
+                    grpname = row["Name"].ToString();
                     sql = "Select sum(Total) as Total1 from BillDetail Where VN='" + vn + "' and GroupType='" + grpname + "'";
                     dtb0 = conn.selectData(conn.conn, sql);
                     if (dtb0.Rows.Count > 0)
@@ -1034,8 +1054,10 @@ namespace clinic_ivf.objdb
                         row11["col2"] = total1111.ToString("0.00");
                         row11["col3"] = "";
                         row11["col4"] = total1111.ToString("0.00");
-                        row11["sort1"] = "";
+                        row11["sort1"] = i.ToString();
                         row11["fond_bold"] = "1";
+                        row11["grp"] = "2";
+                        row11["grp_name"] = grpname;
                         dtprn.Rows.Add(row11);
                     }
                 }
@@ -1047,7 +1069,7 @@ namespace clinic_ivf.objdb
             {
                 foreach (DataRow row in dt.Rows)
                 {
-                    grpname = dt.Rows[0]["Name"].ToString();
+                    grpname = row["Name"].ToString();
                     sql = "Select * from BillDetail Where Total<>0 and VN='" + vn + "' and GroupType='" + grpname + "'";
                     dtb0 = conn.selectData(conn.conn, sql);
                     if (dtb0.Rows.Count > 0)
@@ -1056,7 +1078,9 @@ namespace clinic_ivf.objdb
                         row1["col1"] = grpname;
                         row1["sort1"] = "";
                         row1["fond_bold"] = "1";
+                        row1["grp"] = "3";
                         dtprn.Rows.Add(row1);
+                        int i = 3001;
                         foreach (DataRow dr in dtb0.Rows)
                         {
                             name = dr["Name"].ToString();
@@ -1068,8 +1092,10 @@ namespace clinic_ivf.objdb
                             row11["col2"] = total1111.ToString("0.00");
                             row11["col3"] = "";
                             row11["col4"] = comm;
-                            row11["sort1"] = "";
+                            row11["sort1"] = i.ToString();
                             row11["fond_bold"] = "";
+                            row11["grp"] = "3";
+                            row11["grp_name"] = grpname;
                             dtprn.Rows.Add(row11);
                         }
                     }
@@ -1082,14 +1108,18 @@ namespace clinic_ivf.objdb
             {
                 foreach (DataRow row in dt.Rows)
                 {
-                    grpname = dt.Rows[0]["Name"].ToString();
+                    grpname = row["Name"].ToString();
                     sql = "Select * from BillDetail Where Total<>0 and VN='" + vn + "' and GroupType='" + grpname + "'";
                     dtb0 = conn.selectData(conn.conn, sql);
                     if (dtb0.Rows.Count > 0)
                     {
                         DataRow row1 = dtprn.NewRow();
                         row1["col1"] = "Other Service";
+                        row1["sort1"] = "";
+                        row1["fond_bold"] = "1";
+                        row1["grp"] = "4";
                         dtprn.Rows.Add(row1);
+                        int i = 4001;
                         foreach (DataRow dr in dtb0.Rows)
                         {
                             name = dr["Name"].ToString();
@@ -1101,8 +1131,10 @@ namespace clinic_ivf.objdb
                             row11["col2"] = total1111.ToString("0.00");
                             row11["col3"] = "";
                             row11["col4"] = total1111.ToString("0.00");
-                            row11["sort1"] = "";
+                            row11["sort1"] = i.ToString();
                             row11["fond_bold"] = "";
+                            row11["grp"] = "4";
+                            row11["grp_name"] = "Other Service";
                             dtprn.Rows.Add(row11);
                         }
                     }

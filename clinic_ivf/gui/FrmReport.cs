@@ -31,9 +31,9 @@ namespace clinic_ivf.gui
             {
                 rpt.Load("print_bill.rpt");
                 rpt.SetDataSource(dt);
-                rpt.SetParameterValue("line1", ic.cop.comp_name_t);
-                rpt.SetParameterValue("line2", "โทรศัพท์ " + ic.cop.tele);
-                rpt.SetParameterValue("report_name", " Embryo development");
+                //rpt.SetParameterValue("line1", ic.cop.comp_name_t);
+                //rpt.SetParameterValue("line2", "โทรศัพท์ " + ic.cop.tele);
+                //rpt.SetParameterValue("report_name", " Embryo development");
                 //rpt.SetParameterValue("date1", "" + date1);
                 this.crystalReportViewer1.ReportSource = rpt;
                 this.crystalReportViewer1.Refresh();
