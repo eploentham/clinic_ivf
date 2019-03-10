@@ -233,6 +233,8 @@
             this.pnApm = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
             this.btnApm = new C1.Win.C1Input.C1Button();
+            this.tabImgOld = new C1.Win.C1Command.C1DockingTabPage();
+            this.pnImgOld = new System.Windows.Forms.Panel();
             this.sB = new System.Windows.Forms.StatusStrip();
             this.sB1 = new System.Windows.Forms.ToolStripStatusLabel();
             this.c1TextBox2 = new C1.Win.C1Input.C1TextBox();
@@ -254,8 +256,6 @@
             this.printDialog1 = new System.Windows.Forms.PrintDialog();
             this.cPdf = new C1.Win.C1Document.C1PdfDocumentSource(this.components);
             this._c1pdf = new C1.C1Pdf.C1PdfDocument();
-            this.tabImgOld = new C1.Win.C1Command.C1DockingTabPage();
-            this.pnImgOld = new System.Windows.Forms.Panel();
             ((System.ComponentModel.ISupportInitialize)(this.theme1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitMain)).BeginInit();
             this.splitMain.Panel1.SuspendLayout();
@@ -390,6 +390,7 @@
             this.tabApm.SuspendLayout();
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btnApm)).BeginInit();
+            this.tabImgOld.SuspendLayout();
             this.sB.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.c1TextBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtPttId)).BeginInit();
@@ -404,7 +405,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtBP)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtPulse)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtPttO)).BeginInit();
-            this.tabImgOld.SuspendLayout();
             this.SuspendLayout();
             // 
             // theme1
@@ -3549,6 +3549,26 @@
             this.btnApm.UseVisualStyleBackColor = true;
             this.btnApm.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
             // 
+            // tabImgOld
+            // 
+            this.tabImgOld.Controls.Add(this.pnImgOld);
+            this.tabImgOld.Location = new System.Drawing.Point(1, 24);
+            this.tabImgOld.Name = "tabImgOld";
+            this.tabImgOld.Size = new System.Drawing.Size(1455, 375);
+            this.tabImgOld.TabIndex = 6;
+            this.tabImgOld.Text = "Image Old";
+            // 
+            // pnImgOld
+            // 
+            this.pnImgOld.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.pnImgOld.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pnImgOld.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.pnImgOld.Location = new System.Drawing.Point(0, 0);
+            this.pnImgOld.Name = "pnImgOld";
+            this.pnImgOld.Size = new System.Drawing.Size(1455, 375);
+            this.pnImgOld.TabIndex = 0;
+            this.theme1.SetTheme(this.pnImgOld, "(default)");
+            // 
             // sB
             // 
             this.sB.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(222)))), ((int)(((byte)(222)))));
@@ -3845,26 +3865,6 @@
             this._c1pdf.UseFastTextOut = true;
             this._c1pdf.UseFontShaping = true;
             // 
-            // tabImgOld
-            // 
-            this.tabImgOld.Controls.Add(this.pnImgOld);
-            this.tabImgOld.Location = new System.Drawing.Point(1, 24);
-            this.tabImgOld.Name = "tabImgOld";
-            this.tabImgOld.Size = new System.Drawing.Size(1455, 375);
-            this.tabImgOld.TabIndex = 6;
-            this.tabImgOld.Text = "Image Old";
-            // 
-            // pnImgOld
-            // 
-            this.pnImgOld.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.pnImgOld.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnImgOld.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.pnImgOld.Location = new System.Drawing.Point(0, 0);
-            this.pnImgOld.Name = "pnImgOld";
-            this.pnImgOld.Size = new System.Drawing.Size(1455, 375);
-            this.pnImgOld.TabIndex = 0;
-            this.theme1.SetTheme(this.pnImgOld, "(default)");
-            // 
             // FrmPatientAdd
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -4014,6 +4014,7 @@
             this.tabApm.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.btnApm)).EndInit();
+            this.tabImgOld.ResumeLayout(false);
             this.sB.ResumeLayout(false);
             this.sB.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.c1TextBox2)).EndInit();
@@ -4029,7 +4030,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtBP)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtPulse)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtPttO)).EndInit();
-            this.tabImgOld.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 

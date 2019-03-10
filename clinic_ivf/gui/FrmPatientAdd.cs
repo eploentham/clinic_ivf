@@ -277,7 +277,7 @@ namespace clinic_ivf.gui
             {
                 txtUserReq.Value = ic.cStf.staff_fname_t + " " + ic.cStf.staff_lname_t;
                 txtStfConfirmID.Value = ic.cStf.staff_id;
-                btnVisit.Text = "Confirm";
+                //btnVisit.Text = "Confirm";
                 btnVisit.Image = Resources.Add_ticket_24;
                 stt.Show("<p><b>สวัสดี</b></p>คุณ " + ic.cStf.staff_fname_t + " " + ic.cStf.staff_lname_t + "<br> กรุณายินยันการ confirm อีกครั้ง", cboPttType);
                 //btnVisit.Focus();
@@ -1072,7 +1072,8 @@ namespace clinic_ivf.gui
                                     txtPid.Focus();
                                     txtHn.Value = pttOld.PIDS;
                                     barcode.Text = txtHn.Text;
-                                    if(tabVisit.Enabled == false)
+                                    txtIdOld.Value = pttOld.PID;
+                                    if (tabVisit.Enabled == false)
                                     {
                                         tabVisit.Enabled = true;
                                         flagHavOldPttNoPtt = false;
@@ -3024,7 +3025,7 @@ namespace clinic_ivf.gui
         private void setVisitOld()
         {
             vsOld = new VisitOld();
-            vsOld.VN = txtID.Text;
+            vsOld.VN = txtVn.Text;
             vsOld.VSID = "110";
             vsOld.PID = txtIdOld.Text;
             vsOld.PIDS = txtHn.Text;

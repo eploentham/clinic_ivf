@@ -393,7 +393,7 @@ namespace clinic_ivf.objdb
                 "'" + p.or_description + "','" + p.status_congenial + "','" + p.congenital_diseases_description + "'," +
                 "'" + p.allergy_description + "','" + p.status_g + "','" + p.p + "'," +
                 "'" + p.a + "','" + p.g + "','" + p.emercontact + "'," +
-                "'" + p.patient_country + "','" +
+                "'" + p.patient_country + "' " +
                 ")";
 
                 re = conn.ExecuteNonQuery(conn.conn, sql);
@@ -593,7 +593,7 @@ namespace clinic_ivf.objdb
             String re = "";
             String sql = "Update " + ptt.table + " Set " +
                 "" + ptt.t_patient_id_old + "='"+ pid + "' " +
-                //"," + ptt.patient_hn + "='" + hn + "' " +
+                "," + ptt.patient_hn + "='" + hn + "' " +
                 "Where " + ptt.pkField + "='" + pttId + "'";
             
             re = conn.ExecuteNonQuery(conn.conn, sql);

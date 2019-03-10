@@ -635,7 +635,7 @@ namespace clinic_ivf.objdb
             }
             else
             {
-                vn += year;
+                vn = year+1;
             }
             return vn.ToString();
         }

@@ -525,7 +525,15 @@ namespace clinic_ivf.objdb
             if (dt.Rows.Count > 0)
             {
                 re = dt.Rows[0]["MAXPID"].ToString();
-                chk = int.Parse(re);
+                if(int.TryParse(re, out chk))
+                {
+
+                }
+                else
+                {
+                    chk = 0;
+                }
+                //chk = int.Parse(re);
             }
             if (year < chk) {
                 chk = chk + 1;
