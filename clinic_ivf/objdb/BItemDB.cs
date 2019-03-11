@@ -56,7 +56,7 @@ namespace clinic_ivf.objdb
             p.user_cancel = p.user_cancel == null ? "" : p.user_cancel;
 
             p.item_code = p.item_code == null ? "" : p.item_code;
-            p.item_name_t = p.item_name_t == null ? "" : p.item_trade_name;
+            p.item_name_t = p.item_name_t == null ? "" : p.item_name_t;
             p.item_nick_name = p.item_nick_name == null ? "" : p.item_nick_name;
             p.item_secret = p.item_secret == null ? "" : p.item_secret;
             p.item_name_e = p.item_name_e == null ? "" : p.item_name_e;

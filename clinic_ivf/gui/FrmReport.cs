@@ -86,7 +86,8 @@ namespace clinic_ivf.gui
                 rpt.SetDataSource(dt);
                 err = "02";
                 rpt.SetParameterValue("line1", ic.cop.comp_name_t);
-                rpt.SetParameterValue("line2", "โทรศัพท์ " + ic.cop.tele);
+                //rpt.SetParameterValue("line2", "โทรศัพท์ " + ic.cop.tele);
+                rpt.SetParameterValue("line2", "โทรศัพท์ " + ic.cop.comp_address_e+" "+ ic.cop.tele);
                 rpt.SetParameterValue("report_name", " Appointment/ใบแพทย์นัด ");
 
                 err = "03";
