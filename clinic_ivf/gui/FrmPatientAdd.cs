@@ -161,14 +161,28 @@ namespace clinic_ivf.gui
 
             ic.ivfDB.frlDB.setCboRelation(cboCouRel, "");
             ic.ivfDB.frlDB.setCboRelation(cboName1Rl, "1");
-            ic.ivfDB.agnOldDB.setCboAgent(cboAgent, "");
+            ic.ivfDB.oAgnDB.setCboAgent(cboAgent, "");
             //ic.ivfDB.agnOldDB.setCboAgent(comboBox1);
             ic.ivfDB.sexDB.setCboSex(cboSex, "");
-            ic.setCboPttType(cboPttType);
-            ic.setCboPttGroup(cboPttGroup);
+            if (ic.iniC.statusAppDonor.Equals("1"))
+            {
+                ic.setCboPttType(cboPttType,"");
+                ic.setCboPttType(cboVisitPttType,"");
+                ic.setCboPttGroup(cboPttGroup,"");
+                setControlPtt(true);
+            }
+            else
+            {
+                ic.setCboPttType(cboPttType,"1");
+                ic.setCboPttType(cboVisitPttType,"1");
+                ic.setCboPttGroup(cboPttGroup,"a");
+                setControlPtt(false);
+            }
+                
+            
 
             ic.ivfDB.bspDB.setCboBsp(cboVisitBsp, "2120000002");
-            ic.setCboPttType(cboVisitPttType);
+            
             ic.ivfDB.pttDB.setCboDistric(cboDist);
             ic.ivfDB.pttDB.setCboCountry(cboCou);
 
@@ -226,6 +240,22 @@ namespace clinic_ivf.gui
             picPtt.SizeMode = PictureBoxSizeMode.StretchImage;
             
             //btnSavePic.Enabled = false;
+        }
+        private void setControlPtt(Boolean flag)
+        {
+            chkStatusG.Visible = flag;
+            label20.Visible = flag;
+            label27.Visible = flag;
+            txtG.Visible = flag;
+            txtP.Visible = flag;
+            chkOPU.Visible = flag;
+            chkOR.Visible = flag;
+            chkDenyAllergy.Visible = flag;
+            txtORDescription.Visible = flag;
+            txtCongenital.Visible = flag;
+            txtAllergyDesc.Visible = flag;
+            label3.Visible = flag;
+            txtNickName.Visible = flag;
         }
 
         private void BtnVisitVoid_Click(object sender, EventArgs e)
@@ -938,8 +968,24 @@ namespace clinic_ivf.gui
             //    //setControlEnable(false);
             //    //this.Dispose();
             //}
-            if (btnSave.Text.Equals("Confirm"))
+            //if (btnSave.Text.Equals("Confirm"))
+            //{
+            
+            //}
+            //else
+            //{
+            ic.cStf.staff_id = "";
+            FrmPasswordConfirm frm = new FrmPasswordConfirm(ic);
+            frm.ShowDialog(this);
+            if (!ic.cStf.staff_id.Equals(""))
             {
+                txtUserReq.Value = ic.cStf.staff_fname_t + " " + ic.cStf.staff_lname_t;
+                txtStfConfirmID.Value = ic.cStf.staff_id;
+                btnSave.Text = "Confirm";
+                btnSave.Image = Resources.Add_ticket_24;
+                stt.Show("<p><b>สวัสดี</b></p>คุณ " + ic.cStf.staff_fname_t + " " + ic.cStf.staff_lname_t + "<br> กรุณายินยันการ confirm อีกครั้ง", btnWebCamOn);
+                btnSave.Focus();
+                
                 stt.Hide();
                 setPatient();
                 //String re = ic.ivfDB.pttDB.insertPatient(ptt, txtStfConfirmID.Text);
@@ -1024,7 +1070,7 @@ namespace clinic_ivf.gui
                                 {
                                     re1 = txtID.Text;
                                 }
-                                
+
                                 if (flagReadCard)
                                 {
                                     PatientImage ptti = new PatientImage();
@@ -1068,7 +1114,7 @@ namespace clinic_ivf.gui
                                     btnSave.Text = "Save";
                                     btnSave.Image = Resources.accept_database24;
                                     txtID.Value = re1;
-                                    
+
                                     txtPid.Focus();
                                     txtHn.Value = pttOld.PIDS;
                                     barcode.Text = txtHn.Text;
@@ -1079,7 +1125,7 @@ namespace clinic_ivf.gui
                                         flagHavOldPttNoPtt = false;
                                     }
                                 }
-                                
+
                             }
                         }
                         //System.Threading.Thread.Sleep(2000);
@@ -1089,25 +1135,10 @@ namespace clinic_ivf.gui
             }
             else
             {
-                ic.cStf.staff_id = "";
-                FrmPasswordConfirm frm = new FrmPasswordConfirm(ic);
-                frm.ShowDialog(this);
-                if (!ic.cStf.staff_id.Equals(""))
-                {
-                    txtUserReq.Value = ic.cStf.staff_fname_t + " " + ic.cStf.staff_lname_t;
-                    txtStfConfirmID.Value = ic.cStf.staff_id;
-                    btnSave.Text = "Confirm";
-                    btnSave.Image = Resources.Add_ticket_24;
-                    stt.Show("<p><b>สวัสดี</b></p>คุณ " + ic.cStf.staff_fname_t + " " + ic.cStf.staff_lname_t + "<br> กรุณายินยันการ confirm อีกครั้ง", btnWebCamOn);
-                    btnSave.Focus();
-
-                }
-                else
-                {
-                    btnSave.Text = "Save";
-                    btnSave.Image = Resources.download_database24;
-                }
+                btnSave.Text = "Save";
+                btnSave.Image = Resources.download_database24;
             }
+            //}
         }
         private void BtnPrvSticker_Click(object sender, EventArgs e)
         {
@@ -2353,6 +2384,8 @@ namespace clinic_ivf.gui
             txtAllergyDesc.Value = ptt.allergy_description;
             
             txtEmerContact.Value = ptt.emercontact;
+
+            txtVisitHeight.Value = txtHeight.Text;
         }
         private void setControlPtt(String pttid)
         {

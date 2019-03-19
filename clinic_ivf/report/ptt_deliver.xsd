@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="ptt_deliver" targetNamespace="http://tempuri.org/ptt_deliver.xsd" xmlns:mstns="http://tempuri.org/ptt_deliver.xsd" xmlns="http://tempuri.org/ptt_deliver.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections />
+        <Tables />
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="ptt_deliver" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="ptt_deliver" msprop:Generator_UserDSName="ptt_deliver">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="ptt_deliver" msprop:Generator_TableClassName="ptt_deliverDataTable" msprop:Generator_TableVarName="tableptt_deliver" msprop:Generator_TablePropName="_ptt_deliver" msprop:Generator_RowDeletingName="ptt_deliverRowDeleting" msprop:Generator_RowChangingName="ptt_deliverRowChanging" msprop:Generator_RowEvHandlerName="ptt_deliverRowChangeEventHandler" msprop:Generator_RowDeletedName="ptt_deliverRowDeleted" msprop:Generator_UserTableName="ptt_deliver" msprop:Generator_RowChangedName="ptt_deliverRowChanged" msprop:Generator_RowEvArgName="ptt_deliverRowChangeEvent" msprop:Generator_RowClassName="ptt_deliverRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="ptt_name_t" msdata:Caption="DataColumn1" msprop:Generator_ColumnVarNameInTable="columnptt_name_t" msprop:Generator_ColumnPropNameInRow="ptt_name_t" msprop:Generator_ColumnPropNameInTable="ptt_name_tColumn" msprop:Generator_UserColumnName="ptt_name_t" type="xs:string" minOccurs="0" />
+              <xs:element name="hn" msdata:Caption="DataColumn1" msprop:Generator_ColumnVarNameInTable="columnhn" msprop:Generator_ColumnPropNameInRow="hn" msprop:Generator_ColumnPropNameInTable="hnColumn" msprop:Generator_UserColumnName="hn" type="xs:string" minOccurs="0" />
+              <xs:element name="vn" msdata:Caption="DataColumn1" msprop:Generator_ColumnVarNameInTable="columnvn" msprop:Generator_ColumnPropNameInRow="vn" msprop:Generator_ColumnPropNameInTable="vnColumn" msprop:Generator_UserColumnName="vn" type="xs:string" minOccurs="0" />
+              <xs:element name="ptt_name_e" msdata:Caption="DataColumn1" msprop:Generator_ColumnVarNameInTable="columnptt_name_e" msprop:Generator_ColumnPropNameInRow="ptt_name_e" msprop:Generator_ColumnPropNameInTable="ptt_name_eColumn" msprop:Generator_UserColumnName="ptt_name_e" type="xs:string" minOccurs="0" />
+              <xs:element name="addr" msdata:Caption="DataColumn1" msprop:Generator_ColumnVarNameInTable="columnaddr" msprop:Generator_ColumnPropNameInRow="addr" msprop:Generator_ColumnPropNameInTable="addrColumn" msprop:Generator_UserColumnName="addr" type="xs:string" minOccurs="0" />
+              <xs:element name="visit_type" msdata:Caption="DataColumn1" msprop:Generator_ColumnVarNameInTable="columnvisit_type" msprop:Generator_ColumnPropNameInRow="visit_type" msprop:Generator_ColumnPropNameInTable="visit_typeColumn" msprop:Generator_UserColumnName="visit_type" type="xs:string" minOccurs="0" />
+              <xs:element name="last_visit_date" msdata:Caption="DataColumn1" msprop:Generator_ColumnVarNameInTable="columnlast_visit_date" msprop:Generator_ColumnPropNameInRow="last_visit_date" msprop:Generator_ColumnPropNameInTable="last_visit_dateColumn" msprop:Generator_UserColumnName="last_visit_date" type="xs:string" minOccurs="0" />
+              <xs:element name="age" msdata:Caption="DataColumn1" msprop:Generator_ColumnVarNameInTable="columnage" msprop:Generator_ColumnPropNameInRow="age" msprop:Generator_ColumnPropNameInTable="ageColumn" msprop:Generator_UserColumnName="age" type="xs:string" minOccurs="0" />
+              <xs:element name="dob" msdata:Caption="DataColumn1" msprop:Generator_ColumnVarNameInTable="columndob" msprop:Generator_ColumnPropNameInRow="dob" msprop:Generator_ColumnPropNameInTable="dobColumn" msprop:Generator_UserColumnName="dob" type="xs:string" minOccurs="0" />
+              <xs:element name="date1" msdata:Caption="DataColumn1" msprop:Generator_ColumnVarNameInTable="columndate1" msprop:Generator_ColumnPropNameInRow="date1" msprop:Generator_ColumnPropNameInTable="date1Column" msprop:Generator_UserColumnName="date1" type="xs:string" minOccurs="0" />
+              <xs:element name="ptt_type" msdata:Caption="DataColumn1" msprop:Generator_ColumnVarNameInTable="columnptt_type" msprop:Generator_ColumnPropNameInRow="ptt_type" msprop:Generator_ColumnPropNameInTable="ptt_typeColumn" msprop:Generator_UserColumnName="ptt_type" type="xs:string" minOccurs="0" />
+              <xs:element name="time1" msprop:Generator_ColumnVarNameInTable="columntime1" msprop:Generator_ColumnPropNameInRow="time1" msprop:Generator_ColumnPropNameInTable="time1Column" msprop:Generator_UserColumnName="time1" type="xs:string" minOccurs="0" />
+              <xs:element name="email" msprop:Generator_ColumnVarNameInTable="columnemail" msprop:Generator_ColumnPropNameInRow="email" msprop:Generator_ColumnPropNameInTable="emailColumn" msprop:Generator_UserColumnName="email" type="xs:string" minOccurs="0" />
+              <xs:element name="tele" msprop:Generator_ColumnVarNameInTable="columntele" msprop:Generator_ColumnPropNameInRow="tele" msprop:Generator_ColumnPropNameInTable="teleColumn" msprop:Generator_UserColumnName="tele" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

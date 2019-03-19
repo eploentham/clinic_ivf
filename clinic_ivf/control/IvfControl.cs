@@ -496,7 +496,7 @@ namespace clinic_ivf.control
             }
             return re;
         }
-        public C1ComboBox setCboPttType(C1ComboBox c)
+        public C1ComboBox setCboPttType(C1ComboBox c, String selected)
         {
             ComboBoxItem item = new ComboBoxItem();
             
@@ -522,10 +522,15 @@ namespace clinic_ivf.control
             item.Text = "Surrogate";
             item.Value = "3";
             c.Items.Add(item);
+
+            if (!selected.Equals(""))
+            {
+                item.Value = selected;
+            }
             
             return c;
         }
-        public C1ComboBox setCboPttGroup(C1ComboBox c)
+        public C1ComboBox setCboPttGroup(C1ComboBox c, String selected)
         {
             ComboBoxItem item = new ComboBoxItem();
 
@@ -546,7 +551,10 @@ namespace clinic_ivf.control
             item.Text = "B";
             item.Value = "b";            
             c.Items.Add(item);
-
+            if (!selected.Equals(""))
+            {
+                item.Value = selected;
+            }
             return c;
         }
         public C1ComboBox setCboApmTime(C1ComboBox c)

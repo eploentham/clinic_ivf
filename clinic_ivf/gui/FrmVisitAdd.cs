@@ -74,9 +74,9 @@ namespace clinic_ivf.gui
             ic.ivfDB.ffetDB.setCboEduca(CboEduca, "");
             ic.ivfDB.frcDB.setCboRace(cboRace, "");
             ic.ivfDB.frgDB.setCboReligion(cboRg, "");
-            ic.setCboPttType(cboPttType);
+            ic.setCboPttType(cboPttType,"");
             ic.ivfDB.bspDB.setCboBsp(cboBsp, "2120000002");
-            ic.ivfDB.agnOldDB.setCboAgent(cboAgent, "");
+            ic.ivfDB.oAgnDB.setCboAgent(cboAgent, "");
             ic.ivfDB.sexDB.setCboSex(cboSex);
 
             btnVisit.Click += BtnVisit_Click;

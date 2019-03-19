@@ -25,7 +25,7 @@ namespace clinic_ivf.objdb
         public LabRequestDB lbReqDB;
         public CompanyDB copDB;
         public PatientDB pttDB;
-        public AgentOldDB agnOldDB;
+        public OldAgentDB oAgnDB;
         public OldPatientDB pttOldDB;
         public DoctorOldDB dtrOldDB;
         
@@ -110,7 +110,7 @@ namespace clinic_ivf.objdb
             frcDB = new FRaceDB(conn);
             pttDB = new PatientDB(conn);
             pttOldDB = new OldPatientDB(conn);
-            agnOldDB = new AgentOldDB(conn);
+            oAgnDB = new OldAgentDB(conn);
             crlDB = new BContractPlansDB(conn);
             bspDB = new BServicePointDB(conn);
             dtrOldDB = new DoctorOldDB(conn);

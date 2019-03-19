@@ -83,25 +83,30 @@ namespace clinic_ivf.objdb
             dt = conn.selectData(conn.conn, sql);
             return dt;
         }
-        public FPrefix selectByPk1(String copId)
+        public FNation selectByPk1(String copId)
         {
-            FPrefix cop1 = new FPrefix();
+            FNation cop1 = new FNation();
             DataTable dt = new DataTable();
             String sql = "select fpn.* " +
                 "From " + fpn.table + " fpn " +
                 //"Left Join t_ssdata_visit ssv On ssv.ssdata_visit_id = bd.ssdata_visit_id " +
                 "Where fpn." + fpn.pkField + " ='" + copId + "' ";
             dt = conn.selectData(conn.conn, sql);
-            cop1 = setPrefix(dt);
+            cop1 = setNation(dt);
             return cop1;
         }
-        private FPrefix setPrefix(DataTable dt)
+        private FNation setNation(DataTable dt)
         {
-            FPrefix dept1 = new FPrefix();
+            FNation dept1 = new FNation();
             if (dt.Rows.Count > 0)
             {
-                dept1.f_patient_prefix_id = dt.Rows[0][fpn.f_patient_nation_id].ToString();
-                dept1.patient_prefix_description = dt.Rows[0][fpn.patient_nation_description].ToString();
+                dept1.f_patient_nation_id = dt.Rows[0][fpn.f_patient_nation_id].ToString();
+                dept1.patient_nation_description = dt.Rows[0][fpn.patient_nation_description].ToString();
+            }
+            else
+            {
+                dept1.f_patient_nation_id = "";
+                dept1.patient_nation_description = "";
             }
 
             return dept1;

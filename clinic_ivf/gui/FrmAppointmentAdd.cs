@@ -354,7 +354,7 @@ namespace clinic_ivf.gui
                             pttTemp.patient_contact_firstname = name[0];
                             pttTemp.patient_contact_lastname = name[1];
                         }
-                        ic.ivfDB.agnOldDB.setCboAgent(cbo, "");
+                        ic.ivfDB.oAgnDB.setCboAgent(cbo, "");
                         ic.setC1Combo(cbo, pttO.AgentID);
                         pttTemp.agent = cbo.SelectedItem == null ? "" : ((ComboBoxItem)cbo.SelectedItem).Value;
                         String re1 = ic.ivfDB.pttDB.insertPatient(pttTemp, txtStfConfirmID.Text);

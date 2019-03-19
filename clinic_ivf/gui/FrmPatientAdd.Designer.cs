@@ -602,9 +602,9 @@
             this.label20.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
             this.label20.Location = new System.Drawing.Point(14, 267);
             this.label20.Name = "label20";
-            this.label20.Size = new System.Drawing.Size(80, 16);
+            this.label20.Size = new System.Drawing.Size(86, 16);
             this.label20.TabIndex = 693;
-            this.label20.Text = "ผ่าตัดคอดกี่คน :";
+            this.label20.Text = "ผ่าตัดคลอดกี่คน :";
             this.theme1.SetTheme(this.label20, "(default)");
             // 
             // txtG
@@ -748,7 +748,7 @@
             this.label3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.label3.Location = new System.Drawing.Point(605, 242);
+            this.label3.Location = new System.Drawing.Point(605, 245);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(81, 16);
             this.label3.TabIndex = 678;
@@ -1110,6 +1110,7 @@
             // cboRg
             // 
             this.cboRg.AllowSpinLoop = false;
+            this.cboRg.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
             this.cboRg.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.cboRg.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
             this.cboRg.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
@@ -1144,6 +1145,7 @@
             // cboRace
             // 
             this.cboRace.AllowSpinLoop = false;
+            this.cboRace.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
             this.cboRace.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.cboRace.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
             this.cboRace.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
@@ -1246,6 +1248,7 @@
             this.btnEdit.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.theme1.SetTheme(this.btnEdit, "(default)");
             this.btnEdit.UseVisualStyleBackColor = true;
+            this.btnEdit.Visible = false;
             this.btnEdit.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
             // 
             // btnSave
@@ -1480,6 +1483,7 @@
             // CboEduca
             // 
             this.CboEduca.AllowSpinLoop = false;
+            this.CboEduca.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
             this.CboEduca.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.CboEduca.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
             this.CboEduca.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
@@ -1514,6 +1518,7 @@
             // CboNation
             // 
             this.CboNation.AllowSpinLoop = false;
+            this.CboNation.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
             this.CboNation.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.CboNation.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
             this.CboNation.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));

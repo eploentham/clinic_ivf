@@ -55,6 +55,7 @@
             this.menuDocGroupScan = new System.Windows.Forms.ToolStripMenuItem();
             this.menuDocGroupSubScan = new System.Windows.Forms.ToolStripMenuItem();
             this.menuMedicalRecordDocScan = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuMedicalRecordView = new System.Windows.Forms.ToolStripMenuItem();
             this.menuInit = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStaff = new System.Windows.Forms.ToolStripMenuItem();
             this.menuDept = new System.Windows.Forms.ToolStripMenuItem();
@@ -67,7 +68,7 @@
             this.tC1 = new C1.Win.C1Command.C1DockingTab();
             this.PageS = new C1.Win.C1Command.C1DockingTabPage();
             this.theme1 = new C1.Win.C1Themes.C1ThemeController();
-            this.menuMedicalRecordView = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuAgent = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tCC1)).BeginInit();
             this.tCC1.SuspendLayout();
@@ -279,12 +280,19 @@
             this.menuMedicalRecordDocScan.Size = new System.Drawing.Size(238, 22);
             this.menuMedicalRecordDocScan.Text = "Scan เอกสาร เวชระเบียน (scanใหม่)";
             // 
+            // menuMedicalRecordView
+            // 
+            this.menuMedicalRecordView.Name = "menuMedicalRecordView";
+            this.menuMedicalRecordView.Size = new System.Drawing.Size(238, 22);
+            this.menuMedicalRecordView.Text = "Scan ดูเวชระเบียน";
+            // 
             // menuInit
             // 
             this.menuInit.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.menuStaff,
             this.menuDept,
             this.menuPosi,
+            this.menuAgent,
             this.lABToolStripMenuItem,
             this.convertPatientDonorToolStripMenuItem});
             this.menuInit.Name = "menuInit";
@@ -321,13 +329,13 @@
             // menuOpuProce
             // 
             this.menuOpuProce.Name = "menuOpuProce";
-            this.menuOpuProce.Size = new System.Drawing.Size(155, 22);
+            this.menuOpuProce.Size = new System.Drawing.Size(180, 22);
             this.menuOpuProce.Text = "OPU Procedure";
             // 
             // menuFetProce
             // 
             this.menuFetProce.Name = "menuFetProce";
-            this.menuFetProce.Size = new System.Drawing.Size(155, 22);
+            this.menuFetProce.Size = new System.Drawing.Size(180, 22);
             this.menuFetProce.Text = "FET Procedure";
             // 
             // convertPatientDonorToolStripMenuItem
@@ -379,11 +387,11 @@
             // 
             this.theme1.Theme = "BeigeOne";
             // 
-            // menuMedicalRecordView
+            // menuAgent
             // 
-            this.menuMedicalRecordView.Name = "menuMedicalRecordView";
-            this.menuMedicalRecordView.Size = new System.Drawing.Size(238, 22);
-            this.menuMedicalRecordView.Text = "Scan ดูเวชระเบียน";
+            this.menuAgent.Name = "menuAgent";
+            this.menuAgent.Size = new System.Drawing.Size(192, 22);
+            this.menuAgent.Text = "Agent";
             // 
             // MainMenu
             // 
@@ -450,5 +458,6 @@
         private System.Windows.Forms.ToolStripMenuItem menuDocGroupScan;
         private System.Windows.Forms.ToolStripMenuItem menuDocGroupSubScan;
         private System.Windows.Forms.ToolStripMenuItem menuMedicalRecordView;
+        private System.Windows.Forms.ToolStripMenuItem menuAgent;
     }
 }

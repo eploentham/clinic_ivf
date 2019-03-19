@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace clinic_ivf.object1
 {
-    public class AgentOld:Persistent
+    public class OldAgent:Persistent
     {
         public String agentid { get; set; }
         public String agentname { get; set; }
