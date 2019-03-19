@@ -525,7 +525,7 @@ namespace clinic_ivf.control
 
             if (!selected.Equals(""))
             {
-                item.Value = selected;
+                c.SelectedText = selected;
             }
             
             return c;
@@ -553,7 +553,7 @@ namespace clinic_ivf.control
             c.Items.Add(item);
             if (!selected.Equals(""))
             {
-                item.Value = selected;
+                c.SelectedText = selected;
             }
             return c;
         }

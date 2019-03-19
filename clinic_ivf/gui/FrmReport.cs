@@ -23,6 +23,27 @@ namespace clinic_ivf.gui
             InitializeComponent();
             this.ic = ic;
         }
+        public void setDeliverPttReport(DataTable dt)
+        {
+            String chk = "", printerDefault = "";
+            ReportDocument rpt = new ReportDocument();
+            try
+            {
+                rpt.Load("ptt_deliver.rpt");
+                rpt.SetDataSource(dt);
+                //rpt.SetParameterValue("line1", ic.cop.comp_name_t);
+                //rpt.SetParameterValue("line2", "โทรศัพท์ " + ic.cop.tele);
+                //rpt.SetParameterValue("report_name", " OPD Record ");
+                //rpt.SetParameterValue("age1", "" + age);
+                this.crystalReportViewer1.ReportSource = rpt;
+                this.crystalReportViewer1.Refresh();
+            }
+            catch (Exception ex)
+            {
+                chk = ex.Message.ToString();
+                MessageBox.Show("error " + ex.Message, "");
+            }
+        }
         public void setPrintBill(DataTable dt)
         {
             String chk = "", printerDefault = "";

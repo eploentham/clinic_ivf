@@ -543,6 +543,11 @@ namespace clinic_ivf.gui
                 long chk1 = 0;
                 if (long.TryParse(re, out chk1))
                 {
+                    if(grfReq.Row <=0)
+                    {
+                        MessageBox.Show("ไม่พบ request id", "");
+                        return;
+                    }
                     if(grfReq[grfReq.Row, colRqLabName].ToString().Trim().Equals("OPU"))
                     {
                         LabOpu opu1 = ic.ivfDB.setOPU(reqId);

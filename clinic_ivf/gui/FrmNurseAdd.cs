@@ -271,8 +271,7 @@ namespace clinic_ivf.gui
                 {
                     row1["status"] = "Genetic Lab";
                 }
-                dtAll.Rows.InsertAt(row1, dtl.Rows.Count);               
-                
+                dtAll.Rows.InsertAt(row1, dtl.Rows.Count);
             }
             foreach (DataRow row in dts.Rows)
             {
@@ -284,7 +283,6 @@ namespace clinic_ivf.gui
                 row1["qty"] = "";
                 row1["status"] = "specialitem";
                 dtAll.Rows.InsertAt(row1, dtl.Rows.Count);
-
             }
             foreach (DataRow row in dtpx.Rows)
             {

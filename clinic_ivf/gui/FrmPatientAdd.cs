@@ -159,8 +159,8 @@ namespace clinic_ivf.gui
             ic.ivfDB.fpfDB.setCboPrefix(cboName1Prefix, "");
             ic.ivfDB.crlDB.setCboContractPlans(cboCrl);
 
-            ic.ivfDB.frlDB.setCboRelation(cboCouRel, "");
-            ic.ivfDB.frlDB.setCboRelation(cboName1Rl, "1");
+            ic.ivfDB.frlDB.setCboRelation(cboCouRel, "1");
+            ic.ivfDB.frlDB.setCboRelation(cboName1Rl, "");
             ic.ivfDB.oAgnDB.setCboAgent(cboAgent, "");
             //ic.ivfDB.agnOldDB.setCboAgent(comboBox1);
             ic.ivfDB.sexDB.setCboSex(cboSex, "");
@@ -173,18 +173,19 @@ namespace clinic_ivf.gui
             }
             else
             {
-                ic.setCboPttType(cboPttType,"1");
-                ic.setCboPttType(cboVisitPttType,"1");
-                ic.setCboPttGroup(cboPttGroup,"a");
+                ic.setCboPttType(cboPttType,"patient");
+                ic.setCboPttType(cboVisitPttType,"Patient");
+                ic.setCboPttGroup(cboPttGroup,"A");
                 setControlPtt(false);
             }
-                
-            
 
             ic.ivfDB.bspDB.setCboBsp(cboVisitBsp, "2120000002");
             
             ic.ivfDB.pttDB.setCboDistric(cboDist);
             ic.ivfDB.pttDB.setCboCountry(cboCou);
+            ic.ivfDB.pttDB.setCboProvince(cboProv);
+            ic.ivfDB.pttDB.setCboAmphur(cboAmpr);
+            ic.ivfDB.pttDB.setCboAllergy(cboAllergyDesc);
 
             cboAgent.AutoCompleteSource = AutoCompleteSource.ListItems;
             cboAgent.AutoCompleteMode = AutoCompleteMode.Suggest;
@@ -221,6 +222,8 @@ namespace clinic_ivf.gui
             btnVisit.Click += BtnVisit_Click;
             btnHnMaleSearch.Click += BtnHnMaleSearch_Click;
             btnVisitVoid.Click += BtnVisitVoid_Click;
+            btnPrnDeliverPtt.Click += BtnPrnDeliverPtt_Click;
+            ChkDenyAllergy_CheckedChanged(null, null);
 
             setKeyEnter();
 
@@ -241,6 +244,52 @@ namespace clinic_ivf.gui
             
             //btnSavePic.Enabled = false;
         }
+
+        private void BtnPrnDeliverPtt_Click(object sender, EventArgs e)
+        {
+            //throw new NotImplementedException();
+            Patient ptt = new Patient();
+            ptt = ic.ivfDB.pttDB.selectByPk1(txtID.Text);
+            PatientOld optt = new PatientOld();
+            optt = ic.ivfDB.pttOldDB.selectByPk1(txtIdOld.Text);
+
+            DataTable dt = new DataTable();
+            dt.Rows.InsertAt(dt.NewRow(), 0);
+            dt.Columns.Add("ptt_name_t", typeof(String));
+            dt.Columns.Add("hn", typeof(String));
+            dt.Columns.Add("vn", typeof(String));
+            dt.Columns.Add("ptt_name_e", typeof(String));
+            dt.Columns.Add("addr", typeof(String));
+            dt.Columns.Add("visit_type", typeof(String));
+            dt.Columns.Add("last_visit_date", typeof(String));
+            dt.Columns.Add("age", typeof(String));
+            dt.Columns.Add("dob", typeof(String));
+            dt.Columns.Add("date1", typeof(String));
+            dt.Columns.Add("ptt_type", typeof(String));
+            dt.Columns.Add("time1", typeof(String));
+            dt.Columns.Add("email", typeof(String));
+            dt.Columns.Add("tele", typeof(String));
+
+            dt.Rows[0]["ptt_name_t"] = ptt.patient_firstname+" "+ ptt.patient_lastname;
+            dt.Rows[0]["hn"] = ptt.patient_hn;
+            dt.Rows[0]["vn"] = "";
+            dt.Rows[0]["ptt_name_e"] = ptt.Name;
+            dt.Rows[0]["addr"] = ptt.addr;
+            dt.Rows[0]["visit_type"] = "";
+            dt.Rows[0]["last_visit_date"] = "";
+            dt.Rows[0]["age"] = ptt.AgeString();
+            dt.Rows[0]["dob"] = ptt.patient_birthday;
+            dt.Rows[0]["ptt_type"] = optt.PatientTypeID;
+            dt.Rows[0]["time1"] = "";
+            dt.Rows[0]["email"] = ptt.email;
+            dt.Rows[0]["tele"] = ptt.mobile1;
+            //dt.Rows[0]["form_day1_id"] = "";
+
+            FrmReport frm = new FrmReport(ic);
+            frm.setDeliverPttReport(dt);
+            frm.ShowDialog(this);
+        }
+
         private void setControlPtt(Boolean flag)
         {
             chkStatusG.Visible = flag;
@@ -250,12 +299,14 @@ namespace clinic_ivf.gui
             txtP.Visible = flag;
             chkOPU.Visible = flag;
             chkOR.Visible = flag;
-            chkDenyAllergy.Visible = flag;
+            //chkDenyAllergy.Visible = flag;
             txtORDescription.Visible = flag;
-            txtCongenital.Visible = flag;
-            txtAllergyDesc.Visible = flag;
+            //txtCongenital.Visible = flag;
+            //txtAllergyDesc.Visible = flag;
             label3.Visible = flag;
             txtNickName.Visible = flag;
+            txtA.Visible = flag;
+            chkChronic.Visible = flag;
         }
 
         private void BtnVisitVoid_Click(object sender, EventArgs e)
@@ -332,6 +383,16 @@ namespace clinic_ivf.gui
                             vs.visit_vn = re;
                             re = ic.ivfDB.ovsDB.updateVEndTimeNull(vsOld.VN);
                             re1 = ic.ivfDB.vsDB.insertVisit(vs, txtStfConfirmID.Text);
+                            String re2 = ic.ivfDB.pttDB.updateHnCouple(txtID.Text, txtVisitHnMale.Text);
+                            Patient ptt1 = new Patient();
+                            ptt1 = ic.ivfDB.pttDB.selectByHn(txtVisitHnMale.Text);
+                            if (!ptt1.t_patient_id.Equals(""))
+                            {
+                                txtHnCouple.Value = ptt1.patient_hn;
+                                txtCouFname.Value = ptt1.patient_firstname_e;
+                                txtCouLname.Value = ptt1.patient_lastname_e;
+                                ic.setC1Combo(cboCouPrefix, ptt1.patient_couple_f_patient_prefix_id);
+                            }
                         }
                     }
                     else
@@ -378,7 +439,6 @@ namespace clinic_ivf.gui
                 btnVisit.Text = "new Visit";
                 btnVisit.Image = Resources.download_database24;
             }
-            
         }
 
         private void BtnPrnOPDCard_Click(object sender, EventArgs e)
@@ -424,8 +484,11 @@ namespace clinic_ivf.gui
         private void ChkDenyAllergy_CheckedChanged(object sender, EventArgs e)
         {
             //throw new NotImplementedException();
-            txtAllergyDesc.Enabled = chkDenyAllergy.Checked ? true : false;
-            txtAllergyDesc.Focus();
+            //txtAllergyDesc.Enabled = chkDenyAllergy.Checked ? true : false;
+            //txtAllergyDesc.Focus();
+
+            cboAllergyDesc.Enabled = chkDenyAllergy.Checked ? true : false;
+            cboAllergyDesc.Focus();
         }
 
         private void ChkCongenital_CheckedChanged(object sender, EventArgs e)
@@ -505,6 +568,8 @@ namespace clinic_ivf.gui
                     Patient ptt1 = new Patient();
                     if (re.Equals("1")) // ตอน update
                     {
+                        txtVisitID.Value = "";
+                        txtVn.Value = "";
                         //re = txtID.Text;
                         setControlEnable(false);
                     }
@@ -1340,8 +1405,8 @@ namespace clinic_ivf.gui
             this.txtCongenital.Leave += new System.EventHandler(this.textBox_Leave);
             this.txtCongenital.Enter += new System.EventHandler(this.textBox_Enter);
 
-            this.txtAllergyDesc.Leave += new System.EventHandler(this.textBox_Leave);
-            this.txtAllergyDesc.Enter += new System.EventHandler(this.textBox_Enter);
+            this.cboAllergyDesc.Leave += new System.EventHandler(this.textBox_Leave);
+            this.cboAllergyDesc.Enter += new System.EventHandler(this.textBox_Enter);
 
             this.txtNickName.Leave += new System.EventHandler(this.textBox_Leave);
             this.txtNickName.Enter += new System.EventHandler(this.textBox_Enter);
@@ -2255,7 +2320,7 @@ namespace clinic_ivf.gui
             //ic.setC1Combo(cboRg, ptt.f_patient_religion_id);
             chkChronic.Checked = ptt.status_chronic.Equals("1") ? true : false;
             chkDenyAllergy.Checked = ptt.status_deny_allergy.Equals("1") ? true : false;
-            txtAllergyDesc.Enabled = chkDenyAllergy.Checked ? true : false;
+            cboAllergyDesc.Enabled = chkDenyAllergy.Checked ? true : false;
 
             barcode.Text = txtHn.Text;
             filenamepic = txtHn.Text;
@@ -2285,7 +2350,7 @@ namespace clinic_ivf.gui
             txtORDescription.Value = ptt.or_description;
             txtCongenital.Value = ptt.congenital_diseases_description;
             txtHeight.Value = ptt.patient_height;
-            txtAllergyDesc.Value = ptt.allergy_description;
+            cboAllergyDesc.Text = ptt.allergy_description;
             chkStatusG.Checked = ptt.status_g.Equals("1") ? true : false;
             txtG.Value = ptt.g;
             txtP.Value = ptt.p;
@@ -2350,6 +2415,8 @@ namespace clinic_ivf.gui
             ic.setC1Combo(cboName1Prefix, ptt.patient_contact_f_patient_prefix_id);
             ic.setC1ComboByName(cboDist, ptt.patient_tambon);
             ic.setC1ComboByName(cboCou, ptt.patient_country);
+            ic.setC1ComboByName(cboProv, ptt.patient_changwat);
+            ic.setC1ComboByName(cboAmpr, ptt.patient_amphur);
             //ic.setC1Combo(cboCouPrefix, ptt.f_patient_religion_id);
             //ic.setC1Combo(cboRg, ptt.f_patient_religion_id);
             //ic.setC1Combo(cboRg, ptt.f_patient_religion_id);
@@ -2381,11 +2448,19 @@ namespace clinic_ivf.gui
             txtORDescription.Value = ptt.or_description;
             txtCongenital.Value = ptt.congenital_diseases_description;
             txtHeight.Value = ptt.patient_height;
-            txtAllergyDesc.Value = ptt.allergy_description;
+            cboAllergyDesc.Value = ptt.allergy_description;
             
             txtEmerContact.Value = ptt.emercontact;
 
             txtVisitHeight.Value = txtHeight.Text;
+            if (cboPttType.Text.Equals(""))
+            {
+                ic.setCboPttType(cboPttType, "Patient");
+            }
+            if (cboPttGroup.Text.Equals(""))
+            {
+                ic.setCboPttGroup(cboPttGroup, "A");
+            }
         }
         private void setControlPtt(String pttid)
         {
@@ -2433,7 +2508,11 @@ namespace clinic_ivf.gui
             ic.setC1Combo(cboMarital, pttO.MaritalID);
             ic.setC1Combo(cboRg, pttO.Religion);
             ic.setC1ComboByName(CboNation, pttO.Nationality);
-            cboProv.Value = pttO.Province;
+            if (!pttO.Province.Equals(""))
+            {
+                cboProv.Value = pttO.Province;
+            }
+            
             //cboDist.Value = pttO.District;
             //ic.setC1ComboByName(cboDist, pttO.District);
             txtAddrNo.Value = pttO.Address;
@@ -2472,6 +2551,15 @@ namespace clinic_ivf.gui
                     //tabVisit.Enabled = false;
                 }
             }
+            ic.setC1Combo(cboCouRel, "1");
+            if (cboPttType.Text.Equals(""))
+            {
+                ic.setCboPttType(cboPttType, "Patient");
+            }
+            txtHnCouple.Value = ptt.patient_hn_couple;
+            txtVisitHnMale.Value = ptt.patient_hn_couple;
+            txtHeight.Value = ptt.patient_height;
+            txtVisitHeight.Value = ptt.patient_height;
         }
         private void setControl()
         {
@@ -2608,7 +2696,7 @@ namespace clinic_ivf.gui
             ptt.or_description = txtORDescription.Text;
             ptt.congenital_diseases_description = txtCongenital.Text;
             ptt.patient_height = txtHeight.Text;
-            ptt.allergy_description = txtAllergyDesc.Text;
+            ptt.allergy_description = cboAllergyDesc.Text;
             ptt.status_g = chkStatusG.Checked == true ? "1" : "0";
             ptt.g = txtG.Text;
             ptt.p = txtP.Text;
@@ -2616,6 +2704,8 @@ namespace clinic_ivf.gui
             ptt.emercontact = txtEmerContact.Text;
             ptt.patient_tambon = cboDist.Text;
             ptt.patient_country = cboCou.Text;
+            ptt.patient_changwat = cboProv.Text;
+            ptt.patient_amphur = cboAmpr.Text;
             //String[] name = txtEmerContact.Text.Split(' ');
             //if (name.Length > 0)
             //{
