@@ -45,6 +45,7 @@ namespace clinic_ivf.objdb
             jlabD.Worker4 = "Worker4";
             jlabD.LGID = "LGID";
             jlabD.QTY = "QTY";
+            jlabD.row1 = "row1";
 
             jlabD.table = "JobLabDetail";
             jlabD.pkField = "ID";
@@ -78,9 +79,9 @@ namespace clinic_ivf.objdb
             p.Status = long.TryParse(p.Status, out chk) ? chk.ToString() : "0";
             p.Extra = long.TryParse(p.Extra, out chk) ? chk.ToString() : "0";
             p.PID = long.TryParse(p.PID, out chk) ? chk.ToString() : "0";
-            //p.PIDS = long.TryParse(p.PIDS, out chk) ? chk.ToString() : "0";
+            p.row1 = long.TryParse(p.row1, out chk) ? chk.ToString() : "0";
 
-            p.Price = decimal.TryParse(p.Price, out chk1) ? chk.ToString() : "0";
+            p.Price = decimal.TryParse(p.Price, out chk1) ? chk1.ToString() : "0";
             //p.PIDS = decimal.TryParse(p.PIDS, out chk1) ? chk.ToString() : "0";
         }
         public String insert(OldJobLabDetail p, String userId)
@@ -118,6 +119,7 @@ namespace clinic_ivf.objdb
                 "," + jlabD.Worker4 + "= '" + p.Worker4.Replace("'", "''") + "'" +
                 "," + jlabD.LGID + "= '" + p.LGID.Replace("'", "''") + "'" +
                 "," + jlabD.QTY + "= '" + p.QTY.Replace("'", "''") + "'" +
+                "," + jlabD.row1 + "= '" + p.row1.Replace("'", "''") + "'" +
                 "";
             try
             {
@@ -128,6 +130,23 @@ namespace clinic_ivf.objdb
                 sql = ex.Message + " " + ex.InnerException;
             }
 
+            return re;
+        }
+        public String deleteByPk(String id)
+        {
+            DataTable dt = new DataTable();
+            String re = "";
+            String sql = "Delete From  " + jlabD.table+" "+
+                "Where "+ jlabD.pkField+"='"+id+"'";
+            //re = conn.ExecuteNonQuery(conn.conn, sql);
+            try
+            {
+                re = conn.ExecuteNonQuery(conn.conn, sql);
+            }
+            catch (Exception ex)
+            {
+                sql = ex.Message + " " + ex.InnerException;
+            }
             return re;
         }
         public DataTable selectByPk(String pttId)

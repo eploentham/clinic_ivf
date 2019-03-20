@@ -24,5 +24,7 @@ namespace clinic_ivf.object1
         public String FileName { get; set; }
         public String status_req_accept { get; set; }
         public String req_id { get; set; }
+        public String row1 { get; set; }
+        public String qty { get; set; }
     }
 }

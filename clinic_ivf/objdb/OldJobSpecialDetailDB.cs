@@ -37,6 +37,8 @@ namespace clinic_ivf.objdb
             ojsd.FileName = "FileName";
             ojsd.status_req_accept = "status_req_accept";
             ojsd.req_id = "req_id";
+            ojsd.row1 = "row1";
+            ojsd.qty = "qty";
 
             ojsd.table = "JobSpecialDetail";
             ojsd.pkField = "ID";
@@ -62,9 +64,10 @@ namespace clinic_ivf.objdb
             p.W4UID = long.TryParse(p.W4UID, out chk) ? chk.ToString() : "0";
             p.req_id = long.TryParse(p.req_id, out chk) ? chk.ToString() : "0";
             p.Extra = long.TryParse(p.Extra, out chk) ? chk.ToString() : "0";
+            p.row1 = long.TryParse(p.row1, out chk) ? chk.ToString() : "0";
+            p.qty = long.TryParse(p.qty, out chk) ? chk.ToString() : "0";
 
-
-            p.Price = decimal.TryParse(p.Price, out chk1) ? chk.ToString() : "0";
+            p.Price = decimal.TryParse(p.Price, out chk1) ? chk1.ToString() : "0";
             //p.PIDS = decimal.TryParse(p.PIDS, out chk1) ? chk.ToString() : "0";
         }
         public String insert(OldJobSpecialDetail p, String userId)
@@ -94,6 +97,8 @@ namespace clinic_ivf.objdb
                 "," + ojsd.FileName + "= '" + p.FileName.Replace("'", "''") + "'" +
                 "," + ojsd.status_req_accept + "= '" + p.status_req_accept.Replace("'", "''") + "'" +
                 "," + ojsd.req_id + "= '" + p.req_id.Replace("'", "''") + "'" +
+                "," + ojsd.row1 + "= '" + p.row1.Replace("'", "''") + "'" +
+                "," + ojsd.qty + "= '" + p.qty + "'" +
                 "";
             try
             {

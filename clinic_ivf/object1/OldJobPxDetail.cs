@@ -21,6 +21,6 @@ namespace clinic_ivf.object1
         public String Comment { get; set; }
         public String TUsage { get; set; }
         public String EUsage { get; set; }
-        
+        public String row1 { get; set; }
     }
 }

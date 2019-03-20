@@ -32,6 +32,7 @@
             this.theme1 = new C1.Win.C1Themes.C1ThemeController();
             this.splitMain = new System.Windows.Forms.SplitContainer();
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
+            this.cboAllergyDesc = new C1.Win.C1Input.C1ComboBox();
             this.btnSmartcard = new C1.Win.C1Input.C1Button();
             this.txtA = new C1.Win.C1Input.C1TextBox();
             this.label27 = new System.Windows.Forms.Label();
@@ -77,6 +78,7 @@
             this.btnPrnSticker = new C1.Win.C1Input.DropDownItem();
             this.btnPrvSticker = new C1.Win.C1Input.DropDownItem();
             this.btnPrnOPDCard = new C1.Win.C1Input.DropDownItem();
+            this.btnPrnDeliverPtt = new C1.Win.C1Input.DropDownItem();
             this.btnSavePic = new C1.Win.C1Input.C1Button();
             this.btnCapture = new C1.Win.C1Input.C1Button();
             this.btnWebCamOn = new C1.Win.C1Input.C1Button();
@@ -116,6 +118,7 @@
             this.tC1 = new C1.Win.C1Command.C1DockingTab();
             this.tabFamily = new C1.Win.C1Command.C1DockingTabPage();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.txtHnCouple = new C1.Win.C1Input.C1TextBox();
             this.m_lblDLXInfo = new System.Windows.Forms.Label();
             this.cboName1Rl = new C1.Win.C1Input.C1ComboBox();
             this.label33 = new System.Windows.Forms.Label();
@@ -255,9 +258,6 @@
             this.printDialog1 = new System.Windows.Forms.PrintDialog();
             this.cPdf = new C1.Win.C1Document.C1PdfDocumentSource(this.components);
             this._c1pdf = new C1.C1Pdf.C1PdfDocument();
-            this.btnPrnDeliverPtt = new C1.Win.C1Input.DropDownItem();
-            this.txtHnCouple = new C1.Win.C1Input.C1TextBox();
-            this.cboAllergyDesc = new C1.Win.C1Input.C1ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.theme1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitMain)).BeginInit();
             this.splitMain.Panel1.SuspendLayout();
@@ -267,6 +267,7 @@
             this.splitContainer2.Panel1.SuspendLayout();
             this.splitContainer2.Panel2.SuspendLayout();
             this.splitContainer2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.cboAllergyDesc)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnSmartcard)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtA)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtP)).BeginInit();
@@ -322,6 +323,7 @@
             this.tC1.SuspendLayout();
             this.tabFamily.SuspendLayout();
             this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtHnCouple)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cboName1Rl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cboName1Prefix)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtContMobile1)).BeginInit();
@@ -406,8 +408,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtBP)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtPulse)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtPttO)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtHnCouple)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.cboAllergyDesc)).BeginInit();
             this.SuspendLayout();
             // 
             // theme1
@@ -543,6 +543,29 @@
             this.splitContainer2.SplitterDistance = 1153;
             this.splitContainer2.TabIndex = 0;
             this.theme1.SetTheme(this.splitContainer2, "(default)");
+            // 
+            // cboAllergyDesc
+            // 
+            this.cboAllergyDesc.AllowSpinLoop = false;
+            this.cboAllergyDesc.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
+            this.cboAllergyDesc.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.cboAllergyDesc.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.cboAllergyDesc.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
+            this.cboAllergyDesc.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.cboAllergyDesc.GapHeight = 0;
+            this.cboAllergyDesc.ImagePadding = new System.Windows.Forms.Padding(0);
+            this.cboAllergyDesc.ItemsDisplayMember = "";
+            this.cboAllergyDesc.ItemsValueMember = "";
+            this.cboAllergyDesc.Location = new System.Drawing.Point(268, 287);
+            this.cboAllergyDesc.Name = "cboAllergyDesc";
+            this.cboAllergyDesc.Size = new System.Drawing.Size(331, 20);
+            this.cboAllergyDesc.Style.DropDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.cboAllergyDesc.Style.DropDownBorderColor = System.Drawing.Color.Gainsboro;
+            this.cboAllergyDesc.Style.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.cboAllergyDesc.TabIndex = 698;
+            this.cboAllergyDesc.Tag = null;
+            this.theme1.SetTheme(this.cboAllergyDesc, "(default)");
+            this.cboAllergyDesc.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
             // 
             // btnSmartcard
             // 
@@ -1187,6 +1210,10 @@
             // 
             this.btnPrnOPDCard.Text = "Print OPD Card";
             // 
+            // btnPrnDeliverPtt
+            // 
+            this.btnPrnDeliverPtt.Text = "Print ใบนำส่ง";
+            // 
             // btnSavePic
             // 
             this.btnSavePic.Image = global::clinic_ivf.Properties.Resources.unit_completed24;
@@ -1621,14 +1648,23 @@
             this.txtDob.Calendar.TrailingForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
             this.txtDob.Calendar.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
             this.txtDob.Culture = 1033;
+            this.txtDob.CurrentTimeZone = false;
             this.txtDob.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
+            this.txtDob.DisplayFormat.CalendarType = C1.Win.C1Input.CalendarType.GregorianCalendar;
             this.txtDob.DisplayFormat.FormatType = C1.Win.C1Input.FormatTypeEnum.ShortDate;
-            this.txtDob.DisplayFormat.Inherit = ((C1.Win.C1Input.FormatInfoInheritFlags)((((((C1.Win.C1Input.FormatInfoInheritFlags.CustomFormat | C1.Win.C1Input.FormatInfoInheritFlags.NullText) 
+            this.txtDob.DisplayFormat.Inherit = ((C1.Win.C1Input.FormatInfoInheritFlags)(((((C1.Win.C1Input.FormatInfoInheritFlags.CustomFormat | C1.Win.C1Input.FormatInfoInheritFlags.NullText) 
             | C1.Win.C1Input.FormatInfoInheritFlags.EmptyAsNull) 
             | C1.Win.C1Input.FormatInfoInheritFlags.TrimStart) 
-            | C1.Win.C1Input.FormatInfoInheritFlags.TrimEnd) 
-            | C1.Win.C1Input.FormatInfoInheritFlags.CalendarType)));
+            | C1.Win.C1Input.FormatInfoInheritFlags.TrimEnd)));
+            this.txtDob.EditFormat.CalendarType = C1.Win.C1Input.CalendarType.GregorianCalendar;
+            this.txtDob.EditFormat.FormatType = C1.Win.C1Input.FormatTypeEnum.ShortDate;
+            this.txtDob.EditFormat.Inherit = ((C1.Win.C1Input.FormatInfoInheritFlags)(((((C1.Win.C1Input.FormatInfoInheritFlags.CustomFormat | C1.Win.C1Input.FormatInfoInheritFlags.NullText) 
+            | C1.Win.C1Input.FormatInfoInheritFlags.EmptyAsNull) 
+            | C1.Win.C1Input.FormatInfoInheritFlags.TrimStart) 
+            | C1.Win.C1Input.FormatInfoInheritFlags.TrimEnd)));
+            this.txtDob.EmptyAsNull = true;
             this.txtDob.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtDob.GMTOffset = System.TimeSpan.Parse("00:00:00");
             this.txtDob.ImagePadding = new System.Windows.Forms.Padding(0);
             this.txtDob.Location = new System.Drawing.Point(268, 73);
             this.txtDob.Name = "txtDob";
@@ -1821,6 +1857,20 @@
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.theme1.SetTheme(this.groupBox1, "(default)");
+            // 
+            // txtHnCouple
+            // 
+            this.txtHnCouple.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtHnCouple.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
+            this.txtHnCouple.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.txtHnCouple.Location = new System.Drawing.Point(777, 94);
+            this.txtHnCouple.Name = "txtHnCouple";
+            this.txtHnCouple.Size = new System.Drawing.Size(133, 20);
+            this.txtHnCouple.TabIndex = 612;
+            this.txtHnCouple.Tag = null;
+            this.theme1.SetTheme(this.txtHnCouple, "(default)");
+            this.txtHnCouple.Visible = false;
+            this.txtHnCouple.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
             // 
             // m_lblDLXInfo
             // 
@@ -3870,47 +3920,6 @@
             this._c1pdf.UseFastTextOut = true;
             this._c1pdf.UseFontShaping = true;
             // 
-            // btnPrnDeliverPtt
-            // 
-            this.btnPrnDeliverPtt.Text = "Print ใบนำส่ง";
-            // 
-            // txtHnCouple
-            // 
-            this.txtHnCouple.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtHnCouple.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
-            this.txtHnCouple.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.txtHnCouple.Location = new System.Drawing.Point(777, 94);
-            this.txtHnCouple.Name = "txtHnCouple";
-            this.txtHnCouple.Size = new System.Drawing.Size(133, 20);
-            this.txtHnCouple.TabIndex = 612;
-            this.txtHnCouple.Tag = null;
-            this.theme1.SetTheme(this.txtHnCouple, "(default)");
-            this.txtHnCouple.Visible = false;
-            this.txtHnCouple.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
-            // 
-            // cboAllergyDesc
-            // 
-            this.cboAllergyDesc.AllowSpinLoop = false;
-            this.cboAllergyDesc.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
-            this.cboAllergyDesc.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
-            this.cboAllergyDesc.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.cboAllergyDesc.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
-            this.cboAllergyDesc.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.cboAllergyDesc.GapHeight = 0;
-            this.cboAllergyDesc.ImagePadding = new System.Windows.Forms.Padding(0);
-            this.cboAllergyDesc.ItemsDisplayMember = "";
-            this.cboAllergyDesc.ItemsValueMember = "";
-            this.cboAllergyDesc.Location = new System.Drawing.Point(268, 287);
-            this.cboAllergyDesc.Name = "cboAllergyDesc";
-            this.cboAllergyDesc.Size = new System.Drawing.Size(331, 20);
-            this.cboAllergyDesc.Style.DropDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.cboAllergyDesc.Style.DropDownBorderColor = System.Drawing.Color.Gainsboro;
-            this.cboAllergyDesc.Style.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.cboAllergyDesc.TabIndex = 698;
-            this.cboAllergyDesc.Tag = null;
-            this.theme1.SetTheme(this.cboAllergyDesc, "(default)");
-            this.cboAllergyDesc.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
-            // 
             // FrmPatientAdd
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -3931,6 +3940,7 @@
             this.splitContainer2.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).EndInit();
             this.splitContainer2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.cboAllergyDesc)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnSmartcard)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtA)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtP)).EndInit();
@@ -3987,6 +3997,7 @@
             this.tabFamily.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtHnCouple)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cboName1Rl)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cboName1Prefix)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtContMobile1)).EndInit();
@@ -4075,8 +4086,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtBP)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtPulse)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtPttO)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtHnCouple)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.cboAllergyDesc)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

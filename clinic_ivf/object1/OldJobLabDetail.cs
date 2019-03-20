@@ -32,6 +32,7 @@ namespace clinic_ivf.object1
         public String Worker4 { get; set; }
         public String LGID { get; set; }
         public String QTY { get; set; }
-        
+        public String row1 { get; set; }
+
     }
 }

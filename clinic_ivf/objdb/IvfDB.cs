@@ -438,19 +438,21 @@ namespace clinic_ivf.objdb
             }
 
         }
-        public void PxAdd(String duid, String qty, String pid, String pids, String vn, String extra)
+        public void PxAdd(String duid, String qty, String pid, String pids, String vn, String extra, String row1)
         {
             JobPxDetail oJpxd = new JobPxDetail();
             OldStockDrug ostkD = new OldStockDrug();
             Decimal price1 = 0, qty1 = 0;
+            ostkD = oStkdDB.selectByPk1(duid);
+            
             Decimal.TryParse(ostkD.Price, out price1);
             Decimal.TryParse(qty, out qty1);
-            ostkD = oStkdDB.selectByPk1(duid);
+            
             oJpxd.VN = vn;
             oJpxd.DUID = duid;
             oJpxd.QTY = qty;
             oJpxd.Extra = extra;
-            oJpxd.Price = String.Concat(price1 * qty1);
+            oJpxd.Price = ostkD.Price;
             oJpxd.Status = "1";
             oJpxd.PID = pid;
             oJpxd.PIDS = pids;
@@ -458,9 +460,10 @@ namespace clinic_ivf.objdb
             oJpxd.Comment = "";
             oJpxd.TUsage = ostkD.TUsage;
             oJpxd.EUsage = ostkD.EUsage;
+            oJpxd.row1 = row1;
             oJpxdDB.insert(oJpxd, "");
         }
-        public void LabAdd(String lid, String qty, String pid, String pids, String vn, String extra, String sp1v, String sp2v, String sp3v, String sp4v, String sp5v, String sp6v, String sp7v)
+        public void LabAdd(String lid, String qty, String pid, String pids, String vn, String extra, String sp1v, String sp2v, String sp3v, String sp4v, String sp5v, String sp6v, String sp7v, String row1)
         {
             OldJobLabDetail jlabD = new OldJobLabDetail();
             OldLabItem olab = new OldLabItem();
@@ -489,10 +492,11 @@ namespace clinic_ivf.objdb
             jlabD.Worker4 = olab.WorkerGroup4;
             jlabD.LGID = olab.LGID;
             jlabD.QTY = qty;
+            jlabD.row1 = row1;
 
             oJlabdDB.insert(jlabD, "");
         }
-        public void SpecialAdd(String sid, String qty, String pid, String pids, String vn, String extra, String w1uid, String w2uid, String w3uid, String w4uid)
+        public void SpecialAdd(String sid, String qty, String pid, String pids, String vn, String extra, String w1uid, String w2uid, String w3uid, String w4uid, String row1)
         {
             OldJobSpecialDetail ojsd = new OldJobSpecialDetail();
             OldSpecialItem ojs = new OldSpecialItem();
@@ -513,7 +517,8 @@ namespace clinic_ivf.objdb
             ojsd.FileName = "";
             ojsd.status_req_accept = "0";
             ojsd.req_id = "";
-
+            ojsd.row1 = row1;
+            ojsd.qty = qty;
             ojsdDB.insert(ojsd, "");
         }
         public void DeleteBill(String vn)

@@ -54,5 +54,17 @@ ALTER TABLE `ivf_101`.`Item`
 CHANGE COLUMN `price` `price` DECIMAL(17,2) NULL DEFAULT NULL COMMENT 'ราคาขาย' ,
 CHANGE COLUMN `cost` `cost` DECIMAL(17,2) NULL DEFAULT NULL COMMENT 'ราคาซื้อ' ;
 
+ALTER TABLE `ivf_101`.`t_patient` 
+ADD COLUMN `patient_hn_couple` VARCHAR(45) NULL AFTER `patient_country`;
 
+
+ALTER TABLE `ivf_101`.`JobLabDetail` 
+ADD COLUMN `row1` INT NULL AFTER `active`;
+
+
+ALTER TABLE `ivf_101`.`JobPxDetail` 
+ADD COLUMN `row1` INT NULL AFTER `EUsage`;
+
+ALTER TABLE `ivf_101`.`JobSpecialDetail` 
+ADD COLUMN `row1` INT NULL AFTER `req_id`;
 
