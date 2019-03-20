@@ -37,4 +37,5 @@ delete From ivf_101.t_patient_appointment_text;
 delete From ivf_101.t_patient_image;
 
 
-
+mysqldump -u root -h localhost -p ivf_101 > ivf_10120190310.sql
+tar -czvf /root/ivf_10120190310.tar.gz ivf_10120190310.sql

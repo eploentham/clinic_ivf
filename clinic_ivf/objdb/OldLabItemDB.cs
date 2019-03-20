@@ -73,7 +73,7 @@ namespace clinic_ivf.objdb
         public DataTable selectByBloodLab1()
         {
             DataTable dt = new DataTable();
-            String sql = "select labI."+labI.LID+ ",labI." + labI.LName+ ",labI." + labI.Price + " " +
+            String sql = "select labI."+labI.LID+ ",labI." + labI.LName+ ", '1' as qty,labI." + labI.Price + " " +
                 "From " + labI.table + " labI " +
                 "Where labI." + labI.LGID + " ='1' and " + labI.SubItem + "='0'  and active = '1' " +
                 "Order By labI." + labI.LName;

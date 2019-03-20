@@ -297,8 +297,8 @@ namespace clinic_ivf.objdb
                 "From " + pApmO.table + " appnOld " +
                 "Left Join Doctor on Doctor.Name = appnOld.Doctor " +
             //"Left Join t_ssdata_visit ssv On ssv.ssdata_visit_id = bd.ssdata_visit_id " +
-            "Where " + wheredate + wheredoctor +
-            "Group By appnOld.Doctor " +
+            " Where " + wheredate + wheredoctor +
+            " Group By appnOld.Doctor , Doctor.ID " +
             " Order By appnOld.Doctor";
 
             dt = conn.selectData(con, sql);

@@ -478,7 +478,7 @@ namespace clinic_ivf.objdb
                 "Left Join t_patient ptt on ptt.t_patient_id = pApm.t_patient_id " +
                 "Left join f_patient_prefix fpp on fpp.f_patient_prefix_id = ptt.f_patient_prefix_id " +
                 "Where pApm." + pApm.patient_appointment_date + " >='" + dateStart + "' and pApm." + pApm.patient_appointment_date + " <='" + dateEnd + "' and pApm." + pApm.active + "='1' " +
-                "Group By dtr.Name " +
+                "Group By dtr.Name, pApm.patient_appointment_doctor " +
                 "Order By dtr.Name" ;
             dt = conn.selectData(con, sql);
             return dt;

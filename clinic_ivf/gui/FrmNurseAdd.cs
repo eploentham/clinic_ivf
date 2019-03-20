@@ -31,7 +31,7 @@ namespace clinic_ivf.gui
         C1SuperTooltip stt;
         C1SuperErrorProvider sep;
 
-        int colBlId = 1, colBlName = 2, colBlInclude = 4, colBlPrice = 3, colBlRemark=5;
+        int colBlId = 1, colBlName = 2, colBlQty=3, colBlPrice = 4, colBlInclude = 5, colBlRemark=6;
         int colPkgdId = 1, colPkgId = 2, colPkgType = 3, colPkgItmName = 4, colPkgItmId = 5, colPkgQty = 6;
         int colRxdId = 1, colRxId = 2, colRxItmId = 3, colRxName = 4, colRxQty = 5;
 
@@ -358,7 +358,7 @@ namespace clinic_ivf.gui
             CellNoteManager mgr = new CellNoteManager(grfOrder);
             grfOrder.Cols[1].Visible = false;
             grfOrder.Cols[2].Visible = false;
-            grfOrder.Cols[5].Visible = false;
+            //grfOrder.Cols[5].Visible = false;
             //grfOrder.Cols[colOrderExtra].Visible = false;
             //grfOrder.Cols[colOrderStatus].Visible = false;
             //grfOrder.Cols[colOrderPID].Visible = false;
@@ -493,7 +493,7 @@ namespace clinic_ivf.gui
             //grfExpn.Rows.Count = dt.Rows.Count + 1;
             //grfEmbryo.Rows.Count = dt.Rows.Count + 1;
             grfPackage.DataSource = dt;
-            grfPackage.Cols.Count = 6;
+            grfPackage.Cols.Count = 7;
             C1TextBox txt = new C1TextBox();
             C1CheckBox chk = new C1CheckBox();
             chk.Text = "Include Package";
@@ -749,7 +749,7 @@ namespace clinic_ivf.gui
             //grfExpn.Rows.Count = dt.Rows.Count + 1;
             //grfEmbryo.Rows.Count = dt.Rows.Count + 1;
             grfRxSet.DataSource = dt;
-            grfRxSet.Cols.Count = 6;
+            grfRxSet.Cols.Count = 7;
             C1TextBox txt = new C1TextBox();
             C1CheckBox chk = new C1CheckBox();
             chk.Text = "Include Package";
@@ -874,7 +874,7 @@ namespace clinic_ivf.gui
             //grfExpn.Rows.Count = dt.Rows.Count + 1;
             //grfEmbryo.Rows.Count = dt.Rows.Count + 1;
             //grfRx.DataSource = dt;
-            grfRx.Cols.Count = 6;
+            grfRx.Cols.Count = 7;
             grfRx.Rows.Count = dt.Rows.Count+2;
             //C1TextBox txt = new C1TextBox();
             //C1CheckBox chk = new C1CheckBox();
@@ -982,7 +982,7 @@ namespace clinic_ivf.gui
             //grfExpn.Rows.Count = dt.Rows.Count + 1;
             //grfEmbryo.Rows.Count = dt.Rows.Count + 1;
             grfSpecial.DataSource = dt;
-            grfSpecial.Cols.Count = 6;
+            grfSpecial.Cols.Count = 7;
             C1TextBox txt = new C1TextBox();
             C1CheckBox chk = new C1CheckBox();
             chk.Text = "Include Package";
@@ -1079,7 +1079,7 @@ namespace clinic_ivf.gui
             //grfExpn.Rows.Count = dt.Rows.Count + 1;
             //grfEmbryo.Rows.Count = dt.Rows.Count + 1;
             grfGenetic.DataSource = dt;
-            grfGenetic.Cols.Count = 6;
+            grfGenetic.Cols.Count = 7;
             C1TextBox txt = new C1TextBox();
             C1CheckBox chk = new C1CheckBox();
             chk.Text = "Include Package";
@@ -1176,7 +1176,7 @@ namespace clinic_ivf.gui
             //grfExpn.Rows.Count = dt.Rows.Count + 1;
             //grfEmbryo.Rows.Count = dt.Rows.Count + 1;
             grfEmbryo.DataSource = dt;
-            grfEmbryo.Cols.Count = 6;
+            grfEmbryo.Cols.Count = 7;
             C1TextBox txt = new C1TextBox();
             C1CheckBox chk = new C1CheckBox();
             chk.Text = "Include Package";
@@ -1273,7 +1273,7 @@ namespace clinic_ivf.gui
             //grfExpn.Rows.Count = dt.Rows.Count + 1;
             //grfSperm.Rows.Count = dt.Rows.Count + 1;
             grfSperm.DataSource = dt;
-            grfSperm.Cols.Count = 6;
+            grfSperm.Cols.Count = 7;
             C1TextBox txt = new C1TextBox();
             C1CheckBox chk = new C1CheckBox();
             chk.Text = "Include Package";
@@ -1371,23 +1371,27 @@ namespace clinic_ivf.gui
             //grfDept.Rows.Count = 7;
             grfBloodLab.Clear();
             DataTable dt = new DataTable();
-            dt = ic.ivfDB.oLabiDB.selectByBloodLab1();
+            //dt = ic.ivfDB.oLabiDB.selectByBloodLab1();
 
-            //grfExpn.Rows.Count = dt.Rows.Count + 1;
             //grfBloodLab.Rows.Count = dt.Rows.Count + 1;
+            grfBloodLab.Rows.Count = dt.Rows.Count + 1;
             grfBloodLab.DataSource = dt;
-            grfBloodLab.Cols.Count = 6;
-            C1TextBox txt = new C1TextBox();
-            C1TextBox num = new C1TextBox();
-            C1CheckBox chk = new C1CheckBox();
-            chk.Text = "Include Package";
-            num.FormatType = FormatTypeEnum.Currency;
+            grfBloodLab.Cols.Count = 7;
+            //C1TextBox txt = new C1TextBox();
+            //C1TextBox num = new C1TextBox();
+            //CheckBox chk = new CheckBox();
+            //chk.Text = "Include Package";
+            //num.FormatType = FormatTypeEnum.Currency;
             //C1ComboBox cboproce = new C1ComboBox();
             //ic.ivfDB.itmDB.setCboItem(cboproce);
-            grfBloodLab.Cols[colBlName].Editor = txt;
-            grfBloodLab.Cols[colBlInclude].Editor = txt;
-            grfBloodLab.Cols[colBlPrice].Editor = num;
-            grfBloodLab.Cols[colBlRemark].Editor = txt;
+            //grfBloodLab.Cols[colBlName].Editor = txt;
+            //grfBloodLab.Cols[colBlInclude].Editor = chk;
+            //grfBloodLab.Cols[colBlPrice].Editor = num;
+            //grfBloodLab.Cols[colBlRemark].Editor = txt;
+            CellStyle cs = grfBloodLab.Styles.Add("bool");
+            cs.DataType = typeof(bool);
+            cs.ImageAlign = ImageAlignEnum.LeftCenter;
+
 
             grfBloodLab.Cols[colBlName].Width = 330;
             grfBloodLab.Cols[colBlInclude].Width = 120;
@@ -1401,9 +1405,14 @@ namespace clinic_ivf.gui
             grfBloodLab.Cols[colBlName].Caption = "Name";
             grfBloodLab.Cols[colBlInclude].Caption = "Include";
             grfBloodLab.Cols[colBlPrice].Caption = "Price";
+            grfBloodLab.Cols[colBlQty].Caption = "QTY";
             grfBloodLab.Cols[colBlRemark].Caption = "Remark";
 
-            Color color = ColorTranslator.FromHtml(ic.iniC.grfRowColor);
+            CellRange rg = grfBloodLab.GetCellRange(2, colBlInclude, grfBloodLab.Rows.Count - 1, colBlInclude);
+            rg.Style = cs;
+            rg.Style = grfBloodLab.Styles["bool"];
+
+            //Color color = ColorTranslator.FromHtml(ic.iniC.grfRowColor);
             //CellRange rg1 = grfBank.GetCellRange(1, colE, grfBank.Rows.Count, colE);
             //rg1.Style = grfBank.Styles["date"];
             //grfCu.Cols[colID].Visible = false;
@@ -1421,7 +1430,7 @@ namespace clinic_ivf.gui
                     //row[colBlPrice] = aaa.ToString("#,##0");
                     //grfBloodLab[i, colBlId] = row[ic.ivfDB.oLabiDB.labI.LID].ToString();
                     //grfBloodLab[i, colBlName] = row[ic.ivfDB.oLabiDB.labI.LName].ToString();
-                    ////grfBloodLab[i, colBlInclude] = false;
+                    //grfBloodLab[i, colBlInclude] = "Include";
                     //grfBloodLab[i, colBlQty] = row[ic.ivfDB.oLabiDB.labI.QTY].ToString();
                     //grfBloodLab[i, colBlRemark] = "";
 
@@ -1445,7 +1454,7 @@ namespace clinic_ivf.gui
             }
             CellNoteManager mgr = new CellNoteManager(grfBloodLab);
             grfBloodLab.Cols[colBlId].Visible = false;
-            grfBloodLab.Cols[colBlInclude].Visible = false;
+            //grfBloodLab.Cols[colBlInclude].Visible = false;
             //grfBloodLab.Cols[colBlPrice].Visible = false;
 
             grfBloodLab.Cols[colBlName].AllowEditing = false;
