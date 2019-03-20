@@ -49,5 +49,16 @@ namespace clinic_ivf.objdb
             dt = conn.selectData(conn.conn, sql);
             return dt;
         }
+        public DataTable selectByGdId1(String id)
+        {
+            DataTable dt = new DataTable();
+            String sql = "select oGuD.*,sdrg.TUsage, sdrg.EUsage, sdrg.Price " +
+                "From " + oGuD.table + " oGuD " +
+                "Left join StockDrug sdrg on oGuD."+oGuD.DUID +" = sdrg.DUID " +
+                "Where oGuD." + oGuD.GDID + " ='" + id + "' and oGuD.active = '1' " +
+                "Order By oGuD." + oGuD.DUName;
+            dt = conn.selectData(conn.conn, sql);
+            return dt;
+        }
     }
 }

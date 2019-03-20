@@ -397,7 +397,7 @@ namespace clinic_ivf.objdb
         {
             opkgsDB.insert(opkgs, "");
         }
-        public void PxSetAdd(String gdid, String pid, String pids, String vn, String extra)
+        public void PxSetAdd(String duid, String pid, String pids, String vn, String extra, String row1, String qty, String usaget, String usagee, String duname, String price)
         {
             //$queGD = $this->package->get_groupDrugDetail($_POST['GDID']);
             //foreach ($queGD->result() as $row) {
@@ -409,33 +409,34 @@ namespace clinic_ivf.objdb
             //$this->package->update_jobPx_package($VN, $aData['DUID'], $aData['QTY'], $aData['Extra']);
             //}
 
-            DataTable dtDrugSet = new DataTable();
-            dtDrugSet = oGudDB.selectByGdId(gdid);
-            foreach(DataRow row in dtDrugSet.Rows)
-            {
-                String duid = "", qty = "";
-                duid = row["DUID"].ToString();
-                qty = row["QTY"].ToString();
+            //DataTable dtDrugSet = new DataTable();
+            //dtDrugSet = oGudDB.selectByGdId(gdid);
+            //foreach(DataRow row in dtDrugSet.Rows)
+            //{
+                //String duid = "";
+                //duid = row["DUID"].ToString();
+                //qty = row["QTY"].ToString();
                 JobPxDetail oJpxd = new JobPxDetail();
-                OldStockDrug ostkD = new OldStockDrug();
+                //OldStockDrug ostkD = new OldStockDrug();
                 Decimal price1 = 0, qty1 = 0;
-                Decimal.TryParse(ostkD.Price, out price1);
+                Decimal.TryParse(price, out price1);
                 Decimal.TryParse(qty, out qty1);
-                ostkD = oStkdDB.selectByPk1(duid);
+                //ostkD = oStkdDB.selectByPk1(duid);
                 oJpxd.VN = vn;
                 oJpxd.DUID = duid;
                 oJpxd.QTY = qty;
                 oJpxd.Extra = extra;
-                oJpxd.Price = String.Concat(price1*qty1);
+                oJpxd.Price = price;
                 oJpxd.Status = "1";
                 oJpxd.PID = pid;
                 oJpxd.PIDS = pids;
-                oJpxd.DUName = ostkD.DUName;
+                oJpxd.DUName = duname;
                 oJpxd.Comment = "";
-                oJpxd.TUsage = ostkD.TUsage;
-                oJpxd.EUsage = ostkD.EUsage;
+                oJpxd.TUsage = usaget;
+                oJpxd.EUsage = usagee;
+            oJpxd.row1 = row1;
                 oJpxdDB.insert(oJpxd, "");
-            }
+            //}
 
         }
         public void PxAdd(String duid, String qty, String pid, String pids, String vn, String extra, String row1)

@@ -30,6 +30,12 @@
         {
             this.theme1 = new C1.Win.C1Themes.C1ThemeController();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.label18 = new System.Windows.Forms.Label();
+            this.txtInclude = new C1.Win.C1Input.C1TextBox();
+            this.label17 = new System.Windows.Forms.Label();
+            this.label16 = new System.Windows.Forms.Label();
+            this.txtExtra = new C1.Win.C1Input.C1TextBox();
+            this.txtTotal = new C1.Win.C1Input.C1TextBox();
             this.txtVnOld = new C1.Win.C1Input.C1TextBox();
             this.txtIdOld = new C1.Win.C1Input.C1TextBox();
             this.btnClose = new C1.Win.C1Input.C1Button();
@@ -110,14 +116,11 @@
             this.tabCert = new C1.Win.C1Command.C1DockingTabPage();
             this.sB = new System.Windows.Forms.StatusStrip();
             this.sB1 = new System.Windows.Forms.ToolStripStatusLabel();
-            this.txtExtra = new C1.Win.C1Input.C1TextBox();
-            this.txtTotal = new C1.Win.C1Input.C1TextBox();
-            this.label16 = new System.Windows.Forms.Label();
-            this.label17 = new System.Windows.Forms.Label();
-            this.txtInclude = new C1.Win.C1Input.C1TextBox();
-            this.label18 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.theme1)).BeginInit();
             this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtInclude)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtExtra)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtTotal)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtVnOld)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtIdOld)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnClose)).BeginInit();
@@ -177,9 +180,6 @@
             this.panel5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btnRxSetOrder)).BeginInit();
             this.sB.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.txtExtra)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtTotal)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtInclude)).BeginInit();
             this.SuspendLayout();
             // 
             // theme1
@@ -227,6 +227,84 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Patient";
             this.theme1.SetTheme(this.groupBox1, "(default)");
+            // 
+            // label18
+            // 
+            this.label18.AutoSize = true;
+            this.label18.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.label18.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label18.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.label18.Location = new System.Drawing.Point(1038, 72);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(57, 16);
+            this.label18.TabIndex = 704;
+            this.label18.Text = "Include :";
+            this.theme1.SetTheme(this.label18, "(default)");
+            // 
+            // txtInclude
+            // 
+            this.txtInclude.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtInclude.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
+            this.txtInclude.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.txtInclude.Location = new System.Drawing.Point(1110, 67);
+            this.txtInclude.Name = "txtInclude";
+            this.txtInclude.Size = new System.Drawing.Size(146, 24);
+            this.txtInclude.TabIndex = 703;
+            this.txtInclude.Tag = null;
+            this.theme1.SetTheme(this.txtInclude, "(default)");
+            this.txtInclude.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.label17.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label17.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.label17.Location = new System.Drawing.Point(1038, 46);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(44, 16);
+            this.label17.TabIndex = 702;
+            this.label17.Text = "Extra :";
+            this.theme1.SetTheme(this.label17, "(default)");
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.label16.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label16.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.label16.Location = new System.Drawing.Point(1038, 20);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(45, 16);
+            this.label16.TabIndex = 701;
+            this.label16.Text = "Total :";
+            this.theme1.SetTheme(this.label16, "(default)");
+            // 
+            // txtExtra
+            // 
+            this.txtExtra.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtExtra.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
+            this.txtExtra.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.txtExtra.Location = new System.Drawing.Point(1110, 41);
+            this.txtExtra.Name = "txtExtra";
+            this.txtExtra.Size = new System.Drawing.Size(146, 24);
+            this.txtExtra.TabIndex = 700;
+            this.txtExtra.Tag = null;
+            this.theme1.SetTheme(this.txtExtra, "(default)");
+            this.txtExtra.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            // 
+            // txtTotal
+            // 
+            this.txtTotal.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtTotal.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
+            this.txtTotal.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.txtTotal.Location = new System.Drawing.Point(1109, 15);
+            this.txtTotal.Name = "txtTotal";
+            this.txtTotal.Size = new System.Drawing.Size(146, 24);
+            this.txtTotal.TabIndex = 699;
+            this.txtTotal.Tag = null;
+            this.theme1.SetTheme(this.txtTotal, "(default)");
+            this.txtTotal.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
             // 
             // txtVnOld
             // 
@@ -1286,84 +1364,6 @@
             this.sB1.Size = new System.Drawing.Size(118, 17);
             this.sB1.Text = "toolStripStatusLabel1";
             // 
-            // txtExtra
-            // 
-            this.txtExtra.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtExtra.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
-            this.txtExtra.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.txtExtra.Location = new System.Drawing.Point(1110, 41);
-            this.txtExtra.Name = "txtExtra";
-            this.txtExtra.Size = new System.Drawing.Size(146, 24);
-            this.txtExtra.TabIndex = 700;
-            this.txtExtra.Tag = null;
-            this.theme1.SetTheme(this.txtExtra, "(default)");
-            this.txtExtra.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
-            // 
-            // txtTotal
-            // 
-            this.txtTotal.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtTotal.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
-            this.txtTotal.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.txtTotal.Location = new System.Drawing.Point(1109, 15);
-            this.txtTotal.Name = "txtTotal";
-            this.txtTotal.Size = new System.Drawing.Size(146, 24);
-            this.txtTotal.TabIndex = 699;
-            this.txtTotal.Tag = null;
-            this.theme1.SetTheme(this.txtTotal, "(default)");
-            this.txtTotal.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
-            // 
-            // label16
-            // 
-            this.label16.AutoSize = true;
-            this.label16.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.label16.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label16.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.label16.Location = new System.Drawing.Point(1038, 20);
-            this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(45, 16);
-            this.label16.TabIndex = 701;
-            this.label16.Text = "Total :";
-            this.theme1.SetTheme(this.label16, "(default)");
-            // 
-            // label17
-            // 
-            this.label17.AutoSize = true;
-            this.label17.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.label17.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label17.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.label17.Location = new System.Drawing.Point(1038, 46);
-            this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(44, 16);
-            this.label17.TabIndex = 702;
-            this.label17.Text = "Extra :";
-            this.theme1.SetTheme(this.label17, "(default)");
-            // 
-            // txtInclude
-            // 
-            this.txtInclude.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtInclude.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
-            this.txtInclude.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.txtInclude.Location = new System.Drawing.Point(1110, 67);
-            this.txtInclude.Name = "txtInclude";
-            this.txtInclude.Size = new System.Drawing.Size(146, 24);
-            this.txtInclude.TabIndex = 703;
-            this.txtInclude.Tag = null;
-            this.theme1.SetTheme(this.txtInclude, "(default)");
-            this.txtInclude.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
-            // 
-            // label18
-            // 
-            this.label18.AutoSize = true;
-            this.label18.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.label18.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label18.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.label18.Location = new System.Drawing.Point(1038, 72);
-            this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(57, 16);
-            this.label18.TabIndex = 704;
-            this.label18.Text = "Include :";
-            this.theme1.SetTheme(this.label18, "(default)");
-            // 
             // FrmNurseAdd
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1378,6 +1378,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.theme1)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtInclude)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtExtra)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtTotal)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtVnOld)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtIdOld)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnClose)).EndInit();
@@ -1439,9 +1442,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.btnRxSetOrder)).EndInit();
             this.sB.ResumeLayout(false);
             this.sB.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.txtExtra)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtTotal)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtInclude)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

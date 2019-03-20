@@ -34,7 +34,7 @@ namespace clinic_ivf.gui
 
         int colBlId = 1, colBlName = 2, colBlQty=3, colBlPrice = 4, colBlInclude = 5, colBlRemark=6;
         int colPkgdId = 1, colPkgId = 2, colPkgType = 3, colPkgItmName = 4, colPkgItmId = 5, colPkgQty = 6;
-        int colRxdId = 1, colRxId = 2, colRxItmId = 3, colRxName = 4, colRxQty = 5;
+        int colRxdId = 1, colRxName = 2, colRxQty = 3, colRxPrice=4, colRxInclude=5, colRxRemark=6, colRxUsE=7, colRxUsT=8, colRxId = 9, colRxItmId = 10;
 
         int colOrderId = 1, colOrderVn = 2, colOrderLID = 3, colOrderExtra = 4, colOrderPrice = 5, colOrderStatus=6;
         int colOrderPID = 7, colOrderPIDS = 8, colOrderLName = 9, colOrderSP1V = 10, colOrderSP2V = 11, colOrderSP3V = 12;
@@ -109,13 +109,14 @@ namespace clinic_ivf.gui
         private void BtnRxSetOrder_Click(object sender, EventArgs e)
         {
             //throw new NotImplementedException();
-            if (grfRxSetD.Rows.Count > 0)
-            {
-                String gdid = "";
-                gdid = grfRxSet[grfRxSet.Row, colBlId].ToString();
-                ic.ivfDB.PxSetAdd(gdid, txtIdOld.Text, txtHn.Text, txtVnOld.Text, "");
-                setGrfOrder(txtVnOld.Text);
-            }
+            setRxSet();
+            //if (grfRxSetD.Rows.Count > 0)
+            //{
+            //    String gdid = "";
+            //    gdid = grfRxSet[grfRxSet.Row, colBlId].ToString();
+            //    ic.ivfDB.PxSetAdd(gdid, txtIdOld.Text, txtHn.Text, txtVnOld.Text, "");
+            //    setGrfOrder(txtVnOld.Text);
+            //}
         }
 
         private void BtnPkgOrder_Click(object sender, EventArgs e)
@@ -719,50 +720,52 @@ namespace clinic_ivf.gui
             //grfDept.Rows.Count = 7;
             grfRxSetD.Clear();
             DataTable dt = new DataTable();
-            dt = ic.ivfDB.oGudDB.selectByGdId(id);
+            dt = ic.ivfDB.oGudDB.selectByGdId1(id);
 
-            //grfExpn.Rows.Count = dt.Rows.Count + 1;
+            grfRxSetD.Rows.Count = dt.Rows.Count + 1;
             //grfEmbryo.Rows.Count = dt.Rows.Count + 1;
-            grfRxSetD.DataSource = dt;
-            grfRxSetD.Cols.Count = 6;
-            C1TextBox txt = new C1TextBox();
-            C1CheckBox chk = new C1CheckBox();
-            chk.Text = "Include Package";
-            //C1ComboBox cboproce = new C1ComboBox();
-            //ic.ivfDB.itmDB.setCboItem(cboproce);
-            grfRxSetD.Cols[colRxName].Editor = txt;
-            grfRxSetD.Cols[colRxItmId].Editor = txt;
-            grfRxSetD.Cols[colRxQty].Editor = txt;
-            grfRxSetD.Cols[colRxId].Editor = txt;
+            //grfRxSetD.DataSource = dt;
+            grfRxSetD.Cols.Count = 11;
+            CellStyle cs = grfRxSetD.Styles.Add("bool");
+            cs.DataType = typeof(bool);
+            cs.ImageAlign = ImageAlignEnum.LeftCenter;
 
-            grfRxSetD.Cols[colRxName].Width = 220;
-            grfRxSetD.Cols[colRxQty].Width = 80;
-            //grfRxSetD.Cols[colBlPrice].Width = 80;
-            //grfRxSetD.Cols[colBlRemark].Width = 100;
+            grfRxSetD.Cols[colRxName].Width = 330;
+            grfRxSetD.Cols[colRxInclude].Width = 120;
+            grfRxSetD.Cols[colRxPrice].Width = 80;
+            grfRxSetD.Cols[colRxRemark].Width = 100;
+            grfRxSetD.Cols[colRxUsE].Width = 200;
+            grfRxSetD.Cols[colRxUsT].Width = 100;
 
             grfRxSetD.ShowCursor = true;
             //grdFlex.Cols[colID].Caption = "no";
             //grfDept.Cols[colCode].Caption = "รหัส";
 
             grfRxSetD.Cols[colRxName].Caption = "Name";
+            grfRxSetD.Cols[colRxInclude].Caption = "Include";
+            grfRxSetD.Cols[colRxPrice].Caption = "Price";
             grfRxSetD.Cols[colRxQty].Caption = "QTY";
-            //grfRxSetD.Cols[colBlPrice].Caption = "QTY";
-            //grfRxSetD.Cols[colBlRemark].Caption = "Remark";
+            grfRxSetD.Cols[colRxRemark].Caption = "Remark";
 
-            Color color = ColorTranslator.FromHtml(ic.iniC.grfRowColor);
-            //CellRange rg1 = grfBank.GetCellRange(1, colE, grfBank.Rows.Count, colE);
-            //rg1.Style = grfBank.Styles["date"];
-            //grfCu.Cols[colID].Visible = false;
-            int i = 1;
+            CellRange rg = grfRxSetD.GetCellRange(1, colRxInclude, grfRxSetD.Rows.Count - 1, colRxInclude);
+            rg.Style = cs;
+            rg.Style = grfRxSetD.Styles["bool"];
+            int i = 0;
+            decimal aaa = 0;
             foreach (DataRow row in dt.Rows)
             {
                 try
                 {
-                    grfRxSetD[i, 0] = i;
-
-                    //if (i % 2 == 0)
-                    //    grfPtt.Rows[i].StyleNew.BackColor = color;
                     i++;
+                    //if (i == 1) continue;
+
+                    Decimal.TryParse(row["Price"].ToString(), out aaa);
+                    grfRxSetD[i, colRxPrice] = aaa.ToString("#,##0");
+                    grfRxSetD[i, colRxdId] = row[ic.ivfDB.oGudDB.oGuD.DUID].ToString();
+                    grfRxSetD[i, colRxName] = row[ic.ivfDB.oGudDB.oGuD.DUName].ToString();
+                    grfRxSetD[i, colRxQty] = row[ic.ivfDB.oGudDB.oGuD.QTY].ToString();
+                    grfRxSetD[i, colRxUsE] = row["EUsage"].ToString();
+                    grfRxSetD[i, colRxUsT] = row["TUsage"].ToString();
                 }
                 catch (Exception ex)
                 {
@@ -774,6 +777,7 @@ namespace clinic_ivf.gui
             grfRxSetD.Cols[colRxdId].Visible = false;
             grfRxSetD.Cols[colRxId].Visible = false;
             grfRxSetD.Cols[colRxItmId].Visible = false;
+            grfRxSetD.Cols[colRxUsT].Visible = false;
 
             grfRxSetD.Cols[colRxName].AllowEditing = false;
             grfRxSetD.Cols[colRxQty].AllowEditing = false;
@@ -790,7 +794,7 @@ namespace clinic_ivf.gui
             grfRxSet.Dock = System.Windows.Forms.DockStyle.Fill;
             grfRxSet.Location = new System.Drawing.Point(0, 0);
 
-            FilterRow fr = new FilterRow(grfRxSet);
+            //FilterRow fr = new FilterRow(grfRxSet);
 
             grfRxSet.AfterRowColChange += GrfRxSet_AfterRowColChange;
             //grfExpnC.CellButtonClick += new C1.Win.C1FlexGrid.RowColEventHandler(this.grfDept_CellButtonClick);
@@ -805,17 +809,38 @@ namespace clinic_ivf.gui
             theme1.SetTheme(grfRxSet, "Office2016DarkGray");
 
         }
-        private void ContextMenu_order_rx_set(object sender, System.EventArgs e)
+        private void setRxSet()
         {
             if (grfRxSetD.Rows.Count > 0)
             {
-                if (grfRxSet.Row <= 0) return;
-                if (grfRxSet[grfRxSet.Row, colBlId] == null) return;
-                String gdid = "";
-                gdid = grfRxSet[grfRxSet.Row, colBlId].ToString();
-                ic.ivfDB.PxSetAdd(gdid, txtIdOld.Text, txtHn.Text, txtVnOld.Text, "");
+                if (grfRxSetD.Row <= 0) return;
+                foreach (Row row in grfRxSetD.Rows)
+                {
+                    if (row[colRxdId] == null) continue;
+                    String duid = "", include = "", qty = "", usaget = "", usagee = "", duname = "", price = "";
+                    duid = row[colRxdId].ToString();
+                    usaget = row[colRxUsT].ToString();
+                    usagee = row[colRxUsE].ToString();
+                    duname = row[colRxName].ToString();
+                    price = row[colRxPrice].ToString();
+                    include = row[colRxInclude] != null ? row[colRxInclude].ToString().Equals("True") ? "1" : "0" : "0";
+                    qty = row[colBlQty] != null ? row[colBlQty].ToString() : "1";
+                    if (include.Equals("1"))
+                    {
+                        ic.ivfDB.PxSetAdd(duid, txtIdOld.Text, txtHn.Text, txtVnOld.Text, "0", grfOrder.Rows.Count.ToString(), qty, usaget, usagee, duname, price);
+                    }
+                    else
+                    {
+                        ic.ivfDB.PxSetAdd(duid, txtIdOld.Text, txtHn.Text, txtVnOld.Text, "1", grfOrder.Rows.Count.ToString(), qty, usaget, usagee, duname, price);
+                    }
+                }
+
                 setGrfOrder(txtVnOld.Text);
             }
+        }
+        private void ContextMenu_order_rx_set(object sender, System.EventArgs e)
+        {
+            setRxSet();
         }
         private void GrfRxSet_AfterRowColChange(object sender, RangeEventArgs e)
         {
@@ -874,7 +899,7 @@ namespace clinic_ivf.gui
                 {
                     i++;
                     if (i == 1) continue;
-                    if (i == 2) continue;
+                    //if (i == 2) continue;
                     row[0] = (i - 2);
                 }
                 catch (Exception ex)
