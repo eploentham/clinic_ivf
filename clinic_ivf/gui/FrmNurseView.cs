@@ -947,8 +947,9 @@ namespace clinic_ivf.gui
                 {
                     //dt11 = dt11.AddDays(-1);
                     date = dt11.Year + "-" + dt11.ToString("MM-dd");
-                    dt = ic.ivfDB.ovsDB.selectByDate(date);
+                    //dt = ic.ivfDB.ovsDB.selectByDate(date);
                 }
+                dt = ic.ivfDB.ovsDB.selectByReceptionSend();
             }
             else
             {

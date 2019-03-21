@@ -68,3 +68,34 @@ ADD COLUMN `row1` INT NULL AFTER `EUsage`;
 ALTER TABLE `ivf_101`.`JobSpecialDetail` 
 ADD COLUMN `row1` INT NULL AFTER `req_id`;
 
+ALTER TABLE `ivf_101`.`PackageSold` 
+ADD COLUMN `row1` INT NULL AFTER `VN`;
+
+
+ALTER TABLE `ivf_101`.`Agent` 
+ADD COLUMN `active` VARCHAR(45) NULL AFTER `AgentName`,
+ADD COLUMN `remark` VARCHAR(255) NULL AFTER `active`,
+ADD COLUMN `sort1` VARCHAR(45) NULL AFTER `remark`,
+ADD COLUMN `date_create` VARCHAR(45) NULL AFTER `sort1`,
+ADD COLUMN `date_modi` VARCHAR(45) NULL AFTER `date_create`,
+ADD COLUMN `date_cancel` VARCHAR(45) NULL AFTER `date_modi`,
+ADD COLUMN `user_create` VARCHAR(45) NULL AFTER `date_cancel`,
+ADD COLUMN `user_modi` VARCHAR(45) NULL AFTER `user_create`,
+ADD COLUMN `user_cancel` VARCHAR(45) NULL AFTER `user_modi`;
+
+
+update Agent set active = '1'
+
+
+ALTER TABLE `ivf_101`.`Agent` 
+CHANGE COLUMN `active` `active` VARCHAR(45) NULL DEFAULT '1' ;
+
+
+delete from JobPx;
+delete from JobPxDetail;
+
+delete from JobLab;
+delete from JobLabDetail;
+
+delete from JobSpecial;
+delete from JobSpecialDetail;

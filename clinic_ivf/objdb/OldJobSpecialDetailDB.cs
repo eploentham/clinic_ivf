@@ -111,6 +111,23 @@ namespace clinic_ivf.objdb
 
             return re;
         }
+        public String deleteByPk(String id)
+        {
+            DataTable dt = new DataTable();
+            String re = "";
+            String sql = "Delete From  " + ojsd.table + " " +
+                "Where " + ojsd.pkField + "='" + id + "'";
+            //re = conn.ExecuteNonQuery(conn.conn, sql);
+            try
+            {
+                re = conn.ExecuteNonQuery(conn.conn, sql);
+            }
+            catch (Exception ex)
+            {
+                sql = ex.Message + " " + ex.InnerException;
+            }
+            return re;
+        }
         public DataTable selectByPk(String copId)
         {
             DataTable dt = new DataTable();

@@ -39,6 +39,7 @@ namespace clinic_ivf.objdb
             opkgs.P3BDetailID = "P3BDetailID";
             opkgs.P4BDetailID = "P4BDetailID";
             opkgs.VN = "VN";
+            opkgs.row1 = "row1";
 
             opkgs.table = "PackageSold";
             opkgs.pkField = "PCKSID";
@@ -68,6 +69,7 @@ namespace clinic_ivf.objdb
             p.P3BDetailID = long.TryParse(p.P3BDetailID, out chk1) ? chk1.ToString() : "0";
             p.P4BDetailID = long.TryParse(p.P4BDetailID, out chk1) ? chk1.ToString() : "0";
             p.VN = long.TryParse(p.VN, out chk1) ? chk1.ToString() : "0";
+            p.row1 = long.TryParse(p.row1, out chk1) ? chk1.ToString() : "0";
 
             p.Price = decimal.TryParse(p.Price, out chk) ? chk.ToString() : "0";
             p.Payment1 = decimal.TryParse(p.Payment1, out chk) ? chk.ToString() : "0";
@@ -104,7 +106,7 @@ namespace clinic_ivf.objdb
                 "," + opkgs.P3BDetailID + "= '" + p.P3BDetailID + "'" +
                 "," + opkgs.P4BDetailID + "= '" + p.P4BDetailID + "'" +
                 "," + opkgs.VN + "= '" + p.VN + "'" +
-                
+                "," + opkgs.row1 + "= '" + p.row1 + "'" +
                 "";
             try
             {
@@ -189,7 +191,7 @@ namespace clinic_ivf.objdb
 
             return re;
         }
-        public String delePackage(String pkgid)
+        public String deleteByPk(String pkgid)
         {
             //$this->db->query('delete from PackageSold Where PCKSID="' . $ID . '"');
             String re = "";
@@ -271,7 +273,7 @@ namespace clinic_ivf.objdb
                 opkgs1.P3BDetailID = dt.Rows[0][opkgs.P3BDetailID].ToString();
                 opkgs1.P4BDetailID = dt.Rows[0][opkgs.P4BDetailID].ToString();
                 opkgs1.VN = dt.Rows[0][opkgs.VN].ToString();
-                
+                opkgs1.row1 = dt.Rows[0][opkgs.row1].ToString();
             }
             else
             {
@@ -299,7 +301,7 @@ namespace clinic_ivf.objdb
             stf1.P3BDetailID = "";
             stf1.P4BDetailID = "";
             stf1.VN = "";
-            
+            stf1.row1 = "";
             return stf1;
         }
     }

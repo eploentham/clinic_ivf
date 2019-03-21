@@ -38,7 +38,7 @@
             this.txtTotal = new C1.Win.C1Input.C1TextBox();
             this.txtVnOld = new C1.Win.C1Input.C1TextBox();
             this.txtIdOld = new C1.Win.C1Input.C1TextBox();
-            this.btnClose = new C1.Win.C1Input.C1Button();
+            this.btnFinish = new C1.Win.C1Input.C1Button();
             this.txtAllergy = new C1.Win.C1Input.C1TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -68,8 +68,8 @@
             this.tabPackage = new C1.Win.C1Command.C1DockingTabPage();
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
             this.pnPackage = new System.Windows.Forms.Panel();
-            this.c1DockingTab1 = new C1.Win.C1Command.C1DockingTab();
-            this.c1DockingTabPage1 = new C1.Win.C1Command.C1DockingTabPage();
+            this.tcPackage = new C1.Win.C1Command.C1DockingTab();
+            this.tabPkgOrder = new C1.Win.C1Command.C1DockingTabPage();
             this.panel2 = new System.Windows.Forms.Panel();
             this.txtPkgId = new C1.Win.C1Input.C1TextBox();
             this.btnPkgOrder = new C1.Win.C1Input.C1Button();
@@ -87,9 +87,9 @@
             this.label8 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.txtPkgName = new C1.Win.C1Input.C1TextBox();
-            this.c1DockingTabPage2 = new C1.Win.C1Command.C1DockingTabPage();
+            this.tabPkgDetail = new C1.Win.C1Command.C1DockingTabPage();
             this.pnPackageD = new System.Windows.Forms.Panel();
-            this.c1DockingTabPage3 = new C1.Win.C1Command.C1DockingTabPage();
+            this.tabPkgOld = new C1.Win.C1Command.C1DockingTabPage();
             this.tabBloodLab = new C1.Win.C1Command.C1DockingTabPage();
             this.pnBloodLab = new System.Windows.Forms.Panel();
             this.tabSpermLab = new C1.Win.C1Command.C1DockingTabPage();
@@ -123,7 +123,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtTotal)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtVnOld)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtIdOld)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.btnClose)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnFinish)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtAllergy)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtDoctor)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtVn)).BeginInit();
@@ -151,9 +151,9 @@
             this.splitContainer2.Panel1.SuspendLayout();
             this.splitContainer2.Panel2.SuspendLayout();
             this.splitContainer2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.c1DockingTab1)).BeginInit();
-            this.c1DockingTab1.SuspendLayout();
-            this.c1DockingTabPage1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.tcPackage)).BeginInit();
+            this.tcPackage.SuspendLayout();
+            this.tabPkgOrder.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtPkgId)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnPkgOrder)).BeginInit();
@@ -164,7 +164,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtPrice)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cboSellThruID)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtPkgName)).BeginInit();
-            this.c1DockingTabPage2.SuspendLayout();
+            this.tabPkgDetail.SuspendLayout();
             this.tabBloodLab.SuspendLayout();
             this.tabSpermLab.SuspendLayout();
             this.tabEmbryoLab.SuspendLayout();
@@ -197,7 +197,7 @@
             this.groupBox1.Controls.Add(this.txtTotal);
             this.groupBox1.Controls.Add(this.txtVnOld);
             this.groupBox1.Controls.Add(this.txtIdOld);
-            this.groupBox1.Controls.Add(this.btnClose);
+            this.groupBox1.Controls.Add(this.btnFinish);
             this.groupBox1.Controls.Add(this.txtAllergy);
             this.groupBox1.Controls.Add(this.label6);
             this.groupBox1.Controls.Add(this.label3);
@@ -334,19 +334,19 @@
             this.txtIdOld.Visible = false;
             this.txtIdOld.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
             // 
-            // btnClose
+            // btnFinish
             // 
-            this.btnClose.Image = global::clinic_ivf.Properties.Resources.Add_ticket_24;
-            this.btnClose.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnClose.Location = new System.Drawing.Point(952, 15);
-            this.btnClose.Name = "btnClose";
-            this.btnClose.Size = new System.Drawing.Size(80, 31);
-            this.btnClose.TabIndex = 696;
-            this.btnClose.Text = "Finish";
-            this.btnClose.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.theme1.SetTheme(this.btnClose, "(default)");
-            this.btnClose.UseVisualStyleBackColor = true;
-            this.btnClose.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            this.btnFinish.Image = global::clinic_ivf.Properties.Resources.Add_ticket_24;
+            this.btnFinish.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnFinish.Location = new System.Drawing.Point(952, 15);
+            this.btnFinish.Name = "btnFinish";
+            this.btnFinish.Size = new System.Drawing.Size(80, 31);
+            this.btnFinish.TabIndex = 696;
+            this.btnFinish.Text = "Finish";
+            this.btnFinish.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.theme1.SetTheme(this.btnFinish, "(default)");
+            this.btnFinish.UseVisualStyleBackColor = true;
+            this.btnFinish.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
             // 
             // txtAllergy
             // 
@@ -755,7 +755,7 @@
             // splitContainer2.Panel2
             // 
             this.splitContainer2.Panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.splitContainer2.Panel2.Controls.Add(this.c1DockingTab1);
+            this.splitContainer2.Panel2.Controls.Add(this.tcPackage);
             this.splitContainer2.Panel2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
             this.theme1.SetTheme(this.splitContainer2.Panel2, "(default)");
             this.splitContainer2.Size = new System.Drawing.Size(585, 623);
@@ -774,34 +774,34 @@
             this.pnPackage.TabIndex = 0;
             this.theme1.SetTheme(this.pnPackage, "(default)");
             // 
-            // c1DockingTab1
+            // tcPackage
             // 
-            this.c1DockingTab1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.c1DockingTab1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.c1DockingTab1.Controls.Add(this.c1DockingTabPage1);
-            this.c1DockingTab1.Controls.Add(this.c1DockingTabPage2);
-            this.c1DockingTab1.Controls.Add(this.c1DockingTabPage3);
-            this.c1DockingTab1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.c1DockingTab1.HotTrack = true;
-            this.c1DockingTab1.Location = new System.Drawing.Point(0, 0);
-            this.c1DockingTab1.Name = "c1DockingTab1";
-            this.c1DockingTab1.SelectedIndex = 2;
-            this.c1DockingTab1.Size = new System.Drawing.Size(585, 329);
-            this.c1DockingTab1.TabIndex = 1;
-            this.c1DockingTab1.TabSizeMode = C1.Win.C1Command.TabSizeModeEnum.Fit;
-            this.c1DockingTab1.TabsShowFocusCues = false;
-            this.c1DockingTab1.TabsSpacing = 2;
-            this.c1DockingTab1.TabStyle = C1.Win.C1Command.TabStyleEnum.Office2007;
-            this.theme1.SetTheme(this.c1DockingTab1, "(default)");
+            this.tcPackage.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.tcPackage.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.tcPackage.Controls.Add(this.tabPkgOrder);
+            this.tcPackage.Controls.Add(this.tabPkgDetail);
+            this.tcPackage.Controls.Add(this.tabPkgOld);
+            this.tcPackage.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tcPackage.HotTrack = true;
+            this.tcPackage.Location = new System.Drawing.Point(0, 0);
+            this.tcPackage.Name = "tcPackage";
+            this.tcPackage.SelectedIndex = 2;
+            this.tcPackage.Size = new System.Drawing.Size(585, 329);
+            this.tcPackage.TabIndex = 1;
+            this.tcPackage.TabSizeMode = C1.Win.C1Command.TabSizeModeEnum.Fit;
+            this.tcPackage.TabsShowFocusCues = false;
+            this.tcPackage.TabsSpacing = 2;
+            this.tcPackage.TabStyle = C1.Win.C1Command.TabStyleEnum.Office2007;
+            this.theme1.SetTheme(this.tcPackage, "(default)");
             // 
-            // c1DockingTabPage1
+            // tabPkgOrder
             // 
-            this.c1DockingTabPage1.Controls.Add(this.panel2);
-            this.c1DockingTabPage1.Location = new System.Drawing.Point(1, 25);
-            this.c1DockingTabPage1.Name = "c1DockingTabPage1";
-            this.c1DockingTabPage1.Size = new System.Drawing.Size(583, 303);
-            this.c1DockingTabPage1.TabIndex = 0;
-            this.c1DockingTabPage1.Text = "สั่งการ";
+            this.tabPkgOrder.Controls.Add(this.panel2);
+            this.tabPkgOrder.Location = new System.Drawing.Point(1, 25);
+            this.tabPkgOrder.Name = "tabPkgOrder";
+            this.tabPkgOrder.Size = new System.Drawing.Size(583, 303);
+            this.tabPkgOrder.TabIndex = 0;
+            this.tabPkgOrder.Text = "สั่งการ";
             // 
             // panel2
             // 
@@ -1050,14 +1050,14 @@
             this.theme1.SetTheme(this.txtPkgName, "(default)");
             this.txtPkgName.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
             // 
-            // c1DockingTabPage2
+            // tabPkgDetail
             // 
-            this.c1DockingTabPage2.Controls.Add(this.pnPackageD);
-            this.c1DockingTabPage2.Location = new System.Drawing.Point(1, 25);
-            this.c1DockingTabPage2.Name = "c1DockingTabPage2";
-            this.c1DockingTabPage2.Size = new System.Drawing.Size(583, 303);
-            this.c1DockingTabPage2.TabIndex = 1;
-            this.c1DockingTabPage2.Text = "รายละเอียด";
+            this.tabPkgDetail.Controls.Add(this.pnPackageD);
+            this.tabPkgDetail.Location = new System.Drawing.Point(1, 25);
+            this.tabPkgDetail.Name = "tabPkgDetail";
+            this.tabPkgDetail.Size = new System.Drawing.Size(583, 303);
+            this.tabPkgDetail.TabIndex = 1;
+            this.tabPkgDetail.Text = "รายละเอียด";
             // 
             // pnPackageD
             // 
@@ -1070,13 +1070,13 @@
             this.pnPackageD.TabIndex = 1;
             this.theme1.SetTheme(this.pnPackageD, "(default)");
             // 
-            // c1DockingTabPage3
+            // tabPkgOld
             // 
-            this.c1DockingTabPage3.Location = new System.Drawing.Point(1, 25);
-            this.c1DockingTabPage3.Name = "c1DockingTabPage3";
-            this.c1DockingTabPage3.Size = new System.Drawing.Size(583, 303);
-            this.c1DockingTabPage3.TabIndex = 2;
-            this.c1DockingTabPage3.Text = "Package เก่า";
+            this.tabPkgOld.Location = new System.Drawing.Point(1, 25);
+            this.tabPkgOld.Name = "tabPkgOld";
+            this.tabPkgOld.Size = new System.Drawing.Size(583, 303);
+            this.tabPkgOld.TabIndex = 2;
+            this.tabPkgOld.Text = "Package เก่า";
             // 
             // tabBloodLab
             // 
@@ -1383,7 +1383,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtTotal)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtVnOld)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtIdOld)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.btnClose)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnFinish)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtAllergy)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtDoctor)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtVn)).EndInit();
@@ -1411,9 +1411,9 @@
             this.splitContainer2.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).EndInit();
             this.splitContainer2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.c1DockingTab1)).EndInit();
-            this.c1DockingTab1.ResumeLayout(false);
-            this.c1DockingTabPage1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.tcPackage)).EndInit();
+            this.tcPackage.ResumeLayout(false);
+            this.tabPkgOrder.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtPkgId)).EndInit();
@@ -1425,7 +1425,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtPrice)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cboSellThruID)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtPkgName)).EndInit();
-            this.c1DockingTabPage2.ResumeLayout(false);
+            this.tabPkgDetail.ResumeLayout(false);
             this.tabBloodLab.ResumeLayout(false);
             this.tabSpermLab.ResumeLayout(false);
             this.tabEmbryoLab.ResumeLayout(false);
@@ -1504,13 +1504,13 @@
         private System.Windows.Forms.SplitContainer splitContainer3;
         private System.Windows.Forms.Panel pnRxSet;
         private System.Windows.Forms.Panel pnRxSetD;
-        private C1.Win.C1Input.C1Button btnClose;
+        private C1.Win.C1Input.C1Button btnFinish;
         private C1.Win.C1Input.C1TextBox txtIdOld;
         private C1.Win.C1Input.C1TextBox txtVnOld;
-        private C1.Win.C1Command.C1DockingTab c1DockingTab1;
-        private C1.Win.C1Command.C1DockingTabPage c1DockingTabPage1;
+        private C1.Win.C1Command.C1DockingTab tcPackage;
+        private C1.Win.C1Command.C1DockingTabPage tabPkgOrder;
         private System.Windows.Forms.Panel panel2;
-        private C1.Win.C1Command.C1DockingTabPage c1DockingTabPage2;
+        private C1.Win.C1Command.C1DockingTabPage tabPkgDetail;
         private System.Windows.Forms.Panel pnPackageD;
         private System.Windows.Forms.Label label7;
         private C1.Win.C1Input.C1TextBox txtPkgName;
@@ -1528,7 +1528,7 @@
         private C1.Win.C1Input.C1TextBox txtPrice;
         private C1.Win.C1Input.C1Button btnPkgOrder;
         private C1.Win.C1Input.C1TextBox txtPkgId;
-        private C1.Win.C1Command.C1DockingTabPage c1DockingTabPage3;
+        private C1.Win.C1Command.C1DockingTabPage tabPkgOld;
         private System.Windows.Forms.Panel panel5;
         private C1.Win.C1Input.C1Button btnRxSetOrder;
         private C1.Win.C1Input.C1TextBox txtExtra;

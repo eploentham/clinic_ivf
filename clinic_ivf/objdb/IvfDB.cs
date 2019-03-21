@@ -376,6 +376,22 @@ namespace clinic_ivf.objdb
             extra = ojsdDB.selectSumExtraPriceByVN(vn);
             oJsDB.updateIncludePriceFormDetail(include, extra, vn);
         }
+        public void nurseFinish(String vn)
+        {
+            //    $this->px->cal_px($VN);
+            //$this->lab->cal_lab($VN);
+            //$this->special->cal_spc($VN);
+            //$this->visit->send_to_account($VN);
+
+  //          $this->db->query('update Visit set LVSID=VSID Where VN="'.$VN.'"');
+		//$this->db->query('update Visit set VSID="160" Where VN="'.$VN.'"');
+
+            calIncludeExtraPricePx(vn);
+            calIncludeExtraPricelab(vn);
+            calIncludeExtraPriceSpecial(vn);
+
+            ovsDB.updateStatusNurseFinish(vn);
+        }
         public void setPx(String vn, String hn, String pid, String drugid)
         {
             oJpxDB.setJobPx(vn, hn, pid);
@@ -521,6 +537,37 @@ namespace clinic_ivf.objdb
             ojsd.row1 = row1;
             ojsd.qty = qty;
             ojsdDB.insert(ojsd, "");
+        }
+        public void calPx(String vn)
+        {
+        //    $query = $this->db->query('select sum(Price) as Inc from JobPxDetail Where VN="'. $VN. '" and Extra="0"');
+        //    if ($query->num_rows() != 0) {
+        //    $Include_Pkg_Price = $query->row()->Inc;
+        //    } else {
+        //    $Include_Pkg_Price = 0;
+        //    };
+        //$query = $this->db->query('select sum(Price) as Extra from JobPxDetail Where VN="'. $VN. '" and Extra="1"');
+        //    if ($query->num_rows() != 0) {
+        //    $Extra_Pkg_Price = $query->row()->Extra;
+        //    } else {
+        //    $Extra_Pkg_Price = 0;
+        //    };
+        //$Total_Price = $Include_Pkg_Price + $Extra_Pkg_Price;
+        //$this->db->query('update JobPx Set Include_Pkg_Price="'. $Include_Pkg_Price. '", Extra_Pkg_Price="'. $Extra_Pkg_Price. '", Total_Price="'. $Total_Price. '", Status="2" Where VN="'. $VN. '"');
+            String sql = "", re="", inc="", extra="";
+            DataTable dt = new DataTable();
+            sql = "Select sum(Price) as inc from JobPxDetail Where VN = '"+vn+" and Extra='0' ";
+            dt = conn.selectData(conn.conn, sql);
+            if (dt.Rows.Count > 0)
+            {
+                inc = dt.Rows[0]["inc"].ToString();
+            }
+            sql = "Select sum(Price) as extra from JobPxDetail Where VN = '"+vn+"' and Extra = '1' ";
+            dt = conn.selectData(conn.conn, sql);
+            if (dt.Rows.Count > 0)
+            {
+                extra = dt.Rows[0]["extra"].ToString();
+            }
         }
         public void DeleteBill(String vn)
         {

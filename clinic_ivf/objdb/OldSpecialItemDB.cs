@@ -85,6 +85,23 @@ namespace clinic_ivf.objdb
                 loBilg.Add(sitm);
             }
         }
+        public String deleteByPk(String id)
+        {
+            DataTable dt = new DataTable();
+            String re = "";
+            String sql = "Delete From  " + sitm.table + " " +
+                "Where " + sitm.pkField + "='" + id + "'";
+            //re = conn.ExecuteNonQuery(conn.conn, sql);
+            try
+            {
+                re = conn.ExecuteNonQuery(conn.conn, sql);
+            }
+            catch (Exception ex)
+            {
+                sql = ex.Message + " " + ex.InnerException;
+            }
+            return re;
+        }
         public DataTable selectAll()
         {
             DataTable dt = new DataTable();

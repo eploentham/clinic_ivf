@@ -78,6 +78,7 @@ namespace clinic_ivf.gui
             tabOrder.Click += TabOrder_Click;
             btnPkgOrder.Click += BtnPkgOrder_Click;
             btnRxSetOrder.Click += BtnRxSetOrder_Click;
+            btnFinish.Click += BtnFinish_Click;
 
             setControl(vsid);
             //btnNew.Click += BtnNew_Click;
@@ -104,6 +105,13 @@ namespace clinic_ivf.gui
             setGrfOrder(txtVn.Text);
             //initGrfPtt();
             //setGrfPtt("");
+        }
+
+        private void BtnFinish_Click(object sender, EventArgs e)
+        {
+            //throw new NotImplementedException();
+            ic.ivfDB.nurseFinish(txtVnOld.Text);
+            setGrfOrder(txtVn.Text);
         }
 
         private void BtnRxSetOrder_Click(object sender, EventArgs e)
@@ -141,6 +149,7 @@ namespace clinic_ivf.gui
             opkgs.P3BDetailID = "";
             opkgs.P4BDetailID = "";
             opkgs.VN = txtVnOld.Text;
+            opkgs.row1 = grfOrder.Rows.Count.ToString();
             ic.ivfDB.PackageAdd(opkgs);
             setGrfOrder(txtVn.Text);
         }
@@ -244,11 +253,22 @@ namespace clinic_ivf.gui
             rowOrder--;
             id = grfOrder[grfOrder.Row, colOrdid].ToString();
             status = grfOrder[grfOrder.Row, colOrdstatus].ToString();
-            if (status.Equals("bloodlab"))
+            if (status.Equals("bloodlab") || status.Equals("Sperm Lab") || status.Equals("Embryo Lab") || status.Equals("Genetic Lab"))
             {
                 ic.ivfDB.oJlabdDB.deleteByPk(id);
             }
-            
+            else if (status.Equals("specialitem"))
+            {
+                ic.ivfDB.ojsdDB.deleteByPk(id);
+            }
+            else if (status.Equals("px"))
+            {
+                ic.ivfDB.oJpxdDB.deleteByPk(id);
+            }
+            else if (status.Equals("package"))
+            {
+                ic.ivfDB.opkgsDB.deleteByPk(id);
+            }
             setGrfOrder(txtVnOld.Text);
         }
         private void setGrfOrder(String vn)
@@ -354,7 +374,7 @@ namespace clinic_ivf.gui
                 row1["qty"] = "1";
                 row1["status"] = "package";
                 row1["row1"] = row["row1"];
-                row1["include"] = row["Extra"];
+                row1["include"] = "0";
                 dtAll.Rows.InsertAt(row1, i);
                 i++;
 
@@ -471,7 +491,7 @@ namespace clinic_ivf.gui
             UpdateTotals();
             String total = "";
             Decimal total1 = 0;
-            total = grfOrder[grfOrder.Rows.Count - 1, colOrdAmt].ToString();
+            total = grfOrder[grfOrder.Rows.Count - 1, colOrdAmt] != null ? grfOrder[grfOrder.Rows.Count - 1, colOrdAmt].ToString() : "";
             Decimal.TryParse(total, out total1);
             txtTotal.Value = total1.ToString("#,###.00");
             txtInclude.Value = inc.ToString("#,###.00");
@@ -580,19 +600,13 @@ namespace clinic_ivf.gui
             DataTable dt = new DataTable();
             dt = ic.ivfDB.oPkgDB.selectAll();
 
-            //grfExpn.Rows.Count = dt.Rows.Count + 1;
+            grfPackage.Rows.Count = dt.Rows.Count + 1;
             //grfEmbryo.Rows.Count = dt.Rows.Count + 1;
-            grfPackage.DataSource = dt;
+            //grfPackage.DataSource = dt;
             grfPackage.Cols.Count = 7;
-            C1TextBox txt = new C1TextBox();
-            C1CheckBox chk = new C1CheckBox();
-            chk.Text = "Include Package";
-            //C1ComboBox cboproce = new C1ComboBox();
-            //ic.ivfDB.itmDB.setCboItem(cboproce);
-            grfPackage.Cols[colBlName].Editor = txt;
-            grfPackage.Cols[colBlInclude].Editor = txt;
-            grfPackage.Cols[colBlPrice].Editor = txt;
-            grfPackage.Cols[colBlRemark].Editor = txt;
+            CellStyle cs = grfBloodLab.Styles.Add("bool");
+            cs.DataType = typeof(bool);
+            cs.ImageAlign = ImageAlignEnum.LeftCenter;
 
             grfPackage.Cols[colBlName].Width = 320;
             grfPackage.Cols[colBlInclude].Width = 120;
@@ -608,19 +622,23 @@ namespace clinic_ivf.gui
             grfPackage.Cols[colBlPrice].Caption = "Price";
             grfPackage.Cols[colBlRemark].Caption = "Remark";
 
-            Color color = ColorTranslator.FromHtml(ic.iniC.grfRowColor);
-            //CellRange rg1 = grfBank.GetCellRange(1, colE, grfBank.Rows.Count, colE);
-            //rg1.Style = grfBank.Styles["date"];
-            //grfCu.Cols[colID].Visible = false;
+            CellRange rg = grfBloodLab.GetCellRange(2, colBlInclude, grfBloodLab.Rows.Count - 1, colBlInclude);
+            rg.Style = cs;
+            rg.Style = grfBloodLab.Styles["bool"];
+
             int i = 0;
-            foreach (Row row in grfPackage.Rows)
+            decimal aaa = 0;
+            foreach (DataRow row in dt.Rows)
             {
                 try
                 {
                     i++;
-                    if (i == 1) continue;
-                    if (i == 2) continue;
-                    row[0] = (i - 2);
+                    //if (i == 1) continue;
+                    Decimal.TryParse(row[ic.ivfDB.oPkgDB.oPkg.Price].ToString(), out aaa);
+                    grfPackage[i, colBlPrice] = aaa.ToString("#,##0");
+                    grfPackage[i, colBlId] = row[ic.ivfDB.oPkgDB.oPkg.PCKID].ToString();
+                    grfPackage[i, colBlName] = row[ic.ivfDB.oPkgDB.oPkg.PackageName].ToString();
+                    grfPackage[i, colBlQty] = "1";
                 }
                 catch (Exception ex)
                 {
@@ -646,7 +664,7 @@ namespace clinic_ivf.gui
             grfPackage.Dock = System.Windows.Forms.DockStyle.Fill;
             grfPackage.Location = new System.Drawing.Point(0, 0);
 
-            FilterRow fr = new FilterRow(grfPackage);
+            //FilterRow fr = new FilterRow(grfPackage);
 
             grfPackage.AfterRowColChange += GrfPackage_AfterRowColChange;
             //grfExpnC.CellButtonClick += new C1.Win.C1FlexGrid.RowColEventHandler(this.grfDept_CellButtonClick);
@@ -847,7 +865,7 @@ namespace clinic_ivf.gui
             //throw new NotImplementedException();
             if (grfRxSet.Row < 0) return;
             if (grfRxSet[grfRxSet.Row, colBlId] == null) return;
-            btnPkgOrder.Enabled = false;
+            //btnPkgOrder.Enabled = false;
             String id = grfRxSet[grfRxSet.Row, colBlId].ToString();
             setGrfRxSetD(id);
 
@@ -1604,6 +1622,7 @@ namespace clinic_ivf.gui
         {
             tC.SelectedTab = tabDrug;
             tabOrder.SelectedTab = tabBloodLab;
+            tcPackage.SelectedTab = tabPkgOrder;
         }
     }
 }

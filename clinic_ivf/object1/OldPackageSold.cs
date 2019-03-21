@@ -26,6 +26,6 @@ namespace clinic_ivf.object1
         public String P3BDetailID { get; set; }
         public String P4BDetailID { get; set; }
         public String VN { get; set; }
-        
+        public String row1 { get; set; }
     }
 }
