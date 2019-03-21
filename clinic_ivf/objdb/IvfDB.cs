@@ -455,7 +455,7 @@ namespace clinic_ivf.objdb
             //}
 
         }
-        public void PxAdd(String duid, String qty, String pid, String pids, String vn, String extra, String row1)
+        public void PxAdd(String duid, String qty, String pid, String pids, String vn, String extra, String row1, String usage)
         {
             JobPxDetail oJpxd = new JobPxDetail();
             OldStockDrug ostkD = new OldStockDrug();
@@ -475,7 +475,7 @@ namespace clinic_ivf.objdb
             oJpxd.PIDS = pids;
             oJpxd.DUName = ostkD.DUName;
             oJpxd.Comment = "";
-            oJpxd.TUsage = ostkD.TUsage;
+            oJpxd.TUsage = usage;
             oJpxd.EUsage = ostkD.EUsage;
             oJpxd.row1 = row1;
             oJpxdDB.insert(oJpxd, "");
@@ -999,7 +999,11 @@ namespace clinic_ivf.objdb
                 billno = dt.Rows[0]["BillNo"].ToString();
                 Decimal.TryParse(total, out total1);
                 total = total1.ToString("0.00");
-                billdoc = "RE"+billno.Substring(0, 4)+"-"+ billno.Substring(4);
+                if(billno.Length > 4)
+                {
+                    billdoc = "RE" + billno.Substring(0, 4) + "-" + billno.Substring(4);
+                }
+                
 
                 billextno = dt.Rows[0]["ExtBillNo"].ToString();
                 try
@@ -1195,6 +1199,14 @@ namespace clinic_ivf.objdb
             }
 
             return dtprn;
+        }
+        public void accountsendtonurse(String vn)
+        {
+  //          $this->db->query('delete from BillHeader Where VN="'.$VN.'"');
+		//$this->db->query('delete from BillDetail Where VN="'.$VN.'"');
+		//$this->db->query('update Visit set VSID="115" Where VN="'.$VN.'"');
+            DeleteBill(vn);
+            ovsDB.updateStatusCashierbackNurse(vn);
         }
     }
 }

@@ -34,7 +34,7 @@
             this.txtVsId = new C1.Win.C1Input.C1TextBox();
             this.txtIdOld = new C1.Win.C1Input.C1TextBox();
             this.txtPttId = new C1.Win.C1Input.C1TextBox();
-            this.btnClose = new C1.Win.C1Input.C1Button();
+            this.btnPrnBill = new C1.Win.C1Input.C1Button();
             this.txtAllergy = new C1.Win.C1Input.C1TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -61,6 +61,12 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.pnBillD = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.btnChargeAdd = new C1.Win.C1Input.C1Button();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.cboGrpType = new C1.Win.C1Input.C1ComboBox();
+            this.radioButton2 = new System.Windows.Forms.RadioButton();
+            this.radioButton1 = new System.Windows.Forms.RadioButton();
+            this.label19 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.txtPayCreditCard = new C1.Win.C1Input.C1TextBox();
             this.chkDiscount = new C1.Win.C1Input.C1CheckBox();
@@ -88,19 +94,15 @@
             this.label8 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.txtPayName = new C1.Win.C1Input.C1TextBox();
-            this.label19 = new System.Windows.Forms.Label();
-            this.panel3 = new System.Windows.Forms.Panel();
-            this.radioButton1 = new System.Windows.Forms.RadioButton();
-            this.radioButton2 = new System.Windows.Forms.RadioButton();
-            this.cboGrpType = new C1.Win.C1Input.C1ComboBox();
-            this.btnChargeAdd = new C1.Win.C1Input.C1Button();
+            this.btnCalBack = new C1.Win.C1Input.C1Button();
+            this.btnClose = new C1.Win.C1Input.C1Button();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtHnOld)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtVnOld)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtVsId)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtIdOld)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtPttId)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.btnClose)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnPrnBill)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtAllergy)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtDoctor)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtVn)).BeginInit();
@@ -116,6 +118,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.theme1)).BeginInit();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.btnChargeAdd)).BeginInit();
+            this.panel3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.cboGrpType)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtPayCreditCard)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkDiscount)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtTotalCredit)).BeginInit();
@@ -131,20 +136,21 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtDiscount)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cboAccCash)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtPayName)).BeginInit();
-            this.panel3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.cboGrpType)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.btnChargeAdd)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnCalBack)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnClose)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBox1
             // 
             this.groupBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.groupBox1.Controls.Add(this.btnClose);
+            this.groupBox1.Controls.Add(this.btnCalBack);
             this.groupBox1.Controls.Add(this.txtHnOld);
             this.groupBox1.Controls.Add(this.txtVnOld);
             this.groupBox1.Controls.Add(this.txtVsId);
             this.groupBox1.Controls.Add(this.txtIdOld);
             this.groupBox1.Controls.Add(this.txtPttId);
-            this.groupBox1.Controls.Add(this.btnClose);
+            this.groupBox1.Controls.Add(this.btnPrnBill);
             this.groupBox1.Controls.Add(this.txtAllergy);
             this.groupBox1.Controls.Add(this.label6);
             this.groupBox1.Controls.Add(this.label3);
@@ -169,7 +175,7 @@
             this.groupBox1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
             this.groupBox1.Location = new System.Drawing.Point(0, 0);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(1133, 93);
+            this.groupBox1.Size = new System.Drawing.Size(1175, 93);
             this.groupBox1.TabIndex = 530;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Patient";
@@ -245,19 +251,19 @@
             this.txtPttId.Visible = false;
             this.txtPttId.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
             // 
-            // btnClose
+            // btnPrnBill
             // 
-            this.btnClose.Image = global::clinic_ivf.Properties.Resources.Add_ticket_24;
-            this.btnClose.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnClose.Location = new System.Drawing.Point(1016, 15);
-            this.btnClose.Name = "btnClose";
-            this.btnClose.Size = new System.Drawing.Size(80, 31);
-            this.btnClose.TabIndex = 696;
-            this.btnClose.Text = "Finish";
-            this.btnClose.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.theme1.SetTheme(this.btnClose, "(default)");
-            this.btnClose.UseVisualStyleBackColor = true;
-            this.btnClose.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            this.btnPrnBill.Image = global::clinic_ivf.Properties.Resources.Add_ticket_24;
+            this.btnPrnBill.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnPrnBill.Location = new System.Drawing.Point(995, 15);
+            this.btnPrnBill.Name = "btnPrnBill";
+            this.btnPrnBill.Size = new System.Drawing.Size(80, 31);
+            this.btnPrnBill.TabIndex = 696;
+            this.btnPrnBill.Text = "Print";
+            this.btnPrnBill.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.theme1.SetTheme(this.btnPrnBill, "(default)");
+            this.btnPrnBill.UseVisualStyleBackColor = true;
+            this.btnPrnBill.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
             // 
             // txtAllergy
             // 
@@ -342,9 +348,9 @@
             this.txtBg.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtBg.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
             this.txtBg.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.txtBg.Location = new System.Drawing.Point(795, 36);
+            this.txtBg.Location = new System.Drawing.Point(762, 36);
             this.txtBg.Name = "txtBg";
-            this.txtBg.Size = new System.Drawing.Size(73, 20);
+            this.txtBg.Size = new System.Drawing.Size(54, 20);
             this.txtBg.TabIndex = 689;
             this.txtBg.Tag = null;
             this.theme1.SetTheme(this.txtBg, "(default)");
@@ -357,7 +363,7 @@
             this.txtSex.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
             this.txtSex.Location = new System.Drawing.Point(595, 36);
             this.txtSex.Name = "txtSex";
-            this.txtSex.Size = new System.Drawing.Size(107, 20);
+            this.txtSex.Size = new System.Drawing.Size(66, 20);
             this.txtSex.TabIndex = 688;
             this.txtSex.Tag = null;
             this.theme1.SetTheme(this.txtSex, "(default)");
@@ -384,7 +390,7 @@
             this.chkChronic.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.chkChronic.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.chkChronic.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.chkChronic.Location = new System.Drawing.Point(885, 11);
+            this.chkChronic.Location = new System.Drawing.Point(842, 9);
             this.chkChronic.Name = "chkChronic";
             this.chkChronic.Padding = new System.Windows.Forms.Padding(4, 1, 1, 1);
             this.chkChronic.Size = new System.Drawing.Size(88, 24);
@@ -403,7 +409,7 @@
             this.chkDenyAllergy.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.chkDenyAllergy.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.chkDenyAllergy.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.chkDenyAllergy.Location = new System.Drawing.Point(885, 34);
+            this.chkDenyAllergy.Location = new System.Drawing.Point(842, 32);
             this.chkDenyAllergy.Name = "chkDenyAllergy";
             this.chkDenyAllergy.Padding = new System.Windows.Forms.Padding(4, 1, 1, 1);
             this.chkDenyAllergy.Size = new System.Drawing.Size(104, 24);
@@ -420,7 +426,7 @@
             this.label10.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
             this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label10.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.label10.Location = new System.Drawing.Point(708, 40);
+            this.label10.Location = new System.Drawing.Point(666, 38);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(90, 16);
             this.label10.TabIndex = 683;
@@ -538,7 +544,7 @@
             this.sB1});
             this.sB.Location = new System.Drawing.Point(0, 663);
             this.sB.Name = "sB";
-            this.sB.Size = new System.Drawing.Size(1133, 22);
+            this.sB.Size = new System.Drawing.Size(1175, 22);
             this.sB.TabIndex = 531;
             this.sB.Text = "statusStrip1";
             this.theme1.SetTheme(this.sB, "(default)");
@@ -562,7 +568,7 @@
             this.panel1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
             this.panel1.Location = new System.Drawing.Point(0, 93);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1133, 570);
+            this.panel1.Size = new System.Drawing.Size(1175, 570);
             this.panel1.TabIndex = 532;
             this.theme1.SetTheme(this.panel1, "(default)");
             // 
@@ -573,7 +579,7 @@
             this.pnBillD.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
             this.pnBillD.Location = new System.Drawing.Point(0, 156);
             this.pnBillD.Name = "pnBillD";
-            this.pnBillD.Size = new System.Drawing.Size(1133, 414);
+            this.pnBillD.Size = new System.Drawing.Size(1175, 414);
             this.pnBillD.TabIndex = 700;
             this.theme1.SetTheme(this.pnBillD, "(default)");
             // 
@@ -610,9 +616,106 @@
             this.panel2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
             this.panel2.Location = new System.Drawing.Point(0, 0);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1133, 156);
+            this.panel2.Size = new System.Drawing.Size(1175, 156);
             this.panel2.TabIndex = 699;
             this.theme1.SetTheme(this.panel2, "(default)");
+            // 
+            // btnChargeAdd
+            // 
+            this.btnChargeAdd.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnChargeAdd.Location = new System.Drawing.Point(1011, 121);
+            this.btnChargeAdd.Name = "btnChargeAdd";
+            this.btnChargeAdd.Size = new System.Drawing.Size(26, 24);
+            this.btnChargeAdd.TabIndex = 755;
+            this.btnChargeAdd.Text = "...";
+            this.btnChargeAdd.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.theme1.SetTheme(this.btnChargeAdd, "(default)");
+            this.btnChargeAdd.UseVisualStyleBackColor = true;
+            this.btnChargeAdd.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            // 
+            // panel3
+            // 
+            this.panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.panel3.Controls.Add(this.cboGrpType);
+            this.panel3.Controls.Add(this.radioButton2);
+            this.panel3.Controls.Add(this.radioButton1);
+            this.panel3.Controls.Add(this.label19);
+            this.panel3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.panel3.Location = new System.Drawing.Point(614, 45);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(440, 23);
+            this.panel3.TabIndex = 750;
+            this.theme1.SetTheme(this.panel3, "(default)");
+            // 
+            // cboGrpType
+            // 
+            this.cboGrpType.AllowSpinLoop = false;
+            this.cboGrpType.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
+            this.cboGrpType.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.cboGrpType.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.cboGrpType.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
+            this.cboGrpType.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.cboGrpType.GapHeight = 0;
+            this.cboGrpType.ImagePadding = new System.Windows.Forms.Padding(0);
+            this.cboGrpType.ItemsDisplayMember = "";
+            this.cboGrpType.ItemsValueMember = "";
+            this.cboGrpType.Location = new System.Drawing.Point(208, 1);
+            this.cboGrpType.Name = "cboGrpType";
+            this.cboGrpType.Size = new System.Drawing.Size(229, 20);
+            this.cboGrpType.Style.DropDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.cboGrpType.Style.DropDownBorderColor = System.Drawing.Color.Gainsboro;
+            this.cboGrpType.Style.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.cboGrpType.TabIndex = 752;
+            this.cboGrpType.Tag = null;
+            this.theme1.SetTheme(this.cboGrpType, "(default)");
+            this.cboGrpType.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            // 
+            // radioButton2
+            // 
+            this.radioButton2.AutoSize = true;
+            this.radioButton2.BackColor = System.Drawing.Color.Transparent;
+            this.radioButton2.Checked = true;
+            this.radioButton2.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
+            this.radioButton2.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(189)))), ((int)(((byte)(182)))));
+            this.radioButton2.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(189)))), ((int)(((byte)(182)))));
+            this.radioButton2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.radioButton2.Location = new System.Drawing.Point(126, 3);
+            this.radioButton2.Name = "radioButton2";
+            this.radioButton2.Size = new System.Drawing.Size(76, 17);
+            this.radioButton2.TabIndex = 751;
+            this.radioButton2.TabStop = true;
+            this.radioButton2.Text = "เฉพาะกลุ่ม";
+            this.theme1.SetTheme(this.radioButton2, "(default)");
+            this.radioButton2.UseVisualStyleBackColor = false;
+            // 
+            // radioButton1
+            // 
+            this.radioButton1.AutoSize = true;
+            this.radioButton1.BackColor = System.Drawing.Color.Transparent;
+            this.radioButton1.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
+            this.radioButton1.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(189)))), ((int)(((byte)(182)))));
+            this.radioButton1.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(189)))), ((int)(((byte)(182)))));
+            this.radioButton1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.radioButton1.Location = new System.Drawing.Point(53, 3);
+            this.radioButton1.Name = "radioButton1";
+            this.radioButton1.Size = new System.Drawing.Size(58, 17);
+            this.radioButton1.TabIndex = 750;
+            this.radioButton1.Text = "ทั้งหมด";
+            this.theme1.SetTheme(this.radioButton1, "(default)");
+            this.radioButton1.UseVisualStyleBackColor = false;
+            // 
+            // label19
+            // 
+            this.label19.AutoSize = true;
+            this.label19.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.label19.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label19.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.label19.Location = new System.Drawing.Point(3, 3);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(44, 16);
+            this.label19.TabIndex = 749;
+            this.label19.Text = "จากยอด";
+            this.theme1.SetTheme(this.label19, "(default)");
             // 
             // label9
             // 
@@ -1004,107 +1107,39 @@
             this.theme1.SetTheme(this.txtPayName, "(default)");
             this.txtPayName.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
             // 
-            // label19
+            // btnCalBack
             // 
-            this.label19.AutoSize = true;
-            this.label19.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.label19.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label19.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.label19.Location = new System.Drawing.Point(3, 3);
-            this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(44, 16);
-            this.label19.TabIndex = 749;
-            this.label19.Text = "จากยอด";
-            this.theme1.SetTheme(this.label19, "(default)");
+            this.btnCalBack.Image = global::clinic_ivf.Properties.Resources.Navigate_left;
+            this.btnCalBack.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnCalBack.Location = new System.Drawing.Point(995, 52);
+            this.btnCalBack.Name = "btnCalBack";
+            this.btnCalBack.Size = new System.Drawing.Size(80, 31);
+            this.btnCalBack.TabIndex = 699;
+            this.btnCalBack.Text = "Send to Nurse";
+            this.btnCalBack.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.theme1.SetTheme(this.btnCalBack, "(default)");
+            this.btnCalBack.UseVisualStyleBackColor = true;
+            this.btnCalBack.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
             // 
-            // panel3
+            // btnClose
             // 
-            this.panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.panel3.Controls.Add(this.cboGrpType);
-            this.panel3.Controls.Add(this.radioButton2);
-            this.panel3.Controls.Add(this.radioButton1);
-            this.panel3.Controls.Add(this.label19);
-            this.panel3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.panel3.Location = new System.Drawing.Point(614, 45);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(440, 23);
-            this.panel3.TabIndex = 750;
-            this.theme1.SetTheme(this.panel3, "(default)");
-            // 
-            // radioButton1
-            // 
-            this.radioButton1.AutoSize = true;
-            this.radioButton1.BackColor = System.Drawing.Color.Transparent;
-            this.radioButton1.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
-            this.radioButton1.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(189)))), ((int)(((byte)(182)))));
-            this.radioButton1.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(189)))), ((int)(((byte)(182)))));
-            this.radioButton1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.radioButton1.Location = new System.Drawing.Point(53, 3);
-            this.radioButton1.Name = "radioButton1";
-            this.radioButton1.Size = new System.Drawing.Size(58, 17);
-            this.radioButton1.TabIndex = 750;
-            this.radioButton1.Text = "ทั้งหมด";
-            this.theme1.SetTheme(this.radioButton1, "(default)");
-            this.radioButton1.UseVisualStyleBackColor = false;
-            // 
-            // radioButton2
-            // 
-            this.radioButton2.AutoSize = true;
-            this.radioButton2.BackColor = System.Drawing.Color.Transparent;
-            this.radioButton2.Checked = true;
-            this.radioButton2.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
-            this.radioButton2.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(189)))), ((int)(((byte)(182)))));
-            this.radioButton2.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(189)))), ((int)(((byte)(182)))));
-            this.radioButton2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.radioButton2.Location = new System.Drawing.Point(126, 3);
-            this.radioButton2.Name = "radioButton2";
-            this.radioButton2.Size = new System.Drawing.Size(76, 17);
-            this.radioButton2.TabIndex = 751;
-            this.radioButton2.Text = "เฉพาะกลุ่ม";
-            this.theme1.SetTheme(this.radioButton2, "(default)");
-            this.radioButton2.UseVisualStyleBackColor = false;
-            // 
-            // cboGrpType
-            // 
-            this.cboGrpType.AllowSpinLoop = false;
-            this.cboGrpType.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
-            this.cboGrpType.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
-            this.cboGrpType.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.cboGrpType.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
-            this.cboGrpType.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.cboGrpType.GapHeight = 0;
-            this.cboGrpType.ImagePadding = new System.Windows.Forms.Padding(0);
-            this.cboGrpType.ItemsDisplayMember = "";
-            this.cboGrpType.ItemsValueMember = "";
-            this.cboGrpType.Location = new System.Drawing.Point(208, 1);
-            this.cboGrpType.Name = "cboGrpType";
-            this.cboGrpType.Size = new System.Drawing.Size(229, 20);
-            this.cboGrpType.Style.DropDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.cboGrpType.Style.DropDownBorderColor = System.Drawing.Color.Gainsboro;
-            this.cboGrpType.Style.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.cboGrpType.TabIndex = 752;
-            this.cboGrpType.Tag = null;
-            this.theme1.SetTheme(this.cboGrpType, "(default)");
-            this.cboGrpType.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
-            // 
-            // btnChargeAdd
-            // 
-            this.btnChargeAdd.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnChargeAdd.Location = new System.Drawing.Point(1011, 121);
-            this.btnChargeAdd.Name = "btnChargeAdd";
-            this.btnChargeAdd.Size = new System.Drawing.Size(26, 24);
-            this.btnChargeAdd.TabIndex = 755;
-            this.btnChargeAdd.Text = "...";
-            this.btnChargeAdd.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.theme1.SetTheme(this.btnChargeAdd, "(default)");
-            this.btnChargeAdd.UseVisualStyleBackColor = true;
-            this.btnChargeAdd.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            this.btnClose.Image = global::clinic_ivf.Properties.Resources.Add_ticket_24;
+            this.btnClose.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnClose.Location = new System.Drawing.Point(1081, 52);
+            this.btnClose.Name = "btnClose";
+            this.btnClose.Size = new System.Drawing.Size(80, 31);
+            this.btnClose.TabIndex = 700;
+            this.btnClose.Text = "Close";
+            this.btnClose.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.theme1.SetTheme(this.btnClose, "(default)");
+            this.btnClose.UseVisualStyleBackColor = true;
+            this.btnClose.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
             // 
             // FrmCashierAdd
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1133, 685);
+            this.ClientSize = new System.Drawing.Size(1175, 685);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.sB);
             this.Controls.Add(this.groupBox1);
@@ -1120,7 +1155,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtVsId)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtIdOld)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtPttId)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.btnClose)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnPrnBill)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtAllergy)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtDoctor)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtVn)).EndInit();
@@ -1138,6 +1173,10 @@
             this.panel1.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.btnChargeAdd)).EndInit();
+            this.panel3.ResumeLayout(false);
+            this.panel3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.cboGrpType)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtPayCreditCard)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkDiscount)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtTotalCredit)).EndInit();
@@ -1154,10 +1193,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtDiscount)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cboAccCash)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtPayName)).EndInit();
-            this.panel3.ResumeLayout(false);
-            this.panel3.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.cboGrpType)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.btnChargeAdd)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnCalBack)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnClose)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1168,7 +1205,7 @@
         private System.Windows.Forms.GroupBox groupBox1;
         private C1.Win.C1Input.C1TextBox txtVnOld;
         private C1.Win.C1Input.C1TextBox txtIdOld;
-        private C1.Win.C1Input.C1Button btnClose;
+        private C1.Win.C1Input.C1Button btnPrnBill;
         private C1.Win.C1Input.C1TextBox txtAllergy;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label3;
@@ -1231,5 +1268,7 @@
         private System.Windows.Forms.RadioButton radioButton1;
         private C1.Win.C1Input.C1ComboBox cboGrpType;
         private C1.Win.C1Input.C1Button btnChargeAdd;
+        private C1.Win.C1Input.C1Button btnCalBack;
+        private C1.Win.C1Input.C1Button btnClose;
     }
 }

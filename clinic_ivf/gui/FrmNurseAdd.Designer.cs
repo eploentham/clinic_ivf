@@ -116,6 +116,8 @@
             this.tabCert = new C1.Win.C1Command.C1DockingTabPage();
             this.sB = new System.Windows.Forms.StatusStrip();
             this.sB1 = new System.Windows.Forms.ToolStripStatusLabel();
+            this.cboLangSticker = new C1.Win.C1Input.C1ComboBox();
+            this.label19 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.theme1)).BeginInit();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtInclude)).BeginInit();
@@ -180,6 +182,7 @@
             this.panel5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btnRxSetOrder)).BeginInit();
             this.sB.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.cboLangSticker)).BeginInit();
             this.SuspendLayout();
             // 
             // theme1
@@ -189,6 +192,8 @@
             // groupBox1
             // 
             this.groupBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.groupBox1.Controls.Add(this.label19);
+            this.groupBox1.Controls.Add(this.cboLangSticker);
             this.groupBox1.Controls.Add(this.label18);
             this.groupBox1.Controls.Add(this.txtInclude);
             this.groupBox1.Controls.Add(this.label17);
@@ -406,7 +411,7 @@
             this.label2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.label2.Location = new System.Drawing.Point(11, 50);
+            this.label2.Location = new System.Drawing.Point(11, 45);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(33, 16);
             this.label2.TabIndex = 691;
@@ -418,7 +423,7 @@
             this.txtVn.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtVn.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
             this.txtVn.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.txtVn.Location = new System.Drawing.Point(53, 45);
+            this.txtVn.Location = new System.Drawing.Point(53, 40);
             this.txtVn.Name = "txtVn";
             this.txtVn.Size = new System.Drawing.Size(146, 24);
             this.txtVn.TabIndex = 690;
@@ -600,7 +605,7 @@
             this.label4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.label4.Location = new System.Drawing.Point(11, 22);
+            this.label4.Location = new System.Drawing.Point(11, 17);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(34, 16);
             this.label4.TabIndex = 622;
@@ -612,7 +617,7 @@
             this.txtHn.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtHn.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
             this.txtHn.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.txtHn.Location = new System.Drawing.Point(52, 19);
+            this.txtHn.Location = new System.Drawing.Point(52, 14);
             this.txtHn.Name = "txtHn";
             this.txtHn.Size = new System.Drawing.Size(146, 24);
             this.txtHn.TabIndex = 621;
@@ -1364,6 +1369,42 @@
             this.sB1.Size = new System.Drawing.Size(118, 17);
             this.sB1.Text = "toolStripStatusLabel1";
             // 
+            // cboLangSticker
+            // 
+            this.cboLangSticker.AllowSpinLoop = false;
+            this.cboLangSticker.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
+            this.cboLangSticker.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.cboLangSticker.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.cboLangSticker.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
+            this.cboLangSticker.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.cboLangSticker.GapHeight = 0;
+            this.cboLangSticker.ImagePadding = new System.Windows.Forms.Padding(0);
+            this.cboLangSticker.ItemsDisplayMember = "";
+            this.cboLangSticker.ItemsValueMember = "";
+            this.cboLangSticker.Location = new System.Drawing.Point(72, 68);
+            this.cboLangSticker.Name = "cboLangSticker";
+            this.cboLangSticker.Size = new System.Drawing.Size(127, 20);
+            this.cboLangSticker.Style.DropDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.cboLangSticker.Style.DropDownBorderColor = System.Drawing.Color.Gainsboro;
+            this.cboLangSticker.Style.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.cboLangSticker.TabIndex = 753;
+            this.cboLangSticker.Tag = null;
+            this.theme1.SetTheme(this.cboLangSticker, "(default)");
+            this.cboLangSticker.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            // 
+            // label19
+            // 
+            this.label19.AutoSize = true;
+            this.label19.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.label19.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label19.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.label19.Location = new System.Drawing.Point(11, 70);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(55, 16);
+            this.label19.TabIndex = 754;
+            this.label19.Text = "Sticker :";
+            this.theme1.SetTheme(this.label19, "(default)");
+            // 
             // FrmNurseAdd
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1442,6 +1483,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.btnRxSetOrder)).EndInit();
             this.sB.ResumeLayout(false);
             this.sB.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.cboLangSticker)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1537,5 +1579,7 @@
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.Label label18;
         private C1.Win.C1Input.C1TextBox txtInclude;
+        private System.Windows.Forms.Label label19;
+        private C1.Win.C1Input.C1ComboBox cboLangSticker;
     }
 }

@@ -402,6 +402,24 @@ namespace clinic_ivf.control
             }
             return re;
         }
+        public void setCboLangSticker(C1ComboBox c)
+        {
+            ComboBoxItem item = new ComboBoxItem();
+            //DataTable dt = selectWard();
+
+            item = new ComboBoxItem();
+            item.Value = "";
+            item.Text = "";
+            c.Items.Add(item);
+            item = new ComboBoxItem();
+            item.Value = "English";
+            item.Text = "English";
+            c.Items.Add(item);
+            item = new ComboBoxItem();
+            item.Value = "Thai";
+            item.Text = "Thai";
+            c.Items.Add(item);
+        }
         public void setCboDay(C1ComboBox c, String selected)
         {
             ComboBoxItem item = new ComboBoxItem();

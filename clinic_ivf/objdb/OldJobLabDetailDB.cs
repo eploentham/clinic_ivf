@@ -111,7 +111,7 @@ namespace clinic_ivf.objdb
                 "," + jlabD.SP5V + "= '" + p.SP5V.Replace("'", "''") + "'" +
                 "," + jlabD.SP6V + "= '" + p.SP6V.Replace("'", "''") + "'" +
                 "," + jlabD.SP7V + "= '" + p.SP7V.Replace("'", "''") + "'" +
-                "," + jlabD.SubItem + "= '" + p.SubItem.Replace("'", "''") + "'" +
+                "," + jlabD.SubItem + "= '" + p.SubItem + "'" +
                 "," + jlabD.FileName + "= '" + p.FileName.Replace("'", "''") + "'" +
                 "," + jlabD.Worker1 + "= '" + p.Worker1.Replace("'", "''") + "'" +
                 "," + jlabD.Worker2 + "= '" + p.Worker2.Replace("'", "''") + "'" +
@@ -123,6 +123,10 @@ namespace clinic_ivf.objdb
                 "";
             try
             {
+                if (sql.IndexOf("SubItem= '0'") > 0)
+                {
+                    sql = sql.Replace("SubItem= '0'", "SubItem = null");
+                }
                 re = conn.ExecuteNonQuery(conn.conn, sql);
             }
             catch (Exception ex)

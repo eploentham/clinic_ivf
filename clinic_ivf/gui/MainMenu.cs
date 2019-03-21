@@ -326,22 +326,26 @@ namespace clinic_ivf.gui
                 return false;
             }
         }
-        public void AddNewTab(Form frm, String label)
+        public void removeTab(C1DockingTabPage tab)
         {
-            foreach (Control y in tC1.Controls)
-            {
-                if (y is C1DockingTabPage)
-                {
-                    if (y.Text.Equals("Import JOB"))
-                    {
-                        if (label.Equals("Import JOB"))
-                        {
-                            tC1.SelectedTab = (C1DockingTabPage)y;
-                            return;
-                        }
-                    }
-                }
-            }
+            tC1.TabPages.Remove(tab);
+        }
+        public C1DockingTabPage AddNewTab(Form frm, String label)
+        {
+            //foreach (Control y in tC1.Controls)
+            //{
+            //    if (y is C1DockingTabPage)
+            //    {
+            //        if (y.Text.Equals("Import JOB"))
+            //        {
+            //            if (label.Equals("Import JOB"))
+            //            {
+            //                tC1.SelectedTab = (C1DockingTabPage)y;
+            //                return;
+            //            }
+            //        }
+            //    }
+            //}
             frm.FormBorderStyle = FormBorderStyle.None;
             C1DockingTabPage tab = new C1DockingTabPage();
             tab.SuspendLayout();
@@ -382,6 +386,7 @@ namespace clinic_ivf.gui
             tC1.SelectedTab = tab;
             //theme1.SetTheme(tC1, "Office2010Blue");
             //theme1.SetTheme(tC1, "Office2010Green");
+            return tab;
         }
 
         //protected override bool ProcessCmdKey(ref Message msg, Keys keyData)

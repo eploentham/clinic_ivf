@@ -1,4 +1,5 @@
-﻿using C1.Win.C1FlexGrid;
+﻿using C1.Win.C1Command;
+using C1.Win.C1FlexGrid;
 using C1.Win.C1Input;
 using C1.Win.C1SuperTooltip;
 using clinic_ivf.control;
@@ -349,9 +350,10 @@ namespace clinic_ivf.gui
         }
         private void openBillNew(String reqId, String name)
         {
-            FrmCashierAdd frm = new FrmCashierAdd(ic, "", reqId);
+            FrmCashierAdd frm = new FrmCashierAdd(ic, menu, "", reqId);
             frm.FormBorderStyle = FormBorderStyle.None;
-            menu.AddNewTab(frm, name);
+            C1DockingTabPage tab = menu.AddNewTab(frm, name);
+            frm.tab = tab;
         }
         private void FrmCashierView_Load(object sender, EventArgs e)
         {

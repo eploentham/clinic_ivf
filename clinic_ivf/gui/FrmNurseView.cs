@@ -1,4 +1,5 @@
-﻿using C1.Win.C1FlexGrid;
+﻿using C1.Win.C1Command;
+using C1.Win.C1FlexGrid;
 using C1.Win.C1Input;
 using C1.Win.C1SuperTooltip;
 using clinic_ivf.control;
@@ -989,7 +990,8 @@ namespace clinic_ivf.gui
             ContextMenu menuGw = new ContextMenu();
             //menuGw.MenuItems.Add("&receive operation", new EventHandler(ContextMenu_Apm));
             menuGw.MenuItems.Add("receive operation", new EventHandler(ContextMenu_order));
-            menuGw.MenuItems.Add("&LAB request FORM A", new EventHandler(ContextMenu_LAB_req_formA_Ptt));
+            menuGw.MenuItems.Add("LAB request FORM A", new EventHandler(ContextMenu_LAB_req_formA_Ptt));
+            menuGw.MenuItems.Add("LAB FORM DAY1", new EventHandler(ContextMenu_LAB_req_form_day1));
             menuGw.MenuItems.Add("&Add Appointment", new EventHandler(ContextMenu_Apm_Ptt));
             menuGw.MenuItems.Add("&Cancel Receive", new EventHandler(ContextMenu_Apm_Ptt));
             menuGw.MenuItems.Add("&No Appointment Close Operation", new EventHandler(ContextMenu_NO_Apm_Ptt));
@@ -1167,15 +1169,31 @@ namespace clinic_ivf.gui
                 frm.ShowDialog(this);
                 setGrfQue();
             //}
-            //FrmNurseAdd frm = new FrmNurseAdd();
+            //FrmNurseAdd frm = new FrmNurseAdd();ContextMenu_LAB_req_form_day1
             //frm.ShowDialog(this);
             //openApmAdd(pttId, vsid, name);
             //if (MessageBox.Show("ต้องการป้อน LAB request FORM A\n  hn number " + chk + " \n name " + name, "", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == DialogResult.OK)
             //{
-                
-                //grfReq.Rows.Remove(grfReq.Row);
-                //openPatientAdd(id, name);
+
+            //grfReq.Rows.Remove(grfReq.Row);
+            //openPatientAdd(id, name);
             //}
+        }
+        private void ContextMenu_LAB_req_form_day1(object sender, System.EventArgs e)
+        {
+            String chk = "", name = "", vsid = "", pttId = "";
+            if (grfQue.Row < 0) return;
+            vsid = grfQue[grfQue.Row, colID] != null ? grfQue[grfQue.Row, colID].ToString() : "";
+            pttId = grfQue[grfQue.Row, colPttId] != null ? grfQue[grfQue.Row, colPttId].ToString() : "";
+            chk = grfQue[grfQue.Row, colPttHn] != null ? grfQue[grfQue.Row, colPttHn].ToString() : "";
+            name = grfQue[grfQue.Row, colPttName] != null ? grfQue[grfQue.Row, colPttName].ToString() : "";
+            //reqid = ic.ivfDB.oJsDB.selectByStatusOPU(vsid);
+            //if (!reqid.Equals(""))
+            //{
+            FrmLabFormDay1 frm = new FrmLabFormDay1(ic, "", pttId, "", vsid);
+            frm.ShowDialog(this);
+            setGrfQue();
+            
         }
         private void ContextMenu_LAB_req_formA(object sender, System.EventArgs e)
         {
@@ -1287,7 +1305,7 @@ namespace clinic_ivf.gui
         }
         private void openNurseAdd(String pttId, String vsid, String name)
         {
-            FrmNurseAdd frm = new FrmNurseAdd(ic, pttId, vsid);
+            FrmNurseAdd frm = new FrmNurseAdd(ic, menu, pttId, vsid);
             String txt = "";
             if (!name.Equals(""))
             {
@@ -1295,7 +1313,8 @@ namespace clinic_ivf.gui
             }            
 
             frm.FormBorderStyle = FormBorderStyle.None;
-            menu.AddNewTab(frm, txt);
+            C1DockingTabPage tab = menu.AddNewTab(frm, txt);
+            frm.tab = tab;
         }
         private void openApmAdd(String pttId, String vsid, String name)
         {

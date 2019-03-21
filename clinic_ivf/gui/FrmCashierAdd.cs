@@ -1,4 +1,5 @@
-﻿using C1.Win.C1FlexGrid;
+﻿using C1.Win.C1Command;
+using C1.Win.C1FlexGrid;
 using C1.Win.C1Input;
 using C1.Win.C1SuperTooltip;
 using clinic_ivf.control;
@@ -18,10 +19,13 @@ namespace clinic_ivf.gui
     public partial class FrmCashierAdd : Form
     {
         IvfControl ic;
+        MainMenu menu;
+        public C1DockingTabPage tab;
         String billhid = "", pttid = "", vsid = "", vsidOld = "";
         OldBillheader obilh;
         VisitOld ovs;
         PatientOld optt;
+        Patient ptt;
 
         C1FlexGrid grfBillD;
         Font fEdit, fEditB;
@@ -34,9 +38,10 @@ namespace clinic_ivf.gui
         C1SuperErrorProvider sep;
 
         int colId = 1, colName = 2, colAmt = 3, colDiscount = 4, colNetAmt = 5, colGrpName=6, colBilId=7;
-        public FrmCashierAdd(IvfControl ic, String billid, String vnold)
+        public FrmCashierAdd(IvfControl ic, MainMenu m, String billid, String vnold)
         {
             InitializeComponent();
+            menu = m;
             this.ic = ic;
             this.vnold = vnold;
             initConfig();
@@ -47,6 +52,7 @@ namespace clinic_ivf.gui
             fEditB = new Font(ic.iniC.grdViewFontName, ic.grdViewFontSize, FontStyle.Bold);
             ovs = new VisitOld();
             optt = new PatientOld();
+            ptt = new Patient();
 
             //C1ThemeController.ApplicationTheme = ic.iniC.themeApplication;
             //theme1.Theme = C1ThemeController.ApplicationTheme;
@@ -73,8 +79,10 @@ namespace clinic_ivf.gui
             txtDiscount.KeyUp += TxtDiscount_KeyUp;
             txtTotalCash.KeyUp += TxtTotalCash_KeyUp;
             txtTotalCredit.KeyUp += TxtTotalCredit_KeyUp;
-            btnClose.Click += BtnClose_Click;
+            btnPrnBill.Click += BtnPrnBill_Click;
             txtCreditCharge.KeyUp += TxtCreditCharge_KeyUp;
+            btnCalBack.Click += BtnCalBack_Click;
+            btnClose.Click += BtnClose_Click;
             //txtTotalCash.KeyPress += TxtTotalCash_KeyPress;
             //txtTotalCredit.KeyPress += TxtTotalCredit_KeyPress;
 
@@ -85,13 +93,25 @@ namespace clinic_ivf.gui
             
         }
 
+        private void BtnClose_Click(object sender, EventArgs e)
+        {
+            //throw new NotImplementedException();
+            menu.removeTab(tab);
+        }
+
+        private void BtnCalBack_Click(object sender, EventArgs e)
+        {
+            //throw new NotImplementedException();
+            ic.ivfDB.accountsendtonurse(txtVn.Text);
+        }
+
         private void TxtCreditCharge_KeyUp(object sender, KeyEventArgs e)
         {
             //throw new NotImplementedException();
             calTotalCash();
         }
 
-        private void BtnClose_Click(object sender, EventArgs e)
+        private void BtnPrnBill_Click(object sender, EventArgs e)
         {
             //throw new NotImplementedException();
             DataTable dt = new DataTable();
@@ -205,9 +225,12 @@ namespace clinic_ivf.gui
         {
             ovs = ic.ivfDB.ovsDB.selectByPk1(vnold);
             optt = ic.ivfDB.pttOldDB.selectByPk1(ovs.PID);
+            ptt = ic.ivfDB.pttDB.selectByHn(ovs.PIDS);
+            ptt.patient_birthday = optt.DateOfBirth;
+
             txtHn.Value = optt.PIDS;
             txtPttNameE.Value = optt.FullName;
-            txtDob.Value = optt.DateOfBirth;
+            txtDob.Value = ic.datetoShow(optt.DateOfBirth) + " [" + ptt.AgeStringShort() + "]";
             txtHnOld.Value = optt.PIDS;
             txtVnOld.Value = vsidOld;
             txtPttId.Value = optt.PID;
@@ -215,6 +238,11 @@ namespace clinic_ivf.gui
             txtVnOld.Value = ovs.VN;
             txtHnOld.Value = ovs.PIDS;
             txtVn.Value = ovs.VN;
+            txtAllergy.Value = ptt.allergy_description;
+            txtSex.Value = ptt.f_sex_id.Equals("1") ? "ชาย" : "หญิง";
+            txtBg.Value = ptt.f_patient_blood_group_id.Equals("2140000005") ? "O"
+                : ptt.f_patient_blood_group_id.Equals("2140000002") ? "A" : ptt.f_patient_blood_group_id.Equals("2140000003") ? "B"
+                : ptt.f_patient_blood_group_id.Equals("2140000004") ? "AB" : "ไม่ระบุ";
             setGrfBillD();
             calTotal();
             calTotalCredit();
