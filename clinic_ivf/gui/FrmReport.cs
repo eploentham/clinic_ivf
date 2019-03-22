@@ -44,7 +44,7 @@ namespace clinic_ivf.gui
                 MessageBox.Show("error " + ex.Message, "");
             }
         }
-        public void setPrintBill(DataTable dt)
+        public void setPrintBill(DataTable dt, String hn, String name, String thai_baht, String amount, String bill_no, String bill_date)
         {
             String chk = "", printerDefault = "";
             ReportDocument rpt = new ReportDocument();
@@ -52,10 +52,16 @@ namespace clinic_ivf.gui
             {
                 rpt.Load("print_bill.rpt");
                 rpt.SetDataSource(dt);
-                //rpt.SetParameterValue("line1", ic.cop.comp_name_t);
-                //rpt.SetParameterValue("line2", "โทรศัพท์ " + ic.cop.tele);
-                //rpt.SetParameterValue("report_name", " Embryo development");
-                //rpt.SetParameterValue("date1", "" + date1);
+                rpt.SetParameterValue("line1", ic.cop.comp_name_t);
+                rpt.SetParameterValue("line2", "โทรศัพท์ " + ic.cop.addr1);
+                rpt.SetParameterValue("line3", "  development");
+                rpt.SetParameterValue("line4", "");
+                rpt.SetParameterValue("bill_no", bill_no);
+                rpt.SetParameterValue("bill_date", bill_date);
+                rpt.SetParameterValue("amount", amount);
+                rpt.SetParameterValue("thai_baht", thai_baht);
+                rpt.SetParameterValue("hn", hn);
+                rpt.SetParameterValue("name", name);
                 this.crystalReportViewer1.ReportSource = rpt;
                 this.crystalReportViewer1.Refresh();
             }

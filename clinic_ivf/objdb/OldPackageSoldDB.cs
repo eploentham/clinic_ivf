@@ -246,7 +246,7 @@ namespace clinic_ivf.objdb
             DataTable dt = new DataTable();
             String sql = "select opkgs.* " +
                 "From " + opkgs.table + " opkgs " +
-                "Where opkgs." + opkgs.PID + " ='" + pttId + "' and Status<>3 ";
+                "Where opkgs." + opkgs.VN + " ='" + pttId + "' and Status<>3 ";
             dt = conn.selectData(conn.conn, sql);
             return dt;
         }

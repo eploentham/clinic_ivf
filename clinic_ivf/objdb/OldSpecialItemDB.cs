@@ -82,7 +82,7 @@ namespace clinic_ivf.objdb
                 itm1.SID = row[sitm.SID].ToString();
                 itm1.SName = row[sitm.SName].ToString();
                 itm1.BillGroupID = row[sitm.BillGroupID].ToString();
-                loBilg.Add(sitm);
+                loBilg.Add(itm1);
             }
         }
         public String deleteByPk(String id)

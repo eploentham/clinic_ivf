@@ -103,6 +103,12 @@ namespace clinic_ivf.gui
         {
             //throw new NotImplementedException();
             ic.ivfDB.accountsendtonurse(txtVn.Text);
+            VisitOld ovs = new VisitOld();
+            ovs = ic.ivfDB.ovsDB.selectByPk1(txtVnOld.Text);
+            if (ovs.VSID.Equals("115"))
+            {
+                menu.removeTab(tab);
+            }
         }
 
         private void TxtCreditCharge_KeyUp(object sender, KeyEventArgs e)
@@ -115,9 +121,14 @@ namespace clinic_ivf.gui
         {
             //throw new NotImplementedException();
             DataTable dt = new DataTable();
-            dt = ic.ivfDB.printBill(txtVn.Text);
+            Decimal amt = 0;
+            long amt1 = 0;
+            String amt2 = "";
+            long.TryParse(amt.ToString(), out amt1);
+            dt = ic.ivfDB.printBill(txtVn.Text, amt);
+            amt2 = ic.NumberToCurrencyText(amt, MidpointRounding.AwayFromZero);
             FrmReport frm = new FrmReport(ic);
-            frm.setPrintBill(dt);
+            frm.setPrintBill(dt, txtHn.Text, txtPttNameE.Text, amt2, amt.ToString("#,###.00"),"","");
             frm.ShowDialog(this);
             
         }

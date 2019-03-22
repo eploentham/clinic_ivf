@@ -19,6 +19,9 @@ namespace clinic_ivf.gui
         String lformaId = "", pttid = "", vsid = "", vsidOld = "";
         LabFormA lFormA;
         LabOpu opu;
+        VisitOld ovs;
+        PatientOld optt;
+        Patient ptt;
 
         C1SuperTooltip stt;
         C1SuperErrorProvider sep;
@@ -37,6 +40,8 @@ namespace clinic_ivf.gui
         {
             lFormA = new LabFormA();
             opu = new LabOpu();
+            ptt = new Patient();
+            ovs = new VisitOld();
 
             stt = new C1SuperTooltip();
             sep = new C1SuperErrorProvider();
@@ -51,6 +56,8 @@ namespace clinic_ivf.gui
             btnPrint.Click += BtnPrint_Click;
             chkPgsMin.CheckedChanged += ChkPgsMin_CheckedChanged;
             chkNgs.CheckedChanged += ChkNgs_CheckedChanged;
+            btmDonorSearch.Click += BtmDonorSearch_Click;
+            btnMaleSearch.Click += BtnMaleSearch_Click;
 
             ChkBiopsy_CheckedChanged(null, null);
             ChkEmbryoFreezingDay_CheckedChanged(null, null);
@@ -59,6 +66,31 @@ namespace clinic_ivf.gui
             ChkPgsMin_CheckedChanged(null, null);
             ChkNgs_CheckedChanged(null, null);
 
+        }
+
+        private void BtnMaleSearch_Click(object sender, EventArgs e)
+        {
+            //throw new NotImplementedException();
+            ic.sVsOld.PIDS = "";
+            ic.sVsOld.PName = "";
+            FrmSearchHn frm = new FrmSearchHn(ic, FrmSearchHn.StatusConnection.host, FrmSearchHn.StatusSearch.PttSearch, FrmSearchHn.StatusSearchTable.PttSearch);
+            frm.ShowDialog(this);
+            txtHnMale.Value = ic.sVsOld.PIDS;
+            txtNameMale.Value = ic.sVsOld.PName;
+            txtDobMale.Value = ic.sVsOld.dob;
+        }
+
+        private void BtmDonorSearch_Click(object sender, EventArgs e)
+        {
+            //throw new NotImplementedException();
+            ic.sVsOld.PIDS = "";
+            ic.sVsOld.PName = "";
+            ic.sVsOld.dob = "";
+            FrmSearchHn frm = new FrmSearchHn(ic, FrmSearchHn.StatusConnection.hostEx, FrmSearchHn.StatusSearch.DonorSearch, FrmSearchHn.StatusSearchTable.VisitSearch);
+            frm.ShowDialog(this);
+            txtHnDonor.Value = ic.sVsOld.PIDS;
+            txtNameDonor.Value = ic.sVsOld.PName;
+            txtDonorDob.Value = ic.sVsOld.dob;
         }
 
         private void ChkNgs_CheckedChanged(object sender, EventArgs e)
@@ -200,7 +232,17 @@ namespace clinic_ivf.gui
                 opu = ic.ivfDB.opuDB.selectByReqID(req.req_id);
                 setControl1();
             }
-
+            else
+            {
+                ovs = ic.ivfDB.ovsDB.selectByPk1(vsidOld);
+                ptt = ic.ivfDB.pttDB.selectByHn(ovs.PIDS);
+                txtHnFeMale.Value = ptt.patient_hn;
+                txtNameFeMale.Value = ptt.Name;
+                txtHnMale.Value = ptt.patient_hn_couple;
+                txtNameMale.Value = ptt.patient_couple_firstname;
+                txtDobFeMale.Value = ptt.AgeString();
+                txtAgent.Value = ptt.agent;
+            }
         }
         private void setControl1()
         {
