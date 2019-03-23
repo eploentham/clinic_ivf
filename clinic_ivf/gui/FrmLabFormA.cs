@@ -318,6 +318,9 @@ namespace clinic_ivf.gui
         private void BtmDonorSearch_Click(object sender, EventArgs e)
         {
             //throw new NotImplementedException();
+            ic.sVsOld.PIDS = "";
+            ic.sVsOld.PName = "";
+            ic.sVsOld.dob = "";
             FrmSearchHn frm = new FrmSearchHn(ic, FrmSearchHn.StatusConnection.hostEx, FrmSearchHn.StatusSearch.DonorSearch, FrmSearchHn.StatusSearchTable.VisitSearch);
             frm.ShowDialog(this);
             txtHnDonor.Value = ic.sVsOld.PIDS;

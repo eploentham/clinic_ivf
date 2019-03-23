@@ -837,7 +837,7 @@ namespace clinic_ivf.control
             ivfDB.DeleteBill(vn);
             ivfDB.getBill(vn);
         }
-        public static string NumberToText(long number)
+        public string NumberToText(long number)
         {
             StringBuilder wordNumber = new StringBuilder();
 
@@ -891,7 +891,7 @@ namespace clinic_ivf.control
 
             return wordNumber.ToString().Trim();
         }
-        public static string NumberToCurrencyText(decimal number, MidpointRounding midpointRounding)
+        public string NumberToCurrencyText(decimal number, MidpointRounding midpointRounding)
         {
             // Round the value just in case the decimal value is longer than two digits
             number = decimal.Round(number, 2, midpointRounding);
