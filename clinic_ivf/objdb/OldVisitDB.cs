@@ -346,13 +346,13 @@ namespace clinic_ivf.objdb
 
             return re;
         }
-        public String insertVisitOld(VisitOld p, String userId)
+        public String insertVisitOld(VisitOld p, String userId, String flagnew)
         {
             String re = "";
 
-            if (p.VN.Equals(""))
+            if (flagnew.Equals("new"))
             {
-                p.VN = genVN();
+                //p.VN = genVN();
                 re = insert(p, userId);
                 if (re.Equals("1"))
                 {

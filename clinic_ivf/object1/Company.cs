@@ -74,5 +74,9 @@ namespace clinic_ivf.object1
         public String prefix_form_a_doc { get; set; }
         public String fet_doc { get; set; }
         public String prefix_fet_doc { get; set; }
+        public String month { get; set; }
+        public String day { get; set; }
+        public String year { get; set; }
+        public String day_curr { get; set; }
     }
 }

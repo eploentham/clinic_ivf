@@ -29,6 +29,8 @@
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.btnClose = new C1.Win.C1Input.C1Button();
+            this.btnCalBack = new C1.Win.C1Input.C1Button();
             this.txtHnOld = new C1.Win.C1Input.C1TextBox();
             this.txtVnOld = new C1.Win.C1Input.C1TextBox();
             this.txtVsId = new C1.Win.C1Input.C1TextBox();
@@ -64,8 +66,8 @@
             this.btnChargeAdd = new C1.Win.C1Input.C1Button();
             this.panel3 = new System.Windows.Forms.Panel();
             this.cboGrpType = new C1.Win.C1Input.C1ComboBox();
-            this.radioButton2 = new System.Windows.Forms.RadioButton();
-            this.radioButton1 = new System.Windows.Forms.RadioButton();
+            this.chkDiscountGrp = new System.Windows.Forms.RadioButton();
+            this.chkDiscountAll = new System.Windows.Forms.RadioButton();
             this.label19 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.txtPayCreditCard = new C1.Win.C1Input.C1TextBox();
@@ -94,9 +96,11 @@
             this.label8 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.txtPayName = new C1.Win.C1Input.C1TextBox();
-            this.btnCalBack = new C1.Win.C1Input.C1Button();
-            this.btnClose = new C1.Win.C1Input.C1Button();
+            this.c1Button2 = new C1.Win.C1Input.C1Button();
+            this.btnDiscountAdd = new C1.Win.C1Input.C1Button();
             this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.btnClose)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnCalBack)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtHnOld)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtVnOld)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtVsId)).BeginInit();
@@ -136,13 +140,14 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtDiscount)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cboAccCash)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtPayName)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.btnCalBack)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.btnClose)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.c1Button2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnDiscountAdd)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBox1
             // 
             this.groupBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.groupBox1.Controls.Add(this.c1Button2);
             this.groupBox1.Controls.Add(this.btnClose);
             this.groupBox1.Controls.Add(this.btnCalBack);
             this.groupBox1.Controls.Add(this.txtHnOld);
@@ -180,6 +185,34 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Patient";
             this.theme1.SetTheme(this.groupBox1, "(default)");
+            // 
+            // btnClose
+            // 
+            this.btnClose.Image = global::clinic_ivf.Properties.Resources.power24;
+            this.btnClose.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnClose.Location = new System.Drawing.Point(1081, 52);
+            this.btnClose.Name = "btnClose";
+            this.btnClose.Size = new System.Drawing.Size(80, 31);
+            this.btnClose.TabIndex = 700;
+            this.btnClose.Text = "Close";
+            this.btnClose.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.theme1.SetTheme(this.btnClose, "(default)");
+            this.btnClose.UseVisualStyleBackColor = true;
+            this.btnClose.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            // 
+            // btnCalBack
+            // 
+            this.btnCalBack.Image = global::clinic_ivf.Properties.Resources.InsertColumnBefore_small;
+            this.btnCalBack.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnCalBack.Location = new System.Drawing.Point(995, 52);
+            this.btnCalBack.Name = "btnCalBack";
+            this.btnCalBack.Size = new System.Drawing.Size(80, 31);
+            this.btnCalBack.TabIndex = 699;
+            this.btnCalBack.Text = "Send to Nurse";
+            this.btnCalBack.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.theme1.SetTheme(this.btnCalBack, "(default)");
+            this.btnCalBack.UseVisualStyleBackColor = true;
+            this.btnCalBack.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
             // 
             // txtHnOld
             // 
@@ -255,11 +288,11 @@
             // 
             this.btnPrnBill.Image = global::clinic_ivf.Properties.Resources.Add_ticket_24;
             this.btnPrnBill.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnPrnBill.Location = new System.Drawing.Point(995, 15);
+            this.btnPrnBill.Location = new System.Drawing.Point(1049, 17);
             this.btnPrnBill.Name = "btnPrnBill";
-            this.btnPrnBill.Size = new System.Drawing.Size(80, 31);
+            this.btnPrnBill.Size = new System.Drawing.Size(112, 31);
             this.btnPrnBill.TabIndex = 696;
-            this.btnPrnBill.Text = "Print";
+            this.btnPrnBill.Text = "Print ใบแจ้งหนี้";
             this.btnPrnBill.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.theme1.SetTheme(this.btnPrnBill, "(default)");
             this.btnPrnBill.UseVisualStyleBackColor = true;
@@ -390,7 +423,7 @@
             this.chkChronic.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.chkChronic.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.chkChronic.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.chkChronic.Location = new System.Drawing.Point(842, 9);
+            this.chkChronic.Location = new System.Drawing.Point(823, 9);
             this.chkChronic.Name = "chkChronic";
             this.chkChronic.Padding = new System.Windows.Forms.Padding(4, 1, 1, 1);
             this.chkChronic.Size = new System.Drawing.Size(88, 24);
@@ -409,7 +442,7 @@
             this.chkDenyAllergy.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.chkDenyAllergy.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.chkDenyAllergy.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.chkDenyAllergy.Location = new System.Drawing.Point(842, 32);
+            this.chkDenyAllergy.Location = new System.Drawing.Point(823, 32);
             this.chkDenyAllergy.Name = "chkDenyAllergy";
             this.chkDenyAllergy.Padding = new System.Windows.Forms.Padding(4, 1, 1, 1);
             this.chkDenyAllergy.Size = new System.Drawing.Size(104, 24);
@@ -586,6 +619,7 @@
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.panel2.Controls.Add(this.btnDiscountAdd);
             this.panel2.Controls.Add(this.btnChargeAdd);
             this.panel2.Controls.Add(this.panel3);
             this.panel2.Controls.Add(this.label9);
@@ -628,7 +662,6 @@
             this.btnChargeAdd.Size = new System.Drawing.Size(26, 24);
             this.btnChargeAdd.TabIndex = 755;
             this.btnChargeAdd.Text = "...";
-            this.btnChargeAdd.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.theme1.SetTheme(this.btnChargeAdd, "(default)");
             this.btnChargeAdd.UseVisualStyleBackColor = true;
             this.btnChargeAdd.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
@@ -637,8 +670,8 @@
             // 
             this.panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
             this.panel3.Controls.Add(this.cboGrpType);
-            this.panel3.Controls.Add(this.radioButton2);
-            this.panel3.Controls.Add(this.radioButton1);
+            this.panel3.Controls.Add(this.chkDiscountGrp);
+            this.panel3.Controls.Add(this.chkDiscountAll);
             this.panel3.Controls.Add(this.label19);
             this.panel3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
             this.panel3.Location = new System.Drawing.Point(614, 45);
@@ -670,39 +703,39 @@
             this.theme1.SetTheme(this.cboGrpType, "(default)");
             this.cboGrpType.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
             // 
-            // radioButton2
+            // chkDiscountGrp
             // 
-            this.radioButton2.AutoSize = true;
-            this.radioButton2.BackColor = System.Drawing.Color.Transparent;
-            this.radioButton2.Checked = true;
-            this.radioButton2.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
-            this.radioButton2.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(189)))), ((int)(((byte)(182)))));
-            this.radioButton2.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(189)))), ((int)(((byte)(182)))));
-            this.radioButton2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.radioButton2.Location = new System.Drawing.Point(126, 3);
-            this.radioButton2.Name = "radioButton2";
-            this.radioButton2.Size = new System.Drawing.Size(76, 17);
-            this.radioButton2.TabIndex = 751;
-            this.radioButton2.TabStop = true;
-            this.radioButton2.Text = "เฉพาะกลุ่ม";
-            this.theme1.SetTheme(this.radioButton2, "(default)");
-            this.radioButton2.UseVisualStyleBackColor = false;
+            this.chkDiscountGrp.AutoSize = true;
+            this.chkDiscountGrp.BackColor = System.Drawing.Color.Transparent;
+            this.chkDiscountGrp.Checked = true;
+            this.chkDiscountGrp.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
+            this.chkDiscountGrp.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(189)))), ((int)(((byte)(182)))));
+            this.chkDiscountGrp.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(189)))), ((int)(((byte)(182)))));
+            this.chkDiscountGrp.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.chkDiscountGrp.Location = new System.Drawing.Point(126, 3);
+            this.chkDiscountGrp.Name = "chkDiscountGrp";
+            this.chkDiscountGrp.Size = new System.Drawing.Size(76, 17);
+            this.chkDiscountGrp.TabIndex = 751;
+            this.chkDiscountGrp.TabStop = true;
+            this.chkDiscountGrp.Text = "เฉพาะกลุ่ม";
+            this.theme1.SetTheme(this.chkDiscountGrp, "(default)");
+            this.chkDiscountGrp.UseVisualStyleBackColor = false;
             // 
-            // radioButton1
+            // chkDiscountAll
             // 
-            this.radioButton1.AutoSize = true;
-            this.radioButton1.BackColor = System.Drawing.Color.Transparent;
-            this.radioButton1.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
-            this.radioButton1.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(189)))), ((int)(((byte)(182)))));
-            this.radioButton1.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(189)))), ((int)(((byte)(182)))));
-            this.radioButton1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.radioButton1.Location = new System.Drawing.Point(53, 3);
-            this.radioButton1.Name = "radioButton1";
-            this.radioButton1.Size = new System.Drawing.Size(58, 17);
-            this.radioButton1.TabIndex = 750;
-            this.radioButton1.Text = "ทั้งหมด";
-            this.theme1.SetTheme(this.radioButton1, "(default)");
-            this.radioButton1.UseVisualStyleBackColor = false;
+            this.chkDiscountAll.AutoSize = true;
+            this.chkDiscountAll.BackColor = System.Drawing.Color.Transparent;
+            this.chkDiscountAll.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
+            this.chkDiscountAll.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(189)))), ((int)(((byte)(182)))));
+            this.chkDiscountAll.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(189)))), ((int)(((byte)(182)))));
+            this.chkDiscountAll.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.chkDiscountAll.Location = new System.Drawing.Point(53, 3);
+            this.chkDiscountAll.Name = "chkDiscountAll";
+            this.chkDiscountAll.Size = new System.Drawing.Size(58, 17);
+            this.chkDiscountAll.TabIndex = 750;
+            this.chkDiscountAll.Text = "ทั้งหมด";
+            this.theme1.SetTheme(this.chkDiscountAll, "(default)");
+            this.chkDiscountAll.UseVisualStyleBackColor = false;
             // 
             // label19
             // 
@@ -1107,33 +1140,31 @@
             this.theme1.SetTheme(this.txtPayName, "(default)");
             this.txtPayName.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
             // 
-            // btnCalBack
+            // c1Button2
             // 
-            this.btnCalBack.Image = global::clinic_ivf.Properties.Resources.Navigate_left;
-            this.btnCalBack.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnCalBack.Location = new System.Drawing.Point(995, 52);
-            this.btnCalBack.Name = "btnCalBack";
-            this.btnCalBack.Size = new System.Drawing.Size(80, 31);
-            this.btnCalBack.TabIndex = 699;
-            this.btnCalBack.Text = "Send to Nurse";
-            this.btnCalBack.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.theme1.SetTheme(this.btnCalBack, "(default)");
-            this.btnCalBack.UseVisualStyleBackColor = true;
-            this.btnCalBack.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            this.c1Button2.Image = global::clinic_ivf.Properties.Resources.Female_user_edit_24;
+            this.c1Button2.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.c1Button2.Location = new System.Drawing.Point(933, 17);
+            this.c1Button2.Name = "c1Button2";
+            this.c1Button2.Size = new System.Drawing.Size(110, 31);
+            this.c1Button2.TabIndex = 701;
+            this.c1Button2.Text = "Print ใบเสร็จ";
+            this.c1Button2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.theme1.SetTheme(this.c1Button2, "(default)");
+            this.c1Button2.UseVisualStyleBackColor = true;
+            this.c1Button2.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
             // 
-            // btnClose
+            // btnDiscountAdd
             // 
-            this.btnClose.Image = global::clinic_ivf.Properties.Resources.Add_ticket_24;
-            this.btnClose.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnClose.Location = new System.Drawing.Point(1081, 52);
-            this.btnClose.Name = "btnClose";
-            this.btnClose.Size = new System.Drawing.Size(80, 31);
-            this.btnClose.TabIndex = 700;
-            this.btnClose.Text = "Close";
-            this.btnClose.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.theme1.SetTheme(this.btnClose, "(default)");
-            this.btnClose.UseVisualStyleBackColor = true;
-            this.btnClose.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            this.btnDiscountAdd.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnDiscountAdd.Location = new System.Drawing.Point(1057, 44);
+            this.btnDiscountAdd.Name = "btnDiscountAdd";
+            this.btnDiscountAdd.Size = new System.Drawing.Size(26, 24);
+            this.btnDiscountAdd.TabIndex = 756;
+            this.btnDiscountAdd.Text = "...";
+            this.theme1.SetTheme(this.btnDiscountAdd, "(default)");
+            this.btnDiscountAdd.UseVisualStyleBackColor = true;
+            this.btnDiscountAdd.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
             // 
             // FrmCashierAdd
             // 
@@ -1150,6 +1181,8 @@
             this.Load += new System.EventHandler(this.FrmCashierAdd_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.btnClose)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnCalBack)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtHnOld)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtVnOld)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtVsId)).EndInit();
@@ -1193,8 +1226,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtDiscount)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cboAccCash)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtPayName)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.btnCalBack)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.btnClose)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.c1Button2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnDiscountAdd)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1264,11 +1297,13 @@
         private C1.Win.C1Input.C1TextBox txtPttId;
         private System.Windows.Forms.Label label19;
         private System.Windows.Forms.Panel panel3;
-        private System.Windows.Forms.RadioButton radioButton2;
-        private System.Windows.Forms.RadioButton radioButton1;
+        private System.Windows.Forms.RadioButton chkDiscountGrp;
+        private System.Windows.Forms.RadioButton chkDiscountAll;
         private C1.Win.C1Input.C1ComboBox cboGrpType;
         private C1.Win.C1Input.C1Button btnChargeAdd;
         private C1.Win.C1Input.C1Button btnCalBack;
         private C1.Win.C1Input.C1Button btnClose;
+        private C1.Win.C1Input.C1Button c1Button2;
+        private C1.Win.C1Input.C1Button btnDiscountAdd;
     }
 }

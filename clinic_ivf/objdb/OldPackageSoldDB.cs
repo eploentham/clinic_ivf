@@ -250,6 +250,15 @@ namespace clinic_ivf.objdb
             dt = conn.selectData(conn.conn, sql);
             return dt;
         }
+        public DataTable selectByVN1(String vn)
+        {
+            DataTable dt = new DataTable();
+            String sql = "select opkgs.* " +
+                "From " + opkgs.table + " opkgs " +
+                "Where opkgs." + opkgs.VN + " ='" + vn + "' and Status<>3 ";
+            dt = conn.selectData(conn.conn, sql);
+            return dt;
+        }
         public OldPackageSold setLabItem(DataTable dt)
         {
             OldPackageSold opkgs1 = new OldPackageSold();

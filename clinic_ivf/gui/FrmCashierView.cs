@@ -246,7 +246,7 @@ namespace clinic_ivf.gui
             id = grfQue[grfQue.Row, colID] != null ? grfQue[grfQue.Row, colID].ToString() : "";
             vn = grfQue[grfQue.Row, colVN] != null ? grfQue[grfQue.Row, colVN].ToString() : "";
             name = grfQue[grfQue.Row, colPttName] != null ? grfQue[grfQue.Row, colPttName].ToString() : "";
-            ic.getBillVN(vn);
+            ic.getBillVN(id);
             openBillNew(id, name);
         }
         private void setGrfQue()
@@ -288,7 +288,7 @@ namespace clinic_ivf.gui
             grfQue.Cols[colPttName].Editor = txt;
             grfQue.Cols[colVsDate].Editor = txt;
 
-            grfQue.Cols[colVN].Width = 120;
+            grfQue.Cols[colVN].Width = 80;
             grfQue.Cols[colPttHn].Width = 120;
             grfQue.Cols[colPttName].Width = 300;
             grfQue.Cols[colVsDate].Width = 100;
@@ -325,7 +325,7 @@ namespace clinic_ivf.gui
             {
                 grfQue[i, 0] = i;
                 grfQue[i, colID] = row["id"].ToString();
-                grfQue[i, colVN] = row["VN"].ToString();
+                grfQue[i, colVN] = ic.showVN(row["VN"].ToString());
                 grfQue[i, colPttHn] = row["PIDS"].ToString();
                 grfQue[i, colPttName] = row["PName"].ToString();
                 grfQue[i, colVsDate] = ic.datetoShow(row["VDate"]);

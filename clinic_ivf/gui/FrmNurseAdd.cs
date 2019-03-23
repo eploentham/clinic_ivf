@@ -177,15 +177,46 @@ namespace clinic_ivf.gui
         private void BtnPkgOrder_Click(object sender, EventArgs e)
         {
             //throw new NotImplementedException();
+            ////      if ($Pay2 == "0" or $Pay2 == ""){
+            ////$PaymentTimes = 1;
+            ////      } else {
+            ////          if ($Pay3 == "0" or $Pay3 == ""){
+            ////		$PaymentTimes = 2;
+            ////          } else {
+            ////              if ($Pay4 == "0" or $Pay4 == ""){
+            ////			$PaymentTimes = 3;
+            ////              } else {
+            ////			$PaymentTimes = 4;
+            ////              }
+            ////          }
+            ////      }
+            String times = "";
+            Decimal price = 0;
+            if ( Decimal.TryParse(txtPayment1.Text, out price))
+            {
+                times = "1";
+            }
+            if (Decimal.TryParse(txtPayment2.Text, out price))
+            {
+                times = "2";
+            }
+            if (Decimal.TryParse(txtPayment3.Text, out price))
+            {
+                times = "3";
+            }
+            if (Decimal.TryParse(txtPayment4.Text, out price))
+            {
+                times = "4";
+            }
             OldPackageSold opkgs = new OldPackageSold();
             opkgs.PCKSID = "";
-            opkgs.PID = txtHn.Text;
+            opkgs.PID = txtIdOld.Text;
             opkgs.SellThruID = cboSellThruID.SelectedItem == null ? "" : ((ComboBoxItem)cboSellThruID.SelectedItem).Value;
             opkgs.PCKID = txtPkgId.Text;
             opkgs.PackageName = txtPkgName.Text;
             opkgs.Price = txtPrice.Text;
             opkgs.Date = "";
-            opkgs.PaymentTimes = "";
+            opkgs.PaymentTimes = times;
             opkgs.Status = "1";
             opkgs.Payment1 = txtPayment1.Text;
             opkgs.Payment2 = txtPayment2.Text;
@@ -669,10 +700,11 @@ namespace clinic_ivf.gui
             grfPackage.Cols[colBlInclude].Caption = "Include";
             grfPackage.Cols[colBlPrice].Caption = "Price";
             grfPackage.Cols[colBlRemark].Caption = "Remark";
+            grfPackage.Cols[colBlQty].Caption = "QTY";
 
-            CellRange rg = grfBloodLab.GetCellRange(2, colBlInclude, grfBloodLab.Rows.Count - 1, colBlInclude);
+            CellRange rg = grfPackage.GetCellRange(2, colBlInclude, grfPackage.Rows.Count - 1, colBlInclude);
             rg.Style = cs;
-            rg.Style = grfBloodLab.Styles["bool"];
+            rg.Style = grfPackage.Styles["bool"];
 
             int i = 0;
             decimal aaa = 0;
@@ -697,8 +729,8 @@ namespace clinic_ivf.gui
             CellNoteManager mgr = new CellNoteManager(grfPackage);
             grfPackage.Cols[colBlId].Visible = false;
             grfPackage.Cols[colBlInclude].Visible = false;
-            //grfRx.Cols[colBlPrice].Visible = false;
 
+            grfPackage.Cols[colBlQty].AllowEditing = false;
             grfPackage.Cols[colBlName].AllowEditing = false;
             grfPackage.Cols[colBlPrice].AllowEditing = false;
             grfPackage.Cols[colBlRemark].AllowEditing = false;
@@ -717,11 +749,11 @@ namespace clinic_ivf.gui
             grfPackage.AfterRowColChange += GrfPackage_AfterRowColChange;
             //grfExpnC.CellButtonClick += new C1.Win.C1FlexGrid.RowColEventHandler(this.grfDept_CellButtonClick);
             //grfExpnC.CellChanged += new C1.Win.C1FlexGrid.RowColEventHandler(this.grfDept_CellChanged);
-            ContextMenu menuGw = new ContextMenu();
-            menuGw.MenuItems.Add("สั่งการ", new EventHandler(ContextMenu_order_pkg));
+            //ContextMenu menuGw = new ContextMenu();
+            //menuGw.MenuItems.Add("สั่งการ", new EventHandler(ContextMenu_order_pkg));
             //menuGw.MenuItems.Add("&แก้ไข", new EventHandler(ContextMenu_Gw_Edit));
             //menuGw.MenuItems.Add("&ยกเลิก", new EventHandler(ContextMenu_Gw_Cancel));
-            grfPackage.ContextMenu = menuGw;
+            //grfPackage.ContextMenu = menuGw;
             pnPackage.Controls.Add(grfPackage);
 
             theme1.SetTheme(grfPackage, "GreenHouse");

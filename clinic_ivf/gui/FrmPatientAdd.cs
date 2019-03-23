@@ -374,13 +374,13 @@ namespace clinic_ivf.gui
                 {
                     if (txtVisitID.Text.Equals(""))
                     {
-                        setVisitOld();
-                        re = ic.ivfDB.ovsDB.insertVisitOld(vsOld, txtStfConfirmID.Text);
+                        setVisit();
+                        setVisitOld(vs.visit_vn);
+                        re = ic.ivfDB.ovsDB.insertVisitOld(vsOld, txtStfConfirmID.Text, "new");
                         long chk1 = 0;
                         if (long.TryParse(re, out chk1))
                         {
-                            setVisit();
-                            vs.visit_vn = re;
+                            //vs.visit_vn = re;
                             re = ic.ivfDB.ovsDB.updateVEndTimeNull(vsOld.VN);
                             re1 = ic.ivfDB.vsDB.insertVisit(vs, txtStfConfirmID.Text);
                             String re2 = ic.ivfDB.pttDB.updateHnCouple(txtID.Text, txtVisitHnMale.Text);
@@ -3145,10 +3145,10 @@ namespace clinic_ivf.gui
             
             return 0;
         }
-        private void setVisitOld()
+        private void setVisitOld(String vn)
         {
             vsOld = new VisitOld();
-            vsOld.VN = txtVn.Text;
+            vsOld.VN = vn;
             vsOld.VSID = "110";
             vsOld.PID = txtIdOld.Text;
             vsOld.PIDS = txtHn.Text;

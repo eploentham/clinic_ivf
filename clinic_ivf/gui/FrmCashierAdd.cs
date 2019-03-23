@@ -83,6 +83,11 @@ namespace clinic_ivf.gui
             txtCreditCharge.KeyUp += TxtCreditCharge_KeyUp;
             btnCalBack.Click += BtnCalBack_Click;
             btnClose.Click += BtnClose_Click;
+            btnChargeAdd.Click += BtnChargeAdd_Click;
+            btnDiscountAdd.Click += BtnDiscountAdd_Click;
+            txtDiscountAmt.KeyUp += TxtDiscountAmt_KeyUp;
+            chkDiscountCash.Click += ChkDiscountCash_Click;
+            chkDiscountPer.Click += ChkDiscountPer_Click;
             //txtTotalCash.KeyPress += TxtTotalCash_KeyPress;
             //txtTotalCredit.KeyPress += TxtTotalCredit_KeyPress;
 
@@ -91,6 +96,129 @@ namespace clinic_ivf.gui
             setChkDiscount(false);
             setControl();
             
+        }
+
+        private void ChkDiscountPer_Click(object sender, EventArgs e)
+        {
+            //throw new NotImplementedException();
+            txtDiscount.Value = "";
+            if (chkDiscountPer.Checked)
+            {
+                panel3.Enabled = true;
+            }
+        }
+
+        private void ChkDiscountCash_Click(object sender, EventArgs e)
+        {
+            //throw new NotImplementedException();
+            txtDiscount.Value = "";
+            if (chkDiscountCash.Checked)
+            {
+                panel3.Enabled = false;
+            }
+        }
+
+        private void TxtDiscountAmt_KeyUp(object sender, KeyEventArgs e)
+        {
+            //throw new NotImplementedException();
+            if(e.KeyCode == Keys.Enter)
+            {
+                if (chkDiscountCash.Checked)
+                {
+                    if (chkDiscountAll.Checked)
+                    {
+                        
+                    }
+                    else
+                    {
+
+                    }
+                }
+                else
+                {
+                    if (chkDiscountAll.Checked)
+                    {
+                        Decimal amt = 0, discount = 0, discountper = 0;
+                        Decimal.TryParse(txtDiscountAmt.Text, out discountper);
+                        Decimal.TryParse(txtAmt.Text, out amt);
+                        discount = amt * (discountper / 100);
+                        txtDiscount.Value = discount.ToString();
+                    }
+                    else
+                    {
+                        Decimal netamt = 0, discount = 0, discountper = 0;
+                        foreach (Row row in grfBillD.Rows)
+                        {
+                            String amt1 = "", grp="", name="";
+                            Decimal amt = 0;
+                            try
+                            {
+                                grp = row[colGrpName].ToString();
+                                amt1 = row[colAmt].ToString();
+                                name = row[colName].ToString();
+                                if (grp.Equals("OtherService") && name.Equals("OtherService"))
+                                {
+
+                                }
+                                else if(grp.Equals("OtherService"))
+                                {
+                                    if(Decimal.TryParse(amt1, out amt))
+                                    {
+                                        netamt += amt;
+                                    }
+                                }
+                            }
+                            catch(Exception ex)
+                            {
+
+                            }
+                        }
+
+                    }
+                }
+            }
+        }
+
+        private void BtnDiscountAdd_Click(object sender, EventArgs e)
+        {
+            //throw new NotImplementedException();
+            OldBilldetail obilld = new OldBilldetail();
+            obilld.ID = "";
+            obilld.VN = txtVn.Text;
+            obilld.Name = "OtherService discount ";
+            obilld.Extra = "1";
+
+            obilld.Price = "-"+txtDiscount.Text.Replace(",", "");
+            obilld.Total = "-" + txtDiscount.Text.Replace(",", "");
+            obilld.Comment = "";
+
+            obilld.GroupType = "OtherService";
+
+            ic.ivfDB.obildDB.insertBillDetail(obilld, "");
+            setGrfBillD();
+            calTotal();
+            calTotalCredit();
+        }
+
+        private void BtnChargeAdd_Click(object sender, EventArgs e)
+        {
+            //throw new NotImplementedException();
+            OldBilldetail obilld = new OldBilldetail();
+            obilld.ID = "";
+            obilld.VN = txtVn.Text;
+            obilld.Name = "OtherService ";
+            obilld.Extra = "1";
+            
+            obilld.Price = txtPayCreditCard.Text.Replace(",","");
+            obilld.Total = txtPayCreditCard.Text.Replace(",", "");
+            obilld.Comment = "";
+            
+            obilld.GroupType = "OtherService";
+
+            ic.ivfDB.obildDB.insertBillDetail(obilld, "");
+            setGrfBillD();
+            calTotal();
+            calTotalCredit();
         }
 
         private void BtnClose_Click(object sender, EventArgs e)
@@ -329,7 +457,7 @@ namespace clinic_ivf.gui
             grfBillD.Cols[colDiscount].Editor = txt;
             grfBillD.Cols[colNetAmt].Editor = txt;
 
-            grfBillD.Cols[colName].Width = 300;
+            grfBillD.Cols[colName].Width = 360;
             grfBillD.Cols[colAmt].Width = 120;
             grfBillD.Cols[colDiscount].Width = 120;
             grfBillD.Cols[colNetAmt].Width = 120;
@@ -352,12 +480,14 @@ namespace clinic_ivf.gui
             int i = 1;
             foreach (DataRow row in dt.Rows)
             {
+                Decimal price = 0;
+                Decimal.TryParse(row[ic.ivfDB.obildDB.obilld.Price].ToString(), out price);
                 grfBillD[i, 0] = i;
                 grfBillD[i, colId] = row[ic.ivfDB.obildDB.obilld.ID].ToString();
                 grfBillD[i, colName] = row[ic.ivfDB.obildDB.obilld.Name].ToString();
-                grfBillD[i, colAmt] = row[ic.ivfDB.obildDB.obilld.Price].ToString();
+                grfBillD[i, colAmt] = price.ToString("#,###.00");
                 grfBillD[i, colDiscount] = "";
-                grfBillD[i, colNetAmt] = row[ic.ivfDB.obildDB.obilld.Total].ToString();
+                grfBillD[i, colNetAmt] = price.ToString("#,###.00");
                 grfBillD[i, colGrpName] = row[ic.ivfDB.obildDB.obilld.GroupType].ToString();
                 //if (!row[ic.ivfDB.vsOldDB.vsold.form_a_id].ToString().Equals("0"))
                 //{
@@ -405,6 +535,7 @@ namespace clinic_ivf.gui
         {
             txtDiscount.Enabled = flag;
             pnDiscount.Enabled = flag;
+            panel3.Enabled = false;
         }
         private void calTotal()
         {

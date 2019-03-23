@@ -91,6 +91,14 @@ ALTER TABLE `ivf_101`.`Agent`
 CHANGE COLUMN `active` `active` VARCHAR(45) NULL DEFAULT '1' ;
 
 
+ALTER TABLE `ivf_101`.`b_company` 
+ADD COLUMN `day_curr` VARCHAR(45) NULL AFTER `prefix_fet_doc`,
+CHANGE COLUMN `year_curr` `year_curr` VARCHAR(55) NULL DEFAULT NULL ,
+CHANGE COLUMN `month_curr` `month_curr` VARCHAR(55) NULL DEFAULT NULL ;
+
+
+
+
 delete from JobPx;
 delete from JobPxDetail;
 
@@ -99,3 +107,4 @@ delete from JobLabDetail;
 
 delete from JobSpecial;
 delete from JobSpecialDetail;
+

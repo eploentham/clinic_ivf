@@ -267,7 +267,7 @@ namespace clinic_ivf.gui
                 else
                 {
                     setVisitOld();
-                    re = ic.ivfDB.ovsDB.insertVisitOld(vsOld, txtStfConfirmID.Text);
+                    re = ic.ivfDB.ovsDB.insertVisitOld(vsOld, txtStfConfirmID.Text, "new");
                     long chk1 = 0;
                     if (long.TryParse(re, out chk1))
                     {

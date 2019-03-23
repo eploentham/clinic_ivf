@@ -94,6 +94,10 @@ namespace clinic_ivf.objdb
             cop.prefix_form_a_doc = "prefix_form_a";
             cop.fet_doc = "fet_doc";
             cop.prefix_fet_doc = "prefix_fet_doc";
+            cop.year = "";
+            cop.month = "";
+            cop.day = "";
+            cop.day_curr = "day_curr";
 
             cop.table = "b_company";
             cop.pkField = "comp_id";
@@ -313,7 +317,7 @@ namespace clinic_ivf.objdb
         {
             Company cop1 = new Company();
             DataTable dt = new DataTable();
-            String sql = "select cop.* " +
+            String sql = "select cop.*, month(now()) as month, day(now()) as day, year(now()) as year " +
                 "From " + cop.table + " cop " +
                 //"Left Join t_ssdata_visit ssv On ssv.ssdata_visit_id = bd.ssdata_visit_id " +
                 "Where cop." + cop.comp_id + " ='" + copId + "' ";
@@ -325,7 +329,7 @@ namespace clinic_ivf.objdb
         {
             Company cop1 = new Company();
             DataTable dt = new DataTable();
-            String sql = "select cop.* " +
+            String sql = "select cop.*, date_format(now(),'%m') as month, date_format(now(),'%d') as day, year(now()) as year " +
                 "From " + cop.table + " cop " +
                 //"Left Join t_ssdata_visit ssv On ssv.ssdata_visit_id = bd.ssdata_visit_id " +
                 "Where cop." + cop.comp_code + " ='" + copId + "' and cop." + cop.active + " ='1' ";
@@ -372,32 +376,42 @@ namespace clinic_ivf.objdb
             String doc = "", year = "", sql = "";
             Company cop1 = new Company();
             cop1 = selectByCode1("001");
-            year = DateTime.Now.ToString("yyyy");
-            if (!year.Equals(cop1.year_curr))
+            //year = DateTime.Now.ToString("yyyy");
+            if (!cop1.year.Equals(cop1.year_curr))
             {
                 sql = "Update " + cop.table + " Set " +
-                    " " + cop.year_curr + "='" + year + "' " +
-                    "," + cop.billing_doc + "=1 " +
+                    " " + cop.year_curr + "='" + cop1.year + "' " +
+                    //"," + cop.billing_doc + "=1 " +
                     "Where " + cop.pkField + "='" + cop1.comp_id + "'";
                 conn.ExecuteNonQuery(conn.conn, sql);
-                doc = "00001";
+                //doc = "00001";
             }
-            else
+            if (!cop1.month.Equals(cop1.month_curr))
             {
-                int chk = 0;
-                if (int.TryParse(cop1.billing_doc, out chk))
-                {
-                    chk++;
-                    doc = "00000" + chk;
-                    doc = doc.Substring(doc.Length - 5, 5);
-                    year = cop1.year_curr;
+                cop1.month = "00" + cop1.month;
+                cop1.month = cop1.month.Substring(cop1.month.Length - 2, 2);
+                sql = "Update " + cop.table + " Set " +
+                    " " + cop.month_curr + "='" + cop1.month + "' " +
 
-                    sql = "Update " + cop.table + " Set " +
-                    "" + cop.billing_doc + "=" + chk +
-                    " Where " + cop.pkField + "='" + cop1.comp_id + "'";
-                    conn.ExecuteNonQuery(conn.conn, sql);
-                }
+                    "Where " + cop.pkField + "='" + cop1.comp_id + "'";
+                conn.ExecuteNonQuery(conn.conn, sql);
+                cop1.billing_doc = "00000";
             }
+
+            int chk = 0;
+            if (int.TryParse(cop1.billing_doc, out chk))
+            {
+                chk++;
+                doc = "00000" + chk;
+                doc = doc.Substring(doc.Length - 5, 5);
+                year = cop1.year_curr;
+
+                sql = "Update " + cop.table + " Set " +
+                "" + cop.billing_doc + "=" + chk +
+                " Where " + cop.pkField + "='" + cop1.comp_id + "'";
+                conn.ExecuteNonQuery(conn.conn, sql);
+            }
+            
             doc = "BI" + year.Substring(year.Length - 2, 2) + doc;
             return doc;
         }
@@ -575,23 +589,45 @@ namespace clinic_ivf.objdb
             String doc = "", year = "", sql = "";
             Company cop1 = new Company();
             cop1 = selectByCode1("001");
-            year = DateTime.Now.ToString("yyyy");
-            if (!year.Equals(cop1.year_curr))
+            //year = DateTime.Now.ToString("yyyy");
+            if (!cop1.year.Equals(cop1.year_curr))
             {
                 sql = "Update " + cop.table + " Set " +
-                    " " + cop.year_curr + "='" + year + "' " +
-                    "," + cop.vn_doc + "=1 " +
+                    " " + cop.year_curr + "='" + cop1.year + "' " +
+                    //"," + cop.vn_doc + "=1 " +
                     "Where " + cop.pkField + "='" + cop1.comp_id + "'";
                 conn.ExecuteNonQuery(conn.conn, sql);
                 //doc = "00001";
+            }
+            if (!cop1.month.Equals(cop1.month_curr))
+            {
+                cop1.month = "00" + cop1.month;
+                cop1.month = cop1.month.Substring(cop1.month.Length - 2, 2);
+                sql = "Update " + cop.table + " Set " +
+                    " " + cop.month_curr + "='" + cop1.month + "' " +
+                    
+                    "Where " + cop.pkField + "='" + cop1.comp_id + "'";
+                conn.ExecuteNonQuery(conn.conn, sql);
+                //doc = "00001";
+            }
+            if (!cop1.day.Equals(cop1.day_curr))
+            {
+                cop1.day = "00" + cop1.day;
+                cop1.day = cop1.day.Substring(cop1.day.Length - 2, 2);
+                sql = "Update " + cop.table + " Set " +
+                    " " + cop.day_curr + "='" + cop1.day + "' " +
+
+                    "Where " + cop.pkField + "='" + cop1.comp_id + "'";
+                conn.ExecuteNonQuery(conn.conn, sql);
+                cop1.vn_doc = "000";
             }
 
             int chk = 0;
             if (int.TryParse(cop1.vn_doc, out chk))
             {
                 chk++;
-                doc = "00000" + chk;
-                doc = doc.Substring(doc.Length - 5, 5);
+                doc = "000" + chk;
+                doc = doc.Substring(doc.Length - 3, 3);
                 year = cop1.year_curr;
 
                 sql = "Update " + cop.table + " Set " +
@@ -599,8 +635,8 @@ namespace clinic_ivf.objdb
                 " Where " + cop.pkField + "='" + cop1.comp_id + "'";
                 conn.ExecuteNonQuery(conn.conn, sql);
             }
-            year = String.Concat(DateTime.Now.Year + 543);
-            doc = cop1.prefix_vn_doc + doc;
+            //year = String.Concat(DateTime.Now.Year + 543);
+            doc = cop1.prefix_vn_doc + cop1.year + cop1.month + cop1.day + doc;
             return doc;
         }
         public String genQueueDoc()
@@ -793,6 +829,10 @@ namespace clinic_ivf.objdb
                 cop1.prefix_form_a_doc = dt.Rows[0][cop.prefix_form_a_doc].ToString();
                 cop1.fet_doc = dt.Rows[0][cop.fet_doc].ToString();
                 cop1.prefix_fet_doc = dt.Rows[0][cop.prefix_fet_doc].ToString();
+                cop1.year = dt.Rows[0]["year"].ToString();
+                cop1.month = dt.Rows[0]["month"].ToString();
+                cop1.day = dt.Rows[0]["day"].ToString();
+                cop1.day_curr = dt.Rows[0][cop.day_curr].ToString();
             }
             else
             {
@@ -870,6 +910,10 @@ namespace clinic_ivf.objdb
                 cop1.prefix_form_a_doc = "";
                 cop1.fet_doc = "";
                 cop1.prefix_fet_doc = "";
+                cop1.year = "";
+                cop1.month = "";
+                cop1.day = "";
+                cop1.day_curr = "";
             }
 
             return cop1;

@@ -25,7 +25,7 @@ namespace clinic_ivf.gui
         Color bg, fc;
         Font ff, ffB;
 
-        int colID = 1, colVN = 2, colPttHn = 3, colPttName = 4, colVsDate = 5, colVsTime = 6, colVsEtime = 7, colStatus = 8, colPttId=9;
+        int colID = 1, colVNshow = 2, colPttHn = 3, colPttName = 4, colVsDate = 5, colVsTime = 6, colVsEtime = 7, colStatus = 8, colPttId=9, colVn=10;
         int colSID = 1, colSVN = 2, colSPttHn = 3, colSPttName = 4, colSVsDate = 5, colSVsTime = 6, colSVsEtime = 7, colSStatus = 8, colSPttId = 9;
         int colRID = 1, colRVN = 2, colRPttHn = 3, colRPttName = 4, colRVsDate = 5, colRPttId = 6;
 
@@ -275,7 +275,7 @@ namespace clinic_ivf.gui
             grfFinish.Cols[colPttName].Editor = txt;
             grfFinish.Cols[colVsDate].Editor = txt;
 
-            grfFinish.Cols[colVN].Width = 120;
+            grfFinish.Cols[colVNshow].Width = 120;
             grfFinish.Cols[colPttHn].Width = 120;
             grfFinish.Cols[colPttName].Width = 300;
             grfFinish.Cols[colVsDate].Width = 100;
@@ -287,7 +287,7 @@ namespace clinic_ivf.gui
             //grdFlex.Cols[colID].Caption = "no";
             //grfDept.Cols[colCode].Caption = "รหัส";
 
-            grfFinish.Cols[colVN].Caption = "VN";
+            grfFinish.Cols[colVNshow].Caption = "VN";
             grfFinish.Cols[colPttHn].Caption = "HN";
             grfFinish.Cols[colPttName].Caption = "Name";
             grfFinish.Cols[colVsDate].Caption = "Date";
@@ -314,7 +314,7 @@ namespace clinic_ivf.gui
                 {
                     grfFinish[i, 0] = i;
                     grfFinish[i, colID] = row["id"].ToString();
-                    grfFinish[i, colVN] = row["VN"].ToString();
+                    grfFinish[i, colVNshow] = row["VN"].ToString();
                     grfFinish[i, colPttHn] = row["PIDS"].ToString();
                     grfFinish[i, colPttName] = row["PName"].ToString();
                     grfFinish[i, colVsDate] = ic.datetoShow(row["VDate"]);
@@ -327,7 +327,7 @@ namespace clinic_ivf.gui
                         String txt1 = "";
                         txt1 = "นัดวันที่  "+ic.datetoShow(row["patient_appointment_date"].ToString())+" "+ row["patient_appointment_time"].ToString() + " " + row["patient_appointment"].ToString();
                         CellNote note = new CellNote(txt1);
-                        CellRange rg = grfFinish.GetCellRange(i, colVN);
+                        CellRange rg = grfFinish.GetCellRange(i, colVNshow);
                         rg.UserData = note;
                     }
                     //if (i % 2 == 0)
@@ -375,7 +375,7 @@ namespace clinic_ivf.gui
             grfFinish.Cols[colPttName].Editor = txt;
             grfFinish.Cols[colVsDate].Editor = txt;
 
-            grfFinish.Cols[colVN].Width = 120;
+            grfFinish.Cols[colVNshow].Width = 120;
             grfFinish.Cols[colPttHn].Width = 120;
             grfFinish.Cols[colPttName].Width = 300;
             grfFinish.Cols[colVsDate].Width = 100;
@@ -387,7 +387,7 @@ namespace clinic_ivf.gui
             //grdFlex.Cols[colID].Caption = "no";
             //grfDept.Cols[colCode].Caption = "รหัส";
 
-            grfFinish.Cols[colVN].Caption = "VN";
+            grfFinish.Cols[colVNshow].Caption = "VN";
             grfFinish.Cols[colPttHn].Caption = "HN";
             grfFinish.Cols[colPttName].Caption = "Name";
             grfFinish.Cols[colVsDate].Caption = "Date";
@@ -413,7 +413,7 @@ namespace clinic_ivf.gui
             {
                 grfFinish[i, 0] = i;
                 grfFinish[i, colID] = row["id"].ToString();
-                grfFinish[i, colVN] = row["VN"].ToString();
+                grfFinish[i, colVNshow] = row["VN"].ToString();
                 grfFinish[i, colPttHn] = row["PIDS"].ToString();
                 grfFinish[i, colPttName] = row["PName"].ToString();
                 grfFinish[i, colVsDate] = ic.datetoShow(row["VDate"]);
@@ -424,7 +424,7 @@ namespace clinic_ivf.gui
                 if (!row[ic.ivfDB.ovsDB.vsold.form_a_id].ToString().Equals("0"))
                 {
                     CellNote note = new CellNote("ส่ง Lab Request Foam A");
-                    CellRange rg = grfFinish.GetCellRange(i, colVN);
+                    CellRange rg = grfFinish.GetCellRange(i, colVNshow);
                     rg.UserData = note;
                 }
                 //if (i % 2 == 0)
@@ -493,7 +493,7 @@ namespace clinic_ivf.gui
             grfDiag.Cols[colPttName].Editor = txt;
             grfDiag.Cols[colVsDate].Editor = txt;
 
-            grfDiag.Cols[colVN].Width = 120;
+            grfDiag.Cols[colVNshow].Width = 120;
             grfDiag.Cols[colPttHn].Width = 120;
             grfDiag.Cols[colPttName].Width = 300;
             grfDiag.Cols[colVsDate].Width = 100;
@@ -505,7 +505,7 @@ namespace clinic_ivf.gui
             //grdFlex.Cols[colID].Caption = "no";
             //grfDept.Cols[colCode].Caption = "รหัส";
 
-            grfDiag.Cols[colVN].Caption = "VN";
+            grfDiag.Cols[colVNshow].Caption = "VN";
             grfDiag.Cols[colPttHn].Caption = "HN";
             grfDiag.Cols[colPttName].Caption = "Name";
             grfDiag.Cols[colVsDate].Caption = "Date";
@@ -529,7 +529,7 @@ namespace clinic_ivf.gui
             {
                 grfDiag[i, 0] = i;
                 grfDiag[i, colID] = row["id"].ToString();
-                grfDiag[i, colVN] = row["VN"].ToString();
+                grfDiag[i, colVNshow] = row["VN"].ToString();
                 grfDiag[i, colPttHn] = row["PIDS"].ToString();
                 grfDiag[i, colPttName] = row["PName"].ToString();
                 grfDiag[i, colVsDate] = ic.datetoShow(row["VDate"]);
@@ -597,7 +597,7 @@ namespace clinic_ivf.gui
             grfSearch.Cols[colPttName].Editor = txt;
             grfSearch.Cols[colVsDate].Editor = txt;
 
-            grfSearch.Cols[colVN].Width = 120;
+            grfSearch.Cols[colVNshow].Width = 120;
             grfSearch.Cols[colPttHn].Width = 120;
             grfSearch.Cols[colPttName].Width = 300;
             grfSearch.Cols[colVsDate].Width = 100;
@@ -609,7 +609,7 @@ namespace clinic_ivf.gui
             //grdFlex.Cols[colID].Caption = "no";
             //grfDept.Cols[colCode].Caption = "รหัส";
 
-            grfSearch.Cols[colVN].Caption = "VN";
+            grfSearch.Cols[colVNshow].Caption = "VN";
             grfSearch.Cols[colPttHn].Caption = "HN";
             grfSearch.Cols[colPttName].Caption = "Name";
             grfSearch.Cols[colVsDate].Caption = "Date";
@@ -636,7 +636,7 @@ namespace clinic_ivf.gui
             {
                 grfSearch[i, 0] = i;
                 grfSearch[i, colID] = row["id"].ToString();
-                grfSearch[i, colVN] = row["VN"].ToString();
+                grfSearch[i, colVNshow] = row["VN"].ToString();
                 grfSearch[i, colPttHn] = row["PIDS"].ToString();
                 grfSearch[i, colPttName] = row["PName"].ToString();
                 grfSearch[i, colVsDate] = ic.datetoShow(row["VDate"]);
@@ -647,7 +647,7 @@ namespace clinic_ivf.gui
                 if (!row[ic.ivfDB.ovsDB.vsold.form_a_id].ToString().Equals("0"))
                 {
                     CellNote note = new CellNote("ส่ง Lab Request Foam A");
-                    CellRange rg = grfSearch.GetCellRange(i, colVN);
+                    CellRange rg = grfSearch.GetCellRange(i, colVNshow);
                     rg.UserData = note;
                 }
                 //if (i % 2 == 0)
@@ -727,7 +727,7 @@ namespace clinic_ivf.gui
             grfLab.Cols[colPttName].Editor = txt;
             grfLab.Cols[colVsDate].Editor = txt;
 
-            grfLab.Cols[colVN].Width = 120;
+            grfLab.Cols[colVNshow].Width = 120;
             grfLab.Cols[colPttHn].Width = 120;
             grfLab.Cols[colPttName].Width = 300;
             grfLab.Cols[colVsDate].Width = 100;
@@ -739,7 +739,7 @@ namespace clinic_ivf.gui
             //grdFlex.Cols[colID].Caption = "no";
             //grfDept.Cols[colCode].Caption = "รหัส";
 
-            grfLab.Cols[colVN].Caption = "VN";
+            grfLab.Cols[colVNshow].Caption = "VN";
             grfLab.Cols[colPttHn].Caption = "HN";
             grfLab.Cols[colPttName].Caption = "Name";
             grfLab.Cols[colVsDate].Caption = "Date";
@@ -870,7 +870,7 @@ namespace clinic_ivf.gui
             grfQue.Cols[colPttName].Editor = txt;
             grfQue.Cols[colVsDate].Editor = txt;
 
-            grfQue.Cols[colVN].Width = 120;
+            grfQue.Cols[colVNshow].Width = 120;
             grfQue.Cols[colPttHn].Width = 120;
             grfQue.Cols[colPttName].Width = 300;
             grfQue.Cols[colVsDate].Width = 100;
@@ -882,7 +882,7 @@ namespace clinic_ivf.gui
             //grdFlex.Cols[colID].Caption = "no";
             //grfDept.Cols[colCode].Caption = "รหัส";
 
-            grfQue.Cols[colVN].Caption = "VN";
+            grfQue.Cols[colVNshow].Caption = "VN";
             grfQue.Cols[colPttHn].Caption = "HN";
             grfQue.Cols[colPttName].Caption = "Name";
             grfQue.Cols[colVsDate].Caption = "Date";
@@ -911,7 +911,7 @@ namespace clinic_ivf.gui
                 {
                     grfQue[i, 0] = i;
                     grfQue[i, colID] = row["id"].ToString();
-                    grfQue[i, colVN] = row["VN"].ToString();
+                    grfQue[i, colVNshow] = row["VN"].ToString();
                     grfQue[i, colPttHn] = row["PIDS"].ToString();
                     grfQue[i, colPttName] = row["PName"].ToString();
                     grfQue[i, colVsDate] = ic.datetoShow(row["VDate"]);
@@ -959,7 +959,7 @@ namespace clinic_ivf.gui
 
             //grfExpn.Rows.Count = dt.Rows.Count + 1;
             grfQue.Rows.Count = dt.Rows.Count + 1;
-            grfQue.Cols.Count = 10;
+            grfQue.Cols.Count = 11;
             C1TextBox txt = new C1TextBox();
             //C1ComboBox cboproce = new C1ComboBox();
             //ic.ivfDB.itmDB.setCboItem(cboproce);
@@ -967,7 +967,7 @@ namespace clinic_ivf.gui
             grfQue.Cols[colPttName].Editor = txt;
             grfQue.Cols[colVsDate].Editor = txt;
 
-            grfQue.Cols[colVN].Width = 120;
+            grfQue.Cols[colVNshow].Width = 80;
             grfQue.Cols[colPttHn].Width = 120;
             grfQue.Cols[colPttName].Width = 300;
             grfQue.Cols[colVsDate].Width = 100;
@@ -979,7 +979,7 @@ namespace clinic_ivf.gui
             //grdFlex.Cols[colID].Caption = "no";
             //grfDept.Cols[colCode].Caption = "รหัส";
 
-            grfQue.Cols[colVN].Caption = "VN";
+            grfQue.Cols[colVNshow].Caption = "VN";
             grfQue.Cols[colPttHn].Caption = "HN";
             grfQue.Cols[colPttName].Caption = "Name";
             grfQue.Cols[colVsDate].Caption = "Date";
@@ -1006,7 +1006,8 @@ namespace clinic_ivf.gui
             {
                 grfQue[i, 0] = i;
                 grfQue[i, colID] = row["id"].ToString();
-                grfQue[i, colVN] = row["VN"].ToString();
+                grfQue[i, colVNshow] = ic.showVN(row["VN"].ToString());
+                grfQue[i, colVn] = row["VN"].ToString();
                 grfQue[i, colPttHn] = row["PIDS"].ToString();
                 grfQue[i, colPttName] = row["PName"].ToString();
                 grfQue[i, colVsDate] = ic.datetoShow(row["VDate"]);
@@ -1017,7 +1018,7 @@ namespace clinic_ivf.gui
                 if (!row[ic.ivfDB.ovsDB.vsold.form_a_id].ToString().Equals("0"))
                 {
                     CellNote note = new CellNote("ส่ง Lab Request Foam A");
-                    CellRange rg = grfQue.GetCellRange(i, colVN);
+                    CellRange rg = grfQue.GetCellRange(i, colVNshow);
                     rg.UserData = note;
                 }
                 //if (i % 2 == 0)
@@ -1026,6 +1027,7 @@ namespace clinic_ivf.gui
             }
             CellNoteManager mgr = new CellNoteManager(grfQue);
             grfQue.Cols[colID].Visible = false;
+            grfQue.Cols[colVn].Visible = false;
             //theme1.SetTheme(grfQue, ic.theme);
 
         }
@@ -1271,7 +1273,7 @@ namespace clinic_ivf.gui
         {
             String chk = "", name = "", vn = "", pttId = "";
 
-            vn = grfFinish[grfFinish.Row, colVN] != null ? grfFinish[grfFinish.Row, colVN].ToString() : "";
+            vn = grfFinish[grfFinish.Row, colVNshow] != null ? grfFinish[grfFinish.Row, colVNshow].ToString() : "";
             pttId = grfFinish[grfFinish.Row, colPttId] != null ? grfFinish[grfFinish.Row, colPttId].ToString() : "";
             chk = grfFinish[grfFinish.Row, colPttHn] != null ? grfFinish[grfFinish.Row, colPttHn].ToString() : "";
             name = grfFinish[grfFinish.Row, colPttName] != null ? grfFinish[grfFinish.Row, colPttName].ToString() : "";
@@ -1287,16 +1289,16 @@ namespace clinic_ivf.gui
         }
         private void ContextMenu_order(object sender, System.EventArgs e)
         {
-            String chk = "", name = "", vn = "", pttId = "";
+            String chk = "", name = "", id = "", pttId = "";
 
-            vn = grfQue[grfQue.Row, colVN] != null ? grfQue[grfQue.Row, colVN].ToString() : "";
+            id = grfQue[grfQue.Row, colID] != null ? grfQue[grfQue.Row, colID].ToString() : "";
             pttId = grfQue[grfQue.Row, colPttId] != null ? grfQue[grfQue.Row, colPttId].ToString() : "";
             chk = grfQue[grfQue.Row, colPttHn] != null ? grfQue[grfQue.Row, colPttHn].ToString() : "";
             name = grfQue[grfQue.Row, colPttName] != null ? grfQue[grfQue.Row, colPttName].ToString() : "";
             //FrmNurseAdd frm = new FrmNurseAdd();
             //frm.ShowDialog(this);
 
-            openNurseAdd(pttId, vn, name);
+            openNurseAdd(pttId, id, name);
             //if (MessageBox.Show("ต้องการ แก้ไข Patient  \n  hn number " + chk + " \n name " + name, "", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == DialogResult.OK)
             //{
             //grfReq.Rows.Remove(grfReq.Row);
