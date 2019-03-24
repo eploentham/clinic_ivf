@@ -22,7 +22,7 @@ namespace clinic_ivf.gui
         MainMenu menu;
         public C1DockingTabPage tab;
 
-        String pttId = "", webcamname = "", vsid = "";
+        String pttId = "", webcamname = "", vsid = "", flagedit;
         Patient ptt;
         VisitOld vsOld;
         Visit vs;
@@ -48,13 +48,14 @@ namespace clinic_ivf.gui
         int colOrdid = 1, colOrdlpid=2, colOrdName=3, colOrdPrice=4, colOrdQty=5, colOrdstatus=6, colOrdrow1=7, colOrditmid=8, colOrdInclude=9, colOrdAmt=10, colOrdUsE = 11, colOrdUsT = 12;
         int rowOrder = 0;
 
-        public FrmNurseAdd(IvfControl ic, MainMenu m, String pttid, String vsid)
+        public FrmNurseAdd(IvfControl ic, MainMenu m, String pttid, String vsid, String flagedit)
         {
             InitializeComponent();
             menu = m;
             this.ic = ic;
             this.vsid = vsid;
             this.pttId = pttid;
+            this.flagedit = flagedit;
             initConfig();
         }
         private void initConfig()
@@ -111,6 +112,10 @@ namespace clinic_ivf.gui
             setGrfRxSet();
             setGrfpackage();
             setGrfOrder(txtVn.Text);
+            if (flagedit.Equals("view"))
+            {
+                btnPkgOrder.Enabled = false;
+            }
             //initGrfPtt();
             //setGrfPtt("");
         }
@@ -304,10 +309,13 @@ namespace clinic_ivf.gui
 
             grfOrder.AfterDataRefresh += GrfOrder_AfterDataRefresh;
             grfOrder.SubtotalPosition = SubtotalPositionEnum.BelowData;
-            //grfExpnC.CellButtonClick += new C1.Win.C1FlexGrid.RowColEventHandler(this.grfDept_CellButtonClick);
+            //grfOrder.mou
             //grfExpnC.CellChanged += new C1.Win.C1FlexGrid.RowColEventHandler(this.grfDept_CellChanged);
             ContextMenu menuGw = new ContextMenu();
-            menuGw.MenuItems.Add("ยกเลิกรายการ", new EventHandler(ContextMenu_or_void));
+            if (flagedit.Equals("edit"))
+            {
+                menuGw.MenuItems.Add("ยกเลิกรายการ", new EventHandler(ContextMenu_or_void));
+            }
             //menuGw.MenuItems.Add("&แก้ไข", new EventHandler(ContextMenu_Gw_Edit));
             //menuGw.MenuItems.Add("&ยกเลิก", new EventHandler(ContextMenu_Gw_Cancel));
             grfOrder.ContextMenu = menuGw;
@@ -376,6 +384,7 @@ namespace clinic_ivf.gui
             dtAll.Columns.Add("row1", typeof(int));
             dtAll.Columns.Add("itmid", typeof(String));
             dtAll.Columns.Add("extra", typeof(String));
+            dtAll.Columns.Add("usage", typeof(String));
             int i = 0;
             foreach (DataRow row in dtbl.Rows)
             {
@@ -388,6 +397,7 @@ namespace clinic_ivf.gui
                 row1["qty"] = row["QTY"];
                 row1["row1"] = row["row1"];
                 row1["extra"] = row["Extra"];
+                row1["usage"] = "";
                 if (row["LGID"].ToString().Equals("1"))
                 {
                     row1["status"] = "bloodlab";
@@ -423,6 +433,7 @@ namespace clinic_ivf.gui
                 row1["status"] = "specialitem";
                 row1["row1"] = row["row1"];
                 row1["extra"] = row["Extra"];
+                row1["usage"] = "";
                 dtAll.Rows.InsertAt(row1, i);
                 i++;
             }
@@ -438,6 +449,7 @@ namespace clinic_ivf.gui
                 row1["status"] = "px";
                 row1["row1"] = row["row1"];
                 row1["extra"] = row["Extra"];
+                row1["usage"] = row["TUsage"];
                 dtAll.Rows.InsertAt(row1, i);
                 i++;
 
@@ -454,6 +466,7 @@ namespace clinic_ivf.gui
                 row1["status"] = "package";
                 row1["row1"] = row["row1"];
                 row1["extra"] = "0";
+                row1["usage"] = "";
                 dtAll.Rows.InsertAt(row1, i);
                 i++;
 
@@ -474,10 +487,10 @@ namespace clinic_ivf.gui
             //grfOrder.Cols[colOrderQTY].Editor = txt;
             //grfOrder.Cols[colRxId].Editor = txt;
 
-            grfOrder.Cols[3].Width = 220;
-            grfOrder.Cols[4].Width = 120;
-            grfOrder.Cols[5].Width = 80;
-            //grfOrder.Cols[colBlRemark].Width = 100;
+            grfOrder.Cols[colOrdName].Width = 220;
+            grfOrder.Cols[colOrdPrice].Width = 120;
+            grfOrder.Cols[colOrdQty].Width = 80;
+            grfOrder.Cols[colOrdUsT].Width = 100;
 
             grfOrder.ShowCursor = true;
             //grdFlex.Cols[colID].Caption = "no";
@@ -487,7 +500,8 @@ namespace clinic_ivf.gui
             grfOrder.Cols[colOrdPrice].Caption = "Price";
             grfOrder.Cols[colOrdQty].Caption = "QTY";
             grfOrder.Cols[colOrdInclude].Caption = "Include Package";
-            //grfOrder.Cols[colBlRemark].Caption = "Remark";
+            grfOrder.Cols[colOrdUsT].Caption = "Usage";
+            grfOrder.Cols[colOrdAmt].Caption = "Amount";
             grfOrder.SubtotalPosition = SubtotalPositionEnum.BelowData;
             Color color = ColorTranslator.FromHtml(ic.iniC.grfRowColor);
             //CellRange rg1 = grfBank.GetCellRange(1, colE, grfBank.Rows.Count, colE);
@@ -505,7 +519,7 @@ namespace clinic_ivf.gui
                     row1[colOrdid] = row["id"].ToString();
                     row1[colOrdlpid] = row["lgid"].ToString();
                     row1[colOrdName] = row["name"].ToString();
-                    //row1[colOrdPrice] = row["price"].ToString();
+                    row1[colOrdUsT] = row["usage"].ToString();
                     //row1[colOrdQty] = row["qty"].ToString();
                     row1[colOrdstatus] = row["status"].ToString();
                     row1[colOrdrow1] = row["row1"].ToString();
@@ -542,7 +556,7 @@ namespace clinic_ivf.gui
             grfOrder.Cols[colOrdstatus].Visible = false;
             grfOrder.Cols[colOrditmid].Visible = false;
 
-            //grfOrder.Cols[colOrderStatus].Visible = false;
+            grfOrder.Cols[colOrdUsE].Visible = false;
             //grfOrder.Cols[colOrderPID].Visible = false;
             //grfOrder.Cols[colOrderPIDS].Visible = false;
             //grfOrder.Cols[colOrderSP1V].Visible = false;
@@ -562,10 +576,10 @@ namespace clinic_ivf.gui
             //grfOrder.Cols[colOrderLGID].Visible = false;
             //grfOrder.Cols[colOrderActive].Visible = false;
             //grfOrder.Cols[colOrderLID].Visible = false;
-
-            grfOrder.Cols[3].AllowEditing = false;
-            grfOrder.Cols[4].AllowEditing = false;
-            grfOrder.Cols[5].AllowEditing = false;
+            grfOrder.Cols[colOrdUsT].AllowEditing = false;
+            grfOrder.Cols[colOrdName].AllowEditing = false;
+            grfOrder.Cols[colOrdPrice].AllowEditing = false;
+            grfOrder.Cols[colOrdQty].AllowEditing = false;
             //theme1.SetTheme(grfFinish, ic.theme);
             UpdateTotals();
             String total = "";
@@ -899,7 +913,10 @@ namespace clinic_ivf.gui
             //grfExpnC.CellButtonClick += new C1.Win.C1FlexGrid.RowColEventHandler(this.grfDept_CellButtonClick);
             //grfExpnC.CellChanged += new C1.Win.C1FlexGrid.RowColEventHandler(this.grfDept_CellChanged);
             ContextMenu menuGw = new ContextMenu();
-            menuGw.MenuItems.Add("สั่งการ", new EventHandler(ContextMenu_order_rx_set));
+            if (flagedit.Equals("edit"))
+            {
+                menuGw.MenuItems.Add("สั่งการ", new EventHandler(ContextMenu_order_rx_set));
+            }
             //menuGw.MenuItems.Add("&แก้ไข", new EventHandler(ContextMenu_Gw_Edit));
             //menuGw.MenuItems.Add("&ยกเลิก", new EventHandler(ContextMenu_Gw_Cancel));
             grfRxSet.ContextMenu = menuGw;
@@ -916,7 +933,7 @@ namespace clinic_ivf.gui
                 foreach (Row row in grfRxSetD.Rows)
                 {
                     if (row[colRxdId] == null) continue;
-                    String duid = "", include = "", qty = "", usaget = "", usagee = "", duname = "", price = "";
+                    String duid = "", include = "", qty = "", usaget = "", usagee = "", duname = "", price = "", usage = "";
                     duid = row[colRxdId].ToString();
                     usaget = row[colRxUsT].ToString();
                     usagee = row[colRxUsE].ToString();
@@ -924,6 +941,15 @@ namespace clinic_ivf.gui
                     price = row[colRxPrice].ToString();
                     include = row[colRxInclude] != null ? row[colRxInclude].ToString().Equals("True") ? "1" : "0" : "0";
                     qty = row[colBlQty] != null ? row[colBlQty].ToString() : "1";
+                    if (cboLangSticker.Text.Equals("English"))
+                    {
+                        usage = row[colRxUsE] != null ? row[colRxUsE].ToString() : "";
+                    }
+                    else
+                    {
+                        usage = row[colRxUsT] != null ? row[colRxUsT].ToString() : "";
+                    }
+                    usaget = usage;
                     if (include.Equals("1"))
                     {
                         ic.ivfDB.PxSetAdd(duid, txtIdOld.Text, txtHn.Text, txtVnOld.Text, "0", grfOrder.Rows.Count.ToString(), qty, usaget, usagee, duname, price);
@@ -1033,7 +1059,10 @@ namespace clinic_ivf.gui
             //grfExpnC.CellButtonClick += new C1.Win.C1FlexGrid.RowColEventHandler(this.grfDept_CellButtonClick);
             //grfExpnC.CellChanged += new C1.Win.C1FlexGrid.RowColEventHandler(this.grfDept_CellChanged);
             ContextMenu menuGw = new ContextMenu();
-            menuGw.MenuItems.Add("สั่งการ", new EventHandler(ContextMenu_order_rx));
+            if (flagedit.Equals("edit"))
+            {
+                menuGw.MenuItems.Add("สั่งการ", new EventHandler(ContextMenu_order_rx));
+            }
             //menuGw.MenuItems.Add("&แก้ไข", new EventHandler(ContextMenu_Gw_Edit));
             //menuGw.MenuItems.Add("&ยกเลิก", new EventHandler(ContextMenu_Gw_Cancel));
             grfRx.ContextMenu = menuGw;
@@ -1069,11 +1098,11 @@ namespace clinic_ivf.gui
             include = grfRx[grfRx.Row, colRxInclude] != null ? grfRx[grfRx.Row, colRxInclude].ToString().Equals("True") ? "1" : "0" : "0";
             if (cboLangSticker.Text.Equals("English"))
             {
-                usage = grfRx[grfRx.Row, colRxUsE] != null ? grfRx[grfRx.Row, colRxUsE].ToString().Equals("True") ? "1" : "0" : "0";
+                usage = grfRx[grfRx.Row, colRxUsE] != null ? grfRx[grfRx.Row, colRxUsE].ToString() : "" ;
             }
             else
             {
-                usage = grfRx[grfRx.Row, colRxUsT] != null ? grfRx[grfRx.Row, colRxUsT].ToString().Equals("True") ? "1" : "0" : "0";
+                usage = grfRx[grfRx.Row, colRxUsT] != null ? grfRx[grfRx.Row, colRxUsT].ToString() : "";
             }
             //sep.Clear();
             if (include.Equals("1"))
@@ -1182,7 +1211,10 @@ namespace clinic_ivf.gui
             //grfExpnC.CellButtonClick += new C1.Win.C1FlexGrid.RowColEventHandler(this.grfDept_CellButtonClick);
             //grfExpnC.CellChanged += new C1.Win.C1FlexGrid.RowColEventHandler(this.grfDept_CellChanged);
             ContextMenu menuGw = new ContextMenu();
-            menuGw.MenuItems.Add("สั่งการ", new EventHandler(ContextMenu_order_se_set));
+            if (flagedit.Equals("edit"))
+            {
+                menuGw.MenuItems.Add("สั่งการ", new EventHandler(ContextMenu_order_se_set));
+            }
             //menuGw.MenuItems.Add("&แก้ไข", new EventHandler(ContextMenu_Gw_Edit));
             //menuGw.MenuItems.Add("&ยกเลิก", new EventHandler(ContextMenu_Gw_Cancel));
             grfSpecial.ContextMenu = menuGw;
@@ -1215,7 +1247,7 @@ namespace clinic_ivf.gui
             //grfDept.Rows.Count = 7;
             grfSpecial.Clear();
             DataTable dt = new DataTable();
-            dt = ic.ivfDB.oSItmDB.selectBySpecialItem1();
+            dt = ic.ivfDB.oSItmDB.selectBySpecialItem2();
 
             grfSpecial.Rows.Count = dt.Rows.Count + 1;
             //grfEmbryo.Rows.Count = dt.Rows.Count + 1;
@@ -1226,9 +1258,10 @@ namespace clinic_ivf.gui
             cs.ImageAlign = ImageAlignEnum.LeftCenter;
 
             grfSpecial.Cols[colBlName].Width = 320;
-            grfSpecial.Cols[colBlInclude].Width = 120;
+            grfSpecial.Cols[colBlQty].Width = 60;
+            grfSpecial.Cols[colBlInclude].Width = 80;
             grfSpecial.Cols[colBlPrice].Width = 80;
-            grfSpecial.Cols[colBlRemark].Width = 100;
+            grfSpecial.Cols[colBlRemark].Width = 200;
 
             grfSpecial.ShowCursor = true;
             //grdFlex.Cols[colID].Caption = "no";
@@ -1238,6 +1271,7 @@ namespace clinic_ivf.gui
             grfSpecial.Cols[colBlInclude].Caption = "Include";
             grfSpecial.Cols[colBlPrice].Caption = "Price";
             grfSpecial.Cols[colBlRemark].Caption = "Remark";
+            grfSpecial.Cols[colBlQty].Caption = "QTY";
 
             CellRange rg = grfSpecial.GetCellRange(2, colBlInclude, grfSpecial.Rows.Count - 1, colBlInclude);
             rg.Style = cs;
@@ -1257,6 +1291,7 @@ namespace clinic_ivf.gui
                     grfSpecial[i, colBlId] = row[ic.ivfDB.oSItmDB.sitm.SID].ToString();
                     grfSpecial[i, colBlName] = row[ic.ivfDB.oSItmDB.sitm.SName].ToString();
                     grfSpecial[i, colBlQty] = "1";
+                    grfSpecial[i, colBlRemark] = row["bilgrpname"].ToString();
                 }
                 catch (Exception ex)
                 {
@@ -1288,7 +1323,10 @@ namespace clinic_ivf.gui
             //grfExpnC.CellButtonClick += new C1.Win.C1FlexGrid.RowColEventHandler(this.grfDept_CellButtonClick);
             //grfExpnC.CellChanged += new C1.Win.C1FlexGrid.RowColEventHandler(this.grfDept_CellChanged);
             ContextMenu menuGw = new ContextMenu();
-            menuGw.MenuItems.Add("สั่งการ", new EventHandler(ContextMenu_order_ge_set));
+            if (flagedit.Equals("edit"))
+            {
+                menuGw.MenuItems.Add("สั่งการ", new EventHandler(ContextMenu_order_ge_set));
+            }
             //menuGw.MenuItems.Add("&แก้ไข", new EventHandler(ContextMenu_Gw_Edit));
             //menuGw.MenuItems.Add("&ยกเลิก", new EventHandler(ContextMenu_Gw_Cancel));
             grfGenetic.ContextMenu = menuGw;
@@ -1395,7 +1433,10 @@ namespace clinic_ivf.gui
             //grfExpnC.CellButtonClick += new C1.Win.C1FlexGrid.RowColEventHandler(this.grfDept_CellButtonClick);
             //grfExpnC.CellChanged += new C1.Win.C1FlexGrid.RowColEventHandler(this.grfDept_CellChanged);
             ContextMenu menuGw = new ContextMenu();
-            menuGw.MenuItems.Add("สั่งการ", new EventHandler(ContextMenu_order_em_set));
+            if (flagedit.Equals("edit"))
+            {
+                menuGw.MenuItems.Add("สั่งการ", new EventHandler(ContextMenu_order_em_set));
+            }
             //menuGw.MenuItems.Add("&แก้ไข", new EventHandler(ContextMenu_Gw_Edit));
             //menuGw.MenuItems.Add("&ยกเลิก", new EventHandler(ContextMenu_Gw_Cancel));
             grfEmbryo.ContextMenu = menuGw;
@@ -1501,7 +1542,10 @@ namespace clinic_ivf.gui
             //grfExpnC.CellButtonClick += new C1.Win.C1FlexGrid.RowColEventHandler(this.grfDept_CellButtonClick);
             //grfExpnC.CellChanged += new C1.Win.C1FlexGrid.RowColEventHandler(this.grfDept_CellChanged);
             ContextMenu menuGw = new ContextMenu();
-            menuGw.MenuItems.Add("สั่งการ", new EventHandler(ContextMenu_order_sp_set));
+            if (flagedit.Equals("edit"))
+            {
+                menuGw.MenuItems.Add("สั่งการ", new EventHandler(ContextMenu_order_sp_set));
+            }
             //menuGw.MenuItems.Add("&แก้ไข", new EventHandler(ContextMenu_Gw_Edit));
             //menuGw.MenuItems.Add("&ยกเลิก", new EventHandler(ContextMenu_Gw_Cancel));
             grfSperm.ContextMenu = menuGw;
@@ -1607,7 +1651,11 @@ namespace clinic_ivf.gui
             //grfExpnC.CellButtonClick += new C1.Win.C1FlexGrid.RowColEventHandler(this.grfDept_CellButtonClick);
             //grfExpnC.CellChanged += new C1.Win.C1FlexGrid.RowColEventHandler(this.grfDept_CellChanged);
             ContextMenu menuGw = new ContextMenu();
-            menuGw.MenuItems.Add("สั่งการ", new EventHandler(ContextMenu_order_bl_set));
+            if (flagedit.Equals("edit"))
+            {
+                menuGw.MenuItems.Add("สั่งการ", new EventHandler(ContextMenu_order_bl_set));
+            }
+            
             //menuGw.MenuItems.Add("&แก้ไข", new EventHandler(ContextMenu_Gw_Edit));
             //menuGw.MenuItems.Add("&ยกเลิก", new EventHandler(ContextMenu_Gw_Cancel));
             grfBloodLab.ContextMenu = menuGw;
@@ -1719,6 +1767,7 @@ namespace clinic_ivf.gui
             tC.SelectedTab = tabDrug;
             tabOrder.SelectedTab = tabBloodLab;
             tcPackage.SelectedTab = tabPkgOrder;
+            tcOrd.SelectedTab = tabOrd;
         }
     }
 }

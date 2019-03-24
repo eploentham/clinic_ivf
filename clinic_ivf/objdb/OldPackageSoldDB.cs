@@ -40,6 +40,7 @@ namespace clinic_ivf.objdb
             opkgs.P4BDetailID = "P4BDetailID";
             opkgs.VN = "VN";
             opkgs.row1 = "row1";
+            opkgs.payment_times = "payment_times";
 
             opkgs.table = "PackageSold";
             opkgs.pkField = "PCKSID";
@@ -58,6 +59,7 @@ namespace clinic_ivf.objdb
             p.PackageName = p.PackageName == null ? "" : p.PackageName;
             p.Date = p.Date == null ? "" : p.Date;
             p.Status = p.Status == null ? "0" : p.Status;
+            p.payment_times = p.payment_times == null ? "" : p.payment_times;
 
             p.PID = long.TryParse(p.PID, out chk1) ? chk1.ToString() : "0";
             p.SellThruID = long.TryParse(p.SellThruID, out chk1) ? chk1.ToString() : "0";
@@ -107,6 +109,7 @@ namespace clinic_ivf.objdb
                 "," + opkgs.P4BDetailID + "= '" + p.P4BDetailID + "'" +
                 "," + opkgs.VN + "= '" + p.VN + "'" +
                 "," + opkgs.row1 + "= '" + p.row1 + "'" +
+                "," + opkgs.payment_times + "= '" + p.PaymentTimes + "'" +
                 "";
             try
             {
@@ -139,6 +142,78 @@ namespace clinic_ivf.objdb
                 sql = ex.Message + " " + ex.InnerException;
             }
 
+            return re;
+        }
+        public String updateP1BillNo(String pcksid, String billno)
+        {
+            String re = "", sql = "";            
+            
+            sql = "Update "+ opkgs .table+ " set "+ 
+                ""+opkgs .P1BDetailID+ "='"+ billno + "' " +
+                //"," + opkgs.Payment1 + "='" + pay + "' " +
+                "Where " + opkgs .PCKSID+ "='" + pcksid + "' ";
+            try
+            {
+                re = conn.ExecuteNonQuery(conn.conn, sql);
+            }
+            catch (Exception ex)
+            {
+                sql = ex.Message + " " + ex.InnerException;
+            }
+            return re;
+        }
+        public String updateP2BillNo(String pcksid, String billno)
+        {
+            String re = "", sql = "";
+
+            sql = "Update " + opkgs.table + " set " +
+                "" + opkgs.P2BDetailID + "='" + billno + "' " +
+                //"," + opkgs.Payment1 + "='" + pay + "' " +
+                "Where " + opkgs.PCKSID + "='" + pcksid + "' ";
+            try
+            {
+                re = conn.ExecuteNonQuery(conn.conn, sql);
+            }
+            catch (Exception ex)
+            {
+                sql = ex.Message + " " + ex.InnerException;
+            }
+            return re;
+        }
+        public String updateP3BillNo(String pcksid, String billno)
+        {
+            String re = "", sql = "";
+
+            sql = "Update " + opkgs.table + " set " +
+                "" + opkgs.P3BDetailID + "='" + billno + "' " +
+                //"," + opkgs.Payment1 + "='" + pay + "' " +
+                "Where " + opkgs.PCKSID + "='" + pcksid + "' ";
+            try
+            {
+                re = conn.ExecuteNonQuery(conn.conn, sql);
+            }
+            catch (Exception ex)
+            {
+                sql = ex.Message + " " + ex.InnerException;
+            }
+            return re;
+        }
+        public String updateP4BillNo(String pcksid, String billno)
+        {
+            String re = "", sql = "";
+
+            sql = "Update " + opkgs.table + " set " +
+                "" + opkgs.P4BDetailID + "='" + billno + "' " +
+                //"," + opkgs.Payment1 + "='" + pay + "' " +
+                "Where " + opkgs.PCKSID + "='" + pcksid + "' ";
+            try
+            {
+                re = conn.ExecuteNonQuery(conn.conn, sql);
+            }
+            catch (Exception ex)
+            {
+                sql = ex.Message + " " + ex.InnerException;
+            }
             return re;
         }
         public String updateP4321(String vn)
@@ -283,6 +358,7 @@ namespace clinic_ivf.objdb
                 opkgs1.P4BDetailID = dt.Rows[0][opkgs.P4BDetailID].ToString();
                 opkgs1.VN = dt.Rows[0][opkgs.VN].ToString();
                 opkgs1.row1 = dt.Rows[0][opkgs.row1].ToString();
+                opkgs1.payment_times = dt.Rows[0][opkgs.payment_times].ToString();
             }
             else
             {
@@ -311,6 +387,7 @@ namespace clinic_ivf.objdb
             stf1.P4BDetailID = "";
             stf1.VN = "";
             stf1.row1 = "";
+            stf1.payment_times = "";
             return stf1;
         }
     }

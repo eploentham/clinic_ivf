@@ -96,6 +96,9 @@ ADD COLUMN `day_curr` VARCHAR(45) NULL AFTER `prefix_fet_doc`,
 CHANGE COLUMN `year_curr` `year_curr` VARCHAR(55) NULL DEFAULT NULL ,
 CHANGE COLUMN `month_curr` `month_curr` VARCHAR(55) NULL DEFAULT NULL ;
 
+ALTER TABLE `ivf_101`.`PackageSold` 
+ADD COLUMN `payment_times` VARCHAR(45) NULL AFTER `row1`;
+
 
 
 

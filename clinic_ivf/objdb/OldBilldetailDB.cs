@@ -167,5 +167,24 @@ namespace clinic_ivf.objdb
 
             return re;
         }
+        public String deletePk(String id)
+        {
+            String re = "";
+            String sql = "";
+
+            sql = "Delete From " + obilld.table + " Where " +
+                " " + obilld.pkField + " = '" + id + "'"
+            ;
+            try
+            {
+                re = conn.ExecuteNonQuery(conn.conn, sql);
+            }
+            catch (Exception ex)
+            {
+                sql = ex.Message + " " + ex.InnerException;
+            }
+
+            return re;
+        }
     }
 }

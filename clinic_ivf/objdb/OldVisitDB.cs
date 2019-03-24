@@ -346,6 +346,27 @@ namespace clinic_ivf.objdb
 
             return re;
         }
+        public String updateStatusCashierFinish(String vn)
+        {
+            String re = "";
+            String sql = "";
+            int chk = 0;
+
+            sql = "Update " + vsold.table + " Set " +
+                " " + vsold.LVSID + " = VSID " +
+                "," + vsold.VSID + " = '999' " +
+                "Where " + vsold.pkField + "='" + vn + "'";
+            try
+            {
+                re = conn.ExecuteNonQuery(conn.conn, sql);
+            }
+            catch (Exception ex)
+            {
+                sql = ex.Message + " " + ex.InnerException;
+            }
+
+            return re;
+        }
         public String insertVisitOld(VisitOld p, String userId, String flagnew)
         {
             String re = "";
@@ -592,7 +613,7 @@ namespace clinic_ivf.objdb
                 "From " + vsold.table + " vsold " +
                 "Left Join VStatus on  VStatus.VSID = vsold.VSID " +
                 "Left Join Patient on  vsold.PID = Patient.PID " +
-                "Where vsold." + vsold.VDate + " ='" + date + "' and vsold.VSID in ('999','166','165') " +
+                "Where vsold." + vsold.VDate + " ='" + date + "' and vsold.VSID in ('999','166','165','998') " +
                 "Order By vsold.VDate, vsold.VStartTime";
             dt = conn.selectData(conn.conn, sql);
 
@@ -613,7 +634,7 @@ namespace clinic_ivf.objdb
                 "From " + vsold.table + " vsold " +
                 "Left Join VStatus on  VStatus.VSID = vsold.VSID " +
                 "Left Join Patient on  vsold.PID = Patient.PID " +
-                "Where vsold." + vsold.VDate + " ='" + date + "' and vsold.VSID in ('999','166','165') " +
+                "Where vsold." + vsold.VDate + " ='" + date + "' and vsold.VSID in ('999','166','165','998') " +
                 "Order By vsold.VDate, vsold.VStartTime";
                 dt = conn.selectData(conn.conn, sql);
             }

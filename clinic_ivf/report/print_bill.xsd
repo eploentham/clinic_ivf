@@ -12,7 +12,7 @@
   <xs:element name="print_bill" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="print_bill" msprop:Generator_UserDSName="print_bill">
     <xs:complexType>
       <xs:choice minOccurs="0" maxOccurs="unbounded">
-        <xs:element name="print_bill" msprop:Generator_TableClassName="print_billDataTable" msprop:Generator_TableVarName="tableprint_bill" msprop:Generator_RowChangedName="print_billRowChanged" msprop:Generator_TablePropName="_print_bill" msprop:Generator_RowDeletingName="print_billRowDeleting" msprop:Generator_RowChangingName="print_billRowChanging" msprop:Generator_RowEvHandlerName="print_billRowChangeEventHandler" msprop:Generator_RowDeletedName="print_billRowDeleted" msprop:Generator_RowClassName="print_billRow" msprop:Generator_UserTableName="print_bill" msprop:Generator_RowEvArgName="print_billRowChangeEvent">
+        <xs:element name="print_bill" msprop:Generator_TableClassName="print_billDataTable" msprop:Generator_TableVarName="tableprint_bill" msprop:Generator_TablePropName="_print_bill" msprop:Generator_RowDeletingName="print_billRowDeleting" msprop:Generator_RowChangingName="print_billRowChanging" msprop:Generator_RowEvHandlerName="print_billRowChangeEventHandler" msprop:Generator_RowDeletedName="print_billRowDeleted" msprop:Generator_UserTableName="print_bill" msprop:Generator_RowChangedName="print_billRowChanged" msprop:Generator_RowEvArgName="print_billRowChangeEvent" msprop:Generator_RowClassName="print_billRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="col1" msprop:Generator_ColumnVarNameInTable="columncol1" msprop:Generator_ColumnPropNameInRow="col1" msprop:Generator_ColumnPropNameInTable="col1Column" msprop:Generator_UserColumnName="col1" type="xs:string" minOccurs="0" />
@@ -23,6 +23,7 @@
               <xs:element name="sort1" msprop:Generator_ColumnVarNameInTable="columnsort1" msprop:Generator_ColumnPropNameInRow="sort1" msprop:Generator_ColumnPropNameInTable="sort1Column" msprop:Generator_UserColumnName="sort1" type="xs:string" minOccurs="0" />
               <xs:element name="grp" msprop:Generator_ColumnVarNameInTable="columngrp" msprop:Generator_ColumnPropNameInRow="grp" msprop:Generator_ColumnPropNameInTable="grpColumn" msprop:Generator_UserColumnName="grp" type="xs:string" minOccurs="0" />
               <xs:element name="grp_name" msprop:Generator_ColumnVarNameInTable="columngrp_name" msprop:Generator_ColumnPropNameInRow="grp_name" msprop:Generator_ColumnPropNameInTable="grp_nameColumn" msprop:Generator_UserColumnName="grp_name" type="xs:string" minOccurs="0" />
+              <xs:element name="original" msprop:Generator_ColumnVarNameInTable="columnoriginal" msprop:Generator_ColumnPropNameInRow="original" msprop:Generator_ColumnPropNameInTable="originalColumn" msprop:Generator_UserColumnName="original" type="xs:string" minOccurs="0" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>

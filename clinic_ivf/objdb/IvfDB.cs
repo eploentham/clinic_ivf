@@ -905,7 +905,7 @@ namespace clinic_ivf.objdb
             sql = "update BillHeader Set Total=Extra_Pkg_Price Where VN='"+vn+"'";
             re = conn.ExecuteNonQuery(conn.conn, sql);
         }
-        public DataTable printBill(String vn, Decimal amt1)
+        public DataTable printBill(String vn,ref Decimal amt1,ref String payby)
         {
             //$chk = "";
             //$sql = 'select VN, ExtBillNo, IntLock, Year(Date)+543 as F1, date_format(Date,"%m") as F2 from BillHeader Where VN="'. $_POST['VN']. '"';
@@ -935,42 +935,42 @@ namespace clinic_ivf.objdb
             long chk1 = 0, chk2 = 0;
             String re = "", extBill="", intLock="", f1="",f2="", maxBill="", billNo="";
             String sql = "select VN, ExtBillNo, IntLock, Year(Date)+543 as F1, date_format(Date,'%m') as F2 from BillHeader Where VN='"+vn+"'";
-            dt = conn.selectData(conn.conn, sql);
-            if (dt.Rows.Count > 0)
-            {
-                extBill = dt.Rows[0]["ExtBillNo"].ToString();
-                intLock = dt.Rows[0]["IntLock"].ToString();
-                f1 = dt.Rows[0]["F1"].ToString();
-                f2 = dt.Rows[0]["F2"].ToString();
-                f1 = f1.Length >= 4 ? f1.Substring(2,2) : f1;
-                f1 += f2 + "0000";
-                if(extBill.Equals("") && intLock.Equals("0"))
-                {
-                    sql = "Select max(ExtBillNo) as ExtBillNo from BillHeader";
-                    dt = conn.selectData(conn.conn, sql);
-                    if (dt.Rows.Count > 0)
-                    {
-                        maxBill = dt.Rows[0]["ExtBillNo"].ToString();
-                        long.TryParse(f1, out chk1);
-                        long.TryParse(maxBill, out chk2);
-                        billNo = (chk1 < chk2) ? (chk1 + 1).ToString() : (chk2 + 1).ToString();
-                        sql = "Update BillHeader Set ExtBillNo='"+ billNo + "' where VN='"+vn+"'";
-                        String re1 = conn.ExecuteNonQuery(conn.conn, sql);
-                        if(!long.TryParse(re1, out chk1))
-                        {
-                            re = "update ExtBillNo error ";
-                        }
-                    }
-                }
-                else
-                {
-                    re = "extBill "+extBill+ " intLock "+ intLock;
-                }
-            }
-            else
-            {
-                re = "No Bill in vn "+vn;
-            }
+            //dt = conn.selectData(conn.conn, sql);
+            //if (dt.Rows.Count > 0)
+            //{
+            //    extBill = dt.Rows[0]["ExtBillNo"].ToString();
+            //    intLock = dt.Rows[0]["IntLock"].ToString();
+            //    f1 = dt.Rows[0]["F1"].ToString();
+            //    f2 = dt.Rows[0]["F2"].ToString();
+            //    f1 = f1.Length >= 4 ? f1.Substring(2,2) : f1;
+            //    f1 += f2 + "0000";
+            //    if(extBill.Equals("") && intLock.Equals("0"))
+            //    {
+            //        sql = "Select max(ExtBillNo) as ExtBillNo from BillHeader";
+            //        dt = conn.selectData(conn.conn, sql);
+            //        if (dt.Rows.Count > 0)
+            //        {
+            //            maxBill = dt.Rows[0]["ExtBillNo"].ToString();
+            //            long.TryParse(f1, out chk1);
+            //            long.TryParse(maxBill, out chk2);
+            //            billNo = (chk1 < chk2) ? (chk1 + 1).ToString() : (chk2 + 1).ToString();
+            //            sql = "Update BillHeader Set ExtBillNo='"+ billNo + "' where VN='"+vn+"'";
+            //            String re1 = conn.ExecuteNonQuery(conn.conn, sql);
+            //            if(!long.TryParse(re1, out chk1))
+            //            {
+            //                re = "update ExtBillNo error ";
+            //            }
+            //        }
+            //    }
+            //    else
+            //    {
+            //        re = "extBill "+extBill+ " intLock "+ intLock;
+            //    }
+            //}
+            //else
+            //{
+            //    re = "No Bill in vn "+vn;
+            //}
             //            $sql = 'select * from BillHeader Where VN="'. $_POST['VN']. '"';
             //$result = mysql_query($sql, $link);
             //$pdf->SetFont('freeserif', '', 9, '', true);
@@ -1034,38 +1034,38 @@ namespace clinic_ivf.objdb
             //                if ($CreditCardID != 0 && $CashID != 0){
             //		$Payment2 = "เงินสดและเครดิตการ์ด/Cash and Credit Card";
             //                };            };
-            String pname = "", pids = "", wtotal = "", total = "", billno = "", billdoc="", billextno="", billextdoc="", payby="", cashid="", pay2="", creditid="";
+            String pname = "", pids = "", wtotal = "", total = "", billno = "", billdoc="", billextno="", billextdoc="", cashid="", pay2="", creditid="";
             Decimal total1 = 0;
             sql = "select * from BillHeader Where VN='"+vn+"' ";
             dt = conn.selectData(conn.conn, sql);
             if (dt.Rows.Count > 0)
             {
-                pname = dt.Rows[0]["PName"].ToString();
-                pids = dt.Rows[0]["PIDS"].ToString();
-                intLock = dt.Rows[0]["IntLock"].ToString();
-                wtotal = dt.Rows[0]["Total"].ToString();
-                total = dt.Rows[0]["Total"].ToString();
-                billno = dt.Rows[0]["BillNo"].ToString();
-                Decimal.TryParse(total, out total1);
-                total = total1.ToString("0.00");
-                if(billno.Length > 4)
-                {
-                    billdoc = "RE" + billno.Substring(0, 4) + "-" + billno.Substring(4);
-                }
+            //    pname = dt.Rows[0]["PName"].ToString();
+            //    pids = dt.Rows[0]["PIDS"].ToString();
+            //    intLock = dt.Rows[0]["IntLock"].ToString();
+            //    wtotal = dt.Rows[0]["Total"].ToString();
+            //    total = dt.Rows[0]["Total"].ToString();
+            //    billno = dt.Rows[0]["BillNo"].ToString();
+            //    Decimal.TryParse(total, out total1);
+            //    total = total1.ToString("0.00");
+            //    if(billno.Length > 4)
+            //    {
+            //        billdoc = "RE" + billno.Substring(0, 4) + "-" + billno.Substring(4);
+            //    }
                 
 
-                billextno = dt.Rows[0]["ExtBillNo"].ToString();
-                try
-                {
-                    billextdoc = "RE" + billextno.Substring(0, 4) + "-" + billextno.Substring(4);
-                }
-                catch(Exception ex)
-                {
-                    MessageBox.Show(""+ex.Message, "ExtBillNo");
-                }
+            //    billextno = dt.Rows[0]["ExtBillNo"].ToString();
+            //    try
+            //    {
+            //        billextdoc = "RE" + billextno.Substring(0, 4) + "-" + billextno.Substring(4);
+            //    }
+            //    catch(Exception ex)
+            //    {
+            //        MessageBox.Show(""+ex.Message, "ExtBillNo");
+            //    }
                 
 
-                payby = "รับชำระเงินจาก/Receive Payment From  " + dt.Rows[0]["PaymentBy"].ToString();
+            //    payby = "รับชำระเงินจาก/Receive Payment From  " + dt.Rows[0]["PaymentBy"].ToString();
                 cashid = dt.Rows[0]["CashID"].ToString();
                 creditid = dt.Rows[0]["CreditCardID"].ToString();
                 if(!cashid.Equals("0") && creditid.Equals("0")){
@@ -1079,6 +1079,11 @@ namespace clinic_ivf.objdb
                 {
                     pay2 = "เงินสดและเครดิตการ์ด/Cash and Credit Card ";
                 }
+                else
+                {
+                    pay2 = "unknow payment";
+                }
+                payby = pay2;
             }
             String grpname = "";
             DataTable dtprn = new DataTable();
@@ -1094,6 +1099,7 @@ namespace clinic_ivf.objdb
             dtprn.Columns.Add("fond_bold", typeof(String));
             dtprn.Columns.Add("grp", typeof(String));
             dtprn.Columns.Add("grp_name", typeof(String));
+            dtprn.Columns.Add("original", typeof(String));
             sql = "Select Name from BillGroup Where ID=0";
             dt = conn.selectData(conn.conn, sql);
             String name = "", total111="", comm="";

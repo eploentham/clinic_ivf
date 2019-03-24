@@ -142,6 +142,17 @@ namespace clinic_ivf.objdb
             dt = conn.selectData(conn.conn, sql);
             return dt;
         }
+        public DataTable selectBySpecialItem2()
+        {
+            DataTable dt = new DataTable();
+            String sql = "select sitm." + sitm.SID + ",sitm." + sitm.SName + ",sitm." + sitm.Price + ", bilg.Name as bilgrpname " +
+                "From " + sitm.table + " sitm " +
+                "Left Join BillGroup bilg on sitm."+sitm.BillGroupID + "=bilg.ID " +
+                "Where isActive = '1' " +
+                "Order By sitm." + sitm.SName;
+            dt = conn.selectData(conn.conn, sql);
+            return dt;
+        }
         public OldSpecialItem setSpecialItem(DataTable dt)
         {
             OldSpecialItem sitm1 = new OldSpecialItem();

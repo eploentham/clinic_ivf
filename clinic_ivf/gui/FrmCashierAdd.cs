@@ -136,17 +136,18 @@ namespace clinic_ivf.gui
                 }
                 else
                 {
+                    Decimal discount = 0, discountper = 0;
+                    Decimal.TryParse(txtDiscountAmt.Text, out discountper);
                     if (chkDiscountAll.Checked)
                     {
-                        Decimal amt = 0, discount = 0, discountper = 0;
-                        Decimal.TryParse(txtDiscountAmt.Text, out discountper);
+                        Decimal amt = 0;
                         Decimal.TryParse(txtAmt.Text, out amt);
                         discount = amt * (discountper / 100);
-                        txtDiscount.Value = discount.ToString();
+                        //txtDiscount.Value = discount.ToString();
                     }
                     else
                     {
-                        Decimal netamt = 0, discount = 0, discountper = 0;
+                        Decimal netamt = 0;
                         foreach (Row row in grfBillD.Rows)
                         {
                             String amt1 = "", grp="", name="";
@@ -160,7 +161,7 @@ namespace clinic_ivf.gui
                                 {
 
                                 }
-                                else if(grp.Equals("OtherService"))
+                                else if(grp.Equals(cboGrpType.Text))
                                 {
                                     if(Decimal.TryParse(amt1, out amt))
                                     {
@@ -173,8 +174,9 @@ namespace clinic_ivf.gui
 
                             }
                         }
-
+                        discount = netamt * (discountper / 100);
                     }
+                    txtDiscount.Value = discount.ToString();
                 }
             }
         }
@@ -182,22 +184,64 @@ namespace clinic_ivf.gui
         private void BtnDiscountAdd_Click(object sender, EventArgs e)
         {
             //throw new NotImplementedException();
-            OldBilldetail obilld = new OldBilldetail();
-            obilld.ID = "";
-            obilld.VN = txtVn.Text;
-            obilld.Name = "OtherService discount ";
-            obilld.Extra = "1";
+            if(txtDiscount.Enabled == true)
+            {
+                OldBilldetail obilld = new OldBilldetail();
+                obilld.ID = "";
+                obilld.VN = txtVn.Text;
+                obilld.Name = "OtherService discount ";
+                obilld.Extra = "1";
 
-            obilld.Price = "-"+txtDiscount.Text.Replace(",", "");
-            obilld.Total = "-" + txtDiscount.Text.Replace(",", "");
-            obilld.Comment = "";
+                obilld.Price = "-" + txtDiscount.Text.Replace(",", "");
+                obilld.Total = "-" + txtDiscount.Text.Replace(",", "");
+                obilld.Comment = "";
 
-            obilld.GroupType = "OtherService";
+                obilld.GroupType = "OtherService";
 
-            ic.ivfDB.obildDB.insertBillDetail(obilld, "");
-            setGrfBillD();
-            calTotal();
-            calTotalCredit();
+                long chk = 0;
+                String re = ic.ivfDB.obildDB.insertBillDetail(obilld, "");
+                if (long.TryParse(re, out chk))
+                {
+                    txtDiscount.Value = "";
+                    pnDiscount.Enabled = false;
+                    panel3.Enabled = false;
+                    chkDiscount.Enabled = false;
+                    txtDiscount.Enabled = false;
+                    setGrfBillD();
+                    calTotal();
+                    calTotalCredit();
+                }
+            }
+            else
+            {
+                txtDiscount.Value = "";
+                pnDiscount.Enabled = true;
+                panel3.Enabled = true;
+                chkDiscount.Enabled = true;
+                txtDiscount.Enabled = true;
+                foreach(Row row in grfBillD.Rows)
+                {
+                    try
+                    {
+                        String name = row[colName].ToString().Trim();
+                        String id = row[colId].ToString().Trim();
+                        if (name.Equals("OtherService discount"))
+                        {
+                            String re = ic.ivfDB.obildDB.deletePk(id);
+                            //grfBillD.Rows.Remove(row);
+                            //break;
+                        }
+                    }
+                    catch(Exception ex)
+                    {
+
+                    }
+                    
+                }
+                setGrfBillD();
+                calTotal();
+                calTotalCredit();
+            }
         }
 
         private void BtnChargeAdd_Click(object sender, EventArgs e)
@@ -249,14 +293,63 @@ namespace clinic_ivf.gui
         {
             //throw new NotImplementedException();
             DataTable dt = new DataTable();
+            DataTable dtprn = new DataTable();
+            DataTable dtpgk = new DataTable();
             Decimal amt = 0;
             long amt1 = 0;
-            String amt2 = "";
+            String amt2 = "", billNo="", billExtNo="", payby="", date="", year="", month="", day="";
             long.TryParse(amt.ToString(), out amt1);
-            dt = ic.ivfDB.printBill(txtVn.Text, amt);
+            dt = ic.ivfDB.printBill(txtVn.Text,ref amt, ref payby);
+            billNo = ic.ivfDB.copDB.genBillingDoc(ref year, ref month, ref day);
+            billExtNo = ic.ivfDB.copDB.genBillingExtDoc();
+
+            dtpgk = ic.ivfDB.opkgsDB.selectByVN1(txtVn.Text);
+            foreach (DataRow row in dtpgk.Rows)
+            {
+                String times = "";
+                Decimal price = 0;
+                //row["PaymentTimes"].GetType()
+                times = row["payment_times"].ToString();
+                if (Decimal.TryParse(row["Payment1"].ToString(), out price) && row["P1BDetailID"].ToString().Equals("0"))
+                {                    
+                    ic.ivfDB.opkgsDB.updateP1BillNo(row["PCKSID"].ToString(), billNo.Replace("BI",""));                    
+                        //times = "1";
+                }
+                else if (Decimal.TryParse(row["Payment2"].ToString(), out price) && row["P2BDetailID"].ToString().Equals("0"))
+                {
+                    ic.ivfDB.opkgsDB.updateP1BillNo(row["PCKSID"].ToString(), billNo.Replace("BI", ""));
+                }
+                else if (Decimal.TryParse(row["Payment3"].ToString(), out price) && row["P3BDetailID"].ToString().Equals("0"))
+                {
+                    ic.ivfDB.opkgsDB.updateP1BillNo(row["PCKSID"].ToString(), billNo.Replace("BI", ""));
+                }
+                else if (Decimal.TryParse(row["Payment4"].ToString(), out price) && row["P4BDetailID"].ToString().Equals("0"))
+                {
+                    ic.ivfDB.opkgsDB.updateP1BillNo(row["PCKSID"].ToString(), billNo.Replace("BI", ""));
+                }
+            }
+            //dtprn.Columns.Add("col1", typeof(String));
+            //dtprn.Columns.Add("col2", typeof(String));
+            //dtprn.Columns.Add("col3", typeof(String));
+            //dtprn.Columns.Add("col4", typeof(String));
+            //dtprn.Columns.Add("sort1", typeof(String));
+            //dtprn.Columns.Add("fond_bold", typeof(String));
+            //dtprn.Columns.Add("grp", typeof(String));
+            //dtprn.Columns.Add("grp_name", typeof(String));
+            dtprn = dt.Clone();
+            foreach(DataRow row in dt.Rows)
+            {
+                //DataRow row = dtprn.NewRow();
+                row["original"] = "1";
+                dtprn.ImportRow(row);
+                row["original"] = "2";
+                dtprn.ImportRow(row);
+            }
+            
+            ic.ivfDB.ovsDB.updateStatusCashierFinish(txtVn.Text);
             amt2 = ic.NumberToCurrencyText(amt, MidpointRounding.AwayFromZero);
             FrmReport frm = new FrmReport(ic);
-            frm.setPrintBill(dt, txtHn.Text, txtPttNameE.Text, amt2, amt.ToString("#,###.00"),"","");
+            frm.setPrintBill(dtprn, txtHn.Text, txtPttNameE.Text, amt2, amt.ToString("#,###.00"), billNo, day+"/"+month+"/"+year, payby);
             frm.ShowDialog(this);
             
         }

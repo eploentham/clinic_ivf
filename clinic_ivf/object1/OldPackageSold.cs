@@ -27,5 +27,6 @@ namespace clinic_ivf.object1
         public String P4BDetailID { get; set; }
         public String VN { get; set; }
         public String row1 { get; set; }
+        public String payment_times { get; set; }
     }
 }

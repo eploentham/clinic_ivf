@@ -30,6 +30,8 @@
         {
             this.theme1 = new C1.Win.C1Themes.C1ThemeController();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.label19 = new System.Windows.Forms.Label();
+            this.cboLangSticker = new C1.Win.C1Input.C1ComboBox();
             this.label18 = new System.Windows.Forms.Label();
             this.txtInclude = new C1.Win.C1Input.C1TextBox();
             this.label17 = new System.Windows.Forms.Label();
@@ -110,16 +112,20 @@
             this.panel5 = new System.Windows.Forms.Panel();
             this.btnRxSetOrder = new C1.Win.C1Input.C1Button();
             this.pnRxSetD = new System.Windows.Forms.Panel();
-            this.pnOrder = new System.Windows.Forms.Panel();
+            this.pnOrder11 = new System.Windows.Forms.Panel();
             this.tabLab = new C1.Win.C1Command.C1DockingTabPage();
             this.tabApp = new C1.Win.C1Command.C1DockingTabPage();
             this.tabCert = new C1.Win.C1Command.C1DockingTabPage();
             this.sB = new System.Windows.Forms.StatusStrip();
             this.sB1 = new System.Windows.Forms.ToolStripStatusLabel();
-            this.cboLangSticker = new C1.Win.C1Input.C1ComboBox();
-            this.label19 = new System.Windows.Forms.Label();
+            this.tcOrd = new C1.Win.C1Command.C1DockingTab();
+            this.tabOrd = new C1.Win.C1Command.C1DockingTabPage();
+            this.tabPkg = new C1.Win.C1Command.C1DockingTabPage();
+            this.pnOrder = new System.Windows.Forms.Panel();
+            this.pnPkg = new System.Windows.Forms.Panel();
             ((System.ComponentModel.ISupportInitialize)(this.theme1)).BeginInit();
             this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.cboLangSticker)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtInclude)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtExtra)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtTotal)).BeginInit();
@@ -181,8 +187,12 @@
             this.splitContainer3.SuspendLayout();
             this.panel5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btnRxSetOrder)).BeginInit();
+            this.pnOrder11.SuspendLayout();
             this.sB.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.cboLangSticker)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tcOrd)).BeginInit();
+            this.tcOrd.SuspendLayout();
+            this.tabOrd.SuspendLayout();
+            this.tabPkg.SuspendLayout();
             this.SuspendLayout();
             // 
             // theme1
@@ -232,6 +242,42 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Patient";
             this.theme1.SetTheme(this.groupBox1, "(default)");
+            // 
+            // label19
+            // 
+            this.label19.AutoSize = true;
+            this.label19.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.label19.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label19.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.label19.Location = new System.Drawing.Point(11, 70);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(55, 16);
+            this.label19.TabIndex = 754;
+            this.label19.Text = "Sticker :";
+            this.theme1.SetTheme(this.label19, "(default)");
+            // 
+            // cboLangSticker
+            // 
+            this.cboLangSticker.AllowSpinLoop = false;
+            this.cboLangSticker.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
+            this.cboLangSticker.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.cboLangSticker.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.cboLangSticker.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
+            this.cboLangSticker.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.cboLangSticker.GapHeight = 0;
+            this.cboLangSticker.ImagePadding = new System.Windows.Forms.Padding(0);
+            this.cboLangSticker.ItemsDisplayMember = "";
+            this.cboLangSticker.ItemsValueMember = "";
+            this.cboLangSticker.Location = new System.Drawing.Point(72, 68);
+            this.cboLangSticker.Name = "cboLangSticker";
+            this.cboLangSticker.Size = new System.Drawing.Size(127, 20);
+            this.cboLangSticker.Style.DropDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.cboLangSticker.Style.DropDownBorderColor = System.Drawing.Color.Gainsboro;
+            this.cboLangSticker.Style.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.cboLangSticker.TabIndex = 753;
+            this.cboLangSticker.Tag = null;
+            this.theme1.SetTheme(this.cboLangSticker, "(default)");
+            this.cboLangSticker.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
             // 
             // label18
             // 
@@ -685,7 +731,7 @@
             // splitContainer1.Panel2
             // 
             this.splitContainer1.Panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.splitContainer1.Panel2.Controls.Add(this.pnOrder);
+            this.splitContainer1.Panel2.Controls.Add(this.pnOrder11);
             this.splitContainer1.Panel2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
             this.theme1.SetTheme(this.splitContainer1.Panel2, "(default)");
             this.splitContainer1.Size = new System.Drawing.Size(1265, 625);
@@ -1318,16 +1364,17 @@
             this.pnRxSetD.TabIndex = 0;
             this.theme1.SetTheme(this.pnRxSetD, "(default)");
             // 
-            // pnOrder
+            // pnOrder11
             // 
-            this.pnOrder.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.pnOrder.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnOrder.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.pnOrder.Location = new System.Drawing.Point(0, 0);
-            this.pnOrder.Name = "pnOrder";
-            this.pnOrder.Size = new System.Drawing.Size(650, 625);
-            this.pnOrder.TabIndex = 0;
-            this.theme1.SetTheme(this.pnOrder, "(default)");
+            this.pnOrder11.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.pnOrder11.Controls.Add(this.tcOrd);
+            this.pnOrder11.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pnOrder11.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.pnOrder11.Location = new System.Drawing.Point(0, 0);
+            this.pnOrder11.Name = "pnOrder11";
+            this.pnOrder11.Size = new System.Drawing.Size(650, 625);
+            this.pnOrder11.TabIndex = 0;
+            this.theme1.SetTheme(this.pnOrder11, "(default)");
             // 
             // tabLab
             // 
@@ -1369,41 +1416,63 @@
             this.sB1.Size = new System.Drawing.Size(118, 17);
             this.sB1.Text = "toolStripStatusLabel1";
             // 
-            // cboLangSticker
+            // tcOrd
             // 
-            this.cboLangSticker.AllowSpinLoop = false;
-            this.cboLangSticker.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
-            this.cboLangSticker.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
-            this.cboLangSticker.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.cboLangSticker.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
-            this.cboLangSticker.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.cboLangSticker.GapHeight = 0;
-            this.cboLangSticker.ImagePadding = new System.Windows.Forms.Padding(0);
-            this.cboLangSticker.ItemsDisplayMember = "";
-            this.cboLangSticker.ItemsValueMember = "";
-            this.cboLangSticker.Location = new System.Drawing.Point(72, 68);
-            this.cboLangSticker.Name = "cboLangSticker";
-            this.cboLangSticker.Size = new System.Drawing.Size(127, 20);
-            this.cboLangSticker.Style.DropDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.cboLangSticker.Style.DropDownBorderColor = System.Drawing.Color.Gainsboro;
-            this.cboLangSticker.Style.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.cboLangSticker.TabIndex = 753;
-            this.cboLangSticker.Tag = null;
-            this.theme1.SetTheme(this.cboLangSticker, "(default)");
-            this.cboLangSticker.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            this.tcOrd.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.tcOrd.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.tcOrd.Controls.Add(this.tabOrd);
+            this.tcOrd.Controls.Add(this.tabPkg);
+            this.tcOrd.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tcOrd.HotTrack = true;
+            this.tcOrd.Location = new System.Drawing.Point(0, 0);
+            this.tcOrd.Name = "tcOrd";
+            this.tcOrd.Size = new System.Drawing.Size(650, 625);
+            this.tcOrd.TabIndex = 0;
+            this.tcOrd.TabSizeMode = C1.Win.C1Command.TabSizeModeEnum.Fit;
+            this.tcOrd.TabsShowFocusCues = false;
+            this.tcOrd.TabsSpacing = 2;
+            this.tcOrd.TabStyle = C1.Win.C1Command.TabStyleEnum.Office2007;
+            this.theme1.SetTheme(this.tcOrd, "(default)");
             // 
-            // label19
+            // tabOrd
             // 
-            this.label19.AutoSize = true;
-            this.label19.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.label19.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label19.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.label19.Location = new System.Drawing.Point(11, 70);
-            this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(55, 16);
-            this.label19.TabIndex = 754;
-            this.label19.Text = "Sticker :";
-            this.theme1.SetTheme(this.label19, "(default)");
+            this.tabOrd.Controls.Add(this.pnOrder);
+            this.tabOrd.Location = new System.Drawing.Point(1, 24);
+            this.tabOrd.Name = "tabOrd";
+            this.tabOrd.Size = new System.Drawing.Size(648, 600);
+            this.tabOrd.TabIndex = 0;
+            this.tabOrd.Text = "Order";
+            // 
+            // tabPkg
+            // 
+            this.tabPkg.Controls.Add(this.pnPkg);
+            this.tabPkg.Location = new System.Drawing.Point(1, 24);
+            this.tabPkg.Name = "tabPkg";
+            this.tabPkg.Size = new System.Drawing.Size(648, 600);
+            this.tabPkg.TabIndex = 1;
+            this.tabPkg.Text = "Package";
+            // 
+            // pnOrder
+            // 
+            this.pnOrder.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.pnOrder.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pnOrder.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.pnOrder.Location = new System.Drawing.Point(0, 0);
+            this.pnOrder.Name = "pnOrder";
+            this.pnOrder.Size = new System.Drawing.Size(648, 600);
+            this.pnOrder.TabIndex = 531;
+            this.theme1.SetTheme(this.pnOrder, "(default)");
+            // 
+            // pnPkg
+            // 
+            this.pnPkg.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.pnPkg.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pnPkg.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.pnPkg.Location = new System.Drawing.Point(0, 0);
+            this.pnPkg.Name = "pnPkg";
+            this.pnPkg.Size = new System.Drawing.Size(648, 600);
+            this.pnPkg.TabIndex = 0;
+            this.theme1.SetTheme(this.pnPkg, "(default)");
             // 
             // FrmNurseAdd
             // 
@@ -1419,6 +1488,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.theme1)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.cboLangSticker)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtInclude)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtExtra)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtTotal)).EndInit();
@@ -1481,9 +1551,13 @@
             this.splitContainer3.ResumeLayout(false);
             this.panel5.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.btnRxSetOrder)).EndInit();
+            this.pnOrder11.ResumeLayout(false);
             this.sB.ResumeLayout(false);
             this.sB.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.cboLangSticker)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tcOrd)).EndInit();
+            this.tcOrd.ResumeLayout(false);
+            this.tabOrd.ResumeLayout(false);
+            this.tabPkg.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1523,7 +1597,7 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.SplitContainer splitContainer1;
         private System.Windows.Forms.Panel pnOrder1;
-        private System.Windows.Forms.Panel pnOrder;
+        private System.Windows.Forms.Panel pnOrder11;
         private C1.Win.C1Command.C1DockingTab tabOrder;
         private C1.Win.C1Command.C1DockingTabPage tabBloodLab;
         private C1.Win.C1Command.C1DockingTabPage tabSpermLab;
@@ -1581,5 +1655,10 @@
         private C1.Win.C1Input.C1TextBox txtInclude;
         private System.Windows.Forms.Label label19;
         private C1.Win.C1Input.C1ComboBox cboLangSticker;
+        private C1.Win.C1Command.C1DockingTab tcOrd;
+        private C1.Win.C1Command.C1DockingTabPage tabOrd;
+        private C1.Win.C1Command.C1DockingTabPage tabPkg;
+        private System.Windows.Forms.Panel pnOrder;
+        private System.Windows.Forms.Panel pnPkg;
     }
 }

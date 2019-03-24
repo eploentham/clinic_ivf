@@ -1280,7 +1280,7 @@ namespace clinic_ivf.gui
             //FrmNurseAdd frm = new FrmNurseAdd();
             //frm.ShowDialog(this);
 
-            openNurseAdd(pttId, vn, name);
+            openNurseAdd(pttId, vn, name, "view");
             //if (MessageBox.Show("ต้องการ แก้ไข Patient  \n  hn number " + chk + " \n name " + name, "", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == DialogResult.OK)
             //{
             //grfReq.Rows.Remove(grfReq.Row);
@@ -1298,16 +1298,16 @@ namespace clinic_ivf.gui
             //FrmNurseAdd frm = new FrmNurseAdd();
             //frm.ShowDialog(this);
 
-            openNurseAdd(pttId, id, name);
+            openNurseAdd(pttId, id, name, "edit");
             //if (MessageBox.Show("ต้องการ แก้ไข Patient  \n  hn number " + chk + " \n name " + name, "", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == DialogResult.OK)
             //{
             //grfReq.Rows.Remove(grfReq.Row);
             //openPatientAdd(id, name);
             //}
         }
-        private void openNurseAdd(String pttId, String vsid, String name)
+        private void openNurseAdd(String pttId, String vsid, String name, String flagview)
         {
-            FrmNurseAdd frm = new FrmNurseAdd(ic, menu, pttId, vsid);
+            FrmNurseAdd frm = new FrmNurseAdd(ic, menu, pttId, vsid, flagview);
             String txt = "";
             if (!name.Equals(""))
             {

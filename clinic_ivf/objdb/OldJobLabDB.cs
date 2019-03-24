@@ -44,8 +44,8 @@ namespace clinic_ivf.objdb
             Decimal.TryParse(exprice, out exprice1);
             total = inprice1 + exprice1;
             sql = "Update " + ojlab.table + " Set " +
-                " " + ojlab.Include_Pkg_Price + " = '" + inprice + "'" +
-                "," + ojlab.Extra_Pkg_Price + " = '" + exprice + "'" +
+                " " + ojlab.Include_Pkg_Price + " = '" + inprice1 + "'" +
+                "," + ojlab.Extra_Pkg_Price + " = '" + exprice1 + "'" +
                 "," + ojlab.Total_Price + " = '" + total + "'" +
                 //"," + ojlab.Status + " = '2'" +
                 "Where " + ojlab.VN + "='" + vn + "'"

@@ -287,8 +287,8 @@ namespace clinic_ivf.objdb
             Decimal.TryParse(exprice, out exprice1);
             total = inprice1 + exprice1;
             sql = "Update " + oJS.table + " Set " +
-                " " + oJS.Include_Pkg_Price + " = '" + inprice + "'" +
-                "," + oJS.Extra_Pkg_Price + " = '" + exprice + "'" +
+                " " + oJS.Include_Pkg_Price + " = '" + inprice1 + "'" +
+                "," + oJS.Extra_Pkg_Price + " = '" + exprice1 + "'" +
                 "," + oJS.Total_Price + " = '" + total + "'" +
                 //"," + ojlab.Status + " = '2'" +
                 "Where " + oJS.VN + "='" + vn + "'"

@@ -35,6 +35,7 @@
             this.c1DockingTabPage1 = new C1.Win.C1Command.C1DockingTabPage();
             this.pnQue = new System.Windows.Forms.Panel();
             this.c1DockingTabPage2 = new C1.Win.C1Command.C1DockingTabPage();
+            this.pnFinish = new System.Windows.Forms.Panel();
             this.c1DockingTabPage3 = new C1.Win.C1Command.C1DockingTabPage();
             this.pnSearch = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
@@ -44,7 +45,6 @@
             this.txtDateStart = new C1.Win.C1Input.C1DateEdit();
             this.label4 = new System.Windows.Forms.Label();
             this.txtSearch = new C1.Win.C1Input.C1TextBox();
-            this.pnFinish = new System.Windows.Forms.Panel();
             this.sB.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.theme1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tC)).BeginInit();
@@ -126,6 +126,17 @@
             this.c1DockingTabPage2.Size = new System.Drawing.Size(1072, 697);
             this.c1DockingTabPage2.TabIndex = 1;
             this.c1DockingTabPage2.Text = "Finish";
+            // 
+            // pnFinish
+            // 
+            this.pnFinish.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.pnFinish.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pnFinish.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.pnFinish.Location = new System.Drawing.Point(0, 0);
+            this.pnFinish.Name = "pnFinish";
+            this.pnFinish.Size = new System.Drawing.Size(1072, 697);
+            this.pnFinish.TabIndex = 0;
+            this.theme1.SetTheme(this.pnFinish, "(default)");
             // 
             // c1DockingTabPage3
             // 
@@ -287,17 +298,6 @@
             this.txtSearch.Tag = null;
             this.theme1.SetTheme(this.txtSearch, "(default)");
             this.txtSearch.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
-            // 
-            // pnFinish
-            // 
-            this.pnFinish.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.pnFinish.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnFinish.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.pnFinish.Location = new System.Drawing.Point(0, 0);
-            this.pnFinish.Name = "pnFinish";
-            this.pnFinish.Size = new System.Drawing.Size(1072, 697);
-            this.pnFinish.TabIndex = 0;
-            this.theme1.SetTheme(this.pnFinish, "(default)");
             // 
             // FrmCashierView
             // 

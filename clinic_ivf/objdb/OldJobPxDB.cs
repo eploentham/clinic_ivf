@@ -136,9 +136,9 @@ namespace clinic_ivf.objdb
             Decimal.TryParse(exprice, out exprice1);
             total = inprice1 + exprice1;
             sql = "Update " + jobpx.table + " Set " +
-                " " + jobpx.Include_Pkg_Price + " = '"+ inprice + "'" +
-                "," + jobpx.Extra_Pkg_Price + " = '" + exprice + "'" +
-                "," + jobpx.Total_Price + " = '" + total + "'" +
+                " " + jobpx.Include_Pkg_Price + " = '"+ inprice1 + "'" +
+                "," + jobpx.Extra_Pkg_Price + " = '" + exprice1 + "'" +
+                "," + jobpx.Total_Price + " = '" + total + "' " +
                 "," + jobpx.Status + " = '2'" +
                 "Where " + jobpx.VN + "='" + vn + "'"
                 ;
