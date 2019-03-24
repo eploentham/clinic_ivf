@@ -252,7 +252,7 @@ namespace clinic_ivf.gui
             ptt = ic.ivfDB.pttDB.selectByPk1(txtID.Text);
             PatientOld optt = new PatientOld();
             optt = ic.ivfDB.pttOldDB.selectByPk1(txtIdOld.Text);
-
+            
             DataTable dt = new DataTable();
             dt.Rows.InsertAt(dt.NewRow(), 0);
             dt.Columns.Add("ptt_name_t", typeof(String));
@@ -269,6 +269,7 @@ namespace clinic_ivf.gui
             dt.Columns.Add("time1", typeof(String));
             dt.Columns.Add("email", typeof(String));
             dt.Columns.Add("tele", typeof(String));
+            dt.Columns.Add("queue", typeof(String));
 
             dt.Rows[0]["ptt_name_t"] = ptt.patient_firstname+" "+ ptt.patient_lastname;
             dt.Rows[0]["hn"] = ptt.patient_hn;
@@ -277,12 +278,14 @@ namespace clinic_ivf.gui
             dt.Rows[0]["addr"] = ptt.addr;
             dt.Rows[0]["visit_type"] = "";
             dt.Rows[0]["last_visit_date"] = "";
-            dt.Rows[0]["age"] = ptt.AgeString();
+            dt.Rows[0]["age"] = ptt.AgeStringShort();
             dt.Rows[0]["dob"] = ptt.patient_birthday;
-            dt.Rows[0]["ptt_type"] = optt.PatientTypeID;
+            dt.Rows[0]["ptt_type"] = ic.getC1Combo(cboPttType, optt.PatientTypeID);
             dt.Rows[0]["time1"] = "";
             dt.Rows[0]["email"] = ptt.email;
             dt.Rows[0]["tele"] = ptt.mobile1;
+            if(vs != null)
+                dt.Rows[0]["queue"] = vs.queue_id;
             //dt.Rows[0]["form_day1_id"] = "";
 
             FrmReport frm = new FrmReport(ic);
@@ -419,7 +422,7 @@ namespace clinic_ivf.gui
                     //    String re2 = ic.ivfDB.pttDB.updatePID(re, re1);
                     //    if (int.TryParse(re2, out chk))
                     //    {
-                    txtID.Value = re;
+                    //txtID.Value = re;
                     btnVisit.Text = "Save Visit";
                     btnVisit.Image = Resources.accept_database24;
                     setGrfVs(txtHn.Text);
@@ -2360,7 +2363,7 @@ namespace clinic_ivf.gui
         }
         private void setControlVisit(String vsid)
         {
-            Visit vs = new Visit();
+            //Visit vs = new Visit();
             vs = ic.ivfDB.vsDB.selectByVn(vsid);
             txtVisitID.Value = vs.t_visit_id;
             chkVisitUrge.Checked = vs.status_urge.Equals("1") ? true : false;

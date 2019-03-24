@@ -713,15 +713,16 @@ namespace clinic_ivf.objdb
             String doc = "", currDate = "", sql = "";
             Company cop1 = new Company();
             cop1 = selectByCode1("001");
-            currDate = DateTime.Now.Year+"-"+ DateTime.Now.ToString("MM-dd");
-            if (!currDate.Equals(cop1.current_date))
+            if (!cop1.day.Equals(cop1.day_curr))
             {
+                cop1.day = "00" + cop1.day;
+                cop1.day = cop1.day.Substring(cop1.day.Length - 2, 2);
                 sql = "Update " + cop.table + " Set " +
-                    " " + cop.current_date + "='" + currDate + "' " +
-                    "," + cop.vn_doc + "=1 " +
+                    " " + cop.day_curr + "='" + cop1.day + "' " +
+
                     "Where " + cop.pkField + "='" + cop1.comp_id + "'";
                 conn.ExecuteNonQuery(conn.conn, sql);
-                //doc = "00001";
+                cop1.queue_doc = "000";
             }
 
             int chk = 0;
@@ -737,8 +738,7 @@ namespace clinic_ivf.objdb
                 " Where " + cop.pkField + "='" + cop1.comp_id + "'";
                 conn.ExecuteNonQuery(conn.conn, sql);
             }
-            currDate = String.Concat(DateTime.Now.Year + 543);
-            //doc = doc;
+            
             return doc;
         }
         public String genFormADoc()
