@@ -41,6 +41,8 @@ namespace clinic_ivf.objdb
             opkgs.VN = "VN";
             opkgs.row1 = "row1";
             opkgs.payment_times = "payment_times";
+            opkgs.payment_name = "";
+            opkgs.paymentperiod = "";
 
             opkgs.table = "PackageSold";
             opkgs.pkField = "PCKSID";
@@ -304,7 +306,7 @@ namespace clinic_ivf.objdb
                 "From " + opkgs.table + " opkgs " +
                 "Where opkgs." + opkgs.pkField + " ='" + pttId + "' ";
             dt = conn.selectData(conn.conn, sql);
-            labi1 = setLabItem(dt);
+            labi1 = setPackageSold(dt);
             return labi1;
         }
         public DataTable selectByVN(String pttId)
@@ -334,7 +336,30 @@ namespace clinic_ivf.objdb
             dt = conn.selectData(conn.conn, sql);
             return dt;
         }
-        public OldPackageSold setLabItem(DataTable dt)
+        public OldPackageSold selectPeriodByVN(String vn)
+        {
+            OldPackageSold labi1 = new OldPackageSold();
+            DataTable dt = new DataTable();
+            Decimal pay1 = 0, pay2 = 0, pay3 = 0, pay4 = 0;
+            String sql = "select opkgs.* " +
+                "From " + opkgs.table + " opkgs " +
+                "Where opkgs." + opkgs.VN + " ='" + vn + "' and Status<>3 ";
+            dt = conn.selectData(conn.conn, sql);
+            labi1 = setPackageSold(dt);
+
+            if (labi1.Status.Equals("1"))
+            {
+                Decimal.TryParse(labi1.Payment1, out pay1);
+                if (labi1.P1BDetailID.Equals("") && (pay1 > 0))
+                {
+                    opkgs1.payment_name = "";
+                    opkgs1.paymentperiod = "";
+                }
+            }
+
+            return labi1;
+        }
+        public OldPackageSold setPackageSold(DataTable dt)
         {
             OldPackageSold opkgs1 = new OldPackageSold();
             if (dt.Rows.Count > 0)
@@ -359,14 +384,16 @@ namespace clinic_ivf.objdb
                 opkgs1.VN = dt.Rows[0][opkgs.VN].ToString();
                 opkgs1.row1 = dt.Rows[0][opkgs.row1].ToString();
                 opkgs1.payment_times = dt.Rows[0][opkgs.payment_times].ToString();
+                opkgs1.payment_name = "";
+                opkgs1.paymentperiod = "";
             }
             else
             {
-                setLabItem1(opkgs1);
+                setPackageSold1(opkgs1);
             }
             return opkgs1;
         }
-        private OldPackageSold setLabItem1(OldPackageSold stf1)
+        private OldPackageSold setPackageSold1(OldPackageSold stf1)
         {
             stf1.PCKSID = "";
             stf1.PID = "";
@@ -388,6 +415,8 @@ namespace clinic_ivf.objdb
             stf1.VN = "";
             stf1.row1 = "";
             stf1.payment_times = "";
+            stf1.payment_name = "";
+            stf1.paymentperiod = "";
             return stf1;
         }
     }

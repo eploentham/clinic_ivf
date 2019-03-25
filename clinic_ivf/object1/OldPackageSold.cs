@@ -28,5 +28,7 @@ namespace clinic_ivf.object1
         public String VN { get; set; }
         public String row1 { get; set; }
         public String payment_times { get; set; }
+        public String payment_name { get; set; }
+        public String paymentperiod { get; set; }
     }
 }

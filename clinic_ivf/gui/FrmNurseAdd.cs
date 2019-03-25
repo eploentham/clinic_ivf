@@ -370,7 +370,8 @@ namespace clinic_ivf.gui
             dtbl = ic.ivfDB.oJlabdDB.selectByVN(vn);
             dtse = ic.ivfDB.ojsdDB.selectByVN(vn);
             dtpx = ic.ivfDB.oJpxdDB.selectByVN(vn);
-            dtpkg = ic.ivfDB.opkgsDB.selectByVN(vn);
+            //dtpkg = ic.ivfDB.opkgsDB.selectByVN(vn);
+            dtpkg = ic.ivfDB.opkgsDB.selectByVN(vn);    // ต้องดึงตาม HN เพราะ ถ้ามีงวดการชำระ 
 
             //grfExpn.Rows.Count = dt.Rows.Count + 1;
             //grfEmbryo.Rows.Count = dt.Rows.Count + 1;
@@ -798,7 +799,30 @@ namespace clinic_ivf.gui
 
             setGrfpackageD(id);
         }
-        
+        private void setPkgPeriod()
+        {
+            OldPackageSold opkgs = new OldPackageSold();
+            opkgs.PCKSID = "";
+            opkgs.PID = txtIdOld.Text;
+            opkgs.SellThruID = cboSellThruID.SelectedItem == null ? "" : ((ComboBoxItem)cboSellThruID.SelectedItem).Value;
+            opkgs.PCKID = txtPkgId.Text;
+            opkgs.PackageName = txtPkgName.Text;
+            opkgs.Price = txtPrice.Text;
+            opkgs.Date = "";
+            opkgs.PaymentTimes = times;
+            opkgs.Status = "1";
+            opkgs.Payment1 = txtPayment1.Text;
+            opkgs.Payment2 = txtPayment2.Text;
+            opkgs.Payment3 = txtPayment3.Text;
+            opkgs.Payment4 = txtPayment4.Text;
+            opkgs.P1BDetailID = "";
+            opkgs.P2BDetailID = "";
+            opkgs.P3BDetailID = "";
+            opkgs.P4BDetailID = "";
+            opkgs.VN = txtVnOld.Text;
+            opkgs.row1 = grfOrder.Rows.Count.ToString();
+            ic.ivfDB.PackageAdd(opkgs);
+        }
         private void initGrfRxSetD()
         {
             grfRxSetD = new C1FlexGrid();
