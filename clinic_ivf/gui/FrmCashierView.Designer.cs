@@ -32,11 +32,11 @@
             this.sB1 = new System.Windows.Forms.ToolStripStatusLabel();
             this.theme1 = new C1.Win.C1Themes.C1ThemeController();
             this.tC = new C1.Win.C1Command.C1DockingTab();
-            this.c1DockingTabPage1 = new C1.Win.C1Command.C1DockingTabPage();
+            this.tabQue = new C1.Win.C1Command.C1DockingTabPage();
             this.pnQue = new System.Windows.Forms.Panel();
-            this.c1DockingTabPage2 = new C1.Win.C1Command.C1DockingTabPage();
+            this.tabFinish = new C1.Win.C1Command.C1DockingTabPage();
             this.pnFinish = new System.Windows.Forms.Panel();
-            this.c1DockingTabPage3 = new C1.Win.C1Command.C1DockingTabPage();
+            this.tabSearch = new C1.Win.C1Command.C1DockingTabPage();
             this.pnSearch = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
             this.chkLabFormA = new C1.Win.C1Input.C1CheckBox();
@@ -49,9 +49,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.theme1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tC)).BeginInit();
             this.tC.SuspendLayout();
-            this.c1DockingTabPage1.SuspendLayout();
-            this.c1DockingTabPage2.SuspendLayout();
-            this.c1DockingTabPage3.SuspendLayout();
+            this.tabQue.SuspendLayout();
+            this.tabFinish.SuspendLayout();
+            this.tabSearch.SuspendLayout();
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chkLabFormA)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnSearch)).BeginInit();
@@ -83,9 +83,9 @@
             // 
             this.tC.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
             this.tC.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.tC.Controls.Add(this.c1DockingTabPage1);
-            this.tC.Controls.Add(this.c1DockingTabPage2);
-            this.tC.Controls.Add(this.c1DockingTabPage3);
+            this.tC.Controls.Add(this.tabQue);
+            this.tC.Controls.Add(this.tabFinish);
+            this.tC.Controls.Add(this.tabSearch);
             this.tC.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tC.HotTrack = true;
             this.tC.Location = new System.Drawing.Point(0, 0);
@@ -98,14 +98,14 @@
             this.tC.TabStyle = C1.Win.C1Command.TabStyleEnum.Office2007;
             this.theme1.SetTheme(this.tC, "(default)");
             // 
-            // c1DockingTabPage1
+            // tabQue
             // 
-            this.c1DockingTabPage1.Controls.Add(this.pnQue);
-            this.c1DockingTabPage1.Location = new System.Drawing.Point(1, 24);
-            this.c1DockingTabPage1.Name = "c1DockingTabPage1";
-            this.c1DockingTabPage1.Size = new System.Drawing.Size(1072, 697);
-            this.c1DockingTabPage1.TabIndex = 0;
-            this.c1DockingTabPage1.Text = "Waiting in Process";
+            this.tabQue.Controls.Add(this.pnQue);
+            this.tabQue.Location = new System.Drawing.Point(1, 24);
+            this.tabQue.Name = "tabQue";
+            this.tabQue.Size = new System.Drawing.Size(1072, 697);
+            this.tabQue.TabIndex = 0;
+            this.tabQue.Text = "Waiting in Process";
             // 
             // pnQue
             // 
@@ -118,14 +118,14 @@
             this.pnQue.TabIndex = 0;
             this.theme1.SetTheme(this.pnQue, "(default)");
             // 
-            // c1DockingTabPage2
+            // tabFinish
             // 
-            this.c1DockingTabPage2.Controls.Add(this.pnFinish);
-            this.c1DockingTabPage2.Location = new System.Drawing.Point(1, 24);
-            this.c1DockingTabPage2.Name = "c1DockingTabPage2";
-            this.c1DockingTabPage2.Size = new System.Drawing.Size(1072, 697);
-            this.c1DockingTabPage2.TabIndex = 1;
-            this.c1DockingTabPage2.Text = "Finish";
+            this.tabFinish.Controls.Add(this.pnFinish);
+            this.tabFinish.Location = new System.Drawing.Point(1, 24);
+            this.tabFinish.Name = "tabFinish";
+            this.tabFinish.Size = new System.Drawing.Size(1072, 697);
+            this.tabFinish.TabIndex = 1;
+            this.tabFinish.Text = "Finish";
             // 
             // pnFinish
             // 
@@ -138,15 +138,15 @@
             this.pnFinish.TabIndex = 0;
             this.theme1.SetTheme(this.pnFinish, "(default)");
             // 
-            // c1DockingTabPage3
+            // tabSearch
             // 
-            this.c1DockingTabPage3.Controls.Add(this.pnSearch);
-            this.c1DockingTabPage3.Controls.Add(this.panel3);
-            this.c1DockingTabPage3.Location = new System.Drawing.Point(1, 24);
-            this.c1DockingTabPage3.Name = "c1DockingTabPage3";
-            this.c1DockingTabPage3.Size = new System.Drawing.Size(1072, 697);
-            this.c1DockingTabPage3.TabIndex = 2;
-            this.c1DockingTabPage3.Text = "Search";
+            this.tabSearch.Controls.Add(this.pnSearch);
+            this.tabSearch.Controls.Add(this.panel3);
+            this.tabSearch.Location = new System.Drawing.Point(1, 24);
+            this.tabSearch.Name = "tabSearch";
+            this.tabSearch.Size = new System.Drawing.Size(1072, 697);
+            this.tabSearch.TabIndex = 2;
+            this.tabSearch.Text = "Search";
             // 
             // pnSearch
             // 
@@ -314,9 +314,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.theme1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tC)).EndInit();
             this.tC.ResumeLayout(false);
-            this.c1DockingTabPage1.ResumeLayout(false);
-            this.c1DockingTabPage2.ResumeLayout(false);
-            this.c1DockingTabPage3.ResumeLayout(false);
+            this.tabQue.ResumeLayout(false);
+            this.tabFinish.ResumeLayout(false);
+            this.tabSearch.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chkLabFormA)).EndInit();
@@ -334,9 +334,9 @@
         private System.Windows.Forms.ToolStripStatusLabel sB1;
         private C1.Win.C1Themes.C1ThemeController theme1;
         private C1.Win.C1Command.C1DockingTab tC;
-        private C1.Win.C1Command.C1DockingTabPage c1DockingTabPage1;
-        private C1.Win.C1Command.C1DockingTabPage c1DockingTabPage2;
-        private C1.Win.C1Command.C1DockingTabPage c1DockingTabPage3;
+        private C1.Win.C1Command.C1DockingTabPage tabQue;
+        private C1.Win.C1Command.C1DockingTabPage tabFinish;
+        private C1.Win.C1Command.C1DockingTabPage tabSearch;
         private System.Windows.Forms.Panel pnSearch;
         private System.Windows.Forms.Panel panel3;
         private C1.Win.C1Input.C1CheckBox chkLabFormA;

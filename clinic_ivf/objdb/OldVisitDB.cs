@@ -523,7 +523,7 @@ namespace clinic_ivf.objdb
                 "Left Join VStatus on  VStatus.VSID = vsold.VSID " +
                 "Left Join Patient on  vsold.PID = Patient.PID " +
                 "Where  vsold.VSID in('110','160','161','162','163','164','165','166') " +
-                "Order By vsold.VSID desc,vsold.VDate, vsold.VStartTime";
+                "Order By vsold.VSID desc,vsold.VDate desc, vsold.VStartTime desc ";
             dt = conn.selectData(conn.conn, sql);
 
             return dt;
@@ -584,7 +584,7 @@ namespace clinic_ivf.objdb
                 "Left Join VStatus on  VStatus.VSID = vsold.VSID " +
                 "Left Join Patient on  vsold.PID = Patient.PID " +
                 "Where  vsold.VSID in ('110',115) " +
-                "Order By vsold.VDate, vsold.VStartTime";
+                "Order By vsold.VDate desc, vsold.VStartTime desc";
             dt = conn.selectData(conn.conn, sql);
 
             return dt;

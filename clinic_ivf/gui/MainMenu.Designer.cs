@@ -60,6 +60,7 @@
             this.menuStaff = new System.Windows.Forms.ToolStripMenuItem();
             this.menuDept = new System.Windows.Forms.ToolStripMenuItem();
             this.menuPosi = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuAgent = new System.Windows.Forms.ToolStripMenuItem();
             this.lABToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuOpuProce = new System.Windows.Forms.ToolStripMenuItem();
             this.menuFetProce = new System.Windows.Forms.ToolStripMenuItem();
@@ -68,7 +69,7 @@
             this.tC1 = new C1.Win.C1Command.C1DockingTab();
             this.PageS = new C1.Win.C1Command.C1DockingTabPage();
             this.theme1 = new C1.Win.C1Themes.C1ThemeController();
-            this.menuAgent = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuPackage = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tCC1)).BeginInit();
             this.tCC1.SuspendLayout();
@@ -293,6 +294,7 @@
             this.menuDept,
             this.menuPosi,
             this.menuAgent,
+            this.menuPackage,
             this.lABToolStripMenuItem,
             this.convertPatientDonorToolStripMenuItem});
             this.menuInit.Name = "menuInit";
@@ -317,6 +319,12 @@
             this.menuPosi.Size = new System.Drawing.Size(192, 22);
             this.menuPosi.Text = "ตำแหน่ง";
             // 
+            // menuAgent
+            // 
+            this.menuAgent.Name = "menuAgent";
+            this.menuAgent.Size = new System.Drawing.Size(192, 22);
+            this.menuAgent.Text = "Agent";
+            // 
             // lABToolStripMenuItem
             // 
             this.lABToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -329,13 +337,13 @@
             // menuOpuProce
             // 
             this.menuOpuProce.Name = "menuOpuProce";
-            this.menuOpuProce.Size = new System.Drawing.Size(180, 22);
+            this.menuOpuProce.Size = new System.Drawing.Size(155, 22);
             this.menuOpuProce.Text = "OPU Procedure";
             // 
             // menuFetProce
             // 
             this.menuFetProce.Name = "menuFetProce";
-            this.menuFetProce.Size = new System.Drawing.Size(180, 22);
+            this.menuFetProce.Size = new System.Drawing.Size(155, 22);
             this.menuFetProce.Text = "FET Procedure";
             // 
             // convertPatientDonorToolStripMenuItem
@@ -387,11 +395,11 @@
             // 
             this.theme1.Theme = "BeigeOne";
             // 
-            // menuAgent
+            // menuPackage
             // 
-            this.menuAgent.Name = "menuAgent";
-            this.menuAgent.Size = new System.Drawing.Size(192, 22);
-            this.menuAgent.Text = "Agent";
+            this.menuPackage.Name = "menuPackage";
+            this.menuPackage.Size = new System.Drawing.Size(192, 22);
+            this.menuPackage.Text = "Package";
             // 
             // MainMenu
             // 
@@ -459,5 +467,6 @@
         private System.Windows.Forms.ToolStripMenuItem menuDocGroupSubScan;
         private System.Windows.Forms.ToolStripMenuItem menuMedicalRecordView;
         private System.Windows.Forms.ToolStripMenuItem menuAgent;
+        private System.Windows.Forms.ToolStripMenuItem menuPackage;
     }
 }

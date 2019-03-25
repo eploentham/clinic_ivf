@@ -56,6 +56,8 @@ namespace clinic_ivf.gui
             stt = new C1SuperTooltip();
             sep = new C1SuperErrorProvider();
 
+            tC.SelectedTabChanged += TC_SelectedTabChanged;
+
             initGrfQue();
             initGrfFinish();
             setGrfQue();
@@ -69,6 +71,15 @@ namespace clinic_ivf.gui
             timer.Enabled = true;
         }
 
+        private void TC_SelectedTabChanged(object sender, EventArgs e)
+        {
+            //throw new NotImplementedException();
+            if (tC.SelectedTab == tabFinish)
+            {
+                setGrfFinish();
+            }
+        }
+        
         private void Timer_Tick(object sender, EventArgs e)
         {
             //throw new NotImplementedException();

@@ -82,6 +82,15 @@ namespace clinic_ivf.gui
             menuMedicalRecordDocScan.Click += MenuMedicalRecordDocScan_Click;
             menuMedicalRecordView.Click += MenuMedicalRecordView_Click;
             menuAgent.Click += MenuAgent_Click;
+            menuPackage.Click += MenuPackage_Click;
+        }
+
+        private void MenuPackage_Click(object sender, EventArgs e)
+        {
+            //throw new NotImplementedException();
+            FrmPackage frm = new FrmPackage(ic);
+            frm.FormBorderStyle = FormBorderStyle.None;
+            AddNewTab(frm, menuPackage.Text + " ");
         }
 
         private void MenuAgent_Click(object sender, EventArgs e)

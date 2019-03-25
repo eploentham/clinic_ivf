@@ -100,6 +100,9 @@ ALTER TABLE `ivf_101`.`PackageSold`
 ADD COLUMN `payment_times` VARCHAR(45) NULL AFTER `row1`;
 
 
+ALTER TABLE `ivf_101`.`BillDetail` 
+ADD COLUMN `item_id` INT NULL AFTER `Comment`;
+
 
 
 delete from JobPx;

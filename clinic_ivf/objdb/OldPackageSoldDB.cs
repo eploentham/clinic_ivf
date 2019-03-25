@@ -124,7 +124,7 @@ namespace clinic_ivf.objdb
 
             return re;
         }
-        public String updateStatus3(String pkgid)
+        public String updateStatus3(String pkgsid)
         {
             //$this->db->query("UPDATE PackageSold Set Status='3' Where PCKSID='".$PCKSID."'");
             String re = "";
@@ -133,7 +133,7 @@ namespace clinic_ivf.objdb
 
             sql = "Update " + opkgs.table + " Set " +
                 " " + opkgs.Status + " = '3'" +
-                "Where " + opkgs.PCKSID + "='" + pkgid + "'"
+                "Where " + opkgs.PCKSID + "='" + pkgsid + "'"
                 ;
             try
             {
@@ -218,6 +218,24 @@ namespace clinic_ivf.objdb
             }
             return re;
         }
+        public String updateStatusComplete(String pcksid)
+        {
+            String re = "", sql = "";
+
+            sql = "Update " + opkgs.table + " set " +
+                "" + opkgs.Status + "='3' " +
+                //"," + opkgs.Payment1 + "='" + pay + "' " +
+                "Where " + opkgs.PCKSID + "='" + pcksid + "' ";
+            try
+            {
+                re = conn.ExecuteNonQuery(conn.conn, sql);
+            }
+            catch (Exception ex)
+            {
+                sql = ex.Message + " " + ex.InnerException;
+            }
+            return re;
+        }
         public String updateP4321(String vn)
         {
             DataTable dt = new DataTable();
@@ -268,6 +286,7 @@ namespace clinic_ivf.objdb
 
             return re;
         }
+        
         public String deleteByPk(String pkgid)
         {
             //$this->db->query('delete from PackageSold Where PCKSID="' . $ID . '"');
@@ -323,9 +342,20 @@ namespace clinic_ivf.objdb
             DataTable dt = new DataTable();
             String sql = "select opkgs.* " +
                 "From " + opkgs.table + " opkgs " +
-                "Where opkgs." + opkgs.VN + " ='" + pttId + "' and Status<>3 ";
+                "Where opkgs." + opkgs.PID + " ='" + pttId + "' and Status <> 3 ";
             dt = conn.selectData(conn.conn, sql);
             return dt;
+        }
+        public OldPackageSold selectByPID1(String pttId, String pkgsid)
+        {
+            OldPackageSold labi1 = new OldPackageSold();
+            DataTable dt = new DataTable();
+            String sql = "select opkgs.* " +
+                "From " + opkgs.table + " opkgs " +
+                "Where opkgs." + opkgs.PID + " ='" + pttId + "' and opkgs."+ opkgs .PCKID + "='"+pkgsid+ "' and Status <> 3 ";
+            dt = conn.selectData(conn.conn, sql);
+            labi1 = setPackageSold(dt);
+            return labi1;
         }
         public DataTable selectByVN1(String vn)
         {
@@ -352,8 +382,8 @@ namespace clinic_ivf.objdb
                 Decimal.TryParse(labi1.Payment1, out pay1);
                 if (labi1.P1BDetailID.Equals("") && (pay1 > 0))
                 {
-                    opkgs1.payment_name = "";
-                    opkgs1.paymentperiod = "";
+                    //opkgs1.payment_name = "";
+                    //opkgs1.paymentperiod = "";
                 }
             }
 

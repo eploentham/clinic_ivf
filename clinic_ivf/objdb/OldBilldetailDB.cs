@@ -29,6 +29,7 @@ namespace clinic_ivf.objdb
             obilld.Total= "Total";
             obilld.GroupType= "GroupType";
             obilld.Comment= "Comment";
+            obilld.item_id = "item_id";
 
             obilld.table = "BillDetail";
             obilld.pkField = "ID";
@@ -54,6 +55,19 @@ namespace clinic_ivf.objdb
             dt = conn.selectData(conn.conn, sql);
             return dt;
         }
+        public DataTable selectByPIDPkgID(String pid, String pkgid)
+        {
+            DataTable dt = new DataTable();
+            String wherehn = "";
+
+            String sql = "SELECT obilld.*  " +
+                " " +
+                "From " + obilld.table + " obilld " +
+                "Left Join Visit ovs on obilld."+ obilld.VN +"=ovs.VN " +
+                "Where ovs.PID='" + pid + "' and obilld."+ obilld.item_id+"='" + pkgid + "' ";
+            dt = conn.selectData(conn.conn, sql);
+            return dt;
+        }
         private void chkNull(OldBilldetail p)
         {
             long chk = 0;
@@ -67,7 +81,8 @@ namespace clinic_ivf.objdb
 
             p.Extra = long.TryParse(p.Extra, out chk) ? chk.ToString() : "0";
             p.VN = long.TryParse(p.VN, out chk) ? chk.ToString() : "0";
-            
+            p.item_id = long.TryParse(p.item_id, out chk) ? chk.ToString() : "0";
+
 
             p.Price = decimal.TryParse(p.Price, out chk1) ? chk1.ToString() : "0";            
             p.Total = decimal.TryParse(p.Total, out chk1) ? chk1.ToString() : "0";
@@ -92,7 +107,7 @@ namespace clinic_ivf.objdb
                 "," + obilld.Total + "= '" + p.Total + "'" +
                 "," + obilld.GroupType + "= '" + p.GroupType + "'" +
                 "," + obilld.Comment + "= '" + p.Comment.Replace("'", "''") + "'" +
-
+                "," + obilld.item_id + "= '" + p.item_id + "'" +
                 "";
             try
             {
@@ -118,6 +133,7 @@ namespace clinic_ivf.objdb
                 "," + obilld.Total + " = '" + p.Total + "'" +
                 "," + obilld.GroupType + " = '" + p.GroupType + "'" +
                 "," + obilld.Comment + " = '" + p.Comment.Replace("'", "''") + "'" +
+                "," + obilld.item_id + " = '" + p.item_id + "'" +
 
                 "Where " + obilld.pkField + "='" + p.ID + "'"
                 ;

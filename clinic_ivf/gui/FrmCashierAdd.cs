@@ -302,14 +302,17 @@ namespace clinic_ivf.gui
             dt = ic.ivfDB.printBill(txtVn.Text,ref amt, ref payby);
             billNo = ic.ivfDB.copDB.genBillingDoc(ref year, ref month, ref day);
             billExtNo = ic.ivfDB.copDB.genBillingExtDoc();
-
-            dtpgk = ic.ivfDB.opkgsDB.selectByVN1(txtVn.Text);
+            ic.ivfDB.obilhDB.updateBillNo(txtVn.Text, billNo);
+            
+            //dtpgk = ic.ivfDB.opkgsDB.selectByVN1(txtVn.Text);
+            dtpgk = ic.ivfDB.opkgsDB.selectByPID(ovs.PID);    // ต้องดึงตาม HN เพราะ ถ้ามีงวดการชำระ 
             foreach (DataRow row in dtpgk.Rows)
             {
                 String times = "";
                 Decimal price = 0;
                 //row["PaymentTimes"].GetType()
                 times = row["payment_times"].ToString();
+                ic.ivfDB.updatePackagePaymentComplete(ovs.PID, row["PCKID"].ToString());
                 if (Decimal.TryParse(row["Payment1"].ToString(), out price) && row["P1BDetailID"].ToString().Equals("0"))
                 {                    
                     ic.ivfDB.opkgsDB.updateP1BillNo(row["PCKSID"].ToString(), billNo.Replace("BI",""));                    
@@ -317,15 +320,15 @@ namespace clinic_ivf.gui
                 }
                 else if (Decimal.TryParse(row["Payment2"].ToString(), out price) && row["P2BDetailID"].ToString().Equals("0"))
                 {
-                    ic.ivfDB.opkgsDB.updateP1BillNo(row["PCKSID"].ToString(), billNo.Replace("BI", ""));
+                    ic.ivfDB.opkgsDB.updateP2BillNo(row["PCKSID"].ToString(), billNo.Replace("BI", ""));
                 }
                 else if (Decimal.TryParse(row["Payment3"].ToString(), out price) && row["P3BDetailID"].ToString().Equals("0"))
                 {
-                    ic.ivfDB.opkgsDB.updateP1BillNo(row["PCKSID"].ToString(), billNo.Replace("BI", ""));
+                    ic.ivfDB.opkgsDB.updateP3BillNo(row["PCKSID"].ToString(), billNo.Replace("BI", ""));
                 }
                 else if (Decimal.TryParse(row["Payment4"].ToString(), out price) && row["P4BDetailID"].ToString().Equals("0"))
                 {
-                    ic.ivfDB.opkgsDB.updateP1BillNo(row["PCKSID"].ToString(), billNo.Replace("BI", ""));
+                    ic.ivfDB.opkgsDB.updateP4BillNo(row["PCKSID"].ToString(), billNo.Replace("BI", ""));
                 }
             }
             //dtprn.Columns.Add("col1", typeof(String));

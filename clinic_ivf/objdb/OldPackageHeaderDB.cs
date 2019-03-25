@@ -24,9 +24,78 @@ namespace clinic_ivf.objdb
             oPkg.PCKID = "PCKID";
             oPkg.PackageName = "PackageName";
             oPkg.Price = "Price";
+            oPkg.active = "active";
 
             oPkg.table = "PackageHeader";
             oPkg.pkField = "PCKID";
+        }
+        public String insert(OldPackageHeader p, String userId)
+        {
+            String re = "";
+            String sql = "";
+            p.active = "1";
+            //p.ssdata_id = "";
+            int chk = 0;
+
+            p.PackageName = p.PackageName == null ? "" : p.PackageName;
+            p.Price = p.Price == null ? "0" : p.Price;
+            //p.user_create = p.user_create == null ? "" : p.user_create;            
+
+            sql = "Insert Into " + oPkg.table + 
+                "Set " + oPkg.PackageName + " = '" + p.PackageName.Replace("'","''") + "' "+
+                "," + oPkg.Price + " = '" + p.Price + "' " +
+                "," + oPkg.active + " = '1' " + 
+                ")";
+            try
+            {
+                re = conn.ExecuteNonQuery(conn.conn, sql);
+            }
+            catch (Exception ex)
+            {
+                sql = ex.Message + " " + ex.InnerException;
+            }
+
+            return re;
+        }
+        public String update(OldPackageHeader p, String userId)
+        {
+            String re = "";
+            String sql = "";
+            int chk = 0;
+
+            p.PackageName = p.PackageName == null ? "" : p.PackageName;
+            p.Price = p.Price == null ? "0" : p.Price;
+
+            sql = "Update " + oPkg.table + " Set " +
+                " " + oPkg.PackageName + " = '" + p.PackageName.Replace("'", "''") + "' " +
+                "," + oPkg.Price + " = '" + p.Price + "' " +
+                "Where " + oPkg.pkField + "='" + p.PCKID + "'"
+                ;
+            try
+            {
+                re = conn.ExecuteNonQuery(conn.conn, sql);
+            }
+            catch (Exception ex)
+            {
+                sql = ex.Message + " " + ex.InnerException;
+            }
+
+            return re;
+        }
+        public String insertPackageHeader(OldPackageHeader p, String userId)
+        {
+            String re = "";
+
+            if (p.PCKID.Equals(""))
+            {
+                re = insert(p, userId);
+            }
+            else
+            {
+                re = update(p, userId);
+            }
+
+            return re;
         }
         public DataTable selectByPk(String pttId)
         {

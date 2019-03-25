@@ -1038,10 +1038,14 @@ namespace clinic_ivf.gui
             //}
             //if (btnSave.Text.Equals("Confirm"))
             //{
-            
+
             //}
             //else
             //{
+            if (txtDob.Text.Equals(""))
+            {
+
+            }
             ic.cStf.staff_id = "";
             FrmPasswordConfirm frm = new FrmPasswordConfirm(ic);
             frm.ShowDialog(this);
@@ -1159,9 +1163,9 @@ namespace clinic_ivf.gui
                                     ptti.user_cancel = "";
                                     ptti.image_path = "images/" + txtHn.Text.Replace("-", "") + "/" + picIDCard;
                                     ptti.status_image = "4";
-                                    re = ic.ivfDB.pttImgDB.insertpatientImage(ptti, ic.cStf.staff_id);
+                                    String re3 = ic.ivfDB.pttImgDB.insertpatientImage(ptti, ic.cStf.staff_id);
                                     //long chk = 0;
-                                    if (long.TryParse(re, out chk))
+                                    if (long.TryParse(re3, out chk))
                                     {
                                         ic.savePicOPUtoServer(txtHn.Text.Replace("-", ""), filename, picIDCard);
                                         grfImg.Rows[grfImg.Row].StyleNew.BackColor = color;

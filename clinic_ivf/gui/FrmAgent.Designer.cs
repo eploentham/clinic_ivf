@@ -119,7 +119,7 @@
             this.c1SplitterPanel1.Location = new System.Drawing.Point(0, 21);
             this.c1SplitterPanel1.Name = "c1SplitterPanel1";
             this.c1SplitterPanel1.Size = new System.Drawing.Size(507, 608);
-            this.c1SplitterPanel1.SizeRatio = 49.891D;
+            this.c1SplitterPanel1.SizeRatio = 49.855D;
             this.c1SplitterPanel1.TabIndex = 0;
             this.c1SplitterPanel1.Text = "Panel 1";
             this.c1SplitterPanel1.Width = 514;

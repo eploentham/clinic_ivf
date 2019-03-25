@@ -239,5 +239,23 @@ namespace clinic_ivf.objdb
             }
             return re;
         }
+        public String updateBillNo(String vn, String billno)
+        {
+            String re = "", sql = "";
+
+            sql = "Update " + obillh.table + " set " +
+                "" + obillh.BillNo + "='" + billno + "' " +
+                //"," + opkgs.Payment1 + "='" + pay + "' " +
+                "Where " + obillh.VN + "='" + vn + "' ";
+            try
+            {
+                re = conn.ExecuteNonQuery(conn.conn, sql);
+            }
+            catch (Exception ex)
+            {
+                sql = ex.Message + " " + ex.InnerException;
+            }
+            return re;
+        }
     }
 }

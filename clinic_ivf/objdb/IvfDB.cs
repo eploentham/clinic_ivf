@@ -706,70 +706,110 @@ namespace clinic_ivf.objdb
             obillh.IntLock = "";
             obilhDB.insertBillHeader(obillh, "");
             //sql = "Select * from PackageSold Where PID='"+ ovs.PID+ "' and Status<>3'";
-            dt = opkgsDB.selectByVN1(vn);
+            //dt = opkgsDB.selectByVN1(vn);
+            dt = opkgsDB.selectByPID(ovs.PID);    // ต้องดึงตาม HN เพราะ ถ้ามีงวดการชำระ 
             if (dt.Rows.Count > 0)
             {
                 foreach(DataRow row in dt.Rows)
                 {
-                    String times = "";
-                    Decimal price = 0;
-                    if (Decimal.TryParse(row["Payment1"].ToString(), out price))
+                    String bill1 = "", bill2 = "", bill3 = "", bill4 = "", times = "", name = "";
+                    Decimal price = 0, pay1 = 0, pay2 = 0, pay3 = 0, pay4 = 0, pay = 0;
+                    Decimal.TryParse(row["price"].ToString(), out price);
+                    Decimal.TryParse(row["payment1"].ToString(), out pay1);
+                    Decimal.TryParse(row["payment2"].ToString(), out pay2);
+                    Decimal.TryParse(row["payment3"].ToString(), out pay3);
+                    Decimal.TryParse(row["payment4"].ToString(), out pay4);
+                    times = row["payment_times"].ToString();
+                    bill1 = row["P1BDetailID"].ToString();
+                    bill2 = row["P2BDetailID"].ToString();
+                    bill3 = row["P3BDetailID"].ToString();
+                    bill4 = row["P4BDetailID"].ToString();
+                    name = row["PackageName"].ToString();
+                    if (price > 0)
                     {
-                        if(price>0)
-                            times = "1";
-                    }
-                    else if (Decimal.TryParse(row["Payment2"].ToString(), out price))
-                    {
-                        if (price > 0)
-                            times = "2";
-                    }
-                    else if (Decimal.TryParse(row["Payment3"].ToString(), out price))
-                    {
-                        if (price > 0)
-                            times = "3";
-                    }
-                    else if (Decimal.TryParse(row["Payment4"].ToString(), out price))
-                    {
-                        if (price > 0)
-                            times = "4";
-                    }
+                        //if (Decimal.TryParse(row["Payment1"].ToString(), out price))
+                        //{
+                        //    if (price > 0)
+                        //        times = "1";
+                        //}
+                        //else if (Decimal.TryParse(row["Payment2"].ToString(), out price))
+                        //{
+                        //    if (price > 0)
+                        //        times = "2";
+                        //}
+                        //else if (Decimal.TryParse(row["Payment3"].ToString(), out price))
+                        //{
+                        //    if (price > 0)
+                        //        times = "3";
+                        //}
+                        //else if (Decimal.TryParse(row["Payment4"].ToString(), out price))
+                        //{
+                        //    if (price > 0)
+                        //        times = "4";
+                        //}
+                        if ((pay1 > 0) && bill1.Equals("0"))
+                        {
+                            pay = pay1;
+                            name += "1/" + times;
+                        }
+                        else if ((pay2 > 0) && bill2.Equals("0"))
+                        {
+                            pay = pay2;
+                            name += "2/" + times;
+                        }
+                        else if ((pay3 > 0) && bill3.Equals("0"))
+                        {
+                            pay = pay3;
+                            name += "3/" + times;
+                        }
+                        else if ((pay4 > 0) && bill4.Equals("0"))
+                        {
+                            pay = pay4;
+                            name += "4/" + times;
+                        }
 
-                    OldBilldetail obilld = new OldBilldetail();
-                    obilld.ID = "";
-                    obilld.VN = row["VN"].ToString();
-                    obilld.Name = "Package ";
-                    obilld.Extra = "0";
-                    if (times.Equals("1"))
-                    {
-                        obilld.Name = "Package "+row["PackageName"].ToString()+" Payment 1/" + times;
-                        obilld.Price = price.ToString();
-                        obilld.Total = price.ToString();
+                        OldBilldetail obilld = new OldBilldetail();
+                        obilld.ID = "";
+                        obilld.VN = vn;
+                        obilld.Name = "Package ";
+                        obilld.Extra = "0";
+                        obilld.Name = "Package "+name;
+                        obilld.Price = pay.ToString();
+                        obilld.Total = pay.ToString();
                         obilld.Comment = "";
+                        obilld.item_id = row["PCKID"].ToString();
+                        //if (times.Equals("1"))
+                        //{
+                        //    obilld.Name = "Package " + row["PackageName"].ToString() + " Payment 1/" + times;
+                        //    obilld.Price = price.ToString();
+                        //    obilld.Total = price.ToString();
+                        //    obilld.Comment = "";
+                        //}
+                        //else if (times.Equals("2"))
+                        //{
+                        //    obilld.Name = "Package " + row["PackageName"].ToString() + " Payment 2" + times;
+                        //    obilld.Price = price.ToString();
+                        //    obilld.Total = price.ToString();
+                        //    obilld.Comment = "";
+                        //}
+                        //else if (times.Equals("3"))
+                        //{
+                        //    obilld.Name = "Package " + row["PackageName"].ToString() + " Payment 3" + times;
+                        //    obilld.Price = price.ToString();
+                        //    obilld.Total = price.ToString();
+                        //    obilld.Comment = "";
+                        //}
+                        //else if (times.Equals("4"))
+                        //{
+                        //    obilld.Name = "Package " + row["PackageName"].ToString() + " Payment 4" + times;
+                        //    obilld.Price = price.ToString();
+                        //    obilld.Total = price.ToString();
+                        //    obilld.Comment = "";
+                        //}
+                        obilld.GroupType = "Package";
+
+                        obildDB.insertBillDetail(obilld, "");
                     }
-                    else if (times.Equals("2"))
-                    {
-                        obilld.Name = "Package " + row["PackageName"].ToString() + " Payment 2" + times;
-                        obilld.Price = price.ToString();
-                        obilld.Total = price.ToString();
-                        obilld.Comment = "";
-                    }
-                    else if (times.Equals("3"))
-                    {
-                        obilld.Name = "Package " + row["PackageName"].ToString() + " Payment 3" + times;
-                        obilld.Price = price.ToString();
-                        obilld.Total = price.ToString();
-                        obilld.Comment = "";
-                    }
-                    else if (times.Equals("4"))
-                    {
-                        obilld.Name = "Package " + row["PackageName"].ToString() + " Payment 4" + times;
-                        obilld.Price = price.ToString();
-                        obilld.Total = price.ToString();
-                        obilld.Comment = "";
-                    }
-                    obilld.GroupType = "Package";
-                    
-                    obildDB.insertBillDetail(obilld, "");
                 }
             }
             if (inc != 0)
@@ -794,6 +834,7 @@ namespace clinic_ivf.objdb
                         obilld.Total = "0";
                         obilld.GroupType = grp;
                         obilld.Comment = "";
+                        obilld.item_id = row["LID"].ToString();
                         obildDB.insertBillDetail(obilld, "");
                     }
                 }
@@ -813,6 +854,7 @@ namespace clinic_ivf.objdb
                         obilld.Total = "0";
                         obilld.GroupType = grp1;
                         obilld.Comment = "";
+                        obilld.item_id = row["DUID"].ToString();
                         obildDB.insertBillDetail(obilld, "");
                     }
                 }
@@ -833,6 +875,7 @@ namespace clinic_ivf.objdb
                         obilld.Total = "0";
                         obilld.GroupType = grp;
                         obilld.Comment = "";
+                        obilld.item_id = row["SID"].ToString();
                         obildDB.insertBillDetail(obilld, "");
                     }
                 }
@@ -859,6 +902,7 @@ namespace clinic_ivf.objdb
                         obilld.Total = row["Price"].ToString();
                         obilld.GroupType = grp;
                         obilld.Comment = "";
+                        obilld.item_id = row["LID"].ToString();
                         obildDB.insertBillDetail(obilld, "");
                     }
                 }
@@ -878,6 +922,7 @@ namespace clinic_ivf.objdb
                         obilld.Total = row["Price"].ToString();
                         obilld.GroupType = grp1;
                         obilld.Comment = "";
+                        obilld.item_id = row["DUID"].ToString();
                         obildDB.insertBillDetail(obilld, "");
                     }
                 }
@@ -898,6 +943,7 @@ namespace clinic_ivf.objdb
                         obilld.Total = row["Price"].ToString();
                         obilld.GroupType = grp;
                         obilld.Comment = "";
+                        obilld.item_id = row["SID"].ToString();
                         obildDB.insertBillDetail(obilld, "");
                     }
                 }
@@ -1267,6 +1313,30 @@ namespace clinic_ivf.objdb
 		//$this->db->query('update Visit set VSID="115" Where VN="'.$VN.'"');
             DeleteBill(vn);
             ovsDB.updateStatusCashierbackNurse(vn);
+        }
+        public String updatePackagePaymentComplete(String pid, String pkgid)
+        {
+            DataTable dt = new DataTable();
+            String re = "", sql = "", billid = "";
+            OldPackageSold opkgs1 = new OldPackageSold();
+            opkgs1 = opkgsDB.selectByPID1(pid, pkgid);
+            String bill1 = "", bill2 = "", bill3 = "", bill4 = "", times = "", name = "";
+            Decimal price = 0, amt = 0, pay2 = 0, pay3 = 0, pay4 = 0, pay = 0;
+            Decimal.TryParse(opkgs1.Price, out amt);
+            dt = obildDB.selectByPIDPkgID(pid, pkgid);
+            if (dt.Rows.Count > 0)
+            {
+                foreach (DataRow row in dt.Rows)
+                {
+                    Decimal.TryParse(row["Total"].ToString(), out price);
+                    pay += price;
+                }
+            }
+            if(amt <= pay)
+            {
+                opkgsDB.updateStatus3(opkgs1.PCKSID);
+            }
+            return re;
         }
     }
 }

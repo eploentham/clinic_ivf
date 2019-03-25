@@ -150,7 +150,7 @@ namespace clinic_ivf.objdb
             p.PatientTypeID = int.TryParse(p.PatientTypeID, out chk) ? chk.ToString() : "0";
             p.IDType = int.TryParse(p.IDType, out chk) ? chk.ToString() : "0";
 
-            p.DateOfBirth = p.DateOfBirth.Equals("") ? null : p.DateOfBirth;
+            //p.DateOfBirth = p.DateOfBirth.Equals("") ? null : p.DateOfBirth;
             //p.IDType = p.IDType.Equals("") ? null : p.IDType;
         }
         public String insert(PatientOld p, String userId)
@@ -161,12 +161,58 @@ namespace clinic_ivf.objdb
 
             try
             {
-                sql = "Insert Into " + pttO.table + "(" + pttO.Address + "," + pttO.Age + "," + pttO.AgentID + "," +
+                if (p.DateOfBirth.Equals(""))
+                {
+                    sql = "Insert Into " + pttO.table + "(" + pttO.Address + "," + pttO.Age + "," + pttO.AgentID + "," +
                 pttO.Allergy + "," + pttO.BuildingVillage + "," + pttO.CompanyName + "," +
                 pttO.CompanyPhoneNo + "," + pttO.ContractName + "," + pttO.DateOfBirth + "," +
                 pttO.District + "," + pttO.Email + "," + pttO.EmergencyPersonAddress + "," +
                 pttO.EmergencyPersonalContact + "," + pttO.EPAddress + "," + pttO.EPDistrict + "," +
-                
+
+                pttO.EPEmail + "," + pttO.EPHomePhoneNo + "," + pttO.EPMobilePhoneNo + "," +
+                pttO.EPProvince + "," + pttO.EPRoad + "," + pttO.EPSubDistrict + "," +
+                pttO.EPZipcode + "," + pttO.HomePhoneNo + "," + pttO.IDNumber + "," +
+                pttO.IDType + "," + pttO.InsuranceName + "," + pttO.MaritalID + "," +
+                pttO.MobilePhoneNo + "," + pttO.Moo + "," + pttO.Nationality + "," +
+                pttO.Occupation + "," + pttO.OName + "," + pttO.OSurname + "," +
+                pttO.PatientTypeID + "," + pttO.PaymentID + "," + pttO.PIDS + "," +
+
+                pttO.PName + "," + pttO.Province + "," + pttO.PSurname + "," +
+                pttO.Race + "," + pttO.RelationshipID + "," + pttO.RelationshipOther + "," +
+                pttO.Religion + "," + pttO.Road + "," + pttO.SexID + "," +
+                pttO.Soi + "," + pttO.SubDistrict + "," + pttO.SurfixID + "," +
+                pttO.ZipCode + "," + pttO.PID + " " +
+
+                ") " +
+                "Values ('" + p.Address + "','" + p.Age.Replace("'", "''") + "','" + p.AgentID.Replace("'", "''") + "'," +
+                "'" + p.Allergy.Replace("'", "''") + "','" + p.BuildingVillage.Replace("'", "''") + "','" + p.CompanyName.Replace("'", "''") + "'," +
+                "'" + p.CompanyPhoneNo + "','" + p.ContractName.Replace("'", "''") + "',null," +
+                "'" + p.District.Replace("'", "''") + "','" + p.Email + "','" + p.EmergencyPersonAddress + "'," +
+                "'" + p.EmergencyPersonalContact + "','" + p.EPAddress.Replace("'", "''") + "','" + p.EPDistrict.Replace("'", "''") + "'," +
+
+                "'" + p.EPEmail.Replace("'", "''") + "','" + p.EPHomePhoneNo + "','" + p.EPMobilePhoneNo + "'," +
+                "'" + p.EPProvince + "','" + p.EPRoad + "','" + p.EPSubDistrict + "'," +
+                "'" + p.EPZipcode + "','" + p.HomePhoneNo + "','" + p.IDNumber + "'," +
+                "'" + p.IDType.Replace("'", "''") + "','" + p.InsuranceName.Replace("'", "''") + "','" + p.MaritalID.Replace("'", "''") + "'," +
+                "'" + p.MobilePhoneNo + "','" + p.Moo + "','" + p.Nationality + "'," +
+                "'" + p.Occupation.Replace("'", "''") + "','" + p.OName + "','" + p.OSurname + "'," +
+                "'" + p.PatientTypeID.Replace("'", "''") + "','" + p.PaymentID.Replace("'", "''") + "','" + p.PIDS.Replace("'", "''") + "'," +
+
+                "'" + p.PName.Replace("'", "''") + "','" + p.Province + "','" + p.PSurname + "'," +
+                "'" + p.Race + "','" + p.RelationshipID + "','" + p.RelationshipOther + "'," +
+                "'" + p.Religion + "','" + p.Road + "','" + p.SexID + "'," +
+                "'" + p.Soi + "','" + p.SubDistrict + "','" + p.SurfixID.Replace("'", "''") + "'," +
+                "'" + p.ZipCode + "'," + p.PID + " " +
+                ")";
+                }
+                else
+                {
+                    sql = "Insert Into " + pttO.table + "(" + pttO.Address + "," + pttO.Age + "," + pttO.AgentID + "," +
+                pttO.Allergy + "," + pttO.BuildingVillage + "," + pttO.CompanyName + "," +
+                pttO.CompanyPhoneNo + "," + pttO.ContractName + "," + pttO.DateOfBirth + "," +
+                pttO.District + "," + pttO.Email + "," + pttO.EmergencyPersonAddress + "," +
+                pttO.EmergencyPersonalContact + "," + pttO.EPAddress + "," + pttO.EPDistrict + "," +
+
                 pttO.EPEmail + "," + pttO.EPHomePhoneNo + "," + pttO.EPMobilePhoneNo + "," +
                 pttO.EPProvince + "," + pttO.EPRoad + "," + pttO.EPSubDistrict + "," +
                 pttO.EPZipcode + "," + pttO.HomePhoneNo + "," + pttO.IDNumber + "," +
@@ -187,7 +233,7 @@ namespace clinic_ivf.objdb
                 "'" + p.CompanyPhoneNo + "','" + p.ContractName.Replace("'", "''") + "','" + p.DateOfBirth.Replace("'", "''") + "'," +
                 "'" + p.District.Replace("'", "''") + "','" + p.Email + "','" + p.EmergencyPersonAddress + "'," +
                 "'" + p.EmergencyPersonalContact + "','" + p.EPAddress.Replace("'", "''") + "','" + p.EPDistrict.Replace("'", "''") + "'," +
-                
+
                 "'" + p.EPEmail.Replace("'", "''") + "','" + p.EPHomePhoneNo + "','" + p.EPMobilePhoneNo + "'," +
                 "'" + p.EPProvince + "','" + p.EPRoad + "','" + p.EPSubDistrict + "'," +
                 "'" + p.EPZipcode + "','" + p.HomePhoneNo + "','" + p.IDNumber + "'," +
@@ -202,7 +248,7 @@ namespace clinic_ivf.objdb
                 "'" + p.Soi + "','" + p.SubDistrict + "','" + p.SurfixID.Replace("'", "''") + "'," +
                 "'" + p.ZipCode + "'," + p.PID + " " +
                 ")";
-
+                }
                 re = conn.ExecuteNonQuery(conn.conn, sql);
             }
             catch (Exception ex)

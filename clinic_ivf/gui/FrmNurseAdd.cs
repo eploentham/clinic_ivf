@@ -213,6 +213,18 @@ namespace clinic_ivf.gui
             {
                 times = "4";
             }
+            Decimal amt = 0, pay2 = 0, pay3 = 0, pay4 = 0, pay1 = 0;
+            Decimal.TryParse(txtPayment1.Text, out pay1);
+            Decimal.TryParse(txtPayment2.Text, out pay2);
+            Decimal.TryParse(txtPayment3.Text, out pay3);
+            Decimal.TryParse(txtPayment4.Text, out pay4);
+            Decimal.TryParse(txtPrice.Text, out price);
+            amt = pay1 + pay2 + pay3 + pay4;
+            if (amt < price)
+            {
+                MessageBox.Show("จำนวนเงิน ต่อ งวด รวมกันแล้ว น้อยกว่า มูลค่า Package", "");
+                return;
+            }
             OldPackageSold opkgs = new OldPackageSold();
             opkgs.PCKSID = "";
             opkgs.PID = txtIdOld.Text;
@@ -371,7 +383,7 @@ namespace clinic_ivf.gui
             dtse = ic.ivfDB.ojsdDB.selectByVN(vn);
             dtpx = ic.ivfDB.oJpxdDB.selectByVN(vn);
             //dtpkg = ic.ivfDB.opkgsDB.selectByVN(vn);
-            dtpkg = ic.ivfDB.opkgsDB.selectByVN(vn);    // ต้องดึงตาม HN เพราะ ถ้ามีงวดการชำระ 
+            dtpkg = ic.ivfDB.opkgsDB.selectByPID(pttId);    // ต้องดึงตาม HN เพราะ ถ้ามีงวดการชำระ 
 
             //grfExpn.Rows.Count = dt.Rows.Count + 1;
             //grfEmbryo.Rows.Count = dt.Rows.Count + 1;
@@ -457,20 +469,55 @@ namespace clinic_ivf.gui
             }
             foreach (DataRow row in dtpkg.Rows)
             {
-                DataRow row1 = dtAll.NewRow();
-                row1["id"] = row["PCKSID"];
-                row1["itmid"] = row["PCKID"];
-                row1["lgid"] = "";
-                row1["name"] = row["PackageName"];
-                row1["price"] = row["Price"];
-                row1["qty"] = "1";
-                row1["status"] = "package";
-                row1["row1"] = row["row1"];
-                row1["extra"] = "0";
-                row1["usage"] = "";
-                dtAll.Rows.InsertAt(row1, i);
-                i++;
-
+                String bill1 = "", bill2 = "", bill3 = "", bill4 = "", times="", name="";
+                Decimal price = 0, pay1=0,pay2=0,pay3=0,pay4=0, pay=0;
+                Decimal.TryParse(row["price"].ToString(), out price);
+                Decimal.TryParse(row["payment1"].ToString(), out pay1);
+                Decimal.TryParse(row["payment2"].ToString(), out pay2);
+                Decimal.TryParse(row["payment3"].ToString(), out pay3);
+                Decimal.TryParse(row["payment4"].ToString(), out pay4);
+                times = row["payment_times"].ToString();
+                bill1 = row["P1BDetailID"].ToString();
+                bill2 = row["P2BDetailID"].ToString();
+                bill3 = row["P3BDetailID"].ToString();
+                bill4 = row["P4BDetailID"].ToString();
+                name = row["PackageName"].ToString();
+                if (price > 0)
+                {
+                    if ((pay1 > 0) && bill1.Equals("0"))
+                    {
+                        pay = pay1;
+                        name += "1/"+ times;
+                    }
+                    else if ((pay2 > 0) && bill2.Equals("0"))
+                    {
+                        pay = pay2;
+                        name += "2/" + times;
+                    }
+                    else if ((pay3 > 0) && bill3.Equals("0"))
+                    {
+                        pay = pay3;
+                        name += "3/" + times;
+                    }
+                    else if ((pay4 > 0) && bill4.Equals("0"))
+                    {
+                        pay = pay4;
+                        name += "4/" + times;
+                    }
+                    DataRow row1 = dtAll.NewRow();
+                    row1["id"] = row["PCKSID"];
+                    row1["itmid"] = row["PCKID"];
+                    row1["lgid"] = "";
+                    row1["name"] = name;
+                    row1["price"] = pay;
+                    row1["qty"] = "1";
+                    row1["status"] = "package";
+                    row1["row1"] = row["row1"];
+                    row1["extra"] = "0";
+                    row1["usage"] = "";
+                    dtAll.Rows.InsertAt(row1, i);
+                    i++;
+                }
             }
             dtAll.DefaultView.Sort = "row1";
             DataView view = dtAll.DefaultView;
@@ -488,7 +535,7 @@ namespace clinic_ivf.gui
             //grfOrder.Cols[colOrderQTY].Editor = txt;
             //grfOrder.Cols[colRxId].Editor = txt;
 
-            grfOrder.Cols[colOrdName].Width = 220;
+            grfOrder.Cols[colOrdName].Width = 280;
             grfOrder.Cols[colOrdPrice].Width = 120;
             grfOrder.Cols[colOrdQty].Width = 80;
             grfOrder.Cols[colOrdUsT].Width = 100;
@@ -796,7 +843,7 @@ namespace clinic_ivf.gui
             txtPkgName.Value = opkg.PackageName;
             txtPkgId.Value = opkg.PCKID;
             txtPrice.Value = opkg.Price;
-
+            txtPayment1.Value = opkg.Price;
             setGrfpackageD(id);
         }
         private void setPkgPeriod()
@@ -809,7 +856,7 @@ namespace clinic_ivf.gui
             opkgs.PackageName = txtPkgName.Text;
             opkgs.Price = txtPrice.Text;
             opkgs.Date = "";
-            opkgs.PaymentTimes = times;
+            opkgs.PaymentTimes = "";
             opkgs.Status = "1";
             opkgs.Payment1 = txtPayment1.Text;
             opkgs.Payment2 = txtPayment2.Text;

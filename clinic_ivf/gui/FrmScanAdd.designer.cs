@@ -106,7 +106,7 @@
             this.btnDel.Name = "btnDel";
             this.btnDel.Size = new System.Drawing.Size(71, 30);
             this.btnDel.TabIndex = 555;
-            this.btnDel.Text = "Delete";
+            this.btnDel.Text = "Upload";
             this.btnDel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.theme1.SetTheme(this.btnDel, "(default)");
             this.btnDel.UseVisualStyleBackColor = true;
