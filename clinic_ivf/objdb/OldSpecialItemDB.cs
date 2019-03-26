@@ -112,6 +112,16 @@ namespace clinic_ivf.objdb
 
             return dt;
         }
+        public DataTable selectAll1()
+        {
+            DataTable dt = new DataTable();
+            String sql = "select sitm."+ sitm.SID+","+ sitm.SName+","+ sitm.Price+" " +
+                "From " + sitm.table + " sitm " +
+                "Order By "+sitm.SName;
+            dt = conn.selectData(conn.conn, sql);
+
+            return dt;
+        }
         public DataTable selectByPk(String pttId)
         {
             DataTable dt = new DataTable();

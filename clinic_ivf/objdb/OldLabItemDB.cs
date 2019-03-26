@@ -1,4 +1,5 @@
-﻿using clinic_ivf.object1;
+﻿using C1.Win.C1Input;
+using clinic_ivf.object1;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -12,14 +13,16 @@ namespace clinic_ivf.objdb
     {
         public OldLabItem labI;
         ConnectDB conn;
-
+        public List<OldLabItem> lolItm;
         public OldLabItemDB(ConnectDB c)
         {
             conn = c;
+            
             initConfig();
         }
         private void initConfig()
         {
+            lolItm = new List<OldLabItem>();
             labI = new OldLabItem();
             labI.LID = "LID";
             labI.LGID = "LGID";
@@ -46,9 +49,29 @@ namespace clinic_ivf.objdb
             labI.WorkerGroup3 = "WorkerGroup3";
             labI.WorkerGroup4 = "WorkerGroup4";
             labI.QTY = "QTY";
+            labI.active = "active";
 
             labI.table = "LabItem";
             labI.pkField = "LID";
+        }
+        public DataTable selectAll()
+        {
+            DataTable dt = new DataTable();
+            String sql = "select * " +
+                "From " + labI.table + " labI " +
+                "Where " + labI.active + " ='1' ";
+            dt = conn.selectData(conn.conn, sql);
+            return dt;
+        }
+        public DataTable selectAll1()
+        {
+            DataTable dt = new DataTable();
+            String sql = "select labI."+ labI.LID+ ",labI." + labI .LName+","+ labI .Price+" "+
+                "From " + labI.table + " labI " +
+                "Where labI." + labI.active + " ='1' " +
+                "Order By "+labI.LName;
+            dt = conn.selectData(conn.conn, sql);
+            return dt;
         }
         public DataTable selectByPk(String pttId)
         {
@@ -169,6 +192,50 @@ namespace clinic_ivf.objdb
                 "Order By labI." + labI.LName;
             dt = conn.selectData(conn.conn, sql);
             return dt;
+        }
+        public void getloLabItem()
+        {
+            //lDept = new List<Position>();
+            lolItm.Clear();
+            DataTable dt = new DataTable();
+            dt = selectAll();
+            foreach (DataRow row in dt.Rows)
+            {
+                OldLabItem itm1 = new OldLabItem();
+                itm1.LID = row[labI.LID].ToString();
+                itm1.LGID = row[labI.LGID].ToString();
+                itm1.LName = row[labI.LName].ToString();
+                itm1.WorkTime = row[labI.WorkTime].ToString();
+                itm1.Price = row[labI.Price].ToString();
+                itm1.QTY = row[labI.QTY].ToString();
+                
+                lolItm.Add(itm1);
+            }
+        }
+        public void setCboLabItem(C1ComboBox c, String selected)
+        {
+            ComboBoxItem item = new ComboBoxItem();
+            //DataTable dt = selectWard();
+            int i = 0;
+            if (lolItm.Count <= 0) getloLabItem();
+            item = new ComboBoxItem();
+            item.Value = "";
+            item.Text = "";
+            c.Items.Add(item);
+            foreach (OldLabItem cus1 in lolItm)
+            {
+                item = new ComboBoxItem();
+                item.Value = cus1.LID;
+                item.Text = cus1.LName + " " + cus1.LName;
+                c.Items.Add(item);
+                if (item.Value.Equals(selected))
+                {
+                    //c.SelectedItem = item.Value;
+                    c.SelectedText = item.Text;
+                    c.SelectedIndex = i + 1;
+                }
+                i++;
+            }
         }
         public OldLabItem setLabItem(DataTable dt)
         {

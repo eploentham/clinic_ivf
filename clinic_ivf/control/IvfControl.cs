@@ -402,6 +402,29 @@ namespace clinic_ivf.control
             }
             return re;
         }
+        public void setCboPkgGrp(C1ComboBox c)
+        {
+            ComboBoxItem item = new ComboBoxItem();
+            //DataTable dt = selectWard();
+
+            item = new ComboBoxItem();
+            item.Value = "";
+            item.Text = "";
+            c.Items.Add(item);
+            item = new ComboBoxItem();
+            item.Value = "LID";
+            item.Text = "LAB";
+            c.Items.Add(item);
+            item = new ComboBoxItem();
+            item.Value = "SID";
+            item.Text = "Special Item";
+            c.Items.Add(item);
+            item = new ComboBoxItem();
+            item.Value = "DUID";
+            item.Text = "DRUG";
+            c.Items.Add(item);
+
+        }
         public void setCboLangSticker(C1ComboBox c)
         {
             ComboBoxItem item = new ComboBoxItem();

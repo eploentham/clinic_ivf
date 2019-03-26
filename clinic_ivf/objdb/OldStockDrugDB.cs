@@ -29,6 +29,7 @@ namespace clinic_ivf.objdb
             ostkD.QTY= "QTY";
             ostkD.PendingQTY= "PendingQTY";
             ostkD.Price= "Price";
+            ostkD.active = "active";
 
             ostkD.table = "StockDrug";
             ostkD.pkField = "DUID";
@@ -57,6 +58,25 @@ namespace clinic_ivf.objdb
             p.Price = p.Price.Equals("") ? "0" : p.Price;
             
             //p.user_cancel = p.user_cancel == null ? "" : p.user_cancel;
+        }
+        public DataTable selectAll()
+        {
+            DataTable dt = new DataTable();
+            String sql = "select ostkD.*  " +
+                "From " + ostkD.table + " ostkD " +
+                "Where ostkD." + ostkD.active + " ='1' ";
+            dt = conn.selectData(conn.conn, sql);
+            return dt;
+        }
+        public DataTable selectAll1()
+        {
+            DataTable dt = new DataTable();
+            String sql = "select ostkD."+ ostkD.DUID+","+ ostkD.DUName+","+ ostkD.Price+" " +
+                "From " + ostkD.table + " ostkD " +
+                "Where ostkD." + ostkD.active + " ='1' " +
+                "Order By "+ostkD.DUName;
+            dt = conn.selectData(conn.conn, sql);
+            return dt;
         }
         public DataTable selectByPk(String copId)
         {

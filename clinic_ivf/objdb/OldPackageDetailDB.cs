@@ -50,5 +50,15 @@ namespace clinic_ivf.objdb
             dt = conn.selectData(conn.conn, sql);
             return dt;
         }
+        public DataTable selectByPkgId1(String pttId)
+        {
+            DataTable dt = new DataTable();
+            String sql = "select oPkgD."+oPkgD.ID+ ",oPkgD." + oPkgD.ItemName+ ",oPkgD." + oPkgD.QTY+" " +
+                "From " + oPkgD.table + " oPkgD " +
+                "Where oPkgD." + oPkgD.PCKID + " ='" + pttId + "' and active = '1'" +
+                "Order By oPkgD." + oPkgD.ItemName; ;
+            dt = conn.selectData(conn.conn, sql);
+            return dt;
+        }
     }
 }
