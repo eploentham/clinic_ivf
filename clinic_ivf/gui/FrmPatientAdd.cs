@@ -146,7 +146,7 @@ namespace clinic_ivf.gui
             ic.ivfDB.fpfDB.setCboPrefix(cboPrefix,"");
             ic.ivfDB.fmsDB.setCboMarriage(cboMarital, "");
             ic.ivfDB.fbgDB.setCboBloodGroup(cboBloodG, "");
-            ic.ivfDB.fpnDB.setCboNation(CboNation, "");
+            ic.ivfDB.fpnDB.setCboNation(CboNation, "41");
             ic.ivfDB.ffetDB.setCboEduca(CboEduca, "");
             ic.ivfDB.frcDB.setCboRace(cboRace, "");
             ic.ivfDB.frgDB.setCboReligion(cboRg, "");
@@ -169,6 +169,8 @@ namespace clinic_ivf.gui
                 ic.setCboPttType(cboPttType,"");
                 ic.setCboPttType(cboVisitPttType,"");
                 ic.setCboPttGroup(cboPttGroup,"");
+                cboPttGroup.Show();
+                label32.Show();
                 setControlPtt(true);
             }
             else
@@ -176,6 +178,8 @@ namespace clinic_ivf.gui
                 ic.setCboPttType(cboPttType,"patient");
                 ic.setCboPttType(cboVisitPttType,"Patient");
                 ic.setCboPttGroup(cboPttGroup,"A");
+                cboPttGroup.Hide();
+                label32.Hide();
                 setControlPtt(false);
             }
 
@@ -2468,6 +2472,10 @@ namespace clinic_ivf.gui
             {
                 ic.setCboPttGroup(cboPttGroup, "A");
             }
+            if (CboNation.Text.Equals(""))
+            {
+                ic.setC1Combo(CboNation, "41");
+            }
         }
         private void setControlPtt(String pttid)
         {
@@ -2567,6 +2575,10 @@ namespace clinic_ivf.gui
             txtVisitHnMale.Value = ptt.patient_hn_couple;
             txtHeight.Value = ptt.patient_height;
             txtVisitHeight.Value = ptt.patient_height;
+            if (CboNation.Text.Equals(""))
+            {
+                ic.setC1Combo(CboNation, "41");
+            }
         }
         private void setControl()
         {

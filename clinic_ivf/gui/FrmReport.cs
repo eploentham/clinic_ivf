@@ -23,6 +23,72 @@ namespace clinic_ivf.gui
             InitializeComponent();
             this.ic = ic;
         }
+        public void setOpdpostoperationnote(String name, String hn)
+        {
+            String chk = "", printerDefault = "";
+            ReportDocument rpt = new ReportDocument();
+            try
+            {
+                rpt.Load("opd_post_operation_note.rpt");
+                //rpt.SetDataSource(dt);
+                rpt.SetParameterValue("line1", ic.cop.comp_name_t);
+                rpt.SetParameterValue("line2", ic.cop.addr1);
+                rpt.SetParameterValue("line3", ic.cop.addr2);
+                rpt.SetParameterValue("hn", hn);
+                rpt.SetParameterValue("name", name);
+                this.crystalReportViewer1.ReportSource = rpt;
+                this.crystalReportViewer1.Refresh();
+            }
+            catch (Exception ex)
+            {
+                chk = ex.Message.ToString();
+                MessageBox.Show("error " + ex.Message, "");
+            }
+        }
+        public void setOpdOrderETFET(String name, String hn)
+        {
+            String chk = "", printerDefault = "";
+            ReportDocument rpt = new ReportDocument();
+            try
+            {
+                rpt.Load("opd_order_et_fet.rpt");
+                //rpt.SetDataSource(dt);
+                rpt.SetParameterValue("line1", ic.cop.comp_name_t);
+                rpt.SetParameterValue("line2", ic.cop.addr1);
+                rpt.SetParameterValue("line3", ic.cop.addr2);
+                rpt.SetParameterValue("hn", hn);
+                rpt.SetParameterValue("name", name);
+                this.crystalReportViewer1.ReportSource = rpt;
+                this.crystalReportViewer1.Refresh();
+            }
+            catch (Exception ex)
+            {
+                chk = ex.Message.ToString();
+                MessageBox.Show("error " + ex.Message, "");
+            }
+        }
+        public void setOpdOrderOPU(String name, String hn)
+        {
+            String chk = "", printerDefault = "";
+            ReportDocument rpt = new ReportDocument();
+            try
+            {
+                rpt.Load("opd_order_opu.rpt");
+                //rpt.SetDataSource(dt);
+                rpt.SetParameterValue("line1", ic.cop.comp_name_t);
+                rpt.SetParameterValue("line2", ic.cop.addr1);
+                rpt.SetParameterValue("line3", ic.cop.addr2);
+                rpt.SetParameterValue("hn", hn);
+                rpt.SetParameterValue("name", name);                
+                this.crystalReportViewer1.ReportSource = rpt;
+                this.crystalReportViewer1.Refresh();
+            }
+            catch (Exception ex)
+            {
+                chk = ex.Message.ToString();
+                MessageBox.Show("error " + ex.Message, "");
+            }
+        }
         public void setOpdAuthenSign(String name, String hn)
         {
             String chk = "", printerDefault = "";

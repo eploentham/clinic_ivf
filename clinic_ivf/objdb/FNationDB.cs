@@ -166,6 +166,7 @@ namespace clinic_ivf.objdb
                     //c.SelectedItem = item.Value;
                     c.SelectedText = item.Text;
                     c.SelectedIndex = i + 1;
+                    break;
                 }
                 i++;
             }

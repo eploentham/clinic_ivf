@@ -997,8 +997,15 @@ namespace clinic_ivf.gui
             menuGw.MenuItems.Add("&Add Appointment", new EventHandler(ContextMenu_Apm_Ptt));
             menuGw.MenuItems.Add("&Cancel Receive", new EventHandler(ContextMenu_Apm_Ptt));
             menuGw.MenuItems.Add("&No Appointment Close Operation", new EventHandler(ContextMenu_NO_Apm_Ptt));
-            menuGw.MenuItems.Add("Print Pre-Operation Check List", new EventHandler(ContextMenu_prn_check_list));
-            menuGw.MenuItems.Add("Print Autherization Form", new EventHandler(ContextMenu_prn_authen_sign));
+            //menuGw.MenuItems.Add("Print Pre-Operation Check List", new EventHandler(ContextMenu_prn_check_list));
+            //menuGw.MenuItems.Add("Print Autherization Form", new EventHandler(ContextMenu_prn_authen_sign));
+            MenuItem addDevice = new MenuItem("[Form Print]");
+            menuGw.MenuItems.Add(addDevice);
+            addDevice.MenuItems.Add(new MenuItem("Pre-Operation Check List", new EventHandler(ContextMenu_prn_check_list)));
+            addDevice.MenuItems.Add(new MenuItem("Autherization Form", new EventHandler(ContextMenu_prn_authen_sign)));
+            addDevice.MenuItems.Add(new MenuItem("Order OPU", new EventHandler(ContextMenu_prn_order_opu)));
+            addDevice.MenuItems.Add(new MenuItem("Order ET, FET", new EventHandler(ContextMenu_prn_order_et_fet)));
+            addDevice.MenuItems.Add(new MenuItem("Post Operation Note", new EventHandler(ContextMenu_prn_operation_note)));
             grfQue.ContextMenu = menuGw;
 
             Color color = ColorTranslator.FromHtml(ic.iniC.grfRowColor);
@@ -1079,6 +1086,42 @@ namespace clinic_ivf.gui
             name = grfQue[grfQue.Row, colPttName] != null ? grfQue[grfQue.Row, colPttName].ToString() : "";
             FrmReport frm = new FrmReport(ic);
             frm.setOpdCheckList(name);
+            frm.ShowDialog(this);
+        }
+        private void ContextMenu_prn_order_opu(object sender, System.EventArgs e)
+        {
+            String chk = "", name = "", vsid = "", pttId = "", hn = "";
+
+            vsid = grfQue[grfQue.Row, colID] != null ? grfQue[grfQue.Row, colID].ToString() : "";
+            pttId = grfQue[grfQue.Row, colPttId] != null ? grfQue[grfQue.Row, colPttId].ToString() : "";
+            name = grfQue[grfQue.Row, colPttName] != null ? grfQue[grfQue.Row, colPttName].ToString() : "";
+            hn = grfQue[grfQue.Row, colPttHn] != null ? grfQue[grfQue.Row, colPttHn].ToString() : "";
+            FrmReport frm = new FrmReport(ic);
+            frm.setOpdOrderOPU(name, hn);
+            frm.ShowDialog(this);
+        }
+        private void ContextMenu_prn_order_et_fet(object sender, System.EventArgs e)
+        {
+            String chk = "", name = "", vsid = "", pttId = "", hn = "";
+
+            vsid = grfQue[grfQue.Row, colID] != null ? grfQue[grfQue.Row, colID].ToString() : "";
+            pttId = grfQue[grfQue.Row, colPttId] != null ? grfQue[grfQue.Row, colPttId].ToString() : "";
+            name = grfQue[grfQue.Row, colPttName] != null ? grfQue[grfQue.Row, colPttName].ToString() : "";
+            hn = grfQue[grfQue.Row, colPttHn] != null ? grfQue[grfQue.Row, colPttHn].ToString() : "";
+            FrmReport frm = new FrmReport(ic);
+            frm.setOpdOrderETFET(name, hn);
+            frm.ShowDialog(this);
+        }
+        private void ContextMenu_prn_operation_note(object sender, System.EventArgs e)
+        {
+            String chk = "", name = "", vsid = "", pttId = "", hn = "";
+
+            vsid = grfQue[grfQue.Row, colID] != null ? grfQue[grfQue.Row, colID].ToString() : "";
+            pttId = grfQue[grfQue.Row, colPttId] != null ? grfQue[grfQue.Row, colPttId].ToString() : "";
+            name = grfQue[grfQue.Row, colPttName] != null ? grfQue[grfQue.Row, colPttName].ToString() : "";
+            hn = grfQue[grfQue.Row, colPttHn] != null ? grfQue[grfQue.Row, colPttHn].ToString() : "";
+            FrmReport frm = new FrmReport(ic);
+            frm.setOpdpostoperationnote(name, hn);
             frm.ShowDialog(this);
         }
         private void ContextMenu_Finish_Apm(object sender, System.EventArgs e)
