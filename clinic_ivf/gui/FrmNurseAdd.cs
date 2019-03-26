@@ -295,6 +295,7 @@ namespace clinic_ivf.gui
         {
             vsOld = ic.ivfDB.ovsDB.selectByPk1(vsid);
             pttOld = ic.ivfDB.pttOldDB.selectByPk1(vsOld.PID);
+            vs = ic.ivfDB.vsDB.selectByPk1(vsid);
             ptt = ic.ivfDB.pttDB.selectByHn(vsOld.PIDS);
             ptt.patient_birthday = pttOld.DateOfBirth;
             txtHn.Value = vsOld.PIDS;
@@ -308,6 +309,10 @@ namespace clinic_ivf.gui
             txtBg.Value = ptt.f_patient_blood_group_id.Equals("2140000005") ? "O" 
                 : ptt.f_patient_blood_group_id.Equals("2140000002") ? "A" : ptt.f_patient_blood_group_id.Equals("2140000003") ? "B" 
                 : ptt.f_patient_blood_group_id.Equals("2140000004") ? "AB" : "ไม่ระบุ";
+            txtVisitHeight.Value = vs.height;
+            txtVisitBW.Value = vs.bw;
+            txtVisitBP.Value = vs.bp;
+            txtVisitPulse.Value = vs.pulse;
             //txtBg.Value = pttOld.b
         }
         private void initGrfOrder()
@@ -585,7 +590,10 @@ namespace clinic_ivf.gui
                     }
                     else
                     {
-                        inc += (price * qty);
+                        if (row["status"].ToString().Equals("package"))
+                        {
+                            inc += (price * qty);
+                        }
                     }
                     //if (i % 2 == 0)
                     //    grfPtt.Rows[i].StyleNew.BackColor = color;
@@ -601,7 +609,7 @@ namespace clinic_ivf.gui
             grfOrder.Cols[colOrdrow1].Visible = false;
             grfOrder.Cols[colOrdlpid].Visible = false;
             grfOrder.Cols[colOrdid].Visible = false;
-            grfOrder.Cols[colOrdstatus].Visible = false;
+            //grfOrder.Cols[colOrdstatus].Visible = false;
             grfOrder.Cols[colOrditmid].Visible = false;
 
             grfOrder.Cols[colOrdUsE].Visible = false;
@@ -632,8 +640,9 @@ namespace clinic_ivf.gui
             UpdateTotals();
             String total = "";
             Decimal total1 = 0;
-            total = grfOrder[grfOrder.Rows.Count - 1, colOrdAmt] != null ? grfOrder[grfOrder.Rows.Count - 1, colOrdAmt].ToString() : "";
-            Decimal.TryParse(total, out total1);
+            //total = grfOrder[grfOrder.Rows.Count - 1, colOrdAmt] != null ? grfOrder[grfOrder.Rows.Count - 1, colOrdAmt].ToString() : "";
+            total1 = inc + ext;
+            //Decimal.TryParse(total, out total1);
             txtTotal.Value = total1.ToString("#,###.00");
             txtInclude.Value = inc.ToString("#,###.00");
             txtExtra.Value = ext.ToString("#,###.00");

@@ -113,16 +113,26 @@
             this.btnRxSetOrder = new C1.Win.C1Input.C1Button();
             this.pnRxSetD = new System.Windows.Forms.Panel();
             this.pnOrder11 = new System.Windows.Forms.Panel();
+            this.tcOrd = new C1.Win.C1Command.C1DockingTab();
+            this.tabOrd = new C1.Win.C1Command.C1DockingTabPage();
+            this.pnOrder = new System.Windows.Forms.Panel();
+            this.tabPkg = new C1.Win.C1Command.C1DockingTabPage();
+            this.pnPkg = new System.Windows.Forms.Panel();
             this.tabLab = new C1.Win.C1Command.C1DockingTabPage();
             this.tabApp = new C1.Win.C1Command.C1DockingTabPage();
             this.tabCert = new C1.Win.C1Command.C1DockingTabPage();
             this.sB = new System.Windows.Forms.StatusStrip();
             this.sB1 = new System.Windows.Forms.ToolStripStatusLabel();
-            this.tcOrd = new C1.Win.C1Command.C1DockingTab();
-            this.tabOrd = new C1.Win.C1Command.C1DockingTabPage();
-            this.tabPkg = new C1.Win.C1Command.C1DockingTabPage();
-            this.pnOrder = new System.Windows.Forms.Panel();
-            this.pnPkg = new System.Windows.Forms.Panel();
+            this.label62 = new System.Windows.Forms.Label();
+            this.txtVisitHeight = new C1.Win.C1Input.C1TextBox();
+            this.label61 = new System.Windows.Forms.Label();
+            this.txtVisitBW = new C1.Win.C1Input.C1TextBox();
+            this.label60 = new System.Windows.Forms.Label();
+            this.txtVisitBP = new C1.Win.C1Input.C1TextBox();
+            this.label58 = new System.Windows.Forms.Label();
+            this.txtVisitPulse = new C1.Win.C1Input.C1TextBox();
+            this.label35 = new System.Windows.Forms.Label();
+            this.label29 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.theme1)).BeginInit();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.cboLangSticker)).BeginInit();
@@ -188,11 +198,15 @@
             this.panel5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btnRxSetOrder)).BeginInit();
             this.pnOrder11.SuspendLayout();
-            this.sB.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tcOrd)).BeginInit();
             this.tcOrd.SuspendLayout();
             this.tabOrd.SuspendLayout();
             this.tabPkg.SuspendLayout();
+            this.sB.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtVisitHeight)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtVisitBW)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtVisitBP)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtVisitPulse)).BeginInit();
             this.SuspendLayout();
             // 
             // theme1
@@ -202,6 +216,16 @@
             // groupBox1
             // 
             this.groupBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.groupBox1.Controls.Add(this.label29);
+            this.groupBox1.Controls.Add(this.label35);
+            this.groupBox1.Controls.Add(this.label58);
+            this.groupBox1.Controls.Add(this.txtVisitPulse);
+            this.groupBox1.Controls.Add(this.label60);
+            this.groupBox1.Controls.Add(this.txtVisitBP);
+            this.groupBox1.Controls.Add(this.label61);
+            this.groupBox1.Controls.Add(this.txtVisitBW);
+            this.groupBox1.Controls.Add(this.label62);
+            this.groupBox1.Controls.Add(this.txtVisitHeight);
             this.groupBox1.Controls.Add(this.label19);
             this.groupBox1.Controls.Add(this.cboLangSticker);
             this.groupBox1.Controls.Add(this.label18);
@@ -237,7 +261,7 @@
             this.groupBox1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
             this.groupBox1.Location = new System.Drawing.Point(0, 0);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(1267, 99);
+            this.groupBox1.Size = new System.Drawing.Size(1483, 99);
             this.groupBox1.TabIndex = 529;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Patient";
@@ -679,7 +703,7 @@
             this.panel1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
             this.panel1.Location = new System.Drawing.Point(0, 99);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1267, 650);
+            this.panel1.Size = new System.Drawing.Size(1483, 650);
             this.panel1.TabIndex = 530;
             this.theme1.SetTheme(this.panel1, "(default)");
             // 
@@ -696,7 +720,7 @@
             this.tC.Location = new System.Drawing.Point(0, 0);
             this.tC.Name = "tC";
             this.tC.SelectedIndex = 2;
-            this.tC.Size = new System.Drawing.Size(1267, 650);
+            this.tC.Size = new System.Drawing.Size(1483, 650);
             this.tC.TabIndex = 1;
             this.tC.TabSizeMode = C1.Win.C1Command.TabSizeModeEnum.Fit;
             this.tC.TabsShowFocusCues = false;
@@ -709,7 +733,7 @@
             this.tabDrug.Controls.Add(this.splitContainer1);
             this.tabDrug.Location = new System.Drawing.Point(1, 24);
             this.tabDrug.Name = "tabDrug";
-            this.tabDrug.Size = new System.Drawing.Size(1265, 625);
+            this.tabDrug.Size = new System.Drawing.Size(1481, 625);
             this.tabDrug.TabIndex = 0;
             this.tabDrug.Text = "Medicine &Supplies Lab";
             // 
@@ -734,8 +758,8 @@
             this.splitContainer1.Panel2.Controls.Add(this.pnOrder11);
             this.splitContainer1.Panel2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
             this.theme1.SetTheme(this.splitContainer1.Panel2, "(default)");
-            this.splitContainer1.Size = new System.Drawing.Size(1265, 625);
-            this.splitContainer1.SplitterDistance = 611;
+            this.splitContainer1.Size = new System.Drawing.Size(1481, 625);
+            this.splitContainer1.SplitterDistance = 715;
             this.splitContainer1.TabIndex = 0;
             this.theme1.SetTheme(this.splitContainer1, "(default)");
             // 
@@ -747,7 +771,7 @@
             this.pnOrder1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
             this.pnOrder1.Location = new System.Drawing.Point(0, 0);
             this.pnOrder1.Name = "pnOrder1";
-            this.pnOrder1.Size = new System.Drawing.Size(611, 625);
+            this.pnOrder1.Size = new System.Drawing.Size(715, 625);
             this.pnOrder1.TabIndex = 0;
             this.theme1.SetTheme(this.pnOrder1, "(default)");
             // 
@@ -770,7 +794,7 @@
             this.tabOrder.Location = new System.Drawing.Point(0, 0);
             this.tabOrder.Name = "tabOrder";
             this.tabOrder.SelectedIndex = 6;
-            this.tabOrder.Size = new System.Drawing.Size(611, 625);
+            this.tabOrder.Size = new System.Drawing.Size(715, 625);
             this.tabOrder.TabIndex = 0;
             this.tabOrder.TabSizeMode = C1.Win.C1Command.TabSizeModeEnum.Fit;
             this.tabOrder.TabsShowFocusCues = false;
@@ -783,7 +807,7 @@
             this.tabPackage.Controls.Add(this.splitContainer2);
             this.tabPackage.Location = new System.Drawing.Point(25, 1);
             this.tabPackage.Name = "tabPackage";
-            this.tabPackage.Size = new System.Drawing.Size(585, 623);
+            this.tabPackage.Size = new System.Drawing.Size(689, 623);
             this.tabPackage.TabIndex = 7;
             this.tabPackage.Text = "Package";
             // 
@@ -809,7 +833,7 @@
             this.splitContainer2.Panel2.Controls.Add(this.tcPackage);
             this.splitContainer2.Panel2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
             this.theme1.SetTheme(this.splitContainer2.Panel2, "(default)");
-            this.splitContainer2.Size = new System.Drawing.Size(585, 623);
+            this.splitContainer2.Size = new System.Drawing.Size(689, 623);
             this.splitContainer2.SplitterDistance = 290;
             this.splitContainer2.TabIndex = 0;
             this.theme1.SetTheme(this.splitContainer2, "(default)");
@@ -821,7 +845,7 @@
             this.pnPackage.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
             this.pnPackage.Location = new System.Drawing.Point(0, 0);
             this.pnPackage.Name = "pnPackage";
-            this.pnPackage.Size = new System.Drawing.Size(585, 290);
+            this.pnPackage.Size = new System.Drawing.Size(689, 290);
             this.pnPackage.TabIndex = 0;
             this.theme1.SetTheme(this.pnPackage, "(default)");
             // 
@@ -837,7 +861,7 @@
             this.tcPackage.Location = new System.Drawing.Point(0, 0);
             this.tcPackage.Name = "tcPackage";
             this.tcPackage.SelectedIndex = 2;
-            this.tcPackage.Size = new System.Drawing.Size(585, 329);
+            this.tcPackage.Size = new System.Drawing.Size(689, 329);
             this.tcPackage.TabIndex = 1;
             this.tcPackage.TabSizeMode = C1.Win.C1Command.TabSizeModeEnum.Fit;
             this.tcPackage.TabsShowFocusCues = false;
@@ -850,7 +874,7 @@
             this.tabPkgOrder.Controls.Add(this.panel2);
             this.tabPkgOrder.Location = new System.Drawing.Point(1, 25);
             this.tabPkgOrder.Name = "tabPkgOrder";
-            this.tabPkgOrder.Size = new System.Drawing.Size(583, 303);
+            this.tabPkgOrder.Size = new System.Drawing.Size(687, 303);
             this.tabPkgOrder.TabIndex = 0;
             this.tabPkgOrder.Text = "สั่งการ";
             // 
@@ -877,7 +901,7 @@
             this.panel2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
             this.panel2.Location = new System.Drawing.Point(0, 0);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(583, 303);
+            this.panel2.Size = new System.Drawing.Size(687, 303);
             this.panel2.TabIndex = 0;
             this.theme1.SetTheme(this.panel2, "(default)");
             // 
@@ -1106,7 +1130,7 @@
             this.tabPkgDetail.Controls.Add(this.pnPackageD);
             this.tabPkgDetail.Location = new System.Drawing.Point(1, 25);
             this.tabPkgDetail.Name = "tabPkgDetail";
-            this.tabPkgDetail.Size = new System.Drawing.Size(583, 303);
+            this.tabPkgDetail.Size = new System.Drawing.Size(687, 303);
             this.tabPkgDetail.TabIndex = 1;
             this.tabPkgDetail.Text = "รายละเอียด";
             // 
@@ -1117,7 +1141,7 @@
             this.pnPackageD.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
             this.pnPackageD.Location = new System.Drawing.Point(0, 0);
             this.pnPackageD.Name = "pnPackageD";
-            this.pnPackageD.Size = new System.Drawing.Size(583, 303);
+            this.pnPackageD.Size = new System.Drawing.Size(687, 303);
             this.pnPackageD.TabIndex = 1;
             this.theme1.SetTheme(this.pnPackageD, "(default)");
             // 
@@ -1125,7 +1149,7 @@
             // 
             this.tabPkgOld.Location = new System.Drawing.Point(1, 25);
             this.tabPkgOld.Name = "tabPkgOld";
-            this.tabPkgOld.Size = new System.Drawing.Size(583, 303);
+            this.tabPkgOld.Size = new System.Drawing.Size(687, 303);
             this.tabPkgOld.TabIndex = 2;
             this.tabPkgOld.Text = "Package เก่า";
             // 
@@ -1135,7 +1159,7 @@
             this.tabBloodLab.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
             this.tabBloodLab.Location = new System.Drawing.Point(25, 1);
             this.tabBloodLab.Name = "tabBloodLab";
-            this.tabBloodLab.Size = new System.Drawing.Size(585, 623);
+            this.tabBloodLab.Size = new System.Drawing.Size(689, 623);
             this.tabBloodLab.TabIndex = 0;
             this.tabBloodLab.Text = "Blood Lab";
             // 
@@ -1146,7 +1170,7 @@
             this.pnBloodLab.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
             this.pnBloodLab.Location = new System.Drawing.Point(0, 0);
             this.pnBloodLab.Name = "pnBloodLab";
-            this.pnBloodLab.Size = new System.Drawing.Size(585, 623);
+            this.pnBloodLab.Size = new System.Drawing.Size(689, 623);
             this.pnBloodLab.TabIndex = 0;
             this.theme1.SetTheme(this.pnBloodLab, "(default)");
             // 
@@ -1157,7 +1181,7 @@
             this.tabSpermLab.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
             this.tabSpermLab.Location = new System.Drawing.Point(25, 1);
             this.tabSpermLab.Name = "tabSpermLab";
-            this.tabSpermLab.Size = new System.Drawing.Size(585, 623);
+            this.tabSpermLab.Size = new System.Drawing.Size(689, 623);
             this.tabSpermLab.TabIndex = 1;
             this.tabSpermLab.Text = "Sperm Lab";
             // 
@@ -1168,7 +1192,7 @@
             this.pnSperm.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
             this.pnSperm.Location = new System.Drawing.Point(0, 0);
             this.pnSperm.Name = "pnSperm";
-            this.pnSperm.Size = new System.Drawing.Size(585, 623);
+            this.pnSperm.Size = new System.Drawing.Size(689, 623);
             this.pnSperm.TabIndex = 1;
             this.theme1.SetTheme(this.pnSperm, "(default)");
             // 
@@ -1179,7 +1203,7 @@
             this.panel3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
             this.panel3.Location = new System.Drawing.Point(0, 0);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(585, 623);
+            this.panel3.Size = new System.Drawing.Size(689, 623);
             this.panel3.TabIndex = 0;
             this.theme1.SetTheme(this.panel3, "(default)");
             // 
@@ -1189,7 +1213,7 @@
             this.tabEmbryoLab.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
             this.tabEmbryoLab.Location = new System.Drawing.Point(25, 1);
             this.tabEmbryoLab.Name = "tabEmbryoLab";
-            this.tabEmbryoLab.Size = new System.Drawing.Size(585, 623);
+            this.tabEmbryoLab.Size = new System.Drawing.Size(689, 623);
             this.tabEmbryoLab.TabIndex = 2;
             this.tabEmbryoLab.Text = "Embryo Lab";
             // 
@@ -1201,7 +1225,7 @@
             this.panel4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
             this.panel4.Location = new System.Drawing.Point(0, 0);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(585, 623);
+            this.panel4.Size = new System.Drawing.Size(689, 623);
             this.panel4.TabIndex = 0;
             this.theme1.SetTheme(this.panel4, "(default)");
             // 
@@ -1212,7 +1236,7 @@
             this.pnEmbryo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
             this.pnEmbryo.Location = new System.Drawing.Point(0, 0);
             this.pnEmbryo.Name = "pnEmbryo";
-            this.pnEmbryo.Size = new System.Drawing.Size(585, 623);
+            this.pnEmbryo.Size = new System.Drawing.Size(689, 623);
             this.pnEmbryo.TabIndex = 0;
             this.theme1.SetTheme(this.pnEmbryo, "(default)");
             // 
@@ -1222,7 +1246,7 @@
             this.tabGeneticLab.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
             this.tabGeneticLab.Location = new System.Drawing.Point(25, 1);
             this.tabGeneticLab.Name = "tabGeneticLab";
-            this.tabGeneticLab.Size = new System.Drawing.Size(585, 623);
+            this.tabGeneticLab.Size = new System.Drawing.Size(689, 623);
             this.tabGeneticLab.TabIndex = 3;
             this.tabGeneticLab.Text = "Genetic Lab";
             // 
@@ -1233,7 +1257,7 @@
             this.pnGenetic.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
             this.pnGenetic.Location = new System.Drawing.Point(0, 0);
             this.pnGenetic.Name = "pnGenetic";
-            this.pnGenetic.Size = new System.Drawing.Size(585, 623);
+            this.pnGenetic.Size = new System.Drawing.Size(689, 623);
             this.pnGenetic.TabIndex = 0;
             this.theme1.SetTheme(this.pnGenetic, "(default)");
             // 
@@ -1243,7 +1267,7 @@
             this.tabSpecialItem.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
             this.tabSpecialItem.Location = new System.Drawing.Point(25, 1);
             this.tabSpecialItem.Name = "tabSpecialItem";
-            this.tabSpecialItem.Size = new System.Drawing.Size(585, 623);
+            this.tabSpecialItem.Size = new System.Drawing.Size(689, 623);
             this.tabSpecialItem.TabIndex = 4;
             this.tabSpecialItem.Text = "Special Item";
             // 
@@ -1254,7 +1278,7 @@
             this.pnSpecial.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
             this.pnSpecial.Location = new System.Drawing.Point(0, 0);
             this.pnSpecial.Name = "pnSpecial";
-            this.pnSpecial.Size = new System.Drawing.Size(585, 623);
+            this.pnSpecial.Size = new System.Drawing.Size(689, 623);
             this.pnSpecial.TabIndex = 0;
             this.theme1.SetTheme(this.pnSpecial, "(default)");
             // 
@@ -1264,7 +1288,7 @@
             this.tabRx.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
             this.tabRx.Location = new System.Drawing.Point(25, 1);
             this.tabRx.Name = "tabRx";
-            this.tabRx.Size = new System.Drawing.Size(585, 623);
+            this.tabRx.Size = new System.Drawing.Size(689, 623);
             this.tabRx.TabIndex = 5;
             this.tabRx.Text = "Rx Item";
             // 
@@ -1275,7 +1299,7 @@
             this.pnRx.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
             this.pnRx.Location = new System.Drawing.Point(0, 0);
             this.pnRx.Name = "pnRx";
-            this.pnRx.Size = new System.Drawing.Size(585, 623);
+            this.pnRx.Size = new System.Drawing.Size(689, 623);
             this.pnRx.TabIndex = 0;
             this.theme1.SetTheme(this.pnRx, "(default)");
             // 
@@ -1284,7 +1308,7 @@
             this.tabRxSet.Controls.Add(this.splitContainer3);
             this.tabRxSet.Location = new System.Drawing.Point(25, 1);
             this.tabRxSet.Name = "tabRxSet";
-            this.tabRxSet.Size = new System.Drawing.Size(585, 623);
+            this.tabRxSet.Size = new System.Drawing.Size(689, 623);
             this.tabRxSet.TabIndex = 6;
             this.tabRxSet.Text = "Rx Set ยาชุด";
             // 
@@ -1311,7 +1335,7 @@
             this.splitContainer3.Panel2.Controls.Add(this.pnRxSetD);
             this.splitContainer3.Panel2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
             this.theme1.SetTheme(this.splitContainer3.Panel2, "(default)");
-            this.splitContainer3.Size = new System.Drawing.Size(585, 623);
+            this.splitContainer3.Size = new System.Drawing.Size(689, 623);
             this.splitContainer3.SplitterDistance = 274;
             this.splitContainer3.TabIndex = 0;
             this.theme1.SetTheme(this.splitContainer3, "(default)");
@@ -1323,7 +1347,7 @@
             this.pnRxSet.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
             this.pnRxSet.Location = new System.Drawing.Point(0, 0);
             this.pnRxSet.Name = "pnRxSet";
-            this.pnRxSet.Size = new System.Drawing.Size(585, 274);
+            this.pnRxSet.Size = new System.Drawing.Size(689, 274);
             this.pnRxSet.TabIndex = 0;
             this.theme1.SetTheme(this.pnRxSet, "(default)");
             // 
@@ -1335,7 +1359,7 @@
             this.panel5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
             this.panel5.Location = new System.Drawing.Point(0, 305);
             this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(585, 40);
+            this.panel5.Size = new System.Drawing.Size(689, 40);
             this.panel5.TabIndex = 2;
             this.theme1.SetTheme(this.panel5, "(default)");
             // 
@@ -1360,7 +1384,7 @@
             this.pnRxSetD.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
             this.pnRxSetD.Location = new System.Drawing.Point(0, 0);
             this.pnRxSetD.Name = "pnRxSetD";
-            this.pnRxSetD.Size = new System.Drawing.Size(585, 305);
+            this.pnRxSetD.Size = new System.Drawing.Size(689, 305);
             this.pnRxSetD.TabIndex = 0;
             this.theme1.SetTheme(this.pnRxSetD, "(default)");
             // 
@@ -1372,49 +1396,9 @@
             this.pnOrder11.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
             this.pnOrder11.Location = new System.Drawing.Point(0, 0);
             this.pnOrder11.Name = "pnOrder11";
-            this.pnOrder11.Size = new System.Drawing.Size(650, 625);
+            this.pnOrder11.Size = new System.Drawing.Size(762, 625);
             this.pnOrder11.TabIndex = 0;
             this.theme1.SetTheme(this.pnOrder11, "(default)");
-            // 
-            // tabLab
-            // 
-            this.tabLab.Location = new System.Drawing.Point(1, 24);
-            this.tabLab.Name = "tabLab";
-            this.tabLab.Size = new System.Drawing.Size(1265, 625);
-            this.tabLab.TabIndex = 1;
-            this.tabLab.Text = "Order LAB";
-            // 
-            // tabApp
-            // 
-            this.tabApp.Location = new System.Drawing.Point(1, 24);
-            this.tabApp.Name = "tabApp";
-            this.tabApp.Size = new System.Drawing.Size(1265, 625);
-            this.tabApp.TabIndex = 2;
-            this.tabApp.Text = "Appointment";
-            // 
-            // tabCert
-            // 
-            this.tabCert.Location = new System.Drawing.Point(1, 24);
-            this.tabCert.Name = "tabCert";
-            this.tabCert.Size = new System.Drawing.Size(1265, 625);
-            this.tabCert.TabIndex = 3;
-            this.tabCert.Text = "Medical Certificate";
-            // 
-            // sB
-            // 
-            this.sB.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.sB1});
-            this.sB.Location = new System.Drawing.Point(0, 749);
-            this.sB.Name = "sB";
-            this.sB.Size = new System.Drawing.Size(1267, 22);
-            this.sB.TabIndex = 528;
-            this.sB.Text = "statusStrip1";
-            // 
-            // sB1
-            // 
-            this.sB1.Name = "sB1";
-            this.sB1.Size = new System.Drawing.Size(118, 17);
-            this.sB1.Text = "toolStripStatusLabel1";
             // 
             // tcOrd
             // 
@@ -1426,7 +1410,7 @@
             this.tcOrd.HotTrack = true;
             this.tcOrd.Location = new System.Drawing.Point(0, 0);
             this.tcOrd.Name = "tcOrd";
-            this.tcOrd.Size = new System.Drawing.Size(650, 625);
+            this.tcOrd.Size = new System.Drawing.Size(762, 625);
             this.tcOrd.TabIndex = 0;
             this.tcOrd.TabSizeMode = C1.Win.C1Command.TabSizeModeEnum.Fit;
             this.tcOrd.TabsShowFocusCues = false;
@@ -1439,18 +1423,9 @@
             this.tabOrd.Controls.Add(this.pnOrder);
             this.tabOrd.Location = new System.Drawing.Point(1, 24);
             this.tabOrd.Name = "tabOrd";
-            this.tabOrd.Size = new System.Drawing.Size(648, 600);
+            this.tabOrd.Size = new System.Drawing.Size(760, 600);
             this.tabOrd.TabIndex = 0;
             this.tabOrd.Text = "Order";
-            // 
-            // tabPkg
-            // 
-            this.tabPkg.Controls.Add(this.pnPkg);
-            this.tabPkg.Location = new System.Drawing.Point(1, 24);
-            this.tabPkg.Name = "tabPkg";
-            this.tabPkg.Size = new System.Drawing.Size(648, 600);
-            this.tabPkg.TabIndex = 1;
-            this.tabPkg.Text = "Package";
             // 
             // pnOrder
             // 
@@ -1459,9 +1434,18 @@
             this.pnOrder.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
             this.pnOrder.Location = new System.Drawing.Point(0, 0);
             this.pnOrder.Name = "pnOrder";
-            this.pnOrder.Size = new System.Drawing.Size(648, 600);
+            this.pnOrder.Size = new System.Drawing.Size(760, 600);
             this.pnOrder.TabIndex = 531;
             this.theme1.SetTheme(this.pnOrder, "(default)");
+            // 
+            // tabPkg
+            // 
+            this.tabPkg.Controls.Add(this.pnPkg);
+            this.tabPkg.Location = new System.Drawing.Point(1, 24);
+            this.tabPkg.Name = "tabPkg";
+            this.tabPkg.Size = new System.Drawing.Size(760, 600);
+            this.tabPkg.TabIndex = 1;
+            this.tabPkg.Text = "Package";
             // 
             // pnPkg
             // 
@@ -1470,15 +1454,185 @@
             this.pnPkg.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
             this.pnPkg.Location = new System.Drawing.Point(0, 0);
             this.pnPkg.Name = "pnPkg";
-            this.pnPkg.Size = new System.Drawing.Size(648, 600);
+            this.pnPkg.Size = new System.Drawing.Size(760, 600);
             this.pnPkg.TabIndex = 0;
             this.theme1.SetTheme(this.pnPkg, "(default)");
+            // 
+            // tabLab
+            // 
+            this.tabLab.Location = new System.Drawing.Point(1, 24);
+            this.tabLab.Name = "tabLab";
+            this.tabLab.Size = new System.Drawing.Size(1481, 625);
+            this.tabLab.TabIndex = 1;
+            this.tabLab.Text = "Order LAB";
+            // 
+            // tabApp
+            // 
+            this.tabApp.Location = new System.Drawing.Point(1, 24);
+            this.tabApp.Name = "tabApp";
+            this.tabApp.Size = new System.Drawing.Size(1481, 625);
+            this.tabApp.TabIndex = 2;
+            this.tabApp.Text = "Appointment";
+            // 
+            // tabCert
+            // 
+            this.tabCert.Location = new System.Drawing.Point(1, 24);
+            this.tabCert.Name = "tabCert";
+            this.tabCert.Size = new System.Drawing.Size(1481, 625);
+            this.tabCert.TabIndex = 3;
+            this.tabCert.Text = "Medical Certificate";
+            // 
+            // sB
+            // 
+            this.sB.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.sB1});
+            this.sB.Location = new System.Drawing.Point(0, 749);
+            this.sB.Name = "sB";
+            this.sB.Size = new System.Drawing.Size(1483, 22);
+            this.sB.TabIndex = 528;
+            this.sB.Text = "statusStrip1";
+            // 
+            // sB1
+            // 
+            this.sB1.Name = "sB1";
+            this.sB1.Size = new System.Drawing.Size(118, 17);
+            this.sB1.Text = "toolStripStatusLabel1";
+            // 
+            // label62
+            // 
+            this.label62.AutoSize = true;
+            this.label62.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.label62.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label62.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.label62.Location = new System.Drawing.Point(1263, 12);
+            this.label62.Name = "label62";
+            this.label62.Size = new System.Drawing.Size(53, 16);
+            this.label62.TabIndex = 756;
+            this.label62.Text = "Height :";
+            this.theme1.SetTheme(this.label62, "(default)");
+            // 
+            // txtVisitHeight
+            // 
+            this.txtVisitHeight.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtVisitHeight.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
+            this.txtVisitHeight.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.txtVisitHeight.Location = new System.Drawing.Point(1322, 10);
+            this.txtVisitHeight.Name = "txtVisitHeight";
+            this.txtVisitHeight.Size = new System.Drawing.Size(72, 20);
+            this.txtVisitHeight.TabIndex = 755;
+            this.txtVisitHeight.Tag = null;
+            this.theme1.SetTheme(this.txtVisitHeight, "(default)");
+            this.txtVisitHeight.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            // 
+            // label61
+            // 
+            this.label61.AutoSize = true;
+            this.label61.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.label61.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label61.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.label61.Location = new System.Drawing.Point(1263, 34);
+            this.label61.Name = "label61";
+            this.label61.Size = new System.Drawing.Size(36, 16);
+            this.label61.TabIndex = 758;
+            this.label61.Text = "BW :";
+            this.theme1.SetTheme(this.label61, "(default)");
+            // 
+            // txtVisitBW
+            // 
+            this.txtVisitBW.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtVisitBW.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
+            this.txtVisitBW.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.txtVisitBW.Location = new System.Drawing.Point(1322, 31);
+            this.txtVisitBW.Name = "txtVisitBW";
+            this.txtVisitBW.Size = new System.Drawing.Size(72, 20);
+            this.txtVisitBW.TabIndex = 757;
+            this.txtVisitBW.Tag = null;
+            this.theme1.SetTheme(this.txtVisitBW, "(default)");
+            this.txtVisitBW.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            // 
+            // label60
+            // 
+            this.label60.AutoSize = true;
+            this.label60.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.label60.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label60.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.label60.Location = new System.Drawing.Point(1263, 55);
+            this.label60.Name = "label60";
+            this.label60.Size = new System.Drawing.Size(32, 16);
+            this.label60.TabIndex = 760;
+            this.label60.Text = "BP :";
+            this.theme1.SetTheme(this.label60, "(default)");
+            // 
+            // txtVisitBP
+            // 
+            this.txtVisitBP.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtVisitBP.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
+            this.txtVisitBP.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.txtVisitBP.Location = new System.Drawing.Point(1322, 52);
+            this.txtVisitBP.Name = "txtVisitBP";
+            this.txtVisitBP.Size = new System.Drawing.Size(72, 20);
+            this.txtVisitBP.TabIndex = 759;
+            this.txtVisitBP.Tag = null;
+            this.theme1.SetTheme(this.txtVisitBP, "(default)");
+            this.txtVisitBP.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            // 
+            // label58
+            // 
+            this.label58.AutoSize = true;
+            this.label58.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.label58.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label58.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.label58.Location = new System.Drawing.Point(1263, 76);
+            this.label58.Name = "label58";
+            this.label58.Size = new System.Drawing.Size(48, 16);
+            this.label58.TabIndex = 762;
+            this.label58.Text = "Pulse :";
+            this.theme1.SetTheme(this.label58, "(default)");
+            // 
+            // txtVisitPulse
+            // 
+            this.txtVisitPulse.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtVisitPulse.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
+            this.txtVisitPulse.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.txtVisitPulse.Location = new System.Drawing.Point(1322, 73);
+            this.txtVisitPulse.Name = "txtVisitPulse";
+            this.txtVisitPulse.Size = new System.Drawing.Size(72, 20);
+            this.txtVisitPulse.TabIndex = 761;
+            this.txtVisitPulse.Tag = null;
+            this.theme1.SetTheme(this.txtVisitPulse, "(default)");
+            this.txtVisitPulse.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            // 
+            // label35
+            // 
+            this.label35.AutoSize = true;
+            this.label35.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.label35.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label35.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.label35.Location = new System.Drawing.Point(1400, 76);
+            this.label35.Name = "label35";
+            this.label35.Size = new System.Drawing.Size(51, 16);
+            this.label35.TabIndex = 763;
+            this.label35.Text = "ครั้ง/นาที";
+            this.theme1.SetTheme(this.label35, "(default)");
+            // 
+            // label29
+            // 
+            this.label29.AutoSize = true;
+            this.label29.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.label29.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label29.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.label29.Location = new System.Drawing.Point(1399, 54);
+            this.label29.Name = "label29";
+            this.label29.Size = new System.Drawing.Size(52, 16);
+            this.label29.TabIndex = 764;
+            this.label29.Text = "mm/Hg";
+            this.theme1.SetTheme(this.label29, "(default)");
             // 
             // FrmNurseAdd
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1267, 771);
+            this.ClientSize = new System.Drawing.Size(1483, 771);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.sB);
@@ -1552,12 +1706,16 @@
             this.panel5.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.btnRxSetOrder)).EndInit();
             this.pnOrder11.ResumeLayout(false);
-            this.sB.ResumeLayout(false);
-            this.sB.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tcOrd)).EndInit();
             this.tcOrd.ResumeLayout(false);
             this.tabOrd.ResumeLayout(false);
             this.tabPkg.ResumeLayout(false);
+            this.sB.ResumeLayout(false);
+            this.sB.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtVisitHeight)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtVisitBW)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtVisitBP)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtVisitPulse)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1660,5 +1818,15 @@
         private C1.Win.C1Command.C1DockingTabPage tabPkg;
         private System.Windows.Forms.Panel pnOrder;
         private System.Windows.Forms.Panel pnPkg;
+        private System.Windows.Forms.Label label62;
+        private C1.Win.C1Input.C1TextBox txtVisitHeight;
+        private System.Windows.Forms.Label label61;
+        private C1.Win.C1Input.C1TextBox txtVisitBW;
+        private System.Windows.Forms.Label label60;
+        private C1.Win.C1Input.C1TextBox txtVisitBP;
+        private System.Windows.Forms.Label label58;
+        private C1.Win.C1Input.C1TextBox txtVisitPulse;
+        private System.Windows.Forms.Label label35;
+        private System.Windows.Forms.Label label29;
     }
 }
