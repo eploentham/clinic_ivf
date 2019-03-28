@@ -132,6 +132,13 @@ ALTER TABLE `ivf_101`.`t_note`
 ADD COLUMN `status_all` VARCHAR(45) NULL AFTER `b_service_point_id`;
 
 
+ALTER TABLE `ivf_101`.`t_patient` 
+ADD COLUMN `doctor_id` INT NULL AFTER `patient_hn_couple`;
+
+ALTER TABLE `ivf_101`.`t_visit` 
+ADD COLUMN `doctor_id` INT NULL AFTER `patient_hn_male`;
+
+
 
 
 delete from JobPx;

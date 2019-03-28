@@ -109,5 +109,6 @@ namespace clinic_ivf.object1
         public String pulse { get; set; }
         public String status_nurse { get; set; }        //patient_hn_male
         public String patient_hn_male { get; set; }        //
+        public String doctor_id { get; set; }
     }
 }

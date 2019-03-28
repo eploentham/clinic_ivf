@@ -32,13 +32,14 @@ namespace clinic_ivf.gui
         Color bg, fc;
         Font ff, ffB;
 
-        C1FlexGrid grfBloodLab, grfSperm, grfEmbryo, grfGenetic, grfSpecial, grfRx, grfRxSet, grfOrder, grfPackage, grfPackageD, grfRxSetD;
+        C1FlexGrid grfBloodLab, grfSperm, grfEmbryo, grfGenetic, grfSpecial, grfRx, grfRxSet, grfOrder, grfPackage, grfPackageD, grfRxSetD, grfNote;
         C1SuperTooltip stt;
         C1SuperErrorProvider sep;
 
         int colBlId = 1, colBlName = 2, colBlQty=3, colBlPrice = 4, colBlInclude = 5, colBlRemark=6;
         int colPkgdId = 1, colPkgId = 2, colPkgType = 3, colPkgItmName = 4, colPkgItmId = 5, colPkgQty = 6;
         int colRxdId = 1, colRxName = 2, colRxQty = 3, colRxPrice=4, colRxInclude=5, colRxRemark=6, colRxUsE=7, colRxUsT=8, colRxId = 9, colRxItmId = 10;
+        int colNoteId = 1, colNote = 2, colNoteStatusAll = 3;
 
         int colOrderId = 1, colOrderVn = 2, colOrderLID = 3, colOrderExtra = 4, colOrderPrice = 5, colOrderStatus=6;
         int colOrderPID = 7, colOrderPIDS = 8, colOrderLName = 9, colOrderSP1V = 10, colOrderSP2V = 11, colOrderSP3V = 12;
@@ -88,6 +89,7 @@ namespace clinic_ivf.gui
             btnRxSetOrder.Click += BtnRxSetOrder_Click;
             btnFinish.Click += BtnFinish_Click;
             cboLangSticker.SelectedIndexChanged += CboLangSticker_SelectedIndexChanged;
+            btnNoteAdd.Click += BtnNoteAdd_Click;
 
             setControl(vsid);
             //btnNew.Click += BtnNew_Click;
@@ -112,6 +114,8 @@ namespace clinic_ivf.gui
             setGrfRxSet();
             setGrfpackage();
             setGrfOrder(txtVn.Text);
+            initGrfNote();
+            setGrfNote();
             if (flagedit.Equals("view"))
             {
                 btnPkgOrder.Enabled = false;
@@ -119,7 +123,34 @@ namespace clinic_ivf.gui
             //initGrfPtt();
             //setGrfPtt("");
         }
-
+        private void BtnNoteAdd_Click(object sender, EventArgs e)
+        {
+            //throw new NotImplementedException();
+            ic.cStf.staff_id = "";
+            FrmPasswordConfirm frm = new FrmPasswordConfirm(ic);
+            frm.ShowDialog(this);
+            if (!ic.cStf.staff_id.Equals(""))
+            {
+                Note1 note = new Note1();
+                note.active = "1";
+                note.date_cancel = "";
+                note.date_create = "";
+                note.date_modi = "";
+                note.note_1 = txtNote.Text;
+                note.note_2 = "";
+                note.note_id = txtNoteId.Text;
+                note.remark = "";
+                note.t_patient_id = ptt.t_patient_id;
+                note.user_cancel = "";
+                note.user_create = "";
+                note.user_modi = "";
+                note.status_all = chkNoteAll.Checked ? "1" : "0";
+                note.b_service_point_id = "2120000000";
+                ic.ivfDB.noteDB.insertNote(note, ic.cStf.staff_id);
+                setGrfNote();
+                txtNote.Value = "";
+            }
+        }
         private void CboLangSticker_SelectedIndexChanged(object sender, EventArgs e)
         {
             //throw new NotImplementedException();
@@ -284,6 +315,69 @@ namespace clinic_ivf.gui
             {
 
             }
+        }
+        private void initGrfNote()
+        {
+            grfNote = new C1FlexGrid();
+            grfNote.Font = fEdit;
+            grfNote.Dock = System.Windows.Forms.DockStyle.Fill;
+            grfNote.Location = new System.Drawing.Point(0, 0);
+
+            //FilterRow fr = new FilterRow(grfExpn);
+
+            //grfImg.AfterRowColChange += GrfImg_AfterRowColChange;
+            //grfImg.MouseDown += GrfImg_MouseDown;
+            grfNote.DoubleClick += GrfNote_DoubleClick;
+            //grfExpnC.CellChanged += new C1.Win.C1FlexGrid.RowColEventHandler(this.grfDept_CellChanged);
+            //ContextMenu menuGw = new ContextMenu();
+            //menuGw.MenuItems.Add("Upload รูปบัตรประชาชน", new EventHandler(ContextMenu_grfimg_upload_ptt));
+            //menuGw.MenuItems.Add("Upload สำเนาบัตรประชาชน ที่มีลายเซ็น", new EventHandler(ContextMenu_grfimg_upload_ptt));
+            //menuGw.MenuItems.Add("Upload รูป Passport", new EventHandler(ContextMenu_grfimg_upload_ptt));
+            //menuGw.MenuItems.Add("ยกเลิก", new EventHandler(ContextMenu_grfimg_Cancel));
+            //grfImgOld.ContextMenu = menuGw;
+            pnNote.Controls.Add(grfNote);
+
+            theme1.SetTheme(grfNote, "Office2016Colorful");
+
+        }
+        private void GrfNote_DoubleClick(object sender, EventArgs e)
+        {
+            //throw new NotImplementedException();
+            if (grfNote.Row < 0) return;
+            String id = grfNote[grfNote.Row, colNoteId] != null ? grfNote[grfNote.Row, colNoteId].ToString() : "";
+            String note = grfNote[grfNote.Row, colNote] != null ? grfNote[grfNote.Row, colNote].ToString() : "";
+            txtNoteId.Value = id;
+            txtNote.Value = note;
+        }
+        private void setGrfNote()
+        {
+            grfNote.Clear();
+            grfNote.Rows.Count = 1;
+            grfNote.Cols.Count = 4;
+            DataTable dt = ic.ivfDB.noteDB.selectByPttId(ptt.t_patient_id);
+
+            grfNote.Rows.Count = dt.Rows.Count + 1;
+
+            grfNote.Cols[colNoteId].Width = 250;
+            grfNote.Cols[colNote].Width = 600;
+
+            grfNote.ShowCursor = true;
+
+            grfNote.Cols[colNote].Caption = "Note";
+
+            int i = 1;
+            foreach (DataRow row in dt.Rows)
+            {
+                grfNote[i, colNoteId] = row[ic.ivfDB.noteDB.note.note_id].ToString();
+                grfNote[i, colNote] = row[ic.ivfDB.noteDB.note.note_1].ToString();
+                grfNote[i, colNoteStatusAll] = row[ic.ivfDB.noteDB.note.status_all].ToString();
+                i++;
+            }
+            grfNote.Cols[colNoteId].Visible = false;
+            grfNote.Cols[colNoteStatusAll].Visible = false;
+            grfNote.Cols[colNote].AllowEditing = false;
+
+            theme1.SetTheme(grfNote, "Office2016DarkGray");
         }
         private void UpdateTotals()
         {

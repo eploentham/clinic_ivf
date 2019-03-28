@@ -153,6 +153,7 @@ namespace clinic_ivf.objdb
             ptt.emercontact = "emercontact";
             ptt.patient_country = "patient_country";
             ptt.patient_hn_couple = "patient_hn_couple";
+            ptt.doctor_id = "doctor_id";
 
             ptt.pkField = "t_patient_id";
             ptt.table = "t_patient";
@@ -288,6 +289,7 @@ namespace clinic_ivf.objdb
             p.patient_coulpe_f_patient_relation_id = long.TryParse(p.patient_coulpe_f_patient_relation_id, out chk) ? chk.ToString() : "0";
             p.b_contract_plans_id = long.TryParse(p.b_contract_plans_id, out chk) ? chk.ToString() : "0";
             p.t_patient_id_old = long.TryParse(p.t_patient_id_old, out chk) ? chk.ToString() : "0";
+            p.doctor_id = long.TryParse(p.doctor_id, out chk) ? chk.ToString() : "0";
 
             p.latitude = decimal.TryParse(p.latitude, out chk1) ? chk1.ToString() : "0";
             p.longitude = decimal.TryParse(p.longitude, out chk1) ? chk1.ToString() : "0";
@@ -352,6 +354,7 @@ namespace clinic_ivf.objdb
                 ptt.allergy_description + "," + ptt.status_g + "," + ptt.p + "," +
                 ptt.a + "," + ptt.g + "," + ptt.emercontact + "," +
                 ptt.patient_country + "," + ptt.patient_hn_couple + " " +
+                ptt.doctor_id + "," + ptt.doctor_id + " " +
                 ") " +
                 "Values ('" + p.patient_hn + "','" + p.patient_firstname.Replace("'", "''") + "','" + p.patient_lastname.Replace("'", "''") + "'," +
                 "'" + p.patient_xn.Replace("'", "''") + "','" + p.patient_birthday.Replace("'", "''") + "','" + p.patient_house.Replace("'", "''") + "'," +
@@ -396,6 +399,7 @@ namespace clinic_ivf.objdb
                 "'" + p.allergy_description + "','" + p.status_g + "','" + p.p + "'," +
                 "'" + p.a + "','" + p.g + "','" + p.emercontact + "'," +
                 "'" + p.patient_country + "','" + p.patient_hn_couple + "' " +
+                "'" + p.doctor_id + "','" + p.doctor_id + "' " +
                 ")";
 
                 re = conn.ExecuteNonQuery(conn.conn, sql);
@@ -504,6 +508,7 @@ namespace clinic_ivf.objdb
                 "," + ptt.emercontact + "='" + p.emercontact.Replace("'", "''") + "' " +
                 "," + ptt.patient_country + "='" + p.patient_country.Replace("'", "''") + "' " +
                 "," + ptt.patient_hn_couple + "='" + p.patient_hn_couple.Replace("'", "''") + "' " +
+                "," + ptt.doctor_id + "='" + p.doctor_id.Replace("'", "''") + "' " +
                 " Where " +ptt.pkField + " = '" + p.t_patient_id + "' "
                 ;
             try
@@ -1128,6 +1133,7 @@ namespace clinic_ivf.objdb
                 ptt1.patient_country = dt.Rows[0][ptt.patient_country].ToString();
                 ptt1.addr = dt.Rows[0][ptt.patient_house].ToString() +" "+ dt.Rows[0][ptt.patient_road].ToString() + " " + dt.Rows[0][ptt.patient_tambon].ToString() + " " + dt.Rows[0][ptt.patient_amphur].ToString() + " " + dt.Rows[0][ptt.patient_changwat].ToString();
                 ptt1.patient_hn_couple = dt.Rows[0][ptt.patient_hn_couple].ToString();
+                ptt1.doctor_id = dt.Rows[0][ptt.doctor_id].ToString();
             }
             else
             {
@@ -1268,6 +1274,7 @@ namespace clinic_ivf.objdb
             stf1.patient_country = "";
             stf1.addr = "";
             stf1.patient_hn_couple = "";
+            stf1.doctor_id = "";
             return stf1;
         }
     }

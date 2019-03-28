@@ -140,7 +140,7 @@ namespace clinic_ivf.objdb
                 "," + note.user_modi + "= '" + userId + "'" +                
                 "," + note.t_patient_id + "= '" + p.t_patient_id + "'" +
                 "," + note.status_all + "= '" + p.status_all + "'" +
-                "Where " + note.pkField + "='" + p.note_id + "'"; ;
+                "Where " + note.pkField + "='" + p.note_id + "'";
 
             try
             {
@@ -157,14 +157,14 @@ namespace clinic_ivf.objdb
         {
             String re = "";
 
-            //if (p.VN.Equals(""))
-            //{
-            re = insert(p, "");
-            //}
-            //else
-            //{
-            //    //re = update(p, "");
-            //}
+            if (p.note_id.Equals(""))
+            {
+                re = insert(p, "");
+            }
+            else
+            {
+                re = update(p, "");
+            }
 
             return re;
         }

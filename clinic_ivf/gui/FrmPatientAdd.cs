@@ -38,7 +38,7 @@ namespace clinic_ivf.gui
         Font fEdit, fEditB;
         Color bg, fc;
         Font ff, ffB;
-        int colID = 1, colHn = 2, colImg = 3, colDesc = 4, colDesc2 = 5, colDesc3 = 6, colPathPic = 7, colBtn=8, colStatus=9;
+        int colID = 1, colHn = 2, colImg = 3, colDesc = 4, colDesc2 = 5, colDesc3 = 6, colPathPic = 7, colBtn=8, colStatus=9, colDoctor=10;
         int colVsID = 1, colVsHn = 2, colVsVisitDate = 3, colVsVisitTime=4, colVsStatus=5;
         int colpApmId = 1, colpApmDate = 2, colpApmTime = 3, colpApmRemark = 4;
         int colNoteId = 1, colNote = 2, colNoteStatusAll=3;
@@ -163,7 +163,7 @@ namespace clinic_ivf.gui
             ic.ivfDB.frlDB.setCboRelation(cboCouRel, "1");
             ic.ivfDB.frlDB.setCboRelation(cboName1Rl, "");
             ic.ivfDB.oAgnDB.setCboAgent(cboAgent, "");
-            //ic.ivfDB.agnOldDB.setCboAgent(comboBox1);
+            ic.ivfDB.dtrOldDB.setCboDoctor(cboDoctor,"");
             ic.ivfDB.sexDB.setCboSex(cboSex, "");
             if (ic.iniC.statusAppDonor.Equals("1"))
             {
@@ -249,7 +249,7 @@ namespace clinic_ivf.gui
             }
             //picPtt.Load("54158.jpg");
             picPtt.SizeMode = PictureBoxSizeMode.StretchImage;
-            
+            tabFamily.Hide();
             //btnSavePic.Enabled = false;
         }
 
@@ -278,17 +278,29 @@ namespace clinic_ivf.gui
                 note.b_service_point_id = "2120000000";
                 ic.ivfDB.noteDB.insertNote(note, ic.cStf.staff_id);
                 setGrfNote();
+                txtNote.Value = "";
             }
         }
 
         private void BtnPrnDeliverPtt_Click(object sender, EventArgs e)
         {
             //throw new NotImplementedException();
+            String no = "", filename1 = "";
             Patient ptt = new Patient();
             ptt = ic.ivfDB.pttDB.selectByPk1(txtID.Text);
             PatientOld optt = new PatientOld();
             optt = ic.ivfDB.pttOldDB.selectByPk1(txtIdOld.Text);
-            
+
+            MemoryStream stream = ic.ftpC.download("images/" + txtIdOld.Text + "/" + txtIdOld.Text + "." + System.Drawing.Imaging.ImageFormat.Jpeg);
+            Image loadedImage = new Bitmap(stream);
+            filename1 = "patient.jpg";
+            if (File.Exists(filename1))
+            {
+                File.Delete(filename1);
+                System.Threading.Thread.Sleep(200);
+            }
+            loadedImage.Save(filename1);
+
             DataTable dt = new DataTable();
             dt.Rows.InsertAt(dt.NewRow(), 0);
             dt.Columns.Add("ptt_name_t", typeof(String));
@@ -306,6 +318,7 @@ namespace clinic_ivf.gui
             dt.Columns.Add("email", typeof(String));
             dt.Columns.Add("tele", typeof(String));
             dt.Columns.Add("queue", typeof(String));
+            dt.Columns.Add("pathpic", typeof(String));
 
             dt.Rows[0]["ptt_name_t"] = ptt.patient_firstname+" "+ ptt.patient_lastname;
             dt.Rows[0]["hn"] = ptt.patient_hn;
@@ -320,7 +333,8 @@ namespace clinic_ivf.gui
             dt.Rows[0]["time1"] = "";
             dt.Rows[0]["email"] = ptt.email;
             dt.Rows[0]["tele"] = ptt.mobile1;
-            if(vs != null)
+            dt.Rows[0]["pathpic"] = System.IO.Directory.GetCurrentDirectory() + "\\"+ filename1;
+            if (vs != null)
                 dt.Rows[0]["queue"] = vs.queue_id;
             //dt.Rows[0]["form_day1_id"] = "";
 
@@ -1518,7 +1532,7 @@ namespace clinic_ivf.gui
             grfNote.Cols[colNoteStatusAll].Visible = false;
             grfNote.Cols[colNote].AllowEditing = false;
             
-            theme1.SetTheme(grfImg, "Office2016DarkGray");
+            theme1.SetTheme(grfNote, "Office2016DarkGray");
         }
         private void initGrfNote()
         {
@@ -1735,6 +1749,7 @@ namespace clinic_ivf.gui
                 SendKeys.Send("{ENTER}");
             }
         }
+        
         private void BtnEditor_Click(object sender, EventArgs e)
         {
             //MessageBox.Show(String.Format("Button clicked in - Row : {0}, column : {1}.", grfImg.MouseRow.ToString(), grfImg.MouseCol.ToString()));
@@ -2482,6 +2497,7 @@ namespace clinic_ivf.gui
             txtVn.Value = vs.visit_vn;
             ic.setC1Combo(cboBsp, vs.b_service_point_id);
             txtVisitComment.Value = vs.visit_notice;
+            ic.setC1Combo(cboDoctor, vs.doctor_id);
         }
         private void setControlPatient(Patient ptt)
         {
@@ -2676,6 +2692,7 @@ namespace clinic_ivf.gui
             {
                 ic.setC1Combo(CboNation, "41");
             }
+            
         }
         private void setControl()
         {
@@ -2721,8 +2738,9 @@ namespace clinic_ivf.gui
                 //picPtt.Image = bitmap;
                 //picPtt.SizeMode = PictureBoxSizeMode.StretchImage;
                 //setPic(bitmap);
-                
-                setPic(new Bitmap(ic.ftpC.download(filenamepic)));
+                String aaa = "images/" + txtIdOld.Text + "/" + txtIdOld.Text + "." + System.Drawing.Imaging.ImageFormat.Jpeg;
+                //setPic(new Bitmap(ic.ftpC.download(filenamepic)));
+                setPic(new Bitmap(ic.ftpC.download(aaa)));
             }
             catch(Exception ex)
             {
@@ -3312,6 +3330,7 @@ namespace clinic_ivf.gui
             vs.pulse = txtVisitPulse.Text;
             vs.status_nurse = "1";
             vs.patient_hn_male = txtVisitHnMale.Text;
+            vs.doctor_id = cboDoctor.SelectedItem == null ? "" : ((ComboBoxItem)cboDoctor.SelectedItem).Value;
         }
         private void FrmPatientAdd_Load(object sender, EventArgs e)
         {

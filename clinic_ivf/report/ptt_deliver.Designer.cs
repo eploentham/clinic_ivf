@@ -309,6 +309,8 @@ namespace clinic_ivf.report {
             
             private global::System.Data.DataColumn columnqueue;
             
+            private global::System.Data.DataColumn columnpathpic;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public ptt_deliverDataTable() {
@@ -464,6 +466,14 @@ namespace clinic_ivf.report {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn pathpicColumn {
+                get {
+                    return this.columnpathpic;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -499,7 +509,23 @@ namespace clinic_ivf.report {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public ptt_deliverRow Addptt_deliverRow(string ptt_name_t, string hn, string vn, string ptt_name_e, string addr, string visit_type, string last_visit_date, string age, string dob, string date1, string ptt_type, string time1, string email, string tele, string queue) {
+            public ptt_deliverRow Addptt_deliverRow(
+                        string ptt_name_t, 
+                        string hn, 
+                        string vn, 
+                        string ptt_name_e, 
+                        string addr, 
+                        string visit_type, 
+                        string last_visit_date, 
+                        string age, 
+                        string dob, 
+                        string date1, 
+                        string ptt_type, 
+                        string time1, 
+                        string email, 
+                        string tele, 
+                        string queue, 
+                        string pathpic) {
                 ptt_deliverRow rowptt_deliverRow = ((ptt_deliverRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         ptt_name_t,
@@ -516,7 +542,8 @@ namespace clinic_ivf.report {
                         time1,
                         email,
                         tele,
-                        queue};
+                        queue,
+                        pathpic};
                 rowptt_deliverRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowptt_deliverRow);
                 return rowptt_deliverRow;
@@ -554,6 +581,7 @@ namespace clinic_ivf.report {
                 this.columnemail = base.Columns["email"];
                 this.columntele = base.Columns["tele"];
                 this.columnqueue = base.Columns["queue"];
+                this.columnpathpic = base.Columns["pathpic"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -589,6 +617,8 @@ namespace clinic_ivf.report {
                 base.Columns.Add(this.columntele);
                 this.columnqueue = new global::System.Data.DataColumn("queue", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnqueue);
+                this.columnpathpic = new global::System.Data.DataColumn("pathpic", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnpathpic);
                 this.columnptt_name_t.Caption = "DataColumn1";
                 this.columnhn.Caption = "DataColumn1";
                 this.columnvn.Caption = "DataColumn1";
@@ -984,6 +1014,22 @@ namespace clinic_ivf.report {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public string pathpic {
+                get {
+                    try {
+                        return ((string)(this[this.tableptt_deliver.pathpicColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'pathpic\' in table \'ptt_deliver\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableptt_deliver.pathpicColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public bool Isptt_name_tNull() {
                 return this.IsNull(this.tableptt_deliver.ptt_name_tColumn);
             }
@@ -1160,6 +1206,18 @@ namespace clinic_ivf.report {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public void SetqueueNull() {
                 this[this.tableptt_deliver.queueColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public bool IspathpicNull() {
+                return this.IsNull(this.tableptt_deliver.pathpicColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void SetpathpicNull() {
+                this[this.tableptt_deliver.pathpicColumn] = global::System.Convert.DBNull;
             }
         }
         

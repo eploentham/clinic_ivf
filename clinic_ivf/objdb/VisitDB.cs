@@ -122,6 +122,7 @@ namespace clinic_ivf.objdb
             vs.pulse = "pulse";
             vs.status_nurse = "status_nurse";
             vs.patient_hn_male = "patient_hn_male";
+            vs.doctor_id = "doctor_id";
 
             vs.table = "t_visit";
             vs.pkField = "t_visit_id";
@@ -238,6 +239,7 @@ namespace clinic_ivf.objdb
             p.f_refer_cause_id = long.TryParse(p.f_refer_cause_id, out chk) ? chk.ToString() : "0";
             p.b_ncd_group_id = long.TryParse(p.b_ncd_group_id, out chk) ? chk.ToString() : "0";
             p.visit_lab_status_id = long.TryParse(p.visit_lab_status_id, out chk) ? chk.ToString() : "0";
+            p.doctor_id = long.TryParse(p.doctor_id, out chk) ? chk.ToString() : "0";
         }
         public String insert(Visit p, String userId)
         {
@@ -332,6 +334,7 @@ namespace clinic_ivf.objdb
                     "," + vs.pulse + "='" + p.pulse + "' " +
                     "," + vs.status_nurse + "='" + p.status_nurse + "' " +
                     "," + vs.patient_hn_male + "='" + p.patient_hn_male + "' " +
+                    "," + vs.doctor_id + "='" + p.doctor_id + "' " +
                     "";
                 re = conn.ExecuteNonQuery(conn.conn, sql);
             }
@@ -355,6 +358,7 @@ namespace clinic_ivf.objdb
                 "," + vs.status_urge + "='" + p.status_urge + "' " +
                 "," + vs.patient_hn_1 + "='" + p.patient_hn_1 + "' " +
                 "," + vs.visit_notice + "='" + p.visit_notice.Replace("'", "''") + "' " +
+                "," + vs.doctor_id + "='" + p.doctor_id + "' " +
                 "Where " + vs.pkField + " ='" + p.t_visit_id + "' ";
             try
             {
@@ -753,6 +757,7 @@ namespace clinic_ivf.objdb
                 vs1.pulse = dt.Rows[0][vs.pulse].ToString();
                 vs1.status_nurse = dt.Rows[0][vs.status_nurse].ToString();
                 vs1.patient_hn_male = dt.Rows[0][vs.patient_hn_male].ToString();
+                vs1.doctor_id = dt.Rows[0][vs.doctor_id].ToString();
             }
             else
             {
@@ -863,6 +868,7 @@ namespace clinic_ivf.objdb
             stf1.pulse = "";
             stf1.status_nurse = "";
             stf1.patient_hn_male = "";
+            stf1.doctor_id = "";
             return stf1;
         }
     }
