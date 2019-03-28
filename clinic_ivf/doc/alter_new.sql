@@ -104,6 +104,35 @@ ALTER TABLE `ivf_101`.`BillDetail`
 ADD COLUMN `item_id` INT NULL AFTER `Comment`;
 
 
+CREATE TABLE `ivf_101`.`t_note` (
+  `note_id` INT NOT NULL AUTO_INCREMENT,
+  `note_1` VARCHAR(2000) NULL,
+  `note_2` VARCHAR(2000) NULL,
+  `active` VARCHAR(45) NULL,
+  `remark` VARCHAR(45) NULL,
+  `date_create` VARCHAR(45) NULL,
+  `date_modi` VARCHAR(45) NULL,
+  `date_cancel` VARCHAR(45) NULL,
+  `user_create` VARCHAR(45) NULL,
+  `user_modi` VARCHAR(45) NULL,
+  `user_cancel` VARCHAR(45) NULL,
+  `t_patient_id` INT NULL,
+  PRIMARY KEY (`note_id`))
+ENGINE = MyISAM
+DEFAULT CHARACTER SET = utf8
+COLLATE = utf8_bin
+COMMENT = 'id=223';
+
+ALTER TABLE ivf.b_doc_group_sub_scan AUTO_INCREMENT = 223000000;
+
+ALTER TABLE `ivf_101`.`t_note` 
+ADD COLUMN `b_service_point_id` INT NULL AFTER `t_patient_id`;
+
+ALTER TABLE `ivf_101`.`t_note` 
+ADD COLUMN `status_all` VARCHAR(45) NULL AFTER `b_service_point_id`;
+
+
+
 
 delete from JobPx;
 delete from JobPxDetail;

@@ -258,6 +258,14 @@
             this.printDialog1 = new System.Windows.Forms.PrintDialog();
             this.cPdf = new C1.Win.C1Document.C1PdfDocumentSource(this.components);
             this._c1pdf = new C1.C1Pdf.C1PdfDocument();
+            this.tabNote = new C1.Win.C1Command.C1DockingTabPage();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.pnNote = new System.Windows.Forms.Panel();
+            this.label73 = new System.Windows.Forms.Label();
+            this.txtNote = new C1.Win.C1Input.C1TextBox();
+            this.btnNoteAdd = new C1.Win.C1Input.C1Button();
+            this.chkNoteAll = new C1.Win.C1Input.C1CheckBox();
+            this.txtNoteId = new C1.Win.C1Input.C1TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.theme1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitMain)).BeginInit();
             this.splitMain.Panel1.SuspendLayout();
@@ -408,6 +416,12 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtBP)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtPulse)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtPttO)).BeginInit();
+            this.tabNote.SuspendLayout();
+            this.panel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtNote)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnNoteAdd)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chkNoteAll)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtNoteId)).BeginInit();
             this.SuspendLayout();
             // 
             // theme1
@@ -1794,6 +1808,7 @@
             this.tC1.Controls.Add(this.tabImage);
             this.tC1.Controls.Add(this.tabApm);
             this.tC1.Controls.Add(this.tabImgOld);
+            this.tC1.Controls.Add(this.tabNote);
             this.tC1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tC1.HotTrack = true;
             this.tC1.Location = new System.Drawing.Point(0, 0);
@@ -3928,6 +3943,114 @@
             this._c1pdf.UseFastTextOut = true;
             this._c1pdf.UseFontShaping = true;
             // 
+            // tabNote
+            // 
+            this.tabNote.Controls.Add(this.pnNote);
+            this.tabNote.Controls.Add(this.panel2);
+            this.tabNote.Location = new System.Drawing.Point(1, 24);
+            this.tabNote.Name = "tabNote";
+            this.tabNote.Size = new System.Drawing.Size(1455, 375);
+            this.tabNote.TabIndex = 7;
+            this.tabNote.Text = "Note";
+            // 
+            // panel2
+            // 
+            this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.panel2.Controls.Add(this.txtNoteId);
+            this.panel2.Controls.Add(this.chkNoteAll);
+            this.panel2.Controls.Add(this.btnNoteAdd);
+            this.panel2.Controls.Add(this.label73);
+            this.panel2.Controls.Add(this.txtNote);
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.panel2.Location = new System.Drawing.Point(0, 0);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(1455, 51);
+            this.panel2.TabIndex = 0;
+            this.theme1.SetTheme(this.panel2, "(default)");
+            // 
+            // pnNote
+            // 
+            this.pnNote.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.pnNote.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pnNote.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.pnNote.Location = new System.Drawing.Point(0, 51);
+            this.pnNote.Name = "pnNote";
+            this.pnNote.Size = new System.Drawing.Size(1455, 324);
+            this.pnNote.TabIndex = 0;
+            this.theme1.SetTheme(this.pnNote, "(default)");
+            // 
+            // label73
+            // 
+            this.label73.AutoSize = true;
+            this.label73.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.label73.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label73.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.label73.Location = new System.Drawing.Point(21, 14);
+            this.label73.Name = "label73";
+            this.label73.Size = new System.Drawing.Size(43, 16);
+            this.label73.TabIndex = 700;
+            this.label73.Text = "Note :";
+            this.theme1.SetTheme(this.label73, "(default)");
+            // 
+            // txtNote
+            // 
+            this.txtNote.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtNote.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
+            this.txtNote.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.txtNote.Location = new System.Drawing.Point(75, 12);
+            this.txtNote.Name = "txtNote";
+            this.txtNote.Size = new System.Drawing.Size(531, 20);
+            this.txtNote.TabIndex = 699;
+            this.txtNote.Tag = null;
+            this.theme1.SetTheme(this.txtNote, "(default)");
+            this.txtNote.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            // 
+            // btnNoteAdd
+            // 
+            this.btnNoteAdd.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnNoteAdd.Location = new System.Drawing.Point(612, 9);
+            this.btnNoteAdd.Name = "btnNoteAdd";
+            this.btnNoteAdd.Size = new System.Drawing.Size(26, 26);
+            this.btnNoteAdd.TabIndex = 701;
+            this.btnNoteAdd.Text = "+";
+            this.theme1.SetTheme(this.btnNoteAdd, "(default)");
+            this.btnNoteAdd.UseVisualStyleBackColor = true;
+            this.btnNoteAdd.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            // 
+            // chkNoteAll
+            // 
+            this.chkNoteAll.BackColor = System.Drawing.Color.Transparent;
+            this.chkNoteAll.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
+            this.chkNoteAll.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.chkNoteAll.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.chkNoteAll.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chkNoteAll.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.chkNoteAll.Location = new System.Drawing.Point(651, 10);
+            this.chkNoteAll.Name = "chkNoteAll";
+            this.chkNoteAll.Padding = new System.Windows.Forms.Padding(4, 1, 1, 1);
+            this.chkNoteAll.Size = new System.Drawing.Size(177, 24);
+            this.chkNoteAll.TabIndex = 702;
+            this.chkNoteAll.Text = "ต้องการให้เห็นทุกแผนก";
+            this.theme1.SetTheme(this.chkNoteAll, "(default)");
+            this.chkNoteAll.UseVisualStyleBackColor = true;
+            this.chkNoteAll.Value = null;
+            this.chkNoteAll.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            // 
+            // txtNoteId
+            // 
+            this.txtNoteId.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtNoteId.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
+            this.txtNoteId.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.txtNoteId.Location = new System.Drawing.Point(798, 10);
+            this.txtNoteId.Name = "txtNoteId";
+            this.txtNoteId.Size = new System.Drawing.Size(30, 20);
+            this.txtNoteId.TabIndex = 703;
+            this.txtNoteId.Tag = null;
+            this.theme1.SetTheme(this.txtNoteId, "(default)");
+            this.txtNoteId.Visible = false;
+            this.txtNoteId.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            // 
             // FrmPatientAdd
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -4094,6 +4217,13 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtBP)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtPulse)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtPttO)).EndInit();
+            this.tabNote.ResumeLayout(false);
+            this.panel2.ResumeLayout(false);
+            this.panel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtNote)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnNoteAdd)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chkNoteAll)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtNoteId)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -4330,5 +4460,13 @@
         private C1.Win.C1Input.DropDownItem btnPrnDeliverPtt;
         private C1.Win.C1Input.C1TextBox txtHnCouple;
         private C1.Win.C1Input.C1ComboBox cboAllergyDesc;
+        private C1.Win.C1Command.C1DockingTabPage tabNote;
+        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.Panel pnNote;
+        private C1.Win.C1Input.C1Button btnNoteAdd;
+        private System.Windows.Forms.Label label73;
+        private C1.Win.C1Input.C1TextBox txtNote;
+        private C1.Win.C1Input.C1CheckBox chkNoteAll;
+        private C1.Win.C1Input.C1TextBox txtNoteId;
     }
 }

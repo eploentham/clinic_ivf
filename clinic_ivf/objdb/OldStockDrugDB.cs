@@ -36,7 +36,8 @@ namespace clinic_ivf.objdb
         }
         private void chkNull(OldStockDrug p)
         {
-            int chk = 0;
+            long chk = 0;
+            Decimal chk1 = 0;
 
             p.date_modi = p.date_modi == null ? "" : p.date_modi;
             p.date_cancel = p.date_cancel == null ? "" : p.date_cancel;
@@ -52,12 +53,95 @@ namespace clinic_ivf.objdb
             p.TUsage = p.TUsage == null ? "" : p.TUsage;
             p.UnitType = p.UnitType == null ? "" : p.UnitType;            
 
-            p.Alert = p.Alert == null ? "0" : p.Alert;
-            p.QTY = p.QTY == null ? "0" : p.QTY;
-            p.PendingQTY = p.PendingQTY == null ? "0" : p.PendingQTY;
-            p.Price = p.Price.Equals("") ? "0" : p.Price;
-            
+            //p.Alert = p.Alert == null ? "0" : p.Alert;
+            //p.QTY = p.QTY == null ? "0" : p.QTY;
+            //p.PendingQTY = p.PendingQTY == null ? "0" : p.PendingQTY;
+            //p.Price = p.Price.Equals("") ? "0" : p.Price;
+
+            p.Alert = long.TryParse(p.Alert, out chk) ? chk.ToString() : "0";
+            p.QTY = long.TryParse(p.QTY, out chk) ? chk.ToString() : "0";
+            p.PendingQTY = long.TryParse(p.PendingQTY, out chk) ? chk.ToString() : "0";
+
+            p.Price = Decimal.TryParse(p.Price, out chk1) ? chk1.ToString() : "0";
+
             //p.user_cancel = p.user_cancel == null ? "" : p.user_cancel;
+        }
+        public String insert(OldStockDrug p, String userId)
+        {
+            String re = "";
+            String sql = "";
+            p.active = "1";
+            //p.ssdata_id = "";
+            int chk = 0;
+
+            chkNull(p);
+            //lbReq.form_a_id = "form_a_id";
+            //p.req_code = genReqDoc();
+            sql = "Insert Into " + ostkD.table + " Set " +
+                " " + ostkD.DUName + " = '" + p.DUName.Replace("'", "''") + "'" +
+                "," + ostkD.EUsage + "= '" + p.EUsage.Replace("'", "''") + "'" +
+                "," + ostkD.TUsage + "= '" + p.TUsage.Replace("'", "''") + "'" +
+                "," + ostkD.UnitType + "= '" + p.UnitType.Replace("'", "''") + "'" +
+                "," + ostkD.Alert + "= '" + p.Alert.Replace("'", "''") + "'" +
+                "," + ostkD.QTY + "= '" + p.QTY + "'" +                
+                "," + ostkD.PendingQTY + "= '" + p.PendingQTY + "'" +
+                "," + ostkD.Price + "= '" + p.Price + "'" +
+                "," + ostkD.active + "= '" + p.active + "'" +
+                
+                "";
+            try
+            {
+                re = conn.ExecuteNonQuery(conn.conn, sql);
+            }
+            catch (Exception ex)
+            {
+                sql = ex.Message + " " + ex.InnerException;
+            }
+
+            return re;
+        }
+        public String update(OldStockDrug p, String userId)
+        {
+            String re = "";
+            String sql = "";
+            chkNull(p);
+
+            sql = "Update " + ostkD.table + " Set " +
+                " " + ostkD.DUName + " = '" + p.DUName.Replace("'", "''") + "'" +
+                "," + ostkD.EUsage + "= '" + p.EUsage.Replace("'", "''") + "'" +
+                "," + ostkD.TUsage + "= '" + p.TUsage.Replace("'", "''") + "'" +
+                "," + ostkD.UnitType + "= '" + p.UnitType.Replace("'", "''") + "'" +
+                "," + ostkD.Alert + "= '" + p.Alert.Replace("'", "''") + "'" +
+                "," + ostkD.QTY + "= '" + p.QTY + "'" +
+                "," + ostkD.PendingQTY + "= '" + p.PendingQTY + "'" +
+                "," + ostkD.Price + "= '" + p.Price + "'" +
+                "Where "+ostkD.pkField+"='"+p.DUID+"'";
+
+            try
+            {
+                re = conn.ExecuteNonQuery(conn.conn, sql);
+            }
+            catch (Exception ex)
+            {
+                sql = ex.Message + " " + ex.InnerException;
+            }
+
+            return re;
+        }
+        public String insertStockDrug(OldStockDrug p, String userId)
+        {
+            String re = "";
+
+            //if (p.VN.Equals(""))
+            //{
+            re = insert(p, "");
+            //}
+            //else
+            //{
+            //    //re = update(p, "");
+            //}
+
+            return re;
         }
         public DataTable selectAll()
         {

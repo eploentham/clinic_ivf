@@ -41,6 +41,7 @@ namespace clinic_ivf.gui
         int colID = 1, colHn = 2, colImg = 3, colDesc = 4, colDesc2 = 5, colDesc3 = 6, colPathPic = 7, colBtn=8, colStatus=9;
         int colVsID = 1, colVsHn = 2, colVsVisitDate = 3, colVsVisitTime=4, colVsStatus=5;
         int colpApmId = 1, colpApmDate = 2, colpApmTime = 3, colpApmRemark = 4;
+        int colNoteId = 1, colNote = 2, colNoteStatusAll=3;
 
         //C1FlexGrid grfDay2, grfDay3, grfDay5, grfDay6;
         C1SuperTooltip stt;
@@ -50,7 +51,7 @@ namespace clinic_ivf.gui
         FtpClient ff1;
         Bitmap img;
         Image image1;
-        C1FlexGrid grfImg, grfVs, grfpApm, grfImgOld;
+        C1FlexGrid grfImg, grfVs, grfpApm, grfImgOld, grfNote;
 
         String filename = "", picIDCard="pic_id_card.jpg";
         static String filenamepic = "", host="", user="", pass="";
@@ -204,6 +205,8 @@ namespace clinic_ivf.gui
             setGrfpApmDonor("");
             initGrfImgOld();
             setGrfImgOld();
+            initGrfNote();
+            setGrfNote();
             //setGrfpApmDonor("");
 
             btnPrnSticker.Click += BtnPrnSticker_Click;
@@ -228,6 +231,7 @@ namespace clinic_ivf.gui
             btnVisitVoid.Click += BtnVisitVoid_Click;
             btnPrnDeliverPtt.Click += BtnPrnDeliverPtt_Click;
             ChkDenyAllergy_CheckedChanged(null, null);
+            btnNoteAdd.Click += BtnNoteAdd_Click;
 
             setKeyEnter();
 
@@ -247,6 +251,34 @@ namespace clinic_ivf.gui
             picPtt.SizeMode = PictureBoxSizeMode.StretchImage;
             
             //btnSavePic.Enabled = false;
+        }
+
+        private void BtnNoteAdd_Click(object sender, EventArgs e)
+        {
+            //throw new NotImplementedException();
+            ic.cStf.staff_id = "";
+            FrmPasswordConfirm frm = new FrmPasswordConfirm(ic);
+            frm.ShowDialog(this);
+            if (!ic.cStf.staff_id.Equals(""))
+            {
+                Note1 note = new Note1();
+                note.active = "1";
+                note.date_cancel = "";
+                note.date_create = "";
+                note.date_modi = "";
+                note.note_1 = txtNote.Text;
+                note.note_2 = "";
+                note.note_id = txtNoteId.Text;
+                note.remark = "";
+                note.t_patient_id = txtID.Text;
+                note.user_cancel = "";
+                note.user_create = "";
+                note.user_modi = "";
+                note.status_all = chkNoteAll.Checked ? "1": "0";
+                note.b_service_point_id = "2120000000";
+                ic.ivfDB.noteDB.insertNote(note, ic.cStf.staff_id);
+                setGrfNote();
+            }
         }
 
         private void BtnPrnDeliverPtt_Click(object sender, EventArgs e)
@@ -1458,6 +1490,71 @@ namespace clinic_ivf.gui
                 ic.video = null;
             }
         }
+        private void setGrfNote()
+        {
+            grfNote.Clear();
+            grfNote.Rows.Count = 1;
+            grfNote.Cols.Count = 4;
+            DataTable dt = ic.ivfDB.noteDB.selectByPttId(txtID.Text);
+
+            grfNote.Rows.Count = dt.Rows.Count + 1;
+
+            grfNote.Cols[colNoteId].Width = 250;
+            grfNote.Cols[colNote].Width = 600;
+
+            grfNote.ShowCursor = true;
+
+            grfNote.Cols[colNote].Caption = "Note";
+            
+            int i = 1;
+            foreach (DataRow row in dt.Rows)
+            {
+                grfNote[i, colNoteId] = row[ic.ivfDB.noteDB.note.note_id].ToString();
+                grfNote[i, colNote] = row[ic.ivfDB.noteDB.note.note_1].ToString();
+                grfNote[i, colNoteStatusAll] = row[ic.ivfDB.noteDB.note.status_all].ToString();
+                i++;
+            }
+            grfNote.Cols[colNoteId].Visible = false;
+            grfNote.Cols[colNoteStatusAll].Visible = false;
+            grfNote.Cols[colNote].AllowEditing = false;
+            
+            theme1.SetTheme(grfImg, "Office2016DarkGray");
+        }
+        private void initGrfNote()
+        {
+            grfNote = new C1FlexGrid();
+            grfNote.Font = fEdit;
+            grfNote.Dock = System.Windows.Forms.DockStyle.Fill;
+            grfNote.Location = new System.Drawing.Point(0, 0);
+
+            //FilterRow fr = new FilterRow(grfExpn);
+
+            //grfImg.AfterRowColChange += GrfImg_AfterRowColChange;
+            //grfImg.MouseDown += GrfImg_MouseDown;
+            grfNote.DoubleClick += GrfNote_DoubleClick;
+            //grfExpnC.CellChanged += new C1.Win.C1FlexGrid.RowColEventHandler(this.grfDept_CellChanged);
+            //ContextMenu menuGw = new ContextMenu();
+            //menuGw.MenuItems.Add("Upload รูปบัตรประชาชน", new EventHandler(ContextMenu_grfimg_upload_ptt));
+            //menuGw.MenuItems.Add("Upload สำเนาบัตรประชาชน ที่มีลายเซ็น", new EventHandler(ContextMenu_grfimg_upload_ptt));
+            //menuGw.MenuItems.Add("Upload รูป Passport", new EventHandler(ContextMenu_grfimg_upload_ptt));
+            //menuGw.MenuItems.Add("ยกเลิก", new EventHandler(ContextMenu_grfimg_Cancel));
+            //grfImgOld.ContextMenu = menuGw;
+            pnNote.Controls.Add(grfNote);
+
+            theme1.SetTheme(grfNote, "Office2016Colorful");
+
+        }
+
+        private void GrfNote_DoubleClick(object sender, EventArgs e)
+        {
+            //throw new NotImplementedException();
+            if (grfNote.Row < 0) return;
+            String id = grfNote[grfNote.Row, colNoteId] != null ? grfNote[grfNote.Row, colNoteId].ToString() : "";
+            String note = grfNote[grfNote.Row, colNote] != null ? grfNote[grfNote.Row, colNote].ToString() : "";
+            txtNoteId.Value = id;
+            txtNote.Value = note;
+        }
+
         private void initGrfImgOld()
         {
             grfImgOld = new C1FlexGrid();
