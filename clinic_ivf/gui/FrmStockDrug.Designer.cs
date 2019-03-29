@@ -392,9 +392,9 @@
             this.label18.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
             this.label18.Location = new System.Drawing.Point(20, 22);
             this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(58, 16);
+            this.label18.Size = new System.Drawing.Size(64, 16);
             this.label18.TabIndex = 686;
-            this.label18.Text = "รหัสกลาง :";
+            this.label18.Text = "รหัสTMT :";
             this.theme1.SetTheme(this.label18, "(default)");
             // 
             // txtDrgComm
@@ -648,9 +648,9 @@
             this.label21.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
             this.label21.Location = new System.Drawing.Point(10, 215);
             this.label21.Name = "label21";
-            this.label21.Size = new System.Drawing.Size(49, 16);
+            this.label21.Size = new System.Drawing.Size(92, 16);
             this.label21.TabIndex = 692;
-            this.label21.Text = "คำเตือน :";
+            this.label21.Text = "คำเตือน การใช้ยา :";
             this.theme1.SetTheme(this.label21, "(default)");
             // 
             // label22

@@ -353,8 +353,8 @@ namespace clinic_ivf.objdb
                 ptt.or_description + "," + ptt.status_congenial + "," + ptt.congenital_diseases_description + "," +
                 ptt.allergy_description + "," + ptt.status_g + "," + ptt.p + "," +
                 ptt.a + "," + ptt.g + "," + ptt.emercontact + "," +
-                ptt.patient_country + "," + ptt.patient_hn_couple + " " +
-                ptt.doctor_id + "," + ptt.doctor_id + " " +
+                ptt.patient_country + "," + ptt.patient_hn_couple + "," +
+                ptt.doctor_id + " " +
                 ") " +
                 "Values ('" + p.patient_hn + "','" + p.patient_firstname.Replace("'", "''") + "','" + p.patient_lastname.Replace("'", "''") + "'," +
                 "'" + p.patient_xn.Replace("'", "''") + "','" + p.patient_birthday.Replace("'", "''") + "','" + p.patient_house.Replace("'", "''") + "'," +
@@ -398,8 +398,8 @@ namespace clinic_ivf.objdb
                 "'" + p.or_description + "','" + p.status_congenial + "','" + p.congenital_diseases_description + "'," +
                 "'" + p.allergy_description + "','" + p.status_g + "','" + p.p + "'," +
                 "'" + p.a + "','" + p.g + "','" + p.emercontact + "'," +
-                "'" + p.patient_country + "','" + p.patient_hn_couple + "' " +
-                "'" + p.doctor_id + "','" + p.doctor_id + "' " +
+                "'" + p.patient_country + "','" + p.patient_hn_couple + "'," +
+                "'" + p.doctor_id + "' " +
                 ")";
 
                 re = conn.ExecuteNonQuery(conn.conn, sql);

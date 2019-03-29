@@ -139,6 +139,36 @@ ALTER TABLE `ivf_101`.`t_visit`
 ADD COLUMN `doctor_id` INT NULL AFTER `patient_hn_male`;
 
 
+CREATE TABLE `ivf_101`.`b_item_drug_instruction` (
+  `instruction_id` INT NOT NULL AUTO_INCREMENT,
+  `instruction_code` VARCHAR(45) NULL,
+  `instruction_description_e` VARCHAR(255) NULL,
+  `instruction_description_t` VARCHAR(255) NULL,
+  `actice` VARCHAR(45) NULL,
+  `remark` VARCHAR(45) NULL,
+  `date_create` VARCHAR(45) NULL,
+  `date_modi` VARCHAR(45) NULL,
+  `date_cancel` VARCHAR(45) NULL,
+  `user_create` VARCHAR(45) NULL,
+  `user_modi` VARCHAR(45) NULL,
+  `user_cancel` VARCHAR(45) NULL,
+  PRIMARY KEY (`instruction_id`))
+ENGINE = MyISAM
+DEFAULT CHARACTER SET = utf8
+COLLATE = utf8_bin
+COMMENT = 'id=224';
+
+ALTER TABLE `ivf_101`.`StockDrug` 
+ADD COLUMN `drug_caution` VARCHAR(255) NULL COMMENT 'คำเตือน' AFTER `active`,
+ADD COLUMN `drug_description` VARCHAR(255) NULL COMMENT 'คำบรรยาย' AFTER `drug_caution`,
+ADD COLUMN `instruction_id` INT NULL AFTER `drug_description`,
+ADD COLUMN `frequency_id` INT NULL AFTER `instruction_id`;
+
+ALTER TABLE `ivf_101`.`StockDrug` 
+ADD COLUMN `drug_caution_e` VARCHAR(255) NULL AFTER `frequency_id`,
+ADD COLUMN `drug_frequency_e` VARCHAR(255) NULL AFTER `drug_caution_e`;
+
+
 
 
 delete from JobPx;

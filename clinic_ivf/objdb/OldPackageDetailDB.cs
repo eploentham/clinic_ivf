@@ -171,19 +171,14 @@ namespace clinic_ivf.objdb
             OldPackageDetail ostkd1 = new OldPackageDetail();
             if (dt.Rows.Count > 0)
             {
-                ostkd1.active = dt.Rows[0][note.active].ToString();
-                ostkd1.date_cancel = dt.Rows[0][note.date_cancel].ToString();
-                ostkd1.date_create = dt.Rows[0][note.date_create].ToString();
-                ostkd1.date_modi = dt.Rows[0][note.date_modi].ToString();
-                ostkd1.note_1 = dt.Rows[0][note.note_1].ToString();
-                ostkd1.note_2 = dt.Rows[0][note.note_2].ToString();
-                ostkd1.note_id = dt.Rows[0][note.note_id].ToString();
-                ostkd1.remark = dt.Rows[0][note.remark].ToString();
-                ostkd1.t_patient_id = dt.Rows[0][note.t_patient_id].ToString();
-                ostkd1.user_cancel = dt.Rows[0][note.user_cancel].ToString();
-                ostkd1.user_create = dt.Rows[0][note.user_create].ToString();
-                ostkd1.user_modi = dt.Rows[0][note.user_modi].ToString();
-                ostkd1.status_all = dt.Rows[0][note.status_all].ToString();
+                ostkd1.ID = dt.Rows[0][oPkgD.ID].ToString();
+                ostkd1.PCKID = dt.Rows[0][oPkgD.PCKID].ToString();
+                ostkd1.ItemType = dt.Rows[0][oPkgD.ItemType].ToString();
+                ostkd1.ItemName = dt.Rows[0][oPkgD.ItemName].ToString();
+                ostkd1.ItemID = dt.Rows[0][oPkgD.ItemID].ToString();
+                ostkd1.QTY = dt.Rows[0][oPkgD.QTY].ToString();
+                ostkd1.active = dt.Rows[0][oPkgD.active].ToString();
+                
             }
             else
             {
@@ -191,21 +186,16 @@ namespace clinic_ivf.objdb
             }
             return ostkd1;
         }
-        private Note1 setNote1(OldPackageDetail stf1)
+        private OldPackageDetail setNote1(OldPackageDetail stf1)
         {
+            stf1.ID = "";
+            stf1.PCKID = "";
+            stf1.ItemType = "";
+            stf1.ItemName = "";
+            stf1.ItemID = "";
+            stf1.QTY = "";
             stf1.active = "";
-            stf1.date_cancel = "";
-            stf1.date_create = "";
-            stf1.date_modi = "";
-            stf1.note_1 = "";
-            stf1.note_2 = "";
-            stf1.note_id = "";
-            stf1.remark = "";
-            stf1.t_patient_id = "";
-            stf1.user_cancel = "";
-            stf1.user_create = "";
-            stf1.user_modi = "";
-            stf1.status_all = "";
+            
             return stf1;
         }
     }

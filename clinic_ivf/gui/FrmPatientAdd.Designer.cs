@@ -3412,6 +3412,7 @@
             this.label62.TabIndex = 683;
             this.label62.Text = "Height :";
             this.theme1.SetTheme(this.label62, "(default)");
+            this.label62.Visible = false;
             // 
             // txtVisitHeight
             // 
@@ -3424,6 +3425,7 @@
             this.txtVisitHeight.TabIndex = 682;
             this.txtVisitHeight.Tag = null;
             this.theme1.SetTheme(this.txtVisitHeight, "(default)");
+            this.txtVisitHeight.Visible = false;
             this.txtVisitHeight.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
             // 
             // txtVisitLMP

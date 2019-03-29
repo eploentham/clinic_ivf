@@ -554,15 +554,15 @@ namespace clinic_ivf.control
             item.Value = "1";
             c.Items.Add(item);
 
-            item = new ComboBoxItem();
-            item.Text = "Egg Donor";
-            item.Value = "2";
-            c.Items.Add(item);
+            //item = new ComboBoxItem();
+            //item.Text = "Egg Donor";
+            //item.Value = "2";
+            //c.Items.Add(item);
 
-            item = new ComboBoxItem();
-            item.Text = "Surrogate";
-            item.Value = "3";
-            c.Items.Add(item);
+            //item = new ComboBoxItem();
+            //item.Text = "Surrogate";
+            //item.Value = "3";
+            //c.Items.Add(item);
 
             if (!selected.Equals(""))
             {
@@ -627,9 +627,9 @@ namespace clinic_ivf.control
         }
         public void savePicPatienttoServer( String filename, Image pic)
         {
-            if (File.Exists(@"temppic" + System.Drawing.Imaging.ImageFormat.Jpeg))
+            if (File.Exists(@"temppic." + System.Drawing.Imaging.ImageFormat.Jpeg))
             {
-                File.Delete(@"temppic" + System.Drawing.Imaging.ImageFormat.Jpeg);
+                File.Delete(@"temppic." + System.Drawing.Imaging.ImageFormat.Jpeg);
             }
             pic.Save(@"temppic." + System.Drawing.Imaging.ImageFormat.Jpeg, System.Drawing.Imaging.ImageFormat.Jpeg);
             ftpC.createDirectory("images/" + filename);

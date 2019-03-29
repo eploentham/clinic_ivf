@@ -131,6 +131,7 @@ namespace clinic_ivf.gui
                 foreach (FilterInfo device in webcanDevice)
                 {
                     webcamname = device.Name;
+                    //MessageBox.Show("device.Name "+ device.Name, "");
                     //video.NewFrame += Video_NewFrame;
                 }
                 if (File.Exists(picIDCard))
@@ -292,8 +293,13 @@ namespace clinic_ivf.gui
             optt = ic.ivfDB.pttOldDB.selectByPk1(txtIdOld.Text);
 
             MemoryStream stream = ic.ftpC.download("images/" + txtIdOld.Text + "/" + txtIdOld.Text + "." + System.Drawing.Imaging.ImageFormat.Jpeg);
+            if(stream == null)
+            {
+                MessageBox.Show("BtnPrnDeliverPtt_Click stream is null", "");
+                return;
+            }
             Image loadedImage = new Bitmap(stream);
-            filename1 = "patient.jpg";
+            filename1 = "patient." + System.Drawing.Imaging.ImageFormat.Jpeg;
             if (File.Exists(filename1))
             {
                 File.Delete(filename1);
@@ -1103,7 +1109,7 @@ namespace clinic_ivf.gui
             {
                 txtUserReq.Value = ic.cStf.staff_fname_t + " " + ic.cStf.staff_lname_t;
                 txtStfConfirmID.Value = ic.cStf.staff_id;
-                btnSave.Text = "Confirm";
+                //btnSave.Text = "Confirm";
                 btnSave.Image = Resources.Add_ticket_24;
                 stt.Show("<p><b>สวัสดี</b></p>คุณ " + ic.cStf.staff_fname_t + " " + ic.cStf.staff_lname_t + "<br> กรุณายินยันการ confirm อีกครั้ง", btnWebCamOn);
                 btnSave.Focus();
@@ -1236,6 +1242,7 @@ namespace clinic_ivf.gui
                                     btnSave.Text = "Save";
                                     btnSave.Image = Resources.accept_database24;
                                     txtID.Value = re1;
+                                    btnWebCamOn.Enabled = true;
 
                                     txtPid.Focus();
                                     txtHn.Value = pttOld.PIDS;
@@ -2719,11 +2726,14 @@ namespace clinic_ivf.gui
             ////image1 = bitmap;
             //picPtt.Image = bitmap;
             //picPtt.SizeMode = PictureBoxSizeMode.StretchImage;
-            PatientImage pttI = new PatientImage();
-            pttI = ic.ivfDB.pttImgDB.selectByPttIDStatus4(txtID.Text);
-            filenamepic = pttI.image_path;
-            Thread threadA = new Thread(new ParameterizedThreadStart(ExecuteA));
-            threadA.Start();
+            if (!txtID.Text.Equals(""))
+            {
+                PatientImage pttI = new PatientImage();
+                pttI = ic.ivfDB.pttImgDB.selectByPttIDStatus4(txtID.Text);
+                filenamepic = pttI.image_path;
+                Thread threadA = new Thread(new ParameterizedThreadStart(ExecuteA));
+                threadA.Start();
+            }
         }
         private void ExecuteA(Object obj)
         {
