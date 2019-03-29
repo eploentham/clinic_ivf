@@ -16,5 +16,10 @@ namespace clinic_ivf.gui
         {
             InitializeComponent();
         }
+
+        private void FrmStockDrug_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

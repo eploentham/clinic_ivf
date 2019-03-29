@@ -52,8 +52,10 @@ namespace clinic_ivf.gui
             btnNew.Click += BtnNew_Click;
             btnSave.Click += BtnSave_Click;
             btnEdit.Click += BtnEdit_Click;
+            btnLab.Click += BtnLab_Click;
+            btnSeAdd.Click += BtnSeAdd_Click;
+            btnDrugAdd.Click += BtnDrugAdd_Click;
             //cboGrp.SelectedIndexChanged += CboGrp_SelectedIndexChanged;
-            
 
             C1ThemeController.ApplicationTheme = ic.iniC.themeApplication;
             theme1.Theme = C1ThemeController.ApplicationTheme;
@@ -80,12 +82,47 @@ namespace clinic_ivf.gui
             setGrfDrug();
         }
 
+        private void BtnDrugAdd_Click(object sender, EventArgs e)
+        {
+            //throw new NotImplementedException();
+            setPackageDetail("DUID", txtDrugName.Text, txtDrugId.Text, txtDrugQty.Text);
+        }
+
+        private void BtnSeAdd_Click(object sender, EventArgs e)
+        {
+            //throw new NotImplementedException();
+            setPackageDetail("SID", txtSeName.Text, txtSeId.Text, txtSeQty.Text);
+        }
+
+        private void BtnLab_Click(object sender, EventArgs e)
+        {
+            //throw new NotImplementedException();
+            setPackageDetail("LID", txtLabName.Text, txtLabId.Text, txtLabQty.Text);
+        }
+
         //private void CboGrp_SelectedIndexChanged(object sender, EventArgs e)
         //{
         //    //throw new NotImplementedException();
         //    ic.ivfDB.oLabiDB.setCboLabItem(cboItm, "");
         //}
-
+        private void setPackageDetail(String itmtype, String itmname, String itmid, String qty)
+        {
+            ic.cStf.staff_id = "";
+            FrmPasswordConfirm frm = new FrmPasswordConfirm(ic);
+            frm.ShowDialog(this);
+            if (!ic.cStf.staff_id.Equals(""))
+            {
+                OldPackageDetail oPkgD = new OldPackageDetail();
+                oPkgD.ID = "";
+                oPkgD.PCKID = txtID.Text;
+                oPkgD.ItemType = itmtype;
+                oPkgD.ItemName = itmname;
+                oPkgD.ItemID = itmid;
+                oPkgD.QTY = qty;
+                ic.ivfDB.oPkgdDB.insertNote(oPkgD, ic.cStf.staff_id);
+                setGrfPkgD(txtID.Text);
+            }
+        }
         private void BtnEdit_Click(object sender, EventArgs e)
         {
             //throw new NotImplementedException();
@@ -210,8 +247,8 @@ namespace clinic_ivf.gui
             }
             grfDrug.Cols[colID].Visible = false;
             grfDrug.Cols[colQty].Visible = false;
-            //grfAgn.Cols[colS].Visible = false;
-            //grfAgn.Cols[colRemark].Visible = false;
+            grfDrug.Cols[colName].AllowEditing = false;
+            grfDrug.Cols[colPrice].AllowEditing = false;
         }
         private void initGrfSe()
         {
@@ -277,8 +314,8 @@ namespace clinic_ivf.gui
             }
             grfSe.Cols[colID].Visible = false;
             grfSe.Cols[colQty].Visible = false;
-            //grfAgn.Cols[colS].Visible = false;
-            //grfAgn.Cols[colRemark].Visible = false;
+            grfSe.Cols[colName].AllowEditing = false;
+            grfSe.Cols[colPrice].AllowEditing = false;
         }
         private void initGrfLab()
         {
@@ -288,7 +325,12 @@ namespace clinic_ivf.gui
             grfLab.Location = new System.Drawing.Point(0, 0);
 
             //FilterRow fr = new FilterRow(grfPosi);
-
+            ContextMenu menuGw = new ContextMenu();
+            menuGw.MenuItems.Add("เลือก รายการนี้", new EventHandler(ContextMenu_grflab_select));
+            //menuGw.MenuItems.Add("Upload สำเนาบัตรประชาชน ที่มีลายเซ็น", new EventHandler(ContextMenu_grfimg_upload_ptt));
+            //menuGw.MenuItems.Add("Upload รูป Passport", new EventHandler(ContextMenu_grfimg_upload_ptt));
+            //menuGw.MenuItems.Add("ยกเลิก", new EventHandler(ContextMenu_grfimg_Cancel));
+            grfLab.ContextMenu = menuGw;
             grfLab.AfterRowColChange += GrfLab_AfterRowColChange;
             //grfAgn.CellButtonClick += new C1.Win.C1FlexGrid.RowColEventHandler(this.grfPosi_CellButtonClick);
             //grfAgn.CellChanged += new C1.Win.C1FlexGrid.RowColEventHandler(this.grfPosi_CellChanged);
@@ -312,7 +354,19 @@ namespace clinic_ivf.gui
             txtLabId.Value = id;
             txtLabName.Value = name;
         }
-
+        private void ContextMenu_grflab_select(object sender, System.EventArgs e)
+        {
+            if (grfLab.Row < 0) return;
+            if (grfLab[grfLab.Row, colID] == null) return;
+            String id = "", name = "", labid="";
+            id = grfLab[grfLab.Row, colID].ToString();
+            name = grfLab[grfLab.Row, colName].ToString();
+            labid = grfLab[grfLab.Row, colName].ToString();
+            txtLabId.Value = labid;
+            txtLabName.Value = name;
+            txtLabQty.Value = "1";
+            txtPkgDId.Value = id;
+        }
         private void setGrfLab()
         {
             //grfDept.Rows.Count = 7;
@@ -344,8 +398,8 @@ namespace clinic_ivf.gui
             }
             grfLab.Cols[colID].Visible = false;
             grfLab.Cols[colQty].Visible = false;
-            //grfAgn.Cols[colS].Visible = false;
-            //grfAgn.Cols[colRemark].Visible = false;
+            grfLab.Cols[colName].AllowEditing = false;
+            grfLab.Cols[colPrice].AllowEditing = false;
         }
         private void initGrfPkgD()
         {
@@ -392,8 +446,8 @@ namespace clinic_ivf.gui
                     grfPkgD.Rows[i].StyleNew.BackColor = ColorTranslator.FromHtml(ic.iniC.grfRowColor);
             }
             grfPkgD.Cols[coldID].Visible = false;
-            //grfPkgD.Cols[coldName].Visible = false;
-            //grfPkgD.Cols[colID].Visible = false;
+            grfPkgD.Cols[coldName].AllowEditing = false;
+            grfPkgD.Cols[coldQty].AllowEditing = false;
             //grfAgn.Cols[colRemark].Visible = false;
         }
         private void initGrfPkg()
