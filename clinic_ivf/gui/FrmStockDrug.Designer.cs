@@ -36,7 +36,7 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.c1SplitterPanel2 = new C1.Win.C1SplitContainer.C1SplitterPanel();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.c1DockingTab1 = new C1.Win.C1Command.C1DockingTab();
+            this.tC = new C1.Win.C1Command.C1DockingTab();
             this.c1DockingTabPage3 = new C1.Win.C1Command.C1DockingTabPage();
             this.panel5 = new System.Windows.Forms.Panel();
             this.c1ComboBox12 = new C1.Win.C1Input.C1ComboBox();
@@ -95,7 +95,7 @@
             this.txtDrgName = new C1.Win.C1Input.C1TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.txtID = new C1.Win.C1Input.C1TextBox();
-            this.txtDegCode = new C1.Win.C1Input.C1TextBox();
+            this.txtDrgCode = new C1.Win.C1Input.C1TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.sB.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.theme1)).BeginInit();
@@ -104,8 +104,8 @@
             this.c1SplitterPanel1.SuspendLayout();
             this.c1SplitterPanel2.SuspendLayout();
             this.panel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.c1DockingTab1)).BeginInit();
-            this.c1DockingTab1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.tC)).BeginInit();
+            this.tC.SuspendLayout();
             this.c1DockingTabPage3.SuspendLayout();
             this.panel5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.c1ComboBox12)).BeginInit();
@@ -140,7 +140,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtRemark)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtDrgName)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtID)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtDegCode)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtDrgCode)).BeginInit();
             this.SuspendLayout();
             // 
             // sB
@@ -222,7 +222,7 @@
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.panel2.Controls.Add(this.c1DockingTab1);
+            this.panel2.Controls.Add(this.tC);
             this.panel2.Controls.Add(this.txtPasswordVoid);
             this.panel2.Controls.Add(this.btnNew);
             this.panel2.Controls.Add(this.chkVoid);
@@ -234,7 +234,7 @@
             this.panel2.Controls.Add(this.txtDrgName);
             this.panel2.Controls.Add(this.label2);
             this.panel2.Controls.Add(this.txtID);
-            this.panel2.Controls.Add(this.txtDegCode);
+            this.panel2.Controls.Add(this.txtDrgCode);
             this.panel2.Controls.Add(this.label1);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
@@ -244,25 +244,25 @@
             this.panel2.TabIndex = 0;
             this.theme1.SetTheme(this.panel2, "(default)");
             // 
-            // c1DockingTab1
+            // tC
             // 
-            this.c1DockingTab1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.c1DockingTab1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.c1DockingTab1.Controls.Add(this.c1DockingTabPage3);
-            this.c1DockingTab1.Controls.Add(this.c1DockingTabPage1);
-            this.c1DockingTab1.Controls.Add(this.c1DockingTabPage2);
-            this.c1DockingTab1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.c1DockingTab1.HotTrack = true;
-            this.c1DockingTab1.Location = new System.Drawing.Point(0, 204);
-            this.c1DockingTab1.Name = "c1DockingTab1";
-            this.c1DockingTab1.SelectedIndex = 2;
-            this.c1DockingTab1.Size = new System.Drawing.Size(575, 481);
-            this.c1DockingTab1.TabIndex = 688;
-            this.c1DockingTab1.TabSizeMode = C1.Win.C1Command.TabSizeModeEnum.Fit;
-            this.c1DockingTab1.TabsShowFocusCues = false;
-            this.c1DockingTab1.TabsSpacing = 2;
-            this.c1DockingTab1.TabStyle = C1.Win.C1Command.TabStyleEnum.Office2007;
-            this.theme1.SetTheme(this.c1DockingTab1, "(default)");
+            this.tC.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.tC.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.tC.Controls.Add(this.c1DockingTabPage3);
+            this.tC.Controls.Add(this.c1DockingTabPage1);
+            this.tC.Controls.Add(this.c1DockingTabPage2);
+            this.tC.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.tC.HotTrack = true;
+            this.tC.Location = new System.Drawing.Point(0, 204);
+            this.tC.Name = "tC";
+            this.tC.SelectedIndex = 2;
+            this.tC.Size = new System.Drawing.Size(575, 481);
+            this.tC.TabIndex = 688;
+            this.tC.TabSizeMode = C1.Win.C1Command.TabSizeModeEnum.Fit;
+            this.tC.TabsShowFocusCues = false;
+            this.tC.TabsSpacing = 2;
+            this.tC.TabStyle = C1.Win.C1Command.TabStyleEnum.Office2007;
+            this.theme1.SetTheme(this.tC, "(default)");
             // 
             // c1DockingTabPage3
             // 
@@ -1183,18 +1183,18 @@
             this.txtID.Visible = false;
             this.txtID.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
             // 
-            // txtDegCode
+            // txtDrgCode
             // 
-            this.txtDegCode.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtDegCode.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
-            this.txtDegCode.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.txtDegCode.Location = new System.Drawing.Point(118, 26);
-            this.txtDegCode.Name = "txtDegCode";
-            this.txtDegCode.Size = new System.Drawing.Size(207, 20);
-            this.txtDegCode.TabIndex = 260;
-            this.txtDegCode.Tag = null;
-            this.theme1.SetTheme(this.txtDegCode, "(default)");
-            this.txtDegCode.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            this.txtDrgCode.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtDrgCode.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
+            this.txtDrgCode.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.txtDrgCode.Location = new System.Drawing.Point(118, 26);
+            this.txtDrgCode.Name = "txtDrgCode";
+            this.txtDrgCode.Size = new System.Drawing.Size(207, 20);
+            this.txtDrgCode.TabIndex = 260;
+            this.txtDrgCode.Tag = null;
+            this.theme1.SetTheme(this.txtDrgCode, "(default)");
+            this.txtDrgCode.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
             // 
             // label1
             // 
@@ -1228,8 +1228,8 @@
             this.c1SplitterPanel2.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.c1DockingTab1)).EndInit();
-            this.c1DockingTab1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.tC)).EndInit();
+            this.tC.ResumeLayout(false);
             this.c1DockingTabPage3.ResumeLayout(false);
             this.panel5.ResumeLayout(false);
             this.panel5.PerformLayout();
@@ -1267,7 +1267,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtRemark)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtDrgName)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtID)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtDegCode)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtDrgCode)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1294,7 +1294,7 @@
         private C1.Win.C1Input.C1TextBox txtDrgName;
         private System.Windows.Forms.Label label2;
         private C1.Win.C1Input.C1TextBox txtID;
-        private C1.Win.C1Input.C1TextBox txtDegCode;
+        private C1.Win.C1Input.C1TextBox txtDrgCode;
         private System.Windows.Forms.Label label1;
         private C1.Win.C1Input.C1TextBox txtDrgComm;
         private System.Windows.Forms.Label label4;
@@ -1319,7 +1319,7 @@
         private System.Windows.Forms.Label label17;
         private C1.Win.C1Input.C1TextBox c1TextBox7;
         private System.Windows.Forms.Label label18;
-        private C1.Win.C1Command.C1DockingTab c1DockingTab1;
+        private C1.Win.C1Command.C1DockingTab tC;
         private C1.Win.C1Command.C1DockingTabPage c1DockingTabPage1;
         private System.Windows.Forms.Panel panel4;
         private C1.Win.C1Command.C1DockingTabPage c1DockingTabPage2;

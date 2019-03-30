@@ -1,8 +1,8 @@
-ALTER TABLE `ivf`.`StockDrug` 
+ALTER TABLE `ivf`.`StockDrug`
 ADD COLUMN `item_sub_group_id` INT NULL AFTER `active`;
 
 
-ALTER TABLE `ivf`.`Item` 
+ALTER TABLE `ivf`.`Item`
 ADD COLUMN `item_code` VARCHAR(45) NULL AFTER `DUID_QTY`,
 ADD COLUMN `active` VARCHAR(45) NULL AFTER `item_code`,
 ADD COLUMN `Itemcol` VARCHAR(45) NULL AFTER `active`,
@@ -43,36 +43,36 @@ COMMENT = 'id=401';
 
 ALTER TABLE b_unit AUTO_INCREMENT = 40100000;
 
-ALTER TABLE `ivf_101`.`Item` 
+ALTER TABLE `ivf_101`.`Item`
 ADD COLUMN `purchase_point` DECIMAL(17,2) NULL COMMENT 'จุดสั่งซื้อ' AFTER `price`,
 ADD COLUMN `purchase_period` DECIMAL(17,2) NULL COMMENT 'จำนวน สั่งซื้อ' AFTER `purchase_point`;
 
-ALTER TABLE `ivf_101`.`Item` 
+ALTER TABLE `ivf_101`.`Item`
 ADD COLUMN `cost` DECIMAL(17,2) NULL AFTER `purchase_period`;
 
-ALTER TABLE `ivf_101`.`Item` 
+ALTER TABLE `ivf_101`.`Item`
 CHANGE COLUMN `price` `price` DECIMAL(17,2) NULL DEFAULT NULL COMMENT 'ราคาขาย' ,
 CHANGE COLUMN `cost` `cost` DECIMAL(17,2) NULL DEFAULT NULL COMMENT 'ราคาซื้อ' ;
 
-ALTER TABLE `ivf_101`.`t_patient` 
+ALTER TABLE `ivf_101`.`t_patient`
 ADD COLUMN `patient_hn_couple` VARCHAR(45) NULL AFTER `patient_country`;
 
 
-ALTER TABLE `ivf_101`.`JobLabDetail` 
+ALTER TABLE `ivf_101`.`JobLabDetail`
 ADD COLUMN `row1` INT NULL AFTER `active`;
 
 
-ALTER TABLE `ivf_101`.`JobPxDetail` 
+ALTER TABLE `ivf_101`.`JobPxDetail`
 ADD COLUMN `row1` INT NULL AFTER `EUsage`;
 
-ALTER TABLE `ivf_101`.`JobSpecialDetail` 
+ALTER TABLE `ivf_101`.`JobSpecialDetail`
 ADD COLUMN `row1` INT NULL AFTER `req_id`;
 
-ALTER TABLE `ivf_101`.`PackageSold` 
+ALTER TABLE `ivf_101`.`PackageSold`
 ADD COLUMN `row1` INT NULL AFTER `VN`;
 
 
-ALTER TABLE `ivf_101`.`Agent` 
+ALTER TABLE `ivf_101`.`Agent`
 ADD COLUMN `active` VARCHAR(45) NULL AFTER `AgentName`,
 ADD COLUMN `remark` VARCHAR(255) NULL AFTER `active`,
 ADD COLUMN `sort1` VARCHAR(45) NULL AFTER `remark`,
@@ -87,20 +87,20 @@ ADD COLUMN `user_cancel` VARCHAR(45) NULL AFTER `user_modi`;
 update Agent set active = '1'
 
 
-ALTER TABLE `ivf_101`.`Agent` 
+ALTER TABLE `ivf_101`.`Agent`
 CHANGE COLUMN `active` `active` VARCHAR(45) NULL DEFAULT '1' ;
 
 
-ALTER TABLE `ivf_101`.`b_company` 
+ALTER TABLE `ivf_101`.`b_company`
 ADD COLUMN `day_curr` VARCHAR(45) NULL AFTER `prefix_fet_doc`,
 CHANGE COLUMN `year_curr` `year_curr` VARCHAR(55) NULL DEFAULT NULL ,
 CHANGE COLUMN `month_curr` `month_curr` VARCHAR(55) NULL DEFAULT NULL ;
 
-ALTER TABLE `ivf_101`.`PackageSold` 
+ALTER TABLE `ivf_101`.`PackageSold`
 ADD COLUMN `payment_times` VARCHAR(45) NULL AFTER `row1`;
 
 
-ALTER TABLE `ivf_101`.`BillDetail` 
+ALTER TABLE `ivf_101`.`BillDetail`
 ADD COLUMN `item_id` INT NULL AFTER `Comment`;
 
 
@@ -125,17 +125,17 @@ COMMENT = 'id=223';
 
 ALTER TABLE ivf.b_doc_group_sub_scan AUTO_INCREMENT = 223000000;
 
-ALTER TABLE `ivf_101`.`t_note` 
+ALTER TABLE `ivf_101`.`t_note`
 ADD COLUMN `b_service_point_id` INT NULL AFTER `t_patient_id`;
 
-ALTER TABLE `ivf_101`.`t_note` 
+ALTER TABLE `ivf_101`.`t_note`
 ADD COLUMN `status_all` VARCHAR(45) NULL AFTER `b_service_point_id`;
 
 
-ALTER TABLE `ivf_101`.`t_patient` 
+ALTER TABLE `ivf_101`.`t_patient`
 ADD COLUMN `doctor_id` INT NULL AFTER `patient_hn_couple`;
 
-ALTER TABLE `ivf_101`.`t_visit` 
+ALTER TABLE `ivf_101`.`t_visit`
 ADD COLUMN `doctor_id` INT NULL AFTER `patient_hn_male`;
 
 
@@ -158,17 +158,19 @@ DEFAULT CHARACTER SET = utf8
 COLLATE = utf8_bin
 COMMENT = 'id=224';
 
-ALTER TABLE `ivf_101`.`StockDrug` 
+ALTER TABLE `ivf_101`.`StockDrug`
 ADD COLUMN `drug_caution` VARCHAR(255) NULL COMMENT 'คำเตือน' AFTER `active`,
 ADD COLUMN `drug_description` VARCHAR(255) NULL COMMENT 'คำบรรยาย' AFTER `drug_caution`,
 ADD COLUMN `instruction_id` INT NULL AFTER `drug_description`,
 ADD COLUMN `frequency_id` INT NULL AFTER `instruction_id`;
 
-ALTER TABLE `ivf_101`.`StockDrug` 
+ALTER TABLE `ivf_101`.`StockDrug`
 ADD COLUMN `drug_caution_e` VARCHAR(255) NULL AFTER `frequency_id`,
 ADD COLUMN `drug_frequency_e` VARCHAR(255) NULL AFTER `drug_caution_e`;
 
-
+ALTER TABLE ivf.PackageDetail AUTO_INCREMENT = 225000000;
+ALTER TABLE `ivf_101`.`PackageDetail`
+COMMENT = 'id=225' ;
 
 
 delete from JobPx;
@@ -179,4 +181,3 @@ delete from JobLabDetail;
 
 delete from JobSpecial;
 delete from JobSpecialDetail;
-

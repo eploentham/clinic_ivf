@@ -51,7 +51,7 @@ namespace clinic_ivf.objdb
             p.PCKID = long.TryParse(p.PCKID, out chk) ? chk.ToString() : "0";
             p.ItemID = long.TryParse(p.ItemID, out chk) ? chk.ToString() : "0";
 
-            p.QTY = Decimal.TryParse(p.QTY, out chk1) ? chk.ToString() : "0";
+            p.QTY = Decimal.TryParse(p.QTY, out chk1) ? chk1.ToString() : "0";
 
         }
         public String insert(OldPackageDetail p, String userId)
@@ -121,7 +121,28 @@ namespace clinic_ivf.objdb
 
             return re;
         }
-        public String insertNote(OldPackageDetail p, String userId)
+        public String voidPackageDetail(String id, String userId)
+        {
+            String re = "";
+            String sql = "";
+            //chkNull(p);
+            sql = "Update " + oPkgD.table + " Set " +
+                " " + oPkgD.active + " = '3'" +
+                "," + oPkgD.user_cancel + " = '"+ userId + "'" +
+                "," + oPkgD.date_cancel + " = now() " +
+                "Where " + oPkgD.pkField + "='" + id + "'";
+            try
+            {
+                re = conn.ExecuteNonQuery(conn.conn, sql);
+            }
+            catch (Exception ex)
+            {
+                sql = ex.Message + " " + ex.InnerException;
+            }
+
+            return re;
+        }
+        public String insertPackageDetail(OldPackageDetail p, String userId)
         {
             String re = "";
 

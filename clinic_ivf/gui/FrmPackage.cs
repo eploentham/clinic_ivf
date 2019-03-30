@@ -119,7 +119,7 @@ namespace clinic_ivf.gui
                 oPkgD.ItemName = itmname;
                 oPkgD.ItemID = itmid;
                 oPkgD.QTY = qty;
-                ic.ivfDB.oPkgdDB.insertNote(oPkgD, ic.cStf.staff_id);
+                ic.ivfDB.oPkgdDB.insertPackageDetail(oPkgD, ic.cStf.staff_id);
                 setGrfPkgD(txtID.Text);
             }
         }
@@ -139,7 +139,7 @@ namespace clinic_ivf.gui
                 long chk = 0;
                 if (long.TryParse(re, out chk))
                 {
-                    ic.ivfDB.oAgnDB.getlAgent();
+                    //ic.ivfDB.oPkgDB.get();
                     btnSave.Image = Resources.accept_database24;
                 }
                 else
@@ -434,6 +434,9 @@ namespace clinic_ivf.gui
             grfPkgD.ShowCursor = true;
             //grdFlex.Cols[colID].Caption = "no";
             //grfDept.Cols[colCode].Caption = "รหัส";
+            ContextMenu menuGw = new ContextMenu();
+            menuGw.MenuItems.Add("&แก้ไข Image", new EventHandler(ContextMenu_pkgd_delete));
+            grfPkgD.ContextMenu = menuGw;
 
             grfPkgD.Cols[coldID].Caption = "รหัส";
             grfPkgD.Cols[coldName].Caption = "ชื่อ Item";
@@ -449,6 +452,23 @@ namespace clinic_ivf.gui
             grfPkgD.Cols[coldName].AllowEditing = false;
             grfPkgD.Cols[coldQty].AllowEditing = false;
             //grfAgn.Cols[colRemark].Visible = false;
+        }
+        private void ContextMenu_pkgd_delete(object sender, System.EventArgs e)
+        {
+            ic.cStf.staff_id = "";
+            FrmPasswordConfirm frm = new FrmPasswordConfirm(ic);
+            frm.ShowDialog(this);
+            if (!ic.cStf.staff_id.Equals(""))
+            {
+                if (grfPkgD.Row < 0) return;
+                if (grfPkgD[grfPkgD.Row, coldID] == null) return;
+
+                String id = grfPkgD[grfPkgD.Row, coldID].ToString();
+                //String name = grfPkgD[grfPkgD.Row, coldName].ToString();
+                //String qty = grfPkgD[grfPkgD.Row, coldQty].ToString();
+                ic.ivfDB.oPkgdDB.voidPackageDetail(id, ic.cStf.staff_id);
+                setGrfPkgD(txtID.Text);
+            }
         }
         private void initGrfPkg()
         {

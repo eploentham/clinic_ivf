@@ -70,6 +70,7 @@
             this.txtDrugName = new C1.Win.C1Input.C1TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.txtPkgDId = new C1.Win.C1Input.C1TextBox();
             this.label15 = new System.Windows.Forms.Label();
             this.txtPkgPrice = new C1.Win.C1Input.C1TextBox();
             this.txtPasswordVoid = new C1.Win.C1Input.C1TextBox();
@@ -81,7 +82,6 @@
             this.txtID = new C1.Win.C1Input.C1TextBox();
             this.txtPkgName = new C1.Win.C1Input.C1TextBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.txtPkgDId = new C1.Win.C1Input.C1TextBox();
             this.sB.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.theme1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tC)).BeginInit();
@@ -115,6 +115,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtDrugQty)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtDrugName)).BeginInit();
             this.panel3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtPkgDId)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtPkgPrice)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtPasswordVoid)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkVoid)).BeginInit();
@@ -124,7 +125,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.btnEdit)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtID)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtPkgName)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtPkgDId)).BeginInit();
             this.SuspendLayout();
             // 
             // sB
@@ -133,7 +133,7 @@
             this.sB1});
             this.sB.Location = new System.Drawing.Point(0, 687);
             this.sB.Name = "sB";
-            this.sB.Size = new System.Drawing.Size(1156, 22);
+            this.sB.Size = new System.Drawing.Size(1183, 22);
             this.sB.TabIndex = 527;
             this.sB.Text = "statusStrip1";
             // 
@@ -162,7 +162,7 @@
             this.tC.Name = "tC";
             this.tC.Panels.Add(this.c1SplitterPanel1);
             this.tC.Panels.Add(this.c1SplitterPanel2);
-            this.tC.Size = new System.Drawing.Size(1156, 687);
+            this.tC.Size = new System.Drawing.Size(1183, 687);
             this.tC.SplitterColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(189)))), ((int)(((byte)(182)))));
             this.tC.SplitterMovingColor = System.Drawing.Color.Black;
             this.tC.TabIndex = 528;
@@ -177,11 +177,11 @@
             this.c1SplitterPanel1.Height = 687;
             this.c1SplitterPanel1.Location = new System.Drawing.Point(0, 21);
             this.c1SplitterPanel1.Name = "c1SplitterPanel1";
-            this.c1SplitterPanel1.Size = new System.Drawing.Size(533, 666);
-            this.c1SplitterPanel1.SizeRatio = 46.853D;
+            this.c1SplitterPanel1.Size = new System.Drawing.Size(472, 666);
+            this.c1SplitterPanel1.SizeRatio = 40.637D;
             this.c1SplitterPanel1.TabIndex = 0;
             this.c1SplitterPanel1.Text = "Panel 1";
-            this.c1SplitterPanel1.Width = 540;
+            this.c1SplitterPanel1.Width = 479;
             // 
             // panel1
             // 
@@ -190,7 +190,7 @@
             this.panel1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(533, 666);
+            this.panel1.Size = new System.Drawing.Size(472, 666);
             this.panel1.TabIndex = 1;
             this.theme1.SetTheme(this.panel1, "(default)");
             // 
@@ -198,12 +198,12 @@
             // 
             this.c1SplitterPanel2.Controls.Add(this.panel2);
             this.c1SplitterPanel2.Dock = C1.Win.C1SplitContainer.PanelDockStyle.Right;
-            this.c1SplitterPanel2.Location = new System.Drawing.Point(544, 21);
+            this.c1SplitterPanel2.Location = new System.Drawing.Point(483, 21);
             this.c1SplitterPanel2.Name = "c1SplitterPanel2";
-            this.c1SplitterPanel2.Size = new System.Drawing.Size(612, 666);
+            this.c1SplitterPanel2.Size = new System.Drawing.Size(700, 666);
             this.c1SplitterPanel2.TabIndex = 1;
             this.c1SplitterPanel2.Text = "Panel 2";
-            this.c1SplitterPanel2.Width = 612;
+            this.c1SplitterPanel2.Width = 700;
             // 
             // panel2
             // 
@@ -214,7 +214,7 @@
             this.panel2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
             this.panel2.Location = new System.Drawing.Point(0, 0);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(612, 666);
+            this.panel2.Size = new System.Drawing.Size(700, 666);
             this.panel2.TabIndex = 0;
             this.theme1.SetTheme(this.panel2, "(default)");
             // 
@@ -226,7 +226,7 @@
             this.panel4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
             this.panel4.Location = new System.Drawing.Point(0, 125);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(612, 541);
+            this.panel4.Size = new System.Drawing.Size(700, 541);
             this.panel4.TabIndex = 1;
             this.theme1.SetTheme(this.panel4, "(default)");
             // 
@@ -245,7 +245,7 @@
             this.c1SplitContainer1.Name = "c1SplitContainer1";
             this.c1SplitContainer1.Panels.Add(this.c1SplitterPanel3);
             this.c1SplitContainer1.Panels.Add(this.c1SplitterPanel4);
-            this.c1SplitContainer1.Size = new System.Drawing.Size(612, 541);
+            this.c1SplitContainer1.Size = new System.Drawing.Size(700, 541);
             this.c1SplitContainer1.SplitterColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(189)))), ((int)(((byte)(182)))));
             this.c1SplitContainer1.SplitterMovingColor = System.Drawing.Color.Black;
             this.c1SplitContainer1.TabIndex = 0;
@@ -260,11 +260,11 @@
             this.c1SplitterPanel3.Height = 541;
             this.c1SplitterPanel3.Location = new System.Drawing.Point(0, 21);
             this.c1SplitterPanel3.Name = "c1SplitterPanel3";
-            this.c1SplitterPanel3.Size = new System.Drawing.Size(297, 520);
+            this.c1SplitterPanel3.Size = new System.Drawing.Size(342, 520);
             this.c1SplitterPanel3.SizeRatio = 50.075D;
             this.c1SplitterPanel3.TabIndex = 0;
             this.c1SplitterPanel3.Text = "Panel 1";
-            this.c1SplitterPanel3.Width = 304;
+            this.c1SplitterPanel3.Width = 349;
             // 
             // panel11
             // 
@@ -273,7 +273,7 @@
             this.panel11.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
             this.panel11.Location = new System.Drawing.Point(0, 0);
             this.panel11.Name = "panel11";
-            this.panel11.Size = new System.Drawing.Size(297, 520);
+            this.panel11.Size = new System.Drawing.Size(342, 520);
             this.panel11.TabIndex = 0;
             this.theme1.SetTheme(this.panel11, "(default)");
             // 
@@ -281,12 +281,12 @@
             // 
             this.c1SplitterPanel4.Controls.Add(this.tCItem);
             this.c1SplitterPanel4.Dock = C1.Win.C1SplitContainer.PanelDockStyle.Right;
-            this.c1SplitterPanel4.Location = new System.Drawing.Point(308, 21);
+            this.c1SplitterPanel4.Location = new System.Drawing.Point(353, 21);
             this.c1SplitterPanel4.Name = "c1SplitterPanel4";
-            this.c1SplitterPanel4.Size = new System.Drawing.Size(304, 520);
+            this.c1SplitterPanel4.Size = new System.Drawing.Size(347, 520);
             this.c1SplitterPanel4.TabIndex = 1;
             this.c1SplitterPanel4.Text = "Panel 2";
-            this.c1SplitterPanel4.Width = 304;
+            this.c1SplitterPanel4.Width = 347;
             // 
             // tCItem
             // 
@@ -299,7 +299,7 @@
             this.tCItem.HotTrack = true;
             this.tCItem.Location = new System.Drawing.Point(0, 0);
             this.tCItem.Name = "tCItem";
-            this.tCItem.Size = new System.Drawing.Size(304, 520);
+            this.tCItem.Size = new System.Drawing.Size(347, 520);
             this.tCItem.TabIndex = 0;
             this.tCItem.TabSizeMode = C1.Win.C1Command.TabSizeModeEnum.Fit;
             this.tCItem.TabsShowFocusCues = false;
@@ -313,7 +313,7 @@
             this.tabLab.Controls.Add(this.panel5);
             this.tabLab.Location = new System.Drawing.Point(1, 24);
             this.tabLab.Name = "tabLab";
-            this.tabLab.Size = new System.Drawing.Size(302, 495);
+            this.tabLab.Size = new System.Drawing.Size(345, 495);
             this.tabLab.TabIndex = 0;
             this.tabLab.Text = "LAB";
             // 
@@ -324,7 +324,7 @@
             this.panel8.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
             this.panel8.Location = new System.Drawing.Point(0, 79);
             this.panel8.Name = "panel8";
-            this.panel8.Size = new System.Drawing.Size(302, 416);
+            this.panel8.Size = new System.Drawing.Size(345, 416);
             this.panel8.TabIndex = 0;
             this.theme1.SetTheme(this.panel8, "(default)");
             // 
@@ -341,7 +341,7 @@
             this.panel5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
             this.panel5.Location = new System.Drawing.Point(0, 0);
             this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(302, 79);
+            this.panel5.Size = new System.Drawing.Size(345, 79);
             this.panel5.TabIndex = 0;
             this.theme1.SetTheme(this.panel5, "(default)");
             // 
@@ -429,7 +429,7 @@
             this.tabSe.Controls.Add(this.panel6);
             this.tabSe.Location = new System.Drawing.Point(1, 24);
             this.tabSe.Name = "tabSe";
-            this.tabSe.Size = new System.Drawing.Size(302, 495);
+            this.tabSe.Size = new System.Drawing.Size(345, 495);
             this.tabSe.TabIndex = 1;
             this.tabSe.Text = "Special Item";
             // 
@@ -440,7 +440,7 @@
             this.panel9.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
             this.panel9.Location = new System.Drawing.Point(0, 79);
             this.panel9.Name = "panel9";
-            this.panel9.Size = new System.Drawing.Size(302, 416);
+            this.panel9.Size = new System.Drawing.Size(345, 416);
             this.panel9.TabIndex = 1;
             this.theme1.SetTheme(this.panel9, "(default)");
             // 
@@ -457,7 +457,7 @@
             this.panel6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
             this.panel6.Location = new System.Drawing.Point(0, 0);
             this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(302, 79);
+            this.panel6.Size = new System.Drawing.Size(345, 79);
             this.panel6.TabIndex = 0;
             this.theme1.SetTheme(this.panel6, "(default)");
             // 
@@ -545,7 +545,7 @@
             this.tabDrug.Controls.Add(this.panel7);
             this.tabDrug.Location = new System.Drawing.Point(1, 24);
             this.tabDrug.Name = "tabDrug";
-            this.tabDrug.Size = new System.Drawing.Size(302, 495);
+            this.tabDrug.Size = new System.Drawing.Size(345, 495);
             this.tabDrug.TabIndex = 2;
             this.tabDrug.Text = "Drug";
             // 
@@ -556,7 +556,7 @@
             this.panel10.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
             this.panel10.Location = new System.Drawing.Point(0, 79);
             this.panel10.Name = "panel10";
-            this.panel10.Size = new System.Drawing.Size(302, 416);
+            this.panel10.Size = new System.Drawing.Size(345, 416);
             this.panel10.TabIndex = 1;
             this.theme1.SetTheme(this.panel10, "(default)");
             // 
@@ -573,7 +573,7 @@
             this.panel7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
             this.panel7.Location = new System.Drawing.Point(0, 0);
             this.panel7.Name = "panel7";
-            this.panel7.Size = new System.Drawing.Size(302, 79);
+            this.panel7.Size = new System.Drawing.Size(345, 79);
             this.panel7.TabIndex = 0;
             this.theme1.SetTheme(this.panel7, "(default)");
             // 
@@ -674,9 +674,23 @@
             this.panel3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
             this.panel3.Location = new System.Drawing.Point(0, 0);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(612, 125);
+            this.panel3.Size = new System.Drawing.Size(700, 125);
             this.panel3.TabIndex = 0;
             this.theme1.SetTheme(this.panel3, "(default)");
+            // 
+            // txtPkgDId
+            // 
+            this.txtPkgDId.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtPkgDId.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
+            this.txtPkgDId.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.txtPkgDId.Location = new System.Drawing.Point(277, 65);
+            this.txtPkgDId.Name = "txtPkgDId";
+            this.txtPkgDId.Size = new System.Drawing.Size(30, 20);
+            this.txtPkgDId.TabIndex = 578;
+            this.txtPkgDId.Tag = null;
+            this.theme1.SetTheme(this.txtPkgDId, "(default)");
+            this.txtPkgDId.Visible = false;
+            this.txtPkgDId.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
             // 
             // label15
             // 
@@ -833,25 +847,11 @@
             this.label2.Text = "ชื่อ Package :";
             this.theme1.SetTheme(this.label2, "(default)");
             // 
-            // txtPkgDId
-            // 
-            this.txtPkgDId.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtPkgDId.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
-            this.txtPkgDId.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.txtPkgDId.Location = new System.Drawing.Point(324, 91);
-            this.txtPkgDId.Name = "txtPkgDId";
-            this.txtPkgDId.Size = new System.Drawing.Size(30, 20);
-            this.txtPkgDId.TabIndex = 578;
-            this.txtPkgDId.Tag = null;
-            this.theme1.SetTheme(this.txtPkgDId, "(default)");
-            this.txtPkgDId.Visible = false;
-            this.txtPkgDId.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
-            // 
             // FrmPackage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1156, 709);
+            this.ClientSize = new System.Drawing.Size(1183, 709);
             this.Controls.Add(this.tC);
             this.Controls.Add(this.sB);
             this.Name = "FrmPackage";
@@ -895,6 +895,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtDrugName)).EndInit();
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtPkgDId)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtPkgPrice)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtPasswordVoid)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkVoid)).EndInit();
@@ -904,7 +905,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.btnEdit)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtID)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtPkgName)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtPkgDId)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
