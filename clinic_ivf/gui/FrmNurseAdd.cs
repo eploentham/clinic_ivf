@@ -4,6 +4,7 @@ using C1.Win.C1Input;
 using C1.Win.C1SuperTooltip;
 using clinic_ivf.control;
 using clinic_ivf.object1;
+using clinic_ivf.Properties;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -22,7 +23,7 @@ namespace clinic_ivf.gui
         MainMenu menu;
         public C1DockingTabPage tab;
 
-        String pttId = "", webcamname = "", vsid = "", flagedit;
+        String pttId = "", webcamname = "", vsid = "", flagedit="", pApmId = "";
         Patient ptt;
         VisitOld vsOld;
         Visit vs;
@@ -32,7 +33,7 @@ namespace clinic_ivf.gui
         Color bg, fc;
         Font ff, ffB;
 
-        C1FlexGrid grfBloodLab, grfSperm, grfEmbryo, grfGenetic, grfSpecial, grfRx, grfRxSet, grfOrder, grfPackage, grfPackageD, grfRxSetD, grfNote;
+        C1FlexGrid grfBloodLab, grfSperm, grfEmbryo, grfGenetic, grfSpecial, grfRx, grfRxSet, grfOrder, grfPackage, grfPackageD, grfRxSetD, grfNote, grfpApmAll;
         C1SuperTooltip stt;
         C1SuperErrorProvider sep;
 
@@ -40,6 +41,7 @@ namespace clinic_ivf.gui
         int colPkgdId = 1, colPkgId = 2, colPkgType = 3, colPkgItmName = 4, colPkgItmId = 5, colPkgQty = 6;
         int colRxdId = 1, colRxName = 2, colRxQty = 3, colRxPrice=4, colRxInclude=5, colRxRemark=6, colRxUsE=7, colRxUsT=8, colRxId = 9, colRxItmId = 10;
         int colNoteId = 1, colNote = 2, colNoteStatusAll = 3;
+        int colApmId = 1, colApmAppointment = 4, colApmDate = 2, colApmTime = 3, colApmDoctor = 5, colApmSp = 6, colApmNotice = 7, colE2 = 8, colLh = 9, colEndo = 10, colPrl = 10, colFsh = 11, colRt = 12, colLt = 13;
 
         int colOrderId = 1, colOrderVn = 2, colOrderLID = 3, colOrderExtra = 4, colOrderPrice = 5, colOrderStatus=6;
         int colOrderPID = 7, colOrderPIDS = 8, colOrderLName = 9, colOrderSP1V = 10, colOrderSP2V = 11, colOrderSP3V = 12;
@@ -48,6 +50,7 @@ namespace clinic_ivf.gui
         int colOrderWorker5 = 23, colOrderLGID = 24, colOrderQTY = 25, colOrderActive = 26;
         int colOrdid = 1, colOrdlpid=2, colOrdName=3, colOrdPrice=4, colOrdQty=5, colOrdstatus=6, colOrdrow1=7, colOrditmid=8, colOrdInclude=9, colOrdAmt=10, colOrdUsE = 11, colOrdUsT = 12;
         int rowOrder = 0;
+        Image imgCorr, imgTran;
 
         public FrmNurseAdd(IvfControl ic, MainMenu m, String pttid, String vsid, String flagedit)
         {
@@ -80,6 +83,9 @@ namespace clinic_ivf.gui
             pttOld = new PatientOld();
             stt = new C1SuperTooltip();
             sep = new C1SuperErrorProvider();
+
+            imgCorr = Resources.red_checkmark_png_16;
+            imgTran = Resources.red_checkmark_png_51;
 
             ic.setCboLangSticker(cboLangSticker);
 
@@ -116,6 +122,8 @@ namespace clinic_ivf.gui
             setGrfOrder(txtVn.Text);
             initGrfNote();
             setGrfNote();
+            initGrfAdm();
+            setGrfpApmAll();
             if (flagedit.Equals("view"))
             {
                 btnPkgOrder.Enabled = false;
@@ -315,6 +323,160 @@ namespace clinic_ivf.gui
             {
 
             }
+        }
+        private void initGrfAdm()
+        {
+            grfpApmAll = new C1FlexGrid();
+            grfpApmAll.Font = fEdit;
+            grfpApmAll.Dock = System.Windows.Forms.DockStyle.Fill;
+            grfpApmAll.Location = new System.Drawing.Point(0, 0);
+
+
+            grfpApmAll.DoubleClick += GrfAdm_DoubleClick;
+            //grfExpnC.CellChanged += new C1.Win.C1FlexGrid.RowColEventHandler(this.grfDept_CellChanged);
+            //ContextMenu menuGw = new ContextMenu();
+            //menuGw.MenuItems.Add("Upload รูปบัตรประชาชน", new EventHandler(ContextMenu_grfimg_upload_ptt));
+            //menuGw.MenuItems.Add("Upload สำเนาบัตรประชาชน ที่มีลายเซ็น", new EventHandler(ContextMenu_grfimg_upload_ptt));
+            //menuGw.MenuItems.Add("Upload รูป Passport", new EventHandler(ContextMenu_grfimg_upload_ptt));
+            //menuGw.MenuItems.Add("ยกเลิก", new EventHandler(ContextMenu_grfimg_Cancel));
+            //grfImgOld.ContextMenu = menuGw;
+            pnAdm.Controls.Add(grfpApmAll);
+
+            theme1.SetTheme(grfpApmAll, "Office2016Colorful");
+
+        }
+
+        private void GrfAdm_DoubleClick(object sender, EventArgs e)
+        {
+            //throw new NotImplementedException();
+
+        }
+        private void setGrfpApmAll()
+        {
+            //grfDept.Rows.Count = 7;
+            grfpApmAll.Clear();
+            DataTable dt = new DataTable();
+
+            dt = ic.ivfDB.pApmDB.selectByPtt(ptt.t_patient_id);
+
+            //grfExpn.Rows.Count = dt.Rows.Count + 1;
+            grfpApmAll.Rows.Count = 1;
+            grfpApmAll.Cols.Count = 14;
+            C1TextBox txt = new C1TextBox();
+            //C1ComboBox cboproce = new C1ComboBox();
+            //ic.ivfDB.itmDB.setCboItem(cboproce);
+            grfpApmAll.Cols[colApmNotice].Editor = txt;
+            grfpApmAll.Cols[colApmAppointment].Editor = txt;
+            grfpApmAll.Cols[colApmDoctor].Editor = txt;
+            Column colE21 = grfpApmAll.Cols[colE2];
+            colE21.DataType = typeof(Image);
+            Column colLh1 = grfpApmAll.Cols[colLh];
+            colLh1.DataType = typeof(Image);
+            Column colEndo1 = grfpApmAll.Cols[colEndo];
+            colEndo1.DataType = typeof(Image);
+            Column colPrl1 = grfpApmAll.Cols[colPrl];
+            colPrl1.DataType = typeof(Image);
+            Column colFsh1 = grfpApmAll.Cols[colFsh];
+            colFsh1.DataType = typeof(Image);
+            Column colRt1 = grfpApmAll.Cols[colRt];
+            colRt1.DataType = typeof(Image);
+            Column colLt1 = grfpApmAll.Cols[colLt];
+            colLt1.DataType = typeof(Image);
+
+            grfpApmAll.Cols[colApmDate].Width = 100;
+            grfpApmAll.Cols[colApmTime].Width = 80;
+            grfpApmAll.Cols[colApmAppointment].Width = 120;
+            grfpApmAll.Cols[colApmDoctor].Width = 100;
+            grfpApmAll.Cols[colApmSp].Width = 80;
+            grfpApmAll.Cols[colApmNotice].Width = 200;
+            grfpApmAll.Cols[colE2].Width = 60;
+            grfpApmAll.Cols[colLh].Width = 60;
+            grfpApmAll.Cols[colEndo].Width = 60;
+            grfpApmAll.Cols[colPrl].Width = 60;
+            grfpApmAll.Cols[colFsh].Width = 60;
+            grfpApmAll.Cols[colRt].Width = 60;
+            grfpApmAll.Cols[colLt].Width = 60;
+
+            grfpApmAll.ShowCursor = true;
+            //grdFlex.Cols[colID].Caption = "no";
+            //grfDept.Cols[colCode].Caption = "รหัส";
+
+            grfpApmAll.Cols[colApmDate].Caption = "Date";
+            grfpApmAll.Cols[colApmTime].Caption = "time";
+            grfpApmAll.Cols[colApmAppointment].Caption = "นัด";
+            grfpApmAll.Cols[colApmDoctor].Caption = "Doctor";
+            grfpApmAll.Cols[colApmSp].Caption = "จุดบริการ";
+            grfpApmAll.Cols[colApmNotice].Caption = "แจ้ง";
+            grfpApmAll.Cols[colE2].Caption = "E2";
+            grfpApmAll.Cols[colLh].Caption = "LH";
+            grfpApmAll.Cols[colEndo].Caption = "Endo";
+            grfpApmAll.Cols[colPrl].Caption = "PRL";
+            grfpApmAll.Cols[colFsh].Caption = "FSH";
+            grfpApmAll.Cols[colRt].Caption = "Rt";
+            grfpApmAll.Cols[colLt].Caption = "Lt";
+
+            ContextMenu menuGw = new ContextMenu();
+            menuGw.MenuItems.Add("แก้ไข Appointment", new EventHandler(ContextMenu_edit_papm));
+            grfpApmAll.ContextMenu = menuGw;
+
+            Color color = ColorTranslator.FromHtml(ic.iniC.grfRowColor);
+            //CellRange rg1 = grfBank.GetCellRange(1, colE, grfBank.Rows.Count, colE);
+            //rg1.Style = grfBank.Styles["date"];
+            //grfCu.Cols[colID].Visible = false;
+            int i = 1;
+            foreach (DataRow row in dt.Rows)
+            {
+                Row row1 = grfpApmAll.Rows.Add();
+                row1[0] = i;
+                row1[colApmId] = row[ic.ivfDB.pApmDB.pApm.t_patient_appointment_id].ToString();
+                row1[colApmDate] = ic.datetoShow(row[ic.ivfDB.pApmDB.pApm.patient_appointment_date].ToString());
+                row1[colApmTime] = row[ic.ivfDB.pApmDB.pApm.patient_appointment_time].ToString();
+                row1[colApmAppointment] = row[ic.ivfDB.pApmDB.pApm.patient_appointment].ToString();
+                row1[colApmDoctor] = row[ic.ivfDB.pApmDB.pApm.dtr_name];
+                row1[colApmSp] = row["service_point_description"].ToString();
+                row1[colApmNotice] = row[ic.ivfDB.pApmDB.pApm.patient_appointment_notice].ToString();
+
+                //row1[colE2] = row[ic.ivfDB.pApmDB.pApm.e2].ToString();
+                //row1[colLh] = row[ic.ivfDB.pApmDB.pApm.lh].ToString();
+                //row1[colEndo] = row[ic.ivfDB.pApmDB.pApm.endo].ToString();
+                //row1[colPrl] = row[ic.ivfDB.pApmDB.pApm.prl].ToString();
+                //row1[colFsh] = row[ic.ivfDB.pApmDB.pApm.fsh].ToString();
+                //row1[colRt] = row[ic.ivfDB.pApmDB.pApm.rt_ovary].ToString();
+                //row1[colLt] = row[ic.ivfDB.pApmDB.pApm.lt_ovary].ToString();
+
+                row1[colE2] = row[ic.ivfDB.pApmDB.pApm.e2] == null ? imgTran : row[ic.ivfDB.pApmDB.pApm.e2].ToString().Equals("1") ? imgCorr : imgTran;
+                row1[colLh] = row[ic.ivfDB.pApmDB.pApm.lh] == null ? imgTran : row[ic.ivfDB.pApmDB.pApm.lh].ToString().Equals("1") ? imgCorr : imgTran;
+                row1[colEndo] = row[ic.ivfDB.pApmDB.pApm.endo] == null ? imgTran : row[ic.ivfDB.pApmDB.pApm.endo].ToString().Equals("1") ? imgCorr : imgTran;
+                row1[colPrl] = row[ic.ivfDB.pApmDB.pApm.prl] == null ? imgTran : row[ic.ivfDB.pApmDB.pApm.prl].ToString().Equals("1") ? imgCorr : imgTran;
+                row1[colFsh] = row[ic.ivfDB.pApmDB.pApm.fsh] == null ? imgTran : row[ic.ivfDB.pApmDB.pApm.fsh].ToString().Equals("1") ? imgCorr : imgTran;
+                row1[colRt] = row[ic.ivfDB.pApmDB.pApm.rt_ovary] == null ? imgTran : row[ic.ivfDB.pApmDB.pApm.rt_ovary].ToString().Equals("1") ? imgCorr : imgTran;
+                row1[colLt] = row[ic.ivfDB.pApmDB.pApm.lt_ovary] == null ? imgTran : row[ic.ivfDB.pApmDB.pApm.lt_ovary].ToString().Equals("1") ? imgCorr : imgTran;
+                //if (i % 2 == 0)
+                //    grfPtt.Rows[i].StyleNew.BackColor = color;
+                i++;
+            }
+            grfpApmAll.Cols[colE2].AllowEditing = false;
+            grfpApmAll.Cols[colLh].AllowEditing = false;
+            grfpApmAll.Cols[colEndo].AllowEditing = false;
+            grfpApmAll.Cols[colPrl].AllowEditing = false;
+            grfpApmAll.Cols[colFsh].AllowEditing = false;
+            grfpApmAll.Cols[colRt].AllowEditing = false;
+            grfpApmAll.Cols[colLt].AllowEditing = false;
+            //menuGw = new ContextMenu();
+            //grfpApmAll.ContextMenu = menuGw;
+            grfpApmAll.Cols[colApmId].Visible = false;
+            theme1.SetTheme(grfpApmAll, ic.theme);
+
+        }
+        private void ContextMenu_edit_papm(object sender, System.EventArgs e)
+        {
+            String chk = "", name = "", id = "";
+            id = grfpApmAll[grfpApmAll.Row, colApmId] != null ? grfpApmAll[grfpApmAll.Row, colApmId].ToString() : "";
+            pApmId = id;
+            FrmAppointmentAdd frm = new FrmAppointmentAdd(ic, pApmId, pttId, vsid);
+            frm.ShowDialog(this);
+            setGrfpApmAll();
+
         }
         private void initGrfNote()
         {
