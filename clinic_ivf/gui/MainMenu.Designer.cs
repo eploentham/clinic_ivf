@@ -60,18 +60,22 @@
             this.menuStaff = new System.Windows.Forms.ToolStripMenuItem();
             this.menuDept = new System.Windows.Forms.ToolStripMenuItem();
             this.menuPosi = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuAgent = new System.Windows.Forms.ToolStripMenuItem();
             this.menuPackage = new System.Windows.Forms.ToolStripMenuItem();
             this.lABToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuOpuProce = new System.Windows.Forms.ToolStripMenuItem();
             this.menuFetProce = new System.Windows.Forms.ToolStripMenuItem();
             this.convertPatientDonorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.masterToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuDrug = new System.Windows.Forms.ToolStripMenuItem();
+            this.แผนกORToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuGrpDiag = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuOrDiag = new System.Windows.Forms.ToolStripMenuItem();
+            this.anesthesiaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuAgent = new System.Windows.Forms.ToolStripMenuItem();
             this.tCC1 = new C1.Win.C1Command.C1CommandDock();
             this.tC1 = new C1.Win.C1Command.C1DockingTab();
             this.PageS = new C1.Win.C1Command.C1DockingTabPage();
             this.theme1 = new C1.Win.C1Themes.C1ThemeController();
-            this.masterToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuDrug = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tCC1)).BeginInit();
             this.tCC1.SuspendLayout();
@@ -322,12 +326,6 @@
             this.menuPosi.Size = new System.Drawing.Size(192, 22);
             this.menuPosi.Text = "ตำแหน่ง";
             // 
-            // menuAgent
-            // 
-            this.menuAgent.Name = "menuAgent";
-            this.menuAgent.Size = new System.Drawing.Size(192, 22);
-            this.menuAgent.Text = "Agent";
-            // 
             // menuPackage
             // 
             this.menuPackage.Name = "menuPackage";
@@ -360,6 +358,55 @@
             this.convertPatientDonorToolStripMenuItem.Name = "convertPatientDonorToolStripMenuItem";
             this.convertPatientDonorToolStripMenuItem.Size = new System.Drawing.Size(192, 22);
             this.convertPatientDonorToolStripMenuItem.Text = "Convert Patient Donor";
+            // 
+            // masterToolStripMenuItem
+            // 
+            this.masterToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.menuDrug,
+            this.แผนกORToolStripMenuItem});
+            this.masterToolStripMenuItem.Name = "masterToolStripMenuItem";
+            this.masterToolStripMenuItem.Size = new System.Drawing.Size(192, 22);
+            this.masterToolStripMenuItem.Text = "Master";
+            // 
+            // menuDrug
+            // 
+            this.menuDrug.Name = "menuDrug";
+            this.menuDrug.Size = new System.Drawing.Size(180, 22);
+            this.menuDrug.Text = "แผนก Drug";
+            // 
+            // แผนกORToolStripMenuItem
+            // 
+            this.แผนกORToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.menuGrpDiag,
+            this.menuOrDiag,
+            this.anesthesiaToolStripMenuItem});
+            this.แผนกORToolStripMenuItem.Name = "แผนกORToolStripMenuItem";
+            this.แผนกORToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.แผนกORToolStripMenuItem.Text = "แผนก OR";
+            // 
+            // menuGrpDiag
+            // 
+            this.menuGrpDiag.Name = "menuGrpDiag";
+            this.menuGrpDiag.Size = new System.Drawing.Size(180, 22);
+            this.menuGrpDiag.Text = "Group Diagnosis";
+            // 
+            // menuOrDiag
+            // 
+            this.menuOrDiag.Name = "menuOrDiag";
+            this.menuOrDiag.Size = new System.Drawing.Size(180, 22);
+            this.menuOrDiag.Text = "Diagnosis OR";
+            // 
+            // anesthesiaToolStripMenuItem
+            // 
+            this.anesthesiaToolStripMenuItem.Name = "anesthesiaToolStripMenuItem";
+            this.anesthesiaToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.anesthesiaToolStripMenuItem.Text = "Anesthesia";
+            // 
+            // menuAgent
+            // 
+            this.menuAgent.Name = "menuAgent";
+            this.menuAgent.Size = new System.Drawing.Size(192, 22);
+            this.menuAgent.Text = "Agent";
             // 
             // tCC1
             // 
@@ -403,20 +450,6 @@
             // theme1
             // 
             this.theme1.Theme = "BeigeOne";
-            // 
-            // masterToolStripMenuItem
-            // 
-            this.masterToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.menuDrug});
-            this.masterToolStripMenuItem.Name = "masterToolStripMenuItem";
-            this.masterToolStripMenuItem.Size = new System.Drawing.Size(192, 22);
-            this.masterToolStripMenuItem.Text = "Master";
-            // 
-            // menuDrug
-            // 
-            this.menuDrug.Name = "menuDrug";
-            this.menuDrug.Size = new System.Drawing.Size(180, 22);
-            this.menuDrug.Text = "Drug";
             // 
             // MainMenu
             // 
@@ -487,5 +520,9 @@
         private System.Windows.Forms.ToolStripMenuItem menuPackage;
         private System.Windows.Forms.ToolStripMenuItem masterToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem menuDrug;
+        private System.Windows.Forms.ToolStripMenuItem แผนกORToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem menuGrpDiag;
+        private System.Windows.Forms.ToolStripMenuItem menuOrDiag;
+        private System.Windows.Forms.ToolStripMenuItem anesthesiaToolStripMenuItem;
     }
 }

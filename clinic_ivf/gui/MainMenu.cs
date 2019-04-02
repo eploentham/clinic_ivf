@@ -84,6 +84,24 @@ namespace clinic_ivf.gui
             menuAgent.Click += MenuAgent_Click;
             menuPackage.Click += MenuPackage_Click;
             menuDrug.Click += MenuDrug_Click;
+            menuGrpDiag.Click += MenuGrpDiag_Click;
+            menuOrDiag.Click += MenuOrDiag_Click;
+        }
+
+        private void MenuOrDiag_Click(object sender, EventArgs e)
+        {
+            //throw new NotImplementedException();
+            FrmOrDiag frm = new FrmOrDiag(ic);
+            frm.FormBorderStyle = FormBorderStyle.None;
+            AddNewTab(frm, menuOrDiag.Text + " ");
+        }
+
+        private void MenuGrpDiag_Click(object sender, EventArgs e)
+        {
+            //throw new NotImplementedException();
+            FrmOrDiagGroup frm = new FrmOrDiagGroup(ic);
+            frm.FormBorderStyle = FormBorderStyle.None;
+            AddNewTab(frm, menuGrpDiag.Text + " ");
         }
 
         private void MenuDrug_Click(object sender, EventArgs e)

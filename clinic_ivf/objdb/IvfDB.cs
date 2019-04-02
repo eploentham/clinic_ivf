@@ -81,6 +81,10 @@ namespace clinic_ivf.objdb
         public OldBillGroupDB obilgDB;
         public OldFilePatientDB ofpDB;
         public NoteDB noteDB;
+        public OrDiagGroupDB ordgDB;
+        public OrDiagDB ordDB;
+        public OrAnesthesiaDB oranesDB;
+        public OrRequestDB orreqDB;
 
         public IvfDB(ConnectDB c)
         {
@@ -153,6 +157,10 @@ namespace clinic_ivf.objdb
             obilgDB = new OldBillGroupDB(conn);
             ofpDB = new OldFilePatientDB(conn);
             noteDB = new NoteDB(conn);
+            ordgDB = new OrDiagGroupDB(conn);
+            ordDB = new OrDiagDB(conn);
+            oranesDB = new OrAnesthesiaDB(conn);
+            orreqDB = new OrRequestDB(conn);
 
             Console.WriteLine("ivfDB end");
         }
