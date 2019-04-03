@@ -197,7 +197,7 @@ namespace clinic_ivf.gui
         private void MenuExamiRoom_Click(object sender, EventArgs e)
         {
             //throw new NotImplementedException();
-            FrmNurseView frm = new FrmNurseView(ic, this);
+            FrmOrReqAdd frm = new FrmOrReqAdd(ic);
             frm.FormBorderStyle = FormBorderStyle.None;
             AddNewTab(frm, menuExamiRoom.Text + " ");
         }

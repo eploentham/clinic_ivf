@@ -66,7 +66,7 @@ namespace clinic_ivf.gui
             txtDateStart.DropDownClosed += TxtDateStart_DropDownClosed;
             tC.SelectedTabChanged += TC_SelectedTabChanged;
             btnSearch.Click += BtnSearch_Click;
-            txtSearch.KeyUp += TxtSearch_KeyUp1;
+            //txtSearch.KeyUp += TxtSearch_KeyUp1;
             txtLabResultDate.KeyUp += TxtLabResultDate_KeyUp;
 
             initGrfQue();
@@ -105,10 +105,7 @@ namespace clinic_ivf.gui
         private void TxtSearch_KeyUp1(object sender, KeyEventArgs e)
         {
             //throw new NotImplementedException();
-            if(e.KeyCode == Keys.Enter)
-            {
-                setGrfSearch(txtSearch.Text.Trim());
-            }
+            
         }
 
         private void BtnSearch_Click(object sender, EventArgs e)
@@ -169,25 +166,29 @@ namespace clinic_ivf.gui
             //throw new NotImplementedException();
             if (e.KeyCode == Keys.Enter)
             {
-                if (txtDateStart.Text.Equals(""))
-                {
-                    if (tabWaiting.IsSelected)
-                    {
+                //if (txtDateStart.Text.Equals(""))
+                //{
+                //    if (tabWaiting.IsSelected)
+                //    {
 
-                    }
-                    else if (tabDiag.IsSelected)
-                    {
+                //    }
+                //    else if (tabDiag.IsSelected)
+                //    {
 
-                    }
-                    else if (tabFinish.IsSelected)
-                    {
-                        setGrfFinish();
-                    }
-                }
-                else
-                {
-                    setGrfQue(txtSearch.Text);
-                }
+                //    }
+                //    else if (tabFinish.IsSelected)
+                //    {
+                //        setGrfFinish();
+                //    }
+                //}
+                //else
+                //{
+                //    setGrfQue(txtSearch.Text);
+                //}
+                //if (e.KeyCode == Keys.Enter)
+                //{
+                setGrfSearch(txtSearch.Text.Trim());
+                //}
             }
             else
             {

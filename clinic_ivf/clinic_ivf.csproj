@@ -316,6 +316,12 @@
     <Compile Include="gui\FrmOrDiagGroup.Designer.cs">
       <DependentUpon>FrmOrDiagGroup.cs</DependentUpon>
     </Compile>
+    <Compile Include="gui\FrmOrReqAdd.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="gui\FrmOrReqAdd.Designer.cs">
+      <DependentUpon>FrmOrReqAdd.cs</DependentUpon>
+    </Compile>
     <Compile Include="gui\FrmPackage.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -796,6 +802,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="gui\FrmOrDiagGroup.resx">
       <DependentUpon>FrmOrDiagGroup.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="gui\FrmOrReqAdd.resx">
+      <DependentUpon>FrmOrReqAdd.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="gui\FrmPackage.resx">
       <DependentUpon>FrmPackage.cs</DependentUpon>

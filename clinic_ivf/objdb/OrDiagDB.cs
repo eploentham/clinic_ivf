@@ -245,6 +245,26 @@ namespace clinic_ivf.objdb
 
             return dt;
         }
+        public DataTable selectByGroup(String copId)
+        {
+            DataTable dt = new DataTable();
+            String sql = "select ordg.* " +
+                "From " + ord.table + " ordg " +
+                //"Left Join t_ssdata_visit ssv On ssv.ssdata_visit_id = bd.ssdata_visit_id " +
+                "Where ordg." + ord.diag_group_id + " ='" + copId + "' and "+ord.active+"='1' ";
+            dt = conn.selectData(conn.conn, sql);
+            return dt;
+        }
+        public DataTable selectByGroup1(String copId)
+        {
+            DataTable dt = new DataTable();
+            String sql = "select ord." + ord.diag_id+ ",ord." + ord.diag_code+ ",ord." + ord.diag_name+" " +
+                "From " + ord.table + " ord " +
+                //"Left Join t_ssdata_visit ssv On ssv.ssdata_visit_id = bd.ssdata_visit_id " +
+                "Where ord." + ord.diag_group_id + " ='" + copId + "' and ord." + ord.active + "='1' ";
+            dt = conn.selectData(conn.conn, sql);
+            return dt;
+        }
         public DataTable selectByPk(String copId)
         {
             DataTable dt = new DataTable();
