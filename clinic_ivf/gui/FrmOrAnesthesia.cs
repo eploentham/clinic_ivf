@@ -17,10 +17,11 @@ using System.Windows.Forms;
 
 namespace clinic_ivf.gui
 {
-    public partial class FrmOrDiag : Form
+    public partial class FrmOrAnesthesia : Form
     {
         IvfControl ic;
-        OrDiag ord;
+        OrAnesthesia oranes;
+
         Font fEdit, fEditB;
 
         Color bg, fc;
@@ -35,7 +36,8 @@ namespace clinic_ivf.gui
         C1SuperErrorProvider sep;
 
         String userIdVoid = "";
-        public FrmOrDiag(IvfControl x)
+
+        public FrmOrAnesthesia(IvfControl x)
         {
             InitializeComponent();
             ic = x;
@@ -43,7 +45,7 @@ namespace clinic_ivf.gui
         }
         private void initConfig()
         {
-            ord = new OrDiag();
+            oranes = new OrAnesthesia();
 
             fEdit = new Font(ic.iniC.grdViewFontName, ic.grdViewFontSize, FontStyle.Regular);
             fEditB = new Font(ic.iniC.grdViewFontName, ic.grdViewFontSize, FontStyle.Bold);
@@ -63,7 +65,6 @@ namespace clinic_ivf.gui
             btnNew.Click += BtnNew_Click;
             btnSave.Click += BtnSave_Click;
             btnEdit.Click += BtnEdit_Click;
-            ic.ivfDB.ordgDB.setC1CboDiagGroup(cboFetDay);
 
             initGrfPosi();
             setGrfPosi();
@@ -75,6 +76,7 @@ namespace clinic_ivf.gui
             stt = new C1SuperTooltip();
             sep = new C1SuperErrorProvider();
         }
+
         private void BtnEdit_Click(object sender, EventArgs e)
         {
             //throw new NotImplementedException();
@@ -88,7 +90,7 @@ namespace clinic_ivf.gui
             if (MessageBox.Show("ต้องการ บันทึกช้อมูล ", "", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == DialogResult.OK)
             {
                 setAgent();
-                String re = ic.ivfDB.ordDB.insertOrDiag(ord, ic.user.staff_id);
+                String re = ic.ivfDB.oranesDB.insertOrDiagGroup(oranes, ic.user.staff_id);
                 long chk = 0;
                 if (long.TryParse(re, out chk))
                 {
@@ -114,6 +116,7 @@ namespace clinic_ivf.gui
             flagEdit = true;
             setControlEnable(flagEdit);
         }
+
         private void initGrfPosi()
         {
             grfReq = new C1FlexGrid();
@@ -148,7 +151,7 @@ namespace clinic_ivf.gui
         {
             //grfDept.Rows.Count = 7;
 
-            grfReq.DataSource = ic.ivfDB.ordDB.selectAll1();
+            grfReq.DataSource = ic.ivfDB.oranesDB.selectAll1();
             grfReq.Cols.Count = colCnt;
 
             grfReq.Cols[colID].Width = 80;
@@ -161,7 +164,7 @@ namespace clinic_ivf.gui
             //grfDept.Cols[colCode].Caption = "รหัส";
 
             grfReq.Cols[colCode].Caption = "รหัส";
-            grfReq.Cols[colName].Caption = "ชื่อ Diagnosis ";
+            grfReq.Cols[colName].Caption = "ชื่อ Group Diagnosis ";
 
             for (int i = 1; i < grfReq.Rows.Count; i++)
             {
@@ -200,19 +203,29 @@ namespace clinic_ivf.gui
         }
         private void setControl(String posiId)
         {
-            ord = ic.ivfDB.ordDB.selectByPk1(posiId);
-            txtID.Value = ord.diag_id;
-            txtGiagGrpCode.Value = ord.diag_code;
-            txtGiagGrpName.Value = ord.diag_name;
-            //cboFetDay.Value = ord.diag_group_id;
-            ic.setC1Combo(cboFetDay, ord.diag_group_id);
+            oranes = ic.ivfDB.oranesDB.selectByPk1(posiId);
+            txtID.Value = oranes.anesthesia_id;
+            txtGiagGrpCode.Value = oranes.anesthesia_code;
+            txtGiagGrpName.Value = oranes.anesthesia_name;
             //txtPosiNameT.Value = agn.posi_name_t;
             //txtRemark.Value = agn.remark;
             //if (posi.status_doctor.Equals("1"))
             //{
-            //chkSendtoOr.Checked = ord.status_or_diag_req.Equals("1") ? true : false;
-            //chkOrUs.Checked = ord.status_or_us.Equals("1") ? true : false;
-
+            //chkSendtoOr.Checked = oranes.status_or_diag_req.Equals("1") ? true : false;
+            //chkOrUs.Checked = oranes.status_or_us.Equals("1") ? true : false;
+            //}
+            //else
+            //{
+            //    chkStatusDoctor.Checked = false;
+            //}
+            //if (posi.status_embryologist.Equals("1"))
+            //{
+            //    chkEmbryologist.Checked = true;
+            //}
+            //else
+            //{
+            //    chkEmbryologist.Checked = false;
+            //}
         }
         private void setControlEnable(Boolean flag)
         {
@@ -221,22 +234,21 @@ namespace clinic_ivf.gui
             txtGiagGrpName.Enabled = flag;
             txtRemark.Enabled = flag;
             chkVoid.Enabled = flag;
-            //chkOrUs.Enabled = flag;
-            //chkSendtoOr.Enabled = flag;
+            chkOrUs.Enabled = flag;
+            chkSendtoOr.Enabled = flag;
             btnEdit.Image = !flag ? Resources.lock24 : Resources.open24;
         }
         private void setAgent()
         {
-            ord.diag_id = txtID.Text;
-            ord.diag_name = txtGiagGrpName.Text;
-            ord.diag_code = txtGiagGrpCode.Text;
-            ord.diag_group_id = cboFetDay.SelectedItem == null ? "" : ((ComboBoxItem)cboFetDay.SelectedItem).Value;
+            oranes.anesthesia_id = txtID.Text;
+            oranes.anesthesia_name = txtGiagGrpName.Text;
+            oranes.anesthesia_code = txtGiagGrpCode.Text;
             //posi.posi_name_e = txtPosiNameE.Text;
             //agn.remark = txtRemark.Text;
-            //ord.status_or_diag_req = chkSendtoOr.Checked == true ? "1" : "0";
-            //ord.status_or_us = chkOrUs.Checked == true ? "1" : "0";
+            //oranes.status_or_diag_req = chkSendtoOr.Checked == true ? "1" : "0";
+            //oranes.status_or_us = chkOrUs.Checked == true ? "1" : "0";
         }
-        private void FrmOrDiag_Load(object sender, EventArgs e)
+        private void FrmOrAnesthesia_Load(object sender, EventArgs e)
         {
 
         }

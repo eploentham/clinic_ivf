@@ -237,10 +237,10 @@ namespace clinic_ivf.objdb
         public DataTable selectAll1()
         {
             DataTable dt = new DataTable();
-            String sql = "select ordg.diag_id, ordg.dept_code, ordg.dept_name_t, ordg.remark  " +
-                "From " + ord.table + " ordg " +
+            String sql = "select ord.diag_id, ord.diag_code, ord.diag_name  " +
+                "From " + ord.table + " ord " +
                 " " +
-                "Where ordg." + ord.active + " ='1' ";
+                "Where ord." + ord.active + " ='1' ";
             dt = conn.selectData(conn.conn, sql);
 
             return dt;

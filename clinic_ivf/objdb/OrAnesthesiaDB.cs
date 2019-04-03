@@ -218,10 +218,10 @@ namespace clinic_ivf.objdb
         public DataTable selectAll()
         {
             DataTable dt = new DataTable();
-            String sql = "select ordg.*  " +
-                "From " + oranes.table + " ordg " +
+            String sql = "select oranes.*  " +
+                "From " + oranes.table + " oranes " +
                 " " +
-                "Where ordg." + oranes.active + " ='1' ";
+                "Where oranes." + oranes.active + " ='1' ";
             dt = conn.selectData(conn.conn, sql);
 
             return dt;
@@ -229,10 +229,10 @@ namespace clinic_ivf.objdb
         public DataTable selectAll1()
         {
             DataTable dt = new DataTable();
-            String sql = "select ordg.anesthesia_id, ordg.dept_code, ordg.dept_name_t, ordg.remark  " +
-                "From " + oranes.table + " ordg " +
+            String sql = "select oranes.anesthesia_id, oranes.anesthesia_code, oranes.anesthesia_name  " +
+                "From " + oranes.table + " oranes " +
                 " " +
-                "Where ordg." + oranes.active + " ='1' ";
+                "Where oranes." + oranes.active + " ='1' ";
             dt = conn.selectData(conn.conn, sql);
 
             return dt;

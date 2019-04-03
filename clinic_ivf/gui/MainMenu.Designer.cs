@@ -70,7 +70,7 @@
             this.แผนกORToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuGrpDiag = new System.Windows.Forms.ToolStripMenuItem();
             this.menuOrDiag = new System.Windows.Forms.ToolStripMenuItem();
-            this.anesthesiaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuOrAnes = new System.Windows.Forms.ToolStripMenuItem();
             this.menuAgent = new System.Windows.Forms.ToolStripMenuItem();
             this.tCC1 = new C1.Win.C1Command.C1CommandDock();
             this.tC1 = new C1.Win.C1Command.C1DockingTab();
@@ -379,7 +379,7 @@
             this.แผนกORToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.menuGrpDiag,
             this.menuOrDiag,
-            this.anesthesiaToolStripMenuItem});
+            this.menuOrAnes});
             this.แผนกORToolStripMenuItem.Name = "แผนกORToolStripMenuItem";
             this.แผนกORToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.แผนกORToolStripMenuItem.Text = "แผนก OR";
@@ -396,11 +396,11 @@
             this.menuOrDiag.Size = new System.Drawing.Size(180, 22);
             this.menuOrDiag.Text = "Diagnosis OR";
             // 
-            // anesthesiaToolStripMenuItem
+            // menuOrAnes
             // 
-            this.anesthesiaToolStripMenuItem.Name = "anesthesiaToolStripMenuItem";
-            this.anesthesiaToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.anesthesiaToolStripMenuItem.Text = "Anesthesia";
+            this.menuOrAnes.Name = "menuOrAnes";
+            this.menuOrAnes.Size = new System.Drawing.Size(180, 22);
+            this.menuOrAnes.Text = "Anesthesia";
             // 
             // menuAgent
             // 
@@ -523,6 +523,6 @@
         private System.Windows.Forms.ToolStripMenuItem แผนกORToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem menuGrpDiag;
         private System.Windows.Forms.ToolStripMenuItem menuOrDiag;
-        private System.Windows.Forms.ToolStripMenuItem anesthesiaToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem menuOrAnes;
     }
 }

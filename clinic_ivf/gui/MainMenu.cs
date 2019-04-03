@@ -86,6 +86,15 @@ namespace clinic_ivf.gui
             menuDrug.Click += MenuDrug_Click;
             menuGrpDiag.Click += MenuGrpDiag_Click;
             menuOrDiag.Click += MenuOrDiag_Click;
+            menuOrAnes.Click += MenuOrAnes_Click;
+        }
+
+        private void MenuOrAnes_Click(object sender, EventArgs e)
+        {
+            //throw new NotImplementedException();
+            FrmOrAnesthesia frm = new FrmOrAnesthesia(ic);
+            frm.FormBorderStyle = FormBorderStyle.None;
+            AddNewTab(frm, menuOrAnes.Text + " ");
         }
 
         private void MenuOrDiag_Click(object sender, EventArgs e)

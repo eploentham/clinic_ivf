@@ -292,6 +292,12 @@
     <Compile Include="gui\FrmNurseView.Designer.cs">
       <DependentUpon>FrmNurseView.cs</DependentUpon>
     </Compile>
+    <Compile Include="gui\FrmOrAnesthesia.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="gui\FrmOrAnesthesia.Designer.cs">
+      <DependentUpon>FrmOrAnesthesia.cs</DependentUpon>
+    </Compile>
     <Compile Include="gui\FrmOrderEntry.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -778,6 +784,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="gui\FrmNurseView.resx">
       <DependentUpon>FrmNurseView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="gui\FrmOrAnesthesia.resx">
+      <DependentUpon>FrmOrAnesthesia.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="gui\FrmOrderEntry.resx">
       <DependentUpon>FrmOrderEntry.cs</DependentUpon>
