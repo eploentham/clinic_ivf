@@ -76,6 +76,8 @@
             this.tC1 = new C1.Win.C1Command.C1DockingTab();
             this.PageS = new C1.Win.C1Command.C1DockingTabPage();
             this.theme1 = new C1.Win.C1Themes.C1ThemeController();
+            this.menuReqOR = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuOrScreen = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tCC1)).BeginInit();
             this.tCC1.SuspendLayout();
@@ -163,6 +165,9 @@
             // 
             // menuExamiRoom
             // 
+            this.menuExamiRoom.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.menuReqOR,
+            this.menuOrScreen});
             this.menuExamiRoom.Name = "menuExamiRoom";
             this.menuExamiRoom.Size = new System.Drawing.Size(182, 22);
             this.menuExamiRoom.Text = "Examination Room";
@@ -371,7 +376,7 @@
             // menuDrug
             // 
             this.menuDrug.Name = "menuDrug";
-            this.menuDrug.Size = new System.Drawing.Size(180, 22);
+            this.menuDrug.Size = new System.Drawing.Size(130, 22);
             this.menuDrug.Text = "แผนก Drug";
             // 
             // แผนกORToolStripMenuItem
@@ -381,25 +386,25 @@
             this.menuOrDiag,
             this.menuOrAnes});
             this.แผนกORToolStripMenuItem.Name = "แผนกORToolStripMenuItem";
-            this.แผนกORToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.แผนกORToolStripMenuItem.Size = new System.Drawing.Size(130, 22);
             this.แผนกORToolStripMenuItem.Text = "แผนก OR";
             // 
             // menuGrpDiag
             // 
             this.menuGrpDiag.Name = "menuGrpDiag";
-            this.menuGrpDiag.Size = new System.Drawing.Size(180, 22);
+            this.menuGrpDiag.Size = new System.Drawing.Size(161, 22);
             this.menuGrpDiag.Text = "Group Diagnosis";
             // 
             // menuOrDiag
             // 
             this.menuOrDiag.Name = "menuOrDiag";
-            this.menuOrDiag.Size = new System.Drawing.Size(180, 22);
+            this.menuOrDiag.Size = new System.Drawing.Size(161, 22);
             this.menuOrDiag.Text = "Diagnosis OR";
             // 
             // menuOrAnes
             // 
             this.menuOrAnes.Name = "menuOrAnes";
-            this.menuOrAnes.Size = new System.Drawing.Size(180, 22);
+            this.menuOrAnes.Size = new System.Drawing.Size(161, 22);
             this.menuOrAnes.Text = "Anesthesia";
             // 
             // menuAgent
@@ -450,6 +455,18 @@
             // theme1
             // 
             this.theme1.Theme = "BeigeOne";
+            // 
+            // menuReqOR
+            // 
+            this.menuReqOR.Name = "menuReqOR";
+            this.menuReqOR.Size = new System.Drawing.Size(212, 22);
+            this.menuReqOR.Text = "Request OR";
+            // 
+            // menuOrScreen
+            // 
+            this.menuOrScreen.Name = "menuOrScreen";
+            this.menuOrScreen.Size = new System.Drawing.Size(212, 22);
+            this.menuOrScreen.Text = "Examination Room Screen";
             // 
             // MainMenu
             // 
@@ -524,5 +541,7 @@
         private System.Windows.Forms.ToolStripMenuItem menuGrpDiag;
         private System.Windows.Forms.ToolStripMenuItem menuOrDiag;
         private System.Windows.Forms.ToolStripMenuItem menuOrAnes;
+        private System.Windows.Forms.ToolStripMenuItem menuReqOR;
+        private System.Windows.Forms.ToolStripMenuItem menuOrScreen;
     }
 }

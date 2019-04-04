@@ -2,7 +2,7 @@
 {
 
 
-    public partial class OPDcardOLD
+    public partial class OrAppointment
     {
     }
 }

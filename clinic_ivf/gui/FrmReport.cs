@@ -23,6 +23,36 @@ namespace clinic_ivf.gui
             InitializeComponent();
             this.ic = ic;
         }
+        public void setOrAppointment(DataTable dt)
+        {
+            String chk = "", printerDefault = "", err = "";
+            ReportDocument rpt = new ReportDocument();
+            try
+            {
+                err = "00" + ic.iniC.statusAppDonor;
+
+                rpt.Load("or_appointment.rpt");
+
+                err = "01";
+                rpt.SetDataSource(dt);
+                err = "02";
+                rpt.SetParameterValue("line1", ic.cop.comp_name_t);
+                //rpt.SetParameterValue("line2", "โทรศัพท์ " + ic.cop.tele);
+                //rpt.SetParameterValue("line2", "โทรศัพท์ " + ic.cop.comp_address_e + " " + ic.cop.tele);
+                //rpt.SetParameterValue("report_name", " Appointment/ใบแพทย์นัด ");
+
+                err = "03";
+                //rpt.SetParameterValue("age1", "" + age);
+                this.crystalReportViewer1.ReportSource = rpt;
+                err = "04";
+                this.crystalReportViewer1.Refresh();
+            }
+            catch (Exception ex)
+            {
+                chk = ex.Message.ToString();
+                MessageBox.Show("error " + ex.Message, "err " + err);
+            }
+        }
         public void setOpdpostoperationnote(String name, String hn)
         {
             String chk = "", printerDefault = "";

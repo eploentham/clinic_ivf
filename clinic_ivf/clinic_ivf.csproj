@@ -292,6 +292,12 @@
     <Compile Include="gui\FrmNurseView.Designer.cs">
       <DependentUpon>FrmNurseView.cs</DependentUpon>
     </Compile>
+    <Compile Include="gui\FrmOrAdd.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="gui\FrmOrAdd.Designer.cs">
+      <DependentUpon>FrmOrAdd.cs</DependentUpon>
+    </Compile>
     <Compile Include="gui\FrmOrAnesthesia.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -304,11 +310,11 @@
     <Compile Include="gui\FrmOrderEntry.Designer.cs">
       <DependentUpon>FrmOrderEntry.cs</DependentUpon>
     </Compile>
-    <Compile Include="gui\FrmOrDiag.cs">
+    <Compile Include="gui\FrmOrOperation.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="gui\FrmOrDiag.Designer.cs">
-      <DependentUpon>FrmOrDiag.cs</DependentUpon>
+    <Compile Include="gui\FrmOrOperation.Designer.cs">
+      <DependentUpon>FrmOrOperation.cs</DependentUpon>
     </Compile>
     <Compile Include="gui\FrmOrDiagGroup.cs">
       <SubType>Form</SubType>
@@ -321,6 +327,12 @@
     </Compile>
     <Compile Include="gui\FrmOrReqAdd.Designer.cs">
       <DependentUpon>FrmOrReqAdd.cs</DependentUpon>
+    </Compile>
+    <Compile Include="gui\FrmOrView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="gui\FrmOrView.Designer.cs">
+      <DependentUpon>FrmOrView.cs</DependentUpon>
     </Compile>
     <Compile Include="gui\FrmPackage.cs">
       <SubType>Form</SubType>
@@ -515,8 +527,8 @@
     <Compile Include="objdb\OldPackageDepositDetailDB.cs" />
     <Compile Include="objdb\OldPackageSellThruDB.cs" />
     <Compile Include="objdb\OrAnesthesiaDB.cs" />
-    <Compile Include="objdb\OrDiagDB.cs" />
-    <Compile Include="objdb\OrDiagGroupDB.cs" />
+    <Compile Include="objdb\OrOperationDB.cs" />
+    <Compile Include="objdb\OrOperationGroupDB.cs" />
     <Compile Include="objdb\OrRequestDB.cs" />
     <Compile Include="objdb\PatientAppointmentDB.cs" />
     <Compile Include="objdb\PatientAppointmentTextDB.cs" />
@@ -549,8 +561,8 @@
     <Compile Include="object1\OldStockDrug.cs" />
     <Compile Include="object1\OldPackageDeposit.cs" />
     <Compile Include="object1\OrAnesthesia.cs" />
-    <Compile Include="object1\OrDiag.cs" />
-    <Compile Include="object1\OrDiagGroup.cs" />
+    <Compile Include="object1\OrOperation.cs" />
+    <Compile Include="object1\OrOperationGroup.cs" />
     <Compile Include="object1\OrRequest.cs" />
     <Compile Include="object1\PackageDepositDetail.cs" />
     <Compile Include="object1\OldPackageSellThru.cs" />
@@ -675,6 +687,14 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>OPDcardOLD.xsd</DependentUpon>
     </Compile>
+    <Compile Include="report\OrAppointment.cs">
+      <DependentUpon>OrAppointment.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="report\OrAppointment.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>OrAppointment.xsd</DependentUpon>
+    </Compile>
     <Compile Include="report\print_bill.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -791,20 +811,26 @@
     <EmbeddedResource Include="gui\FrmNurseView.resx">
       <DependentUpon>FrmNurseView.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="gui\FrmOrAdd.resx">
+      <DependentUpon>FrmOrAdd.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="gui\FrmOrAnesthesia.resx">
       <DependentUpon>FrmOrAnesthesia.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="gui\FrmOrderEntry.resx">
       <DependentUpon>FrmOrderEntry.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="gui\FrmOrDiag.resx">
-      <DependentUpon>FrmOrDiag.cs</DependentUpon>
+    <EmbeddedResource Include="gui\FrmOrOperation.resx">
+      <DependentUpon>FrmOrOperation.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="gui\FrmOrDiagGroup.resx">
       <DependentUpon>FrmOrDiagGroup.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="gui\FrmOrReqAdd.resx">
       <DependentUpon>FrmOrReqAdd.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="gui\FrmOrView.resx">
+      <DependentUpon>FrmOrView.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="gui\FrmPackage.resx">
       <DependentUpon>FrmPackage.cs</DependentUpon>
@@ -990,6 +1016,17 @@
     </None>
     <None Include="report\OPDcardOLD.xss">
       <DependentUpon>OPDcardOLD.xsd</DependentUpon>
+    </None>
+    <None Include="report\OrAppointment.xsc">
+      <DependentUpon>OrAppointment.xsd</DependentUpon>
+    </None>
+    <None Include="report\OrAppointment.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>OrAppointment.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="report\OrAppointment.xss">
+      <DependentUpon>OrAppointment.xsd</DependentUpon>
     </None>
     <None Include="report\print_bill.xsc">
       <DependentUpon>print_bill.xsd</DependentUpon>

@@ -1,6 +1,6 @@
 ﻿namespace clinic_ivf.gui
 {
-    partial class FrmOrDiag
+    partial class FrmOrOperation
     {
         /// <summary>
         /// Required designer variable.
@@ -401,7 +401,7 @@
             this.Controls.Add(this.c1SplitContainer1);
             this.Controls.Add(this.sB);
             this.Name = "FrmOrDiag";
-            this.Text = "FrmOrDiag";
+            this.Text = "FrmOrOperation";
             this.Load += new System.EventHandler(this.FrmOrDiag_Load);
             this.sB.ResumeLayout(false);
             this.sB.PerformLayout();

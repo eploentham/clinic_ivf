@@ -42,6 +42,7 @@
             this.btnPosiAdd = new C1.Win.C1Input.C1Button();
             this.btnDeptAdd = new C1.Win.C1Input.C1Button();
             this.panelModule = new System.Windows.Forms.Panel();
+            this.chkMedicalRecord = new C1.Win.C1Input.C1CheckBox();
             this.chkCashier = new C1.Win.C1Input.C1CheckBox();
             this.chkLab = new C1.Win.C1Input.C1CheckBox();
             this.chkPharmacy = new C1.Win.C1Input.C1CheckBox();
@@ -92,7 +93,9 @@
             this.txtID = new C1.Win.C1Input.C1TextBox();
             this.txtStfCode = new C1.Win.C1Input.C1TextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.chkMedicalRecord = new C1.Win.C1Input.C1CheckBox();
+            this.chkStfDoctor = new C1.Win.C1Input.C1CheckBox();
+            this.label12 = new System.Windows.Forms.Label();
+            this.txtDoctorId = new C1.Win.C1Input.C1TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.theme1)).BeginInit();
             this.sB.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -108,6 +111,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.btnPosiAdd)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnDeptAdd)).BeginInit();
             this.panelModule.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.chkMedicalRecord)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkCashier)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkLab)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkPharmacy)).BeginInit();
@@ -139,7 +143,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.btnSave)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtID)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtStfCode)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.chkMedicalRecord)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chkStfDoctor)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtDoctorId)).BeginInit();
             this.SuspendLayout();
             // 
             // theme1
@@ -216,6 +221,9 @@
             // groupBox1
             // 
             this.groupBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(87)))), ((int)(((byte)(87)))), ((int)(((byte)(87)))));
+            this.groupBox1.Controls.Add(this.label12);
+            this.groupBox1.Controls.Add(this.txtDoctorId);
+            this.groupBox1.Controls.Add(this.chkStfDoctor);
             this.groupBox1.Controls.Add(this.cboDept);
             this.groupBox1.Controls.Add(this.cboPosi);
             this.groupBox1.Controls.Add(this.btnPasswordCompirm);
@@ -389,6 +397,24 @@
             this.panelModule.Size = new System.Drawing.Size(664, 107);
             this.panelModule.TabIndex = 254;
             this.theme1.SetTheme(this.panelModule, "(default)");
+            // 
+            // chkMedicalRecord
+            // 
+            this.chkMedicalRecord.BackColor = System.Drawing.Color.Transparent;
+            this.chkMedicalRecord.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(71)))), ((int)(((byte)(71)))));
+            this.chkMedicalRecord.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.chkMedicalRecord.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.chkMedicalRecord.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
+            this.chkMedicalRecord.Location = new System.Drawing.Point(3, 40);
+            this.chkMedicalRecord.Name = "chkMedicalRecord";
+            this.chkMedicalRecord.Padding = new System.Windows.Forms.Padding(4, 1, 1, 1);
+            this.chkMedicalRecord.Size = new System.Drawing.Size(128, 24);
+            this.chkMedicalRecord.TabIndex = 264;
+            this.chkMedicalRecord.Text = "Module เวชระเบียน";
+            this.theme1.SetTheme(this.chkMedicalRecord, "(default)");
+            this.chkMedicalRecord.UseVisualStyleBackColor = true;
+            this.chkMedicalRecord.Value = null;
+            this.chkMedicalRecord.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
             // 
             // chkCashier
             // 
@@ -1113,23 +1139,50 @@
             this.label1.Text = "รหัส :";
             this.theme1.SetTheme(this.label1, "(default)");
             // 
-            // chkMedicalRecord
+            // chkStfDoctor
             // 
-            this.chkMedicalRecord.BackColor = System.Drawing.Color.Transparent;
-            this.chkMedicalRecord.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(71)))), ((int)(((byte)(71)))));
-            this.chkMedicalRecord.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.chkMedicalRecord.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.chkMedicalRecord.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
-            this.chkMedicalRecord.Location = new System.Drawing.Point(3, 40);
-            this.chkMedicalRecord.Name = "chkMedicalRecord";
-            this.chkMedicalRecord.Padding = new System.Windows.Forms.Padding(4, 1, 1, 1);
-            this.chkMedicalRecord.Size = new System.Drawing.Size(128, 24);
-            this.chkMedicalRecord.TabIndex = 264;
-            this.chkMedicalRecord.Text = "Module เวชระเบียน";
-            this.theme1.SetTheme(this.chkMedicalRecord, "(default)");
-            this.chkMedicalRecord.UseVisualStyleBackColor = true;
-            this.chkMedicalRecord.Value = null;
-            this.chkMedicalRecord.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            this.chkStfDoctor.BackColor = System.Drawing.Color.Transparent;
+            this.chkStfDoctor.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(71)))), ((int)(((byte)(71)))));
+            this.chkStfDoctor.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.chkStfDoctor.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.chkStfDoctor.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
+            this.chkStfDoctor.Location = new System.Drawing.Point(328, 527);
+            this.chkStfDoctor.Name = "chkStfDoctor";
+            this.chkStfDoctor.Padding = new System.Windows.Forms.Padding(4, 1, 1, 1);
+            this.chkStfDoctor.Size = new System.Drawing.Size(121, 24);
+            this.chkStfDoctor.TabIndex = 261;
+            this.chkStfDoctor.Text = "user Doctor";
+            this.theme1.SetTheme(this.chkStfDoctor, "(default)");
+            this.chkStfDoctor.UseVisualStyleBackColor = true;
+            this.chkStfDoctor.Value = null;
+            this.chkStfDoctor.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(87)))), ((int)(((byte)(87)))), ((int)(((byte)(87)))));
+            this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.label12.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
+            this.label12.Location = new System.Drawing.Point(428, 533);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(51, 16);
+            this.label12.TabIndex = 263;
+            this.label12.Text = "ว แพทย์ :";
+            this.theme1.SetTheme(this.label12, "(default)");
+            // 
+            // txtDoctorId
+            // 
+            this.txtDoctorId.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(71)))), ((int)(((byte)(71)))));
+            this.txtDoctorId.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtDoctorId.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(172)))), ((int)(((byte)(172)))), ((int)(((byte)(172)))));
+            this.txtDoctorId.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.txtDoctorId.Location = new System.Drawing.Point(525, 531);
+            this.txtDoctorId.Name = "txtDoctorId";
+            this.txtDoctorId.Size = new System.Drawing.Size(118, 20);
+            this.txtDoctorId.TabIndex = 262;
+            this.txtDoctorId.Tag = null;
+            this.theme1.SetTheme(this.txtDoctorId, "(default)");
+            this.txtDoctorId.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
             // 
             // FrmStaff
             // 
@@ -1160,6 +1213,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.btnPosiAdd)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnDeptAdd)).EndInit();
             this.panelModule.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.chkMedicalRecord)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkCashier)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkLab)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkPharmacy)).EndInit();
@@ -1192,7 +1246,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.btnSave)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtID)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtStfCode)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.chkMedicalRecord)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chkStfDoctor)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtDoctorId)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1265,5 +1320,8 @@
         private C1.Win.C1Input.C1ComboBox cboDept;
         private C1.Win.C1Input.C1CheckBox chkCashier;
         private C1.Win.C1Input.C1CheckBox chkMedicalRecord;
+        private C1.Win.C1Input.C1CheckBox chkStfDoctor;
+        private System.Windows.Forms.Label label12;
+        private C1.Win.C1Input.C1TextBox txtDoctorId;
     }
 }

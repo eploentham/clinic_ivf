@@ -81,8 +81,8 @@ namespace clinic_ivf.objdb
         public OldBillGroupDB obilgDB;
         public OldFilePatientDB ofpDB;
         public NoteDB noteDB;
-        public OrDiagGroupDB ordgDB;
-        public OrDiagDB ordDB;
+        public OrOperationGroupDB ordgDB;
+        public OrOperationDB ordDB;
         public OrAnesthesiaDB oranesDB;
         public OrRequestDB orreqDB;
 
@@ -157,8 +157,8 @@ namespace clinic_ivf.objdb
             obilgDB = new OldBillGroupDB(conn);
             ofpDB = new OldFilePatientDB(conn);
             noteDB = new NoteDB(conn);
-            ordgDB = new OrDiagGroupDB(conn);
-            ordDB = new OrDiagDB(conn);
+            ordgDB = new OrOperationGroupDB(conn);
+            ordDB = new OrOperationDB(conn);
             oranesDB = new OrAnesthesiaDB(conn);
             orreqDB = new OrRequestDB(conn);
 

@@ -44,6 +44,14 @@ namespace clinic_ivf.objdb
             orreq.status_or = "status_or";
             orreq.b_service_point_id = "b_service_point_id";
             orreq.or_id = "or_id";
+            orreq.opera_id = "opera_id";
+            orreq.t_patient_id = "t_patient_id";
+            orreq.status_urgent = "status_urgent";
+            orreq.anesthesia_id = "anesthesia_id";
+            orreq.operation_name = "";
+            orreq.operation_group_name = "";
+            orreq.anesthesia_name = "";
+            orreq.surgeon = "";
 
             orreq.table = "or_t_request";
             orreq.pkField = "or_req_id";
@@ -68,13 +76,15 @@ namespace clinic_ivf.objdb
             p.remark = p.remark == null ? "" : p.remark;
             p.patient_name = p.patient_name == null ? "" : p.patient_name;
             p.status_or = p.status_or == null ? "0" : p.status_or;
+            p.status_urgent = p.status_urgent == null ? "0" : p.status_urgent;
 
             p.doctor_anesthesia_id = long.TryParse(p.doctor_anesthesia_id, out chk) ? chk.ToString() : "0";
             p.doctor_surgical_id = long.TryParse(p.doctor_surgical_id, out chk) ? chk.ToString() : "0";
             p.b_service_point_id = long.TryParse(p.b_service_point_id, out chk) ? chk.ToString() : "0";
             p.or_id = long.TryParse(p.or_id, out chk) ? chk.ToString() : "0";
-            //p.patient_name = long.TryParse(p.patient_name, out chk) ? chk.ToString() : "0";
-
+            p.opera_id = long.TryParse(p.opera_id, out chk) ? chk.ToString() : "0";
+            p.t_patient_id = long.TryParse(p.t_patient_id, out chk) ? chk.ToString() : "0";
+            p.anesthesia_id = long.TryParse(p.anesthesia_id, out chk) ? chk.ToString() : "0";
         }
         public String insert(OrRequest p, String userId)
         {
@@ -92,7 +102,7 @@ namespace clinic_ivf.objdb
                 "," + orreq.date_create + " = now() " +
                 "," + orreq.date_modi + " = '" + p.date_modi + "' " +
                 "," + orreq.date_cancel + " = '" + p.date_cancel + "' " +
-                "," + orreq.user_create + " = '" + p.user_create + "' " +
+                "," + orreq.user_create + " = '" + userId + "' " +
                 "," + orreq.user_modi + " = '" + p.user_modi + "' " +
                 "," + orreq.user_cancel + " = '" + p.user_cancel + "' " +
                 "," + orreq.active + " " + " = '" + p.active + "' " +
@@ -104,6 +114,10 @@ namespace clinic_ivf.objdb
                 "," + orreq.status_or + " " + " = '" + p.status_or + "' " +
                 "," + orreq.b_service_point_id + " " + " = '" + p.b_service_point_id + "' " +
                 "," + orreq.or_id + " " + " = '" + p.or_id + "' " +
+                "," + orreq.opera_id + " " + " = '" + p.opera_id + "' " +
+                "," + orreq.t_patient_id + " " + " = '" + p.t_patient_id + "' " +
+                "," + orreq.status_urgent + " " + " = '" + p.status_urgent + "' " +
+                "," + orreq.anesthesia_id + " " + " = '" + p.anesthesia_id + "' " +
                 " ";
             try
             {
@@ -135,15 +149,18 @@ namespace clinic_ivf.objdb
                 "," + orreq.user_create + " = '" + p.user_create + "' " +
                 "," + orreq.user_modi + " = '" + p.user_modi + "' " +
                 "," + orreq.user_cancel + " = '" + p.user_cancel + "' " +
-                "," + orreq.active + " " + " = '" + p.active + "' " +
+                //"," + orreq.active + " " + " = '" + p.active + "' " +
                 "," + orreq.patient_name + " " + " = '" + p.patient_name + "' " +
                 "," + orreq.doctor_anesthesia_id + " " + " = '" + p.doctor_anesthesia_id + "' " +
                 "," + orreq.doctor_surgical_id + " " + " = '" + p.doctor_surgical_id + "' " +
                 "," + orreq.or_date + " " + " = '" + p.or_date + "' " +
                 "," + orreq.or_time + " " + " = '" + p.or_time + "' " +
-                "," + orreq.status_or + " " + " = '" + p.status_or + "' " +
+                "," + orreq.anesthesia_id + " " + " = '" + p.anesthesia_id + "' " +
                 "," + orreq.b_service_point_id + " " + " = '" + p.b_service_point_id + "' " +
                 "," + orreq.or_id + " " + " = '" + p.or_id + "' " +
+                "," + orreq.opera_id + " " + " = '" + p.opera_id + "' " +
+                "," + orreq.t_patient_id + " " + " = '" + p.t_patient_id + "' " +
+                "," + orreq.status_urgent + " " + " = '" + p.status_urgent + "' " +
                 "Where " + orreq.pkField + "='" + p.or_req_id + "'"
                 ;
 
@@ -266,6 +283,66 @@ namespace clinic_ivf.objdb
 
             return dt;
         }
+        public DataTable selectByPtt(String copId)
+        {
+            DataTable dt = new DataTable();
+            String sql = "select orreq.* " +
+                "From " + orreq.table + " orreq " +
+                //"Left Join t_ssdata_visit ssv On ssv.ssdata_visit_id = bd.ssdata_visit_id " +
+                "Where orreq." + orreq.t_patient_id + " ='" + copId + "' and orreq."+ orreq.active+"='1' ";
+            dt = conn.selectData(conn.conn, sql);
+            return dt;
+        }
+        public DataTable selectByPtt1(String copId)
+        {
+            DataTable dt = new DataTable();
+            String sql = "select orreq."+ orreq.or_req_id+ ",orreq." + orreq.patient_hn+ ",orreq." + orreq.or_req_date+ ",ord.opera_name " +
+                "From " + orreq.table + " orreq " +
+                "Left Join or_b_operation ord On orreq.opera_id = ord.opera_id " +
+                //"Left Join or_b_diag ord On orreq.diag_id = ord.diag_id " +
+                "Where orreq." + orreq.t_patient_id + " ='" + copId + "' and orreq." + orreq.active + "='1' ";
+            dt = conn.selectData(conn.conn, sql);
+            return dt;
+        }
+        public DataTable selectByStatusReq()
+        {
+            DataTable dt = new DataTable();
+            String sql = "select orreq." + orreq.or_req_id + ",orreq." + orreq.patient_hn + " , orreq.patient_name ,orreq." + orreq.or_req_date +
+                ",ord.opera_name, oranes.anesthesia_name, '' as age, bsp.service_point_description as service_point, " +
+                "CONCAT(fpp.patient_prefix_description, stf.staff_fname_e, stf.staff_lname_e) as surgeon," +
+                "anes.anesthesia_name as anesthesia, orreq.or_date as appointment_date, orreq.or_time as appointment_time,orreq.remark,ord.opera_name as operation," +
+                "orreq.or_req_date as request_date, orreq.or_date, orreq.or_time  " +
+                "From " + orreq.table + " orreq " +
+                "Left Join or_b_operation ord On orreq.opera_id = ord.opera_id " +
+                "Left Join or_b_anesthesia oranes On orreq.anesthesia_id = oranes.anesthesia_id " +
+                "Left Join b_service_point bsp On orreq.b_service_point_id = bsp.b_service_point_id " +
+                "Left Join b_staff stf On orreq.doctor_surgical_id = stf.staff_id " +
+                "Left Join f_patient_prefix fpp on stf.prefix_id = fpp.f_patient_prefix_id " +
+                "Left Join or_b_anesthesia anes On orreq.anesthesia_id = anes.anesthesia_id " +
+                //"Left Join or_b_operation opera On orreq.opera_id = opera.opera_id " +
+                "Where orreq." + orreq.status_or + " ='1' and orreq."+orreq.active+"='1' ";
+            dt = conn.selectData(conn.conn, sql);
+            return dt;
+        }
+        public DataTable selectByOrAppointment(String copId)
+        {
+            DataTable dt = new DataTable();
+            String sql = "select orreq." + orreq.or_req_id + ",orreq." + orreq.patient_hn + " as hn, orreq.patient_name as name,orreq." + orreq.or_req_date +
+                ",ord.opera_name, oranes.anesthesia_name, '' as age, bsp.service_point_description as service_point, " +
+                "CONCAT(fpp.patient_prefix_description, stf.staff_fname_e, stf.staff_lname_e) as surgeon," +
+                "anes.anesthesia_name as anesthesia, orreq.or_date as appointment_date, orreq.or_time as appointment_time,orreq.remark,ord.opera_name as operation,orreq.or_req_date as request_date  " +
+                "From " + orreq.table + " orreq " +
+                "Left Join or_b_operation ord On orreq.opera_id = ord.opera_id " +
+                "Left Join or_b_anesthesia oranes On orreq.anesthesia_id = oranes.anesthesia_id " +
+                "Left Join b_service_point bsp On orreq.b_service_point_id = bsp.b_service_point_id " +
+                "Left Join b_staff stf On orreq.doctor_surgical_id = stf.staff_id " +
+                "Left Join f_patient_prefix fpp on stf.prefix_id = fpp.f_patient_prefix_id " +
+                "Left Join or_b_anesthesia anes On orreq.anesthesia_id = anes.anesthesia_id " +
+                //"Left Join or_b_operation opera On orreq.opera_id = opera.opera_id " +
+                "Where orreq." + orreq.pkField + " ='" + copId + "'  ";
+            dt = conn.selectData(conn.conn, sql);
+            return dt;
+        }
         public DataTable selectByPk(String copId)
         {
             DataTable dt = new DataTable();
@@ -280,10 +357,15 @@ namespace clinic_ivf.objdb
         {
             OrRequest cop1 = new OrRequest();
             DataTable dt = new DataTable();
-            String sql = "select ordg.* " +
-                "From " + orreq.table + " ordg " +
-                //"Left Join t_ssdata_visit ssv On ssv.ssdata_visit_id = bd.ssdata_visit_id " +
-                "Where ordg." + orreq.pkField + " ='" + copId + "' ";
+            String sql = "select orreq.*,opera.opera_name,anes.anesthesia_name, " +
+                "CONCAT(fpp.patient_prefix_description, stf.staff_fname_e, stf.staff_lname_e) as surgeon,ordg.opera_group_name " +
+                "From " + orreq.table + " orreq " +
+                "Left Join or_b_operation opera On orreq.opera_id = opera.opera_id " +
+                "Left Join or_b_operation_group ordg On opera.opera_group_id = ordg.opera_group_id " +
+                "Left Join or_b_anesthesia anes On orreq.anesthesia_id = anes.anesthesia_id " +
+                "Left Join b_staff stf On orreq.doctor_surgical_id = stf.staff_id " +
+                "Left Join f_patient_prefix fpp on stf.prefix_id = fpp.f_patient_prefix_id " +
+                "Where orreq." + orreq.pkField + " ='" + copId + "' ";
             dt = conn.selectData(conn.conn, sql);
             cop1 = setOrRequest(dt);
             return cop1;
@@ -313,7 +395,14 @@ namespace clinic_ivf.objdb
                 dept1.status_or = dt.Rows[0][orreq.status_or].ToString();
                 dept1.b_service_point_id = dt.Rows[0][orreq.b_service_point_id].ToString();
                 dept1.or_id = dt.Rows[0][orreq.or_id].ToString();
-                //dept1.patient_name = dt.Rows[0][orreq.patient_name].ToString();
+                dept1.opera_id = dt.Rows[0][orreq.opera_id].ToString();
+                dept1.t_patient_id = dt.Rows[0][orreq.t_patient_id].ToString();
+                dept1.status_urgent = dt.Rows[0][orreq.status_urgent].ToString();
+                dept1.anesthesia_id = dt.Rows[0][orreq.anesthesia_id].ToString();
+                dept1.operation_name = dt.Rows[0]["opera_name"].ToString();
+                dept1.operation_group_name = dt.Rows[0]["opera_group_name"].ToString();
+                dept1.anesthesia_name = dt.Rows[0]["anesthesia_name"].ToString();
+                dept1.surgeon = dt.Rows[0]["surgeon"].ToString();
             }
             else
             {
@@ -338,6 +427,14 @@ namespace clinic_ivf.objdb
                 dept1.status_or = "";
                 dept1.b_service_point_id = "";
                 dept1.or_id = "";
+                dept1.opera_id = "";
+                dept1.t_patient_id = "";
+                dept1.status_urgent = "";
+                dept1.anesthesia_id = "";
+                dept1.operation_name = "";
+                dept1.operation_group_name = "";
+                dept1.anesthesia_name = "";
+                dept1.surgeon = "";
             }
 
             return dept1;

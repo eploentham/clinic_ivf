@@ -9,26 +9,26 @@ using System.Threading.Tasks;
 
 namespace clinic_ivf.objdb
 {
-    public class OrDiagDB
+    public class OrOperationDB
     {
-        public OrDiag ord;
+        public OrOperation ord;
         ConnectDB conn;
 
-        public List<OrDiag> lDept;
+        public List<OrOperation> lDept;
 
-        public OrDiagDB(ConnectDB c)
+        public OrOperationDB(ConnectDB c)
         {
             conn = c;
             initConfig();
         }
         private void initConfig()
         {
-            ord = new OrDiag();
-            ord.diag_id = "diag_id";
-            ord.diag_code = "diag_code";
-            ord.diag_code_ex = "diag_code_ex";
-            ord.diag_name = "diag_name";
-            ord.diag_group_id = "diag_group_id";
+            ord = new OrOperation();
+            ord.opera_id = "opera_id";
+            ord.opera_code = "opera_code";
+            ord.opera_code_ex = "opera_code_ex";
+            ord.opera_name = "opera_name";
+            ord.opera_group_id = "opera_group_id";
             ord.remark = "remark";
             ord.date_create = "date_create";
             ord.date_modi = "date_modi";
@@ -39,13 +39,13 @@ namespace clinic_ivf.objdb
             ord.active = "active";
             ord.sort1 = "sort1";
 
-            ord.table = "or_b_diag";
-            ord.pkField = "diag_id";
+            ord.table = "or_b_operation";
+            ord.pkField = "opera_id";
 
-            lDept = new List<OrDiag>();
+            lDept = new List<OrOperation>();
             //getlDept();
         }
-        public String insert(OrDiag p, String userId)
+        public String insert(OrOperation p, String userId)
         {
             String re = "";
             String sql = "";
@@ -58,17 +58,17 @@ namespace clinic_ivf.objdb
             p.user_create = p.user_create == null ? "" : p.user_create;
             p.user_modi = p.user_modi == null ? "" : p.user_modi;
             p.user_cancel = p.user_cancel == null ? "" : p.user_cancel;
-            p.diag_code = p.diag_code == null ? "" : p.diag_code;
-            p.diag_code_ex = p.diag_code_ex == null ? "" : p.diag_code_ex;
-            p.diag_name = p.diag_name == null ? "0" : p.diag_name;
+            p.opera_code = p.opera_code == null ? "" : p.opera_code;
+            p.opera_code_ex = p.opera_code_ex == null ? "" : p.opera_code_ex;
+            p.opera_name = p.opera_name == null ? "0" : p.opera_name;
             p.remark = p.remark == null ? "" : p.remark;
             p.sort1 = p.sort1 == null ? "" : p.sort1;
-            p.diag_group_id = long.TryParse(p.diag_group_id, out chk) ? chk.ToString() : "0";
+            p.opera_group_id = long.TryParse(p.opera_group_id, out chk) ? chk.ToString() : "0";
 
             sql = "Insert Into " + ord.table + " Set " +
-                "" + ord.diag_code + " = '" + p.diag_code + "' " +
-                "," + ord.diag_code_ex + " = '" + p.diag_code_ex + "' " +
-                "," + ord.diag_name + " = '" + p.diag_name.Replace("'", "''") + "' " +
+                "" + ord.opera_code + " = '" + p.opera_code + "' " +
+                "," + ord.opera_code_ex + " = '" + p.opera_code_ex + "' " +
+                "," + ord.opera_name + " = '" + p.opera_name.Replace("'", "''") + "' " +
                 "," + ord.remark + " = '" + p.remark.Replace("'", "''") + "' " +
                 "," + ord.date_create + " = now() " +
                 "," + ord.date_modi + " = '" + p.date_modi + "' " +
@@ -78,7 +78,7 @@ namespace clinic_ivf.objdb
                 "," + ord.user_cancel + " = '" + p.user_cancel + "' " +
                 "," + ord.active + " " + " = '" + p.active + "' " +
                 "," + ord.sort1 + " " + " = '" + p.sort1 + "' " +
-                "," + ord.diag_group_id + " " + " = '" + p.diag_group_id + "' " +
+                "," + ord.opera_group_id + " " + " = '" + p.opera_group_id + "' " +
                 " ";
             try
             {
@@ -91,7 +91,7 @@ namespace clinic_ivf.objdb
 
             return re;
         }
-        public String update(OrDiag p, String userId)
+        public String update(OrOperation p, String userId)
         {
             String re = "";
             String sql = "";
@@ -102,17 +102,17 @@ namespace clinic_ivf.objdb
             p.user_create = p.user_create == null ? "" : p.user_create;
             p.user_modi = p.user_modi == null ? "" : p.user_modi;
             p.user_cancel = p.user_cancel == null ? "" : p.user_cancel;
-            p.diag_code = p.diag_code == null ? "" : p.diag_code;
-            p.diag_code_ex = p.diag_code_ex == null ? "" : p.diag_code_ex;
-            p.diag_name = p.diag_name == null ? "0" : p.diag_name;
+            p.opera_code = p.opera_code == null ? "" : p.opera_code;
+            p.opera_code_ex = p.opera_code_ex == null ? "" : p.opera_code_ex;
+            p.opera_name = p.opera_name == null ? "0" : p.opera_name;
             p.remark = p.remark == null ? "" : p.remark;
             p.sort1 = p.sort1 == null ? "" : p.sort1;
-            p.diag_group_id = long.TryParse(p.diag_group_id, out chk) ? chk.ToString() : "0";
+            p.opera_group_id = long.TryParse(p.opera_group_id, out chk) ? chk.ToString() : "0";
 
             sql = "Update " + ord.table + " Set " +
-                "" + ord.diag_code + " = '" + p.diag_code + "' " +
-                "," + ord.diag_code_ex + " = '" + p.diag_code_ex + "' " +
-                "," + ord.diag_name + " = '" + p.diag_name.Replace("'", "''") + "' " +
+                "" + ord.opera_code + " = '" + p.opera_code + "' " +
+                "," + ord.opera_code_ex + " = '" + p.opera_code_ex + "' " +
+                "," + ord.opera_name + " = '" + p.opera_name.Replace("'", "''") + "' " +
                 "," + ord.remark + " = '" + p.remark.Replace("'", "''") + "' " +
                 "," + ord.date_create + " = now() " +
                 "," + ord.date_modi + " = '" + p.date_modi + "' " +
@@ -122,8 +122,8 @@ namespace clinic_ivf.objdb
                 "," + ord.user_cancel + " = '" + p.user_cancel + "' " +
                 "," + ord.active + " " + " = '" + p.active + "' " +
                 "," + ord.sort1 + " " + " = '" + p.sort1 + "' " +
-                "," + ord.diag_group_id + " " + " = '" + p.diag_group_id + "' " +
-                "Where " + ord.pkField + "='" + p.diag_id + "'"
+                "," + ord.opera_group_id + " " + " = '" + p.opera_group_id + "' " +
+                "Where " + ord.pkField + "='" + p.opera_id + "'"
                 ;
 
             try
@@ -137,11 +137,11 @@ namespace clinic_ivf.objdb
 
             return re;
         }
-        public String insertOrDiag(OrDiag p, String userId)
+        public String insertOrDiag(OrOperation p, String userId)
         {
             String re = "";
 
-            if (p.diag_id.Equals(""))
+            if (p.opera_id.Equals(""))
             {
                 re = insert(p, userId);
             }
@@ -180,12 +180,12 @@ namespace clinic_ivf.objdb
             dt = selectAll();
             foreach (DataRow row in dt.Rows)
             {
-                OrDiag dept1 = new OrDiag();
-                dept1.diag_id = row[ord.diag_id].ToString();
-                dept1.diag_code = row[ord.diag_code].ToString();
-                dept1.diag_code_ex = row[ord.diag_code_ex].ToString();
+                OrOperation dept1 = new OrOperation();
+                dept1.opera_id = row[ord.opera_id].ToString();
+                dept1.opera_code = row[ord.opera_code].ToString();
+                dept1.opera_code_ex = row[ord.opera_code_ex].ToString();
 
-                dept1.diag_name = row[ord.diag_name].ToString();
+                dept1.opera_name = row[ord.opera_name].ToString();
                 //dept1.remark = row[ordg.remark].ToString();
                 //dept1.date_create = row[ordg.date_create].ToString();
                 //dept1.date_modi = row[ordg.date_modi].ToString();
@@ -200,11 +200,11 @@ namespace clinic_ivf.objdb
         public String getIdByCode(String code)
         {
             String id = "";
-            foreach (OrDiag dept1 in lDept)
+            foreach (OrOperation dept1 in lDept)
             {
-                if (code.Trim().Equals(dept1.diag_code.Trim()))
+                if (code.Trim().Equals(dept1.opera_code.Trim()))
                 {
-                    id = dept1.diag_id;
+                    id = dept1.opera_id;
                     break;
                 }
             }
@@ -213,11 +213,11 @@ namespace clinic_ivf.objdb
         public String getIdByName(String name)
         {
             String id = "";
-            foreach (OrDiag dept1 in lDept)
+            foreach (OrOperation dept1 in lDept)
             {
-                if (name.Trim().Equals(dept1.diag_code_ex.Trim()))
+                if (name.Trim().Equals(dept1.opera_code_ex.Trim()))
                 {
-                    id = dept1.diag_id;
+                    id = dept1.opera_id;
                     break;
                 }
             }
@@ -237,7 +237,7 @@ namespace clinic_ivf.objdb
         public DataTable selectAll1()
         {
             DataTable dt = new DataTable();
-            String sql = "select ord.diag_id, ord.diag_code, ord.diag_name  " +
+            String sql = "select ord.opera_id, ord.opera_code, ord.opera_name  " +
                 "From " + ord.table + " ord " +
                 " " +
                 "Where ord." + ord.active + " ='1' ";
@@ -251,17 +251,17 @@ namespace clinic_ivf.objdb
             String sql = "select ordg.* " +
                 "From " + ord.table + " ordg " +
                 //"Left Join t_ssdata_visit ssv On ssv.ssdata_visit_id = bd.ssdata_visit_id " +
-                "Where ordg." + ord.diag_group_id + " ='" + copId + "' and "+ord.active+"='1' ";
+                "Where ordg." + ord.opera_group_id + " ='" + copId + "' and "+ord.active+"='1' ";
             dt = conn.selectData(conn.conn, sql);
             return dt;
         }
         public DataTable selectByGroup1(String copId)
         {
             DataTable dt = new DataTable();
-            String sql = "select ord." + ord.diag_id+ ",ord." + ord.diag_code+ ",ord." + ord.diag_name+ ",ord." + ord.diag_group_id + ",ordg.diag_group_name " +
+            String sql = "select ord." + ord.opera_id+ ",ord." + ord.opera_code+ ",ord." + ord.opera_name+ ",ord." + ord.opera_group_id + ",ordg.opera_group_name " +
                 "From " + ord.table + " ord " +
-                "Left Join or_b_diag_group ordg On ord.diag_group_id = ordg.diag_group_id " +
-                "Where ord." + ord.diag_group_id + " ='" + copId + "' and ord." + ord.active + "='1' ";
+                "Left Join or_b_operation_group ordg On ord.opera_group_id = ordg.opera_group_id " +
+                "Where ord." + ord.opera_group_id + " ='" + copId + "' and ord." + ord.active + "='1' ";
             dt = conn.selectData(conn.conn, sql);
             return dt;
         }
@@ -275,9 +275,9 @@ namespace clinic_ivf.objdb
             dt = conn.selectData(conn.conn, sql);
             return dt;
         }
-        public OrDiag selectByPk1(String copId)
+        public OrOperation selectByPk1(String copId)
         {
-            OrDiag cop1 = new OrDiag();
+            OrOperation cop1 = new OrOperation();
             DataTable dt = new DataTable();
             String sql = "select ordg.* " +
                 "From " + ord.table + " ordg " +
@@ -287,15 +287,15 @@ namespace clinic_ivf.objdb
             cop1 = setOrDiag(dt);
             return cop1;
         }
-        private OrDiag setOrDiag(DataTable dt)
+        private OrOperation setOrDiag(DataTable dt)
         {
-            OrDiag dept1 = new OrDiag();
+            OrOperation dept1 = new OrOperation();
             if (dt.Rows.Count > 0)
             {
-                dept1.diag_id = dt.Rows[0][ord.diag_id].ToString();
-                dept1.diag_code = dt.Rows[0][ord.diag_code].ToString();
-                dept1.diag_code_ex = dt.Rows[0][ord.diag_code_ex].ToString();
-                dept1.diag_name = dt.Rows[0][ord.diag_name].ToString();
+                dept1.opera_id = dt.Rows[0][ord.opera_id].ToString();
+                dept1.opera_code = dt.Rows[0][ord.opera_code].ToString();
+                dept1.opera_code_ex = dt.Rows[0][ord.opera_code_ex].ToString();
+                dept1.opera_name = dt.Rows[0][ord.opera_name].ToString();
                 dept1.remark = dt.Rows[0][ord.remark].ToString();
                 dept1.date_create = dt.Rows[0][ord.date_create].ToString();
                 dept1.date_modi = dt.Rows[0][ord.date_modi].ToString();
@@ -305,15 +305,15 @@ namespace clinic_ivf.objdb
                 dept1.user_cancel = dt.Rows[0][ord.user_cancel].ToString();
                 dept1.active = dt.Rows[0][ord.active].ToString();
                 dept1.sort1 = dt.Rows[0][ord.sort1].ToString();
-                dept1.diag_group_id = dt.Rows[0][ord.diag_group_id].ToString();
+                dept1.opera_group_id = dt.Rows[0][ord.opera_group_id].ToString();
             }
             else
             {
-                dept1.diag_id = "";
-                dept1.diag_code = "";
-                dept1.diag_code_ex = "";
+                dept1.opera_id = "";
+                dept1.opera_code = "";
+                dept1.opera_code_ex = "";
 
-                dept1.diag_name = "";
+                dept1.opera_name = "";
                 dept1.remark = "";
                 dept1.date_create = "";
                 dept1.date_modi = "";
@@ -323,7 +323,7 @@ namespace clinic_ivf.objdb
                 dept1.user_cancel = "";
                 dept1.active = "";
                 dept1.sort1 = "";
-                dept1.diag_group_id = "";
+                dept1.opera_group_id = "";
             }
 
             return dept1;
@@ -331,7 +331,7 @@ namespace clinic_ivf.objdb
         public DataTable selectC1()
         {
             DataTable dt = new DataTable();
-            String sql = "select ordg." + ord.pkField + ",ordg." + ord.diag_code_ex + " " +
+            String sql = "select ordg." + ord.pkField + ",ordg." + ord.opera_code_ex + " " +
                 "From " + ord.table + " ordg " +
                 " " +
                 "Where ordg." + ord.active + " ='1' ";
@@ -353,8 +353,8 @@ namespace clinic_ivf.objdb
             foreach (DataRow row in dt.Rows)
             {
                 item = new ComboBoxItem();
-                item.Text = row[ord.diag_code_ex].ToString();
-                item.Value = row[ord.diag_id].ToString();
+                item.Text = row[ord.opera_code_ex].ToString();
+                item.Value = row[ord.opera_id].ToString();
 
                 c.Items.Add(item);
             }

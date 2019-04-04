@@ -20,6 +20,13 @@ namespace clinic_ivf.object1
         public String status_or { get; set; }
         public String b_service_point_id { get; set; }
         public String or_id { get; set; }
-
+        public String opera_id { get; set; }
+        public String t_patient_id { get; set; }
+        public String status_urgent { get; set; }
+        public String anesthesia_id { get; set; }
+        public String operation_name { get; set; }
+        public String anesthesia_name { get; set; }
+        public String surgeon { get; set; }
+        public String operation_group_name { get; set; }
     }
 }

@@ -73,7 +73,7 @@ namespace clinic_ivf.gui
             menuVisitNew.Click += MenuVisitNew_Click;
             menuAppn.Click += MenuAppn_Click;
             menuNurseDefault.Click += MenuNurseDefault_Click;
-            menuExamiRoom.Click += MenuExamiRoom_Click;
+            //menuExamiRoom.Click += MenuExamiRoom_Click;
             menuDrugPatient.Click += MenuDrugPatient_Click;
             menuReqLabFormA.Click += MenuReqLabFormA_Click;
             menuCashierDefault.Click += MenuCashierDefault_Click;
@@ -87,6 +87,24 @@ namespace clinic_ivf.gui
             menuGrpDiag.Click += MenuGrpDiag_Click;
             menuOrDiag.Click += MenuOrDiag_Click;
             menuOrAnes.Click += MenuOrAnes_Click;
+            menuReqOR.Click += MenuReqOR_Click;
+            menuOrScreen.Click += MenuOrScreen_Click;
+        }
+
+        private void MenuOrScreen_Click(object sender, EventArgs e)
+        {
+            //throw new NotImplementedException();
+            FrmOrView frm = new FrmOrView(ic, this);
+            frm.FormBorderStyle = FormBorderStyle.None;
+            AddNewTab(frm, menuOrScreen.Text + " ");
+        }
+
+        private void MenuReqOR_Click(object sender, EventArgs e)
+        {
+            //throw new NotImplementedException();
+            FrmOrReqAdd frm = new FrmOrReqAdd(ic);
+            frm.FormBorderStyle = FormBorderStyle.None;
+            AddNewTab(frm, menuExamiRoom.Text + " ");
         }
 
         private void MenuOrAnes_Click(object sender, EventArgs e)
@@ -100,7 +118,7 @@ namespace clinic_ivf.gui
         private void MenuOrDiag_Click(object sender, EventArgs e)
         {
             //throw new NotImplementedException();
-            FrmOrDiag frm = new FrmOrDiag(ic);
+            FrmOrOperation frm = new FrmOrOperation(ic);
             frm.FormBorderStyle = FormBorderStyle.None;
             AddNewTab(frm, menuOrDiag.Text + " ");
         }
@@ -197,9 +215,9 @@ namespace clinic_ivf.gui
         private void MenuExamiRoom_Click(object sender, EventArgs e)
         {
             //throw new NotImplementedException();
-            FrmOrReqAdd frm = new FrmOrReqAdd(ic);
-            frm.FormBorderStyle = FormBorderStyle.None;
-            AddNewTab(frm, menuExamiRoom.Text + " ");
+            //FrmOrReqAdd frm = new FrmOrReqAdd(ic);
+            //frm.FormBorderStyle = FormBorderStyle.None;
+            //AddNewTab(frm, menuExamiRoom.Text + " ");
         }
 
         private void MenuNurseDefault_Click(object sender, EventArgs e)

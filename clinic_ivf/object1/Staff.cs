@@ -44,5 +44,7 @@ namespace clinic_ivf.object1
         public String status_module_lab { get; set; }
         public String status_module_cashier { get; set; }
         public String status_module_medicalrecord { get; set; }
+        public String status_doctor { get; set; }
+        public String doctor_id { get; set; }
     }
 }

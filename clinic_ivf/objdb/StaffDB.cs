@@ -16,6 +16,7 @@ namespace clinic_ivf.objdb
         ConnectDB conn;
 
         public List<Staff> lStf;
+        public List<Staff> ldtr;
 
         public StaffDB(ConnectDB c)
         {
@@ -69,11 +70,14 @@ namespace clinic_ivf.objdb
             stf.status_module_lab = "status_module_lab";
             stf.status_module_cashier = "status_module_cashier";
             stf.status_module_medicalrecord = "status_module_medicalrecord";
+            stf.status_doctor = "status_doctor";
+            stf.doctor_id = "doctor_id";
 
             stf.table = "b_staff";
             stf.pkField = "staff_id";
 
             lStf = new List<Staff>();
+            ldtr = new List<Staff>();
         }
         public void getlStf()
         {
@@ -101,6 +105,7 @@ namespace clinic_ivf.objdb
                 lStf.Add(stf1);
             }
         }
+
         public String getIdByCode(String code)
         {
             String id = "";
@@ -158,6 +163,7 @@ namespace clinic_ivf.objdb
             p.pid = p.pid == null ? "" : p.pid;
             p.logo = p.logo == null ? "" : p.logo;
             p.dept_name = p.dept_name == null ? "" : p.dept_name;
+            p.doctor_id = p.doctor_id == null ? "" : p.doctor_id;
 
             p.status_admin = p.status_admin == null ? "0" : p.status_admin;
             p.status_module_reception = p.status_module_reception == null ? "0" : p.status_module_reception;
@@ -173,6 +179,7 @@ namespace clinic_ivf.objdb
             p.status_module_lab = p.status_module_lab == null ? "0" : p.status_module_lab;
             p.status_module_cashier = p.status_module_cashier == null ? "0" : p.status_module_cashier;
             p.status_module_medicalrecord = p.status_module_medicalrecord == null ? "0" : p.status_module_medicalrecord;
+            p.status_doctor = p.status_doctor == null ? "0" : p.status_doctor;
 
             p.posi_id = long.TryParse(p.posi_id, out chk) ? chk.ToString() : "0";
             p.dept_id = long.TryParse(p.dept_id, out chk) ? chk.ToString() : "0";
@@ -255,7 +262,9 @@ namespace clinic_ivf.objdb
                 "," + stf.status_module_lab + "='" + p.status_module_lab + "' " +
                 "," + stf.dept_id + "='" + p.dept_id + "' " +
                 "," + stf.status_module_cashier + "='" + p.status_module_cashier + "' " +
-                "," + stf.status_module_medicalrecord + "='" + p.status_module_medicalrecord + "' "
+                "," + stf.status_module_medicalrecord + "='" + p.status_module_medicalrecord + "' " +
+                "," + stf.status_doctor + "='" + p.status_doctor + "' " +
+                "," + stf.doctor_id + "='" + p.doctor_id + "' "
                 ;
             try
             {
@@ -298,17 +307,19 @@ namespace clinic_ivf.objdb
                 "," + stf.user_modi + " = '" + userId + "' " +
                 "," + stf.dept_id + " = '" + p.dept_id + "' " +
                 "," + stf.dept_name + " = '" + p.dept_name.Replace("'", "''") + "' " +
-                "," + stf.status_admin + " = '" + p.status_admin.Replace("'", "''") + "' " +
-                "," + stf.status_module_reception + " = '" + p.status_module_reception.Replace("'", "''") + "' " +
-                "," + stf.status_module_nurse + " = '" + p.status_module_nurse.Replace("'", "''") + "' " +
-                "," + stf.status_module_doctor + " = '" + p.status_module_doctor.Replace("'", "''") + "' " +
-                "," + stf.status_expense_appv + " = '" + p.status_expense_appv.Replace("'", "''") + "' " +
-                "," + stf.status_expense_draw + " = '" + p.status_expense_draw.Replace("'", "''") + "' " +
-                "," + stf.status_expense_pay + " = '" + p.status_expense_pay.Replace("'", "''") + "' " +
-                "," + stf.status_module_pharmacy + " = '" + p.status_module_pharmacy.Replace("'", "''") + "' " +
-                "," + stf.status_module_lab + " = '" + p.status_module_lab.Replace("'", "''") + "' " +
-                "," + stf.status_module_cashier + " = '" + p.status_module_cashier.Replace("'", "''") + "' " +
-                "," + stf.status_module_medicalrecord + " = '" + p.status_module_medicalrecord.Replace("'", "''") + "' " +
+                "," + stf.status_admin + " = '" + p.status_admin + "' " +
+                "," + stf.status_module_reception + " = '" + p.status_module_reception + "' " +
+                "," + stf.status_module_nurse + " = '" + p.status_module_nurse + "' " +
+                "," + stf.status_module_doctor + " = '" + p.status_module_doctor + "' " +
+                "," + stf.status_expense_appv + " = '" + p.status_expense_appv + "' " +
+                "," + stf.status_expense_draw + " = '" + p.status_expense_draw + "' " +
+                "," + stf.status_expense_pay + " = '" + p.status_expense_pay + "' " +
+                "," + stf.status_module_pharmacy + " = '" + p.status_module_pharmacy + "' " +
+                "," + stf.status_module_lab + " = '" + p.status_module_lab + "' " +
+                "," + stf.status_module_cashier + " = '" + p.status_module_cashier + "' " +
+                "," + stf.status_module_medicalrecord + " = '" + p.status_module_medicalrecord + "' " +
+                "," + stf.status_doctor + " = '" + p.status_doctor + "' " +
+                "," + stf.doctor_id + " = '" + p.doctor_id + "' " +
                 "Where " + stf.pkField + "='" + p.staff_id + "'"
                 ;
 
@@ -411,6 +422,17 @@ namespace clinic_ivf.objdb
                 "From " + stf.table + " cop " +
                 " " +
                 "Where cop." + stf.active + " ='1' ";
+            dt = conn.selectData(conn.conn, sql);
+
+            return dt;
+        }
+        public DataTable selectAllDoctor()
+        {
+            DataTable dt = new DataTable();
+            String sql = "Select stf.staff_id, stf.doctor_id, concat( stf.staff_fname_e, ' ' , stf.staff_lname_e) as name " +               
+                "From " + stf.table + " stf " +
+                //"Left Join b_prefix pfx On stf.prefix_id = pfx.prefix_id " +
+                "Where stf." + stf.active + " ='1' and stf."+stf.status_doctor+"='1' ";
             dt = conn.selectData(conn.conn, sql);
 
             return dt;
@@ -625,6 +647,8 @@ namespace clinic_ivf.objdb
                 stf1.status_module_lab = dt.Rows[0][stf.status_module_lab] != null ? dt.Rows[0][stf.status_module_lab].ToString() : "0";
                 stf1.status_module_cashier = dt.Rows[0][stf.status_module_cashier] != null ? dt.Rows[0][stf.status_module_cashier].ToString() : "0";
                 stf1.status_module_medicalrecord = dt.Rows[0][stf.status_module_medicalrecord] != null ? dt.Rows[0][stf.status_module_medicalrecord].ToString() : "0";
+                stf1.status_doctor = dt.Rows[0][stf.status_doctor] != null ? dt.Rows[0][stf.status_doctor].ToString() : "0";
+                stf1.doctor_id = dt.Rows[0][stf.doctor_id] != null ? dt.Rows[0][stf.doctor_id].ToString() : "0";
             }
             else
             {
@@ -675,6 +699,8 @@ namespace clinic_ivf.objdb
             stf1.status_module_lab = "0";
             stf1.status_module_cashier = "0";
             stf1.status_module_medicalrecord = "0";
+            stf1.status_doctor = "0";
+            stf1.doctor_id = "0";
             return stf1;
         }
         public String getStaffNameBylStf(String selected)

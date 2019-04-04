@@ -70,8 +70,8 @@
             this.label3 = new System.Windows.Forms.Label();
             this.c1Button3 = new C1.Win.C1Input.C1Button();
             this.tabSearch = new C1.Win.C1Command.C1DockingTabPage();
-            this.panel3 = new System.Windows.Forms.Panel();
             this.pnSearch = new System.Windows.Forms.Panel();
+            this.panel3 = new System.Windows.Forms.Panel();
             this.btnSearch = new C1.Win.C1Input.C1Button();
             this.label4 = new System.Windows.Forms.Label();
             this.txtSearch = new C1.Win.C1Input.C1TextBox();
@@ -748,6 +748,17 @@
             this.tabSearch.TabIndex = 3;
             this.tabSearch.Text = "Search";
             // 
+            // pnSearch
+            // 
+            this.pnSearch.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.pnSearch.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pnSearch.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.pnSearch.Location = new System.Drawing.Point(0, 49);
+            this.pnSearch.Name = "pnSearch";
+            this.pnSearch.Size = new System.Drawing.Size(1210, 653);
+            this.pnSearch.TabIndex = 0;
+            this.theme1.SetTheme(this.pnSearch, "(default)");
+            // 
             // panel3
             // 
             this.panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
@@ -761,17 +772,6 @@
             this.panel3.Size = new System.Drawing.Size(1210, 49);
             this.panel3.TabIndex = 0;
             this.theme1.SetTheme(this.panel3, "(default)");
-            // 
-            // pnSearch
-            // 
-            this.pnSearch.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.pnSearch.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnSearch.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.pnSearch.Location = new System.Drawing.Point(0, 49);
-            this.pnSearch.Name = "pnSearch";
-            this.pnSearch.Size = new System.Drawing.Size(1210, 653);
-            this.pnSearch.TabIndex = 0;
-            this.theme1.SetTheme(this.pnSearch, "(default)");
             // 
             // btnSearch
             // 

@@ -20,7 +20,7 @@ namespace clinic_ivf.gui
     public partial class FrmOrDiagGroup : Form
     {
         IvfControl ic;
-        OrDiagGroup ordg;
+        OrOperationGroup ordg;
 
         Font fEdit, fEditB;
 
@@ -45,7 +45,7 @@ namespace clinic_ivf.gui
         }
         private void initConfig()
         {
-            ordg = new OrDiagGroup();
+            ordg = new OrOperationGroup();
 
             fEdit = new Font(ic.iniC.grdViewFontName, ic.grdViewFontSize, FontStyle.Regular);
             fEditB = new Font(ic.iniC.grdViewFontName, ic.grdViewFontSize, FontStyle.Bold);
@@ -204,14 +204,14 @@ namespace clinic_ivf.gui
         private void setControl(String posiId)
         {
             ordg = ic.ivfDB.ordgDB.selectByPk1(posiId);
-            txtID.Value = ordg.diag_group_id;
-            txtGiagGrpCode.Value = ordg.diag_group_code;
-            txtGiagGrpName.Value = ordg.diag_group_name;
+            txtID.Value = ordg.opera_group_id;
+            txtGiagGrpCode.Value = ordg.opera_group_code;
+            txtGiagGrpName.Value = ordg.opera_group_name;
             //txtPosiNameT.Value = agn.posi_name_t;
             //txtRemark.Value = agn.remark;
             //if (posi.status_doctor.Equals("1"))
             //{
-            chkSendtoOr.Checked = ordg.status_or_diag_req.Equals("1") ? true : false;
+            chkSendtoOr.Checked = ordg.status_or_opera_req.Equals("1") ? true : false;
             chkOrUs.Checked = ordg.status_or_us.Equals("1") ? true : false;
             //}
             //else
@@ -240,12 +240,12 @@ namespace clinic_ivf.gui
         }
         private void setAgent()
         {
-            ordg.diag_group_id = txtID.Text;
-            ordg.diag_group_name = txtGiagGrpName.Text;
-            ordg.diag_group_code = txtGiagGrpCode.Text;
+            ordg.opera_group_id = txtID.Text;
+            ordg.opera_group_name = txtGiagGrpName.Text;
+            ordg.opera_group_code = txtGiagGrpCode.Text;
             //posi.posi_name_e = txtPosiNameE.Text;
             //agn.remark = txtRemark.Text;
-            ordg.status_or_diag_req = chkSendtoOr.Checked == true ? "1" : "0";
+            ordg.status_or_opera_req = chkSendtoOr.Checked == true ? "1" : "0";
             ordg.status_or_us = chkOrUs.Checked == true ? "1" : "0";
         }
         private void FrmOrDiagGroup_Load(object sender, EventArgs e)

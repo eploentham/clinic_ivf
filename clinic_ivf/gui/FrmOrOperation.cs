@@ -17,10 +17,10 @@ using System.Windows.Forms;
 
 namespace clinic_ivf.gui
 {
-    public partial class FrmOrDiag : Form
+    public partial class FrmOrOperation : Form
     {
         IvfControl ic;
-        OrDiag ord;
+        OrOperation ord;
         Font fEdit, fEditB;
 
         Color bg, fc;
@@ -35,7 +35,7 @@ namespace clinic_ivf.gui
         C1SuperErrorProvider sep;
 
         String userIdVoid = "";
-        public FrmOrDiag(IvfControl x)
+        public FrmOrOperation(IvfControl x)
         {
             InitializeComponent();
             ic = x;
@@ -43,7 +43,7 @@ namespace clinic_ivf.gui
         }
         private void initConfig()
         {
-            ord = new OrDiag();
+            ord = new OrOperation();
 
             fEdit = new Font(ic.iniC.grdViewFontName, ic.grdViewFontSize, FontStyle.Regular);
             fEditB = new Font(ic.iniC.grdViewFontName, ic.grdViewFontSize, FontStyle.Bold);
@@ -201,11 +201,11 @@ namespace clinic_ivf.gui
         private void setControl(String posiId)
         {
             ord = ic.ivfDB.ordDB.selectByPk1(posiId);
-            txtID.Value = ord.diag_id;
-            txtGiagGrpCode.Value = ord.diag_code;
-            txtGiagGrpName.Value = ord.diag_name;
+            txtID.Value = ord.opera_id;
+            txtGiagGrpCode.Value = ord.opera_code;
+            txtGiagGrpName.Value = ord.opera_name;
             //cboFetDay.Value = ord.diag_group_id;
-            ic.setC1Combo(cboFetDay, ord.diag_group_id);
+            ic.setC1Combo(cboFetDay, ord.opera_group_id);
             //txtPosiNameT.Value = agn.posi_name_t;
             //txtRemark.Value = agn.remark;
             //if (posi.status_doctor.Equals("1"))
@@ -227,10 +227,10 @@ namespace clinic_ivf.gui
         }
         private void setAgent()
         {
-            ord.diag_id = txtID.Text;
-            ord.diag_name = txtGiagGrpName.Text;
-            ord.diag_code = txtGiagGrpCode.Text;
-            ord.diag_group_id = cboFetDay.SelectedItem == null ? "" : ((ComboBoxItem)cboFetDay.SelectedItem).Value;
+            ord.opera_id = txtID.Text;
+            ord.opera_name = txtGiagGrpName.Text;
+            ord.opera_code = txtGiagGrpCode.Text;
+            ord.opera_group_id = cboFetDay.SelectedItem == null ? "" : ((ComboBoxItem)cboFetDay.SelectedItem).Value;
             //posi.posi_name_e = txtPosiNameE.Text;
             //agn.remark = txtRemark.Text;
             //ord.status_or_diag_req = chkSendtoOr.Checked == true ? "1" : "0";
