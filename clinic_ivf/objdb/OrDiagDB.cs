@@ -258,9 +258,9 @@ namespace clinic_ivf.objdb
         public DataTable selectByGroup1(String copId)
         {
             DataTable dt = new DataTable();
-            String sql = "select ord." + ord.diag_id+ ",ord." + ord.diag_code+ ",ord." + ord.diag_name+" " +
+            String sql = "select ord." + ord.diag_id+ ",ord." + ord.diag_code+ ",ord." + ord.diag_name+ ",ord." + ord.diag_group_id + ",ordg.diag_group_name " +
                 "From " + ord.table + " ord " +
-                //"Left Join t_ssdata_visit ssv On ssv.ssdata_visit_id = bd.ssdata_visit_id " +
+                "Left Join or_b_diag_group ordg On ord.diag_group_id = ordg.diag_group_id " +
                 "Where ord." + ord.diag_group_id + " ='" + copId + "' and ord." + ord.active + "='1' ";
             dt = conn.selectData(conn.conn, sql);
             return dt;

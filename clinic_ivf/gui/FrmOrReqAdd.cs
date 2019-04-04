@@ -29,8 +29,8 @@ namespace clinic_ivf.gui
         Color bg, fc;
         Font ff, ffB;
 
-        int colID = 1, colCode = 2, colName = 3, colCnt = 4;
-
+        int colID = 1, colCode = 2, colName = 3, colGrdId=4, colGrdname=5, colCnt = 6;
+        
         public FrmOrReqAdd(IvfControl ic)
         {
             InitializeComponent();
@@ -53,6 +53,7 @@ namespace clinic_ivf.gui
             //btnReq.Image = Resources.Ticket_24;
             btnSearch.Click += BtnSearch_Click;
             cboFetDay.SelectedIndexChanged += CboFetDay_SelectedIndexChanged;
+            btnSave.Click += BtnSave_Click;
 
             initGrfPosi();
             //ic.ivfDB.itmDB.setCboItem(cboLabReq, "");
@@ -62,14 +63,29 @@ namespace clinic_ivf.gui
             //btnReq.Click += BtnReq_Click;
         }
 
+        private void BtnSave_Click(object sender, EventArgs e)
+        {
+            //throw new NotImplementedException();
+            ic.cStf.staff_id = "";
+            FrmPasswordConfirm frm = new FrmPasswordConfirm(ic);
+            frm.ShowDialog(this);
+            if (!ic.cStf.staff_id.Equals(""))
+            {
+
+            }
+        }
+
         private void CboFetDay_SelectedIndexChanged(object sender, EventArgs e)
         {
             //throw new NotImplementedException();
+            cboFetDay.Enabled = false;
             String id = "";
-            id = cboFetDay.SelectedItem == null ? "" : ((ComboBoxItem)cboFetDay.SelectedItem).Value;
+            //id = cboFetDay.SelectedItem == null ? "" : ((ComboBoxItem)cboFetDay.SelectedItem).Value;
+            id = ic.getC1ComboBySelectedIndex(cboFetDay);
             //String deptId = "";
             //deptId = grfReq[e.NewRange.r1, colID] != null ? grfReq[e.NewRange.r1, colID].ToString() : "";
             setGrfPosi(id);
+            cboFetDay.Enabled = true;
         }
 
         private void BtnSearch_Click(object sender, EventArgs e)
@@ -84,6 +100,29 @@ namespace clinic_ivf.gui
             txtHn.Value = ic.sVsOld.PIDS;
             txtPttNameE.Value = ic.sVsOld.PName;
             txtDob.Value = ic.sVsOld.dob +"["+ ptt.AgeStringShort()+"]";
+        }
+        private void setOrRequest()
+        {
+            orreq.or_req_id = txtID.Text;
+            orreq.or_req_code = txtReqCode.Text;
+            orreq.or_req_date = ic.datetoDB(txtReqDate.Text);
+            orreq.patient_hn = "";
+            orreq.patient_name = "";
+            orreq.remark = "";
+            orreq.date_create = "";
+            orreq.date_modi = "";
+            orreq.date_cancel = "";
+            orreq.user_create = "";
+            orreq.user_modi = "";
+            orreq.user_cancel = "";
+            orreq.active = "";
+            orreq.doctor_anesthesia_id = "";
+            orreq.doctor_surgical_id = "";
+            orreq.or_date = "";
+            orreq.or_time = "";
+            orreq.status_or = cboVisitBsp.SelectedItem == null ? "" : ((ComboBoxItem)cboVisitBsp.SelectedItem).Value; ;
+            orreq.b_service_point_id = "";
+            orreq.or_id = "";
         }
         private void initGrfPosi()
         {
@@ -108,9 +147,16 @@ namespace clinic_ivf.gui
             if (e.NewRange.r1 < 0) return;
             if (e.NewRange.Data == null) return;
 
-            String deptId = "";
+            String deptId = "", name, grdid="", grdname="";
             deptId = grfReq[e.NewRange.r1, colID] != null ? grfReq[e.NewRange.r1, colID].ToString() : "";
-            setGrfPosi(deptId);
+            name = grfReq[e.NewRange.r1, colName] != null ? grfReq[e.NewRange.r1, colName].ToString() : "";
+            grdid = grfReq[e.NewRange.r1, colGrdId] != null ? grfReq[e.NewRange.r1, colGrdId].ToString() : "";
+            grdname = grfReq[e.NewRange.r1, colGrdname] != null ? grfReq[e.NewRange.r1, colGrdname].ToString() : "";
+            txtDiag.Value = name;
+            txtDiagId.Value = deptId;
+            txtDiagGrpId.Value = grdid;
+            txtDiagGrp.Value = grdname;
+            //setGrfPosi(deptId);
             //setControlEnable(false);
             //setControlAddr(addrId);
             //setControlAddrEnable(false);
@@ -141,13 +187,14 @@ namespace clinic_ivf.gui
                     grfReq.Rows[i].StyleNew.BackColor = ColorTranslator.FromHtml(ic.iniC.grfRowColor);
             }
             grfReq.Cols[colID].Visible = false;
-            //grfAgn.Cols[colE].Visible = false;
-            //grfAgn.Cols[colS].Visible = false;
+            grfReq.Cols[colGrdId].Visible = false;
+            grfReq.Cols[colGrdname].Visible = false;
             //grfAgn.Cols[colRemark].Visible = false;
         }
         private void FrmOrReqAdd_Load(object sender, EventArgs e)
         {
             ic.ivfDB.ordgDB.setC1CboDiagGroup(cboFetDay);
+            ic.ivfDB.bspDB.setCboBsp(cboVisitBsp, "2120000010");
         }
     }
 }

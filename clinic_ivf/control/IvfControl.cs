@@ -493,6 +493,23 @@ namespace clinic_ivf.control
             c.Items.Add(item);
 
         }
+        public String getC1ComboBySelectedIndex(C1ComboBox c)
+        {
+            if (c.Items.Count == 0) return "";
+            int i = 0, row=0;
+            row = c.SelectedIndex;
+            ComboBoxItem item1 = new ComboBoxItem();
+            foreach (ComboBoxItem item in c.Items)
+            {
+                if (i==row)
+                {
+                    item1 = item;
+                    break;
+                }
+                i++;
+            }
+            return item1.Value;
+        }
         public void setC1Combo(C1ComboBox c, String data)
         {
             if (c.Items.Count == 0) return;
