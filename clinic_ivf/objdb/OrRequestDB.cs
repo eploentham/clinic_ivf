@@ -209,6 +209,38 @@ namespace clinic_ivf.objdb
             conn.ExecuteNonQuery(conn.conn, sql);
             return "1";
         }
+        public DataTable selectDistinctByRemark()
+        {
+            DataTable dt = new DataTable();
+            String sql = "select distinct orreq.remark " +
+                "From " + orreq.table + " orreq " +
+                "Where opu." + orreq.active + "='1' ";
+            dt = conn.selectData(conn.conn, sql);
+            return dt;
+        }
+        public C1ComboBox setCboRemark(C1ComboBox c)
+        {
+            ComboBoxItem item = new ComboBoxItem();
+            DataTable dt = selectDistinctByRemark();
+            //String aaa = "";
+            ComboBoxItem item1 = new ComboBoxItem();
+            item1.Text = "";
+            item1.Value = "";
+            c.Items.Clear();
+            c.Items.Add(item1);
+            //for (int i = 0; i < dt.Rows.Count; i++)
+            int i = 0;
+            foreach (DataRow row in dt.Rows)
+            {
+                item = new ComboBoxItem();
+                item.Text = row[orreq.remark].ToString();
+                item.Value = i.ToString();
+
+                c.Items.Add(item);
+                i++;
+            }
+            return c;
+        }
         public void getlOrRequest()
         {
             //lDept = new List<Position>();

@@ -130,6 +130,7 @@
             this.pnPkg = new System.Windows.Forms.Panel();
             this.tabLab = new C1.Win.C1Command.C1DockingTabPage();
             this.tabApp = new C1.Win.C1Command.C1DockingTabPage();
+            this.pnAdm = new System.Windows.Forms.Panel();
             this.tabCert = new C1.Win.C1Command.C1DockingTabPage();
             this.tabNote = new C1.Win.C1Command.C1DockingTabPage();
             this.pnNote = new System.Windows.Forms.Panel();
@@ -141,7 +142,6 @@
             this.txtNote = new C1.Win.C1Input.C1TextBox();
             this.sB = new System.Windows.Forms.StatusStrip();
             this.sB1 = new System.Windows.Forms.ToolStripStatusLabel();
-            this.pnAdm = new System.Windows.Forms.Panel();
             ((System.ComponentModel.ISupportInitialize)(this.theme1)).BeginInit();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtVisitPulse)).BeginInit();
@@ -1622,6 +1622,17 @@
             this.tabApp.TabIndex = 2;
             this.tabApp.Text = "Appointment";
             // 
+            // pnAdm
+            // 
+            this.pnAdm.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.pnAdm.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pnAdm.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.pnAdm.Location = new System.Drawing.Point(0, 0);
+            this.pnAdm.Name = "pnAdm";
+            this.pnAdm.Size = new System.Drawing.Size(1481, 625);
+            this.pnAdm.TabIndex = 0;
+            this.theme1.SetTheme(this.pnAdm, "(default)");
+            // 
             // tabCert
             // 
             this.tabCert.Location = new System.Drawing.Point(1, 24);
@@ -1753,17 +1764,6 @@
             this.sB1.Name = "sB1";
             this.sB1.Size = new System.Drawing.Size(118, 17);
             this.sB1.Text = "toolStripStatusLabel1";
-            // 
-            // pnAdm
-            // 
-            this.pnAdm.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.pnAdm.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnAdm.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.pnAdm.Location = new System.Drawing.Point(0, 0);
-            this.pnAdm.Name = "pnAdm";
-            this.pnAdm.Size = new System.Drawing.Size(1481, 625);
-            this.pnAdm.TabIndex = 0;
-            this.theme1.SetTheme(this.pnAdm, "(default)");
             // 
             // FrmNurseAdd
             // 

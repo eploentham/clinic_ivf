@@ -54,6 +54,7 @@ namespace clinic_ivf.gui
             fEditB = new Font(ic.iniC.grdViewFontName, ic.grdViewFontSize, FontStyle.Bold);
 
             txtReqDate.Value = System.DateTime.Now.Year + "-" + System.DateTime.Now.ToString("MM-dd HH:mm:ss");
+            ic.ivfDB.orreqDB.setCboRemark(cboDiag);
             
             //btnReq.Image = Resources.Ticket_24;
             btnSearch.Click += BtnSearch_Click;
@@ -152,7 +153,7 @@ namespace clinic_ivf.gui
             orreq.or_req_date = ic.datetoDB(txtReqDate.Text);
             orreq.patient_hn = txtHn.Text;
             orreq.patient_name = txtPttNameE.Text;
-            orreq.remark = txtRemark.Text;
+            orreq.remark = cboDiag.Text;
             orreq.date_create = "";
             orreq.date_modi = "";
             orreq.date_cancel = "";
@@ -196,7 +197,7 @@ namespace clinic_ivf.gui
             txtDiagGrp.Value = orreq.operation_group_name;
             txtOpera.Value = orreq.operation_name;
             txtAnes.Value = orreq.anesthesia_name;
-            txtRemark.Value = orreq.remark;
+            cboDiag.Value = orreq.remark;
             txtOrDate.Value = orreq.or_date;
             txtOrTime.Value = orreq.or_time;
             txtDtrName.Value = orreq.surgeon;
