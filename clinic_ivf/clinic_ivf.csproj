@@ -530,6 +530,7 @@
     <Compile Include="objdb\OrOperationDB.cs" />
     <Compile Include="objdb\OrOperationGroupDB.cs" />
     <Compile Include="objdb\OrRequestDB.cs" />
+    <Compile Include="objdb\OrTOperationDB.cs" />
     <Compile Include="objdb\PatientAppointmentDB.cs" />
     <Compile Include="objdb\PatientAppointmentTextDB.cs" />
     <Compile Include="object1\CellNoteManager.cs" />
@@ -564,6 +565,7 @@
     <Compile Include="object1\OrOperation.cs" />
     <Compile Include="object1\OrOperationGroup.cs" />
     <Compile Include="object1\OrRequest.cs" />
+    <Compile Include="object1\OrTOperation.cs" />
     <Compile Include="object1\PackageDepositDetail.cs" />
     <Compile Include="object1\OldPackageSellThru.cs" />
     <Compile Include="object1\PatientAppointment.cs" />

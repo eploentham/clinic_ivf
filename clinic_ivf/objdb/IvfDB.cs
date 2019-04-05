@@ -85,6 +85,7 @@ namespace clinic_ivf.objdb
         public OrOperationDB ordDB;
         public OrAnesthesiaDB oranesDB;
         public OrRequestDB orreqDB;
+        public OrTOperationDB oropDB;
 
         public IvfDB(ConnectDB c)
         {
@@ -161,6 +162,7 @@ namespace clinic_ivf.objdb
             ordDB = new OrOperationDB(conn);
             oranesDB = new OrAnesthesiaDB(conn);
             orreqDB = new OrRequestDB(conn);
+            oropDB = new OrTOperationDB(conn);
 
             Console.WriteLine("ivfDB end");
         }
@@ -270,6 +272,42 @@ namespace clinic_ivf.objdb
                 tim = dt1.ToString("HH:mm:ss");
             }
             return re + " " + tim;
+        }
+        public OrTOperation setOR(String reqid)
+        {
+            OrTOperation orop = new OrTOperation();
+            OrRequest orrep = new OrRequest();
+            orrep = orreqDB.selectByPk1(reqid);
+            orop.or_id = "";
+            orop.or_code = "";
+            orop.or_req_id = orrep.or_req_id;
+            orop.patient_hn = orrep.patient_hn;
+            orop.patient_name = orrep.patient_name;
+            orop.remark = orrep.remark;
+            orop.date_create = "";
+            orop.date_modi = "";
+            orop.date_cancel = "";
+            orop.user_create = "";
+            orop.user_modi = "";
+            orop.user_cancel = "";
+            orop.active = "";
+            orop.doctor_anesthesia_id = orrep.doctor_anesthesia_id;
+            orop.doctor_surgical_id = orrep.doctor_surgical_id;
+            orop.or_date = orrep.or_date;
+            orop.or_time = orrep.or_time;
+            orop.status_or = "1";
+            orop.b_service_point_id = orrep.b_service_point_id;
+            //orop.or_id = "";
+            orop.opera_id = orrep.opera_id;
+            orop.t_patient_id = orrep.t_patient_id;
+            orop.status_urgent = orrep.status_urgent;
+            orop.anesthesia_id = orrep.anesthesia_id;
+            orop.operation_name = orrep.operation_name;
+            orop.operation_group_name = orrep.operation_group_name;
+            orop.anesthesia_name = orrep.anesthesia_name;
+            orop.surgeon = orrep.surgeon;
+
+            return orop;
         }
         public LabRequest setLabRequest(String pttName, String vn, String doctorId, String remark, String hn, String dobfemale, String reqid, String itmcode
             ,String hnmale, String namemale, String hndonor, String namedonor)

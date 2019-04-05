@@ -29,26 +29,25 @@
         private void InitializeComponent()
         {
             this.theme1 = new C1.Win.C1Themes.C1ThemeController();
-            this.sB = new System.Windows.Forms.StatusStrip();
-            this.sB1 = new System.Windows.Forms.ToolStripStatusLabel();
             this.tC = new C1.Win.C1Command.C1DockingTab();
             this.tabReq = new C1.Win.C1Command.C1DockingTabPage();
-            this.tabProcess = new C1.Win.C1Command.C1DockingTabPage();
-            this.tabFinish = new C1.Win.C1Command.C1DockingTabPage();
             this.pnQue = new System.Windows.Forms.Panel();
-            this.panel2 = new System.Windows.Forms.Panel();
+            this.tabProcess = new C1.Win.C1Command.C1DockingTabPage();
+            this.pnOpera = new System.Windows.Forms.Panel();
+            this.tabFinish = new C1.Win.C1Command.C1DockingTabPage();
             this.panel3 = new System.Windows.Forms.Panel();
             this.tabSearch = new C1.Win.C1Command.C1DockingTabPage();
             this.panel4 = new System.Windows.Forms.Panel();
-            this.panel5 = new System.Windows.Forms.Panel();
             this.panel6 = new System.Windows.Forms.Panel();
+            this.panel5 = new System.Windows.Forms.Panel();
+            this.btnSearch = new C1.Win.C1Input.C1Button();
             this.label11 = new System.Windows.Forms.Label();
             this.txtDateStart = new C1.Win.C1Input.C1DateEdit();
             this.label4 = new System.Windows.Forms.Label();
             this.txtSearch = new C1.Win.C1Input.C1TextBox();
-            this.btnSearch = new C1.Win.C1Input.C1Button();
+            this.sB = new System.Windows.Forms.StatusStrip();
+            this.sB1 = new System.Windows.Forms.ToolStripStatusLabel();
             ((System.ComponentModel.ISupportInitialize)(this.theme1)).BeginInit();
-            this.sB.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tC)).BeginInit();
             this.tC.SuspendLayout();
             this.tabReq.SuspendLayout();
@@ -57,30 +56,15 @@
             this.tabSearch.SuspendLayout();
             this.panel4.SuspendLayout();
             this.panel5.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.btnSearch)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtDateStart)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtSearch)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.btnSearch)).BeginInit();
+            this.sB.SuspendLayout();
             this.SuspendLayout();
             // 
             // theme1
             // 
             this.theme1.Theme = "Office2013Red";
-            // 
-            // sB
-            // 
-            this.sB.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.sB1});
-            this.sB.Location = new System.Drawing.Point(0, 763);
-            this.sB.Name = "sB";
-            this.sB.Size = new System.Drawing.Size(1101, 22);
-            this.sB.TabIndex = 9;
-            this.sB.Text = "statusStrip1";
-            // 
-            // sB1
-            // 
-            this.sB1.Name = "sB1";
-            this.sB1.Size = new System.Drawing.Size(118, 17);
-            this.sB1.Text = "toolStripStatusLabel1";
             // 
             // tC
             // 
@@ -111,24 +95,6 @@
             this.tabReq.TabIndex = 0;
             this.tabReq.Text = "waiting in queue";
             // 
-            // tabProcess
-            // 
-            this.tabProcess.Controls.Add(this.panel2);
-            this.tabProcess.Location = new System.Drawing.Point(1, 24);
-            this.tabProcess.Name = "tabProcess";
-            this.tabProcess.Size = new System.Drawing.Size(1099, 738);
-            this.tabProcess.TabIndex = 1;
-            this.tabProcess.Text = "on Operation";
-            // 
-            // tabFinish
-            // 
-            this.tabFinish.Controls.Add(this.panel3);
-            this.tabFinish.Location = new System.Drawing.Point(1, 24);
-            this.tabFinish.Name = "tabFinish";
-            this.tabFinish.Size = new System.Drawing.Size(1099, 738);
-            this.tabFinish.TabIndex = 2;
-            this.tabFinish.Text = "Finish";
-            // 
             // pnQue
             // 
             this.pnQue.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
@@ -140,16 +106,34 @@
             this.pnQue.TabIndex = 0;
             this.theme1.SetTheme(this.pnQue, "(default)");
             // 
-            // panel2
+            // tabProcess
             // 
-            this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.panel2.Location = new System.Drawing.Point(0, 0);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1099, 738);
-            this.panel2.TabIndex = 0;
-            this.theme1.SetTheme(this.panel2, "(default)");
+            this.tabProcess.Controls.Add(this.pnOpera);
+            this.tabProcess.Location = new System.Drawing.Point(1, 24);
+            this.tabProcess.Name = "tabProcess";
+            this.tabProcess.Size = new System.Drawing.Size(1099, 738);
+            this.tabProcess.TabIndex = 1;
+            this.tabProcess.Text = "on Operation";
+            // 
+            // pnOpera
+            // 
+            this.pnOpera.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.pnOpera.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pnOpera.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.pnOpera.Location = new System.Drawing.Point(0, 0);
+            this.pnOpera.Name = "pnOpera";
+            this.pnOpera.Size = new System.Drawing.Size(1099, 738);
+            this.pnOpera.TabIndex = 0;
+            this.theme1.SetTheme(this.pnOpera, "(default)");
+            // 
+            // tabFinish
+            // 
+            this.tabFinish.Controls.Add(this.panel3);
+            this.tabFinish.Location = new System.Drawing.Point(1, 24);
+            this.tabFinish.Name = "tabFinish";
+            this.tabFinish.Size = new System.Drawing.Size(1099, 738);
+            this.tabFinish.TabIndex = 2;
+            this.tabFinish.Text = "Finish";
             // 
             // panel3
             // 
@@ -184,6 +168,17 @@
             this.panel4.TabIndex = 0;
             this.theme1.SetTheme(this.panel4, "(default)");
             // 
+            // panel6
+            // 
+            this.panel6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.panel6.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.panel6.Location = new System.Drawing.Point(0, 39);
+            this.panel6.Name = "panel6";
+            this.panel6.Size = new System.Drawing.Size(1099, 699);
+            this.panel6.TabIndex = 12;
+            this.theme1.SetTheme(this.panel6, "(default)");
+            // 
             // panel5
             // 
             this.panel5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
@@ -200,16 +195,16 @@
             this.panel5.TabIndex = 11;
             this.theme1.SetTheme(this.panel5, "(default)");
             // 
-            // panel6
+            // btnSearch
             // 
-            this.panel6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.panel6.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.panel6.Location = new System.Drawing.Point(0, 39);
-            this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(1099, 699);
-            this.panel6.TabIndex = 12;
-            this.theme1.SetTheme(this.panel6, "(default)");
+            this.btnSearch.Location = new System.Drawing.Point(542, 7);
+            this.btnSearch.Name = "btnSearch";
+            this.btnSearch.Size = new System.Drawing.Size(28, 23);
+            this.btnSearch.TabIndex = 740;
+            this.btnSearch.Text = "...";
+            this.theme1.SetTheme(this.btnSearch, "(default)");
+            this.btnSearch.UseVisualStyleBackColor = true;
+            this.btnSearch.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
             // 
             // label11
             // 
@@ -304,16 +299,21 @@
             this.theme1.SetTheme(this.txtSearch, "(default)");
             this.txtSearch.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
             // 
-            // btnSearch
+            // sB
             // 
-            this.btnSearch.Location = new System.Drawing.Point(542, 7);
-            this.btnSearch.Name = "btnSearch";
-            this.btnSearch.Size = new System.Drawing.Size(28, 23);
-            this.btnSearch.TabIndex = 740;
-            this.btnSearch.Text = "...";
-            this.theme1.SetTheme(this.btnSearch, "(default)");
-            this.btnSearch.UseVisualStyleBackColor = true;
-            this.btnSearch.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            this.sB.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.sB1});
+            this.sB.Location = new System.Drawing.Point(0, 763);
+            this.sB.Name = "sB";
+            this.sB.Size = new System.Drawing.Size(1101, 22);
+            this.sB.TabIndex = 9;
+            this.sB.Text = "statusStrip1";
+            // 
+            // sB1
+            // 
+            this.sB1.Name = "sB1";
+            this.sB1.Size = new System.Drawing.Size(118, 17);
+            this.sB1.Text = "toolStripStatusLabel1";
             // 
             // FrmOrView
             // 
@@ -326,8 +326,6 @@
             this.Text = "FrmOrView";
             this.Load += new System.EventHandler(this.FrmOrView_Load);
             ((System.ComponentModel.ISupportInitialize)(this.theme1)).EndInit();
-            this.sB.ResumeLayout(false);
-            this.sB.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tC)).EndInit();
             this.tC.ResumeLayout(false);
             this.tabReq.ResumeLayout(false);
@@ -337,9 +335,11 @@
             this.panel4.ResumeLayout(false);
             this.panel5.ResumeLayout(false);
             this.panel5.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.btnSearch)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtDateStart)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtSearch)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.btnSearch)).EndInit();
+            this.sB.ResumeLayout(false);
+            this.sB.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -355,7 +355,7 @@
         private C1.Win.C1Command.C1DockingTabPage tabProcess;
         private C1.Win.C1Command.C1DockingTabPage tabFinish;
         private System.Windows.Forms.Panel pnQue;
-        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.Panel pnOpera;
         private System.Windows.Forms.Panel panel3;
         private C1.Win.C1Command.C1DockingTabPage tabSearch;
         private System.Windows.Forms.Panel panel4;

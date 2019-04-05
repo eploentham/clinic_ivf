@@ -150,6 +150,35 @@ ADD COLUMN `doctor_id` VARCHAR(45) NULL COMMENT 'รหัส ว แพทย�
 ALTER TABLE `ivf_101`.`or_t_request` 
 CHANGE COLUMN `diag_id` `opera_id` INT(11) NULL DEFAULT NULL ;
 
+CREATE TABLE `or_t_operation` (
+  `or_id` int(11) NOT NULL AUTO_INCREMENT,
+  `or_code` varchar(45) COLLATE utf8_bin DEFAULT NULL,
+  `or_req_id` int(11) DEFAULT NULL,
+  `patient_hn` varchar(45) COLLATE utf8_bin DEFAULT NULL,
+  `patient_name` varchar(45) COLLATE utf8_bin DEFAULT NULL,
+  `doctor_anesthesia_id` int(11) DEFAULT NULL,
+  `doctor_surgical_id` int(11) DEFAULT NULL,
+  `or_date` varchar(45) COLLATE utf8_bin DEFAULT NULL,
+  `or_time` varchar(45) COLLATE utf8_bin DEFAULT NULL,
+  `status_or` varchar(45) COLLATE utf8_bin DEFAULT NULL COMMENT '0=default;1= send or; 2=or receive;3= or set commit date operation',
+  `opera_id` int(11) DEFAULT NULL,
+  `t_patient_id` int(11) DEFAULT NULL,
+  `b_service_point_id` int(11) DEFAULT NULL,
+  `active` varchar(45) COLLATE utf8_bin DEFAULT NULL,
+  `remark` varchar(45) COLLATE utf8_bin DEFAULT NULL,
+  `date_create` varchar(45) COLLATE utf8_bin DEFAULT NULL,
+  `date_modi` varchar(45) COLLATE utf8_bin DEFAULT NULL,
+  `date_cancel` varchar(45) COLLATE utf8_bin DEFAULT NULL,
+  `user_create` varchar(45) COLLATE utf8_bin DEFAULT NULL,
+  `user_modi` varchar(45) COLLATE utf8_bin DEFAULT NULL,
+  `user_cancel` varchar(45) COLLATE utf8_bin DEFAULT NULL,
+  `status_urgent` varchar(45) COLLATE utf8_bin DEFAULT NULL COMMENT '0=default;1= ด่วนที่สุด;2=normal',
+  `anesthesia_id` int(11) DEFAULT NULL,
+  PRIMARY KEY (`or_id`)
+) ENGINE=MyISAM AUTO_INCREMENT=230000000 DEFAULT CHARSET=utf8 COLLATE=utf8_bin COMMENT='id=230';
+
+ALTER TABLE ivf_101.or_t_operation AUTO_INCREMENT = 230000000;
+
 
 
 

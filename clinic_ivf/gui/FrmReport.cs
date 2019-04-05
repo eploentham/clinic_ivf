@@ -23,6 +23,62 @@ namespace clinic_ivf.gui
             InitializeComponent();
             this.ic = ic;
         }
+        public void setORFormA(String name, String hn, String or_date, String diagnosis, String operation, String surgeon, String age, String anesthesia)
+        {
+            String chk = "", printerDefault = "";
+            ReportDocument rpt = new ReportDocument();
+            try
+            {
+                rpt.Load("or_form_a.rpt");
+                //rpt.SetDataSource(dt);
+                rpt.SetParameterValue("line1", ic.cop.comp_name_t);
+                rpt.SetParameterValue("line2", ic.cop.addr1);
+                rpt.SetParameterValue("line3", ic.cop.addr2);
+                rpt.SetParameterValue("patient_hn", hn);
+                rpt.SetParameterValue("patient_name", name);
+                rpt.SetParameterValue("or_date", or_date);
+                rpt.SetParameterValue("diagnosis", diagnosis);
+                rpt.SetParameterValue("operation", operation);
+                rpt.SetParameterValue("surgeon_name", surgeon);
+                rpt.SetParameterValue("age", age);
+                rpt.SetParameterValue("anesthesia_name", anesthesia);
+                this.crystalReportViewer1.ReportSource = rpt;
+                this.crystalReportViewer1.Refresh();
+            }
+            catch (Exception ex)
+            {
+                chk = ex.Message.ToString();
+                MessageBox.Show("error " + ex.Message, "");
+            }
+        }
+        public void setORDf(String name, String hn, String or_date, String diagnosis, String operation)
+        {
+            String chk = "", printerDefault = "";
+            ReportDocument rpt = new ReportDocument();
+            try
+            {
+                rpt.Load("or_form_df.rpt");
+                //rpt.SetDataSource(dt);
+                rpt.SetParameterValue("line1", ic.cop.comp_name_t);
+                rpt.SetParameterValue("line2", ic.cop.addr1);
+                rpt.SetParameterValue("line3", ic.cop.addr2);
+                rpt.SetParameterValue("patient_hn", hn);
+                rpt.SetParameterValue("patient_name", name);
+                rpt.SetParameterValue("or_date", or_date);
+                rpt.SetParameterValue("diagnosis", diagnosis);
+                rpt.SetParameterValue("operation", operation);
+                //rpt.SetParameterValue("patient_name", name);
+                //rpt.SetParameterValue("report_name", " OPD Record ");
+                //rpt.SetParameterValue("age1", "" + age);
+                this.crystalReportViewer1.ReportSource = rpt;
+                this.crystalReportViewer1.Refresh();
+            }
+            catch (Exception ex)
+            {
+                chk = ex.Message.ToString();
+                MessageBox.Show("error " + ex.Message, "");
+            }
+        }
         public void setOrAppointment(DataTable dt)
         {
             String chk = "", printerDefault = "", err = "";
