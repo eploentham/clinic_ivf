@@ -89,6 +89,14 @@ namespace clinic_ivf.gui
             menuOrAnes.Click += MenuOrAnes_Click;
             menuReqOR.Click += MenuReqOR_Click;
             menuOrScreen.Click += MenuOrScreen_Click;
+            menuTest.Click += MenuTest_Click;
+        }
+
+        private void MenuTest_Click(object sender, EventArgs e)
+        {
+            //throw new NotImplementedException();
+            Form3 frm = new Form3(ic);
+            frm.ShowDialog(this);
         }
 
         private void MenuOrScreen_Click(object sender, EventArgs e)

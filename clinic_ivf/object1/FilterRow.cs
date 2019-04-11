@@ -156,8 +156,11 @@ namespace clinic_ivf.object1
                         dynamic editor = _flex.Editor;
                         if (editor.Text != string.Empty)
                         {
-                            editor.SelectionStart = _editorSelectionStart;
-                            editor.SelectionLength = _editorSelectionLength;
+                            if (_editorSelectionStart >= 0)
+                            {
+                                editor.SelectionStart = _editorSelectionStart;
+                                editor.SelectionLength = _editorSelectionLength;
+                            }
                         }
                     }
                 }

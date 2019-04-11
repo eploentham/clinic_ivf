@@ -1584,7 +1584,7 @@ namespace clinic_ivf.gui
             grfSpecial.Clear();
             DataTable dt = new DataTable();
             dt = ic.ivfDB.oSItmDB.selectBySpecialItem2();
-
+            FilterRow fr = new FilterRow(grfSpecial);
             grfSpecial.Rows.Count = dt.Rows.Count + 1;
             //grfEmbryo.Rows.Count = dt.Rows.Count + 1;
             //grfSpecial.DataSource = dt;
@@ -1643,9 +1643,21 @@ namespace clinic_ivf.gui
             grfSpecial.Cols[colBlName].AllowEditing = false;
             grfSpecial.Cols[colBlPrice].AllowEditing = false;
             grfSpecial.Cols[colBlRemark].AllowEditing = false;
+            grfSpecial.AllowFiltering = true;
+            grfSpecial.AfterFilter += _flex_AfterFilter;
             //theme1.SetTheme(grfFinish, ic.theme);
 
         }
+
+        private void _flex_AfterFilter(object sender, EventArgs e)
+        {
+            //throw new NotImplementedException();
+            for (int col = grfSpecial.Cols.Fixed; col < grfSpecial.Cols.Count; ++col)
+            {
+                var filter = grfSpecial.Cols[col].ActiveFilter;
+            }
+        }
+
         private void initGrfGeneticLab()
         {
             grfGenetic = new C1FlexGrid();

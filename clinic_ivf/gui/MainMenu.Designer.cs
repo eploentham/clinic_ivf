@@ -38,6 +38,8 @@
             this.menuReqLab = new System.Windows.Forms.ToolStripMenuItem();
             this.menuNurseDefault = new System.Windows.Forms.ToolStripMenuItem();
             this.menuExamiRoom = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuReqOR = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuOrScreen = new System.Windows.Forms.ToolStripMenuItem();
             this.menuReqLabFormA = new System.Windows.Forms.ToolStripMenuItem();
             this.menuLab = new System.Windows.Forms.ToolStripMenuItem();
             this.menuLabAccept = new System.Windows.Forms.ToolStripMenuItem();
@@ -76,8 +78,7 @@
             this.tC1 = new C1.Win.C1Command.C1DockingTab();
             this.PageS = new C1.Win.C1Command.C1DockingTabPage();
             this.theme1 = new C1.Win.C1Themes.C1ThemeController();
-            this.menuReqOR = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuOrScreen = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuTest = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tCC1)).BeginInit();
             this.tCC1.SuspendLayout();
@@ -171,6 +172,18 @@
             this.menuExamiRoom.Name = "menuExamiRoom";
             this.menuExamiRoom.Size = new System.Drawing.Size(182, 22);
             this.menuExamiRoom.Text = "Examination Room";
+            // 
+            // menuReqOR
+            // 
+            this.menuReqOR.Name = "menuReqOR";
+            this.menuReqOR.Size = new System.Drawing.Size(212, 22);
+            this.menuReqOR.Text = "Request OR";
+            // 
+            // menuOrScreen
+            // 
+            this.menuOrScreen.Name = "menuOrScreen";
+            this.menuOrScreen.Size = new System.Drawing.Size(212, 22);
+            this.menuOrScreen.Text = "Examination Room Screen";
             // 
             // menuReqLabFormA
             // 
@@ -308,7 +321,8 @@
             this.lABToolStripMenuItem,
             this.convertPatientDonorToolStripMenuItem,
             this.masterToolStripMenuItem,
-            this.menuAgent});
+            this.menuAgent,
+            this.menuTest});
             this.menuInit.Name = "menuInit";
             this.menuInit.Size = new System.Drawing.Size(106, 20);
             this.menuInit.Text = "กำหนดค่าโปรแกรม";
@@ -456,17 +470,11 @@
             // 
             this.theme1.Theme = "BeigeOne";
             // 
-            // menuReqOR
+            // menuTest
             // 
-            this.menuReqOR.Name = "menuReqOR";
-            this.menuReqOR.Size = new System.Drawing.Size(212, 22);
-            this.menuReqOR.Text = "Request OR";
-            // 
-            // menuOrScreen
-            // 
-            this.menuOrScreen.Name = "menuOrScreen";
-            this.menuOrScreen.Size = new System.Drawing.Size(212, 22);
-            this.menuOrScreen.Text = "Examination Room Screen";
+            this.menuTest.Name = "menuTest";
+            this.menuTest.Size = new System.Drawing.Size(192, 22);
+            this.menuTest.Text = "Screen Test";
             // 
             // MainMenu
             // 
@@ -543,5 +551,6 @@
         private System.Windows.Forms.ToolStripMenuItem menuOrAnes;
         private System.Windows.Forms.ToolStripMenuItem menuReqOR;
         private System.Windows.Forms.ToolStripMenuItem menuOrScreen;
+        private System.Windows.Forms.ToolStripMenuItem menuTest;
     }
 }

@@ -112,6 +112,12 @@
     <Compile Include="gui\Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="gui\Form3.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="gui\Form3.Designer.cs">
+      <DependentUpon>Form3.cs</DependentUpon>
+    </Compile>
     <Compile Include="gui\FrmAgent.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -538,6 +544,7 @@
     <Compile Include="object1\DocGroupSubScan.cs" />
     <Compile Include="object1\DocScan.cs" />
     <Compile Include="object1\FDocType.cs" />
+    <Compile Include="object1\FilterRow1.cs" />
     <Compile Include="object1\FilterRowUnBound.cs" />
     <Compile Include="object1\Note1.cs" />
     <Compile Include="object1\OldBilldetail.cs" />
@@ -722,6 +729,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="gui\Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="gui\Form3.resx">
+      <DependentUpon>Form3.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="gui\FrmAgent.resx">
       <DependentUpon>FrmAgent.cs</DependentUpon>
