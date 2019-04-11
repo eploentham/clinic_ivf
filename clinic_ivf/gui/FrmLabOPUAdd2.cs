@@ -45,7 +45,6 @@ namespace clinic_ivf.gui
         Boolean grf2Focus = false, grf3Focus = false, grf5Focus = false, grf6Focus = false;
         private bool prefixSeen;
         String theme2 = "Office2007Blue";       //Office2016Black       BeigeOne
-        
 
         public FrmLabOPUAdd2(IvfControl ic, String reqid, String opuid)
         {
