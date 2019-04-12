@@ -2,7 +2,9 @@
 using C1.Win.C1SuperTooltip;
 using C1.Win.C1Themes;
 using clinic_ivf.control;
+using clinic_ivf.FlexGrid;
 using clinic_ivf.object1;
+using clinic_ivf.Properties;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -58,16 +60,80 @@ namespace clinic_ivf.gui
             sep = new C1SuperErrorProvider();
 
             sdrk = new OldStockDrug();
-
+            ic.ivfDB.oStkdDB.setCboUsageE(cboUsageE);
+            ic.ivfDB.oStkdDB.setCboUsageT(cboUsageT);
+            btnNew.Click += BtnNew_Click;
+            btnSave.Click += BtnSave_Click;
             initGrfStockDrug();
             setGrfStockDrug();
         }
+        private void setStockDrug()
+        {
+            //ostkD.DUID = "DUID";
+            //ostkD.DUName = "DUName";
+            //ostkD.EUsage = "EUsage";
+            //ostkD.TUsage = "TUsage";
+            //ostkD.UnitType = "UnitType";
+            //ostkD.Alert = "Alert";
+            //ostkD.QTY = "QTY";
+            //ostkD.PendingQTY = "PendingQTY";
+            //ostkD.Price = "Price";
+            //ostkD.active = "active";
+
+            sdrk.DUID = txtID.Text;
+            sdrk.DUName = txtDrgName.Text;
+            sdrk.EUsage = cboUsageE.Text;
+            sdrk.TUsage = cboUsageT.Text;
+            sdrk.UnitType = cboUnit.Text;
+            sdrk.Price = txtPrice.Text;
+            sdrk.Alert = txtPurchase.Text;
+            //sdrk.status_doctor = chkStatusDoctor.Checked == true ? "1" : "0";
+            //sdrk.status_embryologist = chkEmbryologist.Checked == true ? "1" : "0";
+        }
+        private void BtnSave_Click(object sender, EventArgs e)
+        {
+            //throw new NotImplementedException();
+            if (MessageBox.Show("ต้องการ บันทึกช้อมูล ", "", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == DialogResult.OK)
+            {
+                setStockDrug();
+                String re = ic.ivfDB.oStkdDB.insertStockDrug(sdrk, ic.user.staff_id);
+                int chk = 0;
+                if (int.TryParse(re, out chk))
+                {
+                    btnSave.Image = Resources.accept_database24;
+                }
+                else
+                {
+                    btnSave.Image = Resources.accept_database24;
+                }
+                setGrfStockDrug();
+                //setGrdView();
+                //this.Dispose();
+            }
+        }
+
+        private void BtnNew_Click(object sender, EventArgs e)
+        {
+            //throw new NotImplementedException();
+            txtID.Value = "";
+            txtDrgName.Value = "";
+            txtRemark.Value = "";
+            cboUsageE.Text = "";
+            cboUsageT.Text = "";
+        }
+
         private void setControl(String posiId)
         {
             sdrk = ic.ivfDB.oStkdDB.selectByPk1(posiId);
             txtID.Value = sdrk.DUID;
             txtDrgName.Value = sdrk.DUName;
             txtRemark.Value = sdrk.remark;
+            ic.setC1ComboByName(cboUsageE, sdrk.EUsage);
+            ic.setC1ComboByName(cboUsageT, sdrk.TUsage);
+            //cboUsageE.Text = sdrk.EUsage;
+            //cboUsageT.Text = sdrk.TUsage;
+            txtPurchase.Value = sdrk.Alert;
+            txtPrice.Value = sdrk.Price;
             //setGrfPkgD(txtID.Text);
         }
         private void setControlEnable(Boolean flag)
@@ -125,7 +191,12 @@ namespace clinic_ivf.gui
             grfDrug.Cols[colID].Caption = "รหัส";
             grfDrug.Cols[colName].Caption = "ชื่อPackage";
             grfDrug.Cols[colPrice].Caption = "ราคา";
-
+            //for (int col = 0; col < dt.Columns.Count; ++col)
+            //{
+            //    grfDrug.Cols[col + 1].DataType = dt.Columns[col].DataType;
+            //    grfDrug.Cols[col + 1].Caption = dt.Columns[col].ColumnName;
+            //    grfDrug.Cols[col + 1].Name = dt.Columns[col].ColumnName;
+            //}
             for (int i = 1; i < grfDrug.Rows.Count; i++)
             {
                 //Decimal price = 0;
@@ -137,6 +208,9 @@ namespace clinic_ivf.gui
             }
             grfDrug.Cols[colID].Visible = false;
             grfDrug.Cols[colQty].Visible = false;
+
+            FilterRow fr = new FilterRow(grfDrug);
+            grfDrug.AllowFiltering = true;
             //grfAgn.Cols[colS].Visible = false;
             //grfAgn.Cols[colRemark].Visible = false;
         }

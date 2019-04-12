@@ -545,8 +545,8 @@ namespace clinic_ivf.gui
         private void UpdateTotals()
         {
             // clear existing totals
-            grfOrder.Subtotal(AggregateEnum.Clear);
-            grfOrder.Subtotal(AggregateEnum.Sum, 0, -1, colOrdAmt, "Total");
+            //grfOrder.Subtotal(AggregateEnum.Clear);
+            //grfOrder.Subtotal(AggregateEnum.Sum, 0, -1, colOrdAmt, "Total");
         }
         private void setControl(String vsid)
         {
@@ -570,7 +570,9 @@ namespace clinic_ivf.gui
             txtVisitBW.Value = vs.bw;
             txtVisitBP.Value = vs.bp;
             txtVisitPulse.Value = vs.pulse;
+            chkChronic.Checked = ptt.status_chronic.Equals("1") ? true : false;
             //txtBg.Value = pttOld.b
+            //txtAllergy.Value = 
         }
         private void initGrfOrder()
         {
@@ -812,7 +814,7 @@ namespace clinic_ivf.gui
             grfOrder.Cols[colOrdInclude].Caption = "Include Package";
             grfOrder.Cols[colOrdUsT].Caption = "Usage";
             grfOrder.Cols[colOrdAmt].Caption = "Amount";
-            grfOrder.SubtotalPosition = SubtotalPositionEnum.BelowData;
+            //grfOrder.SubtotalPosition = SubtotalPositionEnum.BelowData;
             Color color = ColorTranslator.FromHtml(ic.iniC.grfRowColor);
             //CellRange rg1 = grfBank.GetCellRange(1, colE, grfBank.Rows.Count, colE);
             //rg1.Style = grfBank.Styles["date"];
@@ -894,7 +896,7 @@ namespace clinic_ivf.gui
             grfOrder.Cols[colOrdPrice].AllowEditing = false;
             grfOrder.Cols[colOrdQty].AllowEditing = false;
             //theme1.SetTheme(grfFinish, ic.theme);
-            UpdateTotals();
+            //UpdateTotals();
             String total = "";
             Decimal total1 = 0;
             //total = grfOrder[grfOrder.Rows.Count - 1, colOrdAmt] != null ? grfOrder[grfOrder.Rows.Count - 1, colOrdAmt].ToString() : "";
@@ -1033,7 +1035,12 @@ namespace clinic_ivf.gui
             CellRange rg = grfPackage.GetCellRange(2, colBlInclude, grfPackage.Rows.Count - 1, colBlInclude);
             rg.Style = cs;
             rg.Style = grfPackage.Styles["bool"];
-
+            for (int col = 0; col < dt.Columns.Count; ++col)
+            {
+                grfPackage.Cols[col + 1].DataType = dt.Columns[col].DataType;
+                grfPackage.Cols[col + 1].Caption = dt.Columns[col].ColumnName;
+                grfPackage.Cols[col + 1].Name = dt.Columns[col].ColumnName;
+            }
             int i = 0;
             decimal aaa = 0;
             foreach (DataRow row in dt.Rows)
@@ -1041,7 +1048,7 @@ namespace clinic_ivf.gui
                 try
                 {
                     i++;
-                    //if (i == 1) continue;
+                    if (i == 1) continue;
                     Decimal.TryParse(row[ic.ivfDB.oPkgDB.oPkg.Price].ToString(), out aaa);
                     grfPackage[i, colBlPrice] = aaa.ToString("#,##0");
                     grfPackage[i, colBlId] = row[ic.ivfDB.oPkgDB.oPkg.PCKID].ToString();
@@ -1062,9 +1069,23 @@ namespace clinic_ivf.gui
             grfPackage.Cols[colBlName].AllowEditing = false;
             grfPackage.Cols[colBlPrice].AllowEditing = false;
             grfPackage.Cols[colBlRemark].AllowEditing = false;
+
+            FilterRow fr = new FilterRow(grfPackage);
+            grfPackage.AllowFiltering = true;
+            grfPackage.AfterFilter += GrfPackage_AfterFilter;
             //theme1.SetTheme(grfFinish, ic.theme);
 
         }
+
+        private void GrfPackage_AfterFilter(object sender, EventArgs e)
+        {
+            //throw new NotImplementedException();
+            for (int col = grfPackage.Cols.Fixed; col < grfPackage.Cols.Count; ++col)
+            {
+                var filter = grfPackage.Cols[col].ActiveFilter;
+            }
+        }
+
         private void initGrfPackage()
         {
             grfPackage = new C1FlexGrid();
@@ -1408,34 +1429,22 @@ namespace clinic_ivf.gui
             theme1.SetTheme(grfRx, "Office2010Black");
 
         }
-
-        private void GrfRx_AfterFilter(object sender, EventArgs e)
-        {
-            //throw new NotImplementedException();
-            for (int col = grfRx.Cols.Fixed; col < grfRx.Cols.Count; ++col)
-            {
-                var filter = grfRx.Cols[col].ActiveFilter;
-            }
-        }
-
         private void GrfRx_DoubleClick(object sender, EventArgs e)
         {
             //throw new NotImplementedException();
-            if (grfRx.Row < 0) return;
-            String duid = "";
+            setOrderRx();
         }
-
-        private void ContextMenu_order_rx(object sender, System.EventArgs e)
+        private void setOrderRx()
         {
             if (grfRx.Row <= 0) return;
             if (grfRx[grfRx.Row, colBlId] == null) return;
-            String chk = "", name = "", drugid = "",qty="", include = "", usage="";
+            String chk = "", name = "", drugid = "", qty = "", include = "", usage = "";
             drugid = grfRx[grfRx.Row, colRxdId] != null ? grfRx[grfRx.Row, colRxdId].ToString() : "";
             qty = grfRx[grfRx.Row, colRxQty] != null ? grfRx[grfRx.Row, colRxQty].ToString() : "";
             include = grfRx[grfRx.Row, colRxInclude] != null ? grfRx[grfRx.Row, colRxInclude].ToString().Equals("True") ? "1" : "0" : "0";
             if (cboLangSticker.Text.Equals("English"))
             {
-                usage = grfRx[grfRx.Row, colRxUsE] != null ? grfRx[grfRx.Row, colRxUsE].ToString() : "" ;
+                usage = grfRx[grfRx.Row, colRxUsE] != null ? grfRx[grfRx.Row, colRxUsE].ToString() : "";
             }
             else
             {
@@ -1452,8 +1461,10 @@ namespace clinic_ivf.gui
             }
 
             setGrfOrder(txtVnOld.Text);
-            //}
-            //ic.ivfDB.PxAdd(drugid,)
+        }
+        private void ContextMenu_order_rx(object sender, System.EventArgs e)
+        {
+            setOrderRx();
         }
         private void setGrfRx()
         {
@@ -1493,7 +1504,13 @@ namespace clinic_ivf.gui
             CellRange rg = grfRx.GetCellRange(2, colBlInclude, grfRx.Rows.Count - 1, colBlInclude);
             rg.Style = cs;
             rg.Style = grfRx.Styles["bool"];
-            int i = 1;
+            for (int col = 0; col < dt.Columns.Count; ++col)
+            {
+                grfRx.Cols[col + 1].DataType = dt.Columns[col].DataType;
+                grfRx.Cols[col + 1].Caption = dt.Columns[col].ColumnName;
+                grfRx.Cols[col + 1].Name = dt.Columns[col].ColumnName;
+            }
+            int i = 0;
             decimal aaa = 0;
             foreach (DataRow row in dt.Rows)
             {
@@ -1527,14 +1544,28 @@ namespace clinic_ivf.gui
             grfRx.Cols[colBlId].Visible = false;
             grfRx.Cols[colBlRemark].Visible = false;
             //grfRx.Cols[colBlPrice].Visible = false;
-            FilterRowUnBound fr = new FilterRowUnBound(grfRx);
+            //FilterRowUnBound fr = new FilterRowUnBound(grfRx);
             grfRx.Cols[colBlName].AllowEditing = false;
             grfRx.Cols[colBlPrice].AllowEditing = false;
             grfRx.Cols[colBlRemark].AllowEditing = true;
+            //grfRx.AllowFiltering = true;
+
+            FilterRow fr = new FilterRow(grfRx);
             grfRx.AllowFiltering = true;
+            grfRx.AfterFilter += GrfRx_AfterFilter;
             //theme1.SetTheme(grfFinish, ic.theme);
 
         }
+
+        private void GrfRx_AfterFilter(object sender, EventArgs e)
+        {
+            //throw new NotImplementedException();
+            for (int col = grfRx.Cols.Fixed; col < grfRx.Cols.Count; ++col)
+            {
+                var filter = grfRx.Cols[col].ActiveFilter;
+            }
+        }
+
         private void initGrfSpecialLab()
         {
             grfSpecial = new C1FlexGrid();
@@ -1542,7 +1573,7 @@ namespace clinic_ivf.gui
             grfSpecial.Dock = System.Windows.Forms.DockStyle.Fill;
             grfSpecial.Location = new System.Drawing.Point(0, 0);
 
-            FilterRow2 fr = new FilterRow2(grfSpecial);
+            //FilterRow2 fr = new FilterRow2(grfSpecial);
 
             grfSpecial.AfterRowColChange += GrfMed_AfterRowColChange;
             //grfExpnC.CellButtonClick += new C1.Win.C1FlexGrid.RowColEventHandler(this.grfDept_CellButtonClick);
@@ -1585,7 +1616,7 @@ namespace clinic_ivf.gui
             grfSpecial.Clear();
             DataTable dt = new DataTable();
             dt = ic.ivfDB.oSItmDB.selectBySpecialItem2();
-            FilterRow fr = new FilterRow(grfSpecial);
+            
             grfSpecial.Rows.Count = dt.Rows.Count + 1;
             //grfEmbryo.Rows.Count = dt.Rows.Count + 1;
             //grfSpecial.DataSource = dt;
@@ -1604,11 +1635,11 @@ namespace clinic_ivf.gui
             //grdFlex.Cols[colID].Caption = "no";
             //grfDept.Cols[colCode].Caption = "รหัส";
 
-            grfSpecial.Cols[colBlName].Caption = "Name";
-            grfSpecial.Cols[colBlInclude].Caption = "Include";
-            grfSpecial.Cols[colBlPrice].Caption = "Price";
-            grfSpecial.Cols[colBlRemark].Caption = "Remark";
-            grfSpecial.Cols[colBlQty].Caption = "QTY";
+            //grfSpecial.Cols[colBlName].Caption = "Name";
+            //grfSpecial.Cols[colBlInclude].Caption = "Include";
+            //grfSpecial.Cols[colBlPrice].Caption = "Price";
+            //grfSpecial.Cols[colBlRemark].Caption = "Remark";
+            //grfSpecial.Cols[colBlQty].Caption = "QTY";
 
             CellRange rg = grfSpecial.GetCellRange(2, colBlInclude, grfSpecial.Rows.Count - 1, colBlInclude);
             rg.Style = cs;
@@ -1617,7 +1648,7 @@ namespace clinic_ivf.gui
             for (int col = 0; col < dt.Columns.Count; ++col)
             {
                 grfSpecial.Cols[col + 1].DataType = dt.Columns[col].DataType;
-                //_flex.Cols[col + 1].Caption = dt.Columns[col].ColumnName;
+                grfSpecial.Cols[col + 1].Caption = dt.Columns[col].ColumnName;
                 grfSpecial.Cols[col + 1].Name = dt.Columns[col].ColumnName;
             }
 
@@ -1641,8 +1672,16 @@ namespace clinic_ivf.gui
                 {
                     String err = "";
                 }
-
             }
+            //grfSpecial.Rows.Count = dt.Rows.Count + 2;
+            //grfSpecial.Cols.Count = dt.Columns.Count + 1+2;
+            //for (int row = 0; row < dt.Rows.Count; ++row)
+            //{
+            //    for (int col = 0; col < dt.Columns.Count; ++col)
+            //    {
+            //        grfSpecial[row + 2, col + 1] = dt.Rows[row][col];
+            //    }
+            //}
             CellNoteManager mgr = new CellNoteManager(grfSpecial);
             grfSpecial.Cols[colBlId].Visible = false;
             //grfSpecial.Cols[colBlInclude].Visible = false;
@@ -1651,6 +1690,8 @@ namespace clinic_ivf.gui
             grfSpecial.Cols[colBlName].AllowEditing = false;
             grfSpecial.Cols[colBlPrice].AllowEditing = false;
             grfSpecial.Cols[colBlRemark].AllowEditing = false;
+
+            FilterRow fr = new FilterRow(grfSpecial);
             grfSpecial.AllowFiltering = true;
             grfSpecial.AfterFilter += GrfSpecial_AfterFilter;
             //theme1.SetTheme(grfFinish, ic.theme);
@@ -1682,9 +1723,9 @@ namespace clinic_ivf.gui
             grfGenetic.Dock = System.Windows.Forms.DockStyle.Fill;
             grfGenetic.Location = new System.Drawing.Point(0, 0);
 
-            FilterRow2 fr = new FilterRow2(grfGenetic);
+            //FilterRow2 fr = new FilterRow2(grfGenetic);
 
-            grfGenetic.AfterRowColChange += GrfMed_AfterRowColChange;
+            grfGenetic.DoubleClick += GrfGenetic_DoubleClick;
             //grfExpnC.CellButtonClick += new C1.Win.C1FlexGrid.RowColEventHandler(this.grfDept_CellButtonClick);
             //grfExpnC.CellChanged += new C1.Win.C1FlexGrid.RowColEventHandler(this.grfDept_CellChanged);
             ContextMenu menuGw = new ContextMenu();
@@ -1700,7 +1741,13 @@ namespace clinic_ivf.gui
             theme1.SetTheme(grfGenetic, "RainerOrange");
 
         }
-        private void ContextMenu_order_ge_set(object sender, System.EventArgs e)
+
+        private void GrfGenetic_DoubleClick(object sender, EventArgs e)
+        {
+            //throw new NotImplementedException();
+            setOrderGenetic();
+        }
+        private void setOrderGenetic()
         {
             if (grfGenetic.Row <= 0) return;
             if (grfGenetic[grfGenetic.Row, colBlId] == null) return;
@@ -1717,8 +1764,12 @@ namespace clinic_ivf.gui
             {
                 ic.ivfDB.LabAdd(labid, qty, txtIdOld.Text, txtHn.Text, txtVnOld.Text, "1", "", "", "", "", "", "", "", grfOrder.Rows.Count.ToString());
             }
-                
+
             setGrfOrder(txtVnOld.Text);
+        }
+        private void ContextMenu_order_ge_set(object sender, System.EventArgs e)
+        {
+            setOrderGenetic();
         }
         private void setGrfGenetic()
         {
@@ -1752,7 +1803,12 @@ namespace clinic_ivf.gui
             CellRange rg = grfGenetic.GetCellRange(2, colBlInclude, grfGenetic.Rows.Count - 1, colBlInclude);
             rg.Style = cs;
             rg.Style = grfGenetic.Styles["bool"];
-
+            for (int col = 0; col < dt.Columns.Count; ++col)
+            {
+                grfGenetic.Cols[col + 1].DataType = dt.Columns[col].DataType;
+                grfGenetic.Cols[col + 1].Caption = dt.Columns[col].ColumnName;
+                grfGenetic.Cols[col + 1].Name = dt.Columns[col].ColumnName;
+            }
             int i = 0;
             decimal aaa = 0;
             foreach (DataRow row in dt.Rows)
@@ -1782,9 +1838,23 @@ namespace clinic_ivf.gui
             grfGenetic.Cols[colBlName].AllowEditing = false;
             grfGenetic.Cols[colBlPrice].AllowEditing = false;
             grfGenetic.Cols[colBlRemark].AllowEditing = false;
+
+            FilterRow fr = new FilterRow(grfGenetic);
+            grfGenetic.AllowFiltering = true;
+            grfGenetic.AfterFilter += GrfGenetic_AfterFilter;
             //theme1.SetTheme(grfFinish, ic.theme);
 
         }
+
+        private void GrfGenetic_AfterFilter(object sender, EventArgs e)
+        {
+            //throw new NotImplementedException();
+            for (int col = grfGenetic.Cols.Fixed; col < grfGenetic.Cols.Count; ++col)
+            {
+                var filter = grfGenetic.Cols[col].ActiveFilter;
+            }
+        }
+
         private void initGrfEmbryoLab()
         {
             grfEmbryo = new C1FlexGrid();
@@ -1792,9 +1862,9 @@ namespace clinic_ivf.gui
             grfEmbryo.Dock = System.Windows.Forms.DockStyle.Fill;
             grfEmbryo.Location = new System.Drawing.Point(0, 0);
 
-            FilterRow2 fr = new FilterRow2(grfEmbryo);
+            //FilterRow2 fr = new FilterRow2(grfEmbryo);
 
-            grfEmbryo.AfterRowColChange += GrfMed_AfterRowColChange;
+            grfEmbryo.DoubleClick += GrfEmbryo_DoubleClick;
             //grfExpnC.CellButtonClick += new C1.Win.C1FlexGrid.RowColEventHandler(this.grfDept_CellButtonClick);
             //grfExpnC.CellChanged += new C1.Win.C1FlexGrid.RowColEventHandler(this.grfDept_CellChanged);
             ContextMenu menuGw = new ContextMenu();
@@ -1810,7 +1880,7 @@ namespace clinic_ivf.gui
             theme1.SetTheme(grfEmbryo, "ShinyBlue");
 
         }
-        private void ContextMenu_order_em_set(object sender, System.EventArgs e)
+        private void setOrderEmbryo()
         {
             if (grfEmbryo.Row <= 0) return;
             if (grfEmbryo[grfEmbryo.Row, colBlId] == null) return;
@@ -1828,6 +1898,16 @@ namespace clinic_ivf.gui
                 ic.ivfDB.LabAdd(labid, qty, txtIdOld.Text, txtHn.Text, txtVnOld.Text, "1", "", "", "", "", "", "", "", grfOrder.Rows.Count.ToString());
             }
             setGrfOrder(txtVnOld.Text);
+        }
+        private void GrfEmbryo_DoubleClick(object sender, EventArgs e)
+        {
+            //throw new NotImplementedException();
+            setOrderEmbryo();
+        }
+
+        private void ContextMenu_order_em_set(object sender, System.EventArgs e)
+        {
+            setOrderEmbryo();
         }
         private void setGrfEmbryo()
         {
@@ -1861,7 +1941,12 @@ namespace clinic_ivf.gui
             CellRange rg = grfEmbryo.GetCellRange(2, colBlInclude, grfEmbryo.Rows.Count - 1, colBlInclude);
             rg.Style = cs;
             rg.Style = grfEmbryo.Styles["bool"];
-
+            for (int col = 0; col < dt.Columns.Count; ++col)
+            {
+                grfEmbryo.Cols[col + 1].DataType = dt.Columns[col].DataType;
+                grfEmbryo.Cols[col + 1].Caption = dt.Columns[col].ColumnName;
+                grfEmbryo.Cols[col + 1].Name = dt.Columns[col].ColumnName;
+            }
             int i = 0;
             decimal aaa = 0;
             foreach (DataRow row in dt.Rows)
@@ -1891,9 +1976,23 @@ namespace clinic_ivf.gui
             grfEmbryo.Cols[colBlName].AllowEditing = false;
             grfEmbryo.Cols[colBlPrice].AllowEditing = false;
             grfEmbryo.Cols[colBlRemark].AllowEditing = false;
+
+            FilterRow fr = new FilterRow(grfEmbryo);
+            grfEmbryo.AllowFiltering = true;
+            grfEmbryo.AfterFilter += GrfEmbryo_AfterFilter;
             //theme1.SetTheme(grfFinish, ic.theme);
 
         }
+
+        private void GrfEmbryo_AfterFilter(object sender, EventArgs e)
+        {
+            //throw new NotImplementedException();
+            for (int col = grfEmbryo.Cols.Fixed; col < grfEmbryo.Cols.Count; ++col)
+            {
+                var filter = grfEmbryo.Cols[col].ActiveFilter;
+            }
+        }
+
         private void initGrfSpermLab()
         {
             grfSperm = new C1FlexGrid();
@@ -1901,7 +2000,7 @@ namespace clinic_ivf.gui
             grfSperm.Dock = System.Windows.Forms.DockStyle.Fill;
             grfSperm.Location = new System.Drawing.Point(0, 0);
 
-            FilterRow2 fr = new FilterRow2(grfSperm);
+            //FilterRow2 fr = new FilterRow2(grfSperm);
 
             grfSperm.AfterRowColChange += GrfMed_AfterRowColChange;
             //grfExpnC.CellButtonClick += new C1.Win.C1FlexGrid.RowColEventHandler(this.grfDept_CellButtonClick);
@@ -2010,7 +2109,7 @@ namespace clinic_ivf.gui
             grfBloodLab.Dock = System.Windows.Forms.DockStyle.Fill;
             grfBloodLab.Location = new System.Drawing.Point(0, 0);
 
-            FilterRow2 fr = new FilterRow2(grfBloodLab);
+            //FilterRow2 fr = new FilterRow2(grfBloodLab);
 
             grfBloodLab.DoubleClick += GrfBloodLab_DoubleClick;
             //grfExpnC.CellButtonClick += new C1.Win.C1FlexGrid.RowColEventHandler(this.grfDept_CellButtonClick);
@@ -2031,13 +2130,22 @@ namespace clinic_ivf.gui
         }
         private void ContextMenu_order_bl_set(object sender, System.EventArgs e)
         {
+            setOrderBloodLab();
+        }
+        private void GrfBloodLab_DoubleClick(object sender, EventArgs e)
+        {
+            //throw new NotImplementedException();
+            setOrderBloodLab();
+        }
+        private void setOrderBloodLab()
+        {
             if (grfBloodLab.Row <= 0) return;
             if (grfBloodLab[grfBloodLab.Row, colBlId] == null) return;
-            String labid = "", include="", qty="";
+            String labid = "", include = "", qty = "";
             rowOrder++;
             labid = grfBloodLab[grfBloodLab.Row, colBlId].ToString();
             include = grfBloodLab[grfBloodLab.Row, colBlInclude] != null ? grfBloodLab[grfBloodLab.Row, colBlInclude].ToString().Equals("True") ? "1" : "0" : "0";
-            qty = grfBloodLab[grfBloodLab.Row, colBlQty] != null ? grfBloodLab[grfBloodLab.Row, colBlQty].ToString() : "1" ;
+            qty = grfBloodLab[grfBloodLab.Row, colBlQty] != null ? grfBloodLab[grfBloodLab.Row, colBlQty].ToString() : "1";
             if (include.Equals("1"))
             {
                 ic.ivfDB.LabAdd(labid, qty, txtIdOld.Text, txtHn.Text, txtVnOld.Text, "0", "", "", "", "", "", "", "", grfOrder.Rows.Count.ToString());
@@ -2048,12 +2156,6 @@ namespace clinic_ivf.gui
             }
             setGrfOrder(txtVnOld.Text);
         }
-        private void GrfBloodLab_DoubleClick(object sender, EventArgs e)
-        {
-            //throw new NotImplementedException();
-
-        }
-
         private void setGrfBloodLab()
         {
             //grfDept.Rows.Count = 7;
@@ -2087,7 +2189,12 @@ namespace clinic_ivf.gui
             CellRange rg = grfBloodLab.GetCellRange(2, colBlInclude, grfBloodLab.Rows.Count - 1, colBlInclude);
             rg.Style = cs;
             rg.Style = grfBloodLab.Styles["bool"];
-                        
+            for (int col = 0; col < dt.Columns.Count; ++col)
+            {
+                grfBloodLab.Cols[col + 1].DataType = dt.Columns[col].DataType;
+                grfBloodLab.Cols[col + 1].Caption = dt.Columns[col].ColumnName;
+                grfBloodLab.Cols[col + 1].Name = dt.Columns[col].ColumnName;
+            }
             int i = 0;
             decimal aaa = 0;
             foreach (DataRow row in dt.Rows)
@@ -2108,7 +2215,6 @@ namespace clinic_ivf.gui
                 {
                     String err = "";
                 }
-
             }
             CellNoteManager mgr = new CellNoteManager(grfBloodLab);
             grfBloodLab.Cols[colBlId].Visible = false;
@@ -2118,9 +2224,23 @@ namespace clinic_ivf.gui
             grfBloodLab.Cols[colBlName].AllowEditing = false;
             grfBloodLab.Cols[colBlPrice].AllowEditing = false;
             grfBloodLab.Cols[colBlRemark].AllowEditing = false;
+
+            FilterRow fr = new FilterRow(grfBloodLab);
+            grfBloodLab.AllowFiltering = true;
+            grfBloodLab.AfterFilter += GrfBloodLab_AfterFilter;
             //theme1.SetTheme(grfFinish, ic.theme);
 
         }
+
+        private void GrfBloodLab_AfterFilter(object sender, EventArgs e)
+        {
+            //throw new NotImplementedException();
+            for (int col = grfBloodLab.Cols.Fixed; col < grfBloodLab.Cols.Count; ++col)
+            {
+                var filter = grfBloodLab.Cols[col].ActiveFilter;
+            }
+        }
+
         private void GrfMed_AfterRowColChange(object sender, RangeEventArgs e)
         {
             //throw new NotImplementedException();

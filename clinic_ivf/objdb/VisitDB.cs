@@ -406,6 +406,7 @@ namespace clinic_ivf.objdb
             cop1 = setVisit(dt);
             return cop1;
         }
+
         public Visit selectByVn(String pttId)
         {
             Visit cop1 = new Visit();
@@ -470,6 +471,24 @@ namespace clinic_ivf.objdb
 
             return re;
         }
+        public String updateCloseStatusNurseByVN(String vsid)
+        {
+            String re = "", err = "";
+            String sql = "update " + vs.table + " " +
+                "Set " + vs.status_nurse + " ='2' " +
+                "Where " + vs.visit_vn + " ='" + vsid + "' ";
+            try
+            {
+                re = conn.ExecuteNonQuery(conn.conn, sql);
+                updateStatusVoidVisitByVN(vsid);
+            }
+            catch (Exception ex)
+            {
+                err = ex.Message + ex.InnerException;
+            }
+
+            return re;
+        }
         public String updateCloseStatusNurse(String vsid )
         {
             String re = "", err="";
@@ -479,12 +498,31 @@ namespace clinic_ivf.objdb
             try
             {
                 re = conn.ExecuteNonQuery(conn.conn, sql);
+                updateStatusVoidVisit(vsid);
             }
             catch(Exception ex)
             {
                 err = ex.Message+ex.InnerException;
             }
             
+            return re;
+        }
+        public String updateStatusVoidVisitByVN(String vsid)
+        {
+            String re = "", err = "";
+            String sql = "update " + vs.table + " " +
+                "Set " + vs.f_visit_status_id + " ='4' " +
+
+                "Where " + vs.visit_vn + " ='" + vsid + "' ";
+            try
+            {
+                re = conn.ExecuteNonQuery(conn.conn, sql);
+            }
+            catch (Exception ex)
+            {
+                err = ex.Message;
+            }
+
             return re;
         }
         public String updateStatusVoidVisit(String vsid)

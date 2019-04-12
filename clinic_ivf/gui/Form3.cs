@@ -1,4 +1,5 @@
-﻿using clinic_ivf.control;
+﻿using C1.Win.C1FlexGrid;
+using clinic_ivf.control;
 using clinic_ivf.FlexGrid;
 using clinic_ivf.object1;
 using System;
@@ -17,7 +18,7 @@ namespace clinic_ivf.gui
     public partial class Form3 : Form
     {
         IvfControl ic;
-
+        C1FlexGrid _flex = new C1FlexGrid();
         public Form3(IvfControl ic)
         {
             InitializeComponent();
@@ -26,6 +27,12 @@ namespace clinic_ivf.gui
         }
         private void initGrf()
         {
+            //C1FlexGrid _flex = new C1FlexGrid();
+            //_flex.Font = fEdit;
+            _flex.Dock = System.Windows.Forms.DockStyle.Fill;
+            _flex.Location = new System.Drawing.Point(0, 0);
+            this.Controls.Add(_flex);
+
             String tableName = "InventoryManagement";
             string path = Environment.GetFolderPath(Environment.SpecialFolder.Personal) + @"\ComponentOne Samples\Common";
             string conn = "Provider=Microsoft.Jet.OLEDB.4.0; Data Source={0}\\C1NWind.mdb";
@@ -79,6 +86,12 @@ namespace clinic_ivf.gui
         {
             //grfNote = new C1FlexGrid();
             //grfNote.Font = fEdit;
+            
+            //_flex.Font = fEdit;
+            _flex.Dock = System.Windows.Forms.DockStyle.Fill;
+            _flex.Location = new System.Drawing.Point(0, 0);
+            this.Controls.Add(_flex);
+
             DataTable dt = new DataTable();
             dt = ic.ivfDB.oSItmDB.selectBySpecialItem2();
             //grf.DataSource = dt;

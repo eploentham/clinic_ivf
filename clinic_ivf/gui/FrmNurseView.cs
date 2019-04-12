@@ -996,7 +996,7 @@ namespace clinic_ivf.gui
             menuGw.MenuItems.Add("LAB request FORM A", new EventHandler(ContextMenu_LAB_req_formA_Ptt));
             menuGw.MenuItems.Add("LAB FORM DAY1", new EventHandler(ContextMenu_LAB_req_form_day1));
             menuGw.MenuItems.Add("&Add Appointment", new EventHandler(ContextMenu_Apm_Ptt));
-            menuGw.MenuItems.Add("&Cancel Receive", new EventHandler(ContextMenu_Apm_Ptt));
+            menuGw.MenuItems.Add("&Cancel Receive", new EventHandler(ContextMenu_Void_Ptt));
             menuGw.MenuItems.Add("&No Appointment Close Operation", new EventHandler(ContextMenu_NO_Apm_Ptt));
             //menuGw.MenuItems.Add("Print Pre-Operation Check List", new EventHandler(ContextMenu_prn_check_list));
             //menuGw.MenuItems.Add("Print Autherization Form", new EventHandler(ContextMenu_prn_authen_sign));
@@ -1153,14 +1153,15 @@ namespace clinic_ivf.gui
             //FrmNurseAdd frm = new FrmNurseAdd();
             //frm.ShowDialog(this);
             //openApmAdd(pttId, vsid, name);
-            if (MessageBox.Show("ต้องการ Close Operation    \n  hn number " + chk + " \n name " + name, "", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == DialogResult.OK)
+            if (MessageBox.Show("ต้องการ NO Operation    \n  hn number " + chk + " \n name " + name, "", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == DialogResult.OK)
             {
                 String re = "";
                 re = ic.ivfDB.vsDB.updateCloseStatusNurse(vsid);
+                ic.ivfDB.ovsDB.updateStatusVoidVisit(vsid);
                 if (re.Equals("1"))
                 {
                     setGrfQue();
-                }                
+                }
             }
         }
         private void ContextMenu_NO_Apm_Ptt(object sender, System.EventArgs e)
@@ -1327,6 +1328,64 @@ namespace clinic_ivf.gui
             //grfReq.Rows.Remove(grfReq.Row);
             //openPatientAdd(id, name);
             //}
+        }
+        private void ContextMenu_Void_Ptt(object sender, System.EventArgs e)
+        {
+            String chk = "", name = "", vsid = "", pttId = "", order="";
+            Boolean chkOrer = false;
+            if (grfQue.Row < 0) return;
+            vsid = grfQue[grfQue.Row, colID] != null ? grfQue[grfQue.Row, colID].ToString() : "";
+            pttId = grfQue[grfQue.Row, colPttId] != null ? grfQue[grfQue.Row, colPttId].ToString() : "";
+            chk = grfQue[grfQue.Row, colPttHn] != null ? grfQue[grfQue.Row, colPttHn].ToString() : "";
+            name = grfQue[grfQue.Row, colPttName] != null ? grfQue[grfQue.Row, colPttName].ToString() : "";
+
+            DataTable dtbl = new DataTable();
+            DataTable dtse = new DataTable();
+            DataTable dtpx = new DataTable();
+            DataTable dtpkg = new DataTable();
+
+            dtbl = ic.ivfDB.oJlabdDB.selectByVN(vsid);
+            dtse = ic.ivfDB.ojsdDB.selectByVN(vsid);
+            dtpx = ic.ivfDB.oJpxdDB.selectByVN(vsid);
+            //dtpkg = ic.ivfDB.opkgsDB.selectByVN(vn);
+            dtpkg = ic.ivfDB.opkgsDB.selectByPID(pttId);    // ต้องดึงตาม HN เพราะ ถ้ามีงวดการชำระ 
+            if (dtbl.Rows.Count > 0)
+            {
+                chkOrer = true;
+                order = "Blood lab";
+            }
+            if (dtse.Rows.Count > 0)
+            {
+                chkOrer = true;
+                order += " ,Special Item";
+            }
+            if (dtpx.Rows.Count > 0)
+            {
+                chkOrer = true;
+                order += " ,Drug";
+            }
+            if (dtpkg.Rows.Count > 0)
+            {
+                chkOrer = true;
+                order += " ,Package";
+            }
+            if (chkOrer)
+            {
+                MessageBox.Show("มีรายการ Order "+ order, "");
+                return;
+            }
+            if (MessageBox.Show("ต้องการ ยกเลิก Visit  \n  hn number " + chk + " \n name " + name, "", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == DialogResult.OK)
+            {
+                String re = "";
+                Visit vs = new Visit();
+                //vs = ic.ivfDB.vsDB.selectByVn(vsid);
+                re = ic.ivfDB.vsDB.updateCloseStatusNurseByVN(vsid);
+                ic.ivfDB.ovsDB.updateStatusVoidVisit(vsid);
+                if (re.Equals("1"))
+                {
+                    setGrfQue();
+                }
+            }
         }
         private void ContextMenu_Apm(object sender, System.EventArgs e)
         {
