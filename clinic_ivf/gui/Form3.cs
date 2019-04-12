@@ -1,9 +1,11 @@
 ﻿using clinic_ivf.control;
+using clinic_ivf.FlexGrid;
 using clinic_ivf.object1;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.OleDb;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -22,6 +24,57 @@ namespace clinic_ivf.gui
             this.ic = ic;
             initGrfNote();
         }
+        private void initGrf()
+        {
+            String tableName = "InventoryManagement";
+            string path = Environment.GetFolderPath(Environment.SpecialFolder.Personal) + @"\ComponentOne Samples\Common";
+            string conn = "Provider=Microsoft.Jet.OLEDB.4.0; Data Source={0}\\C1NWind.mdb";
+            //return String.Format(conn, path);
+
+            string connectionString = String.Format(conn, path);
+            string commandText = $"select * from [{tableName}]";
+            OleDbDataAdapter adapter = new OleDbDataAdapter(commandText, connectionString);
+            DataTable table = new DataTable(tableName);
+            
+            adapter.Fill(table);
+            //_flex.DataSource = table;
+            _flex.Rows.Count = table.Rows.Count + 2;
+            _flex.Cols.Count = table.Columns.Count + 1;
+
+            // Set DataType, Caption, and Names
+            // DataType and Name are used in FilterRow to apply Condition Filters
+            for (int col = 0; col < table.Columns.Count; ++col)
+            {
+                _flex.Cols[col + 1].DataType = table.Columns[col].DataType;
+                _flex.Cols[col + 1].Caption = table.Columns[col].ColumnName;
+                _flex.Cols[col + 1].Name = table.Columns[col].ColumnName;
+            }
+
+            for (int row = 0; row < table.Rows.Count; ++row)
+            {
+                for (int col = 0; col < table.Columns.Count; ++col)
+                {
+                    _flex[row + 2, col + 1] = table.Rows[row][col];
+                }
+            }
+
+            FilterRow filterRow = new FilterRow(_flex);
+            _flex.AllowFiltering = true;
+
+            _flex.AfterFilter += _flex_AfterFilter2;
+            _flex.AfterRowColChange += _flex_AfterRowColChange1;
+        }
+
+        private void _flex_AfterRowColChange1(object sender, C1.Win.C1FlexGrid.RangeEventArgs e)
+        {
+            //throw new NotImplementedException();
+        }
+
+        private void _flex_AfterFilter2(object sender, EventArgs e)
+        {
+            //throw new NotImplementedException();
+        }
+
         private void initGrfNote()
         {
             //grfNote = new C1FlexGrid();
@@ -48,11 +101,11 @@ namespace clinic_ivf.gui
             //grf.Cols[colBlRemark].DataType = dt.Columns[ic.ivfDB.oSItmDB.sitm.SName].DataType;
             //grf.Cols[colBlId].DataType = typeof(Int32);
 
-            //grf.Cols[colBlPrice].Name = "Price";
-            //grf.Cols[colBlName].Name = "Name";
-            //grf.Cols[colBlQty].Name = "Qty";
-            //grf.Cols[colBlRemark].Name = "Remark";
-            //grf.Cols[colBlId].Name = "ID";
+            _flex.Cols[colBlPrice].Caption = "Price";
+            _flex.Cols[colBlName].Caption = "Name";
+            _flex.Cols[colBlQty].Caption = "Qty";
+            _flex.Cols[colBlRemark].Caption = "Remark";
+            _flex.Cols[colBlId].Caption = "ID";
             //for (int col = 0; col < dt.Columns.Count; ++col)
             //{
             //grf.Cols[colBlId].DataType = dt.Columns["SID"].DataType;
@@ -67,7 +120,7 @@ namespace clinic_ivf.gui
             for (int col = 0; col < dt.Columns.Count; ++col)
             {
                 _flex.Cols[col + 1].DataType = dt.Columns[col].DataType;
-                _flex.Cols[col + 1].Caption = dt.Columns[col].ColumnName;
+                //_flex.Cols[col + 1].Caption = dt.Columns[col].ColumnName;
                 _flex.Cols[col + 1].Name = dt.Columns[col].ColumnName;
             }
             for (int row = 0; row < dt.Rows.Count; ++row)
@@ -139,7 +192,10 @@ namespace clinic_ivf.gui
 
         private void _flex_AfterFilter(object sender, EventArgs e)
         {
-            
+            for (int col = _flex.Cols.Fixed; col < _flex.Cols.Count; ++col)
+            {
+                var filter = _flex.Cols[col].ActiveFilter;
+            }
         }
         private void Form3_Load(object sender, EventArgs e)
         {

@@ -544,6 +544,7 @@
     <Compile Include="object1\DocGroupSubScan.cs" />
     <Compile Include="object1\DocScan.cs" />
     <Compile Include="object1\FDocType.cs" />
+    <Compile Include="object1\FilterRow.cs" />
     <Compile Include="object1\FilterRow1.cs" />
     <Compile Include="object1\FilterRowUnBound.cs" />
     <Compile Include="object1\Note1.cs" />
@@ -614,7 +615,7 @@
     <Compile Include="object1\Company.cs" />
     <Compile Include="object1\Department.cs" />
     <Compile Include="object1\FEducationType.cs" />
-    <Compile Include="object1\FilterRow.cs" />
+    <Compile Include="object1\FilterRow2.cs" />
     <Compile Include="object1\FMarriageStatus.cs" />
     <Compile Include="object1\FNation.cs" />
     <Compile Include="object1\FOccupation.cs" />

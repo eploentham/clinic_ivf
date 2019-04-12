@@ -3,6 +3,7 @@ using C1.Win.C1FlexGrid;
 using C1.Win.C1Input;
 using C1.Win.C1SuperTooltip;
 using clinic_ivf.control;
+using clinic_ivf.FlexGrid;
 using clinic_ivf.object1;
 using clinic_ivf.Properties;
 using System;
@@ -1541,7 +1542,7 @@ namespace clinic_ivf.gui
             grfSpecial.Dock = System.Windows.Forms.DockStyle.Fill;
             grfSpecial.Location = new System.Drawing.Point(0, 0);
 
-            FilterRow fr = new FilterRow(grfSpecial);
+            FilterRow2 fr = new FilterRow2(grfSpecial);
 
             grfSpecial.AfterRowColChange += GrfMed_AfterRowColChange;
             //grfExpnC.CellButtonClick += new C1.Win.C1FlexGrid.RowColEventHandler(this.grfDept_CellButtonClick);
@@ -1613,6 +1614,13 @@ namespace clinic_ivf.gui
             rg.Style = cs;
             rg.Style = grfSpecial.Styles["bool"];
 
+            for (int col = 0; col < dt.Columns.Count; ++col)
+            {
+                grfSpecial.Cols[col + 1].DataType = dt.Columns[col].DataType;
+                //_flex.Cols[col + 1].Caption = dt.Columns[col].ColumnName;
+                grfSpecial.Cols[col + 1].Name = dt.Columns[col].ColumnName;
+            }
+
             int i = 0;
             decimal aaa = 0;
             foreach (DataRow row in dt.Rows)
@@ -1644,9 +1652,18 @@ namespace clinic_ivf.gui
             grfSpecial.Cols[colBlPrice].AllowEditing = false;
             grfSpecial.Cols[colBlRemark].AllowEditing = false;
             grfSpecial.AllowFiltering = true;
-            grfSpecial.AfterFilter += _flex_AfterFilter;
+            grfSpecial.AfterFilter += GrfSpecial_AfterFilter;
             //theme1.SetTheme(grfFinish, ic.theme);
 
+        }
+
+        private void GrfSpecial_AfterFilter(object sender, EventArgs e)
+        {
+            //throw new NotImplementedException();
+            for (int col = grfSpecial.Cols.Fixed; col < grfSpecial.Cols.Count; ++col)
+            {
+                var filter = grfSpecial.Cols[col].ActiveFilter;
+            }
         }
 
         private void _flex_AfterFilter(object sender, EventArgs e)
@@ -1665,7 +1682,7 @@ namespace clinic_ivf.gui
             grfGenetic.Dock = System.Windows.Forms.DockStyle.Fill;
             grfGenetic.Location = new System.Drawing.Point(0, 0);
 
-            FilterRow fr = new FilterRow(grfGenetic);
+            FilterRow2 fr = new FilterRow2(grfGenetic);
 
             grfGenetic.AfterRowColChange += GrfMed_AfterRowColChange;
             //grfExpnC.CellButtonClick += new C1.Win.C1FlexGrid.RowColEventHandler(this.grfDept_CellButtonClick);
@@ -1775,7 +1792,7 @@ namespace clinic_ivf.gui
             grfEmbryo.Dock = System.Windows.Forms.DockStyle.Fill;
             grfEmbryo.Location = new System.Drawing.Point(0, 0);
 
-            FilterRow fr = new FilterRow(grfEmbryo);
+            FilterRow2 fr = new FilterRow2(grfEmbryo);
 
             grfEmbryo.AfterRowColChange += GrfMed_AfterRowColChange;
             //grfExpnC.CellButtonClick += new C1.Win.C1FlexGrid.RowColEventHandler(this.grfDept_CellButtonClick);
@@ -1884,7 +1901,7 @@ namespace clinic_ivf.gui
             grfSperm.Dock = System.Windows.Forms.DockStyle.Fill;
             grfSperm.Location = new System.Drawing.Point(0, 0);
 
-            FilterRow fr = new FilterRow(grfSperm);
+            FilterRow2 fr = new FilterRow2(grfSperm);
 
             grfSperm.AfterRowColChange += GrfMed_AfterRowColChange;
             //grfExpnC.CellButtonClick += new C1.Win.C1FlexGrid.RowColEventHandler(this.grfDept_CellButtonClick);
@@ -1993,7 +2010,7 @@ namespace clinic_ivf.gui
             grfBloodLab.Dock = System.Windows.Forms.DockStyle.Fill;
             grfBloodLab.Location = new System.Drawing.Point(0, 0);
 
-            FilterRow fr = new FilterRow(grfBloodLab);
+            FilterRow2 fr = new FilterRow2(grfBloodLab);
 
             grfBloodLab.DoubleClick += GrfBloodLab_DoubleClick;
             //grfExpnC.CellButtonClick += new C1.Win.C1FlexGrid.RowColEventHandler(this.grfDept_CellButtonClick);

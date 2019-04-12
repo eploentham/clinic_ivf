@@ -10,12 +10,12 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 
-namespace clinic_ivf.FlexGrid
+namespace clinic_ivf.object1
 {
     /// <summary>
 	/// Summary description for FilterRow.
 	/// </summary>
-	public class FilterRow
+	public class FilterRow2
     {
         private C1FlexGrid _flex;
         private CellStyle _style;
@@ -26,7 +26,7 @@ namespace clinic_ivf.FlexGrid
 
         // ** ctor
 
-        public FilterRow(C1.Win.C1FlexGrid.C1FlexGrid flex)
+        public FilterRow2(C1.Win.C1FlexGrid.C1FlexGrid flex)
         {
             // save reference to grid
             _flex = flex;
@@ -62,6 +62,7 @@ namespace clinic_ivf.FlexGrid
             }
 
             // move cursor to first row with data
+            if (_row == 1) return;
             _flex.Select(_row + 1, _flex.Cols.Fixed);
         }
 
@@ -155,8 +156,11 @@ namespace clinic_ivf.FlexGrid
                         dynamic editor = _flex.Editor;
                         if (editor.Text != string.Empty)
                         {
-                            editor.SelectionStart = _editorSelectionStart == -1 ? 0 : _editorSelectionStart;
-                            editor.SelectionLength = _editorSelectionStart == -1 ? editor.Text.Length : _editorSelectionLength;
+                            if (_editorSelectionStart >= 0)
+                            {
+                                editor.SelectionStart = _editorSelectionStart;
+                                editor.SelectionLength = _editorSelectionLength;
+                            }
                         }
                     }
                 }
@@ -185,12 +189,13 @@ namespace clinic_ivf.FlexGrid
                 DataTable dt = _flex.DataSource as DataTable;
                 if (dt != null) dv = dt.DefaultView;
             }
-
-            if (_flex.DataSource != null)
+            if (dv == null)
             {
-                CurrencyManager cm = (CurrencyManager)_flex.BindingContext[_flex.DataSource, _flex.DataMember];
-                cm.EndCurrentEdit();
+                return;
             }
+
+            CurrencyManager cm = (CurrencyManager)_flex.BindingContext[_flex.DataSource, _flex.DataMember];
+            cm.EndCurrentEdit();
 
             // scan each cell in the filter row and build new filter
             StringBuilder sb = new StringBuilder();
@@ -233,6 +238,7 @@ namespace clinic_ivf.FlexGrid
                 }
 
                 // get filter expression
+                expr = "%"+expr;
                 expr = BuildFilterExpression(col, expr);
                 if (expr.Length == 0) continue;
 
@@ -243,21 +249,6 @@ namespace clinic_ivf.FlexGrid
 
             // apply filter to current view
             string strFilter = sb.ToString();
-
-            if (dv == null)
-            {
-                Dictionary<string, ConditionFilter> filters = BuildConditionFilters(strFilter);
-                for (int col = _flex.Cols.Fixed; col < _flex.Cols.Count; ++col)
-                {
-                    if (!filters.ContainsKey(_flex.Cols[col].Name))
-                        _flex.Cols[col].Filter = null;
-                    else
-                        _flex.Cols[col].Filter = filters[_flex.Cols[col].Name];
-                }
-                _flex.ApplyFilters();
-                return;
-            }
-
             if (strFilter == dv.RowFilter) return;
             try
             {
@@ -265,7 +256,6 @@ namespace clinic_ivf.FlexGrid
                 dynamic editor = _flex.Editor;
                 _editorSelectionStart = editor.SelectionStart;
                 _editorSelectionLength = editor.SelectionLength;
-
                 dv.RowFilter = strFilter;
             }
             catch
@@ -315,64 +305,6 @@ namespace clinic_ivf.FlexGrid
 
             // if we got here, the condition must be bad (e.g. ><)
             return "";
-        }
-
-        private Dictionary<string, ConditionFilter> BuildConditionFilters(string expr)
-        {
-            Dictionary<string, ConditionFilter> filters = new Dictionary<string, ConditionFilter>();
-
-            if (expr.Length == 0)
-                return filters;
-
-            List<string> exprFilters = expr.Split(new string[] { "And" }, StringSplitOptions.RemoveEmptyEntries).ToList();
-            foreach (string exprFilter in exprFilters)
-            {
-                try
-                {
-                    string filter = exprFilter.Trim();
-                    int index = filter.IndexOf(']');
-                    string colName = filter.Substring(1, index - 1);
-
-                    string operands = filter.Substring(index + 1, filter.Length - index - 1).Trim();
-                    int firstquote = operands.IndexOf("'");
-                    int lastquote = operands.LastIndexOf("'");
-                    object operand = operands.Substring(firstquote + 1, lastquote - firstquote - 1).Replace("*", "")
-                        .Trim();
-
-                    TypeConverter converter = TypeDescriptor.GetConverter(_flex.Cols[colName].DataType);
-                    try
-                    {
-                        operand = converter.ConvertFromString(operand.ToString());
-                    }
-                    catch
-                    {
-
-                    }
-
-                    ConditionFilter conditionFilter = new ConditionFilter();
-                    conditionFilter.Condition1.Parameter = operand;
-                    conditionFilter.AndConditions = false;
-
-                    if (operands.StartsWith("like"))
-                        conditionFilter.Condition1.Operator = ConditionOperator.BeginsWith;
-                    else if (operands.StartsWith("="))
-                        conditionFilter.Condition1.Operator = ConditionOperator.Equals;
-                    else if (operands.StartsWith("<"))
-                        conditionFilter.Condition1.Operator = ConditionOperator.LessThan;
-                    else if (operands.StartsWith(">"))
-                        conditionFilter.Condition1.Operator = ConditionOperator.GreaterThan;
-                    else
-                        continue;
-
-                    filters.Add(colName, conditionFilter);
-                }
-                catch
-                {
-                    continue;
-                }
-            }
-
-            return filters;
         }
     }
 }

@@ -849,7 +849,7 @@ namespace clinic_ivf.gui
             grfSpecial.Dock = System.Windows.Forms.DockStyle.Fill;
             grfSpecial.Location = new System.Drawing.Point(0, 0);
 
-            FilterRow fr = new FilterRow(grfSpecial);
+            FilterRow2 fr = new FilterRow2(grfSpecial);
 
             grfSpecial.AfterRowColChange += GrfMed_AfterRowColChange;
             //grfExpnC.CellButtonClick += new C1.Win.C1FlexGrid.RowColEventHandler(this.grfDept_CellButtonClick);
@@ -966,7 +966,7 @@ namespace clinic_ivf.gui
             grfGenetic.Dock = System.Windows.Forms.DockStyle.Fill;
             grfGenetic.Location = new System.Drawing.Point(0, 0);
 
-            FilterRow fr = new FilterRow(grfGenetic);
+            FilterRow2 fr = new FilterRow2(grfGenetic);
 
             grfGenetic.AfterRowColChange += GrfMed_AfterRowColChange;
             //grfExpnC.CellButtonClick += new C1.Win.C1FlexGrid.RowColEventHandler(this.grfDept_CellButtonClick);
@@ -1076,7 +1076,7 @@ namespace clinic_ivf.gui
             grfEmbryo.Dock = System.Windows.Forms.DockStyle.Fill;
             grfEmbryo.Location = new System.Drawing.Point(0, 0);
 
-            FilterRow fr = new FilterRow(grfEmbryo);
+            FilterRow2 fr = new FilterRow2(grfEmbryo);
 
             grfEmbryo.AfterRowColChange += GrfMed_AfterRowColChange;
             //grfExpnC.CellButtonClick += new C1.Win.C1FlexGrid.RowColEventHandler(this.grfDept_CellButtonClick);
@@ -1185,7 +1185,7 @@ namespace clinic_ivf.gui
             grfSperm.Dock = System.Windows.Forms.DockStyle.Fill;
             grfSperm.Location = new System.Drawing.Point(0, 0);
 
-            FilterRow fr = new FilterRow(grfSperm);
+            FilterRow2 fr = new FilterRow2(grfSperm);
 
             grfSperm.AfterRowColChange += GrfMed_AfterRowColChange;
             //grfExpnC.CellButtonClick += new C1.Win.C1FlexGrid.RowColEventHandler(this.grfDept_CellButtonClick);
@@ -1294,7 +1294,7 @@ namespace clinic_ivf.gui
             grfBloodLab.Dock = System.Windows.Forms.DockStyle.Fill;
             grfBloodLab.Location = new System.Drawing.Point(0, 0);
 
-            FilterRow fr = new FilterRow(grfBloodLab);
+            FilterRow2 fr = new FilterRow2(grfBloodLab);
 
             grfBloodLab.DoubleClick += GrfBloodLab_DoubleClick;
             //grfExpnC.CellButtonClick += new C1.Win.C1FlexGrid.RowColEventHandler(this.grfDept_CellButtonClick);
