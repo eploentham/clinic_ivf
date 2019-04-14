@@ -188,7 +188,7 @@ namespace clinic_ivf.gui
             id = grfReq[grfReq.Row, colRqId] != null ? grfReq[grfReq.Row, colRqId].ToString() : "";
             chk = grfReq[grfReq.Row, colRqReqNum] != null ? grfReq[grfReq.Row, colRqReqNum].ToString() : "";
             name = grfReq[grfReq.Row, colRqName] != null ? grfReq[grfReq.Row, colRqName].ToString() : "";
-            FrmMabOPUTimeModi frm = new FrmMabOPUTimeModi(ic, id, id);
+            FrmLabOPUTimeModi frm = new FrmLabOPUTimeModi(ic, id, id);
             frm.ShowDialog(this);
         }
         private void ContextMenu_edit(object sender, System.EventArgs e)

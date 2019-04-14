@@ -90,6 +90,15 @@ namespace clinic_ivf.gui
             menuReqOR.Click += MenuReqOR_Click;
             menuOrScreen.Click += MenuOrScreen_Click;
             menuTest.Click += MenuTest_Click;
+            menuDoctorDefault.Click += MenuDoctorDefault_Click;
+        }
+
+        private void MenuDoctorDefault_Click(object sender, EventArgs e)
+        {
+            //throw new NotImplementedException();
+            FrmDoctorView frm = new FrmDoctorView(ic, this);
+            frm.FormBorderStyle = FormBorderStyle.None;
+            AddNewTab(frm, menuDoctorDefault.Text + " ");
         }
 
         private void MenuTest_Click(object sender, EventArgs e)

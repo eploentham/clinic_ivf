@@ -184,6 +184,18 @@
     <Compile Include="gui\FrmDocGroupSub.designer.cs">
       <DependentUpon>FrmDocGroupSub.cs</DependentUpon>
     </Compile>
+    <Compile Include="gui\FrmDoctorAdd.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="gui\FrmDoctorAdd.Designer.cs">
+      <DependentUpon>FrmDoctorAdd.cs</DependentUpon>
+    </Compile>
+    <Compile Include="gui\FrmDoctorView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="gui\FrmDoctorView.Designer.cs">
+      <DependentUpon>FrmDoctorView.cs</DependentUpon>
+    </Compile>
     <Compile Include="gui\FrmLabFetAdd.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -280,17 +292,23 @@
     <Compile Include="gui\FrmLabFormDay1.Designer.cs">
       <DependentUpon>FrmLabFormDay1.cs</DependentUpon>
     </Compile>
-    <Compile Include="gui\FrmMabOPUTimeModi.cs">
+    <Compile Include="gui\FrmLabOPUTimeModi.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="gui\FrmMabOPUTimeModi.Designer.cs">
-      <DependentUpon>FrmMabOPUTimeModi.cs</DependentUpon>
+    <Compile Include="gui\FrmLabOPUTimeModi.Designer.cs">
+      <DependentUpon>FrmLabOPUTimeModi.cs</DependentUpon>
     </Compile>
     <Compile Include="gui\FrmNurseAdd.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="gui\FrmNurseAdd.Designer.cs">
       <DependentUpon>FrmNurseAdd.cs</DependentUpon>
+    </Compile>
+    <Compile Include="gui\FrmNurseAdd1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="gui\FrmNurseAdd1.Designer.cs">
+      <DependentUpon>FrmNurseAdd1.cs</DependentUpon>
     </Compile>
     <Compile Include="gui\FrmNurseView.cs">
       <SubType>Form</SubType>
@@ -767,6 +785,12 @@
     <EmbeddedResource Include="gui\FrmDocGroupSub.resx">
       <DependentUpon>FrmDocGroupSub.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="gui\FrmDoctorAdd.resx">
+      <DependentUpon>FrmDoctorAdd.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="gui\FrmDoctorView.resx">
+      <DependentUpon>FrmDoctorView.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="gui\FrmLabFetAdd.resx">
       <DependentUpon>FrmLabFetAdd.cs</DependentUpon>
     </EmbeddedResource>
@@ -815,11 +839,14 @@
     <EmbeddedResource Include="gui\FrmLabReqView.resx">
       <DependentUpon>FrmLabReqView.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="gui\FrmMabOPUTimeModi.resx">
-      <DependentUpon>FrmMabOPUTimeModi.cs</DependentUpon>
+    <EmbeddedResource Include="gui\FrmLabOPUTimeModi.resx">
+      <DependentUpon>FrmLabOPUTimeModi.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="gui\FrmNurseAdd.resx">
       <DependentUpon>FrmNurseAdd.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="gui\FrmNurseAdd1.resx">
+      <DependentUpon>FrmNurseAdd1.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="gui\FrmNurseView.resx">
       <DependentUpon>FrmNurseView.cs</DependentUpon>

@@ -13,7 +13,7 @@ using System.Windows.Forms;
 
 namespace clinic_ivf.gui
 {
-    public partial class FrmMabOPUTimeModi : Form
+    public partial class FrmLabOPUTimeModi : Form
     {
         IvfControl ic;
         String lformaId = "", reqid="";
@@ -21,7 +21,7 @@ namespace clinic_ivf.gui
         C1SuperTooltip stt;
         C1SuperErrorProvider sep;
 
-        public FrmMabOPUTimeModi(IvfControl ic, String reqid, String lformaId)
+        public FrmLabOPUTimeModi(IvfControl ic, String reqid, String lformaId)
         {
             InitializeComponent();
             this.ic = ic;

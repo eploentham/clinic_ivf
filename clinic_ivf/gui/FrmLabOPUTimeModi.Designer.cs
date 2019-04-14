@@ -1,6 +1,6 @@
 ﻿namespace clinic_ivf.gui
 {
-    partial class FrmMabOPUTimeModi
+    partial class FrmLabOPUTimeModi
     {
         /// <summary>
         /// Required designer variable.

@@ -810,7 +810,7 @@ namespace clinic_ivf.gui
             //FilterRow fr = new FilterRow(grfExpn);
 
             grfQue.AfterRowColChange += GrfReq_AfterRowColChange;
-            //grfExpnC.CellButtonClick += new C1.Win.C1FlexGrid.RowColEventHandler(this.grfDept_CellButtonClick);
+            grfQue.DoubleClick += GrfQue_DoubleClick;
             //grfExpnC.CellChanged += new C1.Win.C1FlexGrid.RowColEventHandler(this.grfDept_CellChanged);
             ContextMenu menuGw = new ContextMenu();
             //menuGw.MenuItems.Add("&แก้ไข รายการเบิก", new EventHandler(ContextMenu_edit));
@@ -825,6 +825,13 @@ namespace clinic_ivf.gui
             //theme1.SetTheme(tabFinish, "Office2010Blue");
             
         }
+
+        private void GrfQue_DoubleClick(object sender, EventArgs e)
+        {
+            //throw new NotImplementedException();
+            openNurseAdd1();
+        }
+
         private void GrfReq_AfterRowColChange(object sender, RangeEventArgs e)
         {
             //throw new NotImplementedException();
@@ -1040,6 +1047,11 @@ namespace clinic_ivf.gui
             CellNoteManager mgr = new CellNoteManager(grfQue);
             grfQue.Cols[colID].Visible = false;
             grfQue.Cols[colVn].Visible = false;
+            grfQue.Cols[colVNshow].AllowEditing = false;
+            grfQue.Cols[colPttHn].AllowEditing = false;
+            grfQue.Cols[colPttName].AllowEditing = false;
+            grfQue.Cols[colVsDate].AllowEditing = false;
+            grfQue.Cols[colVsTime].AllowEditing = false;
             //theme1.SetTheme(grfQue, ic.theme);
 
         }
@@ -1440,7 +1452,7 @@ namespace clinic_ivf.gui
             //openPatientAdd(id, name);
             //}
         }
-        private void ContextMenu_order(object sender, System.EventArgs e)
+        private void openNurseAdd1()
         {
             String chk = "", name = "", id = "", pttId = "";
 
@@ -1452,6 +1464,10 @@ namespace clinic_ivf.gui
             //frm.ShowDialog(this);
 
             openNurseAdd(pttId, id, name, "edit");
+        }
+        private void ContextMenu_order(object sender, System.EventArgs e)
+        {
+            openNurseAdd1();
             //if (MessageBox.Show("ต้องการ แก้ไข Patient  \n  hn number " + chk + " \n name " + name, "", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == DialogResult.OK)
             //{
             //grfReq.Rows.Remove(grfReq.Row);
@@ -1460,12 +1476,12 @@ namespace clinic_ivf.gui
         }
         private void openNurseAdd(String pttId, String vsid, String name, String flagview)
         {
-            FrmNurseAdd frm = new FrmNurseAdd(ic, menu, pttId, vsid, flagview);
+            FrmNurseAdd1 frm = new FrmNurseAdd1(ic, menu, pttId, vsid, flagview);
             String txt = "";
             if (!name.Equals(""))
             {
                 txt = " " + name;
-            }            
+            }
 
             frm.FormBorderStyle = FormBorderStyle.None;
             C1DockingTabPage tab = menu.AddNewTab(frm, txt);
