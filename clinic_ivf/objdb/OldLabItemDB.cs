@@ -212,6 +212,162 @@ namespace clinic_ivf.objdb
                 lolItm.Add(itm1);
             }
         }
+
+        private void chkNull(OldLabItem p)
+        {
+            long chk = 0;
+            Decimal chk1 = 0;
+
+            p.date_modi = p.date_modi == null ? "" : p.date_modi;
+            p.date_cancel = p.date_cancel == null ? "" : p.date_cancel;
+            p.user_create = p.user_create == null ? "" : p.user_create;
+            p.user_modi = p.user_modi == null ? "" : p.user_modi;
+            p.user_cancel = p.user_cancel == null ? "" : p.user_cancel;
+            //p.prefix_id = int.TryParse(p.prefix_id, out chk) ? chk.ToString() : "0";
+            //p.posi_id = int.TryParse(p.posi_id, out chk) ? chk.ToString() : "0";
+            //p.posi_id = int.TryParse(p.posi_id, out chk) ? chk.ToString() : "0";
+
+            p.LName = p.LName == null ? "" : p.LName;
+            p.SP1N = p.SP1N == null ? "" : p.SP1N;
+            p.SP1T = p.SP1T == null ? "" : p.SP1T;
+            p.SP2N = p.SP2N == null ? "" : p.SP2N;
+            p.SP2T = p.SP2T == null ? "" : p.SP2T;
+            p.SP3N = p.SP3N == null ? "" : p.SP3N;
+            p.SP3T = p.SP3T == null ? "" : p.SP3T;
+            p.SP4N = p.SP4N == null ? "" : p.SP4N;
+            p.SP4T = p.SP4T == null ? "" : p.SP4T;
+            p.SP5N = p.SP5N == null ? "" : p.SP5N;
+            p.SP5T = p.SP5T == null ? "" : p.SP5T;
+            p.SP6N = p.SP6N == null ? "" : p.SP6N;
+            p.SP6T = p.SP6T == null ? "" : p.SP6T;
+            p.SP7N = p.SP7N == null ? "" : p.SP7N;
+            p.SP7T = p.SP7T == null ? "" : p.SP7T;
+            p.WorkerGroup1 = p.WorkerGroup1 == null ? "" : p.WorkerGroup1;
+            p.WorkerGroup2 = p.WorkerGroup2 == null ? "" : p.WorkerGroup2;
+            p.WorkerGroup3 = p.WorkerGroup3 == null ? "" : p.WorkerGroup3;
+            p.WorkerGroup4 = p.WorkerGroup4 == null ? "" : p.WorkerGroup4;
+            p.active = p.active == null ? "" : p.active;
+
+            //p.Alert = p.Alert == null ? "0" : p.Alert;
+            //p.QTY = p.QTY == null ? "0" : p.QTY;
+            //p.PendingQTY = p.PendingQTY == null ? "0" : p.PendingQTY;
+            //p.Price = p.Price.Equals("") ? "0" : p.Price;
+
+            p.LGID = long.TryParse(p.LGID, out chk) ? chk.ToString() : "0";
+            p.SubItem = long.TryParse(p.SubItem, out chk) ? chk.ToString() : "0";
+            p.QTY = long.TryParse(p.QTY, out chk) ? chk.ToString() : "0";
+            //p.W4GID = long.TryParse(p.W4GID, out chk) ? chk.ToString() : "0";
+            //p.BillGroupID = long.TryParse(p.BillGroupID, out chk) ? chk.ToString() : "0";
+
+            p.Price = Decimal.TryParse(p.Price, out chk1) ? chk1.ToString() : "0";
+            //p.QTY = Decimal.TryParse(p.QTY, out chk1) ? chk1.ToString() : "0";
+            //p.user_cancel = p.user_cancel == null ? "" : p.user_cancel;
+        }
+        public String insert(OldLabItem p, String userId)
+        {
+            String re = "";
+            String sql = "";
+            p.active = "1";
+            //p.ssdata_id = "";
+            int chk = 0;
+
+            chkNull(p);
+            //lbReq.form_a_id = "form_a_id";
+            //p.req_code = genReqDoc();
+            sql = "Insert Into " + labI.table + " Set " +
+                " " + labI.LName + " = '" + p.LName.Replace("'", "''") + "'" +
+                "," + labI.Price + "= '" + p.Price + "'" +
+                "," + labI.WorkTime + "= '" + p.WorkTime + "'" +
+                "," + labI.SP1N + "= '" + p.SP1N + "'" +
+                "," + labI.SP1T + "= '" + p.SP1T + "'" +
+                "," + labI.SP2N + "= '" + p.SP2N + "'" +
+                "," + labI.SP2T + "= '" + p.SP2T + "'" +
+                "," + labI.SP3N + "= '" + p.SP3N + "'" +
+                "," + labI.SP3T + "= '" + p.SP3T + "'" +
+                "," + labI.SP4N + "= '" + p.SP4N + "'" +
+                "," + labI.SP4T + "= '" + p.SP4T + "'" +
+                "," + labI.SP5N + "= '" + p.SP5N + "'" +
+                "," + labI.SP5T + "= '" + p.SP5T + "'" +
+                "," + labI.SP6N + "= '" + p.SP6N + "'" +
+                "," + labI.SP6T + "= '" + p.SP6T + "'" +
+                "," + labI.SP7N + "= '" + p.SP7N + "'" +
+                "," + labI.SP7T + "= '" + p.SP7T + "'" +
+                "," + labI.SubItem + "= '" + p.SubItem + "'" +
+                "," + labI.WorkerGroup1 + "= '" + p.WorkerGroup1 + "'" +
+                "," + labI.WorkerGroup2 + "= '" + p.WorkerGroup2 + "'" +
+                "," + labI.WorkerGroup3 + "= '" + p.WorkerGroup3 + "'" +
+                "," + labI.WorkerGroup4 + "= '" + p.WorkerGroup4 + "'" +
+                "," + labI.QTY + "= '" + p.QTY + "'" +
+                "," + labI.active + "= '" + p.active + "'" +
+                "";
+            try
+            {
+                re = conn.ExecuteNonQuery(conn.conn, sql);
+            }
+            catch (Exception ex)
+            {
+                sql = ex.Message + " " + ex.InnerException;
+            }
+
+            return re;
+        }
+        public String update(OldLabItem p, String userId)
+        {
+            String re = "";
+            String sql = "";
+            chkNull(p);
+
+            sql = "Update " + labI.table + " Set " +
+                " " + labI.LName + " = '" + p.LName.Replace("'", "''") + "'" +
+                "," + labI.Price + "= '" + p.Price + "'" +
+                "," + labI.WorkTime + "= '" + p.WorkTime + "'" +
+                "," + labI.SP1N + "= '" + p.SP1N + "'" +
+                "," + labI.SP1T + "= '" + p.SP1T + "'" +
+                "," + labI.SP2N + "= '" + p.SP2N + "'" +
+                "," + labI.SP2T + "= '" + p.SP2T + "'" +
+                "," + labI.SP3N + "= '" + p.SP3N + "'" +
+                "," + labI.SP3T + "= '" + p.SP3T + "'" +
+                "," + labI.SP4N + "= '" + p.SP4N + "'" +
+                "," + labI.SP4T + "= '" + p.SP4T + "'" +
+                "," + labI.SP5N + "= '" + p.SP5N + "'" +
+                "," + labI.SP5T + "= '" + p.SP5T + "'" +
+                "," + labI.SP6N + "= '" + p.SP6N + "'" +
+                "," + labI.SP6T + "= '" + p.SP6T + "'" +
+                "," + labI.SP7N + "= '" + p.SP7N + "'" +
+                "," + labI.SP7T + "= '" + p.SP7T + "'" +
+                "," + labI.SubItem + "= '" + p.SubItem + "'" +
+                "," + labI.WorkerGroup1 + "= '" + p.WorkerGroup1 + "'" +
+                "," + labI.WorkerGroup2 + "= '" + p.WorkerGroup2 + "'" +
+                "," + labI.WorkerGroup3 + "= '" + p.WorkerGroup3 + "'" +
+                "," + labI.WorkerGroup4 + "= '" + p.WorkerGroup4 + "'" +
+                "," + labI.QTY + "= '" + p.QTY + "'" +
+                "Where " + labI.pkField + "='" + p.LID + "'";
+            try
+            {
+                re = conn.ExecuteNonQuery(conn.conn, sql);
+            }
+            catch (Exception ex)
+            {
+                sql = ex.Message + " " + ex.InnerException;
+            }
+
+            return re;
+        }
+        public String insertSpecialItem(OldLabItem p, String userId)
+        {
+            String re = "";
+
+            if (p.LID.Equals(""))
+            {
+                re = insert(p, "");
+            }
+            else
+            {
+                re = update(p, "");
+            }
+
+            return re;
+        }
         public void setCboLabItem(C1ComboBox c, String selected)
         {
             ComboBoxItem item = new ComboBoxItem();

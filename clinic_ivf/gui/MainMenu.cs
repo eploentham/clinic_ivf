@@ -91,6 +91,15 @@ namespace clinic_ivf.gui
             menuOrScreen.Click += MenuOrScreen_Click;
             menuTest.Click += MenuTest_Click;
             menuDoctorDefault.Click += MenuDoctorDefault_Click;
+            menuSpecialItem.Click += MenuSpecialItem_Click;
+        }
+
+        private void MenuSpecialItem_Click(object sender, EventArgs e)
+        {
+            //throw new NotImplementedException();
+            FrmSpecialItem frm = new FrmSpecialItem(ic);
+            frm.FormBorderStyle = FormBorderStyle.None;
+            AddNewTab(frm, menuSpecialItem.Text + " ");
         }
 
         private void MenuDoctorDefault_Click(object sender, EventArgs e)

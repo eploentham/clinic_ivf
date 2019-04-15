@@ -220,6 +220,12 @@
     <Compile Include="gui\FrmLabFormAView.Designer.cs">
       <DependentUpon>FrmLabFormAView.cs</DependentUpon>
     </Compile>
+    <Compile Include="gui\FrmLabItem.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="gui\FrmLabItem.Designer.cs">
+      <DependentUpon>FrmLabItem.cs</DependentUpon>
+    </Compile>
     <Compile Include="gui\FrmLabOPUAdd.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -447,6 +453,12 @@
     </Compile>
     <Compile Include="gui\FrmShowImage.cs">
       <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="gui\FrmSpecialItem.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="gui\FrmSpecialItem.Designer.cs">
+      <DependentUpon>FrmSpecialItem.cs</DependentUpon>
     </Compile>
     <Compile Include="gui\FrmSplash.cs">
       <SubType>Form</SubType>
@@ -806,6 +818,9 @@
     <EmbeddedResource Include="gui\FrmLabFormDay1.resx">
       <DependentUpon>FrmLabFormDay1.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="gui\FrmLabItem.resx">
+      <DependentUpon>FrmLabItem.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="gui\FrmLabOPUAdd.resx">
       <DependentUpon>FrmLabOPUAdd.cs</DependentUpon>
     </EmbeddedResource>
@@ -916,6 +931,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="gui\FrmShowImage.resx">
       <DependentUpon>FrmShowImage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="gui\FrmSpecialItem.resx">
+      <DependentUpon>FrmSpecialItem.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="gui\FrmSplash.resx">
       <DependentUpon>FrmSplash.cs</DependentUpon>

@@ -85,7 +85,7 @@ namespace clinic_ivf.gui
             sdrk.EUsage = cboUsageE.Text;
             sdrk.TUsage = cboUsageT.Text;
             sdrk.UnitType = cboUnit.Text;
-            sdrk.Price = txtPrice.Text;
+            sdrk.Price = txtPrice1.Text;
             sdrk.Alert = txtPurchase.Text;
             //sdrk.status_doctor = chkStatusDoctor.Checked == true ? "1" : "0";
             //sdrk.status_embryologist = chkEmbryologist.Checked == true ? "1" : "0";
@@ -124,7 +124,21 @@ namespace clinic_ivf.gui
             cboUsageE.Value = "";
             cboUsageT.Value = "";
             txtTMT.Value = "";
-
+            txtDrgComm.Value = "";
+            txtDrgTrade.Value = "";
+            cboFreqT.Value = "";
+            cboFreqE.Value = "";
+            cboIndiT.Value = "";
+            cboIndiE.Value = "";
+            cboWarnT.Value = "";
+            cboWarnE.Value = "";
+            cboPrepT.Value = "";
+            cboPrepE.Value = "";
+            txtPrice3.Value = "";
+            txtPrice2.Value = "";
+            txtPrice1.Value = "";
+            cboUnit.Value = "";
+            txtPurchase.Value = "";
         }
 
         private void setControl(String posiId)
@@ -138,8 +152,8 @@ namespace clinic_ivf.gui
             //cboUsageE.Text = sdrk.EUsage;
             //cboUsageT.Text = sdrk.TUsage;
             txtPurchase.Value = sdrk.Alert;
-            txtPrice.Value = sdrk.Price;
-            //setGrfPkgD(txtID.Text);
+            txtPrice1.Value = sdrk.Price;
+            txtDrgCode.Value = sdrk.DUID;
         }
         private void setControlEnable(Boolean flag)
         {
@@ -164,7 +178,8 @@ namespace clinic_ivf.gui
             //grfAgn.CellChanged += new C1.Win.C1FlexGrid.RowColEventHandler(this.grfPosi_CellChanged);
 
             panel1.Controls.Add(this.grfDrug);
-
+            FilterRow fr = new FilterRow(grfDrug);
+            grfDrug.AllowFiltering = true;
             C1Theme theme = C1ThemeController.GetThemeByName("Office2013Red", false);
             C1ThemeController.ApplyThemeToObject(grfDrug, theme);
         }
@@ -213,15 +228,14 @@ namespace clinic_ivf.gui
             }
             grfDrug.Cols[colID].Visible = false;
             grfDrug.Cols[colQty].Visible = false;
-
-            FilterRow fr = new FilterRow(grfDrug);
-            grfDrug.AllowFiltering = true;
+            
             //grfAgn.Cols[colS].Visible = false;
             //grfAgn.Cols[colRemark].Visible = false;
         }
         private void FrmStockDrug_Load(object sender, EventArgs e)
         {
-
+            sCMain.HeaderHeight = 0;
+            tC.SelectedTab = tabDrug1;
         }
     }
 }

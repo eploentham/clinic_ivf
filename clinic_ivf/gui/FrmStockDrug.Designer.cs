@@ -31,13 +31,13 @@
             this.sB = new System.Windows.Forms.StatusStrip();
             this.sB1 = new System.Windows.Forms.ToolStripStatusLabel();
             this.theme1 = new C1.Win.C1Themes.C1ThemeController();
-            this.c1SplitContainer1 = new C1.Win.C1SplitContainer.C1SplitContainer();
+            this.sCMain = new C1.Win.C1SplitContainer.C1SplitContainer();
             this.c1SplitterPanel1 = new C1.Win.C1SplitContainer.C1SplitterPanel();
             this.panel1 = new System.Windows.Forms.Panel();
             this.c1SplitterPanel2 = new C1.Win.C1SplitContainer.C1SplitterPanel();
             this.panel2 = new System.Windows.Forms.Panel();
             this.tC = new C1.Win.C1Command.C1DockingTab();
-            this.c1DockingTabPage3 = new C1.Win.C1Command.C1DockingTabPage();
+            this.tabDrug1 = new C1.Win.C1Command.C1DockingTabPage();
             this.panel5 = new System.Windows.Forms.Panel();
             this.cbpGrpSub = new C1.Win.C1Input.C1ComboBox();
             this.label25 = new System.Windows.Forms.Label();
@@ -51,7 +51,7 @@
             this.cboCat = new C1.Win.C1Input.C1ComboBox();
             this.cboGrp = new C1.Win.C1Input.C1ComboBox();
             this.label17 = new System.Windows.Forms.Label();
-            this.c1DockingTabPage1 = new C1.Win.C1Command.C1DockingTabPage();
+            this.tabDrug2 = new C1.Win.C1Command.C1DockingTabPage();
             this.panel4 = new System.Windows.Forms.Panel();
             this.cboPrepE = new C1.Win.C1Input.C1ComboBox();
             this.cboPrepT = new C1.Win.C1Input.C1ComboBox();
@@ -73,18 +73,18 @@
             this.label7 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
-            this.c1DockingTabPage2 = new C1.Win.C1Command.C1DockingTabPage();
+            this.tabDrug3 = new C1.Win.C1Command.C1DockingTabPage();
             this.panel3 = new System.Windows.Forms.Panel();
             this.label27 = new System.Windows.Forms.Label();
             this.txtPurchase = new C1.Win.C1Input.C1TextBox();
             this.cboUnit = new C1.Win.C1Input.C1ComboBox();
             this.label26 = new System.Windows.Forms.Label();
-            this.txtPrice = new C1.Win.C1Input.C1TextBox();
+            this.txtPrice1 = new C1.Win.C1Input.C1TextBox();
             this.label10 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
-            this.c1TextBox5 = new C1.Win.C1Input.C1TextBox();
+            this.txtPrice2 = new C1.Win.C1Input.C1TextBox();
             this.label12 = new System.Windows.Forms.Label();
-            this.c1TextBox6 = new C1.Win.C1Input.C1TextBox();
+            this.txtPrice3 = new C1.Win.C1Input.C1TextBox();
             this.label13 = new System.Windows.Forms.Label();
             this.label15 = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
@@ -103,14 +103,14 @@
             this.label1 = new System.Windows.Forms.Label();
             this.sB.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.theme1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.c1SplitContainer1)).BeginInit();
-            this.c1SplitContainer1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.sCMain)).BeginInit();
+            this.sCMain.SuspendLayout();
             this.c1SplitterPanel1.SuspendLayout();
             this.c1SplitterPanel2.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tC)).BeginInit();
             this.tC.SuspendLayout();
-            this.c1DockingTabPage3.SuspendLayout();
+            this.tabDrug1.SuspendLayout();
             this.panel5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.cbpGrpSub)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtTMT)).BeginInit();
@@ -118,7 +118,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtDrgComm)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cboCat)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cboGrp)).BeginInit();
-            this.c1DockingTabPage1.SuspendLayout();
+            this.tabDrug2.SuspendLayout();
             this.panel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.cboPrepE)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cboPrepT)).BeginInit();
@@ -130,13 +130,13 @@
             ((System.ComponentModel.ISupportInitialize)(this.cboFreqT)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cboUsageE)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cboUsageT)).BeginInit();
-            this.c1DockingTabPage2.SuspendLayout();
+            this.tabDrug3.SuspendLayout();
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtPurchase)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cboUnit)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtPrice)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.c1TextBox5)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.c1TextBox6)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtPrice1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtPrice2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtPrice3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtPasswordVoid)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnNew)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkVoid)).BeginInit();
@@ -169,27 +169,27 @@
             // 
             this.theme1.Theme = "Office2013Red";
             // 
-            // c1SplitContainer1
+            // sCMain
             // 
-            this.c1SplitContainer1.AutoSizeElement = C1.Framework.AutoSizeElement.Both;
-            this.c1SplitContainer1.BackColor = System.Drawing.Color.White;
-            this.c1SplitContainer1.CollapsingAreaColor = System.Drawing.Color.White;
-            this.c1SplitContainer1.CollapsingCueColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.c1SplitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.c1SplitContainer1.FixedLineColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(189)))), ((int)(((byte)(182)))));
-            this.c1SplitContainer1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.c1SplitContainer1.HeaderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.c1SplitContainer1.HeaderLineWidth = 1;
-            this.c1SplitContainer1.Location = new System.Drawing.Point(0, 0);
-            this.c1SplitContainer1.Name = "c1SplitContainer1";
-            this.c1SplitContainer1.Panels.Add(this.c1SplitterPanel1);
-            this.c1SplitContainer1.Panels.Add(this.c1SplitterPanel2);
-            this.c1SplitContainer1.Size = new System.Drawing.Size(1241, 706);
-            this.c1SplitContainer1.SplitterColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(189)))), ((int)(((byte)(182)))));
-            this.c1SplitContainer1.SplitterMovingColor = System.Drawing.Color.Black;
-            this.c1SplitContainer1.TabIndex = 12;
-            this.theme1.SetTheme(this.c1SplitContainer1, "(default)");
-            this.c1SplitContainer1.UseParentVisualStyle = false;
+            this.sCMain.AutoSizeElement = C1.Framework.AutoSizeElement.Both;
+            this.sCMain.BackColor = System.Drawing.Color.White;
+            this.sCMain.CollapsingAreaColor = System.Drawing.Color.White;
+            this.sCMain.CollapsingCueColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.sCMain.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.sCMain.FixedLineColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(189)))), ((int)(((byte)(182)))));
+            this.sCMain.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.sCMain.HeaderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.sCMain.HeaderLineWidth = 1;
+            this.sCMain.Location = new System.Drawing.Point(0, 0);
+            this.sCMain.Name = "sCMain";
+            this.sCMain.Panels.Add(this.c1SplitterPanel1);
+            this.sCMain.Panels.Add(this.c1SplitterPanel2);
+            this.sCMain.Size = new System.Drawing.Size(1241, 706);
+            this.sCMain.SplitterColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(189)))), ((int)(((byte)(182)))));
+            this.sCMain.SplitterMovingColor = System.Drawing.Color.Black;
+            this.sCMain.TabIndex = 12;
+            this.theme1.SetTheme(this.sCMain, "(default)");
+            this.sCMain.UseParentVisualStyle = false;
             // 
             // c1SplitterPanel1
             // 
@@ -255,9 +255,9 @@
             // 
             this.tC.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
             this.tC.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.tC.Controls.Add(this.c1DockingTabPage3);
-            this.tC.Controls.Add(this.c1DockingTabPage1);
-            this.tC.Controls.Add(this.c1DockingTabPage2);
+            this.tC.Controls.Add(this.tabDrug1);
+            this.tC.Controls.Add(this.tabDrug2);
+            this.tC.Controls.Add(this.tabDrug3);
             this.tC.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.tC.HotTrack = true;
             this.tC.Location = new System.Drawing.Point(0, 204);
@@ -271,14 +271,14 @@
             this.tC.TabStyle = C1.Win.C1Command.TabStyleEnum.Office2007;
             this.theme1.SetTheme(this.tC, "(default)");
             // 
-            // c1DockingTabPage3
+            // tabDrug1
             // 
-            this.c1DockingTabPage3.Controls.Add(this.panel5);
-            this.c1DockingTabPage3.Location = new System.Drawing.Point(1, 24);
-            this.c1DockingTabPage3.Name = "c1DockingTabPage3";
-            this.c1DockingTabPage3.Size = new System.Drawing.Size(703, 456);
-            this.c1DockingTabPage3.TabIndex = 2;
-            this.c1DockingTabPage3.Text = "คุณลักณะยา";
+            this.tabDrug1.Controls.Add(this.panel5);
+            this.tabDrug1.Location = new System.Drawing.Point(1, 24);
+            this.tabDrug1.Name = "tabDrug1";
+            this.tabDrug1.Size = new System.Drawing.Size(703, 456);
+            this.tabDrug1.TabIndex = 2;
+            this.tabDrug1.Text = "คุณลักณะยา";
             // 
             // panel5
             // 
@@ -489,14 +489,14 @@
             this.label17.Text = "Group :";
             this.theme1.SetTheme(this.label17, "(default)");
             // 
-            // c1DockingTabPage1
+            // tabDrug2
             // 
-            this.c1DockingTabPage1.Controls.Add(this.panel4);
-            this.c1DockingTabPage1.Location = new System.Drawing.Point(1, 24);
-            this.c1DockingTabPage1.Name = "c1DockingTabPage1";
-            this.c1DockingTabPage1.Size = new System.Drawing.Size(703, 456);
-            this.c1DockingTabPage1.TabIndex = 0;
-            this.c1DockingTabPage1.Text = "รายละเอียดประกอบยา";
+            this.tabDrug2.Controls.Add(this.panel4);
+            this.tabDrug2.Location = new System.Drawing.Point(1, 24);
+            this.tabDrug2.Name = "tabDrug2";
+            this.tabDrug2.Size = new System.Drawing.Size(703, 456);
+            this.tabDrug2.TabIndex = 0;
+            this.tabDrug2.Text = "รายละเอียดประกอบยา";
             // 
             // panel4
             // 
@@ -889,14 +889,14 @@
             this.label8.Text = "Frequency :";
             this.theme1.SetTheme(this.label8, "(default)");
             // 
-            // c1DockingTabPage2
+            // tabDrug3
             // 
-            this.c1DockingTabPage2.Controls.Add(this.panel3);
-            this.c1DockingTabPage2.Location = new System.Drawing.Point(1, 24);
-            this.c1DockingTabPage2.Name = "c1DockingTabPage2";
-            this.c1DockingTabPage2.Size = new System.Drawing.Size(703, 456);
-            this.c1DockingTabPage2.TabIndex = 1;
-            this.c1DockingTabPage2.Text = "ราคาขาย";
+            this.tabDrug3.Controls.Add(this.panel3);
+            this.tabDrug3.Location = new System.Drawing.Point(1, 24);
+            this.tabDrug3.Name = "tabDrug3";
+            this.tabDrug3.Size = new System.Drawing.Size(703, 456);
+            this.tabDrug3.TabIndex = 1;
+            this.tabDrug3.Text = "ราคาขาย";
             // 
             // panel3
             // 
@@ -905,12 +905,12 @@
             this.panel3.Controls.Add(this.txtPurchase);
             this.panel3.Controls.Add(this.cboUnit);
             this.panel3.Controls.Add(this.label26);
-            this.panel3.Controls.Add(this.txtPrice);
+            this.panel3.Controls.Add(this.txtPrice1);
             this.panel3.Controls.Add(this.label10);
             this.panel3.Controls.Add(this.label11);
-            this.panel3.Controls.Add(this.c1TextBox5);
+            this.panel3.Controls.Add(this.txtPrice2);
             this.panel3.Controls.Add(this.label12);
-            this.panel3.Controls.Add(this.c1TextBox6);
+            this.panel3.Controls.Add(this.txtPrice3);
             this.panel3.Controls.Add(this.label13);
             this.panel3.Controls.Add(this.label15);
             this.panel3.Controls.Add(this.label14);
@@ -984,18 +984,18 @@
             this.label26.Text = "unit :";
             this.theme1.SetTheme(this.label26, "(default)");
             // 
-            // txtPrice
+            // txtPrice1
             // 
-            this.txtPrice.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtPrice.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
-            this.txtPrice.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.txtPrice.Location = new System.Drawing.Point(117, 28);
-            this.txtPrice.Name = "txtPrice";
-            this.txtPrice.Size = new System.Drawing.Size(207, 20);
-            this.txtPrice.TabIndex = 285;
-            this.txtPrice.Tag = null;
-            this.theme1.SetTheme(this.txtPrice, "(default)");
-            this.txtPrice.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            this.txtPrice1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtPrice1.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
+            this.txtPrice1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.txtPrice1.Location = new System.Drawing.Point(117, 28);
+            this.txtPrice1.Name = "txtPrice1";
+            this.txtPrice1.Size = new System.Drawing.Size(207, 20);
+            this.txtPrice1.TabIndex = 285;
+            this.txtPrice1.Tag = null;
+            this.theme1.SetTheme(this.txtPrice1, "(default)");
+            this.txtPrice1.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
             // 
             // label10
             // 
@@ -1023,18 +1023,18 @@
             this.label11.Text = "ราคา 2 :";
             this.theme1.SetTheme(this.label11, "(default)");
             // 
-            // c1TextBox5
+            // txtPrice2
             // 
-            this.c1TextBox5.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.c1TextBox5.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
-            this.c1TextBox5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.c1TextBox5.Location = new System.Drawing.Point(117, 54);
-            this.c1TextBox5.Name = "c1TextBox5";
-            this.c1TextBox5.Size = new System.Drawing.Size(207, 20);
-            this.c1TextBox5.TabIndex = 287;
-            this.c1TextBox5.Tag = null;
-            this.theme1.SetTheme(this.c1TextBox5, "(default)");
-            this.c1TextBox5.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            this.txtPrice2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtPrice2.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
+            this.txtPrice2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.txtPrice2.Location = new System.Drawing.Point(117, 54);
+            this.txtPrice2.Name = "txtPrice2";
+            this.txtPrice2.Size = new System.Drawing.Size(207, 20);
+            this.txtPrice2.TabIndex = 287;
+            this.txtPrice2.Tag = null;
+            this.theme1.SetTheme(this.txtPrice2, "(default)");
+            this.txtPrice2.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
             // 
             // label12
             // 
@@ -1049,18 +1049,18 @@
             this.label12.Text = "ราคา 3 :";
             this.theme1.SetTheme(this.label12, "(default)");
             // 
-            // c1TextBox6
+            // txtPrice3
             // 
-            this.c1TextBox6.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.c1TextBox6.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
-            this.c1TextBox6.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.c1TextBox6.Location = new System.Drawing.Point(117, 80);
-            this.c1TextBox6.Name = "c1TextBox6";
-            this.c1TextBox6.Size = new System.Drawing.Size(207, 20);
-            this.c1TextBox6.TabIndex = 289;
-            this.c1TextBox6.Tag = null;
-            this.theme1.SetTheme(this.c1TextBox6, "(default)");
-            this.c1TextBox6.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            this.txtPrice3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtPrice3.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
+            this.txtPrice3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.txtPrice3.Location = new System.Drawing.Point(117, 80);
+            this.txtPrice3.Name = "txtPrice3";
+            this.txtPrice3.Size = new System.Drawing.Size(207, 20);
+            this.txtPrice3.TabIndex = 289;
+            this.txtPrice3.Tag = null;
+            this.theme1.SetTheme(this.txtPrice3, "(default)");
+            this.txtPrice3.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
             // 
             // label13
             // 
@@ -1287,7 +1287,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1241, 728);
-            this.Controls.Add(this.c1SplitContainer1);
+            this.Controls.Add(this.sCMain);
             this.Controls.Add(this.sB);
             this.Name = "FrmStockDrug";
             this.Text = "FrmStockDrug";
@@ -1295,15 +1295,15 @@
             this.sB.ResumeLayout(false);
             this.sB.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.theme1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.c1SplitContainer1)).EndInit();
-            this.c1SplitContainer1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.sCMain)).EndInit();
+            this.sCMain.ResumeLayout(false);
             this.c1SplitterPanel1.ResumeLayout(false);
             this.c1SplitterPanel2.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tC)).EndInit();
             this.tC.ResumeLayout(false);
-            this.c1DockingTabPage3.ResumeLayout(false);
+            this.tabDrug1.ResumeLayout(false);
             this.panel5.ResumeLayout(false);
             this.panel5.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.cbpGrpSub)).EndInit();
@@ -1312,7 +1312,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtDrgComm)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cboCat)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cboGrp)).EndInit();
-            this.c1DockingTabPage1.ResumeLayout(false);
+            this.tabDrug2.ResumeLayout(false);
             this.panel4.ResumeLayout(false);
             this.panel4.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.cboPrepE)).EndInit();
@@ -1325,14 +1325,14 @@
             ((System.ComponentModel.ISupportInitialize)(this.cboFreqT)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cboUsageE)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cboUsageT)).EndInit();
-            this.c1DockingTabPage2.ResumeLayout(false);
+            this.tabDrug3.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtPurchase)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cboUnit)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtPrice)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.c1TextBox5)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.c1TextBox6)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtPrice1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtPrice2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtPrice3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtPasswordVoid)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnNew)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkVoid)).EndInit();
@@ -1353,7 +1353,7 @@
         private System.Windows.Forms.StatusStrip sB;
         private System.Windows.Forms.ToolStripStatusLabel sB1;
         private C1.Win.C1Themes.C1ThemeController theme1;
-        private C1.Win.C1SplitContainer.C1SplitContainer c1SplitContainer1;
+        private C1.Win.C1SplitContainer.C1SplitContainer sCMain;
         private C1.Win.C1SplitContainer.C1SplitterPanel c1SplitterPanel1;
         private C1.Win.C1SplitContainer.C1SplitterPanel c1SplitterPanel2;
         private System.Windows.Forms.Panel panel1;
@@ -1379,11 +1379,11 @@
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label6;
-        private C1.Win.C1Input.C1TextBox c1TextBox6;
+        private C1.Win.C1Input.C1TextBox txtPrice3;
         private System.Windows.Forms.Label label12;
-        private C1.Win.C1Input.C1TextBox c1TextBox5;
+        private C1.Win.C1Input.C1TextBox txtPrice2;
         private System.Windows.Forms.Label label11;
-        private C1.Win.C1Input.C1TextBox txtPrice;
+        private C1.Win.C1Input.C1TextBox txtPrice1;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.Label label14;
@@ -1395,9 +1395,9 @@
         private C1.Win.C1Input.C1TextBox txtTMT;
         private System.Windows.Forms.Label label18;
         private C1.Win.C1Command.C1DockingTab tC;
-        private C1.Win.C1Command.C1DockingTabPage c1DockingTabPage1;
+        private C1.Win.C1Command.C1DockingTabPage tabDrug2;
         private System.Windows.Forms.Panel panel4;
-        private C1.Win.C1Command.C1DockingTabPage c1DockingTabPage2;
+        private C1.Win.C1Command.C1DockingTabPage tabDrug3;
         private System.Windows.Forms.Panel panel3;
         private C1.Win.C1Input.C1ComboBox cboFreqE;
         private C1.Win.C1Input.C1ComboBox cboFreqT;
@@ -1415,7 +1415,7 @@
         private C1.Win.C1Input.C1ComboBox cboPrepT;
         private System.Windows.Forms.Label label23;
         private System.Windows.Forms.Label label24;
-        private C1.Win.C1Command.C1DockingTabPage c1DockingTabPage3;
+        private C1.Win.C1Command.C1DockingTabPage tabDrug1;
         private System.Windows.Forms.Panel panel5;
         private C1.Win.C1Input.C1ComboBox cbpGrpSub;
         private System.Windows.Forms.Label label25;

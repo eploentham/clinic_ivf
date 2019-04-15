@@ -85,6 +85,114 @@ namespace clinic_ivf.objdb
                 loBilg.Add(itm1);
             }
         }
+        private void chkNull(OldSpecialItem p)
+        {
+            long chk = 0;
+            Decimal chk1 = 0;
+
+            p.date_modi = p.date_modi == null ? "" : p.date_modi;
+            p.date_cancel = p.date_cancel == null ? "" : p.date_cancel;
+            p.user_create = p.user_create == null ? "" : p.user_create;
+            p.user_modi = p.user_modi == null ? "" : p.user_modi;
+            p.user_cancel = p.user_cancel == null ? "" : p.user_cancel;
+            //p.prefix_id = int.TryParse(p.prefix_id, out chk) ? chk.ToString() : "0";
+            //p.posi_id = int.TryParse(p.posi_id, out chk) ? chk.ToString() : "0";
+            //p.posi_id = int.TryParse(p.posi_id, out chk) ? chk.ToString() : "0";
+
+            p.SName = p.SName == null ? "" : p.SName;
+            //p.EUsage = p.EUsage == null ? "" : p.EUsage;
+            //p.TUsage = p.TUsage == null ? "" : p.TUsage;
+            //p.UnitType = p.UnitType == null ? "" : p.UnitType;
+            //p.UnitType = p.UnitType == null ? "" : p.UnitType;
+
+            //p.Alert = p.Alert == null ? "0" : p.Alert;
+            //p.QTY = p.QTY == null ? "0" : p.QTY;
+            //p.PendingQTY = p.PendingQTY == null ? "0" : p.PendingQTY;
+            //p.Price = p.Price.Equals("") ? "0" : p.Price;
+
+            p.W1GID = long.TryParse(p.W1GID, out chk) ? chk.ToString() : "0";
+            p.W2GID = long.TryParse(p.W2GID, out chk) ? chk.ToString() : "0";
+            p.W3GID = long.TryParse(p.W3GID, out chk) ? chk.ToString() : "0";
+            p.W4GID = long.TryParse(p.W4GID, out chk) ? chk.ToString() : "0";
+            p.BillGroupID = long.TryParse(p.BillGroupID, out chk) ? chk.ToString() : "0";
+
+            p.Price = Decimal.TryParse(p.Price, out chk1) ? chk1.ToString() : "0";
+            //p.QTY = Decimal.TryParse(p.QTY, out chk1) ? chk1.ToString() : "0";
+            //p.user_cancel = p.user_cancel == null ? "" : p.user_cancel;
+        }
+        public String insert(OldSpecialItem p, String userId)
+        {
+            String re = "";
+            String sql = "";
+            p.active = "1";
+            //p.ssdata_id = "";
+            int chk = 0;
+
+            chkNull(p);
+            //lbReq.form_a_id = "form_a_id";
+            //p.req_code = genReqDoc();
+            sql = "Insert Into " + sitm.table + " Set " +
+                " " + sitm.SName + " = '" + p.SName.Replace("'", "''") + "'" +
+                "," + sitm.Price + "= '" + p.Price + "'" +
+                "," + sitm.W1GID + "= '" + p.W1GID + "'" +
+                "," + sitm.W2GID + "= '" + p.W2GID + "'" +
+                "," + sitm.W3GID + "= '" + p.W3GID + "'" +
+                "," + sitm.W4GID + "= '" + p.W4GID + "'" +
+                "," + sitm.isActive + "= '" + p.isActive + "'" +
+                "," + sitm.BillGroupID + "= '" + p.BillGroupID + "'" +
+                "";
+            try
+            {
+                re = conn.ExecuteNonQuery(conn.conn, sql);
+            }
+            catch (Exception ex)
+            {
+                sql = ex.Message + " " + ex.InnerException;
+            }
+
+            return re;
+        }
+        public String update(OldSpecialItem p, String userId)
+        {
+            String re = "";
+            String sql = "";
+            chkNull(p);
+
+            sql = "Update " + sitm.table + " Set " +
+                " " + sitm.SName + " = '" + p.SName.Replace("'", "''") + "'" +
+                "," + sitm.Price + "= '" + p.Price + "'" +
+                "," + sitm.W1GID + "= '" + p.W1GID + "'" +
+                "," + sitm.W2GID + "= '" + p.W2GID + "'" +
+                "," + sitm.W3GID + "= '" + p.W3GID + "'" +
+                "," + sitm.W4GID + "= '" + p.W4GID + "'" +
+                "," + sitm.BillGroupID + "= '" + p.BillGroupID + "'" +
+                "Where " + sitm.pkField + "='" + p.SID + "'";
+            try
+            {
+                re = conn.ExecuteNonQuery(conn.conn, sql);
+            }
+            catch (Exception ex)
+            {
+                sql = ex.Message + " " + ex.InnerException;
+            }
+
+            return re;
+        }
+        public String insertSpecialItem(OldSpecialItem p, String userId)
+        {
+            String re = "";
+
+            if (p.SID.Equals(""))
+            {
+                re = insert(p, "");
+            }
+            else
+            {
+                re = update(p, "");
+            }
+
+            return re;
+        }
         public String deleteByPk(String id)
         {
             DataTable dt = new DataTable();
