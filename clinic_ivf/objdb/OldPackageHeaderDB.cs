@@ -36,16 +36,17 @@ namespace clinic_ivf.objdb
             p.active = "1";
             //p.ssdata_id = "";
             int chk = 0;
+            Decimal chk1 = 0;
 
             p.PackageName = p.PackageName == null ? "" : p.PackageName;
-            p.Price = p.Price == null ? "0" : p.Price;
-            //p.user_create = p.user_create == null ? "" : p.user_create;            
+            //p.Price = p.Price == null ? "0" : p.Price;
+            p.Price = Decimal.TryParse(p.Price, out chk1) ? chk1.ToString() : "0";
 
             sql = "Insert Into " + oPkg.table + 
-                "Set " + oPkg.PackageName + " = '" + p.PackageName.Replace("'","''") + "' "+
+                " Set " + oPkg.PackageName + " = '" + p.PackageName.Replace("'","''") + "' "+
                 "," + oPkg.Price + " = '" + p.Price + "' " +
                 "," + oPkg.active + " = '1' " + 
-                ")";
+                " ";
             try
             {
                 re = conn.ExecuteNonQuery(conn.conn, sql);

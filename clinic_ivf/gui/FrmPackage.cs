@@ -62,9 +62,13 @@ namespace clinic_ivf.gui
             theme1.SetTheme(sB, "BeigeOne");
             foreach (Control c in panel2.Controls)
             {
-                theme1.SetTheme(c, "Office2013Red");
+                theme1.SetTheme(c, theme1.Theme);
             }
-
+            theme1.SetTheme(panel3, theme1.Theme);
+            foreach (Control c in panel3.Controls)
+            {
+                theme1.SetTheme(c, theme1.Theme);
+            }
             sB1.Text = "";
             stt = new C1SuperTooltip();
             sep = new C1SuperErrorProvider();
@@ -108,6 +112,18 @@ namespace clinic_ivf.gui
         private void setPackageDetail(String itmtype, String itmname, String itmid, String qty)
         {
             ic.cStf.staff_id = "";
+            if(txtID.Text.Equals(""))
+            {
+                MessageBox.Show("ไม่พบรหัส Package", "");
+                return;
+            }
+            Decimal qty1 = 0;
+
+            if (!Decimal.TryParse(qty, out qty1))
+            {
+                MessageBox.Show("ไม่พบจำนวน ", "");
+                return;
+            }
             FrmPasswordConfirm frm = new FrmPasswordConfirm(ic);
             frm.ShowDialog(this);
             if (!ic.cStf.staff_id.Equals(""))
@@ -158,6 +174,17 @@ namespace clinic_ivf.gui
             txtID.Value = "";
             txtPkgName.Value = "";
             txtPkgPrice.Value = "";
+            txtPkgDId.Value = "";
+            grfPkgD.DataSource = null;
+            grfPkgD.Cols.Count = 4;
+            grfPkgD.Cols[coldID].Width = 80;
+            grfPkgD.Cols[coldQty].Width = 80;
+            grfPkgD.Cols[coldName].Width = 300;            
+            grfPkgD.Cols[coldID].Caption = "รหัส";
+            grfPkgD.Cols[coldName].Caption = "ชื่อ Item";
+            grfPkgD.Cols[coldQty].Caption = "QTY";
+            //grfPkgD.Rows.Count = 0;
+            grfPkgD.Rows.Count = 2;
             flagEdit = true;
             setControlEnable(flagEdit);
         }
@@ -536,6 +563,8 @@ namespace clinic_ivf.gui
         private void FrmPackage_Load(object sender, EventArgs e)
         {
             tCItem.SelectedTab = tabDrug;
+            sCMain.HeaderHeight = 0;
+            sCPkg.HeaderHeight = 0;
         }
     }
 }

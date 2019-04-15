@@ -118,8 +118,13 @@ namespace clinic_ivf.gui
             txtID.Value = "";
             txtDrgName.Value = "";
             txtRemark.Value = "";
-            cboUsageE.Text = "";
-            cboUsageT.Text = "";
+            //ComboBoxItem item = new ComboBoxItem();
+            //item.Value = "";
+            //item.Text = "";
+            cboUsageE.Value = "";
+            cboUsageT.Value = "";
+            txtTMT.Value = "";
+
         }
 
         private void setControl(String posiId)

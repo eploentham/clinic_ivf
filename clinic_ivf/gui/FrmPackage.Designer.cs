@@ -31,13 +31,13 @@
             this.sB = new System.Windows.Forms.StatusStrip();
             this.sB1 = new System.Windows.Forms.ToolStripStatusLabel();
             this.theme1 = new C1.Win.C1Themes.C1ThemeController();
-            this.tC = new C1.Win.C1SplitContainer.C1SplitContainer();
+            this.sCMain = new C1.Win.C1SplitContainer.C1SplitContainer();
             this.c1SplitterPanel1 = new C1.Win.C1SplitContainer.C1SplitterPanel();
             this.panel1 = new System.Windows.Forms.Panel();
             this.c1SplitterPanel2 = new C1.Win.C1SplitContainer.C1SplitterPanel();
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel4 = new System.Windows.Forms.Panel();
-            this.c1SplitContainer1 = new C1.Win.C1SplitContainer.C1SplitContainer();
+            this.sCPkg = new C1.Win.C1SplitContainer.C1SplitContainer();
             this.c1SplitterPanel3 = new C1.Win.C1SplitContainer.C1SplitterPanel();
             this.panel11 = new System.Windows.Forms.Panel();
             this.c1SplitterPanel4 = new C1.Win.C1SplitContainer.C1SplitterPanel();
@@ -84,14 +84,14 @@
             this.label2 = new System.Windows.Forms.Label();
             this.sB.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.theme1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.tC)).BeginInit();
-            this.tC.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.sCMain)).BeginInit();
+            this.sCMain.SuspendLayout();
             this.c1SplitterPanel1.SuspendLayout();
             this.c1SplitterPanel2.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel4.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.c1SplitContainer1)).BeginInit();
-            this.c1SplitContainer1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.sCPkg)).BeginInit();
+            this.sCPkg.SuspendLayout();
             this.c1SplitterPanel3.SuspendLayout();
             this.c1SplitterPanel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tCItem)).BeginInit();
@@ -147,27 +147,27 @@
             // 
             this.theme1.Theme = "Office2013Red";
             // 
-            // tC
+            // sCMain
             // 
-            this.tC.AutoSizeElement = C1.Framework.AutoSizeElement.Both;
-            this.tC.BackColor = System.Drawing.Color.White;
-            this.tC.CollapsingAreaColor = System.Drawing.Color.White;
-            this.tC.CollapsingCueColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.tC.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tC.FixedLineColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(189)))), ((int)(((byte)(182)))));
-            this.tC.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.tC.HeaderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.tC.HeaderLineWidth = 1;
-            this.tC.Location = new System.Drawing.Point(0, 0);
-            this.tC.Name = "tC";
-            this.tC.Panels.Add(this.c1SplitterPanel1);
-            this.tC.Panels.Add(this.c1SplitterPanel2);
-            this.tC.Size = new System.Drawing.Size(1183, 687);
-            this.tC.SplitterColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(189)))), ((int)(((byte)(182)))));
-            this.tC.SplitterMovingColor = System.Drawing.Color.Black;
-            this.tC.TabIndex = 528;
-            this.theme1.SetTheme(this.tC, "(default)");
-            this.tC.UseParentVisualStyle = false;
+            this.sCMain.AutoSizeElement = C1.Framework.AutoSizeElement.Both;
+            this.sCMain.BackColor = System.Drawing.Color.White;
+            this.sCMain.CollapsingAreaColor = System.Drawing.Color.White;
+            this.sCMain.CollapsingCueColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.sCMain.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.sCMain.FixedLineColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(189)))), ((int)(((byte)(182)))));
+            this.sCMain.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.sCMain.HeaderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.sCMain.HeaderLineWidth = 1;
+            this.sCMain.Location = new System.Drawing.Point(0, 0);
+            this.sCMain.Name = "sCMain";
+            this.sCMain.Panels.Add(this.c1SplitterPanel1);
+            this.sCMain.Panels.Add(this.c1SplitterPanel2);
+            this.sCMain.Size = new System.Drawing.Size(1183, 687);
+            this.sCMain.SplitterColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(189)))), ((int)(((byte)(182)))));
+            this.sCMain.SplitterMovingColor = System.Drawing.Color.Black;
+            this.sCMain.TabIndex = 528;
+            this.theme1.SetTheme(this.sCMain, "(default)");
+            this.sCMain.UseParentVisualStyle = false;
             // 
             // c1SplitterPanel1
             // 
@@ -221,7 +221,7 @@
             // panel4
             // 
             this.panel4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.panel4.Controls.Add(this.c1SplitContainer1);
+            this.panel4.Controls.Add(this.sCPkg);
             this.panel4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
             this.panel4.Location = new System.Drawing.Point(0, 125);
@@ -230,27 +230,27 @@
             this.panel4.TabIndex = 1;
             this.theme1.SetTheme(this.panel4, "(default)");
             // 
-            // c1SplitContainer1
+            // sCPkg
             // 
-            this.c1SplitContainer1.AutoSizeElement = C1.Framework.AutoSizeElement.Both;
-            this.c1SplitContainer1.BackColor = System.Drawing.Color.White;
-            this.c1SplitContainer1.CollapsingAreaColor = System.Drawing.Color.White;
-            this.c1SplitContainer1.CollapsingCueColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.c1SplitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.c1SplitContainer1.FixedLineColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(189)))), ((int)(((byte)(182)))));
-            this.c1SplitContainer1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.c1SplitContainer1.HeaderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.c1SplitContainer1.HeaderLineWidth = 1;
-            this.c1SplitContainer1.Location = new System.Drawing.Point(0, 0);
-            this.c1SplitContainer1.Name = "c1SplitContainer1";
-            this.c1SplitContainer1.Panels.Add(this.c1SplitterPanel3);
-            this.c1SplitContainer1.Panels.Add(this.c1SplitterPanel4);
-            this.c1SplitContainer1.Size = new System.Drawing.Size(700, 541);
-            this.c1SplitContainer1.SplitterColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(189)))), ((int)(((byte)(182)))));
-            this.c1SplitContainer1.SplitterMovingColor = System.Drawing.Color.Black;
-            this.c1SplitContainer1.TabIndex = 0;
-            this.theme1.SetTheme(this.c1SplitContainer1, "(default)");
-            this.c1SplitContainer1.UseParentVisualStyle = false;
+            this.sCPkg.AutoSizeElement = C1.Framework.AutoSizeElement.Both;
+            this.sCPkg.BackColor = System.Drawing.Color.White;
+            this.sCPkg.CollapsingAreaColor = System.Drawing.Color.White;
+            this.sCPkg.CollapsingCueColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.sCPkg.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.sCPkg.FixedLineColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(189)))), ((int)(((byte)(182)))));
+            this.sCPkg.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.sCPkg.HeaderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.sCPkg.HeaderLineWidth = 1;
+            this.sCPkg.Location = new System.Drawing.Point(0, 0);
+            this.sCPkg.Name = "sCPkg";
+            this.sCPkg.Panels.Add(this.c1SplitterPanel3);
+            this.sCPkg.Panels.Add(this.c1SplitterPanel4);
+            this.sCPkg.Size = new System.Drawing.Size(700, 541);
+            this.sCPkg.SplitterColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(189)))), ((int)(((byte)(182)))));
+            this.sCPkg.SplitterMovingColor = System.Drawing.Color.Black;
+            this.sCPkg.TabIndex = 0;
+            this.theme1.SetTheme(this.sCPkg, "(default)");
+            this.sCPkg.UseParentVisualStyle = false;
             // 
             // c1SplitterPanel3
             // 
@@ -261,7 +261,7 @@
             this.c1SplitterPanel3.Location = new System.Drawing.Point(0, 21);
             this.c1SplitterPanel3.Name = "c1SplitterPanel3";
             this.c1SplitterPanel3.Size = new System.Drawing.Size(342, 520);
-            this.c1SplitterPanel3.SizeRatio = 50.075D;
+            this.c1SplitterPanel3.SizeRatio = 50.144D;
             this.c1SplitterPanel3.TabIndex = 0;
             this.c1SplitterPanel3.Text = "Panel 1";
             this.c1SplitterPanel3.Width = 349;
@@ -852,7 +852,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1183, 709);
-            this.Controls.Add(this.tC);
+            this.Controls.Add(this.sCMain);
             this.Controls.Add(this.sB);
             this.Name = "FrmPackage";
             this.Text = "FrmPackageAdd";
@@ -860,14 +860,14 @@
             this.sB.ResumeLayout(false);
             this.sB.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.theme1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.tC)).EndInit();
-            this.tC.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.sCMain)).EndInit();
+            this.sCMain.ResumeLayout(false);
             this.c1SplitterPanel1.ResumeLayout(false);
             this.c1SplitterPanel2.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             this.panel4.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.c1SplitContainer1)).EndInit();
-            this.c1SplitContainer1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.sCPkg)).EndInit();
+            this.sCPkg.ResumeLayout(false);
             this.c1SplitterPanel3.ResumeLayout(false);
             this.c1SplitterPanel4.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.tCItem)).EndInit();
@@ -915,7 +915,7 @@
         private System.Windows.Forms.StatusStrip sB;
         private System.Windows.Forms.ToolStripStatusLabel sB1;
         private C1.Win.C1Themes.C1ThemeController theme1;
-        private C1.Win.C1SplitContainer.C1SplitContainer tC;
+        private C1.Win.C1SplitContainer.C1SplitContainer sCMain;
         private C1.Win.C1SplitContainer.C1SplitterPanel c1SplitterPanel1;
         private C1.Win.C1SplitContainer.C1SplitterPanel c1SplitterPanel2;
         private System.Windows.Forms.Panel panel2;
@@ -933,7 +933,7 @@
         private C1.Win.C1Input.C1TextBox txtPkgPrice;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Panel panel4;
-        private C1.Win.C1SplitContainer.C1SplitContainer c1SplitContainer1;
+        private C1.Win.C1SplitContainer.C1SplitContainer sCPkg;
         private C1.Win.C1SplitContainer.C1SplitterPanel c1SplitterPanel3;
         private C1.Win.C1SplitContainer.C1SplitterPanel c1SplitterPanel4;
         private C1.Win.C1Command.C1DockingTab tCItem;

@@ -147,7 +147,7 @@
             this.btnNoteAdd = new C1.Win.C1Input.C1Button();
             this.label73 = new System.Windows.Forms.Label();
             this.txtNote = new C1.Win.C1Input.C1TextBox();
-            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.tlpPatient = new System.Windows.Forms.TableLayoutPanel();
             this.sB.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.theme1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.sC)).BeginInit();
@@ -233,7 +233,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.chkNoteAll)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnNoteAdd)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtNote)).BeginInit();
-            this.tableLayoutPanel1.SuspendLayout();
+            this.tlpPatient.SuspendLayout();
             this.SuspendLayout();
             // 
             // sB
@@ -283,12 +283,12 @@
             // spPatient
             // 
             this.spPatient.Collapsible = true;
-            this.spPatient.Controls.Add(this.tableLayoutPanel1);
-            this.spPatient.Height = 122;
+            this.spPatient.Controls.Add(this.tlpPatient);
+            this.spPatient.Height = 150;
             this.spPatient.Location = new System.Drawing.Point(0, 21);
             this.spPatient.Name = "spPatient";
-            this.spPatient.Size = new System.Drawing.Size(1584, 94);
-            this.spPatient.SizeRatio = 18.915D;
+            this.spPatient.Size = new System.Drawing.Size(1584, 122);
+            this.spPatient.SizeRatio = 23.256D;
             this.spPatient.TabIndex = 0;
             this.spPatient.Text = "Patient";
             // 
@@ -339,7 +339,7 @@
             this.pnPatient.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
             this.pnPatient.Location = new System.Drawing.Point(3, 3);
             this.pnPatient.Name = "pnPatient";
-            this.pnPatient.Size = new System.Drawing.Size(1466, 88);
+            this.pnPatient.Size = new System.Drawing.Size(1451, 92);
             this.pnPatient.TabIndex = 531;
             this.theme1.SetTheme(this.pnPatient, "(default)");
             // 
@@ -347,9 +347,9 @@
             // 
             this.picPtt.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.picPtt.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.picPtt.Location = new System.Drawing.Point(1475, 3);
+            this.picPtt.Location = new System.Drawing.Point(1460, 3);
             this.picPtt.Name = "picPtt";
-            this.picPtt.Size = new System.Drawing.Size(106, 88);
+            this.picPtt.Size = new System.Drawing.Size(121, 116);
             this.picPtt.TabIndex = 847;
             this.picPtt.TabStop = false;
             // 
@@ -914,10 +914,10 @@
             // c1SplitterPanel2
             // 
             this.c1SplitterPanel2.Controls.Add(this.tC);
-            this.c1SplitterPanel2.Height = 523;
-            this.c1SplitterPanel2.Location = new System.Drawing.Point(0, 147);
+            this.c1SplitterPanel2.Height = 495;
+            this.c1SplitterPanel2.Location = new System.Drawing.Point(0, 175);
             this.c1SplitterPanel2.Name = "c1SplitterPanel2";
-            this.c1SplitterPanel2.Size = new System.Drawing.Size(1584, 502);
+            this.c1SplitterPanel2.Size = new System.Drawing.Size(1584, 474);
             this.c1SplitterPanel2.TabIndex = 1;
             this.c1SplitterPanel2.Text = "Panel 2";
             // 
@@ -935,7 +935,7 @@
             this.tC.Location = new System.Drawing.Point(0, 0);
             this.tC.Name = "tC";
             this.tC.SelectedIndex = 4;
-            this.tC.Size = new System.Drawing.Size(1584, 502);
+            this.tC.Size = new System.Drawing.Size(1584, 474);
             this.tC.TabIndex = 2;
             this.tC.TabSizeMode = C1.Win.C1Command.TabSizeModeEnum.Fit;
             this.tC.TabsShowFocusCues = false;
@@ -948,7 +948,7 @@
             this.tabDrug.Controls.Add(this.sCOrder);
             this.tabDrug.Location = new System.Drawing.Point(1, 24);
             this.tabDrug.Name = "tabDrug";
-            this.tabDrug.Size = new System.Drawing.Size(1582, 477);
+            this.tabDrug.Size = new System.Drawing.Size(1582, 449);
             this.tabDrug.TabIndex = 0;
             this.tabDrug.Text = "Medicine &Supplies Lab";
             // 
@@ -967,7 +967,7 @@
             this.sCOrder.Name = "sCOrder";
             this.sCOrder.Panels.Add(this.c1SplitterPanel1);
             this.sCOrder.Panels.Add(this.c1SplitterPanel3);
-            this.sCOrder.Size = new System.Drawing.Size(1582, 477);
+            this.sCOrder.Size = new System.Drawing.Size(1582, 449);
             this.sCOrder.SplitterColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(189)))), ((int)(((byte)(182)))));
             this.sCOrder.SplitterMovingColor = System.Drawing.Color.Black;
             this.sCOrder.TabIndex = 1;
@@ -1695,7 +1695,7 @@
             // 
             this.tabLab.Location = new System.Drawing.Point(1, 24);
             this.tabLab.Name = "tabLab";
-            this.tabLab.Size = new System.Drawing.Size(1582, 477);
+            this.tabLab.Size = new System.Drawing.Size(1582, 449);
             this.tabLab.TabIndex = 1;
             this.tabLab.Text = "Order LAB";
             // 
@@ -1704,7 +1704,7 @@
             this.tabApp.Controls.Add(this.pnAdm);
             this.tabApp.Location = new System.Drawing.Point(1, 24);
             this.tabApp.Name = "tabApp";
-            this.tabApp.Size = new System.Drawing.Size(1582, 477);
+            this.tabApp.Size = new System.Drawing.Size(1582, 449);
             this.tabApp.TabIndex = 2;
             this.tabApp.Text = "Appointment";
             // 
@@ -1715,7 +1715,7 @@
             this.pnAdm.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
             this.pnAdm.Location = new System.Drawing.Point(0, 0);
             this.pnAdm.Name = "pnAdm";
-            this.pnAdm.Size = new System.Drawing.Size(1582, 477);
+            this.pnAdm.Size = new System.Drawing.Size(1582, 449);
             this.pnAdm.TabIndex = 0;
             this.theme1.SetTheme(this.pnAdm, "(default)");
             // 
@@ -1723,7 +1723,7 @@
             // 
             this.tabCert.Location = new System.Drawing.Point(1, 24);
             this.tabCert.Name = "tabCert";
-            this.tabCert.Size = new System.Drawing.Size(1582, 477);
+            this.tabCert.Size = new System.Drawing.Size(1582, 449);
             this.tabCert.TabIndex = 3;
             this.tabCert.Text = "Medical Certificate";
             // 
@@ -1733,7 +1733,7 @@
             this.tabNote.Controls.Add(this.panel7);
             this.tabNote.Location = new System.Drawing.Point(1, 24);
             this.tabNote.Name = "tabNote";
-            this.tabNote.Size = new System.Drawing.Size(1582, 477);
+            this.tabNote.Size = new System.Drawing.Size(1582, 449);
             this.tabNote.TabIndex = 4;
             this.tabNote.Text = "Note";
             // 
@@ -1744,7 +1744,7 @@
             this.pnNote.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
             this.pnNote.Location = new System.Drawing.Point(0, 51);
             this.pnNote.Name = "pnNote";
-            this.pnNote.Size = new System.Drawing.Size(1582, 426);
+            this.pnNote.Size = new System.Drawing.Size(1582, 398);
             this.pnNote.TabIndex = 1;
             this.theme1.SetTheme(this.pnNote, "(default)");
             // 
@@ -1835,23 +1835,23 @@
             this.theme1.SetTheme(this.txtNote, "(default)");
             this.txtNote.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
             // 
-            // tableLayoutPanel1
+            // tlpPatient
             // 
-            this.tableLayoutPanel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.tableLayoutPanel1.ColumnCount = 2;
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 92.97102F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 7.028986F));
-            this.tableLayoutPanel1.Controls.Add(this.picPtt, 1, 0);
-            this.tableLayoutPanel1.Controls.Add(this.pnPatient, 0, 0);
-            this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
-            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            this.tableLayoutPanel1.RowCount = 1;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(1584, 94);
-            this.tableLayoutPanel1.TabIndex = 532;
-            this.theme1.SetTheme(this.tableLayoutPanel1, "(default)");
+            this.tlpPatient.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.tlpPatient.ColumnCount = 2;
+            this.tlpPatient.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 92F));
+            this.tlpPatient.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 8F));
+            this.tlpPatient.Controls.Add(this.picPtt, 1, 0);
+            this.tlpPatient.Controls.Add(this.pnPatient, 0, 0);
+            this.tlpPatient.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tlpPatient.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.tlpPatient.Location = new System.Drawing.Point(0, 0);
+            this.tlpPatient.Name = "tlpPatient";
+            this.tlpPatient.RowCount = 1;
+            this.tlpPatient.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tlpPatient.Size = new System.Drawing.Size(1584, 122);
+            this.tlpPatient.TabIndex = 532;
+            this.theme1.SetTheme(this.tlpPatient, "(default)");
             // 
             // FrmNurseAdd1
             // 
@@ -1954,7 +1954,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.chkNoteAll)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnNoteAdd)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtNote)).EndInit();
-            this.tableLayoutPanel1.ResumeLayout(false);
+            this.tlpPatient.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -2081,6 +2081,6 @@
         private C1.Win.C1Command.C1DockingTabPage tabPkg;
         private System.Windows.Forms.Panel pnPkg;
         private C1.Win.C1Input.C1PictureBox picPtt;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
+        private System.Windows.Forms.TableLayoutPanel tlpPatient;
     }
 }

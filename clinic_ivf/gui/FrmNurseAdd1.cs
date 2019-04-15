@@ -51,9 +51,10 @@ namespace clinic_ivf.gui
         int colOrderFileName = 18, colOrderWorder1 = 19, colOrderWorker2 = 20, colOrderWorker3 = 21, colOrderWorkder4 = 22;
         int colOrderWorker5 = 23, colOrderLGID = 24, colOrderQTY = 25, colOrderActive = 26;
         int colOrdid = 1, colOrdlpid = 2, colOrdName = 3, colOrdPrice = 4, colOrdQty = 5, colOrdstatus = 6, colOrdrow1 = 7, colOrditmid = 8, colOrdInclude = 9, colOrdAmt = 10, colOrdUsE = 11, colOrdUsT = 12;
-        int rowOrder = 0;
+        int rowOrder = 0, spHeight = 150;
         Image imgCorr, imgTran;
         static String filenamepic = "";
+        decimal rat = 0;
         public FrmNurseAdd1(IvfControl ic, MainMenu m, String pttid, String vsid, String flagedit)
         {
             InitializeComponent();
@@ -99,7 +100,7 @@ namespace clinic_ivf.gui
             btnFinish.Click += BtnFinish_Click;
             cboLangSticker.SelectedIndexChanged += CboLangSticker_SelectedIndexChanged;
             btnNoteAdd.Click += BtnNoteAdd_Click;
-            pnPatient.Resize += PnPatient_Resize;
+            tlpPatient.Resize += TlpPatient_Resize;
 
             setControl(vsid);
             //btnNew.Click += BtnNew_Click;
@@ -137,15 +138,24 @@ namespace clinic_ivf.gui
             //setGrfPtt("");
         }
 
-        private void PnPatient_Resize(object sender, EventArgs e)
+        private void TlpPatient_Resize(object sender, EventArgs e)
         {
             //throw new NotImplementedException();
-            label2.Text = pnOrder.Width.ToString();
-            if (pnOrder.Width > 500)
-                grfOrder.Cols[colFooName].Width = pnOrder.Width - 300;
-            else
-                grfOrder.Cols[colFooName].Width = 300;
+            decimal hei = 0;
+            hei = tlpPatient.Height;
+            label19.Text = hei.ToString();
+            
         }
+
+        //private void PnPatient_Resize(object sender, EventArgs e)
+        //{
+        //    //throw new NotImplementedException();
+        //    label2.Text = pnOrder.Width.ToString();
+        //    if (pnOrder.Width > 500)
+        //        grfOrder.Cols[colFooName].Width = pnOrder.Width - 300;
+        //    else
+        //        grfOrder.Cols[colFooName].Width = 300;
+        //}
 
         private void BtnNoteAdd_Click(object sender, EventArgs e)
         {
@@ -2287,6 +2297,8 @@ namespace clinic_ivf.gui
         {
             sC.HeaderHeight = 0;
             sCOrder.HeaderHeight = 0;
+            spPatient.Height = spHeight;
+            rat = picPtt.Height / picPtt.Width;
             theme1.SetTheme(sC, theme1.Theme);
             foreach (Control ctl in spPatient.Controls)
             {
