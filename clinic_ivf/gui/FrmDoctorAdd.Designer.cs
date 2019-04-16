@@ -84,10 +84,10 @@
             this.sCDesc = new C1.Win.C1SplitContainer.C1SplitContainer();
             this.c1SplitterPanel3 = new C1.Win.C1SplitContainer.C1SplitterPanel();
             this.c1SplitterPanel4 = new C1.Win.C1SplitContainer.C1SplitterPanel();
-            this.c1DockingTab1 = new C1.Win.C1Command.C1DockingTab();
-            this.c1DockingTabPage1 = new C1.Win.C1Command.C1DockingTabPage();
-            this.c1DockingTabPage2 = new C1.Win.C1Command.C1DockingTabPage();
-            this.c1DockingTabPage3 = new C1.Win.C1Command.C1DockingTabPage();
+            this.tC1 = new C1.Win.C1Command.C1DockingTab();
+            this.tabDrug = new C1.Win.C1Command.C1DockingTabPage();
+            this.tabLab = new C1.Win.C1Command.C1DockingTabPage();
+            this.tabOr = new C1.Win.C1Command.C1DockingTabPage();
             this.tabApp = new C1.Win.C1Command.C1DockingTabPage();
             this.pnAdm = new System.Windows.Forms.Panel();
             this.tabCert = new C1.Win.C1Command.C1DockingTabPage();
@@ -131,6 +131,18 @@
             this.pnPkg = new System.Windows.Forms.Panel();
             this.sB = new System.Windows.Forms.StatusStrip();
             this.sB1 = new System.Windows.Forms.ToolStripStatusLabel();
+            this.pnVs = new System.Windows.Forms.Panel();
+            this.panel6 = new System.Windows.Forms.Panel();
+            this.panel8 = new System.Windows.Forms.Panel();
+            this.panel9 = new System.Windows.Forms.Panel();
+            this.tabScan = new C1.Win.C1Command.C1DockingTabPage();
+            this.panel10 = new System.Windows.Forms.Panel();
+            this.c1SplitContainer1 = new C1.Win.C1SplitContainer.C1SplitContainer();
+            this.c1SplitterPanel1 = new C1.Win.C1SplitContainer.C1SplitterPanel();
+            this.c1SplitterPanel2 = new C1.Win.C1SplitContainer.C1SplitterPanel();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.tabScanPtt = new C1.Win.C1Command.C1DockingTabPage();
+            this.tabOrPtt = new C1.Win.C1Command.C1DockingTabPage();
             ((System.ComponentModel.ISupportInitialize)(this.theme1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkDenyAllergy)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.sCmain)).BeginInit();
@@ -164,9 +176,13 @@
             this.tabHis.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.sCDesc)).BeginInit();
             this.sCDesc.SuspendLayout();
+            this.c1SplitterPanel3.SuspendLayout();
             this.c1SplitterPanel4.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.c1DockingTab1)).BeginInit();
-            this.c1DockingTab1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.tC1)).BeginInit();
+            this.tC1.SuspendLayout();
+            this.tabDrug.SuspendLayout();
+            this.tabLab.SuspendLayout();
+            this.tabOr.SuspendLayout();
             this.tabApp.SuspendLayout();
             this.tabNote.SuspendLayout();
             this.panel7.SuspendLayout();
@@ -200,6 +216,11 @@
             this.tabOrd.SuspendLayout();
             this.tabPkg.SuspendLayout();
             this.sB.SuspendLayout();
+            this.tabScan.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.c1SplitContainer1)).BeginInit();
+            this.c1SplitContainer1.SuspendLayout();
+            this.c1SplitterPanel1.SuspendLayout();
+            this.c1SplitterPanel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // theme1
@@ -921,6 +942,8 @@
             this.tC.Controls.Add(this.tabApp);
             this.tC.Controls.Add(this.tabCert);
             this.tC.Controls.Add(this.tabNote);
+            this.tC.Controls.Add(this.tabOrPtt);
+            this.tC.Controls.Add(this.tabScanPtt);
             this.tC.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tC.HotTrack = true;
             this.tC.Location = new System.Drawing.Point(0, 0);
@@ -968,6 +991,7 @@
             // c1SplitterPanel3
             // 
             this.c1SplitterPanel3.Collapsible = true;
+            this.c1SplitterPanel3.Controls.Add(this.pnVs);
             this.c1SplitterPanel3.Dock = C1.Win.C1SplitContainer.PanelDockStyle.Left;
             this.c1SplitterPanel3.Location = new System.Drawing.Point(0, 21);
             this.c1SplitterPanel3.Name = "c1SplitterPanel3";
@@ -975,11 +999,11 @@
             this.c1SplitterPanel3.SizeRatio = 25.349D;
             this.c1SplitterPanel3.TabIndex = 0;
             this.c1SplitterPanel3.Text = "Panel 1";
-            this.c1SplitterPanel3.Width = 393;
+            this.c1SplitterPanel3.Width = 400;
             // 
             // c1SplitterPanel4
             // 
-            this.c1SplitterPanel4.Controls.Add(this.c1DockingTab1);
+            this.c1SplitterPanel4.Controls.Add(this.tC1);
             this.c1SplitterPanel4.Height = 450;
             this.c1SplitterPanel4.Location = new System.Drawing.Point(404, 21);
             this.c1SplitterPanel4.Name = "c1SplitterPanel4";
@@ -987,53 +1011,57 @@
             this.c1SplitterPanel4.TabIndex = 1;
             this.c1SplitterPanel4.Text = "Panel 2";
             // 
-            // c1DockingTab1
+            // tC1
             // 
-            this.c1DockingTab1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.c1DockingTab1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.c1DockingTab1.Controls.Add(this.c1DockingTabPage1);
-            this.c1DockingTab1.Controls.Add(this.c1DockingTabPage2);
-            this.c1DockingTab1.Controls.Add(this.c1DockingTabPage3);
-            this.c1DockingTab1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.c1DockingTab1.HotTrack = true;
-            this.c1DockingTab1.Location = new System.Drawing.Point(0, 0);
-            this.c1DockingTab1.Name = "c1DockingTab1";
-            this.c1DockingTab1.SelectedIndex = 2;
-            this.c1DockingTab1.Size = new System.Drawing.Size(1178, 429);
-            this.c1DockingTab1.TabIndex = 0;
-            this.c1DockingTab1.TabSizeMode = C1.Win.C1Command.TabSizeModeEnum.Fit;
-            this.c1DockingTab1.TabsShowFocusCues = false;
-            this.c1DockingTab1.TabsSpacing = 2;
-            this.c1DockingTab1.TabStyle = C1.Win.C1Command.TabStyleEnum.Office2007;
-            this.theme1.SetTheme(this.c1DockingTab1, "(default)");
+            this.tC1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.tC1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.tC1.Controls.Add(this.tabDrug);
+            this.tC1.Controls.Add(this.tabLab);
+            this.tC1.Controls.Add(this.tabOr);
+            this.tC1.Controls.Add(this.tabScan);
+            this.tC1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tC1.HotTrack = true;
+            this.tC1.Location = new System.Drawing.Point(0, 0);
+            this.tC1.Name = "tC1";
+            this.tC1.SelectedIndex = 2;
+            this.tC1.Size = new System.Drawing.Size(1178, 429);
+            this.tC1.TabIndex = 0;
+            this.tC1.TabSizeMode = C1.Win.C1Command.TabSizeModeEnum.Fit;
+            this.tC1.TabsShowFocusCues = false;
+            this.tC1.TabsSpacing = 2;
+            this.tC1.TabStyle = C1.Win.C1Command.TabStyleEnum.Office2007;
+            this.theme1.SetTheme(this.tC1, "(default)");
             // 
-            // c1DockingTabPage1
+            // tabDrug
             // 
-            this.c1DockingTabPage1.Location = new System.Drawing.Point(1, 24);
-            this.c1DockingTabPage1.Name = "c1DockingTabPage1";
-            this.c1DockingTabPage1.Size = new System.Drawing.Size(1176, 404);
-            this.c1DockingTabPage1.TabIndex = 0;
-            this.c1DockingTabPage1.Text = "ยา + เวชภัณฑ์";
+            this.tabDrug.Controls.Add(this.panel6);
+            this.tabDrug.Location = new System.Drawing.Point(1, 24);
+            this.tabDrug.Name = "tabDrug";
+            this.tabDrug.Size = new System.Drawing.Size(1176, 404);
+            this.tabDrug.TabIndex = 0;
+            this.tabDrug.Text = "ยา + เวชภัณฑ์";
             // 
-            // c1DockingTabPage2
+            // tabLab
             // 
-            this.c1DockingTabPage2.Location = new System.Drawing.Point(1, 24);
-            this.c1DockingTabPage2.Name = "c1DockingTabPage2";
-            this.c1DockingTabPage2.Size = new System.Drawing.Size(1176, 404);
-            this.c1DockingTabPage2.TabIndex = 1;
-            this.c1DockingTabPage2.Text = "LAB";
+            this.tabLab.Controls.Add(this.panel8);
+            this.tabLab.Location = new System.Drawing.Point(1, 24);
+            this.tabLab.Name = "tabLab";
+            this.tabLab.Size = new System.Drawing.Size(1176, 404);
+            this.tabLab.TabIndex = 1;
+            this.tabLab.Text = "LAB";
             // 
-            // c1DockingTabPage3
+            // tabOr
             // 
-            this.c1DockingTabPage3.Location = new System.Drawing.Point(1, 24);
-            this.c1DockingTabPage3.Name = "c1DockingTabPage3";
-            this.c1DockingTabPage3.Size = new System.Drawing.Size(1176, 404);
-            this.c1DockingTabPage3.TabIndex = 2;
-            this.c1DockingTabPage3.Text = "รายการผ่าตัด";
+            this.tabOr.Controls.Add(this.panel9);
+            this.tabOr.Location = new System.Drawing.Point(1, 24);
+            this.tabOr.Name = "tabOr";
+            this.tabOr.Size = new System.Drawing.Size(1176, 404);
+            this.tabOr.TabIndex = 2;
+            this.tabOr.Text = "รายการผ่าตัด";
             // 
             // tabApp
             // 
-            this.tabApp.Controls.Add(this.pnAdm);
+            this.tabApp.Controls.Add(this.c1SplitContainer1);
             this.tabApp.Location = new System.Drawing.Point(1, 24);
             this.tabApp.Name = "tabApp";
             this.tabApp.Size = new System.Drawing.Size(1582, 450);
@@ -1047,7 +1075,7 @@
             this.pnAdm.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
             this.pnAdm.Location = new System.Drawing.Point(0, 0);
             this.pnAdm.Name = "pnAdm";
-            this.pnAdm.Size = new System.Drawing.Size(1582, 450);
+            this.pnAdm.Size = new System.Drawing.Size(781, 429);
             this.pnAdm.TabIndex = 0;
             this.theme1.SetTheme(this.pnAdm, "(default)");
             // 
@@ -1550,6 +1578,137 @@
             this.sB1.Size = new System.Drawing.Size(118, 17);
             this.sB1.Text = "toolStripStatusLabel1";
             // 
+            // pnVs
+            // 
+            this.pnVs.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.pnVs.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pnVs.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.pnVs.Location = new System.Drawing.Point(0, 0);
+            this.pnVs.Name = "pnVs";
+            this.pnVs.Size = new System.Drawing.Size(393, 429);
+            this.pnVs.TabIndex = 0;
+            this.theme1.SetTheme(this.pnVs, "(default)");
+            // 
+            // panel6
+            // 
+            this.panel6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.panel6.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.panel6.Location = new System.Drawing.Point(0, 0);
+            this.panel6.Name = "panel6";
+            this.panel6.Size = new System.Drawing.Size(1176, 404);
+            this.panel6.TabIndex = 0;
+            this.theme1.SetTheme(this.panel6, "(default)");
+            // 
+            // panel8
+            // 
+            this.panel8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.panel8.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel8.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.panel8.Location = new System.Drawing.Point(0, 0);
+            this.panel8.Name = "panel8";
+            this.panel8.Size = new System.Drawing.Size(1176, 404);
+            this.panel8.TabIndex = 0;
+            this.theme1.SetTheme(this.panel8, "(default)");
+            // 
+            // panel9
+            // 
+            this.panel9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.panel9.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel9.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.panel9.Location = new System.Drawing.Point(0, 0);
+            this.panel9.Name = "panel9";
+            this.panel9.Size = new System.Drawing.Size(1176, 404);
+            this.panel9.TabIndex = 0;
+            this.theme1.SetTheme(this.panel9, "(default)");
+            // 
+            // tabScan
+            // 
+            this.tabScan.Controls.Add(this.panel10);
+            this.tabScan.Location = new System.Drawing.Point(1, 24);
+            this.tabScan.Name = "tabScan";
+            this.tabScan.Size = new System.Drawing.Size(1176, 404);
+            this.tabScan.TabIndex = 3;
+            this.tabScan.Text = "เวชระเบียน";
+            // 
+            // panel10
+            // 
+            this.panel10.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.panel10.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel10.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.panel10.Location = new System.Drawing.Point(0, 0);
+            this.panel10.Name = "panel10";
+            this.panel10.Size = new System.Drawing.Size(1176, 404);
+            this.panel10.TabIndex = 0;
+            this.theme1.SetTheme(this.panel10, "(default)");
+            // 
+            // c1SplitContainer1
+            // 
+            this.c1SplitContainer1.AutoSizeElement = C1.Framework.AutoSizeElement.Both;
+            this.c1SplitContainer1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.c1SplitContainer1.CollapsingCueColor = System.Drawing.Color.FromArgb(((int)(((byte)(133)))), ((int)(((byte)(133)))), ((int)(((byte)(150)))));
+            this.c1SplitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.c1SplitContainer1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.c1SplitContainer1.HeaderLineWidth = 1;
+            this.c1SplitContainer1.Location = new System.Drawing.Point(0, 0);
+            this.c1SplitContainer1.Name = "c1SplitContainer1";
+            this.c1SplitContainer1.Panels.Add(this.c1SplitterPanel1);
+            this.c1SplitContainer1.Panels.Add(this.c1SplitterPanel2);
+            this.c1SplitContainer1.Size = new System.Drawing.Size(1582, 450);
+            this.c1SplitContainer1.SplitterMovingColor = System.Drawing.Color.Black;
+            this.c1SplitContainer1.TabIndex = 1;
+            this.theme1.SetTheme(this.c1SplitContainer1, "(default)");
+            // 
+            // c1SplitterPanel1
+            // 
+            this.c1SplitterPanel1.Collapsible = true;
+            this.c1SplitterPanel1.Controls.Add(this.pnAdm);
+            this.c1SplitterPanel1.Dock = C1.Win.C1SplitContainer.PanelDockStyle.Left;
+            this.c1SplitterPanel1.Location = new System.Drawing.Point(0, 21);
+            this.c1SplitterPanel1.Name = "c1SplitterPanel1";
+            this.c1SplitterPanel1.Size = new System.Drawing.Size(781, 429);
+            this.c1SplitterPanel1.SizeRatio = 49.938D;
+            this.c1SplitterPanel1.TabIndex = 0;
+            this.c1SplitterPanel1.Text = "Panel 1";
+            this.c1SplitterPanel1.Width = 781;
+            // 
+            // c1SplitterPanel2
+            // 
+            this.c1SplitterPanel2.Controls.Add(this.panel2);
+            this.c1SplitterPanel2.Height = 450;
+            this.c1SplitterPanel2.Location = new System.Drawing.Point(792, 21);
+            this.c1SplitterPanel2.Name = "c1SplitterPanel2";
+            this.c1SplitterPanel2.Size = new System.Drawing.Size(790, 429);
+            this.c1SplitterPanel2.TabIndex = 1;
+            this.c1SplitterPanel2.Text = "Panel 2";
+            // 
+            // panel2
+            // 
+            this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.panel2.Location = new System.Drawing.Point(0, 0);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(790, 429);
+            this.panel2.TabIndex = 0;
+            this.theme1.SetTheme(this.panel2, "(default)");
+            // 
+            // tabScanPtt
+            // 
+            this.tabScanPtt.Location = new System.Drawing.Point(1, 24);
+            this.tabScanPtt.Name = "tabScanPtt";
+            this.tabScanPtt.Size = new System.Drawing.Size(1582, 450);
+            this.tabScanPtt.TabIndex = 5;
+            this.tabScanPtt.Text = "เวชระเบียน";
+            // 
+            // tabOrPtt
+            // 
+            this.tabOrPtt.Location = new System.Drawing.Point(1, 24);
+            this.tabOrPtt.Name = "tabOrPtt";
+            this.tabOrPtt.Size = new System.Drawing.Size(1582, 450);
+            this.tabOrPtt.TabIndex = 6;
+            this.tabOrPtt.Text = "รายการผ่าตัด";
+            // 
             // FrmDoctorAdd
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1594,9 +1753,13 @@
             this.tabHis.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.sCDesc)).EndInit();
             this.sCDesc.ResumeLayout(false);
+            this.c1SplitterPanel3.ResumeLayout(false);
             this.c1SplitterPanel4.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.c1DockingTab1)).EndInit();
-            this.c1DockingTab1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.tC1)).EndInit();
+            this.tC1.ResumeLayout(false);
+            this.tabDrug.ResumeLayout(false);
+            this.tabLab.ResumeLayout(false);
+            this.tabOr.ResumeLayout(false);
             this.tabApp.ResumeLayout(false);
             this.tabNote.ResumeLayout(false);
             this.panel7.ResumeLayout(false);
@@ -1632,6 +1795,11 @@
             this.tabPkg.ResumeLayout(false);
             this.sB.ResumeLayout(false);
             this.sB.PerformLayout();
+            this.tabScan.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.c1SplitContainer1)).EndInit();
+            this.c1SplitContainer1.ResumeLayout(false);
+            this.c1SplitterPanel1.ResumeLayout(false);
+            this.c1SplitterPanel2.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1701,10 +1869,10 @@
         private C1.Win.C1SplitContainer.C1SplitContainer sCDesc;
         private C1.Win.C1SplitContainer.C1SplitterPanel c1SplitterPanel3;
         private C1.Win.C1SplitContainer.C1SplitterPanel c1SplitterPanel4;
-        private C1.Win.C1Command.C1DockingTab c1DockingTab1;
-        private C1.Win.C1Command.C1DockingTabPage c1DockingTabPage1;
-        private C1.Win.C1Command.C1DockingTabPage c1DockingTabPage2;
-        private C1.Win.C1Command.C1DockingTabPage c1DockingTabPage3;
+        private C1.Win.C1Command.C1DockingTab tC1;
+        private C1.Win.C1Command.C1DockingTabPage tabDrug;
+        private C1.Win.C1Command.C1DockingTabPage tabLab;
+        private C1.Win.C1Command.C1DockingTabPage tabOr;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label label29;
         private System.Windows.Forms.Label label35;
@@ -1745,5 +1913,17 @@
         private C1.Win.C1Input.C1TextBox txtPttNameE;
         private C1.Win.C1Input.C1TextBox txtPttName;
         private C1.Win.C1Input.C1TextBox txtHn;
+        private System.Windows.Forms.Panel pnVs;
+        private System.Windows.Forms.Panel panel6;
+        private System.Windows.Forms.Panel panel8;
+        private System.Windows.Forms.Panel panel9;
+        private C1.Win.C1Command.C1DockingTabPage tabScan;
+        private System.Windows.Forms.Panel panel10;
+        private C1.Win.C1SplitContainer.C1SplitContainer c1SplitContainer1;
+        private C1.Win.C1SplitContainer.C1SplitterPanel c1SplitterPanel1;
+        private C1.Win.C1SplitContainer.C1SplitterPanel c1SplitterPanel2;
+        private System.Windows.Forms.Panel panel2;
+        private C1.Win.C1Command.C1DockingTabPage tabScanPtt;
+        private C1.Win.C1Command.C1DockingTabPage tabOrPtt;
     }
 }

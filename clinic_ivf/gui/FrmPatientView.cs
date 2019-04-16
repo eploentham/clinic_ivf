@@ -131,18 +131,25 @@ namespace clinic_ivf.gui
             //FilterRow fr = new FilterRow(grfExpn);
 
             grfPtt.AfterRowColChange += GrfReq_AfterRowColChange;
-            //grfExpnC.CellButtonClick += new C1.Win.C1FlexGrid.RowColEventHandler(this.grfDept_CellButtonClick);
+            grfPtt.DoubleClick += GrfPtt_DoubleClick;
             //grfExpnC.CellChanged += new C1.Win.C1FlexGrid.RowColEventHandler(this.grfDept_CellChanged);
-            ContextMenu menuGw = new ContextMenu();
+            //ContextMenu menuGw = new ContextMenu();
             //menuGw.MenuItems.Add("&แก้ไข รายการเบิก", new EventHandler(ContextMenu_edit));
             //menuGw.MenuItems.Add("&แก้ไข", new EventHandler(ContextMenu_Gw_Edit));
             //menuGw.MenuItems.Add("&ยกเลิก", new EventHandler(ContextMenu_Gw_Cancel));
-            grfPtt.ContextMenu = menuGw;
+            //grfPtt.ContextMenu = menuGw;
             gB.Controls.Add(grfPtt);
 
             theme1.SetTheme(grfPtt, "Office2010Blue");
             
         }
+
+        private void GrfPtt_DoubleClick(object sender, EventArgs e)
+        {
+            //throw new NotImplementedException();
+            ContextMenu_edit(null, null);
+        }
+
         private void GrfReq_AfterRowColChange(object sender, RangeEventArgs e)
         {
             //throw new NotImplementedException();
@@ -226,6 +233,10 @@ namespace clinic_ivf.gui
                     grfPtt.Rows[i].StyleNew.BackColor = color;
             }
             grfPtt.Cols[colPttId].Visible = false;
+            grfPtt.Cols[colPttHn].AllowEditing = false;
+            grfPtt.Cols[colPttName].AllowEditing = false;
+            grfPtt.Cols[colPttRemark].AllowEditing = false;
+            //grfPtt.Cols[colPttHn].AllowEditing = false;
             theme1.SetTheme(grfPtt, ic.theme);
             
         }

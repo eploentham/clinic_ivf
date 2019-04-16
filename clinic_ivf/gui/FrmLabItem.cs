@@ -24,7 +24,7 @@ namespace clinic_ivf.gui
 
         Color bg, fc;
         Font ff, ffB;
-        int colID = 1, colName = 2, colSubName = 3;
+        int colID = 1, colName = 2, colSubName = 4, colPrice=3;
 
         C1FlexGrid grfPosi;
 
@@ -111,6 +111,7 @@ namespace clinic_ivf.gui
             txtID.Value = "";
             txtDocGroupSubName.Value = "";
             cboDocGroupName.Text = "";
+            txtPrice.Value = "";
             chkVoid.Checked = false;
             btnVoid.Hide();
             flagEdit = true;
@@ -139,9 +140,9 @@ namespace clinic_ivf.gui
         {
             //grfDept.Rows.Count = 7;
             DataTable dt = new DataTable();
-            dt = ic.ivfDB.dgssDB.selectAll();
+            dt = ic.ivfDB.oLabiDB.selectAll1();
             grfPosi.DataSource = null;
-            grfPosi.Cols.Count = 4;
+            grfPosi.Cols.Count = 5;
             grfPosi.Rows.Count = 1;
 
             C1TextBox txt = new C1TextBox();
@@ -156,20 +157,21 @@ namespace clinic_ivf.gui
             //grdFlex.Cols[colID].Caption = "no";
             //grfDept.Cols[colCode].Caption = "รหัส";
 
-            //grfPosi.Cols[colCode].Caption = "รหัส";
+            grfPosi.Cols[colSubName].Caption = "Group";
             grfPosi.Cols[colName].Caption = "ชื่อประเภทเอกสารย่อย";
-            //grfPosi.Cols[colRemark].Caption = "หมายเหตุ";
+            grfPosi.Cols[colPrice].Caption = "ราคา";
 
             //grfDept.Cols[coledit].Visible = false;
             //CellRange rg = grfPosi.GetCellRange(2, colE);
             for (int i = 0; i < dt.Rows.Count; i++)
             {
                 Row row = grfPosi.Rows.Add();
-                row[colID] = dt.Rows[i]["doc_group_sub_id"].ToString();
-                row[colName] = dt.Rows[i]["doc_group_name"].ToString();
-                row[colSubName] = dt.Rows[i]["doc_group_sub_name"].ToString();
+                row[colID] = dt.Rows[i][ic.ivfDB.oLabiDB.labI.LID].ToString();
+                row[colName] = dt.Rows[i][ic.ivfDB.oLabiDB.labI.LName].ToString();
+                row[colSubName] = dt.Rows[i]["LGName"].ToString();
+                row[colPrice] = dt.Rows[i][ic.ivfDB.oLabiDB.labI.Price].ToString();
                 row[0] = (i + 1);
-                if (i % 2 == 0)
+                if (i % 2 != 0)
                     grfPosi.Rows[i].StyleNew.BackColor = ColorTranslator.FromHtml(ic.iniC.grfRowColor);
             }
 
@@ -201,12 +203,15 @@ namespace clinic_ivf.gui
             ic.setC1Combo(cboDocGroupName, labI.LGID);
             txtID.Value = labI.LID;
             txtDocGroupSubName.Value = labI.LName;
+            txtPrice.Value = labI.Price;
         }
         private void setControlEnable(Boolean flag)
         {
             //txtID.Enabled = flag;
             txtDocGroupSubName.Enabled = flag;
             chkVoid.Enabled = flag;
+            txtPrice.Enabled = flag;
+            cboDocGroupName.Enabled = flag;
             btnEdit.Image = !flag ? Resources.lock24 : Resources.open24;
         }
         private void setDocGroupScan()
@@ -214,6 +219,7 @@ namespace clinic_ivf.gui
             labI.LID = txtID.Text;
             labI.LName = txtDocGroupSubName.Text;
             labI.LGID = cboDocGroupName.SelectedItem == null ? "" : ((ComboBoxItem)cboDocGroupName.SelectedItem).Value;
+            labI.Price = txtPrice.Text;
         }
         private void grfPosi_AfterRowColChange(object sender, C1.Win.C1FlexGrid.RangeEventArgs e)
         {

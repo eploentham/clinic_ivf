@@ -38,6 +38,7 @@ namespace clinic_ivf.gui
         public C1DockingTabPage tab;
 
         int colNoteId = 1, colNote = 2, colNoteStatusAll = 3;
+        int colVsId = 1, colVsDate = 2, colVsTime = 3, colVsETime=4, colVsBsp = 5,colNotice=6, colVsBp=7, colVsBw=8, colVsPulse=9;
         int colApmId = 1, colApmAppointment = 4, colApmDate = 2, colApmTime = 3, colApmDoctor = 5, colApmSp = 6, colApmNotice = 7, colE2 = 8, colLh = 9, colEndo = 10, colPrl = 10, colFsh = 11, colRt = 12, colLt = 13;
         public FrmDoctorAdd(IvfControl ic, MainMenu m, String pttid, String vsid)
         {
@@ -70,13 +71,23 @@ namespace clinic_ivf.gui
 
             imgCorr = Resources.red_checkmark_png_16;
             imgTran = Resources.red_checkmark_png_51;
+            panel1.Resize += Panel1_Resize;
             setControl(vsid);
 
+            initGrfVs();
+            setGrfVs();
             initGrfNote();
             setGrfNote();
             initGrfAdm();
             setGrfpApmAll();
         }
+
+        private void Panel1_Resize(object sender, EventArgs e)
+        {
+            //throw new NotImplementedException();
+            label35.Text = panel1.Height.ToString();
+        }
+
         private void setControl(String vsid)
         {
             vsOld = ic.ivfDB.ovsDB.selectByPk1(vsid);
@@ -103,6 +114,82 @@ namespace clinic_ivf.gui
             stt.Show("<p><b>สวัสดี</b></p>คุณ " + ptt.congenital_diseases_description + "<br> กรุณา ป้อนรหัสผ่าน", chkChronic);
             //txtBg.Value = pttOld.b
             //txtAllergy.Value = 
+        }
+        private void initGrfVs()
+        {
+            grfVs = new C1FlexGrid();
+            grfVs.Font = fEdit;
+            grfVs.Dock = System.Windows.Forms.DockStyle.Fill;
+            grfVs.Location = new System.Drawing.Point(0, 0);
+
+            grfVs.DoubleClick += GrfVs_DoubleClick;
+            //grfExpnC.CellChanged += new C1.Win.C1FlexGrid.RowColEventHandler(this.grfDept_CellChanged);
+            //ContextMenu menuGw = new ContextMenu();
+            //menuGw.MenuItems.Add("Upload รูปบัตรประชาชน", new EventHandler(ContextMenu_grfimg_upload_ptt));
+            //menuGw.MenuItems.Add("Upload สำเนาบัตรประชาชน ที่มีลายเซ็น", new EventHandler(ContextMenu_grfimg_upload_ptt));
+            //menuGw.MenuItems.Add("Upload รูป Passport", new EventHandler(ContextMenu_grfimg_upload_ptt));
+            //menuGw.MenuItems.Add("ยกเลิก", new EventHandler(ContextMenu_grfimg_Cancel));
+            //grfImgOld.ContextMenu = menuGw;
+            pnVs.Controls.Add(grfVs);
+
+            theme1.SetTheme(grfVs, "Office2016Colorful");
+
+        }
+
+        private void GrfVs_DoubleClick(object sender, EventArgs e)
+        {
+            //throw new NotImplementedException();
+
+        }
+        private void setGrfVs()
+        {
+            grfVs.Clear();            
+            DataTable dt = ic.ivfDB.vsDB.selectByPttId(ptt.t_patient_id);
+            grfVs.Cols.Count = 10;
+            grfVs.Rows.Count = dt.Rows.Count+1;
+
+            grfVs.Cols[colVsDate].Width = 85;
+            grfVs.Cols[colVsTime].Width = 70;
+            grfVs.Cols[colVsBsp].Width = 120;
+            grfVs.Cols[colNotice].Width = 120;
+            grfVs.Cols[colVsETime].Width = 70;
+            grfVs.Cols[colVsBp].Width = 70;
+            grfVs.Cols[colVsBw].Width = 70;
+            grfVs.Cols[colVsPulse].Width = 70;
+
+            grfVs.ShowCursor = true;
+
+            grfVs.Cols[colVsDate].Caption = "Date";
+            grfVs.Cols[colVsTime].Caption = "Time";
+            grfVs.Cols[colVsBsp].Caption = "จุดบริการ";
+            grfVs.Cols[colNotice].Caption = "อาการ";
+            grfVs.Cols[colVsETime].Caption = "ETime";
+            grfVs.Cols[colVsBp].Caption = "BP";
+            grfVs.Cols[colVsBw].Caption = "BW";
+            grfVs.Cols[colVsPulse].Caption = "Pulse";
+
+            int i = 1;
+            foreach (DataRow row in dt.Rows)
+            {
+                grfVs[i, colVsId] = row[ic.ivfDB.vsDB.vs.t_visit_id].ToString();
+                grfVs[i, colVsDate] = ic.datetoShow(row[ic.ivfDB.vsDB.vs.visit_begin_visit_time].ToString());
+                grfVs[i, colVsTime] = ic.timetoShow(row[ic.ivfDB.vsDB.vs.visit_begin_visit_time].ToString());
+                grfVs[i, colVsETime] = ic.timetoShow(row[ic.ivfDB.vsDB.vs.visit_financial_discharge_time].ToString());
+                grfVs[i, colVsBsp] = row["service_point_description"].ToString();
+                grfVs[i, colNotice] = row[ic.ivfDB.vsDB.vs.visit_notice].ToString();
+                grfVs[i, colVsBp] = row[ic.ivfDB.vsDB.vs.bp].ToString();
+                grfVs[i, colVsBw] = row[ic.ivfDB.vsDB.vs.bw].ToString();
+                grfVs[i, colVsPulse] = row[ic.ivfDB.vsDB.vs.pulse].ToString();
+                i++;
+            }
+            grfVs.Cols[colVsId].Visible = false;
+            grfVs.Cols[colVsDate].AllowEditing = false;
+            grfVs.Cols[colVsTime].AllowEditing = false;
+            grfVs.Cols[colVsETime].AllowEditing = false;
+            grfVs.Cols[colVsBsp].AllowEditing = false;
+            grfVs.Cols[colNotice].AllowEditing = false;
+
+            theme1.SetTheme(grfVs, "Office2016DarkGray");
         }
         private void initGrfAdm()
         {
@@ -315,6 +402,8 @@ namespace clinic_ivf.gui
         {
             sCmain.HeaderHeight = 0;
             sCDesc.HeaderHeight = 0;
+            tC.SelectedTab = tabHis;
+            tC1.SelectedTab = tabDrug;
         }
     }
 }

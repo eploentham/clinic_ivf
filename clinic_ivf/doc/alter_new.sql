@@ -181,3 +181,7 @@ delete from JobLabDetail;
 
 delete from JobSpecial;
 delete from JobSpecialDetail;
+
+19-04-16
+ALTER TABLE `ivf_101`.`LabItemGroup` 
+ADD COLUMN `active` VARCHAR(45) NULL DEFAULT '1' AFTER `LGName`;

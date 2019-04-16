@@ -66,8 +66,9 @@ namespace clinic_ivf.objdb
         public DataTable selectAll1()
         {
             DataTable dt = new DataTable();
-            String sql = "select labI."+ labI.LID+ ",labI." + labI .LName+","+ labI .Price+" "+
+            String sql = "select labI."+ labI.LID+ ",labI." + labI .LName+","+ labI .Price+", labg.LGName "+
                 "From " + labI.table + " labI " +
+                "Left Join LabItemGroup labg on labI."+labI.LGID+"=labg.LGID " +
                 "Where labI." + labI.active + " ='1' " +
                 "Order By "+labI.LName;
             dt = conn.selectData(conn.conn, sql);
@@ -298,7 +299,8 @@ namespace clinic_ivf.objdb
                 "," + labI.WorkerGroup3 + "= '" + p.WorkerGroup3 + "'" +
                 "," + labI.WorkerGroup4 + "= '" + p.WorkerGroup4 + "'" +
                 "," + labI.QTY + "= '" + p.QTY + "'" +
-                "," + labI.active + "= '" + p.active + "'" +
+                "," + labI.active + "= '1'" +
+                "," + labI.LGID + "= '"+p.LGID+"'" +
                 "";
             try
             {
@@ -341,6 +343,7 @@ namespace clinic_ivf.objdb
                 "," + labI.WorkerGroup3 + "= '" + p.WorkerGroup3 + "'" +
                 "," + labI.WorkerGroup4 + "= '" + p.WorkerGroup4 + "'" +
                 "," + labI.QTY + "= '" + p.QTY + "'" +
+                "," + labI.LGID + "= '" + p.LGID + "'" +
                 "Where " + labI.pkField + "='" + p.LID + "'";
             try
             {

@@ -33,8 +33,11 @@
             this.theme1 = new C1.Win.C1Themes.C1ThemeController();
             this.tC = new C1.Win.C1Command.C1DockingTab();
             this.tabWait = new C1.Win.C1Command.C1DockingTabPage();
+            this.pnQue = new System.Windows.Forms.Panel();
             this.tabDiag = new C1.Win.C1Command.C1DockingTabPage();
+            this.pnDiag = new System.Windows.Forms.Panel();
             this.tabFinish = new C1.Win.C1Command.C1DockingTabPage();
+            this.pnFinish = new System.Windows.Forms.Panel();
             this.tabSearch = new C1.Win.C1Command.C1DockingTabPage();
             this.pnSearch = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
@@ -43,9 +46,6 @@
             this.txtDateStart = new C1.Win.C1Input.C1DateEdit();
             this.label4 = new System.Windows.Forms.Label();
             this.txtSearch = new C1.Win.C1Input.C1TextBox();
-            this.pnQue = new System.Windows.Forms.Panel();
-            this.pnDiag = new System.Windows.Forms.Panel();
-            this.pnFinish = new System.Windows.Forms.Panel();
             this.sB.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.theme1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tC)).BeginInit();
@@ -109,6 +109,17 @@
             this.tabWait.TabIndex = 0;
             this.tabWait.Text = "Waiting Queue";
             // 
+            // pnQue
+            // 
+            this.pnQue.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.pnQue.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pnQue.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.pnQue.Location = new System.Drawing.Point(0, 0);
+            this.pnQue.Name = "pnQue";
+            this.pnQue.Size = new System.Drawing.Size(1006, 668);
+            this.pnQue.TabIndex = 0;
+            this.theme1.SetTheme(this.pnQue, "(default)");
+            // 
             // tabDiag
             // 
             this.tabDiag.Controls.Add(this.pnDiag);
@@ -118,6 +129,17 @@
             this.tabDiag.TabIndex = 1;
             this.tabDiag.Text = "Diagnosis";
             // 
+            // pnDiag
+            // 
+            this.pnDiag.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.pnDiag.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pnDiag.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.pnDiag.Location = new System.Drawing.Point(0, 0);
+            this.pnDiag.Name = "pnDiag";
+            this.pnDiag.Size = new System.Drawing.Size(1006, 668);
+            this.pnDiag.TabIndex = 0;
+            this.theme1.SetTheme(this.pnDiag, "(default)");
+            // 
             // tabFinish
             // 
             this.tabFinish.Controls.Add(this.pnFinish);
@@ -126,6 +148,17 @@
             this.tabFinish.Size = new System.Drawing.Size(1006, 668);
             this.tabFinish.TabIndex = 2;
             this.tabFinish.Text = "Finish Diagnosis";
+            // 
+            // pnFinish
+            // 
+            this.pnFinish.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.pnFinish.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pnFinish.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.pnFinish.Location = new System.Drawing.Point(0, 0);
+            this.pnFinish.Name = "pnFinish";
+            this.pnFinish.Size = new System.Drawing.Size(1006, 668);
+            this.pnFinish.TabIndex = 0;
+            this.theme1.SetTheme(this.pnFinish, "(default)");
             // 
             // tabSearch
             // 
@@ -267,39 +300,6 @@
             this.txtSearch.Tag = null;
             this.theme1.SetTheme(this.txtSearch, "(default)");
             this.txtSearch.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
-            // 
-            // pnQue
-            // 
-            this.pnQue.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.pnQue.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnQue.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.pnQue.Location = new System.Drawing.Point(0, 0);
-            this.pnQue.Name = "pnQue";
-            this.pnQue.Size = new System.Drawing.Size(1006, 668);
-            this.pnQue.TabIndex = 0;
-            this.theme1.SetTheme(this.pnQue, "(default)");
-            // 
-            // pnDiag
-            // 
-            this.pnDiag.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.pnDiag.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnDiag.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.pnDiag.Location = new System.Drawing.Point(0, 0);
-            this.pnDiag.Name = "pnDiag";
-            this.pnDiag.Size = new System.Drawing.Size(1006, 668);
-            this.pnDiag.TabIndex = 0;
-            this.theme1.SetTheme(this.pnDiag, "(default)");
-            // 
-            // pnFinish
-            // 
-            this.pnFinish.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.pnFinish.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnFinish.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.pnFinish.Location = new System.Drawing.Point(0, 0);
-            this.pnFinish.Name = "pnFinish";
-            this.pnFinish.Size = new System.Drawing.Size(1006, 668);
-            this.pnFinish.TabIndex = 0;
-            this.theme1.SetTheme(this.pnFinish, "(default)");
             // 
             // FrmDoctorView
             // 
