@@ -554,6 +554,7 @@
     <Compile Include="objdb\LabOpuEmbryoDevDB.cs" />
     <Compile Include="objdb\OldJobSpecialDB.cs" />
     <Compile Include="objdb\OldGroupDrugHeaderDB.cs" />
+    <Compile Include="objdb\OldLabItemGroupDB.cs" />
     <Compile Include="objdb\OldPackageDepositDB.cs" />
     <Compile Include="objdb\OldPackageDetailDB.cs" />
     <Compile Include="objdb\OldPackageHeaderDB.cs" />
@@ -593,6 +594,7 @@
     <Compile Include="object1\OldJobLabDetail.cs" />
     <Compile Include="object1\OldJobPxDetail.cs" />
     <Compile Include="object1\OldLabItem.cs" />
+    <Compile Include="object1\OldLabItemGroup.cs" />
     <Compile Include="object1\OldPackageDetail.cs" />
     <Compile Include="object1\OldPackageHeader.cs" />
     <Compile Include="object1\OldPackageSold.cs" />

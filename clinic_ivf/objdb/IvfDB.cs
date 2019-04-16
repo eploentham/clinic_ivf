@@ -86,7 +86,7 @@ namespace clinic_ivf.objdb
         public OrAnesthesiaDB oranesDB;
         public OrRequestDB orreqDB;
         public OrTOperationDB oropDB;
-
+        public OldLabItemGroupDB olabgDB;
         public IvfDB(ConnectDB c)
         {
             conn = c;
@@ -163,6 +163,7 @@ namespace clinic_ivf.objdb
             oranesDB = new OrAnesthesiaDB(conn);
             orreqDB = new OrRequestDB(conn);
             oropDB = new OrTOperationDB(conn);
+            olabgDB = new OldLabItemGroupDB(conn);
 
             Console.WriteLine("ivfDB end");
         }

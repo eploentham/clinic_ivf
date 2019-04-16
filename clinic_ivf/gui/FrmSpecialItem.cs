@@ -24,7 +24,7 @@ namespace clinic_ivf.gui
 
         Color bg, fc;
         Font ff, ffB;
-        int colID = 1, colName = 2, colSubName = 3;
+        int colID = 1, colName = 2, colSubName = 4, colPrice=3;
 
         C1FlexGrid grfPosi;
 
@@ -58,7 +58,7 @@ namespace clinic_ivf.gui
             bg = txtDocGroupSubName.BackColor;
             fc = txtDocGroupSubName.ForeColor;
             ff = txtDocGroupSubName.Font;
-            ic.ivfDB.dgsDB.setCboBsp(cboDocGroupName, "");
+            ic.ivfDB.obilgDB.setCboGroupType(cboDocGroupName, "");
 
             txtPasswordVoid.KeyUp += TxtPasswordVoid_KeyUp;
             btnNew.Click += BtnNew_Click;
@@ -111,6 +111,7 @@ namespace clinic_ivf.gui
             txtID.Value = "";
             txtDocGroupSubName.Value = "";
             cboDocGroupName.Text = "";
+            txtPrice.Value = "";
             chkVoid.Checked = false;
             btnVoid.Hide();
             flagEdit = true;
@@ -130,7 +131,7 @@ namespace clinic_ivf.gui
             grfPosi.CellButtonClick += new C1.Win.C1FlexGrid.RowColEventHandler(this.grfPosi_CellButtonClick);
             grfPosi.CellChanged += new C1.Win.C1FlexGrid.RowColEventHandler(this.grfPosi_CellChanged);
 
-            panel2.Controls.Add(this.grfPosi);
+            panel1.Controls.Add(this.grfPosi);
 
             C1Theme theme = C1ThemeController.GetThemeByName("Office2013Red", false);
             C1ThemeController.ApplyThemeToObject(grfPosi, theme);
@@ -139,9 +140,9 @@ namespace clinic_ivf.gui
         {
             //grfDept.Rows.Count = 7;
             DataTable dt = new DataTable();
-            dt = ic.ivfDB.dgssDB.selectAll();
+            dt = ic.ivfDB.oSItmDB.selectAll1();
             grfPosi.DataSource = null;
-            grfPosi.Cols.Count = 4;
+            grfPosi.Cols.Count = 5;
             grfPosi.Rows.Count = 1;
 
             C1TextBox txt = new C1TextBox();
@@ -156,18 +157,19 @@ namespace clinic_ivf.gui
             //grdFlex.Cols[colID].Caption = "no";
             //grfDept.Cols[colCode].Caption = "รหัส";
 
-            //grfPosi.Cols[colCode].Caption = "รหัส";
-            grfPosi.Cols[colName].Caption = "ชื่อประเภทเอกสารย่อย";
-            //grfPosi.Cols[colRemark].Caption = "หมายเหตุ";
+            grfPosi.Cols[colSubName].Caption = "BillGroup";
+            grfPosi.Cols[colName].Caption = "Special Name";
+            grfPosi.Cols[colPrice].Caption = "ราคา";
 
             //grfDept.Cols[coledit].Visible = false;
             //CellRange rg = grfPosi.GetCellRange(2, colE);
             for (int i = 0; i < dt.Rows.Count; i++)
             {
                 Row row = grfPosi.Rows.Add();
-                row[colID] = dt.Rows[i]["doc_group_sub_id"].ToString();
-                row[colName] = dt.Rows[i]["doc_group_name"].ToString();
-                row[colSubName] = dt.Rows[i]["doc_group_sub_name"].ToString();
+                row[colID] = dt.Rows[i][ic.ivfDB.oSItmDB.sitm.SID].ToString();
+                row[colName] = dt.Rows[i][ic.ivfDB.oSItmDB.sitm.SName].ToString();
+                row[colSubName] = dt.Rows[i]["Name"].ToString();
+                row[colPrice] = dt.Rows[i][ic.ivfDB.oSItmDB.sitm.Price].ToString();
                 row[0] = (i + 1);
                 if (i % 2 == 0)
                     grfPosi.Rows[i].StyleNew.BackColor = ColorTranslator.FromHtml(ic.iniC.grfRowColor);
@@ -201,6 +203,7 @@ namespace clinic_ivf.gui
             ic.setC1Combo(cboDocGroupName, sitm.BillGroupID);
             txtID.Value = sitm.SID;
             txtDocGroupSubName.Value = sitm.SName;
+            txtPrice.Value = sitm.Price;
         }
         private void setControlEnable(Boolean flag)
         {
@@ -208,12 +211,14 @@ namespace clinic_ivf.gui
             txtDocGroupSubName.Enabled = flag;
             chkVoid.Enabled = flag;
             btnEdit.Image = !flag ? Resources.lock24 : Resources.open24;
+            txtPrice.Enabled = flag;
         }
         private void setDocGroupScan()
         {
             sitm.SID = txtID.Text;
             sitm.SName = txtDocGroupSubName.Text;
             sitm.BillGroupID = cboDocGroupName.SelectedItem == null ? "" : ((ComboBoxItem)cboDocGroupName.SelectedItem).Value;
+            sitm.Price = txtPrice.Text;
         }
         private void grfPosi_AfterRowColChange(object sender, C1.Win.C1FlexGrid.RangeEventArgs e)
         {
@@ -262,8 +267,6 @@ namespace clinic_ivf.gui
                 }
             }
         }
-
-
         private void btnVoid_Click(object sender, EventArgs e)
         {
             if (MessageBox.Show("ต้องการ ยกเลิกข้อมูล ", "", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == DialogResult.OK)

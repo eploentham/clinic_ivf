@@ -73,6 +73,7 @@
             this.menuGrpDiag = new System.Windows.Forms.ToolStripMenuItem();
             this.menuOrDiag = new System.Windows.Forms.ToolStripMenuItem();
             this.menuOrAnes = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuSpecialItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuAgent = new System.Windows.Forms.ToolStripMenuItem();
             this.menuTest = new System.Windows.Forms.ToolStripMenuItem();
             this.menuDoctor = new System.Windows.Forms.ToolStripMenuItem();
@@ -81,7 +82,7 @@
             this.tC1 = new C1.Win.C1Command.C1DockingTab();
             this.PageS = new C1.Win.C1Command.C1DockingTabPage();
             this.theme1 = new C1.Win.C1Themes.C1ThemeController();
-            this.menuSpecialItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuLabItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tCC1)).BeginInit();
             this.tCC1.SuspendLayout();
@@ -387,7 +388,8 @@
             this.masterToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.menuDrug,
             this.แผนกORToolStripMenuItem,
-            this.menuSpecialItem});
+            this.menuSpecialItem,
+            this.menuLabItem});
             this.masterToolStripMenuItem.Name = "masterToolStripMenuItem";
             this.masterToolStripMenuItem.Size = new System.Drawing.Size(192, 22);
             this.masterToolStripMenuItem.Text = "Master";
@@ -425,6 +427,12 @@
             this.menuOrAnes.Name = "menuOrAnes";
             this.menuOrAnes.Size = new System.Drawing.Size(161, 22);
             this.menuOrAnes.Text = "Anesthesia";
+            // 
+            // menuSpecialItem
+            // 
+            this.menuSpecialItem.Name = "menuSpecialItem";
+            this.menuSpecialItem.Size = new System.Drawing.Size(180, 22);
+            this.menuSpecialItem.Text = "SpecialItem";
             // 
             // menuAgent
             // 
@@ -495,11 +503,11 @@
             // 
             this.theme1.Theme = "BeigeOne";
             // 
-            // menuSpecialItem
+            // menuLabItem
             // 
-            this.menuSpecialItem.Name = "menuSpecialItem";
-            this.menuSpecialItem.Size = new System.Drawing.Size(180, 22);
-            this.menuSpecialItem.Text = "SpecialItem";
+            this.menuLabItem.Name = "menuLabItem";
+            this.menuLabItem.Size = new System.Drawing.Size(180, 22);
+            this.menuLabItem.Text = "LabItem";
             // 
             // MainMenu
             // 
@@ -580,5 +588,6 @@
         private System.Windows.Forms.ToolStripMenuItem menuDoctor;
         private System.Windows.Forms.ToolStripMenuItem menuDoctorDefault;
         private System.Windows.Forms.ToolStripMenuItem menuSpecialItem;
+        private System.Windows.Forms.ToolStripMenuItem menuLabItem;
     }
 }

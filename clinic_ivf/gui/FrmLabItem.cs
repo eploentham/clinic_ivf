@@ -58,7 +58,7 @@ namespace clinic_ivf.gui
             bg = txtDocGroupSubName.BackColor;
             fc = txtDocGroupSubName.ForeColor;
             ff = txtDocGroupSubName.Font;
-            ic.ivfDB.dgsDB.setCboBsp(cboDocGroupName, "");
+            ic.ivfDB.olabgDB.setCboBloodGroup(cboDocGroupName, "");
 
             txtPasswordVoid.KeyUp += TxtPasswordVoid_KeyUp;
             btnNew.Click += BtnNew_Click;
@@ -130,7 +130,7 @@ namespace clinic_ivf.gui
             grfPosi.CellButtonClick += new C1.Win.C1FlexGrid.RowColEventHandler(this.grfPosi_CellButtonClick);
             grfPosi.CellChanged += new C1.Win.C1FlexGrid.RowColEventHandler(this.grfPosi_CellChanged);
 
-            panel2.Controls.Add(this.grfPosi);
+            panel1.Controls.Add(this.grfPosi);
 
             C1Theme theme = C1ThemeController.GetThemeByName("Office2013Red", false);
             C1ThemeController.ApplyThemeToObject(grfPosi, theme);
@@ -198,9 +198,9 @@ namespace clinic_ivf.gui
         private void setControl(String posiId)
         {
             labI = ic.ivfDB.oLabiDB.selectByPk1(posiId);
-            ic.setC1Combo(cboDocGroupName, labI.BillGroupID);
-            txtID.Value = labI.SID;
-            txtDocGroupSubName.Value = labI.SName;
+            ic.setC1Combo(cboDocGroupName, labI.LGID);
+            txtID.Value = labI.LID;
+            txtDocGroupSubName.Value = labI.LName;
         }
         private void setControlEnable(Boolean flag)
         {
@@ -211,9 +211,9 @@ namespace clinic_ivf.gui
         }
         private void setDocGroupScan()
         {
-            labI.SID = txtID.Text;
-            labI.SName = txtDocGroupSubName.Text;
-            labI.BillGroupID = cboDocGroupName.SelectedItem == null ? "" : ((ComboBoxItem)cboDocGroupName.SelectedItem).Value;
+            labI.LID = txtID.Text;
+            labI.LName = txtDocGroupSubName.Text;
+            labI.LGID = cboDocGroupName.SelectedItem == null ? "" : ((ComboBoxItem)cboDocGroupName.SelectedItem).Value;
         }
         private void grfPosi_AfterRowColChange(object sender, C1.Win.C1FlexGrid.RangeEventArgs e)
         {

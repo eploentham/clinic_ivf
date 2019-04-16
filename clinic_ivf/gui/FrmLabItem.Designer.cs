@@ -47,6 +47,8 @@
             this.btnEdit = new C1.Win.C1Input.C1Button();
             this.chkVoid = new C1.Win.C1Input.C1CheckBox();
             this.btnVoid = new C1.Win.C1Input.C1Button();
+            this.label3 = new System.Windows.Forms.Label();
+            this.c1TextBox1 = new C1.Win.C1Input.C1TextBox();
             this.sB.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.theme1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.sCMain)).BeginInit();
@@ -63,6 +65,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.btnEdit)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkVoid)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnVoid)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.c1TextBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // sB
@@ -143,6 +146,8 @@
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.panel2.Controls.Add(this.label3);
+            this.panel2.Controls.Add(this.c1TextBox1);
             this.panel2.Controls.Add(this.txtID);
             this.panel2.Controls.Add(this.label1);
             this.panel2.Controls.Add(this.label2);
@@ -184,9 +189,9 @@
             this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
             this.label1.Location = new System.Drawing.Point(12, 60);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(66, 16);
+            this.label1.Size = new System.Drawing.Size(77, 16);
             this.label1.TabIndex = 571;
-            this.label1.Text = "กลุ่มเอกสาร :";
+            this.label1.Text = "Lab Group :";
             this.theme1.SetTheme(this.label1, "(default)");
             // 
             // label2
@@ -197,9 +202,9 @@
             this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
             this.label2.Location = new System.Drawing.Point(12, 86);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(84, 16);
+            this.label2.Size = new System.Drawing.Size(105, 16);
             this.label2.TabIndex = 562;
-            this.label2.Text = "กลุ่มย่อยเอกสาร :";
+            this.label2.Text = "Lab Item Name :";
             this.theme1.SetTheme(this.label2, "(default)");
             // 
             // cboDocGroupName
@@ -213,9 +218,9 @@
             this.cboDocGroupName.ImagePadding = new System.Windows.Forms.Padding(0);
             this.cboDocGroupName.ItemsDisplayMember = "";
             this.cboDocGroupName.ItemsValueMember = "";
-            this.cboDocGroupName.Location = new System.Drawing.Point(109, 58);
+            this.cboDocGroupName.Location = new System.Drawing.Point(125, 58);
             this.cboDocGroupName.Name = "cboDocGroupName";
-            this.cboDocGroupName.Size = new System.Drawing.Size(262, 20);
+            this.cboDocGroupName.Size = new System.Drawing.Size(381, 20);
             this.cboDocGroupName.Style.DropDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
             this.cboDocGroupName.Style.DropDownBorderColor = System.Drawing.Color.Gainsboro;
             this.cboDocGroupName.Style.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
@@ -229,9 +234,9 @@
             this.txtDocGroupSubName.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtDocGroupSubName.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
             this.txtDocGroupSubName.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.txtDocGroupSubName.Location = new System.Drawing.Point(109, 84);
+            this.txtDocGroupSubName.Location = new System.Drawing.Point(125, 84);
             this.txtDocGroupSubName.Name = "txtDocGroupSubName";
-            this.txtDocGroupSubName.Size = new System.Drawing.Size(262, 20);
+            this.txtDocGroupSubName.Size = new System.Drawing.Size(381, 20);
             this.txtDocGroupSubName.TabIndex = 563;
             this.txtDocGroupSubName.Tag = null;
             this.theme1.SetTheme(this.txtDocGroupSubName, "(default)");
@@ -256,7 +261,7 @@
             // 
             this.btnSave.Image = global::clinic_ivf.Properties.Resources.accept_database24;
             this.btnSave.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnSave.Location = new System.Drawing.Point(411, 307);
+            this.btnSave.Location = new System.Drawing.Point(407, 395);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(83, 39);
             this.btnSave.TabIndex = 564;
@@ -270,7 +275,7 @@
             // 
             this.btnNew.Image = global::clinic_ivf.Properties.Resources.custom_reports24;
             this.btnNew.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnNew.Location = new System.Drawing.Point(411, 30);
+            this.btnNew.Location = new System.Drawing.Point(407, 118);
             this.btnNew.Name = "btnNew";
             this.btnNew.Size = new System.Drawing.Size(83, 39);
             this.btnNew.TabIndex = 568;
@@ -284,7 +289,7 @@
             // 
             this.btnEdit.Image = global::clinic_ivf.Properties.Resources.lock24;
             this.btnEdit.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnEdit.Location = new System.Drawing.Point(411, 75);
+            this.btnEdit.Location = new System.Drawing.Point(407, 163);
             this.btnEdit.Name = "btnEdit";
             this.btnEdit.Size = new System.Drawing.Size(83, 39);
             this.btnEdit.TabIndex = 565;
@@ -316,7 +321,7 @@
             // 
             this.btnVoid.Image = global::clinic_ivf.Properties.Resources.trash24;
             this.btnVoid.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnVoid.Location = new System.Drawing.Point(411, 263);
+            this.btnVoid.Location = new System.Drawing.Point(407, 351);
             this.btnVoid.Name = "btnVoid";
             this.btnVoid.Size = new System.Drawing.Size(83, 39);
             this.btnVoid.TabIndex = 566;
@@ -325,6 +330,32 @@
             this.theme1.SetTheme(this.btnVoid, "(default)");
             this.btnVoid.UseVisualStyleBackColor = true;
             this.btnVoid.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.label3.Location = new System.Drawing.Point(12, 112);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(45, 16);
+            this.label3.TabIndex = 572;
+            this.label3.Text = "Price :";
+            this.theme1.SetTheme(this.label3, "(default)");
+            // 
+            // c1TextBox1
+            // 
+            this.c1TextBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.c1TextBox1.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
+            this.c1TextBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.c1TextBox1.Location = new System.Drawing.Point(109, 110);
+            this.c1TextBox1.Name = "c1TextBox1";
+            this.c1TextBox1.Size = new System.Drawing.Size(140, 20);
+            this.c1TextBox1.TabIndex = 573;
+            this.c1TextBox1.Tag = null;
+            this.theme1.SetTheme(this.c1TextBox1, "(default)");
+            this.c1TextBox1.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
             // 
             // FrmLabItem
             // 
@@ -354,6 +385,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.btnEdit)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkVoid)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnVoid)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.c1TextBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -380,5 +412,7 @@
         private C1.Win.C1Input.C1Button btnEdit;
         private C1.Win.C1Input.C1CheckBox chkVoid;
         private C1.Win.C1Input.C1Button btnVoid;
+        private System.Windows.Forms.Label label3;
+        private C1.Win.C1Input.C1TextBox c1TextBox1;
     }
 }

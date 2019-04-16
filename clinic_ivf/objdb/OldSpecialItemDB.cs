@@ -138,7 +138,7 @@ namespace clinic_ivf.objdb
                 "," + sitm.W2GID + "= '" + p.W2GID + "'" +
                 "," + sitm.W3GID + "= '" + p.W3GID + "'" +
                 "," + sitm.W4GID + "= '" + p.W4GID + "'" +
-                "," + sitm.isActive + "= '" + p.isActive + "'" +
+                "," + sitm.isActive + "= '1'" +
                 "," + sitm.BillGroupID + "= '" + p.BillGroupID + "'" +
                 "";
             try
@@ -223,8 +223,10 @@ namespace clinic_ivf.objdb
         public DataTable selectAll1()
         {
             DataTable dt = new DataTable();
-            String sql = "select sitm."+ sitm.SID+","+ sitm.SName+","+ sitm.Price+" " +
+            String sql = "select sitm."+ sitm.SID+","+ sitm.SName+","+ sitm.Price+",bilg.Name " +
                 "From " + sitm.table + " sitm " +
+                "Left Join BillGroup bilg on sitm."+sitm.BillGroupID + "= bilg.ID " +
+                "Where sitm."+sitm.isActive+"='1' " +
                 "Order By "+sitm.SName;
             dt = conn.selectData(conn.conn, sql);
 
