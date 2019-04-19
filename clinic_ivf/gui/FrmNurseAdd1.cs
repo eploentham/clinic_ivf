@@ -1073,11 +1073,7 @@ namespace clinic_ivf.gui
             //grdFlex.Cols[colID].Caption = "no";
             //grfDept.Cols[colCode].Caption = "รหัส";
 
-            grfPackage.Cols[colBlName].Caption = "Name";
-            grfPackage.Cols[colBlInclude].Caption = "Include";
-            grfPackage.Cols[colBlPrice].Caption = "Price";
-            grfPackage.Cols[colBlRemark].Caption = "Remark";
-            grfPackage.Cols[colBlQty].Caption = "QTY";
+            
 
             CellRange rg = grfPackage.GetCellRange(2, colBlInclude, grfPackage.Rows.Count - 1, colBlInclude);
             rg.Style = cs;
@@ -1088,6 +1084,11 @@ namespace clinic_ivf.gui
                 grfPackage.Cols[col + 1].Caption = dt.Columns[col].ColumnName;
                 grfPackage.Cols[col + 1].Name = dt.Columns[col].ColumnName;
             }
+            grfPackage.Cols[colBlName].Caption = "PackageName";
+            grfPackage.Cols[colBlInclude].Caption = "Include";
+            grfPackage.Cols[colBlPrice].Caption = "Price";
+            grfPackage.Cols[colBlRemark].Caption = "Remark";
+            grfPackage.Cols[colBlQty].Caption = "QTY";
             int i = 0;
             decimal aaa = 0;
             foreach (DataRow row in dt.Rows)
@@ -1479,6 +1480,7 @@ namespace clinic_ivf.gui
         private void GrfRx_DoubleClick(object sender, EventArgs e)
         {
             //throw new NotImplementedException();
+            if (grfRx.Col == colBlQty) return;
             setOrderRx();
         }
         private void setOrderRx()
@@ -1540,13 +1542,7 @@ namespace clinic_ivf.gui
             //grdFlex.Cols[colID].Caption = "no";
             //grfDept.Cols[colCode].Caption = "รหัส";
 
-            grfRx.Cols[colRxName].Caption = "Name";
-            grfRx.Cols[colRxInclude].Caption = "Include";
-            grfRx.Cols[colRxPrice].Caption = "Price";
-            grfRx.Cols[colRxQty].Caption = "QTY";
-            grfRx.Cols[colRxRemark].Caption = "Remark";
-            grfRx.Cols[colRxUsE].Caption = "Usage English";
-            grfRx.Cols[colRxUsT].Caption = "Usage Thai";
+            
 
             CellRange rg = grfRx.GetCellRange(2, colBlInclude, grfRx.Rows.Count - 1, colBlInclude);
             rg.Style = cs;
@@ -1557,6 +1553,13 @@ namespace clinic_ivf.gui
                 grfRx.Cols[col + 1].Caption = dt.Columns[col].ColumnName;
                 grfRx.Cols[col + 1].Name = dt.Columns[col].ColumnName;
             }
+            grfRx.Cols[colRxName].Caption = "Name";
+            grfRx.Cols[colRxInclude].Caption = "Include";
+            grfRx.Cols[colRxPrice].Caption = "Price";
+            grfRx.Cols[colRxQty].Caption = "QTY";
+            grfRx.Cols[colRxRemark].Caption = "Remark";
+            grfRx.Cols[colRxUsE].Caption = "Usage English";
+            grfRx.Cols[colRxUsT].Caption = "Usage Thai";
             int i = 0;
             decimal aaa = 0;
             foreach (DataRow row in dt.Rows)
@@ -1636,8 +1639,10 @@ namespace clinic_ivf.gui
             pnSpecial.Controls.Add(grfSpecial);
 
             theme1.SetTheme(grfSpecial, "Office2010Barbie");
-
+            grfSpecial.AfterFilter += GrfSpecial_AfterFilter;
+            grfSpecial.DoubleClick += GrfSpecial_DoubleClick;
         }
+
         private void ContextMenu_order_se_set(object sender, System.EventArgs e)
         {
             if (grfSpecial.Row <= 0) return;
@@ -1682,12 +1687,6 @@ namespace clinic_ivf.gui
             //grdFlex.Cols[colID].Caption = "no";
             //grfDept.Cols[colCode].Caption = "รหัส";
 
-            //grfSpecial.Cols[colBlName].Caption = "Name";
-            //grfSpecial.Cols[colBlInclude].Caption = "Include";
-            //grfSpecial.Cols[colBlPrice].Caption = "Price";
-            //grfSpecial.Cols[colBlRemark].Caption = "Remark";
-            //grfSpecial.Cols[colBlQty].Caption = "QTY";
-
             CellRange rg = grfSpecial.GetCellRange(2, colBlInclude, grfSpecial.Rows.Count - 1, colBlInclude);
             rg.Style = cs;
             rg.Style = grfSpecial.Styles["bool"];
@@ -1698,7 +1697,11 @@ namespace clinic_ivf.gui
                 grfSpecial.Cols[col + 1].Caption = dt.Columns[col].ColumnName;
                 grfSpecial.Cols[col + 1].Name = dt.Columns[col].ColumnName;
             }
-
+            grfSpecial.Cols[colBlName].Caption = "Name";
+            grfSpecial.Cols[colBlInclude].Caption = "Include";
+            grfSpecial.Cols[colBlPrice].Caption = "Price";
+            grfSpecial.Cols[colBlRemark].Caption = "Remark";
+            grfSpecial.Cols[colBlQty].Caption = "QTY";
             int i = 0;
             decimal aaa = 0;
             foreach (DataRow row in dt.Rows)
@@ -1740,7 +1743,7 @@ namespace clinic_ivf.gui
 
             FilterRow fr = new FilterRow(grfSpecial);
             grfSpecial.AllowFiltering = true;
-            grfSpecial.AfterFilter += GrfSpecial_AfterFilter;
+            
             //theme1.SetTheme(grfFinish, ic.theme);
 
         }
@@ -1753,7 +1756,32 @@ namespace clinic_ivf.gui
                 var filter = grfSpecial.Cols[col].ActiveFilter;
             }
         }
+        private void GrfSpecial_DoubleClick(object sender, EventArgs e)
+        {
+            //throw new NotImplementedException();
+            if (grfSpecial.Col == colBlQty) return;
+            setOrderSpecial();
+        }
+        private void setOrderSpecial()
+        {
+            if (grfSpecial.Row <= 0) return;
+            if (grfSpecial[grfSpecial.Row, colBlId] == null) return;
+            String labid = "", include = "", qty = "";
+            rowOrder++;
+            labid = grfSpecial[grfSpecial.Row, colBlId].ToString();
+            include = grfSpecial[grfSpecial.Row, colBlInclude] != null ? grfSpecial[grfSpecial.Row, colBlInclude].ToString().Equals("True") ? "1" : "0" : "0";
+            qty = grfSpecial[grfSpecial.Row, colBlQty] != null ? grfSpecial[grfSpecial.Row, colBlQty].ToString() : "1";
+            if (include.Equals("1"))
+            {
+                ic.ivfDB.SpecialAdd(labid, qty, txtIdOld.Text, txtHn.Text, txtVnOld.Text, "0", "", "", "", "", grfOrder.Rows.Count.ToString());
+            }
+            else
+            {
+                ic.ivfDB.SpecialAdd(labid, qty, txtIdOld.Text, txtHn.Text, txtVnOld.Text, "1", "", "", "", "", grfOrder.Rows.Count.ToString());
+            }
 
+            setGrfOrder(txtVnOld.Text);
+        }
         private void _flex_AfterFilter(object sender, EventArgs e)
         {
             //throw new NotImplementedException();
@@ -1792,6 +1820,7 @@ namespace clinic_ivf.gui
         private void GrfGenetic_DoubleClick(object sender, EventArgs e)
         {
             //throw new NotImplementedException();
+            if (grfGenetic.Col == colBlQty) return;
             setOrderGenetic();
         }
         private void setOrderGenetic()
@@ -1842,10 +1871,7 @@ namespace clinic_ivf.gui
             //grdFlex.Cols[colID].Caption = "no";
             //grfDept.Cols[colCode].Caption = "รหัส";
 
-            grfGenetic.Cols[colBlName].Caption = "Name";
-            grfGenetic.Cols[colBlInclude].Caption = "Include";
-            grfGenetic.Cols[colBlPrice].Caption = "Price";
-            grfGenetic.Cols[colBlRemark].Caption = "Remark";
+            
 
             CellRange rg = grfGenetic.GetCellRange(2, colBlInclude, grfGenetic.Rows.Count - 1, colBlInclude);
             rg.Style = cs;
@@ -1856,6 +1882,11 @@ namespace clinic_ivf.gui
                 grfGenetic.Cols[col + 1].Caption = dt.Columns[col].ColumnName;
                 grfGenetic.Cols[col + 1].Name = dt.Columns[col].ColumnName;
             }
+            grfGenetic.Cols[colBlName].Caption = "Name";
+            grfGenetic.Cols[colBlInclude].Caption = "Include";
+            grfGenetic.Cols[colBlPrice].Caption = "Price";
+            grfGenetic.Cols[colBlRemark].Caption = "Remark";
+            grfGenetic.Cols[colBlQty].Caption = "QTY";
             int i = 0;
             decimal aaa = 0;
             foreach (DataRow row in dt.Rows)
@@ -1949,6 +1980,7 @@ namespace clinic_ivf.gui
         private void GrfEmbryo_DoubleClick(object sender, EventArgs e)
         {
             //throw new NotImplementedException();
+            if (grfEmbryo.Col == colBlQty) return;
             setOrderEmbryo();
         }
 
@@ -1980,10 +2012,7 @@ namespace clinic_ivf.gui
             //grdFlex.Cols[colID].Caption = "no";
             //grfDept.Cols[colCode].Caption = "รหัส";
 
-            grfEmbryo.Cols[colBlName].Caption = "Name";
-            grfEmbryo.Cols[colBlInclude].Caption = "Include";
-            grfEmbryo.Cols[colBlPrice].Caption = "Price";
-            grfEmbryo.Cols[colBlRemark].Caption = "Remark";
+            
 
             CellRange rg = grfEmbryo.GetCellRange(2, colBlInclude, grfEmbryo.Rows.Count - 1, colBlInclude);
             rg.Style = cs;
@@ -1994,6 +2023,11 @@ namespace clinic_ivf.gui
                 grfEmbryo.Cols[col + 1].Caption = dt.Columns[col].ColumnName;
                 grfEmbryo.Cols[col + 1].Name = dt.Columns[col].ColumnName;
             }
+            grfEmbryo.Cols[colBlName].Caption = "Name";
+            grfEmbryo.Cols[colBlInclude].Caption = "Include";
+            grfEmbryo.Cols[colBlPrice].Caption = "Price";
+            grfEmbryo.Cols[colBlRemark].Caption = "Remark";
+            grfEmbryo.Cols[colBlQty].Caption = "QTY";
             int i = 0;
             decimal aaa = 0;
             foreach (DataRow row in dt.Rows)
@@ -2095,7 +2129,7 @@ namespace clinic_ivf.gui
             grfSperm.Rows.Count = dt.Rows.Count + 1;
             //grfSperm.DataSource = dt;
             grfSperm.Cols.Count = 7;
-            CellStyle cs = grfBloodLab.Styles.Add("bool");
+            CellStyle cs = grfSperm.Styles.Add("bool");
             cs.DataType = typeof(bool);
             cs.ImageAlign = ImageAlignEnum.LeftCenter;
 
@@ -2110,12 +2144,13 @@ namespace clinic_ivf.gui
 
             grfSperm.Cols[colBlName].Caption = "Name";
             grfSperm.Cols[colBlInclude].Caption = "Include";
+            grfSperm.Cols[colBlQty].Caption = "QTY";
             grfSperm.Cols[colBlPrice].Caption = "Price";
             grfSperm.Cols[colBlRemark].Caption = "Remark";
 
-            CellRange rg = grfSperm.GetCellRange(2, colBlInclude, grfSperm.Rows.Count - 1, colBlInclude);
+            CellRange rg = grfSperm.GetCellRange(1, colBlInclude, grfSperm.Rows.Count - 1, colBlInclude);
             rg.Style = cs;
-            rg.Style = grfBloodLab.Styles["bool"];
+            rg.Style = grfSperm.Styles["bool"];
 
             int i = 0;
             decimal aaa = 0;
@@ -2124,7 +2159,7 @@ namespace clinic_ivf.gui
                 try
                 {
                     i++;
-                    if (i == 1) continue;
+                    //if (i == 1) continue;
                     Decimal.TryParse(row[ic.ivfDB.oLabiDB.labI.Price].ToString(), out aaa);
                     grfSperm[i, colBlPrice] = aaa.ToString("#,##0");
                     grfSperm[i, colBlId] = row[ic.ivfDB.oLabiDB.labI.LID].ToString();
@@ -2182,6 +2217,7 @@ namespace clinic_ivf.gui
         private void GrfBloodLab_DoubleClick(object sender, EventArgs e)
         {
             //throw new NotImplementedException();
+            if (grfBloodLab.Col == colBlQty) return;
             setOrderBloodLab();
         }
         private void setOrderBloodLab()
@@ -2227,12 +2263,6 @@ namespace clinic_ivf.gui
             //grdFlex.Cols[colID].Caption = "no";
             //grfDept.Cols[colCode].Caption = "รหัส";
 
-            grfBloodLab.Cols[colBlName].Caption = "Name";
-            grfBloodLab.Cols[colBlInclude].Caption = "Include";
-            grfBloodLab.Cols[colBlPrice].Caption = "Price";
-            grfBloodLab.Cols[colBlQty].Caption = "QTY";
-            grfBloodLab.Cols[colBlRemark].Caption = "Remark";
-
             CellRange rg = grfBloodLab.GetCellRange(2, colBlInclude, grfBloodLab.Rows.Count - 1, colBlInclude);
             rg.Style = cs;
             rg.Style = grfBloodLab.Styles["bool"];
@@ -2242,6 +2272,11 @@ namespace clinic_ivf.gui
                 grfBloodLab.Cols[col + 1].Caption = dt.Columns[col].ColumnName;
                 grfBloodLab.Cols[col + 1].Name = dt.Columns[col].ColumnName;
             }
+            grfBloodLab.Cols[colBlName].Caption = "Name";
+            grfBloodLab.Cols[colBlInclude].Caption = "Include";
+            grfBloodLab.Cols[colBlPrice].Caption = "Price";
+            grfBloodLab.Cols[colBlQty].Caption = "QTY";
+            grfBloodLab.Cols[colBlRemark].Caption = "Remark";
             int i = 0;
             decimal aaa = 0;
             foreach (DataRow row in dt.Rows)

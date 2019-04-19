@@ -219,7 +219,7 @@ namespace clinic_ivf.gui
 
             //FilterRow fr = new FilterRow(grfExpn);
 
-            //grfQue.AfterRowColChange += GrfReq_AfterRowColChange;
+            grfQue.DoubleClick += GrfQue_DoubleClick;
             //grfExpnC.CellButtonClick += new C1.Win.C1FlexGrid.RowColEventHandler(this.grfDept_CellButtonClick);
             //grfExpnC.CellChanged += new C1.Win.C1FlexGrid.RowColEventHandler(this.grfDept_CellChanged);
             ContextMenu menuGw = new ContextMenu();
@@ -235,6 +235,14 @@ namespace clinic_ivf.gui
             //theme1.SetTheme(tabFinish, "Office2010Blue");
 
         }
+
+        private void GrfQue_DoubleClick(object sender, EventArgs e)
+        {
+            //throw new NotImplementedException();
+            if (grfQue.Row <= 0) return;
+            ContextMenu_edit_bill(null, null);
+        }
+
         private void ContextMenu_send_back(object sender, System.EventArgs e)
         {
             String chk = "", name = "", id = "";
@@ -284,11 +292,11 @@ namespace clinic_ivf.gui
             //}
 
             //grfExpn.Rows.Count = dt.Rows.Count + 1;
-            ContextMenu menuGw = new ContextMenu();
-            menuGw.MenuItems.Add("ออก บิล", new EventHandler(ContextMenu_edit_bill));
+            //ContextMenu menuGw = new ContextMenu();
+            //menuGw.MenuItems.Add("ออก บิล", new EventHandler(ContextMenu_edit_bill));
             //menuGw.MenuItems.Add("&แก้ไข", new EventHandler(ContextMenu_Gw_Edit));
             //menuGw.MenuItems.Add("&ยกเลิก", new EventHandler(ContextMenu_Gw_Cancel));
-            grfQue.ContextMenu = menuGw;
+            //grfQue.ContextMenu = menuGw;
 
             grfQue.Rows.Count = dt.Rows.Count + 1;
             grfQue.Cols.Count = 10;
@@ -325,7 +333,7 @@ namespace clinic_ivf.gui
             //menuGw.MenuItems.Add("&Add Appointment", new EventHandler(ContextMenu_Apm_Ptt));
             //menuGw.MenuItems.Add("&Cancel Receive", new EventHandler(ContextMenu_Apm_Ptt));
             //menuGw.MenuItems.Add("&No Appointment Close Operation", new EventHandler(ContextMenu_NO_Apm_Ptt));
-            grfQue.ContextMenu = menuGw;
+            //grfQue.ContextMenu = menuGw;
 
             Color color = ColorTranslator.FromHtml(ic.iniC.grfRowColor);
             //CellRange rg1 = grfBank.GetCellRange(1, colE, grfBank.Rows.Count, colE);
@@ -356,6 +364,13 @@ namespace clinic_ivf.gui
             }
             CellNoteManager mgr = new CellNoteManager(grfQue);
             grfQue.Cols[colID].Visible = false;
+            grfQue.Cols[colVN].AllowEditing = false;
+            grfQue.Cols[colPttHn].AllowEditing = false;
+            grfQue.Cols[colPttName].AllowEditing = false;
+            grfQue.Cols[colVsDate].AllowEditing = false;
+            grfQue.Cols[colVsTime].AllowEditing = false;
+            grfQue.Cols[colVsEtime].AllowEditing = false;
+            grfQue.Cols[colStatus].AllowEditing = false;
             //theme1.SetTheme(grfQue, ic.theme);
 
         }
