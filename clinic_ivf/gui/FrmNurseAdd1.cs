@@ -2084,7 +2084,7 @@ namespace clinic_ivf.gui
             //FilterRow2 fr = new FilterRow2(grfSperm);
 
             grfSperm.AfterRowColChange += GrfMed_AfterRowColChange;
-            //grfExpnC.CellButtonClick += new C1.Win.C1FlexGrid.RowColEventHandler(this.grfDept_CellButtonClick);
+            grfSperm.DoubleClick += GrfSperm_DoubleClick;
             //grfExpnC.CellChanged += new C1.Win.C1FlexGrid.RowColEventHandler(this.grfDept_CellChanged);
             ContextMenu menuGw = new ContextMenu();
             if (flagedit.Equals("edit"))
@@ -2099,7 +2099,15 @@ namespace clinic_ivf.gui
             theme1.SetTheme(grfSperm, "Office2010Green");
 
         }
-        private void ContextMenu_order_sp_set(object sender, System.EventArgs e)
+
+        private void GrfSperm_DoubleClick(object sender, EventArgs e)
+        {
+            //throw new NotImplementedException();
+            if (grfSperm.Col == colBlQty) return;
+            setOrderSperm();
+        }
+
+        private void setOrderSperm()
         {
             if (grfSperm.Row <= 0) return;
             if (grfSperm[grfSperm.Row, colBlId] == null) return;
@@ -2118,6 +2126,10 @@ namespace clinic_ivf.gui
             }
 
             setGrfOrder(txtVnOld.Text);
+        }
+        private void ContextMenu_order_sp_set(object sender, System.EventArgs e)
+        {
+            setOrderSperm();
         }
         private void setGrfSperm()
         {

@@ -87,6 +87,8 @@ namespace clinic_ivf.objdb
         public OrRequestDB orreqDB;
         public OrTOperationDB oropDB;
         public OldLabItemGroupDB olabgDB;
+        public EggStiDB eggsDB;
+        public EggStiDayDB eggsdDB;
         public IvfDB(ConnectDB c)
         {
             conn = c;
@@ -164,6 +166,8 @@ namespace clinic_ivf.objdb
             orreqDB = new OrRequestDB(conn);
             oropDB = new OrTOperationDB(conn);
             olabgDB = new OldLabItemGroupDB(conn);
+            eggsDB = new EggStiDB(conn);
+            eggsdDB = new EggStiDayDB(conn);
 
             Console.WriteLine("ivfDB end");
         }
