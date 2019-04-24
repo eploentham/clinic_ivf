@@ -20,5 +20,7 @@ namespace clinic_ivf.object1
         public String et { get; set; }
         public String fet { get; set; }
         public String bhcg_test { get; set; }
+        public String t_patient_id { get; set; }
+        public String t_visit_id { get; set; }
     }
 }

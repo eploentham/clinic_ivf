@@ -1,6 +1,7 @@
 ﻿using clinic_ivf.object1;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -294,6 +295,61 @@ namespace clinic_ivf.objdb
             }
 
             return re;
+        }
+        private EggStiDay setEggSti(DataTable dt)
+        {
+            EggStiDay dept1 = new EggStiDay();
+            if (dt.Rows.Count > 0)
+            {
+                dept1.egg_sti_day_id = dt.Rows[0][eggsd.egg_sti_day_id].ToString();
+                dept1.egg_sti_id = dt.Rows[0][eggsd.egg_sti_id].ToString();
+                dept1.day = dt.Rows[0][eggsd.day].ToString();
+                dept1.date = dt.Rows[0][eggsd.date].ToString();
+                dept1.e2 = dt.Rows[0][eggsd.e2].ToString();
+                dept1.lh = dt.Rows[0][eggsd.lh].ToString();
+                dept1.active = dt.Rows[0][eggsd.active].ToString();
+                dept1.remark = dt.Rows[0][eggsd.remark].ToString();
+                dept1.fsh = dt.Rows[0][eggsd.fsh].ToString();
+                dept1.date_create = dt.Rows[0][eggsd.date_create].ToString();
+                dept1.date_modi = dt.Rows[0][eggsd.date_modi].ToString();
+                dept1.date_cancel = dt.Rows[0][eggsd.date_cancel].ToString();
+                dept1.user_create = dt.Rows[0][eggsd.user_create].ToString();
+                dept1.user_modi = dt.Rows[0][eggsd.user_modi].ToString();
+                dept1.user_cancel = dt.Rows[0][eggsd.user_cancel].ToString();
+                dept1.prolactin = dt.Rows[0][eggsd.prolactin].ToString();
+                dept1.rt_ovary_1 = dt.Rows[0][eggsd.rt_ovary_1].ToString();
+                dept1.rt_ovary_2 = dt.Rows[0][eggsd.rt_ovary_2].ToString();
+                dept1.lt_ovary_1 = dt.Rows[0][eggsd.lt_ovary_1].ToString();
+                dept1.lt_ovary_2 = dt.Rows[0][eggsd.lt_ovary_2].ToString();
+                dept1.endo = dt.Rows[0][eggsd.endo].ToString();
+                dept1.medication = dt.Rows[0][eggsd.medication].ToString();
+            }
+            else
+            {
+                dept1.egg_sti_day_id = "";
+                dept1.egg_sti_id = "";
+                dept1.day = "";
+                dept1.date = "";
+                dept1.e2 = "";
+                dept1.lh = "";
+                dept1.active = "";
+                dept1.remark = "";
+                dept1.fsh = "";
+                dept1.date_create = "";
+                dept1.date_modi = "";
+                dept1.date_cancel = "";
+                dept1.user_create = "";
+                dept1.user_modi = "";
+                dept1.user_cancel = "";
+                dept1.prolactin = "";
+                dept1.rt_ovary_1 = "";
+                dept1.rt_ovary_2 = "";
+                dept1.lt_ovary_1 = "";
+                dept1.lt_ovary_2 = "";
+                dept1.endo = "";
+                dept1.medication = "";
+            }
+            return dept1;
         }
     }
 }

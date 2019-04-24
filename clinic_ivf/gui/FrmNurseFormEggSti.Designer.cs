@@ -33,7 +33,6 @@
             this.theme1 = new C1.Win.C1Themes.C1ThemeController();
             this.c1SplitContainer1 = new C1.Win.C1SplitContainer.C1SplitContainer();
             this.pnPtt = new C1.Win.C1SplitContainer.C1SplitterPanel();
-            this.pnDesc = new C1.Win.C1SplitContainer.C1SplitterPanel();
             this.panel1 = new System.Windows.Forms.Panel();
             this.label29 = new System.Windows.Forms.Label();
             this.label35 = new System.Windows.Forms.Label();
@@ -50,7 +49,6 @@
             this.txtAllergy = new C1.Win.C1Input.C1TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.txtDoctor = new C1.Win.C1Input.C1TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.txtVn = new C1.Win.C1Input.C1TextBox();
             this.txtBg = new C1.Win.C1Input.C1TextBox();
@@ -67,13 +65,14 @@
             this.txtPttNameE = new C1.Win.C1Input.C1TextBox();
             this.label14 = new System.Windows.Forms.Label();
             this.txtHn = new C1.Win.C1Input.C1TextBox();
+            this.pnDesc = new C1.Win.C1SplitContainer.C1SplitterPanel();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.cboDoctor = new C1.Win.C1Input.C1ComboBox();
             this.sB.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.theme1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.c1SplitContainer1)).BeginInit();
             this.c1SplitContainer1.SuspendLayout();
             this.pnPtt.SuspendLayout();
-            this.pnDesc.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtVisitPulse)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtVisitBP)).BeginInit();
@@ -82,7 +81,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtVnOld)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtIdOld)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtAllergy)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtDoctor)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtVn)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtBg)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtSex)).BeginInit();
@@ -92,6 +90,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtPttName)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtPttNameE)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtHn)).BeginInit();
+            this.pnDesc.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.cboDoctor)).BeginInit();
             this.SuspendLayout();
             // 
             // sB
@@ -117,19 +117,24 @@
             // c1SplitContainer1
             // 
             this.c1SplitContainer1.AutoSizeElement = C1.Framework.AutoSizeElement.Both;
-            this.c1SplitContainer1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.c1SplitContainer1.CollapsingCueColor = System.Drawing.Color.FromArgb(((int)(((byte)(133)))), ((int)(((byte)(133)))), ((int)(((byte)(150)))));
+            this.c1SplitContainer1.BackColor = System.Drawing.Color.White;
+            this.c1SplitContainer1.CollapsingAreaColor = System.Drawing.Color.White;
+            this.c1SplitContainer1.CollapsingCueColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
             this.c1SplitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.c1SplitContainer1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.c1SplitContainer1.FixedLineColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(189)))), ((int)(((byte)(182)))));
+            this.c1SplitContainer1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.c1SplitContainer1.HeaderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
             this.c1SplitContainer1.HeaderLineWidth = 1;
             this.c1SplitContainer1.Location = new System.Drawing.Point(0, 0);
             this.c1SplitContainer1.Name = "c1SplitContainer1";
             this.c1SplitContainer1.Panels.Add(this.pnPtt);
             this.c1SplitContainer1.Panels.Add(this.pnDesc);
             this.c1SplitContainer1.Size = new System.Drawing.Size(1850, 743);
+            this.c1SplitContainer1.SplitterColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(189)))), ((int)(((byte)(182)))));
             this.c1SplitContainer1.SplitterMovingColor = System.Drawing.Color.Black;
             this.c1SplitContainer1.TabIndex = 8;
             this.theme1.SetTheme(this.c1SplitContainer1, "(default)");
+            this.c1SplitContainer1.UseParentVisualStyle = false;
             // 
             // pnPtt
             // 
@@ -143,19 +148,10 @@
             this.pnPtt.TabIndex = 0;
             this.pnPtt.Text = "Panel 1";
             // 
-            // pnDesc
-            // 
-            this.pnDesc.Controls.Add(this.panel2);
-            this.pnDesc.Height = 612;
-            this.pnDesc.Location = new System.Drawing.Point(0, 152);
-            this.pnDesc.Name = "pnDesc";
-            this.pnDesc.Size = new System.Drawing.Size(1850, 591);
-            this.pnDesc.TabIndex = 1;
-            this.pnDesc.Text = "Panel 2";
-            // 
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.panel1.Controls.Add(this.cboDoctor);
             this.panel1.Controls.Add(this.label29);
             this.panel1.Controls.Add(this.label35);
             this.panel1.Controls.Add(this.label58);
@@ -171,7 +167,6 @@
             this.panel1.Controls.Add(this.txtAllergy);
             this.panel1.Controls.Add(this.label6);
             this.panel1.Controls.Add(this.label3);
-            this.panel1.Controls.Add(this.txtDoctor);
             this.panel1.Controls.Add(this.label2);
             this.panel1.Controls.Add(this.txtVn);
             this.panel1.Controls.Add(this.txtBg);
@@ -393,19 +388,6 @@
             this.label3.Text = "Doctor :";
             this.theme1.SetTheme(this.label3, "(default)");
             // 
-            // txtDoctor
-            // 
-            this.txtDoctor.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtDoctor.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
-            this.txtDoctor.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.txtDoctor.Location = new System.Drawing.Point(289, 54);
-            this.txtDoctor.Name = "txtDoctor";
-            this.txtDoctor.Size = new System.Drawing.Size(253, 20);
-            this.txtDoctor.TabIndex = 904;
-            this.txtDoctor.Tag = null;
-            this.theme1.SetTheme(this.txtDoctor, "(default)");
-            this.txtDoctor.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
-            // 
             // label2
             // 
             this.label2.AutoSize = true;
@@ -626,6 +608,16 @@
             this.theme1.SetTheme(this.txtHn, "(default)");
             this.txtHn.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
             // 
+            // pnDesc
+            // 
+            this.pnDesc.Controls.Add(this.panel2);
+            this.pnDesc.Height = 612;
+            this.pnDesc.Location = new System.Drawing.Point(0, 152);
+            this.pnDesc.Name = "pnDesc";
+            this.pnDesc.Size = new System.Drawing.Size(1850, 591);
+            this.pnDesc.TabIndex = 1;
+            this.pnDesc.Text = "Panel 2";
+            // 
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
@@ -636,6 +628,27 @@
             this.panel2.Size = new System.Drawing.Size(1850, 591);
             this.panel2.TabIndex = 0;
             this.theme1.SetTheme(this.panel2, "(default)");
+            // 
+            // cboDoctor
+            // 
+            this.cboDoctor.AllowSpinLoop = false;
+            this.cboDoctor.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.cboDoctor.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
+            this.cboDoctor.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.cboDoctor.GapHeight = 0;
+            this.cboDoctor.ImagePadding = new System.Windows.Forms.Padding(0);
+            this.cboDoctor.ItemsDisplayMember = "";
+            this.cboDoctor.ItemsValueMember = "";
+            this.cboDoctor.Location = new System.Drawing.Point(289, 56);
+            this.cboDoctor.Name = "cboDoctor";
+            this.cboDoctor.Size = new System.Drawing.Size(253, 20);
+            this.cboDoctor.Style.DropDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.cboDoctor.Style.DropDownBorderColor = System.Drawing.Color.Gainsboro;
+            this.cboDoctor.Style.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.cboDoctor.TabIndex = 920;
+            this.cboDoctor.Tag = null;
+            this.theme1.SetTheme(this.cboDoctor, "(default)");
+            this.cboDoctor.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
             // 
             // FrmNurseFormEggSti
             // 
@@ -653,7 +666,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.c1SplitContainer1)).EndInit();
             this.c1SplitContainer1.ResumeLayout(false);
             this.pnPtt.ResumeLayout(false);
-            this.pnDesc.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtVisitPulse)).EndInit();
@@ -663,7 +675,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtVnOld)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtIdOld)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtAllergy)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtDoctor)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtVn)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtBg)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtSex)).EndInit();
@@ -673,6 +684,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtPttName)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtPttNameE)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtHn)).EndInit();
+            this.pnDesc.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.cboDoctor)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -702,7 +715,6 @@
         private C1.Win.C1Input.C1TextBox txtAllergy;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label3;
-        private C1.Win.C1Input.C1TextBox txtDoctor;
         private System.Windows.Forms.Label label2;
         private C1.Win.C1Input.C1TextBox txtVn;
         private C1.Win.C1Input.C1TextBox txtBg;
@@ -720,5 +732,6 @@
         private System.Windows.Forms.Label label14;
         private C1.Win.C1Input.C1TextBox txtHn;
         private System.Windows.Forms.Panel panel2;
+        private C1.Win.C1Input.C1ComboBox cboDoctor;
     }
 }

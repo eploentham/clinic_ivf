@@ -17,7 +17,7 @@ namespace clinic_ivf.gui
     public partial class FrmNurseFormEggSti : Form
     {
         IvfControl ic;
-        String pttId = "", webcamname = "", vsid = "", flagedit = "", pApmId = "";
+        String pttid = "", webcamname = "", vsid = "", flagedit = "", pApmId = "", vsidOld = "";
 
         Font fEdit, fEditB;
         Color bg, fc;
@@ -36,7 +36,7 @@ namespace clinic_ivf.gui
             InitializeComponent();
             this.ic = ic;
             this.vsid = vsid;
-            this.pttId = pttid;
+            this.pttid = pttid;
             this.flagedit = flagedit;
             initConfig();
         }
@@ -49,6 +49,7 @@ namespace clinic_ivf.gui
             theme1.Theme = ic.iniC.themeApplication;
             theme1.SetTheme(sB, "BeigeOne");
             //theme1.SetTheme(tabOrder, "MacSilver");
+            ic.ivfDB.dtrOldDB.setCboDoctor(cboDoctor, "");
 
             sB1.Text = "";
             bg = txtHn.BackColor;

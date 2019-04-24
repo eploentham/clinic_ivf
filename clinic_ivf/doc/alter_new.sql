@@ -277,4 +277,12 @@ ADD COLUMN `bhcg_test` VARCHAR(255) NULL AFTER `fet`;
 ALTER TABLE `ivf_101`.`nurse_t_egg_sti` 
 ADD COLUMN `remark` VARCHAR(255) NULL AFTER `bhcg_test`;
 
+ALTER TABLE `ivf_101`.`nurse_t_egg_sti` 
+ADD COLUMN `t_patient_id` INT NULL AFTER `remark`,
+ADD COLUMN `t_visit_id` INT NULL AFTER `t_patient_id`;
+
+ALTER TABLE `ivf_101`.`nurse_t_egg_sti` 
+ADD COLUMN `egg_sti_date` VARCHAR(45) NULL AFTER `t_visit_id`;
+
+
 

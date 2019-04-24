@@ -43,6 +43,8 @@ namespace clinic_ivf.objdb
             eggs.et = "et";
             eggs.fet = "fet";
             eggs.bhcg_test = "bhcg_test";
+            eggs.t_patient_id = "t_patient_id";
+            eggs.t_visit_id = "t_visit_id";
 
             eggs.table = "nurse_t_egg_sti";
             eggs.pkField = "egg_sti_id";
@@ -59,8 +61,8 @@ namespace clinic_ivf.objdb
             p.user_modi = p.user_modi == null ? "" : p.user_modi;
             p.user_cancel = p.user_cancel == null ? "" : p.user_cancel;
 
-            //p.lmp_date = long.TryParse(p.lmp_date, out chk) ? chk.ToString() : "0";
-            //p.status_g = long.TryParse(p.status_g, out chk) ? chk.ToString() : "0";
+            p.t_patient_id = long.TryParse(p.t_patient_id, out chk) ? chk.ToString() : "0";
+            p.t_visit_id = long.TryParse(p.t_visit_id, out chk) ? chk.ToString() : "0";
             //p.et = long.TryParse(p.et, out chk) ? chk.ToString() : "0";
             //p.fet = long.TryParse(p.fet, out chk) ? chk.ToString() : "0";
 
@@ -106,6 +108,8 @@ namespace clinic_ivf.objdb
                 "," + eggs.et + "='" + p.et.Replace("'", "''") + "'" +
                 "," + eggs.fet + "='" + p.fet.Replace("'", "''") + "'" +
                 "," + eggs.bhcg_test + "='" + p.bhcg_test.Replace("'", "''") + "'" +
+                "," + eggs.t_patient_id + "='" + p.t_patient_id + "'" +
+                "," + eggs.t_visit_id + "='" + p.t_visit_id + "'" +
                 " " +
 
                 "";
@@ -138,6 +142,8 @@ namespace clinic_ivf.objdb
                 "," + eggs.et + " = '" + p.et.Replace("'", "''") + "'" +
                 "," + eggs.fet + "='" + p.fet.Replace("'", "''") + "'" +
                 "," + eggs.bhcg_test + "='" + p.bhcg_test.Replace("'", "''") + "'" +
+                "," + eggs.t_patient_id + "='" + p.t_patient_id + "'" +
+                "," + eggs.t_visit_id + "='" + p.t_visit_id + "'" +
                 "Where " + eggs.pkField + "='" + p.egg_sti_id + "'"
                 ;
 
@@ -289,6 +295,61 @@ namespace clinic_ivf.objdb
             }
 
             return re;
-        }        
+        }
+        private EggSti setEggSti(DataTable dt)
+        {
+            EggSti dept1 = new EggSti();
+            if (dt.Rows.Count > 0)
+            {
+                dept1.egg_sti_id = dt.Rows[0][eggs.egg_sti_id].ToString();
+                dept1.lmp_date = dt.Rows[0][eggs.lmp_date].ToString();
+                dept1.nurse_t_egg_sticol = dt.Rows[0][eggs.nurse_t_egg_sticol].ToString();
+                dept1.status_g = dt.Rows[0][eggs.status_g].ToString();
+                dept1.p = dt.Rows[0][eggs.p].ToString();
+                dept1.active = dt.Rows[0][eggs.active].ToString();
+                dept1.remark = dt.Rows[0][eggs.remark].ToString();
+                dept1.a = dt.Rows[0][eggs.a].ToString();
+                dept1.date_create = dt.Rows[0][eggs.date_create].ToString();
+                dept1.date_modi = dt.Rows[0][eggs.date_modi].ToString();
+                dept1.date_cancel = dt.Rows[0][eggs.date_cancel].ToString();
+                dept1.user_create = dt.Rows[0][eggs.user_create].ToString();
+                dept1.user_modi = dt.Rows[0][eggs.user_modi].ToString();
+                dept1.user_cancel = dt.Rows[0][eggs.user_cancel].ToString();
+                dept1.g = dt.Rows[0][eggs.g].ToString();
+                dept1.opu_date = dt.Rows[0][eggs.opu_date].ToString();
+                dept1.opu_time = dt.Rows[0][eggs.opu_time].ToString();
+                dept1.et = dt.Rows[0][eggs.et].ToString();
+                dept1.fet = dt.Rows[0][eggs.fet].ToString();
+                dept1.bhcg_test = dt.Rows[0][eggs.bhcg_test].ToString();
+                dept1.t_patient_id = dt.Rows[0][eggs.t_patient_id].ToString();
+                dept1.t_visit_id = dt.Rows[0][eggs.t_visit_id].ToString();
+            }
+            else
+            {
+                dept1.egg_sti_id = "";
+                dept1.lmp_date = "";
+                dept1.nurse_t_egg_sticol = "";
+                dept1.status_g = "";
+                dept1.p = "";
+                dept1.active = "";
+                dept1.remark = "";
+                dept1.a = "";
+                dept1.date_create = "";
+                dept1.date_modi = "";
+                dept1.date_cancel = "";
+                dept1.user_create = "";
+                dept1.user_modi = "";
+                dept1.user_cancel = "";
+                dept1.g = "";
+                dept1.opu_date = "";
+                dept1.opu_time = "";
+                dept1.et = "";
+                dept1.fet = "";
+                dept1.bhcg_test = "";
+                dept1.t_patient_id = "";
+                dept1.t_visit_id = "";
+            }
+            return dept1;
+        }
     }
 }
