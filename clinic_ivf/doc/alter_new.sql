@@ -285,4 +285,10 @@ ALTER TABLE `ivf_101`.`nurse_t_egg_sti`
 ADD COLUMN `egg_sti_date` VARCHAR(45) NULL AFTER `t_visit_id`;
 
 
+ALTER TABLE `ivf_101`.`nurse_t_egg_sti` 
+CHANGE COLUMN `t_patient_id` `t_patient_id` INT(11) NULL DEFAULT NULL AFTER `lmp_date`,
+CHANGE COLUMN `t_visit_id` `t_visit_id` INT(11) NULL DEFAULT NULL AFTER `t_patient_id`,
+CHANGE COLUMN `egg_sti_date` `egg_sti_date` VARCHAR(45) NULL DEFAULT NULL AFTER `t_visit_id`;
+
+
 

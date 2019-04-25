@@ -1002,10 +1002,11 @@ namespace clinic_ivf.gui
             menuGw.MenuItems.Add("receive operation", new EventHandler(ContextMenu_order));
             menuGw.MenuItems.Add("LAB request FORM A", new EventHandler(ContextMenu_LAB_req_formA_Ptt));
             menuGw.MenuItems.Add("LAB FORM DAY1", new EventHandler(ContextMenu_LAB_req_form_day1));
+            menuGw.MenuItems.Add("Egg Sti ", new EventHandler(ContextMenu_egg_sti));
             menuGw.MenuItems.Add("&Add Appointment", new EventHandler(ContextMenu_Apm_Ptt));
             menuGw.MenuItems.Add("&Cancel Receive", new EventHandler(ContextMenu_Void_Ptt));
             menuGw.MenuItems.Add("&No Appointment Close Operation", new EventHandler(ContextMenu_NO_Apm_Ptt));
-            //menuGw.MenuItems.Add("Print Pre-Operation Check List", new EventHandler(ContextMenu_prn_check_list));
+            
             //menuGw.MenuItems.Add("Print Autherization Form", new EventHandler(ContextMenu_prn_authen_sign));
             MenuItem addDevice = new MenuItem("[Form Print]");
             menuGw.MenuItems.Add(addDevice);
@@ -1053,6 +1054,20 @@ namespace clinic_ivf.gui
             grfQue.Cols[colVsDate].AllowEditing = false;
             grfQue.Cols[colVsTime].AllowEditing = false;
             //theme1.SetTheme(grfQue, ic.theme);
+
+        }
+        private void ContextMenu_egg_sti(object sender, System.EventArgs e)
+        {
+            String chk = "", name = "", vsid = "", pttId = "";
+            if (grfQue.Row < 0) return;
+            vsid = grfQue[grfQue.Row, colID] != null ? grfQue[grfQue.Row, colID].ToString() : "";
+            pttId = grfQue[grfQue.Row, colPttId] != null ? grfQue[grfQue.Row, colPttId].ToString() : "";
+            chk = grfQue[grfQue.Row, colPttHn] != null ? grfQue[grfQue.Row, colPttHn].ToString() : "";
+            name = grfQue[grfQue.Row, colPttName] != null ? grfQue[grfQue.Row, colPttName].ToString() : "";
+            //reqid = ic.ivfDB.oJsDB.selectByStatusOPU(vsid);
+            //if (!reqid.Equals(""))
+            //{
+            openEggStiAdd(pttId, vsid, name,"");
 
         }
         private void ContextMenu_prn_authen_sign_finish(object sender, System.EventArgs e)
@@ -1473,6 +1488,18 @@ namespace clinic_ivf.gui
             //grfReq.Rows.Remove(grfReq.Row);
             //openPatientAdd(id, name);
             //}
+        }
+        private void openEggStiAdd(String pttId, String vsid, String name, String flagview)
+        {
+            FrmNurseFormEggSti frm = new FrmNurseFormEggSti(ic, menu,"", pttId, vsid, flagview);
+            String txt = "";
+            if (!name.Equals(""))
+            {
+                txt = " " + name;
+            }
+
+            frm.FormBorderStyle = FormBorderStyle.None;
+            menu.AddNewTab(frm, txt);
         }
         private void openNurseAdd(String pttId, String vsid, String name, String flagview)
         {

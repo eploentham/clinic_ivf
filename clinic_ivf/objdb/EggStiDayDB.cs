@@ -296,6 +296,27 @@ namespace clinic_ivf.objdb
 
             return re;
         }
+        public DataTable selectByPk(String pttId)
+        {
+            DataTable dt = new DataTable();
+            String sql = "select eggsd.* " +
+                "From " + eggsd.table + " eggsd " +
+                "Where eggsd." + eggsd.pkField + " ='" + pttId + "' ";
+            dt = conn.selectData(conn.conn, sql);
+            return dt;
+        }
+        public EggStiDay selectByPk1(String pttId)
+        {
+            EggStiDay cop1 = new EggStiDay();
+            DataTable dt = new DataTable();
+            String sql = "select eggsd.* " +
+                "From " + eggsd.table + " eggsd " +
+                "Where eggsd." + eggsd.pkField + " ='" + pttId + "' ";
+            dt = conn.selectData(conn.conn, sql);
+            cop1 = setEggSti(dt);
+            return cop1;
+        }
+        
         private EggStiDay setEggSti(DataTable dt)
         {
             EggStiDay dept1 = new EggStiDay();

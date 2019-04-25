@@ -45,6 +45,7 @@ namespace clinic_ivf.objdb
             eggs.bhcg_test = "bhcg_test";
             eggs.t_patient_id = "t_patient_id";
             eggs.t_visit_id = "t_visit_id";
+            eggs.egg_sti_date = "egg_sti_date";
 
             eggs.table = "nurse_t_egg_sti";
             eggs.pkField = "egg_sti_id";
@@ -79,6 +80,7 @@ namespace clinic_ivf.objdb
             p.status_g = p.status_g == null ? "" : p.status_g;
             p.et = p.et == null ? "" : p.et;
             p.fet = p.fet == null ? "" : p.fet;
+            p.egg_sti_date = p.egg_sti_date == null ? "" : p.egg_sti_date;
 
             //p.user_cancel = p.user_cancel == null ? "" : p.user_cancel;
         }
@@ -110,6 +112,7 @@ namespace clinic_ivf.objdb
                 "," + eggs.bhcg_test + "='" + p.bhcg_test.Replace("'", "''") + "'" +
                 "," + eggs.t_patient_id + "='" + p.t_patient_id + "'" +
                 "," + eggs.t_visit_id + "='" + p.t_visit_id + "'" +
+                "," + eggs.egg_sti_date + "='" + p.egg_sti_date + "'" +
                 " " +
 
                 "";
@@ -144,6 +147,7 @@ namespace clinic_ivf.objdb
                 "," + eggs.bhcg_test + "='" + p.bhcg_test.Replace("'", "''") + "'" +
                 "," + eggs.t_patient_id + "='" + p.t_patient_id + "'" +
                 "," + eggs.t_visit_id + "='" + p.t_visit_id + "'" +
+                "," + eggs.egg_sti_date + "='" + p.egg_sti_date + "'" +
                 "Where " + eggs.pkField + "='" + p.egg_sti_id + "'"
                 ;
 
@@ -296,6 +300,37 @@ namespace clinic_ivf.objdb
 
             return re;
         }
+        public DataTable selectByPk(String pttId)
+        {
+            DataTable dt = new DataTable();
+            String sql = "select eggs.* " +
+                "From " + eggs.table + " eggs " +
+                "Where eggs." + eggs.pkField + " ='" + pttId + "' ";
+            dt = conn.selectData(conn.conn, sql);
+            return dt;
+        }
+        public EggSti selectByPk1(String pttId)
+        {
+            EggSti cop1 = new EggSti();
+            DataTable dt = new DataTable();
+            String sql = "select eggs.* " +
+                "From " + eggs.table + " eggs " +
+                "Where eggs." + eggs.pkField + " ='" + pttId + "' ";
+            dt = conn.selectData(conn.conn, sql);
+            cop1 = setEggSti(dt);
+            return cop1;
+        }
+        public EggSti selectByVsId(String pttId)
+        {
+            EggSti cop1 = new EggSti();
+            DataTable dt = new DataTable();
+            String sql = "select eggs.* " +
+                "From " + eggs.table + " eggs " +
+                "Where eggs." + eggs.t_visit_id + " ='" + pttId + "' ";
+            dt = conn.selectData(conn.conn, sql);
+            cop1 = setEggSti(dt);
+            return cop1;
+        }
         private EggSti setEggSti(DataTable dt)
         {
             EggSti dept1 = new EggSti();
@@ -323,6 +358,7 @@ namespace clinic_ivf.objdb
                 dept1.bhcg_test = dt.Rows[0][eggs.bhcg_test].ToString();
                 dept1.t_patient_id = dt.Rows[0][eggs.t_patient_id].ToString();
                 dept1.t_visit_id = dt.Rows[0][eggs.t_visit_id].ToString();
+                dept1.egg_sti_date = dt.Rows[0][eggs.egg_sti_date].ToString();
             }
             else
             {
@@ -348,6 +384,7 @@ namespace clinic_ivf.objdb
                 dept1.bhcg_test = "";
                 dept1.t_patient_id = "";
                 dept1.t_visit_id = "";
+                dept1.egg_sti_date = "";
             }
             return dept1;
         }

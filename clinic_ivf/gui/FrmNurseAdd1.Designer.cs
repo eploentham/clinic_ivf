@@ -33,8 +33,9 @@
             this.theme1 = new C1.Win.C1Themes.C1ThemeController();
             this.sC = new C1.Win.C1SplitContainer.C1SplitContainer();
             this.spPatient = new C1.Win.C1SplitContainer.C1SplitterPanel();
-            this.pnPatient = new System.Windows.Forms.Panel();
+            this.tlpPatient = new System.Windows.Forms.TableLayoutPanel();
             this.picPtt = new C1.Win.C1Input.C1PictureBox();
+            this.pnPatient = new System.Windows.Forms.Panel();
             this.label29 = new System.Windows.Forms.Label();
             this.label35 = new System.Windows.Forms.Label();
             this.label58 = new System.Windows.Forms.Label();
@@ -147,14 +148,14 @@
             this.btnNoteAdd = new C1.Win.C1Input.C1Button();
             this.label73 = new System.Windows.Forms.Label();
             this.txtNote = new C1.Win.C1Input.C1TextBox();
-            this.tlpPatient = new System.Windows.Forms.TableLayoutPanel();
             this.sB.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.theme1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.sC)).BeginInit();
             this.sC.SuspendLayout();
             this.spPatient.SuspendLayout();
-            this.pnPatient.SuspendLayout();
+            this.tlpPatient.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picPtt)).BeginInit();
+            this.pnPatient.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtVisitPulse)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtVisitBP)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtVisitBW)).BeginInit();
@@ -233,7 +234,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.chkNoteAll)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnNoteAdd)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtNote)).BeginInit();
-            this.tlpPatient.SuspendLayout();
             this.SuspendLayout();
             // 
             // sB
@@ -292,6 +292,34 @@
             this.spPatient.TabIndex = 0;
             this.spPatient.Text = "Patient";
             // 
+            // tlpPatient
+            // 
+            this.tlpPatient.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.tlpPatient.ColumnCount = 2;
+            this.tlpPatient.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 92F));
+            this.tlpPatient.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 8F));
+            this.tlpPatient.Controls.Add(this.picPtt, 1, 0);
+            this.tlpPatient.Controls.Add(this.pnPatient, 0, 0);
+            this.tlpPatient.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tlpPatient.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.tlpPatient.Location = new System.Drawing.Point(0, 0);
+            this.tlpPatient.Name = "tlpPatient";
+            this.tlpPatient.RowCount = 1;
+            this.tlpPatient.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tlpPatient.Size = new System.Drawing.Size(1584, 122);
+            this.tlpPatient.TabIndex = 532;
+            this.theme1.SetTheme(this.tlpPatient, "(default)");
+            // 
+            // picPtt
+            // 
+            this.picPtt.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.picPtt.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.picPtt.Location = new System.Drawing.Point(1460, 3);
+            this.picPtt.Name = "picPtt";
+            this.picPtt.Size = new System.Drawing.Size(121, 116);
+            this.picPtt.TabIndex = 847;
+            this.picPtt.TabStop = false;
+            // 
             // pnPatient
             // 
             this.pnPatient.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
@@ -342,16 +370,6 @@
             this.pnPatient.Size = new System.Drawing.Size(1451, 92);
             this.pnPatient.TabIndex = 531;
             this.theme1.SetTheme(this.pnPatient, "(default)");
-            // 
-            // picPtt
-            // 
-            this.picPtt.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.picPtt.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.picPtt.Location = new System.Drawing.Point(1460, 3);
-            this.picPtt.Name = "picPtt";
-            this.picPtt.Size = new System.Drawing.Size(121, 116);
-            this.picPtt.TabIndex = 847;
-            this.picPtt.TabStop = false;
             // 
             // label29
             // 
@@ -1835,24 +1853,6 @@
             this.theme1.SetTheme(this.txtNote, "(default)");
             this.txtNote.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
             // 
-            // tlpPatient
-            // 
-            this.tlpPatient.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.tlpPatient.ColumnCount = 2;
-            this.tlpPatient.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 92F));
-            this.tlpPatient.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 8F));
-            this.tlpPatient.Controls.Add(this.picPtt, 1, 0);
-            this.tlpPatient.Controls.Add(this.pnPatient, 0, 0);
-            this.tlpPatient.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tlpPatient.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.tlpPatient.Location = new System.Drawing.Point(0, 0);
-            this.tlpPatient.Name = "tlpPatient";
-            this.tlpPatient.RowCount = 1;
-            this.tlpPatient.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tlpPatient.Size = new System.Drawing.Size(1584, 122);
-            this.tlpPatient.TabIndex = 532;
-            this.theme1.SetTheme(this.tlpPatient, "(default)");
-            // 
             // FrmNurseAdd1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1871,9 +1871,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.sC)).EndInit();
             this.sC.ResumeLayout(false);
             this.spPatient.ResumeLayout(false);
+            this.tlpPatient.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.picPtt)).EndInit();
             this.pnPatient.ResumeLayout(false);
             this.pnPatient.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.picPtt)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtVisitPulse)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtVisitBP)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtVisitBW)).EndInit();
@@ -1954,7 +1955,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.chkNoteAll)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnNoteAdd)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtNote)).EndInit();
-            this.tlpPatient.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
