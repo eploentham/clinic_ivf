@@ -46,6 +46,7 @@ namespace clinic_ivf.objdb
             eggs.t_patient_id = "t_patient_id";
             eggs.t_visit_id = "t_visit_id";
             eggs.egg_sti_date = "egg_sti_date";
+            eggs.doctor_id = "doctor_id";
 
             eggs.table = "nurse_t_egg_sti";
             eggs.pkField = "egg_sti_id";
@@ -64,7 +65,7 @@ namespace clinic_ivf.objdb
 
             p.t_patient_id = long.TryParse(p.t_patient_id, out chk) ? chk.ToString() : "0";
             p.t_visit_id = long.TryParse(p.t_visit_id, out chk) ? chk.ToString() : "0";
-            //p.et = long.TryParse(p.et, out chk) ? chk.ToString() : "0";
+            p.doctor_id = long.TryParse(p.doctor_id, out chk) ? chk.ToString() : "0";
             //p.fet = long.TryParse(p.fet, out chk) ? chk.ToString() : "0";
 
             p.nurse_t_egg_sticol = p.nurse_t_egg_sticol == null ? "0" : p.nurse_t_egg_sticol;
@@ -113,6 +114,7 @@ namespace clinic_ivf.objdb
                 "," + eggs.t_patient_id + "='" + p.t_patient_id + "'" +
                 "," + eggs.t_visit_id + "='" + p.t_visit_id + "'" +
                 "," + eggs.egg_sti_date + "='" + p.egg_sti_date + "'" +
+                "," + eggs.doctor_id + "='" + p.doctor_id + "'" +
                 " " +
 
                 "";
@@ -148,6 +150,7 @@ namespace clinic_ivf.objdb
                 "," + eggs.t_patient_id + "='" + p.t_patient_id + "'" +
                 "," + eggs.t_visit_id + "='" + p.t_visit_id + "'" +
                 "," + eggs.egg_sti_date + "='" + p.egg_sti_date + "'" +
+                "," + eggs.doctor_id + "='" + p.doctor_id + "'" +
                 "Where " + eggs.pkField + "='" + p.egg_sti_id + "'"
                 ;
 
@@ -162,7 +165,7 @@ namespace clinic_ivf.objdb
 
             return re;
         }
-        public String insertLabOpuEmbryoDev(EggSti p, String userId)
+        public String insertEggSti(EggSti p, String userId)
         {
             String re = "";
 
@@ -177,7 +180,7 @@ namespace clinic_ivf.objdb
 
             return re;
         }
-        public String VoidLabOpuEmbryoDev(String id, String userid)
+        public String VoidEggSti(String id, String userid)
         {
             String re = "";
             String sql = "";
@@ -331,6 +334,17 @@ namespace clinic_ivf.objdb
             cop1 = setEggSti(dt);
             return cop1;
         }
+        public EggSti selectByPttId(String pttId)
+        {
+            EggSti cop1 = new EggSti();
+            DataTable dt = new DataTable();
+            String sql = "select eggs.* " +
+                "From " + eggs.table + " eggs " +
+                "Where eggs." + eggs.t_patient_id + " ='" + pttId + "' ";
+            dt = conn.selectData(conn.conn, sql);
+            cop1 = setEggSti(dt);
+            return cop1;
+        }
         private EggSti setEggSti(DataTable dt)
         {
             EggSti dept1 = new EggSti();
@@ -359,6 +373,7 @@ namespace clinic_ivf.objdb
                 dept1.t_patient_id = dt.Rows[0][eggs.t_patient_id].ToString();
                 dept1.t_visit_id = dt.Rows[0][eggs.t_visit_id].ToString();
                 dept1.egg_sti_date = dt.Rows[0][eggs.egg_sti_date].ToString();
+                dept1.doctor_id = dt.Rows[0][eggs.doctor_id].ToString();
             }
             else
             {
@@ -385,6 +400,7 @@ namespace clinic_ivf.objdb
                 dept1.t_patient_id = "";
                 dept1.t_visit_id = "";
                 dept1.egg_sti_date = "";
+                dept1.doctor_id = "";
             }
             return dept1;
         }

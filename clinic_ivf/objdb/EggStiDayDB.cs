@@ -25,7 +25,7 @@ namespace clinic_ivf.objdb
             eggsd = new EggStiDay();
             eggsd.egg_sti_day_id = "egg_sti_day_id";
             eggsd.egg_sti_id = "egg_sti_id";
-            eggsd.day = "day";
+            eggsd.day1 = "day1";
             eggsd.date = "date";
             eggsd.e2 = "e2";
             eggsd.lh = "lh";
@@ -46,7 +46,7 @@ namespace clinic_ivf.objdb
             eggsd.endo = "endo";
             eggsd.medication = "medication";
 
-            eggsd.table = "nurse_t_egg_sti";
+            eggsd.table = "nurse_t_egg_sti_day";
             eggsd.pkField = "egg_sti_day_id";
 
             lStf = new List<EggStiDay>();
@@ -75,7 +75,7 @@ namespace clinic_ivf.objdb
             p.rt_ovary_1 = p.rt_ovary_1 == null ? "" : p.rt_ovary_1;
             p.rt_ovary_2 = p.rt_ovary_2 == null ? "" : p.rt_ovary_2;
             p.endo = p.endo == null ? "" : p.endo;
-            p.day = p.day == null ? "" : p.day;
+            p.day1 = p.day1 == null ? "" : p.day1;
             p.e2 = p.e2 == null ? "" : p.e2;
             p.lt_ovary_1 = p.lt_ovary_1 == null ? "" : p.lt_ovary_1;
             p.lt_ovary_2 = p.lt_ovary_2 == null ? "" : p.lt_ovary_2;
@@ -89,11 +89,13 @@ namespace clinic_ivf.objdb
             p.active = "1";
             //p.ssdata_id = "";
             int chk = 0;
+            eggsd.day1 = "day1";
+            eggsd.table = "nurse_t_egg_sti_day";
 
             chkNull(p);
             //opuEmDev.p = "p";
             sql = "Insert Into " + eggsd.table + " Set " +
-                " " + eggsd.day + "='" + p.day + "'" +
+                " " + eggsd.day1 + "='" + p.day1 + "'" +
                 "," + eggsd.date + "='" + p.date + "'" +
                 "," + eggsd.e2 + "='" + p.e2 + "'" +
                 "," + eggsd.lh + "='" + p.lh.Replace("'", "''") + "'" +
@@ -158,6 +160,40 @@ namespace clinic_ivf.objdb
 
             return re;
         }
+        public String update1(EggStiDay p, String userId)
+        {
+            String re = "";
+            String sql = "";
+            int chk = 0;
+
+            chkNull(p);
+            sql = "Update " + eggsd.table + " Set " +
+                //" " + eggsd.date + " = '" + p.date + "'" +
+                " " + eggsd.e2 + " = '" + p.e2.Replace("'", "''") + "'" +
+                "," + eggsd.lh + " = '" + p.lh.Replace("'", "''") + "'" +
+                "," + eggsd.remark + " = '" + p.remark.Replace("'", "''") + "'" +
+                "," + eggsd.prolactin + " = '" + p.prolactin.Replace("'", "''") + "'" +
+                "," + eggsd.rt_ovary_1 + " = '" + p.rt_ovary_1.Replace("'", "''") + "'" +
+                "," + eggsd.rt_ovary_2 + " = '" + p.rt_ovary_2.Replace("'", "''") + "'" +
+                "," + eggsd.lt_ovary_1 + " = '" + p.lt_ovary_1.Replace("'", "''") + "'" +
+                "," + eggsd.lt_ovary_2 + "='" + p.lt_ovary_2.Replace("'", "''") + "'" +
+                "," + eggsd.endo + "='" + p.endo.Replace("'", "''") + "'" +
+                //"," + eggsd.egg_sti_id + "='" + p.egg_sti_id + "'" +
+                "," + eggsd.medication + "='" + p.medication + "'" +
+                "Where " + eggsd.pkField + "='" + p.egg_sti_day_id + "'"
+                ;
+
+            try
+            {
+                re = conn.ExecuteNonQuery(conn.conn, sql);
+            }
+            catch (Exception ex)
+            {
+                sql = ex.Message + " " + ex.InnerException;
+            }
+
+            return re;
+        }
         public String insertLabOpuEmbryoDev(EggStiDay p, String userId)
         {
             String re = "";
@@ -168,7 +204,7 @@ namespace clinic_ivf.objdb
             }
             else
             {
-                re = update(p, "");
+                re = update1(p, "");
             }
 
             return re;
@@ -201,7 +237,7 @@ namespace clinic_ivf.objdb
             int chk = 0;
             sql = "Update " + eggsd.table + " Set " +
                 " " + eggsd.lt_ovary_1 + " = '" + staffid + "'" +
-                "Where " + eggsd.day + "='" + opufetid + "' and " + eggsd.date + "='" + date + "'";
+                "Where " + eggsd.day1 + "='" + opufetid + "' and " + eggsd.date + "='" + date + "'";
             try
             {
                 re = conn.ExecuteNonQuery(conn.conn, sql);
@@ -220,7 +256,7 @@ namespace clinic_ivf.objdb
             int chk = 0;
             sql = "Update " + eggsd.table + " Set " +
                 " " + eggsd.lt_ovary_2 + " = '" + checkedid + "'" +
-                "Where " + eggsd.day + "='" + opufetid + "' and " + eggsd.date + "='" + date + "'";
+                "Where " + eggsd.day1 + "='" + opufetid + "' and " + eggsd.date + "='" + date + "'";
             try
             {
                 re = conn.ExecuteNonQuery(conn.conn, sql);
@@ -239,7 +275,7 @@ namespace clinic_ivf.objdb
             int chk = 0;
             sql = "Update " + eggsd.table + " Set " +
                 " " + eggsd.endo + " = '" + devdate + "'" +
-                "Where " + eggsd.day + "='" + opufetid + "' and " + eggsd.date + "='" + date + "'";
+                "Where " + eggsd.day1 + "='" + opufetid + "' and " + eggsd.date + "='" + date + "'";
             try
             {
                 re = conn.ExecuteNonQuery(conn.conn, sql);
@@ -316,7 +352,15 @@ namespace clinic_ivf.objdb
             cop1 = setEggSti(dt);
             return cop1;
         }
-        
+        public DataTable selectByEggStiId(String pttId)
+        {
+            DataTable dt = new DataTable();
+            String sql = "select eggsd.* " +
+                "From " + eggsd.table + " eggsd " +
+                "Where eggsd." + eggsd.egg_sti_id + " ='" + pttId + "' ";
+            dt = conn.selectData(conn.conn, sql);
+            return dt;
+        }
         private EggStiDay setEggSti(DataTable dt)
         {
             EggStiDay dept1 = new EggStiDay();
@@ -324,7 +368,7 @@ namespace clinic_ivf.objdb
             {
                 dept1.egg_sti_day_id = dt.Rows[0][eggsd.egg_sti_day_id].ToString();
                 dept1.egg_sti_id = dt.Rows[0][eggsd.egg_sti_id].ToString();
-                dept1.day = dt.Rows[0][eggsd.day].ToString();
+                dept1.day1 = dt.Rows[0][eggsd.day1].ToString();
                 dept1.date = dt.Rows[0][eggsd.date].ToString();
                 dept1.e2 = dt.Rows[0][eggsd.e2].ToString();
                 dept1.lh = dt.Rows[0][eggsd.lh].ToString();
@@ -349,7 +393,7 @@ namespace clinic_ivf.objdb
             {
                 dept1.egg_sti_day_id = "";
                 dept1.egg_sti_id = "";
-                dept1.day = "";
+                dept1.day1 = "";
                 dept1.date = "";
                 dept1.e2 = "";
                 dept1.lh = "";

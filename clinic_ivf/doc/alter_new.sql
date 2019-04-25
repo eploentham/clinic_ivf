@@ -290,5 +290,17 @@ CHANGE COLUMN `t_patient_id` `t_patient_id` INT(11) NULL DEFAULT NULL AFTER `lmp
 CHANGE COLUMN `t_visit_id` `t_visit_id` INT(11) NULL DEFAULT NULL AFTER `t_patient_id`,
 CHANGE COLUMN `egg_sti_date` `egg_sti_date` VARCHAR(45) NULL DEFAULT NULL AFTER `t_visit_id`;
 
+ALTER TABLE nurse_t_egg_sti AUTO_INCREMENT = 22600000;
+ALTER TABLE nurse_t_egg_sti_day AUTO_INCREMENT = 22700000;
+
+ALTER TABLE `ivf_101`.`nurse_t_egg_sti_day` 
+CHANGE COLUMN `day` `day1` VARCHAR(45) NULL DEFAULT NULL ;
+
+ALTER TABLE `ivf_101`.`nurse_t_egg_sti_day` 
+ADD COLUMN `remark` VARCHAR(255) NULL AFTER `user_cancel`;
+
+ALTER TABLE `ivf_101`.`nurse_t_egg_sti` 
+ADD COLUMN `doctor_id` INT NULL AFTER `remark`;
+
 
 

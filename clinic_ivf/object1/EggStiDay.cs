@@ -10,7 +10,7 @@ namespace clinic_ivf.object1
     {
         public String egg_sti_day_id { get; set; }
         public String egg_sti_id { get; set; }
-        public String day { get; set; }
+        public String day1 { get; set; }
         public String date { get; set; }
         public String e2 { get; set; }
         public String lh { get; set; }

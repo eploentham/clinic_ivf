@@ -23,5 +23,6 @@ namespace clinic_ivf.object1
         public String t_patient_id { get; set; }
         public String t_visit_id { get; set; }
         public String egg_sti_date { get; set; }
+        public String doctor_id { get; set; }
     }
 }

@@ -16,6 +16,7 @@ namespace clinic_ivf.objdb
         public List<FDocType> lFreezeMedia;
         public List<FDocType> lMethod;
         public List<FDocType> lStage, lStageDay3, lStageDau3Desc1, lStageDay5, lStageDau5Desc1;
+        public List<FDocType> lEggstiRt1, lEggstiRt2, lEggstiLt1, lEggstiLt2, lEggstiMedi;
         //public List<FDocType> lFreezeMedia;
 
         public FDocTypeDB(ConnectDB c)
@@ -33,6 +34,11 @@ namespace clinic_ivf.objdb
             lStageDau3Desc1 = new List<FDocType>();
             lStageDay5 = new List<FDocType>();
             lStageDau5Desc1 = new List<FDocType>();
+            lEggstiRt1 = new List<FDocType>();
+            lEggstiRt2 = new List<FDocType>();
+            lEggstiLt1 = new List<FDocType>();
+            lEggstiLt2 = new List<FDocType>();
+            lEggstiMedi = new List<FDocType>();
             fdt.doc_type_id = "doc_type_id";
             fdt.doc_type_code = "doc_type_code";
             fdt.doc_type_name = "doc_type_name";
@@ -126,6 +132,39 @@ namespace clinic_ivf.objdb
                 "From " + fdt.table + " fdt " +
                 " " +
                 "Where fdt." + fdt.active + " ='1' and fdt." + fdt.status_combo + "='opu_stage_day5_desc1'";
+            dt = conn.selectData(conn.conn, sql);
+
+            return dt;
+        }
+        public DataTable selectEggStiRt1()
+        {
+            DataTable dt = new DataTable();
+            String sql = "select fdt.*  " +
+                "From " + fdt.table + " fdt " +
+                " " +
+                "Where fdt." + fdt.active + " ='1' and fdt." + fdt.status_combo + "='egg_sti_rt_ovary1'";
+            dt = conn.selectData(conn.conn, sql);
+
+            return dt;
+        }
+        public DataTable selectEggStiRt2()
+        {
+            DataTable dt = new DataTable();
+            String sql = "select fdt.*  " +
+                "From " + fdt.table + " fdt " +
+                " " +
+                "Where fdt." + fdt.active + " ='1' and fdt." + fdt.status_combo + "='egg_sti_rt_ovary2'";
+            dt = conn.selectData(conn.conn, sql);
+
+            return dt;
+        }
+        public DataTable selectEggStiMedication()
+        {
+            DataTable dt = new DataTable();
+            String sql = "select fdt.*  " +
+                "From " + fdt.table + " fdt " +
+                " " +
+                "Where fdt." + fdt.active + " ='1' and fdt." + fdt.status_combo + "='egg_sti_medication'";
             dt = conn.selectData(conn.conn, sql);
 
             return dt;
@@ -266,6 +305,51 @@ namespace clinic_ivf.objdb
                 lStageDau5Desc1.Add(itm1);
             }
         }
+        public void getlEggStiRt1()
+        {
+            //lDept = new List<Position>();
+            lEggstiRt1.Clear();
+            DataTable dt = new DataTable();
+            dt = selectEggStiRt1();
+            foreach (DataRow row in dt.Rows)
+            {
+                FDocType itm1 = new FDocType();
+                itm1.doc_type_id = row[fdt.doc_type_id].ToString();
+                itm1.doc_type_name = row[fdt.doc_type_name].ToString();
+
+                lEggstiRt1.Add(itm1);
+            }
+        }
+        public void getlEggStiRt2()
+        {
+            //lDept = new List<Position>();
+            lEggstiRt2.Clear();
+            DataTable dt = new DataTable();
+            dt = selectEggStiRt2();
+            foreach (DataRow row in dt.Rows)
+            {
+                FDocType itm1 = new FDocType();
+                itm1.doc_type_id = row[fdt.doc_type_id].ToString();
+                itm1.doc_type_name = row[fdt.doc_type_name].ToString();
+
+                lEggstiRt2.Add(itm1);
+            }
+        }
+        public void getlEggStiMedication()
+        {
+            //lDept = new List<Position>();
+            lEggstiMedi.Clear();
+            DataTable dt = new DataTable();
+            dt = selectEggStiMedication();
+            foreach (DataRow row in dt.Rows)
+            {
+                FDocType itm1 = new FDocType();
+                itm1.doc_type_id = row[fdt.doc_type_id].ToString();
+                itm1.doc_type_name = row[fdt.doc_type_name].ToString();
+
+                lEggstiMedi.Add(itm1);
+            }
+        }
         public FDocType selectByPk1(String copId)
         {
             FDocType cop1 = new FDocType();
@@ -298,6 +382,90 @@ namespace clinic_ivf.objdb
                 fdt.status_combo = "";
             }
             return dept1;
+        }
+        public C1ComboBox setCboEggStiMedication(C1ComboBox c, String selected)
+        {
+            ComboBoxItem item = new ComboBoxItem();
+            //DataTable dt = selectOPUStage();
+            if (lEggstiMedi.Count <= 0) getlEggStiMedication();
+            //String aaa = "";
+            ComboBoxItem item1 = new ComboBoxItem();
+            item1.Text = "";
+            item1.Value = "000";
+            c.Items.Clear();
+            c.Items.Add(item1);
+            int i = 0;
+            foreach (FDocType row in lEggstiMedi)
+            {
+                item = new ComboBoxItem();
+                item.Value = row.doc_type_id;
+                item.Text = row.doc_type_name;
+                c.Items.Add(item);
+                if (item.Value.Equals(selected))
+                {
+                    //c.SelectedItem = item.Value;
+                    c.SelectedText = item.Text;
+                    c.SelectedIndex = i + 1;
+                }
+                i++;
+            }
+            return c;
+        }
+        public C1ComboBox setCboEggStiRtOvary2(C1ComboBox c, String selected)
+        {
+            ComboBoxItem item = new ComboBoxItem();
+            //DataTable dt = selectOPUStage();
+            if (lEggstiRt2.Count <= 0) getlEggStiRt2();
+            //String aaa = "";
+            ComboBoxItem item1 = new ComboBoxItem();
+            item1.Text = "";
+            item1.Value = "000";
+            c.Items.Clear();
+            c.Items.Add(item1);
+            int i = 0;
+            foreach (FDocType row in lEggstiRt2)
+            {
+                item = new ComboBoxItem();
+                item.Value = row.doc_type_id;
+                item.Text = row.doc_type_name;
+                c.Items.Add(item);
+                if (item.Value.Equals(selected))
+                {
+                    //c.SelectedItem = item.Value;
+                    c.SelectedText = item.Text;
+                    c.SelectedIndex = i + 1;
+                }
+                i++;
+            }
+            return c;
+        }
+        public C1ComboBox setCboEggStiRtOvary1(C1ComboBox c, String selected)
+        {
+            ComboBoxItem item = new ComboBoxItem();
+            //DataTable dt = selectOPUStage();
+            if (lEggstiRt1.Count <= 0) getlEggStiRt1();
+            //String aaa = "";
+            ComboBoxItem item1 = new ComboBoxItem();
+            item1.Text = "";
+            item1.Value = "000";
+            c.Items.Clear();
+            c.Items.Add(item1);
+            int i = 0;
+            foreach (FDocType row in lEggstiRt1)
+            {
+                item = new ComboBoxItem();
+                item.Value = row.doc_type_id;
+                item.Text = row.doc_type_name;
+                c.Items.Add(item);
+                if (item.Value.Equals(selected))
+                {
+                    //c.SelectedItem = item.Value;
+                    c.SelectedText = item.Text;
+                    c.SelectedIndex = i + 1;
+                }
+                i++;
+            }
+            return c;
         }
         public C1ComboBox setCboOPUFreezeMedia(C1ComboBox c)
         {
