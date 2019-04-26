@@ -702,6 +702,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Appointment_patient.xsd</DependentUpon>
     </Compile>
+    <Compile Include="report\EggSti.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>EggSti.xsd</DependentUpon>
+    </Compile>
     <Compile Include="report\LabOPU.cs">
       <DependentUpon>LabOPU.xsd</DependentUpon>
     </Compile>
@@ -1034,6 +1039,17 @@
     </None>
     <None Include="report\Appointment_patient.xss">
       <DependentUpon>Appointment_patient.xsd</DependentUpon>
+    </None>
+    <None Include="report\EggSti.xsc">
+      <DependentUpon>EggSti.xsd</DependentUpon>
+    </None>
+    <None Include="report\EggSti.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>EggSti.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="report\EggSti.xss">
+      <DependentUpon>EggSti.xsd</DependentUpon>
     </None>
     <None Include="report\LabOPU.xsc">
       <DependentUpon>LabOPU.xsd</DependentUpon>

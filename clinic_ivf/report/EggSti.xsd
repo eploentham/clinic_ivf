@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="EggSti" targetNamespace="http://tempuri.org/EggSti.xsd" xmlns:mstns="http://tempuri.org/EggSti.xsd" xmlns="http://tempuri.org/EggSti.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections />
+        <Tables />
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="EggSti" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="EggSti" msprop:Generator_UserDSName="EggSti">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="EggSti" msprop:Generator_TableClassName="EggStiDataTable" msprop:Generator_TableVarName="tableEggSti" msprop:Generator_TablePropName="_EggSti" msprop:Generator_RowDeletingName="EggStiRowDeleting" msprop:Generator_RowChangingName="EggStiRowChanging" msprop:Generator_RowEvHandlerName="EggStiRowChangeEventHandler" msprop:Generator_RowDeletedName="EggStiRowDeleted" msprop:Generator_UserTableName="EggSti" msprop:Generator_RowChangedName="EggStiRowChanged" msprop:Generator_RowEvArgName="EggStiRowChangeEvent" msprop:Generator_RowClassName="EggStiRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="day1" msdata:Caption="DataColumn1" msprop:Generator_ColumnVarNameInTable="columnday1" msprop:Generator_ColumnPropNameInRow="day1" msprop:Generator_ColumnPropNameInTable="day1Column" msprop:Generator_UserColumnName="day1" type="xs:string" minOccurs="0" />
+              <xs:element name="date" msdata:Caption="DataColumn1" msprop:Generator_ColumnVarNameInTable="columndate" msprop:Generator_ColumnPropNameInRow="date" msprop:Generator_ColumnPropNameInTable="dateColumn" msprop:Generator_UserColumnName="date" type="xs:string" minOccurs="0" />
+              <xs:element name="e2" msdata:Caption="DataColumn1" msprop:Generator_ColumnVarNameInTable="columne2" msprop:Generator_ColumnPropNameInRow="e2" msprop:Generator_ColumnPropNameInTable="e2Column" msprop:Generator_UserColumnName="e2" type="xs:string" minOccurs="0" />
+              <xs:element name="lh" msdata:Caption="DataColumn1" msprop:Generator_ColumnVarNameInTable="columnlh" msprop:Generator_ColumnPropNameInRow="lh" msprop:Generator_ColumnPropNameInTable="lhColumn" msprop:Generator_UserColumnName="lh" type="xs:string" minOccurs="0" />
+              <xs:element name="fsh" msdata:Caption="DataColumn1" msprop:Generator_ColumnVarNameInTable="columnfsh" msprop:Generator_ColumnPropNameInRow="fsh" msprop:Generator_ColumnPropNameInTable="fshColumn" msprop:Generator_UserColumnName="fsh" type="xs:string" minOccurs="0" />
+              <xs:element name="prolactin" msdata:Caption="DataColumn1" msprop:Generator_ColumnVarNameInTable="columnprolactin" msprop:Generator_ColumnPropNameInRow="prolactin" msprop:Generator_ColumnPropNameInTable="prolactinColumn" msprop:Generator_UserColumnName="prolactin" type="xs:string" minOccurs="0" />
+              <xs:element name="rt_ovary" msdata:Caption="DataColumn1" msprop:Generator_ColumnVarNameInTable="columnrt_ovary" msprop:Generator_ColumnPropNameInRow="rt_ovary" msprop:Generator_ColumnPropNameInTable="rt_ovaryColumn" msprop:Generator_UserColumnName="rt_ovary" type="xs:string" minOccurs="0" />
+              <xs:element name="lt_ovary" msdata:Caption="DataColumn1" msprop:Generator_ColumnVarNameInTable="columnlt_ovary" msprop:Generator_ColumnPropNameInRow="lt_ovary" msprop:Generator_ColumnPropNameInTable="lt_ovaryColumn" msprop:Generator_UserColumnName="lt_ovary" type="xs:string" minOccurs="0" />
+              <xs:element name="endo" msdata:Caption="DataColumn1" msprop:Generator_ColumnVarNameInTable="columnendo" msprop:Generator_ColumnPropNameInRow="endo" msprop:Generator_ColumnPropNameInTable="endoColumn" msprop:Generator_UserColumnName="endo" type="xs:string" minOccurs="0" />
+              <xs:element name="medication" msprop:Generator_ColumnVarNameInTable="columnmedication" msprop:Generator_ColumnPropNameInRow="medication" msprop:Generator_ColumnPropNameInTable="medicationColumn" msprop:Generator_UserColumnName="medication" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

@@ -254,13 +254,13 @@ namespace clinic_ivf.gui
             //throw new NotImplementedException();
             String lmpdate = "";
             DateTime lmpdate1 = new DateTime();
-            lmpdate = ic.datetoDB(txtLmpDate.Text);
+            lmpdate = ic.datetoDB(txtVisitLMP.Text);
             if (!DateTime.TryParse(lmpdate, out lmpdate1))
             {
                 MessageBox.Show("วันที่ LMP Date ไม่ถูกต้อง ", "");
                 return;
             }
-            if (MessageBox.Show("ต้องการ Day Egg Sti  \nวันที่ LMP Date "+txtLmpDate.Text, "", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == DialogResult.OK)
+            if (MessageBox.Show("ต้องการ Day Egg Sti  \nวันที่ LMP Date "+txtVisitLMP.Text, "", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == DialogResult.OK)
             {
                 createEggSti();
                 ic.cStf.staff_id = "";
@@ -273,7 +273,7 @@ namespace clinic_ivf.gui
                     if(int.TryParse(re, out chk))
                     {
                         txtId.Value = re;
-                        lmpdate = ic.datetoDB(txtLmpDate.Text);
+                        lmpdate = ic.datetoDB(txtVisitLMP.Text);
                         if(DateTime.TryParse(lmpdate, out lmpdate1))
                         {
                             for (int i = 1; i <= 17; i++)
@@ -313,7 +313,7 @@ namespace clinic_ivf.gui
         private void createEggSti()
         {
             eggs.egg_sti_id = "";
-            eggs.lmp_date = ic.datetoDB(txtLmpDate.Text);
+            eggs.lmp_date = ic.datetoDB(txtVisitLMP.Text);
             eggs.nurse_t_egg_sticol = "";
             eggs.status_g = "";
             eggs.p = "";
@@ -365,17 +365,20 @@ namespace clinic_ivf.gui
         private void setControlEggSti()
         {
             eggs = ic.ivfDB.eggsDB.selectByPk1(txtId.Text);
-            txtLmpDate.Value = eggs.lmp_date;
+            txtVisitLMP.Value = eggs.lmp_date;
             ic.setC1Combo(cboDoctor, eggs.doctor_id);
             setGrfEggStiDay();
         }
         private void setControl1()
         {
+            LabFormA lFormA = new LabFormA();
             txtId.Value = eggs.egg_sti_id;
             vsOld = ic.ivfDB.ovsDB.selectByPk1(vsid);
             pttOld = ic.ivfDB.pttOldDB.selectByPk1(vsOld.PID);
             vs = ic.ivfDB.vsDB.selectByPk1(vsid);
             ptt = ic.ivfDB.pttDB.selectByHn(vsOld.PIDS);
+
+            lFormA = ic.ivfDB.lFormaDB.selectByVnOld(vs.visit_vn);
             ptt.patient_birthday = pttOld.DateOfBirth;
             txtHn.Value = vsOld.PIDS;
             txtVn.Value = vsOld.VN;
@@ -394,6 +397,14 @@ namespace clinic_ivf.gui
             txtVisitPulse.Value = vs.pulse;
             txtPttId.Value = ptt.t_patient_id;
             txtVsId.Value = vs.t_visit_id;
+            txtG.Value = ptt.g;
+            txtP.Value = ptt.p;
+            txtA.Value = ptt.a;
+            txtVisitLMP.Value = vs.lmp;
+            txtOPUDate.Value = lFormA.opu_date;
+            txtOPUTime.Value = lFormA.opu_time;
+            txtEmbryoTranferDate.Value = lFormA.embryo_tranfer_date;
+            //txtEmbryoTranferTime.Value = lFormA.embryo_tranfer_date;
 
             chkChronic.Checked = ptt.status_congenial.Equals("1") ? true : false;
             stt.Show("<p><b>สวัสดี</b></p>คุณ " + ptt.congenital_diseases_description + "<br> กรุณา ป้อนรหัสผ่าน", chkChronic);
