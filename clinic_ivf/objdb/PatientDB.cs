@@ -1134,6 +1134,7 @@ namespace clinic_ivf.objdb
                 ptt1.addr = dt.Rows[0][ptt.patient_house].ToString() +" "+ dt.Rows[0][ptt.patient_road].ToString() + " " + dt.Rows[0][ptt.patient_tambon].ToString() + " " + dt.Rows[0][ptt.patient_amphur].ToString() + " " + dt.Rows[0][ptt.patient_changwat].ToString();
                 ptt1.patient_hn_couple = dt.Rows[0][ptt.patient_hn_couple].ToString();
                 ptt1.doctor_id = dt.Rows[0][ptt.doctor_id].ToString();
+                //ptt1.patient_height = dt.Rows[0][ptt.doctor_id].ToString();
             }
             else
             {

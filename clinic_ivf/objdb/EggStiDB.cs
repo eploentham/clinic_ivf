@@ -1,4 +1,5 @@
-﻿using clinic_ivf.object1;
+﻿using C1.Win.C1Input;
+using clinic_ivf.object1;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -47,6 +48,15 @@ namespace clinic_ivf.objdb
             eggs.t_visit_id = "t_visit_id";
             eggs.egg_sti_date = "egg_sti_date";
             eggs.doctor_id = "doctor_id";
+            eggs.status_abnormal = "status_abnormal";
+            eggs.abnormal1 = "abnormal1";
+            eggs.abnormal2 = "abnormal2";
+            eggs.status_typing = "status_typing";
+            eggs.status_typing_other = "status_typing_other";
+            eggs.typing_other = "typing_other";
+            eggs.status_infectious = "status_infectious";
+            eggs.status_add_lab = "status_add_lab";
+            eggs.add_lab = "add_lab";
 
             eggs.table = "nurse_t_egg_sti";
             eggs.pkField = "egg_sti_id";
@@ -82,6 +92,15 @@ namespace clinic_ivf.objdb
             p.et = p.et == null ? "" : p.et;
             p.fet = p.fet == null ? "" : p.fet;
             p.egg_sti_date = p.egg_sti_date == null ? "" : p.egg_sti_date;
+            p.status_abnormal = p.status_abnormal == null ? "0" : p.status_abnormal;
+            p.abnormal1 = p.abnormal1 == null ? "" : p.abnormal1;
+            p.abnormal2 = p.abnormal2 == null ? "" : p.abnormal2;
+            p.status_typing = p.status_typing == null ? "0" : p.status_typing;
+            p.status_typing_other = p.status_typing_other == null ? "0" : p.status_typing_other;
+            p.typing_other = p.typing_other == null ? "" : p.typing_other;
+            p.status_infectious = p.status_infectious == null ? "0" : p.status_infectious;
+            p.status_add_lab = p.status_add_lab == null ? "0" : p.status_add_lab;
+            p.add_lab = p.add_lab == null ? "" : p.add_lab;
 
             //p.user_cancel = p.user_cancel == null ? "" : p.user_cancel;
         }
@@ -115,6 +134,15 @@ namespace clinic_ivf.objdb
                 "," + eggs.t_visit_id + "='" + p.t_visit_id + "'" +
                 "," + eggs.egg_sti_date + "='" + p.egg_sti_date + "'" +
                 "," + eggs.doctor_id + "='" + p.doctor_id + "'" +
+                "," + eggs.status_abnormal + "='" + p.status_abnormal + "'" +
+                "," + eggs.abnormal1 + "='" + p.abnormal1 + "'" +
+                "," + eggs.abnormal2 + "='" + p.abnormal2 + "'" +
+                "," + eggs.status_typing + "='" + p.status_typing + "'" +
+                "," + eggs.status_typing_other + "='" + p.status_typing_other + "'" +
+                "," + eggs.typing_other + "='" + p.typing_other + "'" +
+                "," + eggs.status_infectious + "='" + p.status_infectious + "'" +
+                "," + eggs.status_add_lab + "='" + p.status_add_lab + "'" +
+                "," + eggs.add_lab + "='" + p.add_lab + "'" +
                 " " +
 
                 "";
@@ -151,6 +179,16 @@ namespace clinic_ivf.objdb
                 "," + eggs.t_visit_id + "='" + p.t_visit_id + "'" +
                 "," + eggs.egg_sti_date + "='" + p.egg_sti_date + "'" +
                 "," + eggs.doctor_id + "='" + p.doctor_id + "'" +
+                "," + eggs.status_abnormal + "='" + p.status_abnormal + "'" +
+                "," + eggs.abnormal1 + "='" + p.abnormal1 + "'" +
+                "," + eggs.abnormal2 + "='" + p.abnormal2 + "'" +
+                "," + eggs.status_typing + "='" + p.status_typing + "'" +
+                "," + eggs.status_typing_other + "='" + p.status_typing_other + "'" +
+                "," + eggs.typing_other + "='" + p.typing_other + "'" +
+                "," + eggs.status_infectious + "='" + p.status_infectious + "'" +
+                "," + eggs.status_add_lab + "='" + p.status_add_lab + "'" +
+                "," + eggs.add_lab + "='" + p.add_lab + "'" +
+                "," + eggs.a + "='" + p.a + "'" +
                 "Where " + eggs.pkField + "='" + p.egg_sti_id + "'"
                 ;
 
@@ -303,6 +341,102 @@ namespace clinic_ivf.objdb
 
             return re;
         }
+        public DataTable selectDistinctByBhcgTest()
+        {
+            DataTable dt = new DataTable();
+            String sql = "select distinct eggs." + eggs.bhcg_test + " " +
+                "From " + eggs.table + " eggs " +
+                "Where eggs." + eggs.active + "='1' ";
+            dt = conn.selectData(conn.conn, sql);
+            return dt;
+        }
+        public C1ComboBox setCboBhcgTest(C1ComboBox c)
+        {
+            ComboBoxItem item = new ComboBoxItem();
+            DataTable dt = selectDistinctByBhcgTest();
+            //String aaa = "";
+            ComboBoxItem item1 = new ComboBoxItem();
+            item1.Text = "";
+            item1.Value = "";
+            c.Items.Clear();
+            c.Items.Add(item1);
+            //for (int i = 0; i < dt.Rows.Count; i++)
+            int i = 0;
+            foreach (DataRow row in dt.Rows)
+            {
+                item = new ComboBoxItem();
+                item.Text = row[eggs.bhcg_test].ToString();
+                item.Value = i.ToString();
+
+                c.Items.Add(item);
+                i++;
+            }
+            return c;
+        }
+        public DataTable selectDistinctByAddLab()
+        {
+            DataTable dt = new DataTable();
+            String sql = "select distinct eggs." + eggs.add_lab + " " +
+                "From " + eggs.table + " eggs " +
+                "Where eggs." + eggs.active + "='1' ";
+            dt = conn.selectData(conn.conn, sql);
+            return dt;
+        }
+        public C1ComboBox setCboAddLab(C1ComboBox c)
+        {
+            ComboBoxItem item = new ComboBoxItem();
+            DataTable dt = selectDistinctByAddLab();
+            //String aaa = "";
+            ComboBoxItem item1 = new ComboBoxItem();
+            item1.Text = "";
+            item1.Value = "";
+            c.Items.Clear();
+            c.Items.Add(item1);
+            //for (int i = 0; i < dt.Rows.Count; i++)
+            int i = 0;
+            foreach (DataRow row in dt.Rows)
+            {
+                item = new ComboBoxItem();
+                item.Text = row[eggs.add_lab].ToString();
+                item.Value = i.ToString();
+
+                c.Items.Add(item);
+                i++;
+            }
+            return c;
+        }
+        public DataTable selectDistinctByTypingOther()
+        {
+            DataTable dt = new DataTable();
+            String sql = "select distinct eggs." + eggs.typing_other + " " +
+                "From " + eggs.table + " eggs " +
+                "Where eggs." + eggs.active + "='1' ";
+            dt = conn.selectData(conn.conn, sql);
+            return dt;
+        }
+        public C1ComboBox setCboTypingOther(C1ComboBox c)
+        {
+            ComboBoxItem item = new ComboBoxItem();
+            DataTable dt = selectDistinctByTypingOther();
+            //String aaa = "";
+            ComboBoxItem item1 = new ComboBoxItem();
+            item1.Text = "";
+            item1.Value = "";
+            c.Items.Clear();
+            c.Items.Add(item1);
+            //for (int i = 0; i < dt.Rows.Count; i++)
+            int i = 0;
+            foreach (DataRow row in dt.Rows)
+            {
+                item = new ComboBoxItem();
+                item.Text = row[eggs.typing_other].ToString();
+                item.Value = i.ToString();
+
+                c.Items.Add(item);
+                i++;
+            }
+            return c;
+        }
         public DataTable selectByPk(String pttId)
         {
             DataTable dt = new DataTable();
@@ -374,6 +508,15 @@ namespace clinic_ivf.objdb
                 dept1.t_visit_id = dt.Rows[0][eggs.t_visit_id].ToString();
                 dept1.egg_sti_date = dt.Rows[0][eggs.egg_sti_date].ToString();
                 dept1.doctor_id = dt.Rows[0][eggs.doctor_id].ToString();
+                dept1.status_abnormal = dt.Rows[0][eggs.status_abnormal].ToString();
+                dept1.abnormal1 = dt.Rows[0][eggs.abnormal1].ToString();
+                dept1.abnormal2 = dt.Rows[0][eggs.abnormal2].ToString();
+                dept1.status_typing = dt.Rows[0][eggs.status_typing].ToString();
+                dept1.status_typing_other = dt.Rows[0][eggs.status_typing_other].ToString();
+                dept1.typing_other = dt.Rows[0][eggs.typing_other].ToString();
+                dept1.status_infectious = dt.Rows[0][eggs.status_infectious].ToString();
+                dept1.status_add_lab = dt.Rows[0][eggs.status_add_lab].ToString();
+                dept1.add_lab = dt.Rows[0][eggs.add_lab].ToString();
             }
             else
             {
@@ -401,6 +544,15 @@ namespace clinic_ivf.objdb
                 dept1.t_visit_id = "";
                 dept1.egg_sti_date = "";
                 dept1.doctor_id = "";
+                dept1.status_abnormal = "";
+                dept1.abnormal1 = "";
+                dept1.abnormal2 = "";
+                dept1.status_typing = "";
+                dept1.status_typing_other = "";
+                dept1.typing_other = "";
+                dept1.status_infectious = "";
+                dept1.status_add_lab = "";
+                dept1.add_lab = "";
             }
             return dept1;
         }

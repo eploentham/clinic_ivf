@@ -299,6 +299,34 @@ namespace clinic_ivf.report {
             
             private global::System.Data.DataColumn columnmedication;
             
+            private global::System.Data.DataColumn columnstatus_abnormal;
+            
+            private global::System.Data.DataColumn columnabnormal1;
+            
+            private global::System.Data.DataColumn columnabnormal2;
+            
+            private global::System.Data.DataColumn columnstatus_typing;
+            
+            private global::System.Data.DataColumn columnstatus_typing_other;
+            
+            private global::System.Data.DataColumn columntyping_other;
+            
+            private global::System.Data.DataColumn columnstatus_infectious;
+            
+            private global::System.Data.DataColumn columnstatus_add_lab;
+            
+            private global::System.Data.DataColumn columnadd_lab;
+            
+            private global::System.Data.DataColumn columnbhcg;
+            
+            private global::System.Data.DataColumn columnopu_date;
+            
+            private global::System.Data.DataColumn columnopu_time;
+            
+            private global::System.Data.DataColumn columnfet_date;
+            
+            private global::System.Data.DataColumn columnfet_time;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public EggStiDataTable() {
@@ -414,6 +442,118 @@ namespace clinic_ivf.report {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn status_abnormalColumn {
+                get {
+                    return this.columnstatus_abnormal;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn abnormal1Column {
+                get {
+                    return this.columnabnormal1;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn abnormal2Column {
+                get {
+                    return this.columnabnormal2;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn status_typingColumn {
+                get {
+                    return this.columnstatus_typing;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn status_typing_otherColumn {
+                get {
+                    return this.columnstatus_typing_other;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn typing_otherColumn {
+                get {
+                    return this.columntyping_other;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn status_infectiousColumn {
+                get {
+                    return this.columnstatus_infectious;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn status_add_labColumn {
+                get {
+                    return this.columnstatus_add_lab;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn add_labColumn {
+                get {
+                    return this.columnadd_lab;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn bhcgColumn {
+                get {
+                    return this.columnbhcg;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn opu_dateColumn {
+                get {
+                    return this.columnopu_date;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn opu_timeColumn {
+                get {
+                    return this.columnopu_time;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn fet_dateColumn {
+                get {
+                    return this.columnfet_date;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn fet_timeColumn {
+                get {
+                    return this.columnfet_time;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -449,7 +589,31 @@ namespace clinic_ivf.report {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public EggStiRow AddEggStiRow(string day1, string date, string e2, string lh, string fsh, string prolactin, string rt_ovary, string lt_ovary, string endo, string medication) {
+            public EggStiRow AddEggStiRow(
+                        string day1, 
+                        string date, 
+                        string e2, 
+                        string lh, 
+                        string fsh, 
+                        string prolactin, 
+                        string rt_ovary, 
+                        string lt_ovary, 
+                        string endo, 
+                        string medication, 
+                        string status_abnormal, 
+                        string abnormal1, 
+                        string abnormal2, 
+                        string status_typing, 
+                        string status_typing_other, 
+                        string typing_other, 
+                        string status_infectious, 
+                        string status_add_lab, 
+                        string add_lab, 
+                        string bhcg, 
+                        string opu_date, 
+                        string opu_time, 
+                        string fet_date, 
+                        string fet_time) {
                 EggStiRow rowEggStiRow = ((EggStiRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         day1,
@@ -461,7 +625,21 @@ namespace clinic_ivf.report {
                         rt_ovary,
                         lt_ovary,
                         endo,
-                        medication};
+                        medication,
+                        status_abnormal,
+                        abnormal1,
+                        abnormal2,
+                        status_typing,
+                        status_typing_other,
+                        typing_other,
+                        status_infectious,
+                        status_add_lab,
+                        add_lab,
+                        bhcg,
+                        opu_date,
+                        opu_time,
+                        fet_date,
+                        fet_time};
                 rowEggStiRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowEggStiRow);
                 return rowEggStiRow;
@@ -494,6 +672,20 @@ namespace clinic_ivf.report {
                 this.columnlt_ovary = base.Columns["lt_ovary"];
                 this.columnendo = base.Columns["endo"];
                 this.columnmedication = base.Columns["medication"];
+                this.columnstatus_abnormal = base.Columns["status_abnormal"];
+                this.columnabnormal1 = base.Columns["abnormal1"];
+                this.columnabnormal2 = base.Columns["abnormal2"];
+                this.columnstatus_typing = base.Columns["status_typing"];
+                this.columnstatus_typing_other = base.Columns["status_typing_other"];
+                this.columntyping_other = base.Columns["typing_other"];
+                this.columnstatus_infectious = base.Columns["status_infectious"];
+                this.columnstatus_add_lab = base.Columns["status_add_lab"];
+                this.columnadd_lab = base.Columns["add_lab"];
+                this.columnbhcg = base.Columns["bhcg"];
+                this.columnopu_date = base.Columns["opu_date"];
+                this.columnopu_time = base.Columns["opu_time"];
+                this.columnfet_date = base.Columns["fet_date"];
+                this.columnfet_time = base.Columns["fet_time"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -519,6 +711,34 @@ namespace clinic_ivf.report {
                 base.Columns.Add(this.columnendo);
                 this.columnmedication = new global::System.Data.DataColumn("medication", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnmedication);
+                this.columnstatus_abnormal = new global::System.Data.DataColumn("status_abnormal", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnstatus_abnormal);
+                this.columnabnormal1 = new global::System.Data.DataColumn("abnormal1", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnabnormal1);
+                this.columnabnormal2 = new global::System.Data.DataColumn("abnormal2", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnabnormal2);
+                this.columnstatus_typing = new global::System.Data.DataColumn("status_typing", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnstatus_typing);
+                this.columnstatus_typing_other = new global::System.Data.DataColumn("status_typing_other", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnstatus_typing_other);
+                this.columntyping_other = new global::System.Data.DataColumn("typing_other", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columntyping_other);
+                this.columnstatus_infectious = new global::System.Data.DataColumn("status_infectious", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnstatus_infectious);
+                this.columnstatus_add_lab = new global::System.Data.DataColumn("status_add_lab", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnstatus_add_lab);
+                this.columnadd_lab = new global::System.Data.DataColumn("add_lab", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnadd_lab);
+                this.columnbhcg = new global::System.Data.DataColumn("bhcg", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnbhcg);
+                this.columnopu_date = new global::System.Data.DataColumn("opu_date", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnopu_date);
+                this.columnopu_time = new global::System.Data.DataColumn("opu_time", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnopu_time);
+                this.columnfet_date = new global::System.Data.DataColumn("fet_date", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnfet_date);
+                this.columnfet_time = new global::System.Data.DataColumn("fet_time", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnfet_time);
                 this.columnday1.Caption = "DataColumn1";
                 this.columndate.Caption = "DataColumn1";
                 this.columne2.Caption = "DataColumn1";
@@ -528,6 +748,14 @@ namespace clinic_ivf.report {
                 this.columnrt_ovary.Caption = "DataColumn1";
                 this.columnlt_ovary.Caption = "DataColumn1";
                 this.columnendo.Caption = "DataColumn1";
+                this.columnstatus_abnormal.Caption = "DataColumn1";
+                this.columnabnormal1.Caption = "DataColumn1";
+                this.columnabnormal2.Caption = "DataColumn1";
+                this.columnstatus_typing.Caption = "DataColumn1";
+                this.columnstatus_typing_other.Caption = "DataColumn1";
+                this.columntyping_other.Caption = "DataColumn1";
+                this.columnstatus_infectious.Caption = "DataColumn1";
+                this.columnstatus_add_lab.Caption = "DataColumn1";
                 this.ExtendedProperties.Add("Generator_TablePropName", "_EggSti");
                 this.ExtendedProperties.Add("Generator_UserTableName", "EggSti");
             }
@@ -832,6 +1060,230 @@ namespace clinic_ivf.report {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string status_abnormal {
+                get {
+                    try {
+                        return ((string)(this[this.tableEggSti.status_abnormalColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'status_abnormal\' in table \'EggSti\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableEggSti.status_abnormalColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string abnormal1 {
+                get {
+                    try {
+                        return ((string)(this[this.tableEggSti.abnormal1Column]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'abnormal1\' in table \'EggSti\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableEggSti.abnormal1Column] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string abnormal2 {
+                get {
+                    try {
+                        return ((string)(this[this.tableEggSti.abnormal2Column]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'abnormal2\' in table \'EggSti\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableEggSti.abnormal2Column] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string status_typing {
+                get {
+                    try {
+                        return ((string)(this[this.tableEggSti.status_typingColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'status_typing\' in table \'EggSti\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableEggSti.status_typingColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string status_typing_other {
+                get {
+                    try {
+                        return ((string)(this[this.tableEggSti.status_typing_otherColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'status_typing_other\' in table \'EggSti\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableEggSti.status_typing_otherColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string typing_other {
+                get {
+                    try {
+                        return ((string)(this[this.tableEggSti.typing_otherColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'typing_other\' in table \'EggSti\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableEggSti.typing_otherColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string status_infectious {
+                get {
+                    try {
+                        return ((string)(this[this.tableEggSti.status_infectiousColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'status_infectious\' in table \'EggSti\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableEggSti.status_infectiousColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string status_add_lab {
+                get {
+                    try {
+                        return ((string)(this[this.tableEggSti.status_add_labColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'status_add_lab\' in table \'EggSti\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableEggSti.status_add_labColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string add_lab {
+                get {
+                    try {
+                        return ((string)(this[this.tableEggSti.add_labColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'add_lab\' in table \'EggSti\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableEggSti.add_labColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string bhcg {
+                get {
+                    try {
+                        return ((string)(this[this.tableEggSti.bhcgColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'bhcg\' in table \'EggSti\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableEggSti.bhcgColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string opu_date {
+                get {
+                    try {
+                        return ((string)(this[this.tableEggSti.opu_dateColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'opu_date\' in table \'EggSti\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableEggSti.opu_dateColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string opu_time {
+                get {
+                    try {
+                        return ((string)(this[this.tableEggSti.opu_timeColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'opu_time\' in table \'EggSti\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableEggSti.opu_timeColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string fet_date {
+                get {
+                    try {
+                        return ((string)(this[this.tableEggSti.fet_dateColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'fet_date\' in table \'EggSti\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableEggSti.fet_dateColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string fet_time {
+                get {
+                    try {
+                        return ((string)(this[this.tableEggSti.fet_timeColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'fet_time\' in table \'EggSti\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableEggSti.fet_timeColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public bool Isday1Null() {
                 return this.IsNull(this.tableEggSti.day1Column);
             }
@@ -948,6 +1400,174 @@ namespace clinic_ivf.report {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public void SetmedicationNull() {
                 this[this.tableEggSti.medicationColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool Isstatus_abnormalNull() {
+                return this.IsNull(this.tableEggSti.status_abnormalColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void Setstatus_abnormalNull() {
+                this[this.tableEggSti.status_abnormalColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool Isabnormal1Null() {
+                return this.IsNull(this.tableEggSti.abnormal1Column);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void Setabnormal1Null() {
+                this[this.tableEggSti.abnormal1Column] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool Isabnormal2Null() {
+                return this.IsNull(this.tableEggSti.abnormal2Column);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void Setabnormal2Null() {
+                this[this.tableEggSti.abnormal2Column] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool Isstatus_typingNull() {
+                return this.IsNull(this.tableEggSti.status_typingColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void Setstatus_typingNull() {
+                this[this.tableEggSti.status_typingColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool Isstatus_typing_otherNull() {
+                return this.IsNull(this.tableEggSti.status_typing_otherColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void Setstatus_typing_otherNull() {
+                this[this.tableEggSti.status_typing_otherColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool Istyping_otherNull() {
+                return this.IsNull(this.tableEggSti.typing_otherColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void Settyping_otherNull() {
+                this[this.tableEggSti.typing_otherColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool Isstatus_infectiousNull() {
+                return this.IsNull(this.tableEggSti.status_infectiousColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void Setstatus_infectiousNull() {
+                this[this.tableEggSti.status_infectiousColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool Isstatus_add_labNull() {
+                return this.IsNull(this.tableEggSti.status_add_labColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void Setstatus_add_labNull() {
+                this[this.tableEggSti.status_add_labColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool Isadd_labNull() {
+                return this.IsNull(this.tableEggSti.add_labColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void Setadd_labNull() {
+                this[this.tableEggSti.add_labColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IsbhcgNull() {
+                return this.IsNull(this.tableEggSti.bhcgColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetbhcgNull() {
+                this[this.tableEggSti.bhcgColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool Isopu_dateNull() {
+                return this.IsNull(this.tableEggSti.opu_dateColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void Setopu_dateNull() {
+                this[this.tableEggSti.opu_dateColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool Isopu_timeNull() {
+                return this.IsNull(this.tableEggSti.opu_timeColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void Setopu_timeNull() {
+                this[this.tableEggSti.opu_timeColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool Isfet_dateNull() {
+                return this.IsNull(this.tableEggSti.fet_dateColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void Setfet_dateNull() {
+                this[this.tableEggSti.fet_dateColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool Isfet_timeNull() {
+                return this.IsNull(this.tableEggSti.fet_timeColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void Setfet_timeNull() {
+                this[this.tableEggSti.fet_timeColumn] = global::System.Convert.DBNull;
             }
         }
         

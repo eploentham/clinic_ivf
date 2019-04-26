@@ -24,5 +24,14 @@ namespace clinic_ivf.object1
         public String t_visit_id { get; set; }
         public String egg_sti_date { get; set; }
         public String doctor_id { get; set; }
+        public String status_abnormal { get; set; }
+        public String abnormal1 { get; set; }
+        public String abnormal2 { get; set; }
+        public String status_typing { get; set; }
+        public String status_typing_other { get; set; }
+        public String typing_other { get; set; }
+        public String status_infectious { get; set; }
+        public String status_add_lab { get; set; }
+        public String add_lab { get; set; }
     }
 }

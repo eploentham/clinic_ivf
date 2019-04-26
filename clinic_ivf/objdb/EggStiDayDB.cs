@@ -178,7 +178,7 @@ namespace clinic_ivf.objdb
                 "," + eggsd.lt_ovary_1 + " = '" + p.lt_ovary_1.Replace("'", "''") + "'" +
                 "," + eggsd.lt_ovary_2 + "='" + p.lt_ovary_2.Replace("'", "''") + "'" +
                 "," + eggsd.endo + "='" + p.endo.Replace("'", "''") + "'" +
-                //"," + eggsd.egg_sti_id + "='" + p.egg_sti_id + "'" +
+                "," + eggsd.fsh + "='" + p.fsh + "'" +
                 "," + eggsd.medication + "='" + p.medication + "'" +
                 "Where " + eggsd.pkField + "='" + p.egg_sti_day_id + "'"
                 ;
@@ -357,7 +357,8 @@ namespace clinic_ivf.objdb
             DataTable dt = new DataTable();
             String sql = "select eggsd.* " +
                 "From " + eggsd.table + " eggsd " +
-                "Where eggsd." + eggsd.egg_sti_id + " ='" + pttId + "' ";
+                "Where eggsd." + eggsd.egg_sti_id + " ='" + pttId + "' " +
+                "Order By day1 ";
             dt = conn.selectData(conn.conn, sql);
             return dt;
         }

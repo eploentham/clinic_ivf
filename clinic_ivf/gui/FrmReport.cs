@@ -23,6 +23,45 @@ namespace clinic_ivf.gui
             InitializeComponent();
             this.ic = ic;
         }
+        public void setEggStiReport(DataTable dt, String ptt_female, String ptt_male, String lmp, String g, String p, String a, String doctor_name, String opu_date, String opu_time, String et, String fet)
+        {
+            String chk = "", printerDefault = "", err = "";
+            ReportDocument rpt = new ReportDocument();
+            try
+            {
+                err = "00" + ic.iniC.statusAppDonor;
+
+                rpt.Load("EggSti.rpt");
+
+                err = "01";
+                rpt.SetDataSource(dt);
+                err = "02";
+                rpt.SetParameterValue("line1", ic.cop.comp_name_t);
+                rpt.SetParameterValue("line2", "โทรศัพท์ " + ic.cop.tele);
+                rpt.SetParameterValue("line3", " Form Egg Sti");
+                rpt.SetParameterValue("ptt_female", ptt_female);
+                rpt.SetParameterValue("ptt_male", ptt_male);
+                rpt.SetParameterValue("lmp", lmp);
+                rpt.SetParameterValue("g", g);
+                rpt.SetParameterValue("p", p);
+                rpt.SetParameterValue("a", a);
+                rpt.SetParameterValue("doctor_name", doctor_name);
+                rpt.SetParameterValue("opu_date", opu_date);
+                rpt.SetParameterValue("opu_time", opu_time);
+                rpt.SetParameterValue("et", et);
+                rpt.SetParameterValue("fet", fet);
+                err = "03";
+                //rpt.SetParameterValue("age1", "" + age);
+                this.crystalReportViewer1.ReportSource = rpt;
+                err = "04";
+                this.crystalReportViewer1.Refresh();
+            }
+            catch (Exception ex)
+            {
+                chk = ex.Message.ToString();
+                MessageBox.Show("error " + ex.Message, "err " + err);
+            }
+        }
         public void setORFormA(String name, String hn, String or_date, String diagnosis, String operation, String surgeon, String age, String anesthesia)
         {
             String chk = "", printerDefault = "";

@@ -302,5 +302,16 @@ ADD COLUMN `remark` VARCHAR(255) NULL AFTER `user_cancel`;
 ALTER TABLE `ivf_101`.`nurse_t_egg_sti` 
 ADD COLUMN `doctor_id` INT NULL AFTER `remark`;
 
+ALTER TABLE `ivf_101`.`nurse_t_egg_sti` 
+ADD COLUMN `status_abnormal` VARCHAR(45) NULL AFTER `doctor_id`,
+ADD COLUMN `abnormal1` VARCHAR(255) NULL AFTER `status_abnormal`,
+ADD COLUMN `abnormal2` VARCHAR(255) NULL AFTER `abnormal1`,
+ADD COLUMN `status_typing` VARCHAR(45) NULL AFTER `abnormal2`,
+ADD COLUMN `status_typing_other` VARCHAR(45) NULL AFTER `status_typing`,
+ADD COLUMN `typing_other` VARCHAR(255) NULL AFTER `status_typing_other`,
+ADD COLUMN `status_infectious` VARCHAR(45) NULL AFTER `typing_other`,
+ADD COLUMN `status_add_lab` VARCHAR(45) NULL AFTER `status_infectious`,
+ADD COLUMN `add_lab` VARCHAR(255) NULL AFTER `status_add_lab`;
+
 
 
