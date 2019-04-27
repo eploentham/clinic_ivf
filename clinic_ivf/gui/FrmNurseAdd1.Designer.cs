@@ -148,6 +148,8 @@
             this.btnNoteAdd = new C1.Win.C1Input.C1Button();
             this.label73 = new System.Windows.Forms.Label();
             this.txtNote = new C1.Win.C1Input.C1TextBox();
+            this.tabHis = new C1.Win.C1Command.C1DockingTabPage();
+            this.panel1 = new System.Windows.Forms.Panel();
             this.sB.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.theme1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.sC)).BeginInit();
@@ -234,6 +236,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.chkNoteAll)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnNoteAdd)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtNote)).BeginInit();
+            this.tabHis.SuspendLayout();
             this.SuspendLayout();
             // 
             // sB
@@ -948,6 +951,7 @@
             this.tC.Controls.Add(this.tabApp);
             this.tC.Controls.Add(this.tabCert);
             this.tC.Controls.Add(this.tabNote);
+            this.tC.Controls.Add(this.tabHis);
             this.tC.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tC.HotTrack = true;
             this.tC.Location = new System.Drawing.Point(0, 0);
@@ -1002,7 +1006,7 @@
             this.c1SplitterPanel1.Size = new System.Drawing.Size(782, 617);
             this.c1SplitterPanel1.TabIndex = 0;
             this.c1SplitterPanel1.Text = "Panel 1";
-            this.c1SplitterPanel1.Width = 789;
+            this.c1SplitterPanel1.Width = 782;
             // 
             // panel8
             // 
@@ -1853,6 +1857,26 @@
             this.theme1.SetTheme(this.txtNote, "(default)");
             this.txtNote.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
             // 
+            // tabHis
+            // 
+            this.tabHis.Controls.Add(this.panel1);
+            this.tabHis.Location = new System.Drawing.Point(1, 24);
+            this.tabHis.Name = "tabHis";
+            this.tabHis.Size = new System.Drawing.Size(1582, 638);
+            this.tabHis.TabIndex = 5;
+            this.tabHis.Text = "Patient Medical History";
+            // 
+            // panel1
+            // 
+            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.panel1.Location = new System.Drawing.Point(0, 0);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(1582, 638);
+            this.panel1.TabIndex = 0;
+            this.theme1.SetTheme(this.panel1, "(default)");
+            // 
             // FrmNurseAdd1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1955,6 +1979,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.chkNoteAll)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnNoteAdd)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtNote)).EndInit();
+            this.tabHis.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -2082,5 +2107,7 @@
         private System.Windows.Forms.Panel pnPkg;
         private C1.Win.C1Input.C1PictureBox picPtt;
         private System.Windows.Forms.TableLayoutPanel tlpPatient;
+        private C1.Win.C1Command.C1DockingTabPage tabHis;
+        private System.Windows.Forms.Panel panel1;
     }
 }
