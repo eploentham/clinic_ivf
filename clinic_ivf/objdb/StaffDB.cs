@@ -494,7 +494,6 @@ namespace clinic_ivf.objdb
 
             return dt;
         }
-        
 
         public Staff selectByUsername(String username)
         {
@@ -651,6 +650,15 @@ namespace clinic_ivf.objdb
                 stf1.status_module_lab = dt.Rows[0][stf.status_module_lab] != null ? dt.Rows[0][stf.status_module_lab].ToString() : "0";
                 stf1.status_module_cashier = dt.Rows[0][stf.status_module_cashier] != null ? dt.Rows[0][stf.status_module_cashier].ToString() : "0";
                 stf1.status_module_medicalrecord = dt.Rows[0][stf.status_module_medicalrecord] != null ? dt.Rows[0][stf.status_module_medicalrecord].ToString() : "0";
+
+                //foreach (DataRow row in dt.Rows)
+                //{
+                //    foreach (DataColumn col in dt.Columns)
+                //    {
+                //        object value = row[col.ColumnName];
+                //    }
+                //}
+
                 stf1.status_doctor = dt.Rows[0][stf.status_doctor] != null ? dt.Rows[0][stf.status_doctor].ToString() : "0";
                 stf1.doctor_id = dt.Rows[0][stf.doctor_id] != null ? dt.Rows[0][stf.doctor_id].ToString() : "0";
                 stf1.doctor_id_old = dt.Rows[0][stf.doctor_id_old] != null ? dt.Rows[0][stf.doctor_id_old].ToString() : "0";

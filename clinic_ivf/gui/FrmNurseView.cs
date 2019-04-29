@@ -34,6 +34,8 @@ namespace clinic_ivf.gui
         C1SuperErrorProvider sep;
         Timer timer;
 
+        Boolean pageLoad = false;
+
         public FrmNurseView(IvfControl ic, MainMenu m)
         {
             InitializeComponent();
@@ -43,6 +45,7 @@ namespace clinic_ivf.gui
         }
         private void initConfig()
         {
+            pageLoad = true;
             fEdit = new Font(ic.iniC.grdViewFontName, ic.grdViewFontSize, FontStyle.Regular);
             fEditB = new Font(ic.iniC.grdViewFontName, ic.grdViewFontSize, FontStyle.Bold);
 
@@ -68,8 +71,10 @@ namespace clinic_ivf.gui
             btnSearch.Click += BtnSearch_Click;
             //txtSearch.KeyUp += TxtSearch_KeyUp1;
             txtLabResultDate.KeyUp += TxtLabResultDate_KeyUp;
+            chkAll.CheckedChanged += ChkAll_CheckedChanged;
+
             ic.ivfDB.bspDB.setCboBsp(cboVisitBsp, ic.iniC.service_point_id);
-            chkAll.Checked = true;
+            
 
             initGrfQue();
             setGrfQue();
@@ -86,6 +91,13 @@ namespace clinic_ivf.gui
             timer.Interval = timerlab * 1000;
             timer.Tick += Timer_Tick;
             timer.Enabled = true;
+            pageLoad = false;
+        }
+
+        private void ChkAll_CheckedChanged(object sender, EventArgs e)
+        {
+            //throw new NotImplementedException();
+            setGrfQue();
         }
 
         private void Timer_Tick(object sender, EventArgs e)
@@ -845,6 +857,8 @@ namespace clinic_ivf.gui
         }
         private void setGrfQue()
         {
+            if (pageLoad == true)
+                return;
             if (ic.iniC.statusAppDonor.Equals("1"))
             {
                 setGrfQueDonor(txtSearch.Text);
@@ -1535,6 +1549,7 @@ namespace clinic_ivf.gui
         private void FrmNurseView_Load(object sender, EventArgs e)
         {
             tC.SelectedTab = tabWaiting;
+            chkAll.Checked = true;
         }
     }
 }

@@ -32,6 +32,11 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.tC = new C1.Win.C1Command.C1DockingTab();
             this.tabWaiting = new C1.Win.C1Command.C1DockingTabPage();
+            this.pnQue = new System.Windows.Forms.Panel();
+            this.pnVisitBsp = new System.Windows.Forms.Panel();
+            this.chkAll = new C1.Win.C1Input.C1CheckBox();
+            this.label70 = new System.Windows.Forms.Label();
+            this.cboVisitBsp = new C1.Win.C1Input.C1ComboBox();
             this.tabDiag = new C1.Win.C1Command.C1DockingTabPage();
             this.pnDiag = new System.Windows.Forms.Panel();
             this.tabFinish = new C1.Win.C1Command.C1DockingTabPage();
@@ -55,16 +60,14 @@
             this.txtSearch = new C1.Win.C1Input.C1TextBox();
             this.sB = new System.Windows.Forms.StatusStrip();
             this.sB1 = new System.Windows.Forms.ToolStripStatusLabel();
-            this.pnVisitBsp = new System.Windows.Forms.Panel();
-            this.pnQue = new System.Windows.Forms.Panel();
-            this.label70 = new System.Windows.Forms.Label();
-            this.cboVisitBsp = new C1.Win.C1Input.C1ComboBox();
-            this.chkAll = new C1.Win.C1Input.C1CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.theme1)).BeginInit();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tC)).BeginInit();
             this.tC.SuspendLayout();
             this.tabWaiting.SuspendLayout();
+            this.pnVisitBsp.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.chkAll)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cboVisitBsp)).BeginInit();
             this.tabDiag.SuspendLayout();
             this.tabFinish.SuspendLayout();
             this.tabLab.SuspendLayout();
@@ -79,9 +82,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtDateStart)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtSearch)).BeginInit();
             this.sB.SuspendLayout();
-            this.pnVisitBsp.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.cboVisitBsp)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.chkAll)).BeginInit();
             this.SuspendLayout();
             // 
             // theme1
@@ -131,6 +131,84 @@
             this.tabWaiting.Size = new System.Drawing.Size(1069, 653);
             this.tabWaiting.TabIndex = 0;
             this.tabWaiting.Text = "waiting in queue";
+            // 
+            // pnQue
+            // 
+            this.pnQue.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.pnQue.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pnQue.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.pnQue.Location = new System.Drawing.Point(0, 29);
+            this.pnQue.Name = "pnQue";
+            this.pnQue.Size = new System.Drawing.Size(1069, 624);
+            this.pnQue.TabIndex = 0;
+            this.theme1.SetTheme(this.pnQue, "(default)");
+            // 
+            // pnVisitBsp
+            // 
+            this.pnVisitBsp.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.pnVisitBsp.Controls.Add(this.chkAll);
+            this.pnVisitBsp.Controls.Add(this.label70);
+            this.pnVisitBsp.Controls.Add(this.cboVisitBsp);
+            this.pnVisitBsp.Dock = System.Windows.Forms.DockStyle.Top;
+            this.pnVisitBsp.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.pnVisitBsp.Location = new System.Drawing.Point(0, 0);
+            this.pnVisitBsp.Name = "pnVisitBsp";
+            this.pnVisitBsp.Size = new System.Drawing.Size(1069, 29);
+            this.pnVisitBsp.TabIndex = 0;
+            this.theme1.SetTheme(this.pnVisitBsp, "(default)");
+            // 
+            // chkAll
+            // 
+            this.chkAll.BackColor = System.Drawing.Color.Transparent;
+            this.chkAll.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
+            this.chkAll.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.chkAll.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.chkAll.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chkAll.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.chkAll.Location = new System.Drawing.Point(348, 3);
+            this.chkAll.Name = "chkAll";
+            this.chkAll.Padding = new System.Windows.Forms.Padding(4, 1, 1, 1);
+            this.chkAll.Size = new System.Drawing.Size(88, 24);
+            this.chkAll.TabIndex = 633;
+            this.chkAll.Text = "All";
+            this.theme1.SetTheme(this.chkAll, "(default)");
+            this.chkAll.UseVisualStyleBackColor = true;
+            this.chkAll.Value = null;
+            this.chkAll.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            // 
+            // label70
+            // 
+            this.label70.AutoSize = true;
+            this.label70.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.label70.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label70.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.label70.Location = new System.Drawing.Point(12, 5);
+            this.label70.Name = "label70";
+            this.label70.Size = new System.Drawing.Size(55, 16);
+            this.label70.TabIndex = 632;
+            this.label70.Text = "Station :";
+            this.theme1.SetTheme(this.label70, "(default)");
+            // 
+            // cboVisitBsp
+            // 
+            this.cboVisitBsp.AllowSpinLoop = false;
+            this.cboVisitBsp.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.cboVisitBsp.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
+            this.cboVisitBsp.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.cboVisitBsp.GapHeight = 0;
+            this.cboVisitBsp.ImagePadding = new System.Windows.Forms.Padding(0);
+            this.cboVisitBsp.ItemsDisplayMember = "";
+            this.cboVisitBsp.ItemsValueMember = "";
+            this.cboVisitBsp.Location = new System.Drawing.Point(92, 3);
+            this.cboVisitBsp.Name = "cboVisitBsp";
+            this.cboVisitBsp.Size = new System.Drawing.Size(250, 20);
+            this.cboVisitBsp.Style.DropDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.cboVisitBsp.Style.DropDownBorderColor = System.Drawing.Color.Gainsboro;
+            this.cboVisitBsp.Style.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.cboVisitBsp.TabIndex = 631;
+            this.cboVisitBsp.Tag = null;
+            this.theme1.SetTheme(this.cboVisitBsp, "(default)");
+            this.cboVisitBsp.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
             // 
             // tabDiag
             // 
@@ -490,84 +568,6 @@
             this.sB1.Size = new System.Drawing.Size(118, 17);
             this.sB1.Text = "toolStripStatusLabel1";
             // 
-            // pnVisitBsp
-            // 
-            this.pnVisitBsp.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.pnVisitBsp.Controls.Add(this.chkAll);
-            this.pnVisitBsp.Controls.Add(this.label70);
-            this.pnVisitBsp.Controls.Add(this.cboVisitBsp);
-            this.pnVisitBsp.Dock = System.Windows.Forms.DockStyle.Top;
-            this.pnVisitBsp.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.pnVisitBsp.Location = new System.Drawing.Point(0, 0);
-            this.pnVisitBsp.Name = "pnVisitBsp";
-            this.pnVisitBsp.Size = new System.Drawing.Size(1069, 29);
-            this.pnVisitBsp.TabIndex = 0;
-            this.theme1.SetTheme(this.pnVisitBsp, "(default)");
-            // 
-            // pnQue
-            // 
-            this.pnQue.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.pnQue.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnQue.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.pnQue.Location = new System.Drawing.Point(0, 29);
-            this.pnQue.Name = "pnQue";
-            this.pnQue.Size = new System.Drawing.Size(1069, 624);
-            this.pnQue.TabIndex = 0;
-            this.theme1.SetTheme(this.pnQue, "(default)");
-            // 
-            // label70
-            // 
-            this.label70.AutoSize = true;
-            this.label70.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.label70.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label70.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.label70.Location = new System.Drawing.Point(12, 5);
-            this.label70.Name = "label70";
-            this.label70.Size = new System.Drawing.Size(55, 16);
-            this.label70.TabIndex = 632;
-            this.label70.Text = "Station :";
-            this.theme1.SetTheme(this.label70, "(default)");
-            // 
-            // cboVisitBsp
-            // 
-            this.cboVisitBsp.AllowSpinLoop = false;
-            this.cboVisitBsp.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.cboVisitBsp.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
-            this.cboVisitBsp.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.cboVisitBsp.GapHeight = 0;
-            this.cboVisitBsp.ImagePadding = new System.Windows.Forms.Padding(0);
-            this.cboVisitBsp.ItemsDisplayMember = "";
-            this.cboVisitBsp.ItemsValueMember = "";
-            this.cboVisitBsp.Location = new System.Drawing.Point(92, 3);
-            this.cboVisitBsp.Name = "cboVisitBsp";
-            this.cboVisitBsp.Size = new System.Drawing.Size(250, 20);
-            this.cboVisitBsp.Style.DropDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.cboVisitBsp.Style.DropDownBorderColor = System.Drawing.Color.Gainsboro;
-            this.cboVisitBsp.Style.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.cboVisitBsp.TabIndex = 631;
-            this.cboVisitBsp.Tag = null;
-            this.theme1.SetTheme(this.cboVisitBsp, "(default)");
-            this.cboVisitBsp.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
-            // 
-            // chkAll
-            // 
-            this.chkAll.BackColor = System.Drawing.Color.Transparent;
-            this.chkAll.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
-            this.chkAll.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.chkAll.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.chkAll.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chkAll.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.chkAll.Location = new System.Drawing.Point(348, 3);
-            this.chkAll.Name = "chkAll";
-            this.chkAll.Padding = new System.Windows.Forms.Padding(4, 1, 1, 1);
-            this.chkAll.Size = new System.Drawing.Size(88, 24);
-            this.chkAll.TabIndex = 633;
-            this.chkAll.Text = "All";
-            this.theme1.SetTheme(this.chkAll, "(default)");
-            this.chkAll.UseVisualStyleBackColor = true;
-            this.chkAll.Value = null;
-            this.chkAll.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
-            // 
             // FrmNurseView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -583,6 +583,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.tC)).EndInit();
             this.tC.ResumeLayout(false);
             this.tabWaiting.ResumeLayout(false);
+            this.pnVisitBsp.ResumeLayout(false);
+            this.pnVisitBsp.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.chkAll)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cboVisitBsp)).EndInit();
             this.tabDiag.ResumeLayout(false);
             this.tabFinish.ResumeLayout(false);
             this.tabLab.ResumeLayout(false);
@@ -600,10 +604,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtSearch)).EndInit();
             this.sB.ResumeLayout(false);
             this.sB.PerformLayout();
-            this.pnVisitBsp.ResumeLayout(false);
-            this.pnVisitBsp.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.cboVisitBsp)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.chkAll)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

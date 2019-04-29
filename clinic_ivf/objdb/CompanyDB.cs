@@ -653,6 +653,59 @@ namespace clinic_ivf.objdb
             doc = cop1.prefix_billing_cover_doc + cop1.year + cop1.month + doc;
             return doc;
         }
+        public String genVNDocWW()
+        {
+            DataTable dt = new DataTable();
+            String doc = "", sql="", max="";
+            Company cop1 = new Company();
+            cop1 = selectByCode1("001");
+            if (!cop1.year.Equals(cop1.year_curr))
+            {
+                sql = "Update " + cop.table + " Set " +
+                    " " + cop.year_curr + "='" + cop1.year + "' " +
+                    //"," + cop.vn_doc + "=1 " +
+                    "Where " + cop.pkField + "='" + cop1.comp_id + "'";
+                conn.ExecuteNonQuery(conn.conn, sql);
+                //doc = "00001";
+            }
+            if (!cop1.month.Equals(cop1.month_curr))
+            {
+                cop1.month = "00" + cop1.month;
+                cop1.month = cop1.month.Substring(cop1.month.Length - 2, 2);
+                sql = "Update " + cop.table + " Set " +
+                    " " + cop.month_curr + "='" + cop1.month + "' " +
+
+                    "Where " + cop.pkField + "='" + cop1.comp_id + "'";
+                conn.ExecuteNonQuery(conn.conn, sql);
+                //doc = "00001";
+            }
+            if (!cop1.day.Equals(cop1.day_curr))
+            {
+                cop1.day = "00" + cop1.day;
+                cop1.day = cop1.day.Substring(cop1.day.Length - 2, 2);
+                sql = "Update " + cop.table + " Set " +
+                    " " + cop.day_curr + "='" + cop1.day + "' " +
+
+                    "Where " + cop.pkField + "='" + cop1.comp_id + "'";
+                conn.ExecuteNonQuery(conn.conn, sql);
+                cop1.vn_doc = "000";
+                doc = cop1.prefix_vn_doc + cop1.year + cop1.month + cop1.day + doc;
+            }
+            else
+            {
+                sql = "Select Max(VN) as vn From Visit ";
+                dt = conn.selectData(conn.conn, sql);
+                max = dt.Rows[0]["vn"].ToString();
+                long chk = 0;
+                if (long.TryParse(max, out chk))
+                {
+                    chk++;
+                }
+                doc = chk.ToString();
+            }
+            
+            return doc;
+        }
         public String genVNDoc()
         {
             String doc = "", year = "", sql = "";

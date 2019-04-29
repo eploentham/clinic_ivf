@@ -1337,3 +1337,10 @@ https://windowsreport.com/windows-10-ftp-client-wont-work/#.XDKS5lwzaUk
 
 ALTER TABLE ivf.b_doc_group_scan AUTO_INCREMENT = 2210000000;
 ALTER TABLE ivf.b_doc_group_sub_scan AUTO_INCREMENT = 2220000000;
+
+
+delete from Patient1 Where PID = '20191591';
+delete from t_patient1 Where t_patient_id = '2080000040';
+
+delete from Visit1 Where VN = '20190429074';
+delete from t_visit1 Where t_visit_id = '210000019';

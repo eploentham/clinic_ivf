@@ -3317,7 +3317,15 @@ namespace clinic_ivf.gui
             vs.visit_begin_visit_time = DateTime.Now.Year.ToString() + "-" + DateTime.Now.ToString("MM-dd hh:mm:ss");
             if (txtVisitID.Text.Equals(""))
             {
-                vs.visit_vn = ic.ivfDB.copDB.genVNDoc();
+                if (ic.cop.comp_name_e.IndexOf("World Wide IVF") >= 0)
+                {
+                    vs.visit_vn = ic.ivfDB.copDB.genVNDocWW();
+                }
+                else
+                {
+                    vs.visit_vn = ic.ivfDB.copDB.genVNDoc();
+                }
+
                 vs.queue_id = ic.ivfDB.copDB.genQueueDoc();
             }
             else

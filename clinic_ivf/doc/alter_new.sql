@@ -173,14 +173,14 @@ ALTER TABLE `ivf_101`.`PackageDetail`
 COMMENT = 'id=225' ;
 
 
-delete from JobPx;
-delete from JobPxDetail;
+delete from JobPx1;
+delete from JobPxDetail1;
 
-delete from JobLab;
-delete from JobLabDetail;
+delete from JobLab1;
+delete from JobLabDetail1;
 
-delete from JobSpecial;
-delete from JobSpecialDetail;
+delete from JobSpecial1;
+delete from JobSpecialDetail1;
 
 19-04-16
 ALTER TABLE `ivf_101`.`LabItemGroup` 
