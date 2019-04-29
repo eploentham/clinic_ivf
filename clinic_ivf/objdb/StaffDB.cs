@@ -72,6 +72,7 @@ namespace clinic_ivf.objdb
             stf.status_module_medicalrecord = "status_module_medicalrecord";
             stf.status_doctor = "status_doctor";
             stf.doctor_id = "doctor_id";
+            stf.doctor_id_old = "doctor_id_old";
 
             stf.table = "b_staff";
             stf.pkField = "staff_id";
@@ -164,6 +165,7 @@ namespace clinic_ivf.objdb
             p.logo = p.logo == null ? "" : p.logo;
             p.dept_name = p.dept_name == null ? "" : p.dept_name;
             p.doctor_id = p.doctor_id == null ? "" : p.doctor_id;
+            p.doctor_id_old = p.doctor_id_old == null ? "" : p.doctor_id_old;
 
             p.status_admin = p.status_admin == null ? "0" : p.status_admin;
             p.status_module_reception = p.status_module_reception == null ? "0" : p.status_module_reception;
@@ -264,8 +266,9 @@ namespace clinic_ivf.objdb
                 "," + stf.status_module_cashier + "='" + p.status_module_cashier + "' " +
                 "," + stf.status_module_medicalrecord + "='" + p.status_module_medicalrecord + "' " +
                 "," + stf.status_doctor + "='" + p.status_doctor + "' " +
-                "," + stf.doctor_id + "='" + p.doctor_id + "' "
-                ;
+                "," + stf.doctor_id + "='" + p.doctor_id + "' "+
+                "," + stf.doctor_id_old + "='" + p.doctor_id_old + "' "+
+                "";
             try
             {
                 re = conn.ExecuteNonQuery(conn.conn, sql);
@@ -320,6 +323,7 @@ namespace clinic_ivf.objdb
                 "," + stf.status_module_medicalrecord + " = '" + p.status_module_medicalrecord + "' " +
                 "," + stf.status_doctor + " = '" + p.status_doctor + "' " +
                 "," + stf.doctor_id + " = '" + p.doctor_id + "' " +
+                "," + stf.doctor_id_old + "='" + p.doctor_id_old + "' " +
                 "Where " + stf.pkField + "='" + p.staff_id + "'"
                 ;
 
@@ -649,6 +653,7 @@ namespace clinic_ivf.objdb
                 stf1.status_module_medicalrecord = dt.Rows[0][stf.status_module_medicalrecord] != null ? dt.Rows[0][stf.status_module_medicalrecord].ToString() : "0";
                 stf1.status_doctor = dt.Rows[0][stf.status_doctor] != null ? dt.Rows[0][stf.status_doctor].ToString() : "0";
                 stf1.doctor_id = dt.Rows[0][stf.doctor_id] != null ? dt.Rows[0][stf.doctor_id].ToString() : "0";
+                stf1.doctor_id_old = dt.Rows[0][stf.doctor_id_old] != null ? dt.Rows[0][stf.doctor_id_old].ToString() : "0";
             }
             else
             {
@@ -701,6 +706,7 @@ namespace clinic_ivf.objdb
             stf1.status_module_medicalrecord = "0";
             stf1.status_doctor = "0";
             stf1.doctor_id = "0";
+            stf1.doctor_id_old = "0";
             return stf1;
         }
         public String getStaffNameBylStf(String selected)

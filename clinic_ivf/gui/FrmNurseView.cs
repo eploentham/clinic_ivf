@@ -68,6 +68,8 @@ namespace clinic_ivf.gui
             btnSearch.Click += BtnSearch_Click;
             //txtSearch.KeyUp += TxtSearch_KeyUp1;
             txtLabResultDate.KeyUp += TxtLabResultDate_KeyUp;
+            ic.ivfDB.bspDB.setCboBsp(cboVisitBsp, ic.iniC.service_point_id);
+            chkAll.Checked = true;
 
             initGrfQue();
             setGrfQue();
@@ -960,7 +962,10 @@ namespace clinic_ivf.gui
                     date = dt11.Year + "-" + dt11.ToString("MM-dd");
                     //dt = ic.ivfDB.ovsDB.selectByDate(date);
                 }
-                dt = ic.ivfDB.ovsDB.selectByReceptionSend();
+                if(chkAll.Checked)
+                    dt = ic.ivfDB.ovsDB.selectByReceptionSend();
+                else
+                    dt = ic.ivfDB.ovsDB.selectByReceptionSendBsp(cboVisitBsp.SelectedItem == null ? "" : ((ComboBoxItem)cboVisitBsp.SelectedItem).Value);
             }
             else
             {

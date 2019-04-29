@@ -313,5 +313,13 @@ ADD COLUMN `status_infectious` VARCHAR(45) NULL AFTER `typing_other`,
 ADD COLUMN `status_add_lab` VARCHAR(45) NULL AFTER `status_infectious`,
 ADD COLUMN `add_lab` VARCHAR(255) NULL AFTER `status_add_lab`;
 
+19-04-27
+ALTER TABLE `ivf_101`.`b_staff` 
+ADD COLUMN `doctor_id_old` VARCHAR(45) NULL COMMENT 'รหัสแพทย์ ระบบเก่า' AFTER `doctor_id`;
+
+UPDATE `ivf_101`.`b_staff` SET `doctor_id_old` = '1' WHERE (`staff_id` = '1220000041');
+UPDATE `ivf_101`.`b_staff` SET `doctor_id_old` = '2' WHERE (`staff_id` = '1220000042');
+
+
 
 

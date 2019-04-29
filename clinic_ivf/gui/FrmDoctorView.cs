@@ -194,7 +194,7 @@ namespace clinic_ivf.gui
                     date = dt11.Year + "-" + dt11.ToString("MM-dd");
                     //dt = ic.ivfDB.ovsDB.selectByDate(date);
                 }
-                dt = ic.ivfDB.ovsDB.selectByReceptionSend();
+                dt = ic.ivfDB.ovsDB.selectByReceptionSendDoctor(ic.user.doctor_id_old);
             }
             else
             {

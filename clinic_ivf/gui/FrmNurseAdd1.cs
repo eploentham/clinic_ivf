@@ -94,6 +94,8 @@ namespace clinic_ivf.gui
             ic.setCboLangSticker(cboLangSticker);
 
             ic.ivfDB.opkgstDB.setCboSex(cboSellThruID, "");
+            ic.ivfDB.dtrOldDB.setCboDoctor(cboDoctor, "");
+
             tabOrder.Click += TabOrder_Click;
             btnPkgOrder.Click += BtnPkgOrder_Click;
             btnRxSetOrder.Click += BtnRxSetOrder_Click;
@@ -101,6 +103,7 @@ namespace clinic_ivf.gui
             cboLangSticker.SelectedIndexChanged += CboLangSticker_SelectedIndexChanged;
             btnNoteAdd.Click += BtnNoteAdd_Click;
             tlpPatient.Resize += TlpPatient_Resize;
+            btnSendDtr.Click += BtnSendDtr_Click;
 
             setControl(vsid);
             //btnNew.Click += BtnNew_Click;
@@ -136,6 +139,19 @@ namespace clinic_ivf.gui
             picPtt.SizeMode = PictureBoxSizeMode.StretchImage;
             //initGrfPtt();
             //setGrfPtt("");
+        }
+
+        private void BtnSendDtr_Click(object sender, EventArgs e)
+        {
+            //throw new NotImplementedException();
+            ic.cStf.staff_id = "";
+            FrmPasswordConfirm frm = new FrmPasswordConfirm(ic);
+            frm.ShowDialog(this);
+            if (!ic.cStf.staff_id.Equals(""))
+            {
+                String re = "";
+                re = ic.ivfDB.vsDB.updateDoctor(vs.t_visit_id, cboDoctor.SelectedItem == null ? "" : ((ComboBoxItem)cboDoctor.SelectedItem).Value);
+            }
         }
 
         private void TlpPatient_Resize(object sender, EventArgs e)
@@ -583,6 +599,7 @@ namespace clinic_ivf.gui
             txtVisitBP.Value = vs.bp;
             txtVisitPulse.Value = vs.pulse;
             chkChronic.Checked = ptt.status_congenial.Equals("1") ? true : false;
+            ic.setC1Combo(cboDoctor, vs.doctor_id);
             stt.Show("<p><b>สวัสดี</b></p>คุณ " + ptt.congenital_diseases_description + "<br> กรุณา ป้อนรหัสผ่าน", chkChronic);
             if (!ptt.t_patient_id.Equals(""))
             {

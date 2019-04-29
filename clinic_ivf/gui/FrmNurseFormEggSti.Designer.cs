@@ -117,6 +117,8 @@
             this.btnNoteAdd = new C1.Win.C1Input.C1Button();
             this.label73 = new System.Windows.Forms.Label();
             this.txtNote = new C1.Win.C1Input.C1TextBox();
+            this.label22 = new System.Windows.Forms.Label();
+            this.txtNameMale = new C1.Win.C1Input.C1TextBox();
             this.sB.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.theme1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.sC)).BeginInit();
@@ -176,6 +178,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.chkNoteAll)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnNoteAdd)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtNote)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtNameMale)).BeginInit();
             this.SuspendLayout();
             // 
             // sB
@@ -235,6 +238,8 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.panel1.Controls.Add(this.label22);
+            this.panel1.Controls.Add(this.txtNameMale);
             this.panel1.Controls.Add(this.cboOther);
             this.panel1.Controls.Add(this.chkOther);
             this.panel1.Controls.Add(this.chkTyping);
@@ -323,7 +328,7 @@
             this.cboOther.ImagePadding = new System.Windows.Forms.Padding(0);
             this.cboOther.ItemsDisplayMember = "";
             this.cboOther.ItemsValueMember = "";
-            this.cboOther.Location = new System.Drawing.Point(467, 92);
+            this.cboOther.Location = new System.Drawing.Point(467, 96);
             this.cboOther.Name = "cboOther";
             this.cboOther.Size = new System.Drawing.Size(115, 20);
             this.cboOther.Style.DropDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
@@ -342,7 +347,7 @@
             this.chkOther.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.chkOther.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.chkOther.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.chkOther.Location = new System.Drawing.Point(404, 89);
+            this.chkOther.Location = new System.Drawing.Point(404, 93);
             this.chkOther.Name = "chkOther";
             this.chkOther.Padding = new System.Windows.Forms.Padding(4, 1, 1, 1);
             this.chkOther.Size = new System.Drawing.Size(62, 24);
@@ -361,7 +366,7 @@
             this.chkTyping.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.chkTyping.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.chkTyping.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.chkTyping.Location = new System.Drawing.Point(323, 89);
+            this.chkTyping.Location = new System.Drawing.Point(323, 93);
             this.chkTyping.Name = "chkTyping";
             this.chkTyping.Padding = new System.Windows.Forms.Padding(4, 1, 1, 1);
             this.chkTyping.Size = new System.Drawing.Size(71, 24);
@@ -979,7 +984,7 @@
             this.cboDoctor.ImagePadding = new System.Windows.Forms.Padding(0);
             this.cboDoctor.ItemsDisplayMember = "";
             this.cboDoctor.ItemsValueMember = "";
-            this.cboDoctor.Location = new System.Drawing.Point(289, 56);
+            this.cboDoctor.Location = new System.Drawing.Point(289, 47);
             this.cboDoctor.Name = "cboDoctor";
             this.cboDoctor.Size = new System.Drawing.Size(253, 20);
             this.cboDoctor.Style.DropDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
@@ -1180,7 +1185,7 @@
             this.label3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.label3.Location = new System.Drawing.Point(207, 56);
+            this.label3.Location = new System.Drawing.Point(207, 47);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(54, 16);
             this.label3.TabIndex = 905;
@@ -1335,7 +1340,7 @@
             this.label12.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
             this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label12.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.label12.Location = new System.Drawing.Point(207, 35);
+            this.label12.Location = new System.Drawing.Point(207, 28);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(79, 16);
             this.label12.TabIndex = 893;
@@ -1347,7 +1352,7 @@
             this.txtPttName.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtPttName.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
             this.txtPttName.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.txtPttName.Location = new System.Drawing.Point(289, 33);
+            this.txtPttName.Location = new System.Drawing.Point(289, 26);
             this.txtPttName.Name = "txtPttName";
             this.txtPttName.Size = new System.Drawing.Size(253, 20);
             this.txtPttName.TabIndex = 892;
@@ -1361,7 +1366,7 @@
             this.label13.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
             this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label13.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.label13.Location = new System.Drawing.Point(207, 16);
+            this.label13.Location = new System.Drawing.Point(207, 9);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(51, 16);
             this.label13.TabIndex = 891;
@@ -1373,7 +1378,7 @@
             this.txtPttNameE.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtPttNameE.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
             this.txtPttNameE.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.txtPttNameE.Location = new System.Drawing.Point(289, 12);
+            this.txtPttNameE.Location = new System.Drawing.Point(289, 5);
             this.txtPttNameE.Name = "txtPttNameE";
             this.txtPttNameE.Size = new System.Drawing.Size(253, 20);
             this.txtPttNameE.TabIndex = 890;
@@ -1575,6 +1580,32 @@
             this.theme1.SetTheme(this.txtNote, "(default)");
             this.txtNote.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
             // 
+            // label22
+            // 
+            this.label22.AutoSize = true;
+            this.label22.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.label22.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label22.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.label22.Location = new System.Drawing.Point(207, 71);
+            this.label22.Name = "label22";
+            this.label22.Size = new System.Drawing.Size(81, 16);
+            this.label22.TabIndex = 959;
+            this.label22.Text = "name male :";
+            this.theme1.SetTheme(this.label22, "(default)");
+            // 
+            // txtNameMale
+            // 
+            this.txtNameMale.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtNameMale.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
+            this.txtNameMale.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.txtNameMale.Location = new System.Drawing.Point(289, 69);
+            this.txtNameMale.Name = "txtNameMale";
+            this.txtNameMale.Size = new System.Drawing.Size(253, 20);
+            this.txtNameMale.TabIndex = 958;
+            this.txtNameMale.Tag = null;
+            this.theme1.SetTheme(this.txtNameMale, "(default)");
+            this.txtNameMale.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            // 
             // FrmNurseFormEggSti
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1647,6 +1678,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.chkNoteAll)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnNoteAdd)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtNote)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtNameMale)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1743,5 +1775,7 @@
         private C1.Win.C1Input.C1CheckBox chkOther;
         private C1.Win.C1Input.C1CheckBox chkTyping;
         private C1.Win.C1Input.C1ComboBox cboOther;
+        private System.Windows.Forms.Label label22;
+        private C1.Win.C1Input.C1TextBox txtNameMale;
     }
 }

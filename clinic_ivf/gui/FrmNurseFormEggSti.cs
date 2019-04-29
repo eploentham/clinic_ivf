@@ -488,8 +488,10 @@ namespace clinic_ivf.gui
         private void setControl1()
         {
             LabFormA lFormA = new LabFormA();
+            Patient pttmale = new Patient();
 
             lFormA = ic.ivfDB.lFormaDB.selectByVnOld(vs.visit_vn);
+            pttmale = ic.ivfDB.pttDB.selectByHn(vs.patient_hn_male);
             ptt.patient_birthday = pttOld.DateOfBirth;
             txtHn.Value = vsOld.PIDS;
             txtVn.Value = vsOld.VN;
@@ -516,6 +518,7 @@ namespace clinic_ivf.gui
             txtOPUTime.Value = lFormA.opu_time;
             txtEmbryoTranferDate.Value = lFormA.embryo_tranfer_date;
             ic.setC1Combo(cboDoctor, vs.doctor_id);
+            txtNameMale.Value = pttmale.Name;
 
             chkChronic.Checked = ptt.status_congenial.Equals("1") ? true : false;
             stt.Show("<p><b>สวัสดี</b></p>คุณ " + ptt.congenital_diseases_description + "<br> กรุณา ป้อนรหัสผ่าน", chkChronic);

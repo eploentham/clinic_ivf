@@ -418,6 +418,24 @@ namespace clinic_ivf.objdb
             cop1 = setVisit(dt);
             return cop1;
         }
+        public String updateDoctor(String vsid, String dtrid)
+        {
+            String re = "", err = "";
+            String sql = "update " + vs.table + " " +
+                "Set " + vs.doctor_id + " ='"+ dtrid + "' " +
+                "Where " + vs.pkField + " ='" + vsid + "' ";
+            try
+            {
+                re = conn.ExecuteNonQuery(conn.conn, sql);
+                updateStatusVoidVisit(vsid);
+            }
+            catch (Exception ex)
+            {
+                err = ex.Message + ex.InnerException;
+            }
+
+            return re;
+        }
         public String updateStatusVoidAppointment(String vsid)
         {
             String re = "", err = "";

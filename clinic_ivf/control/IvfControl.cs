@@ -195,7 +195,7 @@ namespace clinic_ivf.control
             iniC.pathImageScan = iniF.getIni("app", "pathImageScan");
             iniC.patientaddpanel1weight = iniF.getIni("app", "patientaddpanel1weight");
             iniC.creditCharge = iniF.getIni("app", "creditCharge");
-
+            iniC.service_point_id = iniF.getIni("app", "service_point_id");
 
             iniC.grdViewFontName = iniC.grdViewFontName.Equals("") ? "Microsoft Sans Serif" : iniC.grdViewFontName;
 
@@ -231,6 +231,8 @@ namespace clinic_ivf.control
             iniC.folderFTP = iniC.folderFTP == null ? "images_medical_record" : iniC.folderFTP.Equals("") ? "images_medical_record" : iniC.folderFTP;
             iniC.creditCharge = iniC.creditCharge == null ? "3" : iniC.creditCharge.Equals("") ? "3" : iniC.creditCharge;
             iniC.usePassiveFTP = iniC.usePassiveFTP == null ? "false" : iniC.usePassiveFTP.Equals("") ? "false" : iniC.usePassiveFTP;
+            iniC.service_point_id = iniC.service_point_id == null ? "2120000002" : iniC.service_point_id.Equals("") ? "2120000002" : iniC.service_point_id;
+
             int.TryParse(iniC.grdViewFontSize, out grdViewFontSize);
             Decimal.TryParse(iniC.creditCharge, out CreditCharge);
             Boolean.TryParse(iniC.usePassiveFTP, out ftpUsePassive);
