@@ -1773,8 +1773,7 @@ namespace clinic_ivf.gui
             grfImgOld.DataSource = null;
             grfImgOld.Rows.Count = 2;
             grfImgOld.Cols.Count = 10;
-            DataTable dt = new DataTable();
-            dt = ic.ivfDB.ofpDB.selectByPID(txtIdOld.Text);
+            
             //grfExpn.Rows.Count = dt.Rows.Count + 1;
             //grfCu.Rows.Count = 41;
             //grfCu.Cols.Count = 4;
@@ -1826,6 +1825,10 @@ namespace clinic_ivf.gui
             //CellRange rg1 = grfBank.GetCellRange(1, colE, grfBank.Rows.Count, colE);
             //rg1.Style = grfBank.Styles["date"];
             //grfCu.Cols[colID].Visible = false;
+            if (txtIdOld.Text.Equals(""))
+                return;
+            DataTable dt = new DataTable();
+            dt = ic.ivfDB.ofpDB.selectByPID(txtIdOld.Text);
             int i = 0;
             foreach (DataRow row in dt.Rows)
             {
@@ -1913,8 +1916,7 @@ namespace clinic_ivf.gui
             grfImg.DataSource = null;
             grfImg.Rows.Count = 2;
             grfImg.Cols.Count = 10;
-            DataTable dt = new DataTable();
-            dt = ic.ivfDB.pttImgDB.selectByPttID(txtID.Text);
+            
             //grfExpn.Rows.Count = dt.Rows.Count + 1;
             //grfCu.Rows.Count = 41;
             //grfCu.Cols.Count = 4;
@@ -1966,6 +1968,10 @@ namespace clinic_ivf.gui
             //CellRange rg1 = grfBank.GetCellRange(1, colE, grfBank.Rows.Count, colE);
             //rg1.Style = grfBank.Styles["date"];
             //grfCu.Cols[colID].Visible = false;
+            if (txtID.Text.Equals(""))
+                return;
+            DataTable dt = new DataTable();
+            dt = ic.ivfDB.pttImgDB.selectByPttID(txtID.Text);
             int i = 0;
             foreach (DataRow row in dt.Rows)
             {
@@ -3340,6 +3346,7 @@ namespace clinic_ivf.gui
             vs.status_urge = chkVisitUrge.Checked ? "1" : "0";
             vs.patient_hn_1 = txtHnFemale.Text;
             vs.lmp = ic.datetoDB(txtVisitLMP.Text);
+            txtVisitHeight.Value = txtHeight.Text;
             vs.height = txtVisitHeight.Text;
 
             vs.bw = txtVisitBW.Text;

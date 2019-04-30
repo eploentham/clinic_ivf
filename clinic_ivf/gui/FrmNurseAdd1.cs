@@ -580,7 +580,7 @@ namespace clinic_ivf.gui
         {
             vsOld = ic.ivfDB.ovsDB.selectByPk1(vsid);
             pttOld = ic.ivfDB.pttOldDB.selectByPk1(vsOld.PID);
-            vs = ic.ivfDB.vsDB.selectByPk1(vsid);
+            vs = ic.ivfDB.vsDB.selectByVn(vsid);
             ptt = ic.ivfDB.pttDB.selectByHn(vsOld.PIDS);
             ptt.patient_birthday = pttOld.DateOfBirth;
             txtHn.Value = vsOld.PIDS;
@@ -600,6 +600,9 @@ namespace clinic_ivf.gui
             txtVisitPulse.Value = vs.pulse;
             chkChronic.Checked = ptt.status_congenial.Equals("1") ? true : false;
             ic.setC1Combo(cboDoctor, vs.doctor_id);
+            Patient ptt1 = new Patient();
+            ptt = ic.ivfDB.pttDB.selectByHn(vs.patient_hn_male);
+            txtNameMale.Value = ptt.Name;
             stt.Show("<p><b>สวัสดี</b></p>คุณ " + ptt.congenital_diseases_description + "<br> กรุณา ป้อนรหัสผ่าน", chkChronic);
             if (!ptt.t_patient_id.Equals(""))
             {

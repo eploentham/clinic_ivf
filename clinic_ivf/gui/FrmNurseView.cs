@@ -25,7 +25,7 @@ namespace clinic_ivf.gui
         Color bg, fc;
         Font ff, ffB;
 
-        int colID = 1, colVNshow = 2, colPttHn = 3, colPttName = 4, colVsDate = 5, colVsTime = 6, colVsEtime = 7, colStatus = 8, colPttId=9, colVn=10;
+        int colID = 1, colVNshow = 2, colPttHn = 3, colPttName = 4, colVsDate = 5, colVsTime = 6, colVsEtime = 7, colStatus = 8, colPttId=9, colVn=10, colDtr=11;
         int colSID = 1, colSVN = 2, colSPttHn = 3, colSPttName = 4, colSVsDate = 5, colSVsTime = 6, colSVsEtime = 7, colSStatus = 8, colSPttId = 9;
         int colRID = 1, colRVN = 2, colRPttHn = 3, colRPttName = 4, colRVsDate = 5, colRPttId = 6;
 
@@ -72,6 +72,7 @@ namespace clinic_ivf.gui
             //txtSearch.KeyUp += TxtSearch_KeyUp1;
             txtLabResultDate.KeyUp += TxtLabResultDate_KeyUp;
             chkAll.CheckedChanged += ChkAll_CheckedChanged;
+            cboVisitBsp.SelectedItemChanged += CboVisitBsp_SelectedItemChanged;
 
             ic.ivfDB.bspDB.setCboBsp(cboVisitBsp, ic.iniC.service_point_id);
             
@@ -92,6 +93,13 @@ namespace clinic_ivf.gui
             timer.Tick += Timer_Tick;
             timer.Enabled = true;
             pageLoad = false;
+        }
+
+        private void CboVisitBsp_SelectedItemChanged(object sender, EventArgs e)
+        {
+            //throw new NotImplementedException();
+            if (pageLoad) return;
+            setGrfQue();
         }
 
         private void ChkAll_CheckedChanged(object sender, EventArgs e)
@@ -988,7 +996,7 @@ namespace clinic_ivf.gui
 
             //grfExpn.Rows.Count = dt.Rows.Count + 1;
             grfQue.Rows.Count = dt.Rows.Count + 1;
-            grfQue.Cols.Count = 11;
+            grfQue.Cols.Count = 12;
             C1TextBox txt = new C1TextBox();
             //C1ComboBox cboproce = new C1ComboBox();
             //ic.ivfDB.itmDB.setCboItem(cboproce);
@@ -1054,6 +1062,7 @@ namespace clinic_ivf.gui
                 grfQue[i, colVsEtime] = row["VEndTime"].ToString();
                 grfQue[i, colStatus] = row["VName"].ToString();
                 grfQue[i, colPttId] = row["PID"].ToString();
+                grfQue[i, colDtr] = row["dtrname"].ToString();
                 if (!row[ic.ivfDB.ovsDB.vsold.form_a_id].ToString().Equals("0"))
                 {
                     CellNote note = new CellNote("ส่ง Lab Request Foam A");
@@ -1067,11 +1076,14 @@ namespace clinic_ivf.gui
             CellNoteManager mgr = new CellNoteManager(grfQue);
             grfQue.Cols[colID].Visible = false;
             grfQue.Cols[colVn].Visible = false;
+            grfQue.Cols[colPttId].Visible = false;
+
             grfQue.Cols[colVNshow].AllowEditing = false;
             grfQue.Cols[colPttHn].AllowEditing = false;
             grfQue.Cols[colPttName].AllowEditing = false;
             grfQue.Cols[colVsDate].AllowEditing = false;
             grfQue.Cols[colVsTime].AllowEditing = false;
+            grfQue.Cols[colDtr].AllowEditing = false;
             //theme1.SetTheme(grfQue, ic.theme);
 
         }
