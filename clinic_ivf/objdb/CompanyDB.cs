@@ -696,12 +696,16 @@ namespace clinic_ivf.objdb
                 sql = "Select Max(VN) as vn From Visit ";
                 dt = conn.selectData(conn.conn, sql);
                 max = dt.Rows[0]["vn"].ToString();
+                if (max.Equals("")) max = "0";
                 long chk = 0;
                 if (long.TryParse(max, out chk))
                 {
                     chk++;
                 }
                 doc = chk.ToString();
+                doc = "000" + doc;
+                doc = doc.Substring(doc.Length - 3);
+                doc = cop1.prefix_vn_doc + cop1.year + cop1.month + cop1.day + doc;
             }
             
             return doc;

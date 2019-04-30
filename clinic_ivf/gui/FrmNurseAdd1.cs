@@ -1091,9 +1091,7 @@ namespace clinic_ivf.gui
 
             grfPackage.ShowCursor = true;
             //grdFlex.Cols[colID].Caption = "no";
-            //grfDept.Cols[colCode].Caption = "รหัส";
-
-            
+            //grfDept.Cols[colCode].Caption = "รหัส";                        
 
             CellRange rg = grfPackage.GetCellRange(2, colBlInclude, grfPackage.Rows.Count - 1, colBlInclude);
             rg.Style = cs;

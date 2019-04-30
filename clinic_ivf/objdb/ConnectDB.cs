@@ -83,7 +83,6 @@ namespace clinic_ivf.objdb
                     //con.Close();
                 }
                 throw new Exception(ex.Message, ex);
-                
             }
             finally
             {
