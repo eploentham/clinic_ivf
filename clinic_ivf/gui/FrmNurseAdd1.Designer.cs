@@ -155,6 +155,7 @@
             this.tabHis = new C1.Win.C1Command.C1DockingTabPage();
             this.panel1 = new System.Windows.Forms.Panel();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.c1Button2 = new C1.Win.C1Input.C1Button();
             this.label63 = new System.Windows.Forms.Label();
             this.c1TextBox28 = new C1.Win.C1Input.C1TextBox();
             this.c1CheckBox44 = new C1.Win.C1Input.C1CheckBox();
@@ -282,82 +283,15 @@
             this.label32 = new System.Windows.Forms.Label();
             this.tabHisLab = new C1.Win.C1Command.C1DockingTabPage();
             this.panel11 = new System.Windows.Forms.Panel();
-            this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
-            this.c1CheckBox46 = new C1.Win.C1Input.C1CheckBox();
-            this.groupBox6 = new System.Windows.Forms.GroupBox();
-            this.c1CheckBox47 = new C1.Win.C1Input.C1CheckBox();
-            this.c1CheckBox48 = new C1.Win.C1Input.C1CheckBox();
-            this.c1CheckBox49 = new C1.Win.C1Input.C1CheckBox();
-            this.c1TextBox29 = new C1.Win.C1Input.C1TextBox();
-            this.c1TextBox30 = new C1.Win.C1Input.C1TextBox();
-            this.c1TextBox31 = new C1.Win.C1Input.C1TextBox();
-            this.c1TextBox32 = new C1.Win.C1Input.C1TextBox();
-            this.c1TextBox33 = new C1.Win.C1Input.C1TextBox();
-            this.c1TextBox34 = new C1.Win.C1Input.C1TextBox();
-            this.c1CheckBox50 = new C1.Win.C1Input.C1CheckBox();
-            this.c1CheckBox51 = new C1.Win.C1Input.C1CheckBox();
-            this.groupBox7 = new System.Windows.Forms.GroupBox();
-            this.c1TextBox36 = new C1.Win.C1Input.C1TextBox();
-            this.c1CheckBox52 = new C1.Win.C1Input.C1CheckBox();
-            this.c1TextBox37 = new C1.Win.C1Input.C1TextBox();
-            this.c1CheckBox55 = new C1.Win.C1Input.C1CheckBox();
-            this.c1CheckBox57 = new C1.Win.C1Input.C1CheckBox();
-            this.groupBox8 = new System.Windows.Forms.GroupBox();
-            this.c1CheckBox56 = new C1.Win.C1Input.C1CheckBox();
-            this.panel12 = new System.Windows.Forms.Panel();
-            this.radioButton9 = new System.Windows.Forms.RadioButton();
-            this.radioButton10 = new System.Windows.Forms.RadioButton();
-            this.groupBox9 = new System.Windows.Forms.GroupBox();
-            this.panel13 = new System.Windows.Forms.Panel();
-            this.radioButton11 = new System.Windows.Forms.RadioButton();
-            this.radioButton12 = new System.Windows.Forms.RadioButton();
-            this.c1CheckBox53 = new C1.Win.C1Input.C1CheckBox();
-            this.groupBox10 = new System.Windows.Forms.GroupBox();
-            this.panel14 = new System.Windows.Forms.Panel();
-            this.radioButton13 = new System.Windows.Forms.RadioButton();
-            this.radioButton14 = new System.Windows.Forms.RadioButton();
-            this.c1CheckBox54 = new C1.Win.C1Input.C1CheckBox();
-            this.panel15 = new System.Windows.Forms.Panel();
-            this.radioButton15 = new System.Windows.Forms.RadioButton();
-            this.c1CheckBox58 = new C1.Win.C1Input.C1CheckBox();
-            this.radioButton16 = new System.Windows.Forms.RadioButton();
-            this.panel16 = new System.Windows.Forms.Panel();
-            this.radioButton17 = new System.Windows.Forms.RadioButton();
-            this.c1CheckBox59 = new C1.Win.C1Input.C1CheckBox();
-            this.radioButton18 = new System.Windows.Forms.RadioButton();
-            this.radioButton20 = new System.Windows.Forms.RadioButton();
-            this.groupBox11 = new System.Windows.Forms.GroupBox();
-            this.panel17 = new System.Windows.Forms.Panel();
-            this.radioButton19 = new System.Windows.Forms.RadioButton();
-            this.radioButton21 = new System.Windows.Forms.RadioButton();
-            this.c1CheckBox60 = new C1.Win.C1Input.C1CheckBox();
-            this.groupBox12 = new System.Windows.Forms.GroupBox();
-            this.c1TextBox35 = new C1.Win.C1Input.C1TextBox();
-            this.c1TextBox38 = new C1.Win.C1Input.C1TextBox();
-            this.c1CheckBox62 = new C1.Win.C1Input.C1CheckBox();
-            this.c1CheckBox63 = new C1.Win.C1Input.C1CheckBox();
-            this.groupBox13 = new System.Windows.Forms.GroupBox();
-            this.c1TextBox39 = new C1.Win.C1Input.C1TextBox();
-            this.c1CheckBox61 = new C1.Win.C1Input.C1CheckBox();
-            this.c1TextBox40 = new C1.Win.C1Input.C1TextBox();
-            this.c1CheckBox64 = new C1.Win.C1Input.C1CheckBox();
-            this.c1CheckBox65 = new C1.Win.C1Input.C1CheckBox();
-            this.groupBox14 = new System.Windows.Forms.GroupBox();
-            this.c1TextBox41 = new C1.Win.C1Input.C1TextBox();
-            this.c1TextBox42 = new C1.Win.C1Input.C1TextBox();
-            this.c1CheckBox66 = new C1.Win.C1Input.C1CheckBox();
-            this.c1CheckBox67 = new C1.Win.C1Input.C1CheckBox();
-            this.groupBox15 = new System.Windows.Forms.GroupBox();
-            this.panel18 = new System.Windows.Forms.Panel();
-            this.radioButton22 = new System.Windows.Forms.RadioButton();
-            this.radioButton23 = new System.Windows.Forms.RadioButton();
-            this.c1CheckBox68 = new C1.Win.C1Input.C1CheckBox();
-            this.groupBox16 = new System.Windows.Forms.GroupBox();
-            this.panel19 = new System.Windows.Forms.Panel();
-            this.radioButton24 = new System.Windows.Forms.RadioButton();
-            this.radioButton25 = new System.Windows.Forms.RadioButton();
-            this.c1CheckBox69 = new C1.Win.C1Input.C1CheckBox();
+            this.c1Button3 = new C1.Win.C1Input.C1Button();
+            this.label65 = new System.Windows.Forms.Label();
+            this.c1TextBox44 = new C1.Win.C1Input.C1TextBox();
+            this.groupBox18 = new System.Windows.Forms.GroupBox();
+            this.panel23 = new System.Windows.Forms.Panel();
+            this.radioButton32 = new System.Windows.Forms.RadioButton();
+            this.radioButton33 = new System.Windows.Forms.RadioButton();
+            this.c1CheckBox73 = new C1.Win.C1Input.C1CheckBox();
             this.groupBox17 = new System.Windows.Forms.GroupBox();
             this.panel20 = new System.Windows.Forms.Panel();
             this.radioButton26 = new System.Windows.Forms.RadioButton();
@@ -371,73 +305,87 @@
             this.radioButton30 = new System.Windows.Forms.RadioButton();
             this.c1CheckBox72 = new C1.Win.C1Input.C1CheckBox();
             this.radioButton31 = new System.Windows.Forms.RadioButton();
-            this.groupBox18 = new System.Windows.Forms.GroupBox();
-            this.panel23 = new System.Windows.Forms.Panel();
-            this.radioButton32 = new System.Windows.Forms.RadioButton();
-            this.radioButton33 = new System.Windows.Forms.RadioButton();
-            this.c1CheckBox73 = new C1.Win.C1Input.C1CheckBox();
+            this.groupBox16 = new System.Windows.Forms.GroupBox();
+            this.panel19 = new System.Windows.Forms.Panel();
+            this.radioButton24 = new System.Windows.Forms.RadioButton();
+            this.radioButton25 = new System.Windows.Forms.RadioButton();
+            this.c1CheckBox69 = new C1.Win.C1Input.C1CheckBox();
+            this.groupBox15 = new System.Windows.Forms.GroupBox();
+            this.panel18 = new System.Windows.Forms.Panel();
+            this.radioButton22 = new System.Windows.Forms.RadioButton();
+            this.radioButton23 = new System.Windows.Forms.RadioButton();
+            this.c1CheckBox68 = new C1.Win.C1Input.C1CheckBox();
+            this.groupBox14 = new System.Windows.Forms.GroupBox();
+            this.c1TextBox41 = new C1.Win.C1Input.C1TextBox();
+            this.c1TextBox42 = new C1.Win.C1Input.C1TextBox();
+            this.c1CheckBox66 = new C1.Win.C1Input.C1CheckBox();
+            this.c1CheckBox67 = new C1.Win.C1Input.C1CheckBox();
+            this.groupBox13 = new System.Windows.Forms.GroupBox();
+            this.c1TextBox39 = new C1.Win.C1Input.C1TextBox();
+            this.c1CheckBox61 = new C1.Win.C1Input.C1CheckBox();
+            this.c1TextBox40 = new C1.Win.C1Input.C1TextBox();
+            this.c1CheckBox64 = new C1.Win.C1Input.C1CheckBox();
+            this.c1CheckBox65 = new C1.Win.C1Input.C1CheckBox();
+            this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.label64 = new System.Windows.Forms.Label();
             this.c1TextBox43 = new C1.Win.C1Input.C1TextBox();
-            this.label65 = new System.Windows.Forms.Label();
-            this.c1TextBox44 = new C1.Win.C1Input.C1TextBox();
+            this.groupBox12 = new System.Windows.Forms.GroupBox();
+            this.c1TextBox35 = new C1.Win.C1Input.C1TextBox();
+            this.c1TextBox38 = new C1.Win.C1Input.C1TextBox();
+            this.c1CheckBox62 = new C1.Win.C1Input.C1CheckBox();
+            this.c1CheckBox63 = new C1.Win.C1Input.C1CheckBox();
+            this.groupBox11 = new System.Windows.Forms.GroupBox();
+            this.panel17 = new System.Windows.Forms.Panel();
+            this.radioButton19 = new System.Windows.Forms.RadioButton();
+            this.radioButton21 = new System.Windows.Forms.RadioButton();
+            this.c1CheckBox60 = new C1.Win.C1Input.C1CheckBox();
+            this.groupBox10 = new System.Windows.Forms.GroupBox();
+            this.panel16 = new System.Windows.Forms.Panel();
+            this.radioButton17 = new System.Windows.Forms.RadioButton();
+            this.c1CheckBox59 = new C1.Win.C1Input.C1CheckBox();
+            this.radioButton18 = new System.Windows.Forms.RadioButton();
+            this.panel15 = new System.Windows.Forms.Panel();
+            this.radioButton15 = new System.Windows.Forms.RadioButton();
+            this.c1CheckBox58 = new C1.Win.C1Input.C1CheckBox();
+            this.radioButton16 = new System.Windows.Forms.RadioButton();
+            this.panel14 = new System.Windows.Forms.Panel();
+            this.radioButton13 = new System.Windows.Forms.RadioButton();
+            this.c1CheckBox54 = new C1.Win.C1Input.C1CheckBox();
+            this.radioButton14 = new System.Windows.Forms.RadioButton();
+            this.groupBox9 = new System.Windows.Forms.GroupBox();
+            this.panel13 = new System.Windows.Forms.Panel();
+            this.radioButton11 = new System.Windows.Forms.RadioButton();
+            this.radioButton12 = new System.Windows.Forms.RadioButton();
+            this.c1CheckBox53 = new C1.Win.C1Input.C1CheckBox();
+            this.groupBox8 = new System.Windows.Forms.GroupBox();
+            this.panel12 = new System.Windows.Forms.Panel();
+            this.radioButton9 = new System.Windows.Forms.RadioButton();
+            this.radioButton10 = new System.Windows.Forms.RadioButton();
+            this.c1CheckBox56 = new C1.Win.C1Input.C1CheckBox();
+            this.groupBox7 = new System.Windows.Forms.GroupBox();
+            this.c1TextBox36 = new C1.Win.C1Input.C1TextBox();
+            this.c1CheckBox52 = new C1.Win.C1Input.C1CheckBox();
+            this.c1TextBox37 = new C1.Win.C1Input.C1TextBox();
+            this.c1CheckBox55 = new C1.Win.C1Input.C1CheckBox();
+            this.c1CheckBox57 = new C1.Win.C1Input.C1CheckBox();
+            this.groupBox6 = new System.Windows.Forms.GroupBox();
+            this.c1TextBox33 = new C1.Win.C1Input.C1TextBox();
+            this.c1TextBox34 = new C1.Win.C1Input.C1TextBox();
+            this.c1CheckBox50 = new C1.Win.C1Input.C1CheckBox();
+            this.c1CheckBox51 = new C1.Win.C1Input.C1CheckBox();
+            this.c1TextBox32 = new C1.Win.C1Input.C1TextBox();
+            this.c1TextBox31 = new C1.Win.C1Input.C1TextBox();
+            this.c1TextBox30 = new C1.Win.C1Input.C1TextBox();
+            this.c1TextBox29 = new C1.Win.C1Input.C1TextBox();
+            this.c1CheckBox49 = new C1.Win.C1Input.C1CheckBox();
+            this.c1CheckBox48 = new C1.Win.C1Input.C1CheckBox();
+            this.c1CheckBox47 = new C1.Win.C1Input.C1CheckBox();
+            this.c1CheckBox46 = new C1.Win.C1Input.C1CheckBox();
             this.tabTestMerri = new C1.Win.C1Command.C1DockingTabPage();
             this.panel24 = new System.Windows.Forms.Panel();
-            this.label66 = new System.Windows.Forms.Label();
-            this.c1TextBox45 = new C1.Win.C1Input.C1TextBox();
-            this.label67 = new System.Windows.Forms.Label();
-            this.c1TextBox46 = new C1.Win.C1Input.C1TextBox();
-            this.label68 = new System.Windows.Forms.Label();
-            this.c1TextBox47 = new C1.Win.C1Input.C1TextBox();
-            this.label69 = new System.Windows.Forms.Label();
-            this.c1TextBox48 = new C1.Win.C1Input.C1TextBox();
-            this.label70 = new System.Windows.Forms.Label();
-            this.c1ComboBox3 = new C1.Win.C1Input.C1ComboBox();
-            this.label71 = new System.Windows.Forms.Label();
-            this.c1ComboBox4 = new C1.Win.C1Input.C1ComboBox();
-            this.label72 = new System.Windows.Forms.Label();
-            this.label74 = new System.Windows.Forms.Label();
-            this.label75 = new System.Windows.Forms.Label();
-            this.label76 = new System.Windows.Forms.Label();
-            this.label83 = new System.Windows.Forms.Label();
-            this.label84 = new System.Windows.Forms.Label();
-            this.panel25 = new System.Windows.Forms.Panel();
-            this.radioButton34 = new System.Windows.Forms.RadioButton();
-            this.radioButton35 = new System.Windows.Forms.RadioButton();
-            this.groupBox19 = new System.Windows.Forms.GroupBox();
-            this.radioButton36 = new System.Windows.Forms.RadioButton();
-            this.radioButton37 = new System.Windows.Forms.RadioButton();
-            this.groupBox20 = new System.Windows.Forms.GroupBox();
-            this.radioButton38 = new System.Windows.Forms.RadioButton();
-            this.radioButton39 = new System.Windows.Forms.RadioButton();
-            this.groupBox21 = new System.Windows.Forms.GroupBox();
-            this.groupBox22 = new System.Windows.Forms.GroupBox();
-            this.groupBox23 = new System.Windows.Forms.GroupBox();
-            this.radioButton40 = new System.Windows.Forms.RadioButton();
-            this.radioButton41 = new System.Windows.Forms.RadioButton();
-            this.groupBox24 = new System.Windows.Forms.GroupBox();
-            this.radioButton42 = new System.Windows.Forms.RadioButton();
-            this.radioButton43 = new System.Windows.Forms.RadioButton();
-            this.groupBox25 = new System.Windows.Forms.GroupBox();
-            this.groupBox26 = new System.Windows.Forms.GroupBox();
-            this.radioButton44 = new System.Windows.Forms.RadioButton();
-            this.radioButton45 = new System.Windows.Forms.RadioButton();
-            this.groupBox27 = new System.Windows.Forms.GroupBox();
-            this.radioButton46 = new System.Windows.Forms.RadioButton();
-            this.radioButton47 = new System.Windows.Forms.RadioButton();
-            this.groupBox28 = new System.Windows.Forms.GroupBox();
-            this.groupBox29 = new System.Windows.Forms.GroupBox();
-            this.radioButton48 = new System.Windows.Forms.RadioButton();
-            this.radioButton49 = new System.Windows.Forms.RadioButton();
-            this.groupBox30 = new System.Windows.Forms.GroupBox();
-            this.radioButton50 = new System.Windows.Forms.RadioButton();
-            this.radioButton51 = new System.Windows.Forms.RadioButton();
-            this.groupBox31 = new System.Windows.Forms.GroupBox();
-            this.groupBox32 = new System.Windows.Forms.GroupBox();
-            this.radioButton52 = new System.Windows.Forms.RadioButton();
-            this.radioButton53 = new System.Windows.Forms.RadioButton();
-            this.groupBox33 = new System.Windows.Forms.GroupBox();
-            this.radioButton54 = new System.Windows.Forms.RadioButton();
-            this.radioButton55 = new System.Windows.Forms.RadioButton();
+            this.btnPrint = new C1.Win.C1Input.C1Button();
+            this.c1ComboBox5 = new C1.Win.C1Input.C1ComboBox();
+            this.label77 = new System.Windows.Forms.Label();
             this.groupBox34 = new System.Windows.Forms.GroupBox();
             this.groupBox35 = new System.Windows.Forms.GroupBox();
             this.radioButton56 = new System.Windows.Forms.RadioButton();
@@ -445,11 +393,65 @@
             this.groupBox36 = new System.Windows.Forms.GroupBox();
             this.radioButton58 = new System.Windows.Forms.RadioButton();
             this.radioButton59 = new System.Windows.Forms.RadioButton();
-            this.c1ComboBox5 = new C1.Win.C1Input.C1ComboBox();
-            this.label77 = new System.Windows.Forms.Label();
-            this.btnPrint = new C1.Win.C1Input.C1Button();
-            this.c1Button2 = new C1.Win.C1Input.C1Button();
-            this.c1Button3 = new C1.Win.C1Input.C1Button();
+            this.groupBox31 = new System.Windows.Forms.GroupBox();
+            this.groupBox32 = new System.Windows.Forms.GroupBox();
+            this.radioButton52 = new System.Windows.Forms.RadioButton();
+            this.radioButton53 = new System.Windows.Forms.RadioButton();
+            this.groupBox33 = new System.Windows.Forms.GroupBox();
+            this.radioButton54 = new System.Windows.Forms.RadioButton();
+            this.radioButton55 = new System.Windows.Forms.RadioButton();
+            this.groupBox28 = new System.Windows.Forms.GroupBox();
+            this.groupBox29 = new System.Windows.Forms.GroupBox();
+            this.radioButton48 = new System.Windows.Forms.RadioButton();
+            this.radioButton49 = new System.Windows.Forms.RadioButton();
+            this.groupBox30 = new System.Windows.Forms.GroupBox();
+            this.radioButton50 = new System.Windows.Forms.RadioButton();
+            this.radioButton51 = new System.Windows.Forms.RadioButton();
+            this.groupBox25 = new System.Windows.Forms.GroupBox();
+            this.groupBox26 = new System.Windows.Forms.GroupBox();
+            this.radioButton44 = new System.Windows.Forms.RadioButton();
+            this.radioButton45 = new System.Windows.Forms.RadioButton();
+            this.groupBox27 = new System.Windows.Forms.GroupBox();
+            this.radioButton46 = new System.Windows.Forms.RadioButton();
+            this.radioButton47 = new System.Windows.Forms.RadioButton();
+            this.groupBox22 = new System.Windows.Forms.GroupBox();
+            this.groupBox23 = new System.Windows.Forms.GroupBox();
+            this.radioButton40 = new System.Windows.Forms.RadioButton();
+            this.radioButton41 = new System.Windows.Forms.RadioButton();
+            this.groupBox24 = new System.Windows.Forms.GroupBox();
+            this.radioButton42 = new System.Windows.Forms.RadioButton();
+            this.radioButton43 = new System.Windows.Forms.RadioButton();
+            this.groupBox21 = new System.Windows.Forms.GroupBox();
+            this.groupBox19 = new System.Windows.Forms.GroupBox();
+            this.radioButton36 = new System.Windows.Forms.RadioButton();
+            this.radioButton37 = new System.Windows.Forms.RadioButton();
+            this.groupBox20 = new System.Windows.Forms.GroupBox();
+            this.radioButton38 = new System.Windows.Forms.RadioButton();
+            this.radioButton39 = new System.Windows.Forms.RadioButton();
+            this.panel25 = new System.Windows.Forms.Panel();
+            this.radioButton34 = new System.Windows.Forms.RadioButton();
+            this.radioButton35 = new System.Windows.Forms.RadioButton();
+            this.label84 = new System.Windows.Forms.Label();
+            this.label83 = new System.Windows.Forms.Label();
+            this.label76 = new System.Windows.Forms.Label();
+            this.label75 = new System.Windows.Forms.Label();
+            this.label74 = new System.Windows.Forms.Label();
+            this.label72 = new System.Windows.Forms.Label();
+            this.label71 = new System.Windows.Forms.Label();
+            this.c1ComboBox4 = new C1.Win.C1Input.C1ComboBox();
+            this.label70 = new System.Windows.Forms.Label();
+            this.c1ComboBox3 = new C1.Win.C1Input.C1ComboBox();
+            this.label69 = new System.Windows.Forms.Label();
+            this.c1TextBox48 = new C1.Win.C1Input.C1TextBox();
+            this.label68 = new System.Windows.Forms.Label();
+            this.c1TextBox47 = new C1.Win.C1Input.C1TextBox();
+            this.label67 = new System.Windows.Forms.Label();
+            this.c1TextBox46 = new C1.Win.C1Input.C1TextBox();
+            this.label66 = new System.Windows.Forms.Label();
+            this.c1TextBox45 = new C1.Win.C1Input.C1TextBox();
+            this.radioButton20 = new System.Windows.Forms.RadioButton();
+            this.txtCongenital = new C1.Win.C1Input.C1TextBox();
+            this.cboAllergyDesc = new C1.Win.C1Input.C1ComboBox();
             this.sB.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.theme1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.sC)).BeginInit();
@@ -542,6 +544,7 @@
             this.tabHis.SuspendLayout();
             this.panel1.SuspendLayout();
             this.groupBox3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.c1Button2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.c1TextBox28)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.c1CheckBox44)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.c1CheckBox45)).BeginInit();
@@ -624,65 +627,12 @@
             ((System.ComponentModel.ISupportInitialize)(this.c1CheckBox1)).BeginInit();
             this.tabHisLab.SuspendLayout();
             this.panel11.SuspendLayout();
-            this.groupBox4.SuspendLayout();
             this.groupBox5.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.c1CheckBox46)).BeginInit();
-            this.groupBox6.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.c1CheckBox47)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.c1CheckBox48)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.c1CheckBox49)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.c1TextBox29)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.c1TextBox30)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.c1TextBox31)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.c1TextBox32)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.c1TextBox33)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.c1TextBox34)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.c1CheckBox50)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.c1CheckBox51)).BeginInit();
-            this.groupBox7.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.c1TextBox36)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.c1CheckBox52)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.c1TextBox37)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.c1CheckBox55)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.c1CheckBox57)).BeginInit();
-            this.groupBox8.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.c1CheckBox56)).BeginInit();
-            this.panel12.SuspendLayout();
-            this.groupBox9.SuspendLayout();
-            this.panel13.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.c1CheckBox53)).BeginInit();
-            this.groupBox10.SuspendLayout();
-            this.panel14.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.c1CheckBox54)).BeginInit();
-            this.panel15.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.c1CheckBox58)).BeginInit();
-            this.panel16.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.c1CheckBox59)).BeginInit();
-            this.groupBox11.SuspendLayout();
-            this.panel17.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.c1CheckBox60)).BeginInit();
-            this.groupBox12.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.c1TextBox35)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.c1TextBox38)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.c1CheckBox62)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.c1CheckBox63)).BeginInit();
-            this.groupBox13.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.c1TextBox39)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.c1CheckBox61)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.c1TextBox40)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.c1CheckBox64)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.c1CheckBox65)).BeginInit();
-            this.groupBox14.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.c1TextBox41)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.c1TextBox42)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.c1CheckBox66)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.c1CheckBox67)).BeginInit();
-            this.groupBox15.SuspendLayout();
-            this.panel18.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.c1CheckBox68)).BeginInit();
-            this.groupBox16.SuspendLayout();
-            this.panel19.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.c1CheckBox69)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.c1Button3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.c1TextBox44)).BeginInit();
+            this.groupBox18.SuspendLayout();
+            this.panel23.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.c1CheckBox73)).BeginInit();
             this.groupBox17.SuspendLayout();
             this.panel20.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.c1CheckBox70)).BeginInit();
@@ -690,42 +640,96 @@
             ((System.ComponentModel.ISupportInitialize)(this.c1CheckBox71)).BeginInit();
             this.panel22.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.c1CheckBox72)).BeginInit();
-            this.groupBox18.SuspendLayout();
-            this.panel23.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.c1CheckBox73)).BeginInit();
+            this.groupBox16.SuspendLayout();
+            this.panel19.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.c1CheckBox69)).BeginInit();
+            this.groupBox15.SuspendLayout();
+            this.panel18.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.c1CheckBox68)).BeginInit();
+            this.groupBox14.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.c1TextBox41)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.c1TextBox42)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.c1CheckBox66)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.c1CheckBox67)).BeginInit();
+            this.groupBox13.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.c1TextBox39)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.c1CheckBox61)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.c1TextBox40)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.c1CheckBox64)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.c1CheckBox65)).BeginInit();
+            this.groupBox4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.c1TextBox43)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.c1TextBox44)).BeginInit();
+            this.groupBox12.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.c1TextBox35)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.c1TextBox38)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.c1CheckBox62)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.c1CheckBox63)).BeginInit();
+            this.groupBox11.SuspendLayout();
+            this.panel17.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.c1CheckBox60)).BeginInit();
+            this.groupBox10.SuspendLayout();
+            this.panel16.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.c1CheckBox59)).BeginInit();
+            this.panel15.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.c1CheckBox58)).BeginInit();
+            this.panel14.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.c1CheckBox54)).BeginInit();
+            this.groupBox9.SuspendLayout();
+            this.panel13.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.c1CheckBox53)).BeginInit();
+            this.groupBox8.SuspendLayout();
+            this.panel12.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.c1CheckBox56)).BeginInit();
+            this.groupBox7.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.c1TextBox36)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.c1CheckBox52)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.c1TextBox37)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.c1CheckBox55)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.c1CheckBox57)).BeginInit();
+            this.groupBox6.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.c1TextBox33)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.c1TextBox34)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.c1CheckBox50)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.c1CheckBox51)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.c1TextBox32)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.c1TextBox31)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.c1TextBox30)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.c1TextBox29)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.c1CheckBox49)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.c1CheckBox48)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.c1CheckBox47)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.c1CheckBox46)).BeginInit();
             this.tabTestMerri.SuspendLayout();
             this.panel24.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.c1TextBox45)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.c1TextBox46)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.c1TextBox47)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.c1TextBox48)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.c1ComboBox3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.c1ComboBox4)).BeginInit();
-            this.panel25.SuspendLayout();
-            this.groupBox19.SuspendLayout();
-            this.groupBox20.SuspendLayout();
-            this.groupBox21.SuspendLayout();
-            this.groupBox22.SuspendLayout();
-            this.groupBox23.SuspendLayout();
-            this.groupBox24.SuspendLayout();
-            this.groupBox25.SuspendLayout();
-            this.groupBox26.SuspendLayout();
-            this.groupBox27.SuspendLayout();
-            this.groupBox28.SuspendLayout();
-            this.groupBox29.SuspendLayout();
-            this.groupBox30.SuspendLayout();
-            this.groupBox31.SuspendLayout();
-            this.groupBox32.SuspendLayout();
-            this.groupBox33.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.btnPrint)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.c1ComboBox5)).BeginInit();
             this.groupBox34.SuspendLayout();
             this.groupBox35.SuspendLayout();
             this.groupBox36.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.c1ComboBox5)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.btnPrint)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.c1Button2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.c1Button3)).BeginInit();
+            this.groupBox31.SuspendLayout();
+            this.groupBox32.SuspendLayout();
+            this.groupBox33.SuspendLayout();
+            this.groupBox28.SuspendLayout();
+            this.groupBox29.SuspendLayout();
+            this.groupBox30.SuspendLayout();
+            this.groupBox25.SuspendLayout();
+            this.groupBox26.SuspendLayout();
+            this.groupBox27.SuspendLayout();
+            this.groupBox22.SuspendLayout();
+            this.groupBox23.SuspendLayout();
+            this.groupBox24.SuspendLayout();
+            this.groupBox21.SuspendLayout();
+            this.groupBox19.SuspendLayout();
+            this.groupBox20.SuspendLayout();
+            this.panel25.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.c1ComboBox4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.c1ComboBox3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.c1TextBox48)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.c1TextBox47)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.c1TextBox46)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.c1TextBox45)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtCongenital)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cboAllergyDesc)).BeginInit();
             this.SuspendLayout();
             // 
             // sB
@@ -815,6 +819,8 @@
             // pnPatient
             // 
             this.pnPatient.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.pnPatient.Controls.Add(this.cboAllergyDesc);
+            this.pnPatient.Controls.Add(this.txtCongenital);
             this.pnPatient.Controls.Add(this.c1Button1);
             this.pnPatient.Controls.Add(this.btnSendDtr);
             this.pnPatient.Controls.Add(this.label22);
@@ -863,7 +869,7 @@
             this.pnPatient.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
             this.pnPatient.Location = new System.Drawing.Point(3, 3);
             this.pnPatient.Name = "pnPatient";
-            this.pnPatient.Size = new System.Drawing.Size(1422, 103);
+            this.pnPatient.Size = new System.Drawing.Size(1422, 125);
             this.pnPatient.TabIndex = 531;
             this.theme1.SetTheme(this.pnPatient, "(default)");
             // 
@@ -1334,7 +1340,7 @@
             this.chkChronic.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.chkChronic.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.chkChronic.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.chkChronic.Location = new System.Drawing.Point(820, 3);
+            this.chkChronic.Location = new System.Drawing.Point(544, 73);
             this.chkChronic.Name = "chkChronic";
             this.chkChronic.Padding = new System.Windows.Forms.Padding(4, 1, 1, 1);
             this.chkChronic.Size = new System.Drawing.Size(101, 24);
@@ -1353,7 +1359,7 @@
             this.chkDenyAllergy.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.chkDenyAllergy.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.chkDenyAllergy.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.chkDenyAllergy.Location = new System.Drawing.Point(820, 26);
+            this.chkDenyAllergy.Location = new System.Drawing.Point(544, 98);
             this.chkDenyAllergy.Name = "chkDenyAllergy";
             this.chkDenyAllergy.Padding = new System.Windows.Forms.Padding(4, 1, 1, 1);
             this.chkDenyAllergy.Size = new System.Drawing.Size(104, 24);
@@ -2485,6 +2491,20 @@
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Male History";
             this.theme1.SetTheme(this.groupBox3, "(default)");
+            // 
+            // c1Button2
+            // 
+            this.c1Button2.Image = global::clinic_ivf.Properties.Resources.print;
+            this.c1Button2.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.c1Button2.Location = new System.Drawing.Point(566, 592);
+            this.c1Button2.Name = "c1Button2";
+            this.c1Button2.Size = new System.Drawing.Size(79, 34);
+            this.c1Button2.TabIndex = 1029;
+            this.c1Button2.Text = "Print";
+            this.c1Button2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.theme1.SetTheme(this.c1Button2, "(default)");
+            this.c1Button2.UseVisualStyleBackColor = true;
+            this.c1Button2.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
             // 
             // label63
             // 
@@ -4525,27 +4545,6 @@
             this.panel11.TabIndex = 0;
             this.theme1.SetTheme(this.panel11, "(default)");
             // 
-            // groupBox4
-            // 
-            this.groupBox4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.groupBox4.Controls.Add(this.label64);
-            this.groupBox4.Controls.Add(this.c1TextBox43);
-            this.groupBox4.Controls.Add(this.groupBox12);
-            this.groupBox4.Controls.Add(this.groupBox11);
-            this.groupBox4.Controls.Add(this.groupBox10);
-            this.groupBox4.Controls.Add(this.groupBox9);
-            this.groupBox4.Controls.Add(this.groupBox8);
-            this.groupBox4.Controls.Add(this.groupBox7);
-            this.groupBox4.Controls.Add(this.groupBox6);
-            this.groupBox4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.groupBox4.Location = new System.Drawing.Point(11, 3);
-            this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(601, 659);
-            this.groupBox4.TabIndex = 0;
-            this.groupBox4.TabStop = false;
-            this.groupBox4.Text = "Female";
-            this.theme1.SetTheme(this.groupBox4, "(default)");
-            // 
             // groupBox5
             // 
             this.groupBox5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
@@ -4567,1206 +4566,124 @@
             this.groupBox5.Text = "Male";
             this.theme1.SetTheme(this.groupBox5, "(default)");
             // 
-            // c1CheckBox46
-            // 
-            this.c1CheckBox46.BackColor = System.Drawing.Color.Transparent;
-            this.c1CheckBox46.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
-            this.c1CheckBox46.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.c1CheckBox46.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.c1CheckBox46.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.c1CheckBox46.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.c1CheckBox46.Location = new System.Drawing.Point(6, 19);
-            this.c1CheckBox46.Name = "c1CheckBox46";
-            this.c1CheckBox46.Padding = new System.Windows.Forms.Padding(4, 1, 1, 1);
-            this.c1CheckBox46.Size = new System.Drawing.Size(49, 24);
-            this.c1CheckBox46.TabIndex = 817;
-            this.c1CheckBox46.Text = "E2";
-            this.theme1.SetTheme(this.c1CheckBox46, "(default)");
-            this.c1CheckBox46.UseVisualStyleBackColor = true;
-            this.c1CheckBox46.Value = null;
-            this.c1CheckBox46.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
-            // 
-            // groupBox6
-            // 
-            this.groupBox6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.groupBox6.Controls.Add(this.c1TextBox33);
-            this.groupBox6.Controls.Add(this.c1TextBox34);
-            this.groupBox6.Controls.Add(this.c1CheckBox50);
-            this.groupBox6.Controls.Add(this.c1CheckBox51);
-            this.groupBox6.Controls.Add(this.c1TextBox32);
-            this.groupBox6.Controls.Add(this.c1TextBox31);
-            this.groupBox6.Controls.Add(this.c1TextBox30);
-            this.groupBox6.Controls.Add(this.c1TextBox29);
-            this.groupBox6.Controls.Add(this.c1CheckBox49);
-            this.groupBox6.Controls.Add(this.c1CheckBox48);
-            this.groupBox6.Controls.Add(this.c1CheckBox47);
-            this.groupBox6.Controls.Add(this.c1CheckBox46);
-            this.groupBox6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.groupBox6.Location = new System.Drawing.Point(6, 37);
-            this.groupBox6.Name = "groupBox6";
-            this.groupBox6.Size = new System.Drawing.Size(589, 86);
-            this.groupBox6.TabIndex = 818;
-            this.groupBox6.TabStop = false;
-            this.groupBox6.Text = "Hormone";
-            this.theme1.SetTheme(this.groupBox6, "(default)");
-            // 
-            // c1CheckBox47
-            // 
-            this.c1CheckBox47.BackColor = System.Drawing.Color.Transparent;
-            this.c1CheckBox47.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
-            this.c1CheckBox47.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.c1CheckBox47.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.c1CheckBox47.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.c1CheckBox47.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.c1CheckBox47.Location = new System.Drawing.Point(156, 19);
-            this.c1CheckBox47.Name = "c1CheckBox47";
-            this.c1CheckBox47.Padding = new System.Windows.Forms.Padding(4, 1, 1, 1);
-            this.c1CheckBox47.Size = new System.Drawing.Size(51, 24);
-            this.c1CheckBox47.TabIndex = 818;
-            this.c1CheckBox47.Text = "LH";
-            this.theme1.SetTheme(this.c1CheckBox47, "(default)");
-            this.c1CheckBox47.UseVisualStyleBackColor = true;
-            this.c1CheckBox47.Value = null;
-            this.c1CheckBox47.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
-            // 
-            // c1CheckBox48
-            // 
-            this.c1CheckBox48.BackColor = System.Drawing.Color.Transparent;
-            this.c1CheckBox48.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
-            this.c1CheckBox48.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.c1CheckBox48.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.c1CheckBox48.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.c1CheckBox48.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.c1CheckBox48.Location = new System.Drawing.Point(314, 19);
-            this.c1CheckBox48.Name = "c1CheckBox48";
-            this.c1CheckBox48.Padding = new System.Windows.Forms.Padding(4, 1, 1, 1);
-            this.c1CheckBox48.Size = new System.Drawing.Size(57, 24);
-            this.c1CheckBox48.TabIndex = 819;
-            this.c1CheckBox48.Text = "FHS";
-            this.theme1.SetTheme(this.c1CheckBox48, "(default)");
-            this.c1CheckBox48.UseVisualStyleBackColor = true;
-            this.c1CheckBox48.Value = null;
-            this.c1CheckBox48.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
-            // 
-            // c1CheckBox49
-            // 
-            this.c1CheckBox49.BackColor = System.Drawing.Color.Transparent;
-            this.c1CheckBox49.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
-            this.c1CheckBox49.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.c1CheckBox49.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.c1CheckBox49.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.c1CheckBox49.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.c1CheckBox49.Location = new System.Drawing.Point(457, 19);
-            this.c1CheckBox49.Name = "c1CheckBox49";
-            this.c1CheckBox49.Padding = new System.Windows.Forms.Padding(4, 1, 1, 1);
-            this.c1CheckBox49.Size = new System.Drawing.Size(60, 24);
-            this.c1CheckBox49.TabIndex = 820;
-            this.c1CheckBox49.Text = "PRL";
-            this.theme1.SetTheme(this.c1CheckBox49, "(default)");
-            this.c1CheckBox49.UseVisualStyleBackColor = true;
-            this.c1CheckBox49.Value = null;
-            this.c1CheckBox49.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
-            // 
-            // c1TextBox29
-            // 
-            this.c1TextBox29.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.c1TextBox29.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
-            this.c1TextBox29.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.c1TextBox29.Location = new System.Drawing.Point(515, 19);
-            this.c1TextBox29.Name = "c1TextBox29";
-            this.c1TextBox29.Size = new System.Drawing.Size(67, 20);
-            this.c1TextBox29.TabIndex = 961;
-            this.c1TextBox29.Tag = null;
-            this.theme1.SetTheme(this.c1TextBox29, "(default)");
-            this.c1TextBox29.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
-            // 
-            // c1TextBox30
-            // 
-            this.c1TextBox30.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.c1TextBox30.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
-            this.c1TextBox30.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.c1TextBox30.Location = new System.Drawing.Point(373, 19);
-            this.c1TextBox30.Name = "c1TextBox30";
-            this.c1TextBox30.Size = new System.Drawing.Size(67, 20);
-            this.c1TextBox30.TabIndex = 962;
-            this.c1TextBox30.Tag = null;
-            this.theme1.SetTheme(this.c1TextBox30, "(default)");
-            this.c1TextBox30.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
-            // 
-            // c1TextBox31
-            // 
-            this.c1TextBox31.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.c1TextBox31.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
-            this.c1TextBox31.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.c1TextBox31.Location = new System.Drawing.Point(208, 19);
-            this.c1TextBox31.Name = "c1TextBox31";
-            this.c1TextBox31.Size = new System.Drawing.Size(67, 20);
-            this.c1TextBox31.TabIndex = 963;
-            this.c1TextBox31.Tag = null;
-            this.theme1.SetTheme(this.c1TextBox31, "(default)");
-            this.c1TextBox31.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
-            // 
-            // c1TextBox32
-            // 
-            this.c1TextBox32.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.c1TextBox32.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
-            this.c1TextBox32.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.c1TextBox32.Location = new System.Drawing.Point(70, 19);
-            this.c1TextBox32.Name = "c1TextBox32";
-            this.c1TextBox32.Size = new System.Drawing.Size(67, 20);
-            this.c1TextBox32.TabIndex = 964;
-            this.c1TextBox32.Tag = null;
-            this.theme1.SetTheme(this.c1TextBox32, "(default)");
-            this.c1TextBox32.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
-            // 
-            // c1TextBox33
-            // 
-            this.c1TextBox33.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.c1TextBox33.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
-            this.c1TextBox33.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.c1TextBox33.Location = new System.Drawing.Point(70, 49);
-            this.c1TextBox33.Name = "c1TextBox33";
-            this.c1TextBox33.Size = new System.Drawing.Size(67, 20);
-            this.c1TextBox33.TabIndex = 968;
-            this.c1TextBox33.Tag = null;
-            this.theme1.SetTheme(this.c1TextBox33, "(default)");
-            this.c1TextBox33.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
-            // 
-            // c1TextBox34
-            // 
-            this.c1TextBox34.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.c1TextBox34.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
-            this.c1TextBox34.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.c1TextBox34.Location = new System.Drawing.Point(208, 49);
-            this.c1TextBox34.Name = "c1TextBox34";
-            this.c1TextBox34.Size = new System.Drawing.Size(67, 20);
-            this.c1TextBox34.TabIndex = 967;
-            this.c1TextBox34.Tag = null;
-            this.theme1.SetTheme(this.c1TextBox34, "(default)");
-            this.c1TextBox34.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
-            // 
-            // c1CheckBox50
-            // 
-            this.c1CheckBox50.BackColor = System.Drawing.Color.Transparent;
-            this.c1CheckBox50.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
-            this.c1CheckBox50.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.c1CheckBox50.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.c1CheckBox50.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.c1CheckBox50.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.c1CheckBox50.Location = new System.Drawing.Point(156, 49);
-            this.c1CheckBox50.Name = "c1CheckBox50";
-            this.c1CheckBox50.Padding = new System.Windows.Forms.Padding(4, 1, 1, 1);
-            this.c1CheckBox50.Size = new System.Drawing.Size(51, 24);
-            this.c1CheckBox50.TabIndex = 966;
-            this.c1CheckBox50.Text = "P4";
-            this.theme1.SetTheme(this.c1CheckBox50, "(default)");
-            this.c1CheckBox50.UseVisualStyleBackColor = true;
-            this.c1CheckBox50.Value = null;
-            this.c1CheckBox50.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
-            // 
-            // c1CheckBox51
-            // 
-            this.c1CheckBox51.BackColor = System.Drawing.Color.Transparent;
-            this.c1CheckBox51.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
-            this.c1CheckBox51.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.c1CheckBox51.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.c1CheckBox51.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.c1CheckBox51.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.c1CheckBox51.Location = new System.Drawing.Point(6, 49);
-            this.c1CheckBox51.Name = "c1CheckBox51";
-            this.c1CheckBox51.Padding = new System.Windows.Forms.Padding(4, 1, 1, 1);
-            this.c1CheckBox51.Size = new System.Drawing.Size(65, 24);
-            this.c1CheckBox51.TabIndex = 965;
-            this.c1CheckBox51.Text = "AMH";
-            this.theme1.SetTheme(this.c1CheckBox51, "(default)");
-            this.c1CheckBox51.UseVisualStyleBackColor = true;
-            this.c1CheckBox51.Value = null;
-            this.c1CheckBox51.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
-            // 
-            // groupBox7
-            // 
-            this.groupBox7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.groupBox7.Controls.Add(this.c1TextBox36);
-            this.groupBox7.Controls.Add(this.c1CheckBox52);
-            this.groupBox7.Controls.Add(this.c1TextBox37);
-            this.groupBox7.Controls.Add(this.c1CheckBox55);
-            this.groupBox7.Controls.Add(this.c1CheckBox57);
-            this.groupBox7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.groupBox7.Location = new System.Drawing.Point(6, 129);
-            this.groupBox7.Name = "groupBox7";
-            this.groupBox7.Size = new System.Drawing.Size(589, 86);
-            this.groupBox7.TabIndex = 819;
-            this.groupBox7.TabStop = false;
-            this.groupBox7.Text = "Electrophoresis";
-            this.theme1.SetTheme(this.groupBox7, "(default)");
-            // 
-            // c1TextBox36
-            // 
-            this.c1TextBox36.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.c1TextBox36.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
-            this.c1TextBox36.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.c1TextBox36.Location = new System.Drawing.Point(388, 49);
-            this.c1TextBox36.Name = "c1TextBox36";
-            this.c1TextBox36.Size = new System.Drawing.Size(194, 20);
-            this.c1TextBox36.TabIndex = 967;
-            this.c1TextBox36.Tag = null;
-            this.theme1.SetTheme(this.c1TextBox36, "(default)");
-            this.c1TextBox36.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
-            // 
-            // c1CheckBox52
-            // 
-            this.c1CheckBox52.BackColor = System.Drawing.Color.Transparent;
-            this.c1CheckBox52.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
-            this.c1CheckBox52.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.c1CheckBox52.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.c1CheckBox52.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.c1CheckBox52.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.c1CheckBox52.Location = new System.Drawing.Point(314, 49);
-            this.c1CheckBox52.Name = "c1CheckBox52";
-            this.c1CheckBox52.Padding = new System.Windows.Forms.Padding(4, 1, 1, 1);
-            this.c1CheckBox52.Size = new System.Drawing.Size(80, 24);
-            this.c1CheckBox52.TabIndex = 966;
-            this.c1CheckBox52.Text = "Other";
-            this.theme1.SetTheme(this.c1CheckBox52, "(default)");
-            this.c1CheckBox52.UseVisualStyleBackColor = true;
-            this.c1CheckBox52.Value = null;
-            this.c1CheckBox52.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
-            // 
-            // c1TextBox37
-            // 
-            this.c1TextBox37.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.c1TextBox37.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
-            this.c1TextBox37.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.c1TextBox37.Location = new System.Drawing.Point(99, 19);
-            this.c1TextBox37.Name = "c1TextBox37";
-            this.c1TextBox37.Size = new System.Drawing.Size(67, 20);
-            this.c1TextBox37.TabIndex = 964;
-            this.c1TextBox37.Tag = null;
-            this.theme1.SetTheme(this.c1TextBox37, "(default)");
-            this.c1TextBox37.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
-            // 
-            // c1CheckBox55
-            // 
-            this.c1CheckBox55.BackColor = System.Drawing.Color.Transparent;
-            this.c1CheckBox55.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
-            this.c1CheckBox55.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.c1CheckBox55.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.c1CheckBox55.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.c1CheckBox55.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.c1CheckBox55.Location = new System.Drawing.Point(314, 19);
-            this.c1CheckBox55.Name = "c1CheckBox55";
-            this.c1CheckBox55.Padding = new System.Windows.Forms.Padding(4, 1, 1, 1);
-            this.c1CheckBox55.Size = new System.Drawing.Size(113, 24);
-            this.c1CheckBox55.TabIndex = 819;
-            this.c1CheckBox55.Text = "Normal";
-            this.theme1.SetTheme(this.c1CheckBox55, "(default)");
-            this.c1CheckBox55.UseVisualStyleBackColor = true;
-            this.c1CheckBox55.Value = null;
-            this.c1CheckBox55.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
-            // 
-            // c1CheckBox57
-            // 
-            this.c1CheckBox57.BackColor = System.Drawing.Color.Transparent;
-            this.c1CheckBox57.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
-            this.c1CheckBox57.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.c1CheckBox57.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.c1CheckBox57.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.c1CheckBox57.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.c1CheckBox57.Location = new System.Drawing.Point(6, 19);
-            this.c1CheckBox57.Name = "c1CheckBox57";
-            this.c1CheckBox57.Padding = new System.Windows.Forms.Padding(4, 1, 1, 1);
-            this.c1CheckBox57.Size = new System.Drawing.Size(92, 24);
-            this.c1CheckBox57.TabIndex = 817;
-            this.c1CheckBox57.Text = "Hy typing";
-            this.theme1.SetTheme(this.c1CheckBox57, "(default)");
-            this.c1CheckBox57.UseVisualStyleBackColor = true;
-            this.c1CheckBox57.Value = null;
-            this.c1CheckBox57.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
-            // 
-            // groupBox8
-            // 
-            this.groupBox8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.groupBox8.Controls.Add(this.panel12);
-            this.groupBox8.Controls.Add(this.c1CheckBox56);
-            this.groupBox8.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.groupBox8.Location = new System.Drawing.Point(6, 314);
-            this.groupBox8.Name = "groupBox8";
-            this.groupBox8.Size = new System.Drawing.Size(589, 66);
-            this.groupBox8.TabIndex = 820;
-            this.groupBox8.TabStop = false;
-            this.groupBox8.Text = "Serology";
-            this.theme1.SetTheme(this.groupBox8, "(default)");
-            // 
-            // c1CheckBox56
-            // 
-            this.c1CheckBox56.BackColor = System.Drawing.Color.Transparent;
-            this.c1CheckBox56.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
-            this.c1CheckBox56.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.c1CheckBox56.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.c1CheckBox56.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.c1CheckBox56.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.c1CheckBox56.Location = new System.Drawing.Point(6, 19);
-            this.c1CheckBox56.Name = "c1CheckBox56";
-            this.c1CheckBox56.Padding = new System.Windows.Forms.Padding(4, 1, 1, 1);
-            this.c1CheckBox56.Size = new System.Drawing.Size(92, 24);
-            this.c1CheckBox56.TabIndex = 817;
-            this.c1CheckBox56.Text = "VDRL";
-            this.theme1.SetTheme(this.c1CheckBox56, "(default)");
-            this.c1CheckBox56.UseVisualStyleBackColor = true;
-            this.c1CheckBox56.Value = null;
-            this.c1CheckBox56.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
-            // 
-            // panel12
-            // 
-            this.panel12.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.panel12.Controls.Add(this.radioButton9);
-            this.panel12.Controls.Add(this.radioButton10);
-            this.panel12.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.panel12.Location = new System.Drawing.Point(292, 15);
-            this.panel12.Name = "panel12";
-            this.panel12.Size = new System.Drawing.Size(228, 28);
-            this.panel12.TabIndex = 967;
-            this.theme1.SetTheme(this.panel12, "(default)");
-            // 
-            // radioButton9
-            // 
-            this.radioButton9.AutoSize = true;
-            this.radioButton9.BackColor = System.Drawing.Color.Transparent;
-            this.radioButton9.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
-            this.radioButton9.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(189)))), ((int)(((byte)(182)))));
-            this.radioButton9.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(189)))), ((int)(((byte)(182)))));
-            this.radioButton9.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.radioButton9.Location = new System.Drawing.Point(96, 4);
-            this.radioButton9.Name = "radioButton9";
-            this.radioButton9.Size = new System.Drawing.Size(68, 17);
-            this.radioButton9.TabIndex = 536;
-            this.radioButton9.TabStop = true;
-            this.radioButton9.Text = "Reactive";
-            this.theme1.SetTheme(this.radioButton9, "(default)");
-            this.radioButton9.UseVisualStyleBackColor = false;
-            // 
-            // radioButton10
-            // 
-            this.radioButton10.AutoSize = true;
-            this.radioButton10.BackColor = System.Drawing.Color.Transparent;
-            this.radioButton10.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
-            this.radioButton10.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(189)))), ((int)(((byte)(182)))));
-            this.radioButton10.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(189)))), ((int)(((byte)(182)))));
-            this.radioButton10.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.radioButton10.Location = new System.Drawing.Point(3, 4);
-            this.radioButton10.Name = "radioButton10";
-            this.radioButton10.Size = new System.Drawing.Size(91, 17);
-            this.radioButton10.TabIndex = 535;
-            this.radioButton10.TabStop = true;
-            this.radioButton10.Text = "Non-Reactive";
-            this.theme1.SetTheme(this.radioButton10, "(default)");
-            this.radioButton10.UseVisualStyleBackColor = false;
-            // 
-            // groupBox9
-            // 
-            this.groupBox9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.groupBox9.Controls.Add(this.panel13);
-            this.groupBox9.Controls.Add(this.c1CheckBox53);
-            this.groupBox9.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.groupBox9.Location = new System.Drawing.Point(6, 386);
-            this.groupBox9.Name = "groupBox9";
-            this.groupBox9.Size = new System.Drawing.Size(589, 66);
-            this.groupBox9.TabIndex = 821;
-            this.groupBox9.TabStop = false;
-            this.groupBox9.Text = "Infectious";
-            this.theme1.SetTheme(this.groupBox9, "(default)");
-            // 
-            // panel13
-            // 
-            this.panel13.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.panel13.Controls.Add(this.radioButton11);
-            this.panel13.Controls.Add(this.radioButton12);
-            this.panel13.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.panel13.Location = new System.Drawing.Point(292, 15);
-            this.panel13.Name = "panel13";
-            this.panel13.Size = new System.Drawing.Size(228, 28);
-            this.panel13.TabIndex = 967;
-            this.theme1.SetTheme(this.panel13, "(default)");
-            // 
-            // radioButton11
-            // 
-            this.radioButton11.AutoSize = true;
-            this.radioButton11.BackColor = System.Drawing.Color.Transparent;
-            this.radioButton11.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
-            this.radioButton11.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(189)))), ((int)(((byte)(182)))));
-            this.radioButton11.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(189)))), ((int)(((byte)(182)))));
-            this.radioButton11.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.radioButton11.Location = new System.Drawing.Point(96, 4);
-            this.radioButton11.Name = "radioButton11";
-            this.radioButton11.Size = new System.Drawing.Size(62, 17);
-            this.radioButton11.TabIndex = 536;
-            this.radioButton11.TabStop = true;
-            this.radioButton11.Text = "Positive";
-            this.theme1.SetTheme(this.radioButton11, "(default)");
-            this.radioButton11.UseVisualStyleBackColor = false;
-            // 
-            // radioButton12
-            // 
-            this.radioButton12.AutoSize = true;
-            this.radioButton12.BackColor = System.Drawing.Color.Transparent;
-            this.radioButton12.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
-            this.radioButton12.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(189)))), ((int)(((byte)(182)))));
-            this.radioButton12.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(189)))), ((int)(((byte)(182)))));
-            this.radioButton12.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.radioButton12.Location = new System.Drawing.Point(3, 4);
-            this.radioButton12.Name = "radioButton12";
-            this.radioButton12.Size = new System.Drawing.Size(68, 17);
-            this.radioButton12.TabIndex = 535;
-            this.radioButton12.TabStop = true;
-            this.radioButton12.Text = "Negative";
-            this.theme1.SetTheme(this.radioButton12, "(default)");
-            this.radioButton12.UseVisualStyleBackColor = false;
-            // 
-            // c1CheckBox53
-            // 
-            this.c1CheckBox53.BackColor = System.Drawing.Color.Transparent;
-            this.c1CheckBox53.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
-            this.c1CheckBox53.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.c1CheckBox53.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.c1CheckBox53.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.c1CheckBox53.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.c1CheckBox53.Location = new System.Drawing.Point(6, 19);
-            this.c1CheckBox53.Name = "c1CheckBox53";
-            this.c1CheckBox53.Padding = new System.Windows.Forms.Padding(4, 1, 1, 1);
-            this.c1CheckBox53.Size = new System.Drawing.Size(92, 24);
-            this.c1CheckBox53.TabIndex = 817;
-            this.c1CheckBox53.Text = "Rubella";
-            this.theme1.SetTheme(this.c1CheckBox53, "(default)");
-            this.c1CheckBox53.UseVisualStyleBackColor = true;
-            this.c1CheckBox53.Value = null;
-            this.c1CheckBox53.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
-            // 
-            // groupBox10
-            // 
-            this.groupBox10.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.groupBox10.Controls.Add(this.panel16);
-            this.groupBox10.Controls.Add(this.panel15);
-            this.groupBox10.Controls.Add(this.panel14);
-            this.groupBox10.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.groupBox10.Location = new System.Drawing.Point(6, 458);
-            this.groupBox10.Name = "groupBox10";
-            this.groupBox10.Size = new System.Drawing.Size(589, 123);
-            this.groupBox10.TabIndex = 822;
-            this.groupBox10.TabStop = false;
-            this.groupBox10.Text = "Hepatitis";
-            this.theme1.SetTheme(this.groupBox10, "(default)");
-            // 
-            // panel14
-            // 
-            this.panel14.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.panel14.Controls.Add(this.radioButton13);
-            this.panel14.Controls.Add(this.c1CheckBox54);
-            this.panel14.Controls.Add(this.radioButton14);
-            this.panel14.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.panel14.Location = new System.Drawing.Point(11, 19);
-            this.panel14.Name = "panel14";
-            this.panel14.Size = new System.Drawing.Size(509, 28);
-            this.panel14.TabIndex = 967;
-            this.theme1.SetTheme(this.panel14, "(default)");
-            // 
-            // radioButton13
-            // 
-            this.radioButton13.AutoSize = true;
-            this.radioButton13.BackColor = System.Drawing.Color.Transparent;
-            this.radioButton13.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
-            this.radioButton13.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(189)))), ((int)(((byte)(182)))));
-            this.radioButton13.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(189)))), ((int)(((byte)(182)))));
-            this.radioButton13.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.radioButton13.Location = new System.Drawing.Point(377, 3);
-            this.radioButton13.Name = "radioButton13";
-            this.radioButton13.Size = new System.Drawing.Size(62, 17);
-            this.radioButton13.TabIndex = 536;
-            this.radioButton13.TabStop = true;
-            this.radioButton13.Text = "Positive";
-            this.theme1.SetTheme(this.radioButton13, "(default)");
-            this.radioButton13.UseVisualStyleBackColor = false;
-            // 
-            // radioButton14
-            // 
-            this.radioButton14.AutoSize = true;
-            this.radioButton14.BackColor = System.Drawing.Color.Transparent;
-            this.radioButton14.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
-            this.radioButton14.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(189)))), ((int)(((byte)(182)))));
-            this.radioButton14.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(189)))), ((int)(((byte)(182)))));
-            this.radioButton14.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.radioButton14.Location = new System.Drawing.Point(282, 3);
-            this.radioButton14.Name = "radioButton14";
-            this.radioButton14.Size = new System.Drawing.Size(68, 17);
-            this.radioButton14.TabIndex = 535;
-            this.radioButton14.TabStop = true;
-            this.radioButton14.Text = "Negative";
-            this.theme1.SetTheme(this.radioButton14, "(default)");
-            this.radioButton14.UseVisualStyleBackColor = false;
-            // 
-            // c1CheckBox54
-            // 
-            this.c1CheckBox54.BackColor = System.Drawing.Color.Transparent;
-            this.c1CheckBox54.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
-            this.c1CheckBox54.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.c1CheckBox54.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.c1CheckBox54.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.c1CheckBox54.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.c1CheckBox54.Location = new System.Drawing.Point(3, 1);
-            this.c1CheckBox54.Name = "c1CheckBox54";
-            this.c1CheckBox54.Padding = new System.Windows.Forms.Padding(4, 1, 1, 1);
-            this.c1CheckBox54.Size = new System.Drawing.Size(92, 24);
-            this.c1CheckBox54.TabIndex = 817;
-            this.c1CheckBox54.Text = "HBsAg";
-            this.theme1.SetTheme(this.c1CheckBox54, "(default)");
-            this.c1CheckBox54.UseVisualStyleBackColor = true;
-            this.c1CheckBox54.Value = null;
-            this.c1CheckBox54.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
-            // 
-            // panel15
-            // 
-            this.panel15.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.panel15.Controls.Add(this.radioButton15);
-            this.panel15.Controls.Add(this.c1CheckBox58);
-            this.panel15.Controls.Add(this.radioButton16);
-            this.panel15.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.panel15.Location = new System.Drawing.Point(11, 50);
-            this.panel15.Name = "panel15";
-            this.panel15.Size = new System.Drawing.Size(509, 28);
-            this.panel15.TabIndex = 968;
-            this.theme1.SetTheme(this.panel15, "(default)");
-            // 
-            // radioButton15
-            // 
-            this.radioButton15.AutoSize = true;
-            this.radioButton15.BackColor = System.Drawing.Color.Transparent;
-            this.radioButton15.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
-            this.radioButton15.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(189)))), ((int)(((byte)(182)))));
-            this.radioButton15.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(189)))), ((int)(((byte)(182)))));
-            this.radioButton15.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.radioButton15.Location = new System.Drawing.Point(377, 3);
-            this.radioButton15.Name = "radioButton15";
-            this.radioButton15.Size = new System.Drawing.Size(62, 17);
-            this.radioButton15.TabIndex = 536;
-            this.radioButton15.TabStop = true;
-            this.radioButton15.Text = "Positive";
-            this.theme1.SetTheme(this.radioButton15, "(default)");
-            this.radioButton15.UseVisualStyleBackColor = false;
-            // 
-            // c1CheckBox58
-            // 
-            this.c1CheckBox58.BackColor = System.Drawing.Color.Transparent;
-            this.c1CheckBox58.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
-            this.c1CheckBox58.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.c1CheckBox58.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.c1CheckBox58.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.c1CheckBox58.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.c1CheckBox58.Location = new System.Drawing.Point(3, 1);
-            this.c1CheckBox58.Name = "c1CheckBox58";
-            this.c1CheckBox58.Padding = new System.Windows.Forms.Padding(4, 1, 1, 1);
-            this.c1CheckBox58.Size = new System.Drawing.Size(92, 24);
-            this.c1CheckBox58.TabIndex = 817;
-            this.c1CheckBox58.Text = "Anti-HBs";
-            this.theme1.SetTheme(this.c1CheckBox58, "(default)");
-            this.c1CheckBox58.UseVisualStyleBackColor = true;
-            this.c1CheckBox58.Value = null;
-            this.c1CheckBox58.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
-            // 
-            // radioButton16
-            // 
-            this.radioButton16.AutoSize = true;
-            this.radioButton16.BackColor = System.Drawing.Color.Transparent;
-            this.radioButton16.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
-            this.radioButton16.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(189)))), ((int)(((byte)(182)))));
-            this.radioButton16.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(189)))), ((int)(((byte)(182)))));
-            this.radioButton16.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.radioButton16.Location = new System.Drawing.Point(282, 3);
-            this.radioButton16.Name = "radioButton16";
-            this.radioButton16.Size = new System.Drawing.Size(68, 17);
-            this.radioButton16.TabIndex = 535;
-            this.radioButton16.TabStop = true;
-            this.radioButton16.Text = "Negative";
-            this.theme1.SetTheme(this.radioButton16, "(default)");
-            this.radioButton16.UseVisualStyleBackColor = false;
-            // 
-            // panel16
-            // 
-            this.panel16.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.panel16.Controls.Add(this.radioButton17);
-            this.panel16.Controls.Add(this.c1CheckBox59);
-            this.panel16.Controls.Add(this.radioButton18);
-            this.panel16.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.panel16.Location = new System.Drawing.Point(11, 84);
-            this.panel16.Name = "panel16";
-            this.panel16.Size = new System.Drawing.Size(509, 28);
-            this.panel16.TabIndex = 969;
-            this.theme1.SetTheme(this.panel16, "(default)");
-            // 
-            // radioButton17
-            // 
-            this.radioButton17.AutoSize = true;
-            this.radioButton17.BackColor = System.Drawing.Color.Transparent;
-            this.radioButton17.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
-            this.radioButton17.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(189)))), ((int)(((byte)(182)))));
-            this.radioButton17.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(189)))), ((int)(((byte)(182)))));
-            this.radioButton17.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.radioButton17.Location = new System.Drawing.Point(377, 3);
-            this.radioButton17.Name = "radioButton17";
-            this.radioButton17.Size = new System.Drawing.Size(62, 17);
-            this.radioButton17.TabIndex = 536;
-            this.radioButton17.TabStop = true;
-            this.radioButton17.Text = "Positive";
-            this.theme1.SetTheme(this.radioButton17, "(default)");
-            this.radioButton17.UseVisualStyleBackColor = false;
-            // 
-            // c1CheckBox59
-            // 
-            this.c1CheckBox59.BackColor = System.Drawing.Color.Transparent;
-            this.c1CheckBox59.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
-            this.c1CheckBox59.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.c1CheckBox59.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.c1CheckBox59.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.c1CheckBox59.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.c1CheckBox59.Location = new System.Drawing.Point(3, 1);
-            this.c1CheckBox59.Name = "c1CheckBox59";
-            this.c1CheckBox59.Padding = new System.Windows.Forms.Padding(4, 1, 1, 1);
-            this.c1CheckBox59.Size = new System.Drawing.Size(123, 24);
-            this.c1CheckBox59.TabIndex = 817;
-            this.c1CheckBox59.Text = "Anti-HCV(total)";
-            this.theme1.SetTheme(this.c1CheckBox59, "(default)");
-            this.c1CheckBox59.UseVisualStyleBackColor = true;
-            this.c1CheckBox59.Value = null;
-            this.c1CheckBox59.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
-            // 
-            // radioButton18
-            // 
-            this.radioButton18.AutoSize = true;
-            this.radioButton18.BackColor = System.Drawing.Color.Transparent;
-            this.radioButton18.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
-            this.radioButton18.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(189)))), ((int)(((byte)(182)))));
-            this.radioButton18.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(189)))), ((int)(((byte)(182)))));
-            this.radioButton18.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.radioButton18.Location = new System.Drawing.Point(282, 3);
-            this.radioButton18.Name = "radioButton18";
-            this.radioButton18.Size = new System.Drawing.Size(68, 17);
-            this.radioButton18.TabIndex = 535;
-            this.radioButton18.TabStop = true;
-            this.radioButton18.Text = "Negative";
-            this.theme1.SetTheme(this.radioButton18, "(default)");
-            this.radioButton18.UseVisualStyleBackColor = false;
-            // 
-            // radioButton20
-            // 
-            this.radioButton20.AutoSize = true;
-            this.radioButton20.BackColor = System.Drawing.Color.Transparent;
-            this.radioButton20.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
-            this.radioButton20.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(189)))), ((int)(((byte)(182)))));
-            this.radioButton20.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(189)))), ((int)(((byte)(182)))));
-            this.radioButton20.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.radioButton20.Location = new System.Drawing.Point(239, 3);
-            this.radioButton20.Name = "radioButton20";
-            this.radioButton20.Size = new System.Drawing.Size(68, 17);
-            this.radioButton20.TabIndex = 535;
-            this.radioButton20.TabStop = true;
-            this.radioButton20.Text = "Negative";
-            this.theme1.SetTheme(this.radioButton20, "(default)");
-            this.radioButton20.UseVisualStyleBackColor = false;
-            // 
-            // groupBox11
-            // 
-            this.groupBox11.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.groupBox11.Controls.Add(this.panel17);
-            this.groupBox11.Controls.Add(this.c1CheckBox60);
-            this.groupBox11.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.groupBox11.Location = new System.Drawing.Point(6, 587);
-            this.groupBox11.Name = "groupBox11";
-            this.groupBox11.Size = new System.Drawing.Size(589, 66);
-            this.groupBox11.TabIndex = 823;
-            this.groupBox11.TabStop = false;
-            this.groupBox11.Text = "AIDs";
-            this.theme1.SetTheme(this.groupBox11, "(default)");
-            // 
-            // panel17
-            // 
-            this.panel17.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.panel17.Controls.Add(this.radioButton19);
-            this.panel17.Controls.Add(this.radioButton21);
-            this.panel17.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.panel17.Location = new System.Drawing.Point(292, 15);
-            this.panel17.Name = "panel17";
-            this.panel17.Size = new System.Drawing.Size(228, 28);
-            this.panel17.TabIndex = 967;
-            this.theme1.SetTheme(this.panel17, "(default)");
-            // 
-            // radioButton19
-            // 
-            this.radioButton19.AutoSize = true;
-            this.radioButton19.BackColor = System.Drawing.Color.Transparent;
-            this.radioButton19.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
-            this.radioButton19.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(189)))), ((int)(((byte)(182)))));
-            this.radioButton19.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(189)))), ((int)(((byte)(182)))));
-            this.radioButton19.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.radioButton19.Location = new System.Drawing.Point(96, 4);
-            this.radioButton19.Name = "radioButton19";
-            this.radioButton19.Size = new System.Drawing.Size(62, 17);
-            this.radioButton19.TabIndex = 536;
-            this.radioButton19.TabStop = true;
-            this.radioButton19.Text = "Positive";
-            this.theme1.SetTheme(this.radioButton19, "(default)");
-            this.radioButton19.UseVisualStyleBackColor = false;
-            // 
-            // radioButton21
-            // 
-            this.radioButton21.AutoSize = true;
-            this.radioButton21.BackColor = System.Drawing.Color.Transparent;
-            this.radioButton21.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
-            this.radioButton21.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(189)))), ((int)(((byte)(182)))));
-            this.radioButton21.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(189)))), ((int)(((byte)(182)))));
-            this.radioButton21.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.radioButton21.Location = new System.Drawing.Point(3, 4);
-            this.radioButton21.Name = "radioButton21";
-            this.radioButton21.Size = new System.Drawing.Size(68, 17);
-            this.radioButton21.TabIndex = 535;
-            this.radioButton21.TabStop = true;
-            this.radioButton21.Text = "Negative";
-            this.theme1.SetTheme(this.radioButton21, "(default)");
-            this.radioButton21.UseVisualStyleBackColor = false;
-            // 
-            // c1CheckBox60
-            // 
-            this.c1CheckBox60.BackColor = System.Drawing.Color.Transparent;
-            this.c1CheckBox60.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
-            this.c1CheckBox60.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.c1CheckBox60.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.c1CheckBox60.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.c1CheckBox60.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.c1CheckBox60.Location = new System.Drawing.Point(6, 19);
-            this.c1CheckBox60.Name = "c1CheckBox60";
-            this.c1CheckBox60.Padding = new System.Windows.Forms.Padding(4, 1, 1, 1);
-            this.c1CheckBox60.Size = new System.Drawing.Size(92, 24);
-            this.c1CheckBox60.TabIndex = 817;
-            this.c1CheckBox60.Text = "Anti HIV";
-            this.theme1.SetTheme(this.c1CheckBox60, "(default)");
-            this.c1CheckBox60.UseVisualStyleBackColor = true;
-            this.c1CheckBox60.Value = null;
-            this.c1CheckBox60.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
-            // 
-            // groupBox12
-            // 
-            this.groupBox12.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.groupBox12.Controls.Add(this.c1TextBox35);
-            this.groupBox12.Controls.Add(this.c1TextBox38);
-            this.groupBox12.Controls.Add(this.c1CheckBox62);
-            this.groupBox12.Controls.Add(this.c1CheckBox63);
-            this.groupBox12.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.groupBox12.Location = new System.Drawing.Point(12, 221);
-            this.groupBox12.Name = "groupBox12";
-            this.groupBox12.Size = new System.Drawing.Size(589, 86);
-            this.groupBox12.TabIndex = 820;
-            this.groupBox12.TabStop = false;
-            this.groupBox12.Text = "Blood Bank";
-            this.theme1.SetTheme(this.groupBox12, "(default)");
-            // 
-            // c1TextBox35
-            // 
-            this.c1TextBox35.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.c1TextBox35.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
-            this.c1TextBox35.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.c1TextBox35.Location = new System.Drawing.Point(150, 49);
-            this.c1TextBox35.Name = "c1TextBox35";
-            this.c1TextBox35.Size = new System.Drawing.Size(67, 20);
-            this.c1TextBox35.TabIndex = 967;
-            this.c1TextBox35.Tag = null;
-            this.theme1.SetTheme(this.c1TextBox35, "(default)");
-            this.c1TextBox35.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
-            // 
-            // c1TextBox38
-            // 
-            this.c1TextBox38.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.c1TextBox38.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
-            this.c1TextBox38.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.c1TextBox38.Location = new System.Drawing.Point(150, 19);
-            this.c1TextBox38.Name = "c1TextBox38";
-            this.c1TextBox38.Size = new System.Drawing.Size(67, 20);
-            this.c1TextBox38.TabIndex = 964;
-            this.c1TextBox38.Tag = null;
-            this.theme1.SetTheme(this.c1TextBox38, "(default)");
-            this.c1TextBox38.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
-            // 
-            // c1CheckBox62
-            // 
-            this.c1CheckBox62.BackColor = System.Drawing.Color.Transparent;
-            this.c1CheckBox62.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
-            this.c1CheckBox62.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.c1CheckBox62.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.c1CheckBox62.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.c1CheckBox62.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.c1CheckBox62.Location = new System.Drawing.Point(8, 45);
-            this.c1CheckBox62.Name = "c1CheckBox62";
-            this.c1CheckBox62.Padding = new System.Windows.Forms.Padding(4, 1, 1, 1);
-            this.c1CheckBox62.Size = new System.Drawing.Size(136, 24);
-            this.c1CheckBox62.TabIndex = 819;
-            this.c1CheckBox62.Text = "Blood Group Rh";
-            this.theme1.SetTheme(this.c1CheckBox62, "(default)");
-            this.c1CheckBox62.UseVisualStyleBackColor = true;
-            this.c1CheckBox62.Value = null;
-            this.c1CheckBox62.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
-            // 
-            // c1CheckBox63
-            // 
-            this.c1CheckBox63.BackColor = System.Drawing.Color.Transparent;
-            this.c1CheckBox63.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
-            this.c1CheckBox63.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.c1CheckBox63.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.c1CheckBox63.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.c1CheckBox63.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.c1CheckBox63.Location = new System.Drawing.Point(6, 19);
-            this.c1CheckBox63.Name = "c1CheckBox63";
-            this.c1CheckBox63.Padding = new System.Windows.Forms.Padding(4, 1, 1, 1);
-            this.c1CheckBox63.Size = new System.Drawing.Size(138, 24);
-            this.c1CheckBox63.TabIndex = 817;
-            this.c1CheckBox63.Text = "Blood Group ABO";
-            this.theme1.SetTheme(this.c1CheckBox63, "(default)");
-            this.c1CheckBox63.UseVisualStyleBackColor = true;
-            this.c1CheckBox63.Value = null;
-            this.c1CheckBox63.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
-            // 
-            // groupBox13
-            // 
-            this.groupBox13.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.groupBox13.Controls.Add(this.c1TextBox39);
-            this.groupBox13.Controls.Add(this.c1CheckBox61);
-            this.groupBox13.Controls.Add(this.c1TextBox40);
-            this.groupBox13.Controls.Add(this.c1CheckBox64);
-            this.groupBox13.Controls.Add(this.c1CheckBox65);
-            this.groupBox13.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.groupBox13.Location = new System.Drawing.Point(6, 39);
-            this.groupBox13.Name = "groupBox13";
-            this.groupBox13.Size = new System.Drawing.Size(589, 86);
-            this.groupBox13.TabIndex = 820;
-            this.groupBox13.TabStop = false;
-            this.groupBox13.Text = "Electrophoresis";
-            this.theme1.SetTheme(this.groupBox13, "(default)");
-            // 
-            // c1TextBox39
-            // 
-            this.c1TextBox39.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.c1TextBox39.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
-            this.c1TextBox39.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.c1TextBox39.Location = new System.Drawing.Point(388, 49);
-            this.c1TextBox39.Name = "c1TextBox39";
-            this.c1TextBox39.Size = new System.Drawing.Size(194, 20);
-            this.c1TextBox39.TabIndex = 967;
-            this.c1TextBox39.Tag = null;
-            this.theme1.SetTheme(this.c1TextBox39, "(default)");
-            this.c1TextBox39.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
-            // 
-            // c1CheckBox61
-            // 
-            this.c1CheckBox61.BackColor = System.Drawing.Color.Transparent;
-            this.c1CheckBox61.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
-            this.c1CheckBox61.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.c1CheckBox61.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.c1CheckBox61.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.c1CheckBox61.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.c1CheckBox61.Location = new System.Drawing.Point(314, 49);
-            this.c1CheckBox61.Name = "c1CheckBox61";
-            this.c1CheckBox61.Padding = new System.Windows.Forms.Padding(4, 1, 1, 1);
-            this.c1CheckBox61.Size = new System.Drawing.Size(80, 24);
-            this.c1CheckBox61.TabIndex = 966;
-            this.c1CheckBox61.Text = "Other";
-            this.theme1.SetTheme(this.c1CheckBox61, "(default)");
-            this.c1CheckBox61.UseVisualStyleBackColor = true;
-            this.c1CheckBox61.Value = null;
-            this.c1CheckBox61.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
-            // 
-            // c1TextBox40
-            // 
-            this.c1TextBox40.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.c1TextBox40.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
-            this.c1TextBox40.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.c1TextBox40.Location = new System.Drawing.Point(99, 19);
-            this.c1TextBox40.Name = "c1TextBox40";
-            this.c1TextBox40.Size = new System.Drawing.Size(67, 20);
-            this.c1TextBox40.TabIndex = 964;
-            this.c1TextBox40.Tag = null;
-            this.theme1.SetTheme(this.c1TextBox40, "(default)");
-            this.c1TextBox40.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
-            // 
-            // c1CheckBox64
-            // 
-            this.c1CheckBox64.BackColor = System.Drawing.Color.Transparent;
-            this.c1CheckBox64.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
-            this.c1CheckBox64.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.c1CheckBox64.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.c1CheckBox64.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.c1CheckBox64.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.c1CheckBox64.Location = new System.Drawing.Point(314, 19);
-            this.c1CheckBox64.Name = "c1CheckBox64";
-            this.c1CheckBox64.Padding = new System.Windows.Forms.Padding(4, 1, 1, 1);
-            this.c1CheckBox64.Size = new System.Drawing.Size(113, 24);
-            this.c1CheckBox64.TabIndex = 819;
-            this.c1CheckBox64.Text = "Normal";
-            this.theme1.SetTheme(this.c1CheckBox64, "(default)");
-            this.c1CheckBox64.UseVisualStyleBackColor = true;
-            this.c1CheckBox64.Value = null;
-            this.c1CheckBox64.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
-            // 
-            // c1CheckBox65
-            // 
-            this.c1CheckBox65.BackColor = System.Drawing.Color.Transparent;
-            this.c1CheckBox65.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
-            this.c1CheckBox65.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.c1CheckBox65.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.c1CheckBox65.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.c1CheckBox65.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.c1CheckBox65.Location = new System.Drawing.Point(6, 19);
-            this.c1CheckBox65.Name = "c1CheckBox65";
-            this.c1CheckBox65.Padding = new System.Windows.Forms.Padding(4, 1, 1, 1);
-            this.c1CheckBox65.Size = new System.Drawing.Size(92, 24);
-            this.c1CheckBox65.TabIndex = 817;
-            this.c1CheckBox65.Text = "Hy typing";
-            this.theme1.SetTheme(this.c1CheckBox65, "(default)");
-            this.c1CheckBox65.UseVisualStyleBackColor = true;
-            this.c1CheckBox65.Value = null;
-            this.c1CheckBox65.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
-            // 
-            // groupBox14
-            // 
-            this.groupBox14.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.groupBox14.Controls.Add(this.c1TextBox41);
-            this.groupBox14.Controls.Add(this.c1TextBox42);
-            this.groupBox14.Controls.Add(this.c1CheckBox66);
-            this.groupBox14.Controls.Add(this.c1CheckBox67);
-            this.groupBox14.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.groupBox14.Location = new System.Drawing.Point(6, 131);
-            this.groupBox14.Name = "groupBox14";
-            this.groupBox14.Size = new System.Drawing.Size(589, 86);
-            this.groupBox14.TabIndex = 821;
-            this.groupBox14.TabStop = false;
-            this.groupBox14.Text = "Blood Bank";
-            this.theme1.SetTheme(this.groupBox14, "(default)");
-            // 
-            // c1TextBox41
-            // 
-            this.c1TextBox41.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.c1TextBox41.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
-            this.c1TextBox41.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.c1TextBox41.Location = new System.Drawing.Point(150, 49);
-            this.c1TextBox41.Name = "c1TextBox41";
-            this.c1TextBox41.Size = new System.Drawing.Size(67, 20);
-            this.c1TextBox41.TabIndex = 967;
-            this.c1TextBox41.Tag = null;
-            this.theme1.SetTheme(this.c1TextBox41, "(default)");
-            this.c1TextBox41.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
-            // 
-            // c1TextBox42
-            // 
-            this.c1TextBox42.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.c1TextBox42.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
-            this.c1TextBox42.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.c1TextBox42.Location = new System.Drawing.Point(150, 19);
-            this.c1TextBox42.Name = "c1TextBox42";
-            this.c1TextBox42.Size = new System.Drawing.Size(67, 20);
-            this.c1TextBox42.TabIndex = 964;
-            this.c1TextBox42.Tag = null;
-            this.theme1.SetTheme(this.c1TextBox42, "(default)");
-            this.c1TextBox42.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
-            // 
-            // c1CheckBox66
-            // 
-            this.c1CheckBox66.BackColor = System.Drawing.Color.Transparent;
-            this.c1CheckBox66.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
-            this.c1CheckBox66.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.c1CheckBox66.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.c1CheckBox66.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.c1CheckBox66.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.c1CheckBox66.Location = new System.Drawing.Point(8, 45);
-            this.c1CheckBox66.Name = "c1CheckBox66";
-            this.c1CheckBox66.Padding = new System.Windows.Forms.Padding(4, 1, 1, 1);
-            this.c1CheckBox66.Size = new System.Drawing.Size(136, 24);
-            this.c1CheckBox66.TabIndex = 819;
-            this.c1CheckBox66.Text = "Blood Group Rh";
-            this.theme1.SetTheme(this.c1CheckBox66, "(default)");
-            this.c1CheckBox66.UseVisualStyleBackColor = true;
-            this.c1CheckBox66.Value = null;
-            this.c1CheckBox66.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
-            // 
-            // c1CheckBox67
-            // 
-            this.c1CheckBox67.BackColor = System.Drawing.Color.Transparent;
-            this.c1CheckBox67.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
-            this.c1CheckBox67.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.c1CheckBox67.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.c1CheckBox67.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.c1CheckBox67.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.c1CheckBox67.Location = new System.Drawing.Point(6, 19);
-            this.c1CheckBox67.Name = "c1CheckBox67";
-            this.c1CheckBox67.Padding = new System.Windows.Forms.Padding(4, 1, 1, 1);
-            this.c1CheckBox67.Size = new System.Drawing.Size(138, 24);
-            this.c1CheckBox67.TabIndex = 817;
-            this.c1CheckBox67.Text = "Blood Group ABO";
-            this.theme1.SetTheme(this.c1CheckBox67, "(default)");
-            this.c1CheckBox67.UseVisualStyleBackColor = true;
-            this.c1CheckBox67.Value = null;
-            this.c1CheckBox67.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
-            // 
-            // groupBox15
-            // 
-            this.groupBox15.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.groupBox15.Controls.Add(this.panel18);
-            this.groupBox15.Controls.Add(this.c1CheckBox68);
-            this.groupBox15.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.groupBox15.Location = new System.Drawing.Point(6, 226);
-            this.groupBox15.Name = "groupBox15";
-            this.groupBox15.Size = new System.Drawing.Size(589, 66);
-            this.groupBox15.TabIndex = 822;
-            this.groupBox15.TabStop = false;
-            this.groupBox15.Text = "Serology";
-            this.theme1.SetTheme(this.groupBox15, "(default)");
-            // 
-            // panel18
-            // 
-            this.panel18.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.panel18.Controls.Add(this.radioButton22);
-            this.panel18.Controls.Add(this.radioButton23);
-            this.panel18.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.panel18.Location = new System.Drawing.Point(292, 15);
-            this.panel18.Name = "panel18";
-            this.panel18.Size = new System.Drawing.Size(228, 28);
-            this.panel18.TabIndex = 967;
-            this.theme1.SetTheme(this.panel18, "(default)");
-            // 
-            // radioButton22
-            // 
-            this.radioButton22.AutoSize = true;
-            this.radioButton22.BackColor = System.Drawing.Color.Transparent;
-            this.radioButton22.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
-            this.radioButton22.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(189)))), ((int)(((byte)(182)))));
-            this.radioButton22.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(189)))), ((int)(((byte)(182)))));
-            this.radioButton22.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.radioButton22.Location = new System.Drawing.Point(96, 4);
-            this.radioButton22.Name = "radioButton22";
-            this.radioButton22.Size = new System.Drawing.Size(68, 17);
-            this.radioButton22.TabIndex = 536;
-            this.radioButton22.TabStop = true;
-            this.radioButton22.Text = "Reactive";
-            this.theme1.SetTheme(this.radioButton22, "(default)");
-            this.radioButton22.UseVisualStyleBackColor = false;
-            // 
-            // radioButton23
-            // 
-            this.radioButton23.AutoSize = true;
-            this.radioButton23.BackColor = System.Drawing.Color.Transparent;
-            this.radioButton23.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
-            this.radioButton23.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(189)))), ((int)(((byte)(182)))));
-            this.radioButton23.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(189)))), ((int)(((byte)(182)))));
-            this.radioButton23.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.radioButton23.Location = new System.Drawing.Point(3, 4);
-            this.radioButton23.Name = "radioButton23";
-            this.radioButton23.Size = new System.Drawing.Size(91, 17);
-            this.radioButton23.TabIndex = 535;
-            this.radioButton23.TabStop = true;
-            this.radioButton23.Text = "Non-Reactive";
-            this.theme1.SetTheme(this.radioButton23, "(default)");
-            this.radioButton23.UseVisualStyleBackColor = false;
-            // 
-            // c1CheckBox68
-            // 
-            this.c1CheckBox68.BackColor = System.Drawing.Color.Transparent;
-            this.c1CheckBox68.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
-            this.c1CheckBox68.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.c1CheckBox68.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.c1CheckBox68.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.c1CheckBox68.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.c1CheckBox68.Location = new System.Drawing.Point(6, 19);
-            this.c1CheckBox68.Name = "c1CheckBox68";
-            this.c1CheckBox68.Padding = new System.Windows.Forms.Padding(4, 1, 1, 1);
-            this.c1CheckBox68.Size = new System.Drawing.Size(92, 24);
-            this.c1CheckBox68.TabIndex = 817;
-            this.c1CheckBox68.Text = "VDRL";
-            this.theme1.SetTheme(this.c1CheckBox68, "(default)");
-            this.c1CheckBox68.UseVisualStyleBackColor = true;
-            this.c1CheckBox68.Value = null;
-            this.c1CheckBox68.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
-            // 
-            // groupBox16
-            // 
-            this.groupBox16.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.groupBox16.Controls.Add(this.panel19);
-            this.groupBox16.Controls.Add(this.c1CheckBox69);
-            this.groupBox16.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.groupBox16.Location = new System.Drawing.Point(6, 298);
-            this.groupBox16.Name = "groupBox16";
-            this.groupBox16.Size = new System.Drawing.Size(589, 66);
-            this.groupBox16.TabIndex = 823;
-            this.groupBox16.TabStop = false;
-            this.groupBox16.Text = "Infectious";
-            this.theme1.SetTheme(this.groupBox16, "(default)");
-            // 
-            // panel19
-            // 
-            this.panel19.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.panel19.Controls.Add(this.radioButton24);
-            this.panel19.Controls.Add(this.radioButton25);
-            this.panel19.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.panel19.Location = new System.Drawing.Point(292, 15);
-            this.panel19.Name = "panel19";
-            this.panel19.Size = new System.Drawing.Size(228, 28);
-            this.panel19.TabIndex = 967;
-            this.theme1.SetTheme(this.panel19, "(default)");
-            // 
-            // radioButton24
-            // 
-            this.radioButton24.AutoSize = true;
-            this.radioButton24.BackColor = System.Drawing.Color.Transparent;
-            this.radioButton24.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
-            this.radioButton24.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(189)))), ((int)(((byte)(182)))));
-            this.radioButton24.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(189)))), ((int)(((byte)(182)))));
-            this.radioButton24.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.radioButton24.Location = new System.Drawing.Point(96, 4);
-            this.radioButton24.Name = "radioButton24";
-            this.radioButton24.Size = new System.Drawing.Size(62, 17);
-            this.radioButton24.TabIndex = 536;
-            this.radioButton24.TabStop = true;
-            this.radioButton24.Text = "Positive";
-            this.theme1.SetTheme(this.radioButton24, "(default)");
-            this.radioButton24.UseVisualStyleBackColor = false;
-            // 
-            // radioButton25
-            // 
-            this.radioButton25.AutoSize = true;
-            this.radioButton25.BackColor = System.Drawing.Color.Transparent;
-            this.radioButton25.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
-            this.radioButton25.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(189)))), ((int)(((byte)(182)))));
-            this.radioButton25.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(189)))), ((int)(((byte)(182)))));
-            this.radioButton25.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.radioButton25.Location = new System.Drawing.Point(3, 4);
-            this.radioButton25.Name = "radioButton25";
-            this.radioButton25.Size = new System.Drawing.Size(68, 17);
-            this.radioButton25.TabIndex = 535;
-            this.radioButton25.TabStop = true;
-            this.radioButton25.Text = "Negative";
-            this.theme1.SetTheme(this.radioButton25, "(default)");
-            this.radioButton25.UseVisualStyleBackColor = false;
-            // 
-            // c1CheckBox69
-            // 
-            this.c1CheckBox69.BackColor = System.Drawing.Color.Transparent;
-            this.c1CheckBox69.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
-            this.c1CheckBox69.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.c1CheckBox69.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.c1CheckBox69.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.c1CheckBox69.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.c1CheckBox69.Location = new System.Drawing.Point(6, 19);
-            this.c1CheckBox69.Name = "c1CheckBox69";
-            this.c1CheckBox69.Padding = new System.Windows.Forms.Padding(4, 1, 1, 1);
-            this.c1CheckBox69.Size = new System.Drawing.Size(92, 24);
-            this.c1CheckBox69.TabIndex = 817;
-            this.c1CheckBox69.Text = "Rubella";
-            this.theme1.SetTheme(this.c1CheckBox69, "(default)");
-            this.c1CheckBox69.UseVisualStyleBackColor = true;
-            this.c1CheckBox69.Value = null;
-            this.c1CheckBox69.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            // c1Button3
+            // 
+            this.c1Button3.Image = global::clinic_ivf.Properties.Resources.print;
+            this.c1Button3.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.c1Button3.Location = new System.Drawing.Point(509, 619);
+            this.c1Button3.Name = "c1Button3";
+            this.c1Button3.Size = new System.Drawing.Size(79, 34);
+            this.c1Button3.TabIndex = 828;
+            this.c1Button3.Text = "Print";
+            this.c1Button3.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.theme1.SetTheme(this.c1Button3, "(default)");
+            this.c1Button3.UseVisualStyleBackColor = true;
+            this.c1Button3.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            // 
+            // label65
+            // 
+            this.label65.AutoSize = true;
+            this.label65.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.label65.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label65.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.label65.Location = new System.Drawing.Point(10, 15);
+            this.label65.Name = "label65";
+            this.label65.Size = new System.Drawing.Size(95, 16);
+            this.label65.TabIndex = 827;
+            this.label65.Text = "Patient Name :";
+            this.theme1.SetTheme(this.label65, "(default)");
+            // 
+            // c1TextBox44
+            // 
+            this.c1TextBox44.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.c1TextBox44.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
+            this.c1TextBox44.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.c1TextBox44.Location = new System.Drawing.Point(147, 13);
+            this.c1TextBox44.Name = "c1TextBox44";
+            this.c1TextBox44.Size = new System.Drawing.Size(253, 20);
+            this.c1TextBox44.TabIndex = 826;
+            this.c1TextBox44.Tag = null;
+            this.theme1.SetTheme(this.c1TextBox44, "(default)");
+            this.c1TextBox44.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            // 
+            // groupBox18
+            // 
+            this.groupBox18.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.groupBox18.Controls.Add(this.panel23);
+            this.groupBox18.Controls.Add(this.c1CheckBox73);
+            this.groupBox18.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.groupBox18.Location = new System.Drawing.Point(6, 498);
+            this.groupBox18.Name = "groupBox18";
+            this.groupBox18.Size = new System.Drawing.Size(589, 66);
+            this.groupBox18.TabIndex = 825;
+            this.groupBox18.TabStop = false;
+            this.groupBox18.Text = "AIDs";
+            this.theme1.SetTheme(this.groupBox18, "(default)");
+            // 
+            // panel23
+            // 
+            this.panel23.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.panel23.Controls.Add(this.radioButton32);
+            this.panel23.Controls.Add(this.radioButton33);
+            this.panel23.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.panel23.Location = new System.Drawing.Point(292, 15);
+            this.panel23.Name = "panel23";
+            this.panel23.Size = new System.Drawing.Size(228, 28);
+            this.panel23.TabIndex = 967;
+            this.theme1.SetTheme(this.panel23, "(default)");
+            // 
+            // radioButton32
+            // 
+            this.radioButton32.AutoSize = true;
+            this.radioButton32.BackColor = System.Drawing.Color.Transparent;
+            this.radioButton32.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
+            this.radioButton32.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(189)))), ((int)(((byte)(182)))));
+            this.radioButton32.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(189)))), ((int)(((byte)(182)))));
+            this.radioButton32.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.radioButton32.Location = new System.Drawing.Point(96, 4);
+            this.radioButton32.Name = "radioButton32";
+            this.radioButton32.Size = new System.Drawing.Size(62, 17);
+            this.radioButton32.TabIndex = 536;
+            this.radioButton32.TabStop = true;
+            this.radioButton32.Text = "Positive";
+            this.theme1.SetTheme(this.radioButton32, "(default)");
+            this.radioButton32.UseVisualStyleBackColor = false;
+            // 
+            // radioButton33
+            // 
+            this.radioButton33.AutoSize = true;
+            this.radioButton33.BackColor = System.Drawing.Color.Transparent;
+            this.radioButton33.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
+            this.radioButton33.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(189)))), ((int)(((byte)(182)))));
+            this.radioButton33.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(189)))), ((int)(((byte)(182)))));
+            this.radioButton33.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.radioButton33.Location = new System.Drawing.Point(3, 4);
+            this.radioButton33.Name = "radioButton33";
+            this.radioButton33.Size = new System.Drawing.Size(68, 17);
+            this.radioButton33.TabIndex = 535;
+            this.radioButton33.TabStop = true;
+            this.radioButton33.Text = "Negative";
+            this.theme1.SetTheme(this.radioButton33, "(default)");
+            this.radioButton33.UseVisualStyleBackColor = false;
+            // 
+            // c1CheckBox73
+            // 
+            this.c1CheckBox73.BackColor = System.Drawing.Color.Transparent;
+            this.c1CheckBox73.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
+            this.c1CheckBox73.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.c1CheckBox73.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.c1CheckBox73.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.c1CheckBox73.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.c1CheckBox73.Location = new System.Drawing.Point(6, 19);
+            this.c1CheckBox73.Name = "c1CheckBox73";
+            this.c1CheckBox73.Padding = new System.Windows.Forms.Padding(4, 1, 1, 1);
+            this.c1CheckBox73.Size = new System.Drawing.Size(92, 24);
+            this.c1CheckBox73.TabIndex = 817;
+            this.c1CheckBox73.Text = "Anti HIV";
+            this.theme1.SetTheme(this.c1CheckBox73, "(default)");
+            this.c1CheckBox73.UseVisualStyleBackColor = true;
+            this.c1CheckBox73.Value = null;
+            this.c1CheckBox73.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
             // 
             // groupBox17
             // 
@@ -5981,84 +4898,364 @@
             this.theme1.SetTheme(this.radioButton31, "(default)");
             this.radioButton31.UseVisualStyleBackColor = false;
             // 
-            // groupBox18
+            // groupBox16
             // 
-            this.groupBox18.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.groupBox18.Controls.Add(this.panel23);
-            this.groupBox18.Controls.Add(this.c1CheckBox73);
-            this.groupBox18.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.groupBox18.Location = new System.Drawing.Point(6, 498);
-            this.groupBox18.Name = "groupBox18";
-            this.groupBox18.Size = new System.Drawing.Size(589, 66);
-            this.groupBox18.TabIndex = 825;
-            this.groupBox18.TabStop = false;
-            this.groupBox18.Text = "AIDs";
-            this.theme1.SetTheme(this.groupBox18, "(default)");
+            this.groupBox16.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.groupBox16.Controls.Add(this.panel19);
+            this.groupBox16.Controls.Add(this.c1CheckBox69);
+            this.groupBox16.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.groupBox16.Location = new System.Drawing.Point(6, 298);
+            this.groupBox16.Name = "groupBox16";
+            this.groupBox16.Size = new System.Drawing.Size(589, 66);
+            this.groupBox16.TabIndex = 823;
+            this.groupBox16.TabStop = false;
+            this.groupBox16.Text = "Infectious";
+            this.theme1.SetTheme(this.groupBox16, "(default)");
             // 
-            // panel23
+            // panel19
             // 
-            this.panel23.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.panel23.Controls.Add(this.radioButton32);
-            this.panel23.Controls.Add(this.radioButton33);
-            this.panel23.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.panel23.Location = new System.Drawing.Point(292, 15);
-            this.panel23.Name = "panel23";
-            this.panel23.Size = new System.Drawing.Size(228, 28);
-            this.panel23.TabIndex = 967;
-            this.theme1.SetTheme(this.panel23, "(default)");
+            this.panel19.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.panel19.Controls.Add(this.radioButton24);
+            this.panel19.Controls.Add(this.radioButton25);
+            this.panel19.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.panel19.Location = new System.Drawing.Point(292, 15);
+            this.panel19.Name = "panel19";
+            this.panel19.Size = new System.Drawing.Size(228, 28);
+            this.panel19.TabIndex = 967;
+            this.theme1.SetTheme(this.panel19, "(default)");
             // 
-            // radioButton32
+            // radioButton24
             // 
-            this.radioButton32.AutoSize = true;
-            this.radioButton32.BackColor = System.Drawing.Color.Transparent;
-            this.radioButton32.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
-            this.radioButton32.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(189)))), ((int)(((byte)(182)))));
-            this.radioButton32.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(189)))), ((int)(((byte)(182)))));
-            this.radioButton32.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.radioButton32.Location = new System.Drawing.Point(96, 4);
-            this.radioButton32.Name = "radioButton32";
-            this.radioButton32.Size = new System.Drawing.Size(62, 17);
-            this.radioButton32.TabIndex = 536;
-            this.radioButton32.TabStop = true;
-            this.radioButton32.Text = "Positive";
-            this.theme1.SetTheme(this.radioButton32, "(default)");
-            this.radioButton32.UseVisualStyleBackColor = false;
+            this.radioButton24.AutoSize = true;
+            this.radioButton24.BackColor = System.Drawing.Color.Transparent;
+            this.radioButton24.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
+            this.radioButton24.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(189)))), ((int)(((byte)(182)))));
+            this.radioButton24.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(189)))), ((int)(((byte)(182)))));
+            this.radioButton24.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.radioButton24.Location = new System.Drawing.Point(96, 4);
+            this.radioButton24.Name = "radioButton24";
+            this.radioButton24.Size = new System.Drawing.Size(62, 17);
+            this.radioButton24.TabIndex = 536;
+            this.radioButton24.TabStop = true;
+            this.radioButton24.Text = "Positive";
+            this.theme1.SetTheme(this.radioButton24, "(default)");
+            this.radioButton24.UseVisualStyleBackColor = false;
             // 
-            // radioButton33
+            // radioButton25
             // 
-            this.radioButton33.AutoSize = true;
-            this.radioButton33.BackColor = System.Drawing.Color.Transparent;
-            this.radioButton33.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
-            this.radioButton33.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(189)))), ((int)(((byte)(182)))));
-            this.radioButton33.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(189)))), ((int)(((byte)(182)))));
-            this.radioButton33.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.radioButton33.Location = new System.Drawing.Point(3, 4);
-            this.radioButton33.Name = "radioButton33";
-            this.radioButton33.Size = new System.Drawing.Size(68, 17);
-            this.radioButton33.TabIndex = 535;
-            this.radioButton33.TabStop = true;
-            this.radioButton33.Text = "Negative";
-            this.theme1.SetTheme(this.radioButton33, "(default)");
-            this.radioButton33.UseVisualStyleBackColor = false;
+            this.radioButton25.AutoSize = true;
+            this.radioButton25.BackColor = System.Drawing.Color.Transparent;
+            this.radioButton25.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
+            this.radioButton25.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(189)))), ((int)(((byte)(182)))));
+            this.radioButton25.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(189)))), ((int)(((byte)(182)))));
+            this.radioButton25.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.radioButton25.Location = new System.Drawing.Point(3, 4);
+            this.radioButton25.Name = "radioButton25";
+            this.radioButton25.Size = new System.Drawing.Size(68, 17);
+            this.radioButton25.TabIndex = 535;
+            this.radioButton25.TabStop = true;
+            this.radioButton25.Text = "Negative";
+            this.theme1.SetTheme(this.radioButton25, "(default)");
+            this.radioButton25.UseVisualStyleBackColor = false;
             // 
-            // c1CheckBox73
+            // c1CheckBox69
             // 
-            this.c1CheckBox73.BackColor = System.Drawing.Color.Transparent;
-            this.c1CheckBox73.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
-            this.c1CheckBox73.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.c1CheckBox73.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.c1CheckBox73.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.c1CheckBox73.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.c1CheckBox73.Location = new System.Drawing.Point(6, 19);
-            this.c1CheckBox73.Name = "c1CheckBox73";
-            this.c1CheckBox73.Padding = new System.Windows.Forms.Padding(4, 1, 1, 1);
-            this.c1CheckBox73.Size = new System.Drawing.Size(92, 24);
-            this.c1CheckBox73.TabIndex = 817;
-            this.c1CheckBox73.Text = "Anti HIV";
-            this.theme1.SetTheme(this.c1CheckBox73, "(default)");
-            this.c1CheckBox73.UseVisualStyleBackColor = true;
-            this.c1CheckBox73.Value = null;
-            this.c1CheckBox73.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            this.c1CheckBox69.BackColor = System.Drawing.Color.Transparent;
+            this.c1CheckBox69.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
+            this.c1CheckBox69.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.c1CheckBox69.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.c1CheckBox69.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.c1CheckBox69.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.c1CheckBox69.Location = new System.Drawing.Point(6, 19);
+            this.c1CheckBox69.Name = "c1CheckBox69";
+            this.c1CheckBox69.Padding = new System.Windows.Forms.Padding(4, 1, 1, 1);
+            this.c1CheckBox69.Size = new System.Drawing.Size(92, 24);
+            this.c1CheckBox69.TabIndex = 817;
+            this.c1CheckBox69.Text = "Rubella";
+            this.theme1.SetTheme(this.c1CheckBox69, "(default)");
+            this.c1CheckBox69.UseVisualStyleBackColor = true;
+            this.c1CheckBox69.Value = null;
+            this.c1CheckBox69.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            // 
+            // groupBox15
+            // 
+            this.groupBox15.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.groupBox15.Controls.Add(this.panel18);
+            this.groupBox15.Controls.Add(this.c1CheckBox68);
+            this.groupBox15.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.groupBox15.Location = new System.Drawing.Point(6, 226);
+            this.groupBox15.Name = "groupBox15";
+            this.groupBox15.Size = new System.Drawing.Size(589, 66);
+            this.groupBox15.TabIndex = 822;
+            this.groupBox15.TabStop = false;
+            this.groupBox15.Text = "Serology";
+            this.theme1.SetTheme(this.groupBox15, "(default)");
+            // 
+            // panel18
+            // 
+            this.panel18.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.panel18.Controls.Add(this.radioButton22);
+            this.panel18.Controls.Add(this.radioButton23);
+            this.panel18.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.panel18.Location = new System.Drawing.Point(292, 15);
+            this.panel18.Name = "panel18";
+            this.panel18.Size = new System.Drawing.Size(228, 28);
+            this.panel18.TabIndex = 967;
+            this.theme1.SetTheme(this.panel18, "(default)");
+            // 
+            // radioButton22
+            // 
+            this.radioButton22.AutoSize = true;
+            this.radioButton22.BackColor = System.Drawing.Color.Transparent;
+            this.radioButton22.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
+            this.radioButton22.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(189)))), ((int)(((byte)(182)))));
+            this.radioButton22.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(189)))), ((int)(((byte)(182)))));
+            this.radioButton22.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.radioButton22.Location = new System.Drawing.Point(96, 4);
+            this.radioButton22.Name = "radioButton22";
+            this.radioButton22.Size = new System.Drawing.Size(68, 17);
+            this.radioButton22.TabIndex = 536;
+            this.radioButton22.TabStop = true;
+            this.radioButton22.Text = "Reactive";
+            this.theme1.SetTheme(this.radioButton22, "(default)");
+            this.radioButton22.UseVisualStyleBackColor = false;
+            // 
+            // radioButton23
+            // 
+            this.radioButton23.AutoSize = true;
+            this.radioButton23.BackColor = System.Drawing.Color.Transparent;
+            this.radioButton23.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
+            this.radioButton23.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(189)))), ((int)(((byte)(182)))));
+            this.radioButton23.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(189)))), ((int)(((byte)(182)))));
+            this.radioButton23.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.radioButton23.Location = new System.Drawing.Point(3, 4);
+            this.radioButton23.Name = "radioButton23";
+            this.radioButton23.Size = new System.Drawing.Size(91, 17);
+            this.radioButton23.TabIndex = 535;
+            this.radioButton23.TabStop = true;
+            this.radioButton23.Text = "Non-Reactive";
+            this.theme1.SetTheme(this.radioButton23, "(default)");
+            this.radioButton23.UseVisualStyleBackColor = false;
+            // 
+            // c1CheckBox68
+            // 
+            this.c1CheckBox68.BackColor = System.Drawing.Color.Transparent;
+            this.c1CheckBox68.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
+            this.c1CheckBox68.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.c1CheckBox68.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.c1CheckBox68.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.c1CheckBox68.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.c1CheckBox68.Location = new System.Drawing.Point(6, 19);
+            this.c1CheckBox68.Name = "c1CheckBox68";
+            this.c1CheckBox68.Padding = new System.Windows.Forms.Padding(4, 1, 1, 1);
+            this.c1CheckBox68.Size = new System.Drawing.Size(92, 24);
+            this.c1CheckBox68.TabIndex = 817;
+            this.c1CheckBox68.Text = "VDRL";
+            this.theme1.SetTheme(this.c1CheckBox68, "(default)");
+            this.c1CheckBox68.UseVisualStyleBackColor = true;
+            this.c1CheckBox68.Value = null;
+            this.c1CheckBox68.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            // 
+            // groupBox14
+            // 
+            this.groupBox14.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.groupBox14.Controls.Add(this.c1TextBox41);
+            this.groupBox14.Controls.Add(this.c1TextBox42);
+            this.groupBox14.Controls.Add(this.c1CheckBox66);
+            this.groupBox14.Controls.Add(this.c1CheckBox67);
+            this.groupBox14.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.groupBox14.Location = new System.Drawing.Point(6, 131);
+            this.groupBox14.Name = "groupBox14";
+            this.groupBox14.Size = new System.Drawing.Size(589, 86);
+            this.groupBox14.TabIndex = 821;
+            this.groupBox14.TabStop = false;
+            this.groupBox14.Text = "Blood Bank";
+            this.theme1.SetTheme(this.groupBox14, "(default)");
+            // 
+            // c1TextBox41
+            // 
+            this.c1TextBox41.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.c1TextBox41.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
+            this.c1TextBox41.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.c1TextBox41.Location = new System.Drawing.Point(150, 49);
+            this.c1TextBox41.Name = "c1TextBox41";
+            this.c1TextBox41.Size = new System.Drawing.Size(67, 20);
+            this.c1TextBox41.TabIndex = 967;
+            this.c1TextBox41.Tag = null;
+            this.theme1.SetTheme(this.c1TextBox41, "(default)");
+            this.c1TextBox41.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            // 
+            // c1TextBox42
+            // 
+            this.c1TextBox42.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.c1TextBox42.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
+            this.c1TextBox42.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.c1TextBox42.Location = new System.Drawing.Point(150, 19);
+            this.c1TextBox42.Name = "c1TextBox42";
+            this.c1TextBox42.Size = new System.Drawing.Size(67, 20);
+            this.c1TextBox42.TabIndex = 964;
+            this.c1TextBox42.Tag = null;
+            this.theme1.SetTheme(this.c1TextBox42, "(default)");
+            this.c1TextBox42.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            // 
+            // c1CheckBox66
+            // 
+            this.c1CheckBox66.BackColor = System.Drawing.Color.Transparent;
+            this.c1CheckBox66.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
+            this.c1CheckBox66.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.c1CheckBox66.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.c1CheckBox66.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.c1CheckBox66.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.c1CheckBox66.Location = new System.Drawing.Point(8, 45);
+            this.c1CheckBox66.Name = "c1CheckBox66";
+            this.c1CheckBox66.Padding = new System.Windows.Forms.Padding(4, 1, 1, 1);
+            this.c1CheckBox66.Size = new System.Drawing.Size(136, 24);
+            this.c1CheckBox66.TabIndex = 819;
+            this.c1CheckBox66.Text = "Blood Group Rh";
+            this.theme1.SetTheme(this.c1CheckBox66, "(default)");
+            this.c1CheckBox66.UseVisualStyleBackColor = true;
+            this.c1CheckBox66.Value = null;
+            this.c1CheckBox66.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            // 
+            // c1CheckBox67
+            // 
+            this.c1CheckBox67.BackColor = System.Drawing.Color.Transparent;
+            this.c1CheckBox67.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
+            this.c1CheckBox67.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.c1CheckBox67.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.c1CheckBox67.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.c1CheckBox67.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.c1CheckBox67.Location = new System.Drawing.Point(6, 19);
+            this.c1CheckBox67.Name = "c1CheckBox67";
+            this.c1CheckBox67.Padding = new System.Windows.Forms.Padding(4, 1, 1, 1);
+            this.c1CheckBox67.Size = new System.Drawing.Size(138, 24);
+            this.c1CheckBox67.TabIndex = 817;
+            this.c1CheckBox67.Text = "Blood Group ABO";
+            this.theme1.SetTheme(this.c1CheckBox67, "(default)");
+            this.c1CheckBox67.UseVisualStyleBackColor = true;
+            this.c1CheckBox67.Value = null;
+            this.c1CheckBox67.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            // 
+            // groupBox13
+            // 
+            this.groupBox13.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.groupBox13.Controls.Add(this.c1TextBox39);
+            this.groupBox13.Controls.Add(this.c1CheckBox61);
+            this.groupBox13.Controls.Add(this.c1TextBox40);
+            this.groupBox13.Controls.Add(this.c1CheckBox64);
+            this.groupBox13.Controls.Add(this.c1CheckBox65);
+            this.groupBox13.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.groupBox13.Location = new System.Drawing.Point(6, 39);
+            this.groupBox13.Name = "groupBox13";
+            this.groupBox13.Size = new System.Drawing.Size(589, 86);
+            this.groupBox13.TabIndex = 820;
+            this.groupBox13.TabStop = false;
+            this.groupBox13.Text = "Electrophoresis";
+            this.theme1.SetTheme(this.groupBox13, "(default)");
+            // 
+            // c1TextBox39
+            // 
+            this.c1TextBox39.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.c1TextBox39.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
+            this.c1TextBox39.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.c1TextBox39.Location = new System.Drawing.Point(388, 49);
+            this.c1TextBox39.Name = "c1TextBox39";
+            this.c1TextBox39.Size = new System.Drawing.Size(194, 20);
+            this.c1TextBox39.TabIndex = 967;
+            this.c1TextBox39.Tag = null;
+            this.theme1.SetTheme(this.c1TextBox39, "(default)");
+            this.c1TextBox39.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            // 
+            // c1CheckBox61
+            // 
+            this.c1CheckBox61.BackColor = System.Drawing.Color.Transparent;
+            this.c1CheckBox61.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
+            this.c1CheckBox61.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.c1CheckBox61.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.c1CheckBox61.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.c1CheckBox61.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.c1CheckBox61.Location = new System.Drawing.Point(314, 49);
+            this.c1CheckBox61.Name = "c1CheckBox61";
+            this.c1CheckBox61.Padding = new System.Windows.Forms.Padding(4, 1, 1, 1);
+            this.c1CheckBox61.Size = new System.Drawing.Size(80, 24);
+            this.c1CheckBox61.TabIndex = 966;
+            this.c1CheckBox61.Text = "Other";
+            this.theme1.SetTheme(this.c1CheckBox61, "(default)");
+            this.c1CheckBox61.UseVisualStyleBackColor = true;
+            this.c1CheckBox61.Value = null;
+            this.c1CheckBox61.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            // 
+            // c1TextBox40
+            // 
+            this.c1TextBox40.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.c1TextBox40.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
+            this.c1TextBox40.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.c1TextBox40.Location = new System.Drawing.Point(99, 19);
+            this.c1TextBox40.Name = "c1TextBox40";
+            this.c1TextBox40.Size = new System.Drawing.Size(67, 20);
+            this.c1TextBox40.TabIndex = 964;
+            this.c1TextBox40.Tag = null;
+            this.theme1.SetTheme(this.c1TextBox40, "(default)");
+            this.c1TextBox40.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            // 
+            // c1CheckBox64
+            // 
+            this.c1CheckBox64.BackColor = System.Drawing.Color.Transparent;
+            this.c1CheckBox64.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
+            this.c1CheckBox64.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.c1CheckBox64.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.c1CheckBox64.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.c1CheckBox64.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.c1CheckBox64.Location = new System.Drawing.Point(314, 19);
+            this.c1CheckBox64.Name = "c1CheckBox64";
+            this.c1CheckBox64.Padding = new System.Windows.Forms.Padding(4, 1, 1, 1);
+            this.c1CheckBox64.Size = new System.Drawing.Size(113, 24);
+            this.c1CheckBox64.TabIndex = 819;
+            this.c1CheckBox64.Text = "Normal";
+            this.theme1.SetTheme(this.c1CheckBox64, "(default)");
+            this.c1CheckBox64.UseVisualStyleBackColor = true;
+            this.c1CheckBox64.Value = null;
+            this.c1CheckBox64.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            // 
+            // c1CheckBox65
+            // 
+            this.c1CheckBox65.BackColor = System.Drawing.Color.Transparent;
+            this.c1CheckBox65.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
+            this.c1CheckBox65.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.c1CheckBox65.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.c1CheckBox65.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.c1CheckBox65.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.c1CheckBox65.Location = new System.Drawing.Point(6, 19);
+            this.c1CheckBox65.Name = "c1CheckBox65";
+            this.c1CheckBox65.Padding = new System.Windows.Forms.Padding(4, 1, 1, 1);
+            this.c1CheckBox65.Size = new System.Drawing.Size(92, 24);
+            this.c1CheckBox65.TabIndex = 817;
+            this.c1CheckBox65.Text = "Hy typing";
+            this.theme1.SetTheme(this.c1CheckBox65, "(default)");
+            this.c1CheckBox65.UseVisualStyleBackColor = true;
+            this.c1CheckBox65.Value = null;
+            this.c1CheckBox65.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            // 
+            // groupBox4
+            // 
+            this.groupBox4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.groupBox4.Controls.Add(this.label64);
+            this.groupBox4.Controls.Add(this.c1TextBox43);
+            this.groupBox4.Controls.Add(this.groupBox12);
+            this.groupBox4.Controls.Add(this.groupBox11);
+            this.groupBox4.Controls.Add(this.groupBox10);
+            this.groupBox4.Controls.Add(this.groupBox9);
+            this.groupBox4.Controls.Add(this.groupBox8);
+            this.groupBox4.Controls.Add(this.groupBox7);
+            this.groupBox4.Controls.Add(this.groupBox6);
+            this.groupBox4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.groupBox4.Location = new System.Drawing.Point(11, 3);
+            this.groupBox4.Name = "groupBox4";
+            this.groupBox4.Size = new System.Drawing.Size(601, 659);
+            this.groupBox4.TabIndex = 0;
+            this.groupBox4.TabStop = false;
+            this.groupBox4.Text = "Female";
+            this.theme1.SetTheme(this.groupBox4, "(default)");
             // 
             // label64
             // 
@@ -6086,31 +5283,851 @@
             this.theme1.SetTheme(this.c1TextBox43, "(default)");
             this.c1TextBox43.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
             // 
-            // label65
+            // groupBox12
             // 
-            this.label65.AutoSize = true;
-            this.label65.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.label65.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label65.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.label65.Location = new System.Drawing.Point(10, 15);
-            this.label65.Name = "label65";
-            this.label65.Size = new System.Drawing.Size(95, 16);
-            this.label65.TabIndex = 827;
-            this.label65.Text = "Patient Name :";
-            this.theme1.SetTheme(this.label65, "(default)");
+            this.groupBox12.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.groupBox12.Controls.Add(this.c1TextBox35);
+            this.groupBox12.Controls.Add(this.c1TextBox38);
+            this.groupBox12.Controls.Add(this.c1CheckBox62);
+            this.groupBox12.Controls.Add(this.c1CheckBox63);
+            this.groupBox12.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.groupBox12.Location = new System.Drawing.Point(12, 221);
+            this.groupBox12.Name = "groupBox12";
+            this.groupBox12.Size = new System.Drawing.Size(589, 86);
+            this.groupBox12.TabIndex = 820;
+            this.groupBox12.TabStop = false;
+            this.groupBox12.Text = "Blood Bank";
+            this.theme1.SetTheme(this.groupBox12, "(default)");
             // 
-            // c1TextBox44
+            // c1TextBox35
             // 
-            this.c1TextBox44.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.c1TextBox44.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
-            this.c1TextBox44.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.c1TextBox44.Location = new System.Drawing.Point(147, 13);
-            this.c1TextBox44.Name = "c1TextBox44";
-            this.c1TextBox44.Size = new System.Drawing.Size(253, 20);
-            this.c1TextBox44.TabIndex = 826;
-            this.c1TextBox44.Tag = null;
-            this.theme1.SetTheme(this.c1TextBox44, "(default)");
-            this.c1TextBox44.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            this.c1TextBox35.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.c1TextBox35.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
+            this.c1TextBox35.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.c1TextBox35.Location = new System.Drawing.Point(150, 49);
+            this.c1TextBox35.Name = "c1TextBox35";
+            this.c1TextBox35.Size = new System.Drawing.Size(67, 20);
+            this.c1TextBox35.TabIndex = 967;
+            this.c1TextBox35.Tag = null;
+            this.theme1.SetTheme(this.c1TextBox35, "(default)");
+            this.c1TextBox35.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            // 
+            // c1TextBox38
+            // 
+            this.c1TextBox38.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.c1TextBox38.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
+            this.c1TextBox38.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.c1TextBox38.Location = new System.Drawing.Point(150, 19);
+            this.c1TextBox38.Name = "c1TextBox38";
+            this.c1TextBox38.Size = new System.Drawing.Size(67, 20);
+            this.c1TextBox38.TabIndex = 964;
+            this.c1TextBox38.Tag = null;
+            this.theme1.SetTheme(this.c1TextBox38, "(default)");
+            this.c1TextBox38.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            // 
+            // c1CheckBox62
+            // 
+            this.c1CheckBox62.BackColor = System.Drawing.Color.Transparent;
+            this.c1CheckBox62.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
+            this.c1CheckBox62.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.c1CheckBox62.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.c1CheckBox62.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.c1CheckBox62.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.c1CheckBox62.Location = new System.Drawing.Point(8, 45);
+            this.c1CheckBox62.Name = "c1CheckBox62";
+            this.c1CheckBox62.Padding = new System.Windows.Forms.Padding(4, 1, 1, 1);
+            this.c1CheckBox62.Size = new System.Drawing.Size(136, 24);
+            this.c1CheckBox62.TabIndex = 819;
+            this.c1CheckBox62.Text = "Blood Group Rh";
+            this.theme1.SetTheme(this.c1CheckBox62, "(default)");
+            this.c1CheckBox62.UseVisualStyleBackColor = true;
+            this.c1CheckBox62.Value = null;
+            this.c1CheckBox62.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            // 
+            // c1CheckBox63
+            // 
+            this.c1CheckBox63.BackColor = System.Drawing.Color.Transparent;
+            this.c1CheckBox63.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
+            this.c1CheckBox63.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.c1CheckBox63.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.c1CheckBox63.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.c1CheckBox63.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.c1CheckBox63.Location = new System.Drawing.Point(6, 19);
+            this.c1CheckBox63.Name = "c1CheckBox63";
+            this.c1CheckBox63.Padding = new System.Windows.Forms.Padding(4, 1, 1, 1);
+            this.c1CheckBox63.Size = new System.Drawing.Size(138, 24);
+            this.c1CheckBox63.TabIndex = 817;
+            this.c1CheckBox63.Text = "Blood Group ABO";
+            this.theme1.SetTheme(this.c1CheckBox63, "(default)");
+            this.c1CheckBox63.UseVisualStyleBackColor = true;
+            this.c1CheckBox63.Value = null;
+            this.c1CheckBox63.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            // 
+            // groupBox11
+            // 
+            this.groupBox11.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.groupBox11.Controls.Add(this.panel17);
+            this.groupBox11.Controls.Add(this.c1CheckBox60);
+            this.groupBox11.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.groupBox11.Location = new System.Drawing.Point(6, 587);
+            this.groupBox11.Name = "groupBox11";
+            this.groupBox11.Size = new System.Drawing.Size(589, 66);
+            this.groupBox11.TabIndex = 823;
+            this.groupBox11.TabStop = false;
+            this.groupBox11.Text = "AIDs";
+            this.theme1.SetTheme(this.groupBox11, "(default)");
+            // 
+            // panel17
+            // 
+            this.panel17.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.panel17.Controls.Add(this.radioButton19);
+            this.panel17.Controls.Add(this.radioButton21);
+            this.panel17.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.panel17.Location = new System.Drawing.Point(292, 15);
+            this.panel17.Name = "panel17";
+            this.panel17.Size = new System.Drawing.Size(228, 28);
+            this.panel17.TabIndex = 967;
+            this.theme1.SetTheme(this.panel17, "(default)");
+            // 
+            // radioButton19
+            // 
+            this.radioButton19.AutoSize = true;
+            this.radioButton19.BackColor = System.Drawing.Color.Transparent;
+            this.radioButton19.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
+            this.radioButton19.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(189)))), ((int)(((byte)(182)))));
+            this.radioButton19.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(189)))), ((int)(((byte)(182)))));
+            this.radioButton19.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.radioButton19.Location = new System.Drawing.Point(96, 4);
+            this.radioButton19.Name = "radioButton19";
+            this.radioButton19.Size = new System.Drawing.Size(62, 17);
+            this.radioButton19.TabIndex = 536;
+            this.radioButton19.TabStop = true;
+            this.radioButton19.Text = "Positive";
+            this.theme1.SetTheme(this.radioButton19, "(default)");
+            this.radioButton19.UseVisualStyleBackColor = false;
+            // 
+            // radioButton21
+            // 
+            this.radioButton21.AutoSize = true;
+            this.radioButton21.BackColor = System.Drawing.Color.Transparent;
+            this.radioButton21.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
+            this.radioButton21.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(189)))), ((int)(((byte)(182)))));
+            this.radioButton21.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(189)))), ((int)(((byte)(182)))));
+            this.radioButton21.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.radioButton21.Location = new System.Drawing.Point(3, 4);
+            this.radioButton21.Name = "radioButton21";
+            this.radioButton21.Size = new System.Drawing.Size(68, 17);
+            this.radioButton21.TabIndex = 535;
+            this.radioButton21.TabStop = true;
+            this.radioButton21.Text = "Negative";
+            this.theme1.SetTheme(this.radioButton21, "(default)");
+            this.radioButton21.UseVisualStyleBackColor = false;
+            // 
+            // c1CheckBox60
+            // 
+            this.c1CheckBox60.BackColor = System.Drawing.Color.Transparent;
+            this.c1CheckBox60.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
+            this.c1CheckBox60.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.c1CheckBox60.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.c1CheckBox60.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.c1CheckBox60.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.c1CheckBox60.Location = new System.Drawing.Point(6, 19);
+            this.c1CheckBox60.Name = "c1CheckBox60";
+            this.c1CheckBox60.Padding = new System.Windows.Forms.Padding(4, 1, 1, 1);
+            this.c1CheckBox60.Size = new System.Drawing.Size(92, 24);
+            this.c1CheckBox60.TabIndex = 817;
+            this.c1CheckBox60.Text = "Anti HIV";
+            this.theme1.SetTheme(this.c1CheckBox60, "(default)");
+            this.c1CheckBox60.UseVisualStyleBackColor = true;
+            this.c1CheckBox60.Value = null;
+            this.c1CheckBox60.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            // 
+            // groupBox10
+            // 
+            this.groupBox10.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.groupBox10.Controls.Add(this.panel16);
+            this.groupBox10.Controls.Add(this.panel15);
+            this.groupBox10.Controls.Add(this.panel14);
+            this.groupBox10.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.groupBox10.Location = new System.Drawing.Point(6, 458);
+            this.groupBox10.Name = "groupBox10";
+            this.groupBox10.Size = new System.Drawing.Size(589, 123);
+            this.groupBox10.TabIndex = 822;
+            this.groupBox10.TabStop = false;
+            this.groupBox10.Text = "Hepatitis";
+            this.theme1.SetTheme(this.groupBox10, "(default)");
+            // 
+            // panel16
+            // 
+            this.panel16.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.panel16.Controls.Add(this.radioButton17);
+            this.panel16.Controls.Add(this.c1CheckBox59);
+            this.panel16.Controls.Add(this.radioButton18);
+            this.panel16.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.panel16.Location = new System.Drawing.Point(11, 84);
+            this.panel16.Name = "panel16";
+            this.panel16.Size = new System.Drawing.Size(509, 28);
+            this.panel16.TabIndex = 969;
+            this.theme1.SetTheme(this.panel16, "(default)");
+            // 
+            // radioButton17
+            // 
+            this.radioButton17.AutoSize = true;
+            this.radioButton17.BackColor = System.Drawing.Color.Transparent;
+            this.radioButton17.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
+            this.radioButton17.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(189)))), ((int)(((byte)(182)))));
+            this.radioButton17.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(189)))), ((int)(((byte)(182)))));
+            this.radioButton17.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.radioButton17.Location = new System.Drawing.Point(377, 3);
+            this.radioButton17.Name = "radioButton17";
+            this.radioButton17.Size = new System.Drawing.Size(62, 17);
+            this.radioButton17.TabIndex = 536;
+            this.radioButton17.TabStop = true;
+            this.radioButton17.Text = "Positive";
+            this.theme1.SetTheme(this.radioButton17, "(default)");
+            this.radioButton17.UseVisualStyleBackColor = false;
+            // 
+            // c1CheckBox59
+            // 
+            this.c1CheckBox59.BackColor = System.Drawing.Color.Transparent;
+            this.c1CheckBox59.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
+            this.c1CheckBox59.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.c1CheckBox59.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.c1CheckBox59.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.c1CheckBox59.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.c1CheckBox59.Location = new System.Drawing.Point(3, 1);
+            this.c1CheckBox59.Name = "c1CheckBox59";
+            this.c1CheckBox59.Padding = new System.Windows.Forms.Padding(4, 1, 1, 1);
+            this.c1CheckBox59.Size = new System.Drawing.Size(123, 24);
+            this.c1CheckBox59.TabIndex = 817;
+            this.c1CheckBox59.Text = "Anti-HCV(total)";
+            this.theme1.SetTheme(this.c1CheckBox59, "(default)");
+            this.c1CheckBox59.UseVisualStyleBackColor = true;
+            this.c1CheckBox59.Value = null;
+            this.c1CheckBox59.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            // 
+            // radioButton18
+            // 
+            this.radioButton18.AutoSize = true;
+            this.radioButton18.BackColor = System.Drawing.Color.Transparent;
+            this.radioButton18.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
+            this.radioButton18.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(189)))), ((int)(((byte)(182)))));
+            this.radioButton18.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(189)))), ((int)(((byte)(182)))));
+            this.radioButton18.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.radioButton18.Location = new System.Drawing.Point(282, 3);
+            this.radioButton18.Name = "radioButton18";
+            this.radioButton18.Size = new System.Drawing.Size(68, 17);
+            this.radioButton18.TabIndex = 535;
+            this.radioButton18.TabStop = true;
+            this.radioButton18.Text = "Negative";
+            this.theme1.SetTheme(this.radioButton18, "(default)");
+            this.radioButton18.UseVisualStyleBackColor = false;
+            // 
+            // panel15
+            // 
+            this.panel15.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.panel15.Controls.Add(this.radioButton15);
+            this.panel15.Controls.Add(this.c1CheckBox58);
+            this.panel15.Controls.Add(this.radioButton16);
+            this.panel15.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.panel15.Location = new System.Drawing.Point(11, 50);
+            this.panel15.Name = "panel15";
+            this.panel15.Size = new System.Drawing.Size(509, 28);
+            this.panel15.TabIndex = 968;
+            this.theme1.SetTheme(this.panel15, "(default)");
+            // 
+            // radioButton15
+            // 
+            this.radioButton15.AutoSize = true;
+            this.radioButton15.BackColor = System.Drawing.Color.Transparent;
+            this.radioButton15.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
+            this.radioButton15.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(189)))), ((int)(((byte)(182)))));
+            this.radioButton15.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(189)))), ((int)(((byte)(182)))));
+            this.radioButton15.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.radioButton15.Location = new System.Drawing.Point(377, 3);
+            this.radioButton15.Name = "radioButton15";
+            this.radioButton15.Size = new System.Drawing.Size(62, 17);
+            this.radioButton15.TabIndex = 536;
+            this.radioButton15.TabStop = true;
+            this.radioButton15.Text = "Positive";
+            this.theme1.SetTheme(this.radioButton15, "(default)");
+            this.radioButton15.UseVisualStyleBackColor = false;
+            // 
+            // c1CheckBox58
+            // 
+            this.c1CheckBox58.BackColor = System.Drawing.Color.Transparent;
+            this.c1CheckBox58.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
+            this.c1CheckBox58.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.c1CheckBox58.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.c1CheckBox58.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.c1CheckBox58.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.c1CheckBox58.Location = new System.Drawing.Point(3, 1);
+            this.c1CheckBox58.Name = "c1CheckBox58";
+            this.c1CheckBox58.Padding = new System.Windows.Forms.Padding(4, 1, 1, 1);
+            this.c1CheckBox58.Size = new System.Drawing.Size(92, 24);
+            this.c1CheckBox58.TabIndex = 817;
+            this.c1CheckBox58.Text = "Anti-HBs";
+            this.theme1.SetTheme(this.c1CheckBox58, "(default)");
+            this.c1CheckBox58.UseVisualStyleBackColor = true;
+            this.c1CheckBox58.Value = null;
+            this.c1CheckBox58.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            // 
+            // radioButton16
+            // 
+            this.radioButton16.AutoSize = true;
+            this.radioButton16.BackColor = System.Drawing.Color.Transparent;
+            this.radioButton16.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
+            this.radioButton16.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(189)))), ((int)(((byte)(182)))));
+            this.radioButton16.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(189)))), ((int)(((byte)(182)))));
+            this.radioButton16.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.radioButton16.Location = new System.Drawing.Point(282, 3);
+            this.radioButton16.Name = "radioButton16";
+            this.radioButton16.Size = new System.Drawing.Size(68, 17);
+            this.radioButton16.TabIndex = 535;
+            this.radioButton16.TabStop = true;
+            this.radioButton16.Text = "Negative";
+            this.theme1.SetTheme(this.radioButton16, "(default)");
+            this.radioButton16.UseVisualStyleBackColor = false;
+            // 
+            // panel14
+            // 
+            this.panel14.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.panel14.Controls.Add(this.radioButton13);
+            this.panel14.Controls.Add(this.c1CheckBox54);
+            this.panel14.Controls.Add(this.radioButton14);
+            this.panel14.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.panel14.Location = new System.Drawing.Point(11, 19);
+            this.panel14.Name = "panel14";
+            this.panel14.Size = new System.Drawing.Size(509, 28);
+            this.panel14.TabIndex = 967;
+            this.theme1.SetTheme(this.panel14, "(default)");
+            // 
+            // radioButton13
+            // 
+            this.radioButton13.AutoSize = true;
+            this.radioButton13.BackColor = System.Drawing.Color.Transparent;
+            this.radioButton13.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
+            this.radioButton13.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(189)))), ((int)(((byte)(182)))));
+            this.radioButton13.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(189)))), ((int)(((byte)(182)))));
+            this.radioButton13.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.radioButton13.Location = new System.Drawing.Point(377, 3);
+            this.radioButton13.Name = "radioButton13";
+            this.radioButton13.Size = new System.Drawing.Size(62, 17);
+            this.radioButton13.TabIndex = 536;
+            this.radioButton13.TabStop = true;
+            this.radioButton13.Text = "Positive";
+            this.theme1.SetTheme(this.radioButton13, "(default)");
+            this.radioButton13.UseVisualStyleBackColor = false;
+            // 
+            // c1CheckBox54
+            // 
+            this.c1CheckBox54.BackColor = System.Drawing.Color.Transparent;
+            this.c1CheckBox54.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
+            this.c1CheckBox54.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.c1CheckBox54.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.c1CheckBox54.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.c1CheckBox54.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.c1CheckBox54.Location = new System.Drawing.Point(3, 1);
+            this.c1CheckBox54.Name = "c1CheckBox54";
+            this.c1CheckBox54.Padding = new System.Windows.Forms.Padding(4, 1, 1, 1);
+            this.c1CheckBox54.Size = new System.Drawing.Size(92, 24);
+            this.c1CheckBox54.TabIndex = 817;
+            this.c1CheckBox54.Text = "HBsAg";
+            this.theme1.SetTheme(this.c1CheckBox54, "(default)");
+            this.c1CheckBox54.UseVisualStyleBackColor = true;
+            this.c1CheckBox54.Value = null;
+            this.c1CheckBox54.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            // 
+            // radioButton14
+            // 
+            this.radioButton14.AutoSize = true;
+            this.radioButton14.BackColor = System.Drawing.Color.Transparent;
+            this.radioButton14.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
+            this.radioButton14.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(189)))), ((int)(((byte)(182)))));
+            this.radioButton14.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(189)))), ((int)(((byte)(182)))));
+            this.radioButton14.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.radioButton14.Location = new System.Drawing.Point(282, 3);
+            this.radioButton14.Name = "radioButton14";
+            this.radioButton14.Size = new System.Drawing.Size(68, 17);
+            this.radioButton14.TabIndex = 535;
+            this.radioButton14.TabStop = true;
+            this.radioButton14.Text = "Negative";
+            this.theme1.SetTheme(this.radioButton14, "(default)");
+            this.radioButton14.UseVisualStyleBackColor = false;
+            // 
+            // groupBox9
+            // 
+            this.groupBox9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.groupBox9.Controls.Add(this.panel13);
+            this.groupBox9.Controls.Add(this.c1CheckBox53);
+            this.groupBox9.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.groupBox9.Location = new System.Drawing.Point(6, 386);
+            this.groupBox9.Name = "groupBox9";
+            this.groupBox9.Size = new System.Drawing.Size(589, 66);
+            this.groupBox9.TabIndex = 821;
+            this.groupBox9.TabStop = false;
+            this.groupBox9.Text = "Infectious";
+            this.theme1.SetTheme(this.groupBox9, "(default)");
+            // 
+            // panel13
+            // 
+            this.panel13.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.panel13.Controls.Add(this.radioButton11);
+            this.panel13.Controls.Add(this.radioButton12);
+            this.panel13.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.panel13.Location = new System.Drawing.Point(292, 15);
+            this.panel13.Name = "panel13";
+            this.panel13.Size = new System.Drawing.Size(228, 28);
+            this.panel13.TabIndex = 967;
+            this.theme1.SetTheme(this.panel13, "(default)");
+            // 
+            // radioButton11
+            // 
+            this.radioButton11.AutoSize = true;
+            this.radioButton11.BackColor = System.Drawing.Color.Transparent;
+            this.radioButton11.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
+            this.radioButton11.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(189)))), ((int)(((byte)(182)))));
+            this.radioButton11.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(189)))), ((int)(((byte)(182)))));
+            this.radioButton11.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.radioButton11.Location = new System.Drawing.Point(96, 4);
+            this.radioButton11.Name = "radioButton11";
+            this.radioButton11.Size = new System.Drawing.Size(62, 17);
+            this.radioButton11.TabIndex = 536;
+            this.radioButton11.TabStop = true;
+            this.radioButton11.Text = "Positive";
+            this.theme1.SetTheme(this.radioButton11, "(default)");
+            this.radioButton11.UseVisualStyleBackColor = false;
+            // 
+            // radioButton12
+            // 
+            this.radioButton12.AutoSize = true;
+            this.radioButton12.BackColor = System.Drawing.Color.Transparent;
+            this.radioButton12.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
+            this.radioButton12.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(189)))), ((int)(((byte)(182)))));
+            this.radioButton12.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(189)))), ((int)(((byte)(182)))));
+            this.radioButton12.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.radioButton12.Location = new System.Drawing.Point(3, 4);
+            this.radioButton12.Name = "radioButton12";
+            this.radioButton12.Size = new System.Drawing.Size(68, 17);
+            this.radioButton12.TabIndex = 535;
+            this.radioButton12.TabStop = true;
+            this.radioButton12.Text = "Negative";
+            this.theme1.SetTheme(this.radioButton12, "(default)");
+            this.radioButton12.UseVisualStyleBackColor = false;
+            // 
+            // c1CheckBox53
+            // 
+            this.c1CheckBox53.BackColor = System.Drawing.Color.Transparent;
+            this.c1CheckBox53.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
+            this.c1CheckBox53.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.c1CheckBox53.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.c1CheckBox53.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.c1CheckBox53.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.c1CheckBox53.Location = new System.Drawing.Point(6, 19);
+            this.c1CheckBox53.Name = "c1CheckBox53";
+            this.c1CheckBox53.Padding = new System.Windows.Forms.Padding(4, 1, 1, 1);
+            this.c1CheckBox53.Size = new System.Drawing.Size(92, 24);
+            this.c1CheckBox53.TabIndex = 817;
+            this.c1CheckBox53.Text = "Rubella";
+            this.theme1.SetTheme(this.c1CheckBox53, "(default)");
+            this.c1CheckBox53.UseVisualStyleBackColor = true;
+            this.c1CheckBox53.Value = null;
+            this.c1CheckBox53.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            // 
+            // groupBox8
+            // 
+            this.groupBox8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.groupBox8.Controls.Add(this.panel12);
+            this.groupBox8.Controls.Add(this.c1CheckBox56);
+            this.groupBox8.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.groupBox8.Location = new System.Drawing.Point(6, 314);
+            this.groupBox8.Name = "groupBox8";
+            this.groupBox8.Size = new System.Drawing.Size(589, 66);
+            this.groupBox8.TabIndex = 820;
+            this.groupBox8.TabStop = false;
+            this.groupBox8.Text = "Serology";
+            this.theme1.SetTheme(this.groupBox8, "(default)");
+            // 
+            // panel12
+            // 
+            this.panel12.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.panel12.Controls.Add(this.radioButton9);
+            this.panel12.Controls.Add(this.radioButton10);
+            this.panel12.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.panel12.Location = new System.Drawing.Point(292, 15);
+            this.panel12.Name = "panel12";
+            this.panel12.Size = new System.Drawing.Size(228, 28);
+            this.panel12.TabIndex = 967;
+            this.theme1.SetTheme(this.panel12, "(default)");
+            // 
+            // radioButton9
+            // 
+            this.radioButton9.AutoSize = true;
+            this.radioButton9.BackColor = System.Drawing.Color.Transparent;
+            this.radioButton9.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
+            this.radioButton9.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(189)))), ((int)(((byte)(182)))));
+            this.radioButton9.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(189)))), ((int)(((byte)(182)))));
+            this.radioButton9.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.radioButton9.Location = new System.Drawing.Point(96, 4);
+            this.radioButton9.Name = "radioButton9";
+            this.radioButton9.Size = new System.Drawing.Size(68, 17);
+            this.radioButton9.TabIndex = 536;
+            this.radioButton9.TabStop = true;
+            this.radioButton9.Text = "Reactive";
+            this.theme1.SetTheme(this.radioButton9, "(default)");
+            this.radioButton9.UseVisualStyleBackColor = false;
+            // 
+            // radioButton10
+            // 
+            this.radioButton10.AutoSize = true;
+            this.radioButton10.BackColor = System.Drawing.Color.Transparent;
+            this.radioButton10.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
+            this.radioButton10.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(189)))), ((int)(((byte)(182)))));
+            this.radioButton10.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(189)))), ((int)(((byte)(182)))));
+            this.radioButton10.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.radioButton10.Location = new System.Drawing.Point(3, 4);
+            this.radioButton10.Name = "radioButton10";
+            this.radioButton10.Size = new System.Drawing.Size(91, 17);
+            this.radioButton10.TabIndex = 535;
+            this.radioButton10.TabStop = true;
+            this.radioButton10.Text = "Non-Reactive";
+            this.theme1.SetTheme(this.radioButton10, "(default)");
+            this.radioButton10.UseVisualStyleBackColor = false;
+            // 
+            // c1CheckBox56
+            // 
+            this.c1CheckBox56.BackColor = System.Drawing.Color.Transparent;
+            this.c1CheckBox56.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
+            this.c1CheckBox56.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.c1CheckBox56.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.c1CheckBox56.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.c1CheckBox56.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.c1CheckBox56.Location = new System.Drawing.Point(6, 19);
+            this.c1CheckBox56.Name = "c1CheckBox56";
+            this.c1CheckBox56.Padding = new System.Windows.Forms.Padding(4, 1, 1, 1);
+            this.c1CheckBox56.Size = new System.Drawing.Size(92, 24);
+            this.c1CheckBox56.TabIndex = 817;
+            this.c1CheckBox56.Text = "VDRL";
+            this.theme1.SetTheme(this.c1CheckBox56, "(default)");
+            this.c1CheckBox56.UseVisualStyleBackColor = true;
+            this.c1CheckBox56.Value = null;
+            this.c1CheckBox56.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            // 
+            // groupBox7
+            // 
+            this.groupBox7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.groupBox7.Controls.Add(this.c1TextBox36);
+            this.groupBox7.Controls.Add(this.c1CheckBox52);
+            this.groupBox7.Controls.Add(this.c1TextBox37);
+            this.groupBox7.Controls.Add(this.c1CheckBox55);
+            this.groupBox7.Controls.Add(this.c1CheckBox57);
+            this.groupBox7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.groupBox7.Location = new System.Drawing.Point(6, 129);
+            this.groupBox7.Name = "groupBox7";
+            this.groupBox7.Size = new System.Drawing.Size(589, 86);
+            this.groupBox7.TabIndex = 819;
+            this.groupBox7.TabStop = false;
+            this.groupBox7.Text = "Electrophoresis";
+            this.theme1.SetTheme(this.groupBox7, "(default)");
+            // 
+            // c1TextBox36
+            // 
+            this.c1TextBox36.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.c1TextBox36.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
+            this.c1TextBox36.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.c1TextBox36.Location = new System.Drawing.Point(388, 49);
+            this.c1TextBox36.Name = "c1TextBox36";
+            this.c1TextBox36.Size = new System.Drawing.Size(194, 20);
+            this.c1TextBox36.TabIndex = 967;
+            this.c1TextBox36.Tag = null;
+            this.theme1.SetTheme(this.c1TextBox36, "(default)");
+            this.c1TextBox36.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            // 
+            // c1CheckBox52
+            // 
+            this.c1CheckBox52.BackColor = System.Drawing.Color.Transparent;
+            this.c1CheckBox52.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
+            this.c1CheckBox52.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.c1CheckBox52.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.c1CheckBox52.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.c1CheckBox52.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.c1CheckBox52.Location = new System.Drawing.Point(314, 49);
+            this.c1CheckBox52.Name = "c1CheckBox52";
+            this.c1CheckBox52.Padding = new System.Windows.Forms.Padding(4, 1, 1, 1);
+            this.c1CheckBox52.Size = new System.Drawing.Size(80, 24);
+            this.c1CheckBox52.TabIndex = 966;
+            this.c1CheckBox52.Text = "Other";
+            this.theme1.SetTheme(this.c1CheckBox52, "(default)");
+            this.c1CheckBox52.UseVisualStyleBackColor = true;
+            this.c1CheckBox52.Value = null;
+            this.c1CheckBox52.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            // 
+            // c1TextBox37
+            // 
+            this.c1TextBox37.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.c1TextBox37.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
+            this.c1TextBox37.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.c1TextBox37.Location = new System.Drawing.Point(99, 19);
+            this.c1TextBox37.Name = "c1TextBox37";
+            this.c1TextBox37.Size = new System.Drawing.Size(67, 20);
+            this.c1TextBox37.TabIndex = 964;
+            this.c1TextBox37.Tag = null;
+            this.theme1.SetTheme(this.c1TextBox37, "(default)");
+            this.c1TextBox37.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            // 
+            // c1CheckBox55
+            // 
+            this.c1CheckBox55.BackColor = System.Drawing.Color.Transparent;
+            this.c1CheckBox55.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
+            this.c1CheckBox55.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.c1CheckBox55.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.c1CheckBox55.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.c1CheckBox55.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.c1CheckBox55.Location = new System.Drawing.Point(314, 19);
+            this.c1CheckBox55.Name = "c1CheckBox55";
+            this.c1CheckBox55.Padding = new System.Windows.Forms.Padding(4, 1, 1, 1);
+            this.c1CheckBox55.Size = new System.Drawing.Size(113, 24);
+            this.c1CheckBox55.TabIndex = 819;
+            this.c1CheckBox55.Text = "Normal";
+            this.theme1.SetTheme(this.c1CheckBox55, "(default)");
+            this.c1CheckBox55.UseVisualStyleBackColor = true;
+            this.c1CheckBox55.Value = null;
+            this.c1CheckBox55.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            // 
+            // c1CheckBox57
+            // 
+            this.c1CheckBox57.BackColor = System.Drawing.Color.Transparent;
+            this.c1CheckBox57.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
+            this.c1CheckBox57.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.c1CheckBox57.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.c1CheckBox57.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.c1CheckBox57.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.c1CheckBox57.Location = new System.Drawing.Point(6, 19);
+            this.c1CheckBox57.Name = "c1CheckBox57";
+            this.c1CheckBox57.Padding = new System.Windows.Forms.Padding(4, 1, 1, 1);
+            this.c1CheckBox57.Size = new System.Drawing.Size(92, 24);
+            this.c1CheckBox57.TabIndex = 817;
+            this.c1CheckBox57.Text = "Hy typing";
+            this.theme1.SetTheme(this.c1CheckBox57, "(default)");
+            this.c1CheckBox57.UseVisualStyleBackColor = true;
+            this.c1CheckBox57.Value = null;
+            this.c1CheckBox57.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            // 
+            // groupBox6
+            // 
+            this.groupBox6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.groupBox6.Controls.Add(this.c1TextBox33);
+            this.groupBox6.Controls.Add(this.c1TextBox34);
+            this.groupBox6.Controls.Add(this.c1CheckBox50);
+            this.groupBox6.Controls.Add(this.c1CheckBox51);
+            this.groupBox6.Controls.Add(this.c1TextBox32);
+            this.groupBox6.Controls.Add(this.c1TextBox31);
+            this.groupBox6.Controls.Add(this.c1TextBox30);
+            this.groupBox6.Controls.Add(this.c1TextBox29);
+            this.groupBox6.Controls.Add(this.c1CheckBox49);
+            this.groupBox6.Controls.Add(this.c1CheckBox48);
+            this.groupBox6.Controls.Add(this.c1CheckBox47);
+            this.groupBox6.Controls.Add(this.c1CheckBox46);
+            this.groupBox6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.groupBox6.Location = new System.Drawing.Point(6, 37);
+            this.groupBox6.Name = "groupBox6";
+            this.groupBox6.Size = new System.Drawing.Size(589, 86);
+            this.groupBox6.TabIndex = 818;
+            this.groupBox6.TabStop = false;
+            this.groupBox6.Text = "Hormone";
+            this.theme1.SetTheme(this.groupBox6, "(default)");
+            // 
+            // c1TextBox33
+            // 
+            this.c1TextBox33.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.c1TextBox33.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
+            this.c1TextBox33.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.c1TextBox33.Location = new System.Drawing.Point(70, 49);
+            this.c1TextBox33.Name = "c1TextBox33";
+            this.c1TextBox33.Size = new System.Drawing.Size(67, 20);
+            this.c1TextBox33.TabIndex = 968;
+            this.c1TextBox33.Tag = null;
+            this.theme1.SetTheme(this.c1TextBox33, "(default)");
+            this.c1TextBox33.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            // 
+            // c1TextBox34
+            // 
+            this.c1TextBox34.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.c1TextBox34.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
+            this.c1TextBox34.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.c1TextBox34.Location = new System.Drawing.Point(208, 49);
+            this.c1TextBox34.Name = "c1TextBox34";
+            this.c1TextBox34.Size = new System.Drawing.Size(67, 20);
+            this.c1TextBox34.TabIndex = 967;
+            this.c1TextBox34.Tag = null;
+            this.theme1.SetTheme(this.c1TextBox34, "(default)");
+            this.c1TextBox34.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            // 
+            // c1CheckBox50
+            // 
+            this.c1CheckBox50.BackColor = System.Drawing.Color.Transparent;
+            this.c1CheckBox50.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
+            this.c1CheckBox50.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.c1CheckBox50.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.c1CheckBox50.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.c1CheckBox50.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.c1CheckBox50.Location = new System.Drawing.Point(156, 49);
+            this.c1CheckBox50.Name = "c1CheckBox50";
+            this.c1CheckBox50.Padding = new System.Windows.Forms.Padding(4, 1, 1, 1);
+            this.c1CheckBox50.Size = new System.Drawing.Size(51, 24);
+            this.c1CheckBox50.TabIndex = 966;
+            this.c1CheckBox50.Text = "P4";
+            this.theme1.SetTheme(this.c1CheckBox50, "(default)");
+            this.c1CheckBox50.UseVisualStyleBackColor = true;
+            this.c1CheckBox50.Value = null;
+            this.c1CheckBox50.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            // 
+            // c1CheckBox51
+            // 
+            this.c1CheckBox51.BackColor = System.Drawing.Color.Transparent;
+            this.c1CheckBox51.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
+            this.c1CheckBox51.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.c1CheckBox51.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.c1CheckBox51.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.c1CheckBox51.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.c1CheckBox51.Location = new System.Drawing.Point(6, 49);
+            this.c1CheckBox51.Name = "c1CheckBox51";
+            this.c1CheckBox51.Padding = new System.Windows.Forms.Padding(4, 1, 1, 1);
+            this.c1CheckBox51.Size = new System.Drawing.Size(65, 24);
+            this.c1CheckBox51.TabIndex = 965;
+            this.c1CheckBox51.Text = "AMH";
+            this.theme1.SetTheme(this.c1CheckBox51, "(default)");
+            this.c1CheckBox51.UseVisualStyleBackColor = true;
+            this.c1CheckBox51.Value = null;
+            this.c1CheckBox51.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            // 
+            // c1TextBox32
+            // 
+            this.c1TextBox32.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.c1TextBox32.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
+            this.c1TextBox32.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.c1TextBox32.Location = new System.Drawing.Point(70, 19);
+            this.c1TextBox32.Name = "c1TextBox32";
+            this.c1TextBox32.Size = new System.Drawing.Size(67, 20);
+            this.c1TextBox32.TabIndex = 964;
+            this.c1TextBox32.Tag = null;
+            this.theme1.SetTheme(this.c1TextBox32, "(default)");
+            this.c1TextBox32.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            // 
+            // c1TextBox31
+            // 
+            this.c1TextBox31.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.c1TextBox31.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
+            this.c1TextBox31.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.c1TextBox31.Location = new System.Drawing.Point(208, 19);
+            this.c1TextBox31.Name = "c1TextBox31";
+            this.c1TextBox31.Size = new System.Drawing.Size(67, 20);
+            this.c1TextBox31.TabIndex = 963;
+            this.c1TextBox31.Tag = null;
+            this.theme1.SetTheme(this.c1TextBox31, "(default)");
+            this.c1TextBox31.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            // 
+            // c1TextBox30
+            // 
+            this.c1TextBox30.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.c1TextBox30.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
+            this.c1TextBox30.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.c1TextBox30.Location = new System.Drawing.Point(373, 19);
+            this.c1TextBox30.Name = "c1TextBox30";
+            this.c1TextBox30.Size = new System.Drawing.Size(67, 20);
+            this.c1TextBox30.TabIndex = 962;
+            this.c1TextBox30.Tag = null;
+            this.theme1.SetTheme(this.c1TextBox30, "(default)");
+            this.c1TextBox30.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            // 
+            // c1TextBox29
+            // 
+            this.c1TextBox29.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.c1TextBox29.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
+            this.c1TextBox29.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.c1TextBox29.Location = new System.Drawing.Point(515, 19);
+            this.c1TextBox29.Name = "c1TextBox29";
+            this.c1TextBox29.Size = new System.Drawing.Size(67, 20);
+            this.c1TextBox29.TabIndex = 961;
+            this.c1TextBox29.Tag = null;
+            this.theme1.SetTheme(this.c1TextBox29, "(default)");
+            this.c1TextBox29.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            // 
+            // c1CheckBox49
+            // 
+            this.c1CheckBox49.BackColor = System.Drawing.Color.Transparent;
+            this.c1CheckBox49.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
+            this.c1CheckBox49.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.c1CheckBox49.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.c1CheckBox49.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.c1CheckBox49.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.c1CheckBox49.Location = new System.Drawing.Point(457, 19);
+            this.c1CheckBox49.Name = "c1CheckBox49";
+            this.c1CheckBox49.Padding = new System.Windows.Forms.Padding(4, 1, 1, 1);
+            this.c1CheckBox49.Size = new System.Drawing.Size(60, 24);
+            this.c1CheckBox49.TabIndex = 820;
+            this.c1CheckBox49.Text = "PRL";
+            this.theme1.SetTheme(this.c1CheckBox49, "(default)");
+            this.c1CheckBox49.UseVisualStyleBackColor = true;
+            this.c1CheckBox49.Value = null;
+            this.c1CheckBox49.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            // 
+            // c1CheckBox48
+            // 
+            this.c1CheckBox48.BackColor = System.Drawing.Color.Transparent;
+            this.c1CheckBox48.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
+            this.c1CheckBox48.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.c1CheckBox48.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.c1CheckBox48.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.c1CheckBox48.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.c1CheckBox48.Location = new System.Drawing.Point(314, 19);
+            this.c1CheckBox48.Name = "c1CheckBox48";
+            this.c1CheckBox48.Padding = new System.Windows.Forms.Padding(4, 1, 1, 1);
+            this.c1CheckBox48.Size = new System.Drawing.Size(57, 24);
+            this.c1CheckBox48.TabIndex = 819;
+            this.c1CheckBox48.Text = "FHS";
+            this.theme1.SetTheme(this.c1CheckBox48, "(default)");
+            this.c1CheckBox48.UseVisualStyleBackColor = true;
+            this.c1CheckBox48.Value = null;
+            this.c1CheckBox48.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            // 
+            // c1CheckBox47
+            // 
+            this.c1CheckBox47.BackColor = System.Drawing.Color.Transparent;
+            this.c1CheckBox47.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
+            this.c1CheckBox47.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.c1CheckBox47.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.c1CheckBox47.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.c1CheckBox47.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.c1CheckBox47.Location = new System.Drawing.Point(156, 19);
+            this.c1CheckBox47.Name = "c1CheckBox47";
+            this.c1CheckBox47.Padding = new System.Windows.Forms.Padding(4, 1, 1, 1);
+            this.c1CheckBox47.Size = new System.Drawing.Size(51, 24);
+            this.c1CheckBox47.TabIndex = 818;
+            this.c1CheckBox47.Text = "LH";
+            this.theme1.SetTheme(this.c1CheckBox47, "(default)");
+            this.c1CheckBox47.UseVisualStyleBackColor = true;
+            this.c1CheckBox47.Value = null;
+            this.c1CheckBox47.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            // 
+            // c1CheckBox46
+            // 
+            this.c1CheckBox46.BackColor = System.Drawing.Color.Transparent;
+            this.c1CheckBox46.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
+            this.c1CheckBox46.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.c1CheckBox46.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.c1CheckBox46.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.c1CheckBox46.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.c1CheckBox46.Location = new System.Drawing.Point(6, 19);
+            this.c1CheckBox46.Name = "c1CheckBox46";
+            this.c1CheckBox46.Padding = new System.Windows.Forms.Padding(4, 1, 1, 1);
+            this.c1CheckBox46.Size = new System.Drawing.Size(49, 24);
+            this.c1CheckBox46.TabIndex = 817;
+            this.c1CheckBox46.Text = "E2";
+            this.theme1.SetTheme(this.c1CheckBox46, "(default)");
+            this.c1CheckBox46.UseVisualStyleBackColor = true;
+            this.c1CheckBox46.Value = null;
+            this.c1CheckBox46.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
             // 
             // tabTestMerri
             // 
@@ -6160,742 +6177,163 @@
             this.panel24.TabIndex = 0;
             this.theme1.SetTheme(this.panel24, "(default)");
             // 
-            // label66
-            // 
-            this.label66.AutoSize = true;
-            this.label66.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.label66.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label66.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.label66.Location = new System.Drawing.Point(90, 52);
-            this.label66.Name = "label66";
-            this.label66.Size = new System.Drawing.Size(95, 16);
-            this.label66.TabIndex = 827;
-            this.label66.Text = "Patient Name :";
-            this.theme1.SetTheme(this.label66, "(default)");
-            // 
-            // c1TextBox45
-            // 
-            this.c1TextBox45.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.c1TextBox45.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
-            this.c1TextBox45.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.c1TextBox45.Location = new System.Drawing.Point(230, 50);
-            this.c1TextBox45.Name = "c1TextBox45";
-            this.c1TextBox45.Size = new System.Drawing.Size(253, 20);
-            this.c1TextBox45.TabIndex = 826;
-            this.c1TextBox45.Tag = null;
-            this.theme1.SetTheme(this.c1TextBox45, "(default)");
-            this.c1TextBox45.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
-            // 
-            // label67
-            // 
-            this.label67.AutoSize = true;
-            this.label67.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.label67.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label67.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.label67.Location = new System.Drawing.Point(593, 52);
-            this.label67.Name = "label67";
-            this.label67.Size = new System.Drawing.Size(95, 16);
-            this.label67.TabIndex = 829;
-            this.label67.Text = "Patient Name :";
-            this.theme1.SetTheme(this.label67, "(default)");
-            // 
-            // c1TextBox46
-            // 
-            this.c1TextBox46.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.c1TextBox46.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
-            this.c1TextBox46.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.c1TextBox46.Location = new System.Drawing.Point(733, 50);
-            this.c1TextBox46.Name = "c1TextBox46";
-            this.c1TextBox46.Size = new System.Drawing.Size(253, 20);
-            this.c1TextBox46.TabIndex = 828;
-            this.c1TextBox46.Tag = null;
-            this.theme1.SetTheme(this.c1TextBox46, "(default)");
-            this.c1TextBox46.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
-            // 
-            // label68
-            // 
-            this.label68.AutoSize = true;
-            this.label68.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.label68.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label68.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.label68.Location = new System.Drawing.Point(90, 78);
-            this.label68.Name = "label68";
-            this.label68.Size = new System.Drawing.Size(43, 16);
-            this.label68.TabIndex = 830;
-            this.label68.Text = "DOB :";
-            this.theme1.SetTheme(this.label68, "(default)");
-            // 
-            // c1TextBox47
-            // 
-            this.c1TextBox47.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.c1TextBox47.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
-            this.c1TextBox47.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.c1TextBox47.Location = new System.Drawing.Point(230, 76);
-            this.c1TextBox47.Name = "c1TextBox47";
-            this.c1TextBox47.Size = new System.Drawing.Size(156, 20);
-            this.c1TextBox47.TabIndex = 831;
-            this.c1TextBox47.Tag = null;
-            this.theme1.SetTheme(this.c1TextBox47, "(default)");
-            this.c1TextBox47.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
-            // 
-            // label69
-            // 
-            this.label69.AutoSize = true;
-            this.label69.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.label69.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label69.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.label69.Location = new System.Drawing.Point(593, 78);
-            this.label69.Name = "label69";
-            this.label69.Size = new System.Drawing.Size(43, 16);
-            this.label69.TabIndex = 832;
-            this.label69.Text = "DOB :";
-            this.theme1.SetTheme(this.label69, "(default)");
-            // 
-            // c1TextBox48
-            // 
-            this.c1TextBox48.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.c1TextBox48.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
-            this.c1TextBox48.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.c1TextBox48.Location = new System.Drawing.Point(733, 76);
-            this.c1TextBox48.Name = "c1TextBox48";
-            this.c1TextBox48.Size = new System.Drawing.Size(156, 20);
-            this.c1TextBox48.TabIndex = 833;
-            this.c1TextBox48.Tag = null;
-            this.theme1.SetTheme(this.c1TextBox48, "(default)");
-            this.c1TextBox48.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
-            // 
-            // label70
-            // 
-            this.label70.AutoSize = true;
-            this.label70.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.label70.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label70.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.label70.Location = new System.Drawing.Point(90, 104);
-            this.label70.Name = "label70";
-            this.label70.Size = new System.Drawing.Size(82, 16);
-            this.label70.TabIndex = 923;
-            this.label70.Text = "Occupation :";
-            this.theme1.SetTheme(this.label70, "(default)");
-            // 
-            // c1ComboBox3
-            // 
-            this.c1ComboBox3.AllowSpinLoop = false;
-            this.c1ComboBox3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.c1ComboBox3.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
-            this.c1ComboBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.c1ComboBox3.GapHeight = 0;
-            this.c1ComboBox3.ImagePadding = new System.Windows.Forms.Padding(0);
-            this.c1ComboBox3.ItemsDisplayMember = "";
-            this.c1ComboBox3.ItemsValueMember = "";
-            this.c1ComboBox3.Location = new System.Drawing.Point(230, 102);
-            this.c1ComboBox3.Name = "c1ComboBox3";
-            this.c1ComboBox3.Size = new System.Drawing.Size(175, 20);
-            this.c1ComboBox3.Style.DropDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.c1ComboBox3.Style.DropDownBorderColor = System.Drawing.Color.Gainsboro;
-            this.c1ComboBox3.Style.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.c1ComboBox3.TabIndex = 924;
-            this.c1ComboBox3.Tag = null;
-            this.theme1.SetTheme(this.c1ComboBox3, "(default)");
-            this.c1ComboBox3.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
-            // 
-            // label71
-            // 
-            this.label71.AutoSize = true;
-            this.label71.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.label71.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label71.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.label71.Location = new System.Drawing.Point(593, 104);
-            this.label71.Name = "label71";
-            this.label71.Size = new System.Drawing.Size(82, 16);
-            this.label71.TabIndex = 925;
-            this.label71.Text = "Occupation :";
-            this.theme1.SetTheme(this.label71, "(default)");
-            // 
-            // c1ComboBox4
-            // 
-            this.c1ComboBox4.AllowSpinLoop = false;
-            this.c1ComboBox4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.c1ComboBox4.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
-            this.c1ComboBox4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.c1ComboBox4.GapHeight = 0;
-            this.c1ComboBox4.ImagePadding = new System.Windows.Forms.Padding(0);
-            this.c1ComboBox4.ItemsDisplayMember = "";
-            this.c1ComboBox4.ItemsValueMember = "";
-            this.c1ComboBox4.Location = new System.Drawing.Point(733, 102);
-            this.c1ComboBox4.Name = "c1ComboBox4";
-            this.c1ComboBox4.Size = new System.Drawing.Size(175, 20);
-            this.c1ComboBox4.Style.DropDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.c1ComboBox4.Style.DropDownBorderColor = System.Drawing.Color.Gainsboro;
-            this.c1ComboBox4.Style.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.c1ComboBox4.TabIndex = 926;
-            this.c1ComboBox4.Tag = null;
-            this.theme1.SetTheme(this.c1ComboBox4, "(default)");
-            this.c1ComboBox4.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
-            // 
-            // label72
-            // 
-            this.label72.AutoSize = true;
-            this.label72.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.label72.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label72.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.label72.Location = new System.Drawing.Point(388, 15);
-            this.label72.Name = "label72";
-            this.label72.Size = new System.Drawing.Size(427, 32);
-            this.label72.TabIndex = 927;
-            this.label72.Text = "แบบรับรองการตรวจประเมินความพร้อมทางด้านจิตใจของสามีภรรยาที่ประสงค์ให้มีการรักษา\r\n" +
-    "\r\n";
-            this.theme1.SetTheme(this.label72, "(default)");
-            // 
-            // label74
-            // 
-            this.label74.AutoSize = true;
-            this.label74.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.label74.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label74.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.label74.Location = new System.Drawing.Point(879, 15);
-            this.label74.Name = "label74";
-            this.label74.Size = new System.Drawing.Size(155, 16);
-            this.label74.TabIndex = 928;
-            this.label74.Text = "ด้วยเทคโนโลยี่ช่วยการเจริญพันธุ์";
-            this.theme1.SetTheme(this.label74, "(default)");
-            // 
-            // label75
-            // 
-            this.label75.AutoSize = true;
-            this.label75.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.label75.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label75.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.label75.Location = new System.Drawing.Point(47, 131);
-            this.label75.Name = "label75";
-            this.label75.Size = new System.Drawing.Size(295, 16);
-            this.label75.TabIndex = 929;
-            this.label75.Text = "ซึ่งมีวัตถุประสงค์จะเข้ารับการรักษาด้วยเทคโนโลยี่การเจริญพันธุ์";
-            this.theme1.SetTheme(this.label75, "(default)");
-            // 
-            // label76
-            // 
-            this.label76.AutoSize = true;
-            this.label76.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.label76.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label76.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.label76.Location = new System.Drawing.Point(225, 161);
-            this.label76.Name = "label76";
-            this.label76.Size = new System.Drawing.Size(530, 25);
-            this.label76.TabIndex = 930;
-            this.label76.Text = "1.  ได้ผ่านการตรวจประเมินความพร้อมทางด้านสภาพจิตใจ  พบว่า";
-            this.theme1.SetTheme(this.label76, "(default)");
-            // 
-            // label83
-            // 
-            this.label83.AutoSize = true;
-            this.label83.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.label83.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label83.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.label83.Location = new System.Drawing.Point(281, 645);
-            this.label83.Name = "label83";
-            this.label83.Size = new System.Drawing.Size(364, 16);
-            this.label83.TabIndex = 937;
-            this.label83.Text = "**  หากมีปัญหาข้อหนึ่งข้อใดข้างต้น  ให้ปรึกษาจิตแพทย์เพื่อตรวจประเมินต่อไป";
-            this.theme1.SetTheme(this.label83, "(default)");
-            // 
-            // label84
-            // 
-            this.label84.AutoSize = true;
-            this.label84.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.label84.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label84.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.label84.Location = new System.Drawing.Point(945, 150);
-            this.label84.Name = "label84";
-            this.label84.Size = new System.Drawing.Size(562, 25);
-            this.label84.TabIndex = 938;
-            this.label84.Text = "2.  ได้ผ่านการตรวจประเมินความพร้อมทางด้านสิ่งแวดล้อมแล้ว  พบว่า";
-            this.theme1.SetTheme(this.label84, "(default)");
-            // 
-            // panel25
-            // 
-            this.panel25.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.panel25.Controls.Add(this.radioButton34);
-            this.panel25.Controls.Add(this.radioButton35);
-            this.panel25.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.panel25.Location = new System.Drawing.Point(1061, 192);
-            this.panel25.Name = "panel25";
-            this.panel25.Size = new System.Drawing.Size(349, 28);
-            this.panel25.TabIndex = 968;
-            this.theme1.SetTheme(this.panel25, "(default)");
-            // 
-            // radioButton34
-            // 
-            this.radioButton34.AutoSize = true;
-            this.radioButton34.BackColor = System.Drawing.Color.Transparent;
-            this.radioButton34.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
-            this.radioButton34.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(189)))), ((int)(((byte)(182)))));
-            this.radioButton34.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(189)))), ((int)(((byte)(182)))));
-            this.radioButton34.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.radioButton34.Location = new System.Drawing.Point(172, 3);
-            this.radioButton34.Name = "radioButton34";
-            this.radioButton34.Size = new System.Drawing.Size(146, 17);
-            this.radioButton34.TabIndex = 536;
-            this.radioButton34.TabStop = true;
-            this.radioButton34.Text = "สภาพแวดล้อมไม่เหมาะสม";
-            this.theme1.SetTheme(this.radioButton34, "(default)");
-            this.radioButton34.UseVisualStyleBackColor = false;
-            // 
-            // radioButton35
-            // 
-            this.radioButton35.AutoSize = true;
-            this.radioButton35.BackColor = System.Drawing.Color.Transparent;
-            this.radioButton35.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
-            this.radioButton35.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(189)))), ((int)(((byte)(182)))));
-            this.radioButton35.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(189)))), ((int)(((byte)(182)))));
-            this.radioButton35.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.radioButton35.Location = new System.Drawing.Point(3, 4);
-            this.radioButton35.Name = "radioButton35";
-            this.radioButton35.Size = new System.Drawing.Size(152, 17);
-            this.radioButton35.TabIndex = 535;
-            this.radioButton35.TabStop = true;
-            this.radioButton35.Text = "สภาพแลวดล้อมดี  เหมาะสม";
-            this.theme1.SetTheme(this.radioButton35, "(default)");
-            this.radioButton35.UseVisualStyleBackColor = false;
-            // 
-            // groupBox19
-            // 
-            this.groupBox19.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.groupBox19.Controls.Add(this.radioButton36);
-            this.groupBox19.Controls.Add(this.radioButton37);
-            this.groupBox19.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.groupBox19.Location = new System.Drawing.Point(48, 19);
-            this.groupBox19.Name = "groupBox19";
-            this.groupBox19.Size = new System.Drawing.Size(193, 41);
-            this.groupBox19.TabIndex = 537;
-            this.groupBox19.TabStop = false;
-            this.groupBox19.Text = "สามี";
-            this.theme1.SetTheme(this.groupBox19, "(default)");
-            // 
-            // radioButton36
-            // 
-            this.radioButton36.AutoSize = true;
-            this.radioButton36.BackColor = System.Drawing.Color.Transparent;
-            this.radioButton36.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
-            this.radioButton36.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(189)))), ((int)(((byte)(182)))));
-            this.radioButton36.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(189)))), ((int)(((byte)(182)))));
-            this.radioButton36.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.radioButton36.Location = new System.Drawing.Point(93, 18);
-            this.radioButton36.Name = "radioButton36";
-            this.radioButton36.Size = new System.Drawing.Size(45, 17);
-            this.radioButton36.TabIndex = 538;
-            this.radioButton36.TabStop = true;
-            this.radioButton36.Text = "ไม่มี";
-            this.theme1.SetTheme(this.radioButton36, "(default)");
-            this.radioButton36.UseVisualStyleBackColor = false;
-            // 
-            // radioButton37
-            // 
-            this.radioButton37.AutoSize = true;
-            this.radioButton37.BackColor = System.Drawing.Color.Transparent;
-            this.radioButton37.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
-            this.radioButton37.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(189)))), ((int)(((byte)(182)))));
-            this.radioButton37.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(189)))), ((int)(((byte)(182)))));
-            this.radioButton37.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.radioButton37.Location = new System.Drawing.Point(20, 19);
-            this.radioButton37.Name = "radioButton37";
-            this.radioButton37.Size = new System.Drawing.Size(32, 17);
-            this.radioButton37.TabIndex = 537;
-            this.radioButton37.TabStop = true;
-            this.radioButton37.Text = "มี";
-            this.theme1.SetTheme(this.radioButton37, "(default)");
-            this.radioButton37.UseVisualStyleBackColor = false;
-            // 
-            // groupBox20
-            // 
-            this.groupBox20.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.groupBox20.Controls.Add(this.radioButton38);
-            this.groupBox20.Controls.Add(this.radioButton39);
-            this.groupBox20.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.groupBox20.Location = new System.Drawing.Point(267, 19);
-            this.groupBox20.Name = "groupBox20";
-            this.groupBox20.Size = new System.Drawing.Size(193, 41);
-            this.groupBox20.TabIndex = 969;
-            this.groupBox20.TabStop = false;
-            this.groupBox20.Text = "ภริยา";
-            this.theme1.SetTheme(this.groupBox20, "(default)");
-            // 
-            // radioButton38
-            // 
-            this.radioButton38.AutoSize = true;
-            this.radioButton38.BackColor = System.Drawing.Color.Transparent;
-            this.radioButton38.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
-            this.radioButton38.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(189)))), ((int)(((byte)(182)))));
-            this.radioButton38.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(189)))), ((int)(((byte)(182)))));
-            this.radioButton38.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.radioButton38.Location = new System.Drawing.Point(93, 18);
-            this.radioButton38.Name = "radioButton38";
-            this.radioButton38.Size = new System.Drawing.Size(45, 17);
-            this.radioButton38.TabIndex = 538;
-            this.radioButton38.TabStop = true;
-            this.radioButton38.Text = "ไม่มี";
-            this.theme1.SetTheme(this.radioButton38, "(default)");
-            this.radioButton38.UseVisualStyleBackColor = false;
-            // 
-            // radioButton39
-            // 
-            this.radioButton39.AutoSize = true;
-            this.radioButton39.BackColor = System.Drawing.Color.Transparent;
-            this.radioButton39.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
-            this.radioButton39.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(189)))), ((int)(((byte)(182)))));
-            this.radioButton39.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(189)))), ((int)(((byte)(182)))));
-            this.radioButton39.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.radioButton39.Location = new System.Drawing.Point(20, 19);
-            this.radioButton39.Name = "radioButton39";
-            this.radioButton39.Size = new System.Drawing.Size(32, 17);
-            this.radioButton39.TabIndex = 537;
-            this.radioButton39.TabStop = true;
-            this.radioButton39.Text = "มี";
-            this.theme1.SetTheme(this.radioButton39, "(default)");
-            this.radioButton39.UseVisualStyleBackColor = false;
-            // 
-            // groupBox21
-            // 
-            this.groupBox21.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.groupBox21.Controls.Add(this.groupBox19);
-            this.groupBox21.Controls.Add(this.groupBox20);
-            this.groupBox21.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.groupBox21.Location = new System.Drawing.Point(93, 192);
-            this.groupBox21.Name = "groupBox21";
-            this.groupBox21.Size = new System.Drawing.Size(775, 70);
-            this.groupBox21.TabIndex = 970;
-            this.groupBox21.TabStop = false;
-            this.groupBox21.Text = "1.  การสัมภาษณ์และสังเกตพฤติกรรมแสดงออก บ่งว่า อาจมีปัญหาสุขภาพจิต";
-            this.theme1.SetTheme(this.groupBox21, "(default)");
-            // 
-            // groupBox22
-            // 
-            this.groupBox22.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.groupBox22.Controls.Add(this.groupBox23);
-            this.groupBox22.Controls.Add(this.groupBox24);
-            this.groupBox22.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.groupBox22.Location = new System.Drawing.Point(93, 268);
-            this.groupBox22.Name = "groupBox22";
-            this.groupBox22.Size = new System.Drawing.Size(775, 70);
-            this.groupBox22.TabIndex = 971;
-            this.groupBox22.TabStop = false;
-            this.groupBox22.Text = "2.  กำลังป่วยด้วยภาวะซึมเศร้า";
-            this.theme1.SetTheme(this.groupBox22, "(default)");
-            // 
-            // groupBox23
-            // 
-            this.groupBox23.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.groupBox23.Controls.Add(this.radioButton40);
-            this.groupBox23.Controls.Add(this.radioButton41);
-            this.groupBox23.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.groupBox23.Location = new System.Drawing.Point(48, 19);
-            this.groupBox23.Name = "groupBox23";
-            this.groupBox23.Size = new System.Drawing.Size(193, 41);
-            this.groupBox23.TabIndex = 537;
-            this.groupBox23.TabStop = false;
-            this.groupBox23.Text = "สามี";
-            this.theme1.SetTheme(this.groupBox23, "(default)");
-            // 
-            // radioButton40
-            // 
-            this.radioButton40.AutoSize = true;
-            this.radioButton40.BackColor = System.Drawing.Color.Transparent;
-            this.radioButton40.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
-            this.radioButton40.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(189)))), ((int)(((byte)(182)))));
-            this.radioButton40.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(189)))), ((int)(((byte)(182)))));
-            this.radioButton40.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.radioButton40.Location = new System.Drawing.Point(93, 18);
-            this.radioButton40.Name = "radioButton40";
-            this.radioButton40.Size = new System.Drawing.Size(45, 17);
-            this.radioButton40.TabIndex = 538;
-            this.radioButton40.TabStop = true;
-            this.radioButton40.Text = "ไม่มี";
-            this.theme1.SetTheme(this.radioButton40, "(default)");
-            this.radioButton40.UseVisualStyleBackColor = false;
-            // 
-            // radioButton41
-            // 
-            this.radioButton41.AutoSize = true;
-            this.radioButton41.BackColor = System.Drawing.Color.Transparent;
-            this.radioButton41.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
-            this.radioButton41.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(189)))), ((int)(((byte)(182)))));
-            this.radioButton41.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(189)))), ((int)(((byte)(182)))));
-            this.radioButton41.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.radioButton41.Location = new System.Drawing.Point(20, 19);
-            this.radioButton41.Name = "radioButton41";
-            this.radioButton41.Size = new System.Drawing.Size(32, 17);
-            this.radioButton41.TabIndex = 537;
-            this.radioButton41.TabStop = true;
-            this.radioButton41.Text = "มี";
-            this.theme1.SetTheme(this.radioButton41, "(default)");
-            this.radioButton41.UseVisualStyleBackColor = false;
-            // 
-            // groupBox24
-            // 
-            this.groupBox24.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.groupBox24.Controls.Add(this.radioButton42);
-            this.groupBox24.Controls.Add(this.radioButton43);
-            this.groupBox24.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.groupBox24.Location = new System.Drawing.Point(267, 19);
-            this.groupBox24.Name = "groupBox24";
-            this.groupBox24.Size = new System.Drawing.Size(193, 41);
-            this.groupBox24.TabIndex = 969;
-            this.groupBox24.TabStop = false;
-            this.groupBox24.Text = "ภริยา";
-            this.theme1.SetTheme(this.groupBox24, "(default)");
-            // 
-            // radioButton42
-            // 
-            this.radioButton42.AutoSize = true;
-            this.radioButton42.BackColor = System.Drawing.Color.Transparent;
-            this.radioButton42.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
-            this.radioButton42.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(189)))), ((int)(((byte)(182)))));
-            this.radioButton42.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(189)))), ((int)(((byte)(182)))));
-            this.radioButton42.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.radioButton42.Location = new System.Drawing.Point(93, 18);
-            this.radioButton42.Name = "radioButton42";
-            this.radioButton42.Size = new System.Drawing.Size(45, 17);
-            this.radioButton42.TabIndex = 538;
-            this.radioButton42.TabStop = true;
-            this.radioButton42.Text = "ไม่มี";
-            this.theme1.SetTheme(this.radioButton42, "(default)");
-            this.radioButton42.UseVisualStyleBackColor = false;
-            // 
-            // radioButton43
-            // 
-            this.radioButton43.AutoSize = true;
-            this.radioButton43.BackColor = System.Drawing.Color.Transparent;
-            this.radioButton43.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
-            this.radioButton43.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(189)))), ((int)(((byte)(182)))));
-            this.radioButton43.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(189)))), ((int)(((byte)(182)))));
-            this.radioButton43.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.radioButton43.Location = new System.Drawing.Point(20, 19);
-            this.radioButton43.Name = "radioButton43";
-            this.radioButton43.Size = new System.Drawing.Size(32, 17);
-            this.radioButton43.TabIndex = 537;
-            this.radioButton43.TabStop = true;
-            this.radioButton43.Text = "มี";
-            this.theme1.SetTheme(this.radioButton43, "(default)");
-            this.radioButton43.UseVisualStyleBackColor = false;
-            // 
-            // groupBox25
-            // 
-            this.groupBox25.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.groupBox25.Controls.Add(this.groupBox26);
-            this.groupBox25.Controls.Add(this.groupBox27);
-            this.groupBox25.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.groupBox25.Location = new System.Drawing.Point(93, 344);
-            this.groupBox25.Name = "groupBox25";
-            this.groupBox25.Size = new System.Drawing.Size(775, 70);
-            this.groupBox25.TabIndex = 972;
-            this.groupBox25.TabStop = false;
-            this.groupBox25.Text = "3.  กำลังป่วยหรือ เคยมีประวัติป่วยด้วยโรคไบโพล่าร์ หรือโรคจิต";
-            this.theme1.SetTheme(this.groupBox25, "(default)");
-            // 
-            // groupBox26
-            // 
-            this.groupBox26.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.groupBox26.Controls.Add(this.radioButton44);
-            this.groupBox26.Controls.Add(this.radioButton45);
-            this.groupBox26.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.groupBox26.Location = new System.Drawing.Point(48, 19);
-            this.groupBox26.Name = "groupBox26";
-            this.groupBox26.Size = new System.Drawing.Size(193, 41);
-            this.groupBox26.TabIndex = 537;
-            this.groupBox26.TabStop = false;
-            this.groupBox26.Text = "สามี";
-            this.theme1.SetTheme(this.groupBox26, "(default)");
-            // 
-            // radioButton44
-            // 
-            this.radioButton44.AutoSize = true;
-            this.radioButton44.BackColor = System.Drawing.Color.Transparent;
-            this.radioButton44.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
-            this.radioButton44.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(189)))), ((int)(((byte)(182)))));
-            this.radioButton44.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(189)))), ((int)(((byte)(182)))));
-            this.radioButton44.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.radioButton44.Location = new System.Drawing.Point(93, 18);
-            this.radioButton44.Name = "radioButton44";
-            this.radioButton44.Size = new System.Drawing.Size(45, 17);
-            this.radioButton44.TabIndex = 538;
-            this.radioButton44.TabStop = true;
-            this.radioButton44.Text = "ไม่มี";
-            this.theme1.SetTheme(this.radioButton44, "(default)");
-            this.radioButton44.UseVisualStyleBackColor = false;
-            // 
-            // radioButton45
-            // 
-            this.radioButton45.AutoSize = true;
-            this.radioButton45.BackColor = System.Drawing.Color.Transparent;
-            this.radioButton45.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
-            this.radioButton45.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(189)))), ((int)(((byte)(182)))));
-            this.radioButton45.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(189)))), ((int)(((byte)(182)))));
-            this.radioButton45.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.radioButton45.Location = new System.Drawing.Point(20, 19);
-            this.radioButton45.Name = "radioButton45";
-            this.radioButton45.Size = new System.Drawing.Size(32, 17);
-            this.radioButton45.TabIndex = 537;
-            this.radioButton45.TabStop = true;
-            this.radioButton45.Text = "มี";
-            this.theme1.SetTheme(this.radioButton45, "(default)");
-            this.radioButton45.UseVisualStyleBackColor = false;
-            // 
-            // groupBox27
-            // 
-            this.groupBox27.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.groupBox27.Controls.Add(this.radioButton46);
-            this.groupBox27.Controls.Add(this.radioButton47);
-            this.groupBox27.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.groupBox27.Location = new System.Drawing.Point(267, 19);
-            this.groupBox27.Name = "groupBox27";
-            this.groupBox27.Size = new System.Drawing.Size(193, 41);
-            this.groupBox27.TabIndex = 969;
-            this.groupBox27.TabStop = false;
-            this.groupBox27.Text = "ภริยา";
-            this.theme1.SetTheme(this.groupBox27, "(default)");
-            // 
-            // radioButton46
-            // 
-            this.radioButton46.AutoSize = true;
-            this.radioButton46.BackColor = System.Drawing.Color.Transparent;
-            this.radioButton46.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
-            this.radioButton46.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(189)))), ((int)(((byte)(182)))));
-            this.radioButton46.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(189)))), ((int)(((byte)(182)))));
-            this.radioButton46.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.radioButton46.Location = new System.Drawing.Point(93, 18);
-            this.radioButton46.Name = "radioButton46";
-            this.radioButton46.Size = new System.Drawing.Size(45, 17);
-            this.radioButton46.TabIndex = 538;
-            this.radioButton46.TabStop = true;
-            this.radioButton46.Text = "ไม่มี";
-            this.theme1.SetTheme(this.radioButton46, "(default)");
-            this.radioButton46.UseVisualStyleBackColor = false;
-            // 
-            // radioButton47
-            // 
-            this.radioButton47.AutoSize = true;
-            this.radioButton47.BackColor = System.Drawing.Color.Transparent;
-            this.radioButton47.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
-            this.radioButton47.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(189)))), ((int)(((byte)(182)))));
-            this.radioButton47.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(189)))), ((int)(((byte)(182)))));
-            this.radioButton47.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.radioButton47.Location = new System.Drawing.Point(20, 19);
-            this.radioButton47.Name = "radioButton47";
-            this.radioButton47.Size = new System.Drawing.Size(32, 17);
-            this.radioButton47.TabIndex = 537;
-            this.radioButton47.TabStop = true;
-            this.radioButton47.Text = "มี";
-            this.theme1.SetTheme(this.radioButton47, "(default)");
-            this.radioButton47.UseVisualStyleBackColor = false;
-            // 
-            // groupBox28
-            // 
-            this.groupBox28.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.groupBox28.Controls.Add(this.groupBox29);
-            this.groupBox28.Controls.Add(this.groupBox30);
-            this.groupBox28.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.groupBox28.Location = new System.Drawing.Point(93, 420);
-            this.groupBox28.Name = "groupBox28";
-            this.groupBox28.Size = new System.Drawing.Size(775, 70);
-            this.groupBox28.TabIndex = 973;
-            this.groupBox28.TabStop = false;
-            this.groupBox28.Text = "4.  มีประวัติกระทำรุนแรง  หรือล่วงละเมิดทางเพศต่อเด็ก";
-            this.theme1.SetTheme(this.groupBox28, "(default)");
-            // 
-            // groupBox29
-            // 
-            this.groupBox29.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.groupBox29.Controls.Add(this.radioButton48);
-            this.groupBox29.Controls.Add(this.radioButton49);
-            this.groupBox29.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.groupBox29.Location = new System.Drawing.Point(48, 19);
-            this.groupBox29.Name = "groupBox29";
-            this.groupBox29.Size = new System.Drawing.Size(193, 41);
-            this.groupBox29.TabIndex = 537;
-            this.groupBox29.TabStop = false;
-            this.groupBox29.Text = "สามี";
-            this.theme1.SetTheme(this.groupBox29, "(default)");
-            // 
-            // radioButton48
-            // 
-            this.radioButton48.AutoSize = true;
-            this.radioButton48.BackColor = System.Drawing.Color.Transparent;
-            this.radioButton48.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
-            this.radioButton48.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(189)))), ((int)(((byte)(182)))));
-            this.radioButton48.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(189)))), ((int)(((byte)(182)))));
-            this.radioButton48.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.radioButton48.Location = new System.Drawing.Point(93, 18);
-            this.radioButton48.Name = "radioButton48";
-            this.radioButton48.Size = new System.Drawing.Size(45, 17);
-            this.radioButton48.TabIndex = 538;
-            this.radioButton48.TabStop = true;
-            this.radioButton48.Text = "ไม่มี";
-            this.theme1.SetTheme(this.radioButton48, "(default)");
-            this.radioButton48.UseVisualStyleBackColor = false;
-            // 
-            // radioButton49
-            // 
-            this.radioButton49.AutoSize = true;
-            this.radioButton49.BackColor = System.Drawing.Color.Transparent;
-            this.radioButton49.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
-            this.radioButton49.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(189)))), ((int)(((byte)(182)))));
-            this.radioButton49.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(189)))), ((int)(((byte)(182)))));
-            this.radioButton49.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.radioButton49.Location = new System.Drawing.Point(20, 19);
-            this.radioButton49.Name = "radioButton49";
-            this.radioButton49.Size = new System.Drawing.Size(32, 17);
-            this.radioButton49.TabIndex = 537;
-            this.radioButton49.TabStop = true;
-            this.radioButton49.Text = "มี";
-            this.theme1.SetTheme(this.radioButton49, "(default)");
-            this.radioButton49.UseVisualStyleBackColor = false;
-            // 
-            // groupBox30
-            // 
-            this.groupBox30.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.groupBox30.Controls.Add(this.radioButton50);
-            this.groupBox30.Controls.Add(this.radioButton51);
-            this.groupBox30.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.groupBox30.Location = new System.Drawing.Point(267, 19);
-            this.groupBox30.Name = "groupBox30";
-            this.groupBox30.Size = new System.Drawing.Size(193, 41);
-            this.groupBox30.TabIndex = 969;
-            this.groupBox30.TabStop = false;
-            this.groupBox30.Text = "ภริยา";
-            this.theme1.SetTheme(this.groupBox30, "(default)");
-            // 
-            // radioButton50
-            // 
-            this.radioButton50.AutoSize = true;
-            this.radioButton50.BackColor = System.Drawing.Color.Transparent;
-            this.radioButton50.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
-            this.radioButton50.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(189)))), ((int)(((byte)(182)))));
-            this.radioButton50.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(189)))), ((int)(((byte)(182)))));
-            this.radioButton50.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.radioButton50.Location = new System.Drawing.Point(93, 18);
-            this.radioButton50.Name = "radioButton50";
-            this.radioButton50.Size = new System.Drawing.Size(45, 17);
-            this.radioButton50.TabIndex = 538;
-            this.radioButton50.TabStop = true;
-            this.radioButton50.Text = "ไม่มี";
-            this.theme1.SetTheme(this.radioButton50, "(default)");
-            this.radioButton50.UseVisualStyleBackColor = false;
-            // 
-            // radioButton51
-            // 
-            this.radioButton51.AutoSize = true;
-            this.radioButton51.BackColor = System.Drawing.Color.Transparent;
-            this.radioButton51.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
-            this.radioButton51.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(189)))), ((int)(((byte)(182)))));
-            this.radioButton51.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(189)))), ((int)(((byte)(182)))));
-            this.radioButton51.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.radioButton51.Location = new System.Drawing.Point(20, 19);
-            this.radioButton51.Name = "radioButton51";
-            this.radioButton51.Size = new System.Drawing.Size(32, 17);
-            this.radioButton51.TabIndex = 537;
-            this.radioButton51.TabStop = true;
-            this.radioButton51.Text = "มี";
-            this.theme1.SetTheme(this.radioButton51, "(default)");
-            this.radioButton51.UseVisualStyleBackColor = false;
+            // btnPrint
+            // 
+            this.btnPrint.Image = global::clinic_ivf.Properties.Resources.print;
+            this.btnPrint.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnPrint.Location = new System.Drawing.Point(1428, 230);
+            this.btnPrint.Name = "btnPrint";
+            this.btnPrint.Size = new System.Drawing.Size(79, 34);
+            this.btnPrint.TabIndex = 978;
+            this.btnPrint.Text = "Print";
+            this.btnPrint.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.theme1.SetTheme(this.btnPrint, "(default)");
+            this.btnPrint.UseVisualStyleBackColor = true;
+            this.btnPrint.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            // 
+            // c1ComboBox5
+            // 
+            this.c1ComboBox5.AllowSpinLoop = false;
+            this.c1ComboBox5.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.c1ComboBox5.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
+            this.c1ComboBox5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.c1ComboBox5.GapHeight = 0;
+            this.c1ComboBox5.ImagePadding = new System.Windows.Forms.Padding(0);
+            this.c1ComboBox5.ItemsDisplayMember = "";
+            this.c1ComboBox5.ItemsValueMember = "";
+            this.c1ComboBox5.Location = new System.Drawing.Point(1042, 316);
+            this.c1ComboBox5.Name = "c1ComboBox5";
+            this.c1ComboBox5.Size = new System.Drawing.Size(253, 20);
+            this.c1ComboBox5.Style.DropDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.c1ComboBox5.Style.DropDownBorderColor = System.Drawing.Color.Gainsboro;
+            this.c1ComboBox5.Style.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.c1ComboBox5.TabIndex = 977;
+            this.c1ComboBox5.Tag = null;
+            this.theme1.SetTheme(this.c1ComboBox5, "(default)");
+            this.c1ComboBox5.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            // 
+            // label77
+            // 
+            this.label77.AutoSize = true;
+            this.label77.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.label77.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label77.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.label77.Location = new System.Drawing.Point(935, 318);
+            this.label77.Name = "label77";
+            this.label77.Size = new System.Drawing.Size(92, 16);
+            this.label77.TabIndex = 976;
+            this.label77.Text = "แพทย์ผู้ให้บริการ :";
+            this.theme1.SetTheme(this.label77, "(default)");
+            // 
+            // groupBox34
+            // 
+            this.groupBox34.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.groupBox34.Controls.Add(this.groupBox35);
+            this.groupBox34.Controls.Add(this.groupBox36);
+            this.groupBox34.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.groupBox34.Location = new System.Drawing.Point(93, 572);
+            this.groupBox34.Name = "groupBox34";
+            this.groupBox34.Size = new System.Drawing.Size(775, 70);
+            this.groupBox34.TabIndex = 975;
+            this.groupBox34.TabStop = false;
+            this.groupBox34.Text = "6.  ติดสุรา หรือสารเสพติด  โดยยังไม่ได้รับการรักษาหรือยังมีอาการอยู่";
+            this.theme1.SetTheme(this.groupBox34, "(default)");
+            // 
+            // groupBox35
+            // 
+            this.groupBox35.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.groupBox35.Controls.Add(this.radioButton56);
+            this.groupBox35.Controls.Add(this.radioButton57);
+            this.groupBox35.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.groupBox35.Location = new System.Drawing.Point(48, 19);
+            this.groupBox35.Name = "groupBox35";
+            this.groupBox35.Size = new System.Drawing.Size(193, 41);
+            this.groupBox35.TabIndex = 537;
+            this.groupBox35.TabStop = false;
+            this.groupBox35.Text = "สามี";
+            this.theme1.SetTheme(this.groupBox35, "(default)");
+            // 
+            // radioButton56
+            // 
+            this.radioButton56.AutoSize = true;
+            this.radioButton56.BackColor = System.Drawing.Color.Transparent;
+            this.radioButton56.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
+            this.radioButton56.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(189)))), ((int)(((byte)(182)))));
+            this.radioButton56.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(189)))), ((int)(((byte)(182)))));
+            this.radioButton56.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.radioButton56.Location = new System.Drawing.Point(93, 18);
+            this.radioButton56.Name = "radioButton56";
+            this.radioButton56.Size = new System.Drawing.Size(45, 17);
+            this.radioButton56.TabIndex = 538;
+            this.radioButton56.TabStop = true;
+            this.radioButton56.Text = "ไม่มี";
+            this.theme1.SetTheme(this.radioButton56, "(default)");
+            this.radioButton56.UseVisualStyleBackColor = false;
+            // 
+            // radioButton57
+            // 
+            this.radioButton57.AutoSize = true;
+            this.radioButton57.BackColor = System.Drawing.Color.Transparent;
+            this.radioButton57.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
+            this.radioButton57.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(189)))), ((int)(((byte)(182)))));
+            this.radioButton57.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(189)))), ((int)(((byte)(182)))));
+            this.radioButton57.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.radioButton57.Location = new System.Drawing.Point(20, 19);
+            this.radioButton57.Name = "radioButton57";
+            this.radioButton57.Size = new System.Drawing.Size(32, 17);
+            this.radioButton57.TabIndex = 537;
+            this.radioButton57.TabStop = true;
+            this.radioButton57.Text = "มี";
+            this.theme1.SetTheme(this.radioButton57, "(default)");
+            this.radioButton57.UseVisualStyleBackColor = false;
+            // 
+            // groupBox36
+            // 
+            this.groupBox36.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.groupBox36.Controls.Add(this.radioButton58);
+            this.groupBox36.Controls.Add(this.radioButton59);
+            this.groupBox36.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.groupBox36.Location = new System.Drawing.Point(267, 19);
+            this.groupBox36.Name = "groupBox36";
+            this.groupBox36.Size = new System.Drawing.Size(193, 41);
+            this.groupBox36.TabIndex = 969;
+            this.groupBox36.TabStop = false;
+            this.groupBox36.Text = "ภริยา";
+            this.theme1.SetTheme(this.groupBox36, "(default)");
+            // 
+            // radioButton58
+            // 
+            this.radioButton58.AutoSize = true;
+            this.radioButton58.BackColor = System.Drawing.Color.Transparent;
+            this.radioButton58.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
+            this.radioButton58.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(189)))), ((int)(((byte)(182)))));
+            this.radioButton58.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(189)))), ((int)(((byte)(182)))));
+            this.radioButton58.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.radioButton58.Location = new System.Drawing.Point(93, 18);
+            this.radioButton58.Name = "radioButton58";
+            this.radioButton58.Size = new System.Drawing.Size(45, 17);
+            this.radioButton58.TabIndex = 538;
+            this.radioButton58.TabStop = true;
+            this.radioButton58.Text = "ไม่มี";
+            this.theme1.SetTheme(this.radioButton58, "(default)");
+            this.radioButton58.UseVisualStyleBackColor = false;
+            // 
+            // radioButton59
+            // 
+            this.radioButton59.AutoSize = true;
+            this.radioButton59.BackColor = System.Drawing.Color.Transparent;
+            this.radioButton59.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
+            this.radioButton59.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(189)))), ((int)(((byte)(182)))));
+            this.radioButton59.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(189)))), ((int)(((byte)(182)))));
+            this.radioButton59.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.radioButton59.Location = new System.Drawing.Point(20, 19);
+            this.radioButton59.Name = "radioButton59";
+            this.radioButton59.Size = new System.Drawing.Size(32, 17);
+            this.radioButton59.TabIndex = 537;
+            this.radioButton59.TabStop = true;
+            this.radioButton59.Text = "มี";
+            this.theme1.SetTheme(this.radioButton59, "(default)");
+            this.radioButton59.UseVisualStyleBackColor = false;
             // 
             // groupBox31
             // 
@@ -7008,191 +6446,795 @@
             this.theme1.SetTheme(this.radioButton55, "(default)");
             this.radioButton55.UseVisualStyleBackColor = false;
             // 
-            // groupBox34
+            // groupBox28
             // 
-            this.groupBox34.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.groupBox34.Controls.Add(this.groupBox35);
-            this.groupBox34.Controls.Add(this.groupBox36);
-            this.groupBox34.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.groupBox34.Location = new System.Drawing.Point(93, 572);
-            this.groupBox34.Name = "groupBox34";
-            this.groupBox34.Size = new System.Drawing.Size(775, 70);
-            this.groupBox34.TabIndex = 975;
-            this.groupBox34.TabStop = false;
-            this.groupBox34.Text = "6.  ติดสุรา หรือสารเสพติด  โดยยังไม่ได้รับการรักษาหรือยังมีอาการอยู่";
-            this.theme1.SetTheme(this.groupBox34, "(default)");
+            this.groupBox28.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.groupBox28.Controls.Add(this.groupBox29);
+            this.groupBox28.Controls.Add(this.groupBox30);
+            this.groupBox28.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.groupBox28.Location = new System.Drawing.Point(93, 420);
+            this.groupBox28.Name = "groupBox28";
+            this.groupBox28.Size = new System.Drawing.Size(775, 70);
+            this.groupBox28.TabIndex = 973;
+            this.groupBox28.TabStop = false;
+            this.groupBox28.Text = "4.  มีประวัติกระทำรุนแรง  หรือล่วงละเมิดทางเพศต่อเด็ก";
+            this.theme1.SetTheme(this.groupBox28, "(default)");
             // 
-            // groupBox35
+            // groupBox29
             // 
-            this.groupBox35.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.groupBox35.Controls.Add(this.radioButton56);
-            this.groupBox35.Controls.Add(this.radioButton57);
-            this.groupBox35.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.groupBox35.Location = new System.Drawing.Point(48, 19);
-            this.groupBox35.Name = "groupBox35";
-            this.groupBox35.Size = new System.Drawing.Size(193, 41);
-            this.groupBox35.TabIndex = 537;
-            this.groupBox35.TabStop = false;
-            this.groupBox35.Text = "สามี";
-            this.theme1.SetTheme(this.groupBox35, "(default)");
+            this.groupBox29.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.groupBox29.Controls.Add(this.radioButton48);
+            this.groupBox29.Controls.Add(this.radioButton49);
+            this.groupBox29.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.groupBox29.Location = new System.Drawing.Point(48, 19);
+            this.groupBox29.Name = "groupBox29";
+            this.groupBox29.Size = new System.Drawing.Size(193, 41);
+            this.groupBox29.TabIndex = 537;
+            this.groupBox29.TabStop = false;
+            this.groupBox29.Text = "สามี";
+            this.theme1.SetTheme(this.groupBox29, "(default)");
             // 
-            // radioButton56
+            // radioButton48
             // 
-            this.radioButton56.AutoSize = true;
-            this.radioButton56.BackColor = System.Drawing.Color.Transparent;
-            this.radioButton56.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
-            this.radioButton56.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(189)))), ((int)(((byte)(182)))));
-            this.radioButton56.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(189)))), ((int)(((byte)(182)))));
-            this.radioButton56.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.radioButton56.Location = new System.Drawing.Point(93, 18);
-            this.radioButton56.Name = "radioButton56";
-            this.radioButton56.Size = new System.Drawing.Size(45, 17);
-            this.radioButton56.TabIndex = 538;
-            this.radioButton56.TabStop = true;
-            this.radioButton56.Text = "ไม่มี";
-            this.theme1.SetTheme(this.radioButton56, "(default)");
-            this.radioButton56.UseVisualStyleBackColor = false;
+            this.radioButton48.AutoSize = true;
+            this.radioButton48.BackColor = System.Drawing.Color.Transparent;
+            this.radioButton48.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
+            this.radioButton48.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(189)))), ((int)(((byte)(182)))));
+            this.radioButton48.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(189)))), ((int)(((byte)(182)))));
+            this.radioButton48.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.radioButton48.Location = new System.Drawing.Point(93, 18);
+            this.radioButton48.Name = "radioButton48";
+            this.radioButton48.Size = new System.Drawing.Size(45, 17);
+            this.radioButton48.TabIndex = 538;
+            this.radioButton48.TabStop = true;
+            this.radioButton48.Text = "ไม่มี";
+            this.theme1.SetTheme(this.radioButton48, "(default)");
+            this.radioButton48.UseVisualStyleBackColor = false;
             // 
-            // radioButton57
+            // radioButton49
             // 
-            this.radioButton57.AutoSize = true;
-            this.radioButton57.BackColor = System.Drawing.Color.Transparent;
-            this.radioButton57.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
-            this.radioButton57.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(189)))), ((int)(((byte)(182)))));
-            this.radioButton57.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(189)))), ((int)(((byte)(182)))));
-            this.radioButton57.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.radioButton57.Location = new System.Drawing.Point(20, 19);
-            this.radioButton57.Name = "radioButton57";
-            this.radioButton57.Size = new System.Drawing.Size(32, 17);
-            this.radioButton57.TabIndex = 537;
-            this.radioButton57.TabStop = true;
-            this.radioButton57.Text = "มี";
-            this.theme1.SetTheme(this.radioButton57, "(default)");
-            this.radioButton57.UseVisualStyleBackColor = false;
+            this.radioButton49.AutoSize = true;
+            this.radioButton49.BackColor = System.Drawing.Color.Transparent;
+            this.radioButton49.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
+            this.radioButton49.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(189)))), ((int)(((byte)(182)))));
+            this.radioButton49.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(189)))), ((int)(((byte)(182)))));
+            this.radioButton49.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.radioButton49.Location = new System.Drawing.Point(20, 19);
+            this.radioButton49.Name = "radioButton49";
+            this.radioButton49.Size = new System.Drawing.Size(32, 17);
+            this.radioButton49.TabIndex = 537;
+            this.radioButton49.TabStop = true;
+            this.radioButton49.Text = "มี";
+            this.theme1.SetTheme(this.radioButton49, "(default)");
+            this.radioButton49.UseVisualStyleBackColor = false;
             // 
-            // groupBox36
+            // groupBox30
             // 
-            this.groupBox36.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.groupBox36.Controls.Add(this.radioButton58);
-            this.groupBox36.Controls.Add(this.radioButton59);
-            this.groupBox36.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.groupBox36.Location = new System.Drawing.Point(267, 19);
-            this.groupBox36.Name = "groupBox36";
-            this.groupBox36.Size = new System.Drawing.Size(193, 41);
-            this.groupBox36.TabIndex = 969;
-            this.groupBox36.TabStop = false;
-            this.groupBox36.Text = "ภริยา";
-            this.theme1.SetTheme(this.groupBox36, "(default)");
+            this.groupBox30.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.groupBox30.Controls.Add(this.radioButton50);
+            this.groupBox30.Controls.Add(this.radioButton51);
+            this.groupBox30.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.groupBox30.Location = new System.Drawing.Point(267, 19);
+            this.groupBox30.Name = "groupBox30";
+            this.groupBox30.Size = new System.Drawing.Size(193, 41);
+            this.groupBox30.TabIndex = 969;
+            this.groupBox30.TabStop = false;
+            this.groupBox30.Text = "ภริยา";
+            this.theme1.SetTheme(this.groupBox30, "(default)");
             // 
-            // radioButton58
+            // radioButton50
             // 
-            this.radioButton58.AutoSize = true;
-            this.radioButton58.BackColor = System.Drawing.Color.Transparent;
-            this.radioButton58.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
-            this.radioButton58.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(189)))), ((int)(((byte)(182)))));
-            this.radioButton58.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(189)))), ((int)(((byte)(182)))));
-            this.radioButton58.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.radioButton58.Location = new System.Drawing.Point(93, 18);
-            this.radioButton58.Name = "radioButton58";
-            this.radioButton58.Size = new System.Drawing.Size(45, 17);
-            this.radioButton58.TabIndex = 538;
-            this.radioButton58.TabStop = true;
-            this.radioButton58.Text = "ไม่มี";
-            this.theme1.SetTheme(this.radioButton58, "(default)");
-            this.radioButton58.UseVisualStyleBackColor = false;
+            this.radioButton50.AutoSize = true;
+            this.radioButton50.BackColor = System.Drawing.Color.Transparent;
+            this.radioButton50.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
+            this.radioButton50.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(189)))), ((int)(((byte)(182)))));
+            this.radioButton50.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(189)))), ((int)(((byte)(182)))));
+            this.radioButton50.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.radioButton50.Location = new System.Drawing.Point(93, 18);
+            this.radioButton50.Name = "radioButton50";
+            this.radioButton50.Size = new System.Drawing.Size(45, 17);
+            this.radioButton50.TabIndex = 538;
+            this.radioButton50.TabStop = true;
+            this.radioButton50.Text = "ไม่มี";
+            this.theme1.SetTheme(this.radioButton50, "(default)");
+            this.radioButton50.UseVisualStyleBackColor = false;
             // 
-            // radioButton59
+            // radioButton51
             // 
-            this.radioButton59.AutoSize = true;
-            this.radioButton59.BackColor = System.Drawing.Color.Transparent;
-            this.radioButton59.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
-            this.radioButton59.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(189)))), ((int)(((byte)(182)))));
-            this.radioButton59.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(189)))), ((int)(((byte)(182)))));
-            this.radioButton59.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.radioButton59.Location = new System.Drawing.Point(20, 19);
-            this.radioButton59.Name = "radioButton59";
-            this.radioButton59.Size = new System.Drawing.Size(32, 17);
-            this.radioButton59.TabIndex = 537;
-            this.radioButton59.TabStop = true;
-            this.radioButton59.Text = "มี";
-            this.theme1.SetTheme(this.radioButton59, "(default)");
-            this.radioButton59.UseVisualStyleBackColor = false;
+            this.radioButton51.AutoSize = true;
+            this.radioButton51.BackColor = System.Drawing.Color.Transparent;
+            this.radioButton51.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
+            this.radioButton51.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(189)))), ((int)(((byte)(182)))));
+            this.radioButton51.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(189)))), ((int)(((byte)(182)))));
+            this.radioButton51.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.radioButton51.Location = new System.Drawing.Point(20, 19);
+            this.radioButton51.Name = "radioButton51";
+            this.radioButton51.Size = new System.Drawing.Size(32, 17);
+            this.radioButton51.TabIndex = 537;
+            this.radioButton51.TabStop = true;
+            this.radioButton51.Text = "มี";
+            this.theme1.SetTheme(this.radioButton51, "(default)");
+            this.radioButton51.UseVisualStyleBackColor = false;
             // 
-            // c1ComboBox5
+            // groupBox25
             // 
-            this.c1ComboBox5.AllowSpinLoop = false;
-            this.c1ComboBox5.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.c1ComboBox5.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
-            this.c1ComboBox5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.c1ComboBox5.GapHeight = 0;
-            this.c1ComboBox5.ImagePadding = new System.Windows.Forms.Padding(0);
-            this.c1ComboBox5.ItemsDisplayMember = "";
-            this.c1ComboBox5.ItemsValueMember = "";
-            this.c1ComboBox5.Location = new System.Drawing.Point(1042, 316);
-            this.c1ComboBox5.Name = "c1ComboBox5";
-            this.c1ComboBox5.Size = new System.Drawing.Size(253, 20);
-            this.c1ComboBox5.Style.DropDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.c1ComboBox5.Style.DropDownBorderColor = System.Drawing.Color.Gainsboro;
-            this.c1ComboBox5.Style.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.c1ComboBox5.TabIndex = 977;
-            this.c1ComboBox5.Tag = null;
-            this.theme1.SetTheme(this.c1ComboBox5, "(default)");
-            this.c1ComboBox5.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            this.groupBox25.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.groupBox25.Controls.Add(this.groupBox26);
+            this.groupBox25.Controls.Add(this.groupBox27);
+            this.groupBox25.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.groupBox25.Location = new System.Drawing.Point(93, 344);
+            this.groupBox25.Name = "groupBox25";
+            this.groupBox25.Size = new System.Drawing.Size(775, 70);
+            this.groupBox25.TabIndex = 972;
+            this.groupBox25.TabStop = false;
+            this.groupBox25.Text = "3.  กำลังป่วยหรือ เคยมีประวัติป่วยด้วยโรคไบโพล่าร์ หรือโรคจิต";
+            this.theme1.SetTheme(this.groupBox25, "(default)");
             // 
-            // label77
+            // groupBox26
             // 
-            this.label77.AutoSize = true;
-            this.label77.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.label77.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label77.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.label77.Location = new System.Drawing.Point(935, 318);
-            this.label77.Name = "label77";
-            this.label77.Size = new System.Drawing.Size(92, 16);
-            this.label77.TabIndex = 976;
-            this.label77.Text = "แพทย์ผู้ให้บริการ :";
-            this.theme1.SetTheme(this.label77, "(default)");
+            this.groupBox26.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.groupBox26.Controls.Add(this.radioButton44);
+            this.groupBox26.Controls.Add(this.radioButton45);
+            this.groupBox26.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.groupBox26.Location = new System.Drawing.Point(48, 19);
+            this.groupBox26.Name = "groupBox26";
+            this.groupBox26.Size = new System.Drawing.Size(193, 41);
+            this.groupBox26.TabIndex = 537;
+            this.groupBox26.TabStop = false;
+            this.groupBox26.Text = "สามี";
+            this.theme1.SetTheme(this.groupBox26, "(default)");
             // 
-            // btnPrint
+            // radioButton44
             // 
-            this.btnPrint.Image = global::clinic_ivf.Properties.Resources.print;
-            this.btnPrint.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnPrint.Location = new System.Drawing.Point(1428, 230);
-            this.btnPrint.Name = "btnPrint";
-            this.btnPrint.Size = new System.Drawing.Size(79, 34);
-            this.btnPrint.TabIndex = 978;
-            this.btnPrint.Text = "Print";
-            this.btnPrint.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.theme1.SetTheme(this.btnPrint, "(default)");
-            this.btnPrint.UseVisualStyleBackColor = true;
-            this.btnPrint.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            this.radioButton44.AutoSize = true;
+            this.radioButton44.BackColor = System.Drawing.Color.Transparent;
+            this.radioButton44.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
+            this.radioButton44.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(189)))), ((int)(((byte)(182)))));
+            this.radioButton44.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(189)))), ((int)(((byte)(182)))));
+            this.radioButton44.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.radioButton44.Location = new System.Drawing.Point(93, 18);
+            this.radioButton44.Name = "radioButton44";
+            this.radioButton44.Size = new System.Drawing.Size(45, 17);
+            this.radioButton44.TabIndex = 538;
+            this.radioButton44.TabStop = true;
+            this.radioButton44.Text = "ไม่มี";
+            this.theme1.SetTheme(this.radioButton44, "(default)");
+            this.radioButton44.UseVisualStyleBackColor = false;
             // 
-            // c1Button2
+            // radioButton45
             // 
-            this.c1Button2.Image = global::clinic_ivf.Properties.Resources.print;
-            this.c1Button2.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.c1Button2.Location = new System.Drawing.Point(566, 592);
-            this.c1Button2.Name = "c1Button2";
-            this.c1Button2.Size = new System.Drawing.Size(79, 34);
-            this.c1Button2.TabIndex = 1029;
-            this.c1Button2.Text = "Print";
-            this.c1Button2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.theme1.SetTheme(this.c1Button2, "(default)");
-            this.c1Button2.UseVisualStyleBackColor = true;
-            this.c1Button2.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            this.radioButton45.AutoSize = true;
+            this.radioButton45.BackColor = System.Drawing.Color.Transparent;
+            this.radioButton45.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
+            this.radioButton45.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(189)))), ((int)(((byte)(182)))));
+            this.radioButton45.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(189)))), ((int)(((byte)(182)))));
+            this.radioButton45.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.radioButton45.Location = new System.Drawing.Point(20, 19);
+            this.radioButton45.Name = "radioButton45";
+            this.radioButton45.Size = new System.Drawing.Size(32, 17);
+            this.radioButton45.TabIndex = 537;
+            this.radioButton45.TabStop = true;
+            this.radioButton45.Text = "มี";
+            this.theme1.SetTheme(this.radioButton45, "(default)");
+            this.radioButton45.UseVisualStyleBackColor = false;
             // 
-            // c1Button3
+            // groupBox27
             // 
-            this.c1Button3.Image = global::clinic_ivf.Properties.Resources.print;
-            this.c1Button3.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.c1Button3.Location = new System.Drawing.Point(509, 619);
-            this.c1Button3.Name = "c1Button3";
-            this.c1Button3.Size = new System.Drawing.Size(79, 34);
-            this.c1Button3.TabIndex = 828;
-            this.c1Button3.Text = "Print";
-            this.c1Button3.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.theme1.SetTheme(this.c1Button3, "(default)");
-            this.c1Button3.UseVisualStyleBackColor = true;
-            this.c1Button3.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            this.groupBox27.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.groupBox27.Controls.Add(this.radioButton46);
+            this.groupBox27.Controls.Add(this.radioButton47);
+            this.groupBox27.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.groupBox27.Location = new System.Drawing.Point(267, 19);
+            this.groupBox27.Name = "groupBox27";
+            this.groupBox27.Size = new System.Drawing.Size(193, 41);
+            this.groupBox27.TabIndex = 969;
+            this.groupBox27.TabStop = false;
+            this.groupBox27.Text = "ภริยา";
+            this.theme1.SetTheme(this.groupBox27, "(default)");
+            // 
+            // radioButton46
+            // 
+            this.radioButton46.AutoSize = true;
+            this.radioButton46.BackColor = System.Drawing.Color.Transparent;
+            this.radioButton46.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
+            this.radioButton46.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(189)))), ((int)(((byte)(182)))));
+            this.radioButton46.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(189)))), ((int)(((byte)(182)))));
+            this.radioButton46.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.radioButton46.Location = new System.Drawing.Point(93, 18);
+            this.radioButton46.Name = "radioButton46";
+            this.radioButton46.Size = new System.Drawing.Size(45, 17);
+            this.radioButton46.TabIndex = 538;
+            this.radioButton46.TabStop = true;
+            this.radioButton46.Text = "ไม่มี";
+            this.theme1.SetTheme(this.radioButton46, "(default)");
+            this.radioButton46.UseVisualStyleBackColor = false;
+            // 
+            // radioButton47
+            // 
+            this.radioButton47.AutoSize = true;
+            this.radioButton47.BackColor = System.Drawing.Color.Transparent;
+            this.radioButton47.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
+            this.radioButton47.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(189)))), ((int)(((byte)(182)))));
+            this.radioButton47.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(189)))), ((int)(((byte)(182)))));
+            this.radioButton47.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.radioButton47.Location = new System.Drawing.Point(20, 19);
+            this.radioButton47.Name = "radioButton47";
+            this.radioButton47.Size = new System.Drawing.Size(32, 17);
+            this.radioButton47.TabIndex = 537;
+            this.radioButton47.TabStop = true;
+            this.radioButton47.Text = "มี";
+            this.theme1.SetTheme(this.radioButton47, "(default)");
+            this.radioButton47.UseVisualStyleBackColor = false;
+            // 
+            // groupBox22
+            // 
+            this.groupBox22.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.groupBox22.Controls.Add(this.groupBox23);
+            this.groupBox22.Controls.Add(this.groupBox24);
+            this.groupBox22.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.groupBox22.Location = new System.Drawing.Point(93, 268);
+            this.groupBox22.Name = "groupBox22";
+            this.groupBox22.Size = new System.Drawing.Size(775, 70);
+            this.groupBox22.TabIndex = 971;
+            this.groupBox22.TabStop = false;
+            this.groupBox22.Text = "2.  กำลังป่วยด้วยภาวะซึมเศร้า";
+            this.theme1.SetTheme(this.groupBox22, "(default)");
+            // 
+            // groupBox23
+            // 
+            this.groupBox23.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.groupBox23.Controls.Add(this.radioButton40);
+            this.groupBox23.Controls.Add(this.radioButton41);
+            this.groupBox23.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.groupBox23.Location = new System.Drawing.Point(48, 19);
+            this.groupBox23.Name = "groupBox23";
+            this.groupBox23.Size = new System.Drawing.Size(193, 41);
+            this.groupBox23.TabIndex = 537;
+            this.groupBox23.TabStop = false;
+            this.groupBox23.Text = "สามี";
+            this.theme1.SetTheme(this.groupBox23, "(default)");
+            // 
+            // radioButton40
+            // 
+            this.radioButton40.AutoSize = true;
+            this.radioButton40.BackColor = System.Drawing.Color.Transparent;
+            this.radioButton40.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
+            this.radioButton40.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(189)))), ((int)(((byte)(182)))));
+            this.radioButton40.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(189)))), ((int)(((byte)(182)))));
+            this.radioButton40.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.radioButton40.Location = new System.Drawing.Point(93, 18);
+            this.radioButton40.Name = "radioButton40";
+            this.radioButton40.Size = new System.Drawing.Size(45, 17);
+            this.radioButton40.TabIndex = 538;
+            this.radioButton40.TabStop = true;
+            this.radioButton40.Text = "ไม่มี";
+            this.theme1.SetTheme(this.radioButton40, "(default)");
+            this.radioButton40.UseVisualStyleBackColor = false;
+            // 
+            // radioButton41
+            // 
+            this.radioButton41.AutoSize = true;
+            this.radioButton41.BackColor = System.Drawing.Color.Transparent;
+            this.radioButton41.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
+            this.radioButton41.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(189)))), ((int)(((byte)(182)))));
+            this.radioButton41.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(189)))), ((int)(((byte)(182)))));
+            this.radioButton41.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.radioButton41.Location = new System.Drawing.Point(20, 19);
+            this.radioButton41.Name = "radioButton41";
+            this.radioButton41.Size = new System.Drawing.Size(32, 17);
+            this.radioButton41.TabIndex = 537;
+            this.radioButton41.TabStop = true;
+            this.radioButton41.Text = "มี";
+            this.theme1.SetTheme(this.radioButton41, "(default)");
+            this.radioButton41.UseVisualStyleBackColor = false;
+            // 
+            // groupBox24
+            // 
+            this.groupBox24.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.groupBox24.Controls.Add(this.radioButton42);
+            this.groupBox24.Controls.Add(this.radioButton43);
+            this.groupBox24.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.groupBox24.Location = new System.Drawing.Point(267, 19);
+            this.groupBox24.Name = "groupBox24";
+            this.groupBox24.Size = new System.Drawing.Size(193, 41);
+            this.groupBox24.TabIndex = 969;
+            this.groupBox24.TabStop = false;
+            this.groupBox24.Text = "ภริยา";
+            this.theme1.SetTheme(this.groupBox24, "(default)");
+            // 
+            // radioButton42
+            // 
+            this.radioButton42.AutoSize = true;
+            this.radioButton42.BackColor = System.Drawing.Color.Transparent;
+            this.radioButton42.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
+            this.radioButton42.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(189)))), ((int)(((byte)(182)))));
+            this.radioButton42.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(189)))), ((int)(((byte)(182)))));
+            this.radioButton42.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.radioButton42.Location = new System.Drawing.Point(93, 18);
+            this.radioButton42.Name = "radioButton42";
+            this.radioButton42.Size = new System.Drawing.Size(45, 17);
+            this.radioButton42.TabIndex = 538;
+            this.radioButton42.TabStop = true;
+            this.radioButton42.Text = "ไม่มี";
+            this.theme1.SetTheme(this.radioButton42, "(default)");
+            this.radioButton42.UseVisualStyleBackColor = false;
+            // 
+            // radioButton43
+            // 
+            this.radioButton43.AutoSize = true;
+            this.radioButton43.BackColor = System.Drawing.Color.Transparent;
+            this.radioButton43.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
+            this.radioButton43.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(189)))), ((int)(((byte)(182)))));
+            this.radioButton43.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(189)))), ((int)(((byte)(182)))));
+            this.radioButton43.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.radioButton43.Location = new System.Drawing.Point(20, 19);
+            this.radioButton43.Name = "radioButton43";
+            this.radioButton43.Size = new System.Drawing.Size(32, 17);
+            this.radioButton43.TabIndex = 537;
+            this.radioButton43.TabStop = true;
+            this.radioButton43.Text = "มี";
+            this.theme1.SetTheme(this.radioButton43, "(default)");
+            this.radioButton43.UseVisualStyleBackColor = false;
+            // 
+            // groupBox21
+            // 
+            this.groupBox21.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.groupBox21.Controls.Add(this.groupBox19);
+            this.groupBox21.Controls.Add(this.groupBox20);
+            this.groupBox21.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.groupBox21.Location = new System.Drawing.Point(93, 192);
+            this.groupBox21.Name = "groupBox21";
+            this.groupBox21.Size = new System.Drawing.Size(775, 70);
+            this.groupBox21.TabIndex = 970;
+            this.groupBox21.TabStop = false;
+            this.groupBox21.Text = "1.  การสัมภาษณ์และสังเกตพฤติกรรมแสดงออก บ่งว่า อาจมีปัญหาสุขภาพจิต";
+            this.theme1.SetTheme(this.groupBox21, "(default)");
+            // 
+            // groupBox19
+            // 
+            this.groupBox19.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.groupBox19.Controls.Add(this.radioButton36);
+            this.groupBox19.Controls.Add(this.radioButton37);
+            this.groupBox19.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.groupBox19.Location = new System.Drawing.Point(48, 19);
+            this.groupBox19.Name = "groupBox19";
+            this.groupBox19.Size = new System.Drawing.Size(193, 41);
+            this.groupBox19.TabIndex = 537;
+            this.groupBox19.TabStop = false;
+            this.groupBox19.Text = "สามี";
+            this.theme1.SetTheme(this.groupBox19, "(default)");
+            // 
+            // radioButton36
+            // 
+            this.radioButton36.AutoSize = true;
+            this.radioButton36.BackColor = System.Drawing.Color.Transparent;
+            this.radioButton36.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
+            this.radioButton36.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(189)))), ((int)(((byte)(182)))));
+            this.radioButton36.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(189)))), ((int)(((byte)(182)))));
+            this.radioButton36.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.radioButton36.Location = new System.Drawing.Point(93, 18);
+            this.radioButton36.Name = "radioButton36";
+            this.radioButton36.Size = new System.Drawing.Size(45, 17);
+            this.radioButton36.TabIndex = 538;
+            this.radioButton36.TabStop = true;
+            this.radioButton36.Text = "ไม่มี";
+            this.theme1.SetTheme(this.radioButton36, "(default)");
+            this.radioButton36.UseVisualStyleBackColor = false;
+            // 
+            // radioButton37
+            // 
+            this.radioButton37.AutoSize = true;
+            this.radioButton37.BackColor = System.Drawing.Color.Transparent;
+            this.radioButton37.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
+            this.radioButton37.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(189)))), ((int)(((byte)(182)))));
+            this.radioButton37.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(189)))), ((int)(((byte)(182)))));
+            this.radioButton37.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.radioButton37.Location = new System.Drawing.Point(20, 19);
+            this.radioButton37.Name = "radioButton37";
+            this.radioButton37.Size = new System.Drawing.Size(32, 17);
+            this.radioButton37.TabIndex = 537;
+            this.radioButton37.TabStop = true;
+            this.radioButton37.Text = "มี";
+            this.theme1.SetTheme(this.radioButton37, "(default)");
+            this.radioButton37.UseVisualStyleBackColor = false;
+            // 
+            // groupBox20
+            // 
+            this.groupBox20.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.groupBox20.Controls.Add(this.radioButton38);
+            this.groupBox20.Controls.Add(this.radioButton39);
+            this.groupBox20.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.groupBox20.Location = new System.Drawing.Point(267, 19);
+            this.groupBox20.Name = "groupBox20";
+            this.groupBox20.Size = new System.Drawing.Size(193, 41);
+            this.groupBox20.TabIndex = 969;
+            this.groupBox20.TabStop = false;
+            this.groupBox20.Text = "ภริยา";
+            this.theme1.SetTheme(this.groupBox20, "(default)");
+            // 
+            // radioButton38
+            // 
+            this.radioButton38.AutoSize = true;
+            this.radioButton38.BackColor = System.Drawing.Color.Transparent;
+            this.radioButton38.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
+            this.radioButton38.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(189)))), ((int)(((byte)(182)))));
+            this.radioButton38.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(189)))), ((int)(((byte)(182)))));
+            this.radioButton38.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.radioButton38.Location = new System.Drawing.Point(93, 18);
+            this.radioButton38.Name = "radioButton38";
+            this.radioButton38.Size = new System.Drawing.Size(45, 17);
+            this.radioButton38.TabIndex = 538;
+            this.radioButton38.TabStop = true;
+            this.radioButton38.Text = "ไม่มี";
+            this.theme1.SetTheme(this.radioButton38, "(default)");
+            this.radioButton38.UseVisualStyleBackColor = false;
+            // 
+            // radioButton39
+            // 
+            this.radioButton39.AutoSize = true;
+            this.radioButton39.BackColor = System.Drawing.Color.Transparent;
+            this.radioButton39.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
+            this.radioButton39.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(189)))), ((int)(((byte)(182)))));
+            this.radioButton39.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(189)))), ((int)(((byte)(182)))));
+            this.radioButton39.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.radioButton39.Location = new System.Drawing.Point(20, 19);
+            this.radioButton39.Name = "radioButton39";
+            this.radioButton39.Size = new System.Drawing.Size(32, 17);
+            this.radioButton39.TabIndex = 537;
+            this.radioButton39.TabStop = true;
+            this.radioButton39.Text = "มี";
+            this.theme1.SetTheme(this.radioButton39, "(default)");
+            this.radioButton39.UseVisualStyleBackColor = false;
+            // 
+            // panel25
+            // 
+            this.panel25.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.panel25.Controls.Add(this.radioButton34);
+            this.panel25.Controls.Add(this.radioButton35);
+            this.panel25.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.panel25.Location = new System.Drawing.Point(1061, 192);
+            this.panel25.Name = "panel25";
+            this.panel25.Size = new System.Drawing.Size(349, 28);
+            this.panel25.TabIndex = 968;
+            this.theme1.SetTheme(this.panel25, "(default)");
+            // 
+            // radioButton34
+            // 
+            this.radioButton34.AutoSize = true;
+            this.radioButton34.BackColor = System.Drawing.Color.Transparent;
+            this.radioButton34.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
+            this.radioButton34.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(189)))), ((int)(((byte)(182)))));
+            this.radioButton34.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(189)))), ((int)(((byte)(182)))));
+            this.radioButton34.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.radioButton34.Location = new System.Drawing.Point(172, 3);
+            this.radioButton34.Name = "radioButton34";
+            this.radioButton34.Size = new System.Drawing.Size(146, 17);
+            this.radioButton34.TabIndex = 536;
+            this.radioButton34.TabStop = true;
+            this.radioButton34.Text = "สภาพแวดล้อมไม่เหมาะสม";
+            this.theme1.SetTheme(this.radioButton34, "(default)");
+            this.radioButton34.UseVisualStyleBackColor = false;
+            // 
+            // radioButton35
+            // 
+            this.radioButton35.AutoSize = true;
+            this.radioButton35.BackColor = System.Drawing.Color.Transparent;
+            this.radioButton35.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
+            this.radioButton35.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(189)))), ((int)(((byte)(182)))));
+            this.radioButton35.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(189)))), ((int)(((byte)(182)))));
+            this.radioButton35.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.radioButton35.Location = new System.Drawing.Point(3, 4);
+            this.radioButton35.Name = "radioButton35";
+            this.radioButton35.Size = new System.Drawing.Size(152, 17);
+            this.radioButton35.TabIndex = 535;
+            this.radioButton35.TabStop = true;
+            this.radioButton35.Text = "สภาพแลวดล้อมดี  เหมาะสม";
+            this.theme1.SetTheme(this.radioButton35, "(default)");
+            this.radioButton35.UseVisualStyleBackColor = false;
+            // 
+            // label84
+            // 
+            this.label84.AutoSize = true;
+            this.label84.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.label84.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label84.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.label84.Location = new System.Drawing.Point(945, 150);
+            this.label84.Name = "label84";
+            this.label84.Size = new System.Drawing.Size(562, 25);
+            this.label84.TabIndex = 938;
+            this.label84.Text = "2.  ได้ผ่านการตรวจประเมินความพร้อมทางด้านสิ่งแวดล้อมแล้ว  พบว่า";
+            this.theme1.SetTheme(this.label84, "(default)");
+            // 
+            // label83
+            // 
+            this.label83.AutoSize = true;
+            this.label83.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.label83.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label83.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.label83.Location = new System.Drawing.Point(281, 645);
+            this.label83.Name = "label83";
+            this.label83.Size = new System.Drawing.Size(364, 16);
+            this.label83.TabIndex = 937;
+            this.label83.Text = "**  หากมีปัญหาข้อหนึ่งข้อใดข้างต้น  ให้ปรึกษาจิตแพทย์เพื่อตรวจประเมินต่อไป";
+            this.theme1.SetTheme(this.label83, "(default)");
+            // 
+            // label76
+            // 
+            this.label76.AutoSize = true;
+            this.label76.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.label76.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label76.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.label76.Location = new System.Drawing.Point(225, 161);
+            this.label76.Name = "label76";
+            this.label76.Size = new System.Drawing.Size(530, 25);
+            this.label76.TabIndex = 930;
+            this.label76.Text = "1.  ได้ผ่านการตรวจประเมินความพร้อมทางด้านสภาพจิตใจ  พบว่า";
+            this.theme1.SetTheme(this.label76, "(default)");
+            // 
+            // label75
+            // 
+            this.label75.AutoSize = true;
+            this.label75.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.label75.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label75.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.label75.Location = new System.Drawing.Point(47, 131);
+            this.label75.Name = "label75";
+            this.label75.Size = new System.Drawing.Size(295, 16);
+            this.label75.TabIndex = 929;
+            this.label75.Text = "ซึ่งมีวัตถุประสงค์จะเข้ารับการรักษาด้วยเทคโนโลยี่การเจริญพันธุ์";
+            this.theme1.SetTheme(this.label75, "(default)");
+            // 
+            // label74
+            // 
+            this.label74.AutoSize = true;
+            this.label74.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.label74.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label74.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.label74.Location = new System.Drawing.Point(879, 15);
+            this.label74.Name = "label74";
+            this.label74.Size = new System.Drawing.Size(155, 16);
+            this.label74.TabIndex = 928;
+            this.label74.Text = "ด้วยเทคโนโลยี่ช่วยการเจริญพันธุ์";
+            this.theme1.SetTheme(this.label74, "(default)");
+            // 
+            // label72
+            // 
+            this.label72.AutoSize = true;
+            this.label72.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.label72.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label72.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.label72.Location = new System.Drawing.Point(388, 15);
+            this.label72.Name = "label72";
+            this.label72.Size = new System.Drawing.Size(427, 32);
+            this.label72.TabIndex = 927;
+            this.label72.Text = "แบบรับรองการตรวจประเมินความพร้อมทางด้านจิตใจของสามีภรรยาที่ประสงค์ให้มีการรักษา\r\n" +
+    "\r\n";
+            this.theme1.SetTheme(this.label72, "(default)");
+            // 
+            // label71
+            // 
+            this.label71.AutoSize = true;
+            this.label71.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.label71.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label71.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.label71.Location = new System.Drawing.Point(593, 104);
+            this.label71.Name = "label71";
+            this.label71.Size = new System.Drawing.Size(82, 16);
+            this.label71.TabIndex = 925;
+            this.label71.Text = "Occupation :";
+            this.theme1.SetTheme(this.label71, "(default)");
+            // 
+            // c1ComboBox4
+            // 
+            this.c1ComboBox4.AllowSpinLoop = false;
+            this.c1ComboBox4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.c1ComboBox4.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
+            this.c1ComboBox4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.c1ComboBox4.GapHeight = 0;
+            this.c1ComboBox4.ImagePadding = new System.Windows.Forms.Padding(0);
+            this.c1ComboBox4.ItemsDisplayMember = "";
+            this.c1ComboBox4.ItemsValueMember = "";
+            this.c1ComboBox4.Location = new System.Drawing.Point(733, 102);
+            this.c1ComboBox4.Name = "c1ComboBox4";
+            this.c1ComboBox4.Size = new System.Drawing.Size(175, 20);
+            this.c1ComboBox4.Style.DropDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.c1ComboBox4.Style.DropDownBorderColor = System.Drawing.Color.Gainsboro;
+            this.c1ComboBox4.Style.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.c1ComboBox4.TabIndex = 926;
+            this.c1ComboBox4.Tag = null;
+            this.theme1.SetTheme(this.c1ComboBox4, "(default)");
+            this.c1ComboBox4.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            // 
+            // label70
+            // 
+            this.label70.AutoSize = true;
+            this.label70.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.label70.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label70.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.label70.Location = new System.Drawing.Point(90, 104);
+            this.label70.Name = "label70";
+            this.label70.Size = new System.Drawing.Size(82, 16);
+            this.label70.TabIndex = 923;
+            this.label70.Text = "Occupation :";
+            this.theme1.SetTheme(this.label70, "(default)");
+            // 
+            // c1ComboBox3
+            // 
+            this.c1ComboBox3.AllowSpinLoop = false;
+            this.c1ComboBox3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.c1ComboBox3.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
+            this.c1ComboBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.c1ComboBox3.GapHeight = 0;
+            this.c1ComboBox3.ImagePadding = new System.Windows.Forms.Padding(0);
+            this.c1ComboBox3.ItemsDisplayMember = "";
+            this.c1ComboBox3.ItemsValueMember = "";
+            this.c1ComboBox3.Location = new System.Drawing.Point(230, 102);
+            this.c1ComboBox3.Name = "c1ComboBox3";
+            this.c1ComboBox3.Size = new System.Drawing.Size(175, 20);
+            this.c1ComboBox3.Style.DropDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.c1ComboBox3.Style.DropDownBorderColor = System.Drawing.Color.Gainsboro;
+            this.c1ComboBox3.Style.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.c1ComboBox3.TabIndex = 924;
+            this.c1ComboBox3.Tag = null;
+            this.theme1.SetTheme(this.c1ComboBox3, "(default)");
+            this.c1ComboBox3.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            // 
+            // label69
+            // 
+            this.label69.AutoSize = true;
+            this.label69.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.label69.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label69.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.label69.Location = new System.Drawing.Point(593, 78);
+            this.label69.Name = "label69";
+            this.label69.Size = new System.Drawing.Size(43, 16);
+            this.label69.TabIndex = 832;
+            this.label69.Text = "DOB :";
+            this.theme1.SetTheme(this.label69, "(default)");
+            // 
+            // c1TextBox48
+            // 
+            this.c1TextBox48.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.c1TextBox48.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
+            this.c1TextBox48.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.c1TextBox48.Location = new System.Drawing.Point(733, 76);
+            this.c1TextBox48.Name = "c1TextBox48";
+            this.c1TextBox48.Size = new System.Drawing.Size(156, 20);
+            this.c1TextBox48.TabIndex = 833;
+            this.c1TextBox48.Tag = null;
+            this.theme1.SetTheme(this.c1TextBox48, "(default)");
+            this.c1TextBox48.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            // 
+            // label68
+            // 
+            this.label68.AutoSize = true;
+            this.label68.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.label68.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label68.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.label68.Location = new System.Drawing.Point(90, 78);
+            this.label68.Name = "label68";
+            this.label68.Size = new System.Drawing.Size(43, 16);
+            this.label68.TabIndex = 830;
+            this.label68.Text = "DOB :";
+            this.theme1.SetTheme(this.label68, "(default)");
+            // 
+            // c1TextBox47
+            // 
+            this.c1TextBox47.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.c1TextBox47.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
+            this.c1TextBox47.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.c1TextBox47.Location = new System.Drawing.Point(230, 76);
+            this.c1TextBox47.Name = "c1TextBox47";
+            this.c1TextBox47.Size = new System.Drawing.Size(156, 20);
+            this.c1TextBox47.TabIndex = 831;
+            this.c1TextBox47.Tag = null;
+            this.theme1.SetTheme(this.c1TextBox47, "(default)");
+            this.c1TextBox47.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            // 
+            // label67
+            // 
+            this.label67.AutoSize = true;
+            this.label67.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.label67.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label67.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.label67.Location = new System.Drawing.Point(593, 52);
+            this.label67.Name = "label67";
+            this.label67.Size = new System.Drawing.Size(95, 16);
+            this.label67.TabIndex = 829;
+            this.label67.Text = "Patient Name :";
+            this.theme1.SetTheme(this.label67, "(default)");
+            // 
+            // c1TextBox46
+            // 
+            this.c1TextBox46.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.c1TextBox46.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
+            this.c1TextBox46.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.c1TextBox46.Location = new System.Drawing.Point(733, 50);
+            this.c1TextBox46.Name = "c1TextBox46";
+            this.c1TextBox46.Size = new System.Drawing.Size(253, 20);
+            this.c1TextBox46.TabIndex = 828;
+            this.c1TextBox46.Tag = null;
+            this.theme1.SetTheme(this.c1TextBox46, "(default)");
+            this.c1TextBox46.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            // 
+            // label66
+            // 
+            this.label66.AutoSize = true;
+            this.label66.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.label66.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label66.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.label66.Location = new System.Drawing.Point(90, 52);
+            this.label66.Name = "label66";
+            this.label66.Size = new System.Drawing.Size(95, 16);
+            this.label66.TabIndex = 827;
+            this.label66.Text = "Patient Name :";
+            this.theme1.SetTheme(this.label66, "(default)");
+            // 
+            // c1TextBox45
+            // 
+            this.c1TextBox45.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.c1TextBox45.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
+            this.c1TextBox45.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.c1TextBox45.Location = new System.Drawing.Point(230, 50);
+            this.c1TextBox45.Name = "c1TextBox45";
+            this.c1TextBox45.Size = new System.Drawing.Size(253, 20);
+            this.c1TextBox45.TabIndex = 826;
+            this.c1TextBox45.Tag = null;
+            this.theme1.SetTheme(this.c1TextBox45, "(default)");
+            this.c1TextBox45.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            // 
+            // radioButton20
+            // 
+            this.radioButton20.AutoSize = true;
+            this.radioButton20.BackColor = System.Drawing.Color.Transparent;
+            this.radioButton20.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
+            this.radioButton20.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(189)))), ((int)(((byte)(182)))));
+            this.radioButton20.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(189)))), ((int)(((byte)(182)))));
+            this.radioButton20.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.radioButton20.Location = new System.Drawing.Point(239, 3);
+            this.radioButton20.Name = "radioButton20";
+            this.radioButton20.Size = new System.Drawing.Size(68, 17);
+            this.radioButton20.TabIndex = 535;
+            this.radioButton20.TabStop = true;
+            this.radioButton20.Text = "Negative";
+            this.theme1.SetTheme(this.radioButton20, "(default)");
+            this.radioButton20.UseVisualStyleBackColor = false;
+            // 
+            // txtCongenital
+            // 
+            this.txtCongenital.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtCongenital.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
+            this.txtCongenital.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.txtCongenital.Location = new System.Drawing.Point(649, 76);
+            this.txtCongenital.Name = "txtCongenital";
+            this.txtCongenital.Size = new System.Drawing.Size(335, 20);
+            this.txtCongenital.TabIndex = 964;
+            this.txtCongenital.Tag = null;
+            this.theme1.SetTheme(this.txtCongenital, "(default)");
+            this.txtCongenital.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            // 
+            // cboAllergyDesc
+            // 
+            this.cboAllergyDesc.AllowSpinLoop = false;
+            this.cboAllergyDesc.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
+            this.cboAllergyDesc.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.cboAllergyDesc.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.cboAllergyDesc.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
+            this.cboAllergyDesc.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.cboAllergyDesc.GapHeight = 0;
+            this.cboAllergyDesc.ImagePadding = new System.Windows.Forms.Padding(0);
+            this.cboAllergyDesc.ItemsDisplayMember = "";
+            this.cboAllergyDesc.ItemsValueMember = "";
+            this.cboAllergyDesc.Location = new System.Drawing.Point(649, 98);
+            this.cboAllergyDesc.Name = "cboAllergyDesc";
+            this.cboAllergyDesc.Size = new System.Drawing.Size(335, 20);
+            this.cboAllergyDesc.Style.DropDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.cboAllergyDesc.Style.DropDownBorderColor = System.Drawing.Color.Gainsboro;
+            this.cboAllergyDesc.Style.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.cboAllergyDesc.TabIndex = 965;
+            this.cboAllergyDesc.Tag = null;
+            this.theme1.SetTheme(this.cboAllergyDesc, "(default)");
+            this.cboAllergyDesc.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
             // 
             // FrmNurseAdd1
             // 
@@ -7303,6 +7345,7 @@
             this.panel1.ResumeLayout(false);
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.c1Button2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.c1TextBox28)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.c1CheckBox44)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.c1CheckBox45)).EndInit();
@@ -7390,75 +7433,14 @@
             ((System.ComponentModel.ISupportInitialize)(this.c1CheckBox1)).EndInit();
             this.tabHisLab.ResumeLayout(false);
             this.panel11.ResumeLayout(false);
-            this.groupBox4.ResumeLayout(false);
-            this.groupBox4.PerformLayout();
             this.groupBox5.ResumeLayout(false);
             this.groupBox5.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.c1CheckBox46)).EndInit();
-            this.groupBox6.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.c1CheckBox47)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.c1CheckBox48)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.c1CheckBox49)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.c1TextBox29)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.c1TextBox30)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.c1TextBox31)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.c1TextBox32)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.c1TextBox33)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.c1TextBox34)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.c1CheckBox50)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.c1CheckBox51)).EndInit();
-            this.groupBox7.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.c1TextBox36)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.c1CheckBox52)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.c1TextBox37)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.c1CheckBox55)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.c1CheckBox57)).EndInit();
-            this.groupBox8.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.c1CheckBox56)).EndInit();
-            this.panel12.ResumeLayout(false);
-            this.panel12.PerformLayout();
-            this.groupBox9.ResumeLayout(false);
-            this.panel13.ResumeLayout(false);
-            this.panel13.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.c1CheckBox53)).EndInit();
-            this.groupBox10.ResumeLayout(false);
-            this.panel14.ResumeLayout(false);
-            this.panel14.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.c1CheckBox54)).EndInit();
-            this.panel15.ResumeLayout(false);
-            this.panel15.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.c1CheckBox58)).EndInit();
-            this.panel16.ResumeLayout(false);
-            this.panel16.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.c1CheckBox59)).EndInit();
-            this.groupBox11.ResumeLayout(false);
-            this.panel17.ResumeLayout(false);
-            this.panel17.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.c1CheckBox60)).EndInit();
-            this.groupBox12.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.c1TextBox35)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.c1TextBox38)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.c1CheckBox62)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.c1CheckBox63)).EndInit();
-            this.groupBox13.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.c1TextBox39)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.c1CheckBox61)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.c1TextBox40)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.c1CheckBox64)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.c1CheckBox65)).EndInit();
-            this.groupBox14.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.c1TextBox41)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.c1TextBox42)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.c1CheckBox66)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.c1CheckBox67)).EndInit();
-            this.groupBox15.ResumeLayout(false);
-            this.panel18.ResumeLayout(false);
-            this.panel18.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.c1CheckBox68)).EndInit();
-            this.groupBox16.ResumeLayout(false);
-            this.panel19.ResumeLayout(false);
-            this.panel19.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.c1CheckBox69)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.c1Button3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.c1TextBox44)).EndInit();
+            this.groupBox18.ResumeLayout(false);
+            this.panel23.ResumeLayout(false);
+            this.panel23.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.c1CheckBox73)).EndInit();
             this.groupBox17.ResumeLayout(false);
             this.panel20.ResumeLayout(false);
             this.panel20.PerformLayout();
@@ -7469,57 +7451,119 @@
             this.panel22.ResumeLayout(false);
             this.panel22.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.c1CheckBox72)).EndInit();
-            this.groupBox18.ResumeLayout(false);
-            this.panel23.ResumeLayout(false);
-            this.panel23.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.c1CheckBox73)).EndInit();
+            this.groupBox16.ResumeLayout(false);
+            this.panel19.ResumeLayout(false);
+            this.panel19.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.c1CheckBox69)).EndInit();
+            this.groupBox15.ResumeLayout(false);
+            this.panel18.ResumeLayout(false);
+            this.panel18.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.c1CheckBox68)).EndInit();
+            this.groupBox14.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.c1TextBox41)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.c1TextBox42)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.c1CheckBox66)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.c1CheckBox67)).EndInit();
+            this.groupBox13.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.c1TextBox39)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.c1CheckBox61)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.c1TextBox40)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.c1CheckBox64)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.c1CheckBox65)).EndInit();
+            this.groupBox4.ResumeLayout(false);
+            this.groupBox4.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.c1TextBox43)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.c1TextBox44)).EndInit();
+            this.groupBox12.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.c1TextBox35)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.c1TextBox38)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.c1CheckBox62)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.c1CheckBox63)).EndInit();
+            this.groupBox11.ResumeLayout(false);
+            this.panel17.ResumeLayout(false);
+            this.panel17.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.c1CheckBox60)).EndInit();
+            this.groupBox10.ResumeLayout(false);
+            this.panel16.ResumeLayout(false);
+            this.panel16.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.c1CheckBox59)).EndInit();
+            this.panel15.ResumeLayout(false);
+            this.panel15.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.c1CheckBox58)).EndInit();
+            this.panel14.ResumeLayout(false);
+            this.panel14.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.c1CheckBox54)).EndInit();
+            this.groupBox9.ResumeLayout(false);
+            this.panel13.ResumeLayout(false);
+            this.panel13.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.c1CheckBox53)).EndInit();
+            this.groupBox8.ResumeLayout(false);
+            this.panel12.ResumeLayout(false);
+            this.panel12.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.c1CheckBox56)).EndInit();
+            this.groupBox7.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.c1TextBox36)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.c1CheckBox52)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.c1TextBox37)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.c1CheckBox55)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.c1CheckBox57)).EndInit();
+            this.groupBox6.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.c1TextBox33)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.c1TextBox34)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.c1CheckBox50)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.c1CheckBox51)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.c1TextBox32)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.c1TextBox31)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.c1TextBox30)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.c1TextBox29)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.c1CheckBox49)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.c1CheckBox48)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.c1CheckBox47)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.c1CheckBox46)).EndInit();
             this.tabTestMerri.ResumeLayout(false);
             this.panel24.ResumeLayout(false);
             this.panel24.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.c1TextBox45)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.c1TextBox46)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.c1TextBox47)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.c1TextBox48)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.c1ComboBox3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.c1ComboBox4)).EndInit();
-            this.panel25.ResumeLayout(false);
-            this.panel25.PerformLayout();
-            this.groupBox19.ResumeLayout(false);
-            this.groupBox19.PerformLayout();
-            this.groupBox20.ResumeLayout(false);
-            this.groupBox20.PerformLayout();
-            this.groupBox21.ResumeLayout(false);
-            this.groupBox22.ResumeLayout(false);
-            this.groupBox23.ResumeLayout(false);
-            this.groupBox23.PerformLayout();
-            this.groupBox24.ResumeLayout(false);
-            this.groupBox24.PerformLayout();
-            this.groupBox25.ResumeLayout(false);
-            this.groupBox26.ResumeLayout(false);
-            this.groupBox26.PerformLayout();
-            this.groupBox27.ResumeLayout(false);
-            this.groupBox27.PerformLayout();
-            this.groupBox28.ResumeLayout(false);
-            this.groupBox29.ResumeLayout(false);
-            this.groupBox29.PerformLayout();
-            this.groupBox30.ResumeLayout(false);
-            this.groupBox30.PerformLayout();
-            this.groupBox31.ResumeLayout(false);
-            this.groupBox32.ResumeLayout(false);
-            this.groupBox32.PerformLayout();
-            this.groupBox33.ResumeLayout(false);
-            this.groupBox33.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.btnPrint)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.c1ComboBox5)).EndInit();
             this.groupBox34.ResumeLayout(false);
             this.groupBox35.ResumeLayout(false);
             this.groupBox35.PerformLayout();
             this.groupBox36.ResumeLayout(false);
             this.groupBox36.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.c1ComboBox5)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.btnPrint)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.c1Button2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.c1Button3)).EndInit();
+            this.groupBox31.ResumeLayout(false);
+            this.groupBox32.ResumeLayout(false);
+            this.groupBox32.PerformLayout();
+            this.groupBox33.ResumeLayout(false);
+            this.groupBox33.PerformLayout();
+            this.groupBox28.ResumeLayout(false);
+            this.groupBox29.ResumeLayout(false);
+            this.groupBox29.PerformLayout();
+            this.groupBox30.ResumeLayout(false);
+            this.groupBox30.PerformLayout();
+            this.groupBox25.ResumeLayout(false);
+            this.groupBox26.ResumeLayout(false);
+            this.groupBox26.PerformLayout();
+            this.groupBox27.ResumeLayout(false);
+            this.groupBox27.PerformLayout();
+            this.groupBox22.ResumeLayout(false);
+            this.groupBox23.ResumeLayout(false);
+            this.groupBox23.PerformLayout();
+            this.groupBox24.ResumeLayout(false);
+            this.groupBox24.PerformLayout();
+            this.groupBox21.ResumeLayout(false);
+            this.groupBox19.ResumeLayout(false);
+            this.groupBox19.PerformLayout();
+            this.groupBox20.ResumeLayout(false);
+            this.groupBox20.PerformLayout();
+            this.panel25.ResumeLayout(false);
+            this.panel25.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.c1ComboBox4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.c1ComboBox3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.c1TextBox48)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.c1TextBox47)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.c1TextBox46)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.c1TextBox45)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtCongenital)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cboAllergyDesc)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -7949,5 +7993,7 @@
         private C1.Win.C1Input.C1Button btnPrint;
         private C1.Win.C1Input.C1Button c1Button2;
         private C1.Win.C1Input.C1Button c1Button3;
+        private C1.Win.C1Input.C1TextBox txtCongenital;
+        private C1.Win.C1Input.C1ComboBox cboAllergyDesc;
     }
 }

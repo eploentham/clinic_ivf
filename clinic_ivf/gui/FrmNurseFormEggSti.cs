@@ -349,7 +349,10 @@ namespace clinic_ivf.gui
                         {
                             for (int i = 1; i <= 17; i++)
                             {
-                                lmpdate1 = lmpdate1.AddDays(1);
+                                if (i != 1)
+                                {
+                                    lmpdate1 = lmpdate1.AddDays(1);
+                                }
                                 EggStiDay eggsd = new EggStiDay();
                                 eggsd.egg_sti_day_id = "";
                                 eggsd.egg_sti_id = re;

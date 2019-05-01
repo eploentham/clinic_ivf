@@ -651,7 +651,7 @@ namespace clinic_ivf.objdb
                 "From " + vsold.table + " vsold " +
                 "Left Join VStatus on  VStatus.VSID = vsold.VSID " +
                 "Left Join Patient on  vsold.PID = Patient.PID " +
-                "Where vsold." + vsold.VDate + " ='" + date + "' and vsold.VSID in ('999','166','165','998') " +
+                "Where vsold." + vsold.VDate + " ='" + date + "' and vsold.VSID in ('999','166','165','998','160') " +
                 "Order By vsold.VDate, vsold.VStartTime";
             dt = conn.selectData(conn.conn, sql);
 
@@ -672,7 +672,7 @@ namespace clinic_ivf.objdb
                 "From " + vsold.table + " vsold " +
                 "Left Join VStatus on  VStatus.VSID = vsold.VSID " +
                 "Left Join Patient on  vsold.PID = Patient.PID " +
-                "Where vsold." + vsold.VDate + " ='" + date + "' and vsold.VSID in ('999','166','165','998') " +
+                "Where vsold." + vsold.VDate + " ='" + date + "' and vsold.VSID in ('999','166','165','998','160') " +
                 "Order By vsold.VDate, vsold.VStartTime";
                 dt = conn.selectData(conn.conn, sql);
             }

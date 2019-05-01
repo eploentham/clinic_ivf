@@ -95,6 +95,7 @@ namespace clinic_ivf.gui
 
             ic.ivfDB.opkgstDB.setCboSex(cboSellThruID, "");
             ic.ivfDB.dtrOldDB.setCboDoctor(cboDoctor, "");
+            ic.ivfDB.pttDB.setCboAllergy(cboAllergyDesc);
 
             tabOrder.Click += TabOrder_Click;
             btnPkgOrder.Click += BtnPkgOrder_Click;
@@ -104,8 +105,11 @@ namespace clinic_ivf.gui
             btnNoteAdd.Click += BtnNoteAdd_Click;
             tlpPatient.Resize += TlpPatient_Resize;
             btnSendDtr.Click += BtnSendDtr_Click;
+            chkChronic.MouseHover += ChkChronic_MouseHover;
+            chkDenyAllergy.CheckedChanged += ChkDenyAllergy_CheckedChanged;
 
             setControl(vsid);
+            ChkDenyAllergy_CheckedChanged(null, null);
             //btnNew.Click += BtnNew_Click;
             //txtSearch.KeyUp += TxtSearch_KeyUp;
             initGrfBloodLab();
@@ -139,6 +143,19 @@ namespace clinic_ivf.gui
             picPtt.SizeMode = PictureBoxSizeMode.StretchImage;
             //initGrfPtt();
             //setGrfPtt("");
+        }
+
+        private void ChkDenyAllergy_CheckedChanged(object sender, EventArgs e)
+        {
+            //throw new NotImplementedException();
+            cboAllergyDesc.Enabled = chkDenyAllergy.Checked ? true : false;
+            cboAllergyDesc.Focus();
+        }
+
+        private void ChkChronic_MouseHover(object sender, EventArgs e)
+        {
+            //throw new NotImplementedException();
+            stt.Show("<p><b> " + ptt.congenital_diseases_description + "</b></p>", chkChronic);
         }
 
         private void BtnSendDtr_Click(object sender, EventArgs e)
@@ -601,9 +618,10 @@ namespace clinic_ivf.gui
             chkChronic.Checked = ptt.status_congenial.Equals("1") ? true : false;
             ic.setC1Combo(cboDoctor, vs.doctor_id);
             Patient ptt1 = new Patient();
-            ptt = ic.ivfDB.pttDB.selectByHn(vs.patient_hn_male);
-            txtNameMale.Value = ptt.Name;
+            ptt1 = ic.ivfDB.pttDB.selectByHn(vs.patient_hn_male);
+            txtNameMale.Value = ptt1.Name;
             stt.Show("<p><b>สวัสดี</b></p>คุณ " + ptt.congenital_diseases_description + "<br> กรุณา ป้อนรหัสผ่าน", chkChronic);
+            txtCongenital.Value = ptt.congenital_diseases_description;
             if (!ptt.t_patient_id.Equals(""))
             {
                 PatientImage pttI = new PatientImage();

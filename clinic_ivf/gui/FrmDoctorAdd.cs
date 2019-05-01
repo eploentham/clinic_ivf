@@ -81,6 +81,7 @@ namespace clinic_ivf.gui
             imgTran = Resources.red_checkmark_png_51;
             panel1.Resize += Panel1_Resize;
             cboLangSticker.SelectedIndexChanged += CboLangSticker_SelectedIndexChanged;
+            btnNoteAdd.Click += BtnNoteAdd_Click;
 
             setControl(vsid);
 
@@ -111,6 +112,36 @@ namespace clinic_ivf.gui
             setGrfpApmAll();
             setGrfOrder(txtVn.Text);
         }
+
+        private void BtnNoteAdd_Click(object sender, EventArgs e)
+        {
+            //throw new NotImplementedException();
+            ic.cStf.staff_id = "";
+            FrmPasswordConfirm frm = new FrmPasswordConfirm(ic);
+            frm.ShowDialog(this);
+            if (!ic.cStf.staff_id.Equals(""))
+            {
+                Note1 note = new Note1();
+                note.active = "1";
+                note.date_cancel = "";
+                note.date_create = "";
+                note.date_modi = "";
+                note.note_1 = txtNote.Text;
+                note.note_2 = "";
+                note.note_id = txtNoteId.Text;
+                note.remark = "";
+                note.t_patient_id = ptt.t_patient_id;
+                note.user_cancel = "";
+                note.user_create = "";
+                note.user_modi = "";
+                note.status_all = chkNoteAll.Checked ? "1" : "0";
+                note.b_service_point_id = "2120000000";
+                ic.ivfDB.noteDB.insertNote(note, ic.cStf.staff_id);
+                setGrfNote();
+                txtNote.Value = "";
+            }
+        }
+
         private void CboLangSticker_SelectedIndexChanged(object sender, EventArgs e)
         {
             //throw new NotImplementedException();
