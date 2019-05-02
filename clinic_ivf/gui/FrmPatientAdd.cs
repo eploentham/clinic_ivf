@@ -298,7 +298,17 @@ namespace clinic_ivf.gui
                 MessageBox.Show("BtnPrnDeliverPtt_Click stream is null", "");
                 return;
             }
-            Image loadedImage = new Bitmap(stream);
+            Image loadedImage = new Bitmap(Resources._698929);
+            try
+            {
+                loadedImage = new Bitmap(stream);
+
+            }
+            catch (Exception ex)
+            {
+
+            }
+            
             filename1 = "patient." + System.Drawing.Imaging.ImageFormat.Jpeg;
             if (File.Exists(filename1))
             {
