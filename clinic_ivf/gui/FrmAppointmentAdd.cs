@@ -158,6 +158,11 @@ namespace clinic_ivf.gui
             cboFETTime.Enabled = chkFET.Checked ? true : false;
         }
 
+        private void TxtRemarkpApm_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
         private void setTheme()
         {
             theme1.SetTheme(groupBox1, ic.iniC.themeApplication);

@@ -34,6 +34,8 @@
             this.sC = new C1.Win.C1SplitContainer.C1SplitContainer();
             this.pnPtt = new C1.Win.C1SplitContainer.C1SplitterPanel();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.label22 = new System.Windows.Forms.Label();
+            this.txtNameMale = new C1.Win.C1Input.C1TextBox();
             this.cboOther = new C1.Win.C1Input.C1ComboBox();
             this.chkOther = new C1.Win.C1Input.C1CheckBox();
             this.chkTyping = new C1.Win.C1Input.C1CheckBox();
@@ -117,14 +119,13 @@
             this.btnNoteAdd = new C1.Win.C1Input.C1Button();
             this.label73 = new System.Windows.Forms.Label();
             this.txtNote = new C1.Win.C1Input.C1TextBox();
-            this.label22 = new System.Windows.Forms.Label();
-            this.txtNameMale = new C1.Win.C1Input.C1TextBox();
             this.sB.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.theme1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.sC)).BeginInit();
             this.sC.SuspendLayout();
             this.pnPtt.SuspendLayout();
             this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtNameMale)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cboOther)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkOther)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkTyping)).BeginInit();
@@ -178,7 +179,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.chkNoteAll)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnNoteAdd)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtNote)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtNameMale)).BeginInit();
             this.SuspendLayout();
             // 
             // sB
@@ -317,6 +317,32 @@
             this.panel1.Size = new System.Drawing.Size(1850, 144);
             this.panel1.TabIndex = 0;
             this.theme1.SetTheme(this.panel1, "(default)");
+            // 
+            // label22
+            // 
+            this.label22.AutoSize = true;
+            this.label22.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.label22.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label22.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.label22.Location = new System.Drawing.Point(207, 71);
+            this.label22.Name = "label22";
+            this.label22.Size = new System.Drawing.Size(81, 16);
+            this.label22.TabIndex = 959;
+            this.label22.Text = "name male :";
+            this.theme1.SetTheme(this.label22, "(default)");
+            // 
+            // txtNameMale
+            // 
+            this.txtNameMale.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtNameMale.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
+            this.txtNameMale.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.txtNameMale.Location = new System.Drawing.Point(289, 69);
+            this.txtNameMale.Name = "txtNameMale";
+            this.txtNameMale.Size = new System.Drawing.Size(253, 20);
+            this.txtNameMale.TabIndex = 958;
+            this.txtNameMale.Tag = null;
+            this.theme1.SetTheme(this.txtNameMale, "(default)");
+            this.txtNameMale.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
             // 
             // cboOther
             // 
@@ -1580,32 +1606,6 @@
             this.theme1.SetTheme(this.txtNote, "(default)");
             this.txtNote.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
             // 
-            // label22
-            // 
-            this.label22.AutoSize = true;
-            this.label22.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.label22.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label22.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.label22.Location = new System.Drawing.Point(207, 71);
-            this.label22.Name = "label22";
-            this.label22.Size = new System.Drawing.Size(81, 16);
-            this.label22.TabIndex = 959;
-            this.label22.Text = "name male :";
-            this.theme1.SetTheme(this.label22, "(default)");
-            // 
-            // txtNameMale
-            // 
-            this.txtNameMale.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtNameMale.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
-            this.txtNameMale.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.txtNameMale.Location = new System.Drawing.Point(289, 69);
-            this.txtNameMale.Name = "txtNameMale";
-            this.txtNameMale.Size = new System.Drawing.Size(253, 20);
-            this.txtNameMale.TabIndex = 958;
-            this.txtNameMale.Tag = null;
-            this.theme1.SetTheme(this.txtNameMale, "(default)");
-            this.txtNameMale.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
-            // 
             // FrmNurseFormEggSti
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1624,6 +1624,7 @@
             this.pnPtt.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtNameMale)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cboOther)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkOther)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkTyping)).EndInit();
@@ -1678,7 +1679,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.chkNoteAll)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnNoteAdd)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtNote)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtNameMale)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

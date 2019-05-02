@@ -240,6 +240,7 @@
             this.txtRemarkpApm.Tag = null;
             this.theme1.SetTheme(this.txtRemarkpApm, "(default)");
             this.txtRemarkpApm.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            this.txtRemarkpApm.TextChanged += new System.EventHandler(this.TxtRemarkpApm_TextChanged);
             // 
             // btnVoid
             // 

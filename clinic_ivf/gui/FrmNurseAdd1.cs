@@ -29,13 +29,15 @@ namespace clinic_ivf.gui
         Patient ptt;
         VisitOld vsOld;
         Visit vs;
-        PatientOld pttOld;
+        PatientOld pttOld, pttO;
+        PatientAppointment pApm;
+        AppointmentOld pApmO;
 
         Font fEdit, fEditB;
         Color bg, fc;
         Font ff, ffB;
 
-        C1FlexGrid grfBloodLab, grfSperm, grfEmbryo, grfGenetic, grfSpecial, grfRx, grfRxSet, grfOrder, grfPackage, grfPackageD, grfRxSetD, grfNote, grfpApmAll;
+        C1FlexGrid grfBloodLab, grfSperm, grfEmbryo, grfGenetic, grfSpecial, grfRx, grfRxSet, grfOrder, grfPackage, grfPackageD, grfRxSetD, grfNote, grfpApmAll, grfpApmDayAll, grfpApmVisit;
         C1SuperTooltip stt;
         C1SuperErrorProvider sep;
 
@@ -52,6 +54,9 @@ namespace clinic_ivf.gui
         int colOrderWorker5 = 23, colOrderLGID = 24, colOrderQTY = 25, colOrderActive = 26;
         int colOrdid = 1, colOrdlpid = 2, colOrdName = 3, colOrdPrice = 4, colOrdQty = 5, colOrdstatus = 6, colOrdrow1 = 7, colOrditmid = 8, colOrdInclude = 9, colOrdAmt = 10, colOrdUsE = 11, colOrdUsT = 12;
         int rowOrder = 0, spHeight = 150;
+
+        //int colId = 1, colAppointment = 4, colDate = 2, colTime = 3, colDoctor = 5, colSp = 6, colNotice = 7, colE2 = 8, colLh = 9, colEndo = 10, colPrl = 10, colFsh = 11, colRt = 12, colLt = 13;
+
         Image imgCorr, imgTran;
         static String filenamepic = "";
         decimal rat = 0;
@@ -85,6 +90,10 @@ namespace clinic_ivf.gui
             vs = new Visit();
             ptt = new Patient();
             pttOld = new PatientOld();
+            pttO = new PatientOld();
+            pApm = new PatientAppointment();
+            pApmO = new AppointmentOld();
+
             stt = new C1SuperTooltip();
             sep = new C1SuperErrorProvider();
 
@@ -93,9 +102,20 @@ namespace clinic_ivf.gui
 
             ic.setCboLangSticker(cboLangSticker);
 
+            ic.ivfDB.bspDB.setCboBsp(cboApmBsp, "");
             ic.ivfDB.opkgstDB.setCboSex(cboSellThruID, "");
             ic.ivfDB.dtrOldDB.setCboDoctor(cboDoctor, "");
             ic.ivfDB.pttDB.setCboAllergy(cboAllergyDesc);
+            ic.ivfDB.pApmDB.setCboDoctorAnes(cboApmDtrAnes);
+            ic.ivfDB.dtrOldDB.setCboDoctor(cbpApmDtr,"");
+            ic.setCboApmTime(cboApmTimepApm);
+            ic.setCboApmTime(cboApmTvsTime);
+            ic.setCboApmTime(cboApmOPUTime);
+            ic.setCboApmTime(cboApmETTime);
+            ic.setCboApmTime(cboApmFETTime);
+            ic.setCboApmTime(cboApmOPUTimeDonor);
+            ic.setCboApmTime(cboApmTvsTimeDonor);
+            txtApmDatepApm.Value = System.DateTime.Now.Year.ToString() + "-" + System.DateTime.Now.ToString("MM-dd");
 
             tabOrder.Click += TabOrder_Click;
             btnPkgOrder.Click += BtnPkgOrder_Click;
@@ -107,6 +127,16 @@ namespace clinic_ivf.gui
             btnSendDtr.Click += BtnSendDtr_Click;
             chkChronic.MouseHover += ChkChronic_MouseHover;
             chkDenyAllergy.CheckedChanged += ChkDenyAllergy_CheckedChanged;
+            btnApmSave.Click += BtnApmSave_Click;
+            txtApmDatepApm.ValueChanged += TxtApmDatepApm_ValueChanged;
+            chkApmTvs.CheckedChanged += ChkApmTvs_CheckedChanged;
+            chkApmOpu.CheckedChanged += ChkApmOpu_CheckedChanged;
+            chkApmFet.CheckedChanged += ChkApmFet_CheckedChanged;
+            chkApmEt.CheckedChanged += ChkApmEt_CheckedChanged;
+            chkApmOther.CheckedChanged += ChkApmOther_CheckedChanged;
+            chkApmTvsDonor.CheckedChanged += ChkApmTvsDonor_CheckedChanged;
+            chkApmOpuDonor.CheckedChanged += ChkApmOpuDonor_CheckedChanged;
+            btnApmPrint.Click += BtnApmPrint_Click;
 
             setControl(vsid);
             ChkDenyAllergy_CheckedChanged(null, null);
@@ -126,6 +156,9 @@ namespace clinic_ivf.gui
             initGrfPackage();
             initGrfPackageD();
             initGrfRxSetD();
+            initGrfpApmAll();
+            initGrfpApmDayAll();
+            initGrfpApmVisit();
             setGrfGenetic();
             setGrfSpecial();
             setGrfRx();
@@ -136,6 +169,7 @@ namespace clinic_ivf.gui
             setGrfNote();
             initGrfAdm();
             setGrfpApmAll();
+            setGrfpApmVisit();
             if (flagedit.Equals("view"))
             {
                 btnPkgOrder.Enabled = false;
@@ -143,6 +177,735 @@ namespace clinic_ivf.gui
             picPtt.SizeMode = PictureBoxSizeMode.StretchImage;
             //initGrfPtt();
             //setGrfPtt("");
+        }
+        //private void setControlApm()
+        //{
+        //    ptt = ic.ivfDB.pttDB.selectByPk1(pttId);
+        //    vs = ic.ivfDB.vsDB.selectByPk1(vsid);
+        //    pApm = ic.ivfDB.pApmDB.selectByPk1(pApmId);
+        //    if (ptt.t_patient_id.Equals(""))
+        //    {
+        //        ptt = ic.ivfDB.pttDB.selectByIDold(pttId);
+        //    }
+        //    txtPttId.Value = ptt.t_patient_id;
+        //    txtVsId.Value = vs.t_visit_id;
+        //    txtHn.Value = ptt.patient_hn;
+        //    txtApmName.Value = ptt.Name;
+        //    txtApmRemark.Value = ptt.remark;
+        //    if (!pApm.t_patient_appointment_id.Equals(""))
+        //    {
+        //        txtApmDatepApm.Value = pApm.patient_appointment_date;
+        //    }
+        //    ic.setC1Combo(cboApmTimepApm, pApm.patient_appointment_time);
+        //    ic.setC1Combo(cboBsp, pApm.patient_appointment_servicepoint);
+        //    chkApmDonorE2.Checked = pApm.e2.Equals("1") ? true : false;
+        //    chkApmLh.Checked = pApm.lh.Equals("1") ? true : false;
+        //    chkApmFsh.Checked = pApm.fsh.Equals("1") ? true : false;
+        //    chkApmPrl.Checked = pApm.prl.Equals("1") ? true : false;
+        //    chkApmTvs.Checked = pApm.tvs.Equals("1") ? true : false;
+
+        //    chkApmRE2.Checked = pApm.repeat_e2.Equals("1") ? true : false;
+        //    chkApmRLh.Checked = pApm.repeat_lh.Equals("1") ? true : false;
+        //    chkApmRFsh.Checked = pApm.repeat_fsh.Equals("1") ? true : false;
+        //    chkApmRPrl.Checked = pApm.repeat_prl.Equals("1") ? true : false;
+        //    chkSperm.Checked = pApm.sperm_collect.Equals("1") ? true : false;
+        //    chkApmEt.Checked = pApm.e2.Equals("1") ? true : false;
+        //    chkApmFet.Checked = pApm.e2.Equals("1") ? true : false;
+        //    chkApmOther.Checked = pApm.e2.Equals("1") ? true : false;
+        //    txtApmRemark.Value = pApm.remark;
+        //    ic.setC1Combo(cboDoctor, pApm.patient_appointment_doctor);
+        //    txtApmID.Value = pApm.t_patient_appointment_id;
+        //    chkApmOpu.Checked = pApm.opu.Equals("1") ? true : false;
+        //    ic.setC1Combo(cboApmDtrAnes, pApm.doctor_anes);
+        //    cboApmDtrAnes.Enabled = chkApmOpu.Checked ? true : false;
+        //    txtApmTvsDay.Value = pApm.tvs_day;
+        //    txtApmTvsDay.Enabled = chkApmTvs.Checked ? true : false;
+        //    ic.setC1Combo(cboApmTvsTime, pApm.tvs_time);
+        //    ic.setC1Combo(cboApmOPUTime, pApm.opu_time);
+        //    chkApmHormoneTest.Checked = pApm.hormone_test.Equals("1") ? true : false;
+        //    chkApmHCG.Checked = pApm.beta_hgc.Equals("1") ? true : false;
+        //    chkApmOther.Checked = pApm.other.Equals("1") ? true : false;
+        //    txtApmOther.Value = pApm.other_remark;
+        //    ic.setC1Combo(cboApmETTime, pApm.et_time);
+        //    ic.setC1Combo(cboApmFETTime, pApm.fet_time);
+        //    ic.setC1Combo(cboApmOPUTime, pApm.opu_time);
+        //    ic.setC1Combo(cboApmTvsTime, pApm.tvs_time);
+        //    txtApmTvsDay.Value = pApm.tvs_day;
+        //    //chkOPU
+
+        //    ChkApmTvs_CheckedChanged(null, null);
+        //    ChkApmOpu_CheckedChanged(null, null);
+        //    ChkApmFet_CheckedChanged(null, null);
+        //    ChkApmEt_CheckedChanged(null, null);
+        //    ChkApmOther_CheckedChanged(null, null);
+        //    ChkApmTvsDonor_CheckedChanged(null, null);
+        //    ChkApmOpuDonor_CheckedChanged(null, null);
+
+        //    pttO = ic.ivfDB.pttOldDB.selectByPk1(pttId);
+        //    txtPttIdOld.Value = pttO.PID;
+        //    txtHn.Value = pttO.PIDS;
+        //    txtApmName.Value = pttO.FullName;
+
+        //    txtApmOPURemark.Value = "Not Allow to drink or eat from (งดน้ำ งดอาหาร ตั้งแต่เวลา)";
+
+        //    if (pApm.patient_appointment_servicepoint.Equals("") && cboBsp.Items.Count > 3)
+        //    {
+        //        cboBsp.SelectedIndex = 3;
+        //    }
+        //    PatientImage pttI = new PatientImage();
+        //    pttI = ic.ivfDB.pttImgDB.selectByPttIDStatus4(txtApmID.Text);
+        //    filenamepic = pttI.image_path;
+        //    Thread threadA = new Thread(new ParameterizedThreadStart(ExecuteA));
+        //    threadA.Start();
+        //}
+        private void initGrfpApmVisit()
+        {
+            grfpApmVisit = new C1FlexGrid();
+            grfpApmVisit.Font = fEdit;
+            grfpApmVisit.Dock = System.Windows.Forms.DockStyle.Fill;
+            grfpApmVisit.Location = new System.Drawing.Point(0, 0);
+
+            //FilterRow fr = new FilterRow(grfExpn);
+
+            //grfpApmAll.ContextMenu = menuGw;
+            pnApmVisit.Controls.Add(grfpApmVisit);
+
+            theme1.SetTheme(grfpApmVisit, "Office2016Colorful");
+
+        }
+        private void BtnApmPrint_Click(object sender, EventArgs e)
+        {
+            //throw new NotImplementedException();
+            FrmReport frm = new FrmReport(ic);
+            DataTable dt = new DataTable();
+            DataTable dtOld = new DataTable();
+            dt = ic.ivfDB.pApmDB.selectAppointmentByPk(txtApmID.Text);
+            dtOld = ic.ivfDB.pApmOldDB.selectAppointmentByPk(txtApmID.Text);
+
+            String date1 = "";
+            date1 = ic.datetoShow(dt.Rows[0][ic.ivfDB.pApmDB.pApm.patient_appointment_date].ToString());
+            dt.Rows[0][ic.ivfDB.pApmDB.pApm.patient_appointment_date] = date1;
+
+            frm.setAppointmentPatient(dt);
+            frm.ShowDialog(this);
+        }
+
+        private void ChkApmOpuDonor_CheckedChanged(object sender, EventArgs e)
+        {
+            //throw new NotImplementedException();
+            cboApmOPUTimeDonor.Enabled = chkApmOpuDonor.Checked ? true : false;
+            cboApmDtrAnes.Enabled = chkApmOpuDonor.Checked ? true : false;
+        }
+
+        private void ChkApmTvsDonor_CheckedChanged(object sender, EventArgs e)
+        {
+            //throw new NotImplementedException();
+            txtApmTvsDayDonor.Enabled = chkApmTvsDonor.Checked ? true : false;
+            cboApmTvsTimeDonor.Enabled = chkApmTvsDonor.Checked ? true : false;
+        }
+
+        private void ChkApmOther_CheckedChanged(object sender, EventArgs e)
+        {
+            //throw new NotImplementedException();
+            txtApmOther.Enabled = chkApmOther.Checked ? true : false;
+        }
+
+        private void ChkApmEt_CheckedChanged(object sender, EventArgs e)
+        {
+            //throw new NotImplementedException();
+            cboApmETTime.Enabled = chkApmEt.Checked ? true : false;
+        }
+
+        private void ChkApmFet_CheckedChanged(object sender, EventArgs e)
+        {
+            //throw new NotImplementedException();
+            cboApmFETTime.Enabled = chkApmFet.Checked ? true : false;
+        }
+
+        private void ChkApmOpu_CheckedChanged(object sender, EventArgs e)
+        {
+            //throw new NotImplementedException();
+            txtApmOPURemark.Enabled = chkApmOpu.Checked ? true : false;
+            cboApmOPUTime.Enabled = chkApmOpu.Checked ? true : false;
+            if (chkApmOpu.Checked)
+            {
+                txtApmRemarkpApm.Value = "Not Allow to drink or eat from (งดน้ำ งดอาหาร ตั้งแต่เวลา)";
+            }
+        }
+
+        private void ChkApmTvs_CheckedChanged(object sender, EventArgs e)
+        {
+            //throw new NotImplementedException();
+            txtApmTvsDay.Enabled = chkApmTvs.Checked ? true : false;
+            cboApmTvsTime.Enabled = chkApmTvs.Checked ? true : false;
+        }
+
+        private void setGrfpApmDay()
+        {
+            //grfDept.Rows.Count = 7;
+            grfpApmDayAll.Clear();
+            DataTable dt = new DataTable();
+
+            dt = ic.ivfDB.pApmDB.selectByDay(ic.datetoDB(txtApmDatepApm.Text), ic.datetoDB(txtApmDatepApm.Text));
+
+            //grfExpn.Rows.Count = dt.Rows.Count + 1;
+            grfpApmDayAll.Rows.Count = 1;
+            grfpApmDayAll.Cols.Count = 14;
+            C1TextBox txt = new C1TextBox();
+            //C1ComboBox cboproce = new C1ComboBox();
+            //ic.ivfDB.itmDB.setCboItem(cboproce);
+            grfpApmDayAll.Cols[colApmNotice].Editor = txt;
+            grfpApmDayAll.Cols[colApmAppointment].Editor = txt;
+            grfpApmDayAll.Cols[colApmDoctor].Editor = txt;
+            Column colE21 = grfpApmDayAll.Cols[colE2];
+            colE21.DataType = typeof(Image);
+            Column colLh1 = grfpApmDayAll.Cols[colLh];
+            colLh1.DataType = typeof(Image);
+            Column colEndo1 = grfpApmDayAll.Cols[colEndo];
+            colEndo1.DataType = typeof(Image);
+            Column colPrl1 = grfpApmDayAll.Cols[colPrl];
+            colPrl1.DataType = typeof(Image);
+            Column colFsh1 = grfpApmDayAll.Cols[colFsh];
+            colFsh1.DataType = typeof(Image);
+            Column colRt1 = grfpApmDayAll.Cols[colRt];
+            colRt1.DataType = typeof(Image);
+            Column colLt1 = grfpApmDayAll.Cols[colLt];
+            colLt1.DataType = typeof(Image);
+
+            grfpApmDayAll.Cols[colApmDate].Width = 100;
+            grfpApmDayAll.Cols[colApmTime].Width = 80;
+            grfpApmDayAll.Cols[colApmAppointment].Width = 120;
+            grfpApmDayAll.Cols[colApmDoctor].Width = 100;
+            grfpApmDayAll.Cols[colApmSp].Width = 80;
+            grfpApmDayAll.Cols[colApmNotice].Width = 200;
+            grfpApmDayAll.Cols[colE2].Width = 50;
+            grfpApmDayAll.Cols[colLh].Width = 50;
+            grfpApmDayAll.Cols[colEndo].Width = 50;
+            grfpApmDayAll.Cols[colPrl].Width = 50;
+            grfpApmDayAll.Cols[colFsh].Width = 50;
+            grfpApmDayAll.Cols[colRt].Width = 50;
+            grfpApmDayAll.Cols[colLt].Width = 50;
+
+            grfpApmDayAll.ShowCursor = true;
+            //grdFlex.Cols[colID].Caption = "no";
+            //grfDept.Cols[colCode].Caption = "รหัส";
+
+            grfpApmDayAll.Cols[colApmDate].Caption = "Date";
+            grfpApmDayAll.Cols[colApmTime].Caption = "time";
+            grfpApmDayAll.Cols[colApmAppointment].Caption = "นัด";
+            grfpApmDayAll.Cols[colApmDoctor].Caption = "Doctor";
+            grfpApmDayAll.Cols[colApmSp].Caption = "จุดบริการ";
+            grfpApmDayAll.Cols[colApmNotice].Caption = "แจ้ง";
+            grfpApmDayAll.Cols[colE2].Caption = "E2";
+            grfpApmDayAll.Cols[colLh].Caption = "LH";
+            grfpApmDayAll.Cols[colEndo].Caption = "Endo";
+            grfpApmDayAll.Cols[colPrl].Caption = "PRL";
+            grfpApmDayAll.Cols[colFsh].Caption = "FSH";
+            grfpApmDayAll.Cols[colRt].Caption = "Rt";
+            grfpApmDayAll.Cols[colLt].Caption = "Lt";
+
+            //ContextMenu menuGw = new ContextMenu();
+            //menuGw.MenuItems.Add("&ออก Visit", new EventHandler(ContextMenu_edit));
+            //grfpApmDayAll.ContextMenu = menuGw;
+
+            Color color = ColorTranslator.FromHtml(ic.iniC.grfRowColor);
+            //CellRange rg1 = grfBank.GetCellRange(1, colE, grfBank.Rows.Count, colE);
+            //rg1.Style = grfBank.Styles["date"];
+            //grfCu.Cols[colID].Visible = false;
+            int i = 1;
+            foreach (DataRow row in dt.Rows)
+            {
+                Row row1 = grfpApmDayAll.Rows.Add();
+                row1[0] = i;
+                row1[colApmId] = row[ic.ivfDB.pApmDB.pApm.t_patient_appointment_id].ToString();
+                row1[colApmDate] = ic.datetoShow(row[ic.ivfDB.pApmDB.pApm.patient_appointment_date].ToString());
+                row1[colApmTime] = row[ic.ivfDB.pApmDB.pApm.patient_appointment_time].ToString();
+                row1[colApmAppointment] = row[ic.ivfDB.pApmDB.pApm.patient_appointment].ToString();
+                row1[colApmDoctor] = row[ic.ivfDB.pApmDB.pApm.dtr_name];
+                row1[colApmSp] = row["service_point_description"].ToString();
+                row1[colApmNotice] = row[ic.ivfDB.pApmDB.pApm.patient_appointment_notice].ToString();
+
+                //row1[colE2] = row[ic.ivfDB.pApmDB.pApm.e2].ToString();
+                //row1[colLh] = row[ic.ivfDB.pApmDB.pApm.lh].ToString();
+                //row1[colEndo] = row[ic.ivfDB.pApmDB.pApm.endo].ToString();
+                //row1[colPrl] = row[ic.ivfDB.pApmDB.pApm.prl].ToString();
+                //row1[colFsh] = row[ic.ivfDB.pApmDB.pApm.fsh].ToString();
+                //row1[colRt] = row[ic.ivfDB.pApmDB.pApm.rt_ovary].ToString();
+                //row1[colLt] = row[ic.ivfDB.pApmDB.pApm.lt_ovary].ToString();
+                row1[colE2] = row[ic.ivfDB.pApmDB.pApm.e2] == null ? imgTran : row[ic.ivfDB.pApmDB.pApm.e2].ToString().Equals("1") ? imgCorr : imgTran;
+                row1[colLh] = row[ic.ivfDB.pApmDB.pApm.lh] == null ? imgTran : row[ic.ivfDB.pApmDB.pApm.lh].ToString().Equals("1") ? imgCorr : imgTran;
+                row1[colEndo] = row[ic.ivfDB.pApmDB.pApm.endo] == null ? imgTran : row[ic.ivfDB.pApmDB.pApm.endo].ToString().Equals("1") ? imgCorr : imgTran;
+                row1[colPrl] = row[ic.ivfDB.pApmDB.pApm.prl] == null ? imgTran : row[ic.ivfDB.pApmDB.pApm.prl].ToString().Equals("1") ? imgCorr : imgTran;
+                row1[colFsh] = row[ic.ivfDB.pApmDB.pApm.fsh] == null ? imgTran : row[ic.ivfDB.pApmDB.pApm.fsh].ToString().Equals("1") ? imgCorr : imgTran;
+                row1[colRt] = row[ic.ivfDB.pApmDB.pApm.rt_ovary] == null ? imgTran : row[ic.ivfDB.pApmDB.pApm.rt_ovary].ToString().Equals("1") ? imgCorr : imgTran;
+                row1[colLt] = row[ic.ivfDB.pApmDB.pApm.lt_ovary] == null ? imgTran : row[ic.ivfDB.pApmDB.pApm.lt_ovary].ToString().Equals("1") ? imgCorr : imgTran;
+                //if (i % 2 == 0)
+                //    grfPtt.Rows[i].StyleNew.BackColor = color;
+                i++;
+            }
+            //menuGw = new ContextMenu();
+            //grfpApmDayAll.ContextMenu = menuGw;
+            grfpApmDayAll.Cols[colE2].AllowEditing = false;
+            grfpApmDayAll.Cols[colLh].AllowEditing = false;
+            grfpApmDayAll.Cols[colEndo].AllowEditing = false;
+            grfpApmDayAll.Cols[colPrl].AllowEditing = false;
+            grfpApmDayAll.Cols[colFsh].AllowEditing = false;
+            grfpApmDayAll.Cols[colRt].AllowEditing = false;
+            grfpApmDayAll.Cols[colLt].AllowEditing = false;
+            grfpApmDayAll.Cols[colApmId].Visible = false;
+            theme1.SetTheme(grfpApmDayAll, ic.theme);
+
+        }
+        private void TxtApmDatepApm_ValueChanged(object sender, EventArgs e)
+        {
+            //throw new NotImplementedException();
+            setGrfpApmDay();
+        }
+        private void setControlApm()
+        {
+            //ptt = ic.ivfDB.pttDB.selectByPk1(pttId);
+            //vs = ic.ivfDB.vsDB.selectByPk1(vsid);
+            pApm = ic.ivfDB.pApmDB.selectByPk1(pApmId);
+            if (ptt.t_patient_id.Equals(""))
+            {
+                ptt = ic.ivfDB.pttDB.selectByIDold(pttId);
+            }
+            txtPttId.Value = ptt.t_patient_id;
+            //txtVsId.Value = vs.t_visit_id;
+            txtHn.Value = ptt.patient_hn;
+            txtApmName.Value = ptt.Name;
+            txtApmRemark.Value = ptt.remark;
+            if (!pApm.t_patient_appointment_id.Equals(""))
+            {
+                txtApmDatepApm.Value = pApm.patient_appointment_date;
+            }
+            ic.setC1Combo(cboApmTimepApm, pApm.patient_appointment_time);
+            ic.setC1Combo(cboBsp, pApm.patient_appointment_servicepoint);
+            chkApmDonorE2.Checked = pApm.e2.Equals("1") ? true : false;
+            chkApmLh.Checked = pApm.lh.Equals("1") ? true : false;
+            chkApmFsh.Checked = pApm.fsh.Equals("1") ? true : false;
+            chkApmPrl.Checked = pApm.prl.Equals("1") ? true : false;
+            chkApmTvs.Checked = pApm.tvs.Equals("1") ? true : false;
+
+            chkApmRE2.Checked = pApm.repeat_e2.Equals("1") ? true : false;
+            chkApmRLh.Checked = pApm.repeat_lh.Equals("1") ? true : false;
+            chkApmRFsh.Checked = pApm.repeat_fsh.Equals("1") ? true : false;
+            chkApmRPrl.Checked = pApm.repeat_prl.Equals("1") ? true : false;
+            chkApmSperm.Checked = pApm.sperm_collect.Equals("1") ? true : false;
+            chkApmEt.Checked = pApm.e2.Equals("1") ? true : false;
+            chkApmFet.Checked = pApm.e2.Equals("1") ? true : false;
+            chkApmOther.Checked = pApm.e2.Equals("1") ? true : false;
+            txtApmRemark.Value = pApm.remark;
+            ic.setC1Combo(cboDoctor, pApm.patient_appointment_doctor);
+            txtApmID.Value = pApm.t_patient_appointment_id;
+            chkApmOpu.Checked = pApm.opu.Equals("1") ? true : false;
+            ic.setC1Combo(cboApmDtrAnes, pApm.doctor_anes);
+            cboApmDtrAnes.Enabled = chkApmOpu.Checked ? true : false;
+            txtApmTvsDay.Value = pApm.tvs_day;
+            txtApmTvsDay.Enabled = chkApmTvs.Checked ? true : false;
+            ic.setC1Combo(cboApmTvsTime, pApm.tvs_time);
+            ic.setC1Combo(cboApmOPUTime, pApm.opu_time);
+            chkApmHormoneTest.Checked = pApm.hormone_test.Equals("1") ? true : false;
+            chkApmHCG.Checked = pApm.beta_hgc.Equals("1") ? true : false;
+            chkApmOther.Checked = pApm.other.Equals("1") ? true : false;
+            txtApmOther.Value = pApm.other_remark;
+            ic.setC1Combo(cboApmETTime, pApm.et_time);
+            ic.setC1Combo(cboApmFETTime, pApm.fet_time);
+            ic.setC1Combo(cboApmOPUTime, pApm.opu_time);
+            ic.setC1Combo(cboApmTvsTime, pApm.tvs_time);
+            txtApmTvsDay.Value = pApm.tvs_day;
+            //chkOPU
+
+            ChkApmTvs_CheckedChanged(null, null);
+            ChkApmOpu_CheckedChanged(null, null);
+            ChkApmFet_CheckedChanged(null, null);
+            ChkApmEt_CheckedChanged(null, null);
+            ChkApmOther_CheckedChanged(null, null);
+            ChkApmTvsDonor_CheckedChanged(null, null);
+            ChkApmOpuDonor_CheckedChanged(null, null);
+
+            pttO = ic.ivfDB.pttOldDB.selectByPk1(pttId);
+            txtPttIdOld.Value = pttO.PID;
+            txtHn.Value = pttO.PIDS;
+            txtApmName.Value = pttO.FullName;
+
+            txtApmOPURemark.Value = "Not Allow to drink or eat from (งดน้ำ งดอาหาร ตั้งแต่เวลา)";
+
+            if (pApm.patient_appointment_servicepoint.Equals("") && cboBsp.Items.Count > 3)
+            {
+                cboBsp.SelectedIndex = 3;
+            }
+            PatientImage pttI = new PatientImage();
+            pttI = ic.ivfDB.pttImgDB.selectByPttIDStatus4(txtApmID.Text);
+            filenamepic = pttI.image_path;
+            Thread threadA = new Thread(new ParameterizedThreadStart(ExecuteA));
+            threadA.Start();
+        }
+        private void ContextMenu_edit_apm(object sender, System.EventArgs e)
+        {
+            String chk = "", name = "", id = "";
+            id = grfpApmVisit[grfpApmVisit.Row, colApmId] != null ? grfpApmVisit[grfpApmVisit.Row, colApmId].ToString() : "";
+            pApmId = id;
+            setControlApm();
+
+        }
+        private void ContextMenu_edit_papm1(object sender, System.EventArgs e)
+        {
+            String chk = "", name = "", id = "";
+            id = grfpApmAll[grfpApmAll.Row, colApmId] != null ? grfpApmAll[grfpApmAll.Row, colApmId].ToString() : "";
+            pApmId = id;
+            setControlApm();
+
+        }
+        private void setGrfpApmVisit()
+        {
+            //grfDept.Rows.Count = 7;
+            grfpApmVisit.Clear();
+            DataTable dt = new DataTable();
+
+            dt = ic.ivfDB.pApmDB.selectByVisitId(vsid);
+            if (dt.Rows.Count <= 0)
+            {
+                VisitOld vsOld = new VisitOld();
+                vsOld = ic.ivfDB.ovsDB.selectByPk1(vsid);
+                Patient ptt = new Patient();
+                ptt = ic.ivfDB.pttDB.selectByIdOld(vsOld.PID);
+                dt = ic.ivfDB.pApmDB.selectByPtt(ptt.t_patient_id);
+            }
+
+            //grfExpn.Rows.Count = dt.Rows.Count + 1;
+            grfpApmVisit.Rows.Count = 1;
+            grfpApmVisit.Cols.Count = 14;
+            C1TextBox txt = new C1TextBox();
+            //C1ComboBox cboproce = new C1ComboBox();
+            //ic.ivfDB.itmDB.setCboItem(cboproce);
+            grfpApmVisit.Cols[colApmNotice].Editor = txt;
+            grfpApmVisit.Cols[colApmAppointment].Editor = txt;
+            grfpApmVisit.Cols[colApmDoctor].Editor = txt;
+            Column colE21 = grfpApmVisit.Cols[colE2];
+            colE21.DataType = typeof(Image);
+            Column colLh1 = grfpApmVisit.Cols[colLh];
+            colLh1.DataType = typeof(Image);
+            Column colEndo1 = grfpApmVisit.Cols[colEndo];
+            colEndo1.DataType = typeof(Image);
+            Column colPrl1 = grfpApmVisit.Cols[colPrl];
+            colPrl1.DataType = typeof(Image);
+            Column colFsh1 = grfpApmVisit.Cols[colFsh];
+            colFsh1.DataType = typeof(Image);
+            Column colRt1 = grfpApmVisit.Cols[colRt];
+            colRt1.DataType = typeof(Image);
+            Column colLt1 = grfpApmVisit.Cols[colLt];
+            colLt1.DataType = typeof(Image);
+
+            grfpApmVisit.Cols[colApmDate].Width = 100;
+            grfpApmVisit.Cols[colApmTime].Width = 80;
+            grfpApmVisit.Cols[colApmAppointment].Width = 120;
+            grfpApmVisit.Cols[colApmDoctor].Width = 100;
+            grfpApmVisit.Cols[colApmSp].Width = 80;
+            grfpApmVisit.Cols[colApmNotice].Width = 200;
+            grfpApmVisit.Cols[colE2].Width = 50;
+            grfpApmVisit.Cols[colLh].Width = 50;
+            grfpApmVisit.Cols[colEndo].Width = 50;
+            grfpApmVisit.Cols[colPrl].Width = 50;
+            grfpApmVisit.Cols[colFsh].Width = 50;
+            grfpApmVisit.Cols[colRt].Width = 50;
+            grfpApmVisit.Cols[colLt].Width = 50;
+
+            grfpApmVisit.ShowCursor = true;
+            //grdFlex.Cols[colID].Caption = "no";
+            //grfDept.Cols[colCode].Caption = "รหัส";
+
+            grfpApmVisit.Cols[colApmDate].Caption = "Date";
+            grfpApmVisit.Cols[colApmTime].Caption = "time";
+            grfpApmVisit.Cols[colApmAppointment].Caption = "นัด";
+            grfpApmVisit.Cols[colApmDoctor].Caption = "Doctor";
+            grfpApmVisit.Cols[colApmSp].Caption = "จุดบริการ";
+            grfpApmVisit.Cols[colApmNotice].Caption = "แจ้ง";
+            grfpApmVisit.Cols[colE2].Caption = "E2";
+            grfpApmVisit.Cols[colLh].Caption = "LH";
+            grfpApmVisit.Cols[colEndo].Caption = "Endo";
+            grfpApmVisit.Cols[colPrl].Caption = "PRL";
+            grfpApmVisit.Cols[colFsh].Caption = "FSH";
+            grfpApmVisit.Cols[colRt].Caption = "Rt";
+            grfpApmVisit.Cols[colLt].Caption = "Lt";
+
+            ContextMenu menuGw = new ContextMenu();
+            menuGw.MenuItems.Add("แก้ไข Appointment", new EventHandler(ContextMenu_edit_apm));
+            grfpApmVisit.ContextMenu = menuGw;
+
+            Color color = ColorTranslator.FromHtml(ic.iniC.grfRowColor);
+            //CellRange rg1 = grfBank.GetCellRange(1, colE, grfBank.Rows.Count, colE);
+            //rg1.Style = grfBank.Styles["date"];
+            //grfCu.Cols[colID].Visible = false;
+            int i = 1;
+            foreach (DataRow row in dt.Rows)
+            {
+                Row row1 = grfpApmVisit.Rows.Add();
+                row1[0] = i;
+                row1[colApmId] = row[ic.ivfDB.pApmDB.pApm.t_patient_appointment_id].ToString();
+                row1[colApmDate] = ic.datetoShow(row[ic.ivfDB.pApmDB.pApm.patient_appointment_date].ToString());
+                row1[colApmTime] = row[ic.ivfDB.pApmDB.pApm.patient_appointment_time].ToString();
+                row1[colApmAppointment] = row[ic.ivfDB.pApmDB.pApm.patient_appointment].ToString();
+                row1[colApmDoctor] = row[ic.ivfDB.pApmDB.pApm.dtr_name];
+                row1[colApmSp] = row["service_point_description"].ToString();
+                row1[colApmNotice] = row[ic.ivfDB.pApmDB.pApm.patient_appointment_notice].ToString();
+
+                //row1[colE2] = row[ic.ivfDB.pApmDB.pApm.e2].ToString();
+                //row1[colLh] = row[ic.ivfDB.pApmDB.pApm.lh].ToString();
+                //row1[colEndo] = row[ic.ivfDB.pApmDB.pApm.endo].ToString();
+                //row1[colPrl] = row[ic.ivfDB.pApmDB.pApm.prl].ToString();
+                //row1[colFsh] = row[ic.ivfDB.pApmDB.pApm.fsh].ToString();
+                //row1[colRt] = row[ic.ivfDB.pApmDB.pApm.rt_ovary].ToString();
+                //row1[colLt] = row[ic.ivfDB.pApmDB.pApm.lt_ovary].ToString();
+                row1[colE2] = row[ic.ivfDB.pApmDB.pApm.e2] == null ? imgTran : row[ic.ivfDB.pApmDB.pApm.e2].ToString().Equals("1") ? imgCorr : imgTran;
+                row1[colLh] = row[ic.ivfDB.pApmDB.pApm.lh] == null ? imgTran : row[ic.ivfDB.pApmDB.pApm.lh].ToString().Equals("1") ? imgCorr : imgTran;
+                row1[colEndo] = row[ic.ivfDB.pApmDB.pApm.endo] == null ? imgTran : row[ic.ivfDB.pApmDB.pApm.endo].ToString().Equals("1") ? imgCorr : imgTran;
+                row1[colPrl] = row[ic.ivfDB.pApmDB.pApm.prl] == null ? imgTran : row[ic.ivfDB.pApmDB.pApm.prl].ToString().Equals("1") ? imgCorr : imgTran;
+                row1[colFsh] = row[ic.ivfDB.pApmDB.pApm.fsh] == null ? imgTran : row[ic.ivfDB.pApmDB.pApm.fsh].ToString().Equals("1") ? imgCorr : imgTran;
+                row1[colRt] = row[ic.ivfDB.pApmDB.pApm.rt_ovary] == null ? imgTran : row[ic.ivfDB.pApmDB.pApm.rt_ovary].ToString().Equals("1") ? imgCorr : imgTran;
+                row1[colLt] = row[ic.ivfDB.pApmDB.pApm.lt_ovary] == null ? imgTran : row[ic.ivfDB.pApmDB.pApm.lt_ovary].ToString().Equals("1") ? imgCorr : imgTran;
+                //if (i % 2 == 0)
+                //    grfPtt.Rows[i].StyleNew.BackColor = color;
+                i++;
+            }
+            //menuGw = new ContextMenu();
+            //grfpApmVisit.ContextMenu = menuGw;
+            grfpApmVisit.Cols[colE2].AllowEditing = false;
+            grfpApmVisit.Cols[colLh].AllowEditing = false;
+            grfpApmVisit.Cols[colEndo].AllowEditing = false;
+            grfpApmVisit.Cols[colPrl].AllowEditing = false;
+            grfpApmVisit.Cols[colFsh].AllowEditing = false;
+            grfpApmVisit.Cols[colRt].AllowEditing = false;
+            grfpApmVisit.Cols[colLt].AllowEditing = false;
+            grfpApmVisit.Cols[colApmId].Visible = false;
+            theme1.SetTheme(grfpApmVisit, ic.theme);
+
+        }
+        private void setAppointmentOld()
+        {
+            pApmO.ID = txtApmIDOld.Text;
+            pApmO.PID = txtPttIdOld.Text;
+            pApmO.PIDS = txtHn.Text;
+            pApmO.AppDate = ic.datetoDB(txtApmDatepApm.Text);
+            pApmO.AppTime = cboApmTimepApm.Text;
+            pApmO.Doctor = cboDoctor.Text;
+            pApmO.Comment = txtApmRemark.Text;
+            pApmO.MobilePhoneNo = "";
+            pApmO.DateOfBirth = ic.datetoDB(txtDob.Text);
+            pApmO.HormoneTest = chkApmHormoneTest.Checked ? "1" : "0";
+            pApmO.BetaHCG = chkApmHCG.Checked ? "1" : "0";
+            pApmO.et = chkApmEt.Checked ? "1" : "0";
+            pApmO.OPU = chkApmOpu.Checked ? "1" : "0";
+            pApmO.TVS = chkApmTvs.Checked ? "1" : "0";
+            pApmO.sperm_colloect = chkApmSperm.Checked ? "1" : "0";
+            pApmO.ET_FET = chkApmFet.Checked ? "1" : "0";
+            pApmO.Other = chkApmOther.Checked ? "1" : "0";
+            pApmO.et_time = cboApmETTime.Text;
+            pApmO.ET_FET_Time = cboApmFETTime.Text;
+            pApmO.tvs_time = cboApmTvsTime.Text;
+            pApmO.OPUTime = cboApmOPUTime.Text;
+            pApmO.day1 = txtApmTvsDay.Text;
+            pApmO.OtherRemark = txtApmOther.Text;
+            pApmO.Status = "1";
+            pApmO.OPURemark = txtApmOPURemark.Text;
+            pApmO.PatientName = txtApmName.Text;
+            pApmO.PName = txtApmName.Text;
+            pApmO.PSurname = ptt.patient_firstname_e;
+        }
+        private Boolean setPatientAppointment()
+        {
+            Boolean chk = false;
+            pApm.t_patient_appointment_id = txtApmID.Text;
+            pApm.t_patient_id = txtPttId.Text;
+            pApm.patient_appoint_date_time = System.DateTime.Now.Year.ToString() + "-" + System.DateTime.Now.ToString("MM-dd");
+            DateTime dt = new DateTime();
+            if (DateTime.TryParse(txtApmDatepApm.Text, out dt))
+            {
+                pApm.patient_appointment_date = ic.datetoDB(txtApmDatepApm.Text);
+            }
+            else
+            {
+                chk = false;
+            }
+            if (cboApmTimepApm.Text.Equals(""))
+            {
+                chk = false;
+            }
+            pApm.patient_appointment_time = cboApmTimepApm.Text;
+            pApm.patient_appointment = txtAppointment.Text;
+            pApm.patient_appointment_doctor = cboDoctor.SelectedItem == null ? "" : ((ComboBoxItem)cboDoctor.SelectedItem).Value;
+            pApm.patient_appointment_servicepoint = cboBsp.SelectedItem == null ? "" : ((ComboBoxItem)cboBsp.SelectedItem).Value;
+            pApm.patient_appointment_notice = txtApmRemarkpApm.Text;
+            pApm.patient_appointment_staff = txtStfConfirmID.Text;
+
+            pApm.t_visit_id = txtVsId.Text;
+            pApm.patient_appointment_auto_visit = "";
+            pApm.b_visit_queue_setup_id = "";
+            pApm.patient_appointment_status = "";
+            pApm.patient_appointment_vn = "";
+            pApm.patient_appointment_staff_record = "";
+            pApm.patient_appointment_record_date_time = "";
+            pApm.patient_appointment_staff_update = "";
+            pApm.patient_appointment_update_date_time = "";
+            pApm.patient_appointment_staff_cancel = "";
+            pApm.patient_appointment_cancel_date_time = "";
+            pApm.patient_appointment_active = "";
+            pApm.r_rp1853_aptype_id = "";
+            pApm.patient_appointment_end_time = "";
+            pApm.appointment_confirm_date = "";
+            pApm.change_appointment_cause = "";
+            pApm.visit_id_make_appointment = "";
+            pApm.patient_appointment_clinic = "";
+
+            pApm.date_cancel = "";
+            pApm.date_create = "";
+            pApm.date_modi = "";
+            pApm.user_cancel = "";
+            pApm.user_create = "";
+            pApm.user_modi = "";
+            pApm.active = "1";
+
+            pApm.remark = "";
+            pApm.e2 = chkApmDonorE2.Checked ? "1" : "0";
+            pApm.beta_hgc = chkApmHCG.Checked ? "1" : "0";
+            pApm.prl = chkApmPrl.Checked ? "1" : "0";
+            pApm.lh = chkApmLh.Checked ? "1" : "0";
+            pApm.fet = chkApmFet.Checked ? "1" : "0";
+            pApm.hormone_test = chkApmHormoneTest.Checked ? "1" : "0";
+            pApm.fsh = chkApmFsh.Checked ? "1" : "0";
+            pApm.tvs = chkApmTvs.Checked ? "1" : "0";
+
+            pApm.repeat_e2 = chkApmRE2.Checked ? "1" : "0";
+            pApm.repeat_prl = chkApmRPrl.Checked ? "1" : "0";
+            pApm.repeat_lh = chkApmRLh.Checked ? "1" : "0";
+            pApm.repeat_fsh = chkApmRFsh.Checked ? "1" : "0";
+            pApm.opu = chkApmOpu.Checked ? "1" : "0";
+            pApm.doctor_anes = cboApmDtrAnes.Text;
+            pApm.tvs_day = txtApmTvsDay.Text;
+            pApm.tvs_time = cboApmTvsTime.Text;
+            pApm.opu_time = cboApmOPUTime.Text;
+            pApm.et_time = cboApmETTime.Text;
+            pApm.fet_time = cboApmFETTime.Text;
+            pApm.sperm_collect = chkApmSperm.Checked ? "1" : "0";
+            pApm.other = chkApmOther.Checked ? "1" : "0";
+            pApm.other_remark = txtApmOther.Text;
+            pApm.et = chkApmEt.Checked ? "1" : "0";
+            //pApm.opu = chkET.Checked ? "1" : "0";
+            return chk;
+        }
+        private void BtnApmSave_Click(object sender, EventArgs e)
+        {
+            //throw new NotImplementedException();
+            if (btnSave.Text.Equals("Confirm"))
+            {
+
+            }
+            else
+            {
+                ic.cStf.staff_id = "";
+                FrmPasswordConfirm frm = new FrmPasswordConfirm(ic);
+                frm.ShowDialog(this);
+                if (!ic.cStf.staff_id.Equals(""))
+                {
+                    txtUserReq.Value = ic.cStf.staff_fname_t + " " + ic.cStf.staff_lname_t;
+                    txtStfConfirmID.Value = ic.cStf.staff_id;
+                    btnSave.Text = "Confirm";
+                    btnSave.Image = Resources.Add_ticket_24;
+                    stt.Show("<p><b>สวัสดี</b></p>คุณ " + ic.cStf.staff_fname_t + " " + ic.cStf.staff_lname_t + "<br> กรุณายินยันการ confirm อีกครั้ง", txtAppointment);
+                    btnSave.Focus();
+
+                    stt.Hide();
+                    String re = "";
+                    // check ว่า มี patient ยัง ถ้ายังไม่มี ให้ insert patient
+                    //เป็นการเอา ข้อมูลจาก database เดิม
+                    Patient pttTemp = new Patient();
+                    pttTemp = ic.ivfDB.pttDB.selectByIdOld(txtPttIdOld.Text);
+                    if (pttTemp.t_patient_id.Equals(""))
+                    {
+                        C1ComboBox cbo = new C1ComboBox();
+                        ic.ivfDB.fpnDB.setCboNation(cbo, "");
+
+                        pttO = ic.ivfDB.pttOldDB.selectByPk1(pttId);
+                        ic.setC1ComboByName(cbo, pttO.Nationality);
+                        pttTemp = new Patient();
+                        pttTemp = ic.ivfDB.pttDB.setPatient1(pttTemp);
+                        pttTemp.t_patient_id_old = pttO.PID;
+                        pttTemp.patient_hn = pttO.PIDS;
+                        pttTemp.patient_firstname_e = pttO.PName;
+                        pttTemp.patient_lastname_e = pttO.PSurname;
+                        pttTemp.patient_firstname = pttO.OName;
+                        pttTemp.patient_lastname = pttO.OSurname;
+                        pttTemp.f_patient_prefix_id = pttO.SurfixID;
+
+                        pttTemp.f_sex_id = pttO.SexID;
+                        pttTemp.passport = pttO.IDNumber;
+                        pttTemp.patient_birthday = ic.datetoDB(pttO.DateOfBirth);
+                        pttTemp.email = pttO.Email;
+                        pttTemp.f_patient_nation_id = cbo.SelectedItem == null ? "" : ((ComboBoxItem)cbo.SelectedItem).Value;
+                        String[] name = pttO.EmergencyPersonalContact.Split(' ');
+                        if (name.Length > 1)
+                        {
+                            pttTemp.patient_contact_firstname = name[0];
+                            pttTemp.patient_contact_lastname = name[1];
+                        }
+                        ic.ivfDB.oAgnDB.setCboAgent(cbo, "");
+                        ic.setC1Combo(cbo, pttO.AgentID);
+                        pttTemp.agent = cbo.SelectedItem == null ? "" : ((ComboBoxItem)cbo.SelectedItem).Value;
+                        String re1 = ic.ivfDB.pttDB.insertPatient(pttTemp, txtStfConfirmID.Text);
+                        ptt.t_patient_id = re1;
+                        txtPttId.Value = re1;
+                        //pttTemp.patient_birthday = pttO.DateOfBirth;
+                        //pttTemp.patient_birthday = pttO.DateOfBirth;
+                    }
+                    setPatientAppointment();
+                    re = ic.ivfDB.pApmDB.insertPatientAppointment(pApm, txtStfConfirmID.Text);
+
+                    //txtID.Value = (!txtID.Text.Equals("") && re.Equals("1")) ? re : "";        //update
+                    long chk = 0;
+                    if (long.TryParse(re, out chk))
+                    {
+                        txtApmID.Value = txtApmID.Text.Equals("") ? re : txtApmID.Text;
+                        setAppointmentOld();
+                        //if (!ic.iniC.statusAppDonor.Equals("1"))
+                        //{
+                        String re1 = ic.ivfDB.pApmOldDB.insertAppointmentOld(pApmO, txtStfConfirmID.Text);
+                        //txtIDOld.Value = re1;
+                        txtApmIDOld.Value = txtApmIDOld.Text.Equals("") ? re1 : txtApmIDOld.Text;
+                        String re2 = ic.ivfDB.pApmDB.updateAppointmentIdOld(txtApmID.Text, re1);
+                        //if (int.TryParse(re1, out chk))
+                        //{
+                        //if (txtID.Text.Equals(""))
+                        //{
+                        //    //PatientOld pttOld = new PatientOld();
+                        //    //pttOld = ic.ivfDB.pttOldDB.selectByPk1(re1);
+                        //    String re2 = ic.ivfDB.pttDB.updatePID(re, re1);
+                        //    if (int.TryParse(re2, out chk))
+                        //    {
+                        String re4 = ic.ivfDB.vsDB.updateCloseStatusNurse(txtVsId.Text);
+                        String re3 = ic.ivfDB.vsDB.updateStatusAppointment(txtVsId.Text, txtApmID.Text);
+
+                        btnSave.Text = "Save";
+                        btnSave.Image = Resources.accept_database24;
+                        //        txtID.Value = re;
+                        //        txtPid.Focus();
+                        //    }
+                        //}
+                        //}
+                        //}
+
+                        System.Threading.Thread.Sleep(500);
+                        setGrfpApmAll();
+                        setGrfpApmVisit();
+                        setGrfpApmDay();
+                        //this.Dispose();
+                    }
+                }
+                else
+                {
+                    btnSave.Text = "Save";
+                    btnSave.Image = Resources.download_database24;
+                }
+            }
         }
 
         private void ChkDenyAllergy_CheckedChanged(object sender, EventArgs e)
@@ -462,7 +1225,7 @@ namespace clinic_ivf.gui
             grfpApmAll.Cols[colLt].Caption = "Lt";
 
             ContextMenu menuGw = new ContextMenu();
-            menuGw.MenuItems.Add("แก้ไข Appointment", new EventHandler(ContextMenu_edit_papm));
+            menuGw.MenuItems.Add("แก้ไข Appointment", new EventHandler(ContextMenu_edit_papm1));
             grfpApmAll.ContextMenu = menuGw;
 
             Color color = ColorTranslator.FromHtml(ic.iniC.grfRowColor);
@@ -522,6 +1285,36 @@ namespace clinic_ivf.gui
             FrmAppointmentAdd frm = new FrmAppointmentAdd(ic, pApmId, pttId, vsid);
             frm.ShowDialog(this);
             setGrfpApmAll();
+
+        }
+        private void initGrfpApmAll()
+        {
+            grfpApmAll = new C1FlexGrid();
+            grfpApmAll.Font = fEdit;
+            grfpApmAll.Dock = System.Windows.Forms.DockStyle.Fill;
+            grfpApmAll.Location = new System.Drawing.Point(0, 0);
+
+            //FilterRow fr = new FilterRow(grfExpn);
+
+            //grfpApmAll.ContextMenu = menuGw;
+            pnApmAll.Controls.Add(grfpApmAll);
+
+            theme1.SetTheme(grfpApmAll, "Office2016Colorful");
+
+        }
+        private void initGrfpApmDayAll()
+        {
+            grfpApmDayAll = new C1FlexGrid();
+            grfpApmDayAll.Font = fEdit;
+            grfpApmDayAll.Dock = System.Windows.Forms.DockStyle.Fill;
+            grfpApmDayAll.Location = new System.Drawing.Point(0, 0);
+
+            //FilterRow fr = new FilterRow(grfExpn);
+
+            //grfpApmAll.ContextMenu = menuGw;
+            pnApmDay.Controls.Add(grfpApmDayAll);
+
+            theme1.SetTheme(grfpApmDayAll, "Office2016Colorful");
 
         }
         private void initGrfNote()
@@ -601,12 +1394,15 @@ namespace clinic_ivf.gui
             ptt = ic.ivfDB.pttDB.selectByHn(vsOld.PIDS);
             ptt.patient_birthday = pttOld.DateOfBirth;
             txtHn.Value = vsOld.PIDS;
+            txtApmHn.Value = vsOld.PIDS;
             txtVn.Value = vsOld.VN;
             txtPttNameE.Value = vsOld.PName;
+            txtApmName.Value = vsOld.PName;
             txtDob.Value = ic.datetoShow(pttOld.DateOfBirth) + " [" + ptt.AgeStringShort() + "]";
             txtAllergy.Value = ptt.allergy_description;
             txtIdOld.Value = pttOld.PID;
             txtVnOld.Value = vsOld.VN;
+            txtVsId.Value = vs.t_visit_id;
             txtSex.Value = ptt.f_sex_id.Equals("1") ? "ชาย" : "หญิง";
             txtBg.Value = ptt.f_patient_blood_group_id.Equals("2140000005") ? "O"
                 : ptt.f_patient_blood_group_id.Equals("2140000002") ? "A" : ptt.f_patient_blood_group_id.Equals("2140000003") ? "B"
@@ -2380,6 +3176,8 @@ namespace clinic_ivf.gui
         {
             sC.HeaderHeight = 0;
             sCOrder.HeaderHeight = 0;
+            sCApm.HeaderHeight = 0;
+            sCApmAdd.HeaderHeight = 0;
             spPatient.Height = spHeight;
             rat = picPtt.Height / picPtt.Width;
             theme1.SetTheme(sC, theme1.Theme);
@@ -2388,6 +3186,8 @@ namespace clinic_ivf.gui
                 theme1.SetTheme(ctl, theme1.Theme);
             }
             tC.SelectedTab = tabDrug;
+            tCApm.SelectedTab = tabApmVisit;
+            tCApm1.SelectedTab = tabApmPtt;
         }
     }
 }
