@@ -38,6 +38,7 @@
             this.pnPatient = new System.Windows.Forms.Panel();
             this.cboAllergyDesc = new C1.Win.C1Input.C1ComboBox();
             this.txtCongenital = new C1.Win.C1Input.C1TextBox();
+            this.txtVsId = new C1.Win.C1Input.C1TextBox();
             this.c1Button1 = new C1.Win.C1Input.C1Button();
             this.btnSendDtr = new C1.Win.C1Input.C1Button();
             this.label22 = new System.Windows.Forms.Label();
@@ -162,6 +163,7 @@
             this.txtApmIDOld = new C1.Win.C1Input.C1TextBox();
             this.tCApm1 = new C1.Win.C1Command.C1DockingTab();
             this.tabApmPtt = new C1.Win.C1Command.C1DockingTabPage();
+            this.chkApmSperm = new C1.Win.C1Input.C1CheckBox();
             this.txtApmOther = new C1.Win.C1Input.C1TextBox();
             this.label100 = new System.Windows.Forms.Label();
             this.cboApmFETTime = new C1.Win.C1Input.C1ComboBox();
@@ -224,10 +226,9 @@
             this.groupBox37 = new System.Windows.Forms.GroupBox();
             this.txtPttIdOld = new C1.Win.C1Input.C1TextBox();
             this.txtPttId = new C1.Win.C1Input.C1TextBox();
-            this.txtVsId = new C1.Win.C1Input.C1TextBox();
             this.txtApmRemark = new C1.Win.C1Input.C1TextBox();
             this.label95 = new System.Windows.Forms.Label();
-            this.cbpApmDtr = new C1.Win.C1Input.C1ComboBox();
+            this.cboApmDtr = new C1.Win.C1Input.C1ComboBox();
             this.label96 = new System.Windows.Forms.Label();
             this.txtApmID = new C1.Win.C1Input.C1TextBox();
             this.label98 = new System.Windows.Forms.Label();
@@ -543,7 +544,7 @@
             this.c1TextBox45 = new C1.Win.C1Input.C1TextBox();
             this.tabEggSti = new C1.Win.C1Command.C1DockingTabPage();
             this.panel31 = new System.Windows.Forms.Panel();
-            this.panel33 = new System.Windows.Forms.Panel();
+            this.pnEggSti = new System.Windows.Forms.Panel();
             this.panel32 = new System.Windows.Forms.Panel();
             this.c1Button7 = new C1.Win.C1Input.C1Button();
             this.c1Button8 = new C1.Win.C1Input.C1Button();
@@ -561,7 +562,7 @@
             this.txtOPUDate = new C1.Win.C1Input.C1DateEdit();
             this.label123 = new System.Windows.Forms.Label();
             this.cboOther = new C1.Win.C1Input.C1ComboBox();
-            this.c1CheckBox91 = new C1.Win.C1Input.C1CheckBox();
+            this.chkEggStiOther = new C1.Win.C1Input.C1CheckBox();
             this.chkTyping = new C1.Win.C1Input.C1CheckBox();
             this.label115 = new System.Windows.Forms.Label();
             this.label116 = new System.Windows.Forms.Label();
@@ -574,7 +575,6 @@
             this.txtStfConfirmID = new C1.Win.C1Input.C1TextBox();
             this.txtUserReq = new C1.Win.C1Input.C1TextBox();
             this.label89 = new System.Windows.Forms.Label();
-            this.txtAppointment = new C1.Win.C1Input.C1TextBox();
             this.label90 = new System.Windows.Forms.Label();
             this.cboBsp = new C1.Win.C1Input.C1ComboBox();
             this.label91 = new System.Windows.Forms.Label();
@@ -585,7 +585,16 @@
             this.label92 = new System.Windows.Forms.Label();
             this.label93 = new System.Windows.Forms.Label();
             this.label94 = new System.Windows.Forms.Label();
-            this.chkApmSperm = new C1.Win.C1Input.C1CheckBox();
+            this.txtEggStiId = new C1.Win.C1Input.C1TextBox();
+            this.btnGenEggSti = new C1.Win.C1Input.C1Button();
+            this.txtVisitLMP = new C1.Win.C1Input.C1DateEdit();
+            this.label78 = new System.Windows.Forms.Label();
+            this.label79 = new System.Windows.Forms.Label();
+            this.txtA = new C1.Win.C1Input.C1TextBox();
+            this.label80 = new System.Windows.Forms.Label();
+            this.txtP = new C1.Win.C1Input.C1TextBox();
+            this.label81 = new System.Windows.Forms.Label();
+            this.txtG = new C1.Win.C1Input.C1TextBox();
             this.sB.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.theme1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.sC)).BeginInit();
@@ -596,6 +605,7 @@
             this.pnPatient.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.cboAllergyDesc)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtCongenital)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtVsId)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.c1Button1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnSendDtr)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtNameMale)).BeginInit();
@@ -690,6 +700,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.tCApm1)).BeginInit();
             this.tCApm1.SuspendLayout();
             this.tabApmPtt.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.chkApmSperm)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtApmOther)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cboApmFETTime)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkApmFet)).BeginInit();
@@ -736,9 +747,8 @@
             this.groupBox37.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtPttIdOld)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtPttId)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtVsId)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtApmRemark)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.cbpApmDtr)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cboApmDtr)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtApmID)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtApmName)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnSearch)).BeginInit();
@@ -949,7 +959,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtOPUTime)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtOPUDate)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cboOther)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.c1CheckBox91)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chkEggStiOther)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkTyping)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtAbnormal2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtAbnormal1)).BeginInit();
@@ -957,11 +967,15 @@
             ((System.ComponentModel.ISupportInitialize)(this.cboBhcg)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtStfConfirmID)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtUserReq)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtAppointment)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cboBsp)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnVoid)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnSave)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.chkApmSperm)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtEggStiId)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnGenEggSti)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtVisitLMP)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtA)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtP)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtG)).BeginInit();
             this.SuspendLayout();
             // 
             // sB
@@ -1141,6 +1155,19 @@
             this.txtCongenital.Tag = null;
             this.theme1.SetTheme(this.txtCongenital, "(default)");
             this.txtCongenital.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            // 
+            // txtVsId
+            // 
+            this.txtVsId.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtVsId.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
+            this.txtVsId.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.txtVsId.Location = new System.Drawing.Point(820, 7);
+            this.txtVsId.Name = "txtVsId";
+            this.txtVsId.Size = new System.Drawing.Size(30, 20);
+            this.txtVsId.TabIndex = 552;
+            this.txtVsId.Tag = null;
+            this.theme1.SetTheme(this.txtVsId, "(default)");
+            this.txtVsId.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
             // 
             // c1Button1
             // 
@@ -1466,7 +1493,6 @@
             this.txtVnOld.TabIndex = 828;
             this.txtVnOld.Tag = null;
             this.theme1.SetTheme(this.txtVnOld, "(default)");
-            this.txtVnOld.Visible = false;
             this.txtVnOld.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
             // 
             // txtIdOld
@@ -1480,7 +1506,6 @@
             this.txtIdOld.TabIndex = 827;
             this.txtIdOld.Tag = null;
             this.theme1.SetTheme(this.txtIdOld, "(default)");
-            this.txtIdOld.Visible = false;
             this.txtIdOld.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
             // 
             // btnFinish
@@ -2602,7 +2627,7 @@
             this.c1SplitterPanel4.SizeRatio = 35.421D;
             this.c1SplitterPanel4.TabIndex = 0;
             this.c1SplitterPanel4.Text = "Panel 1";
-            this.c1SplitterPanel4.Width = 560;
+            this.c1SplitterPanel4.Width = 553;
             // 
             // pnAdm
             // 
@@ -2671,7 +2696,7 @@
             this.c1SplitterPanel6.SizeRatio = 21.632D;
             this.c1SplitterPanel6.TabIndex = 0;
             this.c1SplitterPanel6.Text = "Panel 1";
-            this.c1SplitterPanel6.Width = 220;
+            this.c1SplitterPanel6.Width = 213;
             // 
             // pnApmAll
             // 
@@ -2852,6 +2877,24 @@
             this.tabApmPtt.Size = new System.Drawing.Size(678, 118);
             this.tabApmPtt.TabIndex = 0;
             this.tabApmPtt.Text = "Patient";
+            // 
+            // chkApmSperm
+            // 
+            this.chkApmSperm.BackColor = System.Drawing.Color.Transparent;
+            this.chkApmSperm.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
+            this.chkApmSperm.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.chkApmSperm.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.chkApmSperm.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.chkApmSperm.Location = new System.Drawing.Point(301, 83);
+            this.chkApmSperm.Name = "chkApmSperm";
+            this.chkApmSperm.Padding = new System.Windows.Forms.Padding(4, 1, 1, 1);
+            this.chkApmSperm.Size = new System.Drawing.Size(114, 24);
+            this.chkApmSperm.TabIndex = 705;
+            this.chkApmSperm.Text = "Sperm Collect";
+            this.theme1.SetTheme(this.chkApmSperm, "(default)");
+            this.chkApmSperm.UseVisualStyleBackColor = true;
+            this.chkApmSperm.Value = null;
+            this.chkApmSperm.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
             // 
             // txtApmOther
             // 
@@ -3837,7 +3880,7 @@
             this.groupBox37.Controls.Add(this.txtPttId);
             this.groupBox37.Controls.Add(this.txtApmRemark);
             this.groupBox37.Controls.Add(this.label95);
-            this.groupBox37.Controls.Add(this.cbpApmDtr);
+            this.groupBox37.Controls.Add(this.cboApmDtr);
             this.groupBox37.Controls.Add(this.label96);
             this.groupBox37.Controls.Add(this.txtApmID);
             this.groupBox37.Controls.Add(this.label98);
@@ -3883,20 +3926,6 @@
             this.txtPttId.Visible = false;
             this.txtPttId.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
             // 
-            // txtVsId
-            // 
-            this.txtVsId.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtVsId.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
-            this.txtVsId.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.txtVsId.Location = new System.Drawing.Point(820, 7);
-            this.txtVsId.Name = "txtVsId";
-            this.txtVsId.Size = new System.Drawing.Size(30, 20);
-            this.txtVsId.TabIndex = 552;
-            this.txtVsId.Tag = null;
-            this.theme1.SetTheme(this.txtVsId, "(default)");
-            this.txtVsId.Visible = false;
-            this.txtVsId.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
-            // 
             // txtApmRemark
             // 
             this.txtApmRemark.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
@@ -3923,27 +3952,27 @@
             this.label95.Text = "Remark :";
             this.theme1.SetTheme(this.label95, "(default)");
             // 
-            // cbpApmDtr
+            // cboApmDtr
             // 
-            this.cbpApmDtr.AllowSpinLoop = false;
-            this.cbpApmDtr.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
-            this.cbpApmDtr.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.cbpApmDtr.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
-            this.cbpApmDtr.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.cbpApmDtr.GapHeight = 0;
-            this.cbpApmDtr.ImagePadding = new System.Windows.Forms.Padding(0);
-            this.cbpApmDtr.ItemsDisplayMember = "";
-            this.cbpApmDtr.ItemsValueMember = "";
-            this.cbpApmDtr.Location = new System.Drawing.Point(446, 15);
-            this.cbpApmDtr.Name = "cbpApmDtr";
-            this.cbpApmDtr.Size = new System.Drawing.Size(207, 20);
-            this.cbpApmDtr.Style.DropDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.cbpApmDtr.Style.DropDownBorderColor = System.Drawing.Color.Gainsboro;
-            this.cbpApmDtr.Style.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.cbpApmDtr.TabIndex = 547;
-            this.cbpApmDtr.Tag = null;
-            this.theme1.SetTheme(this.cbpApmDtr, "(default)");
-            this.cbpApmDtr.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            this.cboApmDtr.AllowSpinLoop = false;
+            this.cboApmDtr.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
+            this.cboApmDtr.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.cboApmDtr.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
+            this.cboApmDtr.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.cboApmDtr.GapHeight = 0;
+            this.cboApmDtr.ImagePadding = new System.Windows.Forms.Padding(0);
+            this.cboApmDtr.ItemsDisplayMember = "";
+            this.cboApmDtr.ItemsValueMember = "";
+            this.cboApmDtr.Location = new System.Drawing.Point(446, 15);
+            this.cboApmDtr.Name = "cboApmDtr";
+            this.cboApmDtr.Size = new System.Drawing.Size(207, 20);
+            this.cboApmDtr.Style.DropDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.cboApmDtr.Style.DropDownBorderColor = System.Drawing.Color.Gainsboro;
+            this.cboApmDtr.Style.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.cboApmDtr.TabIndex = 547;
+            this.cboApmDtr.Tag = null;
+            this.theme1.SetTheme(this.cboApmDtr, "(default)");
+            this.cboApmDtr.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
             // 
             // label96
             // 
@@ -8932,7 +8961,7 @@
             // panel31
             // 
             this.panel31.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.panel31.Controls.Add(this.panel33);
+            this.panel31.Controls.Add(this.pnEggSti);
             this.panel31.Controls.Add(this.panel32);
             this.panel31.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel31.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
@@ -8942,21 +8971,31 @@
             this.panel31.TabIndex = 0;
             this.theme1.SetTheme(this.panel31, "(default)");
             // 
-            // panel33
+            // pnEggSti
             // 
-            this.panel33.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.panel33.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel33.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.panel33.Location = new System.Drawing.Point(0, 66);
-            this.panel33.Name = "panel33";
-            this.panel33.Size = new System.Drawing.Size(1585, 599);
-            this.panel33.TabIndex = 1;
-            this.theme1.SetTheme(this.panel33, "(default)");
+            this.pnEggSti.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.pnEggSti.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pnEggSti.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.pnEggSti.Location = new System.Drawing.Point(0, 66);
+            this.pnEggSti.Name = "pnEggSti";
+            this.pnEggSti.Size = new System.Drawing.Size(1585, 599);
+            this.pnEggSti.TabIndex = 1;
+            this.theme1.SetTheme(this.pnEggSti, "(default)");
             // 
             // panel32
             // 
             this.panel32.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.panel32.Controls.Add(this.label79);
+            this.panel32.Controls.Add(this.btnGenEggSti);
+            this.panel32.Controls.Add(this.txtA);
+            this.panel32.Controls.Add(this.txtVisitLMP);
+            this.panel32.Controls.Add(this.label80);
+            this.panel32.Controls.Add(this.label78);
+            this.panel32.Controls.Add(this.txtP);
+            this.panel32.Controls.Add(this.txtEggStiId);
+            this.panel32.Controls.Add(this.label81);
             this.panel32.Controls.Add(this.c1Button7);
+            this.panel32.Controls.Add(this.txtG);
             this.panel32.Controls.Add(this.c1Button8);
             this.panel32.Controls.Add(this.cboAmh);
             this.panel32.Controls.Add(this.chkAmh);
@@ -8972,7 +9011,7 @@
             this.panel32.Controls.Add(this.txtOPUDate);
             this.panel32.Controls.Add(this.label123);
             this.panel32.Controls.Add(this.cboOther);
-            this.panel32.Controls.Add(this.c1CheckBox91);
+            this.panel32.Controls.Add(this.chkEggStiOther);
             this.panel32.Controls.Add(this.chkTyping);
             this.panel32.Controls.Add(this.label115);
             this.panel32.Controls.Add(this.label116);
@@ -8993,7 +9032,7 @@
             // 
             this.c1Button7.Image = global::clinic_ivf.Properties.Resources.print;
             this.c1Button7.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.c1Button7.Location = new System.Drawing.Point(1282, 10);
+            this.c1Button7.Location = new System.Drawing.Point(1480, 16);
             this.c1Button7.Name = "c1Button7";
             this.c1Button7.Size = new System.Drawing.Size(83, 34);
             this.c1Button7.TabIndex = 982;
@@ -9007,7 +9046,7 @@
             // 
             this.c1Button8.Image = global::clinic_ivf.Properties.Resources.download_database24;
             this.c1Button8.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.c1Button8.Location = new System.Drawing.Point(1193, 7);
+            this.c1Button8.Location = new System.Drawing.Point(1391, 13);
             this.c1Button8.Name = "c1Button8";
             this.c1Button8.Size = new System.Drawing.Size(83, 39);
             this.c1Button8.TabIndex = 981;
@@ -9302,24 +9341,24 @@
             this.theme1.SetTheme(this.cboOther, "(default)");
             this.cboOther.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
             // 
-            // c1CheckBox91
+            // chkEggStiOther
             // 
-            this.c1CheckBox91.BackColor = System.Drawing.Color.Transparent;
-            this.c1CheckBox91.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
-            this.c1CheckBox91.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.c1CheckBox91.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.c1CheckBox91.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.c1CheckBox91.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.c1CheckBox91.Location = new System.Drawing.Point(403, 7);
-            this.c1CheckBox91.Name = "c1CheckBox91";
-            this.c1CheckBox91.Padding = new System.Windows.Forms.Padding(4, 1, 1, 1);
-            this.c1CheckBox91.Size = new System.Drawing.Size(62, 24);
-            this.c1CheckBox91.TabIndex = 966;
-            this.c1CheckBox91.Text = "Other";
-            this.theme1.SetTheme(this.c1CheckBox91, "(default)");
-            this.c1CheckBox91.UseVisualStyleBackColor = true;
-            this.c1CheckBox91.Value = null;
-            this.c1CheckBox91.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            this.chkEggStiOther.BackColor = System.Drawing.Color.Transparent;
+            this.chkEggStiOther.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
+            this.chkEggStiOther.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.chkEggStiOther.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.chkEggStiOther.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chkEggStiOther.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.chkEggStiOther.Location = new System.Drawing.Point(403, 7);
+            this.chkEggStiOther.Name = "chkEggStiOther";
+            this.chkEggStiOther.Padding = new System.Windows.Forms.Padding(4, 1, 1, 1);
+            this.chkEggStiOther.Size = new System.Drawing.Size(62, 24);
+            this.chkEggStiOther.TabIndex = 966;
+            this.chkEggStiOther.Text = "Other";
+            this.theme1.SetTheme(this.chkEggStiOther, "(default)");
+            this.chkEggStiOther.UseVisualStyleBackColor = true;
+            this.chkEggStiOther.Value = null;
+            this.chkEggStiOther.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
             // 
             // chkTyping
             // 
@@ -9501,19 +9540,6 @@
             this.label89.TabIndex = 663;
             this.theme1.SetTheme(this.label89, "(default)");
             // 
-            // txtAppointment
-            // 
-            this.txtAppointment.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtAppointment.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
-            this.txtAppointment.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.txtAppointment.Location = new System.Drawing.Point(69, 209);
-            this.txtAppointment.Name = "txtAppointment";
-            this.txtAppointment.Size = new System.Drawing.Size(620, 20);
-            this.txtAppointment.TabIndex = 563;
-            this.txtAppointment.Tag = null;
-            this.theme1.SetTheme(this.txtAppointment, "(default)");
-            this.txtAppointment.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
-            // 
             // label90
             // 
             this.label90.AutoSize = true;
@@ -9646,23 +9672,168 @@
             this.label94.TabIndex = 545;
             this.theme1.SetTheme(this.label94, "(default)");
             // 
-            // chkApmSperm
+            // txtEggStiId
             // 
-            this.chkApmSperm.BackColor = System.Drawing.Color.Transparent;
-            this.chkApmSperm.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
-            this.chkApmSperm.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.chkApmSperm.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.chkApmSperm.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.chkApmSperm.Location = new System.Drawing.Point(301, 83);
-            this.chkApmSperm.Name = "chkApmSperm";
-            this.chkApmSperm.Padding = new System.Windows.Forms.Padding(4, 1, 1, 1);
-            this.chkApmSperm.Size = new System.Drawing.Size(114, 24);
-            this.chkApmSperm.TabIndex = 705;
-            this.chkApmSperm.Text = "Sperm Collect";
-            this.theme1.SetTheme(this.chkApmSperm, "(default)");
-            this.chkApmSperm.UseVisualStyleBackColor = true;
-            this.chkApmSperm.Value = null;
-            this.chkApmSperm.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            this.txtEggStiId.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtEggStiId.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
+            this.txtEggStiId.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.txtEggStiId.Location = new System.Drawing.Point(1129, 7);
+            this.txtEggStiId.Name = "txtEggStiId";
+            this.txtEggStiId.Size = new System.Drawing.Size(30, 20);
+            this.txtEggStiId.TabIndex = 983;
+            this.txtEggStiId.Tag = null;
+            this.theme1.SetTheme(this.txtEggStiId, "(default)");
+            this.txtEggStiId.Visible = false;
+            this.txtEggStiId.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            // 
+            // btnGenEggSti
+            // 
+            this.btnGenEggSti.Location = new System.Drawing.Point(1326, 8);
+            this.btnGenEggSti.Name = "btnGenEggSti";
+            this.btnGenEggSti.Size = new System.Drawing.Size(28, 23);
+            this.btnGenEggSti.TabIndex = 986;
+            this.btnGenEggSti.Text = "...";
+            this.theme1.SetTheme(this.btnGenEggSti, "(default)");
+            this.btnGenEggSti.UseVisualStyleBackColor = true;
+            this.btnGenEggSti.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            // 
+            // txtVisitLMP
+            // 
+            this.txtVisitLMP.AllowSpinLoop = false;
+            this.txtVisitLMP.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            // 
+            // 
+            // 
+            this.txtVisitLMP.Calendar.ArrowColor = System.Drawing.Color.Black;
+            this.txtVisitLMP.Calendar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.txtVisitLMP.Calendar.DayNamesFont = new System.Drawing.Font("Tahoma", 8F);
+            this.txtVisitLMP.Calendar.Font = new System.Drawing.Font("Tahoma", 8F);
+            this.txtVisitLMP.Calendar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.txtVisitLMP.Calendar.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(71)))), ((int)(((byte)(47)))));
+            this.txtVisitLMP.Calendar.SelectionForeColor = System.Drawing.Color.White;
+            this.txtVisitLMP.Calendar.TitleBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(230)))));
+            this.txtVisitLMP.Calendar.TitleFont = new System.Drawing.Font("Tahoma", 8F);
+            this.txtVisitLMP.Calendar.TitleForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.txtVisitLMP.Calendar.TodayBorderColor = System.Drawing.Color.White;
+            this.txtVisitLMP.Calendar.TrailingForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
+            this.txtVisitLMP.Calendar.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            this.txtVisitLMP.Culture = 1054;
+            this.txtVisitLMP.CurrentTimeZone = false;
+            this.txtVisitLMP.DateTimeInput = false;
+            this.txtVisitLMP.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
+            this.txtVisitLMP.DisplayFormat.CalendarType = C1.Win.C1Input.CalendarType.GregorianCalendar;
+            this.txtVisitLMP.DisplayFormat.FormatType = C1.Win.C1Input.FormatTypeEnum.ShortDate;
+            this.txtVisitLMP.DisplayFormat.Inherit = ((C1.Win.C1Input.FormatInfoInheritFlags)(((((C1.Win.C1Input.FormatInfoInheritFlags.CustomFormat | C1.Win.C1Input.FormatInfoInheritFlags.NullText) 
+            | C1.Win.C1Input.FormatInfoInheritFlags.EmptyAsNull) 
+            | C1.Win.C1Input.FormatInfoInheritFlags.TrimStart) 
+            | C1.Win.C1Input.FormatInfoInheritFlags.TrimEnd)));
+            this.txtVisitLMP.EditFormat.CalendarType = C1.Win.C1Input.CalendarType.GregorianCalendar;
+            this.txtVisitLMP.EditFormat.FormatType = C1.Win.C1Input.FormatTypeEnum.ShortDate;
+            this.txtVisitLMP.EditFormat.Inherit = ((C1.Win.C1Input.FormatInfoInheritFlags)(((((C1.Win.C1Input.FormatInfoInheritFlags.CustomFormat | C1.Win.C1Input.FormatInfoInheritFlags.NullText) 
+            | C1.Win.C1Input.FormatInfoInheritFlags.EmptyAsNull) 
+            | C1.Win.C1Input.FormatInfoInheritFlags.TrimStart) 
+            | C1.Win.C1Input.FormatInfoInheritFlags.TrimEnd)));
+            this.txtVisitLMP.EmptyAsNull = true;
+            this.txtVisitLMP.GMTOffset = System.TimeSpan.Parse("00:00:00");
+            this.txtVisitLMP.ImagePadding = new System.Windows.Forms.Padding(0);
+            this.txtVisitLMP.Location = new System.Drawing.Point(1208, 11);
+            this.txtVisitLMP.Name = "txtVisitLMP";
+            this.txtVisitLMP.Size = new System.Drawing.Size(117, 18);
+            this.txtVisitLMP.TabIndex = 985;
+            this.txtVisitLMP.Tag = null;
+            this.theme1.SetTheme(this.txtVisitLMP, "(default)");
+            this.txtVisitLMP.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            // 
+            // label78
+            // 
+            this.label78.AutoSize = true;
+            this.label78.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.label78.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label78.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.label78.Location = new System.Drawing.Point(1165, 11);
+            this.label78.Name = "label78";
+            this.label78.Size = new System.Drawing.Size(41, 16);
+            this.label78.TabIndex = 984;
+            this.label78.Text = "LMP :";
+            this.theme1.SetTheme(this.label78, "(default)");
+            // 
+            // label79
+            // 
+            this.label79.AutoSize = true;
+            this.label79.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.label79.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label79.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.label79.Location = new System.Drawing.Point(1307, 39);
+            this.label79.Name = "label79";
+            this.label79.Size = new System.Drawing.Size(23, 16);
+            this.label79.TabIndex = 941;
+            this.label79.Text = "A :";
+            this.theme1.SetTheme(this.label79, "(default)");
+            // 
+            // txtA
+            // 
+            this.txtA.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtA.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
+            this.txtA.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.txtA.Location = new System.Drawing.Point(1337, 37);
+            this.txtA.Name = "txtA";
+            this.txtA.Size = new System.Drawing.Size(47, 20);
+            this.txtA.TabIndex = 940;
+            this.txtA.Tag = null;
+            this.theme1.SetTheme(this.txtA, "(default)");
+            this.txtA.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            // 
+            // label80
+            // 
+            this.label80.AutoSize = true;
+            this.label80.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.label80.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label80.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.label80.Location = new System.Drawing.Point(1221, 39);
+            this.label80.Name = "label80";
+            this.label80.Size = new System.Drawing.Size(23, 16);
+            this.label80.TabIndex = 939;
+            this.label80.Text = "P :";
+            this.theme1.SetTheme(this.label80, "(default)");
+            // 
+            // txtP
+            // 
+            this.txtP.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtP.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
+            this.txtP.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.txtP.Location = new System.Drawing.Point(1251, 37);
+            this.txtP.Name = "txtP";
+            this.txtP.Size = new System.Drawing.Size(47, 20);
+            this.txtP.TabIndex = 938;
+            this.txtP.Tag = null;
+            this.theme1.SetTheme(this.txtP, "(default)");
+            this.txtP.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            // 
+            // label81
+            // 
+            this.label81.AutoSize = true;
+            this.label81.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.label81.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label81.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.label81.Location = new System.Drawing.Point(1138, 39);
+            this.label81.Name = "label81";
+            this.label81.Size = new System.Drawing.Size(24, 16);
+            this.label81.TabIndex = 937;
+            this.label81.Text = "G :";
+            this.theme1.SetTheme(this.label81, "(default)");
+            // 
+            // txtG
+            // 
+            this.txtG.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtG.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
+            this.txtG.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.txtG.Location = new System.Drawing.Point(1168, 37);
+            this.txtG.Name = "txtG";
+            this.txtG.Size = new System.Drawing.Size(47, 20);
+            this.txtG.TabIndex = 936;
+            this.txtG.Tag = null;
+            this.theme1.SetTheme(this.txtG, "(default)");
+            this.txtG.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
             // 
             // FrmNurseAdd1
             // 
@@ -9688,6 +9859,7 @@
             this.pnPatient.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.cboAllergyDesc)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtCongenital)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtVsId)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.c1Button1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnSendDtr)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtNameMale)).EndInit();
@@ -9785,6 +9957,7 @@
             this.tCApm1.ResumeLayout(false);
             this.tabApmPtt.ResumeLayout(false);
             this.tabApmPtt.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.chkApmSperm)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtApmOther)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cboApmFETTime)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkApmFet)).EndInit();
@@ -9833,9 +10006,8 @@
             this.groupBox37.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtPttIdOld)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtPttId)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtVsId)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtApmRemark)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.cbpApmDtr)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cboApmDtr)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtApmID)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtApmName)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnSearch)).EndInit();
@@ -10082,7 +10254,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtOPUTime)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtOPUDate)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cboOther)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.c1CheckBox91)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chkEggStiOther)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkTyping)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtAbnormal2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtAbnormal1)).EndInit();
@@ -10090,11 +10262,15 @@
             ((System.ComponentModel.ISupportInitialize)(this.cboBhcg)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtStfConfirmID)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtUserReq)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtAppointment)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cboBsp)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnVoid)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnSave)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.chkApmSperm)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtEggStiId)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnGenEggSti)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtVisitLMP)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtA)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtP)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtG)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -10575,7 +10751,7 @@
         private C1.Win.C1Input.C1TextBox txtStfConfirmID;
         private C1.Win.C1Input.C1TextBox txtUserReq;
         private System.Windows.Forms.Label label89;
-        private C1.Win.C1Input.C1TextBox txtAppointment;
+        //private C1.Win.C1Input.C1TextBox txtAppointment;
         private System.Windows.Forms.Label label90;
         private C1.Win.C1Input.C1ComboBox cboBsp;
         private System.Windows.Forms.Label label91;
@@ -10606,7 +10782,7 @@
         private C1.Win.C1Input.C1TextBox txtVsId;
         private C1.Win.C1Input.C1TextBox txtApmRemark;
         private System.Windows.Forms.Label label95;
-        private C1.Win.C1Input.C1ComboBox cbpApmDtr;
+        private C1.Win.C1Input.C1ComboBox cboApmDtr;
         private System.Windows.Forms.Label label96;
         private C1.Win.C1Input.C1TextBox txtApmID;
         private System.Windows.Forms.Label label98;
@@ -10680,10 +10856,10 @@
         private System.Windows.Forms.Label label114;
         private C1.Win.C1Command.C1DockingTabPage tabEggSti;
         private System.Windows.Forms.Panel panel31;
-        private System.Windows.Forms.Panel panel33;
+        private System.Windows.Forms.Panel pnEggSti;
         private System.Windows.Forms.Panel panel32;
         private C1.Win.C1Input.C1ComboBox cboOther;
-        private C1.Win.C1Input.C1CheckBox c1CheckBox91;
+        private C1.Win.C1Input.C1CheckBox chkEggStiOther;
         private C1.Win.C1Input.C1CheckBox chkTyping;
         private System.Windows.Forms.Label label115;
         private System.Windows.Forms.Label label116;
@@ -10708,5 +10884,15 @@
         private C1.Win.C1Input.C1Button c1Button7;
         private C1.Win.C1Input.C1Button c1Button8;
         private C1.Win.C1Input.C1CheckBox chkApmSperm;
+        private C1.Win.C1Input.C1TextBox txtEggStiId;
+        private C1.Win.C1Input.C1Button btnGenEggSti;
+        private C1.Win.C1Input.C1DateEdit txtVisitLMP;
+        private System.Windows.Forms.Label label78;
+        private System.Windows.Forms.Label label79;
+        private C1.Win.C1Input.C1TextBox txtA;
+        private System.Windows.Forms.Label label80;
+        private C1.Win.C1Input.C1TextBox txtP;
+        private System.Windows.Forms.Label label81;
+        private C1.Win.C1Input.C1TextBox txtG;
     }
 }
