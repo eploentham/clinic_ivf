@@ -320,6 +320,23 @@ ADD COLUMN `doctor_id_old` VARCHAR(45) NULL COMMENT 'รหัสแพทย์
 UPDATE `ivf_101`.`b_staff` SET `doctor_id_old` = '1' WHERE (`staff_id` = '1220000041');
 UPDATE `ivf_101`.`b_staff` SET `doctor_id_old` = '2' WHERE (`staff_id` = '1220000042');
 
+19-05-03
+ALTER TABLE `ivf_101`.`nurse_t_egg_sti` 
+ADD COLUMN `day_start` VARCHAR(45) NULL AFTER `add_lab`;
+
+INSERT INTO `ivf_101`.`f_doc_type` (`doc_type_code`, `doc_type_name`, `active`, `status_combo`) VALUES ('Cereotide', 'Cereotide', '1', 'egg_sti_medication2');
+INSERT INTO `ivf_101`.`f_doc_type` (`doc_type_code`, `doc_type_name`, `active`, `status_combo`) VALUES ('Orgalutan', 'Orgalutan', '1', 'egg_sti_medication2');
+INSERT INTO `ivf_101`.`f_doc_type` (`doc_type_code`, `doc_type_name`, `active`, `status_combo`) VALUES ('Cetrotide+Oridvel(250mg)', 'Cetrotide+Oridvel(250mg)', '1', 'egg_sti_medication2');
+INSERT INTO `ivf_101`.`f_doc_type` (`doc_type_code`, `doc_type_name`, `active`, `status_combo`) VALUES ('Cetrotide+dip+pregnyl', 'Cetrotide+dip+pregnyl', '1', 'egg_sti_medication2');
+INSERT INTO `ivf_101`.`f_doc_type` (`doc_type_code`, `doc_type_name`, `active`, `status_combo`) VALUES ('Orgalutan+Dip+pregnyl', 'Orgalutan+Dip+pregnyl', '1', 'egg_sti_medication2');
+INSERT INTO `ivf_101`.`f_doc_type` (`doc_type_code`, `doc_type_name`, `active`, `status_combo`) VALUES ('Oridrel 250mg', 'Oridrel 250mg', '1', 'egg_sti_medication2');
+INSERT INTO `ivf_101`.`f_doc_type` (`doc_type_code`, `doc_type_name`, `active`, `status_combo`) VALUES ('Dip 0.0+Pregnyl 1500u', 'Dip 0.0+Pregnyl 1500u', '1', 'egg_sti_medication2');
+INSERT INTO `ivf_101`.`f_doc_type` (`doc_type_code`, `doc_type_name`, `active`, `status_combo`) VALUES ('Pregnyl 500u', 'Pregnyl 500u', '1', 'egg_sti_medication2');
+
+ALTER TABLE `ivf_101`.`nurse_t_egg_sti_day` 
+ADD COLUMN `medication2` VARCHAR(45) NULL AFTER `remark`;
+
+
 
 
 

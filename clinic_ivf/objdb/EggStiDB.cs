@@ -57,6 +57,7 @@ namespace clinic_ivf.objdb
             eggs.status_infectious = "status_infectious";
             eggs.status_add_lab = "status_add_lab";
             eggs.add_lab = "add_lab";
+            eggs.day_start = "day_start";
 
             eggs.table = "nurse_t_egg_sti";
             eggs.pkField = "egg_sti_id";
@@ -101,6 +102,7 @@ namespace clinic_ivf.objdb
             p.status_infectious = p.status_infectious == null ? "0" : p.status_infectious;
             p.status_add_lab = p.status_add_lab == null ? "0" : p.status_add_lab;
             p.add_lab = p.add_lab == null ? "" : p.add_lab;
+            p.day_start = p.day_start == null ? "" : p.day_start;
 
             //p.user_cancel = p.user_cancel == null ? "" : p.user_cancel;
         }
@@ -143,6 +145,7 @@ namespace clinic_ivf.objdb
                 "," + eggs.status_infectious + "='" + p.status_infectious + "'" +
                 "," + eggs.status_add_lab + "='" + p.status_add_lab + "'" +
                 "," + eggs.add_lab + "='" + p.add_lab + "'" +
+                "," + eggs.day_start + "='" + p.day_start + "'" +
                 " " +
 
                 "";
@@ -189,6 +192,8 @@ namespace clinic_ivf.objdb
                 "," + eggs.status_add_lab + "='" + p.status_add_lab + "'" +
                 "," + eggs.add_lab + "='" + p.add_lab + "'" +
                 "," + eggs.a + "='" + p.a + "'" +
+                "," + eggs.day_start + "='" + p.day_start + "'" +
+                "," + eggs.lmp_date + "='" + p.lmp_date + "'" +
                 "Where " + eggs.pkField + "='" + p.egg_sti_id + "'"
                 ;
 
@@ -517,6 +522,7 @@ namespace clinic_ivf.objdb
                 dept1.status_infectious = dt.Rows[0][eggs.status_infectious].ToString();
                 dept1.status_add_lab = dt.Rows[0][eggs.status_add_lab].ToString();
                 dept1.add_lab = dt.Rows[0][eggs.add_lab].ToString();
+                dept1.day_start = dt.Rows[0][eggs.day_start].ToString();
             }
             else
             {
@@ -553,6 +559,7 @@ namespace clinic_ivf.objdb
                 dept1.status_infectious = "";
                 dept1.status_add_lab = "";
                 dept1.add_lab = "";
+                dept1.day_start = "";
             }
             return dept1;
         }

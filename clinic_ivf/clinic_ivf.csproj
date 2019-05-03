@@ -403,6 +403,12 @@
     <Compile Include="gui\FrmPharmaPttView.Designer.cs">
       <DependentUpon>FrmPharmaPttView.cs</DependentUpon>
     </Compile>
+    <Compile Include="gui\FrmPharmaView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="gui\FrmPharmaView.Designer.cs">
+      <DependentUpon>FrmPharmaView.cs</DependentUpon>
+    </Compile>
     <Compile Include="gui\FrmPosition.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -921,6 +927,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="gui\FrmPharmaPttView.resx">
       <DependentUpon>FrmPharmaPttView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="gui\FrmPharmaView.resx">
+      <DependentUpon>FrmPharmaView.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="gui\FrmPosition.resx">
       <DependentUpon>FrmPosition.cs</DependentUpon>

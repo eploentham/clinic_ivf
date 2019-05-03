@@ -174,6 +174,52 @@
             this.pnOrder11 = new System.Windows.Forms.Panel();
             this.sB = new System.Windows.Forms.StatusStrip();
             this.sB1 = new System.Windows.Forms.ToolStripStatusLabel();
+            this.tabPregress = new C1.Win.C1Command.C1DockingTabPage();
+            this.tabEggSti = new C1.Win.C1Command.C1DockingTabPage();
+            this.panel4 = new System.Windows.Forms.Panel();
+            this.panel32 = new System.Windows.Forms.Panel();
+            this.txtEggStiDay = new C1.Win.C1Input.C1TextBox();
+            this.label85 = new System.Windows.Forms.Label();
+            this.cboEggStiDtr = new C1.Win.C1Input.C1ComboBox();
+            this.label82 = new System.Windows.Forms.Label();
+            this.txtAbnormal2 = new C1.Win.C1Input.C1TextBox();
+            this.label79 = new System.Windows.Forms.Label();
+            this.chkAbnormal = new C1.Win.C1Input.C1CheckBox();
+            this.btnGenEggSti = new C1.Win.C1Input.C1Button();
+            this.txtAbnormal1 = new C1.Win.C1Input.C1TextBox();
+            this.label116 = new System.Windows.Forms.Label();
+            this.txtEggStiA = new C1.Win.C1Input.C1TextBox();
+            this.label115 = new System.Windows.Forms.Label();
+            this.txtEggStiVisitLMP = new C1.Win.C1Input.C1DateEdit();
+            this.chkTyping = new C1.Win.C1Input.C1CheckBox();
+            this.label80 = new System.Windows.Forms.Label();
+            this.chkEggStiOther = new C1.Win.C1Input.C1CheckBox();
+            this.label78 = new System.Windows.Forms.Label();
+            this.txtEggStiId = new C1.Win.C1Input.C1TextBox();
+            this.txtEggStiP = new C1.Win.C1Input.C1TextBox();
+            this.cboEggStiOther = new C1.Win.C1Input.C1ComboBox();
+            this.label81 = new System.Windows.Forms.Label();
+            this.label119 = new System.Windows.Forms.Label();
+            this.btnEggStiPrint = new C1.Win.C1Input.C1Button();
+            this.chkEggStiInfection = new C1.Win.C1Input.C1CheckBox();
+            this.txtEggStiG = new C1.Win.C1Input.C1TextBox();
+            this.label118 = new System.Windows.Forms.Label();
+            this.btnEggStiSave = new C1.Win.C1Input.C1Button();
+            this.chkAmh = new C1.Win.C1Input.C1CheckBox();
+            this.label120 = new System.Windows.Forms.Label();
+            this.cboEggStiAmh = new C1.Win.C1Input.C1ComboBox();
+            this.txtEggStiEmbryoTranferTime = new C1.Win.C1Input.C1TextBox();
+            this.label121 = new System.Windows.Forms.Label();
+            this.txtEggStiEmbryoTranferDate = new C1.Win.C1Input.C1DateEdit();
+            this.label122 = new System.Windows.Forms.Label();
+            this.txtEggStiOPUTime = new C1.Win.C1Input.C1TextBox();
+            this.txtEggStiOPUDate = new C1.Win.C1Input.C1DateEdit();
+            this.label123 = new System.Windows.Forms.Label();
+            this.cboEggStiBhcg = new C1.Win.C1Input.C1ComboBox();
+            this.label117 = new System.Windows.Forms.Label();
+            this.pnEggSti = new System.Windows.Forms.Panel();
+            this.txtPttId = new C1.Win.C1Input.C1TextBox();
+            this.txtVsId = new C1.Win.C1Input.C1TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.theme1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkDenyAllergy)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.sCmain)).BeginInit();
@@ -274,6 +320,35 @@
             ((System.ComponentModel.ISupportInitialize)(this.btnNoteAdd)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtNote)).BeginInit();
             this.sB.SuspendLayout();
+            this.tabEggSti.SuspendLayout();
+            this.panel4.SuspendLayout();
+            this.panel32.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtEggStiDay)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cboEggStiDtr)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtAbnormal2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chkAbnormal)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnGenEggSti)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtAbnormal1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtEggStiA)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtEggStiVisitLMP)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chkTyping)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chkEggStiOther)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtEggStiId)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtEggStiP)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cboEggStiOther)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnEggStiPrint)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chkEggStiInfection)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtEggStiG)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnEggStiSave)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chkAmh)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cboEggStiAmh)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtEggStiEmbryoTranferTime)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtEggStiEmbryoTranferDate)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtEggStiOPUTime)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtEggStiOPUDate)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cboEggStiBhcg)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtPttId)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtVsId)).BeginInit();
             this.SuspendLayout();
             // 
             // theme1
@@ -408,6 +483,8 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.panel1.Controls.Add(this.txtVsId);
+            this.panel1.Controls.Add(this.txtPttId);
             this.panel1.Controls.Add(this.label25);
             this.panel1.Controls.Add(this.cboLangSticker);
             this.panel1.Controls.Add(this.label22);
@@ -1021,6 +1098,8 @@
             this.tC.Controls.Add(this.tabNote);
             this.tC.Controls.Add(this.tabOrPtt);
             this.tC.Controls.Add(this.tabScanPtt);
+            this.tC.Controls.Add(this.tabPregress);
+            this.tC.Controls.Add(this.tabEggSti);
             this.tC.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tC.HotTrack = true;
             this.tC.Location = new System.Drawing.Point(0, 0);
@@ -1087,7 +1166,7 @@
             this.c1SplitterPanel5.Size = new System.Drawing.Size(782, 629);
             this.c1SplitterPanel5.TabIndex = 0;
             this.c1SplitterPanel5.Text = "Panel 1";
-            this.c1SplitterPanel5.Width = 789;
+            this.c1SplitterPanel5.Width = 782;
             // 
             // panel12
             // 
@@ -2206,6 +2285,805 @@
             this.sB1.Size = new System.Drawing.Size(118, 17);
             this.sB1.Text = "toolStripStatusLabel1";
             // 
+            // tabPregress
+            // 
+            this.tabPregress.Location = new System.Drawing.Point(1, 24);
+            this.tabPregress.Name = "tabPregress";
+            this.tabPregress.Size = new System.Drawing.Size(1582, 650);
+            this.tabPregress.TabIndex = 8;
+            this.tabPregress.Text = "Progress Note";
+            // 
+            // tabEggSti
+            // 
+            this.tabEggSti.Controls.Add(this.panel4);
+            this.tabEggSti.Location = new System.Drawing.Point(1, 24);
+            this.tabEggSti.Name = "tabEggSti";
+            this.tabEggSti.Size = new System.Drawing.Size(1582, 650);
+            this.tabEggSti.TabIndex = 9;
+            this.tabEggSti.Text = "ใบกระตุ้นไข่";
+            // 
+            // panel4
+            // 
+            this.panel4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.panel4.Controls.Add(this.pnEggSti);
+            this.panel4.Controls.Add(this.panel32);
+            this.panel4.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.panel4.Location = new System.Drawing.Point(0, 0);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(1582, 650);
+            this.panel4.TabIndex = 0;
+            this.theme1.SetTheme(this.panel4, "(default)");
+            // 
+            // panel32
+            // 
+            this.panel32.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.panel32.Controls.Add(this.txtEggStiDay);
+            this.panel32.Controls.Add(this.label85);
+            this.panel32.Controls.Add(this.cboEggStiDtr);
+            this.panel32.Controls.Add(this.label82);
+            this.panel32.Controls.Add(this.txtAbnormal2);
+            this.panel32.Controls.Add(this.label79);
+            this.panel32.Controls.Add(this.chkAbnormal);
+            this.panel32.Controls.Add(this.btnGenEggSti);
+            this.panel32.Controls.Add(this.txtAbnormal1);
+            this.panel32.Controls.Add(this.label116);
+            this.panel32.Controls.Add(this.txtEggStiA);
+            this.panel32.Controls.Add(this.label115);
+            this.panel32.Controls.Add(this.txtEggStiVisitLMP);
+            this.panel32.Controls.Add(this.chkTyping);
+            this.panel32.Controls.Add(this.label80);
+            this.panel32.Controls.Add(this.chkEggStiOther);
+            this.panel32.Controls.Add(this.label78);
+            this.panel32.Controls.Add(this.txtEggStiId);
+            this.panel32.Controls.Add(this.txtEggStiP);
+            this.panel32.Controls.Add(this.cboEggStiOther);
+            this.panel32.Controls.Add(this.label81);
+            this.panel32.Controls.Add(this.label119);
+            this.panel32.Controls.Add(this.btnEggStiPrint);
+            this.panel32.Controls.Add(this.chkEggStiInfection);
+            this.panel32.Controls.Add(this.txtEggStiG);
+            this.panel32.Controls.Add(this.label118);
+            this.panel32.Controls.Add(this.btnEggStiSave);
+            this.panel32.Controls.Add(this.chkAmh);
+            this.panel32.Controls.Add(this.label120);
+            this.panel32.Controls.Add(this.cboEggStiAmh);
+            this.panel32.Controls.Add(this.txtEggStiEmbryoTranferTime);
+            this.panel32.Controls.Add(this.label121);
+            this.panel32.Controls.Add(this.txtEggStiEmbryoTranferDate);
+            this.panel32.Controls.Add(this.label122);
+            this.panel32.Controls.Add(this.txtEggStiOPUTime);
+            this.panel32.Controls.Add(this.txtEggStiOPUDate);
+            this.panel32.Controls.Add(this.label123);
+            this.panel32.Controls.Add(this.cboEggStiBhcg);
+            this.panel32.Controls.Add(this.label117);
+            this.panel32.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel32.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.panel32.Location = new System.Drawing.Point(0, 0);
+            this.panel32.Name = "panel32";
+            this.panel32.Size = new System.Drawing.Size(1582, 70);
+            this.panel32.TabIndex = 1;
+            this.theme1.SetTheme(this.panel32, "(default)");
+            // 
+            // txtEggStiDay
+            // 
+            this.txtEggStiDay.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtEggStiDay.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
+            this.txtEggStiDay.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.txtEggStiDay.Location = new System.Drawing.Point(209, 6);
+            this.txtEggStiDay.Name = "txtEggStiDay";
+            this.txtEggStiDay.Size = new System.Drawing.Size(47, 20);
+            this.txtEggStiDay.TabIndex = 990;
+            this.txtEggStiDay.Tag = null;
+            this.theme1.SetTheme(this.txtEggStiDay, "(default)");
+            this.txtEggStiDay.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            // 
+            // label85
+            // 
+            this.label85.AutoSize = true;
+            this.label85.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.label85.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label85.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.label85.Location = new System.Drawing.Point(173, 7);
+            this.label85.Name = "label85";
+            this.label85.Size = new System.Drawing.Size(37, 16);
+            this.label85.TabIndex = 989;
+            this.label85.Text = "day :";
+            this.theme1.SetTheme(this.label85, "(default)");
+            // 
+            // cboEggStiDtr
+            // 
+            this.cboEggStiDtr.AllowSpinLoop = false;
+            this.cboEggStiDtr.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.cboEggStiDtr.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
+            this.cboEggStiDtr.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.cboEggStiDtr.GapHeight = 0;
+            this.cboEggStiDtr.ImagePadding = new System.Windows.Forms.Padding(0);
+            this.cboEggStiDtr.ItemsDisplayMember = "";
+            this.cboEggStiDtr.ItemsValueMember = "";
+            this.cboEggStiDtr.Location = new System.Drawing.Point(1185, 47);
+            this.cboEggStiDtr.Name = "cboEggStiDtr";
+            this.cboEggStiDtr.Size = new System.Drawing.Size(208, 20);
+            this.cboEggStiDtr.Style.DropDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.cboEggStiDtr.Style.DropDownBorderColor = System.Drawing.Color.Gainsboro;
+            this.cboEggStiDtr.Style.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.cboEggStiDtr.TabIndex = 988;
+            this.cboEggStiDtr.Tag = null;
+            this.theme1.SetTheme(this.cboEggStiDtr, "(default)");
+            this.cboEggStiDtr.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            // 
+            // label82
+            // 
+            this.label82.AutoSize = true;
+            this.label82.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.label82.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label82.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.label82.Location = new System.Drawing.Point(1127, 48);
+            this.label82.Name = "label82";
+            this.label82.Size = new System.Drawing.Size(54, 16);
+            this.label82.TabIndex = 987;
+            this.label82.Text = "Doctor :";
+            this.theme1.SetTheme(this.label82, "(default)");
+            // 
+            // txtAbnormal2
+            // 
+            this.txtAbnormal2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtAbnormal2.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
+            this.txtAbnormal2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.txtAbnormal2.Location = new System.Drawing.Point(496, 6);
+            this.txtAbnormal2.Name = "txtAbnormal2";
+            this.txtAbnormal2.Size = new System.Drawing.Size(70, 20);
+            this.txtAbnormal2.TabIndex = 963;
+            this.txtAbnormal2.Tag = null;
+            this.theme1.SetTheme(this.txtAbnormal2, "(default)");
+            this.txtAbnormal2.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            // 
+            // label79
+            // 
+            this.label79.AutoSize = true;
+            this.label79.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.label79.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label79.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.label79.Location = new System.Drawing.Point(1129, 27);
+            this.label79.Name = "label79";
+            this.label79.Size = new System.Drawing.Size(23, 16);
+            this.label79.TabIndex = 941;
+            this.label79.Text = "A :";
+            this.theme1.SetTheme(this.label79, "(default)");
+            // 
+            // chkAbnormal
+            // 
+            this.chkAbnormal.BackColor = System.Drawing.Color.Transparent;
+            this.chkAbnormal.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
+            this.chkAbnormal.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.chkAbnormal.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.chkAbnormal.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chkAbnormal.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.chkAbnormal.Location = new System.Drawing.Point(318, 2);
+            this.chkAbnormal.Name = "chkAbnormal";
+            this.chkAbnormal.Padding = new System.Windows.Forms.Padding(4, 1, 1, 1);
+            this.chkAbnormal.Size = new System.Drawing.Size(87, 24);
+            this.chkAbnormal.TabIndex = 961;
+            this.chkAbnormal.Text = "Abnormal";
+            this.theme1.SetTheme(this.chkAbnormal, "(default)");
+            this.chkAbnormal.UseVisualStyleBackColor = true;
+            this.chkAbnormal.Value = null;
+            this.chkAbnormal.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            // 
+            // btnGenEggSti
+            // 
+            this.btnGenEggSti.Location = new System.Drawing.Point(262, 4);
+            this.btnGenEggSti.Name = "btnGenEggSti";
+            this.btnGenEggSti.Size = new System.Drawing.Size(28, 23);
+            this.btnGenEggSti.TabIndex = 986;
+            this.btnGenEggSti.Text = "...";
+            this.theme1.SetTheme(this.btnGenEggSti, "(default)");
+            this.btnGenEggSti.UseVisualStyleBackColor = true;
+            this.btnGenEggSti.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            // 
+            // txtAbnormal1
+            // 
+            this.txtAbnormal1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtAbnormal1.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
+            this.txtAbnormal1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.txtAbnormal1.Location = new System.Drawing.Point(407, 6);
+            this.txtAbnormal1.Name = "txtAbnormal1";
+            this.txtAbnormal1.Size = new System.Drawing.Size(70, 20);
+            this.txtAbnormal1.TabIndex = 962;
+            this.txtAbnormal1.Tag = null;
+            this.theme1.SetTheme(this.txtAbnormal1, "(default)");
+            this.txtAbnormal1.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            // 
+            // label116
+            // 
+            this.label116.AutoSize = true;
+            this.label116.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.label116.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label116.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.label116.Location = new System.Drawing.Point(481, 8);
+            this.label116.Name = "label116";
+            this.label116.Size = new System.Drawing.Size(12, 16);
+            this.label116.TabIndex = 964;
+            this.label116.Text = "/";
+            this.theme1.SetTheme(this.label116, "(default)");
+            // 
+            // txtEggStiA
+            // 
+            this.txtEggStiA.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtEggStiA.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
+            this.txtEggStiA.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.txtEggStiA.Location = new System.Drawing.Point(1153, 25);
+            this.txtEggStiA.Name = "txtEggStiA";
+            this.txtEggStiA.Size = new System.Drawing.Size(47, 20);
+            this.txtEggStiA.TabIndex = 940;
+            this.txtEggStiA.Tag = null;
+            this.theme1.SetTheme(this.txtEggStiA, "(default)");
+            this.txtEggStiA.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            // 
+            // label115
+            // 
+            this.label115.AutoSize = true;
+            this.label115.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.label115.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label115.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.label115.Location = new System.Drawing.Point(569, 8);
+            this.label115.Name = "label115";
+            this.label115.Size = new System.Drawing.Size(28, 16);
+            this.label115.TabIndex = 960;
+            this.label115.Text = "RN";
+            this.theme1.SetTheme(this.label115, "(default)");
+            // 
+            // txtEggStiVisitLMP
+            // 
+            this.txtEggStiVisitLMP.AllowSpinLoop = false;
+            this.txtEggStiVisitLMP.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            // 
+            // 
+            // 
+            this.txtEggStiVisitLMP.Calendar.ArrowColor = System.Drawing.Color.Black;
+            this.txtEggStiVisitLMP.Calendar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.txtEggStiVisitLMP.Calendar.DayNamesFont = new System.Drawing.Font("Tahoma", 8F);
+            this.txtEggStiVisitLMP.Calendar.Font = new System.Drawing.Font("Tahoma", 8F);
+            this.txtEggStiVisitLMP.Calendar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.txtEggStiVisitLMP.Calendar.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(71)))), ((int)(((byte)(47)))));
+            this.txtEggStiVisitLMP.Calendar.SelectionForeColor = System.Drawing.Color.White;
+            this.txtEggStiVisitLMP.Calendar.TitleBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(230)))));
+            this.txtEggStiVisitLMP.Calendar.TitleFont = new System.Drawing.Font("Tahoma", 8F);
+            this.txtEggStiVisitLMP.Calendar.TitleForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.txtEggStiVisitLMP.Calendar.TodayBorderColor = System.Drawing.Color.White;
+            this.txtEggStiVisitLMP.Calendar.TrailingForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
+            this.txtEggStiVisitLMP.Calendar.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            this.txtEggStiVisitLMP.Culture = 1054;
+            this.txtEggStiVisitLMP.CurrentTimeZone = false;
+            this.txtEggStiVisitLMP.DateTimeInput = false;
+            this.txtEggStiVisitLMP.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
+            this.txtEggStiVisitLMP.DisplayFormat.CalendarType = C1.Win.C1Input.CalendarType.GregorianCalendar;
+            this.txtEggStiVisitLMP.DisplayFormat.FormatType = C1.Win.C1Input.FormatTypeEnum.ShortDate;
+            this.txtEggStiVisitLMP.DisplayFormat.Inherit = ((C1.Win.C1Input.FormatInfoInheritFlags)(((((C1.Win.C1Input.FormatInfoInheritFlags.CustomFormat | C1.Win.C1Input.FormatInfoInheritFlags.NullText) 
+            | C1.Win.C1Input.FormatInfoInheritFlags.EmptyAsNull) 
+            | C1.Win.C1Input.FormatInfoInheritFlags.TrimStart) 
+            | C1.Win.C1Input.FormatInfoInheritFlags.TrimEnd)));
+            this.txtEggStiVisitLMP.EditFormat.CalendarType = C1.Win.C1Input.CalendarType.GregorianCalendar;
+            this.txtEggStiVisitLMP.EditFormat.FormatType = C1.Win.C1Input.FormatTypeEnum.ShortDate;
+            this.txtEggStiVisitLMP.EditFormat.Inherit = ((C1.Win.C1Input.FormatInfoInheritFlags)(((((C1.Win.C1Input.FormatInfoInheritFlags.CustomFormat | C1.Win.C1Input.FormatInfoInheritFlags.NullText) 
+            | C1.Win.C1Input.FormatInfoInheritFlags.EmptyAsNull) 
+            | C1.Win.C1Input.FormatInfoInheritFlags.TrimStart) 
+            | C1.Win.C1Input.FormatInfoInheritFlags.TrimEnd)));
+            this.txtEggStiVisitLMP.EmptyAsNull = true;
+            this.txtEggStiVisitLMP.GMTOffset = System.TimeSpan.Parse("00:00:00");
+            this.txtEggStiVisitLMP.ImagePadding = new System.Windows.Forms.Padding(0);
+            this.txtEggStiVisitLMP.Location = new System.Drawing.Point(50, 6);
+            this.txtEggStiVisitLMP.Name = "txtEggStiVisitLMP";
+            this.txtEggStiVisitLMP.Size = new System.Drawing.Size(117, 18);
+            this.txtEggStiVisitLMP.TabIndex = 985;
+            this.txtEggStiVisitLMP.Tag = null;
+            this.theme1.SetTheme(this.txtEggStiVisitLMP, "(default)");
+            this.txtEggStiVisitLMP.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            // 
+            // chkTyping
+            // 
+            this.chkTyping.BackColor = System.Drawing.Color.Transparent;
+            this.chkTyping.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
+            this.chkTyping.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.chkTyping.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.chkTyping.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chkTyping.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.chkTyping.Location = new System.Drawing.Point(602, 6);
+            this.chkTyping.Name = "chkTyping";
+            this.chkTyping.Padding = new System.Windows.Forms.Padding(4, 1, 1, 1);
+            this.chkTyping.Size = new System.Drawing.Size(71, 24);
+            this.chkTyping.TabIndex = 965;
+            this.chkTyping.Text = "Typing";
+            this.theme1.SetTheme(this.chkTyping, "(default)");
+            this.chkTyping.UseVisualStyleBackColor = true;
+            this.chkTyping.Value = null;
+            this.chkTyping.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            // 
+            // label80
+            // 
+            this.label80.AutoSize = true;
+            this.label80.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.label80.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label80.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.label80.Location = new System.Drawing.Point(1050, 50);
+            this.label80.Name = "label80";
+            this.label80.Size = new System.Drawing.Size(23, 16);
+            this.label80.TabIndex = 939;
+            this.label80.Text = "P :";
+            this.theme1.SetTheme(this.label80, "(default)");
+            // 
+            // chkEggStiOther
+            // 
+            this.chkEggStiOther.BackColor = System.Drawing.Color.Transparent;
+            this.chkEggStiOther.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
+            this.chkEggStiOther.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.chkEggStiOther.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.chkEggStiOther.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chkEggStiOther.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.chkEggStiOther.Location = new System.Drawing.Point(683, 6);
+            this.chkEggStiOther.Name = "chkEggStiOther";
+            this.chkEggStiOther.Padding = new System.Windows.Forms.Padding(4, 1, 1, 1);
+            this.chkEggStiOther.Size = new System.Drawing.Size(62, 24);
+            this.chkEggStiOther.TabIndex = 966;
+            this.chkEggStiOther.Text = "Other";
+            this.theme1.SetTheme(this.chkEggStiOther, "(default)");
+            this.chkEggStiOther.UseVisualStyleBackColor = true;
+            this.chkEggStiOther.Value = null;
+            this.chkEggStiOther.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            // 
+            // label78
+            // 
+            this.label78.AutoSize = true;
+            this.label78.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.label78.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label78.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.label78.Location = new System.Drawing.Point(3, 6);
+            this.label78.Name = "label78";
+            this.label78.Size = new System.Drawing.Size(41, 16);
+            this.label78.TabIndex = 984;
+            this.label78.Text = "LMP :";
+            this.theme1.SetTheme(this.label78, "(default)");
+            // 
+            // txtEggStiId
+            // 
+            this.txtEggStiId.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtEggStiId.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
+            this.txtEggStiId.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.txtEggStiId.Location = new System.Drawing.Point(1230, 25);
+            this.txtEggStiId.Name = "txtEggStiId";
+            this.txtEggStiId.Size = new System.Drawing.Size(30, 20);
+            this.txtEggStiId.TabIndex = 983;
+            this.txtEggStiId.Tag = null;
+            this.theme1.SetTheme(this.txtEggStiId, "(default)");
+            this.txtEggStiId.Visible = false;
+            this.txtEggStiId.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            // 
+            // txtEggStiP
+            // 
+            this.txtEggStiP.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtEggStiP.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
+            this.txtEggStiP.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.txtEggStiP.Location = new System.Drawing.Point(1074, 46);
+            this.txtEggStiP.Name = "txtEggStiP";
+            this.txtEggStiP.Size = new System.Drawing.Size(47, 20);
+            this.txtEggStiP.TabIndex = 938;
+            this.txtEggStiP.Tag = null;
+            this.theme1.SetTheme(this.txtEggStiP, "(default)");
+            this.txtEggStiP.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            // 
+            // cboEggStiOther
+            // 
+            this.cboEggStiOther.AllowSpinLoop = false;
+            this.cboEggStiOther.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.cboEggStiOther.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
+            this.cboEggStiOther.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.cboEggStiOther.GapHeight = 0;
+            this.cboEggStiOther.ImagePadding = new System.Windows.Forms.Padding(0);
+            this.cboEggStiOther.ItemsDisplayMember = "";
+            this.cboEggStiOther.ItemsValueMember = "";
+            this.cboEggStiOther.Location = new System.Drawing.Point(746, 9);
+            this.cboEggStiOther.Name = "cboEggStiOther";
+            this.cboEggStiOther.Size = new System.Drawing.Size(115, 20);
+            this.cboEggStiOther.Style.DropDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.cboEggStiOther.Style.DropDownBorderColor = System.Drawing.Color.Gainsboro;
+            this.cboEggStiOther.Style.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.cboEggStiOther.TabIndex = 967;
+            this.cboEggStiOther.Tag = null;
+            this.theme1.SetTheme(this.cboEggStiOther, "(default)");
+            this.cboEggStiOther.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            // 
+            // label81
+            // 
+            this.label81.AutoSize = true;
+            this.label81.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.label81.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label81.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.label81.Location = new System.Drawing.Point(1050, 27);
+            this.label81.Name = "label81";
+            this.label81.Size = new System.Drawing.Size(24, 16);
+            this.label81.TabIndex = 937;
+            this.label81.Text = "G :";
+            this.theme1.SetTheme(this.label81, "(default)");
+            // 
+            // label119
+            // 
+            this.label119.AutoSize = true;
+            this.label119.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.label119.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label119.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.label119.Location = new System.Drawing.Point(881, 8);
+            this.label119.Name = "label119";
+            this.label119.Size = new System.Drawing.Size(111, 16);
+            this.label119.TabIndex = 977;
+            this.label119.Text = "Infectious Result :";
+            this.theme1.SetTheme(this.label119, "(default)");
+            // 
+            // btnEggStiPrint
+            // 
+            this.btnEggStiPrint.Image = global::clinic_ivf.Properties.Resources.print;
+            this.btnEggStiPrint.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnEggStiPrint.Location = new System.Drawing.Point(1480, 16);
+            this.btnEggStiPrint.Name = "btnEggStiPrint";
+            this.btnEggStiPrint.Size = new System.Drawing.Size(83, 34);
+            this.btnEggStiPrint.TabIndex = 982;
+            this.btnEggStiPrint.Text = "Print  ";
+            this.btnEggStiPrint.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.theme1.SetTheme(this.btnEggStiPrint, "(default)");
+            this.btnEggStiPrint.UseVisualStyleBackColor = true;
+            this.btnEggStiPrint.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            // 
+            // chkEggStiInfection
+            // 
+            this.chkEggStiInfection.BackColor = System.Drawing.Color.Transparent;
+            this.chkEggStiInfection.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
+            this.chkEggStiInfection.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.chkEggStiInfection.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.chkEggStiInfection.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chkEggStiInfection.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.chkEggStiInfection.Location = new System.Drawing.Point(992, 4);
+            this.chkEggStiInfection.Name = "chkEggStiInfection";
+            this.chkEggStiInfection.Padding = new System.Windows.Forms.Padding(4, 1, 1, 1);
+            this.chkEggStiInfection.Size = new System.Drawing.Size(77, 24);
+            this.chkEggStiInfection.TabIndex = 968;
+            this.chkEggStiInfection.Text = "Normal";
+            this.theme1.SetTheme(this.chkEggStiInfection, "(default)");
+            this.chkEggStiInfection.UseVisualStyleBackColor = true;
+            this.chkEggStiInfection.Value = null;
+            this.chkEggStiInfection.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            // 
+            // txtEggStiG
+            // 
+            this.txtEggStiG.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtEggStiG.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
+            this.txtEggStiG.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.txtEggStiG.Location = new System.Drawing.Point(1074, 25);
+            this.txtEggStiG.Name = "txtEggStiG";
+            this.txtEggStiG.Size = new System.Drawing.Size(47, 20);
+            this.txtEggStiG.TabIndex = 936;
+            this.txtEggStiG.Tag = null;
+            this.theme1.SetTheme(this.txtEggStiG, "(default)");
+            this.txtEggStiG.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            // 
+            // label118
+            // 
+            this.label118.AutoSize = true;
+            this.label118.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.label118.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label118.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.label118.Location = new System.Drawing.Point(1079, 8);
+            this.label118.Name = "label118";
+            this.label118.Size = new System.Drawing.Size(67, 16);
+            this.label118.TabIndex = 979;
+            this.label118.Text = "Add LAB :";
+            this.theme1.SetTheme(this.label118, "(default)");
+            // 
+            // btnEggStiSave
+            // 
+            this.btnEggStiSave.Image = global::clinic_ivf.Properties.Resources.download_database24;
+            this.btnEggStiSave.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnEggStiSave.Location = new System.Drawing.Point(1399, 16);
+            this.btnEggStiSave.Name = "btnEggStiSave";
+            this.btnEggStiSave.Size = new System.Drawing.Size(75, 34);
+            this.btnEggStiSave.TabIndex = 981;
+            this.btnEggStiSave.Text = "บันทึกช้อมูล";
+            this.btnEggStiSave.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.theme1.SetTheme(this.btnEggStiSave, "(default)");
+            this.btnEggStiSave.UseVisualStyleBackColor = true;
+            this.btnEggStiSave.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            // 
+            // chkAmh
+            // 
+            this.chkAmh.BackColor = System.Drawing.Color.Transparent;
+            this.chkAmh.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
+            this.chkAmh.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.chkAmh.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.chkAmh.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chkAmh.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.chkAmh.Location = new System.Drawing.Point(1146, 3);
+            this.chkAmh.Name = "chkAmh";
+            this.chkAmh.Padding = new System.Windows.Forms.Padding(4, 1, 1, 1);
+            this.chkAmh.Size = new System.Drawing.Size(60, 24);
+            this.chkAmh.TabIndex = 978;
+            this.chkAmh.Text = "AMH";
+            this.theme1.SetTheme(this.chkAmh, "(default)");
+            this.chkAmh.UseVisualStyleBackColor = true;
+            this.chkAmh.Value = null;
+            this.chkAmh.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            // 
+            // label120
+            // 
+            this.label120.AutoSize = true;
+            this.label120.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.label120.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label120.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.label120.Location = new System.Drawing.Point(947, 39);
+            this.label120.Name = "label120";
+            this.label120.Size = new System.Drawing.Size(45, 16);
+            this.label120.TabIndex = 976;
+            this.label120.Text = "Time :";
+            this.theme1.SetTheme(this.label120, "(default)");
+            // 
+            // cboEggStiAmh
+            // 
+            this.cboEggStiAmh.AllowSpinLoop = false;
+            this.cboEggStiAmh.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.cboEggStiAmh.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
+            this.cboEggStiAmh.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.cboEggStiAmh.GapHeight = 0;
+            this.cboEggStiAmh.ImagePadding = new System.Windows.Forms.Padding(0);
+            this.cboEggStiAmh.ItemsDisplayMember = "";
+            this.cboEggStiAmh.ItemsValueMember = "";
+            this.cboEggStiAmh.Location = new System.Drawing.Point(1209, 3);
+            this.cboEggStiAmh.Name = "cboEggStiAmh";
+            this.cboEggStiAmh.Size = new System.Drawing.Size(185, 20);
+            this.cboEggStiAmh.Style.DropDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.cboEggStiAmh.Style.DropDownBorderColor = System.Drawing.Color.Gainsboro;
+            this.cboEggStiAmh.Style.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.cboEggStiAmh.TabIndex = 980;
+            this.cboEggStiAmh.Tag = null;
+            this.theme1.SetTheme(this.cboEggStiAmh, "(default)");
+            this.cboEggStiAmh.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            // 
+            // txtEggStiEmbryoTranferTime
+            // 
+            this.txtEggStiEmbryoTranferTime.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtEggStiEmbryoTranferTime.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
+            this.txtEggStiEmbryoTranferTime.EditMask = "00:00";
+            this.txtEggStiEmbryoTranferTime.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.txtEggStiEmbryoTranferTime.Location = new System.Drawing.Point(697, 37);
+            this.txtEggStiEmbryoTranferTime.MaskInfo.EmptyAsNull = true;
+            this.txtEggStiEmbryoTranferTime.MaskInfo.Inherit = ((C1.Win.C1Input.MaskInfoInheritFlags)((C1.Win.C1Input.MaskInfoInheritFlags.CaseSensitive | C1.Win.C1Input.MaskInfoInheritFlags.ErrorMessage)));
+            this.txtEggStiEmbryoTranferTime.MaskInfo.SaveBlanks = true;
+            this.txtEggStiEmbryoTranferTime.Name = "txtEggStiEmbryoTranferTime";
+            this.txtEggStiEmbryoTranferTime.Size = new System.Drawing.Size(53, 20);
+            this.txtEggStiEmbryoTranferTime.TabIndex = 975;
+            this.txtEggStiEmbryoTranferTime.Tag = null;
+            this.theme1.SetTheme(this.txtEggStiEmbryoTranferTime, "(default)");
+            this.txtEggStiEmbryoTranferTime.Value = "00:00";
+            this.txtEggStiEmbryoTranferTime.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            // 
+            // label121
+            // 
+            this.label121.AutoSize = true;
+            this.label121.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.label121.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label121.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.label121.Location = new System.Drawing.Point(652, 39);
+            this.label121.Name = "label121";
+            this.label121.Size = new System.Drawing.Size(45, 16);
+            this.label121.TabIndex = 974;
+            this.label121.Text = "Time :";
+            this.theme1.SetTheme(this.label121, "(default)");
+            // 
+            // txtEggStiEmbryoTranferDate
+            // 
+            this.txtEggStiEmbryoTranferDate.AllowSpinLoop = false;
+            this.txtEggStiEmbryoTranferDate.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            // 
+            // 
+            // 
+            this.txtEggStiEmbryoTranferDate.Calendar.ArrowColor = System.Drawing.Color.Black;
+            this.txtEggStiEmbryoTranferDate.Calendar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.txtEggStiEmbryoTranferDate.Calendar.DayNamesFont = new System.Drawing.Font("Tahoma", 8F);
+            this.txtEggStiEmbryoTranferDate.Calendar.Font = new System.Drawing.Font("Tahoma", 8F);
+            this.txtEggStiEmbryoTranferDate.Calendar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.txtEggStiEmbryoTranferDate.Calendar.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(71)))), ((int)(((byte)(47)))));
+            this.txtEggStiEmbryoTranferDate.Calendar.SelectionForeColor = System.Drawing.Color.White;
+            this.txtEggStiEmbryoTranferDate.Calendar.TitleBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(230)))));
+            this.txtEggStiEmbryoTranferDate.Calendar.TitleFont = new System.Drawing.Font("Tahoma", 8F);
+            this.txtEggStiEmbryoTranferDate.Calendar.TitleForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.txtEggStiEmbryoTranferDate.Calendar.TodayBorderColor = System.Drawing.Color.White;
+            this.txtEggStiEmbryoTranferDate.Calendar.TrailingForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
+            this.txtEggStiEmbryoTranferDate.Calendar.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            this.txtEggStiEmbryoTranferDate.Culture = 1054;
+            this.txtEggStiEmbryoTranferDate.CurrentTimeZone = false;
+            this.txtEggStiEmbryoTranferDate.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
+            this.txtEggStiEmbryoTranferDate.DisplayFormat.CalendarType = C1.Win.C1Input.CalendarType.GregorianCalendar;
+            this.txtEggStiEmbryoTranferDate.DisplayFormat.EmptyAsNull = false;
+            this.txtEggStiEmbryoTranferDate.DisplayFormat.FormatType = C1.Win.C1Input.FormatTypeEnum.ShortDate;
+            this.txtEggStiEmbryoTranferDate.DisplayFormat.Inherit = ((C1.Win.C1Input.FormatInfoInheritFlags)((((C1.Win.C1Input.FormatInfoInheritFlags.CustomFormat | C1.Win.C1Input.FormatInfoInheritFlags.NullText) 
+            | C1.Win.C1Input.FormatInfoInheritFlags.TrimStart) 
+            | C1.Win.C1Input.FormatInfoInheritFlags.TrimEnd)));
+            this.txtEggStiEmbryoTranferDate.EditFormat.CalendarType = C1.Win.C1Input.CalendarType.GregorianCalendar;
+            this.txtEggStiEmbryoTranferDate.EditFormat.EmptyAsNull = false;
+            this.txtEggStiEmbryoTranferDate.EditFormat.FormatType = C1.Win.C1Input.FormatTypeEnum.ShortDate;
+            this.txtEggStiEmbryoTranferDate.EditFormat.Inherit = ((C1.Win.C1Input.FormatInfoInheritFlags)((((C1.Win.C1Input.FormatInfoInheritFlags.CustomFormat | C1.Win.C1Input.FormatInfoInheritFlags.NullText) 
+            | C1.Win.C1Input.FormatInfoInheritFlags.TrimStart) 
+            | C1.Win.C1Input.FormatInfoInheritFlags.TrimEnd)));
+            this.txtEggStiEmbryoTranferDate.EmptyAsNull = true;
+            this.txtEggStiEmbryoTranferDate.GMTOffset = System.TimeSpan.Parse("00:00:00");
+            this.txtEggStiEmbryoTranferDate.ImagePadding = new System.Windows.Forms.Padding(0);
+            this.txtEggStiEmbryoTranferDate.Location = new System.Drawing.Point(529, 37);
+            this.txtEggStiEmbryoTranferDate.Name = "txtEggStiEmbryoTranferDate";
+            this.txtEggStiEmbryoTranferDate.Size = new System.Drawing.Size(118, 18);
+            this.txtEggStiEmbryoTranferDate.TabIndex = 973;
+            this.txtEggStiEmbryoTranferDate.Tag = null;
+            this.theme1.SetTheme(this.txtEggStiEmbryoTranferDate, "(default)");
+            this.txtEggStiEmbryoTranferDate.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            // 
+            // label122
+            // 
+            this.label122.AutoSize = true;
+            this.label122.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.label122.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label122.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.label122.Location = new System.Drawing.Point(384, 37);
+            this.label122.Name = "label122";
+            this.label122.Size = new System.Drawing.Size(139, 16);
+            this.label122.TabIndex = 972;
+            this.label122.Text = "Embryo Tranfer Date :";
+            this.theme1.SetTheme(this.label122, "(default)");
+            // 
+            // txtEggStiOPUTime
+            // 
+            this.txtEggStiOPUTime.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtEggStiOPUTime.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
+            this.txtEggStiOPUTime.EditMask = "00:00";
+            this.txtEggStiOPUTime.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.txtEggStiOPUTime.Location = new System.Drawing.Point(992, 37);
+            this.txtEggStiOPUTime.MaskInfo.EmptyAsNull = true;
+            this.txtEggStiOPUTime.MaskInfo.Inherit = ((C1.Win.C1Input.MaskInfoInheritFlags)((C1.Win.C1Input.MaskInfoInheritFlags.CaseSensitive | C1.Win.C1Input.MaskInfoInheritFlags.ErrorMessage)));
+            this.txtEggStiOPUTime.MaskInfo.SaveBlanks = true;
+            this.txtEggStiOPUTime.Name = "txtEggStiOPUTime";
+            this.txtEggStiOPUTime.Size = new System.Drawing.Size(53, 20);
+            this.txtEggStiOPUTime.TabIndex = 971;
+            this.txtEggStiOPUTime.Tag = null;
+            this.theme1.SetTheme(this.txtEggStiOPUTime, "(default)");
+            this.txtEggStiOPUTime.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            // 
+            // txtEggStiOPUDate
+            // 
+            this.txtEggStiOPUDate.AllowSpinLoop = false;
+            this.txtEggStiOPUDate.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            // 
+            // 
+            // 
+            this.txtEggStiOPUDate.Calendar.ArrowColor = System.Drawing.Color.Black;
+            this.txtEggStiOPUDate.Calendar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.txtEggStiOPUDate.Calendar.DayNamesFont = new System.Drawing.Font("Tahoma", 8F);
+            this.txtEggStiOPUDate.Calendar.Font = new System.Drawing.Font("Tahoma", 8F);
+            this.txtEggStiOPUDate.Calendar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.txtEggStiOPUDate.Calendar.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(71)))), ((int)(((byte)(47)))));
+            this.txtEggStiOPUDate.Calendar.SelectionForeColor = System.Drawing.Color.White;
+            this.txtEggStiOPUDate.Calendar.TitleBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(230)))));
+            this.txtEggStiOPUDate.Calendar.TitleFont = new System.Drawing.Font("Tahoma", 8F);
+            this.txtEggStiOPUDate.Calendar.TitleForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.txtEggStiOPUDate.Calendar.TodayBorderColor = System.Drawing.Color.White;
+            this.txtEggStiOPUDate.Calendar.TrailingForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
+            this.txtEggStiOPUDate.Calendar.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            this.txtEggStiOPUDate.CalendarType = C1.Win.C1Input.CalendarType.GregorianCalendar;
+            this.txtEggStiOPUDate.Culture = 1054;
+            this.txtEggStiOPUDate.CurrentTimeZone = false;
+            this.txtEggStiOPUDate.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
+            this.txtEggStiOPUDate.DisplayFormat.CalendarType = C1.Win.C1Input.CalendarType.GregorianCalendar;
+            this.txtEggStiOPUDate.DisplayFormat.FormatType = C1.Win.C1Input.FormatTypeEnum.ShortDate;
+            this.txtEggStiOPUDate.DisplayFormat.Inherit = ((C1.Win.C1Input.FormatInfoInheritFlags)(((((C1.Win.C1Input.FormatInfoInheritFlags.CustomFormat | C1.Win.C1Input.FormatInfoInheritFlags.NullText) 
+            | C1.Win.C1Input.FormatInfoInheritFlags.EmptyAsNull) 
+            | C1.Win.C1Input.FormatInfoInheritFlags.TrimStart) 
+            | C1.Win.C1Input.FormatInfoInheritFlags.TrimEnd)));
+            this.txtEggStiOPUDate.EditFormat.CalendarType = C1.Win.C1Input.CalendarType.GregorianCalendar;
+            this.txtEggStiOPUDate.EditFormat.FormatType = C1.Win.C1Input.FormatTypeEnum.ShortDate;
+            this.txtEggStiOPUDate.EditFormat.Inherit = ((C1.Win.C1Input.FormatInfoInheritFlags)(((((C1.Win.C1Input.FormatInfoInheritFlags.CustomFormat | C1.Win.C1Input.FormatInfoInheritFlags.NullText) 
+            | C1.Win.C1Input.FormatInfoInheritFlags.EmptyAsNull) 
+            | C1.Win.C1Input.FormatInfoInheritFlags.TrimStart) 
+            | C1.Win.C1Input.FormatInfoInheritFlags.TrimEnd)));
+            this.txtEggStiOPUDate.EmptyAsNull = true;
+            this.txtEggStiOPUDate.GMTOffset = System.TimeSpan.Parse("00:00:00");
+            this.txtEggStiOPUDate.ImagePadding = new System.Windows.Forms.Padding(0);
+            this.txtEggStiOPUDate.Location = new System.Drawing.Point(835, 37);
+            this.txtEggStiOPUDate.Name = "txtEggStiOPUDate";
+            this.txtEggStiOPUDate.Size = new System.Drawing.Size(110, 18);
+            this.txtEggStiOPUDate.TabIndex = 970;
+            this.txtEggStiOPUDate.Tag = null;
+            this.theme1.SetTheme(this.txtEggStiOPUDate, "(default)");
+            this.txtEggStiOPUDate.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            // 
+            // label123
+            // 
+            this.label123.AutoSize = true;
+            this.label123.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.label123.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label123.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.label123.Location = new System.Drawing.Point(761, 39);
+            this.label123.Name = "label123";
+            this.label123.Size = new System.Drawing.Size(73, 16);
+            this.label123.TabIndex = 969;
+            this.label123.Text = "OPU date :";
+            this.theme1.SetTheme(this.label123, "(default)");
+            // 
+            // cboEggStiBhcg
+            // 
+            this.cboEggStiBhcg.AllowSpinLoop = false;
+            this.cboEggStiBhcg.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.cboEggStiBhcg.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
+            this.cboEggStiBhcg.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.cboEggStiBhcg.GapHeight = 0;
+            this.cboEggStiBhcg.ImagePadding = new System.Windows.Forms.Padding(0);
+            this.cboEggStiBhcg.ItemsDisplayMember = "";
+            this.cboEggStiBhcg.ItemsValueMember = "";
+            this.cboEggStiBhcg.Location = new System.Drawing.Point(85, 37);
+            this.cboEggStiBhcg.Name = "cboEggStiBhcg";
+            this.cboEggStiBhcg.Size = new System.Drawing.Size(296, 20);
+            this.cboEggStiBhcg.Style.DropDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.cboEggStiBhcg.Style.DropDownBorderColor = System.Drawing.Color.Gainsboro;
+            this.cboEggStiBhcg.Style.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.cboEggStiBhcg.TabIndex = 959;
+            this.cboEggStiBhcg.Tag = null;
+            this.theme1.SetTheme(this.cboEggStiBhcg, "(default)");
+            this.cboEggStiBhcg.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            // 
+            // label117
+            // 
+            this.label117.AutoSize = true;
+            this.label117.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.label117.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label117.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.label117.Location = new System.Drawing.Point(3, 37);
+            this.label117.Name = "label117";
+            this.label117.Size = new System.Drawing.Size(82, 16);
+            this.label117.TabIndex = 958;
+            this.label117.Text = "BHCG Test :";
+            this.theme1.SetTheme(this.label117, "(default)");
+            // 
+            // pnEggSti
+            // 
+            this.pnEggSti.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.pnEggSti.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pnEggSti.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.pnEggSti.Location = new System.Drawing.Point(0, 70);
+            this.pnEggSti.Name = "pnEggSti";
+            this.pnEggSti.Size = new System.Drawing.Size(1582, 580);
+            this.pnEggSti.TabIndex = 2;
+            this.theme1.SetTheme(this.pnEggSti, "(default)");
+            // 
+            // txtPttId
+            // 
+            this.txtPttId.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtPttId.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
+            this.txtPttId.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.txtPttId.Location = new System.Drawing.Point(669, 78);
+            this.txtPttId.Name = "txtPttId";
+            this.txtPttId.Size = new System.Drawing.Size(30, 20);
+            this.txtPttId.TabIndex = 896;
+            this.txtPttId.Tag = null;
+            this.theme1.SetTheme(this.txtPttId, "(default)");
+            this.txtPttId.Visible = false;
+            this.txtPttId.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            // 
+            // txtVsId
+            // 
+            this.txtVsId.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtVsId.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
+            this.txtVsId.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.txtVsId.Location = new System.Drawing.Point(705, 78);
+            this.txtVsId.Name = "txtVsId";
+            this.txtVsId.Size = new System.Drawing.Size(30, 20);
+            this.txtVsId.TabIndex = 897;
+            this.txtVsId.Tag = null;
+            this.theme1.SetTheme(this.txtVsId, "(default)");
+            this.txtVsId.Visible = false;
+            this.txtVsId.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            // 
             // FrmDoctorAdd
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -2320,6 +3198,36 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtNote)).EndInit();
             this.sB.ResumeLayout(false);
             this.sB.PerformLayout();
+            this.tabEggSti.ResumeLayout(false);
+            this.panel4.ResumeLayout(false);
+            this.panel32.ResumeLayout(false);
+            this.panel32.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtEggStiDay)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cboEggStiDtr)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtAbnormal2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chkAbnormal)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnGenEggSti)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtAbnormal1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtEggStiA)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtEggStiVisitLMP)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chkTyping)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chkEggStiOther)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtEggStiId)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtEggStiP)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cboEggStiOther)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnEggStiPrint)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chkEggStiInfection)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtEggStiG)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnEggStiSave)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chkAmh)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cboEggStiAmh)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtEggStiEmbryoTranferTime)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtEggStiEmbryoTranferDate)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtEggStiOPUTime)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtEggStiOPUDate)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cboEggStiBhcg)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtPttId)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtVsId)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -2504,5 +3412,51 @@
         private C1.Win.C1Input.C1TextBox txtTotal;
         private System.Windows.Forms.Label label25;
         private C1.Win.C1Input.C1ComboBox cboLangSticker;
+        private C1.Win.C1Command.C1DockingTabPage tabPregress;
+        private C1.Win.C1Command.C1DockingTabPage tabEggSti;
+        private System.Windows.Forms.Panel panel4;
+        private System.Windows.Forms.Panel panel32;
+        private C1.Win.C1Input.C1TextBox txtEggStiDay;
+        private System.Windows.Forms.Label label85;
+        private C1.Win.C1Input.C1ComboBox cboEggStiDtr;
+        private System.Windows.Forms.Label label82;
+        private C1.Win.C1Input.C1TextBox txtAbnormal2;
+        private System.Windows.Forms.Label label79;
+        private C1.Win.C1Input.C1CheckBox chkAbnormal;
+        private C1.Win.C1Input.C1Button btnGenEggSti;
+        private C1.Win.C1Input.C1TextBox txtAbnormal1;
+        private System.Windows.Forms.Label label116;
+        private C1.Win.C1Input.C1TextBox txtEggStiA;
+        private System.Windows.Forms.Label label115;
+        private C1.Win.C1Input.C1DateEdit txtEggStiVisitLMP;
+        private C1.Win.C1Input.C1CheckBox chkTyping;
+        private System.Windows.Forms.Label label80;
+        private C1.Win.C1Input.C1CheckBox chkEggStiOther;
+        private System.Windows.Forms.Label label78;
+        private C1.Win.C1Input.C1TextBox txtEggStiId;
+        private C1.Win.C1Input.C1TextBox txtEggStiP;
+        private C1.Win.C1Input.C1ComboBox cboEggStiOther;
+        private System.Windows.Forms.Label label81;
+        private System.Windows.Forms.Label label119;
+        private C1.Win.C1Input.C1Button btnEggStiPrint;
+        private C1.Win.C1Input.C1CheckBox chkEggStiInfection;
+        private C1.Win.C1Input.C1TextBox txtEggStiG;
+        private System.Windows.Forms.Label label118;
+        private C1.Win.C1Input.C1Button btnEggStiSave;
+        private C1.Win.C1Input.C1CheckBox chkAmh;
+        private System.Windows.Forms.Label label120;
+        private C1.Win.C1Input.C1ComboBox cboEggStiAmh;
+        private C1.Win.C1Input.C1TextBox txtEggStiEmbryoTranferTime;
+        private System.Windows.Forms.Label label121;
+        private C1.Win.C1Input.C1DateEdit txtEggStiEmbryoTranferDate;
+        private System.Windows.Forms.Label label122;
+        private C1.Win.C1Input.C1TextBox txtEggStiOPUTime;
+        private C1.Win.C1Input.C1DateEdit txtEggStiOPUDate;
+        private System.Windows.Forms.Label label123;
+        private C1.Win.C1Input.C1ComboBox cboEggStiBhcg;
+        private System.Windows.Forms.Label label117;
+        private System.Windows.Forms.Panel pnEggSti;
+        private C1.Win.C1Input.C1TextBox txtPttId;
+        private C1.Win.C1Input.C1TextBox txtVsId;
     }
 }

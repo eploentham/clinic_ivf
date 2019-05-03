@@ -169,6 +169,17 @@ namespace clinic_ivf.objdb
 
             return dt;
         }
+        public DataTable selectEggStiMedication2()
+        {
+            DataTable dt = new DataTable();
+            String sql = "select fdt.*  " +
+                "From " + fdt.table + " fdt " +
+                " " +
+                "Where fdt." + fdt.active + " ='1' and fdt." + fdt.status_combo + "='egg_sti_medication2'";
+            dt = conn.selectData(conn.conn, sql);
+
+            return dt;
+        }
         public DataTable selectByPk(String copId)
         {
             DataTable dt = new DataTable();
@@ -350,6 +361,21 @@ namespace clinic_ivf.objdb
                 lEggstiMedi.Add(itm1);
             }
         }
+        public void getlEggStiMedication2()
+        {
+            //lDept = new List<Position>();
+            lEggstiMedi.Clear();
+            DataTable dt = new DataTable();
+            dt = selectEggStiMedication2();
+            foreach (DataRow row in dt.Rows)
+            {
+                FDocType itm1 = new FDocType();
+                itm1.doc_type_id = row[fdt.doc_type_id].ToString();
+                itm1.doc_type_name = row[fdt.doc_type_name].ToString();
+
+                lEggstiMedi.Add(itm1);
+            }
+        }
         public FDocType selectByPk1(String copId)
         {
             FDocType cop1 = new FDocType();
@@ -382,6 +408,34 @@ namespace clinic_ivf.objdb
                 fdt.status_combo = "";
             }
             return dept1;
+        }
+        public C1ComboBox setCboEggStiMedication2(C1ComboBox c, String selected)
+        {
+            ComboBoxItem item = new ComboBoxItem();
+            //DataTable dt = selectOPUStage();
+            if (lEggstiMedi.Count <= 0) getlEggStiMedication2();
+            //String aaa = "";
+            ComboBoxItem item1 = new ComboBoxItem();
+            item1.Text = "";
+            item1.Value = "000";
+            c.Items.Clear();
+            c.Items.Add(item1);
+            int i = 0;
+            foreach (FDocType row in lEggstiMedi)
+            {
+                item = new ComboBoxItem();
+                item.Value = row.doc_type_id;
+                item.Text = row.doc_type_name;
+                c.Items.Add(item);
+                if (item.Value.Equals(selected))
+                {
+                    //c.SelectedItem = item.Value;
+                    c.SelectedText = item.Text;
+                    c.SelectedIndex = i + 1;
+                }
+                i++;
+            }
+            return c;
         }
         public C1ComboBox setCboEggStiMedication(C1ComboBox c, String selected)
         {

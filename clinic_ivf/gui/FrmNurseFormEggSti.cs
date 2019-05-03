@@ -195,7 +195,7 @@ namespace clinic_ivf.gui
                         eggsd.lt_ovary_2 = grfEggsd.Rows[i][colLt2].ToString();
                         eggsd.endo = grfEggsd.Rows[i][colEndo].ToString();
                         eggsd.medication = grfEggsd.Rows[i][colMedi].ToString();
-                        ic.ivfDB.eggsdDB.insertLabOpuEmbryoDev(eggsd, ic.cStf.staff_id);
+                        ic.ivfDB.eggsdDB.insertEggStiDay(eggsd, ic.cStf.staff_id);
                     }
                     
                 }
@@ -376,7 +376,7 @@ namespace clinic_ivf.gui
                                 eggsd.lt_ovary_2 = "";
                                 eggsd.endo = "";
                                 eggsd.medication = "";
-                                ic.ivfDB.eggsdDB.insertLabOpuEmbryoDev(eggsd, ic.cStf.staff_id);
+                                ic.ivfDB.eggsdDB.insertEggStiDay(eggsd, ic.cStf.staff_id);
                             }
                         }
                         setControlEggSti();

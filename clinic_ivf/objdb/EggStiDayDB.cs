@@ -45,6 +45,7 @@ namespace clinic_ivf.objdb
             eggsd.lt_ovary_2 = "lt_ovary_2";
             eggsd.endo = "endo";
             eggsd.medication = "medication";
+            eggsd.medication2 = "medication2";
 
             eggsd.table = "nurse_t_egg_sti_day";
             eggsd.pkField = "egg_sti_day_id";
@@ -81,6 +82,7 @@ namespace clinic_ivf.objdb
             p.lt_ovary_2 = p.lt_ovary_2 == null ? "" : p.lt_ovary_2;
 
             p.medication = p.medication == null ? "" : p.medication;
+            p.medication2 = p.medication2 == null ? "" : p.medication2;
         }
         public String insert(EggStiDay p, String userId)
         {
@@ -112,6 +114,7 @@ namespace clinic_ivf.objdb
                 "," + eggsd.endo + "='" + p.endo.Replace("'", "''") + "'" +
                 "," + eggsd.egg_sti_id + "='" + p.egg_sti_id + "'" +
                 "," + eggsd.medication + "='" + p.medication + "'" +
+                "," + eggsd.medication2 + "='" + p.medication2 + "'" +
                 " " +
 
                 "";
@@ -146,6 +149,7 @@ namespace clinic_ivf.objdb
                 "," + eggsd.endo + "='" + p.endo.Replace("'", "''") + "'" +
                 "," + eggsd.egg_sti_id + "='" + p.egg_sti_id + "'" +
                 "," + eggsd.medication + "='" + p.medication + "'" +
+                "," + eggsd.medication2 + "='" + p.medication2 + "'" +
                 "Where " + eggsd.pkField + "='" + p.egg_sti_day_id + "'"
                 ;
 
@@ -180,6 +184,7 @@ namespace clinic_ivf.objdb
                 "," + eggsd.endo + "='" + p.endo.Replace("'", "''") + "'" +
                 "," + eggsd.fsh + "='" + p.fsh + "'" +
                 "," + eggsd.medication + "='" + p.medication + "'" +
+                "," + eggsd.medication2 + "='" + p.medication2 + "'" +
                 "Where " + eggsd.pkField + "='" + p.egg_sti_day_id + "'"
                 ;
 
@@ -194,7 +199,7 @@ namespace clinic_ivf.objdb
 
             return re;
         }
-        public String insertLabOpuEmbryoDev(EggStiDay p, String userId)
+        public String insertEggStiDay(EggStiDay p, String userId)
         {
             String re = "";
 
@@ -209,7 +214,28 @@ namespace clinic_ivf.objdb
 
             return re;
         }
-        public String VoidLabOpuEmbryoDev(String id, String userid)
+        public String VoidEggSti(String id, String userid)
+        {
+            String re = "";
+            String sql = "";
+            int chk = 0;
+            sql = "Update " + eggsd.table + " Set " +
+                " " + eggsd.active + " = '3'" +
+                "," + eggsd.date_cancel + " = now()" +
+                "," + eggsd.user_cancel + " = '" + userid + "'" +
+                "Where " + eggsd.egg_sti_id + "='" + id + "'";
+            try
+            {
+                re = conn.ExecuteNonQuery(conn.conn, sql);
+            }
+            catch (Exception ex)
+            {
+                sql = ex.Message + " " + ex.InnerException;
+            }
+
+            return re;
+        }
+        public String VoidEggStiDay(String id, String userid)
         {
             String re = "";
             String sql = "";
@@ -357,8 +383,8 @@ namespace clinic_ivf.objdb
             DataTable dt = new DataTable();
             String sql = "select eggsd.* " +
                 "From " + eggsd.table + " eggsd " +
-                "Where eggsd." + eggsd.egg_sti_id + " ='" + pttId + "' " +
-                "Order By day1 ";
+                "Where eggsd." + eggsd.egg_sti_id + " ='" + pttId + "' and eggsd."+eggsd.active+"='1' " +
+                "Order By "+eggsd.egg_sti_day_id;
             dt = conn.selectData(conn.conn, sql);
             return dt;
         }
@@ -389,6 +415,7 @@ namespace clinic_ivf.objdb
                 dept1.lt_ovary_2 = dt.Rows[0][eggsd.lt_ovary_2].ToString();
                 dept1.endo = dt.Rows[0][eggsd.endo].ToString();
                 dept1.medication = dt.Rows[0][eggsd.medication].ToString();
+                dept1.medication2 = dt.Rows[0][eggsd.medication2].ToString();
             }
             else
             {
@@ -414,6 +441,7 @@ namespace clinic_ivf.objdb
                 dept1.lt_ovary_2 = "";
                 dept1.endo = "";
                 dept1.medication = "";
+                dept1.medication2 = "";
             }
             return dept1;
         }

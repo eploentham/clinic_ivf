@@ -56,7 +56,7 @@ namespace clinic_ivf.gui
         int colOrderWorker5 = 23, colOrderLGID = 24, colOrderQTY = 25, colOrderActive = 26;
         int colOrdid = 1, colOrdlpid = 2, colOrdName = 3, colOrdPrice = 4, colOrdQty = 5, colOrdstatus = 6, colOrdrow1 = 7, colOrditmid = 8, colOrdInclude = 9, colOrdAmt = 10, colOrdUsE = 11, colOrdUsT = 12;
         int rowOrder = 0, spHeight = 150;
-        int colEggDay = 1, colEggDate = 2, colEggE2 = 3, colEggLH = 4, colEggFSH = 5, colEggProlactin = 6, colEggRt1 = 7, colEggRt2 = 8, colEggLt1 = 9, colEggLt2 = 10, colEggEndo = 11, colEggMedi = 12, colEggId = 13, colEggEdit = 14;
+        int colEggDay = 1, colEggDate = 2, colEggE2 = 3, colEggLH = 4, colEggFSH = 5, colEggProlactin = 6, colEggRt1 = 7, colEggRt2 = 8, colEggLt1 = 9, colEggLt2 = 10, colEggEndo = 11, colEggMedi = 12, colEggId = 13, colEggEdit = 14, colEggMedi2 = 15;
 
         //int colId = 1, colAppointment = 4, colDate = 2, colTime = 3, colDoctor = 5, colSp = 6, colNotice = 7, colE2 = 8, colLh = 9, colEndo = 10, colPrl = 10, colFsh = 11, colRt = 12, colLt = 13;
 
@@ -111,6 +111,7 @@ namespace clinic_ivf.gui
             ic.ivfDB.bspDB.setCboBsp(cboApmBsp, "");
             ic.ivfDB.opkgstDB.setCboSex(cboSellThruID, "");
             ic.ivfDB.dtrOldDB.setCboDoctor(cboDoctor, "");
+            ic.ivfDB.dtrOldDB.setCboDoctor(cboEggStiDtr, "");
             ic.ivfDB.pttDB.setCboAllergy(cboAllergyDesc);
             ic.ivfDB.pApmDB.setCboDoctorAnes(cboApmDtrAnes);
             ic.ivfDB.dtrOldDB.setCboDoctor(cboApmDtr,"");
@@ -121,6 +122,10 @@ namespace clinic_ivf.gui
             ic.setCboApmTime(cboApmFETTime);
             ic.setCboApmTime(cboApmOPUTimeDonor);
             ic.setCboApmTime(cboApmTvsTimeDonor);
+            ic.ivfDB.eggsDB.setCboAddLab(cboEggStiAmh);
+            ic.ivfDB.eggsDB.setCboTypingOther(cboEggStiOther);
+            ic.ivfDB.eggsDB.setCboBhcgTest(cboEggStiBhcg);
+
             txtApmDatepApm.Value = System.DateTime.Now.Year.ToString() + "-" + System.DateTime.Now.ToString("MM-dd");
 
             tabOrder.Click += TabOrder_Click;
@@ -143,6 +148,9 @@ namespace clinic_ivf.gui
             chkApmTvsDonor.CheckedChanged += ChkApmTvsDonor_CheckedChanged;
             chkApmOpuDonor.CheckedChanged += ChkApmOpuDonor_CheckedChanged;
             btnApmPrint.Click += BtnApmPrint_Click;
+            btnGenEggSti.Click += BtnGenEggSti_Click;
+            btnEggStiPrint.Click += BtnEggStiPrint_Click;
+            btnEggStiSave.Click += BtnEggStiSave_Click;
 
             setControl(vsid);
             ChkDenyAllergy_CheckedChanged(null, null);
@@ -186,6 +194,97 @@ namespace clinic_ivf.gui
             //initGrfPtt();
             //setGrfPtt("");
         }
+
+        private void BtnEggStiSave_Click(object sender, EventArgs e)
+        {
+            //throw new NotImplementedException();
+            if (txtEggStiId.Text.Equals(""))
+            {
+                MessageBox.Show("ID ไม่ถูกต้อง ", "");
+                return;
+            }
+            ic.cStf.staff_id = "";
+            FrmPasswordConfirm frm = new FrmPasswordConfirm(ic);
+            frm.ShowDialog(this);
+            if (!ic.cStf.staff_id.Equals(""))
+            {
+                setEggSti();
+                String re = ic.ivfDB.eggsDB.insertEggSti(eggs, ic.cStf.staff_id);
+
+                for (int i = 1; i <= 17; i++)
+                {
+                    if (grfEggsd.Rows[i][colEggEdit] == null) continue;
+                    if (grfEggsd.Rows[i][colEggEdit].ToString().Equals("1"))
+                    {
+                        EggStiDay eggsd = new EggStiDay();
+                        eggsd.egg_sti_day_id = grfEggsd.Rows[i][colEggId].ToString();
+                        eggsd.egg_sti_id = txtEggStiId.Text;
+                        eggsd.day1 = i.ToString();
+                        eggsd.date = "";
+                        eggsd.e2 = grfEggsd.Rows[i][colEggE2].ToString();
+                        eggsd.lh = grfEggsd.Rows[i][colEggLH].ToString();
+                        eggsd.active = "";
+                        eggsd.remark = "";
+                        eggsd.fsh = grfEggsd.Rows[i][colEggFSH].ToString();
+                        eggsd.date_create = "";
+                        eggsd.date_modi = "";
+                        eggsd.date_cancel = "";
+                        eggsd.user_create = "";
+                        eggsd.user_modi = "";
+                        eggsd.user_cancel = "";
+                        eggsd.prolactin = grfEggsd.Rows[i][colEggProlactin].ToString();
+                        eggsd.rt_ovary_1 = grfEggsd.Rows[i][colEggRt1].ToString();
+                        eggsd.rt_ovary_2 = grfEggsd.Rows[i][colEggRt2].ToString();
+                        eggsd.lt_ovary_1 = grfEggsd.Rows[i][colEggLt1].ToString();
+                        eggsd.lt_ovary_2 = grfEggsd.Rows[i][colEggLt2].ToString();
+                        eggsd.endo = grfEggsd.Rows[i][colEggEndo].ToString();
+                        eggsd.medication = grfEggsd.Rows[i][colEggMedi].ToString();
+                        eggsd.medication2 = grfEggsd.Rows[i][colEggMedi2].ToString();
+                        ic.ivfDB.eggsdDB.insertEggStiDay(eggsd, ic.cStf.staff_id);
+                    }
+                }
+            }
+        }
+
+        private void BtnEggStiPrint_Click(object sender, EventArgs e)
+        {
+            //throw new NotImplementedException();
+            FrmReport frm = new FrmReport(ic);
+            DataTable dt = new DataTable();
+            dt = ic.ivfDB.eggsdDB.selectByEggStiId(txtEggStiId.Text);
+            dt.Columns.Add("status_abnormal", typeof(String));
+            dt.Columns.Add("abnormal1", typeof(String));
+            dt.Columns.Add("abnormal2", typeof(String));
+            dt.Columns.Add("status_typing", typeof(String));
+            dt.Columns.Add("status_typing_other", typeof(String));
+            dt.Columns.Add("typing_other", typeof(String));
+            dt.Columns.Add("status_infectious", typeof(String));
+            dt.Columns.Add("status_add_lab", typeof(String));
+            dt.Columns.Add("add_lab", typeof(String));
+            dt.Columns.Add("bhcg", typeof(String));
+            String date1 = "";
+            foreach (DataRow row in dt.Rows)
+            {
+                date1 = ic.datetoShow(row["date"].ToString());
+                row["date"] = date1.Replace("-", "/");
+                row["status_abnormal"] = chkAbnormal.Checked ? "1" : "0";
+                row["abnormal1"] = txtAbnormal1.Text;
+                row["abnormal2"] = txtAbnormal2.Text;
+                row["status_typing"] = chkTyping.Checked ? "1" : "0";
+                row["status_typing_other"] = chkEggStiOther.Checked ? "1" : "0"; ;
+                row["typing_other"] = cboEggStiOther.Text;
+                row["status_infectious"] = chkEggStiInfection.Checked ? "1" : "0";
+                row["status_add_lab"] = chkAmh.Checked ? "1" : "0";
+                row["add_lab"] = cboEggStiAmh.Text;
+                row["bhcg"] = cboEggStiBhcg.Text;
+                //row["status_abnormal"] = "";
+                //row["status_abnormal"] = "";
+            }
+
+            frm.setEggStiReport(dt, txtPttNameE.Text, "", txtEggStiVisitLMP.Text, txtEggStiG.Text, txtEggStiP.Text, txtEggStiA.Text, cboEggStiDtr.Text, txtEggStiOPUDate.Text, txtEggStiOPUTime.Text, txtEggStiEmbryoTranferDate.Text, txtEggStiEmbryoTranferTime.Text);
+            frm.ShowDialog(this);
+        }
+
         //private void setControlApm()
         //{
         //    ptt = ic.ivfDB.pttDB.selectByPk1(pttId);
@@ -560,32 +659,164 @@ namespace clinic_ivf.gui
         private void setControlEggSti()
         {
             eggs = ic.ivfDB.eggsDB.selectByPk1(txtEggStiId.Text);
-
-            if (txtEggStiId.Text.Equals(""))
+            if (eggs.egg_sti_id.Equals(""))
             {
-
+                eggs = ic.ivfDB.eggsDB.selectByVsId(vsid);
+                if (eggs.egg_sti_id.Equals(""))
+                {
+                    eggs = ic.ivfDB.eggsDB.selectByPttId(txtPttId.Text);
+                    {
+                        txtEggStiId.Value = eggs.egg_sti_id;
+                    }
+                }
+                else
+                {
+                    txtEggStiId.Value = eggs.egg_sti_id;
+                }
             }
             else
             {
-                ic.setC1Combo(cboDoctor, eggs.doctor_id);
-                txtVisitLMP.Value = eggs.lmp_date;
+                ic.setC1Combo(cboEggStiDtr, eggs.doctor_id);
+                txtEggStiVisitLMP.Value = eggs.lmp_date;
             }
+            txtEggStiVisitLMP.Value = eggs.lmp_date;
+            txtEggStiDay.Value = eggs.day_start;
+            txtEggStiOPUDate.Value = eggs.opu_date;
+            txtEggStiOPUTime.Value = eggs.opu_time;
+            txtEggStiEmbryoTranferDate.Value = eggs.fet;
 
             chkAbnormal.Checked = eggs.status_abnormal.Equals("1") ? true : false;
             chkTyping.Checked = eggs.status_typing.Equals("1") ? true : false;
             chkEggStiOther.Checked = eggs.status_typing_other.Equals("1") ? true : false;
-            chkInfection.Checked = eggs.status_infectious.Equals("1") ? true : false;
+            chkEggStiInfection.Checked = eggs.status_infectious.Equals("1") ? true : false;
             chkAmh.Checked = eggs.status_add_lab.Equals("1") ? true : false;
             txtAbnormal1.Value = eggs.abnormal1;
             txtAbnormal2.Value = eggs.abnormal2;
-            ic.setC1ComboByName(cboOther, eggs.typing_other);
-            ic.setC1ComboByName(cboBhcg, eggs.bhcg_test);
-            ic.setC1ComboByName(cboAmh, eggs.add_lab);
-            txtG.Value = eggs.g;
-            txtP.Value = eggs.p;
-            txtA.Value = eggs.a;
+            ic.setC1ComboByName(cboEggStiOther, eggs.typing_other);
+            ic.setC1ComboByName(cboEggStiBhcg, eggs.bhcg_test);
+            ic.setC1ComboByName(cboEggStiAmh, eggs.add_lab);
+            txtEggStiG.Value = eggs.g;
+            txtEggStiP.Value = eggs.p;
+            txtEggStiA.Value = eggs.a;
+            ic.setC1Combo(cboEggStiDtr, eggs.doctor_id);
 
             setGrfEggStiDay();
+        }
+        private void setEggSti()
+        {
+            eggs.egg_sti_id = txtEggStiId.Text;
+            eggs.lmp_date = ic.datetoDB(txtEggStiVisitLMP.Text);
+            eggs.nurse_t_egg_sticol = "";
+            eggs.status_g = "";
+            eggs.p = txtEggStiP.Text;
+            eggs.active = "";
+            eggs.remark = "";
+            eggs.a = txtEggStiA.Text;
+            eggs.date_create = "";
+            eggs.date_modi = "";
+            eggs.date_cancel = "";
+            eggs.user_create = "";
+            eggs.user_modi = "";
+            eggs.user_cancel = "";
+            eggs.g = txtEggStiG.Text;
+            eggs.opu_date = ic.datetoDB(txtEggStiOPUDate.Text);
+            eggs.opu_time = txtEggStiOPUTime.Text;
+            eggs.et = "";
+            eggs.fet = "";
+            eggs.bhcg_test = cboEggStiBhcg.Text;
+            eggs.t_patient_id = txtPttId.Text;
+            eggs.t_visit_id = txtVsId.Text;
+            eggs.egg_sti_date = DateTime.Now.Year.ToString() + "-" + DateTime.Now.ToString("MM-dd");
+            eggs.doctor_id = cboEggStiDtr.SelectedItem == null ? "" : ((ComboBoxItem)cboEggStiDtr.SelectedItem).Value;
+            eggs.status_abnormal = chkAbnormal.Checked ? "1" : "0";
+            eggs.abnormal1 = txtAbnormal1.Text;
+            eggs.abnormal2 = txtAbnormal2.Text;
+            eggs.status_typing = chkTyping.Checked ? "1" : "0";
+            eggs.status_typing_other = chkEggStiOther.Checked ? "1" : "0";
+            eggs.typing_other = cboEggStiOther.Text;
+            eggs.status_infectious = chkEggStiInfection.Checked ? "1" : "0";
+            eggs.status_add_lab = chkAmh.Checked ? "1" : "0";
+            eggs.add_lab = cboEggStiAmh.Text;
+            eggs.day_start = txtEggStiDay.Text;
+        }
+        private void BtnGenEggSti_Click(object sender, EventArgs e)
+        {
+            //throw new NotImplementedException();
+            String lmpdate = "";
+            DateTime lmpdate1 = new DateTime();
+            lmpdate = ic.datetoDB(txtEggStiVisitLMP.Text);
+            if (!DateTime.TryParse(lmpdate, out lmpdate1))
+            {
+                MessageBox.Show("วันที่ LMP Date ไม่ถูกต้อง ", "");
+                return;
+            }
+            if (MessageBox.Show("ต้องการ Day Egg Sti  \nวันที่ LMP Date " + txtEggStiVisitLMP.Text, "", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == DialogResult.OK)
+            {
+                setEggSti();
+                ic.cStf.staff_id = "";
+                FrmPasswordConfirm frm = new FrmPasswordConfirm(ic);
+                frm.ShowDialog(this);
+                if (!ic.cStf.staff_id.Equals(""))
+                {
+                    long chk = 0, chk1 = 0, max=0;
+                    String re = ic.ivfDB.eggsDB.insertEggSti(eggs, ic.cStf.staff_id);
+                    if (long.TryParse(re, out chk))
+                    {
+                        if(chk!=1)
+                            txtEggStiId.Value = re;
+                        ic.ivfDB.eggsdDB.VoidEggSti(txtEggStiId.Text, ic.cStf.staff_id);
+                        lmpdate = ic.datetoDB(txtEggStiVisitLMP.Text);      
+                        if (DateTime.TryParse(lmpdate, out lmpdate1))
+                        {
+                            //if (txtEggStiDay.Text.Equals("1"))
+                            //{
+
+                            //}
+                            //else
+                            //{
+                            long.TryParse(txtEggStiDay.Text, out chk1);
+                            //chk1++;
+                            //lmpdate1 = lmpdate1.AddDays(chk1);
+                            //}
+                            max = 17 + chk1;
+                            for (long i = chk1; i <= max; i++)
+                            {
+                                //if (i != 1)
+                                //{
+                                lmpdate1 = lmpdate1.AddDays(1);
+                                //}
+                                EggStiDay eggsd = new EggStiDay();
+                                eggsd.egg_sti_day_id = "";
+                                eggsd.egg_sti_id = txtEggStiId.Text;
+                                eggsd.day1 = chk1.ToString();
+                                eggsd.date = ic.datetoDB(lmpdate1.Year.ToString() + "-" + lmpdate1.ToString("MM-dd"));
+                                eggsd.e2 = "";
+                                eggsd.lh = "";
+                                eggsd.active = "";
+                                eggsd.remark = "";
+                                eggsd.fsh = "";
+                                eggsd.date_create = "";
+                                eggsd.date_modi = "";
+                                eggsd.date_cancel = "";
+                                eggsd.user_create = "";
+                                eggsd.user_modi = "";
+                                eggsd.user_cancel = "";
+                                eggsd.prolactin = "";
+                                eggsd.rt_ovary_1 = "";
+                                eggsd.rt_ovary_2 = "";
+                                eggsd.lt_ovary_1 = "";
+                                eggsd.lt_ovary_2 = "";
+                                eggsd.endo = "";
+                                eggsd.medication = "";
+                                eggsd.medication2 = "";
+                                chk1++;
+                                ic.ivfDB.eggsdDB.insertEggStiDay(eggsd, ic.cStf.staff_id);
+                            }
+                        }
+                        setControlEggSti();
+                    }
+                }
+            }
         }
         private void initGrfEggSti()
         {
@@ -618,25 +849,30 @@ namespace clinic_ivf.gui
             dt = ic.ivfDB.eggsdDB.selectByEggStiId(txtEggStiId.Text);
             //grfExpn.Rows.Count = dt.Rows.Count + 1;
             grfEggsd.Rows.Count = 1;
-            grfEggsd.Cols.Count = 15;
+            grfEggsd.Cols.Count = 16;
             C1TextBox txt = new C1TextBox();
             C1ComboBox cboday3 = new C1ComboBox();
             C1ComboBox cboday3desc1 = new C1ComboBox();
             C1ComboBox cbomedi = new C1ComboBox();
+            C1ComboBox cbomedi2 = new C1ComboBox();
             cboday3.AutoCompleteMode = AutoCompleteMode.Suggest;
             cboday3.AutoCompleteSource = AutoCompleteSource.ListItems;
             cboday3desc1.AutoCompleteMode = AutoCompleteMode.Suggest;
             cboday3desc1.AutoCompleteSource = AutoCompleteSource.ListItems;
             cbomedi.AutoCompleteMode = AutoCompleteMode.Suggest;
             cbomedi.AutoCompleteSource = AutoCompleteSource.ListItems;
+            cbomedi2.AutoCompleteMode = AutoCompleteMode.Suggest;
+            cbomedi2.AutoCompleteSource = AutoCompleteSource.ListItems;
             ic.ivfDB.fdtDB.setCboEggStiRtOvary1(cboday3, "");
             ic.ivfDB.fdtDB.setCboEggStiRtOvary2(cboday3desc1, "");
             ic.ivfDB.fdtDB.setCboEggStiMedication(cbomedi, "");
+            ic.ivfDB.fdtDB.setCboEggStiMedication2(cbomedi2, "");
             grfEggsd.Cols[colEggLt1].Editor = cboday3;
             grfEggsd.Cols[colEggLt2].Editor = cboday3desc1;
             grfEggsd.Cols[colEggRt1].Editor = cboday3;
             grfEggsd.Cols[colEggRt2].Editor = cboday3desc1;
             grfEggsd.Cols[colEggMedi].Editor = cbomedi;
+            grfEggsd.Cols[colEggMedi2].Editor = cbomedi2;
             grfEggsd.Cols[colEggDay].Width = 40;
             grfEggsd.Cols[colEggDate].Width = 100;
             grfEggsd.Cols[colEggE2].Width = 70;
@@ -649,6 +885,7 @@ namespace clinic_ivf.gui
             grfEggsd.Cols[colEggLt2].Width = 70;
             grfEggsd.Cols[colEggEndo].Width = 70;
             grfEggsd.Cols[colEggMedi].Width = 120;
+            grfEggsd.Cols[colEggMedi2].Width = 120;
 
             grfEggsd.Cols[colEggE2].AllowSorting = false;
             grfEggsd.Cols[colEggLH].AllowSorting = false;
@@ -669,6 +906,7 @@ namespace clinic_ivf.gui
             grfEggsd.Cols[colEggLt2].Caption = "Lt ovary";
             grfEggsd.Cols[colEggEndo].Caption = "Endo";
             grfEggsd.Cols[colEggMedi].Caption = "Medication";
+            grfEggsd.Cols[colEggMedi2].Caption = "Medication2";
 
             Color color = ColorTranslator.FromHtml(ic.iniC.grfRowColor);
             //CellRange rg1 = grfBank.GetCellRange(1, colE, grfBank.Rows.Count, colE);
@@ -693,6 +931,7 @@ namespace clinic_ivf.gui
                 row1[colEggLt2] = row[ic.ivfDB.eggsdDB.eggsd.lt_ovary_2].ToString();
                 row1[colEggEndo] = row[ic.ivfDB.eggsdDB.eggsd.endo].ToString();
                 row1[colEggMedi] = row[ic.ivfDB.eggsdDB.eggsd.medication].ToString();
+                row1[colEggMedi2] = row[ic.ivfDB.eggsdDB.eggsd.medication2].ToString();
                 row1[colEggEdit] = "";
                 row1[0] = i;
                 i++;
@@ -700,7 +939,21 @@ namespace clinic_ivf.gui
             grfEggsd.Rows.Add();
             grfEggsd.Cols[colEggId].Visible = false;
             grfEggsd.Cols[colEggEdit].Visible = false;
-            //grfEggsd.Cols[colProlactin].Visible = false;
+            grfEggsd.Cols[colEggDay].AllowEditing = false;
+            grfEggsd.Cols[colEggDate].AllowEditing = false;
+            grfEggsd.Cols[colEggDay].AllowSorting = false;
+            grfEggsd.Cols[colEggDate].AllowSorting = false;
+            grfEggsd.Cols[colEggE2].AllowSorting = false;
+            grfEggsd.Cols[colEggLH].AllowSorting = false;
+            grfEggsd.Cols[colEggFSH].AllowSorting = false;
+            grfEggsd.Cols[colEggProlactin].AllowSorting = false;
+            grfEggsd.Cols[colEggRt1].AllowSorting = false;
+            grfEggsd.Cols[colEggRt2].AllowSorting = false;
+            grfEggsd.Cols[colEggLt1].AllowSorting = false;
+            grfEggsd.Cols[colEggLt2].AllowSorting = false;
+            grfEggsd.Cols[colEggEndo].AllowSorting = false;
+            grfEggsd.Cols[colEggMedi].AllowSorting = false;
+            grfEggsd.Cols[colEggMedi2].AllowSorting = false;
             grfEggsd.AutoClipboard = true;
         }
         private void ContextMenu_edit_apm(object sender, System.EventArgs e)

@@ -33,5 +33,6 @@ namespace clinic_ivf.object1
         public String status_infectious { get; set; }
         public String status_add_lab { get; set; }
         public String add_lab { get; set; }
+        public String day_start { get; set; }
     }
 }
