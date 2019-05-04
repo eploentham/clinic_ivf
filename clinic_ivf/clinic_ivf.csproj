@@ -310,11 +310,11 @@
     <Compile Include="gui\FrmNurseAdd.Designer.cs">
       <DependentUpon>FrmNurseAdd.cs</DependentUpon>
     </Compile>
-    <Compile Include="gui\FrmNurseAdd1.cs">
+    <Compile Include="gui\FrmNurseAdd2.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="gui\FrmNurseAdd1.Designer.cs">
-      <DependentUpon>FrmNurseAdd1.cs</DependentUpon>
+    <Compile Include="gui\FrmNurseAdd2.Designer.cs">
+      <DependentUpon>FrmNurseAdd2.cs</DependentUpon>
     </Compile>
     <Compile Include="gui\FrmNurseFormEggSti.cs">
       <SubType>Form</SubType>
@@ -638,6 +638,7 @@
     <Compile Include="object1\PatientAppointmentText.cs" />
     <Compile Include="object1\PatientImage.cs" />
     <Compile Include="object1\RDNIDWRAPPER.cs" />
+    <Compile Include="object1\RecentDocumentList.cs" />
     <Compile Include="object1\Visit.cs" />
     <Compile Include="objdb\VisitQueueTransferDB.cs" />
     <Compile Include="object1\OldAgent.cs" />
@@ -883,8 +884,8 @@
     <EmbeddedResource Include="gui\FrmNurseAdd.resx">
       <DependentUpon>FrmNurseAdd.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="gui\FrmNurseAdd1.resx">
-      <DependentUpon>FrmNurseAdd1.cs</DependentUpon>
+    <EmbeddedResource Include="gui\FrmNurseAdd2.resx">
+      <DependentUpon>FrmNurseAdd2.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="gui\FrmNurseFormEggSti.resx">
       <DependentUpon>FrmNurseFormEggSti.cs</DependentUpon>

@@ -10,5 +10,11 @@
 &lt;/SerializableConnectionString&gt;</DesignTimeValue>
       <Value Profile="(Default)">server=192.168.10.2;user id=root;persistsecurityinfo=True;database=ivf</Value>
     </Setting>
+    <Setting Name="QatBelowRibbon" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="RecentDocuments" Type="System.Collections.Specialized.StringCollection" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
   </Settings>
 </SettingsFile>

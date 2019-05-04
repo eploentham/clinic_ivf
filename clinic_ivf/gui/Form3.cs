@@ -23,7 +23,7 @@ namespace clinic_ivf.gui
         {
             InitializeComponent();
             this.ic = ic;
-            initGrfNote();
+            //initGrfNote();
         }
         private void initGrf()
         {
