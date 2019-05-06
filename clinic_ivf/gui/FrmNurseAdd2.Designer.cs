@@ -1,6 +1,6 @@
 ﻿namespace clinic_ivf.gui
 {
-    partial class FrmNurseAdd1
+    partial class FrmNurseAdd2
     {
         /// <summary>
         /// Required designer variable.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmNurseAdd1));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmNurseAdd2));
             this.sB = new System.Windows.Forms.StatusStrip();
             this.sB1 = new System.Windows.Forms.ToolStripStatusLabel();
             this.theme1 = new C1.Win.C1Themes.C1ThemeController();
@@ -586,28 +586,14 @@
             this.label123 = new System.Windows.Forms.Label();
             this.cboEggStiBhcg = new C1.Win.C1Input.C1ComboBox();
             this.label117 = new System.Windows.Forms.Label();
-            this.radioButton20 = new System.Windows.Forms.RadioButton();
-            this.txtStfConfirmID = new C1.Win.C1Input.C1TextBox();
-            this.txtUserReq = new C1.Win.C1Input.C1TextBox();
-            this.label89 = new System.Windows.Forms.Label();
-            this.label90 = new System.Windows.Forms.Label();
-            this.cboBsp = new C1.Win.C1Input.C1ComboBox();
-            this.label91 = new System.Windows.Forms.Label();
-            this.groupBox38 = new System.Windows.Forms.GroupBox();
-            this.pnDay = new System.Windows.Forms.Panel();
-            this.btnVoid = new C1.Win.C1Input.C1Button();
-            this.btnSave = new C1.Win.C1Input.C1Button();
-            this.label92 = new System.Windows.Forms.Label();
-            this.label93 = new System.Windows.Forms.Label();
-            this.label94 = new System.Windows.Forms.Label();
             this.tabPg = new C1.Win.C1Command.C1DockingTabPage();
+            this.pnProgressNote = new System.Windows.Forms.Panel();
+            this.panel27 = new System.Windows.Forms.Panel();
             this.pnPg = new System.Windows.Forms.Panel();
+            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
             this.c1Ribbon1 = new C1.Win.C1Ribbon.C1Ribbon();
             this.ribbonApplicationMenu1 = new C1.Win.C1Ribbon.RibbonApplicationMenu();
-            this.ribbonQat1 = new C1.Win.C1Ribbon.RibbonQat();
-            this.ribbonConfigToolBar1 = new C1.Win.C1Ribbon.RibbonConfigToolBar();
-            this.ribbonTopToolBar1 = new C1.Win.C1Ribbon.RibbonTopToolBar();
-            this.ribbonBottomToolBar1 = new C1.Win.C1Ribbon.RibbonBottomToolBar();
+            this.ExitButton = new C1.Win.C1Ribbon.RibbonButton();
             this.NewDocumentButton = new C1.Win.C1Ribbon.RibbonButton();
             this.OpenDocumentButton = new C1.Win.C1Ribbon.RibbonButton();
             this.SaveDocumentButton = new C1.Win.C1Ribbon.RibbonButton();
@@ -615,9 +601,11 @@
             this.SaveDocumentAsRtfButton = new C1.Win.C1Ribbon.RibbonButton();
             this.SaveDocumentAsTextButton = new C1.Win.C1Ribbon.RibbonButton();
             this.SaveDocumentAsOtherButton = new C1.Win.C1Ribbon.RibbonButton();
-            this.ExitButton = new C1.Win.C1Ribbon.RibbonButton();
+            this.ribbonBottomToolBar1 = new C1.Win.C1Ribbon.RibbonBottomToolBar();
+            this.ribbonConfigToolBar1 = new C1.Win.C1Ribbon.RibbonConfigToolBar();
             this.ribbonStyleCombo = new C1.Win.C1Ribbon.RibbonComboBox();
             this.F1HelpButton = new C1.Win.C1Ribbon.RibbonButton();
+            this.ribbonQat1 = new C1.Win.C1Ribbon.RibbonQat();
             this.UndoButton = new C1.Win.C1Ribbon.RibbonButton();
             this.RedoButton = new C1.Win.C1Ribbon.RibbonButton();
             this.HomeTab = new C1.Win.C1Ribbon.RibbonTab();
@@ -653,7 +641,24 @@
             this.ViewZoomGroup = new C1.Win.C1Ribbon.RibbonGroup();
             this.ViewZoomCombobox = new C1.Win.C1Ribbon.RibbonComboBox();
             this.NormalSizeButton = new C1.Win.C1Ribbon.RibbonButton();
-            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
+            this.ribbonTab1 = new C1.Win.C1Ribbon.RibbonTab();
+            this.ribbonGroup1 = new C1.Win.C1Ribbon.RibbonGroup();
+            this.rbPgPrint = new C1.Win.C1Ribbon.RibbonButton();
+            this.ribbonTopToolBar1 = new C1.Win.C1Ribbon.RibbonTopToolBar();
+            this.radioButton20 = new System.Windows.Forms.RadioButton();
+            this.txtStfConfirmID = new C1.Win.C1Input.C1TextBox();
+            this.txtUserReq = new C1.Win.C1Input.C1TextBox();
+            this.label89 = new System.Windows.Forms.Label();
+            this.label90 = new System.Windows.Forms.Label();
+            this.cboBsp = new C1.Win.C1Input.C1ComboBox();
+            this.label91 = new System.Windows.Forms.Label();
+            this.groupBox38 = new System.Windows.Forms.GroupBox();
+            this.pnDay = new System.Windows.Forms.Panel();
+            this.btnVoid = new C1.Win.C1Input.C1Button();
+            this.btnSave = new C1.Win.C1Input.C1Button();
+            this.label92 = new System.Windows.Forms.Label();
+            this.label93 = new System.Windows.Forms.Label();
+            this.label94 = new System.Windows.Forms.Label();
             this.sB.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.theme1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.sC)).BeginInit();
@@ -1032,14 +1037,15 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtEggStiOPUTime)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtEggStiOPUDate)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cboEggStiBhcg)).BeginInit();
+            this.tabPg.SuspendLayout();
+            this.pnProgressNote.SuspendLayout();
+            this.pnPg.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.c1Ribbon1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtStfConfirmID)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtUserReq)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cboBsp)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnVoid)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnSave)).BeginInit();
-            this.tabPg.SuspendLayout();
-            this.pnPg.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.c1Ribbon1)).BeginInit();
             this.SuspendLayout();
             // 
             // sB
@@ -9780,215 +9786,60 @@
             this.label117.Text = "BHCG Test :";
             this.theme1.SetTheme(this.label117, "(default)");
             // 
-            // radioButton20
-            // 
-            this.radioButton20.AutoSize = true;
-            this.radioButton20.BackColor = System.Drawing.Color.Transparent;
-            this.radioButton20.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
-            this.radioButton20.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(189)))), ((int)(((byte)(182)))));
-            this.radioButton20.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(189)))), ((int)(((byte)(182)))));
-            this.radioButton20.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.radioButton20.Location = new System.Drawing.Point(239, 3);
-            this.radioButton20.Name = "radioButton20";
-            this.radioButton20.Size = new System.Drawing.Size(68, 17);
-            this.radioButton20.TabIndex = 535;
-            this.radioButton20.TabStop = true;
-            this.radioButton20.Text = "Negative";
-            this.theme1.SetTheme(this.radioButton20, "(default)");
-            this.radioButton20.UseVisualStyleBackColor = false;
-            // 
-            // txtStfConfirmID
-            // 
-            this.txtStfConfirmID.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtStfConfirmID.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
-            this.txtStfConfirmID.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.txtStfConfirmID.Location = new System.Drawing.Point(313, 35);
-            this.txtStfConfirmID.Name = "txtStfConfirmID";
-            this.txtStfConfirmID.Size = new System.Drawing.Size(30, 20);
-            this.txtStfConfirmID.TabIndex = 665;
-            this.txtStfConfirmID.Tag = null;
-            this.theme1.SetTheme(this.txtStfConfirmID, "(default)");
-            this.txtStfConfirmID.Visible = false;
-            this.txtStfConfirmID.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
-            // 
-            // txtUserReq
-            // 
-            this.txtUserReq.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtUserReq.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
-            this.txtUserReq.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.txtUserReq.Location = new System.Drawing.Point(446, 39);
-            this.txtUserReq.Name = "txtUserReq";
-            this.txtUserReq.Size = new System.Drawing.Size(207, 20);
-            this.txtUserReq.TabIndex = 664;
-            this.txtUserReq.Tag = null;
-            this.theme1.SetTheme(this.txtUserReq, "(default)");
-            this.txtUserReq.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
-            // 
-            // label89
-            // 
-            this.label89.AutoSize = true;
-            this.label89.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.label89.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label89.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.label89.Location = new System.Drawing.Point(360, 41);
-            this.label89.Name = "label89";
-            this.label89.Size = new System.Drawing.Size(43, 16);
-            this.label89.TabIndex = 663;
-            this.theme1.SetTheme(this.label89, "(default)");
-            // 
-            // label90
-            // 
-            this.label90.AutoSize = true;
-            this.label90.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.label90.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label90.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.label90.Location = new System.Drawing.Point(6, 211);
-            this.label90.Name = "label90";
-            this.label90.Size = new System.Drawing.Size(28, 16);
-            this.label90.TabIndex = 562;
-            this.theme1.SetTheme(this.label90, "(default)");
-            // 
-            // cboBsp
-            // 
-            this.cboBsp.AllowSpinLoop = false;
-            this.cboBsp.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.cboBsp.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
-            this.cboBsp.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.cboBsp.GapHeight = 0;
-            this.cboBsp.ImagePadding = new System.Windows.Forms.Padding(0);
-            this.cboBsp.ItemsDisplayMember = "";
-            this.cboBsp.ItemsValueMember = "";
-            this.cboBsp.Location = new System.Drawing.Point(446, 17);
-            this.cboBsp.Name = "cboBsp";
-            this.cboBsp.Size = new System.Drawing.Size(207, 20);
-            this.cboBsp.Style.DropDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.cboBsp.Style.DropDownBorderColor = System.Drawing.Color.Gainsboro;
-            this.cboBsp.Style.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.cboBsp.TabIndex = 561;
-            this.cboBsp.Tag = null;
-            this.theme1.SetTheme(this.cboBsp, "(default)");
-            this.cboBsp.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
-            // 
-            // label91
-            // 
-            this.label91.AutoSize = true;
-            this.label91.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.label91.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label91.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.label91.Location = new System.Drawing.Point(360, 17);
-            this.label91.Name = "label91";
-            this.label91.Size = new System.Drawing.Size(55, 16);
-            this.label91.TabIndex = 560;
-            this.theme1.SetTheme(this.label91, "(default)");
-            // 
-            // groupBox38
-            // 
-            this.groupBox38.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.groupBox38.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.groupBox38.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.groupBox38.Location = new System.Drawing.Point(3, 348);
-            this.groupBox38.Name = "groupBox38";
-            this.groupBox38.Size = new System.Drawing.Size(1015, 293);
-            this.groupBox38.TabIndex = 559;
-            this.groupBox38.TabStop = false;
-            this.theme1.SetTheme(this.groupBox38, "(default)");
-            // 
-            // pnDay
-            // 
-            this.pnDay.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.pnDay.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnDay.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.pnDay.Location = new System.Drawing.Point(0, 0);
-            this.pnDay.Name = "pnDay";
-            this.pnDay.Size = new System.Drawing.Size(1007, 263);
-            this.pnDay.TabIndex = 1;
-            this.theme1.SetTheme(this.pnDay, "(default)");
-            // 
-            // btnVoid
-            // 
-            this.btnVoid.Image = global::clinic_ivf.Properties.Resources.Female_user_remove_24;
-            this.btnVoid.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnVoid.Location = new System.Drawing.Point(704, 13);
-            this.btnVoid.Name = "btnVoid";
-            this.btnVoid.Size = new System.Drawing.Size(83, 39);
-            this.btnVoid.TabIndex = 549;
-            this.btnVoid.Text = "Void";
-            this.btnVoid.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.theme1.SetTheme(this.btnVoid, "(default)");
-            this.btnVoid.UseVisualStyleBackColor = true;
-            this.btnVoid.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
-            // 
-            // btnSave
-            // 
-            this.btnSave.Image = global::clinic_ivf.Properties.Resources.download_database24;
-            this.btnSave.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnSave.Location = new System.Drawing.Point(704, 58);
-            this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(83, 39);
-            this.btnSave.TabIndex = 548;
-            this.btnSave.Text = "Save";
-            this.btnSave.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.theme1.SetTheme(this.btnSave, "(default)");
-            this.btnSave.UseVisualStyleBackColor = true;
-            this.btnSave.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
-            // 
-            // label92
-            // 
-            this.label92.AutoSize = true;
-            this.label92.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.label92.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label92.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.label92.Location = new System.Drawing.Point(6, 234);
-            this.label92.Name = "label92";
-            this.label92.Size = new System.Drawing.Size(62, 16);
-            this.label92.TabIndex = 557;
-            this.theme1.SetTheme(this.label92, "(default)");
-            // 
-            // label93
-            // 
-            this.label93.AutoSize = true;
-            this.label93.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.label93.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label93.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.label93.Location = new System.Drawing.Point(6, 39);
-            this.label93.Name = "label93";
-            this.label93.Size = new System.Drawing.Size(45, 16);
-            this.label93.TabIndex = 548;
-            this.theme1.SetTheme(this.label93, "(default)");
-            // 
-            // label94
-            // 
-            this.label94.AutoSize = true;
-            this.label94.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.label94.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label94.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.label94.Location = new System.Drawing.Point(6, 17);
-            this.label94.Name = "label94";
-            this.label94.Size = new System.Drawing.Size(43, 16);
-            this.label94.TabIndex = 545;
-            this.theme1.SetTheme(this.label94, "(default)");
-            // 
             // tabPg
             // 
-            this.tabPg.Controls.Add(this.pnPg);
+            this.tabPg.Controls.Add(this.pnProgressNote);
             this.tabPg.Location = new System.Drawing.Point(1, 24);
             this.tabPg.Name = "tabPg";
             this.tabPg.Size = new System.Drawing.Size(1585, 665);
             this.tabPg.TabIndex = 9;
             this.tabPg.Text = "Progress Note";
             // 
+            // pnProgressNote
+            // 
+            this.pnProgressNote.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.pnProgressNote.Controls.Add(this.panel27);
+            this.pnProgressNote.Controls.Add(this.pnPg);
+            this.pnProgressNote.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pnProgressNote.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.pnProgressNote.Location = new System.Drawing.Point(0, 0);
+            this.pnProgressNote.Name = "pnProgressNote";
+            this.pnProgressNote.Size = new System.Drawing.Size(1585, 665);
+            this.pnProgressNote.TabIndex = 1;
+            this.theme1.SetTheme(this.pnProgressNote, "(default)");
+            // 
+            // panel27
+            // 
+            this.panel27.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.panel27.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel27.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.panel27.Location = new System.Drawing.Point(852, 0);
+            this.panel27.Name = "panel27";
+            this.panel27.Size = new System.Drawing.Size(733, 665);
+            this.panel27.TabIndex = 1;
+            this.theme1.SetTheme(this.panel27, "(default)");
+            // 
             // pnPg
             // 
             this.pnPg.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
             this.pnPg.Controls.Add(this.richTextBox1);
             this.pnPg.Controls.Add(this.c1Ribbon1);
-            this.pnPg.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pnPg.Dock = System.Windows.Forms.DockStyle.Left;
             this.pnPg.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
             this.pnPg.Location = new System.Drawing.Point(0, 0);
             this.pnPg.Name = "pnPg";
-            this.pnPg.Size = new System.Drawing.Size(1585, 665);
+            this.pnPg.Size = new System.Drawing.Size(852, 665);
             this.pnPg.TabIndex = 0;
             this.theme1.SetTheme(this.pnPg, "(default)");
+            // 
+            // richTextBox1
+            // 
+            this.richTextBox1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.richTextBox1.Location = new System.Drawing.Point(0, 146);
+            this.richTextBox1.Name = "richTextBox1";
+            this.richTextBox1.Size = new System.Drawing.Size(852, 519);
+            this.richTextBox1.TabIndex = 1;
+            this.richTextBox1.Text = "";
             // 
             // c1Ribbon1
             // 
@@ -10001,9 +9852,10 @@
             this.c1Ribbon1.QatHolder = this.ribbonQat1;
             this.c1Ribbon1.QatItemsHolder.Add(this.UndoButton);
             this.c1Ribbon1.QatItemsHolder.Add(this.RedoButton);
-            this.c1Ribbon1.Size = new System.Drawing.Size(1585, 146);
+            this.c1Ribbon1.Size = new System.Drawing.Size(852, 146);
             this.c1Ribbon1.Tabs.Add(this.HomeTab);
             this.c1Ribbon1.Tabs.Add(this.ViewTab);
+            this.c1Ribbon1.Tabs.Add(this.ribbonTab1);
             this.theme1.SetTheme(this.c1Ribbon1, "(default)");
             this.c1Ribbon1.TopToolBarHolder = this.ribbonTopToolBar1;
             this.c1Ribbon1.VisualStyle = C1.Win.C1Ribbon.VisualStyle.Custom;
@@ -10020,29 +9872,11 @@
             this.ribbonApplicationMenu1.Name = "ribbonApplicationMenu1";
             this.ribbonApplicationMenu1.Text = "File";
             // 
-            // ribbonQat1
+            // ExitButton
             // 
-            this.ribbonQat1.HotItemLinks.Add(this.SaveDocumentButton);
-            this.ribbonQat1.HotItemLinks.Add(this.UndoButton);
-            this.ribbonQat1.HotItemLinks.Add(this.RedoButton);
-            this.ribbonQat1.ItemLinks.Add(this.SaveDocumentButton);
-            this.ribbonQat1.ItemLinks.Add(this.UndoButton);
-            this.ribbonQat1.ItemLinks.Add(this.RedoButton);
-            this.ribbonQat1.Name = "ribbonQat1";
-            // 
-            // ribbonConfigToolBar1
-            // 
-            this.ribbonConfigToolBar1.Items.Add(this.ribbonStyleCombo);
-            this.ribbonConfigToolBar1.Items.Add(this.F1HelpButton);
-            this.ribbonConfigToolBar1.Name = "ribbonConfigToolBar1";
-            // 
-            // ribbonTopToolBar1
-            // 
-            this.ribbonTopToolBar1.Name = "ribbonTopToolBar1";
-            // 
-            // ribbonBottomToolBar1
-            // 
-            this.ribbonBottomToolBar1.Name = "ribbonBottomToolBar1";
+            this.ExitButton.Name = "ExitButton";
+            this.ExitButton.SmallImage = ((System.Drawing.Image)(resources.GetObject("ExitButton.SmallImage")));
+            this.ExitButton.Text = "E&xit WordPad Sample";
             // 
             // NewDocumentButton
             // 
@@ -10093,11 +9927,15 @@
             this.SaveDocumentAsOtherButton.Name = "SaveDocumentAsOtherButton";
             this.SaveDocumentAsOtherButton.Text = "Other formats";
             // 
-            // ExitButton
+            // ribbonBottomToolBar1
             // 
-            this.ExitButton.Name = "ExitButton";
-            this.ExitButton.SmallImage = ((System.Drawing.Image)(resources.GetObject("ExitButton.SmallImage")));
-            this.ExitButton.Text = "E&xit WordPad Sample";
+            this.ribbonBottomToolBar1.Name = "ribbonBottomToolBar1";
+            // 
+            // ribbonConfigToolBar1
+            // 
+            this.ribbonConfigToolBar1.Items.Add(this.ribbonStyleCombo);
+            this.ribbonConfigToolBar1.Items.Add(this.F1HelpButton);
+            this.ribbonConfigToolBar1.Name = "ribbonConfigToolBar1";
             // 
             // ribbonStyleCombo
             // 
@@ -10112,6 +9950,16 @@
             this.F1HelpButton.ShortcutKeys = System.Windows.Forms.Keys.F1;
             this.F1HelpButton.SmallImage = ((System.Drawing.Image)(resources.GetObject("F1HelpButton.SmallImage")));
             this.F1HelpButton.ToolTip = "Help";
+            // 
+            // ribbonQat1
+            // 
+            this.ribbonQat1.HotItemLinks.Add(this.SaveDocumentButton);
+            this.ribbonQat1.HotItemLinks.Add(this.UndoButton);
+            this.ribbonQat1.HotItemLinks.Add(this.RedoButton);
+            this.ribbonQat1.ItemLinks.Add(this.SaveDocumentButton);
+            this.ribbonQat1.ItemLinks.Add(this.UndoButton);
+            this.ribbonQat1.ItemLinks.Add(this.RedoButton);
+            this.ribbonQat1.Name = "ribbonQat1";
             // 
             // UndoButton
             // 
@@ -10347,16 +10195,218 @@
             this.NormalSizeButton.SmallImage = ((System.Drawing.Image)(resources.GetObject("NormalSizeButton.SmallImage")));
             this.NormalSizeButton.Text = "100%";
             // 
-            // richTextBox1
+            // ribbonTab1
             // 
-            this.richTextBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.richTextBox1.Location = new System.Drawing.Point(0, 146);
-            this.richTextBox1.Name = "richTextBox1";
-            this.richTextBox1.Size = new System.Drawing.Size(1585, 519);
-            this.richTextBox1.TabIndex = 1;
-            this.richTextBox1.Text = "";
+            this.ribbonTab1.Groups.Add(this.ribbonGroup1);
+            this.ribbonTab1.Name = "ribbonTab1";
+            this.ribbonTab1.Text = "Print";
             // 
-            // FrmNurseAdd1
+            // ribbonGroup1
+            // 
+            this.ribbonGroup1.Items.Add(this.rbPgPrint);
+            this.ribbonGroup1.Name = "ribbonGroup1";
+            this.ribbonGroup1.Text = "Group";
+            // 
+            // rbPgPrint
+            // 
+            this.rbPgPrint.LargeImage = ((System.Drawing.Image)(resources.GetObject("rbPgPrint.LargeImage")));
+            this.rbPgPrint.Name = "rbPgPrint";
+            this.rbPgPrint.SmallImage = ((System.Drawing.Image)(resources.GetObject("rbPgPrint.SmallImage")));
+            this.rbPgPrint.Text = "Print";
+            // 
+            // ribbonTopToolBar1
+            // 
+            this.ribbonTopToolBar1.Name = "ribbonTopToolBar1";
+            // 
+            // radioButton20
+            // 
+            this.radioButton20.AutoSize = true;
+            this.radioButton20.BackColor = System.Drawing.Color.Transparent;
+            this.radioButton20.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
+            this.radioButton20.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(189)))), ((int)(((byte)(182)))));
+            this.radioButton20.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(189)))), ((int)(((byte)(182)))));
+            this.radioButton20.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.radioButton20.Location = new System.Drawing.Point(239, 3);
+            this.radioButton20.Name = "radioButton20";
+            this.radioButton20.Size = new System.Drawing.Size(68, 17);
+            this.radioButton20.TabIndex = 535;
+            this.radioButton20.TabStop = true;
+            this.radioButton20.Text = "Negative";
+            this.theme1.SetTheme(this.radioButton20, "(default)");
+            this.radioButton20.UseVisualStyleBackColor = false;
+            // 
+            // txtStfConfirmID
+            // 
+            this.txtStfConfirmID.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtStfConfirmID.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
+            this.txtStfConfirmID.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.txtStfConfirmID.Location = new System.Drawing.Point(313, 35);
+            this.txtStfConfirmID.Name = "txtStfConfirmID";
+            this.txtStfConfirmID.Size = new System.Drawing.Size(30, 20);
+            this.txtStfConfirmID.TabIndex = 665;
+            this.txtStfConfirmID.Tag = null;
+            this.theme1.SetTheme(this.txtStfConfirmID, "(default)");
+            this.txtStfConfirmID.Visible = false;
+            this.txtStfConfirmID.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            // 
+            // txtUserReq
+            // 
+            this.txtUserReq.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtUserReq.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
+            this.txtUserReq.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.txtUserReq.Location = new System.Drawing.Point(446, 39);
+            this.txtUserReq.Name = "txtUserReq";
+            this.txtUserReq.Size = new System.Drawing.Size(207, 20);
+            this.txtUserReq.TabIndex = 664;
+            this.txtUserReq.Tag = null;
+            this.theme1.SetTheme(this.txtUserReq, "(default)");
+            this.txtUserReq.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            // 
+            // label89
+            // 
+            this.label89.AutoSize = true;
+            this.label89.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.label89.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label89.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.label89.Location = new System.Drawing.Point(360, 41);
+            this.label89.Name = "label89";
+            this.label89.Size = new System.Drawing.Size(43, 16);
+            this.label89.TabIndex = 663;
+            this.theme1.SetTheme(this.label89, "(default)");
+            // 
+            // label90
+            // 
+            this.label90.AutoSize = true;
+            this.label90.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.label90.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label90.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.label90.Location = new System.Drawing.Point(6, 211);
+            this.label90.Name = "label90";
+            this.label90.Size = new System.Drawing.Size(28, 16);
+            this.label90.TabIndex = 562;
+            this.theme1.SetTheme(this.label90, "(default)");
+            // 
+            // cboBsp
+            // 
+            this.cboBsp.AllowSpinLoop = false;
+            this.cboBsp.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.cboBsp.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
+            this.cboBsp.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.cboBsp.GapHeight = 0;
+            this.cboBsp.ImagePadding = new System.Windows.Forms.Padding(0);
+            this.cboBsp.ItemsDisplayMember = "";
+            this.cboBsp.ItemsValueMember = "";
+            this.cboBsp.Location = new System.Drawing.Point(446, 17);
+            this.cboBsp.Name = "cboBsp";
+            this.cboBsp.Size = new System.Drawing.Size(207, 20);
+            this.cboBsp.Style.DropDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.cboBsp.Style.DropDownBorderColor = System.Drawing.Color.Gainsboro;
+            this.cboBsp.Style.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.cboBsp.TabIndex = 561;
+            this.cboBsp.Tag = null;
+            this.theme1.SetTheme(this.cboBsp, "(default)");
+            this.cboBsp.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            // 
+            // label91
+            // 
+            this.label91.AutoSize = true;
+            this.label91.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.label91.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label91.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.label91.Location = new System.Drawing.Point(360, 17);
+            this.label91.Name = "label91";
+            this.label91.Size = new System.Drawing.Size(55, 16);
+            this.label91.TabIndex = 560;
+            this.theme1.SetTheme(this.label91, "(default)");
+            // 
+            // groupBox38
+            // 
+            this.groupBox38.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.groupBox38.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.groupBox38.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.groupBox38.Location = new System.Drawing.Point(3, 348);
+            this.groupBox38.Name = "groupBox38";
+            this.groupBox38.Size = new System.Drawing.Size(1015, 293);
+            this.groupBox38.TabIndex = 559;
+            this.groupBox38.TabStop = false;
+            this.theme1.SetTheme(this.groupBox38, "(default)");
+            // 
+            // pnDay
+            // 
+            this.pnDay.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.pnDay.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pnDay.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.pnDay.Location = new System.Drawing.Point(0, 0);
+            this.pnDay.Name = "pnDay";
+            this.pnDay.Size = new System.Drawing.Size(1007, 263);
+            this.pnDay.TabIndex = 1;
+            this.theme1.SetTheme(this.pnDay, "(default)");
+            // 
+            // btnVoid
+            // 
+            this.btnVoid.Image = global::clinic_ivf.Properties.Resources.Female_user_remove_24;
+            this.btnVoid.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnVoid.Location = new System.Drawing.Point(704, 13);
+            this.btnVoid.Name = "btnVoid";
+            this.btnVoid.Size = new System.Drawing.Size(83, 39);
+            this.btnVoid.TabIndex = 549;
+            this.btnVoid.Text = "Void";
+            this.btnVoid.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.theme1.SetTheme(this.btnVoid, "(default)");
+            this.btnVoid.UseVisualStyleBackColor = true;
+            this.btnVoid.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            // 
+            // btnSave
+            // 
+            this.btnSave.Image = global::clinic_ivf.Properties.Resources.download_database24;
+            this.btnSave.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnSave.Location = new System.Drawing.Point(704, 58);
+            this.btnSave.Name = "btnSave";
+            this.btnSave.Size = new System.Drawing.Size(83, 39);
+            this.btnSave.TabIndex = 548;
+            this.btnSave.Text = "Save";
+            this.btnSave.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.theme1.SetTheme(this.btnSave, "(default)");
+            this.btnSave.UseVisualStyleBackColor = true;
+            this.btnSave.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            // 
+            // label92
+            // 
+            this.label92.AutoSize = true;
+            this.label92.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.label92.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label92.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.label92.Location = new System.Drawing.Point(6, 234);
+            this.label92.Name = "label92";
+            this.label92.Size = new System.Drawing.Size(62, 16);
+            this.label92.TabIndex = 557;
+            this.theme1.SetTheme(this.label92, "(default)");
+            // 
+            // label93
+            // 
+            this.label93.AutoSize = true;
+            this.label93.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.label93.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label93.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.label93.Location = new System.Drawing.Point(6, 39);
+            this.label93.Name = "label93";
+            this.label93.Size = new System.Drawing.Size(45, 16);
+            this.label93.TabIndex = 548;
+            this.theme1.SetTheme(this.label93, "(default)");
+            // 
+            // label94
+            // 
+            this.label94.AutoSize = true;
+            this.label94.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.label94.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label94.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.label94.Location = new System.Drawing.Point(6, 17);
+            this.label94.Name = "label94";
+            this.label94.Size = new System.Drawing.Size(43, 16);
+            this.label94.TabIndex = 545;
+            this.theme1.SetTheme(this.label94, "(default)");
+            // 
+            // FrmNurseAdd2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -10364,10 +10414,10 @@
             this.Controls.Add(this.sC);
             this.Controls.Add(this.sB);
             this.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.Name = "FrmNurseAdd1";
-            this.Text = "FrmNurseAdd1";
+            this.Name = "FrmNurseAdd2";
+            this.Text = "FrmNurseAdd2";
             this.theme1.SetTheme(this, "(default)");
-            this.Load += new System.EventHandler(this.FrmNurseAdd1_Load);
+            this.Load += new System.EventHandler(this.FrmNurseAdd2_Load);
             this.sB.ResumeLayout(false);
             this.sB.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.theme1)).EndInit();
@@ -10789,15 +10839,16 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtEggStiOPUTime)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtEggStiOPUDate)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cboEggStiBhcg)).EndInit();
+            this.tabPg.ResumeLayout(false);
+            this.pnProgressNote.ResumeLayout(false);
+            this.pnPg.ResumeLayout(false);
+            this.pnPg.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.c1Ribbon1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtStfConfirmID)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtUserReq)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cboBsp)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnVoid)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnSave)).EndInit();
-            this.tabPg.ResumeLayout(false);
-            this.pnPg.ResumeLayout(false);
-            this.pnPg.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.c1Ribbon1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -11479,5 +11530,10 @@
         private C1.Win.C1Ribbon.RibbonComboBox ViewZoomCombobox;
         private C1.Win.C1Ribbon.RibbonButton NormalSizeButton;
         private C1.Win.C1Ribbon.RibbonTopToolBar ribbonTopToolBar1;
+        private System.Windows.Forms.Panel pnProgressNote;
+        private System.Windows.Forms.Panel panel27;
+        private C1.Win.C1Ribbon.RibbonTab ribbonTab1;
+        private C1.Win.C1Ribbon.RibbonGroup ribbonGroup1;
+        private C1.Win.C1Ribbon.RibbonButton rbPgPrint;
     }
 }

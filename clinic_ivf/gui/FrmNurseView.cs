@@ -75,7 +75,6 @@ namespace clinic_ivf.gui
             cboVisitBsp.SelectedItemChanged += CboVisitBsp_SelectedItemChanged;
 
             ic.ivfDB.bspDB.setCboBsp(cboVisitBsp, ic.iniC.service_point_id);
-            
 
             initGrfQue();
             setGrfQue();
@@ -1534,7 +1533,7 @@ namespace clinic_ivf.gui
         }
         private void openNurseAdd(String pttId, String vsid, String name, String flagview)
         {
-            FrmNurseAdd1 frm = new FrmNurseAdd1(ic, menu, pttId, vsid, flagview);
+            FrmNurseAdd2 frm = new FrmNurseAdd2(ic, menu, pttId, vsid, flagview);
             String txt = "";
             if (!name.Equals(""))
             {

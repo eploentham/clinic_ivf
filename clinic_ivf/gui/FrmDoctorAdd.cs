@@ -1,18 +1,23 @@
 ﻿using C1.Win.C1Command;
 using C1.Win.C1FlexGrid;
 using C1.Win.C1Input;
+using C1.Win.C1Ribbon;
 using C1.Win.C1SuperTooltip;
+using C1.Win.C1Themes;
 using clinic_ivf.control;
 using clinic_ivf.FlexGrid;
 using clinic_ivf.object1;
 using clinic_ivf.Properties;
 using System;
 using System.Collections.Generic;
+using System.Collections.Specialized;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -51,6 +56,10 @@ namespace clinic_ivf.gui
         int colEggDay = 1, colEggDate = 2, colEggE2 = 3, colEggLH = 4, colEggFSH = 5, colEggProlactin = 6, colEggRt1 = 7, colEggRt2 = 8, colEggLt1 = 9, colEggLt2 = 10, colEggEndo = 11, colEggMedi = 12, colEggId = 13, colEggEdit = 14, colEggMedi2 = 15;
         decimal rat = 0;
         Color color;
+
+        string documentName;
+        string documentPath;
+        RichTextBoxStreamType documentFileType;
         public FrmDoctorAdd(IvfControl ic, MainMenu m, String pttid, String vsid)
         {
             InitializeComponent();
@@ -95,6 +104,26 @@ namespace clinic_ivf.gui
             btnGenEggSti.Click += BtnGenEggSti_Click;
             btnEggStiPrint.Click += BtnEggStiPrint_Click;
             btnEggStiSave.Click += BtnEggStiSave_Click;
+            FontBoldButton.Click += FontBoldButton_Click;
+            FontItalicButton.Click += FontItalicButton_Click;
+            FontUnderlineButton.Click += FontUnderlineButton_Click;
+            FontStrikeoutButton.Click += FontStrikeoutButton_Click;
+            FontColorPicker.Click += FontColorPicker_Click;
+            BackColorPicker.Click += BackColorPicker_Click;
+            ParagraphAlignLeftButton.Click += ParagraphAlignLeftButton_Click;
+            ParagraphAlignCenterButton.Click += ParagraphAlignCenterButton_Click;
+            ParagraphAlignRightButton.Click += ParagraphAlignRightButton_Click;
+            DecreaseIndentButton.Click += DecreaseIndentButton_Click;
+            IncreaseIndentButton.Click += IncreaseIndentButton_Click;
+            FontSizeComboBox.ChangeCommitted += FontSizeComboBox_ChangeCommitted;
+            FontFaceComboBox.ChangeCommitted += FontFaceComboBox_ChangeCommitted;
+            CutButton.Click += CutButton_Click;
+            CopyButton.Click += CopyButton_Click;
+            FormatPainterButton.Click += FormatPainterButton_Click;
+            PasteSplitButton.Click += PasteSplitButton_Click;
+            SaveDocumentButton.Click += SaveDocumentButton_Click;
+            UndoButton.Click += UndoButton_Click;
+            RedoButton.Click += RedoButton_Click;
 
             setControl(vsid);
 
@@ -126,6 +155,567 @@ namespace clinic_ivf.gui
             initGrfEggSti();
             setControlEggSti();
             setGrfOrder(txtVn.Text);
+            initProgressNote();
+        }
+        private void RedoButton_Click(object sender, EventArgs e)
+        {
+            //throw new NotImplementedException();
+            this.richTextBox1.Redo();
+            this.UpdateUndoRedoButtons();
+        }
+
+        private void UndoButton_Click(object sender, EventArgs e)
+        {
+            //throw new NotImplementedException();
+            this.richTextBox1.Undo();
+            this.UpdateUndoRedoButtons();
+        }
+
+        private void SaveDocumentButton_Click(object sender, EventArgs e)
+        {
+            //throw new NotImplementedException();
+            this.SaveDocument();
+        }
+
+        private void PasteSplitButton_Click(object sender, EventArgs e)
+        {
+            //throw new NotImplementedException();
+            this.richTextBox1.Paste();
+        }
+
+        private void FormatPainterButton_Click(object sender, EventArgs e)
+        {
+            //throw new NotImplementedException();
+
+        }
+
+        private void CopyButton_Click(object sender, EventArgs e)
+        {
+            //throw new NotImplementedException();
+            this.richTextBox1.Copy();
+        }
+
+        private void CutButton_Click(object sender, EventArgs e)
+        {
+            //throw new NotImplementedException();
+            this.richTextBox1.Cut();
+        }
+
+        private void FontFaceComboBox_ChangeCommitted(object sender, EventArgs e)
+        {
+            //throw new NotImplementedException();
+            Font font = this.richTextBox1.SelectionFont;
+
+            if (font == null)
+            {
+                MessageBox.Show("Cannot change font family while selected text has more than one font.");
+                return;
+            }
+
+            string fontFamilyName = this.FontFaceComboBox.Text;
+
+            this.richTextBox1.SelectionFont = new Font(
+                fontFamilyName,
+                font.Size,
+                font.Style,
+                font.Unit);
+        }
+
+        private void FontSizeComboBox_ChangeCommitted(object sender, EventArgs e)
+        {
+            //throw new NotImplementedException();
+            Font font = this.richTextBox1.SelectionFont;
+
+            if (font == null)
+            {
+                MessageBox.Show("Cannot change font size while selected text has more than one font.");
+                return;
+            }
+
+            this.richTextBox1.SelectionFont = new Font(
+                font.FontFamily,
+                float.Parse(this.FontSizeComboBox.Text),
+                font.Style,
+                GraphicsUnit.Point);
+        }
+
+        private void IncreaseIndentButton_Click(object sender, EventArgs e)
+        {
+            //throw new NotImplementedException();
+            this.richTextBox1.SelectionIndent += 30;
+        }
+
+        private void DecreaseIndentButton_Click(object sender, EventArgs e)
+        {
+            //throw new NotImplementedException();
+            this.richTextBox1.SelectionIndent -= 30;
+        }
+
+        private void ParagraphAlignRightButton_Click(object sender, EventArgs e)
+        {
+            //throw new NotImplementedException();
+            this.SetParagraphAlignment(HorizontalAlignment.Right);
+        }
+
+        private void ParagraphAlignCenterButton_Click(object sender, EventArgs e)
+        {
+            //throw new NotImplementedException();
+            this.SetParagraphAlignment(HorizontalAlignment.Center);
+        }
+
+        private void ParagraphAlignLeftButton_Click(object sender, EventArgs e)
+        {
+            //throw new NotImplementedException();
+            this.SetParagraphAlignment(HorizontalAlignment.Left);
+        }
+
+        private void BackColorPicker_Click(object sender, EventArgs e)
+        {
+            //throw new NotImplementedException();
+            this.richTextBox1.SelectionBackColor = this.BackColorPicker.Color;
+        }
+
+        private void FontColorPicker_Click(object sender, EventArgs e)
+        {
+            //throw new NotImplementedException();
+            this.richTextBox1.SelectionColor = this.FontColorPicker.Color;
+        }
+
+        private void FontStrikeoutButton_Click(object sender, EventArgs e)
+        {
+            //throw new NotImplementedException();
+            ToggleSelectionFontStyle(FontStyle.Strikeout);
+        }
+
+        private void FontUnderlineButton_Click(object sender, EventArgs e)
+        {
+            //throw new NotImplementedException();
+            ToggleSelectionFontStyle(FontStyle.Underline);
+        }
+
+        private void FontItalicButton_Click(object sender, EventArgs e)
+        {
+            //throw new NotImplementedException();
+            ToggleSelectionFontStyle(FontStyle.Italic);
+        }
+
+        private void FontBoldButton_Click(object sender, EventArgs e)
+        {
+            //throw new NotImplementedException();
+            ToggleSelectionFontStyle(FontStyle.Bold);
+        }
+        void SetParagraphAlignment(HorizontalAlignment alignment)
+        {
+            this.richTextBox1.SelectionAlignment = alignment;
+
+            // If the user clicks the same button twice, it will get unpressed.
+            // We want 1 button to be pressed at all times, so we just set 
+            // the buttons' states based on current text alignment.
+            this.UpdateParagraphAlignmentButtons();
+        }
+        void ToggleSelectionFontStyle(FontStyle fontStyle)
+        {
+            if (this.richTextBox1.SelectionFont == null)
+            {
+                MessageBox.Show("Cannot change font style while selected text has more than one font.");
+            }
+            else
+            {
+                this.richTextBox1.SelectionFont = new Font(this.richTextBox1.SelectionFont,
+                    this.richTextBox1.SelectionFont.Style ^ fontStyle);
+            }
+        }
+        private void initProgressNote()
+        {
+            this.InitializeClipboardGroup();
+            this.InitializeFontGroup();
+            this.InitializeParagraphGroup();
+            this.InitializeViewZoomGroup();
+
+            this.InitializeRibbonStyleMenu();
+            this.InitializeFocusManagement();
+            this.InitializeUndoRedo();
+            this.InitializeModifiedIcon();
+            this.InitializeQatPosition();
+
+            this.InitializeRecentDocumentList();
+        }
+        private void InitializeClipboardGroup()
+        {
+            this.UpdateClipboardGroupBasedOnCurrentTextSelection();
+
+            this.richTextBox1.SelectionChanged += delegate
+            {
+                this.UpdateClipboardGroupBasedOnCurrentTextSelection();
+            };
+
+            this.PasteButton.Click += new EventHandler(PasteButton_Click);
+            this.PasteAsTextButton.Click += new EventHandler(PasteAsTextButton_Click);
+        }
+        void PasteButton_Click(object sender, EventArgs e)
+        {
+            this.richTextBox1.Paste();
+        }
+        void PasteAsTextButton_Click(object sender, EventArgs e)
+        {
+            this.richTextBox1.SelectedText = Clipboard.GetText();
+        }
+        private void UpdateClipboardGroupBasedOnCurrentTextSelection()
+        {
+            this.CutButton.Enabled = this.CopyButton.Enabled =
+                !string.IsNullOrEmpty(this.richTextBox1.SelectedText);
+        }
+        private void InitializeFontGroup()
+        {
+            // Populate the Font Face combobox with font names.
+            foreach (FontFamily fontFamily in FontFamily.Families)
+            {
+                this.FontFaceComboBox.Items.Add(new RibbonButton(fontFamily.Name));
+            }
+
+            // Populate the Font Size combobox with some typical font sizes.
+            foreach (int size in new int[] { 8, 9, 10, 11, 12, 14, 16, 18, 20, 22, 24, 26, 28, 36, 48, 72 })
+            {
+                this.FontSizeComboBox.Items.Add(new RibbonButton(size.ToString()));
+            }
+
+            // Keep ribbon controls state updated based on current text selection.
+            this.UpdateFontGroupBasedOnCurrentTextSelection();
+            this.richTextBox1.SelectionChanged += delegate
+            {
+                this.UpdateFontGroupBasedOnCurrentTextSelection();
+            };
+        }
+        private void UpdateFontGroupBasedOnCurrentTextSelection()
+        {
+            Font font = this.richTextBox1.SelectionFont;
+            bool none = font == null;
+            FontBoldButton.Pressed = none ? false : font.Bold;
+            FontItalicButton.Pressed = none ? false : font.Italic;
+            FontUnderlineButton.Pressed = none ? false : font.Underline;
+            FontStrikeoutButton.Pressed = none ? false : font.Strikeout;
+            FontFaceComboBox.Text = none ? "" : font.FontFamily.Name;
+            FontSizeComboBox.Text = none ? "" : font.Size.ToString();
+        }
+        private void InitializeParagraphGroup()
+        {
+            // Keep Ribbon controls state updated based on current text selection.
+            this.UpdateParagraphGroupBasedOnCurrentTextSelection();
+            this.richTextBox1.SelectionChanged += delegate
+            {
+                this.UpdateParagraphGroupBasedOnCurrentTextSelection();
+            };
+        }
+        private void UpdateParagraphGroupBasedOnCurrentTextSelection()
+        {
+            this.UpdateParagraphAlignmentButtons();
+        }
+        private void UpdateParagraphAlignmentButtons()
+        {
+            HorizontalAlignment a = this.richTextBox1.SelectionAlignment;
+            this.ParagraphAlignLeftButton.Pressed = a == HorizontalAlignment.Left;
+            this.ParagraphAlignCenterButton.Pressed = a == HorizontalAlignment.Center;
+            this.ParagraphAlignRightButton.Pressed = a == HorizontalAlignment.Right;
+        }
+        private void InitializeViewZoomGroup()
+        {
+            foreach (int percent in new int[] { 10, 30, 50, 80, 100, 120, 150, 200, 250, 300, 400, 700, 1000 })
+            {
+                this.ViewZoomCombobox.Items.Add(new RibbonButton(percent + "%"));
+            }
+
+            this.UpdateViewZoomComboBox();
+
+            // Update the combo box when user zooms with the mouse wheel.
+            this.richTextBox1.MouseWheel += delegate
+            {
+                this.UpdateViewZoomComboBox();
+            };
+        }
+        private void UpdateViewZoomComboBox()
+        {
+            this.ViewZoomCombobox.Text = (this.richTextBox1.ZoomFactor * 100).ToString() + "%";
+        }
+        private void InitializeRibbonStyleMenu()
+        {
+            ribbonStyleCombo.Items.Clear();
+            string[] themes = C1ThemeController.GetThemes();
+            var showThemes = themes.Where((tn) =>
+            {
+                var ltn = tn.ToLower();
+                if (ltn.Contains("visualstyle")) // avoid old "visual style" themes
+                    return false;
+                else
+                    return true;
+            });
+            ribbonStyleCombo.Items.Add("(No Theme)");
+            foreach (string theme in showThemes)
+                ribbonStyleCombo.Items.Add(theme);
+            ribbonStyleCombo.SelectedIndex = 0;
+        }
+        private void InitializeFocusManagement()
+        {
+            // Set initial focus on the text area.
+            this.Shown += delegate { this.richTextBox1.Focus(); };
+
+            // When a Ribbon button is clicked, move the focus back to the rich text box.
+            this.c1Ribbon1.RibbonEvent += new RibbonEventHandler(c1Ribbon1_RibbonEvent);
+        }
+        void c1Ribbon1_RibbonEvent(object sender, RibbonEventArgs e)
+        {
+            switch (e.EventType)
+            {
+                case RibbonEventType.ChangeCommitted:
+                case RibbonEventType.ChangeCanceled:
+                case RibbonEventType.Click:
+                case RibbonEventType.DialogLauncherClick:
+                case RibbonEventType.DropDownClosed:
+                    if (this.c1Ribbon1.Focused)
+                    {
+                        this.richTextBox1.Focus();
+                    }
+                    break;
+            }
+        }
+
+        private void InitializeUndoRedo()
+        {
+            this.UpdateUndoRedoButtons();
+            this.richTextBox1.TextChanged += delegate { this.UpdateUndoRedoButtons(); };
+        }
+        void UpdateUndoRedoButtons()
+        {
+            this.UndoButton.Enabled = this.richTextBox1.CanUndo;
+            this.RedoButton.Enabled = this.richTextBox1.CanRedo;
+        }
+        private void InitializeModifiedIcon()
+        {
+            this.UpdateModifiedIcon();
+            this.richTextBox1.ModifiedChanged += delegate { this.UpdateModifiedIcon(); };
+        }
+        private void UpdateModifiedIcon()
+        {
+            //this.DocumentModifiedLabel.Enabled = this.richTextBox1.Modified;
+            //this.DocumentModifiedLabel.ToolTip = this.richTextBox1.Modified
+            //    ? "Document modified"
+            //    : "Document not modified";
+        }
+        private void InitializeQatPosition()
+        {
+            Properties.Settings settings = Properties.Settings.Default;
+
+            // Initialize QAT position from application settings.
+            this.c1Ribbon1.Qat.BelowRibbon = settings.QatBelowRibbon;
+
+            // Update application setting when QAT position changes.
+            this.c1Ribbon1.Qat.PositionChanged += delegate
+            {
+                settings.QatBelowRibbon = this.c1Ribbon1.Qat.BelowRibbon;
+            };
+        }
+        private RecentDocumentList recentDocuments;
+        private void InitializeRecentDocumentList()
+        {
+            // Create a new collection if it was not serialized before.
+            if (Properties.Settings.Default.RecentDocuments == null)
+            {
+                Properties.Settings.Default.RecentDocuments = new StringCollection();
+            }
+
+            this.recentDocuments = new RecentDocumentList(this.c1Ribbon1.ApplicationMenu.RightPaneItems, Settings.Default.RecentDocuments, this.LoadRecentDocument);
+
+            //RichTextBoxStreamType fileType = RichTextBoxStreamType.RichText;
+            //String filePathName = "progressnote" + "_" + txtVn.Text + ".rtf";
+            //richTextBox1.LoadFile(filePathName, fileType);
+            Thread threadA = new Thread(new ParameterizedThreadStart(ExecuteA1));
+            threadA.Start();
+        }
+        private void ExecuteA1(Object obj)
+        {
+            //Console.WriteLine("Executing parameterless thread!");
+            try
+            {
+                RichTextBoxStreamType fileType = RichTextBoxStreamType.RichText;
+                MemoryStream stream = new MemoryStream();
+                String filePathName = "progressnote" + "_" + txtVn.Text + ".rtf";
+                if (File.Exists(filePathName))
+                {
+                    File.Delete(filePathName);
+                    System.Threading.Thread.Sleep(200);
+                }
+                String aaa = "images/" + txtIdOld.Text + "/" + filePathName;
+                //setPic(new Bitmap(ic.ftpC.download(filenamepic)));
+                stream = ic.ftpC.download(aaa);
+                //File file1 = new File();
+                //FileStream fileStream = new FileStream(filePathName, FileMode.Create);
+                //fileStream.CopyTo(stream);
+                //using (FileStream fileStream1 = File.Create(filePathName))
+                //using (StreamWriter writer = new StreamWriter(fileStream1))
+                //{
+                //    //writer.w("Example 1 written");
+                //}
+                stream.Seek(0, SeekOrigin.Begin);
+                using (FileStream file = new FileStream(filePathName, FileMode.Create, FileAccess.Write))
+                {
+                    //byte[] bytes = new byte[stream.Length];
+                    //file.Write(bytes, 0, (int)stream.Length);
+                    stream.CopyTo(file);
+                    file.Flush();
+                    //stream.Write(bytes, 0, (int)file.Length);
+                }
+                //richTextBox1.LoadFile(filePathName, fileType);
+                richTextBox1.Invoke((Action)delegate
+                {
+                    richTextBox1.LoadFile(filePathName, fileType);
+                });
+            }
+            catch (Exception ex)
+            {
+                String aaa = "";
+            }
+        }
+        private void LoadRecentDocument(string filename)
+        {
+            if (!File.Exists(filename))
+            {
+                MessageBox.Show("File does not exist: " + filename);
+                return;
+            }
+
+            if (!this.PromtToSaveDocument()) return;
+
+            this.LoadDocument(filename);
+        }
+        private bool PromtToSaveDocument()
+        {
+            if (!this.richTextBox1.Modified) return true;
+
+            DialogResult dr = MessageBox.Show(
+                "Do you want to save '" + this.documentName + "'?",
+                "WordPad Sample", MessageBoxButtons.YesNoCancel);
+
+            switch (dr)
+            {
+                case DialogResult.Cancel:
+                    return false;
+
+                case DialogResult.No:
+                    return true;
+
+                case DialogResult.Yes:
+                    return this.SaveDocument();
+            }
+
+            throw new ApplicationException();
+        }
+        private void LoadDocument(string filePathName)
+        {
+            RichTextBoxStreamType streamType = filePathName.EndsWith(".rtf") ? RichTextBoxStreamType.RichText : RichTextBoxStreamType.PlainText;
+            try
+            {
+                this.richTextBox1.LoadFile(filePathName, streamType);
+                this.SetDocumentProperties(filePathName, streamType);
+                this.recentDocuments.Update(filePathName);
+                this.RaiseRichTextBoxSelectionChanged();
+            }
+            catch (IOException e)
+            {
+                // there is no such file
+                MessageBox.Show(e.Message);
+            }
+        }
+        private bool SaveDocument()
+        {
+            return this.SaveDocument(this.documentPath == null);
+        }
+
+        private bool SaveDocument(bool showDialog)
+        {
+            //if (showDialog)
+            //{
+            //    SaveFileDialog dlg = new SaveFileDialog();
+            //    dlg.FileName = this.documentName;
+            //    if (this.documentPath != null) dlg.InitialDirectory = this.documentPath;
+            //    dlg.Filter = "Rich text file (*.rtf)|*.rtf|"
+            //        + "Rich text file, no OLE objects (*.rtf)|*.rtf|"
+            //        + "Plain text file, no OLE objects (*.txt)|*.txt|"
+            //        + "Plain text file, OLE objects replaced with text (*.txt)|*.txt|"
+            //        + "Unicode text file, no OLE objects (*.txt)|*.txt";
+
+            //    DialogResult dr = dlg.ShowDialog();
+            //    if (dr == DialogResult.Cancel) return false;
+            //    if (dr != DialogResult.OK) throw new ApplicationException();
+
+            //    RichTextBoxStreamType fileType;
+
+            //    switch (dlg.FilterIndex)
+            //    {
+            //        case 1: fileType = RichTextBoxStreamType.RichText; break;
+            //        case 2: fileType = RichTextBoxStreamType.RichNoOleObjs; break;
+            //        case 3: fileType = RichTextBoxStreamType.PlainText; break;
+            //        case 4: fileType = RichTextBoxStreamType.TextTextOleObjs; break;
+            //        case 5: fileType = RichTextBoxStreamType.UnicodePlainText; break;
+            //        default: throw new ApplicationException();
+            //    }
+
+            //    this.SetDocumentProperties(dlg.FileName, fileType);
+            //}
+            RichTextBoxStreamType fileType = RichTextBoxStreamType.RichText;
+            this.SetDocumentProperties("progressnote_" + txtVn.Text + ".rtf", fileType);
+            this.SaveDocumentAs(this.documentFileType);
+
+            return true;
+        }
+
+        private void SaveDocumentAs(RichTextBoxStreamType fileType)
+        {
+            //string filePathName = this.documentPath + '\\' + this.documentName;
+            try
+            {
+                String filePathName = this.documentPath + '\\' + this.documentName;
+                if (File.Exists(filePathName))
+                {
+                    File.Delete(filePathName);
+                    System.Threading.Thread.Sleep(200);
+                }
+                this.richTextBox1.SaveFile(filePathName, fileType);
+                this.recentDocuments.Update(filePathName);
+                this.richTextBox1.Modified = false;
+                //RichTextBoxStreamType fileType1 = RichTextBoxStreamType.RichText;
+                //String ext = Path.GetExtension(filePathName);
+                //String filename = filePathName.Replace(ext, "");
+                //filename = filename+"_" + txtVn.Text + ext;
+                ic.savePicOPUtoServer(txtIdOld.Text, documentName, filePathName);
+            }
+            catch (Exception ex)
+            {
+
+            }
+        }
+        private void CreateNewDocument()
+        {
+            this.richTextBox1.Clear();
+            this.documentName = "Document";
+            this.documentPath = null;
+            this.documentFileType = RichTextBoxStreamType.RichText;
+
+            this.RaiseRichTextBoxSelectionChanged();
+        }
+        private void SetDocumentProperties(string filePathName, RichTextBoxStreamType fileType)
+        {
+            FileInfo fileInfo = new FileInfo(filePathName);
+            this.documentName = fileInfo.Name;
+            this.documentPath = fileInfo.DirectoryName;
+            this.documentFileType = fileType;
+        }
+        private void RaiseRichTextBoxSelectionChanged()
+        {
+            // Force a SelectionChanged event to update the state of Ribbon items 
+            // that depend on current text selection.
+            this.richTextBox1.SelectAll();
+            this.richTextBox1.Select(0, 0);
+
+            this.richTextBox1.Modified = false;
         }
         private void setControlEggSti()
         {
@@ -406,7 +996,7 @@ namespace clinic_ivf.gui
             dt = ic.ivfDB.eggsdDB.selectByEggStiId(txtEggStiId.Text);
             //grfExpn.Rows.Count = dt.Rows.Count + 1;
             grfEggsd.Rows.Count = 1;
-            grfEggsd.Cols.Count = 15;
+            grfEggsd.Cols.Count = 16;
             C1TextBox txt = new C1TextBox();
             C1ComboBox cboday3 = new C1ComboBox();
             C1ComboBox cboday3desc1 = new C1ComboBox();

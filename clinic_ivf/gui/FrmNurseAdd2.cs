@@ -23,7 +23,7 @@ using System.Windows.Forms;
 
 namespace clinic_ivf.gui
 {
-    public partial class FrmNurseAdd1 : Form
+    public partial class FrmNurseAdd2 : Form
     {
         IvfControl ic;
         MainMenu menu;
@@ -72,7 +72,7 @@ namespace clinic_ivf.gui
         string documentName;
         string documentPath;
         RichTextBoxStreamType documentFileType;
-        public FrmNurseAdd1(IvfControl ic, MainMenu m, String pttid, String vsid, String flagedit)
+        public FrmNurseAdd2(IvfControl ic, MainMenu m, String pttid, String vsid, String flagedit)
         {
             InitializeComponent();
             menu = m;
@@ -159,6 +159,26 @@ namespace clinic_ivf.gui
             btnGenEggSti.Click += BtnGenEggSti_Click;
             btnEggStiPrint.Click += BtnEggStiPrint_Click;
             btnEggStiSave.Click += BtnEggStiSave_Click;
+            FontBoldButton.Click += FontBoldButton_Click;
+            FontItalicButton.Click += FontItalicButton_Click;
+            FontUnderlineButton.Click += FontUnderlineButton_Click;
+            FontStrikeoutButton.Click += FontStrikeoutButton_Click;
+            FontColorPicker.Click += FontColorPicker_Click;
+            BackColorPicker.Click += BackColorPicker_Click;
+            ParagraphAlignLeftButton.Click += ParagraphAlignLeftButton_Click;
+            ParagraphAlignCenterButton.Click += ParagraphAlignCenterButton_Click;
+            ParagraphAlignRightButton.Click += ParagraphAlignRightButton_Click;
+            DecreaseIndentButton.Click += DecreaseIndentButton_Click;
+            IncreaseIndentButton.Click += IncreaseIndentButton_Click;
+            FontSizeComboBox.ChangeCommitted += FontSizeComboBox_ChangeCommitted;
+            FontFaceComboBox.ChangeCommitted += FontFaceComboBox_ChangeCommitted;
+            CutButton.Click += CutButton_Click;
+            CopyButton.Click += CopyButton_Click;
+            FormatPainterButton.Click += FormatPainterButton_Click;
+            PasteSplitButton.Click += PasteSplitButton_Click;
+            SaveDocumentButton.Click += SaveDocumentButton_Click;
+            UndoButton.Click += UndoButton_Click;
+            RedoButton.Click += RedoButton_Click;
 
             setControl(vsid);
             ChkDenyAllergy_CheckedChanged(null, null);
@@ -202,6 +222,175 @@ namespace clinic_ivf.gui
             //initGrfPtt();
             //setGrfPtt("");
             initProgressNote();
+        }
+
+        private void RedoButton_Click(object sender, EventArgs e)
+        {
+            //throw new NotImplementedException();
+            this.richTextBox1.Redo();
+            this.UpdateUndoRedoButtons();
+        }
+
+        private void UndoButton_Click(object sender, EventArgs e)
+        {
+            //throw new NotImplementedException();
+            this.richTextBox1.Undo();
+            this.UpdateUndoRedoButtons();
+        }
+
+        private void SaveDocumentButton_Click(object sender, EventArgs e)
+        {
+            //throw new NotImplementedException();
+            this.SaveDocument();
+        }
+
+        private void PasteSplitButton_Click(object sender, EventArgs e)
+        {
+            //throw new NotImplementedException();
+            this.richTextBox1.Paste();
+        }
+
+        private void FormatPainterButton_Click(object sender, EventArgs e)
+        {
+            //throw new NotImplementedException();
+
+        }
+
+        private void CopyButton_Click(object sender, EventArgs e)
+        {
+            //throw new NotImplementedException();
+            this.richTextBox1.Copy();
+        }
+
+        private void CutButton_Click(object sender, EventArgs e)
+        {
+            //throw new NotImplementedException();
+            this.richTextBox1.Cut();
+        }
+
+        private void FontFaceComboBox_ChangeCommitted(object sender, EventArgs e)
+        {
+            //throw new NotImplementedException();
+            Font font = this.richTextBox1.SelectionFont;
+
+            if (font == null)
+            {
+                MessageBox.Show("Cannot change font family while selected text has more than one font.");
+                return;
+            }
+
+            string fontFamilyName = this.FontFaceComboBox.Text;
+
+            this.richTextBox1.SelectionFont = new Font(
+                fontFamilyName,
+                font.Size,
+                font.Style,
+                font.Unit);
+        }
+
+        private void FontSizeComboBox_ChangeCommitted(object sender, EventArgs e)
+        {
+            //throw new NotImplementedException();
+            Font font = this.richTextBox1.SelectionFont;
+
+            if (font == null)
+            {
+                MessageBox.Show("Cannot change font size while selected text has more than one font.");
+                return;
+            }
+
+            this.richTextBox1.SelectionFont = new Font(
+                font.FontFamily,
+                float.Parse(this.FontSizeComboBox.Text),
+                font.Style,
+                GraphicsUnit.Point);
+        }
+
+        private void IncreaseIndentButton_Click(object sender, EventArgs e)
+        {
+            //throw new NotImplementedException();
+            this.richTextBox1.SelectionIndent += 30;
+        }
+
+        private void DecreaseIndentButton_Click(object sender, EventArgs e)
+        {
+            //throw new NotImplementedException();
+            this.richTextBox1.SelectionIndent -= 30;
+        }
+
+        private void ParagraphAlignRightButton_Click(object sender, EventArgs e)
+        {
+            //throw new NotImplementedException();
+            this.SetParagraphAlignment(HorizontalAlignment.Right);
+        }
+
+        private void ParagraphAlignCenterButton_Click(object sender, EventArgs e)
+        {
+            //throw new NotImplementedException();
+            this.SetParagraphAlignment(HorizontalAlignment.Center);
+        }
+
+        private void ParagraphAlignLeftButton_Click(object sender, EventArgs e)
+        {
+            //throw new NotImplementedException();
+            this.SetParagraphAlignment(HorizontalAlignment.Left);
+        }
+
+        private void BackColorPicker_Click(object sender, EventArgs e)
+        {
+            //throw new NotImplementedException();
+            this.richTextBox1.SelectionBackColor = this.BackColorPicker.Color;
+        }
+
+        private void FontColorPicker_Click(object sender, EventArgs e)
+        {
+            //throw new NotImplementedException();
+            this.richTextBox1.SelectionColor = this.FontColorPicker.Color;
+        }
+
+        private void FontStrikeoutButton_Click(object sender, EventArgs e)
+        {
+            //throw new NotImplementedException();
+            ToggleSelectionFontStyle(FontStyle.Strikeout);
+        }
+
+        private void FontUnderlineButton_Click(object sender, EventArgs e)
+        {
+            //throw new NotImplementedException();
+            ToggleSelectionFontStyle(FontStyle.Underline);
+        }
+
+        private void FontItalicButton_Click(object sender, EventArgs e)
+        {
+            //throw new NotImplementedException();
+            ToggleSelectionFontStyle(FontStyle.Italic);
+        }
+
+        private void FontBoldButton_Click(object sender, EventArgs e)
+        {
+            //throw new NotImplementedException();
+            ToggleSelectionFontStyle(FontStyle.Bold);
+        }
+        void SetParagraphAlignment(HorizontalAlignment alignment)
+        {
+            this.richTextBox1.SelectionAlignment = alignment;
+
+            // If the user clicks the same button twice, it will get unpressed.
+            // We want 1 button to be pressed at all times, so we just set 
+            // the buttons' states based on current text alignment.
+            this.UpdateParagraphAlignmentButtons();
+        }
+        void ToggleSelectionFontStyle(FontStyle fontStyle)
+        {
+            if (this.richTextBox1.SelectionFont == null)
+            {
+                MessageBox.Show("Cannot change font style while selected text has more than one font.");
+            }
+            else
+            {
+                this.richTextBox1.SelectionFont = new Font(this.richTextBox1.SelectionFont,
+                    this.richTextBox1.SelectionFont.Style ^ fontStyle);
+            }
         }
         private void initProgressNote()
         {
@@ -400,10 +589,57 @@ namespace clinic_ivf.gui
                 Properties.Settings.Default.RecentDocuments = new StringCollection();
             }
 
-            this.recentDocuments = new RecentDocumentList(
-                this.c1Ribbon1.ApplicationMenu.RightPaneItems,
-                Properties.Settings.Default.RecentDocuments,
-                this.LoadRecentDocument);
+            this.recentDocuments = new RecentDocumentList(this.c1Ribbon1.ApplicationMenu.RightPaneItems,  Settings.Default.RecentDocuments, this.LoadRecentDocument);
+
+            //RichTextBoxStreamType fileType = RichTextBoxStreamType.RichText;
+            //String filePathName = "progressnote" + "_" + txtVn.Text + ".rtf";
+            //richTextBox1.LoadFile(filePathName, fileType);
+            Thread threadA = new Thread(new ParameterizedThreadStart(ExecuteA1));
+            threadA.Start();
+        }
+        private void ExecuteA1(Object obj)
+        {
+            //Console.WriteLine("Executing parameterless thread!");
+            try
+            {
+                RichTextBoxStreamType fileType = RichTextBoxStreamType.RichText;
+                MemoryStream stream = new MemoryStream();
+                String filePathName = "progressnote" + "_" + txtVn.Text + ".rtf";
+                if (File.Exists(filePathName))
+                {
+                    File.Delete(filePathName);
+                    System.Threading.Thread.Sleep(200);
+                }
+                String aaa = "images/"+ txtIdOld.Text+"/" + filePathName;
+                //setPic(new Bitmap(ic.ftpC.download(filenamepic)));
+                stream = ic.ftpC.download(aaa);
+                //File file1 = new File();
+                //FileStream fileStream = new FileStream(filePathName, FileMode.Create);
+                //fileStream.CopyTo(stream);
+                //using (FileStream fileStream1 = File.Create(filePathName))
+                //using (StreamWriter writer = new StreamWriter(fileStream1))
+                //{
+                //    //writer.w("Example 1 written");
+                //}
+                stream.Seek(0, SeekOrigin.Begin);
+                using (FileStream file = new FileStream(filePathName, FileMode.Create, FileAccess.Write))
+                {
+                    //byte[] bytes = new byte[stream.Length];
+                    //file.Write(bytes, 0, (int)stream.Length);
+                    stream.CopyTo(file);
+                    file.Flush();
+                    //stream.Write(bytes, 0, (int)file.Length);
+                }
+                //richTextBox1.LoadFile(filePathName, fileType);
+                richTextBox1.Invoke((Action)delegate
+                {
+                    richTextBox1.LoadFile(filePathName, fileType);
+                });
+            }
+            catch (Exception ex)
+            {
+                String aaa = "";
+            }
         }
         private void LoadRecentDocument(string filename)
         {
@@ -441,9 +677,7 @@ namespace clinic_ivf.gui
         }
         private void LoadDocument(string filePathName)
         {
-            RichTextBoxStreamType streamType = filePathName.EndsWith(".rtf")
-                    ? RichTextBoxStreamType.RichText
-                    : RichTextBoxStreamType.PlainText;
+            RichTextBoxStreamType streamType = filePathName.EndsWith(".rtf") ? RichTextBoxStreamType.RichText : RichTextBoxStreamType.PlainText;
             try
             {
                 this.richTextBox1.LoadFile(filePathName, streamType);
@@ -464,36 +698,37 @@ namespace clinic_ivf.gui
 
         private bool SaveDocument(bool showDialog)
         {
-            if (showDialog)
-            {
-                SaveFileDialog dlg = new SaveFileDialog();
-                dlg.FileName = this.documentName;
-                if (this.documentPath != null) dlg.InitialDirectory = this.documentPath;
-                dlg.Filter = "Rich text file (*.rtf)|*.rtf|"
-                    + "Rich text file, no OLE objects (*.rtf)|*.rtf|"
-                    + "Plain text file, no OLE objects (*.txt)|*.txt|"
-                    + "Plain text file, OLE objects replaced with text (*.txt)|*.txt|"
-                    + "Unicode text file, no OLE objects (*.txt)|*.txt";
+            //if (showDialog)
+            //{
+            //    SaveFileDialog dlg = new SaveFileDialog();
+            //    dlg.FileName = this.documentName;
+            //    if (this.documentPath != null) dlg.InitialDirectory = this.documentPath;
+            //    dlg.Filter = "Rich text file (*.rtf)|*.rtf|"
+            //        + "Rich text file, no OLE objects (*.rtf)|*.rtf|"
+            //        + "Plain text file, no OLE objects (*.txt)|*.txt|"
+            //        + "Plain text file, OLE objects replaced with text (*.txt)|*.txt|"
+            //        + "Unicode text file, no OLE objects (*.txt)|*.txt";
 
-                DialogResult dr = dlg.ShowDialog();
-                if (dr == DialogResult.Cancel) return false;
-                if (dr != DialogResult.OK) throw new ApplicationException();
+            //    DialogResult dr = dlg.ShowDialog();
+            //    if (dr == DialogResult.Cancel) return false;
+            //    if (dr != DialogResult.OK) throw new ApplicationException();
 
-                RichTextBoxStreamType fileType;
+            //    RichTextBoxStreamType fileType;
 
-                switch (dlg.FilterIndex)
-                {
-                    case 1: fileType = RichTextBoxStreamType.RichText; break;
-                    case 2: fileType = RichTextBoxStreamType.RichNoOleObjs; break;
-                    case 3: fileType = RichTextBoxStreamType.PlainText; break;
-                    case 4: fileType = RichTextBoxStreamType.TextTextOleObjs; break;
-                    case 5: fileType = RichTextBoxStreamType.UnicodePlainText; break;
-                    default: throw new ApplicationException();
-                }
+            //    switch (dlg.FilterIndex)
+            //    {
+            //        case 1: fileType = RichTextBoxStreamType.RichText; break;
+            //        case 2: fileType = RichTextBoxStreamType.RichNoOleObjs; break;
+            //        case 3: fileType = RichTextBoxStreamType.PlainText; break;
+            //        case 4: fileType = RichTextBoxStreamType.TextTextOleObjs; break;
+            //        case 5: fileType = RichTextBoxStreamType.UnicodePlainText; break;
+            //        default: throw new ApplicationException();
+            //    }
 
-                this.SetDocumentProperties(dlg.FileName, fileType);
-            }
-
+            //    this.SetDocumentProperties(dlg.FileName, fileType);
+            //}
+            RichTextBoxStreamType fileType = RichTextBoxStreamType.RichText;
+            this.SetDocumentProperties("progressnote_"+txtVn.Text + ".rtf", fileType);
             this.SaveDocumentAs(this.documentFileType);
 
             return true;
@@ -501,13 +736,28 @@ namespace clinic_ivf.gui
 
         private void SaveDocumentAs(RichTextBoxStreamType fileType)
         {
-            string filePathName = this.documentPath + '\\' + this.documentName;
+            //string filePathName = this.documentPath + '\\' + this.documentName;
+            try
+            {
+                String filePathName = this.documentPath + '\\' + this.documentName;
+                if (File.Exists(filePathName))
+                {
+                    File.Delete(filePathName);
+                    System.Threading.Thread.Sleep(200);
+                }
+                this.richTextBox1.SaveFile(filePathName, fileType);
+                this.recentDocuments.Update(filePathName);
+                this.richTextBox1.Modified = false;
+                //RichTextBoxStreamType fileType1 = RichTextBoxStreamType.RichText;
+                //String ext = Path.GetExtension(filePathName);
+                //String filename = filePathName.Replace(ext, "");
+                //filename = filename+"_" + txtVn.Text + ext;
+                ic.savePicOPUtoServer(txtIdOld.Text, documentName, filePathName);
+            }
+            catch(Exception ex)
+            {
 
-            this.richTextBox1.SaveFile(filePathName, fileType);
-
-            this.recentDocuments.Update(filePathName);
-
-            this.richTextBox1.Modified = false;
+            }
         }
         private void CreateNewDocument()
         {
@@ -3927,7 +4177,7 @@ namespace clinic_ivf.gui
             //throw new NotImplementedException();
 
         }
-        private void FrmNurseAdd1_Load(object sender, EventArgs e)
+        private void FrmNurseAdd2_Load(object sender, EventArgs e)
         {
             sC.HeaderHeight = 0;
             sCOrder.HeaderHeight = 0;

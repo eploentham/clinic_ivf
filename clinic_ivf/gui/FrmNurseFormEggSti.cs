@@ -216,7 +216,6 @@ namespace clinic_ivf.gui
 
             theme1.SetTheme(grfEggsd, "Office2010Blue");
         }
-
         private void GrfEggsd_ChangeEdit(object sender, EventArgs e)
         {
             //throw new NotImplementedException();

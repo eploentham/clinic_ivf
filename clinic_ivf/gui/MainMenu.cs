@@ -242,7 +242,8 @@ namespace clinic_ivf.gui
         private void MenuDrugPatient_Click(object sender, EventArgs e)
         {
             //throw new NotImplementedException();
-            FrmPharmaPttView frm = new FrmPharmaPttView(ic, this);
+            //FrmPharmaPttView frm = new FrmPharmaPttView(ic, this);
+            FrmPharmaView frm = new FrmPharmaView(ic, this);
             frm.FormBorderStyle = FormBorderStyle.None;
             AddNewTab(frm, menuDrugPatient.Text + " ");
         }
