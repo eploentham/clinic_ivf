@@ -621,20 +621,26 @@ namespace clinic_ivf.gui
                 //{
                 //    //writer.w("Example 1 written");
                 //}
-                stream.Seek(0, SeekOrigin.Begin);
-                using (FileStream file = new FileStream(filePathName, FileMode.Create, FileAccess.Write))
+                if (stream.Length > 0)
                 {
-                    //byte[] bytes = new byte[stream.Length];
-                    //file.Write(bytes, 0, (int)stream.Length);
-                    stream.CopyTo(file);
-                    file.Flush();
-                    //stream.Write(bytes, 0, (int)file.Length);
+                    stream.Seek(0, SeekOrigin.Begin);
+                    using (FileStream file = new FileStream(filePathName, FileMode.Create, FileAccess.Write))
+                    {
+                        //byte[] bytes = new byte[stream.Length];
+                        //file.Write(bytes, 0, (int)stream.Length);
+                        stream.CopyTo(file);
+                        file.Flush();
+                        //stream.Write(bytes, 0, (int)file.Length);
+                    }
+                    //richTextBox1.LoadFile(filePathName, fileType);
+                    if (File.Exists(filePathName))
+                    {
+                        richTextBox1.Invoke((Action)delegate
+                        {
+                            richTextBox1.LoadFile(filePathName, fileType);
+                        });
+                    }
                 }
-                //richTextBox1.LoadFile(filePathName, fileType);
-                richTextBox1.Invoke((Action)delegate
-                {
-                    richTextBox1.LoadFile(filePathName, fileType);
-                });
             }
             catch (Exception ex)
             {

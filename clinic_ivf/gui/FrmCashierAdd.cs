@@ -88,6 +88,7 @@ namespace clinic_ivf.gui
             txtDiscountAmt.KeyUp += TxtDiscountAmt_KeyUp;
             chkDiscountCash.Click += ChkDiscountCash_Click;
             chkDiscountPer.Click += ChkDiscountPer_Click;
+            btnPrnReceipt.Click += BtnPrnReceipt_Click;
             //txtTotalCash.KeyPress += TxtTotalCash_KeyPress;
             //txtTotalCredit.KeyPress += TxtTotalCredit_KeyPress;
 
@@ -96,6 +97,72 @@ namespace clinic_ivf.gui
             setChkDiscount(false);
             setControl();
             
+        }
+        private void BtnPrnReceipt_Click(object sender, EventArgs e)
+        {
+            //throw new NotImplementedException();
+            DataTable dt = new DataTable();
+            DataTable dtprn = new DataTable();
+            DataTable dtpgk = new DataTable();
+            Decimal amt = 0;
+            long amt1 = 0;
+            String amt2 = "", billNo = "", billExtNo = "", payby = "", date = "", year = "", month = "", day = "";
+            long.TryParse(amt.ToString(), out amt1);
+            dt = ic.ivfDB.printBill(txtVn.Text, ref amt, ref payby);
+            billNo = ic.ivfDB.copDB.genReceiptDoc(ref year, ref month, ref day);
+            billExtNo = ic.ivfDB.copDB.genReceiptExtDoc();
+            ic.ivfDB.obilhDB.updateReceiptNo(txtVn.Text, billNo);
+
+            //dtpgk = ic.ivfDB.opkgsDB.selectByVN1(txtVn.Text);
+            dtpgk = ic.ivfDB.opkgsDB.selectByPID(ovs.PID);    // ต้องดึงตาม HN เพราะ ถ้ามีงวดการชำระ 
+            foreach (DataRow row in dtpgk.Rows)
+            {
+                String times = "";
+                Decimal price = 0;
+                //row["PaymentTimes"].GetType()
+                times = row["payment_times"].ToString();
+                ic.ivfDB.updatePackagePaymentComplete(ovs.PID, row["PCKID"].ToString());
+                if (Decimal.TryParse(row["Payment1"].ToString(), out price) && row["P1BDetailID"].ToString().Equals("0"))
+                {
+                    ic.ivfDB.opkgsDB.updateP1BillNo(row["PCKSID"].ToString(), billNo.Replace("BI", ""));
+                    //times = "1";
+                }
+                else if (Decimal.TryParse(row["Payment2"].ToString(), out price) && row["P2BDetailID"].ToString().Equals("0"))
+                {
+                    ic.ivfDB.opkgsDB.updateP2BillNo(row["PCKSID"].ToString(), billNo.Replace("BI", ""));
+                }
+                else if (Decimal.TryParse(row["Payment3"].ToString(), out price) && row["P3BDetailID"].ToString().Equals("0"))
+                {
+                    ic.ivfDB.opkgsDB.updateP3BillNo(row["PCKSID"].ToString(), billNo.Replace("BI", ""));
+                }
+                else if (Decimal.TryParse(row["Payment4"].ToString(), out price) && row["P4BDetailID"].ToString().Equals("0"))
+                {
+                    ic.ivfDB.opkgsDB.updateP4BillNo(row["PCKSID"].ToString(), billNo.Replace("BI", ""));
+                }
+            }
+            //dtprn.Columns.Add("col1", typeof(String));
+            //dtprn.Columns.Add("col2", typeof(String));
+            //dtprn.Columns.Add("col3", typeof(String));
+            //dtprn.Columns.Add("col4", typeof(String));
+            //dtprn.Columns.Add("sort1", typeof(String));
+            //dtprn.Columns.Add("fond_bold", typeof(String));
+            //dtprn.Columns.Add("grp", typeof(String));
+            //dtprn.Columns.Add("grp_name", typeof(String));
+            dtprn = dt.Clone();
+            foreach (DataRow row in dt.Rows)
+            {
+                //DataRow row = dtprn.NewRow();
+                row["original"] = "1";
+                dtprn.ImportRow(row);
+                row["original"] = "2";
+                dtprn.ImportRow(row);
+            }
+
+            ic.ivfDB.ovsDB.updateStatusCashierFinish(txtVn.Text);
+            amt2 = ic.NumberToCurrencyText(amt, MidpointRounding.AwayFromZero);
+            FrmReport frm = new FrmReport(ic);
+            frm.setPrintBill(dtprn, txtHn.Text, txtPttNameE.Text, amt2, amt.ToString("#,###.00"), billNo, day + "/" + month + "/" + year, payby);
+            frm.ShowDialog(this);
         }
 
         private void ChkDiscountPer_Click(object sender, EventArgs e)

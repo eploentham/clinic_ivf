@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.c1Button2 = new C1.Win.C1Input.C1Button();
+            this.btnPrnReceipt = new C1.Win.C1Input.C1Button();
             this.btnClose = new C1.Win.C1Input.C1Button();
             this.btnCalBack = new C1.Win.C1Input.C1Button();
             this.txtHnOld = new C1.Win.C1Input.C1TextBox();
@@ -99,7 +99,7 @@
             this.label7 = new System.Windows.Forms.Label();
             this.txtPayName = new C1.Win.C1Input.C1TextBox();
             this.groupBox1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.c1Button2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnPrnReceipt)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnClose)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnCalBack)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtHnOld)).BeginInit();
@@ -147,7 +147,7 @@
             // groupBox1
             // 
             this.groupBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.groupBox1.Controls.Add(this.c1Button2);
+            this.groupBox1.Controls.Add(this.btnPrnReceipt);
             this.groupBox1.Controls.Add(this.btnClose);
             this.groupBox1.Controls.Add(this.btnCalBack);
             this.groupBox1.Controls.Add(this.txtHnOld);
@@ -186,19 +186,19 @@
             this.groupBox1.Text = "Patient";
             this.theme1.SetTheme(this.groupBox1, "(default)");
             // 
-            // c1Button2
+            // btnPrnReceipt
             // 
-            this.c1Button2.Image = global::clinic_ivf.Properties.Resources.Female_user_edit_24;
-            this.c1Button2.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.c1Button2.Location = new System.Drawing.Point(933, 17);
-            this.c1Button2.Name = "c1Button2";
-            this.c1Button2.Size = new System.Drawing.Size(110, 31);
-            this.c1Button2.TabIndex = 701;
-            this.c1Button2.Text = "Print ใบเสร็จ";
-            this.c1Button2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.theme1.SetTheme(this.c1Button2, "(default)");
-            this.c1Button2.UseVisualStyleBackColor = true;
-            this.c1Button2.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            this.btnPrnReceipt.Image = global::clinic_ivf.Properties.Resources.Female_user_edit_24;
+            this.btnPrnReceipt.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnPrnReceipt.Location = new System.Drawing.Point(933, 17);
+            this.btnPrnReceipt.Name = "btnPrnReceipt";
+            this.btnPrnReceipt.Size = new System.Drawing.Size(110, 31);
+            this.btnPrnReceipt.TabIndex = 701;
+            this.btnPrnReceipt.Text = "Print ใบเสร็จ";
+            this.btnPrnReceipt.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.theme1.SetTheme(this.btnPrnReceipt, "(default)");
+            this.btnPrnReceipt.UseVisualStyleBackColor = true;
+            this.btnPrnReceipt.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
             // 
             // btnClose
             // 
@@ -1181,7 +1181,7 @@
             this.Load += new System.EventHandler(this.FrmCashierAdd_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.c1Button2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnPrnReceipt)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnClose)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnCalBack)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtHnOld)).EndInit();
@@ -1303,7 +1303,7 @@
         private C1.Win.C1Input.C1Button btnChargeAdd;
         private C1.Win.C1Input.C1Button btnCalBack;
         private C1.Win.C1Input.C1Button btnClose;
-        private C1.Win.C1Input.C1Button c1Button2;
+        private C1.Win.C1Input.C1Button btnPrnReceipt;
         private C1.Win.C1Input.C1Button btnDiscountAdd;
     }
 }

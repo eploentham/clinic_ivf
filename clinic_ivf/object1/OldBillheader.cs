@@ -32,6 +32,8 @@ namespace clinic_ivf.object1
         public String SepCredit { get; set; }
         public String ExtBillNo { get; set; }
         public String IntLock { get; set; }
-        
+        public String receipt_no { get; set; }
+        public String receipt_cover_no { get; set; }
+
     }
 }

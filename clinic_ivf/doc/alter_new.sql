@@ -336,6 +336,13 @@ INSERT INTO `ivf_101`.`f_doc_type` (`doc_type_code`, `doc_type_name`, `active`, 
 ALTER TABLE `ivf_101`.`nurse_t_egg_sti_day` 
 ADD COLUMN `medication2` VARCHAR(45) NULL AFTER `remark`;
 
+19-05-06
+ALTER TABLE `ivf_101`.`t_visit` 
+ADD COLUMN `status_cashier` VARCHAR(45) NULL COMMENT '0=default;1=operation;2=finish operation' AFTER `doctor_id`;
+
+ALTER TABLE `ivf_101`.`BillHeader` 
+ADD COLUMN `receipt_no` VARCHAR(45) NULL AFTER `IntLock`,
+ADD COLUMN `receipt_cover_no` VARCHAR(45) NULL AFTER `receipt_no`;
 
 
 

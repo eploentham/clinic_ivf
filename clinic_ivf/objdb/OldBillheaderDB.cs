@@ -45,6 +45,8 @@ namespace clinic_ivf.objdb
             obillh.SepCredit = "SepCredit";
             obillh.ExtBillNo = "ExtBillNo";
             obillh.IntLock = "IntLock";
+            obillh.receipt_cover_no = "receipt_cover_no";
+            obillh.receipt_no = "receipt_no";
 
             obillh.table = "BillHeader";
             obillh.pkField = "VN";
@@ -245,6 +247,24 @@ namespace clinic_ivf.objdb
 
             sql = "Update " + obillh.table + " set " +
                 "" + obillh.BillNo + "='" + billno + "' " +
+                //"," + opkgs.Payment1 + "='" + pay + "' " +
+                "Where " + obillh.VN + "='" + vn + "' ";
+            try
+            {
+                re = conn.ExecuteNonQuery(conn.conn, sql);
+            }
+            catch (Exception ex)
+            {
+                sql = ex.Message + " " + ex.InnerException;
+            }
+            return re;
+        }
+        public String updateReceiptNo(String vn, String billno)
+        {
+            String re = "", sql = "";
+
+            sql = "Update " + obillh.table + " set " +
+                "" + obillh.receipt_no + "='" + billno + "' " +
                 //"," + opkgs.Payment1 + "='" + pay + "' " +
                 "Where " + obillh.VN + "='" + vn + "' ";
             try
