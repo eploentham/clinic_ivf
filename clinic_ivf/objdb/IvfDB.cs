@@ -824,7 +824,7 @@ namespace clinic_ivf.objdb
                         OldBilldetail obilld = new OldBilldetail();
                         obilld.ID = "";
                         obilld.VN = vn;
-                        obilld.Name = "Package ";
+                        //obilld.Name = "Package ";
                         obilld.Extra = "0";
                         obilld.Name = "Package "+name;
                         obilld.Price = pay.ToString();
@@ -860,7 +860,7 @@ namespace clinic_ivf.objdb
                         //    obilld.Comment = "";
                         //}
                         obilld.GroupType = "Package";
-
+                        obilld.status = "package";
                         obildDB.insertBillDetail(obilld, "");
                     }
                 }
@@ -888,6 +888,7 @@ namespace clinic_ivf.objdb
                         obilld.GroupType = grp;
                         obilld.Comment = "";
                         obilld.item_id = row["LID"].ToString();
+                        obilld.status = "lab";
                         obildDB.insertBillDetail(obilld, "");
                     }
                 }
@@ -908,6 +909,7 @@ namespace clinic_ivf.objdb
                         obilld.GroupType = grp1;
                         obilld.Comment = "";
                         obilld.item_id = row["DUID"].ToString();
+                        obilld.status = "drug";
                         obildDB.insertBillDetail(obilld, "");
                     }
                 }
@@ -929,6 +931,7 @@ namespace clinic_ivf.objdb
                         obilld.GroupType = grp;
                         obilld.Comment = "";
                         obilld.item_id = row["SID"].ToString();
+                        obilld.status = "special";
                         obildDB.insertBillDetail(obilld, "");
                     }
                 }
@@ -956,6 +959,7 @@ namespace clinic_ivf.objdb
                         obilld.GroupType = grp;
                         obilld.Comment = "";
                         obilld.item_id = row["LID"].ToString();
+                        obilld.status = "lab";
                         obildDB.insertBillDetail(obilld, "");
                     }
                 }
@@ -970,12 +974,13 @@ namespace clinic_ivf.objdb
                         obilld.ID = "";
                         obilld.VN = row["VN"].ToString();
                         obilld.Name = row["DUName"].ToString();
-                        obilld.Extra = "0";
+                        obilld.Extra = "1";
                         obilld.Price = row["Price"].ToString();
                         obilld.Total = row["Price"].ToString();
                         obilld.GroupType = grp1;
                         obilld.Comment = "";
                         obilld.item_id = row["DUID"].ToString();
+                        obilld.status = "drug";
                         obildDB.insertBillDetail(obilld, "");
                     }
                 }
@@ -991,12 +996,13 @@ namespace clinic_ivf.objdb
                         obilld.ID = "";
                         obilld.VN = row["VN"].ToString();
                         obilld.Name = row["SName"].ToString();
-                        obilld.Extra = "0";
+                        obilld.Extra = "1";
                         obilld.Price = row["Price"].ToString();
                         obilld.Total = row["Price"].ToString();
                         obilld.GroupType = grp;
                         obilld.Comment = "";
                         obilld.item_id = row["SID"].ToString();
+                        obilld.status = "special";
                         obildDB.insertBillDetail(obilld, "");
                     }
                 }
@@ -1372,30 +1378,28 @@ namespace clinic_ivf.objdb
             pid = vs.PID;
             OldPackageSold pkg = new OldPackageSold();
             pkg = opkgsDB.selectByVN2(vn);
-            pkgid = pkg.PCKID;
+            //pkgid = pkg.PCKID;
             DeleteBill(vn);
-            dt = obildDB.selectByPIDPkgID(pid, pkgid);
-            if (dt.Rows.Count > 0)
+            //dt = obildDB.selectByPIDPkgID(pid, pkgid);
+            if (!pkg.PCKSID.Equals("0"))
             {
-                foreach (DataRow row in dt.Rows)
+                if (!pkg.P4BDetailID.Equals("0"))
                 {
-                    if (Decimal.TryParse(row["Payment4"].ToString(), out price) && !row["P4BDetailID"].ToString().Equals("0"))
-                    {
-                        opkgsDB.updateStatus2Payment4(row["PCKSID"].ToString());
-                    }
-                    else if (Decimal.TryParse(row["Payment3"].ToString(), out price) && !row["P3BDetailID"].ToString().Equals("0"))
-                    {
-                        opkgsDB.updateStatus2Payment3(row["PCKSID"].ToString());
-                    }
-                    else if (Decimal.TryParse(row["Payment2"].ToString(), out price) && !row["P32DetailID"].ToString().Equals("0"))
-                    {
-                        opkgsDB.updateStatus2Payment2(row["PCKSID"].ToString());
-                    }
-                    else if (Decimal.TryParse(row["Payment1"].ToString(), out price) && row["P1BDetailID"].ToString().Equals("0"))
-                    {
-                        opkgsDB.updateStatus2Payment1(row["PCKSID"].ToString());
-                    }
+                    opkgsDB.updateStatus2Payment4(pkg.PCKSID);
                 }
+                else if (!pkg.P3BDetailID.Equals("0"))
+                {
+                    opkgsDB.updateStatus2Payment3(pkg.PCKSID);
+                }
+                else if (!pkg.P2BDetailID.Equals("0"))
+                {
+                    opkgsDB.updateStatus2Payment2(pkg.PCKSID);
+                }
+                else if (!pkg.P1BDetailID.Equals("0"))
+                {
+                    opkgsDB.updateStatus2Payment1(pkg.PCKSID);
+                }
+                
             }
             ovsDB.updateStatusCashierbackNurse(vn);
         }

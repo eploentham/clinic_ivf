@@ -37,7 +37,7 @@ namespace clinic_ivf.gui
         C1SuperTooltip stt;
         C1SuperErrorProvider sep;
 
-        int colId = 1, colName = 2, colAmt = 3, colDiscount = 4, colNetAmt = 5, colGrpName=6, colBilId=7;
+        int colId = 1, colName = 2, colAmt = 3, colDiscount = 4, colNetAmt = 5, colGrpName=6, colBilId=7, colInclude=8, colStatus=9;
         public FrmCashierAdd(IvfControl ic, MainMenu m, String billid, String vnold)
         {
             InitializeComponent();
@@ -303,7 +303,6 @@ namespace clinic_ivf.gui
                     {
 
                     }
-                    
                 }
                 setGrfBillD();
                 calTotal();
@@ -622,7 +621,7 @@ namespace clinic_ivf.gui
             grfBillD.ContextMenu = menuGw;
 
             grfBillD.Rows.Count = dt.Rows.Count + 2;
-            grfBillD.Cols.Count = 8;
+            grfBillD.Cols.Count = 10;
             C1TextBox txt = new C1TextBox();
             //C1ComboBox cboproce = new C1ComboBox();
             //ic.ivfDB.itmDB.setCboItem(cboproce);
@@ -652,26 +651,48 @@ namespace clinic_ivf.gui
             //rg1.Style = grfBank.Styles["date"];
             //grfCu.Cols[colID].Visible = false;
             int i = 1;
+            Decimal inc = 0, ext = 0;
             foreach (DataRow row in dt.Rows)
             {
-                Decimal price = 0;
-                Decimal.TryParse(row[ic.ivfDB.obildDB.obilld.Price].ToString(), out price);
-                grfBillD[i, 0] = i;
-                grfBillD[i, colId] = row[ic.ivfDB.obildDB.obilld.ID].ToString();
-                grfBillD[i, colName] = row[ic.ivfDB.obildDB.obilld.Name].ToString();
-                grfBillD[i, colAmt] = price.ToString("#,###.00");
-                grfBillD[i, colDiscount] = "";
-                grfBillD[i, colNetAmt] = price.ToString("#,###.00");
-                grfBillD[i, colGrpName] = row[ic.ivfDB.obildDB.obilld.GroupType].ToString();
-                //if (!row[ic.ivfDB.vsOldDB.vsold.form_a_id].ToString().Equals("0"))
-                //{
-                //    CellNote note = new CellNote("ส่ง Lab Request Foam A");
-                //    CellRange rg = grfBillD.GetCellRange(i, colVN);
-                //    rg.UserData = note;
-                //}
-                //if (i % 2 == 0)
-                //    grfPtt.Rows[i].StyleNew.BackColor = color;
-                i++;
+                try
+                {
+                    Decimal price = 0, qty = 1;
+                    Decimal.TryParse(row[ic.ivfDB.obildDB.obilld.Price].ToString(), out price);
+                    //Decimal.TryParse(row[ic.ivfDB.obildDB.obilld.q].ToString(), out qty);
+                    grfBillD[i, 0] = i;
+                    grfBillD[i, colId] = row[ic.ivfDB.obildDB.obilld.ID].ToString();
+                    grfBillD[i, colName] = row[ic.ivfDB.obildDB.obilld.Name].ToString();
+                    grfBillD[i, colAmt] = price.ToString("#,###.00");
+                    grfBillD[i, colDiscount] = "";
+                    grfBillD[i, colNetAmt] = price.ToString("#,###.00");
+                    grfBillD[i, colGrpName] = row[ic.ivfDB.obildDB.obilld.GroupType].ToString();
+                    grfBillD[i, colInclude] = row["Extra"].ToString().Equals("1") ? "Extra" : "Include";
+                    grfBillD[i, colStatus] = row["status"].ToString();
+                    //if (!row[ic.ivfDB.vsOldDB.vsold.form_a_id].ToString().Equals("0"))
+                    //{
+                    //    CellNote note = new CellNote("ส่ง Lab Request Foam A");
+                    //    CellRange rg = grfBillD.GetCellRange(i, colVN);
+                    //    rg.UserData = note;
+                    //}
+                    //if (i % 2 == 0)
+                    //    grfPtt.Rows[i].StyleNew.BackColor = color;
+                    //if (row["Extra"].ToString().Equals("1"))
+                    //{
+                    //    ext += (price * qty);
+                    //}
+                    //else
+                    //{
+                    //    if (row["status"].ToString().Equals("package"))
+                    //    {
+                    //        inc += (price * qty);
+                    //    }
+                    //}
+                    i++;
+                }
+                catch (Exception ex)
+                {
+                    String err = "";
+                }
             }
             CellNoteManager mgr = new CellNoteManager(grfBillD);
             grfBillD.Cols[colBilId].Visible = false;
@@ -680,21 +701,38 @@ namespace clinic_ivf.gui
             grfBillD.Cols[colAmt].AllowEditing = false;
             grfBillD.Cols[colNetAmt].AllowEditing = false;
             grfBillD.Cols[colGrpName].AllowEditing = false;
+            grfBillD.Cols[colInclude].AllowEditing = false;
             //theme1.SetTheme(grfQue, ic.theme);
-            txtAmt.Value = calAmt().ToString("0.00");
+            Decimal amt = 0;
+            amt = calAmt();
+            txtAmt.Value = amt.ToString("#,###.00");
         }
         private Decimal calAmt()
         {
-            Decimal amt = 0, amt1=0;
+            Decimal amt = 0, amt1=0, inc = 0, ext = 0;
             String chk = "";
             foreach (Row row in grfBillD.Rows)
             {
+                Decimal price = 0, qty = 1;
                 if (row[colName] == null) continue;
                 if (row[colName].ToString().Equals("")) continue;
+                if (row[colInclude] == null) continue;
                 chk = row[colNetAmt].ToString();
                 Decimal.TryParse(chk, out amt);
-                amt1 += amt;
+                //amt1 += amt;
+                if (row[colInclude].ToString().Equals("Extra"))
+                {
+                    ext += (amt * qty);
+                }
+                else
+                {
+                    if (row[colStatus].ToString().Equals("package"))
+                    {
+                        inc += (amt * qty);
+                    }
+                }
             }
+            amt1 = ext + inc;
             return amt1;
         }
         private void UpdateTotals()
@@ -718,8 +756,8 @@ namespace clinic_ivf.gui
             Decimal.TryParse(txtDiscount.Text, out discount);
             //Decimal.TryParse(txtAmt.Text, out amt);
             total = amt - discount;
-            txtTotal.Value = total.ToString("0.00");
-            txtTotalCash.Value = total.ToString("0.00");
+            txtTotal.Value = total.ToString("#,###.00");
+            txtTotalCash.Value = total;
             txtTotalCredit.Value = "0";
         }
         private void calTotalCredit()

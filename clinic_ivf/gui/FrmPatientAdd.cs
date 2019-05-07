@@ -335,6 +335,10 @@ namespace clinic_ivf.gui
             dt.Columns.Add("tele", typeof(String));
             dt.Columns.Add("queue", typeof(String));
             dt.Columns.Add("pathpic", typeof(String));
+            dt.Columns.Add("bp", typeof(String));
+            dt.Columns.Add("bw", typeof(String));
+            dt.Columns.Add("height", typeof(String));
+            dt.Columns.Add("doctor_name", typeof(String));
 
             dt.Rows[0]["ptt_name_t"] = ptt.patient_firstname+" "+ ptt.patient_lastname;
             dt.Rows[0]["hn"] = ptt.patient_hn;
@@ -350,6 +354,10 @@ namespace clinic_ivf.gui
             dt.Rows[0]["email"] = ptt.email;
             dt.Rows[0]["tele"] = ptt.mobile1;
             dt.Rows[0]["pathpic"] = System.IO.Directory.GetCurrentDirectory() + "\\"+ filename1;
+            dt.Rows[0]["bw"] = txtVisitBW.Text;
+            dt.Rows[0]["bp"] = txtVisitBP.Text;
+            dt.Rows[0]["height"] = txtHeight.Text;
+            dt.Rows[0]["doctor_name"] = cboDoctor.Text;
             if (vs != null)
                 dt.Rows[0]["queue"] = vs.queue_id;
             //dt.Rows[0]["form_day1_id"] = "";

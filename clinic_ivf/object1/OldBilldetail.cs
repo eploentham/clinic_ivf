@@ -17,5 +17,6 @@ namespace clinic_ivf.object1
         public String GroupType { get; set; }
         public String Comment { get; set; }
         public String item_id { get; set; }
+        public String status { get; set; }
     }
 }

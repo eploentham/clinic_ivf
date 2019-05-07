@@ -30,6 +30,7 @@ namespace clinic_ivf.objdb
             obilld.GroupType= "GroupType";
             obilld.Comment= "Comment";
             obilld.item_id = "item_id";
+            obilld.status = "status";
 
             obilld.table = "BillDetail";
             obilld.pkField = "ID";
@@ -77,7 +78,7 @@ namespace clinic_ivf.objdb
             p.Name = p.Name == null ? "" : p.Name;
             p.GroupType = p.GroupType == null ? "" : p.GroupType;
             p.Comment = p.Comment == null ? "" : p.Comment;
-            
+            p.status = p.status == null ? "0" : p.status;
 
             p.Extra = long.TryParse(p.Extra, out chk) ? chk.ToString() : "0";
             p.VN = long.TryParse(p.VN, out chk) ? chk.ToString() : "0";
@@ -108,6 +109,7 @@ namespace clinic_ivf.objdb
                 "," + obilld.GroupType + "= '" + p.GroupType + "'" +
                 "," + obilld.Comment + "= '" + p.Comment.Replace("'", "''") + "'" +
                 "," + obilld.item_id + "= '" + p.item_id + "'" +
+                "," + obilld.status + "= '" + p.status + "'" +
                 "";
             try
             {
@@ -134,7 +136,7 @@ namespace clinic_ivf.objdb
                 "," + obilld.GroupType + " = '" + p.GroupType + "'" +
                 "," + obilld.Comment + " = '" + p.Comment.Replace("'", "''") + "'" +
                 "," + obilld.item_id + " = '" + p.item_id + "'" +
-
+                "," + obilld.status + " = '" + p.status + "'" +
                 "Where " + obilld.pkField + "='" + p.ID + "'"
                 ;
 

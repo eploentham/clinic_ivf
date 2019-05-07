@@ -840,6 +840,12 @@
             this.txtTotalCredit.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtTotalCredit.DataType = typeof(decimal);
             this.txtTotalCredit.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
+            this.txtTotalCredit.DisplayFormat.CustomFormat = "#,###.00";
+            this.txtTotalCredit.DisplayFormat.FormatType = C1.Win.C1Input.FormatTypeEnum.CustomFormat;
+            this.txtTotalCredit.DisplayFormat.Inherit = ((C1.Win.C1Input.FormatInfoInheritFlags)(((((C1.Win.C1Input.FormatInfoInheritFlags.NullText | C1.Win.C1Input.FormatInfoInheritFlags.EmptyAsNull) 
+            | C1.Win.C1Input.FormatInfoInheritFlags.TrimStart) 
+            | C1.Win.C1Input.FormatInfoInheritFlags.TrimEnd) 
+            | C1.Win.C1Input.FormatInfoInheritFlags.CalendarType)));
             this.txtTotalCredit.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
             this.txtTotalCredit.Location = new System.Drawing.Point(633, 115);
             this.txtTotalCredit.Name = "txtTotalCredit";
@@ -953,6 +959,12 @@
             this.txtTotalCash.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtTotalCash.DataType = typeof(decimal);
             this.txtTotalCash.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
+            this.txtTotalCash.DisplayFormat.CustomFormat = "#,###.00";
+            this.txtTotalCash.DisplayFormat.FormatType = C1.Win.C1Input.FormatTypeEnum.CustomFormat;
+            this.txtTotalCash.DisplayFormat.Inherit = ((C1.Win.C1Input.FormatInfoInheritFlags)(((((C1.Win.C1Input.FormatInfoInheritFlags.NullText | C1.Win.C1Input.FormatInfoInheritFlags.EmptyAsNull) 
+            | C1.Win.C1Input.FormatInfoInheritFlags.TrimStart) 
+            | C1.Win.C1Input.FormatInfoInheritFlags.TrimEnd) 
+            | C1.Win.C1Input.FormatInfoInheritFlags.CalendarType)));
             this.txtTotalCash.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
             this.txtTotalCash.Location = new System.Drawing.Point(208, 115);
             this.txtTotalCash.Name = "txtTotalCash";

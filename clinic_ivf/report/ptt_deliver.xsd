@@ -12,7 +12,7 @@
   <xs:element name="ptt_deliver" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="ptt_deliver" msprop:Generator_UserDSName="ptt_deliver">
     <xs:complexType>
       <xs:choice minOccurs="0" maxOccurs="unbounded">
-        <xs:element name="ptt_deliver" msprop:Generator_TableClassName="ptt_deliverDataTable" msprop:Generator_TableVarName="tableptt_deliver" msprop:Generator_TablePropName="_ptt_deliver" msprop:Generator_RowDeletingName="ptt_deliverRowDeleting" msprop:Generator_RowChangingName="ptt_deliverRowChanging" msprop:Generator_RowEvHandlerName="ptt_deliverRowChangeEventHandler" msprop:Generator_RowDeletedName="ptt_deliverRowDeleted" msprop:Generator_UserTableName="ptt_deliver" msprop:Generator_RowChangedName="ptt_deliverRowChanged" msprop:Generator_RowEvArgName="ptt_deliverRowChangeEvent" msprop:Generator_RowClassName="ptt_deliverRow">
+        <xs:element name="ptt_deliver" msprop:Generator_TableClassName="ptt_deliverDataTable" msprop:Generator_TableVarName="tableptt_deliver" msprop:Generator_RowChangedName="ptt_deliverRowChanged" msprop:Generator_TablePropName="_ptt_deliver" msprop:Generator_RowDeletingName="ptt_deliverRowDeleting" msprop:Generator_RowChangingName="ptt_deliverRowChanging" msprop:Generator_RowEvHandlerName="ptt_deliverRowChangeEventHandler" msprop:Generator_RowDeletedName="ptt_deliverRowDeleted" msprop:Generator_RowClassName="ptt_deliverRow" msprop:Generator_UserTableName="ptt_deliver" msprop:Generator_RowEvArgName="ptt_deliverRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="ptt_name_t" msdata:Caption="DataColumn1" msprop:Generator_ColumnVarNameInTable="columnptt_name_t" msprop:Generator_ColumnPropNameInRow="ptt_name_t" msprop:Generator_ColumnPropNameInTable="ptt_name_tColumn" msprop:Generator_UserColumnName="ptt_name_t" type="xs:string" minOccurs="0" />
@@ -31,6 +31,10 @@
               <xs:element name="tele" msprop:Generator_ColumnVarNameInTable="columntele" msprop:Generator_ColumnPropNameInRow="tele" msprop:Generator_ColumnPropNameInTable="teleColumn" msprop:Generator_UserColumnName="tele" type="xs:string" minOccurs="0" />
               <xs:element name="queue" msprop:Generator_ColumnVarNameInTable="columnqueue" msprop:Generator_ColumnPropNameInRow="queue" msprop:Generator_ColumnPropNameInTable="queueColumn" msprop:Generator_UserColumnName="queue" type="xs:string" minOccurs="0" />
               <xs:element name="pathpic" msprop:Generator_ColumnVarNameInTable="columnpathpic" msprop:Generator_ColumnPropNameInRow="pathpic" msprop:Generator_ColumnPropNameInTable="pathpicColumn" msprop:Generator_UserColumnName="pathpic" type="xs:string" minOccurs="0" />
+              <xs:element name="doctor_name" msprop:Generator_ColumnVarNameInTable="columndoctor_name" msprop:Generator_ColumnPropNameInRow="doctor_name" msprop:Generator_ColumnPropNameInTable="doctor_nameColumn" msprop:Generator_UserColumnName="doctor_name" type="xs:string" minOccurs="0" />
+              <xs:element name="bw" msprop:Generator_ColumnVarNameInTable="columnbw" msprop:Generator_ColumnPropNameInRow="bw" msprop:Generator_ColumnPropNameInTable="bwColumn" msprop:Generator_UserColumnName="bw" type="xs:string" minOccurs="0" />
+              <xs:element name="bp" msprop:Generator_ColumnVarNameInTable="columnbp" msprop:Generator_ColumnPropNameInRow="bp" msprop:Generator_ColumnPropNameInTable="bpColumn" msprop:Generator_UserColumnName="bp" type="xs:string" minOccurs="0" />
+              <xs:element name="height" msprop:Generator_ColumnVarNameInTable="columnheight" msprop:Generator_ColumnPropNameInRow="height" msprop:Generator_ColumnPropNameInTable="heightColumn" msprop:Generator_UserColumnName="height" type="xs:string" minOccurs="0" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>

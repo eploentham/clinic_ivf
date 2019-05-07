@@ -510,7 +510,7 @@ namespace clinic_ivf.objdb
             Decimal pay1 = 0, pay2 = 0, pay3 = 0, pay4 = 0;
             String sql = "select opkgs.* " +
                 "From " + opkgs.table + " opkgs " +
-                "Where opkgs." + opkgs.VN + " ='" + vn + "' and Status<>3 ";
+                "Where opkgs." + opkgs.VN + " ='" + vn + "'  ";
             dt = conn.selectData(conn.conn, sql);
             labi1 = setPackageSold(dt);
 
