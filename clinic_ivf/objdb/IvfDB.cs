@@ -831,6 +831,7 @@ namespace clinic_ivf.objdb
                         obilld.Total = pay.ToString();
                         obilld.Comment = "";
                         obilld.item_id = row["PCKID"].ToString();
+                        obilld.pcksid = row["PCKSID"].ToString();
                         //if (times.Equals("1"))
                         //{
                         //    obilld.Name = "Package " + row["PackageName"].ToString() + " Payment 1/" + times;
@@ -889,6 +890,7 @@ namespace clinic_ivf.objdb
                         obilld.Comment = "";
                         obilld.item_id = row["LID"].ToString();
                         obilld.status = "lab";
+                        obilld.pcksid = "";
                         obildDB.insertBillDetail(obilld, "");
                     }
                 }
@@ -910,6 +912,7 @@ namespace clinic_ivf.objdb
                         obilld.Comment = "";
                         obilld.item_id = row["DUID"].ToString();
                         obilld.status = "drug";
+                        obilld.pcksid = "";
                         obildDB.insertBillDetail(obilld, "");
                     }
                 }
@@ -932,6 +935,7 @@ namespace clinic_ivf.objdb
                         obilld.Comment = "";
                         obilld.item_id = row["SID"].ToString();
                         obilld.status = "special";
+                        obilld.pcksid = "";
                         obildDB.insertBillDetail(obilld, "");
                     }
                 }
@@ -960,6 +964,7 @@ namespace clinic_ivf.objdb
                         obilld.Comment = "";
                         obilld.item_id = row["LID"].ToString();
                         obilld.status = "lab";
+                        obilld.pcksid = "";
                         obildDB.insertBillDetail(obilld, "");
                     }
                 }
@@ -981,6 +986,7 @@ namespace clinic_ivf.objdb
                         obilld.Comment = "";
                         obilld.item_id = row["DUID"].ToString();
                         obilld.status = "drug";
+                        obilld.pcksid = "";
                         obildDB.insertBillDetail(obilld, "");
                     }
                 }
@@ -1003,6 +1009,7 @@ namespace clinic_ivf.objdb
                         obilld.Comment = "";
                         obilld.item_id = row["SID"].ToString();
                         obilld.status = "special";
+                        obilld.pcksid = "";
                         obildDB.insertBillDetail(obilld, "");
                     }
                 }
@@ -1408,11 +1415,11 @@ namespace clinic_ivf.objdb
             DataTable dt = new DataTable();
             String re = "", sql = "", billid = "";
             OldPackageSold opkgs1 = new OldPackageSold();
-            opkgs1 = opkgsDB.selectByPID1(pid, pkgid);
+            opkgs1 = opkgsDB.selectByPk1(pkgid);
             String bill1 = "", bill2 = "", bill3 = "", bill4 = "", times = "", name = "";
             Decimal price = 0, amt = 0, pay2 = 0, pay3 = 0, pay4 = 0, pay = 0;
             Decimal.TryParse(opkgs1.Price, out amt);
-            dt = obildDB.selectByPIDPkgID(pid, pkgid);
+            dt = obildDB.selectByPIDPkgsID(pid, pkgid);
             if (dt.Rows.Count > 0)
             {
                 foreach (DataRow row in dt.Rows)

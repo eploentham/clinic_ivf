@@ -18,5 +18,6 @@ namespace clinic_ivf.object1
         public String Comment { get; set; }
         public String item_id { get; set; }
         public String status { get; set; }
+        public String pcksid { get; set; }
     }
 }

@@ -31,6 +31,7 @@ namespace clinic_ivf.objdb
             obilld.Comment= "Comment";
             obilld.item_id = "item_id";
             obilld.status = "status";
+            obilld.pcksid = "pcksid";
 
             obilld.table = "BillDetail";
             obilld.pkField = "ID";
@@ -56,6 +57,19 @@ namespace clinic_ivf.objdb
             dt = conn.selectData(conn.conn, sql);
             return dt;
         }
+        public DataTable selectByPIDPkgsID(String pid, String pkgsid)
+        {
+            DataTable dt = new DataTable();
+            String wherehn = "";
+
+            String sql = "SELECT obilld.*  " +
+                " " +
+                "From " + obilld.table + " obilld " +
+                "Left Join Visit ovs on obilld." + obilld.VN + "=ovs.VN " +
+                "Where ovs.PID='" + pid + "' and obilld." + obilld.pcksid + "='" + pkgsid + "' ";
+            dt = conn.selectData(conn.conn, sql);
+            return dt;
+        }
         public DataTable selectByPIDPkgID(String pid, String pkgid)
         {
             DataTable dt = new DataTable();
@@ -66,6 +80,19 @@ namespace clinic_ivf.objdb
                 "From " + obilld.table + " obilld " +
                 "Left Join Visit ovs on obilld."+ obilld.VN +"=ovs.VN " +
                 "Where ovs.PID='" + pid + "' and obilld."+ obilld.item_id+"='" + pkgid + "' ";
+            dt = conn.selectData(conn.conn, sql);
+            return dt;
+        }
+        public DataTable selectByPIDPkgID1(String pid, String pkgid)
+        {
+            DataTable dt = new DataTable();
+            String wherehn = "";
+
+            String sql = "SELECT obilld.*  " +
+                " " +
+                "From " + obilld.table + " obilld " +
+                "Left Join Visit ovs on obilld." + obilld.VN + "=ovs.VN " +
+                "Where ovs.PID='" + pid + "' and obilld." + obilld.item_id + "='" + pkgid + "' and ";
             dt = conn.selectData(conn.conn, sql);
             return dt;
         }
@@ -110,6 +137,7 @@ namespace clinic_ivf.objdb
                 "," + obilld.Comment + "= '" + p.Comment.Replace("'", "''") + "'" +
                 "," + obilld.item_id + "= '" + p.item_id + "'" +
                 "," + obilld.status + "= '" + p.status + "'" +
+                "," + obilld.pcksid + "= '" + p.pcksid + "'" +
                 "";
             try
             {
@@ -137,6 +165,7 @@ namespace clinic_ivf.objdb
                 "," + obilld.Comment + " = '" + p.Comment.Replace("'", "''") + "'" +
                 "," + obilld.item_id + " = '" + p.item_id + "'" +
                 "," + obilld.status + " = '" + p.status + "'" +
+                "," + obilld.pcksid + " = '" + p.pcksid + "'" +
                 "Where " + obilld.pkField + "='" + p.ID + "'"
                 ;
 

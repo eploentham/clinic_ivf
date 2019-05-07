@@ -378,7 +378,6 @@ namespace clinic_ivf.gui
                 Decimal price = 0;
                 //row["PaymentTimes"].GetType()
                 times = row["payment_times"].ToString();
-                ic.ivfDB.updatePackagePaymentComplete(ovs.PID, row["PCKID"].ToString());
                 if (Decimal.TryParse(row["Payment1"].ToString(), out price) && row["P1BDetailID"].ToString().Equals("0"))
                 {                    
                     ic.ivfDB.opkgsDB.updateP1BillNo(row["PCKSID"].ToString(), billNo.Replace("BI",""));                    
@@ -396,6 +395,7 @@ namespace clinic_ivf.gui
                 {
                     ic.ivfDB.opkgsDB.updateP4BillNo(row["PCKSID"].ToString(), billNo.Replace("BI", ""));
                 }
+                ic.ivfDB.updatePackagePaymentComplete(ovs.PID, row["PCKSID"].ToString());
             }
             //dtprn.Columns.Add("col1", typeof(String));
             //dtprn.Columns.Add("col2", typeof(String));
