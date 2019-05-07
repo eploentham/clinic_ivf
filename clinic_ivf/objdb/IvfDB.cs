@@ -1361,10 +1361,42 @@ namespace clinic_ivf.objdb
         }
         public void accountsendtonurse(String vn)
         {
-  //          $this->db->query('delete from BillHeader Where VN="'.$VN.'"');
-		//$this->db->query('delete from BillDetail Where VN="'.$VN.'"');
-		//$this->db->query('update Visit set VSID="115" Where VN="'.$VN.'"');
+            DataTable dt = new DataTable();
+            //          $this->db->query('delete from BillHeader Where VN="'.$VN.'"');
+            //$this->db->query('delete from BillDetail Where VN="'.$VN.'"');
+            //$this->db->query('update Visit set VSID="115" Where VN="'.$VN.'"');
+            Decimal price = 0;
+            String pid = "", pkgid = "";
+            VisitOld vs = new VisitOld();
+            vs = ovsDB.selectByPk1(vn);
+            pid = vs.PID;
+            OldPackageSold pkg = new OldPackageSold();
+            pkg = opkgsDB.selectByVN2(vn);
+            pkgid = pkg.PCKID;
             DeleteBill(vn);
+            dt = obildDB.selectByPIDPkgID(pid, pkgid);
+            if (dt.Rows.Count > 0)
+            {
+                foreach (DataRow row in dt.Rows)
+                {
+                    if (Decimal.TryParse(row["Payment4"].ToString(), out price) && !row["P4BDetailID"].ToString().Equals("0"))
+                    {
+                        opkgsDB.updateStatus2Payment4(row["PCKSID"].ToString());
+                    }
+                    else if (Decimal.TryParse(row["Payment3"].ToString(), out price) && !row["P3BDetailID"].ToString().Equals("0"))
+                    {
+                        opkgsDB.updateStatus2Payment3(row["PCKSID"].ToString());
+                    }
+                    else if (Decimal.TryParse(row["Payment2"].ToString(), out price) && !row["P32DetailID"].ToString().Equals("0"))
+                    {
+                        opkgsDB.updateStatus2Payment2(row["PCKSID"].ToString());
+                    }
+                    else if (Decimal.TryParse(row["Payment1"].ToString(), out price) && row["P1BDetailID"].ToString().Equals("0"))
+                    {
+                        opkgsDB.updateStatus2Payment1(row["PCKSID"].ToString());
+                    }
+                }
+            }
             ovsDB.updateStatusCashierbackNurse(vn);
         }
         public String updatePackagePaymentComplete(String pid, String pkgid)

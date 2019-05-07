@@ -124,6 +124,120 @@ namespace clinic_ivf.objdb
 
             return re;
         }
+        public String updateStatus2(String pkgsid)
+        {
+            //$this->db->query("UPDATE PackageSold Set Status='3' Where PCKSID='".$PCKSID."'");
+            String re = "";
+            String sql = "";
+            int chk = 0;
+
+            sql = "Update " + opkgs.table + " Set " +
+                " " + opkgs.Status + " = '2'" +
+                "Where " + opkgs.PCKSID + "='" + pkgsid + "'"
+                ;
+            try
+            {
+                re = conn.ExecuteNonQuery(conn.conn, sql);
+            }
+            catch (Exception ex)
+            {
+                sql = ex.Message + " " + ex.InnerException;
+            }
+
+            return re;
+        }
+        public String updateStatus2Payment1(String pkgsid)
+        {
+            //$this->db->query("UPDATE PackageSold Set Status='3' Where PCKSID='".$PCKSID."'");
+            String re = "";
+            String sql = "";
+            int chk = 0;
+
+            sql = "Update " + opkgs.table + " Set " +
+                " " + opkgs.Status + " = '2'" +
+                "," + opkgs.P1BDetailID + " = '0'" +
+                "Where " + opkgs.PCKSID + "='" + pkgsid + "'"
+                ;
+            try
+            {
+                re = conn.ExecuteNonQuery(conn.conn, sql);
+            }
+            catch (Exception ex)
+            {
+                sql = ex.Message + " " + ex.InnerException;
+            }
+
+            return re;
+        }
+        public String updateStatus2Payment2(String pkgsid)
+        {
+            //$this->db->query("UPDATE PackageSold Set Status='3' Where PCKSID='".$PCKSID."'");
+            String re = "";
+            String sql = "";
+            int chk = 0;
+
+            sql = "Update " + opkgs.table + " Set " +
+                " " + opkgs.Status + " = '2'" +
+                "," + opkgs.P2BDetailID + " = '0'" +
+                "Where " + opkgs.PCKSID + "='" + pkgsid + "'"
+                ;
+            try
+            {
+                re = conn.ExecuteNonQuery(conn.conn, sql);
+            }
+            catch (Exception ex)
+            {
+                sql = ex.Message + " " + ex.InnerException;
+            }
+
+            return re;
+        }
+        public String updateStatus2Payment3(String pkgsid)
+        {
+            //$this->db->query("UPDATE PackageSold Set Status='3' Where PCKSID='".$PCKSID."'");
+            String re = "";
+            String sql = "";
+            int chk = 0;
+
+            sql = "Update " + opkgs.table + " Set " +
+                " " + opkgs.Status + " = '2'" +
+                "," + opkgs.P3BDetailID + " = '0'" +
+                "Where " + opkgs.PCKSID + "='" + pkgsid + "'"
+                ;
+            try
+            {
+                re = conn.ExecuteNonQuery(conn.conn, sql);
+            }
+            catch (Exception ex)
+            {
+                sql = ex.Message + " " + ex.InnerException;
+            }
+
+            return re;
+        }
+        public String updateStatus2Payment4(String pkgsid)
+        {
+            //$this->db->query("UPDATE PackageSold Set Status='3' Where PCKSID='".$PCKSID."'");
+            String re = "";
+            String sql = "";
+            int chk = 0;
+
+            sql = "Update " + opkgs.table + " Set " +
+                " " + opkgs.Status + " = '2'" +
+                "," + opkgs.P4BDetailID + " = '0'" +
+                "Where " + opkgs.PCKSID + "='" + pkgsid + "'"
+                ;
+            try
+            {
+                re = conn.ExecuteNonQuery(conn.conn, sql);
+            }
+            catch (Exception ex)
+            {
+                sql = ex.Message + " " + ex.InnerException;
+            }
+
+            return re;
+        }
         public String updateStatus3(String pkgsid)
         {
             //$this->db->query("UPDATE PackageSold Set Status='3' Where PCKSID='".$PCKSID."'");
@@ -386,6 +500,19 @@ namespace clinic_ivf.objdb
                     //opkgs1.paymentperiod = "";
                 }
             }
+
+            return labi1;
+        }
+        public OldPackageSold selectByVN2(String vn)
+        {
+            OldPackageSold labi1 = new OldPackageSold();
+            DataTable dt = new DataTable();
+            Decimal pay1 = 0, pay2 = 0, pay3 = 0, pay4 = 0;
+            String sql = "select opkgs.* " +
+                "From " + opkgs.table + " opkgs " +
+                "Where opkgs." + opkgs.VN + " ='" + vn + "' and Status<>3 ";
+            dt = conn.selectData(conn.conn, sql);
+            labi1 = setPackageSold(dt);
 
             return labi1;
         }
