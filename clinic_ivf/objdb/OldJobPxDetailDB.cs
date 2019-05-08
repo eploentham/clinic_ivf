@@ -160,7 +160,7 @@ namespace clinic_ivf.objdb
         {
             String re = "0";
             DataTable dt = new DataTable();
-            String sql = "select sum(oJpxd."+oJpxd.Price+ ") as Include_Pkg_Price " +
+            String sql = "select sum(oJpxd."+oJpxd.Price + "*" + oJpxd.QTY + ") as Include_Pkg_Price " +
                 "From " + oJpxd.table + " oJpxd " +
                 "Where oJpxd." + oJpxd.VN + " ='" + copId + "' and Extra='0' " 
                 ;
@@ -175,7 +175,7 @@ namespace clinic_ivf.objdb
         {
             String re = "0";
             DataTable dt = new DataTable();
-            String sql = "select sum(oJpxd." + oJpxd.Price + ") as Extra_Pkg_Price " +
+            String sql = "select sum(oJpxd." + oJpxd.Price + "*" + oJpxd.QTY + ") as Extra_Pkg_Price " +
                 "From " + oJpxd.table + " oJpxd " +
                 "Where oJpxd." + oJpxd.VN + " ='" + copId + "' and Extra='1' "
                 ;

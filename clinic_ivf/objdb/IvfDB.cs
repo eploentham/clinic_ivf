@@ -873,18 +873,20 @@ namespace clinic_ivf.objdb
                 {
                     foreach (DataRow row in dt.Rows)
                     {
+                        Decimal price = 0,qty=0;
                         String grp3 = "", grp4 = "", grp = "";
                         grp3 = obilgDB.getList("3");
                         grp4 = obilgDB.getList("4");
 
                         grp = row["LGID"].ToString().Equals("1") ? grp3 : grp4;
-
+                        Decimal.TryParse(row["Price"].ToString(), out price);
+                        Decimal.TryParse(row["QTY"].ToString(), out qty);
                         OldBilldetail obilld = new OldBilldetail();
                         obilld.ID = "";
                         obilld.VN = row["VN"].ToString();
                         obilld.Name = row["LName"].ToString();
                         obilld.Extra = "0";
-                        obilld.Price = row["Price"].ToString();
+                        obilld.Price = (price*qty).ToString();
                         obilld.Total = "0";
                         obilld.GroupType = grp;
                         obilld.Comment = "";
@@ -899,14 +901,17 @@ namespace clinic_ivf.objdb
                 {
                     foreach (DataRow row in dt.Rows)
                     {
+                        Decimal price = 0, qty = 0;
                         String grp1 = "", grp4 = "", grp = "";
                         grp1 = obilgDB.getList("1");
+                        Decimal.TryParse(row["Price"].ToString(), out price);
+                        Decimal.TryParse(row["QTY"].ToString(), out qty);
                         OldBilldetail obilld = new OldBilldetail();
                         obilld.ID = "";
                         obilld.VN = row["VN"].ToString();
                         obilld.Name = row["DUName"].ToString();
                         obilld.Extra = "0";
-                        obilld.Price = row["Price"].ToString();
+                        obilld.Price = (price * qty).ToString();
                         obilld.Total = "0";
                         obilld.GroupType = grp1;
                         obilld.Comment = "";
@@ -921,15 +926,18 @@ namespace clinic_ivf.objdb
                 {
                     foreach (DataRow row in dt.Rows)
                     {
+                        Decimal price = 0, qty = 0;
                         String grp1 = "", grp4 = "", grp = "";
                         grp1 = oSItmDB.getBillGroupID(row["SID"].ToString());
                         grp = obilgDB.getList(grp1);
+                        Decimal.TryParse(row["Price"].ToString(), out price);
+                        Decimal.TryParse(row["QTY"].ToString(), out qty);
                         OldBilldetail obilld = new OldBilldetail();
                         obilld.ID = "";
                         obilld.VN = row["VN"].ToString();
                         obilld.Name = row["SName"].ToString();
                         obilld.Extra = "0";
-                        obilld.Price = row["Price"].ToString();
+                        obilld.Price = (price * qty).ToString();
                         obilld.Total = "0";
                         obilld.GroupType = grp;
                         obilld.Comment = "";
@@ -947,19 +955,21 @@ namespace clinic_ivf.objdb
                 {
                     foreach (DataRow row in dt.Rows)
                     {
+                        Decimal price = 0, qty = 0;
                         String grp3 = "", grp4 = "", grp = "";
                         grp3 = obilgDB.getList("3");
                         grp4 = obilgDB.getList("4");
 
                         grp = row["LGID"].ToString().Equals("1") ? grp3 : grp4;
-
+                        Decimal.TryParse(row["Price"].ToString(), out price);
+                        Decimal.TryParse(row["QTY"].ToString(), out qty);
                         OldBilldetail obilld = new OldBilldetail();
                         obilld.ID = "";
                         obilld.VN = row["VN"].ToString();
                         obilld.Name = row["LName"].ToString();
                         obilld.Extra = "1";
-                        obilld.Price = row["Price"].ToString();
-                        obilld.Total = row["Price"].ToString();
+                        obilld.Price = (price * qty).ToString();
+                        obilld.Total = (price * qty).ToString();
                         obilld.GroupType = grp;
                         obilld.Comment = "";
                         obilld.item_id = row["LID"].ToString();
@@ -973,15 +983,18 @@ namespace clinic_ivf.objdb
                 {
                     foreach (DataRow row in dt.Rows)
                     {
+                        Decimal price = 0, qty = 0;
                         String grp1 = "", grp4 = "", grp = "";
                         grp1 = obilgDB.getList("1");
+                        Decimal.TryParse(row["Price"].ToString(), out price);
+                        Decimal.TryParse(row["QTY"].ToString(), out qty);
                         OldBilldetail obilld = new OldBilldetail();
                         obilld.ID = "";
                         obilld.VN = row["VN"].ToString();
                         obilld.Name = row["DUName"].ToString();
                         obilld.Extra = "1";
-                        obilld.Price = row["Price"].ToString();
-                        obilld.Total = row["Price"].ToString();
+                        obilld.Price = (price * qty).ToString();
+                        obilld.Total = (price * qty).ToString();
                         obilld.GroupType = grp1;
                         obilld.Comment = "";
                         obilld.item_id = row["DUID"].ToString();
@@ -995,16 +1008,19 @@ namespace clinic_ivf.objdb
                 {
                     foreach (DataRow row in dt.Rows)
                     {
+                        Decimal price = 0, qty = 0;
                         String grp1 = "", grp4 = "", grp = "";
                         grp1 = oSItmDB.getBillGroupID(row["SID"].ToString());
                         grp = obilgDB.getList(grp1);
+                        Decimal.TryParse(row["Price"].ToString(), out price);
+                        Decimal.TryParse(row["QTY"].ToString(), out qty);
                         OldBilldetail obilld = new OldBilldetail();
                         obilld.ID = "";
                         obilld.VN = row["VN"].ToString();
                         obilld.Name = row["SName"].ToString();
                         obilld.Extra = "1";
-                        obilld.Price = row["Price"].ToString();
-                        obilld.Total = row["Price"].ToString();
+                        obilld.Price = (price * qty).ToString();
+                        obilld.Total = (price * qty).ToString();
                         obilld.GroupType = grp;
                         obilld.Comment = "";
                         obilld.item_id = row["SID"].ToString();
@@ -1270,22 +1286,25 @@ namespace clinic_ivf.objdb
                     dtb0 = conn.selectData(conn.conn, sql);
                     if (dtb0.Rows.Count > 0)
                     {
-                        total111 = dtb0.Rows[0]["Total1"].ToString();
-                        //name = dt.Rows[0]["Name"].ToString();
-                        //comm = dt.Rows[0]["Comment"].ToString();
-                        Decimal.TryParse(total111, out total1111);
-                        if (total1111 <= 0) continue;
-                        DataRow row11 = dtprn.NewRow();
-                        row11["col1"] = dtb0.Rows[0]["Name"].ToString();
-                        row11["col2"] = total1111.ToString("#,###.00");
-                        row11["col3"] = "";
-                        row11["col4"] = total1111.ToString("#,###.00");
-                        row11["sort1"] = i.ToString();
-                        row11["fond_bold"] = "1";
-                        row11["grp"] = "2";
-                        row11["grp_name"] = grpname;
-                        amt += total1111;
-                        dtprn.Rows.Add(row11);
+                        foreach (DataRow row1 in dtb0.Rows)
+                        {
+                            total111 = row1["Total1"].ToString();
+                            //name = dt.Rows[0]["Name"].ToString();
+                            //comm = dt.Rows[0]["Comment"].ToString();
+                            Decimal.TryParse(total111, out total1111);
+                            if (total1111 <= 0) continue;
+                            DataRow row11 = dtprn.NewRow();
+                            row11["col1"] = row1["Name"].ToString();
+                            row11["col2"] = total1111.ToString("#,###.00");
+                            row11["col3"] = "";
+                            row11["col4"] = total1111.ToString("#,###.00");
+                            row11["sort1"] = i.ToString();
+                            row11["fond_bold"] = "1";
+                            row11["grp"] = "2";
+                            row11["grp_name"] = grpname;
+                            amt += total1111;
+                            dtprn.Rows.Add(row11);
+                        }
                     }
                 }
             }
@@ -1351,7 +1370,7 @@ namespace clinic_ivf.objdb
                         foreach (DataRow dr in dtb0.Rows)
                         {
                             name = dr["Name"].ToString();
-                            total111 = dr["Total"].ToString();
+                            total111 = dr["Total1"].ToString();
                             //comm = dr["Comment"].ToString();
                             Decimal.TryParse(total111, out total1111);
                             DataRow row11 = dtprn.NewRow();

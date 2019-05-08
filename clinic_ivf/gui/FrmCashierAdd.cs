@@ -258,7 +258,27 @@ namespace clinic_ivf.gui
                 obilld.VN = txtVn.Text;
                 obilld.Name = "OtherService discount ";
                 obilld.Extra = "1";
-
+                Decimal nettotal = 0, discountper=0, discount=0;
+                if (chkDiscountAll.Checked)
+                {
+                    Decimal.TryParse(txtAmt.Text, out nettotal);
+                    if (!chkDiscountCash.Checked)
+                    {
+                        Decimal.TryParse(txtDiscountAmt.Text, out discountper);
+                        discount = (nettotal * discountper / 100);
+                        txtDiscount.Value = discount;
+                    }
+                }
+                else
+                {
+                    Decimal.TryParse(txtAmt.Text, out nettotal);
+                    if (!chkDiscountCash.Checked)
+                    {
+                        Decimal.TryParse(txtDiscountAmt.Text, out discountper);
+                        discount = (nettotal * discountper / 100);
+                        txtDiscount.Value = discount;
+                    }
+                }
                 obilld.Price = "-" + txtDiscount.Text.Replace(",", "");
                 obilld.Total = "-" + txtDiscount.Text.Replace(",", "");
                 obilld.Comment = "";
