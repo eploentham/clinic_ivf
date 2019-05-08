@@ -265,7 +265,8 @@ namespace clinic_ivf.gui
             }
             else
             {
-                setGrfFinish(txtSearch.Text);
+                //setGrfFinish(txtSearch.Text);
+                setGrfFinish("");
             }
         }
         private void setGrfFinishDonor(String search)
@@ -375,8 +376,9 @@ namespace clinic_ivf.gui
             DataTable dt = new DataTable();
             if (search.Equals(""))
             {
-                //String date = System.DateTime.Now.Year + "-" + System.DateTime.Now.ToString("MM-dd");
-                dt = ic.ivfDB.ovsDB.selectByStatusNurseFinish(ic.datetoDB(txtDateStart.Text));
+                String date = System.DateTime.Now.Year + "-" + System.DateTime.Now.ToString("MM-dd");
+                //dt = ic.ivfDB.ovsDB.selectByStatusNurseFinish(ic.datetoDB(txtDateStart.Text));
+                dt = ic.ivfDB.ovsDB.selectByStatusNurseFinish(date);
             }
             else
             {
