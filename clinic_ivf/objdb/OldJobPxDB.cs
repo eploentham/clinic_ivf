@@ -85,10 +85,12 @@ namespace clinic_ivf.objdb
             {
                 wherehn = " and patient.PIDS like '%" + hn + "%'";
             }
-            String sql = "select jobpx.*, CONCAT( SurfixName.SurfixName  ,' ', Patient.PName  ,' ',Patient.PSurname ) as name " +
+            String sql = "select jobpx.*, CONCAT( SurfixName.SurfixName  ,' ', Patient.PName  ,' ',Patient.PSurname ) as name, t_visit.status_nurse, t_visit.status_cashier  " +
                 "From " + jobpx.table + " jobpx " +
                 "Left Join Patient  on Patient.PID = jobpx.PID " +
                 "Left Join SurfixName on Patient.SurfixID = SurfixName.SurfixID " +
+                "Left Join t_patient on Patient.PID = t_patient.t_patient_id_old " +
+                "Left Join t_visit on t_patient.t_patient_id = t_visit.t_patient_id " +
                 "Where jobpx.Date >= '" + startDate + "' and jobpx.Date <= '" + endDate + "' " + wherehn +
                 "Order By jobpx.Date, jobpx.VN";
             dt = conn.selectData(conn.conn, sql);
