@@ -249,7 +249,6 @@
             this.tabHis = new C1.Win.C1Command.C1DockingTabPage();
             this.panel1 = new System.Windows.Forms.Panel();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.c1Button4 = new C1.Win.C1Input.C1Button();
             this.c1Button5 = new C1.Win.C1Input.C1Button();
             this.c1Button2 = new C1.Win.C1Input.C1Button();
             this.label63 = new System.Windows.Forms.Label();
@@ -299,60 +298,41 @@
             this.label52 = new System.Windows.Forms.Label();
             this.label20 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.c1TextBox20 = new C1.Win.C1Input.C1TextBox();
-            this.c1CheckBox22 = new C1.Win.C1Input.C1CheckBox();
-            this.c1CheckBox21 = new C1.Win.C1Input.C1CheckBox();
             this.label47 = new System.Windows.Forms.Label();
-            this.c1TextBox18 = new C1.Win.C1Input.C1TextBox();
-            this.c1CheckBox20 = new C1.Win.C1Input.C1CheckBox();
-            this.c1CheckBox19 = new C1.Win.C1Input.C1CheckBox();
             this.label45 = new System.Windows.Forms.Label();
-            this.c1CheckBox15 = new C1.Win.C1Input.C1CheckBox();
             this.label38 = new System.Windows.Forms.Label();
             this.label43 = new System.Windows.Forms.Label();
-            this.c1TextBox17 = new C1.Win.C1Input.C1TextBox();
-            this.c1TextBox16 = new C1.Win.C1Input.C1TextBox();
-            this.c1CheckBox14 = new C1.Win.C1Input.C1CheckBox();
-            this.c1CheckBox18 = new C1.Win.C1Input.C1CheckBox();
-            this.c1TextBox12 = new C1.Win.C1Input.C1TextBox();
+            this.txtPmhMenLmp = new C1.Win.C1Input.C1TextBox();
+            this.txtPmhMenAmt = new C1.Win.C1Input.C1TextBox();
             this.label36 = new System.Windows.Forms.Label();
             this.label37 = new System.Windows.Forms.Label();
             this.label44 = new System.Windows.Forms.Label();
             this.c1TextBox13 = new C1.Win.C1Input.C1TextBox();
             this.label41 = new System.Windows.Forms.Label();
             this.label39 = new System.Windows.Forms.Label();
-            this.c1TextBox15 = new C1.Win.C1Input.C1TextBox();
-            this.c1CheckBox16 = new C1.Win.C1Input.C1CheckBox();
+            this.txtPmhMenInter = new C1.Win.C1Input.C1TextBox();
             this.label42 = new System.Windows.Forms.Label();
-            this.c1CheckBox17 = new C1.Win.C1Input.C1CheckBox();
             this.label40 = new System.Windows.Forms.Label();
-            this.c1TextBox14 = new C1.Win.C1Input.C1TextBox();
             this.txtPmhPttName = new C1.Win.C1Input.C1TextBox();
-            this.c1TextBox11 = new C1.Win.C1Input.C1TextBox();
             this.txtPmhPttMaleName = new C1.Win.C1Input.C1TextBox();
-            this.c1CheckBox12 = new C1.Win.C1Input.C1CheckBox();
             this.label21 = new System.Windows.Forms.Label();
-            this.c1CheckBox13 = new C1.Win.C1Input.C1CheckBox();
             this.label23 = new System.Windows.Forms.Label();
             this.label34 = new System.Windows.Forms.Label();
             this.txtPmhPttDob = new C1.Win.C1Input.C1TextBox();
-            this.c1TextBox10 = new C1.Win.C1Input.C1TextBox();
             this.label24 = new System.Windows.Forms.Label();
-            this.c1CheckBox11 = new C1.Win.C1Input.C1CheckBox();
             this.txtPmhPttMaleDob = new C1.Win.C1Input.C1TextBox();
-            this.c1CheckBox10 = new C1.Win.C1Input.C1CheckBox();
             this.label25 = new System.Windows.Forms.Label();
             this.label33 = new System.Windows.Forms.Label();
             this.label26 = new System.Windows.Forms.Label();
-            this.c1TextBox9 = new C1.Win.C1Input.C1TextBox();
+            this.txtPmhPastOther = new C1.Win.C1Input.C1TextBox();
             this.c1ComboBox1 = new C1.Win.C1Input.C1ComboBox();
-            this.c1CheckBox9 = new C1.Win.C1Input.C1CheckBox();
+            this.chkPmhPastOther = new C1.Win.C1Input.C1CheckBox();
             this.c1ComboBox2 = new C1.Win.C1Input.C1ComboBox();
-            this.c1CheckBox8 = new C1.Win.C1Input.C1CheckBox();
+            this.chkPmhPastThy = new C1.Win.C1Input.C1CheckBox();
             this.label27 = new System.Windows.Forms.Label();
-            this.c1CheckBox7 = new C1.Win.C1Input.C1CheckBox();
+            this.chkPmhPastSti = new C1.Win.C1Input.C1CheckBox();
             this.txtPmhSex = new C1.Win.C1Input.C1TextBox();
-            this.c1CheckBox6 = new C1.Win.C1Input.C1CheckBox();
+            this.chkPmhPastSie = new C1.Win.C1Input.C1CheckBox();
             this.label30 = new System.Windows.Forms.Label();
             this.chkPmhPastAsi = new C1.Win.C1Input.C1CheckBox();
             this.panel6 = new System.Windows.Forms.Panel();
@@ -661,6 +641,31 @@
             this.label92 = new System.Windows.Forms.Label();
             this.label93 = new System.Windows.Forms.Label();
             this.label94 = new System.Windows.Forms.Label();
+            this.panel29 = new System.Windows.Forms.Panel();
+            this.chkPmhSurgYes = new System.Windows.Forms.RadioButton();
+            this.chkPmhSurgNo = new System.Windows.Forms.RadioButton();
+            this.chkPmhSurg = new C1.Win.C1Input.C1TextBox();
+            this.panel30 = new System.Windows.Forms.Panel();
+            this.chkPmhSubsYes = new System.Windows.Forms.RadioButton();
+            this.chkPmhSubsNo = new System.Windows.Forms.RadioButton();
+            this.chkPmhSubs = new C1.Win.C1Input.C1TextBox();
+            this.panel33 = new System.Windows.Forms.Panel();
+            this.chkPmhPapsYes = new System.Windows.Forms.RadioButton();
+            this.chkPmhPapsNo = new System.Windows.Forms.RadioButton();
+            this.txtPmhPaps = new C1.Win.C1Input.C1TextBox();
+            this.panel34 = new System.Windows.Forms.Panel();
+            this.chkPmhProvYes = new System.Windows.Forms.RadioButton();
+            this.chkPmhProvNo = new System.Windows.Forms.RadioButton();
+            this.chkPmhProv = new C1.Win.C1Input.C1TextBox();
+            this.panel35 = new System.Windows.Forms.Panel();
+            this.chkPmhTypeSec = new System.Windows.Forms.RadioButton();
+            this.chkPmhTypePri = new System.Windows.Forms.RadioButton();
+            this.txtPmhType = new C1.Win.C1Input.C1TextBox();
+            this.panel36 = new System.Windows.Forms.Panel();
+            this.chkPmhMenIrr = new System.Windows.Forms.RadioButton();
+            this.chkPmhMenReg = new System.Windows.Forms.RadioButton();
+            this.txtPmhMenDay = new C1.Win.C1Input.C1TextBox();
+            this.chkPmhMenLmp = new System.Windows.Forms.RadioButton();
             this.sB.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.theme1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.sC)).BeginInit();
@@ -828,7 +833,6 @@
             this.tabHis.SuspendLayout();
             this.panel1.SuspendLayout();
             this.groupBox3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.c1Button4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.c1Button5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.c1Button2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.c1TextBox28)).BeginInit();
@@ -865,41 +869,22 @@
             ((System.ComponentModel.ISupportInitialize)(this.c1TextBox19)).BeginInit();
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.c1TextBox20)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.c1CheckBox22)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.c1CheckBox21)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.c1TextBox18)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.c1CheckBox20)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.c1CheckBox19)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.c1CheckBox15)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.c1TextBox17)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.c1TextBox16)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.c1CheckBox14)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.c1CheckBox18)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.c1TextBox12)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtPmhMenLmp)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtPmhMenAmt)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.c1TextBox13)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.c1TextBox15)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.c1CheckBox16)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.c1CheckBox17)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.c1TextBox14)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtPmhMenInter)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtPmhPttName)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.c1TextBox11)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtPmhPttMaleName)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.c1CheckBox12)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.c1CheckBox13)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtPmhPttDob)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.c1TextBox10)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.c1CheckBox11)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtPmhPttMaleDob)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.c1CheckBox10)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.c1TextBox9)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtPmhPastOther)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.c1ComboBox1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.c1CheckBox9)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chkPmhPastOther)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.c1ComboBox2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.c1CheckBox8)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.c1CheckBox7)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chkPmhPastThy)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chkPmhPastSti)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtPmhSex)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.c1CheckBox6)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chkPmhPastSie)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkPmhPastAsi)).BeginInit();
             this.panel6.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtPmhMarriedYear)).BeginInit();
@@ -1050,6 +1035,18 @@
             ((System.ComponentModel.ISupportInitialize)(this.cboBsp)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnVoid)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnSave)).BeginInit();
+            this.panel29.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.chkPmhSurg)).BeginInit();
+            this.panel30.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.chkPmhSubs)).BeginInit();
+            this.panel33.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtPmhPaps)).BeginInit();
+            this.panel34.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.chkPmhProv)).BeginInit();
+            this.panel35.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtPmhType)).BeginInit();
+            this.panel36.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtPmhMenDay)).BeginInit();
             this.SuspendLayout();
             // 
             // sB
@@ -4283,7 +4280,6 @@
             // groupBox3
             // 
             this.groupBox3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.groupBox3.Controls.Add(this.c1Button4);
             this.groupBox3.Controls.Add(this.c1Button5);
             this.groupBox3.Controls.Add(this.c1Button2);
             this.groupBox3.Controls.Add(this.label63);
@@ -4338,25 +4334,11 @@
             this.groupBox3.Text = "Male History";
             this.theme1.SetTheme(this.groupBox3, "(default)");
             // 
-            // c1Button4
-            // 
-            this.c1Button4.Image = global::clinic_ivf.Properties.Resources.print;
-            this.c1Button4.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.c1Button4.Location = new System.Drawing.Point(88, 420);
-            this.c1Button4.Name = "c1Button4";
-            this.c1Button4.Size = new System.Drawing.Size(83, 34);
-            this.c1Button4.TabIndex = 1031;
-            this.c1Button4.Text = "Print  ";
-            this.c1Button4.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.theme1.SetTheme(this.c1Button4, "(default)");
-            this.c1Button4.UseVisualStyleBackColor = true;
-            this.c1Button4.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
-            // 
             // c1Button5
             // 
             this.c1Button5.Image = global::clinic_ivf.Properties.Resources.download_database24;
             this.c1Button5.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.c1Button5.Location = new System.Drawing.Point(7, 420);
+            this.c1Button5.Location = new System.Drawing.Point(485, 592);
             this.c1Button5.Name = "c1Button5";
             this.c1Button5.Size = new System.Drawing.Size(75, 34);
             this.c1Button5.TabIndex = 1030;
@@ -5080,35 +5062,31 @@
             // groupBox2
             // 
             this.groupBox2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.groupBox2.Controls.Add(this.panel30);
+            this.groupBox2.Controls.Add(this.panel29);
             this.groupBox2.Controls.Add(this.label52);
             this.groupBox2.Controls.Add(this.label20);
             this.groupBox2.Controls.Add(this.groupBox1);
             this.groupBox2.Controls.Add(this.txtPmhPttName);
-            this.groupBox2.Controls.Add(this.c1TextBox11);
             this.groupBox2.Controls.Add(this.txtPmhPttMaleName);
-            this.groupBox2.Controls.Add(this.c1CheckBox12);
             this.groupBox2.Controls.Add(this.label21);
-            this.groupBox2.Controls.Add(this.c1CheckBox13);
             this.groupBox2.Controls.Add(this.label23);
             this.groupBox2.Controls.Add(this.label34);
             this.groupBox2.Controls.Add(this.txtPmhPttDob);
-            this.groupBox2.Controls.Add(this.c1TextBox10);
             this.groupBox2.Controls.Add(this.label24);
-            this.groupBox2.Controls.Add(this.c1CheckBox11);
             this.groupBox2.Controls.Add(this.txtPmhPttMaleDob);
-            this.groupBox2.Controls.Add(this.c1CheckBox10);
             this.groupBox2.Controls.Add(this.label25);
             this.groupBox2.Controls.Add(this.label33);
             this.groupBox2.Controls.Add(this.label26);
-            this.groupBox2.Controls.Add(this.c1TextBox9);
+            this.groupBox2.Controls.Add(this.txtPmhPastOther);
             this.groupBox2.Controls.Add(this.c1ComboBox1);
-            this.groupBox2.Controls.Add(this.c1CheckBox9);
+            this.groupBox2.Controls.Add(this.chkPmhPastOther);
             this.groupBox2.Controls.Add(this.c1ComboBox2);
-            this.groupBox2.Controls.Add(this.c1CheckBox8);
+            this.groupBox2.Controls.Add(this.chkPmhPastThy);
             this.groupBox2.Controls.Add(this.label27);
-            this.groupBox2.Controls.Add(this.c1CheckBox7);
+            this.groupBox2.Controls.Add(this.chkPmhPastSti);
             this.groupBox2.Controls.Add(this.txtPmhSex);
-            this.groupBox2.Controls.Add(this.c1CheckBox6);
+            this.groupBox2.Controls.Add(this.chkPmhPastSie);
             this.groupBox2.Controls.Add(this.label30);
             this.groupBox2.Controls.Add(this.chkPmhPastAsi);
             this.groupBox2.Controls.Add(this.panel6);
@@ -5158,93 +5136,22 @@
             // groupBox1
             // 
             this.groupBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.groupBox1.Controls.Add(this.c1TextBox20);
-            this.groupBox1.Controls.Add(this.c1CheckBox22);
-            this.groupBox1.Controls.Add(this.c1CheckBox21);
+            this.groupBox1.Controls.Add(this.panel36);
+            this.groupBox1.Controls.Add(this.panel35);
+            this.groupBox1.Controls.Add(this.panel34);
+            this.groupBox1.Controls.Add(this.panel33);
             this.groupBox1.Controls.Add(this.label47);
-            this.groupBox1.Controls.Add(this.c1TextBox18);
-            this.groupBox1.Controls.Add(this.c1CheckBox20);
-            this.groupBox1.Controls.Add(this.c1CheckBox19);
             this.groupBox1.Controls.Add(this.label45);
-            this.groupBox1.Controls.Add(this.c1CheckBox15);
-            this.groupBox1.Controls.Add(this.label38);
-            this.groupBox1.Controls.Add(this.label43);
-            this.groupBox1.Controls.Add(this.c1TextBox17);
-            this.groupBox1.Controls.Add(this.c1TextBox16);
-            this.groupBox1.Controls.Add(this.c1CheckBox14);
-            this.groupBox1.Controls.Add(this.c1CheckBox18);
-            this.groupBox1.Controls.Add(this.c1TextBox12);
             this.groupBox1.Controls.Add(this.label36);
-            this.groupBox1.Controls.Add(this.label37);
-            this.groupBox1.Controls.Add(this.label44);
-            this.groupBox1.Controls.Add(this.c1TextBox13);
-            this.groupBox1.Controls.Add(this.label41);
             this.groupBox1.Controls.Add(this.label39);
-            this.groupBox1.Controls.Add(this.c1TextBox15);
-            this.groupBox1.Controls.Add(this.c1CheckBox16);
-            this.groupBox1.Controls.Add(this.label42);
-            this.groupBox1.Controls.Add(this.c1CheckBox17);
-            this.groupBox1.Controls.Add(this.label40);
-            this.groupBox1.Controls.Add(this.c1TextBox14);
             this.groupBox1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
             this.groupBox1.Location = new System.Drawing.Point(5, 365);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(875, 223);
+            this.groupBox1.Size = new System.Drawing.Size(883, 223);
             this.groupBox1.TabIndex = 980;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "History of Infertility Treament :";
             this.theme1.SetTheme(this.groupBox1, "(default)");
-            // 
-            // c1TextBox20
-            // 
-            this.c1TextBox20.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.c1TextBox20.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
-            this.c1TextBox20.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.c1TextBox20.Location = new System.Drawing.Point(291, 146);
-            this.c1TextBox20.Name = "c1TextBox20";
-            this.c1TextBox20.Size = new System.Drawing.Size(551, 20);
-            this.c1TextBox20.TabIndex = 987;
-            this.c1TextBox20.Tag = null;
-            this.theme1.SetTheme(this.c1TextBox20, "(default)");
-            this.c1TextBox20.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
-            // 
-            // c1CheckBox22
-            // 
-            this.c1CheckBox22.BackColor = System.Drawing.Color.Transparent;
-            this.c1CheckBox22.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
-            this.c1CheckBox22.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.c1CheckBox22.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.c1CheckBox22.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.c1CheckBox22.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.c1CheckBox22.Location = new System.Drawing.Point(221, 142);
-            this.c1CheckBox22.Name = "c1CheckBox22";
-            this.c1CheckBox22.Padding = new System.Windows.Forms.Padding(4, 1, 1, 1);
-            this.c1CheckBox22.Size = new System.Drawing.Size(65, 24);
-            this.c1CheckBox22.TabIndex = 986;
-            this.c1CheckBox22.Text = "Yes";
-            this.theme1.SetTheme(this.c1CheckBox22, "(default)");
-            this.c1CheckBox22.UseVisualStyleBackColor = true;
-            this.c1CheckBox22.Value = null;
-            this.c1CheckBox22.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
-            // 
-            // c1CheckBox21
-            // 
-            this.c1CheckBox21.BackColor = System.Drawing.Color.Transparent;
-            this.c1CheckBox21.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
-            this.c1CheckBox21.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.c1CheckBox21.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.c1CheckBox21.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.c1CheckBox21.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.c1CheckBox21.Location = new System.Drawing.Point(146, 142);
-            this.c1CheckBox21.Name = "c1CheckBox21";
-            this.c1CheckBox21.Padding = new System.Windows.Forms.Padding(4, 1, 1, 1);
-            this.c1CheckBox21.Size = new System.Drawing.Size(69, 24);
-            this.c1CheckBox21.TabIndex = 985;
-            this.c1CheckBox21.Text = "No";
-            this.theme1.SetTheme(this.c1CheckBox21, "(default)");
-            this.c1CheckBox21.UseVisualStyleBackColor = true;
-            this.c1CheckBox21.Value = null;
-            this.c1CheckBox21.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
             // 
             // label47
             // 
@@ -5252,63 +5159,12 @@
             this.label47.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
             this.label47.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label47.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.label47.Location = new System.Drawing.Point(4, 142);
+            this.label47.Location = new System.Drawing.Point(6, 173);
             this.label47.Name = "label47";
             this.label47.Size = new System.Drawing.Size(141, 16);
             this.label47.TabIndex = 984;
             this.label47.Text = "History of Pap Smear :";
             this.theme1.SetTheme(this.label47, "(default)");
-            // 
-            // c1TextBox18
-            // 
-            this.c1TextBox18.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.c1TextBox18.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
-            this.c1TextBox18.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.c1TextBox18.Location = new System.Drawing.Point(291, 113);
-            this.c1TextBox18.Name = "c1TextBox18";
-            this.c1TextBox18.Size = new System.Drawing.Size(551, 20);
-            this.c1TextBox18.TabIndex = 983;
-            this.c1TextBox18.Tag = null;
-            this.theme1.SetTheme(this.c1TextBox18, "(default)");
-            this.c1TextBox18.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
-            // 
-            // c1CheckBox20
-            // 
-            this.c1CheckBox20.BackColor = System.Drawing.Color.Transparent;
-            this.c1CheckBox20.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
-            this.c1CheckBox20.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.c1CheckBox20.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.c1CheckBox20.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.c1CheckBox20.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.c1CheckBox20.Location = new System.Drawing.Point(221, 109);
-            this.c1CheckBox20.Name = "c1CheckBox20";
-            this.c1CheckBox20.Padding = new System.Windows.Forms.Padding(4, 1, 1, 1);
-            this.c1CheckBox20.Size = new System.Drawing.Size(64, 24);
-            this.c1CheckBox20.TabIndex = 982;
-            this.c1CheckBox20.Text = "Yes";
-            this.theme1.SetTheme(this.c1CheckBox20, "(default)");
-            this.c1CheckBox20.UseVisualStyleBackColor = true;
-            this.c1CheckBox20.Value = null;
-            this.c1CheckBox20.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
-            // 
-            // c1CheckBox19
-            // 
-            this.c1CheckBox19.BackColor = System.Drawing.Color.Transparent;
-            this.c1CheckBox19.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
-            this.c1CheckBox19.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.c1CheckBox19.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.c1CheckBox19.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.c1CheckBox19.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.c1CheckBox19.Location = new System.Drawing.Point(146, 109);
-            this.c1CheckBox19.Name = "c1CheckBox19";
-            this.c1CheckBox19.Padding = new System.Windows.Forms.Padding(4, 1, 1, 1);
-            this.c1CheckBox19.Size = new System.Drawing.Size(69, 24);
-            this.c1CheckBox19.TabIndex = 981;
-            this.c1CheckBox19.Text = "No";
-            this.theme1.SetTheme(this.c1CheckBox19, "(default)");
-            this.c1CheckBox19.UseVisualStyleBackColor = true;
-            this.c1CheckBox19.Value = null;
-            this.c1CheckBox19.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
             // 
             // label45
             // 
@@ -5316,31 +5172,12 @@
             this.label45.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
             this.label45.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label45.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.label45.Location = new System.Drawing.Point(4, 109);
+            this.label45.Location = new System.Drawing.Point(6, 130);
             this.label45.Name = "label45";
             this.label45.Size = new System.Drawing.Size(128, 16);
             this.label45.TabIndex = 980;
             this.label45.Text = "Previous Treament :";
             this.theme1.SetTheme(this.label45, "(default)");
-            // 
-            // c1CheckBox15
-            // 
-            this.c1CheckBox15.BackColor = System.Drawing.Color.Transparent;
-            this.c1CheckBox15.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
-            this.c1CheckBox15.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.c1CheckBox15.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.c1CheckBox15.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.c1CheckBox15.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.c1CheckBox15.Location = new System.Drawing.Point(146, 13);
-            this.c1CheckBox15.Name = "c1CheckBox15";
-            this.c1CheckBox15.Padding = new System.Windows.Forms.Padding(4, 1, 1, 1);
-            this.c1CheckBox15.Size = new System.Drawing.Size(79, 24);
-            this.c1CheckBox15.TabIndex = 960;
-            this.c1CheckBox15.Text = "Primary";
-            this.theme1.SetTheme(this.c1CheckBox15, "(default)");
-            this.c1CheckBox15.UseVisualStyleBackColor = true;
-            this.c1CheckBox15.Value = null;
-            this.c1CheckBox15.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
             // 
             // label38
             // 
@@ -5348,7 +5185,7 @@
             this.label38.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
             this.label38.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label38.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.label38.Location = new System.Drawing.Point(806, 16);
+            this.label38.Location = new System.Drawing.Point(671, 6);
             this.label38.Name = "label38";
             this.label38.Size = new System.Drawing.Size(42, 16);
             this.label38.TabIndex = 966;
@@ -5361,89 +5198,38 @@
             this.label43.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
             this.label43.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label43.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.label43.Location = new System.Drawing.Point(806, 51);
+            this.label43.Location = new System.Drawing.Point(658, 6);
             this.label43.Name = "label43";
             this.label43.Size = new System.Drawing.Size(60, 16);
             this.label43.TabIndex = 977;
             this.label43.Text = "Pad/day";
             this.theme1.SetTheme(this.label43, "(default)");
             // 
-            // c1TextBox17
+            // txtPmhMenLmp
             // 
-            this.c1TextBox17.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.c1TextBox17.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
-            this.c1TextBox17.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.c1TextBox17.Location = new System.Drawing.Point(221, 76);
-            this.c1TextBox17.Name = "c1TextBox17";
-            this.c1TextBox17.Size = new System.Drawing.Size(391, 20);
-            this.c1TextBox17.TabIndex = 979;
-            this.c1TextBox17.Tag = null;
-            this.theme1.SetTheme(this.c1TextBox17, "(default)");
-            this.c1TextBox17.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            this.txtPmhMenLmp.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtPmhMenLmp.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
+            this.txtPmhMenLmp.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.txtPmhMenLmp.Location = new System.Drawing.Point(95, 30);
+            this.txtPmhMenLmp.Name = "txtPmhMenLmp";
+            this.txtPmhMenLmp.Size = new System.Drawing.Size(391, 20);
+            this.txtPmhMenLmp.TabIndex = 979;
+            this.txtPmhMenLmp.Tag = null;
+            this.theme1.SetTheme(this.txtPmhMenLmp, "(default)");
+            this.txtPmhMenLmp.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
             // 
-            // c1TextBox16
+            // txtPmhMenAmt
             // 
-            this.c1TextBox16.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.c1TextBox16.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
-            this.c1TextBox16.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.c1TextBox16.Location = new System.Drawing.Point(746, 49);
-            this.c1TextBox16.Name = "c1TextBox16";
-            this.c1TextBox16.Size = new System.Drawing.Size(56, 20);
-            this.c1TextBox16.TabIndex = 976;
-            this.c1TextBox16.Tag = null;
-            this.theme1.SetTheme(this.c1TextBox16, "(default)");
-            this.c1TextBox16.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
-            // 
-            // c1CheckBox14
-            // 
-            this.c1CheckBox14.BackColor = System.Drawing.Color.Transparent;
-            this.c1CheckBox14.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
-            this.c1CheckBox14.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.c1CheckBox14.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.c1CheckBox14.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.c1CheckBox14.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.c1CheckBox14.Location = new System.Drawing.Point(231, 13);
-            this.c1CheckBox14.Name = "c1CheckBox14";
-            this.c1CheckBox14.Padding = new System.Windows.Forms.Padding(4, 1, 1, 1);
-            this.c1CheckBox14.Size = new System.Drawing.Size(131, 24);
-            this.c1CheckBox14.TabIndex = 961;
-            this.c1CheckBox14.Text = "Secondary Party";
-            this.theme1.SetTheme(this.c1CheckBox14, "(default)");
-            this.c1CheckBox14.UseVisualStyleBackColor = true;
-            this.c1CheckBox14.Value = null;
-            this.c1CheckBox14.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
-            // 
-            // c1CheckBox18
-            // 
-            this.c1CheckBox18.BackColor = System.Drawing.Color.Transparent;
-            this.c1CheckBox18.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
-            this.c1CheckBox18.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.c1CheckBox18.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.c1CheckBox18.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.c1CheckBox18.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.c1CheckBox18.Location = new System.Drawing.Point(146, 73);
-            this.c1CheckBox18.Name = "c1CheckBox18";
-            this.c1CheckBox18.Padding = new System.Windows.Forms.Padding(4, 1, 1, 1);
-            this.c1CheckBox18.Size = new System.Drawing.Size(69, 24);
-            this.c1CheckBox18.TabIndex = 978;
-            this.c1CheckBox18.Text = "LMP";
-            this.theme1.SetTheme(this.c1CheckBox18, "(default)");
-            this.c1CheckBox18.UseVisualStyleBackColor = true;
-            this.c1CheckBox18.Value = null;
-            this.c1CheckBox18.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
-            // 
-            // c1TextBox12
-            // 
-            this.c1TextBox12.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.c1TextBox12.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
-            this.c1TextBox12.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.c1TextBox12.Location = new System.Drawing.Point(368, 14);
-            this.c1TextBox12.Name = "c1TextBox12";
-            this.c1TextBox12.Size = new System.Drawing.Size(236, 20);
-            this.c1TextBox12.TabIndex = 962;
-            this.c1TextBox12.Tag = null;
-            this.theme1.SetTheme(this.c1TextBox12, "(default)");
-            this.c1TextBox12.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            this.txtPmhMenAmt.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtPmhMenAmt.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
+            this.txtPmhMenAmt.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.txtPmhMenAmt.Location = new System.Drawing.Point(598, 4);
+            this.txtPmhMenAmt.Name = "txtPmhMenAmt";
+            this.txtPmhMenAmt.Size = new System.Drawing.Size(56, 20);
+            this.txtPmhMenAmt.TabIndex = 976;
+            this.txtPmhMenAmt.Tag = null;
+            this.theme1.SetTheme(this.txtPmhMenAmt, "(default)");
+            this.txtPmhMenAmt.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
             // 
             // label36
             // 
@@ -5451,7 +5237,7 @@
             this.label36.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
             this.label36.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label36.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.label36.Location = new System.Drawing.Point(4, 18);
+            this.label36.Location = new System.Drawing.Point(6, 26);
             this.label36.Name = "label36";
             this.label36.Size = new System.Drawing.Size(110, 16);
             this.label36.TabIndex = 963;
@@ -5464,7 +5250,7 @@
             this.label37.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
             this.label37.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label37.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.label37.Location = new System.Drawing.Point(618, 16);
+            this.label37.Location = new System.Drawing.Point(483, 6);
             this.label37.Name = "label37";
             this.label37.Size = new System.Drawing.Size(122, 16);
             this.label37.TabIndex = 964;
@@ -5477,7 +5263,7 @@
             this.label44.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
             this.label44.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label44.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.label44.Location = new System.Drawing.Point(685, 51);
+            this.label44.Location = new System.Drawing.Point(537, 6);
             this.label44.Name = "label44";
             this.label44.Size = new System.Drawing.Size(53, 16);
             this.label44.TabIndex = 975;
@@ -5489,7 +5275,7 @@
             this.c1TextBox13.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.c1TextBox13.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
             this.c1TextBox13.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.c1TextBox13.Location = new System.Drawing.Point(746, 14);
+            this.c1TextBox13.Location = new System.Drawing.Point(611, 4);
             this.c1TextBox13.Name = "c1TextBox13";
             this.c1TextBox13.Size = new System.Drawing.Size(56, 20);
             this.c1TextBox13.TabIndex = 965;
@@ -5503,7 +5289,7 @@
             this.label41.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
             this.label41.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label41.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.label41.Location = new System.Drawing.Point(607, 50);
+            this.label41.Location = new System.Drawing.Point(457, 6);
             this.label41.Name = "label41";
             this.label41.Size = new System.Drawing.Size(38, 16);
             this.label41.TabIndex = 974;
@@ -5516,44 +5302,25 @@
             this.label39.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
             this.label39.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label39.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.label39.Location = new System.Drawing.Point(4, 55);
+            this.label39.Location = new System.Drawing.Point(6, 63);
             this.label39.Name = "label39";
             this.label39.Size = new System.Drawing.Size(90, 16);
             this.label39.TabIndex = 967;
             this.label39.Text = "Menstruation :";
             this.theme1.SetTheme(this.label39, "(default)");
             // 
-            // c1TextBox15
+            // txtPmhMenInter
             // 
-            this.c1TextBox15.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.c1TextBox15.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
-            this.c1TextBox15.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.c1TextBox15.Location = new System.Drawing.Point(540, 48);
-            this.c1TextBox15.Name = "c1TextBox15";
-            this.c1TextBox15.Size = new System.Drawing.Size(56, 20);
-            this.c1TextBox15.TabIndex = 973;
-            this.c1TextBox15.Tag = null;
-            this.theme1.SetTheme(this.c1TextBox15, "(default)");
-            this.c1TextBox15.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
-            // 
-            // c1CheckBox16
-            // 
-            this.c1CheckBox16.BackColor = System.Drawing.Color.Transparent;
-            this.c1CheckBox16.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
-            this.c1CheckBox16.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.c1CheckBox16.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.c1CheckBox16.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.c1CheckBox16.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.c1CheckBox16.Location = new System.Drawing.Point(146, 47);
-            this.c1CheckBox16.Name = "c1CheckBox16";
-            this.c1CheckBox16.Padding = new System.Windows.Forms.Padding(4, 1, 1, 1);
-            this.c1CheckBox16.Size = new System.Drawing.Size(79, 24);
-            this.c1CheckBox16.TabIndex = 968;
-            this.c1CheckBox16.Text = "Regular";
-            this.theme1.SetTheme(this.c1CheckBox16, "(default)");
-            this.c1CheckBox16.UseVisualStyleBackColor = true;
-            this.c1CheckBox16.Value = null;
-            this.c1CheckBox16.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            this.txtPmhMenInter.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtPmhMenInter.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
+            this.txtPmhMenInter.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.txtPmhMenInter.Location = new System.Drawing.Point(390, 4);
+            this.txtPmhMenInter.Name = "txtPmhMenInter";
+            this.txtPmhMenInter.Size = new System.Drawing.Size(56, 20);
+            this.txtPmhMenInter.TabIndex = 973;
+            this.txtPmhMenInter.Tag = null;
+            this.theme1.SetTheme(this.txtPmhMenInter, "(default)");
+            this.txtPmhMenInter.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
             // 
             // label42
             // 
@@ -5561,31 +5328,12 @@
             this.label42.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
             this.label42.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label42.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.label42.Location = new System.Drawing.Point(484, 50);
+            this.label42.Location = new System.Drawing.Point(334, 6);
             this.label42.Name = "label42";
             this.label42.Size = new System.Drawing.Size(51, 16);
             this.label42.TabIndex = 972;
             this.label42.Text = "Interval";
             this.theme1.SetTheme(this.label42, "(default)");
-            // 
-            // c1CheckBox17
-            // 
-            this.c1CheckBox17.BackColor = System.Drawing.Color.Transparent;
-            this.c1CheckBox17.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
-            this.c1CheckBox17.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.c1CheckBox17.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.c1CheckBox17.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.c1CheckBox17.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.c1CheckBox17.Location = new System.Drawing.Point(231, 47);
-            this.c1CheckBox17.Name = "c1CheckBox17";
-            this.c1CheckBox17.Padding = new System.Windows.Forms.Padding(4, 1, 1, 1);
-            this.c1CheckBox17.Size = new System.Drawing.Size(131, 24);
-            this.c1CheckBox17.TabIndex = 969;
-            this.c1CheckBox17.Text = "Irregular Duration";
-            this.theme1.SetTheme(this.c1CheckBox17, "(default)");
-            this.c1CheckBox17.UseVisualStyleBackColor = true;
-            this.c1CheckBox17.Value = null;
-            this.c1CheckBox17.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
             // 
             // label40
             // 
@@ -5593,25 +5341,12 @@
             this.label40.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
             this.label40.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label40.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.label40.Location = new System.Drawing.Point(428, 50);
+            this.label40.Location = new System.Drawing.Point(278, 6);
             this.label40.Name = "label40";
             this.label40.Size = new System.Drawing.Size(38, 16);
             this.label40.TabIndex = 971;
             this.label40.Text = "days";
             this.theme1.SetTheme(this.label40, "(default)");
-            // 
-            // c1TextBox14
-            // 
-            this.c1TextBox14.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.c1TextBox14.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
-            this.c1TextBox14.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.c1TextBox14.Location = new System.Drawing.Point(368, 48);
-            this.c1TextBox14.Name = "c1TextBox14";
-            this.c1TextBox14.Size = new System.Drawing.Size(56, 20);
-            this.c1TextBox14.TabIndex = 970;
-            this.c1TextBox14.Tag = null;
-            this.theme1.SetTheme(this.c1TextBox14, "(default)");
-            this.c1TextBox14.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
             // 
             // txtPmhPttName
             // 
@@ -5626,19 +5361,6 @@
             this.theme1.SetTheme(this.txtPmhPttName, "(default)");
             this.txtPmhPttName.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
             // 
-            // c1TextBox11
-            // 
-            this.c1TextBox11.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.c1TextBox11.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
-            this.c1TextBox11.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.c1TextBox11.Location = new System.Drawing.Point(345, 330);
-            this.c1TextBox11.Name = "c1TextBox11";
-            this.c1TextBox11.Size = new System.Drawing.Size(468, 20);
-            this.c1TextBox11.TabIndex = 959;
-            this.c1TextBox11.Tag = null;
-            this.theme1.SetTheme(this.c1TextBox11, "(default)");
-            this.c1TextBox11.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
-            // 
             // txtPmhPttMaleName
             // 
             this.txtPmhPttMaleName.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
@@ -5652,25 +5374,6 @@
             this.theme1.SetTheme(this.txtPmhPttMaleName, "(default)");
             this.txtPmhPttMaleName.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
             // 
-            // c1CheckBox12
-            // 
-            this.c1CheckBox12.BackColor = System.Drawing.Color.Transparent;
-            this.c1CheckBox12.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
-            this.c1CheckBox12.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.c1CheckBox12.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.c1CheckBox12.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.c1CheckBox12.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.c1CheckBox12.Location = new System.Drawing.Point(259, 329);
-            this.c1CheckBox12.Name = "c1CheckBox12";
-            this.c1CheckBox12.Padding = new System.Windows.Forms.Padding(4, 1, 1, 1);
-            this.c1CheckBox12.Size = new System.Drawing.Size(80, 24);
-            this.c1CheckBox12.TabIndex = 958;
-            this.c1CheckBox12.Text = "Yes";
-            this.theme1.SetTheme(this.c1CheckBox12, "(default)");
-            this.c1CheckBox12.UseVisualStyleBackColor = true;
-            this.c1CheckBox12.Value = null;
-            this.c1CheckBox12.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
-            // 
             // label21
             // 
             this.label21.AutoSize = true;
@@ -5683,25 +5386,6 @@
             this.label21.TabIndex = 813;
             this.label21.Text = "Husband\'s Name :";
             this.theme1.SetTheme(this.label21, "(default)");
-            // 
-            // c1CheckBox13
-            // 
-            this.c1CheckBox13.BackColor = System.Drawing.Color.Transparent;
-            this.c1CheckBox13.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
-            this.c1CheckBox13.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.c1CheckBox13.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.c1CheckBox13.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.c1CheckBox13.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.c1CheckBox13.Location = new System.Drawing.Point(151, 329);
-            this.c1CheckBox13.Name = "c1CheckBox13";
-            this.c1CheckBox13.Padding = new System.Windows.Forms.Padding(4, 1, 1, 1);
-            this.c1CheckBox13.Size = new System.Drawing.Size(102, 24);
-            this.c1CheckBox13.TabIndex = 957;
-            this.c1CheckBox13.Text = "No";
-            this.theme1.SetTheme(this.c1CheckBox13, "(default)");
-            this.c1CheckBox13.UseVisualStyleBackColor = true;
-            this.c1CheckBox13.Value = null;
-            this.c1CheckBox13.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
             // 
             // label23
             // 
@@ -5742,19 +5426,6 @@
             this.theme1.SetTheme(this.txtPmhPttDob, "(default)");
             this.txtPmhPttDob.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
             // 
-            // c1TextBox10
-            // 
-            this.c1TextBox10.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.c1TextBox10.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
-            this.c1TextBox10.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.c1TextBox10.Location = new System.Drawing.Point(345, 285);
-            this.c1TextBox10.Name = "c1TextBox10";
-            this.c1TextBox10.Size = new System.Drawing.Size(468, 20);
-            this.c1TextBox10.TabIndex = 955;
-            this.c1TextBox10.Tag = null;
-            this.theme1.SetTheme(this.c1TextBox10, "(default)");
-            this.c1TextBox10.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
-            // 
             // label24
             // 
             this.label24.AutoSize = true;
@@ -5768,25 +5439,6 @@
             this.label24.Text = "DOB :";
             this.theme1.SetTheme(this.label24, "(default)");
             // 
-            // c1CheckBox11
-            // 
-            this.c1CheckBox11.BackColor = System.Drawing.Color.Transparent;
-            this.c1CheckBox11.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
-            this.c1CheckBox11.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.c1CheckBox11.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.c1CheckBox11.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.c1CheckBox11.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.c1CheckBox11.Location = new System.Drawing.Point(259, 284);
-            this.c1CheckBox11.Name = "c1CheckBox11";
-            this.c1CheckBox11.Padding = new System.Windows.Forms.Padding(4, 1, 1, 1);
-            this.c1CheckBox11.Size = new System.Drawing.Size(80, 24);
-            this.c1CheckBox11.TabIndex = 954;
-            this.c1CheckBox11.Text = "Yes";
-            this.theme1.SetTheme(this.c1CheckBox11, "(default)");
-            this.c1CheckBox11.UseVisualStyleBackColor = true;
-            this.c1CheckBox11.Value = null;
-            this.c1CheckBox11.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
-            // 
             // txtPmhPttMaleDob
             // 
             this.txtPmhPttMaleDob.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
@@ -5799,25 +5451,6 @@
             this.txtPmhPttMaleDob.Tag = null;
             this.theme1.SetTheme(this.txtPmhPttMaleDob, "(default)");
             this.txtPmhPttMaleDob.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
-            // 
-            // c1CheckBox10
-            // 
-            this.c1CheckBox10.BackColor = System.Drawing.Color.Transparent;
-            this.c1CheckBox10.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
-            this.c1CheckBox10.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.c1CheckBox10.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.c1CheckBox10.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.c1CheckBox10.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.c1CheckBox10.Location = new System.Drawing.Point(151, 284);
-            this.c1CheckBox10.Name = "c1CheckBox10";
-            this.c1CheckBox10.Padding = new System.Windows.Forms.Padding(4, 1, 1, 1);
-            this.c1CheckBox10.Size = new System.Drawing.Size(102, 24);
-            this.c1CheckBox10.TabIndex = 953;
-            this.c1CheckBox10.Text = "No";
-            this.theme1.SetTheme(this.c1CheckBox10, "(default)");
-            this.c1CheckBox10.UseVisualStyleBackColor = true;
-            this.c1CheckBox10.Value = null;
-            this.c1CheckBox10.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
             // 
             // label25
             // 
@@ -5858,18 +5491,18 @@
             this.label26.Text = "Occupation :";
             this.theme1.SetTheme(this.label26, "(default)");
             // 
-            // c1TextBox9
+            // txtPmhPastOther
             // 
-            this.c1TextBox9.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.c1TextBox9.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
-            this.c1TextBox9.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.c1TextBox9.Location = new System.Drawing.Point(279, 246);
-            this.c1TextBox9.Name = "c1TextBox9";
-            this.c1TextBox9.Size = new System.Drawing.Size(534, 20);
-            this.c1TextBox9.TabIndex = 951;
-            this.c1TextBox9.Tag = null;
-            this.theme1.SetTheme(this.c1TextBox9, "(default)");
-            this.c1TextBox9.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            this.txtPmhPastOther.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtPmhPastOther.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
+            this.txtPmhPastOther.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.txtPmhPastOther.Location = new System.Drawing.Point(279, 246);
+            this.txtPmhPastOther.Name = "txtPmhPastOther";
+            this.txtPmhPastOther.Size = new System.Drawing.Size(534, 20);
+            this.txtPmhPastOther.TabIndex = 951;
+            this.txtPmhPastOther.Tag = null;
+            this.theme1.SetTheme(this.txtPmhPastOther, "(default)");
+            this.txtPmhPastOther.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
             // 
             // c1ComboBox1
             // 
@@ -5892,24 +5525,24 @@
             this.theme1.SetTheme(this.c1ComboBox1, "(default)");
             this.c1ComboBox1.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
             // 
-            // c1CheckBox9
+            // chkPmhPastOther
             // 
-            this.c1CheckBox9.BackColor = System.Drawing.Color.Transparent;
-            this.c1CheckBox9.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
-            this.c1CheckBox9.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.c1CheckBox9.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.c1CheckBox9.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.c1CheckBox9.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.c1CheckBox9.Location = new System.Drawing.Point(151, 242);
-            this.c1CheckBox9.Name = "c1CheckBox9";
-            this.c1CheckBox9.Padding = new System.Windows.Forms.Padding(4, 1, 1, 1);
-            this.c1CheckBox9.Size = new System.Drawing.Size(122, 24);
-            this.c1CheckBox9.TabIndex = 950;
-            this.c1CheckBox9.Text = "Other (specific)";
-            this.theme1.SetTheme(this.c1CheckBox9, "(default)");
-            this.c1CheckBox9.UseVisualStyleBackColor = true;
-            this.c1CheckBox9.Value = null;
-            this.c1CheckBox9.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            this.chkPmhPastOther.BackColor = System.Drawing.Color.Transparent;
+            this.chkPmhPastOther.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
+            this.chkPmhPastOther.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.chkPmhPastOther.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.chkPmhPastOther.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chkPmhPastOther.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.chkPmhPastOther.Location = new System.Drawing.Point(151, 242);
+            this.chkPmhPastOther.Name = "chkPmhPastOther";
+            this.chkPmhPastOther.Padding = new System.Windows.Forms.Padding(4, 1, 1, 1);
+            this.chkPmhPastOther.Size = new System.Drawing.Size(122, 24);
+            this.chkPmhPastOther.TabIndex = 950;
+            this.chkPmhPastOther.Text = "Other (specific)";
+            this.theme1.SetTheme(this.chkPmhPastOther, "(default)");
+            this.chkPmhPastOther.UseVisualStyleBackColor = true;
+            this.chkPmhPastOther.Value = null;
+            this.chkPmhPastOther.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
             // 
             // c1ComboBox2
             // 
@@ -5932,24 +5565,24 @@
             this.theme1.SetTheme(this.c1ComboBox2, "(default)");
             this.c1ComboBox2.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
             // 
-            // c1CheckBox8
+            // chkPmhPastThy
             // 
-            this.c1CheckBox8.BackColor = System.Drawing.Color.Transparent;
-            this.c1CheckBox8.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
-            this.c1CheckBox8.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.c1CheckBox8.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.c1CheckBox8.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.c1CheckBox8.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.c1CheckBox8.Location = new System.Drawing.Point(505, 216);
-            this.c1CheckBox8.Name = "c1CheckBox8";
-            this.c1CheckBox8.Padding = new System.Windows.Forms.Padding(4, 1, 1, 1);
-            this.c1CheckBox8.Size = new System.Drawing.Size(149, 24);
-            this.c1CheckBox8.TabIndex = 949;
-            this.c1CheckBox8.Text = "Thyroid disorders";
-            this.theme1.SetTheme(this.c1CheckBox8, "(default)");
-            this.c1CheckBox8.UseVisualStyleBackColor = true;
-            this.c1CheckBox8.Value = null;
-            this.c1CheckBox8.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            this.chkPmhPastThy.BackColor = System.Drawing.Color.Transparent;
+            this.chkPmhPastThy.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
+            this.chkPmhPastThy.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.chkPmhPastThy.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.chkPmhPastThy.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chkPmhPastThy.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.chkPmhPastThy.Location = new System.Drawing.Point(505, 216);
+            this.chkPmhPastThy.Name = "chkPmhPastThy";
+            this.chkPmhPastThy.Padding = new System.Windows.Forms.Padding(4, 1, 1, 1);
+            this.chkPmhPastThy.Size = new System.Drawing.Size(149, 24);
+            this.chkPmhPastThy.TabIndex = 949;
+            this.chkPmhPastThy.Text = "Thyroid disorders";
+            this.theme1.SetTheme(this.chkPmhPastThy, "(default)");
+            this.chkPmhPastThy.UseVisualStyleBackColor = true;
+            this.chkPmhPastThy.Value = null;
+            this.chkPmhPastThy.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
             // 
             // label27
             // 
@@ -5964,24 +5597,24 @@
             this.label27.Text = "Sex :";
             this.theme1.SetTheme(this.label27, "(default)");
             // 
-            // c1CheckBox7
+            // chkPmhPastSti
             // 
-            this.c1CheckBox7.BackColor = System.Drawing.Color.Transparent;
-            this.c1CheckBox7.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
-            this.c1CheckBox7.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.c1CheckBox7.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.c1CheckBox7.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.c1CheckBox7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.c1CheckBox7.Location = new System.Drawing.Point(376, 216);
-            this.c1CheckBox7.Name = "c1CheckBox7";
-            this.c1CheckBox7.Padding = new System.Windows.Forms.Padding(4, 1, 1, 1);
-            this.c1CheckBox7.Size = new System.Drawing.Size(102, 24);
-            this.c1CheckBox7.TabIndex = 948;
-            this.c1CheckBox7.Text = "STI";
-            this.theme1.SetTheme(this.c1CheckBox7, "(default)");
-            this.c1CheckBox7.UseVisualStyleBackColor = true;
-            this.c1CheckBox7.Value = null;
-            this.c1CheckBox7.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            this.chkPmhPastSti.BackColor = System.Drawing.Color.Transparent;
+            this.chkPmhPastSti.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
+            this.chkPmhPastSti.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.chkPmhPastSti.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.chkPmhPastSti.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chkPmhPastSti.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.chkPmhPastSti.Location = new System.Drawing.Point(376, 216);
+            this.chkPmhPastSti.Name = "chkPmhPastSti";
+            this.chkPmhPastSti.Padding = new System.Windows.Forms.Padding(4, 1, 1, 1);
+            this.chkPmhPastSti.Size = new System.Drawing.Size(102, 24);
+            this.chkPmhPastSti.TabIndex = 948;
+            this.chkPmhPastSti.Text = "STI";
+            this.theme1.SetTheme(this.chkPmhPastSti, "(default)");
+            this.chkPmhPastSti.UseVisualStyleBackColor = true;
+            this.chkPmhPastSti.Value = null;
+            this.chkPmhPastSti.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
             // 
             // txtPmhSex
             // 
@@ -5996,24 +5629,24 @@
             this.theme1.SetTheme(this.txtPmhSex, "(default)");
             this.txtPmhSex.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
             // 
-            // c1CheckBox6
+            // chkPmhPastSie
             // 
-            this.c1CheckBox6.BackColor = System.Drawing.Color.Transparent;
-            this.c1CheckBox6.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
-            this.c1CheckBox6.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.c1CheckBox6.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.c1CheckBox6.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.c1CheckBox6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.c1CheckBox6.Location = new System.Drawing.Point(259, 216);
-            this.c1CheckBox6.Name = "c1CheckBox6";
-            this.c1CheckBox6.Padding = new System.Windows.Forms.Padding(4, 1, 1, 1);
-            this.c1CheckBox6.Size = new System.Drawing.Size(111, 24);
-            this.c1CheckBox6.TabIndex = 947;
-            this.c1CheckBox6.Text = "Siezure";
-            this.theme1.SetTheme(this.c1CheckBox6, "(default)");
-            this.c1CheckBox6.UseVisualStyleBackColor = true;
-            this.c1CheckBox6.Value = null;
-            this.c1CheckBox6.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            this.chkPmhPastSie.BackColor = System.Drawing.Color.Transparent;
+            this.chkPmhPastSie.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
+            this.chkPmhPastSie.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.chkPmhPastSie.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.chkPmhPastSie.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chkPmhPastSie.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.chkPmhPastSie.Location = new System.Drawing.Point(259, 216);
+            this.chkPmhPastSie.Name = "chkPmhPastSie";
+            this.chkPmhPastSie.Padding = new System.Windows.Forms.Padding(4, 1, 1, 1);
+            this.chkPmhPastSie.Size = new System.Drawing.Size(111, 24);
+            this.chkPmhPastSie.TabIndex = 947;
+            this.chkPmhPastSie.Text = "Siezure";
+            this.theme1.SetTheme(this.chkPmhPastSie, "(default)");
+            this.chkPmhPastSie.UseVisualStyleBackColor = true;
+            this.chkPmhPastSie.Value = null;
+            this.chkPmhPastSie.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
             // 
             // label30
             // 
@@ -9869,9 +9502,9 @@
             // richTextBox1
             // 
             this.richTextBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.richTextBox1.Location = new System.Drawing.Point(0, 143);
+            this.richTextBox1.Location = new System.Drawing.Point(0, 146);
             this.richTextBox1.Name = "richTextBox1";
-            this.richTextBox1.Size = new System.Drawing.Size(852, 522);
+            this.richTextBox1.Size = new System.Drawing.Size(852, 519);
             this.richTextBox1.TabIndex = 1;
             this.richTextBox1.Text = "";
             // 
@@ -9886,7 +9519,7 @@
             this.c1Ribbon1.QatHolder = this.ribbonQat1;
             this.c1Ribbon1.QatItemsHolder.Add(this.UndoButton);
             this.c1Ribbon1.QatItemsHolder.Add(this.RedoButton);
-            this.c1Ribbon1.Size = new System.Drawing.Size(852, 143);
+            this.c1Ribbon1.Size = new System.Drawing.Size(852, 146);
             this.c1Ribbon1.Tabs.Add(this.HomeTab);
             this.c1Ribbon1.Tabs.Add(this.ViewTab);
             this.c1Ribbon1.Tabs.Add(this.ribbonTab1);
@@ -10440,6 +10073,395 @@
             this.label94.TabIndex = 545;
             this.theme1.SetTheme(this.label94, "(default)");
             // 
+            // panel29
+            // 
+            this.panel29.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.panel29.Controls.Add(this.chkPmhSurgYes);
+            this.panel29.Controls.Add(this.chkPmhSurgNo);
+            this.panel29.Controls.Add(this.chkPmhSurg);
+            this.panel29.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.panel29.Location = new System.Drawing.Point(147, 324);
+            this.panel29.Name = "panel29";
+            this.panel29.Size = new System.Drawing.Size(675, 28);
+            this.panel29.TabIndex = 982;
+            this.theme1.SetTheme(this.panel29, "(default)");
+            // 
+            // chkPmhSurgYes
+            // 
+            this.chkPmhSurgYes.AutoSize = true;
+            this.chkPmhSurgYes.BackColor = System.Drawing.Color.Transparent;
+            this.chkPmhSurgYes.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
+            this.chkPmhSurgYes.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(189)))), ((int)(((byte)(182)))));
+            this.chkPmhSurgYes.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(189)))), ((int)(((byte)(182)))));
+            this.chkPmhSurgYes.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.chkPmhSurgYes.Location = new System.Drawing.Point(96, 4);
+            this.chkPmhSurgYes.Name = "chkPmhSurgYes";
+            this.chkPmhSurgYes.Size = new System.Drawing.Size(43, 17);
+            this.chkPmhSurgYes.TabIndex = 536;
+            this.chkPmhSurgYes.TabStop = true;
+            this.chkPmhSurgYes.Text = "Yes";
+            this.theme1.SetTheme(this.chkPmhSurgYes, "(default)");
+            this.chkPmhSurgYes.UseVisualStyleBackColor = false;
+            // 
+            // chkPmhSurgNo
+            // 
+            this.chkPmhSurgNo.AutoSize = true;
+            this.chkPmhSurgNo.BackColor = System.Drawing.Color.Transparent;
+            this.chkPmhSurgNo.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
+            this.chkPmhSurgNo.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(189)))), ((int)(((byte)(182)))));
+            this.chkPmhSurgNo.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(189)))), ((int)(((byte)(182)))));
+            this.chkPmhSurgNo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.chkPmhSurgNo.Location = new System.Drawing.Point(3, 4);
+            this.chkPmhSurgNo.Name = "chkPmhSurgNo";
+            this.chkPmhSurgNo.Size = new System.Drawing.Size(39, 17);
+            this.chkPmhSurgNo.TabIndex = 535;
+            this.chkPmhSurgNo.TabStop = true;
+            this.chkPmhSurgNo.Text = "No";
+            this.theme1.SetTheme(this.chkPmhSurgNo, "(default)");
+            this.chkPmhSurgNo.UseVisualStyleBackColor = false;
+            // 
+            // chkPmhSurg
+            // 
+            this.chkPmhSurg.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.chkPmhSurg.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
+            this.chkPmhSurg.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.chkPmhSurg.Location = new System.Drawing.Point(188, 4);
+            this.chkPmhSurg.Name = "chkPmhSurg";
+            this.chkPmhSurg.Size = new System.Drawing.Size(477, 20);
+            this.chkPmhSurg.TabIndex = 928;
+            this.chkPmhSurg.Tag = null;
+            this.theme1.SetTheme(this.chkPmhSurg, "(default)");
+            this.chkPmhSurg.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            // 
+            // panel30
+            // 
+            this.panel30.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.panel30.Controls.Add(this.chkPmhSubsYes);
+            this.panel30.Controls.Add(this.chkPmhSubsNo);
+            this.panel30.Controls.Add(this.chkPmhSubs);
+            this.panel30.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.panel30.Location = new System.Drawing.Point(147, 281);
+            this.panel30.Name = "panel30";
+            this.panel30.Size = new System.Drawing.Size(675, 28);
+            this.panel30.TabIndex = 983;
+            this.theme1.SetTheme(this.panel30, "(default)");
+            // 
+            // chkPmhSubsYes
+            // 
+            this.chkPmhSubsYes.AutoSize = true;
+            this.chkPmhSubsYes.BackColor = System.Drawing.Color.Transparent;
+            this.chkPmhSubsYes.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
+            this.chkPmhSubsYes.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(189)))), ((int)(((byte)(182)))));
+            this.chkPmhSubsYes.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(189)))), ((int)(((byte)(182)))));
+            this.chkPmhSubsYes.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.chkPmhSubsYes.Location = new System.Drawing.Point(96, 4);
+            this.chkPmhSubsYes.Name = "chkPmhSubsYes";
+            this.chkPmhSubsYes.Size = new System.Drawing.Size(43, 17);
+            this.chkPmhSubsYes.TabIndex = 536;
+            this.chkPmhSubsYes.TabStop = true;
+            this.chkPmhSubsYes.Text = "Yes";
+            this.theme1.SetTheme(this.chkPmhSubsYes, "(default)");
+            this.chkPmhSubsYes.UseVisualStyleBackColor = false;
+            // 
+            // chkPmhSubsNo
+            // 
+            this.chkPmhSubsNo.AutoSize = true;
+            this.chkPmhSubsNo.BackColor = System.Drawing.Color.Transparent;
+            this.chkPmhSubsNo.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
+            this.chkPmhSubsNo.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(189)))), ((int)(((byte)(182)))));
+            this.chkPmhSubsNo.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(189)))), ((int)(((byte)(182)))));
+            this.chkPmhSubsNo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.chkPmhSubsNo.Location = new System.Drawing.Point(3, 4);
+            this.chkPmhSubsNo.Name = "chkPmhSubsNo";
+            this.chkPmhSubsNo.Size = new System.Drawing.Size(39, 17);
+            this.chkPmhSubsNo.TabIndex = 535;
+            this.chkPmhSubsNo.TabStop = true;
+            this.chkPmhSubsNo.Text = "No";
+            this.theme1.SetTheme(this.chkPmhSubsNo, "(default)");
+            this.chkPmhSubsNo.UseVisualStyleBackColor = false;
+            // 
+            // chkPmhSubs
+            // 
+            this.chkPmhSubs.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.chkPmhSubs.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
+            this.chkPmhSubs.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.chkPmhSubs.Location = new System.Drawing.Point(188, 4);
+            this.chkPmhSubs.Name = "chkPmhSubs";
+            this.chkPmhSubs.Size = new System.Drawing.Size(477, 20);
+            this.chkPmhSubs.TabIndex = 928;
+            this.chkPmhSubs.Tag = null;
+            this.theme1.SetTheme(this.chkPmhSubs, "(default)");
+            this.chkPmhSubs.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            // 
+            // panel33
+            // 
+            this.panel33.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.panel33.Controls.Add(this.chkPmhPapsYes);
+            this.panel33.Controls.Add(this.chkPmhPapsNo);
+            this.panel33.Controls.Add(this.txtPmhPaps);
+            this.panel33.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.panel33.Location = new System.Drawing.Point(153, 170);
+            this.panel33.Name = "panel33";
+            this.panel33.Size = new System.Drawing.Size(675, 28);
+            this.panel33.TabIndex = 988;
+            this.theme1.SetTheme(this.panel33, "(default)");
+            // 
+            // chkPmhPapsYes
+            // 
+            this.chkPmhPapsYes.AutoSize = true;
+            this.chkPmhPapsYes.BackColor = System.Drawing.Color.Transparent;
+            this.chkPmhPapsYes.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
+            this.chkPmhPapsYes.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(189)))), ((int)(((byte)(182)))));
+            this.chkPmhPapsYes.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(189)))), ((int)(((byte)(182)))));
+            this.chkPmhPapsYes.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.chkPmhPapsYes.Location = new System.Drawing.Point(96, 4);
+            this.chkPmhPapsYes.Name = "chkPmhPapsYes";
+            this.chkPmhPapsYes.Size = new System.Drawing.Size(43, 17);
+            this.chkPmhPapsYes.TabIndex = 536;
+            this.chkPmhPapsYes.TabStop = true;
+            this.chkPmhPapsYes.Text = "Yes";
+            this.theme1.SetTheme(this.chkPmhPapsYes, "(default)");
+            this.chkPmhPapsYes.UseVisualStyleBackColor = false;
+            // 
+            // chkPmhPapsNo
+            // 
+            this.chkPmhPapsNo.AutoSize = true;
+            this.chkPmhPapsNo.BackColor = System.Drawing.Color.Transparent;
+            this.chkPmhPapsNo.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
+            this.chkPmhPapsNo.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(189)))), ((int)(((byte)(182)))));
+            this.chkPmhPapsNo.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(189)))), ((int)(((byte)(182)))));
+            this.chkPmhPapsNo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.chkPmhPapsNo.Location = new System.Drawing.Point(3, 4);
+            this.chkPmhPapsNo.Name = "chkPmhPapsNo";
+            this.chkPmhPapsNo.Size = new System.Drawing.Size(39, 17);
+            this.chkPmhPapsNo.TabIndex = 535;
+            this.chkPmhPapsNo.TabStop = true;
+            this.chkPmhPapsNo.Text = "No";
+            this.theme1.SetTheme(this.chkPmhPapsNo, "(default)");
+            this.chkPmhPapsNo.UseVisualStyleBackColor = false;
+            // 
+            // txtPmhPaps
+            // 
+            this.txtPmhPaps.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtPmhPaps.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
+            this.txtPmhPaps.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.txtPmhPaps.Location = new System.Drawing.Point(188, 4);
+            this.txtPmhPaps.Name = "txtPmhPaps";
+            this.txtPmhPaps.Size = new System.Drawing.Size(477, 20);
+            this.txtPmhPaps.TabIndex = 928;
+            this.txtPmhPaps.Tag = null;
+            this.theme1.SetTheme(this.txtPmhPaps, "(default)");
+            this.txtPmhPaps.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            // 
+            // panel34
+            // 
+            this.panel34.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.panel34.Controls.Add(this.chkPmhProvYes);
+            this.panel34.Controls.Add(this.chkPmhProvNo);
+            this.panel34.Controls.Add(this.chkPmhProv);
+            this.panel34.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.panel34.Location = new System.Drawing.Point(152, 126);
+            this.panel34.Name = "panel34";
+            this.panel34.Size = new System.Drawing.Size(675, 28);
+            this.panel34.TabIndex = 989;
+            this.theme1.SetTheme(this.panel34, "(default)");
+            // 
+            // chkPmhProvYes
+            // 
+            this.chkPmhProvYes.AutoSize = true;
+            this.chkPmhProvYes.BackColor = System.Drawing.Color.Transparent;
+            this.chkPmhProvYes.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
+            this.chkPmhProvYes.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(189)))), ((int)(((byte)(182)))));
+            this.chkPmhProvYes.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(189)))), ((int)(((byte)(182)))));
+            this.chkPmhProvYes.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.chkPmhProvYes.Location = new System.Drawing.Point(96, 4);
+            this.chkPmhProvYes.Name = "chkPmhProvYes";
+            this.chkPmhProvYes.Size = new System.Drawing.Size(43, 17);
+            this.chkPmhProvYes.TabIndex = 536;
+            this.chkPmhProvYes.TabStop = true;
+            this.chkPmhProvYes.Text = "Yes";
+            this.theme1.SetTheme(this.chkPmhProvYes, "(default)");
+            this.chkPmhProvYes.UseVisualStyleBackColor = false;
+            // 
+            // chkPmhProvNo
+            // 
+            this.chkPmhProvNo.AutoSize = true;
+            this.chkPmhProvNo.BackColor = System.Drawing.Color.Transparent;
+            this.chkPmhProvNo.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
+            this.chkPmhProvNo.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(189)))), ((int)(((byte)(182)))));
+            this.chkPmhProvNo.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(189)))), ((int)(((byte)(182)))));
+            this.chkPmhProvNo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.chkPmhProvNo.Location = new System.Drawing.Point(3, 4);
+            this.chkPmhProvNo.Name = "chkPmhProvNo";
+            this.chkPmhProvNo.Size = new System.Drawing.Size(39, 17);
+            this.chkPmhProvNo.TabIndex = 535;
+            this.chkPmhProvNo.TabStop = true;
+            this.chkPmhProvNo.Text = "No";
+            this.theme1.SetTheme(this.chkPmhProvNo, "(default)");
+            this.chkPmhProvNo.UseVisualStyleBackColor = false;
+            // 
+            // chkPmhProv
+            // 
+            this.chkPmhProv.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.chkPmhProv.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
+            this.chkPmhProv.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.chkPmhProv.Location = new System.Drawing.Point(188, 4);
+            this.chkPmhProv.Name = "chkPmhProv";
+            this.chkPmhProv.Size = new System.Drawing.Size(477, 20);
+            this.chkPmhProv.TabIndex = 928;
+            this.chkPmhProv.Tag = null;
+            this.theme1.SetTheme(this.chkPmhProv, "(default)");
+            this.chkPmhProv.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            // 
+            // panel35
+            // 
+            this.panel35.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.panel35.Controls.Add(this.chkPmhTypeSec);
+            this.panel35.Controls.Add(this.chkPmhTypePri);
+            this.panel35.Controls.Add(this.txtPmhType);
+            this.panel35.Controls.Add(this.label38);
+            this.panel35.Controls.Add(this.c1TextBox13);
+            this.panel35.Controls.Add(this.label37);
+            this.panel35.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.panel35.Location = new System.Drawing.Point(152, 21);
+            this.panel35.Name = "panel35";
+            this.panel35.Size = new System.Drawing.Size(723, 28);
+            this.panel35.TabIndex = 990;
+            this.theme1.SetTheme(this.panel35, "(default)");
+            // 
+            // chkPmhTypeSec
+            // 
+            this.chkPmhTypeSec.AutoSize = true;
+            this.chkPmhTypeSec.BackColor = System.Drawing.Color.Transparent;
+            this.chkPmhTypeSec.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
+            this.chkPmhTypeSec.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(189)))), ((int)(((byte)(182)))));
+            this.chkPmhTypeSec.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(189)))), ((int)(((byte)(182)))));
+            this.chkPmhTypeSec.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.chkPmhTypeSec.Location = new System.Drawing.Point(96, 4);
+            this.chkPmhTypeSec.Name = "chkPmhTypeSec";
+            this.chkPmhTypeSec.Size = new System.Drawing.Size(103, 17);
+            this.chkPmhTypeSec.TabIndex = 536;
+            this.chkPmhTypeSec.TabStop = true;
+            this.chkPmhTypeSec.Text = "Secondary Party";
+            this.theme1.SetTheme(this.chkPmhTypeSec, "(default)");
+            this.chkPmhTypeSec.UseVisualStyleBackColor = false;
+            // 
+            // chkPmhTypePri
+            // 
+            this.chkPmhTypePri.AutoSize = true;
+            this.chkPmhTypePri.BackColor = System.Drawing.Color.Transparent;
+            this.chkPmhTypePri.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
+            this.chkPmhTypePri.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(189)))), ((int)(((byte)(182)))));
+            this.chkPmhTypePri.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(189)))), ((int)(((byte)(182)))));
+            this.chkPmhTypePri.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.chkPmhTypePri.Location = new System.Drawing.Point(3, 4);
+            this.chkPmhTypePri.Name = "chkPmhTypePri";
+            this.chkPmhTypePri.Size = new System.Drawing.Size(59, 17);
+            this.chkPmhTypePri.TabIndex = 535;
+            this.chkPmhTypePri.TabStop = true;
+            this.chkPmhTypePri.Text = "Primary";
+            this.theme1.SetTheme(this.chkPmhTypePri, "(default)");
+            this.chkPmhTypePri.UseVisualStyleBackColor = false;
+            // 
+            // txtPmhType
+            // 
+            this.txtPmhType.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtPmhType.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
+            this.txtPmhType.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.txtPmhType.Location = new System.Drawing.Point(223, 4);
+            this.txtPmhType.Name = "txtPmhType";
+            this.txtPmhType.Size = new System.Drawing.Size(217, 20);
+            this.txtPmhType.TabIndex = 928;
+            this.txtPmhType.Tag = null;
+            this.theme1.SetTheme(this.txtPmhType, "(default)");
+            this.txtPmhType.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            // 
+            // panel36
+            // 
+            this.panel36.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.panel36.Controls.Add(this.chkPmhMenLmp);
+            this.panel36.Controls.Add(this.chkPmhMenIrr);
+            this.panel36.Controls.Add(this.chkPmhMenReg);
+            this.panel36.Controls.Add(this.txtPmhMenDay);
+            this.panel36.Controls.Add(this.label40);
+            this.panel36.Controls.Add(this.txtPmhMenInter);
+            this.panel36.Controls.Add(this.label42);
+            this.panel36.Controls.Add(this.txtPmhMenLmp);
+            this.panel36.Controls.Add(this.label43);
+            this.panel36.Controls.Add(this.label41);
+            this.panel36.Controls.Add(this.txtPmhMenAmt);
+            this.panel36.Controls.Add(this.label44);
+            this.panel36.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.panel36.Location = new System.Drawing.Point(152, 57);
+            this.panel36.Name = "panel36";
+            this.panel36.Size = new System.Drawing.Size(725, 63);
+            this.panel36.TabIndex = 991;
+            this.theme1.SetTheme(this.panel36, "(default)");
+            // 
+            // chkPmhMenIrr
+            // 
+            this.chkPmhMenIrr.AutoSize = true;
+            this.chkPmhMenIrr.BackColor = System.Drawing.Color.Transparent;
+            this.chkPmhMenIrr.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
+            this.chkPmhMenIrr.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(189)))), ((int)(((byte)(182)))));
+            this.chkPmhMenIrr.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(189)))), ((int)(((byte)(182)))));
+            this.chkPmhMenIrr.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.chkPmhMenIrr.Location = new System.Drawing.Point(96, 4);
+            this.chkPmhMenIrr.Name = "chkPmhMenIrr";
+            this.chkPmhMenIrr.Size = new System.Drawing.Size(106, 17);
+            this.chkPmhMenIrr.TabIndex = 536;
+            this.chkPmhMenIrr.TabStop = true;
+            this.chkPmhMenIrr.Text = "Irregular Duration";
+            this.theme1.SetTheme(this.chkPmhMenIrr, "(default)");
+            this.chkPmhMenIrr.UseVisualStyleBackColor = false;
+            // 
+            // chkPmhMenReg
+            // 
+            this.chkPmhMenReg.AutoSize = true;
+            this.chkPmhMenReg.BackColor = System.Drawing.Color.Transparent;
+            this.chkPmhMenReg.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
+            this.chkPmhMenReg.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(189)))), ((int)(((byte)(182)))));
+            this.chkPmhMenReg.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(189)))), ((int)(((byte)(182)))));
+            this.chkPmhMenReg.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.chkPmhMenReg.Location = new System.Drawing.Point(3, 4);
+            this.chkPmhMenReg.Name = "chkPmhMenReg";
+            this.chkPmhMenReg.Size = new System.Drawing.Size(62, 17);
+            this.chkPmhMenReg.TabIndex = 535;
+            this.chkPmhMenReg.TabStop = true;
+            this.chkPmhMenReg.Text = "Regular";
+            this.theme1.SetTheme(this.chkPmhMenReg, "(default)");
+            this.chkPmhMenReg.UseVisualStyleBackColor = false;
+            // 
+            // txtPmhMenDay
+            // 
+            this.txtPmhMenDay.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtPmhMenDay.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
+            this.txtPmhMenDay.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.txtPmhMenDay.Location = new System.Drawing.Point(210, 4);
+            this.txtPmhMenDay.Name = "txtPmhMenDay";
+            this.txtPmhMenDay.Size = new System.Drawing.Size(62, 20);
+            this.txtPmhMenDay.TabIndex = 928;
+            this.txtPmhMenDay.Tag = null;
+            this.theme1.SetTheme(this.txtPmhMenDay, "(default)");
+            this.txtPmhMenDay.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            // 
+            // chkPmhMenLmp
+            // 
+            this.chkPmhMenLmp.AutoSize = true;
+            this.chkPmhMenLmp.BackColor = System.Drawing.Color.Transparent;
+            this.chkPmhMenLmp.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
+            this.chkPmhMenLmp.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(189)))), ((int)(((byte)(182)))));
+            this.chkPmhMenLmp.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(189)))), ((int)(((byte)(182)))));
+            this.chkPmhMenLmp.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.chkPmhMenLmp.Location = new System.Drawing.Point(3, 33);
+            this.chkPmhMenLmp.Name = "chkPmhMenLmp";
+            this.chkPmhMenLmp.Size = new System.Drawing.Size(47, 17);
+            this.chkPmhMenLmp.TabIndex = 980;
+            this.chkPmhMenLmp.TabStop = true;
+            this.chkPmhMenLmp.Text = "LMP";
+            this.theme1.SetTheme(this.chkPmhMenLmp, "(default)");
+            this.chkPmhMenLmp.UseVisualStyleBackColor = false;
+            // 
             // FrmNurseAdd2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -10628,7 +10650,6 @@
             this.panel1.ResumeLayout(false);
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.c1Button4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.c1Button5)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.c1Button2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.c1TextBox28)).EndInit();
@@ -10667,41 +10688,22 @@
             this.groupBox2.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.c1TextBox20)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.c1CheckBox22)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.c1CheckBox21)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.c1TextBox18)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.c1CheckBox20)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.c1CheckBox19)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.c1CheckBox15)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.c1TextBox17)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.c1TextBox16)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.c1CheckBox14)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.c1CheckBox18)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.c1TextBox12)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtPmhMenLmp)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtPmhMenAmt)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.c1TextBox13)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.c1TextBox15)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.c1CheckBox16)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.c1CheckBox17)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.c1TextBox14)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtPmhMenInter)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtPmhPttName)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.c1TextBox11)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtPmhPttMaleName)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.c1CheckBox12)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.c1CheckBox13)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtPmhPttDob)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.c1TextBox10)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.c1CheckBox11)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtPmhPttMaleDob)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.c1CheckBox10)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.c1TextBox9)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtPmhPastOther)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.c1ComboBox1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.c1CheckBox9)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chkPmhPastOther)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.c1ComboBox2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.c1CheckBox8)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.c1CheckBox7)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chkPmhPastThy)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chkPmhPastSti)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtPmhSex)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.c1CheckBox6)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chkPmhPastSie)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkPmhPastAsi)).EndInit();
             this.panel6.ResumeLayout(false);
             this.panel6.PerformLayout();
@@ -10885,6 +10887,24 @@
             ((System.ComponentModel.ISupportInitialize)(this.cboBsp)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnVoid)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnSave)).EndInit();
+            this.panel29.ResumeLayout(false);
+            this.panel29.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.chkPmhSurg)).EndInit();
+            this.panel30.ResumeLayout(false);
+            this.panel30.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.chkPmhSubs)).EndInit();
+            this.panel33.ResumeLayout(false);
+            this.panel33.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtPmhPaps)).EndInit();
+            this.panel34.ResumeLayout(false);
+            this.panel34.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.chkPmhProv)).EndInit();
+            this.panel35.ResumeLayout(false);
+            this.panel35.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtPmhType)).EndInit();
+            this.panel36.ResumeLayout(false);
+            this.panel36.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtPmhMenDay)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -11050,56 +11070,37 @@
         private C1.Win.C1Input.C1TextBox txtPmhDrug;
         private System.Windows.Forms.Label label31;
         private System.Windows.Forms.Label label32;
-        private C1.Win.C1Input.C1CheckBox c1CheckBox8;
-        private C1.Win.C1Input.C1CheckBox c1CheckBox7;
-        private C1.Win.C1Input.C1CheckBox c1CheckBox6;
+        private C1.Win.C1Input.C1CheckBox chkPmhPastThy;
+        private C1.Win.C1Input.C1CheckBox chkPmhPastSti;
+        private C1.Win.C1Input.C1CheckBox chkPmhPastSie;
         private C1.Win.C1Input.C1CheckBox chkPmhPastAsi;
         private C1.Win.C1Input.C1CheckBox chkPmhPastTub;
         private C1.Win.C1Input.C1CheckBox chkPmhPastLiv;
         private C1.Win.C1Input.C1CheckBox chkPmhPastHyp;
         private C1.Win.C1Input.C1CheckBox chkPmhPastDia;
-        private C1.Win.C1Input.C1TextBox c1TextBox9;
-        private C1.Win.C1Input.C1CheckBox c1CheckBox9;
+        private C1.Win.C1Input.C1TextBox txtPmhPastOther;
+        private C1.Win.C1Input.C1CheckBox chkPmhPastOther;
         private System.Windows.Forms.Label label33;
-        private C1.Win.C1Input.C1TextBox c1TextBox10;
-        private C1.Win.C1Input.C1CheckBox c1CheckBox11;
-        private C1.Win.C1Input.C1CheckBox c1CheckBox10;
         private System.Windows.Forms.Label label38;
         private C1.Win.C1Input.C1TextBox c1TextBox13;
         private System.Windows.Forms.Label label37;
         private System.Windows.Forms.Label label36;
-        private C1.Win.C1Input.C1TextBox c1TextBox12;
-        private C1.Win.C1Input.C1CheckBox c1CheckBox14;
-        private C1.Win.C1Input.C1CheckBox c1CheckBox15;
-        private C1.Win.C1Input.C1TextBox c1TextBox11;
-        private C1.Win.C1Input.C1CheckBox c1CheckBox12;
-        private C1.Win.C1Input.C1CheckBox c1CheckBox13;
         private System.Windows.Forms.Label label34;
         private System.Windows.Forms.Label label39;
         private System.Windows.Forms.Label label40;
-        private C1.Win.C1Input.C1TextBox c1TextBox14;
-        private C1.Win.C1Input.C1CheckBox c1CheckBox17;
-        private C1.Win.C1Input.C1CheckBox c1CheckBox16;
         private System.Windows.Forms.Label label41;
-        private C1.Win.C1Input.C1TextBox c1TextBox15;
+        private C1.Win.C1Input.C1TextBox txtPmhMenInter;
         private System.Windows.Forms.Label label42;
         private System.Windows.Forms.Label label43;
-        private C1.Win.C1Input.C1TextBox c1TextBox16;
+        private C1.Win.C1Input.C1TextBox txtPmhMenAmt;
         private System.Windows.Forms.Label label44;
-        private C1.Win.C1Input.C1TextBox c1TextBox17;
-        private C1.Win.C1Input.C1CheckBox c1CheckBox18;
+        private C1.Win.C1Input.C1TextBox txtPmhMenLmp;
         private System.Windows.Forms.GroupBox groupBox1;
-        private C1.Win.C1Input.C1TextBox c1TextBox18;
-        private C1.Win.C1Input.C1CheckBox c1CheckBox20;
-        private C1.Win.C1Input.C1CheckBox c1CheckBox19;
         private System.Windows.Forms.Label label45;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.Label label46;
         private C1.Win.C1Input.C1TextBox c1TextBox19;
-        private C1.Win.C1Input.C1TextBox c1TextBox20;
-        private C1.Win.C1Input.C1CheckBox c1CheckBox22;
-        private C1.Win.C1Input.C1CheckBox c1CheckBox21;
         private System.Windows.Forms.Label label47;
         private C1.Win.C1Input.C1TextBox c1TextBox21;
         private C1.Win.C1Input.C1CheckBox c1CheckBox23;
@@ -11571,7 +11572,31 @@
         private C1.Win.C1Ribbon.RibbonTab ribbonTab1;
         private C1.Win.C1Ribbon.RibbonGroup ribbonGroup1;
         private C1.Win.C1Ribbon.RibbonButton rbPgPrint;
-        private C1.Win.C1Input.C1Button c1Button4;
         private C1.Win.C1Input.C1Button c1Button5;
+        private System.Windows.Forms.Panel panel29;
+        private System.Windows.Forms.RadioButton chkPmhSurgYes;
+        private System.Windows.Forms.RadioButton chkPmhSurgNo;
+        private C1.Win.C1Input.C1TextBox chkPmhSurg;
+        private System.Windows.Forms.Panel panel30;
+        private System.Windows.Forms.RadioButton chkPmhSubsYes;
+        private System.Windows.Forms.RadioButton chkPmhSubsNo;
+        private C1.Win.C1Input.C1TextBox chkPmhSubs;
+        private System.Windows.Forms.Panel panel33;
+        private System.Windows.Forms.RadioButton chkPmhPapsYes;
+        private System.Windows.Forms.RadioButton chkPmhPapsNo;
+        private C1.Win.C1Input.C1TextBox txtPmhPaps;
+        private System.Windows.Forms.Panel panel34;
+        private System.Windows.Forms.RadioButton chkPmhProvYes;
+        private System.Windows.Forms.RadioButton chkPmhProvNo;
+        private C1.Win.C1Input.C1TextBox chkPmhProv;
+        private System.Windows.Forms.Panel panel35;
+        private System.Windows.Forms.RadioButton chkPmhTypeSec;
+        private System.Windows.Forms.RadioButton chkPmhTypePri;
+        private C1.Win.C1Input.C1TextBox txtPmhType;
+        private System.Windows.Forms.Panel panel36;
+        private System.Windows.Forms.RadioButton chkPmhMenIrr;
+        private System.Windows.Forms.RadioButton chkPmhMenReg;
+        private C1.Win.C1Input.C1TextBox txtPmhMenDay;
+        private System.Windows.Forms.RadioButton chkPmhMenLmp;
     }
 }

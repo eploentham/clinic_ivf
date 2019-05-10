@@ -436,6 +436,7 @@ namespace clinic_ivf.gui
             }
             
             ic.ivfDB.ovsDB.updateStatusCashierFinish(txtVn.Text);
+            ic.ivfDB.ovsDB.updateStatusCashierFinish(txtVn.Text);
             amt2 = ic.NumberToCurrencyText(amt, MidpointRounding.AwayFromZero);
             FrmReport frm = new FrmReport(ic);
             frm.setPrintBill(dtprn, txtHn.Text, txtPttNameE.Text, amt2, amt.ToString("#,###.00"), billNo, day+"/"+month+"/"+year, payby);

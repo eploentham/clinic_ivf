@@ -28,7 +28,7 @@ namespace clinic_ivf.gui
         C1SuperErrorProvider sep;
         ContextMenu menuGw;
 
-        int colVN = 1, colHn = 2, colName = 3, colVsDate = 4, colStatus = 5;
+        int colVN = 1, colHn = 2, colName = 3, colVsDate = 4, colStatus = 5, colStatusNurse=6, colStatusCashier=7;
 
         public FrmPharmaPttView(IvfControl ic, MainMenu m)
         {
@@ -106,7 +106,7 @@ namespace clinic_ivf.gui
             //grfDept.Rows.Count = 7;
             grfPtt.Clear();
             grfPtt.DataSource = null;
-            grfPtt.Cols.Count = 6;
+            grfPtt.Cols.Count = 8;
             grfPtt.Rows.Count = 1;
             try
             {
@@ -136,6 +136,8 @@ namespace clinic_ivf.gui
                 grfPtt.Cols[colName].Width = 300;
                 grfPtt.Cols[colVsDate].Width = 120;
                 grfPtt.Cols[colStatus].Width = 50;
+                grfPtt.Cols[colStatusNurse].Width = 50;
+                grfPtt.Cols[colStatusCashier].Width = 55;
 
                 grfPtt.ShowCursor = true;
                 //grdFlex.Cols[colID].Caption = "no";
@@ -146,6 +148,8 @@ namespace clinic_ivf.gui
                 grfPtt.Cols[colName].Caption = "Name";
                 grfPtt.Cols[colVsDate].Caption = "Date";
                 grfPtt.Cols[colStatus].Caption = "Status";
+                grfPtt.Cols[colStatusNurse].Caption = "Nurse";
+                grfPtt.Cols[colStatusCashier].Caption = "Cashier";
 
                 menuGw = new ContextMenu();
                 menuGw.MenuItems.Add("&พิมพ์ Sticker", new EventHandler(ContextMenu_edit));
@@ -165,6 +169,8 @@ namespace clinic_ivf.gui
                     row1[colName] = row["name"].ToString();
                     row1[colVsDate] = ic.datetoShow(row["Date"].ToString());
                     row1[colStatus] = row["Status"].ToString();
+                    row1[colStatusNurse] = row["status_nurse"] != null ? row["status_nurse"].ToString() : "";
+                    row1[colStatusCashier] = row["status_cashier"] != null ? row["status_cashier"].ToString() : "";
                     if (i % 2 == 0)
                         grfPtt.Rows[i].StyleNew.BackColor = color;
                     i++;

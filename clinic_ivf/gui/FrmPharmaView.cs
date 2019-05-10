@@ -27,7 +27,7 @@ namespace clinic_ivf.gui
 
         C1FlexGrid grfQue, grfFinish, grfSearch;
 
-        int colID = 1, colVNshow = 2, colPttHn = 3, colPttName = 4, colVsDate = 5, colVsTime = 6, colVsEtime = 7, colStatus = 8, colPttId = 9, colVn = 10, colDtr = 11;
+        int colID = 1, colVNshow = 2, colPttHn = 3, colPttName = 4, colVsDate = 5, colVsTime = 6, colVsEtime = 7, colStatus = 8, colPttId = 9, colVn = 10, colDtr = 11, colStatusNurse = 12, colStatusCashier = 13;
 
         C1SuperTooltip stt;
         C1SuperErrorProvider sep;
@@ -289,7 +289,7 @@ namespace clinic_ivf.gui
 
             //grfExpn.Rows.Count = dt.Rows.Count + 1;
             grfQue.Rows.Count = dt.Rows.Count + 1;
-            grfQue.Cols.Count = 12;
+            grfQue.Cols.Count = 14;
             C1TextBox txt = new C1TextBox();
             //C1ComboBox cboproce = new C1ComboBox();
             //ic.ivfDB.itmDB.setCboItem(cboproce);
@@ -304,6 +304,8 @@ namespace clinic_ivf.gui
             grfQue.Cols[colVsTime].Width = 80;
             grfQue.Cols[colVsEtime].Width = 80;
             grfQue.Cols[colStatus].Width = 200;
+            grfQue.Cols[colStatusNurse].Width = 50;
+            grfQue.Cols[colStatusCashier].Width = 55;
 
             grfQue.ShowCursor = true;
             //grdFlex.Cols[colID].Caption = "no";
@@ -316,6 +318,8 @@ namespace clinic_ivf.gui
             grfQue.Cols[colVsTime].Caption = "Time visit";
             grfQue.Cols[colVsEtime].Caption = "Time finish";
             grfQue.Cols[colStatus].Caption = "Status";
+            grfQue.Cols[colStatusNurse].Caption = "Nurse";
+            grfQue.Cols[colStatusCashier].Caption = "Cashier";
 
             ContextMenu menuGw = new ContextMenu();
             //menuGw.MenuItems.Add("&receive operation", new EventHandler(ContextMenu_Apm));
@@ -340,6 +344,8 @@ namespace clinic_ivf.gui
                 grfQue[i, colStatus] = row["VName"].ToString();
                 grfQue[i, colPttId] = row["PID"].ToString();
                 grfQue[i, colDtr] = row["dtrname"].ToString();
+                grfQue[i, colStatusNurse] = row["status_nurse"].ToString();
+                grfQue[i, colStatusCashier] = row["status_cashier"].ToString();
                 if (!row[ic.ivfDB.ovsDB.vsold.form_a_id].ToString().Equals("0"))
                 {
                     CellNote note = new CellNote("ส่ง Lab Request Foam A");
