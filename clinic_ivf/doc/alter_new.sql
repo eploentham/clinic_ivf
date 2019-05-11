@@ -345,5 +345,21 @@ ADD COLUMN `receipt_no` VARCHAR(45) NULL AFTER `IntLock`,
 ADD COLUMN `receipt_cover_no` VARCHAR(45) NULL AFTER `receipt_no`;
 
 
+19-05-11
+ALTER TABLE `ivf_101`.`StockDrug` 
+ADD COLUMN `on_hand` DECIMAL(17,2) NULL COMMENT 'คงเหลือ' AFTER `item_sub_group_id`,
+ADD COLUMN `order_point` DECIMAL(17,2) NULL COMMENT 'จุดสั่งซื้อ' AFTER `on_hand`,
+ADD COLUMN `order_amount` DECIMAL(17,2) NULL COMMENT 'จำนวนสั่งซื้อ' AFTER `order_point`,
+ADD COLUMN `on_hand_sub_1` DECIMAL(17,2) NULL COMMENT 'คงเหลือ' AFTER `order_amount`,
+ADD COLUMN `order_point_sub_1` DECIMAL(17,2) NULL COMMENT 'จุดสั่งซื้อ' AFTER `on_hand_sub_1`,
+ADD COLUMN `order_amount_sub_1` DECIMAL(17,2) NULL COMMENT 'จำนวนสั่งซื้อ' AFTER `order_point_sub_1`,
+ADD COLUMN `on_hand_sub_2` DECIMAL(17,2) NULL COMMENT 'คงเหลือ' AFTER `order_amount_sub_1`,
+ADD COLUMN `order_point_sub_2` DECIMAL(17,2) NULL COMMENT 'จุดสั่งซื้อ' AFTER `on_hand_sub_2`,
+ADD COLUMN `order_amount_sub_2` DECIMAL(17,2) NULL COMMENT 'จำนวนสั่งซื้อ' AFTER `order_point_sub_2`,
+ADD COLUMN `on_hand_sub_3` DECIMAL(17,2) NULL COMMENT 'คงเหลือ' AFTER `order_amount_sub_2`,
+ADD COLUMN `order_point_sub_3` DECIMAL(17,2) NULL COMMENT 'จุดสั่งซื้อ' AFTER `on_hand_sub_3`,
+ADD COLUMN `order_amount_sub_3` DECIMAL(17,2) NULL COMMENT 'จำนวนสั่งซื้อ' AFTER `order_point_sub_3`;
+
+
 
 
