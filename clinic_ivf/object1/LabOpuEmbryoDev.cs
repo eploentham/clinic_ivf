@@ -28,5 +28,6 @@ namespace clinic_ivf.object1
         public String staff_id { get; set; }
         public String checked_id { get; set; }
         public String embryo_dev_date { get; set; }
+        public String desc4 { get; set; }
     }
 }

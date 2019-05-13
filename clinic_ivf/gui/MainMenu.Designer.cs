@@ -58,6 +58,8 @@
             this.menuDocGroupSubScan = new System.Windows.Forms.ToolStripMenuItem();
             this.menuMedicalRecordDocScan = new System.Windows.Forms.ToolStripMenuItem();
             this.menuMedicalRecordView = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuDoctor = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuDoctorDefault = new System.Windows.Forms.ToolStripMenuItem();
             this.menuInit = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStaff = new System.Windows.Forms.ToolStripMenuItem();
             this.menuDept = new System.Windows.Forms.ToolStripMenuItem();
@@ -74,15 +76,18 @@
             this.menuOrDiag = new System.Windows.Forms.ToolStripMenuItem();
             this.menuOrAnes = new System.Windows.Forms.ToolStripMenuItem();
             this.menuSpecialItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuLabItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuAgent = new System.Windows.Forms.ToolStripMenuItem();
             this.menuTest = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuDoctor = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuDoctorDefault = new System.Windows.Forms.ToolStripMenuItem();
+            this.stockToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuStock = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuStockRec = new System.Windows.Forms.ToolStripMenuItem();
+            this.เบกออกรายการยาToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.ปรบปรงยอดรายการยาToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tCC1 = new C1.Win.C1Command.C1CommandDock();
             this.tC1 = new C1.Win.C1Command.C1DockingTab();
             this.PageS = new C1.Win.C1Command.C1DockingTabPage();
             this.theme1 = new C1.Win.C1Themes.C1ThemeController();
-            this.menuLabItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tCC1)).BeginInit();
             this.tCC1.SuspendLayout();
@@ -102,8 +107,9 @@
             this.menuPharmacy,
             this.menuCashier,
             this.menuMedicalRecord,
+            this.menuDoctor,
             this.menuInit,
-            this.menuDoctor});
+            this.stockToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(1017, 24);
@@ -212,37 +218,37 @@
             // menuLabAccept
             // 
             this.menuLabAccept.Name = "menuLabAccept";
-            this.menuLabAccept.Size = new System.Drawing.Size(179, 22);
+            this.menuLabAccept.Size = new System.Drawing.Size(180, 22);
             this.menuLabAccept.Text = "Accept Lab";
             // 
             // menuLabOpu
             // 
             this.menuLabOpu.Name = "menuLabOpu";
-            this.menuLabOpu.Size = new System.Drawing.Size(179, 22);
-            this.menuLabOpu.Text = "ป้อน OPU/FET";
+            this.menuLabOpu.Size = new System.Drawing.Size(180, 22);
+            this.menuLabOpu.Text = "ป้อน OPU";
             // 
             // menuLabFet
             // 
             this.menuLabFet.Name = "menuLabFet";
-            this.menuLabFet.Size = new System.Drawing.Size(179, 22);
+            this.menuLabFet.Size = new System.Drawing.Size(180, 22);
             this.menuLabFet.Text = "ป้อน FET";
             // 
             // ปอนSemenAnalysisToolStripMenuItem
             // 
             this.ปอนSemenAnalysisToolStripMenuItem.Name = "ปอนSemenAnalysisToolStripMenuItem";
-            this.ปอนSemenAnalysisToolStripMenuItem.Size = new System.Drawing.Size(179, 22);
+            this.ปอนSemenAnalysisToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.ปอนSemenAnalysisToolStripMenuItem.Text = "ป้อน Semen Analysis";
             // 
             // ปอนSpermFreexingToolStripMenuItem
             // 
             this.ปอนSpermFreexingToolStripMenuItem.Name = "ปอนSpermFreexingToolStripMenuItem";
-            this.ปอนSpermFreexingToolStripMenuItem.Size = new System.Drawing.Size(179, 22);
+            this.ปอนSpermFreexingToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.ปอนSpermFreexingToolStripMenuItem.Text = "ป้อนSperm Freezing";
             // 
             // menuTestForm
             // 
             this.menuTestForm.Name = "menuTestForm";
-            this.menuTestForm.Size = new System.Drawing.Size(179, 22);
+            this.menuTestForm.Size = new System.Drawing.Size(180, 22);
             this.menuTestForm.Text = "Test Form";
             // 
             // menuPharmacy
@@ -315,6 +321,20 @@
             this.menuMedicalRecordView.Name = "menuMedicalRecordView";
             this.menuMedicalRecordView.Size = new System.Drawing.Size(238, 22);
             this.menuMedicalRecordView.Text = "Scan ดูเวชระเบียน";
+            // 
+            // menuDoctor
+            // 
+            this.menuDoctor.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.menuDoctorDefault});
+            this.menuDoctor.Name = "menuDoctor";
+            this.menuDoctor.Size = new System.Drawing.Size(55, 20);
+            this.menuDoctor.Text = "Doctor";
+            // 
+            // menuDoctorDefault
+            // 
+            this.menuDoctorDefault.Name = "menuDoctorDefault";
+            this.menuDoctorDefault.Size = new System.Drawing.Size(148, 22);
+            this.menuDoctorDefault.Text = "Doctor Screen";
             // 
             // menuInit
             // 
@@ -397,7 +417,7 @@
             // menuDrug
             // 
             this.menuDrug.Name = "menuDrug";
-            this.menuDrug.Size = new System.Drawing.Size(180, 22);
+            this.menuDrug.Size = new System.Drawing.Size(135, 22);
             this.menuDrug.Text = "แผนก Drug";
             // 
             // แผนกORToolStripMenuItem
@@ -407,7 +427,7 @@
             this.menuOrDiag,
             this.menuOrAnes});
             this.แผนกORToolStripMenuItem.Name = "แผนกORToolStripMenuItem";
-            this.แผนกORToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.แผนกORToolStripMenuItem.Size = new System.Drawing.Size(135, 22);
             this.แผนกORToolStripMenuItem.Text = "แผนก OR";
             // 
             // menuGrpDiag
@@ -431,8 +451,14 @@
             // menuSpecialItem
             // 
             this.menuSpecialItem.Name = "menuSpecialItem";
-            this.menuSpecialItem.Size = new System.Drawing.Size(180, 22);
+            this.menuSpecialItem.Size = new System.Drawing.Size(135, 22);
             this.menuSpecialItem.Text = "SpecialItem";
+            // 
+            // menuLabItem
+            // 
+            this.menuLabItem.Name = "menuLabItem";
+            this.menuLabItem.Size = new System.Drawing.Size(135, 22);
+            this.menuLabItem.Text = "LabItem";
             // 
             // menuAgent
             // 
@@ -446,19 +472,40 @@
             this.menuTest.Size = new System.Drawing.Size(192, 22);
             this.menuTest.Text = "Screen Test";
             // 
-            // menuDoctor
+            // stockToolStripMenuItem
             // 
-            this.menuDoctor.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.menuDoctorDefault});
-            this.menuDoctor.Name = "menuDoctor";
-            this.menuDoctor.Size = new System.Drawing.Size(55, 20);
-            this.menuDoctor.Text = "Doctor";
+            this.stockToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.menuStock,
+            this.menuStockRec,
+            this.เบกออกรายการยาToolStripMenuItem,
+            this.ปรบปรงยอดรายการยาToolStripMenuItem});
+            this.stockToolStripMenuItem.Name = "stockToolStripMenuItem";
+            this.stockToolStripMenuItem.Size = new System.Drawing.Size(48, 20);
+            this.stockToolStripMenuItem.Text = "Stock";
             // 
-            // menuDoctorDefault
+            // menuStock
             // 
-            this.menuDoctorDefault.Name = "menuDoctorDefault";
-            this.menuDoctorDefault.Size = new System.Drawing.Size(148, 22);
-            this.menuDoctorDefault.Text = "Doctor Screen";
+            this.menuStock.Name = "menuStock";
+            this.menuStock.Size = new System.Drawing.Size(176, 22);
+            this.menuStock.Text = "Stock รายการทั้งหมด";
+            // 
+            // menuStockRec
+            // 
+            this.menuStockRec.Name = "menuStockRec";
+            this.menuStockRec.Size = new System.Drawing.Size(176, 22);
+            this.menuStockRec.Text = "รับเข้า รายการยา";
+            // 
+            // เบกออกรายการยาToolStripMenuItem
+            // 
+            this.เบกออกรายการยาToolStripMenuItem.Name = "เบกออกรายการยาToolStripMenuItem";
+            this.เบกออกรายการยาToolStripMenuItem.Size = new System.Drawing.Size(176, 22);
+            this.เบกออกรายการยาToolStripMenuItem.Text = "เบิกออก รายการยา";
+            // 
+            // ปรบปรงยอดรายการยาToolStripMenuItem
+            // 
+            this.ปรบปรงยอดรายการยาToolStripMenuItem.Name = "ปรบปรงยอดรายการยาToolStripMenuItem";
+            this.ปรบปรงยอดรายการยาToolStripMenuItem.Size = new System.Drawing.Size(176, 22);
+            this.ปรบปรงยอดรายการยาToolStripMenuItem.Text = "ปรับปรุงยอด รายการยา";
             // 
             // tCC1
             // 
@@ -502,12 +549,6 @@
             // theme1
             // 
             this.theme1.Theme = "BeigeOne";
-            // 
-            // menuLabItem
-            // 
-            this.menuLabItem.Name = "menuLabItem";
-            this.menuLabItem.Size = new System.Drawing.Size(180, 22);
-            this.menuLabItem.Text = "LabItem";
             // 
             // MainMenu
             // 
@@ -589,5 +630,10 @@
         private System.Windows.Forms.ToolStripMenuItem menuDoctorDefault;
         private System.Windows.Forms.ToolStripMenuItem menuSpecialItem;
         private System.Windows.Forms.ToolStripMenuItem menuLabItem;
+        private System.Windows.Forms.ToolStripMenuItem stockToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem menuStock;
+        private System.Windows.Forms.ToolStripMenuItem menuStockRec;
+        private System.Windows.Forms.ToolStripMenuItem เบกออกรายการยาToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem ปรบปรงยอดรายการยาToolStripMenuItem;
     }
 }

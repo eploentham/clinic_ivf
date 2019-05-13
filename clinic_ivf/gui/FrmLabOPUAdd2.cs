@@ -35,7 +35,7 @@ namespace clinic_ivf.gui
         int colDay5ID = 1, colDay5Num = 2, colDay5Desc = 3, colDay5Desc1 = 4, colDay5Desc2 = 5, colDay5Edit = 6;
         int colDay6ID = 1, colDay6Num = 2, colDay6Desc = 3, colDay6Desc1 = 4, colDay6Desc2 = 5, colDay6Edit = 6;
 
-        int colDay2ImgId = 1, colDay2ImgPic = 3, colDay2ImgNun = 2, colDay2ImgDesc0 = 4, colDay2PathPic = 5;
+        int colDay2ImgId = 1, colDay2ImgPic = 3, colDay2ImgNun = 2, colDay2ImgDesc0 = 4, colDay2PathPic = 5, colDay2ImgDesc1 = 6;
 
         C1FlexGrid grfDay2, grfDay3, grfDay5, grfDay6, grfDay2Img, grfDay3Img, grfDay5Img, grfDay6Img;
         C1SuperTooltip stt;
@@ -1311,6 +1311,7 @@ namespace clinic_ivf.gui
                             String path = row[colDay2PathPic] != null ? row[colDay2PathPic].ToString() : "";
                             String desc = row[colDay2ImgDesc0] != null ? row[colDay2ImgDesc0].ToString() : "";
                             String no = row[colDay2ImgNun] != null ? row[colDay2ImgNun].ToString() : "";
+                            String desc1 = row[colDay2ImgDesc1] != null ? row[colDay2ImgDesc1].ToString() : "";
                             i++;
                             if (i == 1) continue;
                             if (!id.Equals(""))
@@ -1322,7 +1323,7 @@ namespace clinic_ivf.gui
                                     if (ext.Length > 1)
                                     {
                                         filename = txtOpuCode.Text + "_day6_" + no + "." + ext[ext.Length - 1];
-                                        re = ic.ivfDB.opuEmDevDB.updatePathPic(id, no, "images/" + txtOpuCode.Text + "/" + filename, desc, ic.cStf.staff_id);
+                                        re = ic.ivfDB.opuEmDevDB.updatePathPic(id, no, "images/" + txtOpuCode.Text + "/" + filename, desc, desc1, ic.cStf.staff_id);
                                         long chk = 0;
                                         if (long.TryParse(re, out chk))
                                         {
@@ -1377,6 +1378,7 @@ namespace clinic_ivf.gui
                             String path = row[colDay2PathPic] != null ? row[colDay2PathPic].ToString() : "";
                             String desc = row[colDay2ImgDesc0] != null ? row[colDay2ImgDesc0].ToString() : "";
                             String no = row[colDay2ImgNun] != null ? row[colDay2ImgNun].ToString() : "";
+                            String desc1 = row[colDay2ImgDesc1] != null ? row[colDay2ImgDesc1].ToString() : "";
                             i++;
                             if (i == 1) continue;
                             if (!id.Equals(""))
@@ -1388,7 +1390,7 @@ namespace clinic_ivf.gui
                                     if (ext.Length > 1)
                                     {
                                         filename = txtOpuCode.Text + "_day5_" + no + "." + ext[ext.Length - 1];
-                                        re = ic.ivfDB.opuEmDevDB.updatePathPic(id, no, "images/" + txtOpuCode.Text + "/" + filename, desc, ic.cStf.staff_id);
+                                        re = ic.ivfDB.opuEmDevDB.updatePathPic(id, no, "images/" + txtOpuCode.Text + "/" + filename, desc, desc1, ic.cStf.staff_id);
                                         long chk = 0;
                                         if (long.TryParse(re, out chk))
                                         {
@@ -1435,6 +1437,7 @@ namespace clinic_ivf.gui
                             String path = row[colDay2PathPic] != null ? row[colDay2PathPic].ToString() : "";
                             String desc = row[colDay2ImgDesc0] != null ? row[colDay2ImgDesc0].ToString() : "";
                             String no = row[colDay2ImgNun] != null ? row[colDay2ImgNun].ToString() : "";
+                            String desc1 = row[colDay2ImgDesc1] != null ? row[colDay2ImgDesc1].ToString() : "";
                             i++;
                             if (i == 1) continue;
                             if (!id.Equals(""))
@@ -1446,11 +1449,14 @@ namespace clinic_ivf.gui
                                     if (ext.Length > 1)
                                     {
                                         filename = txtOpuCode.Text + "_day3_" + no + "." + ext[ext.Length - 1];
-                                        re = ic.ivfDB.opuEmDevDB.updatePathPic(id, no, "images/" + txtOpuCode.Text + "/" + filename, desc, ic.cStf.staff_id);
+                                        re = ic.ivfDB.opuEmDevDB.updatePathPic(id, no, "images/" + txtOpuCode.Text + "/" + filename, desc, desc1, ic.cStf.staff_id);
                                         long chk = 0;
                                         if (long.TryParse(re, out chk))
                                         {
-                                            ic.savePicOPUtoServer(txtOpuCode.Text, filename, path);
+                                            if (File.Exists(path))
+                                            {
+                                                ic.savePicOPUtoServer(txtOpuCode.Text, filename, path);
+                                            }
                                             grfDay3Img.Rows[i - 1].StyleNew.BackColor = color;
                                         }
                                     }
@@ -1597,6 +1603,7 @@ namespace clinic_ivf.gui
                             String path = row[colDay2PathPic] != null ? row[colDay2PathPic].ToString() : "";
                             String desc = row[colDay2ImgDesc0] != null ? row[colDay2ImgDesc0].ToString() : "";
                             String no = row[colDay2ImgNun] != null ? row[colDay2ImgNun].ToString() : "";
+                            String desc1 = row[colDay2ImgDesc1] != null ? row[colDay2ImgDesc1].ToString() : "";
                             i++;
                             if (i == 1) continue;
                             if (!id.Equals(""))
@@ -1608,7 +1615,7 @@ namespace clinic_ivf.gui
                                     if (ext.Length > 1)
                                     {
                                         filename = txtOpuCode.Text + "_day2_" + no + "." + ext[ext.Length - 1];
-                                        re = ic.ivfDB.opuEmDevDB.updatePathPic(id, no, "images/" + txtOpuCode.Text + "/" + filename, desc, ic.cStf.staff_id);
+                                        re = ic.ivfDB.opuEmDevDB.updatePathPic(id, no, "images/" + txtOpuCode.Text + "/" + filename, desc, desc1, ic.cStf.staff_id);
                                         long chk = 0;
                                         if (long.TryParse(re, out chk))
                                         {
@@ -2699,6 +2706,7 @@ namespace clinic_ivf.gui
             frm.ShowDialog(this);
             if (!ic.cStf.staff_id.Equals(""))
             {
+                saveLabOPU();
                 //setOPU();
                 //String re = ic.ivfDB.opuDB.update(opu, ic.user.staff_id);
                 //long chk1 = 0;
@@ -2715,6 +2723,8 @@ namespace clinic_ivf.gui
         }
         private void saveLabOPU()
         {
+            calMotile();
+            calFertili();
             setOPU();
             String re = ic.ivfDB.opuDB.update(opu, ic.user.staff_id);
             sB1.Text = "Save OPU";
@@ -2769,7 +2779,7 @@ namespace clinic_ivf.gui
             grfDay2Img.Clear();
             grfDay2Img.DataSource = null;
             grfDay2Img.Rows.Count = 1;
-            grfDay2Img.Cols.Count = 6;
+            grfDay2Img.Cols.Count = 7;
             DataTable dt = new DataTable();
             dt = ic.ivfDB.opuEmDevDB.selectByOpuFetId_Day(txtID.Text, objdb.LabOpuEmbryoDevDB.Day1.Day2);
 
@@ -2797,6 +2807,7 @@ namespace clinic_ivf.gui
             grfDay2Img.Cols[colDay2ImgNun].Caption = "No";
             grfDay2Img.Cols[colDay2ImgDesc0].Caption = "Desc1";
             grfDay2Img.Cols[colDay2PathPic].Caption = "pathpic";
+            grfDay2Img.Cols[colDay2ImgDesc1].Caption = "Desc2";
 
             grfDay2Img.Cols[colDay2ImgPic].ImageAndText = false;
 
@@ -2813,7 +2824,7 @@ namespace clinic_ivf.gui
                 row1[colDay2ImgNun] = row[ic.ivfDB.opuEmDevDB.opuEmDev.opu_embryo_dev_no].ToString();
                 row1[colDay2ImgDesc0] = row[ic.ivfDB.opuEmDevDB.opuEmDev.desc3].ToString();
                 row1[colDay2PathPic] = row[ic.ivfDB.opuEmDevDB.opuEmDev.path_pic].ToString();
-
+                row1[colDay2ImgDesc1] = row[ic.ivfDB.opuEmDevDB.opuEmDev.desc4].ToString();
                 if (row[ic.ivfDB.opuEmDevDB.opuEmDev.path_pic] != null && !row[ic.ivfDB.opuEmDevDB.opuEmDev.path_pic].ToString().Equals(""))
                 {
                     //Thread threadA = new Thread(ExecuteA);
@@ -3008,7 +3019,7 @@ namespace clinic_ivf.gui
             grfDay3Img.Clear();
             grfDay3Img.DataSource = null;
             grfDay3Img.Rows.Count = 1;
-            grfDay3Img.Cols.Count = 6;
+            grfDay3Img.Cols.Count = 7;
             DataTable dt = new DataTable();
             dt = ic.ivfDB.opuEmDevDB.selectByOpuFetId_Day(txtID.Text, objdb.LabOpuEmbryoDevDB.Day1.Day3);
 
@@ -3036,6 +3047,7 @@ namespace clinic_ivf.gui
             grfDay3Img.Cols[colDay2ImgNun].Caption = "No";
             grfDay3Img.Cols[colDay2ImgDesc0].Caption = "Desc1";
             grfDay3Img.Cols[colDay2PathPic].Caption = "pathpic";
+            grfDay3Img.Cols[colDay2ImgDesc1].Caption = "Desc2";
 
             grfDay3Img.Cols[colDay2ImgPic].ImageAndText = false;
 
@@ -3052,6 +3064,7 @@ namespace clinic_ivf.gui
                 row1[colDay2ImgNun] = row[ic.ivfDB.opuEmDevDB.opuEmDev.opu_embryo_dev_no].ToString();
                 row1[colDay2ImgDesc0] = row[ic.ivfDB.opuEmDevDB.opuEmDev.desc3].ToString();
                 row1[colDay2PathPic] = row[ic.ivfDB.opuEmDevDB.opuEmDev.path_pic].ToString();
+                row1[colDay2ImgDesc1] = row[ic.ivfDB.opuEmDevDB.opuEmDev.desc4].ToString();
 
                 if (row[ic.ivfDB.opuEmDevDB.opuEmDev.path_pic] != null && !row[ic.ivfDB.opuEmDevDB.opuEmDev.path_pic].ToString().Equals(""))
                 {
@@ -3247,7 +3260,7 @@ namespace clinic_ivf.gui
             grfDay5Img.Clear();
             grfDay5Img.DataSource = null;
             grfDay5Img.Rows.Count = 1;
-            grfDay5Img.Cols.Count = 6;
+            grfDay5Img.Cols.Count = 7;
             DataTable dt = new DataTable();
             dt = ic.ivfDB.opuEmDevDB.selectByOpuFetId_Day(txtID.Text, objdb.LabOpuEmbryoDevDB.Day1.Day5);
 
@@ -3275,6 +3288,7 @@ namespace clinic_ivf.gui
             grfDay5Img.Cols[colDay2ImgNun].Caption = "No";
             grfDay5Img.Cols[colDay2ImgDesc0].Caption = "Desc1";
             grfDay5Img.Cols[colDay2PathPic].Caption = "pathpic";
+            grfDay5Img.Cols[colDay2ImgDesc1].Caption = "Desc2";
 
             grfDay5Img.Cols[colDay2ImgPic].ImageAndText = false;
 
@@ -3291,6 +3305,7 @@ namespace clinic_ivf.gui
                 row1[colDay2ImgNun] = row[ic.ivfDB.opuEmDevDB.opuEmDev.opu_embryo_dev_no].ToString();
                 row1[colDay2ImgDesc0] = row[ic.ivfDB.opuEmDevDB.opuEmDev.desc3].ToString();
                 row1[colDay2PathPic] = row[ic.ivfDB.opuEmDevDB.opuEmDev.path_pic].ToString();
+                row1[colDay2ImgDesc1] = row[ic.ivfDB.opuEmDevDB.opuEmDev.desc4].ToString();
 
                 if (row[ic.ivfDB.opuEmDevDB.opuEmDev.path_pic] != null && !row[ic.ivfDB.opuEmDevDB.opuEmDev.path_pic].ToString().Equals(""))
                 {
@@ -3486,7 +3501,7 @@ namespace clinic_ivf.gui
             grfDay6Img.Clear();
             grfDay6Img.DataSource = null;
             grfDay6Img.Rows.Count = 1;
-            grfDay6Img.Cols.Count = 6;
+            grfDay6Img.Cols.Count = 7;
             DataTable dt = new DataTable();
             dt = ic.ivfDB.opuEmDevDB.selectByOpuFetId_Day(txtID.Text, objdb.LabOpuEmbryoDevDB.Day1.Day6);
 
@@ -3514,6 +3529,7 @@ namespace clinic_ivf.gui
             grfDay6Img.Cols[colDay2ImgNun].Caption = "No";
             grfDay6Img.Cols[colDay2ImgDesc0].Caption = "Desc1";
             grfDay6Img.Cols[colDay2PathPic].Caption = "pathpic";
+            grfDay6Img.Cols[colDay2ImgDesc1].Caption = "Desc2";
 
             grfDay6Img.Cols[colDay2ImgPic].ImageAndText = false;
 
@@ -3530,6 +3546,7 @@ namespace clinic_ivf.gui
                 row1[colDay2ImgNun] = row[ic.ivfDB.opuEmDevDB.opuEmDev.opu_embryo_dev_no].ToString();
                 row1[colDay2ImgDesc0] = row[ic.ivfDB.opuEmDevDB.opuEmDev.desc3].ToString();
                 row1[colDay2PathPic] = row[ic.ivfDB.opuEmDevDB.opuEmDev.path_pic].ToString();
+                row1[colDay2ImgDesc1] = row[ic.ivfDB.opuEmDevDB.opuEmDev.desc4].ToString();
 
                 if (row[ic.ivfDB.opuEmDevDB.opuEmDev.path_pic] != null && !row[ic.ivfDB.opuEmDevDB.opuEmDev.path_pic].ToString().Equals(""))
                 {

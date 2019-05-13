@@ -31,6 +31,25 @@ namespace clinic_ivf.objdb
             ostkD.PendingQTY= "PendingQTY";
             ostkD.Price= "Price";
             ostkD.active = "active";
+            ostkD.drug_caution = "drug_caution";
+            ostkD.drug_description = "drug_description";
+            ostkD.instruction_id = "instruction_id";
+            ostkD.frequency_id = "frequency_id";
+            ostkD.drug_caution_e = "drug_caution_e";
+            ostkD.drug_frequency_e = "drug_frequency_e";
+            ostkD.item_sub_group_id = "item_sub_group_id";
+            ostkD.on_hand = "on_hand";
+            ostkD.order_point = "order_point";
+            ostkD.order_amount = "order_amount";
+            ostkD.on_hand_sub_1 = "on_hand_sub_1";
+            ostkD.order_point_sub_1 = "order_point_sub_1";
+            ostkD.order_amount_sub_1 = "order_amount_sub_1";
+            ostkD.on_hand_sub_2 = "on_hand_sub_2";
+            ostkD.order_point_sub_2 = "order_point_sub_2";
+            ostkD.order_amount_sub_2 = "order_amount_sub_2";
+            ostkD.on_hand_sub_3 = "on_hand_sub_3";
+            ostkD.order_point_sub_3 = "order_point_sub_3";
+            ostkD.order_amount_sub_3 = "order_amount_sub_3";
 
             ostkD.table = "StockDrug";
             ostkD.pkField = "DUID";
@@ -52,7 +71,11 @@ namespace clinic_ivf.objdb
             p.DUName = p.DUName == null ? "" : p.DUName;
             p.EUsage = p.EUsage == null ? "" : p.EUsage;
             p.TUsage = p.TUsage == null ? "" : p.TUsage;
-            p.UnitType = p.UnitType == null ? "" : p.UnitType;            
+            p.UnitType = p.UnitType == null ? "" : p.UnitType;
+            p.drug_caution = p.drug_caution == null ? "" : p.drug_caution;
+            p.drug_description = p.drug_description == null ? "" : p.drug_description;
+            p.drug_caution_e = p.drug_caution_e == null ? "" : p.drug_caution_e;
+            p.drug_frequency_e = p.drug_frequency_e == null ? "" : p.drug_frequency_e;
 
             //p.Alert = p.Alert == null ? "0" : p.Alert;
             //p.QTY = p.QTY == null ? "0" : p.QTY;
@@ -62,8 +85,23 @@ namespace clinic_ivf.objdb
             p.Alert = long.TryParse(p.Alert, out chk) ? chk.ToString() : "0";
             p.QTY = long.TryParse(p.QTY, out chk) ? chk.ToString() : "0";
             p.PendingQTY = long.TryParse(p.PendingQTY, out chk) ? chk.ToString() : "0";
+            p.instruction_id = long.TryParse(p.instruction_id, out chk) ? chk.ToString() : "0";
+            p.frequency_id = long.TryParse(p.frequency_id, out chk) ? chk.ToString() : "0";
+            p.item_sub_group_id = long.TryParse(p.item_sub_group_id, out chk) ? chk.ToString() : "0";
 
             p.Price = Decimal.TryParse(p.Price, out chk1) ? chk1.ToString() : "0";
+            p.on_hand = Decimal.TryParse(p.on_hand, out chk1) ? chk1.ToString() : "0";
+            p.order_point = Decimal.TryParse(p.order_point, out chk1) ? chk1.ToString() : "0";
+            p.order_amount = Decimal.TryParse(p.order_amount, out chk1) ? chk1.ToString() : "0";
+            p.on_hand_sub_1 = Decimal.TryParse(p.on_hand_sub_1, out chk1) ? chk1.ToString() : "0";
+            p.order_point_sub_1 = Decimal.TryParse(p.order_point_sub_1, out chk1) ? chk1.ToString() : "0";
+            p.order_amount_sub_1 = Decimal.TryParse(p.order_amount_sub_1, out chk1) ? chk1.ToString() : "0";
+            p.on_hand_sub_2 = Decimal.TryParse(p.on_hand_sub_2, out chk1) ? chk1.ToString() : "0";
+            p.order_point_sub_2 = Decimal.TryParse(p.order_point_sub_2, out chk1) ? chk1.ToString() : "0";
+            p.order_amount_sub_2 = Decimal.TryParse(p.order_amount_sub_2, out chk1) ? chk1.ToString() : "0";
+            p.on_hand_sub_3 = Decimal.TryParse(p.on_hand_sub_3, out chk1) ? chk1.ToString() : "0";
+            p.order_point_sub_3 = Decimal.TryParse(p.order_point_sub_3, out chk1) ? chk1.ToString() : "0";
+            p.order_amount_sub_3 = Decimal.TryParse(p.order_amount_sub_3, out chk1) ? chk1.ToString() : "0";
 
             //p.user_cancel = p.user_cancel == null ? "" : p.user_cancel;
         }
@@ -87,8 +125,26 @@ namespace clinic_ivf.objdb
                 "," + ostkD.QTY + "= '" + p.QTY + "'" +                
                 "," + ostkD.PendingQTY + "= '" + p.PendingQTY + "'" +
                 "," + ostkD.Price + "= '" + p.Price + "'" +
-                "," + ostkD.active + "= '" + p.active + "'" +
-                
+                "," + ostkD.drug_caution + "= '" + p.drug_caution + "'" +
+                "," + ostkD.drug_description + "= '" + p.drug_description + "'" +
+                "," + ostkD.instruction_id + "= '" + p.instruction_id + "'" +
+                "," + ostkD.frequency_id + "= '" + p.frequency_id + "'" +
+                "," + ostkD.drug_caution_e + "= '" + p.drug_caution_e + "'" +
+                "," + ostkD.drug_frequency_e + "= '" + p.drug_frequency_e + "'" +
+                "," + ostkD.item_sub_group_id + "= '" + p.item_sub_group_id + "'" +
+                "," + ostkD.on_hand + "= '" + p.on_hand + "'" +
+                "," + ostkD.order_point + "= '" + p.order_point + "'" +
+                "," + ostkD.order_amount + "= '" + p.order_amount + "'" +
+                "," + ostkD.on_hand_sub_1 + "= '" + p.on_hand_sub_1 + "'" +
+                "," + ostkD.order_point_sub_1 + "= '" + p.order_point_sub_1 + "'" +
+                "," + ostkD.order_amount_sub_1 + "= '" + p.order_amount_sub_1 + "'" +
+                "," + ostkD.on_hand_sub_2 + "= '" + p.on_hand_sub_2 + "'" +
+                "," + ostkD.order_point_sub_2 + "= '" + p.order_point_sub_2 + "'" +
+                "," + ostkD.order_amount_sub_2 + "= '" + p.order_amount_sub_2 + "'" +
+                "," + ostkD.on_hand_sub_3 + "= '" + p.on_hand_sub_3 + "'" +
+                "," + ostkD.order_point_sub_3 + "= '" + p.order_point_sub_3 + "'" +
+                "," + ostkD.order_amount_sub_3 + "= '" + p.order_amount_sub_3 + "'" +
+
                 "";
             try
             {
@@ -115,8 +171,16 @@ namespace clinic_ivf.objdb
                 "," + ostkD.Alert + "= '" + p.Alert.Replace("'", "''") + "'" +
                 "," + ostkD.QTY + "= '" + p.QTY + "'" +
                 "," + ostkD.PendingQTY + "= '" + p.PendingQTY + "'" +
-                "," + ostkD.Price + "= '" + p.Price + "'" +
-                "Where "+ostkD.pkField+"='"+p.DUID+"'";
+                //"," + ostkD.Price + "= '" + p.Price + "'" +
+                "," + ostkD.drug_caution + "= '" + p.drug_caution + "'" +
+                "," + ostkD.drug_description + "= '" + p.drug_description + "'" +
+                "," + ostkD.instruction_id + "= '" + p.instruction_id + "'" +
+                "," + ostkD.frequency_id + "= '" + p.frequency_id + "'" +
+                "," + ostkD.drug_caution_e + "= '" + p.drug_caution_e + "'" +
+                "," + ostkD.drug_frequency_e + "= '" + p.drug_frequency_e + "'" +
+                "," + ostkD.item_sub_group_id + "= '" + p.item_sub_group_id + "'" +
+                //"," + ostkD.drug_caution_e + "= '" + p.drug_caution_e + "'" +
+                "Where " +ostkD.pkField+"='"+p.DUID+"'";
 
             try
             {
@@ -143,6 +207,15 @@ namespace clinic_ivf.objdb
             //}
 
             return re;
+        }
+        public DataTable selectAll2(String column)
+        {
+            DataTable dt = new DataTable();
+            String sql = "select ostkD.DUID,ostkD.DUName,ostkD.UnitType,ostkD.Price,ostkD.on_hand"+ column + ",ostkD.order_point" + column + ",ostkD.order_amount" + column + "  " +
+                "From " + ostkD.table + " ostkD " +
+                "Where ostkD." + ostkD.active + " ='1' ";
+            dt = conn.selectData(conn.conn, sql);
+            return dt;
         }
         public DataTable selectAll()
         {
@@ -283,6 +356,29 @@ namespace clinic_ivf.objdb
                 item = new ComboBoxItem();
                 item.Text = row[ostkD.EUsage].ToString();
                 item.Value = i.ToString();
+
+                c.Items.Add(item);
+                i++;
+            }
+            return c;
+        }
+        public C1ComboBox setCboStockDrug(C1ComboBox c)
+        {
+            ComboBoxItem item = new ComboBoxItem();
+            DataTable dt = selectAll();
+            //String aaa = "";
+            ComboBoxItem item1 = new ComboBoxItem();
+            item1.Text = "";
+            item1.Value = "";
+            c.Items.Clear();
+            c.Items.Add(item1);
+            //for (int i = 0; i < dt.Rows.Count; i++)
+            int i = 0;
+            foreach (DataRow row in dt.Rows)
+            {
+                item = new ComboBoxItem();
+                item.Text = row[ostkD.DUName].ToString();
+                item.Value = row[ostkD.DUID].ToString();
 
                 c.Items.Add(item);
                 i++;

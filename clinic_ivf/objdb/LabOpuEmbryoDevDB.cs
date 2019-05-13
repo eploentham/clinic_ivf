@@ -43,6 +43,7 @@ namespace clinic_ivf.objdb
             opuEmDev.staff_id = "staff_id";
             opuEmDev.checked_id = "checked_id";
             opuEmDev.embryo_dev_date = "embryo_dev_date";
+            opuEmDev.desc3 = "desc4";
 
             opuEmDev.table = "lab_t_opu_embryo_dev";
             opuEmDev.pkField = "opu_embryo_dev_id";
@@ -73,6 +74,7 @@ namespace clinic_ivf.objdb
             p.desc2 = p.desc2 == null ? "" : p.desc2;
             p.desc3 = p.desc3 == null ? "" : p.desc3;
             p.embryo_dev_date = p.embryo_dev_date == null ? "" : p.embryo_dev_date;
+            p.desc4 = p.desc4 == null ? "" : p.desc4;
 
             //p.user_cancel = p.user_cancel == null ? "" : p.user_cancel;
         }
@@ -102,6 +104,7 @@ namespace clinic_ivf.objdb
                 "," + opuEmDev.staff_id + "='" + p.staff_id + "'" +
                 "," + opuEmDev.checked_id + "='" + p.checked_id + "'" +
                 "," + opuEmDev.embryo_dev_date + "='" + p.embryo_dev_date + "'" +
+                "," + opuEmDev.desc4 + "='" + p.desc4.Replace("'", "''") + "'" +
                 " " +
                
                 "";
@@ -134,6 +137,7 @@ namespace clinic_ivf.objdb
                 "," + opuEmDev.staff_id + " = '" + p.staff_id + "'" +
                 "," + opuEmDev.checked_id + "='" + p.checked_id + "'" +
                 "," + opuEmDev.embryo_dev_date + "='" + p.embryo_dev_date + "'" +
+                "," + opuEmDev.desc4 + "='" + p.desc4.Replace("'", "''") + "'" +
                 "Where " + opuEmDev.pkField + "='" + p.opu_embryo_dev_id + "'"
                 ;
 
@@ -250,6 +254,29 @@ namespace clinic_ivf.objdb
                 " " + opuEmDev.desc3 + " = '" + desc3 + "'" +
                 "," + opuEmDev.path_pic + " = '" + filename + "'" +
                 //"," + opuEmDev.opu_embryo_dev_no + " = '" + num + "'" +
+                "," + opuEmDev.user_modi + " = '" + userid + "'" +
+                "," + opuEmDev.date_modi + " = now() " +
+                "Where " + opuEmDev.pkField + "='" + id + "'";
+            try
+            {
+                re = conn.ExecuteNonQuery(conn.conn, sql);
+            }
+            catch (Exception ex)
+            {
+                sql = ex.Message + " " + ex.InnerException;
+            }
+
+            return re;
+        }
+        public String updatePathPic(String id, String num, String filename, String desc3, String desc4, String userid)
+        {
+            String re = "";
+            String sql = "";
+            int chk = 0;
+            sql = "Update " + opuEmDev.table + " Set " +
+                " " + opuEmDev.desc3 + " = '" + desc3.Replace("'", "''") + "'" +
+                "," + opuEmDev.path_pic + " = '" + filename + "'" +
+                "," + opuEmDev.desc4 + " = '" + desc4.Replace("'","''") + "'" +
                 "," + opuEmDev.user_modi + " = '" + userid + "'" +
                 "," + opuEmDev.date_modi + " = now() " +
                 "Where " + opuEmDev.pkField + "='" + id + "'";

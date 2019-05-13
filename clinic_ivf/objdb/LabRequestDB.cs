@@ -384,6 +384,7 @@ namespace clinic_ivf.objdb
                 lbReq1.doctor_id = dt.Rows[0][lbReq.doctor_id].ToString();
                 lbReq1.form_a_id = dt.Rows[0][lbReq.form_a_id].ToString();
                 lbReq1.request_id = dt.Rows[0][lbReq.request_id].ToString();
+                lbReq1.dob_donor = dt.Rows[0][lbReq.dob_donor].ToString();
             }
             else
             {
@@ -415,6 +416,7 @@ namespace clinic_ivf.objdb
                 lbReq1.doctor_id = "";
                 lbReq1.request_id = "";
                 lbReq1.form_a_id = "";
+                lbReq1.dob_donor = "";
             }
 
             return lbReq1;

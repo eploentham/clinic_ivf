@@ -93,6 +93,24 @@ namespace clinic_ivf.gui
             menuDoctorDefault.Click += MenuDoctorDefault_Click;
             menuSpecialItem.Click += MenuSpecialItem_Click;
             menuLabItem.Click += MenuLabItem_Click;
+            menuStock.Click += MenuStock_Click;
+            menuStockRec.Click += MenuStockRec_Click;
+        }
+
+        private void MenuStockRec_Click(object sender, EventArgs e)
+        {
+            //throw new NotImplementedException();
+            FrmStockRec frm = new FrmStockRec(ic);
+            frm.FormBorderStyle = FormBorderStyle.None;
+            AddNewTab(frm, menuStockRec.Text + " ");
+        }
+
+        private void MenuStock_Click(object sender, EventArgs e)
+        {
+            //throw new NotImplementedException();
+            FrmStockOnhand frm = new FrmStockOnhand(ic);
+            frm.FormBorderStyle = FormBorderStyle.None;
+            AddNewTab(frm, menuStock.Text + " ");
         }
 
         private void MenuLabItem_Click(object sender, EventArgs e)

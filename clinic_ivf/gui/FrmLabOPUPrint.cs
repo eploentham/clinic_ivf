@@ -172,6 +172,8 @@ namespace clinic_ivf.gui
             dt.Columns.Add("embryo_dev_1_staff_name", typeof(String));
             dt.Columns.Add("embryo_dev_0_checked_name", typeof(String));
             dt.Columns.Add("embryo_dev_1_checked_name", typeof(String));
+            dt.Columns.Add("embryo_freez_no_straw_0", typeof(String));
+            dt.Columns.Add("embryo_freez_no_straw_1", typeof(String));
 
             if (!cboEmbryoDev1.Text.Equals("") && dt.Rows.Count > 0)
             {
@@ -205,6 +207,8 @@ namespace clinic_ivf.gui
             dt.Rows[0]["embryo_for_et_embryologist_id"] = ic.ivfDB.stfDB.getStaffNameBylStf(etName);
             //dt.Rows[0]["embryo_dev_0_date"] = ic.datetimetoShow(embryodevdate);
             dt.Rows[0]["embryo_dev_0_date"] = ic.datetoShow(embryodevdate).Replace("-", "/");
+            dt.Rows[0]["embryo_freez_no_straw_0"] = dt.Rows[0]["embryo_freez_no_of_straw_0"].ToString();
+            dt.Rows[0]["embryo_freez_no_straw_1"] = dt.Rows[0]["embryo_freez_no_of_straw_1"].ToString();
             j = 1;
             if (!chkEmbryoDev20.Checked && dtdev2.Rows.Count > 0)
             {

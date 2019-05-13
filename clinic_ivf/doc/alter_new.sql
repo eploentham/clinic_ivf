@@ -361,5 +361,308 @@ ADD COLUMN `order_point_sub_3` DECIMAL(17,2) NULL COMMENT 'จุดสั่ง
 ADD COLUMN `order_amount_sub_3` DECIMAL(17,2) NULL COMMENT 'จำนวนสั่งซื้อ' AFTER `order_point_sub_3`;
 
 
+CREATE TABLE `ivf_101`.`b_stock_name` (
+  `stock_name_id` INT NOT NULL AUTO_INCREMENT,
+  `stock_name` VARCHAR(45) NULL,
+  `stock_column_name` VARCHAR(45) NULL,
+  `active` VARCHAR(45) NULL,
+  `remark` VARCHAR(45) NULL,
+  `date_create` VARCHAR(45) NULL,
+  `date_modi` VARCHAR(45) NULL,
+  `date_cancel` VARCHAR(45) NULL,
+  `user_create` VARCHAR(45) NULL,
+  `user_modi` VARCHAR(45) NULL,
+  `user_cancel` VARCHAR(45) NULL,
+  `sort1` VARCHAR(45) NULL,
+  PRIMARY KEY (`stock_name_id`))
+ENGINE = MyISAM
+DEFAULT CHARACTER SET = utf8
+COLLATE = utf8_bin
+COMMENT = 'id=228';
+
+ALTER TABLE `ivf_101`.`StockDrug` 
+COMMENT = 'id=229' ;
+
+ALTER TABLE `ivf_101`.StockDrug AUTO_INCREMENT = 22900000;
+
+ALTER TABLE `ivf`.`b_stock_name` 
+CHANGE COLUMN `stock_name_id` `stock_sub_name_id` INT(11) NOT NULL AUTO_INCREMENT ,
+CHANGE COLUMN `stock_name` `stock_sub_name` VARCHAR(45) NULL DEFAULT NULL ,
+CHANGE COLUMN `stock_column_name` `stock_sub_column_name` VARCHAR(45) NULL DEFAULT NULL , RENAME TO  `ivf`.`b_stock_sub_name` ;
+
+ALTER TABLE `ivf_101`.`t_goods_draw` 
+RENAME TO  `ivf_101`.`t_stock_draw` ;
+
+ALTER TABLE `ivf_101`.`t_goods_draw_detail` 
+RENAME TO  `ivf_101`.`t_stock_draw_detail` ;
+
+ALTER TABLE `ivf_101`.`t_goods_rec` 
+RENAME TO  `ivf_101`.`t_stock_rec` ;
+
+ALTER TABLE `ivf_101`.`t_goods_rec_detail` 
+RENAME TO  `ivf_101`.`t_stock_rec_detail` ;
+
+ALTER TABLE `ivf_101`.`t_goods_return` 
+RENAME TO  `ivf_101`.`t_stock_return` ;
+
+ALTER TABLE `ivf_101`.`t_goods_return_detail` 
+RENAME TO  `ivf_101`.`t_stock_return_detail` ;
+
+CREATE TABLE `ivf_101`.`b_customer` (
+  `cust_id` int(11) NOT NULL AUTO_INCREMENT,
+  `org_id` varchar(255) CHARACTER SET utf8 COLLATE utf8_bin DEFAULT NULL COMMENT 'เป็นรหัส cust_id แต่ถ้า field นี้มีค่า \nหมายถึง ข้อมูลบริษัทนี้ เป็นเป็นบริษัทลูก ของบริษัท ที่ใช้รหัสนี้',
+  `cust_code` varchar(255) CHARACTER SET utf8 COLLATE utf8_bin DEFAULT NULL,
+  `cust_name_t` varchar(255) CHARACTER SET utf8 COLLATE utf8_bin DEFAULT NULL,
+  `cust_name_e` varchar(255) CHARACTER SET utf8 COLLATE utf8_bin DEFAULT NULL,
+  `active` varchar(255) CHARACTER SET utf8 COLLATE utf8_bin DEFAULT NULL,
+  `address_t` varchar(255) CHARACTER SET utf8 COLLATE utf8_bin DEFAULT NULL,
+  `address_e` varchar(255) CHARACTER SET utf8 COLLATE utf8_bin DEFAULT NULL,
+  `addr` varchar(255) CHARACTER SET utf8 COLLATE utf8_bin DEFAULT NULL,
+  `amphur_id` varchar(255) CHARACTER SET utf8 COLLATE utf8_bin DEFAULT NULL,
+  `district_id` varchar(255) CHARACTER SET utf8 COLLATE utf8_bin DEFAULT NULL,
+  `province_id` varchar(255) CHARACTER SET utf8 COLLATE utf8_bin DEFAULT NULL,
+  `zipcode` varchar(255) CHARACTER SET utf8 COLLATE utf8_bin DEFAULT NULL,
+  `sale_id` varchar(255) CHARACTER SET utf8 COLLATE utf8_bin DEFAULT NULL,
+  `sale_name_t` varchar(255) CHARACTER SET utf8 COLLATE utf8_bin DEFAULT NULL,
+  `fax` varchar(255) CHARACTER SET utf8 COLLATE utf8_bin DEFAULT NULL,
+  `tele` varchar(255) CHARACTER SET utf8 COLLATE utf8_bin DEFAULT NULL,
+  `email` varchar(255) CHARACTER SET utf8 COLLATE utf8_bin DEFAULT NULL,
+  `tax_id` varchar(255) CHARACTER SET utf8 COLLATE utf8_bin DEFAULT NULL,
+  `remark` varchar(2000) CHARACTER SET utf8 COLLATE utf8_bin DEFAULT NULL,
+  `contact_name1` varchar(255) CHARACTER SET utf8 COLLATE utf8_bin DEFAULT NULL,
+  `contact_name2` varchar(255) CHARACTER SET utf8 COLLATE utf8_bin DEFAULT NULL,
+  `contact_name1_tel` varchar(255) CHARACTER SET utf8 COLLATE utf8_bin DEFAULT NULL,
+  `contact_name2_tel` varchar(255) CHARACTER SET utf8 COLLATE utf8_bin DEFAULT NULL,
+  `date_create` varchar(255) CHARACTER SET utf8 COLLATE utf8_bin DEFAULT NULL,
+  `date_modi` varchar(255) CHARACTER SET utf8 COLLATE utf8_bin DEFAULT NULL,
+  `date_cancel` varchar(255) CHARACTER SET utf8 COLLATE utf8_bin DEFAULT NULL,
+  `user_create` varchar(255) CHARACTER SET utf8 COLLATE utf8_bin DEFAULT NULL,
+  `user_modi` varchar(255) CHARACTER SET utf8 COLLATE utf8_bin DEFAULT NULL,
+  `user_cancel` varchar(255) CHARACTER SET utf8 COLLATE utf8_bin DEFAULT NULL,
+  `remark2` varchar(2000) CHARACTER SET utf8 COLLATE utf8_bin DEFAULT NULL,
+  `po_due_period` varchar(255) CHARACTER SET utf8 COLLATE utf8_bin DEFAULT NULL,
+  `taddr1` varchar(255) CHARACTER SET utf8 COLLATE utf8_bin DEFAULT NULL,
+  `taddr2` varchar(255) CHARACTER SET utf8 COLLATE utf8_bin DEFAULT NULL,
+  `taddr3` varchar(255) CHARACTER SET utf8 COLLATE utf8_bin DEFAULT NULL,
+  `taddr4` varchar(255) CHARACTER SET utf8 COLLATE utf8_bin DEFAULT NULL,
+  `eaddr1` varchar(255) CHARACTER SET utf8 COLLATE utf8_bin DEFAULT NULL,
+  `eaddr2` varchar(255) CHARACTER SET utf8 COLLATE utf8_bin DEFAULT NULL,
+  `eaddr3` varchar(255) CHARACTER SET utf8 COLLATE utf8_bin DEFAULT NULL,
+  `eaddr4` varchar(255) CHARACTER SET utf8 COLLATE utf8_bin DEFAULT NULL,
+  `sort1` varchar(255) CHARACTER SET utf8 COLLATE utf8_bin DEFAULT NULL,
+  `status_cust` varchar(255) CHARACTER SET utf8 COLLATE utf8_bin DEFAULT NULL,
+  `status_imp` varchar(255) CHARACTER SET utf8 COLLATE utf8_bin DEFAULT NULL,
+  `status_exp` varchar(255) CHARACTER SET utf8 COLLATE utf8_bin DEFAULT NULL,
+  `status_fwd` varchar(255) CHARACTER SET utf8 COLLATE utf8_bin DEFAULT NULL,
+  `status_cons_imp` varchar(255) CHARACTER SET utf8 COLLATE utf8_bin DEFAULT NULL,
+  `status_cons_exp` varchar(255) CHARACTER SET utf8 COLLATE utf8_bin DEFAULT NULL,
+  `status_supp` varchar(255) CHARACTER SET utf8 COLLATE utf8_bin DEFAULT NULL,
+  `status_insr` varchar(255) CHARACTER SET utf8 COLLATE utf8_bin DEFAULT NULL,
+  `status_company` varchar(255) CHARACTER SET utf8 COLLATE utf8_bin DEFAULT NULL COMMENT '0=default; 1=customer ในประเทศ; 2=customer ต่างประเทศ ',
+  `status_vendor` varchar(255) CHARACTER SET utf8 COLLATE utf8_bin DEFAULT NULL,
+  `web_site1` varchar(255) CHARACTER SET utf8 COLLATE utf8_bin DEFAULT NULL COMMENT 'web cargo tracking',
+  `web_site2` varchar(255) CHARACTER SET utf8 COLLATE utf8_bin DEFAULT NULL COMMENT 'web checking return emptry container',
+  `web_site3` varchar(255) CHARACTER SET utf8 COLLATE utf8_bin DEFAULT NULL COMMENT 'web company',
+  `insr_id` int(11) DEFAULT NULL,
+  `status_truck` varchar(255) CHARACTER SET utf8 COLLATE utf8_bin DEFAULT NULL COMMENT 'บริษัทรับขนส่ง',
+  `status_container_yard` varchar(255) CHARACTER SET utf8 COLLATE utf8_bin DEFAULT NULL COMMENT 'ลานคืนตู้',
+  PRIMARY KEY (`cust_id`)
+) ENGINE=MyISAM AUTO_INCREMENT=230000000 DEFAULT CHARSET=utf8 COLLATE=utf8_bin COMMENT='id=230';
+
+
+CREATE TABLE `ivf_101`.`b_customer_remark` (
+  `remark_id` int(11) NOT NULL AUTO_INCREMENT,
+  `cust_id` int(11) DEFAULT NULL,
+  `remark` varchar(2000) CHARACTER SET utf8 COLLATE utf8_bin DEFAULT NULL,
+  `remark2` varchar(2000) CHARACTER SET utf8 COLLATE utf8_bin DEFAULT NULL,
+  `date_create` varchar(255) CHARACTER SET utf8 COLLATE utf8_bin DEFAULT NULL,
+  `date_modi` varchar(255) CHARACTER SET utf8 COLLATE utf8_bin DEFAULT NULL,
+  `date_cancel` varchar(255) CHARACTER SET utf8 COLLATE utf8_bin DEFAULT NULL,
+  `user_create` varchar(255) CHARACTER SET utf8 COLLATE utf8_bin DEFAULT NULL,
+  `user_modi` varchar(255) CHARACTER SET utf8 COLLATE utf8_bin DEFAULT NULL,
+  `user_cancel` varchar(255) CHARACTER SET utf8 COLLATE utf8_bin DEFAULT NULL,
+  `active` varchar(255) CHARACTER SET utf8 COLLATE utf8_bin DEFAULT NULL,
+  `sort1` varchar(255) CHARACTER SET utf8 COLLATE utf8_bin DEFAULT NULL,
+  `status_show1` varchar(255) CHARACTER SET utf8 COLLATE utf8_bin DEFAULT NULL,
+  `status_show2` varchar(255) CHARACTER SET utf8 COLLATE utf8_bin DEFAULT NULL,
+  `status_show3` varchar(255) CHARACTER SET utf8 COLLATE utf8_bin DEFAULT NULL,
+  PRIMARY KEY (`remark_id`)
+) ENGINE=MyISAM AUTO_INCREMENT=231000000 DEFAULT CHARSET=utf8 COLLATE=utf8_bin COMMENT='id=231';
+
+CREATE TABLE `ivf_101`.`b_customer_tax_invoice` (
+  `tax_invoice_id` int(11) NOT NULL AUTO_INCREMENT,
+  `cust_id` int(11) DEFAULT NULL,
+  `tax_invoice_name_t` varchar(255) CHARACTER SET utf8 COLLATE utf8_bin DEFAULT NULL,
+  `tax_invoice_name_e` varchar(255) CHARACTER SET utf8 COLLATE utf8_bin DEFAULT NULL,
+  `tax_id` varchar(255) CHARACTER SET utf8 COLLATE utf8_bin DEFAULT NULL,
+  `remark` varchar(255) CHARACTER SET utf8 COLLATE utf8_bin DEFAULT NULL,
+  `date_create` varchar(255) CHARACTER SET utf8 COLLATE utf8_bin DEFAULT NULL,
+  `date_modi` varchar(255) CHARACTER SET utf8 COLLATE utf8_bin DEFAULT NULL,
+  `date_cancel` varchar(255) CHARACTER SET utf8 COLLATE utf8_bin DEFAULT NULL,
+  `user_create` varchar(255) CHARACTER SET utf8 COLLATE utf8_bin DEFAULT NULL,
+  `user_modi` varchar(255) CHARACTER SET utf8 COLLATE utf8_bin DEFAULT NULL,
+  `user_cancel` varchar(255) CHARACTER SET utf8 COLLATE utf8_bin DEFAULT NULL,
+  `active` varchar(255) CHARACTER SET utf8 COLLATE utf8_bin DEFAULT NULL,
+  `sort1` varchar(255) CHARACTER SET utf8 COLLATE utf8_bin DEFAULT NULL,
+  PRIMARY KEY (`tax_invoice_id`)
+) ENGINE=MyISAM AUTO_INCREMENT=232000000 DEFAULT CHARSET=utf8 COLLATE=utf8_bin COMMENT='id=232';
+
+CREATE TABLE `ivf_101`.`b_address` (
+  `address_id` int(11) NOT NULL AUTO_INCREMENT,
+  `address_code` varchar(255) CHARACTER SET utf8 COLLATE utf8_bin DEFAULT NULL,
+  `address_name` varchar(255) CHARACTER SET utf8 COLLATE utf8_bin DEFAULT NULL,
+  `line_t1` varchar(255) CHARACTER SET utf8 COLLATE utf8_bin DEFAULT NULL,
+  `line_t2` varchar(255) CHARACTER SET utf8 COLLATE utf8_bin DEFAULT NULL,
+  `line_t3` varchar(255) CHARACTER SET utf8 COLLATE utf8_bin DEFAULT NULL,
+  `line_t4` varchar(255) CHARACTER SET utf8 COLLATE utf8_bin DEFAULT NULL,
+  `line_e1` varchar(255) CHARACTER SET utf8 COLLATE utf8_bin DEFAULT NULL,
+  `line_e2` varchar(255) CHARACTER SET utf8 COLLATE utf8_bin DEFAULT NULL,
+  `line_e3` varchar(255) CHARACTER SET utf8 COLLATE utf8_bin DEFAULT NULL,
+  `line_e4` varchar(255) CHARACTER SET utf8 COLLATE utf8_bin DEFAULT NULL,
+  `prov_id` int(11) DEFAULT NULL,
+  `amphur_id` int(11) DEFAULT NULL,
+  `district_id` int(11) DEFAULT NULL,
+  `zipcode` varchar(255) CHARACTER SET utf8 COLLATE utf8_bin DEFAULT NULL,
+  `email` varchar(255) CHARACTER SET utf8 COLLATE utf8_bin DEFAULT NULL,
+  `email2` varchar(255) CHARACTER SET utf8 COLLATE utf8_bin DEFAULT NULL,
+  `tele` varchar(255) CHARACTER SET utf8 COLLATE utf8_bin DEFAULT NULL,
+  `mobile` varchar(45) CHARACTER SET utf8 COLLATE utf8_bin DEFAULT NULL,
+  `fax` varchar(255) CHARACTER SET utf8 COLLATE utf8_bin DEFAULT NULL,
+  `remark` varchar(2000) CHARACTER SET utf8 COLLATE utf8_bin DEFAULT NULL,
+  `address_type_id` int(11) DEFAULT NULL,
+  `table_id` int(11) DEFAULT NULL,
+  `active` varchar(255) CHARACTER SET utf8 COLLATE utf8_bin DEFAULT NULL,
+  `date_create` varchar(255) CHARACTER SET utf8 COLLATE utf8_bin DEFAULT NULL,
+  `date_modi` varchar(255) CHARACTER SET utf8 COLLATE utf8_bin DEFAULT NULL,
+  `date_cancel` varchar(255) CHARACTER SET utf8 COLLATE utf8_bin DEFAULT NULL,
+  `user_create` varchar(255) CHARACTER SET utf8 COLLATE utf8_bin DEFAULT NULL,
+  `user_modi` varchar(255) CHARACTER SET utf8 COLLATE utf8_bin DEFAULT NULL,
+  `user_cancel` varchar(255) CHARACTER SET utf8 COLLATE utf8_bin DEFAULT NULL,
+  `contact_id` int(11) DEFAULT NULL,
+  `contact_name1` varchar(255) CHARACTER SET utf8 COLLATE utf8_bin DEFAULT NULL,
+  `contact_name_tel1` varchar(255) CHARACTER SET utf8 COLLATE utf8_bin DEFAULT NULL,
+  `contact_id2` int(11) DEFAULT NULL,
+  `contact_name2` varchar(255) CHARACTER SET utf8 COLLATE utf8_bin DEFAULT NULL,
+  `contact_name_tel2` varchar(255) CHARACTER SET utf8 COLLATE utf8_bin DEFAULT NULL,
+  `web_site1` varchar(255) CHARACTER SET utf8 COLLATE utf8_bin DEFAULT NULL,
+  `web_site2` varchar(255) CHARACTER SET utf8 COLLATE utf8_bin DEFAULT NULL,
+  `google_map` varchar(255) CHARACTER SET utf8 COLLATE utf8_bin DEFAULT NULL,
+  `status_default_customer` varchar(255) CHARACTER SET utf8 COLLATE utf8_bin DEFAULT NULL COMMENT 'ใช่เป็นที่อยู่ default บริษัท',
+  `remark2` varchar(2000) CHARACTER SET utf8 COLLATE utf8_bin DEFAULT NULL,
+  `time_open_close` varchar(255) CHARACTER SET utf8 COLLATE utf8_bin DEFAULT NULL COMMENT 'เวลาทำการ',
+  `time_open_close_over_time` varchar(255) CHARACTER SET utf8 COLLATE utf8_bin DEFAULT NULL COMMENT 'เวลาเปิดล่วงเวลา',
+  `web_site3` varchar(255) CHARACTER SET utf8 COLLATE utf8_bin DEFAULT NULL,
+  `over_time` varchar(255) CHARACTER SET utf8 COLLATE utf8_bin DEFAULT NULL,
+  `rate_over_time` varchar(255) CHARACTER SET utf8 COLLATE utf8_bin DEFAULT NULL,
+  `map_pic_path` varchar(255) CHARACTER SET utf8 COLLATE utf8_bin DEFAULT NULL,
+  `status_place_addr` varchar(255) CHARACTER SET utf8 COLLATE utf8_bin DEFAULT NULL COMMENT 'สถานที่ส่งของ',
+  `status_container_yard` varchar(255) CHARACTER SET utf8 COLLATE utf8_bin DEFAULT NULL COMMENT 'ลานคืนตู้',
+  `status_tax` varchar(255) CHARACTER SET utf8 COLLATE utf8_bin DEFAULT NULL,
+  PRIMARY KEY (`address_id`)
+) ENGINE=MyISAM AUTO_INCREMENT=233000000 DEFAULT CHARSET=utf8 COLLATE=utf8_bin COMMENT='id=233';
+
+CREATE TABLE `ivf_101`.`b_address_type` (
+  `address_type_id` int(11) NOT NULL AUTO_INCREMENT,
+  `address_name_t` varchar(255) CHARACTER SET utf8 COLLATE utf8_bin DEFAULT NULL,
+  `address_name_e` varchar(255) CHARACTER SET utf8 COLLATE utf8_bin DEFAULT NULL,
+  `date_create` varchar(255) CHARACTER SET utf8 COLLATE utf8_bin DEFAULT NULL,
+  `date_modi` varchar(255) CHARACTER SET utf8 COLLATE utf8_bin DEFAULT NULL,
+  `date_cancel` varchar(255) CHARACTER SET utf8 COLLATE utf8_bin DEFAULT NULL,
+  `user_create` varchar(255) CHARACTER SET utf8 COLLATE utf8_bin DEFAULT NULL,
+  `user_modi` varchar(255) CHARACTER SET utf8 COLLATE utf8_bin DEFAULT NULL,
+  `user_cancel` varchar(255) CHARACTER SET utf8 COLLATE utf8_bin DEFAULT NULL,
+  `active` varchar(255) CHARACTER SET utf8 COLLATE utf8_bin DEFAULT NULL,
+  `remark` varchar(255) CHARACTER SET utf8 COLLATE utf8_bin DEFAULT NULL,
+  PRIMARY KEY (`address_type_id`)
+) ENGINE=MyISAM AUTO_INCREMENT=234000000 DEFAULT CHARSET=utf8 COLLATE=utf8_bin COMMENT='id=234';
+
+CREATE TABLE `ivf_101`.`b_bank` (
+  `bank_id` int(11) NOT NULL AUTO_INCREMENT,
+  `bank_code` varchar(255) CHARACTER SET utf8 COLLATE utf8_bin DEFAULT NULL,
+  `bank_name_t` varchar(255) CHARACTER SET utf8 COLLATE utf8_bin DEFAULT NULL,
+  `bank_name_e` varchar(255) CHARACTER SET utf8 COLLATE utf8_bin DEFAULT NULL,
+  `active` varchar(255) CHARACTER SET utf8 COLLATE utf8_bin DEFAULT NULL,
+  `remark` varchar(255) CHARACTER SET utf8 COLLATE utf8_bin DEFAULT NULL,
+  `date_create` varchar(255) CHARACTER SET utf8 COLLATE utf8_bin DEFAULT NULL,
+  `date_modi` varchar(255) CHARACTER SET utf8 COLLATE utf8_bin DEFAULT NULL,
+  `date_cancel` varchar(255) CHARACTER SET utf8 COLLATE utf8_bin DEFAULT NULL,
+  `user_create` varchar(255) CHARACTER SET utf8 COLLATE utf8_bin DEFAULT NULL,
+  `user_modi` varchar(255) CHARACTER SET utf8 COLLATE utf8_bin DEFAULT NULL,
+  `user_cancel` varchar(255) CHARACTER SET utf8 COLLATE utf8_bin DEFAULT NULL,
+  `sort1` varchar(255) CHARACTER SET utf8 COLLATE utf8_bin DEFAULT NULL,
+  PRIMARY KEY (`bank_id`)
+) ENGINE=MyISAM AUTO_INCREMENT=235000000 DEFAULT CHARSET=utf8 COLLATE=utf8_bin COMMENT='id=235';
+
+CREATE TABLE `ivf_101`.`b_bank_book` (
+  `bank_book_id` int(11) NOT NULL AUTO_INCREMENT,
+  `bank_id` int(11) DEFAULT NULL,
+  `bank_book_name_t` varchar(255) CHARACTER SET utf8 COLLATE utf8_bin DEFAULT NULL,
+  `bank_book_name_e` varchar(255) CHARACTER SET utf8 COLLATE utf8_bin DEFAULT NULL,
+  `actvice` varchar(255) CHARACTER SET utf8 COLLATE utf8_bin DEFAULT NULL,
+  `date_create` varchar(255) CHARACTER SET utf8 COLLATE utf8_bin DEFAULT NULL,
+  `date_modi` varchar(255) CHARACTER SET utf8 COLLATE utf8_bin DEFAULT NULL,
+  `date_cancel` varchar(255) CHARACTER SET utf8 COLLATE utf8_bin DEFAULT NULL,
+  `user_create` varchar(255) CHARACTER SET utf8 COLLATE utf8_bin DEFAULT NULL,
+  `user_modi` varchar(255) CHARACTER SET utf8 COLLATE utf8_bin DEFAULT NULL,
+  `user_cancel` varchar(255) CHARACTER SET utf8 COLLATE utf8_bin DEFAULT NULL,
+  `remark` varchar(255) CHARACTER SET utf8 COLLATE utf8_bin DEFAULT NULL,
+  `book_no` varchar(255) CHARACTER SET utf8 COLLATE utf8_bin DEFAULT NULL,
+  PRIMARY KEY (`bank_book_id`)
+) ENGINE=MyISAM AUTO_INCREMENT=236000000 DEFAULT CHARSET=utf8 COLLATE=utf8_bin COMMENT='id=236';
+
+CREATE TABLE `ivf_101`.`b_company_bank` (
+  `comp_bank_id` int(11) NOT NULL AUTO_INCREMENT,
+  `comp_id` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
+  `comp_bank_name_t` varchar(255) CHARACTER SET utf8 COLLATE utf8_bin DEFAULT NULL,
+  `comp_bank_branch` varchar(255) CHARACTER SET utf8 COLLATE utf8_bin DEFAULT NULL,
+  `comp_bank_active` varchar(255) CHARACTER SET utf8 COLLATE utf8_bin DEFAULT NULL,
+  `acc_number` varchar(255) CHARACTER SET utf8 COLLATE utf8_bin DEFAULT NULL,
+  `remark` varchar(255) CHARACTER SET utf8 COLLATE utf8_bin DEFAULT NULL,
+  `date_create` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
+  `date_modi` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
+  `date_cancel` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
+  `user_create` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
+  `user_modi` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
+  `user_cancel` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
+  `active` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
+  `bank_id` int(11) DEFAULT NULL,
+  PRIMARY KEY (`comp_bank_id`)
+) ENGINE=MyISAM AUTO_INCREMENT=237000000 DEFAULT CHARSET=utf8 COLLATE=utf8_bin COMMENT='id=237';
+
+CREATE TABLE `ivf_101`.`b_contact` (
+  `contact_id` int(11) NOT NULL AUTO_INCREMENT,
+  `cust_id` int(11) DEFAULT NULL,
+  `contact_code` varchar(255) CHARACTER SET utf8 COLLATE utf8_bin DEFAULT NULL,
+  `username` varchar(255) CHARACTER SET utf8 COLLATE utf8_bin DEFAULT NULL,
+  `password1` varchar(255) CHARACTER SET utf8 COLLATE utf8_bin DEFAULT NULL,
+  `prefix_id` int(11) DEFAULT NULL,
+  `contact_fname_t` varchar(255) CHARACTER SET utf8 COLLATE utf8_bin DEFAULT NULL,
+  `contact_fname_e` varchar(255) CHARACTER SET utf8 COLLATE utf8_bin DEFAULT NULL,
+  `contact_lname_t` varchar(255) CHARACTER SET utf8 COLLATE utf8_bin DEFAULT NULL,
+  `contact_lname_e` varchar(255) CHARACTER SET utf8 COLLATE utf8_bin DEFAULT NULL,
+  `active` varchar(255) CHARACTER SET utf8 COLLATE utf8_bin DEFAULT NULL,
+  `priority` varchar(255) CHARACTER SET utf8 COLLATE utf8_bin DEFAULT NULL,
+  `tele` varchar(255) CHARACTER SET utf8 COLLATE utf8_bin DEFAULT NULL,
+  `mobile` varchar(255) CHARACTER SET utf8 COLLATE utf8_bin DEFAULT NULL,
+  `fax` varchar(255) CHARACTER SET utf8 COLLATE utf8_bin DEFAULT NULL,
+  `email` varchar(255) CHARACTER SET utf8 COLLATE utf8_bin DEFAULT NULL,
+  `posi_id` varchar(255) CHARACTER SET utf8 COLLATE utf8_bin DEFAULT NULL,
+  `posi_name` varchar(255) CHARACTER SET utf8 COLLATE utf8_bin DEFAULT NULL,
+  `date_create` varchar(255) CHARACTER SET utf8 COLLATE utf8_bin DEFAULT NULL,
+  `date_modi` varchar(255) CHARACTER SET utf8 COLLATE utf8_bin DEFAULT NULL,
+  `date_cancel` varchar(255) CHARACTER SET utf8 COLLATE utf8_bin DEFAULT NULL,
+  `user_create` varchar(255) CHARACTER SET utf8 COLLATE utf8_bin DEFAULT NULL,
+  `user_modi` varchar(255) CHARACTER SET utf8 COLLATE utf8_bin DEFAULT NULL,
+  `user_cancel` varchar(255) CHARACTER SET utf8 COLLATE utf8_bin DEFAULT NULL,
+  `remark` varchar(2000) CHARACTER SET utf8 COLLATE utf8_bin DEFAULT NULL,
+  `email2` varchar(255) CHARACTER SET utf8 COLLATE utf8_bin DEFAULT NULL,
+  `nick_name` varchar(255) CHARACTER SET utf8 COLLATE utf8_bin DEFAULT NULL COMMENT 'ชื่อเล่น',
+  `work_response` varchar(255) CHARACTER SET utf8 COLLATE utf8_bin DEFAULT NULL COMMENT 'งานที่รับผิดชอบ',
+  `table_id` int(11) DEFAULT NULL,
+  `status_insr_email` varchar(255) CHARACTER SET utf8 COLLATE utf8_bin DEFAULT NULL,
+  PRIMARY KEY (`contact_id`)
+) ENGINE=MyISAM AUTO_INCREMENT=238000000 DEFAULT CHARSET=utf8 COLLATE=utf8_bin COMMENT='id=238';
+
+
 
 

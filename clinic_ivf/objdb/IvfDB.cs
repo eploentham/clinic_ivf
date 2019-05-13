@@ -89,6 +89,13 @@ namespace clinic_ivf.objdb
         public OldLabItemGroupDB olabgDB;
         public EggStiDB eggsDB;
         public EggStiDayDB eggsdDB;
+        public StockSubNameDB stknDB;
+        public StockRecDB stkrDB;
+        public StockRecDetailDB stkrdDB;
+        public StockDrawDB stkdDB;
+        public StockDrawDetailDB stkddDB;
+        public StockReturnDB stkreDB;
+        public StockReturnDetailDB stkredDB;
         public IvfDB(ConnectDB c)
         {
             conn = c;
@@ -168,6 +175,13 @@ namespace clinic_ivf.objdb
             olabgDB = new OldLabItemGroupDB(conn);
             eggsDB = new EggStiDB(conn);
             eggsdDB = new EggStiDayDB(conn);
+            stknDB = new StockSubNameDB(conn);
+            stkrDB = new StockRecDB(conn);
+            stkrdDB = new StockRecDetailDB(conn);
+            stkdDB = new StockDrawDB(conn);
+            stkddDB = new StockDrawDetailDB(conn);
+            stkreDB = new StockReturnDB(conn);
+            stkredDB = new StockReturnDetailDB(conn);
 
             Console.WriteLine("ivfDB end");
         }

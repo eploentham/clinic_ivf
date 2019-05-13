@@ -502,6 +502,12 @@
     <Compile Include="gui\FrmStockOnhand.Designer.cs">
       <DependentUpon>FrmStockOnhand.cs</DependentUpon>
     </Compile>
+    <Compile Include="gui\FrmStockRec.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="gui\FrmStockRec.Designer.cs">
+      <DependentUpon>FrmStockRec.cs</DependentUpon>
+    </Compile>
     <Compile Include="gui\FrmVisitAdd.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -596,6 +602,13 @@
     <Compile Include="objdb\OrTOperationDB.cs" />
     <Compile Include="objdb\PatientAppointmentDB.cs" />
     <Compile Include="objdb\PatientAppointmentTextDB.cs" />
+    <Compile Include="objdb\StockDrawDB.cs" />
+    <Compile Include="objdb\StockDrawDetailDB.cs" />
+    <Compile Include="objdb\StockRecDB.cs" />
+    <Compile Include="objdb\StockRecDetailDB.cs" />
+    <Compile Include="objdb\StockReturnDB.cs" />
+    <Compile Include="objdb\StockReturnDetailDB.cs" />
+    <Compile Include="objdb\StockSubNameDB.cs" />
     <Compile Include="object1\CellNoteManager.cs" />
     <Compile Include="object1\DocGroupScan.cs" />
     <Compile Include="object1\DocGroupSubScan.cs" />
@@ -651,6 +664,13 @@
     <Compile Include="object1\PatientImage.cs" />
     <Compile Include="object1\RDNIDWRAPPER.cs" />
     <Compile Include="object1\RecentDocumentList.cs" />
+    <Compile Include="object1\StockDraw.cs" />
+    <Compile Include="object1\StockDrawDetail.cs" />
+    <Compile Include="object1\StockRec.cs" />
+    <Compile Include="object1\StockRecDetail.cs" />
+    <Compile Include="object1\StockReturn.cs" />
+    <Compile Include="object1\StockReturnDetail.cs" />
+    <Compile Include="object1\StockSubName.cs" />
     <Compile Include="object1\Visit.cs" />
     <Compile Include="objdb\VisitQueueTransferDB.cs" />
     <Compile Include="object1\OldAgent.cs" />
@@ -994,6 +1014,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="gui\FrmStockOnhand.resx">
       <DependentUpon>FrmStockOnhand.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="gui\FrmStockRec.resx">
+      <DependentUpon>FrmStockRec.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="gui\FrmVisitAdd.resx">
       <DependentUpon>FrmVisitAdd.cs</DependentUpon>
