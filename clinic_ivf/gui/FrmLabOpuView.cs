@@ -170,7 +170,7 @@ namespace clinic_ivf.gui
             //FilterRow fr = new FilterRow(grfExpn);
 
             grfReq.AfterRowColChange += GrfReq_AfterRowColChange;
-            //grfExpnC.CellButtonClick += new C1.Win.C1FlexGrid.RowColEventHandler(this.grfDept_CellButtonClick);
+            grfReq.DoubleClick += GrfReq_DoubleClick;
             //grfExpnC.CellChanged += new C1.Win.C1FlexGrid.RowColEventHandler(this.grfDept_CellChanged);
             ContextMenu menuGw = new ContextMenu();
             menuGw.MenuItems.Add("ป้อน LAB OPU/FET", new EventHandler(ContextMenu_edit));
@@ -181,6 +181,13 @@ namespace clinic_ivf.gui
 
             theme1.SetTheme(grfReq, "Office2010Blue");
         }
+
+        private void GrfReq_DoubleClick(object sender, EventArgs e)
+        {
+            //throw new NotImplementedException();
+            ContextMenu_edit(null, null);
+        }
+
         private void ContextMenu_Gw_time_modi(object sender, System.EventArgs e)
         {
             String chk = "", name = "", id = "";
@@ -386,6 +393,20 @@ namespace clinic_ivf.gui
             }
             grfReq.Cols[colRqId].Visible = false;
             grfReq.Cols[colRqVn].Visible = false;
+            grfReq.Cols[colRqReqNum].AllowEditing = false;
+            grfReq.Cols[colRqHn].AllowEditing = false;
+            grfReq.Cols[colRqVn].AllowEditing = false;
+            grfReq.Cols[colRqName].AllowEditing = false;
+            grfReq.Cols[colRqDate].AllowEditing = false;
+            grfReq.Cols[colRqRemark].AllowEditing = false;
+            grfReq.Cols[colOPUDate].AllowEditing = false;
+            grfReq.Cols[colOPUTime].AllowEditing = false;
+            grfReq.Cols[colOPUTimeModi].AllowEditing = false;
+            grfReq.Cols[colRqLabName].AllowEditing = false;
+            grfReq.Cols[colRqHnMale].AllowEditing = false;
+            grfReq.Cols[colRqNameMale].AllowEditing = false;
+            grfReq.Cols[colRqHnDonor].AllowEditing = false;
+            grfReq.Cols[colRqNameDonor].AllowEditing = false;
             CellNoteManager mgr = new CellNoteManager(grfReq);
             //grfReq.Cols[coldt].Visible = false;
         }
@@ -399,7 +420,7 @@ namespace clinic_ivf.gui
             //FilterRow fr = new FilterRow(grfExpn);
 
             grfProc.AfterRowColChange += GrfProc_AfterRowColChange;
-            //grfExpnC.CellButtonClick += new C1.Win.C1FlexGrid.RowColEventHandler(this.grfDept_CellButtonClick);
+            grfProc.DoubleClick += GrfProc_DoubleClick;
             //grfExpnC.CellChanged += new C1.Win.C1FlexGrid.RowColEventHandler(this.grfDept_CellChanged);
             ContextMenu menuGw = new ContextMenu();
             menuGw.MenuItems.Add("ป้อน LAB OPU/FET", new EventHandler(ContextMenu_proc_edit));
@@ -410,6 +431,13 @@ namespace clinic_ivf.gui
 
             theme1.SetTheme(grfProc, "Office2010Blue");
         }
+
+        private void GrfProc_DoubleClick(object sender, EventArgs e)
+        {
+            //throw new NotImplementedException();
+            ContextMenu_proc_edit(null, null);
+        }
+
         private void setGrfProc()
         {
             grfProc.DataSource = null;
@@ -468,6 +496,11 @@ namespace clinic_ivf.gui
                 i++;
             }
             grfProc.Cols[colRqId].Visible = false;
+            grfProc.Cols[colPcOpuNum].AllowEditing = false;
+            grfProc.Cols[colPcHn].AllowEditing = false;
+            grfProc.Cols[colPcPttName].AllowEditing = false;
+            grfProc.Cols[colPcDate].AllowEditing = false;
+            grfProc.Cols[colPcRemark].AllowEditing = false;
             //grfReq.Cols[coldt].Visible = false;
         }
         private void GrfProc_AfterRowColChange(object sender, RangeEventArgs e)

@@ -28,6 +28,7 @@ namespace clinic_ivf.gui
         int colID = 1, colVNshow = 2, colPttHn = 3, colPttName = 4, colVsDate = 5, colVsTime = 6, colVsEtime = 7, colStatus = 8, colPttId=9, colVn=10, colDtr=11;
         int colSID = 1, colSVN = 2, colSPttHn = 3, colSPttName = 4, colSVsDate = 5, colSVsTime = 6, colSVsEtime = 7, colSStatus = 8, colSPttId = 9;
         int colRID = 1, colRVN = 2, colRPttHn = 3, colRPttName = 4, colRVsDate = 5, colRPttId = 6;
+        int colLID = 1, colLVN = 2, colLPttHn = 3, colLPttName = 4, colLlabname = 5, colLPttId = 6;
 
         C1FlexGrid grfQue, grfDiag, grfFinish, grfSearch, grfLab;
         C1SuperTooltip stt;
@@ -84,6 +85,7 @@ namespace clinic_ivf.gui
             setGrfFinish();
             initGrfSearch();
             initGrfLab();
+            setGrfLab("");
 
             int timerlab = 0;
             int.TryParse(ic.iniC.timerlabreqaccept, out timerlab);
@@ -702,7 +704,7 @@ namespace clinic_ivf.gui
             //FilterRow fr = new FilterRow(grfExpn);
 
             grfLab.AfterRowColChange += GrfLab_AfterRowColChange;
-            //grfExpnC.CellButtonClick += new C1.Win.C1FlexGrid.RowColEventHandler(this.grfDept_CellButtonClick);
+            grfLab.DoubleClick += GrfLab_DoubleClick;
             //grfExpnC.CellChanged += new C1.Win.C1FlexGrid.RowColEventHandler(this.grfDept_CellChanged);
             ContextMenu menuGw = new ContextMenu();
             //menuGw.MenuItems.Add("&แก้ไข รายการเบิก", new EventHandler(ContextMenu_edit));
@@ -717,6 +719,13 @@ namespace clinic_ivf.gui
             //theme1.SetTheme(tabFinish, "Office2010Blue");
 
         }
+
+        private void GrfLab_DoubleClick(object sender, EventArgs e)
+        {
+            //throw new NotImplementedException();
+            ContextMenu_Result_Lab_OPU(null, null);
+        }
+
         private void setGrfLab(String search)
         {
             //grfDept.Rows.Count = 7;
@@ -746,12 +755,12 @@ namespace clinic_ivf.gui
             //grfExpn.Rows.Count = dt.Rows.Count + 1;
             grfLab.Rows.Count = dt.Rows.Count + 1;
             grfLab.Cols.Count = 10;
-            C1TextBox txt = new C1TextBox();
+            //C1TextBox txt = new C1TextBox();
             //C1ComboBox cboproce = new C1ComboBox();
             //ic.ivfDB.itmDB.setCboItem(cboproce);
-            grfLab.Cols[colPttHn].Editor = txt;
-            grfLab.Cols[colPttName].Editor = txt;
-            grfLab.Cols[colVsDate].Editor = txt;
+            //grfLab.Cols[colPttHn].Editor = txt;
+            //grfLab.Cols[colPttName].Editor = txt;
+            //grfLab.Cols[colVsDate].Editor = txt;
 
             grfLab.Cols[colVNshow].Width = 120;
             grfLab.Cols[colPttHn].Width = 120;
@@ -765,10 +774,10 @@ namespace clinic_ivf.gui
             //grdFlex.Cols[colID].Caption = "no";
             //grfDept.Cols[colCode].Caption = "รหัส";
 
-            grfLab.Cols[colVNshow].Caption = "VN";
-            grfLab.Cols[colPttHn].Caption = "HN";
-            grfLab.Cols[colPttName].Caption = "Name";
-            grfLab.Cols[colVsDate].Caption = "Date";
+            grfLab.Cols[colLVN].Caption = "VN";
+            grfLab.Cols[colLPttHn].Caption = "HN";
+            grfLab.Cols[colLPttName].Caption = "Name";
+            grfLab.Cols[colLlabname].Caption = "LAB";
             grfLab.Cols[colVsTime].Caption = "Time visit";
             grfLab.Cols[colVsEtime].Caption = "Time finish";
             grfLab.Cols[colStatus].Caption = "Status";
@@ -790,11 +799,11 @@ namespace clinic_ivf.gui
             foreach (DataRow row in dt.Rows)
             {
                 grfLab[i, 0] = i;
-                grfLab[i, colRID] = row["req_id"].ToString();
-                grfLab[i, colRVN] = row["VN"].ToString();
-                grfLab[i, colRPttHn] = row["PIDS"].ToString();
-                grfLab[i, colRPttName] = row["PName"].ToString();
-                //grfLab[i, colVsDate] = ic.datetoShow(row["VDate"]);
+                grfLab[i, colLID] = row["req_id"].ToString();
+                grfLab[i, colLVN] = row["VN"].ToString();
+                grfLab[i, colLPttHn] = row["PIDS"].ToString();
+                grfLab[i, colLPttName] = row["name_female"].ToString();
+                grfLab[i, colLlabname] = row["SName"].ToString();
                 //grfLab[i, colVsTime] = row["VStartTime"].ToString();
                 //grfLab[i, colVsEtime] = row["VEndTime"].ToString();
                 //grfLab[i, colStatus] = row["VName"].ToString();
@@ -811,9 +820,10 @@ namespace clinic_ivf.gui
             }
             CellNoteManager mgr = new CellNoteManager(grfLab);
             grfLab.Cols[colRID].Visible = false;
-            grfLab.Cols[colRVN].AllowEditing = false;
-            grfLab.Cols[colRPttHn].AllowEditing = false;
-            grfLab.Cols[colRPttName].AllowEditing = false;
+            grfLab.Cols[colLVN].AllowEditing = false;
+            grfLab.Cols[colLPttHn].AllowEditing = false;
+            grfLab.Cols[colLPttName].AllowEditing = false;
+            grfLab.Cols[colLlabname].AllowEditing = false;
             //theme1.SetTheme(grfQue, ic.theme);
 
         }
@@ -1249,16 +1259,17 @@ namespace clinic_ivf.gui
             String chk = "", name = "", reqid = "", pttId = "";
             if (grfLab.Row < 0) return;
 
-            reqid = grfLab[grfLab.Row, colRID] != null ? grfLab[grfLab.Row, colRID].ToString() : "";
+            reqid = grfLab[grfLab.Row, colLID] != null ? grfLab[grfLab.Row, colLID].ToString() : "";
+            name = grfLab[grfLab.Row, colLPttName] != null ? grfLab[grfLab.Row, colLPttName].ToString() : "";
             LabRequest req = new LabRequest();
             req = ic.ivfDB.lbReqDB.selectByPk1(reqid);
             LabOpu opu = new LabOpu();
-            opu = ic.ivfDB.opuDB.selectByPk1(req.req_id);
+            opu = ic.ivfDB.opuDB.selectByReqID(req.req_id);
             FrmLabOPUAdd2 frm = new FrmLabOPUAdd2(ic,"", opu.opu_id);
             String txt = "";
             if (!name.Equals(""))
             {
-                txt = " " + name;
+                txt = "ผลLAB " + name;
             }
 
             frm.FormBorderStyle = FormBorderStyle.None;

@@ -43,7 +43,7 @@ namespace clinic_ivf.objdb
             opuEmDev.staff_id = "staff_id";
             opuEmDev.checked_id = "checked_id";
             opuEmDev.embryo_dev_date = "embryo_dev_date";
-            opuEmDev.desc3 = "desc4";
+            opuEmDev.desc4 = "desc4";
 
             opuEmDev.table = "lab_t_opu_embryo_dev";
             opuEmDev.pkField = "opu_embryo_dev_id";
@@ -400,7 +400,7 @@ namespace clinic_ivf.objdb
                 ", opuEmDev.day as day1, opuEmDev.opu_embryo_dev_no as no1, opuEmDev.desc0  as no1_desc0, opuEmDev.path_pic as no1_pathpic, opuEmDev.desc1 as no1_desc1" +
                 ", opuEmDev.desc2 as no1_desc2, opuEmDev.desc3 as no1_desc3, opu.opu_id, opu.opu_code, 'Number of transfer' as footer1" +
                 ", 'Number of Freeze' as footer2,'Number of Discard' as footer3, opu.remark as footer4,'' as footer5, 'st# = straw number' as footer6 " +
-                ", opu.embryo_for_et_number_of_transfer, opu.embryo_for_et_number_of_freeze,opu.embryo_for_et_number_of_discard  " +
+                ", opu.embryo_for_et_number_of_transfer, opu.embryo_for_et_number_of_freeze,opu.embryo_for_et_number_of_discard, opuEmDev.desc4 as no1_desc4  " +
                 "From " + opuEmDev.table + " opuEmDev " +
                 "Left Join lab_t_opu opu on opu.opu_id = opuEmDev.opu_fet_id " +
                 "Left Join lab_b_procedure proce on proce.proce_id = opu.proce_id " +

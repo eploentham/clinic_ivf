@@ -230,7 +230,9 @@ namespace clinic_ivf.gui
             }
             dt.Rows[0]["embryo_dev_1_staff_name"] = ic.ivfDB.stfDB.getStaffNameBylStf(stfid);
             dt.Rows[0]["embryo_dev_1_checked_name"] = ic.ivfDB.stfDB.getStaffNameBylStf(checkedid);
-            dt.Rows[0]["embryo_for_et_doctor"] = ic.ivfDB.dtrOldDB.getlDtrNameByID(dt.Rows[0]["embryo_for_et_doctor"].ToString());
+            
+            dt.Rows[0]["embryo_for_et_doctor"] = dt.Rows[0]["embryo_for_et_doctor"].ToString().Equals("") ? "-" : ic.ivfDB.dtrOldDB.getlDtrNameByID(dt.Rows[0]["embryo_for_et_doctor"].ToString());
+
             dt.Rows[0]["embryo_dev_1_date"] = ic.datetoShow(embryodevdate).Replace("-", "/");
             String date1 = "";
             date1 = ic.datetoShow(dt.Rows[0][ic.ivfDB.opuDB.opu.dob_female].ToString());
@@ -369,8 +371,10 @@ namespace clinic_ivf.gui
                             }
                             loadedImage.Save(filename1);
                             row["no1_pathpic"] = System.IO.Directory.GetCurrentDirectory() + "\\" + filename1;
-                            st = row["no1_desc2"].ToString();
+                            //st = row["no1_desc2"].ToString();
+                            st = row["no1_desc3"].ToString();
                             row["no1_desc2"] = "st# " + st;
+                            row["no1_desc3"] = row["no1_desc4"].ToString();
                             //}
                         }
                         i++;

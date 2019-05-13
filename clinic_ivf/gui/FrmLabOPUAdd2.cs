@@ -45,6 +45,7 @@ namespace clinic_ivf.gui
         Boolean grf2Focus = false, grf3Focus = false, grf5Focus = false, grf6Focus = false;
         private bool prefixSeen;
         String theme2 = "Office2007Blue";       //Office2016Black       BeigeOne
+        String flagEdit = "";
 
         public FrmLabOPUAdd2(IvfControl ic, String reqid, String opuid)
         {
@@ -52,6 +53,7 @@ namespace clinic_ivf.gui
             this.ic = ic;
             reqId = reqid;
             opuId = opuid;
+
             initConfig();
         }
         private void initConfig()
@@ -150,6 +152,26 @@ namespace clinic_ivf.gui
             setTheme();
             char c = '\u00B5';
             label86.Text = c.ToString()+"l";
+
+            if (!ic.user.status_module_lab.Equals("1"))
+            {
+                btnSave.Enabled = false;
+                btnSaveMatura.Enabled = false;
+                btnSaveFertili.Enabled = false;
+                btnSaveSperm.Enabled = false;
+                btnSaveEmbryoFreezDay0.Enabled = false;
+                btnSaveEmbryoFreezDay1.Enabled = false;
+                btnSaveDay2.Enabled = false;
+                btnSaveDay3.Enabled = false;
+                btnSaveDay5.Enabled = false;
+                btnSaveDay6.Enabled = false;
+                btnSaveEmbryoEt.Enabled = false;
+                btnSaveImg2.Enabled = false;
+                btnSaveImg3.Enabled = false;
+                btnSaveImg5.Enabled = false;
+                btnSaveImg6.Enabled = false;
+
+            }
         }
 
         private void BtnResultDay5_MouseMove(object sender, MouseEventArgs e)
@@ -498,7 +520,18 @@ namespace clinic_ivf.gui
             switch (keyData)
             {
                 case Keys.S | Keys.Control :
-                    saveLabOPU();
+                    if (!ic.user.status_module_lab.Equals("1"))
+                    {
+                        ic.cStf.staff_id = "";
+                        Boolean chkSave = false;
+                        FrmPasswordConfirm frm = new FrmPasswordConfirm(ic);
+                        frm.ShowDialog(this);
+                        if (!ic.cStf.staff_id.Equals(""))
+                        {
+                            saveLabOPU();
+                        }
+                    }
+                        
                     // ... Process Shift+Ctrl+Alt+B ...
                     //MessageBox.Show("1111", "");
                     return true; // signal that we've processed this key
@@ -1327,8 +1360,8 @@ namespace clinic_ivf.gui
                                         long chk = 0;
                                         if (long.TryParse(re, out chk))
                                         {
-
-                                            ic.savePicOPUtoServer(txtOpuCode.Text, filename, path);
+                                            if (File.Exists(path))
+                                                ic.savePicOPUtoServer(txtOpuCode.Text, filename, path);
                                             grfDay6Img.Rows[i - 1].StyleNew.BackColor = color;
                                         }
                                     }
@@ -1394,8 +1427,8 @@ namespace clinic_ivf.gui
                                         long chk = 0;
                                         if (long.TryParse(re, out chk))
                                         {
-
-                                            ic.savePicOPUtoServer(txtOpuCode.Text, filename, path);
+                                            if (File.Exists(path))
+                                                ic.savePicOPUtoServer(txtOpuCode.Text, filename, path);
                                             grfDay5Img.Rows[i - 1].StyleNew.BackColor = color;
                                         }
                                     }
@@ -1619,7 +1652,8 @@ namespace clinic_ivf.gui
                                         long chk = 0;
                                         if (long.TryParse(re, out chk))
                                         {
-                                            ic.savePicOPUtoServer(txtOpuCode.Text, filename, path);
+                                            if (File.Exists(path))
+                                                ic.savePicOPUtoServer(txtOpuCode.Text, filename, path);
                                             grfDay2Img.Rows[i - 1].StyleNew.BackColor = color;
                                         }
                                     }

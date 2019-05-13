@@ -186,7 +186,8 @@ namespace clinic_ivf.objdb
             }
             if (startdate.Length > 0)
             {
-                wheredate = " and lreq.req_date >= '" + startdate + "' and lreq.req_date <= '" + enddate + "' ";
+                //wheredate = " and lreq.req_date >= '" + startdate + "' and lreq.req_date <= '" + enddate + "' ";
+                wheredate = " and lreq.result_date >= '" + startdate + " 00:00:00' and lreq.result_date <= '" + enddate + " 23:59:59' ";
             }
             String sql = "Select lreq.req_id, concat(SurfixName.SurfixName,' ',ptt.PName,' ',ptt.PSurname) as name_female" +
                 ", Doctor.ID, Doctor.Name as dtr_name, Doctor.ID as dtrid, ifnull(lreq.remark,'') as remark, DateOfBirth as dob" +
