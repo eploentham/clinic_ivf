@@ -295,24 +295,49 @@
             this.label46 = new System.Windows.Forms.Label();
             this.c1TextBox19 = new C1.Win.C1Input.C1TextBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.panel30 = new System.Windows.Forms.Panel();
+            this.chkPmhSubsYes = new System.Windows.Forms.RadioButton();
+            this.chkPmhSubsNo = new System.Windows.Forms.RadioButton();
+            this.chkPmhSubs = new C1.Win.C1Input.C1TextBox();
+            this.panel29 = new System.Windows.Forms.Panel();
+            this.chkPmhSurgYes = new System.Windows.Forms.RadioButton();
+            this.chkPmhSurgNo = new System.Windows.Forms.RadioButton();
+            this.chkPmhSurg = new C1.Win.C1Input.C1TextBox();
             this.label52 = new System.Windows.Forms.Label();
             this.label20 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.label47 = new System.Windows.Forms.Label();
-            this.label45 = new System.Windows.Forms.Label();
-            this.label38 = new System.Windows.Forms.Label();
-            this.label43 = new System.Windows.Forms.Label();
-            this.txtPmhMenLmp = new C1.Win.C1Input.C1TextBox();
-            this.txtPmhMenAmt = new C1.Win.C1Input.C1TextBox();
-            this.label36 = new System.Windows.Forms.Label();
-            this.label37 = new System.Windows.Forms.Label();
-            this.label44 = new System.Windows.Forms.Label();
-            this.c1TextBox13 = new C1.Win.C1Input.C1TextBox();
-            this.label41 = new System.Windows.Forms.Label();
-            this.label39 = new System.Windows.Forms.Label();
+            this.panel36 = new System.Windows.Forms.Panel();
+            this.chkPmhMenLmp = new System.Windows.Forms.RadioButton();
+            this.chkPmhMenIrr = new System.Windows.Forms.RadioButton();
+            this.chkPmhMenReg = new System.Windows.Forms.RadioButton();
+            this.txtPmhMenDay = new C1.Win.C1Input.C1TextBox();
+            this.label40 = new System.Windows.Forms.Label();
             this.txtPmhMenInter = new C1.Win.C1Input.C1TextBox();
             this.label42 = new System.Windows.Forms.Label();
-            this.label40 = new System.Windows.Forms.Label();
+            this.txtPmhMenLmp = new C1.Win.C1Input.C1TextBox();
+            this.label43 = new System.Windows.Forms.Label();
+            this.label41 = new System.Windows.Forms.Label();
+            this.txtPmhMenAmt = new C1.Win.C1Input.C1TextBox();
+            this.label44 = new System.Windows.Forms.Label();
+            this.panel35 = new System.Windows.Forms.Panel();
+            this.chkPmhTypeSec = new System.Windows.Forms.RadioButton();
+            this.chkPmhTypePri = new System.Windows.Forms.RadioButton();
+            this.txtPmhType = new C1.Win.C1Input.C1TextBox();
+            this.label38 = new System.Windows.Forms.Label();
+            this.c1TextBox13 = new C1.Win.C1Input.C1TextBox();
+            this.label37 = new System.Windows.Forms.Label();
+            this.panel34 = new System.Windows.Forms.Panel();
+            this.chkPmhProvYes = new System.Windows.Forms.RadioButton();
+            this.chkPmhProvNo = new System.Windows.Forms.RadioButton();
+            this.chkPmhProv = new C1.Win.C1Input.C1TextBox();
+            this.panel33 = new System.Windows.Forms.Panel();
+            this.chkPmhPapsYes = new System.Windows.Forms.RadioButton();
+            this.chkPmhPapsNo = new System.Windows.Forms.RadioButton();
+            this.txtPmhPaps = new C1.Win.C1Input.C1TextBox();
+            this.label47 = new System.Windows.Forms.Label();
+            this.label45 = new System.Windows.Forms.Label();
+            this.label36 = new System.Windows.Forms.Label();
+            this.label39 = new System.Windows.Forms.Label();
             this.txtPmhPttName = new C1.Win.C1Input.C1TextBox();
             this.txtPmhPttMaleName = new C1.Win.C1Input.C1TextBox();
             this.label21 = new System.Windows.Forms.Label();
@@ -641,31 +666,8 @@
             this.label92 = new System.Windows.Forms.Label();
             this.label93 = new System.Windows.Forms.Label();
             this.label94 = new System.Windows.Forms.Label();
-            this.panel29 = new System.Windows.Forms.Panel();
-            this.chkPmhSurgYes = new System.Windows.Forms.RadioButton();
-            this.chkPmhSurgNo = new System.Windows.Forms.RadioButton();
-            this.chkPmhSurg = new C1.Win.C1Input.C1TextBox();
-            this.panel30 = new System.Windows.Forms.Panel();
-            this.chkPmhSubsYes = new System.Windows.Forms.RadioButton();
-            this.chkPmhSubsNo = new System.Windows.Forms.RadioButton();
-            this.chkPmhSubs = new C1.Win.C1Input.C1TextBox();
-            this.panel33 = new System.Windows.Forms.Panel();
-            this.chkPmhPapsYes = new System.Windows.Forms.RadioButton();
-            this.chkPmhPapsNo = new System.Windows.Forms.RadioButton();
-            this.txtPmhPaps = new C1.Win.C1Input.C1TextBox();
-            this.panel34 = new System.Windows.Forms.Panel();
-            this.chkPmhProvYes = new System.Windows.Forms.RadioButton();
-            this.chkPmhProvNo = new System.Windows.Forms.RadioButton();
-            this.chkPmhProv = new C1.Win.C1Input.C1TextBox();
-            this.panel35 = new System.Windows.Forms.Panel();
-            this.chkPmhTypeSec = new System.Windows.Forms.RadioButton();
-            this.chkPmhTypePri = new System.Windows.Forms.RadioButton();
-            this.txtPmhType = new C1.Win.C1Input.C1TextBox();
-            this.panel36 = new System.Windows.Forms.Panel();
-            this.chkPmhMenIrr = new System.Windows.Forms.RadioButton();
-            this.chkPmhMenReg = new System.Windows.Forms.RadioButton();
-            this.txtPmhMenDay = new C1.Win.C1Input.C1TextBox();
-            this.chkPmhMenLmp = new System.Windows.Forms.RadioButton();
+            this.tabLabFormA = new C1.Win.C1Command.C1DockingTabPage();
+            this.pnLabFormA = new System.Windows.Forms.Panel();
             this.sB.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.theme1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.sC)).BeginInit();
@@ -868,11 +870,23 @@
             ((System.ComponentModel.ISupportInitialize)(this.c1CheckBox24)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.c1TextBox19)).BeginInit();
             this.groupBox2.SuspendLayout();
+            this.panel30.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.chkPmhSubs)).BeginInit();
+            this.panel29.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.chkPmhSurg)).BeginInit();
             this.groupBox1.SuspendLayout();
+            this.panel36.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtPmhMenDay)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtPmhMenInter)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtPmhMenLmp)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtPmhMenAmt)).BeginInit();
+            this.panel35.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtPmhType)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.c1TextBox13)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtPmhMenInter)).BeginInit();
+            this.panel34.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.chkPmhProv)).BeginInit();
+            this.panel33.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtPmhPaps)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtPmhPttName)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtPmhPttMaleName)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtPmhPttDob)).BeginInit();
@@ -1035,18 +1049,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.cboBsp)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnVoid)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnSave)).BeginInit();
-            this.panel29.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.chkPmhSurg)).BeginInit();
-            this.panel30.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.chkPmhSubs)).BeginInit();
-            this.panel33.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.txtPmhPaps)).BeginInit();
-            this.panel34.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.chkPmhProv)).BeginInit();
-            this.panel35.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.txtPmhType)).BeginInit();
-            this.panel36.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.txtPmhMenDay)).BeginInit();
+            this.tabLabFormA.SuspendLayout();
             this.SuspendLayout();
             // 
             // sB
@@ -1894,6 +1897,7 @@
             this.tC.Controls.Add(this.tabTestMerri);
             this.tC.Controls.Add(this.tabEggSti);
             this.tC.Controls.Add(this.tabPg);
+            this.tC.Controls.Add(this.tabLabFormA);
             this.tC.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tC.HotTrack = true;
             this.tC.Location = new System.Drawing.Point(0, 0);
@@ -5107,6 +5111,126 @@
             this.groupBox2.Text = "Female History";
             this.theme1.SetTheme(this.groupBox2, "(default)");
             // 
+            // panel30
+            // 
+            this.panel30.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.panel30.Controls.Add(this.chkPmhSubsYes);
+            this.panel30.Controls.Add(this.chkPmhSubsNo);
+            this.panel30.Controls.Add(this.chkPmhSubs);
+            this.panel30.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.panel30.Location = new System.Drawing.Point(147, 281);
+            this.panel30.Name = "panel30";
+            this.panel30.Size = new System.Drawing.Size(675, 28);
+            this.panel30.TabIndex = 983;
+            this.theme1.SetTheme(this.panel30, "(default)");
+            // 
+            // chkPmhSubsYes
+            // 
+            this.chkPmhSubsYes.AutoSize = true;
+            this.chkPmhSubsYes.BackColor = System.Drawing.Color.Transparent;
+            this.chkPmhSubsYes.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
+            this.chkPmhSubsYes.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(189)))), ((int)(((byte)(182)))));
+            this.chkPmhSubsYes.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(189)))), ((int)(((byte)(182)))));
+            this.chkPmhSubsYes.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.chkPmhSubsYes.Location = new System.Drawing.Point(96, 4);
+            this.chkPmhSubsYes.Name = "chkPmhSubsYes";
+            this.chkPmhSubsYes.Size = new System.Drawing.Size(43, 17);
+            this.chkPmhSubsYes.TabIndex = 536;
+            this.chkPmhSubsYes.TabStop = true;
+            this.chkPmhSubsYes.Text = "Yes";
+            this.theme1.SetTheme(this.chkPmhSubsYes, "(default)");
+            this.chkPmhSubsYes.UseVisualStyleBackColor = false;
+            // 
+            // chkPmhSubsNo
+            // 
+            this.chkPmhSubsNo.AutoSize = true;
+            this.chkPmhSubsNo.BackColor = System.Drawing.Color.Transparent;
+            this.chkPmhSubsNo.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
+            this.chkPmhSubsNo.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(189)))), ((int)(((byte)(182)))));
+            this.chkPmhSubsNo.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(189)))), ((int)(((byte)(182)))));
+            this.chkPmhSubsNo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.chkPmhSubsNo.Location = new System.Drawing.Point(3, 4);
+            this.chkPmhSubsNo.Name = "chkPmhSubsNo";
+            this.chkPmhSubsNo.Size = new System.Drawing.Size(39, 17);
+            this.chkPmhSubsNo.TabIndex = 535;
+            this.chkPmhSubsNo.TabStop = true;
+            this.chkPmhSubsNo.Text = "No";
+            this.theme1.SetTheme(this.chkPmhSubsNo, "(default)");
+            this.chkPmhSubsNo.UseVisualStyleBackColor = false;
+            // 
+            // chkPmhSubs
+            // 
+            this.chkPmhSubs.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.chkPmhSubs.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
+            this.chkPmhSubs.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.chkPmhSubs.Location = new System.Drawing.Point(188, 4);
+            this.chkPmhSubs.Name = "chkPmhSubs";
+            this.chkPmhSubs.Size = new System.Drawing.Size(477, 20);
+            this.chkPmhSubs.TabIndex = 928;
+            this.chkPmhSubs.Tag = null;
+            this.theme1.SetTheme(this.chkPmhSubs, "(default)");
+            this.chkPmhSubs.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            // 
+            // panel29
+            // 
+            this.panel29.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.panel29.Controls.Add(this.chkPmhSurgYes);
+            this.panel29.Controls.Add(this.chkPmhSurgNo);
+            this.panel29.Controls.Add(this.chkPmhSurg);
+            this.panel29.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.panel29.Location = new System.Drawing.Point(147, 324);
+            this.panel29.Name = "panel29";
+            this.panel29.Size = new System.Drawing.Size(675, 28);
+            this.panel29.TabIndex = 982;
+            this.theme1.SetTheme(this.panel29, "(default)");
+            // 
+            // chkPmhSurgYes
+            // 
+            this.chkPmhSurgYes.AutoSize = true;
+            this.chkPmhSurgYes.BackColor = System.Drawing.Color.Transparent;
+            this.chkPmhSurgYes.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
+            this.chkPmhSurgYes.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(189)))), ((int)(((byte)(182)))));
+            this.chkPmhSurgYes.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(189)))), ((int)(((byte)(182)))));
+            this.chkPmhSurgYes.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.chkPmhSurgYes.Location = new System.Drawing.Point(96, 4);
+            this.chkPmhSurgYes.Name = "chkPmhSurgYes";
+            this.chkPmhSurgYes.Size = new System.Drawing.Size(43, 17);
+            this.chkPmhSurgYes.TabIndex = 536;
+            this.chkPmhSurgYes.TabStop = true;
+            this.chkPmhSurgYes.Text = "Yes";
+            this.theme1.SetTheme(this.chkPmhSurgYes, "(default)");
+            this.chkPmhSurgYes.UseVisualStyleBackColor = false;
+            // 
+            // chkPmhSurgNo
+            // 
+            this.chkPmhSurgNo.AutoSize = true;
+            this.chkPmhSurgNo.BackColor = System.Drawing.Color.Transparent;
+            this.chkPmhSurgNo.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
+            this.chkPmhSurgNo.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(189)))), ((int)(((byte)(182)))));
+            this.chkPmhSurgNo.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(189)))), ((int)(((byte)(182)))));
+            this.chkPmhSurgNo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.chkPmhSurgNo.Location = new System.Drawing.Point(3, 4);
+            this.chkPmhSurgNo.Name = "chkPmhSurgNo";
+            this.chkPmhSurgNo.Size = new System.Drawing.Size(39, 17);
+            this.chkPmhSurgNo.TabIndex = 535;
+            this.chkPmhSurgNo.TabStop = true;
+            this.chkPmhSurgNo.Text = "No";
+            this.theme1.SetTheme(this.chkPmhSurgNo, "(default)");
+            this.chkPmhSurgNo.UseVisualStyleBackColor = false;
+            // 
+            // chkPmhSurg
+            // 
+            this.chkPmhSurg.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.chkPmhSurg.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
+            this.chkPmhSurg.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.chkPmhSurg.Location = new System.Drawing.Point(188, 4);
+            this.chkPmhSurg.Name = "chkPmhSurg";
+            this.chkPmhSurg.Size = new System.Drawing.Size(477, 20);
+            this.chkPmhSurg.TabIndex = 928;
+            this.chkPmhSurg.Tag = null;
+            this.theme1.SetTheme(this.chkPmhSurg, "(default)");
+            this.chkPmhSurg.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            // 
             // label52
             // 
             this.label52.AutoSize = true;
@@ -5153,161 +5277,104 @@
             this.groupBox1.Text = "History of Infertility Treament :";
             this.theme1.SetTheme(this.groupBox1, "(default)");
             // 
-            // label47
+            // panel36
             // 
-            this.label47.AutoSize = true;
-            this.label47.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.label47.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label47.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.label47.Location = new System.Drawing.Point(6, 173);
-            this.label47.Name = "label47";
-            this.label47.Size = new System.Drawing.Size(141, 16);
-            this.label47.TabIndex = 984;
-            this.label47.Text = "History of Pap Smear :";
-            this.theme1.SetTheme(this.label47, "(default)");
+            this.panel36.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.panel36.Controls.Add(this.chkPmhMenLmp);
+            this.panel36.Controls.Add(this.chkPmhMenIrr);
+            this.panel36.Controls.Add(this.chkPmhMenReg);
+            this.panel36.Controls.Add(this.txtPmhMenDay);
+            this.panel36.Controls.Add(this.label40);
+            this.panel36.Controls.Add(this.txtPmhMenInter);
+            this.panel36.Controls.Add(this.label42);
+            this.panel36.Controls.Add(this.txtPmhMenLmp);
+            this.panel36.Controls.Add(this.label43);
+            this.panel36.Controls.Add(this.label41);
+            this.panel36.Controls.Add(this.txtPmhMenAmt);
+            this.panel36.Controls.Add(this.label44);
+            this.panel36.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.panel36.Location = new System.Drawing.Point(152, 57);
+            this.panel36.Name = "panel36";
+            this.panel36.Size = new System.Drawing.Size(725, 63);
+            this.panel36.TabIndex = 991;
+            this.theme1.SetTheme(this.panel36, "(default)");
             // 
-            // label45
+            // chkPmhMenLmp
             // 
-            this.label45.AutoSize = true;
-            this.label45.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.label45.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label45.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.label45.Location = new System.Drawing.Point(6, 130);
-            this.label45.Name = "label45";
-            this.label45.Size = new System.Drawing.Size(128, 16);
-            this.label45.TabIndex = 980;
-            this.label45.Text = "Previous Treament :";
-            this.theme1.SetTheme(this.label45, "(default)");
+            this.chkPmhMenLmp.AutoSize = true;
+            this.chkPmhMenLmp.BackColor = System.Drawing.Color.Transparent;
+            this.chkPmhMenLmp.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
+            this.chkPmhMenLmp.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(189)))), ((int)(((byte)(182)))));
+            this.chkPmhMenLmp.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(189)))), ((int)(((byte)(182)))));
+            this.chkPmhMenLmp.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.chkPmhMenLmp.Location = new System.Drawing.Point(3, 33);
+            this.chkPmhMenLmp.Name = "chkPmhMenLmp";
+            this.chkPmhMenLmp.Size = new System.Drawing.Size(47, 17);
+            this.chkPmhMenLmp.TabIndex = 980;
+            this.chkPmhMenLmp.TabStop = true;
+            this.chkPmhMenLmp.Text = "LMP";
+            this.theme1.SetTheme(this.chkPmhMenLmp, "(default)");
+            this.chkPmhMenLmp.UseVisualStyleBackColor = false;
             // 
-            // label38
+            // chkPmhMenIrr
             // 
-            this.label38.AutoSize = true;
-            this.label38.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.label38.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label38.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.label38.Location = new System.Drawing.Point(671, 6);
-            this.label38.Name = "label38";
-            this.label38.Size = new System.Drawing.Size(42, 16);
-            this.label38.TabIndex = 966;
-            this.label38.Text = "years";
-            this.theme1.SetTheme(this.label38, "(default)");
+            this.chkPmhMenIrr.AutoSize = true;
+            this.chkPmhMenIrr.BackColor = System.Drawing.Color.Transparent;
+            this.chkPmhMenIrr.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
+            this.chkPmhMenIrr.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(189)))), ((int)(((byte)(182)))));
+            this.chkPmhMenIrr.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(189)))), ((int)(((byte)(182)))));
+            this.chkPmhMenIrr.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.chkPmhMenIrr.Location = new System.Drawing.Point(96, 4);
+            this.chkPmhMenIrr.Name = "chkPmhMenIrr";
+            this.chkPmhMenIrr.Size = new System.Drawing.Size(106, 17);
+            this.chkPmhMenIrr.TabIndex = 536;
+            this.chkPmhMenIrr.TabStop = true;
+            this.chkPmhMenIrr.Text = "Irregular Duration";
+            this.theme1.SetTheme(this.chkPmhMenIrr, "(default)");
+            this.chkPmhMenIrr.UseVisualStyleBackColor = false;
             // 
-            // label43
+            // chkPmhMenReg
             // 
-            this.label43.AutoSize = true;
-            this.label43.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.label43.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label43.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.label43.Location = new System.Drawing.Point(658, 6);
-            this.label43.Name = "label43";
-            this.label43.Size = new System.Drawing.Size(60, 16);
-            this.label43.TabIndex = 977;
-            this.label43.Text = "Pad/day";
-            this.theme1.SetTheme(this.label43, "(default)");
+            this.chkPmhMenReg.AutoSize = true;
+            this.chkPmhMenReg.BackColor = System.Drawing.Color.Transparent;
+            this.chkPmhMenReg.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
+            this.chkPmhMenReg.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(189)))), ((int)(((byte)(182)))));
+            this.chkPmhMenReg.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(189)))), ((int)(((byte)(182)))));
+            this.chkPmhMenReg.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.chkPmhMenReg.Location = new System.Drawing.Point(3, 4);
+            this.chkPmhMenReg.Name = "chkPmhMenReg";
+            this.chkPmhMenReg.Size = new System.Drawing.Size(62, 17);
+            this.chkPmhMenReg.TabIndex = 535;
+            this.chkPmhMenReg.TabStop = true;
+            this.chkPmhMenReg.Text = "Regular";
+            this.theme1.SetTheme(this.chkPmhMenReg, "(default)");
+            this.chkPmhMenReg.UseVisualStyleBackColor = false;
             // 
-            // txtPmhMenLmp
+            // txtPmhMenDay
             // 
-            this.txtPmhMenLmp.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtPmhMenLmp.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
-            this.txtPmhMenLmp.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.txtPmhMenLmp.Location = new System.Drawing.Point(95, 30);
-            this.txtPmhMenLmp.Name = "txtPmhMenLmp";
-            this.txtPmhMenLmp.Size = new System.Drawing.Size(391, 20);
-            this.txtPmhMenLmp.TabIndex = 979;
-            this.txtPmhMenLmp.Tag = null;
-            this.theme1.SetTheme(this.txtPmhMenLmp, "(default)");
-            this.txtPmhMenLmp.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            this.txtPmhMenDay.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtPmhMenDay.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
+            this.txtPmhMenDay.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.txtPmhMenDay.Location = new System.Drawing.Point(210, 4);
+            this.txtPmhMenDay.Name = "txtPmhMenDay";
+            this.txtPmhMenDay.Size = new System.Drawing.Size(62, 20);
+            this.txtPmhMenDay.TabIndex = 928;
+            this.txtPmhMenDay.Tag = null;
+            this.theme1.SetTheme(this.txtPmhMenDay, "(default)");
+            this.txtPmhMenDay.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
             // 
-            // txtPmhMenAmt
+            // label40
             // 
-            this.txtPmhMenAmt.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtPmhMenAmt.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
-            this.txtPmhMenAmt.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.txtPmhMenAmt.Location = new System.Drawing.Point(598, 4);
-            this.txtPmhMenAmt.Name = "txtPmhMenAmt";
-            this.txtPmhMenAmt.Size = new System.Drawing.Size(56, 20);
-            this.txtPmhMenAmt.TabIndex = 976;
-            this.txtPmhMenAmt.Tag = null;
-            this.theme1.SetTheme(this.txtPmhMenAmt, "(default)");
-            this.txtPmhMenAmt.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
-            // 
-            // label36
-            // 
-            this.label36.AutoSize = true;
-            this.label36.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.label36.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label36.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.label36.Location = new System.Drawing.Point(6, 26);
-            this.label36.Name = "label36";
-            this.label36.Size = new System.Drawing.Size(110, 16);
-            this.label36.TabIndex = 963;
-            this.label36.Text = "Type of infertility :";
-            this.theme1.SetTheme(this.label36, "(default)");
-            // 
-            // label37
-            // 
-            this.label37.AutoSize = true;
-            this.label37.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.label37.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label37.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.label37.Location = new System.Drawing.Point(483, 6);
-            this.label37.Name = "label37";
-            this.label37.Size = new System.Drawing.Size(122, 16);
-            this.label37.TabIndex = 964;
-            this.label37.Text = "Duration of infertility";
-            this.theme1.SetTheme(this.label37, "(default)");
-            // 
-            // label44
-            // 
-            this.label44.AutoSize = true;
-            this.label44.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.label44.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label44.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.label44.Location = new System.Drawing.Point(537, 6);
-            this.label44.Name = "label44";
-            this.label44.Size = new System.Drawing.Size(53, 16);
-            this.label44.TabIndex = 975;
-            this.label44.Text = "Amount";
-            this.theme1.SetTheme(this.label44, "(default)");
-            // 
-            // c1TextBox13
-            // 
-            this.c1TextBox13.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.c1TextBox13.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
-            this.c1TextBox13.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.c1TextBox13.Location = new System.Drawing.Point(611, 4);
-            this.c1TextBox13.Name = "c1TextBox13";
-            this.c1TextBox13.Size = new System.Drawing.Size(56, 20);
-            this.c1TextBox13.TabIndex = 965;
-            this.c1TextBox13.Tag = null;
-            this.theme1.SetTheme(this.c1TextBox13, "(default)");
-            this.c1TextBox13.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
-            // 
-            // label41
-            // 
-            this.label41.AutoSize = true;
-            this.label41.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.label41.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label41.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.label41.Location = new System.Drawing.Point(457, 6);
-            this.label41.Name = "label41";
-            this.label41.Size = new System.Drawing.Size(38, 16);
-            this.label41.TabIndex = 974;
-            this.label41.Text = "days";
-            this.theme1.SetTheme(this.label41, "(default)");
-            // 
-            // label39
-            // 
-            this.label39.AutoSize = true;
-            this.label39.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.label39.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label39.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.label39.Location = new System.Drawing.Point(6, 63);
-            this.label39.Name = "label39";
-            this.label39.Size = new System.Drawing.Size(90, 16);
-            this.label39.TabIndex = 967;
-            this.label39.Text = "Menstruation :";
-            this.theme1.SetTheme(this.label39, "(default)");
+            this.label40.AutoSize = true;
+            this.label40.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.label40.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label40.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.label40.Location = new System.Drawing.Point(278, 6);
+            this.label40.Name = "label40";
+            this.label40.Size = new System.Drawing.Size(38, 16);
+            this.label40.TabIndex = 971;
+            this.label40.Text = "days";
+            this.theme1.SetTheme(this.label40, "(default)");
             // 
             // txtPmhMenInter
             // 
@@ -5335,18 +5402,344 @@
             this.label42.Text = "Interval";
             this.theme1.SetTheme(this.label42, "(default)");
             // 
-            // label40
+            // txtPmhMenLmp
             // 
-            this.label40.AutoSize = true;
-            this.label40.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.label40.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label40.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.label40.Location = new System.Drawing.Point(278, 6);
-            this.label40.Name = "label40";
-            this.label40.Size = new System.Drawing.Size(38, 16);
-            this.label40.TabIndex = 971;
-            this.label40.Text = "days";
-            this.theme1.SetTheme(this.label40, "(default)");
+            this.txtPmhMenLmp.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtPmhMenLmp.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
+            this.txtPmhMenLmp.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.txtPmhMenLmp.Location = new System.Drawing.Point(95, 30);
+            this.txtPmhMenLmp.Name = "txtPmhMenLmp";
+            this.txtPmhMenLmp.Size = new System.Drawing.Size(391, 20);
+            this.txtPmhMenLmp.TabIndex = 979;
+            this.txtPmhMenLmp.Tag = null;
+            this.theme1.SetTheme(this.txtPmhMenLmp, "(default)");
+            this.txtPmhMenLmp.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            // 
+            // label43
+            // 
+            this.label43.AutoSize = true;
+            this.label43.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.label43.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label43.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.label43.Location = new System.Drawing.Point(658, 6);
+            this.label43.Name = "label43";
+            this.label43.Size = new System.Drawing.Size(60, 16);
+            this.label43.TabIndex = 977;
+            this.label43.Text = "Pad/day";
+            this.theme1.SetTheme(this.label43, "(default)");
+            // 
+            // label41
+            // 
+            this.label41.AutoSize = true;
+            this.label41.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.label41.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label41.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.label41.Location = new System.Drawing.Point(457, 6);
+            this.label41.Name = "label41";
+            this.label41.Size = new System.Drawing.Size(38, 16);
+            this.label41.TabIndex = 974;
+            this.label41.Text = "days";
+            this.theme1.SetTheme(this.label41, "(default)");
+            // 
+            // txtPmhMenAmt
+            // 
+            this.txtPmhMenAmt.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtPmhMenAmt.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
+            this.txtPmhMenAmt.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.txtPmhMenAmt.Location = new System.Drawing.Point(598, 4);
+            this.txtPmhMenAmt.Name = "txtPmhMenAmt";
+            this.txtPmhMenAmt.Size = new System.Drawing.Size(56, 20);
+            this.txtPmhMenAmt.TabIndex = 976;
+            this.txtPmhMenAmt.Tag = null;
+            this.theme1.SetTheme(this.txtPmhMenAmt, "(default)");
+            this.txtPmhMenAmt.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            // 
+            // label44
+            // 
+            this.label44.AutoSize = true;
+            this.label44.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.label44.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label44.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.label44.Location = new System.Drawing.Point(537, 6);
+            this.label44.Name = "label44";
+            this.label44.Size = new System.Drawing.Size(53, 16);
+            this.label44.TabIndex = 975;
+            this.label44.Text = "Amount";
+            this.theme1.SetTheme(this.label44, "(default)");
+            // 
+            // panel35
+            // 
+            this.panel35.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.panel35.Controls.Add(this.chkPmhTypeSec);
+            this.panel35.Controls.Add(this.chkPmhTypePri);
+            this.panel35.Controls.Add(this.txtPmhType);
+            this.panel35.Controls.Add(this.label38);
+            this.panel35.Controls.Add(this.c1TextBox13);
+            this.panel35.Controls.Add(this.label37);
+            this.panel35.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.panel35.Location = new System.Drawing.Point(152, 21);
+            this.panel35.Name = "panel35";
+            this.panel35.Size = new System.Drawing.Size(723, 28);
+            this.panel35.TabIndex = 990;
+            this.theme1.SetTheme(this.panel35, "(default)");
+            // 
+            // chkPmhTypeSec
+            // 
+            this.chkPmhTypeSec.AutoSize = true;
+            this.chkPmhTypeSec.BackColor = System.Drawing.Color.Transparent;
+            this.chkPmhTypeSec.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
+            this.chkPmhTypeSec.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(189)))), ((int)(((byte)(182)))));
+            this.chkPmhTypeSec.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(189)))), ((int)(((byte)(182)))));
+            this.chkPmhTypeSec.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.chkPmhTypeSec.Location = new System.Drawing.Point(96, 4);
+            this.chkPmhTypeSec.Name = "chkPmhTypeSec";
+            this.chkPmhTypeSec.Size = new System.Drawing.Size(103, 17);
+            this.chkPmhTypeSec.TabIndex = 536;
+            this.chkPmhTypeSec.TabStop = true;
+            this.chkPmhTypeSec.Text = "Secondary Party";
+            this.theme1.SetTheme(this.chkPmhTypeSec, "(default)");
+            this.chkPmhTypeSec.UseVisualStyleBackColor = false;
+            // 
+            // chkPmhTypePri
+            // 
+            this.chkPmhTypePri.AutoSize = true;
+            this.chkPmhTypePri.BackColor = System.Drawing.Color.Transparent;
+            this.chkPmhTypePri.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
+            this.chkPmhTypePri.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(189)))), ((int)(((byte)(182)))));
+            this.chkPmhTypePri.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(189)))), ((int)(((byte)(182)))));
+            this.chkPmhTypePri.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.chkPmhTypePri.Location = new System.Drawing.Point(3, 4);
+            this.chkPmhTypePri.Name = "chkPmhTypePri";
+            this.chkPmhTypePri.Size = new System.Drawing.Size(59, 17);
+            this.chkPmhTypePri.TabIndex = 535;
+            this.chkPmhTypePri.TabStop = true;
+            this.chkPmhTypePri.Text = "Primary";
+            this.theme1.SetTheme(this.chkPmhTypePri, "(default)");
+            this.chkPmhTypePri.UseVisualStyleBackColor = false;
+            // 
+            // txtPmhType
+            // 
+            this.txtPmhType.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtPmhType.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
+            this.txtPmhType.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.txtPmhType.Location = new System.Drawing.Point(223, 4);
+            this.txtPmhType.Name = "txtPmhType";
+            this.txtPmhType.Size = new System.Drawing.Size(217, 20);
+            this.txtPmhType.TabIndex = 928;
+            this.txtPmhType.Tag = null;
+            this.theme1.SetTheme(this.txtPmhType, "(default)");
+            this.txtPmhType.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            // 
+            // label38
+            // 
+            this.label38.AutoSize = true;
+            this.label38.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.label38.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label38.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.label38.Location = new System.Drawing.Point(671, 6);
+            this.label38.Name = "label38";
+            this.label38.Size = new System.Drawing.Size(42, 16);
+            this.label38.TabIndex = 966;
+            this.label38.Text = "years";
+            this.theme1.SetTheme(this.label38, "(default)");
+            // 
+            // c1TextBox13
+            // 
+            this.c1TextBox13.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.c1TextBox13.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
+            this.c1TextBox13.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.c1TextBox13.Location = new System.Drawing.Point(611, 4);
+            this.c1TextBox13.Name = "c1TextBox13";
+            this.c1TextBox13.Size = new System.Drawing.Size(56, 20);
+            this.c1TextBox13.TabIndex = 965;
+            this.c1TextBox13.Tag = null;
+            this.theme1.SetTheme(this.c1TextBox13, "(default)");
+            this.c1TextBox13.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            // 
+            // label37
+            // 
+            this.label37.AutoSize = true;
+            this.label37.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.label37.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label37.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.label37.Location = new System.Drawing.Point(483, 6);
+            this.label37.Name = "label37";
+            this.label37.Size = new System.Drawing.Size(122, 16);
+            this.label37.TabIndex = 964;
+            this.label37.Text = "Duration of infertility";
+            this.theme1.SetTheme(this.label37, "(default)");
+            // 
+            // panel34
+            // 
+            this.panel34.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.panel34.Controls.Add(this.chkPmhProvYes);
+            this.panel34.Controls.Add(this.chkPmhProvNo);
+            this.panel34.Controls.Add(this.chkPmhProv);
+            this.panel34.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.panel34.Location = new System.Drawing.Point(152, 126);
+            this.panel34.Name = "panel34";
+            this.panel34.Size = new System.Drawing.Size(675, 28);
+            this.panel34.TabIndex = 989;
+            this.theme1.SetTheme(this.panel34, "(default)");
+            // 
+            // chkPmhProvYes
+            // 
+            this.chkPmhProvYes.AutoSize = true;
+            this.chkPmhProvYes.BackColor = System.Drawing.Color.Transparent;
+            this.chkPmhProvYes.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
+            this.chkPmhProvYes.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(189)))), ((int)(((byte)(182)))));
+            this.chkPmhProvYes.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(189)))), ((int)(((byte)(182)))));
+            this.chkPmhProvYes.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.chkPmhProvYes.Location = new System.Drawing.Point(96, 4);
+            this.chkPmhProvYes.Name = "chkPmhProvYes";
+            this.chkPmhProvYes.Size = new System.Drawing.Size(43, 17);
+            this.chkPmhProvYes.TabIndex = 536;
+            this.chkPmhProvYes.TabStop = true;
+            this.chkPmhProvYes.Text = "Yes";
+            this.theme1.SetTheme(this.chkPmhProvYes, "(default)");
+            this.chkPmhProvYes.UseVisualStyleBackColor = false;
+            // 
+            // chkPmhProvNo
+            // 
+            this.chkPmhProvNo.AutoSize = true;
+            this.chkPmhProvNo.BackColor = System.Drawing.Color.Transparent;
+            this.chkPmhProvNo.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
+            this.chkPmhProvNo.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(189)))), ((int)(((byte)(182)))));
+            this.chkPmhProvNo.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(189)))), ((int)(((byte)(182)))));
+            this.chkPmhProvNo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.chkPmhProvNo.Location = new System.Drawing.Point(3, 4);
+            this.chkPmhProvNo.Name = "chkPmhProvNo";
+            this.chkPmhProvNo.Size = new System.Drawing.Size(39, 17);
+            this.chkPmhProvNo.TabIndex = 535;
+            this.chkPmhProvNo.TabStop = true;
+            this.chkPmhProvNo.Text = "No";
+            this.theme1.SetTheme(this.chkPmhProvNo, "(default)");
+            this.chkPmhProvNo.UseVisualStyleBackColor = false;
+            // 
+            // chkPmhProv
+            // 
+            this.chkPmhProv.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.chkPmhProv.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
+            this.chkPmhProv.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.chkPmhProv.Location = new System.Drawing.Point(188, 4);
+            this.chkPmhProv.Name = "chkPmhProv";
+            this.chkPmhProv.Size = new System.Drawing.Size(477, 20);
+            this.chkPmhProv.TabIndex = 928;
+            this.chkPmhProv.Tag = null;
+            this.theme1.SetTheme(this.chkPmhProv, "(default)");
+            this.chkPmhProv.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            // 
+            // panel33
+            // 
+            this.panel33.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.panel33.Controls.Add(this.chkPmhPapsYes);
+            this.panel33.Controls.Add(this.chkPmhPapsNo);
+            this.panel33.Controls.Add(this.txtPmhPaps);
+            this.panel33.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.panel33.Location = new System.Drawing.Point(153, 170);
+            this.panel33.Name = "panel33";
+            this.panel33.Size = new System.Drawing.Size(675, 28);
+            this.panel33.TabIndex = 988;
+            this.theme1.SetTheme(this.panel33, "(default)");
+            // 
+            // chkPmhPapsYes
+            // 
+            this.chkPmhPapsYes.AutoSize = true;
+            this.chkPmhPapsYes.BackColor = System.Drawing.Color.Transparent;
+            this.chkPmhPapsYes.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
+            this.chkPmhPapsYes.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(189)))), ((int)(((byte)(182)))));
+            this.chkPmhPapsYes.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(189)))), ((int)(((byte)(182)))));
+            this.chkPmhPapsYes.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.chkPmhPapsYes.Location = new System.Drawing.Point(96, 4);
+            this.chkPmhPapsYes.Name = "chkPmhPapsYes";
+            this.chkPmhPapsYes.Size = new System.Drawing.Size(43, 17);
+            this.chkPmhPapsYes.TabIndex = 536;
+            this.chkPmhPapsYes.TabStop = true;
+            this.chkPmhPapsYes.Text = "Yes";
+            this.theme1.SetTheme(this.chkPmhPapsYes, "(default)");
+            this.chkPmhPapsYes.UseVisualStyleBackColor = false;
+            // 
+            // chkPmhPapsNo
+            // 
+            this.chkPmhPapsNo.AutoSize = true;
+            this.chkPmhPapsNo.BackColor = System.Drawing.Color.Transparent;
+            this.chkPmhPapsNo.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
+            this.chkPmhPapsNo.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(189)))), ((int)(((byte)(182)))));
+            this.chkPmhPapsNo.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(189)))), ((int)(((byte)(182)))));
+            this.chkPmhPapsNo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.chkPmhPapsNo.Location = new System.Drawing.Point(3, 4);
+            this.chkPmhPapsNo.Name = "chkPmhPapsNo";
+            this.chkPmhPapsNo.Size = new System.Drawing.Size(39, 17);
+            this.chkPmhPapsNo.TabIndex = 535;
+            this.chkPmhPapsNo.TabStop = true;
+            this.chkPmhPapsNo.Text = "No";
+            this.theme1.SetTheme(this.chkPmhPapsNo, "(default)");
+            this.chkPmhPapsNo.UseVisualStyleBackColor = false;
+            // 
+            // txtPmhPaps
+            // 
+            this.txtPmhPaps.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtPmhPaps.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
+            this.txtPmhPaps.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.txtPmhPaps.Location = new System.Drawing.Point(188, 4);
+            this.txtPmhPaps.Name = "txtPmhPaps";
+            this.txtPmhPaps.Size = new System.Drawing.Size(477, 20);
+            this.txtPmhPaps.TabIndex = 928;
+            this.txtPmhPaps.Tag = null;
+            this.theme1.SetTheme(this.txtPmhPaps, "(default)");
+            this.txtPmhPaps.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            // 
+            // label47
+            // 
+            this.label47.AutoSize = true;
+            this.label47.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.label47.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label47.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.label47.Location = new System.Drawing.Point(6, 173);
+            this.label47.Name = "label47";
+            this.label47.Size = new System.Drawing.Size(141, 16);
+            this.label47.TabIndex = 984;
+            this.label47.Text = "History of Pap Smear :";
+            this.theme1.SetTheme(this.label47, "(default)");
+            // 
+            // label45
+            // 
+            this.label45.AutoSize = true;
+            this.label45.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.label45.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label45.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.label45.Location = new System.Drawing.Point(6, 130);
+            this.label45.Name = "label45";
+            this.label45.Size = new System.Drawing.Size(128, 16);
+            this.label45.TabIndex = 980;
+            this.label45.Text = "Previous Treament :";
+            this.theme1.SetTheme(this.label45, "(default)");
+            // 
+            // label36
+            // 
+            this.label36.AutoSize = true;
+            this.label36.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.label36.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label36.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.label36.Location = new System.Drawing.Point(6, 26);
+            this.label36.Name = "label36";
+            this.label36.Size = new System.Drawing.Size(110, 16);
+            this.label36.TabIndex = 963;
+            this.label36.Text = "Type of infertility :";
+            this.theme1.SetTheme(this.label36, "(default)");
+            // 
+            // label39
+            // 
+            this.label39.AutoSize = true;
+            this.label39.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.label39.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label39.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.label39.Location = new System.Drawing.Point(6, 63);
+            this.label39.Name = "label39";
+            this.label39.Size = new System.Drawing.Size(90, 16);
+            this.label39.TabIndex = 967;
+            this.label39.Text = "Menstruation :";
+            this.theme1.SetTheme(this.label39, "(default)");
             // 
             // txtPmhPttName
             // 
@@ -9502,9 +9895,9 @@
             // richTextBox1
             // 
             this.richTextBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.richTextBox1.Location = new System.Drawing.Point(0, 146);
+            this.richTextBox1.Location = new System.Drawing.Point(0, 143);
             this.richTextBox1.Name = "richTextBox1";
-            this.richTextBox1.Size = new System.Drawing.Size(852, 519);
+            this.richTextBox1.Size = new System.Drawing.Size(852, 522);
             this.richTextBox1.TabIndex = 1;
             this.richTextBox1.Text = "";
             // 
@@ -9519,7 +9912,7 @@
             this.c1Ribbon1.QatHolder = this.ribbonQat1;
             this.c1Ribbon1.QatItemsHolder.Add(this.UndoButton);
             this.c1Ribbon1.QatItemsHolder.Add(this.RedoButton);
-            this.c1Ribbon1.Size = new System.Drawing.Size(852, 146);
+            this.c1Ribbon1.Size = new System.Drawing.Size(852, 143);
             this.c1Ribbon1.Tabs.Add(this.HomeTab);
             this.c1Ribbon1.Tabs.Add(this.ViewTab);
             this.c1Ribbon1.Tabs.Add(this.ribbonTab1);
@@ -10073,394 +10466,25 @@
             this.label94.TabIndex = 545;
             this.theme1.SetTheme(this.label94, "(default)");
             // 
-            // panel29
+            // tabLabFormA
             // 
-            this.panel29.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.panel29.Controls.Add(this.chkPmhSurgYes);
-            this.panel29.Controls.Add(this.chkPmhSurgNo);
-            this.panel29.Controls.Add(this.chkPmhSurg);
-            this.panel29.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.panel29.Location = new System.Drawing.Point(147, 324);
-            this.panel29.Name = "panel29";
-            this.panel29.Size = new System.Drawing.Size(675, 28);
-            this.panel29.TabIndex = 982;
-            this.theme1.SetTheme(this.panel29, "(default)");
+            this.tabLabFormA.Controls.Add(this.pnLabFormA);
+            this.tabLabFormA.Location = new System.Drawing.Point(1, 24);
+            this.tabLabFormA.Name = "tabLabFormA";
+            this.tabLabFormA.Size = new System.Drawing.Size(1585, 665);
+            this.tabLabFormA.TabIndex = 10;
+            this.tabLabFormA.Text = "LAB Form A";
             // 
-            // chkPmhSurgYes
+            // pnLabFormA
             // 
-            this.chkPmhSurgYes.AutoSize = true;
-            this.chkPmhSurgYes.BackColor = System.Drawing.Color.Transparent;
-            this.chkPmhSurgYes.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
-            this.chkPmhSurgYes.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(189)))), ((int)(((byte)(182)))));
-            this.chkPmhSurgYes.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(189)))), ((int)(((byte)(182)))));
-            this.chkPmhSurgYes.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.chkPmhSurgYes.Location = new System.Drawing.Point(96, 4);
-            this.chkPmhSurgYes.Name = "chkPmhSurgYes";
-            this.chkPmhSurgYes.Size = new System.Drawing.Size(43, 17);
-            this.chkPmhSurgYes.TabIndex = 536;
-            this.chkPmhSurgYes.TabStop = true;
-            this.chkPmhSurgYes.Text = "Yes";
-            this.theme1.SetTheme(this.chkPmhSurgYes, "(default)");
-            this.chkPmhSurgYes.UseVisualStyleBackColor = false;
-            // 
-            // chkPmhSurgNo
-            // 
-            this.chkPmhSurgNo.AutoSize = true;
-            this.chkPmhSurgNo.BackColor = System.Drawing.Color.Transparent;
-            this.chkPmhSurgNo.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
-            this.chkPmhSurgNo.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(189)))), ((int)(((byte)(182)))));
-            this.chkPmhSurgNo.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(189)))), ((int)(((byte)(182)))));
-            this.chkPmhSurgNo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.chkPmhSurgNo.Location = new System.Drawing.Point(3, 4);
-            this.chkPmhSurgNo.Name = "chkPmhSurgNo";
-            this.chkPmhSurgNo.Size = new System.Drawing.Size(39, 17);
-            this.chkPmhSurgNo.TabIndex = 535;
-            this.chkPmhSurgNo.TabStop = true;
-            this.chkPmhSurgNo.Text = "No";
-            this.theme1.SetTheme(this.chkPmhSurgNo, "(default)");
-            this.chkPmhSurgNo.UseVisualStyleBackColor = false;
-            // 
-            // chkPmhSurg
-            // 
-            this.chkPmhSurg.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.chkPmhSurg.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
-            this.chkPmhSurg.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.chkPmhSurg.Location = new System.Drawing.Point(188, 4);
-            this.chkPmhSurg.Name = "chkPmhSurg";
-            this.chkPmhSurg.Size = new System.Drawing.Size(477, 20);
-            this.chkPmhSurg.TabIndex = 928;
-            this.chkPmhSurg.Tag = null;
-            this.theme1.SetTheme(this.chkPmhSurg, "(default)");
-            this.chkPmhSurg.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
-            // 
-            // panel30
-            // 
-            this.panel30.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.panel30.Controls.Add(this.chkPmhSubsYes);
-            this.panel30.Controls.Add(this.chkPmhSubsNo);
-            this.panel30.Controls.Add(this.chkPmhSubs);
-            this.panel30.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.panel30.Location = new System.Drawing.Point(147, 281);
-            this.panel30.Name = "panel30";
-            this.panel30.Size = new System.Drawing.Size(675, 28);
-            this.panel30.TabIndex = 983;
-            this.theme1.SetTheme(this.panel30, "(default)");
-            // 
-            // chkPmhSubsYes
-            // 
-            this.chkPmhSubsYes.AutoSize = true;
-            this.chkPmhSubsYes.BackColor = System.Drawing.Color.Transparent;
-            this.chkPmhSubsYes.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
-            this.chkPmhSubsYes.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(189)))), ((int)(((byte)(182)))));
-            this.chkPmhSubsYes.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(189)))), ((int)(((byte)(182)))));
-            this.chkPmhSubsYes.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.chkPmhSubsYes.Location = new System.Drawing.Point(96, 4);
-            this.chkPmhSubsYes.Name = "chkPmhSubsYes";
-            this.chkPmhSubsYes.Size = new System.Drawing.Size(43, 17);
-            this.chkPmhSubsYes.TabIndex = 536;
-            this.chkPmhSubsYes.TabStop = true;
-            this.chkPmhSubsYes.Text = "Yes";
-            this.theme1.SetTheme(this.chkPmhSubsYes, "(default)");
-            this.chkPmhSubsYes.UseVisualStyleBackColor = false;
-            // 
-            // chkPmhSubsNo
-            // 
-            this.chkPmhSubsNo.AutoSize = true;
-            this.chkPmhSubsNo.BackColor = System.Drawing.Color.Transparent;
-            this.chkPmhSubsNo.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
-            this.chkPmhSubsNo.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(189)))), ((int)(((byte)(182)))));
-            this.chkPmhSubsNo.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(189)))), ((int)(((byte)(182)))));
-            this.chkPmhSubsNo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.chkPmhSubsNo.Location = new System.Drawing.Point(3, 4);
-            this.chkPmhSubsNo.Name = "chkPmhSubsNo";
-            this.chkPmhSubsNo.Size = new System.Drawing.Size(39, 17);
-            this.chkPmhSubsNo.TabIndex = 535;
-            this.chkPmhSubsNo.TabStop = true;
-            this.chkPmhSubsNo.Text = "No";
-            this.theme1.SetTheme(this.chkPmhSubsNo, "(default)");
-            this.chkPmhSubsNo.UseVisualStyleBackColor = false;
-            // 
-            // chkPmhSubs
-            // 
-            this.chkPmhSubs.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.chkPmhSubs.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
-            this.chkPmhSubs.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.chkPmhSubs.Location = new System.Drawing.Point(188, 4);
-            this.chkPmhSubs.Name = "chkPmhSubs";
-            this.chkPmhSubs.Size = new System.Drawing.Size(477, 20);
-            this.chkPmhSubs.TabIndex = 928;
-            this.chkPmhSubs.Tag = null;
-            this.theme1.SetTheme(this.chkPmhSubs, "(default)");
-            this.chkPmhSubs.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
-            // 
-            // panel33
-            // 
-            this.panel33.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.panel33.Controls.Add(this.chkPmhPapsYes);
-            this.panel33.Controls.Add(this.chkPmhPapsNo);
-            this.panel33.Controls.Add(this.txtPmhPaps);
-            this.panel33.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.panel33.Location = new System.Drawing.Point(153, 170);
-            this.panel33.Name = "panel33";
-            this.panel33.Size = new System.Drawing.Size(675, 28);
-            this.panel33.TabIndex = 988;
-            this.theme1.SetTheme(this.panel33, "(default)");
-            // 
-            // chkPmhPapsYes
-            // 
-            this.chkPmhPapsYes.AutoSize = true;
-            this.chkPmhPapsYes.BackColor = System.Drawing.Color.Transparent;
-            this.chkPmhPapsYes.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
-            this.chkPmhPapsYes.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(189)))), ((int)(((byte)(182)))));
-            this.chkPmhPapsYes.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(189)))), ((int)(((byte)(182)))));
-            this.chkPmhPapsYes.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.chkPmhPapsYes.Location = new System.Drawing.Point(96, 4);
-            this.chkPmhPapsYes.Name = "chkPmhPapsYes";
-            this.chkPmhPapsYes.Size = new System.Drawing.Size(43, 17);
-            this.chkPmhPapsYes.TabIndex = 536;
-            this.chkPmhPapsYes.TabStop = true;
-            this.chkPmhPapsYes.Text = "Yes";
-            this.theme1.SetTheme(this.chkPmhPapsYes, "(default)");
-            this.chkPmhPapsYes.UseVisualStyleBackColor = false;
-            // 
-            // chkPmhPapsNo
-            // 
-            this.chkPmhPapsNo.AutoSize = true;
-            this.chkPmhPapsNo.BackColor = System.Drawing.Color.Transparent;
-            this.chkPmhPapsNo.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
-            this.chkPmhPapsNo.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(189)))), ((int)(((byte)(182)))));
-            this.chkPmhPapsNo.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(189)))), ((int)(((byte)(182)))));
-            this.chkPmhPapsNo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.chkPmhPapsNo.Location = new System.Drawing.Point(3, 4);
-            this.chkPmhPapsNo.Name = "chkPmhPapsNo";
-            this.chkPmhPapsNo.Size = new System.Drawing.Size(39, 17);
-            this.chkPmhPapsNo.TabIndex = 535;
-            this.chkPmhPapsNo.TabStop = true;
-            this.chkPmhPapsNo.Text = "No";
-            this.theme1.SetTheme(this.chkPmhPapsNo, "(default)");
-            this.chkPmhPapsNo.UseVisualStyleBackColor = false;
-            // 
-            // txtPmhPaps
-            // 
-            this.txtPmhPaps.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtPmhPaps.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
-            this.txtPmhPaps.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.txtPmhPaps.Location = new System.Drawing.Point(188, 4);
-            this.txtPmhPaps.Name = "txtPmhPaps";
-            this.txtPmhPaps.Size = new System.Drawing.Size(477, 20);
-            this.txtPmhPaps.TabIndex = 928;
-            this.txtPmhPaps.Tag = null;
-            this.theme1.SetTheme(this.txtPmhPaps, "(default)");
-            this.txtPmhPaps.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
-            // 
-            // panel34
-            // 
-            this.panel34.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.panel34.Controls.Add(this.chkPmhProvYes);
-            this.panel34.Controls.Add(this.chkPmhProvNo);
-            this.panel34.Controls.Add(this.chkPmhProv);
-            this.panel34.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.panel34.Location = new System.Drawing.Point(152, 126);
-            this.panel34.Name = "panel34";
-            this.panel34.Size = new System.Drawing.Size(675, 28);
-            this.panel34.TabIndex = 989;
-            this.theme1.SetTheme(this.panel34, "(default)");
-            // 
-            // chkPmhProvYes
-            // 
-            this.chkPmhProvYes.AutoSize = true;
-            this.chkPmhProvYes.BackColor = System.Drawing.Color.Transparent;
-            this.chkPmhProvYes.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
-            this.chkPmhProvYes.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(189)))), ((int)(((byte)(182)))));
-            this.chkPmhProvYes.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(189)))), ((int)(((byte)(182)))));
-            this.chkPmhProvYes.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.chkPmhProvYes.Location = new System.Drawing.Point(96, 4);
-            this.chkPmhProvYes.Name = "chkPmhProvYes";
-            this.chkPmhProvYes.Size = new System.Drawing.Size(43, 17);
-            this.chkPmhProvYes.TabIndex = 536;
-            this.chkPmhProvYes.TabStop = true;
-            this.chkPmhProvYes.Text = "Yes";
-            this.theme1.SetTheme(this.chkPmhProvYes, "(default)");
-            this.chkPmhProvYes.UseVisualStyleBackColor = false;
-            // 
-            // chkPmhProvNo
-            // 
-            this.chkPmhProvNo.AutoSize = true;
-            this.chkPmhProvNo.BackColor = System.Drawing.Color.Transparent;
-            this.chkPmhProvNo.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
-            this.chkPmhProvNo.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(189)))), ((int)(((byte)(182)))));
-            this.chkPmhProvNo.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(189)))), ((int)(((byte)(182)))));
-            this.chkPmhProvNo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.chkPmhProvNo.Location = new System.Drawing.Point(3, 4);
-            this.chkPmhProvNo.Name = "chkPmhProvNo";
-            this.chkPmhProvNo.Size = new System.Drawing.Size(39, 17);
-            this.chkPmhProvNo.TabIndex = 535;
-            this.chkPmhProvNo.TabStop = true;
-            this.chkPmhProvNo.Text = "No";
-            this.theme1.SetTheme(this.chkPmhProvNo, "(default)");
-            this.chkPmhProvNo.UseVisualStyleBackColor = false;
-            // 
-            // chkPmhProv
-            // 
-            this.chkPmhProv.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.chkPmhProv.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
-            this.chkPmhProv.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.chkPmhProv.Location = new System.Drawing.Point(188, 4);
-            this.chkPmhProv.Name = "chkPmhProv";
-            this.chkPmhProv.Size = new System.Drawing.Size(477, 20);
-            this.chkPmhProv.TabIndex = 928;
-            this.chkPmhProv.Tag = null;
-            this.theme1.SetTheme(this.chkPmhProv, "(default)");
-            this.chkPmhProv.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
-            // 
-            // panel35
-            // 
-            this.panel35.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.panel35.Controls.Add(this.chkPmhTypeSec);
-            this.panel35.Controls.Add(this.chkPmhTypePri);
-            this.panel35.Controls.Add(this.txtPmhType);
-            this.panel35.Controls.Add(this.label38);
-            this.panel35.Controls.Add(this.c1TextBox13);
-            this.panel35.Controls.Add(this.label37);
-            this.panel35.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.panel35.Location = new System.Drawing.Point(152, 21);
-            this.panel35.Name = "panel35";
-            this.panel35.Size = new System.Drawing.Size(723, 28);
-            this.panel35.TabIndex = 990;
-            this.theme1.SetTheme(this.panel35, "(default)");
-            // 
-            // chkPmhTypeSec
-            // 
-            this.chkPmhTypeSec.AutoSize = true;
-            this.chkPmhTypeSec.BackColor = System.Drawing.Color.Transparent;
-            this.chkPmhTypeSec.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
-            this.chkPmhTypeSec.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(189)))), ((int)(((byte)(182)))));
-            this.chkPmhTypeSec.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(189)))), ((int)(((byte)(182)))));
-            this.chkPmhTypeSec.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.chkPmhTypeSec.Location = new System.Drawing.Point(96, 4);
-            this.chkPmhTypeSec.Name = "chkPmhTypeSec";
-            this.chkPmhTypeSec.Size = new System.Drawing.Size(103, 17);
-            this.chkPmhTypeSec.TabIndex = 536;
-            this.chkPmhTypeSec.TabStop = true;
-            this.chkPmhTypeSec.Text = "Secondary Party";
-            this.theme1.SetTheme(this.chkPmhTypeSec, "(default)");
-            this.chkPmhTypeSec.UseVisualStyleBackColor = false;
-            // 
-            // chkPmhTypePri
-            // 
-            this.chkPmhTypePri.AutoSize = true;
-            this.chkPmhTypePri.BackColor = System.Drawing.Color.Transparent;
-            this.chkPmhTypePri.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
-            this.chkPmhTypePri.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(189)))), ((int)(((byte)(182)))));
-            this.chkPmhTypePri.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(189)))), ((int)(((byte)(182)))));
-            this.chkPmhTypePri.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.chkPmhTypePri.Location = new System.Drawing.Point(3, 4);
-            this.chkPmhTypePri.Name = "chkPmhTypePri";
-            this.chkPmhTypePri.Size = new System.Drawing.Size(59, 17);
-            this.chkPmhTypePri.TabIndex = 535;
-            this.chkPmhTypePri.TabStop = true;
-            this.chkPmhTypePri.Text = "Primary";
-            this.theme1.SetTheme(this.chkPmhTypePri, "(default)");
-            this.chkPmhTypePri.UseVisualStyleBackColor = false;
-            // 
-            // txtPmhType
-            // 
-            this.txtPmhType.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtPmhType.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
-            this.txtPmhType.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.txtPmhType.Location = new System.Drawing.Point(223, 4);
-            this.txtPmhType.Name = "txtPmhType";
-            this.txtPmhType.Size = new System.Drawing.Size(217, 20);
-            this.txtPmhType.TabIndex = 928;
-            this.txtPmhType.Tag = null;
-            this.theme1.SetTheme(this.txtPmhType, "(default)");
-            this.txtPmhType.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
-            // 
-            // panel36
-            // 
-            this.panel36.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.panel36.Controls.Add(this.chkPmhMenLmp);
-            this.panel36.Controls.Add(this.chkPmhMenIrr);
-            this.panel36.Controls.Add(this.chkPmhMenReg);
-            this.panel36.Controls.Add(this.txtPmhMenDay);
-            this.panel36.Controls.Add(this.label40);
-            this.panel36.Controls.Add(this.txtPmhMenInter);
-            this.panel36.Controls.Add(this.label42);
-            this.panel36.Controls.Add(this.txtPmhMenLmp);
-            this.panel36.Controls.Add(this.label43);
-            this.panel36.Controls.Add(this.label41);
-            this.panel36.Controls.Add(this.txtPmhMenAmt);
-            this.panel36.Controls.Add(this.label44);
-            this.panel36.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.panel36.Location = new System.Drawing.Point(152, 57);
-            this.panel36.Name = "panel36";
-            this.panel36.Size = new System.Drawing.Size(725, 63);
-            this.panel36.TabIndex = 991;
-            this.theme1.SetTheme(this.panel36, "(default)");
-            // 
-            // chkPmhMenIrr
-            // 
-            this.chkPmhMenIrr.AutoSize = true;
-            this.chkPmhMenIrr.BackColor = System.Drawing.Color.Transparent;
-            this.chkPmhMenIrr.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
-            this.chkPmhMenIrr.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(189)))), ((int)(((byte)(182)))));
-            this.chkPmhMenIrr.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(189)))), ((int)(((byte)(182)))));
-            this.chkPmhMenIrr.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.chkPmhMenIrr.Location = new System.Drawing.Point(96, 4);
-            this.chkPmhMenIrr.Name = "chkPmhMenIrr";
-            this.chkPmhMenIrr.Size = new System.Drawing.Size(106, 17);
-            this.chkPmhMenIrr.TabIndex = 536;
-            this.chkPmhMenIrr.TabStop = true;
-            this.chkPmhMenIrr.Text = "Irregular Duration";
-            this.theme1.SetTheme(this.chkPmhMenIrr, "(default)");
-            this.chkPmhMenIrr.UseVisualStyleBackColor = false;
-            // 
-            // chkPmhMenReg
-            // 
-            this.chkPmhMenReg.AutoSize = true;
-            this.chkPmhMenReg.BackColor = System.Drawing.Color.Transparent;
-            this.chkPmhMenReg.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
-            this.chkPmhMenReg.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(189)))), ((int)(((byte)(182)))));
-            this.chkPmhMenReg.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(189)))), ((int)(((byte)(182)))));
-            this.chkPmhMenReg.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.chkPmhMenReg.Location = new System.Drawing.Point(3, 4);
-            this.chkPmhMenReg.Name = "chkPmhMenReg";
-            this.chkPmhMenReg.Size = new System.Drawing.Size(62, 17);
-            this.chkPmhMenReg.TabIndex = 535;
-            this.chkPmhMenReg.TabStop = true;
-            this.chkPmhMenReg.Text = "Regular";
-            this.theme1.SetTheme(this.chkPmhMenReg, "(default)");
-            this.chkPmhMenReg.UseVisualStyleBackColor = false;
-            // 
-            // txtPmhMenDay
-            // 
-            this.txtPmhMenDay.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtPmhMenDay.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
-            this.txtPmhMenDay.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.txtPmhMenDay.Location = new System.Drawing.Point(210, 4);
-            this.txtPmhMenDay.Name = "txtPmhMenDay";
-            this.txtPmhMenDay.Size = new System.Drawing.Size(62, 20);
-            this.txtPmhMenDay.TabIndex = 928;
-            this.txtPmhMenDay.Tag = null;
-            this.theme1.SetTheme(this.txtPmhMenDay, "(default)");
-            this.txtPmhMenDay.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
-            // 
-            // chkPmhMenLmp
-            // 
-            this.chkPmhMenLmp.AutoSize = true;
-            this.chkPmhMenLmp.BackColor = System.Drawing.Color.Transparent;
-            this.chkPmhMenLmp.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
-            this.chkPmhMenLmp.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(189)))), ((int)(((byte)(182)))));
-            this.chkPmhMenLmp.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(189)))), ((int)(((byte)(182)))));
-            this.chkPmhMenLmp.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.chkPmhMenLmp.Location = new System.Drawing.Point(3, 33);
-            this.chkPmhMenLmp.Name = "chkPmhMenLmp";
-            this.chkPmhMenLmp.Size = new System.Drawing.Size(47, 17);
-            this.chkPmhMenLmp.TabIndex = 980;
-            this.chkPmhMenLmp.TabStop = true;
-            this.chkPmhMenLmp.Text = "LMP";
-            this.theme1.SetTheme(this.chkPmhMenLmp, "(default)");
-            this.chkPmhMenLmp.UseVisualStyleBackColor = false;
+            this.pnLabFormA.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.pnLabFormA.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pnLabFormA.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.pnLabFormA.Location = new System.Drawing.Point(0, 0);
+            this.pnLabFormA.Name = "pnLabFormA";
+            this.pnLabFormA.Size = new System.Drawing.Size(1585, 665);
+            this.pnLabFormA.TabIndex = 0;
+            this.theme1.SetTheme(this.pnLabFormA, "(default)");
             // 
             // FrmNurseAdd2
             // 
@@ -10686,12 +10710,30 @@
             ((System.ComponentModel.ISupportInitialize)(this.c1TextBox19)).EndInit();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
+            this.panel30.ResumeLayout(false);
+            this.panel30.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.chkPmhSubs)).EndInit();
+            this.panel29.ResumeLayout(false);
+            this.panel29.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.chkPmhSurg)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            this.panel36.ResumeLayout(false);
+            this.panel36.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtPmhMenDay)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtPmhMenInter)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtPmhMenLmp)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtPmhMenAmt)).EndInit();
+            this.panel35.ResumeLayout(false);
+            this.panel35.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtPmhType)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.c1TextBox13)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtPmhMenInter)).EndInit();
+            this.panel34.ResumeLayout(false);
+            this.panel34.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.chkPmhProv)).EndInit();
+            this.panel33.ResumeLayout(false);
+            this.panel33.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtPmhPaps)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtPmhPttName)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtPmhPttMaleName)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtPmhPttDob)).EndInit();
@@ -10887,24 +10929,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.cboBsp)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnVoid)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnSave)).EndInit();
-            this.panel29.ResumeLayout(false);
-            this.panel29.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.chkPmhSurg)).EndInit();
-            this.panel30.ResumeLayout(false);
-            this.panel30.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.chkPmhSubs)).EndInit();
-            this.panel33.ResumeLayout(false);
-            this.panel33.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.txtPmhPaps)).EndInit();
-            this.panel34.ResumeLayout(false);
-            this.panel34.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.chkPmhProv)).EndInit();
-            this.panel35.ResumeLayout(false);
-            this.panel35.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.txtPmhType)).EndInit();
-            this.panel36.ResumeLayout(false);
-            this.panel36.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.txtPmhMenDay)).EndInit();
+            this.tabLabFormA.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -11598,5 +11623,7 @@
         private System.Windows.Forms.RadioButton chkPmhMenReg;
         private C1.Win.C1Input.C1TextBox txtPmhMenDay;
         private System.Windows.Forms.RadioButton chkPmhMenLmp;
+        private C1.Win.C1Command.C1DockingTabPage tabLabFormA;
+        private System.Windows.Forms.Panel pnLabFormA;
     }
 }

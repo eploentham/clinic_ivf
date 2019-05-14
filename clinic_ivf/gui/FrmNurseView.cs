@@ -74,6 +74,7 @@ namespace clinic_ivf.gui
             txtLabResultDate.KeyUp += TxtLabResultDate_KeyUp;
             chkAll.CheckedChanged += ChkAll_CheckedChanged;
             cboVisitBsp.SelectedItemChanged += CboVisitBsp_SelectedItemChanged;
+            btnLabResultSearch.Click += BtnLabResultSearch_Click;
 
             ic.ivfDB.bspDB.setCboBsp(cboVisitBsp, ic.iniC.service_point_id);
 
@@ -94,6 +95,12 @@ namespace clinic_ivf.gui
             timer.Tick += Timer_Tick;
             timer.Enabled = true;
             pageLoad = false;
+        }
+
+        private void BtnLabResultSearch_Click(object sender, EventArgs e)
+        {
+            //throw new NotImplementedException();
+            setGrfLab(txtLabResultHn.Text);
         }
 
         private void CboVisitBsp_SelectedItemChanged(object sender, EventArgs e)
@@ -736,7 +743,7 @@ namespace clinic_ivf.gui
             {
                 String date = "";
                 DateTime dt11 = new DateTime();
-                if (DateTime.TryParse(txtDateStart.Text, out dt11))
+                if (DateTime.TryParse(txtLabResultDate.Text, out dt11))
                 {
                     date = dt11.Year + "-" + dt11.ToString("MM-dd");
                     dt = ic.ivfDB.lbReqDB.selectByStatusResult(date, date,"");

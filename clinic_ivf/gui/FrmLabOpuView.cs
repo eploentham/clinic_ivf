@@ -2,6 +2,7 @@
 using C1.Win.C1Input;
 using C1.Win.C1SuperTooltip;
 using clinic_ivf.control;
+using clinic_ivf.FlexGrid;
 using clinic_ivf.object1;
 using System;
 using System.Collections.Generic;
@@ -446,7 +447,7 @@ namespace clinic_ivf.gui
 
             dt = ic.ivfDB.opuDB.selectByStatusProcess1();
             //grfExpn.Rows.Count = dt.Rows.Count + 1;
-            grfProc.Rows.Count = 1;
+            grfProc.Rows.Count = dt.Rows.Count + 1;
             grfProc.Cols.Count = 7;
             C1TextBox txt = new C1TextBox();
             //C1ComboBox cboproce = new C1ComboBox();
@@ -479,21 +480,29 @@ namespace clinic_ivf.gui
             //CellRange rg1 = grfBank.GetCellRange(1, colE, grfBank.Rows.Count, colE);
             //rg1.Style = grfBank.Styles["date"];
             //grfCu.Cols[colID].Visible = false;
-            int i = 1;
+            for (int col = 0; col < dt.Columns.Count; ++col)
+            {
+                grfProc.Cols[col + 1].DataType = dt.Columns[col].DataType;
+                grfProc.Cols[col + 1].Caption = dt.Columns[col].ColumnName;
+                grfProc.Cols[col + 1].Name = dt.Columns[col].ColumnName;
+            }
+            int i = 0;
             foreach (DataRow row in dt.Rows)
             {
-                Row row1 = grfProc.Rows.Add();
-                row1[colPcId] = row[ic.ivfDB.opuDB.opu.opu_id].ToString();
-                row1[colPcOpuNum] = row[ic.ivfDB.opuDB.opu.opu_code].ToString();
-                row1[colPcHn] = row[ic.ivfDB.opuDB.opu.hn_female].ToString();
-                row1[colPcPttName] = row[ic.ivfDB.opuDB.opu.name_female].ToString();
-                row1[colPcDate] = ic.datetoShow(row[ic.ivfDB.opuDB.opu.opu_date].ToString());
-                row1[colPcRemark] = row[ic.ivfDB.opuDB.opu.remark].ToString();
+                i++;
+                if (i == 1) continue;
+                //Row row1 = grfProc.Rows.Add();
+                grfProc[i, colPcId] = row[ic.ivfDB.opuDB.opu.opu_id].ToString();
+                grfProc[i, colPcOpuNum] = row[ic.ivfDB.opuDB.opu.opu_code].ToString();
+                grfProc[i, colPcHn] = row[ic.ivfDB.opuDB.opu.hn_female].ToString();
+                grfProc[i, colPcPttName] = row[ic.ivfDB.opuDB.opu.name_female].ToString();
+                grfProc[i, colPcDate] = ic.datetoShow(row[ic.ivfDB.opuDB.opu.opu_date].ToString());
+                grfProc[i, colPcRemark] = row[ic.ivfDB.opuDB.opu.remark].ToString();
                 //row1[colRqRemark] = row[ic.ivfDB.lbReqDB.lbReq.remark].ToString();
                 //row1[colOpuId] = "";
                 //row1[colDtrName] = row["dtr_name"].ToString();
-                row1[0] = i;
-                i++;
+                grfProc[i, 0] = (i-1);
+                
             }
             grfProc.Cols[colRqId].Visible = false;
             grfProc.Cols[colPcOpuNum].AllowEditing = false;
@@ -502,7 +511,20 @@ namespace clinic_ivf.gui
             grfProc.Cols[colPcDate].AllowEditing = false;
             grfProc.Cols[colPcRemark].AllowEditing = false;
             //grfReq.Cols[coldt].Visible = false;
+            FilterRow fr = new FilterRow(grfProc);
+            grfProc.AllowFiltering = true;
+            grfProc.AfterFilter += GrfProc_AfterFilter;
         }
+
+        private void GrfProc_AfterFilter(object sender, EventArgs e)
+        {
+            //throw new NotImplementedException();
+            for (int col = grfProc.Cols.Fixed; col < grfProc.Cols.Count; ++col)
+            {
+                var filter = grfProc.Cols[col].ActiveFilter;
+            }
+        }
+
         private void GrfProc_AfterRowColChange(object sender, RangeEventArgs e)
         {
             //throw new NotImplementedException();

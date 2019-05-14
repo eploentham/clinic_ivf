@@ -302,7 +302,7 @@ namespace clinic_ivf.gui
             frm.ShowDialog(this);
             if (!ic.cStf.staff_id.Equals(""))
             {
-                lbReq = ic.ivfDB.setLabRequest(name, vn, dtrid, remark, hn, dobfemale, reqid, itmcode,"","","","");
+                lbReq = ic.ivfDB.setLabRequest(name, vn, dtrid, remark, hn, dobfemale, reqid, itmcode,"","","","","");
                 String re = ic.ivfDB.lbReqDB.insertLabRequest(lbReq, "");
                 long chk1 = 0;
                 if (long.TryParse(re, out chk1))
