@@ -1297,29 +1297,44 @@ namespace clinic_ivf.objdb
                 foreach (DataRow row in dt.Rows)
                 {
                     grpname = row["Name"].ToString();
-                    sql = "Select sum(Total) as Total1, Name from BillDetail Where Total<>0 and VN='" + vn + "' and GroupType='" + grpname + "' Group By Name ";
+                    //sql = "Select sum(Total) as Total1, Name from BillDetail Where Total<>0 and VN='" + vn + "' and GroupType='" + grpname + "' Group By Name ";
+                    sql = "Select sum(Total) as Total1 from BillDetail Where Total<>0 and VN='" + vn + "' and GroupType='" + grpname + "'  ";
                     dtb0 = conn.selectData(conn.conn, sql);
                     if (dtb0.Rows.Count > 0)
                     {
-                        foreach (DataRow row1 in dtb0.Rows)
-                        {
-                            total111 = row1["Total1"].ToString();
-                            //name = dt.Rows[0]["Name"].ToString();
-                            //comm = dt.Rows[0]["Comment"].ToString();
-                            Decimal.TryParse(total111, out total1111);
-                            if (total1111 <= 0) continue;
-                            DataRow row11 = dtprn.NewRow();
-                            row11["col1"] = row1["Name"].ToString();
-                            row11["col2"] = total1111.ToString("#,###.00");
-                            row11["col3"] = "";
-                            row11["col4"] = total1111.ToString("#,###.00");
-                            row11["sort1"] = i.ToString();
-                            row11["fond_bold"] = "1";
-                            row11["grp"] = "2";
-                            row11["grp_name"] = grpname;
-                            amt += total1111;
-                            dtprn.Rows.Add(row11);
-                        }
+                        total111 = dtb0.Rows[0]["Total1"].ToString();
+                        Decimal.TryParse(total111, out total1111);
+                        if (total1111 <= 0) continue;
+                        DataRow row11 = dtprn.NewRow();
+                        row11["col1"] = grpname;
+                        row11["col2"] = total1111.ToString("#,###.00");
+                        row11["col3"] = "";
+                        row11["col4"] = total1111.ToString("#,###.00");
+                        row11["sort1"] = i.ToString();
+                        row11["fond_bold"] = "1";
+                        row11["grp"] = "2";
+                        row11["grp_name"] = grpname;
+                        amt += total1111;
+                        dtprn.Rows.Add(row11);
+                        //foreach (DataRow row1 in dtb0.Rows)
+                        //{
+                        //    total111 = row1["Total1"].ToString();
+                        //    //name = dt.Rows[0]["Name"].ToString();
+                        //    //comm = dt.Rows[0]["Comment"].ToString();
+                        //    Decimal.TryParse(total111, out total1111);
+                        //    if (total1111 <= 0) continue;
+                        //    DataRow row11 = dtprn.NewRow();
+                        //    row11["col1"] = row1["Name"].ToString();
+                        //    row11["col2"] = total1111.ToString("#,###.00");
+                        //    row11["col3"] = "";
+                        //    row11["col4"] = total1111.ToString("#,###.00");
+                        //    row11["sort1"] = i.ToString();
+                        //    row11["fond_bold"] = "1";
+                        //    row11["grp"] = "2";
+                        //    row11["grp_name"] = grpname;
+                        //    amt += total1111;
+                        //    dtprn.Rows.Add(row11);
+                        //}
                     }
                 }
             }

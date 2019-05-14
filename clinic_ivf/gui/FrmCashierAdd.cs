@@ -161,7 +161,7 @@ namespace clinic_ivf.gui
             ic.ivfDB.ovsDB.updateStatusCashierFinish(txtVn.Text);
             amt2 = ic.NumberToCurrencyText(amt, MidpointRounding.AwayFromZero);
             FrmReport frm = new FrmReport(ic);
-            frm.setPrintBill(dtprn, txtHn.Text, txtPttNameE.Text, amt2, amt.ToString("#,###.00"), billNo, day + "/" + month + "/" + year, payby);
+            frm.setPrintBill(dtprn, txtHn.Text, txtPttNameE.Text, amt2, amt.ToString("#,###.00"), billNo, day + "/" + month + "/" + year, payby,"ใบเสร็จ/Receipt");
             frm.ShowDialog(this);
         }
 
@@ -439,7 +439,7 @@ namespace clinic_ivf.gui
             ic.ivfDB.ovsDB.updateStatusCashierFinish(txtVn.Text);
             amt2 = ic.NumberToCurrencyText(amt, MidpointRounding.AwayFromZero);
             FrmReport frm = new FrmReport(ic);
-            frm.setPrintBill(dtprn, txtHn.Text, txtPttNameE.Text, amt2, amt.ToString("#,###.00"), billNo, day+"/"+month+"/"+year, payby);
+            frm.setPrintBill(dtprn, txtHn.Text, txtPttNameE.Text, amt2, amt.ToString("#,###.00"), billNo, day+"/"+month+"/"+year, payby,"ใบแจ้งหนี้/Bill");
             frm.ShowDialog(this);
             
         }
@@ -685,7 +685,15 @@ namespace clinic_ivf.gui
                     grfBillD[i, colName] = row[ic.ivfDB.obildDB.obilld.Name].ToString();
                     grfBillD[i, colAmt] = price.ToString("#,###.00");
                     grfBillD[i, colDiscount] = "";
-                    grfBillD[i, colNetAmt] = price.ToString("#,###.00");
+                    if (row["Extra"].ToString().Equals("1"))
+                    {
+                        grfBillD[i, colNetAmt] = price.ToString("#,###.00");
+                    }
+                    else
+                    {
+                        grfBillD[i, colNetAmt] = "0.00";
+                    }
+                    
                     grfBillD[i, colGrpName] = row[ic.ivfDB.obildDB.obilld.GroupType].ToString();
                     grfBillD[i, colInclude] = row["Extra"].ToString().Equals("1") ? "Extra" : "Include";
                     grfBillD[i, colStatus] = row["status"].ToString();
