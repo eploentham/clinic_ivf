@@ -281,7 +281,7 @@ namespace clinic_ivf.gui
                 MessageBox.Show("error " + ex.Message, "");
             }
         }
-        public void setPrintBill(DataTable dt, String hn, String name, String thai_baht, String amount, String bill_no, String bill_date, String payby)
+        public void setPrintBill(DataTable dt, String hn, String name, String thai_baht, String amount, String bill_no, String bill_date, String payby, String billname)
         {
             String chk = "", printerDefault = "";
             ReportDocument rpt = new ReportDocument();
@@ -293,7 +293,7 @@ namespace clinic_ivf.gui
                 rpt.SetParameterValue("line2", ic.cop.addr1);
                 rpt.SetParameterValue("line3", ic.cop.addr2);
                 rpt.SetParameterValue("line4", "");
-                rpt.SetParameterValue("bill_no", bill_no);
+                rpt.SetParameterValue("bill_no", "เลขที่/Bill No " + bill_no);
                 rpt.SetParameterValue("bill_date", bill_date);
                 rpt.SetParameterValue("amount", amount);
                 rpt.SetParameterValue("thai_baht", thai_baht);
@@ -304,6 +304,7 @@ namespace clinic_ivf.gui
                 rpt.SetParameterValue("footer3", "Please keep this receipt for reference.");
                 rpt.SetParameterValue("footer4", "เจ้าหน้าที่การเงิน (Cashier)");
                 rpt.SetParameterValue("payby", payby);
+                rpt.SetParameterValue("bill_name", billname);
                 this.crystalReportViewer1.ReportSource = rpt;
                 this.crystalReportViewer1.Refresh();
             }
