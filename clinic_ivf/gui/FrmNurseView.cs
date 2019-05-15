@@ -1272,11 +1272,12 @@ namespace clinic_ivf.gui
             req = ic.ivfDB.lbReqDB.selectByPk1(reqid);
             LabOpu opu = new LabOpu();
             opu = ic.ivfDB.opuDB.selectByReqID(req.req_id);
-            FrmLabOPUAdd2 frm = new FrmLabOPUAdd2(ic,"", opu.opu_id);
+            //FrmLabOPUAdd2 frm = new FrmLabOPUAdd2(ic,"", opu.opu_id);
+            FrmNurseOPUView frm = new FrmNurseOPUView(ic, "", opu.opu_id);
             String txt = "";
             if (!name.Equals(""))
             {
-                txt = "ผลLAB " + name;
+                txt = "ผลLAB OPU " + name;
             }
 
             frm.FormBorderStyle = FormBorderStyle.None;

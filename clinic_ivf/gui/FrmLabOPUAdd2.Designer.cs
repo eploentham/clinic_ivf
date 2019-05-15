@@ -235,6 +235,8 @@
             this.label49 = new System.Windows.Forms.Label();
             this.label48 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.txtOpuTime = new C1.Win.C1Input.C1TextBox();
+            this.label90 = new System.Windows.Forms.Label();
             this.label89 = new System.Windows.Forms.Label();
             this.txtApproveResult = new C1.Win.C1Input.C1TextBox();
             this.btnApproveResult = new C1.Win.C1Input.C1Button();
@@ -275,8 +277,6 @@
             this.txtHnMale = new C1.Win.C1Input.C1TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.txtHnFeMale = new C1.Win.C1Input.C1TextBox();
-            this.txtOpuTime = new C1.Win.C1Input.C1TextBox();
-            this.label90 = new System.Windows.Forms.Label();
             this.sB.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.theme1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.c1CommandDock2)).BeginInit();
@@ -419,6 +419,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtEmbryoForEtDay)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtEmbryoForEtNO)).BeginInit();
             this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtOpuTime)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtApproveResult)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnApproveResult)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtDobDonor)).BeginInit();
@@ -443,7 +444,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.btnHnSearch)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtHnMale)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtHnFeMale)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtOpuTime)).BeginInit();
             this.SuspendLayout();
             // 
             // sB
@@ -3901,6 +3901,32 @@
             this.groupBox1.Text = "Patient";
             this.theme1.SetTheme(this.groupBox1, "(default)");
             // 
+            // txtOpuTime
+            // 
+            this.txtOpuTime.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtOpuTime.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
+            this.txtOpuTime.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.txtOpuTime.Location = new System.Drawing.Point(754, 77);
+            this.txtOpuTime.Name = "txtOpuTime";
+            this.txtOpuTime.Size = new System.Drawing.Size(112, 24);
+            this.txtOpuTime.TabIndex = 555;
+            this.txtOpuTime.Tag = null;
+            this.theme1.SetTheme(this.txtOpuTime, "(default)");
+            this.txtOpuTime.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            // 
+            // label90
+            // 
+            this.label90.AutoSize = true;
+            this.label90.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.label90.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label90.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.label90.Location = new System.Drawing.Point(660, 79);
+            this.label90.Name = "label90";
+            this.label90.Size = new System.Drawing.Size(77, 16);
+            this.label90.TabIndex = 554;
+            this.label90.Text = "Time OPU :";
+            this.theme1.SetTheme(this.label90, "(default)");
+            // 
             // label89
             // 
             this.label89.AutoSize = true;
@@ -4606,32 +4632,6 @@
             this.theme1.SetTheme(this.txtHnFeMale, "(default)");
             this.txtHnFeMale.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
             // 
-            // txtOpuTime
-            // 
-            this.txtOpuTime.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtOpuTime.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
-            this.txtOpuTime.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.txtOpuTime.Location = new System.Drawing.Point(754, 77);
-            this.txtOpuTime.Name = "txtOpuTime";
-            this.txtOpuTime.Size = new System.Drawing.Size(112, 24);
-            this.txtOpuTime.TabIndex = 555;
-            this.txtOpuTime.Tag = null;
-            this.theme1.SetTheme(this.txtOpuTime, "(default)");
-            this.txtOpuTime.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
-            // 
-            // label90
-            // 
-            this.label90.AutoSize = true;
-            this.label90.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.label90.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label90.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.label90.Location = new System.Drawing.Point(660, 79);
-            this.label90.Name = "label90";
-            this.label90.Size = new System.Drawing.Size(77, 16);
-            this.label90.TabIndex = 554;
-            this.label90.Text = "Time OPU :";
-            this.theme1.SetTheme(this.label90, "(default)");
-            // 
             // FrmLabOPUAdd2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -4797,6 +4797,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtEmbryoForEtNO)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtOpuTime)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtApproveResult)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnApproveResult)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtDobDonor)).EndInit();
@@ -4821,7 +4822,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.btnHnSearch)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtHnMale)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtHnFeMale)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtOpuTime)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

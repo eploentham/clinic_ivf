@@ -322,6 +322,12 @@
     <Compile Include="gui\FrmNurseFormEggSti.Designer.cs">
       <DependentUpon>FrmNurseFormEggSti.cs</DependentUpon>
     </Compile>
+    <Compile Include="gui\FrmNurseOPUView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="gui\FrmNurseOPUView.Designer.cs">
+      <DependentUpon>FrmNurseOPUView.cs</DependentUpon>
+    </Compile>
     <Compile Include="gui\FrmNurseView.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -924,6 +930,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="gui\FrmNurseFormEggSti.resx">
       <DependentUpon>FrmNurseFormEggSti.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="gui\FrmNurseOPUView.resx">
+      <DependentUpon>FrmNurseOPUView.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="gui\FrmNurseView.resx">
       <DependentUpon>FrmNurseView.cs</DependentUpon>

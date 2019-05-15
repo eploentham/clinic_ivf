@@ -691,7 +691,15 @@ namespace clinic_ivf.gui
                     }
                     else
                     {
-                        grfBillD[i, colNetAmt] = "0.00";
+                        if (row[ic.ivfDB.obildDB.obilld.GroupType].ToString().Equals("Package"))
+                        {
+                            grfBillD[i, colNetAmt] = price.ToString("#,###.00");
+                        }
+                        else
+                        {
+                            grfBillD[i, colNetAmt] = "0.00";
+                        }
+                        
                     }
                     
                     grfBillD[i, colGrpName] = row[ic.ivfDB.obildDB.obilld.GroupType].ToString();

@@ -652,6 +652,8 @@
             this.ribbonGroup1 = new C1.Win.C1Ribbon.RibbonGroup();
             this.rbPgPrint = new C1.Win.C1Ribbon.RibbonButton();
             this.ribbonTopToolBar1 = new C1.Win.C1Ribbon.RibbonTopToolBar();
+            this.tabLabFormA = new C1.Win.C1Command.C1DockingTabPage();
+            this.pnLabFormA = new System.Windows.Forms.Panel();
             this.radioButton20 = new System.Windows.Forms.RadioButton();
             this.txtStfConfirmID = new C1.Win.C1Input.C1TextBox();
             this.txtUserReq = new C1.Win.C1Input.C1TextBox();
@@ -666,8 +668,6 @@
             this.label92 = new System.Windows.Forms.Label();
             this.label93 = new System.Windows.Forms.Label();
             this.label94 = new System.Windows.Forms.Label();
-            this.tabLabFormA = new C1.Win.C1Command.C1DockingTabPage();
-            this.pnLabFormA = new System.Windows.Forms.Panel();
             this.sB.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.theme1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.sC)).BeginInit();
@@ -1044,12 +1044,12 @@
             this.pnProgressNote.SuspendLayout();
             this.pnPg.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.c1Ribbon1)).BeginInit();
+            this.tabLabFormA.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtStfConfirmID)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtUserReq)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cboBsp)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnVoid)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnSave)).BeginInit();
-            this.tabLabFormA.SuspendLayout();
             this.SuspendLayout();
             // 
             // sB
@@ -1952,7 +1952,7 @@
             this.c1SplitterPanel1.Size = new System.Drawing.Size(783, 644);
             this.c1SplitterPanel1.TabIndex = 0;
             this.c1SplitterPanel1.Text = "Panel 1";
-            this.c1SplitterPanel1.Width = 783;
+            this.c1SplitterPanel1.Width = 790;
             // 
             // panel8
             // 
@@ -2025,7 +2025,7 @@
             this.splitContainer2.Panel2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
             this.theme1.SetTheme(this.splitContainer2.Panel2, "(default)");
             this.splitContainer2.Size = new System.Drawing.Size(757, 642);
-            this.splitContainer2.SplitterDistance = 295;
+            this.splitContainer2.SplitterDistance = 274;
             this.splitContainer2.TabIndex = 0;
             this.theme1.SetTheme(this.splitContainer2, "(default)");
             // 
@@ -2036,7 +2036,7 @@
             this.pnPackage.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
             this.pnPackage.Location = new System.Drawing.Point(0, 0);
             this.pnPackage.Name = "pnPackage";
-            this.pnPackage.Size = new System.Drawing.Size(757, 295);
+            this.pnPackage.Size = new System.Drawing.Size(757, 274);
             this.pnPackage.TabIndex = 0;
             this.theme1.SetTheme(this.pnPackage, "(default)");
             // 
@@ -2052,7 +2052,7 @@
             this.tcPackage.Location = new System.Drawing.Point(0, 0);
             this.tcPackage.Name = "tcPackage";
             this.tcPackage.SelectedIndex = 2;
-            this.tcPackage.Size = new System.Drawing.Size(757, 343);
+            this.tcPackage.Size = new System.Drawing.Size(757, 364);
             this.tcPackage.TabIndex = 1;
             this.tcPackage.TabSizeMode = C1.Win.C1Command.TabSizeModeEnum.Fit;
             this.tcPackage.TabsShowFocusCues = false;
@@ -2065,7 +2065,7 @@
             this.tabPkgOrder.Controls.Add(this.panel2);
             this.tabPkgOrder.Location = new System.Drawing.Point(1, 25);
             this.tabPkgOrder.Name = "tabPkgOrder";
-            this.tabPkgOrder.Size = new System.Drawing.Size(755, 317);
+            this.tabPkgOrder.Size = new System.Drawing.Size(755, 338);
             this.tabPkgOrder.TabIndex = 0;
             this.tabPkgOrder.Text = "สั่งการ";
             // 
@@ -2092,7 +2092,7 @@
             this.panel2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
             this.panel2.Location = new System.Drawing.Point(0, 0);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(755, 317);
+            this.panel2.Size = new System.Drawing.Size(755, 338);
             this.panel2.TabIndex = 0;
             this.theme1.SetTheme(this.panel2, "(default)");
             // 
@@ -2114,7 +2114,7 @@
             // 
             this.btnPkgOrder.Image = global::clinic_ivf.Properties.Resources.Add_ticket_24;
             this.btnPkgOrder.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnPkgOrder.Location = new System.Drawing.Point(433, 259);
+            this.btnPkgOrder.Location = new System.Drawing.Point(464, 70);
             this.btnPkgOrder.Name = "btnPkgOrder";
             this.btnPkgOrder.Size = new System.Drawing.Size(80, 31);
             this.btnPkgOrder.TabIndex = 697;
@@ -2130,7 +2130,7 @@
             this.label15.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
             this.label15.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label15.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.label15.Location = new System.Drawing.Point(13, 197);
+            this.label15.Location = new System.Drawing.Point(14, 174);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(77, 16);
             this.label15.TabIndex = 689;
@@ -2142,7 +2142,7 @@
             this.txtPayment4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtPayment4.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
             this.txtPayment4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.txtPayment4.Location = new System.Drawing.Point(107, 195);
+            this.txtPayment4.Location = new System.Drawing.Point(108, 172);
             this.txtPayment4.Name = "txtPayment4";
             this.txtPayment4.Size = new System.Drawing.Size(253, 20);
             this.txtPayment4.TabIndex = 688;
@@ -2156,7 +2156,7 @@
             this.label14.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
             this.label14.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label14.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.label14.Location = new System.Drawing.Point(13, 171);
+            this.label14.Location = new System.Drawing.Point(14, 148);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(77, 16);
             this.label14.TabIndex = 687;
@@ -2168,7 +2168,7 @@
             this.txtPayment3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtPayment3.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
             this.txtPayment3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.txtPayment3.Location = new System.Drawing.Point(107, 169);
+            this.txtPayment3.Location = new System.Drawing.Point(108, 146);
             this.txtPayment3.Name = "txtPayment3";
             this.txtPayment3.Size = new System.Drawing.Size(253, 20);
             this.txtPayment3.TabIndex = 686;
@@ -2182,7 +2182,7 @@
             this.label13.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
             this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label13.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.label13.Location = new System.Drawing.Point(13, 145);
+            this.label13.Location = new System.Drawing.Point(14, 122);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(77, 16);
             this.label13.TabIndex = 685;
@@ -2194,7 +2194,7 @@
             this.txtPayment2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtPayment2.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
             this.txtPayment2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.txtPayment2.Location = new System.Drawing.Point(107, 143);
+            this.txtPayment2.Location = new System.Drawing.Point(108, 120);
             this.txtPayment2.Name = "txtPayment2";
             this.txtPayment2.Size = new System.Drawing.Size(253, 20);
             this.txtPayment2.TabIndex = 684;
@@ -2208,7 +2208,7 @@
             this.label12.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
             this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label12.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.label12.Location = new System.Drawing.Point(13, 119);
+            this.label12.Location = new System.Drawing.Point(14, 96);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(77, 16);
             this.label12.TabIndex = 683;
@@ -2220,7 +2220,7 @@
             this.txtPayment1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtPayment1.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
             this.txtPayment1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.txtPayment1.Location = new System.Drawing.Point(107, 117);
+            this.txtPayment1.Location = new System.Drawing.Point(108, 94);
             this.txtPayment1.Name = "txtPayment1";
             this.txtPayment1.Size = new System.Drawing.Size(253, 20);
             this.txtPayment1.TabIndex = 682;
@@ -2321,7 +2321,7 @@
             this.tabPkgDetail.Controls.Add(this.pnPackageD);
             this.tabPkgDetail.Location = new System.Drawing.Point(1, 25);
             this.tabPkgDetail.Name = "tabPkgDetail";
-            this.tabPkgDetail.Size = new System.Drawing.Size(755, 317);
+            this.tabPkgDetail.Size = new System.Drawing.Size(755, 338);
             this.tabPkgDetail.TabIndex = 1;
             this.tabPkgDetail.Text = "รายละเอียด";
             // 
@@ -2332,7 +2332,7 @@
             this.pnPackageD.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
             this.pnPackageD.Location = new System.Drawing.Point(0, 0);
             this.pnPackageD.Name = "pnPackageD";
-            this.pnPackageD.Size = new System.Drawing.Size(755, 317);
+            this.pnPackageD.Size = new System.Drawing.Size(755, 338);
             this.pnPackageD.TabIndex = 1;
             this.theme1.SetTheme(this.pnPackageD, "(default)");
             // 
@@ -2340,7 +2340,7 @@
             // 
             this.tabPkgOld.Location = new System.Drawing.Point(1, 25);
             this.tabPkgOld.Name = "tabPkgOld";
-            this.tabPkgOld.Size = new System.Drawing.Size(755, 317);
+            this.tabPkgOld.Size = new System.Drawing.Size(755, 338);
             this.tabPkgOld.TabIndex = 2;
             this.tabPkgOld.Text = "Package เก่า";
             // 
@@ -10278,6 +10278,26 @@
             // 
             this.ribbonTopToolBar1.Name = "ribbonTopToolBar1";
             // 
+            // tabLabFormA
+            // 
+            this.tabLabFormA.Controls.Add(this.pnLabFormA);
+            this.tabLabFormA.Location = new System.Drawing.Point(1, 24);
+            this.tabLabFormA.Name = "tabLabFormA";
+            this.tabLabFormA.Size = new System.Drawing.Size(1585, 665);
+            this.tabLabFormA.TabIndex = 10;
+            this.tabLabFormA.Text = "LAB Form A";
+            // 
+            // pnLabFormA
+            // 
+            this.pnLabFormA.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.pnLabFormA.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pnLabFormA.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.pnLabFormA.Location = new System.Drawing.Point(0, 0);
+            this.pnLabFormA.Name = "pnLabFormA";
+            this.pnLabFormA.Size = new System.Drawing.Size(1585, 665);
+            this.pnLabFormA.TabIndex = 0;
+            this.theme1.SetTheme(this.pnLabFormA, "(default)");
+            // 
             // radioButton20
             // 
             this.radioButton20.AutoSize = true;
@@ -10465,26 +10485,6 @@
             this.label94.Size = new System.Drawing.Size(43, 16);
             this.label94.TabIndex = 545;
             this.theme1.SetTheme(this.label94, "(default)");
-            // 
-            // tabLabFormA
-            // 
-            this.tabLabFormA.Controls.Add(this.pnLabFormA);
-            this.tabLabFormA.Location = new System.Drawing.Point(1, 24);
-            this.tabLabFormA.Name = "tabLabFormA";
-            this.tabLabFormA.Size = new System.Drawing.Size(1585, 665);
-            this.tabLabFormA.TabIndex = 10;
-            this.tabLabFormA.Text = "LAB Form A";
-            // 
-            // pnLabFormA
-            // 
-            this.pnLabFormA.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.pnLabFormA.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnLabFormA.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.pnLabFormA.Location = new System.Drawing.Point(0, 0);
-            this.pnLabFormA.Name = "pnLabFormA";
-            this.pnLabFormA.Size = new System.Drawing.Size(1585, 665);
-            this.pnLabFormA.TabIndex = 0;
-            this.theme1.SetTheme(this.pnLabFormA, "(default)");
             // 
             // FrmNurseAdd2
             // 
@@ -10924,12 +10924,12 @@
             this.pnPg.ResumeLayout(false);
             this.pnPg.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.c1Ribbon1)).EndInit();
+            this.tabLabFormA.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.txtStfConfirmID)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtUserReq)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cboBsp)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnVoid)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnSave)).EndInit();
-            this.tabLabFormA.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 

@@ -258,18 +258,41 @@ namespace clinic_ivf.objdb
         public DataTable selectByStatusProcess1()
         {
             DataTable dt = new DataTable();
-            String sql = "select opu." + opu.opu_id + ", opu." + opu.opu_code + ",opu." + opu.hn_female + ",opu." + opu.name_female + ",opu." + opu.opu_date + ",opu." + opu.remark+" " +
+            String sql = "select opu." + opu.opu_id + ", opu." + opu.opu_code + ",opu." + opu.hn_female + ",opu." + opu.name_female + ",opu." + opu.opu_date + ",opu." + opu.remark+","+ opu.hn_male+","+opu.name_male+ ", lab_b_procedure.proce_name_t " +
                 "From " + opu.table + " opu " +
                 "Left Join Doctor on Doctor.ID = opu.doctor_id " +
+                "Left Join lab_b_procedure on opu.proce_id = lab_b_procedure.proce_id " +
                 "Where opu." + opu.status_opu + " ='1' and opu." + opu.active + "='1' " +
                 //"Order By opu." + opu.opu_id + " " +
-                "Union " +
-                "select fet.fet_id , fet.fet_code ,fet.hn_female ,fet.name_female,fet.fet_date ,fet.remark " +
-                "From lab_t_fet fet " +
-                "Left Join Doctor on Doctor.ID = fet.doctor_id " +
-                "Where fet.status_fet ='1' and fet.active + '1' " +
+                //"Union " +
+                //"select fet.fet_id , fet.fet_code ,fet.hn_female ,fet.name_female,fet.fet_date ,fet.remark, fet.hn_male, fet.name_male, lab_b_procedure.proce_name_t " +
+                //"From lab_t_fet fet  " +
+                //"Left Join Doctor on Doctor.ID = fet.doctor_id " +
+                //"Left Join lab_b_procedure on fet.proce_id = lab_b_procedure.proce_id " +
+                //"Where fet.status_fet ='1' and fet.active + '1' " +
                 //"Order By fet.fet_id  ";
                 "  ";
+            dt = conn.selectData(conn.conn, sql);
+            return dt;
+        }
+        public DataTable selectByStatusFinish(String datestart, String dateend)
+        {
+            DataTable dt = new DataTable();
+            String sql = "select opu." + opu.opu_id + ", opu." + opu.opu_code + ",opu." + opu.hn_female + ",opu." + opu.name_female + ",opu." + opu.opu_date + ",opu." + opu.remark + "," + opu.hn_male + "," + opu.name_male + ", lab_b_procedure.proce_name_t " +
+                "From " + opu.table + " opu " +
+                "Left Join Doctor on Doctor.ID = opu.doctor_id " +
+                "Left Join lab_b_procedure on opu.proce_id = lab_b_procedure.proce_id " +
+                "Where opu." + opu.status_opu + " ='2' and opu." + opu.active + "='1' " +
+                "and opu." + opu.opu_date + " >= '"+datestart+"' and opu." + opu.opu_date + " <= '"+ dateend + "' "+
+                //"Order By opu." + opu.opu_id + " " +
+                //"Union " +
+                //"select fet.fet_id , fet.fet_code ,fet.hn_female ,fet.name_female,fet.fet_date ,fet.remark, fet.hn_male, fet.name_male, lab_b_procedure.proce_name_t " +
+                //"From lab_t_fet fet  " +
+                //"Left Join Doctor on Doctor.ID = fet.doctor_id " +
+                //"Left Join lab_b_procedure on fet.proce_id = lab_b_procedure.proce_id " +
+                //"Where fet.status_fet ='1' and fet.active + '1' " +
+                //"Order By fet.fet_id  ";
+            "  ";
             dt = conn.selectData(conn.conn, sql);
             return dt;
         }

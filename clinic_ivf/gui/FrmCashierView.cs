@@ -70,7 +70,6 @@ namespace clinic_ivf.gui
             timer.Tick += Timer_Tick;
             timer.Enabled = true;
         }
-
         private void TC_SelectedTabChanged(object sender, EventArgs e)
         {
             //throw new NotImplementedException();
@@ -356,14 +355,14 @@ namespace clinic_ivf.gui
                 grfQue[i, colVsEtime] = row["VEndTime"].ToString();
                 grfQue[i, colStatus] = row["VName"].ToString();
                 grfQue[i, colPttId] = row["PID"].ToString();
-                grfQue[i, colStatusNurse] = row["status_nurse"] != null ? row["status_nurse"].ToString() : "";
-                grfQue[i, colStatusCashier] = row["status_cashier"] != null ? row["status_cashier"].ToString() : "";
-                if (!row[ic.ivfDB.ovsDB.vsold.form_a_id].ToString().Equals("0"))
-                {
-                    CellNote note = new CellNote("ส่ง Lab Request Foam A");
-                    CellRange rg = grfQue.GetCellRange(i, colVN);
-                    rg.UserData = note;
-                }
+                //grfQue[i, colStatusNurse] = row["status_nurse"] != null ? row["status_nurse"].ToString() : "";
+                //grfQue[i, colStatusCashier] = row["status_cashier"] != null ? row["status_cashier"].ToString() : "";
+                //if (!row[ic.ivfDB.ovsDB.vsold.form_a_id].ToString().Equals("0"))
+                //{
+                //    CellNote note = new CellNote("ส่ง Lab Request Foam A");
+                //    CellRange rg = grfQue.GetCellRange(i, colVN);
+                //    rg.UserData = note;
+                //}
                 //if (i % 2 == 0)
                 //    grfPtt.Rows[i].StyleNew.BackColor = color;
                 i++;

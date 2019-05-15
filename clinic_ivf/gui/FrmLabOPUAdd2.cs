@@ -144,6 +144,7 @@ namespace clinic_ivf.gui
             btnResultDay1.MouseMove += BtnResultDay1_MouseMove;
             btnResultDay3.MouseMove += BtnResultDay3_MouseMove;
             btnResultDay5.MouseMove += BtnResultDay5_MouseMove;
+            //btnFinish.Click += BtnFinish_Click;
 
             setFocusColor();
             initGrf();
