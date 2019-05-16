@@ -1,0 +1,461 @@
+﻿using clinic_ivf.object1;
+using System;
+using System.Collections.Generic;
+using System.Data;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace clinic_ivf.objdb
+{
+    public class LabSpermDB
+    {
+        public LabSperm lsperm;
+        ConnectDB conn;
+        public LabSpermDB(ConnectDB c)
+        {
+            conn = c;
+            initConfig();
+        }
+        private void initConfig()
+        {
+            lsperm = new LabSperm();
+            lsperm.sperm_id = "sperm_id";
+            lsperm.sperm_code = "sperm_code";
+            lsperm.hn_male = "hn_male";
+            lsperm.hn_female = "hn_female";
+            lsperm.name_male = "name_male";
+            lsperm.name_female = "name_female";
+            lsperm.dob_female = "dob_female";
+            lsperm.dob_male = "dob_male";
+            lsperm.doctor_id = "doctor_id";
+            lsperm.abstinence_day = "abstinence_day";
+            lsperm.sperm_date = "sperm_date";
+            lsperm.appearance = "appearance";
+            lsperm.liquefaction = "liquefaction";
+
+            lsperm.status_fresh_sperm = "status_fresh_sperm";
+            lsperm.status_frozen_sperm = "status_frozen_sperm";
+
+            lsperm.viscosity = "viscosity";
+            lsperm.viability = "viability";
+            lsperm.volume1 = "volume1";
+            lsperm.count1 = "count1";
+            lsperm.total_count = "total_count";
+            lsperm.motile = "motile";
+            lsperm.total_motile = "total_motile";
+            lsperm.motility = "motility";
+            lsperm.motility_rate_4 = "motility_rate_4";
+            lsperm.motility_rate_3 = "motility_rate_3";
+            lsperm.motility_rate_2 = "motility_rate_2";
+            lsperm.motility_rate_1 = "motility_rate_1";
+            lsperm.recive_time = "recive_time";
+            lsperm.examination_time = "examination_time";
+            lsperm.finish_time = "finish_time";
+            lsperm.sort1 = "sort1";
+            lsperm.staff_id_report = "staff_id_report";
+            lsperm.staff_id_approve = "staff_id_approve";
+            lsperm.date_report = "date_report";
+            lsperm.date_approve = "date_approve";
+            lsperm.morphology_normal = "morphology_normal";
+            lsperm.morphology_abnormal = "morphology_abnormal";
+            lsperm.morphology_head_defect = "morphology_head_defect";
+            lsperm.morphology_neck_defect = "morphology_neck_defect";
+            lsperm.morphology_tail_defect = "morphology_tail_defect";
+            lsperm.no_of_vail = "no_of_vail";
+            lsperm.wbc = "wbc";
+            lsperm.active = "active";
+            lsperm.remark = "remark";
+            lsperm.date_create = "date_create";
+            lsperm.date_modi = "date_modi";
+            lsperm.date_cancel = "date_cancel";
+            lsperm.user_create = "user_create";
+            lsperm.user_modi = "user_modi";
+            lsperm.user_cancel = "user_cancel";
+            lsperm.ph = "ph";
+            lsperm.status_owner_sperm = "status_owner_sperm";
+            lsperm.status_donor_sperm = "status_donor_sperm";
+            lsperm.status_fresh_sperm = "status_fresh_sperm";
+
+            lsperm.status_frozen_sperm = "status_frozen_sperm";
+            lsperm.frozen_sperm_vail = "frozen_sperm_vail";
+            
+            lsperm.status_lab_sperm = "status_lab_sperm";
+            lsperm.req_id = "req_id";
+
+            lsperm.pkField = "sperm_id";
+            lsperm.table = "lab_t_form_a";
+
+        }
+        private void chkNull(LabSperm p)
+        {
+            long chk = 0;
+            decimal chk1 = 0;
+
+            p.date_modi = p.date_modi == null ? "" : p.date_modi;
+            p.date_cancel = p.date_cancel == null ? "" : p.date_cancel;
+            p.user_create = p.user_create == null ? "" : p.user_create;
+            p.user_modi = p.user_modi == null ? "" : p.user_modi;
+            p.user_cancel = p.user_cancel == null ? "" : p.user_cancel;
+
+            p.sperm_date = p.sperm_date == null ? "" : p.sperm_date;
+            p.appearance = p.appearance == null ? "" : p.appearance;
+            p.liquefaction = p.liquefaction == null ? "" : p.liquefaction;
+            p.status_fresh_sperm = p.status_fresh_sperm == null ? "" : p.status_fresh_sperm;
+            p.status_frozen_sperm = p.status_frozen_sperm == null ? "" : p.status_frozen_sperm;
+            p.viscosity = p.viscosity == null ? "" : p.viscosity;
+            p.viability = p.viability == null ? "" : p.viability;
+            p.volume1 = p.volume1 == null ? "" : p.volume1;
+            //p.abstinence_day = p.abstinence_day == null ? "" : p.abstinence_day;
+            p.count1 = p.count1 == null ? "" : p.count1;
+            p.total_count = p.total_count == null ? "" : p.total_count;
+            p.motile = p.motile == null ? "" : p.motile;
+            p.total_motile = p.total_motile == null ? "" : p.total_motile;
+            p.motility = p.motility == null ? "" : p.motility;
+            p.motility_rate_4 = p.motility_rate_4 == null ? "" : p.motility_rate_4;
+            p.motility_rate_3 = p.motility_rate_3 == null ? "" : p.motility_rate_3;
+            p.motility_rate_2 = p.motility_rate_2 == null ? "" : p.motility_rate_2;
+            p.motility_rate_1 = p.motility_rate_1 == null ? "" : p.motility_rate_1;
+            p.recive_time = p.recive_time == null ? "" : p.recive_time;
+            
+            p.finish_time = p.finish_time == null ? "" : p.finish_time;
+            p.sort1 = p.sort1 == null ? "" : p.sort1;
+            p.staff_id_report = p.staff_id_report == null ? "" : p.staff_id_report;
+            p.staff_id_approve = p.staff_id_approve == null ? "" : p.staff_id_approve;
+            p.date_report = p.date_report == null ? "" : p.date_report;
+            p.date_approve = p.date_approve == null ? "" : p.date_approve;
+            p.morphology_normal = p.morphology_normal == null ? "" : p.morphology_normal;
+            p.morphology_abnormal = p.morphology_abnormal == null ? "" : p.morphology_abnormal;
+            p.morphology_head_defect = p.morphology_head_defect == null ? "" : p.morphology_head_defect;
+            p.morphology_neck_defect = p.morphology_neck_defect == null ? "" : p.morphology_neck_defect;
+            p.morphology_tail_defect = p.morphology_tail_defect == null ? "" : p.morphology_tail_defect;
+            p.no_of_vail = p.no_of_vail == null ? "" : p.no_of_vail;
+            p.wbc = p.wbc == null ? "" : p.wbc;
+            p.active = p.active == null ? "" : p.active;
+            p.remark = p.remark == null ? "" : p.remark;
+            p.status_owner_sperm = p.status_owner_sperm == null ? "" : p.status_owner_sperm;
+            p.status_donor_sperm = p.status_donor_sperm == null ? "" : p.status_donor_sperm;
+            p.status_fresh_sperm = p.status_fresh_sperm == null ? "" : p.status_fresh_sperm;
+            p.hn_male = p.hn_male == null ? "" : p.hn_male;
+            p.hn_female = p.hn_female == null ? "" : p.hn_female;
+            p.name_male = p.name_male == null ? "" : p.name_male;
+            p.name_female = p.name_female == null ? "" : p.name_female;
+            p.status_frozen_sperm = p.status_frozen_sperm == null ? "" : p.status_frozen_sperm;
+            p.frozen_sperm_vail = p.frozen_sperm_vail == null ? "" : p.frozen_sperm_vail;
+            p.status_lab_sperm = p.status_lab_sperm == null ? "" : p.status_lab_sperm;
+            p.req_id = p.req_id == null ? "" : p.req_id;
+            
+            p.dob_female = p.dob_female == null ? "" : p.dob_female;
+            p.dob_male = p.dob_male == null ? "" : p.dob_male;
+            
+
+            p.ph = p.ph == null ? "" : p.ph;
+            p.abstinence_day = p.abstinence_day == null ? "" : p.abstinence_day;
+            p.abstinence_day = p.abstinence_day == null ? "" : p.abstinence_day;
+            
+
+            p.doctor_id = long.TryParse(p.doctor_id, out chk) ? chk.ToString() : "0";
+            p.req_id = long.TryParse(p.req_id, out chk) ? chk.ToString() : "0";            
+
+        }
+        public String insert(LabSperm p, String userId)
+        {
+            String re = "";
+            String sql = "";
+
+            chkNull(p);
+            try
+            {
+                sql = "Insert Into " + lsperm.table + " " +
+                    "Set " + lsperm.sperm_code + "='" + p.sperm_code + "'" +
+                    "," + lsperm.abstinence_day + "='" + p.abstinence_day + "'" +
+                    "," + lsperm.sperm_date + "='" + p.sperm_date + "'" +
+                    "," + lsperm.appearance + "='" + p.appearance + "'" +
+                    "," + lsperm.liquefaction + "='" + p.liquefaction + "'" +
+                    "," + lsperm.status_fresh_sperm + "='" + p.status_fresh_sperm + "'" +
+                    "," + lsperm.status_frozen_sperm + "='" + p.status_frozen_sperm + "'" +
+                    "," + lsperm.viscosity + "='" + p.viscosity + "'" +
+                    "," + lsperm.viability + "='" + p.viability + "'" +
+                    "," + lsperm.volume1 + "='" + p.volume1 + "'" +
+                    "," + lsperm.count1 + "='" + p.count1 + "'" +
+                    "," + lsperm.total_count + "='" + p.total_count + "'" +
+                    "," + lsperm.motile + "='" + p.motile + "'" +
+                    "," + lsperm.total_motile + "='" + p.total_motile + "'" +
+                    "," + lsperm.motility + "='" + p.motility + "'" +
+                    "," + lsperm.motility_rate_4 + "='" + p.motility_rate_4 + "'" +
+                    "," + lsperm.motility_rate_3 + "='" + p.motility_rate_3 + "'" +
+                    "," + lsperm.motility_rate_2 + "='" + p.motility_rate_2 + "'" +
+                    "," + lsperm.motility_rate_1 + "='" + p.motility_rate_1 + "'" +                    
+                    "," + lsperm.finish_time + "='" + p.finish_time + "'" +
+                    "," + lsperm.sort1 + "='" + p.sort1 + "'" +
+                    "," + lsperm.staff_id_report + "='" + p.staff_id_report + "'" +
+                    "," + lsperm.staff_id_approve + "='" + p.staff_id_approve + "'" +
+                    "," + lsperm.date_report + "='" + p.date_report + "'" +
+                    "," + lsperm.date_approve + "='" + p.date_approve + "'" +
+                    "," + lsperm.morphology_normal + "='" + p.morphology_normal + "'" +
+                    "," + lsperm.morphology_abnormal + "='" + p.morphology_abnormal + "'" +
+                    "," + lsperm.morphology_head_defect + "='" + p.morphology_head_defect + "'" +
+                    "," + lsperm.morphology_neck_defect + "='" + p.morphology_neck_defect + "'" +
+                    "," + lsperm.morphology_tail_defect + "='" + p.morphology_tail_defect + "'" +
+                    "," + lsperm.no_of_vail + "='" + p.no_of_vail + "'" +
+                    "," + lsperm.wbc + "='" + p.wbc + "'" +
+                    "," + lsperm.active + "='" + p.active + "' " +
+                    "," + lsperm.remark + "='" + p.remark + "' " +
+                    "," + lsperm.date_create + "=now() " +
+                    "," + lsperm.date_modi + "='" + p.date_modi + "' " +
+                    "," + lsperm.date_cancel + "='" + p.date_cancel + "' " +
+                    "," + lsperm.user_create + "='" + userId + "' " +
+                    "," + lsperm.user_modi + "='" + p.user_modi + "' " +
+                    "," + lsperm.user_cancel + "='" + p.user_cancel + "' " +
+                    "," + lsperm.ph + "='" + p.ph + "' " +
+                    "," + lsperm.status_owner_sperm + "='" + p.status_owner_sperm + "' " +
+                    "," + lsperm.status_donor_sperm + "='" + p.status_donor_sperm + "' " +
+                    "," + lsperm.status_fresh_sperm + "='" + p.status_fresh_sperm + "' " +
+                    "," + lsperm.hn_male + "='" + p.hn_male + "' " +
+                    "," + lsperm.hn_female + "='" + p.hn_female + "' " +
+                    "," + lsperm.name_male + "='" + p.name_male + "' " +
+                    "," + lsperm.name_female + "='" + p.name_female + "' " +
+                    "," + lsperm.status_frozen_sperm + "='" + p.status_frozen_sperm + "' " +
+                    "," + lsperm.frozen_sperm_vail + "='" + p.frozen_sperm_vail + "' " +
+                    "," + lsperm.doctor_id + "='" + p.doctor_id + "' " +
+                    "," + lsperm.status_lab_sperm + "='" + p.status_lab_sperm + "' " +
+                    "," + lsperm.req_id + "='" + p.req_id + "' " +                    
+                    "," + lsperm.dob_female + "='" + p.dob_female + "' " +
+                    "," + lsperm.dob_male + "='" + p.dob_male + "' " +                    
+                    "";
+                re = conn.ExecuteNonQuery(conn.conn, sql);
+            }
+            catch (Exception ex)
+            {
+                sql = ex.Message + " " + ex.InnerException;
+            }
+            return re;
+        }
+        public String update(LabSperm p, String userId)
+        {
+            String re = "";
+            String sql = "";
+            p.active = "1";
+            //p.ssdata_id = "";
+            int chk = 0;
+
+            chkNull(p);
+            sql = "Update " + lsperm.table + " " +
+                //" Set "+lformA.patient_appoint_date_time + "='"+p.patient_appoint_date_time + "' " +
+                "Set " + lsperm.sperm_code + "='" + p.sperm_code.Replace("'", "''") + "' " +
+                "," + lsperm.abstinence_day + "='" + p.abstinence_day + "'" +
+                    "," + lsperm.sperm_date + "='" + p.sperm_date + "'" +
+                    "," + lsperm.appearance + "='" + p.appearance + "'" +
+                    "," + lsperm.liquefaction + "='" + p.liquefaction + "'" +
+                    "," + lsperm.status_fresh_sperm + "='" + p.status_fresh_sperm + "'" +
+                    "," + lsperm.status_frozen_sperm + "='" + p.status_frozen_sperm + "'" +
+                    "," + lsperm.viscosity + "='" + p.viscosity + "'" +
+                    "," + lsperm.viability + "='" + p.viability + "'" +
+                    "," + lsperm.volume1 + "='" + p.volume1 + "'" +
+                    "," + lsperm.count1 + "='" + p.count1 + "'" +
+                    "," + lsperm.total_count + "='" + p.total_count + "'" +
+                    "," + lsperm.motile + "='" + p.motile + "'" +
+                    "," + lsperm.total_motile + "='" + p.total_motile + "'" +
+                    "," + lsperm.motility + "='" + p.motility + "'" +
+                    "," + lsperm.motility_rate_4 + "='" + p.motility_rate_4 + "'" +
+                    "," + lsperm.motility_rate_3 + "='" + p.motility_rate_3 + "'" +
+                    "," + lsperm.motility_rate_2 + "='" + p.motility_rate_2 + "'" +
+                    "," + lsperm.motility_rate_1 + "='" + p.motility_rate_1 + "'" +
+                    
+                    "," + lsperm.finish_time + "='" + p.finish_time + "'" +
+                    "," + lsperm.sort1 + "='" + p.sort1 + "'" +
+                    "," + lsperm.staff_id_report + "='" + p.staff_id_report + "'" +
+                    "," + lsperm.staff_id_approve + "='" + p.staff_id_approve + "'" +
+                    "," + lsperm.date_report + "='" + p.date_report + "'" +
+                    "," + lsperm.date_approve + "='" + p.date_approve + "'" +
+                    "," + lsperm.morphology_normal + "='" + p.morphology_normal + "'" +
+                    "," + lsperm.morphology_abnormal + "='" + p.morphology_abnormal + "'" +
+                    "," + lsperm.morphology_head_defect + "='" + p.morphology_head_defect + "'" +
+                    "," + lsperm.morphology_neck_defect + "='" + p.morphology_neck_defect + "'" +
+                    "," + lsperm.morphology_tail_defect + "='" + p.morphology_tail_defect + "'" +
+                    "," + lsperm.no_of_vail + "='" + p.no_of_vail + "'" +
+                    "," + lsperm.wbc + "='" + p.wbc + "'" +
+                    "," + lsperm.active + "='" + p.active + "' " +
+                    "," + lsperm.remark + "='" + p.remark.Replace("'", "''") + "' " +
+                    "," + lsperm.date_modi + "=now() " +
+                    "," + lsperm.user_modi + "='" + userId + "' " +
+                    "," + lsperm.ph + "='" + p.ph + "' " +
+                    "," + lsperm.status_owner_sperm + "='" + p.status_owner_sperm + "' " +
+                    //"," + lformA.status_donor_sperm + "='" + p.status_donor_sperm + "' " +
+                    "," + lsperm.status_fresh_sperm + "='" + p.status_fresh_sperm + "' " +
+                    "," + lsperm.hn_male + "='" + p.hn_male + "' " +
+                    "," + lsperm.hn_female + "='" + p.hn_female + "' " +
+                    "," + lsperm.name_male + "='" + p.name_male + "' " +
+                    "," + lsperm.name_female + "='" + p.name_female + "' " +
+                    "," + lsperm.status_frozen_sperm + "='" + p.status_frozen_sperm + "' " +
+                    "," + lsperm.frozen_sperm_vail + "='" + p.frozen_sperm_vail + "' " +
+                    "," + lsperm.doctor_id + "='" + p.doctor_id + "' " +
+                    "," + lsperm.status_lab_sperm + "='" + p.status_lab_sperm + "' " +
+                    "," + lsperm.req_id + "='" + p.req_id + "' " +
+                    
+                    "," + lsperm.dob_female + "='" + p.dob_female + "' " +
+                    "," + lsperm.dob_male + "='" + p.dob_male + "' " +
+                    
+                " Where " + lsperm.pkField + " = '" + p.sperm_id + "' "
+                ;
+            try
+            {
+                re = conn.ExecuteNonQuery(conn.conn, sql);
+            }
+            catch (Exception ex)
+            {
+                sql = ex.Message + " " + ex.InnerException;
+            }
+            return re;
+        }
+        public String insertLabSperm(LabSperm p, String userId)
+        {
+            String re = "";
+
+            if (p.sperm_id.Equals(""))
+            {
+                re = insert(p, "");
+            }
+            else
+            {
+                re = update(p, "");
+            }
+
+            return re;
+        }
+        public LabSperm setLabSperm(DataTable dt)
+        {
+            LabSperm vs1 = new LabSperm();
+            if (dt.Rows.Count > 0)
+            {
+                vs1.sperm_id = dt.Rows[0][lsperm.sperm_id].ToString();
+                vs1.sperm_code = dt.Rows[0][lsperm.sperm_code].ToString();
+                vs1.abstinence_day = dt.Rows[0][lsperm.abstinence_day].ToString();
+                vs1.sperm_date = dt.Rows[0][lsperm.sperm_date].ToString();
+                vs1.appearance = dt.Rows[0][lsperm.appearance].ToString();
+                vs1.liquefaction = dt.Rows[0][lsperm.liquefaction].ToString();
+                vs1.status_fresh_sperm = dt.Rows[0][lsperm.status_fresh_sperm].ToString();
+                vs1.status_frozen_sperm = dt.Rows[0][lsperm.status_frozen_sperm].ToString();
+                vs1.viscosity = dt.Rows[0][lsperm.viscosity].ToString();
+                vs1.viability = dt.Rows[0][lsperm.viability].ToString();
+                vs1.volume1 = dt.Rows[0][lsperm.volume1].ToString();
+                vs1.count1 = dt.Rows[0][lsperm.count1].ToString();
+                vs1.total_count = dt.Rows[0][lsperm.total_count].ToString();
+                vs1.motile = dt.Rows[0][lsperm.motile].ToString();
+                vs1.total_motile = dt.Rows[0][lsperm.total_motile].ToString();
+                vs1.motility = dt.Rows[0][lsperm.motility].ToString();
+                vs1.motility_rate_4 = dt.Rows[0][lsperm.motility_rate_4].ToString();
+                vs1.motility_rate_3 = dt.Rows[0][lsperm.motility_rate_3].ToString();
+                vs1.motility_rate_2 = dt.Rows[0][lsperm.motility_rate_2].ToString();
+                vs1.motility_rate_1 = dt.Rows[0][lsperm.motility_rate_1].ToString();
+                
+                vs1.finish_time = dt.Rows[0][lsperm.finish_time].ToString();
+                vs1.sort1 = dt.Rows[0][lsperm.sort1].ToString();
+                vs1.staff_id_report = dt.Rows[0][lsperm.staff_id_report].ToString();
+                vs1.staff_id_approve = dt.Rows[0][lsperm.staff_id_approve].ToString();
+                vs1.date_report = dt.Rows[0][lsperm.date_report].ToString();
+                vs1.date_approve = dt.Rows[0][lsperm.date_approve].ToString();
+                vs1.morphology_normal = dt.Rows[0][lsperm.morphology_normal].ToString();
+                vs1.morphology_abnormal = dt.Rows[0][lsperm.morphology_abnormal].ToString();
+                vs1.morphology_head_defect = dt.Rows[0][lsperm.morphology_head_defect].ToString();
+                vs1.morphology_neck_defect = dt.Rows[0][lsperm.morphology_neck_defect].ToString();
+                vs1.morphology_tail_defect = dt.Rows[0][lsperm.morphology_tail_defect].ToString();
+                vs1.no_of_vail = dt.Rows[0][lsperm.no_of_vail].ToString();
+                vs1.wbc = dt.Rows[0][lsperm.wbc].ToString();
+                vs1.active = dt.Rows[0][lsperm.active].ToString();
+                vs1.remark = dt.Rows[0][lsperm.remark].ToString();
+                vs1.date_create = dt.Rows[0][lsperm.date_create].ToString();
+                vs1.date_modi = dt.Rows[0][lsperm.date_modi].ToString();
+                vs1.date_cancel = dt.Rows[0][lsperm.date_cancel].ToString();
+                vs1.user_create = dt.Rows[0][lsperm.user_create].ToString();
+                vs1.user_modi = dt.Rows[0][lsperm.user_modi].ToString();
+                vs1.user_cancel = dt.Rows[0][lsperm.user_cancel].ToString();
+                vs1.ph = dt.Rows[0][lsperm.ph].ToString();
+                vs1.status_owner_sperm = dt.Rows[0][lsperm.status_owner_sperm].ToString();
+                vs1.status_donor_sperm = dt.Rows[0][lsperm.status_donor_sperm].ToString();
+                vs1.status_fresh_sperm = dt.Rows[0][lsperm.status_fresh_sperm].ToString();
+                vs1.hn_male = dt.Rows[0][lsperm.hn_male].ToString();
+                vs1.hn_female = dt.Rows[0][lsperm.hn_female].ToString();
+                vs1.name_male = dt.Rows[0][lsperm.name_male].ToString();
+                vs1.name_female = dt.Rows[0][lsperm.name_female].ToString();
+                vs1.status_frozen_sperm = dt.Rows[0][lsperm.status_frozen_sperm].ToString();
+                vs1.frozen_sperm_vail = dt.Rows[0][lsperm.frozen_sperm_vail].ToString();
+                vs1.doctor_id = dt.Rows[0][lsperm.doctor_id].ToString();
+                vs1.status_lab_sperm = dt.Rows[0][lsperm.status_lab_sperm].ToString();
+                vs1.req_id = dt.Rows[0][lsperm.req_id].ToString();
+                
+                vs1.dob_female = dt.Rows[0][lsperm.dob_female].ToString();
+                vs1.dob_male = dt.Rows[0][lsperm.dob_male].ToString();
+                
+            }
+            else
+            {
+                setLabSperm1(vs1);
+            }
+            return vs1;
+        }
+        public LabSperm setLabSperm1(LabSperm lforma1)
+        {
+            lforma1.sperm_id = "";
+            lforma1.sperm_code = "";
+            lforma1.abstinence_day = "";
+            lforma1.sperm_date = "";
+            lforma1.appearance = "";
+            lforma1.liquefaction = "";
+            lforma1.status_fresh_sperm = "";
+            lforma1.status_frozen_sperm = "";
+            lforma1.viscosity = "";
+            lforma1.viability = "";
+            lforma1.volume1 = "";
+            lforma1.count1 = "";
+            lforma1.total_count = "";
+            lforma1.motile = "";
+            lforma1.total_motile = "";
+            lforma1.motility = "";
+            lforma1.motility_rate_4 = "";
+            lforma1.motility_rate_3 = "";
+            lforma1.motility_rate_2 = "";
+            lforma1.motility_rate_1 = "";
+            
+            lforma1.finish_time = "";
+            lforma1.sort1 = "";
+            lforma1.staff_id_report = "";
+            lforma1.staff_id_approve = "";
+            lforma1.date_report = "";
+            lforma1.date_approve = "";
+            lforma1.morphology_normal = "";
+            lforma1.morphology_abnormal = "";
+            lforma1.morphology_head_defect = "";
+            lforma1.morphology_neck_defect = "";
+            lforma1.morphology_tail_defect = "";
+            lforma1.no_of_vail = "";
+            lforma1.wbc = "";
+            lforma1.active = "";
+            lforma1.remark = "";
+            lforma1.date_create = "";
+            lforma1.date_modi = "";
+            lforma1.date_cancel = "";
+            lforma1.user_create = "";
+            lforma1.user_modi = "";
+            lforma1.user_cancel = "";
+            lforma1.ph = "";
+            lforma1.status_owner_sperm = "";
+            lforma1.status_donor_sperm = "";
+            lforma1.status_fresh_sperm = "";
+            lforma1.hn_male = "";
+            lforma1.hn_female = "";
+            lforma1.name_male = "";
+            lforma1.name_female = "";
+            lforma1.status_frozen_sperm = "";
+            lforma1.frozen_sperm_vail = "";
+            lforma1.doctor_id = "";
+            lforma1.status_lab_sperm = "";
+            lforma1.req_id = "";
+            
+            lforma1.dob_female = "";
+            lforma1.dob_male = "";
+            
+            return lforma1;
+        }
+    }
+}

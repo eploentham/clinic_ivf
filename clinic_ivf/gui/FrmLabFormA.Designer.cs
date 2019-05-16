@@ -85,7 +85,7 @@
             this.label21 = new System.Windows.Forms.Label();
             this.txtSpermAnalysisDateStart = new C1.Win.C1Input.C1DateEdit();
             this.chkSpermFreezing = new C1.Win.C1Input.C1CheckBox();
-            this.chkSpermAnalysis = new C1.Win.C1Input.C1CheckBox();
+            this.chkSememAnalysis = new C1.Win.C1Input.C1CheckBox();
             this.gbETFET = new System.Windows.Forms.GroupBox();
             this.btnPrintFet = new C1.Win.C1Input.C1Button();
             this.txtEmbryoTranferTime = new C1.Win.C1Input.C1TextBox();
@@ -176,8 +176,8 @@
             this.chkFreshSprem = new C1.Win.C1Input.C1CheckBox();
             this.txtIUIDate = new C1.Win.C1Input.C1DateEdit();
             this.txtPasaTeseDate = new C1.Win.C1Input.C1DateEdit();
-            this.label25 = new System.Windows.Forms.Label();
-            this.label20 = new System.Windows.Forms.Label();
+            this.chkSememPESA = new C1.Win.C1Input.C1CheckBox();
+            this.chkSpermIUI = new C1.Win.C1Input.C1CheckBox();
             this.sB.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.theme1)).BeginInit();
             this.groupBox1.SuspendLayout();
@@ -216,7 +216,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtSpermAnalysisDateEnd)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtSpermAnalysisDateStart)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkSpermFreezing)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.chkSpermAnalysis)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chkSememAnalysis)).BeginInit();
             this.gbETFET.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btnPrintFet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtEmbryoTranferTime)).BeginInit();
@@ -266,6 +266,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.chkFreshSprem)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtIUIDate)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtPasaTeseDate)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chkSememPESA)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chkSpermIUI)).BeginInit();
             this.SuspendLayout();
             // 
             // sB
@@ -901,18 +903,18 @@
             // groupBox2
             // 
             this.groupBox2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.groupBox2.Controls.Add(this.chkSpermIUI);
+            this.groupBox2.Controls.Add(this.chkSememPESA);
             this.groupBox2.Controls.Add(this.cboRemark);
             this.groupBox2.Controls.Add(this.label27);
             this.groupBox2.Controls.Add(this.pnSpermFreezing);
             this.groupBox2.Controls.Add(this.pnSpermAnalysis);
             this.groupBox2.Controls.Add(this.chkSpermFreezing);
-            this.groupBox2.Controls.Add(this.chkSpermAnalysis);
+            this.groupBox2.Controls.Add(this.chkSememAnalysis);
             this.groupBox2.Controls.Add(this.gbETFET);
             this.groupBox2.Controls.Add(this.gbOPU);
             this.groupBox2.Controls.Add(this.txtIUIDate);
             this.groupBox2.Controls.Add(this.txtPasaTeseDate);
-            this.groupBox2.Controls.Add(this.label25);
-            this.groupBox2.Controls.Add(this.label20);
             this.groupBox2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
             this.groupBox2.Location = new System.Drawing.Point(0, 105);
@@ -933,7 +935,7 @@
             this.cboRemark.ImagePadding = new System.Windows.Forms.Padding(0);
             this.cboRemark.ItemsDisplayMember = "";
             this.cboRemark.ItemsValueMember = "";
-            this.cboRemark.Location = new System.Drawing.Point(358, 532);
+            this.cboRemark.Location = new System.Drawing.Point(511, 532);
             this.cboRemark.Name = "cboRemark";
             this.cboRemark.Size = new System.Drawing.Size(463, 20);
             this.cboRemark.Style.DropDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
@@ -950,7 +952,7 @@
             this.label27.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
             this.label27.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label27.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.label27.Location = new System.Drawing.Point(290, 534);
+            this.label27.Location = new System.Drawing.Point(443, 534);
             this.label27.Name = "label27";
             this.label27.Size = new System.Drawing.Size(62, 16);
             this.label27.TabIndex = 729;
@@ -967,7 +969,7 @@
             this.pnSpermFreezing.Controls.Add(this.label24);
             this.pnSpermFreezing.Controls.Add(this.txtSpermFreezingDateStart);
             this.pnSpermFreezing.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.pnSpermFreezing.Location = new System.Drawing.Point(186, 479);
+            this.pnSpermFreezing.Location = new System.Drawing.Point(186, 474);
             this.pnSpermFreezing.Name = "pnSpermFreezing";
             this.pnSpermFreezing.Size = new System.Drawing.Size(655, 28);
             this.pnSpermFreezing.TabIndex = 728;
@@ -1103,7 +1105,7 @@
             this.pnSpermAnalysis.Controls.Add(this.label21);
             this.pnSpermAnalysis.Controls.Add(this.txtSpermAnalysisDateStart);
             this.pnSpermAnalysis.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.pnSpermAnalysis.Location = new System.Drawing.Point(186, 447);
+            this.pnSpermAnalysis.Location = new System.Drawing.Point(186, 441);
             this.pnSpermAnalysis.Name = "pnSpermAnalysis";
             this.pnSpermAnalysis.Size = new System.Drawing.Size(656, 27);
             this.pnSpermAnalysis.TabIndex = 724;
@@ -1237,10 +1239,10 @@
             this.chkSpermFreezing.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.chkSpermFreezing.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.chkSpermFreezing.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.chkSpermFreezing.Location = new System.Drawing.Point(11, 481);
+            this.chkSpermFreezing.Location = new System.Drawing.Point(11, 476);
             this.chkSpermFreezing.Name = "chkSpermFreezing";
             this.chkSpermFreezing.Padding = new System.Windows.Forms.Padding(4, 1, 1, 1);
-            this.chkSpermFreezing.Size = new System.Drawing.Size(140, 24);
+            this.chkSpermFreezing.Size = new System.Drawing.Size(169, 24);
             this.chkSpermFreezing.TabIndex = 727;
             this.chkSpermFreezing.Text = "Sperm Freezing (+SA) :";
             this.theme1.SetTheme(this.chkSpermFreezing, "(default)");
@@ -1248,24 +1250,24 @@
             this.chkSpermFreezing.Value = null;
             this.chkSpermFreezing.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
             // 
-            // chkSpermAnalysis
+            // chkSememAnalysis
             // 
-            this.chkSpermAnalysis.BackColor = System.Drawing.Color.Transparent;
-            this.chkSpermAnalysis.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
-            this.chkSpermAnalysis.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.chkSpermAnalysis.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.chkSpermAnalysis.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chkSpermAnalysis.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.chkSpermAnalysis.Location = new System.Drawing.Point(11, 448);
-            this.chkSpermAnalysis.Name = "chkSpermAnalysis";
-            this.chkSpermAnalysis.Padding = new System.Windows.Forms.Padding(4, 1, 1, 1);
-            this.chkSpermAnalysis.Size = new System.Drawing.Size(140, 24);
-            this.chkSpermAnalysis.TabIndex = 726;
-            this.chkSpermAnalysis.Text = "Sperm Analysis :";
-            this.theme1.SetTheme(this.chkSpermAnalysis, "(default)");
-            this.chkSpermAnalysis.UseVisualStyleBackColor = true;
-            this.chkSpermAnalysis.Value = null;
-            this.chkSpermAnalysis.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            this.chkSememAnalysis.BackColor = System.Drawing.Color.Transparent;
+            this.chkSememAnalysis.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
+            this.chkSememAnalysis.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.chkSememAnalysis.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.chkSememAnalysis.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chkSememAnalysis.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.chkSememAnalysis.Location = new System.Drawing.Point(11, 442);
+            this.chkSememAnalysis.Name = "chkSememAnalysis";
+            this.chkSememAnalysis.Padding = new System.Windows.Forms.Padding(4, 1, 1, 1);
+            this.chkSememAnalysis.Size = new System.Drawing.Size(139, 24);
+            this.chkSememAnalysis.TabIndex = 726;
+            this.chkSememAnalysis.Text = "Semen Analysis :";
+            this.theme1.SetTheme(this.chkSememAnalysis, "(default)");
+            this.chkSememAnalysis.UseVisualStyleBackColor = true;
+            this.chkSememAnalysis.Value = null;
+            this.chkSememAnalysis.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
             // 
             // gbETFET
             // 
@@ -2891,7 +2893,7 @@
             | C1.Win.C1Input.FormatInfoInheritFlags.TrimEnd)));
             this.txtIUIDate.EmptyAsNull = true;
             this.txtIUIDate.ImagePadding = new System.Windows.Forms.Padding(0);
-            this.txtIUIDate.Location = new System.Drawing.Point(108, 532);
+            this.txtIUIDate.Location = new System.Drawing.Point(261, 532);
             this.txtIUIDate.MaskInfo.EmptyAsNull = false;
             this.txtIUIDate.MaskInfo.Inherit = ((C1.Win.C1Input.MaskInfoInheritFlags)((C1.Win.C1Input.MaskInfoInheritFlags.CaseSensitive | C1.Win.C1Input.MaskInfoInheritFlags.ErrorMessage)));
             this.txtIUIDate.MaskInfo.SaveBlanks = true;
@@ -2938,7 +2940,7 @@
             this.txtPasaTeseDate.EditFormat.TrimStart = true;
             this.txtPasaTeseDate.EmptyAsNull = true;
             this.txtPasaTeseDate.ImagePadding = new System.Windows.Forms.Padding(0);
-            this.txtPasaTeseDate.Location = new System.Drawing.Point(108, 510);
+            this.txtPasaTeseDate.Location = new System.Drawing.Point(261, 510);
             this.txtPasaTeseDate.MaskInfo.EmptyAsNull = false;
             this.txtPasaTeseDate.MaskInfo.Inherit = ((C1.Win.C1Input.MaskInfoInheritFlags)((C1.Win.C1Input.MaskInfoInheritFlags.CaseSensitive | C1.Win.C1Input.MaskInfoInheritFlags.ErrorMessage)));
             this.txtPasaTeseDate.MaskInfo.SaveBlanks = true;
@@ -2949,31 +2951,43 @@
             this.theme1.SetTheme(this.txtPasaTeseDate, "(default)");
             this.txtPasaTeseDate.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
             // 
-            // label25
+            // chkSememPESA
             // 
-            this.label25.AutoSize = true;
-            this.label25.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.label25.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label25.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.label25.Location = new System.Drawing.Point(12, 532);
-            this.label25.Name = "label25";
-            this.label25.Size = new System.Drawing.Size(30, 16);
-            this.label25.TabIndex = 722;
-            this.label25.Text = "IUI :";
-            this.theme1.SetTheme(this.label25, "(default)");
+            this.chkSememPESA.BackColor = System.Drawing.Color.Transparent;
+            this.chkSememPESA.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
+            this.chkSememPESA.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.chkSememPESA.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.chkSememPESA.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chkSememPESA.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.chkSememPESA.Location = new System.Drawing.Point(11, 504);
+            this.chkSememPESA.Name = "chkSememPESA";
+            this.chkSememPESA.Padding = new System.Windows.Forms.Padding(4, 1, 1, 1);
+            this.chkSememPESA.Size = new System.Drawing.Size(162, 24);
+            this.chkSememPESA.TabIndex = 731;
+            this.chkSememPESA.Text = "semem PESA/TESE :";
+            this.theme1.SetTheme(this.chkSememPESA, "(default)");
+            this.chkSememPESA.UseVisualStyleBackColor = true;
+            this.chkSememPESA.Value = null;
+            this.chkSememPESA.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
             // 
-            // label20
+            // chkSpermIUI
             // 
-            this.label20.AutoSize = true;
-            this.label20.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.label20.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label20.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.label20.Location = new System.Drawing.Point(12, 510);
-            this.label20.Name = "label20";
-            this.label20.Size = new System.Drawing.Size(90, 16);
-            this.label20.TabIndex = 711;
-            this.label20.Text = "PESA/TESE :";
-            this.theme1.SetTheme(this.label20, "(default)");
+            this.chkSpermIUI.BackColor = System.Drawing.Color.Transparent;
+            this.chkSpermIUI.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
+            this.chkSpermIUI.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.chkSpermIUI.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.chkSpermIUI.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chkSpermIUI.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.chkSpermIUI.Location = new System.Drawing.Point(11, 528);
+            this.chkSpermIUI.Name = "chkSpermIUI";
+            this.chkSpermIUI.Padding = new System.Windows.Forms.Padding(4, 1, 1, 1);
+            this.chkSpermIUI.Size = new System.Drawing.Size(195, 24);
+            this.chkSpermIUI.TabIndex = 732;
+            this.chkSpermIUI.Text = "Sperm preparation for IUI";
+            this.theme1.SetTheme(this.chkSpermIUI, "(default)");
+            this.chkSpermIUI.UseVisualStyleBackColor = true;
+            this.chkSpermIUI.Value = null;
+            this.chkSpermIUI.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
             // 
             // FrmLabFormA
             // 
@@ -3030,7 +3044,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtSpermAnalysisDateEnd)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtSpermAnalysisDateStart)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkSpermFreezing)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.chkSpermAnalysis)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chkSememAnalysis)).EndInit();
             this.gbETFET.ResumeLayout(false);
             this.gbETFET.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btnPrintFet)).EndInit();
@@ -3092,6 +3106,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.chkFreshSprem)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtIUIDate)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtPasaTeseDate)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chkSememPESA)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chkSpermIUI)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -3127,8 +3143,6 @@
         private C1.Win.C1Input.C1TextBox txtHnFeMale;
         private C1.Win.C1Input.C1Button btnMaleSearch;
         private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.Label label20;
-        private System.Windows.Forms.Label label25;
         private C1.Win.C1Input.C1DateEdit txtIUIDate;
         private C1.Win.C1Input.C1DateEdit txtPasaTeseDate;
         private System.Windows.Forms.GroupBox gbOPU;
@@ -3166,7 +3180,7 @@
         private System.Windows.Forms.Label label26;
         private System.Windows.Forms.RadioButton chkFET;
         private System.Windows.Forms.RadioButton chkETNotoTranfer;
-        private C1.Win.C1Input.C1CheckBox chkSpermAnalysis;
+        private C1.Win.C1Input.C1CheckBox chkSememAnalysis;
         private C1.Win.C1Input.C1CheckBox chkSpermFreezing;
         private C1.Win.C1Input.C1Button btnPrint;
         private System.Windows.Forms.Panel pnFET;
@@ -3249,5 +3263,7 @@
         private C1.Win.C1Input.C1DateEdit txtFrozenSpermDate;
         private C1.Win.C1Input.C1Button btnPrintFet;
         private C1.Win.C1Input.C1Button btnPrintOPU;
+        private C1.Win.C1Input.C1CheckBox chkSpermIUI;
+        private C1.Win.C1Input.C1CheckBox chkSememPESA;
     }
 }

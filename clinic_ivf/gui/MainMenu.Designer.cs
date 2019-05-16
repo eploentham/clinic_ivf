@@ -45,7 +45,7 @@
             this.menuLabAccept = new System.Windows.Forms.ToolStripMenuItem();
             this.menuLabOpu = new System.Windows.Forms.ToolStripMenuItem();
             this.menuLabFet = new System.Windows.Forms.ToolStripMenuItem();
-            this.ปอนSemenAnalysisToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuLabSperm = new System.Windows.Forms.ToolStripMenuItem();
             this.ปอนSpermFreexingToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuTestForm = new System.Windows.Forms.ToolStripMenuItem();
             this.menuPharmacy = new System.Windows.Forms.ToolStripMenuItem();
@@ -208,7 +208,7 @@
             this.menuLabAccept,
             this.menuLabOpu,
             this.menuLabFet,
-            this.ปอนSemenAnalysisToolStripMenuItem,
+            this.menuLabSperm,
             this.ปอนSpermFreexingToolStripMenuItem,
             this.menuTestForm});
             this.menuLab.Name = "menuLab";
@@ -233,11 +233,11 @@
             this.menuLabFet.Size = new System.Drawing.Size(180, 22);
             this.menuLabFet.Text = "ป้อน FET";
             // 
-            // ปอนSemenAnalysisToolStripMenuItem
+            // menuLabSperm
             // 
-            this.ปอนSemenAnalysisToolStripMenuItem.Name = "ปอนSemenAnalysisToolStripMenuItem";
-            this.ปอนSemenAnalysisToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.ปอนSemenAnalysisToolStripMenuItem.Text = "ป้อน Semen Analysis";
+            this.menuLabSperm.Name = "menuLabSperm";
+            this.menuLabSperm.Size = new System.Drawing.Size(180, 22);
+            this.menuLabSperm.Text = "ป้อน Lab Sperm";
             // 
             // ปอนSpermFreexingToolStripMenuItem
             // 
@@ -583,7 +583,7 @@
         private System.Windows.Forms.ToolStripMenuItem menuLab;
         private System.Windows.Forms.ToolStripMenuItem menuLabOpu;
         private System.Windows.Forms.ToolStripMenuItem menuLabFet;
-        private System.Windows.Forms.ToolStripMenuItem ปอนSemenAnalysisToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem menuLabSperm;
         private System.Windows.Forms.ToolStripMenuItem ปอนSpermFreexingToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem menuInit;
         private C1.Win.C1Themes.C1ThemeController theme1;

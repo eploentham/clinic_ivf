@@ -91,5 +91,7 @@ namespace clinic_ivf.object1
         public String fet1_day { get; set; }
         public String frozen_sperm_date { get; set; }       //staff_req_id
         public String staff_req_id { get; set; }
+        public String req_id_semem_analysis { get; set; }
+        public String req_id_sperm_freezing { get; set; }
     }
 }

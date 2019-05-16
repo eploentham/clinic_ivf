@@ -95,6 +95,15 @@ namespace clinic_ivf.gui
             menuLabItem.Click += MenuLabItem_Click;
             menuStock.Click += MenuStock_Click;
             menuStockRec.Click += MenuStockRec_Click;
+            menuLabSperm.Click += MenuLabSperm_Click;
+        }
+
+        private void MenuLabSperm_Click(object sender, EventArgs e)
+        {
+            //throw new NotImplementedException();
+            FrmLabSpermView frm = new FrmLabSpermView(ic, this);
+            frm.FormBorderStyle = FormBorderStyle.None;
+            AddNewTab(frm, menuLabSperm.Text + " ");
         }
 
         private void MenuStockRec_Click(object sender, EventArgs e)

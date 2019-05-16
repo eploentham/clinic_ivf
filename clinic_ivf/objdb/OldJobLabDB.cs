@@ -82,6 +82,7 @@ namespace clinic_ivf.objdb
 
             return re;
         }
+        
         public String setJobLab(String vn, String hn, String pid)
         {
         //    $query = $this->db->query('select VN from JobLab Where VN="'. $VN. '"');

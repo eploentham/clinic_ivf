@@ -304,6 +304,12 @@
     <Compile Include="gui\FrmLabOPUTimeModi.Designer.cs">
       <DependentUpon>FrmLabOPUTimeModi.cs</DependentUpon>
     </Compile>
+    <Compile Include="gui\FrmLabSpermView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="gui\FrmLabSpermView.Designer.cs">
+      <DependentUpon>FrmLabSpermView.cs</DependentUpon>
+    </Compile>
     <Compile Include="gui\FrmNurseAdd.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -549,6 +555,7 @@
     </Compile>
     <Compile Include="objdb\EggStiDayDB.cs" />
     <Compile Include="objdb\EggStiDB.cs" />
+    <Compile Include="objdb\LabSpermDB.cs" />
     <Compile Include="objdb\NoteDB.cs" />
     <Compile Include="objdb\OldAgentDB.cs" />
     <Compile Include="objdb\AppointmentOldDB.cs" />
@@ -625,6 +632,7 @@
     <Compile Include="object1\FilterRow.cs" />
     <Compile Include="object1\FilterRow1.cs" />
     <Compile Include="object1\FilterRowUnBound.cs" />
+    <Compile Include="object1\LabSperm.cs" />
     <Compile Include="object1\Note1.cs" />
     <Compile Include="object1\OldBilldetail.cs" />
     <Compile Include="object1\OldBillGroup.cs" />
@@ -921,6 +929,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="gui\FrmLabOPUTimeModi.resx">
       <DependentUpon>FrmLabOPUTimeModi.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="gui\FrmLabSpermView.resx">
+      <DependentUpon>FrmLabSpermView.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="gui\FrmNurseAdd.resx">
       <DependentUpon>FrmNurseAdd.cs</DependentUpon>
