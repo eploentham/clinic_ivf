@@ -420,7 +420,7 @@ namespace clinic_ivf.objdb
             opu.req_id = reqid;
             opu.hn_donor = lformA.hn_donor;
             opu.name_donor = lformA.name_donor;
-            //opu.dob_female = lbreq.dob_female;
+            opu.dob_female = lbreq.dob_female;
             return opu;
         }
         public void calIncludeExtraPricePx(String vn)

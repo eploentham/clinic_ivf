@@ -62,6 +62,8 @@
             this.tabLabFinish = new C1.Win.C1Command.C1DockingTabPage();
             this.gbFinish = new System.Windows.Forms.GroupBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.txtFiDateEnd = new C1.Win.C1Input.C1DateEdit();
+            this.txtFiDateStart = new C1.Win.C1Input.C1DateEdit();
             this.c1TextBox1 = new C1.Win.C1Input.C1TextBox();
             this.btnSearchF = new C1.Win.C1Input.C1Button();
             this.label2 = new System.Windows.Forms.Label();
@@ -73,8 +75,6 @@
             this.btnSearch = new C1.Win.C1Input.C1Button();
             this.label4 = new System.Windows.Forms.Label();
             this.txtSearch = new C1.Win.C1Input.C1TextBox();
-            this.txtFiDateStart = new C1.Win.C1Input.C1DateEdit();
-            this.txtFiDateEnd = new C1.Win.C1Input.C1DateEdit();
             this.sB.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.theme1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.c1TextBox14)).BeginInit();
@@ -97,6 +97,8 @@
             this.tabProcess.SuspendLayout();
             this.tabLabFinish.SuspendLayout();
             this.groupBox2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtFiDateEnd)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtFiDateStart)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.c1TextBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnSearchF)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.c1Button3)).BeginInit();
@@ -104,8 +106,6 @@
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btnSearch)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtSearch)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtFiDateStart)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtFiDateEnd)).BeginInit();
             this.SuspendLayout();
             // 
             // sB
@@ -616,6 +616,96 @@
             this.groupBox2.Text = "Search";
             this.theme1.SetTheme(this.groupBox2, "(default)");
             // 
+            // txtFiDateEnd
+            // 
+            this.txtFiDateEnd.AllowSpinLoop = false;
+            this.txtFiDateEnd.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            // 
+            // 
+            // 
+            this.txtFiDateEnd.Calendar.ArrowColor = System.Drawing.Color.Black;
+            this.txtFiDateEnd.Calendar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.txtFiDateEnd.Calendar.DayNamesFont = new System.Drawing.Font("Tahoma", 8F);
+            this.txtFiDateEnd.Calendar.Font = new System.Drawing.Font("Tahoma", 8F);
+            this.txtFiDateEnd.Calendar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.txtFiDateEnd.Calendar.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(71)))), ((int)(((byte)(47)))));
+            this.txtFiDateEnd.Calendar.SelectionForeColor = System.Drawing.Color.White;
+            this.txtFiDateEnd.Calendar.TitleBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(230)))));
+            this.txtFiDateEnd.Calendar.TitleFont = new System.Drawing.Font("Tahoma", 8F);
+            this.txtFiDateEnd.Calendar.TitleForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.txtFiDateEnd.Calendar.TodayBorderColor = System.Drawing.Color.White;
+            this.txtFiDateEnd.Calendar.TrailingForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
+            this.txtFiDateEnd.Calendar.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            this.txtFiDateEnd.Culture = 1054;
+            this.txtFiDateEnd.CurrentTimeZone = false;
+            this.txtFiDateEnd.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
+            this.txtFiDateEnd.DisplayFormat.CalendarType = C1.Win.C1Input.CalendarType.GregorianCalendar;
+            this.txtFiDateEnd.DisplayFormat.FormatType = C1.Win.C1Input.FormatTypeEnum.ShortDate;
+            this.txtFiDateEnd.DisplayFormat.Inherit = ((C1.Win.C1Input.FormatInfoInheritFlags)(((((C1.Win.C1Input.FormatInfoInheritFlags.CustomFormat | C1.Win.C1Input.FormatInfoInheritFlags.NullText) 
+            | C1.Win.C1Input.FormatInfoInheritFlags.EmptyAsNull) 
+            | C1.Win.C1Input.FormatInfoInheritFlags.TrimStart) 
+            | C1.Win.C1Input.FormatInfoInheritFlags.TrimEnd)));
+            this.txtFiDateEnd.EditFormat.CalendarType = C1.Win.C1Input.CalendarType.GregorianCalendar;
+            this.txtFiDateEnd.EditFormat.FormatType = C1.Win.C1Input.FormatTypeEnum.ShortDate;
+            this.txtFiDateEnd.EditFormat.Inherit = ((C1.Win.C1Input.FormatInfoInheritFlags)(((((C1.Win.C1Input.FormatInfoInheritFlags.CustomFormat | C1.Win.C1Input.FormatInfoInheritFlags.NullText) 
+            | C1.Win.C1Input.FormatInfoInheritFlags.EmptyAsNull) 
+            | C1.Win.C1Input.FormatInfoInheritFlags.TrimStart) 
+            | C1.Win.C1Input.FormatInfoInheritFlags.TrimEnd)));
+            this.txtFiDateEnd.GMTOffset = System.TimeSpan.Parse("00:00:00");
+            this.txtFiDateEnd.ImagePadding = new System.Windows.Forms.Padding(0);
+            this.txtFiDateEnd.Location = new System.Drawing.Point(323, 14);
+            this.txtFiDateEnd.Name = "txtFiDateEnd";
+            this.txtFiDateEnd.Size = new System.Drawing.Size(129, 18);
+            this.txtFiDateEnd.TabIndex = 524;
+            this.txtFiDateEnd.Tag = null;
+            this.theme1.SetTheme(this.txtFiDateEnd, "(default)");
+            this.txtFiDateEnd.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            // 
+            // txtFiDateStart
+            // 
+            this.txtFiDateStart.AllowSpinLoop = false;
+            this.txtFiDateStart.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            // 
+            // 
+            // 
+            this.txtFiDateStart.Calendar.ArrowColor = System.Drawing.Color.Black;
+            this.txtFiDateStart.Calendar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.txtFiDateStart.Calendar.DayNamesFont = new System.Drawing.Font("Tahoma", 8F);
+            this.txtFiDateStart.Calendar.Font = new System.Drawing.Font("Tahoma", 8F);
+            this.txtFiDateStart.Calendar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.txtFiDateStart.Calendar.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(71)))), ((int)(((byte)(47)))));
+            this.txtFiDateStart.Calendar.SelectionForeColor = System.Drawing.Color.White;
+            this.txtFiDateStart.Calendar.TitleBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(230)))));
+            this.txtFiDateStart.Calendar.TitleFont = new System.Drawing.Font("Tahoma", 8F);
+            this.txtFiDateStart.Calendar.TitleForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.txtFiDateStart.Calendar.TodayBorderColor = System.Drawing.Color.White;
+            this.txtFiDateStart.Calendar.TrailingForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
+            this.txtFiDateStart.Calendar.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            this.txtFiDateStart.Culture = 1054;
+            this.txtFiDateStart.CurrentTimeZone = false;
+            this.txtFiDateStart.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
+            this.txtFiDateStart.DisplayFormat.CalendarType = C1.Win.C1Input.CalendarType.GregorianCalendar;
+            this.txtFiDateStart.DisplayFormat.FormatType = C1.Win.C1Input.FormatTypeEnum.ShortDate;
+            this.txtFiDateStart.DisplayFormat.Inherit = ((C1.Win.C1Input.FormatInfoInheritFlags)(((((C1.Win.C1Input.FormatInfoInheritFlags.CustomFormat | C1.Win.C1Input.FormatInfoInheritFlags.NullText) 
+            | C1.Win.C1Input.FormatInfoInheritFlags.EmptyAsNull) 
+            | C1.Win.C1Input.FormatInfoInheritFlags.TrimStart) 
+            | C1.Win.C1Input.FormatInfoInheritFlags.TrimEnd)));
+            this.txtFiDateStart.EditFormat.CalendarType = C1.Win.C1Input.CalendarType.GregorianCalendar;
+            this.txtFiDateStart.EditFormat.FormatType = C1.Win.C1Input.FormatTypeEnum.ShortDate;
+            this.txtFiDateStart.EditFormat.Inherit = ((C1.Win.C1Input.FormatInfoInheritFlags)(((((C1.Win.C1Input.FormatInfoInheritFlags.CustomFormat | C1.Win.C1Input.FormatInfoInheritFlags.NullText) 
+            | C1.Win.C1Input.FormatInfoInheritFlags.EmptyAsNull) 
+            | C1.Win.C1Input.FormatInfoInheritFlags.TrimStart) 
+            | C1.Win.C1Input.FormatInfoInheritFlags.TrimEnd)));
+            this.txtFiDateStart.GMTOffset = System.TimeSpan.Parse("00:00:00");
+            this.txtFiDateStart.ImagePadding = new System.Windows.Forms.Padding(0);
+            this.txtFiDateStart.Location = new System.Drawing.Point(90, 15);
+            this.txtFiDateStart.Name = "txtFiDateStart";
+            this.txtFiDateStart.Size = new System.Drawing.Size(129, 18);
+            this.txtFiDateStart.TabIndex = 523;
+            this.txtFiDateStart.Tag = null;
+            this.theme1.SetTheme(this.txtFiDateStart, "(default)");
+            this.txtFiDateStart.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            // 
             // c1TextBox1
             // 
             this.c1TextBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
@@ -750,96 +840,6 @@
             this.theme1.SetTheme(this.txtSearch, "(default)");
             this.txtSearch.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
             // 
-            // txtFiDateStart
-            // 
-            this.txtFiDateStart.AllowSpinLoop = false;
-            this.txtFiDateStart.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            // 
-            // 
-            // 
-            this.txtFiDateStart.Calendar.ArrowColor = System.Drawing.Color.Black;
-            this.txtFiDateStart.Calendar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.txtFiDateStart.Calendar.DayNamesFont = new System.Drawing.Font("Tahoma", 8F);
-            this.txtFiDateStart.Calendar.Font = new System.Drawing.Font("Tahoma", 8F);
-            this.txtFiDateStart.Calendar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.txtFiDateStart.Calendar.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(71)))), ((int)(((byte)(47)))));
-            this.txtFiDateStart.Calendar.SelectionForeColor = System.Drawing.Color.White;
-            this.txtFiDateStart.Calendar.TitleBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(230)))));
-            this.txtFiDateStart.Calendar.TitleFont = new System.Drawing.Font("Tahoma", 8F);
-            this.txtFiDateStart.Calendar.TitleForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.txtFiDateStart.Calendar.TodayBorderColor = System.Drawing.Color.White;
-            this.txtFiDateStart.Calendar.TrailingForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
-            this.txtFiDateStart.Calendar.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
-            this.txtFiDateStart.Culture = 1054;
-            this.txtFiDateStart.CurrentTimeZone = false;
-            this.txtFiDateStart.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
-            this.txtFiDateStart.DisplayFormat.CalendarType = C1.Win.C1Input.CalendarType.GregorianCalendar;
-            this.txtFiDateStart.DisplayFormat.FormatType = C1.Win.C1Input.FormatTypeEnum.ShortDate;
-            this.txtFiDateStart.DisplayFormat.Inherit = ((C1.Win.C1Input.FormatInfoInheritFlags)(((((C1.Win.C1Input.FormatInfoInheritFlags.CustomFormat | C1.Win.C1Input.FormatInfoInheritFlags.NullText) 
-            | C1.Win.C1Input.FormatInfoInheritFlags.EmptyAsNull) 
-            | C1.Win.C1Input.FormatInfoInheritFlags.TrimStart) 
-            | C1.Win.C1Input.FormatInfoInheritFlags.TrimEnd)));
-            this.txtFiDateStart.EditFormat.CalendarType = C1.Win.C1Input.CalendarType.GregorianCalendar;
-            this.txtFiDateStart.EditFormat.FormatType = C1.Win.C1Input.FormatTypeEnum.ShortDate;
-            this.txtFiDateStart.EditFormat.Inherit = ((C1.Win.C1Input.FormatInfoInheritFlags)(((((C1.Win.C1Input.FormatInfoInheritFlags.CustomFormat | C1.Win.C1Input.FormatInfoInheritFlags.NullText) 
-            | C1.Win.C1Input.FormatInfoInheritFlags.EmptyAsNull) 
-            | C1.Win.C1Input.FormatInfoInheritFlags.TrimStart) 
-            | C1.Win.C1Input.FormatInfoInheritFlags.TrimEnd)));
-            this.txtFiDateStart.GMTOffset = System.TimeSpan.Parse("00:00:00");
-            this.txtFiDateStart.ImagePadding = new System.Windows.Forms.Padding(0);
-            this.txtFiDateStart.Location = new System.Drawing.Point(90, 15);
-            this.txtFiDateStart.Name = "txtFiDateStart";
-            this.txtFiDateStart.Size = new System.Drawing.Size(129, 18);
-            this.txtFiDateStart.TabIndex = 523;
-            this.txtFiDateStart.Tag = null;
-            this.theme1.SetTheme(this.txtFiDateStart, "(default)");
-            this.txtFiDateStart.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
-            // 
-            // txtFiDateEnd
-            // 
-            this.txtFiDateEnd.AllowSpinLoop = false;
-            this.txtFiDateEnd.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            // 
-            // 
-            // 
-            this.txtFiDateEnd.Calendar.ArrowColor = System.Drawing.Color.Black;
-            this.txtFiDateEnd.Calendar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.txtFiDateEnd.Calendar.DayNamesFont = new System.Drawing.Font("Tahoma", 8F);
-            this.txtFiDateEnd.Calendar.Font = new System.Drawing.Font("Tahoma", 8F);
-            this.txtFiDateEnd.Calendar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.txtFiDateEnd.Calendar.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(71)))), ((int)(((byte)(47)))));
-            this.txtFiDateEnd.Calendar.SelectionForeColor = System.Drawing.Color.White;
-            this.txtFiDateEnd.Calendar.TitleBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(230)))));
-            this.txtFiDateEnd.Calendar.TitleFont = new System.Drawing.Font("Tahoma", 8F);
-            this.txtFiDateEnd.Calendar.TitleForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.txtFiDateEnd.Calendar.TodayBorderColor = System.Drawing.Color.White;
-            this.txtFiDateEnd.Calendar.TrailingForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
-            this.txtFiDateEnd.Calendar.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
-            this.txtFiDateEnd.Culture = 1054;
-            this.txtFiDateEnd.CurrentTimeZone = false;
-            this.txtFiDateEnd.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
-            this.txtFiDateEnd.DisplayFormat.CalendarType = C1.Win.C1Input.CalendarType.GregorianCalendar;
-            this.txtFiDateEnd.DisplayFormat.FormatType = C1.Win.C1Input.FormatTypeEnum.ShortDate;
-            this.txtFiDateEnd.DisplayFormat.Inherit = ((C1.Win.C1Input.FormatInfoInheritFlags)(((((C1.Win.C1Input.FormatInfoInheritFlags.CustomFormat | C1.Win.C1Input.FormatInfoInheritFlags.NullText) 
-            | C1.Win.C1Input.FormatInfoInheritFlags.EmptyAsNull) 
-            | C1.Win.C1Input.FormatInfoInheritFlags.TrimStart) 
-            | C1.Win.C1Input.FormatInfoInheritFlags.TrimEnd)));
-            this.txtFiDateEnd.EditFormat.CalendarType = C1.Win.C1Input.CalendarType.GregorianCalendar;
-            this.txtFiDateEnd.EditFormat.FormatType = C1.Win.C1Input.FormatTypeEnum.ShortDate;
-            this.txtFiDateEnd.EditFormat.Inherit = ((C1.Win.C1Input.FormatInfoInheritFlags)(((((C1.Win.C1Input.FormatInfoInheritFlags.CustomFormat | C1.Win.C1Input.FormatInfoInheritFlags.NullText) 
-            | C1.Win.C1Input.FormatInfoInheritFlags.EmptyAsNull) 
-            | C1.Win.C1Input.FormatInfoInheritFlags.TrimStart) 
-            | C1.Win.C1Input.FormatInfoInheritFlags.TrimEnd)));
-            this.txtFiDateEnd.GMTOffset = System.TimeSpan.Parse("00:00:00");
-            this.txtFiDateEnd.ImagePadding = new System.Windows.Forms.Padding(0);
-            this.txtFiDateEnd.Location = new System.Drawing.Point(323, 14);
-            this.txtFiDateEnd.Name = "txtFiDateEnd";
-            this.txtFiDateEnd.Size = new System.Drawing.Size(129, 18);
-            this.txtFiDateEnd.TabIndex = 524;
-            this.txtFiDateEnd.Tag = null;
-            this.theme1.SetTheme(this.txtFiDateEnd, "(default)");
-            this.txtFiDateEnd.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
-            // 
             // FrmLabOpuView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -875,6 +875,8 @@
             this.tabLabFinish.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtFiDateEnd)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtFiDateStart)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.c1TextBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnSearchF)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.c1Button3)).EndInit();
@@ -883,8 +885,6 @@
             this.panel3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btnSearch)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtSearch)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtFiDateStart)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtFiDateEnd)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

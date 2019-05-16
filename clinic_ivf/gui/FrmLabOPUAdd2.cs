@@ -521,7 +521,7 @@ namespace clinic_ivf.gui
             switch (keyData)
             {
                 case Keys.S | Keys.Control :
-                    if (!ic.user.status_module_lab.Equals("1"))
+                    if (ic.user.status_module_lab.Equals("1"))
                     {
                         ic.cStf.staff_id = "";
                         Boolean chkSave = false;

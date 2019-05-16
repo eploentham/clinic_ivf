@@ -381,7 +381,7 @@ namespace clinic_ivf.gui
             DataTable dt = new DataTable();
             DataTable dtprn = new DataTable();
             DataTable dtpgk = new DataTable();
-            Decimal amt = 0;
+            Decimal amt = 0, sumprice=0, price1=0;
             long amt1 = 0;
             String amt2 = "", billNo="", billExtNo="", payby="", date="", year="", month="", day="";
             long.TryParse(amt.ToString(), out amt1);
@@ -432,6 +432,8 @@ namespace clinic_ivf.gui
                 row["original"] = "1";
                 dtprn.ImportRow(row);
                 row["original"] = "2";
+                Decimal.TryParse(row["col2"].ToString().Replace(",",""), out price1);
+                sumprice += price1;
                 dtprn.ImportRow(row);
             }
             
@@ -439,7 +441,7 @@ namespace clinic_ivf.gui
             ic.ivfDB.ovsDB.updateStatusCashierFinish(txtVn.Text);
             amt2 = ic.NumberToCurrencyText(amt, MidpointRounding.AwayFromZero);
             FrmReport frm = new FrmReport(ic);
-            frm.setPrintBill(dtprn, txtHn.Text, txtPttNameE.Text, amt2, amt.ToString("#,###.00"), billNo, day+"/"+month+"/"+year, payby,"ใบแจ้งหนี้/Bill");
+            frm.setPrintBill(dtprn, txtHn.Text, txtPttNameE.Text, amt2, amt.ToString("#,###.00"), billNo, day+"/"+month+"/"+year, payby,"ใบแจ้งหนี้/Bill", sumprice.ToString("#,###.00"));
             frm.ShowDialog(this);
             
         }

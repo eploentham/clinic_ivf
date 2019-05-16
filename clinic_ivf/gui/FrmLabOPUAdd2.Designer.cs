@@ -3314,8 +3314,11 @@
             this.groupBox7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
             this.groupBox7.Controls.Add(this.cboRemark1);
             this.groupBox7.Controls.Add(this.label87);
+            this.groupBox7.Controls.Add(this.txtApproveResult);
+            this.groupBox7.Controls.Add(this.label89);
             this.groupBox7.Controls.Add(this.label86);
             this.groupBox7.Controls.Add(this.cboEmbryoForEtDoctor);
+            this.groupBox7.Controls.Add(this.btnApproveResult);
             this.groupBox7.Controls.Add(this.cboRemark);
             this.groupBox7.Controls.Add(this.btnSaveEmbryoEt);
             this.groupBox7.Controls.Add(this.cboEmbryologistAppv);
@@ -3851,9 +3854,6 @@
             this.groupBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
             this.groupBox1.Controls.Add(this.txtOpuTime);
             this.groupBox1.Controls.Add(this.label90);
-            this.groupBox1.Controls.Add(this.label89);
-            this.groupBox1.Controls.Add(this.txtApproveResult);
-            this.groupBox1.Controls.Add(this.btnApproveResult);
             this.groupBox1.Controls.Add(this.txtDobDonor);
             this.groupBox1.Controls.Add(this.label88);
             this.groupBox1.Controls.Add(this.label72);
@@ -3933,7 +3933,7 @@
             this.label89.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
             this.label89.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label89.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.label89.Location = new System.Drawing.Point(1556, 58);
+            this.label89.Location = new System.Drawing.Point(919, 62);
             this.label89.Name = "label89";
             this.label89.Size = new System.Drawing.Size(69, 16);
             this.label89.TabIndex = 553;
@@ -3945,7 +3945,7 @@
             this.txtApproveResult.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtApproveResult.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
             this.txtApproveResult.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.txtApproveResult.Location = new System.Drawing.Point(1527, 78);
+            this.txtApproveResult.Location = new System.Drawing.Point(994, 58);
             this.txtApproveResult.Name = "txtApproveResult";
             this.txtApproveResult.Size = new System.Drawing.Size(212, 20);
             this.txtApproveResult.TabIndex = 552;
@@ -3957,11 +3957,11 @@
             // 
             this.btnApproveResult.Image = global::clinic_ivf.Properties.Resources.Female_user_add_24;
             this.btnApproveResult.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnApproveResult.Location = new System.Drawing.Point(1559, 14);
+            this.btnApproveResult.Location = new System.Drawing.Point(1078, 79);
             this.btnApproveResult.Name = "btnApproveResult";
             this.btnApproveResult.Size = new System.Drawing.Size(128, 39);
             this.btnApproveResult.TabIndex = 551;
-            this.btnApproveResult.Text = "รายงานผล";
+            this.btnApproveResult.Text = "Finish";
             this.btnApproveResult.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.theme1.SetTheme(this.btnApproveResult, "(default)");
             this.btnApproveResult.UseVisualStyleBackColor = true;

@@ -67,6 +67,18 @@ namespace clinic_ivf.object1
 
         public String doctor_name { get; set; }
         public String proce_name { get; set; }
+        public String dob_donor { get; set; }
+        public String approve_result_staff_id { get; set; }
+        public String status_approve_result_day1 { get; set; }
+        public String status_approve_result_day3 { get; set; }
+        public String status_approve_result_day5 { get; set; }
+        public String approve_result_day1_staff_id { get; set; }
+        public String approve_result_day3_staff_id { get; set; }
+        public String approve_result_day5_staff_id { get; set; }
+        public String approve_result_day1_date { get; set; }
+        public String approve_result_day3_date { get; set; }
+        public String approve_result_day5_date { get; set; }
+        public String fet_time { get; set; }
 
     }
 }

@@ -2747,6 +2747,7 @@ namespace clinic_ivf.gui
                             inc += (price * qty);
                         }
                     }
+                    row1[0] = i;
                     //if (i % 2 == 0)
                     //    grfPtt.Rows[i].StyleNew.BackColor = color;
                     i++;
@@ -4199,6 +4200,8 @@ namespace clinic_ivf.gui
             tC.SelectedTab = tabDrug;
             tCApm.SelectedTab = tabApmVisit;
             tCApm1.SelectedTab = tabApmPtt;
+            tabOrder.SelectedTab = tabPackage;
+            tcPackage.SelectedTab = tabPkgOrder;
         }
     }
 }

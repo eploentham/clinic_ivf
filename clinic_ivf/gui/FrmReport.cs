@@ -281,7 +281,7 @@ namespace clinic_ivf.gui
                 MessageBox.Show("error " + ex.Message, "");
             }
         }
-        public void setPrintBill(DataTable dt, String hn, String name, String thai_baht, String amount, String bill_no, String bill_date, String payby, String billname)
+        public void setPrintBill(DataTable dt, String hn, String name, String thai_baht, String amount, String bill_no, String bill_date, String payby, String billname, String sumprice)
         {
             String chk = "", printerDefault = "";
             ReportDocument rpt = new ReportDocument();
@@ -305,6 +305,7 @@ namespace clinic_ivf.gui
                 rpt.SetParameterValue("footer4", "เจ้าหน้าที่การเงิน (Cashier)");
                 rpt.SetParameterValue("payby", payby);
                 rpt.SetParameterValue("bill_name", billname);
+                rpt.SetParameterValue("sum_price", sumprice);
                 this.crystalReportViewer1.ReportSource = rpt;
                 this.crystalReportViewer1.Refresh();
             }

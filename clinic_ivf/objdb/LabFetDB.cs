@@ -77,6 +77,18 @@ namespace clinic_ivf.objdb
             fet.date_pic_embryo = "date_pic_embryo";
             fet.hn_donor = "hn_donor";
             fet.name_donor = "name_donor";
+            fet.dob_donor = "dob_donor";
+            fet.approve_result_staff_id = "approve_result_staff_id";
+            fet.status_approve_result_day1 = "status_approve_result_day1";
+            fet.status_approve_result_day3 = "status_approve_result_day3";
+            fet.status_approve_result_day5 = "status_approve_result_day5";
+            fet.approve_result_day1_staff_id = "approve_result_day1_staff_id";
+            fet.approve_result_day3_staff_id = "approve_result_day3_staff_id";
+            fet.approve_result_day5_staff_id = "approve_result_day5_staff_id";
+            fet.approve_result_day1_date = "approve_result_day1_date";
+            fet.approve_result_day3_date = "approve_result_day3_date";
+            fet.approve_result_day5_date = "approve_result_day5_date";
+            fet.fet_time = "fet_time";
 
             fet.table = "lab_t_fet";
             fet.pkField = "fet_id";
@@ -111,6 +123,26 @@ namespace clinic_ivf.objdb
             String sql = "select distinct fet.remark " +
                 "From " + fet.table + " fet " +
                 "Where fet." + fet.active + "='1' ";
+            dt = conn.selectData(conn.conn, sql);
+            return dt;
+        }
+        public DataTable selectByStatusProcess1()
+        {
+            DataTable dt = new DataTable();
+            String sql = "select fet." + fet.fet_id + ", fet." + fet.fet_code + ",fet." + fet.hn_female + ",fet." + fet.name_female + ",fet." + fet.fet_date + ",fet." + fet.remark + "," + fet.hn_male + "," + fet.name_male + ", lab_b_procedure.proce_name_t " +
+                "From " + fet.table + " fet " +
+                "Left Join Doctor on Doctor.ID = fet.doctor_id " +
+                "Left Join lab_b_procedure on fet.proce_id = lab_b_procedure.proce_id " +
+                "Where fet." + fet.status_fet + " ='1' and fet." + fet.active + "='1' " +
+                //"Order By opu." + opu.opu_id + " " +
+                //"Union " +
+                //"select fet.fet_id , fet.fet_code ,fet.hn_female ,fet.name_female,fet.fet_date ,fet.remark, fet.hn_male, fet.name_male, lab_b_procedure.proce_name_t " +
+                //"From lab_t_fet fet  " +
+                //"Left Join Doctor on Doctor.ID = fet.doctor_id " +
+                //"Left Join lab_b_procedure on fet.proce_id = lab_b_procedure.proce_id " +
+                //"Where fet.status_fet ='1' and fet.active + '1' " +
+                //"Order By fet.fet_id  ";
+                "  ";
             dt = conn.selectData(conn.conn, sql);
             return dt;
         }
@@ -163,6 +195,8 @@ namespace clinic_ivf.objdb
 
             p.remark = p.remark == null ? "" : p.remark;
             //p.sort1 = p.sort1 == null ? "" : p.sort1;
+            p.dob_donor = p.dob_donor == null ? "" : p.dob_donor;
+            p.fet_time = p.fet_time == null ? "" : p.fet_time;
 
             p.doctor_id = int.TryParse(p.doctor_id, out chk) ? chk.ToString() : "0";
             p.proce_id = int.TryParse(p.proce_id, out chk) ? chk.ToString() : "0";
@@ -206,6 +240,8 @@ namespace clinic_ivf.objdb
                 "," + fet.date_pic_embryo + " = '" + p.date_pic_embryo + "'" +
                 "," + fet.hn_donor + " = '" + p.hn_donor + "'" +
                 "," + fet.name_donor + " = '" + p.name_donor + "'" +
+                "," + fet.dob_donor + " = '" + p.dob_donor + "'" +
+                "," + fet.fet_time + " = '" + p.fet_time + "'" +
                "";
             try
             {
@@ -244,6 +280,7 @@ namespace clinic_ivf.objdb
                 "," + fet.date_pic_embryo + " = '" + p.date_pic_embryo + "' " +
                 "," + fet.hn_donor + " = '" + p.hn_donor + "' " +
                 "," + fet.name_donor + " = '" + p.name_donor + "' " +
+                "," + fet.dob_donor + " = '" + p.dob_donor + "'" +
                 "Where " + fet.pkField + "='" + p.fet_id + "'";
 
             try
@@ -284,6 +321,42 @@ namespace clinic_ivf.objdb
                 "Where " + fet.pkField + "='" + p.fet_id + "'"
                 ;
 
+            try
+            {
+                re = conn.ExecuteNonQuery(conn.conn, sql);
+            }
+            catch (Exception ex)
+            {
+                sql = ex.Message + " " + ex.InnerException;
+            }
+
+            return re;
+        }
+        public String updateThawing(LabFet p, String userId)
+        {
+            String re = "";
+            String sql = "";
+            int chk = 0;
+
+            chkNull(p);
+            sql = "Update " + fet.table + " Set " +
+                //" " + fet.opu_code + " = '" + p.opu_code + "'" +
+                //" " + fet.embryo_freez_stage + " = '" + p.embryo_freez_stage.Replace("'", "''") + "'" +
+                //"," + fet.embryoid_freez_position + " = '" + p.embryoid_freez_position + "'" +
+                " " + fet.freeze_date + " = '" + p.freeze_date.Replace("'", "''") + "'" +
+                "," + fet.freeze_no_of_freeze + " = '" + p.freeze_no_of_freeze.Replace("'", "''") + "'" +
+                "," + fet.freeze_stage_of_freeze + " = '" + p.freeze_stage_of_freeze.Replace("'", "''") + "'" +
+                "," + fet.thaw_date + " = '" + p.thaw_date.Replace("'", "''") + "'" +
+                "," + fet.thaw_no_of_thaw + " = '" + p.thaw_no_of_thaw.Replace("'", "''") + "'" +
+                "," + fet.thaw_no_of_survival + " = '" + p.thaw_no_of_survival.Replace("'", "''") + "'" +
+                "," + fet.thaw_no_of_remaining + " = '" + p.thaw_no_of_remaining + "'" +
+                "," + fet.media_date + " = '" + p.media_date + "'" +
+                "," + fet.media_exp + " = '" + p.media_exp + "'" +
+                "," + fet.media_lot_no + " = '" + p.media_lot_no + "'" +
+                "," + fet.date_modi + " = now()" +
+                "," + fet.user_modi + " = '" + userId + "' " +
+                "," + fet.media_thawing + " = '" + p.media_thawing + "' " +
+                "Where " + fet.pkField + "='" + p.fet_id + "'";
             try
             {
                 re = conn.ExecuteNonQuery(conn.conn, sql);
@@ -344,11 +417,34 @@ namespace clinic_ivf.objdb
                 fet1.status_fet = dt.Rows[0][fet.status_fet].ToString();
                 fet1.doctor_name = dt.Rows[0]["Name"].ToString();
                 fet1.proce_name = dt.Rows[0]["proce_name_t"].ToString();
-
                 
                 fet1.date_pic_embryo = dt.Rows[0][fet.date_pic_embryo].ToString();
                 fet1.hn_donor = dt.Rows[0][fet.hn_donor].ToString();
                 fet1.name_donor = dt.Rows[0][fet.name_donor].ToString();
+                fet1.dob_donor = dt.Rows[0][fet.dob_donor].ToString();
+                fet1.approve_result_staff_id = dt.Rows[0][fet.approve_result_staff_id].ToString();
+                fet1.status_approve_result_day1 = dt.Rows[0][fet.status_approve_result_day1].ToString();
+                fet1.status_approve_result_day3 = dt.Rows[0][fet.status_approve_result_day3].ToString();
+                fet1.status_approve_result_day5 = dt.Rows[0][fet.status_approve_result_day5].ToString();
+                fet1.approve_result_day1_staff_id = dt.Rows[0][fet.approve_result_day1_staff_id].ToString();
+                fet1.approve_result_day3_staff_id = dt.Rows[0][fet.approve_result_day3_staff_id].ToString();
+                fet1.approve_result_day5_staff_id = dt.Rows[0][fet.approve_result_day5_staff_id].ToString();
+                fet1.approve_result_day1_date = dt.Rows[0][fet.approve_result_day1_date].ToString();
+                fet1.approve_result_day3_date = dt.Rows[0][fet.approve_result_day3_date].ToString();
+                fet1.approve_result_day5_date = dt.Rows[0][fet.approve_result_day5_date].ToString();
+                fet1.fet_time = dt.Rows[0][fet.fet_time].ToString();
+
+                fet1.freeze_date = dt.Rows[0][fet.freeze_date].ToString();
+                fet1.freeze_no_of_freeze = dt.Rows[0][fet.freeze_no_of_freeze].ToString();
+                fet1.freeze_stage_of_freeze = dt.Rows[0][fet.freeze_stage_of_freeze].ToString();
+                fet1.thaw_date = dt.Rows[0][fet.thaw_date].ToString();
+                fet1.thaw_no_of_thaw = dt.Rows[0][fet.thaw_no_of_thaw].ToString();
+                fet1.thaw_no_of_survival = dt.Rows[0][fet.thaw_no_of_survival].ToString();
+                fet1.thaw_no_of_remaining = dt.Rows[0][fet.thaw_no_of_remaining].ToString();
+                fet1.media_date = dt.Rows[0][fet.media_date].ToString();
+                fet1.media_lot_no = dt.Rows[0][fet.media_lot_no].ToString();
+                fet1.media_exp = dt.Rows[0][fet.media_exp].ToString();
+                fet1.media_thawing = dt.Rows[0][fet.media_thawing].ToString();
             }
             else
             {
@@ -399,6 +495,30 @@ namespace clinic_ivf.objdb
                 fet1.date_pic_embryo = "";
                 fet1.hn_donor = "";
                 fet1.name_donor = "";
+                fet1.dob_donor = "";
+                fet1.approve_result_staff_id = "";
+                fet1.status_approve_result_day1 = "";
+                fet1.status_approve_result_day3 = "";
+                fet1.status_approve_result_day5 = "";
+                fet1.approve_result_day1_staff_id = "";
+                fet1.approve_result_day3_staff_id = "";
+                fet1.approve_result_day5_staff_id = "";
+                fet1.approve_result_day1_date = "";
+                fet1.approve_result_day3_date = "";
+                fet1.approve_result_day5_date = "";
+                fet1.fet_time = "";
+
+                fet1.freeze_date = "";
+                fet1.freeze_no_of_freeze = "";
+                fet1.freeze_stage_of_freeze = "";
+                fet1.thaw_date = "";
+                fet1.thaw_no_of_thaw = "";
+                fet1.thaw_no_of_survival = "";
+                fet1.thaw_no_of_remaining = "";
+                fet1.media_date = "";
+                fet1.media_lot_no = "";
+                fet1.media_exp = "";
+                fet1.media_thawing = "";
             }
 
             return fet1;
