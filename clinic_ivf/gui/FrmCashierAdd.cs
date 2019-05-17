@@ -344,7 +344,8 @@ namespace clinic_ivf.gui
             obilld.Price = txtPayCreditCard.Text.Replace(",","");
             obilld.Total = txtPayCreditCard.Text.Replace(",", "");
             obilld.Comment = "";
-            
+            obilld.pcksid = "0";
+
             obilld.GroupType = "OtherService";
 
             ic.ivfDB.obildDB.insertBillDetail(obilld, "");

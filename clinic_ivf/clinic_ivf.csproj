@@ -304,6 +304,12 @@
     <Compile Include="gui\FrmLabOPUTimeModi.Designer.cs">
       <DependentUpon>FrmLabOPUTimeModi.cs</DependentUpon>
     </Compile>
+    <Compile Include="gui\FrmLabSpermAdd.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="gui\FrmLabSpermAdd.Designer.cs">
+      <DependentUpon>FrmLabSpermAdd.cs</DependentUpon>
+    </Compile>
     <Compile Include="gui\FrmLabSpermView.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -929,6 +935,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="gui\FrmLabOPUTimeModi.resx">
       <DependentUpon>FrmLabOPUTimeModi.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="gui\FrmLabSpermAdd.resx">
+      <DependentUpon>FrmLabSpermAdd.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="gui\FrmLabSpermView.resx">
       <DependentUpon>FrmLabSpermView.cs</DependentUpon>

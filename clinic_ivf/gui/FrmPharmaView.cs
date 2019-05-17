@@ -60,6 +60,7 @@ namespace clinic_ivf.gui
             sep = new C1SuperErrorProvider();
 
             txtDateStart.Value = System.DateTime.Now.Year + "-" + System.DateTime.Now.ToString("MM-dd");
+            cboVisitBsp.SelectedItemChanged += CboVisitBsp_SelectedItemChanged;
             ic.ivfDB.bspDB.setCboBsp(cboVisitBsp, ic.iniC.service_point_id);
 
             //btnNew.Click += BtnNew_Click;
@@ -84,6 +85,12 @@ namespace clinic_ivf.gui
             timer.Start();
 
             pageLoad = false;
+        }
+        private void CboVisitBsp_SelectedItemChanged(object sender, EventArgs e)
+        {
+            //throw new NotImplementedException();
+            if (pageLoad) return;
+            setGrfQue();
         }
         private void Timer_Tick(object sender, EventArgs e)
         {
@@ -280,7 +287,7 @@ namespace clinic_ivf.gui
                 if (chkAll.Checked)
                     dt = ic.ivfDB.ovsDB.selectByReceptionSend();
                 else
-                    dt = ic.ivfDB.ovsDB.selectByReceptionSendBsp(cboVisitBsp.SelectedItem == null ? "" : ((ComboBoxItem)cboVisitBsp.SelectedItem).Value);
+                    dt = ic.ivfDB.ovsDB.selectByStatusCashierFinish(cboVisitBsp.SelectedItem == null ? "" : ((ComboBoxItem)cboVisitBsp.SelectedItem).Value);
             }
             else
             {

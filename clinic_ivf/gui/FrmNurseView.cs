@@ -245,7 +245,7 @@ namespace clinic_ivf.gui
             //FilterRow fr = new FilterRow(grfExpn);
 
             grfFinish.AfterRowColChange += GrfFinish_AfterRowColChange;
-            //grfExpnC.CellButtonClick += new C1.Win.C1FlexGrid.RowColEventHandler(this.grfDept_CellButtonClick);
+            grfFinish.DoubleClick += GrfFinish_DoubleClick;
             //grfExpnC.CellChanged += new C1.Win.C1FlexGrid.RowColEventHandler(this.grfDept_CellChanged);
             ContextMenu menuGw = new ContextMenu();
             //menuGw.MenuItems.Add("&แก้ไข รายการเบิก", new EventHandler(ContextMenu_edit));
@@ -259,6 +259,12 @@ namespace clinic_ivf.gui
             //theme1.SetTheme(tabDiag, "Office2010Blue");
             //theme1.SetTheme(tabFinish, "Office2010Blue");
 
+        }
+
+        private void GrfFinish_DoubleClick(object sender, EventArgs e)
+        {
+            //throw new NotImplementedException();
+            ContextMenu_order_finish(null, null);
         }
 
         private void GrfFinish_AfterRowColChange(object sender, RangeEventArgs e)
@@ -469,6 +475,14 @@ namespace clinic_ivf.gui
             CellNoteManager mgr = new CellNoteManager(grfFinish);
             grfFinish.Cols[colID].Visible = false;
             grfFinish.Cols[colPttId].Visible = false;
+            grfFinish.Cols[colVNshow].AllowEditing = false;
+            grfFinish.Cols[colPttHn].AllowEditing = false;
+            grfFinish.Cols[colPttName].AllowEditing = false;
+            grfFinish.Cols[colVsDate].AllowEditing = false;
+            grfFinish.Cols[colVsTime].AllowEditing = false;
+            grfFinish.Cols[colVsEtime].AllowEditing = false;
+            grfFinish.Cols[colStatus].AllowEditing = false;
+            //grfFinish.Cols[colVsEtime].AllowEditing = false;
             //theme1.SetTheme(grfFinish, ic.theme);
 
         }

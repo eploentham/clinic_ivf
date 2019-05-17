@@ -41,7 +41,8 @@ namespace clinic_ivf.FlexGrid
             _style.ForeColor = SystemColors.InfoText;
             _style.Border.Direction = BorderDirEnum.Horizontal;
             _style.Margins = new System.Drawing.Printing.Margins(1, 2, 1, 1);
-            _flex.Rows[_row].Style = _style;
+            if(_flex.Rows.Count>_row)
+                _flex.Rows[_row].Style = _style;
 
             // add event handlers
             _flex.KeyDown += new KeyEventHandler(_flex_KeyDown);
@@ -62,7 +63,8 @@ namespace clinic_ivf.FlexGrid
             }
 
             // move cursor to first row with data
-            _flex.Select(_row + 1, _flex.Cols.Fixed);
+            if(_flex.Cols.Fixed>1)
+                _flex.Select(_row + 1, _flex.Cols.Fixed);
         }
 
         private void _flex_ChangeEdit(object sender, EventArgs e)

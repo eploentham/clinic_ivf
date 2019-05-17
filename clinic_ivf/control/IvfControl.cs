@@ -362,23 +362,21 @@ namespace clinic_ivf.control
         public String timetoShow(Object dt)
         {
             DateTime dt1 = new DateTime();
-            MySqlDateTime dtm = new MySqlDateTime();
+            //MySqlDateTime dtm = new MySqlDateTime();
             String re = "";
             if (dt != null)
             {
                 if (DateTime.TryParse(dt.ToString(), out dt1))
                 {
-                    re = dt1.ToString("hh:mm:ss");
+                    re = dt1.ToString("HH:mm:ss");
                 }
-
-
             }
             return re;
         }
         public String datetoShow(Object dt)
         {
             DateTime dt1 = new DateTime();
-            MySqlDateTime dtm = new MySqlDateTime();
+            //MySqlDateTime dtm = new MySqlDateTime();
             String re = "";
             if (dt != null)
             {

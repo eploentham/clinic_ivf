@@ -246,7 +246,6 @@ namespace clinic_ivf.gui
         {
             String chk = "", name = "", id = "";
 
-
         }
         private void ContextMenu_edit_billfinish(object sender, System.EventArgs e)
         {

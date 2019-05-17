@@ -110,6 +110,7 @@ namespace clinic_ivf.objdb
             p.Extra = long.TryParse(p.Extra, out chk) ? chk.ToString() : "0";
             p.VN = long.TryParse(p.VN, out chk) ? chk.ToString() : "0";
             p.item_id = long.TryParse(p.item_id, out chk) ? chk.ToString() : "0";
+            p.pcksid = long.TryParse(p.pcksid, out chk) ? chk.ToString() : "0";
 
 
             p.Price = decimal.TryParse(p.Price, out chk1) ? chk1.ToString() : "0";            

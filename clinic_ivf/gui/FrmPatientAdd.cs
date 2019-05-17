@@ -339,6 +339,10 @@ namespace clinic_ivf.gui
             dt.Columns.Add("bw", typeof(String));
             dt.Columns.Add("height", typeof(String));
             dt.Columns.Add("doctor_name", typeof(String));
+            dt.Columns.Add("lmp_g", typeof(String));
+            dt.Columns.Add("lmp_p", typeof(String));
+            dt.Columns.Add("lmp_a", typeof(String));
+            dt.Columns.Add("lmp", typeof(String));
 
             dt.Rows[0]["ptt_name_t"] = ptt.patient_firstname+" "+ ptt.patient_lastname;
             dt.Rows[0]["hn"] = ptt.patient_hn;
@@ -358,6 +362,10 @@ namespace clinic_ivf.gui
             dt.Rows[0]["bp"] = txtVisitBP.Text;
             dt.Rows[0]["height"] = txtHeight.Text;
             dt.Rows[0]["doctor_name"] = cboDoctor.Text;
+            dt.Rows[0]["lmp_g"] = txtG.Text;
+            dt.Rows[0]["lmp_p"] = txtP.Text;
+            dt.Rows[0]["lmp_a"] = txtA.Text;
+            dt.Rows[0]["lmp"] = txtVisitLMP.Text;
             if (vs != null)
                 dt.Rows[0]["queue"] = vs.queue_id;
             //dt.Rows[0]["form_day1_id"] = "";
@@ -2504,7 +2512,7 @@ namespace clinic_ivf.gui
             txtORDescription.Value = ptt.or_description;
             txtCongenital.Value = ptt.congenital_diseases_description;
             txtHeight.Value = ptt.patient_height;
-            cboAllergyDesc.Text = ptt.allergy_description;
+            cboAllergyDesc.Value = ptt.allergy_description;
             chkStatusG.Checked = ptt.status_g.Equals("1") ? true : false;
             txtG.Value = ptt.g;
             txtP.Value = ptt.p;

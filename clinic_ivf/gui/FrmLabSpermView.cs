@@ -24,7 +24,7 @@ namespace clinic_ivf.gui
         Font fEdit, fEditB;
         Color bg, fc;
         Font ff, ffB;
-        int colRqId = 1, colOPUDate = 2, colOPUTime = 3, colRqHnMale = 4, colRqNameMale = 5, colRqHn = 6, colRqName = 7, colRqHnDonor = 8, colRqNameDonor = 9, colDtrName = 10, colRqRemark = 11, colRqReqNum = 12, colRqDate = 13, colRqVn = 14, colRqLabName = 15, colOpuId = 16, colOPUTimeModi = 17;
+        int colRqId = 1, colOPUDate = 2, colOPUTime = 3, colRqLabName = 4, colRqHnMale = 5, colRqNameMale = 6, colRqHn = 7, colRqName =8, colDtrName = 9, colRqRemark = 10, colRqReqNum = 11, colRqDate = 12, colRqVn = 13, colOpuId = 14, colOPUTimeModi = 15;
         //int colPcId = 1, colPcOpuNum = 2, colPcHn = 3, colPcPttName = 4, colPcDate = 5, colPcRemark = 6;
         int colPcId = 1, colPcDate = 2, colPcHnMale = 3, colPcNameMale = 4, colPcHn = 5, colPcPttName = 6, colProceName = 7, colPcRemark = 8, colPcOpuNum = 9;
         int colFiId = 1, colFiDate = 2, colFiHnMale = 3, colFiNameMale = 4, colFiHn = 5, colFiPttName = 6, colFiProceName = 7, colFiRemark = 8, colFiOpuNum = 9;
@@ -215,7 +215,7 @@ namespace clinic_ivf.gui
             Cursor curOld;
             curOld = this.Cursor;
             this.Cursor = Cursors.WaitCursor;
-            openLabOPUNew(id, name);
+            openLabSpermNew(id, name);
             setGrfReq();
             setGrfProc();
             this.Cursor = curOld;
@@ -278,8 +278,8 @@ namespace clinic_ivf.gui
             grfReq.Cols[colOPUTimeModi].Width = 70;
             grfReq.Cols[colRqHnMale].Width = 100;
             grfReq.Cols[colRqNameMale].Width = 280;
-            grfReq.Cols[colRqHnDonor].Width = 100;
-            grfReq.Cols[colRqNameDonor].Width = 280;
+            //grfReq.Cols[colRqHnDonor].Width = 100;
+            //grfReq.Cols[colRqNameDonor].Width = 280;
             grfReq.ShowCursor = true;
             //grdFlex.Cols[colID].Caption = "no";
             //grfDept.Cols[colCode].Caption = "รหัส";
@@ -292,13 +292,13 @@ namespace clinic_ivf.gui
             grfReq.Cols[colRqRemark].Caption = "Remark";
             grfReq.Cols[colDtrName].Caption = "Doctor";
             grfReq.Cols[colRqLabName].Caption = "Lab Name";
-            grfReq.Cols[colOPUDate].Caption = "OPU Date";
-            grfReq.Cols[colOPUTime].Caption = "OPU Time";
+            grfReq.Cols[colOPUDate].Caption = " Date";
+            grfReq.Cols[colOPUTime].Caption = " Time";
             grfReq.Cols[colOPUTimeModi].Caption = "opu time old";
             grfReq.Cols[colRqHnMale].Caption = "HN male";
             grfReq.Cols[colRqNameMale].Caption = "Name male";
-            grfReq.Cols[colRqHnDonor].Caption = "HN donor";
-            grfReq.Cols[colRqNameDonor].Caption = "Name donor";
+            //grfReq.Cols[colRqHnDonor].Caption = "HN donor";
+            //grfReq.Cols[colRqNameDonor].Caption = "Name donor";
 
             Color color = ColorTranslator.FromHtml(ic.iniC.grfRowColor);
             //CellRange rg1 = grfBank.GetCellRange(1, colE, grfBank.Rows.Count, colE);
@@ -316,19 +316,19 @@ namespace clinic_ivf.gui
                 row1[colRqName] = row[ic.ivfDB.lbReqDB.lbReq.name_female].ToString();
                 row1[colRqDate] = ic.datetoShow(row[ic.ivfDB.lbReqDB.lbReq.req_date].ToString());
                 row1[colRqRemark] = row["form_a_remark"].ToString();
-                row1[colOPUDate] = ic.datetoShow(row[ic.ivfDB.lFormaDB.lformA.opu_date].ToString());
-                row1[colOPUTime] = row[ic.ivfDB.lFormaDB.lformA.opu_time].ToString();
+                row1[colOPUDate] = ic.datetoShow(row[ic.ivfDB.lFormaDB.lformA.sperm_analysis_date_start].ToString());
+                row1[colOPUTime] = ic.timetoShow(row[ic.ivfDB.lFormaDB.lformA.sperm_analysis_date_start].ToString());
                 row1[colOPUTimeModi] = row[ic.ivfDB.lFormaDB.lformA.opu_time_modi].ToString();
-                row1[colRqLabName] = row["SName"].ToString();
+                row1[colRqLabName] = row["LName"].ToString();
                 row1[colRqHnMale] = row["hn_male"].ToString();
                 row1[colRqNameMale] = row["name_male"].ToString();
-                row1[colRqHnDonor] = row["hn_donor"].ToString();
-                row1[colRqNameDonor] = row["name_donor"].ToString();
-                if (row["SName"].ToString().Trim().Equals("OPU"))
+                //row1[colRqHnDonor] = row["hn_donor"].ToString();
+                //row1[colRqNameDonor] = row["name_donor"].ToString();
+                if (row["LName"].ToString().Trim().Equals("OPU"))
                 {
                     row1[colRqRemark] = row["opu_remark"].ToString() + " " + row["form_a_remark"].ToString();
                 }
-                else if (row["SName"].ToString().Equals("FET"))
+                else if (row["LName"].ToString().Equals("FET"))
                 {
                     row1[colRqRemark] = row["fet_remark"].ToString() + " " + row["form_a_remark"].ToString();
                 }
@@ -340,59 +340,59 @@ namespace clinic_ivf.gui
                     chk = "";
                 }
                 String txt1 = "";
-                if (row["status_opu_active"].ToString().Equals("1"))
-                {
-                    if (row["status_wait_confirm_opu_date"].ToString().Equals("2"))
-                    {
-                        //grfReq.Rows[i].StyleNew.BackColor = ColorTranslator.FromHtml(ic.iniC.grfRowColor);
-                        txt1 = "confirm วัน เวลา OPU จากทาง พยาบาล " + row["form_a_remark"].ToString();
-                        if (row[ic.ivfDB.lFormaDB.lformA.status_opu_time_modi].ToString().Equals("1"))
-                        {
-                            txt1 = txt1 + " มีการเปลี่ยนแปลง เวลา OPU จาก " + row[ic.ivfDB.lFormaDB.lformA.opu_time_modi].ToString() + " -> " + row[ic.ivfDB.lFormaDB.lformA.opu_time].ToString();
-                        }
+                //if (row["status_opu_active"].ToString().Equals("1"))
+                //{
+                //    if (row["status_wait_confirm_opu_date"].ToString().Equals("2"))
+                //    {
+                //        //grfReq.Rows[i].StyleNew.BackColor = ColorTranslator.FromHtml(ic.iniC.grfRowColor);
+                //        txt1 = "confirm วัน เวลา OPU จากทาง พยาบาล " + row["form_a_remark"].ToString();
+                //        if (row[ic.ivfDB.lFormaDB.lformA.status_opu_time_modi].ToString().Equals("1"))
+                //        {
+                //            txt1 = txt1 + " มีการเปลี่ยนแปลง เวลา OPU จาก " + row[ic.ivfDB.lFormaDB.lformA.opu_time_modi].ToString() + " -> " + row[ic.ivfDB.lFormaDB.lformA.opu_time].ToString();
+                //        }
 
-                        CellNote note = new CellNote(txt1);
-                        CellRange rg = grfReq.GetCellRange(i, colRqHn);
-                        rg.UserData = note;
-                        grfReq.Rows[i].StyleNew.BackColor = ColorTranslator.FromHtml(ic.iniC.grfRowGreen);
-                    }
-                    else if (row["status_wait_confirm_opu_date"].ToString().Equals("1"))
-                    {
-                        txt1 = "รอ confirm วัน เวลา OPU จากทาง พยาบาล " + row["form_a_remark"].ToString();
-                        if (row[ic.ivfDB.lFormaDB.lformA.status_opu_time_modi].ToString().Equals("1"))
-                        {
-                            txt1 = txt1 + " มีการเปลี่ยนแปลง เวลา OPU จาก " + row[ic.ivfDB.lFormaDB.lformA.opu_time_modi].ToString() + " -> " + row[ic.ivfDB.lFormaDB.lformA.opu_time].ToString();
-                        }
-                        CellNote note = new CellNote(txt1);
-                        CellRange rg = grfReq.GetCellRange(i, colRqHn);
-                        rg.UserData = note;
-                        grfReq.Rows[i].StyleNew.BackColor = ColorTranslator.FromHtml(ic.iniC.grfRowYellow);
-                    }
-                }
-                else if (row["status_opu_active"].ToString().Equals("2"))
-                {
-                    txt1 = "Wait " + row["opu_wait_remark"].ToString() + " " + row["form_a_remark"].ToString();
-                    if (row[ic.ivfDB.lFormaDB.lformA.status_opu_time_modi].ToString().Equals("1"))
-                    {
-                        txt1 = txt1 + " มีการเปลี่ยนแปลง เวลา OPU จาก " + row[ic.ivfDB.lFormaDB.lformA.opu_time_modi].ToString() + " -> " + row[ic.ivfDB.lFormaDB.lformA.opu_time].ToString();
-                    }
-                    CellNote note = new CellNote(txt1);
-                    CellRange rg = grfReq.GetCellRange(i, colRqHn);
-                    rg.UserData = note;
-                    grfReq.Rows[i].StyleNew.BackColor = ColorTranslator.FromHtml(ic.iniC.grfRowYellow);
-                }
-                else if (row["status_opu_active"].ToString().Equals("3"))
-                {
-                    txt1 = "Void " + row["opu_wait_remark"].ToString() + " " + row["form_a_remark"].ToString();
-                    if (row[ic.ivfDB.lFormaDB.lformA.status_opu_time_modi].ToString().Equals("1"))
-                    {
-                        txt1 = txt1 + " มีการเปลี่ยนแปลง เวลา OPU จาก " + row[ic.ivfDB.lFormaDB.lformA.opu_time_modi].ToString() + " -> " + row[ic.ivfDB.lFormaDB.lformA.opu_time].ToString();
-                    }
-                    CellNote note = new CellNote(txt1);
-                    CellRange rg = grfReq.GetCellRange(i, colRqHn);
-                    rg.UserData = note;
-                    grfReq.Rows[i].StyleNew.BackColor = ColorTranslator.FromHtml(ic.iniC.grfRowRed);
-                }
+                //        CellNote note = new CellNote(txt1);
+                //        CellRange rg = grfReq.GetCellRange(i, colRqHn);
+                //        rg.UserData = note;
+                //        grfReq.Rows[i].StyleNew.BackColor = ColorTranslator.FromHtml(ic.iniC.grfRowGreen);
+                //    }
+                //    else if (row["status_wait_confirm_opu_date"].ToString().Equals("1"))
+                //    {
+                //        txt1 = "รอ confirm วัน เวลา OPU จากทาง พยาบาล " + row["form_a_remark"].ToString();
+                //        if (row[ic.ivfDB.lFormaDB.lformA.status_opu_time_modi].ToString().Equals("1"))
+                //        {
+                //            txt1 = txt1 + " มีการเปลี่ยนแปลง เวลา OPU จาก " + row[ic.ivfDB.lFormaDB.lformA.opu_time_modi].ToString() + " -> " + row[ic.ivfDB.lFormaDB.lformA.opu_time].ToString();
+                //        }
+                //        CellNote note = new CellNote(txt1);
+                //        CellRange rg = grfReq.GetCellRange(i, colRqHn);
+                //        rg.UserData = note;
+                //        grfReq.Rows[i].StyleNew.BackColor = ColorTranslator.FromHtml(ic.iniC.grfRowYellow);
+                //    }
+                //}
+                //else if (row["status_opu_active"].ToString().Equals("2"))
+                //{
+                //    txt1 = "Wait " + row["opu_wait_remark"].ToString() + " " + row["form_a_remark"].ToString();
+                //    if (row[ic.ivfDB.lFormaDB.lformA.status_opu_time_modi].ToString().Equals("1"))
+                //    {
+                //        txt1 = txt1 + " มีการเปลี่ยนแปลง เวลา OPU จาก " + row[ic.ivfDB.lFormaDB.lformA.opu_time_modi].ToString() + " -> " + row[ic.ivfDB.lFormaDB.lformA.opu_time].ToString();
+                //    }
+                //    CellNote note = new CellNote(txt1);
+                //    CellRange rg = grfReq.GetCellRange(i, colRqHn);
+                //    rg.UserData = note;
+                //    grfReq.Rows[i].StyleNew.BackColor = ColorTranslator.FromHtml(ic.iniC.grfRowYellow);
+                //}
+                //else if (row["status_opu_active"].ToString().Equals("3"))
+                //{
+                //    txt1 = "Void " + row["opu_wait_remark"].ToString() + " " + row["form_a_remark"].ToString();
+                //    if (row[ic.ivfDB.lFormaDB.lformA.status_opu_time_modi].ToString().Equals("1"))
+                //    {
+                //        txt1 = txt1 + " มีการเปลี่ยนแปลง เวลา OPU จาก " + row[ic.ivfDB.lFormaDB.lformA.opu_time_modi].ToString() + " -> " + row[ic.ivfDB.lFormaDB.lformA.opu_time].ToString();
+                //    }
+                //    CellNote note = new CellNote(txt1);
+                //    CellRange rg = grfReq.GetCellRange(i, colRqHn);
+                //    rg.UserData = note;
+                //    grfReq.Rows[i].StyleNew.BackColor = ColorTranslator.FromHtml(ic.iniC.grfRowRed);
+                //}
                 i++;
             }
             grfReq.Cols[colRqId].Visible = false;
@@ -409,8 +409,8 @@ namespace clinic_ivf.gui
             grfReq.Cols[colRqLabName].AllowEditing = false;
             grfReq.Cols[colRqHnMale].AllowEditing = false;
             grfReq.Cols[colRqNameMale].AllowEditing = false;
-            grfReq.Cols[colRqHnDonor].AllowEditing = false;
-            grfReq.Cols[colRqNameDonor].AllowEditing = false;
+            //grfReq.Cols[colRqHnDonor].AllowEditing = false;
+            //grfReq.Cols[colRqNameDonor].AllowEditing = false;
             CellNoteManager mgr = new CellNoteManager(grfReq);
             //grfReq.Cols[coldt].Visible = false;
         }
@@ -481,15 +481,19 @@ namespace clinic_ivf.gui
             //grdFlex.Cols[colID].Caption = "no";
             //grfDept.Cols[colCode].Caption = "รหัส";
 
-            grfProc.Cols[colPcOpuNum].Caption = "OPU number";
-            grfProc.Cols[colPcHn].Caption = "HN female";
-            grfProc.Cols[colPcPttName].Caption = "Patient Name";
-            grfProc.Cols[colPcDate].Caption = "OPU Date";
-            grfProc.Cols[colPcRemark].Caption = "Remark";
-
-            grfProc.Cols[colPcHnMale].Caption = "HN Male";
-            grfProc.Cols[colPcNameMale].Caption = "Patient Male";
-            grfProc.Cols[colProceName].Caption = "Procedure";
+            grfProc.Cols[colRqReqNum].Caption = "req number";
+            grfProc.Cols[colRqHn].Caption = "HN";
+            grfProc.Cols[colRqVn].Caption = "VN";
+            grfProc.Cols[colRqName].Caption = "Name";
+            grfProc.Cols[colRqDate].Caption = "Date Req";
+            grfProc.Cols[colRqRemark].Caption = "Remark";
+            grfProc.Cols[colDtrName].Caption = "Doctor";
+            grfProc.Cols[colRqLabName].Caption = "Lab Name";
+            grfProc.Cols[colOPUDate].Caption = " Date";
+            grfProc.Cols[colOPUTime].Caption = " Time";
+            grfProc.Cols[colOPUTimeModi].Caption = "opu time old";
+            grfProc.Cols[colRqHnMale].Caption = "HN male";
+            grfProc.Cols[colRqNameMale].Caption = "Name male";
 
             Color color = ColorTranslator.FromHtml(ic.iniC.grfRowColor);
             //CellRange rg1 = grfBank.GetCellRange(1, colE, grfBank.Rows.Count, colE);
@@ -507,7 +511,7 @@ namespace clinic_ivf.gui
                 i++;
                 if (i == 1) continue;
                 //Row row1 = grfProc.Rows.Add();
-                grfProc[i, colPcId] = row[ic.ivfDB.opuDB.opu.opu_id].ToString();
+                grfProc[i, colRqId] = row[ic.ivfDB.opuDB.opu.opu_id].ToString();
                 grfProc[i, colPcOpuNum] = row[ic.ivfDB.opuDB.opu.opu_code].ToString();
                 grfProc[i, colPcHn] = row[ic.ivfDB.opuDB.opu.hn_female].ToString();
                 grfProc[i, colPcPttName] = row[ic.ivfDB.opuDB.opu.name_female].ToString();
@@ -712,7 +716,7 @@ namespace clinic_ivf.gui
         private void BtnNew_Click(object sender, EventArgs e)
         {
             //throw new NotImplementedException();
-            openLabOPUNew("", "");
+            openLabSpermNew("", "");
         }
         private void setOPU1(String reqid)
         {
@@ -737,26 +741,31 @@ namespace clinic_ivf.gui
         private void openLabOPUAdd(String opdId, String name)
         {
             //FrmLabOPUAdd frm = new FrmLabOPUAdd(ic, "", opdId);
-            FrmLabOPUAdd2 frm = new FrmLabOPUAdd2(ic, "", opdId);
+            FrmLabSpermAdd frm = new FrmLabSpermAdd(ic, "", opdId);
             String txt = "";
             if (!name.Equals(""))
             {
-                txt = "ป้อน LAB OPU " + name;
+                txt = "ป้อน LAB Sperm " + name;
             }
             else
             {
-                txt = "ป้อน LAB OPU ใหม่ ";
+                txt = "ป้อน LAB Sperm ใหม่ ";
             }
             frm.FormBorderStyle = FormBorderStyle.None;
             menu.AddNewTab(frm, txt);
         }
-        private void openLabOPUNew(String reqId, String name)
+        private void openLabSpermNew(String reqId, String name)
         {
             ic.cStf.staff_id = "";
             FrmPasswordConfirm frm1 = new FrmPasswordConfirm(ic);
             frm1.ShowDialog(this);
             if (!ic.cStf.staff_id.Equals(""))
             {
+                //FrmLabSpermAdd frm = new FrmLabSpermAdd(ic,"","");
+                //String txt = "";
+                //txt = "ป้อน LAB Sperm " + name;
+                //frm.FormBorderStyle = FormBorderStyle.None;
+                //menu.AddNewTab(frm, txt);
                 String re = ic.ivfDB.lbReqDB.UpdateStatusRequestProcess(reqId, ic.cStf.staff_id);
                 long chk1 = 0;
                 if (long.TryParse(re, out chk1))
@@ -790,20 +799,20 @@ namespace clinic_ivf.gui
                     }
                     else
                     {
-                        LabFet fet1 = ic.ivfDB.setFET(reqId);
-                        String re1 = ic.ivfDB.fetDB.insert(fet1, ic.cStf.staff_id);
+                        LabSperm fet1 = ic.ivfDB.setSperm(reqId,"2");
+                        String re1 = ic.ivfDB.lspermDB.insert(fet1, ic.cStf.staff_id);
                         if (long.TryParse(re1, out chk1))
                         {
                             //FrmLabOPUAdd frm = new FrmLabOPUAdd(ic, "", re1);
-                            FrmLabFetAdd1 frm = new FrmLabFetAdd1(ic, "", re1);
+                            FrmLabSpermAdd frm = new FrmLabSpermAdd(ic, "", re1);
                             String txt = "";
                             if (!name.Equals(""))
                             {
-                                txt = "ป้อน LAB FET " + name;
+                                txt = "ป้อน LAB Sperm " + name;
                             }
                             else
                             {
-                                txt = "ป้อน LAB FET ใหม่ ";
+                                txt = "ป้อน LAB Sperm ใหม่ ";
                             }
 
                             frm.FormBorderStyle = FormBorderStyle.None;

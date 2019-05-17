@@ -585,9 +585,9 @@ namespace clinic_ivf.gui
                             dtrid = cboDoctor.SelectedItem == null ? "" : ((ComboBoxItem)cboDoctor.SelectedItem).Value;
                             reqid = ic.ivfDB.oJlabdDB.selectByStatusSememAnalysis(txtVnOld.Text);
                             lbReq = ic.ivfDB.setLabRequest(txtNameFeMale.Text, txtVnOld.Text, dtrid, cboRemark.Text, txtHnOld.Text, ic.datetoDB(txtDobFeMale.Text), reqid, "14", txtHnMale.Text, txtNameMale.Text, txtHnDonor.Text, txtNameDonor.Text, txtDonorDob.Text);
-                            lbReq.form_a_id = re;
+                            lbReq.form_a_id = txtID.Text;
                             String re1 = ic.ivfDB.lbReqDB.insertLabRequest(lbReq, txtStfConfirmID.Text);
-                            String re2 = ic.ivfDB.lFormaDB.updateReqIdSememAnalysis(re, re1);
+                            String re2 = ic.ivfDB.lFormaDB.updateReqIdSememAnalysis(txtID.Text, re1);
                         }
                         if (lFormA.req_id_sperm_freezing.Equals("0") && chkSpermFreezing.Checked)
                         {
@@ -595,9 +595,9 @@ namespace clinic_ivf.gui
                             dtrid = cboDoctor.SelectedItem == null ? "" : ((ComboBoxItem)cboDoctor.SelectedItem).Value;
                             reqid = ic.ivfDB.oJlabdDB.selectByStatusSememFreezing(txtVnOld.Text);
                             lbReq = ic.ivfDB.setLabRequest(txtNameFeMale.Text, txtVnOld.Text, dtrid, cboRemark.Text, txtHnOld.Text, ic.datetoDB(txtDobFeMale.Text), reqid, "18", txtHnMale.Text, txtNameMale.Text, txtHnDonor.Text, txtNameDonor.Text, txtDonorDob.Text);
-                            lbReq.form_a_id = re;
+                            lbReq.form_a_id = txtID.Text;
                             String re1 = ic.ivfDB.lbReqDB.insertLabRequest(lbReq, txtStfConfirmID.Text);
-                            String re2 = ic.ivfDB.lFormaDB.updateReqIdSpermFreezing(re, re1);
+                            String re2 = ic.ivfDB.lFormaDB.updateReqIdSpermFreezing(txtID.Text, re1);
                         }
                     }
                     //txtID.Value = (!txtID.Text.Equals("") && re.Equals("1")) ? re : "";        //update

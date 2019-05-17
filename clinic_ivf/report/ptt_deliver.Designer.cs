@@ -319,6 +319,14 @@ namespace clinic_ivf.report {
             
             private global::System.Data.DataColumn columnheight;
             
+            private global::System.Data.DataColumn columnlmp_g;
+            
+            private global::System.Data.DataColumn columnlmp_p;
+            
+            private global::System.Data.DataColumn columnlmp_a;
+            
+            private global::System.Data.DataColumn columnlmp;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public ptt_deliverDataTable() {
@@ -514,6 +522,38 @@ namespace clinic_ivf.report {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn lmp_gColumn {
+                get {
+                    return this.columnlmp_g;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn lmp_pColumn {
+                get {
+                    return this.columnlmp_p;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn lmp_aColumn {
+                get {
+                    return this.columnlmp_a;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn lmpColumn {
+                get {
+                    return this.columnlmp;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -569,7 +609,11 @@ namespace clinic_ivf.report {
                         string doctor_name, 
                         string bw, 
                         string bp, 
-                        string height) {
+                        string height, 
+                        string lmp_g, 
+                        string lmp_p, 
+                        string lmp_a, 
+                        string lmp) {
                 ptt_deliverRow rowptt_deliverRow = ((ptt_deliverRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         ptt_name_t,
@@ -591,7 +635,11 @@ namespace clinic_ivf.report {
                         doctor_name,
                         bw,
                         bp,
-                        height};
+                        height,
+                        lmp_g,
+                        lmp_p,
+                        lmp_a,
+                        lmp};
                 rowptt_deliverRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowptt_deliverRow);
                 return rowptt_deliverRow;
@@ -634,6 +682,10 @@ namespace clinic_ivf.report {
                 this.columnbw = base.Columns["bw"];
                 this.columnbp = base.Columns["bp"];
                 this.columnheight = base.Columns["height"];
+                this.columnlmp_g = base.Columns["lmp_g"];
+                this.columnlmp_p = base.Columns["lmp_p"];
+                this.columnlmp_a = base.Columns["lmp_a"];
+                this.columnlmp = base.Columns["lmp"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -679,6 +731,14 @@ namespace clinic_ivf.report {
                 base.Columns.Add(this.columnbp);
                 this.columnheight = new global::System.Data.DataColumn("height", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnheight);
+                this.columnlmp_g = new global::System.Data.DataColumn("lmp_g", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnlmp_g);
+                this.columnlmp_p = new global::System.Data.DataColumn("lmp_p", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnlmp_p);
+                this.columnlmp_a = new global::System.Data.DataColumn("lmp_a", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnlmp_a);
+                this.columnlmp = new global::System.Data.DataColumn("lmp", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnlmp);
                 this.columnptt_name_t.Caption = "DataColumn1";
                 this.columnhn.Caption = "DataColumn1";
                 this.columnvn.Caption = "DataColumn1";
@@ -1154,6 +1214,70 @@ namespace clinic_ivf.report {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string lmp_g {
+                get {
+                    try {
+                        return ((string)(this[this.tableptt_deliver.lmp_gColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'lmp_g\' in table \'ptt_deliver\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableptt_deliver.lmp_gColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string lmp_p {
+                get {
+                    try {
+                        return ((string)(this[this.tableptt_deliver.lmp_pColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'lmp_p\' in table \'ptt_deliver\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableptt_deliver.lmp_pColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string lmp_a {
+                get {
+                    try {
+                        return ((string)(this[this.tableptt_deliver.lmp_aColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'lmp_a\' in table \'ptt_deliver\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableptt_deliver.lmp_aColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string lmp {
+                get {
+                    try {
+                        return ((string)(this[this.tableptt_deliver.lmpColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'lmp\' in table \'ptt_deliver\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableptt_deliver.lmpColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public bool Isptt_name_tNull() {
                 return this.IsNull(this.tableptt_deliver.ptt_name_tColumn);
             }
@@ -1390,6 +1514,54 @@ namespace clinic_ivf.report {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public void SetheightNull() {
                 this[this.tableptt_deliver.heightColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool Islmp_gNull() {
+                return this.IsNull(this.tableptt_deliver.lmp_gColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void Setlmp_gNull() {
+                this[this.tableptt_deliver.lmp_gColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool Islmp_pNull() {
+                return this.IsNull(this.tableptt_deliver.lmp_pColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void Setlmp_pNull() {
+                this[this.tableptt_deliver.lmp_pColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool Islmp_aNull() {
+                return this.IsNull(this.tableptt_deliver.lmp_aColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void Setlmp_aNull() {
+                this[this.tableptt_deliver.lmp_aColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IslmpNull() {
+                return this.IsNull(this.tableptt_deliver.lmpColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetlmpNull() {
+                this[this.tableptt_deliver.lmpColumn] = global::System.Convert.DBNull;
             }
         }
         

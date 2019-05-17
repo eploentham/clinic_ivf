@@ -159,6 +159,18 @@ namespace clinic_ivf.objdb
             p.req_id = long.TryParse(p.req_id, out chk) ? chk.ToString() : "0";            
 
         }
+        public LabSperm selectByPk1(String copId)
+        {
+            LabSperm lbReq1 = new LabSperm();
+            DataTable dt = new DataTable();
+            String sql = "select lsperm.*,dtr.Name as doctorname " +
+                "From " + lsperm.table + " lsperm " +
+                "Left Join Doctor dtr on dtr.ID = lsperm." + lsperm.doctor_id + " " +                
+                "Where lsperm." + lsperm.pkField + " ='" + copId + "' ";
+            dt = conn.selectData(conn.conn, sql);
+            lbReq1 = setLabSperm(dt);
+            return lbReq1;
+        }
         public DataTable selectByStatusProcess1()
         {
             DataTable dt = new DataTable();
@@ -243,7 +255,7 @@ namespace clinic_ivf.objdb
                     "," + lsperm.morphology_tail_defect + "='" + p.morphology_tail_defect + "'" +
                     "," + lsperm.no_of_vail + "='" + p.no_of_vail + "'" +
                     "," + lsperm.wbc + "='" + p.wbc + "'" +
-                    "," + lsperm.active + "='" + p.active + "' " +
+                    "," + lsperm.active + "='1' " +
                     "," + lsperm.remark + "='" + p.remark + "' " +
                     "," + lsperm.date_create + "=now() " +
                     "," + lsperm.date_modi + "='" + p.date_modi + "' " +
@@ -254,19 +266,19 @@ namespace clinic_ivf.objdb
                     "," + lsperm.ph + "='" + p.ph + "' " +
                     "," + lsperm.status_owner_sperm + "='" + p.status_owner_sperm + "' " +
                     "," + lsperm.status_donor_sperm + "='" + p.status_donor_sperm + "' " +
-                    "," + lsperm.status_fresh_sperm + "='" + p.status_fresh_sperm + "' " +
+                    //"," + lsperm.status_fresh_sperm + "='" + p.status_fresh_sperm + "' " +
                     "," + lsperm.hn_male + "='" + p.hn_male + "' " +
                     "," + lsperm.hn_female + "='" + p.hn_female + "' " +
                     "," + lsperm.name_male + "='" + p.name_male + "' " +
                     "," + lsperm.name_female + "='" + p.name_female + "' " +
-                    "," + lsperm.status_frozen_sperm + "='" + p.status_frozen_sperm + "' " +
+                    //"," + lsperm.status_frozen_sperm + "='" + p.status_frozen_sperm + "' " +
                     "," + lsperm.frozen_sperm_vail + "='" + p.frozen_sperm_vail + "' " +
                     "," + lsperm.doctor_id + "='" + p.doctor_id + "' " +
                     "," + lsperm.status_lab_sperm + "='" + p.status_lab_sperm + "' " +
                     "," + lsperm.req_id + "='" + p.req_id + "' " +                    
                     "," + lsperm.dob_female + "='" + p.dob_female + "' " +
                     "," + lsperm.dob_male + "='" + p.dob_male + "' " +
-                    "," + lsperm.status_lab + "='" + p.status_lab + "' " +
+                    "," + lsperm.status_lab + "='1' " +
                     "";
                 re = conn.ExecuteNonQuery(conn.conn, sql);
             }
@@ -432,6 +444,7 @@ namespace clinic_ivf.objdb
                 vs1.dob_female = dt.Rows[0][lsperm.dob_female].ToString();
                 vs1.dob_male = dt.Rows[0][lsperm.dob_male].ToString();
                 vs1.status_lab = dt.Rows[0][lsperm.status_lab].ToString();
+                vs1.doctorname = dt.Rows[0]["doctorname"].ToString();
             }
             else
             {
@@ -500,6 +513,7 @@ namespace clinic_ivf.objdb
             lforma1.dob_female = "";
             lforma1.dob_male = "";
             lforma1.status_lab = "";
+            lforma1.doctorname = "";
             return lforma1;
         }
     }

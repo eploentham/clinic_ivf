@@ -425,6 +425,32 @@ namespace clinic_ivf.objdb
             opu.dob_female = lbreq.dob_female;
             return opu;
         }
+        public LabSperm setSperm(String reqid, String labsperm)
+        {
+            LabSperm opu = new LabSperm();
+            LabRequest lbreq = new LabRequest();
+            LabFormA lformA = new LabFormA();
+            lbreq = lbReqDB.selectByPk1(reqid);
+            lformA = lFormaDB.selectByVnOld(lbreq.vn);
+            opu.sperm_id = "";
+            opu.sperm_code = "";
+            //opu.embryo_freez_stage = "";
+            //opu.embryoid_freez_position = "";
+            opu.hn_male = lformA.hn_male;
+            opu.hn_female = lbreq.hn_female;
+            opu.name_male = lformA.name_male;
+            opu.name_female = lbreq.name_female;
+            opu.remark = lbreq.remark;
+            opu.dob_female = lformA.dob_female;
+            opu.dob_male = lformA.dob_male;
+            opu.doctor_id = lbreq.doctor_id;
+            opu.status_lab_sperm = labsperm;
+            opu.sperm_date = DateTime.Now.Year.ToString() + "-" + System.DateTime.Now.ToString("MM-dd");
+            opu.req_id = reqid;
+            
+            opu.dob_female = lbreq.dob_female;
+            return opu;
+        }
         public void calIncludeExtraPricePx(String vn)
         {
             String include = "", extra = "";
@@ -909,7 +935,7 @@ namespace clinic_ivf.objdb
                         obilld.Comment = "";
                         obilld.item_id = row["LID"].ToString();
                         obilld.status = "lab";
-                        obilld.pcksid = "";
+                        obilld.pcksid = "0";
                         obildDB.insertBillDetail(obilld, "");
                     }
                 }
@@ -934,7 +960,7 @@ namespace clinic_ivf.objdb
                         obilld.Comment = "";
                         obilld.item_id = row["DUID"].ToString();
                         obilld.status = "drug";
-                        obilld.pcksid = "";
+                        obilld.pcksid = "0";
                         obildDB.insertBillDetail(obilld, "");
                     }
                 }
@@ -960,7 +986,7 @@ namespace clinic_ivf.objdb
                         obilld.Comment = "";
                         obilld.item_id = row["SID"].ToString();
                         obilld.status = "special";
-                        obilld.pcksid = "";
+                        obilld.pcksid = "0";
                         obildDB.insertBillDetail(obilld, "");
                     }
                 }
@@ -991,7 +1017,7 @@ namespace clinic_ivf.objdb
                         obilld.Comment = "";
                         obilld.item_id = row["LID"].ToString();
                         obilld.status = "lab";
-                        obilld.pcksid = "";
+                        obilld.pcksid = "0";
                         obildDB.insertBillDetail(obilld, "");
                     }
                 }
@@ -1016,7 +1042,7 @@ namespace clinic_ivf.objdb
                         obilld.Comment = "";
                         obilld.item_id = row["DUID"].ToString();
                         obilld.status = "drug";
-                        obilld.pcksid = "";
+                        obilld.pcksid = "0";
                         obildDB.insertBillDetail(obilld, "");
                     }
                 }
@@ -1042,7 +1068,7 @@ namespace clinic_ivf.objdb
                         obilld.Comment = "";
                         obilld.item_id = row["SID"].ToString();
                         obilld.status = "special";
-                        obilld.pcksid = "";
+                        obilld.pcksid = "0";
                         obildDB.insertBillDetail(obilld, "");
                     }
                 }

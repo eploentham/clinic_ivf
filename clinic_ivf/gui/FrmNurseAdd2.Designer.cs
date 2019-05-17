@@ -1952,7 +1952,7 @@
             this.c1SplitterPanel1.Size = new System.Drawing.Size(783, 644);
             this.c1SplitterPanel1.TabIndex = 0;
             this.c1SplitterPanel1.Text = "Panel 1";
-            this.c1SplitterPanel1.Width = 790;
+            this.c1SplitterPanel1.Width = 783;
             // 
             // panel8
             // 
@@ -2721,7 +2721,7 @@
             this.c1SplitterPanel4.SizeRatio = 35.421D;
             this.c1SplitterPanel4.TabIndex = 0;
             this.c1SplitterPanel4.Text = "Panel 1";
-            this.c1SplitterPanel4.Width = 553;
+            this.c1SplitterPanel4.Width = 560;
             // 
             // pnAdm
             // 
@@ -2790,7 +2790,7 @@
             this.c1SplitterPanel6.SizeRatio = 21.632D;
             this.c1SplitterPanel6.TabIndex = 0;
             this.c1SplitterPanel6.Text = "Panel 1";
-            this.c1SplitterPanel6.Width = 213;
+            this.c1SplitterPanel6.Width = 220;
             // 
             // pnApmAll
             // 
