@@ -82,9 +82,10 @@ namespace clinic_ivf.objdb
             
             lsperm.status_lab_sperm = "status_lab_sperm";
             lsperm.req_id = "req_id";
+            lsperm.status_lab = "status_lab";
 
             lsperm.pkField = "sperm_id";
-            lsperm.table = "lab_t_form_a";
+            lsperm.table = "lab_t_sperm";
 
         }
         private void chkNull(LabSperm p)
@@ -147,8 +148,8 @@ namespace clinic_ivf.objdb
             
             p.dob_female = p.dob_female == null ? "" : p.dob_female;
             p.dob_male = p.dob_male == null ? "" : p.dob_male;
-            
 
+            p.status_lab = p.status_lab == null ? "0" : p.status_lab;
             p.ph = p.ph == null ? "" : p.ph;
             p.abstinence_day = p.abstinence_day == null ? "" : p.abstinence_day;
             p.abstinence_day = p.abstinence_day == null ? "" : p.abstinence_day;
@@ -157,6 +158,49 @@ namespace clinic_ivf.objdb
             p.doctor_id = long.TryParse(p.doctor_id, out chk) ? chk.ToString() : "0";
             p.req_id = long.TryParse(p.req_id, out chk) ? chk.ToString() : "0";            
 
+        }
+        public DataTable selectByStatusProcess1()
+        {
+            DataTable dt = new DataTable();
+            String sql = "select lsperm." + lsperm.sperm_id + ", lsperm." + lsperm.sperm_code + ",lsperm." + lsperm.hn_female + ",lsperm." + lsperm.name_female 
+                + ",lsperm." + lsperm.sperm_date + ",lsperm." + lsperm.remark + ",lsperm." + lsperm.hn_male + ",lsperm." + lsperm.name_male + "  " +
+                "From " + lsperm.table + " lsperm " +
+                "Left Join Doctor on Doctor.ID = lsperm.doctor_id " +
+                //"Left Join lab_b_procedure on opu.proce_id = lab_b_procedure.proce_id " +
+                "Where lsperm." + lsperm.status_lab + " = '1' and lsperm." + lsperm.active + "='1' " +
+                //"Order By opu." + opu.opu_id + " " +
+                //"Union " +
+                //"select fet.fet_id , fet.fet_code ,fet.hn_female ,fet.name_female,fet.fet_date ,fet.remark, fet.hn_male, fet.name_male, lab_b_procedure.proce_name_t " +
+                //"From lab_t_fet fet  " +
+                //"Left Join Doctor on Doctor.ID = fet.doctor_id " +
+                //"Left Join lab_b_procedure on fet.proce_id = lab_b_procedure.proce_id " +
+                //"Where fet.status_fet ='1' and fet.active + '1' " +
+                //"Order By fet.fet_id  ";
+                "  ";
+            dt = conn.selectData(conn.conn, sql);
+            return dt;
+        }
+        public DataTable selectByStatusFinish(String datestart, String dateend)
+        {
+            DataTable dt = new DataTable();
+            String sql = "select lsperm." + lsperm.sperm_id + ", lsperm." + lsperm.sperm_code + ",lsperm." + lsperm.hn_female + ",lsperm." + lsperm.name_female + ",lsperm."
+                + lsperm.sperm_date + ",lsperm." + lsperm.remark + "," + lsperm.hn_male + "," + lsperm.name_male + " " +
+                "From " + lsperm.table + " lsperm " +
+                "Left Join Doctor on Doctor.ID = lsperm.doctor_id " +
+                //"Left Join lab_b_procedure on opu.proce_id = lab_b_procedure.proce_id " +
+                "Where lsperm." + lsperm.status_lab + " ='2' and lsperm." + lsperm.active + "='1' " +
+                "and lsperm." + lsperm.sperm_date + " >= '" + datestart + "' and lsperm." + lsperm.sperm_date + " <= '" + dateend + "' " +
+            //"Order By opu." + opu.opu_id + " " +
+            //"Union " +
+            //"select fet.fet_id , fet.fet_code ,fet.hn_female ,fet.name_female,fet.fet_date ,fet.remark, fet.hn_male, fet.name_male, lab_b_procedure.proce_name_t " +
+            //"From lab_t_fet fet  " +
+            //"Left Join Doctor on Doctor.ID = fet.doctor_id " +
+            //"Left Join lab_b_procedure on fet.proce_id = lab_b_procedure.proce_id " +
+            //"Where fet.status_fet ='1' and fet.active + '1' " +
+            //"Order By fet.fet_id  ";
+            "  ";
+            dt = conn.selectData(conn.conn, sql);
+            return dt;
         }
         public String insert(LabSperm p, String userId)
         {
@@ -221,7 +265,8 @@ namespace clinic_ivf.objdb
                     "," + lsperm.status_lab_sperm + "='" + p.status_lab_sperm + "' " +
                     "," + lsperm.req_id + "='" + p.req_id + "' " +                    
                     "," + lsperm.dob_female + "='" + p.dob_female + "' " +
-                    "," + lsperm.dob_male + "='" + p.dob_male + "' " +                    
+                    "," + lsperm.dob_male + "='" + p.dob_male + "' " +
+                    "," + lsperm.status_lab + "='" + p.status_lab + "' " +
                     "";
                 re = conn.ExecuteNonQuery(conn.conn, sql);
             }
@@ -295,7 +340,7 @@ namespace clinic_ivf.objdb
                     
                     "," + lsperm.dob_female + "='" + p.dob_female + "' " +
                     "," + lsperm.dob_male + "='" + p.dob_male + "' " +
-                    
+                    "," + lsperm.status_lab + "='" + p.status_lab + "' " +
                 " Where " + lsperm.pkField + " = '" + p.sperm_id + "' "
                 ;
             try
@@ -386,7 +431,7 @@ namespace clinic_ivf.objdb
                 
                 vs1.dob_female = dt.Rows[0][lsperm.dob_female].ToString();
                 vs1.dob_male = dt.Rows[0][lsperm.dob_male].ToString();
-                
+                vs1.status_lab = dt.Rows[0][lsperm.status_lab].ToString();
             }
             else
             {
@@ -454,7 +499,7 @@ namespace clinic_ivf.objdb
             
             lforma1.dob_female = "";
             lforma1.dob_male = "";
-            
+            lforma1.status_lab = "";
             return lforma1;
         }
     }

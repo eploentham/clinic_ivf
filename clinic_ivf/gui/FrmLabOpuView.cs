@@ -535,7 +535,7 @@ namespace clinic_ivf.gui
             grfProc.Cols[colPcNameMale].AllowEditing = false;
             grfProc.Cols[colProceName].AllowEditing = false;
             //grfReq.Cols[coldt].Visible = false;
-            if (grfFinish.Rows.Count > 1)
+            if (grfProc.Rows.Count > 2)
             {
                 FilterRow fr = new FilterRow(grfProc);
                 grfProc.AllowFiltering = true;
@@ -698,7 +698,7 @@ namespace clinic_ivf.gui
             grfFinish.Cols[colPcNameMale].AllowEditing = false;
             grfFinish.Cols[colProceName].AllowEditing = false;
             //grfReq.Cols[coldt].Visible = false;
-            if (grfFinish.Rows.Count > 1)
+            if (grfFinish.Rows.Count > 2)
             {
                 FilterRow fr = new FilterRow(grfFinish);
                 grfFinish.AllowFiltering = true;

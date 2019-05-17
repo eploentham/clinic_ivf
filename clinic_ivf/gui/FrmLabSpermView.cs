@@ -82,7 +82,6 @@ namespace clinic_ivf.gui
             setGrfFinish();
             //initGrfSearch();
         }
-
         private void TxtSearch_KeyUp(object sender, KeyEventArgs e)
         {
             //throw new NotImplementedException();
@@ -255,7 +254,7 @@ namespace clinic_ivf.gui
                 dateend1 = ic.datetoDB(txtDateEnd.Text);
             }
             //dt = ic.ivfDB.lbReqDB.selectByStatusReqAccept();
-            dt = ic.ivfDB.lbReqDB.selectByStatusUnAccept3(datestart1, dateend1);
+            dt = ic.ivfDB.lbReqDB.selectBySpermStatusUnAccept(datestart1, dateend1);
             //grfExpn.Rows.Count = dt.Rows.Count + 1;
             grfReq.Rows.Count = 1;
             grfReq.Cols.Count = 18;
@@ -449,7 +448,7 @@ namespace clinic_ivf.gui
             grfProc.Clear();
             DataTable dt = new DataTable();
 
-            dt = ic.ivfDB.opuDB.selectByStatusProcess1();
+            dt = ic.ivfDB.lspermDB.selectByStatusProcess1();
             //grfExpn.Rows.Count = dt.Rows.Count + 1;
             if (dt.Rows.Count <= 1)
             {
@@ -533,7 +532,7 @@ namespace clinic_ivf.gui
             grfProc.Cols[colPcNameMale].AllowEditing = false;
             grfProc.Cols[colProceName].AllowEditing = false;
             //grfReq.Cols[coldt].Visible = false;
-            if (grfFinish.Rows.Count > 1)
+            if (grfProc.Rows.Count > 2)
             {
                 FilterRow fr = new FilterRow(grfProc);
                 grfProc.AllowFiltering = true;
@@ -612,7 +611,7 @@ namespace clinic_ivf.gui
             String datestart = "", dateend = "";
             datestart = ic.datetoDB(txtFiDateStart.Text);
             dateend = ic.datetoDB(txtFiDateEnd.Text);
-            dt = ic.ivfDB.opuDB.selectByStatusFinish(datestart, dateend);
+            dt = ic.ivfDB.lspermDB.selectByStatusFinish(datestart, dateend);
             //grfExpn.Rows.Count = dt.Rows.Count + 1;
             if (dt.Rows.Count <= 1)
             {
@@ -696,7 +695,7 @@ namespace clinic_ivf.gui
             grfFinish.Cols[colPcNameMale].AllowEditing = false;
             grfFinish.Cols[colProceName].AllowEditing = false;
             //grfReq.Cols[coldt].Visible = false;
-            if (grfFinish.Rows.Count > 1)
+            if (grfFinish.Rows.Count > 2)
             {
                 FilterRow fr = new FilterRow(grfFinish);
                 grfFinish.AllowFiltering = true;
