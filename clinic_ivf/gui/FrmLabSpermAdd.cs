@@ -285,7 +285,8 @@ namespace clinic_ivf.gui
             txtApproveResult.Value = lsperm.staff_id_approve;
             txtApproveDate.Value = lsperm.date_approve;
             //txtSpermTime.Value = lsperm.time;
-
+            ic.ivfDB.lspermDB.setCboRemark(cboRemark);
+            ic.setC1ComboByName(cboRemark, lsperm.remark);
         }
         private void setControlSpermFreezing()
         {
@@ -301,6 +302,8 @@ namespace clinic_ivf.gui
             ic.setC1Combo(cboSfAppearance, lsperm.appearance);
             ic.setC1Combo(cboSfLiquefaction, lsperm.liquefaction);
             ic.setC1Combo(cboSfViscosity, lsperm.viscosity);
+            ic.setC1Combo(cboSfEmbryologistAppv, lsperm.staff_id_approve);
+            ic.setC1Combo(cboSfEmbryologistReport, lsperm.staff_id_report);
 
             txtSfSpermDate.Value = lsperm.sperm_date;
             txtSfAbstinenceday.Value = lsperm.abstinence_day;
@@ -329,7 +332,8 @@ namespace clinic_ivf.gui
             txtSfApproveResult.Value = lsperm.staff_id_approve;
             txtSfApproveDate.Value = lsperm.date_approve;
             //txtSpermTime.Value = lsperm.time;
-
+            ic.ivfDB.lspermDB.setCboRemark(cboSfRemark);
+            ic.setC1ComboByName(cboSfRemark, lsperm.remark);
         }
         private void setControlPesa()
         {
@@ -373,7 +377,8 @@ namespace clinic_ivf.gui
             txtPeApproveResult.Value = lsperm.staff_id_approve;
             txtPeApproveDate.Value = lsperm.date_approve;
             //txtSpermTime.Value = lsperm.time;
-
+            ic.ivfDB.lspermDB.setCboRemark(cboPeRemark);
+            ic.setC1ComboByName(cboPeRemark, lsperm.remark);
         }
         private void setControlIui()
         {
@@ -437,6 +442,8 @@ namespace clinic_ivf.gui
             txtIuiMotility3Post.Value = lsperm.post_motility_rate_3;
             txtIuiMotility2Post.Value = lsperm.post_motility_rate_2;
             txtIuiMotilityPost.Value = lsperm.post_motility;
+            ic.ivfDB.lspermDB.setCboRemark(cboIuiRemark);
+            ic.setC1ComboByName(cboIuiRemark, lsperm.remark);
         }
         private void setSperm()
         {
@@ -483,6 +490,7 @@ namespace clinic_ivf.gui
             lsperm.staff_id_approve = cboEmbryologistAppv.SelectedItem == null ? "0" : ((ComboBoxItem)cboEmbryologistAppv.SelectedItem).Value;
             lsperm.date_approve = ic.datetoDB(txtApproveDate.Text);
             lsperm.date_report = ic.datetoDB(txtReportDate.Text);
+            lsperm.remark = cboSfRemark.Text;
         }
         private void setSpermFreezing()
         {
@@ -525,10 +533,11 @@ namespace clinic_ivf.gui
             lsperm.morphology_tail_defect = txtSfTail.Text;
             lsperm.staff_id_approve = txtSfApproveResult.Text;
             lsperm.date_approve = txtSfApproveDate.Text;
-            lsperm.staff_id_report = cboEmbryologistReport.SelectedItem == null ? "0" : ((ComboBoxItem)cboEmbryologistReport.SelectedItem).Value;
-            lsperm.staff_id_approve = cboEmbryologistAppv.SelectedItem == null ? "0" : ((ComboBoxItem)cboEmbryologistAppv.SelectedItem).Value;
+            lsperm.staff_id_report = cboSfEmbryologistReport.SelectedItem == null ? "0" : ((ComboBoxItem)cboSfEmbryologistReport.SelectedItem).Value;
+            lsperm.staff_id_approve = cboSfEmbryologistAppv.SelectedItem == null ? "0" : ((ComboBoxItem)cboSfEmbryologistAppv.SelectedItem).Value;
             lsperm.date_approve = ic.datetoDB(txtSfApproveDate.Text);
             lsperm.date_report = ic.datetoDB(txtSfReportDate.Text);
+            lsperm.remark = cboSfRemark.Text;
         }
         private void setSpermPesa()
         {
@@ -575,6 +584,7 @@ namespace clinic_ivf.gui
             lsperm.staff_id_approve = cboEmbryologistAppv.SelectedItem == null ? "0" : ((ComboBoxItem)cboEmbryologistAppv.SelectedItem).Value;
             lsperm.date_approve = ic.datetoDB(txtPeApproveDate.Text);
             lsperm.date_report = ic.datetoDB(txtPeReportDate.Text);
+            lsperm.remark = cboPeRemark.Text;
         }
         private void setSpermIui()
         {
@@ -641,6 +651,7 @@ namespace clinic_ivf.gui
             lsperm.post_motility_rate_3 = txtIuiMotility3Post.Text;
             lsperm.post_motility_rate_2 = txtIuiMotility2Post.Text;
             lsperm.post_motility = txtIuiMotilityPost.Text;
+            lsperm.remark = cboIuiRemark.Text;
         }
         private void setTheme()
         {

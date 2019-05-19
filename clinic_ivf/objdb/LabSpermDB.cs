@@ -1,4 +1,5 @@
-﻿using clinic_ivf.object1;
+﻿using C1.Win.C1Input;
+using clinic_ivf.object1;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -260,6 +261,38 @@ namespace clinic_ivf.objdb
             "  ";
             dt = conn.selectData(conn.conn, sql);
             return dt;
+        }
+        public DataTable selectDistinctByRemark()
+        {
+            DataTable dt = new DataTable();
+            String sql = "select distinct lsperm.remark " +
+                "From " + lsperm.table + " lsperm " +
+                "Where lsperm." + lsperm.active + "='1' ";
+            dt = conn.selectData(conn.conn, sql);
+            return dt;
+        }
+        public C1ComboBox setCboRemark(C1ComboBox c)
+        {
+            ComboBoxItem item = new ComboBoxItem();
+            DataTable dt = selectDistinctByRemark();
+            //String aaa = "";
+            ComboBoxItem item1 = new ComboBoxItem();
+            item1.Text = "";
+            item1.Value = "";
+            c.Items.Clear();
+            c.Items.Add(item1);
+            //for (int i = 0; i < dt.Rows.Count; i++)
+            int i = 0;
+            foreach (DataRow row in dt.Rows)
+            {
+                item = new ComboBoxItem();
+                item.Text = row[lsperm.remark].ToString();
+                item.Value = i.ToString();
+
+                c.Items.Add(item);
+                i++;
+            }
+            return c;
         }
         public String insert(LabSperm p, String userId)
         {
