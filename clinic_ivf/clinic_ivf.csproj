@@ -795,6 +795,14 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Lab_Form_Day1.xsd</DependentUpon>
     </Compile>
+    <Compile Include="report\lab_sperm.cs">
+      <DependentUpon>lab_sperm.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="report\lab_sperm.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>lab_sperm.xsd</DependentUpon>
+    </Compile>
     <Compile Include="report\OPDcardOLD.cs">
       <DependentUpon>OPDcardOLD.xsd</DependentUpon>
     </Compile>
@@ -1177,6 +1185,17 @@
     </None>
     <None Include="report\Lab_Form_Day1.xss">
       <DependentUpon>Lab_Form_Day1.xsd</DependentUpon>
+    </None>
+    <None Include="report\lab_sperm.xsc">
+      <DependentUpon>lab_sperm.xsd</DependentUpon>
+    </None>
+    <None Include="report\lab_sperm.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>lab_sperm.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="report\lab_sperm.xss">
+      <DependentUpon>lab_sperm.xsd</DependentUpon>
     </None>
     <None Include="report\OPDcardOLD.xsc">
       <DependentUpon>OPDcardOLD.xsd</DependentUpon>
@@ -1880,6 +1899,8 @@
     <Content Include="RDNIDlib.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <None Include="Resources\spermAnaPic1.jpg" />
+    <None Include="Resources\spermAnaPic2.jpg" />
     <None Include="Resources\arrow_true_24.jpg" />
     <None Include="Resources\arrow_true1.jpg" />
     <None Include="Resources\arrow_true.jpg" />

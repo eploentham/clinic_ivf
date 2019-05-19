@@ -93,5 +93,7 @@ namespace clinic_ivf.object1
         public String staff_req_id { get; set; }
         public String req_id_semem_analysis { get; set; }
         public String req_id_sperm_freezing { get; set; }
+        public String status_sperm_pesa { get; set; }
+        public String status_sperm_iui { get; set; }
     }
 }

@@ -83,6 +83,22 @@ namespace clinic_ivf.objdb
             lsperm.status_lab_sperm = "status_lab_sperm";
             lsperm.req_id = "req_id";
             lsperm.status_lab = "status_lab";
+            lsperm.sperm_analysis_date_start = "sperm_analysis_date_start";
+            lsperm.spern_freezing_date_start = "spern_freezing_date_start";
+            lsperm.pasa_tese_date = "pasa_tese_date";
+            lsperm.iui_date = "iui_date";
+            lsperm.form_a_id = "form_a_id";
+            lsperm.ejaculation_time = "ejaculation_time";
+            lsperm.post_count = "post_count";
+            lsperm.post_motile = "post_motile";
+            lsperm.post_motility_rate_1 = "post_motility_rate_1";
+            lsperm.post_motility_rate_2 = "post_motility_rate_2";
+            lsperm.post_motility_rate_3 = "post_motility_rate_3";
+            lsperm.post_motility_rate_4 = "post_motility_rate_4";
+            lsperm.post_total_count = "post_total_count";
+            lsperm.post_total_motile = "post_total_motile";
+            lsperm.post_volume1 = "post_volume1";
+            lsperm.post_motility = "post_motility";
 
             lsperm.pkField = "sperm_id";
             lsperm.table = "lab_t_sperm";
@@ -153,11 +169,41 @@ namespace clinic_ivf.objdb
             p.ph = p.ph == null ? "" : p.ph;
             p.abstinence_day = p.abstinence_day == null ? "" : p.abstinence_day;
             p.abstinence_day = p.abstinence_day == null ? "" : p.abstinence_day;
-            
+            p.sperm_analysis_date_start = p.sperm_analysis_date_start == null ? "" : p.sperm_analysis_date_start;
+            p.spern_freezing_date_start = p.spern_freezing_date_start == null ? "" : p.spern_freezing_date_start;
+            p.pasa_tese_date = p.pasa_tese_date == null ? "" : p.pasa_tese_date;
+            p.iui_date = p.iui_date == null ? "" : p.iui_date;
+            p.recive_time = p.recive_time == null ? "" : p.recive_time;
+            p.examination_time = p.examination_time == null ? "" : p.examination_time;
+            p.finish_time = p.finish_time == null ? "" : p.finish_time;
+            p.ejaculation_time = p.ejaculation_time == null ? "" : p.ejaculation_time;
+            p.no_of_vail = p.no_of_vail == null ? "" : p.no_of_vail;
+            p.post_count = p.post_count == null ? "" : p.post_count;
+            p.post_motile = p.post_motile == null ? "" : p.post_motile;
+            p.post_motility_rate_1 = p.post_motility_rate_1 == null ? "" : p.post_motility_rate_1;
+            p.post_motility_rate_2 = p.post_motility_rate_2 == null ? "" : p.post_motility_rate_2;
+            p.post_motility_rate_3 = p.post_motility_rate_3 == null ? "" : p.post_motility_rate_3;
+            p.post_motility_rate_4 = p.post_motility_rate_4 == null ? "" : p.post_motility_rate_4;
+            p.post_total_count = p.post_total_count == null ? "" : p.post_total_count;
+            p.post_total_motile = p.post_total_motile == null ? "" : p.post_total_motile;
+            p.post_volume1 = p.post_volume1 == null ? "" : p.post_volume1;
+            p.post_motility = p.post_motility == null ? "" : p.post_motility;
 
             p.doctor_id = long.TryParse(p.doctor_id, out chk) ? chk.ToString() : "0";
-            p.req_id = long.TryParse(p.req_id, out chk) ? chk.ToString() : "0";            
-
+            p.req_id = long.TryParse(p.req_id, out chk) ? chk.ToString() : "0";
+            p.form_a_id = long.TryParse(p.form_a_id, out chk) ? chk.ToString() : "0";
+        }
+        public DataTable selectByPk(String copId)
+        {
+            LabSperm lbReq1 = new LabSperm();
+            DataTable dt = new DataTable();
+            String sql = "select lsperm.*,dtr.Name as doctorname " +
+                "From " + lsperm.table + " lsperm " +
+                "Left Join Doctor dtr on dtr.ID = lsperm." + lsperm.doctor_id + " " +
+                "Where lsperm." + lsperm.pkField + " ='" + copId + "' ";
+            dt = conn.selectData(conn.conn, sql);
+            
+            return dt;
         }
         public LabSperm selectByPk1(String copId)
         {
@@ -175,7 +221,8 @@ namespace clinic_ivf.objdb
         {
             DataTable dt = new DataTable();
             String sql = "select lsperm." + lsperm.sperm_id + ", lsperm." + lsperm.sperm_code + ",lsperm." + lsperm.hn_female + ",lsperm." + lsperm.name_female 
-                + ",lsperm." + lsperm.sperm_date + ",lsperm." + lsperm.remark + ",lsperm." + lsperm.hn_male + ",lsperm." + lsperm.name_male + "  " +
+                + ",lsperm." + lsperm.sperm_date + ",lsperm." + lsperm.remark + ",lsperm." + lsperm.hn_male + ",lsperm." + lsperm.name_male + ", Doctor.Name as dtr_name  " +
+                ",lsperm." + lsperm.sperm_analysis_date_start + ",lsperm." + lsperm.spern_freezing_date_start + ",lsperm." + lsperm.pasa_tese_date + ",lsperm." + lsperm.iui_date + "," + lsperm.status_lab_sperm + "  " +
                 "From " + lsperm.table + " lsperm " +
                 "Left Join Doctor on Doctor.ID = lsperm.doctor_id " +
                 //"Left Join lab_b_procedure on opu.proce_id = lab_b_procedure.proce_id " +
@@ -196,7 +243,7 @@ namespace clinic_ivf.objdb
         {
             DataTable dt = new DataTable();
             String sql = "select lsperm." + lsperm.sperm_id + ", lsperm." + lsperm.sperm_code + ",lsperm." + lsperm.hn_female + ",lsperm." + lsperm.name_female + ",lsperm."
-                + lsperm.sperm_date + ",lsperm." + lsperm.remark + "," + lsperm.hn_male + "," + lsperm.name_male + " " +
+                + lsperm.sperm_date + ",lsperm." + lsperm.remark + "," + lsperm.hn_male + "," + lsperm.name_male + "," + lsperm.status_lab_sperm + " " +
                 "From " + lsperm.table + " lsperm " +
                 "Left Join Doctor on Doctor.ID = lsperm.doctor_id " +
                 //"Left Join lab_b_procedure on opu.proce_id = lab_b_procedure.proce_id " +
@@ -266,7 +313,7 @@ namespace clinic_ivf.objdb
                     "," + lsperm.ph + "='" + p.ph + "' " +
                     "," + lsperm.status_owner_sperm + "='" + p.status_owner_sperm + "' " +
                     "," + lsperm.status_donor_sperm + "='" + p.status_donor_sperm + "' " +
-                    //"," + lsperm.status_fresh_sperm + "='" + p.status_fresh_sperm + "' " +
+                    //"," + lsperm.dob_female + "='" + p.dob_female + "' " +
                     "," + lsperm.hn_male + "='" + p.hn_male + "' " +
                     "," + lsperm.hn_female + "='" + p.hn_female + "' " +
                     "," + lsperm.name_male + "='" + p.name_male + "' " +
@@ -279,6 +326,25 @@ namespace clinic_ivf.objdb
                     "," + lsperm.dob_female + "='" + p.dob_female + "' " +
                     "," + lsperm.dob_male + "='" + p.dob_male + "' " +
                     "," + lsperm.status_lab + "='1' " +
+                    "," + lsperm.sperm_analysis_date_start + "='" + p.sperm_analysis_date_start + "' " +
+                    "," + lsperm.spern_freezing_date_start + "='" + p.spern_freezing_date_start + "' " +
+                    "," + lsperm.pasa_tese_date + "='" + p.pasa_tese_date + "' " +
+                    "," + lsperm.iui_date + "='" + p.iui_date + "' " +
+                    "," + lsperm.form_a_id + "='" + p.form_a_id + "' " +
+                    "," + lsperm.recive_time + "='" + p.recive_time + "' " +
+                    "," + lsperm.examination_time + "='" + p.examination_time + "' " +
+                    //"," + lsperm.finish_time + "='" + p.finish_time + "' " +
+                    "," + lsperm.ejaculation_time + "='" + p.ejaculation_time + "' " +
+                    "," + lsperm.post_count + "='" + p.post_count + "' " +
+                    "," + lsperm.post_motile + "='" + p.post_motile + "' " +
+                    "," + lsperm.post_motility_rate_1 + "='" + p.post_motility_rate_1 + "' " +
+                    "," + lsperm.post_motility_rate_2 + "='" + p.post_motility_rate_2 + "' " +
+                    "," + lsperm.post_motility_rate_3 + "='" + p.post_motility_rate_3 + "' " +
+                    "," + lsperm.post_motility_rate_4 + "='" + p.post_motility_rate_4 + "' " +
+                    "," + lsperm.post_total_count + "='" + p.post_total_count + "' " +
+                    "," + lsperm.post_total_motile + "='" + p.post_total_motile + "' " +
+                    "," + lsperm.post_volume1 + "='" + p.post_volume1 + "' " +
+                    "," + lsperm.post_motility + "='" + p.post_motility + "' " +
                     "";
                 re = conn.ExecuteNonQuery(conn.conn, sql);
             }
@@ -353,6 +419,25 @@ namespace clinic_ivf.objdb
                     "," + lsperm.dob_female + "='" + p.dob_female + "' " +
                     "," + lsperm.dob_male + "='" + p.dob_male + "' " +
                     "," + lsperm.status_lab + "='" + p.status_lab + "' " +
+                    "," + lsperm.sperm_analysis_date_start + "='" + p.sperm_analysis_date_start + "' " +
+                    "," + lsperm.spern_freezing_date_start + "='" + p.spern_freezing_date_start + "' " +
+                    "," + lsperm.pasa_tese_date + "='" + p.pasa_tese_date + "' " +
+                    "," + lsperm.iui_date + "='" + p.iui_date + "' " +
+                    "," + lsperm.recive_time + "='" + p.recive_time + "' " +
+                    "," + lsperm.examination_time + "='" + p.examination_time + "' " +
+                    "," + lsperm.finish_time + "='" + p.finish_time + "' " +
+                    "," + lsperm.ejaculation_time + "='" + p.ejaculation_time + "' " +
+                    "," + lsperm.no_of_vail + "='" + p.no_of_vail + "' " +
+                    "," + lsperm.post_count + "='" + p.post_count + "' " +
+                    "," + lsperm.post_motile + "='" + p.post_motile + "' " +
+                    "," + lsperm.post_motility_rate_1 + "='" + p.post_motility_rate_1 + "' " +
+                    "," + lsperm.post_motility_rate_2 + "='" + p.post_motility_rate_2 + "' " +
+                    "," + lsperm.post_motility_rate_3 + "='" + p.post_motility_rate_3 + "' " +
+                    "," + lsperm.post_motility_rate_4 + "='" + p.post_motility_rate_4 + "' " +
+                    "," + lsperm.post_total_count + "='" + p.post_total_count + "' " +
+                    "," + lsperm.post_total_motile + "='" + p.post_total_motile + "' " +
+                    "," + lsperm.post_volume1 + "='" + p.post_volume1 + "' " +
+                    "," + lsperm.post_motility + "='" + p.post_motility + "' " +
                 " Where " + lsperm.pkField + " = '" + p.sperm_id + "' "
                 ;
             try
@@ -445,6 +530,26 @@ namespace clinic_ivf.objdb
                 vs1.dob_male = dt.Rows[0][lsperm.dob_male].ToString();
                 vs1.status_lab = dt.Rows[0][lsperm.status_lab].ToString();
                 vs1.doctorname = dt.Rows[0]["doctorname"].ToString();
+                vs1.sperm_analysis_date_start = dt.Rows[0][lsperm.sperm_analysis_date_start].ToString();
+                vs1.spern_freezing_date_start = dt.Rows[0][lsperm.spern_freezing_date_start].ToString();
+                vs1.pasa_tese_date = dt.Rows[0][lsperm.pasa_tese_date].ToString();
+                vs1.iui_date = dt.Rows[0][lsperm.iui_date].ToString();
+                vs1.form_a_id = dt.Rows[0][lsperm.form_a_id].ToString();
+                vs1.recive_time = dt.Rows[0][lsperm.recive_time].ToString();
+                vs1.examination_time = dt.Rows[0][lsperm.examination_time].ToString();
+                vs1.finish_time = dt.Rows[0][lsperm.finish_time].ToString();
+                vs1.ejaculation_time = dt.Rows[0][lsperm.ejaculation_time].ToString();
+                vs1.no_of_vail = dt.Rows[0][lsperm.no_of_vail].ToString();
+                vs1.post_count = dt.Rows[0][lsperm.post_count].ToString();
+                vs1.post_motile = dt.Rows[0][lsperm.post_motile].ToString();
+                vs1.post_motility_rate_1 = dt.Rows[0][lsperm.post_motility_rate_1].ToString();
+                vs1.post_motility_rate_2 = dt.Rows[0][lsperm.post_motility_rate_2].ToString();
+                vs1.post_motility_rate_3 = dt.Rows[0][lsperm.post_motility_rate_3].ToString();
+                vs1.post_motility_rate_4 = dt.Rows[0][lsperm.post_motility_rate_4].ToString();
+                vs1.post_total_count = dt.Rows[0][lsperm.post_total_count].ToString();
+                vs1.post_total_motile = dt.Rows[0][lsperm.post_total_motile].ToString();
+                vs1.post_volume1 = dt.Rows[0][lsperm.post_volume1].ToString();
+                vs1.post_motility = dt.Rows[0][lsperm.post_motility].ToString();
             }
             else
             {
@@ -514,6 +619,26 @@ namespace clinic_ivf.objdb
             lforma1.dob_male = "";
             lforma1.status_lab = "";
             lforma1.doctorname = "";
+            lforma1.sperm_analysis_date_start = "";
+            lforma1.spern_freezing_date_start = "";
+            lforma1.pasa_tese_date = "";
+            lforma1.iui_date = "";
+            lforma1.form_a_id = "";
+            lforma1.recive_time = "";
+            lforma1.examination_time = "";
+            lforma1.finish_time = "";
+            lforma1.ejaculation_time = "";
+            lforma1.no_of_vail = "";
+            lforma1.post_count = "";
+            lforma1.post_motile = "";
+            lforma1.post_motility_rate_1 = "";
+            lforma1.post_motility_rate_2 = "";
+            lforma1.post_motility_rate_3 = "";
+            lforma1.post_motility_rate_4 = "";
+            lforma1.post_total_count = "";
+            lforma1.post_total_motile = "";
+            lforma1.post_volume1 = "";
+            lforma1.post_motility = "";
             return lforma1;
         }
     }

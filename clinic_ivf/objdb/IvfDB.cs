@@ -447,8 +447,13 @@ namespace clinic_ivf.objdb
             opu.status_lab_sperm = labsperm;
             opu.sperm_date = DateTime.Now.Year.ToString() + "-" + System.DateTime.Now.ToString("MM-dd");
             opu.req_id = reqid;
-            
-            opu.dob_female = lbreq.dob_female;
+            opu.sperm_analysis_date_start = lformA.sperm_analysis_date_start;
+            opu.spern_freezing_date_start = lformA.spern_freezing_date_start;
+            opu.iui_date = lformA.iui_date;
+            opu.pasa_tese_date = lformA.pasa_tese_date;
+            opu.form_a_id = lformA.form_a_id;
+
+            //opu.dob_female = lbreq.dob_female;
             return opu;
         }
         public void calIncludeExtraPricePx(String vn)

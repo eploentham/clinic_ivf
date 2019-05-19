@@ -24,7 +24,7 @@ namespace clinic_ivf.gui
         Font fEdit, fEditB;
         Color bg, fc;
         Font ff, ffB;
-        int colRqId = 1, colOPUDate = 2, colOPUTime = 3, colRqLabName = 4, colRqHnMale = 5, colRqNameMale = 6, colRqHn = 7, colRqName =8, colDtrName = 9, colRqRemark = 10, colRqReqNum = 11, colRqDate = 12, colRqVn = 13, colOpuId = 14, colOPUTimeModi = 15;
+        int colRqId = 1, colOPUDate = 2, colOPUTime = 3, colRqLabName = 4, colRqHnMale = 5, colRqNameMale = 6, colRqHn = 7, colRqName =8, colDtrName = 9, colRqRemark = 10, colRqReqNum = 11, colRqDate = 12, colRqVn = 13, colOpuId = 14, colRqStatusSperm = 15;
         //int colPcId = 1, colPcOpuNum = 2, colPcHn = 3, colPcPttName = 4, colPcDate = 5, colPcRemark = 6;
         int colPcId = 1, colPcDate = 2, colPcHnMale = 3, colPcNameMale = 4, colPcHn = 5, colPcPttName = 6, colProceName = 7, colPcRemark = 8, colPcOpuNum = 9;
         int colFiId = 1, colFiDate = 2, colFiHnMale = 3, colFiNameMale = 4, colFiHn = 5, colFiPttName = 6, colFiProceName = 7, colFiRemark = 8, colFiOpuNum = 9;
@@ -176,11 +176,11 @@ namespace clinic_ivf.gui
             grfReq.AfterRowColChange += GrfReq_AfterRowColChange;
             grfReq.DoubleClick += GrfReq_DoubleClick;
             //grfExpnC.CellChanged += new C1.Win.C1FlexGrid.RowColEventHandler(this.grfDept_CellChanged);
-            ContextMenu menuGw = new ContextMenu();
-            menuGw.MenuItems.Add("ป้อน LAB OPU/FET", new EventHandler(ContextMenu_edit));
-            menuGw.MenuItems.Add("รับทราบการเปลี่ยนแปลงเวลา", new EventHandler(ContextMenu_Gw_time_modi));
-            //menuGw.MenuItems.Add("&ยกเลิก", new EventHandler(ContextMenu_Gw_Cancel));
-            grfReq.ContextMenu = menuGw;
+            //ContextMenu menuGw = new ContextMenu();
+            //menuGw.MenuItems.Add("ป้อน LAB OPU/FET", new EventHandler(ContextMenu_edit));
+            //menuGw.MenuItems.Add("รับทราบการเปลี่ยนแปลงเวลา", new EventHandler(ContextMenu_Gw_time_modi));
+            ////menuGw.MenuItems.Add("&ยกเลิก", new EventHandler(ContextMenu_Gw_Cancel));
+            //grfReq.ContextMenu = menuGw;
             gB.Controls.Add(grfReq);
 
             theme1.SetTheme(grfReq, "Office2010Blue");
@@ -207,7 +207,7 @@ namespace clinic_ivf.gui
             String chk = "", name = "", id = "";
 
             id = grfReq[grfReq.Row, colRqId] != null ? grfReq[grfReq.Row, colRqId].ToString() : "";
-            chk = grfReq[grfReq.Row, colRqReqNum] != null ? grfReq[grfReq.Row, colRqReqNum].ToString() : "";
+            chk = grfReq[grfReq.Row, colRqStatusSperm] != null ? grfReq[grfReq.Row, colRqStatusSperm].ToString() : "";
             name = grfReq[grfReq.Row, colRqName] != null ? grfReq[grfReq.Row, colRqName].ToString() : "";
             //if (MessageBox.Show("ต้องการ ป้อน LAB OPU  \n  req number " + chk+" \n name "+ name, "", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == DialogResult.OK)
             //{
@@ -215,7 +215,7 @@ namespace clinic_ivf.gui
             Cursor curOld;
             curOld = this.Cursor;
             this.Cursor = Cursors.WaitCursor;
-            openLabSpermNew(id, name);
+            openLabSpermNew(id, name, chk.Equals("2") ? " Analysis " : chk.Equals("1") ? " Freezing " : chk.Equals("3") ? " PESA " : " IUI ");
             setGrfReq();
             setGrfProc();
             this.Cursor = curOld;
@@ -268,16 +268,16 @@ namespace clinic_ivf.gui
 
             grfReq.Cols[colRqHn].Width = 100;
             grfReq.Cols[colRqVn].Width = 120;
-            grfReq.Cols[colRqName].Width = 280;
+            grfReq.Cols[colRqName].Width = 200;
             grfReq.Cols[colRqDate].Width = 100;
             grfReq.Cols[colDtrName].Width = 200;
             grfReq.Cols[colRqRemark].Width = 200;
-            grfReq.Cols[colRqLabName].Width = 80;
+            grfReq.Cols[colRqLabName].Width = 120;
             grfReq.Cols[colOPUDate].Width = 100;
             grfReq.Cols[colOPUTime].Width = 70;
-            grfReq.Cols[colOPUTimeModi].Width = 70;
+            grfReq.Cols[colRqStatusSperm].Width = 70;
             grfReq.Cols[colRqHnMale].Width = 100;
-            grfReq.Cols[colRqNameMale].Width = 280;
+            grfReq.Cols[colRqNameMale].Width = 200;
             //grfReq.Cols[colRqHnDonor].Width = 100;
             //grfReq.Cols[colRqNameDonor].Width = 280;
             grfReq.ShowCursor = true;
@@ -294,7 +294,7 @@ namespace clinic_ivf.gui
             grfReq.Cols[colRqLabName].Caption = "Lab Name";
             grfReq.Cols[colOPUDate].Caption = " Date";
             grfReq.Cols[colOPUTime].Caption = " Time";
-            grfReq.Cols[colOPUTimeModi].Caption = "opu time old";
+            grfReq.Cols[colRqStatusSperm].Caption = "status sperm";
             grfReq.Cols[colRqHnMale].Caption = "HN male";
             grfReq.Cols[colRqNameMale].Caption = "Name male";
             //grfReq.Cols[colRqHnDonor].Caption = "HN donor";
@@ -318,10 +318,18 @@ namespace clinic_ivf.gui
                 row1[colRqRemark] = row["form_a_remark"].ToString();
                 row1[colOPUDate] = ic.datetoShow(row[ic.ivfDB.lFormaDB.lformA.sperm_analysis_date_start].ToString());
                 row1[colOPUTime] = ic.timetoShow(row[ic.ivfDB.lFormaDB.lformA.sperm_analysis_date_start].ToString());
-                row1[colOPUTimeModi] = row[ic.ivfDB.lFormaDB.lformA.opu_time_modi].ToString();
+                //row1[colRqStatusSperm] = row[ic.ivfDB.lbReqDB.lbReq.sta].ToString();
                 row1[colRqLabName] = row["LName"].ToString();
                 row1[colRqHnMale] = row["hn_male"].ToString();
                 row1[colRqNameMale] = row["name_male"].ToString();
+                //row1[colRqStatusSperm] = row["item_id"].ToString().Equals("14") ? "Sperm Analysis" 
+                //    : row["item_id"].ToString().Equals("18") ? "Sperm Freezing"
+                //    : row["item_id"].ToString().Equals("66") ? "PESA/TESE"
+                //    : row["item_id"].ToString().Equals("88") ? "IUI" : "";
+                row1[colRqStatusSperm] = row["item_id"].ToString().Equals("14") ? "2"
+                    : row["item_id"].ToString().Equals("18") ? "1"
+                    : row["item_id"].ToString().Equals("66") ? "3"
+                    : row["item_id"].ToString().Equals("88") ? "4" : "";
                 //row1[colRqHnDonor] = row["hn_donor"].ToString();
                 //row1[colRqNameDonor] = row["name_donor"].ToString();
                 if (row["LName"].ToString().Trim().Equals("OPU"))
@@ -405,7 +413,7 @@ namespace clinic_ivf.gui
             grfReq.Cols[colRqRemark].AllowEditing = false;
             grfReq.Cols[colOPUDate].AllowEditing = false;
             grfReq.Cols[colOPUTime].AllowEditing = false;
-            grfReq.Cols[colOPUTimeModi].AllowEditing = false;
+            grfReq.Cols[colRqStatusSperm].AllowEditing = false;
             grfReq.Cols[colRqLabName].AllowEditing = false;
             grfReq.Cols[colRqHnMale].AllowEditing = false;
             grfReq.Cols[colRqNameMale].AllowEditing = false;
@@ -426,11 +434,11 @@ namespace clinic_ivf.gui
             grfProc.AfterRowColChange += GrfProc_AfterRowColChange;
             grfProc.DoubleClick += GrfProc_DoubleClick;
             //grfExpnC.CellChanged += new C1.Win.C1FlexGrid.RowColEventHandler(this.grfDept_CellChanged);
-            ContextMenu menuGw = new ContextMenu();
-            menuGw.MenuItems.Add("ป้อน LAB OPU/FET", new EventHandler(ContextMenu_proc_edit));
-            //menuGw.MenuItems.Add("&แก้ไข", new EventHandler(ContextMenu_Gw_Edit));
-            //menuGw.MenuItems.Add("&ยกเลิก", new EventHandler(ContextMenu_Gw_Cancel));
-            grfProc.ContextMenu = menuGw;
+            //ContextMenu menuGw = new ContextMenu();
+            //menuGw.MenuItems.Add("ป้อน LAB OPU/FET", new EventHandler(ContextMenu_proc_edit));
+            ////menuGw.MenuItems.Add("&แก้ไข", new EventHandler(ContextMenu_Gw_Edit));
+            ////menuGw.MenuItems.Add("&ยกเลิก", new EventHandler(ContextMenu_Gw_Cancel));
+            //grfProc.ContextMenu = menuGw;
             panel2.Controls.Add(grfProc);
 
             theme1.SetTheme(grfProc, "Office2010Blue");
@@ -447,18 +455,12 @@ namespace clinic_ivf.gui
             grfProc.DataSource = null;
             grfProc.Clear();
             DataTable dt = new DataTable();
-
+            grfProc.Rows.Count = 0;
             dt = ic.ivfDB.lspermDB.selectByStatusProcess1();
             //grfExpn.Rows.Count = dt.Rows.Count + 1;
-            if (dt.Rows.Count <= 1)
-            {
-                grfProc.Rows.Count = dt.Rows.Count + 2;
-            }
-            else
-            {
-                grfProc.Rows.Count = dt.Rows.Count + 1;
-            }
-            grfProc.Cols.Count = 10;
+            
+            grfProc.Rows.Count = 1;            
+            grfProc.Cols.Count = 18;
             //C1TextBox txt = new C1TextBox();
             ////C1ComboBox cboproce = new C1ComboBox();
             ////ic.ivfDB.itmDB.setCboItem(cboproce);
@@ -468,14 +470,16 @@ namespace clinic_ivf.gui
             //grfProc.Cols[colPcDate].Editor = txt;
             //grfProc.Cols[colPcRemark].Editor = txt;
 
-            grfProc.Cols[colPcOpuNum].Width = 120;
-            grfProc.Cols[colPcHn].Width = 120;
-            grfProc.Cols[colPcPttName].Width = 280;
-            grfProc.Cols[colPcDate].Width = 100;
-            grfProc.Cols[colPcRemark].Width = 200;
-            grfProc.Cols[colPcHnMale].Width = 120;
-            grfProc.Cols[colPcNameMale].Width = 280;
-            grfProc.Cols[colProceName].Width = 200;
+            grfProc.Cols[colRqHn].Width = 120;
+            grfProc.Cols[colRqName].Width = 200;
+            grfProc.Cols[colRqName].Width = 200;
+            grfProc.Cols[colRqRemark].Width = 200;
+            grfProc.Cols[colDtrName].Width = 200;
+            grfProc.Cols[colRqLabName].Width = 120;
+            grfProc.Cols[colOPUDate].Width = 120;
+            grfProc.Cols[colOPUTime].Width = 80;
+            grfProc.Cols[colRqHnMale].Width = 120;
+            grfProc.Cols[colRqNameMale].Width = 200;
 
             grfProc.ShowCursor = true;
             //grdFlex.Cols[colID].Caption = "no";
@@ -491,7 +495,7 @@ namespace clinic_ivf.gui
             grfProc.Cols[colRqLabName].Caption = "Lab Name";
             grfProc.Cols[colOPUDate].Caption = " Date";
             grfProc.Cols[colOPUTime].Caption = " Time";
-            grfProc.Cols[colOPUTimeModi].Caption = "opu time old";
+            grfProc.Cols[colRqStatusSperm].Caption = "opu time old";
             grfProc.Cols[colRqHnMale].Caption = "HN male";
             grfProc.Cols[colRqNameMale].Caption = "Name male";
 
@@ -505,28 +509,53 @@ namespace clinic_ivf.gui
                 //grfProc.Cols[col + 1].Caption = dt.Columns[col].ColumnName;
                 grfProc.Cols[col + 1].Name = dt.Columns[col].ColumnName;
             }
-            int i = 0;
+            int i = 1;
             foreach (DataRow row in dt.Rows)
             {
-                i++;
-                if (i == 1) continue;
-                //Row row1 = grfProc.Rows.Add();
-                grfProc[i, colRqId] = row[ic.ivfDB.opuDB.opu.opu_id].ToString();
-                grfProc[i, colPcOpuNum] = row[ic.ivfDB.opuDB.opu.opu_code].ToString();
-                grfProc[i, colPcHn] = row[ic.ivfDB.opuDB.opu.hn_female].ToString();
-                grfProc[i, colPcPttName] = row[ic.ivfDB.opuDB.opu.name_female].ToString();
-                grfProc[i, colPcDate] = ic.datetoShow(row[ic.ivfDB.opuDB.opu.opu_date].ToString());
-                grfProc[i, colPcRemark] = row[ic.ivfDB.opuDB.opu.remark].ToString();
-                grfProc[i, colPcHnMale] = row[ic.ivfDB.opuDB.opu.hn_male].ToString();
-                grfProc[i, colPcNameMale] = row[ic.ivfDB.opuDB.opu.name_male].ToString();
-                grfProc[i, colProceName] = row["proce_name_t"].ToString();
-                //row1[colRqRemark] = row[ic.ivfDB.lbReqDB.lbReq.remark].ToString();
+                Row row1 = grfProc.Rows.Add();
+                row1[colRqId] = row[ic.ivfDB.lspermDB.lsperm.sperm_id].ToString();
+                row1[colRqReqNum] = "";
+                row1[colRqHn] = row[ic.ivfDB.lspermDB.lsperm.hn_female].ToString();
+                row1[colRqVn] = "";
+                row1[colRqName] = row[ic.ivfDB.lspermDB.lsperm.name_female].ToString();
+                row1[colRqDate] = "";
+                row1[colRqRemark] = row[ic.ivfDB.lspermDB.lsperm.remark].ToString();
+                if (row[ic.ivfDB.lspermDB.lsperm.status_lab_sperm].ToString().Equals("1"))
+                {
+                    row1[colOPUDate] = ic.datetoShow(row[ic.ivfDB.lspermDB.lsperm.spern_freezing_date_start].ToString());
+                    row1[colOPUTime] = ic.timetoShow(row[ic.ivfDB.lspermDB.lsperm.spern_freezing_date_start].ToString());
+                }
+                else if (row[ic.ivfDB.lspermDB.lsperm.status_lab_sperm].ToString().Equals("2"))
+                {
+                    row1[colOPUDate] = ic.datetoShow(row[ic.ivfDB.lspermDB.lsperm.sperm_analysis_date_start].ToString());
+                    row1[colOPUTime] = ic.timetoShow(row[ic.ivfDB.lspermDB.lsperm.sperm_analysis_date_start].ToString());
+                }
+                else if (row[ic.ivfDB.lspermDB.lsperm.status_lab_sperm].ToString().Equals("3"))
+                {
+                    row1[colOPUDate] = ic.datetoShow(row[ic.ivfDB.lspermDB.lsperm.pasa_tese_date].ToString());
+                    //row1[colOPUTime] = ic.timetoShow(row[ic.ivfDB.lspermDB.lsperm.sperm_analysis_date_start].ToString());
+                }
+                else if (row[ic.ivfDB.lspermDB.lsperm.status_lab_sperm].ToString().Equals("4"))
+                {
+                    row1[colOPUDate] = ic.datetoShow(row[ic.ivfDB.lspermDB.lsperm.iui_date].ToString());
+                    //row1[colOPUTime] = ic.timetoShow(row[ic.ivfDB.lspermDB.lsperm.sperm_analysis_date_start].ToString());
+                }
+                row1[colRqStatusSperm] = row[ic.ivfDB.lspermDB.lsperm.status_lab_sperm].ToString();
+                row1[colRqLabName] = row[ic.ivfDB.lspermDB.lsperm.status_lab_sperm].ToString().Equals("1") ? "Sperm Freezing" 
+                    : row[ic.ivfDB.lspermDB.lsperm.status_lab_sperm].ToString().Equals("2") ? "Sperm Analysis"
+                    : row[ic.ivfDB.lspermDB.lsperm.status_lab_sperm].ToString().Equals("3") ? " PESA" 
+                    : row[ic.ivfDB.lspermDB.lsperm.status_lab_sperm].ToString().Equals("4") ? " IUI " : "";
+                row1[colRqHnMale] = row[ic.ivfDB.lspermDB.lsperm.hn_male].ToString();
+                row1[colRqNameMale] = row[ic.ivfDB.lspermDB.lsperm.name_male].ToString();
+                row1[colDtrName] = row["dtr_name"].ToString();
                 //row1[colOpuId] = "";
                 //row1[colDtrName] = row["dtr_name"].ToString();
-                grfProc[i, 0] = (i - 1);
-
+                row1[0] = (i - 1);
             }
             grfProc.Cols[colRqId].Visible = false;
+            grfProc.Cols[colRqStatusSperm].Visible = false;
+            grfProc.Cols[colOpuId].Visible = false;
+            grfProc.Cols[colRqVn].Visible = false;
             grfProc.Cols[colPcOpuNum].AllowEditing = false;
             grfProc.Cols[colPcHn].AllowEditing = false;
             grfProc.Cols[colPcPttName].AllowEditing = false;
@@ -561,16 +590,16 @@ namespace clinic_ivf.gui
         private void ContextMenu_proc_edit(object sender, System.EventArgs e)
         {
             String chk = "", name = "", id = "";
-            id = grfProc[grfProc.Row, colPcId] != null ? grfProc[grfProc.Row, colPcId].ToString() : "";
-            chk = grfProc[grfProc.Row, colPcOpuNum] != null ? grfProc[grfProc.Row, colPcOpuNum].ToString() : "";
-            name = grfProc[grfProc.Row, colPcPttName] != null ? grfProc[grfProc.Row, colPcPttName].ToString() : "";
+            id = grfProc[grfProc.Row, colRqId] != null ? grfProc[grfProc.Row, colRqId].ToString() : "";
+            chk = grfProc[grfProc.Row, colRqStatusSperm] != null ? grfProc[grfProc.Row, colRqStatusSperm].ToString() : "";
+            name = grfProc[grfProc.Row, colRqName] != null ? grfProc[grfProc.Row, colRqName].ToString() : "";
             //if (MessageBox.Show("ต้องการ ป้อน LAB OPU  \n  opu number " + chk + " \n name " + name, "", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == DialogResult.OK)
             //{
             //grfReq.Rows.Remove(grfReq.Row);
             Cursor curOld;
             curOld = this.Cursor;
             this.Cursor = Cursors.WaitCursor;
-            openLabOPUAdd(id, name);
+            openLabOPUAdd(id, name, chk.Equals("2") ? " Analysis " : chk.Equals("1") ? " Freezing " : chk.Equals("3") ? " PESA " : " IUI ");
             this.Cursor = curOld;
             //}
         }
@@ -716,7 +745,7 @@ namespace clinic_ivf.gui
         private void BtnNew_Click(object sender, EventArgs e)
         {
             //throw new NotImplementedException();
-            openLabSpermNew("", "");
+            openLabSpermNew("", "","");
         }
         private void setOPU1(String reqid)
         {
@@ -738,14 +767,14 @@ namespace clinic_ivf.gui
             opu.opu_date = DateTime.Now.Year.ToString() + "-" + System.DateTime.Now.ToString("MM-dd");
             opu.req_id = reqid;
         }
-        private void openLabOPUAdd(String opdId, String name)
+        private void openLabOPUAdd(String opdId, String name, String labname)
         {
             //FrmLabOPUAdd frm = new FrmLabOPUAdd(ic, "", opdId);
             FrmLabSpermAdd frm = new FrmLabSpermAdd(ic, "", opdId);
             String txt = "";
             if (!name.Equals(""))
             {
-                txt = "ป้อน LAB Sperm " + name;
+                txt = "ป้อน LAB Sperm " + labname+" " + name;
             }
             else
             {
@@ -754,7 +783,7 @@ namespace clinic_ivf.gui
             frm.FormBorderStyle = FormBorderStyle.None;
             menu.AddNewTab(frm, txt);
         }
-        private void openLabSpermNew(String reqId, String name)
+        private void openLabSpermNew(String reqId, String name, String labname)
         {
             ic.cStf.staff_id = "";
             FrmPasswordConfirm frm1 = new FrmPasswordConfirm(ic);
@@ -775,49 +804,24 @@ namespace clinic_ivf.gui
                         MessageBox.Show("ไม่พบ request id", "");
                         return;
                     }
-                    if (grfReq[grfReq.Row, colRqLabName].ToString().Trim().Equals("OPU"))
+                    LabSperm fet1 = ic.ivfDB.setSperm(reqId, grfReq[grfReq.Row, colRqStatusSperm].ToString());
+                    String re1 = ic.ivfDB.lspermDB.insert(fet1, ic.cStf.staff_id);
+                    if (long.TryParse(re1, out chk1))
                     {
-                        LabOpu opu1 = ic.ivfDB.setOPU(reqId);
-                        String re1 = ic.ivfDB.opuDB.insert(opu1, ic.cStf.staff_id);
-                        if (long.TryParse(re1, out chk1))
+                        //FrmLabOPUAdd frm = new FrmLabOPUAdd(ic, "", re1);
+                        FrmLabSpermAdd frm = new FrmLabSpermAdd(ic, "", re1);
+                        String txt = "";
+                        if (!name.Equals(""))
                         {
-                            //FrmLabOPUAdd frm = new FrmLabOPUAdd(ic, "", re1);
-                            FrmLabOPUAdd2 frm = new FrmLabOPUAdd2(ic, "", re1);
-                            String txt = "";
-                            if (!name.Equals(""))
-                            {
-                                txt = "ป้อน LAB OPU " + name;
-                            }
-                            else
-                            {
-                                txt = "ป้อน LAB OPU ใหม่ ";
-                            }
-
-                            frm.FormBorderStyle = FormBorderStyle.None;
-                            menu.AddNewTab(frm, txt);
+                            txt = "ป้อน LAB Sperm " + name;
                         }
-                    }
-                    else
-                    {
-                        LabSperm fet1 = ic.ivfDB.setSperm(reqId,"2");
-                        String re1 = ic.ivfDB.lspermDB.insert(fet1, ic.cStf.staff_id);
-                        if (long.TryParse(re1, out chk1))
+                        else
                         {
-                            //FrmLabOPUAdd frm = new FrmLabOPUAdd(ic, "", re1);
-                            FrmLabSpermAdd frm = new FrmLabSpermAdd(ic, "", re1);
-                            String txt = "";
-                            if (!name.Equals(""))
-                            {
-                                txt = "ป้อน LAB Sperm " + name;
-                            }
-                            else
-                            {
-                                txt = "ป้อน LAB Sperm ใหม่ ";
-                            }
-
-                            frm.FormBorderStyle = FormBorderStyle.None;
-                            menu.AddNewTab(frm, txt);
+                            txt = "ป้อน LAB Sperm ใหม่ ";
                         }
+
+                        frm.FormBorderStyle = FormBorderStyle.None;
+                        menu.AddNewTab(frm, txt);
                     }
                 }
             }

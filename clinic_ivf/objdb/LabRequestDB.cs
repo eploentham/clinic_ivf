@@ -196,7 +196,7 @@ namespace clinic_ivf.objdb
                 //"Left Join Visit vsold on oJSd.VN = vsold.VN " +
                 //"Left Join lab_t_form_a lforma on vsold.form_a_id = lforma.form_a_id " +
                 "Where  lreq.req_date >= '" + startdate + "' and lreq.req_date <='" + enddate + "' and lreq.status_req in ('0','1','2') " +
-                "and lreq.item_id in ('14','18') "+
+                "and lreq.item_id in ('14','18','66') "+
                 "Order By lreq.req_id ";
             dt = conn.selectData(conn.conn, sql);
             return dt;
@@ -369,7 +369,7 @@ namespace clinic_ivf.objdb
         {
             String re = "";
 
-            if (p.req_id.Equals(""))
+            if (p.req_id.Equals("") || p.req_id.Equals("0"))
             {
                 re = insert(p, "");
             }

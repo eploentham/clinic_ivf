@@ -67,6 +67,8 @@ namespace clinic_ivf.gui
             btnPrintFet.Click += BtnPrintFet_Click;
             chkNgs.Click += ChkNgs_Click;
             chkNoNgs.Click += ChkNoNgs_Click;
+            chkSememPESA.CheckedChanged += ChkSememPESA_CheckedChanged;
+            chkSpermIUI.CheckedChanged += ChkSpermIUI_CheckedChanged;
 
             ChkEmbryoTranfer_CheckStateChanged(null, null);
             ChkNgs_CheckedChanged(null, null);
@@ -74,7 +76,9 @@ namespace clinic_ivf.gui
             ChkFET_CheckedChanged(null, null);
             ChkSpermAnalysis_CheckStateChanged(null, null);
             ChkSpermFreezing_CheckStateChanged(null, null);
-            
+            ChkSememPESA_CheckedChanged(null, null);
+            ChkSpermIUI_CheckedChanged(null, null);
+
             chkOPUActive.CheckedChanged += ChkOPUActive_CheckedChanged;
             chkOPUUnActive.CheckedChanged += ChkOPUUnActive_CheckedChanged;
             chkOPUActiveWait.CheckedChanged += ChkOPUActiveWait_CheckedChanged;
@@ -109,10 +113,32 @@ namespace clinic_ivf.gui
             sB1.Text = "";
         }
 
+        private void ChkSpermIUI_CheckedChanged(object sender, EventArgs e)
+        {
+            //throw new NotImplementedException();
+            if (chkSpermIUI.Checked)
+            {
+                txtIUIDate.Enabled = true;
+                cboRemark.Enabled = true;
+            }
+            else
+            {
+                txtIUIDate.Enabled = false;
+                cboRemark.Enabled = false;
+            }
+        }
+
+        private void ChkSememPESA_CheckedChanged(object sender, EventArgs e)
+        {
+            //throw new NotImplementedException();
+            if (chkSememPESA.Checked) txtPasaTeseDate.Enabled = true;
+            else txtPasaTeseDate.Enabled = false;
+        }
+
         private void ChkNoNgs_Click(object sender, EventArgs e)
         {
             //throw new NotImplementedException();
-            if (chkNoNgs.Checked) chkNoNgs.Checked = false;
+            if (chkNoNgs.Checked) chkNoNgs.Checked = false;            
         }
 
         private void ChkNgs_Click(object sender, EventArgs e)
@@ -473,6 +499,8 @@ namespace clinic_ivf.gui
             lFormA.fet1_day = cboFet1Day.SelectedItem == null ? "" : ((ComboBoxItem)cboFet1Day.SelectedItem).Value;
             lFormA.frozen_sperm_date = ic.datetoDB(txtFrozenSpermDate.Text);
             lFormA.staff_req_id = txtStfConfirmID.Text;
+            lFormA.status_sperm_iui = chkSpermIUI.Checked ? "1" : "0";
+            lFormA.status_sperm_pesa = chkSememPESA.Checked ? "1" : "0";
         }
         private void BtnSave_Click(object sender, EventArgs e)
         {
@@ -578,14 +606,17 @@ namespace clinic_ivf.gui
                     else
                     {
                         LabRequest lbReq = new LabRequest();
+                        LabFormA lFormA1 = new LabFormA();
+
                         //String re1 = ic.ivfDB.lbReqDB.insertLabRequest(lbReq, txtStfConfirmID.Text);
                         if (lFormA.req_id_semem_analysis.Equals("0") && chkSememAnalysis.Checked)
                         {
                             String dtrid = "";
                             dtrid = cboDoctor.SelectedItem == null ? "" : ((ComboBoxItem)cboDoctor.SelectedItem).Value;
-                            reqid = ic.ivfDB.oJlabdDB.selectByStatusSememAnalysis(txtVnOld.Text);
+                            reqid = ic.ivfDB.oJlabdDB.selectByStatusSememAnalysis(txtVnOld.Text);                            
                             lbReq = ic.ivfDB.setLabRequest(txtNameFeMale.Text, txtVnOld.Text, dtrid, cboRemark.Text, txtHnOld.Text, ic.datetoDB(txtDobFeMale.Text), reqid, "14", txtHnMale.Text, txtNameMale.Text, txtHnDonor.Text, txtNameDonor.Text, txtDonorDob.Text);
                             lbReq.form_a_id = txtID.Text;
+                            lbReq.req_id = lFormA.req_id_semem_analysis;
                             String re1 = ic.ivfDB.lbReqDB.insertLabRequest(lbReq, txtStfConfirmID.Text);
                             String re2 = ic.ivfDB.lFormaDB.updateReqIdSememAnalysis(txtID.Text, re1);
                         }
@@ -596,8 +627,29 @@ namespace clinic_ivf.gui
                             reqid = ic.ivfDB.oJlabdDB.selectByStatusSememFreezing(txtVnOld.Text);
                             lbReq = ic.ivfDB.setLabRequest(txtNameFeMale.Text, txtVnOld.Text, dtrid, cboRemark.Text, txtHnOld.Text, ic.datetoDB(txtDobFeMale.Text), reqid, "18", txtHnMale.Text, txtNameMale.Text, txtHnDonor.Text, txtNameDonor.Text, txtDonorDob.Text);
                             lbReq.form_a_id = txtID.Text;
+                            lbReq.req_id = lFormA.req_id_sperm_freezing;
                             String re1 = ic.ivfDB.lbReqDB.insertLabRequest(lbReq, txtStfConfirmID.Text);
                             String re2 = ic.ivfDB.lFormaDB.updateReqIdSpermFreezing(txtID.Text, re1);
+                        }
+                        if (lFormA.req_id_pesa_tese.Equals("0") && chkSememPESA.Checked)
+                        {
+                            String dtrid = "";
+                            dtrid = cboDoctor.SelectedItem == null ? "" : ((ComboBoxItem)cboDoctor.SelectedItem).Value;
+                            reqid = ic.ivfDB.oJlabdDB.selectByStatusPesa(txtVnOld.Text);
+                            lbReq = ic.ivfDB.setLabRequest(txtNameFeMale.Text, txtVnOld.Text, dtrid, cboRemark.Text, txtHnOld.Text, ic.datetoDB(txtDobFeMale.Text), reqid, "66", txtHnMale.Text, txtNameMale.Text, txtHnDonor.Text, txtNameDonor.Text, txtDonorDob.Text);
+                            lbReq.form_a_id = txtID.Text;
+                            String re1 = ic.ivfDB.lbReqDB.insertLabRequest(lbReq, txtStfConfirmID.Text);
+                            String re2 = ic.ivfDB.lFormaDB.updateReqIdPESATESE(txtID.Text, re1);
+                        }
+                        if (lFormA.req_id_iui.Equals("0") && chkSpermIUI.Checked)
+                        {
+                            String dtrid = "";
+                            dtrid = cboDoctor.SelectedItem == null ? "" : ((ComboBoxItem)cboDoctor.SelectedItem).Value;
+                            reqid = ic.ivfDB.oJlabdDB.selectByStatusSememFreezing(txtVnOld.Text);
+                            lbReq = ic.ivfDB.setLabRequest(txtNameFeMale.Text, txtVnOld.Text, dtrid, cboRemark.Text, txtHnOld.Text, ic.datetoDB(txtDobFeMale.Text), reqid, "18", txtHnMale.Text, txtNameMale.Text, txtHnDonor.Text, txtNameDonor.Text, txtDonorDob.Text);
+                            lbReq.form_a_id = txtID.Text;
+                            String re1 = ic.ivfDB.lbReqDB.insertLabRequest(lbReq, txtStfConfirmID.Text);
+                            String re2 = ic.ivfDB.lFormaDB.updateReqIdIUI(txtID.Text, re1);
                         }
                     }
                     //txtID.Value = (!txtID.Text.Equals("") && re.Equals("1")) ? re : "";        //update
@@ -756,13 +808,21 @@ namespace clinic_ivf.gui
 
             chkSememAnalysis.Checked = lFormA.status_sperm_analysis.Equals("1") ? true : false;
             chkSpermFreezing.Checked = lFormA.status_spern_freezing.Equals("1") ? true : false;
-            txtSpermAnalysisDateStart.Value = lFormA.sperm_analysis_date_start;
+            if (!lFormA.sperm_analysis_date_start.Trim().Equals(""))
+            {
+                txtSpermAnalysisDateStart.Value = lFormA.sperm_analysis_date_start;
+            }
+            
             if (lFormA.sperm_analysis_date_start.Length > 5)
             {
                 txtSpermAnalysisTimeStart.Value = lFormA.sperm_analysis_date_start.Substring(lFormA.sperm_analysis_date_start.Length-5);
             }
             txtSpermAnalysisDateEnd.Value = lFormA.sperm_analysis_date_end;
-            txtSpermFreezingDateStart.Value = lFormA.spern_freezing_date_start;
+            if (!lFormA.spern_freezing_date_start.Trim().Equals(""))
+            {
+                txtSpermFreezingDateStart.Value = lFormA.spern_freezing_date_start;
+            }
+                
             if (lFormA.spern_freezing_date_start.Length > 5)
             {
                 txtSpermFreezingTimeStart.Value = lFormA.spern_freezing_date_start.Substring(lFormA.spern_freezing_date_start.Length - 5);
@@ -824,6 +884,8 @@ namespace clinic_ivf.gui
             ic.setC1Combo(cboFetDay, lFormA.fet_day);
             ic.setC1Combo(cboFet1Day, lFormA.fet1_day);
             txtUserReq.Value = lFormA.staff_req_id;
+            chkSememPESA.Checked = lFormA.status_sperm_pesa.Equals("1") ? true : false;
+            chkSpermIUI.Checked = lFormA.status_sperm_iui.Equals("1") ? true : false;
             //txtDobFeMale.Value = lFormA.dob_female;
             //txtDobMale.Value = lFormA.dob_male;
 

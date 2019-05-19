@@ -23,6 +23,88 @@ namespace clinic_ivf.gui
             InitializeComponent();
             this.ic = ic;
         }
+        public void setSpermIui(DataTable dt)
+        {
+            String chk = "", printerDefault = "";
+            ReportDocument rpt = new ReportDocument();
+            try
+            {
+                rpt.Load("lab_sperm_iui.rpt");
+                rpt.SetDataSource(dt);
+                rpt.SetParameterValue("line1", ic.cop.comp_name_t);
+                rpt.SetParameterValue("line2", "");
+                rpt.SetParameterValue("line3", " ");
+                this.crystalReportViewer1.ReportSource = rpt;
+                this.crystalReportViewer1.Refresh();
+            }
+            catch (Exception ex)
+            {
+                chk = ex.Message.ToString();
+                MessageBox.Show("error " + ex.Message, "");
+            }
+        }
+        public void setSpermPesa(DataTable dt)
+        {
+            String chk = "", printerDefault = "";
+            ReportDocument rpt = new ReportDocument();
+            try
+            {
+                rpt.Load("lab_sperm_pesa.rpt");
+                rpt.SetDataSource(dt);
+                rpt.SetParameterValue("line1", ic.cop.comp_name_t);
+                rpt.SetParameterValue("line2", "");
+                rpt.SetParameterValue("line3", " ");
+                this.crystalReportViewer1.ReportSource = rpt;
+                this.crystalReportViewer1.Refresh();
+            }
+            catch (Exception ex)
+            {
+                chk = ex.Message.ToString();
+                MessageBox.Show("error " + ex.Message, "");
+            }
+        }
+        public void setSpermSa(DataTable dt)
+        {
+            String chk = "", printerDefault = "";
+            ReportDocument rpt = new ReportDocument();
+            try
+            {
+                rpt.Load("lab_sperm_sa.rpt");
+                rpt.SetDataSource(dt);
+                rpt.SetParameterValue("line1", ic.cop.comp_name_t);
+                rpt.SetParameterValue("line2", "");
+                rpt.SetParameterValue("line3", " ");
+                //rpt.SetParameterValue("date1", "" + date1);
+                this.crystalReportViewer1.ReportSource = rpt;
+                this.crystalReportViewer1.Refresh();
+            }
+            catch (Exception ex)
+            {
+                chk = ex.Message.ToString();
+                MessageBox.Show("error " + ex.Message, "");
+            }
+        }
+        public void setSpermSf(DataTable dt)
+        {
+            String chk = "", printerDefault = "";
+            ReportDocument rpt = new ReportDocument();
+            try
+            {
+                rpt.Load("lab_sperm_sf.rpt");
+                rpt.SetDataSource(dt);
+                rpt.SetParameterValue("line1", ic.cop.comp_name_t);
+                rpt.SetParameterValue("line2", "" );
+                rpt.SetParameterValue("line3", " ");
+                //rpt.SetParameterValue("date1", "" + date1);
+                this.crystalReportViewer1.ReportSource = rpt;
+                this.crystalReportViewer1.Refresh();
+            }
+            catch (Exception ex)
+            {
+                chk = ex.Message.ToString();
+                MessageBox.Show("error " + ex.Message, "");
+            }
+        }
         public void setEggStiReport(DataTable dt, String ptt_female, String ptt_male, String lmp, String g, String p, String a, String doctor_name, String opu_date, String opu_time, String et, String fet)
         {
             String chk = "", printerDefault = "", err = "";
@@ -616,8 +698,9 @@ namespace clinic_ivf.gui
                 
 
                 String date1 = "";
-                date1 = DateTime.Now.Year + "-" + DateTime.Now.ToString("MM-dd HH:mm:ss");
-                date1 = ic.datetimetoShow(date1);
+                //date1 = DateTime.Now.Year + "-" + DateTime.Now.ToString("MM-dd HH:mm:ss");
+                date1 =  DateTime.Now.ToString("dd-MM") + "-"+ DateTime.Now.Year;
+                //date1 = ic.da(date1);
                 rpt.Load("sticker_drug.rpt");
 
                 rpt.SetDataSource(dt);

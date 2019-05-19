@@ -116,9 +116,15 @@ namespace clinic_ivf.gui
             DataTable dt = new DataTable();
             date = "2018-11-05";
             date1 = "05-11-2018";
-            dt = ic.ivfDB.jobpxdDB.selectByVN(txtVn.Text);
+            dt = ic.ivfDB.jobpxdDB.selectByVN1(txtVn.Text);
             //if (dt.Rows.Count <= 0) return;
-
+            foreach ( DataRow row in dt.Rows)
+            {
+                String qty = "", unit = "";
+                qty = row["qty"] != null ? row["qty"].ToString() : " ";
+                unit = row["unit_name"] != null ? row["unit_name"].ToString() : " ";
+                row["unit_name"] = qty +" "+ unit;
+            }
             FrmReport frm = new FrmReport(ic);
             frm.setStickerDrugReport(date, dt);
             frm.ShowDialog(this);

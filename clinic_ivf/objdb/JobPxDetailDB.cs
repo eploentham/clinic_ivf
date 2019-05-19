@@ -104,6 +104,25 @@ namespace clinic_ivf.objdb
             dt = conn.selectData(conn.conn, sql);
             return dt;
         }
+        public DataTable selectByVN1(String vn)
+        {
+            DataTable dt = new DataTable();
+            String wherehn = "";
+            //if (!vn.Equals(""))
+            //{
+            //    wherehn = " and jobpxD." + jobpxD.PIDS + " like '%" + vn + "%'";
+            //}
+            String sql = "SELECT CONCAT(IFNULL(SurfixName.SurfixName,''),' ', ptt.PName,' ',ptt.PSurname) as patient_name, jobpxD.PIDS as hn, DATE_FORMAT(now(),''), jobpxD.TUsage as frequency " +
+                ", jobpxD.DUName as drug_name, jobpxD.QTY as qty, jobpxD.DUID, JobPx.Date,StockDrug.UnitType as unit_name " +
+                "From " + jobpxD.table + " jobpxD " +
+                "left join JobPx on JobPx.VN = jobpxD.VN " +
+                "left join Patient ptt on ptt.PIDS = JobPx.PIDS " +
+                "left join SurfixName on SurfixName.SurfixID = ptt.SurfixID " +
+                "left join StockDrug on StockDrug.DUID =  jobpxD.DUID " +
+                "Where JobPx.VN = '" + vn + "' ";
+            dt = conn.selectData(conn.conn, sql);
+            return dt;
+        }
         public DataTable selectByDate(String startDate, String endDate, String hn)
         {
             DataTable dt = new DataTable();

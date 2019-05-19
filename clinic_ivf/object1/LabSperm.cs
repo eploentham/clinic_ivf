@@ -59,5 +59,20 @@ namespace clinic_ivf.object1
         public String req_id { get; set; }
         public String status_lab { get; set; }
         public String doctorname { get; set; }
+        public String sperm_analysis_date_start { get; set; }
+        public String spern_freezing_date_start { get; set; }
+        public String pasa_tese_date { get; set; }
+        public String iui_date { get; set; }
+        public String form_a_id { get; set; }
+        public String post_volume1 { get; set; }
+        public String post_count { get; set; }
+        public String post_total_count { get; set; }
+        public String post_motile { get; set; }
+        public String post_total_motile { get; set; }
+        public String post_motility_rate_4 { get; set; }
+        public String post_motility_rate_3 { get; set; }
+        public String post_motility_rate_2 { get; set; }
+        public String post_motility_rate_1 { get; set; }
+        public String post_motility { get; set; }
     }
 }

@@ -107,6 +107,8 @@ namespace clinic_ivf.objdb
             lformA.staff_req_id = "staff_req_id";
             lformA.req_id_semem_analysis = "req_id_semem_analysis";
             lformA.req_id_sperm_freezing = "req_id_sperm_freezing";
+            lformA.status_sperm_iui = "status_sperm_iui";
+            lformA.status_sperm_pesa = "status_sperm_pesa";
 
             lformA.pkField = "form_a_id";
             lformA.table = "lab_t_form_a";
@@ -190,6 +192,8 @@ namespace clinic_ivf.objdb
             p.fet1_day = p.fet1_day == null ? "" : p.fet1_day;
             p.fet_day = p.fet_day == null ? "" : p.fet_day;
             p.frozen_sperm_date = p.frozen_sperm_date == null ? "" : p.frozen_sperm_date;
+            p.status_sperm_pesa = p.status_sperm_pesa == null ? "0" : p.status_sperm_pesa;
+            p.status_sperm_iui = p.status_sperm_iui == null ? "0" : p.status_sperm_iui;
 
             p.t_patient_id = long.TryParse(p.t_patient_id, out chk) ? chk.ToString() : "0";
             p.t_visit_id = long.TryParse(p.t_visit_id, out chk) ? chk.ToString() : "0";
@@ -299,6 +303,8 @@ namespace clinic_ivf.objdb
                     "," + lformA.staff_req_id + "='" + p.staff_req_id + "' " +
                     "," + lformA.req_id_semem_analysis + "='" + p.req_id_semem_analysis + "' " +
                     "," + lformA.req_id_sperm_freezing + "='" + p.req_id_sperm_freezing + "' " +
+                    "," + lformA.status_sperm_iui + "='" + p.status_sperm_iui + "' " +
+                    "," + lformA.status_sperm_pesa + "='" + p.status_sperm_pesa + "' " +
                     "";
                 re = conn.ExecuteNonQuery(conn.conn, sql);
             }
@@ -392,6 +398,8 @@ namespace clinic_ivf.objdb
                     "," + lformA.fet_day + "='" + p.fet_day + "' " +
                     "," + lformA.frozen_sperm_date + "='" + p.frozen_sperm_date + "' " +
                     "," + lformA.staff_req_id + "='" + p.staff_req_id + "' " +
+                    "," + lformA.status_sperm_pesa + "='" + p.status_sperm_pesa + "' " +
+                    "," + lformA.status_sperm_iui + "='" + p.status_sperm_iui + "' " +
                 " Where " + lformA.pkField + " = '" + p.form_a_id + "' "
                 ;
             try
@@ -849,6 +857,8 @@ namespace clinic_ivf.objdb
                 vs1.staff_req_id = dt.Rows[0][lformA.staff_req_id].ToString();
                 vs1.req_id_sperm_freezing = dt.Rows[0][lformA.req_id_sperm_freezing].ToString();
                 vs1.req_id_semem_analysis = dt.Rows[0][lformA.req_id_semem_analysis].ToString();
+                vs1.status_sperm_iui = dt.Rows[0][lformA.status_sperm_iui].ToString();
+                vs1.status_sperm_pesa = dt.Rows[0][lformA.status_sperm_pesa].ToString();
             }
             else
             {
@@ -943,6 +953,8 @@ namespace clinic_ivf.objdb
             lforma1.staff_req_id = "";
             lforma1.req_id_semem_analysis = "";
             lforma1.req_id_sperm_freezing = "";
+            lforma1.status_sperm_iui = "";
+            lforma1.status_sperm_pesa = "";
             return lforma1;
         }
     }
