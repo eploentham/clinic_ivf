@@ -83,6 +83,8 @@ namespace clinic_ivf.gui
             ic.ivfDB.stfDB.setCboEmbryologist(cboPeEmbryologistReport, "");
             ic.ivfDB.stfDB.setCboEmbryologist(cboIuiEmbryologistAppv, "");
             ic.ivfDB.stfDB.setCboEmbryologist(cboIuiEmbryologistReport, "");
+            txtSfAbstinenceday.KeyUp += TxtSfAbstinenceday_KeyUp;
+            txtAbstinenceday.KeyUp += TxtAbstinenceday_KeyUp;
 
             stt = new C1SuperTooltip();
             sep = new C1SuperErrorProvider();
@@ -91,6 +93,206 @@ namespace clinic_ivf.gui
 
             setControl();
             setTheme();
+        }
+
+        private void TxtAbstinenceday_KeyUp(object sender, KeyEventArgs e)
+        {
+            //throw new NotImplementedException();
+            if ((e.KeyCode == Keys.Enter))
+            {
+                if (sender.Equals(txtAbstinenceday))
+                {
+                    cboAppearance.Focus();
+                }
+                else if (sender.Equals(txtPh))
+                {
+                    txtViability.Focus();
+                }
+                else if (sender.Equals(txtViability))
+                {
+                    txtVolume.Focus();
+                }
+                else if (sender.Equals(txtVolume))
+                {
+                    txtCount.Focus();
+                }
+                else if (sender.Equals(txtCount))
+                {
+                    txtTotalCount.Focus();
+                }
+                else if (sender.Equals(txtTotalCount))
+                {
+                    txtMotile.Focus();
+                }
+                else if (sender.Equals(txtMotile))
+                {
+                    txtTotalMotile.Focus();
+                }
+                else if (sender.Equals(txtTotalMotile))
+                {
+                    txtMotility.Focus();
+                }
+                else if (sender.Equals(txtMotility))
+                {
+                    txtMotility4.Focus();
+                }
+                else if (sender.Equals(txtMotility4))
+                {
+                    txtMotility3.Focus();
+                }
+                else if (sender.Equals(txtMotility3))
+                {
+                    txtMotility2.Focus();
+                }
+                else if (sender.Equals(txtMotility2))
+                {
+                    txtWbc.Focus();
+                }
+                else if (sender.Equals(txtWbc))
+                {
+                    txtNormal.Focus();
+                }
+                else if (sender.Equals(txtNormal))
+                {
+                    txtAbnormal.Focus();
+                }
+                else if (sender.Equals(txtAbnormal))
+                {
+                    txtHead.Focus();
+                }
+                else if (sender.Equals(txtHead))
+                {
+                    txtNeck.Focus();
+                }
+                else if (sender.Equals(txtNeck))
+                {
+                    txtTail.Focus();
+                }
+                else if (sender.Equals(txtTail))
+                {
+                    txtEjacula.Focus();
+                }
+                else if (sender.Equals(txtEjacula))
+                {
+                    txtRecive.Focus();
+                }
+                else if (sender.Equals(txtRecive))
+                {
+                    txtExam.Focus();
+                }
+                else if (sender.Equals(txtExam))
+                {
+                    txtFinish.Focus();
+                }
+                else if (sender.Equals(txtFinish))
+                {
+                    btnSave.Focus();
+                }
+                //else if (sender.Equals(txtExam))
+                //{
+                //    txtSfViability.Focus();
+                //}
+            }
+        }
+
+        private void TxtSfAbstinenceday_KeyUp(object sender, KeyEventArgs e)
+        {
+            //throw new NotImplementedException();
+            if ((e.KeyCode == Keys.Enter))
+            {
+                if (sender.Equals(txtSfAbstinenceday))
+                {
+                    cboSfAppearance.Focus();
+                }
+                else if (sender.Equals(txtSfPh))
+                {
+                    txtSfViability.Focus();
+                }
+                else if (sender.Equals(txtSfViability))
+                {
+                    txtSfVolume.Focus();
+                }
+                else if (sender.Equals(txtSfVolume))
+                {
+                    txtSfCount.Focus();
+                }
+                else if (sender.Equals(txtSfCount))
+                {
+                    txtSfTotalCount.Focus();
+                }
+                else if (sender.Equals(txtSfTotalCount))
+                {
+                    txtSfMotile.Focus();
+                }
+                else if (sender.Equals(txtSfMotile))
+                {
+                    txtSfTotalMotile.Focus();
+                }
+                else if (sender.Equals(txtSfTotalMotile))
+                {
+                    txtSfMotility.Focus();
+                }
+                else if (sender.Equals(txtSfMotility))
+                {
+                    txtSfMotility4.Focus();
+                }
+                else if (sender.Equals(txtSfMotility4))
+                {
+                    txtSfMotility3.Focus();
+                }
+                else if (sender.Equals(txtSfMotility3))
+                {
+                    txtSfMotility2.Focus();
+                }
+                else if (sender.Equals(txtSfMotility2))
+                {
+                    txtSfWbc.Focus();
+                }
+                else if (sender.Equals(txtSfWbc))
+                {
+                    txtSfNormal.Focus();
+                }
+                else if (sender.Equals(txtSfNormal))
+                {
+                    txtSfAbnormal.Focus();
+                }
+                else if (sender.Equals(txtSfAbnormal))
+                {
+                    txtSfHead.Focus();
+                }
+                else if (sender.Equals(txtSfHead))
+                {
+                    txtSfNeck.Focus();
+                }
+                else if (sender.Equals(txtSfNeck))
+                {
+                    txtSfTail.Focus();
+                }
+                else if (sender.Equals(txtSfTail))
+                {
+                    txtSfVial.Focus();
+                }
+                else if (sender.Equals(txtSfVial))
+                {
+                    txtSfEjacula.Focus();
+                }
+                else if (sender.Equals(txtSfEjacula))
+                {
+                    txtSfRecive.Focus();
+                }
+                else if (sender.Equals(txtSfRecive))
+                {
+                    txtSfExam.Focus();
+                }
+                else if (sender.Equals(txtSfExam))
+                {
+                    txtSfFinish.Focus();
+                }
+                else if (sender.Equals(txtSfFinish))
+                {
+                    btnSfSave.Focus();
+                }
+            }
         }
 
         private void BtnPrintIui_Click(object sender, EventArgs e)
@@ -659,42 +861,103 @@ namespace clinic_ivf.gui
             if (lsperm.status_lab_sperm.Equals("1"))
             {
                 theme2 = "Office2013Red";
+                theme2 = "Office2016Colorful";
+                theme1.SetTheme(this, theme2);
+                theme1.SetTheme(panel7, theme2);
+                theme1.SetTheme(groupBox3, theme2);
+                theme1.SetTheme(groupBox4, theme2);
+                foreach (Control ctl in panel7.Controls)
+                {
+                    if (ctl is C1PictureBox) continue;
+                    theme1.SetTheme(ctl, theme2);
+                }
+                foreach (Control ctl in groupBox3.Controls)
+                {
+                    if (ctl is C1PictureBox) continue;
+                    theme1.SetTheme(ctl, theme2);
+                }
+                foreach (Control ctl in groupBox4.Controls)
+                {
+                    if (ctl is C1PictureBox) continue;
+                    theme1.SetTheme(ctl, theme2);
+                }
             }
             else if (lsperm.status_lab_sperm.Equals("2"))
             {
                 theme2 = "Office2007Blue";
+                theme1.SetTheme(this, theme2);
+                theme1.SetTheme(groupBox1, theme2);
+                theme1.SetTheme(pnSememAnalysis, theme2);
+                theme1.SetTheme(panel6, theme2);
+                theme1.SetTheme(groupBox2, theme2);
+                foreach (Control ctl in pnSememAnalysis.Controls)
+                {
+                    if (ctl is C1PictureBox) continue;
+                    theme1.SetTheme(ctl, theme2);
+                }
+                foreach (Control ctl in groupBox1.Controls)
+                {
+                    if (ctl is C1PictureBox) continue;
+                    theme1.SetTheme(ctl, theme2);
+                }
+                foreach (Control ctl in panel6.Controls)
+                {
+                    if (ctl is C1PictureBox) continue;
+                    theme1.SetTheme(ctl, theme2);
+                }
+                foreach (Control ctl in groupBox2.Controls)
+                {
+                    if (ctl is C1PictureBox) continue;
+                    theme1.SetTheme(ctl, theme2);
+                }
             }
             else if (lsperm.status_lab_sperm.Equals("3"))
             {
-                theme2 = "Office2016Colorful";
+                theme2 = "Office2010Barbie";
+                theme1.SetTheme(this, theme2);
+                theme1.SetTheme(panel9, theme2);
+                theme1.SetTheme(groupBox5, theme2);
+                foreach (Control ctl in panel9.Controls)
+                {
+                    if (ctl is C1PictureBox) continue;
+                    theme1.SetTheme(ctl, theme2);
+                }
+                foreach (Control ctl in groupBox5.Controls)
+                {
+                    if (ctl is C1PictureBox) continue;
+                    theme1.SetTheme(ctl, theme2);
+                }
             }
             else if (lsperm.status_lab_sperm.Equals("4"))
             {
                 theme2 = "Office2007Blue";
             }
             theme1.SetTheme(sB, "BeigeOne");
-            theme1.SetTheme(this, theme2);
-            theme1.SetTheme(groupBox1, theme2);
-            theme1.SetTheme(pnSememAnalysis, theme2);
-            theme1.SetTheme(panel6, theme2);
-            theme1.SetTheme(groupBox2, theme2);
-            foreach (Control ctl in pnSememAnalysis.Controls)
-            {
-                if (ctl is C1PictureBox) continue;
-                theme1.SetTheme(ctl, theme2);
-            }
-            foreach (Control ctl in groupBox1.Controls)
-            {
-                theme1.SetTheme(ctl, theme2);
-            }
-            foreach (Control ctl in panel6.Controls)
-            {
-                theme1.SetTheme(ctl, theme2);
-            }
-            foreach (Control ctl in groupBox2.Controls)
-            {
-                theme1.SetTheme(ctl, theme2);
-            }
+            //theme1.SetTheme(this, theme2);
+            //theme1.SetTheme(groupBox1, theme2);
+            //theme1.SetTheme(pnSememAnalysis, theme2);
+            //theme1.SetTheme(panel6, theme2);
+            //theme1.SetTheme(groupBox2, theme2);
+            //foreach (Control ctl in pnSememAnalysis.Controls)
+            //{
+            //    if (ctl is C1PictureBox) continue;
+            //    theme1.SetTheme(ctl, theme2);
+            //}
+            //foreach (Control ctl in groupBox1.Controls)
+            //{
+            //    if (ctl is C1PictureBox) continue;
+            //    theme1.SetTheme(ctl, theme2);
+            //}
+            //foreach (Control ctl in panel6.Controls)
+            //{
+            //    if (ctl is C1PictureBox) continue;
+            //    theme1.SetTheme(ctl, theme2);
+            //}
+            //foreach (Control ctl in groupBox2.Controls)
+            //{
+            //    if (ctl is C1PictureBox) continue;
+            //    theme1.SetTheme(ctl, theme2);
+            //}
         }
         private void FrmLabSpermAdd_Load(object sender, EventArgs e)
         {

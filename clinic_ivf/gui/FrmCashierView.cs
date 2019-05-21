@@ -110,6 +110,10 @@ namespace clinic_ivf.gui
             //theme1.SetTheme(tabFinish, "Office2010Blue");
 
         }
+        public void setGrfFinishPublic()
+        {
+            setGrfFinish();
+        }
         private void setGrfFinish()
         {
             //grfDept.Rows.Count = 7;
@@ -266,6 +270,10 @@ namespace clinic_ivf.gui
             ic.getBillVN(id);
             openBillNew(id, name);
         }
+        public void setGrfQuePublic()
+        {
+            setGrfQue();
+        }
         private void setGrfQue()
         {
             //grfDept.Rows.Count = 7;
@@ -384,6 +392,7 @@ namespace clinic_ivf.gui
             frm.FormBorderStyle = FormBorderStyle.None;
             C1DockingTabPage tab = menu.AddNewTab(frm, name);
             frm.tab = tab;
+            frm.frmCashView = this;
         }
         private void FrmCashierView_Load(object sender, EventArgs e)
         {

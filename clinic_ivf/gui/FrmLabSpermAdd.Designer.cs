@@ -39,6 +39,7 @@
             this.panel5 = new System.Windows.Forms.Panel();
             this.c1SplitterPanel4 = new C1.Win.C1SplitContainer.C1SplitterPanel();
             this.panel7 = new System.Windows.Forms.Panel();
+            this.btnPrintSf = new C1.Win.C1Input.C1Button();
             this.label62 = new System.Windows.Forms.Label();
             this.label63 = new System.Windows.Forms.Label();
             this.c1PictureBox3 = new C1.Win.C1Input.C1PictureBox();
@@ -166,6 +167,7 @@
             this.panel6 = new System.Windows.Forms.Panel();
             this.c1SplitterPanel2 = new C1.Win.C1SplitContainer.C1SplitterPanel();
             this.pnSememAnalysis = new System.Windows.Forms.Panel();
+            this.btnPrintSa = new C1.Win.C1Input.C1Button();
             this.label55 = new System.Windows.Forms.Label();
             this.label53 = new System.Windows.Forms.Label();
             this.c1PictureBox2 = new C1.Win.C1Input.C1PictureBox();
@@ -290,6 +292,7 @@
             this.panel10 = new System.Windows.Forms.Panel();
             this.c1SplitterPanel8 = new C1.Win.C1SplitContainer.C1SplitterPanel();
             this.panel11 = new System.Windows.Forms.Panel();
+            this.btnPrintIui = new C1.Win.C1Input.C1Button();
             this.txtIuiMotilityPost = new C1.Win.C1Input.C1TextBox();
             this.txtIuiTotalMotilePost = new C1.Win.C1Input.C1TextBox();
             this.txtIuiMotilePost = new C1.Win.C1Input.C1TextBox();
@@ -399,6 +402,7 @@
             this.panel8 = new System.Windows.Forms.Panel();
             this.c1SplitterPanel6 = new C1.Win.C1SplitContainer.C1SplitterPanel();
             this.panel9 = new System.Windows.Forms.Panel();
+            this.btnPrintPesa = new C1.Win.C1Input.C1Button();
             this.label139 = new System.Windows.Forms.Label();
             this.label140 = new System.Windows.Forms.Label();
             this.c1PictureBox5 = new C1.Win.C1Input.C1PictureBox();
@@ -499,10 +503,6 @@
             this.txtPeNameFeMale = new C1.Win.C1Input.C1TextBox();
             this.label207 = new System.Windows.Forms.Label();
             this.txtPeHnFeMale = new C1.Win.C1Input.C1TextBox();
-            this.btnPrintIui = new C1.Win.C1Input.C1Button();
-            this.btnPrintPesa = new C1.Win.C1Input.C1Button();
-            this.btnPrintSa = new C1.Win.C1Input.C1Button();
-            this.btnPrintSf = new C1.Win.C1Input.C1Button();
             this.sB.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.theme1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tC)).BeginInit();
@@ -514,6 +514,7 @@
             this.c1SplitterPanel3.SuspendLayout();
             this.c1SplitterPanel4.SuspendLayout();
             this.panel7.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.btnPrintSf)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.c1PictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.c1PictureBox4)).BeginInit();
             this.groupBox3.SuspendLayout();
@@ -570,6 +571,7 @@
             this.c1SplitterPanel1.SuspendLayout();
             this.c1SplitterPanel2.SuspendLayout();
             this.pnSememAnalysis.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.btnPrintSa)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.c1PictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.c1PictureBox1)).BeginInit();
             this.groupBox2.SuspendLayout();
@@ -625,6 +627,7 @@
             this.c1SplitterPanel7.SuspendLayout();
             this.c1SplitterPanel8.SuspendLayout();
             this.panel11.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.btnPrintIui)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtIuiMotilityPost)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtIuiTotalMotilePost)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtIuiMotilePost)).BeginInit();
@@ -680,6 +683,7 @@
             this.c1SplitterPanel5.SuspendLayout();
             this.c1SplitterPanel6.SuspendLayout();
             this.panel9.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.btnPrintPesa)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.c1PictureBox5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.c1PictureBox6)).BeginInit();
             this.groupBox5.SuspendLayout();
@@ -722,10 +726,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtPeHnMale)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtPeNameFeMale)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtPeHnFeMale)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.btnPrintIui)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.btnPrintPesa)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.btnPrintSa)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.btnPrintSf)).BeginInit();
             this.SuspendLayout();
             // 
             // sB
@@ -822,7 +822,7 @@
             this.c1SplitterPanel3.SizeRatio = 31.208D;
             this.c1SplitterPanel3.TabIndex = 0;
             this.c1SplitterPanel3.Text = "Panel 1";
-            this.c1SplitterPanel3.Width = 391;
+            this.c1SplitterPanel3.Width = 384;
             // 
             // panel5
             // 
@@ -944,6 +944,20 @@
             this.panel7.Size = new System.Drawing.Size(862, 754);
             this.panel7.TabIndex = 0;
             this.theme1.SetTheme(this.panel7, "(default)");
+            // 
+            // btnPrintSf
+            // 
+            this.btnPrintSf.Image = global::clinic_ivf.Properties.Resources.print;
+            this.btnPrintSf.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnPrintSf.Location = new System.Drawing.Point(648, 285);
+            this.btnPrintSf.Name = "btnPrintSf";
+            this.btnPrintSf.Size = new System.Drawing.Size(126, 34);
+            this.btnPrintSf.TabIndex = 867;
+            this.btnPrintSf.Text = "Print  ";
+            this.btnPrintSf.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.theme1.SetTheme(this.btnPrintSf, "(default)");
+            this.btnPrintSf.UseVisualStyleBackColor = true;
+            this.btnPrintSf.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
             // 
             // label62
             // 
@@ -2940,6 +2954,20 @@
             this.pnSememAnalysis.TabIndex = 0;
             this.theme1.SetTheme(this.pnSememAnalysis, "(default)");
             // 
+            // btnPrintSa
+            // 
+            this.btnPrintSa.Image = global::clinic_ivf.Properties.Resources.print;
+            this.btnPrintSa.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnPrintSa.Location = new System.Drawing.Point(678, 455);
+            this.btnPrintSa.Name = "btnPrintSa";
+            this.btnPrintSa.Size = new System.Drawing.Size(126, 34);
+            this.btnPrintSa.TabIndex = 867;
+            this.btnPrintSa.Text = "Print  ";
+            this.btnPrintSa.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.theme1.SetTheme(this.btnPrintSa, "(default)");
+            this.btnPrintSa.UseVisualStyleBackColor = true;
+            this.btnPrintSa.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            // 
             // label55
             // 
             this.label55.AutoSize = true;
@@ -4770,7 +4798,7 @@
             this.c1SplitterPanel7.SizeRatio = 31.208D;
             this.c1SplitterPanel7.TabIndex = 0;
             this.c1SplitterPanel7.Text = "Panel 1";
-            this.c1SplitterPanel7.Width = 384;
+            this.c1SplitterPanel7.Width = 391;
             // 
             // panel10
             // 
@@ -4893,6 +4921,20 @@
             this.panel11.Size = new System.Drawing.Size(862, 754);
             this.panel11.TabIndex = 0;
             this.theme1.SetTheme(this.panel11, "(default)");
+            // 
+            // btnPrintIui
+            // 
+            this.btnPrintIui.Image = global::clinic_ivf.Properties.Resources.print;
+            this.btnPrintIui.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnPrintIui.Location = new System.Drawing.Point(678, 628);
+            this.btnPrintIui.Name = "btnPrintIui";
+            this.btnPrintIui.Size = new System.Drawing.Size(126, 34);
+            this.btnPrintIui.TabIndex = 866;
+            this.btnPrintIui.Text = "Print  ";
+            this.btnPrintIui.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.theme1.SetTheme(this.btnPrintIui, "(default)");
+            this.btnPrintIui.UseVisualStyleBackColor = true;
+            this.btnPrintIui.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
             // 
             // txtIuiMotilityPost
             // 
@@ -6636,6 +6678,20 @@
             this.panel9.TabIndex = 0;
             this.theme1.SetTheme(this.panel9, "(default)");
             // 
+            // btnPrintPesa
+            // 
+            this.btnPrintPesa.Image = global::clinic_ivf.Properties.Resources.print;
+            this.btnPrintPesa.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnPrintPesa.Location = new System.Drawing.Point(678, 628);
+            this.btnPrintPesa.Name = "btnPrintPesa";
+            this.btnPrintPesa.Size = new System.Drawing.Size(126, 34);
+            this.btnPrintPesa.TabIndex = 867;
+            this.btnPrintPesa.Text = "Print  ";
+            this.btnPrintPesa.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.theme1.SetTheme(this.btnPrintPesa, "(default)");
+            this.btnPrintPesa.UseVisualStyleBackColor = true;
+            this.btnPrintPesa.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            // 
             // label139
             // 
             this.label139.AutoSize = true;
@@ -8176,62 +8232,6 @@
             this.theme1.SetTheme(this.txtPeHnFeMale, "(default)");
             this.txtPeHnFeMale.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
             // 
-            // btnPrintIui
-            // 
-            this.btnPrintIui.Image = global::clinic_ivf.Properties.Resources.print;
-            this.btnPrintIui.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnPrintIui.Location = new System.Drawing.Point(678, 628);
-            this.btnPrintIui.Name = "btnPrintIui";
-            this.btnPrintIui.Size = new System.Drawing.Size(126, 34);
-            this.btnPrintIui.TabIndex = 866;
-            this.btnPrintIui.Text = "Print  ";
-            this.btnPrintIui.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.theme1.SetTheme(this.btnPrintIui, "(default)");
-            this.btnPrintIui.UseVisualStyleBackColor = true;
-            this.btnPrintIui.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
-            // 
-            // btnPrintPesa
-            // 
-            this.btnPrintPesa.Image = global::clinic_ivf.Properties.Resources.print;
-            this.btnPrintPesa.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnPrintPesa.Location = new System.Drawing.Point(678, 628);
-            this.btnPrintPesa.Name = "btnPrintPesa";
-            this.btnPrintPesa.Size = new System.Drawing.Size(126, 34);
-            this.btnPrintPesa.TabIndex = 867;
-            this.btnPrintPesa.Text = "Print  ";
-            this.btnPrintPesa.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.theme1.SetTheme(this.btnPrintPesa, "(default)");
-            this.btnPrintPesa.UseVisualStyleBackColor = true;
-            this.btnPrintPesa.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
-            // 
-            // btnPrintSa
-            // 
-            this.btnPrintSa.Image = global::clinic_ivf.Properties.Resources.print;
-            this.btnPrintSa.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnPrintSa.Location = new System.Drawing.Point(678, 455);
-            this.btnPrintSa.Name = "btnPrintSa";
-            this.btnPrintSa.Size = new System.Drawing.Size(126, 34);
-            this.btnPrintSa.TabIndex = 867;
-            this.btnPrintSa.Text = "Print  ";
-            this.btnPrintSa.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.theme1.SetTheme(this.btnPrintSa, "(default)");
-            this.btnPrintSa.UseVisualStyleBackColor = true;
-            this.btnPrintSa.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
-            // 
-            // btnPrintSf
-            // 
-            this.btnPrintSf.Image = global::clinic_ivf.Properties.Resources.print;
-            this.btnPrintSf.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnPrintSf.Location = new System.Drawing.Point(648, 285);
-            this.btnPrintSf.Name = "btnPrintSf";
-            this.btnPrintSf.Size = new System.Drawing.Size(126, 34);
-            this.btnPrintSf.TabIndex = 867;
-            this.btnPrintSf.Text = "Print  ";
-            this.btnPrintSf.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.theme1.SetTheme(this.btnPrintSf, "(default)");
-            this.btnPrintSf.UseVisualStyleBackColor = true;
-            this.btnPrintSf.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
-            // 
             // FrmLabSpermAdd
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -8255,6 +8255,7 @@
             this.c1SplitterPanel4.ResumeLayout(false);
             this.panel7.ResumeLayout(false);
             this.panel7.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.btnPrintSf)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.c1PictureBox3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.c1PictureBox4)).EndInit();
             this.groupBox3.ResumeLayout(false);
@@ -8314,6 +8315,7 @@
             this.c1SplitterPanel2.ResumeLayout(false);
             this.pnSememAnalysis.ResumeLayout(false);
             this.pnSememAnalysis.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.btnPrintSa)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.c1PictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.c1PictureBox1)).EndInit();
             this.groupBox2.ResumeLayout(false);
@@ -8372,6 +8374,7 @@
             this.c1SplitterPanel8.ResumeLayout(false);
             this.panel11.ResumeLayout(false);
             this.panel11.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.btnPrintIui)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtIuiMotilityPost)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtIuiTotalMotilePost)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtIuiMotilePost)).EndInit();
@@ -8429,6 +8432,7 @@
             this.c1SplitterPanel6.ResumeLayout(false);
             this.panel9.ResumeLayout(false);
             this.panel9.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.btnPrintPesa)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.c1PictureBox5)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.c1PictureBox6)).EndInit();
             this.groupBox5.ResumeLayout(false);
@@ -8472,10 +8476,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtPeHnMale)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtPeNameFeMale)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtPeHnFeMale)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.btnPrintIui)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.btnPrintPesa)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.btnPrintSa)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.btnPrintSf)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

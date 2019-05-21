@@ -21,6 +21,7 @@ namespace clinic_ivf.gui
         IvfControl ic;
         MainMenu menu;
         public C1DockingTabPage tab;
+        public FrmCashierView frmCashView;
         String billhid = "", pttid = "", vsid = "", vsidOld = "";
         OldBillheader obilh;
         VisitOld ovs;
@@ -112,6 +113,14 @@ namespace clinic_ivf.gui
             billNo = ic.ivfDB.copDB.genReceiptDoc(ref year, ref month, ref day);
             billExtNo = ic.ivfDB.copDB.genReceiptExtDoc();
             ic.ivfDB.obilhDB.updateReceiptNo(txtVn.Text, billNo);
+            //OldBillheader obill = new OldBillheader();
+            String billno = ic.ivfDB.obilhDB.selectBillNoByVN(txtVn.Text);
+            if (billno.Equals(""))
+            {
+                billNo = ic.ivfDB.copDB.genBillingDoc(ref year, ref month, ref day);
+                billExtNo = ic.ivfDB.copDB.genBillingExtDoc();
+                ic.ivfDB.obilhDB.updateBillNo(txtVn.Text, billNo);
+            }
 
             //dtpgk = ic.ivfDB.opkgsDB.selectByVN1(txtVn.Text);
             dtpgk = ic.ivfDB.opkgsDB.selectByPID(ovs.PID);    // ต้องดึงตาม HN เพราะ ถ้ามีงวดการชำระ 
@@ -357,6 +366,8 @@ namespace clinic_ivf.gui
         private void BtnClose_Click(object sender, EventArgs e)
         {
             //throw new NotImplementedException();
+            frmCashView.setGrfQuePublic();
+            frmCashView.setGrfFinishPublic();
             menu.removeTab(tab);
         }
 
@@ -440,8 +451,8 @@ namespace clinic_ivf.gui
                 dtprn.ImportRow(row);
             }
             
-            ic.ivfDB.ovsDB.updateStatusCashierFinish(txtVn.Text);
-            ic.ivfDB.ovsDB.updateStatusCashierFinish(txtVn.Text);
+            //ic.ivfDB.ovsDB.updateStatusCashierFinish(txtVn.Text);
+            //ic.ivfDB.ovsDB.updateStatusCashierFinish(txtVn.Text);
             amt2 = ic.NumberToCurrencyText(amt, MidpointRounding.AwayFromZero);
             FrmReport frm = new FrmReport(ic);
             frm.setPrintBill(dtprn, txtHn.Text, txtPttNameE.Text, amt2, amt.ToString("#,###.00"), billNo, day+"/"+month+"/"+year, payby,"ใบแจ้งหนี้/Bill", sumprice.ToString("#,###.00"));
