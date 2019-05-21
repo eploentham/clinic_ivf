@@ -104,9 +104,9 @@ namespace clinic_ivf.gui
             DataTable dt = new DataTable();
             DataTable dtprn = new DataTable();
             DataTable dtpgk = new DataTable();
-            Decimal amt = 0, sumprice = 0, price1 = 0;
+            Decimal amt = 0, sumprice = 0, price1 = 0, cash = 0, credit = 0;
             long amt1 = 0;
-            String amt2 = "", billNo = "", billExtNo = "", payby = "", date = "", year = "", month = "", day = "";
+            String amt2 = "", billNo = "", billExtNo = "", payby = "", date = "", year = "", month = "", day = "", billFormat = "";
             long.TryParse(amt.ToString(), out amt1);
             dt = ic.ivfDB.printBill(txtVn.Text, ref amt, ref payby);
             billNo = ic.ivfDB.copDB.genReceiptDoc(ref year, ref month, ref day);
@@ -162,6 +162,29 @@ namespace clinic_ivf.gui
 
             ic.ivfDB.ovsDB.updateStatusCashierFinish(txtVn.Text);
             amt2 = ic.NumberToCurrencyText(amt, MidpointRounding.AwayFromZero);
+            Decimal.TryParse(txtTotalCash.Text, out cash);
+            Decimal.TryParse(txtTotalCredit.Text, out credit);
+            if ((cash > 0) && (credit <= 0))
+            {
+                payby = "เงินสด/Cash ";
+            }
+            else if ((credit > 0) && (cash <= 0))
+            {
+                payby = "เครดิตการ์ด/Credit Card ";
+            }
+            else if ((credit > 0) && (cash > 0))
+            {
+                payby = "เงินสด และเครดิตการ์ด/Cash & Credit Card ";
+            }
+            else
+            {
+                payby = "unknow payment";
+            }
+            if (billNo.Length > 5)
+            {
+                billFormat = billNo.Substring(billNo.Length - 5);
+                billNo = billNo.Substring(0, billNo.Length - 5) + "-" + billFormat;
+            }
             FrmReport frm = new FrmReport(ic);
             frm.setPrintBill(dtprn, txtHn.Text, txtPttNameE.Text, amt2, amt.ToString("#,###.00"), billNo, day + "/" + month + "/" + year, payby,"ใบเสร็จ/Receipt", sumprice.ToString("#,###.00"));
             frm.ShowDialog(this);
@@ -384,9 +407,9 @@ namespace clinic_ivf.gui
             DataTable dt = new DataTable();
             DataTable dtprn = new DataTable();
             DataTable dtpgk = new DataTable();
-            Decimal amt = 0, sumprice=0, price1=0;
+            Decimal amt = 0, sumprice=0, price1=0, cash=0, credit=0;
             long amt1 = 0;
-            String amt2 = "", billNo="", billExtNo="", payby="", date="", year="", month="", day="";
+            String amt2 = "", billNo="", billExtNo="", payby="", date="", year="", month="", day="", billFormat="";
             long.TryParse(amt.ToString(), out amt1);
             dt = ic.ivfDB.printBill(txtVn.Text,ref amt, ref payby);
             billNo = ic.ivfDB.copDB.genBillingDoc(ref year, ref month, ref day);
@@ -443,6 +466,29 @@ namespace clinic_ivf.gui
             ic.ivfDB.ovsDB.updateStatusCashierFinish(txtVn.Text);
             ic.ivfDB.ovsDB.updateStatusCashierFinish(txtVn.Text);
             amt2 = ic.NumberToCurrencyText(amt, MidpointRounding.AwayFromZero);
+            Decimal.TryParse(txtTotalCash.Text, out cash);
+            Decimal.TryParse(txtTotalCredit.Text, out credit);
+            if ((cash>0) && (credit<=0))
+            {
+                payby = "ชำระเงินโดย เงินสด/Cash ";
+            }
+            else if ((credit > 0) && (cash <= 0))
+            {
+                payby = "ชำระเงินโดย เครดิตการ์ด/Credit Card ";
+            }
+            else if ((credit > 0) && (cash > 0))
+            {
+                payby = "ชำระเงินโดย เงินสด และเครดิตการ์ด/Cash & Credit Card ";
+            }
+            else
+            {
+                payby = "unknow payment";
+            }
+            if (billNo.Length > 5)
+            {
+                billFormat = billNo.Substring(billNo.Length - 5);
+                billNo = billNo.Substring(0, billNo.Length - 5) + "-" + billFormat;
+            }
             FrmReport frm = new FrmReport(ic);
             frm.setPrintBill(dtprn, txtHn.Text, txtPttNameE.Text, amt2, amt.ToString("#,###.00"), billNo, day+"/"+month+"/"+year, payby,"ใบแจ้งหนี้/Bill", sumprice.ToString("#,###.00"));
             frm.ShowDialog(this);

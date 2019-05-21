@@ -388,6 +388,7 @@ namespace clinic_ivf.gui
                 rpt.SetParameterValue("payby", payby);
                 rpt.SetParameterValue("bill_name", billname);
                 rpt.SetParameterValue("sum_price", sumprice);
+                //rpt.SetParameterValue("pay_by", sumprice);
                 this.crystalReportViewer1.ReportSource = rpt;
                 this.crystalReportViewer1.Refresh();
             }
