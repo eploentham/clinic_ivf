@@ -3,6 +3,9 @@ using C1.Win.C1Input;
 using C1.Win.C1SuperTooltip;
 using clinic_ivf.control;
 using clinic_ivf.object1;
+using CrystalDecisions.CrystalReports.Engine;
+using CrystalDecisions.Shared;
+using CrystalDecisions.Windows.Forms;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -129,7 +132,7 @@ namespace clinic_ivf.gui
         {
             //throw new NotImplementedException();
             //sendHtmlEmail1();
-            setEmail(false);
+            setPrepareEmail(false);
             btnSendEmail.Enabled = true;
         }
 
@@ -137,6 +140,42 @@ namespace clinic_ivf.gui
         {
             //throw new NotImplementedException();
             //setEmail(true);
+            DataTable dtembryo6 = ic.ivfDB.opuEmDevDB.selectByOpuFetId_DayPrint(opu.opu_id, objdb.LabOpuEmbryoDevDB.Day1.Day6);
+            ReportDocument rpt;
+            CrystalReportViewer crv = new CrystalReportViewer();
+            rpt = new ReportDocument();
+            rpt.Load("lab_opu_embryo_dev.rpt");
+            crv.ReportSource = rpt;
+            
+            crv.Refresh();
+            //rpt.Load(Application.StartupPath + "\\lab_opu_embryo_dev.rpt");
+            //rd.Load("StudentReg.rpt");
+            rpt.SetDataSource(dtembryo6);
+            //crv.ReportSource = rd;
+            //crv.Refresh();
+            if (File.Exists("embryo.pdf"))
+                File.Delete("embryo.pdf");
+            //rpt.ExportToDisk(CrystalDecisions.Shared.ExportFormatType.PortableDocFormat, "embryo.pdf");
+            try
+            {
+                ExportOptions CrExportOptions;
+                DiskFileDestinationOptions CrDiskFileDestinationOptions = new DiskFileDestinationOptions();
+                PdfRtfWordFormatOptions CrFormatTypeOptions = new PdfRtfWordFormatOptions();
+                CrDiskFileDestinationOptions.DiskFileName = "embryo.pdf";
+                CrExportOptions = rpt.ExportOptions;
+                {
+                    CrExportOptions.ExportDestinationType = ExportDestinationType.DiskFile;
+                    CrExportOptions.ExportFormatType = ExportFormatType.PortableDocFormat;
+                    CrExportOptions.DestinationOptions = CrDiskFileDestinationOptions;
+                    CrExportOptions.FormatOptions = CrFormatTypeOptions;
+                }
+                rpt.Export();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+
             MailMessage mail = new MailMessage();
 
             mail.From = new MailAddress("eploentham@gmail.com");
@@ -145,26 +184,18 @@ namespace clinic_ivf.gui
             //mail.Body = "Test send email";
 
             mail.IsBodyHtml = true;
-            //MemoryStream stream = new MemoryStream();
-            //StreamWriter writer = new StreamWriter(stream);
-            //writer.Write(body);
-            //writer.Flush();
-            //stream.Position = 0;
-            //richTextBox1.LoadFile(stream, RichTextBoxStreamType.PlainText);
+
+            System.Net.Mail.Attachment attachment;
+            attachment = new System.Net.Mail.Attachment("embryo.pdf");
+            mail.Attachments.Add(attachment);
 
             AlternateView htmlView = AlternateView.CreateAlternateViewFromString(body, null, "text/html");
             mail.AlternateViews.Add(htmlView);
-            //Add Image
-            //LinkedResource theEmailImage = new LinkedResource(path+ "\\embryo_dev_1.jpg");
-            //theEmailImage.ContentId = "myImageID";
-            //htmlView.LinkedResources.Add(theEmailImage);
+            
             foreach (LinkedResource linkimg in theEmailImage1)
             {
                 htmlView.LinkedResources.Add(linkimg);
             }
-            //System.Net.Mail.Attachment attachment;
-            //attachment = new System.Net.Mail.Attachment(txtAttachment.Text);
-            //mail.Attachments.Add(attachment);
 
             SmtpServer.Port = 587;
             SmtpServer.Credentials = new System.Net.NetworkCredential("eploentham@gmail.com", "Singcamma1*");
@@ -187,7 +218,7 @@ namespace clinic_ivf.gui
             FrmLabOPUPrint frm = new FrmLabOPUPrint(ic, txtID.Text, FrmLabOPUPrint.opuReport.OPUEmbryoDevReport);
             frm.ShowDialog(this);
         }
-        private void setEmail(Boolean flagEmail)
+        private void setPrepareEmail(Boolean flagEmail)
         {
             FrmWaiting frmW = new FrmWaiting();
             frmW.Show();
@@ -202,6 +233,7 @@ namespace clinic_ivf.gui
                 System.IO.DirectoryInfo di = new DirectoryInfo(path);
                 foreach (FileInfo file in di.GetFiles())
                 {
+                    file.IsReadOnly = false;
                     file.Delete();
                 }
 
@@ -1516,15 +1548,25 @@ namespace clinic_ivf.gui
                                 break;
                             }
                         }
-                        if ((imgcol == 3) || (imgcol == 0))
+                        if (imgcol == 0)
                         {
                             tr = "<tr>";
+                            tr1 = "";
+                        }
+                        else if (imgcol == 3)
+                        {
+                            tr = "";
                             tr1 = "</tr>";
+                            imgcol = 0;
                         }
                         else
                         {
                             tr = "";
                             tr1 = "";
+                            if (imgrow == dt.Rows.Count)
+                            {
+                                tr1 = "</tr>";
+                            }
                         }
                         tdimg += tr+"<td style='' font-style:arial; color:maroon; font-weight:bold''>" +
                             "<table><tr><td>" + (imgrow + 1) + "</td></tr>" +
@@ -1543,17 +1585,117 @@ namespace clinic_ivf.gui
                         //tdimg += "<td style='' font-style:arial; color:maroon; font-weight:bold''> <img src=cid:img_" + imgrow.ToString() + "></td>";
                         imgrow++;
                         imgcol++;
-                        file.IsReadOnly = true;
+                        //file.IsReadOnly = true;
                     }
                 }
                 //body = "<html><body><p>Embryo development Day " + day + "111</p> </br>" +
                 //    "<table width='100%'><tr>" + tdimg + "</tr></table> </body> </html>";
                 //String body1 = "<html><body><p>Embryo development Day " + day + "111</p> </br>" +
                 //    "<table width='100%'><tr>" + tdimg1 + "</tr></table> </body> </html>";
-                body = "<html><body><p>Embryo development Day " + day + "111</p> </br>" +
-                    "<table width='100%'>" + tdimg + "</table> </body> </html>";
-                String body1 = "<html><body><p>Embryo development Day " + day + "111</p> </br>" +
-                    "<table width='100%'>" + tdimg1 + "</table> </body> </html>";
+                String pageHeader = "", header="", procedure="", doctor="", opudate="", hn_female="", hn_male="", name_female="", name_male="", matura="", ferti="",sperm="", freezing0="", freezing1="", opu1="";
+                String spermfrezing = "", et="", emreport="", etapprove="", report="", approve="", css="";
+                css = "<style> " +
+                    "p.dotted { border - style: dotted; } " +
+                    "p.dashed { border - style: dashed; } " +
+                    "p.solid { border - style: solid; } " +
+                    "p.double { border - style: double; } " +
+                    "p.groove { border - style: groove; } " +
+                    "p.ridge { border - style: ridge; } " +
+                    "p.inset { border - style: inset; } " +
+                    "p.outset { border - style: outset; } " +
+                    "p.none { border - style: none; } " +
+                    "p.hidden { border - style: hidden; } " +
+                    "p.mix { border - style: dotted dashed solid double; } " +
+                    "td.dashed { border - style: dashed; } " +
+                    "td.groove_left { border - style: none none none groove; } " +
+                    "td.groove_right { border - style: none groove none none; } " +
+                    "td.groove_top { border - style: groove none none none; } " +
+                    "td.groove_botton { border - style: none none groove none; } " +
+                    "td.groove_left_top { border - style: groove none none groove; } " +
+                    "td.groove_right_top { border - style: groove groove none none; } " +
+                    "td.groove_left_botton { border - style: none none groove groove; } " +
+                    "td.groove_right_botton { border - style: none groove groove none; } " +
+                    "</ style > ";
+                procedure = dt.Rows[0]["procedure1"].ToString();
+                doctor = dt.Rows[0]["doctor"].ToString();
+                opudate = dt.Rows[0]["opu_date"].ToString();
+                hn_female = dt.Rows[0]["hn_female"].ToString();
+                hn_male = dt.Rows[0]["hn_male"].ToString();
+                name_female = dt.Rows[0]["name_female"].ToString();
+                name_male = dt.Rows[0]["name_male"].ToString();
+                matura = "<table>" +
+                    "<tr><td colspan='2'>Maturation</td></tr>" +
+                    "<tr><td>No of OPU :</td><td>" +opu.matura_no_of_opu+"</td></tr>" +
+                    "<tr><td>Date time :</td><td>" + opu.matura_no_of_opu + "</td></tr>" +
+                    "<tr><td>M II :</td><td>" + opu.matura_m_ii + "</td></tr>" +
+                    "<tr><td>M I :</td><td>" + opu.matura_m_i + "</td></tr>" +
+                    "<tr><td>GV :</td><td>" + opu.matura_gv + "</td></tr>" +
+                    "<tr><td>Post mature :</td><td>" + opu.matura_post_mat + "</td></tr>" +
+                    "<tr><td>Abnormal :</td><td>" + opu.matura_abmormal + "</td></tr>" +
+                    "<tr><td>Dead :</td><td>" + opu.matura_dead + "</td></tr>" +
+                    "</table>";
+                ferti = "<table>" +
+                    "<tr><td colspan='2'>Fertilization</td></tr>" +
+                    "<tr><td>Date time :</td><td>" + opu.fertili_date + "</td></tr>" +
+                    "<tr><td>2 PN :</td><td>" + opu.fertili_2_pn + "</td></tr>" +
+                    "<tr><td>1 PN :</td><td>" + opu.fertili_1_pn + "</td></tr>" +
+                    "<tr><td>3 PN :</td><td>" + opu.fertili_3_pn + "</td></tr>" +
+                    "<tr><td>4 PN :</td><td>" + opu.fertili_4_pn + "</td></tr>" +
+                    "<tr><td>No PN :</td><td>" + opu.fertili_no_pn + "</td></tr>" +
+                    "<tr><td>Dead :</td><td>" + opu.fertili_dead + "</td></tr>" +
+                    "<tr><td></td><td></td></tr>" +
+                    "</table>";
+                if (opu.sperm_frozen_sperm.Equals("1"))
+                {
+                    spermfrezing = "Frozen sperm";
+                }
+                else if (opu.sperm_fresh_sperm.Equals("1"))
+                {
+                    spermfrezing = "Fresh sperm";
+                }
+                else
+                {
+                    spermfrezing = "-";
+                }
+                sperm = "<table width='100%'>" +
+                    "<tr><td colspan='2'>Sperm preparation</td></tr>" +
+                    "<tr><td>Date time :</td><td>" + opu.sperm_date + "</td></tr>" +
+                    "<tr><td>Volume :</td><td>" + opu.sperm_volume + "</td></tr>" +
+                    "<tr><td>Count :</td><td>" + opu.sperm_count + "</td></tr>" +
+                    "<tr><td>Total count :</td><td>" + opu.sperm_count_total + "</td></tr>" +
+                    "<tr><td>Motile :</td><td>" + opu.sperm_motile + "</td></tr>" +
+                    "<tr><td>Total Motile :</td><td>" + opu.sperm_motile_total + "</td></tr>" +
+                    "<tr><td>Motility :</td><td>" + opu.sperm_motility + "</td></tr>" +
+                    "<tr><td></td><td>" + spermfrezing + "</td></tr>" +
+                    "</table>";
+                etapprove = ic.ivfDB.stfDB.getStaffNameBylStf(opu.embryo_for_et_embryologist_id);
+                emreport = ic.ivfDB.stfDB.getStaffNameBylStf(opu.embryologist_approve_id);
+                report = ic.ivfDB.stfDB.getStaffNameBylStf(opu.embryologist_report_id);
+                approve = ic.ivfDB.stfDB.getStaffNameBylStf(opu.embryologist_approve_id);
+                et = "<table width='100%'>" +
+                    "<tr><td colspan='6'>Embryo for ET</td></tr>" +
+                    "<tr><td>No. of ET :</td><td>" + opu.embryo_for_et_no_of_et + "</td><td>ET Volume :</td><td>" + opu.embryo_for_et_volume + "</td><td>Number of Tranfer :</td><td>" + opu.embryo_for_et_number_of_transfer + "</td></tr>" +
+                    "<tr><td>Day :</td><td>" + opu.embryo_for_et_day + "</td><td>ET Catheter :</td><td>" + opu.embryo_for_et_catheter + "</td><td>Number of Freeze :</td><td>" + opu.embryo_for_et_number_of_freeze + "</td></tr>" +
+                    "<tr><td>Date time :</td><td>" + opu.embryo_for_et_date + "</td><td>ET Doctor :</td><td>" + opu.embryo_for_et_doctor + "</td><td>Number Discard :</td><td>" + opu.embryo_for_et_number_of_discard + "</td></tr>" +
+                    "<tr><td>Assisted Hatching :</td><td>" + opu.embryo_for_et_assisted + "</td><td>ET Embryologist :</td><td>" + etapprove + "</td><td></td><td></td></tr>" +
+                    "<tr><td>Remark :</td><td>" + opu.embryo_for_et_remark + "</td></tr>" +
+                    "<tr><td>Embryologist report :</td><td>" + report + "</td><td>Embryologist approve :</td><td>" + approve + "</td></tr>" +
+                    "</table>";
+
+                opu1 = "<table width='100%'><tr><td>" + matura+"</td><td>"+ ferti + "</td><td>" + sperm + "</td></tr></table>";
+                pageHeader = "<p align='center'>Embryo development Day " + day + "111</p> </br>";
+                header = "<table>" +
+                    "<tr><td class='groove_left_top'>Name Female :</td><td>" + name_female + "</td><td>Hn :</td><td class='groove_right_top'>" + hn_female + "</td></tr>" +
+                    "<tr><td class='groove_left'>Name Male :</td><td>" + name_male + "</td><td>Hn :</td><td class='groove_groove_rightleft'>" + hn_male + "</td></tr>" +
+                    "<tr><td class='groove_left'>Doctor :</td><td>" + doctor + "</td><td></td><td class='groove_right'></td></tr>" +
+                    "<tr><td class='groove_left_botton'>Procedure :</td><td>" + procedure + "</td><td>Date time :</td><td class='groove_right_botton'>" + opudate + "</td></tr>" +
+                    "</table>";
+                body = "<html><body>"+ pageHeader + header + opu1 +
+                    "<table width='100%'><tr><td></td><td></td><td></td><td></td></tr>" + tdimg + "</table> " + et +
+                    "</body> </html>";
+                String body1 = "<html><body>"+ pageHeader + header + opu1 +
+                   "<table width='100%'>" + tdimg1 + "</table> " + et+
+                   "</body> </html>";
                 c1SuperLabel1.Text = body1;                
             }
             catch (Exception ex)
