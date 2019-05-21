@@ -196,6 +196,7 @@ namespace clinic_ivf.control
             iniC.patientaddpanel1weight = iniF.getIni("app", "patientaddpanel1weight");
             iniC.creditCharge = iniF.getIni("app", "creditCharge");
             iniC.service_point_id = iniF.getIni("app", "service_point_id");
+            iniC.statusCheckDonor = iniF.getIni("app", "statusCheckDonor");
 
             iniC.grdViewFontName = iniC.grdViewFontName.Equals("") ? "Microsoft Sans Serif" : iniC.grdViewFontName;
 
@@ -232,6 +233,7 @@ namespace clinic_ivf.control
             iniC.creditCharge = iniC.creditCharge == null ? "3" : iniC.creditCharge.Equals("") ? "3" : iniC.creditCharge;
             iniC.usePassiveFTP = iniC.usePassiveFTP == null ? "false" : iniC.usePassiveFTP.Equals("") ? "false" : iniC.usePassiveFTP;
             iniC.service_point_id = iniC.service_point_id == null ? "2120000002" : iniC.service_point_id.Equals("") ? "2120000002" : iniC.service_point_id;
+            iniC.statusCheckDonor = iniC.statusCheckDonor == null ? "0" : iniC.statusCheckDonor.Equals("") ? "0" : iniC.statusCheckDonor;
 
             int.TryParse(iniC.grdViewFontSize, out grdViewFontSize);
             Decimal.TryParse(iniC.creditCharge, out CreditCharge);

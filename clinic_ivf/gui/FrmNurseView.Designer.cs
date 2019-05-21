@@ -335,18 +335,16 @@
             this.txtLabResultDate.CurrentTimeZone = false;
             this.txtLabResultDate.DateTimeInput = false;
             this.txtLabResultDate.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
-            this.txtLabResultDate.DisplayFormat.CustomFormat = "dd-MM-yyyy";
+            this.txtLabResultDate.DisplayFormat.CalendarType = C1.Win.C1Input.CalendarType.GregorianCalendar;
             this.txtLabResultDate.DisplayFormat.FormatType = C1.Win.C1Input.FormatTypeEnum.ShortDate;
-            this.txtLabResultDate.DisplayFormat.Inherit = ((C1.Win.C1Input.FormatInfoInheritFlags)(((((C1.Win.C1Input.FormatInfoInheritFlags.NullText | C1.Win.C1Input.FormatInfoInheritFlags.EmptyAsNull) 
+            this.txtLabResultDate.DisplayFormat.Inherit = ((C1.Win.C1Input.FormatInfoInheritFlags)((((C1.Win.C1Input.FormatInfoInheritFlags.NullText | C1.Win.C1Input.FormatInfoInheritFlags.EmptyAsNull) 
             | C1.Win.C1Input.FormatInfoInheritFlags.TrimStart) 
-            | C1.Win.C1Input.FormatInfoInheritFlags.TrimEnd) 
-            | C1.Win.C1Input.FormatInfoInheritFlags.CalendarType)));
-            this.txtLabResultDate.EditFormat.CustomFormat = "dd-MM-yyyy";
+            | C1.Win.C1Input.FormatInfoInheritFlags.TrimEnd)));
+            this.txtLabResultDate.EditFormat.CalendarType = C1.Win.C1Input.CalendarType.GregorianCalendar;
             this.txtLabResultDate.EditFormat.FormatType = C1.Win.C1Input.FormatTypeEnum.ShortDate;
-            this.txtLabResultDate.EditFormat.Inherit = ((C1.Win.C1Input.FormatInfoInheritFlags)(((((C1.Win.C1Input.FormatInfoInheritFlags.NullText | C1.Win.C1Input.FormatInfoInheritFlags.EmptyAsNull) 
+            this.txtLabResultDate.EditFormat.Inherit = ((C1.Win.C1Input.FormatInfoInheritFlags)((((C1.Win.C1Input.FormatInfoInheritFlags.NullText | C1.Win.C1Input.FormatInfoInheritFlags.EmptyAsNull) 
             | C1.Win.C1Input.FormatInfoInheritFlags.TrimStart) 
-            | C1.Win.C1Input.FormatInfoInheritFlags.TrimEnd) 
-            | C1.Win.C1Input.FormatInfoInheritFlags.CalendarType)));
+            | C1.Win.C1Input.FormatInfoInheritFlags.TrimEnd)));
             this.txtLabResultDate.EmptyAsNull = true;
             this.txtLabResultDate.GMTOffset = System.TimeSpan.Parse("00:00:00");
             this.txtLabResultDate.ImagePadding = new System.Windows.Forms.Padding(0);

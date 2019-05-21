@@ -29,6 +29,7 @@ namespace clinic_ivf.gui
         C1SuperTooltip stt;
         C1SuperErrorProvider sep;
         String theme2 = "Office2007Blue";
+        public String StatusSperm = "";
 
         public FrmLabSpermAdd(IvfControl ic, String reqid, String spermId)
         {
@@ -38,6 +39,38 @@ namespace clinic_ivf.gui
             this.spermId = spermId;
 
             initConfig();
+        }
+        public FrmLabSpermAdd(IvfControl ic, String reqid, String spermId, String StatusSperm)
+        {
+            InitializeComponent();
+            this.ic = ic;
+            reqId = reqid;
+            this.spermId = spermId;
+            this.StatusSperm = StatusSperm;
+
+            if (ic.iniC.statusCheckDonor.Equals("1"))
+            {
+                lsperm = new LabSperm();
+                lsperm.status_lab_sperm = StatusSperm;
+                if (StatusSperm.Equals("1"))
+                {
+                    tC.SelectedTab = tabSpermFreezing;
+                }
+                else if (StatusSperm.Equals("2"))
+                {
+                    tC.SelectedTab = tabSememAna;
+                }
+                else if (StatusSperm.Equals("3"))
+                {
+                    tC.SelectedTab = tabSememPESA;
+                }
+                else if (StatusSperm.Equals("4"))
+                {
+                    tC.SelectedTab = TabSpermIUI;
+                }
+            }
+            initConfig();
+            
         }
         private void initConfig()
         {
@@ -428,6 +461,11 @@ namespace clinic_ivf.gui
             txtPeReportDate.Value = lsperm.date_report;
             txtIuiApproveDate.Value = lsperm.date_approve;
             txtIuiReportDate.Value = lsperm.date_report;
+            if (ic.iniC.statusCheckDonor.Equals("1"))
+            {
+                lsperm = new LabSperm();
+                lsperm.status_lab_sperm = StatusSperm;
+            }
             if (lsperm.status_lab_sperm.Equals("1"))
             {
                 setControlSpermFreezing();
@@ -983,6 +1021,7 @@ namespace clinic_ivf.gui
             {
                 tC.SelectedTab = TabSpermIUI;
             }
+            
         }
     }
 }

@@ -3401,7 +3401,16 @@ namespace clinic_ivf.gui
         }
         private void FrmLabFetAdd1_Load(object sender, EventArgs e)
         {
-
+            if (ic.iniC.statusCheckDonor.Equals("1"))
+            {
+                label73.Hide();
+                label72.Hide();
+                //label88.Hide();
+                txtHnDonor.Hide();
+                txtNameDonor.Hide();
+                //txtDobDonor.Hide();
+                btnDonorSearch.Hide();
+            }
         }
     }
 }

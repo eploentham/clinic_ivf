@@ -74,7 +74,8 @@ namespace clinic_ivf.gui
             btnNew.Click += BtnNew_Click;
             btnSearchA.Click += BtnSearchA_Click;
             txtSearch.KeyUp += TxtSearch_KeyUp;
-
+            btnOPU.Click += BtnOPU_Click;
+            btnFet.Click += BtnFet_Click;
 
             initGrfReq();
             initGrfProc();
@@ -83,6 +84,27 @@ namespace clinic_ivf.gui
             setGrfProc();
             setGrfFinish();
             //initGrfSearch();
+        }
+
+        private void BtnFet_Click(object sender, EventArgs e)
+        {
+            //throw new NotImplementedException();
+            String txt = "";
+            txt = "ป้อน LAB FET ใหม่ ";
+            FrmLabFetAdd1 frm = new FrmLabFetAdd1(ic, "", "");
+            frm.FormBorderStyle = FormBorderStyle.None;
+            menu.AddNewTab(frm, txt);
+        }
+
+        private void BtnOPU_Click(object sender, EventArgs e)
+        {
+            //throw new NotImplementedException();
+            FrmLabOPUAdd2 frm = new FrmLabOPUAdd2(ic, "", "");
+            String txt = "";
+            txt = "ป้อน LAB OPU ใหม่ ";
+
+            frm.FormBorderStyle = FormBorderStyle.None;
+            menu.AddNewTab(frm, txt);
         }
 
         private void TxtSearch_KeyUp(object sender, KeyEventArgs e)
@@ -819,6 +841,10 @@ namespace clinic_ivf.gui
         private void FrmLabOpuView_Load(object sender, EventArgs e)
         {
             tcLabView.SelectedTab = tabLabAccept;
+            if (ic.iniC.statusCheckDonor.Equals("0"))
+            {
+                c1SplitButton1.Hide();
+            }
         }
     }
 }

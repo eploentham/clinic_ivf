@@ -48,6 +48,9 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.gB = new System.Windows.Forms.GroupBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.c1SplitButton1 = new C1.Win.C1Input.C1SplitButton();
+            this.btnOPU = new C1.Win.C1Input.DropDownItem();
+            this.btnFet = new C1.Win.C1Input.DropDownItem();
             this.txtHn = new C1.Win.C1Input.C1TextBox();
             this.btnSearchA = new C1.Win.C1Input.C1Button();
             this.txtDateEnd = new C1.Win.C1Input.C1DateEdit();
@@ -86,6 +89,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.c1CheckBox1)).BeginInit();
             this.panel1.SuspendLayout();
             this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.c1SplitButton1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtHn)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnSearchA)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtDateEnd)).BeginInit();
@@ -354,6 +358,7 @@
             // groupBox1
             // 
             this.groupBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.groupBox1.Controls.Add(this.c1SplitButton1);
             this.groupBox1.Controls.Add(this.txtHn);
             this.groupBox1.Controls.Add(this.btnSearchA);
             this.groupBox1.Controls.Add(this.txtDateEnd);
@@ -370,6 +375,27 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Search";
             this.theme1.SetTheme(this.groupBox1, "(default)");
+            // 
+            // c1SplitButton1
+            // 
+            this.c1SplitButton1.Items.Add(this.btnOPU);
+            this.c1SplitButton1.Items.Add(this.btnFet);
+            this.c1SplitButton1.Location = new System.Drawing.Point(602, 15);
+            this.c1SplitButton1.Name = "c1SplitButton1";
+            this.c1SplitButton1.Size = new System.Drawing.Size(115, 23);
+            this.c1SplitButton1.TabIndex = 11;
+            this.c1SplitButton1.Text = "ป้อน LAB";
+            this.theme1.SetTheme(this.c1SplitButton1, "(default)");
+            this.c1SplitButton1.UseVisualStyleBackColor = true;
+            this.c1SplitButton1.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            // 
+            // btnOPU
+            // 
+            this.btnOPU.Text = "OPU";
+            // 
+            // btnFet
+            // 
+            this.btnFet.Text = "FET";
             // 
             // txtHn
             // 
@@ -863,6 +889,7 @@
             this.panel1.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.c1SplitButton1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtHn)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnSearchA)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtDateEnd)).EndInit();
@@ -939,5 +966,8 @@
         private C1.Win.C1Input.C1TextBox txtSearch;
         private C1.Win.C1Input.C1DateEdit txtFiDateStart;
         private C1.Win.C1Input.C1DateEdit txtFiDateEnd;
+        private C1.Win.C1Input.C1SplitButton c1SplitButton1;
+        private C1.Win.C1Input.DropDownItem btnOPU;
+        private C1.Win.C1Input.DropDownItem btnFet;
     }
 }

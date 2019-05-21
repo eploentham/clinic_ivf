@@ -29,13 +29,12 @@
         private void InitializeComponent()
         {
             this.theme1 = new C1.Win.C1Themes.C1ThemeController();
-            this.sB = new System.Windows.Forms.StatusStrip();
-            this.sB1 = new System.Windows.Forms.ToolStripStatusLabel();
             this.tcLabView = new C1.Win.C1Command.C1DockingTab();
             this.tabLabAccept = new C1.Win.C1Command.C1DockingTabPage();
             this.panel1 = new System.Windows.Forms.Panel();
             this.gB = new System.Windows.Forms.GroupBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.txtDateStart = new C1.Win.C1Input.C1DateEdit();
             this.txtHn = new C1.Win.C1Input.C1TextBox();
             this.btnSearchA = new C1.Win.C1Input.C1Button();
             this.txtDateEnd = new C1.Win.C1Input.C1DateEdit();
@@ -60,14 +59,18 @@
             this.btnSearch = new C1.Win.C1Input.C1Button();
             this.label4 = new System.Windows.Forms.Label();
             this.txtSearch = new C1.Win.C1Input.C1TextBox();
-            this.txtDateStart = new C1.Win.C1Input.C1DateEdit();
+            this.sB = new System.Windows.Forms.StatusStrip();
+            this.sB1 = new System.Windows.Forms.ToolStripStatusLabel();
+            this.c1SplitButton1 = new C1.Win.C1Input.C1SplitButton();
+            this.btnOPU = new C1.Win.C1Input.DropDownItem();
+            this.btnFet = new C1.Win.C1Input.DropDownItem();
             ((System.ComponentModel.ISupportInitialize)(this.theme1)).BeginInit();
-            this.sB.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tcLabView)).BeginInit();
             this.tcLabView.SuspendLayout();
             this.tabLabAccept.SuspendLayout();
             this.panel1.SuspendLayout();
             this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtDateStart)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtHn)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnSearchA)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtDateEnd)).BeginInit();
@@ -84,28 +87,13 @@
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btnSearch)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtSearch)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtDateStart)).BeginInit();
+            this.sB.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.c1SplitButton1)).BeginInit();
             this.SuspendLayout();
             // 
             // theme1
             // 
             this.theme1.Theme = "Office2013Red";
-            // 
-            // sB
-            // 
-            this.sB.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.sB1});
-            this.sB.Location = new System.Drawing.Point(0, 699);
-            this.sB.Name = "sB";
-            this.sB.Size = new System.Drawing.Size(1082, 22);
-            this.sB.TabIndex = 9;
-            this.sB.Text = "statusStrip1";
-            // 
-            // sB1
-            // 
-            this.sB1.Name = "sB1";
-            this.sB1.Size = new System.Drawing.Size(118, 17);
-            this.sB1.Text = "toolStripStatusLabel1";
             // 
             // tcLabView
             // 
@@ -166,6 +154,7 @@
             // groupBox1
             // 
             this.groupBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.groupBox1.Controls.Add(this.c1SplitButton1);
             this.groupBox1.Controls.Add(this.txtDateStart);
             this.groupBox1.Controls.Add(this.txtHn);
             this.groupBox1.Controls.Add(this.btnSearchA);
@@ -182,6 +171,51 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Search";
             this.theme1.SetTheme(this.groupBox1, "(default)");
+            // 
+            // txtDateStart
+            // 
+            this.txtDateStart.AllowSpinLoop = false;
+            this.txtDateStart.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            // 
+            // 
+            // 
+            this.txtDateStart.Calendar.ArrowColor = System.Drawing.Color.Black;
+            this.txtDateStart.Calendar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.txtDateStart.Calendar.DayNamesFont = new System.Drawing.Font("Tahoma", 8F);
+            this.txtDateStart.Calendar.Font = new System.Drawing.Font("Tahoma", 8F);
+            this.txtDateStart.Calendar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.txtDateStart.Calendar.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(71)))), ((int)(((byte)(47)))));
+            this.txtDateStart.Calendar.SelectionForeColor = System.Drawing.Color.White;
+            this.txtDateStart.Calendar.TitleBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(230)))));
+            this.txtDateStart.Calendar.TitleFont = new System.Drawing.Font("Tahoma", 8F);
+            this.txtDateStart.Calendar.TitleForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.txtDateStart.Calendar.TodayBorderColor = System.Drawing.Color.White;
+            this.txtDateStart.Calendar.TrailingForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
+            this.txtDateStart.Calendar.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            this.txtDateStart.Culture = 1054;
+            this.txtDateStart.CurrentTimeZone = false;
+            this.txtDateStart.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
+            this.txtDateStart.DisplayFormat.CalendarType = C1.Win.C1Input.CalendarType.GregorianCalendar;
+            this.txtDateStart.DisplayFormat.FormatType = C1.Win.C1Input.FormatTypeEnum.ShortDate;
+            this.txtDateStart.DisplayFormat.Inherit = ((C1.Win.C1Input.FormatInfoInheritFlags)(((((C1.Win.C1Input.FormatInfoInheritFlags.CustomFormat | C1.Win.C1Input.FormatInfoInheritFlags.NullText) 
+            | C1.Win.C1Input.FormatInfoInheritFlags.EmptyAsNull) 
+            | C1.Win.C1Input.FormatInfoInheritFlags.TrimStart) 
+            | C1.Win.C1Input.FormatInfoInheritFlags.TrimEnd)));
+            this.txtDateStart.EditFormat.CalendarType = C1.Win.C1Input.CalendarType.GregorianCalendar;
+            this.txtDateStart.EditFormat.FormatType = C1.Win.C1Input.FormatTypeEnum.ShortDate;
+            this.txtDateStart.EditFormat.Inherit = ((C1.Win.C1Input.FormatInfoInheritFlags)(((((C1.Win.C1Input.FormatInfoInheritFlags.CustomFormat | C1.Win.C1Input.FormatInfoInheritFlags.NullText) 
+            | C1.Win.C1Input.FormatInfoInheritFlags.EmptyAsNull) 
+            | C1.Win.C1Input.FormatInfoInheritFlags.TrimStart) 
+            | C1.Win.C1Input.FormatInfoInheritFlags.TrimEnd)));
+            this.txtDateStart.GMTOffset = System.TimeSpan.Parse("00:00:00");
+            this.txtDateStart.ImagePadding = new System.Windows.Forms.Padding(0);
+            this.txtDateStart.Location = new System.Drawing.Point(90, 17);
+            this.txtDateStart.Name = "txtDateStart";
+            this.txtDateStart.Size = new System.Drawing.Size(129, 18);
+            this.txtDateStart.TabIndex = 523;
+            this.txtDateStart.Tag = null;
+            this.theme1.SetTheme(this.txtDateStart, "(default)");
+            this.txtDateStart.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
             // 
             // txtHn
             // 
@@ -580,50 +614,42 @@
             this.theme1.SetTheme(this.txtSearch, "(default)");
             this.txtSearch.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
             // 
-            // txtDateStart
+            // sB
             // 
-            this.txtDateStart.AllowSpinLoop = false;
-            this.txtDateStart.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.sB.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.sB1});
+            this.sB.Location = new System.Drawing.Point(0, 699);
+            this.sB.Name = "sB";
+            this.sB.Size = new System.Drawing.Size(1082, 22);
+            this.sB.TabIndex = 9;
+            this.sB.Text = "statusStrip1";
             // 
+            // sB1
             // 
+            this.sB1.Name = "sB1";
+            this.sB1.Size = new System.Drawing.Size(118, 17);
+            this.sB1.Text = "toolStripStatusLabel1";
             // 
-            this.txtDateStart.Calendar.ArrowColor = System.Drawing.Color.Black;
-            this.txtDateStart.Calendar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.txtDateStart.Calendar.DayNamesFont = new System.Drawing.Font("Tahoma", 8F);
-            this.txtDateStart.Calendar.Font = new System.Drawing.Font("Tahoma", 8F);
-            this.txtDateStart.Calendar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.txtDateStart.Calendar.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(71)))), ((int)(((byte)(47)))));
-            this.txtDateStart.Calendar.SelectionForeColor = System.Drawing.Color.White;
-            this.txtDateStart.Calendar.TitleBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(230)))));
-            this.txtDateStart.Calendar.TitleFont = new System.Drawing.Font("Tahoma", 8F);
-            this.txtDateStart.Calendar.TitleForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.txtDateStart.Calendar.TodayBorderColor = System.Drawing.Color.White;
-            this.txtDateStart.Calendar.TrailingForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
-            this.txtDateStart.Calendar.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
-            this.txtDateStart.Culture = 1054;
-            this.txtDateStart.CurrentTimeZone = false;
-            this.txtDateStart.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
-            this.txtDateStart.DisplayFormat.CalendarType = C1.Win.C1Input.CalendarType.GregorianCalendar;
-            this.txtDateStart.DisplayFormat.FormatType = C1.Win.C1Input.FormatTypeEnum.ShortDate;
-            this.txtDateStart.DisplayFormat.Inherit = ((C1.Win.C1Input.FormatInfoInheritFlags)(((((C1.Win.C1Input.FormatInfoInheritFlags.CustomFormat | C1.Win.C1Input.FormatInfoInheritFlags.NullText) 
-            | C1.Win.C1Input.FormatInfoInheritFlags.EmptyAsNull) 
-            | C1.Win.C1Input.FormatInfoInheritFlags.TrimStart) 
-            | C1.Win.C1Input.FormatInfoInheritFlags.TrimEnd)));
-            this.txtDateStart.EditFormat.CalendarType = C1.Win.C1Input.CalendarType.GregorianCalendar;
-            this.txtDateStart.EditFormat.FormatType = C1.Win.C1Input.FormatTypeEnum.ShortDate;
-            this.txtDateStart.EditFormat.Inherit = ((C1.Win.C1Input.FormatInfoInheritFlags)(((((C1.Win.C1Input.FormatInfoInheritFlags.CustomFormat | C1.Win.C1Input.FormatInfoInheritFlags.NullText) 
-            | C1.Win.C1Input.FormatInfoInheritFlags.EmptyAsNull) 
-            | C1.Win.C1Input.FormatInfoInheritFlags.TrimStart) 
-            | C1.Win.C1Input.FormatInfoInheritFlags.TrimEnd)));
-            this.txtDateStart.GMTOffset = System.TimeSpan.Parse("00:00:00");
-            this.txtDateStart.ImagePadding = new System.Windows.Forms.Padding(0);
-            this.txtDateStart.Location = new System.Drawing.Point(90, 17);
-            this.txtDateStart.Name = "txtDateStart";
-            this.txtDateStart.Size = new System.Drawing.Size(129, 18);
-            this.txtDateStart.TabIndex = 523;
-            this.txtDateStart.Tag = null;
-            this.theme1.SetTheme(this.txtDateStart, "(default)");
-            this.txtDateStart.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            // c1SplitButton1
+            // 
+            this.c1SplitButton1.Items.Add(this.btnOPU);
+            this.c1SplitButton1.Items.Add(this.btnFet);
+            this.c1SplitButton1.Location = new System.Drawing.Point(577, 15);
+            this.c1SplitButton1.Name = "c1SplitButton1";
+            this.c1SplitButton1.Size = new System.Drawing.Size(115, 23);
+            this.c1SplitButton1.TabIndex = 524;
+            this.c1SplitButton1.Text = "ป้อน LAB";
+            this.theme1.SetTheme(this.c1SplitButton1, "(default)");
+            this.c1SplitButton1.UseVisualStyleBackColor = true;
+            this.c1SplitButton1.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            // 
+            // btnOPU
+            // 
+            this.btnOPU.Text = "OPU";
+            // 
+            // btnFet
+            // 
+            this.btnFet.Text = "FET";
             // 
             // FrmLabFetView
             // 
@@ -636,14 +662,13 @@
             this.Text = "FrmLabFetView";
             this.Load += new System.EventHandler(this.FrmLabFetView_Load);
             ((System.ComponentModel.ISupportInitialize)(this.theme1)).EndInit();
-            this.sB.ResumeLayout(false);
-            this.sB.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tcLabView)).EndInit();
             this.tcLabView.ResumeLayout(false);
             this.tabLabAccept.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtDateStart)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtHn)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnSearchA)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtDateEnd)).EndInit();
@@ -662,7 +687,9 @@
             this.panel3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btnSearch)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtSearch)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtDateStart)).EndInit();
+            this.sB.ResumeLayout(false);
+            this.sB.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.c1SplitButton1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -703,5 +730,8 @@
         private System.Windows.Forms.Label label4;
         private C1.Win.C1Input.C1TextBox txtSearch;
         private C1.Win.C1Input.C1DateEdit txtDateStart;
+        private C1.Win.C1Input.C1SplitButton c1SplitButton1;
+        private C1.Win.C1Input.DropDownItem btnOPU;
+        private C1.Win.C1Input.DropDownItem btnFet;
     }
 }

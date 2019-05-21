@@ -822,7 +822,7 @@
             this.c1SplitterPanel3.SizeRatio = 31.208D;
             this.c1SplitterPanel3.TabIndex = 0;
             this.c1SplitterPanel3.Text = "Panel 1";
-            this.c1SplitterPanel3.Width = 384;
+            this.c1SplitterPanel3.Width = 391;
             // 
             // panel5
             // 
@@ -4798,7 +4798,7 @@
             this.c1SplitterPanel7.SizeRatio = 31.208D;
             this.c1SplitterPanel7.TabIndex = 0;
             this.c1SplitterPanel7.Text = "Panel 1";
-            this.c1SplitterPanel7.Width = 391;
+            this.c1SplitterPanel7.Width = 384;
             // 
             // panel10
             // 

@@ -11,6 +11,7 @@ using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Net;
+using System.Net.Mail;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
@@ -43,7 +44,9 @@ namespace clinic_ivf.gui
         Boolean grf2Focus = false, grf3Focus = false, grf5Focus = false, grf6Focus = false;
         private bool prefixSeen;
         String theme2 = "Office2007Blue";       //Office2016Black       BeigeOne
-        String flagEdit = "";
+        String flagEdit = "", body="";
+        List<LinkedResource> theEmailImage1 = new List<LinkedResource>();
+        SmtpClient SmtpServer;
         public FrmNurseOPUView(IvfControl ic, String reqid, String opuid)
         {
             InitializeComponent();
@@ -62,6 +65,7 @@ namespace clinic_ivf.gui
             //theme1.Theme = C1ThemeController.ApplicationTheme;
             theme1.SetTheme(sB, "BeigeOne");
             color = ColorTranslator.FromHtml(ic.iniC.grfRowColor);
+            SmtpServer = new SmtpClient("smtp.gmail.com");
 
             sB1.Text = "";
             bg = txtHnFeMale.BackColor;
@@ -75,6 +79,9 @@ namespace clinic_ivf.gui
 
             btnPrintOpuEmbryoDev.Click += BtnPrintOpuEmbryoDev_Click;
             btnPrint.Click += BtnPrint_Click;
+            btnSendEmail.Click += BtnSendEmail_Click;
+            btnResult.Click += BtnResult_Click;
+            SmtpServer.SendCompleted += SmtpServer_SendCompleted;
 
             ic.ivfDB.proceDB.setCboLabProce(cboOpuProce, objdb.LabProcedureDB.StatusLab.OPUProcedure);//cboEmbryoForEtDoctor
             ic.ivfDB.dtrOldDB.setCboDoctor(cboDoctor, "");
@@ -110,13 +117,61 @@ namespace clinic_ivf.gui
             setTheme();
             char c = '\u00B5';
             label86.Text = c.ToString() + "l";
-
+            btnSendEmail.Enabled = false;
             if (!ic.user.status_module_lab.Equals("1"))
             {
                                 
-                
 
             }
+        }
+
+        private void BtnResult_Click(object sender, EventArgs e)
+        {
+            //throw new NotImplementedException();
+            //sendHtmlEmail1();
+            setEmail(false);
+            btnSendEmail.Enabled = true;
+        }
+
+        private void BtnSendEmail_Click(object sender, EventArgs e)
+        {
+            //throw new NotImplementedException();
+            //setEmail(true);
+            MailMessage mail = new MailMessage();
+
+            mail.From = new MailAddress("eploentham@gmail.com");
+            mail.To.Add("eploentham@outlook.co.th");
+            mail.Subject = "Result OPU2";
+            //mail.Body = "Test send email";
+
+            mail.IsBodyHtml = true;
+            //MemoryStream stream = new MemoryStream();
+            //StreamWriter writer = new StreamWriter(stream);
+            //writer.Write(body);
+            //writer.Flush();
+            //stream.Position = 0;
+            //richTextBox1.LoadFile(stream, RichTextBoxStreamType.PlainText);
+
+            AlternateView htmlView = AlternateView.CreateAlternateViewFromString(body, null, "text/html");
+            mail.AlternateViews.Add(htmlView);
+            //Add Image
+            //LinkedResource theEmailImage = new LinkedResource(path+ "\\embryo_dev_1.jpg");
+            //theEmailImage.ContentId = "myImageID";
+            //htmlView.LinkedResources.Add(theEmailImage);
+            foreach (LinkedResource linkimg in theEmailImage1)
+            {
+                htmlView.LinkedResources.Add(linkimg);
+            }
+            //System.Net.Mail.Attachment attachment;
+            //attachment = new System.Net.Mail.Attachment(txtAttachment.Text);
+            //mail.Attachments.Add(attachment);
+
+            SmtpServer.Port = 587;
+            SmtpServer.Credentials = new System.Net.NetworkCredential("eploentham@gmail.com", "Singcamma1*");
+
+            SmtpServer.EnableSsl = true;
+            SmtpServer.Send(mail);
+            
         }
 
         private void BtnPrint_Click(object sender, EventArgs e)
@@ -132,7 +187,93 @@ namespace clinic_ivf.gui
             FrmLabOPUPrint frm = new FrmLabOPUPrint(ic, txtID.Text, FrmLabOPUPrint.opuReport.OPUEmbryoDevReport);
             frm.ShowDialog(this);
         }
+        private void setEmail(Boolean flagEmail)
+        {
+            FrmWaiting frmW = new FrmWaiting();
+            frmW.Show();
+            try
+            {
+                int i = 0;
+                LabOpuEmbryoDev embryo = new LabOpuEmbryoDev();
+                String path = System.IO.Directory.GetCurrentDirectory() + "\\pic";
+                bool folderExists = Directory.Exists(path);
+                if (!folderExists)
+                    Directory.CreateDirectory(path);
+                System.IO.DirectoryInfo di = new DirectoryInfo(path);
+                foreach (FileInfo file in di.GetFiles())
+                {
+                    file.Delete();
+                }
 
+                DataTable dtembryo6 = ic.ivfDB.opuEmDevDB.selectByOpuFetId_DayPrint(opu.opu_id, objdb.LabOpuEmbryoDevDB.Day1.Day6);
+                DataTable dtembryo5 = ic.ivfDB.opuEmDevDB.selectByOpuFetId_DayPrint(opu.opu_id, objdb.LabOpuEmbryoDevDB.Day1.Day5);
+                DataTable dtembryo3 = ic.ivfDB.opuEmDevDB.selectByOpuFetId_DayPrint(opu.opu_id, objdb.LabOpuEmbryoDevDB.Day1.Day3);
+                DataTable dtembryo2 = ic.ivfDB.opuEmDevDB.selectByOpuFetId_DayPrint(opu.opu_id, objdb.LabOpuEmbryoDevDB.Day1.Day2);
+                if (dtembryo6.Rows.Count > 0)
+                {
+                    frmW.pB.Minimum = 1;
+                    frmW.pB.Maximum = dtembryo6.Rows.Count;
+                    foreach (DataRow row in dtembryo6.Rows)
+                    {
+                        String path_pic = "", opuCode = "";
+                        path_pic = row["no1_pathpic"] != null ? row["no1_pathpic"].ToString() : "";
+                        opuCode = row["opu_code"] != null ? row["opu_code"].ToString() : "";
+                        if (!path_pic.Equals(""))
+                        {
+                            MemoryStream stream = ic.ftpC.download(path_pic);
+                            if (stream.Length <= 0) continue;
+                            Image loadedImage = new Bitmap(stream);
+                            Image resizedImage;
+                            String[] ext = path_pic.Split('.');
+                            var extension = Path.GetExtension(path_pic);
+                            var name = Path.GetFileNameWithoutExtension(path_pic); // Get the name only
+                                                                                   //if (ext.Length > 0)
+                                                                                   //{
+                            String filename = name;
+                            String no = "", filename1 = "", st = "";
+                            no = filename.Substring(filename.Length - 2);
+                            no = no.Replace("_", "");
+                            filename1 = path + "\\" + "embryo_dev_" + no + extension;
+                            if (File.Exists(filename1))
+                            {
+                                File.Delete(filename1);
+                                System.Threading.Thread.Sleep(200);
+                            }
+
+                            int newWidth = 280;
+                            int originalWidth = loadedImage.Width;
+                            resizedImage = loadedImage.GetThumbnailImage(newWidth, (newWidth * loadedImage.Height) / originalWidth, null, IntPtr.Zero);
+                            resizedImage.Save(filename1);
+                            row["no1_pathpic"] = filename1;
+                            //st = row["no1_desc2"].ToString();
+                            st = row["no1_desc3"].ToString();
+                            row["no1_desc2"] = "st# " + st;
+                            row["no1_desc3"] = row["no1_desc4"].ToString();
+                            resizedImage.Dispose();
+                            loadedImage.Dispose();
+                            //}
+                        }
+                        i++;
+                        frmW.pB.Value = i;
+                    }
+                    //sendHtmlEmail("eploentham@gmail.com", txtEmailTo.Text,  "Ekapop Ploentham", txtEmailSubject.Text, dtembryo6);
+                    sendHtmlEmail1("eploentham@gmail.com", txtEmailTo.Text, "Ekapop Ploentham", txtEmailSubject.Text, dtembryo6, "6");
+                    //System.IO.DirectoryInfo di1 = new DirectoryInfo(path);
+                    //foreach (FileInfo file in di1.GetFiles())
+                    //{
+                    //    file.Delete();
+                    //}
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("" + ex.Message, "");
+            }
+            finally
+            {
+                frmW.Dispose();
+            }
+        }
         private void setTheme()
         {
             theme1.SetTheme(sB, "BeigeOne");
@@ -1344,6 +1485,175 @@ namespace clinic_ivf.gui
                 
             }
             txtOpuTime.Value = opu.opu_time;
+        }
+        private void sendHtmlEmail1(string from_Email, string to_Email, string from_Name, string Subject, DataTable dt, String day)
+        {
+            try
+            {
+                int imgrow = 0, imgcol=0;
+                String tdimg = "", tdimg1 = "", tr="<tr>",tr1="</tr>";
+                String path = System.IO.Directory.GetCurrentDirectory() + "\\pic";
+                bool folderExists = Directory.Exists(path);
+                
+                if (folderExists)
+                {
+                    System.IO.DirectoryInfo di = new DirectoryInfo(path);
+                    foreach (FileInfo file in di.GetFiles())
+                    {
+                        LinkedResource theEmailImage2 = new LinkedResource(file.FullName);
+                        theEmailImage2.ContentId = "img_" + imgrow.ToString();
+                        theEmailImage1.Add(theEmailImage2);
+                        String desc0 = "", desc1 = "", desc2 = "", st = "", desc4 = "";
+                        foreach (DataRow row in dt.Rows)
+                        {
+                            if (file.FullName.Equals(row["no1_pathpic"].ToString()))
+                            {
+                                desc0 = row["no1_desc0"] != null ? row["no1_desc0"].ToString() : "";
+                                desc1 = row["no1_desc1"] != null ? row["no1_desc1"].ToString() : "";
+                                desc2 = row["no1_desc2"] != null ? row["no1_desc2"].ToString() : "";
+                                st = row["no1_desc3"] != null ? row["no1_desc3"].ToString() : "";
+                                desc4 = row["no1_desc4"] != null ? row["no1_desc4"].ToString() : "";
+                                break;
+                            }
+                        }
+                        if ((imgcol == 3) || (imgcol == 0))
+                        {
+                            tr = "<tr>";
+                            tr1 = "</tr>";
+                        }
+                        else
+                        {
+                            tr = "";
+                            tr1 = "";
+                        }
+                        tdimg += tr+"<td style='' font-style:arial; color:maroon; font-weight:bold''>" +
+                            "<table><tr><td>" + (imgrow + 1) + "</td></tr>" +
+                            "<tr><td>" + desc0 + "</td></tr>" +
+                            "<tr><td>" + desc1 + "</td></tr>" +
+                            "<tr> <td><img src=cid:img_" + imgrow.ToString() + "></td></tr>" +
+                            "<tr><td>" + st + "</td></tr>" +
+                            "</table></td>"+ tr1;
+                        tdimg1 += tr + "<td style='' font-style:arial; color:maroon; font-weight:bold''>" +
+                            "<table><tr><td>" + (imgrow + 1) + "</td></tr>" +
+                            "<tr><td>" + desc0 + "</td></tr>" +
+                            "<tr><td>" + desc1 + "</td></tr>" +
+                            "<tr> <td><img src='" + file.FullName + "'></td></tr>" +
+                            "<tr><td>" + st + "</td></tr>" +
+                            "</table></td>" + tr1;
+                        //tdimg += "<td style='' font-style:arial; color:maroon; font-weight:bold''> <img src=cid:img_" + imgrow.ToString() + "></td>";
+                        imgrow++;
+                        imgcol++;
+                        file.IsReadOnly = true;
+                    }
+                }
+                //body = "<html><body><p>Embryo development Day " + day + "111</p> </br>" +
+                //    "<table width='100%'><tr>" + tdimg + "</tr></table> </body> </html>";
+                //String body1 = "<html><body><p>Embryo development Day " + day + "111</p> </br>" +
+                //    "<table width='100%'><tr>" + tdimg1 + "</tr></table> </body> </html>";
+                body = "<html><body><p>Embryo development Day " + day + "111</p> </br>" +
+                    "<table width='100%'>" + tdimg + "</table> </body> </html>";
+                String body1 = "<html><body><p>Embryo development Day " + day + "111</p> </br>" +
+                    "<table width='100%'>" + tdimg1 + "</table> </body> </html>";
+                c1SuperLabel1.Text = body1;                
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+        }
+
+        private void SmtpServer_SendCompleted(object sender, AsyncCompletedEventArgs e)
+        {
+            //throw new NotImplementedException();
+            MessageBox.Show("mail send");
+        }
+
+        protected void sendHtmlEmail(string from_Email, string to_Email, string from_Name, string Subject, DataTable dt)
+        {
+            //create an instance of new mail message
+            int imgrow = 0;
+            String tdimg = "";
+            String path = System.IO.Directory.GetCurrentDirectory() + "\\pic";
+            bool folderExists = Directory.Exists(path);
+            List<LinkedResource> theEmailImage1 = new List<LinkedResource>();
+            if (folderExists)
+            {
+                System.IO.DirectoryInfo di = new DirectoryInfo(path);
+                foreach (FileInfo file in di.GetFiles())
+                {
+                    LinkedResource theEmailImage2 = new LinkedResource(file.FullName);
+                    theEmailImage2.ContentId = "img_"+ imgrow.ToString();
+                    theEmailImage1.Add(theEmailImage2);
+                    String desc0 = "", desc1 = "", desc2 = "", desc3 = "", desc4="";
+                    foreach(DataRow row in dt.Rows)
+                    {
+                        if (file.Name.Equals(row["path_pic"].ToString()))
+                        {
+                            desc0 = row["no1_desc0"] != null ? row["no1_desc0"].ToString() : "";
+                            desc1 = row["no1_desc1"] != null ? row["no1_desc1"].ToString() : "";
+                            desc2 = row["no1_desc2"] != null ? row["no1_desc2"].ToString() : "";
+                            desc3 = row["no1_desc3"] != null ? row["no1_desc3"].ToString() : "";
+                            desc4 = row["no1_desc4"] != null ? row["no1_desc4"].ToString() : "";
+                        }
+                    }
+                    tdimg += "<td style='' font-style:arial; color:maroon; font-weight:bold''>" +
+                        "<table><tr><td>"+(imgrow+1) +"</td></tr>" +
+                        "<tr><td>" + desc0 + "</td></tr>" +
+                        "<tr><td>" + desc1 + "</td></tr>" +
+                        "<tr> <img src=cid:img_" + imgrow.ToString() + "></tr>" +
+                        "<tr><td>" + desc3 + "</td></tr>" +
+                        "</table></td>";
+                    imgrow++;
+                }
+            }
+            string body = @"<html>
+                                  <body>
+                                    <table width='100%'>
+                                    <tr>
+                                        "+ tdimg + " </tr></table> </body> </html>";
+            MailMessage mail = new MailMessage();
+
+            //set the HTML format to true
+            mail.IsBodyHtml = true;
+            body = "<html><body> <table width='100%'><tr><td>Embryo development Day 6</td></tr></table> </body> </html>";
+            //create Alrternative HTML view
+            AlternateView htmlView = AlternateView.CreateAlternateViewFromString(body, null, "text/html");
+
+            //Add Image
+            //LinkedResource theEmailImage = new LinkedResource("E:\\IMG_3332.jpg");
+            //theEmailImage.ContentId = "myImageID";
+
+            //Add the Image to the Alternate view
+            //htmlView.LinkedResources.Add(theEmailImage);
+            //foreach(LinkedResource linkimg in theEmailImage1)
+            //{
+            //    htmlView.LinkedResources.Add(linkimg);
+            //}
+
+            //Add view to the Email Message
+            mail.AlternateViews.Add(htmlView);
+
+            //set the "from email" address and specify a friendly 'from' name
+            mail.From = new MailAddress(from_Email, from_Name);
+
+            //set the "to" email address
+            mail.To.Add(to_Email);
+
+            //set the Email subject
+            mail.Subject = Subject;
+
+            //set the SMTP info
+            System.Net.NetworkCredential cred = new System.Net.NetworkCredential("eploentham@gmail.com", "Singcamma1*");
+            SmtpClient smtp = new SmtpClient("smtp.gmail.com", 465);
+            smtp.EnableSsl = true;
+            smtp.DeliveryMethod = SmtpDeliveryMethod.Network;
+            smtp.UseDefaultCredentials = true;
+            
+            smtp.Credentials = cred;
+            smtp.Port = 465;
+            
+            //send the email
+            smtp.Send(mail);
         }
         private void FrmNurseOPUView_Load(object sender, EventArgs e)
         {

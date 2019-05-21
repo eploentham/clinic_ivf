@@ -220,6 +220,7 @@
             this.menuLabAccept.Name = "menuLabAccept";
             this.menuLabAccept.Size = new System.Drawing.Size(180, 22);
             this.menuLabAccept.Text = "Accept Lab";
+            this.menuLabAccept.Visible = false;
             // 
             // menuLabOpu
             // 
@@ -244,12 +245,14 @@
             this.ปอนSpermFreexingToolStripMenuItem.Name = "ปอนSpermFreexingToolStripMenuItem";
             this.ปอนSpermFreexingToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.ปอนSpermFreexingToolStripMenuItem.Text = "ป้อนSperm Freezing";
+            this.ปอนSpermFreexingToolStripMenuItem.Visible = false;
             // 
             // menuTestForm
             // 
             this.menuTestForm.Name = "menuTestForm";
             this.menuTestForm.Size = new System.Drawing.Size(180, 22);
             this.menuTestForm.Text = "Test Form";
+            this.menuTestForm.Visible = false;
             // 
             // menuPharmacy
             // 

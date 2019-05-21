@@ -73,6 +73,10 @@ namespace clinic_ivf.gui
             btnNew.Click += BtnNew_Click;
             btnSearchA.Click += BtnSearchA_Click;
             txtSearch.KeyUp += TxtSearch_KeyUp;
+            btnAna.Click += BtnAna_Click;
+            btnFreezing.Click += BtnFreezing_Click;
+            btnPesa.Click += BtnPesa_Click;
+            btnIui.Click += BtnIui_Click;
             
             initGrfReq();
             initGrfProc();
@@ -82,6 +86,53 @@ namespace clinic_ivf.gui
             setGrfFinish();
             //initGrfSearch();
         }
+
+        private void BtnIui_Click(object sender, EventArgs e)
+        {
+            //throw new NotImplementedException();
+            FrmLabSpermAdd frm = new FrmLabSpermAdd(ic, "", "", "4");
+            frm.StatusSperm = "4";
+            String txt = "";
+            txt = "ป้อน LAB Sperm Analysis ";
+            frm.FormBorderStyle = FormBorderStyle.None;
+            
+            menu.AddNewTab(frm, txt);
+        }
+
+        private void BtnPesa_Click(object sender, EventArgs e)
+        {
+            //throw new NotImplementedException();
+            FrmLabSpermAdd frm = new FrmLabSpermAdd(ic, "", "", "3");
+            frm.StatusSperm = "3";
+            String txt = "";
+            txt = "ป้อน LAB Sperm PESA ";
+            frm.FormBorderStyle = FormBorderStyle.None;
+            
+            menu.AddNewTab(frm, txt);
+        }
+
+        private void BtnFreezing_Click(object sender, EventArgs e)
+        {
+            //throw new NotImplementedException();
+            FrmLabSpermAdd frm = new FrmLabSpermAdd(ic, "", "", "1");
+            String txt = "";
+            txt = "ป้อน LAB Sperm Freezing ";
+            frm.FormBorderStyle = FormBorderStyle.None;
+            frm.StatusSperm = "2";
+            menu.AddNewTab(frm, txt);
+        }
+
+        private void BtnAna_Click(object sender, EventArgs e)
+        {
+            //throw new NotImplementedException();
+            FrmLabSpermAdd frm = new FrmLabSpermAdd(ic, "", "", "2");
+            String txt = "";            
+            txt = "ป้อน LAB Sperm Analysis ";
+            frm.FormBorderStyle = FormBorderStyle.None;
+            frm.StatusSperm = "1";
+            menu.AddNewTab(frm, txt);
+        }
+
         private void TxtSearch_KeyUp(object sender, KeyEventArgs e)
         {
             //throw new NotImplementedException();
@@ -829,6 +880,10 @@ namespace clinic_ivf.gui
         private void FrmLabSpermView_Load(object sender, EventArgs e)
         {
             tcLabView.SelectedTab = tabLabAccept;
+            if (ic.iniC.statusCheckDonor.Equals("0"))
+            {
+                c1SplitButton1.Hide();
+            }
         }
     }
 }

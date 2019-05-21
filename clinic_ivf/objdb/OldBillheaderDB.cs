@@ -80,7 +80,7 @@ namespace clinic_ivf.objdb
             String billno = "";
 
             String sql = "SELECT BillNo " +
-                ",  " +
+                "  " +
                 "From " + obillh.table + " obillh " +
                 //"left join Patient ptt on ptt.PIDS = obillh.PIDS " +
                 //"left join SurfixName on SurfixName.SurfixID = ptt.SurfixID " +

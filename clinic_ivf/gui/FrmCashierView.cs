@@ -77,6 +77,10 @@ namespace clinic_ivf.gui
             {
                 setGrfFinish();
             }
+            else if (tC.SelectedTab == tabQue)
+            {
+                setGrfQue();
+            }
         }
         
         private void Timer_Tick(object sender, EventArgs e)

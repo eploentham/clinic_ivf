@@ -65,8 +65,8 @@ namespace clinic_ivf.gui
             chkFrozenSperm.CheckStateChanged += ChkFrozenSperm_CheckStateChanged;
             btnPrintOPU.Click += BtnPrintOPU_Click;
             btnPrintFet.Click += BtnPrintFet_Click;
-            chkNgs.Click += ChkNgs_Click;
-            chkNoNgs.Click += ChkNoNgs_Click;
+            //chkNgs.Click += ChkNgs_Click;
+            //chkNoNgs.Click += ChkNoNgs_Click;
             chkSememPESA.CheckedChanged += ChkSememPESA_CheckedChanged;
             chkSpermIUI.CheckedChanged += ChkSpermIUI_CheckedChanged;
 

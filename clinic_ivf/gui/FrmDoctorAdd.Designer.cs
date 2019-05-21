@@ -271,14 +271,14 @@
             this.ViewZoomGroup = new C1.Win.C1Ribbon.RibbonGroup();
             this.ViewZoomCombobox = new C1.Win.C1Ribbon.RibbonComboBox();
             this.NormalSizeButton = new C1.Win.C1Ribbon.RibbonButton();
+            this.ribbonTab1 = new C1.Win.C1Ribbon.RibbonTab();
+            this.ribbonGroup1 = new C1.Win.C1Ribbon.RibbonGroup();
+            this.rbPgPrint = new C1.Win.C1Ribbon.RibbonButton();
             this.ribbonTopToolBar1 = new C1.Win.C1Ribbon.RibbonTopToolBar();
             this.panel3 = new System.Windows.Forms.Panel();
             this.pnOrder11 = new System.Windows.Forms.Panel();
             this.sB = new System.Windows.Forms.StatusStrip();
             this.sB1 = new System.Windows.Forms.ToolStripStatusLabel();
-            this.ribbonTab1 = new C1.Win.C1Ribbon.RibbonTab();
-            this.ribbonGroup1 = new C1.Win.C1Ribbon.RibbonGroup();
-            this.rbPgPrint = new C1.Win.C1Ribbon.RibbonButton();
             ((System.ComponentModel.ISupportInitialize)(this.theme1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkDenyAllergy)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.sCmain)).BeginInit();
@@ -3510,6 +3510,25 @@
             this.NormalSizeButton.SmallImage = ((System.Drawing.Image)(resources.GetObject("NormalSizeButton.SmallImage")));
             this.NormalSizeButton.Text = "100%";
             // 
+            // ribbonTab1
+            // 
+            this.ribbonTab1.Groups.Add(this.ribbonGroup1);
+            this.ribbonTab1.Name = "ribbonTab1";
+            this.ribbonTab1.Text = "Print";
+            // 
+            // ribbonGroup1
+            // 
+            this.ribbonGroup1.Items.Add(this.rbPgPrint);
+            this.ribbonGroup1.Name = "ribbonGroup1";
+            this.ribbonGroup1.Text = "Group";
+            // 
+            // rbPgPrint
+            // 
+            this.rbPgPrint.LargeImage = ((System.Drawing.Image)(resources.GetObject("rbPgPrint.LargeImage")));
+            this.rbPgPrint.Name = "rbPgPrint";
+            this.rbPgPrint.SmallImage = ((System.Drawing.Image)(resources.GetObject("rbPgPrint.SmallImage")));
+            this.rbPgPrint.Text = "Print";
+            // 
             // ribbonTopToolBar1
             // 
             this.ribbonTopToolBar1.Name = "ribbonTopToolBar1";
@@ -3551,25 +3570,6 @@
             this.sB1.Name = "sB1";
             this.sB1.Size = new System.Drawing.Size(118, 17);
             this.sB1.Text = "toolStripStatusLabel1";
-            // 
-            // ribbonTab1
-            // 
-            this.ribbonTab1.Groups.Add(this.ribbonGroup1);
-            this.ribbonTab1.Name = "ribbonTab1";
-            this.ribbonTab1.Text = "Print";
-            // 
-            // ribbonGroup1
-            // 
-            this.ribbonGroup1.Items.Add(this.rbPgPrint);
-            this.ribbonGroup1.Name = "ribbonGroup1";
-            this.ribbonGroup1.Text = "Group";
-            // 
-            // rbPgPrint
-            // 
-            this.rbPgPrint.LargeImage = ((System.Drawing.Image)(resources.GetObject("rbPgPrint.LargeImage")));
-            this.rbPgPrint.Name = "rbPgPrint";
-            this.rbPgPrint.SmallImage = ((System.Drawing.Image)(resources.GetObject("rbPgPrint.SmallImage")));
-            this.rbPgPrint.Text = "Print";
             // 
             // FrmDoctorAdd
             // 

@@ -75,6 +75,11 @@
             this.label29 = new System.Windows.Forms.Label();
             this.sB = new System.Windows.Forms.StatusStrip();
             this.sB1 = new System.Windows.Forms.ToolStripStatusLabel();
+            this.c1SplitButton1 = new C1.Win.C1Input.C1SplitButton();
+            this.btnAna = new C1.Win.C1Input.DropDownItem();
+            this.btnFreezing = new C1.Win.C1Input.DropDownItem();
+            this.btnPesa = new C1.Win.C1Input.DropDownItem();
+            this.btnIui = new C1.Win.C1Input.DropDownItem();
             ((System.ComponentModel.ISupportInitialize)(this.theme1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtHn)).BeginInit();
             this.panel1.SuspendLayout();
@@ -106,6 +111,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.c1TextBox24)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.c1CheckBox1)).BeginInit();
             this.sB.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.c1SplitButton1)).BeginInit();
             this.SuspendLayout();
             // 
             // theme1
@@ -168,6 +174,7 @@
             // groupBox1
             // 
             this.groupBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.groupBox1.Controls.Add(this.c1SplitButton1);
             this.groupBox1.Controls.Add(this.txtHn);
             this.groupBox1.Controls.Add(this.btnSearchA);
             this.groupBox1.Controls.Add(this.txtDateEnd);
@@ -840,6 +847,37 @@
             this.sB1.Size = new System.Drawing.Size(118, 17);
             this.sB1.Text = "toolStripStatusLabel1";
             // 
+            // c1SplitButton1
+            // 
+            this.c1SplitButton1.Items.Add(this.btnAna);
+            this.c1SplitButton1.Items.Add(this.btnFreezing);
+            this.c1SplitButton1.Items.Add(this.btnPesa);
+            this.c1SplitButton1.Items.Add(this.btnIui);
+            this.c1SplitButton1.Location = new System.Drawing.Point(584, 15);
+            this.c1SplitButton1.Name = "c1SplitButton1";
+            this.c1SplitButton1.Size = new System.Drawing.Size(115, 23);
+            this.c1SplitButton1.TabIndex = 523;
+            this.c1SplitButton1.Text = "ป้อน LAB";
+            this.theme1.SetTheme(this.c1SplitButton1, "(default)");
+            this.c1SplitButton1.UseVisualStyleBackColor = true;
+            this.c1SplitButton1.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            // 
+            // btnAna
+            // 
+            this.btnAna.Text = "Sperm Analysis";
+            // 
+            // btnFreezing
+            // 
+            this.btnFreezing.Text = "Sperm Freezing";
+            // 
+            // btnPesa
+            // 
+            this.btnPesa.Text = "Sperm PESA";
+            // 
+            // btnIui
+            // 
+            this.btnIui.Text = "Sperm IUI";
+            // 
             // FrmLabSpermView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -899,6 +937,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.c1CheckBox1)).EndInit();
             this.sB.ResumeLayout(false);
             this.sB.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.c1SplitButton1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -953,5 +992,10 @@
         private System.Windows.Forms.Label label32;
         private C1.Win.C1Input.C1CheckBox c1CheckBox1;
         private System.Windows.Forms.Label label29;
+        private C1.Win.C1Input.C1SplitButton c1SplitButton1;
+        private C1.Win.C1Input.DropDownItem btnAna;
+        private C1.Win.C1Input.DropDownItem btnFreezing;
+        private C1.Win.C1Input.DropDownItem btnPesa;
+        private C1.Win.C1Input.DropDownItem btnIui;
     }
 }

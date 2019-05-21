@@ -63,7 +63,7 @@ namespace clinic_ivf.gui
             sep = new C1SuperErrorProvider();
 
             txtDateStart.Value = System.DateTime.Now.Year + "-" + System.DateTime.Now.ToString("MM-dd");
-            txtLabResultDate.Value = System.DateTime.Now.Year + "-" + System.DateTime.Now.ToString("MM-dd");
+            //txtLabResultDate.Value = System.DateTime.Now.Year + "-" + System.DateTime.Now.ToString("MM-dd");
             //btnNew.Click += BtnNew_Click;
             txtSearch.KeyUp += TxtSearch_KeyUp;
             //txtDateStart.ValueChanged += TxtDateStart_ValueChanged;
@@ -71,7 +71,7 @@ namespace clinic_ivf.gui
             tC.SelectedTabChanged += TC_SelectedTabChanged;
             btnSearch.Click += BtnSearch_Click;
             //txtSearch.KeyUp += TxtSearch_KeyUp1;
-            txtLabResultDate.KeyUp += TxtLabResultDate_KeyUp;
+            //txtLabResultDate.KeyUp += TxtLabResultDate_KeyUp;
             chkAll.CheckedChanged += ChkAll_CheckedChanged;
             cboVisitBsp.SelectedItemChanged += CboVisitBsp_SelectedItemChanged;
             btnLabResultSearch.Click += BtnLabResultSearch_Click;
@@ -126,10 +126,10 @@ namespace clinic_ivf.gui
         private void TxtLabResultDate_KeyUp(object sender, KeyEventArgs e)
         {
             //throw new NotImplementedException();
-            if (e.KeyCode == Keys.Enter)
-            {
-                setGrfLab(txtLabResultHn.Text.Trim());
-            }
+            //if (e.KeyCode == Keys.Enter)
+            //{
+            //    setGrfLab(txtLabResultHn.Text.Trim());
+            //}
         }
 
         private void TxtSearch_KeyUp1(object sender, KeyEventArgs e)
@@ -762,6 +762,10 @@ namespace clinic_ivf.gui
                     date = dt11.Year + "-" + dt11.ToString("MM-dd");
                     dt = ic.ivfDB.lbReqDB.selectByStatusResult(date, date,"");
                 }
+                else
+                {
+                    dt = ic.ivfDB.lbReqDB.selectByStatusResult(date, date, "");
+                }
             }
             else
             {
@@ -769,7 +773,8 @@ namespace clinic_ivf.gui
                 DateTime dt11 = new DateTime();
                 DateTime.TryParse(txtLabResultDate.Text, out dt11);
                 date1 = dt11.Year.ToString()+"-"+ dt11.ToString("MM-dd");
-                dt = ic.ivfDB.lbReqDB.selectByStatusResult(date1, date1,search);
+
+                dt = ic.ivfDB.lbReqDB.selectByStatusResult("", "",search);
                 //grfPtt.DataSource = ic.ivfDB.vsOldDB.selectCurrentVisit(search);
             }
 
