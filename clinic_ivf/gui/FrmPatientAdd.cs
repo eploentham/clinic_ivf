@@ -343,6 +343,7 @@ namespace clinic_ivf.gui
             dt.Columns.Add("lmp_p", typeof(String));
             dt.Columns.Add("lmp_a", typeof(String));
             dt.Columns.Add("lmp", typeof(String));
+            dt.Columns.Add("allergy", typeof(String));
 
             dt.Rows[0]["ptt_name_t"] = ptt.patient_firstname+" "+ ptt.patient_lastname;
             dt.Rows[0]["hn"] = ptt.patient_hn;
@@ -366,6 +367,7 @@ namespace clinic_ivf.gui
             dt.Rows[0]["lmp_p"] = txtP.Text;
             dt.Rows[0]["lmp_a"] = txtA.Text;
             dt.Rows[0]["lmp"] = txtVisitLMP.Text;
+            dt.Rows[0]["allergy"] = cboAllergyDesc.Text;
             if (vs != null)
                 dt.Rows[0]["queue"] = vs.queue_id;
             //dt.Rows[0]["form_day1_id"] = "";
@@ -377,11 +379,12 @@ namespace clinic_ivf.gui
 
         private void setControlPtt(Boolean flag)
         {
-            chkStatusG.Visible = flag;
-            label20.Visible = flag;
-            label27.Visible = flag;
-            txtG.Visible = flag;
-            txtP.Visible = flag;
+            //chkStatusG.Visible = flag;
+            //label20.Visible = flag;
+            //label27.Visible = flag;
+            //txtG.Visible = flag;
+            //txtP.Visible = flag;
+            //txtA.Visible = flag;
             chkOPU.Visible = flag;
             chkOR.Visible = flag;
             //chkDenyAllergy.Visible = flag;
@@ -390,7 +393,7 @@ namespace clinic_ivf.gui
             //txtAllergyDesc.Visible = flag;
             label3.Visible = flag;
             txtNickName.Visible = flag;
-            txtA.Visible = flag;
+            
             chkChronic.Visible = flag;
         }
 
@@ -507,8 +510,16 @@ namespace clinic_ivf.gui
                     //txtID.Value = re;
                     btnVisit.Text = "Save Visit";
                     btnVisit.Image = Resources.accept_database24;
-                    setGrfVs(txtHn.Text);
-                    //        txtID.Value = re;
+                    if (ic.iniC.statusAppDonor.Equals("1"))
+                    {
+                        setGrfVsDonor(txtHn.Text);
+                    }
+                    else
+                    {
+                        setGrfVs(txtHn.Text);
+                    }
+                        
+                    //        txtID.Value = re;setGrfVsDonor
                     //        txtPid.Focus();
                     //    }
                     //}
@@ -2731,7 +2742,9 @@ namespace clinic_ivf.gui
             {
                 ic.setC1Combo(CboNation, "41");
             }
-            
+            txtG.Value = ptt.g;
+            txtP.Value = ptt.p;
+            txtA.Value = ptt.a;
         }
         private void setControl()
         {

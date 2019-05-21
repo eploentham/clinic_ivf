@@ -35,6 +35,9 @@
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.panel2 = new System.Windows.Forms.Panel();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.label12 = new System.Windows.Forms.Label();
+            this.txtDoctorId = new C1.Win.C1Input.C1TextBox();
+            this.chkStfDoctor = new C1.Win.C1Input.C1CheckBox();
             this.cboDept = new C1.Win.C1Input.C1ComboBox();
             this.cboPosi = new C1.Win.C1Input.C1ComboBox();
             this.btnPasswordCompirm = new C1.Win.C1Input.C1Button();
@@ -93,9 +96,8 @@
             this.txtID = new C1.Win.C1Input.C1TextBox();
             this.txtStfCode = new C1.Win.C1Input.C1TextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.chkStfDoctor = new C1.Win.C1Input.C1CheckBox();
-            this.label12 = new System.Windows.Forms.Label();
-            this.txtDoctorId = new C1.Win.C1Input.C1TextBox();
+            this.txtDoctorOldId = new C1.Win.C1Input.C1TextBox();
+            this.label13 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.theme1)).BeginInit();
             this.sB.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -104,6 +106,8 @@
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
             this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtDoctorId)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chkStfDoctor)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cboDept)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cboPosi)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnPasswordCompirm)).BeginInit();
@@ -143,8 +147,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.btnSave)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtID)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtStfCode)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.chkStfDoctor)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtDoctorId)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtDoctorOldId)).BeginInit();
             this.SuspendLayout();
             // 
             // theme1
@@ -221,6 +224,8 @@
             // groupBox1
             // 
             this.groupBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(87)))), ((int)(((byte)(87)))), ((int)(((byte)(87)))));
+            this.groupBox1.Controls.Add(this.label13);
+            this.groupBox1.Controls.Add(this.txtDoctorOldId);
             this.groupBox1.Controls.Add(this.label12);
             this.groupBox1.Controls.Add(this.txtDoctorId);
             this.groupBox1.Controls.Add(this.chkStfDoctor);
@@ -279,6 +284,51 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "groupBox1";
             this.theme1.SetTheme(this.groupBox1, "(default)");
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(87)))), ((int)(((byte)(87)))), ((int)(((byte)(87)))));
+            this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.label12.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
+            this.label12.Location = new System.Drawing.Point(452, 533);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(51, 16);
+            this.label12.TabIndex = 263;
+            this.label12.Text = "ว แพทย์ :";
+            this.theme1.SetTheme(this.label12, "(default)");
+            // 
+            // txtDoctorId
+            // 
+            this.txtDoctorId.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(71)))), ((int)(((byte)(71)))));
+            this.txtDoctorId.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtDoctorId.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(172)))), ((int)(((byte)(172)))), ((int)(((byte)(172)))));
+            this.txtDoctorId.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.txtDoctorId.Location = new System.Drawing.Point(525, 531);
+            this.txtDoctorId.Name = "txtDoctorId";
+            this.txtDoctorId.Size = new System.Drawing.Size(118, 20);
+            this.txtDoctorId.TabIndex = 262;
+            this.txtDoctorId.Tag = null;
+            this.theme1.SetTheme(this.txtDoctorId, "(default)");
+            this.txtDoctorId.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            // 
+            // chkStfDoctor
+            // 
+            this.chkStfDoctor.BackColor = System.Drawing.Color.Transparent;
+            this.chkStfDoctor.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(71)))), ((int)(((byte)(71)))));
+            this.chkStfDoctor.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.chkStfDoctor.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.chkStfDoctor.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
+            this.chkStfDoctor.Location = new System.Drawing.Point(328, 527);
+            this.chkStfDoctor.Name = "chkStfDoctor";
+            this.chkStfDoctor.Padding = new System.Windows.Forms.Padding(4, 1, 1, 1);
+            this.chkStfDoctor.Size = new System.Drawing.Size(121, 24);
+            this.chkStfDoctor.TabIndex = 261;
+            this.chkStfDoctor.Text = "user Doctor";
+            this.theme1.SetTheme(this.chkStfDoctor, "(default)");
+            this.chkStfDoctor.UseVisualStyleBackColor = true;
+            this.chkStfDoctor.Value = null;
+            this.chkStfDoctor.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
             // 
             // cboDept
             // 
@@ -1139,50 +1189,32 @@
             this.label1.Text = "รหัส :";
             this.theme1.SetTheme(this.label1, "(default)");
             // 
-            // chkStfDoctor
+            // txtDoctorOldId
             // 
-            this.chkStfDoctor.BackColor = System.Drawing.Color.Transparent;
-            this.chkStfDoctor.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(71)))), ((int)(((byte)(71)))));
-            this.chkStfDoctor.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.chkStfDoctor.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.chkStfDoctor.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
-            this.chkStfDoctor.Location = new System.Drawing.Point(328, 527);
-            this.chkStfDoctor.Name = "chkStfDoctor";
-            this.chkStfDoctor.Padding = new System.Windows.Forms.Padding(4, 1, 1, 1);
-            this.chkStfDoctor.Size = new System.Drawing.Size(121, 24);
-            this.chkStfDoctor.TabIndex = 261;
-            this.chkStfDoctor.Text = "user Doctor";
-            this.theme1.SetTheme(this.chkStfDoctor, "(default)");
-            this.chkStfDoctor.UseVisualStyleBackColor = true;
-            this.chkStfDoctor.Value = null;
-            this.chkStfDoctor.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            this.txtDoctorOldId.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(71)))), ((int)(((byte)(71)))));
+            this.txtDoctorOldId.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtDoctorOldId.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(172)))), ((int)(((byte)(172)))), ((int)(((byte)(172)))));
+            this.txtDoctorOldId.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.txtDoctorOldId.Location = new System.Drawing.Point(525, 505);
+            this.txtDoctorOldId.Name = "txtDoctorOldId";
+            this.txtDoctorOldId.Size = new System.Drawing.Size(118, 20);
+            this.txtDoctorOldId.TabIndex = 264;
+            this.txtDoctorOldId.Tag = null;
+            this.theme1.SetTheme(this.txtDoctorOldId, "(default)");
+            this.txtDoctorOldId.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
             // 
-            // label12
+            // label13
             // 
-            this.label12.AutoSize = true;
-            this.label12.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(87)))), ((int)(((byte)(87)))), ((int)(((byte)(87)))));
-            this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.label12.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
-            this.label12.Location = new System.Drawing.Point(428, 533);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(51, 16);
-            this.label12.TabIndex = 263;
-            this.label12.Text = "ว แพทย์ :";
-            this.theme1.SetTheme(this.label12, "(default)");
-            // 
-            // txtDoctorId
-            // 
-            this.txtDoctorId.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(71)))), ((int)(((byte)(71)))));
-            this.txtDoctorId.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtDoctorId.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(172)))), ((int)(((byte)(172)))), ((int)(((byte)(172)))));
-            this.txtDoctorId.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.txtDoctorId.Location = new System.Drawing.Point(525, 531);
-            this.txtDoctorId.Name = "txtDoctorId";
-            this.txtDoctorId.Size = new System.Drawing.Size(118, 20);
-            this.txtDoctorId.TabIndex = 262;
-            this.txtDoctorId.Tag = null;
-            this.theme1.SetTheme(this.txtDoctorId, "(default)");
-            this.txtDoctorId.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            this.label13.AutoSize = true;
+            this.label13.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(87)))), ((int)(((byte)(87)))), ((int)(((byte)(87)))));
+            this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.label13.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
+            this.label13.Location = new System.Drawing.Point(452, 507);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(30, 16);
+            this.label13.TabIndex = 265;
+            this.label13.Text = "old:";
+            this.theme1.SetTheme(this.label13, "(default)");
             // 
             // FrmStaff
             // 
@@ -1206,6 +1238,8 @@
             this.splitContainer1.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtDoctorId)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chkStfDoctor)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cboDept)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cboPosi)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnPasswordCompirm)).EndInit();
@@ -1246,8 +1280,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.btnSave)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtID)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtStfCode)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.chkStfDoctor)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtDoctorId)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtDoctorOldId)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1323,5 +1356,7 @@
         private C1.Win.C1Input.C1CheckBox chkStfDoctor;
         private System.Windows.Forms.Label label12;
         private C1.Win.C1Input.C1TextBox txtDoctorId;
+        private System.Windows.Forms.Label label13;
+        private C1.Win.C1Input.C1TextBox txtDoctorOldId;
     }
 }

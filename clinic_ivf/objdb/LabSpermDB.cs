@@ -193,6 +193,8 @@ namespace clinic_ivf.objdb
             p.doctor_id = long.TryParse(p.doctor_id, out chk) ? chk.ToString() : "0";
             p.req_id = long.TryParse(p.req_id, out chk) ? chk.ToString() : "0";
             p.form_a_id = long.TryParse(p.form_a_id, out chk) ? chk.ToString() : "0";
+            p.staff_id_report = long.TryParse(p.staff_id_report, out chk) ? chk.ToString() : "0";
+            p.staff_id_approve = long.TryParse(p.staff_id_approve, out chk) ? chk.ToString() : "0";
         }
         public DataTable selectByPk(String copId)
         {
