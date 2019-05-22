@@ -262,8 +262,8 @@
             this.pnEmailView = new System.Windows.Forms.Panel();
             this.pnEmailView1 = new System.Windows.Forms.Panel();
             this.groupBox9 = new System.Windows.Forms.GroupBox();
-            this.btnResult = new C1.Win.C1Input.C1Button();
             this.panel6 = new System.Windows.Forms.Panel();
+            this.btnResult = new C1.Win.C1Input.C1Button();
             this.chkResultDay6 = new System.Windows.Forms.RadioButton();
             this.chkResultDay5 = new System.Windows.Forms.RadioButton();
             this.chkResultDay3 = new System.Windows.Forms.RadioButton();
@@ -272,6 +272,7 @@
             this.pnEmailAdd = new System.Windows.Forms.Panel();
             this.pnEmailAdd1 = new System.Windows.Forms.Panel();
             this.pnEmailAddBody = new System.Windows.Forms.Panel();
+            this.c1SuperLabel1 = new C1.Win.C1SuperTooltip.C1SuperLabel();
             this.pnEmailAddSubject = new System.Windows.Forms.Panel();
             this.btnSendEmail = new C1.Win.C1Input.C1Button();
             this.btnMaleSearch = new C1.Win.C1Input.C1Button();
@@ -332,7 +333,9 @@
             this.ribbonTopToolBar1 = new C1.Win.C1Ribbon.RibbonTopToolBar();
             this.sB = new System.Windows.Forms.StatusStrip();
             this.sB1 = new System.Windows.Forms.ToolStripStatusLabel();
-            this.c1SuperLabel1 = new C1.Win.C1SuperTooltip.C1SuperLabel();
+            this.txtEmailBody = new C1.Win.C1Input.C1TextBox();
+            this.panel7 = new System.Windows.Forms.Panel();
+            this.panel8 = new System.Windows.Forms.Panel();
             ((System.ComponentModel.ISupportInitialize)(this.theme1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.c1SplitContainer1)).BeginInit();
             this.c1SplitContainer1.SuspendLayout();
@@ -474,8 +477,8 @@
             this.sCEmailView.SuspendLayout();
             this.pnEmailView.SuspendLayout();
             this.groupBox9.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.btnResult)).BeginInit();
             this.panel6.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.btnResult)).BeginInit();
             this.sCEmailAdd.SuspendLayout();
             this.pnEmailAdd.SuspendLayout();
             this.pnEmailAdd1.SuspendLayout();
@@ -487,6 +490,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtEmailTo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.c1Ribbon1)).BeginInit();
             this.sB.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtEmailBody)).BeginInit();
+            this.panel7.SuspendLayout();
+            this.panel8.SuspendLayout();
             this.SuspendLayout();
             // 
             // theme1
@@ -4391,20 +4397,6 @@
             this.groupBox9.Text = "เงื่อนไข";
             this.theme1.SetTheme(this.groupBox9, "(default)");
             // 
-            // btnResult
-            // 
-            this.btnResult.Image = global::clinic_ivf.Properties.Resources.Female_user_add_24;
-            this.btnResult.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnResult.Location = new System.Drawing.Point(394, 6);
-            this.btnResult.Name = "btnResult";
-            this.btnResult.Size = new System.Drawing.Size(83, 34);
-            this.btnResult.TabIndex = 741;
-            this.btnResult.Text = "OK";
-            this.btnResult.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.theme1.SetTheme(this.btnResult, "(default)");
-            this.btnResult.UseVisualStyleBackColor = true;
-            this.btnResult.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
-            // 
             // panel6
             // 
             this.panel6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
@@ -4419,6 +4411,20 @@
             this.panel6.Size = new System.Drawing.Size(502, 43);
             this.panel6.TabIndex = 740;
             this.theme1.SetTheme(this.panel6, "(default)");
+            // 
+            // btnResult
+            // 
+            this.btnResult.Image = global::clinic_ivf.Properties.Resources.Female_user_add_24;
+            this.btnResult.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnResult.Location = new System.Drawing.Point(394, 6);
+            this.btnResult.Name = "btnResult";
+            this.btnResult.Size = new System.Drawing.Size(83, 34);
+            this.btnResult.TabIndex = 741;
+            this.btnResult.Text = "OK";
+            this.btnResult.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.theme1.SetTheme(this.btnResult, "(default)");
+            this.btnResult.UseVisualStyleBackColor = true;
+            this.btnResult.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
             // 
             // chkResultDay6
             // 
@@ -4527,7 +4533,8 @@
             // pnEmailAddBody
             // 
             this.pnEmailAddBody.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.pnEmailAddBody.Controls.Add(this.c1SuperLabel1);
+            this.pnEmailAddBody.Controls.Add(this.panel8);
+            this.pnEmailAddBody.Controls.Add(this.panel7);
             this.pnEmailAddBody.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnEmailAddBody.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
             this.pnEmailAddBody.Location = new System.Drawing.Point(0, 68);
@@ -4535,6 +4542,18 @@
             this.pnEmailAddBody.Size = new System.Drawing.Size(815, 264);
             this.pnEmailAddBody.TabIndex = 1;
             this.theme1.SetTheme(this.pnEmailAddBody, "(default)");
+            // 
+            // c1SuperLabel1
+            // 
+            this.c1SuperLabel1.AutoSize = true;
+            this.c1SuperLabel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.c1SuperLabel1.Location = new System.Drawing.Point(0, 0);
+            this.c1SuperLabel1.Name = "c1SuperLabel1";
+            this.c1SuperLabel1.Size = new System.Drawing.Size(815, 184);
+            this.c1SuperLabel1.TabIndex = 0;
+            this.c1SuperLabel1.Text = "c1SuperLabel1";
+            this.theme1.SetTheme(this.c1SuperLabel1, "(default)");
+            this.c1SuperLabel1.UseMnemonic = true;
             // 
             // pnEmailAddSubject
             // 
@@ -5005,17 +5024,44 @@
             this.sB1.Size = new System.Drawing.Size(118, 17);
             this.sB1.Text = "toolStripStatusLabel1";
             // 
-            // c1SuperLabel1
+            // txtEmailBody
             // 
-            this.c1SuperLabel1.AutoSize = true;
-            this.c1SuperLabel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.c1SuperLabel1.Location = new System.Drawing.Point(0, 0);
-            this.c1SuperLabel1.Name = "c1SuperLabel1";
-            this.c1SuperLabel1.Size = new System.Drawing.Size(815, 264);
-            this.c1SuperLabel1.TabIndex = 0;
-            this.c1SuperLabel1.Text = "c1SuperLabel1";
-            this.theme1.SetTheme(this.c1SuperLabel1, "(default)");
-            this.c1SuperLabel1.UseMnemonic = true;
+            this.txtEmailBody.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtEmailBody.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
+            this.txtEmailBody.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.txtEmailBody.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.txtEmailBody.Location = new System.Drawing.Point(0, 0);
+            this.txtEmailBody.Multiline = true;
+            this.txtEmailBody.Name = "txtEmailBody";
+            this.txtEmailBody.Size = new System.Drawing.Size(815, 80);
+            this.txtEmailBody.TabIndex = 540;
+            this.txtEmailBody.Tag = null;
+            this.theme1.SetTheme(this.txtEmailBody, "(default)");
+            this.txtEmailBody.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            // 
+            // panel7
+            // 
+            this.panel7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.panel7.Controls.Add(this.txtEmailBody);
+            this.panel7.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.panel7.Location = new System.Drawing.Point(0, 0);
+            this.panel7.Name = "panel7";
+            this.panel7.Size = new System.Drawing.Size(815, 80);
+            this.panel7.TabIndex = 541;
+            this.theme1.SetTheme(this.panel7, "(default)");
+            // 
+            // panel8
+            // 
+            this.panel8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.panel8.Controls.Add(this.c1SuperLabel1);
+            this.panel8.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel8.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.panel8.Location = new System.Drawing.Point(0, 80);
+            this.panel8.Name = "panel8";
+            this.panel8.Size = new System.Drawing.Size(815, 184);
+            this.panel8.TabIndex = 542;
+            this.theme1.SetTheme(this.panel8, "(default)");
             // 
             // FrmNurseOPUView
             // 
@@ -5179,15 +5225,14 @@
             this.sCEmailView.ResumeLayout(false);
             this.pnEmailView.ResumeLayout(false);
             this.groupBox9.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.btnResult)).EndInit();
             this.panel6.ResumeLayout(false);
             this.panel6.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.btnResult)).EndInit();
             this.sCEmailAdd.ResumeLayout(false);
             this.pnEmailAdd.ResumeLayout(false);
             this.pnEmailAdd.PerformLayout();
             this.pnEmailAdd1.ResumeLayout(false);
             this.pnEmailAddBody.ResumeLayout(false);
-            this.pnEmailAddBody.PerformLayout();
             this.pnEmailAddSubject.ResumeLayout(false);
             this.pnEmailAddSubject.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btnSendEmail)).EndInit();
@@ -5197,6 +5242,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.c1Ribbon1)).EndInit();
             this.sB.ResumeLayout(false);
             this.sB.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtEmailBody)).EndInit();
+            this.panel7.ResumeLayout(false);
+            this.panel8.ResumeLayout(false);
+            this.panel8.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -5508,5 +5557,8 @@
         private C1.Win.C1Input.C1Button btnSendEmail;
         private C1.Win.C1Input.C1Button btnResult;
         private C1.Win.C1SuperTooltip.C1SuperLabel c1SuperLabel1;
+        private System.Windows.Forms.Panel panel8;
+        private System.Windows.Forms.Panel panel7;
+        private C1.Win.C1Input.C1TextBox txtEmailBody;
     }
 }

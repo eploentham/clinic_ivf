@@ -141,6 +141,8 @@ namespace clinic_ivf.gui
             //throw new NotImplementedException();
             //setEmail(true);
             DataTable dtembryo6 = ic.ivfDB.opuEmDevDB.selectByOpuFetId_DayPrint(opu.opu_id, objdb.LabOpuEmbryoDevDB.Day1.Day6);
+            DataTable dtExport = new DataTable();
+            dtExport = ic.ivfDB.setOPUReport(opu.opu_id, "6", "", true);
             ReportDocument rpt;
             CrystalReportViewer crv = new CrystalReportViewer();
             rpt = new ReportDocument();
@@ -150,7 +152,7 @@ namespace clinic_ivf.gui
             crv.Refresh();
             //rpt.Load(Application.StartupPath + "\\lab_opu_embryo_dev.rpt");
             //rd.Load("StudentReg.rpt");
-            rpt.SetDataSource(dtembryo6);
+            rpt.SetDataSource(dtExport);
             //crv.ReportSource = rd;
             //crv.Refresh();
             if (File.Exists("embryo.pdf"))
@@ -185,9 +187,9 @@ namespace clinic_ivf.gui
 
             mail.IsBodyHtml = true;
 
-            System.Net.Mail.Attachment attachment;
-            attachment = new System.Net.Mail.Attachment("embryo.pdf");
-            mail.Attachments.Add(attachment);
+            //System.Net.Mail.Attachment attachment;
+            //attachment = new System.Net.Mail.Attachment("embryo.pdf");
+            //mail.Attachments.Add(attachment);
 
             AlternateView htmlView = AlternateView.CreateAlternateViewFromString(body, null, "text/html");
             mail.AlternateViews.Add(htmlView);
@@ -1593,7 +1595,7 @@ namespace clinic_ivf.gui
                 //String body1 = "<html><body><p>Embryo development Day " + day + "111</p> </br>" +
                 //    "<table width='100%'><tr>" + tdimg1 + "</tr></table> </body> </html>";
                 String pageHeader = "", header="", procedure="", doctor="", opudate="", hn_female="", hn_male="", name_female="", name_male="", matura="", ferti="",sperm="", freezing0="", freezing1="", opu1="";
-                String spermfrezing = "", et="", emreport="", etapprove="", report="", approve="", css="";
+                String spermfrezing = "", et="", emreport="", etapprove="", report="", approve="", css="", txtbody="";
                 css = "<style> " +
                     "p.dotted { border - style: dotted; } " +
                     "p.dashed { border - style: dashed; } " +
@@ -1682,15 +1684,16 @@ namespace clinic_ivf.gui
                     "<tr><td>Embryologist report :</td><td>" + report + "</td><td>Embryologist approve :</td><td>" + approve + "</td></tr>" +
                     "</table>";
 
+                txtbody = "<p align='left'" + txtEmailBody.Text + "</p> </br>";
                 opu1 = "<table width='100%'><tr><td>" + matura+"</td><td>"+ ferti + "</td><td>" + sperm + "</td></tr></table>";
-                pageHeader = "<p align='center'>Embryo development Day " + day + "111</p> </br>";
+                pageHeader = "<p align='center'>Embryo development Day " + day + "</p> </br>";
                 header = "<table>" +
                     "<tr><td class='groove_left_top'>Name Female :</td><td>" + name_female + "</td><td>Hn :</td><td class='groove_right_top'>" + hn_female + "</td></tr>" +
                     "<tr><td class='groove_left'>Name Male :</td><td>" + name_male + "</td><td>Hn :</td><td class='groove_groove_rightleft'>" + hn_male + "</td></tr>" +
                     "<tr><td class='groove_left'>Doctor :</td><td>" + doctor + "</td><td></td><td class='groove_right'></td></tr>" +
                     "<tr><td class='groove_left_botton'>Procedure :</td><td>" + procedure + "</td><td>Date time :</td><td class='groove_right_botton'>" + opudate + "</td></tr>" +
                     "</table>";
-                body = "<html><body>"+ pageHeader + header + opu1 +
+                body = "<html><body>"+ pageHeader + header+ txtbody + opu1 +
                     "<table width='100%'><tr><td></td><td></td><td></td><td></td></tr>" + tdimg + "</table> " + et +
                     "</body> </html>";
                 String body1 = "<html><body>"+ pageHeader + header + opu1 +

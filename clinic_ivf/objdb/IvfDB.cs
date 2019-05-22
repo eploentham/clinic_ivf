@@ -1516,5 +1516,206 @@ namespace clinic_ivf.objdb
             }
             return re;
         }
+        public DataTable setOPUReport(String opuid, String day1, String day2, Boolean EmbryoDev20)
+        {
+            DataTable dt = new DataTable();
+            DataTable dtdev1 = new DataTable();
+            DataTable dtdev2 = new DataTable();
+            if (!EmbryoDev20 && day2.Equals(""))
+            {
+                MessageBox.Show("กรุณา เลือก Day 2", "");
+                return null;
+            }
+            dt = opuDB.selectByPrintOPU(opuid);
+            if (dt.Rows.Count <= 0)
+            {
+                MessageBox.Show("No Data" + dt.Rows.Count, "");
+                return null;
+            }
+            if (day1.Equals("2"))
+            {
+                dtdev1 = opuEmDevDB.selectByOpuFetId_Day(opuid, objdb.LabOpuEmbryoDevDB.Day1.Day2);
+            }
+            else if (day1.Equals("3"))
+            {
+                dtdev1 = opuEmDevDB.selectByOpuFetId_Day(opuid, objdb.LabOpuEmbryoDevDB.Day1.Day3);
+            }
+            else if (day1.Equals("5"))
+            {
+                dtdev1 = opuEmDevDB.selectByOpuFetId_Day(opuid, objdb.LabOpuEmbryoDevDB.Day1.Day5);
+            }
+            else if (day1.Equals("6"))
+            {
+                dtdev1 = opuEmDevDB.selectByOpuFetId_Day(opuid, objdb.LabOpuEmbryoDevDB.Day1.Day6);
+            }
+            if (!EmbryoDev20 && !day2.Equals(""))
+            {
+                if (day2.Equals("2"))
+                {
+                    dtdev2 = opuEmDevDB.selectByOpuFetId_Day(opuid, objdb.LabOpuEmbryoDevDB.Day1.Day2);
+                }
+                else if (day2.Equals("3"))
+                {
+                    dtdev2 = opuEmDevDB.selectByOpuFetId_Day(opuid, objdb.LabOpuEmbryoDevDB.Day1.Day3);
+                }
+                else if (day2.Equals("5"))
+                {
+                    dtdev2 = opuEmDevDB.selectByOpuFetId_Day(opuid, objdb.LabOpuEmbryoDevDB.Day1.Day5);
+                }
+                else if (day2.Equals("6"))
+                {
+                    dtdev2 = opuEmDevDB.selectByOpuFetId_Day(opuid, objdb.LabOpuEmbryoDevDB.Day1.Day6);
+                }
+            }
+            for (int i = 1; i <= 40; i++)
+            {
+                String col = "";
+                col = "embryo_dev_0_" + i.ToString("00");
+                dt.Columns.Add(col, typeof(String));
+                col = "embryo_dev_1_" + i.ToString("00");
+                dt.Columns.Add(col, typeof(String));
+            }
+            int j = 1;
+            String col11 = "embryo_dev_1_name";
+            dt.Columns.Add(col11, typeof(String));
+            col11 = "embryo_dev_0_name";
+            dt.Columns.Add(col11, typeof(String));
+            dt.Columns.Add("embryo_dev_0_date", typeof(String));
+            dt.Columns.Add("embryo_dev_1_date", typeof(String));
+            dt.Columns.Add("embryo_dev_0_staff_name", typeof(String));
+            dt.Columns.Add("embryo_dev_1_staff_name", typeof(String));
+            dt.Columns.Add("embryo_dev_0_checked_name", typeof(String));
+            dt.Columns.Add("embryo_dev_1_checked_name", typeof(String));
+            dt.Columns.Add("embryo_freez_no_straw_0", typeof(String));
+            dt.Columns.Add("embryo_freez_no_straw_1", typeof(String));
+
+            if (!day1.Equals("") && dt.Rows.Count > 0)
+            {
+                dt.Rows[0]["embryo_dev_0_name"] = "Embryo Development (Day " + day1 + ")";
+            }
+            if (!day2.Equals("") && dt.Rows.Count > 0)
+            {
+                dt.Rows[0]["embryo_dev_1_name"] = "Embryo Development (Day " + day2 + ")";
+            }
+            String stfid = "", checkedid = "", embryodevdate = "", etName = "";
+            foreach (DataRow row in dtdev1.Rows)
+            {
+                if (j > 40) continue;
+                if (row["desc0"].ToString().Equals("")) continue;
+                String col = "embryo_dev_0_", vol = "";
+                stfid = ""; checkedid = ""; embryodevdate = "";
+                vol = "0" + row["opu_embryo_dev_no"].ToString();
+                vol = vol.Substring(vol.Length - 2);
+                col = col + vol;
+                dt.Rows[0][col] = j + ". " + row["desc0"].ToString() + " " + row["desc1"].ToString();
+                stfid = row["staff_id"].ToString();
+                checkedid = row["checked_id"].ToString();
+                embryodevdate = row["embryo_dev_date"].ToString();
+                j++;
+            }
+            dt.Rows[0]["embryo_dev_0_staff_name"] = stfDB.getStaffNameBylStf(stfid);
+            dt.Rows[0]["embryo_dev_0_checked_name"] = stfDB.getStaffNameBylStf(checkedid);
+            etName = dt.Rows[0]["embryo_for_et_embryologist_id"].ToString();
+            dt.Columns.Remove("embryo_for_et_embryologist_id");
+            dt.Columns.Add("embryo_for_et_embryologist_id", typeof(String));
+            dt.Rows[0]["embryo_for_et_embryologist_id"] = stfDB.getStaffNameBylStf(etName);
+            //dt.Rows[0]["embryo_dev_0_date"] = datetimetoShow(embryodevdate);
+            dt.Rows[0]["embryo_dev_0_date"] = datetoShow(embryodevdate).Replace("-", "/");
+            dt.Rows[0]["embryo_freez_no_straw_0"] = dt.Rows[0]["embryo_freez_no_of_straw_0"].ToString();
+            dt.Rows[0]["embryo_freez_no_straw_1"] = dt.Rows[0]["embryo_freez_no_of_straw_1"].ToString();
+            j = 1;
+            if (!EmbryoDev20 && dtdev2.Rows.Count > 0)
+            {
+                foreach (DataRow row in dtdev2.Rows)
+                {
+                    if (j > 40) continue;
+                    if (row["desc0"].ToString().Equals("")) continue;
+                    String col = "embryo_dev_1_", vol = "";
+                    stfid = ""; checkedid = ""; embryodevdate = "";
+                    vol = "0" + row["opu_embryo_dev_no"].ToString();
+                    vol = vol.Substring(vol.Length - 2);
+                    col = col + vol;
+                    dt.Rows[0][col] = j + ". " + row["desc0"].ToString() + " " + row["desc1"].ToString();
+                    stfid = row["staff_id"].ToString();
+                    checkedid = row["checked_id"].ToString();
+                    embryodevdate = row["embryo_dev_date"].ToString();
+                    j++;
+                }
+            }
+            dt.Rows[0]["embryo_dev_1_staff_name"] = stfDB.getStaffNameBylStf(stfid);
+            dt.Rows[0]["embryo_dev_1_checked_name"] = stfDB.getStaffNameBylStf(checkedid);
+
+            dt.Rows[0]["embryo_for_et_doctor"] = dt.Rows[0]["embryo_for_et_doctor"].ToString().Equals("") ? "-" : dtrOldDB.getlDtrNameByID(dt.Rows[0]["embryo_for_et_doctor"].ToString());
+
+            dt.Rows[0]["embryo_dev_1_date"] = datetoShow(embryodevdate).Replace("-", "/");
+            String date1 = "";
+            date1 = datetoShow(dt.Rows[0][opuDB.opu.dob_female].ToString());
+            dt.Rows[0][opuDB.opu.dob_female] = date1.Replace("-", "/");
+            date1 = datetoShow(dt.Rows[0][opuDB.opu.dob_male].ToString());
+            dt.Rows[0][opuDB.opu.dob_male] = date1.Replace("-", "/");
+            date1 = datetoShow(dt.Rows[0][opuDB.opu.matura_date].ToString());
+            dt.Rows[0][opuDB.opu.matura_date] = date1.Replace("-", "/").Replace("2001", "99999");
+            date1 = datetoShow(dt.Rows[0][opuDB.opu.fertili_date].ToString());
+            dt.Rows[0][opuDB.opu.fertili_date] = date1.Replace("-", "/");
+            date1 = datetoShow(dt.Rows[0][opuDB.opu.embryo_for_et_date].ToString());
+            dt.Rows[0][opuDB.opu.embryo_for_et_date] = date1.Replace("-", "/");
+            date1 = datetoShow(dt.Rows[0][opuDB.opu.embryo_freez_date_2].ToString());
+            dt.Rows[0][opuDB.opu.embryo_freez_date_2] = date1.Replace("-", "/");
+            date1 = datetoShow(dt.Rows[0][opuDB.opu.embryo_freez_date_3].ToString());
+            dt.Rows[0][opuDB.opu.embryo_freez_date_3] = date1.Replace("-", "/");
+            date1 = datetoShow(dt.Rows[0][opuDB.opu.embryo_freez_date_5].ToString());
+            dt.Rows[0][opuDB.opu.embryo_freez_date_5] = date1.Replace("-", "/");
+            date1 = datetoShow(dt.Rows[0][opuDB.opu.embryo_freez_date_6].ToString());
+            dt.Rows[0][opuDB.opu.embryo_freez_date_6] = date1.Replace("-", "/");
+            date1 = datetoShow(dt.Rows[0][opuDB.opu.embryo_freez_date_0].ToString());
+            dt.Rows[0][opuDB.opu.embryo_freez_date_0] = date1.Replace("-", "/");
+            date1 = datetoShow(dt.Rows[0][opuDB.opu.embryo_freez_date_1].ToString());
+            dt.Rows[0][opuDB.opu.embryo_freez_date_1] = date1.Replace("-", "/");
+            date1 = datetoShow(dt.Rows[0][opuDB.opu.opu_date].ToString());
+            dt.Rows[0][opuDB.opu.opu_date] = date1.Replace("-", "/");
+            date1 = datetoShow(dt.Rows[0][opuDB.opu.sperm_date].ToString());
+            dt.Rows[0][opuDB.opu.sperm_date] = date1.Replace("-", "/");
+
+            dt.Rows[0][opuDB.opu.matura_m_ii] = dt.Rows[0][opuDB.opu.matura_m_ii].ToString().Equals("") ? "-" : dt.Rows[0][opuDB.opu.matura_m_ii].ToString();
+            dt.Rows[0][opuDB.opu.matura_m_i] = dt.Rows[0][opuDB.opu.matura_m_i].ToString().Equals("") ? "-" : dt.Rows[0][opuDB.opu.matura_m_i].ToString();
+            dt.Rows[0][opuDB.opu.matura_gv] = dt.Rows[0][opuDB.opu.matura_gv].ToString().Equals("") ? "-" : dt.Rows[0][opuDB.opu.matura_gv].ToString();
+            dt.Rows[0][opuDB.opu.matura_post_mat] = dt.Rows[0][opuDB.opu.matura_post_mat].ToString().Equals("") ? "-" : dt.Rows[0][opuDB.opu.matura_post_mat].ToString();
+            dt.Rows[0][opuDB.opu.matura_abmormal] = dt.Rows[0][opuDB.opu.matura_abmormal].ToString().Equals("") ? "-" : dt.Rows[0][opuDB.opu.matura_abmormal].ToString();
+            dt.Rows[0][opuDB.opu.matura_dead] = dt.Rows[0][opuDB.opu.matura_dead].ToString().Equals("") ? "-" : dt.Rows[0][opuDB.opu.matura_dead].ToString();
+
+            dt.Rows[0][opuDB.opu.fertili_2_pn] = dt.Rows[0][opuDB.opu.fertili_2_pn].ToString().Equals("") ? "-" : dt.Rows[0][opuDB.opu.fertili_2_pn].ToString();
+            dt.Rows[0][opuDB.opu.fertili_1_pn] = dt.Rows[0][opuDB.opu.fertili_1_pn].ToString().Equals("") ? "-" : dt.Rows[0][opuDB.opu.fertili_1_pn].ToString();
+            dt.Rows[0][opuDB.opu.fertili_3_pn] = dt.Rows[0][opuDB.opu.fertili_3_pn].ToString().Equals("") ? "-" : dt.Rows[0][opuDB.opu.fertili_3_pn].ToString();
+            dt.Rows[0][opuDB.opu.fertili_4_pn] = dt.Rows[0][opuDB.opu.fertili_4_pn].ToString().Equals("") ? "-" : dt.Rows[0][opuDB.opu.fertili_4_pn].ToString();
+            dt.Rows[0][opuDB.opu.fertili_no_pn] = dt.Rows[0][opuDB.opu.fertili_no_pn].ToString().Equals("") ? "-" : dt.Rows[0][opuDB.opu.fertili_no_pn].ToString();
+            dt.Rows[0][opuDB.opu.fertili_dead] = dt.Rows[0][opuDB.opu.fertili_dead].ToString().Equals("") ? "-" : dt.Rows[0][opuDB.opu.fertili_dead].ToString();
+
+            dt.Rows[0][opuDB.opu.embryo_for_et_no_of_et] = dt.Rows[0][opuDB.opu.embryo_for_et_no_of_et].ToString().Equals("") ? "-" : dt.Rows[0][opuDB.opu.embryo_for_et_no_of_et].ToString();
+            dt.Rows[0][opuDB.opu.embryo_for_et_day] = dt.Rows[0][opuDB.opu.embryo_for_et_day].ToString().Equals("") ? "-" : dt.Rows[0][opuDB.opu.embryo_for_et_day].ToString();
+            dt.Rows[0][opuDB.opu.embryo_for_et_date] = dt.Rows[0][opuDB.opu.embryo_for_et_date].ToString().Equals("") ? "-" : dt.Rows[0][opuDB.opu.embryo_for_et_date].ToString();
+            dt.Rows[0][opuDB.opu.embryo_for_et_assisted] = dt.Rows[0][opuDB.opu.embryo_for_et_assisted].ToString().Equals("") ? "-" : dt.Rows[0][opuDB.opu.embryo_for_et_assisted].ToString();
+            dt.Rows[0][opuDB.opu.embryo_for_et_volume] = dt.Rows[0][opuDB.opu.embryo_for_et_volume].ToString().Equals("") ? "-" : dt.Rows[0][opuDB.opu.embryo_for_et_volume].ToString();
+            dt.Rows[0][opuDB.opu.embryo_for_et_catheter] = dt.Rows[0][opuDB.opu.embryo_for_et_catheter].ToString().Equals("") ? "-" : dt.Rows[0][opuDB.opu.embryo_for_et_catheter].ToString();
+            dt.Rows[0][opuDB.opu.embryo_for_et_number_of_discard] = dt.Rows[0][opuDB.opu.embryo_for_et_number_of_discard].ToString().Equals("") ? "-" : dt.Rows[0][opuDB.opu.embryo_for_et_number_of_discard].ToString();
+            dt.Rows[0][opuDB.opu.embryo_for_et_number_of_freeze] = dt.Rows[0][opuDB.opu.embryo_for_et_number_of_freeze].ToString().Equals("") ? "-" : dt.Rows[0][opuDB.opu.embryo_for_et_number_of_freeze].ToString();
+            dt.Rows[0][opuDB.opu.embryo_for_et_number_of_discard] = dt.Rows[0][opuDB.opu.embryo_for_et_number_of_discard].ToString().Equals("") ? "-" : dt.Rows[0][opuDB.opu.embryo_for_et_number_of_discard].ToString();
+
+            return dt;
+        }
+        public String datetoShow(Object dt)
+        {
+            DateTime dt1 = new DateTime();
+            //MySqlDateTime dtm = new MySqlDateTime();
+            String re = "";
+            if (dt != null)
+            {
+                if (DateTime.TryParse(dt.ToString(), out dt1))
+                {
+                    if (dt1.Year < 1900) return "";
+                    re = dt1.ToString("dd-MM-yyyy");
+                }
+            }
+            return re;
+        }
     }
 }

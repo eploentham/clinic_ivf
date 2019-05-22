@@ -36,6 +36,7 @@
             this.cboEmbryoDev1 = new C1.Win.C1Input.C1ComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.chkEmbryoFreez2Col = new C1.Win.C1Input.C1CheckBox();
             this.txtID = new C1.Win.C1Input.C1TextBox();
             this.txtOpuCode = new C1.Win.C1Input.C1TextBox();
             this.label47 = new System.Windows.Forms.Label();
@@ -51,13 +52,14 @@
             this.theme1 = new C1.Win.C1Themes.C1ThemeController();
             this.sB = new System.Windows.Forms.StatusStrip();
             this.sB1 = new System.Windows.Forms.ToolStripStatusLabel();
-            this.chkEmbryoFreez2Col = new C1.Win.C1Input.C1CheckBox();
+            this.btnExport = new C1.Win.C1Input.C1Button();
             this.groupBox1.SuspendLayout();
             this.groupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chkEmbryoDev20)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cboEmbryoDev2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cboEmbryoDev1)).BeginInit();
             this.groupBox2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.chkEmbryoFreez2Col)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtID)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtOpuCode)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnPrint)).BeginInit();
@@ -67,11 +69,12 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtHnFeMale)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.theme1)).BeginInit();
             this.sB.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.chkEmbryoFreez2Col)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnExport)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.btnExport);
             this.groupBox1.Controls.Add(this.groupBox3);
             this.groupBox1.Controls.Add(this.groupBox2);
             this.groupBox1.Controls.Add(this.txtID);
@@ -194,6 +197,24 @@
             this.groupBox2.TabIndex = 549;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Embryo Freezing Day";
+            // 
+            // chkEmbryoFreez2Col
+            // 
+            this.chkEmbryoFreez2Col.BackColor = System.Drawing.Color.Transparent;
+            this.chkEmbryoFreez2Col.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
+            this.chkEmbryoFreez2Col.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.chkEmbryoFreez2Col.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.chkEmbryoFreez2Col.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.chkEmbryoFreez2Col.Location = new System.Drawing.Point(10, 23);
+            this.chkEmbryoFreez2Col.Name = "chkEmbryoFreez2Col";
+            this.chkEmbryoFreez2Col.Padding = new System.Windows.Forms.Padding(4, 1, 1, 1);
+            this.chkEmbryoFreez2Col.Size = new System.Drawing.Size(180, 24);
+            this.chkEmbryoFreez2Col.TabIndex = 552;
+            this.chkEmbryoFreez2Col.Text = "ให้แสดง 2 column";
+            this.theme1.SetTheme(this.chkEmbryoFreez2Col, "(default)");
+            this.chkEmbryoFreez2Col.UseVisualStyleBackColor = true;
+            this.chkEmbryoFreez2Col.Value = null;
+            this.chkEmbryoFreez2Col.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
             // 
             // txtID
             // 
@@ -369,17 +390,19 @@
             this.sB1.Size = new System.Drawing.Size(118, 17);
             this.sB1.Text = "toolStripStatusLabel1";
             // 
-            // chkEmbryoFreez2Col
+            // btnExport
             // 
-            this.chkEmbryoFreez2Col.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.chkEmbryoFreez2Col.Location = new System.Drawing.Point(10, 23);
-            this.chkEmbryoFreez2Col.Name = "chkEmbryoFreez2Col";
-            this.chkEmbryoFreez2Col.Size = new System.Drawing.Size(180, 24);
-            this.chkEmbryoFreez2Col.TabIndex = 552;
-            this.chkEmbryoFreez2Col.Text = "ให้แสดง 2 column";
-            this.theme1.SetTheme(this.chkEmbryoFreez2Col, "(default)");
-            this.chkEmbryoFreez2Col.UseVisualStyleBackColor = false;
-            this.chkEmbryoFreez2Col.Value = null;
+            this.btnExport.Image = global::clinic_ivf.Properties.Resources.ExportPdf_large;
+            this.btnExport.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnExport.Location = new System.Drawing.Point(11, 210);
+            this.btnExport.Name = "btnExport";
+            this.btnExport.Size = new System.Drawing.Size(102, 39);
+            this.btnExport.TabIndex = 551;
+            this.btnExport.Text = "Export PDF";
+            this.btnExport.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.theme1.SetTheme(this.btnExport, "(default)");
+            this.btnExport.UseVisualStyleBackColor = true;
+            this.btnExport.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
             // 
             // FrmLabOPUPrint
             // 
@@ -400,6 +423,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.cboEmbryoDev2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cboEmbryoDev1)).EndInit();
             this.groupBox2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.chkEmbryoFreez2Col)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtID)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtOpuCode)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnPrint)).EndInit();
@@ -410,7 +434,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.theme1)).EndInit();
             this.sB.ResumeLayout(false);
             this.sB.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.chkEmbryoFreez2Col)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnExport)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -442,5 +466,6 @@
         private System.Windows.Forms.StatusStrip sB;
         private System.Windows.Forms.ToolStripStatusLabel sB1;
         private C1.Win.C1Input.C1CheckBox chkEmbryoFreez2Col;
+        private C1.Win.C1Input.C1Button btnExport;
     }
 }
