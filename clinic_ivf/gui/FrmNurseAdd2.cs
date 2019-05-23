@@ -2693,7 +2693,7 @@ namespace clinic_ivf.gui
             //grfOrder.Cols[colRxId].Editor = txt;
 
             grfOrder.Cols[colOrdName].Width = 280;
-            grfOrder.Cols[colOrdPrice].Width = 120;
+            grfOrder.Cols[colOrdPrice].Width = 100;
             grfOrder.Cols[colOrdQty].Width = 80;
             grfOrder.Cols[colOrdUsT].Width = 100;
 
@@ -2911,7 +2911,7 @@ namespace clinic_ivf.gui
             cs.ImageAlign = ImageAlignEnum.LeftCenter;
 
             grfPackage.Cols[colBlName].Width = 320;
-            grfPackage.Cols[colBlInclude].Width = 120;
+            grfPackage.Cols[colBlInclude].Width = 80;
             grfPackage.Cols[colBlPrice].Width = 80;
             grfPackage.Cols[colBlRemark].Width = 100;
 
@@ -3093,7 +3093,7 @@ namespace clinic_ivf.gui
             cs.ImageAlign = ImageAlignEnum.LeftCenter;
 
             grfRxSetD.Cols[colRxName].Width = 300;
-            grfRxSetD.Cols[colRxInclude].Width = 60;
+            grfRxSetD.Cols[colRxInclude].Width = 80;
             grfRxSetD.Cols[colRxPrice].Width = 80;
             grfRxSetD.Cols[colRxRemark].Width = 100;
             grfRxSetD.Cols[colRxUsE].Width = 200;
@@ -3375,7 +3375,7 @@ namespace clinic_ivf.gui
             cs.ImageAlign = ImageAlignEnum.LeftCenter;
 
             grfRx.Cols[colRxName].Width = 300;
-            grfRx.Cols[colRxInclude].Width = 60;
+            grfRx.Cols[colRxInclude].Width = 80;
             grfRx.Cols[colRxPrice].Width = 80;
             grfRx.Cols[colRxRemark].Width = 100;
             grfRx.Cols[colRxUsE].Width = 200;
@@ -3707,7 +3707,7 @@ namespace clinic_ivf.gui
             cs.ImageAlign = ImageAlignEnum.LeftCenter;
 
             grfGenetic.Cols[colBlName].Width = 320;
-            grfGenetic.Cols[colBlInclude].Width = 120;
+            grfGenetic.Cols[colBlInclude].Width = 80;
             grfGenetic.Cols[colBlPrice].Width = 80;
             grfGenetic.Cols[colBlRemark].Width = 100;
 
@@ -3848,7 +3848,7 @@ namespace clinic_ivf.gui
             cs.ImageAlign = ImageAlignEnum.LeftCenter;
 
             grfEmbryo.Cols[colBlName].Width = 320;
-            grfEmbryo.Cols[colBlInclude].Width = 120;
+            grfEmbryo.Cols[colBlInclude].Width = 80;
             grfEmbryo.Cols[colBlPrice].Width = 80;
             grfEmbryo.Cols[colBlRemark].Width = 100;
 
@@ -4111,7 +4111,7 @@ namespace clinic_ivf.gui
             cs.ImageAlign = ImageAlignEnum.LeftCenter;
 
             grfBloodLab.Cols[colBlName].Width = 330;
-            grfBloodLab.Cols[colBlInclude].Width = 120;
+            grfBloodLab.Cols[colBlInclude].Width = 80;
             grfBloodLab.Cols[colBlPrice].Width = 80;
             grfBloodLab.Cols[colBlRemark].Width = 100;
 

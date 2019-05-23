@@ -98,7 +98,7 @@ namespace clinic_ivf.gui
 
             //FilterRow fr = new FilterRow(grfExpn);
 
-            //grfQue.AfterRowColChange += GrfReq_AfterRowColChange;
+            grfFinish.DoubleClick += GrfFinish_DoubleClick;
             //grfExpnC.CellButtonClick += new C1.Win.C1FlexGrid.RowColEventHandler(this.grfDept_CellButtonClick);
             //grfExpnC.CellChanged += new C1.Win.C1FlexGrid.RowColEventHandler(this.grfDept_CellChanged);
             ContextMenu menuGw = new ContextMenu();
@@ -112,8 +112,14 @@ namespace clinic_ivf.gui
 
             //theme1.SetTheme(tabDiag, "Office2010Blue");
             //theme1.SetTheme(tabFinish, "Office2010Blue");
-
         }
+        private void GrfFinish_DoubleClick(object sender, EventArgs e)
+        {
+            //throw new NotImplementedException();
+            if (grfFinish.Row <= 0) return;
+            ContextMenu_edit_billfinish(null, null);
+        }
+
         public void setGrfFinishPublic()
         {
             setGrfFinish();
@@ -214,6 +220,13 @@ namespace clinic_ivf.gui
             }
             CellNoteManager mgr = new CellNoteManager(grfFinish);
             grfFinish.Cols[colID].Visible = false;
+            grfFinish.Cols[colVN].AllowEditing = false;
+            grfFinish.Cols[colPttHn].AllowEditing = false;
+            grfFinish.Cols[colPttName].AllowEditing = false;
+            grfFinish.Cols[colVsDate].AllowEditing = false;
+            grfFinish.Cols[colVsTime].AllowEditing = false;
+            grfFinish.Cols[colVsEtime].AllowEditing = false;
+            grfFinish.Cols[colStatus].AllowEditing = false;
             //theme1.SetTheme(grfQue, ic.theme);
 
         }

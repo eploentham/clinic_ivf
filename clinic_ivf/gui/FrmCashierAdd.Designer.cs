@@ -185,6 +185,7 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Patient";
             this.theme1.SetTheme(this.groupBox1, "(default)");
+            this.groupBox1.Enter += new System.EventHandler(this.GroupBox1_Enter);
             // 
             // btnPrnReceipt
             // 

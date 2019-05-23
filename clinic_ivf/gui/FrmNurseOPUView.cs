@@ -79,6 +79,8 @@ namespace clinic_ivf.gui
             sep = new C1SuperErrorProvider();
             opu = new LabOpu();
             lbReq = new LabRequest();
+            ic.setCboDayEmbryoDev(cboEmbryoDev1, "");
+            ic.setCboDayEmbryoDev(cboEmbryoDev2, "");
 
             btnPrintOpuEmbryoDev.Click += BtnPrintOpuEmbryoDev_Click;
             btnPrint.Click += BtnPrint_Click;
@@ -140,56 +142,71 @@ namespace clinic_ivf.gui
         {
             //throw new NotImplementedException();
             //setEmail(true);
-            DataTable dtembryo6 = ic.ivfDB.opuEmDevDB.selectByOpuFetId_DayPrint(opu.opu_id, objdb.LabOpuEmbryoDevDB.Day1.Day6);
-            DataTable dtExport = new DataTable();
-            dtExport = ic.ivfDB.setOPUReport(opu.opu_id, "6", "", true);
-            ReportDocument rpt;
-            CrystalReportViewer crv = new CrystalReportViewer();
-            rpt = new ReportDocument();
-            rpt.Load("lab_opu_embryo_dev.rpt");
-            crv.ReportSource = rpt;
-            
-            crv.Refresh();
+            //DataTable dtembryo6 = ic.ivfDB.opuEmDevDB.selectByOpuFetId_DayPrint(opu.opu_id, objdb.LabOpuEmbryoDevDB.Day1.Day6);
+            //DataTable dtExport = new DataTable();
+            //dtExport = ic.ivfDB.setOPUReport(opu.opu_id, "6", "", true);
+            //ReportDocument rpt;
+            //CrystalReportViewer crv = new CrystalReportViewer();
+            //rpt = new ReportDocument();
+            //rpt.Load("lab_opu_embryo_dev.rpt");
+            //rpt.SetDataSource(dtExport);
+            //crv.ReportSource = rpt;
+
+            //crv.Refresh();
             //rpt.Load(Application.StartupPath + "\\lab_opu_embryo_dev.rpt");
             //rd.Load("StudentReg.rpt");
-            rpt.SetDataSource(dtExport);
-            //crv.ReportSource = rd;
+
+            //crv.ReportSource = rpt;
             //crv.Refresh();
-            if (File.Exists("embryo.pdf"))
-                File.Delete("embryo.pdf");
+            //if (File.Exists("embryo.pdf"))
+            //    File.Delete("embryo.pdf");
+            //crv.
+            //crv.ExportReport();
             //rpt.ExportToDisk(CrystalDecisions.Shared.ExportFormatType.PortableDocFormat, "embryo.pdf");
-            try
-            {
-                ExportOptions CrExportOptions;
-                DiskFileDestinationOptions CrDiskFileDestinationOptions = new DiskFileDestinationOptions();
-                PdfRtfWordFormatOptions CrFormatTypeOptions = new PdfRtfWordFormatOptions();
-                CrDiskFileDestinationOptions.DiskFileName = "embryo.pdf";
-                CrExportOptions = rpt.ExportOptions;
-                {
-                    CrExportOptions.ExportDestinationType = ExportDestinationType.DiskFile;
-                    CrExportOptions.ExportFormatType = ExportFormatType.PortableDocFormat;
-                    CrExportOptions.DestinationOptions = CrDiskFileDestinationOptions;
-                    CrExportOptions.FormatOptions = CrFormatTypeOptions;
-                }
-                rpt.Export();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.ToString());
-            }
+            //try
+            //{
+            //    //DiskFileDestinationOptions FileOption = New DiskFileDestinationOptions();
+            //    ExportOptions CrExportOptions;
+            //    DiskFileDestinationOptions CrDiskFileDestinationOptions = new DiskFileDestinationOptions();
+            //    PdfRtfWordFormatOptions CrFormatTypeOptions = new PdfRtfWordFormatOptions();
+            //    CrDiskFileDestinationOptions.DiskFileName = System.IO.Directory.GetCurrentDirectory() + "\\embryo.pdf";
+            //    CrExportOptions = rpt.ExportOptions;
+                
+            //    CrExportOptions.ExportDestinationType = ExportDestinationType.DiskFile;
+            //    CrExportOptions.ExportFormatType = ExportFormatType.PortableDocFormat;
+            //    CrExportOptions.DestinationOptions = CrDiskFileDestinationOptions;
+            //    CrExportOptions.FormatOptions = CrFormatTypeOptions;
+            //    //CrExportOptions.ExportDestinationOptions = FileOption;
+            //    //rpt.ExportOptions = CrExportOptions;
+            //    rpt.ExportToDisk(ExportFormatType.PortableDocFormat, System.IO.Directory.GetCurrentDirectory() + "\\embryo.pdf");
+            //    rpt.Export();
+                
+            //}
+            //catch (Exception ex)
+            //{
+            //    MessageBox.Show(ex.ToString());
+            //}
 
             MailMessage mail = new MailMessage();
 
             mail.From = new MailAddress("eploentham@gmail.com");
-            mail.To.Add("eploentham@outlook.co.th");
-            mail.Subject = "Result OPU2";
+            mail.To.Add(txtEmailTo.Text);
+            mail.Subject = txtEmailSubject.Text;
             //mail.Body = "Test send email";
 
             mail.IsBodyHtml = true;
-
-            //System.Net.Mail.Attachment attachment;
-            //attachment = new System.Net.Mail.Attachment("embryo.pdf");
-            //mail.Attachments.Add(attachment);
+            if (File.Exists("opu.pdf"))
+            {
+                System.Net.Mail.Attachment attachment;
+                attachment = new System.Net.Mail.Attachment("opu.pdf");
+                mail.Attachments.Add(attachment);
+            }
+            if (File.Exists("embryo.pdf"))
+            {
+                System.Net.Mail.Attachment attachment1;
+                attachment1 = new System.Net.Mail.Attachment("embryo.pdf");
+                mail.Attachments.Add(attachment1);
+            }
 
             AlternateView htmlView = AlternateView.CreateAlternateViewFromString(body, null, "text/html");
             mail.AlternateViews.Add(htmlView);
@@ -298,6 +315,10 @@ namespace clinic_ivf.gui
                     //    file.Delete();
                     //}
                 }
+
+                setReportOPU();
+                setReportEmbryo();
+
             }
             catch (Exception ex)
             {
@@ -306,6 +327,195 @@ namespace clinic_ivf.gui
             finally
             {
                 frmW.Dispose();
+            }
+        }
+        private void setReportEmbryo()
+        {
+            //FrmReport frm = new FrmReport(ic);
+            DataTable dt = new DataTable();
+            FrmWaiting frmW = new FrmWaiting();
+            frmW.Show();
+            try
+            {
+                //MessageBox.Show("aaaaa", "");
+                int i = 0;
+                String day = "";
+                day = cboEmbryoDev1.SelectedItem == null ? "" : ((ComboBoxItem)cboEmbryoDev1.SelectedItem).Value;
+                if (day.Equals("2"))
+                {
+                    dt = ic.ivfDB.opuEmDevDB.selectByOpuFetId_DayPrint(txtID.Text, objdb.LabOpuEmbryoDevDB.Day1.Day2);
+                }
+                else if (day.Equals("3"))
+                {
+                    dt = ic.ivfDB.opuEmDevDB.selectByOpuFetId_DayPrint(txtID.Text, objdb.LabOpuEmbryoDevDB.Day1.Day3);
+                }
+                else if (day.Equals("5"))
+                {
+                    dt = ic.ivfDB.opuEmDevDB.selectByOpuFetId_DayPrint(txtID.Text, objdb.LabOpuEmbryoDevDB.Day1.Day5);
+                }
+                else if (day.Equals("6"))
+                {
+                    dt = ic.ivfDB.opuEmDevDB.selectByOpuFetId_DayPrint(txtID.Text, objdb.LabOpuEmbryoDevDB.Day1.Day6);
+                }
+                if (dt.Rows.Count > 0)
+                {
+                    frmW.pB.Minimum = 1;
+                    frmW.pB.Maximum = dt.Rows.Count;
+                    foreach (DataRow row in dt.Rows)
+                    {
+                        String path_pic = "", opuCode = "";
+                        path_pic = row["no1_pathpic"] != null ? row["no1_pathpic"].ToString() : "";
+                        opuCode = row["opu_code"] != null ? row["opu_code"].ToString() : "";
+                        if (!path_pic.Equals(""))
+                        {
+                            MemoryStream stream = ic.ftpC.download(path_pic);
+                            Image loadedImage = new Bitmap(stream);
+                            String[] ext = path_pic.Split('.');
+                            var extension = Path.GetExtension(path_pic);
+                            var name = Path.GetFileNameWithoutExtension(path_pic); // Get the name only
+                            //if (ext.Length > 0)
+                            //{
+                            String filename = name;
+                            String no = "", filename1 = "", st = "";
+                            no = filename.Substring(filename.Length - 2);
+                            no = no.Replace("_", "");
+                            filename1 = "embryo_dev_" + no + extension;
+                            if (File.Exists(filename1))
+                            {
+                                File.Delete(filename1);
+                                System.Threading.Thread.Sleep(200);
+                            }
+                            loadedImage.Save(filename1);
+                            row["no1_pathpic"] = System.IO.Directory.GetCurrentDirectory() + "\\" + filename1;
+                            //st = row["no1_desc2"].ToString();
+                            st = row["no1_desc3"].ToString();
+                            row["no1_desc2"] = "st# " + st;
+                            row["no1_desc3"] = row["no1_desc4"].ToString();
+                            //}
+                        }
+                        i++;
+                        frmW.pB.Value = i;
+                    }
+                }
+                String date1 = "";
+                date1 = ic.datetoShow(dt.Rows[0][ic.ivfDB.opuDB.opu.opu_date].ToString());
+                dt.Rows[0][ic.ivfDB.opuDB.opu.opu_date] = date1.Replace("-", "/");
+
+
+                String chk = "", printerDefault = "";
+                ReportDocument rpt = new ReportDocument();
+                try
+                {
+                    rpt.Load("lab_opu_embryo_dev.rpt");
+                    rpt.SetDataSource(dt);
+                    rpt.SetParameterValue("line1", ic.cop.comp_name_t);
+                    rpt.SetParameterValue("line2", "โทรศัพท์ " + ic.cop.tele);
+                    rpt.SetParameterValue("report_name", " Embryo development");
+                    //rpt.SetParameterValue("date1", "" + date1);
+                    this.cryEmbryo.ReportSource = rpt;
+                    this.cryEmbryo.Refresh();
+
+                    if (File.Exists("embryo.pdf"))
+                    {
+                        File.Delete("embryo.pdf");
+                        System.Threading.Thread.Sleep(200);
+                    }
+
+                    ExportOptions CrExportOptions;
+                    DiskFileDestinationOptions CrDiskFileDestinationOptions = new DiskFileDestinationOptions();
+                    PdfRtfWordFormatOptions CrFormatTypeOptions = new PdfRtfWordFormatOptions();
+                    CrDiskFileDestinationOptions.DiskFileName = "embryo.pdf";
+                    CrExportOptions = rpt.ExportOptions;
+                    {
+                        CrExportOptions.ExportDestinationType = ExportDestinationType.DiskFile;
+                        CrExportOptions.ExportFormatType = ExportFormatType.PortableDocFormat;
+                        CrExportOptions.DestinationOptions = CrDiskFileDestinationOptions;
+                        CrExportOptions.FormatOptions = CrFormatTypeOptions;
+                    }
+
+                    rpt.Export();
+                }
+                catch (Exception ex)
+                {
+                    chk = ex.Message.ToString();
+                    MessageBox.Show("error " + ex.Message, "");
+                }
+                //MessageBox.Show("bbbbbb", "");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("" + ex.Message, "");
+            }
+            finally
+            {
+                frmW.Dispose();
+            }
+            //frm.ShowDialog(this);
+        }
+        private void setReportOPU()
+        {
+            DataTable dt = new DataTable();
+            dt = ic.ivfDB.setOPUReport(txtID.Text, "6", "6", true);
+            String chk = "", printerDefault = "";
+            ReportDocument rpt = new ReportDocument();
+            try
+            {
+                //rpt.Load("lab_opu.rpt");
+                if (!chkEmbryoFreez2Col.Checked)
+                {
+                    if (!chkEmbryoDev20.Checked)
+                    {
+                        rpt.Load("lab_opu.rpt");
+                    }
+                    else
+                    {
+                        rpt.Load("lab_opu_more_20.rpt");
+                    }
+                }
+                else
+                {
+                    if (!chkEmbryoDev20.Checked)
+                    {
+                        rpt.Load("lab_opu_freeze_2_column.rpt");
+                    }
+                    else
+                    {
+                        rpt.Load("lab_opu_freeze_2_column_more_20.rpt");
+                    }
+                }
+                
+                rpt.SetDataSource(dt);
+                rpt.SetParameterValue("line1", ic.cop.comp_name_t);
+                rpt.SetParameterValue("line2", "Tele " + ic.cop.tele);
+                rpt.SetParameterValue("report_name", " Summary of OPU Report");
+                //rpt.SetParameterValue("date1", "" + date1);
+                this.cryOpu.ReportSource = rpt;
+                this.cryOpu.Refresh();
+
+                if (File.Exists("opu.pdf"))
+                {
+                    File.Delete("opu.pdf");
+                    System.Threading.Thread.Sleep(200);
+                }
+
+                ExportOptions CrExportOptions;
+                DiskFileDestinationOptions CrDiskFileDestinationOptions = new DiskFileDestinationOptions();
+                PdfRtfWordFormatOptions CrFormatTypeOptions = new PdfRtfWordFormatOptions();
+                CrDiskFileDestinationOptions.DiskFileName = "opu.pdf";
+                CrExportOptions = rpt.ExportOptions;
+                {
+                    CrExportOptions.ExportDestinationType = ExportDestinationType.DiskFile;
+                    CrExportOptions.ExportFormatType = ExportFormatType.PortableDocFormat;
+                    CrExportOptions.DestinationOptions = CrDiskFileDestinationOptions;
+                    CrExportOptions.FormatOptions = CrFormatTypeOptions;
+                }
+
+                rpt.Export();
+            }
+            catch (Exception ex)
+            {
+                chk = ex.Message.ToString();
+                MessageBox.Show("error " + ex.Message, "");
             }
         }
         private void setTheme()
@@ -1684,7 +1894,7 @@ namespace clinic_ivf.gui
                     "<tr><td>Embryologist report :</td><td>" + report + "</td><td>Embryologist approve :</td><td>" + approve + "</td></tr>" +
                     "</table>";
 
-                txtbody = "<p align='left'" + txtEmailBody.Text + "</p> </br>";
+                txtbody = "<p align='left'>" + txtEmailBody.Text.Replace("\r\n","<br>") + "</br></p> </br>";
                 opu1 = "<table width='100%'><tr><td>" + matura+"</td><td>"+ ferti + "</td><td>" + sperm + "</td></tr></table>";
                 pageHeader = "<p align='center'>Embryo development Day " + day + "</p> </br>";
                 header = "<table>" +
@@ -1693,7 +1903,7 @@ namespace clinic_ivf.gui
                     "<tr><td class='groove_left'>Doctor :</td><td>" + doctor + "</td><td></td><td class='groove_right'></td></tr>" +
                     "<tr><td class='groove_left_botton'>Procedure :</td><td>" + procedure + "</td><td>Date time :</td><td class='groove_right_botton'>" + opudate + "</td></tr>" +
                     "</table>";
-                body = "<html><body>"+ pageHeader + header+ txtbody + opu1 +
+                body = "<html><body>"+ pageHeader+ txtbody + header + opu1 +
                     "<table width='100%'><tr><td></td><td></td><td></td><td></td></tr>" + tdimg + "</table> " + et +
                     "</body> </html>";
                 String body1 = "<html><body>"+ pageHeader + header + opu1 +

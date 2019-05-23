@@ -272,7 +272,10 @@
             this.pnEmailAdd = new System.Windows.Forms.Panel();
             this.pnEmailAdd1 = new System.Windows.Forms.Panel();
             this.pnEmailAddBody = new System.Windows.Forms.Panel();
+            this.panel8 = new System.Windows.Forms.Panel();
             this.c1SuperLabel1 = new C1.Win.C1SuperTooltip.C1SuperLabel();
+            this.panel7 = new System.Windows.Forms.Panel();
+            this.txtEmailBody = new C1.Win.C1Input.C1TextBox();
             this.pnEmailAddSubject = new System.Windows.Forms.Panel();
             this.btnSendEmail = new C1.Win.C1Input.C1Button();
             this.btnMaleSearch = new C1.Win.C1Input.C1Button();
@@ -333,9 +336,16 @@
             this.ribbonTopToolBar1 = new C1.Win.C1Ribbon.RibbonTopToolBar();
             this.sB = new System.Windows.Forms.StatusStrip();
             this.sB1 = new System.Windows.Forms.ToolStripStatusLabel();
-            this.txtEmailBody = new C1.Win.C1Input.C1TextBox();
-            this.panel7 = new System.Windows.Forms.Panel();
-            this.panel8 = new System.Windows.Forms.Panel();
+            this.tabReportOPU = new C1.Win.C1Command.C1DockingTabPage();
+            this.tabReportEmbryo = new C1.Win.C1Command.C1DockingTabPage();
+            this.cryOpu = new CrystalDecisions.Windows.Forms.CrystalReportViewer();
+            this.cryEmbryo = new CrystalDecisions.Windows.Forms.CrystalReportViewer();
+            this.chkEmbryoFreez2Col = new C1.Win.C1Input.C1CheckBox();
+            this.chkEmbryoDev20 = new C1.Win.C1Input.C1CheckBox();
+            this.cboEmbryoDev2 = new C1.Win.C1Input.C1ComboBox();
+            this.label92 = new System.Windows.Forms.Label();
+            this.cboEmbryoDev1 = new C1.Win.C1Input.C1ComboBox();
+            this.label93 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.theme1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.c1SplitContainer1)).BeginInit();
             this.c1SplitContainer1.SuspendLayout();
@@ -483,6 +493,9 @@
             this.pnEmailAdd.SuspendLayout();
             this.pnEmailAdd1.SuspendLayout();
             this.pnEmailAddBody.SuspendLayout();
+            this.panel8.SuspendLayout();
+            this.panel7.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtEmailBody)).BeginInit();
             this.pnEmailAddSubject.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btnSendEmail)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnMaleSearch)).BeginInit();
@@ -490,9 +503,12 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtEmailTo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.c1Ribbon1)).BeginInit();
             this.sB.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.txtEmailBody)).BeginInit();
-            this.panel7.SuspendLayout();
-            this.panel8.SuspendLayout();
+            this.tabReportOPU.SuspendLayout();
+            this.tabReportEmbryo.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.chkEmbryoFreez2Col)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chkEmbryoDev20)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cboEmbryoDev2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cboEmbryoDev1)).BeginInit();
             this.SuspendLayout();
             // 
             // theme1
@@ -1267,6 +1283,8 @@
             this.tCResult.Controls.Add(this.tabOPU);
             this.tCResult.Controls.Add(this.tabImage);
             this.tCResult.Controls.Add(this.tabEmail);
+            this.tCResult.Controls.Add(this.tabReportOPU);
+            this.tCResult.Controls.Add(this.tabReportEmbryo);
             this.tCResult.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tCResult.HotTrack = true;
             this.tCResult.Location = new System.Drawing.Point(0, 0);
@@ -4377,9 +4395,9 @@
             this.pnEmailView1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
             this.pnEmailView1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnEmailView1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.pnEmailView1.Location = new System.Drawing.Point(0, 72);
+            this.pnEmailView1.Location = new System.Drawing.Point(0, 127);
             this.pnEmailView1.Name = "pnEmailView1";
-            this.pnEmailView1.Size = new System.Drawing.Size(516, 406);
+            this.pnEmailView1.Size = new System.Drawing.Size(516, 351);
             this.pnEmailView1.TabIndex = 1;
             this.theme1.SetTheme(this.pnEmailView1, "(default)");
             // 
@@ -4391,7 +4409,7 @@
             this.groupBox9.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
             this.groupBox9.Location = new System.Drawing.Point(0, 0);
             this.groupBox9.Name = "groupBox9";
-            this.groupBox9.Size = new System.Drawing.Size(516, 72);
+            this.groupBox9.Size = new System.Drawing.Size(516, 127);
             this.groupBox9.TabIndex = 0;
             this.groupBox9.TabStop = false;
             this.groupBox9.Text = "เงื่อนไข";
@@ -4400,6 +4418,12 @@
             // panel6
             // 
             this.panel6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.panel6.Controls.Add(this.cboEmbryoDev2);
+            this.panel6.Controls.Add(this.label92);
+            this.panel6.Controls.Add(this.cboEmbryoDev1);
+            this.panel6.Controls.Add(this.label93);
+            this.panel6.Controls.Add(this.chkEmbryoDev20);
+            this.panel6.Controls.Add(this.chkEmbryoFreez2Col);
             this.panel6.Controls.Add(this.btnResult);
             this.panel6.Controls.Add(this.chkResultDay6);
             this.panel6.Controls.Add(this.chkResultDay5);
@@ -4408,7 +4432,7 @@
             this.panel6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
             this.panel6.Location = new System.Drawing.Point(11, 19);
             this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(502, 43);
+            this.panel6.Size = new System.Drawing.Size(502, 102);
             this.panel6.TabIndex = 740;
             this.theme1.SetTheme(this.panel6, "(default)");
             // 
@@ -4543,6 +4567,18 @@
             this.pnEmailAddBody.TabIndex = 1;
             this.theme1.SetTheme(this.pnEmailAddBody, "(default)");
             // 
+            // panel8
+            // 
+            this.panel8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.panel8.Controls.Add(this.c1SuperLabel1);
+            this.panel8.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel8.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.panel8.Location = new System.Drawing.Point(0, 80);
+            this.panel8.Name = "panel8";
+            this.panel8.Size = new System.Drawing.Size(815, 184);
+            this.panel8.TabIndex = 542;
+            this.theme1.SetTheme(this.panel8, "(default)");
+            // 
             // c1SuperLabel1
             // 
             this.c1SuperLabel1.AutoSize = true;
@@ -4554,6 +4590,33 @@
             this.c1SuperLabel1.Text = "c1SuperLabel1";
             this.theme1.SetTheme(this.c1SuperLabel1, "(default)");
             this.c1SuperLabel1.UseMnemonic = true;
+            // 
+            // panel7
+            // 
+            this.panel7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.panel7.Controls.Add(this.txtEmailBody);
+            this.panel7.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.panel7.Location = new System.Drawing.Point(0, 0);
+            this.panel7.Name = "panel7";
+            this.panel7.Size = new System.Drawing.Size(815, 80);
+            this.panel7.TabIndex = 541;
+            this.theme1.SetTheme(this.panel7, "(default)");
+            // 
+            // txtEmailBody
+            // 
+            this.txtEmailBody.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtEmailBody.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
+            this.txtEmailBody.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.txtEmailBody.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.txtEmailBody.Location = new System.Drawing.Point(0, 0);
+            this.txtEmailBody.Multiline = true;
+            this.txtEmailBody.Name = "txtEmailBody";
+            this.txtEmailBody.Size = new System.Drawing.Size(815, 80);
+            this.txtEmailBody.TabIndex = 540;
+            this.txtEmailBody.Tag = null;
+            this.theme1.SetTheme(this.txtEmailBody, "(default)");
+            this.txtEmailBody.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
             // 
             // pnEmailAddSubject
             // 
@@ -5024,44 +5087,145 @@
             this.sB1.Size = new System.Drawing.Size(118, 17);
             this.sB1.Text = "toolStripStatusLabel1";
             // 
-            // txtEmailBody
+            // tabReportOPU
             // 
-            this.txtEmailBody.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtEmailBody.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
-            this.txtEmailBody.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.txtEmailBody.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.txtEmailBody.Location = new System.Drawing.Point(0, 0);
-            this.txtEmailBody.Multiline = true;
-            this.txtEmailBody.Name = "txtEmailBody";
-            this.txtEmailBody.Size = new System.Drawing.Size(815, 80);
-            this.txtEmailBody.TabIndex = 540;
-            this.txtEmailBody.Tag = null;
-            this.theme1.SetTheme(this.txtEmailBody, "(default)");
-            this.txtEmailBody.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            this.tabReportOPU.Controls.Add(this.cryOpu);
+            this.tabReportOPU.Location = new System.Drawing.Point(1, 24);
+            this.tabReportOPU.Name = "tabReportOPU";
+            this.tabReportOPU.Size = new System.Drawing.Size(1342, 499);
+            this.tabReportOPU.TabIndex = 5;
+            this.tabReportOPU.Text = "Report OPU";
             // 
-            // panel7
+            // tabReportEmbryo
             // 
-            this.panel7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.panel7.Controls.Add(this.txtEmailBody);
-            this.panel7.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.panel7.Location = new System.Drawing.Point(0, 0);
-            this.panel7.Name = "panel7";
-            this.panel7.Size = new System.Drawing.Size(815, 80);
-            this.panel7.TabIndex = 541;
-            this.theme1.SetTheme(this.panel7, "(default)");
+            this.tabReportEmbryo.Controls.Add(this.cryEmbryo);
+            this.tabReportEmbryo.Location = new System.Drawing.Point(1, 24);
+            this.tabReportEmbryo.Name = "tabReportEmbryo";
+            this.tabReportEmbryo.Size = new System.Drawing.Size(1342, 499);
+            this.tabReportEmbryo.TabIndex = 6;
+            this.tabReportEmbryo.Text = "Report Embryo";
             // 
-            // panel8
+            // cryOpu
             // 
-            this.panel8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.panel8.Controls.Add(this.c1SuperLabel1);
-            this.panel8.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel8.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.panel8.Location = new System.Drawing.Point(0, 80);
-            this.panel8.Name = "panel8";
-            this.panel8.Size = new System.Drawing.Size(815, 184);
-            this.panel8.TabIndex = 542;
-            this.theme1.SetTheme(this.panel8, "(default)");
+            this.cryOpu.ActiveViewIndex = -1;
+            this.cryOpu.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.cryOpu.Cursor = System.Windows.Forms.Cursors.Default;
+            this.cryOpu.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.cryOpu.Location = new System.Drawing.Point(0, 0);
+            this.cryOpu.Name = "cryOpu";
+            this.cryOpu.Size = new System.Drawing.Size(1342, 499);
+            this.cryOpu.TabIndex = 1;
+            this.theme1.SetTheme(this.cryOpu, "(default)");
+            // 
+            // cryEmbryo
+            // 
+            this.cryEmbryo.ActiveViewIndex = -1;
+            this.cryEmbryo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.cryEmbryo.Cursor = System.Windows.Forms.Cursors.Default;
+            this.cryEmbryo.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.cryEmbryo.Location = new System.Drawing.Point(0, 0);
+            this.cryEmbryo.Name = "cryEmbryo";
+            this.cryEmbryo.Size = new System.Drawing.Size(1342, 499);
+            this.cryEmbryo.TabIndex = 1;
+            this.theme1.SetTheme(this.cryEmbryo, "(default)");
+            // 
+            // chkEmbryoFreez2Col
+            // 
+            this.chkEmbryoFreez2Col.BackColor = System.Drawing.Color.Transparent;
+            this.chkEmbryoFreez2Col.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
+            this.chkEmbryoFreez2Col.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.chkEmbryoFreez2Col.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.chkEmbryoFreez2Col.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.chkEmbryoFreez2Col.Location = new System.Drawing.Point(8, 30);
+            this.chkEmbryoFreez2Col.Name = "chkEmbryoFreez2Col";
+            this.chkEmbryoFreez2Col.Padding = new System.Windows.Forms.Padding(4, 1, 1, 1);
+            this.chkEmbryoFreez2Col.Size = new System.Drawing.Size(180, 24);
+            this.chkEmbryoFreez2Col.TabIndex = 742;
+            this.chkEmbryoFreez2Col.Text = "ให้แสดง 2 column";
+            this.theme1.SetTheme(this.chkEmbryoFreez2Col, "(default)");
+            this.chkEmbryoFreez2Col.UseVisualStyleBackColor = true;
+            this.chkEmbryoFreez2Col.Value = null;
+            this.chkEmbryoFreez2Col.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            // 
+            // chkEmbryoDev20
+            // 
+            this.chkEmbryoDev20.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.chkEmbryoDev20.Location = new System.Drawing.Point(8, 60);
+            this.chkEmbryoDev20.Name = "chkEmbryoDev20";
+            this.chkEmbryoDev20.Size = new System.Drawing.Size(236, 24);
+            this.chkEmbryoDev20.TabIndex = 743;
+            this.chkEmbryoDev20.Text = "ข้อมูล Embryo มีมากกว่า 20 ให้แสดง ทั้งหมด";
+            this.theme1.SetTheme(this.chkEmbryoDev20, "(default)");
+            this.chkEmbryoDev20.UseVisualStyleBackColor = false;
+            this.chkEmbryoDev20.Value = null;
+            // 
+            // cboEmbryoDev2
+            // 
+            this.cboEmbryoDev2.AllowSpinLoop = false;
+            this.cboEmbryoDev2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.cboEmbryoDev2.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
+            this.cboEmbryoDev2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.cboEmbryoDev2.GapHeight = 0;
+            this.cboEmbryoDev2.ImagePadding = new System.Windows.Forms.Padding(0);
+            this.cboEmbryoDev2.ItemsDisplayMember = "";
+            this.cboEmbryoDev2.ItemsValueMember = "";
+            this.cboEmbryoDev2.Location = new System.Drawing.Point(323, 60);
+            this.cboEmbryoDev2.Name = "cboEmbryoDev2";
+            this.cboEmbryoDev2.Size = new System.Drawing.Size(65, 20);
+            this.cboEmbryoDev2.Style.DropDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.cboEmbryoDev2.Style.DropDownBorderColor = System.Drawing.Color.Gainsboro;
+            this.cboEmbryoDev2.Style.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.cboEmbryoDev2.TabIndex = 747;
+            this.cboEmbryoDev2.Tag = null;
+            this.theme1.SetTheme(this.cboEmbryoDev2, "(default)");
+            this.cboEmbryoDev2.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            // 
+            // label92
+            // 
+            this.label92.AutoSize = true;
+            this.label92.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.label92.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label92.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.label92.Location = new System.Drawing.Point(260, 62);
+            this.label92.Name = "label92";
+            this.label92.Size = new System.Drawing.Size(49, 16);
+            this.label92.TabIndex = 746;
+            this.label92.Text = "Day 2 :";
+            this.theme1.SetTheme(this.label92, "(default)");
+            // 
+            // cboEmbryoDev1
+            // 
+            this.cboEmbryoDev1.AllowSpinLoop = false;
+            this.cboEmbryoDev1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.cboEmbryoDev1.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
+            this.cboEmbryoDev1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.cboEmbryoDev1.GapHeight = 0;
+            this.cboEmbryoDev1.ImagePadding = new System.Windows.Forms.Padding(0);
+            this.cboEmbryoDev1.ItemsDisplayMember = "";
+            this.cboEmbryoDev1.ItemsValueMember = "";
+            this.cboEmbryoDev1.Location = new System.Drawing.Point(323, 34);
+            this.cboEmbryoDev1.Name = "cboEmbryoDev1";
+            this.cboEmbryoDev1.Size = new System.Drawing.Size(65, 20);
+            this.cboEmbryoDev1.Style.DropDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.cboEmbryoDev1.Style.DropDownBorderColor = System.Drawing.Color.Gainsboro;
+            this.cboEmbryoDev1.Style.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.cboEmbryoDev1.TabIndex = 745;
+            this.cboEmbryoDev1.Tag = null;
+            this.theme1.SetTheme(this.cboEmbryoDev1, "(default)");
+            this.cboEmbryoDev1.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            // 
+            // label93
+            // 
+            this.label93.AutoSize = true;
+            this.label93.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.label93.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label93.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.label93.Location = new System.Drawing.Point(260, 36);
+            this.label93.Name = "label93";
+            this.label93.Size = new System.Drawing.Size(49, 16);
+            this.label93.TabIndex = 744;
+            this.label93.Text = "Day 1 :";
+            this.theme1.SetTheme(this.label93, "(default)");
             // 
             // FrmNurseOPUView
             // 
@@ -5233,6 +5397,10 @@
             this.pnEmailAdd.PerformLayout();
             this.pnEmailAdd1.ResumeLayout(false);
             this.pnEmailAddBody.ResumeLayout(false);
+            this.panel8.ResumeLayout(false);
+            this.panel8.PerformLayout();
+            this.panel7.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.txtEmailBody)).EndInit();
             this.pnEmailAddSubject.ResumeLayout(false);
             this.pnEmailAddSubject.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btnSendEmail)).EndInit();
@@ -5242,10 +5410,12 @@
             ((System.ComponentModel.ISupportInitialize)(this.c1Ribbon1)).EndInit();
             this.sB.ResumeLayout(false);
             this.sB.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.txtEmailBody)).EndInit();
-            this.panel7.ResumeLayout(false);
-            this.panel8.ResumeLayout(false);
-            this.panel8.PerformLayout();
+            this.tabReportOPU.ResumeLayout(false);
+            this.tabReportEmbryo.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.chkEmbryoFreez2Col)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chkEmbryoDev20)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cboEmbryoDev2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cboEmbryoDev1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -5560,5 +5730,15 @@
         private System.Windows.Forms.Panel panel8;
         private System.Windows.Forms.Panel panel7;
         private C1.Win.C1Input.C1TextBox txtEmailBody;
+        private C1.Win.C1Command.C1DockingTabPage tabReportOPU;
+        private C1.Win.C1Command.C1DockingTabPage tabReportEmbryo;
+        private CrystalDecisions.Windows.Forms.CrystalReportViewer cryOpu;
+        private CrystalDecisions.Windows.Forms.CrystalReportViewer cryEmbryo;
+        private C1.Win.C1Input.C1CheckBox chkEmbryoFreez2Col;
+        private C1.Win.C1Input.C1CheckBox chkEmbryoDev20;
+        private C1.Win.C1Input.C1ComboBox cboEmbryoDev2;
+        private System.Windows.Forms.Label label92;
+        private C1.Win.C1Input.C1ComboBox cboEmbryoDev1;
+        private System.Windows.Forms.Label label93;
     }
 }

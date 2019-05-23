@@ -1,11 +1,13 @@
 ﻿using clinic_ivf.control;
 using CrystalDecisions.CrystalReports.Engine;
+using CrystalDecisions.Shared;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Drawing.Printing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -18,11 +20,13 @@ namespace clinic_ivf.gui
         IvfControl ic;
         public enum flagEmbryoDev { onecolumn, twocolumn};
         public enum flagEmbryoDevMore20 { More20, Days2 };
+        //DataTable dtt = new DataTable();
         public FrmReport(IvfControl ic)
         {
             InitializeComponent();
             this.ic = ic;
-        }
+        }                
+
         public void setSpermIui(DataTable dt)
         {
             String chk = "", printerDefault = "";
@@ -665,6 +669,7 @@ namespace clinic_ivf.gui
                         rpt.Load("lab_opu_freeze_2_column_more_20.rpt");
                     }
                 }
+                //dtt = dt;
                 rpt.SetDataSource(dt);
                 rpt.SetParameterValue("line1", ic.cop.comp_name_t);
                 rpt.SetParameterValue("line2", "โทรศัพท์ " + ic.cop.tele);
@@ -672,6 +677,20 @@ namespace clinic_ivf.gui
                 //rpt.SetParameterValue("date1", "" + date1);
                 this.crystalReportViewer1.ReportSource = rpt;
                 this.crystalReportViewer1.Refresh();
+
+                //ExportOptions CrExportOptions;
+                //DiskFileDestinationOptions CrDiskFileDestinationOptions = new DiskFileDestinationOptions();
+                //PdfRtfWordFormatOptions CrFormatTypeOptions = new PdfRtfWordFormatOptions();
+                //CrDiskFileDestinationOptions.DiskFileName = "embryo.pdf";
+                //CrExportOptions = rpt.ExportOptions;
+                //{
+                //    CrExportOptions.ExportDestinationType = ExportDestinationType.DiskFile;
+                //    CrExportOptions.ExportFormatType = ExportFormatType.PortableDocFormat;
+                //    CrExportOptions.DestinationOptions = CrDiskFileDestinationOptions;
+                //    CrExportOptions.FormatOptions = CrFormatTypeOptions;
+                //}
+
+                //rpt.Export();
             }
             catch (Exception ex)
             {

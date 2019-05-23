@@ -114,12 +114,12 @@ namespace clinic_ivf.gui
             billExtNo = ic.ivfDB.copDB.genReceiptExtDoc();
             ic.ivfDB.obilhDB.updateReceiptNo(txtVn.Text, billNo);
             //OldBillheader obill = new OldBillheader();
-            String billno = ic.ivfDB.obilhDB.selectBillNoByVN(txtVn.Text);
-            if (billno.Equals(""))
+            String billno2 = ic.ivfDB.obilhDB.selectBillNoByVN(txtVn.Text);
+            if (billno2.Equals(""))
             {
-                billNo = ic.ivfDB.copDB.genBillingDoc(ref year, ref month, ref day);
-                billExtNo = ic.ivfDB.copDB.genBillingExtDoc();
-                ic.ivfDB.obilhDB.updateBillNo(txtVn.Text, billNo);
+                String billNo1 = ic.ivfDB.copDB.genBillingDoc(ref year, ref month, ref day);
+                String billExtNo1 = ic.ivfDB.copDB.genBillingExtDoc();
+                ic.ivfDB.obilhDB.updateBillNo(txtVn.Text, billNo1);
             }
 
             //dtpgk = ic.ivfDB.opkgsDB.selectByVN1(txtVn.Text);
@@ -169,7 +169,7 @@ namespace clinic_ivf.gui
                 dtprn.ImportRow(row);
             }
 
-            ic.ivfDB.ovsDB.updateStatusCashierFinish(txtVn.Text);
+            String re = ic.ivfDB.ovsDB.updateStatusCashierFinish(txtVn.Text);
             amt2 = ic.NumberToCurrencyText(amt, MidpointRounding.AwayFromZero);
             Decimal.TryParse(txtTotalCash.Text, out cash);
             Decimal.TryParse(txtTotalCredit.Text, out credit);
@@ -389,6 +389,7 @@ namespace clinic_ivf.gui
         private void BtnClose_Click(object sender, EventArgs e)
         {
             //throw new NotImplementedException();
+            String re = ic.ivfDB.ovsDB.updateStatusCashierFinish(txtVn.Text);
             frmCashView.setGrfQuePublic();
             frmCashView.setGrfFinishPublic();
             menu.removeTab(tab);
@@ -597,6 +598,11 @@ namespace clinic_ivf.gui
         {
             //throw new NotImplementedException();
             txtDiscountAmt.Enabled = chkDiscountPer.Checked ? true : false;
+        }
+
+        private void GroupBox1_Enter(object sender, EventArgs e)
+        {
+
         }
 
         private void ChkDiscount_CheckedChanged(object sender, EventArgs e)
