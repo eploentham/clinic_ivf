@@ -81,9 +81,9 @@ namespace clinic_ivf.gui
             initGrfProc();
             initGrfFinish();
             setGrfReq();
-            setGrfProc();
+            setGrfProc("");
             setGrfFinish();
-            //initGrfSearch();
+            initGrfSearch();
         }
 
         private void BtnFet_Click(object sender, EventArgs e)
@@ -112,7 +112,7 @@ namespace clinic_ivf.gui
             //throw new NotImplementedException();
             if (e.KeyCode == Keys.Enter)
             {
-                setGrfSearch();
+                setGrfSearch(txtSearch.Text);
             }
         }
 
@@ -126,34 +126,78 @@ namespace clinic_ivf.gui
         {
             //throw new NotImplementedException();
             setGrfReq();
-            setGrfProc();
+            setGrfProc("");
         }
-        
-        private void setGrfSearch()
+        private void initGrfSearch()
+        {
+            grfSearch = new C1FlexGrid();
+            grfSearch.Font = fEdit;
+            grfSearch.Dock = System.Windows.Forms.DockStyle.Fill;
+            grfSearch.Location = new System.Drawing.Point(0, 0);
+
+            //FilterRow fr = new FilterRow(grfExpn);
+
+            grfSearch.AfterRowColChange += GrfSearch_AfterRowColChange;
+            grfSearch.DoubleClick += GrfSearch_DoubleClick;
+            //grfExpnC.CellChanged += new C1.Win.C1FlexGrid.RowColEventHandler(this.grfDept_CellChanged);
+            ContextMenu menuGw = new ContextMenu();
+            menuGw.MenuItems.Add("ป้อน LAB OPU/FET", new EventHandler(ContextMenu_proc_edit));
+            //menuGw.MenuItems.Add("&แก้ไข", new EventHandler(ContextMenu_Gw_Edit));
+            //menuGw.MenuItems.Add("&ยกเลิก", new EventHandler(ContextMenu_Gw_Cancel));
+            grfSearch.ContextMenu = menuGw;
+            pnSearch.Controls.Add(grfSearch);
+
+            theme1.SetTheme(grfSearch, "Office2010Blue");
+        }
+
+        private void GrfSearch_DoubleClick(object sender, EventArgs e)
+        {
+            //throw new NotImplementedException();
+
+        }
+
+        private void GrfSearch_AfterRowColChange(object sender, RangeEventArgs e)
+        {
+            //throw new NotImplementedException();
+
+        }
+
+        private void setGrfSearch(String search)
         {
             grfSearch.DataSource = null;
             grfSearch.Clear();
             DataTable dt = new DataTable();
 
-            dt = ic.ivfDB.opuDB.selectBySearch(txtSearch.Text.Trim());
+            dt = ic.ivfDB.opuDB.selectByStatusProcess1(search);
+
             //grfExpn.Rows.Count = dt.Rows.Count + 1;
-            grfSearch.Rows.Count = 1;
-            grfSearch.Cols.Count = 7;
-            C1TextBox txt = new C1TextBox();
-            //C1ComboBox cboproce = new C1ComboBox();
-            //ic.ivfDB.itmDB.setCboItem(cboproce);
-            grfSearch.Cols[colPcOpuNum].Editor = txt;
-            grfSearch.Cols[colPcHn].Editor = txt;
-            grfSearch.Cols[colPcPttName].Editor = txt;
-            grfSearch.Cols[colPcDate].Editor = txt;
-            grfSearch.Cols[colPcRemark].Editor = txt;
+            if (dt.Rows.Count <= 1)
+            {
+                grfSearch.Rows.Count = dt.Rows.Count + 2;
+            }
+            else
+            {
+                grfSearch.Rows.Count = dt.Rows.Count + 1;
+            }
+            grfSearch.Cols.Count = 10;
+            //C1TextBox txt = new C1TextBox();
+            ////C1ComboBox cboproce = new C1ComboBox();
+            ////ic.ivfDB.itmDB.setCboItem(cboproce);
+            //grfSearch.Cols[colPcOpuNum].Editor = txt;
+            //grfSearch.Cols[colPcHn].Editor = txt;
+            //grfSearch.Cols[colPcPttName].Editor = txt;
+            //grfSearch.Cols[colPcDate].Editor = txt;
+            //grfSearch.Cols[colPcRemark].Editor = txt;
 
             grfSearch.Cols[colPcOpuNum].Width = 120;
             grfSearch.Cols[colPcHn].Width = 120;
             grfSearch.Cols[colPcPttName].Width = 280;
             grfSearch.Cols[colPcDate].Width = 100;
             grfSearch.Cols[colPcRemark].Width = 200;
-            //grfSearch.Cols[colRqRemark].Width = 200;
+            grfSearch.Cols[colPcHnMale].Width = 120;
+            grfSearch.Cols[colPcNameMale].Width = 280;
+            grfSearch.Cols[colProceName].Width = 200;
+
             grfSearch.ShowCursor = true;
             //grdFlex.Cols[colID].Caption = "no";
             //grfDept.Cols[colCode].Caption = "รหัส";
@@ -163,31 +207,58 @@ namespace clinic_ivf.gui
             grfSearch.Cols[colPcPttName].Caption = "Patient Name";
             grfSearch.Cols[colPcDate].Caption = "OPU Date";
             grfSearch.Cols[colPcRemark].Caption = "Remark";
-            //grfSearch.Cols[colRqRemark].Caption = "Remark";
-            //grfSearch.Cols[colDtrName].Caption = "Doctor";
+
+            grfSearch.Cols[colPcHnMale].Caption = "HN Male";
+            grfSearch.Cols[colPcNameMale].Caption = "Patient Male";
+            grfSearch.Cols[colProceName].Caption = "Procedure";
 
             Color color = ColorTranslator.FromHtml(ic.iniC.grfRowColor);
             //CellRange rg1 = grfBank.GetCellRange(1, colE, grfBank.Rows.Count, colE);
             //rg1.Style = grfBank.Styles["date"];
             //grfCu.Cols[colID].Visible = false;
-            int i = 1;
+            for (int col = 0; col < dt.Columns.Count; ++col)
+            {
+                grfSearch.Cols[col + 1].DataType = dt.Columns[col].DataType;
+                //grfSearch.Cols[col + 1].Caption = dt.Columns[col].ColumnName;
+                grfSearch.Cols[col + 1].Name = dt.Columns[col].ColumnName;
+            }
+            int i = 0;
             foreach (DataRow row in dt.Rows)
             {
-                Row row1 = grfSearch.Rows.Add();
-                row1[colPcId] = row[ic.ivfDB.opuDB.opu.opu_id].ToString();
-                row1[colPcOpuNum] = row[ic.ivfDB.opuDB.opu.opu_code].ToString();
-                row1[colPcHn] = row[ic.ivfDB.opuDB.opu.hn_female].ToString();
-                row1[colPcPttName] = row[ic.ivfDB.opuDB.opu.name_female].ToString();
-                row1[colPcDate] = ic.datetoShow(row[ic.ivfDB.opuDB.opu.opu_date].ToString());
-                row1[colPcRemark] = row[ic.ivfDB.opuDB.opu.remark].ToString();
+                i++;
+                if (i == 1) continue;
+                //Row row1 = grfSearch.Rows.Add();
+                grfSearch[i, colPcId] = row[ic.ivfDB.opuDB.opu.opu_id].ToString();
+                grfSearch[i, colPcOpuNum] = row[ic.ivfDB.opuDB.opu.opu_code].ToString();
+                grfSearch[i, colPcHn] = row[ic.ivfDB.opuDB.opu.hn_female].ToString();
+                grfSearch[i, colPcPttName] = row[ic.ivfDB.opuDB.opu.name_female].ToString();
+                grfSearch[i, colPcDate] = ic.datetoShow(row[ic.ivfDB.opuDB.opu.opu_date].ToString());
+                grfSearch[i, colPcRemark] = row[ic.ivfDB.opuDB.opu.remark].ToString();
+                grfSearch[i, colPcHnMale] = row[ic.ivfDB.opuDB.opu.hn_male].ToString();
+                grfSearch[i, colPcNameMale] = row[ic.ivfDB.opuDB.opu.name_male].ToString();
+                grfSearch[i, colProceName] = row["proce_name_t"].ToString();
                 //row1[colRqRemark] = row[ic.ivfDB.lbReqDB.lbReq.remark].ToString();
                 //row1[colOpuId] = "";
                 //row1[colDtrName] = row["dtr_name"].ToString();
-                row1[0] = i;
-                i++;
+                grfSearch[i, 0] = (i - 1);
+
             }
             grfSearch.Cols[colRqId].Visible = false;
+            grfSearch.Cols[colPcOpuNum].AllowEditing = false;
+            grfSearch.Cols[colPcHn].AllowEditing = false;
+            grfSearch.Cols[colPcPttName].AllowEditing = false;
+            grfSearch.Cols[colPcDate].AllowEditing = false;
+            grfSearch.Cols[colPcRemark].AllowEditing = false;
+            grfSearch.Cols[colPcHnMale].AllowEditing = false;
+            grfSearch.Cols[colPcNameMale].AllowEditing = false;
+            grfSearch.Cols[colProceName].AllowEditing = false;
             //grfReq.Cols[coldt].Visible = false;
+            if (grfSearch.Rows.Count > 2)
+            {
+                FilterRow fr = new FilterRow(grfSearch);
+                grfSearch.AllowFiltering = true;
+                grfSearch.AfterFilter += GrfProc_AfterFilter;
+            }
         }
         private void initGrfReq()
         {
@@ -206,7 +277,7 @@ namespace clinic_ivf.gui
             menuGw.MenuItems.Add("รับทราบการเปลี่ยนแปลงเวลา", new EventHandler(ContextMenu_Gw_time_modi));
             //menuGw.MenuItems.Add("&ยกเลิก", new EventHandler(ContextMenu_Gw_Cancel));
             grfReq.ContextMenu = menuGw;
-            gB.Controls.Add(grfReq);
+            pnReq.Controls.Add(grfReq);
 
             theme1.SetTheme(grfReq, "Office2010Blue");
         }
@@ -242,7 +313,7 @@ namespace clinic_ivf.gui
                 this.Cursor = Cursors.WaitCursor;
                 openLabOPUNew(id, name);
                 setGrfReq();
-                setGrfProc();
+                setGrfProc("");
                 this.Cursor = curOld;
             //}
         }
@@ -466,14 +537,15 @@ namespace clinic_ivf.gui
             //throw new NotImplementedException();
             ContextMenu_proc_edit(null, null);
         }
-
-        private void setGrfProc()
+        
+        private void setGrfProc(String search)
         {
             grfProc.DataSource = null;
             grfProc.Clear();
             DataTable dt = new DataTable();
-
-            dt = ic.ivfDB.opuDB.selectByStatusProcess1();
+            
+            dt = ic.ivfDB.opuDB.selectByStatusProcess1(search);
+            
             //grfExpn.Rows.Count = dt.Rows.Count + 1;
             if (dt.Rows.Count <= 1)
             {

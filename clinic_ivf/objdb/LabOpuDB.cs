@@ -255,14 +255,19 @@ namespace clinic_ivf.objdb
             dt = conn.selectData(conn.conn, sql);
             return dt;
         }
-        public DataTable selectByStatusProcess1()
+        public DataTable selectByStatusProcess1(String search)
         {
+            String wherehn = "";
+            if (!search.Equals(""))
+            {
+                wherehn = " and opu."+opu.hn_male+" like '%"+search+"%' and opu."+opu.hn_female+" like '%"+search+"%'";
+            }
             DataTable dt = new DataTable();
             String sql = "select opu." + opu.opu_id + ", opu." + opu.opu_code + ",opu." + opu.hn_female + ",opu." + opu.name_female + ",opu." + opu.opu_date + ",opu." + opu.remark+","+ opu.hn_male+","+opu.name_male+ ", lab_b_procedure.proce_name_t " +
                 "From " + opu.table + " opu " +
                 "Left Join Doctor on Doctor.ID = opu.doctor_id " +
                 "Left Join lab_b_procedure on opu.proce_id = lab_b_procedure.proce_id " +
-                "Where opu." + opu.status_opu + " ='1' and opu." + opu.active + "='1' " +
+                "Where opu." + opu.status_opu + " ='1' and opu." + opu.active + "='1' "+ wherehn +
                 //"Order By opu." + opu.opu_id + " " +
                 //"Union " +
                 //"select fet.fet_id , fet.fet_code ,fet.hn_female ,fet.name_female,fet.fet_date ,fet.remark, fet.hn_male, fet.name_male, lab_b_procedure.proce_name_t " +

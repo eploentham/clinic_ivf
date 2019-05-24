@@ -46,7 +46,6 @@
             this.label32 = new System.Windows.Forms.Label();
             this.c1CheckBox1 = new C1.Win.C1Input.C1CheckBox();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.gB = new System.Windows.Forms.GroupBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.c1SplitButton1 = new C1.Win.C1Input.C1SplitButton();
             this.btnOPU = new C1.Win.C1Input.DropDownItem();
@@ -78,6 +77,7 @@
             this.btnSearch = new C1.Win.C1Input.C1Button();
             this.label4 = new System.Windows.Forms.Label();
             this.txtSearch = new C1.Win.C1Input.C1TextBox();
+            this.pnReq = new System.Windows.Forms.Panel();
             this.sB.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.theme1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.c1TextBox14)).BeginInit();
@@ -332,7 +332,7 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.panel1.Controls.Add(this.gB);
+            this.panel1.Controls.Add(this.pnReq);
             this.panel1.Controls.Add(this.groupBox1);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
@@ -341,19 +341,6 @@
             this.panel1.Size = new System.Drawing.Size(1210, 702);
             this.panel1.TabIndex = 9;
             this.theme1.SetTheme(this.panel1, "(default)");
-            // 
-            // gB
-            // 
-            this.gB.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.gB.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.gB.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.gB.Location = new System.Drawing.Point(0, 47);
-            this.gB.Name = "gB";
-            this.gB.Size = new System.Drawing.Size(1210, 655);
-            this.gB.TabIndex = 1;
-            this.gB.TabStop = false;
-            this.gB.Text = "groupBox2";
-            this.theme1.SetTheme(this.gB, "(default)");
             // 
             // groupBox1
             // 
@@ -866,6 +853,17 @@
             this.theme1.SetTheme(this.txtSearch, "(default)");
             this.txtSearch.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
             // 
+            // pnReq
+            // 
+            this.pnReq.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.pnReq.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pnReq.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.pnReq.Location = new System.Drawing.Point(0, 47);
+            this.pnReq.Name = "pnReq";
+            this.pnReq.Size = new System.Drawing.Size(1210, 655);
+            this.pnReq.TabIndex = 1;
+            this.theme1.SetTheme(this.pnReq, "(default)");
+            // 
             // FrmLabOpuView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -937,7 +935,6 @@
         private System.Windows.Forms.Label label32;
         private C1.Win.C1Input.C1CheckBox c1CheckBox1;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.GroupBox gB;
         private System.Windows.Forms.GroupBox groupBox1;
         private C1.Win.C1Input.C1Button btnNew;
         private C1.Win.C1Input.C1DateEdit txtDateEnd;
@@ -969,5 +966,6 @@
         private C1.Win.C1Input.C1SplitButton c1SplitButton1;
         private C1.Win.C1Input.DropDownItem btnOPU;
         private C1.Win.C1Input.DropDownItem btnFet;
+        private System.Windows.Forms.Panel pnReq;
     }
 }

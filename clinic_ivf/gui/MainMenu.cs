@@ -252,9 +252,26 @@ namespace clinic_ivf.gui
         private void MenuCashierDefault_Click(object sender, EventArgs e)
         {
             //throw new NotImplementedException();
-            FrmCashierView frm = new FrmCashierView(ic, this);
-            frm.FormBorderStyle = FormBorderStyle.None;
-            AddNewTab(frm, menuCashierDefault.Text + " ");
+            String tabname = "FrmCashierView";
+            bool found = false;
+            foreach (C1DockingTabPage tab in tC1.TabPages)
+            {
+                if (tabname.Equals(tab.Name))
+                {
+                    tC1.SelectedTab = tab;
+                    found = true;
+                    break;
+                }
+            }
+            //var tabPage = tC1.TabPages["FrmCashierView"];
+            if (!found)
+            {
+                //tC1.SelectedTab = tabPage;
+                FrmCashierView frm = new FrmCashierView(ic, this);
+                frm.FormBorderStyle = FormBorderStyle.None;
+                //frm.Name = "FrmCashierView";
+                AddNewTab(frm, menuCashierDefault.Text + " ");
+            }
         }
 
         private void MenuReqLabFormA_Click(object sender, EventArgs e)
@@ -286,9 +303,23 @@ namespace clinic_ivf.gui
         private void MenuNurseDefault_Click(object sender, EventArgs e)
         {
             //throw new NotImplementedException();
-            FrmNurseView frm = new FrmNurseView(ic, this);
-            frm.FormBorderStyle = FormBorderStyle.None;
-            AddNewTab(frm, menuNurseDefault.Text + " ");
+            String tabname = "FrmNurseView";
+            bool found = false;
+            foreach (C1DockingTabPage tab in tC1.TabPages)
+            {
+                if (tabname.Equals(tab.Name))
+                {
+                    tC1.SelectedTab = tab;
+                    found = true;
+                    break;
+                }
+            }
+            if (!found)
+            {
+                FrmNurseView frm = new FrmNurseView(ic, this);
+                frm.FormBorderStyle = FormBorderStyle.None;
+                AddNewTab(frm, menuNurseDefault.Text + " ");
+            }
         }
 
         private void MenuAppn_Click(object sender, EventArgs e)
@@ -398,9 +429,23 @@ namespace clinic_ivf.gui
         private void MenuLabOpu_Click(object sender, EventArgs e)
         {
             //throw new NotImplementedException();
-            FrmLabOpuView frm = new FrmLabOpuView(ic, this);
-            frm.FormBorderStyle = FormBorderStyle.None;
-            AddNewTab(frm, menuLabOpu.Text + " ");
+            String tabname = "FrmLabOpuView";
+            bool found = false;
+            foreach (C1DockingTabPage tab in tC1.TabPages)
+            {
+                if (tabname.Equals(tab.Name))
+                {
+                    tC1.SelectedTab = tab;
+                    found = true;
+                    break;
+                }
+            }
+            if (!found)
+            {
+                FrmLabOpuView frm = new FrmLabOpuView(ic, this);
+                frm.FormBorderStyle = FormBorderStyle.None;
+                AddNewTab(frm, menuLabOpu.Text + " ");
+            }
         }
 
         private void MenuExit_Click(object sender, EventArgs e)
@@ -478,6 +523,7 @@ namespace clinic_ivf.gui
             frm.TopLevel = false;
             tab.Width = tCC1.Width - 10;
             tab.Height = tCC1.Height - 35;
+            tab.Name = frm.Name;
 
             frm.Parent = tab;
             frm.Dock = DockStyle.Fill;

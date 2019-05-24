@@ -94,6 +94,7 @@
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.txtMediaDate = new C1.Win.C1Input.C1DateEdit();
             this.txtMediaThawing = new C1.Win.C1Input.C1TextBox();
             this.label13 = new System.Windows.Forms.Label();
             this.txtMediaExp = new C1.Win.C1Input.C1TextBox();
@@ -193,7 +194,6 @@
             this.label48 = new System.Windows.Forms.Label();
             this.sB = new System.Windows.Forms.StatusStrip();
             this.sB1 = new System.Windows.Forms.ToolStripStatusLabel();
-            this.txtMediaDate = new C1.Win.C1Input.C1DateEdit();
             ((System.ComponentModel.ISupportInitialize)(this.theme1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.c1CommandDock1)).BeginInit();
             this.c1CommandDock1.SuspendLayout();
@@ -247,6 +247,7 @@
             this.splitContainer1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox5.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtMediaDate)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtMediaThawing)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtMediaExp)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtMediaLot)).BeginInit();
@@ -316,7 +317,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtEmbryoForEtDay)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtEmbryoForEtNO)).BeginInit();
             this.sB.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.txtMediaDate)).BeginInit();
             this.SuspendLayout();
             // 
             // theme1
@@ -890,7 +890,7 @@
             this.btnPrint.Name = "btnPrint";
             this.btnPrint.Size = new System.Drawing.Size(128, 34);
             this.btnPrint.TabIndex = 540;
-            this.btnPrint.Text = "Print OPU Report";
+            this.btnPrint.Text = "Print FET Report";
             this.btnPrint.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.theme1.SetTheme(this.btnPrint, "(default)");
             this.btnPrint.UseVisualStyleBackColor = true;
@@ -1171,9 +1171,9 @@
             this.label31.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
             this.label31.Location = new System.Drawing.Point(660, 63);
             this.label31.Name = "label31";
-            this.label31.Size = new System.Drawing.Size(89, 16);
+            this.label31.Size = new System.Drawing.Size(86, 16);
             this.label31.TabIndex = 527;
-            this.label31.Text = "Date of OPU :";
+            this.label31.Text = "Date of FET :";
             this.theme1.SetTheme(this.label31, "(default)");
             // 
             // cboOpuProce
@@ -1415,6 +1415,52 @@
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "Thawing Media";
             this.theme1.SetTheme(this.groupBox5, "(default)");
+            // 
+            // txtMediaDate
+            // 
+            this.txtMediaDate.AllowSpinLoop = false;
+            this.txtMediaDate.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            // 
+            // 
+            // 
+            this.txtMediaDate.Calendar.ArrowColor = System.Drawing.Color.Black;
+            this.txtMediaDate.Calendar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.txtMediaDate.Calendar.DayNamesFont = new System.Drawing.Font("Tahoma", 8F);
+            this.txtMediaDate.Calendar.Font = new System.Drawing.Font("Tahoma", 8F);
+            this.txtMediaDate.Calendar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.txtMediaDate.Calendar.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(71)))), ((int)(((byte)(47)))));
+            this.txtMediaDate.Calendar.SelectionForeColor = System.Drawing.Color.White;
+            this.txtMediaDate.Calendar.TitleBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(230)))));
+            this.txtMediaDate.Calendar.TitleFont = new System.Drawing.Font("Tahoma", 8F);
+            this.txtMediaDate.Calendar.TitleForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.txtMediaDate.Calendar.TodayBorderColor = System.Drawing.Color.White;
+            this.txtMediaDate.Calendar.TrailingForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
+            this.txtMediaDate.Calendar.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            this.txtMediaDate.Culture = 1054;
+            this.txtMediaDate.CurrentTimeZone = false;
+            this.txtMediaDate.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
+            this.txtMediaDate.DisplayFormat.FormatType = C1.Win.C1Input.FormatTypeEnum.ShortDate;
+            this.txtMediaDate.DisplayFormat.Inherit = ((C1.Win.C1Input.FormatInfoInheritFlags)((((((C1.Win.C1Input.FormatInfoInheritFlags.CustomFormat | C1.Win.C1Input.FormatInfoInheritFlags.NullText) 
+            | C1.Win.C1Input.FormatInfoInheritFlags.EmptyAsNull) 
+            | C1.Win.C1Input.FormatInfoInheritFlags.TrimStart) 
+            | C1.Win.C1Input.FormatInfoInheritFlags.TrimEnd) 
+            | C1.Win.C1Input.FormatInfoInheritFlags.CalendarType)));
+            this.txtMediaDate.EditFormat.FormatType = C1.Win.C1Input.FormatTypeEnum.ShortDate;
+            this.txtMediaDate.EditFormat.Inherit = ((C1.Win.C1Input.FormatInfoInheritFlags)((((((C1.Win.C1Input.FormatInfoInheritFlags.CustomFormat | C1.Win.C1Input.FormatInfoInheritFlags.NullText) 
+            | C1.Win.C1Input.FormatInfoInheritFlags.EmptyAsNull) 
+            | C1.Win.C1Input.FormatInfoInheritFlags.TrimStart) 
+            | C1.Win.C1Input.FormatInfoInheritFlags.TrimEnd) 
+            | C1.Win.C1Input.FormatInfoInheritFlags.CalendarType)));
+            this.txtMediaDate.EmptyAsNull = true;
+            this.txtMediaDate.GMTOffset = System.TimeSpan.Parse("00:00:00");
+            this.txtMediaDate.ImagePadding = new System.Windows.Forms.Padding(0);
+            this.txtMediaDate.Location = new System.Drawing.Point(132, 14);
+            this.txtMediaDate.Name = "txtMediaDate";
+            this.txtMediaDate.Size = new System.Drawing.Size(166, 18);
+            this.txtMediaDate.TabIndex = 520;
+            this.txtMediaDate.Tag = null;
+            this.theme1.SetTheme(this.txtMediaDate, "(default)");
+            this.txtMediaDate.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
             // 
             // txtMediaThawing
             // 
@@ -3115,52 +3161,6 @@
             this.sB1.Size = new System.Drawing.Size(118, 17);
             this.sB1.Text = "toolStripStatusLabel1";
             // 
-            // txtMediaDate
-            // 
-            this.txtMediaDate.AllowSpinLoop = false;
-            this.txtMediaDate.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            // 
-            // 
-            // 
-            this.txtMediaDate.Calendar.ArrowColor = System.Drawing.Color.Black;
-            this.txtMediaDate.Calendar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.txtMediaDate.Calendar.DayNamesFont = new System.Drawing.Font("Tahoma", 8F);
-            this.txtMediaDate.Calendar.Font = new System.Drawing.Font("Tahoma", 8F);
-            this.txtMediaDate.Calendar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.txtMediaDate.Calendar.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(71)))), ((int)(((byte)(47)))));
-            this.txtMediaDate.Calendar.SelectionForeColor = System.Drawing.Color.White;
-            this.txtMediaDate.Calendar.TitleBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(230)))));
-            this.txtMediaDate.Calendar.TitleFont = new System.Drawing.Font("Tahoma", 8F);
-            this.txtMediaDate.Calendar.TitleForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.txtMediaDate.Calendar.TodayBorderColor = System.Drawing.Color.White;
-            this.txtMediaDate.Calendar.TrailingForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
-            this.txtMediaDate.Calendar.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
-            this.txtMediaDate.Culture = 1054;
-            this.txtMediaDate.CurrentTimeZone = false;
-            this.txtMediaDate.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
-            this.txtMediaDate.DisplayFormat.FormatType = C1.Win.C1Input.FormatTypeEnum.ShortDate;
-            this.txtMediaDate.DisplayFormat.Inherit = ((C1.Win.C1Input.FormatInfoInheritFlags)((((((C1.Win.C1Input.FormatInfoInheritFlags.CustomFormat | C1.Win.C1Input.FormatInfoInheritFlags.NullText) 
-            | C1.Win.C1Input.FormatInfoInheritFlags.EmptyAsNull) 
-            | C1.Win.C1Input.FormatInfoInheritFlags.TrimStart) 
-            | C1.Win.C1Input.FormatInfoInheritFlags.TrimEnd) 
-            | C1.Win.C1Input.FormatInfoInheritFlags.CalendarType)));
-            this.txtMediaDate.EditFormat.FormatType = C1.Win.C1Input.FormatTypeEnum.ShortDate;
-            this.txtMediaDate.EditFormat.Inherit = ((C1.Win.C1Input.FormatInfoInheritFlags)((((((C1.Win.C1Input.FormatInfoInheritFlags.CustomFormat | C1.Win.C1Input.FormatInfoInheritFlags.NullText) 
-            | C1.Win.C1Input.FormatInfoInheritFlags.EmptyAsNull) 
-            | C1.Win.C1Input.FormatInfoInheritFlags.TrimStart) 
-            | C1.Win.C1Input.FormatInfoInheritFlags.TrimEnd) 
-            | C1.Win.C1Input.FormatInfoInheritFlags.CalendarType)));
-            this.txtMediaDate.EmptyAsNull = true;
-            this.txtMediaDate.GMTOffset = System.TimeSpan.Parse("00:00:00");
-            this.txtMediaDate.ImagePadding = new System.Windows.Forms.Padding(0);
-            this.txtMediaDate.Location = new System.Drawing.Point(132, 14);
-            this.txtMediaDate.Name = "txtMediaDate";
-            this.txtMediaDate.Size = new System.Drawing.Size(166, 18);
-            this.txtMediaDate.TabIndex = 520;
-            this.txtMediaDate.Tag = null;
-            this.theme1.SetTheme(this.txtMediaDate, "(default)");
-            this.txtMediaDate.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
-            // 
             // FrmLabFetAdd1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -3228,6 +3228,7 @@
             this.groupBox2.ResumeLayout(false);
             this.groupBox5.ResumeLayout(false);
             this.groupBox5.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtMediaDate)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtMediaThawing)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtMediaExp)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtMediaLot)).EndInit();
@@ -3305,7 +3306,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtEmbryoForEtNO)).EndInit();
             this.sB.ResumeLayout(false);
             this.sB.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.txtMediaDate)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
