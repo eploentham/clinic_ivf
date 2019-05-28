@@ -158,15 +158,32 @@ namespace clinic_ivf.gui
             //dtprn.Columns.Add("grp", typeof(String));
             //dtprn.Columns.Add("grp_name", typeof(String));
             dtprn = dt.Clone();
-            foreach (DataRow row in dt.Rows)
+            if (dtprn.Rows.Count > 0)
             {
-                //DataRow row = dtprn.NewRow();
-                row["original"] = "1";
-                dtprn.ImportRow(row);
-                row["original"] = "2";
-                Decimal.TryParse(row["col2"].ToString().Replace(",", ""), out price1);
-                sumprice += price1;
-                dtprn.ImportRow(row);
+                foreach (DataRow row in dt.Rows)
+                {
+                    //DataRow row = dtprn.NewRow();
+                    row["original"] = "1";
+                    dtprn.ImportRow(row);
+                    row["original"] = "2";
+                    Decimal.TryParse(row["col2"].ToString().Replace(",", ""), out price1);
+                    sumprice += price1;
+                    dtprn.ImportRow(row);
+                }
+            }
+            else
+            {
+                DataRow row11 = dtprn.NewRow();
+                row11["col1"] = "";
+                row11["col2"] = "0.00";
+                row11["col3"] = "";
+                row11["col4"] = "0.00";
+                row11["sort1"] = "";
+                row11["fond_bold"] = "1";
+                row11["grp"] = "3";
+                row11["grp_name"] = "";
+                row11["original"] = "1";
+                dtprn.Rows.Add(row11);
             }
 
             String re = ic.ivfDB.ovsDB.updateStatusCashierFinish(txtVn.Text);
@@ -464,15 +481,32 @@ namespace clinic_ivf.gui
             //dtprn.Columns.Add("grp", typeof(String));
             //dtprn.Columns.Add("grp_name", typeof(String));
             dtprn = dt.Clone();
-            foreach(DataRow row in dt.Rows)
+            if (dtprn.Rows.Count > 0)
             {
-                //DataRow row = dtprn.NewRow();
-                row["original"] = "1";
-                dtprn.ImportRow(row);
-                row["original"] = "2";
-                Decimal.TryParse(row["col2"].ToString().Replace(",",""), out price1);
-                sumprice += price1;
-                dtprn.ImportRow(row);
+                foreach (DataRow row in dt.Rows)
+                {
+                    //DataRow row = dtprn.NewRow();
+                    row["original"] = "1";
+                    dtprn.ImportRow(row);
+                    row["original"] = "2";
+                    Decimal.TryParse(row["col2"].ToString().Replace(",", ""), out price1);
+                    sumprice += price1;
+                    dtprn.ImportRow(row);
+                }
+            }
+            else
+            {
+                DataRow row11 = dtprn.NewRow();
+                row11["col1"] = "";
+                row11["col2"] = "0.00";
+                row11["col3"] = "";
+                row11["col4"] = "0.00";
+                row11["sort1"] = "";
+                row11["fond_bold"] = "1";
+                row11["grp"] = "3";
+                row11["grp_name"] = "";
+                row11["original"] = "1";
+                dtprn.Rows.Add(row11);
             }
             
             //ic.ivfDB.ovsDB.updateStatusCashierFinish(txtVn.Text);
