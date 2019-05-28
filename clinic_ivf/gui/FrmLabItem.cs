@@ -204,6 +204,7 @@ namespace clinic_ivf.gui
             txtID.Value = labI.LID;
             txtDocGroupSubName.Value = labI.LName;
             txtPrice.Value = labI.Price;
+            chkShowQty.Checked = labI.status_show_qty.Equals("1") ? true : false;
         }
         private void setControlEnable(Boolean flag)
         {
@@ -220,6 +221,7 @@ namespace clinic_ivf.gui
             labI.LName = txtDocGroupSubName.Text;
             labI.LGID = cboDocGroupName.SelectedItem == null ? "" : ((ComboBoxItem)cboDocGroupName.SelectedItem).Value;
             labI.Price = txtPrice.Text;
+            labI.status_show_qty = chkShowQty.Checked ? "1" : "0";
         }
         private void grfPosi_AfterRowColChange(object sender, C1.Win.C1FlexGrid.RangeEventArgs e)
         {

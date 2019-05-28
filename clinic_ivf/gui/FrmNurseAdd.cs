@@ -23,6 +23,7 @@ namespace clinic_ivf.gui
         IvfControl ic;
         MainMenu menu;
         public C1DockingTabPage tab;
+        public FrmNurseView frmNurView;
 
         String pttId = "", webcamname = "", vsid = "", flagedit="", pApmId = "";
         Patient ptt;
@@ -200,6 +201,8 @@ namespace clinic_ivf.gui
             ovs = ic.ivfDB.ovsDB.selectByPk1(txtVnOld.Text);
             if (ovs.VSID.Equals("160"))
             {
+                frmNurView.setGrfQuePublic();
+                frmNurView.setGrfFinishPublic();
                 menu.removeTab(tab);
                 //return;
             }

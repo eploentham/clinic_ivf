@@ -33,6 +33,7 @@ namespace clinic_ivf.object1
         public String LGID { get; set; }
         public String QTY { get; set; }
         public String row1 { get; set; }
+        public String status_show_qty { get; set; }
 
     }
 }

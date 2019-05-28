@@ -49,6 +49,7 @@
             this.btnEdit = new C1.Win.C1Input.C1Button();
             this.chkVoid = new C1.Win.C1Input.C1CheckBox();
             this.btnVoid = new C1.Win.C1Input.C1Button();
+            this.chkShowQty = new C1.Win.C1Input.C1CheckBox();
             this.sB.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.theme1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.sCMain)).BeginInit();
@@ -66,6 +67,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.btnEdit)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkVoid)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnVoid)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chkShowQty)).BeginInit();
             this.SuspendLayout();
             // 
             // sB
@@ -146,6 +148,7 @@
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.panel2.Controls.Add(this.chkShowQty);
             this.panel2.Controls.Add(this.label3);
             this.panel2.Controls.Add(this.txtPrice);
             this.panel2.Controls.Add(this.txtID);
@@ -357,6 +360,24 @@
             this.btnVoid.UseVisualStyleBackColor = true;
             this.btnVoid.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
             // 
+            // chkShowQty
+            // 
+            this.chkShowQty.BackColor = System.Drawing.Color.Transparent;
+            this.chkShowQty.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
+            this.chkShowQty.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.chkShowQty.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.chkShowQty.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.chkShowQty.Location = new System.Drawing.Point(125, 136);
+            this.chkShowQty.Name = "chkShowQty";
+            this.chkShowQty.Padding = new System.Windows.Forms.Padding(4, 1, 1, 1);
+            this.chkShowQty.Size = new System.Drawing.Size(203, 24);
+            this.chkShowQty.TabIndex = 574;
+            this.chkShowQty.Text = "ต้องการให้แสดง qty ที่การเงิน";
+            this.theme1.SetTheme(this.chkShowQty, "(default)");
+            this.chkShowQty.UseVisualStyleBackColor = true;
+            this.chkShowQty.Value = null;
+            this.chkShowQty.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            // 
             // FrmLabItem
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -386,6 +407,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.btnEdit)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkVoid)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnVoid)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chkShowQty)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -414,5 +436,6 @@
         private C1.Win.C1Input.C1Button btnVoid;
         private System.Windows.Forms.Label label3;
         private C1.Win.C1Input.C1TextBox txtPrice;
+        private C1.Win.C1Input.C1CheckBox chkShowQty;
     }
 }

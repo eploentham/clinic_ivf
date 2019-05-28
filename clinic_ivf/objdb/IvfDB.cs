@@ -611,7 +611,7 @@ namespace clinic_ivf.objdb
             jlabD.LGID = olab.LGID;
             jlabD.QTY = qty;
             jlabD.row1 = row1;
-
+            jlabD.status_show_qty = olab.status_show_qty;
             oJlabdDB.insert(jlabD, "");
         }
         public void SpecialAdd(String sid, String qty, String pid, String pids, String vn, String extra, String w1uid, String w2uid, String w3uid, String w4uid, String row1)
@@ -910,6 +910,8 @@ namespace clinic_ivf.objdb
                         //}
                         obilld.GroupType = "Package";
                         obilld.status = "package";
+                        obilld.price1 = pay.ToString();
+                        obilld.qty = "1";
                         obildDB.insertBillDetail(obilld, "");
                     }
                 }
@@ -932,7 +934,15 @@ namespace clinic_ivf.objdb
                         OldBilldetail obilld = new OldBilldetail();
                         obilld.ID = "";
                         obilld.VN = row["VN"].ToString();
-                        obilld.Name = row["LName"].ToString();
+                        if (row["status_show_qty"].ToString().Equals("1"))
+                        {
+                            obilld.Name = row["LName"].ToString()+" ["+ row["QTY"].ToString()+"]";
+                        }
+                        else
+                        {
+                            obilld.Name = row["LName"].ToString();
+                        }
+                        
                         obilld.Extra = "0";
                         obilld.Price = (price*qty).ToString();
                         obilld.Total = "0";
@@ -941,6 +951,8 @@ namespace clinic_ivf.objdb
                         obilld.item_id = row["LID"].ToString();
                         obilld.status = "lab";
                         obilld.pcksid = "0";
+                        obilld.price1 = row["Price"].ToString();
+                        obilld.qty = row["QTY"].ToString();
                         obildDB.insertBillDetail(obilld, "");
                     }
                 }
@@ -966,6 +978,8 @@ namespace clinic_ivf.objdb
                         obilld.item_id = row["DUID"].ToString();
                         obilld.status = "drug";
                         obilld.pcksid = "0";
+                        obilld.price1 = row["Price"].ToString();
+                        obilld.qty = row["QTY"].ToString();
                         obildDB.insertBillDetail(obilld, "");
                     }
                 }
@@ -992,6 +1006,8 @@ namespace clinic_ivf.objdb
                         obilld.item_id = row["SID"].ToString();
                         obilld.status = "special";
                         obilld.pcksid = "0";
+                        obilld.price1 = row["Price"].ToString();
+                        obilld.qty = row["QTY"].ToString();
                         obildDB.insertBillDetail(obilld, "");
                     }
                 }
@@ -1014,7 +1030,18 @@ namespace clinic_ivf.objdb
                         OldBilldetail obilld = new OldBilldetail();
                         obilld.ID = "";
                         obilld.VN = row["VN"].ToString();
-                        obilld.Name = row["LName"].ToString();
+                        if (row["status_show_qty"].ToString().Equals("1"))
+                        {
+                            String name = "";
+                            name = row["LName"].ToString().Substring(0, row["LName"].ToString().IndexOf("per")).Trim() + " "+ row["QTY"].ToString()+" " + row["LName"].ToString().Substring(row["LName"].ToString().IndexOf("per")).Trim();
+                            //name = row["LName"].ToString();
+                            obilld.Name = name;
+                        }
+                        else
+                        {
+                            obilld.Name = row["LName"].ToString();
+                        }
+                        //obilld.Name = row["LName"].ToString();
                         obilld.Extra = "1";
                         obilld.Price = (price * qty).ToString();
                         obilld.Total = (price * qty).ToString();
@@ -1023,6 +1050,8 @@ namespace clinic_ivf.objdb
                         obilld.item_id = row["LID"].ToString();
                         obilld.status = "lab";
                         obilld.pcksid = "0";
+                        obilld.price1 = row["Price"].ToString();
+                        obilld.qty = row["QTY"].ToString();
                         obildDB.insertBillDetail(obilld, "");
                     }
                 }
@@ -1048,6 +1077,8 @@ namespace clinic_ivf.objdb
                         obilld.item_id = row["DUID"].ToString();
                         obilld.status = "drug";
                         obilld.pcksid = "0";
+                        obilld.price1 = row["Price"].ToString();
+                        obilld.qty = row["QTY"].ToString();
                         obildDB.insertBillDetail(obilld, "");
                     }
                 }
@@ -1074,6 +1105,8 @@ namespace clinic_ivf.objdb
                         obilld.item_id = row["SID"].ToString();
                         obilld.status = "special";
                         obilld.pcksid = "0";
+                        obilld.price1 = row["Price"].ToString();
+                        obilld.qty = row["QTY"].ToString();
                         obildDB.insertBillDetail(obilld, "");
                     }
                 }

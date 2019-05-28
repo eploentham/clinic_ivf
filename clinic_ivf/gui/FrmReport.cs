@@ -379,7 +379,14 @@ namespace clinic_ivf.gui
                 rpt.SetParameterValue("line2", ic.cop.addr1);
                 rpt.SetParameterValue("line3", ic.cop.addr2);
                 rpt.SetParameterValue("line4", "");
-                rpt.SetParameterValue("bill_no", "เลขที่/Bill No " + bill_no);
+                if (billname.IndexOf("Receipt")>=0)
+                {
+                    rpt.SetParameterValue("bill_no", "เลขที่/Receipt No " + bill_no);
+                }
+                else
+                {
+                    rpt.SetParameterValue("bill_no", "เลขที่/Bill No " + bill_no);
+                }
                 rpt.SetParameterValue("bill_date", bill_date);
                 rpt.SetParameterValue("amount", amount);
                 rpt.SetParameterValue("thai_baht", thai_baht);

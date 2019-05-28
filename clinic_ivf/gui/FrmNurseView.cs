@@ -272,6 +272,10 @@ namespace clinic_ivf.gui
             //throw new NotImplementedException();
 
         }
+        public void setGrfFinishPublic()
+        {
+            setGrfFinish();
+        }
         private void setGrfFinish()
         {
             if (ic.iniC.statusAppDonor.Equals("1"))
@@ -899,6 +903,10 @@ namespace clinic_ivf.gui
             String vn = "";
 
             //grfAddr.DataSource = xC.iniDB.addrDB.selectByTableId1(vn);
+        }
+        public void setGrfQuePublic()
+        {
+            setGrfQue();
         }
         private void setGrfQue()
         {

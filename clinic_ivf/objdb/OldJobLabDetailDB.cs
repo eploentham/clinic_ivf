@@ -46,6 +46,7 @@ namespace clinic_ivf.objdb
             jlabD.LGID = "LGID";
             jlabD.QTY = "QTY";
             jlabD.row1 = "row1";
+            jlabD.status_show_qty = "status_show_qty";
 
             jlabD.table = "JobLabDetail";
             jlabD.pkField = "ID";
@@ -71,6 +72,7 @@ namespace clinic_ivf.objdb
             p.SP6V = p.SP6V == null ? "" : p.SP6V;
             p.SP7V = p.SP7V == null ? "" : p.SP7V;
             p.Extra = p.Extra == null ? "" : p.Extra;
+            p.status_show_qty = p.status_show_qty == null ? "0" : p.status_show_qty;
 
             p.LGID = long.TryParse(p.LGID, out chk) ? chk.ToString() : "0";
             p.QTY = long.TryParse(p.QTY, out chk) ? chk.ToString() : "0";
@@ -120,6 +122,7 @@ namespace clinic_ivf.objdb
                 "," + jlabD.LGID + "= '" + p.LGID.Replace("'", "''") + "'" +
                 "," + jlabD.QTY + "= '" + p.QTY.Replace("'", "''") + "'" +
                 "," + jlabD.row1 + "= '" + p.row1.Replace("'", "''") + "'" +
+                "," + jlabD.status_show_qty + "= '" + p.status_show_qty.Replace("'", "''") + "'" +
                 "";
             try
             {

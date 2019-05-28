@@ -33,6 +33,6 @@ namespace clinic_ivf.object1
         public String WorkerGroup3 { get; set; }
         public String WorkerGroup4 { get; set; }
         public String QTY { get; set; }
-        
+        public String status_show_qty { get; set; }
     }
 }

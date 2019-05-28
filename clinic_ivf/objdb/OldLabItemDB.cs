@@ -50,6 +50,7 @@ namespace clinic_ivf.objdb
             labI.WorkerGroup4 = "WorkerGroup4";
             labI.QTY = "QTY";
             labI.active = "active";
+            labI.status_show_qty = "status_show_qty";
 
             labI.table = "LabItem";
             labI.pkField = "LID";
@@ -249,7 +250,7 @@ namespace clinic_ivf.objdb
             p.WorkerGroup4 = p.WorkerGroup4 == null ? "" : p.WorkerGroup4;
             p.active = p.active == null ? "" : p.active;
 
-            //p.Alert = p.Alert == null ? "0" : p.Alert;
+            p.status_show_qty = p.status_show_qty == null ? "0" : p.status_show_qty;
             //p.QTY = p.QTY == null ? "0" : p.QTY;
             //p.PendingQTY = p.PendingQTY == null ? "0" : p.PendingQTY;
             //p.Price = p.Price.Equals("") ? "0" : p.Price;
@@ -301,6 +302,7 @@ namespace clinic_ivf.objdb
                 "," + labI.QTY + "= '" + p.QTY + "'" +
                 "," + labI.active + "= '1'" +
                 "," + labI.LGID + "= '"+p.LGID+"'" +
+                "," + labI.status_show_qty + "= '" + p.status_show_qty + "'" +
                 "";
             try
             {
@@ -344,6 +346,7 @@ namespace clinic_ivf.objdb
                 "," + labI.WorkerGroup4 + "= '" + p.WorkerGroup4 + "'" +
                 "," + labI.QTY + "= '" + p.QTY + "'" +
                 "," + labI.LGID + "= '" + p.LGID + "'" +
+                "," + labI.status_show_qty + "= '" + p.status_show_qty + "'" +
                 "Where " + labI.pkField + "='" + p.LID + "'";
             try
             {
@@ -426,7 +429,7 @@ namespace clinic_ivf.objdb
                 vsold1.WorkerGroup3 = dt.Rows[0][labI.WorkerGroup3].ToString();
                 vsold1.WorkerGroup4 = dt.Rows[0][labI.WorkerGroup4].ToString();
                 vsold1.QTY = dt.Rows[0][labI.QTY].ToString();
-                //vsold1.form_a_id = dt.Rows[0][labI.form_a_id].ToString();
+                vsold1.status_show_qty = dt.Rows[0][labI.status_show_qty].ToString();
             }
             else
             {
@@ -461,6 +464,7 @@ namespace clinic_ivf.objdb
             stf1.WorkerGroup3 = "";
             stf1.WorkerGroup4 = "";
             stf1.QTY = "";
+            stf1.status_show_qty = "";
             return stf1;
         }
     }

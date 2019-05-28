@@ -825,7 +825,7 @@ namespace clinic_ivf.objdb
                 cop1.day = cop1.day.Substring(cop1.day.Length - 2, 2);
                 sql = "Update " + cop.table + " Set " +
                     " " + cop.day_curr + "='" + cop1.day + "' " +
-                    " " + cop.queue_doc + "='0' " +
+                    "," + cop.queue_doc + "='0' " +
                     "Where " + cop.pkField + "='" + cop1.comp_id + "'";
                 conn.ExecuteNonQuery(conn.conn, sql);
                 cop1.vn_doc = "000";

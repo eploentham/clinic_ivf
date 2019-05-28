@@ -32,6 +32,8 @@ namespace clinic_ivf.objdb
             obilld.item_id = "item_id";
             obilld.status = "status";
             obilld.pcksid = "pcksid";
+            obilld.price1 = "price1";
+            obilld.qty = "qty";
 
             obilld.table = "BillDetail";
             obilld.pkField = "ID";
@@ -115,7 +117,9 @@ namespace clinic_ivf.objdb
 
             p.Price = decimal.TryParse(p.Price, out chk1) ? chk1.ToString() : "0";            
             p.Total = decimal.TryParse(p.Total, out chk1) ? chk1.ToString() : "0";
-            
+            p.price1 = decimal.TryParse(p.price1, out chk1) ? chk1.ToString() : "0";
+            p.qty = decimal.TryParse(p.qty, out chk1) ? chk1.ToString() : "0";
+
         }
         public String insert(OldBilldetail p, String userId)
         {
@@ -139,6 +143,8 @@ namespace clinic_ivf.objdb
                 "," + obilld.item_id + "= '" + p.item_id + "'" +
                 "," + obilld.status + "= '" + p.status + "'" +
                 "," + obilld.pcksid + "= '" + p.pcksid + "'" +
+                "," + obilld.price1 + "= '" + p.price1 + "'" +
+                "," + obilld.qty + "= '" + p.qty + "'" +
                 "";
             try
             {
@@ -167,6 +173,8 @@ namespace clinic_ivf.objdb
                 "," + obilld.item_id + " = '" + p.item_id + "'" +
                 "," + obilld.status + " = '" + p.status + "'" +
                 "," + obilld.pcksid + " = '" + p.pcksid + "'" +
+                "," + obilld.price1 + "= '" + p.price1 + "'" +
+                "," + obilld.qty + "= '" + p.qty + "'" +
                 "Where " + obilld.pkField + "='" + p.ID + "'"
                 ;
 

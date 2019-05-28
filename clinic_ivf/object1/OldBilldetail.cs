@@ -19,5 +19,7 @@ namespace clinic_ivf.object1
         public String item_id { get; set; }
         public String status { get; set; }
         public String pcksid { get; set; }
+        public String price1 { get; set; }
+        public String qty { get; set; }
     }
 }

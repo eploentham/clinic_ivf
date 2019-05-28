@@ -368,6 +368,27 @@ namespace clinic_ivf.objdb
 
             return re;
         }
+        public String updateStatusPharmacyFinish(String vn)
+        {
+            String re = "";
+            String sql = "";
+            int chk = 0;
+
+            sql = "Update " + vsold.table + " Set " +
+                " " + vsold.LVSID + " = VSID " +
+                "," + vsold.VSID + " = '999' " +
+                "Where " + vsold.pkField + "='" + vn + "'";
+            try
+            {
+                re = conn.ExecuteNonQuery(conn.conn, sql);
+            }
+            catch (Exception ex)
+            {
+                sql = ex.Message + " " + ex.InnerException;
+            }
+
+            return re;
+        }
         public String insertVisitOld(VisitOld p, String userId, String flagnew)
         {
             String re = "";

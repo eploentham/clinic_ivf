@@ -38,7 +38,7 @@ namespace clinic_ivf.gui
         C1SuperTooltip stt;
         C1SuperErrorProvider sep;
 
-        int colId = 1, colName = 2, colAmt = 3, colDiscount = 4, colNetAmt = 5, colGrpName=6, colBilId=7, colInclude=8, colStatus=9;
+        int colId = 1, colName = 2, colprice=3, colqty=4, colAmt = 5, colDiscount = 6, colNetAmt = 7, colGrpName=8, colBilId=9, colInclude=10, colStatus=11;
         public FrmCashierAdd(IvfControl ic, MainMenu m, String billid, String vnold)
         {
             InitializeComponent();
@@ -158,7 +158,7 @@ namespace clinic_ivf.gui
             //dtprn.Columns.Add("grp", typeof(String));
             //dtprn.Columns.Add("grp_name", typeof(String));
             dtprn = dt.Clone();
-            if (dtprn.Rows.Count > 0)
+            if (dt.Rows.Count > 0)
             {
                 foreach (DataRow row in dt.Rows)
                 {
@@ -420,6 +420,8 @@ namespace clinic_ivf.gui
             ovs = ic.ivfDB.ovsDB.selectByPk1(txtVnOld.Text);
             if (ovs.VSID.Equals("115"))
             {
+                frmCashView.setGrfQuePublic();
+                frmCashView.setGrfFinishPublic();
                 menu.removeTab(tab);
             }
         }
@@ -744,7 +746,7 @@ namespace clinic_ivf.gui
             grfBillD.ContextMenu = menuGw;
 
             grfBillD.Rows.Count = dt.Rows.Count + 2;
-            grfBillD.Cols.Count = 10;
+            grfBillD.Cols.Count = 12;
             C1TextBox txt = new C1TextBox();
             //C1ComboBox cboproce = new C1ComboBox();
             //ic.ivfDB.itmDB.setCboItem(cboproce);
@@ -758,6 +760,8 @@ namespace clinic_ivf.gui
             grfBillD.Cols[colDiscount].Width = 120;
             grfBillD.Cols[colNetAmt].Width = 120;
             grfBillD.Cols[colGrpName].Width = 120;
+            grfBillD.Cols[colprice].Width = 100;
+            grfBillD.Cols[colqty].Width = 80;
 
             grfBillD.ShowCursor = true;
             //grdFlex.Cols[colID].Caption = "no";
@@ -768,6 +772,8 @@ namespace clinic_ivf.gui
             grfBillD.Cols[colDiscount].Caption = "ส่วนลด";
             grfBillD.Cols[colNetAmt].Caption = "คงเหลือ";
             grfBillD.Cols[colGrpName].Caption = "group name";
+            grfBillD.Cols[colprice].Caption = "Price";
+            grfBillD.Cols[colqty].Caption = "QTY";
 
             Color color = ColorTranslator.FromHtml(ic.iniC.grfRowColor);
             //CellRange rg1 = grfBank.GetCellRange(1, colE, grfBank.Rows.Count, colE);
@@ -779,9 +785,10 @@ namespace clinic_ivf.gui
             {
                 try
                 {
-                    Decimal price = 0, qty = 1;
+                    Decimal price = 0, qty = 1, price1=0;
                     Decimal.TryParse(row[ic.ivfDB.obildDB.obilld.Price].ToString(), out price);
-                    //Decimal.TryParse(row[ic.ivfDB.obildDB.obilld.q].ToString(), out qty);
+                    Decimal.TryParse(row[ic.ivfDB.obildDB.obilld.qty].ToString(), out qty);
+                    Decimal.TryParse(row[ic.ivfDB.obildDB.obilld.price1].ToString(), out price1);
                     grfBillD[i, 0] = i;
                     grfBillD[i, colId] = row[ic.ivfDB.obildDB.obilld.ID].ToString();
                     grfBillD[i, colName] = row[ic.ivfDB.obildDB.obilld.Name].ToString();
@@ -807,6 +814,8 @@ namespace clinic_ivf.gui
                     grfBillD[i, colGrpName] = row[ic.ivfDB.obildDB.obilld.GroupType].ToString();
                     grfBillD[i, colInclude] = row["Extra"].ToString().Equals("1") ? "Extra" : "Include";
                     grfBillD[i, colStatus] = row["status"].ToString();
+                    grfBillD[i, colprice] = price1.ToString("#,###.00");
+                    grfBillD[i, colqty] = qty.ToString("#,###.00");
                     //if (!row[ic.ivfDB.vsOldDB.vsold.form_a_id].ToString().Equals("0"))
                     //{
                     //    CellNote note = new CellNote("ส่ง Lab Request Foam A");

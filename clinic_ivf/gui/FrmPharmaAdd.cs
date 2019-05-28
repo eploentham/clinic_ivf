@@ -23,6 +23,7 @@ namespace clinic_ivf.gui
         IvfControl ic;
         MainMenu menu;
         public C1DockingTabPage tab;
+        public FrmPharmaView frmPharView;
 
         String pttId = "", webcamname = "", vsid = "", flagedit = "", pApmId = "";
         Patient ptt;
@@ -825,11 +826,14 @@ namespace clinic_ivf.gui
         private void BtnFinish_Click(object sender, EventArgs e)
         {
             //throw new NotImplementedException();
-            ic.ivfDB.nurseFinish(txtVnOld.Text);
+            //ic.ivfDB.nurseFinish(txtVnOld.Text);
+            ic.ivfDB.ovsDB.updateStatusPharmacyFinish(txtVnOld.Text);
             VisitOld ovs = new VisitOld();
             ovs = ic.ivfDB.ovsDB.selectByPk1(txtVnOld.Text);
-            if (ovs.VSID.Equals("160"))
+            if (ovs.VSID.Equals("999"))
             {
+                frmPharView.setGrfQuePublic();
+                frmPharView.setGrfFinishPublic();
                 menu.removeTab(tab);
                 //return;
             }

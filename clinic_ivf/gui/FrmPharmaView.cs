@@ -176,12 +176,13 @@ namespace clinic_ivf.gui
             String txt = "";
             if (!name.Equals(""))
             {
-                txt = " " + name;
+                txt = "Pharmacy " + name;
             }
 
             frm.FormBorderStyle = FormBorderStyle.None;
             C1DockingTabPage tab = menu.AddNewTab(frm, txt);
             frm.tab = tab;
+            frm.frmPharView = this;
         }
         private void initGrfFinish()
         {
@@ -261,6 +262,10 @@ namespace clinic_ivf.gui
                 setGrfQue();
                 setGrfFinish();
             }
+        }
+        public void setGrfQuePublic()
+        {
+            setGrfQue();
         }
         private void setGrfQue()
         {
@@ -551,6 +556,10 @@ namespace clinic_ivf.gui
             grfSearch.Cols[colID].Visible = false;
             //theme1.SetTheme(grfQue, ic.theme);
 
+        }
+        public void setGrfFinishPublic()
+        {
+            setGrfFinish();
         }
         private void setGrfFinish()
         {            
