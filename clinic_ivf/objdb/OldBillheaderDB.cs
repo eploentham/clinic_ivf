@@ -74,6 +74,24 @@ namespace clinic_ivf.objdb
             dt = conn.selectData(conn.conn, sql);
             return dt;
         }
+        public String selectReceiptNoByVN(String vn)
+        {
+            DataTable dt = new DataTable();
+            String billno = "";
+
+            String sql = "SELECT receipt_no " +
+                "  " +
+                "From " + obillh.table + " obillh " +
+                //"left join Patient ptt on ptt.PIDS = obillh.PIDS " +
+                //"left join SurfixName on SurfixName.SurfixID = ptt.SurfixID " +
+                "Where obillh.VN = '" + vn + "' ";
+            dt = conn.selectData(conn.conn, sql);
+            if (dt.Rows.Count > 0)
+            {
+                billno = dt.Rows[0]["receipt_no"].ToString();
+            }
+            return billno;
+        }
         public String selectBillNoByVN(String vn)
         {
             DataTable dt = new DataTable();
@@ -89,6 +107,24 @@ namespace clinic_ivf.objdb
             if (dt.Rows.Count > 0)
             {
                 billno = dt.Rows[0]["BillNo"].ToString();
+            }
+            return billno;
+        }
+        public String selectBillNoExByVN(String vn)
+        {
+            DataTable dt = new DataTable();
+            String billno = "";
+
+            String sql = "SELECT ExtBillNo " +
+                "  " +
+                "From " + obillh.table + " obillh " +
+                //"left join Patient ptt on ptt.PIDS = obillh.PIDS " +
+                //"left join SurfixName on SurfixName.SurfixID = ptt.SurfixID " +
+                "Where obillh.VN = '" + vn + "' ";
+            dt = conn.selectData(conn.conn, sql);
+            if (dt.Rows.Count > 0)
+            {
+                billno = dt.Rows[0]["ExtBillNo"].ToString();
             }
             return billno;
         }

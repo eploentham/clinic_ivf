@@ -170,6 +170,19 @@ namespace clinic_ivf.gui
 
             openNurseAdd(pttId, id, name, "edit");
         }
+        private void openNurseAdd2()
+        {
+            String chk = "", name = "", id = "", pttId = "";
+
+            id = grfFinish[grfFinish.Row, colID] != null ? grfFinish[grfFinish.Row, colID].ToString() : "";
+            pttId = grfFinish[grfFinish.Row, colPttId] != null ? grfFinish[grfFinish.Row, colPttId].ToString() : "";
+            chk = grfFinish[grfFinish.Row, colPttHn] != null ? grfFinish[grfFinish.Row, colPttHn].ToString() : "";
+            name = grfFinish[grfFinish.Row, colPttName] != null ? grfFinish[grfFinish.Row, colPttName].ToString() : "";
+            //FrmNurseAdd frm = new FrmNurseAdd();
+            //frm.ShowDialog(this);
+
+            openNurseAdd(pttId, id, name, "noedit");
+        }
         private void openNurseAdd(String pttId, String vsid, String name, String flagview)
         {
             FrmPharmaAdd frm = new FrmPharmaAdd(ic, menu, pttId, vsid, flagview);
@@ -194,7 +207,7 @@ namespace clinic_ivf.gui
             //FilterRow fr = new FilterRow(grfExpn);
 
             grfFinish.AfterRowColChange += GrfFinish_AfterRowColChange;
-            //grfExpnC.CellButtonClick += new C1.Win.C1FlexGrid.RowColEventHandler(this.grfDept_CellButtonClick);
+            grfFinish.DoubleClick += GrfFinish_DoubleClick;
             //grfExpnC.CellChanged += new C1.Win.C1FlexGrid.RowColEventHandler(this.grfDept_CellChanged);
             ContextMenu menuGw = new ContextMenu();
             //menuGw.MenuItems.Add("&แก้ไข รายการเบิก", new EventHandler(ContextMenu_edit));
@@ -209,6 +222,13 @@ namespace clinic_ivf.gui
             //theme1.SetTheme(tabFinish, "Office2010Blue");
 
         }
+
+        private void GrfFinish_DoubleClick(object sender, EventArgs e)
+        {
+            //throw new NotImplementedException();
+            openNurseAdd2();
+        }
+
         private void GrfFinish_AfterRowColChange(object sender, RangeEventArgs e)
         {
             //throw new NotImplementedException();
@@ -403,7 +423,7 @@ namespace clinic_ivf.gui
 
             //grfExpn.Rows.Count = dt.Rows.Count + 1;
             grfFinish.Rows.Count = dt.Rows.Count + 1;
-            grfFinish.Cols.Count = 10;
+            grfFinish.Cols.Count = 14;
             C1TextBox txt = new C1TextBox();
             //C1ComboBox cboproce = new C1ComboBox();
             //ic.ivfDB.itmDB.setCboItem(cboproce);
@@ -411,7 +431,7 @@ namespace clinic_ivf.gui
             grfFinish.Cols[colPttName].Editor = txt;
             grfFinish.Cols[colVsDate].Editor = txt;
 
-            grfFinish.Cols[colVNshow].Width = 120;
+            grfFinish.Cols[colVNshow].Width = 80;
             grfFinish.Cols[colPttHn].Width = 120;
             grfFinish.Cols[colPttName].Width = 300;
             grfFinish.Cols[colVsDate].Width = 100;
@@ -444,7 +464,7 @@ namespace clinic_ivf.gui
             {
                 grfFinish[i, 0] = i;
                 grfFinish[i, colID] = row["id"].ToString();
-                grfFinish[i, colVNshow] = row["VN"].ToString();
+                grfFinish[i, colVNshow] = ic.showVN(row["VN"].ToString());
                 grfFinish[i, colPttHn] = row["PIDS"].ToString();
                 grfFinish[i, colPttName] = row["PName"].ToString();
                 grfFinish[i, colVsDate] = ic.datetoShow(row["VDate"]);
@@ -452,6 +472,7 @@ namespace clinic_ivf.gui
                 grfFinish[i, colVsEtime] = row["VEndTime"].ToString();
                 grfFinish[i, colStatus] = row["VName"].ToString();
                 grfFinish[i, colPttId] = row["PID"].ToString();
+                grfFinish[i, colVn] = row["VN"].ToString();
                 if (!row[ic.ivfDB.ovsDB.vsold.form_a_id].ToString().Equals("0"))
                 {
                     CellNote note = new CellNote("ส่ง Lab Request Foam A");
@@ -465,6 +486,18 @@ namespace clinic_ivf.gui
             CellNoteManager mgr = new CellNoteManager(grfFinish);
             grfFinish.Cols[colID].Visible = false;
             grfFinish.Cols[colPttId].Visible = false;
+            grfFinish.Cols[colVn].Visible = false;
+            grfFinish.Cols[colDtr].Visible = false;
+            grfFinish.Cols[colStatusNurse].Visible = false;
+            grfFinish.Cols[colStatusCashier].Visible = false;
+
+            grfFinish.Cols[colVNshow].AllowEditing = false;
+            grfFinish.Cols[colPttHn].AllowEditing = false;
+            grfFinish.Cols[colPttName].AllowEditing = false;
+            grfFinish.Cols[colVsDate].AllowEditing = false;
+            grfFinish.Cols[colVsTime].AllowEditing = false;
+            grfFinish.Cols[colVsEtime].AllowEditing = false;
+            grfFinish.Cols[colStatus].AllowEditing = false;
             //theme1.SetTheme(grfFinish, ic.theme);
 
         }

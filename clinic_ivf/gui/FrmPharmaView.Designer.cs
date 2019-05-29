@@ -34,14 +34,14 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.tC = new C1.Win.C1Command.C1DockingTab();
             this.tabWaiting = new C1.Win.C1Command.C1DockingTabPage();
-            this.tabFinish = new C1.Win.C1Command.C1DockingTabPage();
             this.pnWait = new System.Windows.Forms.Panel();
-            this.pnFinish = new System.Windows.Forms.Panel();
             this.pnQue = new System.Windows.Forms.Panel();
             this.pnVisitBsp = new System.Windows.Forms.Panel();
             this.chkAll = new C1.Win.C1Input.C1CheckBox();
             this.label70 = new System.Windows.Forms.Label();
             this.cboVisitBsp = new C1.Win.C1Input.C1ComboBox();
+            this.tabFinish = new C1.Win.C1Command.C1DockingTabPage();
+            this.pnFinish = new System.Windows.Forms.Panel();
             this.tabSearch = new C1.Win.C1Command.C1DockingTabPage();
             this.pnSearch1 = new System.Windows.Forms.Panel();
             this.pnSearch = new System.Windows.Forms.Panel();
@@ -58,11 +58,11 @@
             ((System.ComponentModel.ISupportInitialize)(this.tC)).BeginInit();
             this.tC.SuspendLayout();
             this.tabWaiting.SuspendLayout();
-            this.tabFinish.SuspendLayout();
             this.pnWait.SuspendLayout();
             this.pnVisitBsp.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chkAll)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cboVisitBsp)).BeginInit();
+            this.tabFinish.SuspendLayout();
             this.tabSearch.SuspendLayout();
             this.pnSearch1.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -132,15 +132,6 @@
             this.tabWaiting.TabIndex = 0;
             this.tabWaiting.Text = "waiting in queue";
             // 
-            // tabFinish
-            // 
-            this.tabFinish.Controls.Add(this.pnFinish);
-            this.tabFinish.Location = new System.Drawing.Point(1, 24);
-            this.tabFinish.Name = "tabFinish";
-            this.tabFinish.Size = new System.Drawing.Size(999, 655);
-            this.tabFinish.TabIndex = 1;
-            this.tabFinish.Text = "Finish";
-            // 
             // pnWait
             // 
             this.pnWait.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
@@ -153,17 +144,6 @@
             this.pnWait.Size = new System.Drawing.Size(999, 655);
             this.pnWait.TabIndex = 0;
             this.theme1.SetTheme(this.pnWait, "(default)");
-            // 
-            // pnFinish
-            // 
-            this.pnFinish.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.pnFinish.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnFinish.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.pnFinish.Location = new System.Drawing.Point(0, 0);
-            this.pnFinish.Name = "pnFinish";
-            this.pnFinish.Size = new System.Drawing.Size(999, 655);
-            this.pnFinish.TabIndex = 0;
-            this.theme1.SetTheme(this.pnFinish, "(default)");
             // 
             // pnQue
             // 
@@ -242,6 +222,26 @@
             this.cboVisitBsp.Tag = null;
             this.theme1.SetTheme(this.cboVisitBsp, "(default)");
             this.cboVisitBsp.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            // 
+            // tabFinish
+            // 
+            this.tabFinish.Controls.Add(this.pnFinish);
+            this.tabFinish.Location = new System.Drawing.Point(1, 24);
+            this.tabFinish.Name = "tabFinish";
+            this.tabFinish.Size = new System.Drawing.Size(999, 655);
+            this.tabFinish.TabIndex = 1;
+            this.tabFinish.Text = "Finish";
+            // 
+            // pnFinish
+            // 
+            this.pnFinish.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.pnFinish.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pnFinish.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.pnFinish.Location = new System.Drawing.Point(0, 0);
+            this.pnFinish.Name = "pnFinish";
+            this.pnFinish.Size = new System.Drawing.Size(999, 655);
+            this.pnFinish.TabIndex = 0;
+            this.theme1.SetTheme(this.pnFinish, "(default)");
             // 
             // tabSearch
             // 
@@ -433,12 +433,12 @@
             ((System.ComponentModel.ISupportInitialize)(this.tC)).EndInit();
             this.tC.ResumeLayout(false);
             this.tabWaiting.ResumeLayout(false);
-            this.tabFinish.ResumeLayout(false);
             this.pnWait.ResumeLayout(false);
             this.pnVisitBsp.ResumeLayout(false);
             this.pnVisitBsp.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chkAll)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cboVisitBsp)).EndInit();
+            this.tabFinish.ResumeLayout(false);
             this.tabSearch.ResumeLayout(false);
             this.pnSearch1.ResumeLayout(false);
             this.panel3.ResumeLayout(false);

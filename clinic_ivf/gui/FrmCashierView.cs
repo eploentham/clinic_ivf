@@ -25,7 +25,7 @@ namespace clinic_ivf.gui
         Color bg, fc;
         Font ff, ffB;
 
-        int colID = 1, colVN = 2, colPttHn = 3, colPttName = 4, colVsDate = 5, colVsTime = 6, colVsEtime = 7, colStatus = 8, colPttId = 9, colStatusNurse = 10, colStatusCashier = 11;
+        int colID = 1, colVNshow = 2, colVN = 12, colPttHn = 3, colPttName = 4, colVsDate = 5, colVsTime = 6, colVsEtime = 7, colStatus = 8, colPttId = 9, colStatusNurse = 10, colStatusCashier = 11;
 
         C1FlexGrid grfQue, grfFinish, grfSearch;
         C1SuperTooltip stt;
@@ -155,7 +155,7 @@ namespace clinic_ivf.gui
             grfFinish.ContextMenu = menuGw;
 
             grfFinish.Rows.Count = dt.Rows.Count + 1;
-            grfFinish.Cols.Count = 10;
+            grfFinish.Cols.Count = 13;
             C1TextBox txt = new C1TextBox();
             //C1ComboBox cboproce = new C1ComboBox();
             //ic.ivfDB.itmDB.setCboItem(cboproce);
@@ -163,7 +163,7 @@ namespace clinic_ivf.gui
             grfFinish.Cols[colPttName].Editor = txt;
             grfFinish.Cols[colVsDate].Editor = txt;
 
-            grfFinish.Cols[colVN].Width = 120;
+            grfFinish.Cols[colVNshow].Width = 80;
             grfFinish.Cols[colPttHn].Width = 120;
             grfFinish.Cols[colPttName].Width = 300;
             grfFinish.Cols[colVsDate].Width = 100;
@@ -175,13 +175,16 @@ namespace clinic_ivf.gui
             //grdFlex.Cols[colID].Caption = "no";
             //grfDept.Cols[colCode].Caption = "รหัส";
 
-            grfFinish.Cols[colVN].Caption = "VN";
+            grfFinish.Cols[colVNshow].Caption = "VN";
             grfFinish.Cols[colPttHn].Caption = "HN";
             grfFinish.Cols[colPttName].Caption = "Name";
             grfFinish.Cols[colVsDate].Caption = "Date";
             grfFinish.Cols[colVsTime].Caption = "Time visit";
             grfFinish.Cols[colVsEtime].Caption = "Time finish";
             grfFinish.Cols[colStatus].Caption = "Status";
+            grfFinish.Cols[colPttId].Caption = "colPttId";
+            grfFinish.Cols[colStatusNurse].Caption = "colStatusNurse";
+            grfFinish.Cols[colStatusCashier].Caption = "colStatusCashier";
 
             //menuGw.MenuItems.Add("&receive operation", new EventHandler(ContextMenu_Apm));
             //menuGw.MenuItems.Add("receive operation", new EventHandler(ContextMenu_order));
@@ -200,6 +203,7 @@ namespace clinic_ivf.gui
             {
                 grfFinish[i, 0] = i;
                 grfFinish[i, colID] = row["id"].ToString();
+                grfFinish[i, colVNshow] = ic.showVN(row["VN"].ToString());
                 grfFinish[i, colVN] = row["VN"].ToString();
                 grfFinish[i, colPttHn] = row["PIDS"].ToString();
                 grfFinish[i, colPttName] = row["PName"].ToString();
@@ -220,7 +224,11 @@ namespace clinic_ivf.gui
             }
             CellNoteManager mgr = new CellNoteManager(grfFinish);
             grfFinish.Cols[colID].Visible = false;
-            grfFinish.Cols[colVN].AllowEditing = false;
+            grfFinish.Cols[colVN].Visible = false;
+            grfFinish.Cols[colPttId].Visible = false;
+            grfFinish.Cols[colStatusNurse].Visible = false;
+            grfFinish.Cols[colStatusCashier].Visible = false;
+            grfFinish.Cols[colVNshow].AllowEditing = false;
             grfFinish.Cols[colPttHn].AllowEditing = false;
             grfFinish.Cols[colPttName].AllowEditing = false;
             grfFinish.Cols[colVsDate].AllowEditing = false;
@@ -270,12 +278,13 @@ namespace clinic_ivf.gui
         }
         private void ContextMenu_edit_billfinish(object sender, System.EventArgs e)
         {
-            String chk = "", name = "", id = "";
+            String billid = "", name = "", id = "";
 
             id = grfFinish[grfFinish.Row, colID] != null ? grfFinish[grfFinish.Row, colID].ToString() : "";
             name = grfFinish[grfFinish.Row, colPttName] != null ? grfFinish[grfFinish.Row, colPttName].ToString() : "";
-            
-            openBillNew(id, name);
+            billid = grfFinish[grfFinish.Row, colPttName] != null ? grfFinish[grfFinish.Row, colPttName].ToString() : "";
+
+            openBillNew(id, name, "noedit");
         }
         private void ContextMenu_edit_bill(object sender, System.EventArgs e)
         {
@@ -285,7 +294,7 @@ namespace clinic_ivf.gui
             vn = grfQue[grfQue.Row, colVN] != null ? grfQue[grfQue.Row, colVN].ToString() : "";
             name = grfQue[grfQue.Row, colPttName] != null ? grfQue[grfQue.Row, colPttName].ToString() : "";
             ic.getBillVN(id);
-            openBillNew(id, name);
+            openBillNew(id, name,"edit");
         }
         public void setGrfQuePublic()
         {
@@ -322,7 +331,7 @@ namespace clinic_ivf.gui
             //grfQue.ContextMenu = menuGw;
 
             grfQue.Rows.Count = dt.Rows.Count + 1;
-            grfQue.Cols.Count = 12;
+            grfQue.Cols.Count = 13;
             C1TextBox txt = new C1TextBox();
             //C1ComboBox cboproce = new C1ComboBox();
             //ic.ivfDB.itmDB.setCboItem(cboproce);
@@ -344,7 +353,7 @@ namespace clinic_ivf.gui
             //grdFlex.Cols[colID].Caption = "no";
             //grfDept.Cols[colCode].Caption = "รหัส";
 
-            grfQue.Cols[colVN].Caption = "VN";
+            grfQue.Cols[colVNshow].Caption = "VN";
             grfQue.Cols[colPttHn].Caption = "HN";
             grfQue.Cols[colPttName].Caption = "Name";
             grfQue.Cols[colVsDate].Caption = "Date";
@@ -371,7 +380,8 @@ namespace clinic_ivf.gui
             {
                 grfQue[i, 0] = i;
                 grfQue[i, colID] = row["id"].ToString();
-                grfQue[i, colVN] = ic.showVN(row["VN"].ToString());
+                grfQue[i, colVNshow] = ic.showVN(row["VN"].ToString());
+                grfQue[i, colVN] = row["VN"].ToString();
                 grfQue[i, colPttHn] = row["PIDS"].ToString();
                 grfQue[i, colPttName] = row["PName"].ToString();
                 grfQue[i, colVsDate] = ic.datetoShow(row["VDate"]);
@@ -393,7 +403,8 @@ namespace clinic_ivf.gui
             }
             CellNoteManager mgr = new CellNoteManager(grfQue);
             grfQue.Cols[colID].Visible = false;
-            grfQue.Cols[colVN].AllowEditing = false;
+            grfQue.Cols[colVN].Visible = false;
+            grfQue.Cols[colVNshow].AllowEditing = false;
             grfQue.Cols[colPttHn].AllowEditing = false;
             grfQue.Cols[colPttName].AllowEditing = false;
             grfQue.Cols[colVsDate].AllowEditing = false;
@@ -403,9 +414,9 @@ namespace clinic_ivf.gui
             //theme1.SetTheme(grfQue, ic.theme);
 
         }
-        private void openBillNew(String reqId, String name)
+        private void openBillNew(String vnold, String name, String flag)
         {
-            FrmCashierAdd frm = new FrmCashierAdd(ic, menu, "", reqId);
+            FrmCashierAdd frm = new FrmCashierAdd(ic, menu, flag, vnold, flag);
             frm.FormBorderStyle = FormBorderStyle.None;
             C1DockingTabPage tab = menu.AddNewTab(frm, name);
             frm.tab = tab;
