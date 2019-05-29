@@ -427,7 +427,7 @@ namespace clinic_ivf.gui
         private void BtnCalBack_Click(object sender, EventArgs e)
         {
             //throw new NotImplementedException();
-            ic.ivfDB.accountsendtonurse(txtVn.Text);
+            ic.ivfDB.accountsendtonurse(txtVn.Text, ic.userId);
             VisitOld ovs = new VisitOld();
             ovs = ic.ivfDB.ovsDB.selectByPk1(txtVnOld.Text);
             if (ovs.VSID.Equals("115"))

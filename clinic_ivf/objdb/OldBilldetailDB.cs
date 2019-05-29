@@ -34,6 +34,16 @@ namespace clinic_ivf.objdb
             obilld.pcksid = "pcksid";
             obilld.price1 = "price1";
             obilld.qty = "qty";
+            obilld.bill_id = "bill_id";
+            obilld.active = "active";
+            obilld.remark = "remark";
+            obilld.sort1 = "sort1";
+            obilld.date_cancel = "date_cancel";
+            obilld.date_create = "date_create";
+            obilld.date_modi = "date_modi";
+            obilld.user_cancel = "user_cancel";
+            obilld.user_create = "user_create";
+            obilld.user_modi = "user_modi";
 
             obilld.table = "BillDetail";
             obilld.pkField = "ID";
@@ -108,7 +118,16 @@ namespace clinic_ivf.objdb
             p.GroupType = p.GroupType == null ? "" : p.GroupType;
             p.Comment = p.Comment == null ? "" : p.Comment;
             p.status = p.status == null ? "0" : p.status;
+            p.date_cancel = p.date_cancel == null ? "" : p.date_cancel;
+            p.date_create = p.date_create == null ? "" : p.date_create;
+            p.date_modi = p.date_modi == null ? "" : p.date_modi;
+            p.user_cancel = p.user_cancel == null ? "" : p.user_cancel;
+            p.user_create = p.user_create == null ? "" : p.user_create;
+            p.user_modi = p.user_modi == null ? "" : p.user_modi;
+            p.remark = p.remark == null ? "" : p.remark;
+            p.sort1 = p.sort1 == null ? "" : p.sort1;
 
+            p.bill_id = long.TryParse(p.bill_id, out chk) ? chk.ToString() : "0";
             p.Extra = long.TryParse(p.Extra, out chk) ? chk.ToString() : "0";
             p.VN = long.TryParse(p.VN, out chk) ? chk.ToString() : "0";
             p.item_id = long.TryParse(p.item_id, out chk) ? chk.ToString() : "0";
@@ -145,6 +164,15 @@ namespace clinic_ivf.objdb
                 "," + obilld.pcksid + "= '" + p.pcksid + "'" +
                 "," + obilld.price1 + "= '" + p.price1 + "'" +
                 "," + obilld.qty + "= '" + p.qty + "'" +
+                "," + obilld.date_cancel + "= ''" +
+                "," + obilld.date_create + "= now() " +
+                "," + obilld.date_modi + "= ''" +
+                "," + obilld.user_cancel + "= ''" +
+                "," + obilld.user_create + "= '" + userId + "'" +
+                "," + obilld.user_modi + "= ''" +
+                "," + obilld.remark + "= '" + p.remark + "'" +
+                "," + obilld.sort1 + "= '" + p.sort1 + "'" +
+                "," + obilld.active + "= '1'" +
                 "";
             try
             {
@@ -175,6 +203,9 @@ namespace clinic_ivf.objdb
                 "," + obilld.pcksid + " = '" + p.pcksid + "'" +
                 "," + obilld.price1 + "= '" + p.price1 + "'" +
                 "," + obilld.qty + "= '" + p.qty + "'" +
+                "," + obilld.date_modi + "= now() " +
+                "," + obilld.user_modi + "= '" + userId + "'" +
+                "," + obilld.remark + "= '" + p.remark + "'" +
                 "Where " + obilld.pkField + "='" + p.ID + "'"
                 ;
 
@@ -201,7 +232,27 @@ namespace clinic_ivf.objdb
             {
                 //re = update(p, "");
             }
+            return re;
+        }
+        public String voidBillDetail(OldBilldetail p, String userId)
+        {
+            String re = "";
+            String sql = "";
+            chkNull(p);
 
+            sql = "Update " + obilld.table + " Set " +
+                " " + obilld.active + " = '3'" +
+                "," + obilld.date_modi + "= now() " +
+                "," + obilld.user_modi + "= '" + userId + "'" +
+                "Where " + obilld.pkField + "='" + p.ID + "'";
+            try
+            {
+                re = conn.ExecuteNonQuery(conn.conn, sql);
+            }
+            catch (Exception ex)
+            {
+                sql = ex.Message + " " + ex.InnerException;
+            }
             return re;
         }
         public String delete(String vn)

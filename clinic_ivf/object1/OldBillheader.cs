@@ -34,6 +34,7 @@ namespace clinic_ivf.object1
         public String IntLock { get; set; }
         public String receipt_no { get; set; }
         public String receipt_cover_no { get; set; }
+        public String bill_id { get; set; }
 
     }
 }

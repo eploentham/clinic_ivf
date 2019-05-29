@@ -47,6 +47,7 @@ namespace clinic_ivf.objdb
             obillh.IntLock = "IntLock";
             obillh.receipt_cover_no = "receipt_cover_no";
             obillh.receipt_no = "receipt_no";
+            obillh.bill_id = "bill_id";
 
             obillh.table = "BillHeader";
             obillh.pkField = "VN";
@@ -70,7 +71,7 @@ namespace clinic_ivf.objdb
                 "From " + obillh.table + " obillh " +
                 "left join Patient ptt on ptt.PIDS = obillh.PIDS " +
                 "left join SurfixName on SurfixName.SurfixID = ptt.SurfixID " +
-                "Where JobPx.VN = '" + vn + "' ";
+                "Where JobPx.VN = '" + vn + "'  and obillh." + obillh.active + "='1'";
             dt = conn.selectData(conn.conn, sql);
             return dt;
         }
@@ -84,7 +85,7 @@ namespace clinic_ivf.objdb
                 "From " + obillh.table + " obillh " +
                 //"left join Patient ptt on ptt.PIDS = obillh.PIDS " +
                 //"left join SurfixName on SurfixName.SurfixID = ptt.SurfixID " +
-                "Where obillh.VN = '" + vn + "' ";
+                "Where obillh.VN = '" + vn + "'  and obillh." + obillh.active + "='1'";
             dt = conn.selectData(conn.conn, sql);
             if (dt.Rows.Count > 0)
             {
@@ -102,7 +103,7 @@ namespace clinic_ivf.objdb
                 "From " + obillh.table + " obillh " +
                 //"left join Patient ptt on ptt.PIDS = obillh.PIDS " +
                 //"left join SurfixName on SurfixName.SurfixID = ptt.SurfixID " +
-                "Where obillh.VN = '" + vn + "' ";
+                "Where obillh.VN = '" + vn + "'  and obillh." + obillh.active + "='1'";
             dt = conn.selectData(conn.conn, sql);
             if (dt.Rows.Count > 0)
             {
@@ -120,7 +121,7 @@ namespace clinic_ivf.objdb
                 "From " + obillh.table + " obillh " +
                 //"left join Patient ptt on ptt.PIDS = obillh.PIDS " +
                 //"left join SurfixName on SurfixName.SurfixID = ptt.SurfixID " +
-                "Where obillh.VN = '" + vn + "' ";
+                "Where obillh.VN = '" + vn + "' and obillh." + obillh.active +"='1'";
             dt = conn.selectData(conn.conn, sql);
             if (dt.Rows.Count > 0)
             {
@@ -204,12 +205,12 @@ namespace clinic_ivf.objdb
                 "," + obillh.Discount + "= '" + p.Discount + "'" +
                 "," + obillh.CreditCardType + "= '" + p.CreditCardType + "'" +
                 "," + obillh.CreditCardNumber + "= '" + p.CreditCardNumber + "'" +
-                //"," + obillh.date_create + "= now()" +
-                //"," + obillh.date_modi + "= '" + p.date_modi + "'" +
-                //"," + obillh.date_cancel + "= '" + p.date_cancel + "'" +
-                //"," + obillh.user_create + "= '" + userId + "'" +
-                //"," + obillh.user_modi + "= '" + p.user_modi + "'" +
-                //"," + obillh.user_cancel + "= '" + p.user_cancel + "'" +
+                "," + obillh.date_create + "= now()" +
+                "," + obillh.date_modi + "= ''" +
+                "," + obillh.date_cancel + "= ''" +
+                "," + obillh.user_create + "= '" + userId + "'" +
+                "," + obillh.user_modi + "= ''" +
+                "," + obillh.user_cancel + "= ''" +
                 "," + obillh.Status + "= '" + p.Status + "'" +
                 "," + obillh.CreditAgent + "= '" + p.CreditAgent + "'" +
                 "," + obillh.OName + "= '" + p.OName + "'" +
@@ -221,7 +222,7 @@ namespace clinic_ivf.objdb
                 "," + obillh.SepCredit + " = '" + p.SepCredit + "'" +
                 "," + obillh.ExtBillNo + " = '" + p.ExtBillNo + "'" +
                 "," + obillh.IntLock + " = '" + p.IntLock + "' " +
-                //"," + obillh.form_a_id + " = '" + p.form_a_id + "' " +
+                "," + obillh.active + " = '1' " +
                 "";
             try
             {
@@ -281,10 +282,26 @@ namespace clinic_ivf.objdb
         {
             String re = "";
             String sql = "";
-            
             sql = "Delete From " + obillh.table + " Where " +
-                " " + obillh.VN + " = '" + vn + "'" 
-            ;
+                " " + obillh.VN + " = '" + vn + "'";
+            try
+            {
+                re = conn.ExecuteNonQuery(conn.conn, sql);
+            }
+            catch (Exception ex)
+            {
+                sql = ex.Message + " " + ex.InnerException;
+            }
+            return re;
+        }
+        public String voidBillByVN(String vn, String userId)
+        {
+            String re = "", sql = "";
+            sql = "Update " + obillh.table + " set " +
+                "" + obillh.active + "='3' " +
+                "," + obillh.user_modi + "='" + userId + "' " +
+                "," + obillh.date_modi + "= now() " +
+                "Where " + obillh.VN + "='" + vn + "' ";
             try
             {
                 re = conn.ExecuteNonQuery(conn.conn, sql);

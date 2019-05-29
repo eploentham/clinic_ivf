@@ -57,11 +57,13 @@ namespace clinic_ivf.gui
             sep = new C1SuperErrorProvider();
 
             tC.SelectedTabChanged += TC_SelectedTabChanged;
+            btnSearch.Click += BtnSearch_Click;
 
             initGrfQue();
             initGrfFinish();
             setGrfQue();
             setGrfFinish();
+            initGrfSearch();
 
             int timerlab = 0;
             int.TryParse(ic.iniC.timerlabreqaccept, out timerlab);
@@ -70,6 +72,13 @@ namespace clinic_ivf.gui
             timer.Tick += Timer_Tick;
             timer.Enabled = true;
         }
+
+        private void BtnSearch_Click(object sender, EventArgs e)
+        {
+            //throw new NotImplementedException();
+
+        }
+
         private void TC_SelectedTabChanged(object sender, EventArgs e)
         {
             //throw new NotImplementedException();
@@ -88,6 +97,150 @@ namespace clinic_ivf.gui
             //throw new NotImplementedException();
             setGrfQue();
             //setGrfSearch(txtSearch.Text.Trim());
+        }
+        private void initGrfSearch()
+        {
+            grfSearch = new C1FlexGrid();
+            grfSearch.Font = fEdit;
+            grfSearch.Dock = System.Windows.Forms.DockStyle.Fill;
+            grfSearch.Location = new System.Drawing.Point(0, 0);
+
+            //FilterRow fr = new FilterRow(grfExpn);
+
+            grfSearch.DoubleClick += GrfSearch_DoubleClick;
+            //grfExpnC.CellButtonClick += new C1.Win.C1FlexGrid.RowColEventHandler(this.grfDept_CellButtonClick);
+            //grfExpnC.CellChanged += new C1.Win.C1FlexGrid.RowColEventHandler(this.grfDept_CellChanged);
+            ContextMenu menuGw = new ContextMenu();
+            menuGw.MenuItems.Add("ออก บิล", new EventHandler(ContextMenu_edit_billfinish));
+            menuGw.MenuItems.Add("ส่งกลับ", new EventHandler(ContextMenu_send_back));
+            //menuGw.MenuItems.Add("&ยกเลิก", new EventHandler(ContextMenu_Gw_Cancel));
+            grfSearch.ContextMenu = menuGw;
+            pnSearch.Controls.Add(grfSearch);
+
+            theme1.SetTheme(grfSearch, "Office2010Red");
+
+            //theme1.SetTheme(tabDiag, "Office2010Blue");
+            //theme1.SetTheme(tabFinish, "Office2010Blue");
+        }
+
+        private void GrfSearch_DoubleClick(object sender, EventArgs e)
+        {
+            //throw new NotImplementedException();
+            if (grfSearch.Row <= 0) return;
+            ContextMenu_edit_billSearch(null, null);
+        }
+        private void setGrfSearch()
+        {
+            //grfDept.Rows.Count = 7;
+            grfSearch.Clear();
+            DataTable dt1 = new DataTable();
+            DataTable dt = new DataTable();
+            dt = ic.ivfDB.ovsDB.selectByStatusCashierFinish();
+            //if (search.Equals(""))
+            //{
+            //    String date = "";
+            //    DateTime dt11 = new DateTime();
+            //    if (DateTime.TryParse(txtDateStart.Text, out dt11))
+            //    {
+            //        //dt11 = dt11.AddDays(-1);
+            //        date = dt11.Year + "-" + dt11.ToString("MM-dd");
+
+            //    }
+            //}
+            //else
+            //{
+            //    //grfPtt.DataSource = ic.ivfDB.vsOldDB.selectCurrentVisit(search);
+            //}
+
+            //grfExpn.Rows.Count = dt.Rows.Count + 1;
+            ContextMenu menuGw = new ContextMenu();
+            menuGw.MenuItems.Add("ออก บิล", new EventHandler(ContextMenu_edit_billSearch));
+            //menuGw.MenuItems.Add("&แก้ไข", new EventHandler(ContextMenu_Gw_Edit));
+            //menuGw.MenuItems.Add("&ยกเลิก", new EventHandler(ContextMenu_Gw_Cancel));
+            grfSearch.ContextMenu = menuGw;
+
+            grfSearch.Rows.Count = dt.Rows.Count + 1;
+            grfSearch.Cols.Count = 13;
+            C1TextBox txt = new C1TextBox();
+            //C1ComboBox cboproce = new C1ComboBox();
+            //ic.ivfDB.itmDB.setCboItem(cboproce);
+            grfSearch.Cols[colPttHn].Editor = txt;
+            grfSearch.Cols[colPttName].Editor = txt;
+            grfSearch.Cols[colVsDate].Editor = txt;
+
+            grfSearch.Cols[colVNshow].Width = 80;
+            grfSearch.Cols[colPttHn].Width = 120;
+            grfSearch.Cols[colPttName].Width = 300;
+            grfSearch.Cols[colVsDate].Width = 100;
+            grfSearch.Cols[colVsTime].Width = 80;
+            grfSearch.Cols[colVsEtime].Width = 80;
+            grfSearch.Cols[colStatus].Width = 200;
+
+            grfSearch.ShowCursor = true;
+            //grdFlex.Cols[colID].Caption = "no";
+            //grfDept.Cols[colCode].Caption = "รหัส";
+
+            grfSearch.Cols[colVNshow].Caption = "VN";
+            grfSearch.Cols[colPttHn].Caption = "HN";
+            grfSearch.Cols[colPttName].Caption = "Name";
+            grfSearch.Cols[colVsDate].Caption = "Date";
+            grfSearch.Cols[colVsTime].Caption = "Time visit";
+            grfSearch.Cols[colVsEtime].Caption = "Time finish";
+            grfSearch.Cols[colStatus].Caption = "Status";
+            grfSearch.Cols[colPttId].Caption = "colPttId";
+            grfSearch.Cols[colStatusNurse].Caption = "colStatusNurse";
+            grfSearch.Cols[colStatusCashier].Caption = "colStatusCashier";
+
+            //menuGw.MenuItems.Add("&receive operation", new EventHandler(ContextMenu_Apm));
+            //menuGw.MenuItems.Add("receive operation", new EventHandler(ContextMenu_order));
+            //menuGw.MenuItems.Add("&LAB request FORM A", new EventHandler(ContextMenu_LAB_req_formA_Ptt));
+            //menuGw.MenuItems.Add("&Add Appointment", new EventHandler(ContextMenu_Apm_Ptt));
+            //menuGw.MenuItems.Add("&Cancel Receive", new EventHandler(ContextMenu_Apm_Ptt));
+            //menuGw.MenuItems.Add("&No Appointment Close Operation", new EventHandler(ContextMenu_NO_Apm_Ptt));
+            //grfSearch.ContextMenu = menuGw;
+
+            Color color = ColorTranslator.FromHtml(ic.iniC.grfRowColor);
+            //CellRange rg1 = grfBank.GetCellRange(1, colE, grfBank.Rows.Count, colE);
+            //rg1.Style = grfBank.Styles["date"];
+            //grfCu.Cols[colID].Visible = false;
+            int i = 1;
+            foreach (DataRow row in dt.Rows)
+            {
+                grfSearch[i, 0] = i;
+                grfSearch[i, colID] = row["id"].ToString();
+                grfSearch[i, colVNshow] = ic.showVN(row["VN"].ToString());
+                grfSearch[i, colVN] = row["VN"].ToString();
+                grfSearch[i, colPttHn] = row["PIDS"].ToString();
+                grfSearch[i, colPttName] = row["PName"].ToString();
+                grfSearch[i, colVsDate] = ic.datetoShow(row["VDate"]);
+                grfSearch[i, colVsTime] = row["VStartTime"].ToString();
+                grfSearch[i, colVsEtime] = row["VEndTime"].ToString();
+                grfSearch[i, colStatus] = row["VName"].ToString();
+                grfSearch[i, colPttId] = row["PID"].ToString();
+                if (!row[ic.ivfDB.ovsDB.vsold.form_a_id].ToString().Equals("0"))
+                {
+                    CellNote note = new CellNote("ส่ง Lab Request Foam A");
+                    CellRange rg = grfFinish.GetCellRange(i, colVN);
+                    rg.UserData = note;
+                }
+                //if (i % 2 == 0)
+                //    grfPtt.Rows[i].StyleNew.BackColor = color;
+                i++;
+            }
+            CellNoteManager mgr = new CellNoteManager(grfSearch);
+            grfSearch.Cols[colID].Visible = false;
+            grfSearch.Cols[colVN].Visible = false;
+            grfSearch.Cols[colPttId].Visible = false;
+            grfSearch.Cols[colStatusNurse].Visible = false;
+            grfSearch.Cols[colStatusCashier].Visible = false;
+            grfSearch.Cols[colVNshow].AllowEditing = false;
+            grfSearch.Cols[colPttHn].AllowEditing = false;
+            grfSearch.Cols[colPttName].AllowEditing = false;
+            grfSearch.Cols[colVsDate].AllowEditing = false;
+            grfSearch.Cols[colVsTime].AllowEditing = false;
+            grfSearch.Cols[colVsEtime].AllowEditing = false;
+            grfSearch.Cols[colStatus].AllowEditing = false;
+            //theme1.SetTheme(grfQue, ic.theme);
         }
         private void initGrfFinish()
         {
@@ -192,7 +345,7 @@ namespace clinic_ivf.gui
             //menuGw.MenuItems.Add("&Add Appointment", new EventHandler(ContextMenu_Apm_Ptt));
             //menuGw.MenuItems.Add("&Cancel Receive", new EventHandler(ContextMenu_Apm_Ptt));
             //menuGw.MenuItems.Add("&No Appointment Close Operation", new EventHandler(ContextMenu_NO_Apm_Ptt));
-            grfFinish.ContextMenu = menuGw;
+            //grfFinish.ContextMenu = menuGw;
 
             Color color = ColorTranslator.FromHtml(ic.iniC.grfRowColor);
             //CellRange rg1 = grfBank.GetCellRange(1, colE, grfBank.Rows.Count, colE);
@@ -276,6 +429,16 @@ namespace clinic_ivf.gui
             String chk = "", name = "", id = "";
 
         }
+        private void ContextMenu_edit_billSearch(object sender, System.EventArgs e)
+        {
+            String billid = "", name = "", id = "";
+
+            id = grfSearch[grfSearch.Row, colID] != null ? grfSearch[grfSearch.Row, colID].ToString() : "";
+            name = grfSearch[grfSearch.Row, colPttName] != null ? grfSearch[grfSearch.Row, colPttName].ToString() : "";
+            billid = grfSearch[grfSearch.Row, colPttName] != null ? grfSearch[grfSearch.Row, colPttName].ToString() : "";
+
+            openBillNew(id, name, "noedit");
+        }
         private void ContextMenu_edit_billfinish(object sender, System.EventArgs e)
         {
             String billid = "", name = "", id = "";
@@ -293,7 +456,7 @@ namespace clinic_ivf.gui
             id = grfQue[grfQue.Row, colID] != null ? grfQue[grfQue.Row, colID].ToString() : "";
             vn = grfQue[grfQue.Row, colVN] != null ? grfQue[grfQue.Row, colVN].ToString() : "";
             name = grfQue[grfQue.Row, colPttName] != null ? grfQue[grfQue.Row, colPttName].ToString() : "";
-            ic.getBillVN(id);
+            ic.getBillVN(id, ic.userId);
             openBillNew(id, name,"edit");
         }
         public void setGrfQuePublic()

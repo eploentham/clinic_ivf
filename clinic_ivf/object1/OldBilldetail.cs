@@ -21,5 +21,7 @@ namespace clinic_ivf.object1
         public String pcksid { get; set; }
         public String price1 { get; set; }
         public String qty { get; set; }
+        public String bill_id { get; set; }
+        public String sort1 { get; set; }
     }
 }

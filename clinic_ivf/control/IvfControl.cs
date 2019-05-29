@@ -874,10 +874,10 @@ namespace clinic_ivf.control
             //bmp.Dispose();
             return bmp;
         }
-        public void getBillVN(String vn)
+        public void getBillVN(String vn, String userId)
         {
-            ivfDB.DeleteBill(vn);
-            ivfDB.getBill(vn);
+            ivfDB.VoidBill(vn, userId);
+            ivfDB.getBill(vn, userId);
         }
         public string NumberToText(long number)
         {

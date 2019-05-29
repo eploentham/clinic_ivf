@@ -663,6 +663,62 @@ CREATE TABLE `ivf_101`.`b_contact` (
   PRIMARY KEY (`contact_id`)
 ) ENGINE=MyISAM AUTO_INCREMENT=238000000 DEFAULT CHARSET=utf8 COLLATE=utf8_bin COMMENT='id=238';
 
+62-05-29
+CREATE TABLE `BillHeader_1` (
+	`bill_id` int(11) NOT NULL AUTO_INCREMENT,
+  `VN` bigint(20) DEFAULT '0',
+  `BillNo` varchar(255) COLLATE utf8_bin DEFAULT NULL,
+  `PName` varchar(255) COLLATE utf8_bin DEFAULT NULL,
+  `Date` date DEFAULT NULL,
+  `Time` time DEFAULT NULL,
+  `PID` bigint(20) DEFAULT NULL,
+  `PIDS` varchar(255) COLLATE utf8_bin DEFAULT NULL,
+  `Include_Pkg_Price` decimal(10,2) DEFAULT NULL,
+  `Extra_Pkg_Price` decimal(10,2) DEFAULT NULL,
+  `Total` decimal(10,2) DEFAULT NULL,
+  `Discount` decimal(10,2) DEFAULT NULL,
+  `CreditCardType` int(11) DEFAULT NULL,
+  `CreditCardNumber` varchar(255) COLLATE utf8_bin DEFAULT NULL,
+  `Status` int(11) DEFAULT NULL,
+  `CreditAgent` int(11) DEFAULT NULL,
+  `OName` varchar(250) COLLATE utf8_bin DEFAULT NULL,
+  `BID` bigint(20) DEFAULT NULL,
+  `PaymentBy` varchar(255) COLLATE utf8_bin DEFAULT 'NULL',
+  `CashID` int(11) DEFAULT '0',
+  `CreditCardID` int(11) DEFAULT '0',
+  `SepCash` decimal(10,2) DEFAULT '0.00',
+  `SepCredit` decimal(10,2) DEFAULT '0.00',
+  `ExtBillNo` varchar(255) COLLATE utf8_bin DEFAULT NULL,
+  `IntLock` int(11) NOT NULL DEFAULT '0',
+  `receipt_no` varchar(45) COLLATE utf8_bin DEFAULT NULL,
+  `receipt_cover_no` varchar(45) COLLATE utf8_bin DEFAULT NULL,
+  PRIMARY KEY (`bill_id`)
+)  ENGINE=MyISAM AUTO_INCREMENT=2390000000 DEFAULT CHARSET=utf8 COLLATE=utf8_bin COMMENT='id=239';
+
+RENAME TABLE ivf_101.BillHeader TO ivf_101.BillHeader_old;
+RENAME TABLE ivf_101.BillHeader_1 TO ivf_101.BillHeader;
+
+ALTER TABLE `ivf_101`.`BillHeader` 
+ADD COLUMN `active` VARCHAR(45) NULL AFTER `receipt_cover_no`,
+ADD COLUMN `remark` VARCHAR(45) NULL AFTER `active`,
+ADD COLUMN `date_create` VARCHAR(45) NULL AFTER `remark`,
+ADD COLUMN `date_modi` VARCHAR(45) NULL AFTER `date_create`,
+ADD COLUMN `date_cancel` VARCHAR(45) NULL AFTER `date_modi`,
+ADD COLUMN `user_create` VARCHAR(45) NULL AFTER `date_cancel`,
+ADD COLUMN `user_modi` VARCHAR(45) NULL AFTER `user_create`,
+ADD COLUMN `user_cancel` VARCHAR(45) NULL AFTER `user_modi`;
+
+ALTER TABLE `ivf_101`.`BillDetail` 
+ADD COLUMN `active` VARCHAR(45) NULL AFTER `qty`,
+ADD COLUMN `remark` VARCHAR(45) NULL AFTER `active`,
+ADD COLUMN `sort1` VARCHAR(45) NULL AFTER `remark`,
+ADD COLUMN `date_create` VARCHAR(45) NULL AFTER `sort1`,
+ADD COLUMN `date_modi` VARCHAR(45) NULL AFTER `date_create`,
+ADD COLUMN `date_cancel` VARCHAR(45) NULL AFTER `date_modi`,
+ADD COLUMN `user_create` VARCHAR(45) NULL AFTER `date_cancel`,
+ADD COLUMN `user_modi` VARCHAR(45) NULL AFTER `user_create`,
+ADD COLUMN `use_cancel` VARCHAR(45) NULL AFTER `user_modi`,
+ADD COLUMN `bill_id` INT NULL AFTER `use_cancel`;
 
 
 

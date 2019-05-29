@@ -670,12 +670,17 @@ namespace clinic_ivf.objdb
                 extra = dt.Rows[0]["extra"].ToString();
             }
         }
-        public void DeleteBill(String vn)
+        public void VoidBill(String vn, String userId)
+        {
+            obilhDB.voidBillByVN(vn, userId);
+            obildDB.delete(vn);
+        }
+        public void DeleteBill1(String vn)
         {
             obilhDB.delete(vn);
             obildDB.delete(vn);
         }
-        public void getBill(String vn)
+        public void getBill(String vn, String userId)
         {
             /* Step 1.
              * $this->db->query('delete from DebtorHeader Where VN="'.$VN.'"');
@@ -690,7 +695,7 @@ namespace clinic_ivf.objdb
             sql = "delete from DebtorDetail Where VN='" + vn + "'";
             re = conn.ExecuteNonQuery(conn.conn, sql);
             sql = "";
-            DeleteBill(vn);
+            VoidBill(vn, userId);
             /* Step 2.
              * Update PackageSold
              * $queryP = $this->db->query('Select * from PackageSold Where VN="'.$VN.'"');
@@ -1487,7 +1492,7 @@ namespace clinic_ivf.objdb
             amt1 = amt;
             return dtprn;
         }
-        public void accountsendtonurse(String vn)
+        public void accountsendtonurse(String vn, String userid)
         {
             DataTable dt = new DataTable();
             //          $this->db->query('delete from BillHeader Where VN="'.$VN.'"');
@@ -1501,7 +1506,7 @@ namespace clinic_ivf.objdb
             OldPackageSold pkg = new OldPackageSold();
             pkg = opkgsDB.selectByVN2(vn);
             //pkgid = pkg.PCKID;
-            DeleteBill(vn);
+            VoidBill(vn, userid);
             //dt = obildDB.selectByPIDPkgID(pid, pkgid);
             if (!pkg.PCKSID.Equals("0"))
             {
