@@ -65,7 +65,7 @@ namespace clinic_ivf.objdb
             String sql = "SELECT obilld.*  " +
                 " " +
                 "From " + obilld.table + " obilld " +
-                "Where obilld.VN = '" + vn + "' ";
+                "Where obilld.VN = '" + vn + "' and obilld."+ obilld.active+"='1'";
             dt = conn.selectData(conn.conn, sql);
             return dt;
         }
@@ -78,7 +78,7 @@ namespace clinic_ivf.objdb
                 " " +
                 "From " + obilld.table + " obilld " +
                 "Left Join Visit ovs on obilld." + obilld.VN + "=ovs.VN " +
-                "Where ovs.PID='" + pid + "' and obilld." + obilld.pcksid + "='" + pkgsid + "' ";
+                "Where ovs.PID='" + pid + "' and obilld." + obilld.pcksid + "='" + pkgsid + "' and obilld." + obilld.active + "='1'";
             dt = conn.selectData(conn.conn, sql);
             return dt;
         }
@@ -91,7 +91,7 @@ namespace clinic_ivf.objdb
                 " " +
                 "From " + obilld.table + " obilld " +
                 "Left Join Visit ovs on obilld."+ obilld.VN +"=ovs.VN " +
-                "Where ovs.PID='" + pid + "' and obilld."+ obilld.item_id+"='" + pkgid + "' ";
+                "Where ovs.PID='" + pid + "' and obilld."+ obilld.item_id+"='" + pkgid + "' and obilld." + obilld.active + "='1'";
             dt = conn.selectData(conn.conn, sql);
             return dt;
         }
@@ -104,7 +104,7 @@ namespace clinic_ivf.objdb
                 " " +
                 "From " + obilld.table + " obilld " +
                 "Left Join Visit ovs on obilld." + obilld.VN + "=ovs.VN " +
-                "Where ovs.PID='" + pid + "' and obilld." + obilld.item_id + "='" + pkgid + "' and ";
+                "Where ovs.PID='" + pid + "' and obilld." + obilld.item_id + "='" + pkgid + "' and obilld." + obilld.active + "='1' ";
             dt = conn.selectData(conn.conn, sql);
             return dt;
         }
@@ -173,6 +173,7 @@ namespace clinic_ivf.objdb
                 "," + obilld.remark + "= '" + p.remark + "'" +
                 "," + obilld.sort1 + "= '" + p.sort1 + "'" +
                 "," + obilld.active + "= '1'" +
+                "," + obilld.bill_id + "= '" + p.bill_id + "'" +
                 "";
             try
             {
@@ -234,17 +235,17 @@ namespace clinic_ivf.objdb
             }
             return re;
         }
-        public String voidBillDetail(OldBilldetail p, String userId)
+        public String voidBillDetailByVN(String vn, String userId)
         {
             String re = "";
             String sql = "";
-            chkNull(p);
+            //chkNull(p);
 
             sql = "Update " + obilld.table + " Set " +
                 " " + obilld.active + " = '3'" +
                 "," + obilld.date_modi + "= now() " +
                 "," + obilld.user_modi + "= '" + userId + "'" +
-                "Where " + obilld.pkField + "='" + p.ID + "'";
+                "Where " + obilld.VN + "='" + vn + "'";
             try
             {
                 re = conn.ExecuteNonQuery(conn.conn, sql);

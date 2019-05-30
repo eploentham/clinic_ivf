@@ -48,6 +48,15 @@ namespace clinic_ivf.objdb
             obillh.receipt_cover_no = "receipt_cover_no";
             obillh.receipt_no = "receipt_no";
             obillh.bill_id = "bill_id";
+            obillh.active = "active";
+            obillh.remark = "remark";
+            obillh.date_cancel = "date_cancel";
+            obillh.date_create = "date_create";
+            obillh.date_modi = "date_modi";
+            obillh.user_cancel = "user_cancel";
+            obillh.user_create = "user_create";
+            obillh.user_modi = "user_modi";
+            
 
             obillh.table = "BillHeader";
             obillh.pkField = "VN";
@@ -158,8 +167,13 @@ namespace clinic_ivf.objdb
             p.OName = p.OName == null ? "" : p.OName;
             p.PaymentBy = p.PaymentBy == null ? "" : p.PaymentBy;
             p.ExtBillNo = p.ExtBillNo == null ? "" : p.ExtBillNo;
-            //p.EUsage = p.EUsage == null ? "" : p.EUsage;
-            //p.EUsage = p.EUsage == null ? "" : p.EUsage;
+            p.date_cancel = p.date_cancel == null ? "" : p.date_cancel;
+            p.date_create = p.date_create == null ? "" : p.date_create;
+            p.date_modi = p.date_modi == null ? "" : p.date_modi;
+            p.user_cancel = p.user_cancel == null ? "" : p.user_cancel;
+            p.user_create = p.user_create == null ? "" : p.user_create;
+            p.user_modi = p.user_modi == null ? "" : p.user_modi;
+            p.remark = p.remark == null ? "" : p.remark;
 
             p.CreditCardType = long.TryParse(p.CreditCardType, out chk) ? chk.ToString() : "0";
             p.CreditAgent = long.TryParse(p.CreditAgent, out chk) ? chk.ToString() : "0";
@@ -269,7 +283,7 @@ namespace clinic_ivf.objdb
 
             //if (p.VN.Equals(""))
             //{
-                re = insert(p, "");
+                re = insert(p, userId);
             //}
             //else
             //{

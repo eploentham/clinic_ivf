@@ -349,9 +349,24 @@ namespace clinic_ivf.gui
         private void MenuPatient_Click(object sender, EventArgs e)
         {
             //throw new NotImplementedException();
-            FrmPatientView frm = new FrmPatientView(ic, this);
-            frm.FormBorderStyle = FormBorderStyle.None;
-            AddNewTab(frm, menuPatient.Text + " ");
+            String tabname = "FrmPatientView";
+            bool found = false;
+            foreach (C1DockingTabPage tab in tC1.TabPages)
+            {
+                if (tabname.Equals(tab.Name))
+                {
+                    tC1.SelectedTab = tab;
+                    found = true;
+                    break;
+                }
+            }
+            //var tabPage = tC1.TabPages["FrmCashierView"];
+            if (!found)
+            {
+                FrmPatientView frm = new FrmPatientView(ic, this);
+                frm.FormBorderStyle = FormBorderStyle.None;
+                AddNewTab(frm, menuPatient.Text + " ");
+            }
         }
 
         private void MenuLabAccept_Click(object sender, EventArgs e)
@@ -583,8 +598,8 @@ namespace clinic_ivf.gui
         {
             String date = "";
             date = DateTime.Now.Year+"-"+ DateTime.Now.ToString("MM-dd");
-            this.Text = ic.iniC.statusAppDonor.Equals("1") ? "โปรแกรมClinic IVF Donor " +"สวัสดี คุณ "+ic.user.staff_fname_t +" "+ic.user.staff_lname_t+" Update 2019-05-28 "
-                : "โปรแกรมClinic IVF " + "สวัสดี คุณ " + ic.user.staff_fname_t + " " + ic.user.staff_lname_t + " Update 2019-05-28 format date "+ date;
+            this.Text = ic.iniC.statusAppDonor.Equals("1") ? "โปรแกรมClinic IVF Donor " +"สวัสดี คุณ "+ic.user.staff_fname_t +" "+ic.user.staff_lname_t+" Update 2019-05-30 "
+                : "โปรแกรมClinic IVF " + "สวัสดี คุณ " + ic.user.staff_fname_t + " " + ic.user.staff_lname_t + " Update 2019-05-30 format date "+ date;
             //theme1.SetTheme(this, ic.theme);
             theme1.SetTheme(this, ic.theme);
             theme1.SetTheme(menuStrip1, ic.theme);

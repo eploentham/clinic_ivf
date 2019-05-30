@@ -34,6 +34,7 @@ namespace clinic_ivf.gui
         String pttId = "", pttOldId="", vsoldId="", webcamname="";
         Patient ptt;
         PatientOld pttO1;
+        //public FrmPatientView frmCashView;
 
         Font fEdit, fEditB;
         Color bg, fc;
@@ -168,8 +169,8 @@ namespace clinic_ivf.gui
             ic.ivfDB.sexDB.setCboSex(cboSex, "");
             if (ic.iniC.statusAppDonor.Equals("1"))
             {
-                ic.setCboPttType(cboPttType,"");
-                ic.setCboPttType(cboVisitPttType,"");
+                ic.setCboPttTypeDonor(cboPttType,"");
+                ic.setCboPttTypeDonor(cboVisitPttType,"");
                 ic.setCboPttGroup(cboPttGroup,"");
                 cboPttGroup.Show();
                 label32.Show();
@@ -409,7 +410,8 @@ namespace clinic_ivf.gui
                 String re = "", re1 = "";
                 if (ic.iniC.statusAppDonor.Equals("1"))
                 {
-
+                    re = ic.ivfDB.vsDB.updateStatusVoidVisit(txtVisitID.Text);
+                    setGrfVsDonor(txtHn.Text);
                 }
                 else
                 {
@@ -425,10 +427,20 @@ namespace clinic_ivf.gui
             //throw new NotImplementedException();
             ic.sVsOld.PIDS = "";
             ic.sVsOld.PName = "";
-            FrmSearchHn frm = new FrmSearchHn(ic, FrmSearchHn.StatusConnection.host, FrmSearchHn.StatusSearch.PttSearch, FrmSearchHn.StatusSearchTable.PttSearch);
-            frm.ShowDialog(this);
-            txtVisitHnMale.Value = ic.sVsOld.PIDS;
-            label71.Text = ic.sVsOld.PName;
+            if (ic.iniC.statusAppDonor.Equals("1"))
+            {
+                FrmSearchHn frm = new FrmSearchHn(ic, FrmSearchHn.StatusConnection.host, FrmSearchHn.StatusSearch.PttSearch, FrmSearchHn.StatusSearchTable.PttSearch);
+                frm.ShowDialog(this);
+                txtVisitHnMale.Value = ic.sVsOld.PIDS;
+                label71.Text = ic.sVsOld.PName;
+            }
+            else
+            {
+                FrmSearchHn frm = new FrmSearchHn(ic, FrmSearchHn.StatusConnection.host, FrmSearchHn.StatusSearch.PttSearch, FrmSearchHn.StatusSearchTable.PttSearch);
+                frm.ShowDialog(this);
+                txtVisitHnMale.Value = ic.sVsOld.PIDS;
+                label71.Text = ic.sVsOld.PName;
+            }
         }
 
         private void BtnVisit_Click(object sender, EventArgs e)
@@ -2776,6 +2788,11 @@ namespace clinic_ivf.gui
                 PatientImage pttI = new PatientImage();
                 pttI = ic.ivfDB.pttImgDB.selectByPttIDStatus4(txtID.Text);
                 filenamepic = pttI.image_path;
+                if (pttI.image_path.Length <= 0)
+                {
+                    setPic(Resources._698929);
+                    return;
+                }
                 Thread threadA = new Thread(new ParameterizedThreadStart(ExecuteA));
                 threadA.Start();
             }
@@ -3400,7 +3417,13 @@ namespace clinic_ivf.gui
         {
             if (ic.iniC.statusAppDonor.Equals("1"))
             {
-                tC1.SelectedTab = tabFamily;
+                //tC1.SelectedTab = tabFamily;
+                tC1.SelectedTab = tabVisit;
+                tabFamily.Visible = false;
+                tabAddress.Hide();
+                tC1.TabPages.Remove(tabFamily);
+                tC1.TabPages.Remove(tabAddress);
+                label72.Text = "HN Female :";
             }
             else
             {

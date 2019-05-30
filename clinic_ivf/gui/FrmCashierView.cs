@@ -76,7 +76,7 @@ namespace clinic_ivf.gui
         private void BtnSearch_Click(object sender, EventArgs e)
         {
             //throw new NotImplementedException();
-
+            setGrfSearch();
         }
 
         private void TC_SelectedTabChanged(object sender, EventArgs e)
@@ -110,11 +110,11 @@ namespace clinic_ivf.gui
             grfSearch.DoubleClick += GrfSearch_DoubleClick;
             //grfExpnC.CellButtonClick += new C1.Win.C1FlexGrid.RowColEventHandler(this.grfDept_CellButtonClick);
             //grfExpnC.CellChanged += new C1.Win.C1FlexGrid.RowColEventHandler(this.grfDept_CellChanged);
-            ContextMenu menuGw = new ContextMenu();
-            menuGw.MenuItems.Add("ออก บิล", new EventHandler(ContextMenu_edit_billfinish));
-            menuGw.MenuItems.Add("ส่งกลับ", new EventHandler(ContextMenu_send_back));
+            //ContextMenu menuGw = new ContextMenu();
+            //menuGw.MenuItems.Add("ออก บิล", new EventHandler(ContextMenu_edit_billSearch));
+            //menuGw.MenuItems.Add("ส่งกลับ", new EventHandler(ContextMenu_send_back));
             //menuGw.MenuItems.Add("&ยกเลิก", new EventHandler(ContextMenu_Gw_Cancel));
-            grfSearch.ContextMenu = menuGw;
+            //grfSearch.ContextMenu = menuGw;
             pnSearch.Controls.Add(grfSearch);
 
             theme1.SetTheme(grfSearch, "Office2010Red");
@@ -135,7 +135,9 @@ namespace clinic_ivf.gui
             grfSearch.Clear();
             DataTable dt1 = new DataTable();
             DataTable dt = new DataTable();
-            dt = ic.ivfDB.ovsDB.selectByStatusCashierFinish();
+            String date = "";
+            
+            dt = ic.ivfDB.ovsDB.selectByStatusCashierSearch(txtSearch.Text, ic.datetoDB(txtDateStart.Text));
             //if (search.Equals(""))
             //{
             //    String date = "";

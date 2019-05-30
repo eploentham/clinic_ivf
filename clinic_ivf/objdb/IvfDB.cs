@@ -673,7 +673,7 @@ namespace clinic_ivf.objdb
         public void VoidBill(String vn, String userId)
         {
             obilhDB.voidBillByVN(vn, userId);
-            obildDB.delete(vn);
+            obildDB.voidBillDetailByVN(vn, userId);
         }
         public void DeleteBill1(String vn)
         {
@@ -810,7 +810,8 @@ namespace clinic_ivf.objdb
             obillh.SepCredit = "";
             obillh.ExtBillNo = "";
             obillh.IntLock = "";
-            obilhDB.insertBillHeader(obillh, "");
+            String re1 = "";
+            re1 = obilhDB.insertBillHeader(obillh, userId);
             //sql = "Select * from PackageSold Where PID='"+ ovs.PID+ "' and Status<>3'";
             //dt = opkgsDB.selectByVN1(vn);
             dt = opkgsDB.selectByPID(ovs.PID);    // ต้องดึงตาม HN เพราะ ถ้ามีงวดการชำระ 
@@ -917,6 +918,7 @@ namespace clinic_ivf.objdb
                         obilld.status = "package";
                         obilld.price1 = pay.ToString();
                         obilld.qty = "1";
+                        obilld.bill_id = re1;
                         obildDB.insertBillDetail(obilld, "");
                     }
                 }
@@ -958,6 +960,7 @@ namespace clinic_ivf.objdb
                         obilld.pcksid = "0";
                         obilld.price1 = row["Price"].ToString();
                         obilld.qty = row["QTY"].ToString();
+                        obilld.bill_id = re1;
                         obildDB.insertBillDetail(obilld, "");
                     }
                 }
@@ -985,6 +988,7 @@ namespace clinic_ivf.objdb
                         obilld.pcksid = "0";
                         obilld.price1 = row["Price"].ToString();
                         obilld.qty = row["QTY"].ToString();
+                        obilld.bill_id = re1;
                         obildDB.insertBillDetail(obilld, "");
                     }
                 }
@@ -1013,6 +1017,7 @@ namespace clinic_ivf.objdb
                         obilld.pcksid = "0";
                         obilld.price1 = row["Price"].ToString();
                         obilld.qty = row["QTY"].ToString();
+                        obilld.bill_id = re1;
                         obildDB.insertBillDetail(obilld, "");
                     }
                 }
@@ -1057,6 +1062,7 @@ namespace clinic_ivf.objdb
                         obilld.pcksid = "0";
                         obilld.price1 = row["Price"].ToString();
                         obilld.qty = row["QTY"].ToString();
+                        obilld.bill_id = re1;
                         obildDB.insertBillDetail(obilld, "");
                     }
                 }
@@ -1084,6 +1090,7 @@ namespace clinic_ivf.objdb
                         obilld.pcksid = "0";
                         obilld.price1 = row["Price"].ToString();
                         obilld.qty = row["QTY"].ToString();
+                        obilld.bill_id = re1;
                         obildDB.insertBillDetail(obilld, "");
                     }
                 }
@@ -1112,6 +1119,7 @@ namespace clinic_ivf.objdb
                         obilld.pcksid = "0";
                         obilld.price1 = row["Price"].ToString();
                         obilld.qty = row["QTY"].ToString();
+                        obilld.bill_id = re1;
                         obildDB.insertBillDetail(obilld, "");
                     }
                 }
@@ -1148,7 +1156,7 @@ namespace clinic_ivf.objdb
             DataTable dt = new DataTable();
             long chk1 = 0, chk2 = 0;
             String re = "", extBill="", intLock="", f1="",f2="", maxBill="", billNo="";
-            String sql = "select VN, ExtBillNo, IntLock, Year(Date)+543 as F1, date_format(Date,'%m') as F2 from BillHeader Where VN='"+vn+"'";
+            String sql = "select VN, ExtBillNo, IntLock, Year(Date)+543 as F1, date_format(Date,'%m') as F2 from BillHeader Where VN='"+vn+"' and active = '1'";
             //dt = conn.selectData(conn.conn, sql);
             //if (dt.Rows.Count > 0)
             //{
@@ -1250,7 +1258,7 @@ namespace clinic_ivf.objdb
             //                };            };
             String pname = "", pids = "", wtotal = "", total = "", billno = "", billdoc="", billextno="", billextdoc="", cashid="", pay2="", creditid="";
             Decimal total1 = 0;
-            sql = "select * from BillHeader Where VN='"+vn+"' ";
+            sql = "select * from BillHeader Where VN='"+vn+"' and active = '1'";
             dt = conn.selectData(conn.conn, sql);
             if (dt.Rows.Count > 0)
             {
@@ -1323,7 +1331,7 @@ namespace clinic_ivf.objdb
                 foreach(DataRow row in dt.Rows)
                 {
                     grpname = row["Name"].ToString();
-                    sql = "Select sum(Total) as Total1, Name from BillDetail Where Total<>0 and VN='" + vn+"' and GroupType='"+ grpname + "' Group By Name ";
+                    sql = "Select sum(Total) as Total1, Name from BillDetail Where Total<>0 and VN='" + vn+"' and GroupType='"+ grpname + "' and active = '1' Group By Name ";
                     dtb0 = conn.selectData(conn.conn, sql);
                     if (dtb0.Rows.Count > 0)
                     {
@@ -1369,7 +1377,7 @@ namespace clinic_ivf.objdb
                 {
                     grpname = row["Name"].ToString();
                     //sql = "Select sum(Total) as Total1, Name from BillDetail Where Total<>0 and VN='" + vn + "' and GroupType='" + grpname + "' Group By Name ";
-                    sql = "Select sum(Total) as Total1 from BillDetail Where Total<>0 and VN='" + vn + "' and GroupType='" + grpname + "'  ";
+                    sql = "Select sum(Total) as Total1 from BillDetail Where Total<>0 and VN='" + vn + "' and GroupType='" + grpname + "'  and active = '1' ";
                     dtb0 = conn.selectData(conn.conn, sql);
                     if (dtb0.Rows.Count > 0)
                     {
@@ -1417,7 +1425,7 @@ namespace clinic_ivf.objdb
                 foreach (DataRow row in dt.Rows)
                 {
                     grpname = row["Name"].ToString();
-                    sql = "Select sum(Total) as Total1, Name from BillDetail Where Total<>0 and VN='" + vn + "' and GroupType='" + grpname + "' Group By Name ";
+                    sql = "Select sum(Total) as Total1, Name from BillDetail Where Total<>0 and VN='" + vn + "' and GroupType='" + grpname + "' and active = '1' Group By Name ";
                     dtb0 = conn.selectData(conn.conn, sql);
                     if (dtb0.Rows.Count > 0)
                     {
@@ -1457,7 +1465,7 @@ namespace clinic_ivf.objdb
                 foreach (DataRow row in dt.Rows)
                 {
                     grpname = row["Name"].ToString();
-                    sql = "Select sum(Total) as Total1, Name from BillDetail Where Total<>0 and VN='" + vn + "' and GroupType='" + grpname + "' Group By Name ";
+                    sql = "Select sum(Total) as Total1, Name from BillDetail Where Total<>0 and VN='" + vn + "' and GroupType='" + grpname + "' and active = '1' Group By Name ";
                     dtb0 = conn.selectData(conn.conn, sql);
                     if (dtb0.Rows.Count > 0)
                     {

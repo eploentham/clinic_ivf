@@ -2914,6 +2914,7 @@ namespace clinic_ivf.gui
             grfPackage.Cols[colBlInclude].Width = 80;
             grfPackage.Cols[colBlPrice].Width = 80;
             grfPackage.Cols[colBlRemark].Width = 100;
+            grfPackage.Cols[colBlQty].Width = 60;
 
             grfPackage.ShowCursor = true;
             //grdFlex.Cols[colID].Caption = "no";
@@ -3385,9 +3386,7 @@ namespace clinic_ivf.gui
             grfRx.ShowCursor = true;
             //grdFlex.Cols[colID].Caption = "no";
             //grfDept.Cols[colCode].Caption = "รหัส";
-
             
-
             CellRange rg = grfRx.GetCellRange(2, colBlInclude, grfRx.Rows.Count - 1, colBlInclude);
             rg.Style = cs;
             rg.Style = grfRx.Styles["bool"];
@@ -3710,6 +3709,7 @@ namespace clinic_ivf.gui
             grfGenetic.Cols[colBlInclude].Width = 80;
             grfGenetic.Cols[colBlPrice].Width = 80;
             grfGenetic.Cols[colBlRemark].Width = 100;
+            grfGenetic.Cols[colBlQty].Width = 60;
 
             grfGenetic.ShowCursor = true;
             //grdFlex.Cols[colID].Caption = "no";
@@ -3851,6 +3851,7 @@ namespace clinic_ivf.gui
             grfEmbryo.Cols[colBlInclude].Width = 80;
             grfEmbryo.Cols[colBlPrice].Width = 80;
             grfEmbryo.Cols[colBlRemark].Width = 100;
+            grfEmbryo.Cols[colBlQty].Width = 60;
 
             grfEmbryo.ShowCursor = true;
             //grdFlex.Cols[colID].Caption = "no";
@@ -3990,9 +3991,10 @@ namespace clinic_ivf.gui
             cs.ImageAlign = ImageAlignEnum.LeftCenter;
 
             grfSperm.Cols[colBlName].Width = 320;
-            grfSperm.Cols[colBlInclude].Width = 120;
+            grfSperm.Cols[colBlInclude].Width = 80;
             grfSperm.Cols[colBlPrice].Width = 80;
             grfSperm.Cols[colBlRemark].Width = 100;
+            grfSperm.Cols[colBlQty].Width = 60;
 
             grfSperm.ShowCursor = true;
             //grdFlex.Cols[colID].Caption = "no";
@@ -4114,6 +4116,7 @@ namespace clinic_ivf.gui
             grfBloodLab.Cols[colBlInclude].Width = 80;
             grfBloodLab.Cols[colBlPrice].Width = 80;
             grfBloodLab.Cols[colBlRemark].Width = 100;
+            grfBloodLab.Cols[colBlQty].Width = 60;
 
             grfBloodLab.ShowCursor = true;
             //grdFlex.Cols[colID].Caption = "no";

@@ -556,6 +556,40 @@ namespace clinic_ivf.control
             }
             return re;
         }
+        public C1ComboBox setCboPttTypeDonor(C1ComboBox c, String selected)
+        {
+            ComboBoxItem item = new ComboBoxItem();
+
+            //String aaa = "";
+            ComboBoxItem item1 = new ComboBoxItem();
+            item1.Text = "";
+            item1.Value = "000";
+            c.Items.Clear();
+            c.Items.Add(item1);
+            //for (int i = 0; i < dt.Rows.Count; i++)
+
+            item = new ComboBoxItem();
+            item.Text = "Patient";
+            item.Value = "1";
+            c.Items.Add(item);
+
+            item = new ComboBoxItem();
+            item.Text = "Egg Donor";
+            item.Value = "2";
+            c.Items.Add(item);
+
+            item = new ComboBoxItem();
+            item.Text = "Surrogate";
+            item.Value = "3";
+            c.Items.Add(item);
+
+            if (!selected.Equals(""))
+            {
+                c.SelectedText = selected;
+            }
+
+            return c;
+        }
         public C1ComboBox setCboPttType(C1ComboBox c, String selected)
         {
             ComboBoxItem item = new ComboBoxItem();

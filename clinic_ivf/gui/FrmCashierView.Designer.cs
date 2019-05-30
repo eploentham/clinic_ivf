@@ -42,9 +42,9 @@
             this.chkLabFormA = new C1.Win.C1Input.C1CheckBox();
             this.btnSearch = new C1.Win.C1Input.C1Button();
             this.label11 = new System.Windows.Forms.Label();
-            this.txtDateStart = new C1.Win.C1Input.C1DateEdit();
             this.label4 = new System.Windows.Forms.Label();
             this.txtSearch = new C1.Win.C1Input.C1TextBox();
+            this.txtDateStart = new C1.Win.C1Input.C1DateEdit();
             this.sB.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.theme1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tC)).BeginInit();
@@ -55,8 +55,8 @@
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chkLabFormA)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnSearch)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtDateStart)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtSearch)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtDateStart)).BeginInit();
             this.SuspendLayout();
             // 
             // sB
@@ -162,10 +162,10 @@
             // panel3
             // 
             this.panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.panel3.Controls.Add(this.txtDateStart);
             this.panel3.Controls.Add(this.chkLabFormA);
             this.panel3.Controls.Add(this.btnSearch);
             this.panel3.Controls.Add(this.label11);
-            this.panel3.Controls.Add(this.txtDateStart);
             this.panel3.Controls.Add(this.label4);
             this.panel3.Controls.Add(this.txtSearch);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Top;
@@ -219,60 +219,6 @@
             this.label11.Text = "Date Start :";
             this.theme1.SetTheme(this.label11, "(default)");
             // 
-            // txtDateStart
-            // 
-            this.txtDateStart.AllowSpinLoop = false;
-            this.txtDateStart.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            // 
-            // 
-            // 
-            this.txtDateStart.Calendar.ArrowColor = System.Drawing.Color.Black;
-            this.txtDateStart.Calendar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.txtDateStart.Calendar.DayNamesFont = new System.Drawing.Font("Tahoma", 8F);
-            this.txtDateStart.Calendar.Font = new System.Drawing.Font("Tahoma", 8F);
-            this.txtDateStart.Calendar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.txtDateStart.Calendar.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(71)))), ((int)(((byte)(47)))));
-            this.txtDateStart.Calendar.SelectionForeColor = System.Drawing.Color.White;
-            this.txtDateStart.Calendar.TitleBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(230)))));
-            this.txtDateStart.Calendar.TitleFont = new System.Drawing.Font("Tahoma", 8F);
-            this.txtDateStart.Calendar.TitleForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.txtDateStart.Calendar.TodayBorderColor = System.Drawing.Color.White;
-            this.txtDateStart.Calendar.TrailingForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
-            this.txtDateStart.Calendar.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
-            this.txtDateStart.Culture = 1054;
-            this.txtDateStart.CurrentTimeZone = false;
-            this.txtDateStart.DateTimeInput = false;
-            this.txtDateStart.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
-            this.txtDateStart.DisplayFormat.CustomFormat = "dd-MM-yyyy";
-            this.txtDateStart.DisplayFormat.FormatType = C1.Win.C1Input.FormatTypeEnum.ShortDate;
-            this.txtDateStart.DisplayFormat.Inherit = ((C1.Win.C1Input.FormatInfoInheritFlags)(((((C1.Win.C1Input.FormatInfoInheritFlags.NullText | C1.Win.C1Input.FormatInfoInheritFlags.EmptyAsNull) 
-            | C1.Win.C1Input.FormatInfoInheritFlags.TrimStart) 
-            | C1.Win.C1Input.FormatInfoInheritFlags.TrimEnd) 
-            | C1.Win.C1Input.FormatInfoInheritFlags.CalendarType)));
-            this.txtDateStart.EditFormat.CustomFormat = "dd-MM-yyyy";
-            this.txtDateStart.EditFormat.FormatType = C1.Win.C1Input.FormatTypeEnum.ShortDate;
-            this.txtDateStart.EditFormat.Inherit = ((C1.Win.C1Input.FormatInfoInheritFlags)(((((C1.Win.C1Input.FormatInfoInheritFlags.NullText | C1.Win.C1Input.FormatInfoInheritFlags.EmptyAsNull) 
-            | C1.Win.C1Input.FormatInfoInheritFlags.TrimStart) 
-            | C1.Win.C1Input.FormatInfoInheritFlags.TrimEnd) 
-            | C1.Win.C1Input.FormatInfoInheritFlags.CalendarType)));
-            this.txtDateStart.EmptyAsNull = true;
-            this.txtDateStart.GMTOffset = System.TimeSpan.Parse("00:00:00");
-            this.txtDateStart.ImagePadding = new System.Windows.Forms.Padding(0);
-            this.txtDateStart.Location = new System.Drawing.Point(325, 8);
-            this.txtDateStart.Name = "txtDateStart";
-            this.txtDateStart.ParseInfo.EmptyAsNull = false;
-            this.txtDateStart.ParseInfo.Inherit = ((C1.Win.C1Input.ParseInfoInheritFlags)(((((((C1.Win.C1Input.ParseInfoInheritFlags.CaseSensitive | C1.Win.C1Input.ParseInfoInheritFlags.FormatType) 
-            | C1.Win.C1Input.ParseInfoInheritFlags.CustomFormat) 
-            | C1.Win.C1Input.ParseInfoInheritFlags.NullText) 
-            | C1.Win.C1Input.ParseInfoInheritFlags.ErrorMessage) 
-            | C1.Win.C1Input.ParseInfoInheritFlags.TrimStart) 
-            | C1.Win.C1Input.ParseInfoInheritFlags.TrimEnd)));
-            this.txtDateStart.Size = new System.Drawing.Size(142, 18);
-            this.txtDateStart.TabIndex = 734;
-            this.txtDateStart.Tag = null;
-            this.theme1.SetTheme(this.txtDateStart, "(default)");
-            this.txtDateStart.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
-            // 
             // label4
             // 
             this.label4.AutoSize = true;
@@ -299,6 +245,52 @@
             this.theme1.SetTheme(this.txtSearch, "(default)");
             this.txtSearch.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
             // 
+            // txtDateStart
+            // 
+            this.txtDateStart.AllowSpinLoop = false;
+            this.txtDateStart.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            // 
+            // 
+            // 
+            this.txtDateStart.Calendar.ArrowColor = System.Drawing.Color.Black;
+            this.txtDateStart.Calendar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.txtDateStart.Calendar.DayNamesFont = new System.Drawing.Font("Tahoma", 8F);
+            this.txtDateStart.Calendar.Font = new System.Drawing.Font("Tahoma", 8F);
+            this.txtDateStart.Calendar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.txtDateStart.Calendar.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(71)))), ((int)(((byte)(47)))));
+            this.txtDateStart.Calendar.SelectionForeColor = System.Drawing.Color.White;
+            this.txtDateStart.Calendar.TitleBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(230)))));
+            this.txtDateStart.Calendar.TitleFont = new System.Drawing.Font("Tahoma", 8F);
+            this.txtDateStart.Calendar.TitleForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.txtDateStart.Calendar.TodayBorderColor = System.Drawing.Color.White;
+            this.txtDateStart.Calendar.TrailingForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
+            this.txtDateStart.Calendar.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            this.txtDateStart.Culture = 1054;
+            this.txtDateStart.CurrentTimeZone = false;
+            this.txtDateStart.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
+            this.txtDateStart.DisplayFormat.CalendarType = C1.Win.C1Input.CalendarType.GregorianCalendar;
+            this.txtDateStart.DisplayFormat.FormatType = C1.Win.C1Input.FormatTypeEnum.ShortDate;
+            this.txtDateStart.DisplayFormat.Inherit = ((C1.Win.C1Input.FormatInfoInheritFlags)(((((C1.Win.C1Input.FormatInfoInheritFlags.CustomFormat | C1.Win.C1Input.FormatInfoInheritFlags.NullText) 
+            | C1.Win.C1Input.FormatInfoInheritFlags.EmptyAsNull) 
+            | C1.Win.C1Input.FormatInfoInheritFlags.TrimStart) 
+            | C1.Win.C1Input.FormatInfoInheritFlags.TrimEnd)));
+            this.txtDateStart.EditFormat.CalendarType = C1.Win.C1Input.CalendarType.GregorianCalendar;
+            this.txtDateStart.EditFormat.FormatType = C1.Win.C1Input.FormatTypeEnum.ShortDate;
+            this.txtDateStart.EditFormat.Inherit = ((C1.Win.C1Input.FormatInfoInheritFlags)(((((C1.Win.C1Input.FormatInfoInheritFlags.CustomFormat | C1.Win.C1Input.FormatInfoInheritFlags.NullText) 
+            | C1.Win.C1Input.FormatInfoInheritFlags.EmptyAsNull) 
+            | C1.Win.C1Input.FormatInfoInheritFlags.TrimStart) 
+            | C1.Win.C1Input.FormatInfoInheritFlags.TrimEnd)));
+            this.txtDateStart.EmptyAsNull = true;
+            this.txtDateStart.GMTOffset = System.TimeSpan.Parse("00:00:00");
+            this.txtDateStart.ImagePadding = new System.Windows.Forms.Padding(0);
+            this.txtDateStart.Location = new System.Drawing.Point(325, 8);
+            this.txtDateStart.Name = "txtDateStart";
+            this.txtDateStart.Size = new System.Drawing.Size(119, 18);
+            this.txtDateStart.TabIndex = 738;
+            this.txtDateStart.Tag = null;
+            this.theme1.SetTheme(this.txtDateStart, "(default)");
+            this.txtDateStart.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            // 
             // FrmCashierView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -321,8 +313,8 @@
             this.panel3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chkLabFormA)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnSearch)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtDateStart)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtSearch)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtDateStart)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -342,10 +334,10 @@
         private C1.Win.C1Input.C1CheckBox chkLabFormA;
         private C1.Win.C1Input.C1Button btnSearch;
         private System.Windows.Forms.Label label11;
-        private C1.Win.C1Input.C1DateEdit txtDateStart;
         private System.Windows.Forms.Label label4;
         private C1.Win.C1Input.C1TextBox txtSearch;
         private System.Windows.Forms.Panel pnQue;
         private System.Windows.Forms.Panel pnFinish;
+        private C1.Win.C1Input.C1DateEdit txtDateStart;
     }
 }

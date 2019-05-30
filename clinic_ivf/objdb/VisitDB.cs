@@ -564,7 +564,6 @@ namespace clinic_ivf.objdb
             String re = "", err = "";
             String sql = "update " + vs.table + " " +
                 "Set " + vs.f_visit_status_id + " ='4' " +
-                
                 "Where " + vs.pkField + " ='" + vsid + "' ";
             try
             {
@@ -587,7 +586,7 @@ namespace clinic_ivf.objdb
                 "Left Join t_visit vs on  ptt.t_patient_id = vs." + vs.t_patient_id + " " +
                 "Left join f_patient_prefix fpp on fpp.f_patient_prefix_id = ptt.f_patient_prefix_id " +
                 "Left Join b_service_point bsp on bsp.b_service_point_id = vs.b_service_point_id " +
-                "Where ptt.patient_record_date_time  >='" + date + " 00:00:00' " +
+                "Where ptt.patient_record_date_time  >='" + date + " 00:00:00' and vs.f_visit_status_id = '1' " +
                 "Order By vs.visit_begin_visit_time ";
             dt = conn.selectData(conn.conn, sql);
 
@@ -625,7 +624,7 @@ namespace clinic_ivf.objdb
                 "Left join f_patient_prefix fpp on fpp.f_patient_prefix_id = ptt.f_patient_prefix_id " +
                 "Left Join b_service_point bsp on bsp.b_service_point_id = vs.b_service_point_id " +
                 //"Left Join t_patient_appointment papm on vs."+vs.t_patient_appointment_id+ "=papm."+vs.t_patient_appointment_id+" " +
-                "Where vs." + vs.visit_begin_visit_time + " >='" + date + " 00:00:00' " +
+                "Where vs." + vs.visit_begin_visit_time + " >='" + date + " 00:00:00' and vs.f_visit_status_id = '1' " +
                 "Order By vs.visit_begin_visit_time ";
             dt = conn.selectData(conn.conn, sql);
 
@@ -662,7 +661,7 @@ namespace clinic_ivf.objdb
                 "Left Join t_patient ptt on  ptt.t_patient_id = vs." + vs.t_patient_id + " " +
                 "Left join f_patient_prefix fpp on fpp.f_patient_prefix_id = ptt.f_patient_prefix_id " +
                 "Left Join b_service_point bsp on bsp.b_service_point_id = vs.b_service_point_id " +
-                "Where vs." + vs.visit_begin_visit_time + " >='" + date + " 00:00:00'  and vs.b_service_point_id = '2120000002' and "+vs.status_nurse+" <> '2' " +
+                "Where vs." + vs.visit_begin_visit_time + " >='" + date + " 00:00:00'  and vs.b_service_point_id = '2120000002' and "+vs.status_nurse+" <> '2' and vs.f_visit_status_id = '1' " +
                 "Order By vs.visit_begin_visit_time ";
             dt = conn.selectData(conn.conn, sql);
 
@@ -680,7 +679,7 @@ namespace clinic_ivf.objdb
                 "Left join f_patient_prefix fpp on fpp.f_patient_prefix_id = ptt.f_patient_prefix_id " +
                 "Left Join b_service_point bsp on bsp.b_service_point_id = vs.b_service_point_id " +
                 " " +
-                "Where vs." + vs.visit_hn + " ='" + hn + "' " +
+                "Where vs." + vs.visit_hn + " ='" + hn + "' and vs.f_visit_status_id in ('1','2') " +
                 "Order By vs."+vs.t_visit_id;
             dt = conn.selectData(conn.conn, sql);
 
