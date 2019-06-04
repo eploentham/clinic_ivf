@@ -3176,7 +3176,7 @@
             this.label75.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
             this.label75.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label75.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.label75.Location = new System.Drawing.Point(370, 42);
+            this.label75.Location = new System.Drawing.Point(370, 16);
             this.label75.Name = "label75";
             this.label75.Size = new System.Drawing.Size(54, 16);
             this.label75.TabIndex = 700;
@@ -3207,7 +3207,7 @@
             this.cboDoctor.ImagePadding = new System.Windows.Forms.Padding(0);
             this.cboDoctor.ItemsDisplayMember = "";
             this.cboDoctor.ItemsValueMember = "";
-            this.cboDoctor.Location = new System.Drawing.Point(457, 40);
+            this.cboDoctor.Location = new System.Drawing.Point(457, 14);
             this.cboDoctor.Name = "cboDoctor";
             this.cboDoctor.Size = new System.Drawing.Size(272, 20);
             this.cboDoctor.Style.DropDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
@@ -3224,7 +3224,7 @@
             this.label71.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
             this.label71.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label71.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.label71.Location = new System.Drawing.Point(639, 21);
+            this.label71.Location = new System.Drawing.Point(639, 39);
             this.label71.Name = "label71";
             this.label71.Size = new System.Drawing.Size(11, 16);
             this.label71.TabIndex = 722;
@@ -3233,7 +3233,7 @@
             // 
             // btnHnMaleSearch
             // 
-            this.btnHnMaleSearch.Location = new System.Drawing.Point(604, 16);
+            this.btnHnMaleSearch.Location = new System.Drawing.Point(604, 34);
             this.btnHnMaleSearch.Name = "btnHnMaleSearch";
             this.btnHnMaleSearch.Size = new System.Drawing.Size(28, 23);
             this.btnHnMaleSearch.TabIndex = 721;
@@ -3248,7 +3248,7 @@
             this.label72.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
             this.label72.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label72.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.label72.Location = new System.Drawing.Point(370, 21);
+            this.label72.Location = new System.Drawing.Point(370, 39);
             this.label72.Name = "label72";
             this.label72.Size = new System.Drawing.Size(71, 16);
             this.label72.TabIndex = 720;
@@ -3260,7 +3260,7 @@
             this.txtVisitHnMale.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtVisitHnMale.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
             this.txtVisitHnMale.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.txtVisitHnMale.Location = new System.Drawing.Point(457, 19);
+            this.txtVisitHnMale.Location = new System.Drawing.Point(457, 37);
             this.txtVisitHnMale.Name = "txtVisitHnMale";
             this.txtVisitHnMale.Size = new System.Drawing.Size(141, 20);
             this.txtVisitHnMale.TabIndex = 719;
@@ -3340,13 +3340,12 @@
             this.label59.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
             this.label59.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label59.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.label59.Location = new System.Drawing.Point(638, 63);
+            this.label59.Location = new System.Drawing.Point(638, 61);
             this.label59.Name = "label59";
             this.label59.Size = new System.Drawing.Size(11, 16);
             this.label59.TabIndex = 688;
             this.label59.Text = ".";
             this.theme1.SetTheme(this.label59, "(default)");
-            this.label59.Visible = false;
             // 
             // label60
             // 
@@ -3490,14 +3489,13 @@
             // 
             // btnHnSearch
             // 
-            this.btnHnSearch.Location = new System.Drawing.Point(604, 61);
+            this.btnHnSearch.Location = new System.Drawing.Point(604, 58);
             this.btnHnSearch.Name = "btnHnSearch";
             this.btnHnSearch.Size = new System.Drawing.Size(28, 23);
             this.btnHnSearch.TabIndex = 679;
             this.btnHnSearch.Text = "...";
             this.theme1.SetTheme(this.btnHnSearch, "(default)");
             this.btnHnSearch.UseVisualStyleBackColor = true;
-            this.btnHnSearch.Visible = false;
             this.btnHnSearch.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
             // 
             // label64
@@ -3506,26 +3504,24 @@
             this.label64.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
             this.label64.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label64.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.label64.Location = new System.Drawing.Point(370, 63);
+            this.label64.Location = new System.Drawing.Point(370, 61);
             this.label64.Name = "label64";
-            this.label64.Size = new System.Drawing.Size(78, 16);
+            this.label64.Size = new System.Drawing.Size(83, 16);
             this.label64.TabIndex = 678;
-            this.label64.Text = "HN female :";
+            this.label64.Text = "HN FeMale :";
             this.theme1.SetTheme(this.label64, "(default)");
-            this.label64.Visible = false;
             // 
             // txtVisitHnFemale
             // 
             this.txtVisitHnFemale.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtVisitHnFemale.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
             this.txtVisitHnFemale.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.txtVisitHnFemale.Location = new System.Drawing.Point(457, 61);
+            this.txtVisitHnFemale.Location = new System.Drawing.Point(457, 59);
             this.txtVisitHnFemale.Name = "txtVisitHnFemale";
             this.txtVisitHnFemale.Size = new System.Drawing.Size(141, 20);
             this.txtVisitHnFemale.TabIndex = 677;
             this.txtVisitHnFemale.Tag = null;
             this.theme1.SetTheme(this.txtVisitHnFemale, "(default)");
-            this.txtVisitHnFemale.Visible = false;
             this.txtVisitHnFemale.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
             // 
             // chkVisitUrge

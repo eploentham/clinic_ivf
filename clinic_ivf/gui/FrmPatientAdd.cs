@@ -2764,10 +2764,22 @@ namespace clinic_ivf.gui
             //pttO1 = ic.ivfDB.pttOldDB.selectByPk1(pttid);
             if (ic.iniC.statusAppDonor.Equals("1"))
             {
+                label64.Show();
+                label64.Text = "HN FeMale :";
+                label72.Text = "HN Male :";
+                txtVisitHnFemale.Show();
+                btnHnSearch.Show();
+                label59.Show();
                 setControlDonor(pttId,"");
             }
             else
             {
+                label64.Hide();
+                label64.Text = "HN FeMale :";
+                label72.Text = "HN คู่สมรส :";
+                txtVisitHnFemale.Hide();
+                btnHnSearch.Hide();
+                label59.Hide();
                 setControlPtt(pttOldId);
             }
 
@@ -3423,7 +3435,7 @@ namespace clinic_ivf.gui
                 tabAddress.Hide();
                 tC1.TabPages.Remove(tabFamily);
                 tC1.TabPages.Remove(tabAddress);
-                label72.Text = "HN Female :";
+                //label72.Text = "HN Female :";
             }
             else
             {
