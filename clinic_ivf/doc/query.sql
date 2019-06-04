@@ -1344,3 +1344,5 @@ delete from t_patient1 Where t_patient_id = '2080000040';
 
 delete from Visit1 Where VN = '20190429074';
 delete from t_visit1 Where t_visit_id = '210000019';
+
+ALTER TABLE ivf_101.nurse_t_egg_sti_day AUTO_INCREMENT = 2270000000;
