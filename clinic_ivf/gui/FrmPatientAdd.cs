@@ -2465,7 +2465,9 @@ namespace clinic_ivf.gui
                     ptt = ic.ivfDB.pttDB.selectByPID(pid);
                 }
             }
-
+            PatientOld pttO = new PatientOld();
+            pttO = ic.ivfDB.pttOldDB.selectByPk1(ptt.t_patient_id_old);
+            txtIdOld.Value = pttO.PID;
             if (ptt.t_patient_id.Equals(""))
             {
                 btnWebCamOn.Enabled = false;
@@ -2803,14 +2805,14 @@ namespace clinic_ivf.gui
             //picPtt.SizeMode = PictureBoxSizeMode.StretchImage;
             if (!txtID.Text.Equals(""))
             {
-                PatientImage pttI = new PatientImage();
-                pttI = ic.ivfDB.pttImgDB.selectByPttIDStatus4(txtID.Text);
-                filenamepic = pttI.image_path;
-                if (pttI.image_path.Length <= 0)
-                {
-                    setPic(Resources._698929);
-                    return;
-                }
+                //PatientImage pttI = new PatientImage();
+                //pttI = ic.ivfDB.pttImgDB.selectByPttIDStatus4(txtID.Text);
+                //filenamepic = pttI.image_path;
+                //if (pttI.image_path.Length <= 0)
+                //{
+                //    setPic(Resources._698929);
+                //    return;
+                //}
                 Thread threadA = new Thread(new ParameterizedThreadStart(ExecuteA));
                 threadA.Start();
             }
@@ -2828,13 +2830,15 @@ namespace clinic_ivf.gui
                 //picPtt.Image = bitmap;
                 //picPtt.SizeMode = PictureBoxSizeMode.StretchImage;
                 //setPic(bitmap);
-                String aaa = "images/" + txtIdOld.Text + "/" + txtIdOld.Text + "." + System.Drawing.Imaging.ImageFormat.Jpeg;
+                String filename = "images/" + txtIdOld.Text + "/" + txtIdOld.Text + "." + System.Drawing.Imaging.ImageFormat.Jpeg;
+                Bitmap bitmap = null;
+                bitmap = new Bitmap(ic.ftpC.download(filename));
                 //setPic(new Bitmap(ic.ftpC.download(filenamepic)));
-                setPic(new Bitmap(ic.ftpC.download(aaa)));
+                setPic(new Bitmap(ic.ftpC.download(filename)));
             }
             catch(Exception ex)
             {
-
+                setPic(Resources._698929);
             }
         }
         private void setPic(Bitmap bitmap)
