@@ -263,7 +263,7 @@ namespace clinic_ivf.gui
             grfPtt.Cols[colStatus].Caption = "Status";
 
             ContextMenu menuGw = new ContextMenu();
-            menuGw.MenuItems.Add("&แก้ไข Visit", new EventHandler(ContextMenu_edit_vs));
+            menuGw.MenuItems.Add("&แก้ไข Visit", new EventHandler(ContextMenu_edit_vs_donor));
             menuGw.MenuItems.Add("&แก้ไข ประวัติ", new EventHandler(ContextMenu_edit_ptt));
             grfPtt.ContextMenu = menuGw;
 
@@ -287,9 +287,16 @@ namespace clinic_ivf.gui
                 //    grfPtt.Rows[i].StyleNew.BackColor = color;
                 i++;
             }
-            menuGw = new ContextMenu();
-            grfPtt.ContextMenu = menuGw;
+            //menuGw = new ContextMenu();
+            //grfPtt.ContextMenu = menuGw;
             grfPtt.Cols[colID].Visible = false;
+            grfPtt.Cols[colVN].AllowEditing = false;
+            grfPtt.Cols[colHn].AllowEditing = false;
+            grfPtt.Cols[colName].AllowEditing = false;
+            grfPtt.Cols[colVsDate].AllowEditing = false;
+            grfPtt.Cols[colVsTime].AllowEditing = false;
+            grfPtt.Cols[colVsEtime].AllowEditing = false;
+            grfPtt.Cols[colStatus].AllowEditing = false;
             theme1.SetTheme(grfPtt, ic.theme);
 
         }
@@ -367,6 +374,13 @@ namespace clinic_ivf.gui
             //menuGw = new ContextMenu();
             //grfPtt.ContextMenu = menuGw;
             grfPtt.Cols[colID].Visible = false;
+            grfPtt.Cols[colVN].AllowEditing = false;
+            grfPtt.Cols[colHn].AllowEditing = false;
+            grfPtt.Cols[colName].AllowEditing = false;
+            grfPtt.Cols[colVsDate].AllowEditing = false;
+            grfPtt.Cols[colVsTime].AllowEditing = false;
+            grfPtt.Cols[colVsEtime].AllowEditing = false;
+            grfPtt.Cols[colStatus].AllowEditing = false;
             theme1.SetTheme(grfPtt, ic.theme);
 
         }
@@ -441,8 +455,31 @@ namespace clinic_ivf.gui
                 i++;
             }
             grfPtt.Cols[colPttId].Visible = false;
+            grfPtt.Cols[colPttHn].AllowEditing = false;
+            grfPtt.Cols[colPttName].AllowEditing = false;
+            grfPtt.Cols[colPttRemark].AllowEditing = false;
             theme1.SetTheme(grfPtt, ic.theme);
 
+        }
+        private void ContextMenu_edit_vs_donor(object sender, System.EventArgs e)
+        {
+            String hn = "", name = "", vsid = "", vn = "";
+            vsid = grfPtt[grfPtt.Row, colID] != null ? grfPtt[grfPtt.Row, colID].ToString() : "";
+            vn = grfPtt[grfPtt.Row, colVN] != null ? grfPtt[grfPtt.Row, colVN].ToString() : "";
+            hn = grfPtt[grfPtt.Row, colHn] != null ? grfPtt[grfPtt.Row, colHn].ToString() : "";
+            name = grfPtt[grfPtt.Row, colPttName] != null ? grfPtt[grfPtt.Row, colPttName].ToString() : "";
+            //if (MessageBox.Show("ต้องการ แก้ไข Patient  \n  hn number " + chk + " \n name " + name, "", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == DialogResult.OK)
+            //{
+            //grfReq.Rows.Remove(grfReq.Row);
+            if (ic.iniC.statusAppDonor.Equals("1"))
+            {
+                VisitAdd("", vsid, name, "");
+            }
+            else
+            {
+                VisitAdd("", vn, name, vsid);
+            }
+            //}
         }
         private void ContextMenu_edit_vs(object sender, System.EventArgs e)
         {
@@ -497,6 +534,7 @@ namespace clinic_ivf.gui
             {
                 theme1.SetTheme(c, ic.theme);
             }
+            btnNew.Hide();
         }
     }
 }

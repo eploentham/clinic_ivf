@@ -932,7 +932,15 @@ namespace clinic_ivf.gui
                 //MessageBox.Show("date "+date, "");
                 String date1 = ic.datetoDB(txtDateStart.Text);
                 //MessageBox.Show("date1"+date1, "date "+date);
-                dt = ic.ivfDB.vsDB.selectByStatusNurseWaiting(ic.datetoDB(txtDateStart.Text));
+                //dt = ic.ivfDB.vsDB.selectByStatusNurseWaiting(ic.datetoDB(txtDateStart.Text));
+                if (chkAll.Checked)
+                {
+                    dt = ic.ivfDB.ovsDB.selectByReceptionSend();
+                }
+                else
+                {
+                    dt = ic.ivfDB.ovsDB.selectByReceptionSendBsp(cboVisitBsp.SelectedItem == null ? "" : ((ComboBoxItem)cboVisitBsp.SelectedItem).Value);
+                }
             }
             else
             {

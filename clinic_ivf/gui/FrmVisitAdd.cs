@@ -89,7 +89,7 @@ namespace clinic_ivf.gui
             {
 
             }
-            setControl(pttId, pttOid);
+            setControl(pttId, pttOid, vsid);
             txtAgent.Left = cboAgent.Left;
             if (ic.iniC.statusAppDonor.Equals("1"))
             {
@@ -468,7 +468,7 @@ namespace clinic_ivf.gui
 
             }).Start();
         }
-        private void setControl(String pttid, String pttOid)
+        private void setControl(String pttid, String pttOid, String vsid)
         {
             if (ic.iniC.statusAppDonor.Equals("1"))
             {
@@ -478,6 +478,11 @@ namespace clinic_ivf.gui
                     if (!pttOid.Equals(""))
                     {
                         ptt = ic.ivfDB.pttDB.selectByIDold(pttOid);
+                    }
+                    else
+                    {
+                        vs = ic.ivfDB.vsDB.selectByPk1(vsid);
+                        ptt = ic.ivfDB.pttDB.selectByPk1(vs.t_patient_id);
                     }
                 }
                 setControlPtt(ptt);

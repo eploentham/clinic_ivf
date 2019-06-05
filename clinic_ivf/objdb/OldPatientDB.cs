@@ -339,6 +339,26 @@ namespace clinic_ivf.objdb
             }
             return re;
         }
+        public String insertPatientOld1(Patient p, String userId)
+        {
+            String re = "";
+            PatientOld pttO1 = setPatientToOLD(p);
+            if (pttO1.PID.Equals(""))
+            {
+                pttO1.PID = selectByMaxPID();
+                if (pttO1.PIDS.Equals(""))
+                {
+                    pttO1.PIDS = genHN(pttO1.PID);
+                }
+                re = insert(pttO1, "");
+                re = pttO1.PID;
+            }
+            else
+            {
+                re = update(pttO1, "");
+            }
+            return re;
+        }
         public String insertPatientOld(Patient p, String userId)
         {
             String re = "";
@@ -346,6 +366,7 @@ namespace clinic_ivf.objdb
             if (pttO1.PID.Equals(""))
             {
                 pttO1.PID = selectByMaxPID();
+                
                 pttO1.PIDS = genHN(pttO1.PID);
                 re = insert(pttO1, "");
                 re = pttO1.PID;
@@ -398,7 +419,7 @@ namespace clinic_ivf.objdb
             pttO1.PatientTypeID = ptt.patient_type;
             pttO1.PaymentID = ptt.b_contract_plans_id;
             
-            pttO1.PID = ptt.t_patient_id_old;
+            pttO1.PID = ptt.t_patient_id_old.Equals("-1") ? "" : ptt.t_patient_id_old;
             pttO1.PIDS = ptt.patient_hn;
             
             pttO1.PName = ptt.patient_firstname_e;

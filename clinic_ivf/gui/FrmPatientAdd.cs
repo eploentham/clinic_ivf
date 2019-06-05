@@ -469,6 +469,10 @@ namespace clinic_ivf.gui
                 {
                     setVisit();
                     re = ic.ivfDB.vsDB.insertVisit(vs, txtStfConfirmID.Text);
+
+                    setVisitOld(vs.visit_vn);
+                    //vsOld.PIDS
+                    String re3 = ic.ivfDB.ovsDB.insertVisitOld(vsOld, txtStfConfirmID.Text, "new");
                 }
                 else
                 {
@@ -1168,6 +1172,8 @@ namespace clinic_ivf.gui
                 //String re = ic.ivfDB.pttDB.insertPatient(ptt, txtStfConfirmID.Text);
                 if (ic.iniC.statusAppDonor.Equals("1"))
                 {
+                    String re1 = ic.ivfDB.pttOldDB.insertPatientOld1(ptt, txtStfConfirmID.Text);
+                    ptt.t_patient_id_old = re1;
                     String re = ic.ivfDB.pttDB.insertPatient(ptt, txtStfConfirmID.Text);
                     long chk = 0;
                     Patient ptt1 = new Patient();
