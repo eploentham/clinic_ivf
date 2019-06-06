@@ -10,6 +10,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Drawing.Printing;
 using System.Linq;
 using System.Text;
 using System.Threading;
@@ -112,6 +113,7 @@ namespace clinic_ivf.gui
         private void BtnPrnSticker_Click(object sender, EventArgs e)
         {
             // throw new NotImplementedException();
+
             String date = "", date1 = "";
             date = DateTime.Now.Year + "-" + DateTime.Now.ToString("MM-dd");
             DataTable dt = new DataTable();
@@ -844,6 +846,15 @@ namespace clinic_ivf.gui
         {
             sC.HeaderHeight = 0;
             sCOrder.HeaderHeight = 0;
+
+            PrinterSettings settings1 = new PrinterSettings();
+            settings1.DefaultPageSettings.PrinterSettings.PrinterName = ic.iniC.printerSticker;
+            settings1.PrinterName = ic.iniC.printerSticker;
+
+            Application.DoEvents();
+            PrinterSettings settings2 = new PrinterSettings();
+
+            lbPrinterStickerName.Text = settings1.DefaultPageSettings.PrinterSettings.PrinterName;
         }
     }
 }

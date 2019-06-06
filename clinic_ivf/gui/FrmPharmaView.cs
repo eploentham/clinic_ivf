@@ -107,7 +107,7 @@ namespace clinic_ivf.gui
 
             //FilterRow fr = new FilterRow(grfExpn);
 
-            //grfSearch.AfterRowColChange += GrfReq_AfterRowColChange;
+            grfSearch.DoubleClick += GrfSearch_DoubleClick;
             //grfExpnC.CellButtonClick += new C1.Win.C1FlexGrid.RowColEventHandler(this.grfDept_CellButtonClick);
             //grfExpnC.CellChanged += new C1.Win.C1FlexGrid.RowColEventHandler(this.grfDept_CellChanged);
             ContextMenu menuGw = new ContextMenu();
@@ -118,6 +118,13 @@ namespace clinic_ivf.gui
             theme1.SetTheme(pnSearch, "Office2010Red");
 
         }
+
+        private void GrfSearch_DoubleClick(object sender, EventArgs e)
+        {
+            //throw new NotImplementedException();
+            openNurseAdd3();
+        }
+
         private void initGrfQue()
         {
             grfQue = new C1FlexGrid();
@@ -169,6 +176,19 @@ namespace clinic_ivf.gui
             //frm.ShowDialog(this);
 
             openNurseAdd(pttId, id, name, "edit");
+        }
+        private void openNurseAdd3()
+        {
+            String chk = "", name = "", id = "", pttId = "";
+
+            id = grfSearch[grfSearch.Row, colID] != null ? grfSearch[grfSearch.Row, colID].ToString() : "";
+            pttId = grfSearch[grfSearch.Row, colPttId] != null ? grfSearch[grfSearch.Row, colPttId].ToString() : "";
+            chk = grfSearch[grfSearch.Row, colPttHn] != null ? grfSearch[grfSearch.Row, colPttHn].ToString() : "";
+            name = grfSearch[grfSearch.Row, colPttName] != null ? grfSearch[grfSearch.Row, colPttName].ToString() : "";
+            //FrmNurseAdd frm = new FrmNurseAdd();
+            //frm.ShowDialog(this);
+
+            openNurseAdd(pttId, id, name, "noedit");
         }
         private void openNurseAdd2()
         {
@@ -587,6 +607,15 @@ namespace clinic_ivf.gui
             }
             CellNoteManager mgr = new CellNoteManager(grfSearch);
             grfSearch.Cols[colID].Visible = false;
+
+            grfSearch.Cols[colVNshow].AllowEditing = false;
+            grfSearch.Cols[colPttHn].AllowEditing = false;
+            grfSearch.Cols[colPttName].AllowEditing = false;
+            grfSearch.Cols[colVsDate].AllowEditing = false;
+            grfSearch.Cols[colVsTime].AllowEditing = false;
+            grfSearch.Cols[colVsEtime].AllowEditing = false;
+            grfSearch.Cols[colStatus].AllowEditing = false;
+            grfSearch.Cols[colPttId].AllowEditing = false;
             //theme1.SetTheme(grfQue, ic.theme);
 
         }

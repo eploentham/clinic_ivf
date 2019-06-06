@@ -25,7 +25,7 @@ namespace clinic_ivf.gui
         Color bg, fc;
         Font ff, ffB;
 
-        int colID = 1, colVNshow = 2, colVN = 12, colPttHn = 3, colPttName = 4, colVsDate = 5, colVsTime = 6, colVsEtime = 7, colStatus = 8, colPttId = 9, colStatusNurse = 10, colStatusCashier = 11;
+        int colID = 1, colVNshow = 2, colVN = 12, colPttHn = 3, colPttName = 4, colVsDate = 5, colVsTime = 6, colVsEtime = 7, colVsAgent=8, colStatus = 9, colPttId = 10, colStatusNurse = 11, colStatusCashier = 12;
 
         C1FlexGrid grfQue, grfFinish, grfSearch;
         C1SuperTooltip stt;
@@ -177,6 +177,7 @@ namespace clinic_ivf.gui
             grfSearch.Cols[colVsTime].Width = 80;
             grfSearch.Cols[colVsEtime].Width = 80;
             grfSearch.Cols[colStatus].Width = 200;
+            //grfSearch.Cols[colVsAgent].Width = 150;
 
             grfSearch.ShowCursor = true;
             //grdFlex.Cols[colID].Caption = "no";
@@ -192,6 +193,7 @@ namespace clinic_ivf.gui
             grfSearch.Cols[colPttId].Caption = "colPttId";
             grfSearch.Cols[colStatusNurse].Caption = "colStatusNurse";
             grfSearch.Cols[colStatusCashier].Caption = "colStatusCashier";
+            //grfSearch.Cols[colVsAgent].Caption = "Agent";
 
             //menuGw.MenuItems.Add("&receive operation", new EventHandler(ContextMenu_Apm));
             //menuGw.MenuItems.Add("receive operation", new EventHandler(ContextMenu_order));
@@ -219,6 +221,7 @@ namespace clinic_ivf.gui
                 grfSearch[i, colVsEtime] = row["VEndTime"].ToString();
                 grfSearch[i, colStatus] = row["VName"].ToString();
                 grfSearch[i, colPttId] = row["PID"].ToString();
+                //grfSearch[i, colVsAgent] = row["agent"].ToString();
                 if (!row[ic.ivfDB.ovsDB.vsold.form_a_id].ToString().Equals("0"))
                 {
                     CellNote note = new CellNote("ส่ง Lab Request Foam A");
@@ -242,6 +245,7 @@ namespace clinic_ivf.gui
             grfSearch.Cols[colVsTime].AllowEditing = false;
             grfSearch.Cols[colVsEtime].AllowEditing = false;
             grfSearch.Cols[colStatus].AllowEditing = false;
+            grfSearch.Cols[colVsAgent].AllowEditing = false;
             //theme1.SetTheme(grfQue, ic.theme);
         }
         private void initGrfFinish()
@@ -471,7 +475,7 @@ namespace clinic_ivf.gui
             grfQue.Clear();
             DataTable dt1 = new DataTable();
             DataTable dt = new DataTable();
-            dt = ic.ivfDB.ovsDB.selectByStatusCashierWaiting();
+            dt = ic.ivfDB.ovsDB.selectByStatusCashierWaiting1();
             //if (search.Equals(""))
             //{
             //    String date = "";
@@ -513,6 +517,7 @@ namespace clinic_ivf.gui
             grfQue.Cols[colStatus].Width = 200;
             grfQue.Cols[colStatusNurse].Width = 50;
             grfQue.Cols[colStatusCashier].Width = 55;
+            grfQue.Cols[colVsAgent].Width = 150;
 
             grfQue.ShowCursor = true;
             //grdFlex.Cols[colID].Caption = "no";
@@ -527,6 +532,7 @@ namespace clinic_ivf.gui
             grfQue.Cols[colStatus].Caption = "Status";
             grfQue.Cols[colStatusNurse].Caption = "Nurse";
             grfQue.Cols[colStatusCashier].Caption = "Cashier";
+            grfQue.Cols[colVsAgent].Caption = "Agent";
 
             //menuGw.MenuItems.Add("&receive operation", new EventHandler(ContextMenu_Apm));
             //menuGw.MenuItems.Add("receive operation", new EventHandler(ContextMenu_order));
@@ -554,6 +560,7 @@ namespace clinic_ivf.gui
                 grfQue[i, colVsEtime] = row["VEndTime"].ToString();
                 grfQue[i, colStatus] = row["VName"].ToString();
                 grfQue[i, colPttId] = row["PID"].ToString();
+                grfQue[i, colVsAgent] = row["agent"].ToString();
                 //grfQue[i, colStatusNurse] = row["status_nurse"] != null ? row["status_nurse"].ToString() : "";
                 //grfQue[i, colStatusCashier] = row["status_cashier"] != null ? row["status_cashier"].ToString() : "";
                 //if (!row[ic.ivfDB.ovsDB.vsold.form_a_id].ToString().Equals("0"))

@@ -91,8 +91,8 @@ namespace clinic_ivf.objdb
             p.active = "1";
             //p.ssdata_id = "";
             int chk = 0;
-            eggsd.day1 = "day1";
-            eggsd.table = "nurse_t_egg_sti_day";
+            //eggsd.day1 = "day1";
+            //eggsd.table = "nurse_t_egg_sti_day";
 
             chkNull(p);
             //opuEmDev.p = "p";

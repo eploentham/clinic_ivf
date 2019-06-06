@@ -721,8 +721,8 @@ namespace clinic_ivf.gui
                 //Properties.Settings.Default["PrinterName"] = ic.iniC.printerSticker;
                 
                 PrinterSettings settings1 = new PrinterSettings();
+                settings1.DefaultPageSettings.PrinterSettings.PrinterName = ic.iniC.printerSticker;
                 settings1.PrinterName = ic.iniC.printerSticker;
-                
 
                 String date1 = "";
                 //date1 = DateTime.Now.Year + "-" + DateTime.Now.ToString("MM-dd HH:mm:ss");
@@ -736,6 +736,8 @@ namespace clinic_ivf.gui
                 rpt.SetParameterValue("line11", ic.cop.comp_name_t);
                 rpt.SetParameterValue("line12", "โทรศัพท์ "+ic.cop.tele);
                 rpt.SetParameterValue("date1", "" + date1);
+                //rpt.PrintOptions.PaperSize = CrystalDecisions.Shared.PaperSize.
+                rpt.PrintOptions.PrinterName = ic.iniC.printerSticker;
                 this.crystalReportViewer1.ReportSource = rpt;
                 this.crystalReportViewer1.Refresh();
             }

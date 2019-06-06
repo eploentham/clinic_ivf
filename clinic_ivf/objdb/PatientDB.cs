@@ -509,6 +509,7 @@ namespace clinic_ivf.objdb
                 "," + ptt.patient_country + "='" + p.patient_country.Replace("'", "''") + "' " +
                 "," + ptt.patient_hn_couple + "='" + p.patient_hn_couple.Replace("'", "''") + "' " +
                 "," + ptt.doctor_id + "='" + p.doctor_id.Replace("'", "''") + "' " +
+                "," + ptt.t_patient_id_old + "='" + p.t_patient_id_old.Replace("'", "''") + "' " +
                 " Where " +ptt.pkField + " = '" + p.t_patient_id + "' "
                 ;
             try

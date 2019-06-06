@@ -837,6 +837,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>sticker_drug.xsd</DependentUpon>
     </Compile>
+    <Compile Include="report\sticker_patient.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>sticker_patient.xsd</DependentUpon>
+    </Compile>
     <Compile Include="report\Visit_Check_List1.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -1251,6 +1256,17 @@
     </None>
     <None Include="report\sticker_drug.xss">
       <DependentUpon>sticker_drug.xsd</DependentUpon>
+    </None>
+    <None Include="report\sticker_patient.xsc">
+      <DependentUpon>sticker_patient.xsd</DependentUpon>
+    </None>
+    <None Include="report\sticker_patient.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>sticker_patient.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="report\sticker_patient.xss">
+      <DependentUpon>sticker_patient.xsd</DependentUpon>
     </None>
     <None Include="report\Visit_Check_List1.xsc">
       <DependentUpon>Visit_Check_List1.xsd</DependentUpon>

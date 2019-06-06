@@ -385,6 +385,15 @@ namespace clinic_ivf.gui
             CellNoteManager mgr = new CellNoteManager(grfFinish);
             grfFinish.Cols[colID].Visible = false;
             grfFinish.Cols[colPttId].Visible = false;
+
+            grfFinish.Cols[colVNshow].AllowEditing = false;
+            grfFinish.Cols[colPttHn].AllowEditing = false;
+            grfFinish.Cols[colPttName].AllowEditing = false;
+            grfFinish.Cols[colVsDate].AllowEditing = false;
+            grfFinish.Cols[colVsTime].AllowEditing = false;
+            grfFinish.Cols[colVsEtime].AllowEditing = false;
+            grfFinish.Cols[colStatus].AllowEditing = false;
+            grfFinish.Cols[colPttId].AllowEditing = false;
             //theme1.SetTheme(grfFinish, ic.theme);
 
         }
@@ -410,7 +419,7 @@ namespace clinic_ivf.gui
 
             //grfExpn.Rows.Count = dt.Rows.Count + 1;
             grfFinish.Rows.Count = dt.Rows.Count + 1;
-            grfFinish.Cols.Count = 10;
+            grfFinish.Cols.Count = 11;
             C1TextBox txt = new C1TextBox();
             //C1ComboBox cboproce = new C1ComboBox();
             //ic.ivfDB.itmDB.setCboItem(cboproce);
@@ -458,7 +467,7 @@ namespace clinic_ivf.gui
             {
                 grfFinish[i, 0] = i;
                 grfFinish[i, colID] = row["id"].ToString();
-                grfFinish[i, colVNshow] = row["VN"].ToString();
+                grfFinish[i, colVNshow] = ic.showVN(row["VN"].ToString());
                 grfFinish[i, colPttHn] = row["PIDS"].ToString();
                 grfFinish[i, colPttName] = row["PName"].ToString();
                 grfFinish[i, colVsDate] = ic.datetoShow(row["VDate"]);
@@ -466,6 +475,7 @@ namespace clinic_ivf.gui
                 grfFinish[i, colVsEtime] = row["VEndTime"].ToString();
                 grfFinish[i, colStatus] = row["VName"].ToString();
                 grfFinish[i, colPttId] = row["PID"].ToString();
+                grfFinish[i, colVn] = row["VN"].ToString();
                 if (!row[ic.ivfDB.ovsDB.vsold.form_a_id].ToString().Equals("0"))
                 {
                     CellNote note = new CellNote("ส่ง Lab Request Foam A");
@@ -606,7 +616,7 @@ namespace clinic_ivf.gui
 
             //FilterRow fr = new FilterRow(grfExpn);
 
-            //grfSearch.AfterRowColChange += GrfReq_AfterRowColChange;
+            grfSearch.DoubleClick += GrfSearch_DoubleClick;
             //grfExpnC.CellButtonClick += new C1.Win.C1FlexGrid.RowColEventHandler(this.grfDept_CellButtonClick);
             //grfExpnC.CellChanged += new C1.Win.C1FlexGrid.RowColEventHandler(this.grfDept_CellChanged);
             ContextMenu menuGw = new ContextMenu();
@@ -617,6 +627,13 @@ namespace clinic_ivf.gui
             theme1.SetTheme(pnSearch, "Office2010Red");
 
         }
+
+        private void GrfSearch_DoubleClick(object sender, EventArgs e)
+        {
+            //throw new NotImplementedException();
+            ContextMenu_order_finish(null, null);
+        }
+
         private void setGrfSearch(String search)
         {
             //grfDept.Rows.Count = 7;
@@ -642,7 +659,7 @@ namespace clinic_ivf.gui
 
             //grfExpn.Rows.Count = dt.Rows.Count + 1;
             grfSearch.Rows.Count = dt.Rows.Count + 1;
-            grfSearch.Cols.Count = 10;
+            grfSearch.Cols.Count = 11;
             C1TextBox txt = new C1TextBox();
             //C1ComboBox cboproce = new C1ComboBox();
             //ic.ivfDB.itmDB.setCboItem(cboproce);
@@ -689,7 +706,7 @@ namespace clinic_ivf.gui
             {
                 grfSearch[i, 0] = i;
                 grfSearch[i, colID] = row["id"].ToString();
-                grfSearch[i, colVNshow] = row["VN"].ToString();
+                grfSearch[i, colVNshow] = ic.showVN(row["VN"].ToString());
                 grfSearch[i, colPttHn] = row["PIDS"].ToString();
                 grfSearch[i, colPttName] = row["PName"].ToString();
                 grfSearch[i, colVsDate] = ic.datetoShow(row["VDate"]);
@@ -697,6 +714,7 @@ namespace clinic_ivf.gui
                 grfSearch[i, colVsEtime] = row["VEndTime"].ToString();
                 grfSearch[i, colStatus] = row["VName"].ToString();
                 grfSearch[i, colPttId] = row["PID"].ToString();
+                grfSearch[i, colVn] = row["VN"].ToString();
                 if (!row[ic.ivfDB.ovsDB.vsold.form_a_id].ToString().Equals("0"))
                 {
                     CellNote note = new CellNote("ส่ง Lab Request Foam A");
@@ -709,6 +727,15 @@ namespace clinic_ivf.gui
             }
             CellNoteManager mgr = new CellNoteManager(grfSearch);
             grfSearch.Cols[colID].Visible = false;
+
+            grfFinish.Cols[colVNshow].AllowEditing = false;
+            grfFinish.Cols[colPttHn].AllowEditing = false;
+            grfFinish.Cols[colPttName].AllowEditing = false;
+            grfFinish.Cols[colVsDate].AllowEditing = false;
+            grfFinish.Cols[colVsTime].AllowEditing = false;
+            grfFinish.Cols[colVsEtime].AllowEditing = false;
+            grfFinish.Cols[colStatus].AllowEditing = false;
+            grfFinish.Cols[colPttId].AllowEditing = false;
             //theme1.SetTheme(grfQue, ic.theme);
 
         }
@@ -1529,6 +1556,24 @@ namespace clinic_ivf.gui
             //FrmNurseAdd frm = new FrmNurseAdd();
             //frm.ShowDialog(this);
             openApmAdd(pttId, vsid, name);
+            //if (MessageBox.Show("ต้องการ แก้ไข Patient  \n  hn number " + chk + " \n name " + name, "", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == DialogResult.OK)
+            //{
+            //grfReq.Rows.Remove(grfReq.Row);
+            //openPatientAdd(id, name);
+            //}
+        }
+        private void ContextMenu_order_Search(object sender, System.EventArgs e)
+        {
+            String chk = "", name = "", vn = "", pttId = "";
+
+            vn = grfSearch[grfSearch.Row, colVn] != null ? grfSearch[grfSearch.Row, colVn].ToString() : "";
+            pttId = grfSearch[grfSearch.Row, colPttId] != null ? grfSearch[grfSearch.Row, colPttId].ToString() : "";
+            chk = grfSearch[grfSearch.Row, colPttHn] != null ? grfSearch[grfSearch.Row, colPttHn].ToString() : "";
+            name = grfSearch[grfSearch.Row, colPttName] != null ? grfSearch[grfSearch.Row, colPttName].ToString() : "";
+            //FrmNurseAdd frm = new FrmNurseAdd();
+            //frm.ShowDialog(this);
+
+            openNurseAdd(pttId, vn, name, "view");
             //if (MessageBox.Show("ต้องการ แก้ไข Patient  \n  hn number " + chk + " \n name " + name, "", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == DialogResult.OK)
             //{
             //grfReq.Rows.Remove(grfReq.Row);

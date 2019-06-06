@@ -37,6 +37,7 @@
             this.tlpPatient = new System.Windows.Forms.TableLayoutPanel();
             this.picPtt = new C1.Win.C1Input.C1PictureBox();
             this.pnPatient = new System.Windows.Forms.Panel();
+            this.btnPrnSticker = new C1.Win.C1Input.C1Button();
             this.cboAllergyDesc = new C1.Win.C1Input.C1ComboBox();
             this.txtPttId = new C1.Win.C1Input.C1TextBox();
             this.txtCongenital = new C1.Win.C1Input.C1TextBox();
@@ -104,7 +105,7 @@
             this.btnNoteAdd = new C1.Win.C1Input.C1Button();
             this.label73 = new System.Windows.Forms.Label();
             this.txtNote = new C1.Win.C1Input.C1TextBox();
-            this.btnPrnSticker = new C1.Win.C1Input.C1Button();
+            this.lbPrinterStickerName = new System.Windows.Forms.Label();
             this.sB.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.theme1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.sC)).BeginInit();
@@ -113,6 +114,7 @@
             this.tlpPatient.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picPtt)).BeginInit();
             this.pnPatient.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.btnPrnSticker)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cboAllergyDesc)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtPttId)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtCongenital)).BeginInit();
@@ -158,7 +160,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.chkNoteAll)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnNoteAdd)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtNote)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.btnPrnSticker)).BeginInit();
             this.SuspendLayout();
             // 
             // sB
@@ -258,6 +259,7 @@
             // pnPatient
             // 
             this.pnPatient.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.pnPatient.Controls.Add(this.lbPrinterStickerName);
             this.pnPatient.Controls.Add(this.btnPrnSticker);
             this.pnPatient.Controls.Add(this.cboAllergyDesc);
             this.pnPatient.Controls.Add(this.txtPttId);
@@ -314,6 +316,20 @@
             this.pnPatient.Size = new System.Drawing.Size(1422, 125);
             this.pnPatient.TabIndex = 531;
             this.theme1.SetTheme(this.pnPatient, "(default)");
+            // 
+            // btnPrnSticker
+            // 
+            this.btnPrnSticker.Image = global::clinic_ivf.Properties.Resources.print;
+            this.btnPrnSticker.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnPrnSticker.Location = new System.Drawing.Point(9, 81);
+            this.btnPrnSticker.Name = "btnPrnSticker";
+            this.btnPrnSticker.Size = new System.Drawing.Size(109, 34);
+            this.btnPrnSticker.TabIndex = 966;
+            this.btnPrnSticker.Text = "Print  Sticker";
+            this.btnPrnSticker.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.theme1.SetTheme(this.btnPrnSticker, "(default)");
+            this.btnPrnSticker.UseVisualStyleBackColor = true;
+            this.btnPrnSticker.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
             // 
             // cboAllergyDesc
             // 
@@ -1228,19 +1244,18 @@
             this.theme1.SetTheme(this.txtNote, "(default)");
             this.txtNote.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
             // 
-            // btnPrnSticker
+            // lbPrinterStickerName
             // 
-            this.btnPrnSticker.Image = global::clinic_ivf.Properties.Resources.print;
-            this.btnPrnSticker.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnPrnSticker.Location = new System.Drawing.Point(9, 81);
-            this.btnPrnSticker.Name = "btnPrnSticker";
-            this.btnPrnSticker.Size = new System.Drawing.Size(109, 34);
-            this.btnPrnSticker.TabIndex = 966;
-            this.btnPrnSticker.Text = "Print  Sticker";
-            this.btnPrnSticker.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.theme1.SetTheme(this.btnPrnSticker, "(default)");
-            this.btnPrnSticker.UseVisualStyleBackColor = true;
-            this.btnPrnSticker.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            this.lbPrinterStickerName.AutoSize = true;
+            this.lbPrinterStickerName.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.lbPrinterStickerName.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbPrinterStickerName.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.lbPrinterStickerName.Location = new System.Drawing.Point(124, 98);
+            this.lbPrinterStickerName.Name = "lbPrinterStickerName";
+            this.lbPrinterStickerName.Size = new System.Drawing.Size(11, 16);
+            this.lbPrinterStickerName.TabIndex = 967;
+            this.lbPrinterStickerName.Text = ".";
+            this.theme1.SetTheme(this.lbPrinterStickerName, "(default)");
             // 
             // FrmPharmaAdd
             // 
@@ -1263,6 +1278,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.picPtt)).EndInit();
             this.pnPatient.ResumeLayout(false);
             this.pnPatient.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.btnPrnSticker)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cboAllergyDesc)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtPttId)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtCongenital)).EndInit();
@@ -1309,7 +1325,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.chkNoteAll)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnNoteAdd)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtNote)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.btnPrnSticker)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1394,5 +1409,6 @@
         private System.Windows.Forms.Label label73;
         private C1.Win.C1Input.C1TextBox txtNote;
         private C1.Win.C1Input.C1Button btnPrnSticker;
+        private System.Windows.Forms.Label lbPrinterStickerName;
     }
 }

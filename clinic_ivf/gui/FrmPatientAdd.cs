@@ -1689,6 +1689,10 @@ namespace clinic_ivf.gui
             menuGw.MenuItems.Add("Upload รูปบัตรประชาชน", new EventHandler(ContextMenu_grfimg_upload_ptt));
             menuGw.MenuItems.Add("Upload สำเนาบัตรประชาชน ที่มีลายเซ็น", new EventHandler(ContextMenu_grfimg_upload_ptt));
             menuGw.MenuItems.Add("Upload รูป Passport", new EventHandler(ContextMenu_grfimg_upload_ptt));
+            menuGw.MenuItems.Add("Upload รูป Passport คู่สมรส", new EventHandler(ContextMenu_grfimg_upload_ptt));
+            menuGw.MenuItems.Add("Upload รูป ทะเบียนสมรส", new EventHandler(ContextMenu_grfimg_upload_ptt));
+            menuGw.MenuItems.Add("Upload รูป อื่น1", new EventHandler(ContextMenu_grfimg_upload_ptt));
+            menuGw.MenuItems.Add("Upload รูป อื่น2", new EventHandler(ContextMenu_grfimg_upload_ptt));
             menuGw.MenuItems.Add("ยกเลิก", new EventHandler(ContextMenu_grfimg_Cancel));
             grfImg.ContextMenu = menuGw;
             pnImage.Controls.Add(grfImg);
@@ -1733,7 +1737,11 @@ namespace clinic_ivf.gui
                             if (ext.Length > 1)
                             {
                                 MenuItem aa = (MenuItem)sender;
-                                status = aa.Text.Equals("Upload รูปบัตรประชาชน") ? "1" : aa.Text.Equals("Upload สำเนาบัตรประชาชน ที่มีลายเซ็น") ? "2" : aa.Text.Equals("Upload รูป Passport") ? "3" : "";
+                                status = aa.Text.Equals("Upload รูปบัตรประชาชน") ? "1" : aa.Text.Equals("Upload สำเนาบัตรประชาชน ที่มีลายเซ็น") ? "2" : aa.Text.Equals("Upload รูป Passport") ? "3"
+                                    : aa.Text.Equals("Upload รูป Passport คู่สมรส") ? "4"
+                                    : aa.Text.Equals("Upload รูป ทะเบียนสมรส") ? "5"
+                                    : aa.Text.Equals("Upload รูป อื่น1") ? "20"
+                                    : aa.Text.Equals("Upload รูป อื่น2") ? "21" : "";
                                 filename =  txtHn.Text.Replace("-", "").Replace("/", "") + "_"+ status + ext;
                                 PatientImage ptti = new PatientImage();
                                 ptti.patient_image_id = id;
@@ -2116,7 +2124,7 @@ namespace clinic_ivf.gui
             //grfImg.Cols[colPathPic].Visible = false;
             grfImg.Cols[colImg].AllowEditing = false;
             //grfImg.AutoSizeCols();
-            //grfImg.AutoSizeRows();
+            grfImg.AutoSizeRows();
             theme1.SetTheme(grfImg, "Office2016Colorful");
 
         }

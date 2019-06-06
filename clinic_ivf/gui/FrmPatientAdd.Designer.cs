@@ -1232,7 +1232,7 @@
             // btnPrvSticker
             // 
             this.btnPrvSticker.Image = global::clinic_ivf.Properties.Resources.printer_orange48;
-            this.btnPrvSticker.Text = "Preview Sticker";
+            this.btnPrvSticker.Text = "Print Sticker A4";
             // 
             // btnPrnOPDCard
             // 
