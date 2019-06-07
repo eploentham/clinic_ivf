@@ -1,6 +1,7 @@
 ﻿
 using AForge.Video.DirectShow;
 using C1.C1Pdf;
+using C1.Win.BarCode;
 using C1.Win.C1Document;
 using C1.Win.C1Document.Export;
 using C1.Win.C1FlexGrid;
@@ -17,6 +18,7 @@ using System.Data;
 using System.Diagnostics;
 using System.Drawing;
 using System.Drawing.Imaging;
+using System.Drawing.Printing;
 using System.IO;
 using System.Linq;
 using System.Net;
@@ -1359,30 +1361,45 @@ namespace clinic_ivf.gui
         }
         private void BtnPrnSticker_Click(object sender, EventArgs e)
         {
-            //throw new NotImplementedException();
-            //MessageBox.Show("aaaa", "");
-            filename = "flow.pdf";            
+            //throw new NotImplementedException();                 
             try
             {
-                String age = "";
-                //DateTime dtB;
-                //if(DateTime.TryParse(ptt.patient_birthday,out dtB))
-                //{
-                //    Age age1 = new Age(dtB);
-                //    age = age1.AgeString;
-                //}
-                age = ptt.AgeStringShort();
-                createPDFSticker(txtHn.Text, cboPrefix.Text+" "+ txtPttNameE.Text+" "+txtPttLNameE.Text+"\n  DOB "+ ic.datetoDB(txtDob.Text)+"\n  AGE "+ age);
-                cPdf.LoadFromFile(filename);
-                //cPdf.lo(filename);
-                //break;
-            }
-            catch (PdfPasswordException)
-            {
-                string password = PasswordForm.DoEnterPassword(filename);
-                if (password == null)
+                int numSticker = 0;
+                if (txtVn.Text.Equals(""))
+                {
+                    MessageBox.Show("กรุณาเลือก Visit", "");
                     return;
-                cPdf.Credential.Password = password;
+                }
+                ic.NumSticker = "";
+                FrmPrintSticker frm = new FrmPrintSticker(ic);
+                frm.ShowDialog(this);
+                if(int.TryParse(ic.NumSticker,out numSticker))
+                {
+                    MessageBox.Show("จำนวน Sticker ไม่ถูกต้อง", "");
+                    return;
+                }
+                PrintDocument document = new PrintDocument();
+                document.PrinterSettings.PrinterName = ic.iniC.printerSticker;
+                document.PrintPage += new PrintPageEventHandler(printBill_PrintPage);
+                //This is where you set the printer in your case you could use "EPSON USB"
+                //or whatever it is called on your machine, by Default it will choose the default printer
+
+                //document.PrinterSettings.PrinterName = ord1.printer_name;
+                document.Print();
+                //DataTable dt = new DataTable();
+                //dt.Columns.Add("hn", typeof(String));
+                //dt.Columns.Add("name", typeof(String));
+                //dt.Columns.Add("age", typeof(String));
+                //dt.Columns.Add("vn", typeof(String));
+                //DataRow row11 = dt.NewRow();
+                //row11["hn"] = ptt.patient_hn;
+                //row11["name"] = ptt.Name;
+                //row11["age"] = ptt.AgeString();
+                //row11["vn"] = vs.visit_vn;
+                //dt.Rows.Add(row11);
+                //FrmReport frm = new FrmReport(ic);
+                //frm.setStickerPatientThemal(dt);
+                //frm.ShowDialog(this);
             }
             catch (Exception ex)
             {
@@ -1391,7 +1408,77 @@ namespace clinic_ivf.gui
             }
             //}
             // execute action            
-            DoPrint(cPdf);
+            //DoPrint(cPdf);
+        }
+        private void printBill_PrintPage(object sender, System.Drawing.Printing.PrintPageEventArgs e)
+        {
+            float leftMargin = e.MarginBounds.Left;
+            float topMargin = e.MarginBounds.Top;
+            float marginR = e.MarginBounds.Right;
+
+            //topMargin = 5;
+            //leftMargin = 5;
+            //marginR = 80;
+            float.TryParse(ic.iniC.printStickerLeft, out leftMargin);
+            float.TryParse(ic.iniC.printStickerRight, out marginR);
+            float.TryParse(ic.iniC.printStickerTop, out topMargin);
+            float avg = marginR / 2;
+
+            Graphics g = e.Graphics;
+            SolidBrush Brush = new SolidBrush(Color.Black);
+            String date = "";
+            date = DateTime.Now.ToString("dd/MM/yyyy hh:mm:ss");
+            String amt = "";
+            Decimal amt1 = 0;
+            float yPos = 0, gap = 6;
+            int count = 0;
+            string line = null;
+
+            C1BarCode barcode = new C1BarCode();
+            barcode.Text = txtVn.Text;
+            
+
+            Pen blackPen = new Pen(Color.Black, 1);
+            Image resizedImage;
+            int originalWidth = barcode.Image.Width;
+            int newWidth = 100;
+            Size proposedSize = new Size(100, 100);
+            StringFormat flags = new StringFormat(StringFormatFlags.LineLimit);  //wraps
+            Size textSize = TextRenderer.MeasureText(line, fEdit, proposedSize, TextFormatFlags.RightToLeft);
+            Int32 xOffset = e.MarginBounds.Right - textSize.Width;  //pad?
+            Int32 yOffset = e.MarginBounds.Bottom - textSize.Height;  //pad?
+            
+            count++; 
+            yPos = topMargin + (count * fEdit.GetHeight(e.Graphics) + gap);
+            line = txtHn.Text;
+            textSize = TextRenderer.MeasureText(line, fEdit, proposedSize, TextFormatFlags.RightToLeft);
+            xOffset = e.MarginBounds.Right - textSize.Width;  //pad?
+            yOffset = e.MarginBounds.Bottom - textSize.Height;  //pad?
+            //e.Graphics.DrawString(line, fEdit, Brushes.Black, xOffset, yPos, new StringFormat());leftMargin
+            e.Graphics.DrawString(line, fEdit, Brushes.Black, avg - (textSize.Width / 2), yPos, flags);
+
+            count++;
+            yPos = topMargin + (count * fEdit.GetHeight(e.Graphics) + gap);
+            line = ptt.Name;
+            textSize = TextRenderer.MeasureText(line, fEdit, proposedSize, TextFormatFlags.RightToLeft);
+            xOffset = e.MarginBounds.Right - textSize.Width;  //pad?
+            yOffset = e.MarginBounds.Bottom - textSize.Height;  //pad?
+            //e.Graphics.DrawString(line, fEdit, Brushes.Black, xOffset, yPos, new StringFormat());
+            e.Graphics.DrawString(line, fEdit, Brushes.Black, avg - (textSize.Width / 2), yPos, flags);
+
+            count++;
+            yPos = topMargin + (count * fEdit.GetHeight(e.Graphics) + gap);
+            line = "DOB "+ptt.AgeString();
+            textSize = TextRenderer.MeasureText(line, fEdit, proposedSize, TextFormatFlags.RightToLeft);
+            xOffset = e.MarginBounds.Right - textSize.Width;  //pad?
+            yOffset = e.MarginBounds.Bottom - textSize.Height;  //pad?
+            e.Graphics.DrawString(line, fEdit, Brushes.Black, leftMargin, yPos, flags);
+            //e.Graphics.DrawString(line, fEdit, Brushes.Black, avg - (textSize.Width / 2), yPos, flags);
+
+            count++;
+            resizedImage = barcode.Image.GetThumbnailImage(newWidth, (newWidth * barcode.Image.Height) / originalWidth, null, IntPtr.Zero);
+            //e.Graphics.DrawImage(Resources.siph2, avg - (Resources.siph2.Width / 2), topMargin);
+            e.Graphics.DrawImage(resizedImage, avg - (resizedImage.Width / 2), topMargin);
         }
         private void setFocusColor()
         {
@@ -2480,6 +2567,7 @@ namespace clinic_ivf.gui
             {
                 btnWebCamOn.Enabled = false;
             }
+            //txtIdOld.Value = pttO.PID;
             txtHn.Value = ptt.patient_hn;
             txtID.Value = ptt.t_patient_id;
             txtPttName.Value = ptt.patient_firstname;

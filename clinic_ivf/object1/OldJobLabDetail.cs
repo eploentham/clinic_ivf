@@ -34,6 +34,13 @@ namespace clinic_ivf.object1
         public String QTY { get; set; }
         public String row1 { get; set; }
         public String status_show_qty { get; set; }
-
+        public String status_nurse { get; set; }
+        public String status_cashier { get; set; }
+        public String status_result { get; set; }
+        public String result { get; set; }
+        public String method { get; set; }
+        public String unit { get; set; }
+        public String result_remark { get; set; }
+        public String normal_value { get; set; }
     }
 }

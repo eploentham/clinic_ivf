@@ -631,7 +631,7 @@ namespace clinic_ivf.gui
         private void GrfSearch_DoubleClick(object sender, EventArgs e)
         {
             //throw new NotImplementedException();
-            ContextMenu_order_finish(null, null);
+            ContextMenu_order_Search(null, null);
         }
 
         private void setGrfSearch(String search)

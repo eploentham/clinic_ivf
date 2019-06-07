@@ -34,7 +34,7 @@ namespace clinic_ivf.control
         
         public String userId = "";
         public String copID = "", jobID = "", cusID = "", addrID = "", contID = "", cusrID = "", custID = "", stfID = "", deptID = "", posiID = "", drawID = "";
-        public String rContactName = "", rContacTel = "", rContID = "", userIderc = "";
+        public String rContactName = "", rContacTel = "", rContID = "", userIderc = "", NumSticker="";
         
         public Staff sStf, cStf;
         
@@ -188,6 +188,10 @@ namespace clinic_ivf.control
             iniC.sticker_donor_start_x = iniF.getIni("sticker_donor", "start_x");
             iniC.status_show_border = iniF.getIni("sticker_donor", "status_show_border");
             iniC.barcode_width_minus = iniF.getIni("sticker_donor", "barcode_width_minus");
+            iniC.printStickerLeft = iniF.getIni("sticker_donor", "printStickerLeft");
+            iniC.printStickerRight = iniF.getIni("sticker_donor", "printStickerRight");
+            iniC.printStickerTop = iniF.getIni("sticker_donor", "printStickerTop");
+
             iniC.grfRowRed = iniF.getIni("app", "grfRowRed");
             iniC.grfRowGreen = iniF.getIni("app", "grfRowGreen");
             iniC.grfRowYellow = iniF.getIni("app", "grfRowYellow");

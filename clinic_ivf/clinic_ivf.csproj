@@ -196,6 +196,12 @@
     <Compile Include="gui\FrmDoctorView.Designer.cs">
       <DependentUpon>FrmDoctorView.cs</DependentUpon>
     </Compile>
+    <Compile Include="gui\FrmLabBloodView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="gui\FrmLabBloodView.Designer.cs">
+      <DependentUpon>FrmLabBloodView.cs</DependentUpon>
+    </Compile>
     <Compile Include="gui\FrmLabFetAdd.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -450,6 +456,12 @@
     </Compile>
     <Compile Include="gui\FrmPrintPreview.Designer.cs">
       <DependentUpon>FrmPrintPreview.cs</DependentUpon>
+    </Compile>
+    <Compile Include="gui\FrmPrintSticker.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="gui\FrmPrintSticker.Designer.cs">
+      <DependentUpon>FrmPrintSticker.cs</DependentUpon>
     </Compile>
     <Compile Include="gui\FrmReport.cs">
       <SubType>Form</SubType>
@@ -895,6 +907,9 @@
     <EmbeddedResource Include="gui\FrmDoctorView.resx">
       <DependentUpon>FrmDoctorView.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="gui\FrmLabBloodView.resx">
+      <DependentUpon>FrmLabBloodView.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="gui\FrmLabFetAdd.resx">
       <DependentUpon>FrmLabFetAdd.cs</DependentUpon>
     </EmbeddedResource>
@@ -1020,6 +1035,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="gui\FrmPrintPreview.resx">
       <DependentUpon>FrmPrintPreview.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="gui\FrmPrintSticker.resx">
+      <DependentUpon>FrmPrintSticker.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="gui\FrmReport.resx">
       <DependentUpon>FrmReport.cs</DependentUpon>

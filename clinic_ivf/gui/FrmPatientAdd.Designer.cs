@@ -3273,7 +3273,7 @@
             this.txtVisitPttO.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtVisitPttO.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
             this.txtVisitPttO.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.txtVisitPttO.Location = new System.Drawing.Point(336, 19);
+            this.txtVisitPttO.Location = new System.Drawing.Point(794, 13);
             this.txtVisitPttO.Name = "txtVisitPttO";
             this.txtVisitPttO.Size = new System.Drawing.Size(30, 20);
             this.txtVisitPttO.TabIndex = 714;
@@ -3548,13 +3548,12 @@
             this.txtVn.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtVn.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
             this.txtVn.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.txtVn.Location = new System.Drawing.Point(320, 19);
+            this.txtVn.Location = new System.Drawing.Point(253, 19);
             this.txtVn.Name = "txtVn";
-            this.txtVn.Size = new System.Drawing.Size(30, 20);
+            this.txtVn.Size = new System.Drawing.Size(111, 20);
             this.txtVn.TabIndex = 675;
             this.txtVn.Tag = null;
             this.theme1.SetTheme(this.txtVn, "(default)");
-            this.txtVn.Visible = false;
             this.txtVn.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
             // 
             // txtVisitPttId
@@ -3562,7 +3561,7 @@
             this.txtVisitPttId.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtVisitPttId.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
             this.txtVisitPttId.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.txtVisitPttId.Location = new System.Drawing.Point(298, 19);
+            this.txtVisitPttId.Location = new System.Drawing.Point(758, 14);
             this.txtVisitPttId.Name = "txtVisitPttId";
             this.txtVisitPttId.Size = new System.Drawing.Size(30, 20);
             this.txtVisitPttId.TabIndex = 648;
@@ -3577,7 +3576,7 @@
             this.label68.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
             this.label68.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label68.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.label68.Location = new System.Drawing.Point(21, 63);
+            this.label68.Location = new System.Drawing.Point(5, 63);
             this.label68.Name = "label68";
             this.label68.Size = new System.Drawing.Size(54, 16);
             this.label68.TabIndex = 647;
@@ -3594,7 +3593,7 @@
             this.cboVisitPttType.ImagePadding = new System.Windows.Forms.Padding(0);
             this.cboVisitPttType.ItemsDisplayMember = "";
             this.cboVisitPttType.ItemsValueMember = "";
-            this.cboVisitPttType.Location = new System.Drawing.Point(101, 61);
+            this.cboVisitPttType.Location = new System.Drawing.Point(79, 61);
             this.cboVisitPttType.Name = "cboVisitPttType";
             this.cboVisitPttType.Size = new System.Drawing.Size(168, 20);
             this.cboVisitPttType.Style.DropDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
@@ -3625,7 +3624,7 @@
             this.label69.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
             this.label69.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label69.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.label69.Location = new System.Drawing.Point(21, 42);
+            this.label69.Location = new System.Drawing.Point(5, 42);
             this.label69.Name = "label69";
             this.label69.Size = new System.Drawing.Size(71, 16);
             this.label69.TabIndex = 644;
@@ -3637,7 +3636,7 @@
             this.txtVisitComment.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtVisitComment.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
             this.txtVisitComment.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.txtVisitComment.Location = new System.Drawing.Point(101, 40);
+            this.txtVisitComment.Location = new System.Drawing.Point(79, 40);
             this.txtVisitComment.Name = "txtVisitComment";
             this.txtVisitComment.Size = new System.Drawing.Size(265, 20);
             this.txtVisitComment.TabIndex = 643;
@@ -3651,7 +3650,7 @@
             this.label70.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
             this.label70.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label70.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.label70.Location = new System.Drawing.Point(21, 21);
+            this.label70.Location = new System.Drawing.Point(5, 21);
             this.label70.Name = "label70";
             this.label70.Size = new System.Drawing.Size(55, 16);
             this.label70.TabIndex = 630;
@@ -3668,7 +3667,7 @@
             this.cboVisitBsp.ImagePadding = new System.Windows.Forms.Padding(0);
             this.cboVisitBsp.ItemsDisplayMember = "";
             this.cboVisitBsp.ItemsValueMember = "";
-            this.cboVisitBsp.Location = new System.Drawing.Point(101, 19);
+            this.cboVisitBsp.Location = new System.Drawing.Point(79, 19);
             this.cboVisitBsp.Name = "cboVisitBsp";
             this.cboVisitBsp.Size = new System.Drawing.Size(168, 20);
             this.cboVisitBsp.Style.DropDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
@@ -3684,7 +3683,7 @@
             this.txtVisitID.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtVisitID.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
             this.txtVisitID.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.txtVisitID.Location = new System.Drawing.Point(275, 19);
+            this.txtVisitID.Location = new System.Drawing.Point(731, 14);
             this.txtVisitID.Name = "txtVisitID";
             this.txtVisitID.Size = new System.Drawing.Size(30, 20);
             this.txtVisitID.TabIndex = 622;

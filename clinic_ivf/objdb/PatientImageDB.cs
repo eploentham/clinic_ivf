@@ -196,6 +196,16 @@ namespace clinic_ivf.objdb
             dt = conn.selectData(conn.conn, sql);
             return dt;
         }
+        public DataTable selectByPttIDOutLab(String pttid, String visitid)
+        {
+            DataTable dt = new DataTable();
+            String sql = "select pttI.* " +
+                "From " + pttI.table + " pttI " +
+                "Where pttI." + pttI.t_patient_id + " ='" + pttid + "' and " + pttI.active + "='1' and "+pttI.t_visit_id +"='"+visitid+"' " +
+                "Order By "+pttI.patient_image_id;
+            dt = conn.selectData(conn.conn, sql);
+            return dt;
+        }
         public PatientImage selectByPttIDStatus1(String pttid)
         {
             PatientImage cop1 = new PatientImage();

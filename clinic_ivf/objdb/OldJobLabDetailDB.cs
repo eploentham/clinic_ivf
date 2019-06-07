@@ -47,6 +47,14 @@ namespace clinic_ivf.objdb
             jlabD.QTY = "QTY";
             jlabD.row1 = "row1";
             jlabD.status_show_qty = "status_show_qty";
+            jlabD.status_nurse = "status_nurse";
+            jlabD.status_cashier = "status_cashier";
+            jlabD.status_result = "status_result";
+            jlabD.result = "result";
+            jlabD.method = "method";
+            jlabD.unit = "unit";
+            jlabD.result_remark = "result_remark";
+            jlabD.normal_value = "normal_value";
 
             jlabD.table = "JobLabDetail";
             jlabD.pkField = "ID";
@@ -72,7 +80,16 @@ namespace clinic_ivf.objdb
             p.SP6V = p.SP6V == null ? "" : p.SP6V;
             p.SP7V = p.SP7V == null ? "" : p.SP7V;
             p.Extra = p.Extra == null ? "" : p.Extra;
+            p.result = p.result == null ? "" : p.result;
+            p.method = p.method == null ? "" : p.method;
+            p.unit = p.unit == null ? "" : p.unit;
+            p.result_remark = p.result_remark == null ? "" : p.result_remark;
+            p.normal_value = p.normal_value == null ? "" : p.normal_value;
+
             p.status_show_qty = p.status_show_qty == null ? "0" : p.status_show_qty;
+            p.status_nurse = p.status_nurse == null ? "0" : p.status_nurse;
+            p.status_cashier = p.status_cashier == null ? "0" : p.status_cashier;
+            p.status_result = p.status_result == null ? "0" : p.status_result;
 
             p.LGID = long.TryParse(p.LGID, out chk) ? chk.ToString() : "0";
             p.QTY = long.TryParse(p.QTY, out chk) ? chk.ToString() : "0";
@@ -123,6 +140,14 @@ namespace clinic_ivf.objdb
                 "," + jlabD.QTY + "= '" + p.QTY.Replace("'", "''") + "'" +
                 "," + jlabD.row1 + "= '" + p.row1.Replace("'", "''") + "'" +
                 "," + jlabD.status_show_qty + "= '" + p.status_show_qty.Replace("'", "''") + "'" +
+                "," + jlabD.status_nurse + "= '" + p.status_nurse.Replace("'", "''") + "'" +
+                "," + jlabD.status_cashier + "= '" + p.status_cashier.Replace("'", "''") + "'" +
+                "," + jlabD.status_result + "= '" + p.status_result.Replace("'", "''") + "'" +
+                "," + jlabD.result + "= '" + p.result.Replace("'", "''") + "'" +
+                "," + jlabD.method + "= '" + p.method.Replace("'", "''") + "'" +
+                "," + jlabD.unit + "= '" + p.unit.Replace("'", "''") + "'" +
+                "," + jlabD.result_remark + "= '" + p.result_remark.Replace("'", "''") + "'" +
+                "," + jlabD.normal_value + "= '" + p.normal_value.Replace("'", "''") + "'" +
                 "";
             try
             {
