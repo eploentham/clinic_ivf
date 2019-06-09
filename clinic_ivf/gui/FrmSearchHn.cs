@@ -86,7 +86,7 @@ namespace clinic_ivf.gui
         private void TxtHnMale_KeyUp(object sender, KeyEventArgs e)
         {
             //throw new NotImplementedException();
-            if(txtHnMale.Text.Length > 3)
+            if(txtHnMale.Text.Length >= 3)
             {
                 setGrfHn(txtHnMale.Text);
             }
@@ -181,7 +181,16 @@ namespace clinic_ivf.gui
             //con.OpenConnectionEx();
             if (ic.iniC.statusAppDonor.Equals("1"))
             {
-                dt = ic.ivfDB.ovsDB.selectCurrentVisit(con.connEx);
+                //dt = ic.ivfDB.ovsDB.selectCurrentVisit(con.connEx);
+                //dt = ic.ivfDB.ovsDB.selectCurrentVisit(con.conn);
+                if (statussearchtable == StatusSearchTable.VisitSearch)
+                {
+                    dt = ic.ivfDB.ovsDB.selectLikeByHN(hn, con.conn);
+                }
+                else
+                {
+                    dt = ic.ivfDB.pttOldDB.selectBySearch1(hn, con.conn);
+                }
             }
             else
             {

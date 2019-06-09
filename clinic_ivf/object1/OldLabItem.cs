@@ -34,5 +34,10 @@ namespace clinic_ivf.object1
         public String WorkerGroup4 { get; set; }
         public String QTY { get; set; }
         public String status_show_qty { get; set; }
+        public String status_order_group { get; set; }
+        public String method { get; set; }
+        public String unit { get; set; }
+        public String normal_vaule { get; set; }
+        public String status_outlab { get; set; }
     }
 }

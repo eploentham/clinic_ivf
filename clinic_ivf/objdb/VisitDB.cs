@@ -347,6 +347,7 @@ namespace clinic_ivf.objdb
         public String update(Visit p, String userId)
         {
             String re = "", err = "";
+            chkNull(p);
             String sql = "update " + vs.table + " " +
                 "Set " + 
                 " " + vs.lmp + "='" + p.lmp + "' " +

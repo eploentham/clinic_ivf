@@ -721,4 +721,27 @@ ADD COLUMN `use_cancel` VARCHAR(45) NULL AFTER `user_modi`,
 ADD COLUMN `bill_id` INT NULL AFTER `use_cancel`;
 
 
+CREATE TABLE `ivf_101_donor`.`lab_b_order_group` (
+  `lab_order_group_id` BIGINT NOT NULL AUTO_INCREMENT,
+  `lab_id` INT NULL,
+  `active` VARCHAR(45) NULL,
+  `remark` VARCHAR(45) NULL,
+  `date_create` VARCHAR(45) NULL,
+  `date_modi` VARCHAR(45) NULL,
+  `date_cancel` VARCHAR(45) NULL,
+  `user_create` VARCHAR(45) NULL,
+  `user_modi` VARCHAR(45) NULL,
+  `user_cancel` VARCHAR(45) NULL,
+  PRIMARY KEY (`lab_order_group_id`))
+ENGINE = MyISAM
+DEFAULT CHARACTER SET = utf8
+COLLATE = utf8_bin
+COMMENT = 'id=241';
+
+ALTER TABLE `ivf_101_donor`.`lab_b_order_group` 
+ADD COLUMN `sort1` VARCHAR(45) NULL AFTER `user_cancel`;
+
+ALTER TABLE `ivf_101`.`lab_b_order_group` 
+ADD COLUMN `qty` DECIMAL(17,2) NULL AFTER `lab_order_id`;
+
 

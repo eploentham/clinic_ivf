@@ -19,7 +19,7 @@ using System.Windows.Forms;
 
 namespace clinic_ivf.gui
 {
-    public partial class FrmAppoinmentView : Form
+    public partial class FrmAppointmentView : Form
     {
         IvfControl ic;
         MainMenu menu;
@@ -40,7 +40,7 @@ namespace clinic_ivf.gui
         Image imgCorr, imgTran;
         
 
-        public FrmAppoinmentView(IvfControl ic, MainMenu m)
+        public FrmAppointmentView(IvfControl ic, MainMenu m)
         {
             InitializeComponent();
             this.ic = ic;
@@ -1123,6 +1123,7 @@ namespace clinic_ivf.gui
                 //row1[colVsDay9] = "";
                 //row1[colVsDay10] = "";
                 ////row1[colVsTVS] = "";
+                ///
                 //row1[colVsPesa] = "";
                 //row1[colVsPRP] = "";
                 //if (row[ic.ivfDB.appnOldDB.appnOld.OPU].ToString().Equals("1"))

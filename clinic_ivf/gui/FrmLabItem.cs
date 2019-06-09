@@ -55,10 +55,10 @@ namespace clinic_ivf.gui
                 theme1.SetTheme(c, "Office2013Red");
             }
 
-            bg = txtDocGroupSubName.BackColor;
-            fc = txtDocGroupSubName.ForeColor;
-            ff = txtDocGroupSubName.Font;
-            ic.ivfDB.olabgDB.setCboBloodGroup(cboDocGroupName, "");
+            bg = txtLabName.BackColor;
+            fc = txtLabName.ForeColor;
+            ff = txtLabName.Font;
+            ic.ivfDB.olabgDB.setCboBloodGroup(cboLabGroup, "");
 
             txtPasswordVoid.KeyUp += TxtPasswordVoid_KeyUp;
             btnNew.Click += BtnNew_Click;
@@ -66,7 +66,7 @@ namespace clinic_ivf.gui
             btnSave.Click += BtnSave_Click;
 
             initGrfPosi();
-            setGrfPosi();
+            setGrfLabItem();
             setControlEnable(false);
             setFocusColor();
             sB1.Text = "";
@@ -79,10 +79,17 @@ namespace clinic_ivf.gui
         private void BtnSave_Click(object sender, EventArgs e)
         {
             //throw new NotImplementedException();
+            Decimal qty = 0;
+            if(Decimal.TryParse(txtQty.Text, out qty))
+            {
+                MessageBox.Show("จำนวนไม่ถูกต้อง หรือน้อยกว่า 0", "");
+                return;
+            }
+            
             if (MessageBox.Show("ต้องการ บันทึกช้อมูล ", "", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == DialogResult.OK)
             {
-                setDocGroupScan();
-                String re = ic.ivfDB.oLabiDB.insertSpecialItem(labI, ic.user.staff_id);
+                setLabItem();
+                String re = ic.ivfDB.oLabiDB.insertLabItem(labI, ic.user.staff_id);
                 int chk = 0;
                 if (int.TryParse(re, out chk))
                 {
@@ -92,7 +99,7 @@ namespace clinic_ivf.gui
                 {
                     btnSave.Image = Resources.accept_database24;
                 }
-                setGrfPosi();
+                setGrfLabItem();
                 //setGrdView();
                 //this.Dispose();
             }
@@ -109,8 +116,8 @@ namespace clinic_ivf.gui
         {
             //throw new NotImplementedException();
             txtID.Value = "";
-            txtDocGroupSubName.Value = "";
-            cboDocGroupName.Text = "";
+            txtLabName.Value = "";
+            cboLabGroup.Text = "";
             txtPrice.Value = "";
             chkVoid.Checked = false;
             btnVoid.Hide();
@@ -136,7 +143,7 @@ namespace clinic_ivf.gui
             C1Theme theme = C1ThemeController.GetThemeByName("Office2013Red", false);
             C1ThemeController.ApplyThemeToObject(grfPosi, theme);
         }
-        private void setGrfPosi()
+        private void setGrfLabItem()
         {
             //grfDept.Rows.Count = 7;
             DataTable dt = new DataTable();
@@ -187,8 +194,8 @@ namespace clinic_ivf.gui
         }
         private void setFocusColor()
         {
-            this.txtDocGroupSubName.Leave += new System.EventHandler(this.textBox_Leave);
-            this.txtDocGroupSubName.Enter += new System.EventHandler(this.textBox_Enter);
+            this.txtLabName.Leave += new System.EventHandler(this.textBox_Leave);
+            this.txtLabName.Enter += new System.EventHandler(this.textBox_Enter);
         }
         private void textBox_Leave(object sender, EventArgs e)
         {
@@ -200,28 +207,40 @@ namespace clinic_ivf.gui
         private void setControl(String posiId)
         {
             labI = ic.ivfDB.oLabiDB.selectByPk1(posiId);
-            ic.setC1Combo(cboDocGroupName, labI.LGID);
+            ic.setC1Combo(cboLabGroup, labI.LGID);
             txtID.Value = labI.LID;
-            txtDocGroupSubName.Value = labI.LName;
+            txtLabName.Value = labI.LName;
             txtPrice.Value = labI.Price;
             chkShowQty.Checked = labI.status_show_qty.Equals("1") ? true : false;
+            chkOutLab.Checked = labI.status_outlab.Equals("1") ? true : false;
+            chkOrderGroup.Checked = labI.status_order_group.Equals("1") ? true : false;
+            txtNormalValue.Value = labI.normal_vaule;
+            ic.setC1Combo(cboUnit, labI.unit);
+            ic.setC1Combo(cboMethod, labI.method);
+            txtQty.Value = labI.QTY;
         }
         private void setControlEnable(Boolean flag)
         {
             //txtID.Enabled = flag;
-            txtDocGroupSubName.Enabled = flag;
+            txtLabName.Enabled = flag;
             chkVoid.Enabled = flag;
             txtPrice.Enabled = flag;
-            cboDocGroupName.Enabled = flag;
+            cboLabGroup.Enabled = flag;
             btnEdit.Image = !flag ? Resources.lock24 : Resources.open24;
         }
-        private void setDocGroupScan()
+        private void setLabItem()
         {
             labI.LID = txtID.Text;
-            labI.LName = txtDocGroupSubName.Text;
-            labI.LGID = cboDocGroupName.SelectedItem == null ? "" : ((ComboBoxItem)cboDocGroupName.SelectedItem).Value;
+            labI.LName = txtLabName.Text;
+            labI.LGID = cboLabGroup.SelectedItem == null ? "" : ((ComboBoxItem)cboLabGroup.SelectedItem).Value;
             labI.Price = txtPrice.Text;
             labI.status_show_qty = chkShowQty.Checked ? "1" : "0";
+            labI.method = cboMethod.SelectedItem == null ? "" : ((ComboBoxItem)cboMethod.SelectedItem).Value;
+            labI.unit = cboUnit.SelectedItem == null ? "" : ((ComboBoxItem)cboUnit.SelectedItem).Value;
+            labI.status_outlab = chkOutLab.Checked ? "1" : "0";
+            labI.status_order_group = chkOrderGroup.Checked ? "1" : "0";
+            labI.normal_vaule = txtNormalValue.Text;
+            labI.QTY = txtQty.Text;
         }
         private void grfPosi_AfterRowColChange(object sender, C1.Win.C1FlexGrid.RangeEventArgs e)
         {
@@ -277,7 +296,7 @@ namespace clinic_ivf.gui
             if (MessageBox.Show("ต้องการ ยกเลิกข้อมูล ", "", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == DialogResult.OK)
             {
                 //bc.ivfDB.dgsDB.v(txtID.Text, userIdVoid);
-                setGrfPosi();
+                setGrfLabItem();
             }
         }
 

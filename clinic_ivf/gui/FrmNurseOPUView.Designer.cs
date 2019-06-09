@@ -263,6 +263,12 @@
             this.pnEmailView1 = new System.Windows.Forms.Panel();
             this.groupBox9 = new System.Windows.Forms.GroupBox();
             this.panel6 = new System.Windows.Forms.Panel();
+            this.cboEmbryoDev2 = new C1.Win.C1Input.C1ComboBox();
+            this.label92 = new System.Windows.Forms.Label();
+            this.cboEmbryoDev1 = new C1.Win.C1Input.C1ComboBox();
+            this.label93 = new System.Windows.Forms.Label();
+            this.chkEmbryoDev20 = new C1.Win.C1Input.C1CheckBox();
+            this.chkEmbryoFreez2Col = new C1.Win.C1Input.C1CheckBox();
             this.btnResult = new C1.Win.C1Input.C1Button();
             this.chkResultDay6 = new System.Windows.Forms.RadioButton();
             this.chkResultDay5 = new System.Windows.Forms.RadioButton();
@@ -334,18 +340,12 @@
             this.ViewZoomCombobox = new C1.Win.C1Ribbon.RibbonComboBox();
             this.NormalSizeButton = new C1.Win.C1Ribbon.RibbonButton();
             this.ribbonTopToolBar1 = new C1.Win.C1Ribbon.RibbonTopToolBar();
+            this.tabReportOPU = new C1.Win.C1Command.C1DockingTabPage();
+            this.cryOpu = new CrystalDecisions.Windows.Forms.CrystalReportViewer();
+            this.tabReportEmbryo = new C1.Win.C1Command.C1DockingTabPage();
+            this.cryEmbryo = new CrystalDecisions.Windows.Forms.CrystalReportViewer();
             this.sB = new System.Windows.Forms.StatusStrip();
             this.sB1 = new System.Windows.Forms.ToolStripStatusLabel();
-            this.tabReportOPU = new C1.Win.C1Command.C1DockingTabPage();
-            this.tabReportEmbryo = new C1.Win.C1Command.C1DockingTabPage();
-            this.cryOpu = new CrystalDecisions.Windows.Forms.CrystalReportViewer();
-            this.cryEmbryo = new CrystalDecisions.Windows.Forms.CrystalReportViewer();
-            this.chkEmbryoFreez2Col = new C1.Win.C1Input.C1CheckBox();
-            this.chkEmbryoDev20 = new C1.Win.C1Input.C1CheckBox();
-            this.cboEmbryoDev2 = new C1.Win.C1Input.C1ComboBox();
-            this.label92 = new System.Windows.Forms.Label();
-            this.cboEmbryoDev1 = new C1.Win.C1Input.C1ComboBox();
-            this.label93 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.theme1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.c1SplitContainer1)).BeginInit();
             this.c1SplitContainer1.SuspendLayout();
@@ -488,6 +488,10 @@
             this.pnEmailView.SuspendLayout();
             this.groupBox9.SuspendLayout();
             this.panel6.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.cboEmbryoDev2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cboEmbryoDev1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chkEmbryoDev20)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chkEmbryoFreez2Col)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnResult)).BeginInit();
             this.sCEmailAdd.SuspendLayout();
             this.pnEmailAdd.SuspendLayout();
@@ -502,13 +506,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtEmailSubject)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtEmailTo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.c1Ribbon1)).BeginInit();
-            this.sB.SuspendLayout();
             this.tabReportOPU.SuspendLayout();
             this.tabReportEmbryo.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.chkEmbryoFreez2Col)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.chkEmbryoDev20)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.cboEmbryoDev2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.cboEmbryoDev1)).BeginInit();
+            this.sB.SuspendLayout();
             this.SuspendLayout();
             // 
             // theme1
@@ -4436,6 +4436,110 @@
             this.panel6.TabIndex = 740;
             this.theme1.SetTheme(this.panel6, "(default)");
             // 
+            // cboEmbryoDev2
+            // 
+            this.cboEmbryoDev2.AllowSpinLoop = false;
+            this.cboEmbryoDev2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.cboEmbryoDev2.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
+            this.cboEmbryoDev2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.cboEmbryoDev2.GapHeight = 0;
+            this.cboEmbryoDev2.ImagePadding = new System.Windows.Forms.Padding(0);
+            this.cboEmbryoDev2.ItemsDisplayMember = "";
+            this.cboEmbryoDev2.ItemsValueMember = "";
+            this.cboEmbryoDev2.Location = new System.Drawing.Point(323, 60);
+            this.cboEmbryoDev2.Name = "cboEmbryoDev2";
+            this.cboEmbryoDev2.Size = new System.Drawing.Size(65, 20);
+            this.cboEmbryoDev2.Style.DropDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.cboEmbryoDev2.Style.DropDownBorderColor = System.Drawing.Color.Gainsboro;
+            this.cboEmbryoDev2.Style.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.cboEmbryoDev2.TabIndex = 747;
+            this.cboEmbryoDev2.Tag = null;
+            this.theme1.SetTheme(this.cboEmbryoDev2, "(default)");
+            this.cboEmbryoDev2.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            // 
+            // label92
+            // 
+            this.label92.AutoSize = true;
+            this.label92.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.label92.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label92.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.label92.Location = new System.Drawing.Point(260, 62);
+            this.label92.Name = "label92";
+            this.label92.Size = new System.Drawing.Size(49, 16);
+            this.label92.TabIndex = 746;
+            this.label92.Text = "Day 2 :";
+            this.theme1.SetTheme(this.label92, "(default)");
+            // 
+            // cboEmbryoDev1
+            // 
+            this.cboEmbryoDev1.AllowSpinLoop = false;
+            this.cboEmbryoDev1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.cboEmbryoDev1.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
+            this.cboEmbryoDev1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.cboEmbryoDev1.GapHeight = 0;
+            this.cboEmbryoDev1.ImagePadding = new System.Windows.Forms.Padding(0);
+            this.cboEmbryoDev1.ItemsDisplayMember = "";
+            this.cboEmbryoDev1.ItemsValueMember = "";
+            this.cboEmbryoDev1.Location = new System.Drawing.Point(323, 34);
+            this.cboEmbryoDev1.Name = "cboEmbryoDev1";
+            this.cboEmbryoDev1.Size = new System.Drawing.Size(65, 20);
+            this.cboEmbryoDev1.Style.DropDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.cboEmbryoDev1.Style.DropDownBorderColor = System.Drawing.Color.Gainsboro;
+            this.cboEmbryoDev1.Style.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.cboEmbryoDev1.TabIndex = 745;
+            this.cboEmbryoDev1.Tag = null;
+            this.theme1.SetTheme(this.cboEmbryoDev1, "(default)");
+            this.cboEmbryoDev1.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            // 
+            // label93
+            // 
+            this.label93.AutoSize = true;
+            this.label93.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.label93.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label93.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.label93.Location = new System.Drawing.Point(260, 36);
+            this.label93.Name = "label93";
+            this.label93.Size = new System.Drawing.Size(49, 16);
+            this.label93.TabIndex = 744;
+            this.label93.Text = "Day 1 :";
+            this.theme1.SetTheme(this.label93, "(default)");
+            // 
+            // chkEmbryoDev20
+            // 
+            this.chkEmbryoDev20.BackColor = System.Drawing.Color.Transparent;
+            this.chkEmbryoDev20.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
+            this.chkEmbryoDev20.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.chkEmbryoDev20.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.chkEmbryoDev20.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.chkEmbryoDev20.Location = new System.Drawing.Point(8, 60);
+            this.chkEmbryoDev20.Name = "chkEmbryoDev20";
+            this.chkEmbryoDev20.Padding = new System.Windows.Forms.Padding(4, 1, 1, 1);
+            this.chkEmbryoDev20.Size = new System.Drawing.Size(236, 24);
+            this.chkEmbryoDev20.TabIndex = 743;
+            this.chkEmbryoDev20.Text = "ข้อมูล Embryo มีมากกว่า 20 ให้แสดง ทั้งหมด";
+            this.theme1.SetTheme(this.chkEmbryoDev20, "(default)");
+            this.chkEmbryoDev20.UseVisualStyleBackColor = true;
+            this.chkEmbryoDev20.Value = null;
+            this.chkEmbryoDev20.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            // 
+            // chkEmbryoFreez2Col
+            // 
+            this.chkEmbryoFreez2Col.BackColor = System.Drawing.Color.Transparent;
+            this.chkEmbryoFreez2Col.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
+            this.chkEmbryoFreez2Col.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.chkEmbryoFreez2Col.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.chkEmbryoFreez2Col.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.chkEmbryoFreez2Col.Location = new System.Drawing.Point(8, 30);
+            this.chkEmbryoFreez2Col.Name = "chkEmbryoFreez2Col";
+            this.chkEmbryoFreez2Col.Padding = new System.Windows.Forms.Padding(4, 1, 1, 1);
+            this.chkEmbryoFreez2Col.Size = new System.Drawing.Size(180, 24);
+            this.chkEmbryoFreez2Col.TabIndex = 742;
+            this.chkEmbryoFreez2Col.Text = "ให้แสดง 2 column";
+            this.theme1.SetTheme(this.chkEmbryoFreez2Col, "(default)");
+            this.chkEmbryoFreez2Col.UseVisualStyleBackColor = true;
+            this.chkEmbryoFreez2Col.Value = null;
+            this.chkEmbryoFreez2Col.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            // 
             // btnResult
             // 
             this.btnResult.Image = global::clinic_ivf.Properties.Resources.Female_user_add_24;
@@ -5071,6 +5175,52 @@
             // 
             this.ribbonTopToolBar1.Name = "ribbonTopToolBar1";
             // 
+            // tabReportOPU
+            // 
+            this.tabReportOPU.Controls.Add(this.cryOpu);
+            this.tabReportOPU.Location = new System.Drawing.Point(1, 24);
+            this.tabReportOPU.Name = "tabReportOPU";
+            this.tabReportOPU.Size = new System.Drawing.Size(1342, 499);
+            this.tabReportOPU.TabIndex = 5;
+            this.tabReportOPU.Text = "Report OPU";
+            // 
+            // cryOpu
+            // 
+            this.cryOpu.ActiveViewIndex = -1;
+            this.cryOpu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.cryOpu.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.cryOpu.Cursor = System.Windows.Forms.Cursors.Default;
+            this.cryOpu.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.cryOpu.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.cryOpu.Location = new System.Drawing.Point(0, 0);
+            this.cryOpu.Name = "cryOpu";
+            this.cryOpu.Size = new System.Drawing.Size(1342, 499);
+            this.cryOpu.TabIndex = 1;
+            this.theme1.SetTheme(this.cryOpu, "(default)");
+            // 
+            // tabReportEmbryo
+            // 
+            this.tabReportEmbryo.Controls.Add(this.cryEmbryo);
+            this.tabReportEmbryo.Location = new System.Drawing.Point(1, 24);
+            this.tabReportEmbryo.Name = "tabReportEmbryo";
+            this.tabReportEmbryo.Size = new System.Drawing.Size(1342, 499);
+            this.tabReportEmbryo.TabIndex = 6;
+            this.tabReportEmbryo.Text = "Report Embryo";
+            // 
+            // cryEmbryo
+            // 
+            this.cryEmbryo.ActiveViewIndex = -1;
+            this.cryEmbryo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.cryEmbryo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.cryEmbryo.Cursor = System.Windows.Forms.Cursors.Default;
+            this.cryEmbryo.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.cryEmbryo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.cryEmbryo.Location = new System.Drawing.Point(0, 0);
+            this.cryEmbryo.Name = "cryEmbryo";
+            this.cryEmbryo.Size = new System.Drawing.Size(1342, 499);
+            this.cryEmbryo.TabIndex = 1;
+            this.theme1.SetTheme(this.cryEmbryo, "(default)");
+            // 
             // sB
             // 
             this.sB.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -5086,146 +5236,6 @@
             this.sB1.Name = "sB1";
             this.sB1.Size = new System.Drawing.Size(118, 17);
             this.sB1.Text = "toolStripStatusLabel1";
-            // 
-            // tabReportOPU
-            // 
-            this.tabReportOPU.Controls.Add(this.cryOpu);
-            this.tabReportOPU.Location = new System.Drawing.Point(1, 24);
-            this.tabReportOPU.Name = "tabReportOPU";
-            this.tabReportOPU.Size = new System.Drawing.Size(1342, 499);
-            this.tabReportOPU.TabIndex = 5;
-            this.tabReportOPU.Text = "Report OPU";
-            // 
-            // tabReportEmbryo
-            // 
-            this.tabReportEmbryo.Controls.Add(this.cryEmbryo);
-            this.tabReportEmbryo.Location = new System.Drawing.Point(1, 24);
-            this.tabReportEmbryo.Name = "tabReportEmbryo";
-            this.tabReportEmbryo.Size = new System.Drawing.Size(1342, 499);
-            this.tabReportEmbryo.TabIndex = 6;
-            this.tabReportEmbryo.Text = "Report Embryo";
-            // 
-            // cryOpu
-            // 
-            this.cryOpu.ActiveViewIndex = -1;
-            this.cryOpu.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.cryOpu.Cursor = System.Windows.Forms.Cursors.Default;
-            this.cryOpu.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.cryOpu.Location = new System.Drawing.Point(0, 0);
-            this.cryOpu.Name = "cryOpu";
-            this.cryOpu.Size = new System.Drawing.Size(1342, 499);
-            this.cryOpu.TabIndex = 1;
-            this.theme1.SetTheme(this.cryOpu, "(default)");
-            // 
-            // cryEmbryo
-            // 
-            this.cryEmbryo.ActiveViewIndex = -1;
-            this.cryEmbryo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.cryEmbryo.Cursor = System.Windows.Forms.Cursors.Default;
-            this.cryEmbryo.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.cryEmbryo.Location = new System.Drawing.Point(0, 0);
-            this.cryEmbryo.Name = "cryEmbryo";
-            this.cryEmbryo.Size = new System.Drawing.Size(1342, 499);
-            this.cryEmbryo.TabIndex = 1;
-            this.theme1.SetTheme(this.cryEmbryo, "(default)");
-            // 
-            // chkEmbryoFreez2Col
-            // 
-            this.chkEmbryoFreez2Col.BackColor = System.Drawing.Color.Transparent;
-            this.chkEmbryoFreez2Col.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
-            this.chkEmbryoFreez2Col.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.chkEmbryoFreez2Col.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.chkEmbryoFreez2Col.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.chkEmbryoFreez2Col.Location = new System.Drawing.Point(8, 30);
-            this.chkEmbryoFreez2Col.Name = "chkEmbryoFreez2Col";
-            this.chkEmbryoFreez2Col.Padding = new System.Windows.Forms.Padding(4, 1, 1, 1);
-            this.chkEmbryoFreez2Col.Size = new System.Drawing.Size(180, 24);
-            this.chkEmbryoFreez2Col.TabIndex = 742;
-            this.chkEmbryoFreez2Col.Text = "ให้แสดง 2 column";
-            this.theme1.SetTheme(this.chkEmbryoFreez2Col, "(default)");
-            this.chkEmbryoFreez2Col.UseVisualStyleBackColor = true;
-            this.chkEmbryoFreez2Col.Value = null;
-            this.chkEmbryoFreez2Col.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
-            // 
-            // chkEmbryoDev20
-            // 
-            this.chkEmbryoDev20.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.chkEmbryoDev20.Location = new System.Drawing.Point(8, 60);
-            this.chkEmbryoDev20.Name = "chkEmbryoDev20";
-            this.chkEmbryoDev20.Size = new System.Drawing.Size(236, 24);
-            this.chkEmbryoDev20.TabIndex = 743;
-            this.chkEmbryoDev20.Text = "ข้อมูล Embryo มีมากกว่า 20 ให้แสดง ทั้งหมด";
-            this.theme1.SetTheme(this.chkEmbryoDev20, "(default)");
-            this.chkEmbryoDev20.UseVisualStyleBackColor = false;
-            this.chkEmbryoDev20.Value = null;
-            // 
-            // cboEmbryoDev2
-            // 
-            this.cboEmbryoDev2.AllowSpinLoop = false;
-            this.cboEmbryoDev2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.cboEmbryoDev2.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
-            this.cboEmbryoDev2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.cboEmbryoDev2.GapHeight = 0;
-            this.cboEmbryoDev2.ImagePadding = new System.Windows.Forms.Padding(0);
-            this.cboEmbryoDev2.ItemsDisplayMember = "";
-            this.cboEmbryoDev2.ItemsValueMember = "";
-            this.cboEmbryoDev2.Location = new System.Drawing.Point(323, 60);
-            this.cboEmbryoDev2.Name = "cboEmbryoDev2";
-            this.cboEmbryoDev2.Size = new System.Drawing.Size(65, 20);
-            this.cboEmbryoDev2.Style.DropDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.cboEmbryoDev2.Style.DropDownBorderColor = System.Drawing.Color.Gainsboro;
-            this.cboEmbryoDev2.Style.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.cboEmbryoDev2.TabIndex = 747;
-            this.cboEmbryoDev2.Tag = null;
-            this.theme1.SetTheme(this.cboEmbryoDev2, "(default)");
-            this.cboEmbryoDev2.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
-            // 
-            // label92
-            // 
-            this.label92.AutoSize = true;
-            this.label92.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.label92.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label92.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.label92.Location = new System.Drawing.Point(260, 62);
-            this.label92.Name = "label92";
-            this.label92.Size = new System.Drawing.Size(49, 16);
-            this.label92.TabIndex = 746;
-            this.label92.Text = "Day 2 :";
-            this.theme1.SetTheme(this.label92, "(default)");
-            // 
-            // cboEmbryoDev1
-            // 
-            this.cboEmbryoDev1.AllowSpinLoop = false;
-            this.cboEmbryoDev1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.cboEmbryoDev1.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
-            this.cboEmbryoDev1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.cboEmbryoDev1.GapHeight = 0;
-            this.cboEmbryoDev1.ImagePadding = new System.Windows.Forms.Padding(0);
-            this.cboEmbryoDev1.ItemsDisplayMember = "";
-            this.cboEmbryoDev1.ItemsValueMember = "";
-            this.cboEmbryoDev1.Location = new System.Drawing.Point(323, 34);
-            this.cboEmbryoDev1.Name = "cboEmbryoDev1";
-            this.cboEmbryoDev1.Size = new System.Drawing.Size(65, 20);
-            this.cboEmbryoDev1.Style.DropDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.cboEmbryoDev1.Style.DropDownBorderColor = System.Drawing.Color.Gainsboro;
-            this.cboEmbryoDev1.Style.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.cboEmbryoDev1.TabIndex = 745;
-            this.cboEmbryoDev1.Tag = null;
-            this.theme1.SetTheme(this.cboEmbryoDev1, "(default)");
-            this.cboEmbryoDev1.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
-            // 
-            // label93
-            // 
-            this.label93.AutoSize = true;
-            this.label93.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.label93.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label93.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.label93.Location = new System.Drawing.Point(260, 36);
-            this.label93.Name = "label93";
-            this.label93.Size = new System.Drawing.Size(49, 16);
-            this.label93.TabIndex = 744;
-            this.label93.Text = "Day 1 :";
-            this.theme1.SetTheme(this.label93, "(default)");
             // 
             // FrmNurseOPUView
             // 
@@ -5391,6 +5401,10 @@
             this.groupBox9.ResumeLayout(false);
             this.panel6.ResumeLayout(false);
             this.panel6.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.cboEmbryoDev2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cboEmbryoDev1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chkEmbryoDev20)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chkEmbryoFreez2Col)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnResult)).EndInit();
             this.sCEmailAdd.ResumeLayout(false);
             this.pnEmailAdd.ResumeLayout(false);
@@ -5408,14 +5422,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtEmailSubject)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtEmailTo)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.c1Ribbon1)).EndInit();
-            this.sB.ResumeLayout(false);
-            this.sB.PerformLayout();
             this.tabReportOPU.ResumeLayout(false);
             this.tabReportEmbryo.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.chkEmbryoFreez2Col)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.chkEmbryoDev20)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.cboEmbryoDev2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.cboEmbryoDev1)).EndInit();
+            this.sB.ResumeLayout(false);
+            this.sB.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 

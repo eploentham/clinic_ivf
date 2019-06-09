@@ -17,6 +17,10 @@ using System.Windows.Forms;
 
 namespace clinic_ivf.gui
 {
+    /*
+     * * 62-06-08  1  แก้นัด ให้ donor ไปใช้ของ patient
+     * * 62-06-08  2  แก้ ให้ grfVisit ให้แสดง Patient Appointment คือให้ดึงตาม t_patient_id
+     */
     public partial class FrmAppointmentAdd : Form
     {
         IvfControl ic;
@@ -329,45 +333,45 @@ namespace clinic_ivf.gui
                     String re = "";
                     // check ว่า มี patient ยัง ถ้ายังไม่มี ให้ insert patient
                     //เป็นการเอา ข้อมูลจาก database เดิม
-                    Patient pttTemp = new Patient();
-                    pttTemp = ic.ivfDB.pttDB.selectByIdOld(txtPttIdOld.Text);
-                    if (pttTemp.t_patient_id.Equals(""))
-                    {
-                        C1ComboBox cbo = new C1ComboBox();
-                        ic.ivfDB.fpnDB.setCboNation(cbo, "");
+                    //Patient pttTemp = new Patient();
+                    //pttTemp = ic.ivfDB.pttDB.selectByIdOld(txtPttIdOld.Text);
+                    //if (pttTemp.t_patient_id.Equals(""))
+                    //{
+                    //    C1ComboBox cbo = new C1ComboBox();
+                    //    ic.ivfDB.fpnDB.setCboNation(cbo, "");
 
-                        pttO = ic.ivfDB.pttOldDB.selectByPk1(pttId);
-                        ic.setC1ComboByName(cbo, pttO.Nationality);
-                        pttTemp = new Patient();
-                        pttTemp = ic.ivfDB.pttDB.setPatient1(pttTemp);
-                        pttTemp.t_patient_id_old = pttO.PID;
-                        pttTemp.patient_hn = pttO.PIDS;
-                        pttTemp.patient_firstname_e = pttO.PName;
-                        pttTemp.patient_lastname_e = pttO.PSurname;
-                        pttTemp.patient_firstname = pttO.OName;
-                        pttTemp.patient_lastname = pttO.OSurname;
-                        pttTemp.f_patient_prefix_id = pttO.SurfixID;
+                    //    pttO = ic.ivfDB.pttOldDB.selectByPk1(pttId);
+                    //    ic.setC1ComboByName(cbo, pttO.Nationality);
+                    //    pttTemp = new Patient();
+                    //    pttTemp = ic.ivfDB.pttDB.setPatient1(pttTemp);
+                    //    pttTemp.t_patient_id_old = pttO.PID;
+                    //    pttTemp.patient_hn = pttO.PIDS;
+                    //    pttTemp.patient_firstname_e = pttO.PName;
+                    //    pttTemp.patient_lastname_e = pttO.PSurname;
+                    //    pttTemp.patient_firstname = pttO.OName;
+                    //    pttTemp.patient_lastname = pttO.OSurname;
+                    //    pttTemp.f_patient_prefix_id = pttO.SurfixID;
 
-                        pttTemp.f_sex_id = pttO.SexID;
-                        pttTemp.passport = pttO.IDNumber;
-                        pttTemp.patient_birthday = ic.datetoDB(pttO.DateOfBirth);
-                        pttTemp.email = pttO.Email;
-                        pttTemp.f_patient_nation_id = cbo.SelectedItem == null ? "" : ((ComboBoxItem)cbo.SelectedItem).Value;
-                        String[] name = pttO.EmergencyPersonalContact.Split(' ');
-                        if (name.Length > 1)
-                        {
-                            pttTemp.patient_contact_firstname = name[0];
-                            pttTemp.patient_contact_lastname = name[1];
-                        }
-                        ic.ivfDB.oAgnDB.setCboAgent(cbo, "");
-                        ic.setC1Combo(cbo, pttO.AgentID);
-                        pttTemp.agent = cbo.SelectedItem == null ? "" : ((ComboBoxItem)cbo.SelectedItem).Value;
-                        String re1 = ic.ivfDB.pttDB.insertPatient(pttTemp, txtStfConfirmID.Text);
-                        ptt.t_patient_id = re1;
-                        txtPttId.Value = re1;
-                        //pttTemp.patient_birthday = pttO.DateOfBirth;
-                        //pttTemp.patient_birthday = pttO.DateOfBirth;
-                    }
+                    //    pttTemp.f_sex_id = pttO.SexID;
+                    //    pttTemp.passport = pttO.IDNumber;
+                    //    pttTemp.patient_birthday = ic.datetoDB(pttO.DateOfBirth);
+                    //    pttTemp.email = pttO.Email;
+                    //    pttTemp.f_patient_nation_id = cbo.SelectedItem == null ? "" : ((ComboBoxItem)cbo.SelectedItem).Value;
+                    //    String[] name = pttO.EmergencyPersonalContact.Split(' ');
+                    //    if (name.Length > 1)
+                    //    {
+                    //        pttTemp.patient_contact_firstname = name[0];
+                    //        pttTemp.patient_contact_lastname = name[1];
+                    //    }
+                    //    ic.ivfDB.oAgnDB.setCboAgent(cbo, "");
+                    //    ic.setC1Combo(cbo, pttO.AgentID);
+                    //    pttTemp.agent = cbo.SelectedItem == null ? "" : ((ComboBoxItem)cbo.SelectedItem).Value;
+                    //    String re1 = ic.ivfDB.pttDB.insertPatient(pttTemp, txtStfConfirmID.Text);
+                    //    ptt.t_patient_id = re1;
+                    //    txtPttId.Value = re1;
+                    //    //pttTemp.patient_birthday = pttO.DateOfBirth;
+                    //    //pttTemp.patient_birthday = pttO.DateOfBirth;
+                    //}
                     setPatientAppointment();
                     re = ic.ivfDB.pApmDB.insertPatientAppointment(pApm, txtStfConfirmID.Text);
 
@@ -482,10 +486,10 @@ namespace clinic_ivf.gui
             ChkTvsDonor_CheckedChanged(null, null);
             ChkOPUDonor_CheckedChanged(null, null);
 
-            pttO = ic.ivfDB.pttOldDB.selectByPk1(pttId);
-            txtPttIdOld.Value = pttO.PID;
-            txtHn.Value = pttO.PIDS;
-            txtName.Value = pttO.FullName;
+            //pttO = ic.ivfDB.pttOldDB.selectByPk1(pttId);  //  -1
+            //txtPttIdOld.Value = pttO.PID;  //  -1
+            //txtHn.Value = pttO.PIDS;  //  -1
+            //txtName.Value = pttO.FullName;  //  -1
 
             txtOPURemark.Value = "Not Allow to drink or eat from (งดน้ำ งดอาหาร ตั้งแต่เวลา)";
 
@@ -684,15 +688,16 @@ namespace clinic_ivf.gui
             grfpApmVisit.Clear();
             DataTable dt = new DataTable();
 
-            dt = ic.ivfDB.pApmDB.selectByVisitId(vsId);
-            if(dt.Rows.Count <= 0)
-            {
-                VisitOld vsOld = new VisitOld();
-                vsOld = ic.ivfDB.ovsDB.selectByPk1(vsId);
-                Patient ptt = new Patient();
-                ptt = ic.ivfDB.pttDB.selectByIdOld(vsOld.PID);
-                dt = ic.ivfDB.pApmDB.selectByPtt(ptt.t_patient_id);
-            }
+            //dt = ic.ivfDB.pApmDB.selectByVisitId(vsId);     //-2
+            dt = ic.ivfDB.pApmDB.selectByPtt(pttId);     //+2
+            //if (dt.Rows.Count <= 0)     //-2
+            //{     //-2
+            //    VisitOld vsOld = new VisitOld();     //-2
+            //    vsOld = ic.ivfDB.ovsDB.selectByPk1(vsId);     //-2
+            //    Patient ptt = new Patient();     //-2
+            //    ptt = ic.ivfDB.pttDB.selectByIdOld(vsOld.PID);     //-2
+            //    dt = ic.ivfDB.pApmDB.selectByPtt(ptt.t_patient_id);     //-2
+            //}     //-2
 
             //grfExpn.Rows.Count = dt.Rows.Count + 1;
             grfpApmVisit.Rows.Count = 1;
