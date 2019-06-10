@@ -183,6 +183,7 @@ namespace clinic_ivf.gui
             SaveDocumentButton.Click += SaveDocumentButton_Click;
             UndoButton.Click += UndoButton_Click;
             RedoButton.Click += RedoButton_Click;
+            btnApmVoid.Click += BtnApmVoid_Click;
 
             setControl(vsid);
             ChkDenyAllergy_CheckedChanged(null, null);
@@ -228,6 +229,44 @@ namespace clinic_ivf.gui
             //initGrfPtt();
             //setGrfPtt("");
             initProgressNote();
+        }
+
+        private void BtnApmVoid_Click(object sender, EventArgs e)
+        {
+            //throw new NotImplementedException();
+            stt.Hide();
+            btnVoid.Text = "Void";
+            ic.cStf.staff_id = "";
+            FrmPasswordConfirm frm = new FrmPasswordConfirm(ic);
+            frm.ShowDialog(this);
+            if (!ic.cStf.staff_id.Equals(""))
+            {
+                if (ic.iniC.statusAppDonor.Equals("1"))
+                {
+                    String re = ic.ivfDB.pApmDB.VoidPatientAppointment(txtApmID.Text, txtStfConfirmID.Text);
+                    int chk = 0;
+                    //Patient ptt1 = new Patient();
+                    if (re.Equals("1")) // ตอน update
+                    {
+                        re = ic.ivfDB.vsDB.updateOpenStatusNurse(txtVsId.Text);
+                        re = ic.ivfDB.vsDB.updateStatusVoidAppointment(txtVsId.Text);
+                        setGrfpApmAll();
+                        setGrfpApmVisit();
+                        setGrfpApmDay();
+                        //re = txtID.Text;
+                        //setControlEnable(false);
+                    }
+                }
+                else
+                {
+                    //String re = ic.ivfDB.pttOldDB.insertPatientOld(ptt, txtStfConfirmID.Text);
+                    //int chk = 0;
+                    //if (int.TryParse(re, out chk))
+                    //{
+
+                    //}
+                }
+            }
         }
 
         private void RedoButton_Click(object sender, EventArgs e)
@@ -1816,116 +1855,116 @@ namespace clinic_ivf.gui
         private void BtnApmSave_Click(object sender, EventArgs e)
         {
             //throw new NotImplementedException();
-            if (btnSave.Text.Equals("Confirm"))
-            {
+            //if (btnSave.Text.Equals("Confirm"))
+            //{
 
+            //}
+            //else
+            //{
+            ic.cStf.staff_id = "";
+            FrmPasswordConfirm frm = new FrmPasswordConfirm(ic);
+            frm.ShowDialog(this);
+            if (!ic.cStf.staff_id.Equals(""))
+            {
+                txtUserReq.Value = ic.cStf.staff_fname_t + " " + ic.cStf.staff_lname_t;
+                txtStfConfirmID.Value = ic.cStf.staff_id;
+                btnSave.Text = "Confirm";
+                btnSave.Image = Resources.Add_ticket_24;
+                stt.Show("<p><b>สวัสดี</b></p>คุณ " + ic.cStf.staff_fname_t + " " + ic.cStf.staff_lname_t + "<br> กรุณายินยันการ confirm อีกครั้ง", txtApmRemark);
+                btnSave.Focus();
+
+                stt.Hide();
+                String re = "";
+                // check ว่า มี patient ยัง ถ้ายังไม่มี ให้ insert patient
+                //เป็นการเอา ข้อมูลจาก database เดิม
+                //Patient pttTemp = new Patient();
+                //pttTemp = ic.ivfDB.pttDB.selectByIdOld(txtPttIdOld.Text);
+                //if (pttTemp.t_patient_id.Equals(""))
+                //{
+                //    C1ComboBox cbo = new C1ComboBox();
+                //    ic.ivfDB.fpnDB.setCboNation(cbo, "");
+
+                //    pttO = ic.ivfDB.pttOldDB.selectByPk1(pttId);
+                //    ic.setC1ComboByName(cbo, pttO.Nationality);
+                //    pttTemp = new Patient();
+                //    pttTemp = ic.ivfDB.pttDB.setPatient1(pttTemp);
+                //    pttTemp.t_patient_id_old = pttO.PID;
+                //    pttTemp.patient_hn = pttO.PIDS;
+                //    pttTemp.patient_firstname_e = pttO.PName;
+                //    pttTemp.patient_lastname_e = pttO.PSurname;
+                //    pttTemp.patient_firstname = pttO.OName;
+                //    pttTemp.patient_lastname = pttO.OSurname;
+                //    pttTemp.f_patient_prefix_id = pttO.SurfixID;
+
+                //    pttTemp.f_sex_id = pttO.SexID;
+                //    pttTemp.passport = pttO.IDNumber;
+                //    pttTemp.patient_birthday = ic.datetoDB(pttO.DateOfBirth);
+                //    pttTemp.email = pttO.Email;
+                //    pttTemp.f_patient_nation_id = cbo.SelectedItem == null ? "" : ((ComboBoxItem)cbo.SelectedItem).Value;
+                //    String[] name = pttO.EmergencyPersonalContact.Split(' ');
+                //    if (name.Length > 1)
+                //    {
+                //        pttTemp.patient_contact_firstname = name[0];
+                //        pttTemp.patient_contact_lastname = name[1];
+                //    }
+                //    ic.ivfDB.oAgnDB.setCboAgent(cbo, "");
+                //    ic.setC1Combo(cbo, pttO.AgentID);
+                //    pttTemp.agent = cbo.SelectedItem == null ? "" : ((ComboBoxItem)cbo.SelectedItem).Value;
+                //    String re1 = ic.ivfDB.pttDB.insertPatient(pttTemp, txtStfConfirmID.Text);
+                //    ptt.t_patient_id = re1;
+                //    txtPttId.Value = re1;
+                //    //pttTemp.patient_birthday = pttO.DateOfBirth;
+                //    //pttTemp.patient_birthday = pttO.DateOfBirth;
+                //}
+                setPatientAppointment();
+                re = ic.ivfDB.pApmDB.insertPatientAppointment(pApm, txtStfConfirmID.Text);
+
+                //txtID.Value = (!txtID.Text.Equals("") && re.Equals("1")) ? re : "";        //update
+                long chk = 0;
+                if (long.TryParse(re, out chk))
+                {
+                    txtApmID.Value = txtApmID.Text.Equals("") ? re : txtApmID.Text;
+                    setAppointmentOld();
+                    //if (!ic.iniC.statusAppDonor.Equals("1"))
+                    //{
+                    String re1 = ic.ivfDB.pApmOldDB.insertAppointmentOld(pApmO, txtStfConfirmID.Text);
+                    //txtIDOld.Value = re1;
+                    txtApmIDOld.Value = txtApmIDOld.Text.Equals("") ? re1 : txtApmIDOld.Text;
+                    String re2 = ic.ivfDB.pApmDB.updateAppointmentIdOld(txtApmID.Text, re1);
+                    //if (int.TryParse(re1, out chk))
+                    //{
+                    //if (txtID.Text.Equals(""))
+                    //{
+                    //    //PatientOld pttOld = new PatientOld();
+                    //    //pttOld = ic.ivfDB.pttOldDB.selectByPk1(re1);
+                    //    String re2 = ic.ivfDB.pttDB.updatePID(re, re1);
+                    //    if (int.TryParse(re2, out chk))
+                    //    {
+                    //String re4 = ic.ivfDB.vsDB.updateCloseStatusNurse(txtVsId.Text);
+                    String re3 = ic.ivfDB.vsDB.updateStatusAppointment(txtVsId.Text, txtApmID.Text);
+
+                    btnSave.Text = "Save";
+                    btnSave.Image = Resources.accept_database24;
+                    //        txtID.Value = re;
+                    //        txtPid.Focus();
+                    //    }
+                    //}
+                    //}
+                    //}
+
+                    System.Threading.Thread.Sleep(500);
+                    setGrfpApmAll();
+                    setGrfpApmVisit();
+                    setGrfpApmDay();
+                    //this.Dispose();
+                }
             }
             else
             {
-                ic.cStf.staff_id = "";
-                FrmPasswordConfirm frm = new FrmPasswordConfirm(ic);
-                frm.ShowDialog(this);
-                if (!ic.cStf.staff_id.Equals(""))
-                {
-                    txtUserReq.Value = ic.cStf.staff_fname_t + " " + ic.cStf.staff_lname_t;
-                    txtStfConfirmID.Value = ic.cStf.staff_id;
-                    btnSave.Text = "Confirm";
-                    btnSave.Image = Resources.Add_ticket_24;
-                    stt.Show("<p><b>สวัสดี</b></p>คุณ " + ic.cStf.staff_fname_t + " " + ic.cStf.staff_lname_t + "<br> กรุณายินยันการ confirm อีกครั้ง", txtApmRemark);
-                    btnSave.Focus();
-
-                    stt.Hide();
-                    String re = "";
-                    // check ว่า มี patient ยัง ถ้ายังไม่มี ให้ insert patient
-                    //เป็นการเอา ข้อมูลจาก database เดิม
-                    //Patient pttTemp = new Patient();
-                    //pttTemp = ic.ivfDB.pttDB.selectByIdOld(txtPttIdOld.Text);
-                    //if (pttTemp.t_patient_id.Equals(""))
-                    //{
-                    //    C1ComboBox cbo = new C1ComboBox();
-                    //    ic.ivfDB.fpnDB.setCboNation(cbo, "");
-
-                    //    pttO = ic.ivfDB.pttOldDB.selectByPk1(pttId);
-                    //    ic.setC1ComboByName(cbo, pttO.Nationality);
-                    //    pttTemp = new Patient();
-                    //    pttTemp = ic.ivfDB.pttDB.setPatient1(pttTemp);
-                    //    pttTemp.t_patient_id_old = pttO.PID;
-                    //    pttTemp.patient_hn = pttO.PIDS;
-                    //    pttTemp.patient_firstname_e = pttO.PName;
-                    //    pttTemp.patient_lastname_e = pttO.PSurname;
-                    //    pttTemp.patient_firstname = pttO.OName;
-                    //    pttTemp.patient_lastname = pttO.OSurname;
-                    //    pttTemp.f_patient_prefix_id = pttO.SurfixID;
-
-                    //    pttTemp.f_sex_id = pttO.SexID;
-                    //    pttTemp.passport = pttO.IDNumber;
-                    //    pttTemp.patient_birthday = ic.datetoDB(pttO.DateOfBirth);
-                    //    pttTemp.email = pttO.Email;
-                    //    pttTemp.f_patient_nation_id = cbo.SelectedItem == null ? "" : ((ComboBoxItem)cbo.SelectedItem).Value;
-                    //    String[] name = pttO.EmergencyPersonalContact.Split(' ');
-                    //    if (name.Length > 1)
-                    //    {
-                    //        pttTemp.patient_contact_firstname = name[0];
-                    //        pttTemp.patient_contact_lastname = name[1];
-                    //    }
-                    //    ic.ivfDB.oAgnDB.setCboAgent(cbo, "");
-                    //    ic.setC1Combo(cbo, pttO.AgentID);
-                    //    pttTemp.agent = cbo.SelectedItem == null ? "" : ((ComboBoxItem)cbo.SelectedItem).Value;
-                    //    String re1 = ic.ivfDB.pttDB.insertPatient(pttTemp, txtStfConfirmID.Text);
-                    //    ptt.t_patient_id = re1;
-                    //    txtPttId.Value = re1;
-                    //    //pttTemp.patient_birthday = pttO.DateOfBirth;
-                    //    //pttTemp.patient_birthday = pttO.DateOfBirth;
-                    //}
-                    setPatientAppointment();
-                    re = ic.ivfDB.pApmDB.insertPatientAppointment(pApm, txtStfConfirmID.Text);
-
-                    //txtID.Value = (!txtID.Text.Equals("") && re.Equals("1")) ? re : "";        //update
-                    long chk = 0;
-                    if (long.TryParse(re, out chk))
-                    {
-                        txtApmID.Value = txtApmID.Text.Equals("") ? re : txtApmID.Text;
-                        setAppointmentOld();
-                        //if (!ic.iniC.statusAppDonor.Equals("1"))
-                        //{
-                        String re1 = ic.ivfDB.pApmOldDB.insertAppointmentOld(pApmO, txtStfConfirmID.Text);
-                        //txtIDOld.Value = re1;
-                        txtApmIDOld.Value = txtApmIDOld.Text.Equals("") ? re1 : txtApmIDOld.Text;
-                        String re2 = ic.ivfDB.pApmDB.updateAppointmentIdOld(txtApmID.Text, re1);
-                        //if (int.TryParse(re1, out chk))
-                        //{
-                        //if (txtID.Text.Equals(""))
-                        //{
-                        //    //PatientOld pttOld = new PatientOld();
-                        //    //pttOld = ic.ivfDB.pttOldDB.selectByPk1(re1);
-                        //    String re2 = ic.ivfDB.pttDB.updatePID(re, re1);
-                        //    if (int.TryParse(re2, out chk))
-                        //    {
-                        String re4 = ic.ivfDB.vsDB.updateCloseStatusNurse(txtVsId.Text);
-                        String re3 = ic.ivfDB.vsDB.updateStatusAppointment(txtVsId.Text, txtApmID.Text);
-
-                        btnSave.Text = "Save";
-                        btnSave.Image = Resources.accept_database24;
-                        //        txtID.Value = re;
-                        //        txtPid.Focus();
-                        //    }
-                        //}
-                        //}
-                        //}
-
-                        System.Threading.Thread.Sleep(500);
-                        setGrfpApmAll();
-                        setGrfpApmVisit();
-                        setGrfpApmDay();
-                        //this.Dispose();
-                    }
-                }
-                else
-                {
-                    btnSave.Text = "Save";
-                    btnSave.Image = Resources.download_database24;
-                }
+                btnSave.Text = "Save";
+                btnSave.Image = Resources.download_database24;
             }
+            //}
         }
 
         private void ChkDenyAllergy_CheckedChanged(object sender, EventArgs e)
@@ -2302,7 +2341,7 @@ namespace clinic_ivf.gui
             String chk = "", name = "", id = "";
             id = grfpApmAll[grfpApmAll.Row, colApmId] != null ? grfpApmAll[grfpApmAll.Row, colApmId].ToString() : "";
             pApmId = id;
-            FrmAppointmentAdd frm = new FrmAppointmentAdd(ic, pApmId, pttId, vsid);
+            FrmAppointmentAdd frm = new FrmAppointmentAdd(ic, pApmId, pttId, vsid,pttId);
             frm.ShowDialog(this);
             setGrfpApmAll();
 
@@ -2439,6 +2478,10 @@ namespace clinic_ivf.gui
             txtNameMale.Value = ptt1.Name;
             stt.Show("<p><b>สวัสดี</b></p>คุณ " + ptt.congenital_diseases_description + "<br> กรุณา ป้อนรหัสผ่าน", chkChronic);
             txtCongenital.Value = ptt.congenital_diseases_description;
+            if (cboBsp.Items.Count > 3)
+            {
+                cboBsp.SelectedIndex = 3;
+            }
             if (!ptt.t_patient_id.Equals(""))
             {
                 PatientImage pttI = new PatientImage();

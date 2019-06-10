@@ -639,7 +639,7 @@ namespace clinic_ivf.gui
             //    frm.ShowDialog(this);       // -1
             //    setGrfpApmDonor(txtID.Text);       // -1
             //}       // -1
-            FrmAppointmentAdd frm = new FrmAppointmentAdd(ic, "", txtID.Text, "");      // +1
+            FrmAppointmentAdd frm = new FrmAppointmentAdd(ic, "", txtID.Text, "",txtIdOld.Text);      // +1
             frm.ShowDialog(this);      // +1
             setGrfpApmDonor(txtID.Text);      // +1
         }
@@ -2603,7 +2603,7 @@ namespace clinic_ivf.gui
             String chk = "", name = "", id = "";
             id = grfpApm[grfpApm.Row, colpApmId] != null ? grfpApm[grfpApm.Row, colpApmId].ToString() : "";
             //FrmAppointmentDonorAdd frm = new FrmAppointmentDonorAdd(ic, id, txtID.Text,"");   //-1
-            FrmAppointmentAdd frm = new FrmAppointmentAdd(ic, id, txtID.Text, "");        //+1
+            FrmAppointmentAdd frm = new FrmAppointmentAdd(ic, id, txtID.Text, "",pttId);        //+1
             frm.ShowDialog(this);
             frm.Dispose();
             setGrfpApmDonor(txtID.Text);

@@ -124,6 +124,12 @@
     <Compile Include="gui\FrmAgent.Designer.cs">
       <DependentUpon>FrmAgent.cs</DependentUpon>
     </Compile>
+    <Compile Include="gui\FrmAppointmentAdd1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="gui\FrmAppointmentAdd1.Designer.cs">
+      <DependentUpon>FrmAppointmentAdd1.cs</DependentUpon>
+    </Compile>
     <Compile Include="gui\FrmAppointmentView.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -872,6 +878,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="gui\FrmAgent.resx">
       <DependentUpon>FrmAgent.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="gui\FrmAppointmentAdd1.resx">
+      <DependentUpon>FrmAppointmentAdd1.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="gui\FrmAppointmentView.resx">
       <DependentUpon>FrmAppointmentView.cs</DependentUpon>

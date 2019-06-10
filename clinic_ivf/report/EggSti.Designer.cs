@@ -291,9 +291,9 @@ namespace clinic_ivf.report {
             
             private global::System.Data.DataColumn columnprolactin;
             
-            private global::System.Data.DataColumn columnrt_ovary;
+            private global::System.Data.DataColumn columnrt_ovary_1;
             
-            private global::System.Data.DataColumn columnlt_ovary;
+            private global::System.Data.DataColumn columnlt_ovary_1;
             
             private global::System.Data.DataColumn columnendo;
             
@@ -328,6 +328,10 @@ namespace clinic_ivf.report {
             private global::System.Data.DataColumn columnfet_time;
             
             private global::System.Data.DataColumn columnmedication2;
+            
+            private global::System.Data.DataColumn columnrt_ovary_2;
+            
+            private global::System.Data.DataColumn columnlt_ovary_2;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
@@ -412,17 +416,17 @@ namespace clinic_ivf.report {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public global::System.Data.DataColumn rt_ovaryColumn {
+            public global::System.Data.DataColumn rt_ovary_1Column {
                 get {
-                    return this.columnrt_ovary;
+                    return this.columnrt_ovary_1;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public global::System.Data.DataColumn lt_ovaryColumn {
+            public global::System.Data.DataColumn lt_ovary_1Column {
                 get {
-                    return this.columnlt_ovary;
+                    return this.columnlt_ovary_1;
                 }
             }
             
@@ -564,6 +568,22 @@ namespace clinic_ivf.report {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn rt_ovary_2Column {
+                get {
+                    return this.columnrt_ovary_2;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn lt_ovary_2Column {
+                get {
+                    return this.columnlt_ovary_2;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -606,8 +626,8 @@ namespace clinic_ivf.report {
                         string lh, 
                         string fsh, 
                         string prolactin, 
-                        string rt_ovary, 
-                        string lt_ovary, 
+                        string rt_ovary_1, 
+                        string lt_ovary_1, 
                         string endo, 
                         string medication, 
                         string status_abnormal, 
@@ -624,7 +644,9 @@ namespace clinic_ivf.report {
                         string opu_time, 
                         string fet_date, 
                         string fet_time, 
-                        string medication2) {
+                        string medication2, 
+                        string rt_ovary_2, 
+                        string lt_ovary_2) {
                 EggStiRow rowEggStiRow = ((EggStiRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         day1,
@@ -633,8 +655,8 @@ namespace clinic_ivf.report {
                         lh,
                         fsh,
                         prolactin,
-                        rt_ovary,
-                        lt_ovary,
+                        rt_ovary_1,
+                        lt_ovary_1,
                         endo,
                         medication,
                         status_abnormal,
@@ -651,7 +673,9 @@ namespace clinic_ivf.report {
                         opu_time,
                         fet_date,
                         fet_time,
-                        medication2};
+                        medication2,
+                        rt_ovary_2,
+                        lt_ovary_2};
                 rowEggStiRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowEggStiRow);
                 return rowEggStiRow;
@@ -680,8 +704,8 @@ namespace clinic_ivf.report {
                 this.columnlh = base.Columns["lh"];
                 this.columnfsh = base.Columns["fsh"];
                 this.columnprolactin = base.Columns["prolactin"];
-                this.columnrt_ovary = base.Columns["rt_ovary"];
-                this.columnlt_ovary = base.Columns["lt_ovary"];
+                this.columnrt_ovary_1 = base.Columns["rt_ovary_1"];
+                this.columnlt_ovary_1 = base.Columns["lt_ovary_1"];
                 this.columnendo = base.Columns["endo"];
                 this.columnmedication = base.Columns["medication"];
                 this.columnstatus_abnormal = base.Columns["status_abnormal"];
@@ -699,6 +723,8 @@ namespace clinic_ivf.report {
                 this.columnfet_date = base.Columns["fet_date"];
                 this.columnfet_time = base.Columns["fet_time"];
                 this.columnmedication2 = base.Columns["medication2"];
+                this.columnrt_ovary_2 = base.Columns["rt_ovary_2"];
+                this.columnlt_ovary_2 = base.Columns["lt_ovary_2"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -716,10 +742,10 @@ namespace clinic_ivf.report {
                 base.Columns.Add(this.columnfsh);
                 this.columnprolactin = new global::System.Data.DataColumn("prolactin", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnprolactin);
-                this.columnrt_ovary = new global::System.Data.DataColumn("rt_ovary", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnrt_ovary);
-                this.columnlt_ovary = new global::System.Data.DataColumn("lt_ovary", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnlt_ovary);
+                this.columnrt_ovary_1 = new global::System.Data.DataColumn("rt_ovary_1", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnrt_ovary_1);
+                this.columnlt_ovary_1 = new global::System.Data.DataColumn("lt_ovary_1", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnlt_ovary_1);
                 this.columnendo = new global::System.Data.DataColumn("endo", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnendo);
                 this.columnmedication = new global::System.Data.DataColumn("medication", typeof(string), null, global::System.Data.MappingType.Element);
@@ -754,14 +780,18 @@ namespace clinic_ivf.report {
                 base.Columns.Add(this.columnfet_time);
                 this.columnmedication2 = new global::System.Data.DataColumn("medication2", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnmedication2);
+                this.columnrt_ovary_2 = new global::System.Data.DataColumn("rt_ovary_2", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnrt_ovary_2);
+                this.columnlt_ovary_2 = new global::System.Data.DataColumn("lt_ovary_2", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnlt_ovary_2);
                 this.columnday1.Caption = "DataColumn1";
                 this.columndate.Caption = "DataColumn1";
                 this.columne2.Caption = "DataColumn1";
                 this.columnlh.Caption = "DataColumn1";
                 this.columnfsh.Caption = "DataColumn1";
                 this.columnprolactin.Caption = "DataColumn1";
-                this.columnrt_ovary.Caption = "DataColumn1";
-                this.columnlt_ovary.Caption = "DataColumn1";
+                this.columnrt_ovary_1.Caption = "DataColumn1";
+                this.columnlt_ovary_1.Caption = "DataColumn1";
                 this.columnendo.Caption = "DataColumn1";
                 this.columnstatus_abnormal.Caption = "DataColumn1";
                 this.columnabnormal1.Caption = "DataColumn1";
@@ -1011,33 +1041,33 @@ namespace clinic_ivf.report {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public string rt_ovary {
+            public string rt_ovary_1 {
                 get {
                     try {
-                        return ((string)(this[this.tableEggSti.rt_ovaryColumn]));
+                        return ((string)(this[this.tableEggSti.rt_ovary_1Column]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'rt_ovary\' in table \'EggSti\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'rt_ovary_1\' in table \'EggSti\' is DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableEggSti.rt_ovaryColumn] = value;
+                    this[this.tableEggSti.rt_ovary_1Column] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public string lt_ovary {
+            public string lt_ovary_1 {
                 get {
                     try {
-                        return ((string)(this[this.tableEggSti.lt_ovaryColumn]));
+                        return ((string)(this[this.tableEggSti.lt_ovary_1Column]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'lt_ovary\' in table \'EggSti\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'lt_ovary_1\' in table \'EggSti\' is DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableEggSti.lt_ovaryColumn] = value;
+                    this[this.tableEggSti.lt_ovary_1Column] = value;
                 }
             }
             
@@ -1315,6 +1345,38 @@ namespace clinic_ivf.report {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string rt_ovary_2 {
+                get {
+                    try {
+                        return ((string)(this[this.tableEggSti.rt_ovary_2Column]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'rt_ovary_2\' in table \'EggSti\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableEggSti.rt_ovary_2Column] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string lt_ovary_2 {
+                get {
+                    try {
+                        return ((string)(this[this.tableEggSti.lt_ovary_2Column]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'lt_ovary_2\' in table \'EggSti\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableEggSti.lt_ovary_2Column] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public bool Isday1Null() {
                 return this.IsNull(this.tableEggSti.day1Column);
             }
@@ -1387,26 +1449,26 @@ namespace clinic_ivf.report {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public bool Isrt_ovaryNull() {
-                return this.IsNull(this.tableEggSti.rt_ovaryColumn);
+            public bool Isrt_ovary_1Null() {
+                return this.IsNull(this.tableEggSti.rt_ovary_1Column);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public void Setrt_ovaryNull() {
-                this[this.tableEggSti.rt_ovaryColumn] = global::System.Convert.DBNull;
+            public void Setrt_ovary_1Null() {
+                this[this.tableEggSti.rt_ovary_1Column] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public bool Islt_ovaryNull() {
-                return this.IsNull(this.tableEggSti.lt_ovaryColumn);
+            public bool Islt_ovary_1Null() {
+                return this.IsNull(this.tableEggSti.lt_ovary_1Column);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public void Setlt_ovaryNull() {
-                this[this.tableEggSti.lt_ovaryColumn] = global::System.Convert.DBNull;
+            public void Setlt_ovary_1Null() {
+                this[this.tableEggSti.lt_ovary_1Column] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1611,6 +1673,30 @@ namespace clinic_ivf.report {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public void Setmedication2Null() {
                 this[this.tableEggSti.medication2Column] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool Isrt_ovary_2Null() {
+                return this.IsNull(this.tableEggSti.rt_ovary_2Column);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void Setrt_ovary_2Null() {
+                this[this.tableEggSti.rt_ovary_2Column] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool Islt_ovary_2Null() {
+                return this.IsNull(this.tableEggSti.lt_ovary_2Column);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void Setlt_ovary_2Null() {
+                this[this.tableEggSti.lt_ovary_2Column] = global::System.Convert.DBNull;
             }
         }
         

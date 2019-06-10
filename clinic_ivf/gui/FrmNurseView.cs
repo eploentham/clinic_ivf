@@ -420,12 +420,12 @@ namespace clinic_ivf.gui
             //grfExpn.Rows.Count = dt.Rows.Count + 1;
             grfFinish.Rows.Count = dt.Rows.Count + 1;
             grfFinish.Cols.Count = 11;
-            C1TextBox txt = new C1TextBox();
+            //C1TextBox txt = new C1TextBox();
             //C1ComboBox cboproce = new C1ComboBox();
             //ic.ivfDB.itmDB.setCboItem(cboproce);
-            grfFinish.Cols[colPttHn].Editor = txt;
-            grfFinish.Cols[colPttName].Editor = txt;
-            grfFinish.Cols[colVsDate].Editor = txt;
+            //grfFinish.Cols[colPttHn].Editor = txt;
+            //grfFinish.Cols[colPttName].Editor = txt;
+            //grfFinish.Cols[colVsDate].Editor = txt;
 
             grfFinish.Cols[colVNshow].Width = 120;
             grfFinish.Cols[colPttHn].Width = 120;
@@ -660,12 +660,12 @@ namespace clinic_ivf.gui
             //grfExpn.Rows.Count = dt.Rows.Count + 1;
             grfSearch.Rows.Count = dt.Rows.Count + 1;
             grfSearch.Cols.Count = 11;
-            C1TextBox txt = new C1TextBox();
+            //C1TextBox txt = new C1TextBox();
             //C1ComboBox cboproce = new C1ComboBox();
             //ic.ivfDB.itmDB.setCboItem(cboproce);
-            grfSearch.Cols[colPttHn].Editor = txt;
-            grfSearch.Cols[colPttName].Editor = txt;
-            grfSearch.Cols[colVsDate].Editor = txt;
+            //grfSearch.Cols[colPttHn].Editor = txt;
+            //grfSearch.Cols[colPttName].Editor = txt;
+            //grfSearch.Cols[colVsDate].Editor = txt;
 
             grfSearch.Cols[colVNshow].Width = 120;
             grfSearch.Cols[colPttHn].Width = 120;
@@ -977,12 +977,12 @@ namespace clinic_ivf.gui
             //grfExpn.Rows.Count = dt.Rows.Count + 1;
             grfQue.Rows.Count = dt.Rows.Count + 1;
             grfQue.Cols.Count = 10;
-            C1TextBox txt = new C1TextBox();
+            //C1TextBox txt = new C1TextBox();
             //C1ComboBox cboproce = new C1ComboBox();
             //ic.ivfDB.itmDB.setCboItem(cboproce);
-            grfQue.Cols[colPttHn].Editor = txt;
-            grfQue.Cols[colPttName].Editor = txt;
-            grfQue.Cols[colVsDate].Editor = txt;
+            //grfQue.Cols[colPttHn].Editor = txt;
+            //grfQue.Cols[colPttName].Editor = txt;
+            //grfQue.Cols[colVsDate].Editor = txt;
 
             grfQue.Cols[colVNshow].Width = 120;
             grfQue.Cols[colPttHn].Width = 120;
@@ -1045,6 +1045,13 @@ namespace clinic_ivf.gui
             grfQue.Cols[colID].Visible = false;
             grfQue.Cols[colPttId].Visible = false;
             grfQue.Cols[colStatus].Visible = false;
+
+            grfQue.Cols[colVNshow].AllowEditing = false;
+            grfQue.Cols[colPttHn].AllowEditing = false;
+            grfQue.Cols[colPttName].AllowEditing = false;
+            grfQue.Cols[colVsDate].AllowEditing = false;
+            grfQue.Cols[colVsTime].AllowEditing = false;
+            //grfQue.Cols[colDtr].AllowEditing = false;
             //theme1.SetTheme(grfQue, ic.theme);
 
         }
@@ -1649,12 +1656,13 @@ namespace clinic_ivf.gui
         {
             if (ic.iniC.statusAppDonor.Equals("1"))
             {
-                FrmAppointmentDonorAdd frm = new FrmAppointmentDonorAdd(ic, "", pttId, vsid);
+                //FrmAppointmentDonorAdd frm = new FrmAppointmentDonorAdd(ic, "", pttId, vsid);
+                FrmAppointmentAdd frm = new FrmAppointmentAdd(ic, "", pttId, vsid, pttId);
                 frm.ShowDialog(this);
             }
             else
             {
-                FrmAppointmentAdd frm = new FrmAppointmentAdd(ic, "", pttId, vsid);
+                FrmAppointmentAdd frm = new FrmAppointmentAdd(ic, "", pttId, vsid, pttId);
                 frm.ShowDialog(this);
             }
         }

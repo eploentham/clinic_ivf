@@ -620,7 +620,7 @@ namespace clinic_ivf.gui
             String chk = "", name = "", id = "";
             id = grfpApmAll[grfpApmAll.Row, colApmId] != null ? grfpApmAll[grfpApmAll.Row, colApmId].ToString() : "";
             pApmId = id;
-            FrmAppointmentAdd frm = new FrmAppointmentAdd(ic, pApmId, pttId, vsid);
+            FrmAppointmentAdd frm = new FrmAppointmentAdd(ic, pApmId, pttId, vsid, pttId);
             frm.ShowDialog(this);
             setGrfpApmAll();
 

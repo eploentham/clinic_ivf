@@ -658,6 +658,7 @@
             this.pnOutLab = new System.Windows.Forms.Panel();
             this.c1SplitContainer1 = new C1.Win.C1SplitContainer.C1SplitContainer();
             this.spOutLabView = new C1.Win.C1SplitContainer.C1SplitterPanel();
+            this.pnOutLabEmail = new System.Windows.Forms.Panel();
             this.pnOutLabImage = new System.Windows.Forms.Panel();
             this.spOutLabDetail = new C1.Win.C1SplitContainer.C1SplitterPanel();
             this.pnOutLabDetail = new System.Windows.Forms.Panel();
@@ -676,7 +677,6 @@
             this.label92 = new System.Windows.Forms.Label();
             this.label93 = new System.Windows.Forms.Label();
             this.label94 = new System.Windows.Forms.Label();
-            this.pnOutLabEmail = new System.Windows.Forms.Panel();
             this.sB.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.theme1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.sC)).BeginInit();
@@ -2739,7 +2739,7 @@
             this.c1SplitterPanel4.SizeRatio = 35.421D;
             this.c1SplitterPanel4.TabIndex = 0;
             this.c1SplitterPanel4.Text = "Panel 1";
-            this.c1SplitterPanel4.Width = 553;
+            this.c1SplitterPanel4.Width = 560;
             // 
             // pnAdm
             // 
@@ -2808,7 +2808,7 @@
             this.c1SplitterPanel6.SizeRatio = 21.632D;
             this.c1SplitterPanel6.TabIndex = 0;
             this.c1SplitterPanel6.Text = "Panel 1";
-            this.c1SplitterPanel6.Width = 213;
+            this.c1SplitterPanel6.Width = 220;
             // 
             // pnApmAll
             // 
@@ -10371,7 +10371,18 @@
             this.spOutLabView.SizeRatio = 37.381D;
             this.spOutLabView.TabIndex = 0;
             this.spOutLabView.Text = "Panel 1";
-            this.spOutLabView.Width = 591;
+            this.spOutLabView.Width = 584;
+            // 
+            // pnOutLabEmail
+            // 
+            this.pnOutLabEmail.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.pnOutLabEmail.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pnOutLabEmail.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.pnOutLabEmail.Location = new System.Drawing.Point(0, 324);
+            this.pnOutLabEmail.Name = "pnOutLabEmail";
+            this.pnOutLabEmail.Size = new System.Drawing.Size(584, 320);
+            this.pnOutLabEmail.TabIndex = 1;
+            this.theme1.SetTheme(this.pnOutLabEmail, "(default)");
             // 
             // pnOutLabImage
             // 
@@ -10627,17 +10638,6 @@
             this.label94.Size = new System.Drawing.Size(43, 16);
             this.label94.TabIndex = 545;
             this.theme1.SetTheme(this.label94, "(default)");
-            // 
-            // pnOutLabEmail
-            // 
-            this.pnOutLabEmail.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.pnOutLabEmail.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnOutLabEmail.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.pnOutLabEmail.Location = new System.Drawing.Point(0, 324);
-            this.pnOutLabEmail.Name = "pnOutLabEmail";
-            this.pnOutLabEmail.Size = new System.Drawing.Size(584, 320);
-            this.pnOutLabEmail.TabIndex = 1;
-            this.theme1.SetTheme(this.pnOutLabEmail, "(default)");
             // 
             // FrmNurseAdd2
             // 

@@ -81,7 +81,7 @@ namespace clinic_ivf.gui
             //grfExpnC.CellChanged += new C1.Win.C1FlexGrid.RowColEventHandler(this.grfDept_CellChanged);
             ContextMenu menuGw = new ContextMenu();
             menuGw.MenuItems.Add("ป้อน LAB OPU/FET", new EventHandler(ContextMenu_edit));
-            menuGw.MenuItems.Add("รับทราบการเปลี่ยนแปลงเวลา", new EventHandler(ContextMenu_Gw_time_modi));
+            //menuGw.MenuItems.Add("รับทราบการเปลี่ยนแปลงเวลา", new EventHandler(ContextMenu_Gw_time_modi));
             //menuGw.MenuItems.Add("&ยกเลิก", new EventHandler(ContextMenu_Gw_Cancel));
             grfReq.ContextMenu = menuGw;
             pnReq.Controls.Add(grfReq);
@@ -105,19 +105,19 @@ namespace clinic_ivf.gui
         {
             String chk = "", name = "", id = "";
 
-            id = grfReq[grfReq.Row, colRqId] != null ? grfReq[grfReq.Row, colRqId].ToString() : "";
-            chk = grfReq[grfReq.Row, colRqReqNum] != null ? grfReq[grfReq.Row, colRqReqNum].ToString() : "";
-            name = grfReq[grfReq.Row, colRqName] != null ? grfReq[grfReq.Row, colRqName].ToString() : "";
-            //if (MessageBox.Show("ต้องการ ป้อน LAB OPU  \n  req number " + chk+" \n name "+ name, "", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == DialogResult.OK)
-            //{
-            //grfReq.Rows.Remove(grfReq.Row);
-            Cursor curOld;
-            curOld = this.Cursor;
-            this.Cursor = Cursors.WaitCursor;
-            openLabOPUNew(id, name);
-            setGrfReq();
-            setGrfProc("");
-            this.Cursor = curOld;
+            //id = grfReq[grfReq.Row, colRqId] != null ? grfReq[grfReq.Row, colRqId].ToString() : "";
+            //chk = grfReq[grfReq.Row, colRqReqNum] != null ? grfReq[grfReq.Row, colRqReqNum].ToString() : "";
+            //name = grfReq[grfReq.Row, colRqName] != null ? grfReq[grfReq.Row, colRqName].ToString() : "";
+            ////if (MessageBox.Show("ต้องการ ป้อน LAB OPU  \n  req number " + chk+" \n name "+ name, "", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == DialogResult.OK)
+            ////{
+            ////grfReq.Rows.Remove(grfReq.Row);
+            //Cursor curOld;
+            //curOld = this.Cursor;
+            //this.Cursor = Cursors.WaitCursor;
+            //openLabOPUNew(id, name);
+            //setGrfReq();
+            //setGrfProc("");
+            //this.Cursor = curOld;
             //}
         }
         private void setGrfReq()
@@ -180,41 +180,41 @@ namespace clinic_ivf.gui
             foreach (DataRow row in dt.Rows)
             {
                 Row row1 = grfReq.Rows.Add();
-                row1[colRqId] = row[ic.ivfDB.lbReqDB.lbReq.req_id].ToString();
-                row1[colRqReqNum] = row[ic.ivfDB.lbReqDB.lbReq.req_code].ToString();
-                row1[colRqHn] = row[ic.ivfDB.lbReqDB.lbReq.hn_female].ToString();
-                row1[colRqVn] = row[ic.ivfDB.lbReqDB.lbReq.vn].ToString();
-                row1[colRqName] = row[ic.ivfDB.lbReqDB.lbReq.name_female].ToString();
-                row1[colRqDate] = ic.datetoShow(row[ic.ivfDB.lbReqDB.lbReq.req_date].ToString());
-                row1[colRqRemark] = row["form_a_remark"].ToString();
-                row1[colOPUDate] = ic.datetoShow(row[ic.ivfDB.lFormaDB.lformA.opu_date].ToString());
-                row1[colOPUTime] = row[ic.ivfDB.lFormaDB.lformA.opu_time].ToString();
-                row1[colOPUTimeModi] = row[ic.ivfDB.lFormaDB.lformA.opu_time_modi].ToString();
-                row1[colRqLabName] = row["SName"].ToString();
-                row1[colRqHnMale] = row["hn_male"].ToString();
-                row1[colRqNameMale] = row["name_male"].ToString();
-                row1[colRqHnDonor] = row["hn_donor"].ToString();
-                row1[colRqNameDonor] = row["name_donor"].ToString();
+                //row1[colRqId] = row[ic.ivfDB.lbReqDB.lbReq.req_id].ToString();
+                //row1[colRqReqNum] = row[ic.ivfDB.lbReqDB.lbReq.req_code].ToString();
+                //row1[colRqHn] = row[ic.ivfDB.lbReqDB.lbReq.hn_female].ToString();
+                //row1[colRqVn] = row[ic.ivfDB.lbReqDB.lbReq.vn].ToString();
+                //row1[colRqName] = row[ic.ivfDB.lbReqDB.lbReq.name_female].ToString();
+                //row1[colRqDate] = ic.datetoShow(row[ic.ivfDB.lbReqDB.lbReq.req_date].ToString());
+                //row1[colRqRemark] = row["form_a_remark"].ToString();
+                //row1[colOPUDate] = ic.datetoShow(row[ic.ivfDB.lFormaDB.lformA.opu_date].ToString());
+                //row1[colOPUTime] = row[ic.ivfDB.lFormaDB.lformA.opu_time].ToString();
+                //row1[colOPUTimeModi] = row[ic.ivfDB.lFormaDB.lformA.opu_time_modi].ToString();
+                //row1[colRqLabName] = row["SName"].ToString();
+                //row1[colRqHnMale] = row["hn_male"].ToString();
+                //row1[colRqNameMale] = row["name_male"].ToString();
+                //row1[colRqHnDonor] = row["hn_donor"].ToString();
+                //row1[colRqNameDonor] = row["name_donor"].ToString();
                 
                 i++;
             }
-            grfReq.Cols[colRqId].Visible = false;
-            grfReq.Cols[colRqVn].Visible = false;
-            grfReq.Cols[colRqReqNum].AllowEditing = false;
-            grfReq.Cols[colRqHn].AllowEditing = false;
-            grfReq.Cols[colRqVn].AllowEditing = false;
-            grfReq.Cols[colRqName].AllowEditing = false;
-            grfReq.Cols[colRqDate].AllowEditing = false;
-            grfReq.Cols[colRqRemark].AllowEditing = false;
-            grfReq.Cols[colOPUDate].AllowEditing = false;
-            grfReq.Cols[colOPUTime].AllowEditing = false;
-            grfReq.Cols[colOPUTimeModi].AllowEditing = false;
-            grfReq.Cols[colRqLabName].AllowEditing = false;
-            grfReq.Cols[colRqHnMale].AllowEditing = false;
-            grfReq.Cols[colRqNameMale].AllowEditing = false;
-            grfReq.Cols[colRqHnDonor].AllowEditing = false;
-            grfReq.Cols[colRqNameDonor].AllowEditing = false;
-            CellNoteManager mgr = new CellNoteManager(grfReq);
+            //grfReq.Cols[colRqId].Visible = false;
+            //grfReq.Cols[colRqVn].Visible = false;
+            //grfReq.Cols[colRqReqNum].AllowEditing = false;
+            //grfReq.Cols[colRqHn].AllowEditing = false;
+            //grfReq.Cols[colRqVn].AllowEditing = false;
+            //grfReq.Cols[colRqName].AllowEditing = false;
+            //grfReq.Cols[colRqDate].AllowEditing = false;
+            //grfReq.Cols[colRqRemark].AllowEditing = false;
+            //grfReq.Cols[colOPUDate].AllowEditing = false;
+            //grfReq.Cols[colOPUTime].AllowEditing = false;
+            //grfReq.Cols[colOPUTimeModi].AllowEditing = false;
+            //grfReq.Cols[colRqLabName].AllowEditing = false;
+            //grfReq.Cols[colRqHnMale].AllowEditing = false;
+            //grfReq.Cols[colRqNameMale].AllowEditing = false;
+            //grfReq.Cols[colRqHnDonor].AllowEditing = false;
+            //grfReq.Cols[colRqNameDonor].AllowEditing = false;
+            //CellNoteManager mgr = new CellNoteManager(grfReq);
             //grfReq.Cols[coldt].Visible = false;
         }
         private void Timer_Tick(object sender, EventArgs e)

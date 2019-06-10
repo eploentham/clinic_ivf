@@ -228,12 +228,13 @@ namespace clinic_ivf.gui
             //throw new NotImplementedException();
             if (ic.iniC.statusAppDonor.Equals(""))
             {
-                FrmAppointmentDonorAdd frm = new FrmAppointmentDonorAdd(ic, "", "", "");
+                //FrmAppointmentDonorAdd frm = new FrmAppointmentDonorAdd(ic, "", "", "");
+                FrmAppointmentAdd frm = new FrmAppointmentAdd(ic, "", "", "", "");
                 frm.ShowDialog(this);
             }
             else
             {
-                FrmAppointmentAdd frm = new FrmAppointmentAdd(ic, "", "", "");
+                FrmAppointmentAdd frm = new FrmAppointmentAdd(ic, "", "", "","");
                 frm.ShowDialog(this);
             }
 
