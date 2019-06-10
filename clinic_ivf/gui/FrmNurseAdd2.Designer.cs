@@ -654,6 +654,14 @@
             this.ribbonTopToolBar1 = new C1.Win.C1Ribbon.RibbonTopToolBar();
             this.tabLabFormA = new C1.Win.C1Command.C1DockingTabPage();
             this.pnLabFormA = new System.Windows.Forms.Panel();
+            this.tabOutLab = new C1.Win.C1Command.C1DockingTabPage();
+            this.pnOutLab = new System.Windows.Forms.Panel();
+            this.c1SplitContainer1 = new C1.Win.C1SplitContainer.C1SplitContainer();
+            this.spOutLabView = new C1.Win.C1SplitContainer.C1SplitterPanel();
+            this.pnOutLabImage = new System.Windows.Forms.Panel();
+            this.spOutLabDetail = new C1.Win.C1SplitContainer.C1SplitterPanel();
+            this.pnOutLabDetail = new System.Windows.Forms.Panel();
+            this.c1FlexViewer1 = new C1.Win.FlexViewer.C1FlexViewer();
             this.radioButton20 = new System.Windows.Forms.RadioButton();
             this.txtStfConfirmID = new C1.Win.C1Input.C1TextBox();
             this.txtUserReq = new C1.Win.C1Input.C1TextBox();
@@ -668,14 +676,7 @@
             this.label92 = new System.Windows.Forms.Label();
             this.label93 = new System.Windows.Forms.Label();
             this.label94 = new System.Windows.Forms.Label();
-            this.tabOutLab = new C1.Win.C1Command.C1DockingTabPage();
-            this.pnOutLab = new System.Windows.Forms.Panel();
-            this.c1SplitContainer1 = new C1.Win.C1SplitContainer.C1SplitContainer();
-            this.spOutLabView = new C1.Win.C1SplitContainer.C1SplitterPanel();
-            this.spOutLabDetail = new C1.Win.C1SplitContainer.C1SplitterPanel();
-            this.pnImage = new System.Windows.Forms.Panel();
-            this.pnOutLabDetail = new System.Windows.Forms.Panel();
-            this.c1FlexViewer1 = new C1.Win.FlexViewer.C1FlexViewer();
+            this.pnOutLabEmail = new System.Windows.Forms.Panel();
             this.sB.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.theme1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.sC)).BeginInit();
@@ -1053,11 +1054,6 @@
             this.pnPg.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.c1Ribbon1)).BeginInit();
             this.tabLabFormA.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.txtStfConfirmID)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtUserReq)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.cboBsp)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.btnVoid)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.btnSave)).BeginInit();
             this.tabOutLab.SuspendLayout();
             this.pnOutLab.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.c1SplitContainer1)).BeginInit();
@@ -1066,6 +1062,11 @@
             this.spOutLabDetail.SuspendLayout();
             this.pnOutLabDetail.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.c1FlexViewer1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtStfConfirmID)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtUserReq)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cboBsp)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnVoid)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnSave)).BeginInit();
             this.SuspendLayout();
             // 
             // sB
@@ -9912,9 +9913,9 @@
             // richTextBox1
             // 
             this.richTextBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.richTextBox1.Location = new System.Drawing.Point(0, 146);
+            this.richTextBox1.Location = new System.Drawing.Point(0, 143);
             this.richTextBox1.Name = "richTextBox1";
-            this.richTextBox1.Size = new System.Drawing.Size(852, 519);
+            this.richTextBox1.Size = new System.Drawing.Size(852, 522);
             this.richTextBox1.TabIndex = 1;
             this.richTextBox1.Text = "";
             // 
@@ -9929,7 +9930,7 @@
             this.c1Ribbon1.QatHolder = this.ribbonQat1;
             this.c1Ribbon1.QatItemsHolder.Add(this.UndoButton);
             this.c1Ribbon1.QatItemsHolder.Add(this.RedoButton);
-            this.c1Ribbon1.Size = new System.Drawing.Size(852, 146);
+            this.c1Ribbon1.Size = new System.Drawing.Size(852, 143);
             this.c1Ribbon1.Tabs.Add(this.HomeTab);
             this.c1Ribbon1.Tabs.Add(this.ViewTab);
             this.c1Ribbon1.Tabs.Add(this.ribbonTab1);
@@ -10315,6 +10316,130 @@
             this.pnLabFormA.TabIndex = 0;
             this.theme1.SetTheme(this.pnLabFormA, "(default)");
             // 
+            // tabOutLab
+            // 
+            this.tabOutLab.Controls.Add(this.pnOutLab);
+            this.tabOutLab.Location = new System.Drawing.Point(1, 24);
+            this.tabOutLab.Name = "tabOutLab";
+            this.tabOutLab.Size = new System.Drawing.Size(1585, 665);
+            this.tabOutLab.TabIndex = 11;
+            this.tabOutLab.Text = "Out LAB";
+            // 
+            // pnOutLab
+            // 
+            this.pnOutLab.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.pnOutLab.Controls.Add(this.c1SplitContainer1);
+            this.pnOutLab.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pnOutLab.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.pnOutLab.Location = new System.Drawing.Point(0, 0);
+            this.pnOutLab.Name = "pnOutLab";
+            this.pnOutLab.Size = new System.Drawing.Size(1585, 665);
+            this.pnOutLab.TabIndex = 531;
+            this.theme1.SetTheme(this.pnOutLab, "(default)");
+            // 
+            // c1SplitContainer1
+            // 
+            this.c1SplitContainer1.AutoSizeElement = C1.Framework.AutoSizeElement.Both;
+            this.c1SplitContainer1.BackColor = System.Drawing.Color.White;
+            this.c1SplitContainer1.CollapsingAreaColor = System.Drawing.Color.White;
+            this.c1SplitContainer1.CollapsingCueColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.c1SplitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.c1SplitContainer1.FixedLineColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(189)))), ((int)(((byte)(182)))));
+            this.c1SplitContainer1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.c1SplitContainer1.HeaderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.c1SplitContainer1.HeaderLineWidth = 1;
+            this.c1SplitContainer1.Location = new System.Drawing.Point(0, 0);
+            this.c1SplitContainer1.Name = "c1SplitContainer1";
+            this.c1SplitContainer1.Panels.Add(this.spOutLabView);
+            this.c1SplitContainer1.Panels.Add(this.spOutLabDetail);
+            this.c1SplitContainer1.Size = new System.Drawing.Size(1585, 665);
+            this.c1SplitContainer1.SplitterColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(189)))), ((int)(((byte)(182)))));
+            this.c1SplitContainer1.SplitterMovingColor = System.Drawing.Color.Black;
+            this.c1SplitContainer1.TabIndex = 0;
+            this.theme1.SetTheme(this.c1SplitContainer1, "(default)");
+            this.c1SplitContainer1.UseParentVisualStyle = false;
+            // 
+            // spOutLabView
+            // 
+            this.spOutLabView.Collapsible = true;
+            this.spOutLabView.Controls.Add(this.pnOutLabEmail);
+            this.spOutLabView.Controls.Add(this.pnOutLabImage);
+            this.spOutLabView.Dock = C1.Win.C1SplitContainer.PanelDockStyle.Left;
+            this.spOutLabView.Location = new System.Drawing.Point(0, 21);
+            this.spOutLabView.Name = "spOutLabView";
+            this.spOutLabView.Size = new System.Drawing.Size(584, 644);
+            this.spOutLabView.SizeRatio = 37.381D;
+            this.spOutLabView.TabIndex = 0;
+            this.spOutLabView.Text = "Panel 1";
+            this.spOutLabView.Width = 591;
+            // 
+            // pnOutLabImage
+            // 
+            this.pnOutLabImage.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.pnOutLabImage.Dock = System.Windows.Forms.DockStyle.Top;
+            this.pnOutLabImage.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.pnOutLabImage.Location = new System.Drawing.Point(0, 0);
+            this.pnOutLabImage.Name = "pnOutLabImage";
+            this.pnOutLabImage.Size = new System.Drawing.Size(584, 324);
+            this.pnOutLabImage.TabIndex = 0;
+            this.theme1.SetTheme(this.pnOutLabImage, "(default)");
+            // 
+            // spOutLabDetail
+            // 
+            this.spOutLabDetail.Controls.Add(this.pnOutLabDetail);
+            this.spOutLabDetail.Height = 665;
+            this.spOutLabDetail.Location = new System.Drawing.Point(595, 21);
+            this.spOutLabDetail.Name = "spOutLabDetail";
+            this.spOutLabDetail.Size = new System.Drawing.Size(990, 644);
+            this.spOutLabDetail.TabIndex = 1;
+            this.spOutLabDetail.Text = "Panel 2";
+            // 
+            // pnOutLabDetail
+            // 
+            this.pnOutLabDetail.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.pnOutLabDetail.Controls.Add(this.c1FlexViewer1);
+            this.pnOutLabDetail.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pnOutLabDetail.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.pnOutLabDetail.Location = new System.Drawing.Point(0, 0);
+            this.pnOutLabDetail.Name = "pnOutLabDetail";
+            this.pnOutLabDetail.Size = new System.Drawing.Size(990, 644);
+            this.pnOutLabDetail.TabIndex = 0;
+            this.theme1.SetTheme(this.pnOutLabDetail, "(default)");
+            // 
+            // c1FlexViewer1
+            // 
+            this.c1FlexViewer1.AutoScrollMargin = new System.Drawing.Size(0, 0);
+            this.c1FlexViewer1.AutoScrollMinSize = new System.Drawing.Size(0, 0);
+            this.c1FlexViewer1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.c1FlexViewer1.Location = new System.Drawing.Point(0, 0);
+            this.c1FlexViewer1.Name = "c1FlexViewer1";
+            this.c1FlexViewer1.OutlineAreaBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.c1FlexViewer1.OutlineBackColorHot = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(189)))), ((int)(((byte)(182)))));
+            this.c1FlexViewer1.OutlineBackColorHotSelected = System.Drawing.Color.FromArgb(((int)(((byte)(225)))), ((int)(((byte)(108)))), ((int)(((byte)(89)))));
+            this.c1FlexViewer1.OutlineBackColorNormal = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.c1FlexViewer1.OutlineBackColorSelected = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(71)))), ((int)(((byte)(47)))));
+            this.c1FlexViewer1.OutlineButtonBackColorHot = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(189)))), ((int)(((byte)(182)))));
+            this.c1FlexViewer1.OutlineButtonBackColorNormal = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.c1FlexViewer1.OutlineButtonBackColorPressed = System.Drawing.Color.FromArgb(((int)(((byte)(225)))), ((int)(((byte)(108)))), ((int)(((byte)(89)))));
+            this.c1FlexViewer1.OutlineButtonBorderColorHot = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.c1FlexViewer1.OutlineButtonBorderColorNormal = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.c1FlexViewer1.OutlineButtonBorderColorPressed = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.c1FlexViewer1.OutlineButtonForeColorHot = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.c1FlexViewer1.OutlineButtonForeColorNormal = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.c1FlexViewer1.OutlineButtonForeColorPressed = System.Drawing.Color.White;
+            this.c1FlexViewer1.OutlineForeColorHot = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.c1FlexViewer1.OutlineForeColorNormal = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.c1FlexViewer1.OutlineLineColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
+            this.c1FlexViewer1.ParamHeaderBackColor = System.Drawing.Color.Transparent;
+            this.c1FlexViewer1.ParamHeaderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.c1FlexViewer1.Size = new System.Drawing.Size(990, 644);
+            this.c1FlexViewer1.SplitterColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
+            this.c1FlexViewer1.TabIndex = 0;
+            this.theme1.SetTheme(this.c1FlexViewer1, "(default)");
+            this.c1FlexViewer1.ThumbBackColorHot = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(189)))), ((int)(((byte)(182)))));
+            this.c1FlexViewer1.ThumbBackColorPressed = System.Drawing.Color.FromArgb(((int)(((byte)(225)))), ((int)(((byte)(108)))), ((int)(((byte)(89)))));
+            this.c1FlexViewer1.ThumbBackColorSelected = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(71)))), ((int)(((byte)(47)))));
+            // 
             // radioButton20
             // 
             this.radioButton20.AutoSize = true;
@@ -10503,123 +10628,16 @@
             this.label94.TabIndex = 545;
             this.theme1.SetTheme(this.label94, "(default)");
             // 
-            // tabOutLab
+            // pnOutLabEmail
             // 
-            this.tabOutLab.Controls.Add(this.pnOutLab);
-            this.tabOutLab.Location = new System.Drawing.Point(1, 24);
-            this.tabOutLab.Name = "tabOutLab";
-            this.tabOutLab.Size = new System.Drawing.Size(1585, 665);
-            this.tabOutLab.TabIndex = 11;
-            this.tabOutLab.Text = "Out LAB";
-            // 
-            // pnOutLab
-            // 
-            this.pnOutLab.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.pnOutLab.Controls.Add(this.c1SplitContainer1);
-            this.pnOutLab.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnOutLab.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.pnOutLab.Location = new System.Drawing.Point(0, 0);
-            this.pnOutLab.Name = "pnOutLab";
-            this.pnOutLab.Size = new System.Drawing.Size(1585, 665);
-            this.pnOutLab.TabIndex = 531;
-            this.theme1.SetTheme(this.pnOutLab, "(default)");
-            // 
-            // c1SplitContainer1
-            // 
-            this.c1SplitContainer1.AutoSizeElement = C1.Framework.AutoSizeElement.Both;
-            this.c1SplitContainer1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.c1SplitContainer1.CollapsingCueColor = System.Drawing.Color.FromArgb(((int)(((byte)(133)))), ((int)(((byte)(133)))), ((int)(((byte)(150)))));
-            this.c1SplitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.c1SplitContainer1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.c1SplitContainer1.HeaderLineWidth = 1;
-            this.c1SplitContainer1.Location = new System.Drawing.Point(0, 0);
-            this.c1SplitContainer1.Name = "c1SplitContainer1";
-            this.c1SplitContainer1.Panels.Add(this.spOutLabView);
-            this.c1SplitContainer1.Panels.Add(this.spOutLabDetail);
-            this.c1SplitContainer1.Size = new System.Drawing.Size(1585, 665);
-            this.c1SplitContainer1.SplitterMovingColor = System.Drawing.Color.Black;
-            this.c1SplitContainer1.TabIndex = 0;
-            this.theme1.SetTheme(this.c1SplitContainer1, "(default)");
-            // 
-            // spOutLabView
-            // 
-            this.spOutLabView.Collapsible = true;
-            this.spOutLabView.Controls.Add(this.pnImage);
-            this.spOutLabView.Dock = C1.Win.C1SplitContainer.PanelDockStyle.Left;
-            this.spOutLabView.Location = new System.Drawing.Point(0, 21);
-            this.spOutLabView.Name = "spOutLabView";
-            this.spOutLabView.Size = new System.Drawing.Size(584, 644);
-            this.spOutLabView.SizeRatio = 37.381D;
-            this.spOutLabView.TabIndex = 0;
-            this.spOutLabView.Text = "Panel 1";
-            this.spOutLabView.Width = 591;
-            // 
-            // spOutLabDetail
-            // 
-            this.spOutLabDetail.Controls.Add(this.pnOutLabDetail);
-            this.spOutLabDetail.Height = 665;
-            this.spOutLabDetail.Location = new System.Drawing.Point(595, 21);
-            this.spOutLabDetail.Name = "spOutLabDetail";
-            this.spOutLabDetail.Size = new System.Drawing.Size(990, 644);
-            this.spOutLabDetail.TabIndex = 1;
-            this.spOutLabDetail.Text = "Panel 2";
-            // 
-            // pnImage
-            // 
-            this.pnImage.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.pnImage.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnImage.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.pnImage.Location = new System.Drawing.Point(0, 0);
-            this.pnImage.Name = "pnImage";
-            this.pnImage.Size = new System.Drawing.Size(584, 644);
-            this.pnImage.TabIndex = 0;
-            this.theme1.SetTheme(this.pnImage, "(default)");
-            // 
-            // pnOutLabDetail
-            // 
-            this.pnOutLabDetail.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.pnOutLabDetail.Controls.Add(this.c1FlexViewer1);
-            this.pnOutLabDetail.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnOutLabDetail.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.pnOutLabDetail.Location = new System.Drawing.Point(0, 0);
-            this.pnOutLabDetail.Name = "pnOutLabDetail";
-            this.pnOutLabDetail.Size = new System.Drawing.Size(990, 644);
-            this.pnOutLabDetail.TabIndex = 0;
-            this.theme1.SetTheme(this.pnOutLabDetail, "(default)");
-            // 
-            // c1FlexViewer1
-            // 
-            this.c1FlexViewer1.AutoScrollMargin = new System.Drawing.Size(0, 0);
-            this.c1FlexViewer1.AutoScrollMinSize = new System.Drawing.Size(0, 0);
-            this.c1FlexViewer1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.c1FlexViewer1.Location = new System.Drawing.Point(0, 0);
-            this.c1FlexViewer1.Name = "c1FlexViewer1";
-            this.c1FlexViewer1.OutlineAreaBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.c1FlexViewer1.OutlineBackColorHot = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(189)))), ((int)(((byte)(182)))));
-            this.c1FlexViewer1.OutlineBackColorHotSelected = System.Drawing.Color.FromArgb(((int)(((byte)(225)))), ((int)(((byte)(108)))), ((int)(((byte)(89)))));
-            this.c1FlexViewer1.OutlineBackColorNormal = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.c1FlexViewer1.OutlineBackColorSelected = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(71)))), ((int)(((byte)(47)))));
-            this.c1FlexViewer1.OutlineButtonBackColorHot = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(189)))), ((int)(((byte)(182)))));
-            this.c1FlexViewer1.OutlineButtonBackColorNormal = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.c1FlexViewer1.OutlineButtonBackColorPressed = System.Drawing.Color.FromArgb(((int)(((byte)(225)))), ((int)(((byte)(108)))), ((int)(((byte)(89)))));
-            this.c1FlexViewer1.OutlineButtonBorderColorHot = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.c1FlexViewer1.OutlineButtonBorderColorNormal = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.c1FlexViewer1.OutlineButtonBorderColorPressed = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.c1FlexViewer1.OutlineButtonForeColorHot = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.c1FlexViewer1.OutlineButtonForeColorNormal = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.c1FlexViewer1.OutlineButtonForeColorPressed = System.Drawing.Color.White;
-            this.c1FlexViewer1.OutlineForeColorHot = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.c1FlexViewer1.OutlineForeColorNormal = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.c1FlexViewer1.OutlineLineColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
-            this.c1FlexViewer1.ParamHeaderBackColor = System.Drawing.Color.Transparent;
-            this.c1FlexViewer1.ParamHeaderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.c1FlexViewer1.Size = new System.Drawing.Size(990, 644);
-            this.c1FlexViewer1.SplitterColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
-            this.c1FlexViewer1.TabIndex = 0;
-            this.theme1.SetTheme(this.c1FlexViewer1, "(default)");
-            this.c1FlexViewer1.ThumbBackColorHot = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(189)))), ((int)(((byte)(182)))));
-            this.c1FlexViewer1.ThumbBackColorPressed = System.Drawing.Color.FromArgb(((int)(((byte)(225)))), ((int)(((byte)(108)))), ((int)(((byte)(89)))));
-            this.c1FlexViewer1.ThumbBackColorSelected = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(71)))), ((int)(((byte)(47)))));
+            this.pnOutLabEmail.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.pnOutLabEmail.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pnOutLabEmail.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.pnOutLabEmail.Location = new System.Drawing.Point(0, 324);
+            this.pnOutLabEmail.Name = "pnOutLabEmail";
+            this.pnOutLabEmail.Size = new System.Drawing.Size(584, 320);
+            this.pnOutLabEmail.TabIndex = 1;
+            this.theme1.SetTheme(this.pnOutLabEmail, "(default)");
             // 
             // FrmNurseAdd2
             // 
@@ -11060,11 +11078,6 @@
             this.pnPg.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.c1Ribbon1)).EndInit();
             this.tabLabFormA.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.txtStfConfirmID)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtUserReq)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.cboBsp)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.btnVoid)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.btnSave)).EndInit();
             this.tabOutLab.ResumeLayout(false);
             this.pnOutLab.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.c1SplitContainer1)).EndInit();
@@ -11073,6 +11086,11 @@
             this.spOutLabDetail.ResumeLayout(false);
             this.pnOutLabDetail.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.c1FlexViewer1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtStfConfirmID)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtUserReq)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cboBsp)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnVoid)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnSave)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -11772,9 +11790,10 @@
         private System.Windows.Forms.Panel pnOutLab;
         private C1.Win.C1SplitContainer.C1SplitContainer c1SplitContainer1;
         private C1.Win.C1SplitContainer.C1SplitterPanel spOutLabView;
-        private System.Windows.Forms.Panel pnImage;
+        private System.Windows.Forms.Panel pnOutLabImage;
         private C1.Win.C1SplitContainer.C1SplitterPanel spOutLabDetail;
         private System.Windows.Forms.Panel pnOutLabDetail;
         private C1.Win.FlexViewer.C1FlexViewer c1FlexViewer1;
+        private System.Windows.Forms.Panel pnOutLabEmail;
     }
 }

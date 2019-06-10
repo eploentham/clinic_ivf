@@ -23,6 +23,7 @@ using System.IO;
 using System.Linq;
 using System.Net;
 using System.Reflection;
+using System.Runtime.Serialization.Formatters.Binary;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
@@ -30,6 +31,9 @@ using System.Windows.Forms;
 
 namespace clinic_ivf.gui
 {
+    /*
+     * 62-06-08  1  แก้นัด ให้ donor ไปใช้ของ patient
+     */
     public partial class FrmPatientAdd : Form
     {
         IvfControl ic;
@@ -236,6 +240,7 @@ namespace clinic_ivf.gui
             btnPrnDeliverPtt.Click += BtnPrnDeliverPtt_Click;
             ChkDenyAllergy_CheckedChanged(null, null);
             btnNoteAdd.Click += BtnNoteAdd_Click;
+            btnHnSearch.Click += BtnHnSearch_Click;
 
             setKeyEnter();
 
@@ -255,6 +260,27 @@ namespace clinic_ivf.gui
             picPtt.SizeMode = PictureBoxSizeMode.StretchImage;
             tabFamily.Hide();
             //btnSavePic.Enabled = false;
+        }
+
+        private void BtnHnSearch_Click(object sender, EventArgs e)
+        {
+            //throw new NotImplementedException();
+            ic.sVsOld.PIDS = "";
+            ic.sVsOld.PName = "";
+            if (ic.iniC.statusAppDonor.Equals("1"))
+            {
+                FrmSearchHn frm = new FrmSearchHn(ic, FrmSearchHn.StatusConnection.host, FrmSearchHn.StatusSearch.DonorSearch, FrmSearchHn.StatusSearchTable.PttSearch);
+                frm.ShowDialog(this);
+                txtVisitHnFemale.Value = ic.sVsOld.PIDS;
+                label59.Text = ic.sVsOld.PName;
+            }
+            else
+            {
+                FrmSearchHn frm = new FrmSearchHn(ic, FrmSearchHn.StatusConnection.host, FrmSearchHn.StatusSearch.PttSearch, FrmSearchHn.StatusSearchTable.PttSearch);
+                frm.ShowDialog(this);
+                txtVisitHnFemale.Value = ic.sVsOld.PIDS;
+                label59.Text = ic.sVsOld.PName;
+            }
         }
 
         private void BtnNoteAdd_Click(object sender, EventArgs e)
@@ -296,7 +322,8 @@ namespace clinic_ivf.gui
             optt = ic.ivfDB.pttOldDB.selectByPk1(txtIdOld.Text);
 
             MemoryStream stream = ic.ftpC.download("images/" + txtIdOld.Text + "/" + txtIdOld.Text + "." + System.Drawing.Imaging.ImageFormat.Jpeg);
-            if(stream == null)
+            //MemoryStream stream = ic.ftpC.download("images/0001/0001." + System.Drawing.Imaging.ImageFormat.Jpeg);
+            if (stream == null)
             {
                 MessageBox.Show("BtnPrnDeliverPtt_Click stream is null", "");
                 return;
@@ -347,6 +374,7 @@ namespace clinic_ivf.gui
             dt.Columns.Add("lmp_a", typeof(String));
             dt.Columns.Add("lmp", typeof(String));
             dt.Columns.Add("allergy", typeof(String));
+            dt.Columns.Add("image1", typeof(byte[]));
 
             dt.Rows[0]["ptt_name_t"] = ptt.patient_firstname+" "+ ptt.patient_lastname;
             dt.Rows[0]["hn"] = ptt.patient_hn;
@@ -371,6 +399,17 @@ namespace clinic_ivf.gui
             dt.Rows[0]["lmp_a"] = txtA.Text;
             dt.Rows[0]["lmp"] = txtVisitLMP.Text;
             dt.Rows[0]["allergy"] = cboAllergyDesc.Text;
+            //BinaryFormatter bformatter = new BinaryFormatter();
+            //stream.Seek(0, SeekOrigin.Begin);
+            //var aaa = bformatter.Deserialize(stream);
+            //byte[] imageByte = null;
+            //imageByte = stream.ToArray();
+            //dt.Rows[0]["image1"] = bformatter.Deserialize(stream);
+            //dt.Rows[0]["image1"] = stream.ToArray();
+            //VP1.PrintOptions.PrinterName = "hp LaserJet 1010 HB"
+
+            //Report = VP1
+            //Report.PrintToPrinter(1, False, 0, 0)
             if (vs != null)
                 dt.Rows[0]["queue"] = vs.queue_id;
             //dt.Rows[0]["form_day1_id"] = "";
@@ -431,7 +470,7 @@ namespace clinic_ivf.gui
             ic.sVsOld.PName = "";
             if (ic.iniC.statusAppDonor.Equals("1"))
             {
-                FrmSearchHn frm = new FrmSearchHn(ic, FrmSearchHn.StatusConnection.host, FrmSearchHn.StatusSearch.PttSearch, FrmSearchHn.StatusSearchTable.PttSearch);
+                FrmSearchHn frm = new FrmSearchHn(ic, FrmSearchHn.StatusConnection.host, FrmSearchHn.StatusSearch.DonorSearch, FrmSearchHn.StatusSearchTable.PttSearch);
                 frm.ShowDialog(this);
                 txtVisitHnMale.Value = ic.sVsOld.PIDS;
                 label71.Text = ic.sVsOld.PName;
@@ -474,7 +513,14 @@ namespace clinic_ivf.gui
 
                     setVisitOld(vs.visit_vn);
                     //vsOld.PIDS
-                    String re3 = ic.ivfDB.ovsDB.insertVisitOld(vsOld, txtStfConfirmID.Text, "new");
+                    if (!re.Equals("1"))
+                    {
+                        String re3 = ic.ivfDB.ovsDB.insertVisitOld(vsOld, txtStfConfirmID.Text, "new");
+                    }
+                    else
+                    {
+                        String re4 = ic.ivfDB.ovsDB.insertVisitOld(vsOld, txtStfConfirmID.Text, "edit");
+                    }
                 }
                 else
                 {
@@ -581,18 +627,21 @@ namespace clinic_ivf.gui
         private void BtnApm_Click(object sender, EventArgs e)
         {
             //throw new NotImplementedException();
-            if (ic.iniC.statusAppDonor.Equals("1"))
-            {
-                FrmAppointmentDonorAdd frm = new FrmAppointmentDonorAdd(ic, "", txtID.Text, "");
-                frm.ShowDialog(this);
-                setGrfpApmDonor(txtID.Text);
-            }
-            else
-            {
-                FrmAppointmentAdd frm = new FrmAppointmentAdd(ic, "", txtID.Text, "");
-                frm.ShowDialog(this);
-                setGrfpApmDonor(txtID.Text);
-            }
+            //if (ic.iniC.statusAppDonor.Equals("1"))       // -1
+            //{       // -1
+            //    FrmAppointmentDonorAdd frm = new FrmAppointmentDonorAdd(ic, "", txtID.Text, "");       // -1
+            //    frm.ShowDialog(this);       // -1
+            //    setGrfpApmDonor(txtID.Text);       // -1
+            //}       // -1
+            //else       // -1
+            //{       // -1
+            //    FrmAppointmentAdd frm = new FrmAppointmentAdd(ic, "", txtID.Text, "");       // -1
+            //    frm.ShowDialog(this);       // -1
+            //    setGrfpApmDonor(txtID.Text);       // -1
+            //}       // -1
+            FrmAppointmentAdd frm = new FrmAppointmentAdd(ic, "", txtID.Text, "");      // +1
+            frm.ShowDialog(this);      // +1
+            setGrfpApmDonor(txtID.Text);      // +1
         }
 
         private void ChkDenyAllergy_CheckedChanged(object sender, EventArgs e)
@@ -1073,6 +1122,7 @@ namespace clinic_ivf.gui
         private void FrmPatientAdd_FormClosed(object sender, FormClosedEventArgs e)
         {
             //throw new NotImplementedException();
+            
             Exit();
         }
         private void TakePic()
@@ -1155,7 +1205,8 @@ namespace clinic_ivf.gui
             //{
             if (txtDob.Text.Equals(""))
             {
-
+                MessageBox.Show("DOB ไม่ถูกต้อง", "");
+                return;
             }
             ic.cStf.staff_id = "";
             FrmPasswordConfirm frm = new FrmPasswordConfirm(ic);
@@ -1175,7 +1226,16 @@ namespace clinic_ivf.gui
                 if (ic.iniC.statusAppDonor.Equals("1"))
                 {
                     String re1 = ic.ivfDB.pttOldDB.insertPatientOld1(ptt, txtStfConfirmID.Text);
-                    ptt.t_patient_id_old = re1;
+                    if (!txtIdOld.Text.Equals(""))
+                    {
+                        ptt.t_patient_id_old = txtIdOld.Text;
+                    }
+                    else
+                    {
+                        ptt.t_patient_id_old = re1;
+                        txtIdOld.Value = re1;
+                    }
+                    
                     String re = ic.ivfDB.pttDB.insertPatient(ptt, txtStfConfirmID.Text);
                     long chk = 0;
                     Patient ptt1 = new Patient();
@@ -1220,6 +1280,7 @@ namespace clinic_ivf.gui
                     }
                     ptt1 = ic.ivfDB.pttDB.selectByPk1(re);
                     txtID.Value = re;
+                    btnWebCamOn.Enabled = true;
                     txtPid.Focus();
                     txtHn.Value = ptt1.patient_hn;
                     barcode.Text = txtHn.Text;
@@ -2541,7 +2602,8 @@ namespace clinic_ivf.gui
         {
             String chk = "", name = "", id = "";
             id = grfpApm[grfpApm.Row, colpApmId] != null ? grfpApm[grfpApm.Row, colpApmId].ToString() : "";
-            FrmAppointmentDonorAdd frm = new FrmAppointmentDonorAdd(ic, id, txtID.Text,"");
+            //FrmAppointmentDonorAdd frm = new FrmAppointmentDonorAdd(ic, id, txtID.Text,"");   //-1
+            FrmAppointmentAdd frm = new FrmAppointmentAdd(ic, id, txtID.Text, "");        //+1
             frm.ShowDialog(this);
             frm.Dispose();
             setGrfpApmDonor(txtID.Text);
@@ -2653,7 +2715,7 @@ namespace clinic_ivf.gui
             vs = ic.ivfDB.vsDB.selectByVn(vsid);
             txtVisitID.Value = vs.t_visit_id;
             chkVisitUrge.Checked = vs.status_urge.Equals("1") ? true : false;
-            txtHnFemale.Value = vs.patient_hn_1;
+            //txtHnFemale.Value = vs.patient_hn_1;
             txtVisitLMP.Value = vs.lmp;
             txtVisitHeight.Value = vs.height;
             txtVisitBW.Value = vs.bw;
@@ -2664,6 +2726,20 @@ namespace clinic_ivf.gui
             ic.setC1Combo(cboBsp, vs.b_service_point_id);
             txtVisitComment.Value = vs.visit_notice;
             ic.setC1Combo(cboDoctor, vs.doctor_id);
+            txtVisitHnMale.Value = vs.patient_hn_male;
+            txtVisitHnFemale.Value = vs.patient_hn_1;
+            if (txtVisitHnFemale.Text.Length > 0)
+            {
+                Patient ptt = new Patient();
+                ptt = ic.ivfDB.pttDB.selectByHn(txtVisitHnFemale.Text);
+                label59.Text = ptt.Name;
+            }
+            if (txtVisitHnMale.Text.Length > 0)
+            {
+                Patient ptt = new Patient();
+                ptt = ic.ivfDB.pttDB.selectByHn(txtVisitHnMale.Text);
+                label71.Text = ptt.Name;
+            }
         }
         private void setControlPatient(Patient ptt)
         {
@@ -2899,6 +2975,18 @@ namespace clinic_ivf.gui
             ////image1 = bitmap;
             //picPtt.Image = bitmap;
             //picPtt.SizeMode = PictureBoxSizeMode.StretchImage;
+            if (txtVisitHnFemale.Text.Length > 0)
+            {
+                Patient ptt = new Patient();
+                ptt = ic.ivfDB.pttDB.selectByHn(txtVisitHnFemale.Text);
+                label59.Text = ptt.Name;
+            }
+            if (txtVisitHnMale.Text.Length > 0)
+            {
+                Patient ptt = new Patient();
+                ptt = ic.ivfDB.pttDB.selectByHn(txtVisitHnMale.Text);
+                label71.Text = ptt.Name;
+            }
             if (!txtID.Text.Equals(""))
             {
                 //PatientImage pttI = new PatientImage();
@@ -3518,7 +3606,7 @@ namespace clinic_ivf.gui
 
             vs.f_visit_type_id = ic.iniC.statusAppDonor.Equals("1") ? "2" : "1";
             vs.status_urge = chkVisitUrge.Checked ? "1" : "0";
-            vs.patient_hn_1 = txtHnFemale.Text;
+            vs.patient_hn_1 = txtVisitHnFemale.Text;
             vs.lmp = ic.datetoDB(txtVisitLMP.Text);
             txtVisitHeight.Value = txtHeight.Text;
             vs.height = txtVisitHeight.Text;

@@ -870,7 +870,7 @@
             this.tabPtt.Name = "tabPtt";
             this.tabPtt.Size = new System.Drawing.Size(678, 118);
             this.tabPtt.TabIndex = 0;
-            this.tabPtt.Text = "Patient";
+            this.tabPtt.Text = "Appointment";
             // 
             // chkSperm
             // 
@@ -1230,7 +1230,7 @@
             this.tabDonor.Name = "tabDonor";
             this.tabDonor.Size = new System.Drawing.Size(678, 118);
             this.tabDonor.TabIndex = 1;
-            this.tabDonor.Text = "Donor";
+            this.tabDonor.Text = "Other";
             // 
             // label15
             // 
@@ -1685,7 +1685,7 @@
             this.tabVisit.Name = "tabVisit";
             this.tabVisit.Size = new System.Drawing.Size(779, 302);
             this.tabVisit.TabIndex = 0;
-            this.tabVisit.Text = "Visit";
+            this.tabVisit.Text = "Appointment";
             // 
             // tabDay
             // 

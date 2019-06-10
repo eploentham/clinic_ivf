@@ -1,6 +1,6 @@
 ﻿namespace clinic_ivf.gui
 {
-    partial class FrmAppoinmentView
+    partial class FrmAppointmentView
     {
         /// <summary>
         /// Required designer variable.
@@ -30,6 +30,9 @@
         {
             this.theme1 = new C1.Win.C1Themes.C1ThemeController();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.c1SplitButton1 = new C1.Win.C1Input.C1SplitButton();
+            this.btnPrnPtt = new C1.Win.C1Input.DropDownItem();
+            this.btnPrnDonor = new C1.Win.C1Input.DropDownItem();
             this.label4 = new System.Windows.Forms.Label();
             this.txtSearch = new C1.Win.C1Input.C1TextBox();
             this.label6 = new System.Windows.Forms.Label();
@@ -50,11 +53,9 @@
             this.pnAll = new System.Windows.Forms.Panel();
             this.sB = new System.Windows.Forms.StatusStrip();
             this.sB1 = new System.Windows.Forms.ToolStripStatusLabel();
-            this.c1SplitButton1 = new C1.Win.C1Input.C1SplitButton();
-            this.btnPrnPtt = new C1.Win.C1Input.DropDownItem();
-            this.btnPrnDonor = new C1.Win.C1Input.DropDownItem();
             ((System.ComponentModel.ISupportInitialize)(this.theme1)).BeginInit();
             this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.c1SplitButton1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtSearch)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cboDoctor)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtHn)).BeginInit();
@@ -72,7 +73,6 @@
             this.tC.SuspendLayout();
             this.tabAll.SuspendLayout();
             this.sB.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.c1SplitButton1)).BeginInit();
             this.SuspendLayout();
             // 
             // theme1
@@ -98,11 +98,36 @@
             this.groupBox1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
             this.groupBox1.Location = new System.Drawing.Point(0, 0);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(1074, 54);
+            this.groupBox1.Size = new System.Drawing.Size(1340, 54);
             this.groupBox1.TabIndex = 11;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Search";
             this.theme1.SetTheme(this.groupBox1, "(default)");
+            // 
+            // c1SplitButton1
+            // 
+            this.c1SplitButton1.Image = global::clinic_ivf.Properties.Resources.print;
+            this.c1SplitButton1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.c1SplitButton1.Items.Add(this.btnPrnPtt);
+            this.c1SplitButton1.Items.Add(this.btnPrnDonor);
+            this.c1SplitButton1.Location = new System.Drawing.Point(872, 14);
+            this.c1SplitButton1.Name = "c1SplitButton1";
+            this.c1SplitButton1.Size = new System.Drawing.Size(95, 32);
+            this.c1SplitButton1.TabIndex = 593;
+            this.c1SplitButton1.Text = "Print";
+            this.theme1.SetTheme(this.c1SplitButton1, "(default)");
+            this.c1SplitButton1.UseVisualStyleBackColor = true;
+            this.c1SplitButton1.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            // 
+            // btnPrnPtt
+            // 
+            this.btnPrnPtt.Image = global::clinic_ivf.Properties.Resources.printer_blue24;
+            this.btnPrnPtt.Text = "Print Patient";
+            // 
+            // btnPrnDonor
+            // 
+            this.btnPrnDonor.Image = global::clinic_ivf.Properties.Resources.printer_orange48;
+            this.btnPrnDonor.Text = "Print Donor";
             // 
             // label4
             // 
@@ -326,7 +351,7 @@
             this.gb.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
             this.gb.Location = new System.Drawing.Point(0, 54);
             this.gb.Name = "gb";
-            this.gb.Size = new System.Drawing.Size(1074, 678);
+            this.gb.Size = new System.Drawing.Size(1340, 678);
             this.gb.TabIndex = 12;
             this.gb.TabStop = false;
             this.gb.Text = "Appointment";
@@ -354,7 +379,7 @@
             this.splitContainer1.Panel2.Controls.Add(this.pnDtr);
             this.splitContainer1.Panel2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
             this.theme1.SetTheme(this.splitContainer1.Panel2, "(default)");
-            this.splitContainer1.Size = new System.Drawing.Size(1068, 659);
+            this.splitContainer1.Size = new System.Drawing.Size(1334, 659);
             this.splitContainer1.SplitterDistance = 431;
             this.splitContainer1.TabIndex = 0;
             this.theme1.SetTheme(this.splitContainer1, "(default)");
@@ -366,7 +391,7 @@
             this.pmpAmp.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
             this.pmpAmp.Location = new System.Drawing.Point(0, 0);
             this.pmpAmp.Name = "pmpAmp";
-            this.pmpAmp.Size = new System.Drawing.Size(1068, 431);
+            this.pmpAmp.Size = new System.Drawing.Size(1334, 431);
             this.pmpAmp.TabIndex = 0;
             this.theme1.SetTheme(this.pmpAmp, "(default)");
             // 
@@ -378,7 +403,7 @@
             this.pnDtr.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
             this.pnDtr.Location = new System.Drawing.Point(0, 0);
             this.pnDtr.Name = "pnDtr";
-            this.pnDtr.Size = new System.Drawing.Size(1068, 224);
+            this.pnDtr.Size = new System.Drawing.Size(1334, 224);
             this.pnDtr.TabIndex = 0;
             this.theme1.SetTheme(this.pnDtr, "(default)");
             // 
@@ -391,7 +416,7 @@
             this.tC.HotTrack = true;
             this.tC.Location = new System.Drawing.Point(0, 0);
             this.tC.Name = "tC";
-            this.tC.Size = new System.Drawing.Size(1068, 224);
+            this.tC.Size = new System.Drawing.Size(1334, 224);
             this.tC.TabIndex = 0;
             this.tC.TabSizeMode = C1.Win.C1Command.TabSizeModeEnum.Fit;
             this.tC.TabsShowFocusCues = false;
@@ -404,7 +429,7 @@
             this.tabAll.Controls.Add(this.pnAll);
             this.tabAll.Location = new System.Drawing.Point(1, 24);
             this.tabAll.Name = "tabAll";
-            this.tabAll.Size = new System.Drawing.Size(1066, 199);
+            this.tabAll.Size = new System.Drawing.Size(1332, 199);
             this.tabAll.TabIndex = 0;
             this.tabAll.Text = "ทั้งหมด";
             // 
@@ -415,7 +440,7 @@
             this.pnAll.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
             this.pnAll.Location = new System.Drawing.Point(0, 0);
             this.pnAll.Name = "pnAll";
-            this.pnAll.Size = new System.Drawing.Size(1066, 199);
+            this.pnAll.Size = new System.Drawing.Size(1332, 199);
             this.pnAll.TabIndex = 0;
             this.theme1.SetTheme(this.pnAll, "(default)");
             // 
@@ -425,7 +450,7 @@
             this.sB1});
             this.sB.Location = new System.Drawing.Point(0, 732);
             this.sB.Name = "sB";
-            this.sB.Size = new System.Drawing.Size(1074, 22);
+            this.sB.Size = new System.Drawing.Size(1340, 22);
             this.sB.TabIndex = 10;
             this.sB.Text = "statusStrip1";
             // 
@@ -435,45 +460,21 @@
             this.sB1.Size = new System.Drawing.Size(118, 17);
             this.sB1.Text = "toolStripStatusLabel1";
             // 
-            // c1SplitButton1
-            // 
-            this.c1SplitButton1.Image = global::clinic_ivf.Properties.Resources.print;
-            this.c1SplitButton1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.c1SplitButton1.Items.Add(this.btnPrnPtt);
-            this.c1SplitButton1.Items.Add(this.btnPrnDonor);
-            this.c1SplitButton1.Location = new System.Drawing.Point(872, 14);
-            this.c1SplitButton1.Name = "c1SplitButton1";
-            this.c1SplitButton1.Size = new System.Drawing.Size(95, 32);
-            this.c1SplitButton1.TabIndex = 593;
-            this.c1SplitButton1.Text = "Print";
-            this.theme1.SetTheme(this.c1SplitButton1, "(default)");
-            this.c1SplitButton1.UseVisualStyleBackColor = true;
-            this.c1SplitButton1.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
-            // 
-            // btnPrnPtt
-            // 
-            this.btnPrnPtt.Image = global::clinic_ivf.Properties.Resources.printer_blue24;
-            this.btnPrnPtt.Text = "Print Patient";
-            // 
-            // btnPrnDonor
-            // 
-            this.btnPrnDonor.Image = global::clinic_ivf.Properties.Resources.printer_orange48;
-            this.btnPrnDonor.Text = "Print Donor";
-            // 
-            // FrmAppoinmentView
+            // FrmAppointmentView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1074, 754);
+            this.ClientSize = new System.Drawing.Size(1340, 754);
             this.Controls.Add(this.gb);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.sB);
-            this.Name = "FrmAppoinmentView";
-            this.Text = "FrmAppoinmentView";
+            this.Name = "FrmAppointmentView";
+            this.Text = "FrmAppointmentView";
             this.Load += new System.EventHandler(this.FrmAppoinmentView_Load);
             ((System.ComponentModel.ISupportInitialize)(this.theme1)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.c1SplitButton1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtSearch)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cboDoctor)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtHn)).EndInit();
@@ -492,7 +493,6 @@
             this.tabAll.ResumeLayout(false);
             this.sB.ResumeLayout(false);
             this.sB.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.c1SplitButton1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

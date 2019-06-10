@@ -325,7 +325,7 @@ namespace clinic_ivf.gui
         private void MenuAppn_Click(object sender, EventArgs e)
         {
             //throw new NotImplementedException();
-            FrmAppoinmentView frm = new FrmAppoinmentView(ic, this);
+            FrmAppointmentView frm = new FrmAppointmentView(ic, this);
             frm.FormBorderStyle = FormBorderStyle.None;
             AddNewTab(frm, menuAppn.Text + " ");
         }
@@ -600,6 +600,7 @@ namespace clinic_ivf.gui
             date = DateTime.Now.Year+"-"+ DateTime.Now.ToString("MM-dd");
             this.Text = ic.iniC.statusAppDonor.Equals("1") ? "โปรแกรมClinic IVF Donor " +"สวัสดี คุณ "+ic.user.staff_fname_t +" "+ic.user.staff_lname_t+" Update 2019-06-10 "
                 : "โปรแกรมClinic IVF " + "สวัสดี คุณ " + ic.user.staff_fname_t + " " + ic.user.staff_lname_t + " Update 2019-06-10 format date "+ date;
+
             //theme1.SetTheme(this, ic.theme);
             theme1.SetTheme(this, ic.theme);
             theme1.SetTheme(menuStrip1, ic.theme);

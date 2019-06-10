@@ -97,6 +97,7 @@ namespace clinic_ivf.objdb
         public StockReturnDB stkreDB;
         public StockReturnDetailDB stkredDB;
         public LabSpermDB lspermDB;
+        public LabOrderGroupDB logDB;
         public IvfDB(ConnectDB c)
         {
             conn = c;
@@ -184,6 +185,7 @@ namespace clinic_ivf.objdb
             stkreDB = new StockReturnDB(conn);
             stkredDB = new StockReturnDetailDB(conn);
             lspermDB = new LabSpermDB(conn);
+            logDB = new LabOrderGroupDB(conn);
 
             Console.WriteLine("ivfDB end");
         }
@@ -609,7 +611,7 @@ namespace clinic_ivf.objdb
             jlabD.Worker3 = olab.WorkerGroup3;
             jlabD.Worker4 = olab.WorkerGroup4;
             jlabD.LGID = olab.LGID;
-            jlabD.QTY = qty;
+            jlabD.QTY = qty.Replace(".00","");
             jlabD.row1 = row1;
             jlabD.status_show_qty = olab.status_show_qty;
             oJlabdDB.insert(jlabD, "");

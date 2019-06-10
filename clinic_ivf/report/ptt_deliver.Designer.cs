@@ -329,6 +329,8 @@ namespace clinic_ivf.report {
             
             private global::System.Data.DataColumn columnallergy;
             
+            private global::System.Data.DataColumn columnimage1;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public ptt_deliverDataTable() {
@@ -564,6 +566,14 @@ namespace clinic_ivf.report {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn image1Column {
+                get {
+                    return this.columnimage1;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -624,7 +634,8 @@ namespace clinic_ivf.report {
                         string lmp_p, 
                         string lmp_a, 
                         string lmp, 
-                        string allergy) {
+                        string allergy, 
+                        string image1) {
                 ptt_deliverRow rowptt_deliverRow = ((ptt_deliverRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         ptt_name_t,
@@ -651,7 +662,8 @@ namespace clinic_ivf.report {
                         lmp_p,
                         lmp_a,
                         lmp,
-                        allergy};
+                        allergy,
+                        image1};
                 rowptt_deliverRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowptt_deliverRow);
                 return rowptt_deliverRow;
@@ -699,6 +711,7 @@ namespace clinic_ivf.report {
                 this.columnlmp_a = base.Columns["lmp_a"];
                 this.columnlmp = base.Columns["lmp"];
                 this.columnallergy = base.Columns["allergy"];
+                this.columnimage1 = base.Columns["image1"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -754,6 +767,8 @@ namespace clinic_ivf.report {
                 base.Columns.Add(this.columnlmp);
                 this.columnallergy = new global::System.Data.DataColumn("allergy", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnallergy);
+                this.columnimage1 = new global::System.Data.DataColumn("image1", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnimage1);
                 this.columnptt_name_t.Caption = "DataColumn1";
                 this.columnhn.Caption = "DataColumn1";
                 this.columnvn.Caption = "DataColumn1";
@@ -1309,6 +1324,22 @@ namespace clinic_ivf.report {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string image1 {
+                get {
+                    try {
+                        return ((string)(this[this.tableptt_deliver.image1Column]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'image1\' in table \'ptt_deliver\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableptt_deliver.image1Column] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public bool Isptt_name_tNull() {
                 return this.IsNull(this.tableptt_deliver.ptt_name_tColumn);
             }
@@ -1605,6 +1636,18 @@ namespace clinic_ivf.report {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public void SetallergyNull() {
                 this[this.tableptt_deliver.allergyColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool Isimage1Null() {
+                return this.IsNull(this.tableptt_deliver.image1Column);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void Setimage1Null() {
+                this[this.tableptt_deliver.image1Column] = global::System.Convert.DBNull;
             }
         }
         

@@ -50,7 +50,7 @@ namespace clinic_ivf.gui
         C1SuperErrorProvider sep;
 
         int colImgID = 1, colImgHn = 2, colImgImg = 3, colImgDesc = 4, colImgDesc2 = 5, colImgDesc3 = 6, colImgPathPic = 7, colImgBtn = 8, colImgStatus = 9, colImgDoctor = 10;
-        int colBlId = 1, colBlName = 2, colBlQty = 3, colBlPrice = 4, colBlInclude = 5, colBlRemark = 6;
+        int colBlId = 1, colBlName = 2, colBlQty = 3, colBlPrice = 4, colBlInclude = 5, colBlRemark = 6, colBlOrderGroup=7;
         int colPkgdId = 1, colPkgId = 2, colPkgType = 3, colPkgItmName = 4, colPkgItmId = 5, colPkgQty = 6;
         int colRxdId = 1, colRxName = 2, colRxQty = 3, colRxPrice = 4, colRxInclude = 5, colRxRemark = 6, colRxUsE = 7, colRxUsT = 8, colRxId = 9, colRxItmId = 10;
         int colNoteId = 1, colNote = 2, colNoteStatusAll = 3;
@@ -863,6 +863,10 @@ namespace clinic_ivf.gui
             dt.Columns.Add("status_add_lab", typeof(String));
             dt.Columns.Add("add_lab", typeof(String));
             dt.Columns.Add("bhcg", typeof(String));
+            //dt.Columns.Add("medication", typeof(String));
+            //dt.Columns.Add("medicatio2", typeof(String));
+            //dt.Columns.Add("rt_ovary", typeof(String));
+            //dt.Columns.Add("lt_ovary", typeof(String));
             String date1 = "";
             foreach (DataRow row in dt.Rows)
             {
@@ -3332,7 +3336,10 @@ namespace clinic_ivf.gui
         {
             //throw new NotImplementedException();
             if (grfRx.Col == colBlQty) return;
-            setOrderRx();
+            if (flagedit.Equals("edit"))
+            {
+                setOrderRx();
+            }
         }
         private void setOrderRx()
         {
@@ -3609,7 +3616,10 @@ namespace clinic_ivf.gui
         {
             //throw new NotImplementedException();
             if (grfSpecial.Col == colBlQty) return;
-            setOrderSpecial();
+            if (flagedit.Equals("edit"))
+            {
+                setOrderSpecial();
+            }
         }
         private void setOrderSpecial()
         {
@@ -3670,7 +3680,10 @@ namespace clinic_ivf.gui
         {
             //throw new NotImplementedException();
             if (grfGenetic.Col == colBlQty) return;
-            setOrderGenetic();
+            if (flagedit.Equals("edit"))
+            {
+                setOrderGenetic();
+            }
         }
         private void setOrderGenetic()
         {
@@ -3831,7 +3844,10 @@ namespace clinic_ivf.gui
         {
             //throw new NotImplementedException();
             if (grfEmbryo.Col == colBlQty) return;
-            setOrderEmbryo();
+            if (flagedit.Equals("edit"))
+            {
+                setOrderEmbryo();
+            }
         }
 
         private void ContextMenu_order_em_set(object sender, System.EventArgs e)
@@ -3955,7 +3971,10 @@ namespace clinic_ivf.gui
         {
             //throw new NotImplementedException();
             if (grfSperm.Col == colBlQty) return;
-            setOrderSperm();
+            if (flagedit.Equals("edit"))
+            {
+                setOrderSperm();
+            }
         }
 
         private void setOrderSperm()
@@ -4082,25 +4101,47 @@ namespace clinic_ivf.gui
         {
             //throw new NotImplementedException();
             if (grfBloodLab.Col == colBlQty) return;
-            setOrderBloodLab();
+            if (flagedit.Equals("edit"))
+            {
+                setOrderBloodLab();
+            }
         }
         private void setOrderBloodLab()
         {
             if (grfBloodLab.Row <= 0) return;
             if (grfBloodLab[grfBloodLab.Row, colBlId] == null) return;
-            String labid = "", include = "", qty = "";
+            String labid = "", include = "", qty = "",ordergroup="";
             rowOrder++;
             labid = grfBloodLab[grfBloodLab.Row, colBlId].ToString();
             include = grfBloodLab[grfBloodLab.Row, colBlInclude] != null ? grfBloodLab[grfBloodLab.Row, colBlInclude].ToString().Equals("True") ? "1" : "0" : "0";
             qty = grfBloodLab[grfBloodLab.Row, colBlQty] != null ? grfBloodLab[grfBloodLab.Row, colBlQty].ToString() : "1";
-            if (include.Equals("1"))
+            ordergroup = grfBloodLab[grfBloodLab.Row, colBlOrderGroup] != null ? grfBloodLab[grfBloodLab.Row, colBlOrderGroup].ToString() : "0";
+            if (ordergroup.Equals("1"))
             {
-                ic.ivfDB.LabAdd(labid, qty, txtIdOld.Text, txtHn.Text, txtVnOld.Text, "0", "", "", "", "", "", "", "", grfOrder.Rows.Count.ToString());
+                DataTable dt = new DataTable();
+                dt = ic.ivfDB.logDB.selectByLabOrderId(labid);
+                foreach(DataRow row in dt.Rows)
+                {
+                    Decimal qty1 = 0, qty2=0, qty3=0;
+                    Decimal.TryParse(row[ic.ivfDB.logDB.log.qty].ToString(), out qty1);
+                    Decimal.TryParse(qty, out qty2);
+                    qty3 = qty1 * qty2;
+                    if (qty3 <= 0) qty3 = 1;
+                    ic.ivfDB.LabAdd(row[ic.ivfDB.logDB.log.lab_id].ToString(), qty3.ToString(), txtIdOld.Text, txtHn.Text, txtVnOld.Text, "0", "", "", "", "", "", "", "", grfOrder.Rows.Count.ToString());
+                }
             }
             else
             {
-                ic.ivfDB.LabAdd(labid, qty, txtIdOld.Text, txtHn.Text, txtVnOld.Text, "1", "", "", "", "", "", "", "", grfOrder.Rows.Count.ToString());
+                if (include.Equals("1"))
+                {
+                    ic.ivfDB.LabAdd(labid, qty, txtIdOld.Text, txtHn.Text, txtVnOld.Text, "0", "", "", "", "", "", "", "", grfOrder.Rows.Count.ToString());
+                }
+                else
+                {
+                    ic.ivfDB.LabAdd(labid, qty, txtIdOld.Text, txtHn.Text, txtVnOld.Text, "1", "", "", "", "", "", "", "", grfOrder.Rows.Count.ToString());
+                }
             }
+            
             setGrfOrder(txtVnOld.Text);
         }
         private void setGrfBloodLab()
@@ -4112,7 +4153,7 @@ namespace clinic_ivf.gui
             //grfBloodLab.Rows.Count = dt.Rows.Count + 1;
             grfBloodLab.Rows.Count = dt.Rows.Count + 1;
             //grfBloodLab.DataSource = dt;
-            grfBloodLab.Cols.Count = 7;
+            grfBloodLab.Cols.Count = 8;
 
             CellStyle cs = grfBloodLab.Styles.Add("bool");
             cs.DataType = typeof(bool);
@@ -4156,6 +4197,23 @@ namespace clinic_ivf.gui
                     grfBloodLab[i, colBlId] = row[ic.ivfDB.oLabiDB.labI.LID].ToString();
                     grfBloodLab[i, colBlName] = row[ic.ivfDB.oLabiDB.labI.LName].ToString();
                     grfBloodLab[i, colBlQty] = "1";
+                    grfBloodLab[i, colBlOrderGroup] = row[ic.ivfDB.oLabiDB.labI.status_order_group].ToString();
+                    if (row[ic.ivfDB.oLabiDB.labI.status_order_group].ToString().Equals("1"))
+                    {
+                        DataTable dt1 = new DataTable();
+                        dt1 = ic.ivfDB.logDB.selectByLabOrderId(row[ic.ivfDB.oLabiDB.labI.LID].ToString());
+                        if (dt1.Rows.Count > 0)
+                        {
+                            String txt = "";
+                            foreach(DataRow row1 in dt1.Rows)
+                            {
+                                txt += row1[ic.ivfDB.oLabiDB.labI.LName].ToString()+" \n ";
+                            }
+                            CellNote note = new CellNote(txt);
+                            CellRange rg1 = grfBloodLab.GetCellRange(i, colBlName);
+                            rg1.UserData = note;
+                        }                        
+                    }
 
                 }
                 catch (Exception ex)
@@ -4165,7 +4223,7 @@ namespace clinic_ivf.gui
             }
             CellNoteManager mgr = new CellNoteManager(grfBloodLab);
             grfBloodLab.Cols[colBlId].Visible = false;
-            //grfBloodLab.Cols[colBlInclude].Visible = false;
+            grfBloodLab.Cols[colBlOrderGroup].Visible = false;
             //grfBloodLab.Cols[colBlPrice].Visible = false;
 
             grfBloodLab.Cols[colBlName].AllowEditing = false;
@@ -4217,7 +4275,7 @@ namespace clinic_ivf.gui
             menuGw.MenuItems.Add("Upload OUT LAB 10", new EventHandler(ContextMenu_grfimg_upload_ptt));
             menuGw.MenuItems.Add("ยกเลิก", new EventHandler(ContextMenu_grfimg_Cancel));
             grfImg.ContextMenu = menuGw;
-            pnImage.Controls.Add(grfImg);
+            pnOutLabImage.Controls.Add(grfImg);
 
             theme1.SetTheme(grfImg, "Office2016Colorful");
 

@@ -51,6 +51,11 @@ namespace clinic_ivf.objdb
             labI.QTY = "QTY";
             labI.active = "active";
             labI.status_show_qty = "status_show_qty";
+            labI.status_order_group = "status_order_group";
+            labI.unit = "unit";
+            labI.normal_vaule = "normal_vaule";
+            labI.method = "method";
+            labI.status_outlab = "status_outlab";
 
             labI.table = "LabItem";
             labI.pkField = "LID";
@@ -98,7 +103,7 @@ namespace clinic_ivf.objdb
         public DataTable selectByBloodLab1()
         {
             DataTable dt = new DataTable();
-            String sql = "select labI."+labI.LID+ ",labI." + labI.LName+ ", '1' as qty,labI." + labI.Price + " " +
+            String sql = "select labI."+labI.LID+ ",labI." + labI.LName+ ", '1' as qty,labI." + labI.Price + ", " +labI.status_order_group+" "+
                 "From " + labI.table + " labI " +
                 "Where labI." + labI.LGID + " ='1' and " + labI.SubItem + "='0'  and active = '1' " +
                 "Order By labI." + labI.LName;
@@ -249,21 +254,25 @@ namespace clinic_ivf.objdb
             p.WorkerGroup3 = p.WorkerGroup3 == null ? "" : p.WorkerGroup3;
             p.WorkerGroup4 = p.WorkerGroup4 == null ? "" : p.WorkerGroup4;
             p.active = p.active == null ? "" : p.active;
+            p.method = p.method == null ? "" : p.method;
+            p.unit = p.unit == null ? "" : p.unit;
+            p.normal_vaule = p.normal_vaule == null ? "" : p.normal_vaule;
 
             p.status_show_qty = p.status_show_qty == null ? "0" : p.status_show_qty;
-            //p.QTY = p.QTY == null ? "0" : p.QTY;
-            //p.PendingQTY = p.PendingQTY == null ? "0" : p.PendingQTY;
+            p.status_order_group = p.status_order_group == null ? "0" : p.status_order_group;
+            p.status_outlab = p.status_outlab == null ? "0" : p.status_outlab;
             //p.Price = p.Price.Equals("") ? "0" : p.Price;
 
             p.LGID = long.TryParse(p.LGID, out chk) ? chk.ToString() : "0";
             p.SubItem = long.TryParse(p.SubItem, out chk) ? chk.ToString() : "0";
-            p.QTY = long.TryParse(p.QTY, out chk) ? chk.ToString() : "0";
+            p.QTY = long.TryParse(p.QTY, out chk) ? chk.ToString() : "1";
             //p.W4GID = long.TryParse(p.W4GID, out chk) ? chk.ToString() : "0";
             //p.BillGroupID = long.TryParse(p.BillGroupID, out chk) ? chk.ToString() : "0";
 
             p.Price = Decimal.TryParse(p.Price, out chk1) ? chk1.ToString() : "0";
             //p.QTY = Decimal.TryParse(p.QTY, out chk1) ? chk1.ToString() : "0";
             //p.user_cancel = p.user_cancel == null ? "" : p.user_cancel;
+            if (p.QTY.Equals("0")) p.QTY = "1";
         }
         public String insert(OldLabItem p, String userId)
         {
@@ -303,6 +312,11 @@ namespace clinic_ivf.objdb
                 "," + labI.active + "= '1'" +
                 "," + labI.LGID + "= '"+p.LGID+"'" +
                 "," + labI.status_show_qty + "= '" + p.status_show_qty + "'" +
+                "," + labI.status_order_group + "= '" + p.status_order_group + "'" +
+                "," + labI.normal_vaule + "= '" + p.normal_vaule.Replace("'", "''") + "'" +
+                "," + labI.method + "= '" + p.method.Replace("'", "''") + "'" +
+                "," + labI.unit + "= '" + p.unit.Replace("'", "''") + "'" +
+                "," + labI.status_outlab + "= '" + p.status_outlab.Replace("'", "''") + "'" +
                 "";
             try
             {
@@ -324,29 +338,34 @@ namespace clinic_ivf.objdb
             sql = "Update " + labI.table + " Set " +
                 " " + labI.LName + " = '" + p.LName.Replace("'", "''") + "'" +
                 "," + labI.Price + "= '" + p.Price + "'" +
-                "," + labI.WorkTime + "= '" + p.WorkTime + "'" +
-                "," + labI.SP1N + "= '" + p.SP1N + "'" +
-                "," + labI.SP1T + "= '" + p.SP1T + "'" +
-                "," + labI.SP2N + "= '" + p.SP2N + "'" +
-                "," + labI.SP2T + "= '" + p.SP2T + "'" +
-                "," + labI.SP3N + "= '" + p.SP3N + "'" +
-                "," + labI.SP3T + "= '" + p.SP3T + "'" +
-                "," + labI.SP4N + "= '" + p.SP4N + "'" +
-                "," + labI.SP4T + "= '" + p.SP4T + "'" +
-                "," + labI.SP5N + "= '" + p.SP5N + "'" +
-                "," + labI.SP5T + "= '" + p.SP5T + "'" +
-                "," + labI.SP6N + "= '" + p.SP6N + "'" +
-                "," + labI.SP6T + "= '" + p.SP6T + "'" +
-                "," + labI.SP7N + "= '" + p.SP7N + "'" +
-                "," + labI.SP7T + "= '" + p.SP7T + "'" +
+                //"," + labI.WorkTime + "= '" + p.WorkTime + "'" +
+                //"," + labI.SP1N + "= '" + p.SP1N + "'" +
+                //"," + labI.SP1T + "= '" + p.SP1T + "'" +
+                //"," + labI.SP2N + "= '" + p.SP2N + "'" +
+                //"," + labI.SP2T + "= '" + p.SP2T + "'" +
+                //"," + labI.SP3N + "= '" + p.SP3N + "'" +
+                //"," + labI.SP3T + "= '" + p.SP3T + "'" +
+                //"," + labI.SP4N + "= '" + p.SP4N + "'" +
+                //"," + labI.SP4T + "= '" + p.SP4T + "'" +
+                //"," + labI.SP5N + "= '" + p.SP5N + "'" +
+                //"," + labI.SP5T + "= '" + p.SP5T + "'" +
+                //"," + labI.SP6N + "= '" + p.SP6N + "'" +
+                //"," + labI.SP6T + "= '" + p.SP6T + "'" +
+                //"," + labI.SP7N + "= '" + p.SP7N + "'" +
+                //"," + labI.SP7T + "= '" + p.SP7T + "'" +
                 "," + labI.SubItem + "= '" + p.SubItem + "'" +
-                "," + labI.WorkerGroup1 + "= '" + p.WorkerGroup1 + "'" +
-                "," + labI.WorkerGroup2 + "= '" + p.WorkerGroup2 + "'" +
-                "," + labI.WorkerGroup3 + "= '" + p.WorkerGroup3 + "'" +
-                "," + labI.WorkerGroup4 + "= '" + p.WorkerGroup4 + "'" +
+                //"," + labI.WorkerGroup1 + "= '" + p.WorkerGroup1 + "'" +
+                //"," + labI.WorkerGroup2 + "= '" + p.WorkerGroup2 + "'" +
+                //"," + labI.WorkerGroup3 + "= '" + p.WorkerGroup3 + "'" +
+                //"," + labI.WorkerGroup4 + "= '" + p.WorkerGroup4 + "'" +
                 "," + labI.QTY + "= '" + p.QTY + "'" +
                 "," + labI.LGID + "= '" + p.LGID + "'" +
                 "," + labI.status_show_qty + "= '" + p.status_show_qty + "'" +
+                "," + labI.status_order_group + "= '" + p.status_order_group + "'" +
+                "," + labI.normal_vaule + "= '" + p.normal_vaule.Replace("'", "''") + "'" +
+                "," + labI.method + "= '" + p.method.Replace("'", "''") + "'" +
+                "," + labI.unit + "= '" + p.unit.Replace("'", "''") + "'" +
+                "," + labI.status_outlab + "= '" + p.status_outlab.Replace("'", "''") + "'" +
                 "Where " + labI.pkField + "='" + p.LID + "'";
             try
             {
@@ -359,7 +378,7 @@ namespace clinic_ivf.objdb
 
             return re;
         }
-        public String insertSpecialItem(OldLabItem p, String userId)
+        public String insertLabItem(OldLabItem p, String userId)
         {
             String re = "";
 
@@ -430,6 +449,11 @@ namespace clinic_ivf.objdb
                 vsold1.WorkerGroup4 = dt.Rows[0][labI.WorkerGroup4].ToString();
                 vsold1.QTY = dt.Rows[0][labI.QTY].ToString();
                 vsold1.status_show_qty = dt.Rows[0][labI.status_show_qty].ToString();
+                vsold1.status_order_group = dt.Rows[0][labI.status_order_group].ToString();
+                vsold1.unit = dt.Rows[0][labI.unit].ToString();
+                vsold1.normal_vaule = dt.Rows[0][labI.normal_vaule].ToString();
+                vsold1.method = dt.Rows[0][labI.method].ToString();
+                vsold1.status_outlab = dt.Rows[0][labI.status_outlab].ToString();
             }
             else
             {
@@ -465,6 +489,11 @@ namespace clinic_ivf.objdb
             stf1.WorkerGroup4 = "";
             stf1.QTY = "";
             stf1.status_show_qty = "";
+            stf1.status_order_group = "";
+            stf1.method = "";
+            stf1.unit = "";
+            stf1.normal_vaule = "";
+            stf1.status_outlab = "";
             return stf1;
         }
     }

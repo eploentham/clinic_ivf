@@ -114,7 +114,19 @@ namespace clinic_ivf.gui
             //btnPrvSticker.Click += BtnPrvSticker_Click;
 
             //setKeyEnter();
+            String filename1 = "check_list_1.jpg";
+            try
+            {
+                if (File.Exists(filename1))
+                {
+                    File.Delete(filename1);
+                    System.Threading.Thread.Sleep(200);
+                }
+            }
+            catch(Exception ex)
+            {
 
+            }
         }
 
         private void BtnHnMaleSearch_Click(object sender, EventArgs e)

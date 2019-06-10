@@ -505,171 +505,171 @@ namespace clinic_ivf.gui
         private void BtnSave_Click(object sender, EventArgs e)
         {
             //throw new NotImplementedException();
-            if (btnSave.Text.Equals("Confirm"))
-            {
+            //if (btnSave.Text.Equals("Confirm"))
+            //{
                 
-            }
-            else
+            //}
+            //else
+            //{
+            if (chkNgs.Checked && chkNgsDay3.Checked == false && chkNgsDay5.Checked == false)
             {
-                if (chkNgs.Checked && chkNgsDay3.Checked == false && chkNgsDay5.Checked == false)
-                {
-                    MessageBox.Show("กรุณาเลือก Biopsy Day", "");
-                    return;
-                }
-                if (chkEmbryoTranfer.Checked && chkEmbryoTranferFresh.Checked == false && chkEmbryoTranferFrozen.Checked == false)
-                {
-                    MessageBox.Show("กรุณาเลือก Embryo Tranfer", "");
-                    return;
-                }
-                if (chkEmbryoFreezing.Checked && chkEmbryoFreezingDay1.Checked == false && chkEmbryoFreezingDay2.Checked == false && chkEmbryoFreezingDay3.Checked == false && chkEmbryoFreezingDay5.Checked == false)
-                {
-                    MessageBox.Show("กรุณาเลือก Embryo Freezing", "");
-                    return;
-                }
-                if (chkFreshSprem.Checked && txtFreshSpermColTime.Text.Equals("") && txtFreshSpermEndTime.Text.Equals(""))
-                {
-                    MessageBox.Show("กรุณาเลือก Fresh Sperm", "");
-                    //return;
-                }
-                ic.cStf.staff_id = "";
-                FrmPasswordConfirm frm = new FrmPasswordConfirm(ic);
-                frm.ShowDialog(this);
-                if (!ic.cStf.staff_id.Equals(""))
-                {
-                    txtUserReq.Value = ic.cStf.staff_fname_e + " " + ic.cStf.staff_lname_e;
-                    txtStfConfirmID.Value = ic.cStf.staff_id;
-                    btnSave.Text = "Confirm";
-                    btnSave.Image = Resources.Add_ticket_24;
-                    stt.Show("<p><b>สวัสดี</b></p>คุณ " + ic.cStf.staff_fname_t + " " + ic.cStf.staff_lname_t + "<br> กรุณายินยันการ confirm อีกครั้ง", btnPrint);
-                    //btnSave.Focus();
-                    stt.Hide();
-                    String re = "", reqid = "";
+                MessageBox.Show("กรุณาเลือก Biopsy Day", "");
+                return;
+            }
+            if (chkEmbryoTranfer.Checked && chkEmbryoTranferFresh.Checked == false && chkEmbryoTranferFrozen.Checked == false)
+            {
+                MessageBox.Show("กรุณาเลือก Embryo Tranfer", "");
+                return;
+            }
+            if (chkEmbryoFreezing.Checked && chkEmbryoFreezingDay1.Checked == false && chkEmbryoFreezingDay2.Checked == false && chkEmbryoFreezingDay3.Checked == false && chkEmbryoFreezingDay5.Checked == false)
+            {
+                MessageBox.Show("กรุณาเลือก Embryo Freezing", "");
+                return;
+            }
+            if (chkFreshSprem.Checked && txtFreshSpermColTime.Text.Equals("") && txtFreshSpermEndTime.Text.Equals(""))
+            {
+                MessageBox.Show("กรุณาเลือก Fresh Sperm", "");
+                //return;
+            }
+            ic.cStf.staff_id = "";
+            FrmPasswordConfirm frm = new FrmPasswordConfirm(ic);
+            frm.ShowDialog(this);
+            if (!ic.cStf.staff_id.Equals(""))
+            {
+                txtUserReq.Value = ic.cStf.staff_fname_e + " " + ic.cStf.staff_lname_e;
+                txtStfConfirmID.Value = ic.cStf.staff_id;
+                btnSave.Text = "Confirm";
+                btnSave.Image = Resources.Add_ticket_24;
+                stt.Show("<p><b>สวัสดี</b></p>คุณ " + ic.cStf.staff_fname_t + " " + ic.cStf.staff_lname_t + "<br> กรุณายินยันการ confirm อีกครั้ง", btnPrint);
+                //btnSave.Focus();
+                stt.Hide();
+                String re = "", reqid = "";
 
-                    setLabFormA();
-                    re = ic.ivfDB.lFormaDB.insertLabFormA(lFormA, txtStfConfirmID.Text);
-                    DateTime dt = new DateTime();
-                    String dt1 = "";
-                    //if(DateTime.TryParse(ic.datetoDB(txtOPUDate.Text), out dt))
-                    //{
-                    //    dt1 = ic.datetoDB(txtOPUDate.Text);
-                    //}
-                    if (txtID.Text.Equals(""))
+                setLabFormA();
+                re = ic.ivfDB.lFormaDB.insertLabFormA(lFormA, txtStfConfirmID.Text);
+                DateTime dt = new DateTime();
+                String dt1 = "";
+                //if(DateTime.TryParse(ic.datetoDB(txtOPUDate.Text), out dt))
+                //{
+                //    dt1 = ic.datetoDB(txtOPUDate.Text);
+                //}
+                if (txtID.Text.Equals(""))
+                {
+                    LabRequest lbReq = new LabRequest();
+                    if ((gbOPU.Enabled && chkWaitOpuDate.Checked) || (gbOPU.Enabled && chkConfirmOpuDate.Checked))
                     {
-                        LabRequest lbReq = new LabRequest();
-                        if ((gbOPU.Enabled && chkWaitOpuDate.Checked) || (gbOPU.Enabled && chkConfirmOpuDate.Checked))
-                        {
-                            String dtrid = "";
-                            dtrid = cboDoctor.SelectedItem == null ? "" : ((ComboBoxItem)cboDoctor.SelectedItem).Value;
-                            reqid = ic.ivfDB.oJsDB.selectByStatusOPU(txtVnOld.Text);
-                            lbReq = ic.ivfDB.setLabRequest(txtNameFeMale.Text, txtVnOld.Text, dtrid, cboRemark.Text, txtHnOld.Text, ic.datetoDB(txtDobFeMale.Text), reqid, "112", txtHnMale.Text, txtNameMale.Text, txtHnDonor.Text, txtNameDonor.Text, txtDonorDob.Text);
-                            lbReq.form_a_id = re;
-                            String re1 = ic.ivfDB.lbReqDB.insertLabRequest(lbReq, txtStfConfirmID.Text);
-                            String re2 = ic.ivfDB.lFormaDB.updateReqIdOPU(re, re1);
-                        }
+                        String dtrid = "";
+                        dtrid = cboDoctor.SelectedItem == null ? "" : ((ComboBoxItem)cboDoctor.SelectedItem).Value;
+                        reqid = ic.ivfDB.oJsDB.selectByStatusOPU(txtVnOld.Text);
+                        lbReq = ic.ivfDB.setLabRequest(txtNameFeMale.Text, txtVnOld.Text, dtrid, cboRemark.Text, txtHnOld.Text, ic.datetoDB(txtDobFeMale.Text), reqid, "112", txtHnMale.Text, txtNameMale.Text, txtHnDonor.Text, txtNameDonor.Text, txtDonorDob.Text);
+                        lbReq.form_a_id = re;
+                        String re1 = ic.ivfDB.lbReqDB.insertLabRequest(lbReq, txtStfConfirmID.Text);
+                        String re2 = ic.ivfDB.lFormaDB.updateReqIdOPU(re, re1);
+                    }
 
-                        if (chkETNotoTranfer.Checked || chkFET.Checked)
+                    if (chkETNotoTranfer.Checked || chkFET.Checked)
+                    {
+                        String dtrid = "";
+                        dtrid = cboDoctor.SelectedItem == null ? "" : ((ComboBoxItem)cboDoctor.SelectedItem).Value;
+                        reqid = "";
+                        lbReq = new LabRequest();
+                        reqid = ic.ivfDB.oJsDB.selectByStatusFET(txtVnOld.Text);
+                        lbReq = ic.ivfDB.setLabRequest(txtNameFeMale.Text, txtVnOld.Text, dtrid, cboRemark.Text, txtHnOld.Text, ic.datetoDB(txtDobFeMale.Text), reqid, "160", txtHnMale.Text, txtNameMale.Text, txtHnDonor.Text, txtNameDonor.Text, txtDonorDob.Text);
+                        lbReq.form_a_id = re;
+                        String re2 = ic.ivfDB.lbReqDB.insertLabRequest(lbReq, txtStfConfirmID.Text);
+                        if (chkFET.Checked)
                         {
-                            String dtrid = "";
-                            dtrid = cboDoctor.SelectedItem == null ? "" : ((ComboBoxItem)cboDoctor.SelectedItem).Value;
-                            reqid = "";
-                            lbReq = new LabRequest();
-                            reqid = ic.ivfDB.oJsDB.selectByStatusFET(txtVnOld.Text);
-                            lbReq = ic.ivfDB.setLabRequest(txtNameFeMale.Text, txtVnOld.Text, dtrid, cboRemark.Text, txtHnOld.Text, ic.datetoDB(txtDobFeMale.Text), reqid, "160", txtHnMale.Text, txtNameMale.Text, txtHnDonor.Text, txtNameDonor.Text, txtDonorDob.Text);
-                            lbReq.form_a_id = re;
-                            String re2 = ic.ivfDB.lbReqDB.insertLabRequest(lbReq, txtStfConfirmID.Text);
-                            if (chkFET.Checked)
-                            {
-                                String re3 = ic.ivfDB.lFormaDB.updateReqIdFet(re, re2);
-                            }
-                        }
-                        if (chkSememAnalysis.Checked)
-                        {
-                            String dtrid = "";
-                            dtrid = cboDoctor.SelectedItem == null ? "" : ((ComboBoxItem)cboDoctor.SelectedItem).Value;
-                            reqid = ic.ivfDB.oJlabdDB.selectByStatusSememAnalysis(txtVnOld.Text);
-                            lbReq = ic.ivfDB.setLabRequest(txtNameFeMale.Text, txtVnOld.Text, dtrid, cboRemark.Text, txtHnOld.Text, ic.datetoDB(txtDobFeMale.Text), reqid, "112", txtHnMale.Text, txtNameMale.Text, txtHnDonor.Text, txtNameDonor.Text, txtDonorDob.Text);
-                            lbReq.form_a_id = re;
-                            String re1 = ic.ivfDB.lbReqDB.insertLabRequest(lbReq, txtStfConfirmID.Text);
-                            String re2 = ic.ivfDB.lFormaDB.updateReqIdSememAnalysis(re, re1);
-                        }
-                        if (chkSpermFreezing.Checked)
-                        {
-                            String dtrid = "";
-                            dtrid = cboDoctor.SelectedItem == null ? "" : ((ComboBoxItem)cboDoctor.SelectedItem).Value;
-                            reqid = ic.ivfDB.oJlabdDB.selectByStatusSememFreezing(txtVnOld.Text);
-                            lbReq = ic.ivfDB.setLabRequest(txtNameFeMale.Text, txtVnOld.Text, dtrid, cboRemark.Text, txtHnOld.Text, ic.datetoDB(txtDobFeMale.Text), reqid, "112", txtHnMale.Text, txtNameMale.Text, txtHnDonor.Text, txtNameDonor.Text, txtDonorDob.Text);
-                            lbReq.form_a_id = re;
-                            String re1 = ic.ivfDB.lbReqDB.insertLabRequest(lbReq, txtStfConfirmID.Text);
-                            String re2 = ic.ivfDB.lFormaDB.updateReqIdSpermFreezing(re, re1);
+                            String re3 = ic.ivfDB.lFormaDB.updateReqIdFet(re, re2);
                         }
                     }
-                    else
+                    if (chkSememAnalysis.Checked)
                     {
-                        LabRequest lbReq = new LabRequest();
-                        LabFormA lFormA1 = new LabFormA();
-
-                        //String re1 = ic.ivfDB.lbReqDB.insertLabRequest(lbReq, txtStfConfirmID.Text);
-                        if (lFormA.req_id_semem_analysis.Equals("0") && chkSememAnalysis.Checked)
-                        {
-                            String dtrid = "";
-                            dtrid = cboDoctor.SelectedItem == null ? "" : ((ComboBoxItem)cboDoctor.SelectedItem).Value;
-                            reqid = ic.ivfDB.oJlabdDB.selectByStatusSememAnalysis(txtVnOld.Text);                            
-                            lbReq = ic.ivfDB.setLabRequest(txtNameFeMale.Text, txtVnOld.Text, dtrid, cboRemark.Text, txtHnOld.Text, ic.datetoDB(txtDobFeMale.Text), reqid, "14", txtHnMale.Text, txtNameMale.Text, txtHnDonor.Text, txtNameDonor.Text, txtDonorDob.Text);
-                            lbReq.form_a_id = txtID.Text;
-                            lbReq.req_id = lFormA.req_id_semem_analysis;
-                            String re1 = ic.ivfDB.lbReqDB.insertLabRequest(lbReq, txtStfConfirmID.Text);
-                            String re2 = ic.ivfDB.lFormaDB.updateReqIdSememAnalysis(txtID.Text, re1);
-                        }
-                        if (lFormA.req_id_sperm_freezing.Equals("0") && chkSpermFreezing.Checked)
-                        {
-                            String dtrid = "";
-                            dtrid = cboDoctor.SelectedItem == null ? "" : ((ComboBoxItem)cboDoctor.SelectedItem).Value;
-                            reqid = ic.ivfDB.oJlabdDB.selectByStatusSememFreezing(txtVnOld.Text);
-                            lbReq = ic.ivfDB.setLabRequest(txtNameFeMale.Text, txtVnOld.Text, dtrid, cboRemark.Text, txtHnOld.Text, ic.datetoDB(txtDobFeMale.Text), reqid, "18", txtHnMale.Text, txtNameMale.Text, txtHnDonor.Text, txtNameDonor.Text, txtDonorDob.Text);
-                            lbReq.form_a_id = txtID.Text;
-                            lbReq.req_id = lFormA.req_id_sperm_freezing;
-                            String re1 = ic.ivfDB.lbReqDB.insertLabRequest(lbReq, txtStfConfirmID.Text);
-                            String re2 = ic.ivfDB.lFormaDB.updateReqIdSpermFreezing(txtID.Text, re1);
-                        }
-                        if (lFormA.req_id_pesa_tese.Equals("0") && chkSememPESA.Checked)
-                        {
-                            String dtrid = "";
-                            dtrid = cboDoctor.SelectedItem == null ? "" : ((ComboBoxItem)cboDoctor.SelectedItem).Value;
-                            reqid = ic.ivfDB.oJlabdDB.selectByStatusPesa(txtVnOld.Text);
-                            lbReq = ic.ivfDB.setLabRequest(txtNameFeMale.Text, txtVnOld.Text, dtrid, cboRemark.Text, txtHnOld.Text, ic.datetoDB(txtDobFeMale.Text), reqid, "66", txtHnMale.Text, txtNameMale.Text, txtHnDonor.Text, txtNameDonor.Text, txtDonorDob.Text);
-                            lbReq.form_a_id = txtID.Text;
-                            String re1 = ic.ivfDB.lbReqDB.insertLabRequest(lbReq, txtStfConfirmID.Text);
-                            String re2 = ic.ivfDB.lFormaDB.updateReqIdPESATESE(txtID.Text, re1);
-                        }
-                        if (lFormA.req_id_iui.Equals("0") && chkSpermIUI.Checked)
-                        {
-                            String dtrid = "";
-                            dtrid = cboDoctor.SelectedItem == null ? "" : ((ComboBoxItem)cboDoctor.SelectedItem).Value;
-                            reqid = ic.ivfDB.oJlabdDB.selectByStatusSememFreezing(txtVnOld.Text);
-                            lbReq = ic.ivfDB.setLabRequest(txtNameFeMale.Text, txtVnOld.Text, dtrid, cboRemark.Text, txtHnOld.Text, ic.datetoDB(txtDobFeMale.Text), reqid, "18", txtHnMale.Text, txtNameMale.Text, txtHnDonor.Text, txtNameDonor.Text, txtDonorDob.Text);
-                            lbReq.form_a_id = txtID.Text;
-                            String re1 = ic.ivfDB.lbReqDB.insertLabRequest(lbReq, txtStfConfirmID.Text);
-                            String re2 = ic.ivfDB.lFormaDB.updateReqIdIUI(txtID.Text, re1);
-                        }
+                        String dtrid = "";
+                        dtrid = cboDoctor.SelectedItem == null ? "" : ((ComboBoxItem)cboDoctor.SelectedItem).Value;
+                        reqid = ic.ivfDB.oJlabdDB.selectByStatusSememAnalysis(txtVnOld.Text);
+                        lbReq = ic.ivfDB.setLabRequest(txtNameFeMale.Text, txtVnOld.Text, dtrid, cboRemark.Text, txtHnOld.Text, ic.datetoDB(txtDobFeMale.Text), reqid, "112", txtHnMale.Text, txtNameMale.Text, txtHnDonor.Text, txtNameDonor.Text, txtDonorDob.Text);
+                        lbReq.form_a_id = re;
+                        String re1 = ic.ivfDB.lbReqDB.insertLabRequest(lbReq, txtStfConfirmID.Text);
+                        String re2 = ic.ivfDB.lFormaDB.updateReqIdSememAnalysis(re, re1);
                     }
-                    //txtID.Value = (!txtID.Text.Equals("") && re.Equals("1")) ? re : "";        //update
-                    long chk = 0;
-                    if (long.TryParse(re, out chk))
+                    if (chkSpermFreezing.Checked)
                     {
-                        txtID.Value = txtID.Text.Equals("") ? re : txtID.Text;
-                        ic.ivfDB.ovsDB.updateFormA(txtVnOld.Text, txtID.Text);
-                        //txtID.Value = re;
-                        btnSave.Text = "Save";
-                        btnSave.Image = Resources.accept_database24;
-                        System.Threading.Thread.Sleep(500);
+                        String dtrid = "";
+                        dtrid = cboDoctor.SelectedItem == null ? "" : ((ComboBoxItem)cboDoctor.SelectedItem).Value;
+                        reqid = ic.ivfDB.oJlabdDB.selectByStatusSememFreezing(txtVnOld.Text);
+                        lbReq = ic.ivfDB.setLabRequest(txtNameFeMale.Text, txtVnOld.Text, dtrid, cboRemark.Text, txtHnOld.Text, ic.datetoDB(txtDobFeMale.Text), reqid, "112", txtHnMale.Text, txtNameMale.Text, txtHnDonor.Text, txtNameDonor.Text, txtDonorDob.Text);
+                        lbReq.form_a_id = re;
+                        String re1 = ic.ivfDB.lbReqDB.insertLabRequest(lbReq, txtStfConfirmID.Text);
+                        String re2 = ic.ivfDB.lFormaDB.updateReqIdSpermFreezing(re, re1);
                     }
                 }
                 else
                 {
+                    LabRequest lbReq = new LabRequest();
+                    LabFormA lFormA1 = new LabFormA();
+
+                    //String re1 = ic.ivfDB.lbReqDB.insertLabRequest(lbReq, txtStfConfirmID.Text);
+                    if (lFormA.req_id_semem_analysis.Equals("0") && chkSememAnalysis.Checked)
+                    {
+                        String dtrid = "";
+                        dtrid = cboDoctor.SelectedItem == null ? "" : ((ComboBoxItem)cboDoctor.SelectedItem).Value;
+                        reqid = ic.ivfDB.oJlabdDB.selectByStatusSememAnalysis(txtVnOld.Text);                            
+                        lbReq = ic.ivfDB.setLabRequest(txtNameFeMale.Text, txtVnOld.Text, dtrid, cboRemark.Text, txtHnOld.Text, ic.datetoDB(txtDobFeMale.Text), reqid, "14", txtHnMale.Text, txtNameMale.Text, txtHnDonor.Text, txtNameDonor.Text, txtDonorDob.Text);
+                        lbReq.form_a_id = txtID.Text;
+                        lbReq.req_id = lFormA.req_id_semem_analysis;
+                        String re1 = ic.ivfDB.lbReqDB.insertLabRequest(lbReq, txtStfConfirmID.Text);
+                        String re2 = ic.ivfDB.lFormaDB.updateReqIdSememAnalysis(txtID.Text, re1);
+                    }
+                    if (lFormA.req_id_sperm_freezing.Equals("0") && chkSpermFreezing.Checked)
+                    {
+                        String dtrid = "";
+                        dtrid = cboDoctor.SelectedItem == null ? "" : ((ComboBoxItem)cboDoctor.SelectedItem).Value;
+                        reqid = ic.ivfDB.oJlabdDB.selectByStatusSememFreezing(txtVnOld.Text);
+                        lbReq = ic.ivfDB.setLabRequest(txtNameFeMale.Text, txtVnOld.Text, dtrid, cboRemark.Text, txtHnOld.Text, ic.datetoDB(txtDobFeMale.Text), reqid, "18", txtHnMale.Text, txtNameMale.Text, txtHnDonor.Text, txtNameDonor.Text, txtDonorDob.Text);
+                        lbReq.form_a_id = txtID.Text;
+                        lbReq.req_id = lFormA.req_id_sperm_freezing;
+                        String re1 = ic.ivfDB.lbReqDB.insertLabRequest(lbReq, txtStfConfirmID.Text);
+                        String re2 = ic.ivfDB.lFormaDB.updateReqIdSpermFreezing(txtID.Text, re1);
+                    }
+                    if (lFormA.req_id_pesa_tese.Equals("0") && chkSememPESA.Checked)
+                    {
+                        String dtrid = "";
+                        dtrid = cboDoctor.SelectedItem == null ? "" : ((ComboBoxItem)cboDoctor.SelectedItem).Value;
+                        reqid = ic.ivfDB.oJlabdDB.selectByStatusPesa(txtVnOld.Text);
+                        lbReq = ic.ivfDB.setLabRequest(txtNameFeMale.Text, txtVnOld.Text, dtrid, cboRemark.Text, txtHnOld.Text, ic.datetoDB(txtDobFeMale.Text), reqid, "66", txtHnMale.Text, txtNameMale.Text, txtHnDonor.Text, txtNameDonor.Text, txtDonorDob.Text);
+                        lbReq.form_a_id = txtID.Text;
+                        String re1 = ic.ivfDB.lbReqDB.insertLabRequest(lbReq, txtStfConfirmID.Text);
+                        String re2 = ic.ivfDB.lFormaDB.updateReqIdPESATESE(txtID.Text, re1);
+                    }
+                    if (lFormA.req_id_iui.Equals("0") && chkSpermIUI.Checked)
+                    {
+                        String dtrid = "";
+                        dtrid = cboDoctor.SelectedItem == null ? "" : ((ComboBoxItem)cboDoctor.SelectedItem).Value;
+                        reqid = ic.ivfDB.oJlabdDB.selectByStatusSememFreezing(txtVnOld.Text);
+                        lbReq = ic.ivfDB.setLabRequest(txtNameFeMale.Text, txtVnOld.Text, dtrid, cboRemark.Text, txtHnOld.Text, ic.datetoDB(txtDobFeMale.Text), reqid, "18", txtHnMale.Text, txtNameMale.Text, txtHnDonor.Text, txtNameDonor.Text, txtDonorDob.Text);
+                        lbReq.form_a_id = txtID.Text;
+                        String re1 = ic.ivfDB.lbReqDB.insertLabRequest(lbReq, txtStfConfirmID.Text);
+                        String re2 = ic.ivfDB.lFormaDB.updateReqIdIUI(txtID.Text, re1);
+                    }
+                }
+                //txtID.Value = (!txtID.Text.Equals("") && re.Equals("1")) ? re : "";        //update
+                long chk = 0;
+                if (long.TryParse(re, out chk))
+                {
+                    txtID.Value = txtID.Text.Equals("") ? re : txtID.Text;
+                    ic.ivfDB.ovsDB.updateFormA(txtVnOld.Text, txtID.Text);
+                    //txtID.Value = re;
                     btnSave.Text = "Save";
-                    btnSave.Image = Resources.download_database24;
+                    btnSave.Image = Resources.accept_database24;
+                    System.Threading.Thread.Sleep(500);
                 }
             }
+            else
+            {
+                btnSave.Text = "Save";
+                btnSave.Image = Resources.download_database24;
+            }
+            //}
         }
 
         private void ChkFreshSprem_CheckStateChanged(object sender, EventArgs e)

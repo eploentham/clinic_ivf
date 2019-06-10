@@ -64,6 +64,7 @@ namespace clinic_ivf.gui
             setGrfQue();
             setGrfFinish();
             initGrfSearch();
+            setGrfSearch();
 
             int timerlab = 0;
             int.TryParse(ic.iniC.timerlabreqaccept, out timerlab);
