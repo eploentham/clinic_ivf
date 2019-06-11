@@ -29,6 +29,7 @@ namespace clinic_ivf.gui
         VisitOld ovs;
         PatientOld optt;
         Patient ptt;
+        Visit vs;
 
         C1FlexGrid grfBillD;
         Font fEdit, fEditB;
@@ -101,6 +102,7 @@ namespace clinic_ivf.gui
             initGrfBillD();
             setChkDiscount(false);
             setControl();
+            ic.ivfDB.copDB.cop = ic.ivfDB.copDB.selectByCode1("001");
             
         }
         private void BtnPrnReceipt_Click(object sender, EventArgs e)
@@ -455,6 +457,10 @@ namespace clinic_ivf.gui
         private void BtnPrnBill_Click(object sender, EventArgs e)
         {
             //throw new NotImplementedException();
+            PrinterSettings settings = new PrinterSettings();
+            printerOld = settings.PrinterName;
+            SetDefaultPrinter(ic.iniC.printerBill);
+
             DataTable dt = new DataTable();
             DataTable dtprn = new DataTable();
             DataTable dtpgk = new DataTable();
@@ -686,6 +692,7 @@ namespace clinic_ivf.gui
             ovs = ic.ivfDB.ovsDB.selectByPk1(vnold);
             optt = ic.ivfDB.pttOldDB.selectByPk1(ovs.PID);
             ptt = ic.ivfDB.pttDB.selectByHn(ovs.PIDS);
+            vs = ic.ivfDB.vsDB.selectByVn(ovs.VN);
             //obilh = ic.ivfDB.obilhDB.selectByVN(ovs.VN);
             ptt.patient_birthday = optt.DateOfBirth;
 
@@ -699,12 +706,13 @@ namespace clinic_ivf.gui
             txtVnOld.Value = ovs.VN;
             txtHnOld.Value = ovs.PIDS;
             txtVn.Value = ovs.VN;
+            txtVnShow.Value = ic.showVN(ovs.VN);
             txtAllergy.Value = ptt.allergy_description;
             txtSex.Value = ptt.f_sex_id.Equals("1") ? "ชาย" : "หญิง";
             txtBg.Value = ptt.f_patient_blood_group_id.Equals("2140000005") ? "O"
                 : ptt.f_patient_blood_group_id.Equals("2140000002") ? "A" : ptt.f_patient_blood_group_id.Equals("2140000003") ? "B"
                 : ptt.f_patient_blood_group_id.Equals("2140000004") ? "AB" : "ไม่ระบุ";
-            txtAgent.Value = ptt.agent;
+            txtAgent.Value = ic.ivfDB.oAgnDB.getList(ptt.agent);
             setGrfBillD();
             calTotal();
             calTotalCredit();
@@ -968,7 +976,11 @@ namespace clinic_ivf.gui
         }
         private void FrmCashierAdd_Load(object sender, EventArgs e)
         {
-
+            String date = "";
+            date = DateTime.Now.Year + "-" + DateTime.Now.ToString("MM-dd");
+            menu.Text = ic.iniC.statusAppDonor.Equals("1") ? "โปรแกรมClinic IVF Donor " + "สวัสดี คุณ " + ic.user.staff_fname_t + " " + ic.user.staff_lname_t + " Update 2019-06-11 "
+                : "โปรแกรมClinic IVF " + "สวัสดี คุณ " + ic.user.staff_fname_t + " " + ic.user.staff_lname_t + " Update 2019-06-11 format date " + date
+                + " [" + ic.ivfDB.copDB.cop.day + "-" + ic.ivfDB.copDB.cop.month + "-" + ic.ivfDB.copDB.cop.year + "]";
         }
     }
 }

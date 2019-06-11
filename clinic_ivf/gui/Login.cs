@@ -83,6 +83,7 @@ namespace clinic_ivf.gui
                 ic.user = stf;
                 ic.conn.user = stf;
                 LogonSuccessful = "1";
+                //ic.ivfDB.copDB.cop = ic.ivfDB.copDB.selectByCode1("001");
                 this.Dispose();
             }
             else

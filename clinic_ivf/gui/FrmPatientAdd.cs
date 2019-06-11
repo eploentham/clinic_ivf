@@ -320,6 +320,7 @@ namespace clinic_ivf.gui
             ptt = ic.ivfDB.pttDB.selectByPk1(txtID.Text);
             PatientOld optt = new PatientOld();
             optt = ic.ivfDB.pttOldDB.selectByPk1(txtIdOld.Text);
+            ic.ivfDB.copDB.cop = ic.ivfDB.copDB.selectByCode1("001");
 
             MemoryStream stream = ic.ftpC.download("images/" + txtIdOld.Text + "/" + txtIdOld.Text + "." + System.Drawing.Imaging.ImageFormat.Jpeg);
             //MemoryStream stream = ic.ftpC.download("images/0001/0001." + System.Drawing.Imaging.ImageFormat.Jpeg);
@@ -375,6 +376,7 @@ namespace clinic_ivf.gui
             dt.Columns.Add("lmp", typeof(String));
             dt.Columns.Add("allergy", typeof(String));
             dt.Columns.Add("image1", typeof(byte[]));
+            dt.Columns.Add("agent", typeof(String));
 
             dt.Rows[0]["ptt_name_t"] = ptt.patient_firstname+" "+ ptt.patient_lastname;
             dt.Rows[0]["hn"] = ptt.patient_hn;
@@ -399,6 +401,9 @@ namespace clinic_ivf.gui
             dt.Rows[0]["lmp_a"] = txtA.Text;
             dt.Rows[0]["lmp"] = txtVisitLMP.Text;
             dt.Rows[0]["allergy"] = cboAllergyDesc.Text;
+            dt.Rows[0]["date1"] = ic.ivfDB.copDB.cop.day+"/"+ ic.ivfDB.copDB.cop.month+"/"+ ic.ivfDB.copDB.cop.year;
+
+            dt.Rows[0]["agent"] = ptt.agent;
             //BinaryFormatter bformatter = new BinaryFormatter();
             //stream.Seek(0, SeekOrigin.Begin);
             //var aaa = bformatter.Deserialize(stream);

@@ -1008,7 +1008,6 @@ namespace clinic_ivf.control
         public String showVN(String vn)
         {
             String re = "";
-
             try
             {
                 re = vn.Substring(vn.Length - 5, 5);

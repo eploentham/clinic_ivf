@@ -117,6 +117,9 @@ namespace clinic_ivf.gui
         private void BtnPrnSticker_Click(object sender, EventArgs e)
         {
             // throw new NotImplementedException();
+            PrinterSettings settings = new PrinterSettings();
+            printerOld = settings.PrinterName;
+            SetDefaultPrinter(ic.iniC.printerSticker);
 
             String date = "", date1 = "";
             date = DateTime.Now.Year + "-" + DateTime.Now.ToString("MM-dd");
@@ -132,9 +135,7 @@ namespace clinic_ivf.gui
                 unit = row["unit_name"] != null ? row["unit_name"].ToString() : " ";
                 row["unit_name"] = qty +" "+ unit;
             }
-            PrinterSettings settings = new PrinterSettings();
-            printerOld = settings.PrinterName;
-            SetDefaultPrinter(ic.iniC.printerSticker);
+            
             //PrinterSettings settings1 = new PrinterSettings();
             //settings1.DefaultPageSettings.PrinterSettings.PrinterName = ic.iniC.printerSticker;
             //settings1.PrinterName = ic.iniC.printerSticker;

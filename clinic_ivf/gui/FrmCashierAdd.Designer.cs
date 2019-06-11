@@ -29,6 +29,8 @@
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.label20 = new System.Windows.Forms.Label();
+            this.txtAgent = new C1.Win.C1Input.C1TextBox();
             this.btnPrnReceipt = new C1.Win.C1Input.C1Button();
             this.btnClose = new C1.Win.C1Input.C1Button();
             this.btnCalBack = new C1.Win.C1Input.C1Button();
@@ -98,9 +100,9 @@
             this.label8 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.txtPayName = new C1.Win.C1Input.C1TextBox();
-            this.label20 = new System.Windows.Forms.Label();
-            this.txtAgent = new C1.Win.C1Input.C1TextBox();
+            this.txtVnShow = new C1.Win.C1Input.C1TextBox();
             this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtAgent)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnPrnReceipt)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnClose)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnCalBack)).BeginInit();
@@ -144,12 +146,13 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtDiscount)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cboAccCash)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtPayName)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtAgent)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtVnShow)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBox1
             // 
             this.groupBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.groupBox1.Controls.Add(this.txtVnShow);
             this.groupBox1.Controls.Add(this.label20);
             this.groupBox1.Controls.Add(this.txtAgent);
             this.groupBox1.Controls.Add(this.btnPrnReceipt);
@@ -191,6 +194,32 @@
             this.groupBox1.Text = "Patient";
             this.theme1.SetTheme(this.groupBox1, "(default)");
             this.groupBox1.Enter += new System.EventHandler(this.GroupBox1_Enter);
+            // 
+            // label20
+            // 
+            this.label20.AutoSize = true;
+            this.label20.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.label20.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label20.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.label20.Location = new System.Drawing.Point(6, 70);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(49, 16);
+            this.label20.TabIndex = 703;
+            this.label20.Text = "Agent :";
+            this.theme1.SetTheme(this.label20, "(default)");
+            // 
+            // txtAgent
+            // 
+            this.txtAgent.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtAgent.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
+            this.txtAgent.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.txtAgent.Location = new System.Drawing.Point(66, 67);
+            this.txtAgent.Name = "txtAgent";
+            this.txtAgent.Size = new System.Drawing.Size(133, 20);
+            this.txtAgent.TabIndex = 702;
+            this.txtAgent.Tag = null;
+            this.theme1.SetTheme(this.txtAgent, "(default)");
+            this.txtAgent.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
             // 
             // btnPrnReceipt
             // 
@@ -388,12 +417,13 @@
             this.txtVn.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtVn.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
             this.txtVn.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.txtVn.Location = new System.Drawing.Point(53, 40);
+            this.txtVn.Location = new System.Drawing.Point(1203, 62);
             this.txtVn.Name = "txtVn";
-            this.txtVn.Size = new System.Drawing.Size(146, 24);
+            this.txtVn.Size = new System.Drawing.Size(30, 24);
             this.txtVn.TabIndex = 690;
             this.txtVn.Tag = null;
             this.theme1.SetTheme(this.txtVn, "(default)");
+            this.txtVn.Visible = false;
             this.txtVn.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
             // 
             // txtBg
@@ -1184,31 +1214,18 @@
             this.theme1.SetTheme(this.txtPayName, "(default)");
             this.txtPayName.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
             // 
-            // label20
+            // txtVnShow
             // 
-            this.label20.AutoSize = true;
-            this.label20.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.label20.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label20.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.label20.Location = new System.Drawing.Point(6, 70);
-            this.label20.Name = "label20";
-            this.label20.Size = new System.Drawing.Size(49, 16);
-            this.label20.TabIndex = 703;
-            this.label20.Text = "Agent :";
-            this.theme1.SetTheme(this.label20, "(default)");
-            // 
-            // txtAgent
-            // 
-            this.txtAgent.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtAgent.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
-            this.txtAgent.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.txtAgent.Location = new System.Drawing.Point(66, 67);
-            this.txtAgent.Name = "txtAgent";
-            this.txtAgent.Size = new System.Drawing.Size(133, 20);
-            this.txtAgent.TabIndex = 702;
-            this.txtAgent.Tag = null;
-            this.theme1.SetTheme(this.txtAgent, "(default)");
-            this.txtAgent.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            this.txtVnShow.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtVnShow.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
+            this.txtVnShow.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.txtVnShow.Location = new System.Drawing.Point(52, 40);
+            this.txtVnShow.Name = "txtVnShow";
+            this.txtVnShow.Size = new System.Drawing.Size(146, 24);
+            this.txtVnShow.TabIndex = 704;
+            this.txtVnShow.Tag = null;
+            this.theme1.SetTheme(this.txtVnShow, "(default)");
+            this.txtVnShow.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
             // 
             // FrmCashierAdd
             // 
@@ -1225,6 +1242,7 @@
             this.Load += new System.EventHandler(this.FrmCashierAdd_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtAgent)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnPrnReceipt)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnClose)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnCalBack)).EndInit();
@@ -1272,7 +1290,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtDiscount)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cboAccCash)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtPayName)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtAgent)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtVnShow)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1352,5 +1370,6 @@
         private C1.Win.C1Input.C1Button btnDiscountAdd;
         private System.Windows.Forms.Label label20;
         private C1.Win.C1Input.C1TextBox txtAgent;
+        private C1.Win.C1Input.C1TextBox txtVnShow;
     }
 }

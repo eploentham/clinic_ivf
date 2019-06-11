@@ -310,7 +310,7 @@ namespace clinic_ivf.objdb
         public DataTable selectByPk(String copId)
         {
             DataTable dt = new DataTable();
-            String sql = "select cop.* " +
+            String sql = "select cop.*, month(now()) as month, day(now()) as day, year(now()) as year " +
                 "From " + cop.table + " cop " +
                 //"Left Join t_ssdata_visit ssv On ssv.ssdata_visit_id = bd.ssdata_visit_id " +
                 "Where cop." + cop.comp_id + " ='" + copId + "' ";

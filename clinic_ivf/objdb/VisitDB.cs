@@ -419,6 +419,17 @@ namespace clinic_ivf.objdb
             cop1 = setVisit(dt);
             return cop1;
         }
+        //public Visit selectByVnOld(String pttId)
+        //{
+        //    Visit cop1 = new Visit();
+        //    DataTable dt = new DataTable();
+        //    String sql = "select vs.* " +
+        //        "From " + vs.table + " vs " +
+        //        "Where vs." + vs.o + " ='" + pttId + "' ";
+        //    dt = conn.selectData(conn.conn, sql);
+        //    cop1 = setVisit(dt);
+        //    return cop1;
+        //}
         public DataTable selectByReceptionSendDoctor(String dtrid)
         {
             DataTable dt = new DataTable();

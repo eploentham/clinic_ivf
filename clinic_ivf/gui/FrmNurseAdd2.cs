@@ -39,6 +39,7 @@ namespace clinic_ivf.gui
         PatientAppointment pApm;
         AppointmentOld pApmO;
         EggSti eggs;
+        PatientMedicalHistory pmh;
 
         Font fEdit, fEditB;
         Color bg, fc;
@@ -111,6 +112,7 @@ namespace clinic_ivf.gui
             pApm = new PatientAppointment();
             pApmO = new AppointmentOld();
             eggs = new EggSti();
+            pmh = new PatientMedicalHistory();
 
             stt = new C1SuperTooltip();
             sep = new C1SuperErrorProvider();
@@ -185,6 +187,26 @@ namespace clinic_ivf.gui
             UndoButton.Click += UndoButton_Click;
             RedoButton.Click += RedoButton_Click;
             btnApmVoid.Click += BtnApmVoid_Click;
+            btnSavePmh.Click += BtnSavePmh_Click;
+            chkPmhMarried.CheckedChanged += ChkPmhMarried_CheckedChanged;
+            chkPmhConOther.CheckedChanged += ChkPmhConOther_CheckedChanged;
+            chkPmhDrugYes.CheckedChanged += ChkPmhDrugYes_CheckedChanged;
+            chkPmhPastOther.CheckedChanged += ChkPmhPastOther_CheckedChanged;
+            chkPmhSubsYes.CheckedChanged += ChkPmhSubsYes_CheckedChanged;
+            chkPmhSurgYes.CheckedChanged += ChkPmhSurgYes_CheckedChanged;
+            chkPmhTypeSec.CheckedChanged += ChkPmhTypeSec_CheckedChanged;
+            chkPmhMenIrr.CheckedChanged += ChkPmhMenIrr_CheckedChanged;
+            chkPmhMenLmp.CheckedChanged += ChkPmhMenLmp_CheckedChanged;
+            chkPmhProvYes.CheckedChanged += ChkPmhProvYes_CheckedChanged;
+            chkPmhPapsYes.CheckedChanged += ChkPmhPapsYes_CheckedChanged;
+            chkPmhPttMaleDrugYes.CheckedChanged += ChkPmhPttMaleDrugYes_CheckedChanged;
+            chkPmhPttMalePastOther.CheckedChanged += ChkPmhPttMalePastOther_CheckedChanged;
+            chkPmhPttMaleSubsYes.CheckedChanged += ChkPmhPttMaleSubsYes_CheckedChanged;
+            chkPmlPttMaleSmokingYes.CheckedChanged += ChkPmlPttMaleSmokingYes_CheckedChanged;
+            chkPmlPttMaleDrinkingYes.CheckedChanged += ChkPmlPttMaleDrinkingYes_CheckedChanged;
+            chkPmlPttMaleDrugYes.CheckedChanged += ChkPmlPttMaleDrugYes_CheckedChanged;
+            chkPmlPttMaleSurgiYes.CheckedChanged += ChkPmlPttMaleSurgiYes_CheckedChanged;
+            chkPmlPttMaleTreatYes.CheckedChanged += ChkPmlPttMaleTreatYes_CheckedChanged;
 
             setControl(vsid);
             ChkDenyAllergy_CheckedChanged(null, null);
@@ -220,6 +242,27 @@ namespace clinic_ivf.gui
             setGrfpApmAll();
             setGrfpApmVisit();
             setControlEggSti();
+            setControlPmh();
+
+            ChkPmhMarried_CheckedChanged(null, null);
+            ChkPmhConOther_CheckedChanged(null, null);
+            ChkPmhDrugYes_CheckedChanged(null, null);
+            ChkPmhPastOther_CheckedChanged(null, null);
+            ChkPmhSubsYes_CheckedChanged(null, null);
+            ChkPmhSurgYes_CheckedChanged(null, null);
+            ChkPmhTypeSec_CheckedChanged(null, null);
+            ChkPmhMenIrr_CheckedChanged(null, null);
+            ChkPmhMenLmp_CheckedChanged(null, null);
+            ChkPmhProvYes_CheckedChanged(null, null);
+            ChkPmhPapsYes_CheckedChanged(null, null);
+            ChkPmhPttMaleDrugYes_CheckedChanged(null, null);
+            ChkPmhPttMalePastOther_CheckedChanged(null, null);
+            ChkPmhPttMaleSubsYes_CheckedChanged(null, null);
+            ChkPmlPttMaleSmokingYes_CheckedChanged(null, null);
+            ChkPmlPttMaleDrinkingYes_CheckedChanged(null, null);
+            ChkPmlPttMaleDrugYes_CheckedChanged(null, null);
+            ChkPmlPttMaleSurgiYes_CheckedChanged(null, null);
+            ChkPmlPttMaleTreatYes_CheckedChanged(null, null);
             initGrfImg();
             setGrfImg();
             initGrfLab();
@@ -233,6 +276,294 @@ namespace clinic_ivf.gui
             //setGrfPtt("");
             initProgressNote();
         }
+
+        private void ChkPmlPttMaleTreatYes_CheckedChanged(object sender, EventArgs e)
+        {
+            //throw new NotImplementedException();
+            if (chkPmlPttMaleTreatYes.Checked)
+            {
+                txtPmlPttMaleTreat.Enabled = true;
+            }
+            else
+            {
+                txtPmlPttMaleTreat.Enabled = false;
+            }
+        }
+
+        private void ChkPmlPttMaleSurgiYes_CheckedChanged(object sender, EventArgs e)
+        {
+            //throw new NotImplementedException();
+            if (chkPmlPttMaleSurgiYes.Checked)
+            {
+                txtPmlPttMaleSurgi.Enabled = true;
+            }
+            else
+            {
+                txtPmlPttMaleSurgi.Enabled = false;
+            }
+        }
+
+        private void ChkPmlPttMaleDrugYes_CheckedChanged(object sender, EventArgs e)
+        {
+            //throw new NotImplementedException();
+            if (chkPmlPttMaleDrugYes.Checked)
+            {
+                txtPmlPttMaleDrug.Enabled = true;
+            }
+            else
+            {
+                txtPmlPttMaleDrug.Enabled = false;
+            }
+        }
+
+        private void ChkPmlPttMaleDrinkingYes_CheckedChanged(object sender, EventArgs e)
+        {
+            //throw new NotImplementedException();
+            if (chkPmlPttMaleDrinkingYes.Checked)
+            {
+                txtPmlPttMaleDrinking.Enabled = true;
+            }
+            else
+            {
+                txtPmlPttMaleDrinking.Enabled = false;
+            }
+        }
+
+        private void ChkPmlPttMaleSmokingYes_CheckedChanged(object sender, EventArgs e)
+        {
+            //throw new NotImplementedException();
+            if (chkPmlPttMaleSmokingYes.Checked)
+            {
+                txtPmlPttMaleSmoking.Enabled = true;
+            }
+            else
+            {
+                txtPmlPttMaleSmoking.Enabled = false;
+            }
+        }
+
+        private void ChkPmhPttMaleSubsYes_CheckedChanged(object sender, EventArgs e)
+        {
+            //throw new NotImplementedException();
+            if (chkPmhPttMaleSubsYes.Checked)
+            {
+                txtPmhPttMaleSubs.Enabled = true;
+            }
+            else
+            {
+                txtPmhPttMaleSubs.Enabled = false;
+            }
+        }
+
+        private void ChkPmhPttMalePastOther_CheckedChanged(object sender, EventArgs e)
+        {
+            //throw new NotImplementedException();
+            if (chkPmhPttMalePastOther.Checked)
+            {
+                txtPmhPttMalePastOther.Enabled = true;
+            }
+            else
+            {
+                txtPmhPttMalePastOther.Enabled = false;
+            }
+        }
+
+        private void ChkPmhPttMaleDrugYes_CheckedChanged(object sender, EventArgs e)
+        {
+            //throw new NotImplementedException();
+            if (chkPmhPttMaleDrugYes.Checked)
+            {
+                txtPmhPttMaleDrug.Enabled = true;
+            }
+            else
+            {
+                txtPmhPttMaleDrug.Enabled = false;
+            }
+        }
+
+        private void ChkPmhPapsYes_CheckedChanged(object sender, EventArgs e)
+        {
+            //throw new NotImplementedException();
+            if (chkPmhPapsYes.Checked)
+            {
+                txtPmhPaps.Enabled = true;
+            }
+            else
+            {
+                txtPmhPaps.Enabled = false;
+            }
+        }
+
+        private void ChkPmhProvYes_CheckedChanged(object sender, EventArgs e)
+        {
+            //throw new NotImplementedException();
+            if (chkPmhProvYes.Checked)
+            {
+                txtPmhProv.Enabled = true;
+            }
+            else
+            {
+                txtPmhProv.Enabled = false;
+            }
+        }
+
+        private void ChkPmhMenLmp_CheckedChanged(object sender, EventArgs e)
+        {
+            //throw new NotImplementedException();
+            if (chkPmhMenLmp.Checked)
+            {
+                txtPmhMenLmp.Enabled = true;
+            }
+            else
+            {
+                txtPmhMenLmp.Enabled = false;
+            }
+        }
+
+        private void ChkPmhMenIrr_CheckedChanged(object sender, EventArgs e)
+        {
+            //throw new NotImplementedException();
+            if (chkPmhMenIrr.Checked)
+            {
+                txtPmhMenDay.Enabled = true;
+                txtPmhMenInter.Enabled = true;
+                txtPmhMenAmt.Enabled = true;
+            }
+            else
+            {
+                txtPmhMenDay.Enabled = false;
+                txtPmhMenInter.Enabled = false;
+                txtPmhMenAmt.Enabled = false;
+            }
+        }
+
+        private void ChkPmhTypeSec_CheckedChanged(object sender, EventArgs e)
+        {
+            //throw new NotImplementedException();
+            if (chkPmhTypeSec.Checked)
+            {
+                txtPmhType.Enabled = true;
+            }
+            else
+            {
+                txtPmhType.Enabled = false;
+            }
+        }
+
+        private void ChkPmhSurgYes_CheckedChanged(object sender, EventArgs e)
+        {
+            //throw new NotImplementedException();
+            if (chkPmhSurgYes.Checked)
+            {
+                txtPmhSurg.Enabled = true;
+            }
+            else
+            {
+                txtPmhSurg.Enabled = false;
+            }
+        }
+
+        private void ChkPmhSubsYes_CheckedChanged(object sender, EventArgs e)
+        {
+            //throw new NotImplementedException();
+            if (chkPmhSubsYes.Checked)
+            {
+                txtPmhSubs.Enabled = true;
+            }
+            else
+            {
+                txtPmhSubs.Enabled = false;
+            }
+        }
+
+        private void ChkPmhPastOther_CheckedChanged(object sender, EventArgs e)
+        {
+            //throw new NotImplementedException();
+            if (chkPmhPastOther.Checked)
+            {
+                txtPmhPastOther.Enabled = true;
+            }
+            else
+            {
+                txtPmhPastOther.Enabled = false;
+            }
+        }
+
+        private void ChkPmhDrugYes_CheckedChanged(object sender, EventArgs e)
+        {
+            //throw new NotImplementedException();
+            if (chkPmhDrugYes.Checked)
+            {
+                txtPmhDrug.Enabled = true;
+            }
+            else
+            {
+                txtPmhDrug.Enabled = false;
+            }
+        }
+
+        private void ChkPmhConOther_CheckedChanged(object sender, EventArgs e)
+        {
+            //throw new NotImplementedException();
+            if (chkPmhConOther.Checked)
+            {
+                txtPmhConOther.Enabled = true;
+            }
+            else
+            {
+                txtPmhConOther.Enabled = false;
+            }
+        }
+
+        private void ChkPmhMarried_CheckedChanged(object sender, EventArgs e)
+        {
+            //throw new NotImplementedException();
+            if (chkPmhMarried.Checked)
+            {
+                txtPmhMarriedYear.Enabled = true;
+            }
+            else
+            {
+                txtPmhMarriedYear.Enabled = false;
+            }
+        }
+
+        private void BtnSavePmh_Click(object sender, EventArgs e)
+        {
+            //throw new NotImplementedException();
+            ic.cStf.staff_id = "";
+            FrmPasswordConfirm frm = new FrmPasswordConfirm(ic);
+            frm.ShowDialog(this);
+            if (!ic.cStf.staff_id.Equals(""))
+            {
+                txtUserReq.Value = ic.cStf.staff_fname_t + " " + ic.cStf.staff_lname_t;
+                txtStfConfirmID.Value = ic.cStf.staff_id;
+                btnSave.Text = "Confirm";
+                btnSave.Image = Resources.Add_ticket_24;
+                stt.Show("<p><b>สวัสดี</b></p>คุณ " + ic.cStf.staff_fname_t + " " + ic.cStf.staff_lname_t + "<br> กรุณายินยันการ confirm อีกครั้ง", txtApmRemark);
+                btnSave.Focus();
+
+                stt.Hide();
+                String re = "";
+
+                setPMh();
+                re = ic.ivfDB.pmhDB.insertPatientMedicalHistory(pmh, txtStfConfirmID.Text);
+
+                //txtID.Value = (!txtID.Text.Equals("") && re.Equals("1")) ? re : "";        //update
+                long chk = 0;
+                if (long.TryParse(re, out chk))
+                {
+                    btnSave.Text = "Save";
+                    btnSave.Image = Resources.accept_database24;
+                }
+            }
+            else
+            {
+                btnSave.Text = "Save";
+                btnSave.Image = Resources.download_database24;
+            }
+        }
+
         private void initGrfLab()
         {
             grfLab = new C1FlexGrid();
@@ -906,6 +1237,7 @@ namespace clinic_ivf.gui
             this.documentPath = fileInfo.DirectoryName;
             this.documentFileType = fileType;
         }
+
         private void RaiseRichTextBoxSelectionChanged()
         {
             // Force a SelectionChanged event to update the state of Ribbon items 
@@ -1425,6 +1757,330 @@ namespace clinic_ivf.gui
             ic.setC1Combo(cboEggStiDtr, eggs.doctor_id);
 
             setGrfEggStiDay();
+        }
+        private void setControlPmh()
+        {
+            PatientMedicalHistory pmh = new PatientMedicalHistory();
+            pmh = ic.ivfDB.pmhDB.selectByPttId(txtPttId.Text);
+            txtPmhId.Value = pmh.patient_medical_history_id;
+            txtPmhPttName.Value = ptt.Name;
+            txtPmhSex.Value = ptt.f_sex_id.Equals("1") ? "ชาย" : "หญิง";
+            chkPmhSingle.Checked = ptt.f_patient_marriage_status_id.Equals("2110000008") ? true : false;
+            chkPmhMarried.Checked = ptt.f_patient_marriage_status_id.Equals("2110000009") ? true : false;
+
+            chkPmhConPill.Checked = pmh.contraception.Equals("1") ? true : false;
+            chkPmhConIud.Checked = pmh.contraception.Equals("2") ? true : false;
+            chkPmhConInj.Checked = pmh.contraception.Equals("3") ? true : false;
+            chkPmhConCondom.Checked = pmh.contraception.Equals("4") ? true : false;
+            chkPmhConOther.Checked = pmh.contraception.Equals("5") ? true : false;
+            if (chkPmhConOther.Checked)
+            {
+                txtPmhConOther.Enabled = true;
+            }
+            else
+            {
+                txtPmhConOther.Enabled = false;
+            }
+            txtPmhPttMaleName.Value = pmh.couple_name;
+            txtPmhConOther.Value = pmh.contraception_other;
+            //txtPmhMarriedYear.Value = pmh.m
+
+            chkPmhDrugNo.Checked = pmh.drug_allergy.Equals("1") ? true : false;
+            chkPmhDrugYes.Checked = pmh.drug_allergy.Equals("2") ? true : false;
+            if (chkPmhDrugYes.Checked)
+            {
+                txtPmhDrug.Enabled = true;
+            }
+            else
+            {
+                txtPmhDrug.Enabled = false;
+            }
+            txtPmhDrug.Value = pmh.drug_allergy_other;
+
+            chkPmhPastDia.Checked = pmh.past_illness_dialeteles.Equals("1") ? true : false;
+            chkPmhPastHyp.Checked = pmh.past_illness_hypertention.Equals("1") ? true : false;
+            chkPmhPastLiv.Checked = pmh.past_illness_liver_disease.Equals("1") ? true : false;
+            chkPmhPastTub.Checked = pmh.past_illness_tuberculosis.Equals("1") ? true : false;
+            chkPmhPastAsi.Checked = pmh.past_illness_asihma.Equals("1") ? true : false;
+            chkPmhPastSie.Checked = pmh.past_illness_siezure.Equals("1") ? true : false;
+            chkPmhPastSti.Checked = pmh.past_illness_sti.Equals("1") ? true : false;
+            chkPmhPastThy.Checked = pmh.past_illness_thyroid_disorders.Equals("1") ? true : false;
+            chkPmhPastOther.Checked = pmh.past_illness_other.Equals("1") ? true : false;
+            if (chkPmhPastOther.Checked)
+            {
+                txtPmhPastOther.Enabled = true;
+            }
+            else
+            {
+                txtPmhPastOther.Enabled = false;
+            }
+            txtPmhPastOther.Value = pmh.past_illness_other_other;
+
+            chkPmhSubsNo.Checked = pmh.substance_abuse.Equals("1") ? true : false;
+            chkPmhSubsYes.Checked = pmh.substance_abuse.Equals("2") ? true : false;
+            if (chkPmhSubsYes.Checked)
+            {
+                txtPmhSubs.Enabled = true;
+            }
+            else
+            {
+                txtPmhSubs.Enabled = false;
+            }
+            txtPmhSubs.Value = pmh.substance_abuse_other;
+
+            chkPmhSurgNo.Checked = pmh.substance_abuse.Equals("1") ? true : false;
+            chkPmhSurgYes.Checked = pmh.substance_abuse.Equals("2") ? true : false;
+            if (chkPmhSurgYes.Checked)
+            {
+                txtPmhSurg.Enabled = true;
+            }
+            else
+            {
+                txtPmhSurg.Enabled = false;
+            }
+            txtPmhSurg.Value = pmh.surgical_history_other;
+
+            chkPmhTypePri.Checked = pmh.type_of_infertility.Equals("1") ? true : false;
+            chkPmhTypeSec.Checked = pmh.type_of_infertility.Equals("2") ? true : false;
+            if (chkPmhTypeSec.Checked)
+            {
+                txtPmhType.Enabled = true;
+            }
+            else
+            {
+                txtPmhType.Enabled = false;
+            }
+            txtPmhType.Value = pmh.type_of_infertility_other;
+
+            chkPmhProvNo.Checked = pmh.previous_treatment.Equals("1") ? true : false;
+            chkPmhProvYes.Checked = pmh.previous_treatment.Equals("2") ? true : false;
+            if (chkPmhTypeSec.Checked)
+            {
+                txtPmhProv.Enabled = true;
+            }
+            else
+            {
+                txtPmhProv.Enabled = false;
+            }
+            txtPmhProv.Value = pmh.previous_treatment;
+            txtPmhType.Value = pmh.previous_treatment_other;
+            txtPmhTypeDura.Value = "";
+
+            chkPmhMenReg.Checked = pmh.menstrution.Equals("1") ? true : false;
+            chkPmhMenIrr.Checked = pmh.menstrution.Equals("2") ? true : false;
+            if (chkPmhMenIrr.Checked)
+            {
+                txtPmhMenDay.Enabled = true;
+                txtPmhMenInter.Enabled = true;
+                txtPmhMenAmt.Enabled = true;
+            }
+            else
+            {
+                txtPmhMenDay.Enabled = false;
+                txtPmhMenInter.Enabled = true;
+                txtPmhMenAmt.Enabled = true;
+            }
+            chkPmhMenLmp.Checked = pmh.menstrution.Equals("4") ? true : false;
+            if (chkPmhMenLmp.Checked)
+            {
+                txtPmhMenLmp.Enabled = true;
+            }
+            else
+            {
+                txtPmhMenLmp.Enabled = false;
+            }
+            txtPmhMenLmp.Value = pmh.menstrution_lmp;
+            txtPmhMenDay.Value = pmh.menstrution_days;
+            txtPmhMenInter.Value = pmh.menstrution_interval;
+            txtPmhMenAmt.Value = pmh.menstrution_amount;
+
+            chkPmhPapsNo.Checked = pmh.pap_smear.Equals("1") ? true : false;
+            chkPmhPapsYes.Checked = pmh.pap_smear.Equals("2") ? true : false;
+            if (chkPmhSubsYes.Checked)
+            {
+                txtPmhPaps.Enabled = true;
+            }
+            else
+            {
+                txtPmhPaps.Enabled = false;
+            }
+            txtPmhPaps.Value = pmh.pap_smear_other;
+            chkPmhPttMaleDrugNo.Checked = pmh.male_drug_allery.Equals("1") ? true : false;
+            chkPmhPttMaleDrugYes.Checked = pmh.male_drug_allery.Equals("2") ? true : false;
+            if (chkPmhDrugYes.Checked)
+            {
+                txtPmhPttMaleDrug.Enabled = true;
+            }
+            else
+            {
+                txtPmhPttMaleDrug.Enabled = false;
+            }
+            txtPmhPttMaleDrug.Value = pmh.drug_allergy_other;
+
+            chkPmhPttMalePastDia.Checked = pmh.male_past_illness_dialeteles.Equals("1") ? true : false;
+            chkPmhPttMalePastHyp.Checked = pmh.male_past_illness_hypertention.Equals("1") ? true : false;
+            chkPmhPttMalePastLiv.Checked = pmh.male_past_illness_liver_disease.Equals("1") ? true : false;
+            chkPmhPttMalePastTub.Checked = pmh.male_past_illness_tuberculosis.Equals("1") ? true : false;
+            chkPmhPttMalePastAsi.Checked = pmh.male_past_illness_asihma.Equals("1") ? true : false;
+            chkPmhPttMalePastSie.Checked = pmh.male_past_illness_siezure.Equals("1") ? true : false;
+            chkPmhPttMalePastSti.Checked = pmh.male_past_illness_sti.Equals("1") ? true : false;
+            chkPmhPttMalePastThy.Checked = pmh.male_past_illness_thyroid_disorders.Equals("1") ? true : false;
+            chkPmhPttMalePastOther.Checked = pmh.male_past_illness_other.Equals("1") ? true : false;
+            if (chkPmhPttMalePastOther.Checked)
+            {
+                txtPmhPttMalePastOther.Enabled = true;
+            }
+            else
+            {
+                txtPmhPttMalePastOther.Enabled = false;
+            }
+            txtPmhPttMalePastOther.Value = pmh.male_past_illness_other_other;
+
+            chkPmhPttMaleSubsNo.Checked = pmh.male_substance_abuse.Equals("1") ? true : false;
+            chkPmhPttMaleSubsYes.Checked = pmh.male_substance_abuse.Equals("2") ? true : false;
+            if (chkPmhPttMaleSubsYes.Checked)
+            {
+                txtPmhPttMaleSubs.Enabled = true;
+            }
+            else
+            {
+                txtPmhPttMaleSubs.Enabled = false;
+            }
+            txtPmhPttMaleSubs.Value = pmh.male_substance_abuse_other;
+
+            chkPmlPttMaleSmokingNo.Checked = pmh.male_smoking.Equals("1") ? true : false;
+            chkPmlPttMaleSmokingYes.Checked = pmh.male_smoking.Equals("2") ? true : false;
+            if (chkPmlPttMaleSmokingYes.Checked)
+            {
+                txtPmlPttMaleSmoking.Enabled = true;
+            }
+            else
+            {
+                txtPmlPttMaleSmoking.Enabled = false;
+            }
+            txtPmlPttMaleSmoking.Value = pmh.male_smoking_other;
+
+            chkPmlPttMaleDrinkingNo.Checked = pmh.male_drinking.Equals("1") ? true : false;
+            chkPmlPttMaleDrinkingYes.Checked = pmh.male_drinking.Equals("2") ? true : false;
+            if (chkPmlPttMaleDrinkingYes.Checked)
+            {
+                txtPmlPttMaleDrinking.Enabled = true;
+            }
+            else
+            {
+                txtPmlPttMaleDrinking.Enabled = false;
+            }
+            txtPmlPttMaleDrinking.Value = pmh.male_drinking_other;
+
+            chkPmlPttMaleDrugNo.Checked = pmh.male_drug.Equals("1") ? true : false;
+            chkPmlPttMaleDrugYes.Checked = pmh.male_drug.Equals("2") ? true : false;
+            if (chkPmlPttMaleDrugYes.Checked)
+            {
+                txtPmlPttMaleDrinking.Enabled = true;
+            }
+            else
+            {
+                txtPmlPttMaleDrinking.Enabled = false;
+            }
+            txtPmlPttMaleDrug.Value = pmh.male_drug_other;
+
+            chkPmlPttMaleSurgiNo.Checked = pmh.male_surg.Equals("1") ? true : false;
+            chkPmlPttMaleSurgiYes.Checked = pmh.male_surg.Equals("2") ? true : false;
+            if (chkPmlPttMaleSurgiYes.Checked)
+            {
+                txtPmlPttMaleSurgi.Enabled = true;
+            }
+            else
+            {
+                txtPmlPttMaleSurgi.Enabled = false;
+            }
+            txtPmlPttMaleSurgi.Value = pmh.male_surg_other;
+
+            chkPmlPttMaleTreatNo.Checked = pmh.male_infertility.Equals("1") ? true : false;
+            chkPmlPttMaleTreatYes.Checked = pmh.male_infertility.Equals("2") ? true : false;
+            if (chkPmlPttMaleTreatYes.Checked)
+            {
+                txtPmlPttMaleTreat.Enabled = true;
+            }
+            else
+            {
+                txtPmlPttMaleTreat.Enabled = false;
+            }
+            txtPmlPttMaleTreat.Value = pmh.male_infertility_other;
+
+            txtPmhPttMaleName_1.Value = pmh.male_name;
+        }
+        private void setPMh()
+        {
+            pmh.patient_medical_history_id = txtPmhId.Text;
+            pmh.t_patient_id = txtPttId.Text;
+            pmh.patient_hn = txtHn.Text;
+            pmh.patient_name = txtPmhPttName.Text;
+            pmh.couple_name = txtPmhPttMaleName.Text;
+            pmh.active = "1";
+            pmh.remark = "";
+            pmh.occupation = cboOccup.Text;
+            pmh.date_create = "";
+            pmh.date_modi = "";
+            pmh.date_cancel = "";
+            pmh.user_create = "";
+            pmh.user_modi = "";
+            pmh.user_cancel = "";
+            pmh.contraception = chkPmhConPill.Checked ? "1" : chkPmhConIud.Checked ? "2" : chkPmhConInj.Checked ? "3" : chkPmhConCondom.Checked ? "4" : chkPmhConOther.Checked ? "5" : "";
+            pmh.contraception_other = txtPmhConOther.Text;
+            pmh.drug_allergy = chkPmhDrugNo.Checked ? "1" : chkPmhDrugYes.Checked ? "2" : "";
+            pmh.drug_allergy_other = txtPmhDrug.Text;
+            pmh.past_illness_dialeteles = chkPmhPastDia.Checked ? "1" : "";
+            pmh.past_illness_asihma = chkPmhPastAsi.Checked ? "1" : "";
+            //pmh.t_patient_id = "";
+            pmh.past_illness_hypertention = chkPmhPastHyp.Checked ? "1" : "";
+            pmh.past_illness_liver_disease = chkPmhPastLiv.Checked ? "1" : "";
+            pmh.past_illness_tuberculosis = chkPmhPastTub.Checked ? "1" : "";
+            pmh.past_illness_siezure = chkPmhPastSie.Checked ? "1" : "";
+            pmh.past_illness_sti = chkPmhPastSti.Checked ? "1" : "";
+            pmh.past_illness_thyroid_disorders = chkPmhPastThy.Checked ? "1" : "";
+            pmh.past_illness_other = txtPmhPastOther.Text;
+            pmh.substance_abuse = chkPmhSubsNo.Checked ? "1" : chkPmhSubsYes.Checked ? "2" : "";
+            pmh.substance_abuse_other = txtPmhSubs.Text;
+            pmh.surgical_history = chkPmhSurgNo.Checked ? "1" : chkPmhSurgYes.Checked ? "2" : "";
+            pmh.surgical_history_other = txtPmhSurg.Text;
+            pmh.type_of_infertility = chkPmhTypePri.Checked ? "1" : chkPmhTypeSec.Checked ? "2" : "";
+            pmh.type_of_infertility_other = txtPmhType.Text;
+            pmh.menstrution = chkPmhMenReg.Checked ? "1" : chkPmhMenIrr.Checked ? "2" : chkPmhMenLmp.Checked ? "4" : "";
+            pmh.menstrution_days = txtPmhMenDay.Text;
+            pmh.menstrution_interval = txtPmhMenInter.Text;
+            pmh.menstrution_amount = txtPmhMenAmt.Text;
+            pmh.menstrution_lmp = txtPmhMenLmp.Text;
+            pmh.previous_treatment = chkPmhProvNo.Checked ? "1" : chkPmhProvYes.Checked ? "2" : "";
+            pmh.previous_treatment_other = txtPmhProv.Text;
+            pmh.pap_smear = chkPmhPapsNo.Checked ? "1" : chkPmhPapsYes.Checked ? "2" : "";
+            pmh.pap_smear_other = txtPmhPaps.Text;
+            pmh.male_name = txtPmhPttMaleName_1.Text;
+            pmh.male_drug_allery = chkPmhPttMaleDrugNo.Checked ? "1" : chkPmhPttMaleDrugYes.Checked ? "2" : "";
+            pmh.male_drug_allery_other = txtPmhPttMaleDrug.Text;
+            pmh.male_past_illness_dialeteles = chkPmhPttMalePastDia.Checked ? "1" : "";
+            pmh.male_past_illness_asihma = chkPmhPttMalePastAsi.Checked ? "1" : "";
+            pmh.male_past_illness_hypertention = chkPmhPttMalePastHyp.Checked ? "1" : "";
+            pmh.male_past_illness_liver_disease = chkPmhPttMalePastLiv.Checked ? "1" : "";
+            pmh.male_past_illness_tuberculosis = chkPmhPttMalePastTub.Checked ? "1" : "";
+            pmh.male_past_illness_siezure = chkPmhPttMalePastSie.Checked ? "1" : "";
+            pmh.male_past_illness_sti = chkPmhPttMalePastSti.Checked ? "1" : "";
+            pmh.male_past_illness_thyroid_disorders = chkPmhPttMalePastThy.Checked ? "1" : "";
+            pmh.male_past_illness_other = txtPmhPttMalePastOther.Text;
+            pmh.male_substance_abuse = chkPmhPttMaleSubsNo.Checked ? "1" : chkPmhPttMaleSubsYes.Checked ? "2" : "";
+            pmh.male_substance_abuse_other = txtPmhPttMaleSubs.Text; ;
+            pmh.male_smoking = chkPmlPttMaleSmokingNo.Checked ? "1" : chkPmlPttMaleSmokingYes.Checked ? "2" : "";
+            pmh.male_smoking_other = txtPmlPttMaleSmoking.Text;
+            pmh.male_drinking = chkPmlPttMaleDrinkingNo.Checked ? "1" : chkPmlPttMaleDrinkingYes.Checked ? "2" : "";
+            pmh.male_drinking_other = txtPmlPttMaleDrinking.Text;
+            pmh.male_drug = chkPmlPttMaleDrugNo.Checked ? "1" : chkPmlPttMaleDrugYes.Checked ? "2" : "";
+            pmh.male_drug_other = txtPmlPttMaleDrug.Text;
+            pmh.male_surg = chkPmlPttMaleSurgiNo.Checked ? "1" : chkPmlPttMaleSurgiYes.Checked ? "2" : "";
+            pmh.male_surg_other = txtPmlPttMaleSurgi.Text;
+            pmh.male_infertility = chkPmlPttMaleTreatNo.Checked ? "1" : chkPmlPttMaleTreatYes.Checked ? "2" : "";
+            pmh.male_infertility_other = txtPmlPttMaleTreat.Text;
+            pmh.past_illness_other_other = "";
+            pmh.male_past_illness_other_other = "";
         }
         private void setEggSti()
         {
@@ -2558,6 +3214,7 @@ namespace clinic_ivf.gui
             txtNameMale.Value = ptt1.Name;
             stt.Show("<p><b>สวัสดี</b></p>คุณ " + ptt.congenital_diseases_description + "<br> กรุณา ป้อนรหัสผ่าน", chkChronic);
             txtCongenital.Value = ptt.congenital_diseases_description;
+            //setControlPmh();
             if (cboBsp.Items.Count > 3)
             {
                 cboBsp.SelectedIndex = 3;
