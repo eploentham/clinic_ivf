@@ -677,6 +677,7 @@
             this.label92 = new System.Windows.Forms.Label();
             this.label93 = new System.Windows.Forms.Label();
             this.label94 = new System.Windows.Forms.Label();
+            this.pnLab = new System.Windows.Forms.Panel();
             this.sB.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.theme1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.sC)).BeginInit();
@@ -763,6 +764,7 @@
             this.tcOrd.SuspendLayout();
             this.tabOrd.SuspendLayout();
             this.tabPkg.SuspendLayout();
+            this.tabLab.SuspendLayout();
             this.tabApp.SuspendLayout();
             this.pnAdm1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.sCApm)).BeginInit();
@@ -2679,6 +2681,7 @@
             // 
             // tabLab
             // 
+            this.tabLab.Controls.Add(this.pnLab);
             this.tabLab.Location = new System.Drawing.Point(1, 24);
             this.tabLab.Name = "tabLab";
             this.tabLab.Size = new System.Drawing.Size(1585, 665);
@@ -2739,7 +2742,7 @@
             this.c1SplitterPanel4.SizeRatio = 35.421D;
             this.c1SplitterPanel4.TabIndex = 0;
             this.c1SplitterPanel4.Text = "Panel 1";
-            this.c1SplitterPanel4.Width = 560;
+            this.c1SplitterPanel4.Width = 553;
             // 
             // pnAdm
             // 
@@ -2808,7 +2811,7 @@
             this.c1SplitterPanel6.SizeRatio = 21.632D;
             this.c1SplitterPanel6.TabIndex = 0;
             this.c1SplitterPanel6.Text = "Panel 1";
-            this.c1SplitterPanel6.Width = 220;
+            this.c1SplitterPanel6.Width = 213;
             // 
             // pnApmAll
             // 
@@ -10639,6 +10642,17 @@
             this.label94.TabIndex = 545;
             this.theme1.SetTheme(this.label94, "(default)");
             // 
+            // pnLab
+            // 
+            this.pnLab.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.pnLab.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pnLab.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.pnLab.Location = new System.Drawing.Point(0, 0);
+            this.pnLab.Name = "pnLab";
+            this.pnLab.Size = new System.Drawing.Size(1585, 665);
+            this.pnLab.TabIndex = 0;
+            this.theme1.SetTheme(this.pnLab, "(default)");
+            // 
             // FrmNurseAdd2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -10740,6 +10754,7 @@
             this.tcOrd.ResumeLayout(false);
             this.tabOrd.ResumeLayout(false);
             this.tabPkg.ResumeLayout(false);
+            this.tabLab.ResumeLayout(false);
             this.tabApp.ResumeLayout(false);
             this.pnAdm1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.sCApm)).EndInit();
@@ -11795,5 +11810,6 @@
         private System.Windows.Forms.Panel pnOutLabDetail;
         private C1.Win.FlexViewer.C1FlexViewer c1FlexViewer1;
         private System.Windows.Forms.Panel pnOutLabEmail;
+        private System.Windows.Forms.Panel pnLab;
     }
 }

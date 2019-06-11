@@ -201,6 +201,7 @@ namespace clinic_ivf.control
             iniC.creditCharge = iniF.getIni("app", "creditCharge");
             iniC.service_point_id = iniF.getIni("app", "service_point_id");
             iniC.statusCheckDonor = iniF.getIni("app", "statusCheckDonor");
+            iniC.printerBill = iniF.getIni("app", "printerBill");
 
             iniC.grdViewFontName = iniC.grdViewFontName.Equals("") ? "Microsoft Sans Serif" : iniC.grdViewFontName;
 

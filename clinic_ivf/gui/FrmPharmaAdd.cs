@@ -12,6 +12,7 @@ using System.Data;
 using System.Drawing;
 using System.Drawing.Printing;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
@@ -26,7 +27,7 @@ namespace clinic_ivf.gui
         public C1DockingTabPage tab;
         public FrmPharmaView frmPharView;
 
-        String pttId = "", webcamname = "", vsid = "", flagedit = "", pApmId = "";
+        String pttId = "", webcamname = "", vsid = "", flagedit = "", pApmId = "", printerOld="";
         Patient ptt;
         VisitOld vsOld;
         Visit vs;
@@ -50,6 +51,9 @@ namespace clinic_ivf.gui
         decimal rat = 0;
         Color color;
         int rowOrder = 0, spHeight = 150;
+
+        [DllImport("winspool.drv", CharSet = CharSet.Auto, SetLastError = true)]
+        public static extern bool SetDefaultPrinter(string Printer);
 
         public FrmPharmaAdd(IvfControl ic, MainMenu m, String pttid, String vsid, String flagedit)
         {
@@ -128,6 +132,12 @@ namespace clinic_ivf.gui
                 unit = row["unit_name"] != null ? row["unit_name"].ToString() : " ";
                 row["unit_name"] = qty +" "+ unit;
             }
+            PrinterSettings settings = new PrinterSettings();
+            printerOld = settings.PrinterName;
+            SetDefaultPrinter(ic.iniC.printerSticker);
+            //PrinterSettings settings1 = new PrinterSettings();
+            //settings1.DefaultPageSettings.PrinterSettings.PrinterName = ic.iniC.printerSticker;
+            //settings1.PrinterName = ic.iniC.printerSticker;
             FrmReport frm = new FrmReport(ic);
             frm.setStickerDrugReport(date, dt);
             frm.ShowDialog(this);

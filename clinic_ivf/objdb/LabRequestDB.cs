@@ -176,6 +176,19 @@ namespace clinic_ivf.objdb
             dt = conn.selectData(conn.conn, sql);
             return dt;
         }
+        public DataTable selectByNurse(String pttid)
+        {
+            DataTable dt = new DataTable();
+            String sql = "Select  lreq.*,litem.LName " +
+                "From lab_t_request lreq " +
+                "Left Join t_visit vs on lreq.visit_id = vs.t_visit_id  " +
+                "Left Join LabItem litem on lreq.item_id = litem.LID " +
+                "Where  vs.t_patient_id = '" + pttid + "'  and lreq.active= '1' " +
+                //"and lreq.item_id in ('14','18','66') " +
+                "Order By lreq.req_id ";
+            dt = conn.selectData(conn.conn, sql);
+            return dt;
+        }
         public DataTable selectBySpermStatusUnAccept(String startdate, String enddate)
         {
             DataTable dt = new DataTable();

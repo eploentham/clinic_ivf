@@ -731,18 +731,18 @@ namespace clinic_ivf.gui
             ReportDocument rpt = new ReportDocument();
             try
             {
-                PrinterSettings settings = new PrinterSettings();
-                foreach (string printer in PrinterSettings.InstalledPrinters)
-                {
-                    settings.PrinterName = printer;
-                    if (settings.IsDefaultPrinter)
-                        printerDefault = printer;
-                }
+                //PrinterSettings settings = new PrinterSettings();
+                //foreach (string printer in PrinterSettings.InstalledPrinters)
+                //{
+                //    settings.PrinterName = printer;
+                //    if (settings.IsDefaultPrinter)
+                //        printerDefault = printer;
+                //}
                 //Properties.Settings.Default["PrinterName"] = ic.iniC.printerSticker;
                 
-                PrinterSettings settings1 = new PrinterSettings();
-                settings1.DefaultPageSettings.PrinterSettings.PrinterName = ic.iniC.printerSticker;
-                settings1.PrinterName = ic.iniC.printerSticker;
+                //PrinterSettings settings1 = new PrinterSettings();
+                //settings1.DefaultPageSettings.PrinterSettings.PrinterName = ic.iniC.printerSticker;
+                //settings1.PrinterName = ic.iniC.printerSticker;
 
                 String date1 = "";
                 //date1 = DateTime.Now.Year + "-" + DateTime.Now.ToString("MM-dd HH:mm:ss");
@@ -757,7 +757,9 @@ namespace clinic_ivf.gui
                 rpt.SetParameterValue("line12", "โทรศัพท์ "+ic.cop.tele);
                 rpt.SetParameterValue("date1", "" + date1);
                 //rpt.PrintOptions.PaperSize = CrystalDecisions.Shared.PaperSize.
-                rpt.PrintOptions.PrinterName = ic.iniC.printerSticker;
+                //rpt.PrintOptions.PrinterName = ic.iniC.printerSticker;
+                //rpt.PrintToPrinter(1, false, 1, 1);
+                //crystalReportViewer1.
                 this.crystalReportViewer1.ReportSource = rpt;
                 this.crystalReportViewer1.Refresh();
             }

@@ -461,11 +461,11 @@ namespace clinic_ivf.gui
             txtPeReportDate.Value = lsperm.date_report;
             txtIuiApproveDate.Value = lsperm.date_approve;
             txtIuiReportDate.Value = lsperm.date_report;
-            if (ic.iniC.statusCheckDonor.Equals("1"))
-            {
-                lsperm = new LabSperm();
-                lsperm.status_lab_sperm = StatusSperm;
-            }
+            //if (ic.iniC.statusCheckDonor.Equals("1"))
+            //{
+            //    lsperm = new LabSperm();
+            //    lsperm.status_lab_sperm = StatusSperm;
+            //}
             if (lsperm.status_lab_sperm.Equals("1"))
             {
                 setControlSpermFreezing();

@@ -333,7 +333,7 @@ namespace clinic_ivf.objdb
             return orop;
         }
         public LabRequest setLabRequest(String pttName, String vn, String doctorId, String remark, String hn, String dobfemale, String reqid, String itmcode
-            ,String hnmale, String namemale, String hndonor, String namedonor, String dobdornor)
+            ,String hnmale, String namemale, String hndonor, String namedonor, String dobdornor, String vsid)
         {
             LabRequest lbReq = new LabRequest();
             lbReq.req_id = "";
@@ -347,7 +347,7 @@ namespace clinic_ivf.objdb
             lbReq.accept_date = "";
             lbReq.start_date = "";
             lbReq.result_date = "";
-            lbReq.visit_id = "";
+            lbReq.visit_id = vsid;
             lbReq.vn = vn;
             lbReq.active = "1";
             lbReq.remark = remark;

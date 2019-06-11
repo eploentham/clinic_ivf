@@ -9,7 +9,9 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Drawing.Printing;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -33,12 +35,14 @@ namespace clinic_ivf.gui
         Color bg, fc;
         Font ff, ffB;
         Color color;
-        String vnold = "";
+        String vnold = "", printerOld = "";
 
         C1SuperTooltip stt;
         C1SuperErrorProvider sep;
 
         int colId = 1, colName = 2, colprice=3, colqty=4, colAmt = 5, colDiscount = 6, colNetAmt = 7, colGrpName=8, colBilId=9, colInclude=10, colStatus=11;
+        [DllImport("winspool.drv", CharSet = CharSet.Auto, SetLastError = true)]
+        public static extern bool SetDefaultPrinter(string Printer);
         public FrmCashierAdd(IvfControl ic, MainMenu m, String billid, String vnold, String flagedit)
         {
             InitializeComponent();
@@ -102,6 +106,10 @@ namespace clinic_ivf.gui
         private void BtnPrnReceipt_Click(object sender, EventArgs e)
         {
             //throw new NotImplementedException();
+            PrinterSettings settings = new PrinterSettings();
+            printerOld = settings.PrinterName;
+            SetDefaultPrinter(ic.iniC.printerBill);
+
             DataTable dt = new DataTable();
             DataTable dtprn = new DataTable();
             DataTable dtpgk = new DataTable();

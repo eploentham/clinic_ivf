@@ -45,7 +45,7 @@ namespace clinic_ivf.gui
         Font ff, ffB;
 
         C1FlexGrid grfBloodLab, grfSperm, grfEmbryo, grfGenetic, grfSpecial, grfRx, grfRxSet, grfOrder, grfPackage, grfPackageD, grfRxSetD, grfNote, grfpApmAll, grfpApmDayAll, grfpApmVisit, grfImg;
-        C1FlexGrid grfEggsd;
+        C1FlexGrid grfEggsd, grfLab;
         C1SuperTooltip stt;
         C1SuperErrorProvider sep;
 
@@ -55,6 +55,7 @@ namespace clinic_ivf.gui
         int colRxdId = 1, colRxName = 2, colRxQty = 3, colRxPrice = 4, colRxInclude = 5, colRxRemark = 6, colRxUsE = 7, colRxUsT = 8, colRxId = 9, colRxItmId = 10;
         int colNoteId = 1, colNote = 2, colNoteStatusAll = 3;
         int colApmId = 1, colApmAppointment = 4, colApmDate = 2, colApmTime = 3, colApmDoctor = 5, colApmSp = 6, colApmNotice = 7, colE2 = 8, colLh = 9, colEndo = 10, colPrl = 10, colFsh = 11, colRt = 12, colLt = 13;
+        int colLabReqId = 1, collabName = 2, colLabStatus = 3;
 
         int colOrderId = 1, colOrderVn = 2, colOrderLID = 3, colOrderExtra = 4, colOrderPrice = 5, colOrderStatus = 6;
         int colOrderPID = 7, colOrderPIDS = 8, colOrderLName = 9, colOrderSP1V = 10, colOrderSP2V = 11, colOrderSP3V = 12;
@@ -221,6 +222,8 @@ namespace clinic_ivf.gui
             setControlEggSti();
             initGrfImg();
             setGrfImg();
+            initGrfLab();
+            setGrfLab();
             if (flagedit.Equals("view"))
             {
                 btnPkgOrder.Enabled = false;
@@ -230,7 +233,84 @@ namespace clinic_ivf.gui
             //setGrfPtt("");
             initProgressNote();
         }
+        private void initGrfLab()
+        {
+            grfLab = new C1FlexGrid();
+            grfLab.Font = fEdit;
+            grfLab.Dock = System.Windows.Forms.DockStyle.Fill;
+            grfLab.Location = new System.Drawing.Point(0, 0);
 
+            //FilterRowUnBound fr = new FilterRowUnBound(grfRx);
+
+            grfLab.DoubleClick += GrfLab_DoubleClick;
+            //grfRx.AfterFilter += GrfRx_AfterFilter;
+
+            //grfExpnC.CellButtonClick += new C1.Win.C1FlexGrid.RowColEventHandler(this.grfDept_CellButtonClick);
+            //grfExpnC.CellChanged += new C1.Win.C1FlexGrid.RowColEventHandler(this.grfDept_CellChanged);
+            ContextMenu menuGw = new ContextMenu();
+            if (flagedit.Equals("edit"))
+            {
+                menuGw.MenuItems.Add("สั่งการ", new EventHandler(ContextMenu_order_rx));
+            }
+            //menuGw.MenuItems.Add("&แก้ไข", new EventHandler(ContextMenu_Gw_Edit));
+            //menuGw.MenuItems.Add("&ยกเลิก", new EventHandler(ContextMenu_Gw_Cancel));
+            grfLab.ContextMenu = menuGw;
+            pnLab.Controls.Add(grfLab);
+
+            theme1.SetTheme(grfLab, "Office2010Black");
+
+        }
+
+        private void GrfLab_DoubleClick(object sender, EventArgs e)
+        {
+            //throw new NotImplementedException();
+
+        }
+        private void setGrfLab()
+        {
+            grfLab.Clear();
+            grfLab.DataSource = null;
+            grfLab.Rows.Count = 1;
+            grfLab.Cols.Count = 4;
+
+            grfLab.Cols[collabName].Width = 250;
+            grfLab.Cols[colLabStatus].Width = 80;
+
+            grfLab.ShowCursor = true;
+            //grdFlex.Cols[colID].Caption = "no";
+            //grfDept.Cols[colCode].Caption = "รหัส";
+
+            grfLab.Cols[collabName].Caption = "Lab Name";
+            grfLab.Cols[colLabStatus].Caption = "Status";
+
+            Color color = ColorTranslator.FromHtml(ic.iniC.grfRowColor);
+            //CellRange rg1 = grfBank.GetCellRange(1, colE, grfBank.Rows.Count, colE);
+            //rg1.Style = grfBank.Styles["date"];
+            //grfCu.Cols[colID].Visible = false;
+            
+            DataTable dt = new DataTable();
+            dt = ic.ivfDB.lbReqDB.selectByNurse(txtPttId.Text);
+            int i = 0;
+            foreach (DataRow row in dt.Rows)
+            {
+                i++;
+                Row row1 = grfLab.Rows.Add();
+                row1[colLabReqId] = row[ic.ivfDB.lbReqDB.lbReq.req_id].ToString();
+                row1[collabName] = row["LName"].ToString();
+                row1[colLabStatus] = row[ic.ivfDB.lbReqDB.lbReq.status_req].ToString();
+                //row1[colImgStatus] = row[ic.ivfDB.pttImgDB.pttI.status_image].ToString();
+                grfLab[i, 0] = i;
+                
+            }
+            grfLab.Cols[colLabReqId].Visible = false;            
+            
+            grfImg.Cols[colLabStatus].AllowEditing = false;
+            grfLab.Cols[collabName].AllowEditing = false;
+            //grfImg.AutoSizeCols();
+            grfLab.AutoSizeRows();
+            theme1.SetTheme(grfLab, "Office2016Colorful");
+
+        }
         private void BtnApmVoid_Click(object sender, EventArgs e)
         {
             //throw new NotImplementedException();
