@@ -341,6 +341,18 @@ namespace clinic_ivf.objdb
             cop1 = setCompany(dt);
             return cop1;
         }
+        public Company selectByCode2(String copId)
+        {
+            Company cop1 = new Company();
+            DataTable dt = new DataTable();
+            String sql = "select cop.*, date_format(now(),'%m') as month, date_format(now(),'%d') as day, year(now()) as year " +
+                "From b_company cop " +
+                //"Left Join t_ssdata_visit ssv On ssv.ssdata_visit_id = bd.ssdata_visit_id " +
+                "Where cop.comp_code ='" + copId + "' and cop.active ='1' ";
+            dt = conn.selectData(conn.conn, sql);
+            cop1 = setCompany(dt);
+            return cop1;
+        }
         public String genCashDrawDoc()
         {
             String doc = "", year="", sql="";

@@ -102,8 +102,12 @@ namespace clinic_ivf.gui
             initGrfBillD();
             setChkDiscount(false);
             setControl();
-            ic.ivfDB.copDB.cop = ic.ivfDB.copDB.selectByCode1("001");
-            
+            //ic.ivfDB.copDB.cop = ic.ivfDB.copDB.selectByCode2("001");
+            //year = DateTime.Now.ToString("yyyy");
+
+            //MessageBox.Show(DateTime.Now.ToString("yyyy"), "");
+            //MessageBox.Show(DateTime.Now.ToString("MM"), "");
+            //MessageBox.Show(DateTime.Now.ToString("dd"), "");
         }
         private void BtnPrnReceipt_Click(object sender, EventArgs e)
         {
@@ -233,6 +237,9 @@ namespace clinic_ivf.gui
                 billFormat = billNo.Substring(billNo.Length - 5);
                 billNo = billNo.Substring(0, billNo.Length - 5) + "-" + billFormat;
             }
+            day = DateTime.Now.ToString("dd");
+            month = DateTime.Now.ToString("MM");
+            year = DateTime.Now.ToString("yyyy");
             FrmReport frm = new FrmReport(ic);
             frm.setPrintBill(dtprn, txtHn.Text, txtPttNameE.Text, amt2, amt.ToString("#,###.00"), billNo, day + "/" + month + "/" + year, payby,"ใบเสร็จ/Receipt", sumprice.ToString("#,###.00"));
             frm.ShowDialog(this);
@@ -577,6 +584,9 @@ namespace clinic_ivf.gui
                 billFormat = billNo.Substring(billNo.Length - 5);
                 billNo = billNo.Substring(0, billNo.Length - 5) + "-" + billFormat;
             }
+            day = DateTime.Now.ToString("dd");
+            month = DateTime.Now.ToString("MM");
+            year = DateTime.Now.ToString("yyyy");
             FrmReport frm = new FrmReport(ic);
             frm.setPrintBill(dtprn, txtHn.Text, txtPttNameE.Text, amt2, amt.ToString("#,###.00"), billNo, day+"/"+month+"/"+year, payby,"ใบแจ้งหนี้/Bill", sumprice.ToString("#,###.00"));
             frm.ShowDialog(this);
