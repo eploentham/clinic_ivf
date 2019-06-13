@@ -453,9 +453,16 @@ namespace clinic_ivf.gui
             menuGw.MenuItems.Add("LAB Form Day1", new EventHandler(ContextMenu_Form_day1));
             menuGw.MenuItems.Add("&Order Entry", new EventHandler(ContextMenu_Apm));
             menuGw.MenuItems.Add("&Edit Appointment", new EventHandler(ContextMenu_Apm_Finish));
-            menuGw.MenuItems.Add("&Cancel Receive", new EventHandler(ContextMenu_Apm));
+            //menuGw.MenuItems.Add("&Cancel Receive", new EventHandler(ContextMenu_Apm));
             menuGw.MenuItems.Add("Print Pre-Operation Check List", new EventHandler(ContextMenu_prn_check_list_finish));
             menuGw.MenuItems.Add("Print Autherization Form", new EventHandler(ContextMenu_prn_authen_sign_finish));
+            MenuItem addDevice = new MenuItem("[Form Print]");
+            menuGw.MenuItems.Add(addDevice);
+            addDevice.MenuItems.Add(new MenuItem("Pre-Operation Check List", new EventHandler(ContextMenu_prn_check_list)));
+            addDevice.MenuItems.Add(new MenuItem("Autherization Form", new EventHandler(ContextMenu_prn_authen_sign)));
+            addDevice.MenuItems.Add(new MenuItem("Order OPU", new EventHandler(ContextMenu_prn_order_opu)));
+            addDevice.MenuItems.Add(new MenuItem("Order ET, FET", new EventHandler(ContextMenu_prn_order_et_fet)));
+            addDevice.MenuItems.Add(new MenuItem("Post Operation Note", new EventHandler(ContextMenu_prn_operation_note)));
             grfFinish.ContextMenu = menuGw;
 
             Color color = ColorTranslator.FromHtml(ic.iniC.grfRowColor);
@@ -1010,8 +1017,15 @@ namespace clinic_ivf.gui
             menuGw.MenuItems.Add("&LAB request FORM A", new EventHandler(ContextMenu_LAB_req_formA));
             menuGw.MenuItems.Add("&Add Appointment", new EventHandler(ContextMenu_Apm));
             menuGw.MenuItems.Add("&Cancel Receive", new EventHandler(ContextMenu_Apm));
-            menuGw.MenuItems.Add("&No Appointment Close Operation", new EventHandler(ContextMenu_NO_Apm));
-            
+            //menuGw.MenuItems.Add("&No Appointment Close Operation", new EventHandler(ContextMenu_NO_Apm));
+            MenuItem addDevice = new MenuItem("[Form Print]");
+            menuGw.MenuItems.Add(addDevice);
+            addDevice.MenuItems.Add(new MenuItem("Pre-Operation Check List", new EventHandler(ContextMenu_prn_check_list)));
+            addDevice.MenuItems.Add(new MenuItem("Autherization Form", new EventHandler(ContextMenu_prn_authen_sign)));
+            addDevice.MenuItems.Add(new MenuItem("Order OPU", new EventHandler(ContextMenu_prn_order_opu)));
+            addDevice.MenuItems.Add(new MenuItem("Order ET, FET", new EventHandler(ContextMenu_prn_order_et_fet)));
+            addDevice.MenuItems.Add(new MenuItem("Post Operation Note", new EventHandler(ContextMenu_prn_operation_note)));
+            addDevice.MenuItems.Add(new MenuItem("Patient Medical History", new EventHandler(ContextMenu_prn_pmh)));
             grfQue.ContextMenu = menuGw;
 
             Color color = ColorTranslator.FromHtml(ic.iniC.grfRowColor);
@@ -1119,7 +1133,7 @@ namespace clinic_ivf.gui
             menuGw.MenuItems.Add("Egg Sti ", new EventHandler(ContextMenu_egg_sti));
             menuGw.MenuItems.Add("&Add Appointment", new EventHandler(ContextMenu_Apm_Ptt));
             menuGw.MenuItems.Add("&Cancel Receive", new EventHandler(ContextMenu_Void_Ptt));
-            menuGw.MenuItems.Add("&No Appointment Close Operation", new EventHandler(ContextMenu_NO_Apm_Ptt));
+            //menuGw.MenuItems.Add("&No Appointment Close Operation", new EventHandler(ContextMenu_NO_Apm_Ptt));
             
             //menuGw.MenuItems.Add("Print Autherization Form", new EventHandler(ContextMenu_prn_authen_sign));
             MenuItem addDevice = new MenuItem("[Form Print]");
@@ -1129,6 +1143,7 @@ namespace clinic_ivf.gui
             addDevice.MenuItems.Add(new MenuItem("Order OPU", new EventHandler(ContextMenu_prn_order_opu)));
             addDevice.MenuItems.Add(new MenuItem("Order ET, FET", new EventHandler(ContextMenu_prn_order_et_fet)));
             addDevice.MenuItems.Add(new MenuItem("Post Operation Note", new EventHandler(ContextMenu_prn_operation_note)));
+            addDevice.MenuItems.Add(new MenuItem("Patient Medical History", new EventHandler(ContextMenu_prn_pmh)));
             grfQue.ContextMenu = menuGw;
 
             Color color = ColorTranslator.FromHtml(ic.iniC.grfRowColor);
@@ -1270,6 +1285,30 @@ namespace clinic_ivf.gui
             frm.setOpdpostoperationnote(name, hn);
             frm.ShowDialog(this);
         }
+        private void ContextMenu_prn_pmh(object sender, System.EventArgs e)
+        {
+            String chk = "", name = "", vsid = "", pttId = "", hn = "";
+
+            vsid = grfQue[grfQue.Row, colID] != null ? grfQue[grfQue.Row, colID].ToString() : "";
+            pttId = grfQue[grfQue.Row, colPttId] != null ? grfQue[grfQue.Row, colPttId].ToString() : "";
+            name = grfQue[grfQue.Row, colPttName] != null ? grfQue[grfQue.Row, colPttName].ToString() : "";
+            hn = grfQue[grfQue.Row, colPttHn] != null ? grfQue[grfQue.Row, colPttHn].ToString() : "";
+            FrmReport frm = new FrmReport(ic);
+            frm.setPatientMedicalHistory(name, hn);
+            frm.ShowDialog(this);
+        }
+        //private void ContextMenu_prn_pmh_donor(object sender, System.EventArgs e)
+        //{
+        //    String chk = "", name = "", vsid = "", pttId = "", hn = "";
+
+        //    vsid = grfQue[grfQue.Row, colID] != null ? grfQue[grfQue.Row, colID].ToString() : "";
+        //    pttId = grfQue[grfQue.Row, colPttId] != null ? grfQue[grfQue.Row, colPttId].ToString() : "";
+        //    name = grfQue[grfQue.Row, colPttName] != null ? grfQue[grfQue.Row, colPttName].ToString() : "";
+        //    hn = grfQue[grfQue.Row, colPttHn] != null ? grfQue[grfQue.Row, colPttHn].ToString() : "";
+        //    FrmReport frm = new FrmReport(ic);
+        //    frm.setPatientMedicalHistory(name, hn);
+        //    frm.ShowDialog(this);
+        //}
         private void ContextMenu_Finish_Apm(object sender, System.EventArgs e)
         {
             String chk = "", name = "", vsid = "", pttId = "";

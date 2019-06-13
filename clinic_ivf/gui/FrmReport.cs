@@ -26,6 +26,28 @@ namespace clinic_ivf.gui
             InitializeComponent();
             this.ic = ic;
         }
+        public void setPatientMedicalHistory(String name, String hn)
+        {
+            String chk = "", printerDefault = "";
+            ReportDocument rpt = new ReportDocument();
+            try
+            {
+                rpt.Load("pmh.rpt");
+                //rpt.SetDataSource(dt);
+                rpt.SetParameterValue("line1", ic.cop.comp_name_t);
+                rpt.SetParameterValue("line2", ic.cop.addr1);
+                rpt.SetParameterValue("line3", ic.cop.addr2);
+                rpt.SetParameterValue("hn", hn);
+                rpt.SetParameterValue("name", name);
+                this.crystalReportViewer1.ReportSource = rpt;
+                this.crystalReportViewer1.Refresh();
+            }
+            catch (Exception ex)
+            {
+                chk = ex.Message.ToString();
+                MessageBox.Show("error " + ex.Message, "");
+            }
+        }
         public void setStickerPatientThemal(DataTable dt)
         {
             String chk = "", printerDefault = "";
