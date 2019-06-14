@@ -38,6 +38,8 @@ namespace clinic_ivf.objdb
             pttI.user_cancel = "user_cancel";
             pttI.image_path = "image_path";
             pttI.status_image = "status_image";
+            pttI.status_document = "status_document";
+            pttI.dept_id = "b_service_point_id";
 
             pttI.table = "t_patient_image";
             pttI.pkField = "patient_image_id";
@@ -61,12 +63,12 @@ namespace clinic_ivf.objdb
             p.remark = p.remark == null ? "" : p.remark;
             p.image_path = p.image_path == null ? "" : p.image_path;
             p.status_image = p.status_image == null ? "0" : p.status_image;
-            //p.LVSID = p.LVSID == null ? "" : p.LVSID;
+            p.status_document = p.status_document == null ? "" : p.status_document;
             //p.IntLock = p.IntLock == null ? "" : p.IntLock;
 
             p.t_patient_id = int.TryParse(p.t_patient_id, out chk) ? chk.ToString() : "0";
             p.t_visit_id = int.TryParse(p.t_visit_id, out chk) ? chk.ToString() : "0";
-            
+            p.dept_id = int.TryParse(p.dept_id, out chk) ? chk.ToString() : "0";
         }
         public String insert(PatientImage p, String userId)
         {
@@ -82,14 +84,14 @@ namespace clinic_ivf.objdb
                 pttI.remark + "," + pttI.image_path + "," + pttI.status_image + "," +
                 pttI.date_create + "," + pttI.date_modi + "," + pttI.date_cancel + ", " +
                 pttI.user_create + "," + pttI.user_modi + "," + pttI.user_cancel + "," +
-                pttI.active + " " +
+                pttI.active + "," + pttI.status_document + "," + pttI.dept_id + " " +
                 ") " +
                 "Values ('" + p.t_patient_id + "','" + p.t_visit_id.Replace("'", "''") + "','" + p.desc1.Replace("'", "''") + "'," +
                 "'" + p.desc2.Replace("'", "''") + "','" + p.desc3.Replace("'", "''") + "','" + p.desc4.Replace("'", "''") + "'," +
                 "'" + p.remark.Replace("'", "''") + "','" + p.image_path + "','" + p.status_image + "'," +
                 "now(),'" + p.date_modi + "','" + p.date_cancel + "', " +
                 "'" + userId + "','" + p.user_modi + "','" + p.user_cancel + "'," +
-                "'1'" +
+                "'1','" + p.status_document + "','" + p.dept_id + "' "+
                 ")";
             try
             {
@@ -120,7 +122,8 @@ namespace clinic_ivf.objdb
                 "," + pttI.status_image + " = '" + p.status_image + "'" +
                 "," + pttI.date_modi + " = now()" +
                 "," + pttI.user_modi + " = '" + userId + "'" +
-
+                "," + pttI.status_document + " = '" + p.status_document + "'" +
+                "," + pttI.dept_id + " = '" + p.dept_id + "'" +
                 "Where " + pttI.pkField + "='" + p.patient_image_id + "'"
                 ;
 
@@ -187,6 +190,15 @@ namespace clinic_ivf.objdb
             dt = conn.selectData(conn.conn, sql);
             return dt;
         }
+        public DataTable selectByPttIDDept(String pttid, String deptid)
+        {
+            DataTable dt = new DataTable();
+            String sql = "select pttI.* " +
+                "From " + pttI.table + " pttI " +
+                "Where pttI." + pttI.t_patient_id + " ='" + pttid + "' and " + pttI.active + "='1' and pttI."+pttI.dept_id + "'"+deptid +"'";
+            dt = conn.selectData(conn.conn, sql);
+            return dt;
+        }
         public DataTable selectByPttID(String pttid)
         {
             DataTable dt = new DataTable();
@@ -203,6 +215,26 @@ namespace clinic_ivf.objdb
                 "From " + pttI.table + " pttI " +
                 "Where pttI." + pttI.t_patient_id + " ='" + pttid + "' and " + pttI.active + "='1' and "+pttI.t_visit_id +"='"+visitid+"' " +
                 "Order By "+pttI.patient_image_id;
+            dt = conn.selectData(conn.conn, sql);
+            return dt;
+        }
+        public DataTable selectByPttIDOutLab(String pttid)
+        {
+            DataTable dt = new DataTable();
+            String sql = "select pttI.* " +
+                "From " + pttI.table + " pttI " +
+                "Where pttI." + pttI.t_patient_id + " ='" + pttid + "' and " + pttI.active + "='1'  " +
+                "Order By " + pttI.patient_image_id;
+            dt = conn.selectData(conn.conn, sql);
+            return dt;
+        }
+        public DataTable selectByPttIDOutLabDept(String pttid, String deptid)
+        {
+            DataTable dt = new DataTable();
+            String sql = "select pttI.* " +
+                "From " + pttI.table + " pttI " +
+                "Where pttI." + pttI.t_patient_id + " ='" + pttid + "' and " + pttI.active + "='1'  and pttI." + pttI.dept_id + "'" + deptid + "'"+
+                "Order By " + pttI.patient_image_id;
             dt = conn.selectData(conn.conn, sql);
             return dt;
         }
@@ -263,6 +295,8 @@ namespace clinic_ivf.objdb
                 vsold1.user_cancel = dt.Rows[0][pttI.user_cancel].ToString();
                 vsold1.image_path = dt.Rows[0][pttI.image_path].ToString();
                 vsold1.status_image = dt.Rows[0][pttI.status_image].ToString();
+                vsold1.status_document = dt.Rows[0][pttI.status_document].ToString();
+                vsold1.dept_id = dt.Rows[0][pttI.dept_id].ToString();
             }
             else
             {
@@ -289,7 +323,8 @@ namespace clinic_ivf.objdb
             stf1.user_cancel = "";
             stf1.image_path = "";
             stf1.status_image = "";
-
+            stf1.status_document = "";
+            stf1.dept_id = "";
             return stf1;
         }
     }

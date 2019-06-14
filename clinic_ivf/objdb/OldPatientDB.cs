@@ -591,7 +591,7 @@ namespace clinic_ivf.objdb
             DataTable dt = new DataTable();
             int chk = 0;
             //int year = DateTime.Now.Year * 10000;     //  -2
-            int year = DateTime.Now.Year*100000;        //  +2
+            int year = DateTime.Now.Year*10000;        //  +2
             String re = "";
             String sql = "select max(PID) as MAXPID from Patient ";
             dt = conn.selectData(conn.conn, sql);
@@ -623,7 +623,7 @@ namespace clinic_ivf.objdb
             PatientOld cop1 = new PatientOld();
             DataTable dt = new DataTable();
             int chk = 0;
-            int year = DateTime.Now.Year * 200000;
+            int year = DateTime.Now.Year * 100000;
             String re = "";
             String sql = "select max(PID) as MAXPID from Patient ";
             dt = conn.selectData(conn.conn, sql);

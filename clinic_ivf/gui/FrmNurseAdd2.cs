@@ -5129,9 +5129,10 @@ namespace clinic_ivf.gui
             //if (MessageBox.Show("ต้องการ Upload image to server ", "", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == DialogResult.OK)
             //{
                 OpenFileDialog ofd = new OpenFileDialog();
-                ofd.Filter = "Images (Pdf Files|*.BMP;*.JPG;*.Jepg;*.Png;*.GIF)|*.BMP;*.JPG;*.Jepg;*.Png;*.GIF|*.pdf|All files (*.*)|*.*";
+                //ofd.Filter = "Images (*.BMP;*.JPG;*.Jepg;*.Png;*.GIF)|*.BMP;*.JPG;*.Jepg;*.Png;*.GIF|Pdf Files|*.pdf|All files (*.*)|*.*";
+                ofd.Filter = "PDF (Pdf Files)|*.pdf|All files (*.*)|*.*";
                 ofd.Multiselect = false;
-                ofd.Title = "My Image Browser";
+                ofd.Title = "PDF Browser";
                 DialogResult dr = ofd.ShowDialog();
                 if (dr == System.Windows.Forms.DialogResult.OK)
                 {
@@ -5181,7 +5182,9 @@ namespace clinic_ivf.gui
                                 ptti.user_modi = "";
                                 ptti.user_cancel = "";
                                 ptti.image_path = "images/" + txtHn.Text.Replace("-", "").Replace("/", "") + "/" + filename;
-                                ptti.status_image = "1";
+                                ptti.status_image = status;
+                                ptti.status_document = "2";
+                                ptti.dept_id = ic.user.dept_id;
                                 re = ic.ivfDB.pttImgDB.insertpatientImage(ptti, ic.cStf.staff_id);
                                 long chk = 0;
                                 if (long.TryParse(re, out chk))
@@ -5274,7 +5277,7 @@ namespace clinic_ivf.gui
             if (txtPttId.Text.Equals(""))
                 return;
             DataTable dt = new DataTable();
-            dt = ic.ivfDB.pttImgDB.selectByPttIDOutLab(txtPttId.Text, txtVsId.Text);
+            dt = ic.ivfDB.pttImgDB.selectByPttIDOutLabDept(txtPttId.Text, ic.user.dept_id);
             int i = 0;
             foreach (DataRow row in dt.Rows)
             {

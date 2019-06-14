@@ -25,5 +25,7 @@ namespace clinic_ivf.object1
         public String user_cancel { get; set; }
         public String image_path { get; set; }
         public String status_image { get; set; }
+        public String status_document { get; set; }
+        public String dept_id { get; set; }
     }
 }

@@ -32,6 +32,7 @@ namespace clinic_ivf.objdb
             sitm.W4GID= "W4GID";
             sitm.isActive= "isActive";
             sitm.BillGroupID= "BillGroupID";
+            sitm.active = "active";
 
             sitm.table = "SpecialItem";
             sitm.pkField = "SID";
@@ -139,6 +140,7 @@ namespace clinic_ivf.objdb
                 "," + sitm.W3GID + "= '" + p.W3GID + "'" +
                 "," + sitm.W4GID + "= '" + p.W4GID + "'" +
                 "," + sitm.isActive + "= '1'" +
+                "," + sitm.active + "= '1'" +
                 "," + sitm.BillGroupID + "= '" + p.BillGroupID + "'" +
                 "";
             try
@@ -215,7 +217,7 @@ namespace clinic_ivf.objdb
             DataTable dt = new DataTable();
             String sql = "select sitm.*  " +
                 "From " + sitm.table + " sitm " +
-                " " ;
+                "Where and acitve = '1'  ";
             dt = conn.selectData(conn.conn, sql);
 
             return dt;
@@ -226,7 +228,7 @@ namespace clinic_ivf.objdb
             String sql = "select sitm."+ sitm.SID+","+ sitm.SName+","+ sitm.Price+",bilg.Name " +
                 "From " + sitm.table + " sitm " +
                 "Left Join BillGroup bilg on sitm."+sitm.BillGroupID + "= bilg.ID " +
-                "Where sitm."+sitm.isActive+"='1' " +
+                "Where sitm."+sitm.isActive+ "='1'  and acitve = '1' " +
                 "Order By "+sitm.SName;
             dt = conn.selectData(conn.conn, sql);
 
@@ -257,7 +259,7 @@ namespace clinic_ivf.objdb
             DataTable dt = new DataTable();
             String sql = "select sitm." + sitm.SID + ",sitm." + sitm.SName + ",sitm." + sitm.Price + " " +
                 "From " + sitm.table + " sitm " +
-                "Where isActive = '1' " +
+                "Where isActive = '1'  and acitve = '1' " +
                 "Order By sitm." + sitm.SName;
             dt = conn.selectData(conn.conn, sql);
             return dt;
@@ -268,7 +270,7 @@ namespace clinic_ivf.objdb
             String sql = "select sitm." + sitm.SID + ",sitm." + sitm.SName + ",sitm." + sitm.Price + ", bilg.Name as bilgrpname " +
                 "From " + sitm.table + " sitm " +
                 "Left Join BillGroup bilg on sitm."+sitm.BillGroupID + "=bilg.ID " +
-                "Where isActive = '1' " +
+                "Where isActive = '1' and acitve = '1' " +
                 "Order By sitm." + sitm.SName;
             dt = conn.selectData(conn.conn, sql);
             return dt;
@@ -287,7 +289,7 @@ namespace clinic_ivf.objdb
                 sitm1.W4GID = dt.Rows[0][sitm.W4GID].ToString();
                 sitm1.isActive = dt.Rows[0][sitm.isActive].ToString();
                 sitm1.BillGroupID = dt.Rows[0][sitm.BillGroupID].ToString();
-                
+                sitm1.active = dt.Rows[0][sitm.active].ToString();
             }
             else
             {
@@ -306,7 +308,8 @@ namespace clinic_ivf.objdb
             stf1.W4GID = "";
             stf1.isActive = "";
             stf1.BillGroupID = "";
-            
+            stf1.active = "";
+
             return stf1;
         }
     }

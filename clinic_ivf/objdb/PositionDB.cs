@@ -293,6 +293,7 @@ namespace clinic_ivf.objdb
             }
             else
             {
+                dept1.posi_id = "";
                 dept1.posi_code = "";
                 dept1.posi_name_t = "";
                 dept1.posi_name_e = "";

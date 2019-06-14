@@ -670,6 +670,21 @@ namespace clinic_ivf.gui
                     LabFormA lFormA1 = new LabFormA();
 
                     //String re1 = ic.ivfDB.lbReqDB.insertLabRequest(lbReq, txtStfConfirmID.Text);
+                    if (chkETNotoTranfer.Checked || chkFET.Checked)
+                    {
+                        String dtrid = "";
+                        dtrid = cboDoctor.SelectedItem == null ? "" : ((ComboBoxItem)cboDoctor.SelectedItem).Value;
+                        reqid = "";
+                        lbReq = new LabRequest();
+                        reqid = ic.ivfDB.oJsDB.selectByStatusFET(txtVnOld.Text);
+                        lbReq = ic.ivfDB.setLabRequest(txtNameFeMale.Text, txtVnOld.Text, dtrid, cboRemark.Text, txtHnOld.Text, ic.datetoDB(txtDobFeMale.Text), reqid, "160", txtHnMale.Text, txtNameMale.Text, txtHnDonor.Text, txtNameDonor.Text, txtDonorDob.Text, txtVsId.Text);
+                        lbReq.form_a_id = re;
+                        String re2 = ic.ivfDB.lbReqDB.insertLabRequest(lbReq, txtStfConfirmID.Text);
+                        if (chkFET.Checked)
+                        {
+                            String re3 = ic.ivfDB.lFormaDB.updateReqIdFet(re, re2);
+                        }
+                    }
                     if (lFormA.req_id_semem_analysis.Equals("0") && chkSememAnalysis.Checked)
                     {
                         String dtrid = "";
@@ -828,6 +843,16 @@ namespace clinic_ivf.gui
                     }
                 }
             }
+            gbOPU.Enabled = false;
+            gbETFET.Enabled = false;
+            
+            String reqopuid = ic.ivfDB.oJsDB.selectByStatusFET(txtVnOld.Text);
+            String reqfetid = ic.ivfDB.oJsDB.selectByStatusFET(txtVnOld.Text);
+            String reqetid = ic.ivfDB.oJsDB.selectByStatusFET(txtVnOld.Text);
+            String reqanaid = ic.ivfDB.oJsDB.selectByStatusFET(txtVnOld.Text);
+            String reqfreezingid = ic.ivfDB.oJsDB.selectByStatusFET(txtVnOld.Text);
+            String reqpesaid = ic.ivfDB.oJsDB.selectByStatusFET(txtVnOld.Text);
+            String reqiuiid = ic.ivfDB.oJsDB.selectByStatusFET(txtVnOld.Text);
         }
         private void setControl1()
         {

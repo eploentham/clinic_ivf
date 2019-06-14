@@ -320,6 +320,22 @@ namespace clinic_ivf.gui
         
         private void btnSave_Click(object sender, EventArgs e)
         {
+            String deptid = cboDept.SelectedItem == null ? "" : ((ComboBoxItem)cboDept.SelectedItem).Value;
+            String posiid = cboPosi.SelectedItem == null ? "" : ((ComboBoxItem)cboPosi.SelectedItem).Value;
+
+            Department dept = ic.ivfDB.deptDB.selectByPk1(deptid);
+            Position posi = ic.ivfDB.posiDB.selectByPk1(posiid);
+
+            if (dept.dept_id.Equals(""))
+            {
+                MessageBox.Show("แผนกไม่ถูกต้อง", "");
+                return;
+            }
+            if (posi.posi_id.Equals(""))
+            {
+                MessageBox.Show("ตำแหน่งไม่ถูกต้อง", "");
+                return;
+            }
             if (MessageBox.Show("ต้องการ บันทึกช้อมูล ", "", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == DialogResult.OK)
             {
                 setStaff();

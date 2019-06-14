@@ -321,7 +321,7 @@ namespace clinic_ivf.gui
             ptt = ic.ivfDB.pttDB.selectByPk1(txtID.Text);
             PatientOld optt = new PatientOld();
             optt = ic.ivfDB.pttOldDB.selectByPk1(txtIdOld.Text);
-            ic.ivfDB.copDB.cop = ic.ivfDB.copDB.selectByCode1("001");
+            //ic.ivfDB.copDB.cop = ic.ivfDB.copDB.selectByCode1("001");
 
             MemoryStream stream = ic.ftpC.download("images/" + txtIdOld.Text + "/" + txtIdOld.Text + "." + System.Drawing.Imaging.ImageFormat.Jpeg);
             //MemoryStream stream = ic.ftpC.download("images/0001/0001." + System.Drawing.Imaging.ImageFormat.Jpeg);
@@ -1914,7 +1914,9 @@ namespace clinic_ivf.gui
                                 ptti.user_modi = "";
                                 ptti.user_cancel = "";
                                 ptti.image_path = "images/" + txtHn.Text.Replace("-", "").Replace("/", "") + "/" + filename;
-                                ptti.status_image = "1";
+                                ptti.status_image = status;
+                                ptti.status_document = "1";
+                                ptti.dept_id = ic.user.dept_id;
                                 re = ic.ivfDB.pttImgDB.insertpatientImage(ptti, ic.cStf.staff_id);
                                 long chk = 0;
                                 if (long.TryParse(re, out chk))
@@ -2188,7 +2190,7 @@ namespace clinic_ivf.gui
             if (txtID.Text.Equals(""))
                 return;
             DataTable dt = new DataTable();
-            dt = ic.ivfDB.pttImgDB.selectByPttID(txtID.Text);
+            dt = ic.ivfDB.pttImgDB.selectByPttIDDept(txtID.Text, ic.user.dept_id);
             int i = 0;
             foreach (DataRow row in dt.Rows)
             {
@@ -2198,6 +2200,8 @@ namespace clinic_ivf.gui
                 row1[colDesc] = row[ic.ivfDB.pttImgDB.pttI.desc1].ToString();
                 row1[colPathPic] = row[ic.ivfDB.pttImgDB.pttI.image_path].ToString();
                 row1[colStatus] = row[ic.ivfDB.pttImgDB.pttI.status_image].ToString();
+                String statusdoc = "";
+                statusdoc = row[ic.ivfDB.pttImgDB.pttI.status_document].ToString();
                 grfImg[i, 0] = i;
                 if (row[ic.ivfDB.pttImgDB.pttI.image_path] != null && !row[ic.ivfDB.pttImgDB.pttI.image_path].ToString().Equals(""))
                 {
@@ -2242,7 +2246,10 @@ namespace clinic_ivf.gui
                                 Console.WriteLine(ex.ToString());
                                 MessageBox.Show("setGrfImg 1 " + ex.Message+"\n "+ aaa, "host "+ ic.iniC.hostFTP+ " user "+user + " pas  " + pass);
                             }
-                            loadedImage = new Bitmap(stream);
+                            if (statusdoc.Equals("1"))
+                            {
+                                loadedImage = new Bitmap(stream);
+                            }
                             ftpStream.Close();
                             ftpResponse.Close();
                             ftpRequest = null;

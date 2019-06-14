@@ -271,7 +271,23 @@ namespace clinic_ivf.objdb
                 dept1.user_cancel = dt.Rows[0][dept.user_cancel].ToString();
                 dept1.active = dt.Rows[0][dept.active].ToString();
             }
-
+            else
+            {
+                dept1.dept_id = "";
+                dept1.depart_code = "";
+                dept1.depart_name_t = "";
+                dept1.comp_id = "";
+                dept1.dept_parent_id = "";
+                dept1.remark = "";
+                dept1.date_create = "";
+                dept1.date_modi = "";
+                dept1.date_cancel = "";
+                dept1.user_create = "";
+                dept1.user_modi = "";
+                dept1.user_cancel = "";
+                dept1.active = "";
+                dept1.sort1 = "";
+            }
             return dept1;
         }
         public DataTable selectC1()
