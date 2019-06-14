@@ -35,14 +35,14 @@ namespace clinic_ivf.object1
         public String fet1_no { get; set; }
         public String fet1_no_date_freezing { get; set; }
         public String status_sperm_analysis { get; set; }
-        public String status_spern_freezing { get; set; }
+        public String status_sperm_freezing { get; set; }
         public String pasa_tese_date { get; set; }
         public String iui_date { get; set; }
         public String lab_t_form_acol { get; set; }
         public String sperm_analysis_date_start { get; set; }
         public String sperm_analysis_date_end { get; set; }
-        public String spern_freezing_date_start { get; set; }
-        public String spern_freezing_date_end { get; set; }
+        public String sperm_freezing_date_start { get; set; }
+        public String sperm_freezing_date_end { get; set; }
         public String active { get; set; }
         public String remark { get; set; }
         public String date_create { get; set; }

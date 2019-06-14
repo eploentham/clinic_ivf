@@ -2257,6 +2257,8 @@ namespace clinic_ivf.gui
             tabOrder.SelectedTab = tabBloodLab;
             tcPackage.SelectedTab = tabPkgOrder;
             tcOrd.SelectedTab = tabOrd;
+
+            
         }
     }
 }

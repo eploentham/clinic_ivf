@@ -90,6 +90,7 @@ namespace clinic_ivf.objdb
         public String getList(String id)
         {
             String re = "";
+            re = id;
             foreach (OldAgent sex in loAgn)
             {
                 if (sex.agentid.Equals(id))

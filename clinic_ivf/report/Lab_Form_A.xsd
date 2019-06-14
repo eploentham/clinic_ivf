@@ -12,7 +12,7 @@
   <xs:element name="Lab_Form_A" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="Lab_Form_A" msprop:Generator_UserDSName="Lab_Form_A">
     <xs:complexType>
       <xs:choice minOccurs="0" maxOccurs="unbounded">
-        <xs:element name="lab_form_a" msprop:Generator_TableClassName="lab_form_aDataTable" msprop:Generator_TableVarName="tablelab_form_a" msprop:Generator_TablePropName="lab_form_a" msprop:Generator_RowDeletingName="lab_form_aRowDeleting" msprop:Generator_RowChangingName="lab_form_aRowChanging" msprop:Generator_RowEvHandlerName="lab_form_aRowChangeEventHandler" msprop:Generator_RowDeletedName="lab_form_aRowDeleted" msprop:Generator_UserTableName="lab_form_a" msprop:Generator_RowChangedName="lab_form_aRowChanged" msprop:Generator_RowEvArgName="lab_form_aRowChangeEvent" msprop:Generator_RowClassName="lab_form_aRow">
+        <xs:element name="lab_form_a" msprop:Generator_TableClassName="lab_form_aDataTable" msprop:Generator_TableVarName="tablelab_form_a" msprop:Generator_RowChangedName="lab_form_aRowChanged" msprop:Generator_TablePropName="lab_form_a" msprop:Generator_RowDeletingName="lab_form_aRowDeleting" msprop:Generator_RowChangingName="lab_form_aRowChanging" msprop:Generator_RowEvHandlerName="lab_form_aRowChangeEventHandler" msprop:Generator_RowDeletedName="lab_form_aRowDeleted" msprop:Generator_RowClassName="lab_form_aRow" msprop:Generator_UserTableName="lab_form_a" msprop:Generator_RowEvArgName="lab_form_aRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="form_a_id" msdata:Caption="DataColumn1" msprop:Generator_ColumnVarNameInTable="columnform_a_id" msprop:Generator_ColumnPropNameInRow="form_a_id" msprop:Generator_ColumnPropNameInTable="form_a_idColumn" msprop:Generator_UserColumnName="form_a_id" type="xs:string" minOccurs="0" />
@@ -66,6 +66,8 @@
               <xs:element name="frozen_sperm_date" msprop:Generator_ColumnVarNameInTable="columnfrozen_sperm_date" msprop:Generator_ColumnPropNameInRow="frozen_sperm_date" msprop:Generator_ColumnPropNameInTable="frozen_sperm_dateColumn" msprop:Generator_UserColumnName="frozen_sperm_date" type="xs:string" minOccurs="0" />
               <xs:element name="fet_day" msprop:Generator_ColumnVarNameInTable="columnfet_day" msprop:Generator_ColumnPropNameInRow="fet_day" msprop:Generator_ColumnPropNameInTable="fet_dayColumn" msprop:Generator_UserColumnName="fet_day" type="xs:string" minOccurs="0" />
               <xs:element name="fet1_day" msprop:Generator_ColumnVarNameInTable="columnfet1_day" msprop:Generator_ColumnPropNameInRow="fet1_day" msprop:Generator_ColumnPropNameInTable="fet1_dayColumn" msprop:Generator_UserColumnName="fet1_day" type="xs:string" minOccurs="0" />
+              <xs:element name="status_sperm_pesa" msprop:Generator_ColumnVarNameInTable="columnstatus_sperm_pesa" msprop:Generator_ColumnPropNameInRow="status_sperm_pesa" msprop:Generator_ColumnPropNameInTable="status_sperm_pesaColumn" msprop:Generator_UserColumnName="status_sperm_pesa" type="xs:string" minOccurs="0" />
+              <xs:element name="status_sperm_iui" msprop:Generator_ColumnVarNameInTable="columnstatus_sperm_iui" msprop:Generator_ColumnPropNameInRow="status_sperm_iui" msprop:Generator_ColumnPropNameInTable="status_sperm_iuiColumn" msprop:Generator_UserColumnName="status_sperm_iui" type="xs:string" minOccurs="0" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>

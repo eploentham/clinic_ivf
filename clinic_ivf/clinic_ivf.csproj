@@ -841,6 +841,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>OrAppointment.xsd</DependentUpon>
     </Compile>
+    <Compile Include="report\patient_medical_history.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>patient_medical_history.xsd</DependentUpon>
+    </Compile>
     <Compile Include="report\print_bill.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -1254,6 +1259,17 @@
     </None>
     <None Include="report\OrAppointment.xss">
       <DependentUpon>OrAppointment.xsd</DependentUpon>
+    </None>
+    <None Include="report\patient_medical_history.xsc">
+      <DependentUpon>patient_medical_history.xsd</DependentUpon>
+    </None>
+    <None Include="report\patient_medical_history.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>patient_medical_history.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="report\patient_medical_history.xss">
+      <DependentUpon>patient_medical_history.xsd</DependentUpon>
     </None>
     <None Include="report\print_bill.xsc">
       <DependentUpon>print_bill.xsd</DependentUpon>

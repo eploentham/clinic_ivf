@@ -178,6 +178,7 @@
             this.chkFreshSprem = new C1.Win.C1Input.C1CheckBox();
             this.txtIUIDate = new C1.Win.C1Input.C1DateEdit();
             this.txtPasaTeseDate = new C1.Win.C1Input.C1DateEdit();
+            this.btnPrintSperm = new C1.Win.C1Input.C1Button();
             this.sB.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.theme1)).BeginInit();
             this.groupBox1.SuspendLayout();
@@ -268,6 +269,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.chkFreshSprem)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtIUIDate)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtPasaTeseDate)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnPrintSperm)).BeginInit();
             this.SuspendLayout();
             // 
             // sB
@@ -903,6 +905,7 @@
             // groupBox2
             // 
             this.groupBox2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.groupBox2.Controls.Add(this.btnPrintSperm);
             this.groupBox2.Controls.Add(this.chkSpermIUI);
             this.groupBox2.Controls.Add(this.chkSememPESA);
             this.groupBox2.Controls.Add(this.cboRemark);
@@ -2993,6 +2996,20 @@
             this.theme1.SetTheme(this.txtPasaTeseDate, "(default)");
             this.txtPasaTeseDate.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
             // 
+            // btnPrintSperm
+            // 
+            this.btnPrintSperm.Image = global::clinic_ivf.Properties.Resources.printer_orange24;
+            this.btnPrintSperm.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnPrintSperm.Location = new System.Drawing.Point(935, 446);
+            this.btnPrintSperm.Name = "btnPrintSperm";
+            this.btnPrintSperm.Size = new System.Drawing.Size(97, 35);
+            this.btnPrintSperm.TabIndex = 747;
+            this.btnPrintSperm.Text = "Print Sperm";
+            this.btnPrintSperm.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.theme1.SetTheme(this.btnPrintSperm, "(default)");
+            this.btnPrintSperm.UseVisualStyleBackColor = true;
+            this.btnPrintSperm.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            // 
             // FrmLabFormA
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -3112,6 +3129,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.chkFreshSprem)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtIUIDate)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtPasaTeseDate)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnPrintSperm)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -3269,5 +3287,6 @@
         private C1.Win.C1Input.C1Button btnPrintOPU;
         private C1.Win.C1Input.C1CheckBox chkSpermIUI;
         private C1.Win.C1Input.C1CheckBox chkSememPESA;
+        private C1.Win.C1Input.C1Button btnPrintSperm;
     }
 }

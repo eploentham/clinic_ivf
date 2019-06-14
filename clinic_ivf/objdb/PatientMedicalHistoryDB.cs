@@ -456,6 +456,15 @@ namespace clinic_ivf.objdb
             cop1 = setEggSti(dt);
             return cop1;
         }
+        public DataTable selectByPttId1(String pttId)
+        {
+            DataTable dt = new DataTable();
+            String sql = "select eggs.* " +
+                "From " + pmh.table + " eggs " +
+                "Where eggs." + pmh.t_patient_id + " ='" + pttId + "' ";
+            dt = conn.selectData(conn.conn, sql);
+            return dt;
+        }
         private PatientMedicalHistory setEggSti(DataTable dt)
         {
             PatientMedicalHistory pmh1 = new PatientMedicalHistory();

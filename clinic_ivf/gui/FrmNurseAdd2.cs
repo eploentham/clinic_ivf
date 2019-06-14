@@ -188,6 +188,8 @@ namespace clinic_ivf.gui
             RedoButton.Click += RedoButton_Click;
             btnApmVoid.Click += BtnApmVoid_Click;
             btnSavePmh.Click += BtnSavePmh_Click;
+            btnPrintPmh.Click += BtnPrintPmh_Click;
+
             chkPmhMarried.CheckedChanged += ChkPmhMarried_CheckedChanged;
             chkPmhConOther.CheckedChanged += ChkPmhConOther_CheckedChanged;
             chkPmhDrugYes.CheckedChanged += ChkPmhDrugYes_CheckedChanged;
@@ -275,6 +277,19 @@ namespace clinic_ivf.gui
             //initGrfPtt();
             //setGrfPtt("");
             initProgressNote();
+        }
+
+        private void BtnPrintPmh_Click(object sender, EventArgs e)
+        {
+            //throw new NotImplementedException();
+            FrmReport frm = new FrmReport(ic);
+            DataTable dt = new DataTable();
+            dt = ic.ivfDB.pmhDB.selectByPttId1(txtPttId.Text);
+            
+            String date1 = "";
+
+            frm.setPmhReport(dt, txtHn.Text, txtPttNameE.Text, txtPmhPttDob.Text, cboOccup.Text, txtPmhPttMaleName.Text, txtPmhPttMaleDob.Text,"", chkPmhSingle.Checked ? "1" : "", txtPmhMarriedYear.Text);
+            frm.ShowDialog(this);
         }
 
         private void ChkPmlPttMaleTreatYes_CheckedChanged(object sender, EventArgs e)
@@ -5385,6 +5400,7 @@ namespace clinic_ivf.gui
             tCApm1.SelectedTab = tabApmPtt;
             tabOrder.SelectedTab = tabPackage;
             tcPackage.SelectedTab = tabPkgOrder;
+            sB1.Text = "Date " + ic.cop.day + "-" + ic.cop.month + "-" + ic.cop.year + " Server " + ic.iniC.hostDB + " FTP " + ic.iniC.hostFTP;
         }
     }
 }

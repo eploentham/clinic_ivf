@@ -237,9 +237,12 @@ namespace clinic_ivf.gui
                 billFormat = billNo.Substring(billNo.Length - 5);
                 billNo = billNo.Substring(0, billNo.Length - 5) + "-" + billFormat;
             }
-            day = DateTime.Now.ToString("dd");
-            month = DateTime.Now.ToString("MM");
-            year = DateTime.Now.ToString("yyyy");
+            //day = DateTime.Now.ToString("dd");
+            //month = DateTime.Now.ToString("MM");
+            //year = DateTime.Now.ToString("yyyy");
+            day = ic.cop.day;
+            month = ic.cop.month;
+            year = ic.cop.year;
             FrmReport frm = new FrmReport(ic);
             frm.setPrintBill(dtprn, txtHn.Text, txtPttNameE.Text, amt2, amt.ToString("#,###.00"), billNo, day + "/" + month + "/" + year, payby,"ใบเสร็จ/Receipt", sumprice.ToString("#,###.00"));
             frm.ShowDialog(this);
@@ -584,9 +587,12 @@ namespace clinic_ivf.gui
                 billFormat = billNo.Substring(billNo.Length - 5);
                 billNo = billNo.Substring(0, billNo.Length - 5) + "-" + billFormat;
             }
-            day = DateTime.Now.ToString("dd");
-            month = DateTime.Now.ToString("MM");
-            year = DateTime.Now.ToString("yyyy");
+            //day = DateTime.Now.ToString("dd");
+            //month = DateTime.Now.ToString("MM");
+            //year = DateTime.Now.ToString("yyyy");
+            day = ic.cop.day;
+            month = ic.cop.month;
+            year = ic.cop.year;
             FrmReport frm = new FrmReport(ic);
             frm.setPrintBill(dtprn, txtHn.Text, txtPttNameE.Text, amt2, amt.ToString("#,###.00"), billNo, day+"/"+month+"/"+year, payby,"ใบแจ้งหนี้/Bill", sumprice.ToString("#,###.00"));
             frm.ShowDialog(this);
@@ -991,6 +997,7 @@ namespace clinic_ivf.gui
             menu.Text = ic.iniC.statusAppDonor.Equals("1") ? "โปรแกรมClinic IVF Donor " + "สวัสดี คุณ " + ic.user.staff_fname_t + " " + ic.user.staff_lname_t + " Update 2019-06-11 "
                 : "โปรแกรมClinic IVF " + "สวัสดี คุณ " + ic.user.staff_fname_t + " " + ic.user.staff_lname_t + " Update 2019-06-11 format date " + date
                 + " [" + ic.ivfDB.copDB.cop.day + "-" + ic.ivfDB.copDB.cop.month + "-" + ic.ivfDB.copDB.cop.year + "]";
+            sB1.Text = "Date " + ic.cop.day + "-" + ic.cop.month + "-" + ic.cop.year + " Server " + ic.iniC.hostDB + " FTP " + ic.iniC.hostFTP;
         }
     }
 }

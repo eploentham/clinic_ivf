@@ -303,6 +303,7 @@
             this.label46 = new System.Windows.Forms.Label();
             this.txtPmhPttMaleName_1 = new C1.Win.C1Input.C1TextBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.txtPmhId = new C1.Win.C1Input.C1TextBox();
             this.panel30 = new System.Windows.Forms.Panel();
             this.chkPmhSubsYes = new System.Windows.Forms.RadioButton();
             this.chkPmhSubsNo = new System.Windows.Forms.RadioButton();
@@ -685,7 +686,6 @@
             this.label92 = new System.Windows.Forms.Label();
             this.label93 = new System.Windows.Forms.Label();
             this.label94 = new System.Windows.Forms.Label();
-            this.txtPmhId = new C1.Win.C1Input.C1TextBox();
             this.sB.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.theme1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.sC)).BeginInit();
@@ -882,6 +882,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.chkPmhPttMalePastDia)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtPmhPttMaleName_1)).BeginInit();
             this.groupBox2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtPmhId)).BeginInit();
             this.panel30.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtPmhSubs)).BeginInit();
             this.panel29.SuspendLayout();
@@ -1070,7 +1071,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.cboBsp)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnVoid)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnSave)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtPmhId)).BeginInit();
             this.SuspendLayout();
             // 
             // sB
@@ -5194,6 +5194,20 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Female History";
             this.theme1.SetTheme(this.groupBox2, "(default)");
+            // 
+            // txtPmhId
+            // 
+            this.txtPmhId.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtPmhId.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
+            this.txtPmhId.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.txtPmhId.Location = new System.Drawing.Point(558, 67);
+            this.txtPmhId.Name = "txtPmhId";
+            this.txtPmhId.Size = new System.Drawing.Size(30, 20);
+            this.txtPmhId.TabIndex = 984;
+            this.txtPmhId.Tag = null;
+            this.theme1.SetTheme(this.txtPmhId, "(default)");
+            this.txtPmhId.Visible = false;
+            this.txtPmhId.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
             // 
             // panel30
             // 
@@ -10705,20 +10719,6 @@
             this.label94.TabIndex = 545;
             this.theme1.SetTheme(this.label94, "(default)");
             // 
-            // txtPmhId
-            // 
-            this.txtPmhId.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtPmhId.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
-            this.txtPmhId.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.txtPmhId.Location = new System.Drawing.Point(558, 67);
-            this.txtPmhId.Name = "txtPmhId";
-            this.txtPmhId.Size = new System.Drawing.Size(30, 20);
-            this.txtPmhId.TabIndex = 984;
-            this.txtPmhId.Tag = null;
-            this.theme1.SetTheme(this.txtPmhId, "(default)");
-            this.txtPmhId.Visible = false;
-            this.txtPmhId.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
-            // 
             // FrmNurseAdd2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -10944,6 +10944,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtPmhPttMaleName_1)).EndInit();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtPmhId)).EndInit();
             this.panel30.ResumeLayout(false);
             this.panel30.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtPmhSubs)).EndInit();
@@ -11172,7 +11173,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.cboBsp)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnVoid)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnSave)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtPmhId)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

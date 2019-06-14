@@ -49,14 +49,14 @@ namespace clinic_ivf.objdb
             lformA.fet1_no= "fet1_no";
             lformA.fet1_no_date_freezing= "fet1_no_date_freezing";
             lformA.status_sperm_analysis= "status_sperm_analysis";
-            lformA.status_spern_freezing= "status_spern_freezing";
+            lformA.status_sperm_freezing= "status_sperm_freezing";
             lformA.pasa_tese_date= "pasa_tese_date";
             lformA.iui_date= "iui_date";
             lformA.lab_t_form_acol= "lab_t_form_acol";
             lformA.sperm_analysis_date_start= "sperm_analysis_date_start";
             lformA.sperm_analysis_date_end= "sperm_analysis_date_end";
-            lformA.spern_freezing_date_start= "spern_freezing_date_start";
-            lformA.spern_freezing_date_end= "spern_freezing_date_end";
+            lformA.sperm_freezing_date_start= "sperm_freezing_date_start";
+            lformA.sperm_freezing_date_end= "sperm_freezing_date_end";
             lformA.active= "active";
             lformA.remark= "remark";
             lformA.date_create= "date_create";
@@ -150,14 +150,14 @@ namespace clinic_ivf.objdb
             p.fet1_no = p.fet1_no == null ? "" : p.fet1_no;
             p.fet1_no_date_freezing = p.fet1_no_date_freezing == null ? "" : p.fet1_no_date_freezing;
             p.status_sperm_analysis = p.status_sperm_analysis == null ? "" : p.status_sperm_analysis;
-            p.status_spern_freezing = p.status_spern_freezing == null ? "" : p.status_spern_freezing;
+            p.status_sperm_freezing = p.status_sperm_freezing == null ? "" : p.status_sperm_freezing;
             p.pasa_tese_date = p.pasa_tese_date == null ? "" : p.pasa_tese_date;
             p.iui_date = p.iui_date == null ? "" : p.iui_date;
             p.lab_t_form_acol = p.lab_t_form_acol == null ? "" : p.lab_t_form_acol;
             p.sperm_analysis_date_start = p.sperm_analysis_date_start == null ? "" : p.sperm_analysis_date_start;
             p.sperm_analysis_date_end = p.sperm_analysis_date_end == null ? "" : p.sperm_analysis_date_end;
-            p.spern_freezing_date_start = p.spern_freezing_date_start == null ? "" : p.spern_freezing_date_start;
-            p.spern_freezing_date_end = p.spern_freezing_date_end == null ? "" : p.spern_freezing_date_end;
+            p.sperm_freezing_date_start = p.sperm_freezing_date_start == null ? "" : p.sperm_freezing_date_start;
+            p.sperm_freezing_date_end = p.sperm_freezing_date_end == null ? "" : p.sperm_freezing_date_end;
             p.active = p.active == null ? "" : p.active;
             p.remark = p.remark == null ? "" : p.remark;
             p.hn_old = p.hn_old == null ? "" : p.hn_old;
@@ -244,14 +244,14 @@ namespace clinic_ivf.objdb
                     "," + lformA.fet1_no + "='" + p.fet1_no + "'" +
                     "," + lformA.fet1_no_date_freezing + "='" + p.fet1_no_date_freezing + "'" +
                     "," + lformA.status_sperm_analysis + "='" + p.status_sperm_analysis + "'" +
-                    "," + lformA.status_spern_freezing + "='" + p.status_spern_freezing + "'" +
+                    "," + lformA.status_sperm_freezing + "='" + p.status_sperm_freezing + "'" +
                     "," + lformA.pasa_tese_date + "='" + p.pasa_tese_date + "'" +
                     "," + lformA.iui_date + "='" + p.iui_date + "'" +
                     "," + lformA.lab_t_form_acol + "='" + p.lab_t_form_acol + "'" +
                     "," + lformA.sperm_analysis_date_start + "='" + p.sperm_analysis_date_start + "'" +
                     "," + lformA.sperm_analysis_date_end + "='" + p.sperm_analysis_date_end + "'" +
-                    "," + lformA.spern_freezing_date_start + "='" + p.spern_freezing_date_start + "'" +
-                    "," + lformA.spern_freezing_date_end + "='" + p.spern_freezing_date_end + "'" +
+                    "," + lformA.sperm_freezing_date_start + "='" + p.sperm_freezing_date_start + "'" +
+                    "," + lformA.sperm_freezing_date_end + "='" + p.sperm_freezing_date_end + "'" +
                     "," + lformA.active + "='" + p.active + "' " +
                     "," + lformA.remark + "='" + p.remark + "' " +
                     "," + lformA.date_create + "=now() " +
@@ -351,14 +351,14 @@ namespace clinic_ivf.objdb
                     "," + lformA.fet1_no + "='" + p.fet1_no + "'" +
                     "," + lformA.fet1_no_date_freezing + "='" + p.fet1_no_date_freezing + "'" +
                     "," + lformA.status_sperm_analysis + "='" + p.status_sperm_analysis + "'" +
-                    "," + lformA.status_spern_freezing + "='" + p.status_spern_freezing + "'" +
+                    "," + lformA.status_sperm_freezing + "='" + p.status_sperm_freezing + "'" +
                     "," + lformA.pasa_tese_date + "='" + p.pasa_tese_date + "'" +
                     "," + lformA.iui_date + "='" + p.iui_date + "'" +
                     "," + lformA.lab_t_form_acol + "='" + p.lab_t_form_acol + "'" +
                     "," + lformA.sperm_analysis_date_start + "='" + p.sperm_analysis_date_start + "'" +
                     "," + lformA.sperm_analysis_date_end + "='" + p.sperm_analysis_date_end + "'" +
-                    "," + lformA.spern_freezing_date_start + "='" + p.spern_freezing_date_start + "'" +
-                    "," + lformA.spern_freezing_date_end + "='" + p.spern_freezing_date_end + "'" +
+                    "," + lformA.sperm_freezing_date_start + "='" + p.sperm_freezing_date_start + "'" +
+                    "," + lformA.sperm_freezing_date_end + "='" + p.sperm_freezing_date_end + "'" +
                     "," + lformA.active + "='" + p.active + "' " +
                     "," + lformA.remark + "='" + p.remark.Replace("'", "''") + "' " +
                     "," + lformA.date_modi + "=now() " +
@@ -799,14 +799,14 @@ namespace clinic_ivf.objdb
                 vs1.fet1_no = dt.Rows[0][lformA.fet1_no].ToString();
                 vs1.fet1_no_date_freezing = dt.Rows[0][lformA.fet1_no_date_freezing].ToString();
                 vs1.status_sperm_analysis = dt.Rows[0][lformA.status_sperm_analysis].ToString();
-                vs1.status_spern_freezing = dt.Rows[0][lformA.status_spern_freezing].ToString();
+                vs1.status_sperm_freezing = dt.Rows[0][lformA.status_sperm_freezing].ToString();
                 vs1.pasa_tese_date = dt.Rows[0][lformA.pasa_tese_date].ToString();
                 vs1.iui_date = dt.Rows[0][lformA.iui_date].ToString();
                 vs1.lab_t_form_acol = dt.Rows[0][lformA.lab_t_form_acol].ToString();
                 vs1.sperm_analysis_date_start = dt.Rows[0][lformA.sperm_analysis_date_start].ToString();
                 vs1.sperm_analysis_date_end = dt.Rows[0][lformA.sperm_analysis_date_end].ToString();
-                vs1.spern_freezing_date_start = dt.Rows[0][lformA.spern_freezing_date_start].ToString();
-                vs1.spern_freezing_date_end = dt.Rows[0][lformA.spern_freezing_date_end].ToString();
+                vs1.sperm_freezing_date_start = dt.Rows[0][lformA.sperm_freezing_date_start].ToString();
+                vs1.sperm_freezing_date_end = dt.Rows[0][lformA.sperm_freezing_date_end].ToString();
                 vs1.active = dt.Rows[0][lformA.active].ToString();
                 vs1.remark = dt.Rows[0][lformA.remark].ToString();
                 vs1.date_create = dt.Rows[0][lformA.date_create].ToString();
@@ -895,14 +895,14 @@ namespace clinic_ivf.objdb
             lforma1.fet1_no = "";
             lforma1.fet1_no_date_freezing = "";
             lforma1.status_sperm_analysis = "";
-            lforma1.status_spern_freezing = "";
+            lforma1.status_sperm_freezing = "";
             lforma1.pasa_tese_date = "";
             lforma1.iui_date = "";
             lforma1.lab_t_form_acol = "";
             lforma1.sperm_analysis_date_start = "";
             lforma1.sperm_analysis_date_end = "";
-            lforma1.spern_freezing_date_start = "";
-            lforma1.spern_freezing_date_end = "";
+            lforma1.sperm_freezing_date_start = "";
+            lforma1.sperm_freezing_date_end = "";
             lforma1.active = "";
             lforma1.remark = "";
             lforma1.date_create = "";

@@ -401,9 +401,9 @@ namespace clinic_ivf.gui
             dt.Rows[0]["lmp_a"] = txtA.Text;
             dt.Rows[0]["lmp"] = txtVisitLMP.Text;
             dt.Rows[0]["allergy"] = cboAllergyDesc.Text;
-            dt.Rows[0]["date1"] = ic.ivfDB.copDB.cop.day+"/"+ ic.ivfDB.copDB.cop.month+"/"+ ic.ivfDB.copDB.cop.year;
+            dt.Rows[0]["date1"] = ic.cop.day+"/"+ ic.cop.month+"/"+ ic.cop.year;
 
-            dt.Rows[0]["agent"] = ptt.agent;
+            dt.Rows[0]["agent"] = ic.ivfDB.oAgnDB.getList(ptt.agent);
             //BinaryFormatter bformatter = new BinaryFormatter();
             //stream.Seek(0, SeekOrigin.Begin);
             //var aaa = bformatter.Deserialize(stream);
@@ -3653,6 +3653,7 @@ namespace clinic_ivf.gui
             txtLat1.Value = System.DateTime.Now.Year.ToString();
             grfImg.AutoSizeCols();
             grfImg.AutoSizeRows();
+            sB1.Text = "Date "+ic.cop.day + "-" + ic.cop.month + "-" + ic.cop.year+" Server "+ic.iniC.hostDB+" FTP "+ic.iniC.hostFTP;
             //_CardReaderTFK2700 = ic.ListCardReader();
             //theme1.SetTheme(splitContainer1, ic.theme);
             //theme1.SetTheme(splitContainer2, ic.theme);

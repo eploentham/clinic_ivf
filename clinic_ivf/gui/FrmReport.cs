@@ -26,6 +26,73 @@ namespace clinic_ivf.gui
             InitializeComponent();
             this.ic = ic;
         }
+        public void setPmhReport(DataTable dt, String hn, String name, String age, String occup, String couple_name, String couple_age, String couple_occup, String sex, String married)
+        {
+            String chk = "", printerDefault = "", err = "";
+            ReportDocument rpt = new ReportDocument();
+            try
+            {
+                err = "00" + ic.iniC.statusAppDonor;
+
+                rpt.Load("pmh.rpt");
+
+                err = "01";
+                rpt.SetDataSource(dt);
+                err = "02";
+                rpt.SetParameterValue("line1", ic.cop.comp_name_t);
+                rpt.SetParameterValue("line2", "โทรศัพท์ " + ic.cop.tele);
+                rpt.SetParameterValue("line3", " Patient Medical History");
+                rpt.SetParameterValue("hn", hn);
+                rpt.SetParameterValue("name", name);
+                rpt.SetParameterValue("age", age);
+                rpt.SetParameterValue("occup", occup);
+                rpt.SetParameterValue("couple_name", couple_name);
+                rpt.SetParameterValue("couple_age", couple_age);
+                rpt.SetParameterValue("couple_occup", couple_occup);
+                rpt.SetParameterValue("sex", sex);
+                rpt.SetParameterValue("married", married);
+                //rpt.SetParameterValue("et", et);
+                //rpt.SetParameterValue("fet", fet);
+                err = "03";
+                //rpt.SetParameterValue("age1", "" + age);
+                this.crystalReportViewer1.ReportSource = rpt;
+                err = "04";
+                this.crystalReportViewer1.Refresh();
+            }
+            catch (Exception ex)
+            {
+                chk = ex.Message.ToString();
+                MessageBox.Show("error " + ex.Message, "err " + err);
+            }
+        }
+        public void setLabFormASpermReport(DataTable dt)
+        {
+            String chk = "", printerDefault = "", err = "";
+            ReportDocument rpt = new ReportDocument();
+            try
+            {
+                err = "00" + ic.iniC.statusAppDonor;
+
+                rpt.Load("lab_form_a_sperm.rpt");
+
+                err = "01";
+                rpt.SetDataSource(dt);
+                err = "02";
+                rpt.SetParameterValue("line1", ic.cop.comp_name_t);
+                rpt.SetParameterValue("line2", "โทรศัพท์ " + ic.cop.tele);
+                rpt.SetParameterValue("report_name", " Laboratory Request Form Sperm");
+                err = "03";
+                //rpt.SetParameterValue("age1", "" + age);
+                this.crystalReportViewer1.ReportSource = rpt;
+                err = "04";
+                this.crystalReportViewer1.Refresh();
+            }
+            catch (Exception ex)
+            {
+                chk = ex.Message.ToString();
+                MessageBox.Show("error " + ex.Message, "err " + err);
+            }
+        }
         public void setPatientMedicalHistory(String name, String hn)
         {
             String chk = "", printerDefault = "";
@@ -524,7 +591,7 @@ namespace clinic_ivf.gui
                 err = "02";
                 rpt.SetParameterValue("line1", ic.cop.comp_name_t);
                 rpt.SetParameterValue("line2", "โทรศัพท์ " + ic.cop.tele);
-                rpt.SetParameterValue("report_name", " Laboratory Request Form ");
+                rpt.SetParameterValue("report_name", " Laboratory Request Form FET");
                 err = "03";
                 //rpt.SetParameterValue("age1", "" + age);
                 this.crystalReportViewer1.ReportSource = rpt;
@@ -552,7 +619,7 @@ namespace clinic_ivf.gui
                 err = "02";
                 rpt.SetParameterValue("line1", ic.cop.comp_name_t);
                 rpt.SetParameterValue("line2", "โทรศัพท์ " + ic.cop.tele);
-                rpt.SetParameterValue("report_name", " Laboratory Request Form ");
+                rpt.SetParameterValue("report_name", " Laboratory Request Form OPU");
                 err = "03";
                 //rpt.SetParameterValue("age1", "" + age);
                 this.crystalReportViewer1.ReportSource = rpt;

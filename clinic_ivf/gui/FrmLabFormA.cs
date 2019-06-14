@@ -65,7 +65,7 @@ namespace clinic_ivf.gui
             chkFrozenSperm.CheckStateChanged += ChkFrozenSperm_CheckStateChanged;
             btnPrintOPU.Click += BtnPrintOPU_Click;
             btnPrintFet.Click += BtnPrintFet_Click;
-            //chkNgs.Click += ChkNgs_Click;
+            btnPrintSperm.Click += BtnPrintSperm_Click;
             //chkNoNgs.Click += ChkNoNgs_Click;
             chkSememPESA.CheckedChanged += ChkSememPESA_CheckedChanged;
             chkSpermIUI.CheckedChanged += ChkSpermIUI_CheckedChanged;
@@ -111,6 +111,66 @@ namespace clinic_ivf.gui
             //lbMessage.Hide();
             lbMessage1.Text = "";
             sB1.Text = "";
+        }
+
+        private void BtnPrintSperm_Click(object sender, EventArgs e)
+        {
+            //throw new NotImplementedException();
+            FrmReport frm = new FrmReport(ic);
+            DataTable dt = new DataTable();
+            dt = ic.ivfDB.lFormaDB.selectReportByPk(txtID.Text);
+            String date1 = "", txt1 = "", datespermanalysis="", datespermfreezing="", datespermpesa="", datespermiui="",datespermanalysisend="", datespermfreezingend="";
+            if (dt.Rows.Count <= 0) return;
+            datespermanalysis = dt.Rows[0][ic.ivfDB.lFormaDB.lformA.sperm_analysis_date_start].ToString();
+            datespermfreezing = dt.Rows[0][ic.ivfDB.lFormaDB.lformA.sperm_freezing_date_start].ToString();
+            datespermanalysisend = dt.Rows[0][ic.ivfDB.lFormaDB.lformA.sperm_analysis_date_end].ToString();
+            datespermfreezingend = dt.Rows[0][ic.ivfDB.lFormaDB.lformA.sperm_freezing_date_end].ToString();
+            //datespermpesa = dt.Rows[0][ic.ivfDB.lFormaDB.lformA.sperm_freezing_date_start].ToString();
+            //datespermiui = dt.Rows[0][ic.ivfDB.lFormaDB.lformA.opu_date].ToString();
+
+            date1 = ic.datetoShow(dt.Rows[0][ic.ivfDB.lFormaDB.lformA.opu_date].ToString());
+            dt.Rows[0][ic.ivfDB.lFormaDB.lformA.opu_date] = date1.Replace("-", "/");
+            date1 = ic.datetoShow(dt.Rows[0][ic.ivfDB.lFormaDB.lformA.embryo_freezing_day].ToString());
+            dt.Rows[0][ic.ivfDB.lFormaDB.lformA.embryo_freezing_day] = date1.Replace("-", "/");
+            date1 = ic.datetoShow(dt.Rows[0][ic.ivfDB.lFormaDB.lformA.embryo_tranfer_date].ToString());
+            dt.Rows[0][ic.ivfDB.lFormaDB.lformA.embryo_tranfer_date] = date1.Replace("-", "/");
+            date1 = ic.datetoShow(dt.Rows[0][ic.ivfDB.lFormaDB.lformA.fet1_no_date_freezing].ToString());
+            dt.Rows[0][ic.ivfDB.lFormaDB.lformA.fet1_no_date_freezing] = date1.Replace("-", "/");
+            date1 = ic.datetoShow(dt.Rows[0][ic.ivfDB.lFormaDB.lformA.dob_male].ToString());
+            dt.Rows[0][ic.ivfDB.lFormaDB.lformA.dob_male] = date1.Replace("-", "/");
+            date1 = ic.datetoShow(dt.Rows[0][ic.ivfDB.lFormaDB.lformA.dob_female].ToString());
+            dt.Rows[0][ic.ivfDB.lFormaDB.lformA.dob_female] = date1.Replace("-", "/");
+            date1 = ic.datetoShow(dt.Rows[0][ic.ivfDB.lFormaDB.lformA.sperm_freezing_date_start].ToString());
+            dt.Rows[0][ic.ivfDB.lFormaDB.lformA.sperm_freezing_date_start] = date1.Replace("-", "/");
+            date1 = ic.datetoShow(dt.Rows[0][ic.ivfDB.lFormaDB.lformA.sperm_freezing_date_end].ToString());
+            dt.Rows[0][ic.ivfDB.lFormaDB.lformA.sperm_freezing_date_end] = date1.Replace("-", "/");
+            date1 = ic.datetoShow(dt.Rows[0][ic.ivfDB.lFormaDB.lformA.iui_date].ToString());
+            dt.Rows[0][ic.ivfDB.lFormaDB.lformA.iui_date] = date1.Replace("-", "/");
+            date1 = ic.datetoShow(dt.Rows[0][ic.ivfDB.lFormaDB.lformA.pasa_tese_date].ToString());
+            dt.Rows[0][ic.ivfDB.lFormaDB.lformA.pasa_tese_date] = date1.Replace("-", "/");
+            date1 = ic.datetoShow(dt.Rows[0][ic.ivfDB.lFormaDB.lformA.sperm_analysis_date_start].ToString());
+            dt.Rows[0][ic.ivfDB.lFormaDB.lformA.sperm_analysis_date_start] = date1.Replace("-", "/");
+            date1 = ic.datetoShow(dt.Rows[0][ic.ivfDB.lFormaDB.lformA.sperm_analysis_date_end].ToString());
+            dt.Rows[0][ic.ivfDB.lFormaDB.lformA.sperm_analysis_date_end] = date1.Replace("-", "/");
+            date1 = ic.datetoShow(dt.Rows[0][ic.ivfDB.lFormaDB.lformA.fet_no_date_freezing].ToString());
+            dt.Rows[0][ic.ivfDB.lFormaDB.lformA.fet_no_date_freezing] = date1.Replace("-", "/");
+            if (dt.Rows[0]["status_wait_confirm_opu_date"].ToString().Equals("1"))
+            {
+                txt1 = "รอ confirm วัน เวลา OPU จากทาง พยาบาล";
+            }
+            txt1 = "";
+            dt.Columns.Add("note1", typeof(String));
+            dt.Rows[0]["note1"] = txt1;
+            dt.Columns.Add("sperm_analysis_time_start", typeof(String));
+            dt.Columns.Add("sperm_analysis_time_end", typeof(String));
+            dt.Columns.Add("sperm_freezing_time_start", typeof(String));
+            dt.Columns.Add("sperm_freezing_time_end", typeof(String));
+            dt.Rows[0]["sperm_analysis_time_start"] = ic.timetoShow(datespermanalysis);
+            dt.Rows[0]["sperm_analysis_time_end"] = ic.timetoShow(datespermanalysisend);
+            dt.Rows[0]["sperm_freezing_time_start"] = ic.timetoShow(datespermfreezing);
+            dt.Rows[0]["sperm_freezing_time_end"] = ic.timetoShow(datespermfreezingend);
+            frm.setLabFormASpermReport(dt);
+            frm.ShowDialog(this);
         }
 
         private void ChkSpermIUI_CheckedChanged(object sender, EventArgs e)
@@ -167,10 +227,10 @@ namespace clinic_ivf.gui
             dt.Rows[0][ic.ivfDB.lFormaDB.lformA.dob_male] = date1.Replace("-", "/");
             date1 = ic.datetoShow(dt.Rows[0][ic.ivfDB.lFormaDB.lformA.dob_female].ToString());
             dt.Rows[0][ic.ivfDB.lFormaDB.lformA.dob_female] = date1.Replace("-", "/");
-            date1 = ic.datetoShow(dt.Rows[0][ic.ivfDB.lFormaDB.lformA.spern_freezing_date_start].ToString());
-            dt.Rows[0][ic.ivfDB.lFormaDB.lformA.spern_freezing_date_start] = date1.Replace("-", "/");
-            date1 = ic.datetoShow(dt.Rows[0][ic.ivfDB.lFormaDB.lformA.spern_freezing_date_end].ToString());
-            dt.Rows[0][ic.ivfDB.lFormaDB.lformA.spern_freezing_date_end] = date1.Replace("-", "/");
+            date1 = ic.datetoShow(dt.Rows[0][ic.ivfDB.lFormaDB.lformA.sperm_freezing_date_start].ToString());
+            dt.Rows[0][ic.ivfDB.lFormaDB.lformA.sperm_freezing_date_start] = date1.Replace("-", "/");
+            date1 = ic.datetoShow(dt.Rows[0][ic.ivfDB.lFormaDB.lformA.sperm_freezing_date_end].ToString());
+            dt.Rows[0][ic.ivfDB.lFormaDB.lformA.sperm_freezing_date_end] = date1.Replace("-", "/");
             date1 = ic.datetoShow(dt.Rows[0][ic.ivfDB.lFormaDB.lformA.iui_date].ToString());
             dt.Rows[0][ic.ivfDB.lFormaDB.lformA.iui_date] = date1.Replace("-", "/");
             date1 = ic.datetoShow(dt.Rows[0][ic.ivfDB.lFormaDB.lformA.pasa_tese_date].ToString());
@@ -211,10 +271,10 @@ namespace clinic_ivf.gui
             dt.Rows[0][ic.ivfDB.lFormaDB.lformA.dob_male] = date1.Replace("-", "/");
             date1 = ic.datetoShow(dt.Rows[0][ic.ivfDB.lFormaDB.lformA.dob_female].ToString());
             dt.Rows[0][ic.ivfDB.lFormaDB.lformA.dob_female] = date1.Replace("-", "/");
-            date1 = ic.datetoShow(dt.Rows[0][ic.ivfDB.lFormaDB.lformA.spern_freezing_date_start].ToString());
-            dt.Rows[0][ic.ivfDB.lFormaDB.lformA.spern_freezing_date_start] = date1.Replace("-", "/");
-            date1 = ic.datetoShow(dt.Rows[0][ic.ivfDB.lFormaDB.lformA.spern_freezing_date_end].ToString());
-            dt.Rows[0][ic.ivfDB.lFormaDB.lformA.spern_freezing_date_end] = date1.Replace("-", "/");
+            date1 = ic.datetoShow(dt.Rows[0][ic.ivfDB.lFormaDB.lformA.sperm_freezing_date_start].ToString());
+            dt.Rows[0][ic.ivfDB.lFormaDB.lformA.sperm_freezing_date_start] = date1.Replace("-", "/");
+            date1 = ic.datetoShow(dt.Rows[0][ic.ivfDB.lFormaDB.lformA.sperm_freezing_date_end].ToString());
+            dt.Rows[0][ic.ivfDB.lFormaDB.lformA.sperm_freezing_date_end] = date1.Replace("-", "/");
             date1 = ic.datetoShow(dt.Rows[0][ic.ivfDB.lFormaDB.lformA.iui_date].ToString());
             dt.Rows[0][ic.ivfDB.lFormaDB.lformA.iui_date] = date1.Replace("-", "/");
             date1 = ic.datetoShow(dt.Rows[0][ic.ivfDB.lFormaDB.lformA.pasa_tese_date].ToString());
@@ -374,10 +434,10 @@ namespace clinic_ivf.gui
             dt.Rows[0][ic.ivfDB.lFormaDB.lformA.dob_male] = date1.Replace("-", "/");
             date1 = ic.datetoShow(dt.Rows[0][ic.ivfDB.lFormaDB.lformA.dob_female].ToString());
             dt.Rows[0][ic.ivfDB.lFormaDB.lformA.dob_female] = date1.Replace("-", "/");
-            date1 = ic.datetoShow(dt.Rows[0][ic.ivfDB.lFormaDB.lformA.spern_freezing_date_start].ToString());
-            dt.Rows[0][ic.ivfDB.lFormaDB.lformA.spern_freezing_date_start] = date1.Replace("-", "/");
-            date1 = ic.datetoShow(dt.Rows[0][ic.ivfDB.lFormaDB.lformA.spern_freezing_date_end].ToString());
-            dt.Rows[0][ic.ivfDB.lFormaDB.lformA.spern_freezing_date_end] = date1.Replace("-", "/");
+            date1 = ic.datetoShow(dt.Rows[0][ic.ivfDB.lFormaDB.lformA.sperm_freezing_date_start].ToString());
+            dt.Rows[0][ic.ivfDB.lFormaDB.lformA.sperm_freezing_date_start] = date1.Replace("-", "/");
+            date1 = ic.datetoShow(dt.Rows[0][ic.ivfDB.lFormaDB.lformA.sperm_freezing_date_end].ToString());
+            dt.Rows[0][ic.ivfDB.lFormaDB.lformA.sperm_freezing_date_end] = date1.Replace("-", "/");
             date1 = ic.datetoShow(dt.Rows[0][ic.ivfDB.lFormaDB.lformA.iui_date].ToString());
             dt.Rows[0][ic.ivfDB.lFormaDB.lformA.iui_date] = date1.Replace("-", "/");
             date1 = ic.datetoShow(dt.Rows[0][ic.ivfDB.lFormaDB.lformA.pasa_tese_date].ToString());
@@ -448,14 +508,14 @@ namespace clinic_ivf.gui
             lFormA.fet1_no = txtFET1No.Text;
             lFormA.fet1_no_date_freezing = txtFET1NoDateFreezing.Text;
             lFormA.status_sperm_analysis = chkSememAnalysis.Checked ? "1" : "0";
-            lFormA.status_spern_freezing = chkSpermFreezing.Checked ? "1" : "0";
+            lFormA.status_sperm_freezing = chkSpermFreezing.Checked ? "1" : "0";
             lFormA.pasa_tese_date = txtPasaTeseDate.Text;
             lFormA.iui_date = txtIUIDate.Text;
             lFormA.lab_t_form_acol = "";
             lFormA.sperm_analysis_date_start = ic.datetoDB(txtSpermAnalysisDateStart.Text) +" "+ txtSpermAnalysisTimeStart.Text.Trim();
-            lFormA.sperm_analysis_date_end = txtSpermAnalysisDateEnd.Text;
-            lFormA.spern_freezing_date_start = ic.datetoDB(txtSpermFreezingDateStart.Text) + " " + txtSpermFreezingTimeStart.Text.Trim();
-            lFormA.spern_freezing_date_end = txtSpermFreezingDateEnd.Text;
+            lFormA.sperm_analysis_date_end = ic.datetoDB(txtSpermAnalysisDateStart.Text) + " "+ txtSpermAnalysisDateEnd.Text.Trim();
+            lFormA.sperm_freezing_date_start = ic.datetoDB(txtSpermFreezingDateStart.Text) + " " + txtSpermFreezingTimeStart.Text.Trim();
+            lFormA.sperm_freezing_date_end = ic.datetoDB(txtSpermFreezingDateStart.Text) + " " + txtSpermFreezingDateEnd.Text.Trim();
             lFormA.active = "1";
             lFormA.remark = "";
             lFormA.date_create = "";
@@ -501,6 +561,7 @@ namespace clinic_ivf.gui
             lFormA.staff_req_id = txtStfConfirmID.Text;
             lFormA.status_sperm_iui = chkSpermIUI.Checked ? "1" : "0";
             lFormA.status_sperm_pesa = chkSememPESA.Checked ? "1" : "0";
+            //lFormA.status_sperm_analysis = chkSememPESA.Checked ? "1" : "0";
         }
         private void BtnSave_Click(object sender, EventArgs e)
         {
@@ -724,6 +785,13 @@ namespace clinic_ivf.gui
             if (!lFormA.form_a_id.Equals(""))
             {
                 setControl1();
+                if (txtVsId.Text.Length == 1)
+                {
+                    Visit vs = new Visit();
+                    vs = ic.ivfDB.vsDB.selectByVn(vsidOld);
+                    txtVsId.Value = vs.t_visit_id;
+                    txtPttId.Value = vs.t_patient_id;
+                }
             }
             else
             {
@@ -807,7 +875,7 @@ namespace clinic_ivf.gui
             chkAssistHatching.Checked = lFormA.status_assist_hatching.Equals("1") ? true : false;
 
             chkSememAnalysis.Checked = lFormA.status_sperm_analysis.Equals("1") ? true : false;
-            chkSpermFreezing.Checked = lFormA.status_spern_freezing.Equals("1") ? true : false;
+            chkSpermFreezing.Checked = lFormA.status_sperm_freezing.Equals("1") ? true : false;
             if (!lFormA.sperm_analysis_date_start.Trim().Equals(""))
             {
                 txtSpermAnalysisDateStart.Value = lFormA.sperm_analysis_date_start;
@@ -815,19 +883,19 @@ namespace clinic_ivf.gui
             
             if (lFormA.sperm_analysis_date_start.Length > 5)
             {
-                txtSpermAnalysisTimeStart.Value = lFormA.sperm_analysis_date_start.Substring(lFormA.sperm_analysis_date_start.Length-5);
+                txtSpermAnalysisTimeStart.Value = ic.timetoShow(lFormA.sperm_analysis_date_start);
             }
-            txtSpermAnalysisDateEnd.Value = lFormA.sperm_analysis_date_end;
-            if (!lFormA.spern_freezing_date_start.Trim().Equals(""))
+            txtSpermAnalysisDateEnd.Value = ic.timetoShow(lFormA.sperm_analysis_date_end);
+            if (!lFormA.sperm_freezing_date_start.Trim().Equals(""))
             {
-                txtSpermFreezingDateStart.Value = lFormA.spern_freezing_date_start;
+                txtSpermFreezingDateStart.Value = lFormA.sperm_freezing_date_start;
             }
                 
-            if (lFormA.spern_freezing_date_start.Length > 5)
+            if (lFormA.sperm_freezing_date_start.Length > 5)
             {
-                txtSpermFreezingTimeStart.Value = lFormA.spern_freezing_date_start.Substring(lFormA.spern_freezing_date_start.Length - 5);
+                txtSpermFreezingTimeStart.Value = ic.timetoShow(lFormA.sperm_freezing_date_start);
             }
-            txtSpermFreezingDateEnd.Value = lFormA.spern_freezing_date_end;
+            txtSpermFreezingDateEnd.Value = ic.timetoShow(lFormA.sperm_freezing_date_end);
             txtPasaTeseDate.Value = lFormA.pasa_tese_date;
             txtIUIDate.Value = lFormA.iui_date;
             ic.setC1Combo(cboDoctor, lFormA.doctor_id);
