@@ -32,7 +32,8 @@ using System.Windows.Forms;
 namespace clinic_ivf.gui
 {
     /*
-     * 62-06-08  1  แก้นัด ให้ donor ไปใช้ของ patient
+     * 62-06-08          1   แก้นัด ให้ donor ไปใช้ของ patient
+     * 62-06-14 0002     2   แก้ รูปซ้ำระหว่าง Patient กับ Donor 
      */
     public partial class FrmPatientAdd : Form
     {

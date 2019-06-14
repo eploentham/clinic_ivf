@@ -9,6 +9,10 @@ using System.Threading.Tasks;
 
 namespace clinic_ivf.objdb
 {
+    /*
+     * 62-06-14     0002    1   รูปซ้ำกับระหว่าง โปรแกรม Donor กับ Patient
+     * 62-06-14     0002    2   รูปซ้ำกับระหว่าง โปรแกรม Donor กับ Patient   และ เพราะ PID จำนวน 9000 จริงๆ ก็ไม่พอ
+     */
     public class OldPatientDB
     {
         public PatientOld pttO;
@@ -345,7 +349,8 @@ namespace clinic_ivf.objdb
             PatientOld pttO1 = setPatientToOLD(p);
             if (pttO1.PID.Equals(""))
             {
-                pttO1.PID = selectByMaxPID();
+                //pttO1.PID = selectByMaxPIDOD();   //  -1
+                pttO1.PID = selectByMaxPIDOD();     //  +1
                 if (pttO1.PIDS.Equals(""))
                 {
                     pttO1.PIDS = genHN(pttO1.PID);
@@ -585,7 +590,8 @@ namespace clinic_ivf.objdb
             PatientOld cop1 = new PatientOld();
             DataTable dt = new DataTable();
             int chk = 0;
-            int year = DateTime.Now.Year*10000;
+            //int year = DateTime.Now.Year * 10000;     //  -2
+            int year = DateTime.Now.Year*100000;        //  +2
             String re = "";
             String sql = "select max(PID) as MAXPID from Patient ";
             dt = conn.selectData(conn.conn, sql);
@@ -603,6 +609,39 @@ namespace clinic_ivf.objdb
                 //chk = int.Parse(re);
             }
             if (year < chk) {
+                chk = chk + 1;
+            }
+            else
+            {
+                chk = year + 1;
+            }
+            //IDS = "HN-".substr($PID, -5). "/".substr(date("Y", time()) + 543, -2);//
+            return chk.ToString();
+        }
+        public String selectByMaxPIDOD()
+        {
+            PatientOld cop1 = new PatientOld();
+            DataTable dt = new DataTable();
+            int chk = 0;
+            int year = DateTime.Now.Year * 200000;
+            String re = "";
+            String sql = "select max(PID) as MAXPID from Patient ";
+            dt = conn.selectData(conn.conn, sql);
+            if (dt.Rows.Count > 0)
+            {
+                re = dt.Rows[0]["MAXPID"].ToString();
+                if (int.TryParse(re, out chk))
+                {
+
+                }
+                else
+                {
+                    chk = 0;
+                }
+                //chk = int.Parse(re);
+            }
+            if (year < chk)
+            {
                 chk = chk + 1;
             }
             else
