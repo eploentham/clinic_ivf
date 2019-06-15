@@ -225,9 +225,9 @@ namespace clinic_ivf.gui
                 //grfSearch[i, colVsAgent] = row["agent"].ToString();
                 if (!row[ic.ivfDB.ovsDB.vsold.form_a_id].ToString().Equals("0"))
                 {
-                    CellNote note = new CellNote("ส่ง Lab Request Foam A");
-                    CellRange rg = grfFinish.GetCellRange(i, colVN);
-                    rg.UserData = note;
+                    //CellNote note = new CellNote("ส่ง Lab Request Foam A");
+                    //CellRange rg = grfFinish.GetCellRange(i, colVN);
+                    //rg.UserData = note;
                 }
                 //if (i % 2 == 0)
                 //    grfPtt.Rows[i].StyleNew.BackColor = color;

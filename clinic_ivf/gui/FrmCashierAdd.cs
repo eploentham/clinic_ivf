@@ -800,7 +800,7 @@ namespace clinic_ivf.gui
 
             //grfExpn.Rows.Count = dt.Rows.Count + 1;
             ContextMenu menuGw = new ContextMenu();
-            menuGw.MenuItems.Add("ออก บิล", new EventHandler(ContextMenu_edit_bill));
+            menuGw.MenuItems.Add("แก้ไข บิล", new EventHandler(ContextMenu_edit_bill));
             //menuGw.MenuItems.Add("&แก้ไข", new EventHandler(ContextMenu_Gw_Edit));
             //menuGw.MenuItems.Add("&ยกเลิก", new EventHandler(ContextMenu_Gw_Cancel));
             grfBillD.ContextMenu = menuGw;
