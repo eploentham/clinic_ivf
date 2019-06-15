@@ -23,7 +23,7 @@ namespace clinic_ivf.gui
         Color bg, fc;
         Font ff, ffB;
 
-        int colPttId = 1, colPttHn = 2, colPttName = 3, colPttRemark = 4, colHnMale=5;
+        int colPttId = 1, colPttHn = 2, colPttName = 3, colPttRemark = 4, colHn_1 = 5, colName_1 = 6, colHn_2 = 7, colName_2 = 8;
 
         C1FlexGrid grfPtt;
         C1SuperTooltip stt;
@@ -199,12 +199,12 @@ namespace clinic_ivf.gui
             //grfExpn.Rows.Count = dt.Rows.Count + 1;
             //grfCu.Rows.Count = 41;
             //grfCu.Cols.Count = 4;
-            C1TextBox txt = new C1TextBox();
+            //C1TextBox txt = new C1TextBox();
             //C1ComboBox cboproce = new C1ComboBox();
             //ic.ivfDB.itmDB.setCboItem(cboproce);
-            grfPtt.Cols[colPttHn].Editor = txt;
-            grfPtt.Cols[colPttName].Editor = txt;
-            grfPtt.Cols[colPttRemark].Editor = txt;
+            //grfPtt.Cols[colPttHn].Editor = txt;
+            //grfPtt.Cols[colPttName].Editor = txt;
+            //grfPtt.Cols[colPttRemark].Editor = txt;
 
             grfPtt.Cols[colPttName].Width = 250;
             grfPtt.Cols[colPttHn].Width = 120;

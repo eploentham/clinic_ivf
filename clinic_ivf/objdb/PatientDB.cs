@@ -154,6 +154,10 @@ namespace clinic_ivf.objdb
             ptt.patient_country = "patient_country";
             ptt.patient_hn_couple = "patient_hn_couple";
             ptt.doctor_id = "doctor_id";
+            ptt.patient_hn_1 = "patient_hn_1";
+            ptt.patient_hn_2 = "patient_hn_2";
+            ptt.status_diagnosis = "status_diagnosis";
+            ptt.diagnosis_doc = "diagnosis_doc";
 
             ptt.pkField = "t_patient_id";
             ptt.table = "t_patient";
@@ -263,6 +267,10 @@ namespace clinic_ivf.objdb
             p.emercontact = p.emercontact == null ? "" : p.emercontact;
             p.patient_country = p.patient_country == null ? "" : p.patient_country;
             p.patient_hn_couple = p.patient_hn_couple == null ? "" : p.patient_hn_couple;
+            p.patient_hn_1 = p.patient_hn_1 == null ? "" : p.patient_hn_1;
+            p.patient_hn_2 = p.patient_hn_2 == null ? "" : p.patient_hn_2;
+            p.status_diagnosis = p.status_diagnosis == null ? "" : p.status_diagnosis;
+            p.diagnosis_doc = p.diagnosis_doc == null ? "" : p.diagnosis_doc;
 
             p.f_patient_prefix_id = long.TryParse(p.f_patient_prefix_id, out chk) ? chk.ToString() : "0";
             p.f_sex_id = long.TryParse(p.f_sex_id, out chk) ? chk.ToString() : "0";
@@ -354,7 +362,8 @@ namespace clinic_ivf.objdb
                 ptt.allergy_description + "," + ptt.status_g + "," + ptt.p + "," +
                 ptt.a + "," + ptt.g + "," + ptt.emercontact + "," +
                 ptt.patient_country + "," + ptt.patient_hn_couple + "," +
-                ptt.doctor_id + " " +
+                ptt.doctor_id + "," + ptt.patient_hn_1 + "," + ptt.patient_hn_2 + "," +
+                ptt.status_diagnosis + "," + ptt.diagnosis_doc + " " +
                 ") " +
                 "Values ('" + p.patient_hn + "','" + p.patient_firstname.Replace("'", "''") + "','" + p.patient_lastname.Replace("'", "''") + "'," +
                 "'" + p.patient_xn.Replace("'", "''") + "','" + p.patient_birthday.Replace("'", "''") + "','" + p.patient_house.Replace("'", "''") + "'," +
@@ -399,7 +408,8 @@ namespace clinic_ivf.objdb
                 "'" + p.allergy_description + "','" + p.status_g + "','" + p.p + "'," +
                 "'" + p.a + "','" + p.g + "','" + p.emercontact + "'," +
                 "'" + p.patient_country + "','" + p.patient_hn_couple + "'," +
-                "'" + p.doctor_id + "' " +
+                "'" + p.doctor_id + "','" + p.patient_hn_1 + "','" + p.patient_hn_2 + "'," +
+                "'" + p.status_diagnosis + "','" + p.diagnosis_doc + "'" +
                 ")";
 
                 re = conn.ExecuteNonQuery(conn.conn, sql);
@@ -509,7 +519,10 @@ namespace clinic_ivf.objdb
                 "," + ptt.patient_country + "='" + p.patient_country.Replace("'", "''") + "' " +
                 "," + ptt.patient_hn_couple + "='" + p.patient_hn_couple.Replace("'", "''") + "' " +
                 "," + ptt.doctor_id + "='" + p.doctor_id.Replace("'", "''") + "' " +
-                "," + ptt.t_patient_id_old + "='" + p.t_patient_id_old.Replace("'", "''") + "' " +
+                "," + ptt.t_patient_id_old + "='" + p.t_patient_id_old.Replace("'", "''") + "' " +                
+                "," + ptt.patient_hn_1 + "='" + p.patient_hn_1.Replace("'", "''") + "' " +
+                "," + ptt.patient_hn_2 + "='" + p.patient_hn_2.Replace("'", "''") + "' " +
+                "," + ptt.patient_record_date_time + "=now() " +
                 " Where " +ptt.pkField + " = '" + p.t_patient_id + "' "
                 ;
             try
@@ -900,9 +913,17 @@ namespace clinic_ivf.objdb
             DataTable dt = new DataTable();
             String whereHN = "", whereName = "", wherepid = "", wherepassport = "", wherenameE = "";
             
-            String sql = "select ptt." + ptt.t_patient_id + " as PID,ptt." + ptt.patient_hn + " as PIDS,CONCAT(IFNULL(fpp.patient_prefix_description,''),' ', ptt." + ptt.patient_firstname_e + ",' ',ptt." + ptt.patient_lastname_e + ") as name,ptt." + ptt.remark + " as EmergencyPersonalContact " +
+            String sql = "select ptt." + ptt.t_patient_id + " as PID,ptt." + ptt.patient_hn + " as PIDS" +
+                ",CONCAT(IFNULL(fpp.patient_prefix_description,''),' ', ptt." + ptt.patient_firstname_e + ",' ',ptt." + ptt.patient_lastname_e + ") as name" +
+                ",ptt." + ptt.remark + " as EmergencyPersonalContact " +
+                ", ptt." + ptt.patient_hn_1 + ",CONCAT(IFNULL(fpp_1.patient_prefix_description,''),' ', ptt_1." + ptt.patient_firstname_e + ",' ',ptt_1." + ptt.patient_lastname_e + ") as name_1" +
+                ", ptt." + ptt.patient_hn_2 + ",CONCAT(IFNULL(fpp_2.patient_prefix_description,''),' ', ptt_2." + ptt.patient_firstname_e + ",' ',ptt_2." + ptt.patient_lastname_e + ") as name_2 " +
                 "From " + ptt.table + " ptt " +
                 "Left join f_patient_prefix fpp on fpp.f_patient_prefix_id = ptt.f_patient_prefix_id " +
+                "Left join "+ptt.table+" ptt_1 on ptt."+ptt.patient_hn_1+"= ptt_1."+ptt.patient_hn+" " +
+                "Left join f_patient_prefix fpp_1 on fpp_1.f_patient_prefix_id = ptt_1.f_patient_prefix_id " +
+                "Left join " + ptt.table + " ptt_2 on ptt." + ptt.patient_hn_2 + "= ptt_2." + ptt.patient_hn + " " +
+                "Left join f_patient_prefix fpp_2 on fpp_2.f_patient_prefix_id = ptt_2.f_patient_prefix_id " +
                 "Where ptt." + ptt.patient_record_date_time + " >='" + date + " 00:00:00' and ptt." + ptt.patient_record_date_time + " <='" + date + " 23:59:59' " +
                 " and ptt."+ptt.active + "='1' " +
                 "Order By ptt." + ptt.t_patient_id;
@@ -944,9 +965,17 @@ namespace clinic_ivf.objdb
             {
                 wherepassport = " or ( ptt." + ptt.passport + " like '%" + search.Trim() + "%' )";
             }
-            String sql = "select ptt." + ptt.t_patient_id + " as PID,ptt." + ptt.patient_hn + " as PIDS,CONCAT(IFNULL(fpp.patient_prefix_description,''),' ', ptt." + ptt.patient_firstname_e + ",' ',ptt." + ptt.patient_lastname_e + ") as name,ptt." + ptt.remark + " as EmergencyPersonalContact, ptt.patient_hn_couple " +
+            String sql = "select ptt." + ptt.t_patient_id + " as PID,ptt." + ptt.patient_hn + " as PIDS" +
+                ",CONCAT(IFNULL(fpp.patient_prefix_description,''),' ', ptt." + ptt.patient_firstname_e + ",' ',ptt." + ptt.patient_lastname_e + ") as name" +
+                ",ptt." + ptt.remark + " as EmergencyPersonalContact  "+
+                ", ptt." + ptt.patient_hn_1 + ",CONCAT(IFNULL(fpp_1.patient_prefix_description,''),' ', ptt_1." + ptt.patient_firstname_e + ",' ',ptt_1." + ptt.patient_lastname_e + ") as name_1" +
+                ", ptt." + ptt.patient_hn_2 + ", CONCAT(IFNULL(fpp_2.patient_prefix_description,''),' ', ptt_2." + ptt.patient_firstname_e + ",' ',ptt_2." + ptt.patient_lastname_e + ") as name_2 " +
                 "From " + ptt.table + " ptt " +
                 "Left join f_patient_prefix fpp on fpp.f_patient_prefix_id = ptt.f_patient_prefix_id " +
+                "Left join " + ptt.table + " ptt_1 on ptt." + ptt.patient_hn_1 + "= ptt_1." + ptt.patient_hn + " " +
+                "Left join f_patient_prefix fpp_1 on fpp_1.f_patient_prefix_id = ptt_1.f_patient_prefix_id " +
+                "Left join " + ptt.table + " ptt_2 on ptt." + ptt.patient_hn_2 + "= ptt_2." + ptt.patient_hn + " " +
+                "Left join f_patient_prefix fpp_2 on fpp_2.f_patient_prefix_id = ptt_2.f_patient_prefix_id " +
                 "Where " + whereHN + whereName + wherepid+ wherenameE+ " and ptt."+ptt.active+ "='1'" +
                 "Order By ptt." + ptt.t_patient_id;
             dt = conn.selectData(conn.conn, sql);
@@ -1135,7 +1164,10 @@ namespace clinic_ivf.objdb
                 ptt1.addr = dt.Rows[0][ptt.patient_house].ToString() +" "+ dt.Rows[0][ptt.patient_road].ToString() + " " + dt.Rows[0][ptt.patient_tambon].ToString() + " " + dt.Rows[0][ptt.patient_amphur].ToString() + " " + dt.Rows[0][ptt.patient_changwat].ToString();
                 ptt1.patient_hn_couple = dt.Rows[0][ptt.patient_hn_couple].ToString();
                 ptt1.doctor_id = dt.Rows[0][ptt.doctor_id].ToString();
-                //ptt1.patient_height = dt.Rows[0][ptt.doctor_id].ToString();
+                ptt1.patient_hn_1 = dt.Rows[0][ptt.patient_hn_1].ToString();
+                ptt1.patient_hn_2 = dt.Rows[0][ptt.patient_hn_2].ToString();
+                ptt1.status_diagnosis = dt.Rows[0][ptt.status_diagnosis].ToString();
+                ptt1.diagnosis_doc = dt.Rows[0][ptt.diagnosis_doc].ToString();
             }
             else
             {
@@ -1277,6 +1309,11 @@ namespace clinic_ivf.objdb
             stf1.addr = "";
             stf1.patient_hn_couple = "";
             stf1.doctor_id = "";
+            stf1.patient_hn_1 = "";
+            stf1.patient_hn_2 = "";
+            stf1.patient_hn_2 =
+                     stf1.status_diagnosis = "";
+            stf1.diagnosis_doc = "";
             return stf1;
         }
     }
