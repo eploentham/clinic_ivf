@@ -242,6 +242,7 @@ namespace clinic_ivf.gui
             ChkDenyAllergy_CheckedChanged(null, null);
             btnNoteAdd.Click += BtnNoteAdd_Click;
             btnHnSearch.Click += BtnHnSearch_Click;
+            cboSex.SelectedIndexChanged += CboSex_SelectedIndexChanged;
 
             setKeyEnter();
 
@@ -261,6 +262,33 @@ namespace clinic_ivf.gui
             picPtt.SizeMode = PictureBoxSizeMode.StretchImage;
             tabFamily.Hide();
             //btnSavePic.Enabled = false;
+        }
+
+        private void CboSex_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            //throw new NotImplementedException();
+            String sex = "";
+            sex = cboSex.SelectedItem == null ? "" : ((ComboBoxItem)cboSex.SelectedItem).Value;
+            //if (!ic.iniC.statusAppDonor.Equals("1"))
+            //{
+            //    lbHn_2.Hide();
+            //    txtHn_2.Hide();
+            //    if (sex.Equals("1"))
+            //    {
+            //        lbHn_1.Text = "HN female";
+            //    }
+            //    else
+            //    {
+            //        lbHn_1.Text = "HN male";
+            //    }
+            //}
+            //else
+            //{
+            //    lbHn_2.Show();
+            //    txtHn_2.Show();
+            //    lbHn_1.Text = "HN female";
+            //    lbHn_2.Text = "HN male";
+            //}
         }
 
         private void BtnHnSearch_Click(object sender, EventArgs e)
@@ -2720,6 +2748,10 @@ namespace clinic_ivf.gui
             txtP.Value = ptt.p;
             txtA.Value = ptt.a;
             setGrfpApmDonor(ptt.t_patient_id);
+            txtHn_1.Value = ptt.patient_hn_1;
+            txtHn_2.Value = ptt.patient_hn_2;
+            txtDiagDoc.Value = ptt.diagnosis_doc;
+
             //txtEmail.Value = pttO.Email;
         }
         private void setControlVisit(String vsid)
@@ -2950,6 +2982,11 @@ namespace clinic_ivf.gui
             txtG.Value = ptt.g;
             txtP.Value = ptt.p;
             txtA.Value = ptt.a;
+            txtHn_1.Value = ptt.patient_hn_1;
+            txtHn_2.Value = ptt.patient_hn_2;
+            txtDiagDoc.Value = ptt.diagnosis_doc;
+            lbHn_1.Text = "";
+            lbHn_2.Text = "";
         }
         private void setControl()
         {
@@ -3000,6 +3037,7 @@ namespace clinic_ivf.gui
                 ptt = ic.ivfDB.pttDB.selectByHn(txtVisitHnMale.Text);
                 label71.Text = ptt.Name;
             }
+            //CboSex_SelectedIndexChanged(null, null);
             if (!txtID.Text.Equals(""))
             {
                 //PatientImage pttI = new PatientImage();
@@ -3131,6 +3169,10 @@ namespace clinic_ivf.gui
             ptt.patient_country = cboCou.Text;
             ptt.patient_changwat = cboProv.Text;
             ptt.patient_amphur = cboAmpr.Text;
+            ptt.patient_hn_1 = txtHn_1.Text;
+            ptt.patient_hn_2 = txtHn_2.Text;
+            //ptt.status_chronic = "1";
+            //ptt.diagnosis_doc = txtDiagDoc.Text;
             //String[] name = txtEmerContact.Text.Split(' ');
             //if (name.Length > 0)
             //{

@@ -39,7 +39,7 @@ namespace clinic_ivf.objdb
             pttI.image_path = "image_path";
             pttI.status_image = "status_image";
             pttI.status_document = "status_document";
-            pttI.dept_id = "b_service_point_id";
+            pttI.dept_id = "dept_id";
 
             pttI.table = "t_patient_image";
             pttI.pkField = "patient_image_id";
@@ -195,7 +195,7 @@ namespace clinic_ivf.objdb
             DataTable dt = new DataTable();
             String sql = "select pttI.* " +
                 "From " + pttI.table + " pttI " +
-                "Where pttI." + pttI.t_patient_id + " ='" + pttid + "' and " + pttI.active + "='1' and pttI."+pttI.dept_id + "'"+deptid +"'";
+                "Where pttI." + pttI.t_patient_id + " ='" + pttid + "' and " + pttI.active + "='1' and pttI."+pttI.dept_id + "='"+deptid +"'";
             dt = conn.selectData(conn.conn, sql);
             return dt;
         }
