@@ -233,7 +233,7 @@ namespace clinic_ivf.objdb
             DataTable dt = new DataTable();
             String sql = "select pttI.* " +
                 "From " + pttI.table + " pttI " +
-                "Where pttI." + pttI.t_patient_id + " ='" + pttid + "' and " + pttI.active + "='1'  and pttI." + pttI.dept_id + "'" + deptid + "'"+
+                "Where pttI." + pttI.t_patient_id + " ='" + pttid + "' and " + pttI.active + "='1'  and pttI." + pttI.dept_id + "='" + deptid + "' and pttI."+pttI.status_document+"='2' " +
                 "Order By " + pttI.patient_image_id;
             dt = conn.selectData(conn.conn, sql);
             return dt;
