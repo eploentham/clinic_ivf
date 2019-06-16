@@ -213,7 +213,7 @@ namespace clinic_ivf.gui
             }
 
             String re = ic.ivfDB.ovsDB.updateStatusCashierFinish(txtVn.Text);
-            amt2 = ic.NumberToCurrencyText(amt, MidpointRounding.AwayFromZero);
+            amt2 = ic.NumberToCurrencyTextThaiBaht(amt, MidpointRounding.AwayFromZero);
             Decimal.TryParse(txtTotalCash.Text, out cash);
             Decimal.TryParse(txtTotalCredit.Text, out credit);
             if ((cash > 0) && (credit <= 0))

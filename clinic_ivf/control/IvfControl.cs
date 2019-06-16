@@ -1005,6 +1005,40 @@ namespace clinic_ivf.control
 
             return wordNumber;
         }
+        public string NumberToCurrencyTextThaiBaht(decimal number, MidpointRounding midpointRounding)
+        {
+            // Round the value just in case the decimal value is longer than two digits
+            number = decimal.Round(number, 2, midpointRounding);
+
+            string wordNumber = string.Empty;
+
+            // Divide the number into the whole and fractional part strings
+            string[] arrNumber = number.ToString().Split('.');
+
+            // Get the whole number text
+            long wholePart = long.Parse(arrNumber[0]);
+            string strWholePart = NumberToText(wholePart);
+
+            // For amounts of zero dollars show 'No Dollars...' instead of 'Zero Dollars...'
+            //wordNumber = (wholePart == 0 ? "No" : strWholePart) + (wholePart == 1 ? " Dollar and " : " Dollars and ");
+            wordNumber = (wholePart == 0 ? "No" : strWholePart) + (wholePart == 1 ? " Baht " : " Baht ");
+
+            // If the array has more than one element then there is a fractional part otherwise there isn't
+            // just add 'No Cents' to the end
+            //if (arrNumber.Length > 1)
+            //{
+            //    // If the length of the fractional element is only 1, add a 0 so that the text returned isn't,
+            //    // 'One', 'Two', etc but 'Ten', 'Twenty', etc.
+            //    long fractionPart = long.Parse((arrNumber[1].Length == 1 ? arrNumber[1] + "0" : arrNumber[1]));
+            //    string strFarctionPart = NumberToText(fractionPart);
+
+            //    wordNumber += (fractionPart == 0 ? " No" : strFarctionPart) + (fractionPart == 1 ? " Cent" : " Cents");
+            //}
+            //else
+            //    wordNumber += "No Cents";
+
+            return wordNumber;
+        }
         public String showVN(String vn)
         {
             String re = "";

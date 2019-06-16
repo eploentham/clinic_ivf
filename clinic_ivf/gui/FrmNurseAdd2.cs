@@ -3206,6 +3206,7 @@ namespace clinic_ivf.gui
             txtHn.Value = vsOld.PIDS;
             txtApmHn.Value = vsOld.PIDS;
             txtVn.Value = vsOld.VN;
+            txtVnShow.Value = ic.showVN(vsOld.VN);
             txtPttNameE.Value = vsOld.PName;
             txtApmName.Value = vsOld.PName;
             txtDob.Value = ic.datetoShow(pttOld.DateOfBirth) + " [" + ptt.AgeStringShort() + "]";
@@ -5086,20 +5087,24 @@ namespace clinic_ivf.gui
                 MemoryStream stream = new MemoryStream();
                 //loadedImage = Image.FromFile(filename);
                 stream = ic.ftpC.download(grfImg[grfImg.Row, colImgPathPic].ToString());
-                int row = 0;
+                //int row = 0;
                 //int.TryParse(grfImg[grfImg.Row, colImg].ToString(), out row);
-                int.TryParse(grfImg.Row.ToString(), out row);
+                //int.TryParse(grfImg.Row.ToString(), out row);
                 C1PdfDocumentSource pds = new C1PdfDocumentSource();
+                //c1PdfDocumentSource1.LoadFromFile(@"SonoAce X7.pdf");
                 //pds.LoadFromFile(@"SonoAce X7.pdf");
                 pds.LoadFromStream(stream);
                 c1FlexViewer1.DocumentSource = pds;
+                //FrmShowPdf frm = new FrmShowPdf(stream);
+                //frm.ShowDialog(this);
             }
             catch (Exception ex1)
             {
-
+                String aaa = "";
+                aaa = ex1.Message;
             }
             //row *= 4;
-            //FrmShowImage frm = new FrmShowImage(ic, grfImg[row, colImgID] != null ? grfImg[row, colImgID].ToString() : "", pttOldId, grfImg[row, colImgPathPic] != null ? grfImg[row, colImgPathPic].ToString() : "", FrmShowImage.statusModule.Patient);
+            
             //frm.ShowDialog(this);
             
         }
