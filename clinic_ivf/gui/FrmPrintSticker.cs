@@ -17,6 +17,7 @@ namespace clinic_ivf.gui
         public FrmPrintSticker(IvfControl ic)
         {
             InitializeComponent();
+            this.ic = ic;
             initConfig();
         }
         private void initConfig()
