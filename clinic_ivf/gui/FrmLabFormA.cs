@@ -824,7 +824,12 @@ namespace clinic_ivf.gui
                         Patient pttD = new Patient();
                         pttO = ic.ivfDB.pttOldDB.selectByPk1(pttid);
                         vs = ic.ivfDB.vsDB.selectByPk1(vsid);
-                        
+                        if (vs.t_visit_id.Equals(""))
+                        {
+                            vs = ic.ivfDB.vsDB.selectByVn(vsidOld);
+                            txtVsId.Value = vs.t_visit_id;
+                            txtPttId.Value = vs.t_patient_id;
+                        }
                         txtHnFeMale.Value = pttO.PIDS;
                         txtNameFeMale.Value = pttO.FullName;
                         txtDobFeMale.Value = pttO.DateOfBirth;

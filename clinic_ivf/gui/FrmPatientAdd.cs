@@ -1459,42 +1459,43 @@ namespace clinic_ivf.gui
             //throw new NotImplementedException();                 
             try
             {
-                int numSticker = 0;
-                if (txtVn.Text.Equals(""))
-                {
-                    MessageBox.Show("กรุณาเลือก Visit", "");
-                    return;
-                }
-                ic.NumSticker = "";
-                FrmPrintSticker frm = new FrmPrintSticker(ic);
-                frm.ShowDialog(this);
-                if(int.TryParse(ic.NumSticker,out numSticker))
-                {
-                    MessageBox.Show("จำนวน Sticker ไม่ถูกต้อง", "");
-                    return;
-                }
-                PrintDocument document = new PrintDocument();
-                document.PrinterSettings.PrinterName = ic.iniC.printerSticker;
-                document.PrintPage += new PrintPageEventHandler(printBill_PrintPage);
-                //This is where you set the printer in your case you could use "EPSON USB"
-                //or whatever it is called on your machine, by Default it will choose the default printer
-
-                //document.PrinterSettings.PrinterName = ord1.printer_name;
-                document.Print();
-                //DataTable dt = new DataTable();
-                //dt.Columns.Add("hn", typeof(String));
-                //dt.Columns.Add("name", typeof(String));
-                //dt.Columns.Add("age", typeof(String));
-                //dt.Columns.Add("vn", typeof(String));
-                //DataRow row11 = dt.NewRow();
-                //row11["hn"] = ptt.patient_hn;
-                //row11["name"] = ptt.Name;
-                //row11["age"] = ptt.AgeString();
-                //row11["vn"] = vs.visit_vn;
-                //dt.Rows.Add(row11);
-                //FrmReport frm = new FrmReport(ic);
-                //frm.setStickerPatientThemal(dt);
+                //int numSticker = 0;
+                //if (txtVn.Text.Equals(""))
+                //{
+                //    MessageBox.Show("กรุณาเลือก Visit", "");
+                //    return;
+                //}
+                //ic.NumSticker = "";
+                //FrmPrintSticker frm = new FrmPrintSticker(ic);
                 //frm.ShowDialog(this);
+                //if(!int.TryParse(ic.NumSticker,out numSticker))
+                //{
+                //    MessageBox.Show("จำนวน Sticker ไม่ถูกต้อง", "");
+                //    return;
+                //}
+                //PrintDocument document = new PrintDocument();
+                //document.PrinterSettings.PrinterName = ic.iniC.printerSticker;
+                //document.PrintPage += new PrintPageEventHandler(printBill_PrintPage);
+                ////This is where you set the printer in your case you could use "EPSON USB"
+                ////or whatever it is called on your machine, by Default it will choose the default printer
+
+                ////document.PrinterSettings.PrinterName = ord1.printer_name;
+                //document.Print();
+
+                DataTable dt = new DataTable();
+                dt.Columns.Add("hn", typeof(String));
+                dt.Columns.Add("name", typeof(String));
+                dt.Columns.Add("age", typeof(String));
+                dt.Columns.Add("vn", typeof(String));
+                DataRow row11 = dt.NewRow();
+                row11["hn"] = ptt.patient_hn;
+                row11["name"] = ptt.Name;
+                row11["age"] = "Age "+ptt.AgeString();
+                row11["vn"] = vs.visit_vn;
+                dt.Rows.Add(row11);
+                FrmReport frm = new FrmReport(ic);
+                frm.setStickerPatientThemal(dt);
+                frm.ShowDialog(this);
             }
             catch (Exception ex)
             {
@@ -1532,11 +1533,10 @@ namespace clinic_ivf.gui
             C1BarCode barcode = new C1BarCode();
             barcode.Text = txtVn.Text;
             
-
             Pen blackPen = new Pen(Color.Black, 1);
             Image resizedImage;
             int originalWidth = barcode.Image.Width;
-            int newWidth = 100;
+            int newWidth = 200;
             Size proposedSize = new Size(100, 100);
             StringFormat flags = new StringFormat(StringFormatFlags.LineLimit);  //wraps
             Size textSize = TextRenderer.MeasureText(line, fEdit, proposedSize, TextFormatFlags.RightToLeft);
