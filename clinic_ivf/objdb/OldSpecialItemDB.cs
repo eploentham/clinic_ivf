@@ -270,7 +270,7 @@ namespace clinic_ivf.objdb
             String sql = "select sitm." + sitm.SID + ",sitm." + sitm.SName + ",sitm." + sitm.Price + ", bilg.Name as bilgrpname " +
                 "From " + sitm.table + " sitm " +
                 "Left Join BillGroup bilg on sitm."+sitm.BillGroupID + "=bilg.ID " +
-                "Where isActive = '1' and acitve = '1' " +
+                "Where isActive = '1' and sitm.active = '1' " +
                 "Order By sitm." + sitm.SName;
             dt = conn.selectData(conn.conn, sql);
             return dt;
