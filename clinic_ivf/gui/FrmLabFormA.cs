@@ -848,8 +848,8 @@ namespace clinic_ivf.gui
                     }
                 }
             }
-            gbOPU.Enabled = false;
-            gbETFET.Enabled = false;
+            //gbOPU.Enabled = false;
+            //gbETFET.Enabled = false;
             
             String reqopuid = ic.ivfDB.oJsDB.selectByStatusFET(txtVnOld.Text);
             String reqfetid = ic.ivfDB.oJsDB.selectByStatusFET(txtVnOld.Text);
