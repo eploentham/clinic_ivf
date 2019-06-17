@@ -672,6 +672,7 @@
             this.pnOutLabImage = new System.Windows.Forms.Panel();
             this.spOutLabDetail = new C1.Win.C1SplitContainer.C1SplitterPanel();
             this.pnOutLabDetail = new System.Windows.Forms.Panel();
+            this.c1FlexViewer1 = new C1.Win.FlexViewer.C1FlexViewer();
             this.radioButton20 = new System.Windows.Forms.RadioButton();
             this.txtStfConfirmID = new C1.Win.C1Input.C1TextBox();
             this.txtUserReq = new C1.Win.C1Input.C1TextBox();
@@ -686,7 +687,9 @@
             this.label92 = new System.Windows.Forms.Label();
             this.label93 = new System.Windows.Forms.Label();
             this.label94 = new System.Windows.Forms.Label();
-            this.c1FlexViewer1 = new C1.Win.FlexViewer.C1FlexViewer();
+            this.cboEggStiId = new C1.Win.C1Input.C1ComboBox();
+            this.label86 = new System.Windows.Forms.Label();
+            this.btnEggsNew = new C1.Win.C1Input.C1Button();
             this.sB.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.theme1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.sC)).BeginInit();
@@ -1067,12 +1070,14 @@
             this.spOutLabView.SuspendLayout();
             this.spOutLabDetail.SuspendLayout();
             this.pnOutLabDetail.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.c1FlexViewer1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtStfConfirmID)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtUserReq)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cboBsp)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnVoid)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnSave)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.c1FlexViewer1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cboEggStiId)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnEggsNew)).BeginInit();
             this.SuspendLayout();
             // 
             // sB
@@ -9231,15 +9236,18 @@
             this.pnEggSti.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
             this.pnEggSti.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnEggSti.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.pnEggSti.Location = new System.Drawing.Point(0, 70);
+            this.pnEggSti.Location = new System.Drawing.Point(0, 95);
             this.pnEggSti.Name = "pnEggSti";
-            this.pnEggSti.Size = new System.Drawing.Size(1585, 595);
+            this.pnEggSti.Size = new System.Drawing.Size(1585, 570);
             this.pnEggSti.TabIndex = 1;
             this.theme1.SetTheme(this.pnEggSti, "(default)");
             // 
             // panel32
             // 
             this.panel32.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.panel32.Controls.Add(this.btnEggsNew);
+            this.panel32.Controls.Add(this.cboEggStiId);
+            this.panel32.Controls.Add(this.label86);
             this.panel32.Controls.Add(this.txtEggStiDay);
             this.panel32.Controls.Add(this.label85);
             this.panel32.Controls.Add(this.cboEggStiDtr);
@@ -9283,7 +9291,7 @@
             this.panel32.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
             this.panel32.Location = new System.Drawing.Point(0, 0);
             this.panel32.Name = "panel32";
-            this.panel32.Size = new System.Drawing.Size(1585, 70);
+            this.panel32.Size = new System.Drawing.Size(1585, 95);
             this.panel32.TabIndex = 0;
             this.theme1.SetTheme(this.panel32, "(default)");
             // 
@@ -9292,7 +9300,7 @@
             this.txtEggStiDay.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtEggStiDay.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
             this.txtEggStiDay.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.txtEggStiDay.Location = new System.Drawing.Point(209, 6);
+            this.txtEggStiDay.Location = new System.Drawing.Point(209, 33);
             this.txtEggStiDay.Name = "txtEggStiDay";
             this.txtEggStiDay.Size = new System.Drawing.Size(47, 20);
             this.txtEggStiDay.TabIndex = 990;
@@ -9306,7 +9314,7 @@
             this.label85.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
             this.label85.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label85.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.label85.Location = new System.Drawing.Point(173, 7);
+            this.label85.Location = new System.Drawing.Point(173, 34);
             this.label85.Name = "label85";
             this.label85.Size = new System.Drawing.Size(37, 16);
             this.label85.TabIndex = 989;
@@ -9323,7 +9331,7 @@
             this.cboEggStiDtr.ImagePadding = new System.Windows.Forms.Padding(0);
             this.cboEggStiDtr.ItemsDisplayMember = "";
             this.cboEggStiDtr.ItemsValueMember = "";
-            this.cboEggStiDtr.Location = new System.Drawing.Point(1185, 47);
+            this.cboEggStiDtr.Location = new System.Drawing.Point(1185, 74);
             this.cboEggStiDtr.Name = "cboEggStiDtr";
             this.cboEggStiDtr.Size = new System.Drawing.Size(208, 20);
             this.cboEggStiDtr.Style.DropDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
@@ -9340,7 +9348,7 @@
             this.label82.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
             this.label82.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label82.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.label82.Location = new System.Drawing.Point(1127, 48);
+            this.label82.Location = new System.Drawing.Point(1127, 75);
             this.label82.Name = "label82";
             this.label82.Size = new System.Drawing.Size(54, 16);
             this.label82.TabIndex = 987;
@@ -9352,7 +9360,7 @@
             this.txtAbnormal2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtAbnormal2.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
             this.txtAbnormal2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.txtAbnormal2.Location = new System.Drawing.Point(496, 6);
+            this.txtAbnormal2.Location = new System.Drawing.Point(496, 33);
             this.txtAbnormal2.Name = "txtAbnormal2";
             this.txtAbnormal2.Size = new System.Drawing.Size(70, 20);
             this.txtAbnormal2.TabIndex = 963;
@@ -9366,7 +9374,7 @@
             this.label79.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
             this.label79.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label79.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.label79.Location = new System.Drawing.Point(1129, 27);
+            this.label79.Location = new System.Drawing.Point(1129, 54);
             this.label79.Name = "label79";
             this.label79.Size = new System.Drawing.Size(23, 16);
             this.label79.TabIndex = 941;
@@ -9381,7 +9389,7 @@
             this.chkAbnormal.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.chkAbnormal.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.chkAbnormal.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.chkAbnormal.Location = new System.Drawing.Point(318, 2);
+            this.chkAbnormal.Location = new System.Drawing.Point(318, 29);
             this.chkAbnormal.Name = "chkAbnormal";
             this.chkAbnormal.Padding = new System.Windows.Forms.Padding(4, 1, 1, 1);
             this.chkAbnormal.Size = new System.Drawing.Size(87, 24);
@@ -9394,7 +9402,7 @@
             // 
             // btnGenEggSti
             // 
-            this.btnGenEggSti.Location = new System.Drawing.Point(262, 4);
+            this.btnGenEggSti.Location = new System.Drawing.Point(262, 31);
             this.btnGenEggSti.Name = "btnGenEggSti";
             this.btnGenEggSti.Size = new System.Drawing.Size(28, 23);
             this.btnGenEggSti.TabIndex = 986;
@@ -9408,7 +9416,7 @@
             this.txtAbnormal1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtAbnormal1.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
             this.txtAbnormal1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.txtAbnormal1.Location = new System.Drawing.Point(407, 6);
+            this.txtAbnormal1.Location = new System.Drawing.Point(407, 33);
             this.txtAbnormal1.Name = "txtAbnormal1";
             this.txtAbnormal1.Size = new System.Drawing.Size(70, 20);
             this.txtAbnormal1.TabIndex = 962;
@@ -9422,7 +9430,7 @@
             this.label116.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
             this.label116.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label116.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.label116.Location = new System.Drawing.Point(481, 8);
+            this.label116.Location = new System.Drawing.Point(481, 35);
             this.label116.Name = "label116";
             this.label116.Size = new System.Drawing.Size(12, 16);
             this.label116.TabIndex = 964;
@@ -9434,7 +9442,7 @@
             this.txtEggStiA.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtEggStiA.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
             this.txtEggStiA.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.txtEggStiA.Location = new System.Drawing.Point(1153, 25);
+            this.txtEggStiA.Location = new System.Drawing.Point(1153, 52);
             this.txtEggStiA.Name = "txtEggStiA";
             this.txtEggStiA.Size = new System.Drawing.Size(47, 20);
             this.txtEggStiA.TabIndex = 940;
@@ -9448,7 +9456,7 @@
             this.label115.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
             this.label115.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label115.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.label115.Location = new System.Drawing.Point(569, 8);
+            this.label115.Location = new System.Drawing.Point(569, 35);
             this.label115.Name = "label115";
             this.label115.Size = new System.Drawing.Size(28, 16);
             this.label115.TabIndex = 960;
@@ -9494,7 +9502,7 @@
             this.txtEggStiVisitLMP.EmptyAsNull = true;
             this.txtEggStiVisitLMP.GMTOffset = System.TimeSpan.Parse("00:00:00");
             this.txtEggStiVisitLMP.ImagePadding = new System.Windows.Forms.Padding(0);
-            this.txtEggStiVisitLMP.Location = new System.Drawing.Point(50, 6);
+            this.txtEggStiVisitLMP.Location = new System.Drawing.Point(50, 33);
             this.txtEggStiVisitLMP.Name = "txtEggStiVisitLMP";
             this.txtEggStiVisitLMP.Size = new System.Drawing.Size(117, 18);
             this.txtEggStiVisitLMP.TabIndex = 985;
@@ -9510,7 +9518,7 @@
             this.chkTyping.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.chkTyping.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.chkTyping.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.chkTyping.Location = new System.Drawing.Point(602, 6);
+            this.chkTyping.Location = new System.Drawing.Point(602, 33);
             this.chkTyping.Name = "chkTyping";
             this.chkTyping.Padding = new System.Windows.Forms.Padding(4, 1, 1, 1);
             this.chkTyping.Size = new System.Drawing.Size(71, 24);
@@ -9527,7 +9535,7 @@
             this.label80.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
             this.label80.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label80.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.label80.Location = new System.Drawing.Point(1050, 50);
+            this.label80.Location = new System.Drawing.Point(1050, 77);
             this.label80.Name = "label80";
             this.label80.Size = new System.Drawing.Size(23, 16);
             this.label80.TabIndex = 939;
@@ -9542,7 +9550,7 @@
             this.chkEggStiOther.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.chkEggStiOther.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.chkEggStiOther.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.chkEggStiOther.Location = new System.Drawing.Point(683, 6);
+            this.chkEggStiOther.Location = new System.Drawing.Point(683, 33);
             this.chkEggStiOther.Name = "chkEggStiOther";
             this.chkEggStiOther.Padding = new System.Windows.Forms.Padding(4, 1, 1, 1);
             this.chkEggStiOther.Size = new System.Drawing.Size(62, 24);
@@ -9559,7 +9567,7 @@
             this.label78.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
             this.label78.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label78.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.label78.Location = new System.Drawing.Point(3, 6);
+            this.label78.Location = new System.Drawing.Point(3, 33);
             this.label78.Name = "label78";
             this.label78.Size = new System.Drawing.Size(41, 16);
             this.label78.TabIndex = 984;
@@ -9571,7 +9579,7 @@
             this.txtEggStiId.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtEggStiId.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
             this.txtEggStiId.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.txtEggStiId.Location = new System.Drawing.Point(1230, 25);
+            this.txtEggStiId.Location = new System.Drawing.Point(1230, 52);
             this.txtEggStiId.Name = "txtEggStiId";
             this.txtEggStiId.Size = new System.Drawing.Size(30, 20);
             this.txtEggStiId.TabIndex = 983;
@@ -9585,7 +9593,7 @@
             this.txtEggStiP.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtEggStiP.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
             this.txtEggStiP.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.txtEggStiP.Location = new System.Drawing.Point(1074, 46);
+            this.txtEggStiP.Location = new System.Drawing.Point(1074, 73);
             this.txtEggStiP.Name = "txtEggStiP";
             this.txtEggStiP.Size = new System.Drawing.Size(47, 20);
             this.txtEggStiP.TabIndex = 938;
@@ -9603,7 +9611,7 @@
             this.cboEggStiOther.ImagePadding = new System.Windows.Forms.Padding(0);
             this.cboEggStiOther.ItemsDisplayMember = "";
             this.cboEggStiOther.ItemsValueMember = "";
-            this.cboEggStiOther.Location = new System.Drawing.Point(746, 9);
+            this.cboEggStiOther.Location = new System.Drawing.Point(746, 36);
             this.cboEggStiOther.Name = "cboEggStiOther";
             this.cboEggStiOther.Size = new System.Drawing.Size(115, 20);
             this.cboEggStiOther.Style.DropDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
@@ -9620,7 +9628,7 @@
             this.label81.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
             this.label81.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label81.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.label81.Location = new System.Drawing.Point(1050, 27);
+            this.label81.Location = new System.Drawing.Point(1050, 54);
             this.label81.Name = "label81";
             this.label81.Size = new System.Drawing.Size(24, 16);
             this.label81.TabIndex = 937;
@@ -9633,7 +9641,7 @@
             this.label119.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
             this.label119.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label119.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.label119.Location = new System.Drawing.Point(881, 8);
+            this.label119.Location = new System.Drawing.Point(881, 35);
             this.label119.Name = "label119";
             this.label119.Size = new System.Drawing.Size(111, 16);
             this.label119.TabIndex = 977;
@@ -9644,7 +9652,7 @@
             // 
             this.btnEggStiPrint.Image = global::clinic_ivf.Properties.Resources.print;
             this.btnEggStiPrint.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnEggStiPrint.Location = new System.Drawing.Point(1480, 16);
+            this.btnEggStiPrint.Location = new System.Drawing.Point(1480, 43);
             this.btnEggStiPrint.Name = "btnEggStiPrint";
             this.btnEggStiPrint.Size = new System.Drawing.Size(83, 34);
             this.btnEggStiPrint.TabIndex = 982;
@@ -9662,7 +9670,7 @@
             this.chkEggStiInfection.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.chkEggStiInfection.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.chkEggStiInfection.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.chkEggStiInfection.Location = new System.Drawing.Point(992, 4);
+            this.chkEggStiInfection.Location = new System.Drawing.Point(992, 31);
             this.chkEggStiInfection.Name = "chkEggStiInfection";
             this.chkEggStiInfection.Padding = new System.Windows.Forms.Padding(4, 1, 1, 1);
             this.chkEggStiInfection.Size = new System.Drawing.Size(77, 24);
@@ -9678,7 +9686,7 @@
             this.txtEggStiG.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtEggStiG.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
             this.txtEggStiG.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.txtEggStiG.Location = new System.Drawing.Point(1074, 25);
+            this.txtEggStiG.Location = new System.Drawing.Point(1074, 52);
             this.txtEggStiG.Name = "txtEggStiG";
             this.txtEggStiG.Size = new System.Drawing.Size(47, 20);
             this.txtEggStiG.TabIndex = 936;
@@ -9692,7 +9700,7 @@
             this.label118.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
             this.label118.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label118.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.label118.Location = new System.Drawing.Point(1079, 8);
+            this.label118.Location = new System.Drawing.Point(1079, 35);
             this.label118.Name = "label118";
             this.label118.Size = new System.Drawing.Size(67, 16);
             this.label118.TabIndex = 979;
@@ -9703,7 +9711,7 @@
             // 
             this.btnEggStiSave.Image = global::clinic_ivf.Properties.Resources.download_database24;
             this.btnEggStiSave.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnEggStiSave.Location = new System.Drawing.Point(1399, 16);
+            this.btnEggStiSave.Location = new System.Drawing.Point(1399, 43);
             this.btnEggStiSave.Name = "btnEggStiSave";
             this.btnEggStiSave.Size = new System.Drawing.Size(75, 34);
             this.btnEggStiSave.TabIndex = 981;
@@ -9721,7 +9729,7 @@
             this.chkAmh.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.chkAmh.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.chkAmh.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.chkAmh.Location = new System.Drawing.Point(1146, 3);
+            this.chkAmh.Location = new System.Drawing.Point(1146, 30);
             this.chkAmh.Name = "chkAmh";
             this.chkAmh.Padding = new System.Windows.Forms.Padding(4, 1, 1, 1);
             this.chkAmh.Size = new System.Drawing.Size(60, 24);
@@ -9738,7 +9746,7 @@
             this.label120.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
             this.label120.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label120.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.label120.Location = new System.Drawing.Point(947, 39);
+            this.label120.Location = new System.Drawing.Point(947, 66);
             this.label120.Name = "label120";
             this.label120.Size = new System.Drawing.Size(45, 16);
             this.label120.TabIndex = 976;
@@ -9755,7 +9763,7 @@
             this.cboEggStiAmh.ImagePadding = new System.Windows.Forms.Padding(0);
             this.cboEggStiAmh.ItemsDisplayMember = "";
             this.cboEggStiAmh.ItemsValueMember = "";
-            this.cboEggStiAmh.Location = new System.Drawing.Point(1209, 3);
+            this.cboEggStiAmh.Location = new System.Drawing.Point(1209, 30);
             this.cboEggStiAmh.Name = "cboEggStiAmh";
             this.cboEggStiAmh.Size = new System.Drawing.Size(185, 20);
             this.cboEggStiAmh.Style.DropDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
@@ -9772,7 +9780,7 @@
             this.txtEggStiEmbryoTranferTime.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
             this.txtEggStiEmbryoTranferTime.EditMask = "00:00";
             this.txtEggStiEmbryoTranferTime.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.txtEggStiEmbryoTranferTime.Location = new System.Drawing.Point(697, 37);
+            this.txtEggStiEmbryoTranferTime.Location = new System.Drawing.Point(697, 64);
             this.txtEggStiEmbryoTranferTime.MaskInfo.EmptyAsNull = true;
             this.txtEggStiEmbryoTranferTime.MaskInfo.Inherit = ((C1.Win.C1Input.MaskInfoInheritFlags)((C1.Win.C1Input.MaskInfoInheritFlags.CaseSensitive | C1.Win.C1Input.MaskInfoInheritFlags.ErrorMessage)));
             this.txtEggStiEmbryoTranferTime.MaskInfo.SaveBlanks = true;
@@ -9790,7 +9798,7 @@
             this.label121.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
             this.label121.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label121.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.label121.Location = new System.Drawing.Point(652, 39);
+            this.label121.Location = new System.Drawing.Point(652, 66);
             this.label121.Name = "label121";
             this.label121.Size = new System.Drawing.Size(45, 16);
             this.label121.TabIndex = 974;
@@ -9835,7 +9843,7 @@
             this.txtEggStiEmbryoTranferDate.EmptyAsNull = true;
             this.txtEggStiEmbryoTranferDate.GMTOffset = System.TimeSpan.Parse("00:00:00");
             this.txtEggStiEmbryoTranferDate.ImagePadding = new System.Windows.Forms.Padding(0);
-            this.txtEggStiEmbryoTranferDate.Location = new System.Drawing.Point(529, 37);
+            this.txtEggStiEmbryoTranferDate.Location = new System.Drawing.Point(529, 64);
             this.txtEggStiEmbryoTranferDate.Name = "txtEggStiEmbryoTranferDate";
             this.txtEggStiEmbryoTranferDate.Size = new System.Drawing.Size(118, 18);
             this.txtEggStiEmbryoTranferDate.TabIndex = 973;
@@ -9849,7 +9857,7 @@
             this.label122.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
             this.label122.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label122.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.label122.Location = new System.Drawing.Point(384, 37);
+            this.label122.Location = new System.Drawing.Point(384, 64);
             this.label122.Name = "label122";
             this.label122.Size = new System.Drawing.Size(139, 16);
             this.label122.TabIndex = 972;
@@ -9862,7 +9870,7 @@
             this.txtEggStiOPUTime.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
             this.txtEggStiOPUTime.EditMask = "00:00";
             this.txtEggStiOPUTime.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.txtEggStiOPUTime.Location = new System.Drawing.Point(992, 37);
+            this.txtEggStiOPUTime.Location = new System.Drawing.Point(992, 64);
             this.txtEggStiOPUTime.MaskInfo.EmptyAsNull = true;
             this.txtEggStiOPUTime.MaskInfo.Inherit = ((C1.Win.C1Input.MaskInfoInheritFlags)((C1.Win.C1Input.MaskInfoInheritFlags.CaseSensitive | C1.Win.C1Input.MaskInfoInheritFlags.ErrorMessage)));
             this.txtEggStiOPUTime.MaskInfo.SaveBlanks = true;
@@ -9912,7 +9920,7 @@
             this.txtEggStiOPUDate.EmptyAsNull = true;
             this.txtEggStiOPUDate.GMTOffset = System.TimeSpan.Parse("00:00:00");
             this.txtEggStiOPUDate.ImagePadding = new System.Windows.Forms.Padding(0);
-            this.txtEggStiOPUDate.Location = new System.Drawing.Point(835, 37);
+            this.txtEggStiOPUDate.Location = new System.Drawing.Point(835, 64);
             this.txtEggStiOPUDate.Name = "txtEggStiOPUDate";
             this.txtEggStiOPUDate.Size = new System.Drawing.Size(110, 18);
             this.txtEggStiOPUDate.TabIndex = 970;
@@ -9926,7 +9934,7 @@
             this.label123.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
             this.label123.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label123.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.label123.Location = new System.Drawing.Point(761, 39);
+            this.label123.Location = new System.Drawing.Point(761, 66);
             this.label123.Name = "label123";
             this.label123.Size = new System.Drawing.Size(73, 16);
             this.label123.TabIndex = 969;
@@ -9943,7 +9951,7 @@
             this.cboEggStiBhcg.ImagePadding = new System.Windows.Forms.Padding(0);
             this.cboEggStiBhcg.ItemsDisplayMember = "";
             this.cboEggStiBhcg.ItemsValueMember = "";
-            this.cboEggStiBhcg.Location = new System.Drawing.Point(85, 37);
+            this.cboEggStiBhcg.Location = new System.Drawing.Point(85, 64);
             this.cboEggStiBhcg.Name = "cboEggStiBhcg";
             this.cboEggStiBhcg.Size = new System.Drawing.Size(296, 20);
             this.cboEggStiBhcg.Style.DropDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
@@ -9960,7 +9968,7 @@
             this.label117.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
             this.label117.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label117.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.label117.Location = new System.Drawing.Point(3, 37);
+            this.label117.Location = new System.Drawing.Point(3, 64);
             this.label117.Name = "label117";
             this.label117.Size = new System.Drawing.Size(82, 16);
             this.label117.TabIndex = 958;
@@ -10474,7 +10482,7 @@
             this.spOutLabView.SizeRatio = 37.381D;
             this.spOutLabView.TabIndex = 0;
             this.spOutLabView.Text = "Panel 1";
-            this.spOutLabView.Width = 591;
+            this.spOutLabView.Width = 584;
             // 
             // pnOutLabEmail
             // 
@@ -10519,6 +10527,40 @@
             this.pnOutLabDetail.Size = new System.Drawing.Size(990, 644);
             this.pnOutLabDetail.TabIndex = 0;
             this.theme1.SetTheme(this.pnOutLabDetail, "(default)");
+            // 
+            // c1FlexViewer1
+            // 
+            this.c1FlexViewer1.AutoScrollMargin = new System.Drawing.Size(0, 0);
+            this.c1FlexViewer1.AutoScrollMinSize = new System.Drawing.Size(0, 0);
+            this.c1FlexViewer1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.c1FlexViewer1.Location = new System.Drawing.Point(0, 0);
+            this.c1FlexViewer1.Name = "c1FlexViewer1";
+            this.c1FlexViewer1.OutlineAreaBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.c1FlexViewer1.OutlineBackColorHot = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(189)))), ((int)(((byte)(182)))));
+            this.c1FlexViewer1.OutlineBackColorHotSelected = System.Drawing.Color.FromArgb(((int)(((byte)(225)))), ((int)(((byte)(108)))), ((int)(((byte)(89)))));
+            this.c1FlexViewer1.OutlineBackColorNormal = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.c1FlexViewer1.OutlineBackColorSelected = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(71)))), ((int)(((byte)(47)))));
+            this.c1FlexViewer1.OutlineButtonBackColorHot = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(189)))), ((int)(((byte)(182)))));
+            this.c1FlexViewer1.OutlineButtonBackColorNormal = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.c1FlexViewer1.OutlineButtonBackColorPressed = System.Drawing.Color.FromArgb(((int)(((byte)(225)))), ((int)(((byte)(108)))), ((int)(((byte)(89)))));
+            this.c1FlexViewer1.OutlineButtonBorderColorHot = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.c1FlexViewer1.OutlineButtonBorderColorNormal = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.c1FlexViewer1.OutlineButtonBorderColorPressed = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.c1FlexViewer1.OutlineButtonForeColorHot = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.c1FlexViewer1.OutlineButtonForeColorNormal = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.c1FlexViewer1.OutlineButtonForeColorPressed = System.Drawing.Color.White;
+            this.c1FlexViewer1.OutlineForeColorHot = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.c1FlexViewer1.OutlineForeColorNormal = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.c1FlexViewer1.OutlineLineColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
+            this.c1FlexViewer1.ParamHeaderBackColor = System.Drawing.Color.Transparent;
+            this.c1FlexViewer1.ParamHeaderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.c1FlexViewer1.Size = new System.Drawing.Size(990, 644);
+            this.c1FlexViewer1.SplitterColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
+            this.c1FlexViewer1.TabIndex = 0;
+            this.theme1.SetTheme(this.c1FlexViewer1, "(default)");
+            this.c1FlexViewer1.ThumbBackColorHot = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(189)))), ((int)(((byte)(182)))));
+            this.c1FlexViewer1.ThumbBackColorPressed = System.Drawing.Color.FromArgb(((int)(((byte)(225)))), ((int)(((byte)(108)))), ((int)(((byte)(89)))));
+            this.c1FlexViewer1.ThumbBackColorSelected = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(71)))), ((int)(((byte)(47)))));
             // 
             // radioButton20
             // 
@@ -10708,39 +10750,50 @@
             this.label94.TabIndex = 545;
             this.theme1.SetTheme(this.label94, "(default)");
             // 
-            // c1FlexViewer1
+            // cboEggStiId
             // 
-            this.c1FlexViewer1.AutoScrollMargin = new System.Drawing.Size(0, 0);
-            this.c1FlexViewer1.AutoScrollMinSize = new System.Drawing.Size(0, 0);
-            this.c1FlexViewer1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.c1FlexViewer1.Location = new System.Drawing.Point(0, 0);
-            this.c1FlexViewer1.Name = "c1FlexViewer1";
-            this.c1FlexViewer1.OutlineAreaBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.c1FlexViewer1.OutlineBackColorHot = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(189)))), ((int)(((byte)(182)))));
-            this.c1FlexViewer1.OutlineBackColorHotSelected = System.Drawing.Color.FromArgb(((int)(((byte)(225)))), ((int)(((byte)(108)))), ((int)(((byte)(89)))));
-            this.c1FlexViewer1.OutlineBackColorNormal = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.c1FlexViewer1.OutlineBackColorSelected = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(71)))), ((int)(((byte)(47)))));
-            this.c1FlexViewer1.OutlineButtonBackColorHot = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(189)))), ((int)(((byte)(182)))));
-            this.c1FlexViewer1.OutlineButtonBackColorNormal = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.c1FlexViewer1.OutlineButtonBackColorPressed = System.Drawing.Color.FromArgb(((int)(((byte)(225)))), ((int)(((byte)(108)))), ((int)(((byte)(89)))));
-            this.c1FlexViewer1.OutlineButtonBorderColorHot = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.c1FlexViewer1.OutlineButtonBorderColorNormal = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.c1FlexViewer1.OutlineButtonBorderColorPressed = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.c1FlexViewer1.OutlineButtonForeColorHot = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.c1FlexViewer1.OutlineButtonForeColorNormal = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.c1FlexViewer1.OutlineButtonForeColorPressed = System.Drawing.Color.White;
-            this.c1FlexViewer1.OutlineForeColorHot = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.c1FlexViewer1.OutlineForeColorNormal = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.c1FlexViewer1.OutlineLineColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
-            this.c1FlexViewer1.ParamHeaderBackColor = System.Drawing.Color.Transparent;
-            this.c1FlexViewer1.ParamHeaderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.c1FlexViewer1.Size = new System.Drawing.Size(990, 644);
-            this.c1FlexViewer1.SplitterColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
-            this.c1FlexViewer1.TabIndex = 0;
-            this.theme1.SetTheme(this.c1FlexViewer1, "(default)");
-            this.c1FlexViewer1.ThumbBackColorHot = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(189)))), ((int)(((byte)(182)))));
-            this.c1FlexViewer1.ThumbBackColorPressed = System.Drawing.Color.FromArgb(((int)(((byte)(225)))), ((int)(((byte)(108)))), ((int)(((byte)(89)))));
-            this.c1FlexViewer1.ThumbBackColorSelected = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(71)))), ((int)(((byte)(47)))));
+            this.cboEggStiId.AllowSpinLoop = false;
+            this.cboEggStiId.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.cboEggStiId.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
+            this.cboEggStiId.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.cboEggStiId.GapHeight = 0;
+            this.cboEggStiId.ImagePadding = new System.Windows.Forms.Padding(0);
+            this.cboEggStiId.ItemsDisplayMember = "";
+            this.cboEggStiId.ItemsValueMember = "";
+            this.cboEggStiId.Location = new System.Drawing.Point(85, 5);
+            this.cboEggStiId.Name = "cboEggStiId";
+            this.cboEggStiId.Size = new System.Drawing.Size(296, 20);
+            this.cboEggStiId.Style.DropDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.cboEggStiId.Style.DropDownBorderColor = System.Drawing.Color.Gainsboro;
+            this.cboEggStiId.Style.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.cboEggStiId.TabIndex = 992;
+            this.cboEggStiId.Tag = null;
+            this.theme1.SetTheme(this.cboEggStiId, "(default)");
+            this.cboEggStiId.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            // 
+            // label86
+            // 
+            this.label86.AutoSize = true;
+            this.label86.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.label86.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label86.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.label86.Location = new System.Drawing.Point(3, 5);
+            this.label86.Name = "label86";
+            this.label86.Size = new System.Drawing.Size(38, 16);
+            this.label86.TabIndex = 991;
+            this.label86.Text = "เลขที่ :";
+            this.theme1.SetTheme(this.label86, "(default)");
+            // 
+            // btnEggsNew
+            // 
+            this.btnEggsNew.Location = new System.Drawing.Point(387, 2);
+            this.btnEggsNew.Name = "btnEggsNew";
+            this.btnEggsNew.Size = new System.Drawing.Size(56, 23);
+            this.btnEggsNew.TabIndex = 993;
+            this.btnEggsNew.Text = "new";
+            this.theme1.SetTheme(this.btnEggsNew, "(default)");
+            this.btnEggsNew.UseVisualStyleBackColor = true;
+            this.btnEggsNew.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
             // 
             // FrmNurseAdd2
             // 
@@ -11191,12 +11244,14 @@
             this.spOutLabView.ResumeLayout(false);
             this.spOutLabDetail.ResumeLayout(false);
             this.pnOutLabDetail.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.c1FlexViewer1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtStfConfirmID)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtUserReq)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cboBsp)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnVoid)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnSave)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.c1FlexViewer1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cboEggStiId)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnEggsNew)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -11911,5 +11966,8 @@
         private C1.Win.C1Input.C1TextBox txtPmhId;
         private C1.Win.C1Input.C1TextBox txtVnShow;
         private C1.Win.FlexViewer.C1FlexViewer c1FlexViewer1;
+        private C1.Win.C1Input.C1ComboBox cboEggStiId;
+        private System.Windows.Forms.Label label86;
+        private C1.Win.C1Input.C1Button btnEggsNew;
     }
 }

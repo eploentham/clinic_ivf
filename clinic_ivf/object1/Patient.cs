@@ -138,7 +138,7 @@ namespace clinic_ivf.object1
         public String patient_hn_1 { get; set; }
         public String patient_hn_2 { get; set; }
         public String status_diagnosis { get; set; }
-        public String diagnosis_doc { get; set; }
+        public String lmp { get; set; }
 
         public String AgeString()
         {            

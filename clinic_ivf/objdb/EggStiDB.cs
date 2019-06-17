@@ -410,6 +410,39 @@ namespace clinic_ivf.objdb
             }
             return c;
         }
+        public DataTable selectByPatient(String pttid)
+        {
+            DataTable dt = new DataTable();
+            String sql = "select eggs." + eggs.lmp_date + ",vs.visit_vn,"+eggs.egg_sti_id+" " +
+                "From " + eggs.table + " eggs " +
+                "Left Join t_visit vs on eggs."+eggs.t_visit_id + " = vs.t_visit_id " +
+                "Where eggs." + eggs.active + "='1' and eggs."+eggs.t_patient_id+"='"+pttid+"'";
+            dt = conn.selectData(conn.conn, sql);
+            return dt;
+        }
+        public C1ComboBox setCboPatient(C1ComboBox c, String pttid)
+        {
+            ComboBoxItem item = new ComboBoxItem();
+            DataTable dt = selectByPatient(pttid);
+            //String aaa = "";
+            ComboBoxItem item1 = new ComboBoxItem();
+            item1.Text = "";
+            item1.Value = "";
+            c.Items.Clear();
+            c.Items.Add(item1);
+            //for (int i = 0; i < dt.Rows.Count; i++)
+            int i = 0;
+            foreach (DataRow row in dt.Rows)
+            {
+                item = new ComboBoxItem();
+                item.Text = datetoShow(row[eggs.lmp_date].ToString())+" "+ row["visit_vn"].ToString();
+                item.Value = row[eggs.egg_sti_id].ToString();
+
+                c.Items.Add(item);
+                i++;
+            }
+            return c;
+        }
         public DataTable selectDistinctByTypingOther()
         {
             DataTable dt = new DataTable();
@@ -468,7 +501,7 @@ namespace clinic_ivf.objdb
             DataTable dt = new DataTable();
             String sql = "select eggs.* " +
                 "From " + eggs.table + " eggs " +
-                "Where eggs." + eggs.t_visit_id + " ='" + pttId + "' ";
+                "Where eggs." + eggs.t_visit_id + " ='" + pttId + "'  and eggs." + eggs.active + "='1' ";
             dt = conn.selectData(conn.conn, sql);
             cop1 = setEggSti(dt);
             return cop1;
@@ -479,7 +512,7 @@ namespace clinic_ivf.objdb
             DataTable dt = new DataTable();
             String sql = "select eggs.* " +
                 "From " + eggs.table + " eggs " +
-                "Where eggs." + eggs.t_patient_id + " ='" + pttId + "' ";
+                "Where eggs." + eggs.t_patient_id + " ='" + pttId + "' and eggs."+eggs.active +"='1' ";
             dt = conn.selectData(conn.conn, sql);
             cop1 = setEggSti(dt);
             return cop1;
@@ -562,6 +595,21 @@ namespace clinic_ivf.objdb
                 dept1.day_start = "";
             }
             return dept1;
+        }
+        public String datetoShow(Object dt)
+        {
+            DateTime dt1 = new DateTime();
+            //MySqlDateTime dtm = new MySqlDateTime();
+            String re = "";
+            if (dt != null)
+            {
+                if (DateTime.TryParse(dt.ToString(), out dt1))
+                {
+                    if (dt1.Year < 1900) return "";
+                    re = dt1.ToString("dd-MM-yyyy");
+                }
+            }
+            return re;
         }
     }
 }

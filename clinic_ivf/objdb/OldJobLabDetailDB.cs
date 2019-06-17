@@ -55,6 +55,15 @@ namespace clinic_ivf.objdb
             jlabD.unit = "unit";
             jlabD.result_remark = "result_remark";
             jlabD.normal_value = "normal_value";
+            jlabD.date_cancel = "date_cancel";
+            jlabD.date_create = "date_create";
+            jlabD.date_modi = "date_modi";
+            jlabD.user_cancel = "user_cancel";
+            jlabD.user_create = "user_create";
+            jlabD.user_modi = "user_modi";
+            jlabD.status_amt = "status_amt";
+            jlabD.status_order_group = "status_order_group";
+            jlabD.lab_order_id = "lab_order_id";
 
             jlabD.table = "JobLabDetail";
             jlabD.pkField = "ID";
@@ -85,11 +94,19 @@ namespace clinic_ivf.objdb
             p.unit = p.unit == null ? "" : p.unit;
             p.result_remark = p.result_remark == null ? "" : p.result_remark;
             p.normal_value = p.normal_value == null ? "" : p.normal_value;
+            p.date_cancel = p.date_cancel == null ? "" : p.date_cancel;
+            p.date_create = p.date_create == null ? "" : p.date_create;
+            p.date_modi = p.date_modi == null ? "" : p.date_modi;
+            p.user_cancel = p.user_cancel == null ? "" : p.user_cancel;
+            p.user_create = p.user_create == null ? "" : p.user_create;
+            p.user_modi = p.user_modi == null ? "" : p.user_modi;
 
             p.status_show_qty = p.status_show_qty == null ? "0" : p.status_show_qty;
             p.status_nurse = p.status_nurse == null ? "0" : p.status_nurse;
             p.status_cashier = p.status_cashier == null ? "0" : p.status_cashier;
             p.status_result = p.status_result == null ? "0" : p.status_result;
+            p.status_amt = p.status_amt == null ? "1" : p.status_amt;
+            p.status_order_group = p.status_order_group == null ? "0" : p.status_order_group;
 
             p.LGID = long.TryParse(p.LGID, out chk) ? chk.ToString() : "0";
             p.QTY = long.TryParse(p.QTY, out chk) ? chk.ToString() : "0";
@@ -99,6 +116,7 @@ namespace clinic_ivf.objdb
             p.Extra = long.TryParse(p.Extra, out chk) ? chk.ToString() : "0";
             p.PID = long.TryParse(p.PID, out chk) ? chk.ToString() : "0";
             p.row1 = long.TryParse(p.row1, out chk) ? chk.ToString() : "0";
+            p.lab_order_id = long.TryParse(p.lab_order_id, out chk) ? chk.ToString() : "0";
 
             p.Price = decimal.TryParse(p.Price, out chk1) ? chk1.ToString() : "0";
             //p.PIDS = decimal.TryParse(p.PIDS, out chk1) ? chk.ToString() : "0";
@@ -148,6 +166,15 @@ namespace clinic_ivf.objdb
                 "," + jlabD.unit + "= '" + p.unit.Replace("'", "''") + "'" +
                 "," + jlabD.result_remark + "= '" + p.result_remark.Replace("'", "''") + "'" +
                 "," + jlabD.normal_value + "= '" + p.normal_value.Replace("'", "''") + "'" +
+                "," + jlabD.date_cancel + "= ''" +
+                "," + jlabD.date_create + "= now()" +
+                "," + jlabD.date_modi + "= ''" +
+                "," + jlabD.user_cancel + "= ''" +
+                "," + jlabD.user_create + "= '" + userId + "'" +
+                "," + jlabD.user_modi + "= ''" +
+                "," + jlabD.status_amt + "= '" + p.status_amt.Replace("'", "''") + "'" +
+                "," + jlabD.status_order_group + "= '" + p.status_order_group.Replace("'", "''") + "'" +
+                "," + jlabD.lab_order_id + "= '" + p.lab_order_id + "'" +
                 "";
             try
             {
@@ -207,7 +234,7 @@ namespace clinic_ivf.objdb
             String sql = "select jlabD.* " +
                 "From " + jlabD.table + " jlabD " +
                 //"Left Join labItem li on jlabD.LID = li.LID " +
-                "Where jlabD." + jlabD.VN + " ='" + pttId + "' and Extra='0' and SubItem is null " +
+                "Where jlabD." + jlabD.VN + " ='" + pttId + "' and Extra='0' and SubItem is null and status_amt = '1' " +
                 "Order By jlabD." + jlabD.LID;
             dt = conn.selectData(conn.conn, sql);
             return dt;
@@ -218,7 +245,7 @@ namespace clinic_ivf.objdb
             String sql = "select jlabD.* " +
                 "From " + jlabD.table + " jlabD " +
                 //"Left Join labItem li on jlabD.LID = li.LID " +
-                "Where jlabD." + jlabD.VN + " ='" + pttId + "' and Extra='1' and SubItem is null " +
+                "Where jlabD." + jlabD.VN + " ='" + pttId + "' and Extra='1' and SubItem is null and status_amt = '1' " +
                 "Order By jlabD." + jlabD.LID;
             dt = conn.selectData(conn.conn, sql);
             return dt;
@@ -229,7 +256,7 @@ namespace clinic_ivf.objdb
             DataTable dt = new DataTable();
             String sql = "select sum(jlabD." + jlabD.Price + ") as Include_Pkg_Price " +
                 "From " + jlabD.table + " jlabD " +
-                "Where jlabD." + jlabD.VN + " ='" + copId + "' and Extra='0' "
+                "Where jlabD." + jlabD.VN + " ='" + copId + "' and Extra='0' and status_amt = '1' "
                 ;
             dt = conn.selectData(conn.conn, sql);
             if (dt.Rows.Count > 0)
@@ -244,7 +271,7 @@ namespace clinic_ivf.objdb
             DataTable dt = new DataTable();
             String sql = "select sum(jlabD." + jlabD.Price + ") as Extra_Pkg_Price " +
                 "From " + jlabD.table + " jlabD " +
-                "Where jlabD." + jlabD.VN + " ='" + copId + "' and Extra='1' "
+                "Where jlabD." + jlabD.VN + " ='" + copId + "' and Extra='1' and status_amt = '1' "
                 ;
             dt = conn.selectData(conn.conn, sql);
             if (dt.Rows.Count > 0)

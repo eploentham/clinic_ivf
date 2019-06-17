@@ -868,7 +868,6 @@ namespace clinic_ivf.gui
                         {
                             grfBillD[i, colNetAmt] = "0.00";
                         }
-                        
                     }
                     
                     grfBillD[i, colGrpName] = row[ic.ivfDB.obildDB.obilld.GroupType].ToString();

@@ -585,7 +585,7 @@ namespace clinic_ivf.objdb
             oJpxd.row1 = row1;
             oJpxdDB.insert(oJpxd, "");
         }
-        public void LabAdd(String lid, String qty, String pid, String pids, String vn, String extra, String sp1v, String sp2v, String sp3v, String sp4v, String sp5v, String sp6v, String sp7v, String row1)
+        public void LabAdd(String lid, String qty, String pid, String pids, String vn, String extra, String sp1v, String sp2v, String sp3v, String sp4v, String sp5v, String sp6v, String sp7v, String row1, String lidordergrp, String status_amt, String status_order_group)
         {
             OldJobLabDetail jlabD = new OldJobLabDetail();
             OldLabItem olab = new OldLabItem();
@@ -616,6 +616,9 @@ namespace clinic_ivf.objdb
             jlabD.QTY = qty.Replace(".00","");
             jlabD.row1 = row1;
             jlabD.status_show_qty = olab.status_show_qty;
+            jlabD.status_amt = status_amt;
+            jlabD.status_order_group = status_order_group;
+            jlabD.lab_order_id = lidordergrp;
             oJlabdDB.insert(jlabD, "");
         }
         public void SpecialAdd(String sid, String qty, String pid, String pids, String vn, String extra, String w1uid, String w2uid, String w3uid, String w4uid, String row1)

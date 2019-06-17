@@ -217,7 +217,7 @@ namespace clinic_ivf.objdb
             DataTable dt = new DataTable();
             String sql = "select sitm.*  " +
                 "From " + sitm.table + " sitm " +
-                "Where and acitve = '1'  ";
+                "Where sitm."+sitm.active+" = '1'  ";
             dt = conn.selectData(conn.conn, sql);
 
             return dt;
@@ -228,7 +228,7 @@ namespace clinic_ivf.objdb
             String sql = "select sitm."+ sitm.SID+","+ sitm.SName+","+ sitm.Price+",bilg.Name " +
                 "From " + sitm.table + " sitm " +
                 "Left Join BillGroup bilg on sitm."+sitm.BillGroupID + "= bilg.ID " +
-                "Where sitm."+sitm.isActive+ "='1'  and acitve = '1' " +
+                "Where sitm."+sitm.isActive+ "='1'  and sitm.active = '1' " +
                 "Order By "+sitm.SName;
             dt = conn.selectData(conn.conn, sql);
 
@@ -259,7 +259,7 @@ namespace clinic_ivf.objdb
             DataTable dt = new DataTable();
             String sql = "select sitm." + sitm.SID + ",sitm." + sitm.SName + ",sitm." + sitm.Price + " " +
                 "From " + sitm.table + " sitm " +
-                "Where isActive = '1'  and acitve = '1' " +
+                "Where isActive = '1'  and sitm.active = '1' " +
                 "Order By sitm." + sitm.SName;
             dt = conn.selectData(conn.conn, sql);
             return dt;

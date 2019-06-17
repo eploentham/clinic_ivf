@@ -123,6 +123,7 @@ namespace clinic_ivf.objdb
             vs.status_nurse = "status_nurse";
             vs.patient_hn_male = "patient_hn_male";
             vs.doctor_id = "doctor_id";
+            vs.patient_hn_2 = "patient_hn_2";
 
             vs.table = "t_visit";
             vs.pkField = "t_visit_id";
@@ -174,6 +175,7 @@ namespace clinic_ivf.objdb
             p.bp = p.bp == null ? "" : p.bp;
             p.pulse = p.pulse == null ? "" : p.pulse;
             p.status_nurse = p.status_nurse == null ? "0" : p.status_nurse;
+            p.patient_hn_2 = p.patient_hn_2 == null ? "" : p.patient_hn_2;
 
             p.ipd_discharge_doctor = p.ipd_discharge_doctor == null ? "" : p.ipd_discharge_doctor;
             p.visit_ipd_reverse_date_time = p.visit_ipd_reverse_date_time == null ? "" : p.visit_ipd_reverse_date_time;
@@ -335,6 +337,7 @@ namespace clinic_ivf.objdb
                     "," + vs.status_nurse + "='" + p.status_nurse + "' " +
                     "," + vs.patient_hn_male + "='" + p.patient_hn_male + "' " +
                     "," + vs.doctor_id + "='" + p.doctor_id + "' " +
+                    "," + vs.patient_hn_2 + "='" + p.patient_hn_2 + "' " +
                     "";
                 re = conn.ExecuteNonQuery(conn.conn, sql);
             }
@@ -360,6 +363,8 @@ namespace clinic_ivf.objdb
                 "," + vs.patient_hn_1 + "='" + p.patient_hn_1 + "' " +
                 "," + vs.visit_notice + "='" + p.visit_notice.Replace("'", "''") + "' " +
                 "," + vs.doctor_id + "='" + p.doctor_id + "' " +
+                "," + vs.patient_hn_1 + "='" + p.patient_hn_1 + "' " +
+                "," + vs.patient_hn_2 + "='" + p.patient_hn_2 + "' " +
                 "Where " + vs.pkField + " ='" + p.t_visit_id + "' ";
             try
             {
@@ -859,6 +864,8 @@ namespace clinic_ivf.objdb
                 vs1.status_nurse = dt.Rows[0][vs.status_nurse].ToString();
                 vs1.patient_hn_male = dt.Rows[0][vs.patient_hn_male].ToString();
                 vs1.doctor_id = dt.Rows[0][vs.doctor_id].ToString();
+                vs1.patient_hn_2 = dt.Rows[0][vs.patient_hn_2].ToString();
+                
             }
             else
             {
@@ -970,6 +977,7 @@ namespace clinic_ivf.objdb
             stf1.status_nurse = "";
             stf1.patient_hn_male = "";
             stf1.doctor_id = "";
+            stf1.patient_hn_2 = "";
             return stf1;
         }
     }
