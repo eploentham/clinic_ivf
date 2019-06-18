@@ -80,7 +80,7 @@ namespace clinic_ivf.gui
         {
             //throw new NotImplementedException();
             Decimal qty = 0;
-            if(Decimal.TryParse(txtQty.Text, out qty))
+            if(!Decimal.TryParse(txtQty.Text, out qty))
             {
                 MessageBox.Show("จำนวนไม่ถูกต้อง หรือน้อยกว่า 0", "");
                 return;

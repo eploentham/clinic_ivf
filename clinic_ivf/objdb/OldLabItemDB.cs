@@ -353,7 +353,7 @@ namespace clinic_ivf.objdb
                 //"," + labI.SP6T + "= '" + p.SP6T + "'" +
                 //"," + labI.SP7N + "= '" + p.SP7N + "'" +
                 //"," + labI.SP7T + "= '" + p.SP7T + "'" +
-                "," + labI.SubItem + "= '" + p.SubItem + "'" +
+                //"," + labI.SubItem + "= '" + p.SubItem + "'" +
                 //"," + labI.WorkerGroup1 + "= '" + p.WorkerGroup1 + "'" +
                 //"," + labI.WorkerGroup2 + "= '" + p.WorkerGroup2 + "'" +
                 //"," + labI.WorkerGroup3 + "= '" + p.WorkerGroup3 + "'" +

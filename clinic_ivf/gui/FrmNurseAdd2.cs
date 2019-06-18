@@ -1292,6 +1292,12 @@ namespace clinic_ivf.gui
 
             }
         }
+
+        private void TabLab_Click(object sender, EventArgs e)
+        {
+
+        }
+
         private void CreateNewDocument()
         {
             this.richTextBox1.Clear();

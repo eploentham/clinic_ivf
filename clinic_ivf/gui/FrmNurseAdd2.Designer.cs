@@ -564,6 +564,9 @@
             this.panel31 = new System.Windows.Forms.Panel();
             this.pnEggSti = new System.Windows.Forms.Panel();
             this.panel32 = new System.Windows.Forms.Panel();
+            this.btnEggsNew = new C1.Win.C1Input.C1Button();
+            this.cboEggStiId = new C1.Win.C1Input.C1ComboBox();
+            this.label86 = new System.Windows.Forms.Label();
             this.txtEggStiDay = new C1.Win.C1Input.C1TextBox();
             this.label85 = new System.Windows.Forms.Label();
             this.cboEggStiDtr = new C1.Win.C1Input.C1ComboBox();
@@ -687,9 +690,6 @@
             this.label92 = new System.Windows.Forms.Label();
             this.label93 = new System.Windows.Forms.Label();
             this.label94 = new System.Windows.Forms.Label();
-            this.cboEggStiId = new C1.Win.C1Input.C1ComboBox();
-            this.label86 = new System.Windows.Forms.Label();
-            this.btnEggsNew = new C1.Win.C1Input.C1Button();
             this.sB.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.theme1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.sC)).BeginInit();
@@ -1034,6 +1034,8 @@
             this.tabEggSti.SuspendLayout();
             this.panel31.SuspendLayout();
             this.panel32.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.btnEggsNew)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cboEggStiId)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtEggStiDay)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cboEggStiDtr)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtAbnormal2)).BeginInit();
@@ -1076,8 +1078,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.cboBsp)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnVoid)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnSave)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.cboEggStiId)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.btnEggsNew)).BeginInit();
             this.SuspendLayout();
             // 
             // sB
@@ -2717,6 +2717,7 @@
             this.tabLab.Size = new System.Drawing.Size(1585, 665);
             this.tabLab.TabIndex = 1;
             this.tabLab.Text = "Order LAB";
+            this.tabLab.Click += new System.EventHandler(this.TabLab_Click);
             // 
             // pnLab
             // 
@@ -9295,6 +9296,51 @@
             this.panel32.TabIndex = 0;
             this.theme1.SetTheme(this.panel32, "(default)");
             // 
+            // btnEggsNew
+            // 
+            this.btnEggsNew.Location = new System.Drawing.Point(387, 2);
+            this.btnEggsNew.Name = "btnEggsNew";
+            this.btnEggsNew.Size = new System.Drawing.Size(56, 23);
+            this.btnEggsNew.TabIndex = 993;
+            this.btnEggsNew.Text = "new";
+            this.theme1.SetTheme(this.btnEggsNew, "(default)");
+            this.btnEggsNew.UseVisualStyleBackColor = true;
+            this.btnEggsNew.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            // 
+            // cboEggStiId
+            // 
+            this.cboEggStiId.AllowSpinLoop = false;
+            this.cboEggStiId.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.cboEggStiId.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
+            this.cboEggStiId.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.cboEggStiId.GapHeight = 0;
+            this.cboEggStiId.ImagePadding = new System.Windows.Forms.Padding(0);
+            this.cboEggStiId.ItemsDisplayMember = "";
+            this.cboEggStiId.ItemsValueMember = "";
+            this.cboEggStiId.Location = new System.Drawing.Point(85, 5);
+            this.cboEggStiId.Name = "cboEggStiId";
+            this.cboEggStiId.Size = new System.Drawing.Size(296, 20);
+            this.cboEggStiId.Style.DropDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.cboEggStiId.Style.DropDownBorderColor = System.Drawing.Color.Gainsboro;
+            this.cboEggStiId.Style.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.cboEggStiId.TabIndex = 992;
+            this.cboEggStiId.Tag = null;
+            this.theme1.SetTheme(this.cboEggStiId, "(default)");
+            this.cboEggStiId.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            // 
+            // label86
+            // 
+            this.label86.AutoSize = true;
+            this.label86.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.label86.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label86.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.label86.Location = new System.Drawing.Point(3, 5);
+            this.label86.Name = "label86";
+            this.label86.Size = new System.Drawing.Size(38, 16);
+            this.label86.TabIndex = 991;
+            this.label86.Text = "เลขที่ :";
+            this.theme1.SetTheme(this.label86, "(default)");
+            // 
             // txtEggStiDay
             // 
             this.txtEggStiDay.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
@@ -10750,51 +10796,6 @@
             this.label94.TabIndex = 545;
             this.theme1.SetTheme(this.label94, "(default)");
             // 
-            // cboEggStiId
-            // 
-            this.cboEggStiId.AllowSpinLoop = false;
-            this.cboEggStiId.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.cboEggStiId.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
-            this.cboEggStiId.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.cboEggStiId.GapHeight = 0;
-            this.cboEggStiId.ImagePadding = new System.Windows.Forms.Padding(0);
-            this.cboEggStiId.ItemsDisplayMember = "";
-            this.cboEggStiId.ItemsValueMember = "";
-            this.cboEggStiId.Location = new System.Drawing.Point(85, 5);
-            this.cboEggStiId.Name = "cboEggStiId";
-            this.cboEggStiId.Size = new System.Drawing.Size(296, 20);
-            this.cboEggStiId.Style.DropDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.cboEggStiId.Style.DropDownBorderColor = System.Drawing.Color.Gainsboro;
-            this.cboEggStiId.Style.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.cboEggStiId.TabIndex = 992;
-            this.cboEggStiId.Tag = null;
-            this.theme1.SetTheme(this.cboEggStiId, "(default)");
-            this.cboEggStiId.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
-            // 
-            // label86
-            // 
-            this.label86.AutoSize = true;
-            this.label86.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.label86.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label86.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.label86.Location = new System.Drawing.Point(3, 5);
-            this.label86.Name = "label86";
-            this.label86.Size = new System.Drawing.Size(38, 16);
-            this.label86.TabIndex = 991;
-            this.label86.Text = "เลขที่ :";
-            this.theme1.SetTheme(this.label86, "(default)");
-            // 
-            // btnEggsNew
-            // 
-            this.btnEggsNew.Location = new System.Drawing.Point(387, 2);
-            this.btnEggsNew.Name = "btnEggsNew";
-            this.btnEggsNew.Size = new System.Drawing.Size(56, 23);
-            this.btnEggsNew.TabIndex = 993;
-            this.btnEggsNew.Text = "new";
-            this.theme1.SetTheme(this.btnEggsNew, "(default)");
-            this.btnEggsNew.UseVisualStyleBackColor = true;
-            this.btnEggsNew.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
-            // 
             // FrmNurseAdd2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -11207,6 +11208,8 @@
             this.panel31.ResumeLayout(false);
             this.panel32.ResumeLayout(false);
             this.panel32.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.btnEggsNew)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cboEggStiId)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtEggStiDay)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cboEggStiDtr)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtAbnormal2)).EndInit();
@@ -11250,8 +11253,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.cboBsp)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnVoid)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnSave)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.cboEggStiId)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.btnEggsNew)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
