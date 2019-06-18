@@ -35,6 +35,8 @@ namespace clinic_ivf.object1
         public String receipt_no { get; set; }
         public String receipt_cover_no { get; set; }
         public String bill_id { get; set; }
+        public String cash { get; set; }
+        public String credit { get; set; }
 
     }
 }

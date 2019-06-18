@@ -687,7 +687,7 @@ namespace clinic_ivf.objdb
             obilhDB.delete(vn);
             obildDB.delete(vn);
         }
-        public void getBill(String vn, String userId)
+        public String getBill(String vn, String userId)
         {
             /* Step 1.
              * $this->db->query('delete from DebtorHeader Where VN="'.$VN.'"');
@@ -817,8 +817,8 @@ namespace clinic_ivf.objdb
             obillh.SepCredit = "";
             obillh.ExtBillNo = "";
             obillh.IntLock = "";
-            String re1 = "";
-            re1 = obilhDB.insertBillHeader(obillh, userId);
+            String billid = "";
+            billid = obilhDB.insertBillHeader(obillh, userId);
             //sql = "Select * from PackageSold Where PID='"+ ovs.PID+ "' and Status<>3'";
             //dt = opkgsDB.selectByVN1(vn);
             dt = opkgsDB.selectByPID(ovs.PID);    // ต้องดึงตาม HN เพราะ ถ้ามีงวดการชำระ 
@@ -925,7 +925,7 @@ namespace clinic_ivf.objdb
                         obilld.status = "package";
                         obilld.price1 = pay.ToString();
                         obilld.qty = "1";
-                        obilld.bill_id = re1;
+                        obilld.bill_id = billid;
                         obildDB.insertBillDetail(obilld, "");
                     }
                 }
@@ -967,7 +967,7 @@ namespace clinic_ivf.objdb
                         obilld.pcksid = "0";
                         obilld.price1 = row["Price"].ToString();
                         obilld.qty = row["QTY"].ToString();
-                        obilld.bill_id = re1;
+                        obilld.bill_id = billid;
                         obildDB.insertBillDetail(obilld, "");
                     }
                 }
@@ -995,7 +995,7 @@ namespace clinic_ivf.objdb
                         obilld.pcksid = "0";
                         obilld.price1 = row["Price"].ToString();
                         obilld.qty = row["QTY"].ToString();
-                        obilld.bill_id = re1;
+                        obilld.bill_id = billid;
                         obildDB.insertBillDetail(obilld, "");
                     }
                 }
@@ -1024,7 +1024,7 @@ namespace clinic_ivf.objdb
                         obilld.pcksid = "0";
                         obilld.price1 = row["Price"].ToString();
                         obilld.qty = row["QTY"].ToString();
-                        obilld.bill_id = re1;
+                        obilld.bill_id = billid;
                         obildDB.insertBillDetail(obilld, "");
                     }
                 }
@@ -1069,7 +1069,7 @@ namespace clinic_ivf.objdb
                         obilld.pcksid = "0";
                         obilld.price1 = row["Price"].ToString();
                         obilld.qty = row["QTY"].ToString();
-                        obilld.bill_id = re1;
+                        obilld.bill_id = billid;
                         obildDB.insertBillDetail(obilld, "");
                     }
                 }
@@ -1097,7 +1097,7 @@ namespace clinic_ivf.objdb
                         obilld.pcksid = "0";
                         obilld.price1 = row["Price"].ToString();
                         obilld.qty = row["QTY"].ToString();
-                        obilld.bill_id = re1;
+                        obilld.bill_id = billid;
                         obildDB.insertBillDetail(obilld, "");
                     }
                 }
@@ -1126,13 +1126,15 @@ namespace clinic_ivf.objdb
                         obilld.pcksid = "0";
                         obilld.price1 = row["Price"].ToString();
                         obilld.qty = row["QTY"].ToString();
-                        obilld.bill_id = re1;
+                        obilld.bill_id = billid;
                         obildDB.insertBillDetail(obilld, "");
                     }
                 }
             }
-            sql = "update BillHeader Set Total=Extra_Pkg_Price Where VN='"+vn+"'";
+            //sql = "update BillHeader Set Total=Extra_Pkg_Price Where VN='"+vn+"'";
+            sql = "update BillHeader Set Total=Extra_Pkg_Price Where bill_id ='" + billid + "'";
             re = conn.ExecuteNonQuery(conn.conn, sql);
+            return billid;
         }
         public DataTable printBill(String vn,ref Decimal amt1,ref String payby)
         {

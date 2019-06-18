@@ -56,7 +56,8 @@ namespace clinic_ivf.objdb
             obillh.user_cancel = "user_cancel";
             obillh.user_create = "user_create";
             obillh.user_modi = "user_modi";
-            
+            obillh.cash = "cash";
+            obillh.credit = "credit";
 
             obillh.table = "BillHeader";
             obillh.pkField = "VN";
@@ -191,6 +192,8 @@ namespace clinic_ivf.objdb
             p.Discount = decimal.TryParse(p.Discount, out chk1) ? chk.ToString() : "0";
             p.SepCash = decimal.TryParse(p.SepCash, out chk1) ? chk.ToString() : "0";
             p.SepCredit = decimal.TryParse(p.SepCredit, out chk1) ? chk.ToString() : "0";
+            p.cash = decimal.TryParse(p.cash, out chk1) ? chk.ToString() : "0";
+            p.credit = decimal.TryParse(p.credit, out chk1) ? chk.ToString() : "0";
         }
         public String insert(OldBillheader p, String userId)
         {
@@ -344,14 +347,64 @@ namespace clinic_ivf.objdb
             }
             return re;
         }
-        public String updateReceiptNo(String vn, String billno)
+        public String updateBillNoByBillId(String billid, String billno)
         {
             String re = "", sql = "";
 
             sql = "Update " + obillh.table + " set " +
-                "" + obillh.receipt_no + "='" + billno + "' " +
+                "" + obillh.BillNo + "='" + billno + "' " +
                 //"," + opkgs.Payment1 + "='" + pay + "' " +
+                "Where " + obillh.bill_id + "='" + billid + "' ";
+            try
+            {
+                re = conn.ExecuteNonQuery(conn.conn, sql);
+            }
+            catch (Exception ex)
+            {
+                sql = ex.Message + " " + ex.InnerException;
+            }
+            return re;
+        }
+        public String updateReceiptNo(String vn, String billno, String cash, String credit, String creditnumber, String cashid, String creditid)
+        {
+            String re = "", sql = "";
+            long chk = 0;
+            cashid = long.TryParse(cashid, out chk) ? chk.ToString() : "0";
+            creditid = long.TryParse(creditid, out chk) ? chk.ToString() : "0";
+
+            sql = "Update " + obillh.table + " set " +
+                "" + obillh.receipt_no + "='" + billno + "' " +
+                "," + obillh.cash + "='" + cash + "' " +
+                "," + obillh.credit + "='" + credit + "' " +
+                "," + obillh.CreditCardNumber + "='" + creditnumber + "' " +
+                "," + obillh.CashID + "='" + cashid + "' " +
+                "," + obillh.CreditCardID + "='" + creditid + "' " +
                 "Where " + obillh.VN + "='" + vn + "' ";
+            try
+            {
+                re = conn.ExecuteNonQuery(conn.conn, sql);
+            }
+            catch (Exception ex)
+            {
+                sql = ex.Message + " " + ex.InnerException;
+            }
+            return re;
+        }
+        public String updateReceiptNoByBillId(String billid, String billno, String cash, String credit, String creditnumber, String cashid, String creditid)
+        {
+            String re = "", sql = "";
+            long chk = 0;
+            cashid = long.TryParse(cashid, out chk) ? chk.ToString() : "0";
+            creditid = long.TryParse(creditid, out chk) ? chk.ToString() : "0";
+
+            sql = "Update " + obillh.table + " set " +
+                "" + obillh.receipt_no + "='" + billno + "' " +
+                "," + obillh.cash + "='" + cash + "' " +
+                "," + obillh.credit + "='" + credit + "' " +
+                "," + obillh.CreditCardNumber + "='" + creditnumber + "' " +
+                "," + obillh.CashID + "='" + cashid + "' " +
+                "," + obillh.CreditCardID + "='" + creditid + "' " +
+                "Where " + obillh.bill_id + "='" + billid + "' ";
             try
             {
                 re = conn.ExecuteNonQuery(conn.conn, sql);

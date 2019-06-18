@@ -486,7 +486,7 @@ namespace clinic_ivf.gui
             try
             {
                 txt = "000" + vs.queue_id;
-                txt = txt.Substring(0, txt.Length - 3);
+                txt = txt.Substring(txt.Length - 3);
             }
             catch(Exception ex)
             {
@@ -506,8 +506,8 @@ namespace clinic_ivf.gui
 
             //Report = VP1
             //Report.PrintToPrinter(1, False, 0, 0)
-            if (vs != null)
-                dt.Rows[0]["queue"] = vs.queue_id;
+            //if (vs != null)
+            //    dt.Rows[0]["queue"] = vs.queue_id;
             //dt.Rows[0]["form_day1_id"] = "";
 
             FrmReport frm = new FrmReport(ic);
@@ -1576,7 +1576,7 @@ namespace clinic_ivf.gui
                 DataRow row11 = dt.NewRow();
                 row11["hn"] = ptt.patient_hn;
                 row11["name"] = ptt.Name;
-                row11["age"] = "Age "+ptt.AgeString();
+                row11["age"] = "Age "+ptt.AgeString()+" ["+ic.datetoShow(ptt.patient_birthday)+"]";
                 row11["vn"] = vs.visit_vn;
                 dt.Rows.Add(row11);
                 FrmReport frm = new FrmReport(ic);

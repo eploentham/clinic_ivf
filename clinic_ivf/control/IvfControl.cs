@@ -913,10 +913,11 @@ namespace clinic_ivf.control
             //bmp.Dispose();
             return bmp;
         }
-        public void getBillVN(String vn, String userId)
+        public String getBillVN(String vn, String userId)
         {
             ivfDB.VoidBill(vn, userId);
-            ivfDB.getBill(vn, userId);
+            String billid = ivfDB.getBill(vn, userId);
+            return billid;
         }
         public string NumberToText(long number)
         {

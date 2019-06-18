@@ -91,6 +91,10 @@ namespace clinic_ivf.objdb
         {
             String re = "";
             re = id;
+            if (loAgn.Count <= 0)
+            {
+                getlAgent();
+            }
             foreach (OldAgent sex in loAgn)
             {
                 if (sex.agentid.Equals(id))

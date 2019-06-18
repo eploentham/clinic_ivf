@@ -497,7 +497,7 @@ namespace clinic_ivf.gui
             lFormA.embryo_tranfer_fresh_cycle = chkEmbryoTranfer.Checked ? chkEmbryoTranferFresh.Checked ? "1" : "2" : "0";
             lFormA.embryo_tranfer_frozen_cycle = "";
             lFormA.status_embryo_freezing = chkEmbryoFreezing.Checked ? "1" : "0";
-            lFormA.embryo_freezing_day = chkEmbryoFreezing.Checked ? chkEmbryoFreezingDay1.Checked ? "1" : chkEmbryoFreezingDay3.Checked ? "3" : chkEmbryoFreezingDay2.Checked ? "2" : "5" : "0";
+            lFormA.embryo_freezing_day = chkEmbryoFreezing.Checked ? chkEmbryoFreezingDay1.Checked ? "1" : chkEmbryoFreezingDay3.Checked ? "3" : chkEmbryoFreezingDay2.Checked ? "2" : chkEmbryoFreezingDay5.Checked ? "5" : "0" : "0";
             lFormA.embryo_tranfer_date =  ic.datetoDB(txtEmbryoTranferDate.Text);
             lFormA.status_et_no_to_tranfer = chkETNotoTranfer.Checked ? "1" : "0";
             lFormA.status_fet = chkFET.Checked ? "1" : "0";
@@ -561,7 +561,7 @@ namespace clinic_ivf.gui
             lFormA.staff_req_id = txtStfConfirmID.Text;
             lFormA.status_sperm_iui = chkSpermIUI.Checked ? "1" : "0";
             lFormA.status_sperm_pesa = chkSememPESA.Checked ? "1" : "0";
-            //lFormA.status_sperm_analysis = chkSememPESA.Checked ? "1" : "0";
+            //lFormA.embryo_freezing_day = chkSememPESA.Checked ? "1" : "0";
         }
         private void BtnSave_Click(object sender, EventArgs e)
         {

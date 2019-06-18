@@ -25,7 +25,7 @@ namespace clinic_ivf.gui
         Color bg, fc;
         Font ff, ffB;
 
-        int colID = 1, colVNshow = 2, colVN = 12, colPttHn = 3, colPttName = 4, colVsDate = 5, colVsTime = 6, colVsEtime = 7, colVsAgent=8, colStatus = 9, colPttId = 10, colStatusNurse = 11, colStatusCashier = 12;
+        int colID = 1, colVNshow = 2, colVN = 12, colPttHn = 3, colPttName = 4, colVsDate = 5, colVsTime = 6, colVsEtime = 7, colVsAgent=8, colStatus = 9, colPttId = 10, colStatusNurse = 11, colStatusCashier = 12, colBillId=13;
 
         C1FlexGrid grfQue, grfFinish, grfSearch;
         C1SuperTooltip stt;
@@ -163,7 +163,7 @@ namespace clinic_ivf.gui
             grfSearch.ContextMenu = menuGw;
 
             grfSearch.Rows.Count = dt.Rows.Count + 1;
-            grfSearch.Cols.Count = 13;
+            grfSearch.Cols.Count = 14;
             C1TextBox txt = new C1TextBox();
             //C1ComboBox cboproce = new C1ComboBox();
             //ic.ivfDB.itmDB.setCboItem(cboproce);
@@ -222,7 +222,7 @@ namespace clinic_ivf.gui
                 grfSearch[i, colVsEtime] = row["VEndTime"].ToString();
                 grfSearch[i, colStatus] = row["VName"].ToString();
                 grfSearch[i, colPttId] = row["PID"].ToString();
-                //grfSearch[i, colVsAgent] = row["agent"].ToString();
+                grfSearch[i, colBillId] = "";
                 if (!row[ic.ivfDB.ovsDB.vsold.form_a_id].ToString().Equals("0"))
                 {
                     //CellNote note = new CellNote("ส่ง Lab Request Foam A");
@@ -237,6 +237,7 @@ namespace clinic_ivf.gui
             grfSearch.Cols[colID].Visible = false;
             grfSearch.Cols[colVN].Visible = false;
             grfSearch.Cols[colPttId].Visible = false;
+            grfSearch.Cols[colBillId].Visible = false;
             grfSearch.Cols[colStatusNurse].Visible = false;
             grfSearch.Cols[colStatusCashier].Visible = false;
             grfSearch.Cols[colVNshow].AllowEditing = false;
@@ -315,7 +316,7 @@ namespace clinic_ivf.gui
             grfFinish.ContextMenu = menuGw;
 
             grfFinish.Rows.Count = dt.Rows.Count + 1;
-            grfFinish.Cols.Count = 13;
+            grfFinish.Cols.Count = 14;
             C1TextBox txt = new C1TextBox();
             //C1ComboBox cboproce = new C1ComboBox();
             //ic.ivfDB.itmDB.setCboItem(cboproce);
@@ -372,6 +373,7 @@ namespace clinic_ivf.gui
                 grfFinish[i, colVsEtime] = row["VEndTime"].ToString();
                 grfFinish[i, colStatus] = row["VName"].ToString();
                 grfFinish[i, colPttId] = row["PID"].ToString();
+                grfFinish[i, colBillId] = "";
                 if (!row[ic.ivfDB.ovsDB.vsold.form_a_id].ToString().Equals("0"))
                 {
                     CellNote note = new CellNote("ส่ง Lab Request Foam A");
@@ -386,6 +388,7 @@ namespace clinic_ivf.gui
             grfFinish.Cols[colID].Visible = false;
             grfFinish.Cols[colVN].Visible = false;
             grfFinish.Cols[colPttId].Visible = false;
+            grfFinish.Cols[colBillId].Visible = false;
             grfFinish.Cols[colStatusNurse].Visible = false;
             grfFinish.Cols[colStatusCashier].Visible = false;
             grfFinish.Cols[colVNshow].AllowEditing = false;
@@ -444,7 +447,7 @@ namespace clinic_ivf.gui
             name = grfSearch[grfSearch.Row, colPttName] != null ? grfSearch[grfSearch.Row, colPttName].ToString() : "";
             billid = grfSearch[grfSearch.Row, colPttName] != null ? grfSearch[grfSearch.Row, colPttName].ToString() : "";
 
-            openBillNew(id, name, "noedit");
+            openBillNew(id, name, "noedit", billid);
         }
         private void ContextMenu_edit_billfinish(object sender, System.EventArgs e)
         {
@@ -454,7 +457,7 @@ namespace clinic_ivf.gui
             name = grfFinish[grfFinish.Row, colPttName] != null ? grfFinish[grfFinish.Row, colPttName].ToString() : "";
             billid = grfFinish[grfFinish.Row, colPttName] != null ? grfFinish[grfFinish.Row, colPttName].ToString() : "";
 
-            openBillNew(id, name, "noedit");
+            openBillNew(id, name, "noedit", billid);
         }
         private void ContextMenu_edit_bill(object sender, System.EventArgs e)
         {
@@ -463,8 +466,8 @@ namespace clinic_ivf.gui
             id = grfQue[grfQue.Row, colID] != null ? grfQue[grfQue.Row, colID].ToString() : "";
             vn = grfQue[grfQue.Row, colVN] != null ? grfQue[grfQue.Row, colVN].ToString() : "";
             name = grfQue[grfQue.Row, colPttName] != null ? grfQue[grfQue.Row, colPttName].ToString() : "";
-            ic.getBillVN(id, ic.userId);
-            openBillNew(id, name,"edit");
+            String billid = ic.getBillVN(id, ic.userId);
+            openBillNew(id, name,"edit", billid);
         }
         public void setGrfQuePublic()
         {
@@ -501,7 +504,7 @@ namespace clinic_ivf.gui
             //grfQue.ContextMenu = menuGw;
 
             grfQue.Rows.Count = dt.Rows.Count + 1;
-            grfQue.Cols.Count = 13;
+            grfQue.Cols.Count = 14;
             C1TextBox txt = new C1TextBox();
             //C1ComboBox cboproce = new C1ComboBox();
             //ic.ivfDB.itmDB.setCboItem(cboproce);
@@ -562,6 +565,7 @@ namespace clinic_ivf.gui
                 grfQue[i, colStatus] = row["VName"].ToString();
                 grfQue[i, colPttId] = row["PID"].ToString();
                 grfQue[i, colVsAgent] = row["agent"].ToString();
+                grfQue[i, colBillId] = "";
                 //grfQue[i, colStatusNurse] = row["status_nurse"] != null ? row["status_nurse"].ToString() : "";
                 //grfQue[i, colStatusCashier] = row["status_cashier"] != null ? row["status_cashier"].ToString() : "";
                 //if (!row[ic.ivfDB.ovsDB.vsold.form_a_id].ToString().Equals("0"))
@@ -577,6 +581,7 @@ namespace clinic_ivf.gui
             CellNoteManager mgr = new CellNoteManager(grfQue);
             grfQue.Cols[colID].Visible = false;
             grfQue.Cols[colVN].Visible = false;
+            grfQue.Cols[colBillId].Visible = false;
             grfQue.Cols[colVNshow].AllowEditing = false;
             grfQue.Cols[colPttHn].AllowEditing = false;
             grfQue.Cols[colPttName].AllowEditing = false;
@@ -587,9 +592,9 @@ namespace clinic_ivf.gui
             //theme1.SetTheme(grfQue, ic.theme);
 
         }
-        private void openBillNew(String vnold, String name, String flag)
+        private void openBillNew(String vnold, String name, String flag, String billid)
         {
-            FrmCashierAdd frm = new FrmCashierAdd(ic, menu, flag, vnold, flag);
+            FrmCashierAdd frm = new FrmCashierAdd(ic, menu, billid, vnold, flag);
             frm.FormBorderStyle = FormBorderStyle.None;
             C1DockingTabPage tab = menu.AddNewTab(frm, name);
             frm.tab = tab;

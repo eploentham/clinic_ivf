@@ -24,7 +24,7 @@ namespace clinic_ivf.gui
         MainMenu menu;
         public C1DockingTabPage tab;
         public FrmCashierView frmCashView;
-        String billhid = "", pttid = "", vsid = "", vsidOld = "";
+        String billid = "", pttid = "", vsid = "", vsidOld = "";
         OldBillheader obilh;
         VisitOld ovs;
         PatientOld optt;
@@ -50,6 +50,7 @@ namespace clinic_ivf.gui
             menu = m;
             this.ic = ic;
             this.vnold = vnold;
+            this.billid = billid;
             initConfig();
         }
         private void initConfig()
@@ -132,14 +133,18 @@ namespace clinic_ivf.gui
             {
                 billNo = ic.ivfDB.copDB.genReceiptDoc(ref year, ref month, ref day);
                 billExtNo = ic.ivfDB.copDB.genReceiptExtDoc();
-                ic.ivfDB.obilhDB.updateReceiptNo(txtVn.Text, billNo);
+                String cashid = cboAccCash.SelectedItem == null ? "" : ((ComboBoxItem)cboAccCash.SelectedItem).Value;
+                String creditid = cboAccCredit.SelectedItem == null ? "" : ((ComboBoxItem)cboAccCredit.SelectedItem).Value;
+                //ic.ivfDB.obilhDB.updateReceiptNo(txtVn.Text, billNo, txtTotalCash.Text.Replace(",",""), txtTotalCredit.Text.Replace(",", ""), txtCreditCardNumber.Text, cashid, creditid);
+                ic.ivfDB.obilhDB.updateReceiptNoByBillId(txtBillId.Text, billNo, txtTotalCash.Text.Replace(",", ""), txtTotalCredit.Text.Replace(",", ""), txtCreditCardNumber.Text, cashid, creditid);
                 //OldBillheader obill = new OldBillheader();
                 String billno2 = ic.ivfDB.obilhDB.selectBillNoByVN(txtVn.Text);
                 if (billno2.Equals(""))
                 {
                     String billNo1 = ic.ivfDB.copDB.genBillingDoc(ref year, ref month, ref day);
                     String billExtNo1 = ic.ivfDB.copDB.genBillingExtDoc();
-                    ic.ivfDB.obilhDB.updateBillNo(txtVn.Text, billNo1);
+                    //ic.ivfDB.obilhDB.updateBillNo(txtVn.Text, billNo1);
+                    ic.ivfDB.obilhDB.updateBillNoByBillId(txtBillId.Text, billNo1);
                 }
 
                 //dtpgk = ic.ivfDB.opkgsDB.selectByVN1(txtVn.Text);
@@ -705,6 +710,7 @@ namespace clinic_ivf.gui
 
         private void setControl()
         {
+            txtBillId.Value = billid;
             ovs = ic.ivfDB.ovsDB.selectByPk1(vnold);
             optt = ic.ivfDB.pttOldDB.selectByPk1(ovs.PID);
             ptt = ic.ivfDB.pttDB.selectByHn(ovs.PIDS);
