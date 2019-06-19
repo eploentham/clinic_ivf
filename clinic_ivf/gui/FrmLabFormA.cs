@@ -424,8 +424,8 @@ namespace clinic_ivf.gui
             if (dt.Rows.Count <= 0) return;
             date1 = ic.datetoShow(dt.Rows[0][ic.ivfDB.lFormaDB.lformA.opu_date].ToString());
             dt.Rows[0][ic.ivfDB.lFormaDB.lformA.opu_date] = date1.Replace("-","/");
-            date1 = ic.datetoShow(dt.Rows[0][ic.ivfDB.lFormaDB.lformA.embryo_freezing_day].ToString());
-            dt.Rows[0][ic.ivfDB.lFormaDB.lformA.embryo_freezing_day] = date1.Replace("-", "/");
+            //date1 = ic.datetoShow(dt.Rows[0][ic.ivfDB.lFormaDB.lformA.embryo_].ToString());
+            //dt.Rows[0][ic.ivfDB.lFormaDB.lformA.embryo_freezing_day] = date1.Replace("-", "/");
             date1 = ic.datetoShow(dt.Rows[0][ic.ivfDB.lFormaDB.lformA.embryo_tranfer_date].ToString());
             dt.Rows[0][ic.ivfDB.lFormaDB.lformA.embryo_tranfer_date] = date1.Replace("-", "/");
             date1 = ic.datetoShow(dt.Rows[0][ic.ivfDB.lFormaDB.lformA.fet1_no_date_freezing].ToString());
@@ -454,6 +454,8 @@ namespace clinic_ivf.gui
             }
             dt.Columns.Add("note1", typeof(String));
             dt.Rows[0]["note1"] = txt1;
+            dt.Columns.Add("embryo_freezing_day1", typeof(String));
+            dt.Rows[0]["embryo_freezing_day1"] = dt.Rows[0]["embryo_freezing_day"].ToString();
             frm.setLabFormAReport(dt);
             frm.ShowDialog(this);
         }
