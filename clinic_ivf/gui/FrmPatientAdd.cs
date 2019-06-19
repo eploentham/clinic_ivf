@@ -1576,7 +1576,7 @@ namespace clinic_ivf.gui
                 DataRow row11 = dt.NewRow();
                 row11["hn"] = ptt.patient_hn;
                 row11["name"] = ptt.Name;
-                row11["age"] = "Age "+ptt.AgeString()+" ["+ic.datetoShow(ptt.patient_birthday)+"]";
+                row11["age"] = "Age "+ptt.AgeStringShort()+" ["+ic.datetoShow(ptt.patient_birthday)+"]";
                 row11["vn"] = vs.visit_vn;
                 dt.Rows.Add(row11);
                 FrmReport frm = new FrmReport(ic);
