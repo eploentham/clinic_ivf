@@ -30,7 +30,7 @@
         {
             this.theme1 = new C1.Win.C1Themes.C1ThemeController();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.c1SplitButton1 = new C1.Win.C1Input.C1SplitButton();
+            this.btnPrint = new C1.Win.C1Input.C1SplitButton();
             this.btnPrnPtt = new C1.Win.C1Input.DropDownItem();
             this.btnPrnDonor = new C1.Win.C1Input.DropDownItem();
             this.label4 = new System.Windows.Forms.Label();
@@ -55,7 +55,7 @@
             this.sB1 = new System.Windows.Forms.ToolStripStatusLabel();
             ((System.ComponentModel.ISupportInitialize)(this.theme1)).BeginInit();
             this.groupBox1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.c1SplitButton1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnPrint)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtSearch)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cboDoctor)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtHn)).BeginInit();
@@ -82,7 +82,7 @@
             // groupBox1
             // 
             this.groupBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.groupBox1.Controls.Add(this.c1SplitButton1);
+            this.groupBox1.Controls.Add(this.btnPrint);
             this.groupBox1.Controls.Add(this.label4);
             this.groupBox1.Controls.Add(this.txtSearch);
             this.groupBox1.Controls.Add(this.label6);
@@ -104,20 +104,20 @@
             this.groupBox1.Text = "Search";
             this.theme1.SetTheme(this.groupBox1, "(default)");
             // 
-            // c1SplitButton1
+            // btnPrint
             // 
-            this.c1SplitButton1.Image = global::clinic_ivf.Properties.Resources.print;
-            this.c1SplitButton1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.c1SplitButton1.Items.Add(this.btnPrnPtt);
-            this.c1SplitButton1.Items.Add(this.btnPrnDonor);
-            this.c1SplitButton1.Location = new System.Drawing.Point(872, 14);
-            this.c1SplitButton1.Name = "c1SplitButton1";
-            this.c1SplitButton1.Size = new System.Drawing.Size(95, 32);
-            this.c1SplitButton1.TabIndex = 593;
-            this.c1SplitButton1.Text = "Print";
-            this.theme1.SetTheme(this.c1SplitButton1, "(default)");
-            this.c1SplitButton1.UseVisualStyleBackColor = true;
-            this.c1SplitButton1.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            this.btnPrint.Image = global::clinic_ivf.Properties.Resources.print;
+            this.btnPrint.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnPrint.Items.Add(this.btnPrnPtt);
+            this.btnPrint.Items.Add(this.btnPrnDonor);
+            this.btnPrint.Location = new System.Drawing.Point(872, 14);
+            this.btnPrint.Name = "btnPrint";
+            this.btnPrint.Size = new System.Drawing.Size(95, 32);
+            this.btnPrint.TabIndex = 593;
+            this.btnPrint.Text = "Print";
+            this.theme1.SetTheme(this.btnPrint, "(default)");
+            this.btnPrint.UseVisualStyleBackColor = true;
+            this.btnPrint.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
             // 
             // btnPrnPtt
             // 
@@ -474,7 +474,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.theme1)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.c1SplitButton1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnPrint)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtSearch)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cboDoctor)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtHn)).EndInit();
@@ -522,7 +522,7 @@
         private C1.Win.C1Command.C1DockingTab tC;
         private C1.Win.C1Command.C1DockingTabPage tabAll;
         private System.Windows.Forms.Panel pnAll;
-        private C1.Win.C1Input.C1SplitButton c1SplitButton1;
+        private C1.Win.C1Input.C1SplitButton btnPrint;
         private C1.Win.C1Input.DropDownItem btnPrnPtt;
         private C1.Win.C1Input.DropDownItem btnPrnDonor;
     }

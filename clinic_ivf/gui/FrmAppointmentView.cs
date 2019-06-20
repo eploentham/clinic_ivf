@@ -19,6 +19,9 @@ using System.Windows.Forms;
 
 namespace clinic_ivf.gui
 {
+    /*
+     * 62-06-20     003     หน้าจอทำนัด มีหลายหน้าจอ และมีการเรียกใช้ หลายที่
+     */
     public partial class FrmAppointmentView : Form
     {
         IvfControl ic;
@@ -74,8 +77,9 @@ namespace clinic_ivf.gui
             txtSearch.KeyUp += TxtSearch_KeyUp;
             btnNew.Click += BtnNew_Click;
             tC.DoubleClick += TC_DoubleClick;
-            btnPrnDonor.Click += BtnPrint_Click;
+            btnPrnDonor.Click += BtnPrnDonor_Click;
             btnPrnPtt.Click += BtnPrnPtt_Click;
+            btnPrint.Click += BtnPrint_Click;
             //txtDateStart.ValueChanged += TxtDateStart_ValueChanged;
             //txtDateStart.
 
@@ -84,6 +88,12 @@ namespace clinic_ivf.gui
             initGrfPtt();
             //setGrfPtt();
             setGrf();
+        }
+
+        private void BtnPrint_Click(object sender, EventArgs e)
+        {
+            //throw new NotImplementedException();
+
         }
 
         private void BtnPrnPtt_Click(object sender, EventArgs e)
@@ -109,7 +119,7 @@ namespace clinic_ivf.gui
             frm.ShowDialog(this);
         }
 
-        private void BtnPrint_Click(object sender, EventArgs e)
+        private void BtnPrnDonor_Click(object sender, EventArgs e)
         {
             //throw new NotImplementedException();
             FrmReport frm = new FrmReport(ic);
@@ -1240,7 +1250,8 @@ namespace clinic_ivf.gui
             id = grfPtt[grfPtt.Row, colID] != null ? grfPtt[grfPtt.Row, colID].ToString() : "";
             pttId = grfPtt[grfPtt.Row, colpttId] != null ? grfPtt[grfPtt.Row, colpttId].ToString() : "";
             name = grfPtt[grfPtt.Row, colVsPttName] != null ? grfPtt[grfPtt.Row, colVsPttName].ToString() : "";
-            FrmAppointmentDonorAdd frm = new FrmAppointmentDonorAdd(ic, id, pttId, "");
+            //FrmAppointmentDonorAdd frm = new FrmAppointmentDonorAdd(ic, id, pttId, "");       //  -3
+            FrmAppointmentAdd frm = new FrmAppointmentAdd(ic, id, pttId, "","");       //  +3
             frm.ShowDialog(this);
             setGrf();
             //if (MessageBox.Show("ต้องการ แก้ไข Patient  \n  hn number " + chk + " \n name " + name, "", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == DialogResult.OK)

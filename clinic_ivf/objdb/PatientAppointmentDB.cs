@@ -413,6 +413,18 @@ namespace clinic_ivf.objdb
             dt = conn.selectData(conn.conn, sql);
             return dt;
         }
+        public DataTable selectByVisitId1(String pttid, String vsid)
+        {
+            DataTable dt = new DataTable();
+            String sql = "select pApm.*,  bsp.service_point_description,dtr.Name as dtr_name " +
+                "From " + pApm.table + " pApm " +
+                "Left Join b_service_point bsp on bsp.b_service_point_id = pApm.patient_appointment_servicepoint " +
+                "Left Join Doctor  dtr on pApm.patient_appointment_doctor = dtr.ID " +
+                "Where pApm." + pApm.t_visit_id + " ='" + vsid + "' and pApm." + pApm.active + "='1' and pApm."+pApm.t_patient_id+"='"+pttid+"' " +
+                "Order By " + pApm.patient_appointment_date + "," + pApm.patient_appointment_time;
+            dt = conn.selectData(conn.conn, sql);
+            return dt;
+        }
         public DataTable selectByDayDtrId(MySqlConnection con, String date1, String date2, String dtrid)
         {
             String dateStart = "", dateEnd = "";

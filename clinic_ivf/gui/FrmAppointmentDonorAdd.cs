@@ -511,7 +511,7 @@ namespace clinic_ivf.gui
             grfpApmVisit.Clear();
             DataTable dt = new DataTable();
 
-            dt = ic.ivfDB.pApmDB.selectByVisitId(vsId);
+            dt = ic.ivfDB.pApmDB.selectByVisitId1(pttId, vsId);
 
             //grfExpn.Rows.Count = dt.Rows.Count + 1;
             grfpApmVisit.Rows.Count = 1;
