@@ -130,7 +130,7 @@
     <value>473, 17</value>
   </metadata>
   <metadata name="c1ThemeController1.ApplicationTheme" xml:space="preserve">
-    <value>Windows8Gray</value>
+    <value>ExpressionDark</value>
   </metadata>
   <metadata name="c1ThemeController1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>473, 17</value>
@@ -168,4 +168,13 @@
   <data name="c1FlexReport2.ReportDefinition" xml:space="preserve">
     <value>&lt;Report ref="1"&gt;&lt;Name&gt;c1FlexReport2&lt;/Name&gt;&lt;DataSourceName&gt;Main&lt;/DataSourceName&gt;&lt;Layout /&gt;&lt;DataSources&gt;&lt;DataSource&gt;&lt;Name&gt;Main&lt;/Name&gt;&lt;/DataSource&gt;&lt;/DataSources&gt;&lt;Sections&gt;&lt;Section&gt;&lt;Name&gt;Detail&lt;/Name&gt;&lt;SubSections&gt;&lt;SubSection /&gt;&lt;/SubSections&gt;&lt;Type&gt;Detail&lt;/Type&gt;&lt;Visible&gt;false&lt;/Visible&gt;&lt;/Section&gt;&lt;Section&gt;&lt;Name&gt;Header&lt;/Name&gt;&lt;SubSections&gt;&lt;SubSection /&gt;&lt;/SubSections&gt;&lt;Type&gt;Header&lt;/Type&gt;&lt;Visible&gt;false&lt;/Visible&gt;&lt;/Section&gt;&lt;Section&gt;&lt;Name&gt;Footer&lt;/Name&gt;&lt;SubSections&gt;&lt;SubSection /&gt;&lt;/SubSections&gt;&lt;Type&gt;Footer&lt;/Type&gt;&lt;Visible&gt;false&lt;/Visible&gt;&lt;/Section&gt;&lt;Section&gt;&lt;Name&gt;PageHeader&lt;/Name&gt;&lt;SubSections&gt;&lt;SubSection /&gt;&lt;/SubSections&gt;&lt;Type&gt;PageHeader&lt;/Type&gt;&lt;Visible&gt;false&lt;/Visible&gt;&lt;/Section&gt;&lt;Section&gt;&lt;Name&gt;PageFooter&lt;/Name&gt;&lt;SubSections&gt;&lt;SubSection /&gt;&lt;/SubSections&gt;&lt;Type&gt;PageFooter&lt;/Type&gt;&lt;Visible&gt;false&lt;/Visible&gt;&lt;/Section&gt;&lt;/Sections&gt;&lt;/Report&gt;</value>
   </data>
+  <metadata name="c1PdfDocument1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>1248, 17</value>
+  </metadata>
+  <metadata name="c1Magnify1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>1394, 17</value>
+  </metadata>
+  <metadata name="c1XLBook1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>1509, 17</value>
+  </metadata>
 </root>

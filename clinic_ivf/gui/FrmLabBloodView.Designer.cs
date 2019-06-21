@@ -64,6 +64,17 @@
             this.btnSearch = new C1.Win.C1Input.C1Button();
             this.label4 = new System.Windows.Forms.Label();
             this.txtSearch = new C1.Win.C1Input.C1TextBox();
+            this.tabTestLis = new C1.Win.C1Command.C1DockingTabPage();
+            this.pnLis = new System.Windows.Forms.Panel();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.cboData = new System.Windows.Forms.ComboBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.cboStop = new System.Windows.Forms.ComboBox();
+            this.label7 = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
+            this.cboParity = new System.Windows.Forms.ComboBox();
+            this.cboBaud = new System.Windows.Forms.ComboBox();
             this.sB.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.theme1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tcLabView)).BeginInit();
@@ -89,6 +100,9 @@
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btnSearch)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtSearch)).BeginInit();
+            this.tabTestLis.SuspendLayout();
+            this.pnLis.SuspendLayout();
+            this.groupBox3.SuspendLayout();
             this.SuspendLayout();
             // 
             // sB
@@ -119,6 +133,7 @@
             this.tcLabView.Controls.Add(this.tabProcess);
             this.tcLabView.Controls.Add(this.tabLabFinish);
             this.tcLabView.Controls.Add(this.tabSearch);
+            this.tcLabView.Controls.Add(this.tabTestLis);
             this.tcLabView.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tcLabView.HotTrack = true;
             this.tcLabView.Location = new System.Drawing.Point(0, 0);
@@ -646,6 +661,140 @@
             this.theme1.SetTheme(this.txtSearch, "(default)");
             this.txtSearch.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
             // 
+            // tabTestLis
+            // 
+            this.tabTestLis.Controls.Add(this.pnLis);
+            this.tabTestLis.Location = new System.Drawing.Point(1, 24);
+            this.tabTestLis.Name = "tabTestLis";
+            this.tabTestLis.Size = new System.Drawing.Size(1093, 691);
+            this.tabTestLis.TabIndex = 4;
+            this.tabTestLis.Text = "Test LIS";
+            // 
+            // pnLis
+            // 
+            this.pnLis.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.pnLis.Controls.Add(this.groupBox3);
+            this.pnLis.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pnLis.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.pnLis.Location = new System.Drawing.Point(0, 0);
+            this.pnLis.Name = "pnLis";
+            this.pnLis.Size = new System.Drawing.Size(1093, 691);
+            this.pnLis.TabIndex = 0;
+            this.theme1.SetTheme(this.pnLis, "(default)");
+            // 
+            // groupBox3
+            // 
+            this.groupBox3.Controls.Add(this.label5);
+            this.groupBox3.Controls.Add(this.cboData);
+            this.groupBox3.Controls.Add(this.label6);
+            this.groupBox3.Controls.Add(this.cboStop);
+            this.groupBox3.Controls.Add(this.label7);
+            this.groupBox3.Controls.Add(this.label8);
+            this.groupBox3.Controls.Add(this.cboParity);
+            this.groupBox3.Controls.Add(this.cboBaud);
+            this.groupBox3.Location = new System.Drawing.Point(11, 14);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(117, 246);
+            this.groupBox3.TabIndex = 86;
+            this.groupBox3.TabStop = false;
+            this.groupBox3.Text = "Options";
+            this.theme1.SetTheme(this.groupBox3, "(default)");
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(6, 179);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(50, 13);
+            this.label5.TabIndex = 19;
+            this.label5.Text = "Data Bits";
+            this.theme1.SetTheme(this.label5, "(default)");
+            // 
+            // cboData
+            // 
+            this.cboData.Font = new System.Drawing.Font("Verdana", 11.25F);
+            this.cboData.FormattingEnabled = true;
+            this.cboData.Items.AddRange(new object[] {
+            "7",
+            "8",
+            "9"});
+            this.cboData.Location = new System.Drawing.Point(9, 195);
+            this.cboData.Name = "cboData";
+            this.cboData.Size = new System.Drawing.Size(102, 26);
+            this.cboData.TabIndex = 14;
+            this.theme1.SetTheme(this.cboData, "(default)");
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(7, 126);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(49, 13);
+            this.label6.TabIndex = 18;
+            this.label6.Text = "Stop Bits";
+            this.theme1.SetTheme(this.label6, "(default)");
+            // 
+            // cboStop
+            // 
+            this.cboStop.Font = new System.Drawing.Font("Verdana", 11.25F);
+            this.cboStop.FormattingEnabled = true;
+            this.cboStop.Location = new System.Drawing.Point(9, 144);
+            this.cboStop.Name = "cboStop";
+            this.cboStop.Size = new System.Drawing.Size(102, 26);
+            this.cboStop.TabIndex = 13;
+            this.theme1.SetTheme(this.cboStop, "(default)");
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(6, 74);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(33, 13);
+            this.label7.TabIndex = 17;
+            this.label7.Text = "Parity";
+            this.theme1.SetTheme(this.label7, "(default)");
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(6, 21);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(58, 13);
+            this.label8.TabIndex = 16;
+            this.label8.Text = "Baud Rate";
+            this.theme1.SetTheme(this.label8, "(default)");
+            // 
+            // cboParity
+            // 
+            this.cboParity.Font = new System.Drawing.Font("Verdana", 11.25F);
+            this.cboParity.FormattingEnabled = true;
+            this.cboParity.Location = new System.Drawing.Point(9, 90);
+            this.cboParity.Name = "cboParity";
+            this.cboParity.Size = new System.Drawing.Size(102, 26);
+            this.cboParity.TabIndex = 12;
+            this.theme1.SetTheme(this.cboParity, "(default)");
+            // 
+            // cboBaud
+            // 
+            this.cboBaud.Font = new System.Drawing.Font("Verdana", 11.25F);
+            this.cboBaud.FormattingEnabled = true;
+            this.cboBaud.Items.AddRange(new object[] {
+            "300",
+            "600",
+            "1200",
+            "2400",
+            "4800",
+            "9600",
+            "14400",
+            "28800",
+            "36000",
+            "115200"});
+            this.cboBaud.Location = new System.Drawing.Point(9, 37);
+            this.cboBaud.Name = "cboBaud";
+            this.cboBaud.Size = new System.Drawing.Size(102, 26);
+            this.cboBaud.TabIndex = 11;
+            this.theme1.SetTheme(this.cboBaud, "(default)");
+            // 
             // FrmLabBloodView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -685,6 +834,10 @@
             this.panel3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btnSearch)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtSearch)).EndInit();
+            this.tabTestLis.ResumeLayout(false);
+            this.pnLis.ResumeLayout(false);
+            this.groupBox3.ResumeLayout(false);
+            this.groupBox3.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -728,5 +881,16 @@
         private C1.Win.C1Input.C1Button btnSearch;
         private System.Windows.Forms.Label label4;
         private C1.Win.C1Input.C1TextBox txtSearch;
+        private C1.Win.C1Command.C1DockingTabPage tabTestLis;
+        private System.Windows.Forms.Panel pnLis;
+        private System.Windows.Forms.GroupBox groupBox3;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.ComboBox cboData;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.ComboBox cboStop;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.ComboBox cboParity;
+        private System.Windows.Forms.ComboBox cboBaud;
     }
 }

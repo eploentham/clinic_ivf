@@ -53,6 +53,7 @@
             this.pnAll = new System.Windows.Forms.Panel();
             this.sB = new System.Windows.Forms.StatusStrip();
             this.sB1 = new System.Windows.Forms.ToolStripStatusLabel();
+            this.btnExcel = new C1.Win.C1Input.DropDownItem();
             ((System.ComponentModel.ISupportInitialize)(this.theme1)).BeginInit();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btnPrint)).BeginInit();
@@ -110,6 +111,7 @@
             this.btnPrint.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnPrint.Items.Add(this.btnPrnPtt);
             this.btnPrint.Items.Add(this.btnPrnDonor);
+            this.btnPrint.Items.Add(this.btnExcel);
             this.btnPrint.Location = new System.Drawing.Point(872, 14);
             this.btnPrint.Name = "btnPrint";
             this.btnPrint.Size = new System.Drawing.Size(95, 32);
@@ -460,6 +462,10 @@
             this.sB1.Size = new System.Drawing.Size(118, 17);
             this.sB1.Text = "toolStripStatusLabel1";
             // 
+            // btnExcel
+            // 
+            this.btnExcel.Text = "Export Excel";
+            // 
             // FrmAppointmentView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -525,5 +531,6 @@
         private C1.Win.C1Input.C1SplitButton btnPrint;
         private C1.Win.C1Input.DropDownItem btnPrnPtt;
         private C1.Win.C1Input.DropDownItem btnPrnDonor;
+        private C1.Win.C1Input.DropDownItem btnExcel;
     }
 }

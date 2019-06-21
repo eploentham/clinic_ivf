@@ -461,8 +461,9 @@ namespace clinic_ivf.gui
             chkRFsh.Checked = pApm.repeat_fsh.Equals("1") ? true : false;
             chkRPrl.Checked = pApm.repeat_prl.Equals("1") ? true : false;
             chkSperm.Checked = pApm.sperm_collect.Equals("1") ? true : false;
-            chkET.Checked = pApm.e2.Equals("1") ? true : false;
-            chkFET.Checked = pApm.e2.Equals("1") ? true : false;
+            //chkE2.Checked = pApm.e2.Equals("1") ? true : false;
+            chkET.Checked = pApm.et.Equals("1") ? true : false;
+            chkFET.Checked = pApm.fet.Equals("1") ? true : false;
             chkOther.Checked = pApm.e2.Equals("1") ? true : false;
             txtRemark.Value = pApm.remark;
             ic.setC1Combo(cboDoctor, pApm.patient_appointment_doctor);

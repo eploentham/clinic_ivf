@@ -530,7 +530,9 @@
             this.txtDob.Calendar.TodayBorderColor = System.Drawing.Color.White;
             this.txtDob.Calendar.TrailingForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
             this.txtDob.Calendar.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            this.txtDob.CurrentTimeZone = false;
             this.txtDob.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
+            this.txtDob.GMTOffset = System.TimeSpan.Parse("00:00:00");
             this.txtDob.ImagePadding = new System.Windows.Forms.Padding(0);
             this.txtDob.Location = new System.Drawing.Point(446, 37);
             this.txtDob.Name = "txtDob";

@@ -1,4 +1,5 @@
-﻿using C1.Win.C1Command;
+﻿using C1.C1Excel;
+using C1.Win.C1Command;
 using C1.Win.C1FlexGrid;
 using C1.Win.C1Input;
 using C1.Win.C1SuperTooltip;
@@ -80,6 +81,7 @@ namespace clinic_ivf.gui
             btnPrnDonor.Click += BtnPrnDonor_Click;
             btnPrnPtt.Click += BtnPrnPtt_Click;
             btnPrint.Click += BtnPrint_Click;
+            btnExcel.Click += BtnExcel_Click;
             //txtDateStart.ValueChanged += TxtDateStart_ValueChanged;
             //txtDateStart.
 
@@ -88,6 +90,36 @@ namespace clinic_ivf.gui
             initGrfPtt();
             //setGrfPtt();
             setGrf();
+        }
+
+        private void BtnExcel_Click(object sender, EventArgs e)
+        {
+            //throw new NotImplementedException();
+            SaveFileDialog dlg = new SaveFileDialog();
+            dlg.DefaultExt = "xls";
+            dlg.Filter = "Excel |*.xls";
+            dlg.FileName = "*.xls";
+            if (dlg.ShowDialog() != DialogResult.OK)
+                return;
+
+            // clear book
+            C1XLBook _book = new C1XLBook();
+            //_book.Clear();
+            //_book.Sheets.Clear();
+
+            // copy grids to book sheets
+            //foreach (TabPage pg in _tab.TabPages)
+            //{
+            //    C1FlexGrid grid = pg.Controls[0] as C1FlexGrid;
+            XLSheet sheet = _book.Sheets.Add("Appointment");
+            ic.SaveSheet(grfPtt, sheet, _book, false);
+            //}
+
+            // save selected sheet index
+            _book.Sheets.SelectedIndex = 0;
+
+            // save the book
+            _book.Save(dlg.FileName);
         }
 
         private void BtnPrint_Click(object sender, EventArgs e)
@@ -565,6 +597,7 @@ namespace clinic_ivf.gui
         {
             grfPtt = new C1FlexGrid();
             grfPtt.Font = fEdit;
+            grfPtt.Name = "grfPff";
             grfPtt.Dock = System.Windows.Forms.DockStyle.Fill;
             grfPtt.Location = new System.Drawing.Point(0, 0);
 
@@ -1102,9 +1135,9 @@ namespace clinic_ivf.gui
                 row1[colVsCode] = "";
                 row1[colVsDoctor] = row[ic.ivfDB.pApmOldDB.pApmO.Doctor].ToString();
                 row1[colVsStatus] = "1";
-                row1[colVsTVS] = row[ic.ivfDB.pApmOldDB.pApmO.TVS].ToString().Equals("1") ? imgCorr : imgTran;
-                row1[colVsET] = row[ic.ivfDB.pApmOldDB.pApmO.ET_FET].ToString().Equals("1") ? imgCorr : imgTran;
-                row1[colVsHCG] = row[ic.ivfDB.pApmOldDB.pApmO.BetaHCG].ToString().Equals("1") ? imgCorr : imgTran;
+                //row1[colVsTVS] = row[ic.ivfDB.pApmOldDB.pApmO.TVS].ToString().Equals("1") ? imgCorr : imgTran;
+                //row1[colVsET] = row[ic.ivfDB.pApmOldDB.pApmO.ET_FET].ToString().Equals("1") ? imgCorr : imgTran;
+                //row1[colVsHCG] = row[ic.ivfDB.pApmOldDB.pApmO.BetaHCG].ToString().Equals("1") ? imgCorr : imgTran;
                 row1[colVsOPU] = row[ic.ivfDB.pApmOldDB.pApmO.OPU].ToString().Equals("1") ? imgCorr : imgTran;
                 if (row[ic.ivfDB.pApmOldDB.pApmO.OPU].ToString().Equals("1"))
                 {
@@ -1161,6 +1194,7 @@ namespace clinic_ivf.gui
             }
             foreach (DataRow row in dtD.Rows)
             {
+                String hormo = "", tvs = "", opu = "", fet = "", beta = "", other = "", appn = "";
                 int chk = 0;
                 Row row1 = grfPtt.Rows.Add();
                 row1[0] = i;
@@ -1170,8 +1204,10 @@ namespace clinic_ivf.gui
                 row1[colPttHn] = row["patient_hn"].ToString();
                 row1[colVsTime] = row[ic.ivfDB.pApmDB.pApm.patient_appointment_time].ToString();
 
-                row1[colVsTVS] = row[ic.ivfDB.pApmDB.pApm.tvs].ToString();
-                row1[colVsOPU] = row[ic.ivfDB.pApmDB.pApm.opu].ToString();
+                opu = row[ic.ivfDB.pApmDB.pApm.opu].ToString().Equals("1") ? "OPU " + row[ic.ivfDB.pApmDB.pApm.opu_time] != null ? row[ic.ivfDB.pApmDB.pApm.opu_time].ToString() : "" : "";
+
+                //row1[colVsTVS] = row[ic.ivfDB.pApmDB.pApm.tvs].ToString();
+                //row1[colVsOPU] = row[ic.ivfDB.pApmDB.pApm.opu].ToString();
                 row1[colVsAnes] = row[ic.ivfDB.pApmDB.pApm.doctor_anes].ToString();
                 row1[colVsDoctor] = row[ic.ivfDB.pApmDB.pApm.dtr_name].ToString();
                 row1[colVSE2] = row[ic.ivfDB.pApmDB.pApm.e2].ToString().Equals("1") ? imgCorr : imgTran;
@@ -1180,6 +1216,9 @@ namespace clinic_ivf.gui
                 row1[colVSFsh] = row[ic.ivfDB.pApmDB.pApm.fsh].ToString().Equals("1") ? imgCorr : imgTran;
                 row1[colVsTVS] = row[ic.ivfDB.pApmDB.pApm.tvs].ToString().Equals("1") ? imgCorr : imgTran;
                 row1[colVsOPU] = row[ic.ivfDB.pApmDB.pApm.opu].ToString().Equals("1") ? imgCorr : imgTran;
+                row1[colVsET] = row[ic.ivfDB.pApmDB.pApm.et].ToString().Equals("1") ? imgCorr : imgTran;
+                row1[colVsFET] = row[ic.ivfDB.pApmDB.pApm.fet].ToString().Equals("1") ? imgCorr : imgTran;
+                row1[colVsHCG] = row[ic.ivfDB.pApmDB.pApm.beta_hgc].ToString().Equals("1") ? imgCorr : imgTran;
                 if (!row[ic.ivfDB.pApmDB.pApm.tvs_day].ToString().Equals(""))
                 {
                     CellNote note = new CellNote("Day "+row[ic.ivfDB.pApmDB.pApm.tvs_day].ToString()+" [Time "+ row[ic.ivfDB.pApmDB.pApm.tvs_time].ToString()+"]");
@@ -1191,6 +1230,19 @@ namespace clinic_ivf.gui
                     CellNote note = new CellNote(" [Time " + row[ic.ivfDB.pApmDB.pApm.opu_time].ToString() + "]");
                     CellRange rg = grfPtt.GetCellRange(grfPtt.Rows.Count - 1, colVsOPU);
                     rg.UserData = note;
+                }
+                if (row[ic.ivfDB.pApmDB.pApm.opu].ToString().Equals("1"))
+                {
+                    CellNote note = new CellNote(opu);
+                    CellRange rg = grfPtt.GetCellRange(grfPtt.Rows.Count - 1, colVsOPU);
+                    rg.UserData = note;
+                }
+                if (row[ic.ivfDB.pApmDB.pApm.beta_hgc].ToString().Equals("1"))
+                {
+                    CellNote note = new CellNote(beta);
+                    CellRange rg = grfPtt.GetCellRange(grfPtt.Rows.Count - 1, colVsHCG);
+                    rg.UserData = note;
+                    //row1[colVsHCG] = imgCorr;
                 }
                 if (int.TryParse(row[ic.ivfDB.pApmDB.pApm.tvs_day].ToString(), out chk))
                 {

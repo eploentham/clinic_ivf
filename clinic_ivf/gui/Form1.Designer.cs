@@ -37,40 +37,46 @@
             this.c1DockingTab1 = new C1.Win.C1Command.C1DockingTab();
             this.c1DockingTabPage1 = new C1.Win.C1Command.C1DockingTabPage();
             this.c1ReportDesigner1 = new C1.Win.C1ReportDesigner.C1ReportDesigner();
-            this.c1TextBox1 = new C1.Win.C1Input.C1TextBox();
-            this.c1Button1 = new C1.Win.C1Input.C1Button();
-            this.c1ThemeController1 = new C1.Win.C1Themes.C1ThemeController();
+            this.c1DockingTabPage2 = new C1.Win.C1Command.C1DockingTabPage();
             this.c1FlexGrid1 = new C1.Win.C1FlexGrid.C1FlexGrid();
-            this.txtReqDate = new C1.Win.C1Input.C1DateEdit();
-            this.c1SuperTooltip3 = new C1.Win.C1SuperTooltip.C1SuperTooltip(this.components);
-            this.c1TextBox2 = new C1.Win.C1Input.C1TextBox();
+            this.c1DockingTabPage3 = new C1.Win.C1Command.C1DockingTabPage();
             this.c1FlexViewer1 = new C1.Win.FlexViewer.C1FlexViewer();
+            this.c1DockingTabPage4 = new C1.Win.C1Command.C1DockingTabPage();
+            this.c1TextBox2 = new C1.Win.C1Input.C1TextBox();
+            this.c1TextBox1 = new C1.Win.C1Input.C1TextBox();
+            this.txtReqDate = new C1.Win.C1Input.C1DateEdit();
+            this.c1Button1 = new C1.Win.C1Input.C1Button();
+            this.c1DockingTabPage5 = new C1.Win.C1Command.C1DockingTabPage();
+            this.c1ThemeController1 = new C1.Win.C1Themes.C1ThemeController();
+            this.c1SuperTooltip3 = new C1.Win.C1SuperTooltip.C1SuperTooltip(this.components);
             this.c1FlexReport1 = new C1.Win.FlexReport.C1FlexReport();
             this.c1Report1 = new C1.C1Report.C1Report();
             this.c1Report2 = new C1.C1Report.C1Report();
-            this.c1DockingTabPage2 = new C1.Win.C1Command.C1DockingTabPage();
-            this.c1DockingTabPage3 = new C1.Win.C1Command.C1DockingTabPage();
-            this.c1DockingTabPage4 = new C1.Win.C1Command.C1DockingTabPage();
-            this.c1DockingTabPage5 = new C1.Win.C1Command.C1DockingTabPage();
             this.c1FlexReport2 = new C1.Win.FlexReport.C1FlexReport();
+            this.c1PdfDocument1 = new C1.C1Pdf.C1PdfDocument();
+            this.c1Magnify1 = new C1.Win.TouchToolKit.C1Magnify();
+            this.c1DockingTabPage6 = new C1.Win.C1Command.C1DockingTabPage();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.c1XLBook1 = new C1.C1Excel.C1XLBook();
             ((System.ComponentModel.ISupportInitialize)(this.c1SuperErrorProvider1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.c1CommandDock1)).BeginInit();
             this.c1CommandDock1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.c1DockingTab1)).BeginInit();
             this.c1DockingTab1.SuspendLayout();
             this.c1DockingTabPage1.SuspendLayout();
+            this.c1DockingTabPage2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.c1FlexGrid1)).BeginInit();
+            this.c1DockingTabPage3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.c1FlexViewer1)).BeginInit();
+            this.c1DockingTabPage4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.c1TextBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.c1TextBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtReqDate)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.c1Button1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.c1ThemeController1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.c1FlexGrid1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtReqDate)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.c1TextBox2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.c1FlexViewer1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.c1Report1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.c1Report2)).BeginInit();
-            this.c1DockingTabPage2.SuspendLayout();
-            this.c1DockingTabPage3.SuspendLayout();
-            this.c1DockingTabPage4.SuspendLayout();
+            this.c1DockingTabPage6.SuspendLayout();
             this.SuspendLayout();
             // 
             // c1SuperTooltip1
@@ -109,8 +115,10 @@
             this.c1DockingTab1.Controls.Add(this.c1DockingTabPage3);
             this.c1DockingTab1.Controls.Add(this.c1DockingTabPage4);
             this.c1DockingTab1.Controls.Add(this.c1DockingTabPage5);
+            this.c1DockingTab1.Controls.Add(this.c1DockingTabPage6);
             this.c1DockingTab1.Location = new System.Drawing.Point(0, 0);
             this.c1DockingTab1.Name = "c1DockingTab1";
+            this.c1DockingTab1.SelectedIndex = 5;
             this.c1DockingTab1.ShowCaption = true;
             this.c1DockingTab1.Size = new System.Drawing.Size(800, 450);
             this.c1DockingTab1.TabIndex = 0;
@@ -150,22 +158,15 @@
             this.c1ThemeController1.SetTheme(this.c1ReportDesigner1, "(default)");
             this.c1ReportDesigner1.ZoomFactor = 1F;
             // 
-            // c1TextBox1
+            // c1DockingTabPage2
             // 
-            this.c1TextBox1.Location = new System.Drawing.Point(33, 66);
-            this.c1TextBox1.Name = "c1TextBox1";
-            this.c1TextBox1.Size = new System.Drawing.Size(100, 18);
-            this.c1TextBox1.TabIndex = 1;
-            this.c1TextBox1.Tag = null;
-            // 
-            // c1Button1
-            // 
-            this.c1Button1.Location = new System.Drawing.Point(33, 90);
-            this.c1Button1.Name = "c1Button1";
-            this.c1Button1.Size = new System.Drawing.Size(75, 23);
-            this.c1Button1.TabIndex = 2;
-            this.c1Button1.Text = "c1Button1";
-            this.c1Button1.UseVisualStyleBackColor = true;
+            this.c1DockingTabPage2.CaptionVisible = true;
+            this.c1DockingTabPage2.Controls.Add(this.c1FlexGrid1);
+            this.c1DockingTabPage2.Location = new System.Drawing.Point(0, 0);
+            this.c1DockingTabPage2.Name = "c1DockingTabPage2";
+            this.c1DockingTabPage2.Size = new System.Drawing.Size(800, 426);
+            this.c1DockingTabPage2.TabIndex = 1;
+            this.c1DockingTabPage2.Text = "Page2";
             // 
             // c1FlexGrid1
             // 
@@ -183,59 +184,15 @@
             this.c1ThemeController1.SetTheme(this.c1FlexGrid1, "Office2016Colorful");
             this.c1FlexGrid1.Tree.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(171)))), ((int)(((byte)(171)))), ((int)(((byte)(171)))));
             // 
-            // txtReqDate
+            // c1DockingTabPage3
             // 
-            this.txtReqDate.AllowSpinLoop = false;
-            this.txtReqDate.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.txtReqDate.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            // 
-            // 
-            // 
-            this.txtReqDate.Calendar.ArrowColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(118)))), ((int)(((byte)(135)))));
-            this.txtReqDate.Calendar.BackColor = System.Drawing.Color.White;
-            this.txtReqDate.Calendar.DayNamesColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(118)))), ((int)(((byte)(135)))));
-            this.txtReqDate.Calendar.DayNamesFont = new System.Drawing.Font("Tahoma", 8F);
-            this.txtReqDate.Calendar.Font = new System.Drawing.Font("Tahoma", 8F);
-            this.txtReqDate.Calendar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(68)))), ((int)(((byte)(68)))));
-            this.txtReqDate.Calendar.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(118)))), ((int)(((byte)(135)))));
-            this.txtReqDate.Calendar.SelectionForeColor = System.Drawing.Color.White;
-            this.txtReqDate.Calendar.TitleBackColor = System.Drawing.Color.White;
-            this.txtReqDate.Calendar.TitleFont = new System.Drawing.Font("Tahoma", 8F);
-            this.txtReqDate.Calendar.TitleForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(118)))), ((int)(((byte)(135)))));
-            this.txtReqDate.Calendar.TodayBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(118)))), ((int)(((byte)(135)))));
-            this.txtReqDate.Calendar.TrailingForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
-            this.txtReqDate.Calendar.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
-            this.txtReqDate.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
-            this.txtReqDate.ImagePadding = new System.Windows.Forms.Padding(0);
-            this.txtReqDate.Location = new System.Drawing.Point(58, 337);
-            this.txtReqDate.Name = "txtReqDate";
-            this.txtReqDate.ReadOnly = true;
-            this.txtReqDate.Size = new System.Drawing.Size(168, 18);
-            this.txtReqDate.TabIndex = 513;
-            this.txtReqDate.Tag = null;
-            this.c1ThemeController1.SetTheme(this.txtReqDate, "(default)");
-            this.txtReqDate.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
-            // 
-            // c1SuperTooltip3
-            // 
-            this.c1SuperTooltip3.BackgroundGradient = C1.Win.C1SuperTooltip.BackgroundGradient.None;
-            this.c1SuperTooltip3.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(101)))), ((int)(((byte)(101)))), ((int)(((byte)(101)))));
-            this.c1SuperTooltip3.Font = new System.Drawing.Font("Tahoma", 8F);
-            this.c1SuperTooltip3.RightToLeft = System.Windows.Forms.RightToLeft.Inherit;
-            this.c1ThemeController1.SetTheme(this.c1SuperTooltip3, "(default)");
-            // 
-            // c1TextBox2
-            // 
-            this.c1TextBox2.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(212)))), ((int)(((byte)(212)))), ((int)(((byte)(212)))));
-            this.c1TextBox2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.c1TextBox2.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
-            this.c1TextBox2.Location = new System.Drawing.Point(165, 67);
-            this.c1TextBox2.Name = "c1TextBox2";
-            this.c1TextBox2.Size = new System.Drawing.Size(100, 18);
-            this.c1TextBox2.TabIndex = 514;
-            this.c1TextBox2.Tag = null;
-            this.c1ThemeController1.SetTheme(this.c1TextBox2, "(default)");
-            this.c1TextBox2.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            this.c1DockingTabPage3.CaptionVisible = true;
+            this.c1DockingTabPage3.Controls.Add(this.c1FlexViewer1);
+            this.c1DockingTabPage3.Location = new System.Drawing.Point(0, 0);
+            this.c1DockingTabPage3.Name = "c1DockingTabPage3";
+            this.c1DockingTabPage3.Size = new System.Drawing.Size(800, 426);
+            this.c1DockingTabPage3.TabIndex = 2;
+            this.c1DockingTabPage3.Text = "Page3";
             // 
             // c1FlexViewer1
             // 
@@ -265,6 +222,99 @@
             this.c1FlexViewer1.ThumbBackColorPressed = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(118)))), ((int)(((byte)(135)))));
             this.c1FlexViewer1.ThumbBackColorSelected = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(118)))), ((int)(((byte)(135)))));
             // 
+            // c1DockingTabPage4
+            // 
+            this.c1DockingTabPage4.CaptionVisible = true;
+            this.c1DockingTabPage4.Controls.Add(this.c1TextBox2);
+            this.c1DockingTabPage4.Controls.Add(this.c1TextBox1);
+            this.c1DockingTabPage4.Controls.Add(this.txtReqDate);
+            this.c1DockingTabPage4.Controls.Add(this.c1Button1);
+            this.c1DockingTabPage4.Location = new System.Drawing.Point(0, 0);
+            this.c1DockingTabPage4.Name = "c1DockingTabPage4";
+            this.c1DockingTabPage4.Size = new System.Drawing.Size(800, 426);
+            this.c1DockingTabPage4.TabIndex = 3;
+            this.c1DockingTabPage4.Text = "Page4";
+            // 
+            // c1TextBox2
+            // 
+            this.c1TextBox2.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(71)))), ((int)(((byte)(71)))));
+            this.c1TextBox2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.c1TextBox2.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(172)))), ((int)(((byte)(172)))), ((int)(((byte)(172)))));
+            this.c1TextBox2.Location = new System.Drawing.Point(165, 67);
+            this.c1TextBox2.Name = "c1TextBox2";
+            this.c1TextBox2.Size = new System.Drawing.Size(100, 18);
+            this.c1TextBox2.TabIndex = 514;
+            this.c1TextBox2.Tag = null;
+            this.c1ThemeController1.SetTheme(this.c1TextBox2, "(default)");
+            this.c1TextBox2.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            // 
+            // c1TextBox1
+            // 
+            this.c1TextBox1.Location = new System.Drawing.Point(33, 66);
+            this.c1TextBox1.Name = "c1TextBox1";
+            this.c1TextBox1.Size = new System.Drawing.Size(100, 18);
+            this.c1TextBox1.TabIndex = 1;
+            this.c1TextBox1.Tag = null;
+            // 
+            // txtReqDate
+            // 
+            this.txtReqDate.AllowSpinLoop = false;
+            this.txtReqDate.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            // 
+            // 
+            // 
+            this.txtReqDate.Calendar.ArrowColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(118)))), ((int)(((byte)(135)))));
+            this.txtReqDate.Calendar.BackColor = System.Drawing.Color.White;
+            this.txtReqDate.Calendar.DayNamesColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(118)))), ((int)(((byte)(135)))));
+            this.txtReqDate.Calendar.DayNamesFont = new System.Drawing.Font("Tahoma", 8F);
+            this.txtReqDate.Calendar.Font = new System.Drawing.Font("Tahoma", 8F);
+            this.txtReqDate.Calendar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(68)))), ((int)(((byte)(68)))));
+            this.txtReqDate.Calendar.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(118)))), ((int)(((byte)(135)))));
+            this.txtReqDate.Calendar.SelectionForeColor = System.Drawing.Color.White;
+            this.txtReqDate.Calendar.TitleBackColor = System.Drawing.Color.White;
+            this.txtReqDate.Calendar.TitleFont = new System.Drawing.Font("Tahoma", 8F);
+            this.txtReqDate.Calendar.TitleForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(118)))), ((int)(((byte)(135)))));
+            this.txtReqDate.Calendar.TodayBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(118)))), ((int)(((byte)(135)))));
+            this.txtReqDate.Calendar.TrailingForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
+            this.txtReqDate.Calendar.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            this.txtReqDate.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(172)))), ((int)(((byte)(172)))), ((int)(((byte)(172)))));
+            this.txtReqDate.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))));
+            this.txtReqDate.ImagePadding = new System.Windows.Forms.Padding(0);
+            this.txtReqDate.Location = new System.Drawing.Point(58, 337);
+            this.txtReqDate.Name = "txtReqDate";
+            this.txtReqDate.ReadOnly = true;
+            this.txtReqDate.Size = new System.Drawing.Size(168, 18);
+            this.txtReqDate.TabIndex = 513;
+            this.txtReqDate.Tag = null;
+            this.c1ThemeController1.SetTheme(this.txtReqDate, "(default)");
+            this.txtReqDate.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            // 
+            // c1Button1
+            // 
+            this.c1Button1.Location = new System.Drawing.Point(33, 90);
+            this.c1Button1.Name = "c1Button1";
+            this.c1Button1.Size = new System.Drawing.Size(75, 23);
+            this.c1Button1.TabIndex = 2;
+            this.c1Button1.Text = "c1Button1";
+            this.c1Button1.UseVisualStyleBackColor = true;
+            // 
+            // c1DockingTabPage5
+            // 
+            this.c1DockingTabPage5.CaptionVisible = true;
+            this.c1DockingTabPage5.Location = new System.Drawing.Point(0, 0);
+            this.c1DockingTabPage5.Name = "c1DockingTabPage5";
+            this.c1DockingTabPage5.Size = new System.Drawing.Size(800, 426);
+            this.c1DockingTabPage5.TabIndex = 4;
+            this.c1DockingTabPage5.Text = "Page5";
+            // 
+            // c1SuperTooltip3
+            // 
+            this.c1SuperTooltip3.BackgroundGradient = C1.Win.C1SuperTooltip.BackgroundGradient.None;
+            this.c1SuperTooltip3.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(101)))), ((int)(((byte)(101)))), ((int)(((byte)(101)))));
+            this.c1SuperTooltip3.Font = new System.Drawing.Font("Tahoma", 8F);
+            this.c1SuperTooltip3.RightToLeft = System.Windows.Forms.RightToLeft.Inherit;
+            this.c1ThemeController1.SetTheme(this.c1SuperTooltip3, "(default)");
+            // 
             // c1FlexReport1
             // 
             this.c1FlexReport1.ReportDefinition = resources.GetString("c1FlexReport1.ReportDefinition");
@@ -280,52 +330,46 @@
             this.c1Report2.ReportDefinition = resources.GetString("c1Report2.ReportDefinition");
             this.c1Report2.ReportName = "c1Report2";
             // 
-            // c1DockingTabPage2
-            // 
-            this.c1DockingTabPage2.CaptionVisible = true;
-            this.c1DockingTabPage2.Controls.Add(this.c1FlexGrid1);
-            this.c1DockingTabPage2.Location = new System.Drawing.Point(0, 0);
-            this.c1DockingTabPage2.Name = "c1DockingTabPage2";
-            this.c1DockingTabPage2.Size = new System.Drawing.Size(800, 426);
-            this.c1DockingTabPage2.TabIndex = 1;
-            this.c1DockingTabPage2.Text = "Page2";
-            // 
-            // c1DockingTabPage3
-            // 
-            this.c1DockingTabPage3.CaptionVisible = true;
-            this.c1DockingTabPage3.Controls.Add(this.c1FlexViewer1);
-            this.c1DockingTabPage3.Location = new System.Drawing.Point(0, 0);
-            this.c1DockingTabPage3.Name = "c1DockingTabPage3";
-            this.c1DockingTabPage3.Size = new System.Drawing.Size(800, 426);
-            this.c1DockingTabPage3.TabIndex = 2;
-            this.c1DockingTabPage3.Text = "Page3";
-            // 
-            // c1DockingTabPage4
-            // 
-            this.c1DockingTabPage4.CaptionVisible = true;
-            this.c1DockingTabPage4.Controls.Add(this.c1TextBox2);
-            this.c1DockingTabPage4.Controls.Add(this.c1TextBox1);
-            this.c1DockingTabPage4.Controls.Add(this.txtReqDate);
-            this.c1DockingTabPage4.Controls.Add(this.c1Button1);
-            this.c1DockingTabPage4.Location = new System.Drawing.Point(0, 0);
-            this.c1DockingTabPage4.Name = "c1DockingTabPage4";
-            this.c1DockingTabPage4.Size = new System.Drawing.Size(800, 426);
-            this.c1DockingTabPage4.TabIndex = 3;
-            this.c1DockingTabPage4.Text = "Page4";
-            // 
-            // c1DockingTabPage5
-            // 
-            this.c1DockingTabPage5.CaptionVisible = true;
-            this.c1DockingTabPage5.Location = new System.Drawing.Point(0, 0);
-            this.c1DockingTabPage5.Name = "c1DockingTabPage5";
-            this.c1DockingTabPage5.Size = new System.Drawing.Size(800, 426);
-            this.c1DockingTabPage5.TabIndex = 4;
-            this.c1DockingTabPage5.Text = "Page5";
-            // 
             // c1FlexReport2
             // 
             this.c1FlexReport2.ReportDefinition = resources.GetString("c1FlexReport2.ReportDefinition");
             this.c1FlexReport2.ReportName = "c1FlexReport2";
+            // 
+            // c1PdfDocument1
+            // 
+            this.c1PdfDocument1.DocumentInfo.Author = "";
+            this.c1PdfDocument1.DocumentInfo.CreationDate = new System.DateTime(((long)(0)));
+            this.c1PdfDocument1.DocumentInfo.Creator = "";
+            this.c1PdfDocument1.DocumentInfo.Keywords = "";
+            this.c1PdfDocument1.DocumentInfo.Producer = "ComponentOne C1Pdf";
+            this.c1PdfDocument1.DocumentInfo.Subject = "";
+            this.c1PdfDocument1.DocumentInfo.Title = "";
+            this.c1PdfDocument1.MaxHeaderBookmarkLevel = 0;
+            this.c1PdfDocument1.PdfVersion = "1.3";
+            this.c1PdfDocument1.RefDC = null;
+            this.c1PdfDocument1.RotateAngle = 0F;
+            this.c1PdfDocument1.UseFastTextOut = true;
+            this.c1PdfDocument1.UseFontShaping = true;
+            // 
+            // c1DockingTabPage6
+            // 
+            this.c1DockingTabPage6.CaptionVisible = true;
+            this.c1DockingTabPage6.Controls.Add(this.panel1);
+            this.c1DockingTabPage6.Location = new System.Drawing.Point(0, 0);
+            this.c1DockingTabPage6.Name = "c1DockingTabPage6";
+            this.c1DockingTabPage6.Size = new System.Drawing.Size(800, 426);
+            this.c1DockingTabPage6.TabIndex = 5;
+            this.c1DockingTabPage6.Text = "Page6";
+            // 
+            // panel1
+            // 
+            this.panel1.BackColor = System.Drawing.Color.White;
+            this.panel1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(118)))), ((int)(((byte)(135)))));
+            this.panel1.Location = new System.Drawing.Point(12, 58);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(597, 258);
+            this.panel1.TabIndex = 0;
+            this.c1ThemeController1.SetTheme(this.panel1, "(default)");
             // 
             // Form1
             // 
@@ -341,18 +385,19 @@
             ((System.ComponentModel.ISupportInitialize)(this.c1DockingTab1)).EndInit();
             this.c1DockingTab1.ResumeLayout(false);
             this.c1DockingTabPage1.ResumeLayout(false);
+            this.c1DockingTabPage2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.c1FlexGrid1)).EndInit();
+            this.c1DockingTabPage3.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.c1FlexViewer1)).EndInit();
+            this.c1DockingTabPage4.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.c1TextBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.c1TextBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtReqDate)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.c1Button1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.c1ThemeController1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.c1FlexGrid1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtReqDate)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.c1TextBox2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.c1FlexViewer1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.c1Report1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.c1Report2)).EndInit();
-            this.c1DockingTabPage2.ResumeLayout(false);
-            this.c1DockingTabPage3.ResumeLayout(false);
-            this.c1DockingTabPage4.ResumeLayout(false);
+            this.c1DockingTabPage6.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -382,6 +427,11 @@
         private C1.Win.C1Command.C1DockingTabPage c1DockingTabPage4;
         private C1.Win.C1Command.C1DockingTabPage c1DockingTabPage5;
         private C1.Win.FlexReport.C1FlexReport c1FlexReport2;
+        private C1.C1Pdf.C1PdfDocument c1PdfDocument1;
+        private C1.Win.TouchToolKit.C1Magnify c1Magnify1;
+        private C1.Win.C1Command.C1DockingTabPage c1DockingTabPage6;
+        private System.Windows.Forms.Panel panel1;
+        private C1.C1Excel.C1XLBook c1XLBook1;
     }
 }
 

@@ -18,6 +18,10 @@ using C1.Win.C1Document;
 using MySql.Data.Types;
 using System.Net;
 using System.Net.Sockets;
+using C1.Win.C1FlexGrid;
+using C1.C1Excel;
+using System.Collections;
+using System.Diagnostics;
 
 namespace clinic_ivf.control
 {
@@ -57,6 +61,7 @@ namespace clinic_ivf.control
         public String _IPAddress = "";
         public Decimal CreditCharge = 0;
         public Boolean ftpUsePassive = false;
+        Hashtable _styles;
         //public FtpClient ftpC;
         public enum NID_FIELD
         {
@@ -1053,6 +1058,168 @@ namespace clinic_ivf.control
             }
 
             return re;
+        }
+        public void SaveSheet(C1FlexGrid flex, XLSheet sheet, C1XLBook _book, bool fixedCells)
+        {
+            // account for fixed cells
+            //int frows = flex.Rows.Fixed;
+            int frows = 0;// with header
+            int fcols = flex.Cols.Fixed;
+            if (fixedCells) frows = fcols = 0;
+
+            // copy dimensions
+            //int lastRow = flex.Rows.Count - frows - 1;
+            int lastRow = flex.Rows.Count;// with header
+            int lastCol = flex.Cols.Count - fcols - 1;
+            if (lastRow < 0 || lastCol < 0) return;
+            XLCell cell = sheet[lastRow, lastCol];
+
+            // set default properties
+            sheet.Book.DefaultFont = flex.Font;
+            sheet.DefaultRowHeight = C1XLBook.PixelsToTwips(flex.Rows.DefaultSize);
+            sheet.DefaultColumnWidth = C1XLBook.PixelsToTwips(flex.Cols.DefaultSize);
+
+            // prepare to convert styles
+            _styles = new Hashtable();
+
+            // set row/column properties
+            for (int r = frows; r < flex.Rows.Count; r++)
+            {
+                // size/visibility
+                Row fr = flex.Rows[r];
+                XLRow xr = sheet.Rows[r - frows];
+                if (fr.Height >= 0)
+                    xr.Height = C1XLBook.PixelsToTwips(fr.Height);
+                xr.Visible = fr.Visible;
+
+                // style
+                //XLStyle xs = StyleFromFlex(_book,fr.Style, _styles);
+                //if (xs != null)
+                //    xr.Style = xs;
+            }
+            for (int c = fcols; c < flex.Cols.Count; c++)
+            {
+                // size/visibility
+                Column fc = flex.Cols[c];
+                XLColumn xc = sheet.Columns[c - fcols];
+                if (fc.Width >= 0)
+                    xc.Width = C1XLBook.PixelsToTwips(fc.Width);
+                xc.Visible = fc.Visible;
+
+                // style
+                //XLStyle xs = StyleFromFlex(_book, fc.Style, _styles);
+                //if (xs != null)
+                //    xc.Style = xs;
+            }
+
+            // load cells
+            for (int r = frows; r < flex.Rows.Count; r++)
+            {
+                for (int c = fcols; c < flex.Cols.Count; c++)
+                {
+                    // get cell
+                    cell = sheet[r - frows, c - fcols];
+
+                    // apply content
+                    cell.Value = flex[r, c];
+
+                    // apply style
+                    //XLStyle xs = StyleFromFlex(_book,flex.GetCellStyle(r, c), _styles);
+                    //if (xs != null)
+                    //    cell.Style = xs;
+                }
+            }
+        }
+        private XLStyle StyleFromFlex(C1XLBook _book, CellStyle style,Hashtable _styles)
+        {
+            // sanity
+            if (style == null)
+                return null;
+
+            // look it up on list
+            if (_styles.Contains(style))
+                return _styles[style] as XLStyle;
+
+            // create new Excel style
+            XLStyle xs = new XLStyle(_book);
+
+            // set up new style
+            xs.Font = style.Font;
+            if (style.BackColor.ToArgb() != SystemColors.Window.ToArgb())
+            {
+                xs.BackColor = style.BackColor;
+            }
+            xs.WordWrap = style.WordWrap;
+            xs.Format = XLStyle.FormatDotNetToXL(style.Format);
+            switch (style.TextDirection)
+            {
+                case TextDirectionEnum.Up:
+                    xs.Rotation = 90;
+                    break;
+                case TextDirectionEnum.Down:
+                    xs.Rotation = 180;
+                    break;
+            }
+            switch (style.TextAlign)
+            {
+                case TextAlignEnum.CenterBottom:
+                    xs.AlignHorz = XLAlignHorzEnum.Center;
+                    xs.AlignVert = XLAlignVertEnum.Bottom;
+                    break;
+                case TextAlignEnum.CenterCenter:
+                    xs.AlignHorz = XLAlignHorzEnum.Center;
+                    xs.AlignVert = XLAlignVertEnum.Center;
+                    break;
+                case TextAlignEnum.CenterTop:
+                    xs.AlignHorz = XLAlignHorzEnum.Center;
+                    xs.AlignVert = XLAlignVertEnum.Top;
+                    break;
+                case TextAlignEnum.GeneralBottom:
+                    xs.AlignHorz = XLAlignHorzEnum.General;
+                    xs.AlignVert = XLAlignVertEnum.Bottom;
+                    break;
+                case TextAlignEnum.GeneralCenter:
+                    xs.AlignHorz = XLAlignHorzEnum.General;
+                    xs.AlignVert = XLAlignVertEnum.Center;
+                    break;
+                case TextAlignEnum.GeneralTop:
+                    xs.AlignHorz = XLAlignHorzEnum.General;
+                    xs.AlignVert = XLAlignVertEnum.Top;
+                    break;
+                case TextAlignEnum.LeftBottom:
+                    xs.AlignHorz = XLAlignHorzEnum.Left;
+                    xs.AlignVert = XLAlignVertEnum.Bottom;
+                    break;
+                case TextAlignEnum.LeftCenter:
+                    xs.AlignHorz = XLAlignHorzEnum.Left;
+                    xs.AlignVert = XLAlignVertEnum.Center;
+                    break;
+                case TextAlignEnum.LeftTop:
+                    xs.AlignHorz = XLAlignHorzEnum.Left;
+                    xs.AlignVert = XLAlignVertEnum.Top;
+                    break;
+                case TextAlignEnum.RightBottom:
+                    xs.AlignHorz = XLAlignHorzEnum.Right;
+                    xs.AlignVert = XLAlignVertEnum.Bottom;
+                    break;
+                case TextAlignEnum.RightCenter:
+                    xs.AlignHorz = XLAlignHorzEnum.Right;
+                    xs.AlignVert = XLAlignVertEnum.Center;
+                    break;
+                case TextAlignEnum.RightTop:
+                    xs.AlignHorz = XLAlignHorzEnum.Right;
+                    xs.AlignVert = XLAlignVertEnum.Top;
+                    break;
+                default:
+                    Debug.Assert(false);
+                    break;
+            }
+
+            // save it
+            _styles.Add(style, xs);
+
+            // return it
+            return xs;
         }
     }
 }

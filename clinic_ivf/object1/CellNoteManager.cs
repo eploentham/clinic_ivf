@@ -117,18 +117,26 @@ namespace clinic_ivf.object1
 		// (a little red triangle on the upper-right corner)
 		private void _flex_OwnerDrawCell(object sender, C1.Win.C1FlexGrid.OwnerDrawCellEventArgs e)
 		{
-			// check if the cell has a note
-			CellRange rg = _flex.GetCellRange(e.Row, e.Col);
-			if (rg.UserData is CellNote)
-			{
-				// default drawing
-				e.DrawCell();
+            // check if the cell has a note
+            try
+            {
+                CellRange rg = _flex.GetCellRange(e.Row, e.Col);
+                if (rg.UserData is CellNote)
+                {
+                    // default drawing
+                    e.DrawCell();
 
-				// add the little red rectangle that indicaates there's a note on this cell
-				Point pt = new Point(e.Bounds.Right, e.Bounds.Y);
-				Point[] points = { new Point(pt.X - 4, pt.Y), pt, new Point(pt.X, pt.Y + 4) };
-				e.Graphics.FillPolygon(Brushes.Red, points);
-			}
+                    // add the little red rectangle that indicaates there's a note on this cell
+                    Point pt = new Point(e.Bounds.Right, e.Bounds.Y);
+                    Point[] points = { new Point(pt.X - 4, pt.Y), pt, new Point(pt.X, pt.Y + 4) };
+                    e.Graphics.FillPolygon(Brushes.Red, points);
+                }
+            }
+            catch(Exception ex)
+            {
+
+            }
+			
 		}
 
 		// show context menu when user presses the right button
