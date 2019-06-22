@@ -9,7 +9,9 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Drawing.Printing;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
@@ -24,7 +26,7 @@ namespace clinic_ivf.gui
     public partial class FrmAppointmentAdd : Form
     {
         IvfControl ic;
-        String pApmId = "", pttId = "", vsId = "", pid="";
+        String pApmId = "", pttId = "", vsId = "", pid="", printerOld = "";
 
         C1FlexGrid grfpApmAll, grfpApm, grfpApmDayAll;
         Font fEdit, fEditB;
@@ -42,6 +44,8 @@ namespace clinic_ivf.gui
         int colId = 1, colAppointment = 4, colDate = 2, colTime = 3, colDoctor = 5, colSp = 6, colNotice = 7, colE2 = 8, colLh = 9, colEndo = 10, colPrl = 10, colFsh = 11, colRt = 12, colLt = 13;
         Image imgCorr, imgTran;
         static String filenamepic = "";
+        [DllImport("winspool.drv", CharSet = CharSet.Auto, SetLastError = true)]
+        public static extern bool SetDefaultPrinter(string Printer);
 
         public FrmAppointmentAdd(IvfControl ic, String papmId, String pttid, String vsid, String pid)
         {
@@ -114,6 +118,10 @@ namespace clinic_ivf.gui
         private void BtnPrint_Click(object sender, EventArgs e)
         {
             //throw new NotImplementedException();
+            PrinterSettings settings = new PrinterSettings();
+            printerOld = settings.PrinterName;
+            SetDefaultPrinter(ic.iniC.printerAppointment);
+
             FrmReport frm = new FrmReport(ic);
             DataTable dt = new DataTable();
             DataTable dtOld = new DataTable();
@@ -126,6 +134,8 @@ namespace clinic_ivf.gui
 
             frm.setAppointmentPatient(dt);
             frm.ShowDialog(this);
+
+            SetDefaultPrinter(printerOld);
         }
 
         private void ChkTvsDonor_CheckedChanged(object sender, EventArgs e)

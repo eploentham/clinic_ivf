@@ -134,6 +134,7 @@ namespace clinic_ivf.gui
                 qty = row["qty"] != null ? row["qty"].ToString() : " ";
                 unit = row["unit_name"] != null ? row["unit_name"].ToString() : " ";
                 row["unit_name"] = qty +" "+ unit;
+                //MessageBox.Show("unit "+ row["unit_name"].ToString(), "");
             }
             
             //PrinterSettings settings1 = new PrinterSettings();
