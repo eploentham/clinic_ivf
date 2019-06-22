@@ -1,4 +1,5 @@
-﻿using C1.Win.C1FlexGrid;
+﻿
+using C1.Win.C1FlexGrid;
 using C1.Win.C1Input;
 using C1.Win.C1SuperTooltip;
 using C1.Win.C1Themes;
@@ -646,6 +647,7 @@ namespace clinic_ivf.gui
             chkMedicalRecord.Checked = stf.status_module_medicalrecord.Equals("1") ? true : false;
             chkStfDoctor.Checked = stf.status_doctor.Equals("1") ? true : false;
             txtDoctorId.Value = stf.doctor_id;
+            txtDoctorOldId.Value = stf.doctor_id_old;
         }
         private void setStaff()
         {

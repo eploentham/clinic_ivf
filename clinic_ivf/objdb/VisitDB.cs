@@ -460,7 +460,7 @@ namespace clinic_ivf.objdb
             try
             {
                 re = conn.ExecuteNonQuery(conn.conn, sql);
-                updateStatusVoidVisit(vsid);
+                //updateStatusVoidVisit(vsid);
             }
             catch (Exception ex)
             {

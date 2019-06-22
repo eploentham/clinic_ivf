@@ -546,6 +546,7 @@ namespace clinic_ivf.gui
                 String aaa = "images/" + txtIdOld.Text + "/" + filePathName;
                 //setPic(new Bitmap(ic.ftpC.download(filenamepic)));
                 stream = ic.ftpC.download(aaa);
+                if(stream.Length<=0) return;
                 //File file1 = new File();
                 //FileStream fileStream = new FileStream(filePathName, FileMode.Create);
                 //fileStream.CopyTo(stream);
