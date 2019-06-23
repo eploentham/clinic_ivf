@@ -432,6 +432,8 @@
             this.chkLabFormA.BackColor = System.Drawing.Color.Transparent;
             this.chkLabFormA.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
             this.chkLabFormA.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.chkLabFormA.Checked = true;
+            this.chkLabFormA.CheckState = System.Windows.Forms.CheckState.Checked;
             this.chkLabFormA.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.chkLabFormA.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.chkLabFormA.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
@@ -443,7 +445,7 @@
             this.chkLabFormA.Text = "ค้นหา Lab Form A";
             this.theme1.SetTheme(this.chkLabFormA, "(default)");
             this.chkLabFormA.UseVisualStyleBackColor = true;
-            this.chkLabFormA.Value = null;
+            this.chkLabFormA.Value = true;
             this.chkLabFormA.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
             // 
             // btnSearch

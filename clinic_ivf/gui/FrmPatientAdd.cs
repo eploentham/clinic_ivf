@@ -1306,6 +1306,12 @@ namespace clinic_ivf.gui
                 MessageBox.Show("DOB ไม่ถูกต้อง", "");
                 return;
             }
+            String sex = cboSex.SelectedItem == null ? "" : ((ComboBoxItem)cboSex.SelectedItem).Value;
+            if (sex.Equals(""))
+            {
+                MessageBox.Show("Sex ไม่ถูกต้อง", "");
+                return;
+            }
             ic.cStf.staff_id = "";
             FrmPasswordConfirm frm = new FrmPasswordConfirm(ic);
             frm.ShowDialog(this);

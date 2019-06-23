@@ -973,9 +973,9 @@ namespace clinic_ivf.objdb
                 ", ptt." + ptt.patient_hn_2 + ", CONCAT(IFNULL(fpp_2.patient_prefix_description,''),' ', ptt_2." + ptt.patient_firstname_e + ",' ',ptt_2." + ptt.patient_lastname_e + ") as name_2 " +
                 "From " + ptt.table + " ptt " +
                 "Left join f_patient_prefix fpp on fpp.f_patient_prefix_id = ptt.f_patient_prefix_id " +
-                "Left join " + ptt.table + " ptt_1 on ptt." + ptt.patient_hn_1 + "= ptt_1." + ptt.patient_hn + " " +
+                "Left join " + ptt.table + " ptt_1 on ptt." + ptt.patient_hn_1 + "= ptt_1." + ptt.patient_hn + " and ptt.patient_hn_1 <> '' and ptt.patient_hn_1 is not null " +
                 "Left join f_patient_prefix fpp_1 on fpp_1.f_patient_prefix_id = ptt_1.f_patient_prefix_id " +
-                "Left join " + ptt.table + " ptt_2 on ptt." + ptt.patient_hn_2 + "= ptt_2." + ptt.patient_hn + " " +
+                "Left join " + ptt.table + " ptt_2 on ptt." + ptt.patient_hn_2 + "= ptt_2." + ptt.patient_hn + " and ptt.patient_hn_2 <> '' and ptt.patient_hn_2 is not null " +
                 "Left join f_patient_prefix fpp_2 on fpp_2.f_patient_prefix_id = ptt_2.f_patient_prefix_id " +
                 "Where " + whereHN + whereName + wherepid+ wherenameE+ " and ptt."+ptt.active+ "='1'" +
                 "Order By ptt." + ptt.t_patient_id;

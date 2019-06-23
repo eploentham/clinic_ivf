@@ -42,8 +42,6 @@ namespace clinic_ivf.gui
         C1SuperTooltip stt;
         C1SuperErrorProvider sep;
         Image imgCorr, imgTran;
-        
-
         public FrmAppointmentView(IvfControl ic, MainMenu m)
         {
             InitializeComponent();
@@ -98,6 +96,7 @@ namespace clinic_ivf.gui
             SaveFileDialog dlg = new SaveFileDialog();
             dlg.DefaultExt = "xls";
             dlg.Filter = "Excel |*.xls";
+            dlg.InitialDirectory = ic.iniC.pathSaveExcelAppointment;
             dlg.FileName = "*.xls";
             if (dlg.ShowDialog() != DialogResult.OK)
                 return;
@@ -307,8 +306,8 @@ namespace clinic_ivf.gui
         }
         private void setGrf()
         {
-            DataTable dt = new DataTable();
-            DataTable dtD = new DataTable();
+            DataTable dtApmOld = new DataTable();
+            DataTable dtApm = new DataTable();
             ConnectDB con = new ConnectDB(ic.iniC);
             DateTime datestart, dateend;
             String datestart1 = "", dateend1 = "";
@@ -324,17 +323,17 @@ namespace clinic_ivf.gui
 
             if (ic.iniC.statusAppDonor.Equals("1"))
             {
-                dtD = ic.ivfDB.pApmDB.selectByDay(datestart1, dateend1);
-                dt = ic.ivfDB.pApmOldDB.selectByDateDtr(con.connEx, datestart1, dateend1, cboDoctor.Text);
+                dtApm = ic.ivfDB.pApmDB.selectByDay(datestart1, dateend1);
+                dtApmOld = ic.ivfDB.pApmOldDB.selectByDateDtr(con.connEx, datestart1, dateend1, cboDoctor.Text);
             }
             else
             {
-                dtD = ic.ivfDB.pApmDB.selectByDay(con.connEx, datestart1, dateend1);
-                dt = ic.ivfDB.pApmOldDB.selectByDateDtr(datestart1, dateend1, cboDoctor.Text);
+                dtApm = ic.ivfDB.pApmDB.selectByDay(con.connEx, datestart1, dateend1);
+                dtApmOld = ic.ivfDB.pApmOldDB.selectByDateDtr(datestart1, dateend1, cboDoctor.Text);
             }
 
-            setGrfPtt(con, dt, dtD);
-            initTcDtr1(dt, dtD);
+            setGrfPtt(con, dtApmOld, dtApm);
+            initTcDtr1(dtApmOld, dtApm);
             
         }
         private void BtnSearch_Click(object sender, EventArgs e)
@@ -1064,7 +1063,7 @@ namespace clinic_ivf.gui
             grfPtt[1, colVsHCG] = "Scan";
             grfPtt[1, colVsTrans] = "Sperm";
         }
-        private void setGrfPtt(ConnectDB con, DataTable dt, DataTable dtD)
+        private void setGrfPtt(ConnectDB con, DataTable dtApmOld, DataTable dtApm)
         {
             //grfDept.Rows.Count = 7;
             grfPtt.Clear();
@@ -1114,7 +1113,7 @@ namespace clinic_ivf.gui
             //rg1.Style = grfBank.Styles["date"];
             //grfCu.Cols[colID].Visible = false;
             int i = 1;
-            foreach (DataRow row in dt.Rows)
+            foreach (DataRow row in dtApmOld.Rows)
             {
                 Row row1 = grfPtt.Rows.Add();
                 String hormo="", tvs="", opu="", fet="", beta="", other="", appn = "";
@@ -1192,7 +1191,7 @@ namespace clinic_ivf.gui
                 //    grfPtt.Rows[i].StyleNew.BackColor = color;
                 i++;
             }
-            foreach (DataRow row in dtD.Rows)
+            foreach (DataRow row in dtApm.Rows)
             {
                 String hormo = "", tvs = "", opu = "", fet = "", beta = "", other = "", appn = "";
                 int chk = 0;
@@ -1210,6 +1209,7 @@ namespace clinic_ivf.gui
                 //row1[colVsOPU] = row[ic.ivfDB.pApmDB.pApm.opu].ToString();
                 row1[colVsAnes] = row[ic.ivfDB.pApmDB.pApm.doctor_anes].ToString();
                 row1[colVsDoctor] = row[ic.ivfDB.pApmDB.pApm.dtr_name].ToString();
+                row1[colVsSperm] = row[ic.ivfDB.pApmDB.pApm.sperm_collect].ToString().Equals("1") ? imgCorr : imgTran;
                 row1[colVSE2] = row[ic.ivfDB.pApmDB.pApm.e2].ToString().Equals("1") ? imgCorr : imgTran;
                 row1[colVSLh] = row[ic.ivfDB.pApmDB.pApm.lh].ToString().Equals("1") ? imgCorr : imgTran;
                 row1[colVSPrl] = row[ic.ivfDB.pApmDB.pApm.prl].ToString().Equals("1") ? imgCorr : imgTran;

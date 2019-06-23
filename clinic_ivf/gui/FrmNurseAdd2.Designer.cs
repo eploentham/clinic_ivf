@@ -2784,7 +2784,7 @@
             this.c1SplitterPanel4.SizeRatio = 35.421D;
             this.c1SplitterPanel4.TabIndex = 0;
             this.c1SplitterPanel4.Text = "Panel 1";
-            this.c1SplitterPanel4.Width = 553;
+            this.c1SplitterPanel4.Width = 560;
             // 
             // pnAdm
             // 
@@ -2853,7 +2853,7 @@
             this.c1SplitterPanel6.SizeRatio = 21.632D;
             this.c1SplitterPanel6.TabIndex = 0;
             this.c1SplitterPanel6.Text = "Panel 1";
-            this.c1SplitterPanel6.Width = 213;
+            this.c1SplitterPanel6.Width = 220;
             // 
             // pnApmAll
             // 
@@ -3393,7 +3393,7 @@
             this.tabApmDonor.Name = "tabApmDonor";
             this.tabApmDonor.Size = new System.Drawing.Size(678, 118);
             this.tabApmDonor.TabIndex = 1;
-            this.tabApmDonor.Text = "Donor";
+            this.tabApmDonor.Text = "Other";
             // 
             // label105
             // 

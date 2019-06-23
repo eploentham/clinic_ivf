@@ -757,6 +757,33 @@ namespace clinic_ivf.objdb
 
             return dt;
         }
+        public DataTable selectByHNLikeLabFormA(String hn)
+        {
+            DataTable dt = new DataTable();
+            //String date = System.DateTime.Now.Year + "-" + System.DateTime.Now.ToString("MM-dd");
+            String sql = "select vs.visit_vn as id, vs.visit_vn as VN, vs.visit_hn as PIDS " +
+                ", CONCAT(IFNULL(fpp.patient_prefix_description,''),' ', ptt.patient_firstname_e ,' ',ptt.patient_lastname_e)  as PName" +
+                ", vs.visit_begin_visit_time as VDate, vs.visit_hn as PID, ptt.patient_birthday as dob " +
+                ",forma.form_a_id, forma.form_a_code,forma.status_opu_active, forma.status_fet_active, forma.status_sperm_analysis, forma.status_sperm_freezing, forma.status_sperm_iui, forma.status_sperm_pesa " +
+                ", ptt.patient_hn_1 ,CONCAT(IFNULL(fpp_1.patient_prefix_description,''),' ', ptt_1.patient_firstname_e ,' ',ptt_1.patient_lastname_e ) as name_1" +
+                ", ptt.patient_hn_2 ,CONCAT(IFNULL(fpp_2.patient_prefix_description,''),' ', ptt_2.patient_firstname_e ,' ',ptt_2.patient_lastname_e ) as name_2 " +
+                ", CONCAT(IFNULL(fpp_stf.patient_prefix_description,''),' ', stf.staff_fname_e ,' ',stf.staff_lname_e ) as dtr_name " +
+                "From " + vs.table + " vs " +
+                "Left Join lab_t_form_a forma on  vs.t_visit_id = forma.t_visit_id and forma.active = '1' " +
+                "Left Join t_patient ptt on  vs.visit_hn = ptt.patient_hn " +
+                "Left join f_patient_prefix fpp on fpp.f_patient_prefix_id = ptt.f_patient_prefix_id " +
+                "Left join t_patient ptt_1 on ptt.patient_hn_1 = ptt_1.patient_hn and ptt.patient_hn_1 <> '' and ptt.patient_hn_1 is not null " +
+                "Left join f_patient_prefix fpp_1 on fpp_1.f_patient_prefix_id = ptt_1.f_patient_prefix_id " +
+                "Left join t_patient ptt_2 on ptt.patient_hn_2 = ptt_2.patient_hn and ptt.patient_hn_2 <> '' and ptt.patient_hn_2 is not null " +
+                "Left join f_patient_prefix fpp_2 on fpp_2.f_patient_prefix_id = ptt_2.f_patient_prefix_id " +
+                "Left join b_staff stf on vs.doctor_id = stf.staff_id " +
+                "Left join f_patient_prefix fpp_stf on fpp_stf.f_patient_prefix_id = stf.prefix_id " +
+                "Where vs." + vs.visit_hn + " like '%" + hn + "%' " +
+                "Order By vs.visit_vn desc ";
+            dt = conn.selectData(conn.conn, sql);
+
+            return dt;
+        }
         public Visit setVisit(DataTable dt)
         {
             Visit vs1 = new Visit();
