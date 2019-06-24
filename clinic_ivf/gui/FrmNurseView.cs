@@ -345,11 +345,22 @@ namespace clinic_ivf.gui
             grfFinish.Cols[colStatus].Caption = "Status";
 
             ContextMenu menuGw = new ContextMenu();
-            menuGw.MenuItems.Add("&receive operation", new EventHandler(ContextMenu_Apm));
-            menuGw.MenuItems.Add("&Order Entry", new EventHandler(ContextMenu_Apm));
+            menuGw.MenuItems.Add("&Receive operation", new EventHandler(ContextMenu_order_finish));
+            menuGw.MenuItems.Add("&LAB request FORM A", new EventHandler(ContextMenu_LAB_req_formA_Ptt_finish));
+            menuGw.MenuItems.Add("LAB Form Day1", new EventHandler(ContextMenu_Form_day1));
+            //menuGw.MenuItems.Add("&Order Entry", new EventHandler(ContextMenu_Apm));
             menuGw.MenuItems.Add("&Edit Appointment", new EventHandler(ContextMenu_Finish_Apm));
-            menuGw.MenuItems.Add("&Cancel Receive", new EventHandler(ContextMenu_Apm));
-            
+            //menuGw.MenuItems.Add("&Cancel Receive", new EventHandler(ContextMenu_Apm));
+            MenuItem addDevice = new MenuItem("[Form Print]");
+            menuGw.MenuItems.Add(addDevice);
+            //menuGw.MenuItems.Add("Print Pre-Operation Check List", new EventHandler(ContextMenu_prn_check_list_finish));
+            //menuGw.MenuItems.Add("Print Autherization Form", new EventHandler(ContextMenu_prn_authen_sign_finish));
+            addDevice.MenuItems.Add(new MenuItem("Pre-Operation Check List", new EventHandler(ContextMenu_prn_check_list_finish)));
+            addDevice.MenuItems.Add(new MenuItem("Autherization Form", new EventHandler(ContextMenu_prn_authen_sign_finish)));
+            addDevice.MenuItems.Add(new MenuItem("Order OPU", new EventHandler(ContextMenu_prn_order_opu_grfFinish)));
+            addDevice.MenuItems.Add(new MenuItem("Order ET, FET", new EventHandler(ContextMenu_prn_order_et_fet_grfFinish)));
+            addDevice.MenuItems.Add(new MenuItem("Post Operation Note", new EventHandler(ContextMenu_prn_operation_note_grfFinish)));
+            addDevice.MenuItems.Add(new MenuItem("Patient Medical History", new EventHandler(ContextMenu_prn_pmh_grfFinish)));
             grfFinish.ContextMenu = menuGw;
 
             Color color = ColorTranslator.FromHtml(ic.iniC.grfRowColor);
@@ -459,18 +470,20 @@ namespace clinic_ivf.gui
             menuGw.MenuItems.Add("Receive operation", new EventHandler(ContextMenu_order_finish));
             menuGw.MenuItems.Add("&LAB request FORM A", new EventHandler(ContextMenu_LAB_req_formA_Ptt_finish));
             menuGw.MenuItems.Add("LAB Form Day1", new EventHandler(ContextMenu_Form_day1));
-            menuGw.MenuItems.Add("&Order Entry", new EventHandler(ContextMenu_Apm));
+            //menuGw.MenuItems.Add("&Order Entry", new EventHandler(ContextMenu_Apm));
             menuGw.MenuItems.Add("&Edit Appointment", new EventHandler(ContextMenu_Apm_Finish));
             //menuGw.MenuItems.Add("&Cancel Receive", new EventHandler(ContextMenu_Apm));
-            menuGw.MenuItems.Add("Print Pre-Operation Check List", new EventHandler(ContextMenu_prn_check_list_finish));
-            menuGw.MenuItems.Add("Print Autherization Form", new EventHandler(ContextMenu_prn_authen_sign_finish));
+            
             MenuItem addDevice = new MenuItem("[Form Print]");
             menuGw.MenuItems.Add(addDevice);
-            addDevice.MenuItems.Add(new MenuItem("Pre-Operation Check List", new EventHandler(ContextMenu_prn_check_list)));
-            addDevice.MenuItems.Add(new MenuItem("Autherization Form", new EventHandler(ContextMenu_prn_authen_sign)));
-            addDevice.MenuItems.Add(new MenuItem("Order OPU", new EventHandler(ContextMenu_prn_order_opu)));
-            addDevice.MenuItems.Add(new MenuItem("Order ET, FET", new EventHandler(ContextMenu_prn_order_et_fet)));
-            addDevice.MenuItems.Add(new MenuItem("Post Operation Note", new EventHandler(ContextMenu_prn_operation_note)));
+            //menuGw.MenuItems.Add("Print Pre-Operation Check List", new EventHandler(ContextMenu_prn_check_list_finish));
+            //menuGw.MenuItems.Add("Print Autherization Form", new EventHandler(ContextMenu_prn_authen_sign_finish));
+            addDevice.MenuItems.Add(new MenuItem("Pre-Operation Check List", new EventHandler(ContextMenu_prn_check_list_finish)));
+            addDevice.MenuItems.Add(new MenuItem("Autherization Form", new EventHandler(ContextMenu_prn_authen_sign_finish)));
+            addDevice.MenuItems.Add(new MenuItem("Order OPU", new EventHandler(ContextMenu_prn_order_opu_grfFinish)));
+            addDevice.MenuItems.Add(new MenuItem("Order ET, FET", new EventHandler(ContextMenu_prn_order_et_fet_grfFinish)));
+            addDevice.MenuItems.Add(new MenuItem("Post Operation Note", new EventHandler(ContextMenu_prn_operation_note_grfFinish)));
+            addDevice.MenuItems.Add(new MenuItem("Patient Medical History", new EventHandler(ContextMenu_prn_pmh_grfFinish)));
             grfFinish.ContextMenu = menuGw;
 
             Color color = ColorTranslator.FromHtml(ic.iniC.grfRowColor);
@@ -750,6 +763,14 @@ namespace clinic_ivf.gui
             //menuGw.MenuItems.Add("&Add Appointment", new EventHandler(ContextMenu_Apm_Ptt));
             //menuGw.MenuItems.Add("&Cancel Receive", new EventHandler(ContextMenu_Apm_Ptt));
             //menuGw.MenuItems.Add("&No Appointment Close Operation", new EventHandler(ContextMenu_NO_Apm_Ptt));
+            MenuItem addDevice = new MenuItem("[Form Print]");
+            menuGw.MenuItems.Add(addDevice);
+            addDevice.MenuItems.Add(new MenuItem("Pre-Operation Check List", new EventHandler(ContextMenu_prn_check_list_grfSearch)));
+            addDevice.MenuItems.Add(new MenuItem("Autherization Form", new EventHandler(ContextMenu_prn_authen_sign_grfSearch)));
+            addDevice.MenuItems.Add(new MenuItem("Order OPU", new EventHandler(ContextMenu_prn_order_opu_grfSearch)));
+            addDevice.MenuItems.Add(new MenuItem("Order ET, FET", new EventHandler(ContextMenu_prn_order_et_fet_grfSearch)));
+            addDevice.MenuItems.Add(new MenuItem("Post Operation Note", new EventHandler(ContextMenu_prn_operation_note_grfSearch)));
+            addDevice.MenuItems.Add(new MenuItem("Patient Medical History", new EventHandler(ContextMenu_prn_pmh_grfSearch)));
             grfSearch.ContextMenu = menuGw;
 
             Color color = ColorTranslator.FromHtml(ic.iniC.grfRowColor);
@@ -1351,6 +1372,18 @@ namespace clinic_ivf.gui
             frm.setOpdAuthenSign(name, hn);
             frm.ShowDialog(this);
         }
+        private void ContextMenu_prn_authen_sign_grfSearch(object sender, System.EventArgs e)
+        {
+            String chk = "", name = "", vsid = "", pttId = "", hn = "";
+
+            vsid = grfSearch[grfSearch.Row, colID] != null ? grfSearch[grfSearch.Row, colID].ToString() : "";
+            pttId = grfSearch[grfSearch.Row, colPttId] != null ? grfSearch[grfSearch.Row, colPttId].ToString() : "";
+            name = grfSearch[grfSearch.Row, colPttName] != null ? grfSearch[grfSearch.Row, colPttName].ToString() : "";
+            hn = grfSearch[grfSearch.Row, colPttHn] != null ? grfSearch[grfSearch.Row, colPttHn].ToString() : "";
+            FrmReport frm = new FrmReport(ic);
+            frm.setOpdAuthenSign(name, hn);
+            frm.ShowDialog(this);
+        }
         private void ContextMenu_prn_check_list(object sender, System.EventArgs e)
         {
             String chk = "", name = "", vsid = "", pttId = "";
@@ -1360,6 +1393,41 @@ namespace clinic_ivf.gui
             name = grfQue[grfQue.Row, colPttName] != null ? grfQue[grfQue.Row, colPttName].ToString() : "";
             FrmReport frm = new FrmReport(ic);
             frm.setOpdCheckList(name);
+            frm.ShowDialog(this);
+        }
+        private void ContextMenu_prn_check_list_grfSearch(object sender, System.EventArgs e)
+        {
+            String chk = "", name = "", vsid = "", pttId = "";
+
+            vsid = grfSearch[grfSearch.Row, colID] != null ? grfSearch[grfSearch.Row, colID].ToString() : "";
+            pttId = grfSearch[grfSearch.Row, colPttId] != null ? grfSearch[grfSearch.Row, colPttId].ToString() : "";
+            name = grfSearch[grfSearch.Row, colPttName] != null ? grfSearch[grfSearch.Row, colPttName].ToString() : "";
+            FrmReport frm = new FrmReport(ic);
+            frm.setOpdCheckList(name);
+            frm.ShowDialog(this);
+        }
+        private void ContextMenu_prn_order_opu_grfSearch(object sender, System.EventArgs e)
+        {
+            String chk = "", name = "", vsid = "", pttId = "", hn = "";
+
+            vsid = grfSearch[grfSearch.Row, colID] != null ? grfSearch[grfSearch.Row, colID].ToString() : "";
+            pttId = grfSearch[grfSearch.Row, colPttId] != null ? grfSearch[grfSearch.Row, colPttId].ToString() : "";
+            name = grfSearch[grfSearch.Row, colPttName] != null ? grfSearch[grfSearch.Row, colPttName].ToString() : "";
+            hn = grfSearch[grfSearch.Row, colPttHn] != null ? grfSearch[grfSearch.Row, colPttHn].ToString() : "";
+            FrmReport frm = new FrmReport(ic);
+            frm.setOpdOrderOPU(name, hn);
+            frm.ShowDialog(this);
+        }
+        private void ContextMenu_prn_order_opu_grfFinish(object sender, System.EventArgs e)
+        {
+            String chk = "", name = "", vsid = "", pttId = "", hn = "";
+
+            vsid = grfFinish[grfFinish.Row, colID] != null ? grfFinish[grfFinish.Row, colID].ToString() : "";
+            pttId = grfFinish[grfFinish.Row, colPttId] != null ? grfFinish[grfFinish.Row, colPttId].ToString() : "";
+            name = grfFinish[grfFinish.Row, colPttName] != null ? grfFinish[grfFinish.Row, colPttName].ToString() : "";
+            hn = grfFinish[grfFinish.Row, colPttHn] != null ? grfFinish[grfFinish.Row, colPttHn].ToString() : "";
+            FrmReport frm = new FrmReport(ic);
+            frm.setOpdOrderOPU(name, hn);
             frm.ShowDialog(this);
         }
         private void ContextMenu_prn_order_opu(object sender, System.EventArgs e)
@@ -1374,6 +1442,30 @@ namespace clinic_ivf.gui
             frm.setOpdOrderOPU(name, hn);
             frm.ShowDialog(this);
         }
+        private void ContextMenu_prn_order_et_fet_grfSearch(object sender, System.EventArgs e)
+        {
+            String chk = "", name = "", vsid = "", pttId = "", hn = "";
+
+            vsid = grfSearch[grfSearch.Row, colID] != null ? grfSearch[grfSearch.Row, colID].ToString() : "";
+            pttId = grfSearch[grfSearch.Row, colPttId] != null ? grfSearch[grfSearch.Row, colPttId].ToString() : "";
+            name = grfSearch[grfSearch.Row, colPttName] != null ? grfSearch[grfSearch.Row, colPttName].ToString() : "";
+            hn = grfSearch[grfSearch.Row, colPttHn] != null ? grfSearch[grfSearch.Row, colPttHn].ToString() : "";
+            FrmReport frm = new FrmReport(ic);
+            frm.setOpdOrderETFET(name, hn);
+            frm.ShowDialog(this);
+        }
+        private void ContextMenu_prn_order_et_fet_grfFinish(object sender, System.EventArgs e)
+        {
+            String chk = "", name = "", vsid = "", pttId = "", hn = "";
+
+            vsid = grfFinish[grfFinish.Row, colID] != null ? grfFinish[grfFinish.Row, colID].ToString() : "";
+            pttId = grfFinish[grfFinish.Row, colPttId] != null ? grfFinish[grfFinish.Row, colPttId].ToString() : "";
+            name = grfFinish[grfFinish.Row, colPttName] != null ? grfFinish[grfFinish.Row, colPttName].ToString() : "";
+            hn = grfFinish[grfFinish.Row, colPttHn] != null ? grfFinish[grfFinish.Row, colPttHn].ToString() : "";
+            FrmReport frm = new FrmReport(ic);
+            frm.setOpdOrderETFET(name, hn);
+            frm.ShowDialog(this);
+        }
         private void ContextMenu_prn_order_et_fet(object sender, System.EventArgs e)
         {
             String chk = "", name = "", vsid = "", pttId = "", hn = "";
@@ -1386,6 +1478,30 @@ namespace clinic_ivf.gui
             frm.setOpdOrderETFET(name, hn);
             frm.ShowDialog(this);
         }
+        private void ContextMenu_prn_operation_note_grfSearch(object sender, System.EventArgs e)
+        {
+            String chk = "", name = "", vsid = "", pttId = "", hn = "";
+
+            vsid = grfSearch[grfSearch.Row, colID] != null ? grfSearch[grfSearch.Row, colID].ToString() : "";
+            pttId = grfSearch[grfSearch.Row, colPttId] != null ? grfSearch[grfSearch.Row, colPttId].ToString() : "";
+            name = grfSearch[grfSearch.Row, colPttName] != null ? grfSearch[grfSearch.Row, colPttName].ToString() : "";
+            hn = grfSearch[grfSearch.Row, colPttHn] != null ? grfSearch[grfSearch.Row, colPttHn].ToString() : "";
+            FrmReport frm = new FrmReport(ic);
+            frm.setOpdpostoperationnote(name, hn);
+            frm.ShowDialog(this);
+        }
+        private void ContextMenu_prn_operation_note_grfFinish(object sender, System.EventArgs e)
+        {
+            String chk = "", name = "", vsid = "", pttId = "", hn = "";
+
+            vsid = grfFinish[grfFinish.Row, colID] != null ? grfFinish[grfFinish.Row, colID].ToString() : "";
+            pttId = grfFinish[grfFinish.Row, colPttId] != null ? grfFinish[grfFinish.Row, colPttId].ToString() : "";
+            name = grfFinish[grfFinish.Row, colPttName] != null ? grfFinish[grfFinish.Row, colPttName].ToString() : "";
+            hn = grfFinish[grfFinish.Row, colPttHn] != null ? grfFinish[grfFinish.Row, colPttHn].ToString() : "";
+            FrmReport frm = new FrmReport(ic);
+            frm.setOpdpostoperationnote(name, hn);
+            frm.ShowDialog(this);
+        }
         private void ContextMenu_prn_operation_note(object sender, System.EventArgs e)
         {
             String chk = "", name = "", vsid = "", pttId = "", hn = "";
@@ -1396,6 +1512,30 @@ namespace clinic_ivf.gui
             hn = grfQue[grfQue.Row, colPttHn] != null ? grfQue[grfQue.Row, colPttHn].ToString() : "";
             FrmReport frm = new FrmReport(ic);
             frm.setOpdpostoperationnote(name, hn);
+            frm.ShowDialog(this);
+        }
+        private void ContextMenu_prn_pmh_grfFinish(object sender, System.EventArgs e)
+        {
+            String chk = "", name = "", vsid = "", pttId = "", hn = "";
+
+            vsid = grfFinish[grfFinish.Row, colID] != null ? grfFinish[grfFinish.Row, colID].ToString() : "";
+            pttId = grfFinish[grfFinish.Row, colPttId] != null ? grfFinish[grfFinish.Row, colPttId].ToString() : "";
+            name = grfFinish[grfFinish.Row, colPttName] != null ? grfFinish[grfFinish.Row, colPttName].ToString() : "";
+            hn = grfFinish[grfFinish.Row, colPttHn] != null ? grfFinish[grfFinish.Row, colPttHn].ToString() : "";
+            FrmReport frm = new FrmReport(ic);
+            frm.setPatientMedicalHistory(name, hn);
+            frm.ShowDialog(this);
+        }
+        private void ContextMenu_prn_pmh_grfSearch(object sender, System.EventArgs e)
+        {
+            String chk = "", name = "", vsid = "", pttId = "", hn = "";
+
+            vsid = grfSearch[grfSearch.Row, colID] != null ? grfSearch[grfSearch.Row, colID].ToString() : "";
+            pttId = grfSearch[grfSearch.Row, colPttId] != null ? grfSearch[grfSearch.Row, colPttId].ToString() : "";
+            name = grfSearch[grfSearch.Row, colPttName] != null ? grfSearch[grfSearch.Row, colPttName].ToString() : "";
+            hn = grfSearch[grfSearch.Row, colPttHn] != null ? grfSearch[grfSearch.Row, colPttHn].ToString() : "";
+            FrmReport frm = new FrmReport(ic);
+            frm.setPatientMedicalHistory(name, hn);
             frm.ShowDialog(this);
         }
         private void ContextMenu_prn_pmh(object sender, System.EventArgs e)
