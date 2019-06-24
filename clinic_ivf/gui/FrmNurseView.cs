@@ -10,7 +10,9 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Drawing.Printing;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -35,9 +37,12 @@ namespace clinic_ivf.gui
         C1SuperTooltip stt;
         C1SuperErrorProvider sep;
         Timer timer;
+        String printerOld = "";
 
         Boolean pageLoad = false;
         Image imgCorr, imgTran;
+        [DllImport("winspool.drv", CharSet = CharSet.Auto, SetLastError = true)]
+        public static extern bool SetDefaultPrinter(string Printer);
         public FrmNurseView(IvfControl ic, MainMenu m)
         {
             InitializeComponent();
@@ -438,7 +443,7 @@ namespace clinic_ivf.gui
 
             //grfExpn.Rows.Count = dt.Rows.Count + 1;
             grfFinish.Rows.Count = dt.Rows.Count + 1;
-            grfFinish.Cols.Count = 11;
+            grfFinish.Cols.Count = 25;
             //C1TextBox txt = new C1TextBox();
             //C1ComboBox cboproce = new C1ComboBox();
             //ic.ivfDB.itmDB.setCboItem(cboproce);
@@ -771,6 +776,7 @@ namespace clinic_ivf.gui
             addDevice.MenuItems.Add(new MenuItem("Order ET, FET", new EventHandler(ContextMenu_prn_order_et_fet_grfSearch)));
             addDevice.MenuItems.Add(new MenuItem("Post Operation Note", new EventHandler(ContextMenu_prn_operation_note_grfSearch)));
             addDevice.MenuItems.Add(new MenuItem("Patient Medical History", new EventHandler(ContextMenu_prn_pmh_grfSearch)));
+            addDevice.MenuItems.Add(new MenuItem("Print Sticker VN", new EventHandler(ContextMenu_prn_sticker_vn)));
             grfSearch.ContextMenu = menuGw;
 
             Color color = ColorTranslator.FromHtml(ic.iniC.grfRowColor);
@@ -789,7 +795,7 @@ namespace clinic_ivf.gui
                 //grfSearch[i, colVsTime] = row["VStartTime"].ToString();
                 grfSearch[i, colDtr] = row["dtr_name"].ToString();
                 
-                grfSearch[i, colPttId] = row["PIDS"].ToString();
+                grfSearch[i, colPttId] = row["t_patient_id"].ToString();
                 grfSearch[i, colVn] = row["VN"].ToString();
                 grfSearch[i, colFormAId] = row["form_a_id"].ToString();
                 grfSearch[i, colFormACode] = row["form_a_code"].ToString();
@@ -1538,6 +1544,48 @@ namespace clinic_ivf.gui
             frm.setPatientMedicalHistory(name, hn);
             frm.ShowDialog(this);
         }
+        private void ContextMenu_prn_sticker_vn(object sender, System.EventArgs e)
+        {
+            String chk = "", name = "", vsid = "", pttId = "", hn = "", vn="";
+
+            vsid = grfSearch[grfSearch.Row, colID] != null ? grfSearch[grfSearch.Row, colID].ToString() : "";
+            pttId = grfSearch[grfSearch.Row, colPttId] != null ? grfSearch[grfSearch.Row, colPttId].ToString() : "";
+            name = grfSearch[grfSearch.Row, colPttName] != null ? grfSearch[grfSearch.Row, colPttName].ToString() : "";
+            hn = grfSearch[grfSearch.Row, colPttHn] != null ? grfSearch[grfSearch.Row, colPttHn].ToString() : "";
+            vn = grfSearch[grfSearch.Row, colVn] != null ? grfSearch[grfSearch.Row, colVn].ToString() : "";
+            try
+            {
+                PrinterSettings settings = new PrinterSettings();
+                printerOld = settings.PrinterName;
+                SetDefaultPrinter(ic.iniC.printerSticker);
+                                
+                Visit vs = new Visit();
+                vs = ic.ivfDB.vsDB.selectByPk1(vsid);
+                Patient ptt = new Patient();
+                ptt = ic.ivfDB.pttDB.selectByPk1(vs.t_patient_id);
+
+                DataTable dt = new DataTable();
+                dt.Columns.Add("hn", typeof(String));
+                dt.Columns.Add("name", typeof(String));
+                dt.Columns.Add("age", typeof(String));
+                dt.Columns.Add("vn", typeof(String));
+                DataRow row11 = dt.NewRow();
+                row11["hn"] = ptt.patient_hn;
+                row11["name"] = ptt.Name;
+                row11["age"] = "Age " + ptt.AgeStringShort() + " [" + ic.datetoShow(ptt.patient_birthday) + "]";
+                row11["vn"] = vs.visit_vn;
+                dt.Rows.Add(row11);
+                FrmReport frm = new FrmReport(ic);
+                frm.setStickerPatientThemal(dt);
+                frm.ShowDialog(this);
+                SetDefaultPrinter(printerOld);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(this, ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+        }
         private void ContextMenu_prn_pmh(object sender, System.EventArgs e)
         {
             String chk = "", name = "", vsid = "", pttId = "", hn = "";
@@ -1678,14 +1726,16 @@ namespace clinic_ivf.gui
         }
         private void ContextMenu_LAB_req_formA_Ptt_search(object sender, System.EventArgs e)
         {
-            String chk = "", name = "", vsid = "", pttId = "";
+            String chk = "", name = "", vsid = "", pttId = "", hn="", vn="";
             if (grfSearch.Row < 0) return;
             vsid = grfSearch[grfSearch.Row, colSID] != null ? grfSearch[grfSearch.Row, colSID].ToString() : "";
+            vn = grfSearch[grfSearch.Row, colVn] != null ? grfSearch[grfSearch.Row, colVn].ToString() : "";
             pttId = grfSearch[grfSearch.Row, colPttId] != null ? grfSearch[grfSearch.Row, colPttId].ToString() : "";
+            hn = grfSearch[grfSearch.Row, colPttHn] != null ? grfSearch[grfSearch.Row, colPttHn].ToString() : "";
             chk = grfSearch[grfSearch.Row, colPttHn] != null ? grfSearch[grfSearch.Row, colPttHn].ToString() : "";
             name = grfSearch[grfSearch.Row, colPttName] != null ? grfSearch[grfSearch.Row, colPttName].ToString() : "";
             
-            FrmLabFormA frm = new FrmLabFormA(ic, "", pttId, "", vsid);
+            FrmLabFormA frm = new FrmLabFormA(ic, "", pttId, vsid, vn);
             frm.ShowDialog(this);
             setGrfSearch(txtSearch.Text.Trim());
             
@@ -1848,10 +1898,11 @@ namespace clinic_ivf.gui
         }
         private void ContextMenu_Apm_Ptt(object sender, System.EventArgs e)
         {
-            String chk = "", name = "", vsid = "", pttId = "";
+            String chk = "", name = "", vsid = "", pttId = "",pid="";
             if (grfQue.Row < 0) return;
             vsid = grfQue[grfQue.Row, colID] != null ? grfQue[grfQue.Row, colID].ToString() : "";
             pttId = grfQue[grfQue.Row, colPttId] != null ? grfQue[grfQue.Row, colPttId].ToString() : "";
+            pid = grfQue[grfQue.Row, colPID] != null ? grfQue[grfQue.Row, colPID].ToString() : "";
             chk = grfQue[grfQue.Row, colPttHn] != null ? grfQue[grfQue.Row, colPttHn].ToString() : "";
             name = grfQue[grfQue.Row, colPttName] != null ? grfQue[grfQue.Row, colPttName].ToString() : "";
             //FrmNurseAdd frm = new FrmNurseAdd();
@@ -1865,16 +1916,17 @@ namespace clinic_ivf.gui
         }
         private void ContextMenu_order_Search(object sender, System.EventArgs e)
         {
-            String chk = "", name = "", vn = "", pttId = "";
+            String chk = "", name = "", vn = "", pttId = "", pid = "";
 
             vn = grfSearch[grfSearch.Row, colVn] != null ? grfSearch[grfSearch.Row, colVn].ToString() : "";
             pttId = grfSearch[grfSearch.Row, colPttId] != null ? grfSearch[grfSearch.Row, colPttId].ToString() : "";
+            pid = grfQue[grfQue.Row, colPID] != null ? grfQue[grfQue.Row, colPID].ToString() : "";
             chk = grfSearch[grfSearch.Row, colPttHn] != null ? grfSearch[grfSearch.Row, colPttHn].ToString() : "";
             name = grfSearch[grfSearch.Row, colPttName] != null ? grfSearch[grfSearch.Row, colPttName].ToString() : "";
             //FrmNurseAdd frm = new FrmNurseAdd();
             //frm.ShowDialog(this);
 
-            openNurseAdd(pttId, vn, name, "view");
+            openNurseAdd(pttId, vn, name, "view",pid);
             //if (MessageBox.Show("ต้องการ แก้ไข Patient  \n  hn number " + chk + " \n name " + name, "", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == DialogResult.OK)
             //{
             //grfReq.Rows.Remove(grfReq.Row);
@@ -1883,16 +1935,17 @@ namespace clinic_ivf.gui
         }
         private void ContextMenu_order_finish(object sender, System.EventArgs e)
         {
-            String chk = "", name = "", vn = "", pttId = "";
+            String chk = "", name = "", vn = "", pttId = "", pid = "";
 
             vn = grfFinish[grfFinish.Row, colVn] != null ? grfFinish[grfFinish.Row, colVn].ToString() : "";
             pttId = grfFinish[grfFinish.Row, colPttId] != null ? grfFinish[grfFinish.Row, colPttId].ToString() : "";
+            pid = grfQue[grfQue.Row, colPID] != null ? grfQue[grfQue.Row, colPID].ToString() : "";
             chk = grfFinish[grfFinish.Row, colPttHn] != null ? grfFinish[grfFinish.Row, colPttHn].ToString() : "";
             name = grfFinish[grfFinish.Row, colPttName] != null ? grfFinish[grfFinish.Row, colPttName].ToString() : "";
             //FrmNurseAdd frm = new FrmNurseAdd();
             //frm.ShowDialog(this);
 
-            openNurseAdd(pttId, vn, name, "view");
+            openNurseAdd(pttId, vn, name, "view",pid);
             //if (MessageBox.Show("ต้องการ แก้ไข Patient  \n  hn number " + chk + " \n name " + name, "", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == DialogResult.OK)
             //{
             //grfReq.Rows.Remove(grfReq.Row);
@@ -1901,16 +1954,18 @@ namespace clinic_ivf.gui
         }
         private void openNurseAdd1()
         {
-            String chk = "", name = "", id = "", pttId = "";
+            String chk = "", name = "", id = "", pttId = "", vn="", pid="";
 
             id = grfQue[grfQue.Row, colID] != null ? grfQue[grfQue.Row, colID].ToString() : "";
             pttId = grfQue[grfQue.Row, colPttId] != null ? grfQue[grfQue.Row, colPttId].ToString() : "";
+            pid = grfQue[grfQue.Row, colPID] != null ? grfQue[grfQue.Row, colPID].ToString() : "";
             chk = grfQue[grfQue.Row, colPttHn] != null ? grfQue[grfQue.Row, colPttHn].ToString() : "";
             name = grfQue[grfQue.Row, colPttName] != null ? grfQue[grfQue.Row, colPttName].ToString() : "";
+            vn = grfQue[grfQue.Row, colVn] != null ? grfQue[grfQue.Row, colVn].ToString() : "";
             //FrmNurseAdd frm = new FrmNurseAdd();
             //frm.ShowDialog(this);
 
-            openNurseAdd(pttId, id, name, "edit");
+            openNurseAdd(pttId, vn, name, "edit", pid);
         }
         private void ContextMenu_order(object sender, System.EventArgs e)
         {
@@ -1933,9 +1988,9 @@ namespace clinic_ivf.gui
             frm.FormBorderStyle = FormBorderStyle.None;
             menu.AddNewTab(frm, txt);
         }
-        private void openNurseAdd(String pttId, String vsid, String name, String flagview)
+        private void openNurseAdd(String pttId, String vn, String name, String flagview, String pid)
         {
-            FrmNurseAdd2 frm = new FrmNurseAdd2(ic, menu, pttId, vsid, flagview);
+            FrmNurseAdd2 frm = new FrmNurseAdd2(ic, menu, pttId, vn, flagview, pid);
             String txt = "";
             if (!name.Equals(""))
             {

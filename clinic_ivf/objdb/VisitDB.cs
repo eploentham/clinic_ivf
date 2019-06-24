@@ -761,9 +761,9 @@ namespace clinic_ivf.objdb
         {
             DataTable dt = new DataTable();
             //String date = System.DateTime.Now.Year + "-" + System.DateTime.Now.ToString("MM-dd");
-            String sql = "select vs.visit_vn as id, vs.visit_vn as VN, vs.visit_hn as PIDS " +
+            String sql = "select vs.t_visit_id as id, vs.visit_vn as VN, vs.visit_hn as PIDS " +
                 ", CONCAT(IFNULL(fpp.patient_prefix_description,''),' ', ptt.patient_firstname_e ,' ',ptt.patient_lastname_e)  as PName" +
-                ", vs.visit_begin_visit_time as VDate, vs.visit_hn as PID, ptt.patient_birthday as dob " +
+                ", vs.visit_begin_visit_time as VDate, vs.visit_hn as PID, ptt.patient_birthday as dob, ptt.t_patient_id " +
                 ",forma.form_a_id, forma.form_a_code,forma.status_opu_active, forma.status_fet_active, forma.status_sperm_analysis, forma.status_sperm_freezing, forma.status_sperm_iui, forma.status_sperm_pesa " +
                 ", ptt.patient_hn_1 ,CONCAT(IFNULL(fpp_1.patient_prefix_description,''),' ', ptt_1.patient_firstname_e ,' ',ptt_1.patient_lastname_e ) as name_1" +
                 ", ptt.patient_hn_2 ,CONCAT(IFNULL(fpp_2.patient_prefix_description,''),' ', ptt_2.patient_firstname_e ,' ',ptt_2.patient_lastname_e ) as name_2 " +

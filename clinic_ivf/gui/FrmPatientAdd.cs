@@ -2643,7 +2643,7 @@ namespace clinic_ivf.gui
 
             //grfVs.AfterRowColChange += GrfImg_AfterRowColChange;
             //grfVs.MouseDown += GrfImg_MouseDown;
-            //grfVs.DoubleClick += GrfImg_DoubleClick;
+            grfpApm.DoubleClick += GrfpApm_DoubleClick;
             //grfExpnC.CellChanged += new C1.Win.C1FlexGrid.RowColEventHandler(this.grfDept_CellChanged);
             ContextMenu menuGw = new ContextMenu();
             //menuGw.MenuItems.Add("&แก้ไข รายการเบิก", new EventHandler(ContextMenu_edit));
@@ -2655,6 +2655,15 @@ namespace clinic_ivf.gui
             theme1.SetTheme(grfpApm, "Office2016DarkGray");
 
         }
+
+        private void GrfpApm_DoubleClick(object sender, EventArgs e)
+        {
+            //throw new NotImplementedException();
+            if (grfImg.Row <= 0) return;
+            if (grfImg.Col <= 0) return;
+            ContextMenu_edit_papm(null, null);
+        }
+
         private void setGrfpApmDonor(String search)
         {
             grfpApm.Clear();
@@ -2727,7 +2736,9 @@ namespace clinic_ivf.gui
             }
             grfpApm.Cols[colpApmId].Visible = false;
             //grfImg.Cols[colPathPic].Visible = false;
-            //grfpApm.Cols[colImg].AllowEditing = false;
+            grfpApm.Cols[colpApmDate].AllowEditing = false;
+            grfpApm.Cols[colpApmTime].AllowEditing = false;
+            grfpApm.Cols[colpApmRemark].AllowEditing = false;
             //grfpApm.AutoSizeCols();
             //grfpApm.AutoSizeRows();
             theme1.SetTheme(grfpApm, "Office2016DarkGray");

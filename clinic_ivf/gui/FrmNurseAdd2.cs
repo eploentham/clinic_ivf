@@ -31,7 +31,7 @@ namespace clinic_ivf.gui
         MainMenu menu;
         public C1DockingTabPage tab;
 
-        String pttId = "", webcamname = "", vsid = "", flagedit = "", pApmId = "";
+        String pttId = "", webcamname = "", vn = "", flagedit = "", pApmId = "", pid="";
         Patient ptt;
         VisitOld vsOld;
         Visit vs;
@@ -78,13 +78,14 @@ namespace clinic_ivf.gui
         string documentPath;
         RichTextBoxStreamType documentFileType;
         Boolean flagImg = false;
-        public FrmNurseAdd2(IvfControl ic, MainMenu m, String pttid, String vsid, String flagedit)
+        public FrmNurseAdd2(IvfControl ic, MainMenu m, String pttid, String vn, String flagedit, String pid)
         {
             InitializeComponent();
             menu = m;
             this.ic = ic;
-            this.vsid = vsid;
+            this.vn = vn;
             this.pttId = pttid;
+            this.pid = pid;
             this.flagedit = flagedit;
             initConfig();
         }
@@ -212,7 +213,7 @@ namespace clinic_ivf.gui
             cboEggStiId.SelectedIndexChanged += CboEggStiId_SelectedIndexChanged;
             btnEggsNew.Click += BtnEggsNew_Click;
 
-            setControl(vsid);
+            setControl(vn);
             ChkDenyAllergy_CheckedChanged(null, null);
             //btnNew.Click += BtnNew_Click;
             //txtSearch.KeyUp += TxtSearch_KeyUp;
@@ -1794,7 +1795,7 @@ namespace clinic_ivf.gui
             eggs = ic.ivfDB.eggsDB.selectByPk1(txtEggStiId.Text);
             if (eggs.egg_sti_id.Equals(""))
             {
-                eggs = ic.ivfDB.eggsDB.selectByVsId(vsid);
+                eggs = ic.ivfDB.eggsDB.selectByVsId(vn);
                 if (eggs.egg_sti_id.Equals(""))
                 {
                     eggs = ic.ivfDB.eggsDB.selectByPttId(txtPttId.Text);
@@ -2435,11 +2436,11 @@ namespace clinic_ivf.gui
             grfpApmVisit.Clear();
             DataTable dt = new DataTable();
 
-            dt = ic.ivfDB.pApmDB.selectByVisitId(vsid);
+            dt = ic.ivfDB.pApmDB.selectByVisitId(vn);
             if (dt.Rows.Count <= 0)
             {
                 VisitOld vsOld = new VisitOld();
-                vsOld = ic.ivfDB.ovsDB.selectByPk1(vsid);
+                vsOld = ic.ivfDB.ovsDB.selectByPk1(vn);
                 Patient ptt = new Patient();
                 ptt = ic.ivfDB.pttDB.selectByIdOld(vsOld.PID);
                 dt = ic.ivfDB.pApmDB.selectByPtt(ptt.t_patient_id);
@@ -3154,7 +3155,7 @@ namespace clinic_ivf.gui
             String chk = "", name = "", id = "";
             id = grfpApmAll[grfpApmAll.Row, colApmId] != null ? grfpApmAll[grfpApmAll.Row, colApmId].ToString() : "";
             pApmId = id;
-            FrmAppointmentAdd frm = new FrmAppointmentAdd(ic, pApmId, pttId, vsid,pttId);
+            FrmAppointmentAdd frm = new FrmAppointmentAdd(ic, pApmId, pttId, vn,pttId);
             frm.ShowDialog(this);
             setGrfpApmAll();
 
@@ -3409,7 +3410,7 @@ namespace clinic_ivf.gui
             dtse = ic.ivfDB.ojsdDB.selectByVN(vn);
             dtpx = ic.ivfDB.oJpxdDB.selectByVN(vn);
             //dtpkg = ic.ivfDB.opkgsDB.selectByVN(vn);
-            dtpkg = ic.ivfDB.opkgsDB.selectByPID(pttId);    // ต้องดึงตาม HN เพราะ ถ้ามีงวดการชำระ 
+            dtpkg = ic.ivfDB.opkgsDB.selectByPID(pid);    // ต้องดึงตาม HN เพราะ ถ้ามีงวดการชำระ 
 
             //grfExpn.Rows.Count = dt.Rows.Count + 1;
             //grfEmbryo.Rows.Count = dt.Rows.Count + 1;
