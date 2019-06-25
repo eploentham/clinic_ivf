@@ -35,6 +35,9 @@ namespace clinic_ivf.objdb
             oAgn.user_create = "user_create";
             oAgn.user_modi = "user_modi";
             oAgn.active = "active";
+            oAgn.remark = "remark";
+            oAgn.sort1 = "sort1";
+            oAgn.agent_code = "agent_code";
 
             oAgn.pkField = "AgentID";
             oAgn.table = "Agent";
@@ -42,10 +45,21 @@ namespace clinic_ivf.objdb
         public DataTable selectAll()
         {
             DataTable dt = new DataTable();
-            String sql = "select agnO."+oAgn.agentid+ ",agnO." + oAgn.agentname +
+            String sql = "select agnO.* " + 
                 " From " + oAgn.table + " agnO " +
-                " ";
+                "Where "+oAgn.active +"='1'";
                 //"Where agnO." + agnO.active + " ='1' ";
+            dt = conn.selectData(conn.conn, sql);
+
+            return dt;
+        }
+        public DataTable selectAll1()
+        {
+            DataTable dt = new DataTable();
+            String sql = "select agnO."+oAgn.agentid+","+oAgn.agent_code+","+oAgn.agentname+" " +
+                " From " + oAgn.table + " agnO " +
+                "Where " + oAgn.active + "='1'";
+            //"Where agnO." + agnO.active + " ='1' ";
             dt = conn.selectData(conn.conn, sql);
 
             return dt;
@@ -115,10 +129,13 @@ namespace clinic_ivf.objdb
             
             p.agentname = p.agentname == null ? "" : p.agentname;
 
-            sql = "Insert Into " + oAgn.table + "(" + oAgn.agentname + " " +
-                ") " +
-                "Values ('" + p.agentname.Replace("'", "''") +"'" +
-                ")";
+            sql = "Insert Into " + oAgn.table + " set " +
+                " " + oAgn.agentname + " = '" + p.agentname.Replace("'", "''") + "'" +
+                "," + oAgn.agent_code + " = '" + p.agent_code.Replace("'", "''") + "'" +
+                "," + oAgn.active + " = '1'" +
+                "," + oAgn.date_create + " = now()" +
+                "," + oAgn.user_create + " = '" + userId.Replace("'", "''") + "'" +
+                " ";
             try
             {
                 re = conn.ExecuteNonQuery(conn.conn, sql);
@@ -140,7 +157,10 @@ namespace clinic_ivf.objdb
             
 
             sql = "Update " + oAgn.table + " Set " +                
-                " " + oAgn.agentname + " = '" + p.agentname.Replace("'", "''") + "'" +                
+                " " + oAgn.agentname + " = '" + p.agentname.Replace("'", "''") + "'" +
+                "," + oAgn.agent_code + " = '" + p.agent_code.Replace("'", "''") + "'" +
+                "," + oAgn.date_modi + " = now()" +
+                "," + oAgn.user_modi + " = '" + userId.Replace("'", "''") + "'" +
                 "Where " + oAgn.pkField + "='" + p.agentid + "'"
                 ;
 
@@ -259,11 +279,15 @@ namespace clinic_ivf.objdb
             {
                 dept1.agentid = dt.Rows[0][oAgn.agentid].ToString();
                 dept1.agentname = dt.Rows[0][oAgn.agentname].ToString();
+                dept1.agent_code = dt.Rows[0][oAgn.agent_code].ToString();
+                dept1.remark = dt.Rows[0][oAgn.remark].ToString();
             }
             else
             {
                 dept1.agentid = "";
                 dept1.agentname = "";
+                dept1.remark = "";
+                dept1.agent_code = "";
             }
 
             return dept1;

@@ -252,17 +252,17 @@ namespace clinic_ivf.gui
             setKeyEnter();
 
             btnCapture.Enabled = false;
-            cboAgent.Left = txtAgent.Left;
-            if (ic.iniC.statusAppDonor.Equals("1"))
-            {
-                txtAgent.Show();
-                cboAgent.Hide();
-            }
-            else
-            {
-                txtAgent.Hide();
-                cboAgent.Show();
-            }
+            //cboAgent.Left = txtAgent.Left;
+            //if (ic.iniC.statusAppDonor.Equals("1"))
+            //{
+            //    txtAgent.Show();
+            //    cboAgent.Hide();
+            //}
+            //else
+            //{
+            //    txtAgent.Hide();
+            //    cboAgent.Show();
+            //}
             //picPtt.Load("54158.jpg");
             picPtt.SizeMode = PictureBoxSizeMode.StretchImage;
             tabFamily.Hide();
@@ -785,7 +785,7 @@ namespace clinic_ivf.gui
             txtCongenital.Enabled = flag;
             txtNickName.Enabled = flag;
             txtHeight.Enabled = flag;
-            txtAgent.Enabled = flag;
+            //txtAgent.Enabled = flag;
 
             btnSave.Enabled = flag;
             btnEdit.Enabled = flag;
@@ -2792,7 +2792,8 @@ namespace clinic_ivf.gui
             txtMotherLname.Value = ptt.patient_mother_lastname;
             txtCouFname.Value = ptt.patient_couple_firstname;
             txtCouLname.Value = ptt.patient_couple_lastname;
-            txtAgent.Value = ptt.agent;
+            //txtAgent.Value = ptt.agent;
+            ic.setC1Combo(cboAgent, pttO.AgentID);
             txtDrugAllergy.Value = ptt.patient_drugallergy;
             txtRemark.Value = ptt.remark;
             txtDob.Value = ptt.patient_birthday;
@@ -2835,7 +2836,7 @@ namespace clinic_ivf.gui
             ic.setC1Combo(cboName1Rl, ptt.patient_contact_f_patient_relation_id);
             ic.setC1Combo(cboCouRel, ptt.patient_coulpe_f_patient_relation_id);
             ic.setC1Combo(cboCrl, ptt.b_contract_plans_id);
-            txtAgent.Value = ptt.agent;
+            //txtAgent.Value = ptt.agent;
 
             chkOPU.Checked = ptt.status_opu.Equals("1") ? true : false;
             txtNickName.Value = ptt.patient_nickname;
@@ -2911,7 +2912,7 @@ namespace clinic_ivf.gui
             txtMotherLname.Value = ptt.patient_mother_lastname;
             txtCouFname.Value = ptt.patient_couple_firstname;
             txtCouLname.Value = ptt.patient_couple_lastname;
-            txtAgent.Value = ptt.agent;
+            //txtAgent.Value = ptt.agent;
             txtDrugAllergy.Value = ptt.patient_drugallergy;
             txtRemark.Value = ptt.remark;
             txtDob.Value = ptt.patient_birthday;
@@ -3235,7 +3236,7 @@ namespace clinic_ivf.gui
 
             ptt.patient_group = cboPttGroup.SelectedItem == null ? "" : ((ComboBoxItem)cboPttGroup.SelectedItem).Value;
             ptt.patient_type = cboPttType.SelectedItem == null ? "" : ((ComboBoxItem)cboPttType.SelectedItem).Value;
-            ptt.agent = txtAgent.Text;
+            //ptt.agent = txtAgent.Text;
             ptt.patient_drugallergy = txtDrugAllergy.Text;
             ptt.patient_father_mobile = txtFatherMobile.Text;
             ptt.patient_mother_mobile = txtMotherMobile.Text;
@@ -3256,14 +3257,14 @@ namespace clinic_ivf.gui
             ptt.patient_coulpe_f_patient_relation_id = cboCouRel.SelectedItem == null ? "" : ((ComboBoxItem)cboCouRel.SelectedItem).Value;
             ptt.b_contract_plans_id = cboCrl.SelectedItem == null ? "" : ((ComboBoxItem)cboCrl.SelectedItem).Value;
             
-            if (ic.iniC.statusAppDonor.Equals("1"))
-            {
-                ptt.agent = txtAgent.Text;
-            }
-            else
-            {
-                ptt.agent = cboAgent.SelectedItem == null ? "" : ((ComboBoxItem)cboAgent.SelectedItem).Value;
-            }
+            //if (ic.iniC.statusAppDonor.Equals("1"))
+            //{
+            //    ptt.agent = txtAgent.Text;
+            //}
+            //else
+            //{
+            ptt.agent = cboAgent.SelectedItem == null ? "" : ((ComboBoxItem)cboAgent.SelectedItem).Value;
+            //}
 
             ptt.status_opu = chkOPU.Checked == true ? "1" : "0";
             ptt.patient_nickname = txtNickName.Text;

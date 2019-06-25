@@ -10,5 +10,7 @@ namespace clinic_ivf.object1
     {
         public String agentid { get; set; }
         public String agentname { get; set; }
+        public String sort1 { get; set; }
+        public String agent_code { get; set; }
     }
 }

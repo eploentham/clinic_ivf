@@ -32,6 +32,7 @@
             this.theme1 = new C1.Win.C1Themes.C1ThemeController();
             this.splitMain = new System.Windows.Forms.SplitContainer();
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
+            this.txtLmp = new C1.Win.C1Input.C1DateEdit();
             this.label80 = new System.Windows.Forms.Label();
             this.label76 = new System.Windows.Forms.Label();
             this.btnHn2 = new C1.Win.C1Input.C1Button();
@@ -64,7 +65,6 @@
             this.label54 = new System.Windows.Forms.Label();
             this.txtPttLName = new C1.Win.C1Input.C1TextBox();
             this.txtPttName = new C1.Win.C1Input.C1TextBox();
-            this.txtAgent = new C1.Win.C1Input.C1TextBox();
             this.label32 = new System.Windows.Forms.Label();
             this.cboPttGroup = new C1.Win.C1Input.C1ComboBox();
             this.label31 = new System.Windows.Forms.Label();
@@ -280,7 +280,6 @@
             this.printDialog1 = new System.Windows.Forms.PrintDialog();
             this.cPdf = new C1.Win.C1Document.C1PdfDocumentSource(this.components);
             this._c1pdf = new C1.C1Pdf.C1PdfDocument();
-            this.txtLmp = new C1.Win.C1Input.C1DateEdit();
             ((System.ComponentModel.ISupportInitialize)(this.theme1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitMain)).BeginInit();
             this.splitMain.Panel1.SuspendLayout();
@@ -290,6 +289,7 @@
             this.splitContainer2.Panel1.SuspendLayout();
             this.splitContainer2.Panel2.SuspendLayout();
             this.splitContainer2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtLmp)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnHn2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtHn_2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnHn1)).BeginInit();
@@ -312,7 +312,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.btnVoid)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtPttLName)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtPttName)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtAgent)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cboPttGroup)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cboPttType)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtStfConfirmID)).BeginInit();
@@ -444,7 +443,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtBP)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtPulse)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtPttO)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtLmp)).BeginInit();
             this.SuspendLayout();
             // 
             // theme1
@@ -522,7 +520,6 @@
             this.splitContainer2.Panel1.Controls.Add(this.label54);
             this.splitContainer2.Panel1.Controls.Add(this.txtPttLName);
             this.splitContainer2.Panel1.Controls.Add(this.txtPttName);
-            this.splitContainer2.Panel1.Controls.Add(this.txtAgent);
             this.splitContainer2.Panel1.Controls.Add(this.label32);
             this.splitContainer2.Panel1.Controls.Add(this.cboPttGroup);
             this.splitContainer2.Panel1.Controls.Add(this.label31);
@@ -590,6 +587,53 @@
             this.splitContainer2.SplitterDistance = 1153;
             this.splitContainer2.TabIndex = 0;
             this.theme1.SetTheme(this.splitContainer2, "(default)");
+            // 
+            // txtLmp
+            // 
+            this.txtLmp.AllowSpinLoop = false;
+            this.txtLmp.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            // 
+            // 
+            // 
+            this.txtLmp.Calendar.ArrowColor = System.Drawing.Color.Black;
+            this.txtLmp.Calendar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.txtLmp.Calendar.DayNamesFont = new System.Drawing.Font("Tahoma", 8F);
+            this.txtLmp.Calendar.Font = new System.Drawing.Font("Tahoma", 8F);
+            this.txtLmp.Calendar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.txtLmp.Calendar.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(71)))), ((int)(((byte)(47)))));
+            this.txtLmp.Calendar.SelectionForeColor = System.Drawing.Color.White;
+            this.txtLmp.Calendar.TitleBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(230)))));
+            this.txtLmp.Calendar.TitleFont = new System.Drawing.Font("Tahoma", 8F);
+            this.txtLmp.Calendar.TitleForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.txtLmp.Calendar.TodayBorderColor = System.Drawing.Color.White;
+            this.txtLmp.Calendar.TrailingForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
+            this.txtLmp.Calendar.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            this.txtLmp.Culture = 1054;
+            this.txtLmp.CurrentTimeZone = false;
+            this.txtLmp.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
+            this.txtLmp.DisplayFormat.FormatType = C1.Win.C1Input.FormatTypeEnum.ShortDate;
+            this.txtLmp.DisplayFormat.Inherit = ((C1.Win.C1Input.FormatInfoInheritFlags)((((((C1.Win.C1Input.FormatInfoInheritFlags.CustomFormat | C1.Win.C1Input.FormatInfoInheritFlags.NullText) 
+            | C1.Win.C1Input.FormatInfoInheritFlags.EmptyAsNull) 
+            | C1.Win.C1Input.FormatInfoInheritFlags.TrimStart) 
+            | C1.Win.C1Input.FormatInfoInheritFlags.TrimEnd) 
+            | C1.Win.C1Input.FormatInfoInheritFlags.CalendarType)));
+            this.txtLmp.EditFormat.FormatType = C1.Win.C1Input.FormatTypeEnum.ShortDate;
+            this.txtLmp.EditFormat.Inherit = ((C1.Win.C1Input.FormatInfoInheritFlags)((((((C1.Win.C1Input.FormatInfoInheritFlags.CustomFormat | C1.Win.C1Input.FormatInfoInheritFlags.NullText) 
+            | C1.Win.C1Input.FormatInfoInheritFlags.EmptyAsNull) 
+            | C1.Win.C1Input.FormatInfoInheritFlags.TrimStart) 
+            | C1.Win.C1Input.FormatInfoInheritFlags.TrimEnd) 
+            | C1.Win.C1Input.FormatInfoInheritFlags.CalendarType)));
+            this.txtLmp.EmptyAsNull = true;
+            this.txtLmp.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtLmp.GMTOffset = System.TimeSpan.Parse("00:00:00");
+            this.txtLmp.ImagePadding = new System.Windows.Forms.Padding(0);
+            this.txtLmp.Location = new System.Drawing.Point(56, 310);
+            this.txtLmp.Name = "txtLmp";
+            this.txtLmp.Size = new System.Drawing.Size(119, 20);
+            this.txtLmp.TabIndex = 732;
+            this.txtLmp.Tag = null;
+            this.theme1.SetTheme(this.txtLmp, "(default)");
+            this.txtLmp.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
             // 
             // label80
             // 
@@ -984,7 +1028,7 @@
             this.cboAgent.ImagePadding = new System.Windows.Forms.Padding(0);
             this.cboAgent.ItemsDisplayMember = "";
             this.cboAgent.ItemsValueMember = "";
-            this.cboAgent.Location = new System.Drawing.Point(76, 138);
+            this.cboAgent.Location = new System.Drawing.Point(68, 138);
             this.cboAgent.Name = "cboAgent";
             this.cboAgent.Size = new System.Drawing.Size(124, 20);
             this.cboAgent.Style.DropDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
@@ -1047,19 +1091,6 @@
             this.txtPttName.Tag = null;
             this.theme1.SetTheme(this.txtPttName, "(default)");
             this.txtPttName.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
-            // 
-            // txtAgent
-            // 
-            this.txtAgent.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtAgent.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
-            this.txtAgent.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.txtAgent.Location = new System.Drawing.Point(67, 138);
-            this.txtAgent.Name = "txtAgent";
-            this.txtAgent.Size = new System.Drawing.Size(125, 20);
-            this.txtAgent.TabIndex = 612;
-            this.txtAgent.Tag = null;
-            this.theme1.SetTheme(this.txtAgent, "(default)");
-            this.txtAgent.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
             // 
             // label32
             // 
@@ -4258,53 +4289,6 @@
             this._c1pdf.UseFastTextOut = true;
             this._c1pdf.UseFontShaping = true;
             // 
-            // txtLmp
-            // 
-            this.txtLmp.AllowSpinLoop = false;
-            this.txtLmp.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            // 
-            // 
-            // 
-            this.txtLmp.Calendar.ArrowColor = System.Drawing.Color.Black;
-            this.txtLmp.Calendar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.txtLmp.Calendar.DayNamesFont = new System.Drawing.Font("Tahoma", 8F);
-            this.txtLmp.Calendar.Font = new System.Drawing.Font("Tahoma", 8F);
-            this.txtLmp.Calendar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.txtLmp.Calendar.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(71)))), ((int)(((byte)(47)))));
-            this.txtLmp.Calendar.SelectionForeColor = System.Drawing.Color.White;
-            this.txtLmp.Calendar.TitleBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(230)))));
-            this.txtLmp.Calendar.TitleFont = new System.Drawing.Font("Tahoma", 8F);
-            this.txtLmp.Calendar.TitleForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.txtLmp.Calendar.TodayBorderColor = System.Drawing.Color.White;
-            this.txtLmp.Calendar.TrailingForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
-            this.txtLmp.Calendar.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
-            this.txtLmp.Culture = 1054;
-            this.txtLmp.CurrentTimeZone = false;
-            this.txtLmp.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
-            this.txtLmp.DisplayFormat.FormatType = C1.Win.C1Input.FormatTypeEnum.ShortDate;
-            this.txtLmp.DisplayFormat.Inherit = ((C1.Win.C1Input.FormatInfoInheritFlags)((((((C1.Win.C1Input.FormatInfoInheritFlags.CustomFormat | C1.Win.C1Input.FormatInfoInheritFlags.NullText) 
-            | C1.Win.C1Input.FormatInfoInheritFlags.EmptyAsNull) 
-            | C1.Win.C1Input.FormatInfoInheritFlags.TrimStart) 
-            | C1.Win.C1Input.FormatInfoInheritFlags.TrimEnd) 
-            | C1.Win.C1Input.FormatInfoInheritFlags.CalendarType)));
-            this.txtLmp.EditFormat.FormatType = C1.Win.C1Input.FormatTypeEnum.ShortDate;
-            this.txtLmp.EditFormat.Inherit = ((C1.Win.C1Input.FormatInfoInheritFlags)((((((C1.Win.C1Input.FormatInfoInheritFlags.CustomFormat | C1.Win.C1Input.FormatInfoInheritFlags.NullText) 
-            | C1.Win.C1Input.FormatInfoInheritFlags.EmptyAsNull) 
-            | C1.Win.C1Input.FormatInfoInheritFlags.TrimStart) 
-            | C1.Win.C1Input.FormatInfoInheritFlags.TrimEnd) 
-            | C1.Win.C1Input.FormatInfoInheritFlags.CalendarType)));
-            this.txtLmp.EmptyAsNull = true;
-            this.txtLmp.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtLmp.GMTOffset = System.TimeSpan.Parse("00:00:00");
-            this.txtLmp.ImagePadding = new System.Windows.Forms.Padding(0);
-            this.txtLmp.Location = new System.Drawing.Point(56, 310);
-            this.txtLmp.Name = "txtLmp";
-            this.txtLmp.Size = new System.Drawing.Size(119, 20);
-            this.txtLmp.TabIndex = 732;
-            this.txtLmp.Tag = null;
-            this.theme1.SetTheme(this.txtLmp, "(default)");
-            this.txtLmp.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
-            // 
             // FrmPatientAdd
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -4325,6 +4309,7 @@
             this.splitContainer2.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).EndInit();
             this.splitContainer2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.txtLmp)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnHn2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtHn_2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnHn1)).EndInit();
@@ -4347,7 +4332,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.btnVoid)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtPttLName)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtPttName)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtAgent)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cboPttGroup)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cboPttType)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtStfConfirmID)).EndInit();
@@ -4485,7 +4469,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtBP)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtPulse)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtPttO)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtLmp)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -4578,7 +4561,6 @@
         private System.Windows.Forms.Label label31;
         private System.Windows.Forms.Label label30;
         private C1.Win.C1Input.C1ComboBox cboPttType;
-        private C1.Win.C1Input.C1TextBox txtAgent;
         private System.Windows.Forms.Label label32;
         private C1.Win.C1Input.C1ComboBox cboPttGroup;
         private System.Windows.Forms.Label label34;

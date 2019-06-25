@@ -335,6 +335,11 @@ namespace clinic_ivf.gui
             //else
             //{
             ic.cStf.staff_id = "";
+            if (cboTimepApm.Text.Equals(""))
+            {
+                MessageBox.Show("เวลานัด ไม่ถูกต้อง", "");
+                return;
+            }
             FrmPasswordConfirm frm = new FrmPasswordConfirm(ic);
             frm.ShowDialog(this);
             if (!ic.cStf.staff_id.Equals(""))

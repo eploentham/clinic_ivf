@@ -26,7 +26,7 @@ namespace clinic_ivf.gui
 
         Color bg, fc;
         Font ff, ffB;
-        int colID = 1, colCode = 3, colName = 2, colRemark = 4, colE = 5, colS = 6, coledit = 7, colCnt = 7;
+        int colID = 1, colCode = 2, colName = 3, colRemark = 4, colE = 5, colS = 6, coledit = 7, colCnt = 7;
 
         C1FlexGrid grfAgn;
 
@@ -65,8 +65,8 @@ namespace clinic_ivf.gui
             btnSave.Click += BtnSave_Click;
             btnEdit.Click += BtnEdit_Click;
 
-            initGrfPosi();
-            setGrfPosi();
+            initGrfAgent();
+            setGrfAgent();
             setControlEnable(false);
             setFocusColor();
             sB1.Text = "";
@@ -101,7 +101,7 @@ namespace clinic_ivf.gui
                 {
                     btnSave.Image = Resources.accept_database24;
                 }
-                setGrfPosi();
+                setGrfAgent();
                 setControlEnable(false);
                 //this.Dispose();
             }
@@ -117,7 +117,7 @@ namespace clinic_ivf.gui
             setControlEnable(flagEdit);
         }
 
-        private void initGrfPosi()
+        private void initGrfAgent()
         {
             grfAgn = new C1FlexGrid();
             grfAgn.Font = fEdit;
@@ -135,11 +135,11 @@ namespace clinic_ivf.gui
             C1Theme theme = C1ThemeController.GetThemeByName("Office2013Red", false);
             C1ThemeController.ApplyThemeToObject(grfAgn, theme);
         }
-        private void setGrfPosi()
+        private void setGrfAgent()
         {
             //grfDept.Rows.Count = 7;
 
-            grfAgn.DataSource = ic.ivfDB.oAgnDB.selectAll();
+            grfAgn.DataSource = ic.ivfDB.oAgnDB.selectAll1();
             grfAgn.Cols.Count = 4;
             //CellStyle cs = grfAgn.Styles.Add("btn");
             //cs.DataType = typeof(Button);
@@ -163,7 +163,7 @@ namespace clinic_ivf.gui
             //grdFlex.Cols[colID].Caption = "no";
             //grfDept.Cols[colCode].Caption = "รหัส";
 
-            grfAgn.Cols[colID].Caption = "รหัส";
+            grfAgn.Cols[colCode].Caption = "รหัส";
             grfAgn.Cols[colName].Caption = "ชื่อAgent";
             //grfAgn.Cols[colRemark].Caption = "หมายเหตุ";
 
@@ -175,8 +175,8 @@ namespace clinic_ivf.gui
                 if (i % 2 == 0)
                     grfAgn.Rows[i].StyleNew.BackColor = ColorTranslator.FromHtml(ic.iniC.grfRowColor);
             }
-            grfAgn.Cols[colCode].Visible = false;
-            //grfAgn.Cols[colE].Visible = false;
+            grfAgn.Cols[colID].Visible = false;
+            //grfAgn.Cols[colRemark].Visible = false;
             //grfAgn.Cols[colS].Visible = false;
             //grfAgn.Cols[colRemark].Visible = false;
         }
@@ -208,7 +208,7 @@ namespace clinic_ivf.gui
         {
             agn = ic.ivfDB.oAgnDB.selectByPk1(posiId);
             txtID.Value = agn.agentid;
-            txtAgnCode.Value = agn.agentid;
+            txtAgnCode.Value = agn.agent_code;
             txtAgnNameT.Value = agn.agentname;
             //txtPosiNameT.Value = agn.posi_name_t;
             //txtRemark.Value = agn.remark;
@@ -242,7 +242,7 @@ namespace clinic_ivf.gui
         {
             agn.agentid = txtID.Text;
             agn.agentname = txtAgnNameT.Text;
-            //agn.posi_name_t = txtPosiNameT.Text;
+            agn.agent_code = txtAgnCode.Text;
             //posi.posi_name_e = txtPosiNameE.Text;
             //agn.remark = txtRemark.Text;
             //posi.status_doctor = chkStatusDoctor.Checked == true ? "1" : "0";
@@ -316,29 +316,29 @@ namespace clinic_ivf.gui
             if (MessageBox.Show("ต้องการ ยกเลิกช้อมูล ", "", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == DialogResult.OK)
             {
                 ic.ivfDB.posiDB.VoidPosition(txtID.Text, userIdVoid);
-                setGrfPosi();
+                setGrfAgent();
             }
         }
-        private void btnSave_Click(object sender, EventArgs e)
-        {
-            if (MessageBox.Show("ต้องการ บันทึกช้อมูล ", "", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == DialogResult.OK)
-            {
-                setAgent();
-                String re = ic.ivfDB.oAgnDB.insertAgent(agn, ic.user.staff_id);
-                int chk = 0;
-                if (int.TryParse(re, out chk))
-                {
-                    btnSave.Image = Resources.accept_database24;
-                }
-                else
-                {
-                    btnSave.Image = Resources.accept_database24;
-                }
-                setGrfPosi();
-                //setGrdView();
-                //this.Dispose();
-            }
-        }
+        //private void btnSave_Click(object sender, EventArgs e)
+        //{
+        //    if (MessageBox.Show("ต้องการ บันทึกช้อมูล ", "", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == DialogResult.OK)
+        //    {
+        //        setAgent();
+        //        String re = ic.ivfDB.oAgnDB.insertAgent(agn, ic.user.staff_id);
+        //        int chk = 0;
+        //        if (int.TryParse(re, out chk))
+        //        {
+        //            btnSave.Image = Resources.accept_database24;
+        //        }
+        //        else
+        //        {
+        //            btnSave.Image = Resources.accept_database24;
+        //        }
+        //        setGrfAgent();
+        //        //setGrdView();
+        //        //this.Dispose();
+        //    }
+        //}
         private void chkVoid_Click(object sender, EventArgs e)
         {
             if (btnVoid.Visible)
