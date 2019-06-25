@@ -818,6 +818,9 @@ namespace clinic_ivf.gui
                     ptt = ic.ivfDB.pttDB.selectByPk1(pttid);
                     txtHnFeMale.Value = ptt.patient_hn;
                     txtNameFeMale.Value = ptt.Name;
+                    txtPttId.Value = ptt.t_patient_id;
+                    txtVsId.Value = vsid;
+                    txtVnOld.Value = vn;
                     if (ic.iniC.statusAppDonor.Equals("1"))
                     {
                         if (ptt.f_sex_id.Equals("1"))//male
@@ -828,6 +831,7 @@ namespace clinic_ivf.gui
                             txtNameMale.Value = ptt.Name;
                             txtHnFeMale.Value = ptt.patient_hn_1;
                             txtNameFeMale.Value = ptt1.Name;
+                            txtDobMale.Value = ptt.patient_birthday;
                         }
                         else if (ptt.f_sex_id.Equals("2"))//female
                         {
@@ -843,6 +847,8 @@ namespace clinic_ivf.gui
                                 Patient ptt2 = new Patient();
                                 ptt2 = ic.ivfDB.pttDB.selectByHn(ptt.patient_hn_2);
                                 txtNameMale.Value = ptt2.Name;
+                                txtDobFeMale.Value = ptt1.patient_birthday;
+                                txtDobMale.Value = ptt2.patient_birthday;
                             }
                             else if (ptt.patient_hn_1.Equals("") && !ptt.patient_hn_2.Equals(""))   // record female
                             {
@@ -852,6 +858,7 @@ namespace clinic_ivf.gui
                                 txtNameMale.Value = ptt1.Name;
                                 txtHnFeMale.Value = ptt.patient_hn;
                                 txtNameFeMale.Value = ptt.Name;
+                                txtDobMale.Value = ptt1.patient_birthday;
                             }
                         }
                         //if (!ptt.patient_hn_1.Equals("") && !ptt.patient_hn_2.Equals(""))    // record donor
@@ -896,15 +903,19 @@ namespace clinic_ivf.gui
                             txtNameMale.Value = ptt.Name;
                             txtHnFeMale.Value = ptt.patient_hn_1;
                             txtNameFeMale.Value = ptt1.Name;
+                            txtDobMale.Value = ptt.patient_birthday;
+                            txtDobFeMale.Value = ptt1.patient_birthday;
                         }
                         else if (ptt.f_sex_id.Equals("2"))//female
                         {
-                            Patient ptt1 = new Patient();
-                            ptt1 = ic.ivfDB.pttDB.selectByHn(ptt.patient_hn_2);
+                            Patient ptt2 = new Patient();
+                            ptt2 = ic.ivfDB.pttDB.selectByHn(ptt.patient_hn_2);
                             txtHnMale.Value = ptt.patient_hn_2;
-                            txtNameMale.Value = ptt1.Name;
+                            txtNameMale.Value = ptt2.Name;
                             txtHnFeMale.Value = ptt.patient_hn;
                             txtNameFeMale.Value = ptt.Name;
+                            txtDobMale.Value = ptt2.patient_birthday;
+                            txtDobFeMale.Value = ptt.patient_birthday;
                         }
                     }
                     //txtDobFeMale.Value = ptt.d
