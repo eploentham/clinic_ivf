@@ -745,3 +745,34 @@ ALTER TABLE `ivf_101`.`lab_b_order_group`
 ADD COLUMN `qty` DECIMAL(17,2) NULL AFTER `lab_order_id`;
 
 
+CREATE TABLE `ivf_101_donor`.`t_closeday` (
+  `closeday_id` BIGINT NOT NULL AUTO_INCREMENT,
+  `closeday_date` VARCHAR(45) NULL COMMENT 'วันที่ปิดเวร',
+  `cnt_patient` DECIMAL(17,2) NULL COMMENT 'จำนวนคนไข้',
+  `amt_cash` DECIMAL(17,2) NULL,
+  `amt_credit_card` DECIMAL(17,2) NULL,
+  `amount` DECIMAL(17,2) NULL,
+  `expense_1` DECIMAL(17,2) NULL COMMENT 'ค่าใช้จ่าย',
+  `expense_2` DECIMAL(17,2) NULL COMMENT 'ค่าใช้จ่าย',
+  `expense_3` DECIMAL(17,2) NULL COMMENT 'ค่าใช้จ่าย',
+  `expense_4` DECIMAL(17,2) NULL COMMENT 'ค่าใช้จ่าย',
+  `expense_5` DECIMAL(17,2) NULL COMMENT 'ค่าใช้จ่าย',
+  `total_cash` DECIMAL(17,2) NULL COMMENT 'ยอดคงเหลือหลังหักค่าใช้จ่าย',
+  `active` VARCHAR(45) NULL,
+  `remark` VARCHAR(45) NULL,
+  `date_create` VARCHAR(45) NULL,
+  `date_modi` VARCHAR(45) NULL,
+  `date_cancel` VARCHAR(45) NULL,
+  `user_create` VARCHAR(45) NULL,
+  `user_modi` VARCHAR(45) NULL,
+  `user_cancel` VARCHAR(45) NULL,
+  PRIMARY KEY (`closeday_id`))
+ENGINE = MyISAM
+DEFAULT CHARACTER SET = utf8
+COLLATE = utf8_bin
+COMMENT = 'id=244';
+
+ALTER TABLE `ivf_101_donor`.`t_closeday` AUTO_INCREMENT = 244000000;
+
+ALTER TABLE `ivf_101`.`t_closeday` 
+ADD COLUMN `deposit` DECIMAL(17,2) NULL COMMENT 'เงินฝาก' AFTER `expense_5`;

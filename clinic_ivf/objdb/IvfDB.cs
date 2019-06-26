@@ -99,6 +99,8 @@ namespace clinic_ivf.objdb
         public LabSpermDB lspermDB;
         public LabOrderGroupDB logDB;
         public PatientMedicalHistoryDB pmhDB;
+        public ClosedayDB cldDB;
+        public ClosedayDetailDB clddDB;
         public IvfDB(ConnectDB c)
         {
             conn = c;
@@ -187,7 +189,9 @@ namespace clinic_ivf.objdb
             stkredDB = new StockReturnDetailDB(conn);
             lspermDB = new LabSpermDB(conn);
             logDB = new LabOrderGroupDB(conn);
-            pmhDB = new PatientMedicalHistoryDB(conn);            
+            pmhDB = new PatientMedicalHistoryDB(conn);
+            cldDB = new ClosedayDB(conn);
+            clddDB = new ClosedayDetailDB(conn);
 
             Console.WriteLine("ivfDB end");
         }

@@ -391,7 +391,7 @@ namespace clinic_ivf.objdb
             
             sql = "Update " + dsc.table + " Set " +
                 " " + dsc.active + " = '3'" +
-                "," + dsc.date_cancel + " = getdate()" +
+                "," + dsc.date_cancel + " = now()" +
                 "," + dsc.user_cancel + " = '" + userId + "'" +
                 "Where " + dsc.pkField + "='" + id + "'"
                 ;
