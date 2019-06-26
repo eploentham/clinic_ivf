@@ -124,6 +124,7 @@ namespace clinic_ivf.objdb
             vs.patient_hn_male = "patient_hn_male";
             vs.doctor_id = "doctor_id";
             vs.patient_hn_2 = "patient_hn_2";
+            vs.closeday_id = "closeday_id";
 
             vs.table = "t_visit";
             vs.pkField = "t_visit_id";
@@ -242,6 +243,7 @@ namespace clinic_ivf.objdb
             p.b_ncd_group_id = long.TryParse(p.b_ncd_group_id, out chk) ? chk.ToString() : "0";
             p.visit_lab_status_id = long.TryParse(p.visit_lab_status_id, out chk) ? chk.ToString() : "0";
             p.doctor_id = long.TryParse(p.doctor_id, out chk) ? chk.ToString() : "0";
+            p.closeday_id = long.TryParse(p.closeday_id, out chk) ? chk.ToString() : "0";
         }
         public String insert(Visit p, String userId)
         {
@@ -338,6 +340,7 @@ namespace clinic_ivf.objdb
                     "," + vs.patient_hn_male + "='" + p.patient_hn_male + "' " +
                     "," + vs.doctor_id + "='" + p.doctor_id + "' " +
                     "," + vs.patient_hn_2 + "='" + p.patient_hn_2 + "' " +
+                    "," + vs.closeday_id + "='0' " +
                     "";
                 re = conn.ExecuteNonQuery(conn.conn, sql);
             }
@@ -423,6 +426,20 @@ namespace clinic_ivf.objdb
             dt = conn.selectData(conn.conn, sql);
             cop1 = setVisit(dt);
             return cop1;
+        }
+        public String selectCloseDay()
+        {
+            String cnt = "";
+            DataTable dt = new DataTable();
+            String sql = "select count(1) as cnt " +
+                "From " + vs.table + " vs " +
+                "Where vs." + vs.closeday_id + " ='0' and vs."+vs.f_visit_status_id +" <> '4' ";
+            dt = conn.selectData(conn.conn, sql);
+            if (dt.Rows.Count >= 1)
+            {
+                cnt = dt.Rows[0]["cnt"].ToString();
+            }
+            return cnt;
         }
         //public Visit selectByVnOld(String pttId)
         //{

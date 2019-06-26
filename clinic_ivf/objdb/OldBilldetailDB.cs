@@ -44,6 +44,7 @@ namespace clinic_ivf.objdb
             obilld.user_cancel = "user_cancel";
             obilld.user_create = "user_create";
             obilld.user_modi = "user_modi";
+            obilld.closeday_id = "closeday_id";
 
             obilld.table = "BillDetail";
             obilld.pkField = "ID";
@@ -132,7 +133,7 @@ namespace clinic_ivf.objdb
             p.VN = long.TryParse(p.VN, out chk) ? chk.ToString() : "0";
             p.item_id = long.TryParse(p.item_id, out chk) ? chk.ToString() : "0";
             p.pcksid = long.TryParse(p.pcksid, out chk) ? chk.ToString() : "0";
-
+            p.closeday_id = long.TryParse(p.closeday_id, out chk) ? chk.ToString() : "0";
 
             p.Price = decimal.TryParse(p.Price, out chk1) ? chk1.ToString() : "0";            
             p.Total = decimal.TryParse(p.Total, out chk1) ? chk1.ToString() : "0";
@@ -174,6 +175,7 @@ namespace clinic_ivf.objdb
                 "," + obilld.sort1 + "= '" + p.sort1 + "'" +
                 "," + obilld.active + "= '1'" +
                 "," + obilld.bill_id + "= '" + p.bill_id + "'" +
+                "," + obilld.closeday_id + "= '0'" +
                 "";
             try
             {

@@ -58,6 +58,7 @@ namespace clinic_ivf.objdb
             obillh.user_modi = "user_modi";
             obillh.cash = "cash";
             obillh.credit = "credit";
+            obillh.closeday_id = "closeday_id";
 
             obillh.table = "BillHeader";
             obillh.pkField = "VN";
@@ -102,6 +103,14 @@ namespace clinic_ivf.objdb
                 billno = dt.Rows[0]["receipt_no"].ToString();
             }
             return billno;
+        }
+        public String selectCloseDay()
+        {
+            String amt = "", sql="";
+            sql = "Select sum(";
+
+
+            return amt;
         }
         public String selectBillNoByVN(String vn)
         {
@@ -185,6 +194,7 @@ namespace clinic_ivf.objdb
             p.CreditCardID = long.TryParse(p.CreditCardID, out chk) ? chk.ToString() : "0";
             p.PID = long.TryParse(p.PID, out chk) ? chk.ToString() : "0";
             p.IntLock = long.TryParse(p.IntLock, out chk) ? chk.ToString() : "0";
+            p.closeday_id = long.TryParse(p.closeday_id, out chk) ? chk.ToString() : "0";
 
             p.Include_Pkg_Price = decimal.TryParse(p.Include_Pkg_Price, out chk1) ? chk.ToString() : "0";
             p.Extra_Pkg_Price = decimal.TryParse(p.Extra_Pkg_Price, out chk1) ? chk.ToString() : "0";
@@ -240,6 +250,7 @@ namespace clinic_ivf.objdb
                 "," + obillh.ExtBillNo + " = '" + p.ExtBillNo + "'" +
                 "," + obillh.IntLock + " = '" + p.IntLock + "' " +
                 "," + obillh.active + " = '1' " +
+                "," + obillh.closeday_id + " = '0' " +
                 "";
             try
             {
@@ -390,7 +401,7 @@ namespace clinic_ivf.objdb
             }
             return re;
         }
-        public String updateReceiptNoByBillId(String billid, String billno, String cash, String credit, String creditnumber, String cashid, String creditid)
+        public String updateReceiptNoByBillId(String billid, String billno, String cash, String credit, String creditnumber, String cashid, String creditid, String total, String discount)
         {
             String re = "", sql = "";
             long chk = 0;
@@ -404,6 +415,8 @@ namespace clinic_ivf.objdb
                 "," + obillh.CreditCardNumber + "='" + creditnumber + "' " +
                 "," + obillh.CashID + "='" + cashid + "' " +
                 "," + obillh.CreditCardID + "='" + creditid + "' " +
+                "," + obillh.Total + "='" + total + "' " +
+                "," + obillh.Discount + "='" + discount + "' " +
                 "Where " + obillh.bill_id + "='" + billid + "' ";
             try
             {

@@ -58,6 +58,7 @@ namespace clinic_ivf.gui
 
             tC.SelectedTabChanged += TC_SelectedTabChanged;
             btnSearch.Click += BtnSearch_Click;
+            txtCldDate.Value = System.DateTime.Now.Year + "-" + System.DateTime.Now.ToString("MM-dd");
 
             initGrfQue();
             initGrfFinish();
@@ -91,8 +92,18 @@ namespace clinic_ivf.gui
             {
                 setGrfQue();
             }
+            else if (tC.SelectedTab == tabCloseDay)
+            {
+                setCloseDay();
+            }
         }
-        
+        private void setCloseDay()
+        {
+            String cntvs = "";
+            cntvs = ic.ivfDB.vsDB.selectCloseDay();
+            txtCntPtt.Value = cntvs;
+
+        }
         private void Timer_Tick(object sender, EventArgs e)
         {
             //throw new NotImplementedException();
@@ -602,7 +613,7 @@ namespace clinic_ivf.gui
         }
         private void FrmCashierView_Load(object sender, EventArgs e)
         {
-
+            spCloseDay.HeaderHeight = 0;
         }
     }
 }

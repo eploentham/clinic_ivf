@@ -113,6 +113,35 @@ namespace clinic_ivf.gui
         private void BtnPrnReceipt_Click(object sender, EventArgs e)
         {
             //throw new NotImplementedException();
+            String cashid1 = "", creditid1="";
+            cashid1 = cboAccCash.SelectedItem == null ? "" : ((ComboBoxItem)cboAccCash.SelectedItem).Value;
+            creditid1 = cboAccCredit.SelectedItem == null ? "" : ((ComboBoxItem)cboAccCredit.SelectedItem).Value;
+            Decimal totalcredit = 0, totalcash=0, total=0, discount=0;
+            if(Decimal.TryParse(txtTotalCredit.Text.Replace(",", ""), out totalcredit))
+            {
+                if (creditid1.Equals(""))
+                {
+                    MessageBox.Show("มียอด credit ไม่ยังไม่ได้เลือก ประเภทบัญชี", "");
+                    return;
+                }
+            }
+            if (Decimal.TryParse(txtTotalCash.Text.Replace(",", ""), out totalcash))
+            {
+                if (cashid1.Equals(""))
+                {
+                    MessageBox.Show("มียอด cash ไม่ยังไม่ได้เลือก ประเภทบัญชี", "");
+                    return;
+                }
+            }
+            if (Decimal.TryParse(txtDiscount.Text.Replace(",", ""), out discount))
+            {
+                if (creditid1.Equals(""))
+                {
+                    MessageBox.Show("มียอด credit ไม่ยังไม่ได้เลือก ประเภทบัญชี", "");
+                    return;
+                }
+            }
+            total = totalcash + totalcredit;
             PrinterSettings settings = new PrinterSettings();
             printerOld = settings.PrinterName;
             SetDefaultPrinter(ic.iniC.printerBill);
@@ -136,7 +165,7 @@ namespace clinic_ivf.gui
                 String cashid = cboAccCash.SelectedItem == null ? "" : ((ComboBoxItem)cboAccCash.SelectedItem).Value;
                 String creditid = cboAccCredit.SelectedItem == null ? "" : ((ComboBoxItem)cboAccCredit.SelectedItem).Value;
                 //ic.ivfDB.obilhDB.updateReceiptNo(txtVn.Text, billNo, txtTotalCash.Text.Replace(",",""), txtTotalCredit.Text.Replace(",", ""), txtCreditCardNumber.Text, cashid, creditid);
-                ic.ivfDB.obilhDB.updateReceiptNoByBillId(txtBillId.Text, billNo, txtTotalCash.Text.Replace(",", ""), txtTotalCredit.Text.Replace(",", ""), txtCreditCardNumber.Text, cashid, creditid);
+                ic.ivfDB.obilhDB.updateReceiptNoByBillId(txtBillId.Text, billNo, txtTotalCash.Text.Replace(",", ""), txtTotalCredit.Text.Replace(",", ""), txtCreditCardNumber.Text, cashid, creditid, total.ToString(), discount.ToString());
                 //OldBillheader obill = new OldBillheader();
                 String billno2 = ic.ivfDB.obilhDB.selectBillNoByVN(txtVn.Text);
                 if (billno2.Equals(""))

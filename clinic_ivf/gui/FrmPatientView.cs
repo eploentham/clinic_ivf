@@ -14,6 +14,9 @@ using System.Windows.Forms;
 
 namespace clinic_ivf.gui
 {
+    /*
+     * 62-06-26     0004        หน้าจอ patientview.cs แก้ เรื่อง patient ในการดึงข้อมูล ให้ใช้ method เหมือนของ donor ไม่ต้องแยก donor, ptt
+     */
     public partial class FrmPatientView : Form
     {
         IvfControl ic;
@@ -180,7 +183,10 @@ namespace clinic_ivf.gui
                 }
                 else
                 {
-
+                    if (chkToday.Checked)
+                    {
+                        grfPtt.DataSource = ic.ivfDB.pttDB.selectBySearchDate(date);
+                    }
                 }
             }
             else
@@ -266,7 +272,8 @@ namespace clinic_ivf.gui
             }
             else
             {
-                frm = new FrmPatientAdd(ic,"", pttId,"");
+                //frm = new FrmPatientAdd(ic,"", pttId,"");     //  -0004
+                frm = new FrmPatientAdd(ic, pttId, "", "");     //  +0004
             }
             String txt = "";
             if (!name.Equals(""))

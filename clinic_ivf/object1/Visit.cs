@@ -112,5 +112,6 @@ namespace clinic_ivf.object1
         public String doctor_id { get; set; }
         public String doctorname { get; set; }
         public String patient_hn_2 { get; set; }
+        public String closeday_id { get; set; }
     }
 }

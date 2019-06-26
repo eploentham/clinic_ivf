@@ -216,8 +216,8 @@ namespace clinic_ivf.objdb
             tvs = row1[pApmDB.pApm.tvs].ToString().Equals("1") ? "TVS " : "";
             opu = row1[pApmDB.pApm.opu].ToString().Equals("1") ? row1[pApmDB.pApm.opu_time] != null ? "OPU [" + row1[pApmDB.pApm.opu_time].ToString() + "]" : "OPU " + row1[pApmDB.pApm.opu_time].ToString() : "";
             beta = row1[pApmDB.pApm.beta_hgc].ToString().Equals("1") ? "Beta HCG " : "";
-            et = row1[pApmDB.pApm.et].ToString().Equals("1") ? row1[pApmOldDB.pApmO.et_time] != null ? "ET [" + row1[pApmDB.pApm.et_time].ToString() + "]" : "ET" : "";
-            fet = row1[pApmDB.pApm.fet].ToString().Equals("1") ? row1[pApmOldDB.pApmO.ET_FET_Time] != null ? "FET [" + row1[pApmDB.pApm.fet_time].ToString() + "]" : "FET" : "";
+            et = row1[pApmDB.pApm.et].ToString().Equals("1") ? row1[pApmDB.pApm.et_time] != null ? "ET [" + row1[pApmDB.pApm.et_time].ToString() + "]" : "ET" : "";
+            fet = row1[pApmDB.pApm.fet].ToString().Equals("1") ? row1[pApmDB.pApm.fet_time] != null ? "FET [" + row1[pApmDB.pApm.fet_time].ToString() + "]" : "FET" : "";
             other = row1[pApmDB.pApm.other].ToString().Equals("1") ? row1[pApmDB.pApm.other_remark] != null ? "Other " + row1[pApmDB.pApm.other_remark].ToString() : "Other " : "";
             sperm = row1[pApmDB.pApm.sperm_collect].ToString().Equals("1") ? "Sperm Collect " : "";
             appn = row1[pApmDB.pApm.patient_appointment_time].ToString() + " " + hormo + " " + tvs + " " + opu + " " + beta + " " + et + " " + fet + " " + sperm + " " + other;

@@ -33,8 +33,9 @@ using System.Windows.Forms;
 namespace clinic_ivf.gui
 {
     /*
-     * 62-06-08          1   แก้นัด ให้ donor ไปใช้ของ patient
-     * 62-06-14 0002     2   แก้ รูปซ้ำระหว่าง Patient กับ Donor 
+     * 62-06-08             1   แก้นัด ให้ donor ไปใช้ของ patient
+     * 62-06-14     0002    2   แก้ รูปซ้ำระหว่าง Patient กับ Donor 
+     * 62-06-26     0004        หน้าจอ patientview.cs แก้ เรื่อง patient ในการดึงข้อมูล ให้ใช้ method เหมือนของ donor ไม่ต้องแยก donor, ptt
      */
     public partial class FrmPatientAdd : Form
     {
@@ -2793,7 +2794,7 @@ namespace clinic_ivf.gui
             txtCouFname.Value = ptt.patient_couple_firstname;
             txtCouLname.Value = ptt.patient_couple_lastname;
             //txtAgent.Value = ptt.agent;
-            ic.setC1Combo(cboAgent, pttO.AgentID);
+            ic.setC1Combo(cboAgent, ptt.agent);
             txtDrugAllergy.Value = ptt.patient_drugallergy;
             txtRemark.Value = ptt.remark;
             txtDob.Value = ptt.patient_birthday;
@@ -2953,7 +2954,7 @@ namespace clinic_ivf.gui
             txtMoo.Value = ptt.patient_moo;
             txtRoad.Value = ptt.patient_road;
 
-
+            ic.setC1Combo(cboAgent, ptt.agent);
             ic.setC1Combo(cboCouPrefix, ptt.patient_couple_f_patient_prefix_id);
             ic.setC1Combo(cboName1Rl, ptt.patient_contact_f_patient_relation_id);
             ic.setC1Combo(cboCouRel, ptt.patient_coulpe_f_patient_relation_id);
@@ -3006,7 +3007,13 @@ namespace clinic_ivf.gui
                 pttid = vsOld.PID;
             }
 
-            pttO = ic.ivfDB.pttOldDB.selectByPk1(pttid);
+
+            //PatientOld pttO = new PatientOld();
+            pttO = ic.ivfDB.pttOldDB.selectByPk1(ptt.t_patient_id_old);     //      + 0004
+            txtIdOld.Value = pttO.PID;      //      + 0004
+
+
+            //pttO = ic.ivfDB.pttOldDB.selectByPk1(pttid);      //      - 0004
             if (pttO.PID.Equals(""))
             {
                 btnWebCamOn.Enabled = false;
@@ -3015,64 +3022,65 @@ namespace clinic_ivf.gui
             {
                 btnWebCamOn.Enabled = true;
             }
-            txtHn.Value = pttO.PIDS;
-            txtIdOld.Value = pttO.PID;
-            txtPttNameE.Value = pttO.PName;
-            txtPttLNameE.Value = pttO.PSurname;
-            txtPttName.Value = pttO.OName;
-            txtPttLName.Value = pttO.OSurname;
-            //txtContFname1.Value = pttO.EmergencyPersonalContact;
-            txtDob.Value = pttO.DateOfBirth;
-            ic.setC1Combo(cboAgent, pttO.AgentID);
-            ic.setC1Combo(cboPttType, pttO.PatientTypeID);
-            ic.setC1Combo(cboCrl, pttO.PaymentID);
-            ic.setC1Combo(cboSex, pttO.SexID);
-            ic.setC1Combo(cboMarital, pttO.MaritalID);
-            ic.setC1Combo(cboRg, pttO.Religion);
-            ic.setC1ComboByName(CboNation, pttO.Nationality);
-            if (!pttO.Province.Equals(""))
-            {
-                cboProv.Value = pttO.Province;
-            }
-            
-            //cboDist.Value = pttO.District;
-            //ic.setC1ComboByName(cboDist, pttO.District);
-            txtAddrNo.Value = pttO.Address;
-            txtMoo.Value = pttO.Moo;
-            txtRoad.Value = pttO.Road;
-            if (pttO.IDNumber.Length == 10)
-            {
+            //txtHn.Value = pttO.PIDS;      //      - 0004
+            //txtIdOld.Value = pttO.PID;      //      - 0004
+            //txtPttNameE.Value = pttO.PName;      //      - 0004
+            //txtPttLNameE.Value = pttO.PSurname;      //      - 0004
+            //txtPttName.Value = pttO.OName;      //      - 0004
+            //txtPttLName.Value = pttO.OSurname;      //      - 0004
+            ////txtContFname1.Value = pttO.EmergencyPersonalContact;      //      - 0004
+            //txtDob.Value = pttO.DateOfBirth;      //      - 0004
+            //ic.setC1Combo(cboAgent, pttO.AgentID);      //      - 0004
+            //ic.setC1Combo(cboPttType, pttO.PatientTypeID);      //      - 0004
+            //ic.setC1Combo(cboCrl, pttO.PaymentID);      //      - 0004
+            //ic.setC1Combo(cboSex, pttO.SexID);      //      - 0004
+            //ic.setC1Combo(cboMarital, pttO.MaritalID);      //      - 0004
+            //ic.setC1Combo(cboRg, pttO.Religion);      //      - 0004
+            //ic.setC1ComboByName(CboNation, pttO.Nationality);      //      - 0004
+            //if (!pttO.Province.Equals(""))      //      - 0004
+            //{      //      - 0004
+            //    cboProv.Value = pttO.Province;      //      - 0004
+            //}      //      - 0004
 
-            }
-            //txtPid.Value = pttO.IDNumber.Length == 10 ? pttO.IDNumber : "";
-            //txtPaasport.Value = pttO.IDNumber.Length != 10 ? pttO.IDNumber : "";
-            //txtPid.Value = pttO.IDNumber;
-            //cboName1Rl.Text = pttO.RelationshipID;
-            ic.setC1Combo(cboName1Rl, pttO.RelationshipID);
+            ////cboDist.Value = pttO.District;      //      - 0004
+            ////ic.setC1ComboByName(cboDist, pttO.District);      //      - 0004
+            //txtAddrNo.Value = pttO.Address;      //      - 0004
+            //txtMoo.Value = pttO.Moo;      //      - 0004
+            //txtRoad.Value = pttO.Road;      //      - 0004
+            //if (pttO.IDNumber.Length == 10)      //      - 0004
+            //{      //      - 0004
+
+            //}      //      - 0004
+            //txtPid.Value = pttO.IDNumber.Length == 10 ? pttO.IDNumber : "";      //      - 0004
+            //txtPaasport.Value = pttO.IDNumber.Length != 10 ? pttO.IDNumber : "";      //      - 0004
+            //txtPid.Value = pttO.IDNumber;      //      - 0004
+            //cboName1Rl.Text = pttO.RelationshipID;      //      - 0004
+            //ic.setC1Combo(cboName1Rl, pttO.RelationshipID);             //      - 0004
             barcode.Text = txtHn.Text;
-            txtEmail.Value = pttO.Email;
-            txtPaasport.Value = pttO.IDNumber;
-            ic.setC1Combo(cboPrefix, pttO.SurfixID);
-            if (txtEmerContact.Text.Equals(""))
-            {
-                txtEmerContact.Value = pttO.EmergencyPersonalContact;
-            }
-            if (txtID.Text.Equals("") && !pttid.Equals(""))
-            {
-                Patient id1 = ic.ivfDB.pttDB.selectByIDold(pttid);
-                txtID.Value = id1.t_patient_id;
-                if (!id1.t_patient_id.Equals(""))
-                {
-                    setControlPatient(id1);
-                    flagHavOldPttNoPtt = false;
-                    tabVisit.Enabled = true;
-                }
-                else
-                {
-                    flagHavOldPttNoPtt = true;
-                    //tabVisit.Enabled = false;
-                }
-            }
+            //txtEmail.Value = pttO.Email;      //      - 0004
+            //txtPaasport.Value = pttO.IDNumber;      //      - 0004
+            //ic.setC1Combo(cboPrefix, pttO.SurfixID);      //      - 0004
+            //if (txtEmerContact.Text.Equals(""))      //      - 0004
+            //{      //      - 0004
+            //    txtEmerContact.Value = pttO.EmergencyPersonalContact;      //      - 0004
+            //}      //      - 0004
+            //if (txtID.Text.Equals("") && !pttid.Equals(""))      //      - 0004
+            //{      //      - 0004
+            //    Patient id1 = ic.ivfDB.pttDB.selectByIDold(pttid);      //      - 0004
+            //    txtID.Value = id1.t_patient_id;      //      - 0004
+            //    if (!id1.t_patient_id.Equals(""))      //      - 0004
+            //    {      //      - 0004
+            //        setControlPatient(id1);      //      - 0004
+            //        flagHavOldPttNoPtt = false;      //      - 0004
+            //        tabVisit.Enabled = true;      //      - 0004
+            //    }      //      - 0004
+            //    else      //      - 0004
+            //    {      //      - 0004
+            //        flagHavOldPttNoPtt = true;      //      - 0004
+            //        //tabVisit.Enabled = false;      //      - 0004
+            //    }      //      - 0004
+            //}      //      - 0004
+            //setControlPatient(ptt);     // แปะไปก่อน 
             ic.setC1Combo(cboCouRel, "1");
             if (cboPttType.Text.Equals(""))
             {
@@ -3122,7 +3130,8 @@ namespace clinic_ivf.gui
                 btnHnSearch.Hide();
                 btnHnMaleSearch.Hide();
                 label72.Hide();
-                setControlPtt(pttOldId);
+                //setControlPtt(pttOldId);      //  0004
+                setControlPtt(pttId);
             }
 
             //ptt.patient_couple_f_patient_prefix_id = cboCouRel.SelectedItem

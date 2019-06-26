@@ -598,8 +598,8 @@ namespace clinic_ivf.gui
         {
             String date = "";
             date = DateTime.Now.Year+"-"+ DateTime.Now.ToString("MM-dd");
-            this.Text = ic.iniC.statusAppDonor.Equals("1") ? "โปรแกรมClinic IVF Donor " +"สวัสดี คุณ "+ic.user.staff_fname_t +" "+ic.user.staff_lname_t+" Update 2019-06-25 "
-                : "โปรแกรมClinic IVF " + "สวัสดี คุณ " + ic.user.staff_fname_t + " " + ic.user.staff_lname_t + " Update 2019-06-25 format date "+ date;
+            this.Text = ic.iniC.statusAppDonor.Equals("1") ? "โปรแกรมClinic IVF Donor " +"สวัสดี คุณ "+ic.user.staff_fname_t +" "+ic.user.staff_lname_t+" Update 2019-06-26 "
+                : "โปรแกรมClinic IVF " + "สวัสดี คุณ " + ic.user.staff_fname_t + " " + ic.user.staff_lname_t + " Update 2019-06-26 format date "+ date;
 
             //theme1.SetTheme(this, ic.theme);
             theme1.SetTheme(this, ic.theme);
@@ -621,8 +621,8 @@ namespace clinic_ivf.gui
                         theme1.SetTheme(c, ic.theme);
                     }
                     menuRecept.Visible = true;
-                    if (ic.iniC.statusAppDonor.Equals("1"))
-                        menuRecept.Text = "Reception Donor";
+                    //if (ic.iniC.statusAppDonor.Equals("1"))
+                    //    menuRecept.Text = "Reception Donor";
                 }
                 if (ic.user.status_module_nurse.Equals("1"))
                 {

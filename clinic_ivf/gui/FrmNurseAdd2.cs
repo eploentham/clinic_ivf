@@ -2675,6 +2675,19 @@ namespace clinic_ivf.gui
             //}
             //else
             //{
+            String dt1 = "";
+            DateTime dt = new DateTime();
+            dt1 = txtApmDatepApm.Text;
+            if(DateTime.TryParse(dt1, out dt))
+            {
+                MessageBox.Show("วันนัด ไม่ถูกต้อง", "");
+                return;
+            }
+            if (cboApmTimepApm.Text.Equals(""))
+            {
+                MessageBox.Show("เวลานัด ไม่ถูกต้อง", "");
+                return;
+            }
             ic.cStf.staff_id = "";
             FrmPasswordConfirm frm = new FrmPasswordConfirm(ic);
             frm.ShowDialog(this);

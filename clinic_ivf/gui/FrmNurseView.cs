@@ -1138,6 +1138,7 @@ namespace clinic_ivf.gui
             addDevice.MenuItems.Add(new MenuItem("Order ET, FET", new EventHandler(ContextMenu_prn_order_et_fet)));
             addDevice.MenuItems.Add(new MenuItem("Post Operation Note", new EventHandler(ContextMenu_prn_operation_note)));
             addDevice.MenuItems.Add(new MenuItem("Patient Medical History", new EventHandler(ContextMenu_prn_pmh)));
+            addDevice.MenuItems.Add(new MenuItem("Print Sticker VN", new EventHandler(ContextMenu_prn_sticker_vn_grfque)));
             grfQue.ContextMenu = menuGw;
 
             Color color = ColorTranslator.FromHtml(ic.iniC.grfRowColor);
@@ -1275,6 +1276,7 @@ namespace clinic_ivf.gui
             addDevice.MenuItems.Add(new MenuItem("Order ET, FET", new EventHandler(ContextMenu_prn_order_et_fet)));
             addDevice.MenuItems.Add(new MenuItem("Post Operation Note", new EventHandler(ContextMenu_prn_operation_note)));
             addDevice.MenuItems.Add(new MenuItem("Patient Medical History", new EventHandler(ContextMenu_prn_pmh)));
+            addDevice.MenuItems.Add(new MenuItem("Print Sticker VN", new EventHandler(ContextMenu_prn_sticker_vn_grfque)));
             grfQue.ContextMenu = menuGw;
 
             Color color = ColorTranslator.FromHtml(ic.iniC.grfRowColor);
@@ -1543,6 +1545,48 @@ namespace clinic_ivf.gui
             FrmReport frm = new FrmReport(ic);
             frm.setPatientMedicalHistory(name, hn);
             frm.ShowDialog(this);
+        }
+        private void ContextMenu_prn_sticker_vn_grfque(object sender, System.EventArgs e)
+        {
+            String chk = "", name = "", vsid = "", pttId = "", hn = "", vn = "";
+
+            vsid = grfQue[grfQue.Row, colID] != null ? grfQue[grfQue.Row, colID].ToString() : "";
+            pttId = grfQue[grfQue.Row, colPttId] != null ? grfQue[grfQue.Row, colPttId].ToString() : "";
+            name = grfQue[grfQue.Row, colPttName] != null ? grfQue[grfQue.Row, colPttName].ToString() : "";
+            hn = grfQue[grfQue.Row, colPttHn] != null ? grfQue[grfQue.Row, colPttHn].ToString() : "";
+            vn = grfQue[grfQue.Row, colVn] != null ? grfQue[grfQue.Row, colVn].ToString() : "";
+            try
+            {
+                PrinterSettings settings = new PrinterSettings();
+                printerOld = settings.PrinterName;
+                SetDefaultPrinter(ic.iniC.printerSticker);
+
+                Visit vs = new Visit();
+                vs = ic.ivfDB.vsDB.selectByPk1(vsid);
+                Patient ptt = new Patient();
+                ptt = ic.ivfDB.pttDB.selectByPk1(vs.t_patient_id);
+
+                DataTable dt = new DataTable();
+                dt.Columns.Add("hn", typeof(String));
+                dt.Columns.Add("name", typeof(String));
+                dt.Columns.Add("age", typeof(String));
+                dt.Columns.Add("vn", typeof(String));
+                DataRow row11 = dt.NewRow();
+                row11["hn"] = ptt.patient_hn;
+                row11["name"] = ptt.Name;
+                row11["age"] = "Age " + ptt.AgeStringShort() + " [" + ic.datetoShow(ptt.patient_birthday) + "]";
+                row11["vn"] = vs.visit_vn;
+                dt.Rows.Add(row11);
+                FrmReport frm = new FrmReport(ic);
+                frm.setStickerPatientThemal(dt);
+                frm.ShowDialog(this);
+                SetDefaultPrinter(printerOld);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(this, ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
         }
         private void ContextMenu_prn_sticker_vn(object sender, System.EventArgs e)
         {

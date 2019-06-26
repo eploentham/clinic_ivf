@@ -47,8 +47,8 @@ namespace clinic_ivf.objdb
             DataTable dt = new DataTable();
             String sql = "select agnO.* " + 
                 " From " + oAgn.table + " agnO " +
-                "Where "+oAgn.active +"='1'";
-                //"Where agnO." + agnO.active + " ='1' ";
+                "Where "+oAgn.active +"='1'"+
+                "Order By " + oAgn.agentname + " ";
             dt = conn.selectData(conn.conn, sql);
 
             return dt;
