@@ -401,7 +401,7 @@ namespace clinic_ivf.objdb
             }
             return re;
         }
-        public String updateReceiptNoByBillId(String billid, String billno, String cash, String credit, String creditnumber, String cashid, String creditid, String total, String discount)
+        public String updateReceiptNoByBillId(String billid, String billno, String cash, String credit, String creditnumber, String cashid, String creditid, String total, String discount, String paymentby)
         {
             String re = "", sql = "";
             long chk = 0;
@@ -417,6 +417,7 @@ namespace clinic_ivf.objdb
                 "," + obillh.CreditCardID + "='" + creditid + "' " +
                 "," + obillh.Total + "='" + total + "' " +
                 "," + obillh.Discount + "='" + discount + "' " +
+                "," + obillh.PaymentBy + "='" + paymentby.Replace("'","''") + "' " +
                 "Where " + obillh.bill_id + "='" + billid + "' ";
             try
             {
@@ -428,5 +429,6 @@ namespace clinic_ivf.objdb
             }
             return re;
         }
+        
     }
 }
