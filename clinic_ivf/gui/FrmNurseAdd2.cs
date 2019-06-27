@@ -1138,7 +1138,7 @@ namespace clinic_ivf.gui
                     File.Delete(filePathName);
                     System.Threading.Thread.Sleep(200);
                 }
-                String aaa = "images/"+ txtIdOld.Text+"/" + filePathName;
+                String aaa = ic.iniC.folderFTP + "/" + txtIdOld.Text+"/" + filePathName;
                 //setPic(new Bitmap(ic.ftpC.download(filenamepic)));
                 stream = ic.ftpC.download(aaa);
                 //File file1 = new File();
@@ -2678,7 +2678,7 @@ namespace clinic_ivf.gui
             String dt1 = "";
             DateTime dt = new DateTime();
             dt1 = txtApmDatepApm.Text;
-            if(DateTime.TryParse(dt1, out dt))
+            if(!DateTime.TryParse(dt1, out dt))
             {
                 MessageBox.Show("วันนัด ไม่ถูกต้อง", "");
                 return;
@@ -3336,7 +3336,7 @@ namespace clinic_ivf.gui
                 //picPtt.Image = bitmap;
                 //picPtt.SizeMode = PictureBoxSizeMode.StretchImage;
                 //setPic(bitmap);
-                String aaa = "images/" + txtIdOld.Text + "/" + txtIdOld.Text + "." + System.Drawing.Imaging.ImageFormat.Jpeg;
+                String aaa = ic.iniC.folderFTP + "/" + txtIdOld.Text + "/" + txtIdOld.Text + "." + System.Drawing.Imaging.ImageFormat.Jpeg;
                 //setPic(new Bitmap(ic.ftpC.download(filenamepic)));
                 setPic(new Bitmap(ic.ftpC.download(aaa)));
             }
@@ -5298,7 +5298,7 @@ namespace clinic_ivf.gui
                                 ptti.user_create = "";
                                 ptti.user_modi = "";
                                 ptti.user_cancel = "";
-                                ptti.image_path = "images/" + txtHn.Text.Replace("-", "").Replace("/", "") + "/" + filename;
+                                ptti.image_path = ic.iniC.folderFTP + "/" + txtHn.Text.Replace("-", "").Replace("/", "") + "/" + filename;
                                 ptti.status_image = status;
                                 ptti.status_document = "2";
                                 ptti.dept_id = ic.user.dept_id;

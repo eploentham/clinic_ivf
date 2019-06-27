@@ -26,8 +26,9 @@ namespace clinic_ivf.gui
         Font ff, ffB;
 
         int colID = 1, colVNshow = 2, colVN = 12, colPttHn = 3, colPttName = 4, colVsDate = 5, colVsTime = 6, colVsEtime = 7, colVsAgent=8, colStatus = 9, colPttId = 10, colStatusNurse = 11, colStatusCashier = 12, colBillId=13;
+        int colCldId = 1, colCldBillNo = 2, colCldReceiptNo=3, colCldDate = 4, colCldHn = 5, colCldName = 6, colCldPkg = 7, colCldMed = 8, colCldDtrfee = 9, colCldLab1 = 10, colCldLab2 = 11, colCldNurfee = 12, colCldTreat = 13, colCldDiscount = 14, colCldOther = 15, colCldTotal = 16, colCldVn=17;
 
-        C1FlexGrid grfQue, grfFinish, grfSearch;
+        C1FlexGrid grfQue, grfFinish, grfSearch, grfCld;
         C1SuperTooltip stt;
         C1SuperErrorProvider sep;
         Timer timer;
@@ -58,6 +59,15 @@ namespace clinic_ivf.gui
 
             tC.SelectedTabChanged += TC_SelectedTabChanged;
             btnSearch.Click += BtnSearch_Click;
+            txtExp1.KeyUp += TxtExp1_KeyUp;
+            txtExp2.KeyUp += TxtExp2_KeyUp;
+            txtExp3.KeyUp += TxtExp3_KeyUp;
+            txtExp4.KeyUp += TxtExp4_KeyUp;
+            txtExp5.KeyUp += TxtExp5_KeyUp;
+            txtDeposit.KeyUp += TxtDeposit_KeyUp;
+            txtAmtCash.KeyUp += TxtAmtCash_KeyUp;
+            txtAmtCredit.KeyUp += TxtAmtCredit_KeyUp;
+
             txtCldDate.Value = System.DateTime.Now.Year + "-" + System.DateTime.Now.ToString("MM-dd");
 
             initGrfQue();
@@ -66,6 +76,7 @@ namespace clinic_ivf.gui
             setGrfFinish();
             initGrfSearch();
             setGrfSearch();
+            initGrfCloseDay();
 
             int timerlab = 0;
             int.TryParse(ic.iniC.timerlabreqaccept, out timerlab);
@@ -73,6 +84,56 @@ namespace clinic_ivf.gui
             timer.Interval = timerlab * 1000;
             timer.Tick += Timer_Tick;
             timer.Enabled = true;
+        }
+
+        private void TxtAmtCredit_KeyUp(object sender, KeyEventArgs e)
+        {
+            //throw new NotImplementedException();
+            calAmt();
+            calTotalCash();
+        }
+
+        private void TxtAmtCash_KeyUp(object sender, KeyEventArgs e)
+        {
+            //throw new NotImplementedException();
+            calAmt();
+            calTotalCash();
+        }
+
+        private void TxtDeposit_KeyUp(object sender, KeyEventArgs e)
+        {
+            //throw new NotImplementedException();
+            calTotalCash();
+        }
+
+        private void TxtExp5_KeyUp(object sender, KeyEventArgs e)
+        {
+            //throw new NotImplementedException();
+            calTotalCash();
+        }
+
+        private void TxtExp4_KeyUp(object sender, KeyEventArgs e)
+        {
+            //throw new NotImplementedException();
+            calTotalCash();
+        }
+
+        private void TxtExp3_KeyUp(object sender, KeyEventArgs e)
+        {
+            //throw new NotImplementedException();
+            calTotalCash();
+        }
+
+        private void TxtExp2_KeyUp(object sender, KeyEventArgs e)
+        {
+            //throw new NotImplementedException();
+            calTotalCash();
+        }
+
+        private void TxtExp1_KeyUp(object sender, KeyEventArgs e)
+        {
+            //throw new NotImplementedException();
+            calTotalCash();
         }
 
         private void BtnSearch_Click(object sender, EventArgs e)
@@ -95,20 +156,192 @@ namespace clinic_ivf.gui
             else if (tC.SelectedTab == tabCloseDay)
             {
                 setCloseDay();
+                setGrfCloseDay();
             }
+        }
+        private void calAmt()
+        {
+            Decimal cash1 = 0, credit1 = 0, amt=0;
+            Decimal.TryParse(txtAmtCash.Text.Replace(",", ""), out cash1);
+            Decimal.TryParse(txtAmtCredit.Text.Replace(",", ""), out credit1);
+            amt = cash1 + credit1;
+            txtAmt.Value = amt.ToString("#,###.00");
+        }
+        private void calTotalCash()
+        {
+            Decimal cash1 = 0, credit1 = 0, amt = 0, exp1=0, exp2 = 0, exp3 = 0, exp4 = 0, exp5 = 0, deposit=0,total=0;
+            Decimal.TryParse(txtAmtCash.Text.Replace(",",""), out cash1);
+            Decimal.TryParse(txtAmtCredit.Text.Replace(",", ""), out credit1);
+            Decimal.TryParse(txtAmt.Text.Replace(",", ""), out amt);
+            Decimal.TryParse(txtExp5.Text.Replace(",", ""), out exp5);
+            Decimal.TryParse(txtExp1.Text.Replace(",", ""), out exp1);
+            Decimal.TryParse(txtExp2.Text.Replace(",", ""), out exp2);
+            Decimal.TryParse(txtExp3.Text.Replace(",", ""), out exp3);
+            Decimal.TryParse(txtExp4.Text.Replace(",", ""), out exp4);
+            Decimal.TryParse(txtDeposit.Text.Replace(",", ""), out deposit);
+
+            total = amt - exp1 - exp2 - exp3 - exp4 - exp5 + deposit;
+            txtTotalCash.Value = total.ToString("#,###.00");
         }
         private void setCloseDay()
         {
-            String cntvs = "";
+            String cntvs = "", cash="", credit="";
+            Decimal cash1 = 0, credit1 = 0,amt=0;
+            DataTable dt = new DataTable();
             cntvs = ic.ivfDB.vsDB.selectCloseDay();
             txtCntPtt.Value = cntvs;
-
+            dt = ic.ivfDB.obilhDB.selectCashCloseDay();
+            if (dt.Rows.Count > 0)
+            {
+                cash = dt.Rows[0]["cash"].ToString();
+                credit = dt.Rows[0]["credit"].ToString();
+            }
+            Decimal.TryParse(cash, out cash1);
+            Decimal.TryParse(credit, out credit1);
+            txtAmtCash.Value = cash1.ToString("#,###.00");
+            txtAmtCredit.Value = credit1.ToString("#,###.00");
+            amt = cash1 + credit1;
+            txtAmt.Value = amt.ToString("#,###.00");
         }
         private void Timer_Tick(object sender, EventArgs e)
         {
             //throw new NotImplementedException();
             setGrfQue();
             //setGrfSearch(txtSearch.Text.Trim());
+        }
+        private void setGrfCloseDay()
+        {
+            //grfDept.Rows.Count = 7;
+            grfCld.Clear();
+            DataTable dt1 = new DataTable();
+            DataTable dt = new DataTable();
+            String date = "";
+
+            dt = ic.ivfDB.obilhDB.selectByCloseDay();
+
+            grfCld.Rows.Count = dt.Rows.Count + 1;
+            grfCld.Cols.Count = 18;
+
+            grfCld.Cols[colCldBillNo].Width = 100;
+            grfCld.Cols[colCldReceiptNo].Width = 100;
+            grfCld.Cols[colCldDate].Width = 120;
+            grfCld.Cols[colCldHn].Width = 80;
+            grfCld.Cols[colCldName].Width = 200;
+            grfCld.Cols[colCldPkg].Width = 100;
+            grfCld.Cols[colCldMed].Width = 100;
+            grfCld.Cols[colCldDtrfee].Width = 100;
+            grfCld.Cols[colCldLab1].Width = 100;
+            grfCld.Cols[colCldLab2].Width = 100;
+            grfCld.Cols[colCldNurfee].Width = 100;
+            grfCld.Cols[colCldTreat].Width = 100;
+            grfCld.Cols[colCldDiscount].Width = 100;
+            grfCld.Cols[colCldOther].Width = 100;
+            grfCld.Cols[colCldTotal].Width = 100;
+
+            grfCld.ShowCursor = true;
+            //grdFlex.Cols[colID].Caption = "no";
+            //grfDept.Cols[colCode].Caption = "รหัส";
+
+            grfCld.Cols[colCldBillNo].Caption = "Bill NO";
+            grfCld.Cols[colCldReceiptNo].Caption = "Receipt NO";
+            grfCld.Cols[colCldDate].Caption = "Date";
+            grfCld.Cols[colCldHn].Caption = "HN";
+            grfCld.Cols[colCldName].Caption = "Name";
+            grfCld.Cols[colCldPkg].Caption = "Package";
+            grfCld.Cols[colCldMed].Caption = "Medicine";
+            grfCld.Cols[colCldDtrfee].Caption = "Doctor fee";
+            grfCld.Cols[colCldLab1].Caption = "Lab 1";
+            grfCld.Cols[colCldLab2].Caption = "Lab 2";
+            grfCld.Cols[colCldNurfee].Caption = "Nuring fee";
+            grfCld.Cols[colCldTreat].Caption = "Treatment";
+            grfCld.Cols[colCldDiscount].Caption = "Discount";
+            grfCld.Cols[colCldOther].Caption = "Other";
+            grfCld.Cols[colCldTotal].Caption = "Total";
+
+            //menuGw.MenuItems.Add("&receive operation", new EventHandler(ContextMenu_Apm));
+            //menuGw.MenuItems.Add("receive operation", new EventHandler(ContextMenu_order));
+            //menuGw.MenuItems.Add("&LAB request FORM A", new EventHandler(ContextMenu_LAB_req_formA_Ptt));
+            //menuGw.MenuItems.Add("&Add Appointment", new EventHandler(ContextMenu_Apm_Ptt));
+            //menuGw.MenuItems.Add("&Cancel Receive", new EventHandler(ContextMenu_Apm_Ptt));
+            //menuGw.MenuItems.Add("&No Appointment Close Operation", new EventHandler(ContextMenu_NO_Apm_Ptt));
+            //grfSearch.ContextMenu = menuGw;
+
+            Color color = ColorTranslator.FromHtml(ic.iniC.grfRowColor);
+            //CellRange rg1 = grfBank.GetCellRange(1, colE, grfBank.Rows.Count, colE);
+            //rg1.Style = grfBank.Styles["date"];
+            //grfCu.Cols[colID].Visible = false;
+            int i = 1;
+            foreach (DataRow row in dt.Rows)
+            {
+                grfCld[i, 0] = i;
+                grfCld[i, colID] = row[ic.ivfDB.obilhDB.obillh.bill_id].ToString();
+                grfCld[i, colCldBillNo] = row[ic.ivfDB.obilhDB.obillh.BillNo].ToString();
+                grfCld[i, colCldReceiptNo] = row[ic.ivfDB.obilhDB.obillh.receipt_no].ToString();
+                grfCld[i, colCldDate] = ic.datetoShow(row[ic.ivfDB.obilhDB.obillh.Date].ToString());
+                grfCld[i, colCldHn] = row[ic.ivfDB.obilhDB.obillh.PIDS].ToString();
+                grfCld[i, colCldName] = row[ic.ivfDB.obilhDB.obillh.PName].ToString();
+                grfCld[i, colCldPkg] = "";
+                grfCld[i, colCldMed] = "";
+                grfCld[i, colCldDtrfee] = "";
+                grfCld[i, colCldLab1] = "";
+                grfCld[i, colCldLab2] = "";
+                grfCld[i, colCldNurfee] = "";
+                grfCld[i, colCldTreat] = "";
+                grfCld[i, colCldDiscount] = "";
+                grfCld[i, colCldOther] = "";
+                grfCld[i, colCldTotal] = "";
+                //grfCld[i, colBillId] = "";
+                //if (!row[ic.ivfDB.ovsDB.vsold.form_a_id].ToString().Equals("0"))
+                //{
+                    //CellNote note = new CellNote("ส่ง Lab Request Foam A");
+                    //CellRange rg = grfFinish.GetCellRange(i, colVN);
+                    //rg.UserData = note;
+                //}
+                //if (i % 2 == 0)
+                //    grfPtt.Rows[i].StyleNew.BackColor = color;
+                i++;
+            }
+            CellNoteManager mgr = new CellNoteManager(grfSearch);
+            grfCld.Cols[colID].Visible = false;
+            grfCld.Cols[colVN].Visible = false;
+            grfCld.Cols[colPttId].Visible = false;
+            grfCld.Cols[colBillId].Visible = false;
+            grfCld.Cols[colStatusNurse].Visible = false;
+            grfCld.Cols[colStatusCashier].Visible = false;
+            grfCld.Cols[colVNshow].AllowEditing = false;
+            grfCld.Cols[colPttHn].AllowEditing = false;
+            grfCld.Cols[colPttName].AllowEditing = false;
+            grfCld.Cols[colVsDate].AllowEditing = false;
+            grfCld.Cols[colVsTime].AllowEditing = false;
+            grfCld.Cols[colVsEtime].AllowEditing = false;
+            grfCld.Cols[colStatus].AllowEditing = false;
+            grfCld.Cols[colVsAgent].AllowEditing = false;
+            //theme1.SetTheme(grfQue, ic.theme);
+        }
+        private void initGrfCloseDay()
+        {
+            grfCld = new C1FlexGrid();
+            grfCld.Font = fEdit;
+            grfCld.Dock = System.Windows.Forms.DockStyle.Fill;
+            grfCld.Location = new System.Drawing.Point(0, 0);
+
+            //FilterRow fr = new FilterRow(grfExpn);
+
+            //grfQue.DoubleClick += GrfQue_DoubleClick;
+            //grfExpnC.CellButtonClick += new C1.Win.C1FlexGrid.RowColEventHandler(this.grfDept_CellButtonClick);
+            //grfExpnC.CellChanged += new C1.Win.C1FlexGrid.RowColEventHandler(this.grfDept_CellChanged);
+            //ContextMenu menuGw = new ContextMenu();
+            //menuGw.MenuItems.Add("ออก บิล", new EventHandler(ContextMenu_edit_bill));
+            ////menuGw.MenuItems.Add("&แก้ไข", new EventHandler(ContextMenu_Gw_Edit));
+            ////menuGw.MenuItems.Add("&ยกเลิก", new EventHandler(ContextMenu_Gw_Cancel));
+            //grfCld.ContextMenu = menuGw;
+            pnCldDetail.Controls.Add(grfCld);
+
+            theme1.SetTheme(grfCld, "Office2010Red");
+
+            //theme1.SetTheme(tabDiag, "Office2010Blue");
+            //theme1.SetTheme(tabFinish, "Office2010Blue");
+
         }
         private void initGrfSearch()
         {

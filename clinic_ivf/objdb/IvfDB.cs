@@ -946,6 +946,7 @@ namespace clinic_ivf.objdb
                         obilld.price1 = pay.ToString();
                         obilld.qty = "1";
                         obilld.bill_id = billid;
+                        obilld.bill_group_id = "0";
                         obildDB.insertBillDetail(obilld, "");
                     }
                 }
@@ -988,6 +989,14 @@ namespace clinic_ivf.objdb
                         obilld.price1 = row["Price"].ToString();
                         obilld.qty = row["QTY"].ToString();
                         obilld.bill_id = billid;
+                        if (row["LGID"].ToString().Equals("1"))     //lab blood
+                        {
+                            obilld.bill_group_id = "3";
+                        }
+                        else
+                        {
+                            obilld.bill_group_id = "4";
+                        }
                         obildDB.insertBillDetail(obilld, "");
                     }
                 }
@@ -1016,6 +1025,7 @@ namespace clinic_ivf.objdb
                         obilld.price1 = row["Price"].ToString();
                         obilld.qty = row["QTY"].ToString();
                         obilld.bill_id = billid;
+                        obilld.bill_group_id = "1";
                         obildDB.insertBillDetail(obilld, "");
                     }
                 }
@@ -1045,6 +1055,7 @@ namespace clinic_ivf.objdb
                         obilld.price1 = row["Price"].ToString();
                         obilld.qty = row["QTY"].ToString();
                         obilld.bill_id = billid;
+                        obilld.bill_group_id = row["bill_group_id"].ToString();
                         obildDB.insertBillDetail(obilld, "");
                     }
                 }
@@ -1090,6 +1101,14 @@ namespace clinic_ivf.objdb
                         obilld.price1 = row["Price"].ToString();
                         obilld.qty = row["QTY"].ToString();
                         obilld.bill_id = billid;
+                        if (row["LGID"].ToString().Equals("1"))     //lab blood
+                        {
+                            obilld.bill_group_id = "3";
+                        }
+                        else
+                        {
+                            obilld.bill_group_id = "4";
+                        }
                         obildDB.insertBillDetail(obilld, "");
                     }
                 }
@@ -1118,6 +1137,7 @@ namespace clinic_ivf.objdb
                         obilld.price1 = row["Price"].ToString();
                         obilld.qty = row["QTY"].ToString();
                         obilld.bill_id = billid;
+                        obilld.bill_group_id = "1";
                         obildDB.insertBillDetail(obilld, "");
                     }
                 }
@@ -1147,6 +1167,7 @@ namespace clinic_ivf.objdb
                         obilld.price1 = row["Price"].ToString();
                         obilld.qty = row["QTY"].ToString();
                         obilld.bill_id = billid;
+                        obilld.bill_group_id = row["bill_group_id"].ToString();
                         obildDB.insertBillDetail(obilld, "");
                     }
                 }

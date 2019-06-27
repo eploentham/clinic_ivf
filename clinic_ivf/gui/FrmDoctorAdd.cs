@@ -543,7 +543,7 @@ namespace clinic_ivf.gui
                     File.Delete(filePathName);
                     System.Threading.Thread.Sleep(200);
                 }
-                String aaa = "images/" + txtIdOld.Text + "/" + filePathName;
+                String aaa = ic.iniC.folderFTP + "/" + txtIdOld.Text + "/" + filePathName;
                 //setPic(new Bitmap(ic.ftpC.download(filenamepic)));
                 stream = ic.ftpC.download(aaa);
                 if(stream.Length<=0) return;

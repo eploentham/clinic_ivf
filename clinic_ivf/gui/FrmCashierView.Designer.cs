@@ -93,6 +93,9 @@
             this.pnReportCri = new System.Windows.Forms.Panel();
             this.c1SplitterPanel2 = new C1.Win.C1SplitContainer.C1SplitterPanel();
             this.pnReportView = new System.Windows.Forms.Panel();
+            this.label15 = new System.Windows.Forms.Label();
+            this.txtRemark = new C1.Win.C1Input.C1TextBox();
+            this.pnCldDetail = new System.Windows.Forms.Panel();
             this.sB.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.theme1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tC)).BeginInit();
@@ -126,6 +129,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtAmtCash)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtCldDate)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtCntPtt)).BeginInit();
+            this.spCldDetail.SuspendLayout();
             this.tabCloseDayView.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.c1DateEdit1)).BeginInit();
@@ -139,6 +143,7 @@
             this.c1SplitterPanel3.SuspendLayout();
             this.c1SplitterPanel4.SuspendLayout();
             this.c1SplitterPanel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtRemark)).BeginInit();
             this.SuspendLayout();
             // 
             // sB
@@ -449,6 +454,8 @@
             // spCld
             // 
             this.spCld.Collapsible = true;
+            this.spCld.Controls.Add(this.label15);
+            this.spCld.Controls.Add(this.txtRemark);
             this.spCld.Controls.Add(this.btnSave);
             this.spCld.Controls.Add(this.label14);
             this.spCld.Controls.Add(this.txtDeposit);
@@ -846,6 +853,7 @@
             // spCldDetail
             // 
             this.spCldDetail.Collapsible = true;
+            this.spCldDetail.Controls.Add(this.pnCldDetail);
             this.spCldDetail.Dock = C1.Win.C1SplitContainer.PanelDockStyle.Right;
             this.spCldDetail.Location = new System.Drawing.Point(367, 21);
             this.spCldDetail.Name = "spCldDetail";
@@ -1089,6 +1097,43 @@
             this.pnReportView.TabIndex = 0;
             this.theme1.SetTheme(this.pnReportView, "(default)");
             // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.label15.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label15.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.label15.Location = new System.Drawing.Point(12, 423);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(58, 16);
+            this.label15.TabIndex = 763;
+            this.label15.Text = "หมายเหตุ :";
+            this.theme1.SetTheme(this.label15, "(default)");
+            // 
+            // txtRemark
+            // 
+            this.txtRemark.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtRemark.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
+            this.txtRemark.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.txtRemark.Location = new System.Drawing.Point(76, 421);
+            this.txtRemark.Name = "txtRemark";
+            this.txtRemark.Size = new System.Drawing.Size(277, 20);
+            this.txtRemark.TabIndex = 762;
+            this.txtRemark.Tag = null;
+            this.theme1.SetTheme(this.txtRemark, "(default)");
+            this.txtRemark.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            // 
+            // pnCldDetail
+            // 
+            this.pnCldDetail.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.pnCldDetail.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pnCldDetail.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.pnCldDetail.Location = new System.Drawing.Point(0, 0);
+            this.pnCldDetail.Name = "pnCldDetail";
+            this.pnCldDetail.Size = new System.Drawing.Size(703, 651);
+            this.pnCldDetail.TabIndex = 0;
+            this.theme1.SetTheme(this.pnCldDetail, "(default)");
+            // 
             // FrmCashierView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1135,6 +1180,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtAmtCash)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtCldDate)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtCntPtt)).EndInit();
+            this.spCldDetail.ResumeLayout(false);
             this.tabCloseDayView.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
@@ -1149,6 +1195,7 @@
             this.c1SplitterPanel3.ResumeLayout(false);
             this.c1SplitterPanel4.ResumeLayout(false);
             this.c1SplitterPanel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.txtRemark)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1221,5 +1268,8 @@
         private System.Windows.Forms.Label label14;
         private C1.Win.C1Input.C1TextBox txtDeposit;
         private C1.Win.C1Input.C1Button btnSave;
+        private System.Windows.Forms.Label label15;
+        private C1.Win.C1Input.C1TextBox txtRemark;
+        private System.Windows.Forms.Panel pnCldDetail;
     }
 }

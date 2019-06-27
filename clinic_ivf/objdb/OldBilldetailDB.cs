@@ -45,6 +45,7 @@ namespace clinic_ivf.objdb
             obilld.user_create = "user_create";
             obilld.user_modi = "user_modi";
             obilld.closeday_id = "closeday_id";
+            obilld.bill_group_id = "bill_group_id";
 
             obilld.table = "BillDetail";
             obilld.pkField = "ID";
@@ -134,6 +135,7 @@ namespace clinic_ivf.objdb
             p.item_id = long.TryParse(p.item_id, out chk) ? chk.ToString() : "0";
             p.pcksid = long.TryParse(p.pcksid, out chk) ? chk.ToString() : "0";
             p.closeday_id = long.TryParse(p.closeday_id, out chk) ? chk.ToString() : "0";
+            p.bill_group_id = long.TryParse(p.bill_group_id, out chk) ? chk.ToString() : "0";
 
             p.Price = decimal.TryParse(p.Price, out chk1) ? chk1.ToString() : "0";            
             p.Total = decimal.TryParse(p.Total, out chk1) ? chk1.ToString() : "0";
@@ -176,6 +178,7 @@ namespace clinic_ivf.objdb
                 "," + obilld.active + "= '1'" +
                 "," + obilld.bill_id + "= '" + p.bill_id + "'" +
                 "," + obilld.closeday_id + "= '0'" +
+                "," + obilld.bill_group_id + "= '" + p.bill_group_id + "'" +
                 "";
             try
             {
@@ -209,6 +212,7 @@ namespace clinic_ivf.objdb
                 "," + obilld.date_modi + "= now() " +
                 "," + obilld.user_modi + "= '" + userId + "'" +
                 "," + obilld.remark + "= '" + p.remark + "'" +
+                "," + obilld.bill_group_id + "= '" + p.bill_group_id + "'" +
                 "Where " + obilld.pkField + "='" + p.ID + "'"
                 ;
 

@@ -403,7 +403,7 @@ namespace clinic_ivf.gui
             optt = ic.ivfDB.pttOldDB.selectByPk1(txtIdOld.Text);
             //ic.ivfDB.copDB.cop = ic.ivfDB.copDB.selectByCode1("001");
 
-            MemoryStream stream = ic.ftpC.download("images/" + txtIdOld.Text + "/" + txtIdOld.Text + "." + System.Drawing.Imaging.ImageFormat.Jpeg);
+            MemoryStream stream = ic.ftpC.download(ic.iniC.folderFTP + "/" + txtIdOld.Text + "/" + txtIdOld.Text + "." + System.Drawing.Imaging.ImageFormat.Jpeg);
             //MemoryStream stream = ic.ftpC.download("images/0001/0001." + System.Drawing.Imaging.ImageFormat.Jpeg);
             if (stream == null)
             {
@@ -1366,7 +1366,7 @@ namespace clinic_ivf.gui
                         ptti.user_create = "";
                         ptti.user_modi = "";
                         ptti.user_cancel = "";
-                        ptti.image_path = "images/" + txtHn.Text.Replace("-", "") + "/" + picIDCard;
+                        ptti.image_path = ic.iniC.folderFTP + "/" + txtHn.Text.Replace("-", "") + "/" + picIDCard;
                         ptti.status_image = "4";
                         String rere = ic.ivfDB.pttImgDB.insertpatientImage(ptti, ic.cStf.staff_id);
                         //long chk = 0;
@@ -1448,7 +1448,7 @@ namespace clinic_ivf.gui
                                     ptti.user_create = "";
                                     ptti.user_modi = "";
                                     ptti.user_cancel = "";
-                                    ptti.image_path = "images/" + txtHn.Text.Replace("-", "") + "/" + picIDCard;
+                                    ptti.image_path = ic.iniC.folderFTP + "/" + txtHn.Text.Replace("-", "") + "/" + picIDCard;
                                     ptti.status_image = "4";
                                     String re3 = ic.ivfDB.pttImgDB.insertpatientImage(ptti, ic.cStf.staff_id);
                                     //long chk = 0;
@@ -2035,7 +2035,7 @@ namespace clinic_ivf.gui
                                 ptti.user_create = "";
                                 ptti.user_modi = "";
                                 ptti.user_cancel = "";
-                                ptti.image_path = "images/" + txtHn.Text.Replace("-", "").Replace("/", "") + "/" + filename;
+                                ptti.image_path = ic.iniC.folderFTP + "/" + txtHn.Text.Replace("-", "").Replace("/", "") + "/" + filename;
                                 ptti.status_image = status;
                                 ptti.status_document = "1";
                                 ptti.dept_id = ic.user.dept_id;
@@ -2199,7 +2199,7 @@ namespace clinic_ivf.gui
                         host = ic.iniC.hostFTP; user = ic.iniC.userFTP; pass = ic.iniC.passFTP;
                         try
                         {
-                            ftpRequest = (FtpWebRequest)FtpWebRequest.Create(host + "/images/images_old/uploads/" + txtIdOld.Text +"/"+ aaa);
+                            ftpRequest = (FtpWebRequest)FtpWebRequest.Create(host + ic.iniC.folderFTP + "/images_old/uploads/" + txtIdOld.Text +"/"+ aaa);
                             ftpRequest.Credentials = new NetworkCredential(user, pass);
                             ftpRequest.UseBinary = true;
                             ftpRequest.UsePassive = ic.ftpUsePassive;
@@ -3188,9 +3188,9 @@ namespace clinic_ivf.gui
                 //picPtt.Image = bitmap;
                 //picPtt.SizeMode = PictureBoxSizeMode.StretchImage;
                 //setPic(bitmap);
-                String filename = "images/" + txtIdOld.Text + "/" + txtIdOld.Text + "." + System.Drawing.Imaging.ImageFormat.Jpeg;
+                String filename = ic.iniC.folderFTP + "/" + txtIdOld.Text + "/" + txtIdOld.Text + "." + System.Drawing.Imaging.ImageFormat.Jpeg;
                 Bitmap bitmap = null;
-                bitmap = new Bitmap(ic.ftpC.download(filename));
+                //bitmap = new Bitmap(ic.ftpC.download(filename));
                 //setPic(new Bitmap(ic.ftpC.download(filenamepic)));
                 setPic(new Bitmap(ic.ftpC.download(filename)));
             }

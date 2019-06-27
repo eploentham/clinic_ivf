@@ -60,6 +60,7 @@
             this.txtSearch = new C1.Win.C1Input.C1TextBox();
             this.sB = new System.Windows.Forms.StatusStrip();
             this.sB1 = new System.Windows.Forms.ToolStripStatusLabel();
+            this.chkPrnSticker = new C1.Win.C1Input.C1CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.theme1)).BeginInit();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tC)).BeginInit();
@@ -82,6 +83,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtDateStart)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtSearch)).BeginInit();
             this.sB.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.chkPrnSticker)).BeginInit();
             this.SuspendLayout();
             // 
             // theme1
@@ -413,6 +415,7 @@
             // panel3
             // 
             this.panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.panel3.Controls.Add(this.chkPrnSticker);
             this.panel3.Controls.Add(this.chkLabFormA);
             this.panel3.Controls.Add(this.btnSearch);
             this.panel3.Controls.Add(this.label11);
@@ -450,7 +453,7 @@
             // 
             // btnSearch
             // 
-            this.btnSearch.Location = new System.Drawing.Point(744, 5);
+            this.btnSearch.Location = new System.Drawing.Point(837, 5);
             this.btnSearch.Name = "btnSearch";
             this.btnSearch.Size = new System.Drawing.Size(28, 23);
             this.btnSearch.TabIndex = 736;
@@ -568,6 +571,25 @@
             this.sB1.Size = new System.Drawing.Size(118, 17);
             this.sB1.Text = "toolStripStatusLabel1";
             // 
+            // chkPrnSticker
+            // 
+            this.chkPrnSticker.BackColor = System.Drawing.Color.Transparent;
+            this.chkPrnSticker.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
+            this.chkPrnSticker.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.chkPrnSticker.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.chkPrnSticker.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chkPrnSticker.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.chkPrnSticker.Location = new System.Drawing.Point(643, 6);
+            this.chkPrnSticker.Name = "chkPrnSticker";
+            this.chkPrnSticker.Padding = new System.Windows.Forms.Padding(4, 1, 1, 1);
+            this.chkPrnSticker.Size = new System.Drawing.Size(163, 24);
+            this.chkPrnSticker.TabIndex = 738;
+            this.chkPrnSticker.Text = "ค้นหา เพื่อพิมพ์ Sticker";
+            this.theme1.SetTheme(this.chkPrnSticker, "(default)");
+            this.chkPrnSticker.UseVisualStyleBackColor = true;
+            this.chkPrnSticker.Value = false;
+            this.chkPrnSticker.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            // 
             // FrmNurseView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -604,6 +626,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtSearch)).EndInit();
             this.sB.ResumeLayout(false);
             this.sB.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.chkPrnSticker)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -643,5 +666,6 @@
         private System.Windows.Forms.Label label70;
         private C1.Win.C1Input.C1ComboBox cboVisitBsp;
         private C1.Win.C1Input.C1CheckBox chkAll;
+        private C1.Win.C1Input.C1CheckBox chkPrnSticker;
     }
 }

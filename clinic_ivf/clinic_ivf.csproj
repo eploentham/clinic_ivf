@@ -7,7 +7,7 @@
     <ProjectGuid>{7D208141-0F7C-4B94-8BBA-D4B4FA8685A4}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <RootNamespace>clinic_ivf</RootNamespace>
-    <AssemblyName>clinic_ivf_donor</AssemblyName>
+    <AssemblyName>clinic_ivf_ptt</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -32,7 +32,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>Resources\icon-sqr-01.ico</ApplicationIcon>
+    <ApplicationIcon>Resources\Treetog-I-Documents.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="AForge, Version=2.2.5.0, Culture=neutral, PublicKeyToken=c1db6ff4eaa06aeb, processorArchitecture=MSIL">
@@ -453,6 +453,12 @@
     </Compile>
     <Compile Include="gui\FrmPositionS.designer.cs">
       <DependentUpon>FrmPositionS.cs</DependentUpon>
+    </Compile>
+    <Compile Include="gui\FrmPrintCritiAnes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="gui\FrmPrintCritiAnes.Designer.cs">
+      <DependentUpon>FrmPrintCritiAnes.cs</DependentUpon>
     </Compile>
     <Compile Include="gui\FrmPrintPreview.cs">
       <SubType>Form</SubType>
@@ -1056,6 +1062,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="gui\FrmPositionS.resx">
       <DependentUpon>FrmPositionS.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="gui\FrmPrintCritiAnes.resx">
+      <DependentUpon>FrmPrintCritiAnes.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="gui\FrmPrintPreview.resx">
       <DependentUpon>FrmPrintPreview.cs</DependentUpon>

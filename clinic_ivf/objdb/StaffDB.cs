@@ -407,6 +407,7 @@ namespace clinic_ivf.objdb
 
             return "1";
         }
+        
         public DataTable selectAllEmbryo()
         {
             DataTable dt = new DataTable();
@@ -433,9 +434,9 @@ namespace clinic_ivf.objdb
         public DataTable selectAllDoctor()
         {
             DataTable dt = new DataTable();
-            String sql = "Select stf.staff_id, stf.doctor_id, concat( stf.staff_fname_e, ' ' , stf.staff_lname_e) as name " +               
+            String sql = "Select stf.staff_id, stf.doctor_id, concat(pfx.patient_prefix_description, ' ', stf.staff_fname_e, ' ' , stf.staff_lname_e) as name " +               
                 "From " + stf.table + " stf " +
-                //"Left Join b_prefix pfx On stf.prefix_id = pfx.prefix_id " +
+                "Left Join f_patient_prefix pfx On stf.prefix_id = pfx.f_patient_prefix_id " +
                 "Where stf." + stf.active + " ='1' and stf."+stf.status_doctor+"='1' ";
             dt = conn.selectData(conn.conn, sql);
 
@@ -448,7 +449,7 @@ namespace clinic_ivf.objdb
                 ", stf.mobile, stf.email, stf.posi_name " +
                 ", stf.dept_name, stf.remark, stf.pid, '' as dept_name_t, '' as posi_name_t " +
                 "From " + stf.table + " stf " +
-                //"Left Join b_prefix pfx On stf.prefix_id = pfx.prefix_id " +
+                //"Left Join f_patient_prefix pfx On stf.prefix_id = pfx.prefix_id " +
                 "Where stf." + stf.active + " ='1' ";
             dt = conn.selectData(conn.conn, sql);
 
@@ -773,6 +774,38 @@ namespace clinic_ivf.objdb
                 item = new ComboBoxItem();
                 item.Value = row[stf.staff_id].ToString();
                 item.Text = row[stf.staff_fname_e].ToString() + " " + row[stf.staff_lname_e].ToString();
+                c.Items.Add(item);
+                if (item.Value.Equals(selected))
+                {
+                    //c.SelectedItem = item.Value;
+                    c.SelectedText = item.Text;
+                    c.SelectedIndex = i + 1;
+                }
+                i++;
+            }
+            if (selected.Equals(""))
+            {
+                if (c.Items.Count > 0)
+                {
+                    c.SelectedIndex = 0;
+                }
+            }
+        }
+        public void setCboDoctor(C1ComboBox c, String selected)
+        {
+            ComboBoxItem item = new ComboBoxItem();
+            DataTable dt = selectAllDoctor();
+            int i = 0;
+
+            item = new ComboBoxItem();
+            item.Value = "";
+            item.Text = "";
+            c.Items.Add(item);
+            foreach (DataRow row in dt.Rows)
+            {
+                item = new ComboBoxItem();
+                item.Value = row[stf.staff_id].ToString();
+                item.Text = row["name"].ToString() ;
                 c.Items.Add(item);
                 if (item.Value.Equals(selected))
                 {

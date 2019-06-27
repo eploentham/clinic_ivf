@@ -24,5 +24,6 @@ namespace clinic_ivf.object1
         public String bill_id { get; set; }
         public String sort1 { get; set; }
         public String closeday_id { get; set; }
+        public String bill_group_id { get; set; }
     }
 }

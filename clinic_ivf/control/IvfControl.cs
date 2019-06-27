@@ -209,6 +209,7 @@ namespace clinic_ivf.control
             iniC.printerBill = iniF.getIni("app", "printerBill");
             iniC.printerAppointment = iniF.getIni("app", "printerAppointment");
             iniC.pathSaveExcelAppointment = iniF.getIni("app", "pathSaveExcelAppointment");
+            iniC.printerA4 = iniF.getIni("app", "printerA4");
 
             iniC.grdViewFontName = iniC.grdViewFontName.Equals("") ? "Microsoft Sans Serif" : iniC.grdViewFontName;
 
@@ -697,8 +698,8 @@ namespace clinic_ivf.control
                 File.Delete(@"temppic." + System.Drawing.Imaging.ImageFormat.Jpeg);
             }
             pic.Save(@"temppic." + System.Drawing.Imaging.ImageFormat.Jpeg, System.Drawing.Imaging.ImageFormat.Jpeg);
-            ftpC.createDirectory("images/" + filename);
-            ftpC.upload("images/" + filename + "/" +filename+"." + System.Drawing.Imaging.ImageFormat.Jpeg, @"temppic" + "." + System.Drawing.Imaging.ImageFormat.Jpeg);
+            ftpC.createDirectory(iniC.folderFTP + "/" + filename);
+            ftpC.upload(iniC.folderFTP + "/" + filename + "/" +filename+"." + System.Drawing.Imaging.ImageFormat.Jpeg, @"temppic" + "." + System.Drawing.Imaging.ImageFormat.Jpeg);
         }
         public void delPicOPUtoServer(String opuCode, String filename)
         {
@@ -707,8 +708,8 @@ namespace clinic_ivf.control
             //    File.Delete(@"temppic" + System.Drawing.Imaging.ImageFormat.Jpeg);
             //}
             //pathFile.Save(@"temppic." + System.Drawing.Imaging.ImageFormat.Jpeg, System.Drawing.Imaging.ImageFormat.Jpeg);
-            ftpC.createDirectory("images/");
-            ftpC.createDirectory("images/" + opuCode);
+            ftpC.createDirectory(iniC.folderFTP + "/");
+            ftpC.createDirectory(iniC.folderFTP + "/" + opuCode);
             ftpC.delete(filename);
             
         }
@@ -719,11 +720,11 @@ namespace clinic_ivf.control
             //    File.Delete(@"temppic" + System.Drawing.Imaging.ImageFormat.Jpeg);
             //}
             //pathFile.Save(@"temppic." + System.Drawing.Imaging.ImageFormat.Jpeg, System.Drawing.Imaging.ImageFormat.Jpeg);
-            ftpC.createDirectory("images" );
-            ftpC.createDirectory("images/" + opuCode);
-            ftpC.delete("images/" + opuCode + "/" + filename);
+            ftpC.createDirectory(iniC.folderFTP);
+            ftpC.createDirectory(iniC.folderFTP + "/" + opuCode);
+            ftpC.delete(iniC.folderFTP + "/" + opuCode + "/" + filename);
             //ftpC.upload( filename, pathFile);
-            ftpC.upload("images/" + opuCode + "/" + filename, pathFile);
+            ftpC.upload(iniC.folderFTP + "/" + opuCode + "/" + filename, pathFile);
         }
         public void saveFilePatienttoServer(String pttId,String filenamenew, String localpathandfilename)
         {
@@ -741,7 +742,7 @@ namespace clinic_ivf.control
             //ftpC.createDirectory("images/" + pttId);
             ftpC.createDirectory("" );
             //ftpC.upload("images/"+pttId + "/" + filenamenew + "." + ex, localpathandfilename);
-            ftpC.upload("images." + ex, localpathandfilename);
+            ftpC.upload(iniC.folderFTP + "." + ex, localpathandfilename);
         }
         public void saveFilePatientHNtoServer(String hn,String filename, Image pic)
         {

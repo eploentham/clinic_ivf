@@ -338,7 +338,7 @@ namespace clinic_ivf.gui
             String dt1 = "";
             DateTime dt = new DateTime();
             dt1 = txtDatepApm.Text;
-            if (DateTime.TryParse(dt1, out dt))
+            if (!DateTime.TryParse(dt1, out dt))
             {
                 MessageBox.Show("วันนัด ไม่ถูกต้อง", "");
                 return;

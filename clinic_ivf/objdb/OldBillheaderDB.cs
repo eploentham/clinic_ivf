@@ -72,6 +72,35 @@ namespace clinic_ivf.objdb
             dt = conn.selectData(conn.conn, sql);
             return dt;
         }
+        public DataTable selectCashCloseDay()
+        {
+            String cnt = "";
+            DataTable dt = new DataTable();
+            String sql = "select sum("+obillh.cash+ ") as cash,sum(" + obillh.credit + ") as credit  " +
+                "From " + obillh.table + " obillh " +
+                "Where obillh." + obillh.closeday_id + " ='0' and obillh." + obillh.active + " = '1' ";
+            dt = conn.selectData(conn.conn, sql);
+            //if (dt.Rows.Count >= 1)
+            //{
+            //    cnt = dt.Rows[0]["cnt"].ToString();
+            //}
+            return dt;
+        }
+        public DataTable selectByCloseDay()
+        {
+            String cnt = "";
+            DataTable dt = new DataTable();
+            String sql = "select *  " +
+                "From " + obillh.table + " obillh " +
+                "Where obillh." + obillh.closeday_id + " ='0' and obillh." + obillh.active + " = '1' " +
+                "Order By "+ obillh.receipt_no;
+            dt = conn.selectData(conn.conn, sql);
+            //if (dt.Rows.Count >= 1)
+            //{
+            //    cnt = dt.Rows[0]["cnt"].ToString();
+            //}
+            return dt;
+        }
         public DataTable selectByVN(String vn)
         {
             DataTable dt = new DataTable();

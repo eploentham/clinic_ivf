@@ -1357,7 +1357,7 @@ namespace clinic_ivf.gui
                                     if (ext.Length > 1)
                                     {
                                         filename = txtOpuCode.Text + "_day6_" + no + "." + ext[ext.Length - 1];
-                                        re = ic.ivfDB.opuEmDevDB.updatePathPic(id, no, "images/" + txtOpuCode.Text + "/" + filename, desc, desc1, ic.cStf.staff_id);
+                                        re = ic.ivfDB.opuEmDevDB.updatePathPic(id, no, ic.iniC.folderFTP + "/" + txtOpuCode.Text + "/" + filename, desc, desc1, ic.cStf.staff_id);
                                         long chk = 0;
                                         if (long.TryParse(re, out chk))
                                         {
@@ -1424,7 +1424,7 @@ namespace clinic_ivf.gui
                                     if (ext.Length > 1)
                                     {
                                         filename = txtOpuCode.Text + "_day5_" + no + "." + ext[ext.Length - 1];
-                                        re = ic.ivfDB.opuEmDevDB.updatePathPic(id, no, "images/" + txtOpuCode.Text + "/" + filename, desc, desc1, ic.cStf.staff_id);
+                                        re = ic.ivfDB.opuEmDevDB.updatePathPic(id, no, ic.iniC.folderFTP + "/" + txtOpuCode.Text + "/" + filename, desc, desc1, ic.cStf.staff_id);
                                         long chk = 0;
                                         if (long.TryParse(re, out chk))
                                         {
@@ -1483,7 +1483,7 @@ namespace clinic_ivf.gui
                                     if (ext.Length > 1)
                                     {
                                         filename = txtOpuCode.Text + "_day3_" + no + "." + ext[ext.Length - 1];
-                                        re = ic.ivfDB.opuEmDevDB.updatePathPic(id, no, "images/" + txtOpuCode.Text + "/" + filename, desc, desc1, ic.cStf.staff_id);
+                                        re = ic.ivfDB.opuEmDevDB.updatePathPic(id, no, ic.iniC.folderFTP + "/" + txtOpuCode.Text + "/" + filename, desc, desc1, ic.cStf.staff_id);
                                         long chk = 0;
                                         if (long.TryParse(re, out chk))
                                         {
@@ -1649,7 +1649,7 @@ namespace clinic_ivf.gui
                                     if (ext.Length > 1)
                                     {
                                         filename = txtOpuCode.Text + "_day2_" + no + "." + ext[ext.Length - 1];
-                                        re = ic.ivfDB.opuEmDevDB.updatePathPic(id, no, "images/" + txtOpuCode.Text + "/" + filename, desc, desc1, ic.cStf.staff_id);
+                                        re = ic.ivfDB.opuEmDevDB.updatePathPic(id, no, ic.iniC.folderFTP + "/" + txtOpuCode.Text + "/" + filename, desc, desc1, ic.cStf.staff_id);
                                         long chk = 0;
                                         if (long.TryParse(re, out chk))
                                         {
@@ -2987,7 +2987,7 @@ namespace clinic_ivf.gui
                             if (ext.Length > 1)
                             {
                                 filename = txtOpuCode.Text + "_day2_" + no + "." + ext[ext.Length - 1];
-                                re = ic.ivfDB.opuEmDevDB.updatePathPic(id, no, "images/" + txtOpuCode.Text + "/" + filename, desc, ic.cStf.staff_id);
+                                re = ic.ivfDB.opuEmDevDB.updatePathPic(id, no, ic.iniC.folderFTP + "/" + txtOpuCode.Text + "/" + filename, desc, ic.cStf.staff_id);
                                 long chk = 0;
                                 if (long.TryParse(re, out chk))
                                 {
@@ -3229,7 +3229,7 @@ namespace clinic_ivf.gui
                             if (ext.Length > 1)
                             {
                                 filename = txtOpuCode.Text + "_day2_" + no + "." + ext[ext.Length - 1];
-                                re = ic.ivfDB.opuEmDevDB.updatePathPic(id, no, "images/" + txtOpuCode.Text + "/" + filename, desc, ic.cStf.staff_id);
+                                re = ic.ivfDB.opuEmDevDB.updatePathPic(id, no, ic.iniC.folderFTP + "/" + txtOpuCode.Text + "/" + filename, desc, ic.cStf.staff_id);
                                 long chk = 0;
                                 if (long.TryParse(re, out chk))
                                 {
@@ -3470,7 +3470,7 @@ namespace clinic_ivf.gui
                             if (ext.Length > 1)
                             {
                                 filename = txtOpuCode.Text + "_day2_" + no + "." + ext[ext.Length - 1];
-                                re = ic.ivfDB.opuEmDevDB.updatePathPic(id, no, "images/" + txtOpuCode.Text + "/" + filename, desc, ic.cStf.staff_id);
+                                re = ic.ivfDB.opuEmDevDB.updatePathPic(id, no, ic.iniC.folderFTP + "/" + txtOpuCode.Text + "/" + filename, desc, ic.cStf.staff_id);
                                 long chk = 0;
                                 if (long.TryParse(re, out chk))
                                 {
@@ -3713,7 +3713,7 @@ namespace clinic_ivf.gui
                             //if (ext.Length > 1)
                             //{
                             filename = txtOpuCode.Text + "_day2_" + no + extension;
-                            re = ic.ivfDB.opuEmDevDB.updatePathPic(id, no, "images/" + txtOpuCode.Text + "/" + filename, desc, ic.cStf.staff_id);
+                            re = ic.ivfDB.opuEmDevDB.updatePathPic(id, no, ic.iniC.folderFTP + "/" + txtOpuCode.Text + "/" + filename, desc, ic.cStf.staff_id);
                             long chk = 0;
                             if (long.TryParse(re, out chk))
                             {
