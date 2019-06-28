@@ -125,6 +125,7 @@ namespace clinic_ivf.objdb
             vs.doctor_id = "doctor_id";
             vs.patient_hn_2 = "patient_hn_2";
             vs.closeday_id = "closeday_id";
+            vs.status_cashier = "status_cashier";
 
             vs.table = "t_visit";
             vs.pkField = "t_visit_id";
@@ -217,7 +218,7 @@ namespace clinic_ivf.objdb
             p.visit_ncd = p.visit_ncd == null ? "" : p.visit_ncd;
             //p.visit_lab_status_id = p.visit_lab_status_id == null ? "" : p.visit_lab_status_id;
             //p.visit_cal_date_appointment1 = p.visit_cal_date_appointment1 == null ? "" : p.visit_cal_date_appointment1;
-
+            p.status_cashier = p.status_cashier == null ? "" : p.status_cashier;
 
 
             p.t_visit_id = long.TryParse(p.t_visit_id, out chk) ? chk.ToString() : "0";
@@ -468,6 +469,23 @@ namespace clinic_ivf.objdb
 
             return dt;
         }
+        public String updateCloseDayId(String cldid)
+        {
+            String re = "", err = "";
+            String sql = "update " + vs.table + " " +
+                "Set " + vs.closeday_id + " ='"+ cldid + "' " +
+                "Where " + vs.closeday_id + " ='0' ";
+            try
+            {
+                re = conn.ExecuteNonQuery(conn.conn, sql);
+            }
+            catch (Exception ex)
+            {
+                err = ex.Message;
+            }
+
+            return re;
+        }
         public String updateDoctor(String vsid, String dtrid)
         {
             String re = "", err = "";
@@ -522,6 +540,39 @@ namespace clinic_ivf.objdb
 
             return re;
         }
+        public String updateOpenStatusCashierByVn(String vn)
+        {
+            String re = "", err = "";
+            String sql = "update " + vs.table + " " +
+                "Set " + vs.status_cashier + " ='1' " +
+                "Where " + vs.visit_vn + " ='" + vn + "' ";
+            try
+            {
+                re = conn.ExecuteNonQuery(conn.conn, sql);
+            }
+            catch (Exception ex)
+            {
+                err = ex.Message;
+            }
+            return re;
+        }
+        public String updateCloseStatusCashier(String vsid)
+        {
+            String re = "", err = "";
+            String sql = "update " + vs.table + " " +
+                "Set " + vs.status_cashier + " ='2' " +
+                "Where " + vs.pkField + " ='" + vsid + "' ";
+            try
+            {
+                re = conn.ExecuteNonQuery(conn.conn, sql);
+            }
+            catch (Exception ex)
+            {
+                err = ex.Message + ex.InnerException;
+            }
+
+            return re;
+        }
         public String updateOpenStatusNurse(String vsid)
         {
             String re = "", err = "";
@@ -536,19 +587,18 @@ namespace clinic_ivf.objdb
             {
                 err = ex.Message;
             }
-
             return re;
         }
-        public String updateCloseStatusNurseByVN(String vsid)
+        public String updateCloseStatusNurseByVN(String vn)
         {
             String re = "", err = "";
             String sql = "update " + vs.table + " " +
                 "Set " + vs.status_nurse + " ='2' " +
-                "Where " + vs.visit_vn + " ='" + vsid + "' ";
+                "Where " + vs.visit_vn + " ='" + vn + "' ";
             try
             {
                 re = conn.ExecuteNonQuery(conn.conn, sql);
-                updateStatusVoidVisitByVN(vsid);
+                updateStatusVoidVisitByVN(vn);
             }
             catch (Exception ex)
             {
@@ -936,7 +986,7 @@ namespace clinic_ivf.objdb
                 vs1.patient_hn_male = dt.Rows[0][vs.patient_hn_male].ToString();
                 vs1.doctor_id = dt.Rows[0][vs.doctor_id].ToString();
                 vs1.patient_hn_2 = dt.Rows[0][vs.patient_hn_2].ToString();
-                
+                vs1.status_cashier = dt.Rows[0][vs.status_cashier].ToString();
             }
             else
             {
@@ -1049,6 +1099,7 @@ namespace clinic_ivf.objdb
             stf1.patient_hn_male = "";
             stf1.doctor_id = "";
             stf1.patient_hn_2 = "";
+            stf1.status_cashier = "";
             return stf1;
         }
     }

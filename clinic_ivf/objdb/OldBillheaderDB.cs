@@ -8,6 +8,9 @@ using System.Threading.Tasks;
 
 namespace clinic_ivf.objdb
 {
+    /*
+     * 620628       ห้าม update หรือลงข้อมูลในช่อง receiptno เพราะใช้ในการดึง closeday ให้ค่าเป็น null ถ้ามี ใบเสร็จ ค่อ update เลขที่ใบเสร็จ
+     */ 
     public class OldBillheaderDB
     {
         public OldBillheader obillh;
@@ -92,7 +95,7 @@ namespace clinic_ivf.objdb
             DataTable dt = new DataTable();
             String sql = "select *  " +
                 "From " + obillh.table + " obillh " +
-                "Where obillh." + obillh.closeday_id + " ='0' and obillh." + obillh.active + " = '1' " +
+                "Where obillh." + obillh.closeday_id + " ='0' and obillh." + obillh.active + " = '1' and obillh."+obillh.receipt_no +" is not null " +
                 "Order By "+ obillh.receipt_no;
             dt = conn.selectData(conn.conn, sql);
             //if (dt.Rows.Count >= 1)

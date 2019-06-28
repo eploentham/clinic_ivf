@@ -234,7 +234,7 @@ namespace clinic_ivf.objdb
             fsh = row1[pApmDB.pApm.fsh].ToString().Equals("1") ? "FSH " : "";
             sperm = row1[pApmDB.pApm.sperm_collect].ToString().Equals("1") ? "Sperm Collect " : "";
             opu = row1[pApmDB.pApm.opu].ToString().Equals("1") ? "OPU [Time " + row1[pApmDB.pApm.opu_time].ToString()+"] " + row1[pApmDB.pApm.doctor_anes].ToString() : "";
-            appn = row1[pApmDB.pApm.patient_appointment_time].ToString() + " " + e2 + " " + lh + " " + prl + " " + fsh + " " + sperm;
+            appn = row1[pApmDB.pApm.patient_appointment_time].ToString() + " " + e2 + " " + opu + " " + lh + " " + prl + " " + fsh + " " + sperm;
             return appn;
         }
         public String datetoDB(String dt)

@@ -469,12 +469,14 @@ namespace clinic_ivf.gui
             setGrfBillD();
             calTotal();
             calTotalCredit();
+            txtPayCreditCard.Value = "";
         }
 
         private void BtnClose_Click(object sender, EventArgs e)
         {
             //throw new NotImplementedException();
             String re = ic.ivfDB.ovsDB.updateStatusCashierFinish(txtVn.Text);
+            String re1 = ic.ivfDB.vsDB.updateCloseStatusCashier(txtVsId.Text);
             frmCashView.setGrfQuePublic();
             frmCashView.setGrfFinishPublic();
             menu.removeTab(tab);
@@ -834,7 +836,18 @@ namespace clinic_ivf.gui
         }
         private void ContextMenu_edit_bill(object sender, System.EventArgs e)
         {
-
+            if (grfBillD.Row <= 0) return;
+            String bildid = "";
+            //if (grfBillD[grfBillD.Row, colId] == null) return;
+            bildid = grfBillD[grfBillD.Row, colId] != null ? grfBillD[grfBillD.Row, colId].ToString() : "";
+            ic.cStf.staff_id = "";
+            FrmPasswordConfirm frm = new FrmPasswordConfirm(ic);
+            frm.ShowDialog(this);
+            if (!ic.cStf.staff_id.Equals(""))
+            {
+                ic.ivfDB.obildDB.voidBillDetailBybildid(bildid, ic.cStf.staff_id);
+                setGrfBillD();
+            }
         }
         private void ContextMenu_send_back(object sender, System.EventArgs e)
         {
@@ -867,7 +880,7 @@ namespace clinic_ivf.gui
 
             //grfExpn.Rows.Count = dt.Rows.Count + 1;
             ContextMenu menuGw = new ContextMenu();
-            menuGw.MenuItems.Add("แก้ไข บิล", new EventHandler(ContextMenu_edit_bill));
+            menuGw.MenuItems.Add("ยกเลิก รายการ", new EventHandler(ContextMenu_edit_bill));
             //menuGw.MenuItems.Add("&แก้ไข", new EventHandler(ContextMenu_Gw_Edit));
             //menuGw.MenuItems.Add("&ยกเลิก", new EventHandler(ContextMenu_Gw_Cancel));
             grfBillD.ContextMenu = menuGw;
@@ -1031,19 +1044,36 @@ namespace clinic_ivf.gui
             //Decimal.TryParse(txtAmt.Text, out amt);
             total = amt - discount;
             txtTotal.Value = total.ToString("#,###.00");
-            txtTotalCash.Value = total;
-            txtTotalCredit.Value = "0";
+            String cashid1 = "", creditid1 = "";
+            cashid1 = cboAccCash.SelectedItem == null ? "" : ((ComboBoxItem)cboAccCash.SelectedItem).Value;
+            creditid1 = cboAccCredit.SelectedItem == null ? "" : ((ComboBoxItem)cboAccCredit.SelectedItem).Value;
+            if (cashid1.Length > 0)
+            {
+                txtTotalCash.Value = total;
+                txtTotalCredit.Value = "0";
+            }
+            else if (creditid1.Length > 0)
+            {
+                txtTotalCash.Value = "0";
+                txtTotalCredit.Value = total;
+            }
+            
         }
         private void calTotalCredit()
         {
             Decimal total = 0, cash=0, credit=0, per=0, paycredit=0;
             Decimal.TryParse(txtTotal.Text, out total);
             Decimal.TryParse(txtTotalCash.Text, out cash);
+            Decimal.TryParse(txtTotalCredit.Text, out credit);
             Decimal.TryParse(txtCreditCharge.Text, out per);
-            credit = total - cash;
-            paycredit = credit * per / 100;
-            txtTotalCredit.Value = credit.ToString("0.00");
-            txtPayCreditCard.Value = paycredit.ToString("0.00");
+            if (credit > 0)
+            {
+                //credit = total - cash;
+                paycredit = credit * per / 100;
+                txtTotalCredit.Value = credit.ToString("0.00");
+                txtPayCreditCard.Value = paycredit.ToString("0.00");
+            }
+            
         }
         private void calTotalCash()
         {
@@ -1063,7 +1093,8 @@ namespace clinic_ivf.gui
             menu.Text = ic.iniC.statusAppDonor.Equals("1") ? "โปรแกรมClinic IVF Donor " + "สวัสดี คุณ " + ic.user.staff_fname_t + " " + ic.user.staff_lname_t + " Update 2019-06-27 "
                 : "โปรแกรมClinic IVF " + "สวัสดี คุณ " + ic.user.staff_fname_t + " " + ic.user.staff_lname_t + " Update 2019-06-27 format date " + date
                 + " [" + ic.ivfDB.copDB.cop.day + "-" + ic.ivfDB.copDB.cop.month + "-" + ic.ivfDB.copDB.cop.year + "]";
-            sB1.Text = "Date " + ic.cop.day + "-" + ic.cop.month + "-" + ic.cop.year + " Server " + ic.iniC.hostDB + " FTP " + ic.iniC.hostFTP;
+            //sB1.Text = "Date " + ic.cop.day + "-" + ic.cop.month + "-" + ic.cop.year + " Server " + ic.iniC.hostDB + " FTP " + ic.iniC.hostFTP;
+            sB1.Text = "Date " + ic.cop.day + "-" + ic.cop.month + "-" + ic.cop.year + " Server " + ic.iniC.hostDB + " FTP " + ic.iniC.hostFTP + "/" + ic.iniC.folderFTP;
         }
     }
 }

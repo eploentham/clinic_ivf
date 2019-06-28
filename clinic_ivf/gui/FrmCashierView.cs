@@ -60,7 +60,6 @@ namespace clinic_ivf.gui
 
             cld = new Closeday();
             
-
             tC.SelectedTabChanged += TC_SelectedTabChanged;
             btnSearch.Click += BtnSearch_Click;
             btnSaveCld.Click += BtnSaveCld_Click;
@@ -161,6 +160,7 @@ namespace clinic_ivf.gui
                     }
                     ic.ivfDB.obilhDB.updateCloseDayId(txtCldId.Text);
                     ic.ivfDB.obildDB.updateCloseDayId(txtCldId.Text);
+                    ic.ivfDB.vsDB.updateCloseDayId(txtCldId.Text);
                     ic.ivfDB.genCloseDayBill(txtCldId.Text);
                     frmW.Dispose();
                     MessageBox.Show("ปิดวัน" + date + " เรียบร้อย", "");
@@ -311,6 +311,7 @@ namespace clinic_ivf.gui
             txtAmtCredit.Value = credit1.ToString("#,###.00");
             amt = cash1 + credit1;
             txtAmt.Value = amt.ToString("#,###.00");
+            txtTotalCash.Value = amt.ToString("#,###.00");
         }
         private void Timer_Tick(object sender, EventArgs e)
         {
@@ -333,19 +334,19 @@ namespace clinic_ivf.gui
 
             grfCld.Cols[colCldBillNo].Width = 100;
             grfCld.Cols[colCldReceiptNo].Width = 100;
-            grfCld.Cols[colCldDate].Width = 120;
-            grfCld.Cols[colCldHn].Width = 80;
+            grfCld.Cols[colCldDate].Width = 100;
+            grfCld.Cols[colCldHn].Width = 100;
             grfCld.Cols[colCldName].Width = 200;
             grfCld.Cols[colCldPkg].Width = 100;
-            grfCld.Cols[colCldMed].Width = 100;
-            grfCld.Cols[colCldDtrfee].Width = 100;
-            grfCld.Cols[colCldLab1].Width = 100;
-            grfCld.Cols[colCldLab2].Width = 100;
-            grfCld.Cols[colCldNurfee].Width = 100;
-            grfCld.Cols[colCldTreat].Width = 100;
-            grfCld.Cols[colCldDiscount].Width = 100;
-            grfCld.Cols[colCldOther].Width = 100;
-            grfCld.Cols[colCldAmount].Width = 100;
+            grfCld.Cols[colCldMed].Width = 90;
+            grfCld.Cols[colCldDtrfee].Width = 90;
+            grfCld.Cols[colCldLab1].Width = 90;
+            grfCld.Cols[colCldLab2].Width = 90;
+            grfCld.Cols[colCldNurfee].Width = 90;
+            grfCld.Cols[colCldTreat].Width = 90;
+            grfCld.Cols[colCldDiscount].Width = 90;
+            grfCld.Cols[colCldOther].Width = 90;
+            grfCld.Cols[colCldAmount].Width = 90;
 
             grfCld.ShowCursor = true;
             //grdFlex.Cols[colID].Caption = "no";
@@ -446,8 +447,8 @@ namespace clinic_ivf.gui
             CellNoteManager mgr = new CellNoteManager(grfSearch);
             grfCld.Cols[colCldId].Visible = false;
             grfCld.Cols[colCldBillId].Visible = false;
-            //grfCld.Cols[colPttId].Visible = false;
-            //grfCld.Cols[colBillId].Visible = false;
+            grfCld.Cols[colCldBillNo].Visible = false;
+            grfCld.Cols[colCldVn].Visible = false;
             //grfCld.Cols[colStatusNurse].Visible = false;
             //grfCld.Cols[colStatusCashier].Visible = false;
 
@@ -861,6 +862,7 @@ namespace clinic_ivf.gui
             vn = grfQue[grfQue.Row, colVN] != null ? grfQue[grfQue.Row, colVN].ToString() : "";
             name = grfQue[grfQue.Row, colPttName] != null ? grfQue[grfQue.Row, colPttName].ToString() : "";
             String billid = ic.getBillVN(id, ic.userId);
+            String re1 = ic.ivfDB.vsDB.updateOpenStatusCashierByVn(id);
             openBillNew(id, name,"edit", billid);
         }
         public void setGrfQuePublic()
@@ -958,7 +960,7 @@ namespace clinic_ivf.gui
                 grfQue[i, colVsEtime] = row["VEndTime"].ToString();
                 grfQue[i, colStatus] = row["VName"].ToString();
                 grfQue[i, colPttId] = row["PID"].ToString();
-                grfQue[i, colVsAgent] = row["agent"].ToString();
+                grfQue[i, colVsAgent] = row["AgentName"].ToString();
                 grfQue[i, colBillId] = "";
                 //grfQue[i, colStatusNurse] = row["status_nurse"] != null ? row["status_nurse"].ToString() : "";
                 //grfQue[i, colStatusCashier] = row["status_cashier"] != null ? row["status_cashier"].ToString() : "";
@@ -997,6 +999,8 @@ namespace clinic_ivf.gui
         private void FrmCashierView_Load(object sender, EventArgs e)
         {
             spCloseDay.HeaderHeight = 0;
+            spCld.Width = 370;
+            sB1.Text = "Date " + ic.cop.day + "-" + ic.cop.month + "-" + ic.cop.year + " Server " + ic.iniC.hostDB + " FTP " + ic.iniC.hostFTP + "/" + ic.iniC.folderFTP;
         }
     }
 }

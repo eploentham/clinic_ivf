@@ -51,6 +51,7 @@
             this.pnCloseDay = new System.Windows.Forms.Panel();
             this.spCloseDay = new C1.Win.C1SplitContainer.C1SplitContainer();
             this.spCld = new C1.Win.C1SplitContainer.C1SplitterPanel();
+            this.txtCldId = new C1.Win.C1Input.C1TextBox();
             this.label15 = new System.Windows.Forms.Label();
             this.txtRemark = new C1.Win.C1Input.C1TextBox();
             this.btnSaveCld = new C1.Win.C1Input.C1Button();
@@ -96,7 +97,6 @@
             this.pnReportCri = new System.Windows.Forms.Panel();
             this.c1SplitterPanel2 = new C1.Win.C1SplitContainer.C1SplitterPanel();
             this.pnReportView = new System.Windows.Forms.Panel();
-            this.txtCldId = new C1.Win.C1Input.C1TextBox();
             this.sB.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.theme1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tC)).BeginInit();
@@ -117,6 +117,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.spCloseDay)).BeginInit();
             this.spCloseDay.SuspendLayout();
             this.spCld.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtCldId)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtRemark)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnSaveCld)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtDeposit)).BeginInit();
@@ -145,7 +146,6 @@
             this.c1SplitterPanel3.SuspendLayout();
             this.c1SplitterPanel4.SuspendLayout();
             this.c1SplitterPanel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.txtCldId)).BeginInit();
             this.SuspendLayout();
             // 
             // sB
@@ -487,11 +487,25 @@
             this.spCld.Dock = C1.Win.C1SplitContainer.PanelDockStyle.Left;
             this.spCld.Location = new System.Drawing.Point(0, 21);
             this.spCld.Name = "spCld";
-            this.spCld.Size = new System.Drawing.Size(356, 651);
-            this.spCld.SizeRatio = 34.053D;
+            this.spCld.Size = new System.Drawing.Size(361, 651);
+            this.spCld.SizeRatio = 34.522D;
             this.spCld.TabIndex = 0;
             this.spCld.Text = "Panel 1";
-            this.spCld.Width = 363;
+            this.spCld.Width = 368;
+            // 
+            // txtCldId
+            // 
+            this.txtCldId.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtCldId.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
+            this.txtCldId.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.txtCldId.Location = new System.Drawing.Point(254, 25);
+            this.txtCldId.Name = "txtCldId";
+            this.txtCldId.Size = new System.Drawing.Size(27, 20);
+            this.txtCldId.TabIndex = 764;
+            this.txtCldId.Tag = null;
+            this.theme1.SetTheme(this.txtCldId, "(default)");
+            this.txtCldId.Visible = false;
+            this.txtCldId.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
             // 
             // label15
             // 
@@ -884,12 +898,12 @@
             this.spCldDetail.Collapsible = true;
             this.spCldDetail.Controls.Add(this.pnCldDetail);
             this.spCldDetail.Dock = C1.Win.C1SplitContainer.PanelDockStyle.Right;
-            this.spCldDetail.Location = new System.Drawing.Point(367, 21);
+            this.spCldDetail.Location = new System.Drawing.Point(372, 21);
             this.spCldDetail.Name = "spCldDetail";
-            this.spCldDetail.Size = new System.Drawing.Size(703, 651);
+            this.spCldDetail.Size = new System.Drawing.Size(698, 651);
             this.spCldDetail.TabIndex = 1;
             this.spCldDetail.Text = "Panel 2";
-            this.spCldDetail.Width = 703;
+            this.spCldDetail.Width = 698;
             // 
             // pnCldDetail
             // 
@@ -898,7 +912,7 @@
             this.pnCldDetail.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
             this.pnCldDetail.Location = new System.Drawing.Point(0, 0);
             this.pnCldDetail.Name = "pnCldDetail";
-            this.pnCldDetail.Size = new System.Drawing.Size(703, 651);
+            this.pnCldDetail.Size = new System.Drawing.Size(698, 651);
             this.pnCldDetail.TabIndex = 0;
             this.theme1.SetTheme(this.pnCldDetail, "(default)");
             // 
@@ -1137,20 +1151,6 @@
             this.pnReportView.TabIndex = 0;
             this.theme1.SetTheme(this.pnReportView, "(default)");
             // 
-            // txtCldId
-            // 
-            this.txtCldId.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtCldId.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
-            this.txtCldId.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.txtCldId.Location = new System.Drawing.Point(254, 25);
-            this.txtCldId.Name = "txtCldId";
-            this.txtCldId.Size = new System.Drawing.Size(27, 20);
-            this.txtCldId.TabIndex = 764;
-            this.txtCldId.Tag = null;
-            this.theme1.SetTheme(this.txtCldId, "(default)");
-            this.txtCldId.Visible = false;
-            this.txtCldId.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
-            // 
             // FrmCashierView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1184,6 +1184,7 @@
             this.spCloseDay.ResumeLayout(false);
             this.spCld.ResumeLayout(false);
             this.spCld.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtCldId)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtRemark)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnSaveCld)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtDeposit)).EndInit();
@@ -1213,7 +1214,6 @@
             this.c1SplitterPanel3.ResumeLayout(false);
             this.c1SplitterPanel4.ResumeLayout(false);
             this.c1SplitterPanel2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.txtCldId)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

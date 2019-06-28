@@ -3833,7 +3833,7 @@ namespace clinic_ivf.gui
             txtVisitHn_2.Enabled = false;
             btnHnSearch.Enabled = false;
             btnHnMaleSearch.Enabled = false;
-            sB1.Text = "Date "+ic.cop.day + "-" + ic.cop.month + "-" + ic.cop.year+" Server "+ic.iniC.hostDB+" FTP "+ic.iniC.hostFTP;
+            sB1.Text = "Date "+ic.cop.day + "-" + ic.cop.month + "-" + ic.cop.year+" Server "+ic.iniC.hostDB+" FTP "+ic.iniC.hostFTP+"/"+ic.iniC.folderFTP;
             //_CardReaderTFK2700 = ic.ListCardReader();
             //theme1.SetTheme(splitContainer1, ic.theme);
             //theme1.SetTheme(splitContainer2, ic.theme);

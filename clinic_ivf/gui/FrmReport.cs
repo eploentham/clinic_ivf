@@ -343,7 +343,7 @@ namespace clinic_ivf.gui
                 MessageBox.Show("error " + ex.Message, "err " + err);
             }
         }
-        public void setOpdpostoperationnote(String name, String hn)
+        public void setOpdpostoperationnote(String name, String hn, String age)
         {
             String chk = "", printerDefault = "";
             ReportDocument rpt = new ReportDocument();
@@ -356,6 +356,7 @@ namespace clinic_ivf.gui
                 rpt.SetParameterValue("line3", ic.cop.addr2);
                 rpt.SetParameterValue("hn", hn);
                 rpt.SetParameterValue("name", name);
+                rpt.SetParameterValue("age", age);
                 this.crystalReportViewer1.ReportSource = rpt;
                 this.crystalReportViewer1.Refresh();
             }
@@ -368,6 +369,8 @@ namespace clinic_ivf.gui
         public void setOpdOrderETFET(String name, String hn, String age)
         {
             String chk = "", printerDefault = "";
+            String date = "";
+            date = DateTime.Now.ToString("dd/MM/") + DateTime.Now.Year;
             ReportDocument rpt = new ReportDocument();
             try
             {
@@ -379,6 +382,7 @@ namespace clinic_ivf.gui
                 rpt.SetParameterValue("hn", hn);
                 rpt.SetParameterValue("name", name);
                 rpt.SetParameterValue("age", age);
+                rpt.SetParameterValue("date", date);
                 this.crystalReportViewer1.ReportSource = rpt;
                 this.crystalReportViewer1.Refresh();
             }

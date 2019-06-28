@@ -1547,8 +1547,10 @@ namespace clinic_ivf.gui
             pttId = grfSearch[grfSearch.Row, colPttId] != null ? grfSearch[grfSearch.Row, colPttId].ToString() : "";
             name = grfSearch[grfSearch.Row, colPttName] != null ? grfSearch[grfSearch.Row, colPttName].ToString() : "";
             hn = grfSearch[grfSearch.Row, colPttHn] != null ? grfSearch[grfSearch.Row, colPttHn].ToString() : "";
+            Patient ptt = new Patient();
+            ptt = ic.ivfDB.pttDB.selectByHn(hn);
             FrmReport frm = new FrmReport(ic);
-            frm.setOpdpostoperationnote(name, hn);
+            frm.setOpdpostoperationnote(name, hn, ptt.AgeStringShort() + " [" + ic.datetoShow(ptt.patient_birthday) + "]");
             frm.ShowDialog(this);
         }
         private void ContextMenu_prn_operation_note_grfFinish(object sender, System.EventArgs e)
@@ -1561,8 +1563,10 @@ namespace clinic_ivf.gui
             pttId = grfFinish[grfFinish.Row, colPttId] != null ? grfFinish[grfFinish.Row, colPttId].ToString() : "";
             name = grfFinish[grfFinish.Row, colPttName] != null ? grfFinish[grfFinish.Row, colPttName].ToString() : "";
             hn = grfFinish[grfFinish.Row, colPttHn] != null ? grfFinish[grfFinish.Row, colPttHn].ToString() : "";
+            Patient ptt = new Patient();
+            ptt = ic.ivfDB.pttDB.selectByHn(hn);
             FrmReport frm = new FrmReport(ic);
-            frm.setOpdpostoperationnote(name, hn);
+            frm.setOpdpostoperationnote(name, hn, ptt.AgeStringShort() + " [" + ic.datetoShow(ptt.patient_birthday) + "]");
             frm.ShowDialog(this);
         }
         private void ContextMenu_prn_operation_note(object sender, System.EventArgs e)
@@ -1575,8 +1579,10 @@ namespace clinic_ivf.gui
             pttId = grfQue[grfQue.Row, colPttId] != null ? grfQue[grfQue.Row, colPttId].ToString() : "";
             name = grfQue[grfQue.Row, colPttName] != null ? grfQue[grfQue.Row, colPttName].ToString() : "";
             hn = grfQue[grfQue.Row, colPttHn] != null ? grfQue[grfQue.Row, colPttHn].ToString() : "";
+            Patient ptt = new Patient();
+            ptt = ic.ivfDB.pttDB.selectByHn(hn);
             FrmReport frm = new FrmReport(ic);
-            frm.setOpdpostoperationnote(name, hn);
+            frm.setOpdpostoperationnote(name, hn, ptt.AgeStringShort() + " [" + ic.datetoShow(ptt.patient_birthday) + "]");
             frm.ShowDialog(this);
         }
         private void ContextMenu_prn_pmh_grfFinish(object sender, System.EventArgs e)
@@ -2123,6 +2129,7 @@ namespace clinic_ivf.gui
         {
             tC.SelectedTab = tabWaiting;
             chkAll.Checked = true;
+            sB1.Text = "Date " + ic.cop.day + "-" + ic.cop.month + "-" + ic.cop.year + " Server " + ic.iniC.hostDB + " FTP " + ic.iniC.hostFTP + "/" + ic.iniC.folderFTP;
         }
     }
 }
