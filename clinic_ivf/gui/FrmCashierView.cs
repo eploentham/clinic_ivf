@@ -26,12 +26,13 @@ namespace clinic_ivf.gui
         Font ff, ffB;
 
         int colID = 1, colVNshow = 2, colVN = 12, colPttHn = 3, colPttName = 4, colVsDate = 5, colVsTime = 6, colVsEtime = 7, colVsAgent=8, colStatus = 9, colPttId = 10, colStatusNurse = 11, colStatusCashier = 12, colBillId=13;
-        int colCldId = 1, colCldBillNo = 2, colCldReceiptNo=3, colCldDate = 4, colCldHn = 5, colCldName = 6, colCldPkg = 7, colCldMed = 8, colCldDtrfee = 9, colCldLab1 = 10, colCldLab2 = 11, colCldNurfee = 12, colCldTreat = 13, colCldDiscount = 14, colCldOther = 15, colCldTotal = 16, colCldVn=17;
+        int colCldId = 1, colCldBillNo = 2, colCldReceiptNo=3, colCldDate = 4, colCldHn = 5, colCldName = 6, colCldPkg = 7, colCldMed = 8, colCldDtrfee = 9, colCldLab1 = 10, colCldLab2 = 11, colCldNurfee = 12, colCldTreat = 13, colCldDiscount = 14, colCldOther = 15, colCldAmount = 16, colCldVn=17, colCldBillId=18;
 
         C1FlexGrid grfQue, grfFinish, grfSearch, grfCld;
         C1SuperTooltip stt;
         C1SuperErrorProvider sep;
         Timer timer;
+        Closeday cld;
 
         public FrmCashierView(IvfControl ic, MainMenu m)
         {
@@ -57,8 +58,13 @@ namespace clinic_ivf.gui
             stt = new C1SuperTooltip();
             sep = new C1SuperErrorProvider();
 
+            cld = new Closeday();
+            
+
             tC.SelectedTabChanged += TC_SelectedTabChanged;
             btnSearch.Click += BtnSearch_Click;
+            btnSaveCld.Click += BtnSaveCld_Click;
+
             txtExp1.KeyUp += TxtExp1_KeyUp;
             txtExp2.KeyUp += TxtExp2_KeyUp;
             txtExp3.KeyUp += TxtExp3_KeyUp;
@@ -67,6 +73,7 @@ namespace clinic_ivf.gui
             txtDeposit.KeyUp += TxtDeposit_KeyUp;
             txtAmtCash.KeyUp += TxtAmtCash_KeyUp;
             txtAmtCredit.KeyUp += TxtAmtCredit_KeyUp;
+            txtAmt.KeyUp += TxtAmt_KeyUp;
 
             txtCldDate.Value = System.DateTime.Now.Year + "-" + System.DateTime.Now.ToString("MM-dd");
 
@@ -86,6 +93,104 @@ namespace clinic_ivf.gui
             timer.Enabled = true;
         }
 
+        private void TxtAmt_KeyUp(object sender, KeyEventArgs e)
+        {
+            //throw new NotImplementedException();
+            calTotalCash();
+        }
+
+        private void BtnSaveCld_Click(object sender, EventArgs e)
+        {
+            //throw new NotImplementedException();
+            String date = "";
+            date = DateTime.Now.ToString("dd/MM/") + DateTime.Now.Year;
+            if (MessageBox.Show("ต้องการปิดวัน\n  ประจำวันที่ " + date + " " , "", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == DialogResult.OK)
+            {
+                ic.cStf.staff_id = "";
+                FrmPasswordConfirm frm = new FrmPasswordConfirm(ic);
+                frm.ShowDialog(this);
+                if (!ic.cStf.staff_id.Equals(""))
+                {
+                    FrmWaiting frmW = new FrmWaiting();
+                    frmW.Show();
+
+                    long chk = 0;
+                    String re = "";
+                    setCloseDay();
+                    re = ic.ivfDB.cldDB.insertCloseday(cld, ic.cStf.staff_id);
+                    if(long.TryParse(re, out chk))
+                    {
+                        if (txtCldId.Text.Equals(""))
+                        {
+                            txtCldId.Value = re;
+                        }
+                        foreach(Row row in grfCld.Rows)
+                        {
+                            if (row[colCldBillNo].ToString().Equals("Bill NO")) continue;
+                            if (row[colCldId] == null) continue;
+                            if (row[colCldBillId].ToString().Equals("")) continue;
+                            ClosedayDetail cldd = new ClosedayDetail();
+                            cldd.closeday_detail_id = row[colCldId] != null ? row[colCldId].ToString() : "";
+                            cldd.closeday_id = txtCldId.Text;
+                            cldd.bill_no = row[colCldBillNo] != null ? row[colCldBillNo].ToString() : "";
+                            cldd.bill_date = row[colCldDate] != null ? row[colCldDate].ToString() : "";
+                            cldd.patient_hn = row[colCldHn] != null ? row[colCldHn].ToString() : "";
+                            cldd.patient_name = row[colCldName] != null ? row[colCldName].ToString() : "";
+                            cldd.amt_package = row[colCldPkg] != null ? row[colCldPkg].ToString() : "0";
+                            cldd.amt_medicine = row[colCldMed] != null ? row[colCldMed].ToString() : "0";
+                            cldd.active = "";
+                            cldd.remark = "";
+                            cldd.date_create = "";
+                            cldd.date_modi = "";
+                            cldd.date_cancel = "";
+                            cldd.user_create = "";
+                            cldd.user_modi = "";
+                            cldd.user_cancel = "";
+                            cldd.amt_doctor_fee = row[colCldDtrfee] != null ? row[colCldDtrfee].ToString() : "0";
+                            cldd.amt_lab_1 = row[colCldLab1] != null ? row[colCldLab1].ToString() : "0";
+                            cldd.amt_lab_2 = row[colCldLab2] != null ? row[colCldLab2].ToString() : "0";
+                            cldd.amt_nurse_fee = row[colCldNurfee] != null ? row[colCldNurfee].ToString() : "0";
+                            cldd.amt_treatments = row[colCldTreat] != null ? row[colCldTreat].ToString() : "0";
+                            cldd.discount = row[colCldDiscount] != null ? row[colCldDiscount].ToString() : "0";
+                            cldd.amt_other = row[colCldOther] != null ? row[colCldOther].ToString() : "0";
+                            cldd.amount = row[colCldAmount] != null ? row[colCldAmount].ToString() : "0";
+                            cldd.bill_id = row[colCldBillId] != null ? row[colCldBillId].ToString() : "0" ;
+                            String re1 = "";
+                            re1 = ic.ivfDB.clddDB.insertClosedayDetail(cldd, ic.cStf.staff_id);
+                        }
+                    }
+                    ic.ivfDB.obilhDB.updateCloseDayId(txtCldId.Text);
+                    ic.ivfDB.obildDB.updateCloseDayId(txtCldId.Text);
+                    ic.ivfDB.genCloseDayBill(txtCldId.Text);
+                    frmW.Dispose();
+                    MessageBox.Show("ปิดวัน" + date + " เรียบร้อย", "");
+                }
+            }
+        }        
+        private void setCloseDay()
+        {
+            cld.closeday_id = txtCldId.Text;
+            cld.closeday_date = ic.datetoDB(txtCldDate.Text);
+            cld.cnt_patient = txtCntPtt.Text;
+            cld.amt_cash = txtAmtCash.Text;
+            cld.amt_credit_card = txtAmtCredit.Text;
+            cld.amount = txtAmt.Text;
+            cld.expense_1 = txtExp1.Text;
+            cld.expense_2 = txtExp2.Text;
+            cld.active = "1";
+            cld.remark = txtRemark.Text;
+            cld.date_create = "";
+            cld.date_modi = "";
+            cld.date_cancel = "";
+            cld.user_create = "";
+            cld.user_modi = "";
+            cld.user_cancel = "";
+            cld.expense_3 = txtExp3.Text;
+            cld.expense_4 = txtExp4.Text;
+            cld.expense_5 = txtExp5.Text;
+            cld.total_cash = txtTotalCash.Text;
+            cld.deposit = txtDeposit.Text;
+        }
         private void TxtAmtCredit_KeyUp(object sender, KeyEventArgs e)
         {
             //throw new NotImplementedException();
@@ -141,7 +246,6 @@ namespace clinic_ivf.gui
             //throw new NotImplementedException();
             setGrfSearch();
         }
-
         private void TC_SelectedTabChanged(object sender, EventArgs e)
         {
             //throw new NotImplementedException();
@@ -155,8 +259,13 @@ namespace clinic_ivf.gui
             }
             else if (tC.SelectedTab == tabCloseDay)
             {
-                setCloseDay();
+                FrmWaiting frmW = new FrmWaiting();
+                frmW.Show();
+
+                setControlCld();
                 setGrfCloseDay();
+
+                frmW.Dispose();
             }
         }
         private void calAmt()
@@ -183,7 +292,7 @@ namespace clinic_ivf.gui
             total = amt - exp1 - exp2 - exp3 - exp4 - exp5 + deposit;
             txtTotalCash.Value = total.ToString("#,###.00");
         }
-        private void setCloseDay()
+        private void setControlCld()
         {
             String cntvs = "", cash="", credit="";
             Decimal cash1 = 0, credit1 = 0,amt=0;
@@ -220,7 +329,7 @@ namespace clinic_ivf.gui
             dt = ic.ivfDB.obilhDB.selectByCloseDay();
 
             grfCld.Rows.Count = dt.Rows.Count + 1;
-            grfCld.Cols.Count = 18;
+            grfCld.Cols.Count = 19;
 
             grfCld.Cols[colCldBillNo].Width = 100;
             grfCld.Cols[colCldReceiptNo].Width = 100;
@@ -236,7 +345,7 @@ namespace clinic_ivf.gui
             grfCld.Cols[colCldTreat].Width = 100;
             grfCld.Cols[colCldDiscount].Width = 100;
             grfCld.Cols[colCldOther].Width = 100;
-            grfCld.Cols[colCldTotal].Width = 100;
+            grfCld.Cols[colCldAmount].Width = 100;
 
             grfCld.ShowCursor = true;
             //grdFlex.Cols[colID].Caption = "no";
@@ -256,7 +365,7 @@ namespace clinic_ivf.gui
             grfCld.Cols[colCldTreat].Caption = "Treatment";
             grfCld.Cols[colCldDiscount].Caption = "Discount";
             grfCld.Cols[colCldOther].Caption = "Other";
-            grfCld.Cols[colCldTotal].Caption = "Total";
+            grfCld.Cols[colCldAmount].Caption = "Total";
 
             //menuGw.MenuItems.Add("&receive operation", new EventHandler(ContextMenu_Apm));
             //menuGw.MenuItems.Add("receive operation", new EventHandler(ContextMenu_order));
@@ -273,49 +382,90 @@ namespace clinic_ivf.gui
             int i = 1;
             foreach (DataRow row in dt.Rows)
             {
+                String bilid = row[ic.ivfDB.obilhDB.obillh.bill_id].ToString();
+                String amtpkg = "", amtmed="", amtdtrfee="", amtlab1="", amtlab2="", amtnurfee="", amttreat="", amtdiscount="",amtother="";
+                Decimal amtpkg1 = 0, amtmed1 = 0, amtdtrfee1 = 0, amtlab11 = 0, amtlab21 = 0, amtnurfee1 = 0, amttreat1 = 0, amtdiscount1 = 0, amtother1 = 0, total=0;
+                amtpkg = ic.ivfDB.obildDB.selectSumPriceByBilId(bilid, "0");
+                Decimal.TryParse(amtpkg, out amtpkg1);
+
+                amtmed = ic.ivfDB.obildDB.selectSumPriceByBilId(bilid, "1");
+                Decimal.TryParse(amtmed, out amtmed1);
+
+                amtdtrfee = ic.ivfDB.obildDB.selectSumPriceByBilId(bilid, "2");
+                Decimal.TryParse(amtdtrfee, out amtdtrfee1);
+
+                amtlab1 = ic.ivfDB.obildDB.selectSumPriceByBilId(bilid, "3");
+                Decimal.TryParse(amtlab1, out amtlab11);
+
+                amtlab2 = ic.ivfDB.obildDB.selectSumPriceByBilId(bilid, "4");
+                Decimal.TryParse(amtlab2, out amtlab21);
+
+                amtnurfee = ic.ivfDB.obildDB.selectSumPriceByBilId(bilid, "5");
+                Decimal.TryParse(amtnurfee, out amtnurfee1);
+
+                amttreat = ic.ivfDB.obildDB.selectSumPriceByBilId(bilid, "90");
+                Decimal.TryParse(amttreat, out amttreat1);
+
+                amtdiscount = ic.ivfDB.obildDB.selectSumPriceByBilId(bilid, "99");
+                Decimal.TryParse(amtdiscount, out amtdiscount1);
+
+                amtother = ic.ivfDB.obildDB.selectSumPriceByBilId(bilid, "99");
+                Decimal.TryParse(amtother, out amtother1);
+
+                total = amtpkg1 + amtmed1 + amtdtrfee1 + amtlab11 + amtlab21 + amtnurfee1 + amttreat1 + amtdiscount1 + amtother1;
+
                 grfCld[i, 0] = i;
-                grfCld[i, colID] = row[ic.ivfDB.obilhDB.obillh.bill_id].ToString();
+                grfCld[i, colCldId] = "";
+                grfCld[i, colCldBillId] = row[ic.ivfDB.obilhDB.obillh.bill_id].ToString();
                 grfCld[i, colCldBillNo] = row[ic.ivfDB.obilhDB.obillh.BillNo].ToString();
                 grfCld[i, colCldReceiptNo] = row[ic.ivfDB.obilhDB.obillh.receipt_no].ToString();
                 grfCld[i, colCldDate] = ic.datetoShow(row[ic.ivfDB.obilhDB.obillh.Date].ToString());
                 grfCld[i, colCldHn] = row[ic.ivfDB.obilhDB.obillh.PIDS].ToString();
                 grfCld[i, colCldName] = row[ic.ivfDB.obilhDB.obillh.PName].ToString();
-                grfCld[i, colCldPkg] = "";
-                grfCld[i, colCldMed] = "";
-                grfCld[i, colCldDtrfee] = "";
-                grfCld[i, colCldLab1] = "";
-                grfCld[i, colCldLab2] = "";
-                grfCld[i, colCldNurfee] = "";
-                grfCld[i, colCldTreat] = "";
-                grfCld[i, colCldDiscount] = "";
-                grfCld[i, colCldOther] = "";
-                grfCld[i, colCldTotal] = "";
+                grfCld[i, colCldPkg] = amtpkg1.ToString("#,###.00");
+                grfCld[i, colCldMed] = amtmed1.ToString("#,###.00");
+                grfCld[i, colCldDtrfee] = amtdtrfee1.ToString("#,###.00");
+                grfCld[i, colCldLab1] = amtlab11.ToString("#,###.00");
+                grfCld[i, colCldLab2] = amtlab21.ToString("#,###.00");
+                grfCld[i, colCldNurfee] = amtnurfee1.ToString("#,###.00");
+                grfCld[i, colCldTreat] = amttreat1.ToString("#,###.00");
+                grfCld[i, colCldDiscount] = amtdiscount1.ToString("#,###.00");
+                grfCld[i, colCldOther] = amtother1.ToString("#,###.00");
+                grfCld[i, colCldAmount] = total.ToString("#,###.00");
                 //grfCld[i, colBillId] = "";
                 //if (!row[ic.ivfDB.ovsDB.vsold.form_a_id].ToString().Equals("0"))
                 //{
-                    //CellNote note = new CellNote("ส่ง Lab Request Foam A");
-                    //CellRange rg = grfFinish.GetCellRange(i, colVN);
-                    //rg.UserData = note;
+                //CellNote note = new CellNote("ส่ง Lab Request Foam A");
+                //CellRange rg = grfFinish.GetCellRange(i, colVN);
+                //rg.UserData = note;
                 //}
                 //if (i % 2 == 0)
                 //    grfPtt.Rows[i].StyleNew.BackColor = color;
                 i++;
             }
             CellNoteManager mgr = new CellNoteManager(grfSearch);
-            grfCld.Cols[colID].Visible = false;
-            grfCld.Cols[colVN].Visible = false;
-            grfCld.Cols[colPttId].Visible = false;
-            grfCld.Cols[colBillId].Visible = false;
-            grfCld.Cols[colStatusNurse].Visible = false;
-            grfCld.Cols[colStatusCashier].Visible = false;
-            grfCld.Cols[colVNshow].AllowEditing = false;
-            grfCld.Cols[colPttHn].AllowEditing = false;
-            grfCld.Cols[colPttName].AllowEditing = false;
-            grfCld.Cols[colVsDate].AllowEditing = false;
-            grfCld.Cols[colVsTime].AllowEditing = false;
-            grfCld.Cols[colVsEtime].AllowEditing = false;
-            grfCld.Cols[colStatus].AllowEditing = false;
-            grfCld.Cols[colVsAgent].AllowEditing = false;
+            grfCld.Cols[colCldId].Visible = false;
+            grfCld.Cols[colCldBillId].Visible = false;
+            //grfCld.Cols[colPttId].Visible = false;
+            //grfCld.Cols[colBillId].Visible = false;
+            //grfCld.Cols[colStatusNurse].Visible = false;
+            //grfCld.Cols[colStatusCashier].Visible = false;
+
+            grfCld.Cols[colCldBillNo].AllowEditing = false;
+            grfCld.Cols[colCldReceiptNo].AllowEditing = false;
+            grfCld.Cols[colCldDate].AllowEditing = false;
+            grfCld.Cols[colCldHn].AllowEditing = false;
+            grfCld.Cols[colCldName].AllowEditing = false;
+            grfCld.Cols[colCldPkg].AllowEditing = false;
+            grfCld.Cols[colCldMed].AllowEditing = false;
+            grfCld.Cols[colCldDtrfee].AllowEditing = false;
+            grfCld.Cols[colCldLab1].AllowEditing = false;
+            grfCld.Cols[colCldLab2].AllowEditing = false;
+            grfCld.Cols[colCldNurfee].AllowEditing = false;
+            grfCld.Cols[colCldTreat].AllowEditing = false;
+            grfCld.Cols[colCldDiscount].AllowEditing = false;
+            grfCld.Cols[colCldOther].AllowEditing = false;
+            grfCld.Cols[colCldAmount].AllowEditing = false;
             //theme1.SetTheme(grfQue, ic.theme);
         }
         private void initGrfCloseDay()

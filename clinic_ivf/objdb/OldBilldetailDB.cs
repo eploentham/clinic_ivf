@@ -71,6 +71,22 @@ namespace clinic_ivf.objdb
             dt = conn.selectData(conn.conn, sql);
             return dt;
         }
+        public String selectSumPriceByBilId(String bilid, String bilgrpid)
+        {
+            DataTable dt = new DataTable();
+            String amt = "";
+
+            String sql = "SELECT sum(obilld."+obilld.Price+") as amount " +
+                " " +
+                "From " + obilld.table + " obilld " +
+                "Where obilld." + obilld.bill_id + "='" + bilid + "' and obilld."+obilld.bill_group_id+"='"+bilgrpid+"' and obilld." + obilld.active + "='1'";
+            dt = conn.selectData(conn.conn, sql);
+            if (dt.Rows.Count > 0)
+            {
+                amt = dt.Rows[0]["amount"].ToString();
+            }
+            return amt;
+        }
         public DataTable selectByPIDPkgsID(String pid, String pkgsid)
         {
             DataTable dt = new DataTable();
@@ -238,6 +254,25 @@ namespace clinic_ivf.objdb
             else
             {
                 //re = update(p, "");
+            }
+            return re;
+        }
+        public String updateCloseDayId(String cldid)
+        {
+            String re = "";
+            String sql = "";
+            //chkNull(p);
+
+            sql = "Update " + obilld.table + " Set " +                                
+                " " + obilld.closeday_id + "= '" + cldid + "'" +
+                "Where " + obilld.closeday_id + "='0'";
+            try
+            {
+                re = conn.ExecuteNonQuery(conn.conn, sql);
+            }
+            catch (Exception ex)
+            {
+                sql = ex.Message + " " + ex.InnerException;
             }
             return re;
         }

@@ -51,7 +51,9 @@
             this.pnCloseDay = new System.Windows.Forms.Panel();
             this.spCloseDay = new C1.Win.C1SplitContainer.C1SplitContainer();
             this.spCld = new C1.Win.C1SplitContainer.C1SplitterPanel();
-            this.btnSave = new C1.Win.C1Input.C1Button();
+            this.label15 = new System.Windows.Forms.Label();
+            this.txtRemark = new C1.Win.C1Input.C1TextBox();
+            this.btnSaveCld = new C1.Win.C1Input.C1Button();
             this.label14 = new System.Windows.Forms.Label();
             this.txtDeposit = new C1.Win.C1Input.C1TextBox();
             this.label13 = new System.Windows.Forms.Label();
@@ -77,6 +79,7 @@
             this.label17 = new System.Windows.Forms.Label();
             this.txtCntPtt = new C1.Win.C1Input.C1TextBox();
             this.spCldDetail = new C1.Win.C1SplitContainer.C1SplitterPanel();
+            this.pnCldDetail = new System.Windows.Forms.Panel();
             this.tabCloseDayView = new C1.Win.C1Command.C1DockingTabPage();
             this.panel4 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
@@ -93,9 +96,7 @@
             this.pnReportCri = new System.Windows.Forms.Panel();
             this.c1SplitterPanel2 = new C1.Win.C1SplitContainer.C1SplitterPanel();
             this.pnReportView = new System.Windows.Forms.Panel();
-            this.label15 = new System.Windows.Forms.Label();
-            this.txtRemark = new C1.Win.C1Input.C1TextBox();
-            this.pnCldDetail = new System.Windows.Forms.Panel();
+            this.txtCldId = new C1.Win.C1Input.C1TextBox();
             this.sB.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.theme1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tC)).BeginInit();
@@ -116,7 +117,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.spCloseDay)).BeginInit();
             this.spCloseDay.SuspendLayout();
             this.spCld.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.btnSave)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtRemark)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnSaveCld)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtDeposit)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtTotalCash)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtExp5)).BeginInit();
@@ -143,7 +145,7 @@
             this.c1SplitterPanel3.SuspendLayout();
             this.c1SplitterPanel4.SuspendLayout();
             this.c1SplitterPanel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.txtRemark)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtCldId)).BeginInit();
             this.SuspendLayout();
             // 
             // sB
@@ -454,9 +456,10 @@
             // spCld
             // 
             this.spCld.Collapsible = true;
+            this.spCld.Controls.Add(this.txtCldId);
             this.spCld.Controls.Add(this.label15);
             this.spCld.Controls.Add(this.txtRemark);
-            this.spCld.Controls.Add(this.btnSave);
+            this.spCld.Controls.Add(this.btnSaveCld);
             this.spCld.Controls.Add(this.label14);
             this.spCld.Controls.Add(this.txtDeposit);
             this.spCld.Controls.Add(this.label13);
@@ -490,19 +493,45 @@
             this.spCld.Text = "Panel 1";
             this.spCld.Width = 363;
             // 
-            // btnSave
+            // label15
             // 
-            this.btnSave.Image = global::clinic_ivf.Properties.Resources.download_database24;
-            this.btnSave.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnSave.Location = new System.Drawing.Point(154, 380);
-            this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(94, 35);
-            this.btnSave.TabIndex = 761;
-            this.btnSave.Text = "Save";
-            this.btnSave.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.theme1.SetTheme(this.btnSave, "(default)");
-            this.btnSave.UseVisualStyleBackColor = true;
-            this.btnSave.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            this.label15.AutoSize = true;
+            this.label15.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.label15.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label15.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.label15.Location = new System.Drawing.Point(12, 423);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(58, 16);
+            this.label15.TabIndex = 763;
+            this.label15.Text = "หมายเหตุ :";
+            this.theme1.SetTheme(this.label15, "(default)");
+            // 
+            // txtRemark
+            // 
+            this.txtRemark.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtRemark.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
+            this.txtRemark.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.txtRemark.Location = new System.Drawing.Point(76, 421);
+            this.txtRemark.Name = "txtRemark";
+            this.txtRemark.Size = new System.Drawing.Size(277, 20);
+            this.txtRemark.TabIndex = 762;
+            this.txtRemark.Tag = null;
+            this.theme1.SetTheme(this.txtRemark, "(default)");
+            this.txtRemark.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            // 
+            // btnSaveCld
+            // 
+            this.btnSaveCld.Image = global::clinic_ivf.Properties.Resources.download_database24;
+            this.btnSaveCld.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnSaveCld.Location = new System.Drawing.Point(154, 380);
+            this.btnSaveCld.Name = "btnSaveCld";
+            this.btnSaveCld.Size = new System.Drawing.Size(94, 35);
+            this.btnSaveCld.TabIndex = 761;
+            this.btnSaveCld.Text = "Save";
+            this.btnSaveCld.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.theme1.SetTheme(this.btnSaveCld, "(default)");
+            this.btnSaveCld.UseVisualStyleBackColor = true;
+            this.btnSaveCld.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
             // 
             // label14
             // 
@@ -862,6 +891,17 @@
             this.spCldDetail.Text = "Panel 2";
             this.spCldDetail.Width = 703;
             // 
+            // pnCldDetail
+            // 
+            this.pnCldDetail.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.pnCldDetail.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pnCldDetail.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.pnCldDetail.Location = new System.Drawing.Point(0, 0);
+            this.pnCldDetail.Name = "pnCldDetail";
+            this.pnCldDetail.Size = new System.Drawing.Size(703, 651);
+            this.pnCldDetail.TabIndex = 0;
+            this.theme1.SetTheme(this.pnCldDetail, "(default)");
+            // 
             // tabCloseDayView
             // 
             this.tabCloseDayView.Controls.Add(this.panel4);
@@ -1097,42 +1137,19 @@
             this.pnReportView.TabIndex = 0;
             this.theme1.SetTheme(this.pnReportView, "(default)");
             // 
-            // label15
+            // txtCldId
             // 
-            this.label15.AutoSize = true;
-            this.label15.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.label15.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label15.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.label15.Location = new System.Drawing.Point(12, 423);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(58, 16);
-            this.label15.TabIndex = 763;
-            this.label15.Text = "หมายเหตุ :";
-            this.theme1.SetTheme(this.label15, "(default)");
-            // 
-            // txtRemark
-            // 
-            this.txtRemark.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtRemark.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
-            this.txtRemark.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.txtRemark.Location = new System.Drawing.Point(76, 421);
-            this.txtRemark.Name = "txtRemark";
-            this.txtRemark.Size = new System.Drawing.Size(277, 20);
-            this.txtRemark.TabIndex = 762;
-            this.txtRemark.Tag = null;
-            this.theme1.SetTheme(this.txtRemark, "(default)");
-            this.txtRemark.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
-            // 
-            // pnCldDetail
-            // 
-            this.pnCldDetail.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.pnCldDetail.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnCldDetail.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.pnCldDetail.Location = new System.Drawing.Point(0, 0);
-            this.pnCldDetail.Name = "pnCldDetail";
-            this.pnCldDetail.Size = new System.Drawing.Size(703, 651);
-            this.pnCldDetail.TabIndex = 0;
-            this.theme1.SetTheme(this.pnCldDetail, "(default)");
+            this.txtCldId.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtCldId.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
+            this.txtCldId.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.txtCldId.Location = new System.Drawing.Point(254, 25);
+            this.txtCldId.Name = "txtCldId";
+            this.txtCldId.Size = new System.Drawing.Size(27, 20);
+            this.txtCldId.TabIndex = 764;
+            this.txtCldId.Tag = null;
+            this.theme1.SetTheme(this.txtCldId, "(default)");
+            this.txtCldId.Visible = false;
+            this.txtCldId.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
             // 
             // FrmCashierView
             // 
@@ -1167,7 +1184,8 @@
             this.spCloseDay.ResumeLayout(false);
             this.spCld.ResumeLayout(false);
             this.spCld.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.btnSave)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtRemark)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnSaveCld)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtDeposit)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtTotalCash)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtExp5)).EndInit();
@@ -1195,7 +1213,7 @@
             this.c1SplitterPanel3.ResumeLayout(false);
             this.c1SplitterPanel4.ResumeLayout(false);
             this.c1SplitterPanel2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.txtRemark)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtCldId)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1267,9 +1285,10 @@
         private C1.Win.C1Input.C1TextBox txtExp4;
         private System.Windows.Forms.Label label14;
         private C1.Win.C1Input.C1TextBox txtDeposit;
-        private C1.Win.C1Input.C1Button btnSave;
+        private C1.Win.C1Input.C1Button btnSaveCld;
         private System.Windows.Forms.Label label15;
         private C1.Win.C1Input.C1TextBox txtRemark;
         private System.Windows.Forms.Panel pnCldDetail;
+        private C1.Win.C1Input.C1TextBox txtCldId;
     }
 }

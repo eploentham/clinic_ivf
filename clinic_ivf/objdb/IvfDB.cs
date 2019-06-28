@@ -697,6 +697,14 @@ namespace clinic_ivf.objdb
                 extra = dt.Rows[0]["extra"].ToString();
             }
         }
+        public void genCloseDayBill(String cldid)
+        {
+            String sql = "",re="";
+            sql = "Insert into t_closeday_bill Select * From BillHeader Where closeday_id='"+ cldid + "' ";
+            re = conn.ExecuteNonQuery(conn.conn, sql);
+            sql = "Insert into t_closeday_bill_detail Select * From BillDetail Where closeday_id='"+ cldid + "' ";
+            re = conn.ExecuteNonQuery(conn.conn, sql);
+        }
         public void VoidBill(String vn, String userId)
         {
             obilhDB.voidBillByVN(vn, userId);

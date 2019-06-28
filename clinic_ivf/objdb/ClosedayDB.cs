@@ -110,7 +110,7 @@ namespace clinic_ivf.objdb
             p.amt_cash = decimal.TryParse(p.amt_cash, out chk) ? chk.ToString() : "0";
             p.cnt_patient = decimal.TryParse(p.cnt_patient, out chk) ? chk.ToString() : "0";
             p.deposit = decimal.TryParse(p.deposit, out chk) ? chk.ToString() : "0";
-
+            p.total_cash = decimal.TryParse(p.total_cash, out chk) ? chk.ToString() : "0";
         }
         public String insert(Closeday p, String userId)
         {

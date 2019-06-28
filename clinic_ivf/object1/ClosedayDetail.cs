@@ -23,7 +23,8 @@ namespace clinic_ivf.object1
         public String amt_treatments { get; set; }
         public String discount { get; set; }
         public String amt_other { get; set; }
-        public String amount { get; set; }        
-        
+        public String amount { get; set; }
+        public String bill_id { get; set; }
+
     }
 }

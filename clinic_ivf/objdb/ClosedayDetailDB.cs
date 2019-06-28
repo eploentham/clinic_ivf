@@ -46,6 +46,7 @@ namespace clinic_ivf.objdb
             cldd.discount = "discount";
             cldd.amt_other = "amt_other";
             cldd.amount = "amount";
+            cldd.bill_id = "bill_id";
 
             cldd.table = "t_closeday_detail";
             cldd.pkField = "closeday_detail_id";
@@ -106,6 +107,7 @@ namespace clinic_ivf.objdb
             p.bill_date = p.bill_date == null ? "" : p.bill_date;
 
             p.closeday_id = p.closeday_id == null ? "0" : p.closeday_id;
+            p.bill_id = p.bill_id == null ? "0" : p.bill_id;
 
             p.amt_package = decimal.TryParse(p.amt_package, out chk) ? chk.ToString() : "0";
             p.amt_medicine = decimal.TryParse(p.amt_medicine, out chk) ? chk.ToString() : "0";
@@ -151,6 +153,7 @@ namespace clinic_ivf.objdb
                 "," + cldd.discount + "= '" + p.discount + "'" +
                 "," + cldd.amt_other + "= '" + p.amt_other + "'" +
                 "," + cldd.amount + "= '" + p.amount + "'" +
+                "," + cldd.bill_id + "= '" + p.bill_id + "'" +
                 "";
             try
             {
@@ -192,6 +195,7 @@ namespace clinic_ivf.objdb
                 "," + cldd.discount + " = '" + p.discount + "'" +
                 "," + cldd.amt_other + " = '" + p.amt_other + "'" +
                 "," + cldd.amount + " = '" + p.amount + "'" +
+                "," + cldd.bill_id + " = '" + p.bill_id + "'" +
                 "Where " + cldd.pkField + "='" + p.closeday_detail_id + "'"
                 ;
 
@@ -294,6 +298,7 @@ namespace clinic_ivf.objdb
                 dgs1.discount = dt.Rows[0][cldd.discount].ToString();
                 dgs1.amt_other = dt.Rows[0][cldd.amt_other].ToString();
                 dgs1.amount = dt.Rows[0][cldd.amount].ToString();
+                dgs1.bill_id = dt.Rows[0][cldd.bill_id].ToString();
             }
             else
             {
@@ -327,7 +332,7 @@ namespace clinic_ivf.objdb
             dgs1.discount = "";
             dgs1.amt_other = "";
             dgs1.amount = "";
-
+            dgs1.bill_id = "";
             return dgs1;
         }
     }

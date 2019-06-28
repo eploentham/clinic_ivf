@@ -1898,13 +1898,13 @@ namespace clinic_ivf.gui
             //FrmNurseAdd frm = new FrmNurseAdd();
             //frm.ShowDialog(this);
             //openApmAdd(pttId, vsid, name);
-            if (MessageBox.Show("ต้องการป้อน LAB request FORM A\n  hn number " + chk + " \n name " + name, "", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == DialogResult.OK)
-            {
+            //if (MessageBox.Show("ต้องการป้อน LAB request FORM A\n  hn number " + chk + " \n name " + name, "", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == DialogResult.OK)
+            //{
                 FrmLabFormA frm = new FrmLabFormA(ic,"", pttId, vsid, vn);
                 frm.ShowDialog(this);
                 //grfReq.Rows.Remove(grfReq.Row);
                 //openPatientAdd(id, name);
-            }
+            //}
         }
         private void ContextMenu_Apm_Finish(object sender, System.EventArgs e)
         {
