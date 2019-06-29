@@ -64,6 +64,7 @@ namespace clinic_ivf.objdb
             jlabD.status_amt = "status_amt";
             jlabD.status_order_group = "status_order_group";
             jlabD.lab_order_id = "lab_order_id";
+            jlabD.req_id = "req_id";
 
             jlabD.table = "JobLabDetail";
             jlabD.pkField = "ID";
@@ -117,6 +118,7 @@ namespace clinic_ivf.objdb
             p.PID = long.TryParse(p.PID, out chk) ? chk.ToString() : "0";
             p.row1 = long.TryParse(p.row1, out chk) ? chk.ToString() : "0";
             p.lab_order_id = long.TryParse(p.lab_order_id, out chk) ? chk.ToString() : "0";
+            p.req_id = long.TryParse(p.req_id, out chk) ? chk.ToString() : "0";
 
             p.Price = decimal.TryParse(p.Price, out chk1) ? chk1.ToString() : "0";
             //p.PIDS = decimal.TryParse(p.PIDS, out chk1) ? chk.ToString() : "0";
@@ -197,6 +199,24 @@ namespace clinic_ivf.objdb
             String re = "";
             String sql = "Delete From  " + jlabD.table+" "+
                 "Where "+ jlabD.pkField+"='"+id+"'";
+            //re = conn.ExecuteNonQuery(conn.conn, sql);
+            try
+            {
+                re = conn.ExecuteNonQuery(conn.conn, sql);
+            }
+            catch (Exception ex)
+            {
+                sql = ex.Message + " " + ex.InnerException;
+            }
+            return re;
+        }
+        public String updateReqId(String reqid,String id)
+        {
+            DataTable dt = new DataTable();
+            String re = "";
+            String sql = "Update  " + jlabD.table + " Set " +
+                "" + jlabD.req_id + "='" + reqid+"' " +
+                "Where " + jlabD.pkField + "='" + id + "'";
             //re = conn.ExecuteNonQuery(conn.conn, sql);
             try
             {

@@ -56,6 +56,7 @@ namespace clinic_ivf.objdb
             labI.normal_vaule = "normal_vaule";
             labI.method = "method";
             labI.status_outlab = "status_outlab";
+            labI.num_barcode = "num_barcode";
 
             labI.table = "LabItem";
             labI.pkField = "LID";
@@ -257,6 +258,7 @@ namespace clinic_ivf.objdb
             p.method = p.method == null ? "" : p.method;
             p.unit = p.unit == null ? "" : p.unit;
             p.normal_vaule = p.normal_vaule == null ? "" : p.normal_vaule;
+            p.num_barcode = p.num_barcode == null ? "0" : p.num_barcode;
 
             p.status_show_qty = p.status_show_qty == null ? "0" : p.status_show_qty;
             p.status_order_group = p.status_order_group == null ? "0" : p.status_order_group;
@@ -317,6 +319,7 @@ namespace clinic_ivf.objdb
                 "," + labI.method + "= '" + p.method.Replace("'", "''") + "'" +
                 "," + labI.unit + "= '" + p.unit.Replace("'", "''") + "'" +
                 "," + labI.status_outlab + "= '" + p.status_outlab.Replace("'", "''") + "'" +
+                "," + labI.num_barcode + "= '" + p.num_barcode.Replace("'", "''") + "'" +
                 "";
             try
             {
@@ -366,6 +369,7 @@ namespace clinic_ivf.objdb
                 "," + labI.method + "= '" + p.method.Replace("'", "''") + "'" +
                 "," + labI.unit + "= '" + p.unit.Replace("'", "''") + "'" +
                 "," + labI.status_outlab + "= '" + p.status_outlab.Replace("'", "''") + "'" +
+                "," + labI.num_barcode + "= '" + p.num_barcode.Replace("'", "''") + "'" +
                 "Where " + labI.pkField + "='" + p.LID + "'";
             try
             {
@@ -454,6 +458,7 @@ namespace clinic_ivf.objdb
                 vsold1.normal_vaule = dt.Rows[0][labI.normal_vaule].ToString();
                 vsold1.method = dt.Rows[0][labI.method].ToString();
                 vsold1.status_outlab = dt.Rows[0][labI.status_outlab].ToString();
+                vsold1.num_barcode = dt.Rows[0][labI.num_barcode].ToString();
             }
             else
             {
@@ -494,6 +499,7 @@ namespace clinic_ivf.objdb
             stf1.unit = "";
             stf1.normal_vaule = "";
             stf1.status_outlab = "";
+            stf1.num_barcode = "";
             return stf1;
         }
     }

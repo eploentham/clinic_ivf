@@ -88,6 +88,7 @@
             this.tC1 = new C1.Win.C1Command.C1DockingTab();
             this.PageS = new C1.Win.C1Command.C1DockingTabPage();
             this.theme1 = new C1.Win.C1Themes.C1ThemeController();
+            this.menuLabBlood = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tCC1)).BeginInit();
             this.tCC1.SuspendLayout();
@@ -210,7 +211,8 @@
             this.menuLabFet,
             this.menuLabSperm,
             this.ปอนSpermFreexingToolStripMenuItem,
-            this.menuTestForm});
+            this.menuTestForm,
+            this.menuLabBlood});
             this.menuLab.Name = "menuLab";
             this.menuLab.Size = new System.Drawing.Size(40, 20);
             this.menuLab.Text = "LAB";
@@ -553,6 +555,12 @@
             // 
             this.theme1.Theme = "BeigeOne";
             // 
+            // menuLabBlood
+            // 
+            this.menuLabBlood.Name = "menuLabBlood";
+            this.menuLabBlood.Size = new System.Drawing.Size(180, 22);
+            this.menuLabBlood.Text = "ป้อน Blood Lab";
+            // 
             // MainMenu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -638,5 +646,6 @@
         private System.Windows.Forms.ToolStripMenuItem menuStockRec;
         private System.Windows.Forms.ToolStripMenuItem เบกออกรายการยาToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem ปรบปรงยอดรายการยาToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem menuLabBlood;
     }
 }

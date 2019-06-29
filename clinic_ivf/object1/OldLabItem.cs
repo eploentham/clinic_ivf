@@ -39,5 +39,6 @@ namespace clinic_ivf.object1
         public String unit { get; set; }
         public String normal_vaule { get; set; }
         public String status_outlab { get; set; }
+        public String num_barcode { get; set; }
     }
 }

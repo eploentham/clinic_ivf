@@ -848,3 +848,25 @@ CREATE TABLE `ivf_101_donor`.`t_closeday_bill_detail` (
   `bill_group_id` bigint(20) DEFAULT '0',
   PRIMARY KEY (`ID`)
 ) ENGINE=MyISAM AUTO_INCREMENT=1620 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+CREATE TABLE `ivf_101`.`lab_t_lis` (
+  `lis_id` BIGINT NOT NULL,
+  `barcode` VARCHAR(45) NULL,
+  `req_id` BIGINT NULL,
+  `visit_vn` VARCHAR(45) NULL,
+  `visit_hn` VARCHAR(45) NULL,
+  `patient_name` VARCHAR(45) NULL,
+  `visit_id` VARCHAR(45) NULL,
+  `active` VARCHAR(45) NULL,
+  `remark` VARCHAR(45) NULL,
+  `date_create` VARCHAR(45) NULL,
+  `date_modi` VARCHAR(45) NULL,
+  `date_cancel` VARCHAR(45) NULL,
+  `user_create` VARCHAR(45) NULL,
+  `use_modi` VARCHAR(45) NULL,
+  `user_cancal` VARCHAR(45) NULL,
+  PRIMARY KEY (`lis_id`))
+ENGINE = MyISAM
+DEFAULT CHARACTER SET = utf8
+COLLATE = utf8_bin
+COMMENT = 'id=248';

@@ -2889,6 +2889,29 @@ namespace clinic_ivf.gui
         private void BtnFinish_Click(object sender, EventArgs e)
         {
             //throw new NotImplementedException();
+            String dtrid = "";
+            dtrid = cboDoctor.SelectedItem == null ? "" : ((ComboBoxItem)cboDoctor.SelectedItem).Value;
+            foreach (Row row in grfOrder.Rows)
+            {
+                String lgid = "", reqid="", itmid="";
+                lgid = row[colOrdlpid] != null ? row[colOrdlpid].ToString() : "";
+                reqid = row[colOrdid] != null ? row[colOrdid].ToString() : "";
+                itmid = row[colOrditmid] != null ? row[colOrditmid].ToString() : "";
+                if (lgid.Length <= 0) continue;
+                LabRequest lbReq = new LabRequest();
+                if (ptt.f_sex_id.Equals("1"))
+                {
+                    lbReq = ic.ivfDB.setLabRequest("", txtVnOld.Text, dtrid, "", "", ic.datetoDB(txtDob.Text), reqid, itmid, txtHn.Text, txtPttNameE.Text, "", "", "", txtVsId.Text);
+                }
+                else if (ptt.f_sex_id.Equals("2"))
+                {
+                    lbReq = ic.ivfDB.setLabRequest(txtPttNameE.Text, txtVnOld.Text, dtrid, "", txtHn.Text, ic.datetoDB(txtDob.Text), reqid, itmid, "", "", "", "", "", txtVsId.Text);
+                }
+                
+                String re = ic.ivfDB.lbReqDB.insertLabRequest(lbReq, txtStfConfirmID.Text);
+                ic.ivfDB.oJlabdDB.updateReqId(re, reqid);
+            }
+
             ic.ivfDB.nurseFinish(txtVnOld.Text);
             VisitOld ovs = new VisitOld();
             ovs = ic.ivfDB.ovsDB.selectByPk1(txtVnOld.Text);

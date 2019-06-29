@@ -101,6 +101,7 @@ namespace clinic_ivf.objdb
         public PatientMedicalHistoryDB pmhDB;
         public ClosedayDB cldDB;
         public ClosedayDetailDB clddDB;
+        public LisDB lisDB;
         public IvfDB(ConnectDB c)
         {
             conn = c;
@@ -192,6 +193,7 @@ namespace clinic_ivf.objdb
             pmhDB = new PatientMedicalHistoryDB(conn);
             cldDB = new ClosedayDB(conn);
             clddDB = new ClosedayDetailDB(conn);
+            lisDB = new LisDB(conn);
 
             Console.WriteLine("ivfDB end");
         }
@@ -514,7 +516,7 @@ namespace clinic_ivf.objdb
             calIncludeExtraPricePx(vn);
             calIncludeExtraPricelab(vn);
             calIncludeExtraPriceSpecial(vn);
-
+            vsDB.updateCloseStatusNurseByVN(vn);
             ovsDB.updateStatusNurseFinish(vn);
         }
         public void setPx(String vn, String hn, String pid, String drugid)
