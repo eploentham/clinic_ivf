@@ -106,6 +106,7 @@ namespace clinic_ivf.gui
         private void ContextMenu_edit(object sender, System.EventArgs e)
         {
             String chk1 = "", name = "", id = "";
+            if (grfReq.Row < 0) return;
             id = grfReq[grfReq.Row, colReqId] != null ? grfReq[grfReq.Row, colReqId].ToString() : "";
             if (id.Length <= 0) return;
             ic.cStf.staff_id = "";

@@ -79,7 +79,7 @@ namespace clinic_ivf.objdb
             String sql = "SELECT sum(obilld."+obilld.Price+") as amount " +
                 " " +
                 "From " + obilld.table + " obilld " +
-                "Where obilld." + obilld.bill_id + "='" + bilid + "' and obilld."+obilld.bill_group_id+"='"+bilgrpid+"' and obilld." + obilld.active + "='1'";
+                "Where obilld." + obilld.bill_id + "='" + bilid + "' and obilld."+obilld.bill_group_id+"='"+bilgrpid+"' and obilld." + obilld.active + "='1' and obilld.pcksid > 0 ";
             dt = conn.selectData(conn.conn, sql);
             if (dt.Rows.Count > 0)
             {

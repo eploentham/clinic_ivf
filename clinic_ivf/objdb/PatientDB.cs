@@ -666,6 +666,31 @@ namespace clinic_ivf.objdb
             }
             return c;
         }
+        public DataTable selectByHNLike(String hn)
+        {
+            DataTable dt = new DataTable();
+            //String date = System.DateTime.Now.Year + "-" + System.DateTime.Now.ToString("MM-dd");
+            String sql = "select ptt.t_patient_id as id, ptt.t_patient_id as VN, ptt.patient_hn as PIDS " +
+                ", CONCAT(IFNULL(fpp.patient_prefix_description,''),' ', ptt.patient_firstname_e ,' ',ptt.patient_lastname_e)  as PName" +
+                ", '' as VDate, ptt.patient_hn as PID, ptt.patient_birthday as dob, ptt.t_patient_id " +
+                ",'' form_a_id, '' form_a_code,'' status_opu_active, '' status_fet_active, '' status_sperm_analysis, '' status_sperm_freezing, '' status_sperm_iui, '' status_sperm_pesa " +
+                ", ptt.patient_hn_1 ,CONCAT(IFNULL(fpp_1.patient_prefix_description,''),' ', ptt_1.patient_firstname_e ,' ',ptt_1.patient_lastname_e ) as name_1" +
+                ", ptt.patient_hn_2 ,CONCAT(IFNULL(fpp_2.patient_prefix_description,''),' ', ptt_2.patient_firstname_e ,' ',ptt_2.patient_lastname_e ) as name_2 " +
+                ", '' as dtr_name " +
+                "From t_patient ptt  " +
+                "Left join f_patient_prefix fpp on fpp.f_patient_prefix_id = ptt.f_patient_prefix_id " +
+                "Left join t_patient ptt_1 on ptt.patient_hn_1 = ptt_1.patient_hn and ptt.patient_hn_1 <> '' and ptt.patient_hn_1 is not null " +
+                "Left join f_patient_prefix fpp_1 on fpp_1.f_patient_prefix_id = ptt_1.f_patient_prefix_id " +
+                "Left join t_patient ptt_2 on ptt.patient_hn_2 = ptt_2.patient_hn and ptt.patient_hn_2 <> '' and ptt.patient_hn_2 is not null " +
+                "Left join f_patient_prefix fpp_2 on fpp_2.f_patient_prefix_id = ptt_2.f_patient_prefix_id " +
+                //"Left join b_staff stf on vs.doctor_id = stf.staff_id " +
+                //"Left join f_patient_prefix fpp_stf on fpp_stf.f_patient_prefix_id = stf.prefix_id " +
+                "Where ptt." + ptt.patient_hn + " like '%" + hn + "%' " +
+                "Order By ptt.t_patient_id desc ";
+            dt = conn.selectData(conn.conn, sql);
+
+            return dt;
+        }
         public DataTable selectDistinctByAmphur()
         {
             DataTable dt = new DataTable();

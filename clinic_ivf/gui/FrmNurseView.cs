@@ -692,7 +692,7 @@ namespace clinic_ivf.gui
                 //dt = ic.ivfDB.ovsDB.selectByHNLike(search);
                 if (chkPrnSticker.Checked)
                 {
-
+                    dt = ic.ivfDB.pttDB.selectByHNLike(search);
                 }
                 else
                 {
@@ -1668,26 +1668,48 @@ namespace clinic_ivf.gui
                 PrinterSettings settings = new PrinterSettings();
                 printerOld = settings.PrinterName;
                 SetDefaultPrinter(ic.iniC.printerSticker);
-                                
-                Visit vs = new Visit();
-                vs = ic.ivfDB.vsDB.selectByPk1(vsid);
-                Patient ptt = new Patient();
-                ptt = ic.ivfDB.pttDB.selectByPk1(vs.t_patient_id);
+                if (chkPrnSticker.Checked)
+                {
+                    Patient ptt = new Patient();
+                    ptt = ic.ivfDB.pttDB.selectByPk1(pttId);
+                    DataTable dt = new DataTable();
+                    dt.Columns.Add("hn", typeof(String));
+                    dt.Columns.Add("name", typeof(String));
+                    dt.Columns.Add("age", typeof(String));
+                    dt.Columns.Add("vn", typeof(String));
+                    DataRow row11 = dt.NewRow();
+                    row11["hn"] = ptt.patient_hn;
+                    row11["name"] = ptt.Name;
+                    row11["age"] = "Age " + ptt.AgeStringShort() + " [" + ic.datetoShow(ptt.patient_birthday) + "]";
+                    row11["vn"] = ptt.t_patient_id;
+                    dt.Rows.Add(row11);
+                    FrmReport frm = new FrmReport(ic);
+                    frm.setStickerPatientThemal(dt);
+                    frm.ShowDialog(this);
+                }
+                else
+                {
+                    Visit vs = new Visit();
+                    vs = ic.ivfDB.vsDB.selectByPk1(vsid);
+                    Patient ptt = new Patient();
+                    ptt = ic.ivfDB.pttDB.selectByPk1(vs.t_patient_id);
 
-                DataTable dt = new DataTable();
-                dt.Columns.Add("hn", typeof(String));
-                dt.Columns.Add("name", typeof(String));
-                dt.Columns.Add("age", typeof(String));
-                dt.Columns.Add("vn", typeof(String));
-                DataRow row11 = dt.NewRow();
-                row11["hn"] = ptt.patient_hn;
-                row11["name"] = ptt.Name;
-                row11["age"] = "Age " + ptt.AgeStringShort() + " [" + ic.datetoShow(ptt.patient_birthday) + "]";
-                row11["vn"] = vs.visit_vn;
-                dt.Rows.Add(row11);
-                FrmReport frm = new FrmReport(ic);
-                frm.setStickerPatientThemal(dt);
-                frm.ShowDialog(this);
+                    DataTable dt = new DataTable();
+                    dt.Columns.Add("hn", typeof(String));
+                    dt.Columns.Add("name", typeof(String));
+                    dt.Columns.Add("age", typeof(String));
+                    dt.Columns.Add("vn", typeof(String));
+                    DataRow row11 = dt.NewRow();
+                    row11["hn"] = ptt.patient_hn;
+                    row11["name"] = ptt.Name;
+                    row11["age"] = "Age " + ptt.AgeStringShort() + " [" + ic.datetoShow(ptt.patient_birthday) + "]";
+                    row11["vn"] = vs.visit_vn;
+                    dt.Rows.Add(row11);
+                    FrmReport frm = new FrmReport(ic);
+                    frm.setStickerPatientThemal(dt);
+                    frm.ShowDialog(this);
+                }
+                
                 SetDefaultPrinter(printerOld);
             }
             catch (Exception ex)

@@ -360,8 +360,8 @@ namespace clinic_ivf.gui
             grfCld.Cols[colCldPkg].Caption = "Package";
             grfCld.Cols[colCldMed].Caption = "Medicine";
             grfCld.Cols[colCldDtrfee].Caption = "Doctor fee";
-            grfCld.Cols[colCldLab1].Caption = "Lab 1";
-            grfCld.Cols[colCldLab2].Caption = "Lab 2";
+            grfCld.Cols[colCldLab1].Caption = "Blood Lab";
+            grfCld.Cols[colCldLab2].Caption = "IVF Lab";
             grfCld.Cols[colCldNurfee].Caption = "Nuring fee";
             grfCld.Cols[colCldTreat].Caption = "Treatment";
             grfCld.Cols[colCldDiscount].Caption = "Discount";
