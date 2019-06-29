@@ -255,12 +255,12 @@ namespace clinic_ivf.objdb
                     "," + lformA.active + "='" + p.active + "' " +
                     "," + lformA.remark + "='" + p.remark + "' " +
                     "," + lformA.date_create + "=now() " +
-                    "," + lformA.date_modi + "='" + p.date_modi + "' " +
+                    "," + lformA.date_modi + "='' " +
 
-                    "," + lformA.date_cancel + "='" + p.date_cancel + "' " +
-                    "," + lformA.user_create + "='" + userId + "' " +
-                    "," + lformA.user_modi + "='" + p.user_modi + "' " +
-                    "," + lformA.user_cancel + "='" + p.user_cancel + "' " +
+                    "," + lformA.date_cancel + "='' " +
+                    "," + lformA.user_create + "='" + userId+"@"+conn._IPAddress + "' " +
+                    "," + lformA.user_modi + "='' " +
+                    "," + lformA.user_cancel + "='' " +
                     "," + lformA.vn_old + "='" + p.vn_old + "' " +
                     "," + lformA.hn_old + "='" + p.hn_old + "' " +
                     "," + lformA.form_a_code + "='" + p.form_a_code + "' " +
@@ -362,7 +362,7 @@ namespace clinic_ivf.objdb
                     "," + lformA.active + "='" + p.active + "' " +
                     "," + lformA.remark + "='" + p.remark.Replace("'", "''") + "' " +
                     "," + lformA.date_modi + "=now() " +
-                    "," + lformA.user_modi + "='" + userId + "' " +
+                    "," + lformA.user_modi + "='" + userId + "@" + conn._IPAddress + "' " +
                     "," + lformA.vn_old + "='" + p.vn_old + "' " +
                     "," + lformA.hn_old + "='" + p.hn_old + "' " +
                     //"," + lformA.form_a_code + "='" + p.form_a_code + "' " +
@@ -418,11 +418,11 @@ namespace clinic_ivf.objdb
 
             if (p.form_a_id.Equals(""))
             {
-                re = insert(p, "");
+                re = insert(p, userId);
             }
             else
             {
-                re = update(p, "");
+                re = update(p, userId);
             }
 
             return re;

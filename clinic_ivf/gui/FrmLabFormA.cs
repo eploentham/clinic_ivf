@@ -609,7 +609,7 @@ namespace clinic_ivf.gui
                 String re = "", reqid = "";
 
                 setLabFormA();
-                re = ic.ivfDB.lFormaDB.insertLabFormA(lFormA, txtStfConfirmID.Text);
+                re = ic.ivfDB.lFormaDB.insertLabFormA(lFormA, ic.cStf.staff_id);
                 DateTime dt = new DateTime();
                 String dt1 = "";
                 //if(DateTime.TryParse(ic.datetoDB(txtOPUDate.Text), out dt))

@@ -1811,16 +1811,17 @@ namespace clinic_ivf.gui
         }
         private void ContextMenu_LAB_req_formA_Ptt_finish(object sender, System.EventArgs e)
         {
-            String chk = "", name = "", vsid = "", pttId = "";
+            String chk = "", name = "", vsid = "", pttId = "", vn="";
             if (grfFinish.Row < 0) return;
             vsid = grfFinish[grfFinish.Row, colID] != null ? grfFinish[grfFinish.Row, colID].ToString() : "";
             pttId = grfFinish[grfFinish.Row, colPttId] != null ? grfFinish[grfFinish.Row, colPttId].ToString() : "";
             chk = grfFinish[grfFinish.Row, colPttHn] != null ? grfFinish[grfFinish.Row, colPttHn].ToString() : "";
             name = grfFinish[grfFinish.Row, colPttName] != null ? grfFinish[grfFinish.Row, colPttName].ToString() : "";
+            vn = grfFinish[grfFinish.Row, colVn] != null ? grfFinish[grfFinish.Row, colVn].ToString() : "";
             //reqid = ic.ivfDB.oJsDB.selectByStatusOPU(vsid);
             //if (!reqid.Equals(""))
             //{
-                FrmLabFormA frm = new FrmLabFormA(ic, "", pttId, "", vsid);
+            FrmLabFormA frm = new FrmLabFormA(ic, "", pttId, vsid, vn);
                 frm.ShowDialog(this);
                 setGrfFinish("");
             //}
@@ -1852,16 +1853,17 @@ namespace clinic_ivf.gui
         }
         private void ContextMenu_LAB_req_formA_Ptt(object sender, System.EventArgs e)
         {
-            String chk = "", name = "", vsid = "", pttId = "";
+            String chk = "", name = "", vsid = "", pttId = "", vn="";
             if (grfQue.Row < 0) return;
             vsid = grfQue[grfQue.Row, colID] != null ? grfQue[grfQue.Row, colID].ToString() : "";
             pttId = grfQue[grfQue.Row, colPttId] != null ? grfQue[grfQue.Row, colPttId].ToString() : "";
             chk = grfQue[grfQue.Row, colPttHn] != null ? grfQue[grfQue.Row, colPttHn].ToString() : "";
             name = grfQue[grfQue.Row, colPttName] != null ? grfQue[grfQue.Row, colPttName].ToString() : "";
+            vn = grfQue[grfQue.Row, colVn] != null ? grfQue[grfQue.Row, colVn].ToString() : "";
             //reqid = ic.ivfDB.oJsDB.selectByStatusOPU(vsid);
             //if (!reqid.Equals(""))
             //{
-                FrmLabFormA frm = new FrmLabFormA(ic, "", pttId, "", vsid);
+            FrmLabFormA frm = new FrmLabFormA(ic, "", pttId, vsid, vn);
                 frm.ShowDialog(this);
                 setGrfQue();
             //}
