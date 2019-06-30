@@ -267,7 +267,7 @@ namespace clinic_ivf.objdb
                 "," + obillh.date_create + "= now()" +
                 "," + obillh.date_modi + "= ''" +
                 "," + obillh.date_cancel + "= ''" +
-                "," + obillh.user_create + "= '" + userId + "'" +
+                "," + obillh.user_create + "= '" + userId + "@" + conn._IPAddress + "'" +
                 "," + obillh.user_modi + "= ''" +
                 "," + obillh.user_cancel + "= ''" +
                 "," + obillh.Status + "= '" + p.Status + "'" +

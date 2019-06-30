@@ -377,6 +377,9 @@ namespace clinic_ivf.gui
                 obilld.VN = txtVn.Text;
                 obilld.Name = "OtherService discount ";
                 obilld.Extra = "1";
+                obilld.item_id = "98";
+                obilld.status = "special";
+                obilld.GroupType = "OtherService";
                 Decimal nettotal = 0, discountper=0, discount=0;
                 if (chkDiscountAll.Checked)
                 {
@@ -462,9 +465,9 @@ namespace clinic_ivf.gui
             obilld.Total = txtPayCreditCard.Text.Replace(",", "");
             obilld.Comment = "";
             obilld.pcksid = "0";
-
+            obilld.item_id = "67";
             obilld.GroupType = "OtherService";
-
+            obilld.status = "special";
             ic.ivfDB.obildDB.insertBillDetail(obilld, "");
             setGrfBillD();
             calTotal();

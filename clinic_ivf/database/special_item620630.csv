@@ -1,0 +1,86 @@
+SID;SName;Price;BillGroupID;Name
+24;"TAS 2000";2000.00;0;Package
+30;"TAS 1500";1500.00;0;Package
+32;"Sperm Freezing";4000.00;0;Package
+35;"SM Blood Screening Package";4000.00;0;Package
+37;"IUI not Gender selection(Thai)";15000.00;0;Package
+38;"ED Blood screening Package";4000.00;0;Package
+40;D&C;16500.00;0;Package
+59;"TVS ";1500.00;0;Package
+60;"Frozen Sperm Package";8000.00;0;Package
+61;"Lab progesterone";500.00;0;Package
+65;"Egg Donor Expense";120000.00;0;Package
+66;"Freezing : Embryo Blast";30000.00;0;Package
+68;Medicine;40000.00;0;Package
+69;"a-CGH Extra per embryo";15000.00;0;Package
+70;"Freezing : Extra per straw";2000.00;0;Package
+73;Thawing;10000.00;0;Package
+75;LVR;120000.00;0;Package
+76;"Freezing : Extra per straw";2000.00;0;Package
+79;"Screening Package";4000.00;0;Package
+80;"Other Fee";150000.00;0;Package
+81;"Embryo/sperm transport from another or to another center";6000.00;0;Package
+83;"Deposit for IVF";85000.00;0;Package
+84;"Blood screening+Sperm Freeze";8000.00;0;Package
+86;"Embryo storage fee";4500.00;0;Package
+88;"Hemoglobin typing";500.00;0;Package
+89;DF;5000.00;0;Package
+90;"Sperm Freeze";5000.00;0;Package
+93;"Suction tube";2000.00;0;Package
+95;"Alpha thalasemia";2000.00;0;Package
+96;"TVS x 3";4500.00;0;Package
+100;"TVS 2500 บาท";2500.00;0;Package
+101;"sperm shipping";6000.00;0;Package
+106;"IV Cathetor No.24";240.00;0;Package
+107;"Blood Screening (Dr.V)";4000.00;0;Package
+110;"RequestCGH D5 and get Result D6";20000.00;0;Package
+111;"Nursing Service";1000.00;0;Package
+114;"Sperm thawing + SA";2500.00;0;Package
+116;"Hemoglobin typing";500.00;0;Package
+117;Equipment;200.00;0;Package
+118;PV;500.00;0;Package
+122;"No ET";-15000.00;0;Package
+126;"freezing of embryo for precaution";30000.00;0;Package
+127;"special DF add package for precaution";25000.00;0;Package
+128;"special DF add package for precaution";25000.00;0;Package
+129;OPU;70000.00;0;Package
+132;"ET ";50000.00;0;Package
+133;"Extra Washing for Precauiton";50000.00;0;Package
+134;NST;5000.00;0;Package
+135;"extra charge for stimulation";25000.00;0;Package
+137;เจาะน้ำคล่ำ;5000.00;0;Package
+139;ค่าแพทย์เจาะน้ำคล่ำ;15000.00;0;Package
+140;Medicine;36200.00;0;Package
+141;"สาย IUI";1000.00;0;Package
+142;อุปกรร์เครื่องมือOR;3000.00;0;Package
+143;น้ำยา;15000.00;0;Package
+146;Stimulation;100000.00;0;Package
+147;"Equipment 1000";1000.00;0;Package
+148;Equipment2;500.00;0;Package
+149;"Deposit ";100000.00;0;Package
+152;CA-12-5;2000.00;0;Package
+155;DF;10000.00;0;Package
+156;"Set Dressing1";500.00;0;Package
+157;"Set Dressing2";1500.00;0;Package
+158;"Ultrasound 8 weeks";3200.00;0;Package
+159;"สาย ET";2000.00;0;Package
+160;"F/U  ET / FET";0.00;0;Package
+161;"Re-biopsy a-CGH";25000.00;0;Package
+164;"Revise Labiaplasty";50000.00;0;Package
+165;"ค่ายกเลิก OPU";5000.00;0;Package
+166;"DF 25000";25000.00;0;Package
+167;"Excission breast";10000.00;0;Package
+168;"Aspiration needle";2500.00;0;Package
+169;"Extra for day6";5000.00;0;Package
+170;ส่งตรวจผลชิ้นเนื้อ;3000.00;0;Package
+173;PRP;8000.00;0;Package
+174;"DF 4000";4000.00;0;Package
+175;"TVS x 2";3000.00;0;Package
+176;"Add NGS";50000.00;0;Package
+178;"Special result NGS";20000.00;0;Package
+179;"TVS 3000";3000.00;0;Package
+180;"Re-biopsy NGS(3 embryos)";60000.00;0;Package
+181;"Extra Oocyte";8000.00;0;Package
+182;"Re-biopsy NGS(2 embryos)";40000.00;0;Package
+183;"Re-NGS(4 embs)";80000.00;0;Package
+184;"test test aaaaaa";500.00;0;Package
