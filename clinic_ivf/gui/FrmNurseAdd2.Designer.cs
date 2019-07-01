@@ -676,6 +676,20 @@
             this.spOutLabDetail = new C1.Win.C1SplitContainer.C1SplitterPanel();
             this.pnOutLabDetail = new System.Windows.Forms.Panel();
             this.c1FlexViewer1 = new C1.Win.FlexViewer.C1FlexViewer();
+            this.tabHistory = new C1.Win.C1Command.C1DockingTabPage();
+            this.sCHistory = new C1.Win.C1SplitContainer.C1SplitContainer();
+            this.c1SplitterPanel8 = new C1.Win.C1SplitContainer.C1SplitterPanel();
+            this.pnHistoryVs = new System.Windows.Forms.Panel();
+            this.c1SplitterPanel9 = new C1.Win.C1SplitContainer.C1SplitterPanel();
+            this.tCHistory = new C1.Win.C1Command.C1DockingTab();
+            this.tabHistoryDrug = new C1.Win.C1Command.C1DockingTabPage();
+            this.pnHistoryDrug = new System.Windows.Forms.Panel();
+            this.tabHistoryLab = new C1.Win.C1Command.C1DockingTabPage();
+            this.pnHistoryLab = new System.Windows.Forms.Panel();
+            this.tabHistoryOr = new C1.Win.C1Command.C1DockingTabPage();
+            this.panel46 = new System.Windows.Forms.Panel();
+            this.tabHistoryScan = new C1.Win.C1Command.C1DockingTabPage();
+            this.pnHistoryScan = new System.Windows.Forms.Panel();
             this.radioButton20 = new System.Windows.Forms.RadioButton();
             this.txtStfConfirmID = new C1.Win.C1Input.C1TextBox();
             this.txtUserReq = new C1.Win.C1Input.C1TextBox();
@@ -1073,6 +1087,17 @@
             this.spOutLabDetail.SuspendLayout();
             this.pnOutLabDetail.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.c1FlexViewer1)).BeginInit();
+            this.tabHistory.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.sCHistory)).BeginInit();
+            this.sCHistory.SuspendLayout();
+            this.c1SplitterPanel8.SuspendLayout();
+            this.c1SplitterPanel9.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.tCHistory)).BeginInit();
+            this.tCHistory.SuspendLayout();
+            this.tabHistoryDrug.SuspendLayout();
+            this.tabHistoryLab.SuspendLayout();
+            this.tabHistoryOr.SuspendLayout();
+            this.tabHistoryScan.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtStfConfirmID)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtUserReq)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cboBsp)).BeginInit();
@@ -1948,6 +1973,7 @@
             this.tC.Controls.Add(this.tabPg);
             this.tC.Controls.Add(this.tabLabFormA);
             this.tC.Controls.Add(this.tabOutLab);
+            this.tC.Controls.Add(this.tabHistory);
             this.tC.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tC.HotTrack = true;
             this.tC.Location = new System.Drawing.Point(0, 0);
@@ -2784,7 +2810,7 @@
             this.c1SplitterPanel4.SizeRatio = 35.421D;
             this.c1SplitterPanel4.TabIndex = 0;
             this.c1SplitterPanel4.Text = "Panel 1";
-            this.c1SplitterPanel4.Width = 560;
+            this.c1SplitterPanel4.Width = 553;
             // 
             // pnAdm
             // 
@@ -2853,7 +2879,7 @@
             this.c1SplitterPanel6.SizeRatio = 21.632D;
             this.c1SplitterPanel6.TabIndex = 0;
             this.c1SplitterPanel6.Text = "Panel 1";
-            this.c1SplitterPanel6.Width = 220;
+            this.c1SplitterPanel6.Width = 213;
             // 
             // pnApmAll
             // 
@@ -10608,6 +10634,172 @@
             this.c1FlexViewer1.ThumbBackColorPressed = System.Drawing.Color.FromArgb(((int)(((byte)(225)))), ((int)(((byte)(108)))), ((int)(((byte)(89)))));
             this.c1FlexViewer1.ThumbBackColorSelected = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(71)))), ((int)(((byte)(47)))));
             // 
+            // tabHistory
+            // 
+            this.tabHistory.Controls.Add(this.sCHistory);
+            this.tabHistory.Location = new System.Drawing.Point(1, 24);
+            this.tabHistory.Name = "tabHistory";
+            this.tabHistory.Size = new System.Drawing.Size(1585, 665);
+            this.tabHistory.TabIndex = 12;
+            this.tabHistory.Text = "History";
+            // 
+            // sCHistory
+            // 
+            this.sCHistory.AutoSizeElement = C1.Framework.AutoSizeElement.Both;
+            this.sCHistory.BackColor = System.Drawing.Color.White;
+            this.sCHistory.CollapsingAreaColor = System.Drawing.Color.White;
+            this.sCHistory.CollapsingCueColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.sCHistory.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.sCHistory.FixedLineColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(189)))), ((int)(((byte)(182)))));
+            this.sCHistory.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.sCHistory.HeaderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.sCHistory.HeaderLineWidth = 1;
+            this.sCHistory.Location = new System.Drawing.Point(0, 0);
+            this.sCHistory.Name = "sCHistory";
+            this.sCHistory.Panels.Add(this.c1SplitterPanel8);
+            this.sCHistory.Panels.Add(this.c1SplitterPanel9);
+            this.sCHistory.Size = new System.Drawing.Size(1585, 665);
+            this.sCHistory.SplitterColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(189)))), ((int)(((byte)(182)))));
+            this.sCHistory.SplitterMovingColor = System.Drawing.Color.Black;
+            this.sCHistory.TabIndex = 1;
+            this.theme1.SetTheme(this.sCHistory, "(default)");
+            this.sCHistory.UseParentVisualStyle = false;
+            // 
+            // c1SplitterPanel8
+            // 
+            this.c1SplitterPanel8.Collapsible = true;
+            this.c1SplitterPanel8.Controls.Add(this.pnHistoryVs);
+            this.c1SplitterPanel8.Dock = C1.Win.C1SplitContainer.PanelDockStyle.Left;
+            this.c1SplitterPanel8.Location = new System.Drawing.Point(0, 21);
+            this.c1SplitterPanel8.Name = "c1SplitterPanel8";
+            this.c1SplitterPanel8.Size = new System.Drawing.Size(394, 644);
+            this.c1SplitterPanel8.SizeRatio = 25.349D;
+            this.c1SplitterPanel8.TabIndex = 0;
+            this.c1SplitterPanel8.Text = "Panel 1";
+            this.c1SplitterPanel8.Width = 401;
+            // 
+            // pnHistoryVs
+            // 
+            this.pnHistoryVs.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.pnHistoryVs.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pnHistoryVs.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.pnHistoryVs.Location = new System.Drawing.Point(0, 0);
+            this.pnHistoryVs.Name = "pnHistoryVs";
+            this.pnHistoryVs.Size = new System.Drawing.Size(394, 644);
+            this.pnHistoryVs.TabIndex = 0;
+            this.theme1.SetTheme(this.pnHistoryVs, "(default)");
+            // 
+            // c1SplitterPanel9
+            // 
+            this.c1SplitterPanel9.Controls.Add(this.tCHistory);
+            this.c1SplitterPanel9.Height = 665;
+            this.c1SplitterPanel9.Location = new System.Drawing.Point(405, 21);
+            this.c1SplitterPanel9.Name = "c1SplitterPanel9";
+            this.c1SplitterPanel9.Size = new System.Drawing.Size(1180, 644);
+            this.c1SplitterPanel9.TabIndex = 1;
+            this.c1SplitterPanel9.Text = "Panel 2";
+            // 
+            // tCHistory
+            // 
+            this.tCHistory.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.tCHistory.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.tCHistory.Controls.Add(this.tabHistoryDrug);
+            this.tCHistory.Controls.Add(this.tabHistoryLab);
+            this.tCHistory.Controls.Add(this.tabHistoryOr);
+            this.tCHistory.Controls.Add(this.tabHistoryScan);
+            this.tCHistory.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tCHistory.HotTrack = true;
+            this.tCHistory.Location = new System.Drawing.Point(0, 0);
+            this.tCHistory.Name = "tCHistory";
+            this.tCHistory.SelectedIndex = 2;
+            this.tCHistory.Size = new System.Drawing.Size(1180, 644);
+            this.tCHistory.TabIndex = 0;
+            this.tCHistory.TabSizeMode = C1.Win.C1Command.TabSizeModeEnum.Fit;
+            this.tCHistory.TabsShowFocusCues = false;
+            this.tCHistory.TabsSpacing = 2;
+            this.tCHistory.TabStyle = C1.Win.C1Command.TabStyleEnum.Office2007;
+            this.theme1.SetTheme(this.tCHistory, "(default)");
+            // 
+            // tabHistoryDrug
+            // 
+            this.tabHistoryDrug.Controls.Add(this.pnHistoryDrug);
+            this.tabHistoryDrug.Location = new System.Drawing.Point(1, 24);
+            this.tabHistoryDrug.Name = "tabHistoryDrug";
+            this.tabHistoryDrug.Size = new System.Drawing.Size(1178, 619);
+            this.tabHistoryDrug.TabIndex = 0;
+            this.tabHistoryDrug.Text = "ยา + เวชภัณฑ์";
+            // 
+            // pnHistoryDrug
+            // 
+            this.pnHistoryDrug.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.pnHistoryDrug.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pnHistoryDrug.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.pnHistoryDrug.Location = new System.Drawing.Point(0, 0);
+            this.pnHistoryDrug.Name = "pnHistoryDrug";
+            this.pnHistoryDrug.Size = new System.Drawing.Size(1178, 619);
+            this.pnHistoryDrug.TabIndex = 0;
+            this.theme1.SetTheme(this.pnHistoryDrug, "(default)");
+            // 
+            // tabHistoryLab
+            // 
+            this.tabHistoryLab.Controls.Add(this.pnHistoryLab);
+            this.tabHistoryLab.Location = new System.Drawing.Point(1, 24);
+            this.tabHistoryLab.Name = "tabHistoryLab";
+            this.tabHistoryLab.Size = new System.Drawing.Size(1178, 619);
+            this.tabHistoryLab.TabIndex = 1;
+            this.tabHistoryLab.Text = "LAB";
+            // 
+            // pnHistoryLab
+            // 
+            this.pnHistoryLab.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.pnHistoryLab.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pnHistoryLab.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.pnHistoryLab.Location = new System.Drawing.Point(0, 0);
+            this.pnHistoryLab.Name = "pnHistoryLab";
+            this.pnHistoryLab.Size = new System.Drawing.Size(1178, 619);
+            this.pnHistoryLab.TabIndex = 0;
+            this.theme1.SetTheme(this.pnHistoryLab, "(default)");
+            // 
+            // tabHistoryOr
+            // 
+            this.tabHistoryOr.Controls.Add(this.panel46);
+            this.tabHistoryOr.Location = new System.Drawing.Point(1, 24);
+            this.tabHistoryOr.Name = "tabHistoryOr";
+            this.tabHistoryOr.Size = new System.Drawing.Size(1178, 619);
+            this.tabHistoryOr.TabIndex = 2;
+            this.tabHistoryOr.Text = "รายการผ่าตัด";
+            // 
+            // panel46
+            // 
+            this.panel46.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.panel46.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel46.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.panel46.Location = new System.Drawing.Point(0, 0);
+            this.panel46.Name = "panel46";
+            this.panel46.Size = new System.Drawing.Size(1178, 619);
+            this.panel46.TabIndex = 0;
+            this.theme1.SetTheme(this.panel46, "(default)");
+            // 
+            // tabHistoryScan
+            // 
+            this.tabHistoryScan.Controls.Add(this.pnHistoryScan);
+            this.tabHistoryScan.Location = new System.Drawing.Point(1, 24);
+            this.tabHistoryScan.Name = "tabHistoryScan";
+            this.tabHistoryScan.Size = new System.Drawing.Size(1178, 619);
+            this.tabHistoryScan.TabIndex = 3;
+            this.tabHistoryScan.Text = "เวชระเบียน";
+            // 
+            // pnHistoryScan
+            // 
+            this.pnHistoryScan.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.pnHistoryScan.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pnHistoryScan.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.pnHistoryScan.Location = new System.Drawing.Point(0, 0);
+            this.pnHistoryScan.Name = "pnHistoryScan";
+            this.pnHistoryScan.Size = new System.Drawing.Size(1178, 619);
+            this.pnHistoryScan.TabIndex = 0;
+            this.theme1.SetTheme(this.pnHistoryScan, "(default)");
+            // 
             // radioButton20
             // 
             this.radioButton20.AutoSize = true;
@@ -11248,6 +11440,17 @@
             this.spOutLabDetail.ResumeLayout(false);
             this.pnOutLabDetail.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.c1FlexViewer1)).EndInit();
+            this.tabHistory.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.sCHistory)).EndInit();
+            this.sCHistory.ResumeLayout(false);
+            this.c1SplitterPanel8.ResumeLayout(false);
+            this.c1SplitterPanel9.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.tCHistory)).EndInit();
+            this.tCHistory.ResumeLayout(false);
+            this.tabHistoryDrug.ResumeLayout(false);
+            this.tabHistoryLab.ResumeLayout(false);
+            this.tabHistoryOr.ResumeLayout(false);
+            this.tabHistoryScan.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.txtStfConfirmID)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtUserReq)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cboBsp)).EndInit();
@@ -11970,5 +12173,19 @@
         private C1.Win.C1Input.C1ComboBox cboEggStiId;
         private System.Windows.Forms.Label label86;
         private C1.Win.C1Input.C1Button btnEggsNew;
+        private C1.Win.C1Command.C1DockingTabPage tabHistory;
+        private C1.Win.C1SplitContainer.C1SplitContainer sCHistory;
+        private C1.Win.C1SplitContainer.C1SplitterPanel c1SplitterPanel8;
+        private System.Windows.Forms.Panel pnHistoryVs;
+        private C1.Win.C1SplitContainer.C1SplitterPanel c1SplitterPanel9;
+        private C1.Win.C1Command.C1DockingTab tCHistory;
+        private C1.Win.C1Command.C1DockingTabPage tabHistoryDrug;
+        private System.Windows.Forms.Panel pnHistoryDrug;
+        private C1.Win.C1Command.C1DockingTabPage tabHistoryLab;
+        private System.Windows.Forms.Panel pnHistoryLab;
+        private C1.Win.C1Command.C1DockingTabPage tabHistoryOr;
+        private System.Windows.Forms.Panel panel46;
+        private C1.Win.C1Command.C1DockingTabPage tabHistoryScan;
+        private System.Windows.Forms.Panel pnHistoryScan;
     }
 }

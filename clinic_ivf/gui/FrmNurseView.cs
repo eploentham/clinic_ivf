@@ -2054,7 +2054,7 @@ namespace clinic_ivf.gui
 
             vn = grfSearch[grfSearch.Row, colVn] != null ? grfSearch[grfSearch.Row, colVn].ToString() : "";
             pttId = grfSearch[grfSearch.Row, colPttId] != null ? grfSearch[grfSearch.Row, colPttId].ToString() : "";
-            pid = grfQue[grfQue.Row, colPID] != null ? grfQue[grfQue.Row, colPID].ToString() : "";
+            pid = grfSearch[grfSearch.Row, colPID] != null ? grfSearch[grfSearch.Row, colPID].ToString() : "";
             chk = grfSearch[grfSearch.Row, colPttHn] != null ? grfSearch[grfSearch.Row, colPttHn].ToString() : "";
             name = grfSearch[grfSearch.Row, colPttName] != null ? grfSearch[grfSearch.Row, colPttName].ToString() : "";
             //FrmNurseAdd frm = new FrmNurseAdd();
@@ -2073,7 +2073,7 @@ namespace clinic_ivf.gui
 
             vn = grfFinish[grfFinish.Row, colVn] != null ? grfFinish[grfFinish.Row, colVn].ToString() : "";
             pttId = grfFinish[grfFinish.Row, colPttId] != null ? grfFinish[grfFinish.Row, colPttId].ToString() : "";
-            pid = grfQue[grfQue.Row, colPID] != null ? grfQue[grfQue.Row, colPID].ToString() : "";
+            pid = grfFinish[grfFinish.Row, colPID] != null ? grfQue[grfQue.Row, colPID].ToString() : "";
             chk = grfFinish[grfFinish.Row, colPttHn] != null ? grfFinish[grfFinish.Row, colPttHn].ToString() : "";
             name = grfFinish[grfFinish.Row, colPttName] != null ? grfFinish[grfFinish.Row, colPttName].ToString() : "";
             //FrmNurseAdd frm = new FrmNurseAdd();

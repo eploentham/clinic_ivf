@@ -1928,7 +1928,7 @@ namespace clinic_ivf.gui
             //grfImgOld.ContextMenu = menuGw;
             pnImgOld.Controls.Add(grfImgOld);
 
-            theme1.SetTheme(grfImg, "Office2016Colorful");
+            theme1.SetTheme(grfImgOld, "Office2016Colorful");
 
         }
 

@@ -45,8 +45,8 @@ namespace clinic_ivf.gui
         Color bg, fc;
         Font ff, ffB;
 
-        C1FlexGrid grfBloodLab, grfSperm, grfEmbryo, grfGenetic, grfSpecial, grfRx, grfRxSet, grfOrder, grfPackage, grfPackageD, grfRxSetD, grfNote, grfpApmAll, grfpApmDayAll, grfpApmVisit, grfImg;
-        C1FlexGrid grfEggsd, grfLab;
+        C1FlexGrid grfBloodLab, grfSperm, grfEmbryo, grfGenetic, grfSpecial, grfRx, grfRxSet, grfOrder, grfPackage, grfPackageD, grfRxSetD, grfNote, grfpApmAll, grfpApmDayAll, grfpApmVisit, grfImgOutLab, grfHis;
+        C1FlexGrid grfEggsd, grfLab, grfHisDrug, grfImg;
         C1SuperTooltip stt;
         C1SuperErrorProvider sep;
 
@@ -57,16 +57,17 @@ namespace clinic_ivf.gui
         int colNoteId = 1, colNote = 2, colNoteStatusAll = 3;
         int colApmId = 1, colApmAppointment = 4, colApmDate = 2, colApmTime = 3, colApmDoctor = 5, colApmSp = 6, colApmNotice = 7, colE2 = 8, colLh = 9, colEndo = 10, colPrl = 10, colFsh = 11, colRt = 12, colLt = 13;
         int colLabReqId = 1, collabName = 2, colLabStatus = 3;
+        int colHisVsId = 1, colHisVsDate = 2;
 
         int colOrderId = 1, colOrderVn = 2, colOrderLID = 3, colOrderExtra = 4, colOrderPrice = 5, colOrderStatus = 6;
         int colOrderPID = 7, colOrderPIDS = 8, colOrderLName = 9, colOrderSP1V = 10, colOrderSP2V = 11, colOrderSP3V = 12;
         int colOrderSP4V = 13, colOrderSP5V = 14, colOrderSP6V = 15, colOrderSP7V = 16, colOrderSubItem = 17;
         int colOrderFileName = 18, colOrderWorder1 = 19, colOrderWorker2 = 20, colOrderWorker3 = 21, colOrderWorkder4 = 22;
         int colOrderWorker5 = 23, colOrderLGID = 24, colOrderQTY = 25, colOrderActive = 26;
-        int colOrdid = 1, colOrdlpid = 2, colOrdName = 3, colOrdPrice = 4, colOrdQty = 5, colOrdstatus = 6, colOrdrow1 = 7, colOrditmid = 8, colOrdInclude = 9, colOrdAmt = 10, colOrdUsE = 11, colOrdUsT = 12, colOrdOrderId=13, colOrdStatusAmt=14, colOrdStatusOrdGrp=15;
+        int colOrdid = 1, colOrdDate=2, colOrdlpid = 3, colOrdName = 4, colOrdPrice = 5, colOrdQty = 6, colOrdstatus = 7, colOrdrow1 = 8, colOrditmid = 9, colOrdInclude = 10, colOrdAmt = 11, colOrdUsE = 12, colOrdUsT = 13, colOrdOrderId=14, colOrdStatusAmt=15, colOrdStatusOrdGrp=16;
         int rowOrder = 0, spHeight = 150;
         int colEggDay = 1, colEggDate = 2, colEggE2 = 3, colEggLH = 4, colEggFSH = 5, colEggProlactin = 6, colEggRt1 = 7, colEggRt2 = 8, colEggLt1 = 9, colEggLt2 = 10, colEggEndo = 11, colEggMedi = 12, colEggId = 13, colEggEdit = 14, colEggMedi2 = 15;
-
+        
         //int colId = 1, colAppointment = 4, colDate = 2, colTime = 3, colDoctor = 5, colSp = 6, colNotice = 7, colE2 = 8, colLh = 9, colEndo = 10, colPrl = 10, colFsh = 11, colRt = 12, colLt = 13;
 
         Image imgCorr, imgTran;
@@ -212,6 +213,8 @@ namespace clinic_ivf.gui
             chkPmlPttMaleTreatYes.CheckedChanged += ChkPmlPttMaleTreatYes_CheckedChanged;
             cboEggStiId.SelectedIndexChanged += CboEggStiId_SelectedIndexChanged;
             btnEggsNew.Click += BtnEggsNew_Click;
+            tC.SelectedIndexChanged += TC_SelectedIndexChanged;
+            tCHistory.DoubleClick += TCHistory_DoubleClick;
 
             setControl(vn);
             ChkDenyAllergy_CheckedChanged(null, null);
@@ -248,6 +251,12 @@ namespace clinic_ivf.gui
             setGrfpApmVisit();
             setControlEggSti();
             setControlPmh();
+            initGrfHistory();
+            setGrfHistory();
+            initGrfHistoryDrug();
+            setGrfHistoryDrug();
+            initGrfImg();
+            setGrfImg();
 
             ChkPmhMarried_CheckedChanged(null, null);
             ChkPmhConOther_CheckedChanged(null, null);
@@ -268,8 +277,8 @@ namespace clinic_ivf.gui
             ChkPmlPttMaleDrugYes_CheckedChanged(null, null);
             ChkPmlPttMaleSurgiYes_CheckedChanged(null, null);
             ChkPmlPttMaleTreatYes_CheckedChanged(null, null);
-            initGrfImg();
-            setGrfImg();
+            initGrfImgOutLab();
+            setGrfImgOutLab();
             initGrfLab();
             setGrfLab();
             if (flagedit.Equals("view"))
@@ -280,6 +289,25 @@ namespace clinic_ivf.gui
             //initGrfPtt();
             //setGrfPtt("");
             initProgressNote();
+        }
+
+        private void TCHistory_DoubleClick(object sender, EventArgs e)
+        {
+            //throw new NotImplementedException();
+            if (tCHistory.SelectedTab == tabHistoryScan)
+            {
+                grfImg.AutoSizeCols();
+                grfImg.AutoSizeRows();
+            }
+        }
+
+        private void TC_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            //throw new NotImplementedException();
+            if(tC.SelectedTab== tabHistory)
+            {
+                tCHistory.SelectedTab = tabHistoryDrug;
+            }
         }
 
         private void BtnEggsNew_Click(object sender, EventArgs e)
@@ -707,7 +735,7 @@ namespace clinic_ivf.gui
             }
             grfLab.Cols[colLabReqId].Visible = false;            
             
-            grfImg.Cols[colLabStatus].AllowEditing = false;
+            grfImgOutLab.Cols[colLabStatus].AllowEditing = false;
             grfLab.Cols[collabName].AllowEditing = false;
             //grfImg.AutoSizeCols();
             grfLab.AutoSizeRows();
@@ -3042,6 +3070,407 @@ namespace clinic_ivf.gui
 
             }
         }
+        private void initGrfHistoryDrug()
+        {
+            grfHisDrug = new C1FlexGrid();
+            grfHisDrug.Font = fEdit;
+            grfHisDrug.Dock = System.Windows.Forms.DockStyle.Fill;
+            grfHisDrug.Location = new System.Drawing.Point(0, 0);
+
+            //FilterRow fr = new FilterRow(grfPackageD);
+
+            //grfHisDrug.AfterDataRefresh += GrfOrder_AfterDataRefresh;
+            //grfHisDrug.SubtotalPosition = SubtotalPositionEnum.BelowData;
+            //grfOrder.mou
+            //grfExpnC.CellChanged += new C1.Win.C1FlexGrid.RowColEventHandler(this.grfDept_CellChanged);
+            //ContextMenu menuGw = new ContextMenu();
+            //if (flagedit.Equals("edit"))
+            //{
+            //    menuGw.MenuItems.Add("ยกเลิกรายการ", new EventHandler(ContextMenu_or_void));
+            //}
+            //menuGw.MenuItems.Add("&แก้ไข", new EventHandler(ContextMenu_Gw_Edit));
+            //menuGw.MenuItems.Add("&ยกเลิก", new EventHandler(ContextMenu_Gw_Cancel));
+            //grfOrder.ContextMenu = menuGw;
+            pnHistoryDrug.Controls.Add(grfHisDrug);
+
+            theme1.SetTheme(grfHisDrug, "GreenHouse");
+
+        }
+        private void setGrfHistoryDrug()
+        {
+            //grfDept.Rows.Count = 7;
+            grfHisDrug.Clear();
+            DataTable dtAll = new DataTable();
+            DataTable dtbl = new DataTable();
+            DataTable dtse = new DataTable();
+            DataTable dtpx = new DataTable();
+            DataTable dtpkg = new DataTable();
+
+            dtbl = ic.ivfDB.oJlabdDB.selectByPID(pttOld.PID);
+            dtse = ic.ivfDB.ojsdDB.selectByPID(pttOld.PID);
+            dtpx = ic.ivfDB.oJpxdDB.selectByPID(pttOld.PID);
+            //dtpkg = ic.ivfDB.opkgsDB.selectByVN(vn);
+            dtpkg = ic.ivfDB.opkgsDB.selectByPID1(pttOld.PID);    // ต้องดึงตาม HN เพราะ ถ้ามีงวดการชำระ 
+
+            //grfExpn.Rows.Count = dt.Rows.Count + 1;
+            //grfEmbryo.Rows.Count = dt.Rows.Count + 1;
+
+            dtAll.Columns.Add("id", typeof(String));
+            dtAll.Columns.Add("lgid", typeof(String));
+            dtAll.Columns.Add("name", typeof(String));
+            dtAll.Columns.Add("price", typeof(String));
+            dtAll.Columns.Add("qty", typeof(String));
+            dtAll.Columns.Add("status", typeof(String));
+            dtAll.Columns.Add("row1", typeof(int));
+            dtAll.Columns.Add("itmid", typeof(String));
+            dtAll.Columns.Add("extra", typeof(String));
+            dtAll.Columns.Add("usage", typeof(String));
+            dtAll.Columns.Add("lab_order_id", typeof(String));
+            dtAll.Columns.Add("status_amt", typeof(String));
+            dtAll.Columns.Add("status_order_group", typeof(String));
+            dtAll.Columns.Add("date", typeof(String));
+            int i = 0;
+            foreach (DataRow row in dtbl.Rows)
+            {
+                DataRow row1 = dtAll.NewRow();
+                row1["id"] = row["ID"];
+                row1["itmid"] = row["LID"];
+                row1["lgid"] = row["LGID"];
+                row1["name"] = row["LName"];
+                row1["price"] = row["Price"];
+                row1["qty"] = row["QTY"];
+                row1["row1"] = row["row1"];
+                row1["extra"] = row["Extra"];
+                row1["usage"] = "";
+                row1["lab_order_id"] = row["lab_order_id"];
+                row1["status_amt"] = row["status_amt"];
+                row1["status_order_group"] = row["status_order_group"];
+                if (row["LGID"].ToString().Equals("1"))
+                {
+                    row1["status"] = "bloodlab";
+                }
+                else if (row["LGID"].ToString().Equals("2"))
+                {
+                    row1["status"] = "";
+                }
+                else if (row["LGID"].ToString().Equals("3"))
+                {
+                    row1["status"] = "Sperm Lab";
+                }
+                else if (row["LGID"].ToString().Equals("4"))
+                {
+                    row1["status"] = "Embryo Lab";
+                }
+                else if (row["LGID"].ToString().Equals("5"))
+                {
+                    row1["status"] = "Genetic Lab";
+                }
+                row1["date"] = row["visit_begin_visit_time"];
+                dtAll.Rows.InsertAt(row1, i);
+                i++;
+            }
+            foreach (DataRow row in dtse.Rows)
+            {
+                DataRow row1 = dtAll.NewRow();
+                row1["id"] = row["ID"];
+                row1["itmid"] = row["SID"];
+                row1["lgid"] = "";
+                row1["name"] = row["SName"];
+                row1["price"] = row["Price"];
+                row1["qty"] = row["qty"];
+                row1["status"] = "specialitem";
+                row1["row1"] = row["row1"];
+                row1["extra"] = row["Extra"];
+                row1["usage"] = "";
+                row1["lab_order_id"] = "0";
+                row1["status_amt"] = "1";
+                row1["status_order_group"] = "0";
+                row1["date"] = row["visit_begin_visit_time"];
+                dtAll.Rows.InsertAt(row1, i);
+                i++;
+            }
+            foreach (DataRow row in dtpx.Rows)
+            {
+                DataRow row1 = dtAll.NewRow();
+                row1["id"] = row["ID"];
+                row1["itmid"] = row["DUID"];
+                row1["lgid"] = "";
+                row1["name"] = row["DUName"];
+                row1["price"] = row["Price"];
+                row1["qty"] = row["QTY"];
+                row1["status"] = "px";
+                row1["row1"] = row["row1"];
+                row1["extra"] = row["Extra"];
+                row1["usage"] = row["TUsage"];
+                row1["lab_order_id"] = "0";
+                row1["status_amt"] = "1";
+                row1["status_order_group"] = "0";
+                row1["date"] = row["visit_begin_visit_time"];
+                dtAll.Rows.InsertAt(row1, i);
+                i++;
+
+            }
+            foreach (DataRow row in dtpkg.Rows)
+            {
+                String bill1 = "", bill2 = "", bill3 = "", bill4 = "", times = "", name = "";
+                Decimal price = 0, pay1 = 0, pay2 = 0, pay3 = 0, pay4 = 0, pay = 0;
+                Decimal.TryParse(row["price"].ToString(), out price);
+                Decimal.TryParse(row["payment1"].ToString(), out pay1);
+                Decimal.TryParse(row["payment2"].ToString(), out pay2);
+                Decimal.TryParse(row["payment3"].ToString(), out pay3);
+                Decimal.TryParse(row["payment4"].ToString(), out pay4);
+                times = row["payment_times"].ToString();
+                bill1 = row["P1BDetailID"].ToString();
+                bill2 = row["P2BDetailID"].ToString();
+                bill3 = row["P3BDetailID"].ToString();
+                bill4 = row["P4BDetailID"].ToString();
+                name = row["PackageName"].ToString();
+                if (price > 0)
+                {
+                    if ((pay1 > 0) && bill1.Equals("0"))
+                    {
+                        pay = pay1;
+                        name += "1/" + times;
+                    }
+                    else if ((pay2 > 0) && bill2.Equals("0"))
+                    {
+                        pay = pay2;
+                        name += "2/" + times;
+                    }
+                    else if ((pay3 > 0) && bill3.Equals("0"))
+                    {
+                        pay = pay3;
+                        name += "3/" + times;
+                    }
+                    else if ((pay4 > 0) && bill4.Equals("0"))
+                    {
+                        pay = pay4;
+                        name += "4/" + times;
+                    }
+                    DataRow row1 = dtAll.NewRow();
+                    row1["id"] = row["PCKSID"];
+                    row1["itmid"] = row["PCKID"];
+                    row1["lgid"] = "";
+                    row1["name"] = name;
+                    row1["price"] = pay;
+                    row1["qty"] = "1";
+                    row1["status"] = "package";
+                    row1["row1"] = row["row1"];
+                    row1["extra"] = "0";
+                    row1["usage"] = "";
+                    row1["lab_order_id"] = "0";
+                    row1["status_amt"] = "1";
+                    row1["status_order_group"] = "0";
+                    row1["date"] = row["visit_begin_visit_time"];
+                    dtAll.Rows.InsertAt(row1, i);
+                    i++;
+                }
+            }
+            dtAll.DefaultView.Sort = "date";
+            DataView view = dtAll.DefaultView;
+            view.Sort = "date, row1 ASC";
+            DataTable sortedDate = view.ToTable();
+            //grfOrder.DataSource = dtAll;
+            grfHisDrug.Cols.Count = 17;
+            //C1TextBox txt = new C1TextBox();
+            //C1CheckBox chk = new C1CheckBox();
+            //chk.Text = "Include Package";
+            //C1ComboBox cboproce = new C1ComboBox();
+            //ic.ivfDB.itmDB.setCboItem(cboproce);
+            //grfOrder.Cols[1].Editor = txt;
+            //grfOrder.Cols[colOrderPrice].Editor = txt;
+            //grfOrder.Cols[colOrderQTY].Editor = txt;
+            //grfOrder.Cols[colRxId].Editor = txt;
+            grfHisDrug.Cols[colOrdDate].Width = 120;
+            grfHisDrug.Cols[colOrdName].Width = 280;
+            grfHisDrug.Cols[colOrdPrice].Width = 100;
+            grfHisDrug.Cols[colOrdQty].Width = 80;
+            grfHisDrug.Cols[colOrdUsT].Width = 100;
+
+            grfHisDrug.ShowCursor = true;
+            //grdFlex.Cols[colID].Caption = "no";
+            //grfDept.Cols[colCode].Caption = "รหัส";
+            grfHisDrug.Cols[colOrdDate].Caption = "Date";
+            grfHisDrug.Cols[colOrdName].Caption = "Name";
+            grfHisDrug.Cols[colOrdPrice].Caption = "Price";
+            grfHisDrug.Cols[colOrdQty].Caption = "QTY";
+            grfHisDrug.Cols[colOrdInclude].Caption = "Include Package";
+            grfHisDrug.Cols[colOrdUsT].Caption = "Usage";
+            grfHisDrug.Cols[colOrdAmt].Caption = "Amount";
+            //grfOrder.SubtotalPosition = SubtotalPositionEnum.BelowData;
+            Color color = ColorTranslator.FromHtml(ic.iniC.grfRowColor);
+            //CellRange rg1 = grfBank.GetCellRange(1, colE, grfBank.Rows.Count, colE);
+            //rg1.Style = grfBank.Styles["date"];
+            //grfCu.Cols[colID].Visible = false;
+            i = 1;
+            grfHisDrug.Rows.Count = 1;
+            Decimal inc = 0, ext = 0;
+            foreach (DataRow row in sortedDate.Rows)
+            {
+                try
+                {
+                    Decimal price = 0, qty = 0;
+                    Row row1 = grfHisDrug.Rows.Add();
+                    row1[colOrdid] = row["id"].ToString();
+                    row1[colOrdlpid] = row["lgid"].ToString();
+                    row1[colOrdName] = row["name"].ToString();
+                    row1[colOrdUsT] = row["usage"].ToString();
+                    //row1[colOrdQty] = row["qty"].ToString();
+                    row1[colOrdstatus] = row["status"].ToString();
+                    row1[colOrdrow1] = row["row1"].ToString();
+                    row1[colOrditmid] = row["itmid"].ToString();
+                    row1[colOrdInclude] = row["extra"].ToString().Equals("1") ? "Extra" : "Include";
+
+                    Decimal.TryParse(row["price"].ToString(), out price);
+                    Decimal.TryParse(row["qty"].ToString(), out qty);
+                    row1[colOrdPrice] = price.ToString("#,###.00");
+                    row1[colOrdQty] = qty.ToString("#,###.00");
+                    row1[colOrdAmt] = (price * qty).ToString("#,###.00");
+                    if (row["status_amt"].ToString().Equals("1"))
+                    {
+                        if (row["extra"].ToString().Equals("1"))
+                        {
+                            ext += (price * qty);
+                        }
+                        else
+                        {
+                            if (row["status"].ToString().Equals("package"))
+                            {
+                                inc += (price * qty);
+                            }
+                        }
+                    }
+
+                    row1[colOrdAmt] = (price * qty).ToString("#,###.00");
+                    row1[colOrdAmt] = (price * qty).ToString("#,###.00");
+                    row1[colOrdOrderId] = row["lab_order_id"].ToString();
+                    row1[colOrdStatusAmt] = row["status_amt"].ToString();
+                    row1[colOrdStatusOrdGrp] = row["status_order_group"].ToString();
+                    row1[colOrdDate] = ic.datetoShow(row["date"].ToString());
+                    row1[0] = i;
+                    //if (i % 2 == 0)
+                    //    grfPtt.Rows[i].StyleNew.BackColor = color;
+                    i++;
+                }
+                catch (Exception ex)
+                {
+                    String err = "";
+                }
+            }
+            rowOrder = grfHisDrug.Rows.Count;
+            CellNoteManager mgr = new CellNoteManager(grfHisDrug);
+            grfHisDrug.Cols[colOrdrow1].Visible = false;
+            grfHisDrug.Cols[colOrdlpid].Visible = false;
+            grfHisDrug.Cols[colOrdid].Visible = false;
+            //grfOrder.Cols[colOrdstatus].Visible = false;
+            grfHisDrug.Cols[colOrditmid].Visible = false;
+
+            grfHisDrug.Cols[colOrdUsE].Visible = false;
+            //grfOrder.Cols[colOrderPID].Visible = false;
+            //grfOrder.Cols[colOrderPIDS].Visible = false;
+            //grfOrder.Cols[colOrderSP1V].Visible = false;
+            //grfOrder.Cols[colOrderSP2V].Visible = false;
+            //grfOrder.Cols[colOrderSP3V].Visible = false;
+            //grfOrder.Cols[colOrderSP4V].Visible = false;
+            //grfOrder.Cols[colOrderSP5V].Visible = false;
+            //grfOrder.Cols[colOrderSP6V].Visible = false;
+            //grfOrder.Cols[colOrderSP7V].Visible = false;
+            //grfOrder.Cols[colOrderSubItem].Visible = false;
+            //grfOrder.Cols[colOrderFileName].Visible = false;
+            //grfOrder.Cols[colOrderWorder1].Visible = false;
+            //grfOrder.Cols[colOrderWorker2].Visible = false;
+            //grfOrder.Cols[colOrderWorker3].Visible = false;
+            //grfOrder.Cols[colOrderWorkder4].Visible = false;
+            //grfOrder.Cols[colOrderWorker5].Visible = false;
+            //grfOrder.Cols[colOrderLGID].Visible = false;
+            //grfOrder.Cols[colOrderActive].Visible = false;
+            //grfOrder.Cols[colOrderLID].Visible = false;
+            grfHisDrug.Cols[colOrdUsT].AllowEditing = false;
+            grfHisDrug.Cols[colOrdName].AllowEditing = false;
+            grfHisDrug.Cols[colOrdPrice].AllowEditing = false;
+            grfHisDrug.Cols[colOrdQty].AllowEditing = false;
+            grfHisDrug.Cols[colOrdOrderId].AllowEditing = false;
+            grfHisDrug.Cols[colOrdStatusAmt].AllowEditing = false;
+            grfHisDrug.Cols[colOrdStatusOrdGrp].AllowEditing = false;
+            //theme1.SetTheme(grfFinish, ic.theme);
+            //UpdateTotals();
+            String total = "";
+            Decimal total1 = 0;
+            //total = grfOrder[grfOrder.Rows.Count - 1, colOrdAmt] != null ? grfOrder[grfOrder.Rows.Count - 1, colOrdAmt].ToString() : "";
+            //total1 = inc + ext;
+            //Decimal.TryParse(total, out total1);
+            //txtTotal.Value = total1.ToString("#,###.00");
+            //txtInclude.Value = inc.ToString("#,###.00");
+            //txtExtra.Value = ext.ToString("#,###.00");
+        }
+        private void initGrfHistory()
+        {
+            grfHis = new C1FlexGrid();
+            grfHis.Font = fEdit;
+            grfHis.Dock = System.Windows.Forms.DockStyle.Fill;
+            grfHis.Location = new System.Drawing.Point(0, 0);
+
+            //FilterRow fr = new FilterRow(grfExpn);
+
+            grfHis.AfterRowColChange += GrfHis_AfterRowColChange;
+            //grfImg.MouseDown += GrfImg_MouseDown;
+            grfHis.DoubleClick += GrfHis_DoubleClick;
+            //grfExpnC.CellChanged += new C1.Win.C1FlexGrid.RowColEventHandler(this.grfDept_CellChanged);
+            //ContextMenu menuGw = new ContextMenu();
+            //menuGw.MenuItems.Add("Upload รูปบัตรประชาชน", new EventHandler(ContextMenu_grfimg_upload_ptt));
+            //menuGw.MenuItems.Add("Upload สำเนาบัตรประชาชน ที่มีลายเซ็น", new EventHandler(ContextMenu_grfimg_upload_ptt));
+            //menuGw.MenuItems.Add("Upload รูป Passport", new EventHandler(ContextMenu_grfimg_upload_ptt));
+            //menuGw.MenuItems.Add("ยกเลิก", new EventHandler(ContextMenu_grfimg_Cancel));
+            //grfImgOld.ContextMenu = menuGw;
+            pnHistoryVs.Controls.Add(grfHis);
+
+            theme1.SetTheme(grfHis, "Office2016Colorful");
+
+        }
+
+        private void GrfHis_AfterRowColChange(object sender, RangeEventArgs e)
+        {
+            //throw new NotImplementedException();
+            if (grfHis.Row < 0 ) return;
+
+        }
+
+        private void GrfHis_DoubleClick(object sender, EventArgs e)
+        {
+            //throw new NotImplementedException();
+            if (grfHis.Row < 0) return;
+
+        }
+        private void setGrfHistory()
+        {
+            grfHis.Clear();
+            grfHis.Rows.Count = 1;
+            grfHis.Cols.Count = 4;
+            DataTable dt = ic.ivfDB.vsDB.selectByPttId1(txtPttId.Text);
+
+            grfHis.Rows.Count = dt.Rows.Count + 1;
+
+            grfHis.Cols[colHisVsId].Width = 250;
+            grfHis.Cols[colHisVsDate].Width = 120;
+
+            grfHis.ShowCursor = true;
+
+            grfHis.Cols[colNote].Caption = "Note";
+
+            int i = 1;
+            foreach (DataRow row in dt.Rows)
+            {
+                grfHis[i, colHisVsId] = row[ic.ivfDB.vsDB.vs.t_visit_id].ToString();
+                grfHis[i, colHisVsDate] = ic.datetoShow(row[ic.ivfDB.vsDB.vs.visit_begin_visit_time].ToString());
+                //grfHis[i, colNoteStatusAll] = row[ic.ivfDB.noteDB.note.status_all].ToString();
+                i++;
+            }
+            grfHis.Cols[colHisVsId].Visible = false;
+            //grfHis.Cols[colNoteStatusAll].Visible = false;
+            grfHis.Cols[colHisVsDate].AllowEditing = false;
+
+            theme1.SetTheme(grfHis, "Office2016DarkGray");
+        }
         private void initGrfAdm()
         {
             grfpApmAll = new C1FlexGrid();
@@ -3602,7 +4031,7 @@ namespace clinic_ivf.gui
             view.Sort = "row1 ASC";
             DataTable sortedDate = view.ToTable();
             //grfOrder.DataSource = dtAll;
-            grfOrder.Cols.Count = 16;
+            grfOrder.Cols.Count = 17;
             //C1TextBox txt = new C1TextBox();
             //C1CheckBox chk = new C1CheckBox();
             //chk.Text = "Include Package";
@@ -3696,7 +4125,7 @@ namespace clinic_ivf.gui
             grfOrder.Cols[colOrditmid].Visible = false;
 
             grfOrder.Cols[colOrdUsE].Visible = false;
-            //grfOrder.Cols[colOrderPID].Visible = false;
+            grfOrder.Cols[colOrdDate].Visible = false;
             //grfOrder.Cols[colOrderPIDS].Visible = false;
             //grfOrder.Cols[colOrderSP1V].Visible = false;
             //grfOrder.Cols[colOrderSP2V].Visible = false;
@@ -5191,22 +5620,21 @@ namespace clinic_ivf.gui
 
             //FilterRow fr = new FilterRow(grfExpn);
 
-            grfImg.MouseDown += GrfImg_MouseDown;
+            //grfImg.AfterRowColChange += GrfImg_AfterRowColChange;
+            //grfImg.MouseDown += GrfImg_MouseDown;
             grfImg.DoubleClick += GrfImg_DoubleClick;
             //grfExpnC.CellChanged += new C1.Win.C1FlexGrid.RowColEventHandler(this.grfDept_CellChanged);
-            ContextMenu menuGw = new ContextMenu();
-            menuGw.MenuItems.Add("Upload OUT LAB 1", new EventHandler(ContextMenu_grfimg_upload_ptt));
-            menuGw.MenuItems.Add("Upload OUT LAB 2", new EventHandler(ContextMenu_grfimg_upload_ptt));
-            menuGw.MenuItems.Add("Upload OUT LAB 3", new EventHandler(ContextMenu_grfimg_upload_ptt));
-            menuGw.MenuItems.Add("Upload OUT LAB 4", new EventHandler(ContextMenu_grfimg_upload_ptt));
-            menuGw.MenuItems.Add("Upload OUT LAB 5", new EventHandler(ContextMenu_grfimg_upload_ptt));
-            menuGw.MenuItems.Add("Upload OUT LAB 6", new EventHandler(ContextMenu_grfimg_upload_ptt));
-            menuGw.MenuItems.Add("Upload OUT LAB 8", new EventHandler(ContextMenu_grfimg_upload_ptt));
-            menuGw.MenuItems.Add("Upload OUT LAB 9", new EventHandler(ContextMenu_grfimg_upload_ptt));
-            menuGw.MenuItems.Add("Upload OUT LAB 10", new EventHandler(ContextMenu_grfimg_upload_ptt));
-            menuGw.MenuItems.Add("ยกเลิก", new EventHandler(ContextMenu_grfimg_Cancel));
-            grfImg.ContextMenu = menuGw;
-            pnOutLabImage.Controls.Add(grfImg);
+            //ContextMenu menuGw = new ContextMenu();
+            //menuGw.MenuItems.Add("Upload รูปบัตรประชาชน", new EventHandler(ContextMenu_grfimg_upload_ptt));
+            //menuGw.MenuItems.Add("Upload สำเนาบัตรประชาชน ที่มีลายเซ็น", new EventHandler(ContextMenu_grfimg_upload_ptt));
+            //menuGw.MenuItems.Add("Upload รูป Passport", new EventHandler(ContextMenu_grfimg_upload_ptt));
+            //menuGw.MenuItems.Add("Upload รูป Passport คู่สมรส", new EventHandler(ContextMenu_grfimg_upload_ptt));
+            //menuGw.MenuItems.Add("Upload รูป ทะเบียนสมรส", new EventHandler(ContextMenu_grfimg_upload_ptt));
+            //menuGw.MenuItems.Add("Upload รูป อื่น1", new EventHandler(ContextMenu_grfimg_upload_ptt));
+            //menuGw.MenuItems.Add("Upload รูป อื่น2", new EventHandler(ContextMenu_grfimg_upload_ptt));
+            //menuGw.MenuItems.Add("ยกเลิก", new EventHandler(ContextMenu_grfimg_Cancel));
+            //grfImg.ContextMenu = menuGw;
+            pnHistoryScan.Controls.Add(grfImg);
 
             theme1.SetTheme(grfImg, "Office2016Colorful");
 
@@ -5216,12 +5644,217 @@ namespace clinic_ivf.gui
         {
             //throw new NotImplementedException();
             if (grfImg.Row < 0) return;
+            if (grfImg.Col == colImgImg)
+            {
+                //MessageBox.Show("a "+grfImg[grfImg.Row, colImg].ToString(), "");
+                int row = 0;
+                //int.TryParse(grfImg[grfImg.Row, colImg].ToString(), out row);
+                int.TryParse(grfImg.Row.ToString(), out row);
+                //row *= 4;
+                FrmShowImage frm = new FrmShowImage(ic, grfImg[row, colImgID] != null ? grfImg[row, colImgID].ToString() : "", txtPttIdOld.Text, grfImg[row, colImgPathPic] != null ? grfImg[row, colImgPathPic].ToString() : "", FrmShowImage.statusModule.Patient);
+                frm.ShowDialog(this);
+            }
+        }
+        private void setGrfImg()
+        {
+            grfImg.Clear();
+            grfImg.DataSource = null;
+            grfImg.Rows.Count = 2;
+            grfImg.Cols.Count = 10;
+
+            //grfExpn.Rows.Count = dt.Rows.Count + 1;
+            //grfCu.Rows.Count = 41;
+            //grfCu.Cols.Count = 4;
+            //C1TextBox txt = new C1TextBox();
+            Button btn = new Button();
+            btn.BackColor = Color.Gray;
+            //btn.Click += BtnEditor_Click;
+            //PictureBox img = new PictureBox();
+            //C1ComboBox cboproce = new C1ComboBox();
+            //ic.ivfDB.itmDB.setCboItem(cboproce);
+            //grfImg.Cols[colHn].Editor = txt;
+            //grfImg.Cols[colDesc].Editor = txt;
+            //grfImg.Cols[colDesc2].Editor = txt;
+            //grfImg.Cols[colDesc3].Editor = txt;
+            grfImg.Cols[colImgBtn].Editor = btn;
+            //grfImg.Cols[colImg].Editor = img;
+
+            grfImg.Cols[colImgHn].Width = 250;
+            grfImg.Cols[colImgImg].Width = 100;
+            grfImg.Cols[colImgDesc].Width = 100;
+            grfImg.Cols[colImgDesc2].Width = 100;
+            grfImg.Cols[colImgDesc3].Width = 100;
+            grfImg.Cols[colImgBtn].Width = 50;
+            grfImg.Cols[colImgPathPic].Width = 100;
+
+            grfImg.ShowCursor = true;
+            //grdFlex.Cols[colID].Caption = "no";
+            //grfDept.Cols[colCode].Caption = "รหัส";
+
+            grfImg.Cols[colImgHn].Caption = "HN";
+            grfImg.Cols[colImgDesc].Caption = "Desc1";
+            grfImg.Cols[colImgDesc2].Caption = "Desc2";
+            grfImg.Cols[colImgDesc3].Caption = "Desc3";
+            grfImg.Cols[colImgBtn].Caption = "send";
+
+            //Hashtable ht = new Hashtable();
+            //foreach (DataRow dr in dt.Rows)
+            //{
+            //    ht.Add(dr["CategoryID"], LoadImage(dr["Picture"] as byte[]));
+            //}
+            //grfImg.Cols[colImg].ImageMap = ht;
+            //grfImg.Cols[colImg].ImageAndText = false;
+
+            //ContextMenu menuGw = new ContextMenu();
+            //menuGw.MenuItems.Add("&แก้ไข Patient", new EventHandler(ContextMenu_edit));
+            //grfImg.ContextMenu = menuGw;
+
+            Color color = ColorTranslator.FromHtml(ic.iniC.grfRowColor);
+            //CellRange rg1 = grfBank.GetCellRange(1, colE, grfBank.Rows.Count, colE);
+            //rg1.Style = grfBank.Styles["date"];
+            //grfCu.Cols[colID].Visible = false;
+            if (txtPttId.Text.Equals(""))
+                return;
+            DataTable dt = new DataTable();
+            dt = ic.ivfDB.pttImgDB.selectByPttIDDept(txtPttId.Text, "1090000001");
+            int i = 0;
+            foreach (DataRow row in dt.Rows)
+            {
+                i++;
+                Row row1 = grfImg.Rows.Add();
+                row1[colImgID] = row[ic.ivfDB.pttImgDB.pttI.patient_image_id].ToString();
+                row1[colImgDesc] = row[ic.ivfDB.pttImgDB.pttI.desc1].ToString();
+                row1[colImgPathPic] = row[ic.ivfDB.pttImgDB.pttI.image_path].ToString();
+                row1[colImgStatus] = row[ic.ivfDB.pttImgDB.pttI.status_image].ToString();
+                String statusdoc = "";
+                statusdoc = row[ic.ivfDB.pttImgDB.pttI.status_document].ToString();
+                grfImg[i, 0] = i;
+                if (row[ic.ivfDB.pttImgDB.pttI.image_path] != null && !row[ic.ivfDB.pttImgDB.pttI.image_path].ToString().Equals(""))
+                {
+                    int ii = i;
+                    Thread pump = new Thread(() =>
+                    {
+                        Thread.CurrentThread.IsBackground = true;
+                        Image loadedImage = null, resizedImage;
+                        String aaa = row[ic.ivfDB.pttImgDB.pttI.image_path].ToString();
+                        FtpWebRequest ftpRequest = null;
+                        FtpWebResponse ftpResponse = null;
+                        Stream ftpStream = null;
+                        int bufferSize = 2048;
+                        MemoryStream stream = new MemoryStream();
+                        string host = null;
+                        string user = null;
+                        string pass = null;     //iniC.hostFTP, iniC.userFTP, iniC.passFTP
+                        host = ic.iniC.hostFTP; user = ic.iniC.userFTP; pass = ic.iniC.passFTP;
+                        try
+                        {
+                            ftpRequest = (FtpWebRequest)FtpWebRequest.Create(host + "/" + aaa);
+                            ftpRequest.Credentials = new NetworkCredential(user, pass);
+                            ftpRequest.UseBinary = true;
+                            //ftpRequest.UsePassive = false;
+                            ftpRequest.UsePassive = ic.ftpUsePassive;
+                            ftpRequest.KeepAlive = true;
+                            ftpRequest.Method = WebRequestMethods.Ftp.DownloadFile;
+                            ftpResponse = (FtpWebResponse)ftpRequest.GetResponse();
+                            ftpStream = ftpResponse.GetResponseStream();
+                            byte[] byteBuffer = new byte[bufferSize];
+                            int bytesRead = ftpStream.Read(byteBuffer, 0, bufferSize);
+                            try
+                            {
+                                while (bytesRead > 0)
+                                {
+                                    stream.Write(byteBuffer, 0, bytesRead);
+                                    bytesRead = ftpStream.Read(byteBuffer, 0, bufferSize);
+                                }
+                            }
+                            catch (Exception ex)
+                            {
+                                Console.WriteLine(ex.ToString());
+                                MessageBox.Show("setGrfImgPatient 1 " + ex.Message + "\n " + aaa, "host " + ic.iniC.hostFTP + " user " + user + " pas  " + pass);
+                            }
+                            if (statusdoc.Equals("1"))
+                            {
+                                loadedImage = new Bitmap(stream);
+                            }
+                            ftpStream.Close();
+                            ftpResponse.Close();
+                            ftpRequest = null;
+                        }
+                        catch (Exception ex)
+                        {
+                            Console.WriteLine(ex.ToString());
+                            MessageBox.Show("setGrfImgPatient 2 " + ex.Message + "\n " + aaa, "host " + ic.iniC.hostFTP + " user " + user + " pas  " + pass);
+                        }
+                        //grfImg.Cols[colImg].ImageAndText = true;
+                        if (loadedImage != null)
+                        {
+                            int originalWidth = loadedImage.Width;
+                            int newWidth = 180;
+                            resizedImage = loadedImage.GetThumbnailImage(newWidth, (newWidth * loadedImage.Height) / originalWidth, null, IntPtr.Zero);
+                            Column col = grfImg.Cols[colImgImg];
+                            col.DataType = typeof(Image);
+                            row1[colImgImg] = resizedImage;
+                            flagImg = true;
+                            //grfImg.AutoSizeCols();
+                            //grfImg.AutoSizeRows();
+                        }
+                    });
+                    pump.Start();
+                    //pump.Join();
+                    //grfImg.AutoSizeCols();
+                    //grfImg.AutoSizeRows();
+                }
+                //if (i % 2 == 0)
+                //grfPtt.Rows[i].StyleNew.BackColor = color;
+            }
+            grfImg.Cols[colImgID].Visible = false;
+            //grfImg.Cols[colPathPic].Visible = false;
+            grfImg.Cols[colImgImg].AllowEditing = false;
+            //grfImg.AutoSizeCols();
+            grfImg.AutoSizeRows();
+            theme1.SetTheme(grfImg, "Office2016Colorful");
+
+        }
+        private void initGrfImgOutLab()
+        {
+            grfImgOutLab = new C1FlexGrid();
+            grfImgOutLab.Font = fEdit;
+            grfImgOutLab.Dock = System.Windows.Forms.DockStyle.Fill;
+            grfImgOutLab.Location = new System.Drawing.Point(0, 0);
+
+            //FilterRow fr = new FilterRow(grfExpn);
+
+            grfImgOutLab.MouseDown += GrfImgOutLab_MouseDown;
+            grfImgOutLab.DoubleClick += GrfImgOutLab_DoubleClick;
+            //grfExpnC.CellChanged += new C1.Win.C1FlexGrid.RowColEventHandler(this.grfDept_CellChanged);
+            ContextMenu menuGw = new ContextMenu();
+            menuGw.MenuItems.Add("Upload OUT LAB 1", new EventHandler(ContextMenu_grfimgOutLab_upload_ptt));
+            menuGw.MenuItems.Add("Upload OUT LAB 2", new EventHandler(ContextMenu_grfimgOutLab_upload_ptt));
+            menuGw.MenuItems.Add("Upload OUT LAB 3", new EventHandler(ContextMenu_grfimgOutLab_upload_ptt));
+            menuGw.MenuItems.Add("Upload OUT LAB 4", new EventHandler(ContextMenu_grfimgOutLab_upload_ptt));
+            menuGw.MenuItems.Add("Upload OUT LAB 5", new EventHandler(ContextMenu_grfimgOutLab_upload_ptt));
+            menuGw.MenuItems.Add("Upload OUT LAB 6", new EventHandler(ContextMenu_grfimgOutLab_upload_ptt));
+            menuGw.MenuItems.Add("Upload OUT LAB 8", new EventHandler(ContextMenu_grfimgOutLab_upload_ptt));
+            menuGw.MenuItems.Add("Upload OUT LAB 9", new EventHandler(ContextMenu_grfimgOutLab_upload_ptt));
+            menuGw.MenuItems.Add("Upload OUT LAB 10", new EventHandler(ContextMenu_grfimgOutLab_upload_ptt));
+            menuGw.MenuItems.Add("ยกเลิก", new EventHandler(ContextMenu_grfimgOutLab_Cancel));
+            grfImgOutLab.ContextMenu = menuGw;
+            pnOutLabImage.Controls.Add(grfImgOutLab);
+
+            theme1.SetTheme(grfImgOutLab, "Office2016Colorful");
+
+        }
+
+        private void GrfImgOutLab_DoubleClick(object sender, EventArgs e)
+        {
+            //throw new NotImplementedException();
+            if (grfImgOutLab.Row < 0) return;
             //MessageBox.Show("a "+grfImg[grfImg.Row, colImg].ToString(), "");
             try
             {
                 MemoryStream stream = new MemoryStream();
                 //loadedImage = Image.FromFile(filename);
-                stream = ic.ftpC.download(grfImg[grfImg.Row, colImgPathPic].ToString());
+                stream = ic.ftpC.download(grfImgOutLab[grfImgOutLab.Row, colImgPathPic].ToString());
                 //int row = 0;
                 //int.TryParse(grfImg[grfImg.Row, colImg].ToString(), out row);
                 //int.TryParse(grfImg.Row.ToString(), out row);
@@ -5244,22 +5877,22 @@ namespace clinic_ivf.gui
             
         }
 
-        private void GrfImg_MouseDown(object sender, MouseEventArgs e)
+        private void GrfImgOutLab_MouseDown(object sender, MouseEventArgs e)
         {
             //throw new NotImplementedException();
-            if (grfImg.MouseCol < 0) return;
-            if (grfImg.Cols[grfImg.MouseCol].Editor is Button)
+            if (grfImgOutLab.MouseCol < 0) return;
+            if (grfImgOutLab.Cols[grfImgOutLab.MouseCol].Editor is Button)
             {
                 //Current cell enters in edit mode, and button is clicked
                 //SendKeys.Send("{ENTER}");
                 //SendKeys.Send("{ENTER}");
             }
         }
-        private void ContextMenu_grfimg_upload_ptt(object sender, System.EventArgs e)
+        private void ContextMenu_grfimgOutLab_upload_ptt(object sender, System.EventArgs e)
         {
-            if (grfImg.Row < 0) return;
+            if (grfImgOutLab.Row < 0) return;
 
-            String pathfile1 = grfImg[grfImg.Row, colImgPathPic] != null ? grfImg[grfImg.Row, colImgPathPic].ToString() : "";
+            String pathfile1 = grfImgOutLab[grfImgOutLab.Row, colImgPathPic] != null ? grfImgOutLab[grfImgOutLab.Row, colImgPathPic].ToString() : "";
             if (pathfile1.Length > 0)
             {
                 MessageBox.Show("มีรูปภาพ อยู่แล้ว กรุณา ยกเลิก ก่อน Upload รูปใหม่ ", "");
@@ -5276,10 +5909,10 @@ namespace clinic_ivf.gui
                 DialogResult dr = ofd.ShowDialog();
                 if (dr == System.Windows.Forms.DialogResult.OK)
                 {
-                    String id = grfImg[grfImg.Row, colImgID] != null ? grfImg[grfImg.Row, colImgID].ToString() : "";
+                    String id = grfImgOutLab[grfImgOutLab.Row, colImgID] != null ? grfImgOutLab[grfImgOutLab.Row, colImgID].ToString() : "";
                     String pathfile = ofd.FileName;
-                    String desc = grfImg[grfImg.Row, colImgDesc] != null ? grfImg[grfImg.Row, colImgDesc].ToString() : "";
-                    String no = grfImg[grfImg.Row, colImgHn] != null ? grfImg[grfImg.Row, colImgHn].ToString() : "";
+                    String desc = grfImgOutLab[grfImgOutLab.Row, colImgDesc] != null ? grfImgOutLab[grfImgOutLab.Row, colImgDesc].ToString() : "";
+                    String no = grfImgOutLab[grfImgOutLab.Row, colImgHn] != null ? grfImgOutLab[grfImgOutLab.Row, colImgHn].ToString() : "";
                     if (pathfile.Length > 0)
                     {
                         ic.cStf.staff_id = "";
@@ -5330,8 +5963,8 @@ namespace clinic_ivf.gui
                                 if (long.TryParse(re, out chk))
                                 {
                                     ic.savePicOPUtoServer(txtHn.Text.Replace("-", "").Replace("/", ""), filename, pathfile);
-                                    grfImg.Rows[grfImg.Row].StyleNew.BackColor = color;
-                                    setGrfImg();
+                                    grfImgOutLab.Rows[grfImgOutLab.Row].StyleNew.BackColor = color;
+                                    setGrfImgOutLab();
                                 }
                             }
                         }
@@ -5339,29 +5972,29 @@ namespace clinic_ivf.gui
                 }
             //}
         }
-        private void ContextMenu_grfimg_Cancel(object sender, System.EventArgs e)
+        private void ContextMenu_grfimgOutLab_Cancel(object sender, System.EventArgs e)
         {
             if (MessageBox.Show("ต้องการ ยกเลิก ", "", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == DialogResult.OK)
             {
-                String id = grfImg[grfImg.Row, colImgID].ToString();
+                String id = grfImgOutLab[grfImgOutLab.Row, colImgID].ToString();
                 ic.cStf.staff_id = "";
                 FrmPasswordConfirm frm = new FrmPasswordConfirm(ic);
                 frm.ShowDialog(this);
                 if (!ic.cStf.staff_id.Equals(""))
                 {
-                    String pathfile = grfImg[grfImg.Row, colImgPathPic].ToString();
+                    String pathfile = grfImgOutLab[grfImgOutLab.Row, colImgPathPic].ToString();
                     String re = ic.ivfDB.pttImgDB.updateVoid(id, ic.user.staff_id);
                     ic.delPicOPUtoServer(txtHn.Text.Replace("-", "").Replace("/", ""), pathfile);
-                    setGrfImg();
+                    setGrfImgOutLab();
                 }
             }
         }
-        private void setGrfImg()
+        private void setGrfImgOutLab()
         {
-            grfImg.Clear();
-            grfImg.DataSource = null;
-            grfImg.Rows.Count = 2;
-            grfImg.Cols.Count = 10;
+            grfImgOutLab.Clear();
+            grfImgOutLab.DataSource = null;
+            grfImgOutLab.Rows.Count = 2;
+            grfImgOutLab.Cols.Count = 10;
 
             //grfExpn.Rows.Count = dt.Rows.Count + 1;
             //grfCu.Rows.Count = 41;
@@ -5373,30 +6006,30 @@ namespace clinic_ivf.gui
             //PictureBox img = new PictureBox();
             //C1ComboBox cboproce = new C1ComboBox();
             //ic.ivfDB.itmDB.setCboItem(cboproce);
-            grfImg.Cols[colImgHn].Editor = txt;
-            grfImg.Cols[colImgDesc].Editor = txt;
-            grfImg.Cols[colImgDesc2].Editor = txt;
-            grfImg.Cols[colImgDesc3].Editor = txt;
-            grfImg.Cols[colImgBtn].Editor = btn;
+            grfImgOutLab.Cols[colImgHn].Editor = txt;
+            grfImgOutLab.Cols[colImgDesc].Editor = txt;
+            grfImgOutLab.Cols[colImgDesc2].Editor = txt;
+            grfImgOutLab.Cols[colImgDesc3].Editor = txt;
+            grfImgOutLab.Cols[colImgBtn].Editor = btn;
             //grfImg.Cols[colImg].Editor = img;
 
-            grfImg.Cols[colImgHn].Width = 250;
-            grfImg.Cols[colImgImg].Width = 100;
-            grfImg.Cols[colImgDesc].Width = 100;
-            grfImg.Cols[colImgDesc2].Width = 100;
-            grfImg.Cols[colImgDesc3].Width = 100;
-            grfImg.Cols[colImgBtn].Width = 50;
-            grfImg.Cols[colImgPathPic].Width = 100;
+            grfImgOutLab.Cols[colImgHn].Width = 250;
+            grfImgOutLab.Cols[colImgImg].Width = 100;
+            grfImgOutLab.Cols[colImgDesc].Width = 100;
+            grfImgOutLab.Cols[colImgDesc2].Width = 100;
+            grfImgOutLab.Cols[colImgDesc3].Width = 100;
+            grfImgOutLab.Cols[colImgBtn].Width = 50;
+            grfImgOutLab.Cols[colImgPathPic].Width = 100;
 
-            grfImg.ShowCursor = true;
+            grfImgOutLab.ShowCursor = true;
             //grdFlex.Cols[colID].Caption = "no";
             //grfDept.Cols[colCode].Caption = "รหัส";
 
-            grfImg.Cols[colImgHn].Caption = "HN";
-            grfImg.Cols[colImgDesc].Caption = "Desc1";
-            grfImg.Cols[colImgDesc2].Caption = "Desc2";
-            grfImg.Cols[colImgDesc3].Caption = "Desc3";
-            grfImg.Cols[colImgBtn].Caption = "send";
+            grfImgOutLab.Cols[colImgHn].Caption = "HN";
+            grfImgOutLab.Cols[colImgDesc].Caption = "Desc1";
+            grfImgOutLab.Cols[colImgDesc2].Caption = "Desc2";
+            grfImgOutLab.Cols[colImgDesc3].Caption = "Desc3";
+            grfImgOutLab.Cols[colImgBtn].Caption = "send";
 
             //Hashtable ht = new Hashtable();
             //foreach (DataRow dr in dt.Rows)
@@ -5422,12 +6055,12 @@ namespace clinic_ivf.gui
             foreach (DataRow row in dt.Rows)
             {
                 i++;
-                Row row1 = grfImg.Rows.Add();
+                Row row1 = grfImgOutLab.Rows.Add();
                 row1[colImgID] = row[ic.ivfDB.pttImgDB.pttI.patient_image_id].ToString();
                 row1[colImgDesc] = row[ic.ivfDB.pttImgDB.pttI.desc1].ToString();
                 row1[colImgPathPic] = row[ic.ivfDB.pttImgDB.pttI.image_path].ToString();
                 row1[colImgStatus] = row[ic.ivfDB.pttImgDB.pttI.status_image].ToString();
-                grfImg[i, 0] = i;
+                grfImgOutLab[i, 0] = i;
                 //if (row[ic.ivfDB.pttImgDB.pttI.image_path] != null && !row[ic.ivfDB.pttImgDB.pttI.image_path].ToString().Equals(""))
                 //{
                 //    int ii = i;
@@ -5507,15 +6140,15 @@ namespace clinic_ivf.gui
                 //if (i % 2 == 0)
                 //grfPtt.Rows[i].StyleNew.BackColor = color;
             }
-            grfImg.Cols[colImgID].Visible = false;
-            grfImg.Cols[colImgHn].Visible = false;
-            grfImg.Cols[colImgBtn].Visible = false;
-            grfImg.Cols[colImgImg].Visible = false;
+            grfImgOutLab.Cols[colImgID].Visible = false;
+            grfImgOutLab.Cols[colImgHn].Visible = false;
+            grfImgOutLab.Cols[colImgBtn].Visible = false;
+            grfImgOutLab.Cols[colImgImg].Visible = false;
             //grfImg.Cols[colPathPic].Visible = false;
-            grfImg.Cols[colImgImg].AllowEditing = false;
+            grfImgOutLab.Cols[colImgImg].AllowEditing = false;
             //grfImg.AutoSizeCols();
-            grfImg.AutoSizeRows();
-            theme1.SetTheme(grfImg, "Office2016Colorful");
+            grfImgOutLab.AutoSizeRows();
+            theme1.SetTheme(grfImgOutLab, "Office2016Colorful");
 
         }
 
@@ -5532,6 +6165,7 @@ namespace clinic_ivf.gui
             sCApm.HeaderHeight = 0;
             sCApmAdd.HeaderHeight = 0;
             spPatient.Height = spHeight;
+            sCHistory.Height = 0;
             rat = picPtt.Height / picPtt.Width;
             theme1.SetTheme(sC, theme1.Theme);
             foreach (Control ctl in spPatient.Controls)

@@ -123,7 +123,7 @@ namespace clinic_ivf.gui
                     Bitmap bitmap = new Bitmap(stream);
                     loadedImage = bitmap;
                     int originalWidth = loadedImage.Width;
-                    int newWidth = 480;
+                    int newWidth = 800;
                     if (originalWidth > newWidth)
                     {
                         resizedImage = loadedImage.GetThumbnailImage(newWidth, (newWidth * loadedImage.Height) / originalWidth, null, IntPtr.Zero);

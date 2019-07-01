@@ -146,6 +146,17 @@ namespace clinic_ivf.objdb
             dt = conn.selectData(conn.conn, sql);
             return dt;
         }
+        public DataTable selectByPID(String pid)
+        {
+            DataTable dt = new DataTable();
+            String sql = "select oJpxd.*,vs.visit_begin_visit_time " +
+                "From " + oJpxd.table + " oJpxd " +
+                "Left Join t_visit vs on oJpxd.VN = vs.visit_vn " +
+                "Where oJpxd." + oJpxd.PID + " ='" + pid + "' " +
+                "Order By oJpxd." + oJpxd.DUName;
+            dt = conn.selectData(conn.conn, sql);
+            return dt;
+        }
         public DataTable selectByVN(String copId)
         {
             DataTable dt = new DataTable();

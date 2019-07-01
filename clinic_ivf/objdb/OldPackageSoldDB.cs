@@ -451,6 +451,16 @@ namespace clinic_ivf.objdb
             dt = conn.selectData(conn.conn, sql);
             return dt;
         }
+        public DataTable selectByPID1(String pttId)
+        {
+            DataTable dt = new DataTable();
+            String sql = "select opkgs.*,vs.visit_begin_visit_time " +
+                "From " + opkgs.table + " opkgs " +
+                "Left Join t_visit vs on opkgs.VN = vs.visit_vn " +
+                "Where opkgs." + opkgs.PID + " ='" + pttId + "' and Status <> 3 ";
+            dt = conn.selectData(conn.conn, sql);
+            return dt;
+        }
         public DataTable selectByPID(String pttId)
         {
             DataTable dt = new DataTable();
