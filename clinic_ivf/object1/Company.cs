@@ -80,5 +80,6 @@ namespace clinic_ivf.object1
         public String day_curr { get; set; }
         public String prefix_receipt_cover_doc { get; set; }
         public String receipt_cover_doc { get; set; }
+        public String month_curr_cashier { get; set; }
     }
 }

@@ -225,6 +225,31 @@ namespace clinic_ivf.objdb
             dt = conn.selectData(conn.conn, sql);
             return dt;
         }
+        public DataTable selectBySpermStatusUnAccept()
+        {
+            DataTable dt = new DataTable();
+            String sql = "Select  concat(SurfixName.SurfixName,' ',ptt.PName,' ',ptt.PSurname) as name_female" +
+                ", Doctor.ID, Doctor.Name as dtr_name, Doctor.ID as dtrid, ifnull(lreq.remark,'') as remark, DateOfBirth as dob" +
+                ", lforma.status_wait_confirm_day1,lreq.form_a_id,lreq.req_id , lforma.form_a_id, ptt.PIDS,lforma.status_wait_confirm_day1,lforma.status_wait_confirm_opu_date " +
+                ", lreq.req_code, ptt.PIDS as hn_female, lreq.req_date, lreq.remark, lforma.sperm_analysis_date_start, lforma.status_wait_confirm_opu_date, lforma.opu_wait_remark, lforma.remark as form_a_remark " +
+                ", lforma.opu_date, lforma.opu_time, lforma.opu_remark, lforma.fet_remark, lforma.opu_time_modi, lforma.status_opu_time_modi, lforma.hn_male, lforma.name_male, lforma.hn_donor" +
+                ", lforma.name_donor,lreq.vn, lreq.item_id, si.LName, lforma.pasa_tese_date,lforma.iui_date,lforma.sperm_freezing_date_start " +
+                "From lab_t_request lreq " +
+                "Left Join lab_t_form_a lforma on lreq.form_a_id = lforma.form_a_id  " +
+                "Left Join Patient ptt on lreq.hn_female = ptt.PIDS " +
+                "Left Join SurfixName on SurfixName.SurfixID = ptt.SurfixID  " +
+                "Left join Doctor on lforma.doctor_id = Doctor.ID  " +
+                "Left join LabItem si on lreq.item_id = si.LID " +
+                //"Left Join lab_t_request lreq on lreq.req_id = oJSd.req_id " +
+                //"Left Join lab_t_request lreq on lreq.request_id = oJSd.ID  " +
+                //"Left Join Visit vsold on oJSd.VN = vsold.VN " +
+                //"Left Join lab_t_form_a lforma on vsold.form_a_id = lforma.form_a_id " +
+                "Where lreq.status_req in ('0','1','2') " +
+                "and lreq.item_id in ('14','18','66') " +
+                "Order By lreq.req_id ";
+            dt = conn.selectData(conn.conn, sql);
+            return dt;
+        }
         public DataTable selectBySpermStatusUnAccept(String startdate, String enddate)
         {
             DataTable dt = new DataTable();

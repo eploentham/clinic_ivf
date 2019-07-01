@@ -608,7 +608,7 @@
             this.txtLmp.Calendar.TodayBorderColor = System.Drawing.Color.White;
             this.txtLmp.Calendar.TrailingForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
             this.txtLmp.Calendar.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
-            this.txtLmp.Culture = 1054;
+            this.txtLmp.Culture = 1033;
             this.txtLmp.CurrentTimeZone = false;
             this.txtLmp.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
             this.txtLmp.DisplayFormat.FormatType = C1.Win.C1Input.FormatTypeEnum.ShortDate;

@@ -116,6 +116,11 @@ namespace clinic_ivf.gui
             String cashid1 = "", creditid1="";
             cashid1 = cboAccCash.SelectedItem == null ? "" : ((ComboBoxItem)cboAccCash.SelectedItem).Value;
             creditid1 = cboAccCredit.SelectedItem == null ? "" : ((ComboBoxItem)cboAccCredit.SelectedItem).Value;
+            if(cashid1.Length == 0 && creditid1.Length == 0)
+            {
+                MessageBox.Show("ยังไม่ได้เลือก ประเภทบัญชี", "");
+                return;
+            }
             Decimal totalcredit = 0, totalcash=0, total=0, discount=0;
             if(Decimal.TryParse(txtTotalCredit.Text.Replace(",", ""), out totalcredit))
             {
@@ -478,6 +483,7 @@ namespace clinic_ivf.gui
         private void BtnClose_Click(object sender, EventArgs e)
         {
             //throw new NotImplementedException();
+            //txtVsId.Value = vs.t_visit_id;
             String re = ic.ivfDB.ovsDB.updateStatusCashierFinish(txtVn.Text);
             String re1 = ic.ivfDB.vsDB.updateCloseStatusCashier(txtVsId.Text);
             frmCashView.setGrfQuePublic();
@@ -790,7 +796,7 @@ namespace clinic_ivf.gui
             txtHnOld.Value = optt.PIDS;
             txtVnOld.Value = vsidOld;
             txtPttId.Value = optt.PID;
-            txtVsId.Value = ovs.VN;
+            txtVsId.Value = vs.t_visit_id;
             txtVnOld.Value = ovs.VN;
             txtHnOld.Value = ovs.PIDS;
             txtVn.Value = ovs.VN;

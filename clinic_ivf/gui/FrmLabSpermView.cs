@@ -46,8 +46,8 @@ namespace clinic_ivf.gui
         {
             fEdit = new Font(ic.iniC.grdViewFontName, ic.grdViewFontSize, FontStyle.Regular);
             fEditB = new Font(ic.iniC.grdViewFontName, ic.grdViewFontSize, FontStyle.Bold);
-            txtDateEnd.Value = System.DateTime.Now;
-            txtDateStart.Value = System.DateTime.Now;
+            //txtDateEnd.Value = System.DateTime.Now;
+            //txtDateStart.Value = System.DateTime.Now;
             txtFiDateEnd.Value = System.DateTime.Now;
             txtFiDateStart.Value = System.DateTime.Now;
             //C1ThemeController.ApplicationTheme = ic.iniC.themeApplication;
@@ -55,9 +55,9 @@ namespace clinic_ivf.gui
             theme1.SetTheme(sB, "BeigeOne");
 
             sB1.Text = "";
-            bg = txtHn.BackColor;
-            fc = txtHn.ForeColor;
-            ff = txtHn.Font;
+            bg = txtSearch.BackColor;
+            fc = txtSearch.ForeColor;
+            ff = txtSearch.Font;
 
             stt = new C1SuperTooltip();
             sep = new C1SuperErrorProvider();
@@ -70,13 +70,13 @@ namespace clinic_ivf.gui
             timer.Tick += Timer_Tick;
             timer.Enabled = true;
 
-            btnNew.Click += BtnNew_Click;
-            btnSearchA.Click += BtnSearchA_Click;
+            //btnNew.Click += BtnNew_Click;
+            //btnSearchA.Click += BtnSearchA_Click;
             txtSearch.KeyUp += TxtSearch_KeyUp;
-            btnAna.Click += BtnAna_Click;
-            btnFreezing.Click += BtnFreezing_Click;
-            btnPesa.Click += BtnPesa_Click;
-            btnIui.Click += BtnIui_Click;
+            //btnAna.Click += BtnAna_Click;
+            //btnFreezing.Click += BtnFreezing_Click;
+            //btnPesa.Click += BtnPesa_Click;
+            //btnIui.Click += BtnIui_Click;
             
             initGrfReq();
             initGrfProc();
@@ -286,36 +286,37 @@ namespace clinic_ivf.gui
             grfReq.DataSource = null;
             grfReq.Clear();
             DataTable dt = new DataTable();
-            DateTime datestart, dateend;
+            //DateTime datestart, dateend;
             String datestart1 = "", dateend1 = "";
-            if (DateTime.TryParse(txtDateStart.Text, out datestart))
-            {
-                datestart1 = datestart.ToString("yyyy-MM-dd");
-            }
-            else
-            {
-                datestart1 = ic.datetoDB(txtDateStart.Text);
-            }
-            if (DateTime.TryParse(txtDateEnd.Text, out datestart))
-            {
-                dateend1 = datestart.ToString("yyyy-MM-dd");
-            }
-            else
-            {
-                dateend1 = ic.datetoDB(txtDateEnd.Text);
-            }
+            //if (DateTime.TryParse(txtDateStart.Text, out datestart))
+            //{
+            //    datestart1 = datestart.ToString("yyyy-MM-dd");
+            //}
+            //else
+            //{
+            //    datestart1 = ic.datetoDB(txtDateStart.Text);
+            //}
+            //if (DateTime.TryParse(txtDateEnd.Text, out datestart))
+            //{
+            //    dateend1 = datestart.ToString("yyyy-MM-dd");
+            //}
+            //else
+            //{
+            //    dateend1 = ic.datetoDB(txtDateEnd.Text);
+            //}
             //dt = ic.ivfDB.lbReqDB.selectByStatusReqAccept();
-            dt = ic.ivfDB.lbReqDB.selectBySpermStatusUnAccept(datestart1, dateend1);
+            //dt = ic.ivfDB.lbReqDB.selectBySpermStatusUnAccept(datestart1, dateend1);
+            dt = ic.ivfDB.lbReqDB.selectBySpermStatusUnAccept();
             //grfExpn.Rows.Count = dt.Rows.Count + 1;
             grfReq.Rows.Count = 1;
             grfReq.Cols.Count = 18;
-            C1TextBox txt = new C1TextBox();
+            //C1TextBox txt = new C1TextBox();
             //C1ComboBox cboproce = new C1ComboBox();
             //ic.ivfDB.itmDB.setCboItem(cboproce);
-            grfReq.Cols[colRqReqNum].Editor = txt;
-            grfReq.Cols[colRqHn].Editor = txt;
-            grfReq.Cols[colRqVn].Editor = txt;
-            grfReq.Cols[colRqName].Editor = txt;
+            //grfReq.Cols[colRqReqNum].Editor = txt;
+            //grfReq.Cols[colRqHn].Editor = txt;
+            //grfReq.Cols[colRqVn].Editor = txt;
+            //grfReq.Cols[colRqName].Editor = txt;
 
             grfReq.Cols[colRqHn].Width = 100;
             grfReq.Cols[colRqVn].Width = 120;
@@ -367,6 +368,7 @@ namespace clinic_ivf.gui
                 row1[colRqName] = row[ic.ivfDB.lbReqDB.lbReq.name_female].ToString();
                 row1[colRqDate] = ic.datetoShow(row[ic.ivfDB.lbReqDB.lbReq.req_date].ToString());
                 row1[colRqRemark] = row["form_a_remark"].ToString();
+
                 row1[colOPUDate] = ic.datetoShow(row[ic.ivfDB.lFormaDB.lformA.sperm_analysis_date_start].ToString());
                 row1[colOPUTime] = ic.timetoShow(row[ic.ivfDB.lFormaDB.lformA.sperm_analysis_date_start].ToString());
                 //row1[colRqStatusSperm] = row[ic.ivfDB.lbReqDB.lbReq.sta].ToString();
@@ -377,12 +379,31 @@ namespace clinic_ivf.gui
                 //    : row["item_id"].ToString().Equals("18") ? "Sperm Freezing"
                 //    : row["item_id"].ToString().Equals("66") ? "PESA/TESE"
                 //    : row["item_id"].ToString().Equals("88") ? "IUI" : "";
-                row1[colRqStatusSperm] = row["item_id"].ToString().Equals("14") ? "2"
-                    : row["item_id"].ToString().Equals("18") ? "1"
+                row1[colRqStatusSperm] = row["item_id"].ToString().Equals("14") ? "1"
+                    : row["item_id"].ToString().Equals("18") ? "2"
                     : row["item_id"].ToString().Equals("66") ? "3"
                     : row["item_id"].ToString().Equals("88") ? "4" : "";
-                //row1[colRqHnDonor] = row["hn_donor"].ToString();
-                //row1[colRqNameDonor] = row["name_donor"].ToString();
+                if (row1[colRqStatusSperm].ToString().Equals("1"))      // sperm analysis
+                {
+                    row1[colOPUDate] = ic.datetoShow(row[ic.ivfDB.lFormaDB.lformA.sperm_analysis_date_start].ToString());
+                    row1[colOPUTime] = ic.timetoShow(row[ic.ivfDB.lFormaDB.lformA.sperm_analysis_date_start].ToString());
+                }
+                else if (row1[colRqStatusSperm].ToString().Equals("2"))      // sperm Freezing
+                {
+                    row1[colOPUDate] = ic.datetoShow(row[ic.ivfDB.lFormaDB.lformA.sperm_freezing_date_start].ToString());
+                    row1[colOPUTime] = ic.timetoShow(row[ic.ivfDB.lFormaDB.lformA.sperm_freezing_date_start].ToString());
+                }
+                else if (row1[colRqStatusSperm].ToString().Equals("3"))      // sperm Pesa
+                {
+                    row1[colOPUDate] = ic.datetoShow(row[ic.ivfDB.lFormaDB.lformA.pasa_tese_date].ToString());
+                    //row1[colOPUTime] = ic.timetoShow(row[ic.ivfDB.lFormaDB.lformA.sperm_freezing_date_start].ToString());
+                }
+                else if (row1[colRqStatusSperm].ToString().Equals("4"))      // sperm IUI
+                {
+                    row1[colOPUDate] = ic.datetoShow(row[ic.ivfDB.lFormaDB.lformA.iui_date].ToString());
+                    //row1[colOPUTime] = ic.timetoShow(row[ic.ivfDB.lFormaDB.lformA.sperm_freezing_date_start].ToString());
+                }//row1[colRqHnDonor] = row["hn_donor"].ToString();
+                 //row1[colRqNameDonor] = row["name_donor"].ToString();
                 if (row["LName"].ToString().Trim().Equals("OPU"))
                 {
                     row1[colRqRemark] = row["opu_remark"].ToString() + " " + row["form_a_remark"].ToString();
@@ -394,7 +415,7 @@ namespace clinic_ivf.gui
                 row1[colOpuId] = "";
                 row1[colDtrName] = row["dtr_name"].ToString();
                 row1[0] = i;
-                if (row[ic.ivfDB.lbReqDB.lbReq.hn_female].ToString().Equals("HN-90106/62"))
+                if (row1[colRqHnMale].ToString().Equals("BH6200130"))
                 {
                     chk = "";
                 }
@@ -880,10 +901,10 @@ namespace clinic_ivf.gui
         private void FrmLabSpermView_Load(object sender, EventArgs e)
         {
             tcLabView.SelectedTab = tabLabAccept;
-            if (ic.iniC.statusCheckDonor.Equals("0"))
-            {
-                c1SplitButton1.Hide();
-            }
+            //if (ic.iniC.statusCheckDonor.Equals("0"))
+            //{
+            //    c1SplitButton1.Hide();
+            //}
         }
     }
 }

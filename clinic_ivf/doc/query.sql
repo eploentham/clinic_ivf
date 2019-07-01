@@ -1348,3 +1348,6 @@ delete from t_visit1 Where t_visit_id = '210000019';
 ALTER TABLE ivf_101.nurse_t_egg_sti_day AUTO_INCREMENT = 2270000000;
 
 ALTER TABLE ivf_101_donor.billheader AUTO_INCREMENT = 2390000000;
+
+ALTER TABLE `ivf_101`.`b_company` 
+ADD COLUMN `month_curr_cashier` VARCHAR(45) NULL AFTER `receipt_cover_doc`;

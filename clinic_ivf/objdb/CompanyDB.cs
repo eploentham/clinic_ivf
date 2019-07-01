@@ -100,6 +100,7 @@ namespace clinic_ivf.objdb
             cop.day_curr = "day_curr";
             cop.prefix_receipt_cover_doc = "prefix_receipt_cover_doc";
             cop.receipt_cover_doc = "receipt_cover_doc";
+            cop.month_curr_cashier = "month_curr_cashier";
 
             cop.table = "b_company";
             cop.pkField = "comp_id";
@@ -462,12 +463,12 @@ namespace clinic_ivf.objdb
                 conn.ExecuteNonQuery(conn.conn, sql);
                 //doc = "00001";
             }
-            if (!cop1.month.Equals(cop1.month_curr))
+            if (!cop1.month.Equals(cop1.month_curr_cashier))
             {
                 cop1.month = "00" + cop1.month;
                 cop1.month = cop1.month.Substring(cop1.month.Length - 2, 2);
                 sql = "Update " + cop.table + " Set " +
-                    " " + cop.month_curr + "='" + cop1.month + "' " +
+                    " " + cop.month_curr_cashier + "='" + cop1.month + "' " +
 
                     "Where " + cop.pkField + "='" + cop1.comp_id + "'";
                 conn.ExecuteNonQuery(conn.conn, sql);
@@ -1056,6 +1057,7 @@ namespace clinic_ivf.objdb
                 cop1.day_curr = dt.Rows[0][cop.day_curr].ToString();
                 cop1.prefix_receipt_cover_doc = dt.Rows[0][cop.prefix_receipt_cover_doc].ToString();
                 cop1.receipt_cover_doc = dt.Rows[0][cop.receipt_cover_doc].ToString();
+                cop1.month_curr_cashier = dt.Rows[0][cop.month_curr_cashier].ToString();
             }
             else
             {
@@ -1139,6 +1141,7 @@ namespace clinic_ivf.objdb
                 cop1.day_curr = "";
                 cop1.prefix_receipt_cover_doc = "";
                 cop1.receipt_cover_doc = "";
+                cop1.month_curr_cashier = "";
             }
 
             return cop1;
