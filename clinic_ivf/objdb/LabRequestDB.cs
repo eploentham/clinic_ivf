@@ -445,7 +445,7 @@ namespace clinic_ivf.objdb
 
             if (p.req_id.Equals("") || p.req_id.Equals("0"))
             {
-                re = insert(p, "");
+                re = insert(p, userId);
             }
             else
             {

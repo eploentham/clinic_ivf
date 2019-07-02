@@ -340,11 +340,11 @@ namespace clinic_ivf.objdb
                     "," + lsperm.active + "='1' " +
                     "," + lsperm.remark + "='" + p.remark + "' " +
                     "," + lsperm.date_create + "=now() " +
-                    "," + lsperm.date_modi + "='" + p.date_modi + "' " +
-                    "," + lsperm.date_cancel + "='" + p.date_cancel + "' " +
-                    "," + lsperm.user_create + "='" + userId + "' " +
-                    "," + lsperm.user_modi + "='" + p.user_modi + "' " +
-                    "," + lsperm.user_cancel + "='" + p.user_cancel + "' " +
+                    "," + lsperm.date_modi + "='' " +
+                    "," + lsperm.date_cancel + "='' " +
+                    "," + lsperm.user_create + "='" + userId + "@" + conn._IPAddress + "' " +
+                    "," + lsperm.user_modi + "='' " +
+                    "," + lsperm.user_cancel + "='' " +
                     "," + lsperm.ph + "='" + p.ph + "' " +
                     "," + lsperm.status_owner_sperm + "='" + p.status_owner_sperm + "' " +
                     "," + lsperm.status_donor_sperm + "='" + p.status_donor_sperm + "' " +
@@ -436,7 +436,7 @@ namespace clinic_ivf.objdb
                     "," + lsperm.active + "='" + p.active + "' " +
                     "," + lsperm.remark + "='" + p.remark.Replace("'", "''") + "' " +
                     "," + lsperm.date_modi + "=now() " +
-                    "," + lsperm.user_modi + "='" + userId + "' " +
+                    "," + lsperm.user_modi + "='" + userId + "@" + conn._IPAddress + "' " +
                     "," + lsperm.ph + "='" + p.ph + "' " +
                     "," + lsperm.status_owner_sperm + "='" + p.status_owner_sperm + "' " +
                     //"," + lformA.status_donor_sperm + "='" + p.status_donor_sperm + "' " +
@@ -491,11 +491,11 @@ namespace clinic_ivf.objdb
 
             if (p.sperm_id.Equals(""))
             {
-                re = insert(p, "");
+                re = insert(p, userId);
             }
             else
             {
-                re = update(p, "");
+                re = update(p, userId);
             }
 
             return re;

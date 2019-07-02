@@ -431,7 +431,7 @@ namespace clinic_ivf.objdb
                 "," + opu.date_create + " = now()" +
                 "," + opu.date_modi + " = '" + p.date_modi + "'" +
                 "," + opu.date_cancel + " = '" + p.date_cancel + "'" +
-                "," + opu.user_create + " = '" + userId + "'" +
+                "," + opu.user_create + " = '" + userId + "@" + conn._IPAddress + "'" +
                 "," + opu.user_modi + " = '" + p.user_modi + "'" +
                 "," + opu.user_cancel + " = '" + p.user_cancel + "'" +
                 "," + opu.req_id + " = '" + p.req_id + "'" +
@@ -476,7 +476,7 @@ namespace clinic_ivf.objdb
                 "," + opu.doctor_id + " = '" + p.doctor_id + "'" +
                 "," + opu.proce_id + " = '" + p.proce_id + "'" + 
                 "," + opu.date_modi + " = now()" +
-                "," + opu.user_modi + " = '" + userId + "' " +
+                "," + opu.user_modi + " = '" + userId + "@" + conn._IPAddress + "' " +
                 "," + opu.date_pic_embryo + " = '" + p.date_pic_embryo + "' " +
                 "," + opu.hn_donor + " = '" + p.hn_donor + "' " +
                 "," + opu.name_donor + " = '" + p.name_donor + "' " +

@@ -187,7 +187,7 @@ namespace clinic_ivf.objdb
                 "," + obilld.date_create + "= now() " +
                 "," + obilld.date_modi + "= ''" +
                 "," + obilld.user_cancel + "= ''" +
-                "," + obilld.user_create + "= '" + userId + "'" +
+                "," + obilld.user_create + "= '" + userId + "@" + conn._IPAddress + "'" +
                 "," + obilld.user_modi + "= ''" +
                 "," + obilld.remark + "= '" + p.remark + "'" +
                 "," + obilld.sort1 + "= '" + p.sort1 + "'" +
@@ -249,7 +249,7 @@ namespace clinic_ivf.objdb
 
             if (p.ID.Equals(""))
             {
-                re = insert(p, "");
+                re = insert(p, userId);
             }
             else
             {

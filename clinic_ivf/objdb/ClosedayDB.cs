@@ -134,7 +134,7 @@ namespace clinic_ivf.objdb
                 "," + cld.date_create + "= now()" +
                 "," + cld.date_modi + "= ''" +
                 "," + cld.date_cancel + "= ''" +
-                "," + cld.user_create + "= '" + userId + "'" +
+                "," + cld.user_create + "= '" + userId + "@" + conn._IPAddress + "'" +
                 "," + cld.user_modi + "= ''" +
                 "," + cld.user_cancel + "= ''" +
                 "," + cld.expense_3 + "= '" + p.expense_3 + "'" +
@@ -174,7 +174,7 @@ namespace clinic_ivf.objdb
                 "," + cld.expense_2 + " = '" + p.expense_2 + "'" +
                 "," + cld.remark + " = '" + p.remark + "'" +
                 "," + cld.date_modi + " = now()" +
-                "," + cld.user_modi + " = '" + userId + "'" +
+                "," + cld.user_modi + " = '" + userId + "@" + conn._IPAddress + "'" +
                 "," + cld.expense_3 + " = '" + p.expense_3 + "'" +
                 "," + cld.expense_4 + " = '" + p.expense_4 + "'" +
                 "," + cld.expense_5 + " = '" + p.expense_5 + "'" +
@@ -200,11 +200,11 @@ namespace clinic_ivf.objdb
 
             if (p.closeday_id.Equals(""))
             {
-                re = insert(p, "");
+                re = insert(p, userId);
             }
             else
             {
-                re = update(p, "");
+                re = update(p, userId);
             }
 
             return re;

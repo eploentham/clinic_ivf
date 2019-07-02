@@ -342,6 +342,12 @@ namespace clinic_ivf.objdb
                     "," + vs.doctor_id + "='" + p.doctor_id + "' " +
                     "," + vs.patient_hn_2 + "='" + p.patient_hn_2 + "' " +
                     "," + vs.closeday_id + "='0' " +
+                    "," + vs.date_create + "=now() " +
+                    "," + vs.date_modi + "='' " +
+                    "," + vs.date_cancel + "='' " +
+                    "," + vs.user_create + "='" + userId + "@" + conn._IPAddress + "' " +
+                    "," + vs.user_modi + "='' " +
+                    "," + vs.user_cancel + "='' " +
                     "";
                 re = conn.ExecuteNonQuery(conn.conn, sql);
             }
@@ -369,6 +375,8 @@ namespace clinic_ivf.objdb
                 "," + vs.doctor_id + "='" + p.doctor_id + "' " +
                 "," + vs.patient_hn_1 + "='" + p.patient_hn_1 + "' " +
                 "," + vs.patient_hn_2 + "='" + p.patient_hn_2 + "' " +
+                "," + vs.date_modi + "=now() " +
+                "," + vs.user_modi + "='" + userId + "@" + conn._IPAddress + "' " +
                 "Where " + vs.pkField + " ='" + p.t_visit_id + "' ";
             try
             {
@@ -387,11 +395,11 @@ namespace clinic_ivf.objdb
 
             if (p.t_visit_id.Equals(""))
             {
-                re = insert(p, "");
+                re = insert(p, userId);
             }
             else
             {
-                re = update(p, "");
+                re = update(p, userId);
             }
 
             return re;

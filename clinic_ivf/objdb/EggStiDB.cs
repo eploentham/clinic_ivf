@@ -125,7 +125,7 @@ namespace clinic_ivf.objdb
                 "," + eggs.remark + "='" + p.remark.Replace("'", "''") + "'" +
                 "," + eggs.a + "='" + p.a + "'" +
                 "," + eggs.date_create + "=now()" +
-                "," + eggs.user_create + "='" + userId + "'" +
+                "," + eggs.user_create + "='" + userId + "@" + conn._IPAddress + "'" +
                 "," + eggs.g + "='" + p.g.Replace("'", "''") + "'" +
                 "," + eggs.opu_date + "='" + p.opu_date.Replace("'", "''") + "'" +
                 "," + eggs.opu_time + "='" + p.opu_time.Replace("'", "''") + "'" +
@@ -194,6 +194,8 @@ namespace clinic_ivf.objdb
                 "," + eggs.a + "='" + p.a + "'" +
                 "," + eggs.day_start + "='" + p.day_start + "'" +
                 "," + eggs.lmp_date + "='" + p.lmp_date + "'" +
+                "," + eggs.date_modi + "=now()" +
+                "," + eggs.user_modi + "='" + userId + "@" + conn._IPAddress + "'" +
                 "Where " + eggs.pkField + "='" + p.egg_sti_id + "'"
                 ;
 
@@ -214,11 +216,11 @@ namespace clinic_ivf.objdb
 
             if (p.egg_sti_id.Equals(""))
             {
-                re = insert(p, "");
+                re = insert(p, userId);
             }
             else
             {
-                re = update(p, "");
+                re = update(p, userId);
             }
 
             return re;

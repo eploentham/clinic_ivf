@@ -105,7 +105,7 @@ namespace clinic_ivf.objdb
                 "," + eggsd.remark + "='" + p.remark.Replace("'", "''") + "'" +
                 "," + eggsd.fsh + "='" + p.fsh + "'" +
                 "," + eggsd.date_create + "=now()" +
-                "," + eggsd.user_create + "='" + userId + "'" +
+                "," + eggsd.user_create + "='" + userId + "@" + conn._IPAddress + "'" +
                 "," + eggsd.prolactin + "='" + p.prolactin.Replace("'", "''") + "'" +
                 "," + eggsd.rt_ovary_1 + "='" + p.rt_ovary_1.Replace("'", "''") + "'" +
                 "," + eggsd.rt_ovary_2 + "='" + p.rt_ovary_2.Replace("'", "''") + "'" +
@@ -150,6 +150,8 @@ namespace clinic_ivf.objdb
                 "," + eggsd.egg_sti_id + "='" + p.egg_sti_id + "'" +
                 "," + eggsd.medication + "='" + p.medication + "'" +
                 "," + eggsd.medication2 + "='" + p.medication2 + "'" +
+                "," + eggsd.date_modi + "=now()" +
+                "," + eggsd.user_modi + "='" + userId + "@" + conn._IPAddress + "'" +
                 "Where " + eggsd.pkField + "='" + p.egg_sti_day_id + "'"
                 ;
 
@@ -185,6 +187,8 @@ namespace clinic_ivf.objdb
                 "," + eggsd.fsh + "='" + p.fsh + "'" +
                 "," + eggsd.medication + "='" + p.medication + "'" +
                 "," + eggsd.medication2 + "='" + p.medication2 + "'" +
+                "," + eggsd.date_modi + "=now()" +
+                "," + eggsd.user_modi + "='" + userId + "@" + conn._IPAddress + "'" +
                 "Where " + eggsd.pkField + "='" + p.egg_sti_day_id + "'"
                 ;
 
@@ -205,11 +209,11 @@ namespace clinic_ivf.objdb
 
             if (p.egg_sti_day_id.Equals(""))
             {
-                re = insert(p, "");
+                re = insert(p, userId);
             }
             else
             {
-                re = update1(p, "");
+                re = update1(p, userId);
             }
 
             return re;
@@ -222,7 +226,7 @@ namespace clinic_ivf.objdb
             sql = "Update " + eggsd.table + " Set " +
                 " " + eggsd.active + " = '3'" +
                 "," + eggsd.date_cancel + " = now()" +
-                "," + eggsd.user_cancel + " = '" + userid + "'" +
+                "," + eggsd.user_cancel + " = '" + userid + "@" + conn._IPAddress + "'" +
                 "Where " + eggsd.egg_sti_id + "='" + id + "'";
             try
             {
@@ -243,7 +247,7 @@ namespace clinic_ivf.objdb
             sql = "Update " + eggsd.table + " Set " +
                 " " + eggsd.active + " = '3'" +
                 "," + eggsd.date_cancel + " = now()" +
-                "," + eggsd.user_cancel + " = '" + userid + "'" +
+                "," + eggsd.user_cancel + " = '" + userid + "@" + conn._IPAddress + "'" +
                 "Where " + eggsd.pkField + "='" + id + "'";
             try
             {

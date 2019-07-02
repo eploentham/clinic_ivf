@@ -207,7 +207,7 @@ namespace clinic_ivf.objdb
                 "'" + p.patient_appointment_auto_visit.Replace("'", "''") + "','" + p.b_visit_queue_setup_id + "','" + p.patient_appointment_status + "'," +
                 "'" + p.patient_appointment_vn + "','" + p.r_rp1853_aptype_id.Replace("'", "''") + "','" + p.patient_appointment_end_time.Replace("'", "''") + "'," +
                 "now(),'" + p.date_modi + "','" + p.date_cancel + "', " +
-                "'" + userId + "','" + p.user_modi + "','" + p.user_cancel + "', " +
+                "'" + userId + "@" + conn._IPAddress + "','" + p.user_modi + "','" + p.user_cancel + "', " +
                 "'" + p.appointment_confirm_date.Replace("'", "''") + "','" + p.change_appointment_cause + "','" + p.patient_appointment_clinic + "'," +
                 "'" + p.patient_appointment_date + "'," +
                 "'" + p.patient_appointment_servicepoint + "','" + p.patient_appointment_staff_record + "','" + p.patient_appointment_record_date_time + "'," +
@@ -243,7 +243,7 @@ namespace clinic_ivf.objdb
             }
             else
             {
-                re = update(p, "");
+                re = update(p, userId);
             }
 
             return re;
@@ -309,6 +309,8 @@ namespace clinic_ivf.objdb
                 "," + pApm.beta_hgc + "='" + p.beta_hgc + "' " +
                 "," + pApm.other_remark + "='" + p.other_remark.Replace("'", "''") + "' " +
                 "," + pApm.sperm_collect + "='" + p.sperm_collect.Replace("'", "''") + "' " +
+                "," + pApm.date_modi + "=now() " +
+                "," + pApm.user_modi + "='" + userId + "@" + conn._IPAddress + "' " +
                 " Where " + pApm.pkField + " = '" + p.t_patient_appointment_id + "' "
                 ;
             try

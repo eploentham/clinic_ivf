@@ -243,7 +243,7 @@ namespace clinic_ivf.objdb
             //p.ssdata_id = "";
             int chk = 0;
             chkNull(p);
-            lis.statis_lis = "status_lis";
+            //lis.statis_lis = "status_lis";
             sql = "Insert Into " + lis.table + " set " +
                 "" + lis.barcode + "= '" + p.barcode + "'" +
                 "," + lis.active + "= '" + p.active + "'" +
@@ -352,12 +352,12 @@ namespace clinic_ivf.objdb
 
             if (p.lis_id.Equals(""))
             {
-                re = insert(p, "");
+                re = insert(p, userId);
                 updateBarcode(re);
             }
             else
             {
-                re = update(p, "");
+                re = update(p, userId);
             }
 
             return re;

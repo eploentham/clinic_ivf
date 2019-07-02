@@ -142,7 +142,7 @@ namespace clinic_ivf.objdb
                 "," + cldd.date_create + "= now()" +
                 "," + cldd.date_modi + "= ''" +
                 "," + cldd.date_cancel + "= ''" +
-                "," + cldd.user_create + "= '" + userId + "'" +
+                "," + cldd.user_create + "= '" + userId + "@" + conn._IPAddress + "'" +
                 "," + cldd.user_modi + "= ''" +
                 "," + cldd.user_cancel + "= ''" +
                 "," + cldd.amt_doctor_fee + "= '" + p.amt_doctor_fee + "'" +
@@ -186,7 +186,7 @@ namespace clinic_ivf.objdb
                 "," + cldd.amt_medicine + " = '" + p.amt_medicine + "'" +
                 "," + cldd.remark + " = '" + p.remark + "'" +
                 "," + cldd.date_modi + " = now()" +
-                "," + cldd.user_modi + " = '" + userId + "'" +
+                "," + cldd.user_modi + " = '" + userId + "@" + conn._IPAddress + "'" +
                 "," + cldd.amt_doctor_fee + " = '" + p.amt_doctor_fee + "'" +
                 "," + cldd.amt_lab_1 + " = '" + p.amt_lab_1 + "'" +
                 "," + cldd.amt_lab_2 + " = '" + p.amt_lab_2 + "'" +
@@ -216,11 +216,11 @@ namespace clinic_ivf.objdb
 
             if (p.closeday_detail_id.Equals(""))
             {
-                re = insert(p, "");
+                re = insert(p, userId);
             }
             else
             {
-                re = update(p, "");
+                re = update(p, userId);
             }
 
             return re;

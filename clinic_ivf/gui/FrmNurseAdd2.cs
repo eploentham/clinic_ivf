@@ -57,7 +57,7 @@ namespace clinic_ivf.gui
         int colNoteId = 1, colNote = 2, colNoteStatusAll = 3;
         int colApmId = 1, colApmAppointment = 4, colApmDate = 2, colApmTime = 3, colApmDoctor = 5, colApmSp = 6, colApmNotice = 7, colE2 = 8, colLh = 9, colEndo = 10, colPrl = 10, colFsh = 11, colRt = 12, colLt = 13;
         int colLabReqId = 1, collabName = 2, colLabStatus = 3;
-        int colHisVsId = 1, colHisVsDate = 2;
+        int colHisVsId = 1, colHisVsDate = 2, colHisVsVn = 3;
 
         int colOrderId = 1, colOrderVn = 2, colOrderLID = 3, colOrderExtra = 4, colOrderPrice = 5, colOrderStatus = 6;
         int colOrderPID = 7, colOrderPIDS = 8, colOrderLName = 9, colOrderSP1V = 10, colOrderSP2V = 11, colOrderSP3V = 12;
@@ -3358,6 +3358,11 @@ namespace clinic_ivf.gui
                 }
             }
             rowOrder = grfHisDrug.Rows.Count;
+
+            grfHisDrug.Tree.Column = colOrdDate;
+            grfHisDrug.Tree.Style = TreeStyleFlags.Simple;
+            grfHisDrug.AllowMerging = AllowMergingEnum.Nodes;
+
             CellNoteManager mgr = new CellNoteManager(grfHisDrug);
             grfHisDrug.Cols[colOrdrow1].Visible = false;
             grfHisDrug.Cols[colOrdlpid].Visible = false;
@@ -3455,14 +3460,15 @@ namespace clinic_ivf.gui
 
             grfHis.ShowCursor = true;
 
-            grfHis.Cols[colNote].Caption = "Note";
+            grfHis.Cols[colHisVsDate].Caption = "Date";
+            grfHis.Cols[colHisVsVn].Caption = "VN";
 
             int i = 1;
             foreach (DataRow row in dt.Rows)
             {
                 grfHis[i, colHisVsId] = row[ic.ivfDB.vsDB.vs.t_visit_id].ToString();
                 grfHis[i, colHisVsDate] = ic.datetoShow(row[ic.ivfDB.vsDB.vs.visit_begin_visit_time].ToString());
-                //grfHis[i, colNoteStatusAll] = row[ic.ivfDB.noteDB.note.status_all].ToString();
+                grfHis[i, colHisVsVn] = row[ic.ivfDB.vsDB.vs.visit_vn].ToString();
                 i++;
             }
             grfHis.Cols[colHisVsId].Visible = false;
