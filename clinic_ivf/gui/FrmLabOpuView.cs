@@ -24,7 +24,7 @@ namespace clinic_ivf.gui
         Font fEdit, fEditB;
         Color bg, fc;
         Font ff, ffB;
-        int colRqId = 1, colOPUDate = 2, colOPUTime = 3, colRqHnMale = 4, colRqNameMale = 5, colRqHn = 6, colRqName = 7, colRqHnDonor = 8, colRqNameDonor = 9, colDtrName = 10, colRqRemark = 11, colRqReqNum = 12, colRqDate = 13, colRqVn = 14, colRqLabName=15, colOpuId=16, colOPUTimeModi=17;
+        int colRqId = 1, colOPUDate = 2, colOPUTime = 3, colRqHnMale = 4, colRqNameMale = 5, colRqHn = 6, colRqName = 7, colRqHnDonor = 8, colRqNameDonor = 9, colDtrName = 10, colRqRemark = 11, colRqReqNum = 12, colRqDate = 13, colRqVn = 14, colRqLabName=15, colOpuId=16, colOPUTimeModi=17, colFormAId=18;
         //int colPcId = 1, colPcOpuNum = 2, colPcHn = 3, colPcPttName = 4, colPcDate = 5, colPcRemark = 6;
         int colPcId = 1, colPcDate = 2, colPcHnMale = 3, colPcNameMale = 4, colPcHn = 5, colPcPttName = 6, colProceName = 7, colPcRemark = 8, colPcOpuNum = 9;
         int colFiId = 1, colFiDate = 2, colFiHnMale = 3, colFiNameMale = 4, colFiHn = 5, colFiPttName = 6, colFiProceName = 7, colFiRemark = 8, colFiOpuNum = 9;
@@ -300,9 +300,10 @@ namespace clinic_ivf.gui
         }
         private void ContextMenu_edit(object sender, System.EventArgs e)
         {
-            String chk = "", name="", id="";
+            String chk = "", name="", id="", formaid="";
             
             id = grfReq[grfReq.Row, colRqId] != null ? grfReq[grfReq.Row, colRqId].ToString() : "";
+            formaid = grfReq[grfReq.Row, colFormAId] != null ? grfReq[grfReq.Row, colFormAId].ToString() : "";
             chk = grfReq[grfReq.Row, colRqReqNum] != null ? grfReq[grfReq.Row, colRqReqNum].ToString() : "";
             name = grfReq[grfReq.Row, colRqName] != null ? grfReq[grfReq.Row, colRqName].ToString() : "";
             //if (MessageBox.Show("ต้องการ ป้อน LAB OPU  \n  req number " + chk+" \n name "+ name, "", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == DialogResult.OK)
@@ -311,7 +312,7 @@ namespace clinic_ivf.gui
                 Cursor curOld;
                 curOld = this.Cursor;
                 this.Cursor = Cursors.WaitCursor;
-                openLabOPUNew(id, name);
+                openLabOPUNew(id, name, formaid);
                 setGrfReq();
                 setGrfProc("");
                 this.Cursor = curOld;
@@ -350,17 +351,17 @@ namespace clinic_ivf.gui
             //    dateend1 = ic.datetoDB(txtDateEnd.Text);
             //}
             //dt = ic.ivfDB.lbReqDB.selectByStatusReqAccept();
-            dt = ic.ivfDB.lbReqDB.selectByStatusOPURequest(datestart1, dateend1);
+            dt = ic.ivfDB.lbReqDB.selectByStatusOPURequest();
             //grfExpn.Rows.Count = dt.Rows.Count + 1;
             grfReq.Rows.Count = 1;
-            grfReq.Cols.Count = 18;
-            C1TextBox txt = new C1TextBox();
+            grfReq.Cols.Count = 19;
+            //C1TextBox txt = new C1TextBox();
             //C1ComboBox cboproce = new C1ComboBox();
             //ic.ivfDB.itmDB.setCboItem(cboproce);
-            grfReq.Cols[colRqReqNum].Editor = txt;
-            grfReq.Cols[colRqHn].Editor = txt;
-            grfReq.Cols[colRqVn].Editor = txt;
-            grfReq.Cols[colRqName].Editor = txt;
+            //grfReq.Cols[colRqReqNum].Editor = txt;
+            //grfReq.Cols[colRqHn].Editor = txt;
+            //grfReq.Cols[colRqVn].Editor = txt;
+            //grfReq.Cols[colRqName].Editor = txt;
 
             grfReq.Cols[colRqHn].Width = 100;
             grfReq.Cols[colRqVn].Width = 120;
@@ -405,12 +406,13 @@ namespace clinic_ivf.gui
             foreach (DataRow row in dt.Rows)
             {
                 Row row1 = grfReq.Rows.Add();
-                row1[colRqId] = row[ic.ivfDB.lbReqDB.lbReq.req_id].ToString();
-                row1[colRqReqNum] = row[ic.ivfDB.lbReqDB.lbReq.req_code].ToString();
+                row1[colFormAId] = row[ic.ivfDB.lFormaDB.lformA.form_a_id].ToString();
+                row1[colRqId] = row[ic.ivfDB.lFormaDB.lformA.req_id_opu].ToString();
+                row1[colRqReqNum] = row[ic.ivfDB.lFormaDB.lformA.form_a_code].ToString();
                 row1[colRqHn] = row[ic.ivfDB.lbReqDB.lbReq.hn_female].ToString();
-                row1[colRqVn] = row[ic.ivfDB.lbReqDB.lbReq.vn].ToString();
+                row1[colRqVn] = row[ic.ivfDB.lFormaDB.lformA.vn_old].ToString();
                 row1[colRqName] = row[ic.ivfDB.lbReqDB.lbReq.name_female].ToString();
-                row1[colRqDate] = ic.datetoShow(row[ic.ivfDB.lbReqDB.lbReq.req_date].ToString());
+                row1[colRqDate] = ic.datetoShow(row[ic.ivfDB.lFormaDB.lformA.form_a_date].ToString());
                 row1[colRqRemark] = row["form_a_remark"].ToString();
                 row1[colOPUDate] = ic.datetoShow(row[ic.ivfDB.lFormaDB.lformA.opu_date].ToString());
                 row1[colOPUTime] = row[ic.ivfDB.lFormaDB.lformA.opu_time].ToString();
@@ -493,6 +495,8 @@ namespace clinic_ivf.gui
             }
             grfReq.Cols[colRqId].Visible = false;
             grfReq.Cols[colRqVn].Visible = false;
+            grfReq.Cols[colFormAId].Visible = false;
+
             grfReq.Cols[colRqReqNum].AllowEditing = false;
             grfReq.Cols[colRqHn].AllowEditing = false;
             grfReq.Cols[colRqVn].AllowEditing = false;
@@ -809,7 +813,7 @@ namespace clinic_ivf.gui
         private void BtnNew_Click(object sender, EventArgs e)
         {
             //throw new NotImplementedException();
-            openLabOPUNew("","");
+            openLabOPUNew("","","");
         }
         private void setOPU1(String reqid)
         {
@@ -847,7 +851,7 @@ namespace clinic_ivf.gui
             frm.FormBorderStyle = FormBorderStyle.None;
             menu.AddNewTab(frm, txt);
         }
-        private void openLabOPUNew(String reqId, String name)
+        private void openLabOPUNew(String reqId, String name, String formaid)
         {
             ic.cStf.staff_id = "";
             FrmPasswordConfirm frm1 = new FrmPasswordConfirm(ic);
@@ -865,7 +869,7 @@ namespace clinic_ivf.gui
                     }
                     if(grfReq[grfReq.Row, colRqLabName].ToString().Trim().Equals("OPU"))
                     {
-                        LabOpu opu1 = ic.ivfDB.setOPU(reqId);
+                        LabOpu opu1 = ic.ivfDB.setOPU(reqId, formaid);
                         String re1 = ic.ivfDB.opuDB.insert(opu1, ic.cStf.staff_id);
                         if (long.TryParse(re1, out chk1))
                         {

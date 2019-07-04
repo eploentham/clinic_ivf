@@ -191,6 +191,7 @@ namespace clinic_ivf.gui
             btnApmVoid.Click += BtnApmVoid_Click;
             btnSavePmh.Click += BtnSavePmh_Click;
             btnPrintPmh.Click += BtnPrintPmh_Click;
+            c1Calendar1.Click += C1Calendar1_Click;
 
             chkPmhMarried.CheckedChanged += ChkPmhMarried_CheckedChanged;
             chkPmhConOther.CheckedChanged += ChkPmhConOther_CheckedChanged;
@@ -245,9 +246,9 @@ namespace clinic_ivf.gui
             setGrfOrder(txtVn.Text);
             initGrfNote();
             setGrfNote();
-            initGrfAdm();
+            //initGrfAdm();
             initGrfEggSti();
-            setGrfpApmAll();
+            //setGrfpApmAll();
             setGrfpApmVisit();
             setControlEggSti();
             setControlPmh();
@@ -289,6 +290,17 @@ namespace clinic_ivf.gui
             //initGrfPtt();
             //setGrfPtt("");
             initProgressNote();
+        }
+
+        private void C1Calendar1_Click(object sender, EventArgs e)
+        {
+            //throw new NotImplementedException();
+            DateTime[] aaa = c1Calendar1.SelectedDates;
+            if (aaa.Length > 0)
+            {
+                DateTime date = aaa[0];
+                setGrfpApmAll(date.Year+"-"+ date.ToString("MM-dd"));
+            }
         }
 
         private void TCHistory_DoubleClick(object sender, EventArgs e)
@@ -761,7 +773,7 @@ namespace clinic_ivf.gui
                     {
                         re = ic.ivfDB.vsDB.updateOpenStatusNurse(txtVsId.Text);
                         re = ic.ivfDB.vsDB.updateStatusVoidAppointment(txtVsId.Text);
-                        setGrfpApmAll();
+                        //setGrfpApmAll();
                         setGrfpApmVisit();
                         setGrfpApmDay();
                         //re = txtID.Text;
@@ -2808,7 +2820,7 @@ namespace clinic_ivf.gui
                     //}
 
                     System.Threading.Thread.Sleep(500);
-                    setGrfpApmAll();
+                    //setGrfpApmAll();
                     setGrfpApmVisit();
                     setGrfpApmDay();
                     //this.Dispose();
@@ -3477,26 +3489,26 @@ namespace clinic_ivf.gui
 
             theme1.SetTheme(grfHis, "Office2016DarkGray");
         }
-        private void initGrfAdm()
-        {
-            grfpApmAll = new C1FlexGrid();
-            grfpApmAll.Font = fEdit;
-            grfpApmAll.Dock = System.Windows.Forms.DockStyle.Fill;
-            grfpApmAll.Location = new System.Drawing.Point(0, 0);
+        //private void initGrfAdm()
+        //{
+        //    grfpApmAll = new C1FlexGrid();
+        //    grfpApmAll.Font = fEdit;
+        //    grfpApmAll.Dock = System.Windows.Forms.DockStyle.Fill;
+        //    grfpApmAll.Location = new System.Drawing.Point(0, 0);
             
-            grfpApmAll.DoubleClick += GrfpApmAll_DoubleClick;
-            //grfExpnC.CellChanged += new C1.Win.C1FlexGrid.RowColEventHandler(this.grfDept_CellChanged);
-            //ContextMenu menuGw = new ContextMenu();
-            //menuGw.MenuItems.Add("Upload รูปบัตรประชาชน", new EventHandler(ContextMenu_grfimg_upload_ptt));
-            //menuGw.MenuItems.Add("Upload สำเนาบัตรประชาชน ที่มีลายเซ็น", new EventHandler(ContextMenu_grfimg_upload_ptt));
-            //menuGw.MenuItems.Add("Upload รูป Passport", new EventHandler(ContextMenu_grfimg_upload_ptt));
-            //menuGw.MenuItems.Add("ยกเลิก", new EventHandler(ContextMenu_grfimg_Cancel));
-            //grfImgOld.ContextMenu = menuGw;
-            pnAdm.Controls.Add(grfpApmAll);
+        //    grfpApmAll.DoubleClick += GrfpApmAll_DoubleClick;
+        //    //grfExpnC.CellChanged += new C1.Win.C1FlexGrid.RowColEventHandler(this.grfDept_CellChanged);
+        //    //ContextMenu menuGw = new ContextMenu();
+        //    //menuGw.MenuItems.Add("Upload รูปบัตรประชาชน", new EventHandler(ContextMenu_grfimg_upload_ptt));
+        //    //menuGw.MenuItems.Add("Upload สำเนาบัตรประชาชน ที่มีลายเซ็น", new EventHandler(ContextMenu_grfimg_upload_ptt));
+        //    //menuGw.MenuItems.Add("Upload รูป Passport", new EventHandler(ContextMenu_grfimg_upload_ptt));
+        //    //menuGw.MenuItems.Add("ยกเลิก", new EventHandler(ContextMenu_grfimg_Cancel));
+        //    //grfImgOld.ContextMenu = menuGw;
+        //    pnAdm.Controls.Add(grfpApmAll);
 
-            theme1.SetTheme(grfpApmAll, "Office2016Colorful");
+        //    theme1.SetTheme(grfpApmAll, "Office2016Colorful");
 
-        }
+        //}
 
         private void GrfpApmAll_DoubleClick(object sender, EventArgs e)
         {
@@ -3504,13 +3516,13 @@ namespace clinic_ivf.gui
 
         }
 
-        private void setGrfpApmAll()
+        private void setGrfpApmAll(String date)
         {
             //grfDept.Rows.Count = 7;
             grfpApmAll.Clear();
             DataTable dt = new DataTable();
 
-            dt = ic.ivfDB.pApmDB.selectByPtt(ptt.t_patient_id);
+            dt = ic.ivfDB.pApmDB.selectByDate1(date);
 
             //grfExpn.Rows.Count = dt.Rows.Count + 1;
             grfpApmAll.Rows.Count = 1;
@@ -3628,7 +3640,7 @@ namespace clinic_ivf.gui
             pApmId = id;
             FrmAppointmentAdd frm = new FrmAppointmentAdd(ic, pApmId, pttId, vn,pttId);
             frm.ShowDialog(this);
-            setGrfpApmAll();
+            setGrfpApmVisit();
 
         }
         private void initGrfpApmAll()
@@ -6168,7 +6180,7 @@ namespace clinic_ivf.gui
         {
             sC.HeaderHeight = 0;
             sCOrder.HeaderHeight = 0;
-            sCApm.HeaderHeight = 0;
+            //sCApm.HeaderHeight = 0;
             sCApmAdd.HeaderHeight = 0;
             spPatient.Height = spHeight;
             sCHistory.Height = 0;

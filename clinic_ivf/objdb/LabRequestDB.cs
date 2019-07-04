@@ -187,6 +187,31 @@ namespace clinic_ivf.objdb
             dt = conn.selectData(conn.conn, sql);
             return dt;
         }
+        public DataTable selectByStatusOPURequest()
+        {
+            DataTable dt = new DataTable();
+            String sql = "Select  lforma.name_female,lforma.hn_female" +
+                ", Doctor.ID, Doctor.Name as dtr_name, Doctor.ID as dtrid, ifnull(lreq.remark,'') as remark, lforma.dob_female " +
+                ", lforma.status_wait_confirm_day1,lforma.form_a_id,lforma.req_id_opu , lforma.form_a_id,lforma.status_wait_confirm_day1,lforma.status_wait_confirm_opu_date " +
+                ", lforma.form_a_code, lforma.form_a_date, lforma.vn_old, lforma.status_opu_active, lforma.status_wait_confirm_opu_date, lforma.opu_wait_remark, lforma.remark as form_a_remark " +
+                ", lforma.opu_date, lforma.opu_time, lforma.opu_remark, lforma.fet_remark, lforma.opu_time_modi, lforma.status_opu_time_modi, lforma.hn_male, lforma.name_male, lforma.hn_donor" +
+                ", lforma.name_donor, 'OPU' SName " +
+                "From lab_t_request lreq " +
+                "Left Join lab_t_form_a lforma on lreq.form_a_id = lforma.form_a_id  " +
+                //"Left Join Patient ptt on lreq.hn_female = ptt.PIDS " +
+                //"Left Join SurfixName on SurfixName.SurfixID = ptt.SurfixID  " +
+                "Left join Doctor on lforma.doctor_id = Doctor.ID  " +
+                //"Left join SpecialItem si on lreq.item_id = si.SID " +
+                //"Left Join lab_t_request lreq on lreq.req_id = oJSd.req_id " +
+                //"Left Join lab_t_request lreq on lreq.request_id = oJSd.ID  " +
+                //"Left Join Visit vsold on oJSd.VN = vsold.VN " +
+                //"Left Join lab_t_form_a lforma on vsold.form_a_id = lforma.form_a_id " +
+                "Where lreq.status_req in ('0','1','2') and lforma.status_opu_active ='1' " +
+                //"Order By lforma.form_a_id ";
+                "Order By lforma.opu_date, lforma.opu_time ";
+            dt = conn.selectData(conn.conn, sql);
+            return dt;
+        }
         public DataTable selectByStatusUnAccept3(String startdate, String enddate)
         {
             DataTable dt = new DataTable();

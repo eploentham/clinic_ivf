@@ -150,11 +150,6 @@
             this.pnLab = new System.Windows.Forms.Panel();
             this.tabApp = new C1.Win.C1Command.C1DockingTabPage();
             this.pnAdm1 = new System.Windows.Forms.Panel();
-            this.sCApm = new C1.Win.C1SplitContainer.C1SplitContainer();
-            this.c1SplitterPanel4 = new C1.Win.C1SplitContainer.C1SplitterPanel();
-            this.pnAdm = new System.Windows.Forms.Panel();
-            this.c1SplitterPanel5 = new C1.Win.C1SplitContainer.C1SplitterPanel();
-            this.pnAdmAdd = new System.Windows.Forms.Panel();
             this.sCApmAdd = new C1.Win.C1SplitContainer.C1SplitContainer();
             this.c1SplitterPanel6 = new C1.Win.C1SplitContainer.C1SplitterPanel();
             this.pnApmAll = new System.Windows.Forms.Panel();
@@ -690,6 +685,8 @@
             this.panel46 = new System.Windows.Forms.Panel();
             this.tabHistoryScan = new C1.Win.C1Command.C1DockingTabPage();
             this.pnHistoryScan = new System.Windows.Forms.Panel();
+            this.pnAdm = new System.Windows.Forms.Panel();
+            this.pnAdmAdd = new System.Windows.Forms.Panel();
             this.radioButton20 = new System.Windows.Forms.RadioButton();
             this.txtStfConfirmID = new C1.Win.C1Input.C1TextBox();
             this.txtUserReq = new C1.Win.C1Input.C1TextBox();
@@ -704,6 +701,8 @@
             this.label92 = new System.Windows.Forms.Label();
             this.label93 = new System.Windows.Forms.Label();
             this.label94 = new System.Windows.Forms.Label();
+            this.c1SplitterPanel4 = new C1.Win.C1SplitContainer.C1SplitterPanel();
+            this.c1SplitterPanel5 = new C1.Win.C1SplitContainer.C1SplitterPanel();
             this.sB.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.theme1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.sC)).BeginInit();
@@ -794,11 +793,6 @@
             this.tabLab.SuspendLayout();
             this.tabApp.SuspendLayout();
             this.pnAdm1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.sCApm)).BeginInit();
-            this.sCApm.SuspendLayout();
-            this.c1SplitterPanel4.SuspendLayout();
-            this.c1SplitterPanel5.SuspendLayout();
-            this.pnAdmAdd.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.sCApmAdd)).BeginInit();
             this.sCApmAdd.SuspendLayout();
             this.c1SplitterPanel6.SuspendLayout();
@@ -1103,6 +1097,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.cboBsp)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnVoid)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnSave)).BeginInit();
+            this.c1SplitterPanel4.SuspendLayout();
+            this.c1SplitterPanel5.SuspendLayout();
             this.SuspendLayout();
             // 
             // sB
@@ -2768,7 +2764,7 @@
             // pnAdm1
             // 
             this.pnAdm1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.pnAdm1.Controls.Add(this.sCApm);
+            this.pnAdm1.Controls.Add(this.sCApmAdd);
             this.pnAdm1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnAdm1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
             this.pnAdm1.Location = new System.Drawing.Point(0, 0);
@@ -2776,74 +2772,6 @@
             this.pnAdm1.Size = new System.Drawing.Size(1585, 665);
             this.pnAdm1.TabIndex = 0;
             this.theme1.SetTheme(this.pnAdm1, "(default)");
-            // 
-            // sCApm
-            // 
-            this.sCApm.AutoSizeElement = C1.Framework.AutoSizeElement.Both;
-            this.sCApm.BackColor = System.Drawing.Color.White;
-            this.sCApm.CollapsingAreaColor = System.Drawing.Color.White;
-            this.sCApm.CollapsingCueColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.sCApm.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.sCApm.FixedLineColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(189)))), ((int)(((byte)(182)))));
-            this.sCApm.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.sCApm.HeaderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.sCApm.HeaderLineWidth = 1;
-            this.sCApm.Location = new System.Drawing.Point(0, 0);
-            this.sCApm.Name = "sCApm";
-            this.sCApm.Panels.Add(this.c1SplitterPanel4);
-            this.sCApm.Panels.Add(this.c1SplitterPanel5);
-            this.sCApm.Size = new System.Drawing.Size(1585, 665);
-            this.sCApm.SplitterColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(189)))), ((int)(((byte)(182)))));
-            this.sCApm.SplitterMovingColor = System.Drawing.Color.Black;
-            this.sCApm.TabIndex = 0;
-            this.theme1.SetTheme(this.sCApm, "(default)");
-            this.sCApm.UseParentVisualStyle = false;
-            // 
-            // c1SplitterPanel4
-            // 
-            this.c1SplitterPanel4.Collapsible = true;
-            this.c1SplitterPanel4.Controls.Add(this.pnAdm);
-            this.c1SplitterPanel4.Dock = C1.Win.C1SplitContainer.PanelDockStyle.Left;
-            this.c1SplitterPanel4.Location = new System.Drawing.Point(0, 21);
-            this.c1SplitterPanel4.Name = "c1SplitterPanel4";
-            this.c1SplitterPanel4.Size = new System.Drawing.Size(553, 644);
-            this.c1SplitterPanel4.SizeRatio = 35.421D;
-            this.c1SplitterPanel4.TabIndex = 0;
-            this.c1SplitterPanel4.Text = "Panel 1";
-            this.c1SplitterPanel4.Width = 553;
-            // 
-            // pnAdm
-            // 
-            this.pnAdm.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.pnAdm.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnAdm.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.pnAdm.Location = new System.Drawing.Point(0, 0);
-            this.pnAdm.Name = "pnAdm";
-            this.pnAdm.Size = new System.Drawing.Size(553, 644);
-            this.pnAdm.TabIndex = 0;
-            this.theme1.SetTheme(this.pnAdm, "(default)");
-            // 
-            // c1SplitterPanel5
-            // 
-            this.c1SplitterPanel5.Controls.Add(this.pnAdmAdd);
-            this.c1SplitterPanel5.Height = 665;
-            this.c1SplitterPanel5.Location = new System.Drawing.Point(564, 21);
-            this.c1SplitterPanel5.Name = "c1SplitterPanel5";
-            this.c1SplitterPanel5.Size = new System.Drawing.Size(1021, 644);
-            this.c1SplitterPanel5.TabIndex = 1;
-            this.c1SplitterPanel5.Text = "Panel 2";
-            // 
-            // pnAdmAdd
-            // 
-            this.pnAdmAdd.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.pnAdmAdd.Controls.Add(this.sCApmAdd);
-            this.pnAdmAdd.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnAdmAdd.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.pnAdmAdd.Location = new System.Drawing.Point(0, 0);
-            this.pnAdmAdd.Name = "pnAdmAdd";
-            this.pnAdmAdd.Size = new System.Drawing.Size(1021, 644);
-            this.pnAdmAdd.TabIndex = 0;
-            this.theme1.SetTheme(this.pnAdmAdd, "(default)");
             // 
             // sCApmAdd
             // 
@@ -2860,7 +2788,7 @@
             this.sCApmAdd.Name = "sCApmAdd";
             this.sCApmAdd.Panels.Add(this.c1SplitterPanel6);
             this.sCApmAdd.Panels.Add(this.c1SplitterPanel7);
-            this.sCApmAdd.Size = new System.Drawing.Size(1021, 644);
+            this.sCApmAdd.Size = new System.Drawing.Size(1585, 665);
             this.sCApmAdd.SplitterColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(189)))), ((int)(((byte)(182)))));
             this.sCApmAdd.SplitterMovingColor = System.Drawing.Color.Black;
             this.sCApmAdd.TabIndex = 0;
@@ -2875,11 +2803,11 @@
             this.c1SplitterPanel6.Dock = C1.Win.C1SplitContainer.PanelDockStyle.Left;
             this.c1SplitterPanel6.Location = new System.Drawing.Point(0, 21);
             this.c1SplitterPanel6.Name = "c1SplitterPanel6";
-            this.c1SplitterPanel6.Size = new System.Drawing.Size(213, 623);
-            this.c1SplitterPanel6.SizeRatio = 21.632D;
+            this.c1SplitterPanel6.Size = new System.Drawing.Size(436, 644);
+            this.c1SplitterPanel6.SizeRatio = 28.02D;
             this.c1SplitterPanel6.TabIndex = 0;
             this.c1SplitterPanel6.Text = "Panel 1";
-            this.c1SplitterPanel6.Width = 213;
+            this.c1SplitterPanel6.Width = 443;
             // 
             // pnApmAll
             // 
@@ -2888,7 +2816,7 @@
             this.pnApmAll.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
             this.pnApmAll.Location = new System.Drawing.Point(0, 211);
             this.pnApmAll.Name = "pnApmAll";
-            this.pnApmAll.Size = new System.Drawing.Size(213, 412);
+            this.pnApmAll.Size = new System.Drawing.Size(436, 433);
             this.pnApmAll.TabIndex = 1;
             this.theme1.SetTheme(this.pnApmAll, "(default)");
             // 
@@ -2900,7 +2828,7 @@
             this.panel26.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
             this.panel26.Location = new System.Drawing.Point(0, 0);
             this.panel26.Name = "panel26";
-            this.panel26.Size = new System.Drawing.Size(213, 211);
+            this.panel26.Size = new System.Drawing.Size(436, 211);
             this.panel26.TabIndex = 0;
             this.theme1.SetTheme(this.panel26, "(default)");
             // 
@@ -2927,7 +2855,7 @@
             this.c1Calendar1.Location = new System.Drawing.Point(0, 0);
             this.c1Calendar1.MaxSelectionCount = 70;
             this.c1Calendar1.Name = "c1Calendar1";
-            this.c1Calendar1.Size = new System.Drawing.Size(213, 211);
+            this.c1Calendar1.Size = new System.Drawing.Size(436, 211);
             this.c1Calendar1.TabIndex = 1;
             this.theme1.SetTheme(this.c1Calendar1, "(default)");
             this.c1Calendar1.VisualStyle = C1.Win.C1Schedule.UI.VisualStyle.Custom;
@@ -2935,10 +2863,10 @@
             // c1SplitterPanel7
             // 
             this.c1SplitterPanel7.Controls.Add(this.panel28);
-            this.c1SplitterPanel7.Height = 644;
-            this.c1SplitterPanel7.Location = new System.Drawing.Point(224, 21);
+            this.c1SplitterPanel7.Height = 665;
+            this.c1SplitterPanel7.Location = new System.Drawing.Point(447, 21);
             this.c1SplitterPanel7.Name = "c1SplitterPanel7";
-            this.c1SplitterPanel7.Size = new System.Drawing.Size(797, 623);
+            this.c1SplitterPanel7.Size = new System.Drawing.Size(1138, 644);
             this.c1SplitterPanel7.TabIndex = 1;
             this.c1SplitterPanel7.Text = "Panel 2";
             // 
@@ -2951,7 +2879,7 @@
             this.panel28.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
             this.panel28.Location = new System.Drawing.Point(0, 0);
             this.panel28.Name = "panel28";
-            this.panel28.Size = new System.Drawing.Size(797, 623);
+            this.panel28.Size = new System.Drawing.Size(1138, 644);
             this.panel28.TabIndex = 0;
             this.theme1.SetTheme(this.panel28, "(default)");
             // 
@@ -2981,7 +2909,7 @@
             this.groupBox39.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
             this.groupBox39.Location = new System.Drawing.Point(0, 90);
             this.groupBox39.Name = "groupBox39";
-            this.groupBox39.Size = new System.Drawing.Size(797, 533);
+            this.groupBox39.Size = new System.Drawing.Size(1138, 554);
             this.groupBox39.TabIndex = 553;
             this.groupBox39.TabStop = false;
             this.groupBox39.Text = "Appointment";
@@ -3839,9 +3767,9 @@
             this.groupBox40.Controls.Add(this.tCApm);
             this.groupBox40.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.groupBox40.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.groupBox40.Location = new System.Drawing.Point(3, 258);
+            this.groupBox40.Location = new System.Drawing.Point(3, 279);
             this.groupBox40.Name = "groupBox40";
-            this.groupBox40.Size = new System.Drawing.Size(791, 272);
+            this.groupBox40.Size = new System.Drawing.Size(1132, 272);
             this.groupBox40.TabIndex = 559;
             this.groupBox40.TabStop = false;
             this.groupBox40.Text = "groupBox3";
@@ -3859,7 +3787,7 @@
             this.tCApm.Location = new System.Drawing.Point(3, 16);
             this.tCApm.Name = "tCApm";
             this.tCApm.SelectedIndex = 1;
-            this.tCApm.Size = new System.Drawing.Size(785, 253);
+            this.tCApm.Size = new System.Drawing.Size(1126, 253);
             this.tCApm.TabIndex = 0;
             this.tCApm.TabSizeMode = C1.Win.C1Command.TabSizeModeEnum.Fit;
             this.tCApm.TabsShowFocusCues = false;
@@ -3872,7 +3800,7 @@
             this.tabApmVisit.Controls.Add(this.pnApmVisit);
             this.tabApmVisit.Location = new System.Drawing.Point(1, 1);
             this.tabApmVisit.Name = "tabApmVisit";
-            this.tabApmVisit.Size = new System.Drawing.Size(783, 228);
+            this.tabApmVisit.Size = new System.Drawing.Size(1124, 228);
             this.tabApmVisit.TabIndex = 0;
             this.tabApmVisit.Text = "Visit";
             // 
@@ -3883,7 +3811,7 @@
             this.pnApmVisit.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
             this.pnApmVisit.Location = new System.Drawing.Point(0, 0);
             this.pnApmVisit.Name = "pnApmVisit";
-            this.pnApmVisit.Size = new System.Drawing.Size(783, 228);
+            this.pnApmVisit.Size = new System.Drawing.Size(1124, 228);
             this.pnApmVisit.TabIndex = 0;
             this.theme1.SetTheme(this.pnApmVisit, "(default)");
             // 
@@ -3892,7 +3820,7 @@
             this.tabApmDay.Controls.Add(this.pnApmDay);
             this.tabApmDay.Location = new System.Drawing.Point(1, 1);
             this.tabApmDay.Name = "tabApmDay";
-            this.tabApmDay.Size = new System.Drawing.Size(783, 228);
+            this.tabApmDay.Size = new System.Drawing.Size(1124, 228);
             this.tabApmDay.TabIndex = 1;
             this.tabApmDay.Text = "Day";
             // 
@@ -3903,7 +3831,7 @@
             this.pnApmDay.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
             this.pnApmDay.Location = new System.Drawing.Point(0, 0);
             this.pnApmDay.Name = "pnApmDay";
-            this.pnApmDay.Size = new System.Drawing.Size(783, 228);
+            this.pnApmDay.Size = new System.Drawing.Size(1124, 228);
             this.pnApmDay.TabIndex = 1;
             this.theme1.SetTheme(this.pnApmDay, "(default)");
             // 
@@ -4074,7 +4002,7 @@
             this.groupBox37.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
             this.groupBox37.Location = new System.Drawing.Point(0, 0);
             this.groupBox37.Name = "groupBox37";
-            this.groupBox37.Size = new System.Drawing.Size(797, 90);
+            this.groupBox37.Size = new System.Drawing.Size(1138, 90);
             this.groupBox37.TabIndex = 530;
             this.groupBox37.TabStop = false;
             this.groupBox37.Text = "Patient";
@@ -10676,7 +10604,7 @@
             this.c1SplitterPanel8.SizeRatio = 25.349D;
             this.c1SplitterPanel8.TabIndex = 0;
             this.c1SplitterPanel8.Text = "Panel 1";
-            this.c1SplitterPanel8.Width = 401;
+            this.c1SplitterPanel8.Width = 394;
             // 
             // pnHistoryVs
             // 
@@ -10799,6 +10727,28 @@
             this.pnHistoryScan.Size = new System.Drawing.Size(1178, 619);
             this.pnHistoryScan.TabIndex = 0;
             this.theme1.SetTheme(this.pnHistoryScan, "(default)");
+            // 
+            // pnAdm
+            // 
+            this.pnAdm.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.pnAdm.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pnAdm.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.pnAdm.Location = new System.Drawing.Point(0, 0);
+            this.pnAdm.Name = "pnAdm";
+            this.pnAdm.Size = new System.Drawing.Size(553, 644);
+            this.pnAdm.TabIndex = 0;
+            this.theme1.SetTheme(this.pnAdm, "(default)");
+            // 
+            // pnAdmAdd
+            // 
+            this.pnAdmAdd.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.pnAdmAdd.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pnAdmAdd.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.pnAdmAdd.Location = new System.Drawing.Point(0, 0);
+            this.pnAdmAdd.Name = "pnAdmAdd";
+            this.pnAdmAdd.Size = new System.Drawing.Size(1021, 644);
+            this.pnAdmAdd.TabIndex = 0;
+            this.theme1.SetTheme(this.pnAdmAdd, "(default)");
             // 
             // radioButton20
             // 
@@ -10988,6 +10938,29 @@
             this.label94.TabIndex = 545;
             this.theme1.SetTheme(this.label94, "(default)");
             // 
+            // c1SplitterPanel4
+            // 
+            this.c1SplitterPanel4.Collapsible = true;
+            this.c1SplitterPanel4.Controls.Add(this.pnAdm);
+            this.c1SplitterPanel4.Dock = C1.Win.C1SplitContainer.PanelDockStyle.Left;
+            this.c1SplitterPanel4.Location = new System.Drawing.Point(0, 21);
+            this.c1SplitterPanel4.Name = "c1SplitterPanel4";
+            this.c1SplitterPanel4.Size = new System.Drawing.Size(553, 644);
+            this.c1SplitterPanel4.SizeRatio = 35.421D;
+            this.c1SplitterPanel4.TabIndex = 0;
+            this.c1SplitterPanel4.Text = "Panel 1";
+            this.c1SplitterPanel4.Width = 553;
+            // 
+            // c1SplitterPanel5
+            // 
+            this.c1SplitterPanel5.Controls.Add(this.pnAdmAdd);
+            this.c1SplitterPanel5.Height = 644;
+            this.c1SplitterPanel5.Location = new System.Drawing.Point(564, 21);
+            this.c1SplitterPanel5.Name = "c1SplitterPanel5";
+            this.c1SplitterPanel5.Size = new System.Drawing.Size(1021, 644);
+            this.c1SplitterPanel5.TabIndex = 1;
+            this.c1SplitterPanel5.Text = "Panel 2";
+            // 
             // FrmNurseAdd2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -11093,11 +11066,6 @@
             this.tabLab.ResumeLayout(false);
             this.tabApp.ResumeLayout(false);
             this.pnAdm1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.sCApm)).EndInit();
-            this.sCApm.ResumeLayout(false);
-            this.c1SplitterPanel4.ResumeLayout(false);
-            this.c1SplitterPanel5.ResumeLayout(false);
-            this.pnAdmAdd.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.sCApmAdd)).EndInit();
             this.sCApmAdd.ResumeLayout(false);
             this.c1SplitterPanel6.ResumeLayout(false);
@@ -11456,6 +11424,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.cboBsp)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnVoid)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnSave)).EndInit();
+            this.c1SplitterPanel4.ResumeLayout(false);
+            this.c1SplitterPanel5.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -11847,7 +11817,7 @@
         private C1.Win.C1Input.C1Button c1Button3;
         private C1.Win.C1Input.C1TextBox txtCongenital;
         private C1.Win.C1Input.C1ComboBox cboAllergyDesc;
-        private C1.Win.C1SplitContainer.C1SplitContainer sCApm;
+        //private C1.Win.C1SplitContainer.C1SplitContainer sCApm;
         private C1.Win.C1SplitContainer.C1SplitterPanel c1SplitterPanel4;
         private System.Windows.Forms.Panel pnAdm;
         private C1.Win.C1SplitContainer.C1SplitterPanel c1SplitterPanel5;

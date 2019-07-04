@@ -4397,16 +4397,16 @@ namespace clinic_ivf.gui
         }
         private void FrmLabOPUAdd2_Load(object sender, EventArgs e)
         {
-            if (ic.iniC.statusCheckDonor.Equals("1"))
-            {
-                label73.Hide();
-                label72.Hide();
-                label88.Hide();
-                txtHnDonor.Hide();
-                txtNameDonor.Hide();
-                txtDobDonor.Hide();
-                btnDonorSearch.Hide();
-            }
+            //if (ic.iniC.statusCheckDonor.Equals("1"))
+            //{
+            //    label73.Hide();
+            //    label72.Hide();
+            //    label88.Hide();
+            //    txtHnDonor.Hide();
+            //    txtNameDonor.Hide();
+            //    txtDobDonor.Hide();
+            //    btnDonorSearch.Hide();
+            //}
         }
     }
 }

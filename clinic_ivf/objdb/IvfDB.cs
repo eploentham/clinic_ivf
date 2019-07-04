@@ -402,18 +402,28 @@ namespace clinic_ivf.objdb
             LabFormA lformA = new LabFormA();
             lbreq = lbReqDB.selectByPk1(reqid);
             lformA = lFormaDB.selectByVnOld(lbreq.vn);
+            setOPU(reqid, lformA.form_a_id);
+            return opu;
+        }
+        public LabOpu setOPU(String reqid, String formaid)
+        {
+            LabOpu opu = new LabOpu();
+            LabRequest lbreq = new LabRequest();
+            LabFormA lformA = new LabFormA();
+            lbreq = lbReqDB.selectByPk1(reqid);
+            lformA = lFormaDB.selectByPk1(formaid);
             opu.opu_id = "";
             opu.opu_code = copDB.genOPUDoc();
             opu.embryo_freez_stage = "";
             opu.embryoid_freez_position = "";
             opu.hn_male = lformA.hn_male;
-            opu.hn_female = lbreq.hn_female;
+            opu.hn_female = lformA.hn_female;
             opu.name_male = lformA.name_male;
-            opu.name_female = lbreq.name_female;
-            opu.remark = lbreq.remark;
+            opu.name_female = lformA.name_female;
+            opu.remark = lformA.remark;
             opu.dob_female = lformA.dob_female;
             opu.dob_male = lformA.dob_male;
-            opu.doctor_id = lbreq.doctor_id;
+            opu.doctor_id = lformA.doctor_id;
             opu.proce_id = "";
             //opu.opu_date = DateTime.Now.Year.ToString() + "-" + System.DateTime.Now.ToString("MM-dd");
             opu.opu_date = lformA.opu_date;
@@ -421,7 +431,7 @@ namespace clinic_ivf.objdb
             opu.req_id = reqid;
             opu.hn_donor = lformA.hn_donor;
             opu.name_donor = lformA.name_donor;
-            opu.dob_donor = lbreq.dob_donor;
+            opu.dob_donor = lformA.dob_donor;
             return opu;
         }
         public LabFet setFET(String reqid)
