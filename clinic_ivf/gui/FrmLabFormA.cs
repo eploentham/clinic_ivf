@@ -14,6 +14,9 @@ using System.Windows.Forms;
 
 namespace clinic_ivf.gui
 {
+    /*
+     * 62-07-05     0005    หน้าจอ frmLabFormA dob ไม่ถูกต้อง
+     */
     public partial class FrmLabFormA : Form
     {
         IvfControl ic;
@@ -993,6 +996,21 @@ namespace clinic_ivf.gui
             txtNameFeMale.Value = lFormA.name_female;
             txtNameMale.Value = lFormA.name_male;
             txtHnMale.Value = lFormA.hn_male;
+
+            Patient ptt = new Patient();                            // +0005
+            ptt = ic.ivfDB.pttDB.selectByHn(lFormA.hn_female);// +0005
+            txtDobFeMale.Value = ptt.patient_birthday;// +0005
+            ptt = ic.ivfDB.pttDB.selectByHn(lFormA.hn_male);// +0005
+            txtDobMale.Value = ptt.patient_birthday;// +0005
+            ptt = ic.ivfDB.pttDB.selectByHn(lFormA.hn_donor);// +0005
+            txtDonorDob.Value = ptt.patient_birthday;// +0005
+
+            txtHnDonor.Value = lFormA.hn_donor;
+            txtNameDonor.Value = lFormA.name_donor;
+            //txtDobFeMale.Value = lFormA.dob_female;// -0005
+            //txtDonorDob.Value = lFormA.dob_donor;         // -0005
+            //txtDobMale.Value = lFormA.dob_male;         // -0005
+
             //txtLabFormACode.Value = lFormA.form_a_code;
 
             txtOPUDate.Value = lFormA.opu_date;
@@ -1053,11 +1071,9 @@ namespace clinic_ivf.gui
             ic.setC1Combo(cboDoctor, lFormA.doctor_id);
             txtFormADate.Value = lFormA.form_a_date;
             cboRemark.Value = lFormA.remark;
-            txtHnDonor.Value = lFormA.hn_donor;
-            txtNameDonor.Value = lFormA.name_donor;
-            txtDonorDob.Value = lFormA.dob_donor;
-            txtDobFeMale.Value = lFormA.dob_female;
-            txtDobMale.Value = lFormA.dob_male;
+
+            
+
             chkYselet.Checked = lFormA.y_selection.Equals("1") ? true : false;
             chkXselet.Checked = lFormA.x_selection.Equals("1") ? true : false;
             chkWaitDay1.Checked = lFormA.status_wait_confirm_day1.Equals("1") ? true : false;

@@ -1347,6 +1347,7 @@ namespace clinic_ivf.gui
                     if (re.Equals("1")) // ตอน update
                     {
                         re = txtID.Text;
+                        // update table ต่างๆ ที่ใช้ name, dob
                     }
                     if (flagReadCard)
                     {
