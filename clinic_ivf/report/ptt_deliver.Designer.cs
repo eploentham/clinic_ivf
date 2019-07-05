@@ -333,6 +333,8 @@ namespace clinic_ivf.report {
             
             private global::System.Data.DataColumn columnagent;
             
+            private global::System.Data.DataColumn columnpulse;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public ptt_deliverDataTable() {
@@ -584,6 +586,14 @@ namespace clinic_ivf.report {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn pulseColumn {
+                get {
+                    return this.columnpulse;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -646,7 +656,8 @@ namespace clinic_ivf.report {
                         string lmp, 
                         string allergy, 
                         string image1, 
-                        string agent) {
+                        string agent, 
+                        string pulse) {
                 ptt_deliverRow rowptt_deliverRow = ((ptt_deliverRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         ptt_name_t,
@@ -675,7 +686,8 @@ namespace clinic_ivf.report {
                         lmp,
                         allergy,
                         image1,
-                        agent};
+                        agent,
+                        pulse};
                 rowptt_deliverRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowptt_deliverRow);
                 return rowptt_deliverRow;
@@ -725,6 +737,7 @@ namespace clinic_ivf.report {
                 this.columnallergy = base.Columns["allergy"];
                 this.columnimage1 = base.Columns["image1"];
                 this.columnagent = base.Columns["agent"];
+                this.columnpulse = base.Columns["pulse"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -784,6 +797,8 @@ namespace clinic_ivf.report {
                 base.Columns.Add(this.columnimage1);
                 this.columnagent = new global::System.Data.DataColumn("agent", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnagent);
+                this.columnpulse = new global::System.Data.DataColumn("pulse", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnpulse);
                 this.columnptt_name_t.Caption = "DataColumn1";
                 this.columnhn.Caption = "DataColumn1";
                 this.columnvn.Caption = "DataColumn1";
@@ -1371,6 +1386,22 @@ namespace clinic_ivf.report {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string pulse {
+                get {
+                    try {
+                        return ((string)(this[this.tableptt_deliver.pulseColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'pulse\' in table \'ptt_deliver\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableptt_deliver.pulseColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public bool Isptt_name_tNull() {
                 return this.IsNull(this.tableptt_deliver.ptt_name_tColumn);
             }
@@ -1691,6 +1722,18 @@ namespace clinic_ivf.report {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public void SetagentNull() {
                 this[this.tableptt_deliver.agentColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IspulseNull() {
+                return this.IsNull(this.tableptt_deliver.pulseColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetpulseNull() {
+                this[this.tableptt_deliver.pulseColumn] = global::System.Convert.DBNull;
             }
         }
         

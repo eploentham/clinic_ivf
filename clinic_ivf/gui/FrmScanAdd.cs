@@ -215,15 +215,129 @@ namespace clinic_ivf.gui
             {
                 if (MessageBox.Show("ต้องการ ลบข้อมูล รูป scan ", "", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == DialogResult.OK)
                 {
-                    DirectoryInfo dir = new DirectoryInfo(ic.iniC.pathImageScan);
-                    foreach (FileInfo fi in dir.GetFiles())
+                    //DirectoryInfo dir = new DirectoryInfo(ic.iniC.pathImageScan);
+                    //foreach (FileInfo fi in dir.GetFiles())
+                    //{
+                    //    fi.Delete();
+                    //}
+                    int i = 0;
+                    String dgs = "", name = "";
+                    Boolean chk = false;
+                    txtVN.Hide();
+                    btnVn.Hide();
+                    label3.Hide();
+                    txtAN.Hide();
+                    txtAnCnt.Hide();
+                    chkIPD.Hide();
+                    label6.Hide();
+                    txtVisitDate.Hide();
+                    txtAnDate.Hide();
+                    txtPreNo.Hide();
+
+                    ProgressBar pB1 = new ProgressBar();
+                    pB1.Location = new System.Drawing.Point(113, 36);
+                    pB1.Name = "pB1";
+                    pB1.Size = new System.Drawing.Size(862, 23);
+                    pB1.Left = txtVN.Left;
+                    pB1.Show();
+                    pB1.Value = 0;
+                    pB1.Minimum = 0;
+                    pB1.Maximum = array1.Count;
+                    groupBox1.Controls.Add(pB1);
+                    Application.DoEvents();
+                    foreach (String aa in array1)
                     {
-                        fi.Delete();
+                        i++;
+                        pB1.Value++;
+                        String[] aaa = aa.Split(',');
+                        if (aaa.Length == 3)
+                        {
+                            name = aaa[2].Replace("*", "");
+                            string ext = Path.GetExtension(name);
+                            String dgssname = "", dgssid = "", vn = "", an = "";
+                            dgssid = ic.ivfDB.dgssDB.getIdDgss("Document Other");
+                            DocGroupSubScan dgss = new DocGroupSubScan();
+                            dgss = ic.ivfDB.dgssDB.selectByPk(dgssid);
+                            DocScan dsc = new DocScan();
+                            dsc.active = "1";
+                            dsc.doc_scan_id = "";
+                            dsc.doc_group_id = dgss.doc_group_id;
+                            dsc.hn = txtHn.Text;
+                            dsc.vn = txtVN.Text;
+                            dsc.an = txtAN.Text;
+                            dsc.visit_date = ic.datetoDB(txtVisitDate.Text);
+                            dsc.host_ftp = ic.iniC.hostFTP;
+                            //dsc.image_path = txtHn.Text + "//" + txtHn.Text + "_" + dgssid + "_" + dsc.row_no + "." + ext[ext.Length - 1];
+                            dsc.image_path = "";
+                            dsc.doc_group_sub_id = dgssid;
+                            dsc.pre_no = txtPreNo.Text;
+                            dsc.an = txtAN.Text;
+                            DateTime dt = new DateTime();
+
+                            dsc.an_date = (DateTime.TryParse(txtAnDate.Text, out dt)) ? ic.datetoDB(txtAnDate.Text) : "";
+                            if (dsc.an_date.Equals("1-01-01"))
+                            {
+                                dsc.an_date = "";
+                            }
+                            dsc.folder_ftp = ic.iniC.folderFTP;
+                            dsc.status_ipd = chkIPD.Checked ? "I" : "O";
+                            String re = ic.ivfDB.dscDB.insertDocScan(dsc, ic.userId);
+                            //dsc.image_path = txtHn.Text + "//" + txtHn.Text + "_" + re + ext;
+                            if (chkIPD.Checked)
+                            {
+                                vn = txtAN.Text.Replace("/", "_").Replace("(", "_").Replace(")", "");
+                            }
+                            else
+                            {
+                                vn = txtVN.Text.Replace("/", "_").Replace("(", "_").Replace(")", "");
+                            }
+                            dsc.image_path = txtHn.Text.Replace("-", "").Replace("/", "-") + "-" + vn + "//" + txtHn.Text.Replace("-", "").Replace("/", "-") + "-" + vn + "-" + re + ext;
+                            String re1 = ic.ivfDB.dscDB.updateImagepath(dsc.image_path, re);
+                            FtpClient ftp = new FtpClient(ic.iniC.hostFTP, ic.iniC.userFTP, ic.iniC.passFTP, ic.ftpUsePassive);
+                            //MessageBox.Show("111", "");
+                            //ftp.createDirectory(txtHn.Text);
+                            ftp.createDirectory(ic.iniC.folderFTP + "//" + txtHn.Text.Replace("/", "-") + "-" + vn);
+                            //MessageBox.Show("222", "");
+                            ftp.delete(ic.iniC.folderFTP + "//" + dsc.image_path);
+                            //MessageBox.Show("333", "");
+                            ftp.upload(ic.iniC.folderFTP + "//" + dsc.image_path, name);
+                            //break;
+                            //Application.DoEvents();
+                        }
                     }
+                    pB1.Dispose();
+                    txtVN.Show();
+                    btnVn.Show();
+                    label3.Show();
+                    txtAN.Show();
+                    txtAnCnt.Show();
+                    chkIPD.Show();
+                    label6.Show();
+                    delFile();
+                    grf.Dispose();
+                    initGrf();
+                    setGrf();
+                    setImage1(true);
+                    MessageBox.Show("Upload รูป เวชระเบียน เรียบร้อย", "");
                 }
             }
         }
+        private void delFile()
+        {
+            DirectoryInfo dir = new DirectoryInfo(ic.iniC.pathImageScan);
+            foreach (FileInfo fi in dir.GetFiles())
+            {
+                try
+                {
+                    fi.Delete();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("error delFile -> " + ex.Message, "");
+                }
 
+            }
+        }
         private void BtnHn_Click(object sender, EventArgs e)
         {
             //throw new NotImplementedException();

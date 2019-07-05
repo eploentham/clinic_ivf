@@ -249,6 +249,7 @@ namespace clinic_ivf.gui
             cboSex.SelectedIndexChanged += CboSex_SelectedIndexChanged;
             btnHn1.Click += BtnHn1_Click;
             btnHn2.Click += BtnHn2_Click;
+            lbLmp.DoubleClick += LbLmp_DoubleClick;
 
             setKeyEnter();
 
@@ -268,6 +269,19 @@ namespace clinic_ivf.gui
             picPtt.SizeMode = PictureBoxSizeMode.StretchImage;
             tabFamily.Hide();
             //btnSavePic.Enabled = false;
+        }
+
+        private void LbLmp_DoubleClick(object sender, EventArgs e)
+        {
+            //throw new NotImplementedException();
+            ic.cStf.staff_id = "";
+            FrmPasswordConfirm frm = new FrmPasswordConfirm(ic);
+            frm.ShowDialog(this);
+            if (!ic.cStf.staff_id.Equals(""))
+            {
+                String re = ic.ivfDB.vsDB.updateLMP(txtVisitID.Text, ic.datetoDB(txtLmp.Text));
+                txtVisitLMP.Value = ic.datetoDB(txtLmp.Text);
+            }
         }
 
         private void BtnHn2_Click(object sender, EventArgs e)
@@ -458,6 +472,7 @@ namespace clinic_ivf.gui
             dt.Columns.Add("allergy", typeof(String));
             dt.Columns.Add("image1", typeof(byte[]));
             dt.Columns.Add("agent", typeof(String));
+            dt.Columns.Add("pulse", typeof(String));
 
             dt.Rows[0]["ptt_name_t"] = ptt.patient_firstname+" "+ ptt.patient_lastname;
             dt.Rows[0]["hn"] = ptt.patient_hn;
@@ -483,6 +498,7 @@ namespace clinic_ivf.gui
             dt.Rows[0]["lmp"] = txtVisitLMP.Text;
             dt.Rows[0]["allergy"] = cboAllergyDesc.Text;
             dt.Rows[0]["date1"] = ic.cop.day+"/"+ ic.cop.month+"/"+ ic.cop.year;
+            dt.Rows[0]["pulse"] = txtVisitPulse.Text;
             String txt = "";
             try
             {
@@ -1309,6 +1325,11 @@ namespace clinic_ivf.gui
             }
             String sex = cboSex.SelectedItem == null ? "" : ((ComboBoxItem)cboSex.SelectedItem).Value;
             if (sex.Equals(""))
+            {
+                MessageBox.Show("Sex ไม่ถูกต้อง", "");
+                return;
+            }
+            if (cboSex.Text.Equals(""))
             {
                 MessageBox.Show("Sex ไม่ถูกต้อง", "");
                 return;

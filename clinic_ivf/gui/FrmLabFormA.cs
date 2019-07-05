@@ -854,6 +854,7 @@ namespace clinic_ivf.gui
                             txtNameMale.Value = ptt.Name;
                             txtHnFeMale.Value = ptt.patient_hn_1;
                             txtNameFeMale.Value = ptt1.Name;
+                            txtDobFeMale.Value = ptt1.patient_birthday;
                             txtDobMale.Value = ptt.patient_birthday;
                         }
                         else if (ptt.f_sex_id.Equals("2"))//female

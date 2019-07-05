@@ -33,7 +33,7 @@
             this.splitMain = new System.Windows.Forms.SplitContainer();
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
             this.txtLmp = new C1.Win.C1Input.C1DateEdit();
-            this.label80 = new System.Windows.Forms.Label();
+            this.lbLmp = new System.Windows.Forms.Label();
             this.label76 = new System.Windows.Forms.Label();
             this.btnHn2 = new C1.Win.C1Input.C1Button();
             this.lbHn_2 = new System.Windows.Forms.Label();
@@ -488,7 +488,7 @@
             // 
             this.splitContainer2.Panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
             this.splitContainer2.Panel1.Controls.Add(this.txtLmp);
-            this.splitContainer2.Panel1.Controls.Add(this.label80);
+            this.splitContainer2.Panel1.Controls.Add(this.lbLmp);
             this.splitContainer2.Panel1.Controls.Add(this.label76);
             this.splitContainer2.Panel1.Controls.Add(this.btnHn2);
             this.splitContainer2.Panel1.Controls.Add(this.lbHn_2);
@@ -635,18 +635,18 @@
             this.theme1.SetTheme(this.txtLmp, "(default)");
             this.txtLmp.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
             // 
-            // label80
+            // lbLmp
             // 
-            this.label80.AutoSize = true;
-            this.label80.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.label80.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label80.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.label80.Location = new System.Drawing.Point(14, 312);
-            this.label80.Name = "label80";
-            this.label80.Size = new System.Drawing.Size(41, 16);
-            this.label80.TabIndex = 731;
-            this.label80.Text = "LMP :";
-            this.theme1.SetTheme(this.label80, "(default)");
+            this.lbLmp.AutoSize = true;
+            this.lbLmp.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.lbLmp.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbLmp.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.lbLmp.Location = new System.Drawing.Point(14, 312);
+            this.lbLmp.Name = "lbLmp";
+            this.lbLmp.Size = new System.Drawing.Size(41, 16);
+            this.lbLmp.TabIndex = 731;
+            this.lbLmp.Text = "LMP :";
+            this.theme1.SetTheme(this.lbLmp, "(default)");
             // 
             // label76
             // 
@@ -4728,7 +4728,7 @@
         private C1.Win.C1Input.C1Button btnHn1;
         private System.Windows.Forms.Label lbHn_1;
         private C1.Win.C1Input.C1TextBox txtHn_1;
-        private System.Windows.Forms.Label label80;
+        private System.Windows.Forms.Label lbLmp;
         private C1.Win.C1Input.C1TextBox c1TextBox3;
         private C1.Win.C1Input.C1DateEdit txtLmp;
     }

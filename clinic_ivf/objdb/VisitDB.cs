@@ -126,6 +126,14 @@ namespace clinic_ivf.objdb
             vs.patient_hn_2 = "patient_hn_2";
             vs.closeday_id = "closeday_id";
             vs.status_cashier = "status_cashier";
+            vs.date_cancel = "date_cancel";
+            vs.date_create = "date_create";
+            vs.date_modi = "date_modi";
+            vs.user_cancel = "user_cancel";
+            vs.user_create = "user_create";
+            vs.user_modi = "user_modi";
+            vs.active = "active";
+            vs.remark = "remark";
 
             vs.table = "t_visit";
             vs.pkField = "t_visit_id";
@@ -140,6 +148,7 @@ namespace clinic_ivf.objdb
             p.user_create = p.user_create == null ? "" : p.user_create;
             p.user_modi = p.user_modi == null ? "" : p.user_modi;
             p.user_cancel = p.user_cancel == null ? "" : p.user_cancel;
+            p.remark = p.remark == null ? "" : p.remark;
 
             p.visit_vn = p.visit_vn == null ? "" : p.visit_vn;
             p.visit_record_date_time = p.visit_record_date_time == null ? "" : p.visit_record_date_time;
@@ -579,6 +588,22 @@ namespace clinic_ivf.objdb
                 err = ex.Message + ex.InnerException;
             }
 
+            return re;
+        }
+        public String updateLMP(String vsid, String lmp)
+        {
+            String re = "", err = "";
+            String sql = "update " + vs.table + " " +
+                "Set " + vs.lmp + " ='"+ lmp + "' " +
+                "Where " + vs.pkField + " ='" + vsid + "' ";
+            try
+            {
+                re = conn.ExecuteNonQuery(conn.conn, sql);
+            }
+            catch (Exception ex)
+            {
+                err = ex.Message;
+            }
             return re;
         }
         public String updateOpenStatusNurse(String vsid)

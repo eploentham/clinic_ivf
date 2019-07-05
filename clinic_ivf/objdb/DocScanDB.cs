@@ -258,7 +258,7 @@ namespace clinic_ivf.objdb
                 "," + dsc.date_create + "= now()" +
                 "," + dsc.date_modi + "= ''" +
                 "," + dsc.date_cancel + "= ''" +
-                "," + dsc.user_create + "= '" + userId + "'" +
+                "," + dsc.user_create + "= '" + userId + "@" + conn._IPAddress + "'" +
                 "," + dsc.user_modi + "= ''" +
                 "," + dsc.user_cancel + "= ''" +
                 "," + dsc.an + "= '" + p.an + "'" +
@@ -353,11 +353,11 @@ namespace clinic_ivf.objdb
 
             if (p.doc_scan_id.Equals(""))
             {
-                re = insert(p, "");
+                re = insert(p, userId);
             }
             else
             {
-                re = update(p, "");
+                re = update(p, userId);
             }
 
             return re;
