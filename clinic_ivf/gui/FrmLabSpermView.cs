@@ -671,7 +671,7 @@ namespace clinic_ivf.gui
             Cursor curOld;
             curOld = this.Cursor;
             this.Cursor = Cursors.WaitCursor;
-            openLabOPUAdd(id, name, chk.Equals("2") ? " Analysis " : chk.Equals("1") ? " Freezing " : chk.Equals("3") ? " PESA " : " IUI ");
+            openLabOPUAdd(id, name, chk.Equals("1") ? " Analysis " : chk.Equals("2") ? " Freezing " : chk.Equals("3") ? " PESA " : " IUI ");
             this.Cursor = curOld;
             //}
         }

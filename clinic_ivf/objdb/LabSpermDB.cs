@@ -100,6 +100,9 @@ namespace clinic_ivf.objdb
             lsperm.post_total_motile = "post_total_motile";
             lsperm.post_volume1 = "post_volume1";
             lsperm.post_motility = "post_motility";
+            lsperm.morphology_head_defect1 = "morphology_head_defect1";
+            lsperm.morphology_neck_defect1 = "morphology_neck_defect1";
+            lsperm.morphology_tail_defect1 = "morphology_tail_defect1";
 
             lsperm.pkField = "sperm_id";
             lsperm.table = "lab_t_sperm";
@@ -189,6 +192,9 @@ namespace clinic_ivf.objdb
             p.post_total_motile = p.post_total_motile == null ? "" : p.post_total_motile;
             p.post_volume1 = p.post_volume1 == null ? "" : p.post_volume1;
             p.post_motility = p.post_motility == null ? "" : p.post_motility;
+            p.morphology_head_defect1 = p.morphology_head_defect1 == null ? "" : p.morphology_head_defect1;
+            p.morphology_neck_defect1 = p.morphology_neck_defect1 == null ? "" : p.morphology_neck_defect1;
+            p.morphology_tail_defect1 = p.morphology_tail_defect1 == null ? "" : p.morphology_tail_defect1;
 
             p.doctor_id = long.TryParse(p.doctor_id, out chk) ? chk.ToString() : "0";
             p.req_id = long.TryParse(p.req_id, out chk) ? chk.ToString() : "0";
@@ -380,6 +386,9 @@ namespace clinic_ivf.objdb
                     "," + lsperm.post_total_motile + "='" + p.post_total_motile + "' " +
                     "," + lsperm.post_volume1 + "='" + p.post_volume1 + "' " +
                     "," + lsperm.post_motility + "='" + p.post_motility + "' " +
+                    "," + lsperm.morphology_head_defect1 + "='" + p.morphology_head_defect1 + "'" +
+                    "," + lsperm.morphology_neck_defect1 + "='" + p.morphology_neck_defect1 + "'" +
+                    "," + lsperm.morphology_tail_defect1 + "='" + p.morphology_tail_defect1 + "'" +
                     "";
                 re = conn.ExecuteNonQuery(conn.conn, sql);
             }
@@ -473,6 +482,9 @@ namespace clinic_ivf.objdb
                     "," + lsperm.post_total_motile + "='" + p.post_total_motile + "' " +
                     "," + lsperm.post_volume1 + "='" + p.post_volume1 + "' " +
                     "," + lsperm.post_motility + "='" + p.post_motility + "' " +
+                    "," + lsperm.morphology_head_defect1 + "='" + p.morphology_head_defect1 + "'" +
+                    "," + lsperm.morphology_neck_defect1 + "='" + p.morphology_neck_defect1 + "'" +
+                    "," + lsperm.morphology_tail_defect1 + "='" + p.morphology_tail_defect1 + "'" +
                 " Where " + lsperm.pkField + " = '" + p.sperm_id + "' "
                 ;
             try
@@ -585,6 +597,9 @@ namespace clinic_ivf.objdb
                 vs1.post_total_motile = dt.Rows[0][lsperm.post_total_motile].ToString();
                 vs1.post_volume1 = dt.Rows[0][lsperm.post_volume1].ToString();
                 vs1.post_motility = dt.Rows[0][lsperm.post_motility].ToString();
+                vs1.morphology_head_defect1 = dt.Rows[0][lsperm.morphology_head_defect1].ToString();
+                vs1.morphology_neck_defect1 = dt.Rows[0][lsperm.morphology_neck_defect1].ToString();
+                vs1.morphology_tail_defect1 = dt.Rows[0][lsperm.morphology_tail_defect1].ToString();
             }
             else
             {
@@ -674,6 +689,9 @@ namespace clinic_ivf.objdb
             lforma1.post_total_motile = "";
             lforma1.post_volume1 = "";
             lforma1.post_motility = "";
+            lforma1.morphology_head_defect1 = "";
+            lforma1.morphology_neck_defect1 = "";
+            lforma1.morphology_tail_defect1 = "";
             return lforma1;
         }
     }

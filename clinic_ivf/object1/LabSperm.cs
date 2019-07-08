@@ -74,5 +74,8 @@ namespace clinic_ivf.object1
         public String post_motility_rate_2 { get; set; }
         public String post_motility_rate_1 { get; set; }
         public String post_motility { get; set; }
+        public String morphology_head_defect1 { get; set; }
+        public String morphology_neck_defect1 { get; set; }
+        public String morphology_tail_defect1 { get; set; }
     }
 }

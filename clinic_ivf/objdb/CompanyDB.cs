@@ -507,7 +507,7 @@ namespace clinic_ivf.objdb
             String doc = "", year = "", sql = "";
             Company cop1 = new Company();
             cop1 = selectByCode1("001");
-            year = DateTime.Now.ToString("yyyy");
+            year = DateTime.Now.Year.ToString();
             if (!year.Equals(cop1.year_curr))
             {
                 sql = "Update " + cop.table + " Set " +
@@ -541,8 +541,8 @@ namespace clinic_ivf.objdb
             String doc = "", year = "", sql = "";
             Company cop1 = new Company();
             cop1 = selectByCode1("001");
-            year = DateTime.Now.ToString("yyyy");
-            if (!year.Equals(cop1.year_curr))
+            //year = DateTime.Now.Year.ToString();
+            if (!cop1.year.Equals(cop1.year_curr))
             {
                 sql = "Update " + cop.table + " Set " +
                     " " + cop.year_curr + "='" + year + "' " +
@@ -575,8 +575,8 @@ namespace clinic_ivf.objdb
             String doc = "", year = "", sql = "";
             Company cop1 = new Company();
             cop1 = selectByCode1("001");
-            year = DateTime.Now.ToString("yyyy");
-            if (!year.Equals(cop1.year_curr))
+            //year = DateTime.Now.Year.ToString();
+            if (!cop1.year.Equals(cop1.year_curr))
             {
                 sql = "Update " + cop.table + " Set " +
                     " " + cop.year_curr + "='" + year + "' " +

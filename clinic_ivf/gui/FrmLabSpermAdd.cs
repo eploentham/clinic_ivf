@@ -276,7 +276,8 @@ namespace clinic_ivf.gui
         {
             //throw new NotImplementedException();
             calTotalCountSf();
-            if(e.KeyCode == Keys.Enter)
+            calMotileSf();
+            if (e.KeyCode == Keys.Enter)
             {
                 txtSfCount.Focus();
             }
@@ -315,6 +316,44 @@ namespace clinic_ivf.gui
             int.TryParse(neck.ToString(), out neck11);
             int.TryParse(tail.ToString(), out tail11);
 
+            if((head11+ neck11+ tail11) != abnormal)
+            {
+                Decimal.TryParse(txtSfHead1.Text, out head1);
+                head = (abnormal * head1) / total1;
+                neck = (abnormal * neck1) / total1;
+                tail = (abnormal * tail1) / total1;
+                Decimal headtemp = 0, necktemp = 0, tailtemp = 0;
+                int headtemp1 = 0, necktemp1 = 0, tailtemp1 = 0;
+                headtemp1 = Decimal.ToInt16(head);
+                headtemp = head - headtemp1;
+                necktemp1 = Decimal.ToInt16(neck);
+                necktemp = neck - necktemp1;
+                tailtemp1 = Decimal.ToInt16(tail);
+                tailtemp = tail - tailtemp1;
+                if(headtemp < necktemp)
+                {
+                    if (headtemp < tailtemp)
+                    {
+                        int.TryParse(headtemp1.ToString(), out head11);
+                    }
+                    else
+                    {
+                        int.TryParse(tailtemp1.ToString(), out tail11);
+                    }
+                }
+                else
+                {
+                    if (necktemp < tailtemp)
+                    {
+                        int.TryParse(necktemp1.ToString(), out neck11);
+                    }
+                    else
+                    {
+                        int.TryParse(tailtemp1.ToString(), out tail11);
+                    }
+                }
+                //head = Math.Round(head);
+            }
             txtSfHead.Value = head11;
             txtSfNeck.Value = neck11;
             txtSfTail.Value = tail11;
@@ -351,10 +390,12 @@ namespace clinic_ivf.gui
             Decimal.TryParse(txtSfCount.Text, out cntsf);
             Decimal.TryParse(txtSfVolume.Text, out vol);
             motile = (motilitysf * cntsf) / 100;
+            motile = Math.Round(motile);
             int.TryParse(motile.ToString(), out motile1);
             txtSfMotile.Value = motile1;
 
             totalmotile = motile * vol;
+            totalmotile = Math.Round(totalmotile);
             int.TryParse(totalmotile.ToString(), out totalmotile1);
             txtSfTotalMotile.Value = totalmotile1;
         }
@@ -833,6 +874,10 @@ namespace clinic_ivf.gui
             //txtSpermTime.Value = lsperm.time;
             ic.ivfDB.lspermDB.setCboRemark(cboSfRemark);
             ic.setC1ComboByName(cboSfRemark, lsperm.remark);
+
+            txtSfHead1.Value = lsperm.morphology_head_defect1;
+            txtSfNeck1.Value = lsperm.morphology_neck_defect1;
+            txtSfTail1.Value = lsperm.morphology_tail_defect1;
         }
         private void setControlPesa()
         {
@@ -1037,6 +1082,10 @@ namespace clinic_ivf.gui
             lsperm.date_approve = ic.datetoDB(txtSfApproveDate.Text);
             lsperm.date_report = ic.datetoDB(txtSfReportDate.Text);
             lsperm.remark = cboSfRemark.Text;
+
+            lsperm.morphology_head_defect1 = txtSfHead1.Text;
+            lsperm.morphology_neck_defect1 = txtSfNeck1.Text;
+            lsperm.morphology_tail_defect1 = txtSfTail1.Text;
         }
         private void setSpermPesa()
         {

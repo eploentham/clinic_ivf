@@ -27,8 +27,9 @@ namespace clinic_ivf.gui
 
         int colID = 1, colVNshow = 2, colVN = 12, colPttHn = 3, colPttName = 4, colVsDate = 5, colVsTime = 6, colVsEtime = 7, colVsAgent=8, colStatus = 9, colPttId = 10, colStatusNurse = 11, colStatusCashier = 12, colBillId=13;
         int colCldId = 1, colCldBillNo = 2, colCldReceiptNo=3, colCldDate = 4, colCldHn = 5, colCldName = 6, colCldPkg = 7, colCldMed = 8, colCldDtrfee = 9, colCldLab1 = 10, colCldLab2 = 11, colCldNurfee = 12, colCldTreat = 13, colCldDiscount = 14, colCldOther = 15, colCldAmount = 16, colCldVn=17, colCldBillId=18;
+        int colBildId = 1, colBildName = 2, colBildprice = 3, colBildqty = 4, colBildAmt = 5, colBildDiscount = 6, colBildNetAmt = 7, colBildGrpName = 8, colBildBilId = 9, colBildInclude = 10, colBildStatus = 11;
 
-        C1FlexGrid grfQue, grfFinish, grfSearch, grfCld;
+        C1FlexGrid grfQue, grfFinish, grfSearch, grfCld, grfBilD;
         C1SuperTooltip stt;
         C1SuperErrorProvider sep;
         Timer timer;
@@ -83,6 +84,7 @@ namespace clinic_ivf.gui
             initGrfSearch();
             setGrfSearch();
             initGrfCloseDay();
+            initGrfBillD();
 
             int timerlab = 0;
             int.TryParse(ic.iniC.timerlabreqaccept, out timerlab);
@@ -478,7 +480,7 @@ namespace clinic_ivf.gui
 
             //FilterRow fr = new FilterRow(grfExpn);
 
-            //grfQue.DoubleClick += GrfQue_DoubleClick;
+            grfCld.DoubleClick += GrfCld_DoubleClick;
             //grfExpnC.CellButtonClick += new C1.Win.C1FlexGrid.RowColEventHandler(this.grfDept_CellButtonClick);
             //grfExpnC.CellChanged += new C1.Win.C1FlexGrid.RowColEventHandler(this.grfDept_CellChanged);
             //ContextMenu menuGw = new ContextMenu();
@@ -493,6 +495,173 @@ namespace clinic_ivf.gui
             //theme1.SetTheme(tabDiag, "Office2010Blue");
             //theme1.SetTheme(tabFinish, "Office2010Blue");
 
+        }
+
+        private void GrfCld_DoubleClick(object sender, EventArgs e)
+        {
+            //throw new NotImplementedException();
+            if (grfCld.Row < 0) return;
+            if (grfCld.Col < 0) return;
+            String bilid = "";
+            bilid = grfCld[grfCld.Row, colCldBillId].ToString();
+            setGrfBillD(bilid);
+        }
+
+        private void setGrfBillD(String bilid)
+        {
+            //grfDept.Rows.Count = 7;
+            grfBilD.Clear();
+            DataTable dt1 = new DataTable();
+            DataTable dt = new DataTable();
+            dt = ic.ivfDB.obildDB.selectByBillId(bilid);
+            //if (search.Equals(""))
+            //{
+            //    String date = "";
+            //    DateTime dt11 = new DateTime();
+            //    if (DateTime.TryParse(txtDateStart.Text, out dt11))
+            //    {
+            //        //dt11 = dt11.AddDays(-1);
+            //        date = dt11.Year + "-" + dt11.ToString("MM-dd");
+
+            //    }
+            //}
+            //else
+            //{
+            //    //grfPtt.DataSource = ic.ivfDB.vsOldDB.selectCurrentVisit(search);
+            //} 
+            grfBilD.Rows.Count = dt.Rows.Count + 2;
+            grfBilD.Cols.Count = 12;
+            C1TextBox txt = new C1TextBox();
+            //C1ComboBox cboproce = new C1ComboBox();
+            //ic.ivfDB.itmDB.setCboItem(cboproce);
+            grfBilD.Cols[colBildName].Editor = txt;
+            grfBilD.Cols[colBildAmt].Editor = txt;
+            grfBilD.Cols[colBildDiscount].Editor = txt;
+            grfBilD.Cols[colBildNetAmt].Editor = txt;
+
+            grfBilD.Cols[colBildName].Width = 360;
+            grfBilD.Cols[colBildAmt].Width = 120;
+            grfBilD.Cols[colBildDiscount].Width = 120;
+            grfBilD.Cols[colBildNetAmt].Width = 120;
+            grfBilD.Cols[colBildGrpName].Width = 120;
+            grfBilD.Cols[colBildprice].Width = 100;
+            grfBilD.Cols[colBildqty].Width = 80;
+
+            grfBilD.ShowCursor = true;
+            //grdFlex.Cols[colID].Caption = "no";
+            //grfDept.Cols[colCode].Caption = "รหัส";
+
+            grfBilD.Cols[colBildName].Caption = "รายการ";
+            grfBilD.Cols[colBildAmt].Caption = "จำนวนเงิน";
+            grfBilD.Cols[colBildDiscount].Caption = "ส่วนลด";
+            grfBilD.Cols[colBildNetAmt].Caption = "คงเหลือ";
+            grfBilD.Cols[colBildGrpName].Caption = "group name";
+            grfBilD.Cols[colBildprice].Caption = "Price";
+            grfBilD.Cols[colBildqty].Caption = "QTY";
+
+            Color color = ColorTranslator.FromHtml(ic.iniC.grfRowColor);
+            //CellRange rg1 = grfBank.GetCellRange(1, colE, grfBank.Rows.Count, colE);
+            //rg1.Style = grfBank.Styles["date"];
+            //grfCu.Cols[colID].Visible = false;
+            int i = 1;
+            Decimal inc = 0, ext = 0;
+            foreach (DataRow row in dt.Rows)
+            {
+                try
+                {
+                    Decimal price = 0, qty = 1, price1 = 0;
+                    Decimal.TryParse(row[ic.ivfDB.obildDB.obilld.Price].ToString(), out price);
+                    Decimal.TryParse(row[ic.ivfDB.obildDB.obilld.qty].ToString(), out qty);
+                    Decimal.TryParse(row[ic.ivfDB.obildDB.obilld.price1].ToString(), out price1);
+                    grfBilD[i, 0] = i;
+                    grfBilD[i, colBildId] = row[ic.ivfDB.obildDB.obilld.ID].ToString();
+                    grfBilD[i, colBildName] = row[ic.ivfDB.obildDB.obilld.Name].ToString();
+                    grfBilD[i, colBildAmt] = price.ToString("#,###.00");
+                    grfBilD[i, colBildDiscount] = "";
+                    if (row["Extra"].ToString().Equals("1"))
+                    {
+                        grfBilD[i, colBildNetAmt] = price.ToString("#,###.00");
+                    }
+                    else
+                    {
+                        if (row[ic.ivfDB.obildDB.obilld.GroupType].ToString().Equals("Package"))
+                        {
+                            grfBilD[i, colBildNetAmt] = price.ToString("#,###.00");
+                        }
+                        else
+                        {
+                            grfBilD[i, colBildNetAmt] = "0.00";
+                        }
+                    }
+
+                    grfBilD[i, colBildGrpName] = row[ic.ivfDB.obildDB.obilld.GroupType].ToString();
+                    grfBilD[i, colBildInclude] = row["Extra"].ToString().Equals("1") ? "Extra" : "Include";
+                    grfBilD[i, colBildStatus] = row["status"].ToString();
+                    grfBilD[i, colBildprice] = price1.ToString("#,###.00");
+                    grfBilD[i, colBildqty] = qty.ToString("#,###.00");
+                    //if (!row[ic.ivfDB.vsOldDB.vsold.form_a_id].ToString().Equals("0"))
+                    //{
+                    //    CellNote note = new CellNote("ส่ง Lab Request Foam A");
+                    //    CellRange rg = grfBillD.GetCellRange(i, colVN);
+                    //    rg.UserData = note;
+                    //}
+                    //if (i % 2 == 0)
+                    //    grfPtt.Rows[i].StyleNew.BackColor = color;
+                    //if (row["Extra"].ToString().Equals("1"))
+                    //{
+                    //    ext += (price * qty);
+                    //}
+                    //else
+                    //{
+                    //    if (row["status"].ToString().Equals("package"))
+                    //    {
+                    //        inc += (price * qty);
+                    //    }
+                    //}
+                    i++;
+                }
+                catch (Exception ex)
+                {
+                    String err = "";
+                }
+            }
+            CellNoteManager mgr = new CellNoteManager(grfBilD);
+            grfBilD.Cols[colBildBilId].Visible = false;
+            grfBilD.Cols[colBildId].Visible = false;
+            grfBilD.Cols[colBildDiscount].AllowEditing = false;
+            grfBilD.Cols[colBildAmt].AllowEditing = false;
+            grfBilD.Cols[colBildNetAmt].AllowEditing = false;
+            grfBilD.Cols[colBildGrpName].AllowEditing = false;
+            grfBilD.Cols[colBildInclude].AllowEditing = false;
+            //theme1.SetTheme(grfQue, ic.theme);
+            //Decimal amt = 0;
+            //amt = calAmt();
+            //txtAmt.Value = amt.ToString("#,###.00");
+        }
+        
+        private void initGrfBillD()
+        {
+            grfBilD = new C1FlexGrid();
+            grfBilD.Font = fEdit;
+            grfBilD.Dock = System.Windows.Forms.DockStyle.Fill;
+            grfBilD.Location = new System.Drawing.Point(0, 0);
+
+            //FilterRow fr = new FilterRow(grfExpn);
+
+            //grfSearch.DoubleClick += GrfSearch_DoubleClick;
+            //grfExpnC.CellButtonClick += new C1.Win.C1FlexGrid.RowColEventHandler(this.grfDept_CellButtonClick);
+            //grfExpnC.CellChanged += new C1.Win.C1FlexGrid.RowColEventHandler(this.grfDept_CellChanged);
+            //ContextMenu menuGw = new ContextMenu();
+            //menuGw.MenuItems.Add("ออก บิล", new EventHandler(ContextMenu_edit_billSearch));
+            //menuGw.MenuItems.Add("ส่งกลับ", new EventHandler(ContextMenu_send_back));
+            //menuGw.MenuItems.Add("&ยกเลิก", new EventHandler(ContextMenu_Gw_Cancel));
+            //grfSearch.ContextMenu = menuGw;
+            pnCldDetailBillD.Controls.Add(grfBilD);
+
+            theme1.SetTheme(grfBilD, "Office2010Red");
+
+            //theme1.SetTheme(tabDiag, "Office2010Blue");
+            //theme1.SetTheme(tabFinish, "Office2010Blue");
         }
         private void initGrfSearch()
         {
@@ -1000,6 +1169,7 @@ namespace clinic_ivf.gui
         {
             spCloseDay.HeaderHeight = 0;
             spCld.Width = 370;
+            c1SplitContainer3.HeaderHeight = 0;
             sB1.Text = "Date " + ic.cop.day + "-" + ic.cop.month + "-" + ic.cop.year + " Server " + ic.iniC.hostDB + " FTP " + ic.iniC.hostFTP + "/" + ic.iniC.folderFTP;
         }
     }

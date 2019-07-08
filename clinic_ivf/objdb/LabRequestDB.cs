@@ -435,11 +435,11 @@ namespace clinic_ivf.objdb
                 "," + lbReq.vn + "= '" + p.vn + "'" +
                 "," + lbReq.item_id + "= '" + p.item_id + "'" +
                 "," + lbReq.date_create + "= now()" +
-                "," + lbReq.date_modi + "= '" + p.date_modi + "'" +
-                "," + lbReq.date_cancel + "= '" + p.date_cancel + "'" +
-                "," + lbReq.user_create + "= '" + userId + "'" +
-                "," + lbReq.user_modi + "= '" + p.user_modi + "'" +
-                "," + lbReq.user_cancel + "= '" + p.user_cancel + "'" +
+                "," + lbReq.date_modi + "= ''" +
+                "," + lbReq.date_cancel + "= ''" +
+                "," + lbReq.user_create + "= '" + userId + "@" + conn._IPAddress + "'" +
+                "," + lbReq.user_modi + "= ''" +
+                "," + lbReq.user_cancel + "= ''" +
                 "," + lbReq.accept_staff_id + "= '" + p.accept_staff_id + "'" +
                 "," + lbReq.start_staff_id + "= '" + p.start_staff_id + "'" +
                 "," + lbReq.result_staff_id + "= '" + p.result_staff_id + "'" +

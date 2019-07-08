@@ -2936,7 +2936,7 @@ namespace clinic_ivf.gui
             String err = "";
             try
             {
-                String dtrid = "";
+                String dtrid = "", errfor = "";
                 err = "00";
                 dtrid = cboDoctor.SelectedItem == null ? "" : ((ComboBoxItem)cboDoctor.SelectedItem).Value;
                 err = "01";
@@ -2944,7 +2944,7 @@ namespace clinic_ivf.gui
                 {
                     try
                     {
-                        String lgid = "", reqid = "", itmid = "", errfor="";
+                        String lgid = "", reqid = "", itmid = "";
                         errfor = "000";
                         lgid = row[colOrdlpid] != null ? row[colOrdlpid].ToString() : "";
                         reqid = row[colOrdid] != null ? row[colOrdid].ToString() : "";
@@ -2961,12 +2961,12 @@ namespace clinic_ivf.gui
                             lbReq = ic.ivfDB.setLabRequest(txtPttNameE.Text, txtVnOld.Text, dtrid, "", txtHn.Text, ic.datetoDB(txtDob.Text), reqid, itmid, "", "", "", "", "", txtVsId.Text);
                         }
                         errfor = "002";
-                        String re = ic.ivfDB.lbReqDB.insertLabRequest(lbReq, txtStfConfirmID.Text);
+                        String re = ic.ivfDB.lbReqDB.insertLabRequest(lbReq, ic.userId);
                         ic.ivfDB.oJlabdDB.updateReqId(re, reqid);
                     }
                     catch(Exception ex)
                     {
-                        MessageBox.Show("error " + ex.Message, "BtnFinish_Click foreach grfOrder.Rows");
+                        MessageBox.Show("error "+ errfor+" " + ex.Message, "BtnFinish_Click foreach grfOrder.Rows");
                     }
                     
                 }

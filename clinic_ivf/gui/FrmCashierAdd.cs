@@ -897,13 +897,13 @@ namespace clinic_ivf.gui
 
             grfBillD.Rows.Count = dt.Rows.Count + 2;
             grfBillD.Cols.Count = 12;
-            C1TextBox txt = new C1TextBox();
+            //C1TextBox txt = new C1TextBox();
             //C1ComboBox cboproce = new C1ComboBox();
             //ic.ivfDB.itmDB.setCboItem(cboproce);
-            grfBillD.Cols[colName].Editor = txt;
-            grfBillD.Cols[colAmt].Editor = txt;
-            grfBillD.Cols[colDiscount].Editor = txt;
-            grfBillD.Cols[colNetAmt].Editor = txt;
+            //grfBillD.Cols[colName].Editor = txt;
+            //grfBillD.Cols[colAmt].Editor = txt;
+            //grfBillD.Cols[colDiscount].Editor = txt;
+            //grfBillD.Cols[colNetAmt].Editor = txt;
 
             grfBillD.Cols[colName].Width = 360;
             grfBillD.Cols[colAmt].Width = 120;

@@ -80,7 +80,6 @@
             this.label17 = new System.Windows.Forms.Label();
             this.txtCntPtt = new C1.Win.C1Input.C1TextBox();
             this.spCldDetail = new C1.Win.C1SplitContainer.C1SplitterPanel();
-            this.pnCldDetail = new System.Windows.Forms.Panel();
             this.tabCloseDayView = new C1.Win.C1Command.C1DockingTabPage();
             this.panel4 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
@@ -97,6 +96,11 @@
             this.pnReportCri = new System.Windows.Forms.Panel();
             this.c1SplitterPanel2 = new C1.Win.C1SplitContainer.C1SplitterPanel();
             this.pnReportView = new System.Windows.Forms.Panel();
+            this.c1SplitContainer3 = new C1.Win.C1SplitContainer.C1SplitContainer();
+            this.c1SplitterPanel5 = new C1.Win.C1SplitContainer.C1SplitterPanel();
+            this.c1SplitterPanel6 = new C1.Win.C1SplitContainer.C1SplitterPanel();
+            this.pnCldDetail = new System.Windows.Forms.Panel();
+            this.pnCldDetailBillD = new System.Windows.Forms.Panel();
             this.sB.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.theme1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tC)).BeginInit();
@@ -146,6 +150,10 @@
             this.c1SplitterPanel3.SuspendLayout();
             this.c1SplitterPanel4.SuspendLayout();
             this.c1SplitterPanel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.c1SplitContainer3)).BeginInit();
+            this.c1SplitContainer3.SuspendLayout();
+            this.c1SplitterPanel5.SuspendLayout();
+            this.c1SplitterPanel6.SuspendLayout();
             this.SuspendLayout();
             // 
             // sB
@@ -896,7 +904,7 @@
             // spCldDetail
             // 
             this.spCldDetail.Collapsible = true;
-            this.spCldDetail.Controls.Add(this.pnCldDetail);
+            this.spCldDetail.Controls.Add(this.c1SplitContainer3);
             this.spCldDetail.Dock = C1.Win.C1SplitContainer.PanelDockStyle.Right;
             this.spCldDetail.Location = new System.Drawing.Point(372, 21);
             this.spCldDetail.Name = "spCldDetail";
@@ -904,17 +912,6 @@
             this.spCldDetail.TabIndex = 1;
             this.spCldDetail.Text = "Panel 2";
             this.spCldDetail.Width = 698;
-            // 
-            // pnCldDetail
-            // 
-            this.pnCldDetail.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.pnCldDetail.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnCldDetail.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.pnCldDetail.Location = new System.Drawing.Point(0, 0);
-            this.pnCldDetail.Name = "pnCldDetail";
-            this.pnCldDetail.Size = new System.Drawing.Size(698, 651);
-            this.pnCldDetail.TabIndex = 0;
-            this.theme1.SetTheme(this.pnCldDetail, "(default)");
             // 
             // tabCloseDayView
             // 
@@ -1151,6 +1148,68 @@
             this.pnReportView.TabIndex = 0;
             this.theme1.SetTheme(this.pnReportView, "(default)");
             // 
+            // c1SplitContainer3
+            // 
+            this.c1SplitContainer3.AutoSizeElement = C1.Framework.AutoSizeElement.Both;
+            this.c1SplitContainer3.CollapsingAreaColor = System.Drawing.Color.White;
+            this.c1SplitContainer3.CollapsingCueColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.c1SplitContainer3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.c1SplitContainer3.FixedLineColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(189)))), ((int)(((byte)(182)))));
+            this.c1SplitContainer3.HeaderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.c1SplitContainer3.HeaderLineWidth = 1;
+            this.c1SplitContainer3.Location = new System.Drawing.Point(0, 0);
+            this.c1SplitContainer3.Name = "c1SplitContainer3";
+            this.c1SplitContainer3.Panels.Add(this.c1SplitterPanel5);
+            this.c1SplitContainer3.Panels.Add(this.c1SplitterPanel6);
+            this.c1SplitContainer3.Size = new System.Drawing.Size(698, 651);
+            this.c1SplitContainer3.SplitterColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(189)))), ((int)(((byte)(182)))));
+            this.c1SplitContainer3.SplitterMovingColor = System.Drawing.Color.Black;
+            this.c1SplitContainer3.TabIndex = 0;
+            this.theme1.SetTheme(this.c1SplitContainer3, "(default)");
+            this.c1SplitContainer3.UseParentVisualStyle = false;
+            // 
+            // c1SplitterPanel5
+            // 
+            this.c1SplitterPanel5.Controls.Add(this.pnCldDetail);
+            this.c1SplitterPanel5.Height = 324;
+            this.c1SplitterPanel5.Location = new System.Drawing.Point(0, 21);
+            this.c1SplitterPanel5.Name = "c1SplitterPanel5";
+            this.c1SplitterPanel5.Size = new System.Drawing.Size(698, 303);
+            this.c1SplitterPanel5.TabIndex = 0;
+            this.c1SplitterPanel5.Text = "Panel 1";
+            // 
+            // c1SplitterPanel6
+            // 
+            this.c1SplitterPanel6.Controls.Add(this.pnCldDetailBillD);
+            this.c1SplitterPanel6.Height = 323;
+            this.c1SplitterPanel6.Location = new System.Drawing.Point(0, 349);
+            this.c1SplitterPanel6.Name = "c1SplitterPanel6";
+            this.c1SplitterPanel6.Size = new System.Drawing.Size(698, 302);
+            this.c1SplitterPanel6.TabIndex = 1;
+            this.c1SplitterPanel6.Text = "Panel 2";
+            // 
+            // pnCldDetail
+            // 
+            this.pnCldDetail.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.pnCldDetail.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pnCldDetail.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.pnCldDetail.Location = new System.Drawing.Point(0, 0);
+            this.pnCldDetail.Name = "pnCldDetail";
+            this.pnCldDetail.Size = new System.Drawing.Size(698, 303);
+            this.pnCldDetail.TabIndex = 0;
+            this.theme1.SetTheme(this.pnCldDetail, "(default)");
+            // 
+            // pnCldDetailBillD
+            // 
+            this.pnCldDetailBillD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.pnCldDetailBillD.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pnCldDetailBillD.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.pnCldDetailBillD.Location = new System.Drawing.Point(0, 0);
+            this.pnCldDetailBillD.Name = "pnCldDetailBillD";
+            this.pnCldDetailBillD.Size = new System.Drawing.Size(698, 302);
+            this.pnCldDetailBillD.TabIndex = 0;
+            this.theme1.SetTheme(this.pnCldDetailBillD, "(default)");
+            // 
             // FrmCashierView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1214,6 +1273,10 @@
             this.c1SplitterPanel3.ResumeLayout(false);
             this.c1SplitterPanel4.ResumeLayout(false);
             this.c1SplitterPanel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.c1SplitContainer3)).EndInit();
+            this.c1SplitContainer3.ResumeLayout(false);
+            this.c1SplitterPanel5.ResumeLayout(false);
+            this.c1SplitterPanel6.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1288,7 +1351,11 @@
         private C1.Win.C1Input.C1Button btnSaveCld;
         private System.Windows.Forms.Label label15;
         private C1.Win.C1Input.C1TextBox txtRemark;
-        private System.Windows.Forms.Panel pnCldDetail;
         private C1.Win.C1Input.C1TextBox txtCldId;
+        private C1.Win.C1SplitContainer.C1SplitContainer c1SplitContainer3;
+        private C1.Win.C1SplitContainer.C1SplitterPanel c1SplitterPanel5;
+        private C1.Win.C1SplitContainer.C1SplitterPanel c1SplitterPanel6;
+        private System.Windows.Forms.Panel pnCldDetail;
+        private System.Windows.Forms.Panel pnCldDetailBillD;
     }
 }
