@@ -162,13 +162,13 @@ namespace clinic_ivf.gui
                         try
                         {
                             SetDefaultPrinter(ic.iniC.printerSticker);
-
-                            Visit vs = new Visit();
-                            vs = ic.ivfDB.vsDB.selectByPk1(lis.visit_id);
-                            Patient ptt = new Patient();
-                            ptt = ic.ivfDB.pttDB.selectByPk1(vs.t_patient_id);
+                            
                             Lis lis1 = new Lis();
                             lis1 = ic.ivfDB.lisDB.selectByPk(re1);
+                            Visit vs = new Visit();
+                            vs = ic.ivfDB.vsDB.selectByVn(lis1.visit_vn);
+                            Patient ptt = new Patient();
+                            ptt = ic.ivfDB.pttDB.selectByPk1(vs.t_patient_id);
 
                             DataTable dt = new DataTable();
                             dt.Columns.Add("hn", typeof(String));
@@ -176,13 +176,13 @@ namespace clinic_ivf.gui
                             dt.Columns.Add("age", typeof(String));
                             dt.Columns.Add("vn", typeof(String));
                             DataRow row11 = dt.NewRow();
-                            row11["hn"] = ptt.patient_hn;
-                            row11["name"] = ptt.Name;
+                            row11["hn"] = lis1.visit_hn;
+                            row11["name"] = lis1.patient_name;
                             row11["age"] = "Age " + ptt.AgeStringShort() + " [" + ic.datetoShow(ptt.patient_birthday) + "]";
                             row11["vn"] = lis1.barcode;
                             dt.Rows.Add(row11);
                             FrmReport frm = new FrmReport(ic);
-                            frm.setStickerPatientThemal(dt);
+                            frm.setStickerPatientThemalLIS(dt);
                             frm.ShowDialog(this);
                             SetDefaultPrinter(ic.iniC.printerSticker);
                         }

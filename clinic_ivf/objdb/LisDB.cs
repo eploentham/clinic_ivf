@@ -436,7 +436,7 @@ namespace clinic_ivf.objdb
                 dgs1.date_time_receive = dt.Rows[0][lis.date_time_receive].ToString();
                 dgs1.date_time_finish = dt.Rows[0][lis.date_time_finish].ToString();
                 dgs1.lab_id = dt.Rows[0][lis.lab_id].ToString();
-                //dgs1.status_ipd = dt.Rows[0][lis.status_ipd].ToString();
+                dgs1.visit_id = dt.Rows[0][lis.visit_id].ToString();
                 //dgs1.an_cnt = dt.Rows[0][lis.an_cnt].ToString();
                 //dgs1.folder_ftp = dt.Rows[0][lis.an_cnt].ToString();
             }

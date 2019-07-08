@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmLabSpermAdd));
             this.sB = new System.Windows.Forms.StatusStrip();
             this.sB1 = new System.Windows.Forms.ToolStripStatusLabel();
             this.theme1 = new C1.Win.C1Themes.C1ThemeController();
@@ -36,7 +37,7 @@
             this.panel2 = new System.Windows.Forms.Panel();
             this.sCFreezing = new C1.Win.C1SplitContainer.C1SplitContainer();
             this.c1SplitterPanel3 = new C1.Win.C1SplitContainer.C1SplitterPanel();
-            this.panel5 = new System.Windows.Forms.Panel();
+            this.pnSfLeft = new System.Windows.Forms.Panel();
             this.c1SplitterPanel4 = new C1.Win.C1SplitContainer.C1SplitterPanel();
             this.panel7 = new System.Windows.Forms.Panel();
             this.btnPrintSf = new C1.Win.C1Input.C1Button();
@@ -45,9 +46,9 @@
             this.c1PictureBox3 = new C1.Win.C1Input.C1PictureBox();
             this.c1PictureBox4 = new C1.Win.C1Input.C1PictureBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.cboSfWbc = new C1.Win.C1Input.C1ComboBox();
             this.label67 = new System.Windows.Forms.Label();
             this.label68 = new System.Windows.Forms.Label();
-            this.txtSfWbc = new C1.Win.C1Input.C1TextBox();
             this.label69 = new System.Windows.Forms.Label();
             this.label70 = new System.Windows.Forms.Label();
             this.txtSfMotility2 = new C1.Win.C1Input.C1TextBox();
@@ -63,8 +64,11 @@
             this.txtSfID = new C1.Win.C1Input.C1TextBox();
             this.label77 = new System.Windows.Forms.Label();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.cboSfNoofVail = new C1.Win.C1Input.C1ComboBox();
+            this.txtSfTail1 = new C1.Win.C1Input.C1TextBox();
+            this.txtSfNeck1 = new C1.Win.C1Input.C1TextBox();
+            this.txtSfHead1 = new C1.Win.C1Input.C1TextBox();
             this.label137 = new System.Windows.Forms.Label();
-            this.txtSfVial = new C1.Win.C1Input.C1TextBox();
             this.label138 = new System.Windows.Forms.Label();
             this.label78 = new System.Windows.Forms.Label();
             this.label79 = new System.Windows.Forms.Label();
@@ -191,6 +195,9 @@
             this.txtID = new C1.Win.C1Input.C1TextBox();
             this.label50 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.txtTail1 = new C1.Win.C1Input.C1TextBox();
+            this.txtNeck1 = new C1.Win.C1Input.C1TextBox();
+            this.txtHead1 = new C1.Win.C1Input.C1TextBox();
             this.label54 = new System.Windows.Forms.Label();
             this.label22 = new System.Windows.Forms.Label();
             this.txtNormal = new C1.Win.C1Input.C1TextBox();
@@ -503,6 +510,66 @@
             this.txtPeNameFeMale = new C1.Win.C1Input.C1TextBox();
             this.label207 = new System.Windows.Forms.Label();
             this.txtPeHnFeMale = new C1.Win.C1Input.C1TextBox();
+            this.pnSfLeftEmail = new System.Windows.Forms.Panel();
+            this.c1Ribbon1 = new C1.Win.C1Ribbon.C1Ribbon();
+            this.ribbonApplicationMenu1 = new C1.Win.C1Ribbon.RibbonApplicationMenu();
+            this.ribbonQat1 = new C1.Win.C1Ribbon.RibbonQat();
+            this.ribbonConfigToolBar1 = new C1.Win.C1Ribbon.RibbonConfigToolBar();
+            this.ribbonTopToolBar1 = new C1.Win.C1Ribbon.RibbonTopToolBar();
+            this.ribbonBottomToolBar1 = new C1.Win.C1Ribbon.RibbonBottomToolBar();
+            this.NewDocumentButton = new C1.Win.C1Ribbon.RibbonButton();
+            this.OpenDocumentButton = new C1.Win.C1Ribbon.RibbonButton();
+            this.SaveDocumentButton = new C1.Win.C1Ribbon.RibbonButton();
+            this.SaveDocumentAsButton = new C1.Win.C1Ribbon.RibbonSplitButton();
+            this.SaveDocumentAsRtfButton = new C1.Win.C1Ribbon.RibbonButton();
+            this.SaveDocumentAsTextButton = new C1.Win.C1Ribbon.RibbonButton();
+            this.SaveDocumentAsOtherButton = new C1.Win.C1Ribbon.RibbonButton();
+            this.ExitButton = new C1.Win.C1Ribbon.RibbonButton();
+            this.ribbonStyleCombo = new C1.Win.C1Ribbon.RibbonComboBox();
+            this.F1HelpButton = new C1.Win.C1Ribbon.RibbonButton();
+            this.UndoButton = new C1.Win.C1Ribbon.RibbonButton();
+            this.RedoButton = new C1.Win.C1Ribbon.RibbonButton();
+            this.HomeTab = new C1.Win.C1Ribbon.RibbonTab();
+            this.ClipboardGroup = new C1.Win.C1Ribbon.RibbonGroup();
+            this.PasteSplitButton = new C1.Win.C1Ribbon.RibbonSplitButton();
+            this.PasteButton = new C1.Win.C1Ribbon.RibbonButton();
+            this.PasteAsTextButton = new C1.Win.C1Ribbon.RibbonButton();
+            this.CutButton = new C1.Win.C1Ribbon.RibbonButton();
+            this.CopyButton = new C1.Win.C1Ribbon.RibbonButton();
+            this.FormatPainterButton = new C1.Win.C1Ribbon.RibbonButton();
+            this.FontGroup = new C1.Win.C1Ribbon.RibbonGroup();
+            this.ribbonToolBar1 = new C1.Win.C1Ribbon.RibbonToolBar();
+            this.FontFaceComboBox = new C1.Win.C1Ribbon.RibbonComboBox();
+            this.FontSizeComboBox = new C1.Win.C1Ribbon.RibbonComboBox();
+            this.ribbonToolBar2 = new C1.Win.C1Ribbon.RibbonToolBar();
+            this.FontBoldButton = new C1.Win.C1Ribbon.RibbonToggleButton();
+            this.FontItalicButton = new C1.Win.C1Ribbon.RibbonToggleButton();
+            this.FontUnderlineButton = new C1.Win.C1Ribbon.RibbonToggleButton();
+            this.FontStrikeoutButton = new C1.Win.C1Ribbon.RibbonToggleButton();
+            this.ribbonSeparator1 = new C1.Win.C1Ribbon.RibbonSeparator();
+            this.FontColorPicker = new C1.Win.C1Ribbon.RibbonColorPicker();
+            this.BackColorPicker = new C1.Win.C1Ribbon.RibbonColorPicker();
+            this.ParagraphGroup = new C1.Win.C1Ribbon.RibbonGroup();
+            this.ribbonToolBar3 = new C1.Win.C1Ribbon.RibbonToolBar();
+            this.DecreaseIndentButton = new C1.Win.C1Ribbon.RibbonButton();
+            this.IncreaseIndentButton = new C1.Win.C1Ribbon.RibbonButton();
+            this.ribbonToolBar4 = new C1.Win.C1Ribbon.RibbonToolBar();
+            this.ribbonToggleGroup1 = new C1.Win.C1Ribbon.RibbonToggleGroup();
+            this.ParagraphAlignLeftButton = new C1.Win.C1Ribbon.RibbonToggleButton();
+            this.ParagraphAlignCenterButton = new C1.Win.C1Ribbon.RibbonToggleButton();
+            this.ParagraphAlignRightButton = new C1.Win.C1Ribbon.RibbonToggleButton();
+            this.ViewTab = new C1.Win.C1Ribbon.RibbonTab();
+            this.ViewZoomGroup = new C1.Win.C1Ribbon.RibbonGroup();
+            this.ViewZoomCombobox = new C1.Win.C1Ribbon.RibbonComboBox();
+            this.NormalSizeButton = new C1.Win.C1Ribbon.RibbonButton();
+            this.pnEmailAddSubject = new System.Windows.Forms.Panel();
+            this.btnSfSendEmail = new C1.Win.C1Input.C1Button();
+            this.btnMaleSearch = new C1.Win.C1Input.C1Button();
+            this.label210 = new System.Windows.Forms.Label();
+            this.txtEmailSubject = new C1.Win.C1Input.C1TextBox();
+            this.label211 = new System.Windows.Forms.Label();
+            this.txtEmailTo = new C1.Win.C1Input.C1TextBox();
+            this.txtEmailBody = new C1.Win.C1Input.C1TextBox();
             this.sB.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.theme1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tC)).BeginInit();
@@ -512,20 +579,24 @@
             ((System.ComponentModel.ISupportInitialize)(this.sCFreezing)).BeginInit();
             this.sCFreezing.SuspendLayout();
             this.c1SplitterPanel3.SuspendLayout();
+            this.pnSfLeft.SuspendLayout();
             this.c1SplitterPanel4.SuspendLayout();
             this.panel7.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btnPrintSf)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.c1PictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.c1PictureBox4)).BeginInit();
             this.groupBox3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.txtSfWbc)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cboSfWbc)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtSfMotility2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtSfMotility3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtSfMotility4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtSfLabReqCode)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtSfID)).BeginInit();
             this.groupBox4.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.txtSfVial)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cboSfNoofVail)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtSfTail1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtSfNeck1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtSfHead1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtSfNormal)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtSfAbnormal)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtSfTail)).BeginInit();
@@ -582,6 +653,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtLabReqCode)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtID)).BeginInit();
             this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtTail1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtNeck1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtHead1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtNormal)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtAbnormal)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtTail)).BeginInit();
@@ -726,6 +800,14 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtPeHnMale)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtPeNameFeMale)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtPeHnFeMale)).BeginInit();
+            this.pnSfLeftEmail.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.c1Ribbon1)).BeginInit();
+            this.pnEmailAddSubject.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.btnSfSendEmail)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnMaleSearch)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtEmailSubject)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtEmailTo)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtEmailBody)).BeginInit();
             this.SuspendLayout();
             // 
             // sB
@@ -814,34 +896,35 @@
             // c1SplitterPanel3
             // 
             this.c1SplitterPanel3.Collapsible = true;
-            this.c1SplitterPanel3.Controls.Add(this.panel5);
+            this.c1SplitterPanel3.Controls.Add(this.pnSfLeft);
             this.c1SplitterPanel3.Dock = C1.Win.C1SplitContainer.PanelDockStyle.Left;
             this.c1SplitterPanel3.Location = new System.Drawing.Point(0, 21);
             this.c1SplitterPanel3.Name = "c1SplitterPanel3";
-            this.c1SplitterPanel3.Size = new System.Drawing.Size(384, 754);
-            this.c1SplitterPanel3.SizeRatio = 31.208D;
+            this.c1SplitterPanel3.Size = new System.Drawing.Size(508, 754);
+            this.c1SplitterPanel3.SizeRatio = 41.101D;
             this.c1SplitterPanel3.TabIndex = 0;
             this.c1SplitterPanel3.Text = "Panel 1";
-            this.c1SplitterPanel3.Width = 391;
+            this.c1SplitterPanel3.Width = 515;
             // 
-            // panel5
+            // pnSfLeft
             // 
-            this.panel5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.panel5.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.panel5.Location = new System.Drawing.Point(0, 0);
-            this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(384, 754);
-            this.panel5.TabIndex = 0;
-            this.theme1.SetTheme(this.panel5, "(default)");
+            this.pnSfLeft.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.pnSfLeft.Controls.Add(this.pnSfLeftEmail);
+            this.pnSfLeft.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pnSfLeft.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.pnSfLeft.Location = new System.Drawing.Point(0, 0);
+            this.pnSfLeft.Name = "pnSfLeft";
+            this.pnSfLeft.Size = new System.Drawing.Size(508, 754);
+            this.pnSfLeft.TabIndex = 0;
+            this.theme1.SetTheme(this.pnSfLeft, "(default)");
             // 
             // c1SplitterPanel4
             // 
             this.c1SplitterPanel4.Controls.Add(this.panel7);
             this.c1SplitterPanel4.Height = 775;
-            this.c1SplitterPanel4.Location = new System.Drawing.Point(395, 21);
+            this.c1SplitterPanel4.Location = new System.Drawing.Point(519, 21);
             this.c1SplitterPanel4.Name = "c1SplitterPanel4";
-            this.c1SplitterPanel4.Size = new System.Drawing.Size(862, 754);
+            this.c1SplitterPanel4.Size = new System.Drawing.Size(738, 754);
             this.c1SplitterPanel4.TabIndex = 1;
             this.c1SplitterPanel4.Text = "Panel 2";
             // 
@@ -941,7 +1024,7 @@
             this.panel7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
             this.panel7.Location = new System.Drawing.Point(0, 0);
             this.panel7.Name = "panel7";
-            this.panel7.Size = new System.Drawing.Size(862, 754);
+            this.panel7.Size = new System.Drawing.Size(738, 754);
             this.panel7.TabIndex = 0;
             this.theme1.SetTheme(this.panel7, "(default)");
             // 
@@ -1008,9 +1091,9 @@
             // groupBox3
             // 
             this.groupBox3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.groupBox3.Controls.Add(this.cboSfWbc);
             this.groupBox3.Controls.Add(this.label67);
             this.groupBox3.Controls.Add(this.label68);
-            this.groupBox3.Controls.Add(this.txtSfWbc);
             this.groupBox3.Controls.Add(this.label69);
             this.groupBox3.Controls.Add(this.label70);
             this.groupBox3.Controls.Add(this.txtSfMotility2);
@@ -1029,6 +1112,28 @@
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Motility Grading";
             this.theme1.SetTheme(this.groupBox3, "(default)");
+            // 
+            // cboSfWbc
+            // 
+            this.cboSfWbc.AllowSpinLoop = false;
+            this.cboSfWbc.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
+            this.cboSfWbc.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.cboSfWbc.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
+            this.cboSfWbc.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.cboSfWbc.GapHeight = 0;
+            this.cboSfWbc.ImagePadding = new System.Windows.Forms.Padding(0);
+            this.cboSfWbc.ItemsDisplayMember = "";
+            this.cboSfWbc.ItemsValueMember = "";
+            this.cboSfWbc.Location = new System.Drawing.Point(154, 98);
+            this.cboSfWbc.Name = "cboSfWbc";
+            this.cboSfWbc.Size = new System.Drawing.Size(99, 20);
+            this.cboSfWbc.Style.DropDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.cboSfWbc.Style.DropDownBorderColor = System.Drawing.Color.Gainsboro;
+            this.cboSfWbc.Style.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.cboSfWbc.TabIndex = 868;
+            this.cboSfWbc.Tag = null;
+            this.theme1.SetTheme(this.cboSfWbc, "(default)");
+            this.cboSfWbc.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
             // 
             // label67
             // 
@@ -1049,25 +1154,12 @@
             this.label68.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
             this.label68.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label68.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.label68.Location = new System.Drawing.Point(259, 103);
+            this.label68.Location = new System.Drawing.Point(259, 100);
             this.label68.Name = "label68";
             this.label68.Size = new System.Drawing.Size(39, 16);
             this.label68.TabIndex = 866;
             this.label68.Text = "/HPF";
             this.theme1.SetTheme(this.label68, "(default)");
-            // 
-            // txtSfWbc
-            // 
-            this.txtSfWbc.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtSfWbc.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
-            this.txtSfWbc.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.txtSfWbc.Location = new System.Drawing.Point(154, 101);
-            this.txtSfWbc.Name = "txtSfWbc";
-            this.txtSfWbc.Size = new System.Drawing.Size(99, 20);
-            this.txtSfWbc.TabIndex = 865;
-            this.txtSfWbc.Tag = null;
-            this.theme1.SetTheme(this.txtSfWbc, "(default)");
-            this.txtSfWbc.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
             // 
             // label69
             // 
@@ -1255,8 +1347,11 @@
             // groupBox4
             // 
             this.groupBox4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.groupBox4.Controls.Add(this.cboSfNoofVail);
+            this.groupBox4.Controls.Add(this.txtSfTail1);
+            this.groupBox4.Controls.Add(this.txtSfNeck1);
+            this.groupBox4.Controls.Add(this.txtSfHead1);
             this.groupBox4.Controls.Add(this.label137);
-            this.groupBox4.Controls.Add(this.txtSfVial);
             this.groupBox4.Controls.Add(this.label138);
             this.groupBox4.Controls.Add(this.label78);
             this.groupBox4.Controls.Add(this.label79);
@@ -1283,6 +1378,70 @@
             this.groupBox4.Text = "Morphology (Strict criteria)";
             this.theme1.SetTheme(this.groupBox4, "(default)");
             // 
+            // cboSfNoofVail
+            // 
+            this.cboSfNoofVail.AllowSpinLoop = false;
+            this.cboSfNoofVail.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
+            this.cboSfNoofVail.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.cboSfNoofVail.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
+            this.cboSfNoofVail.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.cboSfNoofVail.GapHeight = 0;
+            this.cboSfNoofVail.ImagePadding = new System.Windows.Forms.Padding(0);
+            this.cboSfNoofVail.ItemsDisplayMember = "";
+            this.cboSfNoofVail.ItemsValueMember = "";
+            this.cboSfNoofVail.Location = new System.Drawing.Point(139, 145);
+            this.cboSfNoofVail.Name = "cboSfNoofVail";
+            this.cboSfNoofVail.Size = new System.Drawing.Size(99, 20);
+            this.cboSfNoofVail.Style.DropDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.cboSfNoofVail.Style.DropDownBorderColor = System.Drawing.Color.Gainsboro;
+            this.cboSfNoofVail.Style.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.cboSfNoofVail.TabIndex = 869;
+            this.cboSfNoofVail.Tag = null;
+            this.theme1.SetTheme(this.cboSfNoofVail, "(default)");
+            this.cboSfNoofVail.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            // 
+            // txtSfTail1
+            // 
+            this.txtSfTail1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtSfTail1.DataType = typeof(short);
+            this.txtSfTail1.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
+            this.txtSfTail1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.txtSfTail1.Location = new System.Drawing.Point(270, 121);
+            this.txtSfTail1.Name = "txtSfTail1";
+            this.txtSfTail1.Size = new System.Drawing.Size(57, 20);
+            this.txtSfTail1.TabIndex = 644;
+            this.txtSfTail1.Tag = null;
+            this.theme1.SetTheme(this.txtSfTail1, "(default)");
+            this.txtSfTail1.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            // 
+            // txtSfNeck1
+            // 
+            this.txtSfNeck1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtSfNeck1.DataType = typeof(short);
+            this.txtSfNeck1.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
+            this.txtSfNeck1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.txtSfNeck1.Location = new System.Drawing.Point(270, 95);
+            this.txtSfNeck1.Name = "txtSfNeck1";
+            this.txtSfNeck1.Size = new System.Drawing.Size(57, 20);
+            this.txtSfNeck1.TabIndex = 643;
+            this.txtSfNeck1.Tag = null;
+            this.theme1.SetTheme(this.txtSfNeck1, "(default)");
+            this.txtSfNeck1.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            // 
+            // txtSfHead1
+            // 
+            this.txtSfHead1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtSfHead1.DataType = typeof(short);
+            this.txtSfHead1.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
+            this.txtSfHead1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.txtSfHead1.Location = new System.Drawing.Point(270, 70);
+            this.txtSfHead1.Name = "txtSfHead1";
+            this.txtSfHead1.Size = new System.Drawing.Size(57, 20);
+            this.txtSfHead1.TabIndex = 642;
+            this.txtSfHead1.Tag = null;
+            this.theme1.SetTheme(this.txtSfHead1, "(default)");
+            this.txtSfHead1.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            // 
             // label137
             // 
             this.label137.AutoSize = true;
@@ -1295,19 +1454,6 @@
             this.label137.TabIndex = 641;
             this.label137.Text = "Vial.";
             this.theme1.SetTheme(this.label137, "(default)");
-            // 
-            // txtSfVial
-            // 
-            this.txtSfVial.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtSfVial.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
-            this.txtSfVial.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.txtSfVial.Location = new System.Drawing.Point(139, 147);
-            this.txtSfVial.Name = "txtSfVial";
-            this.txtSfVial.Size = new System.Drawing.Size(99, 20);
-            this.txtSfVial.TabIndex = 640;
-            this.txtSfVial.Tag = null;
-            this.theme1.SetTheme(this.txtSfVial, "(default)");
-            this.txtSfVial.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
             // 
             // label138
             // 
@@ -1428,11 +1574,13 @@
             // 
             // txtSfAbnormal
             // 
+            this.txtSfAbnormal.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
             this.txtSfAbnormal.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtSfAbnormal.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
             this.txtSfAbnormal.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
             this.txtSfAbnormal.Location = new System.Drawing.Point(139, 43);
             this.txtSfAbnormal.Name = "txtSfAbnormal";
+            this.txtSfAbnormal.ReadOnly = true;
             this.txtSfAbnormal.Size = new System.Drawing.Size(99, 20);
             this.txtSfAbnormal.TabIndex = 591;
             this.txtSfAbnormal.Tag = null;
@@ -1454,11 +1602,13 @@
             // 
             // txtSfTail
             // 
+            this.txtSfTail.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
             this.txtSfTail.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtSfTail.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
             this.txtSfTail.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
             this.txtSfTail.Location = new System.Drawing.Point(139, 121);
             this.txtSfTail.Name = "txtSfTail";
+            this.txtSfTail.ReadOnly = true;
             this.txtSfTail.Size = new System.Drawing.Size(99, 20);
             this.txtSfTail.TabIndex = 597;
             this.txtSfTail.Tag = null;
@@ -1493,11 +1643,13 @@
             // 
             // txtSfNeck
             // 
+            this.txtSfNeck.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
             this.txtSfNeck.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtSfNeck.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
             this.txtSfNeck.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
             this.txtSfNeck.Location = new System.Drawing.Point(139, 95);
             this.txtSfNeck.Name = "txtSfNeck";
+            this.txtSfNeck.ReadOnly = true;
             this.txtSfNeck.Size = new System.Drawing.Size(99, 20);
             this.txtSfNeck.TabIndex = 595;
             this.txtSfNeck.Tag = null;
@@ -1506,11 +1658,13 @@
             // 
             // txtSfHead
             // 
+            this.txtSfHead.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
             this.txtSfHead.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtSfHead.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
             this.txtSfHead.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
             this.txtSfHead.Location = new System.Drawing.Point(139, 69);
             this.txtSfHead.Name = "txtSfHead";
+            this.txtSfHead.ReadOnly = true;
             this.txtSfHead.Size = new System.Drawing.Size(99, 20);
             this.txtSfHead.TabIndex = 593;
             this.txtSfHead.Tag = null;
@@ -2151,11 +2305,14 @@
             // 
             // txtSfMotility
             // 
+            this.txtSfMotility.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
             this.txtSfMotility.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtSfMotility.DataType = typeof(short);
             this.txtSfMotility.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
             this.txtSfMotility.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
             this.txtSfMotility.Location = new System.Drawing.Point(141, 490);
             this.txtSfMotility.Name = "txtSfMotility";
+            this.txtSfMotility.ReadOnly = true;
             this.txtSfMotility.Size = new System.Drawing.Size(99, 20);
             this.txtSfMotility.TabIndex = 795;
             this.txtSfMotility.Tag = null;
@@ -2177,11 +2334,13 @@
             // 
             // txtSfTotalMotile
             // 
+            this.txtSfTotalMotile.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
             this.txtSfTotalMotile.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtSfTotalMotile.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
             this.txtSfTotalMotile.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
             this.txtSfTotalMotile.Location = new System.Drawing.Point(141, 467);
             this.txtSfTotalMotile.Name = "txtSfTotalMotile";
+            this.txtSfTotalMotile.ReadOnly = true;
             this.txtSfTotalMotile.Size = new System.Drawing.Size(99, 20);
             this.txtSfTotalMotile.TabIndex = 793;
             this.txtSfTotalMotile.Tag = null;
@@ -2203,11 +2362,13 @@
             // 
             // txtSfMotile
             // 
+            this.txtSfMotile.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
             this.txtSfMotile.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtSfMotile.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
             this.txtSfMotile.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
             this.txtSfMotile.Location = new System.Drawing.Point(141, 444);
             this.txtSfMotile.Name = "txtSfMotile";
+            this.txtSfMotile.ReadOnly = true;
             this.txtSfMotile.Size = new System.Drawing.Size(99, 20);
             this.txtSfMotile.TabIndex = 791;
             this.txtSfMotile.Tag = null;
@@ -2229,11 +2390,13 @@
             // 
             // txtSfTotalCount
             // 
+            this.txtSfTotalCount.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
             this.txtSfTotalCount.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtSfTotalCount.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
             this.txtSfTotalCount.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
             this.txtSfTotalCount.Location = new System.Drawing.Point(141, 421);
             this.txtSfTotalCount.Name = "txtSfTotalCount";
+            this.txtSfTotalCount.ReadOnly = true;
             this.txtSfTotalCount.Size = new System.Drawing.Size(99, 20);
             this.txtSfTotalCount.TabIndex = 789;
             this.txtSfTotalCount.Tag = null;
@@ -2256,6 +2419,7 @@
             // txtSfCount
             // 
             this.txtSfCount.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtSfCount.DataType = typeof(short);
             this.txtSfCount.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
             this.txtSfCount.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
             this.txtSfCount.Location = new System.Drawing.Point(141, 398);
@@ -2282,6 +2446,7 @@
             // txtSfVolume
             // 
             this.txtSfVolume.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtSfVolume.DataType = typeof(short);
             this.txtSfVolume.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
             this.txtSfVolume.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
             this.txtSfVolume.Location = new System.Drawing.Point(141, 375);
@@ -2307,11 +2472,13 @@
             // 
             // txtSfViability
             // 
+            this.txtSfViability.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
             this.txtSfViability.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtSfViability.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
             this.txtSfViability.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
             this.txtSfViability.Location = new System.Drawing.Point(141, 352);
             this.txtSfViability.Name = "txtSfViability";
+            this.txtSfViability.ReadOnly = true;
             this.txtSfViability.Size = new System.Drawing.Size(99, 20);
             this.txtSfViability.TabIndex = 783;
             this.txtSfViability.Tag = null;
@@ -3264,6 +3431,9 @@
             // groupBox1
             // 
             this.groupBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.groupBox1.Controls.Add(this.txtTail1);
+            this.groupBox1.Controls.Add(this.txtNeck1);
+            this.groupBox1.Controls.Add(this.txtHead1);
             this.groupBox1.Controls.Add(this.label54);
             this.groupBox1.Controls.Add(this.label22);
             this.groupBox1.Controls.Add(this.txtNormal);
@@ -3288,6 +3458,48 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Morphology (Strict criteria)";
             this.theme1.SetTheme(this.groupBox1, "(default)");
+            // 
+            // txtTail1
+            // 
+            this.txtTail1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtTail1.DataType = typeof(short);
+            this.txtTail1.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
+            this.txtTail1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.txtTail1.Location = new System.Drawing.Point(270, 120);
+            this.txtTail1.Name = "txtTail1";
+            this.txtTail1.Size = new System.Drawing.Size(57, 20);
+            this.txtTail1.TabIndex = 647;
+            this.txtTail1.Tag = null;
+            this.theme1.SetTheme(this.txtTail1, "(default)");
+            this.txtTail1.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            // 
+            // txtNeck1
+            // 
+            this.txtNeck1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtNeck1.DataType = typeof(short);
+            this.txtNeck1.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
+            this.txtNeck1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.txtNeck1.Location = new System.Drawing.Point(270, 94);
+            this.txtNeck1.Name = "txtNeck1";
+            this.txtNeck1.Size = new System.Drawing.Size(57, 20);
+            this.txtNeck1.TabIndex = 646;
+            this.txtNeck1.Tag = null;
+            this.theme1.SetTheme(this.txtNeck1, "(default)");
+            this.txtNeck1.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            // 
+            // txtHead1
+            // 
+            this.txtHead1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtHead1.DataType = typeof(short);
+            this.txtHead1.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
+            this.txtHead1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.txtHead1.Location = new System.Drawing.Point(270, 69);
+            this.txtHead1.Name = "txtHead1";
+            this.txtHead1.Size = new System.Drawing.Size(57, 20);
+            this.txtHead1.TabIndex = 645;
+            this.txtHead1.Tag = null;
+            this.theme1.SetTheme(this.txtHead1, "(default)");
+            this.txtHead1.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
             // 
             // label54
             // 
@@ -4119,6 +4331,7 @@
             // txtMotility
             // 
             this.txtMotility.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtMotility.DataType = typeof(short);
             this.txtMotility.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
             this.txtMotility.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
             this.txtMotility.Location = new System.Drawing.Point(141, 490);
@@ -4223,6 +4436,7 @@
             // txtCount
             // 
             this.txtCount.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtCount.DataType = typeof(short);
             this.txtCount.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
             this.txtCount.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
             this.txtCount.Location = new System.Drawing.Point(141, 398);
@@ -4249,6 +4463,7 @@
             // txtVolume
             // 
             this.txtVolume.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtVolume.DataType = typeof(short);
             this.txtVolume.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
             this.txtVolume.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
             this.txtVolume.Location = new System.Drawing.Point(141, 375);
@@ -6059,6 +6274,7 @@
             // txtIuiVolume
             // 
             this.txtIuiVolume.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtIuiVolume.DataType = typeof(short);
             this.txtIuiVolume.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
             this.txtIuiVolume.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
             this.txtIuiVolume.Location = new System.Drawing.Point(141, 375);
@@ -8232,6 +8448,488 @@
             this.theme1.SetTheme(this.txtPeHnFeMale, "(default)");
             this.txtPeHnFeMale.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
             // 
+            // pnSfLeftEmail
+            // 
+            this.pnSfLeftEmail.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.pnSfLeftEmail.Controls.Add(this.txtEmailBody);
+            this.pnSfLeftEmail.Controls.Add(this.pnEmailAddSubject);
+            this.pnSfLeftEmail.Controls.Add(this.c1Ribbon1);
+            this.pnSfLeftEmail.Dock = System.Windows.Forms.DockStyle.Top;
+            this.pnSfLeftEmail.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.pnSfLeftEmail.Location = new System.Drawing.Point(0, 0);
+            this.pnSfLeftEmail.Name = "pnSfLeftEmail";
+            this.pnSfLeftEmail.Size = new System.Drawing.Size(508, 437);
+            this.pnSfLeftEmail.TabIndex = 0;
+            this.theme1.SetTheme(this.pnSfLeftEmail, "(default)");
+            // 
+            // c1Ribbon1
+            // 
+            this.c1Ribbon1.ApplicationMenuHolder = this.ribbonApplicationMenu1;
+            this.c1Ribbon1.AutoSizeElement = C1.Framework.AutoSizeElement.Width;
+            this.c1Ribbon1.BottomToolBarHolder = this.ribbonBottomToolBar1;
+            this.c1Ribbon1.ConfigToolBarHolder = this.ribbonConfigToolBar1;
+            this.c1Ribbon1.Location = new System.Drawing.Point(0, 0);
+            this.c1Ribbon1.Name = "c1Ribbon1";
+            this.c1Ribbon1.QatHolder = this.ribbonQat1;
+            this.c1Ribbon1.QatItemsHolder.Add(this.UndoButton);
+            this.c1Ribbon1.QatItemsHolder.Add(this.RedoButton);
+            this.c1Ribbon1.Size = new System.Drawing.Size(508, 146);
+            this.c1Ribbon1.Tabs.Add(this.HomeTab);
+            this.c1Ribbon1.Tabs.Add(this.ViewTab);
+            this.theme1.SetTheme(this.c1Ribbon1, "(default)");
+            this.c1Ribbon1.TopToolBarHolder = this.ribbonTopToolBar1;
+            this.c1Ribbon1.VisualStyle = C1.Win.C1Ribbon.VisualStyle.Custom;
+            // 
+            // ribbonApplicationMenu1
+            // 
+            this.ribbonApplicationMenu1.BottomPaneItems.Add(this.ExitButton);
+            this.ribbonApplicationMenu1.DropDownWidth = 370;
+            this.ribbonApplicationMenu1.LargeImage = ((System.Drawing.Image)(resources.GetObject("ribbonApplicationMenu1.LargeImage")));
+            this.ribbonApplicationMenu1.LeftPaneItems.Add(this.NewDocumentButton);
+            this.ribbonApplicationMenu1.LeftPaneItems.Add(this.OpenDocumentButton);
+            this.ribbonApplicationMenu1.LeftPaneItems.Add(this.SaveDocumentButton);
+            this.ribbonApplicationMenu1.LeftPaneItems.Add(this.SaveDocumentAsButton);
+            this.ribbonApplicationMenu1.Name = "ribbonApplicationMenu1";
+            this.ribbonApplicationMenu1.Text = "File";
+            // 
+            // ribbonQat1
+            // 
+            this.ribbonQat1.HotItemLinks.Add(this.SaveDocumentButton);
+            this.ribbonQat1.HotItemLinks.Add(this.UndoButton);
+            this.ribbonQat1.HotItemLinks.Add(this.RedoButton);
+            this.ribbonQat1.ItemLinks.Add(this.SaveDocumentButton);
+            this.ribbonQat1.ItemLinks.Add(this.UndoButton);
+            this.ribbonQat1.ItemLinks.Add(this.RedoButton);
+            this.ribbonQat1.Name = "ribbonQat1";
+            // 
+            // ribbonConfigToolBar1
+            // 
+            this.ribbonConfigToolBar1.Items.Add(this.ribbonStyleCombo);
+            this.ribbonConfigToolBar1.Items.Add(this.F1HelpButton);
+            this.ribbonConfigToolBar1.Name = "ribbonConfigToolBar1";
+            // 
+            // ribbonTopToolBar1
+            // 
+            this.ribbonTopToolBar1.Name = "ribbonTopToolBar1";
+            // 
+            // ribbonBottomToolBar1
+            // 
+            this.ribbonBottomToolBar1.Name = "ribbonBottomToolBar1";
+            // 
+            // NewDocumentButton
+            // 
+            this.NewDocumentButton.LargeImage = ((System.Drawing.Image)(resources.GetObject("NewDocumentButton.LargeImage")));
+            this.NewDocumentButton.Name = "NewDocumentButton";
+            this.NewDocumentButton.Text = "&New";
+            // 
+            // OpenDocumentButton
+            // 
+            this.OpenDocumentButton.LargeImage = ((System.Drawing.Image)(resources.GetObject("OpenDocumentButton.LargeImage")));
+            this.OpenDocumentButton.Name = "OpenDocumentButton";
+            this.OpenDocumentButton.Text = "&Open";
+            // 
+            // SaveDocumentButton
+            // 
+            this.SaveDocumentButton.LargeImage = ((System.Drawing.Image)(resources.GetObject("SaveDocumentButton.LargeImage")));
+            this.SaveDocumentButton.Name = "SaveDocumentButton";
+            this.SaveDocumentButton.SmallImage = ((System.Drawing.Image)(resources.GetObject("SaveDocumentButton.SmallImage")));
+            this.SaveDocumentButton.Text = "&Save";
+            // 
+            // SaveDocumentAsButton
+            // 
+            this.SaveDocumentAsButton.Items.Add(this.SaveDocumentAsRtfButton);
+            this.SaveDocumentAsButton.Items.Add(this.SaveDocumentAsTextButton);
+            this.SaveDocumentAsButton.Items.Add(this.SaveDocumentAsOtherButton);
+            this.SaveDocumentAsButton.LargeImage = ((System.Drawing.Image)(resources.GetObject("SaveDocumentAsButton.LargeImage")));
+            this.SaveDocumentAsButton.Name = "SaveDocumentAsButton";
+            this.SaveDocumentAsButton.Text = "Save &As";
+            // 
+            // SaveDocumentAsRtfButton
+            // 
+            this.SaveDocumentAsRtfButton.Description = "Save the document in the Rich Text File format.";
+            this.SaveDocumentAsRtfButton.LargeImage = ((System.Drawing.Image)(resources.GetObject("SaveDocumentAsRtfButton.LargeImage")));
+            this.SaveDocumentAsRtfButton.Name = "SaveDocumentAsRtfButton";
+            this.SaveDocumentAsRtfButton.Text = "Rich Text File";
+            // 
+            // SaveDocumentAsTextButton
+            // 
+            this.SaveDocumentAsTextButton.Description = "Save the document as Plain text file.";
+            this.SaveDocumentAsTextButton.LargeImage = ((System.Drawing.Image)(resources.GetObject("SaveDocumentAsTextButton.LargeImage")));
+            this.SaveDocumentAsTextButton.Name = "SaveDocumentAsTextButton";
+            this.SaveDocumentAsTextButton.Text = "Text File";
+            // 
+            // SaveDocumentAsOtherButton
+            // 
+            this.SaveDocumentAsOtherButton.Description = "Open the Save As dialog to select from all possible file types.";
+            this.SaveDocumentAsOtherButton.LargeImage = ((System.Drawing.Image)(resources.GetObject("SaveDocumentAsOtherButton.LargeImage")));
+            this.SaveDocumentAsOtherButton.Name = "SaveDocumentAsOtherButton";
+            this.SaveDocumentAsOtherButton.Text = "Other formats";
+            // 
+            // ExitButton
+            // 
+            this.ExitButton.Name = "ExitButton";
+            this.ExitButton.SmallImage = ((System.Drawing.Image)(resources.GetObject("ExitButton.SmallImage")));
+            this.ExitButton.Text = "E&xit WordPad Sample";
+            // 
+            // ribbonStyleCombo
+            // 
+            this.ribbonStyleCombo.DropDownStyle = C1.Win.C1Ribbon.RibbonComboBoxStyle.DropDownList;
+            this.ribbonStyleCombo.Label = "Theme";
+            this.ribbonStyleCombo.Name = "ribbonStyleCombo";
+            this.ribbonStyleCombo.TextAreaWidth = 120;
+            // 
+            // F1HelpButton
+            // 
+            this.F1HelpButton.Name = "F1HelpButton";
+            this.F1HelpButton.ShortcutKeys = System.Windows.Forms.Keys.F1;
+            this.F1HelpButton.SmallImage = ((System.Drawing.Image)(resources.GetObject("F1HelpButton.SmallImage")));
+            this.F1HelpButton.ToolTip = "Help";
+            // 
+            // UndoButton
+            // 
+            this.UndoButton.Name = "UndoButton";
+            this.UndoButton.SmallImage = ((System.Drawing.Image)(resources.GetObject("UndoButton.SmallImage")));
+            this.UndoButton.ToolTip = "Undo";
+            // 
+            // RedoButton
+            // 
+            this.RedoButton.Name = "RedoButton";
+            this.RedoButton.SmallImage = ((System.Drawing.Image)(resources.GetObject("RedoButton.SmallImage")));
+            this.RedoButton.ToolTip = "Redo";
+            // 
+            // HomeTab
+            // 
+            this.HomeTab.Groups.Add(this.ClipboardGroup);
+            this.HomeTab.Groups.Add(this.FontGroup);
+            this.HomeTab.Groups.Add(this.ParagraphGroup);
+            this.HomeTab.Name = "HomeTab";
+            this.HomeTab.Text = "&Home";
+            // 
+            // ClipboardGroup
+            // 
+            this.ClipboardGroup.Items.Add(this.PasteSplitButton);
+            this.ClipboardGroup.Items.Add(this.CutButton);
+            this.ClipboardGroup.Items.Add(this.CopyButton);
+            this.ClipboardGroup.Items.Add(this.FormatPainterButton);
+            this.ClipboardGroup.Name = "ClipboardGroup";
+            this.ClipboardGroup.Text = "Clipboard";
+            // 
+            // PasteSplitButton
+            // 
+            this.PasteSplitButton.Items.Add(this.PasteButton);
+            this.PasteSplitButton.Items.Add(this.PasteAsTextButton);
+            this.PasteSplitButton.LargeImage = ((System.Drawing.Image)(resources.GetObject("PasteSplitButton.LargeImage")));
+            this.PasteSplitButton.Name = "PasteSplitButton";
+            this.PasteSplitButton.Text = "Paste";
+            this.PasteSplitButton.TextImageRelation = C1.Win.C1Ribbon.TextImageRelation.ImageAboveText;
+            // 
+            // PasteButton
+            // 
+            this.PasteButton.Name = "PasteButton";
+            this.PasteButton.SmallImage = ((System.Drawing.Image)(resources.GetObject("PasteButton.SmallImage")));
+            this.PasteButton.Text = "Paste";
+            // 
+            // PasteAsTextButton
+            // 
+            this.PasteAsTextButton.Name = "PasteAsTextButton";
+            this.PasteAsTextButton.SmallImage = ((System.Drawing.Image)(resources.GetObject("PasteAsTextButton.SmallImage")));
+            this.PasteAsTextButton.Text = "Paste As Text";
+            // 
+            // CutButton
+            // 
+            this.CutButton.Name = "CutButton";
+            this.CutButton.SmallImage = ((System.Drawing.Image)(resources.GetObject("CutButton.SmallImage")));
+            this.CutButton.Text = "Cut";
+            this.CutButton.ToolTip = "Cut (Ctrl-X)";
+            // 
+            // CopyButton
+            // 
+            this.CopyButton.Name = "CopyButton";
+            this.CopyButton.SmallImage = ((System.Drawing.Image)(resources.GetObject("CopyButton.SmallImage")));
+            this.CopyButton.Text = "Copy";
+            this.CopyButton.ToolTip = "Copy (Ctrl-C)";
+            // 
+            // FormatPainterButton
+            // 
+            this.FormatPainterButton.Name = "FormatPainterButton";
+            this.FormatPainterButton.SmallImage = ((System.Drawing.Image)(resources.GetObject("FormatPainterButton.SmallImage")));
+            this.FormatPainterButton.Text = "Format Painter";
+            this.FormatPainterButton.ToolTip = "Format Painter";
+            // 
+            // FontGroup
+            // 
+            this.FontGroup.HasLauncherButton = true;
+            this.FontGroup.Image = ((System.Drawing.Image)(resources.GetObject("FontGroup.Image")));
+            this.FontGroup.Items.Add(this.ribbonToolBar1);
+            this.FontGroup.Items.Add(this.ribbonToolBar2);
+            this.FontGroup.Name = "FontGroup";
+            this.FontGroup.Text = "Font";
+            // 
+            // ribbonToolBar1
+            // 
+            this.ribbonToolBar1.Items.Add(this.FontFaceComboBox);
+            this.ribbonToolBar1.Items.Add(this.FontSizeComboBox);
+            this.ribbonToolBar1.Name = "ribbonToolBar1";
+            // 
+            // FontFaceComboBox
+            // 
+            this.FontFaceComboBox.GripHandleVisible = true;
+            this.FontFaceComboBox.MaxDropDownItems = 20;
+            this.FontFaceComboBox.Name = "FontFaceComboBox";
+            this.FontFaceComboBox.Text = "Arial";
+            this.FontFaceComboBox.TextAreaWidth = 120;
+            // 
+            // FontSizeComboBox
+            // 
+            this.FontSizeComboBox.GripHandleVisible = true;
+            this.FontSizeComboBox.MaxDropDownItems = 100;
+            this.FontSizeComboBox.MaxLength = 3;
+            this.FontSizeComboBox.Name = "FontSizeComboBox";
+            this.FontSizeComboBox.Text = "12";
+            this.FontSizeComboBox.TextAreaWidth = 40;
+            // 
+            // ribbonToolBar2
+            // 
+            this.ribbonToolBar2.Items.Add(this.FontBoldButton);
+            this.ribbonToolBar2.Items.Add(this.FontItalicButton);
+            this.ribbonToolBar2.Items.Add(this.FontUnderlineButton);
+            this.ribbonToolBar2.Items.Add(this.FontStrikeoutButton);
+            this.ribbonToolBar2.Items.Add(this.ribbonSeparator1);
+            this.ribbonToolBar2.Items.Add(this.FontColorPicker);
+            this.ribbonToolBar2.Items.Add(this.BackColorPicker);
+            this.ribbonToolBar2.Name = "ribbonToolBar2";
+            // 
+            // FontBoldButton
+            // 
+            this.FontBoldButton.Name = "FontBoldButton";
+            this.FontBoldButton.SmallImage = ((System.Drawing.Image)(resources.GetObject("FontBoldButton.SmallImage")));
+            this.FontBoldButton.ToolTip = "Bold (Ctrl-B)";
+            // 
+            // FontItalicButton
+            // 
+            this.FontItalicButton.Name = "FontItalicButton";
+            this.FontItalicButton.SmallImage = ((System.Drawing.Image)(resources.GetObject("FontItalicButton.SmallImage")));
+            this.FontItalicButton.ToolTip = "Italic (Ctrl-I)";
+            // 
+            // FontUnderlineButton
+            // 
+            this.FontUnderlineButton.Name = "FontUnderlineButton";
+            this.FontUnderlineButton.SmallImage = ((System.Drawing.Image)(resources.GetObject("FontUnderlineButton.SmallImage")));
+            this.FontUnderlineButton.ToolTip = "Underline (Ctrl-U)";
+            // 
+            // FontStrikeoutButton
+            // 
+            this.FontStrikeoutButton.Name = "FontStrikeoutButton";
+            this.FontStrikeoutButton.SmallImage = ((System.Drawing.Image)(resources.GetObject("FontStrikeoutButton.SmallImage")));
+            this.FontStrikeoutButton.ToolTip = "Strikeout";
+            // 
+            // ribbonSeparator1
+            // 
+            this.ribbonSeparator1.Name = "ribbonSeparator1";
+            // 
+            // FontColorPicker
+            // 
+            this.FontColorPicker.Color = System.Drawing.Color.Red;
+            this.FontColorPicker.Name = "FontColorPicker";
+            this.FontColorPicker.SmallImage = ((System.Drawing.Image)(resources.GetObject("FontColorPicker.SmallImage")));
+            // 
+            // BackColorPicker
+            // 
+            this.BackColorPicker.Color = System.Drawing.Color.Yellow;
+            this.BackColorPicker.Name = "BackColorPicker";
+            this.BackColorPicker.SmallImage = ((System.Drawing.Image)(resources.GetObject("BackColorPicker.SmallImage")));
+            // 
+            // ParagraphGroup
+            // 
+            this.ParagraphGroup.Image = ((System.Drawing.Image)(resources.GetObject("ParagraphGroup.Image")));
+            this.ParagraphGroup.Items.Add(this.ribbonToolBar3);
+            this.ParagraphGroup.Items.Add(this.ribbonToolBar4);
+            this.ParagraphGroup.Name = "ParagraphGroup";
+            this.ParagraphGroup.Text = "Paragraph";
+            // 
+            // ribbonToolBar3
+            // 
+            this.ribbonToolBar3.Items.Add(this.DecreaseIndentButton);
+            this.ribbonToolBar3.Items.Add(this.IncreaseIndentButton);
+            this.ribbonToolBar3.Name = "ribbonToolBar3";
+            // 
+            // DecreaseIndentButton
+            // 
+            this.DecreaseIndentButton.Name = "DecreaseIndentButton";
+            this.DecreaseIndentButton.SmallImage = ((System.Drawing.Image)(resources.GetObject("DecreaseIndentButton.SmallImage")));
+            this.DecreaseIndentButton.ToolTip = "Decrease Indent";
+            // 
+            // IncreaseIndentButton
+            // 
+            this.IncreaseIndentButton.Name = "IncreaseIndentButton";
+            this.IncreaseIndentButton.SmallImage = ((System.Drawing.Image)(resources.GetObject("IncreaseIndentButton.SmallImage")));
+            this.IncreaseIndentButton.ToolTip = "Increase Indent";
+            // 
+            // ribbonToolBar4
+            // 
+            this.ribbonToolBar4.Items.Add(this.ribbonToggleGroup1);
+            this.ribbonToolBar4.Name = "ribbonToolBar4";
+            // 
+            // ribbonToggleGroup1
+            // 
+            this.ribbonToggleGroup1.Items.Add(this.ParagraphAlignLeftButton);
+            this.ribbonToggleGroup1.Items.Add(this.ParagraphAlignCenterButton);
+            this.ribbonToggleGroup1.Items.Add(this.ParagraphAlignRightButton);
+            this.ribbonToggleGroup1.Name = "ribbonToggleGroup1";
+            // 
+            // ParagraphAlignLeftButton
+            // 
+            this.ParagraphAlignLeftButton.Name = "ParagraphAlignLeftButton";
+            this.ParagraphAlignLeftButton.SmallImage = ((System.Drawing.Image)(resources.GetObject("ParagraphAlignLeftButton.SmallImage")));
+            this.ParagraphAlignLeftButton.ToolTip = "Align Left";
+            // 
+            // ParagraphAlignCenterButton
+            // 
+            this.ParagraphAlignCenterButton.Name = "ParagraphAlignCenterButton";
+            this.ParagraphAlignCenterButton.SmallImage = ((System.Drawing.Image)(resources.GetObject("ParagraphAlignCenterButton.SmallImage")));
+            this.ParagraphAlignCenterButton.ToolTip = "Align Center";
+            // 
+            // ParagraphAlignRightButton
+            // 
+            this.ParagraphAlignRightButton.Name = "ParagraphAlignRightButton";
+            this.ParagraphAlignRightButton.SmallImage = ((System.Drawing.Image)(resources.GetObject("ParagraphAlignRightButton.SmallImage")));
+            this.ParagraphAlignRightButton.ToolTip = "Align Right";
+            // 
+            // ViewTab
+            // 
+            this.ViewTab.Groups.Add(this.ViewZoomGroup);
+            this.ViewTab.Name = "ViewTab";
+            this.ViewTab.Text = "View";
+            // 
+            // ViewZoomGroup
+            // 
+            this.ViewZoomGroup.Items.Add(this.ViewZoomCombobox);
+            this.ViewZoomGroup.Items.Add(this.NormalSizeButton);
+            this.ViewZoomGroup.Name = "ViewZoomGroup";
+            this.ViewZoomGroup.Text = "Zoom";
+            // 
+            // ViewZoomCombobox
+            // 
+            this.ViewZoomCombobox.MaxLength = 4;
+            this.ViewZoomCombobox.Name = "ViewZoomCombobox";
+            // 
+            // NormalSizeButton
+            // 
+            this.NormalSizeButton.Name = "NormalSizeButton";
+            this.NormalSizeButton.SmallImage = ((System.Drawing.Image)(resources.GetObject("NormalSizeButton.SmallImage")));
+            this.NormalSizeButton.Text = "100%";
+            // 
+            // pnEmailAddSubject
+            // 
+            this.pnEmailAddSubject.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.pnEmailAddSubject.Controls.Add(this.btnSfSendEmail);
+            this.pnEmailAddSubject.Controls.Add(this.btnMaleSearch);
+            this.pnEmailAddSubject.Controls.Add(this.label210);
+            this.pnEmailAddSubject.Controls.Add(this.txtEmailSubject);
+            this.pnEmailAddSubject.Controls.Add(this.label211);
+            this.pnEmailAddSubject.Controls.Add(this.txtEmailTo);
+            this.pnEmailAddSubject.Dock = System.Windows.Forms.DockStyle.Top;
+            this.pnEmailAddSubject.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.pnEmailAddSubject.Location = new System.Drawing.Point(0, 146);
+            this.pnEmailAddSubject.Name = "pnEmailAddSubject";
+            this.pnEmailAddSubject.Size = new System.Drawing.Size(508, 68);
+            this.pnEmailAddSubject.TabIndex = 1;
+            this.theme1.SetTheme(this.pnEmailAddSubject, "(default)");
+            // 
+            // btnSfSendEmail
+            // 
+            this.btnSfSendEmail.Image = global::clinic_ivf.Properties.Resources.Email_icon_24;
+            this.btnSfSendEmail.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnSfSendEmail.Location = new System.Drawing.Point(284, 3);
+            this.btnSfSendEmail.Name = "btnSfSendEmail";
+            this.btnSfSendEmail.Size = new System.Drawing.Size(101, 34);
+            this.btnSfSendEmail.TabIndex = 542;
+            this.btnSfSendEmail.Text = "Send Email";
+            this.btnSfSendEmail.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.theme1.SetTheme(this.btnSfSendEmail, "(default)");
+            this.btnSfSendEmail.UseVisualStyleBackColor = true;
+            this.btnSfSendEmail.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            // 
+            // btnMaleSearch
+            // 
+            this.btnMaleSearch.Location = new System.Drawing.Point(250, 11);
+            this.btnMaleSearch.Name = "btnMaleSearch";
+            this.btnMaleSearch.Size = new System.Drawing.Size(28, 23);
+            this.btnMaleSearch.TabIndex = 541;
+            this.btnMaleSearch.Text = "...";
+            this.theme1.SetTheme(this.btnMaleSearch, "(default)");
+            this.btnMaleSearch.UseVisualStyleBackColor = true;
+            this.btnMaleSearch.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            // 
+            // label210
+            // 
+            this.label210.AutoSize = true;
+            this.label210.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.label210.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label210.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.label210.Location = new System.Drawing.Point(13, 44);
+            this.label210.Name = "label210";
+            this.label210.Size = new System.Drawing.Size(59, 16);
+            this.label210.TabIndex = 517;
+            this.label210.Text = "Subject :";
+            this.theme1.SetTheme(this.label210, "(default)");
+            // 
+            // txtEmailSubject
+            // 
+            this.txtEmailSubject.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtEmailSubject.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
+            this.txtEmailSubject.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.txtEmailSubject.Location = new System.Drawing.Point(78, 42);
+            this.txtEmailSubject.Name = "txtEmailSubject";
+            this.txtEmailSubject.Size = new System.Drawing.Size(300, 20);
+            this.txtEmailSubject.TabIndex = 516;
+            this.txtEmailSubject.Tag = null;
+            this.theme1.SetTheme(this.txtEmailSubject, "(default)");
+            this.txtEmailSubject.Value = "Result OPU";
+            this.txtEmailSubject.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            // 
+            // label211
+            // 
+            this.label211.AutoSize = true;
+            this.label211.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.label211.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label211.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.label211.Location = new System.Drawing.Point(13, 13);
+            this.label211.Name = "label211";
+            this.label211.Size = new System.Drawing.Size(31, 16);
+            this.label211.TabIndex = 515;
+            this.label211.Text = "To :";
+            this.theme1.SetTheme(this.label211, "(default)");
+            // 
+            // txtEmailTo
+            // 
+            this.txtEmailTo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtEmailTo.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
+            this.txtEmailTo.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.txtEmailTo.Location = new System.Drawing.Point(50, 10);
+            this.txtEmailTo.Name = "txtEmailTo";
+            this.txtEmailTo.Size = new System.Drawing.Size(194, 20);
+            this.txtEmailTo.TabIndex = 514;
+            this.txtEmailTo.Tag = null;
+            this.theme1.SetTheme(this.txtEmailTo, "(default)");
+            this.txtEmailTo.Value = "eploentham@outlook.co.th";
+            this.txtEmailTo.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            // 
+            // txtEmailBody
+            // 
+            this.txtEmailBody.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtEmailBody.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
+            this.txtEmailBody.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.txtEmailBody.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.txtEmailBody.Location = new System.Drawing.Point(0, 214);
+            this.txtEmailBody.Multiline = true;
+            this.txtEmailBody.Name = "txtEmailBody";
+            this.txtEmailBody.Size = new System.Drawing.Size(508, 223);
+            this.txtEmailBody.TabIndex = 541;
+            this.txtEmailBody.Tag = null;
+            this.theme1.SetTheme(this.txtEmailBody, "(default)");
+            this.txtEmailBody.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            // 
             // FrmLabSpermAdd
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -8252,6 +8950,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.sCFreezing)).EndInit();
             this.sCFreezing.ResumeLayout(false);
             this.c1SplitterPanel3.ResumeLayout(false);
+            this.pnSfLeft.ResumeLayout(false);
             this.c1SplitterPanel4.ResumeLayout(false);
             this.panel7.ResumeLayout(false);
             this.panel7.PerformLayout();
@@ -8260,7 +8959,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.c1PictureBox4)).EndInit();
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.txtSfWbc)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cboSfWbc)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtSfMotility2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtSfMotility3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtSfMotility4)).EndInit();
@@ -8268,7 +8967,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtSfID)).EndInit();
             this.groupBox4.ResumeLayout(false);
             this.groupBox4.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.txtSfVial)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cboSfNoofVail)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtSfTail1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtSfNeck1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtSfHead1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtSfNormal)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtSfAbnormal)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtSfTail)).EndInit();
@@ -8328,6 +9030,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtID)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtTail1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtNeck1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtHead1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtNormal)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtAbnormal)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtTail)).EndInit();
@@ -8476,6 +9181,16 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtPeHnMale)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtPeNameFeMale)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtPeHnFeMale)).EndInit();
+            this.pnSfLeftEmail.ResumeLayout(false);
+            this.pnSfLeftEmail.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.c1Ribbon1)).EndInit();
+            this.pnEmailAddSubject.ResumeLayout(false);
+            this.pnEmailAddSubject.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.btnSfSendEmail)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnMaleSearch)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtEmailSubject)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtEmailTo)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtEmailBody)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -8619,7 +9334,7 @@
         private C1.Win.C1Input.C1PictureBox c1PictureBox1;
         private C1.Win.C1SplitContainer.C1SplitContainer sCFreezing;
         private C1.Win.C1SplitContainer.C1SplitterPanel c1SplitterPanel3;
-        private System.Windows.Forms.Panel panel5;
+        private System.Windows.Forms.Panel pnSfLeft;
         private C1.Win.C1SplitContainer.C1SplitterPanel c1SplitterPanel4;
         private System.Windows.Forms.Panel panel7;
         private System.Windows.Forms.Label label62;
@@ -8629,7 +9344,6 @@
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.Label label67;
         private System.Windows.Forms.Label label68;
-        private C1.Win.C1Input.C1TextBox txtSfWbc;
         private System.Windows.Forms.Label label69;
         private System.Windows.Forms.Label label70;
         private C1.Win.C1Input.C1TextBox txtSfMotility2;
@@ -8740,7 +9454,6 @@
         private System.Windows.Forms.Label label136;
         private C1.Win.C1Input.C1TextBox txtSfHnFeMale;
         private System.Windows.Forms.Label label137;
-        private C1.Win.C1Input.C1TextBox txtSfVial;
         private System.Windows.Forms.Label label138;
         private C1.Win.C1Input.C1DateEdit txtPeApproveDate;
         private C1.Win.C1Input.C1DateEdit txtPeReportDate;
@@ -8958,5 +9671,73 @@
         private C1.Win.C1Input.C1Button btnPrintSa;
         private C1.Win.C1Input.C1Button btnPrintPesa;
         private C1.Win.C1Input.C1Button btnPrintSf;
+        private C1.Win.C1Input.C1TextBox txtSfTail1;
+        private C1.Win.C1Input.C1TextBox txtSfNeck1;
+        private C1.Win.C1Input.C1TextBox txtSfHead1;
+        private C1.Win.C1Input.C1TextBox txtTail1;
+        private C1.Win.C1Input.C1TextBox txtNeck1;
+        private C1.Win.C1Input.C1TextBox txtHead1;
+        private C1.Win.C1Input.C1ComboBox cboSfWbc;
+        private C1.Win.C1Input.C1ComboBox cboSfNoofVail;
+        private System.Windows.Forms.Panel pnSfLeftEmail;
+        private C1.Win.C1Ribbon.C1Ribbon c1Ribbon1;
+        private C1.Win.C1Ribbon.RibbonApplicationMenu ribbonApplicationMenu1;
+        private C1.Win.C1Ribbon.RibbonButton ExitButton;
+        private C1.Win.C1Ribbon.RibbonButton NewDocumentButton;
+        private C1.Win.C1Ribbon.RibbonButton OpenDocumentButton;
+        private C1.Win.C1Ribbon.RibbonButton SaveDocumentButton;
+        private C1.Win.C1Ribbon.RibbonSplitButton SaveDocumentAsButton;
+        private C1.Win.C1Ribbon.RibbonButton SaveDocumentAsRtfButton;
+        private C1.Win.C1Ribbon.RibbonButton SaveDocumentAsTextButton;
+        private C1.Win.C1Ribbon.RibbonButton SaveDocumentAsOtherButton;
+        private C1.Win.C1Ribbon.RibbonBottomToolBar ribbonBottomToolBar1;
+        private C1.Win.C1Ribbon.RibbonConfigToolBar ribbonConfigToolBar1;
+        private C1.Win.C1Ribbon.RibbonComboBox ribbonStyleCombo;
+        private C1.Win.C1Ribbon.RibbonButton F1HelpButton;
+        private C1.Win.C1Ribbon.RibbonQat ribbonQat1;
+        private C1.Win.C1Ribbon.RibbonButton UndoButton;
+        private C1.Win.C1Ribbon.RibbonButton RedoButton;
+        private C1.Win.C1Ribbon.RibbonTab HomeTab;
+        private C1.Win.C1Ribbon.RibbonGroup ClipboardGroup;
+        private C1.Win.C1Ribbon.RibbonSplitButton PasteSplitButton;
+        private C1.Win.C1Ribbon.RibbonButton PasteButton;
+        private C1.Win.C1Ribbon.RibbonButton PasteAsTextButton;
+        private C1.Win.C1Ribbon.RibbonButton CutButton;
+        private C1.Win.C1Ribbon.RibbonButton CopyButton;
+        private C1.Win.C1Ribbon.RibbonButton FormatPainterButton;
+        private C1.Win.C1Ribbon.RibbonGroup FontGroup;
+        private C1.Win.C1Ribbon.RibbonToolBar ribbonToolBar1;
+        private C1.Win.C1Ribbon.RibbonComboBox FontFaceComboBox;
+        private C1.Win.C1Ribbon.RibbonComboBox FontSizeComboBox;
+        private C1.Win.C1Ribbon.RibbonToolBar ribbonToolBar2;
+        private C1.Win.C1Ribbon.RibbonToggleButton FontBoldButton;
+        private C1.Win.C1Ribbon.RibbonToggleButton FontItalicButton;
+        private C1.Win.C1Ribbon.RibbonToggleButton FontUnderlineButton;
+        private C1.Win.C1Ribbon.RibbonToggleButton FontStrikeoutButton;
+        private C1.Win.C1Ribbon.RibbonSeparator ribbonSeparator1;
+        private C1.Win.C1Ribbon.RibbonColorPicker FontColorPicker;
+        private C1.Win.C1Ribbon.RibbonColorPicker BackColorPicker;
+        private C1.Win.C1Ribbon.RibbonGroup ParagraphGroup;
+        private C1.Win.C1Ribbon.RibbonToolBar ribbonToolBar3;
+        private C1.Win.C1Ribbon.RibbonButton DecreaseIndentButton;
+        private C1.Win.C1Ribbon.RibbonButton IncreaseIndentButton;
+        private C1.Win.C1Ribbon.RibbonToolBar ribbonToolBar4;
+        private C1.Win.C1Ribbon.RibbonToggleGroup ribbonToggleGroup1;
+        private C1.Win.C1Ribbon.RibbonToggleButton ParagraphAlignLeftButton;
+        private C1.Win.C1Ribbon.RibbonToggleButton ParagraphAlignCenterButton;
+        private C1.Win.C1Ribbon.RibbonToggleButton ParagraphAlignRightButton;
+        private C1.Win.C1Ribbon.RibbonTab ViewTab;
+        private C1.Win.C1Ribbon.RibbonGroup ViewZoomGroup;
+        private C1.Win.C1Ribbon.RibbonComboBox ViewZoomCombobox;
+        private C1.Win.C1Ribbon.RibbonButton NormalSizeButton;
+        private C1.Win.C1Ribbon.RibbonTopToolBar ribbonTopToolBar1;
+        private System.Windows.Forms.Panel pnEmailAddSubject;
+        private C1.Win.C1Input.C1Button btnSfSendEmail;
+        private C1.Win.C1Input.C1Button btnMaleSearch;
+        private System.Windows.Forms.Label label210;
+        private C1.Win.C1Input.C1TextBox txtEmailSubject;
+        private System.Windows.Forms.Label label211;
+        private C1.Win.C1Input.C1TextBox txtEmailTo;
+        private C1.Win.C1Input.C1TextBox txtEmailBody;
     }
 }

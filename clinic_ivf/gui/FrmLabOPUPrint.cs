@@ -185,6 +185,8 @@ namespace clinic_ivf.gui
                 //MessageBox.Show("aaaaa", "");
                 int i = 0;
                 String day = "";
+                LabOpu opu = new LabOpu();
+                opu = ic.ivfDB.opuDB.selectByPk1(txtID.Text);
                 day = cboEmbryoDev1.SelectedItem == null ? "" : ((ComboBoxItem)cboEmbryoDev1.SelectedItem).Value;
                 if (day.Equals("2"))
                 {
@@ -202,6 +204,12 @@ namespace clinic_ivf.gui
                 {
                     dt = ic.ivfDB.opuEmDevDB.selectByOpuFetId_DayPrint(txtID.Text, objdb.LabOpuEmbryoDevDB.Day1.Day6);
                 }
+                dt.Columns.Add("footer11", typeof(String));
+                dt.Columns.Add("footer12", typeof(String));
+                dt.Columns.Add("footer13", typeof(String));
+                dt.Columns.Add("footer14", typeof(String));
+                dt.Columns.Add("footer15", typeof(String));
+                dt.Columns.Add("footer16", typeof(String));
                 if (dt.Rows.Count > 0)
                 {
                     frmW.pB.Minimum = 1;
@@ -238,6 +246,12 @@ namespace clinic_ivf.gui
                             row["no1_desc3"] = row["no1_desc4"].ToString();
                             //}
                         }
+                        row["footert11"] = opu.remark_day2;
+                        row["footert12"] = opu.remark_day3;
+                        row["footert13"] = opu.remark_day5;
+                        row["footert14"] = opu.remark_day6;
+                        row["footert15"] = "";
+                        row["footert16"] = "";
                         i++;
                         frmW.pB.Value = i;
                     }
@@ -245,6 +259,7 @@ namespace clinic_ivf.gui
                 String date1 = "";
                 date1 = ic.datetoShow(dt.Rows[0][ic.ivfDB.opuDB.opu.opu_date].ToString());
                 dt.Rows[0][ic.ivfDB.opuDB.opu.opu_date] = date1.Replace("-", "/");
+
                 frm.setOPUEmbryoDevReport(dt);
                 //MessageBox.Show("bbbbbb", "");
             }

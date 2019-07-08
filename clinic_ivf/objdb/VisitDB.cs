@@ -134,6 +134,7 @@ namespace clinic_ivf.objdb
             vs.user_modi = "user_modi";
             vs.active = "active";
             vs.remark = "remark";
+            vs.nurse_finish_date_time = "nurse_finish_date_time";
 
             vs.table = "t_visit";
             vs.pkField = "t_visit_id";
@@ -226,7 +227,7 @@ namespace clinic_ivf.objdb
             //p.b_ncd_group_id = p.b_ncd_group_id == null ? "" : p.b_ncd_group_id;
             p.visit_ncd = p.visit_ncd == null ? "" : p.visit_ncd;
             //p.visit_lab_status_id = p.visit_lab_status_id == null ? "" : p.visit_lab_status_id;
-            //p.visit_cal_date_appointment1 = p.visit_cal_date_appointment1 == null ? "" : p.visit_cal_date_appointment1;
+            p.nurse_finish_date_time = p.nurse_finish_date_time == null ? "" : p.nurse_finish_date_time;
             p.status_cashier = p.status_cashier == null ? "" : p.status_cashier;
 
 
@@ -627,6 +628,7 @@ namespace clinic_ivf.objdb
             String re = "", err = "";
             String sql = "update " + vs.table + " " +
                 "Set " + vs.status_nurse + " ='2' " +
+                "," + vs.nurse_finish_date_time + "= now()" +
                 "Where " + vs.visit_vn + " ='" + vn + "' ";
             try
             {

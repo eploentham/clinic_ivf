@@ -148,7 +148,7 @@ namespace clinic_ivf.gui
             //int originalWidth = loadedImage.Width;
             //resizedImage = loadedImage.GetThumbnailImage(newWidth, (newWidth * loadedImage.Height) / originalWidth, null, IntPtr.Zero);
             pic.Image = resizedImage;
-
+            pic.SizeMode = PictureBoxSizeMode.StretchImage;
         }
         private void setPatientImage()
         {

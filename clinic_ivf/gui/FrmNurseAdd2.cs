@@ -25,6 +25,9 @@ using System.Windows.Forms;
 
 namespace clinic_ivf.gui
 {
+    /*
+     * 62-07-06     0006        LMP	คำนวณไม่ถูก
+     */
     public partial class FrmNurseAdd2 : Form
     {
         IvfControl ic;
@@ -2272,21 +2275,22 @@ namespace clinic_ivf.gui
                             //}
                             //else
                             //{
-                            long.TryParse(txtEggStiDay.Text, out chk1);
+                            //long.TryParse(txtEggStiDay.Text, out chk1);       //      -0005
                             //chk1++;
                             //lmpdate1 = lmpdate1.AddDays(chk1);
                             //}
-                            max = 17 + chk1;
-                            for (long i = chk1; i <= max; i++)
+                            //max = 17 + chk1;          //-0005
+                            max = 17;       //+0005
+                            for (long i = 1; i <= max; i++)
                             {
-                                //if (i != 1)
-                                //{
-                                lmpdate1 = lmpdate1.AddDays(1);
-                                //}
+                                if (i != 1)       //+0005
+                                {       //+0005
+                                    lmpdate1 = lmpdate1.AddDays(1);       //+0005
+                                }       //+0005
                                 EggStiDay eggsd = new EggStiDay();
                                 eggsd.egg_sti_day_id = "";
                                 eggsd.egg_sti_id = txtEggStiId.Text;
-                                eggsd.day1 = chk1.ToString();
+                                eggsd.day1 = i.ToString();
                                 eggsd.date = ic.datetoDB(lmpdate1.Year.ToString() + "-" + lmpdate1.ToString("MM-dd"));
                                 eggsd.e2 = "";
                                 eggsd.lh = "";
@@ -2929,37 +2933,58 @@ namespace clinic_ivf.gui
         private void BtnFinish_Click(object sender, EventArgs e)
         {
             //throw new NotImplementedException();
-            String dtrid = "";
-            dtrid = cboDoctor.SelectedItem == null ? "" : ((ComboBoxItem)cboDoctor.SelectedItem).Value;
-            foreach (Row row in grfOrder.Rows)
+            String err = "";
+            try
             {
-                String lgid = "", reqid="", itmid="";
-                lgid = row[colOrdlpid] != null ? row[colOrdlpid].ToString() : "";
-                reqid = row[colOrdid] != null ? row[colOrdid].ToString() : "";
-                itmid = row[colOrditmid] != null ? row[colOrditmid].ToString() : "";
-                if (lgid.Length <= 0) continue;
-                LabRequest lbReq = new LabRequest();
-                if (ptt.f_sex_id.Equals("1"))
+                String dtrid = "";
+                err = "00";
+                dtrid = cboDoctor.SelectedItem == null ? "" : ((ComboBoxItem)cboDoctor.SelectedItem).Value;
+                err = "01";
+                foreach (Row row in grfOrder.Rows)
                 {
-                    lbReq = ic.ivfDB.setLabRequest("", txtVnOld.Text, dtrid, "", "", ic.datetoDB(txtDob.Text), reqid, itmid, txtHn.Text, txtPttNameE.Text, "", "", "", txtVsId.Text);
+                    try
+                    {
+                        String lgid = "", reqid = "", itmid = "", errfor="";
+                        errfor = "000";
+                        lgid = row[colOrdlpid] != null ? row[colOrdlpid].ToString() : "";
+                        reqid = row[colOrdid] != null ? row[colOrdid].ToString() : "";
+                        itmid = row[colOrditmid] != null ? row[colOrditmid].ToString() : "";
+                        errfor = "001";
+                        if (lgid.Length <= 0) continue;
+                        LabRequest lbReq = new LabRequest();
+                        if (ptt.f_sex_id.Equals("1"))
+                        {
+                            lbReq = ic.ivfDB.setLabRequest("", txtVnOld.Text, dtrid, "", "", ic.datetoDB(txtDob.Text), reqid, itmid, txtHn.Text, txtPttNameE.Text, "", "", "", txtVsId.Text);
+                        }
+                        else if (ptt.f_sex_id.Equals("2"))
+                        {
+                            lbReq = ic.ivfDB.setLabRequest(txtPttNameE.Text, txtVnOld.Text, dtrid, "", txtHn.Text, ic.datetoDB(txtDob.Text), reqid, itmid, "", "", "", "", "", txtVsId.Text);
+                        }
+                        errfor = "002";
+                        String re = ic.ivfDB.lbReqDB.insertLabRequest(lbReq, txtStfConfirmID.Text);
+                        ic.ivfDB.oJlabdDB.updateReqId(re, reqid);
+                    }
+                    catch(Exception ex)
+                    {
+                        MessageBox.Show("error " + ex.Message, "BtnFinish_Click foreach grfOrder.Rows");
+                    }
+                    
                 }
-                else if (ptt.f_sex_id.Equals("2"))
-                {
-                    lbReq = ic.ivfDB.setLabRequest(txtPttNameE.Text, txtVnOld.Text, dtrid, "", txtHn.Text, ic.datetoDB(txtDob.Text), reqid, itmid, "", "", "", "", "", txtVsId.Text);
-                }
-                
-                String re = ic.ivfDB.lbReqDB.insertLabRequest(lbReq, txtStfConfirmID.Text);
-                ic.ivfDB.oJlabdDB.updateReqId(re, reqid);
-            }
 
-            ic.ivfDB.nurseFinish(txtVnOld.Text);
-            VisitOld ovs = new VisitOld();
-            ovs = ic.ivfDB.ovsDB.selectByPk1(txtVnOld.Text);
-            if (ovs.VSID.Equals("160"))
-            {
-                menu.removeTab(tab);
-                //return;
+                ic.ivfDB.nurseFinish(txtVnOld.Text);
+                VisitOld ovs = new VisitOld();
+                ovs = ic.ivfDB.ovsDB.selectByPk1(txtVnOld.Text);
+                if (ovs.VSID.Equals("160"))
+                {
+                    menu.removeTab(tab);
+                    //return;
+                }
             }
+            catch(Exception ex)
+            {
+                MessageBox.Show("error "+err+" "+ex.Message, "BtnFinish_Click");
+            }
+            
             //setGrfOrder(txtVn.Text);
         }
 

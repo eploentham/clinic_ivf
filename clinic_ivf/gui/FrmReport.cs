@@ -136,6 +136,27 @@ namespace clinic_ivf.gui
                 MessageBox.Show("error " + ex.Message, "");
             }
         }
+        public void setStickerPatientLISThemal(DataTable dt)
+        {
+            String chk = "", printerDefault = "";
+            ReportDocument rpt = new ReportDocument();
+            try
+            {
+                rpt.Load("sticker_patient_lis.rpt");
+                rpt.SetDataSource(dt);
+                //rpt.SetParameterValue("line1", ic.cop.comp_name_t);
+                //rpt.SetParameterValue("line2", "โทรศัพท์ " + ic.cop.tele);
+                //rpt.SetParameterValue("report_name", " OPD Record ");
+                //rpt.SetParameterValue("age1", "" + age);
+                this.crystalReportViewer1.ReportSource = rpt;
+                this.crystalReportViewer1.Refresh();
+            }
+            catch (Exception ex)
+            {
+                chk = ex.Message.ToString();
+                MessageBox.Show("error " + ex.Message, "");
+            }
+        }
         public void setStickerPatientThemal(DataTable dt)
         {
             String chk = "", printerDefault = "";

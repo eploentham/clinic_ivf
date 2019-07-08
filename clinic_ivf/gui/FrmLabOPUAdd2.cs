@@ -101,6 +101,10 @@ namespace clinic_ivf.gui
             ic.setCboDay(CboEmbryoFreezDay1, "");
             ic.ivfDB.opuDB.setCboRemark(cboRemark);
             ic.ivfDB.opuDB.setCboRemark1(cboRemark1);
+            ic.ivfDB.opuDB.setCboRemarkDay2(cboRemarkDay2);
+            ic.ivfDB.opuDB.setCboRemarkDay3(cboRemarkDay3);
+            ic.ivfDB.opuDB.setCboRemarkDay5(cboRemarkDay5);
+            ic.ivfDB.opuDB.setCboRemarkDay6(cboRemarkDay6);
 
             //stt.BackgroundGradient = C1.Win.C1SuperTooltip.BackgroundGradient.Gold;
 
@@ -1794,7 +1798,7 @@ namespace clinic_ivf.gui
                 String re3 = ic.ivfDB.opuEmDevDB.updateDevDate(txtID.Text, "6", dateday6);
             }
             //setOPUEmbryoFreezDay1();
-            //String re = ic.ivfDB.opuDB.updateEmbryoFreezDay1(opu, ic.user.staff_id);
+            String re4 = ic.ivfDB.opuDB.updateRemarkDay6(txtID.Text, cboRemarkDay6.Text);
             String re = "";
             int i = 1;
             foreach (Row row in grfDay6.Rows)
@@ -1884,7 +1888,7 @@ namespace clinic_ivf.gui
             }
 
             //setOPUEmbryoFreezDay1();
-            //String re = ic.ivfDB.opuDB.updateEmbryoFreezDay1(opu, ic.user.staff_id);
+            String re4 = ic.ivfDB.opuDB.updateRemarkDay5(txtID.Text, cboRemarkDay5.Text);
             String re = "";
             int i = 1;
             foreach (Row row in grfDay5.Rows)
@@ -1974,7 +1978,7 @@ namespace clinic_ivf.gui
                 String re3 = ic.ivfDB.opuEmDevDB.updateDevDate(txtID.Text, "3", dateday3);
             }
             //setOPUEmbryoFreezDay1();
-            //String re = ic.ivfDB.opuDB.updateEmbryoFreezDay1(opu, ic.user.staff_id);
+            String re4 = ic.ivfDB.opuDB.updateRemarkDay3(txtID.Text, cboRemarkDay3.Text);
             String re = "";
             int i = 1;
             foreach (Row row in grfDay3.Rows)
@@ -2069,7 +2073,7 @@ namespace clinic_ivf.gui
                 String re3 = ic.ivfDB.opuEmDevDB.updateDevDate(txtID.Text, "2", dateday2);
             }
             //setOPUEmbryoFreezDay1();
-            //String re = ic.ivfDB.opuDB.updateEmbryoFreezDay1(opu, ic.user.staff_id);
+            String re4 = ic.ivfDB.opuDB.updateRemarkDay2(txtID.Text, cboRemarkDay2.Text);
             String re = "";
             int i = 1;
             foreach (Row row in grfDay2.Rows)
@@ -2499,12 +2503,21 @@ namespace clinic_ivf.gui
             ic.setC1Combo(cboEmbryoFreezMethod0, opu.embryo_freez_mothod_0);
             ic.setC1Combo(cboEmbryoFreezMedia0, opu.embryo_freez_freeze_media_0);
             ic.setC1Combo(cboEmbryoFreezMedia1, opu.embryo_freez_freeze_media_1);
+
+            //ic.setC1Combo(cboRemarkDay2, opu.remark_day2);
+            //ic.setC1Combo(cboRemarkDay3, opu.remark_day3);
+            //ic.setC1Combo(cboRemarkDay5, opu.remark_day5);
+            //ic.setC1Combo(cboRemarkDay6, opu.remark_day6);
             //txtEmbryoFreezMedia0.Value = opu.embryo_freez_freeze_media_0;
             //txtEmbryoFreezMedia1.Value = opu.embryo_freez_freeze_media_1;
 
             //txtRemark.Value = opu.remark;
             ic.setC1ComboByName(cboRemark, opu.remark);
             ic.setC1ComboByName(cboRemark1, opu.remark_1);
+            ic.setC1ComboByName(cboRemarkDay2, opu.remark_day2);
+            ic.setC1ComboByName(cboRemarkDay3, opu.remark_day3);
+            ic.setC1ComboByName(cboRemarkDay5, opu.remark_day5);
+            ic.setC1ComboByName(cboRemarkDay6, opu.remark_day6);
             txtDatePicEmbryo.Value = opu.date_pic_embryo;
             //CboEmbryoDay.Text = opu.emb
             if (opu.status_opu.Equals("2"))

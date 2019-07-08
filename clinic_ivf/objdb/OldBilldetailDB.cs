@@ -168,6 +168,7 @@ namespace clinic_ivf.objdb
             int chk = 0;
 
             chkNull(p);
+            if (userId == null) userId = "";
             //lbReq.form_a_id = "form_a_id";
             //p.req_code = genReqDoc();
             sql = "Insert Into " + obilld.table + " Set " +

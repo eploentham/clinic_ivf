@@ -211,6 +211,12 @@ namespace clinic_ivf.control
             iniC.pathSaveExcelAppointment = iniF.getIni("app", "pathSaveExcelAppointment");
             iniC.printerA4 = iniF.getIni("app", "printerA4");
 
+            iniC.email_form = iniF.getIni("email", "email_form");
+            iniC.email_auth_user = iniF.getIni("email", "email_auth_user");
+            iniC.email_auth_pass = iniF.getIni("email", "email_auth_pass");
+            iniC.email_port = iniF.getIni("email", "email_port");
+            iniC.email_ssl = iniF.getIni("email", "email_ssl");
+
             iniC.grdViewFontName = iniC.grdViewFontName.Equals("") ? "Microsoft Sans Serif" : iniC.grdViewFontName;
 
             iniC.sticker_donor_width = iniC.sticker_donor_width.Equals("") ? "120" : iniC.sticker_donor_width;
@@ -416,6 +422,29 @@ namespace clinic_ivf.control
                 }
             }
             return re;
+        }
+        public void setCboSpermAppearance(C1ComboBox c)
+        {
+            ComboBoxItem item = new ComboBoxItem();
+            //DataTable dt = selectWard();
+
+            item = new ComboBoxItem();
+            item.Value = "";
+            item.Text = "";
+            c.Items.Add(item);
+            item = new ComboBoxItem();
+            item.Value = "Normal";
+            item.Text = "Normal";
+            c.Items.Add(item);
+            item = new ComboBoxItem();
+            item.Value = "High";
+            item.Text = "High";
+            c.Items.Add(item);
+            item = new ComboBoxItem();
+            item.Value = "Low";
+            item.Text = "Low";
+            c.Items.Add(item);
+
         }
         public void setCboPkgGrp(C1ComboBox c)
         {

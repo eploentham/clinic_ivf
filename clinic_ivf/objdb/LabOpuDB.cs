@@ -165,6 +165,10 @@ namespace clinic_ivf.objdb
             opu.approve_result_day3_date = "approve_result_day3_date";
             opu.approve_result_day5_date = "approve_result_day5_date";
             opu.opu_time = "opu_time";
+            opu.remark_day2 = "remark_day2";
+            opu.remark_day3 = "remark_day3";
+            opu.remark_day5 = "remark_day5";
+            opu.remark_day6 = "remark_day6";
 
             opu.table = "lab_t_opu";
             opu.pkField = "opu_id";
@@ -365,6 +369,134 @@ namespace clinic_ivf.objdb
             }
             return c;
         }
+        public DataTable selectDistinctByRemarkDay2()
+        {
+            DataTable dt = new DataTable();
+            String sql = "select distinct opu." + opu.remark_day2 + " " +
+                "From " + opu.table + " opu " +
+                "Where opu." + opu.active + "='1' ";
+            dt = conn.selectData(conn.conn, sql);
+            return dt;
+        }
+        public C1ComboBox setCboRemarkDay2(C1ComboBox c)
+        {
+            ComboBoxItem item = new ComboBoxItem();
+            DataTable dt = selectDistinctByRemarkDay2();
+            //String aaa = "";
+            ComboBoxItem item1 = new ComboBoxItem();
+            item1.Text = "";
+            item1.Value = "";
+            c.Items.Clear();
+            c.Items.Add(item1);
+            //for (int i = 0; i < dt.Rows.Count; i++)
+            int i = 0;
+            foreach (DataRow row in dt.Rows)
+            {
+                item = new ComboBoxItem();
+                item.Text = row[opu.remark_day2].ToString();
+                item.Value = i.ToString();
+
+                c.Items.Add(item);
+                i++;
+            }
+            return c;
+        }
+        public DataTable selectDistinctByRemarkDay3()
+        {
+            DataTable dt = new DataTable();
+            String sql = "select distinct opu." + opu.remark_day3 + " " +
+                "From " + opu.table + " opu " +
+                "Where opu." + opu.active + "='1' ";
+            dt = conn.selectData(conn.conn, sql);
+            return dt;
+        }
+        public C1ComboBox setCboRemarkDay3(C1ComboBox c)
+        {
+            ComboBoxItem item = new ComboBoxItem();
+            DataTable dt = selectDistinctByRemarkDay3();
+            //String aaa = "";
+            ComboBoxItem item1 = new ComboBoxItem();
+            item1.Text = "";
+            item1.Value = "";
+            c.Items.Clear();
+            c.Items.Add(item1);
+            //for (int i = 0; i < dt.Rows.Count; i++)
+            int i = 0;
+            foreach (DataRow row in dt.Rows)
+            {
+                item = new ComboBoxItem();
+                item.Text = row[opu.remark_day3].ToString();
+                item.Value = i.ToString();
+
+                c.Items.Add(item);
+                i++;
+            }
+            return c;
+        }
+        public DataTable selectDistinctByRemarkDay5()
+        {
+            DataTable dt = new DataTable();
+            String sql = "select distinct opu." + opu.remark_day5 + " " +
+                "From " + opu.table + " opu " +
+                "Where opu." + opu.active + "='1' ";
+            dt = conn.selectData(conn.conn, sql);
+            return dt;
+        }
+        public C1ComboBox setCboRemarkDay5(C1ComboBox c)
+        {
+            ComboBoxItem item = new ComboBoxItem();
+            DataTable dt = selectDistinctByRemarkDay5();
+            //String aaa = "";
+            ComboBoxItem item1 = new ComboBoxItem();
+            item1.Text = "";
+            item1.Value = "";
+            c.Items.Clear();
+            c.Items.Add(item1);
+            //for (int i = 0; i < dt.Rows.Count; i++)
+            int i = 0;
+            foreach (DataRow row in dt.Rows)
+            {
+                item = new ComboBoxItem();
+                item.Text = row[opu.remark_day5].ToString();
+                item.Value = i.ToString();
+
+                c.Items.Add(item);
+                i++;
+            }
+            return c;
+        }
+        public DataTable selectDistinctByRemarkDay6()
+        {
+            DataTable dt = new DataTable();
+            String sql = "select distinct opu." + opu.remark_day6 + " " +
+                "From " + opu.table + " opu " +
+                "Where opu." + opu.active + "='1' ";
+            dt = conn.selectData(conn.conn, sql);
+            return dt;
+        }
+        public C1ComboBox setCboRemarkDay6(C1ComboBox c)
+        {
+            ComboBoxItem item = new ComboBoxItem();
+            DataTable dt = selectDistinctByRemarkDay6();
+            //String aaa = "";
+            ComboBoxItem item1 = new ComboBoxItem();
+            item1.Text = "";
+            item1.Value = "";
+            c.Items.Clear();
+            c.Items.Add(item1);
+            //for (int i = 0; i < dt.Rows.Count; i++)
+            int i = 0;
+            foreach (DataRow row in dt.Rows)
+            {
+                item = new ComboBoxItem();
+                item.Text = row[opu.remark_day6].ToString();
+                item.Value = i.ToString();
+
+                c.Items.Add(item);
+                i++;
+            }
+            return c;
+        }
         private void chkNull(LabOpu p)
         {
             long chk = 0;
@@ -393,6 +525,10 @@ namespace clinic_ivf.objdb
             p.remark_1 = p.remark_1 == null ? "" : p.remark_1;
             p.dob_donor = p.dob_donor == null ? "" : p.dob_donor;
             p.opu_time = p.opu_time == null ? "" : p.opu_time;
+            p.remark_day2 = p.remark_day2 == null ? "" : p.remark_day2;
+            p.remark_day3 = p.remark_day3 == null ? "" : p.remark_day3;
+            p.remark_day5 = p.remark_day5 == null ? "" : p.remark_day5;
+            p.remark_day6 = p.remark_day6 == null ? "" : p.remark_day6;
 
             p.doctor_id = long.TryParse(p.doctor_id, out chk) ? chk.ToString() : "0";
             p.proce_id = long.TryParse(p.proce_id, out chk) ? chk.ToString() : "0";
@@ -617,6 +753,98 @@ namespace clinic_ivf.objdb
                 "," + opu.embryo_for_et_remark + " = '" + p.embryo_for_et_remark.Replace("'", "''") + "'" +
                 "," + opu.remark_1 + " = '" + p.remark_1.Replace("'", "''") + "'" +
                 "Where " + opu.pkField + "='" + p.opu_id + "'"
+                ;
+
+            try
+            {
+                re = conn.ExecuteNonQuery(conn.conn, sql);
+            }
+            catch (Exception ex)
+            {
+                sql = ex.Message + " " + ex.InnerException;
+            }
+
+            return re;
+        }
+        public String updateRemarkDay6(String opuid, String remark)
+        {
+            String re = "";
+            String sql = "";
+            int chk = 0;
+                        
+            sql = "Update " + opu.table + " Set " +
+
+                " " + opu.remark_day6 + " = '" + remark.Replace("'", "''") + "'" +
+                "Where " + opu.pkField + "='" + opuid + "'"
+                ;
+
+            try
+            {
+                re = conn.ExecuteNonQuery(conn.conn, sql);
+            }
+            catch (Exception ex)
+            {
+                sql = ex.Message + " " + ex.InnerException;
+            }
+
+            return re;
+        }
+        public String updateRemarkDay5(String opuid, String remark)
+        {
+            String re = "";
+            String sql = "";
+            int chk = 0;
+                        
+            sql = "Update " + opu.table + " Set " +
+
+                " " + opu.remark_day5 + " = '" + remark.Replace("'", "''") + "'" +
+                "Where " + opu.pkField + "='" + opuid + "'"
+                ;
+
+            try
+            {
+                re = conn.ExecuteNonQuery(conn.conn, sql);
+            }
+            catch (Exception ex)
+            {
+                sql = ex.Message + " " + ex.InnerException;
+            }
+
+            return re;
+        }
+        public String updateRemarkDay3(String opuid, String remark)
+        {
+            String re = "";
+            String sql = "";
+            int chk = 0;
+                        
+            sql = "Update " + opu.table + " Set " +
+
+                " " + opu.remark_day3 + " = '" + remark.Replace("'", "''") + "'" +
+                "Where " + opu.pkField + "='" + opuid + "'"
+                ;
+
+            try
+            {
+                re = conn.ExecuteNonQuery(conn.conn, sql);
+            }
+            catch (Exception ex)
+            {
+                sql = ex.Message + " " + ex.InnerException;
+            }
+
+            return re;
+        }
+        public String updateRemarkDay2(String opuid, String remark)
+        {
+            String re = "";
+            String sql = "";
+            int chk = 0;
+                        
+            sql = "Update " + opu.table + " Set " +
+
+                " " + opu.remark_day2 + " = '" + remark.Replace("'", "''") + "'" +
+                "Where " + opu.pkField + "='" + opuid + "'"
                 ;
 
             try
@@ -939,6 +1167,10 @@ namespace clinic_ivf.objdb
                 opu1.approve_result_day3_date = dt.Rows[0][opu.approve_result_day3_date].ToString();
                 opu1.approve_result_day5_date = dt.Rows[0][opu.approve_result_day5_date].ToString();
                 opu1.opu_time = dt.Rows[0][opu.opu_time].ToString();
+                opu1.remark_day2 = dt.Rows[0][opu.remark_day2].ToString();
+                opu1.remark_day3 = dt.Rows[0][opu.remark_day3].ToString();
+                opu1.remark_day5 = dt.Rows[0][opu.remark_day5].ToString();
+                opu1.remark_day6 = dt.Rows[0][opu.remark_day6].ToString();
             }
             else
             {
@@ -1085,6 +1317,10 @@ namespace clinic_ivf.objdb
                 opu1.approve_result_day3_date = "";
                 opu1.approve_result_day5_date = "";
                 opu1.opu_time = "";
+                opu1.remark_day2 = "";
+                opu1.remark_day3 = "";
+                opu1.remark_day5 = "";
+                opu1.remark_day6 = "";
             }
 
             return opu1;

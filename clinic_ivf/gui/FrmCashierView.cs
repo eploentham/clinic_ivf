@@ -410,7 +410,7 @@ namespace clinic_ivf.gui
                 amtdiscount = ic.ivfDB.obildDB.selectSumPriceByBilId(bilid, "99");
                 Decimal.TryParse(amtdiscount, out amtdiscount1);
 
-                amtother = ic.ivfDB.obildDB.selectSumPriceByBilId(bilid, "99");
+                amtother = ic.ivfDB.obildDB.selectSumPriceByBilId(bilid, "102");
                 Decimal.TryParse(amtother, out amtother1);
 
                 total = amtpkg1 + amtmed1 + amtdtrfee1 + amtlab11 + amtlab21 + amtnurfee1 + amttreat1 + amtdiscount1 + amtother1;
