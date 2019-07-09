@@ -27,7 +27,7 @@ namespace clinic_ivf.gui
 
         int colID = 1, colVNshow = 2, colVN = 12, colPttHn = 3, colPttName = 4, colVsDate = 5, colVsTime = 6, colVsEtime = 7, colVsAgent=8, colStatus = 9, colPttId = 10, colStatusNurse = 11, colStatusCashier = 12, colBillId=13;
         int colCldId = 1, colCldBillNo = 2, colCldReceiptNo=3, colCldDate = 4, colCldHn = 5, colCldName = 6, colCldPkg = 7, colCldMed = 8, colCldDtrfee = 9, colCldLab1 = 10, colCldLab2 = 11, colCldNurfee = 12, colCldTreat = 13, colCldDiscount = 14, colCldOther = 15, colCldAmount = 16, colCldVn=17, colCldBillId=18;
-        int colBildId = 1, colBildName = 2, colBildprice = 3, colBildqty = 4, colBildAmt = 5, colBildDiscount = 6, colBildNetAmt = 7, colBildGrpName = 8, colBildBilId = 9, colBildInclude = 10, colBildStatus = 11;
+        int colBildId = 1, colBildName = 2, colBildprice = 3, colBildqty = 4, colBildAmt = 5, colBildDiscount = 6, colBildNetAmt = 7, colBildGrpName = 8, colBildBilId = 9, colBildInclude = 10, colBildStatus = 11, colBildItmId=12;
 
         C1FlexGrid grfQue, grfFinish, grfSearch, grfCld, grfBilD;
         C1SuperTooltip stt;
@@ -391,28 +391,28 @@ namespace clinic_ivf.gui
                 amtpkg = ic.ivfDB.obildDB.selectSumPriceByBilId(bilid, "0");
                 Decimal.TryParse(amtpkg, out amtpkg1);
 
-                amtmed = ic.ivfDB.obildDB.selectSumPriceByBilId(bilid, "1");
+                amtmed = ic.ivfDB.obildDB.selectSumPriceByBilId1(bilid, "1");
                 Decimal.TryParse(amtmed, out amtmed1);
 
-                amtdtrfee = ic.ivfDB.obildDB.selectSumPriceByBilId(bilid, "2");
+                amtdtrfee = ic.ivfDB.obildDB.selectSumPriceByBilId1(bilid, "2");
                 Decimal.TryParse(amtdtrfee, out amtdtrfee1);
 
-                amtlab1 = ic.ivfDB.obildDB.selectSumPriceByBilId(bilid, "3");
+                amtlab1 = ic.ivfDB.obildDB.selectSumPriceByBilId1(bilid, "3");
                 Decimal.TryParse(amtlab1, out amtlab11);
 
-                amtlab2 = ic.ivfDB.obildDB.selectSumPriceByBilId(bilid, "4");
+                amtlab2 = ic.ivfDB.obildDB.selectSumPriceByBilId1(bilid, "4");
                 Decimal.TryParse(amtlab2, out amtlab21);
 
-                amtnurfee = ic.ivfDB.obildDB.selectSumPriceByBilId(bilid, "5");
+                amtnurfee = ic.ivfDB.obildDB.selectSumPriceByBilId1(bilid, "5");
                 Decimal.TryParse(amtnurfee, out amtnurfee1);
 
-                amttreat = ic.ivfDB.obildDB.selectSumPriceByBilId(bilid, "90");
+                amttreat = ic.ivfDB.obildDB.selectSumPriceByBilId1(bilid, "90");
                 Decimal.TryParse(amttreat, out amttreat1);
 
-                amtdiscount = ic.ivfDB.obildDB.selectSumPriceByBilId(bilid, "99");
+                amtdiscount = ic.ivfDB.obildDB.selectSumPriceByBilId1(bilid, "99");
                 Decimal.TryParse(amtdiscount, out amtdiscount1);
 
-                amtother = ic.ivfDB.obildDB.selectSumPriceByBilId(bilid, "102");
+                amtother = ic.ivfDB.obildDB.selectSumPriceByBilId1(bilid, "102");
                 Decimal.TryParse(amtother, out amtother1);
 
                 total = amtpkg1 + amtmed1 + amtdtrfee1 + amtlab11 + amtlab21 + amtnurfee1 + amttreat1 + amtdiscount1 + amtother1;
@@ -530,7 +530,7 @@ namespace clinic_ivf.gui
             //    //grfPtt.DataSource = ic.ivfDB.vsOldDB.selectCurrentVisit(search);
             //} 
             grfBilD.Rows.Count = dt.Rows.Count + 2;
-            grfBilD.Cols.Count = 12;
+            grfBilD.Cols.Count = 13;
             C1TextBox txt = new C1TextBox();
             //C1ComboBox cboproce = new C1ComboBox();
             //ic.ivfDB.itmDB.setCboItem(cboproce);
@@ -546,6 +546,7 @@ namespace clinic_ivf.gui
             grfBilD.Cols[colBildGrpName].Width = 120;
             grfBilD.Cols[colBildprice].Width = 100;
             grfBilD.Cols[colBildqty].Width = 80;
+            grfBilD.Cols[colBildItmId].Width = 80;
 
             grfBilD.ShowCursor = true;
             //grdFlex.Cols[colID].Caption = "no";
@@ -599,6 +600,7 @@ namespace clinic_ivf.gui
                     grfBilD[i, colBildStatus] = row["status"].ToString();
                     grfBilD[i, colBildprice] = price1.ToString("#,###.00");
                     grfBilD[i, colBildqty] = qty.ToString("#,###.00");
+                    grfBilD[i, colBildItmId] = row[ic.ivfDB.obildDB.obilld.item_id].ToString();
                     //if (!row[ic.ivfDB.vsOldDB.vsold.form_a_id].ToString().Equals("0"))
                     //{
                     //    CellNote note = new CellNote("ส่ง Lab Request Foam A");
@@ -633,6 +635,7 @@ namespace clinic_ivf.gui
             grfBilD.Cols[colBildNetAmt].AllowEditing = false;
             grfBilD.Cols[colBildGrpName].AllowEditing = false;
             grfBilD.Cols[colBildInclude].AllowEditing = false;
+            grfBilD.Cols[colBildItmId].AllowEditing = false;
             //theme1.SetTheme(grfQue, ic.theme);
             //Decimal amt = 0;
             //amt = calAmt();

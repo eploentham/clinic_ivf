@@ -363,7 +363,8 @@ namespace clinic_ivf.gui
                 Row row1 = grfReq.Rows.Add();
                 row1[colRqId] = row[ic.ivfDB.lbReqDB.lbReq.req_id].ToString();
                 row1[colRqReqNum] = row[ic.ivfDB.lbReqDB.lbReq.req_code].ToString();
-                row1[colRqHn] = row[ic.ivfDB.lbReqDB.lbReq.hn_female].ToString();
+                //row1[colRqHn] = row[ic.ivfDB.lbReqDB.lbReq.hn_female].ToString();
+                row1[colRqHn] = row["hn_male"].ToString();
                 row1[colRqVn] = row[ic.ivfDB.lbReqDB.lbReq.vn].ToString();
                 row1[colRqName] = row[ic.ivfDB.lbReqDB.lbReq.name_female].ToString();
                 row1[colRqDate] = ic.datetoShow(row[ic.ivfDB.lbReqDB.lbReq.req_date].ToString());
