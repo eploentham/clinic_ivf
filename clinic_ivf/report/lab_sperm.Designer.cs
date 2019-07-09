@@ -415,6 +415,22 @@ namespace clinic_ivf.report {
             
             private global::System.Data.DataColumn columnpost_motility;
             
+            private global::System.Data.DataColumn columndoc_type_name_app;
+            
+            private global::System.Data.DataColumn columndoc_type_name_liq;
+            
+            private global::System.Data.DataColumn columndoc_type_name_vis;
+            
+            private global::System.Data.DataColumn columndoc_type_name_wbc;
+            
+            private global::System.Data.DataColumn columndoc_type_name_noo;
+            
+            private global::System.Data.DataColumn columndoctorname;
+            
+            private global::System.Data.DataColumn columnstaff_approve_name;
+            
+            private global::System.Data.DataColumn columnstaff_report_name;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public lab_spermDataTable() {
@@ -994,6 +1010,70 @@ namespace clinic_ivf.report {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn doc_type_name_appColumn {
+                get {
+                    return this.columndoc_type_name_app;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn doc_type_name_liqColumn {
+                get {
+                    return this.columndoc_type_name_liq;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn doc_type_name_visColumn {
+                get {
+                    return this.columndoc_type_name_vis;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn doc_type_name_wbcColumn {
+                get {
+                    return this.columndoc_type_name_wbc;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn doc_type_name_nooColumn {
+                get {
+                    return this.columndoc_type_name_noo;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn doctornameColumn {
+                get {
+                    return this.columndoctorname;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn staff_approve_nameColumn {
+                get {
+                    return this.columnstaff_approve_name;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn staff_report_nameColumn {
+                get {
+                    return this.columnstaff_report_name;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -1097,7 +1177,15 @@ namespace clinic_ivf.report {
                         string post_motility_rate_3, 
                         string post_motility_rate_2, 
                         string post_motility_rate_1, 
-                        string post_motility) {
+                        string post_motility, 
+                        string doc_type_name_app, 
+                        string doc_type_name_liq, 
+                        string doc_type_name_vis, 
+                        string doc_type_name_wbc, 
+                        string doc_type_name_noo, 
+                        string doctorname, 
+                        string staff_approve_name, 
+                        string staff_report_name) {
                 lab_spermRow rowlab_spermRow = ((lab_spermRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         sperm_id,
@@ -1167,7 +1255,15 @@ namespace clinic_ivf.report {
                         post_motility_rate_3,
                         post_motility_rate_2,
                         post_motility_rate_1,
-                        post_motility};
+                        post_motility,
+                        doc_type_name_app,
+                        doc_type_name_liq,
+                        doc_type_name_vis,
+                        doc_type_name_wbc,
+                        doc_type_name_noo,
+                        doctorname,
+                        staff_approve_name,
+                        staff_report_name};
                 rowlab_spermRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowlab_spermRow);
                 return rowlab_spermRow;
@@ -1258,6 +1354,14 @@ namespace clinic_ivf.report {
                 this.columnpost_motility_rate_2 = base.Columns["post_motility_rate_2"];
                 this.columnpost_motility_rate_1 = base.Columns["post_motility_rate_1"];
                 this.columnpost_motility = base.Columns["post_motility"];
+                this.columndoc_type_name_app = base.Columns["doc_type_name_app"];
+                this.columndoc_type_name_liq = base.Columns["doc_type_name_liq"];
+                this.columndoc_type_name_vis = base.Columns["doc_type_name_vis"];
+                this.columndoc_type_name_wbc = base.Columns["doc_type_name_wbc"];
+                this.columndoc_type_name_noo = base.Columns["doc_type_name_noo"];
+                this.columndoctorname = base.Columns["doctorname"];
+                this.columnstaff_approve_name = base.Columns["staff_approve_name"];
+                this.columnstaff_report_name = base.Columns["staff_report_name"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1399,6 +1503,22 @@ namespace clinic_ivf.report {
                 base.Columns.Add(this.columnpost_motility_rate_1);
                 this.columnpost_motility = new global::System.Data.DataColumn("post_motility", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnpost_motility);
+                this.columndoc_type_name_app = new global::System.Data.DataColumn("doc_type_name_app", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columndoc_type_name_app);
+                this.columndoc_type_name_liq = new global::System.Data.DataColumn("doc_type_name_liq", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columndoc_type_name_liq);
+                this.columndoc_type_name_vis = new global::System.Data.DataColumn("doc_type_name_vis", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columndoc_type_name_vis);
+                this.columndoc_type_name_wbc = new global::System.Data.DataColumn("doc_type_name_wbc", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columndoc_type_name_wbc);
+                this.columndoc_type_name_noo = new global::System.Data.DataColumn("doc_type_name_noo", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columndoc_type_name_noo);
+                this.columndoctorname = new global::System.Data.DataColumn("doctorname", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columndoctorname);
+                this.columnstaff_approve_name = new global::System.Data.DataColumn("staff_approve_name", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnstaff_approve_name);
+                this.columnstaff_report_name = new global::System.Data.DataColumn("staff_report_name", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnstaff_report_name);
                 this.columnsperm_id.Caption = "DataColumn1";
                 this.columnsperm_code.Caption = "DataColumn1";
                 this.columnhn_male.Caption = "DataColumn1";
@@ -2696,6 +2816,134 @@ namespace clinic_ivf.report {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string doc_type_name_app {
+                get {
+                    try {
+                        return ((string)(this[this.tablelab_sperm.doc_type_name_appColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'doc_type_name_app\' in table \'lab_sperm\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablelab_sperm.doc_type_name_appColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string doc_type_name_liq {
+                get {
+                    try {
+                        return ((string)(this[this.tablelab_sperm.doc_type_name_liqColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'doc_type_name_liq\' in table \'lab_sperm\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablelab_sperm.doc_type_name_liqColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string doc_type_name_vis {
+                get {
+                    try {
+                        return ((string)(this[this.tablelab_sperm.doc_type_name_visColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'doc_type_name_vis\' in table \'lab_sperm\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablelab_sperm.doc_type_name_visColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string doc_type_name_wbc {
+                get {
+                    try {
+                        return ((string)(this[this.tablelab_sperm.doc_type_name_wbcColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'doc_type_name_wbc\' in table \'lab_sperm\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablelab_sperm.doc_type_name_wbcColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string doc_type_name_noo {
+                get {
+                    try {
+                        return ((string)(this[this.tablelab_sperm.doc_type_name_nooColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'doc_type_name_noo\' in table \'lab_sperm\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablelab_sperm.doc_type_name_nooColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string doctorname {
+                get {
+                    try {
+                        return ((string)(this[this.tablelab_sperm.doctornameColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'doctorname\' in table \'lab_sperm\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablelab_sperm.doctornameColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string staff_approve_name {
+                get {
+                    try {
+                        return ((string)(this[this.tablelab_sperm.staff_approve_nameColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'staff_approve_name\' in table \'lab_sperm\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablelab_sperm.staff_approve_nameColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string staff_report_name {
+                get {
+                    try {
+                        return ((string)(this[this.tablelab_sperm.staff_report_nameColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'staff_report_name\' in table \'lab_sperm\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablelab_sperm.staff_report_nameColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public bool Issperm_idNull() {
                 return this.IsNull(this.tablelab_sperm.sperm_idColumn);
             }
@@ -3508,6 +3756,102 @@ namespace clinic_ivf.report {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public void Setpost_motilityNull() {
                 this[this.tablelab_sperm.post_motilityColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool Isdoc_type_name_appNull() {
+                return this.IsNull(this.tablelab_sperm.doc_type_name_appColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void Setdoc_type_name_appNull() {
+                this[this.tablelab_sperm.doc_type_name_appColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool Isdoc_type_name_liqNull() {
+                return this.IsNull(this.tablelab_sperm.doc_type_name_liqColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void Setdoc_type_name_liqNull() {
+                this[this.tablelab_sperm.doc_type_name_liqColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool Isdoc_type_name_visNull() {
+                return this.IsNull(this.tablelab_sperm.doc_type_name_visColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void Setdoc_type_name_visNull() {
+                this[this.tablelab_sperm.doc_type_name_visColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool Isdoc_type_name_wbcNull() {
+                return this.IsNull(this.tablelab_sperm.doc_type_name_wbcColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void Setdoc_type_name_wbcNull() {
+                this[this.tablelab_sperm.doc_type_name_wbcColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool Isdoc_type_name_nooNull() {
+                return this.IsNull(this.tablelab_sperm.doc_type_name_nooColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void Setdoc_type_name_nooNull() {
+                this[this.tablelab_sperm.doc_type_name_nooColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IsdoctornameNull() {
+                return this.IsNull(this.tablelab_sperm.doctornameColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetdoctornameNull() {
+                this[this.tablelab_sperm.doctornameColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool Isstaff_approve_nameNull() {
+                return this.IsNull(this.tablelab_sperm.staff_approve_nameColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void Setstaff_approve_nameNull() {
+                this[this.tablelab_sperm.staff_approve_nameColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool Isstaff_report_nameNull() {
+                return this.IsNull(this.tablelab_sperm.staff_report_nameColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void Setstaff_report_nameNull() {
+                this[this.tablelab_sperm.staff_report_nameColumn] = global::System.Convert.DBNull;
             }
         }
         

@@ -216,6 +216,7 @@ namespace clinic_ivf.control
             iniC.email_auth_pass = iniF.getIni("email", "email_auth_pass");
             iniC.email_port = iniF.getIni("email", "email_port");
             iniC.email_ssl = iniF.getIni("email", "email_ssl");
+            iniC.email_to_sperm_freezing = iniF.getIni("email", "email_to_sperm_freezing");
 
             iniC.grdViewFontName = iniC.grdViewFontName.Equals("") ? "Microsoft Sans Serif" : iniC.grdViewFontName;
 

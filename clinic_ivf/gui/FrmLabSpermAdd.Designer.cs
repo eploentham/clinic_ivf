@@ -39,14 +39,14 @@
             this.c1SplitterPanel3 = new C1.Win.C1SplitContainer.C1SplitterPanel();
             this.pnSfLeft = new System.Windows.Forms.Panel();
             this.pnSfLeftEmail = new System.Windows.Forms.Panel();
-            this.txtEmailBody = new C1.Win.C1Input.C1TextBox();
+            this.txtSfEmailBody = new C1.Win.C1Input.C1TextBox();
             this.pnEmailAddSubject = new System.Windows.Forms.Panel();
             this.btnSfSendEmail = new C1.Win.C1Input.C1Button();
             this.btnMaleSearch = new C1.Win.C1Input.C1Button();
             this.label210 = new System.Windows.Forms.Label();
-            this.txtEmailSubject = new C1.Win.C1Input.C1TextBox();
+            this.txtSfEmailSubject = new C1.Win.C1Input.C1TextBox();
             this.label211 = new System.Windows.Forms.Label();
-            this.txtEmailTo = new C1.Win.C1Input.C1TextBox();
+            this.txtSfEmailTo = new C1.Win.C1Input.C1TextBox();
             this.c1Ribbon1 = new C1.Win.C1Ribbon.C1Ribbon();
             this.ribbonApplicationMenu1 = new C1.Win.C1Ribbon.RibbonApplicationMenu();
             this.ExitButton = new C1.Win.C1Ribbon.RibbonButton();
@@ -570,6 +570,8 @@
             this.txtPeNameFeMale = new C1.Win.C1Input.C1TextBox();
             this.label207 = new System.Windows.Forms.Label();
             this.txtPeHnFeMale = new C1.Win.C1Input.C1TextBox();
+            this.tabReport = new C1.Win.C1Command.C1DockingTabPage();
+            this.crySperm = new CrystalDecisions.Windows.Forms.CrystalReportViewer();
             this.sB.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.theme1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tC)).BeginInit();
@@ -581,12 +583,12 @@
             this.c1SplitterPanel3.SuspendLayout();
             this.pnSfLeft.SuspendLayout();
             this.pnSfLeftEmail.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.txtEmailBody)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtSfEmailBody)).BeginInit();
             this.pnEmailAddSubject.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btnSfSendEmail)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnMaleSearch)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtEmailSubject)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtEmailTo)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtSfEmailSubject)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtSfEmailTo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.c1Ribbon1)).BeginInit();
             this.c1SplitterPanel4.SuspendLayout();
             this.panel7.SuspendLayout();
@@ -808,6 +810,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtPeHnMale)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtPeNameFeMale)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtPeHnFeMale)).BeginInit();
+            this.tabReport.SuspendLayout();
             this.SuspendLayout();
             // 
             // sB
@@ -838,6 +841,7 @@
             this.tC.Controls.Add(this.tabSememAna);
             this.tC.Controls.Add(this.TabSpermIUI);
             this.tC.Controls.Add(this.tabSememPESA);
+            this.tC.Controls.Add(this.tabReport);
             this.tC.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tC.HotTrack = true;
             this.tC.Location = new System.Drawing.Point(0, 0);
@@ -921,7 +925,7 @@
             // pnSfLeftEmail
             // 
             this.pnSfLeftEmail.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.pnSfLeftEmail.Controls.Add(this.txtEmailBody);
+            this.pnSfLeftEmail.Controls.Add(this.txtSfEmailBody);
             this.pnSfLeftEmail.Controls.Add(this.pnEmailAddSubject);
             this.pnSfLeftEmail.Controls.Add(this.c1Ribbon1);
             this.pnSfLeftEmail.Dock = System.Windows.Forms.DockStyle.Top;
@@ -932,20 +936,20 @@
             this.pnSfLeftEmail.TabIndex = 0;
             this.theme1.SetTheme(this.pnSfLeftEmail, "(default)");
             // 
-            // txtEmailBody
+            // txtSfEmailBody
             // 
-            this.txtEmailBody.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtEmailBody.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
-            this.txtEmailBody.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.txtEmailBody.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.txtEmailBody.Location = new System.Drawing.Point(0, 214);
-            this.txtEmailBody.Multiline = true;
-            this.txtEmailBody.Name = "txtEmailBody";
-            this.txtEmailBody.Size = new System.Drawing.Size(545, 223);
-            this.txtEmailBody.TabIndex = 541;
-            this.txtEmailBody.Tag = null;
-            this.theme1.SetTheme(this.txtEmailBody, "(default)");
-            this.txtEmailBody.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            this.txtSfEmailBody.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtSfEmailBody.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
+            this.txtSfEmailBody.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.txtSfEmailBody.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.txtSfEmailBody.Location = new System.Drawing.Point(0, 214);
+            this.txtSfEmailBody.Multiline = true;
+            this.txtSfEmailBody.Name = "txtSfEmailBody";
+            this.txtSfEmailBody.Size = new System.Drawing.Size(545, 223);
+            this.txtSfEmailBody.TabIndex = 541;
+            this.txtSfEmailBody.Tag = null;
+            this.theme1.SetTheme(this.txtSfEmailBody, "(default)");
+            this.txtSfEmailBody.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
             // 
             // pnEmailAddSubject
             // 
@@ -953,9 +957,9 @@
             this.pnEmailAddSubject.Controls.Add(this.btnSfSendEmail);
             this.pnEmailAddSubject.Controls.Add(this.btnMaleSearch);
             this.pnEmailAddSubject.Controls.Add(this.label210);
-            this.pnEmailAddSubject.Controls.Add(this.txtEmailSubject);
+            this.pnEmailAddSubject.Controls.Add(this.txtSfEmailSubject);
             this.pnEmailAddSubject.Controls.Add(this.label211);
-            this.pnEmailAddSubject.Controls.Add(this.txtEmailTo);
+            this.pnEmailAddSubject.Controls.Add(this.txtSfEmailTo);
             this.pnEmailAddSubject.Dock = System.Windows.Forms.DockStyle.Top;
             this.pnEmailAddSubject.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
             this.pnEmailAddSubject.Location = new System.Drawing.Point(0, 146);
@@ -1002,19 +1006,19 @@
             this.label210.Text = "Subject :";
             this.theme1.SetTheme(this.label210, "(default)");
             // 
-            // txtEmailSubject
+            // txtSfEmailSubject
             // 
-            this.txtEmailSubject.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtEmailSubject.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
-            this.txtEmailSubject.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.txtEmailSubject.Location = new System.Drawing.Point(78, 42);
-            this.txtEmailSubject.Name = "txtEmailSubject";
-            this.txtEmailSubject.Size = new System.Drawing.Size(300, 20);
-            this.txtEmailSubject.TabIndex = 516;
-            this.txtEmailSubject.Tag = null;
-            this.theme1.SetTheme(this.txtEmailSubject, "(default)");
-            this.txtEmailSubject.Value = "Result OPU";
-            this.txtEmailSubject.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            this.txtSfEmailSubject.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtSfEmailSubject.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
+            this.txtSfEmailSubject.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.txtSfEmailSubject.Location = new System.Drawing.Point(78, 42);
+            this.txtSfEmailSubject.Name = "txtSfEmailSubject";
+            this.txtSfEmailSubject.Size = new System.Drawing.Size(300, 20);
+            this.txtSfEmailSubject.TabIndex = 516;
+            this.txtSfEmailSubject.Tag = null;
+            this.theme1.SetTheme(this.txtSfEmailSubject, "(default)");
+            this.txtSfEmailSubject.Value = "Result OPU";
+            this.txtSfEmailSubject.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
             // 
             // label211
             // 
@@ -1029,19 +1033,19 @@
             this.label211.Text = "To :";
             this.theme1.SetTheme(this.label211, "(default)");
             // 
-            // txtEmailTo
+            // txtSfEmailTo
             // 
-            this.txtEmailTo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtEmailTo.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
-            this.txtEmailTo.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.txtEmailTo.Location = new System.Drawing.Point(50, 10);
-            this.txtEmailTo.Name = "txtEmailTo";
-            this.txtEmailTo.Size = new System.Drawing.Size(194, 20);
-            this.txtEmailTo.TabIndex = 514;
-            this.txtEmailTo.Tag = null;
-            this.theme1.SetTheme(this.txtEmailTo, "(default)");
-            this.txtEmailTo.Value = "eploentham@outlook.co.th";
-            this.txtEmailTo.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            this.txtSfEmailTo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtSfEmailTo.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
+            this.txtSfEmailTo.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.txtSfEmailTo.Location = new System.Drawing.Point(50, 10);
+            this.txtSfEmailTo.Name = "txtSfEmailTo";
+            this.txtSfEmailTo.Size = new System.Drawing.Size(194, 20);
+            this.txtSfEmailTo.TabIndex = 514;
+            this.txtSfEmailTo.Tag = null;
+            this.theme1.SetTheme(this.txtSfEmailTo, "(default)");
+            this.txtSfEmailTo.Value = "eploentham@outlook.co.th";
+            this.txtSfEmailTo.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
             // 
             // c1Ribbon1
             // 
@@ -2541,22 +2545,20 @@
             this.txtSfApproveDate.Calendar.TrailingForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
             this.txtSfApproveDate.Calendar.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
             this.txtSfApproveDate.Culture = 1054;
-            this.txtSfApproveDate.CurrentTimeZone = false;
             this.txtSfApproveDate.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
             this.txtSfApproveDate.DisplayFormat.CalendarType = C1.Win.C1Input.CalendarType.GregorianCalendar;
-            this.txtSfApproveDate.DisplayFormat.FormatType = C1.Win.C1Input.FormatTypeEnum.ShortDate;
+            this.txtSfApproveDate.DisplayFormat.FormatType = C1.Win.C1Input.FormatTypeEnum.ShortDateShortTime;
             this.txtSfApproveDate.DisplayFormat.Inherit = ((C1.Win.C1Input.FormatInfoInheritFlags)(((((C1.Win.C1Input.FormatInfoInheritFlags.CustomFormat | C1.Win.C1Input.FormatInfoInheritFlags.NullText) 
             | C1.Win.C1Input.FormatInfoInheritFlags.EmptyAsNull) 
             | C1.Win.C1Input.FormatInfoInheritFlags.TrimStart) 
             | C1.Win.C1Input.FormatInfoInheritFlags.TrimEnd)));
             this.txtSfApproveDate.EditFormat.CalendarType = C1.Win.C1Input.CalendarType.GregorianCalendar;
-            this.txtSfApproveDate.EditFormat.FormatType = C1.Win.C1Input.FormatTypeEnum.ShortDate;
+            this.txtSfApproveDate.EditFormat.FormatType = C1.Win.C1Input.FormatTypeEnum.ShortDateShortTime;
             this.txtSfApproveDate.EditFormat.Inherit = ((C1.Win.C1Input.FormatInfoInheritFlags)(((((C1.Win.C1Input.FormatInfoInheritFlags.CustomFormat | C1.Win.C1Input.FormatInfoInheritFlags.NullText) 
             | C1.Win.C1Input.FormatInfoInheritFlags.EmptyAsNull) 
             | C1.Win.C1Input.FormatInfoInheritFlags.TrimStart) 
             | C1.Win.C1Input.FormatInfoInheritFlags.TrimEnd)));
             this.txtSfApproveDate.EmptyAsNull = true;
-            this.txtSfApproveDate.GMTOffset = System.TimeSpan.Parse("00:00:00");
             this.txtSfApproveDate.ImagePadding = new System.Windows.Forms.Padding(0);
             this.txtSfApproveDate.Location = new System.Drawing.Point(517, 227);
             this.txtSfApproveDate.Name = "txtSfApproveDate";
@@ -2600,22 +2602,20 @@
             this.txtSfReportDate.Calendar.TrailingForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
             this.txtSfReportDate.Calendar.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
             this.txtSfReportDate.Culture = 1054;
-            this.txtSfReportDate.CurrentTimeZone = false;
             this.txtSfReportDate.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
             this.txtSfReportDate.DisplayFormat.CalendarType = C1.Win.C1Input.CalendarType.GregorianCalendar;
-            this.txtSfReportDate.DisplayFormat.FormatType = C1.Win.C1Input.FormatTypeEnum.ShortDate;
+            this.txtSfReportDate.DisplayFormat.FormatType = C1.Win.C1Input.FormatTypeEnum.ShortDateShortTime;
             this.txtSfReportDate.DisplayFormat.Inherit = ((C1.Win.C1Input.FormatInfoInheritFlags)(((((C1.Win.C1Input.FormatInfoInheritFlags.CustomFormat | C1.Win.C1Input.FormatInfoInheritFlags.NullText) 
             | C1.Win.C1Input.FormatInfoInheritFlags.EmptyAsNull) 
             | C1.Win.C1Input.FormatInfoInheritFlags.TrimStart) 
             | C1.Win.C1Input.FormatInfoInheritFlags.TrimEnd)));
             this.txtSfReportDate.EditFormat.CalendarType = C1.Win.C1Input.CalendarType.GregorianCalendar;
-            this.txtSfReportDate.EditFormat.FormatType = C1.Win.C1Input.FormatTypeEnum.ShortDate;
+            this.txtSfReportDate.EditFormat.FormatType = C1.Win.C1Input.FormatTypeEnum.ShortDateShortTime;
             this.txtSfReportDate.EditFormat.Inherit = ((C1.Win.C1Input.FormatInfoInheritFlags)(((((C1.Win.C1Input.FormatInfoInheritFlags.CustomFormat | C1.Win.C1Input.FormatInfoInheritFlags.NullText) 
             | C1.Win.C1Input.FormatInfoInheritFlags.EmptyAsNull) 
             | C1.Win.C1Input.FormatInfoInheritFlags.TrimStart) 
             | C1.Win.C1Input.FormatInfoInheritFlags.TrimEnd)));
             this.txtSfReportDate.EmptyAsNull = true;
-            this.txtSfReportDate.GMTOffset = System.TimeSpan.Parse("00:00:00");
             this.txtSfReportDate.ImagePadding = new System.Windows.Forms.Padding(0);
             this.txtSfReportDate.Location = new System.Drawing.Point(517, 158);
             this.txtSfReportDate.Name = "txtSfReportDate";
@@ -8930,6 +8930,29 @@
             this.theme1.SetTheme(this.txtPeHnFeMale, "(default)");
             this.txtPeHnFeMale.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
             // 
+            // tabReport
+            // 
+            this.tabReport.Controls.Add(this.crySperm);
+            this.tabReport.Location = new System.Drawing.Point(1, 24);
+            this.tabReport.Name = "tabReport";
+            this.tabReport.Size = new System.Drawing.Size(1348, 775);
+            this.tabReport.TabIndex = 4;
+            this.tabReport.Text = "Report";
+            // 
+            // crySperm
+            // 
+            this.crySperm.ActiveViewIndex = -1;
+            this.crySperm.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.crySperm.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.crySperm.Cursor = System.Windows.Forms.Cursors.Default;
+            this.crySperm.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.crySperm.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.crySperm.Location = new System.Drawing.Point(0, 0);
+            this.crySperm.Name = "crySperm";
+            this.crySperm.Size = new System.Drawing.Size(1348, 775);
+            this.crySperm.TabIndex = 2;
+            this.theme1.SetTheme(this.crySperm, "(default)");
+            // 
             // FrmLabSpermAdd
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -8953,13 +8976,13 @@
             this.pnSfLeft.ResumeLayout(false);
             this.pnSfLeftEmail.ResumeLayout(false);
             this.pnSfLeftEmail.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.txtEmailBody)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtSfEmailBody)).EndInit();
             this.pnEmailAddSubject.ResumeLayout(false);
             this.pnEmailAddSubject.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btnSfSendEmail)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnMaleSearch)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtEmailSubject)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtEmailTo)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtSfEmailSubject)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtSfEmailTo)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.c1Ribbon1)).EndInit();
             this.c1SplitterPanel4.ResumeLayout(false);
             this.panel7.ResumeLayout(false);
@@ -9191,6 +9214,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtPeHnMale)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtPeNameFeMale)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtPeHnFeMale)).EndInit();
+            this.tabReport.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -9735,9 +9759,11 @@
         private C1.Win.C1Input.C1Button btnSfSendEmail;
         private C1.Win.C1Input.C1Button btnMaleSearch;
         private System.Windows.Forms.Label label210;
-        private C1.Win.C1Input.C1TextBox txtEmailSubject;
+        private C1.Win.C1Input.C1TextBox txtSfEmailSubject;
         private System.Windows.Forms.Label label211;
-        private C1.Win.C1Input.C1TextBox txtEmailTo;
-        private C1.Win.C1Input.C1TextBox txtEmailBody;
+        private C1.Win.C1Input.C1TextBox txtSfEmailTo;
+        private C1.Win.C1Input.C1TextBox txtSfEmailBody;
+        private C1.Win.C1Command.C1DockingTabPage tabReport;
+        private CrystalDecisions.Windows.Forms.CrystalReportViewer crySperm;
     }
 }

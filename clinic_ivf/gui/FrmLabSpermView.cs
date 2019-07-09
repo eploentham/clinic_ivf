@@ -380,8 +380,8 @@ namespace clinic_ivf.gui
                 //    : row["item_id"].ToString().Equals("18") ? "Sperm Freezing"
                 //    : row["item_id"].ToString().Equals("66") ? "PESA/TESE"
                 //    : row["item_id"].ToString().Equals("88") ? "IUI" : "";
-                row1[colRqStatusSperm] = row["item_id"].ToString().Equals("14") ? "1"
-                    : row["item_id"].ToString().Equals("18") ? "2"
+                row1[colRqStatusSperm] = row["item_id"].ToString().Equals("14") ? "2"   //"Sperm Freezing" 
+                    : row["item_id"].ToString().Equals("18") ? "1"      //"Sperm Analysis" 
                     : row["item_id"].ToString().Equals("66") ? "3"
                     : row["item_id"].ToString().Equals("88") ? "4" : "";
                 if (row1[colRqStatusSperm].ToString().Equals("1"))      // sperm analysis
@@ -672,7 +672,7 @@ namespace clinic_ivf.gui
             Cursor curOld;
             curOld = this.Cursor;
             this.Cursor = Cursors.WaitCursor;
-            openLabOPUAdd(id, name, chk.Equals("1") ? " Analysis " : chk.Equals("2") ? " Freezing " : chk.Equals("3") ? " PESA " : " IUI ");
+            openLabOPUAdd(id, name, chk.Equals("2") ? " Analysis " : chk.Equals("1") ? " Freezing " : chk.Equals("3") ? " PESA " : " IUI ");
             this.Cursor = curOld;
             //}
         }

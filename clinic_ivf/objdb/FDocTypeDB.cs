@@ -582,7 +582,7 @@ namespace clinic_ivf.objdb
         public C1ComboBox setCboSpermAnalysisNoofVail(C1ComboBox c)
         {
             ComboBoxItem item = new ComboBoxItem();
-            DataTable dt = selectSpermAnalysisWbc();
+            DataTable dt = selectSpermAnalysisNoofVail();
             //String aaa = "";
             ComboBoxItem item1 = new ComboBoxItem();
             item1.Text = "";

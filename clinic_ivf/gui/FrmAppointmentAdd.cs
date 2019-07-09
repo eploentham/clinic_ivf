@@ -523,6 +523,7 @@ namespace clinic_ivf.gui
             //txtName.Value = pttO.FullName;  //  -1
 
             txtOPURemark.Value = "Not Allow to drink or eat from (งดน้ำ งดอาหาร ตั้งแต่เวลา)";
+            txtAppointment.Value = pApm.patient_appointment;
 
             if (pApm.patient_appointment_servicepoint.Equals("") && cboBsp.Items.Count>3)
             {

@@ -2,6 +2,8 @@
 using C1.Win.C1SuperTooltip;
 using clinic_ivf.control;
 using clinic_ivf.object1;
+using CrystalDecisions.CrystalReports.Engine;
+using CrystalDecisions.Shared;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -100,6 +102,10 @@ namespace clinic_ivf.gui
             fc = txtHnFeMale.ForeColor;
             ff = txtHnFeMale.Font;
             ic.ivfDB.dtrOldDB.setCboDoctor(cboDoctor, "");
+            ic.ivfDB.dtrOldDB.setCboDoctor(cboSfDoctor, "");
+            ic.ivfDB.dtrOldDB.setCboDoctor(cboPeDoctor, "");
+            ic.ivfDB.dtrOldDB.setCboDoctor(cboIuiDoctor, "");
+
             ic.ivfDB.fdtDB.setCboSpermAnalysisAppearance(cboAppearance);
             ic.ivfDB.fdtDB.setCboSpermAnalysisAppearance(cboLiquefaction);
             ic.ivfDB.fdtDB.setCboSpermAnalysisAppearance(cboViscosity);
@@ -159,29 +165,85 @@ namespace clinic_ivf.gui
             //throw new NotImplementedException();
             MessageBox.Show("mail send");
         }
+        private Boolean setReportSpermFreezing()
+        {
+            Boolean chk1 = true;
+            DataTable dt = new DataTable();
+            dt = ic.ivfDB.lspermDB.selectByPk(txtSfID.Text);
+            String chk = "", printerDefault = "";
+            ReportDocument rpt = new ReportDocument();
+            try
+            {
+                String date1 = dt.Rows[0]["date_report"].ToString();
+                String date2 = dt.Rows[0]["date_approve"].ToString();
+                date1 = ic.datetimetoShow(dt.Rows[0]["date_report"]);
+                date2 = ic.datetimetoShow(dt.Rows[0]["date_approve"]);
+                dt.Rows[0]["date_report"] = date1;
+                dt.Rows[0]["date_approve"] = date2;
 
+                rpt.Load("lab_sperm_sf.rpt");
+
+                rpt.SetDataSource(dt);
+                rpt.SetParameterValue("line1", ic.cop.comp_name_t);
+                rpt.SetParameterValue("line2", ic.cop.addr1);
+                rpt.SetParameterValue("line3", ic.cop.addr2);
+                //rpt.SetParameterValue("report_name", " Summary of OPU Report");
+                //rpt.SetParameterValue("date1", "" + date1);
+                this.crySperm.ReportSource = rpt;
+                this.crySperm.Refresh();
+
+                if (File.Exists("sperm_freezing.pdf"))
+                {
+                    File.Delete("sperm_freezing.pdf");
+                    System.Threading.Thread.Sleep(200);
+                }
+
+                ExportOptions CrExportOptions;
+                DiskFileDestinationOptions CrDiskFileDestinationOptions = new DiskFileDestinationOptions();
+                PdfRtfWordFormatOptions CrFormatTypeOptions = new PdfRtfWordFormatOptions();
+                CrDiskFileDestinationOptions.DiskFileName = "sperm_freezing.pdf";
+                CrExportOptions = rpt.ExportOptions;
+                {
+                    CrExportOptions.ExportDestinationType = ExportDestinationType.DiskFile;
+                    CrExportOptions.ExportFormatType = ExportFormatType.PortableDocFormat;
+                    CrExportOptions.DestinationOptions = CrDiskFileDestinationOptions;
+                    CrExportOptions.FormatOptions = CrFormatTypeOptions;
+                }
+
+                rpt.Export();
+            }
+            catch (Exception ex)
+            {
+                chk1 = false;
+                chk = ex.Message.ToString();
+                MessageBox.Show("error " + ex.Message, "");
+            }
+            return chk1;
+        }
         private void BtnSfSendEmail_Click(object sender, EventArgs e)
         {
             //throw new NotImplementedException();
+            FrmWaiting frmW = new FrmWaiting();
+            frmW.Show();
+            if (!setReportSpermFreezing())
+            {
+                return;
+            }
+            frmW.Dispose();
+
             MailMessage mail = new MailMessage();
 
-            mail.From = new MailAddress("eploentham@gmail.com");
-            mail.To.Add(txtEmailTo.Text);
-            mail.Subject = txtEmailSubject.Text;
+            mail.From = new MailAddress(txtSfEmailTo.Text);
+            mail.To.Add(txtSfEmailTo.Text);
+            mail.Subject = txtSfEmailSubject.Text;
             //mail.Body = "Test send email";
 
             mail.IsBodyHtml = true;
-            if (File.Exists("opu.pdf"))
+            if (File.Exists("sperm_freezing.pdf"))
             {
                 System.Net.Mail.Attachment attachment;
-                attachment = new System.Net.Mail.Attachment("opu.pdf");
+                attachment = new System.Net.Mail.Attachment("sperm_freezing.pdf");
                 mail.Attachments.Add(attachment);
-            }
-            if (File.Exists("embryo.pdf"))
-            {
-                System.Net.Mail.Attachment attachment1;
-                attachment1 = new System.Net.Mail.Attachment("embryo.pdf");
-                mail.Attachments.Add(attachment1);
             }
 
             AlternateView htmlView = AlternateView.CreateAlternateViewFromString(body, null, "text/html");
@@ -193,7 +255,7 @@ namespace clinic_ivf.gui
             }
 
             SmtpServer.Port = 587;
-            SmtpServer.Credentials = new System.Net.NetworkCredential("eploentham@gmail.com", "Singcamma1*");
+            SmtpServer.Credentials = new System.Net.NetworkCredential(ic.iniC.email_auth_user, ic.iniC.email_auth_pass);
 
             SmtpServer.EnableSsl = true;
             SmtpServer.Send(mail);
@@ -213,7 +275,8 @@ namespace clinic_ivf.gui
             //throw new NotImplementedException();
             if(e.KeyCode == Keys.Enter)
             {
-                txtSfViability.Focus();
+                //txtSfViability.Focus();
+                txtSfVolume.Focus();
             }
         }
 
@@ -534,7 +597,8 @@ namespace clinic_ivf.gui
                 }
                 else if (sender.Equals(txtSfCount))
                 {
-                    txtSfTotalCount.Focus();
+                    //txtSfTotalCount.Focus();
+                    txtSfMotility4.Focus();
                 }
                 else if (sender.Equals(txtSfTotalCount))
                 {
@@ -562,7 +626,7 @@ namespace clinic_ivf.gui
                 }
                 else if (sender.Equals(txtSfMotility2))
                 {
-                    //txtSfWbc.Focus();
+                    txtSfNormal.Focus();
                 }
                 //else if (sender.Equals(txtSfWbc))
                 //{
@@ -570,23 +634,24 @@ namespace clinic_ivf.gui
                 //}
                 else if (sender.Equals(txtSfNormal))
                 {
-                    txtSfAbnormal.Focus();
+                    //txtSfAbnormal.Focus();
+                    txtSfHead1.Focus();
                 }
                 else if (sender.Equals(txtSfAbnormal))
                 {
                     txtSfHead.Focus();
                 }
-                else if (sender.Equals(txtSfHead))
+                else if (sender.Equals(txtSfHead1))
                 {
-                    txtSfNeck.Focus();
+                    txtSfNeck1.Focus();
                 }
-                else if (sender.Equals(txtSfNeck))
+                else if (sender.Equals(txtSfNeck1))
                 {
-                    txtSfTail.Focus();
+                    txtSfTail1.Focus();
                 }
                 else if (sender.Equals(txtSfTail))
                 {
-                    //txtSfVial.Focus();
+                    txtSfEjacula.Focus();
                 }
                 //else if (sender.Equals(txtSfVial))
                 //{
@@ -653,6 +718,12 @@ namespace clinic_ivf.gui
             FrmReport frm = new FrmReport(ic);
             DataTable dt = new DataTable();
             dt = ic.ivfDB.lspermDB.selectByPk(txtSfID.Text);
+            String date1 = dt.Rows[0]["date_report"].ToString();
+            String date2 = dt.Rows[0]["date_approve"].ToString();
+            date1 = ic.datetimetoShow(dt.Rows[0]["date_report"]);
+            date2 = ic.datetimetoShow(dt.Rows[0]["date_approve"]);
+            dt.Rows[0]["date_report"] = date1;
+            dt.Rows[0]["date_approve"] = date2;
             //FrmWaiting frmW = new FrmWaiting();
             //frmW.Show();
             frm.setSpermSf(dt);
@@ -844,6 +915,9 @@ namespace clinic_ivf.gui
             ic.setC1Combo(cboSfViscosity, lsperm.viscosity);
             ic.setC1Combo(cboSfEmbryologistAppv, lsperm.staff_id_approve);
             ic.setC1Combo(cboSfEmbryologistReport, lsperm.staff_id_report);
+            ic.setC1Combo(cboSfEmbryologistReport, lsperm.staff_id_report);
+            ic.setC1Combo(cboSfWbc, lsperm.wbc);
+            ic.setC1Combo(cboSfNoofVail, lsperm.no_of_vail);
 
             txtSfSpermDate.Value = lsperm.sperm_date;
             txtSfAbstinenceday.Value = lsperm.abstinence_day;
@@ -878,6 +952,9 @@ namespace clinic_ivf.gui
             txtSfHead1.Value = lsperm.morphology_head_defect1;
             txtSfNeck1.Value = lsperm.morphology_neck_defect1;
             txtSfTail1.Value = lsperm.morphology_tail_defect1;
+
+            txtSfEmailTo.Value = ic.iniC.email_to_sperm_freezing;
+            txtSfEmailSubject.Value = "Result LAB Sperm Freezing HN "+txtSfHnMale.Text+" Name "+txtSfNameMale.Text;
         }
         private void setControlPesa()
         {
@@ -1060,7 +1137,7 @@ namespace clinic_ivf.gui
             lsperm.total_count = txtSfTotalCount.Text;
             lsperm.motile = txtSfMotile.Text;
             lsperm.motility = txtSfMotility.Text;
-            lsperm.total_motile = txtTotalMotile.Text;
+            lsperm.total_motile = txtSfTotalMotile.Text;
             lsperm.motility_rate_4 = txtSfMotility4.Text;
             lsperm.motility_rate_3 = txtSfMotility3.Text;
             lsperm.motility_rate_2 = txtSfMotility2.Text;
@@ -1076,16 +1153,18 @@ namespace clinic_ivf.gui
             lsperm.morphology_neck_defect = txtSfNeck.Text;
             lsperm.morphology_tail_defect = txtSfTail.Text;
             lsperm.staff_id_approve = txtSfApproveResult.Text;
-            lsperm.date_approve = txtSfApproveDate.Text;
+            //lsperm.date_approve = ic.dateTimetoDB(txtSfApproveDate.Text);
             lsperm.staff_id_report = cboSfEmbryologistReport.SelectedItem == null ? "0" : ((ComboBoxItem)cboSfEmbryologistReport.SelectedItem).Value;
             lsperm.staff_id_approve = cboSfEmbryologistAppv.SelectedItem == null ? "0" : ((ComboBoxItem)cboSfEmbryologistAppv.SelectedItem).Value;
-            lsperm.date_approve = ic.datetoDB(txtSfApproveDate.Text);
-            lsperm.date_report = ic.datetoDB(txtSfReportDate.Text);
+            lsperm.date_approve = ic.dateTimetoDB(txtSfApproveDate.Text);
+            lsperm.date_report = ic.dateTimetoDB(txtSfReportDate.Text);
             lsperm.remark = cboSfRemark.Text;
 
             lsperm.morphology_head_defect1 = txtSfHead1.Text;
             lsperm.morphology_neck_defect1 = txtSfNeck1.Text;
             lsperm.morphology_tail_defect1 = txtSfTail1.Text;
+            lsperm.wbc = cboSfWbc.SelectedItem == null ? "0" : ((ComboBoxItem)cboSfWbc.SelectedItem).Value;
+            lsperm.no_of_vail = cboSfNoofVail.SelectedItem == null ? "0" : ((ComboBoxItem)cboSfNoofVail.SelectedItem).Value;
         }
         private void setSpermPesa()
         {
@@ -1313,13 +1392,13 @@ namespace clinic_ivf.gui
             sCPesa.HeaderHeight = 0;
             sCFreezing.HeaderHeight = 0;
             tC.ShowTabs = false;
-            if (lsperm.status_lab_sperm.Equals("1"))      // sperm analysis
-            {
-                tC.SelectedTab = tabSememAna;
-            }
-            else if (lsperm.status_lab_sperm.Equals("2"))      // sperm Freezing
+            if (lsperm.status_lab_sperm.Equals("1"))      // sperm Freezing
             {
                 tC.SelectedTab = tabSpermFreezing;
+            }
+            else if (lsperm.status_lab_sperm.Equals("2"))      // sperm analysis
+            {
+                tC.SelectedTab = tabSememAna;
             }
             else if (lsperm.status_lab_sperm.Equals("3"))      // sperm Pesa
             {
