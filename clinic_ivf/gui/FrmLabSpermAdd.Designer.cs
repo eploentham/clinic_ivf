@@ -572,6 +572,65 @@
             this.txtPeHnFeMale = new C1.Win.C1Input.C1TextBox();
             this.tabReport = new C1.Win.C1Command.C1DockingTabPage();
             this.crySperm = new CrystalDecisions.Windows.Forms.CrystalReportViewer();
+            this.c1Ribbon2 = new C1.Win.C1Ribbon.C1Ribbon();
+            this.ribbonApplicationMenu11 = new C1.Win.C1Ribbon.RibbonApplicationMenu();
+            this.ribbonQat11 = new C1.Win.C1Ribbon.RibbonQat();
+            this.ribbonConfigToolBar11 = new C1.Win.C1Ribbon.RibbonConfigToolBar();
+            this.ribbonTopToolBar11 = new C1.Win.C1Ribbon.RibbonTopToolBar();
+            this.ribbonBottomToolBar11 = new C1.Win.C1Ribbon.RibbonBottomToolBar();
+            this.NewDocumentButton1 = new C1.Win.C1Ribbon.RibbonButton();
+            this.OpenDocumentButton1 = new C1.Win.C1Ribbon.RibbonButton();
+            this.SaveDocumentButton1 = new C1.Win.C1Ribbon.RibbonButton();
+            this.SaveDocumentAsButton1 = new C1.Win.C1Ribbon.RibbonSplitButton();
+            this.SaveDocumentAsRtfButton1 = new C1.Win.C1Ribbon.RibbonButton();
+            this.SaveDocumentAsTextButton1 = new C1.Win.C1Ribbon.RibbonButton();
+            this.SaveDocumentAsOtherButton1 = new C1.Win.C1Ribbon.RibbonButton();
+            this.ExitButton1 = new C1.Win.C1Ribbon.RibbonButton();
+            this.ribbonStyleCombo1 = new C1.Win.C1Ribbon.RibbonComboBox();
+            this.F1HelpButton1 = new C1.Win.C1Ribbon.RibbonButton();
+            this.UndoButton1 = new C1.Win.C1Ribbon.RibbonButton();
+            this.RedoButton1 = new C1.Win.C1Ribbon.RibbonButton();
+            this.HomeTab1 = new C1.Win.C1Ribbon.RibbonTab();
+            this.ClipboardGroup1 = new C1.Win.C1Ribbon.RibbonGroup();
+            this.PasteSplitButton1 = new C1.Win.C1Ribbon.RibbonSplitButton();
+            this.PasteButton1 = new C1.Win.C1Ribbon.RibbonButton();
+            this.PasteAsTextButton1 = new C1.Win.C1Ribbon.RibbonButton();
+            this.CutButton1 = new C1.Win.C1Ribbon.RibbonButton();
+            this.CopyButton1 = new C1.Win.C1Ribbon.RibbonButton();
+            this.FormatPainterButton1 = new C1.Win.C1Ribbon.RibbonButton();
+            this.FontGroup1 = new C1.Win.C1Ribbon.RibbonGroup();
+            this.ribbonToolBar11 = new C1.Win.C1Ribbon.RibbonToolBar();
+            this.FontFaceComboBox1 = new C1.Win.C1Ribbon.RibbonComboBox();
+            this.FontSizeComboBox1 = new C1.Win.C1Ribbon.RibbonComboBox();
+            this.ribbonToolBar21 = new C1.Win.C1Ribbon.RibbonToolBar();
+            this.FontBoldButton1 = new C1.Win.C1Ribbon.RibbonToggleButton();
+            this.FontItalicButton1 = new C1.Win.C1Ribbon.RibbonToggleButton();
+            this.FontUnderlineButton1 = new C1.Win.C1Ribbon.RibbonToggleButton();
+            this.FontStrikeoutButton1 = new C1.Win.C1Ribbon.RibbonToggleButton();
+            this.ribbonSeparator11 = new C1.Win.C1Ribbon.RibbonSeparator();
+            this.FontColorPicker1 = new C1.Win.C1Ribbon.RibbonColorPicker();
+            this.BackColorPicker1 = new C1.Win.C1Ribbon.RibbonColorPicker();
+            this.ParagraphGroup1 = new C1.Win.C1Ribbon.RibbonGroup();
+            this.ribbonToolBar31 = new C1.Win.C1Ribbon.RibbonToolBar();
+            this.DecreaseIndentButton1 = new C1.Win.C1Ribbon.RibbonButton();
+            this.IncreaseIndentButton1 = new C1.Win.C1Ribbon.RibbonButton();
+            this.ribbonToolBar41 = new C1.Win.C1Ribbon.RibbonToolBar();
+            this.ribbonToggleGroup11 = new C1.Win.C1Ribbon.RibbonToggleGroup();
+            this.ParagraphAlignLeftButton1 = new C1.Win.C1Ribbon.RibbonToggleButton();
+            this.ParagraphAlignCenterButton1 = new C1.Win.C1Ribbon.RibbonToggleButton();
+            this.ParagraphAlignRightButton1 = new C1.Win.C1Ribbon.RibbonToggleButton();
+            this.ViewTab1 = new C1.Win.C1Ribbon.RibbonTab();
+            this.ViewZoomGroup1 = new C1.Win.C1Ribbon.RibbonGroup();
+            this.ViewZoomCombobox1 = new C1.Win.C1Ribbon.RibbonComboBox();
+            this.NormalSizeButton1 = new C1.Win.C1Ribbon.RibbonButton();
+            this.panel5 = new System.Windows.Forms.Panel();
+            this.btnSendEmail = new C1.Win.C1Input.C1Button();
+            this.c1Button2 = new C1.Win.C1Input.C1Button();
+            this.label212 = new System.Windows.Forms.Label();
+            this.txtEmailSubject = new C1.Win.C1Input.C1TextBox();
+            this.label213 = new System.Windows.Forms.Label();
+            this.txtEmailTo = new C1.Win.C1Input.C1TextBox();
+            this.txtEmailBody = new C1.Win.C1Input.C1TextBox();
             this.sB.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.theme1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tC)).BeginInit();
@@ -650,6 +709,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.sCAnalysis)).BeginInit();
             this.sCAnalysis.SuspendLayout();
             this.c1SplitterPanel1.SuspendLayout();
+            this.panel6.SuspendLayout();
             this.c1SplitterPanel2.SuspendLayout();
             this.pnSememAnalysis.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btnPrintSa)).BeginInit();
@@ -811,6 +871,13 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtPeNameFeMale)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtPeHnFeMale)).BeginInit();
             this.tabReport.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.c1Ribbon2)).BeginInit();
+            this.panel5.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.btnSendEmail)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.c1Button2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtEmailSubject)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtEmailTo)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtEmailBody)).BeginInit();
             this.SuspendLayout();
             // 
             // sB
@@ -908,7 +975,7 @@
             this.c1SplitterPanel3.SizeRatio = 41.101D;
             this.c1SplitterPanel3.TabIndex = 0;
             this.c1SplitterPanel3.Text = "Panel 1";
-            this.c1SplitterPanel3.Width = 552;
+            this.c1SplitterPanel3.Width = 545;
             // 
             // pnSfLeft
             // 
@@ -3476,20 +3543,23 @@
             this.c1SplitterPanel1.Dock = C1.Win.C1SplitContainer.PanelDockStyle.Left;
             this.c1SplitterPanel1.Location = new System.Drawing.Point(0, 21);
             this.c1SplitterPanel1.Name = "c1SplitterPanel1";
-            this.c1SplitterPanel1.Size = new System.Drawing.Size(384, 754);
-            this.c1SplitterPanel1.SizeRatio = 31.208D;
+            this.c1SplitterPanel1.Size = new System.Drawing.Size(544, 754);
+            this.c1SplitterPanel1.SizeRatio = 40.997D;
             this.c1SplitterPanel1.TabIndex = 0;
             this.c1SplitterPanel1.Text = "Panel 1";
-            this.c1SplitterPanel1.Width = 384;
+            this.c1SplitterPanel1.Width = 551;
             // 
             // panel6
             // 
             this.panel6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.panel6.Controls.Add(this.txtEmailBody);
+            this.panel6.Controls.Add(this.panel5);
+            this.panel6.Controls.Add(this.c1Ribbon2);
             this.panel6.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
             this.panel6.Location = new System.Drawing.Point(0, 0);
             this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(384, 754);
+            this.panel6.Size = new System.Drawing.Size(544, 754);
             this.panel6.TabIndex = 0;
             this.theme1.SetTheme(this.panel6, "(default)");
             // 
@@ -3497,9 +3567,9 @@
             // 
             this.c1SplitterPanel2.Controls.Add(this.pnSememAnalysis);
             this.c1SplitterPanel2.Height = 775;
-            this.c1SplitterPanel2.Location = new System.Drawing.Point(395, 21);
+            this.c1SplitterPanel2.Location = new System.Drawing.Point(555, 21);
             this.c1SplitterPanel2.Name = "c1SplitterPanel2";
-            this.c1SplitterPanel2.Size = new System.Drawing.Size(862, 754);
+            this.c1SplitterPanel2.Size = new System.Drawing.Size(793, 754);
             this.c1SplitterPanel2.TabIndex = 1;
             this.c1SplitterPanel2.Text = "Panel 2";
             // 
@@ -3599,7 +3669,7 @@
             this.pnSememAnalysis.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
             this.pnSememAnalysis.Location = new System.Drawing.Point(0, 0);
             this.pnSememAnalysis.Name = "pnSememAnalysis";
-            this.pnSememAnalysis.Size = new System.Drawing.Size(862, 754);
+            this.pnSememAnalysis.Size = new System.Drawing.Size(793, 754);
             this.pnSememAnalysis.TabIndex = 0;
             this.theme1.SetTheme(this.pnSememAnalysis, "(default)");
             // 
@@ -4089,11 +4159,13 @@
             // 
             // txtAbnormal
             // 
+            this.txtAbnormal.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
             this.txtAbnormal.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtAbnormal.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
             this.txtAbnormal.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
             this.txtAbnormal.Location = new System.Drawing.Point(139, 43);
             this.txtAbnormal.Name = "txtAbnormal";
+            this.txtAbnormal.ReadOnly = true;
             this.txtAbnormal.Size = new System.Drawing.Size(99, 20);
             this.txtAbnormal.TabIndex = 591;
             this.txtAbnormal.Tag = null;
@@ -4154,11 +4226,13 @@
             // 
             // txtNeck
             // 
+            this.txtNeck.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
             this.txtNeck.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtNeck.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
             this.txtNeck.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
             this.txtNeck.Location = new System.Drawing.Point(139, 95);
             this.txtNeck.Name = "txtNeck";
+            this.txtNeck.ReadOnly = true;
             this.txtNeck.Size = new System.Drawing.Size(99, 20);
             this.txtNeck.TabIndex = 595;
             this.txtNeck.Tag = null;
@@ -4167,11 +4241,13 @@
             // 
             // txtHead
             // 
+            this.txtHead.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
             this.txtHead.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtHead.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
             this.txtHead.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
             this.txtHead.Location = new System.Drawing.Point(139, 69);
             this.txtHead.Name = "txtHead";
+            this.txtHead.ReadOnly = true;
             this.txtHead.Size = new System.Drawing.Size(99, 20);
             this.txtHead.TabIndex = 593;
             this.txtHead.Tag = null;
@@ -4812,12 +4888,14 @@
             // 
             // txtMotility
             // 
+            this.txtMotility.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
             this.txtMotility.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtMotility.DataType = typeof(short);
             this.txtMotility.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
             this.txtMotility.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
             this.txtMotility.Location = new System.Drawing.Point(141, 490);
             this.txtMotility.Name = "txtMotility";
+            this.txtMotility.ReadOnly = true;
             this.txtMotility.Size = new System.Drawing.Size(99, 20);
             this.txtMotility.TabIndex = 795;
             this.txtMotility.Tag = null;
@@ -4839,11 +4917,13 @@
             // 
             // txtTotalMotile
             // 
+            this.txtTotalMotile.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
             this.txtTotalMotile.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtTotalMotile.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
             this.txtTotalMotile.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
             this.txtTotalMotile.Location = new System.Drawing.Point(141, 467);
             this.txtTotalMotile.Name = "txtTotalMotile";
+            this.txtTotalMotile.ReadOnly = true;
             this.txtTotalMotile.Size = new System.Drawing.Size(99, 20);
             this.txtTotalMotile.TabIndex = 793;
             this.txtTotalMotile.Tag = null;
@@ -4865,11 +4945,13 @@
             // 
             // txtMotile
             // 
+            this.txtMotile.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
             this.txtMotile.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtMotile.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
             this.txtMotile.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
             this.txtMotile.Location = new System.Drawing.Point(141, 444);
             this.txtMotile.Name = "txtMotile";
+            this.txtMotile.ReadOnly = true;
             this.txtMotile.Size = new System.Drawing.Size(99, 20);
             this.txtMotile.TabIndex = 791;
             this.txtMotile.Tag = null;
@@ -4891,11 +4973,13 @@
             // 
             // txtTotalCount
             // 
+            this.txtTotalCount.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
             this.txtTotalCount.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtTotalCount.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
             this.txtTotalCount.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
             this.txtTotalCount.Location = new System.Drawing.Point(141, 421);
             this.txtTotalCount.Name = "txtTotalCount";
+            this.txtTotalCount.ReadOnly = true;
             this.txtTotalCount.Size = new System.Drawing.Size(99, 20);
             this.txtTotalCount.TabIndex = 789;
             this.txtTotalCount.Tag = null;
@@ -4971,11 +5055,13 @@
             // 
             // txtViability
             // 
+            this.txtViability.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
             this.txtViability.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtViability.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
             this.txtViability.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
             this.txtViability.Location = new System.Drawing.Point(141, 352);
             this.txtViability.Name = "txtViability";
+            this.txtViability.ReadOnly = true;
             this.txtViability.Size = new System.Drawing.Size(99, 20);
             this.txtViability.TabIndex = 783;
             this.txtViability.Tag = null;
@@ -8953,6 +9039,474 @@
             this.crySperm.TabIndex = 2;
             this.theme1.SetTheme(this.crySperm, "(default)");
             // 
+            // c1Ribbon2
+            // 
+            this.c1Ribbon2.ApplicationMenuHolder = this.ribbonApplicationMenu11;
+            this.c1Ribbon2.AutoSizeElement = C1.Framework.AutoSizeElement.Width;
+            this.c1Ribbon2.BottomToolBarHolder = this.ribbonBottomToolBar11;
+            this.c1Ribbon2.ConfigToolBarHolder = this.ribbonConfigToolBar11;
+            this.c1Ribbon2.Location = new System.Drawing.Point(0, 0);
+            this.c1Ribbon2.Name = "c1Ribbon2";
+            this.c1Ribbon2.QatHolder = this.ribbonQat11;
+            this.c1Ribbon2.QatItemsHolder.Add(this.UndoButton1);
+            this.c1Ribbon2.QatItemsHolder.Add(this.RedoButton1);
+            this.c1Ribbon2.Size = new System.Drawing.Size(544, 146);
+            this.c1Ribbon2.Tabs.Add(this.HomeTab1);
+            this.c1Ribbon2.Tabs.Add(this.ViewTab1);
+            this.theme1.SetTheme(this.c1Ribbon2, "(default)");
+            this.c1Ribbon2.TopToolBarHolder = this.ribbonTopToolBar11;
+            this.c1Ribbon2.VisualStyle = C1.Win.C1Ribbon.VisualStyle.Custom;
+            // 
+            // ribbonApplicationMenu11
+            // 
+            this.ribbonApplicationMenu11.BottomPaneItems.Add(this.ExitButton1);
+            this.ribbonApplicationMenu11.DropDownWidth = 370;
+            this.ribbonApplicationMenu11.LargeImage = ((System.Drawing.Image)(resources.GetObject("ribbonApplicationMenu11.LargeImage")));
+            this.ribbonApplicationMenu11.LeftPaneItems.Add(this.NewDocumentButton1);
+            this.ribbonApplicationMenu11.LeftPaneItems.Add(this.OpenDocumentButton1);
+            this.ribbonApplicationMenu11.LeftPaneItems.Add(this.SaveDocumentButton1);
+            this.ribbonApplicationMenu11.LeftPaneItems.Add(this.SaveDocumentAsButton1);
+            this.ribbonApplicationMenu11.Name = "ribbonApplicationMenu11";
+            this.ribbonApplicationMenu11.Text = "File";
+            // 
+            // ribbonQat11
+            // 
+            this.ribbonQat11.HotItemLinks.Add(this.SaveDocumentButton1);
+            this.ribbonQat11.HotItemLinks.Add(this.UndoButton1);
+            this.ribbonQat11.HotItemLinks.Add(this.RedoButton1);
+            this.ribbonQat11.ItemLinks.Add(this.SaveDocumentButton1);
+            this.ribbonQat11.ItemLinks.Add(this.UndoButton1);
+            this.ribbonQat11.ItemLinks.Add(this.RedoButton1);
+            this.ribbonQat11.Name = "ribbonQat11";
+            // 
+            // ribbonConfigToolBar11
+            // 
+            this.ribbonConfigToolBar11.Items.Add(this.ribbonStyleCombo1);
+            this.ribbonConfigToolBar11.Items.Add(this.F1HelpButton1);
+            this.ribbonConfigToolBar11.Name = "ribbonConfigToolBar11";
+            // 
+            // ribbonTopToolBar11
+            // 
+            this.ribbonTopToolBar11.Name = "ribbonTopToolBar11";
+            // 
+            // ribbonBottomToolBar11
+            // 
+            this.ribbonBottomToolBar11.Name = "ribbonBottomToolBar11";
+            // 
+            // NewDocumentButton1
+            // 
+            this.NewDocumentButton1.LargeImage = ((System.Drawing.Image)(resources.GetObject("NewDocumentButton1.LargeImage")));
+            this.NewDocumentButton1.Name = "NewDocumentButton1";
+            this.NewDocumentButton1.Text = "&New";
+            // 
+            // OpenDocumentButton1
+            // 
+            this.OpenDocumentButton1.LargeImage = ((System.Drawing.Image)(resources.GetObject("OpenDocumentButton1.LargeImage")));
+            this.OpenDocumentButton1.Name = "OpenDocumentButton1";
+            this.OpenDocumentButton1.Text = "&Open";
+            // 
+            // SaveDocumentButton1
+            // 
+            this.SaveDocumentButton1.LargeImage = ((System.Drawing.Image)(resources.GetObject("SaveDocumentButton1.LargeImage")));
+            this.SaveDocumentButton1.Name = "SaveDocumentButton1";
+            this.SaveDocumentButton1.SmallImage = ((System.Drawing.Image)(resources.GetObject("SaveDocumentButton1.SmallImage")));
+            this.SaveDocumentButton1.Text = "&Save";
+            // 
+            // SaveDocumentAsButton1
+            // 
+            this.SaveDocumentAsButton1.Items.Add(this.SaveDocumentAsRtfButton1);
+            this.SaveDocumentAsButton1.Items.Add(this.SaveDocumentAsTextButton1);
+            this.SaveDocumentAsButton1.Items.Add(this.SaveDocumentAsOtherButton1);
+            this.SaveDocumentAsButton1.LargeImage = ((System.Drawing.Image)(resources.GetObject("SaveDocumentAsButton1.LargeImage")));
+            this.SaveDocumentAsButton1.Name = "SaveDocumentAsButton1";
+            this.SaveDocumentAsButton1.Text = "Save &As";
+            // 
+            // SaveDocumentAsRtfButton1
+            // 
+            this.SaveDocumentAsRtfButton1.Description = "Save the document in the Rich Text File format.";
+            this.SaveDocumentAsRtfButton1.LargeImage = ((System.Drawing.Image)(resources.GetObject("SaveDocumentAsRtfButton1.LargeImage")));
+            this.SaveDocumentAsRtfButton1.Name = "SaveDocumentAsRtfButton1";
+            this.SaveDocumentAsRtfButton1.Text = "Rich Text File";
+            // 
+            // SaveDocumentAsTextButton1
+            // 
+            this.SaveDocumentAsTextButton1.Description = "Save the document as Plain text file.";
+            this.SaveDocumentAsTextButton1.LargeImage = ((System.Drawing.Image)(resources.GetObject("SaveDocumentAsTextButton1.LargeImage")));
+            this.SaveDocumentAsTextButton1.Name = "SaveDocumentAsTextButton1";
+            this.SaveDocumentAsTextButton1.Text = "Text File";
+            // 
+            // SaveDocumentAsOtherButton1
+            // 
+            this.SaveDocumentAsOtherButton1.Description = "Open the Save As dialog to select from all possible file types.";
+            this.SaveDocumentAsOtherButton1.LargeImage = ((System.Drawing.Image)(resources.GetObject("SaveDocumentAsOtherButton1.LargeImage")));
+            this.SaveDocumentAsOtherButton1.Name = "SaveDocumentAsOtherButton1";
+            this.SaveDocumentAsOtherButton1.Text = "Other formats";
+            // 
+            // ExitButton1
+            // 
+            this.ExitButton1.Name = "ExitButton1";
+            this.ExitButton1.SmallImage = ((System.Drawing.Image)(resources.GetObject("ExitButton1.SmallImage")));
+            this.ExitButton1.Text = "E&xit WordPad Sample";
+            // 
+            // ribbonStyleCombo1
+            // 
+            this.ribbonStyleCombo1.DropDownStyle = C1.Win.C1Ribbon.RibbonComboBoxStyle.DropDownList;
+            this.ribbonStyleCombo1.Label = "Theme";
+            this.ribbonStyleCombo1.Name = "ribbonStyleCombo1";
+            this.ribbonStyleCombo1.TextAreaWidth = 120;
+            // 
+            // F1HelpButton1
+            // 
+            this.F1HelpButton1.Name = "F1HelpButton1";
+            this.F1HelpButton1.ShortcutKeys = System.Windows.Forms.Keys.F1;
+            this.F1HelpButton1.SmallImage = ((System.Drawing.Image)(resources.GetObject("F1HelpButton1.SmallImage")));
+            this.F1HelpButton1.ToolTip = "Help";
+            // 
+            // UndoButton1
+            // 
+            this.UndoButton1.Name = "UndoButton1";
+            this.UndoButton1.SmallImage = ((System.Drawing.Image)(resources.GetObject("UndoButton1.SmallImage")));
+            this.UndoButton1.ToolTip = "Undo";
+            // 
+            // RedoButton1
+            // 
+            this.RedoButton1.Name = "RedoButton1";
+            this.RedoButton1.SmallImage = ((System.Drawing.Image)(resources.GetObject("RedoButton1.SmallImage")));
+            this.RedoButton1.ToolTip = "Redo";
+            // 
+            // HomeTab1
+            // 
+            this.HomeTab1.Groups.Add(this.ClipboardGroup1);
+            this.HomeTab1.Groups.Add(this.FontGroup1);
+            this.HomeTab1.Groups.Add(this.ParagraphGroup1);
+            this.HomeTab1.Name = "HomeTab1";
+            this.HomeTab1.Text = "&Home";
+            // 
+            // ClipboardGroup1
+            // 
+            this.ClipboardGroup1.Items.Add(this.PasteSplitButton1);
+            this.ClipboardGroup1.Items.Add(this.CutButton1);
+            this.ClipboardGroup1.Items.Add(this.CopyButton1);
+            this.ClipboardGroup1.Items.Add(this.FormatPainterButton1);
+            this.ClipboardGroup1.Name = "ClipboardGroup1";
+            this.ClipboardGroup1.Text = "Clipboard";
+            // 
+            // PasteSplitButton1
+            // 
+            this.PasteSplitButton1.Items.Add(this.PasteButton1);
+            this.PasteSplitButton1.Items.Add(this.PasteAsTextButton1);
+            this.PasteSplitButton1.LargeImage = ((System.Drawing.Image)(resources.GetObject("PasteSplitButton1.LargeImage")));
+            this.PasteSplitButton1.Name = "PasteSplitButton1";
+            this.PasteSplitButton1.Text = "Paste";
+            this.PasteSplitButton1.TextImageRelation = C1.Win.C1Ribbon.TextImageRelation.ImageAboveText;
+            // 
+            // PasteButton1
+            // 
+            this.PasteButton1.Name = "PasteButton1";
+            this.PasteButton1.SmallImage = ((System.Drawing.Image)(resources.GetObject("PasteButton1.SmallImage")));
+            this.PasteButton1.Text = "Paste";
+            // 
+            // PasteAsTextButton1
+            // 
+            this.PasteAsTextButton1.Name = "PasteAsTextButton1";
+            this.PasteAsTextButton1.SmallImage = ((System.Drawing.Image)(resources.GetObject("PasteAsTextButton1.SmallImage")));
+            this.PasteAsTextButton1.Text = "Paste As Text";
+            // 
+            // CutButton1
+            // 
+            this.CutButton1.Name = "CutButton1";
+            this.CutButton1.SmallImage = ((System.Drawing.Image)(resources.GetObject("CutButton1.SmallImage")));
+            this.CutButton1.Text = "Cut";
+            this.CutButton1.ToolTip = "Cut (Ctrl-X)";
+            // 
+            // CopyButton1
+            // 
+            this.CopyButton1.Name = "CopyButton1";
+            this.CopyButton1.SmallImage = ((System.Drawing.Image)(resources.GetObject("CopyButton1.SmallImage")));
+            this.CopyButton1.Text = "Copy";
+            this.CopyButton1.ToolTip = "Copy (Ctrl-C)";
+            // 
+            // FormatPainterButton1
+            // 
+            this.FormatPainterButton1.Name = "FormatPainterButton1";
+            this.FormatPainterButton1.SmallImage = ((System.Drawing.Image)(resources.GetObject("FormatPainterButton1.SmallImage")));
+            this.FormatPainterButton1.Text = "Format Painter";
+            this.FormatPainterButton1.ToolTip = "Format Painter";
+            // 
+            // FontGroup1
+            // 
+            this.FontGroup1.HasLauncherButton = true;
+            this.FontGroup1.Image = ((System.Drawing.Image)(resources.GetObject("FontGroup1.Image")));
+            this.FontGroup1.Items.Add(this.ribbonToolBar11);
+            this.FontGroup1.Items.Add(this.ribbonToolBar21);
+            this.FontGroup1.Name = "FontGroup1";
+            this.FontGroup1.Text = "Font";
+            // 
+            // ribbonToolBar11
+            // 
+            this.ribbonToolBar11.Items.Add(this.FontFaceComboBox1);
+            this.ribbonToolBar11.Items.Add(this.FontSizeComboBox1);
+            this.ribbonToolBar11.Name = "ribbonToolBar11";
+            // 
+            // FontFaceComboBox1
+            // 
+            this.FontFaceComboBox1.GripHandleVisible = true;
+            this.FontFaceComboBox1.MaxDropDownItems = 20;
+            this.FontFaceComboBox1.Name = "FontFaceComboBox1";
+            this.FontFaceComboBox1.Text = "Arial";
+            this.FontFaceComboBox1.TextAreaWidth = 120;
+            // 
+            // FontSizeComboBox1
+            // 
+            this.FontSizeComboBox1.GripHandleVisible = true;
+            this.FontSizeComboBox1.MaxDropDownItems = 100;
+            this.FontSizeComboBox1.MaxLength = 3;
+            this.FontSizeComboBox1.Name = "FontSizeComboBox1";
+            this.FontSizeComboBox1.Text = "12";
+            this.FontSizeComboBox1.TextAreaWidth = 40;
+            // 
+            // ribbonToolBar21
+            // 
+            this.ribbonToolBar21.Items.Add(this.FontBoldButton1);
+            this.ribbonToolBar21.Items.Add(this.FontItalicButton1);
+            this.ribbonToolBar21.Items.Add(this.FontUnderlineButton1);
+            this.ribbonToolBar21.Items.Add(this.FontStrikeoutButton1);
+            this.ribbonToolBar21.Items.Add(this.ribbonSeparator11);
+            this.ribbonToolBar21.Items.Add(this.FontColorPicker1);
+            this.ribbonToolBar21.Items.Add(this.BackColorPicker1);
+            this.ribbonToolBar21.Name = "ribbonToolBar21";
+            // 
+            // FontBoldButton1
+            // 
+            this.FontBoldButton1.Name = "FontBoldButton1";
+            this.FontBoldButton1.SmallImage = ((System.Drawing.Image)(resources.GetObject("FontBoldButton1.SmallImage")));
+            this.FontBoldButton1.ToolTip = "Bold (Ctrl-B)";
+            // 
+            // FontItalicButton1
+            // 
+            this.FontItalicButton1.Name = "FontItalicButton1";
+            this.FontItalicButton1.SmallImage = ((System.Drawing.Image)(resources.GetObject("FontItalicButton1.SmallImage")));
+            this.FontItalicButton1.ToolTip = "Italic (Ctrl-I)";
+            // 
+            // FontUnderlineButton1
+            // 
+            this.FontUnderlineButton1.Name = "FontUnderlineButton1";
+            this.FontUnderlineButton1.SmallImage = ((System.Drawing.Image)(resources.GetObject("FontUnderlineButton1.SmallImage")));
+            this.FontUnderlineButton1.ToolTip = "Underline (Ctrl-U)";
+            // 
+            // FontStrikeoutButton1
+            // 
+            this.FontStrikeoutButton1.Name = "FontStrikeoutButton1";
+            this.FontStrikeoutButton1.SmallImage = ((System.Drawing.Image)(resources.GetObject("FontStrikeoutButton1.SmallImage")));
+            this.FontStrikeoutButton1.ToolTip = "Strikeout";
+            // 
+            // ribbonSeparator11
+            // 
+            this.ribbonSeparator11.Name = "ribbonSeparator11";
+            // 
+            // FontColorPicker1
+            // 
+            this.FontColorPicker1.Color = System.Drawing.Color.Red;
+            this.FontColorPicker1.Name = "FontColorPicker1";
+            this.FontColorPicker1.SmallImage = ((System.Drawing.Image)(resources.GetObject("FontColorPicker1.SmallImage")));
+            // 
+            // BackColorPicker1
+            // 
+            this.BackColorPicker1.Color = System.Drawing.Color.Yellow;
+            this.BackColorPicker1.Name = "BackColorPicker1";
+            this.BackColorPicker1.SmallImage = ((System.Drawing.Image)(resources.GetObject("BackColorPicker1.SmallImage")));
+            // 
+            // ParagraphGroup1
+            // 
+            this.ParagraphGroup1.Image = ((System.Drawing.Image)(resources.GetObject("ParagraphGroup1.Image")));
+            this.ParagraphGroup1.Items.Add(this.ribbonToolBar31);
+            this.ParagraphGroup1.Items.Add(this.ribbonToolBar41);
+            this.ParagraphGroup1.Name = "ParagraphGroup1";
+            this.ParagraphGroup1.Text = "Paragraph";
+            // 
+            // ribbonToolBar31
+            // 
+            this.ribbonToolBar31.Items.Add(this.DecreaseIndentButton1);
+            this.ribbonToolBar31.Items.Add(this.IncreaseIndentButton1);
+            this.ribbonToolBar31.Name = "ribbonToolBar31";
+            // 
+            // DecreaseIndentButton1
+            // 
+            this.DecreaseIndentButton1.Name = "DecreaseIndentButton1";
+            this.DecreaseIndentButton1.SmallImage = ((System.Drawing.Image)(resources.GetObject("DecreaseIndentButton1.SmallImage")));
+            this.DecreaseIndentButton1.ToolTip = "Decrease Indent";
+            // 
+            // IncreaseIndentButton1
+            // 
+            this.IncreaseIndentButton1.Name = "IncreaseIndentButton1";
+            this.IncreaseIndentButton1.SmallImage = ((System.Drawing.Image)(resources.GetObject("IncreaseIndentButton1.SmallImage")));
+            this.IncreaseIndentButton1.ToolTip = "Increase Indent";
+            // 
+            // ribbonToolBar41
+            // 
+            this.ribbonToolBar41.Items.Add(this.ribbonToggleGroup11);
+            this.ribbonToolBar41.Name = "ribbonToolBar41";
+            // 
+            // ribbonToggleGroup11
+            // 
+            this.ribbonToggleGroup11.Items.Add(this.ParagraphAlignLeftButton1);
+            this.ribbonToggleGroup11.Items.Add(this.ParagraphAlignCenterButton1);
+            this.ribbonToggleGroup11.Items.Add(this.ParagraphAlignRightButton1);
+            this.ribbonToggleGroup11.Name = "ribbonToggleGroup11";
+            // 
+            // ParagraphAlignLeftButton1
+            // 
+            this.ParagraphAlignLeftButton1.Name = "ParagraphAlignLeftButton1";
+            this.ParagraphAlignLeftButton1.SmallImage = ((System.Drawing.Image)(resources.GetObject("ParagraphAlignLeftButton1.SmallImage")));
+            this.ParagraphAlignLeftButton1.ToolTip = "Align Left";
+            // 
+            // ParagraphAlignCenterButton1
+            // 
+            this.ParagraphAlignCenterButton1.Name = "ParagraphAlignCenterButton1";
+            this.ParagraphAlignCenterButton1.SmallImage = ((System.Drawing.Image)(resources.GetObject("ParagraphAlignCenterButton1.SmallImage")));
+            this.ParagraphAlignCenterButton1.ToolTip = "Align Center";
+            // 
+            // ParagraphAlignRightButton1
+            // 
+            this.ParagraphAlignRightButton1.Name = "ParagraphAlignRightButton1";
+            this.ParagraphAlignRightButton1.SmallImage = ((System.Drawing.Image)(resources.GetObject("ParagraphAlignRightButton1.SmallImage")));
+            this.ParagraphAlignRightButton1.ToolTip = "Align Right";
+            // 
+            // ViewTab1
+            // 
+            this.ViewTab1.Groups.Add(this.ViewZoomGroup1);
+            this.ViewTab1.Name = "ViewTab1";
+            this.ViewTab1.Text = "View";
+            // 
+            // ViewZoomGroup1
+            // 
+            this.ViewZoomGroup1.Items.Add(this.ViewZoomCombobox1);
+            this.ViewZoomGroup1.Items.Add(this.NormalSizeButton1);
+            this.ViewZoomGroup1.Name = "ViewZoomGroup1";
+            this.ViewZoomGroup1.Text = "Zoom";
+            // 
+            // ViewZoomCombobox1
+            // 
+            this.ViewZoomCombobox1.MaxLength = 4;
+            this.ViewZoomCombobox1.Name = "ViewZoomCombobox1";
+            // 
+            // NormalSizeButton1
+            // 
+            this.NormalSizeButton1.Name = "NormalSizeButton1";
+            this.NormalSizeButton1.SmallImage = ((System.Drawing.Image)(resources.GetObject("NormalSizeButton1.SmallImage")));
+            this.NormalSizeButton1.Text = "100%";
+            // 
+            // panel5
+            // 
+            this.panel5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.panel5.Controls.Add(this.btnSendEmail);
+            this.panel5.Controls.Add(this.c1Button2);
+            this.panel5.Controls.Add(this.label212);
+            this.panel5.Controls.Add(this.txtEmailSubject);
+            this.panel5.Controls.Add(this.label213);
+            this.panel5.Controls.Add(this.txtEmailTo);
+            this.panel5.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.panel5.Location = new System.Drawing.Point(0, 146);
+            this.panel5.Name = "panel5";
+            this.panel5.Size = new System.Drawing.Size(544, 68);
+            this.panel5.TabIndex = 2;
+            this.theme1.SetTheme(this.panel5, "(default)");
+            // 
+            // btnSendEmail
+            // 
+            this.btnSendEmail.Image = global::clinic_ivf.Properties.Resources.Email_icon_24;
+            this.btnSendEmail.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnSendEmail.Location = new System.Drawing.Point(284, 3);
+            this.btnSendEmail.Name = "btnSendEmail";
+            this.btnSendEmail.Size = new System.Drawing.Size(101, 34);
+            this.btnSendEmail.TabIndex = 542;
+            this.btnSendEmail.Text = "Send Email";
+            this.btnSendEmail.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.theme1.SetTheme(this.btnSendEmail, "(default)");
+            this.btnSendEmail.UseVisualStyleBackColor = true;
+            this.btnSendEmail.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            // 
+            // c1Button2
+            // 
+            this.c1Button2.Location = new System.Drawing.Point(250, 11);
+            this.c1Button2.Name = "c1Button2";
+            this.c1Button2.Size = new System.Drawing.Size(28, 23);
+            this.c1Button2.TabIndex = 541;
+            this.c1Button2.Text = "...";
+            this.theme1.SetTheme(this.c1Button2, "(default)");
+            this.c1Button2.UseVisualStyleBackColor = true;
+            this.c1Button2.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            // 
+            // label212
+            // 
+            this.label212.AutoSize = true;
+            this.label212.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.label212.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label212.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.label212.Location = new System.Drawing.Point(13, 44);
+            this.label212.Name = "label212";
+            this.label212.Size = new System.Drawing.Size(59, 16);
+            this.label212.TabIndex = 517;
+            this.label212.Text = "Subject :";
+            this.theme1.SetTheme(this.label212, "(default)");
+            // 
+            // txtEmailSubject
+            // 
+            this.txtEmailSubject.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtEmailSubject.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
+            this.txtEmailSubject.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.txtEmailSubject.Location = new System.Drawing.Point(78, 42);
+            this.txtEmailSubject.Name = "txtEmailSubject";
+            this.txtEmailSubject.Size = new System.Drawing.Size(300, 20);
+            this.txtEmailSubject.TabIndex = 516;
+            this.txtEmailSubject.Tag = null;
+            this.theme1.SetTheme(this.txtEmailSubject, "(default)");
+            this.txtEmailSubject.Value = "Result OPU";
+            this.txtEmailSubject.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            // 
+            // label213
+            // 
+            this.label213.AutoSize = true;
+            this.label213.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.label213.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label213.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.label213.Location = new System.Drawing.Point(13, 13);
+            this.label213.Name = "label213";
+            this.label213.Size = new System.Drawing.Size(31, 16);
+            this.label213.TabIndex = 515;
+            this.label213.Text = "To :";
+            this.theme1.SetTheme(this.label213, "(default)");
+            // 
+            // txtEmailTo
+            // 
+            this.txtEmailTo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtEmailTo.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
+            this.txtEmailTo.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.txtEmailTo.Location = new System.Drawing.Point(50, 10);
+            this.txtEmailTo.Name = "txtEmailTo";
+            this.txtEmailTo.Size = new System.Drawing.Size(194, 20);
+            this.txtEmailTo.TabIndex = 514;
+            this.txtEmailTo.Tag = null;
+            this.theme1.SetTheme(this.txtEmailTo, "(default)");
+            this.txtEmailTo.Value = "eploentham@outlook.co.th";
+            this.txtEmailTo.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            // 
+            // txtEmailBody
+            // 
+            this.txtEmailBody.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtEmailBody.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
+            this.txtEmailBody.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.txtEmailBody.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.txtEmailBody.Location = new System.Drawing.Point(0, 214);
+            this.txtEmailBody.Multiline = true;
+            this.txtEmailBody.Name = "txtEmailBody";
+            this.txtEmailBody.Size = new System.Drawing.Size(544, 540);
+            this.txtEmailBody.TabIndex = 542;
+            this.txtEmailBody.Tag = null;
+            this.theme1.SetTheme(this.txtEmailBody, "(default)");
+            this.txtEmailBody.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            // 
             // FrmLabSpermAdd
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -9047,6 +9601,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.sCAnalysis)).EndInit();
             this.sCAnalysis.ResumeLayout(false);
             this.c1SplitterPanel1.ResumeLayout(false);
+            this.panel6.ResumeLayout(false);
+            this.panel6.PerformLayout();
             this.c1SplitterPanel2.ResumeLayout(false);
             this.pnSememAnalysis.ResumeLayout(false);
             this.pnSememAnalysis.PerformLayout();
@@ -9215,6 +9771,14 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtPeNameFeMale)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtPeHnFeMale)).EndInit();
             this.tabReport.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.c1Ribbon2)).EndInit();
+            this.panel5.ResumeLayout(false);
+            this.panel5.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.btnSendEmail)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.c1Button2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtEmailSubject)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtEmailTo)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtEmailBody)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -9765,5 +10329,64 @@
         private C1.Win.C1Input.C1TextBox txtSfEmailBody;
         private C1.Win.C1Command.C1DockingTabPage tabReport;
         private CrystalDecisions.Windows.Forms.CrystalReportViewer crySperm;
+        private C1.Win.C1Input.C1TextBox txtEmailBody;
+        private System.Windows.Forms.Panel panel5;
+        private C1.Win.C1Input.C1Button btnSendEmail;
+        private C1.Win.C1Input.C1Button c1Button2;
+        private System.Windows.Forms.Label label212;
+        private C1.Win.C1Input.C1TextBox txtEmailSubject;
+        private System.Windows.Forms.Label label213;
+        private C1.Win.C1Input.C1TextBox txtEmailTo;
+        private C1.Win.C1Ribbon.C1Ribbon c1Ribbon2;
+        private C1.Win.C1Ribbon.RibbonApplicationMenu ribbonApplicationMenu11;
+        private C1.Win.C1Ribbon.RibbonButton ExitButton1;
+        private C1.Win.C1Ribbon.RibbonButton NewDocumentButton1;
+        private C1.Win.C1Ribbon.RibbonButton OpenDocumentButton1;
+        private C1.Win.C1Ribbon.RibbonButton SaveDocumentButton1;
+        private C1.Win.C1Ribbon.RibbonSplitButton SaveDocumentAsButton1;
+        private C1.Win.C1Ribbon.RibbonButton SaveDocumentAsRtfButton1;
+        private C1.Win.C1Ribbon.RibbonButton SaveDocumentAsTextButton1;
+        private C1.Win.C1Ribbon.RibbonButton SaveDocumentAsOtherButton1;
+        private C1.Win.C1Ribbon.RibbonBottomToolBar ribbonBottomToolBar11;
+        private C1.Win.C1Ribbon.RibbonConfigToolBar ribbonConfigToolBar11;
+        private C1.Win.C1Ribbon.RibbonComboBox ribbonStyleCombo1;
+        private C1.Win.C1Ribbon.RibbonButton F1HelpButton1;
+        private C1.Win.C1Ribbon.RibbonQat ribbonQat11;
+        private C1.Win.C1Ribbon.RibbonButton UndoButton1;
+        private C1.Win.C1Ribbon.RibbonButton RedoButton1;
+        private C1.Win.C1Ribbon.RibbonTab HomeTab1;
+        private C1.Win.C1Ribbon.RibbonGroup ClipboardGroup1;
+        private C1.Win.C1Ribbon.RibbonSplitButton PasteSplitButton1;
+        private C1.Win.C1Ribbon.RibbonButton PasteButton1;
+        private C1.Win.C1Ribbon.RibbonButton PasteAsTextButton1;
+        private C1.Win.C1Ribbon.RibbonButton CutButton1;
+        private C1.Win.C1Ribbon.RibbonButton CopyButton1;
+        private C1.Win.C1Ribbon.RibbonButton FormatPainterButton1;
+        private C1.Win.C1Ribbon.RibbonGroup FontGroup1;
+        private C1.Win.C1Ribbon.RibbonToolBar ribbonToolBar11;
+        private C1.Win.C1Ribbon.RibbonComboBox FontFaceComboBox1;
+        private C1.Win.C1Ribbon.RibbonComboBox FontSizeComboBox1;
+        private C1.Win.C1Ribbon.RibbonToolBar ribbonToolBar21;
+        private C1.Win.C1Ribbon.RibbonToggleButton FontBoldButton1;
+        private C1.Win.C1Ribbon.RibbonToggleButton FontItalicButton1;
+        private C1.Win.C1Ribbon.RibbonToggleButton FontUnderlineButton1;
+        private C1.Win.C1Ribbon.RibbonToggleButton FontStrikeoutButton1;
+        private C1.Win.C1Ribbon.RibbonSeparator ribbonSeparator11;
+        private C1.Win.C1Ribbon.RibbonColorPicker FontColorPicker1;
+        private C1.Win.C1Ribbon.RibbonColorPicker BackColorPicker1;
+        private C1.Win.C1Ribbon.RibbonGroup ParagraphGroup1;
+        private C1.Win.C1Ribbon.RibbonToolBar ribbonToolBar31;
+        private C1.Win.C1Ribbon.RibbonButton DecreaseIndentButton1;
+        private C1.Win.C1Ribbon.RibbonButton IncreaseIndentButton1;
+        private C1.Win.C1Ribbon.RibbonToolBar ribbonToolBar41;
+        private C1.Win.C1Ribbon.RibbonToggleGroup ribbonToggleGroup11;
+        private C1.Win.C1Ribbon.RibbonToggleButton ParagraphAlignLeftButton1;
+        private C1.Win.C1Ribbon.RibbonToggleButton ParagraphAlignCenterButton1;
+        private C1.Win.C1Ribbon.RibbonToggleButton ParagraphAlignRightButton1;
+        private C1.Win.C1Ribbon.RibbonTab ViewTab1;
+        private C1.Win.C1Ribbon.RibbonGroup ViewZoomGroup1;
+        private C1.Win.C1Ribbon.RibbonComboBox ViewZoomCombobox1;
+        private C1.Win.C1Ribbon.RibbonButton NormalSizeButton1;
+        private C1.Win.C1Ribbon.RibbonTopToolBar ribbonTopToolBar11;
     }
 }

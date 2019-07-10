@@ -75,7 +75,6 @@ namespace clinic_ivf.gui
                 }
             }
             initConfig();
-            
         }
         private void initConfig()
         {
@@ -151,6 +150,13 @@ namespace clinic_ivf.gui
             btnSfSendEmail.Click += BtnSfSendEmail_Click;
             SmtpServer.SendCompleted += SmtpServer_SendCompleted;
 
+            txtMotility4.KeyUp += TxtMotility4_KeyUp;
+            txtMotility3.KeyUp += TxtMotility3_KeyUp;
+            txtHead1.KeyUp += TxtHead1_KeyUp;
+            txtNeck1.KeyUp += TxtNeck1_KeyUp;
+            txtTail1.KeyUp += TxtTail1_KeyUp;
+            txtPh.KeyUp += TxtPh_KeyUp;
+
             stt = new C1SuperTooltip();
             sep = new C1SuperErrorProvider();
             lsperm = new LabSperm();
@@ -158,6 +164,60 @@ namespace clinic_ivf.gui
 
             setControl();
             setTheme();
+        }
+
+        private void TxtPh_KeyUp(object sender, KeyEventArgs e)
+        {
+            //throw new NotImplementedException();
+
+        }
+
+        private void TxtTail1_KeyUp(object sender, KeyEventArgs e)
+        {
+            //throw new NotImplementedException();
+            calMorphology();
+        }
+
+        private void TxtNeck1_KeyUp(object sender, KeyEventArgs e)
+        {
+            //throw new NotImplementedException();
+            calMorphology();
+            if (e.KeyCode == Keys.Enter)
+            {
+                txtTail1.Focus();
+            }
+        }
+
+        private void TxtHead1_KeyUp(object sender, KeyEventArgs e)
+        {
+            //throw new NotImplementedException();
+            calMorphology();
+            if (e.KeyCode == Keys.Enter)
+            {
+                txtNeck1.Focus();
+            }
+        }
+
+        private void TxtMotility3_KeyUp(object sender, KeyEventArgs e)
+        {
+            //throw new NotImplementedException();
+            calMotility();
+            calMotile();
+            if (e.KeyCode == Keys.Enter)
+            {
+                txtMotility2.Focus();
+            }
+        }
+
+        private void TxtMotility4_KeyUp(object sender, KeyEventArgs e)
+        {
+            //throw new NotImplementedException();
+            calMotility();
+            calMotile();
+            if (e.KeyCode == Keys.Enter)
+            {
+                txtMotility3.Focus();
+            }
         }
 
         private void SmtpServer_SendCompleted(object sender, AsyncCompletedEventArgs e)
@@ -283,13 +343,13 @@ namespace clinic_ivf.gui
         private void TxtSfTail1_KeyUp(object sender, KeyEventArgs e)
         {
             //throw new NotImplementedException();
-            calMorphologySf();
+            calSfMorphology();
         }
 
         private void TxtSfNeck1_KeyUp(object sender, KeyEventArgs e)
         {
             //throw new NotImplementedException();
-            calMorphologySf();
+            calSfMorphology();
             if (e.KeyCode == Keys.Enter)
             {
                 txtSfTail1.Focus();
@@ -299,7 +359,7 @@ namespace clinic_ivf.gui
         private void TxtSfHead1_KeyUp(object sender, KeyEventArgs e)
         {
             //throw new NotImplementedException();
-            calMorphologySf();
+            calSfMorphology();
             if (e.KeyCode == Keys.Enter)
             {
                 txtSfNeck1.Focus();
@@ -309,8 +369,8 @@ namespace clinic_ivf.gui
         private void TxtSfMotility3_KeyUp(object sender, KeyEventArgs e)
         {
             //throw new NotImplementedException();
-            calMotility();
-            calMotileSf();
+            calSfMotility();
+            calSfMotile();
             if (e.KeyCode == Keys.Enter)
             {
                 txtSfMotility2.Focus();
@@ -320,8 +380,8 @@ namespace clinic_ivf.gui
         private void TxtSfMotility4_KeyUp(object sender, KeyEventArgs e)
         {
             //throw new NotImplementedException();
-            calMotility();
-            calMotileSf();
+            calSfMotility();
+            calSfMotile();
             if(e.KeyCode == Keys.Enter)
             {
                 txtSfMotility3.Focus();
@@ -331,15 +391,15 @@ namespace clinic_ivf.gui
         private void TxtSfCount_KeyUp(object sender, KeyEventArgs e)
         {
             //throw new NotImplementedException();
-            calTotalCountSf();
-            calMotileSf();
+            calSfTotalCount();
+            calSfMotile();
         }
 
         private void TxtSfVolume_KeyUp(object sender, KeyEventArgs e)
         {
             //throw new NotImplementedException();
-            calTotalCountSf();
-            calMotileSf();
+            calSfTotalCount();
+            calSfMotile();
             if (e.KeyCode == Keys.Enter)
             {
                 txtSfCount.Focus();
@@ -349,15 +409,21 @@ namespace clinic_ivf.gui
         private void TxtCount_KeyUp(object sender, KeyEventArgs e)
         {
             //throw new NotImplementedException();
-
+            calTotalCount();
+            calMotile();
+            if (e.KeyCode == Keys.Enter)
+            {
+                txtSfCount.Focus();
+            }
         }
 
         private void TxtVolume_KeyUp(object sender, KeyEventArgs e)
         {
             //throw new NotImplementedException();
-
+            calTotalCount();
+            calMotile();
         }
-        private void calMorphologySf()
+        private void calSfMorphology()
         {
             Decimal head1 = 0, neck1 = 0, tail1 = 0, head=0, neck=0, tail=0, total1=0, abnormal=0;
             int head11 = 0, neck11=0, tail11=0;
@@ -366,7 +432,7 @@ namespace clinic_ivf.gui
             Decimal.TryParse(txtSfTail1.Text, out tail1);
             total1 = head1 + neck1 + tail1;
 
-            calAbNormalSf();
+            calSfAbNormal();
             Decimal.TryParse(txtSfAbnormal.Text, out abnormal);
             if (total1 <= 0) return;
             head = (abnormal * head1) / total1;
@@ -421,7 +487,71 @@ namespace clinic_ivf.gui
             txtSfNeck.Value = neck11;
             txtSfTail.Value = tail11;
         }
-        private void calAbNormalSf()
+        private void calMorphology()
+        {
+            Decimal head1 = 0, neck1 = 0, tail1 = 0, head = 0, neck = 0, tail = 0, total1 = 0, abnormal = 0;
+            int head11 = 0, neck11 = 0, tail11 = 0;
+            Decimal.TryParse(txtHead1.Text, out head1);
+            Decimal.TryParse(txtNeck1.Text, out neck1);
+            Decimal.TryParse(txtTail1.Text, out tail1);
+            total1 = head1 + neck1 + tail1;
+
+            calAbNormal();
+            Decimal.TryParse(txtAbnormal.Text, out abnormal);
+            if (total1 <= 0) return;
+            head = (abnormal * head1) / total1;
+            neck = (abnormal * neck1) / total1;
+            tail = (abnormal * tail1) / total1;
+            head = Math.Round(head);
+            neck = Math.Round(neck);
+            tail = Math.Round(tail);
+            int.TryParse(head.ToString(), out head11);
+            int.TryParse(neck.ToString(), out neck11);
+            int.TryParse(tail.ToString(), out tail11);
+
+            if ((head11 + neck11 + tail11) != abnormal)
+            {
+                Decimal.TryParse(txtHead1.Text, out head1);
+                head = (abnormal * head1) / total1;
+                neck = (abnormal * neck1) / total1;
+                tail = (abnormal * tail1) / total1;
+                Decimal headtemp = 0, necktemp = 0, tailtemp = 0;
+                int headtemp1 = 0, necktemp1 = 0, tailtemp1 = 0;
+                headtemp1 = Decimal.ToInt16(head);
+                headtemp = head - headtemp1;
+                necktemp1 = Decimal.ToInt16(neck);
+                necktemp = neck - necktemp1;
+                tailtemp1 = Decimal.ToInt16(tail);
+                tailtemp = tail - tailtemp1;
+                if (headtemp < necktemp)
+                {
+                    if (headtemp < tailtemp)
+                    {
+                        int.TryParse(headtemp1.ToString(), out head11);
+                    }
+                    else
+                    {
+                        int.TryParse(tailtemp1.ToString(), out tail11);
+                    }
+                }
+                else
+                {
+                    if (necktemp < tailtemp)
+                    {
+                        int.TryParse(necktemp1.ToString(), out neck11);
+                    }
+                    else
+                    {
+                        int.TryParse(tailtemp1.ToString(), out tail11);
+                    }
+                }
+                //head = Math.Round(head);
+            }
+            txtHead.Value = head11;
+            txtNeck.Value = neck11;
+            txtTail.Value = tail11;
+        }
+        private void calSfAbNormal()
         {
             Decimal head = 0, neck = 0, tail = 0, abnormal=0, normal=0;
             int abnormal1 = 0;
@@ -434,7 +564,20 @@ namespace clinic_ivf.gui
             //int.TryParse(abnormal.ToString(), out abnormal1);
             txtSfAbnormal.Value = 100 - normal;
         }
-        private void calMotility()
+        private void calAbNormal()
+        {
+            Decimal head = 0, neck = 0, tail = 0, abnormal = 0, normal = 0;
+            int abnormal1 = 0;
+            //Decimal.TryParse(txtSfHead.Text, out head);
+            //Decimal.TryParse(txtSfNeck.Text, out neck);
+            //Decimal.TryParse(txtSfTail.Text, out tail);
+            //abnormal = head + neck + tail;
+
+            Decimal.TryParse(txtNormal.Text, out normal);
+            //int.TryParse(abnormal.ToString(), out abnormal1);
+            txtAbnormal.Value = 100 - normal;
+        }
+        private void calSfMotility()
         {
             Decimal pr = 0, nr = 0, motility=0;
             int motility1 = 0;
@@ -445,7 +588,18 @@ namespace clinic_ivf.gui
             txtSfMotility.Value = motility1;
             txtSfViability.Value = motility1 + 7;
         }
-        private void calMotileSf()
+        private void calMotility()
+        {
+            Decimal pr = 0, nr = 0, motility = 0;
+            int motility1 = 0;
+            Decimal.TryParse(txtMotility4.Text, out pr);
+            Decimal.TryParse(txtMotility3.Text, out nr);
+            motility = pr + nr;
+            int.TryParse(motility.ToString(), out motility1);
+            txtMotility.Value = motility1;
+            txtViability.Value = motility1 + 7;
+        }
+        private void calSfMotile()
         {
             Decimal motilitysf = 0, cntsf = 0, motile=0, vol=0, totalmotile=0;
             int motile1 = 0, totalmotile1=0;
@@ -462,7 +616,24 @@ namespace clinic_ivf.gui
             int.TryParse(totalmotile.ToString(), out totalmotile1);
             txtSfTotalMotile.Value = totalmotile1;
         }
-        private void calTotalCountSf()
+        private void calMotile()
+        {
+            Decimal motilitysf = 0, cntsf = 0, motile = 0, vol = 0, totalmotile = 0;
+            int motile1 = 0, totalmotile1 = 0;
+            Decimal.TryParse(txtMotility.Text, out motilitysf);
+            Decimal.TryParse(txtCount.Text, out cntsf);
+            Decimal.TryParse(txtVolume.Text, out vol);
+            motile = (motilitysf * cntsf) / 100;
+            motile = Math.Round(motile);
+            int.TryParse(motile.ToString(), out motile1);
+            txtMotile.Value = motile1;
+
+            totalmotile = motile * vol;
+            totalmotile = Math.Round(totalmotile);
+            int.TryParse(totalmotile.ToString(), out totalmotile1);
+            txtTotalMotile.Value = totalmotile1;
+        }
+        private void calSfTotalCount()
         {
             Decimal vol = 0, cnt = 0, totalcnt=0;
             int totalcnt1 = 0;
@@ -473,7 +644,17 @@ namespace clinic_ivf.gui
             int.TryParse(totalcnt.ToString(), out totalcnt1);
             txtSfTotalCount.Value = totalcnt1;
         }
-
+        private void calTotalCount()
+        {
+            Decimal vol = 0, cnt = 0, totalcnt = 0;
+            int totalcnt1 = 0;
+            Decimal.TryParse(txtVolume.Text, out vol);
+            Decimal.TryParse(txtCount.Text, out cnt);
+            totalcnt = vol * cnt;
+            totalcnt = Math.Round(totalcnt);
+            int.TryParse(totalcnt.ToString(), out totalcnt1);
+            txtTotalCount.Value = totalcnt1;
+        }
         private void TxtAbstinenceday_KeyUp(object sender, KeyEventArgs e)
         {
             //throw new NotImplementedException();
