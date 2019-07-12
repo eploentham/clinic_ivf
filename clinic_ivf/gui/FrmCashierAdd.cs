@@ -121,22 +121,21 @@ namespace clinic_ivf.gui
                 MessageBox.Show("ยังไม่ได้เลือก ประเภทบัญชี", "");
                 return;
             }
+
             Decimal totalcredit = 0, totalcash=0, total=0, discount=0;
-            if(Decimal.TryParse(txtTotalCredit.Text.Replace(",", ""), out totalcredit))
+            Decimal.TryParse(txtTotalCredit.Text.Replace(",", ""), out totalcredit);
+            Decimal.TryParse(txtTotalCash.Text.Replace(",", ""), out totalcash);        
+
+            if (cashid1.Equals("") && totalcash > 0)
             {
-                if (creditid1.Equals("") && totalcredit>0)
-                {
-                    MessageBox.Show("มียอด credit ไม่ยังไม่ได้เลือก ประเภทบัญชี", "");
-                    return;
-                }
+                MessageBox.Show("มียอด cash ไม่ยังไม่ได้เลือก ประเภทบัญชี", "");
+                return;
             }
-            if (Decimal.TryParse(txtTotalCash.Text.Replace(",", ""), out totalcash))
+            if (!cashid1.Equals("") && totalcash <= 0)
             {
-                if (cashid1.Equals("") && totalcash >0)
-                {
-                    MessageBox.Show("มียอด cash ไม่ยังไม่ได้เลือก ประเภทบัญชี", "");
-                    return;
-                }
+                MessageBox.Show("มียอด cash แต่ไม่ได้ป้อน จำนวนเงิน", "");
+                txtTotalCash.Focus();
+                return;
             }
             if (Decimal.TryParse(txtDiscount.Text.Replace(",", ""), out discount))
             {
