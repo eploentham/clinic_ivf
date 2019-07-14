@@ -1511,8 +1511,8 @@ namespace clinic_ivf.objdb
                         foreach (DataRow dr in dtb0.Rows)
                         {
                             name = dr["Name"].ToString();
-                            total111 = dr["Total"].ToString();
-                            comm = dr["Comment"].ToString();
+                            total111 = dr["Total1"] != null ? dr["Total1"].ToString() : "0";
+                            //comm = dr["Comment"].ToString();
                             Decimal.TryParse(total111, out total1111);
                             DataRow row11 = dtprn.NewRow();
                             row11["col1"] = name;
