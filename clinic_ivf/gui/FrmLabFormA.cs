@@ -1120,7 +1120,7 @@ namespace clinic_ivf.gui
             txtFrozenSpermDate.Value = lFormA.frozen_sperm_date;
             ic.setC1Combo(cboFetDay, lFormA.fet_day);
             ic.setC1Combo(cboFet1Day, lFormA.fet1_day);
-            txtUserReq.Value = lFormA.staff_req_id;
+            txtUserReq.Value = ic.ivfDB.stfDB.getStaffNameBylStf(lFormA.staff_req_id);
             chkSememPESA.Checked = lFormA.status_sperm_pesa.Equals("1") ? true : false;
             chkSpermIUI.Checked = lFormA.status_sperm_iui.Equals("1") ? true : false;
             //txtDobFeMale.Value = lFormA.dob_female;

@@ -117,7 +117,7 @@ namespace clinic_ivf.gui
             //    C1DockingTabPage tabPage = new C1DockingTabPage();
             //    tabPage.Location = new System.Drawing.Point(1, 24);
             //    tabPage.Size = new System.Drawing.Size(667, 175);
-                
+
             //    tabPage.TabIndex = 0;
             //    tabPage.Text = "Page" + dgs.doc_group_name;
             //    tabPage.Name = " " + dgs.doc_group_id+"  ";
@@ -130,6 +130,7 @@ namespace clinic_ivf.gui
 
             //    }
             //}
+            //MessageBox.Show("111", "");
             if (ic.ivfDB.dgssDB.lDgss.Count <= 0) ic.ivfDB.dgssDB.getlBsp();
             foreach (DocGroupSubScan dgss in ic.ivfDB.dgssDB.lDgss)
             {
@@ -137,6 +138,7 @@ namespace clinic_ivf.gui
                 dgsid = ic.ivfDB.dgssDB.getDgsIdDgss(dgss.doc_group_sub_name);
                 if (!dgsid.Equals(idOld))
                 {
+                    //MessageBox.Show("222", "");
                     idOld = dgsid;
                     String name = "";
                     name = ic.ivfDB.dgsDB.getNameDgs(dgss.doc_group_id);
@@ -162,8 +164,9 @@ namespace clinic_ivf.gui
                     {
                         if (dgsss.doc_group_id.Equals(dgss.doc_group_id))
                         {
+                            //MessageBox.Show("333", "");
                             //addDevice.MenuItems.Add(new MenuItem(dgsss.doc_group_sub_name, new EventHandler(ContextMenu_upload)));
-                            
+
                             C1DockingTabPage tabPage2 = new C1DockingTabPage();
                             tabPage2.Location = new System.Drawing.Point(1, 24);
                             tabPage2.Size = new System.Drawing.Size(667, 175);
@@ -383,6 +386,7 @@ namespace clinic_ivf.gui
         {
             //throw new NotImplementedException();
             //bool exists = System.IO.Directory.Exists(bc.iniC.pathImgScanNew);
+            //MessageBox.Show("Timer1_Tick", "");
             DirectoryInfo folderImg = null;
             if (!Directory.Exists(ic.iniC.pathImageScan))
                 folderImg = Directory.CreateDirectory(ic.iniC.pathImageScan);
@@ -399,6 +403,7 @@ namespace clinic_ivf.gui
             String[] Files = Directory.GetFiles(ic.iniC.pathImageScan, "*.*", SearchOption.AllDirectories);
             if (Files.Length > 0)
             {
+                //MessageBox.Show("setImage1", "");
                 setGrf();
                 setImage(Files);
                 if (flagStop)
@@ -424,6 +429,7 @@ namespace clinic_ivf.gui
         }
         private void setImage(String[] file1)
         {
+            String err = "";
             txtVN.Hide();
             btnVn.Hide();
             label3.Hide();
@@ -434,7 +440,8 @@ namespace clinic_ivf.gui
             txtVisitDate.Hide();
             txtAnDate.Hide();
             txtPreNo.Hide();
-
+            err = "01";
+            //MessageBox.Show("222", "");
             ProgressBar pB1 = new ProgressBar();
             pB1.Location = new System.Drawing.Point(113, 36);
             pB1.Name = "pB1";
@@ -449,6 +456,7 @@ namespace clinic_ivf.gui
             array1.Clear();
             try
             {
+                err = "02";
                 pB1.Value = 0;
                 pB1.Minimum = 0;
                 pB1.Maximum = file1.Length;
@@ -463,7 +471,7 @@ namespace clinic_ivf.gui
                         {
                             ex = sur[1];
                         }
-
+                        err = "021";
                         if (!ex.Equals("pdf"))
                         {
                             loadedImage = Image.FromFile(file);
@@ -492,6 +500,7 @@ namespace clinic_ivf.gui
                             j = 1;
                             i++;
                         }
+                        err = "022";
                         //grf.Cols[colPic1].ImageAndText = true;
                         //grf.Cols[colPic2].ImageAndText = true;
                         //grf.Cols[colPic3].ImageAndText = true;
@@ -521,6 +530,7 @@ namespace clinic_ivf.gui
                             //grf[i, colPic4] = resizedImage;
                             grf.SetCellImage(i, colPic4, resizedImage);
                         }
+                        err = "023";
                         j++;
                         pB1.Value++;
                         //resizedImage.Dispose();
@@ -528,6 +538,7 @@ namespace clinic_ivf.gui
                     catch (Exception ex)
                     {
                         re = ex.Message;
+                        MessageBox.Show("Error" + ex.Message, "err "+err);
                     }
                 }
             }
@@ -535,7 +546,7 @@ namespace clinic_ivf.gui
             {
                 MessageBox.Show("Error"+ex.Message, "");
             }
-            
+            MessageBox.Show("555", "");
             grf.AutoSizeCols();
             grf.AutoSizeRows();
             grf.Rows[0].Visible = false;
