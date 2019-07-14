@@ -1173,7 +1173,7 @@ namespace clinic_ivf.gui
             spCloseDay.HeaderHeight = 0;
             spCld.Width = 370;
             c1SplitContainer3.HeaderHeight = 0;
-            sB1.Text = "Date " + ic.cop.day + "-" + ic.cop.month + "-" + ic.cop.year + " Server " + ic.iniC.hostDB + " FTP " + ic.iniC.hostFTP + "/" + ic.iniC.folderFTP;
+            sB1.Text = "Date " + ic.cop.day + "-" + ic.cop.month + "-" + ic.cop.year + " Server " + ic.iniC.hostDB + "/" + ic.iniC.nameDB + " FTP " + ic.iniC.hostFTP + "/" + ic.iniC.folderFTP;
         }
     }
 }

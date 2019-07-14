@@ -777,8 +777,11 @@ namespace clinic_ivf.gui
             ContextMenu menuGw = new ContextMenu();
             //menuGw.MenuItems.Add("&receive operation", new EventHandler(ContextMenu_Apm));
             //menuGw.MenuItems.Add("&receive operation", new EventHandler(ContextMenu_Apm));
-            menuGw.MenuItems.Add("&LAB request FORM A", new EventHandler(ContextMenu_LAB_req_formA_Ptt_search));
-            menuGw.MenuItems.Add("LAB Form Day1", new EventHandler(ContextMenu_Form_day1));
+            if (!chkPrnSticker.Checked)     // สั่ง LAB ไม่ได้ เพราะ ไม่มี visit_id
+            {
+                menuGw.MenuItems.Add("&LAB request FORM A", new EventHandler(ContextMenu_LAB_req_formA_Ptt_search));
+                menuGw.MenuItems.Add("LAB Form Day1", new EventHandler(ContextMenu_Form_day1));
+            }            
             //menuGw.MenuItems.Add("&Add Appointment", new EventHandler(ContextMenu_Apm_Ptt));
             //menuGw.MenuItems.Add("&Cancel Receive", new EventHandler(ContextMenu_Apm_Ptt));
             //menuGw.MenuItems.Add("&No Appointment Close Operation", new EventHandler(ContextMenu_NO_Apm_Ptt));
@@ -836,7 +839,7 @@ namespace clinic_ivf.gui
                 i++;
             }
             CellNoteManager mgr = new CellNoteManager(grfSearch);
-            grfSearch.Cols[colID].Visible = false;
+            //grfSearch.Cols[colID].Visible = false;
             grfSearch.Cols[colStatus].Visible = false;
             grfSearch.Cols[colVsEtime].Visible = false;
             grfSearch.Cols[colVsTime].Visible = false;
@@ -2160,7 +2163,7 @@ namespace clinic_ivf.gui
         {
             tC.SelectedTab = tabWaiting;
             chkAll.Checked = true;
-            sB1.Text = "Date " + ic.cop.day + "-" + ic.cop.month + "-" + ic.cop.year + " Server " + ic.iniC.hostDB + " FTP " + ic.iniC.hostFTP + "/" + ic.iniC.folderFTP;
+            sB1.Text = "Date " + ic.cop.day + "-" + ic.cop.month + "-" + ic.cop.year + " Server " + ic.iniC.hostDB + "/" + ic.iniC.nameDB + " FTP " + ic.iniC.hostFTP + "/" + ic.iniC.folderFTP;
         }
     }
 }
