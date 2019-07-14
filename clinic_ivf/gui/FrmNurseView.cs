@@ -740,12 +740,12 @@ namespace clinic_ivf.gui
             grfSearch.Cols[colPttHn2].Width = 100;
             grfSearch.Cols[colPttName2].Width = 220;
             grfSearch.Cols[colFormACode].Width = 80;
-            grfSearch.Cols[colStatusOPU].Width = 40;
-            grfSearch.Cols[colStatusFet].Width = 40;
-            grfSearch.Cols[colStatusAna].Width = 40;
-            grfSearch.Cols[colStatusFreezing].Width = 40;
-            grfSearch.Cols[colStatusPesa].Width = 40;
-            grfSearch.Cols[colStatusIUI].Width = 40;
+            grfSearch.Cols[colStatusOPU].Width = 60;
+            grfSearch.Cols[colStatusFet].Width = 60;
+            grfSearch.Cols[colStatusAna].Width = 60;
+            grfSearch.Cols[colStatusFreezing].Width = 60;
+            grfSearch.Cols[colStatusPesa].Width = 60;
+            grfSearch.Cols[colStatusIUI].Width = 60;
             grfSearch.Cols[colFormAId].Width = 40;
             grfSearch.Cols[colDtr].Width = 80;
 
@@ -757,6 +757,7 @@ namespace clinic_ivf.gui
             grfSearch.Cols[colPttHn].Caption = "HN";
             grfSearch.Cols[colPttName].Caption = "Name";
             grfSearch.Cols[colVsDate].Caption = "Date";
+
             grfSearch.Cols[colVsTime].Caption = "Time visit";
             grfSearch.Cols[colVsEtime].Caption = "Time finish";
             grfSearch.Cols[colStatus].Caption = "Status";
@@ -766,6 +767,12 @@ namespace clinic_ivf.gui
             grfSearch.Cols[colPttName2].Caption = "Name Hn2";
             grfSearch.Cols[colFormACode].Caption = "Lab Form A";
             grfSearch.Cols[colDtr].Caption = "Doctor";
+            grfSearch.Cols[colStatusOPU].Caption = "OPU";
+            grfSearch.Cols[colStatusFet].Caption = "FET";
+            grfSearch.Cols[colStatusAna].Caption = "Analy";
+            grfSearch.Cols[colStatusFreezing].Caption = "Freez";
+            grfSearch.Cols[colStatusPesa].Caption = "Pesa";
+            grfSearch.Cols[colStatusIUI].Caption = "IUI";
 
             ContextMenu menuGw = new ContextMenu();
             //menuGw.MenuItems.Add("&receive operation", new EventHandler(ContextMenu_Apm));

@@ -1,11 +1,14 @@
-﻿using clinic_ivf.control;
+﻿using C1.Win.C1Input;
+using clinic_ivf.control;
 using clinic_ivf.object1;
 using clinic_ivf.Properties;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.Drawing.Printing;
 using System.IO;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -17,26 +20,28 @@ namespace clinic_ivf.gui
         IvfControl ic;
 
         String filename = "", pttOldId="", pttImgId="";
-        PictureBox pic;
+        C1PictureBox pic;
         Panel panel1, pnR, pnL;
         Image loadedImage;
         TextBox txtDesc,txtId;
-        Button btnSend;
+        Button btnSend, btnPrn;
         Label lb2;
         int newWidth = 320;
         public Font fV1B, fV1;
         Font fEdit, fEditB;
 
         int gapLine = 5;
-        int grd0 = 0, grd1 = 100, grd2 = 240, grd3 = 320, grd4 = 570, grd5 = 700, grd51 = 700, grd6 = 820, grd7 = 900, grd8 = 1070, grd9 = 1200;
-        int line1 = 35, line2 = 27, line3 = 85, line4 = 105, line41 = 120, line42 = 111, line5 = 270, ControlHeight = 30, lineGap = 5;
+        int grd0 = 0, grd1 = 10, grd2 = 240, grd3 = 320, grd4 = 570, grd5 = 700, grd51 = 700, grd6 = 820, grd7 = 900, grd8 = 1070, grd9 = 1200;
+        int line1 = 35, line2 = 27, line3 = 85, line4 = 125, line41 = 120, line42 = 111, line5 = 270, ControlHeight = 30, lineGap = 5;
         public int tcW = 0, tcH = 0, tcWMinus = 25, tcHMinus = 70, formFirstLineX = 5, formFirstLineY = 5;        //standard
 
         PatientOld pttOld;
         PatientImage pttImg;
         Image resizedImage;
+        MemoryStream stream;
         public enum statusModule { Patient, LabOPU}
-
+        [DllImport("winspool.drv", CharSet = CharSet.Auto, SetLastError = true)]
+        public static extern bool SetDefaultPrinter(string Printer);
         public FrmShowImage(IvfControl ic, String pttImgId, String pttOldId, String filename, statusModule statusmodule)
         {
             this.filename = filename;
@@ -58,7 +63,7 @@ namespace clinic_ivf.gui
             pttOld = ic.ivfDB.pttOldDB.selectByPk1(pttOldId);
             pttImg = ic.ivfDB.pttImgDB.selectByPk1(pttImgId);
 
-            this.Size = new System.Drawing.Size(1024, 768);
+            this.Size = new System.Drawing.Size(1224, 768);
             fEdit = new Font(ic.iniC.grdViewFontName, ic.grdViewFontSize, FontStyle.Regular);
 
             //this.Location = pp;
@@ -98,7 +103,15 @@ namespace clinic_ivf.gui
             btnSend.Location = new System.Drawing.Point(grd1, line3);
             btnSend.Click += BtnSend_Click;
 
-            pic = new PictureBox();
+            btnPrn = new Button();
+            btnPrn.Font = fEdit;
+            btnPrn.Text = "Print";
+            btnPrn.Size = new System.Drawing.Size(120, ControlHeight);
+            pnR.Controls.Add(btnPrn);
+            btnPrn.Location = new System.Drawing.Point(grd1, line4);
+            btnPrn.Click += BtnPrn_Click;
+
+            pic = new C1PictureBox();
             pic.Dock = DockStyle.Fill;
             panel1.Controls.Add(pnR);
             panel1.Controls.Add(pnL);
@@ -113,17 +126,18 @@ namespace clinic_ivf.gui
             //{
             //    ex = sur[1];
             //}
+            stream = new MemoryStream();
             if (ext.IndexOf("pdf")<0)
             {
                 try
                 {
-                    MemoryStream stream = new MemoryStream();
+
                     //loadedImage = Image.FromFile(filename);
                     stream = ic.ftpC.download(filename);
                     Bitmap bitmap = new Bitmap(stream);
                     loadedImage = bitmap;
                     int originalWidth = loadedImage.Width;
-                    int newWidth = 800;
+                    int newWidth = 1000;
                     if (originalWidth > newWidth)
                     {
                         resizedImage = loadedImage.GetThumbnailImage(newWidth, (newWidth * loadedImage.Height) / originalWidth, null, IntPtr.Zero);
@@ -147,9 +161,57 @@ namespace clinic_ivf.gui
             
             //int originalWidth = loadedImage.Width;
             //resizedImage = loadedImage.GetThumbnailImage(newWidth, (newWidth * loadedImage.Height) / originalWidth, null, IntPtr.Zero);
-            pic.Image = resizedImage;
+            //pic.Image = resizedImage;
+            pic.Image = Image.FromStream(stream);
             pic.SizeMode = PictureBoxSizeMode.StretchImage;
         }
+
+        private void BtnPrn_Click(object sender, EventArgs e)
+        {
+            //throw new NotImplementedException();
+            SetDefaultPrinter(ic.iniC.printerA4);
+            System.Threading.Thread.Sleep(500);
+
+            PrintDocument pd = new PrintDocument();
+            pd.PrintPage += Pd_PrintPage;
+            //here to select the printer attached to user PC
+            PrintDialog printDialog1 = new PrintDialog();
+            printDialog1.Document = pd;
+            DialogResult result = printDialog1.ShowDialog();
+            if (result == DialogResult.OK)
+            {
+                pd.Print();//this will trigger the Print Event handeler PrintPage
+            }
+        }
+
+        private void Pd_PrintPage(object sender, PrintPageEventArgs e)
+        {
+            //throw new NotImplementedException();
+            try
+            {
+                //if (File.Exists(this.ImagePath))
+                //{
+                //Load the image from the file
+                System.Drawing.Image img = Image.FromStream(stream);
+                //Adjust the size of the image to the page to print the full image without loosing any part of it
+                Rectangle m = e.MarginBounds;
+                if ((double)img.Width / (double)img.Height > (double)m.Width / (double)m.Height) // image is wider
+                {
+                    m.Height = (int)((double)img.Height / (double)img.Width * (double)m.Width);
+                }
+                else
+                {
+                    m.Width = (int)((double)img.Width / (double)img.Height * (double)m.Height);
+                }
+                e.Graphics.DrawImage(img, m);
+                //}
+            }
+            catch (Exception)
+            {
+
+            }
+        }
+
         private void setPatientImage()
         {
             pttImg.patient_image_id = txtId.Text;

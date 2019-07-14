@@ -452,6 +452,7 @@ namespace clinic_ivf.objdb
                 "," + lbReq.lab_id + " = '" + p.lab_id + "'" +
                 "," + lbReq.request_id + " = '" + p.request_id + "' " +
                 "," + lbReq.form_a_id + " = '" + p.form_a_id + "' " +
+                
                 "";
             try
             {
