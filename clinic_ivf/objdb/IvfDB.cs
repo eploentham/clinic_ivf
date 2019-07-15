@@ -1707,6 +1707,11 @@ namespace clinic_ivf.objdb
             dt.Columns.Add("embryo_freez_no_straw_0", typeof(String));
             dt.Columns.Add("embryo_freez_no_straw_1", typeof(String));
 
+            //dt.Columns.Add("remark_day2", typeof(String));
+            //dt.Columns.Add("remark_day3", typeof(String));
+            //dt.Columns.Add("remark_day5", typeof(String));
+            //dt.Columns.Add("remark_day6", typeof(String));
+
             if (!day1.Equals("") && dt.Rows.Count > 0)
             {
                 dt.Rows[0]["embryo_dev_0_name"] = "Embryo Development (Day " + day1 + ")";
@@ -1725,12 +1730,26 @@ namespace clinic_ivf.objdb
                 vol = "0" + row["opu_embryo_dev_no"].ToString();
                 vol = vol.Substring(vol.Length - 2);
                 col = col + vol;
-                dt.Rows[0][col] = j + ". " + row["desc0"].ToString() + " " + row["desc1"].ToString();
+                dt.Rows[0][col] = j + ". " + row["desc0"].ToString() + " " + row["desc1"].ToString() + " " + row["desc2"].ToString();
                 stfid = row["staff_id"].ToString();
                 checkedid = row["checked_id"].ToString();
                 embryodevdate = row["embryo_dev_date"].ToString();
                 j++;
             }
+            //j = 1;
+            //foreach (DataRow row in dtdev2.Rows)
+            //{
+            //    if (j > 40) continue;
+            //    if (row["desc0"].ToString().Equals("")) continue;
+            //    String col = "embryo_dev_1_", vol = "";
+            //    stfid = ""; checkedid = ""; embryodevdate = "";
+            //    vol = "0" + row["opu_embryo_dev_no"].ToString();
+            //    vol = vol.Substring(vol.Length - 2);
+            //    col = col + vol;
+
+            //    dt.Rows[0][col] = j + ". " + row["desc0"].ToString() + " " + row["desc1"].ToString() + " " + row["desc2"].ToString();
+            //    j++;
+            //}
             dt.Rows[0]["embryo_dev_0_staff_name"] = stfDB.getStaffNameBylStf(stfid);
             dt.Rows[0]["embryo_dev_0_checked_name"] = stfDB.getStaffNameBylStf(checkedid);
             etName = dt.Rows[0]["embryo_for_et_embryologist_id"].ToString();
@@ -1753,7 +1772,7 @@ namespace clinic_ivf.objdb
                     vol = "0" + row["opu_embryo_dev_no"].ToString();
                     vol = vol.Substring(vol.Length - 2);
                     col = col + vol;
-                    dt.Rows[0][col] = j + ". " + row["desc0"].ToString() + " " + row["desc1"].ToString();
+                    dt.Rows[0][col] = j + ". " + row["desc0"].ToString() + " " + row["desc1"].ToString() + " " + row["desc2"].ToString();
                     stfid = row["staff_id"].ToString();
                     checkedid = row["checked_id"].ToString();
                     embryodevdate = row["embryo_dev_date"].ToString();
@@ -1818,6 +1837,32 @@ namespace clinic_ivf.objdb
             dt.Rows[0][opuDB.opu.embryo_for_et_number_of_freeze] = dt.Rows[0][opuDB.opu.embryo_for_et_number_of_freeze].ToString().Equals("") ? "-" : dt.Rows[0][opuDB.opu.embryo_for_et_number_of_freeze].ToString();
             dt.Rows[0][opuDB.opu.embryo_for_et_number_of_discard] = dt.Rows[0][opuDB.opu.embryo_for_et_number_of_discard].ToString().Equals("") ? "-" : dt.Rows[0][opuDB.opu.embryo_for_et_number_of_discard].ToString();
 
+            String remarkday2 = "", remarkday3 = "", remarkday5 = "", remarkday6 = "";
+            remarkday2 = dt.Rows[0][opuDB.opu.remark_day2] != null ? dt.Rows[0][opuDB.opu.remark_day2].ToString() : "";
+            remarkday3 = dt.Rows[0][opuDB.opu.remark_day3] != null ? dt.Rows[0][opuDB.opu.remark_day3].ToString() : "";
+            remarkday5 = dt.Rows[0][opuDB.opu.remark_day5] != null ? dt.Rows[0][opuDB.opu.remark_day5].ToString() : "";
+            remarkday6 = dt.Rows[0][opuDB.opu.remark_day6] != null ? dt.Rows[0][opuDB.opu.remark_day6].ToString() : "";
+            if (remarkday2.Equals("") && remarkday3.Equals("") && remarkday5.Equals(""))
+            {
+                remarkday2 = "Remark Day6: " +remarkday6;
+            }
+            else if (remarkday2.Equals("") && remarkday3.Equals("") && !remarkday5.Equals(""))
+            {
+                remarkday2 = "Remark Day5: " + remarkday5;
+                remarkday3 = "Remark Day6: " + remarkday6;
+            }
+            else if (remarkday2.Equals("") && !remarkday3.Equals("") && !remarkday5.Equals(""))
+            {
+                remarkday2 = "Remark Day3: " + remarkday3;
+                remarkday3 = "Remark Day5: " + remarkday5;
+                remarkday5 = "Remark Day6: " + remarkday6;
+            }
+            else if (remarkday2.Equals("") && !remarkday3.Equals("") && remarkday5.Equals("") && !remarkday6.Equals(""))
+            {
+                remarkday2 = "Remark Day3: " + remarkday3;
+                remarkday3 = "Remark Day6: " + remarkday6;
+            }
+            
             return dt;
         }
         public String datetoShow(Object dt)

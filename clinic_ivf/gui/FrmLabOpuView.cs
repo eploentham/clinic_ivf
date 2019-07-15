@@ -596,12 +596,12 @@ namespace clinic_ivf.gui
             //CellRange rg1 = grfBank.GetCellRange(1, colE, grfBank.Rows.Count, colE);
             //rg1.Style = grfBank.Styles["date"];
             //grfCu.Cols[colID].Visible = false;
-            for (int col = 0; col < dt.Columns.Count; ++col)
-            {
-                grfProc.Cols[col + 1].DataType = dt.Columns[col].DataType;
-                //grfProc.Cols[col + 1].Caption = dt.Columns[col].ColumnName;
-                grfProc.Cols[col + 1].Name = dt.Columns[col].ColumnName;
-            }
+            //for (int col = 0; col < dt.Columns.Count; ++col)
+            //{
+            //    grfProc.Cols[col + 1].DataType = dt.Columns[col].DataType;
+            //    //grfProc.Cols[col + 1].Caption = dt.Columns[col].ColumnName;
+            //    grfProc.Cols[col + 1].Name = dt.Columns[col].ColumnName;
+            //}
             int i = 0;
             foreach (DataRow row in dt.Rows)
             {
@@ -633,21 +633,21 @@ namespace clinic_ivf.gui
             grfProc.Cols[colPcNameMale].AllowEditing = false;
             grfProc.Cols[colProceName].AllowEditing = false;
             //grfReq.Cols[coldt].Visible = false;
-            if (grfProc.Rows.Count > 2)
-            {
-                FilterRow fr = new FilterRow(grfProc);
-                grfProc.AllowFiltering = true;
-                grfProc.AfterFilter += GrfProc_AfterFilter;
-            }
+            //if (grfProc.Rows.Count > 2)
+            //{
+            //    FilterRow fr = new FilterRow(grfProc);
+            //    grfProc.AllowFiltering = true;
+            //    grfProc.AfterFilter += GrfProc_AfterFilter;
+            //}
         }
 
         private void GrfProc_AfterFilter(object sender, EventArgs e)
         {
             //throw new NotImplementedException();
-            for (int col = grfProc.Cols.Fixed; col < grfProc.Cols.Count; ++col)
-            {
-                var filter = grfProc.Cols[col].ActiveFilter;
-            }
+            //for (int col = grfProc.Cols.Fixed; col < grfProc.Cols.Count; ++col)
+            //{
+            //    var filter = grfProc.Cols[col].ActiveFilter;
+            //}
         }
 
         private void GrfProc_AfterRowColChange(object sender, RangeEventArgs e)

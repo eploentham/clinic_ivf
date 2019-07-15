@@ -148,7 +148,7 @@ namespace clinic_ivf.gui
             btnResultDay1.MouseMove += BtnResultDay1_MouseMove;
             btnResultDay3.MouseMove += BtnResultDay3_MouseMove;
             btnResultDay5.MouseMove += BtnResultDay5_MouseMove;
-            //btnFinish.Click += BtnFinish_Click;
+            btnSaveImg6Copy.Click += BtnSaveImg6Copy_Click;
 
             setFocusColor();
             initGrf();
@@ -176,6 +176,59 @@ namespace clinic_ivf.gui
                 btnSaveImg5.Enabled = false;
                 btnSaveImg6.Enabled = false;
 
+            }
+        }
+
+        private void BtnSaveImg6Copy_Click(object sender, EventArgs e)
+        {
+            //throw new NotImplementedException();
+            FrmWaiting frmW = new FrmWaiting();
+            frmW.Show();
+
+            try
+            {
+                DataTable dtDay5 = new DataTable();
+                DataTable dtDay6 = new DataTable();
+                dtDay6 = ic.ivfDB.opuEmDevDB.selectByOpuFetId_Day(txtID.Text, objdb.LabOpuEmbryoDevDB.Day1.Day6);
+                foreach (Row row in grfDay6Img.Rows)
+                {
+                    String id = "", filename = "", re = "", noday6 = "", remotefile = "";
+                    id = row[colDay2ImgId] != null ? row[colDay2ImgId].ToString() : "";
+                    
+                    noday6 = row[colDay2ImgNun] != null ? row[colDay2ImgNun].ToString() : "";
+                    int noday61 = 0;
+                    if (!int.TryParse(noday6, out noday61)) continue;
+                    if (id.Equals("")) continue;
+
+                    dtDay5 = ic.ivfDB.opuEmDevDB.selectByOpuFetId_Day(txtID.Text, objdb.LabOpuEmbryoDevDB.Day1.Day5, noday61.ToString());
+                    if(dtDay5.Rows.Count > 0)
+                    {
+                        filename = dtDay5.Rows[0][ic.ivfDB.opuEmDevDB.opuEmDev.path_pic].ToString();
+                        remotefile = filename.Replace("day5", "day6");
+                        re = ic.ivfDB.opuEmDevDB.updatePathPic(id, noday6, remotefile, ic.cStf.staff_id);
+                        long chk = 0;
+                        if (long.TryParse(re, out chk))
+                        {
+                            //ic.savePicOPUtoServer(txtOpuCode.Text, filename, pathfile);
+
+                            MemoryStream ms = null;
+                            ms = ic.ftpC.download(ic.iniC.hostFTP, filename);
+                            if (ms.Length <= 0) return;
+                            ms.Seek(0, SeekOrigin.Begin);
+                            
+                            ic.ftpC.upload(remotefile, ms);
+                        }
+                    }
+                    
+                }
+            }
+            catch(Exception ex)
+            {
+                String err = "";
+            }
+            finally
+            {
+                frmW.Dispose();
             }
         }
 
@@ -2370,6 +2423,11 @@ namespace clinic_ivf.gui
             txtFertiliDead.Enabled = flag;
             //txtFertiliDate.Enabled = flag;
             txtFertili2Pn.Enabled = true;
+
+            btnSaveMatura.Enabled = flag;
+            btnSaveFertili.Enabled = flag;
+            btnSaveSperm.Enabled = flag;
+            btnSaveEmbryoFreezDay1.Enabled = false;
         }
         private void setControl()
         {
@@ -3032,20 +3090,21 @@ namespace clinic_ivf.gui
         }
         private void ContextMenu_grfday2_Cancel(object sender, System.EventArgs e)
         {
-            if (MessageBox.Show("ต้องการ ยกเลิก ", "", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == DialogResult.OK)
-            {
+            //if (MessageBox.Show("ต้องการ ยกเลิก ", "", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == DialogResult.OK)
+            //{
                 String id = grfDay2Img[grfDay2Img.Row, colDay2ImgId].ToString();
-                ic.cStf.staff_id = "";
-                FrmPasswordConfirm frm = new FrmPasswordConfirm(ic);
-                frm.ShowDialog(this);
-                if (!ic.cStf.staff_id.Equals(""))
-                {
+                //ic.cStf.staff_id = "";
+                //FrmPasswordConfirm frm = new FrmPasswordConfirm(ic);
+                //frm.ShowDialog(this);
+                //if (!ic.cStf.staff_id.Equals(""))
+                //{
                     String pathfile = grfDay2Img[grfDay2Img.Row, colDay2PathPic].ToString();
                     String re = ic.ivfDB.opuEmDevDB.updatePathPic(id, "", "", "", ic.user.staff_id);
                     ic.delPicOPUtoServer(txtOpuCode.Text, pathfile);
                     grfDay2Img[grfDay2Img.Row, colDay2PathPic] = "";
-                }
-            }
+                    grfDay2Img[grfDay2Img.Row, colDay2ImgPic] = null;
+                //}
+            //}
         }
         private void GrfDay2Img_DoubleClick(object sender, EventArgs e)
         {
@@ -3241,7 +3300,7 @@ namespace clinic_ivf.gui
                             String[] ext = pathfile.Split('.');
                             if (ext.Length > 1)
                             {
-                                filename = txtOpuCode.Text + "_day2_" + no + "." + ext[ext.Length - 1];
+                                filename = txtOpuCode.Text + "_day3_" + no + "." + ext[ext.Length - 1];
                                 re = ic.ivfDB.opuEmDevDB.updatePathPic(id, no, ic.iniC.folderFTP + "/" + txtOpuCode.Text + "/" + filename, desc, ic.cStf.staff_id);
                                 long chk = 0;
                                 if (long.TryParse(re, out chk))
@@ -3274,19 +3333,21 @@ namespace clinic_ivf.gui
         }
         private void ContextMenu_grfday3_Cancel(object sender, System.EventArgs e)
         {
-            if (MessageBox.Show("ต้องการ ยกเลิก ", "", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == DialogResult.OK)
-            {
+            //if (MessageBox.Show("ต้องการ ยกเลิก ", "", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == DialogResult.OK)
+            //{
                 String id = grfDay3Img[grfDay3Img.Row, colDay2ImgId].ToString();
-                ic.cStf.staff_id = "";
-                FrmPasswordConfirm frm = new FrmPasswordConfirm(ic);
-                frm.ShowDialog(this);
-                if (!ic.cStf.staff_id.Equals(""))
-                {
+                //ic.cStf.staff_id = "";
+                //FrmPasswordConfirm frm = new FrmPasswordConfirm(ic);
+                //frm.ShowDialog(this);
+                //if (!ic.cStf.staff_id.Equals(""))
+                //{
                     String pathfile = grfDay3Img[grfDay3Img.Row, colDay2PathPic].ToString();
                     String re = ic.ivfDB.opuEmDevDB.updatePathPic(id, "", "", "", ic.user.staff_id);
                     ic.delPicOPUtoServer(txtOpuCode.Text, pathfile);
-                }
-            }
+                    grfDay3Img[grfDay3Img.Row, colDay2PathPic] = "";
+                    grfDay3Img[grfDay3Img.Row, colDay2ImgPic] = null;
+            //    }
+            //}
         }
         private void GrfDay3Img_DoubleClick(object sender, EventArgs e)
         {
@@ -3482,7 +3543,7 @@ namespace clinic_ivf.gui
                             String[] ext = pathfile.Split('.');
                             if (ext.Length > 1)
                             {
-                                filename = txtOpuCode.Text + "_day2_" + no + "." + ext[ext.Length - 1];
+                                filename = txtOpuCode.Text + "_day5_" + no + "." + ext[ext.Length - 1];
                                 re = ic.ivfDB.opuEmDevDB.updatePathPic(id, no, ic.iniC.folderFTP + "/" + txtOpuCode.Text + "/" + filename, desc, ic.cStf.staff_id);
                                 long chk = 0;
                                 if (long.TryParse(re, out chk))
@@ -3515,19 +3576,21 @@ namespace clinic_ivf.gui
         }
         private void ContextMenu_grfday5_Cancel(object sender, System.EventArgs e)
         {
-            if (MessageBox.Show("ต้องการ ยกเลิก ", "", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == DialogResult.OK)
-            {
+            //if (MessageBox.Show("ต้องการ ยกเลิก ", "", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == DialogResult.OK)
+            //{
                 String id = grfDay5Img[grfDay5Img.Row, colDay2ImgId].ToString();
-                ic.cStf.staff_id = "";
-                FrmPasswordConfirm frm = new FrmPasswordConfirm(ic);
-                frm.ShowDialog(this);
-                if (!ic.cStf.staff_id.Equals(""))
-                {
+                //ic.cStf.staff_id = "";
+                //FrmPasswordConfirm frm = new FrmPasswordConfirm(ic);
+                //frm.ShowDialog(this);
+                //if (!ic.cStf.staff_id.Equals(""))
+                //{
                     String pathfile = grfDay5Img[grfDay5Img.Row, colDay2PathPic].ToString();
                     String re = ic.ivfDB.opuEmDevDB.updatePathPic(id, "", "", "", ic.user.staff_id);
                     ic.delPicOPUtoServer(txtOpuCode.Text, pathfile);
-                }
-            }
+                    grfDay5Img[grfDay5Img.Row, colDay2PathPic] = "";
+                    grfDay5Img[grfDay5Img.Row, colDay2ImgPic] = null;
+            //    }
+            //}
         }
         private void GrfDay5Img_DoubleClick(object sender, EventArgs e)
         {
@@ -3725,7 +3788,7 @@ namespace clinic_ivf.gui
                             var extension = Path.GetExtension(pathfile);
                             //if (ext.Length > 1)
                             //{
-                            filename = txtOpuCode.Text + "_day2_" + no + extension;
+                            filename = txtOpuCode.Text + "_day6_" + no + extension;
                             re = ic.ivfDB.opuEmDevDB.updatePathPic(id, no, ic.iniC.folderFTP + "/" + txtOpuCode.Text + "/" + filename, desc, ic.cStf.staff_id);
                             long chk = 0;
                             if (long.TryParse(re, out chk))
@@ -3758,19 +3821,21 @@ namespace clinic_ivf.gui
         }
         private void ContextMenu_grfday6_Cancel(object sender, System.EventArgs e)
         {
-            if (MessageBox.Show("ต้องการ ยกเลิก ", "", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == DialogResult.OK)
-            {
+            //if (MessageBox.Show("ต้องการ ยกเลิก ", "", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == DialogResult.OK)
+            //{
                 String id = grfDay6Img[grfDay6Img.Row, colDay2ImgId].ToString();
-                ic.cStf.staff_id = "";
-                FrmPasswordConfirm frm = new FrmPasswordConfirm(ic);
-                frm.ShowDialog(this);
-                if (!ic.cStf.staff_id.Equals(""))
-                {
+                //ic.cStf.staff_id = "";
+                //FrmPasswordConfirm frm = new FrmPasswordConfirm(ic);
+                //frm.ShowDialog(this);
+                //if (!ic.cStf.staff_id.Equals(""))
+                //{
                     String pathfile = grfDay6Img[grfDay6Img.Row, colDay2PathPic].ToString();
                     String re = ic.ivfDB.opuEmDevDB.updatePathPic(id, "", "", "", ic.user.staff_id);
                     ic.delPicOPUtoServer(txtOpuCode.Text, pathfile);
-                }
-            }
+                    grfDay6Img[grfDay6Img.Row, colDay2PathPic] = "";
+                    grfDay6Img[grfDay6Img.Row, colDay2ImgPic] = null;
+            //    }
+            //}
         }
         private void GrfDay6Img_DoubleClick(object sender, EventArgs e)
         {
@@ -4132,7 +4197,7 @@ namespace clinic_ivf.gui
 
             grfDay2.Cols[colDay2Num].Caption = "no";
             grfDay2.Cols[colDay2Desc].Caption = "desc";
-            grfDay2.Cols[colDay2Desc1].Caption = "desc1";
+            grfDay2.Cols[colDay2Desc1].Caption = "st#";
             grfDay2.Cols[colDay2Desc2].Caption = "desc2";
 
             Color color = ColorTranslator.FromHtml(ic.iniC.grfRowColor);
@@ -4201,7 +4266,7 @@ namespace clinic_ivf.gui
 
             grfDay3.Cols[colDay3Num].Caption = "no";
             grfDay3.Cols[colDay3Desc].Caption = "desc";
-            grfDay3.Cols[colDay3Desc1].Caption = "desc1";
+            grfDay3.Cols[colDay3Desc1].Caption = "st#";
             grfDay3.Cols[colDay3Desc2].Caption = "desc2";
 
             Color color = ColorTranslator.FromHtml(ic.iniC.grfRowColor);
@@ -4266,7 +4331,7 @@ namespace clinic_ivf.gui
 
             grfDay5.Cols[colDay5Num].Caption = "no";
             grfDay5.Cols[colDay5Desc].Caption = "desc";
-            grfDay5.Cols[colDay5Desc1].Caption = "desc1";
+            grfDay5.Cols[colDay5Desc1].Caption = "st#";
             grfDay5.Cols[colDay5Desc2].Caption = "desc2";
             grfDay5.Cols[colDay5Desc].AllowSorting = false;
             grfDay5.Cols[colDay5Desc1].AllowSorting = false;
@@ -4336,7 +4401,7 @@ namespace clinic_ivf.gui
 
             grfDay6.Cols[colDay6Num].Caption = "no";
             grfDay6.Cols[colDay6Desc].Caption = "desc";
-            grfDay6.Cols[colDay6Desc1].Caption = "desc1";
+            grfDay6.Cols[colDay6Desc1].Caption = "st#";
             grfDay6.Cols[colDay6Desc2].Caption = "desc2";
             grfDay6.Cols[colDay6Desc].AllowSorting = false;
             grfDay6.Cols[colDay6Desc1].AllowSorting = false;

@@ -998,13 +998,15 @@ namespace clinic_ivf.gui
             txtNameMale.Value = lFormA.name_male;
             txtHnMale.Value = lFormA.hn_male;
 
-            Patient ptt = new Patient();                            // +0005
-            ptt = ic.ivfDB.pttDB.selectByHn(lFormA.hn_female);// +0005
-            txtDobFeMale.Value = ptt.patient_birthday;// +0005
-            ptt = ic.ivfDB.pttDB.selectByHn(lFormA.hn_male);// +0005
-            txtDobMale.Value = ptt.patient_birthday;// +0005
-            ptt = ic.ivfDB.pttDB.selectByHn(lFormA.hn_donor);// +0005
-            txtDonorDob.Value = ptt.patient_birthday;// +0005
+            Patient pttm = new Patient();                            // +0005
+            Patient pttf = new Patient();                            // +0005
+            Patient pttd = new Patient();                            // +0005
+            pttf = ic.ivfDB.pttDB.selectByHn(lFormA.hn_female);// +0005
+            txtDobFeMale.Value = pttf.patient_birthday;// +0005
+            pttm = ic.ivfDB.pttDB.selectByHn(lFormA.hn_male);// +0005
+            txtDobMale.Value = pttm.patient_birthday;// +0005
+            pttd = ic.ivfDB.pttDB.selectByHn(lFormA.hn_donor);// +0005
+            txtDonorDob.Value = pttd.patient_birthday;// +0005
 
             txtHnDonor.Value = lFormA.hn_donor;
             txtNameDonor.Value = lFormA.name_donor;
@@ -1125,7 +1127,27 @@ namespace clinic_ivf.gui
             chkSpermIUI.Checked = lFormA.status_sperm_iui.Equals("1") ? true : false;
             //txtDobFeMale.Value = lFormA.dob_female;
             //txtDobMale.Value = lFormA.dob_male;
-
+            if (!lFormA.dob_female.Equals(pttf.patient_birthday))
+            {
+                if (MessageBox.Show("วัน เดือน ปี เกิด ของ female มีการแก้ไข \n ต้องการแก้ไข วัน เดือน ปี เกิด ให้ ถูกต้อง", "", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                {
+                    String re = ic.ivfDB.lFormaDB.updateDOBFemale(txtID.Text, pttf.patient_birthday);
+                }
+            }
+            if (!lFormA.dob_male.Equals(pttm.patient_birthday))
+            {
+                if (MessageBox.Show("วัน เดือน ปี เกิด ของ Male มีการแก้ไข \n ต้องการแก้ไข วัน เดือน ปี เกิด ให้ ถูกต้อง", "", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                {
+                    String re = ic.ivfDB.lFormaDB.updateDOBMale(txtID.Text, pttm.patient_birthday);
+                }
+            }
+            if (!lFormA.dob_donor.Equals(pttd.patient_birthday))
+            {
+                if (MessageBox.Show("วัน เดือน ปี เกิด ของ Male มีการแก้ไข \n ต้องการแก้ไข วัน เดือน ปี เกิด ให้ ถูกต้อง", "", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                {
+                    String re = ic.ivfDB.lFormaDB.updateDOBDonor(txtID.Text, pttd.patient_birthday);
+                }
+            }
         }
         private void FrmLabOPUReq_Load(object sender, EventArgs e)
         {

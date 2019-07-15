@@ -245,6 +245,28 @@ namespace clinic_ivf.objdb
 
             return re;
         }
+        public String updatePathPic(String id, String num, String filename, String userid)
+        {
+            String re = "";
+            String sql = "";
+            int chk = 0;
+            sql = "Update " + opuEmDev.table + " Set " +                
+                " " + opuEmDev.path_pic + " = '" + filename + "'" +
+                //"," + opuEmDev.opu_embryo_dev_no + " = '" + num + "'" +
+                "," + opuEmDev.user_modi + " = '" + userid + "'" +
+                "," + opuEmDev.date_modi + " = now() " +
+                "Where " + opuEmDev.pkField + "='" + id + "'";
+            try
+            {
+                re = conn.ExecuteNonQuery(conn.conn, sql);
+            }
+            catch (Exception ex)
+            {
+                sql = ex.Message + " " + ex.InnerException;
+            }
+
+            return re;
+        }
         public String updatePathPic(String id, String num, String filename, String desc3, String userid)
         {
             String re = "";
@@ -345,6 +367,36 @@ namespace clinic_ivf.objdb
                 re = dt.Rows[0]["cnt"].ToString();
             }
             return re;
+        }
+        public DataTable selectByOpuFetId_Day(String opufetid, Day1 day1, String no)
+        {
+            DataTable dt = new DataTable();
+            String day = "";
+            if (day1 == Day1.Day2)
+            {
+                day = "2";
+            }
+            else if (day1 == Day1.Day3)
+            {
+                day = "3";
+            }
+            else if (day1 == Day1.Day5)
+            {
+                day = "5";
+            }
+            else if (day1 == Day1.Day6)
+            {
+                day = "6";
+            }
+            String sql = "select opuEmDev.*  " +
+                "From " + opuEmDev.table + " opuEmDev " +
+                " " +
+                "Where opuEmDev." + opuEmDev.active + " ='1' and " + opuEmDev.opu_fet_id + "='" + opufetid + "' and " + opuEmDev.day + "='" + day + "' and " + opuEmDev.opu_embryo_dev_no+"='" + no + "' " +
+                "Order By opuEmDev." + opuEmDev.opu_embryo_dev_id;
+
+            dt = conn.selectData(conn.conn, sql);
+
+            return dt;
         }
         public DataTable selectByOpuFetId_Day(String opufetid, Day1 day1)
         {

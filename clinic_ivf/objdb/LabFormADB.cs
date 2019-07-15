@@ -427,6 +427,63 @@ namespace clinic_ivf.objdb
 
             return re;
         }
+        public String updateDOBDonor(String id, String dobdonor)
+        {
+            String re = "";
+            String sql = "";
+
+            sql = "Update " + lformA.table + " " +
+                //" Set "+lformA.patient_appoint_date_time + "='"+p.patient_appoint_date_time + "' " +
+                "Set " + lformA.dob_donor + "='" + dobdonor + "' " +
+                " Where " + lformA.pkField + " = '" + id + "' ";
+            try
+            {
+                re = conn.ExecuteNonQuery(conn.conn, sql);
+            }
+            catch (Exception ex)
+            {
+                sql = ex.Message + " " + ex.InnerException;
+            }
+            return re;
+        }
+        public String updateDOBMale(String id, String dobmale)
+        {
+            String re = "";
+            String sql = "";
+
+            sql = "Update " + lformA.table + " " +
+                //" Set "+lformA.patient_appoint_date_time + "='"+p.patient_appoint_date_time + "' " +
+                "Set " + lformA.dob_male + "='" + dobmale + "' " +
+                " Where " + lformA.pkField + " = '" + id + "' ";
+            try
+            {
+                re = conn.ExecuteNonQuery(conn.conn, sql);
+            }
+            catch (Exception ex)
+            {
+                sql = ex.Message + " " + ex.InnerException;
+            }
+            return re;
+        }
+        public String updateDOBFemale(String id, String dobfemale)
+        {
+            String re = "";
+            String sql = "";
+
+            sql = "Update " + lformA.table + " " +
+                //" Set "+lformA.patient_appoint_date_time + "='"+p.patient_appoint_date_time + "' " +
+                "Set " + lformA.dob_female + "='" + dobfemale + "' " +
+                " Where " + lformA.pkField + " = '" + id + "' ";
+            try
+            {
+                re = conn.ExecuteNonQuery(conn.conn, sql);
+            }
+            catch (Exception ex)
+            {
+                sql = ex.Message + " " + ex.InnerException;
+            }
+            return re;
+        }
         public String updateReqIdOPU(String id, String reqid)
         {
             String re = "";

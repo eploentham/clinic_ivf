@@ -173,7 +173,56 @@ namespace clinic_ivf.object1
             }
             return;
         }
+        public void upload(string remoteFile, MemoryStream localFile)
+        {
+            try
+            {
+                /* Create an FTP Request */
+                ftpRequest = (FtpWebRequest)FtpWebRequest.Create(host + "/" + remoteFile);
+                /* Log in to the FTP Server with the User Name and Password Provided */
+                ftpRequest.Credentials = new NetworkCredential(user, pass);
+                /* When in doubt, use these options */
+                ftpRequest.UseBinary = true;
+                ftpRequest.UsePassive = ftpUsePassive;
+                ftpRequest.KeepAlive = true;
+                /* Specify the Type of FTP Request */
 
+                ftpRequest.Method = WebRequestMethods.Ftp.UploadFile;
+                /* Establish Return Communication with the FTP Server */
+
+                /* Open a File Stream to Read the File for Upload */
+                localFile.Position = 0;
+                //FileStream localFileStream = new FileStream(localFile, FileMode.Open, FileAccess.Read);
+                Stream localFileStream = localFile;
+                //localFile.WriteTo(localFileStream);
+
+                ftpStream = ftpRequest.GetRequestStream();
+                //localFile.CopyTo(ftpStream);
+                /* Buffer for the Downloaded Data */
+                byte[] byteBuffer = new byte[bufferSize];
+                int bytesSent = localFileStream.Read(byteBuffer, 0, bufferSize);
+                /* Upload the File by Sending the Buffered Data Until the Transfer is Complete */
+                try
+                {
+                    while (bytesSent != 0)
+                    {
+                        ftpStream.Write(byteBuffer, 0, bytesSent);
+                        bytesSent = localFileStream.Read(byteBuffer, 0, bufferSize);
+                    }
+                }
+                catch (Exception ex) { Console.WriteLine(ex.ToString()); }
+                /* Resource Cleanup */
+                localFileStream.Close();
+                ftpStream.Close();
+                ftpRequest = null;
+            }
+            catch (Exception ex)
+            {
+                //String status = ((FtpWebResponse)ex.Response).StatusDescription;
+                Console.WriteLine(ex.ToString());
+            }
+            return;
+        }
         /* Delete File */
         public void delete(string deleteFile)
         {

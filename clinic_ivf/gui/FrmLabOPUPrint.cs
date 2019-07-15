@@ -244,14 +244,14 @@ namespace clinic_ivf.gui
                             st = row["no1_desc3"].ToString();
                             row["no1_desc2"] = "st# " + st;
                             row["no1_desc3"] = row["no1_desc4"].ToString();
-                            //}
+                            //}footer11
                         }
-                        row["footert11"] = opu.remark_day2;
-                        row["footert12"] = opu.remark_day3;
-                        row["footert13"] = opu.remark_day5;
-                        row["footert14"] = opu.remark_day6;
-                        row["footert15"] = "";
-                        row["footert16"] = "";
+                        row["footer11"] = opu.remark_day2;
+                        row["footer12"] = opu.remark_day3;
+                        row["footer13"] = opu.remark_day5;
+                        row["footer14"] = opu.remark_day6;
+                        row["footer15"] = "";
+                        row["footer16"] = "";
                         i++;
                         frmW.pB.Value = i;
                     }
