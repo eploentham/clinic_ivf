@@ -18,6 +18,9 @@ using System.Windows.Forms;
 
 namespace clinic_ivf.gui
 {
+    /*
+     * 62-07-16     0007        Cashier	ลง table BillDetail ไม่ได้เอา bill_id ลงด้วย
+     */
     public partial class FrmCashierAdd : Form
     {
         IvfControl ic;
@@ -410,7 +413,7 @@ namespace clinic_ivf.gui
                 obilld.Comment = "";
                 obilld.bill_group_id = "99";            // form table billgroup
                 obilld.GroupType = "Discount";
-
+                obilld.bill_id = txtBillId.Text;
                 long chk = 0;
                 String re = ic.ivfDB.obildDB.insertBillDetail(obilld, "");
                 if (long.TryParse(re, out chk))
@@ -473,6 +476,7 @@ namespace clinic_ivf.gui
             obilld.GroupType = "OtherService";
             obilld.status = "special";
             obilld.bill_group_id = "102";            // form table billgroup
+            obilld.bill_id = txtBillId.Text;        //  +0007
             ic.ivfDB.obildDB.insertBillDetail(obilld, ic.userId);
             setGrfBillD();
             calTotal();

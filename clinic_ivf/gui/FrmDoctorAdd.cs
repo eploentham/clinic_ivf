@@ -16,6 +16,7 @@ using System.Data;
 using System.Drawing;
 using System.IO;
 using System.Linq;
+using System.Net;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
@@ -30,7 +31,7 @@ namespace clinic_ivf.gui
         C1SuperTooltip stt;
         C1SuperErrorProvider sep;
         C1FlexGrid grfBloodLab, grfSperm, grfEmbryo, grfGenetic, grfSpecial, grfRx, grfRxSet, grfOrder, grfPackage, grfPackageD, grfRxSetD, grfNote, grfpApmAll, grfVs;
-        C1FlexGrid grfEggsd;
+        C1FlexGrid grfEggsd, grfImg, grfPg;
 
         String pttId = "", webcamname = "", vsid = "", flagedit = "", pApmId = "";
         Patient ptt;
@@ -45,6 +46,7 @@ namespace clinic_ivf.gui
         Image imgCorr, imgTran;
         public C1DockingTabPage tab;
 
+        int colImgID = 1, colImgHn = 2, colImgImg = 3, colImgDesc = 4, colImgDesc2 = 5, colImgDesc3 = 6, colImgPathPic = 7, colImgBtn = 8, colImgStatus = 9, colImgDoctor = 10;
         int colBlId = 1, colBlName = 2, colBlQty = 3, colBlPrice = 4, colBlInclude = 5, colBlRemark = 6;
         int colPkgdId = 1, colPkgId = 2, colPkgType = 3, colPkgItmName = 4, colPkgItmId = 5, colPkgQty = 6;
         int colRxdId = 1, colRxName = 2, colRxQty = 3, colRxPrice = 4, colRxInclude = 5, colRxRemark = 6, colRxUsE = 7, colRxUsT = 8, colRxId = 9, colRxItmId = 10;
@@ -54,8 +56,12 @@ namespace clinic_ivf.gui
         int colOrdid = 1, colOrdlpid = 2, colOrdName = 3, colOrdPrice = 4, colOrdQty = 5, colOrdstatus = 6, colOrdrow1 = 7, colOrditmid = 8, colOrdInclude = 9, colOrdAmt = 10, colOrdUsE = 11, colOrdUsT = 12;
         int rowOrder = 0, spHeight = 150;
         int colEggDay = 1, colEggDate = 2, colEggE2 = 3, colEggLH = 4, colEggFSH = 5, colEggProlactin = 6, colEggRt1 = 7, colEggRt2 = 8, colEggLt1 = 9, colEggLt2 = 10, colEggEndo = 11, colEggMedi = 12, colEggId = 13, colEggEdit = 14, colEggMedi2 = 15;
+        int colPgId = 1, colPgFilename = 2;
+        int colHisVsId = 1, colHisVsDate = 2, colHisVsVn = 3;
+
         decimal rat = 0;
         Color color;
+        Boolean flagImg = false;
 
         string documentName;
         string documentPath;
@@ -156,7 +162,372 @@ namespace clinic_ivf.gui
             setControlEggSti();
             setGrfOrder(txtVn.Text);
             initProgressNote();
+            initGrfImg();
+            setGrfImg();
+            initGrfPg();
+            setGrfPg();
         }
+        private void initGrfPg()
+        {
+            grfPg = new C1FlexGrid();
+            grfPg.Font = fEdit;
+            grfPg.Dock = System.Windows.Forms.DockStyle.Fill;
+            grfPg.Location = new System.Drawing.Point(0, 0);
+
+            grfPg.DoubleClick += GrfPg_DoubleClick;
+
+            pnPgView.Controls.Add(grfPg);
+
+            theme1.SetTheme(grfPg, "Office2016Colorful");
+
+        }
+
+        private void GrfPg_DoubleClick(object sender, EventArgs e)
+        {
+            //throw new NotImplementedException();
+            String id = "";
+            id = grfPg[grfPg.Row, colPgId].ToString();
+            id = id.Replace(ic.iniC.folderFTP, "").Replace("/", "").Replace("progressnote", "").Replace(".rtf", "").Replace("_", "").Replace(txtIdOld.Text, "");
+            txtVnProgressNote.Value = id;
+            Thread threadA = new Thread(new ParameterizedThreadStart(ExecuteProgressNote));
+            threadA.Start();
+        }
+        private void ExecuteProgressNote(Object obj)
+        {
+            //Console.WriteLine("Executing parameterless thread!");
+            try
+            {
+                RichTextBoxStreamType fileType = RichTextBoxStreamType.RichText;
+                MemoryStream stream = new MemoryStream();
+                String filePathName = "progressnote" + "_" + txtVnProgressNote.Text + ".rtf";
+                if (File.Exists(filePathName))
+                {
+                    File.Delete(filePathName);
+                    System.Threading.Thread.Sleep(200);
+                }
+                String aaa = ic.iniC.folderFTP + "/" + txtIdOld.Text + "/" + filePathName;
+                //setPic(new Bitmap(ic.ftpC.download(filenamepic)));
+                stream = ic.ftpC.download(aaa);
+                //File file1 = new File();
+                //FileStream fileStream = new FileStream(filePathName, FileMode.Create);
+                //fileStream.CopyTo(stream);
+                //using (FileStream fileStream1 = File.Create(filePathName))
+                //using (StreamWriter writer = new StreamWriter(fileStream1))
+                //{
+                //    //writer.w("Example 1 written");
+                //}
+                if (stream.Length > 0)
+                {
+                    stream.Seek(0, SeekOrigin.Begin);
+                    using (FileStream file = new FileStream(filePathName, FileMode.Create, FileAccess.Write))
+                    {
+                        //byte[] bytes = new byte[stream.Length];
+                        //file.Write(bytes, 0, (int)stream.Length);
+                        stream.CopyTo(file);
+                        file.Flush();
+                        //stream.Write(bytes, 0, (int)file.Length);
+                    }
+                    //richTextBox1.LoadFile(filePathName, fileType);
+                    if (File.Exists(filePathName))
+                    {
+                        richTextBox1.Invoke((Action)delegate
+                        {
+                            richTextBox1.LoadFile(filePathName, fileType);
+                        });
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                String aaa = "";
+            }
+        }
+        private void setGrfPg()
+        {
+            grfPg.Clear();
+            grfPg.DataSource = null;
+            grfPg.Rows.Count = 1;
+            grfPg.Cols.Count = 3;
+
+            grfPg.Cols[colPgId].Width = 250;
+            grfPg.Cols[colPgFilename].Width = 300;
+
+            grfPg.ShowCursor = true;
+            //grdFlex.Cols[colID].Caption = "no";
+            //grfDept.Cols[colCode].Caption = "รหัส";
+
+            grfPg.Cols[colPgFilename].Caption = "Desc1";
+
+
+            Color color = ColorTranslator.FromHtml(ic.iniC.grfRowColor);
+            //CellRange rg1 = grfBank.GetCellRange(1, colE, grfBank.Rows.Count, colE);
+            //rg1.Style = grfBank.Styles["date"];
+            //grfCu.Cols[colID].Visible = false;
+            if (txtPttId.Text.Equals(""))
+                return;
+
+
+            Thread pump = new Thread(() =>
+            {
+                Thread.CurrentThread.IsBackground = true;
+
+                FtpWebRequest ftpRequest = null;
+                FtpWebResponse ftpResponse = null;
+                Stream ftpStream = null;
+                int bufferSize = 2048;
+                MemoryStream stream = new MemoryStream();
+                string host = null;
+                string user = null;
+                string pass = null;     //iniC.hostFTP, iniC.userFTP, iniC.passFTP
+                host = ic.iniC.hostFTP; user = ic.iniC.userFTP; pass = ic.iniC.passFTP;
+                try
+                {
+                    //String aaa = ic.iniC.folderFTP + "/" + txtIdOld.Text + "/" + filePathName;
+                    ftpRequest = (FtpWebRequest)FtpWebRequest.Create(host + "/" + ic.iniC.folderFTP + "/" + txtIdOld.Text);
+                    ftpRequest.Credentials = new NetworkCredential(user, pass);
+                    ftpRequest.UseBinary = true;
+                    //ftpRequest.UsePassive = false;
+                    ftpRequest.UsePassive = ic.ftpUsePassive;
+                    ftpRequest.KeepAlive = true;
+                    ftpRequest.Method = WebRequestMethods.Ftp.ListDirectory;
+                    ftpResponse = (FtpWebResponse)ftpRequest.GetResponse();
+                    //ftpStream = ftpResponse.GetResponseStream();
+                    List<string> filestxt = new List<string>();
+                    StreamReader streamReader = null;
+                    try
+                    {
+                        streamReader = new StreamReader(ftpResponse.GetResponseStream());
+                        string line = streamReader.ReadLine();
+                        while (!string.IsNullOrEmpty(line))
+                        {
+                            if (line.Contains(".rtf"))
+                            {
+                                //MessageBox.Show(line);
+                                filestxt.Add(line);
+                                line = streamReader.ReadLine();
+                            }
+                            else
+                            {
+                                line = streamReader.ReadLine();
+                            }
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine(ex.ToString());
+                        MessageBox.Show("setGrfPg 1 " + ex.Message + "\n ", "host " + ic.iniC.hostFTP + " user " + user + " pas  " + pass);
+                    }
+                    finally
+                    {
+                        streamReader.Close();
+                    }
+                    //ftpStream.Close();
+                    ftpResponse.Close();
+                    ftpRequest = null;
+                    foreach (String aaa in filestxt)
+                    {
+                        Row row = grfPg.Rows.Add();
+                        row[colPgId] = aaa;
+                        row[colPgFilename] = aaa.Replace(txtIdOld.Text, "").Replace("/", "");
+                    }
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.ToString());
+                    MessageBox.Show("setGrfPg 2 " + ex.Message + "\n ", "host " + ic.iniC.hostFTP + " user " + user + " pas  " + pass);
+                }
+            });
+            pump.Start();
+            //pump.Join();
+            //grfImg.AutoSizeCols();
+            //grfImg.AutoSizeRows();
+
+            grfPg.Cols[colPgId].Visible = false;
+            //grfImg.Cols[colPathPic].Visible = false;
+            grfPg.Cols[colPgFilename].AllowEditing = false;
+
+            theme1.SetTheme(grfPg, "Office2016Colorful");
+
+        }
+        private void initGrfImg()
+        {
+            grfImg = new C1FlexGrid();
+            grfImg.Font = fEdit;
+            grfImg.Dock = System.Windows.Forms.DockStyle.Fill;
+            grfImg.Location = new System.Drawing.Point(0, 0);
+
+            grfImg.DoubleClick += GrfImg_DoubleClick;
+
+            pnHistoryScan.Controls.Add(grfImg);
+
+            theme1.SetTheme(grfImg, "Office2016Colorful");
+
+        }
+        private void setGrfImg()
+        {
+            grfImg.Clear();
+            grfImg.DataSource = null;
+            grfImg.Rows.Count = 2;
+            grfImg.Cols.Count = 10;
+
+            Button btn = new Button();
+            btn.BackColor = Color.Gray;
+
+            grfImg.Cols[colImgBtn].Editor = btn;
+            //grfImg.Cols[colImg].Editor = img;
+
+            grfImg.Cols[colImgHn].Width = 250;
+            grfImg.Cols[colImgImg].Width = 100;
+            grfImg.Cols[colImgDesc].Width = 100;
+            grfImg.Cols[colImgDesc2].Width = 100;
+            grfImg.Cols[colImgDesc3].Width = 100;
+            grfImg.Cols[colImgBtn].Width = 50;
+            grfImg.Cols[colImgPathPic].Width = 100;
+
+            grfImg.ShowCursor = true;
+            //grdFlex.Cols[colID].Caption = "no";
+            //grfDept.Cols[colCode].Caption = "รหัส";
+
+            grfImg.Cols[colImgHn].Caption = "HN";
+            grfImg.Cols[colImgDesc].Caption = "Desc1";
+            grfImg.Cols[colImgDesc2].Caption = "Desc2";
+            grfImg.Cols[colImgDesc3].Caption = "Desc3";
+            grfImg.Cols[colImgBtn].Caption = "send";
+
+            //Hashtable ht = new Hashtable();
+            //foreach (DataRow dr in dt.Rows)
+            //{
+            //    ht.Add(dr["CategoryID"], LoadImage(dr["Picture"] as byte[]));
+            //}
+            //grfImg.Cols[colImg].ImageMap = ht;
+            //grfImg.Cols[colImg].ImageAndText = false;
+
+            //ContextMenu menuGw = new ContextMenu();
+            //menuGw.MenuItems.Add("&แก้ไข Patient", new EventHandler(ContextMenu_edit));
+            //grfImg.ContextMenu = menuGw;
+
+            Color color = ColorTranslator.FromHtml(ic.iniC.grfRowColor);
+            //CellRange rg1 = grfBank.GetCellRange(1, colE, grfBank.Rows.Count, colE);
+            //rg1.Style = grfBank.Styles["date"];
+            //grfCu.Cols[colID].Visible = false;
+            if (txtPttId.Text.Equals(""))
+                return;
+            DataTable dt = new DataTable();
+            dt = ic.ivfDB.pttImgDB.selectByPttIDDept(txtPttId.Text, "1090000001");
+            int i = 0;
+            foreach (DataRow row in dt.Rows)
+            {
+                i++;
+                Row row1 = grfImg.Rows.Add();
+                row1[colImgID] = row[ic.ivfDB.pttImgDB.pttI.patient_image_id].ToString();
+                row1[colImgDesc] = row[ic.ivfDB.pttImgDB.pttI.desc1].ToString();
+                row1[colImgPathPic] = row[ic.ivfDB.pttImgDB.pttI.image_path].ToString();
+                row1[colImgStatus] = row[ic.ivfDB.pttImgDB.pttI.status_image].ToString();
+                String statusdoc = "";
+                statusdoc = row[ic.ivfDB.pttImgDB.pttI.status_document].ToString();
+                grfImg[i, 0] = i;
+                if (row[ic.ivfDB.pttImgDB.pttI.image_path] != null && !row[ic.ivfDB.pttImgDB.pttI.image_path].ToString().Equals(""))
+                {
+                    int ii = i;
+                    Thread pump = new Thread(() =>
+                    {
+                        Thread.CurrentThread.IsBackground = true;
+                        Image loadedImage = null, resizedImage;
+                        String aaa = row[ic.ivfDB.pttImgDB.pttI.image_path].ToString();
+                        FtpWebRequest ftpRequest = null;
+                        FtpWebResponse ftpResponse = null;
+                        Stream ftpStream = null;
+                        int bufferSize = 2048;
+                        MemoryStream stream = new MemoryStream();
+                        string host = null;
+                        string user = null;
+                        string pass = null;     //iniC.hostFTP, iniC.userFTP, iniC.passFTP
+                        host = ic.iniC.hostFTP; user = ic.iniC.userFTP; pass = ic.iniC.passFTP;
+                        try
+                        {
+                            ftpRequest = (FtpWebRequest)FtpWebRequest.Create(host + "/" + aaa);
+                            ftpRequest.Credentials = new NetworkCredential(user, pass);
+                            ftpRequest.UseBinary = true;
+                            //ftpRequest.UsePassive = false;
+                            ftpRequest.UsePassive = ic.ftpUsePassive;
+                            ftpRequest.KeepAlive = true;
+                            ftpRequest.Method = WebRequestMethods.Ftp.DownloadFile;
+                            ftpResponse = (FtpWebResponse)ftpRequest.GetResponse();
+                            ftpStream = ftpResponse.GetResponseStream();
+                            byte[] byteBuffer = new byte[bufferSize];
+                            int bytesRead = ftpStream.Read(byteBuffer, 0, bufferSize);
+                            try
+                            {
+                                while (bytesRead > 0)
+                                {
+                                    stream.Write(byteBuffer, 0, bytesRead);
+                                    bytesRead = ftpStream.Read(byteBuffer, 0, bufferSize);
+                                }
+                            }
+                            catch (Exception ex)
+                            {
+                                Console.WriteLine(ex.ToString());
+                                MessageBox.Show("setGrfImgPatient 1 " + ex.Message + "\n " + aaa, "host " + ic.iniC.hostFTP + " user " + user + " pas  " + pass);
+                            }
+                            if (statusdoc.Equals("1"))
+                            {
+                                loadedImage = new Bitmap(stream);
+                            }
+                            ftpStream.Close();
+                            ftpResponse.Close();
+                            ftpRequest = null;
+                        }
+                        catch (Exception ex)
+                        {
+                            Console.WriteLine(ex.ToString());
+                            MessageBox.Show("setGrfImgPatient 2 " + ex.Message + "\n " + aaa, "host " + ic.iniC.hostFTP + " user " + user + " pas  " + pass);
+                        }
+                        //grfImg.Cols[colImg].ImageAndText = true;
+                        if (loadedImage != null)
+                        {
+                            int originalWidth = loadedImage.Width;
+                            int newWidth = 180;
+                            resizedImage = loadedImage.GetThumbnailImage(newWidth, (newWidth * loadedImage.Height) / originalWidth, null, IntPtr.Zero);
+                            Column col = grfImg.Cols[colImgImg];
+                            col.DataType = typeof(Image);
+                            row1[colImgImg] = resizedImage;
+                            flagImg = true;
+                            //grfImg.AutoSizeCols();
+                            //grfImg.AutoSizeRows();
+                        }
+                    });
+                    pump.Start();
+                    //pump.Join();
+                    //grfImg.AutoSizeCols();
+                    //grfImg.AutoSizeRows();
+                }
+                //if (i % 2 == 0)
+                //grfPtt.Rows[i].StyleNew.BackColor = color;
+            }
+            grfImg.Cols[colImgID].Visible = false;
+            //grfImg.Cols[colPathPic].Visible = false;
+            grfImg.Cols[colImgImg].AllowEditing = false;
+            //grfImg.AutoSizeCols();
+            grfImg.AutoSizeRows();
+            theme1.SetTheme(grfImg, "Office2016Colorful");
+
+        }
+        private void GrfImg_DoubleClick(object sender, EventArgs e)
+        {
+            //throw new NotImplementedException();
+            if (grfImg.Row < 0) return;
+            if (grfImg.Col == colImgImg)
+            {
+                //MessageBox.Show("a "+grfImg[grfImg.Row, colImg].ToString(), "");
+                int row = 0;
+                //int.TryParse(grfImg[grfImg.Row, colImg].ToString(), out row);
+                int.TryParse(grfImg.Row.ToString(), out row);
+                //row *= 4;
+                FrmShowImage frm = new FrmShowImage(ic, grfImg[row, colImgID] != null ? grfImg[row, colImgID].ToString() : "", txtIdOld.Text, grfImg[row, colImgPathPic] != null ? grfImg[row, colImgPathPic].ToString() : "", FrmShowImage.statusModule.Patient);
+                frm.ShowDialog(this);
+            }
+        }
+
         private void RedoButton_Click(object sender, EventArgs e)
         {
             //throw new NotImplementedException();

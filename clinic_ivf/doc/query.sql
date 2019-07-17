@@ -1351,3 +1351,6 @@ ALTER TABLE ivf_101_donor.billheader AUTO_INCREMENT = 2390000000;
 
 ALTER TABLE `ivf_101`.`b_company` 
 ADD COLUMN `month_curr_cashier` VARCHAR(45) NULL AFTER `receipt_cover_doc`;
+
+
+ALTER TABLE ivf_101.lab_t_result AUTO_INCREMENT = 2490000000;

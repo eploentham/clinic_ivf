@@ -603,8 +603,7 @@
             this.label117 = new System.Windows.Forms.Label();
             this.tabPg = new C1.Win.C1Command.C1DockingTabPage();
             this.pnProgressNote = new System.Windows.Forms.Panel();
-            this.panel27 = new System.Windows.Forms.Panel();
-            this.pnPg = new System.Windows.Forms.Panel();
+            this.pnPgAdd = new System.Windows.Forms.Panel();
             this.richTextBox1 = new System.Windows.Forms.RichTextBox();
             this.c1Ribbon1 = new C1.Win.C1Ribbon.C1Ribbon();
             this.ribbonApplicationMenu1 = new C1.Win.C1Ribbon.RibbonApplicationMenu();
@@ -660,6 +659,7 @@
             this.ribbonGroup1 = new C1.Win.C1Ribbon.RibbonGroup();
             this.rbPgPrint = new C1.Win.C1Ribbon.RibbonButton();
             this.ribbonTopToolBar1 = new C1.Win.C1Ribbon.RibbonTopToolBar();
+            this.pnPgView = new System.Windows.Forms.Panel();
             this.tabLabFormA = new C1.Win.C1Command.C1DockingTabPage();
             this.pnLabFormA = new System.Windows.Forms.Panel();
             this.tabOutLab = new C1.Win.C1Command.C1DockingTabPage();
@@ -703,6 +703,7 @@
             this.label94 = new System.Windows.Forms.Label();
             this.c1SplitterPanel4 = new C1.Win.C1SplitContainer.C1SplitterPanel();
             this.c1SplitterPanel5 = new C1.Win.C1SplitContainer.C1SplitterPanel();
+            this.txtVnProgressNote = new C1.Win.C1Input.C1TextBox();
             this.sB.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.theme1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.sC)).BeginInit();
@@ -1070,7 +1071,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.cboEggStiBhcg)).BeginInit();
             this.tabPg.SuspendLayout();
             this.pnProgressNote.SuspendLayout();
-            this.pnPg.SuspendLayout();
+            this.pnPgAdd.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.c1Ribbon1)).BeginInit();
             this.tabLabFormA.SuspendLayout();
             this.tabOutLab.SuspendLayout();
@@ -1099,6 +1100,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.btnSave)).BeginInit();
             this.c1SplitterPanel4.SuspendLayout();
             this.c1SplitterPanel5.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtVnProgressNote)).BeginInit();
             this.SuspendLayout();
             // 
             // sB
@@ -1188,6 +1190,7 @@
             // pnPatient
             // 
             this.pnPatient.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.pnPatient.Controls.Add(this.txtVnProgressNote);
             this.pnPatient.Controls.Add(this.txtVnShow);
             this.pnPatient.Controls.Add(this.cboAllergyDesc);
             this.pnPatient.Controls.Add(this.txtPttId);
@@ -9987,8 +9990,8 @@
             // pnProgressNote
             // 
             this.pnProgressNote.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.pnProgressNote.Controls.Add(this.panel27);
-            this.pnProgressNote.Controls.Add(this.pnPg);
+            this.pnProgressNote.Controls.Add(this.pnPgAdd);
+            this.pnProgressNote.Controls.Add(this.pnPgView);
             this.pnProgressNote.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnProgressNote.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
             this.pnProgressNote.Location = new System.Drawing.Point(0, 0);
@@ -9997,36 +10000,25 @@
             this.pnProgressNote.TabIndex = 1;
             this.theme1.SetTheme(this.pnProgressNote, "(default)");
             // 
-            // panel27
+            // pnPgAdd
             // 
-            this.panel27.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.panel27.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel27.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.panel27.Location = new System.Drawing.Point(852, 0);
-            this.panel27.Name = "panel27";
-            this.panel27.Size = new System.Drawing.Size(733, 665);
-            this.panel27.TabIndex = 1;
-            this.theme1.SetTheme(this.panel27, "(default)");
-            // 
-            // pnPg
-            // 
-            this.pnPg.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.pnPg.Controls.Add(this.richTextBox1);
-            this.pnPg.Controls.Add(this.c1Ribbon1);
-            this.pnPg.Dock = System.Windows.Forms.DockStyle.Left;
-            this.pnPg.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.pnPg.Location = new System.Drawing.Point(0, 0);
-            this.pnPg.Name = "pnPg";
-            this.pnPg.Size = new System.Drawing.Size(852, 665);
-            this.pnPg.TabIndex = 0;
-            this.theme1.SetTheme(this.pnPg, "(default)");
+            this.pnPgAdd.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.pnPgAdd.Controls.Add(this.richTextBox1);
+            this.pnPgAdd.Controls.Add(this.c1Ribbon1);
+            this.pnPgAdd.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pnPgAdd.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.pnPgAdd.Location = new System.Drawing.Point(679, 0);
+            this.pnPgAdd.Name = "pnPgAdd";
+            this.pnPgAdd.Size = new System.Drawing.Size(906, 665);
+            this.pnPgAdd.TabIndex = 1;
+            this.theme1.SetTheme(this.pnPgAdd, "(default)");
             // 
             // richTextBox1
             // 
             this.richTextBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.richTextBox1.Location = new System.Drawing.Point(0, 143);
+            this.richTextBox1.Location = new System.Drawing.Point(0, 146);
             this.richTextBox1.Name = "richTextBox1";
-            this.richTextBox1.Size = new System.Drawing.Size(852, 522);
+            this.richTextBox1.Size = new System.Drawing.Size(906, 519);
             this.richTextBox1.TabIndex = 1;
             this.richTextBox1.Text = "";
             // 
@@ -10041,7 +10033,7 @@
             this.c1Ribbon1.QatHolder = this.ribbonQat1;
             this.c1Ribbon1.QatItemsHolder.Add(this.UndoButton);
             this.c1Ribbon1.QatItemsHolder.Add(this.RedoButton);
-            this.c1Ribbon1.Size = new System.Drawing.Size(852, 143);
+            this.c1Ribbon1.Size = new System.Drawing.Size(906, 146);
             this.c1Ribbon1.Tabs.Add(this.HomeTab);
             this.c1Ribbon1.Tabs.Add(this.ViewTab);
             this.c1Ribbon1.Tabs.Add(this.ribbonTab1);
@@ -10406,6 +10398,17 @@
             // ribbonTopToolBar1
             // 
             this.ribbonTopToolBar1.Name = "ribbonTopToolBar1";
+            // 
+            // pnPgView
+            // 
+            this.pnPgView.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.pnPgView.Dock = System.Windows.Forms.DockStyle.Left;
+            this.pnPgView.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.pnPgView.Location = new System.Drawing.Point(0, 0);
+            this.pnPgView.Name = "pnPgView";
+            this.pnPgView.Size = new System.Drawing.Size(679, 665);
+            this.pnPgView.TabIndex = 0;
+            this.theme1.SetTheme(this.pnPgView, "(default)");
             // 
             // tabLabFormA
             // 
@@ -10961,6 +10964,20 @@
             this.c1SplitterPanel5.TabIndex = 1;
             this.c1SplitterPanel5.Text = "Panel 2";
             // 
+            // txtVnProgressNote
+            // 
+            this.txtVnProgressNote.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtVnProgressNote.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
+            this.txtVnProgressNote.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.txtVnProgressNote.Location = new System.Drawing.Point(867, 30);
+            this.txtVnProgressNote.Name = "txtVnProgressNote";
+            this.txtVnProgressNote.Size = new System.Drawing.Size(30, 20);
+            this.txtVnProgressNote.TabIndex = 967;
+            this.txtVnProgressNote.Tag = null;
+            this.theme1.SetTheme(this.txtVnProgressNote, "(default)");
+            this.txtVnProgressNote.Visible = false;
+            this.txtVnProgressNote.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            // 
             // FrmNurseAdd2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -11396,8 +11413,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.cboEggStiBhcg)).EndInit();
             this.tabPg.ResumeLayout(false);
             this.pnProgressNote.ResumeLayout(false);
-            this.pnPg.ResumeLayout(false);
-            this.pnPg.PerformLayout();
+            this.pnPgAdd.ResumeLayout(false);
+            this.pnPgAdd.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.c1Ribbon1)).EndInit();
             this.tabLabFormA.ResumeLayout(false);
             this.tabOutLab.ResumeLayout(false);
@@ -11426,6 +11443,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.btnSave)).EndInit();
             this.c1SplitterPanel4.ResumeLayout(false);
             this.c1SplitterPanel5.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.txtVnProgressNote)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -12014,7 +12032,7 @@
         private C1.Win.C1Input.C1TextBox txtEggStiDay;
         private System.Windows.Forms.Label label85;
         private C1.Win.C1Command.C1DockingTabPage tabPg;
-        private System.Windows.Forms.Panel pnPg;
+        private System.Windows.Forms.Panel pnPgView;
         private System.Windows.Forms.RichTextBox richTextBox1;
         private C1.Win.C1Ribbon.C1Ribbon c1Ribbon1;
         private C1.Win.C1Ribbon.RibbonApplicationMenu ribbonApplicationMenu1;
@@ -12068,7 +12086,7 @@
         private C1.Win.C1Ribbon.RibbonButton NormalSizeButton;
         private C1.Win.C1Ribbon.RibbonTopToolBar ribbonTopToolBar1;
         private System.Windows.Forms.Panel pnProgressNote;
-        private System.Windows.Forms.Panel panel27;
+        private System.Windows.Forms.Panel pnPgAdd;
         private C1.Win.C1Ribbon.RibbonTab ribbonTab1;
         private C1.Win.C1Ribbon.RibbonGroup ribbonGroup1;
         private C1.Win.C1Ribbon.RibbonButton rbPgPrint;
@@ -12157,5 +12175,6 @@
         private System.Windows.Forms.Panel panel46;
         private C1.Win.C1Command.C1DockingTabPage tabHistoryScan;
         private System.Windows.Forms.Panel pnHistoryScan;
+        private C1.Win.C1Input.C1TextBox txtVnProgressNote;
     }
 }

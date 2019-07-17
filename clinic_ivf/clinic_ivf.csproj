@@ -597,6 +597,7 @@
     <Compile Include="objdb\EggStiDayDB.cs" />
     <Compile Include="objdb\EggStiDB.cs" />
     <Compile Include="objdb\LabOrderGroupDB.cs" />
+    <Compile Include="objdb\LabResultDB.cs" />
     <Compile Include="objdb\LabSpermDB.cs" />
     <Compile Include="objdb\LisDB.cs" />
     <Compile Include="objdb\NoteDB.cs" />
@@ -679,6 +680,7 @@
     <Compile Include="object1\FilterRow1.cs" />
     <Compile Include="object1\FilterRowUnBound.cs" />
     <Compile Include="object1\LabOrderGroup.cs" />
+    <Compile Include="object1\LabResult.cs" />
     <Compile Include="object1\LabSperm.cs" />
     <Compile Include="object1\Lis.cs" />
     <Compile Include="object1\LISCommunicationManager.cs" />

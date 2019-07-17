@@ -48,6 +48,7 @@
             this.menuLabSperm = new System.Windows.Forms.ToolStripMenuItem();
             this.ปอนSpermFreexingToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuTestForm = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuLabBlood = new System.Windows.Forms.ToolStripMenuItem();
             this.menuPharmacy = new System.Windows.Forms.ToolStripMenuItem();
             this.menuDrugPatient = new System.Windows.Forms.ToolStripMenuItem();
             this.menuCashier = new System.Windows.Forms.ToolStripMenuItem();
@@ -88,7 +89,6 @@
             this.tC1 = new C1.Win.C1Command.C1DockingTab();
             this.PageS = new C1.Win.C1Command.C1DockingTabPage();
             this.theme1 = new C1.Win.C1Themes.C1ThemeController();
-            this.menuLabBlood = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tCC1)).BeginInit();
             this.tCC1.SuspendLayout();
@@ -122,7 +122,7 @@
             // 
             this.menuExit.Image = global::clinic_ivf.Properties.Resources.login24;
             this.menuExit.Name = "menuExit";
-            this.menuExit.Size = new System.Drawing.Size(53, 20);
+            this.menuExit.Size = new System.Drawing.Size(54, 20);
             this.menuExit.Text = "Exit";
             // 
             // menuRecept
@@ -169,6 +169,7 @@
             this.menuReqLab.Name = "menuReqLab";
             this.menuReqLab.Size = new System.Drawing.Size(182, 22);
             this.menuReqLab.Text = "Request Lab";
+            this.menuReqLab.Visible = false;
             // 
             // menuNurseDefault
             // 
@@ -188,13 +189,13 @@
             // menuReqOR
             // 
             this.menuReqOR.Name = "menuReqOR";
-            this.menuReqOR.Size = new System.Drawing.Size(212, 22);
+            this.menuReqOR.Size = new System.Drawing.Size(213, 22);
             this.menuReqOR.Text = "Request OR";
             // 
             // menuOrScreen
             // 
             this.menuOrScreen.Name = "menuOrScreen";
-            this.menuOrScreen.Size = new System.Drawing.Size(212, 22);
+            this.menuOrScreen.Size = new System.Drawing.Size(213, 22);
             this.menuOrScreen.Text = "Examination Room Screen";
             // 
             // menuReqLabFormA
@@ -220,41 +221,47 @@
             // menuLabAccept
             // 
             this.menuLabAccept.Name = "menuLabAccept";
-            this.menuLabAccept.Size = new System.Drawing.Size(180, 22);
+            this.menuLabAccept.Size = new System.Drawing.Size(175, 22);
             this.menuLabAccept.Text = "Accept Lab";
             this.menuLabAccept.Visible = false;
             // 
             // menuLabOpu
             // 
             this.menuLabOpu.Name = "menuLabOpu";
-            this.menuLabOpu.Size = new System.Drawing.Size(180, 22);
+            this.menuLabOpu.Size = new System.Drawing.Size(175, 22);
             this.menuLabOpu.Text = "ป้อน OPU";
             // 
             // menuLabFet
             // 
             this.menuLabFet.Name = "menuLabFet";
-            this.menuLabFet.Size = new System.Drawing.Size(180, 22);
+            this.menuLabFet.Size = new System.Drawing.Size(175, 22);
             this.menuLabFet.Text = "ป้อน FET";
             // 
             // menuLabSperm
             // 
             this.menuLabSperm.Name = "menuLabSperm";
-            this.menuLabSperm.Size = new System.Drawing.Size(180, 22);
+            this.menuLabSperm.Size = new System.Drawing.Size(175, 22);
             this.menuLabSperm.Text = "ป้อน Lab Sperm";
             // 
             // ปอนSpermFreexingToolStripMenuItem
             // 
             this.ปอนSpermFreexingToolStripMenuItem.Name = "ปอนSpermFreexingToolStripMenuItem";
-            this.ปอนSpermFreexingToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.ปอนSpermFreexingToolStripMenuItem.Size = new System.Drawing.Size(175, 22);
             this.ปอนSpermFreexingToolStripMenuItem.Text = "ป้อนSperm Freezing";
             this.ปอนSpermFreexingToolStripMenuItem.Visible = false;
             // 
             // menuTestForm
             // 
             this.menuTestForm.Name = "menuTestForm";
-            this.menuTestForm.Size = new System.Drawing.Size(180, 22);
+            this.menuTestForm.Size = new System.Drawing.Size(175, 22);
             this.menuTestForm.Text = "Test Form";
             this.menuTestForm.Visible = false;
+            // 
+            // menuLabBlood
+            // 
+            this.menuLabBlood.Name = "menuLabBlood";
+            this.menuLabBlood.Size = new System.Drawing.Size(175, 22);
+            this.menuLabBlood.Text = "ป้อน Blood Lab";
             // 
             // menuPharmacy
             // 
@@ -554,12 +561,6 @@
             // theme1
             // 
             this.theme1.Theme = "BeigeOne";
-            // 
-            // menuLabBlood
-            // 
-            this.menuLabBlood.Name = "menuLabBlood";
-            this.menuLabBlood.Size = new System.Drawing.Size(180, 22);
-            this.menuLabBlood.Text = "ป้อน Blood Lab";
             // 
             // MainMenu
             // 

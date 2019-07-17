@@ -50,6 +50,9 @@ namespace clinic_ivf.gui
             ic.setCboDay(cboFetDay, "");
             ic.setCboDay(cboFet1Day, "");
             txtFormADate.Value = DateTime.Now.Year + "-" + DateTime.Now.ToString("MM-dd");
+            chkOPUActive.Checked = false;
+            chkOPUActiveWait.Checked = false;
+            chkOPUUnActive.Checked = false;
             setControl();
 
             btnSave.Click += BtnSave_Click;
@@ -477,6 +480,13 @@ namespace clinic_ivf.gui
 
         private void setLabFormA()
         {
+            // ไม่ได้ ตรวจ OPU
+            if(txtOPUDate.Text.Equals("") && !chkFreshSprem.Checked && !chkFrozenSperm.Checked & !chkEmbryoFreezing.Checked && chkEmbryoTranfer.Checked)
+            {
+                chkOPUActive.Checked = false;
+                chkOPUActiveWait.Checked = false;
+                chkOPUUnActive.Checked = false;
+            }
             lFormA.form_a_id = txtID.Text;
             if (lFormA.form_a_id.Equals(""))
             {
@@ -566,7 +576,7 @@ namespace clinic_ivf.gui
             lFormA.staff_req_id = txtStfConfirmID.Text;
             lFormA.status_sperm_iui = chkSpermIUI.Checked ? "1" : "0";
             lFormA.status_sperm_pesa = chkSememPESA.Checked ? "1" : "0";
-            //lFormA.embryo_freezing_day = chkSememPESA.Checked ? "1" : "0";
+            //lFormA.status_opu_active = chkSememPESA.Checked ? "1" : "0";
         }
         private void BtnSave_Click(object sender, EventArgs e)
         {
@@ -1074,9 +1084,7 @@ namespace clinic_ivf.gui
             ic.setC1Combo(cboDoctor, lFormA.doctor_id);
             txtFormADate.Value = lFormA.form_a_date;
             cboRemark.Value = lFormA.remark;
-
             
-
             chkYselet.Checked = lFormA.y_selection.Equals("1") ? true : false;
             chkXselet.Checked = lFormA.x_selection.Equals("1") ? true : false;
             chkWaitDay1.Checked = lFormA.status_wait_confirm_day1.Equals("1") ? true : false;
@@ -1084,9 +1092,13 @@ namespace clinic_ivf.gui
             chkConfirmOpuDate.Checked = lFormA.status_wait_confirm_opu_date.Equals("2") ? true : false;
             txtOPUTime.Value = lFormA.opu_time;
 
+            chkOPUActive.Checked = false;
+            chkOPUActiveWait.Checked = false;
+            chkOPUUnActive.Checked = false;
             chkOPUActive.Checked = lFormA.status_opu_active.Equals("1") ? true : false;
             chkOPUUnActive.Checked = lFormA.status_opu_active.Equals("3") ? true : false;
             chkOPUActiveWait.Checked = lFormA.status_opu_active.Equals("2") ? true : false;
+
             cboOPUWaitRemark.Value = lFormA.opu_wait_remark;
             txtOPURemark.Value = lFormA.opu_remark;
             txtFETRemark.Value = lFormA.fet_remark;
@@ -1127,27 +1139,27 @@ namespace clinic_ivf.gui
             chkSpermIUI.Checked = lFormA.status_sperm_iui.Equals("1") ? true : false;
             //txtDobFeMale.Value = lFormA.dob_female;
             //txtDobMale.Value = lFormA.dob_male;
-            if (!lFormA.dob_female.Equals(pttf.patient_birthday))
+            if (!lFormA.dob_female.Equals(pttf.patient_birthday))                            // +0005
             {
-                if (MessageBox.Show("วัน เดือน ปี เกิด ของ female มีการแก้ไข \n ต้องการแก้ไข วัน เดือน ปี เกิด ให้ ถูกต้อง", "", MessageBoxButtons.YesNo) == DialogResult.Yes)
-                {
-                    String re = ic.ivfDB.lFormaDB.updateDOBFemale(txtID.Text, pttf.patient_birthday);
-                }
-            }
-            if (!lFormA.dob_male.Equals(pttm.patient_birthday))
-            {
-                if (MessageBox.Show("วัน เดือน ปี เกิด ของ Male มีการแก้ไข \n ต้องการแก้ไข วัน เดือน ปี เกิด ให้ ถูกต้อง", "", MessageBoxButtons.YesNo) == DialogResult.Yes)
-                {
-                    String re = ic.ivfDB.lFormaDB.updateDOBMale(txtID.Text, pttm.patient_birthday);
-                }
-            }
-            if (!lFormA.dob_donor.Equals(pttd.patient_birthday))
-            {
-                if (MessageBox.Show("วัน เดือน ปี เกิด ของ Male มีการแก้ไข \n ต้องการแก้ไข วัน เดือน ปี เกิด ให้ ถูกต้อง", "", MessageBoxButtons.YesNo) == DialogResult.Yes)
-                {
-                    String re = ic.ivfDB.lFormaDB.updateDOBDonor(txtID.Text, pttd.patient_birthday);
-                }
-            }
+                if (MessageBox.Show("วัน เดือน ปี เกิด ของ female มีการแก้ไข \n ต้องการแก้ไข วัน เดือน ปี เกิด ให้ ถูกต้อง", "", MessageBoxButtons.YesNo) == DialogResult.Yes)                            // +0005
+                {                            // +0005
+                    String re = ic.ivfDB.lFormaDB.updateDOBFemale(txtID.Text, pttf.patient_birthday);                            // +0005
+                }                            // +0005
+            }                            // +0005
+            if (!lFormA.dob_male.Equals(pttm.patient_birthday))                            // +0005
+            {                            // +0005
+                if (MessageBox.Show("วัน เดือน ปี เกิด ของ Male มีการแก้ไข \n ต้องการแก้ไข วัน เดือน ปี เกิด ให้ ถูกต้อง", "", MessageBoxButtons.YesNo) == DialogResult.Yes)                            // +0005
+                {                            // +0005
+                    String re = ic.ivfDB.lFormaDB.updateDOBMale(txtID.Text, pttm.patient_birthday);                            // +0005
+                }                            // +0005
+            }                            // +0005
+            if (!lFormA.dob_donor.Equals(pttd.patient_birthday))                            // +0005
+            {                            // +0005
+                if (MessageBox.Show("วัน เดือน ปี เกิด ของ Male มีการแก้ไข \n ต้องการแก้ไข วัน เดือน ปี เกิด ให้ ถูกต้อง", "", MessageBoxButtons.YesNo) == DialogResult.Yes)                            // +0005
+                {                            // +0005
+                    String re = ic.ivfDB.lFormaDB.updateDOBDonor(txtID.Text, pttd.patient_birthday);                            // +0005
+                }                            // +0005
+            }                            // +0005
         }
         private void FrmLabOPUReq_Load(object sender, EventArgs e)
         {
