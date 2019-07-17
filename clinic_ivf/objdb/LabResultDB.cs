@@ -10,7 +10,7 @@ namespace clinic_ivf.objdb
 {
     public class LabResultDB
     {
-        public LabResult labR;
+        public LabResult lbRes;
         ConnectDB conn;
         public List<LabResult> lDgs;
 
@@ -21,36 +21,38 @@ namespace clinic_ivf.objdb
         }
         private void initConfig()
         {
-            labR = new LabResult();
+            lbRes = new LabResult();
             lDgs = new List<LabResult>();
 
-            labR.result_id = "result_id";
-            labR.lis_id = "lis_id";
-            labR.req_id = "req_id";
-            labR.visit_id = "visit_id";
-            labR.patient_id = "patient_id";
-            labR.lab_id = "lab_id";
-            labR.result = "result";
-            labR.method = "method";
-            labR.active = "active";
-            labR.remark = "remark";
-            labR.date_create = "date_create";
-            labR.date_modi = "date_modi";
-            labR.date_cancel = "date_cancel";
-            labR.user_create = "user_create";
-            labR.user_modi = "user_modi";
-            labR.user_cancel = "user_cancel";
-            labR.unit = "unit";
-            labR.sort1 = "sort1";
-            labR.staff_id_result = "staff_id_result";
-            labR.staff_id_approve = "staff_id_approve";
-            labR.date_time_result = "date_time_result";
-            labR.date_time_approve = "date_time_approve";
-            labR.normal_value = "normal_value";
-            labR.interpret = "interpret";
+            lbRes.result_id = "result_id";
+            lbRes.lis_id = "lis_id";
+            lbRes.req_id = "req_id";
+            lbRes.visit_id = "visit_id";
+            lbRes.patient_id = "patient_id";
+            lbRes.lab_id = "lab_id";
+            lbRes.result = "result";
+            lbRes.method = "method";
+            lbRes.active = "active";
+            lbRes.remark = "remark";
+            lbRes.date_create = "date_create";
+            lbRes.date_modi = "date_modi";
+            lbRes.date_cancel = "date_cancel";
+            lbRes.user_create = "user_create";
+            lbRes.user_modi = "user_modi";
+            lbRes.user_cancel = "user_cancel";
+            lbRes.unit = "unit";
+            lbRes.sort1 = "sort1";
+            lbRes.staff_id_result = "staff_id_result";
+            lbRes.staff_id_approve = "staff_id_approve";
+            lbRes.date_time_result = "date_time_result";
+            lbRes.date_time_approve = "date_time_approve";
+            lbRes.normal_value = "normal_value";
+            lbRes.interpret = "interpret";
+            lbRes.status_result = "status_result";
+            lbRes.row1 = "row1";
 
-            labR.table = "lab_t_result";
-            labR.pkField = "result_id";
+            lbRes.table = "lab_t_result";
+            lbRes.pkField = "result_id";
         }
         public void getlBsp()
         {
@@ -62,30 +64,32 @@ namespace clinic_ivf.objdb
             foreach (DataRow row in dt.Rows)
             {
                 LabResult itm1 = new LabResult();
-                itm1.result_id = row[labR.result_id].ToString();
-                itm1.lis_id = row[labR.lis_id].ToString();
-                itm1.req_id = row[labR.req_id].ToString();
-                itm1.visit_id = row[labR.visit_id].ToString();
-                itm1.patient_id = row[labR.patient_id].ToString();
-                itm1.lab_id = row[labR.lab_id].ToString();
-                itm1.result = row[labR.result].ToString();
-                itm1.method = row[labR.method].ToString();
-                itm1.active = row[labR.active].ToString();
-                itm1.remark = row[labR.remark].ToString();
-                itm1.date_create = row[labR.date_create].ToString();
-                itm1.date_modi = row[labR.date_modi].ToString();
-                itm1.date_cancel = row[labR.date_cancel].ToString();
-                itm1.user_create = row[labR.user_create].ToString();
-                itm1.user_modi = row[labR.user_modi].ToString();
-                itm1.user_cancel = row[labR.user_cancel].ToString();
-                itm1.unit = row[labR.unit].ToString();
-                itm1.sort1 = row[labR.sort1].ToString();
-                itm1.staff_id_result = row[labR.staff_id_result].ToString();
-                itm1.staff_id_approve = row[labR.staff_id_approve].ToString();
-                itm1.date_time_result = row[labR.date_time_result].ToString();
-                itm1.date_time_approve = row[labR.date_time_approve].ToString();
-                itm1.normal_value = row[labR.normal_value].ToString();
-                itm1.interpret = row[labR.interpret].ToString();
+                itm1.result_id = row[lbRes.result_id].ToString();
+                itm1.lis_id = row[lbRes.lis_id].ToString();
+                itm1.req_id = row[lbRes.req_id].ToString();
+                itm1.visit_id = row[lbRes.visit_id].ToString();
+                itm1.patient_id = row[lbRes.patient_id].ToString();
+                itm1.lab_id = row[lbRes.lab_id].ToString();
+                itm1.result = row[lbRes.result].ToString();
+                itm1.method = row[lbRes.method].ToString();
+                itm1.active = row[lbRes.active].ToString();
+                itm1.remark = row[lbRes.remark].ToString();
+                itm1.date_create = row[lbRes.date_create].ToString();
+                itm1.date_modi = row[lbRes.date_modi].ToString();
+                itm1.date_cancel = row[lbRes.date_cancel].ToString();
+                itm1.user_create = row[lbRes.user_create].ToString();
+                itm1.user_modi = row[lbRes.user_modi].ToString();
+                itm1.user_cancel = row[lbRes.user_cancel].ToString();
+                itm1.unit = row[lbRes.unit].ToString();
+                itm1.sort1 = row[lbRes.sort1].ToString();
+                itm1.staff_id_result = row[lbRes.staff_id_result].ToString();
+                itm1.staff_id_approve = row[lbRes.staff_id_approve].ToString();
+                itm1.date_time_result = row[lbRes.date_time_result].ToString();
+                itm1.date_time_approve = row[lbRes.date_time_approve].ToString();
+                itm1.normal_value = row[lbRes.normal_value].ToString();
+                itm1.interpret = row[lbRes.interpret].ToString();
+                itm1.status_result = row[lbRes.status_result].ToString();
+                itm1.row1 = row[lbRes.row1].ToString();
                 lDgs.Add(itm1);
             }
         }
@@ -93,9 +97,9 @@ namespace clinic_ivf.objdb
         {
             DataTable dt = new DataTable();
             String sql = "select * " +
-                "From " + labR.table + " dsc " +
+                "From " + lbRes.table + " dsc " +
                 //"Left Join f_patient_prefix pfx On stf.prefix_id = pfx.f_patient_prefix_id " +
-                " Where dsc." + labR.active + " ='1' " +
+                " Where dsc." + lbRes.active + " ='1' " +
                 "Order By lis_id ";
             dt = conn.selectData(conn.conn, sql);
 
@@ -106,9 +110,9 @@ namespace clinic_ivf.objdb
             //LabResult cop1 = new LabResult();
             DataTable dt = new DataTable();
             String sql = "select * " +
-                "From " + labR.table + " dsc " +
+                "From " + lbRes.table + " dsc " +
                 //"Left Join f_patient_prefix pfx On stf.prefix_id = pfx.f_patient_prefix_id " +
-                "Where dsc." + labR.lab_id + " ='" + id + "' and dsc." + labR.active + "='1'" +
+                "Where dsc." + lbRes.lab_id + " ='" + id + "' and dsc." + lbRes.active + "='1'" +
                 "Order By lis_id ";
             dt = conn.selectData(conn.conn, sql);
 
@@ -119,9 +123,9 @@ namespace clinic_ivf.objdb
             LabResult cop1 = new LabResult();
             DataTable dt = new DataTable();
             String sql = "select * " +
-                "From " + labR.table + " dsc " +
+                "From " + lbRes.table + " dsc " +
                 //"Left Join f_patient_prefix pfx On stf.prefix_id = pfx.f_patient_prefix_id " +
-                "Where dsc." + labR.pkField + " ='" + id + "' " +
+                "Where dsc." + lbRes.pkField + " ='" + id + "' " +
                 "Order By lis_id ";
             dt = conn.selectData(conn.conn, sql);
             cop1 = setLabResult(dt);
@@ -132,9 +136,9 @@ namespace clinic_ivf.objdb
             LabResult cop1 = new LabResult();
             DataTable dt = new DataTable();
             String sql = "select * " +
-                "From " + labR.table + " dsc " +
+                "From " + lbRes.table + " dsc " +
                 //"Left Join f_patient_prefix pfx On stf.prefix_id = pfx.f_patient_prefix_id " +
-                "Where dsc." + labR.pkField + " ='" + id + "' " +
+                "Where dsc." + lbRes.pkField + " ='" + id + "' " +
                 "Order By lis_id ";
             dt = conn.selectData(conn.conn, sql);
 
@@ -145,9 +149,9 @@ namespace clinic_ivf.objdb
             LabResult cop1 = new LabResult();
             DataTable dt = new DataTable();
             String sql = "select * " +
-                "From " + labR.table + " dsc " +
+                "From " + lbRes.table + " dsc " +
                 //"Left Join f_patient_prefix pfx On stf.prefix_id = pfx.f_patient_prefix_id " +
-                "Where dsc." + labR.lab_id + " ='" + lab_id + "' and dsc." + labR.result + "='" + result + "' and dsc." + labR.method + "='" + vsDate + "' and dsc." + labR.active + "='1'" +
+                "Where dsc." + lbRes.lab_id + " ='" + lab_id + "' and dsc." + lbRes.result + "='" + result + "' and dsc." + lbRes.method + "='" + vsDate + "' and dsc." + lbRes.active + "='1'" +
                 "Order By lis_id ";
             dt = conn.selectData(conn.conn, sql);
 
@@ -158,34 +162,40 @@ namespace clinic_ivf.objdb
             LabResult cop1 = new LabResult();
             DataTable dt = new DataTable();
             String sql = "select * " +
-                "From " + labR.table + " dsc " +
+                "From " + lbRes.table + " dsc " +
                 //"Left Join f_patient_prefix pfx On stf.prefix_id = pfx.f_patient_prefix_id " +
-                "Where dsc." + labR.lab_id + " ='" + lab_id + "' and dsc." + labR.result + "='" + unit + "' and dsc." + labR.active + "='1'" +
+                "Where dsc." + lbRes.lab_id + " ='" + lab_id + "' and dsc." + lbRes.result + "='" + unit + "' and dsc." + lbRes.active + "='1'" +
                 "Order By lis_id ";
             dt = conn.selectData(conn.conn, sql);
 
             return dt;
         }
-        public String selectRowNoByHn(String lab_id, String docgid)
+        public DataTable selectLabBloodByProcess(String vsid)
         {
-            String re = "0", re1 = "";
-            int chk = 0;
-            LabResult cop1 = new LabResult();
             DataTable dt = new DataTable();
-            String sql = "select max(" + labR.req_id + ") as " + labR.req_id + " " +
-                "From " + labR.table + " dsc " +
-                //"Left Join f_patient_prefix pfx On stf.prefix_id = pfx.f_patient_prefix_id " +
-                "Where dsc." + labR.lab_id + " ='" + lab_id + "' and dsc." + labR.lis_id + "='" + docgid + "' " +
-                "  ";
+            String sql = "select lbRes.*, LabItem.LName " +
+                " " +
+                "From " + lbRes.table + " lbRes " +
+                "Left Join LabItem on lbRes." + lbRes.lab_id + " = LabItem.LID " +
+                "Where lbRes." + lbRes.status_result + " ='1'  and lbRes.visit_id = '"+vsid+"'" +
+                "Order By lbRes." + lbRes.req_id;
             dt = conn.selectData(conn.conn, sql);
-            if (dt.Rows.Count > 0)
-            {
-                re1 = dt.Rows[0][labR.req_id].ToString();
-                int.TryParse(re1, out chk);
-                chk++;
-                re = chk.ToString();
-            }
-            return re;
+            return dt;
+        }
+        public DataTable selectLabBloodByProcess()
+        {
+            DataTable dt = new DataTable();
+            String sql = "select lbRes.*, LabItem.LName, ptt.patient_hn" +
+                ", CONCAT(IFNULL(fpp.patient_prefix_description,''),' ', ptt.patient_firstname_e ,' ',ptt.patient_lastname_e)  as pname " +
+                "From " + lbRes.table + " lbRes " +
+                "Left Join LabItem on lbRes." + lbRes.lab_id + " = LabItem.LID " +
+                "Left Join t_visit vs on lbRes.visit_id = vs.t_visit_id " +
+                "Left Join t_patient ptt on vs.t_patient_id = ptt.t_patient_id " +
+                "Left join f_patient_prefix fpp on fpp.f_patient_prefix_id = ptt.f_patient_prefix_id " +
+                "Where lbRes." + lbRes.status_result + " ='1' and LabItem.LGID='1' " +
+                "Order By lbRes." + lbRes.req_id;
+            dt = conn.selectData(conn.conn, sql);
+            return dt;
         }
         public String selectRowNoByHnVn(String lab_id, String result, String docgid)
         {
@@ -193,15 +203,15 @@ namespace clinic_ivf.objdb
             int chk = 0;
             LabResult cop1 = new LabResult();
             DataTable dt = new DataTable();
-            String sql = "select max(" + labR.req_id + ") as " + labR.req_id + " " +
-                "From " + labR.table + " dsc " +
+            String sql = "select max(" + lbRes.req_id + ") as " + lbRes.req_id + " " +
+                "From " + lbRes.table + " dsc " +
                 //"Left Join f_patient_prefix pfx On stf.prefix_id = pfx.f_patient_prefix_id " +
-                "Where dsc." + labR.lab_id + " ='" + lab_id + "' and dsc." + labR.lis_id + "='" + docgid + "' and dsc." + labR.result + "='" + result + "' " +
+                "Where dsc." + lbRes.lab_id + " ='" + lab_id + "' and dsc." + lbRes.lis_id + "='" + docgid + "' and dsc." + lbRes.result + "='" + result + "' " +
                 "  ";
             dt = conn.selectData(conn.conn, sql);
             if (dt.Rows.Count > 0)
             {
-                re1 = dt.Rows[0][labR.req_id].ToString();
+                re1 = dt.Rows[0][lbRes.req_id].ToString();
                 int.TryParse(re1, out chk);
                 chk++;
                 re = chk.ToString();
@@ -230,6 +240,8 @@ namespace clinic_ivf.objdb
             p.date_time_result = p.date_time_result == null ? "" : p.date_time_result;
             p.date_time_approve = p.date_time_approve == null ? "" : p.date_time_approve;
             p.normal_value = p.normal_value == null ? "" : p.normal_value;
+            p.status_result = p.status_result == null ? "0" : p.status_result;
+            p.row1 = p.row1 == null ? "0" : p.row1;
 
             p.lis_id = long.TryParse(p.lis_id, out chk) ? chk.ToString() : "0";
             p.req_id = long.TryParse(p.req_id, out chk) ? chk.ToString() : "0";
@@ -249,31 +261,32 @@ namespace clinic_ivf.objdb
             //p.ssdata_id = "";
             int chk = 0;
             chkNull(p);
-            sql = "Insert Into " + labR.table + " set " +
-                "" + labR.lis_id + "= '" + p.lis_id + "'" +
-                "," + labR.active + "= '" + p.active + "'" +
-                "," + labR.req_id + "= '" + p.req_id + "'" +
-                "," + labR.visit_id + "= '" + p.visit_id + "'" +
-                "," + labR.patient_id + "= '" + p.patient_id + "'" +
-                "," + labR.lab_id + "= '" + p.lab_id + "'" +
-                "," + labR.result + "= '" + p.result + "'" +
-                "," + labR.method + "= '" + p.method + "'" +
-                "," + labR.remark + "= '" + p.remark + "'" +
-                "," + labR.date_create + "= now()" +
-                "," + labR.date_modi + "= ''" +
-                "," + labR.date_cancel + "= ''" +
-                "," + labR.user_create + "= '" + userId + "@" + conn._IPAddress + "'" +
-                "," + labR.user_modi + "= ''" +
-                "," + labR.user_cancel + "= ''" +
-                "," + labR.unit + "= '" + p.unit + "'" +
-                "," + labR.sort1 + "= '" + p.sort1 + "'" +
-                "," + labR.staff_id_result + "= '" + p.staff_id_result + "'" +
-                "," + labR.staff_id_approve + "= '" + p.staff_id_approve + "'" +
-                "," + labR.date_time_result + "= '" + p.date_time_result + "'" +
-                "," + labR.date_time_approve + " " + "= '" + p.date_time_approve + "'" +
-                "," + labR.normal_value + " " + "= '" + p.normal_value + "'" +
-                "," + labR.interpret + " " + "= '" + p.interpret + "'" +
-                //"," + labR.unit + " " + "= '" + p.unit + "'" +
+            sql = "Insert Into " + lbRes.table + " set " +
+                "" + lbRes.lis_id + "= '" + p.lis_id + "'" +
+                "," + lbRes.active + "= '" + p.active + "'" +
+                "," + lbRes.req_id + "= '" + p.req_id + "'" +
+                "," + lbRes.visit_id + "= '" + p.visit_id + "'" +
+                "," + lbRes.patient_id + "= '" + p.patient_id + "'" +
+                "," + lbRes.lab_id + "= '" + p.lab_id + "'" +
+                "," + lbRes.result + "= '" + p.result + "'" +
+                "," + lbRes.method + "= '" + p.method + "'" +
+                "," + lbRes.remark + "= '" + p.remark + "'" +
+                "," + lbRes.date_create + "= now()" +
+                "," + lbRes.date_modi + "= ''" +
+                "," + lbRes.date_cancel + "= ''" +
+                "," + lbRes.user_create + "= '" + userId + "@" + conn._IPAddress + "'" +
+                "," + lbRes.user_modi + "= ''" +
+                "," + lbRes.user_cancel + "= ''" +
+                "," + lbRes.unit + "= '" + p.unit + "'" +
+                "," + lbRes.sort1 + "= '" + p.sort1 + "'" +
+                "," + lbRes.staff_id_result + "= '" + p.staff_id_result + "'" +
+                "," + lbRes.staff_id_approve + "= '" + p.staff_id_approve + "'" +
+                "," + lbRes.date_time_result + "= '" + p.date_time_result + "'" +
+                "," + lbRes.date_time_approve + " " + "= '" + p.date_time_approve + "'" +
+                "," + lbRes.normal_value + " " + "= '" + p.normal_value + "'" +
+                "," + lbRes.interpret + " " + "= '" + p.interpret + "'" +
+                "," + lbRes.status_result + " " + "= '" + p.status_result + "'" +
+                "," + lbRes.row1 + " " + "= '" + p.row1 + "'" +
                 "";
             try
             {
@@ -321,27 +334,29 @@ namespace clinic_ivf.objdb
             String sql = "";
             int chk = 0;
             chkNull(p);
-            sql = "Update " + labR.table + " Set " +
-                " " + labR.lis_id + " = '" + p.lis_id + "'" +
-                "," + labR.req_id + " = '" + p.req_id + "'" +
-                "," + labR.visit_id + " = '" + p.visit_id + "'" +
-                "," + labR.patient_id + " = '" + p.patient_id + "'" +
-                "," + labR.lab_id + " = '" + p.lab_id + "'" +
-                "," + labR.result + " = '" + p.result + "'" +
-                "," + labR.method + " = '" + p.method + "'" +
-                "," + labR.remark + " = '" + p.remark + "'" +
-                "," + labR.date_modi + " = now()" +
-                "," + labR.user_modi + " = '" + userId + "'" +
-                "," + labR.unit + " = '" + p.unit + "'" +
-                "," + labR.sort1 + " = '" + p.sort1 + "'" +
-                "," + labR.staff_id_result + " = '" + p.staff_id_result + "'" +
-                "," + labR.staff_id_approve + " = '" + p.staff_id_approve + "'" +
-                "," + labR.date_time_result + " = '" + p.date_time_result + "'" +
-                "," + labR.date_time_approve + " = '" + p.date_time_approve + "'" +
-                "," + labR.normal_value + " = '" + p.normal_value + "'" +
+            sql = "Update " + lbRes.table + " Set " +
+                " " + lbRes.lis_id + " = '" + p.lis_id + "'" +
+                "," + lbRes.req_id + " = '" + p.req_id + "'" +
+                "," + lbRes.visit_id + " = '" + p.visit_id + "'" +
+                "," + lbRes.patient_id + " = '" + p.patient_id + "'" +
+                "," + lbRes.lab_id + " = '" + p.lab_id + "'" +
+                "," + lbRes.result + " = '" + p.result + "'" +
+                "," + lbRes.method + " = '" + p.method + "'" +
+                "," + lbRes.remark + " = '" + p.remark + "'" +
+                "," + lbRes.date_modi + " = now()" +
+                "," + lbRes.user_modi + " = '" + userId + "'" +
+                "," + lbRes.unit + " = '" + p.unit + "'" +
+                "," + lbRes.sort1 + " = '" + p.sort1 + "'" +
+                "," + lbRes.staff_id_result + " = '" + p.staff_id_result + "'" +
+                "," + lbRes.staff_id_approve + " = '" + p.staff_id_approve + "'" +
+                "," + lbRes.date_time_result + " = '" + p.date_time_result + "'" +
+                "," + lbRes.date_time_approve + " = '" + p.date_time_approve + "'" +
+                "," + lbRes.normal_value + " = '" + p.normal_value + "'" +
                 //"," + labR.normal_value + " " + "= '" + p.normal_value + "'" +
-                "," + labR.interpret + " " + "= '" + p.interpret + "'" +
-                "Where " + labR.pkField + "='" + p.result_id + "'"
+                "," + lbRes.interpret + " " + "= '" + p.interpret + "'" +
+                "," + lbRes.status_result + " " + "= '" + p.status_result + "'" +
+                "," + lbRes.row1 + " " + "= '" + p.row1 + "'" +
+                "Where " + lbRes.pkField + "='" + p.result_id + "'"
                 ;
 
             try
@@ -376,9 +391,9 @@ namespace clinic_ivf.objdb
             String sql = "";
             int chk = 0;
             //chkNull(p);
-            sql = "Update " + labR.table + " Set " +
-                " " + labR.patient_id + " = '" + patient_id + "'" +
-                "Where " + labR.pkField + "='" + id + "'"
+            sql = "Update " + lbRes.table + " Set " +
+                " " + lbRes.patient_id + " = '" + patient_id + "'" +
+                "Where " + lbRes.pkField + "='" + id + "'"
                 ;
             try
             {
@@ -397,11 +412,11 @@ namespace clinic_ivf.objdb
             String sql = "";
             int chk = 0;
 
-            sql = "Update " + labR.table + " Set " +
-                " " + labR.active + " = '3'" +
-                "," + labR.date_cancel + " = now()" +
-                "," + labR.user_cancel + " = '" + userId + "'" +
-                "Where " + labR.pkField + "='" + id + "'"
+            sql = "Update " + lbRes.table + " Set " +
+                " " + lbRes.active + " = '3'" +
+                "," + lbRes.date_cancel + " = now()" +
+                "," + lbRes.user_cancel + " = '" + userId + "'" +
+                "Where " + lbRes.pkField + "='" + id + "'"
                 ;
             try
             {
@@ -419,29 +434,31 @@ namespace clinic_ivf.objdb
             LabResult dgs1 = new LabResult();
             if (dt.Rows.Count > 0)
             {
-                dgs1.result_id = dt.Rows[0][labR.result_id].ToString();
-                dgs1.lis_id = dt.Rows[0][labR.lis_id].ToString();
-                dgs1.req_id = dt.Rows[0][labR.req_id].ToString();
-                dgs1.visit_id = dt.Rows[0][labR.visit_id].ToString();
-                dgs1.patient_id = dt.Rows[0][labR.patient_id].ToString();
-                dgs1.lab_id = dt.Rows[0][labR.lab_id].ToString();
-                dgs1.result = dt.Rows[0][labR.result].ToString();
-                dgs1.method = dt.Rows[0][labR.method].ToString();
-                dgs1.active = dt.Rows[0][labR.active].ToString();
-                dgs1.remark = dt.Rows[0][labR.remark].ToString();
-                dgs1.date_create = dt.Rows[0][labR.date_create].ToString();
-                dgs1.date_modi = dt.Rows[0][labR.date_modi].ToString();
-                dgs1.date_cancel = dt.Rows[0][labR.date_cancel].ToString();
-                dgs1.user_create = dt.Rows[0][labR.user_create].ToString();
-                dgs1.user_modi = dt.Rows[0][labR.user_modi].ToString();
-                dgs1.user_cancel = dt.Rows[0][labR.user_cancel].ToString();
-                dgs1.unit = dt.Rows[0][labR.unit].ToString();
-                dgs1.sort1 = dt.Rows[0][labR.sort1].ToString();
-                dgs1.staff_id_result = dt.Rows[0][labR.staff_id_result].ToString();
-                dgs1.staff_id_approve = dt.Rows[0][labR.staff_id_approve].ToString();
-                dgs1.date_time_result = dt.Rows[0][labR.date_time_result].ToString();
-                dgs1.date_time_approve = dt.Rows[0][labR.date_time_approve].ToString();
-                dgs1.normal_value = dt.Rows[0][labR.date_time_approve].ToString();
+                dgs1.result_id = dt.Rows[0][lbRes.result_id].ToString();
+                dgs1.lis_id = dt.Rows[0][lbRes.lis_id].ToString();
+                dgs1.req_id = dt.Rows[0][lbRes.req_id].ToString();
+                dgs1.visit_id = dt.Rows[0][lbRes.visit_id].ToString();
+                dgs1.patient_id = dt.Rows[0][lbRes.patient_id].ToString();
+                dgs1.lab_id = dt.Rows[0][lbRes.lab_id].ToString();
+                dgs1.result = dt.Rows[0][lbRes.result].ToString();
+                dgs1.method = dt.Rows[0][lbRes.method].ToString();
+                dgs1.active = dt.Rows[0][lbRes.active].ToString();
+                dgs1.remark = dt.Rows[0][lbRes.remark].ToString();
+                dgs1.date_create = dt.Rows[0][lbRes.date_create].ToString();
+                dgs1.date_modi = dt.Rows[0][lbRes.date_modi].ToString();
+                dgs1.date_cancel = dt.Rows[0][lbRes.date_cancel].ToString();
+                dgs1.user_create = dt.Rows[0][lbRes.user_create].ToString();
+                dgs1.user_modi = dt.Rows[0][lbRes.user_modi].ToString();
+                dgs1.user_cancel = dt.Rows[0][lbRes.user_cancel].ToString();
+                dgs1.unit = dt.Rows[0][lbRes.unit].ToString();
+                dgs1.sort1 = dt.Rows[0][lbRes.sort1].ToString();
+                dgs1.staff_id_result = dt.Rows[0][lbRes.staff_id_result].ToString();
+                dgs1.staff_id_approve = dt.Rows[0][lbRes.staff_id_approve].ToString();
+                dgs1.date_time_result = dt.Rows[0][lbRes.date_time_result].ToString();
+                dgs1.date_time_approve = dt.Rows[0][lbRes.date_time_approve].ToString();
+                dgs1.normal_value = dt.Rows[0][lbRes.date_time_approve].ToString();
+                dgs1.status_result = dt.Rows[0][lbRes.status_result].ToString();
+                dgs1.row1 = dt.Rows[0][lbRes.row1].ToString();
             }
             else
             {
@@ -474,6 +491,8 @@ namespace clinic_ivf.objdb
             dgs1.date_time_result = "";
             dgs1.date_time_approve = "";
             dgs1.normal_value = "";
+            dgs1.status_result = "";
+            dgs1.row1 = "";
             return dgs1;
         }
     }

@@ -24,6 +24,8 @@ namespace clinic_ivf.object1
         public String date_time_approve { get; set; }
         public String normal_value { get; set; }
         public String interpret { get; set; }
+        public String status_result { get; set; }
+        public String row1 { get; set; }
 
     }
 }

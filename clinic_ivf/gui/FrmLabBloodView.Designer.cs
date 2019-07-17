@@ -36,7 +36,7 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.pnReq = new System.Windows.Forms.Panel();
             this.tabProcess = new C1.Win.C1Command.C1DockingTabPage();
-            this.panel2 = new System.Windows.Forms.Panel();
+            this.pnProc = new System.Windows.Forms.Panel();
             this.tabLabFinish = new C1.Win.C1Command.C1DockingTabPage();
             this.gbFinish = new System.Windows.Forms.GroupBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
@@ -163,23 +163,23 @@
             // 
             // tabProcess
             // 
-            this.tabProcess.Controls.Add(this.panel2);
+            this.tabProcess.Controls.Add(this.pnProc);
             this.tabProcess.Location = new System.Drawing.Point(1, 24);
             this.tabProcess.Name = "tabProcess";
             this.tabProcess.Size = new System.Drawing.Size(1093, 691);
             this.tabProcess.TabIndex = 2;
             this.tabProcess.Text = "Process";
             // 
-            // panel2
+            // pnProc
             // 
-            this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.panel2.Location = new System.Drawing.Point(0, 0);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1093, 691);
-            this.panel2.TabIndex = 0;
-            this.theme1.SetTheme(this.panel2, "(default)");
+            this.pnProc.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.pnProc.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pnProc.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.pnProc.Location = new System.Drawing.Point(0, 0);
+            this.pnProc.Name = "pnProc";
+            this.pnProc.Size = new System.Drawing.Size(1093, 691);
+            this.pnProc.TabIndex = 0;
+            this.theme1.SetTheme(this.pnProc, "(default)");
             // 
             // tabLabFinish
             // 
@@ -650,7 +650,7 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Panel pnReq;
         private C1.Win.C1Command.C1DockingTabPage tabProcess;
-        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.Panel pnProc;
         private C1.Win.C1Command.C1DockingTabPage tabLabFinish;
         private System.Windows.Forms.GroupBox gbFinish;
         private System.Windows.Forms.GroupBox groupBox2;

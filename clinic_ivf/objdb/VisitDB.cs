@@ -423,13 +423,13 @@ namespace clinic_ivf.objdb
             dt = conn.selectData(conn.conn, sql);
             return dt;
         }
-        public Visit selectByPk1(String pttId)
+        public Visit selectByPk1(String vsid)
         {
             Visit cop1 = new Visit();
             DataTable dt = new DataTable();
             String sql = "select vs.* " +
                 "From " + vs.table + " vs " +
-                "Where vs." + vs.pkField + " ='" + pttId + "' ";
+                "Where vs." + vs.pkField + " ='" + vsid + "' ";
             dt = conn.selectData(conn.conn, sql);
             cop1 = setVisit(dt);
             return cop1;
