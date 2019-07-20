@@ -664,7 +664,7 @@ namespace clinic_ivf.gui
         private void GrfSearch_DoubleClick(object sender, EventArgs e)
         {
             //throw new NotImplementedException();
-            ContextMenu_order_Search(null, null);
+            ContextMenu_grfSearch(null, null);
         }
 
         private void setGrfSearch(String search)
@@ -2058,7 +2058,7 @@ namespace clinic_ivf.gui
             //openPatientAdd(id, name);
             //}
         }
-        private void ContextMenu_order_Search(object sender, System.EventArgs e)
+        private void ContextMenu_grfSearch(object sender, System.EventArgs e)
         {
             String chk = "", name = "", vn = "", pttId = "", pid = "";
 

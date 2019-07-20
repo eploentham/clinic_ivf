@@ -40,6 +40,7 @@
             this.sCmain = new C1.Win.C1SplitContainer.C1SplitContainer();
             this.pnPatient = new C1.Win.C1SplitContainer.C1SplitterPanel();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.txtVnProgressNote = new C1.Win.C1Input.C1TextBox();
             this.txtVsId = new C1.Win.C1Input.C1TextBox();
             this.txtPttId = new C1.Win.C1Input.C1TextBox();
             this.label25 = new System.Windows.Forms.Label();
@@ -142,20 +143,7 @@
             this.pnOrder = new System.Windows.Forms.Panel();
             this.c1DockingTabPage10 = new C1.Win.C1Command.C1DockingTabPage();
             this.pnPkg = new System.Windows.Forms.Panel();
-            this.tabHis = new C1.Win.C1Command.C1DockingTabPage();
-            this.sCDesc = new C1.Win.C1SplitContainer.C1SplitContainer();
-            this.c1SplitterPanel3 = new C1.Win.C1SplitContainer.C1SplitterPanel();
-            this.pnVs = new System.Windows.Forms.Panel();
             this.c1SplitterPanel4 = new C1.Win.C1SplitContainer.C1SplitterPanel();
-            this.tC1 = new C1.Win.C1Command.C1DockingTab();
-            this.tabDrug = new C1.Win.C1Command.C1DockingTabPage();
-            this.panel6 = new System.Windows.Forms.Panel();
-            this.tabLab = new C1.Win.C1Command.C1DockingTabPage();
-            this.panel8 = new System.Windows.Forms.Panel();
-            this.tabOr = new C1.Win.C1Command.C1DockingTabPage();
-            this.panel9 = new System.Windows.Forms.Panel();
-            this.tabScan = new C1.Win.C1Command.C1DockingTabPage();
-            this.panel10 = new System.Windows.Forms.Panel();
             this.tabApp = new C1.Win.C1Command.C1DockingTabPage();
             this.c1SplitContainer1 = new C1.Win.C1SplitContainer.C1SplitContainer();
             this.c1SplitterPanel1 = new C1.Win.C1SplitContainer.C1SplitterPanel();
@@ -284,10 +272,6 @@
             this.spOutLabDetail = new C1.Win.C1SplitContainer.C1SplitterPanel();
             this.pnOutLabDetail = new System.Windows.Forms.Panel();
             this.c1FlexViewer1 = new C1.Win.FlexViewer.C1FlexViewer();
-            this.panel3 = new System.Windows.Forms.Panel();
-            this.pnOrder11 = new System.Windows.Forms.Panel();
-            this.sB = new System.Windows.Forms.StatusStrip();
-            this.sB1 = new System.Windows.Forms.ToolStripStatusLabel();
             this.tabHistory = new C1.Win.C1Command.C1DockingTabPage();
             this.pnHistory = new System.Windows.Forms.Panel();
             this.sCHistory = new C1.Win.C1SplitContainer.C1SplitContainer();
@@ -303,13 +287,17 @@
             this.panel46 = new System.Windows.Forms.Panel();
             this.tabHistoryScan = new C1.Win.C1Command.C1DockingTabPage();
             this.pnHistoryScan = new System.Windows.Forms.Panel();
-            this.txtVnProgressNote = new C1.Win.C1Input.C1TextBox();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.pnOrder11 = new System.Windows.Forms.Panel();
+            this.sB = new System.Windows.Forms.StatusStrip();
+            this.sB1 = new System.Windows.Forms.ToolStripStatusLabel();
             ((System.ComponentModel.ISupportInitialize)(this.theme1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkDenyAllergy)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.sCmain)).BeginInit();
             this.sCmain.SuspendLayout();
             this.pnPatient.SuspendLayout();
             this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtVnProgressNote)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtVsId)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtPttId)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cboLangSticker)).BeginInit();
@@ -383,17 +371,6 @@
             this.tcOrd.SuspendLayout();
             this.c1DockingTabPage9.SuspendLayout();
             this.c1DockingTabPage10.SuspendLayout();
-            this.tabHis.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.sCDesc)).BeginInit();
-            this.sCDesc.SuspendLayout();
-            this.c1SplitterPanel3.SuspendLayout();
-            this.c1SplitterPanel4.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.tC1)).BeginInit();
-            this.tC1.SuspendLayout();
-            this.tabDrug.SuspendLayout();
-            this.tabLab.SuspendLayout();
-            this.tabOr.SuspendLayout();
-            this.tabScan.SuspendLayout();
             this.tabApp.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.c1SplitContainer1)).BeginInit();
             this.c1SplitContainer1.SuspendLayout();
@@ -444,7 +421,6 @@
             this.spOutLabDetail.SuspendLayout();
             this.pnOutLabDetail.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.c1FlexViewer1)).BeginInit();
-            this.sB.SuspendLayout();
             this.tabHistory.SuspendLayout();
             this.pnHistory.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.sCHistory)).BeginInit();
@@ -457,7 +433,7 @@
             this.tabHistoryLab.SuspendLayout();
             this.tabHistoryOr.SuspendLayout();
             this.tabHistoryScan.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.txtVnProgressNote)).BeginInit();
+            this.sB.SuspendLayout();
             this.SuspendLayout();
             // 
             // theme1
@@ -642,6 +618,20 @@
             this.panel1.Size = new System.Drawing.Size(1584, 140);
             this.panel1.TabIndex = 847;
             this.theme1.SetTheme(this.panel1, "(default)");
+            // 
+            // txtVnProgressNote
+            // 
+            this.txtVnProgressNote.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtVnProgressNote.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
+            this.txtVnProgressNote.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.txtVnProgressNote.Location = new System.Drawing.Point(741, 78);
+            this.txtVnProgressNote.Name = "txtVnProgressNote";
+            this.txtVnProgressNote.Size = new System.Drawing.Size(30, 20);
+            this.txtVnProgressNote.TabIndex = 968;
+            this.txtVnProgressNote.Tag = null;
+            this.theme1.SetTheme(this.txtVnProgressNote, "(default)");
+            this.txtVnProgressNote.Visible = false;
+            this.txtVnProgressNote.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
             // 
             // txtVsId
             // 
@@ -1230,7 +1220,6 @@
             this.tC.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
             this.tC.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.tC.Controls.Add(this.tabOrder1);
-            this.tC.Controls.Add(this.tabHis);
             this.tC.Controls.Add(this.tabApp);
             this.tC.Controls.Add(this.tabCert);
             this.tC.Controls.Add(this.tabNote);
@@ -1306,7 +1295,7 @@
             this.c1SplitterPanel5.Size = new System.Drawing.Size(782, 629);
             this.c1SplitterPanel5.TabIndex = 0;
             this.c1SplitterPanel5.Text = "Panel 1";
-            this.c1SplitterPanel5.Width = 782;
+            this.c1SplitterPanel5.Width = 789;
             // 
             // panel12
             // 
@@ -2013,171 +2002,13 @@
             this.pnPkg.TabIndex = 0;
             this.theme1.SetTheme(this.pnPkg, "(default)");
             // 
-            // tabHis
-            // 
-            this.tabHis.Controls.Add(this.sCDesc);
-            this.tabHis.Location = new System.Drawing.Point(1, 24);
-            this.tabHis.Name = "tabHis";
-            this.tabHis.Size = new System.Drawing.Size(1582, 650);
-            this.tabHis.TabIndex = 0;
-            this.tabHis.Text = "History";
-            // 
-            // sCDesc
-            // 
-            this.sCDesc.AutoSizeElement = C1.Framework.AutoSizeElement.Both;
-            this.sCDesc.BackColor = System.Drawing.Color.White;
-            this.sCDesc.CollapsingAreaColor = System.Drawing.Color.White;
-            this.sCDesc.CollapsingCueColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.sCDesc.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.sCDesc.FixedLineColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(189)))), ((int)(((byte)(182)))));
-            this.sCDesc.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.sCDesc.HeaderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.sCDesc.HeaderLineWidth = 1;
-            this.sCDesc.Location = new System.Drawing.Point(0, 0);
-            this.sCDesc.Name = "sCDesc";
-            this.sCDesc.Panels.Add(this.c1SplitterPanel3);
-            this.sCDesc.Panels.Add(this.c1SplitterPanel4);
-            this.sCDesc.Size = new System.Drawing.Size(1582, 650);
-            this.sCDesc.SplitterColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(189)))), ((int)(((byte)(182)))));
-            this.sCDesc.SplitterMovingColor = System.Drawing.Color.Black;
-            this.sCDesc.TabIndex = 0;
-            this.theme1.SetTheme(this.sCDesc, "(default)");
-            this.sCDesc.UseParentVisualStyle = false;
-            // 
-            // c1SplitterPanel3
-            // 
-            this.c1SplitterPanel3.Collapsible = true;
-            this.c1SplitterPanel3.Controls.Add(this.pnVs);
-            this.c1SplitterPanel3.Dock = C1.Win.C1SplitContainer.PanelDockStyle.Left;
-            this.c1SplitterPanel3.Location = new System.Drawing.Point(0, 21);
-            this.c1SplitterPanel3.Name = "c1SplitterPanel3";
-            this.c1SplitterPanel3.Size = new System.Drawing.Size(393, 629);
-            this.c1SplitterPanel3.SizeRatio = 25.349D;
-            this.c1SplitterPanel3.TabIndex = 0;
-            this.c1SplitterPanel3.Text = "Panel 1";
-            this.c1SplitterPanel3.Width = 393;
-            // 
-            // pnVs
-            // 
-            this.pnVs.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.pnVs.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnVs.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.pnVs.Location = new System.Drawing.Point(0, 0);
-            this.pnVs.Name = "pnVs";
-            this.pnVs.Size = new System.Drawing.Size(393, 629);
-            this.pnVs.TabIndex = 0;
-            this.theme1.SetTheme(this.pnVs, "(default)");
-            // 
             // c1SplitterPanel4
             // 
-            this.c1SplitterPanel4.Controls.Add(this.tC1);
-            this.c1SplitterPanel4.Height = 650;
+            this.c1SplitterPanel4.Height = 629;
             this.c1SplitterPanel4.Location = new System.Drawing.Point(404, 21);
             this.c1SplitterPanel4.Name = "c1SplitterPanel4";
             this.c1SplitterPanel4.Size = new System.Drawing.Size(1178, 629);
             this.c1SplitterPanel4.TabIndex = 1;
-            this.c1SplitterPanel4.Text = "Panel 2";
-            // 
-            // tC1
-            // 
-            this.tC1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.tC1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.tC1.Controls.Add(this.tabDrug);
-            this.tC1.Controls.Add(this.tabLab);
-            this.tC1.Controls.Add(this.tabOr);
-            this.tC1.Controls.Add(this.tabScan);
-            this.tC1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tC1.HotTrack = true;
-            this.tC1.Location = new System.Drawing.Point(0, 0);
-            this.tC1.Name = "tC1";
-            this.tC1.SelectedIndex = 2;
-            this.tC1.Size = new System.Drawing.Size(1178, 629);
-            this.tC1.TabIndex = 0;
-            this.tC1.TabSizeMode = C1.Win.C1Command.TabSizeModeEnum.Fit;
-            this.tC1.TabsShowFocusCues = false;
-            this.tC1.TabsSpacing = 2;
-            this.tC1.TabStyle = C1.Win.C1Command.TabStyleEnum.Office2007;
-            this.theme1.SetTheme(this.tC1, "(default)");
-            // 
-            // tabDrug
-            // 
-            this.tabDrug.Controls.Add(this.panel6);
-            this.tabDrug.Location = new System.Drawing.Point(1, 24);
-            this.tabDrug.Name = "tabDrug";
-            this.tabDrug.Size = new System.Drawing.Size(1176, 604);
-            this.tabDrug.TabIndex = 0;
-            this.tabDrug.Text = "ยา + เวชภัณฑ์";
-            // 
-            // panel6
-            // 
-            this.panel6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.panel6.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.panel6.Location = new System.Drawing.Point(0, 0);
-            this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(1176, 604);
-            this.panel6.TabIndex = 0;
-            this.theme1.SetTheme(this.panel6, "(default)");
-            // 
-            // tabLab
-            // 
-            this.tabLab.Controls.Add(this.panel8);
-            this.tabLab.Location = new System.Drawing.Point(1, 24);
-            this.tabLab.Name = "tabLab";
-            this.tabLab.Size = new System.Drawing.Size(1176, 604);
-            this.tabLab.TabIndex = 1;
-            this.tabLab.Text = "LAB";
-            // 
-            // panel8
-            // 
-            this.panel8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.panel8.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel8.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.panel8.Location = new System.Drawing.Point(0, 0);
-            this.panel8.Name = "panel8";
-            this.panel8.Size = new System.Drawing.Size(1176, 604);
-            this.panel8.TabIndex = 0;
-            this.theme1.SetTheme(this.panel8, "(default)");
-            // 
-            // tabOr
-            // 
-            this.tabOr.Controls.Add(this.panel9);
-            this.tabOr.Location = new System.Drawing.Point(1, 24);
-            this.tabOr.Name = "tabOr";
-            this.tabOr.Size = new System.Drawing.Size(1176, 604);
-            this.tabOr.TabIndex = 2;
-            this.tabOr.Text = "รายการผ่าตัด";
-            // 
-            // panel9
-            // 
-            this.panel9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.panel9.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel9.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.panel9.Location = new System.Drawing.Point(0, 0);
-            this.panel9.Name = "panel9";
-            this.panel9.Size = new System.Drawing.Size(1176, 604);
-            this.panel9.TabIndex = 0;
-            this.theme1.SetTheme(this.panel9, "(default)");
-            // 
-            // tabScan
-            // 
-            this.tabScan.Controls.Add(this.panel10);
-            this.tabScan.Location = new System.Drawing.Point(1, 24);
-            this.tabScan.Name = "tabScan";
-            this.tabScan.Size = new System.Drawing.Size(1176, 604);
-            this.tabScan.TabIndex = 3;
-            this.tabScan.Text = "เวชระเบียน";
-            // 
-            // panel10
-            // 
-            this.panel10.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.panel10.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel10.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.panel10.Location = new System.Drawing.Point(0, 0);
-            this.panel10.Name = "panel10";
-            this.panel10.Size = new System.Drawing.Size(1176, 604);
-            this.panel10.TabIndex = 0;
-            this.theme1.SetTheme(this.panel10, "(default)");
             // 
             // tabApp
             // 
@@ -3717,44 +3548,6 @@
             this.c1FlexViewer1.ThumbBackColorPressed = System.Drawing.Color.FromArgb(((int)(((byte)(225)))), ((int)(((byte)(108)))), ((int)(((byte)(89)))));
             this.c1FlexViewer1.ThumbBackColorSelected = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(71)))), ((int)(((byte)(47)))));
             // 
-            // panel3
-            // 
-            this.panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.panel3.Location = new System.Drawing.Point(0, 0);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(752, 448);
-            this.panel3.TabIndex = 0;
-            this.theme1.SetTheme(this.panel3, "(default)");
-            // 
-            // pnOrder11
-            // 
-            this.pnOrder11.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.pnOrder11.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnOrder11.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.pnOrder11.Location = new System.Drawing.Point(0, 0);
-            this.pnOrder11.Name = "pnOrder11";
-            this.pnOrder11.Size = new System.Drawing.Size(815, 450);
-            this.pnOrder11.TabIndex = 0;
-            this.theme1.SetTheme(this.pnOrder11, "(default)");
-            // 
-            // sB
-            // 
-            this.sB.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.sB1});
-            this.sB.Location = new System.Drawing.Point(0, 868);
-            this.sB.Name = "sB";
-            this.sB.Size = new System.Drawing.Size(1584, 22);
-            this.sB.TabIndex = 6;
-            this.sB.Text = "statusStrip1";
-            // 
-            // sB1
-            // 
-            this.sB1.Name = "sB1";
-            this.sB1.Size = new System.Drawing.Size(118, 17);
-            this.sB1.Text = "toolStripStatusLabel1";
-            // 
             // tabHistory
             // 
             this.tabHistory.Controls.Add(this.pnHistory);
@@ -3809,7 +3602,7 @@
             this.c1SplitterPanel8.SizeRatio = 25.349D;
             this.c1SplitterPanel8.TabIndex = 0;
             this.c1SplitterPanel8.Text = "Panel 1";
-            this.c1SplitterPanel8.Width = 400;
+            this.c1SplitterPanel8.Width = 393;
             // 
             // pnHistoryVs
             // 
@@ -3933,19 +3726,43 @@
             this.pnHistoryScan.TabIndex = 0;
             this.theme1.SetTheme(this.pnHistoryScan, "(default)");
             // 
-            // txtVnProgressNote
+            // panel3
             // 
-            this.txtVnProgressNote.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtVnProgressNote.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
-            this.txtVnProgressNote.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.txtVnProgressNote.Location = new System.Drawing.Point(741, 78);
-            this.txtVnProgressNote.Name = "txtVnProgressNote";
-            this.txtVnProgressNote.Size = new System.Drawing.Size(30, 20);
-            this.txtVnProgressNote.TabIndex = 968;
-            this.txtVnProgressNote.Tag = null;
-            this.theme1.SetTheme(this.txtVnProgressNote, "(default)");
-            this.txtVnProgressNote.Visible = false;
-            this.txtVnProgressNote.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            this.panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.panel3.Location = new System.Drawing.Point(0, 0);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(752, 448);
+            this.panel3.TabIndex = 0;
+            this.theme1.SetTheme(this.panel3, "(default)");
+            // 
+            // pnOrder11
+            // 
+            this.pnOrder11.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.pnOrder11.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pnOrder11.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.pnOrder11.Location = new System.Drawing.Point(0, 0);
+            this.pnOrder11.Name = "pnOrder11";
+            this.pnOrder11.Size = new System.Drawing.Size(815, 450);
+            this.pnOrder11.TabIndex = 0;
+            this.theme1.SetTheme(this.pnOrder11, "(default)");
+            // 
+            // sB
+            // 
+            this.sB.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.sB1});
+            this.sB.Location = new System.Drawing.Point(0, 868);
+            this.sB.Name = "sB";
+            this.sB.Size = new System.Drawing.Size(1584, 22);
+            this.sB.TabIndex = 6;
+            this.sB.Text = "statusStrip1";
+            // 
+            // sB1
+            // 
+            this.sB1.Name = "sB1";
+            this.sB1.Size = new System.Drawing.Size(118, 17);
+            this.sB1.Text = "toolStripStatusLabel1";
             // 
             // FrmDoctorAdd
             // 
@@ -3964,6 +3781,7 @@
             this.pnPatient.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtVnProgressNote)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtVsId)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtPttId)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cboLangSticker)).EndInit();
@@ -4038,17 +3856,6 @@
             this.tcOrd.ResumeLayout(false);
             this.c1DockingTabPage9.ResumeLayout(false);
             this.c1DockingTabPage10.ResumeLayout(false);
-            this.tabHis.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.sCDesc)).EndInit();
-            this.sCDesc.ResumeLayout(false);
-            this.c1SplitterPanel3.ResumeLayout(false);
-            this.c1SplitterPanel4.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.tC1)).EndInit();
-            this.tC1.ResumeLayout(false);
-            this.tabDrug.ResumeLayout(false);
-            this.tabLab.ResumeLayout(false);
-            this.tabOr.ResumeLayout(false);
-            this.tabScan.ResumeLayout(false);
             this.tabApp.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.c1SplitContainer1)).EndInit();
             this.c1SplitContainer1.ResumeLayout(false);
@@ -4102,8 +3909,6 @@
             this.spOutLabDetail.ResumeLayout(false);
             this.pnOutLabDetail.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.c1FlexViewer1)).EndInit();
-            this.sB.ResumeLayout(false);
-            this.sB.PerformLayout();
             this.tabHistory.ResumeLayout(false);
             this.pnHistory.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.sCHistory)).EndInit();
@@ -4116,7 +3921,8 @@
             this.tabHistoryLab.ResumeLayout(false);
             this.tabHistoryOr.ResumeLayout(false);
             this.tabHistoryScan.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.txtVnProgressNote)).EndInit();
+            this.sB.ResumeLayout(false);
+            this.sB.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -4141,7 +3947,6 @@
         private C1.Win.C1SplitContainer.C1SplitterPanel pnPatient;
         private C1.Win.C1SplitContainer.C1SplitterPanel pnDesc;
         private C1.Win.C1Command.C1DockingTab tC;
-        private C1.Win.C1Command.C1DockingTabPage tabHis;
         private C1.Win.C1Command.C1DockingTabPage tabApp;
         private System.Windows.Forms.Panel pnAdm;
         private C1.Win.C1Command.C1DockingTabPage tabCert;
@@ -4178,18 +3983,8 @@
         //private C1.Win.C1Input.C1Button btnRxSetOrder;
         //private System.Windows.Forms.Panel pnRxSetD;
         private System.Windows.Forms.Panel pnOrder11;
-        //private C1.Win.C1Command.C1DockingTab tcOrd;
-        //private C1.Win.C1Command.C1DockingTabPage tabOrd;
-        //private System.Windows.Forms.Panel pnOrder;
-        //private C1.Win.C1Command.C1DockingTabPage tabPkg;
-        //private System.Windows.Forms.Panel pnPkg;
-        private C1.Win.C1SplitContainer.C1SplitContainer sCDesc;
-        private C1.Win.C1SplitContainer.C1SplitterPanel c1SplitterPanel3;
         private C1.Win.C1SplitContainer.C1SplitterPanel c1SplitterPanel4;
         private C1.Win.C1Command.C1DockingTab tC1;
-        private C1.Win.C1Command.C1DockingTabPage tabDrug;
-        private C1.Win.C1Command.C1DockingTabPage tabLab;
-        private C1.Win.C1Command.C1DockingTabPage tabOr;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label label29;
         private System.Windows.Forms.Label label35;
@@ -4223,12 +4018,6 @@
         private C1.Win.C1Input.C1TextBox txtPttNameE;
         private C1.Win.C1Input.C1TextBox txtPttName;
         private C1.Win.C1Input.C1TextBox txtHn;
-        private System.Windows.Forms.Panel pnVs;
-        private System.Windows.Forms.Panel panel6;
-        private System.Windows.Forms.Panel panel8;
-        private System.Windows.Forms.Panel panel9;
-        private C1.Win.C1Command.C1DockingTabPage tabScan;
-        private System.Windows.Forms.Panel panel10;
         private C1.Win.C1SplitContainer.C1SplitContainer c1SplitContainer1;
         private C1.Win.C1SplitContainer.C1SplitterPanel c1SplitterPanel1;
         private C1.Win.C1SplitContainer.C1SplitterPanel c1SplitterPanel2;

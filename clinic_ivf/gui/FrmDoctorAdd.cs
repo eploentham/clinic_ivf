@@ -24,6 +24,9 @@ using System.Windows.Forms;
 
 namespace clinic_ivf.gui
 {
+    /*
+     * 62-07-19     0009    Doctor		tabProgressNote  มี error ตอน thread run ดึง ftp อ่าน ชื่อ file
+     */
     public partial class FrmDoctorAdd : Form
     {
         IvfControl ic;
@@ -66,6 +69,14 @@ namespace clinic_ivf.gui
         string documentName;
         string documentPath;
         RichTextBoxStreamType documentFileType;
+        private void grfPgAdd(String msg)       // +0009
+        {       // +0009
+            grfPg.Invoke(new EventHandler(delegate {       // +0009
+                Row row = grfPg.Rows.Add();       // +0009
+                row[colPgId] = msg;       // +0009
+                row[colPgFilename] = msg.Replace(txtIdOld.Text, "").Replace("/", "");       // +0009
+            }));       // +0009
+        }       // +0009
         public FrmDoctorAdd(IvfControl ic, MainMenu m, String pttid, String vsid)
         {
             InitializeComponent();
@@ -186,7 +197,7 @@ namespace clinic_ivf.gui
         {
             //throw new NotImplementedException();
             String id = "";
-            id = grfPg[grfPg.Row, colPgId].ToString();
+            id = grfPg[grfPg.Row, colPgId] != null ? grfPg[grfPg.Row, colPgId].ToString() : "";
             id = id.Replace(ic.iniC.folderFTP, "").Replace("/", "").Replace("progressnote", "").Replace(".rtf", "").Replace("_", "").Replace(txtIdOld.Text, "");
             txtVnProgressNote.Value = id;
             Thread threadA = new Thread(new ParameterizedThreadStart(ExecuteProgressNote));
@@ -266,7 +277,7 @@ namespace clinic_ivf.gui
             if (txtPttId.Text.Equals(""))
                 return;
 
-
+            List<string> filestxt = new List<string>();
             Thread pump = new Thread(() =>
             {
                 Thread.CurrentThread.IsBackground = true;
@@ -292,7 +303,7 @@ namespace clinic_ivf.gui
                     ftpRequest.Method = WebRequestMethods.Ftp.ListDirectory;
                     ftpResponse = (FtpWebResponse)ftpRequest.GetResponse();
                     //ftpStream = ftpResponse.GetResponseStream();
-                    List<string> filestxt = new List<string>();
+                    
                     StreamReader streamReader = null;
                     try
                     {
@@ -326,9 +337,8 @@ namespace clinic_ivf.gui
                     ftpRequest = null;
                     foreach (String aaa in filestxt)
                     {
-                        Row row = grfPg.Rows.Add();
-                        row[colPgId] = aaa;
-                        row[colPgFilename] = aaa.Replace(txtIdOld.Text, "").Replace("/", "");
+                        //Row row = grfPg.Rows.Add();
+                        grfPgAdd(aaa);       // +0009
                     }
                 }
                 catch (Exception ex)
@@ -337,11 +347,12 @@ namespace clinic_ivf.gui
                     MessageBox.Show("setGrfPg 2 " + ex.Message + "\n ", "host " + ic.iniC.hostFTP + " user " + user + " pas  " + pass);
                 }
             });
+            
             pump.Start();
             //pump.Join();
             //grfImg.AutoSizeCols();
             //grfImg.AutoSizeRows();
-
+            
             grfPg.Cols[colPgId].Visible = false;
             //grfImg.Cols[colPathPic].Visible = false;
             grfPg.Cols[colPgFilename].AllowEditing = false;
@@ -898,10 +909,10 @@ namespace clinic_ivf.gui
             //RichTextBoxStreamType fileType = RichTextBoxStreamType.RichText;
             //String filePathName = "progressnote" + "_" + txtVn.Text + ".rtf";
             //richTextBox1.LoadFile(filePathName, fileType);
-            Thread threadA = new Thread(new ParameterizedThreadStart(ExecuteA1));
+            Thread threadA = new Thread(new ParameterizedThreadStart(ExecuteProgressNote1));
             threadA.Start();
         }
-        private void ExecuteA1(Object obj)
+        private void ExecuteProgressNote1(Object obj)
         {
             //Console.WriteLine("Executing parameterless thread!");
             try
@@ -2991,17 +3002,17 @@ namespace clinic_ivf.gui
             label35.Text = panel1.Height.ToString();
         }
 
-        private void setControl(String vsid)
+        private void setControl(String vn)
         {
-            vsOld = ic.ivfDB.ovsDB.selectByPk1(vsid);
+            vsOld = ic.ivfDB.ovsDB.selectByPk1(vn);
             pttOld = ic.ivfDB.pttOldDB.selectByPk1(vsOld.PID);
-            vs = ic.ivfDB.vsDB.selectByPk1(vsid);
+            vs = ic.ivfDB.vsDB.selectByVn(vn);
             ptt = ic.ivfDB.pttDB.selectByHn(vsOld.PIDS);
-            ptt.patient_birthday = pttOld.DateOfBirth;
+            //ptt.patient_birthday = pttOld.DateOfBirth;
             txtHn.Value = vsOld.PIDS;
             txtVn.Value = vsOld.VN;
             txtPttNameE.Value = vsOld.PName;
-            txtDob.Value = ic.datetoShow(pttOld.DateOfBirth) + " [" + ptt.AgeStringShort() + "]";
+            txtDob.Value = ic.datetoShow(ptt.patient_birthday) + " [" + ptt.AgeStringShort() + "]";
             txtAllergy.Value = ptt.allergy_description;
             txtIdOld.Value = pttOld.PID;
             txtPttId.Value = ptt.t_patient_id;
@@ -3035,7 +3046,7 @@ namespace clinic_ivf.gui
             //menuGw.MenuItems.Add("Upload รูป Passport", new EventHandler(ContextMenu_grfimg_upload_ptt));
             //menuGw.MenuItems.Add("ยกเลิก", new EventHandler(ContextMenu_grfimg_Cancel));
             //grfImgOld.ContextMenu = menuGw;
-            pnVs.Controls.Add(grfVs);
+            pnHistoryVs.Controls.Add(grfVs);
 
             theme1.SetTheme(grfVs, "Office2016Colorful");
 
@@ -3308,9 +3319,9 @@ namespace clinic_ivf.gui
             //sC.HeaderHeight = 0;
             sCOrder.HeaderHeight = 0;
             sCmain.HeaderHeight = 0;
-            sCDesc.HeaderHeight = 0;
-            tC.SelectedTab = tabHis;
-            tC1.SelectedTab = tabDrug;
+            sCHistory.HeaderHeight = 0;
+            tC.SelectedTab = tabHistory;
+            tCHistory.SelectedTab = tabHistoryDrug;
         }
     }
 }

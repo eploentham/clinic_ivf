@@ -87,6 +87,7 @@ namespace clinic_ivf.gui
         private void Timer_Tick(object sender, EventArgs e)
         {
             //throw new NotImplementedException();
+            setGrfQue();
         }
 
         private void TxtDateStart_DropDownClosed(object sender, C1.Win.C1Input.DropDownClosedEventArgs e)
@@ -97,6 +98,7 @@ namespace clinic_ivf.gui
         private void BtnSearch_Click(object sender, EventArgs e)
         {
             //throw new NotImplementedException();
+
         }
 
         private void TC_SelectedTabChanged(object sender, EventArgs e)
@@ -107,6 +109,17 @@ namespace clinic_ivf.gui
         private void TxtSearch_KeyUp(object sender, KeyEventArgs e)
         {
             //throw new NotImplementedException();
+            if (e.KeyCode == Keys.Enter)
+            {                
+                setGrfSearch(txtSearch.Text.Trim());                
+            }
+            else
+            {
+                if (txtSearch.Text.Length > 3)
+                {
+                    setGrfSearch(txtSearch.Text);
+                }
+            }
         }
         private void openDtrAddFinish()
         {
@@ -116,6 +129,19 @@ namespace clinic_ivf.gui
             pttId = grfFinish[grfFinish.Row, colPttId] != null ? grfFinish[grfFinish.Row, colPttId].ToString() : "";
             chk = grfFinish[grfFinish.Row, colPttHn] != null ? grfFinish[grfFinish.Row, colPttHn].ToString() : "";
             name = grfFinish[grfFinish.Row, colPttName] != null ? grfFinish[grfFinish.Row, colPttName].ToString() : "";
+            //FrmNurseAdd frm = new FrmNurseAdd();
+            //frm.ShowDialog(this);
+
+            openDtrAdd(pttId, id, name);
+        }
+        private void openDtrAddSearch()
+        {
+            String chk = "", name = "", id = "", pttId = "";
+
+            id = grfSearch[grfSearch.Row, colID] != null ? grfSearch[grfSearch.Row, colID].ToString() : "";
+            pttId = grfSearch[grfSearch.Row, colPttId] != null ? grfSearch[grfSearch.Row, colPttId].ToString() : "";
+            chk = grfSearch[grfSearch.Row, colPttHn] != null ? grfSearch[grfSearch.Row, colPttHn].ToString() : "";
+            name = grfSearch[grfSearch.Row, colPttName] != null ? grfSearch[grfSearch.Row, colPttName].ToString() : "";
             //FrmNurseAdd frm = new FrmNurseAdd();
             //frm.ShowDialog(this);
 
@@ -134,9 +160,9 @@ namespace clinic_ivf.gui
 
             openDtrAdd(pttId, id, name);
         }
-        private void openDtrAdd(String pttId, String vsid, String name)
+        private void openDtrAdd(String pttId, String vn, String name)
         {
-            FrmDoctorAdd frm = new FrmDoctorAdd(ic, menu, pttId, vsid);
+            FrmDoctorAdd frm = new FrmDoctorAdd(ic, menu, pttId, vn);
             String txt = "";
             if (!name.Equals(""))
             {
@@ -399,17 +425,24 @@ namespace clinic_ivf.gui
 
             //FilterRow fr = new FilterRow(grfExpn);
 
-            //grfSearch.AfterRowColChange += GrfReq_AfterRowColChange;
+            grfSearch.DoubleClick += GrfSearch_DoubleClick;
             //grfExpnC.CellButtonClick += new C1.Win.C1FlexGrid.RowColEventHandler(this.grfDept_CellButtonClick);
             //grfExpnC.CellChanged += new C1.Win.C1FlexGrid.RowColEventHandler(this.grfDept_CellChanged);
-            ContextMenu menuGw = new ContextMenu();
+            //ContextMenu menuGw = new ContextMenu();
             //menuGw.MenuItems.Add("&แก้ไข รายการเบิก", new EventHandler(ContextMenu_edit));
-            grfSearch.ContextMenu = menuGw;
+            //grfSearch.ContextMenu = menuGw;
             pnSearch.Controls.Add(grfSearch);
             grfSearch.Rows.Count = 1;
             theme1.SetTheme(pnSearch, "Office2010Red");
 
         }
+        
+        private void GrfSearch_DoubleClick(object sender, EventArgs e)
+        {
+            //throw new NotImplementedException();
+            openDtrAddSearch();
+        }
+
         private void setGrfSearch(String search)
         {
             //grfDept.Rows.Count = 7;
@@ -417,31 +450,20 @@ namespace clinic_ivf.gui
             grfSearch.Clear();
             DataTable dt1 = new DataTable();
             DataTable dt = new DataTable();
-            if (search.Equals(""))
-            {
-                String date = "";
-                DateTime dt11 = new DateTime();
-                if (DateTime.TryParse(txtDateStart.Text, out dt11))
-                {
-                    date = dt11.Year + "-" + dt11.ToString("MM-dd");
-                    dt = ic.ivfDB.ovsDB.selectByHnFormA(date);
-                }
-            }
-            else
-            {
-                dt = ic.ivfDB.ovsDB.selectByHNLike(search);
+            
+            dt = ic.ivfDB.ovsDB.selectByHNLike(search);
                 //grfPtt.DataSource = ic.ivfDB.vsOldDB.selectCurrentVisit(search);
-            }
+            
 
             //grfExpn.Rows.Count = dt.Rows.Count + 1;
             grfSearch.Rows.Count = dt.Rows.Count + 1;
-            grfSearch.Cols.Count = 10;
-            C1TextBox txt = new C1TextBox();
+            grfSearch.Cols.Count = 11;
+            //C1TextBox txt = new C1TextBox();
             //C1ComboBox cboproce = new C1ComboBox();
             //ic.ivfDB.itmDB.setCboItem(cboproce);
-            grfSearch.Cols[colPttHn].Editor = txt;
-            grfSearch.Cols[colPttName].Editor = txt;
-            grfSearch.Cols[colVsDate].Editor = txt;
+            //grfSearch.Cols[colPttHn].Editor = txt;
+            //grfSearch.Cols[colPttName].Editor = txt;
+            //grfSearch.Cols[colVsDate].Editor = txt;
 
             grfSearch.Cols[colVNshow].Width = 120;
             grfSearch.Cols[colPttHn].Width = 120;
@@ -475,7 +497,7 @@ namespace clinic_ivf.gui
             foreach (DataRow row in dt.Rows)
             {
                 grfSearch[i, 0] = i;
-                grfSearch[i, colID] = row["id"].ToString();
+                grfSearch[i, colID] = row["id"].ToString();     //vn
                 grfSearch[i, colVNshow] = row["VN"].ToString();
                 grfSearch[i, colPttHn] = row["PIDS"].ToString();
                 grfSearch[i, colPttName] = row["PName"].ToString();
@@ -484,6 +506,7 @@ namespace clinic_ivf.gui
                 grfSearch[i, colVsEtime] = row["VEndTime"].ToString();
                 grfSearch[i, colStatus] = row["VName"].ToString();
                 grfSearch[i, colPttId] = row["PID"].ToString();
+                grfSearch[i, colVn] = row["VN"].ToString();
                 if (!row[ic.ivfDB.ovsDB.vsold.form_a_id].ToString().Equals("0"))
                 {
                     CellNote note = new CellNote("ส่ง Lab Request Foam A");
