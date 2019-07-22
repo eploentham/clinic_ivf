@@ -147,9 +147,10 @@ namespace clinic_ivf.objdb
                 "," + eggsd.lt_ovary_1 + " = '" + p.lt_ovary_1.Replace("'", "''") + "'" +
                 "," + eggsd.lt_ovary_2 + "='" + p.lt_ovary_2.Replace("'", "''") + "'" +
                 "," + eggsd.endo + "='" + p.endo.Replace("'", "''") + "'" +
-                "," + eggsd.egg_sti_id + "='" + p.egg_sti_id + "'" +
-                "," + eggsd.medication + "='" + p.medication + "'" +
-                "," + eggsd.medication2 + "='" + p.medication2 + "'" +
+                "," + eggsd.fsh + "='" + p.fsh.Replace("'", "''") + "'" +
+                //"," + eggsd.egg_sti_id + "='" + p.egg_sti_id + "'" +
+                "," + eggsd.medication + "='" + p.medication.Replace("'", "''") + "'" +
+                "," + eggsd.medication2 + "='" + p.medication2.Replace("'", "''") + "'" +
                 "," + eggsd.date_modi + "=now()" +
                 "," + eggsd.user_modi + "='" + userId + "@" + conn._IPAddress + "'" +
                 "Where " + eggsd.pkField + "='" + p.egg_sti_day_id + "'"
@@ -184,9 +185,9 @@ namespace clinic_ivf.objdb
                 "," + eggsd.lt_ovary_1 + " = '" + p.lt_ovary_1.Replace("'", "''") + "'" +
                 "," + eggsd.lt_ovary_2 + "='" + p.lt_ovary_2.Replace("'", "''") + "'" +
                 "," + eggsd.endo + "='" + p.endo.Replace("'", "''") + "'" +
-                "," + eggsd.fsh + "='" + p.fsh + "'" +
-                "," + eggsd.medication + "='" + p.medication + "'" +
-                "," + eggsd.medication2 + "='" + p.medication2 + "'" +
+                "," + eggsd.fsh + "='" + p.fsh.Replace("'", "''") + "'" +
+                "," + eggsd.medication + "='" + p.medication.Replace("'", "''") + "'" +
+                "," + eggsd.medication2 + "='" + p.medication2.Replace("'", "''") + "'" +
                 "," + eggsd.date_modi + "=now()" +
                 "," + eggsd.user_modi + "='" + userId + "@" + conn._IPAddress + "'" +
                 "Where " + eggsd.pkField + "='" + p.egg_sti_day_id + "'"

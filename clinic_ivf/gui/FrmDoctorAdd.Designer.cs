@@ -143,7 +143,6 @@
             this.pnOrder = new System.Windows.Forms.Panel();
             this.c1DockingTabPage10 = new C1.Win.C1Command.C1DockingTabPage();
             this.pnPkg = new System.Windows.Forms.Panel();
-            this.c1SplitterPanel4 = new C1.Win.C1SplitContainer.C1SplitterPanel();
             this.tabApp = new C1.Win.C1Command.C1DockingTabPage();
             this.c1SplitContainer1 = new C1.Win.C1SplitContainer.C1SplitContainer();
             this.c1SplitterPanel1 = new C1.Win.C1SplitContainer.C1SplitterPanel();
@@ -289,6 +288,7 @@
             this.pnHistoryScan = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
             this.pnOrder11 = new System.Windows.Forms.Panel();
+            this.c1SplitterPanel4 = new C1.Win.C1SplitContainer.C1SplitterPanel();
             this.sB = new System.Windows.Forms.StatusStrip();
             this.sB1 = new System.Windows.Forms.ToolStripStatusLabel();
             ((System.ComponentModel.ISupportInitialize)(this.theme1)).BeginInit();
@@ -1295,7 +1295,7 @@
             this.c1SplitterPanel5.Size = new System.Drawing.Size(782, 629);
             this.c1SplitterPanel5.TabIndex = 0;
             this.c1SplitterPanel5.Text = "Panel 1";
-            this.c1SplitterPanel5.Width = 789;
+            this.c1SplitterPanel5.Width = 782;
             // 
             // panel12
             // 
@@ -2001,14 +2001,6 @@
             this.pnPkg.Size = new System.Drawing.Size(787, 604);
             this.pnPkg.TabIndex = 0;
             this.theme1.SetTheme(this.pnPkg, "(default)");
-            // 
-            // c1SplitterPanel4
-            // 
-            this.c1SplitterPanel4.Height = 629;
-            this.c1SplitterPanel4.Location = new System.Drawing.Point(404, 21);
-            this.c1SplitterPanel4.Name = "c1SplitterPanel4";
-            this.c1SplitterPanel4.Size = new System.Drawing.Size(1178, 629);
-            this.c1SplitterPanel4.TabIndex = 1;
             // 
             // tabApp
             // 
@@ -3019,9 +3011,9 @@
             // richTextBox1
             // 
             this.richTextBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.richTextBox1.Location = new System.Drawing.Point(0, 146);
+            this.richTextBox1.Location = new System.Drawing.Point(0, 143);
             this.richTextBox1.Name = "richTextBox1";
-            this.richTextBox1.Size = new System.Drawing.Size(925, 504);
+            this.richTextBox1.Size = new System.Drawing.Size(925, 507);
             this.richTextBox1.TabIndex = 1;
             this.richTextBox1.Text = "";
             // 
@@ -3036,7 +3028,7 @@
             this.c1Ribbon1.QatHolder = this.ribbonQat1;
             this.c1Ribbon1.QatItemsHolder.Add(this.UndoButton);
             this.c1Ribbon1.QatItemsHolder.Add(this.RedoButton);
-            this.c1Ribbon1.Size = new System.Drawing.Size(925, 146);
+            this.c1Ribbon1.Size = new System.Drawing.Size(925, 143);
             this.c1Ribbon1.Tabs.Add(this.HomeTab);
             this.c1Ribbon1.Tabs.Add(this.ViewTab);
             this.c1Ribbon1.Tabs.Add(this.ribbonTab1);
@@ -3747,6 +3739,14 @@
             this.pnOrder11.Size = new System.Drawing.Size(815, 450);
             this.pnOrder11.TabIndex = 0;
             this.theme1.SetTheme(this.pnOrder11, "(default)");
+            // 
+            // c1SplitterPanel4
+            // 
+            this.c1SplitterPanel4.Height = 629;
+            this.c1SplitterPanel4.Location = new System.Drawing.Point(404, 21);
+            this.c1SplitterPanel4.Name = "c1SplitterPanel4";
+            this.c1SplitterPanel4.Size = new System.Drawing.Size(1178, 629);
+            this.c1SplitterPanel4.TabIndex = 1;
             // 
             // sB
             // 

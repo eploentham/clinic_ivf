@@ -1462,7 +1462,7 @@ namespace clinic_ivf.gui
                 //row["status_abnormal"] = "";
             }
 
-            frm.setEggStiReport(dt, txtPttNameE.Text, "", txtEggStiVisitLMP.Text, txtEggStiG.Text, txtEggStiP.Text, txtEggStiA.Text, cboEggStiDtr.Text, txtEggStiOPUDate.Text, txtEggStiOPUTime.Text, txtEggStiEmbryoTranferDate.Text, txtEggStiEmbryoTranferTime.Text);
+            frm.setEggStiReport(dt, txtPttNameE.Text+" ["+txtHn.Text+"]", "", txtEggStiVisitLMP.Text, txtEggStiG.Text, txtEggStiP.Text, txtEggStiA.Text, cboEggStiDtr.Text, txtEggStiOPUDate.Text, txtEggStiOPUTime.Text, txtEggStiEmbryoTranferDate.Text, txtEggStiEmbryoTranferTime.Text);
             frm.ShowDialog(this);
         }
 
@@ -1787,9 +1787,9 @@ namespace clinic_ivf.gui
             chkApmRFsh.Checked = pApm.repeat_fsh.Equals("1") ? true : false;
             chkApmRPrl.Checked = pApm.repeat_prl.Equals("1") ? true : false;
             chkApmSperm.Checked = pApm.sperm_collect.Equals("1") ? true : false;
-            chkApmEt.Checked = pApm.e2.Equals("1") ? true : false;
-            chkApmFet.Checked = pApm.e2.Equals("1") ? true : false;
-            chkApmOther.Checked = pApm.e2.Equals("1") ? true : false;
+            chkApmEt.Checked = pApm.et.Equals("1") ? true : false;
+            chkApmFet.Checked = pApm.fet.Equals("1") ? true : false;
+            chkApmOther.Checked = pApm.other.Equals("1") ? true : false;
             txtApmRemark.Value = pApm.remark;
             txtApmAppointment.Value = pApm.patient_appointment;
             ic.setC1Combo(cboApmDtr, pApm.patient_appointment_doctor);
@@ -1881,6 +1881,11 @@ namespace clinic_ivf.gui
             txtEggStiA.Value = eggs.a;
             ic.setC1Combo(cboEggStiDtr, eggs.doctor_id);
 
+            txtLmp.Value = ptt.lmp;
+            if (txtEggStiVisitLMP.Text.Equals(""))
+            {
+                txtEggStiVisitLMP.Value = ptt.lmp;
+            }
             setGrfEggStiDay();
         }
         private void setControlPmh()
@@ -2687,11 +2692,11 @@ namespace clinic_ivf.gui
             pApm.active = "1";
 
             pApm.remark = txtApmRemarkpApm.Text;
-            pApm.e2 = chkApmEt.Checked ? "1" : "0";
+            pApm.e2 = chkApmDonorE2.Checked ? "1" : "0";
             pApm.beta_hgc = chkApmHCG.Checked ? "1" : "0";
             pApm.prl = chkApmPrl.Checked ? "1" : "0";
             pApm.lh = chkApmLh.Checked ? "1" : "0";
-            pApm.fet = chkApmFet.Checked ? "1" : "0";
+            
             pApm.hormone_test = chkApmHormoneTest.Checked ? "1" : "0";
             pApm.fsh = chkApmFsh.Checked ? "1" : "0";
             pApm.tvs = chkApmTvs.Checked ? "1" : "0";
@@ -2701,16 +2706,21 @@ namespace clinic_ivf.gui
             pApm.repeat_lh = chkApmRLh.Checked ? "1" : "0";
             pApm.repeat_fsh = chkApmRFsh.Checked ? "1" : "0";
             pApm.opu = chkApmOpu.Checked ? "1" : "0";
+            pApm.opu_time = cboApmOPUTime.Text;
+            //pApm.o = cboApmOPUTime.Text;
             pApm.doctor_anes = cboApmDtrAnes.Text;
             pApm.tvs_day = txtApmTvsDay.Text;
             pApm.tvs_time = cboApmTvsTime.Text;
-            pApm.opu_time = cboApmOPUTime.Text;
-            pApm.et_time = cboApmETTime.Text;
-            pApm.fet_time = cboApmFETTime.Text;
             pApm.sperm_collect = chkApmSperm.Checked ? "1" : "0";
+
+            pApm.et = chkApmEt.Checked ? "1" : "0";
+            pApm.et_time = cboApmETTime.Text;
+            pApm.fet = chkApmFet.Checked ? "1" : "0";
+            pApm.fet_time = cboApmFETTime.Text;
+            
             pApm.other = chkApmOther.Checked ? "1" : "0";
             pApm.other_remark = txtApmOther.Text;
-            pApm.et = chkApmEt.Checked ? "1" : "0";
+            
             //pApm.opu = chkET.Checked ? "1" : "0";
             return chk;
         }
@@ -3801,7 +3811,8 @@ namespace clinic_ivf.gui
             chkChronic.Checked = ptt.status_congenial.Equals("1") ? true : false;
             ic.setC1Combo(cboDoctor, vs.doctor_id);
             Patient ptt1 = new Patient();
-            ptt1 = ic.ivfDB.pttDB.selectByHn(vs.patient_hn_male);
+            //ptt1 = ic.ivfDB.pttDB.selectByHn(vs.patient_hn_male);
+            ptt1 = ic.ivfDB.pttDB.selectByHn(ptt.patient_hn_1);
             txtNameMale.Value = ptt1.Name;
             stt.Show("<p><b>สวัสดี</b></p>คุณ " + ptt.congenital_diseases_description + "<br> กรุณา ป้อนรหัสผ่าน", chkChronic);
             txtCongenital.Value = ptt.congenital_diseases_description;
@@ -3811,6 +3822,11 @@ namespace clinic_ivf.gui
                 cboBsp.SelectedIndex = 3;
             }
             ic.ivfDB.eggsDB.setCboPatient(cboEggStiId, txtPttId.Text);
+            txtAgent.Value = ic.ivfDB.oAgnDB.getList(ptt.agent);
+            txtLmp.Value = ptt.lmp;
+            Patient ptt2 = new Patient();
+            ptt2 = ic.ivfDB.pttDB.selectByHn(ptt.patient_hn_2);
+            txtName_2.Value = ptt2.Name;
             if (!ptt.t_patient_id.Equals(""))
             {
                 PatientImage pttI = new PatientImage();
@@ -6198,6 +6214,7 @@ namespace clinic_ivf.gui
         {
             //throw new NotImplementedException();
             String id = "";
+            if (grfPg.Row < 0) return;
             id = grfPg[grfPg.Row, colPgId].ToString();
             id = id.Replace(ic.iniC.folderFTP, "").Replace("/", "").Replace("progressnote", "").Replace(".rtf", "").Replace("_", "").Replace(txtIdOld.Text, "");
             txtVnProgressNote.Value = id;

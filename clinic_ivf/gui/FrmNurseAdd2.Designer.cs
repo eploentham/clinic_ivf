@@ -37,6 +37,7 @@
             this.tlpPatient = new System.Windows.Forms.TableLayoutPanel();
             this.picPtt = new C1.Win.C1Input.C1PictureBox();
             this.pnPatient = new System.Windows.Forms.Panel();
+            this.txtVnProgressNote = new C1.Win.C1Input.C1TextBox();
             this.txtVnShow = new C1.Win.C1Input.C1TextBox();
             this.cboAllergyDesc = new C1.Win.C1Input.C1ComboBox();
             this.txtPttId = new C1.Win.C1Input.C1TextBox();
@@ -703,7 +704,12 @@
             this.label94 = new System.Windows.Forms.Label();
             this.c1SplitterPanel4 = new C1.Win.C1SplitContainer.C1SplitterPanel();
             this.c1SplitterPanel5 = new C1.Win.C1SplitContainer.C1SplitterPanel();
-            this.txtVnProgressNote = new C1.Win.C1Input.C1TextBox();
+            this.label87 = new System.Windows.Forms.Label();
+            this.txtAgent = new C1.Win.C1Input.C1TextBox();
+            this.label88 = new System.Windows.Forms.Label();
+            this.txtName_2 = new C1.Win.C1Input.C1TextBox();
+            this.txtLmp = new C1.Win.C1Input.C1DateEdit();
+            this.lbLmp = new System.Windows.Forms.Label();
             this.sB.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.theme1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.sC)).BeginInit();
@@ -712,6 +718,7 @@
             this.tlpPatient.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picPtt)).BeginInit();
             this.pnPatient.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtVnProgressNote)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtVnShow)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cboAllergyDesc)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtPttId)).BeginInit();
@@ -1100,7 +1107,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.btnSave)).BeginInit();
             this.c1SplitterPanel4.SuspendLayout();
             this.c1SplitterPanel5.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.txtVnProgressNote)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtAgent)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtName_2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtLmp)).BeginInit();
             this.SuspendLayout();
             // 
             // sB
@@ -1190,6 +1199,12 @@
             // pnPatient
             // 
             this.pnPatient.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.pnPatient.Controls.Add(this.txtLmp);
+            this.pnPatient.Controls.Add(this.lbLmp);
+            this.pnPatient.Controls.Add(this.label88);
+            this.pnPatient.Controls.Add(this.txtName_2);
+            this.pnPatient.Controls.Add(this.label87);
+            this.pnPatient.Controls.Add(this.txtAgent);
             this.pnPatient.Controls.Add(this.txtVnProgressNote);
             this.pnPatient.Controls.Add(this.txtVnShow);
             this.pnPatient.Controls.Add(this.cboAllergyDesc);
@@ -1247,6 +1262,20 @@
             this.pnPatient.Size = new System.Drawing.Size(1422, 125);
             this.pnPatient.TabIndex = 531;
             this.theme1.SetTheme(this.pnPatient, "(default)");
+            // 
+            // txtVnProgressNote
+            // 
+            this.txtVnProgressNote.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtVnProgressNote.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
+            this.txtVnProgressNote.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.txtVnProgressNote.Location = new System.Drawing.Point(867, 30);
+            this.txtVnProgressNote.Name = "txtVnProgressNote";
+            this.txtVnProgressNote.Size = new System.Drawing.Size(30, 20);
+            this.txtVnProgressNote.TabIndex = 967;
+            this.txtVnProgressNote.Tag = null;
+            this.theme1.SetTheme(this.txtVnProgressNote, "(default)");
+            this.txtVnProgressNote.Visible = false;
+            this.txtVnProgressNote.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
             // 
             // txtVnShow
             // 
@@ -1356,11 +1385,11 @@
             this.label22.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
             this.label22.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label22.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.label22.Location = new System.Drawing.Point(162, 78);
+            this.label22.Location = new System.Drawing.Point(168, 78);
             this.label22.Name = "label22";
-            this.label22.Size = new System.Drawing.Size(81, 16);
+            this.label22.Size = new System.Drawing.Size(62, 16);
             this.label22.TabIndex = 961;
-            this.label22.Text = "name male :";
+            this.label22.Text = "name_1 :";
             this.theme1.SetTheme(this.label22, "(default)");
             // 
             // txtNameMale
@@ -1533,12 +1562,13 @@
             this.label19.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
             this.label19.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label19.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.label19.Location = new System.Drawing.Point(6, 57);
+            this.label19.Location = new System.Drawing.Point(6, 104);
             this.label19.Name = "label19";
             this.label19.Size = new System.Drawing.Size(55, 16);
             this.label19.TabIndex = 836;
             this.label19.Text = "Sticker :";
             this.theme1.SetTheme(this.label19, "(default)");
+            this.label19.Visible = false;
             // 
             // cboLangSticker
             // 
@@ -1552,15 +1582,16 @@
             this.cboLangSticker.ImagePadding = new System.Windows.Forms.Padding(0);
             this.cboLangSticker.ItemsDisplayMember = "";
             this.cboLangSticker.ItemsValueMember = "";
-            this.cboLangSticker.Location = new System.Drawing.Point(67, 55);
+            this.cboLangSticker.Location = new System.Drawing.Point(67, 102);
             this.cboLangSticker.Name = "cboLangSticker";
-            this.cboLangSticker.Size = new System.Drawing.Size(127, 20);
+            this.cboLangSticker.Size = new System.Drawing.Size(44, 20);
             this.cboLangSticker.Style.DropDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
             this.cboLangSticker.Style.DropDownBorderColor = System.Drawing.Color.Gainsboro;
             this.cboLangSticker.Style.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
             this.cboLangSticker.TabIndex = 835;
             this.cboLangSticker.Tag = null;
             this.theme1.SetTheme(this.cboLangSticker, "(default)");
+            this.cboLangSticker.Visible = false;
             this.cboLangSticker.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
             // 
             // label18
@@ -3386,6 +3417,7 @@
             this.cboApmOPUTimeDonor.TabIndex = 688;
             this.cboApmOPUTimeDonor.Tag = null;
             this.theme1.SetTheme(this.cboApmOPUTimeDonor, "(default)");
+            this.cboApmOPUTimeDonor.Visible = false;
             this.cboApmOPUTimeDonor.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
             // 
             // label106
@@ -3400,6 +3432,7 @@
             this.label106.TabIndex = 687;
             this.label106.Text = "time :";
             this.theme1.SetTheme(this.label106, "(default)");
+            this.label106.Visible = false;
             // 
             // cboApmTvsTimeDonor
             // 
@@ -3422,6 +3455,7 @@
             this.cboApmTvsTimeDonor.TabIndex = 686;
             this.cboApmTvsTimeDonor.Tag = null;
             this.theme1.SetTheme(this.cboApmTvsTimeDonor, "(default)");
+            this.cboApmTvsTimeDonor.Visible = false;
             this.cboApmTvsTimeDonor.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
             // 
             // label107
@@ -3436,6 +3470,7 @@
             this.label107.TabIndex = 685;
             this.label107.Text = "time :";
             this.theme1.SetTheme(this.label107, "(default)");
+            this.label107.Visible = false;
             // 
             // label108
             // 
@@ -3449,6 +3484,7 @@
             this.label108.TabIndex = 684;
             this.label108.Text = "day";
             this.theme1.SetTheme(this.label108, "(default)");
+            this.label108.Visible = false;
             // 
             // txtApmTvsDayDonor
             // 
@@ -3461,6 +3497,7 @@
             this.txtApmTvsDayDonor.TabIndex = 683;
             this.txtApmTvsDayDonor.Tag = null;
             this.theme1.SetTheme(this.txtApmTvsDayDonor, "(default)");
+            this.txtApmTvsDayDonor.Visible = false;
             this.txtApmTvsDayDonor.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
             // 
             // cboApmDtrAnes
@@ -3500,6 +3537,7 @@
             this.theme1.SetTheme(this.chkApmOpuDonor, "(default)");
             this.chkApmOpuDonor.UseVisualStyleBackColor = true;
             this.chkApmOpuDonor.Value = null;
+            this.chkApmOpuDonor.Visible = false;
             this.chkApmOpuDonor.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
             // 
             // chkApmTvsDonor
@@ -3518,6 +3556,7 @@
             this.theme1.SetTheme(this.chkApmTvsDonor, "(default)");
             this.chkApmTvsDonor.UseVisualStyleBackColor = true;
             this.chkApmTvsDonor.Value = null;
+            this.chkApmTvsDonor.Visible = false;
             this.chkApmTvsDonor.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
             // 
             // chkApmRPrl
@@ -10016,9 +10055,9 @@
             // richTextBox1
             // 
             this.richTextBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.richTextBox1.Location = new System.Drawing.Point(0, 146);
+            this.richTextBox1.Location = new System.Drawing.Point(0, 143);
             this.richTextBox1.Name = "richTextBox1";
-            this.richTextBox1.Size = new System.Drawing.Size(906, 519);
+            this.richTextBox1.Size = new System.Drawing.Size(906, 522);
             this.richTextBox1.TabIndex = 1;
             this.richTextBox1.Text = "";
             // 
@@ -10033,7 +10072,7 @@
             this.c1Ribbon1.QatHolder = this.ribbonQat1;
             this.c1Ribbon1.QatItemsHolder.Add(this.UndoButton);
             this.c1Ribbon1.QatItemsHolder.Add(this.RedoButton);
-            this.c1Ribbon1.Size = new System.Drawing.Size(906, 146);
+            this.c1Ribbon1.Size = new System.Drawing.Size(906, 143);
             this.c1Ribbon1.Tabs.Add(this.HomeTab);
             this.c1Ribbon1.Tabs.Add(this.ViewTab);
             this.c1Ribbon1.Tabs.Add(this.ribbonTab1);
@@ -10964,19 +11003,117 @@
             this.c1SplitterPanel5.TabIndex = 1;
             this.c1SplitterPanel5.Text = "Panel 2";
             // 
-            // txtVnProgressNote
+            // label87
             // 
-            this.txtVnProgressNote.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtVnProgressNote.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
-            this.txtVnProgressNote.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.txtVnProgressNote.Location = new System.Drawing.Point(867, 30);
-            this.txtVnProgressNote.Name = "txtVnProgressNote";
-            this.txtVnProgressNote.Size = new System.Drawing.Size(30, 20);
-            this.txtVnProgressNote.TabIndex = 967;
-            this.txtVnProgressNote.Tag = null;
-            this.theme1.SetTheme(this.txtVnProgressNote, "(default)");
-            this.txtVnProgressNote.Visible = false;
-            this.txtVnProgressNote.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            this.label87.AutoSize = true;
+            this.label87.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.label87.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label87.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.label87.Location = new System.Drawing.Point(6, 58);
+            this.label87.Name = "label87";
+            this.label87.Size = new System.Drawing.Size(49, 16);
+            this.label87.TabIndex = 969;
+            this.label87.Text = "Agent :";
+            this.theme1.SetTheme(this.label87, "(default)");
+            // 
+            // txtAgent
+            // 
+            this.txtAgent.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtAgent.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
+            this.txtAgent.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.txtAgent.Location = new System.Drawing.Point(67, 55);
+            this.txtAgent.Name = "txtAgent";
+            this.txtAgent.Size = new System.Drawing.Size(133, 20);
+            this.txtAgent.TabIndex = 968;
+            this.txtAgent.Tag = null;
+            this.theme1.SetTheme(this.txtAgent, "(default)");
+            this.txtAgent.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            // 
+            // label88
+            // 
+            this.label88.AutoSize = true;
+            this.label88.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.label88.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label88.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.label88.Location = new System.Drawing.Point(168, 98);
+            this.label88.Name = "label88";
+            this.label88.Size = new System.Drawing.Size(62, 16);
+            this.label88.TabIndex = 971;
+            this.label88.Text = "name_2 :";
+            this.theme1.SetTheme(this.label88, "(default)");
+            // 
+            // txtName_2
+            // 
+            this.txtName_2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtName_2.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
+            this.txtName_2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.txtName_2.Location = new System.Drawing.Point(282, 96);
+            this.txtName_2.Name = "txtName_2";
+            this.txtName_2.Size = new System.Drawing.Size(253, 20);
+            this.txtName_2.TabIndex = 970;
+            this.txtName_2.Tag = null;
+            this.theme1.SetTheme(this.txtName_2, "(default)");
+            this.txtName_2.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            // 
+            // txtLmp
+            // 
+            this.txtLmp.AllowSpinLoop = false;
+            this.txtLmp.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            // 
+            // 
+            // 
+            this.txtLmp.Calendar.ArrowColor = System.Drawing.Color.Black;
+            this.txtLmp.Calendar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.txtLmp.Calendar.DayNamesFont = new System.Drawing.Font("Tahoma", 8F);
+            this.txtLmp.Calendar.Font = new System.Drawing.Font("Tahoma", 8F);
+            this.txtLmp.Calendar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.txtLmp.Calendar.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(71)))), ((int)(((byte)(47)))));
+            this.txtLmp.Calendar.SelectionForeColor = System.Drawing.Color.White;
+            this.txtLmp.Calendar.TitleBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(230)))));
+            this.txtLmp.Calendar.TitleFont = new System.Drawing.Font("Tahoma", 8F);
+            this.txtLmp.Calendar.TitleForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.txtLmp.Calendar.TodayBorderColor = System.Drawing.Color.White;
+            this.txtLmp.Calendar.TrailingForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
+            this.txtLmp.Calendar.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            this.txtLmp.Culture = 1033;
+            this.txtLmp.CurrentTimeZone = false;
+            this.txtLmp.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
+            this.txtLmp.DisplayFormat.FormatType = C1.Win.C1Input.FormatTypeEnum.ShortDate;
+            this.txtLmp.DisplayFormat.Inherit = ((C1.Win.C1Input.FormatInfoInheritFlags)((((((C1.Win.C1Input.FormatInfoInheritFlags.CustomFormat | C1.Win.C1Input.FormatInfoInheritFlags.NullText) 
+            | C1.Win.C1Input.FormatInfoInheritFlags.EmptyAsNull) 
+            | C1.Win.C1Input.FormatInfoInheritFlags.TrimStart) 
+            | C1.Win.C1Input.FormatInfoInheritFlags.TrimEnd) 
+            | C1.Win.C1Input.FormatInfoInheritFlags.CalendarType)));
+            this.txtLmp.EditFormat.FormatType = C1.Win.C1Input.FormatTypeEnum.ShortDate;
+            this.txtLmp.EditFormat.Inherit = ((C1.Win.C1Input.FormatInfoInheritFlags)((((((C1.Win.C1Input.FormatInfoInheritFlags.CustomFormat | C1.Win.C1Input.FormatInfoInheritFlags.NullText) 
+            | C1.Win.C1Input.FormatInfoInheritFlags.EmptyAsNull) 
+            | C1.Win.C1Input.FormatInfoInheritFlags.TrimStart) 
+            | C1.Win.C1Input.FormatInfoInheritFlags.TrimEnd) 
+            | C1.Win.C1Input.FormatInfoInheritFlags.CalendarType)));
+            this.txtLmp.EmptyAsNull = true;
+            this.txtLmp.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtLmp.GMTOffset = System.TimeSpan.Parse("00:00:00");
+            this.txtLmp.ImagePadding = new System.Windows.Forms.Padding(0);
+            this.txtLmp.Location = new System.Drawing.Point(46, 78);
+            this.txtLmp.Name = "txtLmp";
+            this.txtLmp.Size = new System.Drawing.Size(119, 20);
+            this.txtLmp.TabIndex = 973;
+            this.txtLmp.Tag = null;
+            this.theme1.SetTheme(this.txtLmp, "(default)");
+            this.txtLmp.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            // 
+            // lbLmp
+            // 
+            this.lbLmp.AutoSize = true;
+            this.lbLmp.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.lbLmp.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbLmp.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.lbLmp.Location = new System.Drawing.Point(4, 80);
+            this.lbLmp.Name = "lbLmp";
+            this.lbLmp.Size = new System.Drawing.Size(41, 16);
+            this.lbLmp.TabIndex = 972;
+            this.lbLmp.Text = "LMP :";
+            this.theme1.SetTheme(this.lbLmp, "(default)");
             // 
             // FrmNurseAdd2
             // 
@@ -11000,6 +11137,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.picPtt)).EndInit();
             this.pnPatient.ResumeLayout(false);
             this.pnPatient.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtVnProgressNote)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtVnShow)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cboAllergyDesc)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtPttId)).EndInit();
@@ -11443,7 +11581,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.btnSave)).EndInit();
             this.c1SplitterPanel4.ResumeLayout(false);
             this.c1SplitterPanel5.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.txtVnProgressNote)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtAgent)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtName_2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtLmp)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -12176,5 +12316,11 @@
         private C1.Win.C1Command.C1DockingTabPage tabHistoryScan;
         private System.Windows.Forms.Panel pnHistoryScan;
         private C1.Win.C1Input.C1TextBox txtVnProgressNote;
+        private System.Windows.Forms.Label label87;
+        private C1.Win.C1Input.C1TextBox txtAgent;
+        private System.Windows.Forms.Label label88;
+        private C1.Win.C1Input.C1TextBox txtName_2;
+        private C1.Win.C1Input.C1DateEdit txtLmp;
+        private System.Windows.Forms.Label lbLmp;
     }
 }

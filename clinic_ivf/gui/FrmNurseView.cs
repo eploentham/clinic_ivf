@@ -28,7 +28,7 @@ namespace clinic_ivf.gui
         Color bg, fc;
         Font ff, ffB;
 
-        int colID = 1, colVNshow = 2, colPttHn = 3, colPttName = 4, colPttHn1=5, colPttName1=6, colPttHn2=7, colPttName2=8, colVsDate = 9, colVsTime = 10, colVsEtime = 11, colStatus = 12, colPttId=13, colVn=14, colDtr=15, colPID=16, colFormAId=17, colFormACode=18, colStatusOPU=19, colStatusFet=20, colStatusAna=21, colStatusFreezing=22, colStatusPesa=23, colStatusIUI=24;
+        int colID = 1, colVNshow = 2, colPttHn = 3, colPttName = 4, colPttHn1=5, colPttName1=6, colPttHn2=7, colPttName2=8, colVsAgent=9, colVsDate = 10, colVsTime = 11, colVsEtime = 12, colStatus = 13, colPttId=14, colVn=15, colDtr=16, colPID=17, colFormAId=18, colFormACode=19, colStatusOPU=20, colStatusFet=21, colStatusAna=22, colStatusFreezing=23, colStatusPesa=24, colStatusIUI=25;
         int colSID = 1, colSVN = 2, colSPttHn = 3, colSPttName = 4, colSVsDate = 5, colSVsTime = 6, colSVsEtime = 7, colSStatus = 8, colSPttId = 9;
         int colRID = 1, colRVN = 2, colRPttHn = 3, colRPttName = 4, colRVsDate = 5, colRPttId = 6;
         int colLID = 1, colLVN = 2, colLPttHn = 3, colLPttName = 4, colLlabname = 5, colLPttId = 6;
@@ -708,7 +708,7 @@ namespace clinic_ivf.gui
 
             //grfExpn.Rows.Count = dt.Rows.Count + 1;
             grfSearch.Rows.Count = dt.Rows.Count + 1;
-            grfSearch.Cols.Count = 25;
+            grfSearch.Cols.Count = 26;
             //C1TextBox txt = new C1TextBox();
             //C1ComboBox cboproce = new C1ComboBox();
             //ic.ivfDB.itmDB.setCboItem(cboproce);
@@ -773,6 +773,7 @@ namespace clinic_ivf.gui
             grfSearch.Cols[colStatusFreezing].Caption = "Freez";
             grfSearch.Cols[colStatusPesa].Caption = "Pesa";
             grfSearch.Cols[colStatusIUI].Caption = "IUI";
+            grfSearch.Cols[colVsAgent].Caption = "Agent";
 
             ContextMenu menuGw = new ContextMenu();
             //menuGw.MenuItems.Add("&receive operation", new EventHandler(ContextMenu_Apm));
@@ -820,6 +821,7 @@ namespace clinic_ivf.gui
                 grfSearch[i, colPttName1] = row["name_1"].ToString();
                 grfSearch[i, colPttHn2] = row["patient_hn_2"].ToString();
                 grfSearch[i, colPttName2] = row["name_2"].ToString();
+                //grfSearch[i, colVsAgent] = row["AgentName"].ToString();
 
                 grfSearch[i, colStatusOPU] = row[ic.ivfDB.lFormaDB.lformA.status_opu_active].ToString().Equals("1") ? imgCorr : imgTran;
                 grfSearch[i, colStatusFet] = row[ic.ivfDB.lFormaDB.lformA.status_fet_active].ToString().Equals("1") ? imgCorr : imgTran;
@@ -827,7 +829,7 @@ namespace clinic_ivf.gui
                 grfSearch[i, colStatusFreezing] = row[ic.ivfDB.lFormaDB.lformA.status_sperm_freezing].ToString().Equals("1") ? imgCorr : imgTran;
                 grfSearch[i, colStatusPesa] = row[ic.ivfDB.lFormaDB.lformA.status_sperm_pesa].ToString().Equals("1") ? imgCorr : imgTran;
                 grfSearch[i, colStatusIUI] = row[ic.ivfDB.lFormaDB.lformA.status_sperm_iui].ToString().Equals("1") ? imgCorr : imgTran;
-
+                grfSearch[i, colVsAgent] = row["AgentName"].ToString();
                 if (!row[ic.ivfDB.ovsDB.vsold.form_a_id].ToString().Equals("0") && !row[ic.ivfDB.ovsDB.vsold.form_a_id].ToString().Equals(""))
                 {
                     CellNote note = new CellNote("ส่ง Lab Request Foam A");
@@ -839,7 +841,7 @@ namespace clinic_ivf.gui
                 i++;
             }
             CellNoteManager mgr = new CellNoteManager(grfSearch);
-            //grfSearch.Cols[colID].Visible = false;
+            grfSearch.Cols[colID].Visible = false;
             grfSearch.Cols[colStatus].Visible = false;
             grfSearch.Cols[colVsEtime].Visible = false;
             grfSearch.Cols[colVsTime].Visible = false;
@@ -863,6 +865,7 @@ namespace clinic_ivf.gui
             grfSearch.Cols[colStatusFreezing].AllowEditing = false;
             grfSearch.Cols[colStatusPesa].AllowEditing = false;
             grfSearch.Cols[colStatusIUI].AllowEditing = false;
+            grfSearch.Cols[colVsAgent].AllowEditing = false;
             //theme1.SetTheme(grfQue, ic.theme);
 
         }
@@ -1104,7 +1107,7 @@ namespace clinic_ivf.gui
 
             //grfExpn.Rows.Count = dt.Rows.Count + 1;
             grfQue.Rows.Count = dt.Rows.Count + 1;
-            grfQue.Cols.Count = 17;
+            grfQue.Cols.Count = 18;
             //C1TextBox txt = new C1TextBox();
             //C1ComboBox cboproce = new C1ComboBox();
             //ic.ivfDB.itmDB.setCboItem(cboproce);
@@ -1123,6 +1126,7 @@ namespace clinic_ivf.gui
             grfQue.Cols[colPttName1].Width = 250;
             grfQue.Cols[colPttHn2].Width = 100;
             grfQue.Cols[colPttName2].Width = 250;
+            grfQue.Cols[colVsAgent].Width = 150;
 
             grfQue.ShowCursor = true;
             //grdFlex.Cols[colID].Caption = "no";
@@ -1139,6 +1143,7 @@ namespace clinic_ivf.gui
             grfQue.Cols[colPttName1].Caption = "Name Hn2";
             grfQue.Cols[colPttHn2].Caption = "Hn 2";
             grfQue.Cols[colPttName2].Caption = "Name Hn2";
+            grfQue.Cols[colVsAgent].Caption = "Agent";
 
             ContextMenu menuGw = new ContextMenu();
             menuGw.MenuItems.Add("&receive operation", new EventHandler(ContextMenu_order));
@@ -1183,6 +1188,7 @@ namespace clinic_ivf.gui
                     grfQue[i, colPttName2] = row["name_2"].ToString();
                     grfQue[i, colVn] = row["VN"].ToString();
                     grfQue[i, colPID] = row["PID"].ToString();
+                    grfQue[i, colVsAgent] = row["AgentName"].ToString();
                     //if (i % 2 == 0)
                     //    grfPtt.Rows[i].StyleNew.BackColor = color;
                     i++;
@@ -1238,7 +1244,7 @@ namespace clinic_ivf.gui
 
             //grfExpn.Rows.Count = dt.Rows.Count + 1;
             grfQue.Rows.Count = dt.Rows.Count + 1;
-            grfQue.Cols.Count = 17;
+            grfQue.Cols.Count = 18;
             C1TextBox txt = new C1TextBox();
             //C1ComboBox cboproce = new C1ComboBox();
             //ic.ivfDB.itmDB.setCboItem(cboproce);
@@ -1320,6 +1326,7 @@ namespace clinic_ivf.gui
                 grfQue[i, colPttHn2] = row["patient_hn_2"].ToString();
                 grfQue[i, colPttName2] = row["name_2"].ToString();
                 grfQue[i, colPID] = row["PID"].ToString();
+                grfQue[i, colVsAgent] = row["AgentName"].ToString();
                 if (!row[ic.ivfDB.ovsDB.vsold.form_a_id].ToString().Equals("0"))
                 {
                     CellNote note = new CellNote("ส่ง Lab Request Foam A");
@@ -1345,6 +1352,7 @@ namespace clinic_ivf.gui
             grfQue.Cols[colPttName1].AllowEditing = false;
             grfQue.Cols[colPttHn2].AllowEditing = false;
             grfQue.Cols[colPttName2].AllowEditing = false;
+            grfQue.Cols[colVsAgent].AllowEditing = false;
             //theme1.SetTheme(grfQue, ic.theme);
 
         }

@@ -229,6 +229,7 @@ namespace clinic_ivf.gui
             finally
             {
                 frmW.Dispose();
+                setGrfDay6Img();
             }
         }
 
@@ -2911,9 +2912,9 @@ namespace clinic_ivf.gui
             grfDay2Img.ShowCursor = true;
 
             grfDay2Img.Cols[colDay2ImgNun].Caption = "No";
-            grfDay2Img.Cols[colDay2ImgDesc0].Caption = "Desc1";
+            grfDay2Img.Cols[colDay2ImgDesc0].Caption = "st#";
             grfDay2Img.Cols[colDay2PathPic].Caption = "pathpic";
-            grfDay2Img.Cols[colDay2ImgDesc1].Caption = "Desc2";
+            grfDay2Img.Cols[colDay2ImgDesc1].Caption = "Desc4";
 
             grfDay2Img.Cols[colDay2ImgPic].ImageAndText = false;
 
@@ -3013,7 +3014,7 @@ namespace clinic_ivf.gui
             //FilterRow fr = new FilterRow(grfExpn);
 
             grfDay2Img.DoubleClick += GrfDay2Img_DoubleClick;
-            //grfDay2.ChangeEdit += GrfDay2_ChangeEdit;
+            grfDay2Img.KeyUp += GrfDay2Img_KeyUp;
             //grfDay2.CellChanged += GrfDay2_CellChanged;
             ContextMenu menuGw = new ContextMenu();
             menuGw.MenuItems.Add("&Upload image", new EventHandler(ContextMenu_grfday2_upload));
@@ -3024,6 +3025,16 @@ namespace clinic_ivf.gui
 
             theme1.SetTheme(grfDay2Img, "Office2010Blue");
         }
+
+        private void GrfDay2Img_KeyUp(object sender, KeyEventArgs e)
+        {
+            //throw new NotImplementedException();
+            if (e.KeyCode == Keys.Delete)
+            {
+                ContextMenu_grfday2_Cancel(null, null);
+            }
+        }
+
         private void ContextMenu_grfday2_upload(object sender, System.EventArgs e)
         {
             String pathfile1 = grfDay2Img[grfDay2Img.Row, colDay2PathPic] != null ? grfDay2Img[grfDay2Img.Row, colDay2PathPic].ToString() : "";
@@ -3152,9 +3163,9 @@ namespace clinic_ivf.gui
             grfDay3Img.ShowCursor = true;
 
             grfDay3Img.Cols[colDay2ImgNun].Caption = "No";
-            grfDay3Img.Cols[colDay2ImgDesc0].Caption = "Desc1";
+            grfDay3Img.Cols[colDay2ImgDesc0].Caption = "st#";
             grfDay3Img.Cols[colDay2PathPic].Caption = "pathpic";
-            grfDay3Img.Cols[colDay2ImgDesc1].Caption = "Desc2";
+            grfDay3Img.Cols[colDay2ImgDesc1].Caption = "Desc4";
 
             grfDay3Img.Cols[colDay2ImgPic].ImageAndText = false;
 
@@ -3256,6 +3267,7 @@ namespace clinic_ivf.gui
             //FilterRow fr = new FilterRow(grfExpn);
 
             grfDay3Img.DoubleClick += GrfDay3Img_DoubleClick;
+            grfDay3Img.KeyUp += GrfDay3Img_KeyUp;
             //grfDay2.ChangeEdit += GrfDay2_ChangeEdit;
             //grfDay2.CellChanged += GrfDay2_CellChanged;
             ContextMenu menuGw = new ContextMenu();
@@ -3267,6 +3279,16 @@ namespace clinic_ivf.gui
 
             theme1.SetTheme(grfDay3Img, "Office2010Blue");
         }
+
+        private void GrfDay3Img_KeyUp(object sender, KeyEventArgs e)
+        {
+            //throw new NotImplementedException();
+            if (e.KeyCode == Keys.Delete)
+            {
+                ContextMenu_grfday3_Cancel(null, null);
+            }
+        }
+
         private void ContextMenu_grfday3_upload(object sender, System.EventArgs e)
         {
             String pathfile1 = grfDay3Img[grfDay3Img.Row, colDay2PathPic] != null ? grfDay3Img[grfDay3Img.Row, colDay2PathPic].ToString() : "";
@@ -3395,9 +3417,9 @@ namespace clinic_ivf.gui
             grfDay5Img.ShowCursor = true;
 
             grfDay5Img.Cols[colDay2ImgNun].Caption = "No";
-            grfDay5Img.Cols[colDay2ImgDesc0].Caption = "Desc1";
+            grfDay5Img.Cols[colDay2ImgDesc0].Caption = "st#";
             grfDay5Img.Cols[colDay2PathPic].Caption = "pathpic";
-            grfDay5Img.Cols[colDay2ImgDesc1].Caption = "Desc2";
+            grfDay5Img.Cols[colDay2ImgDesc1].Caption = "Desc4";
 
             grfDay5Img.Cols[colDay2ImgPic].ImageAndText = false;
 
@@ -3499,7 +3521,7 @@ namespace clinic_ivf.gui
             //FilterRow fr = new FilterRow(grfExpn);
 
             grfDay5Img.DoubleClick += GrfDay5Img_DoubleClick;
-            //grfDay2.ChangeEdit += GrfDay2_ChangeEdit;
+            grfDay5Img.KeyUp += GrfDay5Img_KeyUp;
             //grfDay2.CellChanged += GrfDay2_CellChanged;
             ContextMenu menuGw = new ContextMenu();
             menuGw.MenuItems.Add("&Upload image", new EventHandler(ContextMenu_grfday5_upload));
@@ -3510,6 +3532,16 @@ namespace clinic_ivf.gui
 
             theme1.SetTheme(grfDay5Img, "Office2010Blue");
         }
+
+        private void GrfDay5Img_KeyUp(object sender, KeyEventArgs e)
+        {
+            //throw new NotImplementedException();
+            if (e.KeyCode == Keys.Delete)
+            {
+                ContextMenu_grfday5_Cancel(null, null);
+            }
+        }
+
         private void ContextMenu_grfday5_upload(object sender, System.EventArgs e)
         {
             String pathfile1 = grfDay5Img[grfDay5Img.Row, colDay2PathPic] != null ? grfDay5Img[grfDay5Img.Row, colDay2PathPic].ToString() : "";
@@ -3638,9 +3670,9 @@ namespace clinic_ivf.gui
             grfDay6Img.ShowCursor = true;
 
             grfDay6Img.Cols[colDay2ImgNun].Caption = "No";
-            grfDay6Img.Cols[colDay2ImgDesc0].Caption = "Desc1";
+            grfDay6Img.Cols[colDay2ImgDesc0].Caption = "st#";
             grfDay6Img.Cols[colDay2PathPic].Caption = "pathpic";
-            grfDay6Img.Cols[colDay2ImgDesc1].Caption = "Desc2";
+            grfDay6Img.Cols[colDay2ImgDesc1].Caption = "Desc4";
 
             grfDay6Img.Cols[colDay2ImgPic].ImageAndText = false;
 
@@ -3742,7 +3774,7 @@ namespace clinic_ivf.gui
             //FilterRow fr = new FilterRow(grfExpn);
 
             grfDay6Img.DoubleClick += GrfDay6Img_DoubleClick;
-            //grfDay2.ChangeEdit += GrfDay2_ChangeEdit;
+            grfDay6Img.KeyUp += GrfDay6Img_KeyUp;
             //grfDay2.CellChanged += GrfDay2_CellChanged;
             ContextMenu menuGw = new ContextMenu();
             menuGw.MenuItems.Add("&Upload image", new EventHandler(ContextMenu_grfday6_upload));
@@ -3753,6 +3785,16 @@ namespace clinic_ivf.gui
 
             theme1.SetTheme(grfDay6Img, "Office2010Blue");
         }
+
+        private void GrfDay6Img_KeyUp(object sender, KeyEventArgs e)
+        {
+            //throw new NotImplementedException();
+            if (e.KeyCode == Keys.Delete)
+            {
+                ContextMenu_grfday6_Cancel(null, null);
+            }
+        }
+
         private void ContextMenu_grfday6_upload(object sender, System.EventArgs e)
         {
             String pathfile1 = grfDay6Img[grfDay6Img.Row, colDay2PathPic] != null ? grfDay6Img[grfDay6Img.Row, colDay2PathPic].ToString() : "";
@@ -4197,7 +4239,7 @@ namespace clinic_ivf.gui
 
             grfDay2.Cols[colDay2Num].Caption = "no";
             grfDay2.Cols[colDay2Desc].Caption = "desc";
-            grfDay2.Cols[colDay2Desc1].Caption = "st#";
+            grfDay2.Cols[colDay2Desc1].Caption = "desc1";
             grfDay2.Cols[colDay2Desc2].Caption = "desc2";
 
             Color color = ColorTranslator.FromHtml(ic.iniC.grfRowColor);
@@ -4266,7 +4308,7 @@ namespace clinic_ivf.gui
 
             grfDay3.Cols[colDay3Num].Caption = "no";
             grfDay3.Cols[colDay3Desc].Caption = "desc";
-            grfDay3.Cols[colDay3Desc1].Caption = "st#";
+            grfDay3.Cols[colDay3Desc1].Caption = "desc1";
             grfDay3.Cols[colDay3Desc2].Caption = "desc2";
 
             Color color = ColorTranslator.FromHtml(ic.iniC.grfRowColor);
@@ -4331,7 +4373,7 @@ namespace clinic_ivf.gui
 
             grfDay5.Cols[colDay5Num].Caption = "no";
             grfDay5.Cols[colDay5Desc].Caption = "desc";
-            grfDay5.Cols[colDay5Desc1].Caption = "st#";
+            grfDay5.Cols[colDay5Desc1].Caption = "desc1";
             grfDay5.Cols[colDay5Desc2].Caption = "desc2";
             grfDay5.Cols[colDay5Desc].AllowSorting = false;
             grfDay5.Cols[colDay5Desc1].AllowSorting = false;
@@ -4401,7 +4443,7 @@ namespace clinic_ivf.gui
 
             grfDay6.Cols[colDay6Num].Caption = "no";
             grfDay6.Cols[colDay6Desc].Caption = "desc";
-            grfDay6.Cols[colDay6Desc1].Caption = "st#";
+            grfDay6.Cols[colDay6Desc1].Caption = "desc1";
             grfDay6.Cols[colDay6Desc2].Caption = "desc2";
             grfDay6.Cols[colDay6Desc].AllowSorting = false;
             grfDay6.Cols[colDay6Desc1].AllowSorting = false;

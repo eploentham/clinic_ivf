@@ -677,13 +677,14 @@ namespace clinic_ivf.objdb
                 ", ptt.patient_hn_1 ,CONCAT(IFNULL(fpp_1.patient_prefix_description,''),' ', ptt_1.patient_firstname_e ,' ',ptt_1.patient_lastname_e ) as name_1" +
                 ", ptt.patient_hn_2 ,CONCAT(IFNULL(fpp_2.patient_prefix_description,''),' ', ptt_2.patient_firstname_e ,' ',ptt_2.patient_lastname_e ) as name_2 " +
                 ", '' as dtr_name " +
+                ", ptt.agent, agt.AgentName " +
                 "From t_patient ptt  " +
                 "Left join f_patient_prefix fpp on fpp.f_patient_prefix_id = ptt.f_patient_prefix_id " +
                 "Left join t_patient ptt_1 on ptt.patient_hn_1 = ptt_1.patient_hn and ptt.patient_hn_1 <> '' and ptt.patient_hn_1 is not null " +
                 "Left join f_patient_prefix fpp_1 on fpp_1.f_patient_prefix_id = ptt_1.f_patient_prefix_id " +
                 "Left join t_patient ptt_2 on ptt.patient_hn_2 = ptt_2.patient_hn and ptt.patient_hn_2 <> '' and ptt.patient_hn_2 is not null " +
                 "Left join f_patient_prefix fpp_2 on fpp_2.f_patient_prefix_id = ptt_2.f_patient_prefix_id " +
-                //"Left join b_staff stf on vs.doctor_id = stf.staff_id " +
+                "Left Join Agent agt on ptt.agent = agt.AgentID " +
                 //"Left join f_patient_prefix fpp_stf on fpp_stf.f_patient_prefix_id = stf.prefix_id " +
                 "Where ptt." + ptt.patient_hn + " like '%" + hn + "%' " +
                 "Order By ptt.t_patient_id desc ";

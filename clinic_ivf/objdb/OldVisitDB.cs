@@ -730,6 +730,7 @@ namespace clinic_ivf.objdb
                 ",vsold.form_a_id, CONCAT(IFNULL(fpp.patient_prefix_description,''),' ', stf.staff_fname_e ,' ',stf.staff_lname_e)  as dtrname, t_visit.status_nurse, t_visit.status_cashier " +
                  ", ptt.patient_hn_1 ,CONCAT(IFNULL(fpp_1.patient_prefix_description,''),' ', ptt_1.patient_firstname_e ,' ',ptt_1.patient_lastname_e ) as name_1" +
                 ", ptt.patient_hn_2 ,CONCAT(IFNULL(fpp_2.patient_prefix_description,''),' ', ptt_2.patient_firstname_e ,' ',ptt_2.patient_lastname_e ) as name_2 " +
+                ", ptt.agent, agt.AgentName " +
                 "From " + vsold.table + " vsold " +
                 "Left Join VStatus on  VStatus.VSID = vsold.VSID " +
                 "Left Join t_visit on  vsold.VN = t_visit.visit_vn " +
@@ -740,6 +741,7 @@ namespace clinic_ivf.objdb
                 "Left join f_patient_prefix fpp_1 on fpp_1.f_patient_prefix_id = ptt_1.f_patient_prefix_id " +
                 "Left join t_patient ptt_2 on ptt.patient_hn_2 = ptt_2.patient_hn and ptt.patient_hn_2 <> '' and ptt.patient_hn_2 is not null " +
                 "Left join f_patient_prefix fpp_2 on fpp_2.f_patient_prefix_id = ptt_2.f_patient_prefix_id " +
+                "Left Join Agent agt on ptt.agent = agt.AgentID " +
                 "Where  vsold.VSID in ('110','115') and t_visit.b_service_point_id = '" + bspid + "' " +
                 "Order By vsold.VDate desc, vsold.VStartTime desc";
             dt = conn.selectData(conn.conn, sql);
@@ -788,6 +790,7 @@ namespace clinic_ivf.objdb
                 ",vsold.form_a_id, CONCAT(IFNULL(fpp.patient_prefix_description,''),' ', stf.staff_fname_e ,' ',stf.staff_lname_e)  as dtrname, t_visit.status_nurse, t_visit.status_cashier, ptt.t_patient_id " +
                 ", ptt.patient_hn_1 ,CONCAT(IFNULL(fpp_1.patient_prefix_description,''),' ', ptt_1.patient_firstname_e ,' ',ptt_1.patient_lastname_e ) as name_1" +
                 ", ptt.patient_hn_2 ,CONCAT(IFNULL(fpp_2.patient_prefix_description,''),' ', ptt_2.patient_firstname_e ,' ',ptt_2.patient_lastname_e ) as name_2 " +
+                ", ptt.agent, agt.AgentName " +
                 "From " + vsold.table + " vsold " +
                 "Left Join VStatus on  VStatus.VSID = vsold.VSID " +                
                 "Left Join t_visit on  vsold.VN = t_visit.visit_vn " +
@@ -798,6 +801,7 @@ namespace clinic_ivf.objdb
                 "Left join f_patient_prefix fpp_1 on fpp_1.f_patient_prefix_id = ptt_1.f_patient_prefix_id " +
                 "Left join t_patient ptt_2 on ptt.patient_hn_2 = ptt_2.patient_hn and ptt.patient_hn_2 <> '' and ptt.patient_hn_2 is not null " +
                 "Left join f_patient_prefix fpp_2 on fpp_2.f_patient_prefix_id = ptt_2.f_patient_prefix_id " +
+                "Left Join Agent agt on ptt.agent = agt.AgentID " +
                 "Where  vsold.VSID in ('110','115') " +
                 "Order By vsold.VDate desc, vsold.VStartTime desc";
             dt = conn.selectData(conn.conn, sql);
