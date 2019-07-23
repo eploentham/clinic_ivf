@@ -895,6 +895,7 @@ namespace clinic_ivf.gui
                                 txtHnFeMale.Value = ptt.patient_hn;
                                 txtNameFeMale.Value = ptt.Name;
                                 txtDobMale.Value = ptt1.patient_birthday;
+                                txtDobFeMale.Value = ptt.patient_birthday;
                             }
                         }
                         //if (!ptt.patient_hn_1.Equals("") && !ptt.patient_hn_2.Equals(""))    // record donor

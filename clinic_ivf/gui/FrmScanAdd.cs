@@ -294,12 +294,12 @@ namespace clinic_ivf.gui
                             {
                                 vn = txtVN.Text.Replace("/", "_").Replace("(", "_").Replace(")", "");
                             }
-                            dsc.image_path = txtHn.Text.Replace("-", "").Replace("/", "-") + "-" + vn + "//" + txtHn.Text.Replace("-", "").Replace("/", "-") + "-" + vn + "-" + re + ext;
+                            dsc.image_path = txtHn.Text.Replace("-", "").Replace("/", "") + "_" + vn + "//" + txtHn.Text.Replace("-", "").Replace("/", "") + "_" + vn + "_" + re + ext;
                             String re1 = ic.ivfDB.dscDB.updateImagepath(dsc.image_path, re);
                             FtpClient ftp = new FtpClient(ic.iniC.hostFTP, ic.iniC.userFTP, ic.iniC.passFTP, ic.ftpUsePassive);
                             //MessageBox.Show("111", "");
                             //ftp.createDirectory(txtHn.Text);
-                            ftp.createDirectory(ic.iniC.folderFTP + "//" + txtHn.Text.Replace("/", "-") + "-" + vn);
+                            ftp.createDirectory(ic.iniC.folderFTP + "//" + txtHn.Text.Replace("/", "") + "_" + vn);
                             //MessageBox.Show("222", "");
                             ftp.delete(ic.iniC.folderFTP + "//" + dsc.image_path);
                             //MessageBox.Show("333", "");
@@ -546,7 +546,7 @@ namespace clinic_ivf.gui
             {
                 MessageBox.Show("Error"+ex.Message, "");
             }
-            MessageBox.Show("555", "");
+            //MessageBox.Show("555", "");
             grf.AutoSizeCols();
             grf.AutoSizeRows();
             grf.Rows[0].Visible = false;
