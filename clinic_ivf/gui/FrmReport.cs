@@ -260,7 +260,7 @@ namespace clinic_ivf.gui
                 MessageBox.Show("error " + ex.Message, "");
             }
         }
-        public void setEggStiReport(DataTable dt, String ptt_female, String ptt_male, String lmp, String g, String p, String a, String doctor_name, String opu_date, String opu_time, String et, String fet)
+        public void setEggStiReport(DataTable dt, String ptt_female, String ptt_male, String lmp, String g, String p, String a, String doctor_name, String opu_date, String opu_time, String et, String fet, String allergy1)
         {
             String chk = "", printerDefault = "", err = "";
             ReportDocument rpt = new ReportDocument();
@@ -287,6 +287,7 @@ namespace clinic_ivf.gui
                 rpt.SetParameterValue("opu_time", opu_time);
                 rpt.SetParameterValue("et", et);
                 rpt.SetParameterValue("fet", fet);
+                rpt.SetParameterValue("allergy1", allergy1);
                 err = "03";
                 //rpt.SetParameterValue("age1", "" + age);
                 this.crystalReportViewer1.ReportSource = rpt;

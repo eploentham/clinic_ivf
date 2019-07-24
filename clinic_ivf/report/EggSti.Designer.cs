@@ -333,6 +333,8 @@ namespace clinic_ivf.report {
             
             private global::System.Data.DataColumn columnlt_ovary_2;
             
+            private global::System.Data.DataColumn columnallergy;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public EggStiDataTable() {
@@ -584,6 +586,14 @@ namespace clinic_ivf.report {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn allergyColumn {
+                get {
+                    return this.columnallergy;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -646,7 +656,8 @@ namespace clinic_ivf.report {
                         string fet_time, 
                         string medication2, 
                         string rt_ovary_2, 
-                        string lt_ovary_2) {
+                        string lt_ovary_2, 
+                        string allergy) {
                 EggStiRow rowEggStiRow = ((EggStiRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         day1,
@@ -675,7 +686,8 @@ namespace clinic_ivf.report {
                         fet_time,
                         medication2,
                         rt_ovary_2,
-                        lt_ovary_2};
+                        lt_ovary_2,
+                        allergy};
                 rowEggStiRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowEggStiRow);
                 return rowEggStiRow;
@@ -725,6 +737,7 @@ namespace clinic_ivf.report {
                 this.columnmedication2 = base.Columns["medication2"];
                 this.columnrt_ovary_2 = base.Columns["rt_ovary_2"];
                 this.columnlt_ovary_2 = base.Columns["lt_ovary_2"];
+                this.columnallergy = base.Columns["allergy"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -784,6 +797,8 @@ namespace clinic_ivf.report {
                 base.Columns.Add(this.columnrt_ovary_2);
                 this.columnlt_ovary_2 = new global::System.Data.DataColumn("lt_ovary_2", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnlt_ovary_2);
+                this.columnallergy = new global::System.Data.DataColumn("allergy", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnallergy);
                 this.columnday1.Caption = "DataColumn1";
                 this.columndate.Caption = "DataColumn1";
                 this.columne2.Caption = "DataColumn1";
@@ -1377,6 +1392,22 @@ namespace clinic_ivf.report {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string allergy {
+                get {
+                    try {
+                        return ((string)(this[this.tableEggSti.allergyColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'allergy\' in table \'EggSti\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableEggSti.allergyColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public bool Isday1Null() {
                 return this.IsNull(this.tableEggSti.day1Column);
             }
@@ -1697,6 +1728,18 @@ namespace clinic_ivf.report {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public void Setlt_ovary_2Null() {
                 this[this.tableEggSti.lt_ovary_2Column] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IsallergyNull() {
+                return this.IsNull(this.tableEggSti.allergyColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetallergyNull() {
+                this[this.tableEggSti.allergyColumn] = global::System.Convert.DBNull;
             }
         }
         

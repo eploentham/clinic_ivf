@@ -12,7 +12,7 @@
   <xs:element name="EggSti" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="EggSti" msprop:Generator_UserDSName="EggSti">
     <xs:complexType>
       <xs:choice minOccurs="0" maxOccurs="unbounded">
-        <xs:element name="EggSti" msprop:Generator_TableClassName="EggStiDataTable" msprop:Generator_TableVarName="tableEggSti" msprop:Generator_RowChangedName="EggStiRowChanged" msprop:Generator_TablePropName="_EggSti" msprop:Generator_RowDeletingName="EggStiRowDeleting" msprop:Generator_RowChangingName="EggStiRowChanging" msprop:Generator_RowEvHandlerName="EggStiRowChangeEventHandler" msprop:Generator_RowDeletedName="EggStiRowDeleted" msprop:Generator_RowClassName="EggStiRow" msprop:Generator_UserTableName="EggSti" msprop:Generator_RowEvArgName="EggStiRowChangeEvent">
+        <xs:element name="EggSti" msprop:Generator_TableClassName="EggStiDataTable" msprop:Generator_TableVarName="tableEggSti" msprop:Generator_TablePropName="_EggSti" msprop:Generator_RowDeletingName="EggStiRowDeleting" msprop:Generator_RowChangingName="EggStiRowChanging" msprop:Generator_RowEvHandlerName="EggStiRowChangeEventHandler" msprop:Generator_RowDeletedName="EggStiRowDeleted" msprop:Generator_UserTableName="EggSti" msprop:Generator_RowChangedName="EggStiRowChanged" msprop:Generator_RowEvArgName="EggStiRowChangeEvent" msprop:Generator_RowClassName="EggStiRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="day1" msdata:Caption="DataColumn1" msprop:Generator_ColumnVarNameInTable="columnday1" msprop:Generator_ColumnPropNameInRow="day1" msprop:Generator_ColumnPropNameInTable="day1Column" msprop:Generator_UserColumnName="day1" type="xs:string" minOccurs="0" />
@@ -42,6 +42,7 @@
               <xs:element name="medication2" msprop:Generator_ColumnVarNameInTable="columnmedication2" msprop:Generator_ColumnPropNameInRow="medication2" msprop:Generator_ColumnPropNameInTable="medication2Column" msprop:Generator_UserColumnName="medication2" type="xs:string" minOccurs="0" />
               <xs:element name="rt_ovary_2" msprop:Generator_ColumnVarNameInTable="columnrt_ovary_2" msprop:Generator_ColumnPropNameInRow="rt_ovary_2" msprop:Generator_ColumnPropNameInTable="rt_ovary_2Column" msprop:Generator_UserColumnName="rt_ovary_2" type="xs:string" minOccurs="0" />
               <xs:element name="lt_ovary_2" msprop:Generator_ColumnVarNameInTable="columnlt_ovary_2" msprop:Generator_ColumnPropNameInRow="lt_ovary_2" msprop:Generator_ColumnPropNameInTable="lt_ovary_2Column" msprop:Generator_UserColumnName="lt_ovary_2" type="xs:string" minOccurs="0" />
+              <xs:element name="allergy" msprop:Generator_ColumnVarNameInTable="columnallergy" msprop:Generator_ColumnPropNameInRow="allergy" msprop:Generator_ColumnPropNameInTable="allergyColumn" msprop:Generator_UserColumnName="allergy" type="xs:string" minOccurs="0" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>

@@ -1268,7 +1268,8 @@ namespace clinic_ivf.gui
                 //row["status_abnormal"] = "";
             }
 
-            frm.setEggStiReport(dt, txtPttNameE.Text, "", txtEggStiVisitLMP.Text, txtEggStiG.Text, txtEggStiP.Text, txtEggStiA.Text, cboEggStiDtr.Text, txtEggStiOPUDate.Text, txtEggStiOPUTime.Text, txtEggStiEmbryoTranferDate.Text, txtEggStiEmbryoTranferTime.Text);
+            frm.setEggStiReport(dt, txtPttNameE.Text + " [" + txtHn.Text + "]" + " DOB " + txtDob.Text, "", txtEggStiVisitLMP.Text, txtEggStiG.Text, txtEggStiP.Text, txtEggStiA.Text, cboEggStiDtr.Text, txtEggStiOPUDate.Text, txtEggStiOPUTime.Text
+                , txtEggStiEmbryoTranferDate.Text, txtEggStiEmbryoTranferTime.Text, txtAllergy.Text);
             frm.ShowDialog(this);
         }
         private void BtnGenEggSti_Click(object sender, EventArgs e)

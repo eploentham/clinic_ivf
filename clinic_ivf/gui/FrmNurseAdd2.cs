@@ -1462,7 +1462,8 @@ namespace clinic_ivf.gui
                 //row["status_abnormal"] = "";
             }
 
-            frm.setEggStiReport(dt, txtPttNameE.Text+" ["+txtHn.Text+"]", "", txtEggStiVisitLMP.Text, txtEggStiG.Text, txtEggStiP.Text, txtEggStiA.Text, cboEggStiDtr.Text, txtEggStiOPUDate.Text, txtEggStiOPUTime.Text, txtEggStiEmbryoTranferDate.Text, txtEggStiEmbryoTranferTime.Text);
+            frm.setEggStiReport(dt, txtPttNameE.Text+" ["+txtHn.Text+"]"+" DOB "+ txtDob.Text, txtName_2.Text, txtEggStiVisitLMP.Text, txtEggStiG.Text, txtEggStiP.Text, txtEggStiA.Text
+                , cboEggStiDtr.Text, txtEggStiOPUDate.Text, txtEggStiOPUTime.Text, txtEggStiEmbryoTranferDate.Text, txtEggStiEmbryoTranferTime.Text, txtAllergy.Text);
             frm.ShowDialog(this);
         }
 
@@ -2386,7 +2387,7 @@ namespace clinic_ivf.gui
             grfEggsd.Cols[colEggMedi2].Editor = cbomedi2;
             grfEggsd.Cols[colEggDay].Width = 40;
             grfEggsd.Cols[colEggDate].Width = 100;
-            grfEggsd.Cols[colEggE2].Width = 50;
+            grfEggsd.Cols[colEggE2].Width = 80;
             grfEggsd.Cols[colEggLH].Width = 50;
             grfEggsd.Cols[colEggFSH].Width = 50;
             grfEggsd.Cols[colEggProlactin].Width = 50;
