@@ -148,7 +148,10 @@ namespace clinic_ivf.gui
             txtSfPh.KeyUp += TxtSfPh_KeyUp;
             txtViability.KeyUp += TxtViability_KeyUp;
             btnSfSendEmail.Click += BtnSfSendEmail_Click;
+            btnSendEmail.Click += BtnSendEmail_Click;
             SmtpServer.SendCompleted += SmtpServer_SendCompleted;
+            btnIuiSendEmail.Click += BtnIuiSendEmail_Click;
+            btnSfApproveResult.Click += BtnSfApproveResult_Click;
 
             txtMotility4.KeyUp += TxtMotility4_KeyUp;
             txtMotility3.KeyUp += TxtMotility3_KeyUp;
@@ -164,6 +167,60 @@ namespace clinic_ivf.gui
 
             setControl();
             setTheme();
+        }
+
+        private void BtnSfApproveResult_Click(object sender, EventArgs e)
+        {
+            //throw new NotImplementedException();
+            String re = "";
+            re = ic.ivfDB.lbReqDB.UpdateStatusRequestResult("", "");
+        }
+
+        private void BtnIuiSendEmail_Click(object sender, EventArgs e)
+        {
+            //throw new NotImplementedException();
+
+        }
+
+        private void BtnSendEmail_Click(object sender, EventArgs e)
+        {
+            //throw new NotImplementedException();
+            FrmWaiting frmW = new FrmWaiting();
+            frmW.Show();
+            if (!setReportSpermAnalysis())
+            {
+                return;
+            }
+            frmW.Dispose();
+
+            MailMessage mail = new MailMessage();
+
+            mail.From = new MailAddress(txtEmailTo.Text);
+            mail.To.Add(txtEmailTo.Text);
+            mail.Subject = txtEmailSubject.Text;
+            mail.Body = txtEmailBody.Text;
+
+            mail.IsBodyHtml = true;
+            if (File.Exists("sperm_analysis.pdf"))
+            {
+                System.Net.Mail.Attachment attachment;
+                attachment = new System.Net.Mail.Attachment("sperm_analysis.pdf");
+                mail.Attachments.Add(attachment);
+            }
+
+            AlternateView htmlView = AlternateView.CreateAlternateViewFromString(body, null, "text/html");
+            mail.AlternateViews.Add(htmlView);
+
+            foreach (LinkedResource linkimg in theEmailImage1)
+            {
+                htmlView.LinkedResources.Add(linkimg);
+            }
+
+            SmtpServer.Port = 587;
+            SmtpServer.Credentials = new System.Net.NetworkCredential(ic.iniC.email_auth_user, ic.iniC.email_auth_pass);
+
+            SmtpServer.EnableSsl = true;
+            SmtpServer.Send(mail);
         }
 
         private void TxtPh_KeyUp(object sender, KeyEventArgs e)
@@ -224,6 +281,61 @@ namespace clinic_ivf.gui
         {
             //throw new NotImplementedException();
             MessageBox.Show("mail send");
+        }
+        private Boolean setReportSpermAnalysis()
+        {
+            Boolean chk1 = true;
+            DataTable dt = new DataTable();
+            dt = ic.ivfDB.lspermDB.selectByPk(txtID.Text);
+            String chk = "", printerDefault = "";
+            ReportDocument rpt = new ReportDocument();
+            try
+            {
+                String date1 = dt.Rows[0]["date_report"].ToString();
+                String date2 = dt.Rows[0]["date_approve"].ToString();
+                date1 = ic.datetimetoShow(dt.Rows[0]["date_report"]);
+                date2 = ic.datetimetoShow(dt.Rows[0]["date_approve"]);
+                dt.Rows[0]["date_report"] = date1;
+                dt.Rows[0]["date_approve"] = date2;
+
+                rpt.Load("lab_sperm_sf.rpt");
+
+                rpt.SetDataSource(dt);
+                rpt.SetParameterValue("line1", ic.cop.comp_name_t);
+                rpt.SetParameterValue("line2", ic.cop.addr1);
+                rpt.SetParameterValue("line3", ic.cop.addr2);
+                //rpt.SetParameterValue("report_name", " Summary of OPU Report");
+                //rpt.SetParameterValue("date1", "" + date1);
+                this.crySperm.ReportSource = rpt;
+                this.crySperm.Refresh();
+
+                if (File.Exists("sperm_analysis.pdf"))
+                {
+                    File.Delete("sperm_analysis.pdf");
+                    System.Threading.Thread.Sleep(200);
+                }
+
+                ExportOptions CrExportOptions;
+                DiskFileDestinationOptions CrDiskFileDestinationOptions = new DiskFileDestinationOptions();
+                PdfRtfWordFormatOptions CrFormatTypeOptions = new PdfRtfWordFormatOptions();
+                CrDiskFileDestinationOptions.DiskFileName = "sperm_analysis.pdf";
+                CrExportOptions = rpt.ExportOptions;
+                {
+                    CrExportOptions.ExportDestinationType = ExportDestinationType.DiskFile;
+                    CrExportOptions.ExportFormatType = ExportFormatType.PortableDocFormat;
+                    CrExportOptions.DestinationOptions = CrDiskFileDestinationOptions;
+                    CrExportOptions.FormatOptions = CrFormatTypeOptions;
+                }
+
+                rpt.Export();
+            }
+            catch (Exception ex)
+            {
+                chk1 = false;
+                chk = ex.Message.ToString();
+                MessageBox.Show("error " + ex.Message, "");
+            }
+            return chk1;
         }
         private Boolean setReportSpermFreezing()
         {
@@ -296,7 +408,7 @@ namespace clinic_ivf.gui
             mail.From = new MailAddress(txtSfEmailTo.Text);
             mail.To.Add(txtSfEmailTo.Text);
             mail.Subject = txtSfEmailSubject.Text;
-            //mail.Body = "Test send email";
+            mail.Body = txtSfEmailBody.Text;
 
             mail.IsBodyHtml = true;
             if (File.Exists("sperm_freezing.pdf"))
@@ -1079,6 +1191,8 @@ namespace clinic_ivf.gui
             //txtSpermTime.Value = lsperm.time;
             ic.ivfDB.lspermDB.setCboRemark(cboRemark);
             ic.setC1ComboByName(cboRemark, lsperm.remark);
+            txtEmailTo.Value = ic.iniC.email_to_sperm_freezing;
+            txtEmailSubject.Value = "Result LAB Sperm Analysis HN " + txtSfHnMale.Text + " Name " + txtSfNameMale.Text+" ["+ txtLabReqCode.Text+"]";
         }
         private void setControlSpermFreezing()
         {
@@ -1135,7 +1249,7 @@ namespace clinic_ivf.gui
             txtSfTail1.Value = lsperm.morphology_tail_defect1;
 
             txtSfEmailTo.Value = ic.iniC.email_to_sperm_freezing;
-            txtSfEmailSubject.Value = "Result LAB Sperm Freezing HN "+txtSfHnMale.Text+" Name "+txtSfNameMale.Text;
+            txtSfEmailSubject.Value = "Result LAB Sperm Freezing HN "+txtSfHnMale.Text+" Name "+txtSfNameMale.Text + " [" + txtSfLabReqCode.Text + "]";
         }
         private void setControlPesa()
         {
