@@ -36,23 +36,41 @@ namespace clinic_ivf.gui
         public String StatusSperm = "";
         SmtpClient SmtpServer;
         List<LinkedResource> theEmailImage1 = new List<LinkedResource>();
-        public FrmLabSpermAdd(IvfControl ic, String reqid, String spermId)
+        
+        Boolean flagEdit = false;
+        public FrmLabSpermAdd(IvfControl ic, String reqid, String spermId, String flagEdit)
         {
             InitializeComponent();
             this.ic = ic;
             reqId = reqid;
             this.spermId = spermId;
-
+            //this.flagEdit = flagEdit;
+            if (flagEdit.Equals("edit"))
+            {
+                this.flagEdit = true;
+            }
+            else
+            {
+                this.flagEdit = false;
+            }
             initConfig();
         }
-        public FrmLabSpermAdd(IvfControl ic, String reqid, String spermId, String StatusSperm)
+        public FrmLabSpermAdd(IvfControl ic, String reqid, String spermId, String StatusSperm, String flagEdit)
         {
             InitializeComponent();
             this.ic = ic;
             reqId = reqid;
             this.spermId = spermId;
             this.StatusSperm = StatusSperm;
-
+            //this.flagEdit = flagEdit;
+            if (flagEdit.Equals("edit"))
+            {
+                this.flagEdit = true;
+            }
+            else
+            {
+                this.flagEdit = false;
+            }
             if (ic.iniC.statusCheckDonor.Equals("1"))
             {
                 lsperm = new LabSperm();
@@ -172,8 +190,20 @@ namespace clinic_ivf.gui
         private void BtnSfApproveResult_Click(object sender, EventArgs e)
         {
             //throw new NotImplementedException();
-            String re = "";
-            re = ic.ivfDB.lbReqDB.UpdateStatusRequestResult("", "");
+            ic.cStf.staff_id = "";
+            FrmPasswordConfirm frm = new FrmPasswordConfirm(ic);
+            frm.ShowDialog(this);
+            if (!ic.cStf.staff_id.Equals(""))
+            {
+                long chk = 0;
+                String re = "",re1="";
+                re = ic.ivfDB.lbReqDB.UpdateStatusRequestResult(lbReq.req_id, ic.cStf.staff_id);
+                re1 = ic.ivfDB.lspermDB.updateStatusLabFinish(lsperm.sperm_id, ic.cStf.staff_id);
+                if (long.TryParse(re, out chk))
+                {
+                    pnEmailAddSubject.Enabled = true;
+                }
+            }
         }
 
         private void BtnIuiSendEmail_Click(object sender, EventArgs e)
@@ -1111,6 +1141,117 @@ namespace clinic_ivf.gui
                 }
             }
         }
+        private void setControlAnalysisReadOnly(Boolean flag)
+        {
+            txtHnFeMale.ReadOnly = !flag;
+            txtHnMale.ReadOnly = !flag;
+            txtNameFeMale.ReadOnly = !flag;
+            txtNameMale.ReadOnly = !flag;
+            txtLabReqCode.ReadOnly = !flag;
+            txtDobFeMale.ReadOnly = !flag;
+            txtDobMale.ReadOnly = !flag;
+            cboDoctor.ReadOnly = !flag;
+            cboAppearance.ReadOnly = !flag;
+            cboLiquefaction.ReadOnly = !flag;
+            cboViscosity.ReadOnly = !flag;
+
+            txtSpermDate.ReadOnly = !flag;
+            txtAbstinenceday.ReadOnly = !flag;
+            txtPh.ReadOnly = !flag;
+            txtViability.ReadOnly = !flag;
+            txtVolume.ReadOnly  = !flag;
+            txtCount.ReadOnly = !flag;
+            txtTotalCount.ReadOnly = !flag;
+            txtMotile.ReadOnly = !flag;
+            txtMotility.ReadOnly = !flag;
+            txtTotalMotile.ReadOnly = !flag;
+            txtMotility4.ReadOnly = !flag;
+            txtMotility3.ReadOnly = !flag;
+            txtMotility2.ReadOnly = !flag;
+            //txtMotility1.Value = lsperm.motility_rate_1;
+            txtWbc.ReadOnly = !flag;
+            txtEjacula.ReadOnly = !flag;
+            txtRecive.ReadOnly = !flag;
+            txtExam.ReadOnly = !flag;
+            txtFinish.ReadOnly = !flag;
+            txtNormal.ReadOnly = !flag;
+            txtAbnormal.ReadOnly = !flag;
+            txtHead.ReadOnly = !flag;
+            txtNeck.ReadOnly = !flag;
+            txtTail.ReadOnly = !flag;
+            txtApproveResult.ReadOnly = !flag;
+            txtApproveDate.ReadOnly = !flag;
+            //txtSpermTime.Value = lsperm.time;
+            cboRemark.ReadOnly = !flag;
+
+            btnSave.Visible = flag;
+            btnApproveResult.Visible = flag;
+            //ic.setC1ComboByName(cboRemark, lsperm.remark);
+        }
+        private void setControlSpermFreezingReadOnly(Boolean flag)
+        {
+            //txtSfID.Value = lsperm.sperm_id;
+            txtSfHnFeMale.ReadOnly = !flag;
+            txtSfHnMale.ReadOnly = !flag;
+            txtSfNameFeMale.ReadOnly = !flag;
+            txtSfNameMale.ReadOnly = !flag;
+            txtSfLabReqCode.ReadOnly = !flag;
+            txtSfDobFeMale.ReadOnly = !flag;
+            txtSfDobMale.ReadOnly = !flag;
+            cboSfDoctor.ReadOnly = !flag;
+            cboSfAppearance.ReadOnly = !flag;
+            cboSfLiquefaction.ReadOnly = !flag;
+            cboSfViscosity.ReadOnly = !flag;
+            cboSfEmbryologistAppv.ReadOnly = !flag;
+            cboSfEmbryologistReport.ReadOnly = !flag;
+            cboSfEmbryologistReport.ReadOnly = !flag;
+            cboSfWbc.ReadOnly = !flag;
+            cboSfNoofVail.ReadOnly = !flag;
+
+            txtSfSpermDate.ReadOnly = !flag;
+            txtSfAbstinenceday.ReadOnly = !flag;
+            txtSfPh.ReadOnly = !flag;
+            txtSfViability.ReadOnly = !flag;
+            txtSfVolume.ReadOnly = !flag;
+            txtSfCount.ReadOnly = !flag;
+            txtSfTotalCount.ReadOnly = !flag;
+            txtSfMotile.ReadOnly = !flag;
+            txtSfMotility.ReadOnly = !flag;
+            txtSfTotalMotile.ReadOnly = !flag;
+            txtSfMotility4.ReadOnly = !flag;
+            txtSfMotility3.ReadOnly = !flag;
+            txtSfMotility2.ReadOnly = !flag;
+            //txtSfVial.Value = lsperm.no_of_vail;
+            //txtSfWbc.Value = lsperm.wbc;
+            txtSfEjacula.ReadOnly = !flag;
+            txtSfRecive.ReadOnly = !flag;
+            txtSfExam.ReadOnly = !flag;
+            txtSfFinish.ReadOnly = !flag;
+            txtSfNormal.ReadOnly = !flag;
+            txtSfAbnormal.ReadOnly = !flag;
+            txtSfHead.ReadOnly = !flag;
+            txtSfNeck.ReadOnly = !flag;
+            txtSfTail.ReadOnly = !flag;
+            txtSfApproveResult.ReadOnly = !flag;
+            txtSfApproveDate.ReadOnly = !flag;
+            //txtSpermTime.Value = lsperm.time;
+            cboSfRemark.ReadOnly = !flag; ;
+            //ic.setC1ComboByName(cboSfRemark, lsperm.remark);
+
+            txtSfHead1.ReadOnly = !flag;
+            txtSfNeck1.ReadOnly = !flag;
+            txtSfTail1.ReadOnly = !flag;
+
+            btnSfSave.Visible = flag;
+            btnSfApproveResult.Visible = flag;
+            //txtSfEmailTo.ReadOnly = ic.iniC.email_to_sperm_freezing;
+            //txtSfEmailSubject.ReadOnly = "Result LAB Sperm Freezing HN " + txtSfHnMale.Text + " Name " + txtSfNameMale.Text + " [" + txtSfLabReqCode.Text + "]";
+
+            //if (!lsperm.status_lab.Equals("5"))
+            //{
+            //    pnEmailAddSubject.Enabled = false;
+            //}
+        }
         private void setControl()
         {
             lsperm = ic.ivfDB.lspermDB.selectByPk1(spermId);
@@ -1133,10 +1274,12 @@ namespace clinic_ivf.gui
             if (lsperm.status_lab_sperm.Equals("1"))
             {
                 setControlSpermFreezing();
+                setControlSpermFreezingReadOnly(flagEdit);
             }
             else if (lsperm.status_lab_sperm.Equals("2"))
             {
                 setControlAnalysis();
+                setControlAnalysisReadOnly(flagEdit);
             }
             else if (lsperm.status_lab_sperm.Equals("3"))
             {
@@ -1238,7 +1381,7 @@ namespace clinic_ivf.gui
             txtSfHead.Value = lsperm.morphology_head_defect;
             txtSfNeck.Value = lsperm.morphology_neck_defect;
             txtSfTail.Value = lsperm.morphology_tail_defect;
-            txtSfApproveResult.Value = lsperm.staff_id_approve;
+            txtSfApproveResult.Value = ic.ivfDB.stfDB.getStaffNameBylStf(lsperm.staff_id_approve);
             txtSfApproveDate.Value = lsperm.date_approve;
             //txtSpermTime.Value = lsperm.time;
             ic.ivfDB.lspermDB.setCboRemark(cboSfRemark);
@@ -1250,6 +1393,11 @@ namespace clinic_ivf.gui
 
             txtSfEmailTo.Value = ic.iniC.email_to_sperm_freezing;
             txtSfEmailSubject.Value = "Result LAB Sperm Freezing HN "+txtSfHnMale.Text+" Name "+txtSfNameMale.Text + " [" + txtSfLabReqCode.Text + "]";
+
+            if (!lsperm.status_lab.Equals("5"))
+            {
+                pnEmailAddSubject.Enabled = false;
+            }
         }
         private void setControlPesa()
         {

@@ -361,18 +361,21 @@ namespace clinic_ivf.objdb
                 //wheredate = " and lreq.req_date >= '" + startdate + "' and lreq.req_date <= '" + enddate + "' ";
                 wheredate = " and lreq.result_date >= '" + startdate + " 00:00:00' and lreq.result_date <= '" + enddate + " 23:59:59' ";
             }
-            String sql = "Select lreq.req_id, concat(SurfixName.SurfixName,' ',ptt.PName,' ',ptt.PSurname) as name_female" +
-                ", Doctor.ID, Doctor.Name as dtr_name, Doctor.ID as dtrid, ifnull(lreq.remark,'') as remark, DateOfBirth as dob" +
-                ", lforma.status_wait_confirm_day1,lreq.form_a_id,lreq.req_id , lforma.form_a_id, ptt.PIDS,lforma.status_wait_confirm_day1,lforma.status_wait_confirm_opu_date " +
-                ", lreq.req_code, ptt.PIDS as hn_female, lreq.req_date, lreq.remark, lforma.status_opu_active, lforma.status_wait_confirm_opu_date, lforma.opu_wait_remark, lforma.remark as form_a_remark " +
-                ", lforma.opu_date, lforma.opu_time, lforma.opu_remark, lforma.fet_remark, lforma.opu_time_modi, lforma.status_opu_time_modi, lforma.hn_male, lforma.name_male, lforma.hn_donor" +
-                ", lforma.name_donor,lreq.vn, lreq.item_id, si.SName " +
+            String sql = "Select lreq.req_id, concat(fpp.patient_prefix_description,' ',pttf.patient_firstname_e,' ',pttf.patient_lastname_e) as name_female" +
+                ", concat(fppm.patient_prefix_description,' ',pttm.patient_firstname_e,' ',pttm.patient_lastname_e) as name_male" +
+                ", Doctor.ID, Doctor.Name as dtr_name, Doctor.ID as dtrid, ifnull(lreq.remark,'') as remark " +
+                ", lforma.status_wait_confirm_day1,lreq.form_a_id,lreq.req_id , lforma.form_a_id, lreq.hn_male,lforma.status_wait_confirm_day1,lforma.status_wait_confirm_opu_date " +
+                ", lreq.req_code, lreq.hn_female, lreq.req_date, lreq.remark, lforma.status_opu_active, lforma.status_wait_confirm_opu_date, lforma.opu_wait_remark, lforma.remark as form_a_remark " +
+                ", lforma.opu_date, lforma.opu_time, lforma.opu_remark, lforma.fet_remark, lforma.opu_time_modi, lforma.status_opu_time_modi, lforma.hn_donor" +
+                ", lforma.name_donor,lreq.vn, lreq.item_id, si.LName " +
                 "From lab_t_request lreq " +
                 "Left Join lab_t_form_a lforma on lreq.form_a_id = lforma.form_a_id  " +
-                "Left Join Patient ptt on lreq.hn_female = ptt.PIDS " +
-                "Left Join SurfixName on SurfixName.SurfixID = ptt.SurfixID  " +
+                "Left Join t_patient pttf on lreq.hn_female = pttf.patient_hn and lreq.hn_female <> '' " +
+                "Left join f_patient_prefix fpp on fpp.f_patient_prefix_id = pttf.f_patient_prefix_id " +
+                "Left Join t_patient pttm on lreq.hn_male = pttm.patient_hn and lreq.hn_male <> '' " +
+                "Left join f_patient_prefix fppm on fppm.f_patient_prefix_id = pttm.f_patient_prefix_id " +
                 "Left join Doctor on lforma.doctor_id = Doctor.ID  " +
-                "Left join SpecialItem si on lreq.item_id = si.SID " +
+                "Left join LabItem si on lreq.item_id = si.LID " +
                 //"Left Join lab_t_request lreq on lreq.req_id = oJSd.req_id " +
                 //"Left Join lab_t_request lreq on lreq.request_id = oJSd.ID  " +
                 //"Left Join Visit vsold on oJSd.VN = vsold.VN " +

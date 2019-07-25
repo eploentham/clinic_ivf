@@ -77,5 +77,7 @@ namespace clinic_ivf.object1
         public String morphology_head_defect1 { get; set; }
         public String morphology_neck_defect1 { get; set; }
         public String morphology_tail_defect1 { get; set; }
+        public String staff_id_finish { get; set; }
+        public String date_finish { get; set; }
     }
 }

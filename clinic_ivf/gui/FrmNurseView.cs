@@ -31,7 +31,7 @@ namespace clinic_ivf.gui
         int colID = 1, colVNshow = 2, colPttHn = 3, colPttName = 4, colPttHn1=5, colPttName1=6, colPttHn2=7, colPttName2=8, colVsAgent=9, colVsDate = 10, colVsTime = 11, colVsEtime = 12, colStatus = 13, colPttId=14, colVn=15, colDtr=16, colPID=17, colFormAId=18, colFormACode=19, colStatusOPU=20, colStatusFet=21, colStatusAna=22, colStatusFreezing=23, colStatusPesa=24, colStatusIUI=25;
         int colSID = 1, colSVN = 2, colSPttHn = 3, colSPttName = 4, colSVsDate = 5, colSVsTime = 6, colSVsEtime = 7, colSStatus = 8, colSPttId = 9;
         int colRID = 1, colRVN = 2, colRPttHn = 3, colRPttName = 4, colRVsDate = 5, colRPttId = 6;
-        int colLID = 1, colLVN = 2, colLPttHn = 3, colLPttName = 4, colLlabname = 5, colLPttId = 6;
+        int colLID = 1, colLVNShow = 2, colLPttHnFemale = 3, colLPttNameFemale = 4, colLPttHnMale = 5, colLPttNameMale = 6, colLlabname = 7, colLStatus = 8;
 
         C1FlexGrid grfQue, grfDiag, grfFinish, grfSearch, grfLab;
         C1SuperTooltip stt;
@@ -941,7 +941,7 @@ namespace clinic_ivf.gui
 
             //grfExpn.Rows.Count = dt.Rows.Count + 1;
             grfLab.Rows.Count = dt.Rows.Count + 1;
-            grfLab.Cols.Count = 16;
+            grfLab.Cols.Count = 9;
             //C1TextBox txt = new C1TextBox();
             //C1ComboBox cboproce = new C1ComboBox();
             //ic.ivfDB.itmDB.setCboItem(cboproce);
@@ -949,25 +949,25 @@ namespace clinic_ivf.gui
             //grfLab.Cols[colPttName].Editor = txt;
             //grfLab.Cols[colVsDate].Editor = txt;
 
-            grfLab.Cols[colVNshow].Width = 120;
-            grfLab.Cols[colPttHn].Width = 120;
-            grfLab.Cols[colPttName].Width = 300;
-            grfLab.Cols[colVsDate].Width = 100;
-            grfLab.Cols[colVsTime].Width = 80;
-            grfLab.Cols[colVsEtime].Width = 80;
-            grfLab.Cols[colStatus].Width = 200;
+            grfLab.Cols[colLVNShow].Width = 80;
+            grfLab.Cols[colLPttHnFemale].Width = 120;
+            grfLab.Cols[colLPttNameFemale].Width = 200;
+            grfLab.Cols[colLPttHnMale].Width = 100;
+            grfLab.Cols[colLPttNameMale].Width = 200;
+            grfLab.Cols[colLlabname].Width = 120;
+            //grfLab.Cols[colStatus].Width = 200;
 
             grfLab.ShowCursor = true;
             //grdFlex.Cols[colID].Caption = "no";
             //grfDept.Cols[colCode].Caption = "รหัส";
 
-            grfLab.Cols[colLVN].Caption = "VN";
-            grfLab.Cols[colLPttHn].Caption = "HN";
-            grfLab.Cols[colLPttName].Caption = "Name";
+            grfLab.Cols[colLVNShow].Caption = "VN";
+            grfLab.Cols[colLPttHnFemale].Caption = "HN Female";
+            grfLab.Cols[colLPttNameFemale].Caption = "Name Female";
             grfLab.Cols[colLlabname].Caption = "LAB";
-            grfLab.Cols[colVsTime].Caption = "Time visit";
-            grfLab.Cols[colVsEtime].Caption = "Time finish";
-            grfLab.Cols[colStatus].Caption = "Status";
+            grfLab.Cols[colLPttHnMale].Caption = "HN Male";
+            grfLab.Cols[colLPttNameMale].Caption = "Name Male";
+            //grfLab.Cols[colStatus].Caption = "Status";
 
             ContextMenu menuGw = new ContextMenu();
             //menuGw.MenuItems.Add("&receive operation", new EventHandler(ContextMenu_Apm));
@@ -987,10 +987,35 @@ namespace clinic_ivf.gui
             {
                 grfLab[i, 0] = i;
                 grfLab[i, colLID] = row["req_id"].ToString();
-                grfLab[i, colLVN] = row["VN"].ToString();
-                grfLab[i, colLPttHn] = row["PIDS"].ToString();
-                grfLab[i, colLPttName] = row["name_female"].ToString();
-                grfLab[i, colLlabname] = row["SName"].ToString();
+                grfLab[i, colLVNShow] = ic.showVN(row["vn"].ToString());
+                grfLab[i, colLPttHnFemale] = row["hn_female"].ToString();
+                grfLab[i, colLPttNameFemale] = row["name_female"].ToString();
+                grfLab[i, colLPttHnMale] = row["hn_male"].ToString();
+                grfLab[i, colLPttNameMale] = row["name_male"].ToString();
+                grfLab[i, colLlabname] = row["LName"].ToString();
+                if (row["item_id"].ToString().Equals("18")){      //"Sperm Analysis" 
+                    grfLab[i, colLStatus] = "1";
+                }
+                else if (row["item_id"].ToString().Equals("14"))   //"Sperm Freezing" 
+                {
+                    grfLab[i, colLStatus] = "2";
+                }
+                else if (row["item_id"].ToString().Equals("66"))
+                {
+                    grfLab[i, colLStatus] = "3";
+                }
+                else if (row["item_id"].ToString().Equals("88"))
+                {
+                    grfLab[i, colLStatus] = "4";
+                }
+                else if (row["item_id"].ToString().Equals("112"))        //OPU
+                {
+                    grfLab[i, colLStatus] = "5";
+                }
+                else if (row["item_id"].ToString().Equals("22"))        //FET
+                {
+                    grfLab[i, colLStatus] = "6";
+                }
                 //grfLab[i, colVsTime] = row["VStartTime"].ToString();
                 //grfLab[i, colVsEtime] = row["VEndTime"].ToString();
                 //grfLab[i, colStatus] = row["VName"].ToString();
@@ -1006,10 +1031,12 @@ namespace clinic_ivf.gui
                 i++;
             }
             CellNoteManager mgr = new CellNoteManager(grfLab);
-            grfLab.Cols[colRID].Visible = false;
-            grfLab.Cols[colLVN].AllowEditing = false;
-            grfLab.Cols[colLPttHn].AllowEditing = false;
-            grfLab.Cols[colLPttName].AllowEditing = false;
+            grfLab.Cols[colLID].Visible = false;
+            grfLab.Cols[colLVNShow].AllowEditing = false;
+            grfLab.Cols[colLPttHnFemale].AllowEditing = false;
+            grfLab.Cols[colLPttNameFemale].AllowEditing = false;
+            grfLab.Cols[colLPttHnMale].AllowEditing = false;
+            grfLab.Cols[colLPttNameMale].AllowEditing = false;
             grfLab.Cols[colLlabname].AllowEditing = false;
             //theme1.SetTheme(grfQue, ic.theme);
 
@@ -1822,25 +1849,51 @@ namespace clinic_ivf.gui
         }
         private void ContextMenu_Result_Lab_OPU(object sender, System.EventArgs e)
         {
-            String chk = "", name = "", reqid = "", pttId = "";
+            String chk = "", namef = "", reqid = "", pttId = "", status="", namem = "", name="";
             if (grfLab.Row < 0) return;
 
             reqid = grfLab[grfLab.Row, colLID] != null ? grfLab[grfLab.Row, colLID].ToString() : "";
-            name = grfLab[grfLab.Row, colLPttName] != null ? grfLab[grfLab.Row, colLPttName].ToString() : "";
+            namef = grfLab[grfLab.Row, colLPttNameFemale] != null ? grfLab[grfLab.Row, colLPttNameFemale].ToString() : "";
+            namem = grfLab[grfLab.Row, colLPttNameMale] != null ? grfLab[grfLab.Row, colLPttNameMale].ToString() : "";
+            status = grfLab[grfLab.Row, colLStatus] != null ? grfLab[grfLab.Row, colLStatus].ToString() : "";
             LabRequest req = new LabRequest();
             req = ic.ivfDB.lbReqDB.selectByPk1(reqid);
-            LabOpu opu = new LabOpu();
-            opu = ic.ivfDB.opuDB.selectByReqID(req.req_id);
-            //FrmLabOPUAdd2 frm = new FrmLabOPUAdd2(ic,"", opu.opu_id);
-            FrmNurseOPUView frm = new FrmNurseOPUView(ic, "", opu.opu_id);
-            String txt = "";
-            if (!name.Equals(""))
+            if (namef.Equals(""))
             {
-                txt = "ผลLAB OPU " + name;
+                name = namem;
+            }
+            else
+            {
+                name = namef;
             }
 
-            frm.FormBorderStyle = FormBorderStyle.None;
-            menu.AddNewTab(frm, txt);
+            if (status.Equals("5"))
+            {
+                LabOpu opu = new LabOpu();
+                opu = ic.ivfDB.opuDB.selectByReqID(req.req_id);
+                //FrmLabOPUAdd2 frm = new FrmLabOPUAdd2(ic,"", opu.opu_id);
+                FrmNurseOPUView frm = new FrmNurseOPUView(ic, "", opu.opu_id);
+                String txt = "";
+                if (!namef.Equals(""))
+                {
+                    txt = "ผลLAB OPU " + name;
+                }
+                frm.FormBorderStyle = FormBorderStyle.None;
+                menu.AddNewTab(frm, txt);
+            }
+            else if (status.Equals("1"))
+            {
+                LabSperm lsperm = new LabSperm();
+                lsperm = ic.ivfDB.lspermDB.selectByReqId(reqid);
+                FrmLabSpermAdd frm = new FrmLabSpermAdd(ic, reqid, lsperm.sperm_id, "");
+                String txt = "";
+                if (!namef.Equals(""))
+                {
+                    txt = "ผลLAB SPERM " + name;
+                }
+                frm.FormBorderStyle = FormBorderStyle.None;
+                menu.AddNewTab(frm, txt);
+            }
             //pttId = grfLab[grfLab.Row, colPttId] != null ? grfLab[grfLab.Row, colPttId].ToString() : "";
             //chk = grfLab[grfLab.Row, colPttHn] != null ? grfLab[grfLab.Row, colPttHn].ToString() : "";
             //name = grfLab[grfLab.Row, colPttName] != null ? grfLab[grfLab.Row, colPttName].ToString() : "";

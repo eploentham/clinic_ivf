@@ -843,7 +843,7 @@ namespace clinic_ivf.gui
         private void openLabOPUAdd(String opdId, String name, String labname)
         {
             //FrmLabOPUAdd frm = new FrmLabOPUAdd(ic, "", opdId);
-            FrmLabSpermAdd frm = new FrmLabSpermAdd(ic, "", opdId);
+            FrmLabSpermAdd frm = new FrmLabSpermAdd(ic, "", opdId,"edit");
             String txt = "";
             if (!name.Equals(""))
             {
@@ -882,7 +882,7 @@ namespace clinic_ivf.gui
                     if (long.TryParse(re1, out chk1))
                     {
                         //FrmLabOPUAdd frm = new FrmLabOPUAdd(ic, "", re1);
-                        FrmLabSpermAdd frm = new FrmLabSpermAdd(ic, "", re1);
+                        FrmLabSpermAdd frm = new FrmLabSpermAdd(ic, "", re1, "edit");
                         String txt = "";
                         if (!name.Equals(""))
                         {

@@ -103,6 +103,8 @@ namespace clinic_ivf.objdb
             lsperm.morphology_head_defect1 = "morphology_head_defect1";
             lsperm.morphology_neck_defect1 = "morphology_neck_defect1";
             lsperm.morphology_tail_defect1 = "morphology_tail_defect1";
+            lsperm.staff_id_finish = "staff_id_finish";
+            lsperm.date_finish = "date_finish";
 
             lsperm.pkField = "sperm_id";
             lsperm.table = "lab_t_sperm";
@@ -195,12 +197,14 @@ namespace clinic_ivf.objdb
             p.morphology_head_defect1 = p.morphology_head_defect1 == null ? "" : p.morphology_head_defect1;
             p.morphology_neck_defect1 = p.morphology_neck_defect1 == null ? "" : p.morphology_neck_defect1;
             p.morphology_tail_defect1 = p.morphology_tail_defect1 == null ? "" : p.morphology_tail_defect1;
+            p.date_finish = p.date_finish == null ? "" : p.date_finish;
 
             p.doctor_id = long.TryParse(p.doctor_id, out chk) ? chk.ToString() : "0";
             p.req_id = long.TryParse(p.req_id, out chk) ? chk.ToString() : "0";
             p.form_a_id = long.TryParse(p.form_a_id, out chk) ? chk.ToString() : "0";
             p.staff_id_report = long.TryParse(p.staff_id_report, out chk) ? chk.ToString() : "0";
             p.staff_id_approve = long.TryParse(p.staff_id_approve, out chk) ? chk.ToString() : "0";
+            p.staff_id_finish = long.TryParse(p.staff_id_finish, out chk) ? chk.ToString() : "0";
         }
         public DataTable selectByPk(String copId)
         {
@@ -241,6 +245,18 @@ namespace clinic_ivf.objdb
             lbReq1 = setLabSperm(dt);
             return lbReq1;
         }
+        public LabSperm selectByReqId(String reqId)
+        {
+            LabSperm lbReq1 = new LabSperm();
+            DataTable dt = new DataTable();
+            String sql = "select lsperm.* , '' as doctorname " +
+                "From " + lsperm.table + " lsperm " +
+                //"Left Join Doctor dtr on dtr.ID = lsperm." + lsperm.doctor_id + " " +
+                "Where lsperm." + lsperm.req_id + " ='" + reqId + "' ";
+            dt = conn.selectData(conn.conn, sql);
+            lbReq1 = setLabSperm(dt);
+            return lbReq1;
+        }
         public DataTable selectByStatusProcess1()
         {
             DataTable dt = new DataTable();
@@ -272,7 +288,7 @@ namespace clinic_ivf.objdb
                 "Left Join Doctor on Doctor.ID = lsperm.doctor_id " +
                 //"Left Join lab_b_procedure on opu.proce_id = lab_b_procedure.proce_id " +
                 "Where lsperm." + lsperm.status_lab + " ='2' and lsperm." + lsperm.active + "='1' " +
-                "and lsperm." + lsperm.sperm_date + " >= '" + datestart + "' and lsperm." + lsperm.sperm_date + " <= '" + dateend + "' " +
+                "and lsperm." + lsperm.date_finish + " >= '" + datestart + " 00:00:00' and lsperm." + lsperm.date_finish + " <= '" + dateend + " 23:59:59' " +
             //"Order By opu." + opu.opu_id + " " +
             //"Union " +
             //"select fet.fet_id , fet.fet_code ,fet.hn_female ,fet.name_female,fet.fet_date ,fet.remark, fet.hn_male, fet.name_male, lab_b_procedure.proce_name_t " +
@@ -404,6 +420,8 @@ namespace clinic_ivf.objdb
                     "," + lsperm.morphology_head_defect1 + "='" + p.morphology_head_defect1 + "'" +
                     "," + lsperm.morphology_neck_defect1 + "='" + p.morphology_neck_defect1 + "'" +
                     "," + lsperm.morphology_tail_defect1 + "='" + p.morphology_tail_defect1 + "'" +
+                    "," + lsperm.staff_id_finish + "='" + p.staff_id_finish + "'" +
+                    "," + lsperm.date_finish + "=''" +
                     "";
                 re = conn.ExecuteNonQuery(conn.conn, sql);
             }
@@ -477,7 +495,6 @@ namespace clinic_ivf.objdb
                     
                     "," + lsperm.dob_female + "='" + p.dob_female + "' " +
                     "," + lsperm.dob_male + "='" + p.dob_male + "' " +
-                    "," + lsperm.status_lab + "='" + p.status_lab + "' " +
                     "," + lsperm.sperm_analysis_date_start + "='" + p.sperm_analysis_date_start + "' " +
                     "," + lsperm.spern_freezing_date_start + "='" + p.spern_freezing_date_start + "' " +
                     "," + lsperm.pasa_tese_date + "='" + p.pasa_tese_date + "' " +
@@ -525,6 +542,32 @@ namespace clinic_ivf.objdb
                 re = update(p, userId);
             }
 
+            return re;
+        }
+        public String updateStatusLabFinish(String id, String userId)
+        {
+            String re = "";
+            String sql = "";
+            //p.active = "1";
+            //p.ssdata_id = "";
+            int chk = 0;
+
+            //chkNull(p);
+            sql = "Update " + lsperm.table + " " +
+                //" Set "+lformA.patient_appoint_date_time + "='"+p.patient_appoint_date_time + "' " +
+                "Set " + lsperm.staff_id_finish + "='" + userId + "' " +
+                    "," + lsperm.date_finish + "= now() " +
+                    "," + lsperm.status_lab + "='2' " +
+                " Where " + lsperm.pkField + " = '" + id + "' "
+                ;
+            try
+            {
+                re = conn.ExecuteNonQuery(conn.conn, sql);
+            }
+            catch (Exception ex)
+            {
+                sql = ex.Message + " " + ex.InnerException;
+            }
             return re;
         }
         public LabSperm setLabSperm(DataTable dt)
