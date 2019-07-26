@@ -26,7 +26,7 @@ namespace clinic_ivf.gui
         Font ff, ffB;
         int colRqId = 1, colOPUDate = 2, colOPUTime = 3, colRqLabName = 4, colRqHnMale = 5, colRqNameMale = 6, colRqHn = 7, colRqName =8, colDtrName = 9, colRqRemark = 10, colRqReqNum = 11, colRqDate = 12, colRqVn = 13, colOpuId = 14, colRqStatusSperm = 15;
         //int colPcId = 1, colPcOpuNum = 2, colPcHn = 3, colPcPttName = 4, colPcDate = 5, colPcRemark = 6;
-        int colPcId = 1, colPcDate = 2, colPcHnMale = 3, colPcNameMale = 4, colPcHn = 5, colPcPttName = 6, colProceName = 7, colPcRemark = 8, colPcOpuNum = 9;
+        int colPcId = 1, colPcDate = 2, colPcTime=3, colPcHnMale = 4, colPcNameMale = 5, colPcSpermName = 6, colPcRemark = 7, colPcStatusSperm=8, colPcDtfName=9;
         int colFiId = 1, colFiDate = 2, colFiHnMale = 3, colFiNameMale = 4, colFiHn = 5, colFiPttName = 6, colFiProceName = 7, colFiRemark = 8, colFiOpuNum = 9;
 
         C1FlexGrid grfReq, grfProc, grfSearch, grfFinish;
@@ -161,34 +161,34 @@ namespace clinic_ivf.gui
             grfSearch.Clear();
             DataTable dt = new DataTable();
 
-            dt = ic.ivfDB.opuDB.selectBySearch(txtSearch.Text.Trim());
+            dt = ic.ivfDB.lspermDB.selectByStatusFinish("","");
             //grfExpn.Rows.Count = dt.Rows.Count + 1;
             grfSearch.Rows.Count = 1;
-            grfSearch.Cols.Count = 7;
+            grfSearch.Cols.Count = 10;
             C1TextBox txt = new C1TextBox();
             //C1ComboBox cboproce = new C1ComboBox();
             //ic.ivfDB.itmDB.setCboItem(cboproce);
-            grfSearch.Cols[colPcOpuNum].Editor = txt;
-            grfSearch.Cols[colPcHn].Editor = txt;
-            grfSearch.Cols[colPcPttName].Editor = txt;
-            grfSearch.Cols[colPcDate].Editor = txt;
-            grfSearch.Cols[colPcRemark].Editor = txt;
+            //grfSearch.Cols[colPcOpuNum].Editor = txt;
+            //grfSearch.Cols[colPcHn].Editor = txt;
+            //grfSearch.Cols[colPcPttName].Editor = txt;
+            //grfSearch.Cols[colPcDate].Editor = txt;
+            //grfSearch.Cols[colPcRemark].Editor = txt;
 
-            grfSearch.Cols[colPcOpuNum].Width = 120;
-            grfSearch.Cols[colPcHn].Width = 120;
-            grfSearch.Cols[colPcPttName].Width = 280;
-            grfSearch.Cols[colPcDate].Width = 100;
+            grfSearch.Cols[colPcDate].Width = 120;
+            grfSearch.Cols[colPcHnMale].Width = 200;
+            grfSearch.Cols[colPcNameMale].Width = 200;
+            grfSearch.Cols[colPcSpermName].Width = 200;
             grfSearch.Cols[colPcRemark].Width = 200;
-            //grfSearch.Cols[colRqRemark].Width = 200;
             grfSearch.ShowCursor = true;
             //grdFlex.Cols[colID].Caption = "no";
             //grfDept.Cols[colCode].Caption = "รหัส";
 
-            grfSearch.Cols[colPcOpuNum].Caption = "OPU number";
-            grfSearch.Cols[colPcHn].Caption = "HN female";
-            grfSearch.Cols[colPcPttName].Caption = "Patient Name";
-            grfSearch.Cols[colPcDate].Caption = "OPU Date";
-            grfSearch.Cols[colPcRemark].Caption = "Remark";
+            grfSearch.Cols[colPcDate].Caption = "Date";
+            grfSearch.Cols[colPcHnMale].Caption = "HN";
+            grfSearch.Cols[colPcNameMale].Caption = "Name";
+            grfSearch.Cols[colPcSpermName].Caption = "LAB";
+            grfSearch.Cols[colPcRemark].Caption = "Reamrk";
+            grfSearch.Cols[colPcTime].Caption = "Time";
             //grfSearch.Cols[colRqRemark].Caption = "Remark";
             //grfSearch.Cols[colDtrName].Caption = "Doctor";
 
@@ -200,20 +200,54 @@ namespace clinic_ivf.gui
             foreach (DataRow row in dt.Rows)
             {
                 Row row1 = grfSearch.Rows.Add();
-                row1[colPcId] = row[ic.ivfDB.opuDB.opu.opu_id].ToString();
-                row1[colPcOpuNum] = row[ic.ivfDB.opuDB.opu.opu_code].ToString();
-                row1[colPcHn] = row[ic.ivfDB.opuDB.opu.hn_female].ToString();
-                row1[colPcPttName] = row[ic.ivfDB.opuDB.opu.name_female].ToString();
-                row1[colPcDate] = ic.datetoShow(row[ic.ivfDB.opuDB.opu.opu_date].ToString());
-                row1[colPcRemark] = row[ic.ivfDB.opuDB.opu.remark].ToString();
-                //row1[colRqRemark] = row[ic.ivfDB.lbReqDB.lbReq.remark].ToString();
+                row1[colPcId] = row[ic.ivfDB.lspermDB.lsperm.sperm_id].ToString();
+                //row1[colRqReqNum] = "";
+                row1[colPcHnMale] = row[ic.ivfDB.lspermDB.lsperm.hn_male].ToString();
+                //row1[colRqVn] = "";
+                row1[colPcNameMale] = row[ic.ivfDB.lspermDB.lsperm.name_male].ToString();
+                //row1[colRqDate] = "";
+                row1[colPcRemark] = row[ic.ivfDB.lspermDB.lsperm.remark].ToString();
+                if (row[ic.ivfDB.lspermDB.lsperm.status_lab_sperm].ToString().Equals("1"))
+                {
+                    row1[colPcDate] = ic.datetoShow(row[ic.ivfDB.lspermDB.lsperm.spern_freezing_date_start].ToString());
+                    row1[colPcTime] = ic.timetoShow(row[ic.ivfDB.lspermDB.lsperm.spern_freezing_date_start].ToString());
+                }
+                else if (row[ic.ivfDB.lspermDB.lsperm.status_lab_sperm].ToString().Equals("2"))
+                {
+                    row1[colPcDate] = ic.datetoShow(row[ic.ivfDB.lspermDB.lsperm.sperm_analysis_date_start].ToString());
+                    row1[colPcTime] = ic.timetoShow(row[ic.ivfDB.lspermDB.lsperm.sperm_analysis_date_start].ToString());
+                }
+                else if (row[ic.ivfDB.lspermDB.lsperm.status_lab_sperm].ToString().Equals("3"))
+                {
+                    row1[colPcDate] = ic.datetoShow(row[ic.ivfDB.lspermDB.lsperm.pasa_tese_date].ToString());
+                    //row1[colOPUTime] = ic.timetoShow(row[ic.ivfDB.lspermDB.lsperm.sperm_analysis_date_start].ToString());
+                }
+                else if (row[ic.ivfDB.lspermDB.lsperm.status_lab_sperm].ToString().Equals("4"))
+                {
+                    row1[colPcDate] = ic.datetoShow(row[ic.ivfDB.lspermDB.lsperm.iui_date].ToString());
+                    //row1[colOPUTime] = ic.timetoShow(row[ic.ivfDB.lspermDB.lsperm.sperm_analysis_date_start].ToString());
+                }
+                row1[colRqStatusSperm] = row[ic.ivfDB.lspermDB.lsperm.status_lab_sperm].ToString();
+                row1[colPcSpermName] = row[ic.ivfDB.lspermDB.lsperm.status_lab_sperm].ToString().Equals("1") ? "Sperm Freezing"
+                    : row[ic.ivfDB.lspermDB.lsperm.status_lab_sperm].ToString().Equals("2") ? "Sperm Analysis"
+                    : row[ic.ivfDB.lspermDB.lsperm.status_lab_sperm].ToString().Equals("3") ? " PESA"
+                    : row[ic.ivfDB.lspermDB.lsperm.status_lab_sperm].ToString().Equals("4") ? " IUI " : "";
+                //row1[colRqHnMale] = row[ic.ivfDB.lspermDB.lsperm.hn_male].ToString();
+                //row1[colRqNameMale] = row[ic.ivfDB.lspermDB.lsperm.name_male].ToString();
+                row1[colPcDtfName] = row["dtr_name"].ToString();
                 //row1[colOpuId] = "";
                 //row1[colDtrName] = row["dtr_name"].ToString();
-                row1[0] = i;
+                row1[0] = (i - 1);
                 i++;
             }
-            grfSearch.Cols[colRqId].Visible = false;
+            grfSearch.Cols[colPcId].Visible = false;
             //grfReq.Cols[coldt].Visible = false;
+            grfSearch.Cols[colPcDate].AllowEditing = false;
+            grfSearch.Cols[colPcRemark].AllowEditing = false;
+            grfSearch.Cols[colPcHnMale].AllowEditing = false;
+            grfSearch.Cols[colPcNameMale].AllowEditing = false;
+            grfSearch.Cols[colPcSpermName].AllowEditing = false;
+            grfSearch.Cols[colPcTime].AllowEditing = false;
         }
         private void initGrfReq()
         {
@@ -533,7 +567,7 @@ namespace clinic_ivf.gui
             //grfExpn.Rows.Count = dt.Rows.Count + 1;
             
             grfProc.Rows.Count = 1;            
-            grfProc.Cols.Count = 18;
+            grfProc.Cols.Count = 10;
             //C1TextBox txt = new C1TextBox();
             ////C1ComboBox cboproce = new C1ComboBox();
             ////ic.ivfDB.itmDB.setCboItem(cboproce);
@@ -543,107 +577,110 @@ namespace clinic_ivf.gui
             //grfProc.Cols[colPcDate].Editor = txt;
             //grfProc.Cols[colPcRemark].Editor = txt;
 
-            grfProc.Cols[colRqHn].Width = 120;
-            grfProc.Cols[colRqName].Width = 200;
-            grfProc.Cols[colRqName].Width = 200;
-            grfProc.Cols[colRqRemark].Width = 200;
-            grfProc.Cols[colDtrName].Width = 200;
-            grfProc.Cols[colRqLabName].Width = 120;
-            grfProc.Cols[colOPUDate].Width = 120;
-            grfProc.Cols[colOPUTime].Width = 80;
-            grfProc.Cols[colRqHnMale].Width = 120;
-            grfProc.Cols[colRqNameMale].Width = 200;
+            grfProc.Cols[colPcDate].Width = 120;
+            grfProc.Cols[colPcHnMale].Width = 200;
+            grfProc.Cols[colPcNameMale].Width = 200;
+            grfProc.Cols[colPcSpermName].Width = 200;
+            grfProc.Cols[colPcRemark].Width = 200;
+            //grfProc.Cols[colRqLabName].Width = 120;
+            //grfProc.Cols[colOPUDate].Width = 120;
+            //grfProc.Cols[colOPUTime].Width = 80;
+            //grfProc.Cols[colRqHnMale].Width = 120;
+            //grfProc.Cols[colRqNameMale].Width = 200;
 
             grfProc.ShowCursor = true;
             //grdFlex.Cols[colID].Caption = "no";
             //grfDept.Cols[colCode].Caption = "รหัส";
 
-            grfProc.Cols[colRqReqNum].Caption = "req number";
-            grfProc.Cols[colRqHn].Caption = "HN";
-            grfProc.Cols[colRqVn].Caption = "VN";
-            grfProc.Cols[colRqName].Caption = "Name";
-            grfProc.Cols[colRqDate].Caption = "Date Req";
-            grfProc.Cols[colRqRemark].Caption = "Remark";
-            grfProc.Cols[colDtrName].Caption = "Doctor";
-            grfProc.Cols[colRqLabName].Caption = "Lab Name";
-            grfProc.Cols[colOPUDate].Caption = " Date";
-            grfProc.Cols[colOPUTime].Caption = " Time";
-            grfProc.Cols[colRqStatusSperm].Caption = "opu time old";
-            grfProc.Cols[colRqHnMale].Caption = "HN male";
-            grfProc.Cols[colRqNameMale].Caption = "Name male";
+            grfProc.Cols[colPcDate].Caption = "Date";
+            grfProc.Cols[colPcHnMale].Caption = "HN";
+            grfProc.Cols[colPcNameMale].Caption = "Name";
+            grfProc.Cols[colPcSpermName].Caption = "LAB";
+            grfProc.Cols[colPcRemark].Caption = "Reamrk";
+            grfProc.Cols[colPcTime].Caption = "Time";
+            //grfProc.Cols[colRqRemark].Caption = "Remark";
+            //grfProc.Cols[colDtrName].Caption = "Doctor";
+            //grfProc.Cols[colRqLabName].Caption = "Lab Name";
+            //grfProc.Cols[colOPUDate].Caption = " Date";
+            //grfProc.Cols[colOPUTime].Caption = " Time";
+            //grfProc.Cols[colRqStatusSperm].Caption = "opu time old";
+            //grfProc.Cols[colRqHnMale].Caption = "HN male";
+            //grfProc.Cols[colRqNameMale].Caption = "Name male";
 
             Color color = ColorTranslator.FromHtml(ic.iniC.grfRowColor);
             //CellRange rg1 = grfBank.GetCellRange(1, colE, grfBank.Rows.Count, colE);
             //rg1.Style = grfBank.Styles["date"];
             //grfCu.Cols[colID].Visible = false;
-            for (int col = 0; col < dt.Columns.Count; ++col)
-            {
-                grfProc.Cols[col + 1].DataType = dt.Columns[col].DataType;
-                //grfProc.Cols[col + 1].Caption = dt.Columns[col].ColumnName;
-                grfProc.Cols[col + 1].Name = dt.Columns[col].ColumnName;
-            }
+            //for (int col = 0; col < dt.Columns.Count; ++col)
+            //{
+            //    grfProc.Cols[col + 1].DataType = dt.Columns[col].DataType;
+            //    //grfProc.Cols[col + 1].Caption = dt.Columns[col].ColumnName;
+            //    grfProc.Cols[col + 1].Name = dt.Columns[col].ColumnName;
+            //}
             int i = 1;
             foreach (DataRow row in dt.Rows)
             {
                 Row row1 = grfProc.Rows.Add();
-                row1[colRqId] = row[ic.ivfDB.lspermDB.lsperm.sperm_id].ToString();
-                row1[colRqReqNum] = "";
-                row1[colRqHn] = row[ic.ivfDB.lspermDB.lsperm.hn_female].ToString();
-                row1[colRqVn] = "";
-                row1[colRqName] = row[ic.ivfDB.lspermDB.lsperm.name_female].ToString();
-                row1[colRqDate] = "";
-                row1[colRqRemark] = row[ic.ivfDB.lspermDB.lsperm.remark].ToString();
+                row1[colPcId] = row[ic.ivfDB.lspermDB.lsperm.sperm_id].ToString();
+                //row1[colRqReqNum] = "";
+                row1[colPcHnMale] = row[ic.ivfDB.lspermDB.lsperm.hn_male].ToString();
+                //row1[colRqVn] = "";
+                row1[colPcNameMale] = row[ic.ivfDB.lspermDB.lsperm.name_male].ToString();
+                //row1[colRqDate] = "";
+                row1[colPcRemark] = row[ic.ivfDB.lspermDB.lsperm.remark].ToString();
                 if (row[ic.ivfDB.lspermDB.lsperm.status_lab_sperm].ToString().Equals("1"))
                 {
-                    row1[colOPUDate] = ic.datetoShow(row[ic.ivfDB.lspermDB.lsperm.spern_freezing_date_start].ToString());
-                    row1[colOPUTime] = ic.timetoShow(row[ic.ivfDB.lspermDB.lsperm.spern_freezing_date_start].ToString());
+                    row1[colPcDate] = ic.datetoShow(row[ic.ivfDB.lspermDB.lsperm.spern_freezing_date_start].ToString());
+                    row1[colPcTime] = ic.timetoShow(row[ic.ivfDB.lspermDB.lsperm.spern_freezing_date_start].ToString());
                 }
                 else if (row[ic.ivfDB.lspermDB.lsperm.status_lab_sperm].ToString().Equals("2"))
                 {
-                    row1[colOPUDate] = ic.datetoShow(row[ic.ivfDB.lspermDB.lsperm.sperm_analysis_date_start].ToString());
-                    row1[colOPUTime] = ic.timetoShow(row[ic.ivfDB.lspermDB.lsperm.sperm_analysis_date_start].ToString());
+                    row1[colPcDate] = ic.datetoShow(row[ic.ivfDB.lspermDB.lsperm.sperm_analysis_date_start].ToString());
+                    row1[colPcTime] = ic.timetoShow(row[ic.ivfDB.lspermDB.lsperm.sperm_analysis_date_start].ToString());
                 }
                 else if (row[ic.ivfDB.lspermDB.lsperm.status_lab_sperm].ToString().Equals("3"))
                 {
-                    row1[colOPUDate] = ic.datetoShow(row[ic.ivfDB.lspermDB.lsperm.pasa_tese_date].ToString());
+                    row1[colPcDate] = ic.datetoShow(row[ic.ivfDB.lspermDB.lsperm.pasa_tese_date].ToString());
                     //row1[colOPUTime] = ic.timetoShow(row[ic.ivfDB.lspermDB.lsperm.sperm_analysis_date_start].ToString());
                 }
                 else if (row[ic.ivfDB.lspermDB.lsperm.status_lab_sperm].ToString().Equals("4"))
                 {
-                    row1[colOPUDate] = ic.datetoShow(row[ic.ivfDB.lspermDB.lsperm.iui_date].ToString());
+                    row1[colPcDate] = ic.datetoShow(row[ic.ivfDB.lspermDB.lsperm.iui_date].ToString());
                     //row1[colOPUTime] = ic.timetoShow(row[ic.ivfDB.lspermDB.lsperm.sperm_analysis_date_start].ToString());
                 }
-                row1[colRqStatusSperm] = row[ic.ivfDB.lspermDB.lsperm.status_lab_sperm].ToString();
-                row1[colRqLabName] = row[ic.ivfDB.lspermDB.lsperm.status_lab_sperm].ToString().Equals("1") ? "Sperm Freezing" 
+                row1[colPcStatusSperm] = row[ic.ivfDB.lspermDB.lsperm.status_lab_sperm].ToString();
+                row1[colPcSpermName] = row[ic.ivfDB.lspermDB.lsperm.status_lab_sperm].ToString().Equals("1") ? "Sperm Freezing" 
                     : row[ic.ivfDB.lspermDB.lsperm.status_lab_sperm].ToString().Equals("2") ? "Sperm Analysis"
                     : row[ic.ivfDB.lspermDB.lsperm.status_lab_sperm].ToString().Equals("3") ? " PESA" 
                     : row[ic.ivfDB.lspermDB.lsperm.status_lab_sperm].ToString().Equals("4") ? " IUI " : "";
-                row1[colRqHnMale] = row[ic.ivfDB.lspermDB.lsperm.hn_male].ToString();
-                row1[colRqNameMale] = row[ic.ivfDB.lspermDB.lsperm.name_male].ToString();
-                row1[colDtrName] = row["dtr_name"].ToString();
+                //row1[colRqHnMale] = row[ic.ivfDB.lspermDB.lsperm.hn_male].ToString();
+                //row1[colRqNameMale] = row[ic.ivfDB.lspermDB.lsperm.name_male].ToString();
+                row1[colPcDtfName] = row["dtr_name"].ToString();
                 //row1[colOpuId] = "";
                 //row1[colDtrName] = row["dtr_name"].ToString();
                 row1[0] = (i - 1);
+                i++;
             }
-            grfProc.Cols[colRqId].Visible = false;
-            grfProc.Cols[colRqStatusSperm].Visible = false;
-            grfProc.Cols[colOpuId].Visible = false;
-            grfProc.Cols[colRqVn].Visible = false;
-            grfProc.Cols[colPcOpuNum].AllowEditing = false;
-            grfProc.Cols[colPcHn].AllowEditing = false;
-            grfProc.Cols[colPcPttName].AllowEditing = false;
+            grfProc.Cols[colPcId].Visible = false;
+            //grfProc.Cols[colRqStatusSperm].Visible = false;
+            //grfProc.Cols[colOpuId].Visible = false;
+            //grfProc.Cols[colRqVn].Visible = false;
+            //grfProc.Cols[colPcOpuNum].AllowEditing = false;
+            //grfProc.Cols[colPcHn].AllowEditing = false;
+            //grfProc.Cols[colPcPttName].AllowEditing = false;
             grfProc.Cols[colPcDate].AllowEditing = false;
             grfProc.Cols[colPcRemark].AllowEditing = false;
             grfProc.Cols[colPcHnMale].AllowEditing = false;
             grfProc.Cols[colPcNameMale].AllowEditing = false;
-            grfProc.Cols[colProceName].AllowEditing = false;
+            grfProc.Cols[colPcSpermName].AllowEditing = false;
+            grfProc.Cols[colPcTime].AllowEditing = false;
             //grfReq.Cols[coldt].Visible = false;
-            if (grfProc.Rows.Count > 2)
-            {
-                FilterRow fr = new FilterRow(grfProc);
-                grfProc.AllowFiltering = true;
-                grfProc.AfterFilter += GrfProc_AfterFilter;
-            }
+            //if (grfProc.Rows.Count > 2)
+            //{
+            //    FilterRow fr = new FilterRow(grfProc);
+            //    grfProc.AllowFiltering = true;
+            //    grfProc.AfterFilter += GrfProc_AfterFilter;
+            //}
         }
 
         private void GrfProc_AfterFilter(object sender, EventArgs e)
@@ -737,76 +774,101 @@ namespace clinic_ivf.gui
             //grfProc.Cols[colPcDate].Editor = txt;
             //grfProc.Cols[colPcRemark].Editor = txt;
 
-            grfFinish.Cols[colPcOpuNum].Width = 120;
-            grfFinish.Cols[colPcHn].Width = 120;
-            grfFinish.Cols[colPcPttName].Width = 280;
-            grfFinish.Cols[colPcDate].Width = 100;
+            //grfFinish.Cols[colPcOpuNum].Width = 120;
+            //grfFinish.Cols[colPcHn].Width = 120;
+            //grfFinish.Cols[colPcPttName].Width = 280;
+            grfFinish.Cols[colPcDate].Width = 120;
+            grfFinish.Cols[colPcHnMale].Width = 200;
+            grfFinish.Cols[colPcNameMale].Width = 200;
+            grfFinish.Cols[colPcSpermName].Width = 200;
             grfFinish.Cols[colPcRemark].Width = 200;
-            grfFinish.Cols[colPcHnMale].Width = 120;
-            grfFinish.Cols[colPcNameMale].Width = 280;
-            grfFinish.Cols[colProceName].Width = 200;
 
             grfFinish.ShowCursor = true;
             //grdFlex.Cols[colID].Caption = "no";
             //grfDept.Cols[colCode].Caption = "รหัส";
 
-            grfFinish.Cols[colPcOpuNum].Caption = "OPU number";
-            grfFinish.Cols[colPcHn].Caption = "HN female";
-            grfFinish.Cols[colPcPttName].Caption = "Patient Name";
-            grfFinish.Cols[colPcDate].Caption = "OPU Date";
+            grfFinish.Cols[colPcDate].Caption = "OPU number";
+            grfFinish.Cols[colPcHnMale].Caption = "HN female";
+            grfFinish.Cols[colPcNameMale].Caption = "Patient Name";
+            grfFinish.Cols[colPcSpermName].Caption = "OPU Date";
             grfFinish.Cols[colPcRemark].Caption = "Remark";
+            grfFinish.Cols[colPcTime].Caption = "Time";
 
-            grfFinish.Cols[colPcHnMale].Caption = "HN Male";
-            grfFinish.Cols[colPcNameMale].Caption = "Patient Male";
-            grfFinish.Cols[colProceName].Caption = "Procedure";
+            //grfFinish.Cols[colPcHnMale].Caption = "HN Male";
+            //grfFinish.Cols[colPcNameMale].Caption = "Patient Male";
+            //grfFinish.Cols[colPcSpermName].Caption = "Procedure";
 
             Color color = ColorTranslator.FromHtml(ic.iniC.grfRowColor);
             //CellRange rg1 = grfBank.GetCellRange(1, colE, grfBank.Rows.Count, colE);
             //rg1.Style = grfBank.Styles["date"];
             //grfCu.Cols[colID].Visible = false;
-            for (int col = 0; col < dt.Columns.Count; ++col)
-            {
-                grfFinish.Cols[col + 1].DataType = dt.Columns[col].DataType;
-                //grfProc.Cols[col + 1].Caption = dt.Columns[col].ColumnName;
-                grfFinish.Cols[col + 1].Name = dt.Columns[col].ColumnName;
-            }
+            //for (int col = 0; col < dt.Columns.Count; ++col)
+            //{
+            //    grfFinish.Cols[col + 1].DataType = dt.Columns[col].DataType;
+            //    //grfProc.Cols[col + 1].Caption = dt.Columns[col].ColumnName;
+            //    grfFinish.Cols[col + 1].Name = dt.Columns[col].ColumnName;
+            //}
             int i = 0;
             foreach (DataRow row in dt.Rows)
             {
-                i++;
-                if (i == 1) continue;
-                //Row row1 = grfProc.Rows.Add();
-                grfFinish[i, colPcId] = row[ic.ivfDB.opuDB.opu.opu_id].ToString();
-                grfFinish[i, colPcOpuNum] = row[ic.ivfDB.opuDB.opu.opu_code].ToString();
-                grfFinish[i, colPcHn] = row[ic.ivfDB.opuDB.opu.hn_female].ToString();
-                grfFinish[i, colPcPttName] = row[ic.ivfDB.opuDB.opu.name_female].ToString();
-                grfFinish[i, colPcDate] = ic.datetoShow(row[ic.ivfDB.opuDB.opu.opu_date].ToString());
-                grfFinish[i, colPcRemark] = row[ic.ivfDB.opuDB.opu.remark].ToString();
-                grfFinish[i, colPcHnMale] = row[ic.ivfDB.opuDB.opu.hn_male].ToString();
-                grfFinish[i, colPcNameMale] = row[ic.ivfDB.opuDB.opu.name_male].ToString();
-                grfFinish[i, colProceName] = row["proce_name_t"].ToString();
-                //row1[colRqRemark] = row[ic.ivfDB.lbReqDB.lbReq.remark].ToString();
+                Row row1 = grfFinish.Rows.Add();
+                row1[colPcId] = row[ic.ivfDB.lspermDB.lsperm.sperm_id].ToString();
+                //row1[colRqReqNum] = "";
+                row1[colPcHnMale] = row[ic.ivfDB.lspermDB.lsperm.hn_male].ToString();
+                //row1[colRqVn] = "";
+                row1[colPcNameMale] = row[ic.ivfDB.lspermDB.lsperm.name_male].ToString();
+                //row1[colRqDate] = "";
+                row1[colPcRemark] = row[ic.ivfDB.lspermDB.lsperm.remark].ToString();
+                if (row[ic.ivfDB.lspermDB.lsperm.status_lab_sperm].ToString().Equals("1"))
+                {
+                    row1[colPcDate] = ic.datetoShow(row[ic.ivfDB.lspermDB.lsperm.spern_freezing_date_start].ToString());
+                    row1[colPcTime] = ic.timetoShow(row[ic.ivfDB.lspermDB.lsperm.spern_freezing_date_start].ToString());
+                }
+                else if (row[ic.ivfDB.lspermDB.lsperm.status_lab_sperm].ToString().Equals("2"))
+                {
+                    row1[colPcDate] = ic.datetoShow(row[ic.ivfDB.lspermDB.lsperm.sperm_analysis_date_start].ToString());
+                    row1[colPcTime] = ic.timetoShow(row[ic.ivfDB.lspermDB.lsperm.sperm_analysis_date_start].ToString());
+                }
+                else if (row[ic.ivfDB.lspermDB.lsperm.status_lab_sperm].ToString().Equals("3"))
+                {
+                    row1[colPcDate] = ic.datetoShow(row[ic.ivfDB.lspermDB.lsperm.pasa_tese_date].ToString());
+                    //row1[colOPUTime] = ic.timetoShow(row[ic.ivfDB.lspermDB.lsperm.sperm_analysis_date_start].ToString());
+                }
+                else if (row[ic.ivfDB.lspermDB.lsperm.status_lab_sperm].ToString().Equals("4"))
+                {
+                    row1[colPcDate] = ic.datetoShow(row[ic.ivfDB.lspermDB.lsperm.iui_date].ToString());
+                    //row1[colOPUTime] = ic.timetoShow(row[ic.ivfDB.lspermDB.lsperm.sperm_analysis_date_start].ToString());
+                }
+                row1[colPcStatusSperm] = row[ic.ivfDB.lspermDB.lsperm.status_lab_sperm].ToString();
+                row1[colPcSpermName] = row[ic.ivfDB.lspermDB.lsperm.status_lab_sperm].ToString().Equals("1") ? "Sperm Freezing"
+                    : row[ic.ivfDB.lspermDB.lsperm.status_lab_sperm].ToString().Equals("2") ? "Sperm Analysis"
+                    : row[ic.ivfDB.lspermDB.lsperm.status_lab_sperm].ToString().Equals("3") ? " PESA"
+                    : row[ic.ivfDB.lspermDB.lsperm.status_lab_sperm].ToString().Equals("4") ? " IUI " : "";
+                //row1[colRqHnMale] = row[ic.ivfDB.lspermDB.lsperm.hn_male].ToString();
+                //row1[colRqNameMale] = row[ic.ivfDB.lspermDB.lsperm.name_male].ToString();
+                row1[colPcDtfName] = row["dtr_name"].ToString();
                 //row1[colOpuId] = "";
                 //row1[colDtrName] = row["dtr_name"].ToString();
-                grfFinish[i, 0] = (i - 1);
+                row1[0] = (i - 1);
 
             }
-            grfFinish.Cols[colRqId].Visible = false;
-            grfFinish.Cols[colPcOpuNum].AllowEditing = false;
-            grfFinish.Cols[colPcHn].AllowEditing = false;
-            grfFinish.Cols[colPcPttName].AllowEditing = false;
+            grfFinish.Cols[colPcId].Visible = false;
+            //grfFinish.Cols[colPcOpuNum].AllowEditing = false;
+            //grfFinish.Cols[colPcHn].AllowEditing = false;
+            //grfFinish.Cols[colPcPttName].AllowEditing = false;
             grfFinish.Cols[colPcDate].AllowEditing = false;
             grfFinish.Cols[colPcRemark].AllowEditing = false;
             grfFinish.Cols[colPcHnMale].AllowEditing = false;
             grfFinish.Cols[colPcNameMale].AllowEditing = false;
-            grfFinish.Cols[colProceName].AllowEditing = false;
+            grfFinish.Cols[colPcSpermName].AllowEditing = false;
+            grfFinish.Cols[colPcTime].AllowEditing = false;
             //grfReq.Cols[coldt].Visible = false;
-            if (grfFinish.Rows.Count > 2)
-            {
-                FilterRow fr = new FilterRow(grfFinish);
-                grfFinish.AllowFiltering = true;
-                grfFinish.AfterFilter += GrfFinish_AfterFilter;
-            }
+            //if (grfFinish.Rows.Count > 2)
+            //{
+            //    FilterRow fr = new FilterRow(grfFinish);
+            //    grfFinish.AllowFiltering = true;
+            //    grfFinish.AfterFilter += GrfFinish_AfterFilter;
+            //}
         }
 
         private void GrfFinish_AfterFilter(object sender, EventArgs e)

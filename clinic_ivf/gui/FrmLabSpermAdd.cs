@@ -1305,7 +1305,7 @@ namespace clinic_ivf.gui
             ic.setC1Combo(cboLiquefaction, lsperm.liquefaction);
             ic.setC1Combo(cboViscosity, lsperm.viscosity);
 
-            txtSpermDate.Value = lsperm.sperm_date;
+            txtSpermDate.Value = ic.datetoDB(lsperm.sperm_date);
             txtAbstinenceday.Value = lsperm.abstinence_day;
             txtPh.Value = lsperm.ph;
             txtViability.Value = lsperm.viability;
@@ -1524,7 +1524,7 @@ namespace clinic_ivf.gui
             lsperm.liquefaction = cboLiquefaction.SelectedItem == null ? "" : ((ComboBoxItem)cboLiquefaction.SelectedItem).Value;
             lsperm.viscosity = cboViscosity.SelectedItem == null ? "" : ((ComboBoxItem)cboViscosity.SelectedItem).Value;
 
-            lsperm.sperm_date = txtSpermDate.Text;
+            lsperm.sperm_date = ic.datetoDB(txtSpermDate.Text);
             lsperm.abstinence_day = txtAbstinenceday.Text;
             lsperm.ph = txtPh.Text;
             lsperm.viability = txtViability.Text;
@@ -1571,7 +1571,7 @@ namespace clinic_ivf.gui
             lsperm.liquefaction = cboSfLiquefaction.SelectedItem == null ? "" : ((ComboBoxItem)cboSfLiquefaction.SelectedItem).Value;
             lsperm.viscosity = cboSfViscosity.SelectedItem == null ? "" : ((ComboBoxItem)cboSfViscosity.SelectedItem).Value;
 
-            lsperm.sperm_date = txtSfSpermDate.Text;
+            lsperm.sperm_date = ic.datetoDB(txtSfSpermDate.Text);
             lsperm.abstinence_day = txtSfAbstinenceday.Text;
             lsperm.ph = txtSfPh.Text;
             lsperm.viability = txtSfViability.Text;
@@ -1624,7 +1624,7 @@ namespace clinic_ivf.gui
             lsperm.liquefaction = cboPeLiquefaction.SelectedItem == null ? "" : ((ComboBoxItem)cboPeLiquefaction.SelectedItem).Value;
             lsperm.viscosity = cboPeViscosity.SelectedItem == null ? "" : ((ComboBoxItem)cboPeViscosity.SelectedItem).Value;
 
-            lsperm.sperm_date = txtPeSpermDate.Text;
+            lsperm.sperm_date = ic.datetoDB(txtPeSpermDate.Text);
             lsperm.abstinence_day = txtPeAbstinenceday.Text;
             lsperm.ph = txtPePh.Text;
             lsperm.viability = txtPeViability.Text;
@@ -1671,7 +1671,7 @@ namespace clinic_ivf.gui
             lsperm.liquefaction = cboIuiLiquefaction.SelectedItem == null ? "" : ((ComboBoxItem)cboIuiLiquefaction.SelectedItem).Value;
             lsperm.viscosity = cboIuiViscosity.SelectedItem == null ? "" : ((ComboBoxItem)cboIuiViscosity.SelectedItem).Value;
 
-            lsperm.sperm_date = txtIuiSpermDate.Text;
+            lsperm.sperm_date = ic.datetoDB(txtIuiSpermDate.Text);
             lsperm.abstinence_day = txtIuiAbstinenceday.Text;
             //lsperm.ph = txtIuiPh.Text;
             //lsperm.viability = txtIuiViability.Text;
