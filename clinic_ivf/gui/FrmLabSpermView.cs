@@ -594,7 +594,7 @@ namespace clinic_ivf.gui
 
             grfProc.Cols[colPcDate].Caption = "Date";
             grfProc.Cols[colPcHnMale].Caption = "HN";
-            grfProc.Cols[colPcNameMale].Caption = "Name";
+            grfProc.Cols[colPcNameMale].Caption = "Patient Name";
             grfProc.Cols[colPcSpermName].Caption = "LAB";
             grfProc.Cols[colPcRemark].Caption = "Reamrk";
             grfProc.Cols[colPcTime].Caption = "Time";
@@ -658,7 +658,7 @@ namespace clinic_ivf.gui
                 row1[colPcDtfName] = row["dtr_name"].ToString();
                 //row1[colOpuId] = "";
                 //row1[colDtrName] = row["dtr_name"].ToString();
-                row1[0] = (i - 1);
+                row1[0] = i;
                 i++;
             }
             grfProc.Cols[colPcId].Visible = false;
@@ -700,9 +700,9 @@ namespace clinic_ivf.gui
         private void ContextMenu_proc_edit(object sender, System.EventArgs e)
         {
             String chk = "", name = "", id = "";
-            id = grfProc[grfProc.Row, colRqId] != null ? grfProc[grfProc.Row, colRqId].ToString() : "";
-            chk = grfProc[grfProc.Row, colRqStatusSperm] != null ? grfProc[grfProc.Row, colRqStatusSperm].ToString() : "";
-            name = grfProc[grfProc.Row, colRqName] != null ? grfProc[grfProc.Row, colRqName].ToString() : "";
+            id = grfProc[grfProc.Row, colPcId] != null ? grfProc[grfProc.Row, colPcId].ToString() : "";
+            chk = grfProc[grfProc.Row, colPcStatusSperm] != null ? grfProc[grfProc.Row, colPcStatusSperm].ToString() : "";
+            name = grfProc[grfProc.Row, colPcNameMale] != null ? grfProc[grfProc.Row, colPcNameMale].ToString() : "";
             //if (MessageBox.Show("ต้องการ ป้อน LAB OPU  \n  opu number " + chk + " \n name " + name, "", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == DialogResult.OK)
             //{
             //grfReq.Rows.Remove(grfReq.Row);
@@ -738,7 +738,18 @@ namespace clinic_ivf.gui
         private void GrfFinish_DoubleClick(object sender, EventArgs e)
         {
             //throw new NotImplementedException();
-
+            String chk = "", name = "", id = "";
+            id = grfFinish[grfFinish.Row, colPcId] != null ? grfFinish[grfFinish.Row, colPcId].ToString() : "";
+            chk = grfFinish[grfFinish.Row, colPcStatusSperm] != null ? grfFinish[grfFinish.Row, colPcStatusSperm].ToString() : "";
+            name = grfFinish[grfFinish.Row, colPcNameMale] != null ? grfFinish[grfFinish.Row, colPcNameMale].ToString() : "";
+            //if (MessageBox.Show("ต้องการ ป้อน LAB OPU  \n  opu number " + chk + " \n name " + name, "", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == DialogResult.OK)
+            //{
+            //grfReq.Rows.Remove(grfReq.Row);
+            Cursor curOld;
+            curOld = this.Cursor;
+            this.Cursor = Cursors.WaitCursor;
+            openLabOPUAdd(id, name, chk.Equals("2") ? " Analysis " : chk.Equals("1") ? " Freezing " : chk.Equals("3") ? " PESA " : " IUI ");
+            this.Cursor = curOld;
         }
 
         private void GrfFinish_AfterRowColChange(object sender, RangeEventArgs e)
@@ -787,10 +798,10 @@ namespace clinic_ivf.gui
             //grdFlex.Cols[colID].Caption = "no";
             //grfDept.Cols[colCode].Caption = "รหัส";
 
-            grfFinish.Cols[colPcDate].Caption = "OPU number";
-            grfFinish.Cols[colPcHnMale].Caption = "HN female";
+            grfFinish.Cols[colPcDate].Caption = "Date";
+            grfFinish.Cols[colPcHnMale].Caption = "HN";
             grfFinish.Cols[colPcNameMale].Caption = "Patient Name";
-            grfFinish.Cols[colPcSpermName].Caption = "OPU Date";
+            grfFinish.Cols[colPcSpermName].Caption = "LAB";
             grfFinish.Cols[colPcRemark].Caption = "Remark";
             grfFinish.Cols[colPcTime].Caption = "Time";
 
@@ -808,7 +819,7 @@ namespace clinic_ivf.gui
             //    //grfProc.Cols[col + 1].Caption = dt.Columns[col].ColumnName;
             //    grfFinish.Cols[col + 1].Name = dt.Columns[col].ColumnName;
             //}
-            int i = 0;
+            int i = 1;
             foreach (DataRow row in dt.Rows)
             {
                 Row row1 = grfFinish.Rows.Add();
@@ -849,7 +860,8 @@ namespace clinic_ivf.gui
                 row1[colPcDtfName] = row["dtr_name"].ToString();
                 //row1[colOpuId] = "";
                 //row1[colDtrName] = row["dtr_name"].ToString();
-                row1[0] = (i - 1);
+                row1[0] = i;
+                i++;
 
             }
             grfFinish.Cols[colPcId].Visible = false;

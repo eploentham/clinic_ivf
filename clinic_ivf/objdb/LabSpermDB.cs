@@ -260,10 +260,8 @@ namespace clinic_ivf.objdb
         public DataTable selectByStatusProcess1()
         {
             DataTable dt = new DataTable();
-            String sql = "select lsperm." + lsperm.sperm_id + ", lsperm." + lsperm.sperm_code + ",lsperm." + lsperm.hn_female + ",lsperm." + lsperm.name_female 
-                + ",lsperm." + lsperm.sperm_date + ",lsperm." + lsperm.remark + ",lsperm." + lsperm.hn_male + ",lsperm." + lsperm.name_male + ", Doctor.Name as dtr_name  " +
-                ",lsperm." + lsperm.sperm_analysis_date_start + ",lsperm." + lsperm.spern_freezing_date_start + ",lsperm." + lsperm.pasa_tese_date + ",lsperm." + lsperm.iui_date + "," + lsperm.status_lab_sperm + "  " +
-                ",lsperm." + lsperm.status_lab_sperm + " " +
+            String sql = "select lsperm.*, Doctor.Name as dtr_name  " +
+                
                 "From " + lsperm.table + " lsperm " +
                 "Left Join Doctor on Doctor.ID = lsperm.doctor_id " +
                 //"Left Join lab_b_procedure on opu.proce_id = lab_b_procedure.proce_id " +
@@ -283,8 +281,7 @@ namespace clinic_ivf.objdb
         public DataTable selectByStatusFinish(String datestart, String dateend)
         {
             DataTable dt = new DataTable();
-            String sql = "select lsperm." + lsperm.sperm_id + ", lsperm." + lsperm.sperm_code + ",lsperm." + lsperm.hn_female + ",lsperm." + lsperm.name_female + ",lsperm."
-                + lsperm.sperm_date + ",lsperm." + lsperm.remark + "," + lsperm.hn_male + "," + lsperm.name_male + "," + lsperm.status_lab_sperm + " " +
+            String sql = "select lsperm.*, Doctor.Name as dtr_name " +
                 "From " + lsperm.table + " lsperm " +
                 "Left Join Doctor on Doctor.ID = lsperm.doctor_id " +
                 //"Left Join lab_b_procedure on opu.proce_id = lab_b_procedure.proce_id " +

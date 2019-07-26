@@ -146,6 +146,8 @@ namespace clinic_ivf.objdb
         public C1ComboBox setCboNation(C1ComboBox c, String selected)
         {
             ComboBoxItem item = new ComboBoxItem();
+            String select = "";
+            int row1 = 0;
             //DataTable dt = selectC1();
             if (lFpn.Count <= 0) getlFNation();
             ComboBoxItem item1 = new ComboBoxItem();
@@ -166,10 +168,14 @@ namespace clinic_ivf.objdb
                     //c.SelectedItem = item.Value;
                     c.SelectedText = item.Text;
                     c.SelectedIndex = i + 1;
-                    break;
+                    select = item.Text;
+                    row1 = (i + 1);
+                    //break;
                 }
                 i++;
             }
+            c.SelectedText = select;
+            c.SelectedIndex = row1;
             return c;
         }
     }
