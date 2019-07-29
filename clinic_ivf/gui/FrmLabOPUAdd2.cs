@@ -12,6 +12,7 @@ using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Net;
+using System.Runtime.InteropServices;
 using System.Security;
 using System.Text;
 using System.Threading;
@@ -46,7 +47,8 @@ namespace clinic_ivf.gui
         private bool prefixSeen;
         String theme2 = "Office2007Blue";       //Office2016Black       BeigeOne
         String flagEdit = "";
-
+        [DllImport("user32.dll", CharSet = CharSet.Auto, CallingConvention = CallingConvention.Winapi)]
+        internal static extern IntPtr GetFocus();
         public FrmLabOPUAdd2(IvfControl ic, String reqid, String opuid)
         {
             InitializeComponent();
@@ -559,6 +561,16 @@ namespace clinic_ivf.gui
             theme1.SetTheme(grfDay5, theme2);
             theme1.SetTheme(grfDay6, theme2);
         }
+        private Control GetFocusedControl()
+        {
+            Control focusedControl = null;
+            // To get hold of the focused control:
+            IntPtr focusedHandle = GetFocus();
+            if (focusedHandle != IntPtr.Zero)
+                // Note that if the focused Control is not a .Net control, then this will return null.
+                focusedControl = Control.FromHandle(focusedHandle);
+            return focusedControl;
+        }
         protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
         {
             // ...
@@ -597,6 +609,10 @@ namespace clinic_ivf.gui
                 case Keys.C | Keys.Control :
                     //MessageBox.Show("2222 ", "");
                     String txt = "";
+                    //Clipboard.SetText(Clipboard.GetText());
+                    Control ctl = new Control();
+                    ctl = GetFocusedControl();
+                    txt = ctl.Text;
                     if (grf2Focus)
                     {
                         txt = grfDay2[grfDay2.Row, grfDay2.Col].ToString();
@@ -613,6 +629,14 @@ namespace clinic_ivf.gui
                     {
                         txt = grfDay6[grfDay6.Row, grfDay6.Col].ToString();
                     }
+                    //else if (grf6Focus)
+                    //{
+                    //    txt = grfDay6[grfDay6.Row, grfDay6.Col].ToString();
+                    //}
+                    //else if (this.Controls is C1ComboBox)
+                    //{
+                    //    txt = grfDay6[grfDay6.Row, grfDay6.Col].ToString();
+                    //}
                     if (!txt.Equals(""))
                     {
                         Clipboard.SetText(txt);

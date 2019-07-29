@@ -51,6 +51,7 @@
             this.tabDay6 = new C1.Win.C1Command.C1DockingTabPage();
             this.pnGrf6Img = new System.Windows.Forms.Panel();
             this.panel6 = new System.Windows.Forms.Panel();
+            this.btnSaveImg6Copy = new C1.Win.C1Input.C1Button();
             this.btnDay6ImgRef = new C1.Win.C1Input.C1Button();
             this.btnSaveImg6 = new C1.Win.C1Input.C1Button();
             this.panel1 = new System.Windows.Forms.Panel();
@@ -285,7 +286,6 @@
             this.txtHnMale = new C1.Win.C1Input.C1TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.txtHnFeMale = new C1.Win.C1Input.C1TextBox();
-            this.btnSaveImg6Copy = new C1.Win.C1Input.C1Button();
             this.sB.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.theme1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.c1CommandDock2)).BeginInit();
@@ -306,6 +306,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.btnSaveImg5)).BeginInit();
             this.tabDay6.SuspendLayout();
             this.panel6.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.btnSaveImg6Copy)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnDay6ImgRef)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnSaveImg6)).BeginInit();
             this.panel1.SuspendLayout();
@@ -457,7 +458,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.btnHnSearch)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtHnMale)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtHnFeMale)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.btnSaveImg6Copy)).BeginInit();
             this.SuspendLayout();
             // 
             // sB
@@ -741,6 +741,20 @@
             this.panel6.Size = new System.Drawing.Size(76, 44);
             this.panel6.TabIndex = 3;
             this.theme1.SetTheme(this.panel6, "(default)");
+            // 
+            // btnSaveImg6Copy
+            // 
+            this.btnSaveImg6Copy.Image = global::clinic_ivf.Properties.Resources.download_database16;
+            this.btnSaveImg6Copy.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnSaveImg6Copy.Location = new System.Drawing.Point(32, 3);
+            this.btnSaveImg6Copy.Name = "btnSaveImg6Copy";
+            this.btnSaveImg6Copy.Size = new System.Drawing.Size(112, 28);
+            this.btnSaveImg6Copy.TabIndex = 548;
+            this.btnSaveImg6Copy.Text = "copy image day5";
+            this.btnSaveImg6Copy.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.theme1.SetTheme(this.btnSaveImg6Copy, "(default)");
+            this.btnSaveImg6Copy.UseVisualStyleBackColor = true;
+            this.btnSaveImg6Copy.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
             // 
             // btnDay6ImgRef
             // 
@@ -3550,7 +3564,7 @@
             this.label87.Name = "label87";
             this.label87.Size = new System.Drawing.Size(72, 16);
             this.label87.TabIndex = 549;
-            this.label87.Text = "Remark 1 :";
+            this.label87.Text = "Remark 2 :";
             this.theme1.SetTheme(this.label87, "(default)");
             // 
             // txtApproveResult
@@ -3726,7 +3740,7 @@
             this.cboEmbryoForEtEmbryologist.ItemsValueMember = "";
             this.cboEmbryoForEtEmbryologist.Location = new System.Drawing.Point(311, 79);
             this.cboEmbryoForEtEmbryologist.Name = "cboEmbryoForEtEmbryologist";
-            this.cboEmbryoForEtEmbryologist.Size = new System.Drawing.Size(127, 20);
+            this.cboEmbryoForEtEmbryologist.Size = new System.Drawing.Size(193, 20);
             this.cboEmbryoForEtEmbryologist.Style.DropDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
             this.cboEmbryoForEtEmbryologist.Style.DropDownBorderColor = System.Drawing.Color.Gainsboro;
             this.cboEmbryoForEtEmbryologist.Style.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
@@ -3991,9 +4005,9 @@
             this.label52.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
             this.label52.Location = new System.Drawing.Point(6, 102);
             this.label52.Name = "label52";
-            this.label52.Size = new System.Drawing.Size(62, 16);
+            this.label52.Size = new System.Drawing.Size(72, 16);
             this.label52.TabIndex = 509;
-            this.label52.Text = "Remark :";
+            this.label52.Text = "Remark 1 :";
             this.theme1.SetTheme(this.label52, "(default)");
             // 
             // label51
@@ -4791,20 +4805,6 @@
             this.theme1.SetTheme(this.txtHnFeMale, "(default)");
             this.txtHnFeMale.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
             // 
-            // btnSaveImg6Copy
-            // 
-            this.btnSaveImg6Copy.Image = global::clinic_ivf.Properties.Resources.download_database16;
-            this.btnSaveImg6Copy.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnSaveImg6Copy.Location = new System.Drawing.Point(32, 3);
-            this.btnSaveImg6Copy.Name = "btnSaveImg6Copy";
-            this.btnSaveImg6Copy.Size = new System.Drawing.Size(112, 28);
-            this.btnSaveImg6Copy.TabIndex = 548;
-            this.btnSaveImg6Copy.Text = "copy image day5";
-            this.btnSaveImg6Copy.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.theme1.SetTheme(this.btnSaveImg6Copy, "(default)");
-            this.btnSaveImg6Copy.UseVisualStyleBackColor = true;
-            this.btnSaveImg6Copy.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
-            // 
             // FrmLabOPUAdd2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -4837,6 +4837,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.btnSaveImg5)).EndInit();
             this.tabDay6.ResumeLayout(false);
             this.panel6.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.btnSaveImg6Copy)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnDay6ImgRef)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnSaveImg6)).EndInit();
             this.panel1.ResumeLayout(false);
@@ -4999,7 +5000,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.btnHnSearch)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtHnMale)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtHnFeMale)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.btnSaveImg6Copy)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

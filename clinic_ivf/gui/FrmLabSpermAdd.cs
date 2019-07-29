@@ -217,7 +217,14 @@ namespace clinic_ivf.gui
             //throw new NotImplementedException();
             FrmWaiting frmW = new FrmWaiting();
             frmW.Show();
-            if (!setReportSpermAnalysis())
+            String filename = "", datetick = "";
+            if (!Directory.Exists("report"))
+            {
+                Directory.CreateDirectory("report");
+            }
+            datetick = DateTime.Now.Ticks.ToString();
+            filename = "report\\sperm_analysis_" + datetick + ".pdf";
+            if (!setReportSpermAnalysis(filename))
             {
                 return;
             }
@@ -231,10 +238,10 @@ namespace clinic_ivf.gui
             mail.Body = txtEmailBody.Text;
 
             mail.IsBodyHtml = true;
-            if (File.Exists("sperm_analysis.pdf"))
+            if (File.Exists(filename))
             {
                 System.Net.Mail.Attachment attachment;
-                attachment = new System.Net.Mail.Attachment("sperm_analysis.pdf");
+                attachment = new System.Net.Mail.Attachment(filename);
                 mail.Attachments.Add(attachment);
             }
 
@@ -312,7 +319,7 @@ namespace clinic_ivf.gui
             //throw new NotImplementedException();
             MessageBox.Show("mail send");
         }
-        private Boolean setReportSpermAnalysis()
+        private Boolean setReportSpermAnalysis(String filename)
         {
             Boolean chk1 = true;
             DataTable dt = new DataTable();
@@ -339,16 +346,16 @@ namespace clinic_ivf.gui
                 this.crySperm.ReportSource = rpt;
                 this.crySperm.Refresh();
 
-                if (File.Exists("sperm_analysis.pdf"))
+                if (File.Exists(filename))
                 {
-                    File.Delete("sperm_analysis.pdf");
+                    File.Delete(filename);
                     System.Threading.Thread.Sleep(200);
                 }
 
                 ExportOptions CrExportOptions;
                 DiskFileDestinationOptions CrDiskFileDestinationOptions = new DiskFileDestinationOptions();
                 PdfRtfWordFormatOptions CrFormatTypeOptions = new PdfRtfWordFormatOptions();
-                CrDiskFileDestinationOptions.DiskFileName = "sperm_analysis.pdf";
+                CrDiskFileDestinationOptions.DiskFileName = filename;
                 CrExportOptions = rpt.ExportOptions;
                 {
                     CrExportOptions.ExportDestinationType = ExportDestinationType.DiskFile;
@@ -367,7 +374,7 @@ namespace clinic_ivf.gui
             }
             return chk1;
         }
-        private Boolean setReportSpermFreezing()
+        private Boolean setReportSpermFreezing(String filename)
         {
             Boolean chk1 = true;
             DataTable dt = new DataTable();
@@ -394,16 +401,16 @@ namespace clinic_ivf.gui
                 this.crySperm.ReportSource = rpt;
                 this.crySperm.Refresh();
 
-                if (File.Exists("sperm_freezing.pdf"))
+                if (File.Exists(filename))
                 {
-                    File.Delete("sperm_freezing.pdf");
+                    File.Delete(filename);
                     System.Threading.Thread.Sleep(200);
                 }
 
                 ExportOptions CrExportOptions;
                 DiskFileDestinationOptions CrDiskFileDestinationOptions = new DiskFileDestinationOptions();
                 PdfRtfWordFormatOptions CrFormatTypeOptions = new PdfRtfWordFormatOptions();
-                CrDiskFileDestinationOptions.DiskFileName = "sperm_freezing.pdf";
+                CrDiskFileDestinationOptions.DiskFileName = filename;
                 CrExportOptions = rpt.ExportOptions;
                 {
                     CrExportOptions.ExportDestinationType = ExportDestinationType.DiskFile;
@@ -427,7 +434,14 @@ namespace clinic_ivf.gui
             //throw new NotImplementedException();
             FrmWaiting frmW = new FrmWaiting();
             frmW.Show();
-            if (!setReportSpermFreezing())
+            String filename = "", datetick="";
+            if (!Directory.Exists("report"))
+            {
+                Directory.CreateDirectory("report");
+            }
+            datetick = DateTime.Now.Ticks.ToString();
+            filename = "report\\sperm_freezing_"+ datetick + ".pdf";
+            if (!setReportSpermFreezing(filename))
             {
                 return;
             }
@@ -441,10 +455,10 @@ namespace clinic_ivf.gui
             mail.Body = txtSfEmailBody.Text;
 
             mail.IsBodyHtml = true;
-            if (File.Exists("sperm_freezing.pdf"))
+            if (File.Exists(filename))
             {
                 System.Net.Mail.Attachment attachment;
-                attachment = new System.Net.Mail.Attachment("sperm_freezing.pdf");
+                attachment = new System.Net.Mail.Attachment(filename);
                 mail.Attachments.Add(attachment);
             }
 
