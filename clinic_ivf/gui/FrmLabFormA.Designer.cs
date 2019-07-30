@@ -1097,11 +1097,10 @@
             this.txtPasaTeseDate.Calendar.TrailingForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
             this.txtPasaTeseDate.Calendar.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
             this.txtPasaTeseDate.Culture = 1054;
-            this.txtPasaTeseDate.CurrentTimeZone = false;
             this.txtPasaTeseDate.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
             this.txtPasaTeseDate.DisplayFormat.CalendarType = C1.Win.C1Input.CalendarType.GregorianCalendar;
             this.txtPasaTeseDate.DisplayFormat.EmptyAsNull = false;
-            this.txtPasaTeseDate.DisplayFormat.FormatType = C1.Win.C1Input.FormatTypeEnum.ShortDate;
+            this.txtPasaTeseDate.DisplayFormat.FormatType = C1.Win.C1Input.FormatTypeEnum.ShortDateShortTime;
             this.txtPasaTeseDate.DisplayFormat.Inherit = ((C1.Win.C1Input.FormatInfoInheritFlags)(((C1.Win.C1Input.FormatInfoInheritFlags.CustomFormat | C1.Win.C1Input.FormatInfoInheritFlags.NullText) 
             | C1.Win.C1Input.FormatInfoInheritFlags.TrimEnd)));
             this.txtPasaTeseDate.DisplayFormat.TrimStart = true;
@@ -1112,7 +1111,6 @@
             | C1.Win.C1Input.FormatInfoInheritFlags.TrimEnd)));
             this.txtPasaTeseDate.EditFormat.TrimStart = true;
             this.txtPasaTeseDate.EmptyAsNull = true;
-            this.txtPasaTeseDate.GMTOffset = System.TimeSpan.Parse("00:00:00");
             this.txtPasaTeseDate.ImagePadding = new System.Windows.Forms.Padding(0);
             this.txtPasaTeseDate.Location = new System.Drawing.Point(185, 19);
             this.txtPasaTeseDate.MaskInfo.EmptyAsNull = false;
@@ -2931,7 +2929,7 @@
             this.label11.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
             this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label11.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.label11.Location = new System.Drawing.Point(833, 23);
+            this.label11.Location = new System.Drawing.Point(831, 23);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(27, 16);
             this.label11.TabIndex = 708;
@@ -2957,7 +2955,7 @@
             this.label10.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
             this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label10.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.label10.Location = new System.Drawing.Point(717, 23);
+            this.label10.Location = new System.Drawing.Point(714, 23);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(30, 16);
             this.label10.TabIndex = 706;
@@ -2982,9 +2980,9 @@
             this.txtNoofOocyteRt.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtNoofOocyteRt.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
             this.txtNoofOocyteRt.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.txtNoofOocyteRt.Location = new System.Drawing.Point(751, 21);
+            this.txtNoofOocyteRt.Location = new System.Drawing.Point(743, 21);
             this.txtNoofOocyteRt.Name = "txtNoofOocyteRt";
-            this.txtNoofOocyteRt.Size = new System.Drawing.Size(78, 20);
+            this.txtNoofOocyteRt.Size = new System.Drawing.Size(86, 20);
             this.txtNoofOocyteRt.TabIndex = 704;
             this.txtNoofOocyteRt.Tag = null;
             this.theme1.SetTheme(this.txtNoofOocyteRt, "(default)");

@@ -152,7 +152,7 @@ namespace clinic_ivf.gui
             dt.Rows[0][ic.ivfDB.lFormaDB.lformA.sperm_freezing_date_end] = date1.Replace("-", "/");
             date1 = ic.datetoShow(dt.Rows[0][ic.ivfDB.lFormaDB.lformA.iui_date].ToString());
             dt.Rows[0][ic.ivfDB.lFormaDB.lformA.iui_date] = date1.Replace("-", "/");
-            date1 = ic.datetoShow(dt.Rows[0][ic.ivfDB.lFormaDB.lformA.pasa_tese_date].ToString());
+            date1 = ic.datetimetoShow(dt.Rows[0][ic.ivfDB.lFormaDB.lformA.pasa_tese_date].ToString());
             dt.Rows[0][ic.ivfDB.lFormaDB.lformA.pasa_tese_date] = date1.Replace("-", "/");
             date1 = ic.datetoShow(dt.Rows[0][ic.ivfDB.lFormaDB.lformA.sperm_analysis_date_start].ToString());
             dt.Rows[0][ic.ivfDB.lFormaDB.lformA.sperm_analysis_date_start] = date1.Replace("-", "/");
@@ -160,6 +160,9 @@ namespace clinic_ivf.gui
             dt.Rows[0][ic.ivfDB.lFormaDB.lformA.sperm_analysis_date_end] = date1.Replace("-", "/");
             date1 = ic.datetoShow(dt.Rows[0][ic.ivfDB.lFormaDB.lformA.fet_no_date_freezing].ToString());
             dt.Rows[0][ic.ivfDB.lFormaDB.lformA.fet_no_date_freezing] = date1.Replace("-", "/");
+
+            //date1 = ic.datetoShow(dt.Rows[0][ic.ivfDB.lFormaDB.lformA.pasa_tese_date].ToString());
+            //dt.Rows[0][ic.ivfDB.lFormaDB.lformA.fet_no_date_freezing] = date1.Replace("-", "/");
             if (dt.Rows[0]["status_wait_confirm_opu_date"].ToString().Equals("1"))
             {
                 txt1 = "รอ confirm วัน เวลา OPU จากทาง พยาบาล";
@@ -525,7 +528,7 @@ namespace clinic_ivf.gui
             lFormA.fet1_no_date_freezing = txtFET1NoDateFreezing.Text;
             lFormA.status_sperm_analysis = chkSememAnalysis.Checked ? "1" : "0";
             lFormA.status_sperm_freezing = chkSpermFreezing.Checked ? "1" : "0";
-            lFormA.pasa_tese_date = txtPasaTeseDate.Text;
+            lFormA.pasa_tese_date = ic.dateTimetoDB(txtPasaTeseDate.Text);
             lFormA.iui_date = txtIUIDate.Text;
             lFormA.lab_t_form_acol = "";
             lFormA.sperm_analysis_date_start = ic.datetoDB(txtSpermAnalysisDateStart.Text) +" "+ txtSpermAnalysisTimeStart.Text.Trim();
