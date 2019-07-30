@@ -83,6 +83,14 @@ namespace clinic_ivf.gui
         string documentPath;
         RichTextBoxStreamType documentFileType;
         Boolean flagImg = false;
+        [STAThread]
+        private void richTextBox1SetText(String txt)
+        {
+            richTextBox1.Invoke(new EventHandler(delegate
+            {
+                richTextBox1.AppendText(txt);
+            }));
+        }
         public FrmNurseAdd2(IvfControl ic, MainMenu m, String pttid, String vn, String flagedit, String pid)
         {
             InitializeComponent();
@@ -1219,19 +1227,28 @@ namespace clinic_ivf.gui
                 else
                 {
                     String txt = "";
-                    txt = "Nursing Progress Note \n";
-                    txt += "\n";
-                    txt += "Date : "+ DateTime.Now.ToString("dd-MM-") + "-" + DateTime.Now.Year+" "+ DateTime.Now.ToString("hh:MM:ss")+ " \n";
-                    txt += "\n";
-                    txt += "Patient Name : "+ txtPttNameE .Text+ " \n";
-                    txt += "HN : " + txtHn.Text + " VN : "+txtVnShow.Text + " \n";
-                    txt += "DOB : "+ txtDob .Text + " SEX : "+ txtSex.Text + "\n";
-                    txt += "\n";
-                    txt += "\n";
-                    txt += "\n";
-                    txt += "Doctor : "+ cboDoctor .Text+ "\n";
+                    txt = "Nursing Progress Note "+ Environment.NewLine;
+                    txt += Environment.NewLine;
+                    txt += "Date : "+ DateTime.Now.ToString("dd-MM-") + "-" + DateTime.Now.Year+" "+ DateTime.Now.ToString("hh:MM:ss")+ Environment.NewLine;
+                    txt += Environment.NewLine;
+                    txt += "Patient Name : "+ txtPttNameE .Text+ Environment.NewLine;
+                    txt += "HN : " + txtHn.Text + " VN : "+txtVnShow.Text + Environment.NewLine;
+                    txt += "DOB : "+ txtDob .Text + " SEX : "+ txtSex.Text + Environment.NewLine;
+                    txt += "Disease : " + Environment.NewLine;
+                    txt += "Drug allergy : " + cboAllergyDesc .Text + Environment.NewLine;
+                    txt += "Food allergy : " + Environment.NewLine;
+                    txt += "Surgery : " + Environment.NewLine;
+                    txt += "Period : " + Environment.NewLine;
+                    txt += "Chromosome : " + Environment.NewLine;
+                    txt += Environment.NewLine;
+                    txt += "Diagnosis : " + Environment.NewLine;
+                    txt += Environment.NewLine;
+                    txt += Environment.NewLine;
+                    txt += Environment.NewLine;
+                    txt += "Doctor : "+ cboDoctor .Text+ Environment.NewLine;
                     //richTextBox1.Text = txt;
-                    richTextBox1.AppendText(txt);
+                    //richTextBox1.AppendText(txt);
+                    richTextBox1SetText(txt);
                 }
             }
             catch (Exception ex)
