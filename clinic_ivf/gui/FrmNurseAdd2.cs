@@ -1216,6 +1216,23 @@ namespace clinic_ivf.gui
                         });
                     }
                 }
+                else
+                {
+                    String txt = "";
+                    txt = "Nursing Progress Note \n";
+                    txt += "\n";
+                    txt += "Date : "+ DateTime.Now.ToString("dd-MM-") + "-" + DateTime.Now.Year+" "+ DateTime.Now.ToString("hh:MM:ss")+ " \n";
+                    txt += "\n";
+                    txt += "Patient Name : "+ txtPttNameE .Text+ " \n";
+                    txt += "HN : " + txtHn.Text + " VN : "+txtVnShow.Text + " \n";
+                    txt += "DOB : "+ txtDob .Text + " SEX : "+ txtSex.Text + "\n";
+                    txt += "\n";
+                    txt += "\n";
+                    txt += "\n";
+                    txt += "Doctor : "+ cboDoctor .Text+ "\n";
+                    //richTextBox1.Text = txt;
+                    richTextBox1.AppendText(txt);
+                }
             }
             catch (Exception ex)
             {
