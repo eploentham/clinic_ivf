@@ -47,6 +47,8 @@
             this.txtReqDate = new C1.Win.C1Input.C1DateEdit();
             this.c1Button1 = new C1.Win.C1Input.C1Button();
             this.c1DockingTabPage5 = new C1.Win.C1Command.C1DockingTabPage();
+            this.c1DockingTabPage6 = new C1.Win.C1Command.C1DockingTabPage();
+            this.panel1 = new System.Windows.Forms.Panel();
             this.c1ThemeController1 = new C1.Win.C1Themes.C1ThemeController();
             this.c1SuperTooltip3 = new C1.Win.C1SuperTooltip.C1SuperTooltip(this.components);
             this.c1FlexReport1 = new C1.Win.FlexReport.C1FlexReport();
@@ -55,9 +57,8 @@
             this.c1FlexReport2 = new C1.Win.FlexReport.C1FlexReport();
             this.c1PdfDocument1 = new C1.C1Pdf.C1PdfDocument();
             this.c1Magnify1 = new C1.Win.TouchToolKit.C1Magnify();
-            this.c1DockingTabPage6 = new C1.Win.C1Command.C1DockingTabPage();
-            this.panel1 = new System.Windows.Forms.Panel();
             this.c1XLBook1 = new C1.C1Excel.C1XLBook();
+            this.c1Report3 = new C1.C1Report.C1Report();
             ((System.ComponentModel.ISupportInitialize)(this.c1SuperErrorProvider1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.c1CommandDock1)).BeginInit();
             this.c1CommandDock1.SuspendLayout();
@@ -73,10 +74,11 @@
             ((System.ComponentModel.ISupportInitialize)(this.c1TextBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtReqDate)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.c1Button1)).BeginInit();
+            this.c1DockingTabPage6.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.c1ThemeController1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.c1Report1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.c1Report2)).BeginInit();
-            this.c1DockingTabPage6.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.c1Report3)).BeginInit();
             this.SuspendLayout();
             // 
             // c1SuperTooltip1
@@ -237,9 +239,9 @@
             // 
             // c1TextBox2
             // 
-            this.c1TextBox2.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(71)))), ((int)(((byte)(71)))));
+            this.c1TextBox2.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(212)))), ((int)(((byte)(212)))), ((int)(((byte)(212)))));
             this.c1TextBox2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.c1TextBox2.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(172)))), ((int)(((byte)(172)))), ((int)(((byte)(172)))));
+            this.c1TextBox2.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
             this.c1TextBox2.Location = new System.Drawing.Point(165, 67);
             this.c1TextBox2.Name = "c1TextBox2";
             this.c1TextBox2.Size = new System.Drawing.Size(100, 18);
@@ -259,6 +261,7 @@
             // txtReqDate
             // 
             this.txtReqDate.AllowSpinLoop = false;
+            this.txtReqDate.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
             this.txtReqDate.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             // 
             // 
@@ -277,8 +280,7 @@
             this.txtReqDate.Calendar.TodayBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(118)))), ((int)(((byte)(135)))));
             this.txtReqDate.Calendar.TrailingForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
             this.txtReqDate.Calendar.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
-            this.txtReqDate.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(172)))), ((int)(((byte)(172)))), ((int)(((byte)(172)))));
-            this.txtReqDate.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))));
+            this.txtReqDate.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
             this.txtReqDate.ImagePadding = new System.Windows.Forms.Padding(0);
             this.txtReqDate.Location = new System.Drawing.Point(58, 337);
             this.txtReqDate.Name = "txtReqDate";
@@ -306,6 +308,26 @@
             this.c1DockingTabPage5.Size = new System.Drawing.Size(800, 426);
             this.c1DockingTabPage5.TabIndex = 4;
             this.c1DockingTabPage5.Text = "Page5";
+            // 
+            // c1DockingTabPage6
+            // 
+            this.c1DockingTabPage6.CaptionVisible = true;
+            this.c1DockingTabPage6.Controls.Add(this.panel1);
+            this.c1DockingTabPage6.Location = new System.Drawing.Point(0, 0);
+            this.c1DockingTabPage6.Name = "c1DockingTabPage6";
+            this.c1DockingTabPage6.Size = new System.Drawing.Size(800, 426);
+            this.c1DockingTabPage6.TabIndex = 5;
+            this.c1DockingTabPage6.Text = "Page6";
+            // 
+            // panel1
+            // 
+            this.panel1.BackColor = System.Drawing.Color.White;
+            this.panel1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(118)))), ((int)(((byte)(135)))));
+            this.panel1.Location = new System.Drawing.Point(12, 58);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(597, 258);
+            this.panel1.TabIndex = 0;
+            this.c1ThemeController1.SetTheme(this.panel1, "(default)");
             // 
             // c1SuperTooltip3
             // 
@@ -351,25 +373,10 @@
             this.c1PdfDocument1.UseFastTextOut = true;
             this.c1PdfDocument1.UseFontShaping = true;
             // 
-            // c1DockingTabPage6
+            // c1Report3
             // 
-            this.c1DockingTabPage6.CaptionVisible = true;
-            this.c1DockingTabPage6.Controls.Add(this.panel1);
-            this.c1DockingTabPage6.Location = new System.Drawing.Point(0, 0);
-            this.c1DockingTabPage6.Name = "c1DockingTabPage6";
-            this.c1DockingTabPage6.Size = new System.Drawing.Size(800, 426);
-            this.c1DockingTabPage6.TabIndex = 5;
-            this.c1DockingTabPage6.Text = "Page6";
-            // 
-            // panel1
-            // 
-            this.panel1.BackColor = System.Drawing.Color.White;
-            this.panel1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(118)))), ((int)(((byte)(135)))));
-            this.panel1.Location = new System.Drawing.Point(12, 58);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(597, 258);
-            this.panel1.TabIndex = 0;
-            this.c1ThemeController1.SetTheme(this.panel1, "(default)");
+            this.c1Report3.ReportDefinition = resources.GetString("c1Report3.ReportDefinition");
+            this.c1Report3.ReportName = "c1Report3";
             // 
             // Form1
             // 
@@ -394,10 +401,11 @@
             ((System.ComponentModel.ISupportInitialize)(this.c1TextBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtReqDate)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.c1Button1)).EndInit();
+            this.c1DockingTabPage6.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.c1ThemeController1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.c1Report1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.c1Report2)).EndInit();
-            this.c1DockingTabPage6.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.c1Report3)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -432,6 +440,7 @@
         private C1.Win.C1Command.C1DockingTabPage c1DockingTabPage6;
         private System.Windows.Forms.Panel panel1;
         private C1.C1Excel.C1XLBook c1XLBook1;
+        private C1.C1Report.C1Report c1Report3;
     }
 }
 
