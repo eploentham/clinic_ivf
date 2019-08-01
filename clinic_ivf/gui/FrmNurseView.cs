@@ -321,7 +321,7 @@ namespace clinic_ivf.gui
 
             //grfExpn.Rows.Count = dt.Rows.Count + 1;
             grfFinish.Rows.Count = dt.Rows.Count + 1;
-            grfFinish.Cols.Count = 17;
+            grfFinish.Cols.Count = 18;
             C1TextBox txt = new C1TextBox();
             //C1ComboBox cboproce = new C1ComboBox();
             //ic.ivfDB.itmDB.setCboItem(cboproce);
@@ -388,6 +388,7 @@ namespace clinic_ivf.gui
                     grfFinish[i, colStatus] = row["VName"].ToString();
                     grfFinish[i, colPttId] = row["PID"].ToString();
                     grfFinish[i, colVn] = row["VN"].ToString();
+                    grfFinish[i, colPID] = row["PID"].ToString();
                     if (row[ic.ivfDB.vsDB.vs.visit_have_appointment].ToString().Equals("1"))
                     {
                         String txt1 = "";
@@ -409,6 +410,7 @@ namespace clinic_ivf.gui
             CellNoteManager mgr = new CellNoteManager(grfFinish);
             grfFinish.Cols[colID].Visible = false;
             grfFinish.Cols[colPttId].Visible = false;
+            grfFinish.Cols[colPID].Visible = false;
 
             grfFinish.Cols[colVNshow].AllowEditing = false;
             grfFinish.Cols[colPttHn].AllowEditing = false;
@@ -509,6 +511,7 @@ namespace clinic_ivf.gui
                 grfFinish[i, colStatus] = row["VName"].ToString();
                 grfFinish[i, colPttId] = row["PID"].ToString();
                 grfFinish[i, colVn] = row["VN"].ToString();
+                grfFinish[i, colPID] = row["PID"].ToString();
                 if (!row[ic.ivfDB.ovsDB.vsold.form_a_id].ToString().Equals("0"))
                 {
                     CellNote note = new CellNote("ส่ง Lab Request Foam A");
@@ -522,6 +525,8 @@ namespace clinic_ivf.gui
             CellNoteManager mgr = new CellNoteManager(grfFinish);
             grfFinish.Cols[colID].Visible = false;
             grfFinish.Cols[colPttId].Visible = false;
+            grfFinish.Cols[colPID].Visible = false;
+
             grfFinish.Cols[colVNshow].AllowEditing = false;
             grfFinish.Cols[colPttHn].AllowEditing = false;
             grfFinish.Cols[colPttName].AllowEditing = false;
@@ -2144,7 +2149,7 @@ namespace clinic_ivf.gui
 
             vn = grfFinish[grfFinish.Row, colVn] != null ? grfFinish[grfFinish.Row, colVn].ToString() : "";
             pttId = grfFinish[grfFinish.Row, colPttId] != null ? grfFinish[grfFinish.Row, colPttId].ToString() : "";
-            pid = grfFinish[grfFinish.Row, colPID] != null ? grfQue[grfQue.Row, colPID].ToString() : "";
+            pid = grfFinish[grfFinish.Row, colPID] != null ? grfFinish[grfFinish.Row, colPID].ToString() : "";
             chk = grfFinish[grfFinish.Row, colPttHn] != null ? grfFinish[grfFinish.Row, colPttHn].ToString() : "";
             name = grfFinish[grfFinish.Row, colPttName] != null ? grfFinish[grfFinish.Row, colPttName].ToString() : "";
             //FrmNurseAdd frm = new FrmNurseAdd();

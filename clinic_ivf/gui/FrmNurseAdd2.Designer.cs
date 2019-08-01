@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmNurseAdd2));
             this.sB = new System.Windows.Forms.StatusStrip();
             this.sB1 = new System.Windows.Forms.ToolStripStatusLabel();
@@ -658,6 +659,8 @@
             this.ParagraphAlignLeftButton = new C1.Win.C1Ribbon.RibbonToggleButton();
             this.ParagraphAlignCenterButton = new C1.Win.C1Ribbon.RibbonToggleButton();
             this.ParagraphAlignRightButton = new C1.Win.C1Ribbon.RibbonToggleButton();
+            this.ribbonGroup2 = new C1.Win.C1Ribbon.RibbonGroup();
+            this.ribbonComboBox1 = new C1.Win.C1Ribbon.RibbonComboBox();
             this.ViewTab = new C1.Win.C1Ribbon.RibbonTab();
             this.ViewZoomGroup = new C1.Win.C1Ribbon.RibbonGroup();
             this.ViewZoomCombobox = new C1.Win.C1Ribbon.RibbonComboBox();
@@ -710,8 +713,7 @@
             this.label94 = new System.Windows.Forms.Label();
             this.c1SplitterPanel4 = new C1.Win.C1SplitContainer.C1SplitterPanel();
             this.c1SplitterPanel5 = new C1.Win.C1SplitContainer.C1SplitterPanel();
-            this.ribbonGroup2 = new C1.Win.C1Ribbon.RibbonGroup();
-            this.ribbonComboBox1 = new C1.Win.C1Ribbon.RibbonComboBox();
+            this.cPdf = new C1.Win.C1Document.C1PdfDocumentSource(this.components);
             this.sB.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.theme1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.sC)).BeginInit();
@@ -10506,6 +10508,17 @@
             this.ParagraphAlignRightButton.SmallImage = ((System.Drawing.Image)(resources.GetObject("ParagraphAlignRightButton.SmallImage")));
             this.ParagraphAlignRightButton.ToolTip = "Align Right";
             // 
+            // ribbonGroup2
+            // 
+            this.ribbonGroup2.Items.Add(this.ribbonComboBox1);
+            this.ribbonGroup2.Name = "ribbonGroup2";
+            this.ribbonGroup2.Text = "Templete";
+            // 
+            // ribbonComboBox1
+            // 
+            this.ribbonComboBox1.Label = "Templete";
+            this.ribbonComboBox1.Name = "ribbonComboBox1";
+            // 
             // ViewTab
             // 
             this.ViewTab.Groups.Add(this.ViewZoomGroup);
@@ -11117,17 +11130,6 @@
             this.c1SplitterPanel5.Size = new System.Drawing.Size(1021, 644);
             this.c1SplitterPanel5.TabIndex = 1;
             this.c1SplitterPanel5.Text = "Panel 2";
-            // 
-            // ribbonGroup2
-            // 
-            this.ribbonGroup2.Items.Add(this.ribbonComboBox1);
-            this.ribbonGroup2.Name = "ribbonGroup2";
-            this.ribbonGroup2.Text = "Templete";
-            // 
-            // ribbonComboBox1
-            // 
-            this.ribbonComboBox1.Label = "Templete";
-            this.ribbonComboBox1.Name = "ribbonComboBox1";
             // 
             // FrmNurseAdd2
             // 
@@ -12338,5 +12340,6 @@
         private System.Windows.Forms.Label lbLmp;
         private C1.Win.C1Ribbon.RibbonGroup ribbonGroup2;
         private C1.Win.C1Ribbon.RibbonComboBox ribbonComboBox1;
+        private C1.Win.C1Document.C1PdfDocumentSource cPdf;
     }
 }

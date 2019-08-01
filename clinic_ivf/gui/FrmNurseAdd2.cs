@@ -1,4 +1,6 @@
-﻿using C1.Win.C1Command;
+﻿using C1.C1Preview;
+using C1.C1Report;
+using C1.Win.C1Command;
 using C1.Win.C1Document;
 using C1.Win.C1FlexGrid;
 using C1.Win.C1Input;
@@ -15,9 +17,11 @@ using System.Collections.Specialized;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Drawing.Printing;
 using System.IO;
 using System.Linq;
 using System.Net;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
@@ -79,7 +83,7 @@ namespace clinic_ivf.gui
         decimal rat = 0;
         Color color;
 
-        string documentName;
+        string documentName, filePathNamePg;
         string documentPath;
         RichTextBoxStreamType documentFileType;
         Boolean flagImg = false;
@@ -91,6 +95,8 @@ namespace clinic_ivf.gui
                 richTextBox1.AppendText(txt);
             }));
         }
+        [DllImport("winspool.drv", CharSet = CharSet.Auto, SetLastError = true)]
+        public static extern bool SetDefaultPrinter(string Printer);
         public FrmNurseAdd2(IvfControl ic, MainMenu m, String pttid, String vn, String flagedit, String pid)
         {
             InitializeComponent();
@@ -204,6 +210,7 @@ namespace clinic_ivf.gui
             btnSavePmh.Click += BtnSavePmh_Click;
             btnPrintPmh.Click += BtnPrintPmh_Click;
             c1Calendar1.Click += C1Calendar1_Click;
+            rbPgPrint.Click += RbPgPrint_Click;
 
             chkPmhMarried.CheckedChanged += ChkPmhMarried_CheckedChanged;
             chkPmhConOther.CheckedChanged += ChkPmhConOther_CheckedChanged;
@@ -304,6 +311,65 @@ namespace clinic_ivf.gui
             //initGrfPtt();
             //setGrfPtt("");
             initProgressNote();
+        }
+
+        private void RbPgPrint_Click(object sender, EventArgs e)
+        {
+            //throw new NotImplementedException();
+            PrinterSettings settings = new PrinterSettings();
+            //C1DocumentSource cPdf = new C1DocumentSource();
+            try
+            {
+                if (File.Exists(filePathNamePg))
+                {
+                    SetDefaultPrinter(ic.iniC.printerA4);
+                    if (!Directory.Exists("report"))
+                    {
+                        Directory.CreateDirectory("report");
+                    }
+                    String filename = "", datetick="";
+                    datetick = DateTime.Now.Ticks.ToString();
+                    filename = "report\\"+ filePathNamePg + "_" + datetick + ".pdf";
+
+                    var report = new C1.C1Report.C1Report();
+                    report.Render();
+                    var rtfText = File.ReadAllText(filePathNamePg);
+                    var printDoc = new C1PrintDocument();
+                    printDoc = report.C1Document;
+                    printDoc.AllowNonReflowableDocs = true;
+                    printDoc.TagOpenParen = "[@@";
+                    printDoc.TagCloseParen = "@@]";
+                    printDoc.StartDoc();
+
+                    //add rtf containing img to renderer
+                    var obj = new RenderRichText(printDoc);
+                    obj.Rtf = rtfText;
+
+                    //Add renderer to body
+                    printDoc.Body.Children.Add(obj);
+
+                    //ask to render
+                    printDoc.RenderBlockRichText(obj.Rtf);
+                    printDoc.EndDoc();
+                    printDoc.Export(filename, false);
+
+                    FrmPrintPreview frm = new FrmPrintPreview(ic, filename);
+                    frm.StartPosition = FormStartPosition.CenterScreen;
+                    frm.ShowDialog(this);
+                }
+            }
+            catch (PdfPasswordException)
+            {
+                string password = PasswordForm.DoEnterPassword(filePathNamePg);
+                if (password == null)
+                    return;
+                cPdf.Credential.Password = password;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(this, ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
         }
 
         private void C1Calendar1_Click(object sender, EventArgs e)
@@ -1221,6 +1287,7 @@ namespace clinic_ivf.gui
                         richTextBox1.Invoke((Action)delegate
                         {
                             richTextBox1.LoadFile(filePathName, fileType);
+                            filePathNamePg = filePathName;
                         });
                     }
                 }

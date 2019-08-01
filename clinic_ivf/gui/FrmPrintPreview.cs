@@ -1,4 +1,6 @@
-﻿using C1.Win.C1Document;
+﻿using C1.C1Pdf;
+using C1.C1Word;
+using C1.Win.C1Document;
 using C1.Win.C1Ribbon;
 using clinic_ivf.control;
 using System;
@@ -26,9 +28,14 @@ namespace clinic_ivf.gui
         }
         private void initConfig()
         {
+            //C1WordDocument c1Word = new C1WordDocument();
+            
             if (File.Exists(@filename))
                 c1PdfDocumentSource1.LoadFromFile(@filename);
-
+            //c1Word.Load(filename);
+            //c1FlexViewer1.DocumentSource = c1Word;
+            //C1PdfDocument cpdf = new C1PdfDocument();
+            //cpdf.
             // initialize Ribbon control
             RibbonGroup rgFile = new RibbonGroup() { Text = "File" };
             c1FlexViewer1.Ribbon.Tabs[0].Groups.Insert(0, rgFile);
