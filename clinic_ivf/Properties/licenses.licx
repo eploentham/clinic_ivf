@@ -7,6 +7,7 @@ C1.Win.FlexViewer.C1FlexViewer, C1.Win.FlexViewer.4, Version=4.0.20182.314, Cult
 C1.Win.C1Schedule.C1Schedule, C1.Win.C1Schedule.4, Version=4.0.20182.314, Culture=neutral, PublicKeyToken=79882d576c6336da
 C1.Win.C1List.C1List, C1.Win.C1List.4, Version=4.0.20182.314, Culture=neutral, PublicKeyToken=6b24f8f981dbd7bc
 C1.C1Report.C1Report, C1.C1Report.4, Version=4.0.20182.314, Culture=neutral, PublicKeyToken=594a0605db190bb9
+C1.C1Preview.C1PrintDocument, C1.C1Report.4, Version=4.0.20182.314, Culture=neutral, PublicKeyToken=594a0605db190bb9
 C1.C1Pdf.C1PdfDocument, C1.C1Pdf.4, Version=4.0.20182.314, Culture=neutral, PublicKeyToken=79882d576c6336da
 C1.C1DataExtender.C1DataViewSet, C1.C1DataExtender.2, Version=2.0.20113.81, Culture=neutral, PublicKeyToken=7c4b5683f80b910e
 C1.Win.C1SuperTooltip.C1SuperErrorProvider, C1.Win.C1SuperTooltip.4, Version=4.0.20182.314, Culture=neutral, PublicKeyToken=79882d576c6336da

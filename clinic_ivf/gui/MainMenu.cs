@@ -657,7 +657,7 @@ namespace clinic_ivf.gui
                     }
                     menuLab.Visible = true;
                 }
-                if (ic.user.status_admin.Equals("1"))
+                if (ic.user.status_admin.Equals("2"))
                 {
                     foreach (Control c in menuStrip1.Controls)
                     {
