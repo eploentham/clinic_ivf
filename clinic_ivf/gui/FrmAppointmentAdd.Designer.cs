@@ -120,6 +120,7 @@
             this.tC = new C1.Win.C1Command.C1DockingTab();
             this.tabVisit = new C1.Win.C1Command.C1DockingTabPage();
             this.tabDay = new C1.Win.C1Command.C1DockingTabPage();
+            this.chkSpermFreezing = new C1.Win.C1Input.C1CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.theme1)).BeginInit();
             this.sB.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtRemarkpApm)).BeginInit();
@@ -193,6 +194,7 @@
             this.tC.SuspendLayout();
             this.tabVisit.SuspendLayout();
             this.tabDay.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.chkSpermFreezing)).BeginInit();
             this.SuspendLayout();
             // 
             // theme1
@@ -848,6 +850,7 @@
             // 
             // tabPtt
             // 
+            this.tabPtt.Controls.Add(this.chkSpermFreezing);
             this.tabPtt.Controls.Add(this.chkSperm);
             this.tabPtt.Controls.Add(this.txtOther);
             this.tabPtt.Controls.Add(this.label14);
@@ -881,10 +884,10 @@
             this.chkSperm.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.chkSperm.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.chkSperm.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.chkSperm.Location = new System.Drawing.Point(370, 83);
+            this.chkSperm.Location = new System.Drawing.Point(283, 83);
             this.chkSperm.Name = "chkSperm";
             this.chkSperm.Padding = new System.Windows.Forms.Padding(4, 1, 1, 1);
-            this.chkSperm.Size = new System.Drawing.Size(114, 24);
+            this.chkSperm.Size = new System.Drawing.Size(96, 24);
             this.chkSperm.TabIndex = 704;
             this.chkSperm.Text = "Sperm Collect";
             this.theme1.SetTheme(this.chkSperm, "(default)");
@@ -1698,6 +1701,24 @@
             this.tabDay.TabIndex = 1;
             this.tabDay.Text = "Day";
             // 
+            // chkSpermFreezing
+            // 
+            this.chkSpermFreezing.BackColor = System.Drawing.Color.Transparent;
+            this.chkSpermFreezing.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
+            this.chkSpermFreezing.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.chkSpermFreezing.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.chkSpermFreezing.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.chkSpermFreezing.Location = new System.Drawing.Point(385, 83);
+            this.chkSpermFreezing.Name = "chkSpermFreezing";
+            this.chkSpermFreezing.Padding = new System.Windows.Forms.Padding(4, 1, 1, 1);
+            this.chkSpermFreezing.Size = new System.Drawing.Size(117, 24);
+            this.chkSpermFreezing.TabIndex = 705;
+            this.chkSpermFreezing.Text = "Sperm Freezing";
+            this.theme1.SetTheme(this.chkSpermFreezing, "(default)");
+            this.chkSpermFreezing.UseVisualStyleBackColor = true;
+            this.chkSpermFreezing.Value = null;
+            this.chkSpermFreezing.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            // 
             // FrmAppointmentAdd
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1787,6 +1808,7 @@
             this.tC.ResumeLayout(false);
             this.tabVisit.ResumeLayout(false);
             this.tabDay.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.chkSpermFreezing)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1886,5 +1908,6 @@
         private C1.Win.C1Input.C1TextBox txtPttIdOld;
         private C1.Win.C1Input.C1TextBox txtIDOld;
         private C1.Win.C1Input.C1Button btnPrint;
+        private C1.Win.C1Input.C1CheckBox chkSpermFreezing;
     }
 }

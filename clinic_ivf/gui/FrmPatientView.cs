@@ -16,6 +16,7 @@ namespace clinic_ivf.gui
 {
     /*
      * 62-06-26     0004        หน้าจอ patientview.cs แก้ เรื่อง patient ในการดึงข้อมูล ให้ใช้ method เหมือนของ donor ไม่ต้องแยก donor, ptt
+     * 62-08-01     0010        reception jum ต้องการดูคนสร้างข้อมูล คนแก้ไขข้อมูล
      */
     public partial class FrmPatientView : Form
     {
@@ -26,7 +27,7 @@ namespace clinic_ivf.gui
         Color bg, fc;
         Font ff, ffB;
 
-        int colPttId = 1, colPttHn = 2, colPttName = 3, colPttRemark = 4, colHn_1 = 5, colName_1 = 6, colHn_2 = 7, colName_2 = 8;
+        int colPttId = 1, colPttHn = 2, colPttName = 3, colPttRemark = 4, colHn_1 = 5, colName_1 = 6, colHn_2 = 7, colName_2 = 8, colStfCreate=8, colStfModi=9;
 
         C1FlexGrid grfPtt;
         C1SuperTooltip stt;
@@ -191,17 +192,17 @@ namespace clinic_ivf.gui
             }
             else
             {
-                //grfPtt.DataSource = ic.ivfDB.pttDB.selectBySearch(search);
-                if (ic.iniC.statusAppDonor.Equals("1"))
-                {
-                    grfPtt.DataSource = ic.ivfDB.pttDB.selectBySearch(search);
-                }
-                else
-                {
-                    grfPtt.DataSource = ic.ivfDB.pttOldDB.selectBySearch(search);
-                }
+                grfPtt.DataSource = ic.ivfDB.pttDB.selectBySearch(search);      //      +0010
+                //if (ic.iniC.statusAppDonor.Equals("1"))      //      -0010
+                //{      //      -0010
+                //    grfPtt.DataSource = ic.ivfDB.pttDB.selectBySearch(search);      //      -0010
+                //}      //      -0010
+                //else      //      -0010
+                //{      //      -0010
+                //    grfPtt.DataSource = ic.ivfDB.pttOldDB.selectBySearch(search);      //      -0010
+                //}      //      -0010
             }
-            
+
             //grfExpn.Rows.Count = dt.Rows.Count + 1;
             //grfCu.Rows.Count = 41;
             //grfCu.Cols.Count = 4;
@@ -239,6 +240,16 @@ namespace clinic_ivf.gui
                     grfPtt.Rows[i].StyleNew.BackColor = color;
             }
             grfPtt.Cols[colPttId].Visible = false;
+            if (ic.user.status_admin.Equals("2"))
+            {
+                grfPtt.Cols[colStfCreate].Visible = true;
+                grfPtt.Cols[colStfModi].Visible = true;
+            }
+            else
+            {
+                grfPtt.Cols[colStfCreate].Visible = false;
+                grfPtt.Cols[colStfModi].Visible = false;
+            }
             grfPtt.Cols[colPttHn].AllowEditing = false;
             grfPtt.Cols[colPttName].AllowEditing = false;
             grfPtt.Cols[colPttRemark].AllowEditing = false;

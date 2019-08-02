@@ -999,7 +999,9 @@ namespace clinic_ivf.objdb
                 ",ptt." + ptt.remark + " as EmergencyPersonalContact  "+
                 ", ptt." + ptt.patient_hn_1 + ",CONCAT(IFNULL(fpp_1.patient_prefix_description,''),' ', ptt_1." + ptt.patient_firstname_e + ",' ',ptt_1." + ptt.patient_lastname_e + ") as name_1" +
                 ", ptt." + ptt.patient_hn_2 + ", CONCAT(IFNULL(fpp_2.patient_prefix_description,''),' ', ptt_2." + ptt.patient_firstname_e + ",' ',ptt_2." + ptt.patient_lastname_e + ") as name_2 " +
-                ", agt.AgentName Agent " +
+                ", agt.AgentName Agent" +
+                ", CONCAT(IFNULL(fpp_stf_c.patient_prefix_description,''),' ', stf_c.staff_fname_e,' ',stf_c.staff_lname_e) as crete_name " +
+                ", CONCAT(IFNULL(fpp_stf_m.patient_prefix_description,''),' ', stf_m.staff_fname_e,' ',stf_m.staff_lname_e) as modi_name " +
                 "From " + ptt.table + " ptt " +
                 "Left join f_patient_prefix fpp on fpp.f_patient_prefix_id = ptt.f_patient_prefix_id " +
                 "Left join " + ptt.table + " ptt_1 on ptt." + ptt.patient_hn_1 + "= ptt_1." + ptt.patient_hn + " and ptt.patient_hn_1 <> '' and ptt.patient_hn_1 is not null " +
@@ -1007,6 +1009,10 @@ namespace clinic_ivf.objdb
                 "Left join " + ptt.table + " ptt_2 on ptt." + ptt.patient_hn_2 + "= ptt_2." + ptt.patient_hn + " and ptt.patient_hn_2 <> '' and ptt.patient_hn_2 is not null " +
                 "Left join f_patient_prefix fpp_2 on fpp_2.f_patient_prefix_id = ptt_2.f_patient_prefix_id " +
                 "left join Agent agt on ptt.agent = agt.AgentID " +
+                "Left join b_staff stf_c on ptt." + ptt.user_create + "= stf_c.staff_id  " +
+                "Left join f_patient_prefix fpp_stf_c on fpp_stf_c.f_patient_prefix_id = stf_c.prefix_id " +
+                "Left join b_staff stf_m on ptt." + ptt.user_modi + "= stf_m.staff_id  " +
+                "Left join f_patient_prefix fpp_stf_m on fpp_stf_m.f_patient_prefix_id = stf_m.prefix_id " +
                 "Where " + whereHN + whereName + wherepid+ wherenameE+ " and ptt."+ptt.active+ "='1'" +
                 "Order By ptt." + ptt.t_patient_id;
             dt = conn.selectData(conn.conn, sql);
