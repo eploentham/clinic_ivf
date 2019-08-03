@@ -161,6 +161,17 @@ namespace clinic_ivf.objdb
             dt = conn.selectData(conn.conn, sql);
             return dt;
         }
+        public DataTable selectLabBloodByVsid(String vsid)
+        {
+            DataTable dt = new DataTable();
+            String sql = "select lbReq.*, LabItem.LName " +
+                "From " + lbReq.table + " lbReq " +
+                "Left Join LabItem on lbReq." + lbReq.item_id + " = LabItem.LID " +
+                "Where lbReq." + lbReq.status_req + " ='1' and LabItem.LGID='1' and lbReq."+ lbReq.visit_id+" = '" + vsid + "' " +
+                "Order By lbReq." + lbReq.req_id;
+            dt = conn.selectData(conn.conn, sql);
+            return dt;
+        }
         public DataTable selectByStatusReqAccept()
         {
             DataTable dt = new DataTable();

@@ -28,7 +28,7 @@ namespace clinic_ivf.gui
         C1SuperTooltip stt;
         C1SuperErrorProvider sep;
 
-        int colReqId = 1, colReqLabName = 2, colReqHn = 3, colReqPttName=4, colReqVnShow = 5, colReqDate = 6, colReqTime=7, colReqVn=8;
+        int colReqId = 1, colReqLabName = 2, colReqHn = 3, colReqPttName=4, colReqVnShow = 5, colReqDate = 6, colReqTime=7, colReqVn=8, colReqVsId=9;
         int colRsId = 1, colRsLabName = 2, colRsHn=3, colRsPttName=4, colRsMethod = 5, colRsResult = 6, colRsInterpret = 7, colRsUnit = 8, colRsNormal = 9, colRsRemark = 10, colRsLabId = 11, colRsReqId = 12;
 
         Timer timer;
@@ -233,122 +233,133 @@ namespace clinic_ivf.gui
         }
         private void ContextMenu_edit(object sender, System.EventArgs e)
         {
-            String chk1 = "", name = "", id = "";
+            String chk1 = "", name = "", id = "", vsid="";
             if (grfReq.Row < 0) return;
             id = grfReq[grfReq.Row, colReqId] != null ? grfReq[grfReq.Row, colReqId].ToString() : "";
+            vsid = grfReq[grfReq.Row, colReqVsId] != null ? grfReq[grfReq.Row, colReqVsId].ToString() : "";
             if (id.Length <= 0) return;
             ic.cStf.staff_id = "";
             FrmPasswordConfirm frm1 = new FrmPasswordConfirm(ic);
             frm1.ShowDialog(this);
             if (!ic.cStf.staff_id.Equals(""))
             {
-                LabRequest lbreq = new LabRequest();
-                lbreq = ic.ivfDB.lbReqDB.selectByPk1(id);
-                if (lbreq.req_id.Length <= 0) return;
                 
-                Lis lis = new Lis();
-                lis.lis_id = "";
-                lis.barcode = "";
-                lis.req_id = lbreq.req_id;
-                lis.visit_vn = lbreq.vn;
-                
-                if (lbreq.name_female.Length > 0)
+                DataTable dtVs = new DataTable();
+                dtVs = ic.ivfDB.lbReqDB.selectLabBloodByVsid(vsid);
+                foreach(DataRow rowVs in dtVs.Rows)
                 {
-                    lis.patient_name = lbreq.name_female;
-                    lis.visit_hn = lbreq.hn_female;
-                }
-                else
-                {
-                    lis.patient_name = lbreq.name_male;
-                    lis.visit_hn = lbreq.hn_male;
-                }
-                
-                lis.visit_id = lbreq.visit_id;
-                lis.message_lis = "";
-                lis.active = "";
-                lis.remark = "";
-                lis.date_create = "";
-                lis.date_modi = "";
-                lis.date_cancel = "";
-                lis.user_create = "";
-                lis.user_modi = "";
-                lis.user_cancel = "";
-                lis.statis_lis = "";
-                lis.date_time_receive = "";
-                lis.date_time_finish = "";
-                lis.lab_id = lbreq.item_id;
+                    String id1 = "";
+                    id1 = rowVs[ic.ivfDB.lbReqDB.lbReq.req_id].ToString();
+                    LabRequest lbreq = new LabRequest();
+                    lbreq = ic.ivfDB.lbReqDB.selectByPk1(id1);
+                    if (lbreq.req_id.Length <= 0) continue;
 
-                String re = "",re1="", re2="";
-                long chk = 0, chk2=0;
-                re1 = ic.ivfDB.lisDB.insertLis(lis, ic.cStf.staff_id);
-                if(long.TryParse(re1, out chk))
-                {
-                    LabResult lbRes = new LabResult();
+                    Lis lis = new Lis();
+                    lis.lis_id = "";
+                    lis.barcode = "";
+                    lis.req_id = lbreq.req_id;
+                    lis.visit_vn = lbreq.vn;
 
-                    lbRes.result_id = "";
-                    lbRes.lis_id = re1;
-                    lbRes.req_id = lbreq.req_id;
-                    lbRes.visit_id = lbreq.visit_id;
-                    lbRes.patient_id = "";
-                    lbRes.lab_id = lbreq.item_id;
-                    lbRes.result = "";
-                    lbRes.method = "";
-                    lbRes.active = "";
-                    lbRes.remark = "";
-                    lbRes.date_create = "";
-                    lbRes.date_modi = "";
-                    lbRes.date_cancel = "";
-                    lbRes.user_create = "";
-                    lbRes.user_modi = "";
-                    lbRes.user_cancel = "";
-                    lbRes.unit = "";
-                    lbRes.sort1 = "";
-                    lbRes.staff_id_result = "";
-                    lbRes.staff_id_approve = "";
-                    lbRes.date_time_result = "";
-                    lbRes.date_time_approve = "";
-                    lbRes.normal_value = "";
-                    lbRes.interpret = "";
-                    lbRes.status_result = "1";
-                    lbRes.row1 = "0";
-                    re2 = ic.ivfDB.lbresDB.insertLabResult(lbRes, ic.cStf.staff_id);
-                    if (long.TryParse(re2, out chk2))
+                    if (lbreq.name_female.Length > 0)
                     {
-                        re = ic.ivfDB.lbReqDB.UpdateStatusRequestAccept(id, ic.cStf.staff_id);
-                        chk = 0;
-                        if (long.TryParse(re, out chk))
+                        lis.patient_name = lbreq.name_female;
+                        lis.visit_hn = lbreq.hn_female;
+                    }
+                    else
+                    {
+                        lis.patient_name = lbreq.name_male;
+                        lis.visit_hn = lbreq.hn_male;
+                    }
+
+                    lis.visit_id = lbreq.visit_id;
+                    lis.message_lis = "";
+                    lis.active = "";
+                    lis.remark = "";
+                    lis.date_create = "";
+                    lis.date_modi = "";
+                    lis.date_cancel = "";
+                    lis.user_create = "";
+                    lis.user_modi = "";
+                    lis.user_cancel = "";
+                    lis.statis_lis = "";
+                    lis.date_time_receive = "";
+                    lis.date_time_finish = "";
+                    lis.lab_id = lbreq.item_id;
+
+                    String re = "", re1 = "", re2 = "";
+                    long chk = 0, chk2 = 0;
+                    re1 = ic.ivfDB.lisDB.insertLis(lis, ic.cStf.staff_id);
+                    if (long.TryParse(re1, out chk))
+                    {
+                        LabResult lbRes = new LabResult();
+
+                        lbRes.result_id = "";
+                        lbRes.lis_id = re1;
+                        lbRes.req_id = lbreq.req_id;
+                        lbRes.visit_id = lbreq.visit_id;
+                        lbRes.patient_id = "";
+                        lbRes.lab_id = lbreq.item_id;
+                        lbRes.result = "";
+                        lbRes.method = "";
+                        lbRes.active = "";
+                        lbRes.remark = "";
+                        lbRes.date_create = "";
+                        lbRes.date_modi = "";
+                        lbRes.date_cancel = "";
+                        lbRes.user_create = "";
+                        lbRes.user_modi = "";
+                        lbRes.user_cancel = "";
+                        lbRes.unit = "";
+                        lbRes.sort1 = "";
+                        lbRes.staff_id_result = "";
+                        lbRes.staff_id_approve = "";
+                        lbRes.date_time_result = "";
+                        lbRes.date_time_approve = "";
+                        lbRes.normal_value = "";
+                        lbRes.interpret = "";
+                        lbRes.status_result = "1";
+                        lbRes.row1 = "0";
+                        re2 = ic.ivfDB.lbresDB.insertLabResult(lbRes, ic.cStf.staff_id);
+                        if (long.TryParse(re2, out chk2))
                         {
-                            try
+                            re = ic.ivfDB.lbReqDB.UpdateStatusRequestAccept(lbreq.req_id, ic.cStf.staff_id);
+                            chk = 0;
+                            if (long.TryParse(re, out chk))
                             {
-                                SetDefaultPrinter(ic.iniC.printerSticker);
+                                //      ยังไม่ได้ต่อ LIS        62-08-03
+                                //try
+                                //{
+                                //    SetDefaultPrinter(ic.iniC.printerSticker);
 
-                                Lis lis1 = new Lis();
-                                lis1 = ic.ivfDB.lisDB.selectByPk(re1);
-                                Visit vs = new Visit();
-                                vs = ic.ivfDB.vsDB.selectByVn(lis1.visit_vn);
-                                Patient ptt = new Patient();
-                                ptt = ic.ivfDB.pttDB.selectByPk1(vs.t_patient_id);
+                                //    Lis lis1 = new Lis();
+                                //    lis1 = ic.ivfDB.lisDB.selectByPk(re1);
+                                //    Visit vs = new Visit();
+                                //    vs = ic.ivfDB.vsDB.selectByVn(lis1.visit_vn);
+                                //    Patient ptt = new Patient();
+                                //    ptt = ic.ivfDB.pttDB.selectByPk1(vs.t_patient_id);
 
-                                DataTable dt = new DataTable();
-                                dt.Columns.Add("hn", typeof(String));
-                                dt.Columns.Add("name", typeof(String));
-                                dt.Columns.Add("age", typeof(String));
-                                dt.Columns.Add("vn", typeof(String));
-                                DataRow row11 = dt.NewRow();
-                                row11["hn"] = lis1.visit_hn;
-                                row11["name"] = lis1.patient_name;
-                                row11["age"] = "Age " + ptt.AgeStringShort() + " [" + ic.datetoShow(ptt.patient_birthday) + "]";
-                                row11["vn"] = lis1.barcode;
-                                dt.Rows.Add(row11);
-                                FrmReport frm = new FrmReport(ic);
-                                frm.setStickerPatientThemalLIS(dt);
-                                frm.ShowDialog(this);
-                                SetDefaultPrinter(ic.iniC.printerSticker);
-                            }
-                            catch (Exception ex)
-                            {
-                                MessageBox.Show(this, ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                                return;
+                                //    DataTable dt = new DataTable();
+                                //    dt.Columns.Add("hn", typeof(String));
+                                //    dt.Columns.Add("name", typeof(String));
+                                //    dt.Columns.Add("age", typeof(String));
+                                //    dt.Columns.Add("vn", typeof(String));
+                                //    DataRow row11 = dt.NewRow();
+                                //    row11["hn"] = lis1.visit_hn;
+                                //    row11["name"] = lis1.patient_name;
+                                //    row11["age"] = "Age " + ptt.AgeStringShort() + " [" + ic.datetoShow(ptt.patient_birthday) + "]";
+                                //    row11["vn"] = lis1.barcode;
+                                //    dt.Rows.Add(row11);
+                                //    FrmReport frm = new FrmReport(ic);
+                                //    frm.setStickerPatientThemalLIS(dt);
+                                //    frm.ShowDialog(this);
+                                //    SetDefaultPrinter(ic.iniC.printerSticker);
+                                //}
+                                //catch (Exception ex)
+                                //{
+                                //    MessageBox.Show(this, ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                //    return;
+                                //}
+                                //      ยังไม่ได้ต่อ LIS        62-08-03
                             }
                         }
                     }
@@ -381,7 +392,7 @@ namespace clinic_ivf.gui
             dt = ic.ivfDB.lbReqDB.selectLabBloodByReq1();
             //grfExpn.Rows.Count = dt.Rows.Count + 1;
             grfReq.Rows.Count = 1;
-            grfReq.Cols.Count = 9;
+            grfReq.Cols.Count = 10;
             //C1TextBox txt = new C1TextBox();
             //C1ComboBox cboproce = new C1ComboBox();
             //ic.ivfDB.itmDB.setCboItem(cboproce);
@@ -432,7 +443,7 @@ namespace clinic_ivf.gui
                     row1[colReqPttName] = row[ic.ivfDB.lbReqDB.lbReq.name_male].ToString();
                 }
                 row1[colReqTime] = ic.timetoShow(row[ic.ivfDB.lbReqDB.lbReq.date_create].ToString());
-                //row1[colOPUTime] = row[ic.ivfDB.lFormaDB.lformA.opu_time].ToString();
+                row1[colReqVsId] = row[ic.ivfDB.lbReqDB.lbReq.visit_id].ToString();
                 //row1[colOPUTimeModi] = row[ic.ivfDB.lFormaDB.lformA.opu_time_modi].ToString();
                 //row1[colRqLabName] = row["SName"].ToString();
                 //row1[colRqHnMale] = row["hn_male"].ToString();
@@ -444,6 +455,8 @@ namespace clinic_ivf.gui
             }
             grfReq.Cols[colReqId].Visible = false;
             grfReq.Cols[colReqVn].Visible = false;
+            grfReq.Cols[colReqVsId].Visible = false;
+
             grfReq.Cols[colReqLabName].AllowEditing = false;
             grfReq.Cols[colReqVnShow].AllowEditing = false;
             grfReq.Cols[colReqDate].AllowEditing = false;

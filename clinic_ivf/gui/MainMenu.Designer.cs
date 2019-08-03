@@ -203,6 +203,7 @@
             this.menuReqLabFormA.Name = "menuReqLabFormA";
             this.menuReqLabFormA.Size = new System.Drawing.Size(182, 22);
             this.menuReqLabFormA.Text = "Request LAB Form A";
+            this.menuReqLabFormA.Visible = false;
             // 
             // menuLab
             // 
