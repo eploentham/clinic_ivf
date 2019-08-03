@@ -66,12 +66,23 @@ namespace clinic_ivf.gui
             timer.Interval = timerlab * 1000;
             timer.Tick += Timer_Tick;
             timer.Enabled = true;
+            tcLabView.TabClick += TcLabView_TabClick;
 
             initGrfReq();
             setGrfReq();
             initGrfProc();
             setGrfProc();
         }
+
+        private void TcLabView_TabClick(object sender, EventArgs e)
+        {
+            //throw new NotImplementedException();
+            if(tcLabView.SelectedTab == tabProcess)
+            {
+                setGrfProc();
+            }
+        }
+
         private void initGrfReq()
         {
             grfReq = new C1FlexGrid();

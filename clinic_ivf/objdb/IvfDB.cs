@@ -103,6 +103,8 @@ namespace clinic_ivf.objdb
         public ClosedayDetailDB clddDB;
         public LisDB lisDB;
         public LabResultDB lbresDB;
+        public LabMethodDB lbmDB;
+        public LabUnitDB lbuDB;
         public IvfDB(ConnectDB c)
         {
             conn = c;
@@ -196,6 +198,8 @@ namespace clinic_ivf.objdb
             clddDB = new ClosedayDetailDB(conn);
             lisDB = new LisDB(conn);
             lbresDB = new LabResultDB(conn);
+            lbmDB = new LabMethodDB(conn);
+            lbuDB = new LabUnitDB(conn);
 
             Console.WriteLine("ivfDB end");
         }

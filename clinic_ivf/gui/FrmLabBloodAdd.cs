@@ -1,4 +1,5 @@
 ﻿using C1.Win.C1FlexGrid;
+using C1.Win.C1Input;
 using C1.Win.C1SuperTooltip;
 using clinic_ivf.control;
 using clinic_ivf.object1;
@@ -122,6 +123,12 @@ namespace clinic_ivf.gui
             cs.DataType = typeof(bool);
             cs.ImageAlign = ImageAlignEnum.LeftCenter;
 
+            C1ComboBox cboday3 = new C1ComboBox();
+            cboday3.AutoCompleteMode = AutoCompleteMode.Suggest;
+            cboday3.AutoCompleteSource = AutoCompleteSource.ListItems;
+            ic.ivfDB.lbmDB.setCboLabMethod(cboday3, "");
+
+            grfProc.Cols[colRsMethod].Editor = cboday3;
             grfProc.Cols[colRsLabName].Width = 200;
             grfProc.Cols[colRsMethod].Width = 100;
             grfProc.Cols[colRsResult].Width = 100;
@@ -181,10 +188,10 @@ namespace clinic_ivf.gui
             grfProc.Cols[colRsReqId].Visible = false;
 
             grfProc.Cols[colRsLabName].AllowEditing = false;
-            grfProc.Cols[colRsMethod].AllowEditing = false;
-            grfProc.Cols[colRsResult].AllowEditing = false;
+            //grfProc.Cols[colRsMethod].AllowEditing = false;
+            //grfProc.Cols[colRsResult].AllowEditing = false;
             grfProc.Cols[colRsInterpret].AllowEditing = false;
-            grfProc.Cols[colRsUnit].AllowEditing = false;
+            //grfProc.Cols[colRsUnit].AllowEditing = false;
             grfProc.Cols[colRsNormal].AllowEditing = false;
             grfProc.Cols[colRsRemark].AllowEditing = false;
             //theme1.SetTheme(grfFinish, ic.theme);
