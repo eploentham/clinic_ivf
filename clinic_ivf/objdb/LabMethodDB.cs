@@ -43,7 +43,7 @@ namespace clinic_ivf.objdb
             lbM.table = "lab_b_method";
             lbM.pkField = "method_id";
         }
-        public void getlBsp()
+        public void getlMethod()
         {
             //lDept = new List<Position>();
 
@@ -63,9 +63,10 @@ namespace clinic_ivf.objdb
                 llbM.Add(itm1);
             }
         }
-        public String getIdDgs(String name)
+        public String getIdMethod(String name)
         {
             String re = "";
+            if (llbM.Count <= 0) getlMethod();
             foreach (LabMethod row in llbM)
             {
                 if (row.method_name.Trim().Equals(name.Trim()))
@@ -76,9 +77,10 @@ namespace clinic_ivf.objdb
             }
             return re;
         }
-        public String getNameDgs(String id)
+        public String getNameById(String id)
         {
             String re = "";
+            if (llbM.Count <= 0) getlMethod();
             foreach (LabMethod row in llbM)
             {
                 if (row.method_id.Trim().Equals(id.Trim()))
@@ -270,7 +272,7 @@ namespace clinic_ivf.objdb
             ComboBoxItem item = new ComboBoxItem();
             //DataTable dt = selectAll();
             int i = 0;
-            if (llbM.Count <= 0) getlBsp();
+            if (llbM.Count <= 0) getlMethod();
             item = new ComboBoxItem();
             item.Value = "";
             item.Text = "";

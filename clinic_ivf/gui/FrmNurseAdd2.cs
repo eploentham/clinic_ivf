@@ -1888,7 +1888,7 @@ namespace clinic_ivf.gui
             chkApmRLh.Checked = pApm.repeat_lh.Equals("1") ? true : false;
             chkApmRFsh.Checked = pApm.repeat_fsh.Equals("1") ? true : false;
             chkApmRPrl.Checked = pApm.repeat_prl.Equals("1") ? true : false;
-            chkApmSperm.Checked = pApm.sperm_collect.Equals("1") ? true : false;
+            chkApmSpermCollect.Checked = pApm.sperm_collect.Equals("1") ? true : false;
             chkApmEt.Checked = pApm.et.Equals("1") ? true : false;
             chkApmFet.Checked = pApm.fet.Equals("1") ? true : false;
             chkApmOther.Checked = pApm.other.Equals("1") ? true : false;
@@ -1906,6 +1906,11 @@ namespace clinic_ivf.gui
             chkApmHormoneTest.Checked = pApm.hormone_test.Equals("1") ? true : false;
             chkApmHCG.Checked = pApm.beta_hgc.Equals("1") ? true : false;
             chkApmOther.Checked = pApm.other.Equals("1") ? true : false;
+            chkApmSpermCollect.Checked = pApm.sperm_collect.Equals("1") ? true : false;
+            chkApmSpermFreezing.Checked = pApm.sperm_freezing.Equals("1") ? true : false;
+            chkApmPesa.Checked = pApm.pesa.Equals("1") ? true : false;
+            chkApmSpermOPU.Checked = pApm.sperm_opu.Equals("1") ? true : false;
+
             txtApmOther.Value = pApm.other_remark;
             ic.setC1Combo(cboApmETTime, pApm.et_time);
             ic.setC1Combo(cboApmFETTime, pApm.fet_time);
@@ -2725,7 +2730,7 @@ namespace clinic_ivf.gui
             pApmO.et = chkApmEt.Checked ? "1" : "0";
             pApmO.OPU = chkApmOpu.Checked ? "1" : "0";
             pApmO.TVS = chkApmTvs.Checked ? "1" : "0";
-            pApmO.sperm_colloect = chkApmSperm.Checked ? "1" : "0";
+            pApmO.sperm_colloect = chkApmSpermCollect.Checked ? "1" : "0";
             pApmO.ET_FET = chkApmFet.Checked ? "1" : "0";
             pApmO.Other = chkApmOther.Checked ? "1" : "0";
             pApmO.et_time = cboApmETTime.Text;
@@ -2813,7 +2818,7 @@ namespace clinic_ivf.gui
             pApm.doctor_anes = cboApmDtrAnes.Text;
             pApm.tvs_day = txtApmTvsDay.Text;
             pApm.tvs_time = cboApmTvsTime.Text;
-            pApm.sperm_collect = chkApmSperm.Checked ? "1" : "0";
+            pApm.sperm_collect = chkApmSpermCollect.Checked ? "1" : "0";
 
             pApm.et = chkApmEt.Checked ? "1" : "0";
             pApm.et_time = cboApmETTime.Text;
@@ -2822,7 +2827,10 @@ namespace clinic_ivf.gui
             
             pApm.other = chkApmOther.Checked ? "1" : "0";
             pApm.other_remark = txtApmOther.Text;
-            
+            pApm.sperm_freezing = chkApmSpermFreezing.Checked ? "1" : "0";
+            pApm.sperm_opu = chkApmSpermOPU.Checked ? "1" : "0";
+            pApm.pesa = chkApmPesa.Checked ? "1" : "0";
+
             //pApm.opu = chkET.Checked ? "1" : "0";
             return chk;
         }

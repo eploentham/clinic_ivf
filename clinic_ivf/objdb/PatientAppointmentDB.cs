@@ -88,6 +88,9 @@ namespace clinic_ivf.objdb
             pApm.other_remark = "other_remark";
             pApm.sperm_collect = "sperm_collect";
             pApm.appoitment_id_old = "appointment_id_old";
+            pApm.sperm_freezing = "sperm_freezing";
+            pApm.sperm_opu = "sperm_opu";
+            pApm.pesa = "pesa";
 
             pApm.pkField = "t_patient_appointment_id";
             pApm.table = "t_patient_appointment";
@@ -154,6 +157,9 @@ namespace clinic_ivf.objdb
             p.beta_hgc = p.beta_hgc == null ? "0" : p.beta_hgc;
             p.patient_appointment_doctor = p.patient_appointment_doctor == null ? "0" : p.patient_appointment_doctor;
             p.sperm_collect = p.sperm_collect == null ? "0" : p.sperm_collect;
+            p.sperm_freezing = p.sperm_freezing == null ? "0" : p.sperm_freezing;
+            p.sperm_opu = p.sperm_opu == null ? "0" : p.sperm_opu;
+            p.pesa = p.pesa == null ? "0" : p.pesa;
 
             p.r_rp1853_aptype_id = long.TryParse(p.r_rp1853_aptype_id, out chk) ? chk.ToString() : "0";
             p.t_patient_id = long.TryParse(p.t_patient_id, out chk) ? chk.ToString() : "0";
@@ -199,7 +205,8 @@ namespace clinic_ivf.objdb
                 pApm.et + "," + pApm.et_time + "," + pApm.fet + "," +
                 pApm.fet_time + "," + pApm.hormone_test + "," + pApm.other + "," +
                 pApm.beta_hgc + "," + pApm.other_remark + "," + pApm.sperm_collect + "," +
-                pApm.appoitment_id_old + " " +
+                pApm.appoitment_id_old + "," + pApm.sperm_freezing + "," + pApm.sperm_opu + "," +
+                pApm.pesa + " " +
                 ") " +
                 "Values ('" + p.patient_appoint_date_time + "','" + p.patient_appointment_time.Replace("'", "''") + "','" + p.patient_appointment.Replace("'", "''") + "'," +
                 "'" + p.patient_appointment_doctor.Replace("'", "''") + "','" + p.patient_appointment_notice.Replace("'", "''") + "','" + p.patient_appointment_staff.Replace("'", "''") + "'," +
@@ -222,7 +229,8 @@ namespace clinic_ivf.objdb
                 "'" + p.et + "','" + p.et_time + "','" + p.fet + "'," +
                 "'" + p.fet_time + "','" + p.hormone_test + "','" + p.other + "'," +
                 "'" + p.beta_hgc + "','" + p.other_remark.Replace("'", "''") + "','" + p.sperm_collect.Replace("'", "''") + "'," +
-                "'" + p.appoitment_id_old + "' " +
+                "'" + p.appoitment_id_old + "','" + p.sperm_freezing.Replace("'", "''") + "','" + p.sperm_opu.Replace("'", "''") + "'," +
+                "'" + p.pesa + "' " +
                 ")";
 
                 re = conn.ExecuteNonQuery(conn.conn, sql);
@@ -311,6 +319,9 @@ namespace clinic_ivf.objdb
                 "," + pApm.sperm_collect + "='" + p.sperm_collect.Replace("'", "''") + "' " +
                 "," + pApm.date_modi + "=now() " +
                 "," + pApm.user_modi + "='" + userId + "@" + conn._IPAddress + "' " +
+                "," + pApm.sperm_freezing + "='" + p.sperm_freezing.Replace("'", "''") + "' " +
+                "," + pApm.sperm_opu + "='" + p.sperm_opu.Replace("'", "''") + "' " +
+                "," + pApm.pesa + "='" + p.pesa.Replace("'", "''") + "' " +
                 " Where " + pApm.pkField + " = '" + p.t_patient_appointment_id + "' "
                 ;
             try
@@ -615,6 +626,9 @@ namespace clinic_ivf.objdb
                 ptt1.beta_hgc = dt.Rows[0][pApm.beta_hgc].ToString();
                 ptt1.other_remark = dt.Rows[0][pApm.other_remark].ToString();
                 ptt1.sperm_collect = dt.Rows[0][pApm.sperm_collect].ToString();
+                ptt1.sperm_freezing = dt.Rows[0][pApm.sperm_freezing].ToString();
+                ptt1.sperm_opu = dt.Rows[0][pApm.sperm_opu].ToString();
+                ptt1.pesa = dt.Rows[0][pApm.pesa].ToString();
             }
             else
             {
@@ -690,6 +704,9 @@ namespace clinic_ivf.objdb
             stf1.beta_hgc = "";
             stf1.other_remark = "";
             stf1.sperm_collect = "";
+            stf1.sperm_freezing = "";
+            stf1.sperm_opu = "";
+            stf1.pesa = "";
             return stf1;
         }
     }

@@ -483,7 +483,7 @@ namespace clinic_ivf.gui
             chkRLh.Checked = pApm.repeat_lh.Equals("1") ? true : false;
             chkRFsh.Checked = pApm.repeat_fsh.Equals("1") ? true : false;
             chkRPrl.Checked = pApm.repeat_prl.Equals("1") ? true : false;
-            chkSperm.Checked = pApm.sperm_collect.Equals("1") ? true : false;
+            chkSpermCollect.Checked = pApm.sperm_collect.Equals("1") ? true : false;
             //chkE2.Checked = pApm.e2.Equals("1") ? true : false;
             chkET.Checked = pApm.et.Equals("1") ? true : false;
             chkFET.Checked = pApm.fet.Equals("1") ? true : false;
@@ -501,6 +501,10 @@ namespace clinic_ivf.gui
             chkHormoneTest.Checked = pApm.hormone_test.Equals("1") ? true : false;
             chkHCG.Checked = pApm.beta_hgc.Equals("1") ? true : false;
             chkOther.Checked = pApm.other.Equals("1") ? true : false;
+            chkSpermFreezing.Checked = pApm.sperm_freezing.Equals("1") ? true : false;
+            chkSpermOPU.Checked = pApm.sperm_opu.Equals("1") ? true : false;
+            chkPesa.Checked = pApm.pesa.Equals("1") ? true : false;
+
             txtOther.Value = pApm.other_remark;
             ic.setC1Combo(cboETTime, pApm.et_time);
             ic.setC1Combo(cboFETTime, pApm.fet_time);
@@ -987,7 +991,7 @@ namespace clinic_ivf.gui
             pApmO.et = chkET.Checked ? "1" : "0";
             pApmO.OPU = chkOPU.Checked ? "1" : "0";
             pApmO.TVS = chkTvs.Checked ? "1" : "0";
-            pApmO.sperm_colloect = chkSperm.Checked ? "1" : "0";
+            pApmO.sperm_colloect = chkSpermCollect.Checked ? "1" : "0";
             pApmO.ET_FET = chkFET.Checked ? "1" : "0";
             pApmO.Other = chkOther.Checked ? "1" : "0";
             pApmO.et_time = cboETTime.Text;
@@ -1076,10 +1080,13 @@ namespace clinic_ivf.gui
             pApm.opu_time = cboOPUTime.Text;
             pApm.et_time = cboETTime.Text;
             pApm.fet_time = cboFETTime.Text;
-            pApm.sperm_collect = chkSperm.Checked ? "1" : "0";
+            pApm.sperm_collect = chkSpermCollect.Checked ? "1" : "0";
             pApm.other = chkOther.Checked ? "1" : "0";
             pApm.other_remark = txtOther.Text;
             pApm.et = chkET.Checked ? "1" : "0";
+            pApm.sperm_freezing = chkSpermFreezing.Checked ? "1" : "0";
+            pApm.sperm_opu = chkSpermOPU.Checked ? "1" : "0";
+            pApm.pesa = chkPesa.Checked ? "1" : "0";
             //pApm.opu = chkET.Checked ? "1" : "0";
             return chk;
         }

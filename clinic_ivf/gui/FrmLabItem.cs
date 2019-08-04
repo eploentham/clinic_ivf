@@ -59,6 +59,8 @@ namespace clinic_ivf.gui
             fc = txtLabName.ForeColor;
             ff = txtLabName.Font;
             ic.ivfDB.olabgDB.setCboBloodGroup(cboLabGroup, "");
+            ic.ivfDB.lbuDB.setCboLabUnit(cboUnit, "");
+            ic.ivfDB.lbmDB.setCboLabMethod(cboMethod, "");
 
             txtPasswordVoid.KeyUp += TxtPasswordVoid_KeyUp;
             btnNew.Click += BtnNew_Click;
@@ -86,7 +88,7 @@ namespace clinic_ivf.gui
                 return;
             }
             
-            if (MessageBox.Show("ต้องการ บันทึกช้อมูล ", "", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == DialogResult.OK)
+            if (MessageBox.Show("ต้องการ บันทึกช้อมูล \n"+"รายการ "+txtLabName.Text, "", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == DialogResult.OK)
             {
                 setLabItem();
                 String re = ic.ivfDB.oLabiDB.insertLabItem(labI, ic.user.staff_id);
@@ -215,8 +217,8 @@ namespace clinic_ivf.gui
             chkOutLab.Checked = labI.status_outlab.Equals("1") ? true : false;
             chkOrderGroup.Checked = labI.status_order_group.Equals("1") ? true : false;
             txtNormalValue.Value = labI.normal_vaule;
-            ic.setC1Combo(cboUnit, labI.unit);
-            ic.setC1Combo(cboMethod, labI.method);
+            ic.setC1Combo(cboUnit, labI.lab_unit_id);
+            ic.setC1Combo(cboMethod, labI.method_id);
             txtQty.Value = labI.QTY;
         }
         private void setControlEnable(Boolean flag)
@@ -235,12 +237,14 @@ namespace clinic_ivf.gui
             labI.LGID = cboLabGroup.SelectedItem == null ? "" : ((ComboBoxItem)cboLabGroup.SelectedItem).Value;
             labI.Price = txtPrice.Text;
             labI.status_show_qty = chkShowQty.Checked ? "1" : "0";
-            labI.method = cboMethod.SelectedItem == null ? "" : ((ComboBoxItem)cboMethod.SelectedItem).Value;
-            labI.unit = cboUnit.SelectedItem == null ? "" : ((ComboBoxItem)cboUnit.SelectedItem).Value;
+            labI.method = cboMethod.Text;
+            labI.unit = cboUnit.Text;
             labI.status_outlab = chkOutLab.Checked ? "1" : "0";
             labI.status_order_group = chkOrderGroup.Checked ? "1" : "0";
             labI.normal_vaule = txtNormalValue.Text;
             labI.QTY = txtQty.Text;
+            labI.lab_unit_id = cboUnit.SelectedItem == null ? "" : ((ComboBoxItem)cboUnit.SelectedItem).Value;
+            labI.method_id = cboMethod.SelectedItem == null ? "" : ((ComboBoxItem)cboMethod.SelectedItem).Value;
         }
         private void grfPosi_AfterRowColChange(object sender, C1.Win.C1FlexGrid.RangeEventArgs e)
         {

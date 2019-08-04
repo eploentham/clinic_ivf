@@ -33,7 +33,7 @@ namespace clinic_ivf.gui
         Font ff, ffB;
 
         int colID = 1, colpttId = 2, colVsTime = 3, colPttHn = 4, colVsCode = 5, colVsPttName = 6, colVsDoctor = 7, colVsSperm = 8, colVsDay6 = 9, colVsDay7 = 10, colVsDay8 = 11, colVsDay9=12, colVsDay10=13, colVsDay11=14;
-        int colVsTVS = 15, colVsPesa = 16, colVsPRP = 17, colVsOPU = 18, colVsET = 19, colVsFET=20, colVsHCG = 21, colVsDC = 22, colVsTrans = 23, colVsANC = 24, colVsAnes = 25;
+        int colVsTVS = 15, colVsPesa = 16, colVsSpermF = 17, colVsOPU = 18, colVsET = 19, colVsFET=20, colVsHCG = 21, colVsSpermOPU = 22, colVsTrans = 23, colVsANC = 24, colVsAnes = 25;
         int colVSE2 = 26, colVSLh = 27, colVSPrl = 28, colVSFsh = 29, colVsRemark = 30, colVsStatus=31, colConn=32;
 
         int colpApmPttId = 1,colpApmPttName = 2;
@@ -791,22 +791,22 @@ namespace clinic_ivf.gui
                     }
                 }
             }
-            else if (grfPtt.Col == colVsPRP)
+            else if (grfPtt.Col == colVsSpermF)
             {
-                if (grfPtt[grfPtt.Row, colVsPRP] == null)
+                if (grfPtt[grfPtt.Row, colVsSpermF] == null)
                 {
-                    grfPtt[grfPtt.Row, colVsPRP] = imgCorr;
+                    grfPtt[grfPtt.Row, colVsSpermF] = imgCorr;
                 }
                 else
                 {
-                    var bitmap = grfPtt[grfPtt.Row, colVsPRP];
+                    var bitmap = grfPtt[grfPtt.Row, colVsSpermF];
                     if (compare((Bitmap)imgCorr, (Bitmap)bitmap))
                     {
-                        grfPtt[grfPtt.Row, colVsPRP] = imgTran;
+                        grfPtt[grfPtt.Row, colVsSpermF] = imgTran;
                     }
                     else
                     {
-                        grfPtt[grfPtt.Row, colVsPRP] = imgCorr;
+                        grfPtt[grfPtt.Row, colVsSpermF] = imgCorr;
                     }
                 }
             }
@@ -898,19 +898,19 @@ namespace clinic_ivf.gui
             grfPtt.Cols[colVsPttName].Editor = txt;
             grfPtt.Cols[colVsDoctor].Editor = txt;
             //grfPtt.Cols[colVsDoctor].ImageAndText = false;
-            grfPtt.Cols[colVsSperm].Editor = txt;
+            //grfPtt.Cols[colVsSperm].Editor = txt;
             //grfPtt.Cols[colVsDay6].Editor = txt;
             //grfPtt.Cols[colVsDay7].Editor = txt;
             //grfPtt.Cols[colVsDay8].Editor = txt;
             //grfPtt.Cols[colVsDay9].Editor = txt;
             //grfPtt.Cols[colVsDay10].Editor = txt;
-            grfPtt.Cols[colVsTVS].Editor = txt;
-            grfPtt.Cols[colVsPesa].Editor = txt;
-            grfPtt.Cols[colVsPRP].Editor = txt;
-            grfPtt.Cols[colVsOPU].Editor = txt;
-            grfPtt.Cols[colVsET].Editor = txt;
+            //grfPtt.Cols[colVsTVS].Editor = txt;
+            //grfPtt.Cols[colVsPesa].Editor = txt;
+            //grfPtt.Cols[colVsSpermF].Editor = txt;
+            //grfPtt.Cols[colVsOPU].Editor = txt;
+            //grfPtt.Cols[colVsET].Editor = txt;
             //grfPtt.Cols[colVsHCG].Editor = txt;
-            grfPtt.Cols[colVsDC].Editor = txt;
+            //grfPtt.Cols[colVsSpermOPU].Editor = txt;
             grfPtt.Cols[colVsTrans].Editor = txt;
             grfPtt.Cols[colVsANC].Editor = txt;
             grfPtt.Cols[colVsAnes].Editor = txt;
@@ -942,7 +942,7 @@ namespace clinic_ivf.gui
             colSperm.DataType = typeof(Image);
             Column colEndo = grfPtt.Cols[colVsPesa];
             colEndo.DataType = typeof(Image);
-            Column colDC = grfPtt.Cols[colVsPRP];
+            Column colDC = grfPtt.Cols[colVsSpermF];
             colDC.DataType = typeof(Image);
             Column colET = grfPtt.Cols[colVsET];
             colET.DataType = typeof(Image);
@@ -956,6 +956,8 @@ namespace clinic_ivf.gui
             colFsh.DataType = typeof(Image);
             Column colFET = grfPtt.Cols[colVsFET];
             colFET.DataType = typeof(Image);
+            Column colSpermOPU = grfPtt.Cols[colVsSpermOPU];
+            colSpermOPU.DataType = typeof(Image);
 
             grfPtt.Cols[colPttHn].Width = 100;
             grfPtt.Cols[colVsCode].Width = 60;
@@ -970,11 +972,11 @@ namespace clinic_ivf.gui
             grfPtt.Cols[colVsDay10].Width = 60;
             grfPtt.Cols[colVsTVS].Width = 60;
             grfPtt.Cols[colVsPesa].Width = 60;
-            grfPtt.Cols[colVsPRP].Width = 60;
+            grfPtt.Cols[colVsSpermF].Width = 60;
             grfPtt.Cols[colVsOPU].Width = 60;
             grfPtt.Cols[colVsET].Width = 60;
             grfPtt.Cols[colVsHCG].Width = 60;
-            grfPtt.Cols[colVsDC].Width = 60;
+            grfPtt.Cols[colVsSpermOPU].Width = 60;
             grfPtt.Cols[colVsTrans].Width = 60;
             grfPtt.Cols[colVsANC].Width = 60;
             grfPtt.Cols[colVsAnes].Width = 100;
@@ -1005,11 +1007,11 @@ namespace clinic_ivf.gui
             grfPtt.Cols[colVsDay11].Caption = "Day11";
             grfPtt.Cols[colVsTVS].Caption = "TVS";
             grfPtt.Cols[colVsPesa].Caption = "PESA";
-            grfPtt.Cols[colVsPRP].Caption = "D&C";
+            grfPtt.Cols[colVsSpermF].Caption = "Sp F";
             grfPtt.Cols[colVsOPU].Caption = "OPU";
             grfPtt.Cols[colVsET].Caption = "ET";
             grfPtt.Cols[colVsHCG].Caption = "HCG";
-            grfPtt.Cols[colVsDC].Caption = "D&C";
+            grfPtt.Cols[colVsSpermOPU].Caption = "Sp OPU";
             grfPtt.Cols[colVsTrans].Caption = "Trans";
             grfPtt.Cols[colVsANC].Caption = "ANC";
             grfPtt.Cols[colVsAnes].Caption = "Anes";
@@ -1030,13 +1032,13 @@ namespace clinic_ivf.gui
             rng4.Data = "Name";
             CellRange rng5 = grfPtt.GetCellRange(0, colVsTVS, 1, colVsTVS);
             rng5.Data = "TVS";
-            CellRange rng6 = grfPtt.GetCellRange(0, colVsPRP, 1, colVsPRP);
-            rng6.Data = "D&C";
+            CellRange rng6 = grfPtt.GetCellRange(0, colVsSpermF, 1, colVsSpermF);
+            rng6.Data = "Sp F";
             CellRange rng7 = grfPtt.GetCellRange(0, colVsOPU, 1, colVsOPU);
             rng7.Data = "OPU";
             CellRange rng8 = grfPtt.GetCellRange(0, colVsET, 1, colVsET);
             rng8.Data = "ET";
-            CellRange rng9 = grfPtt.GetCellRange(0, colVsDC, 1, colVsDC);
+            CellRange rng9 = grfPtt.GetCellRange(0, colVsSpermOPU, 1, colVsSpermOPU);
             rng9.Data = "D&C";
             CellRange rng10 = grfPtt.GetCellRange(0, colVsANC, 1, colVsANC);
             rng10.Data = "ANC";
@@ -1057,15 +1059,17 @@ namespace clinic_ivf.gui
 
             grfPtt[1, colVsDoctor] = "Dr.";
             grfPtt[1, colVsSperm] = "Collect";
+            grfPtt[1, colVsSpermF] = "Sp F";
             grfPtt[1, colVsDay6] = "Bld/TVS";
             grfPtt[1, colVsDay7] = "Bld/TVS.";
             grfPtt[1, colVsDay8] = "Bld/TVS";
             grfPtt[1, colVsDay9] = "Bld/TVS.";
             grfPtt[1, colVsDay10] = "Bld/TVS";
             grfPtt[1, colVsDay11] = "Bld/TVS.";
-            grfPtt[1, colVsPesa] = "TESE";
+            grfPtt[1, colVsPesa] = "PESA";
             grfPtt[1, colVsHCG] = "Scan";
             grfPtt[1, colVsTrans] = "Sperm";
+            grfPtt[1, colVsSpermOPU] = "Sp OPU";
         }
         private void setGrfPtt(ConnectDB con, DataTable dtApmOld, DataTable dtApm)
         {
@@ -1214,6 +1218,7 @@ namespace clinic_ivf.gui
                 row1[colVsAnes] = row[ic.ivfDB.pApmDB.pApm.doctor_anes].ToString();
                 row1[colVsDoctor] = row[ic.ivfDB.pApmDB.pApm.dtr_name].ToString();
                 row1[colVsSperm] = row[ic.ivfDB.pApmDB.pApm.sperm_collect].ToString().Equals("1") ? imgCorr : imgTran;
+                row1[colVsSpermF] = row[ic.ivfDB.pApmDB.pApm.sperm_freezing].ToString().Equals("1") ? imgCorr : imgTran;
                 row1[colVSE2] = row[ic.ivfDB.pApmDB.pApm.e2].ToString().Equals("1") ? imgCorr : imgTran;
                 row1[colVSLh] = row[ic.ivfDB.pApmDB.pApm.lh].ToString().Equals("1") ? imgCorr : imgTran;
                 row1[colVSPrl] = row[ic.ivfDB.pApmDB.pApm.prl].ToString().Equals("1") ? imgCorr : imgTran;
@@ -1223,6 +1228,9 @@ namespace clinic_ivf.gui
                 row1[colVsET] = row[ic.ivfDB.pApmDB.pApm.et].ToString().Equals("1") ? imgCorr : imgTran;
                 row1[colVsFET] = row[ic.ivfDB.pApmDB.pApm.fet].ToString().Equals("1") ? imgCorr : imgTran;
                 row1[colVsHCG] = row[ic.ivfDB.pApmDB.pApm.beta_hgc].ToString().Equals("1") ? imgCorr : imgTran;
+                row1[colVsPesa] = row[ic.ivfDB.pApmDB.pApm.pesa].ToString().Equals("1") ? imgCorr : imgTran;
+                row1[colVsSpermOPU] = row[ic.ivfDB.pApmDB.pApm.sperm_opu].ToString().Equals("1") ? imgCorr : imgTran;
+                row1[colVsRemark] = row[ic.ivfDB.pApmDB.pApm.patient_appointment].ToString();
                 if (!row[ic.ivfDB.pApmDB.pApm.tvs_day].ToString().Equals(""))
                 {
                     CellNote note = new CellNote("Day "+row[ic.ivfDB.pApmDB.pApm.tvs_day].ToString()+" [Time "+ row[ic.ivfDB.pApmDB.pApm.tvs_time].ToString()+"]");
@@ -1307,6 +1315,10 @@ namespace clinic_ivf.gui
                 row1[colVsET] = row[ic.ivfDB.pApmDB.pApm.et].ToString().Equals("1") ? imgCorr : imgTran;
                 row1[colVsFET] = row[ic.ivfDB.pApmDB.pApm.fet].ToString().Equals("1") ? imgCorr : imgTran;
                 row1[colVsHCG] = row[ic.ivfDB.pApmDB.pApm.beta_hgc].ToString().Equals("1") ? imgCorr : imgTran;
+                row1[colVsPesa] = row[ic.ivfDB.pApmDB.pApm.pesa].ToString().Equals("1") ? imgCorr : imgTran;
+                row1[colVsSpermF] = row[ic.ivfDB.pApmDB.pApm.sperm_freezing].ToString().Equals("1") ? imgCorr : imgTran;
+                row1[colVsSpermOPU] = row[ic.ivfDB.pApmDB.pApm.sperm_opu].ToString().Equals("1") ? imgCorr : imgTran;
+                row1[colVsRemark] = row[ic.ivfDB.pApmDB.pApm.patient_appointment].ToString();
                 if (!row[ic.ivfDB.pApmDB.pApm.tvs_day].ToString().Equals(""))
                 {
                     CellNote note = new CellNote("Day " + row[ic.ivfDB.pApmDB.pApm.tvs_day].ToString() + " [Time " + row[ic.ivfDB.pApmDB.pApm.tvs_time].ToString() + "]");
@@ -1368,7 +1380,7 @@ namespace clinic_ivf.gui
             grfPtt.Cols[colVsDay10].AllowEditing = false;
             grfPtt.Cols[colVsHCG].AllowEditing = false;
             grfPtt.Cols[colVsET].AllowEditing = false;
-            grfPtt.Cols[colVsPRP].AllowEditing = false;
+            grfPtt.Cols[colVsSpermF].AllowEditing = false;
             grfPtt.Cols[colVsPesa].AllowEditing = false;
             grfPtt.Cols[colVsTVS].AllowEditing = false;
             grfPtt.Cols[colVsDoctor].AllowEditing = true;

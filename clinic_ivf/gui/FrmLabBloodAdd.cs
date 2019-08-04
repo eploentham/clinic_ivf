@@ -30,7 +30,7 @@ namespace clinic_ivf.gui
         Color bg, fc;
         Font ff, ffB;
         Color color;
-        int colRsId = 1, colRsLabName = 2, colRsMethod = 3, colRsResult = 4, colRsInterpret = 5, colRsUnit = 6, colRsNormal = 7, colRsRemark = 8, colRsLabId=9, colRsReqId=10;
+        int colRsId = 1, colRsLabName = 2, colRsMethod = 3, colRsResult = 4, colRsInterpret = 5, colRsUnit = 6, colRsNormal = 7, colRsRemark = 8, colRsLabId=9, colRsReqId=10, colRsEdit=11;
 
         C1SuperTooltip stt;
         C1SuperErrorProvider sep;
@@ -59,6 +59,10 @@ namespace clinic_ivf.gui
             color = ColorTranslator.FromHtml(ic.iniC.grfRowColor);
             SmtpServer = new SmtpClient("smtp.gmail.com");
 
+            btnSave.Click += BtnSave_Click;
+            btnApproveResult.Click += BtnApproveResult_Click;
+            btnPrint.Click += BtnPrint_Click;
+
             sB1.Text = "";
             bg = txtHn.BackColor;
             fc = txtHn.ForeColor;
@@ -77,6 +81,73 @@ namespace clinic_ivf.gui
             initGrfProc();
             setControl();
         }
+
+        private void BtnPrint_Click(object sender, EventArgs e)
+        {
+            //throw new NotImplementedException();
+
+        }
+
+        private void BtnApproveResult_Click(object sender, EventArgs e)
+        {
+            //throw new NotImplementedException();
+            ic.ivfDB.lbresDB.updateResultFinish(txtVsId.Text);
+            tC.SelectedTab = tabEmail;
+        }
+
+        private void BtnSave_Click(object sender, EventArgs e)
+        {
+            //throw new NotImplementedException();
+            String stfapp = "", stfrpt = "", dateapp = "", daterpt = "";
+            DateTime daterpt1 = new DateTime();
+            DateTime dateapp1 = new DateTime();
+            stfrpt = cboEmbryologistReport.SelectedItem == null ? "" : ((ComboBoxItem)cboEmbryologistReport.SelectedItem).Value;
+            stfapp = cboEmbryologistAppv.SelectedItem == null ? "" : ((ComboBoxItem)cboEmbryologistAppv.SelectedItem).Value;
+            daterpt = ic.dateTimetoDB1(txtReportDate.Text);
+            dateapp = ic.dateTimetoDB1(txtApprovDate.Text);
+
+            Staff stf = new Staff();
+            stf = ic.ivfDB.stfDB.selectByPk1(stfrpt);
+            if (stf.staff_id.Equals(""))
+            {
+                MessageBox.Show("ไม่พบ รายชื่อพนักงาน Report", "");
+                return;
+            }
+            stf = ic.ivfDB.stfDB.selectByPk1(stfapp);
+            if (stf.staff_id.Equals(""))
+            {
+                MessageBox.Show("ไม่พบ รายชื่อพนักงาน Approve", "");
+                return;
+            }
+            if(DateTime.TryParse(daterpt, out daterpt1))
+            {
+                MessageBox.Show("วันที่ ไม่ถูกต้อง", "");
+                return;
+            }
+            if (DateTime.TryParse(dateapp, out dateapp1))
+            {
+                MessageBox.Show("วันที่ ไม่ถูกต้อง", "");
+                return;
+            }
+
+            foreach(Row row in grfProc.Rows)
+            {
+                String id = "", edit = "", result="";
+                id = row[colRsId] != null ? row[colRsId].ToString() : "";
+                edit = row[colRsEdit] != null ? row[colRsEdit].ToString() : "";
+                result = row[colRsResult] != null ? row[colRsResult].ToString() : "";
+                if (edit.Equals("1") && !result.Equals(""))
+                {
+                    String re = ic.ivfDB.lbresDB.updateResult(result, stfapp, stfrpt, dateapp, daterpt, id);
+                    long chk = 0;
+                   if(long.TryParse(re, out chk))
+                    {
+
+                    }
+                }
+            }
+        }
+
         private void setControl()
         {
             lbRes = ic.ivfDB.lbresDB.selectByPk(resId);
@@ -118,22 +189,27 @@ namespace clinic_ivf.gui
             //grfExpn.Rows.Count = dt.Rows.Count + 1;
             grfProc.Rows.Count = dt.Rows.Count + 1;
             //grfSperm.DataSource = dt;
-            grfProc.Cols.Count = 11;
+            grfProc.Cols.Count = 12;
             CellStyle cs = grfProc.Styles.Add("bool");
             cs.DataType = typeof(bool);
             cs.ImageAlign = ImageAlignEnum.LeftCenter;
 
-            C1ComboBox cboday3 = new C1ComboBox();
-            cboday3.AutoCompleteMode = AutoCompleteMode.Suggest;
-            cboday3.AutoCompleteSource = AutoCompleteSource.ListItems;
-            ic.ivfDB.lbmDB.setCboLabMethod(cboday3, "");
+            C1ComboBox cboMethod = new C1ComboBox();
+            cboMethod.AutoCompleteMode = AutoCompleteMode.Suggest;
+            cboMethod.AutoCompleteSource = AutoCompleteSource.ListItems;
+            ic.ivfDB.lbmDB.setCboLabMethod(cboMethod, "");
+            C1ComboBox cboUnit = new C1ComboBox();
+            cboUnit.AutoCompleteMode = AutoCompleteMode.Suggest;
+            cboUnit.AutoCompleteSource = AutoCompleteSource.ListItems;
+            ic.ivfDB.lbuDB.setCboLabUnit(cboUnit, "");
 
-            grfProc.Cols[colRsMethod].Editor = cboday3;
+            grfProc.Cols[colRsMethod].Editor = cboMethod;
+            grfProc.Cols[colRsUnit].Editor = cboUnit;
             grfProc.Cols[colRsLabName].Width = 200;
             grfProc.Cols[colRsMethod].Width = 100;
             grfProc.Cols[colRsResult].Width = 100;
             grfProc.Cols[colRsInterpret].Width = 100;
-            grfProc.Cols[colRsUnit].Width = 80;
+            grfProc.Cols[colRsUnit].Width = 100;
             grfProc.Cols[colRsNormal].Width = 100;
             grfProc.Cols[colRsRemark].Width = 200;
             //grfProc.Cols[colBlQty].Width = 60;
@@ -167,12 +243,13 @@ namespace clinic_ivf.gui
                     //Decimal.TryParse(row[ic.ivfDB.oLabiDB.labI.Price].ToString(), out aaa);
                     grfProc[i, colRsId] = row[ic.ivfDB.lbresDB.lbRes.result_id].ToString();
                     grfProc[i, colRsLabName] = row[ic.ivfDB.oLabiDB.labI.LName].ToString();
-                    grfProc[i, colRsMethod] = row[ic.ivfDB.lbresDB.lbRes.method].ToString();
+                    grfProc[i, colRsMethod] =  ic.ivfDB.lbmDB.getNameById(row[ic.ivfDB.oLabiDB.labI.method_id].ToString());
                     grfProc[i, colRsResult] = row[ic.ivfDB.lbresDB.lbRes.result].ToString();
                     grfProc[i, colRsInterpret] = row[ic.ivfDB.lbresDB.lbRes.interpret].ToString();
-                    grfProc[i, colRsUnit] = row[ic.ivfDB.lbresDB.lbRes.unit].ToString();
+                    grfProc[i, colRsUnit] = ic.ivfDB.lbuDB.getNameById(row[ic.ivfDB.oLabiDB.labI.lab_unit_id].ToString());
                     grfProc[i, colRsNormal] = row[ic.ivfDB.lbresDB.lbRes.normal_value].ToString();
                     grfProc[i, colRsRemark] = row[ic.ivfDB.lbresDB.lbRes.remark].ToString();
+                    grfProc[i, colRsEdit] = "";
                     //grfSgrfProcperm[i, colBlQty] = "1";
                     row[0] = (i - 2);
                 }
@@ -191,7 +268,7 @@ namespace clinic_ivf.gui
             //grfProc.Cols[colRsMethod].AllowEditing = false;
             //grfProc.Cols[colRsResult].AllowEditing = false;
             grfProc.Cols[colRsInterpret].AllowEditing = false;
-            //grfProc.Cols[colRsUnit].AllowEditing = false;
+            grfProc.Cols[colRsEdit].AllowEditing = false;
             grfProc.Cols[colRsNormal].AllowEditing = false;
             grfProc.Cols[colRsRemark].AllowEditing = false;
             //theme1.SetTheme(grfFinish, ic.theme);
@@ -200,12 +277,14 @@ namespace clinic_ivf.gui
         private void GrfProc_ChangeEdit(object sender, EventArgs e)
         {
             //throw new NotImplementedException();
+            grfProc[grfProc.Row, colRsEdit] = "1";
 
+            grfProc.Rows[grfProc.Row].StyleNew.BackColor = color;
         }
 
         private void FrmLabBloodAdd_Load(object sender, EventArgs e)
         {
-
+            tC.SelectedTab = tabResult;
         }
     }
 }

@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="lab_result" targetNamespace="http://tempuri.org/lab_result.xsd" xmlns:mstns="http://tempuri.org/lab_result.xsd" xmlns="http://tempuri.org/lab_result.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections />
+        <Tables />
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="lab_result" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="lab_result" msprop:Generator_UserDSName="lab_result">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="lab_result" msprop:Generator_TableClassName="lab_resultDataTable" msprop:Generator_TableVarName="tablelab_result" msprop:Generator_TablePropName="_lab_result" msprop:Generator_RowDeletingName="lab_resultRowDeleting" msprop:Generator_RowChangingName="lab_resultRowChanging" msprop:Generator_RowEvHandlerName="lab_resultRowChangeEventHandler" msprop:Generator_RowDeletedName="lab_resultRowDeleted" msprop:Generator_UserTableName="lab_result" msprop:Generator_RowChangedName="lab_resultRowChanged" msprop:Generator_RowEvArgName="lab_resultRowChangeEvent" msprop:Generator_RowClassName="lab_resultRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="lab_name" msdata:Caption="DataColumn1" msprop:Generator_ColumnVarNameInTable="columnlab_name" msprop:Generator_ColumnPropNameInRow="lab_name" msprop:Generator_ColumnPropNameInTable="lab_nameColumn" msprop:Generator_UserColumnName="lab_name" type="xs:string" minOccurs="0" />
+              <xs:element name="method" msdata:Caption="DataColumn1" msprop:Generator_ColumnVarNameInTable="columnmethod" msprop:Generator_ColumnPropNameInRow="method" msprop:Generator_ColumnPropNameInTable="methodColumn" msprop:Generator_UserColumnName="method" type="xs:string" minOccurs="0" />
+              <xs:element name="result" msdata:Caption="DataColumn1" msprop:Generator_ColumnVarNameInTable="columnresult" msprop:Generator_ColumnPropNameInRow="result" msprop:Generator_ColumnPropNameInTable="resultColumn" msprop:Generator_UserColumnName="result" type="xs:string" minOccurs="0" />
+              <xs:element name="unit" msdata:Caption="DataColumn1" msprop:Generator_ColumnVarNameInTable="columnunit" msprop:Generator_ColumnPropNameInRow="unit" msprop:Generator_ColumnPropNameInTable="unitColumn" msprop:Generator_UserColumnName="unit" type="xs:string" minOccurs="0" />
+              <xs:element name="normal_value" msdata:Caption="DataColumn1" msprop:Generator_ColumnVarNameInTable="columnnormal_value" msprop:Generator_ColumnPropNameInRow="normal_value" msprop:Generator_ColumnPropNameInTable="normal_valueColumn" msprop:Generator_UserColumnName="normal_value" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

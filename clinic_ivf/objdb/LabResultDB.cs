@@ -173,10 +173,12 @@ namespace clinic_ivf.objdb
         public DataTable selectLabBloodByProcess(String vsid)
         {
             DataTable dt = new DataTable();
-            String sql = "select lbRes.*, LabItem.LName " +
+            String sql = "select lbRes.*, LabItem.LName,LabItem.lab_unit_id,LabItem.method_id " +
                 " " +
                 "From " + lbRes.table + " lbRes " +
                 "Left Join LabItem on lbRes." + lbRes.lab_id + " = LabItem.LID " +
+                //"Left Join lab_b_unit on LabItem.lab_unit_id = lab_b_unit.lab_unit_id " +
+                //"Left Join lab_b_method on LabItem.method_id = lab_b_method.method_id " +
                 "Where lbRes." + lbRes.status_result + " ='1'  and lbRes.visit_id = '"+vsid+"'" +
                 "Order By lbRes." + lbRes.req_id;
             dt = conn.selectData(conn.conn, sql);
@@ -385,15 +387,41 @@ namespace clinic_ivf.objdb
 
             return re;
         }
-        public String updateImagepath(String patient_id, String id)
+        public String updateResult(String result, String stfappid, String stfresid, String dateapp, String dateres,String resid)
         {
             String re = "";
             String sql = "";
             int chk = 0;
             //chkNull(p);
             sql = "Update " + lbRes.table + " Set " +
-                " " + lbRes.patient_id + " = '" + patient_id + "'" +
-                "Where " + lbRes.pkField + "='" + id + "'"
+                " " + lbRes.result + " = '" + result + "'" +
+                "," + lbRes.staff_id_approve + " = '" + stfappid + "'" +
+                "," + lbRes.staff_id_result + " = '" + stfresid + "'" +
+                "," + lbRes.date_time_approve + " = '" + dateapp + "'" +
+                "," + lbRes.date_time_result + " = '" + dateres + "'" +
+                //"," + lbRes.status_result + " = '2'" +
+                "Where " + lbRes.pkField + "='" + resid + "'"
+                ;
+            try
+            {
+                re = conn.ExecuteNonQuery(conn.conn, sql);
+            }
+            catch (Exception ex)
+            {
+                sql = ex.Message + " " + ex.InnerException;
+            }
+
+            return re;
+        }
+        public String updateResultFinish(String vsid)
+        {
+            String re = "";
+            String sql = "";
+            int chk = 0;
+            //chkNull(p);
+            sql = "Update " + lbRes.table + " Set " +
+                " " + lbRes.status_result + " = '2'" +
+                "Where " + lbRes.visit_id + "='" + vsid + "'"
                 ;
             try
             {

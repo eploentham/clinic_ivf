@@ -286,7 +286,7 @@
             // 
             this.sB.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.sB1});
-            this.sB.Location = new System.Drawing.Point(0, 777);
+            this.sB.Location = new System.Drawing.Point(0, 810);
             this.sB.Name = "sB";
             this.sB.Size = new System.Drawing.Size(1046, 22);
             this.sB.TabIndex = 10;
@@ -902,9 +902,9 @@
             this.txtVsId.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtVsId.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
             this.txtVsId.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.txtVsId.Location = new System.Drawing.Point(7, 234);
+            this.txtVsId.Location = new System.Drawing.Point(943, 63);
             this.txtVsId.Name = "txtVsId";
-            this.txtVsId.Size = new System.Drawing.Size(146, 20);
+            this.txtVsId.Size = new System.Drawing.Size(34, 20);
             this.txtVsId.TabIndex = 610;
             this.txtVsId.Tag = null;
             this.theme1.SetTheme(this.txtVsId, "(default)");
@@ -921,7 +921,7 @@
             this.groupBox2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
             this.groupBox2.Location = new System.Drawing.Point(0, 105);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(1046, 672);
+            this.groupBox2.Size = new System.Drawing.Size(1046, 705);
             this.groupBox2.TabIndex = 12;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Description";
@@ -936,7 +936,7 @@
             this.groupBox5.Controls.Add(this.gbSpermAnalysis);
             this.groupBox5.Controls.Add(this.btnPrintSperm);
             this.groupBox5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.groupBox5.Location = new System.Drawing.Point(11, 439);
+            this.groupBox5.Location = new System.Drawing.Point(11, 465);
             this.groupBox5.Name = "groupBox5";
             this.groupBox5.Size = new System.Drawing.Size(1026, 232);
             this.groupBox5.TabIndex = 13;
@@ -1509,7 +1509,7 @@
             this.gbETFET.Controls.Add(this.txtEmbryoTranferDate);
             this.gbETFET.Controls.Add(this.label14);
             this.gbETFET.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.gbETFET.Location = new System.Drawing.Point(11, 280);
+            this.gbETFET.Location = new System.Drawing.Point(11, 306);
             this.gbETFET.Name = "gbETFET";
             this.gbETFET.Size = new System.Drawing.Size(1025, 153);
             this.gbETFET.TabIndex = 13;
@@ -2116,14 +2116,12 @@
             this.gbOPU.Controls.Add(this.txtOPURemark);
             this.gbOPU.Controls.Add(this.groupBox3);
             this.gbOPU.Controls.Add(this.panel1);
-            this.gbOPU.Controls.Add(this.chkWaitDay1);
             this.gbOPU.Controls.Add(this.chkXselet);
             this.gbOPU.Controls.Add(this.chkYselet);
             this.gbOPU.Controls.Add(this.pnFreshSprem);
             this.gbOPU.Controls.Add(this.btnPrint);
             this.gbOPU.Controls.Add(this.gbEmbryoFresh);
             this.gbOPU.Controls.Add(this.gbEmbryoTranfer);
-            this.gbOPU.Controls.Add(this.gbNgs);
             this.gbOPU.Controls.Add(this.chkSpermHa);
             this.gbOPU.Controls.Add(this.label11);
             this.gbOPU.Controls.Add(this.txtNoofOocyteLt);
@@ -2132,13 +2130,12 @@
             this.gbOPU.Controls.Add(this.txtNoofOocyteRt);
             this.gbOPU.Controls.Add(this.chkEmbryoFreezing);
             this.gbOPU.Controls.Add(this.chkEmbryoTranfer);
-            this.gbOPU.Controls.Add(this.chkPgs);
             this.gbOPU.Controls.Add(this.chkFrozenSperm);
             this.gbOPU.Controls.Add(this.chkFreshSprem);
             this.gbOPU.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
             this.gbOPU.Location = new System.Drawing.Point(10, 14);
             this.gbOPU.Name = "gbOPU";
-            this.gbOPU.Size = new System.Drawing.Size(1028, 260);
+            this.gbOPU.Size = new System.Drawing.Size(1028, 286);
             this.gbOPU.TabIndex = 725;
             this.gbOPU.TabStop = false;
             this.gbOPU.Text = "OPU";
@@ -2253,11 +2250,12 @@
             // 
             this.panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
             this.panel3.Controls.Add(this.chkNoNgs);
-            this.panel3.Controls.Add(this.chkNgs);
+            this.panel3.Controls.Add(this.gbNgs);
+            this.panel3.Controls.Add(this.chkWaitDay1);
             this.panel3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.panel3.Location = new System.Drawing.Point(5, 143);
+            this.panel3.Location = new System.Drawing.Point(5, 119);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(200, 31);
+            this.panel3.Size = new System.Drawing.Size(462, 98);
             this.panel3.TabIndex = 739;
             this.theme1.SetTheme(this.panel3, "(default)");
             // 
@@ -2269,7 +2267,7 @@
             this.chkNoNgs.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(189)))), ((int)(((byte)(182)))));
             this.chkNoNgs.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(189)))), ((int)(((byte)(182)))));
             this.chkNoNgs.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.chkNoNgs.Location = new System.Drawing.Point(108, 7);
+            this.chkNoNgs.Location = new System.Drawing.Point(10, 3);
             this.chkNoNgs.Name = "chkNoNgs";
             this.chkNoNgs.Size = new System.Drawing.Size(73, 17);
             this.chkNoNgs.TabIndex = 537;
@@ -2286,7 +2284,7 @@
             this.chkNgs.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(189)))), ((int)(((byte)(182)))));
             this.chkNgs.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(189)))), ((int)(((byte)(182)))));
             this.chkNgs.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.chkNgs.Location = new System.Drawing.Point(8, 7);
+            this.chkNgs.Location = new System.Drawing.Point(13, 42);
             this.chkNgs.Name = "chkNgs";
             this.chkNgs.Size = new System.Drawing.Size(48, 17);
             this.chkNgs.TabIndex = 536;
@@ -2301,7 +2299,7 @@
             this.label30.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
             this.label30.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label30.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.label30.Location = new System.Drawing.Point(424, 180);
+            this.label30.Location = new System.Drawing.Point(424, 219);
             this.label30.Name = "label30";
             this.label30.Size = new System.Drawing.Size(94, 16);
             this.label30.TabIndex = 737;
@@ -2313,7 +2311,7 @@
             this.txtOPURemark.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtOPURemark.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
             this.txtOPURemark.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.txtOPURemark.Location = new System.Drawing.Point(528, 178);
+            this.txtOPURemark.Location = new System.Drawing.Point(528, 216);
             this.txtOPURemark.Name = "txtOPURemark";
             this.txtOPURemark.Size = new System.Drawing.Size(486, 20);
             this.txtOPURemark.TabIndex = 736;
@@ -2329,7 +2327,7 @@
             this.groupBox3.Controls.Add(this.chkOPUUnActive);
             this.groupBox3.Controls.Add(this.chkOPUActive);
             this.groupBox3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.groupBox3.Location = new System.Drawing.Point(582, 203);
+            this.groupBox3.Location = new System.Drawing.Point(582, 238);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(429, 41);
             this.groupBox3.TabIndex = 735;
@@ -2589,7 +2587,7 @@
             this.chkWaitDay1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.chkWaitDay1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.chkWaitDay1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.chkWaitDay1.Location = new System.Drawing.Point(679, 146);
+            this.chkWaitDay1.Location = new System.Drawing.Point(277, 65);
             this.chkWaitDay1.Name = "chkWaitDay1";
             this.chkWaitDay1.Padding = new System.Windows.Forms.Padding(4, 1, 1, 1);
             this.chkWaitDay1.Size = new System.Drawing.Size(140, 24);
@@ -2734,7 +2732,7 @@
             this.gbEmbryoFresh.Controls.Add(this.chkEmbryoFreezingDay3);
             this.gbEmbryoFresh.Controls.Add(this.chkEmbryoFreezingDay1);
             this.gbEmbryoFresh.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.gbEmbryoFresh.Location = new System.Drawing.Point(159, 207);
+            this.gbEmbryoFresh.Location = new System.Drawing.Point(159, 247);
             this.gbEmbryoFresh.Name = "gbEmbryoFresh";
             this.gbEmbryoFresh.Size = new System.Drawing.Size(399, 30);
             this.gbEmbryoFresh.TabIndex = 716;
@@ -2815,7 +2813,7 @@
             this.gbEmbryoTranfer.Controls.Add(this.chkEmbryoTranferFrozen);
             this.gbEmbryoTranfer.Controls.Add(this.chkEmbryoTranferFresh);
             this.gbEmbryoTranfer.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.gbEmbryoTranfer.Location = new System.Drawing.Point(159, 172);
+            this.gbEmbryoTranfer.Location = new System.Drawing.Point(159, 215);
             this.gbEmbryoTranfer.Name = "gbEmbryoTranfer";
             this.gbEmbryoTranfer.Size = new System.Drawing.Size(256, 28);
             this.gbEmbryoTranfer.TabIndex = 715;
@@ -2860,11 +2858,13 @@
             // 
             this.gbNgs.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
             this.gbNgs.Controls.Add(this.chkNgsDay5);
+            this.gbNgs.Controls.Add(this.chkPgs);
+            this.gbNgs.Controls.Add(this.chkNgs);
             this.gbNgs.Controls.Add(this.chkNgsDay3);
             this.gbNgs.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.gbNgs.Location = new System.Drawing.Point(309, 137);
+            this.gbNgs.Location = new System.Drawing.Point(9, 23);
             this.gbNgs.Name = "gbNgs";
-            this.gbNgs.Size = new System.Drawing.Size(256, 32);
+            this.gbNgs.Size = new System.Drawing.Size(256, 69);
             this.gbNgs.TabIndex = 714;
             this.gbNgs.TabStop = false;
             this.gbNgs.Text = "Biopsy";
@@ -2878,7 +2878,7 @@
             this.chkNgsDay5.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(189)))), ((int)(((byte)(182)))));
             this.chkNgsDay5.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(189)))), ((int)(((byte)(182)))));
             this.chkNgsDay5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.chkNgsDay5.Location = new System.Drawing.Point(150, 10);
+            this.chkNgsDay5.Location = new System.Drawing.Point(107, 42);
             this.chkNgsDay5.Name = "chkNgsDay5";
             this.chkNgsDay5.Size = new System.Drawing.Size(53, 17);
             this.chkNgsDay5.TabIndex = 535;
@@ -2895,7 +2895,7 @@
             this.chkNgsDay3.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(189)))), ((int)(((byte)(182)))));
             this.chkNgsDay3.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(189)))), ((int)(((byte)(182)))));
             this.chkNgsDay3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.chkNgsDay3.Location = new System.Drawing.Point(50, 10);
+            this.chkNgsDay3.Location = new System.Drawing.Point(122, 19);
             this.chkNgsDay3.Name = "chkNgsDay3";
             this.chkNgsDay3.Size = new System.Drawing.Size(53, 17);
             this.chkNgsDay3.TabIndex = 534;
@@ -2996,7 +2996,7 @@
             this.chkEmbryoFreezing.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.chkEmbryoFreezing.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.chkEmbryoFreezing.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.chkEmbryoFreezing.Location = new System.Drawing.Point(9, 210);
+            this.chkEmbryoFreezing.Location = new System.Drawing.Point(9, 250);
             this.chkEmbryoFreezing.Name = "chkEmbryoFreezing";
             this.chkEmbryoFreezing.Padding = new System.Windows.Forms.Padding(4, 1, 1, 1);
             this.chkEmbryoFreezing.Size = new System.Drawing.Size(140, 24);
@@ -3015,7 +3015,7 @@
             this.chkEmbryoTranfer.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.chkEmbryoTranfer.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.chkEmbryoTranfer.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.chkEmbryoTranfer.Location = new System.Drawing.Point(9, 174);
+            this.chkEmbryoTranfer.Location = new System.Drawing.Point(9, 217);
             this.chkEmbryoTranfer.Name = "chkEmbryoTranfer";
             this.chkEmbryoTranfer.Padding = new System.Windows.Forms.Padding(4, 1, 1, 1);
             this.chkEmbryoTranfer.Size = new System.Drawing.Size(140, 24);
@@ -3034,10 +3034,10 @@
             this.chkPgs.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.chkPgs.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.chkPgs.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.chkPgs.Location = new System.Drawing.Point(9, 118);
+            this.chkPgs.Location = new System.Drawing.Point(11, 19);
             this.chkPgs.Name = "chkPgs";
             this.chkPgs.Padding = new System.Windows.Forms.Padding(4, 1, 1, 1);
-            this.chkPgs.Size = new System.Drawing.Size(140, 24);
+            this.chkPgs.Size = new System.Drawing.Size(75, 24);
             this.chkPgs.TabIndex = 700;
             this.chkPgs.Text = "PGS";
             this.theme1.SetTheme(this.chkPgs, "(default)");
@@ -3087,7 +3087,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1046, 799);
+            this.ClientSize = new System.Drawing.Size(1046, 832);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.sB);

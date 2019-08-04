@@ -57,6 +57,8 @@ namespace clinic_ivf.objdb
             labI.method = "method";
             labI.status_outlab = "status_outlab";
             labI.num_barcode = "num_barcode";
+            labI.lab_unit_id = "lab_unit_id";
+            labI.method_id = "method_id";
 
             labI.table = "LabItem";
             labI.pkField = "LID";
@@ -268,8 +270,8 @@ namespace clinic_ivf.objdb
             p.LGID = long.TryParse(p.LGID, out chk) ? chk.ToString() : "0";
             p.SubItem = long.TryParse(p.SubItem, out chk) ? chk.ToString() : "0";
             p.QTY = long.TryParse(p.QTY, out chk) ? chk.ToString() : "1";
-            //p.W4GID = long.TryParse(p.W4GID, out chk) ? chk.ToString() : "0";
-            //p.BillGroupID = long.TryParse(p.BillGroupID, out chk) ? chk.ToString() : "0";
+            p.lab_unit_id = long.TryParse(p.lab_unit_id, out chk) ? chk.ToString() : "0";
+            p.method_id = long.TryParse(p.method_id, out chk) ? chk.ToString() : "0";
 
             p.Price = Decimal.TryParse(p.Price, out chk1) ? chk1.ToString() : "0";
             //p.QTY = Decimal.TryParse(p.QTY, out chk1) ? chk1.ToString() : "0";
@@ -320,6 +322,8 @@ namespace clinic_ivf.objdb
                 "," + labI.unit + "= '" + p.unit.Replace("'", "''") + "'" +
                 "," + labI.status_outlab + "= '" + p.status_outlab.Replace("'", "''") + "'" +
                 "," + labI.num_barcode + "= '" + p.num_barcode.Replace("'", "''") + "'" +
+                "," + labI.lab_unit_id + "= '" + p.lab_unit_id.Replace("'", "''") + "'" +
+                "," + labI.method_id + "= '" + p.method_id.Replace("'", "''") + "'" +
                 "";
             try
             {
@@ -359,8 +363,8 @@ namespace clinic_ivf.objdb
                 //"," + labI.SubItem + "= '" + p.SubItem + "'" +
                 //"," + labI.WorkerGroup1 + "= '" + p.WorkerGroup1 + "'" +
                 //"," + labI.WorkerGroup2 + "= '" + p.WorkerGroup2 + "'" +
-                //"," + labI.WorkerGroup3 + "= '" + p.WorkerGroup3 + "'" +
-                //"," + labI.WorkerGroup4 + "= '" + p.WorkerGroup4 + "'" +
+                "," + labI.lab_unit_id + "= '" + p.lab_unit_id + "'" +
+                "," + labI.method_id + "= '" + p.method_id + "'" +
                 "," + labI.QTY + "= '" + p.QTY + "'" +
                 "," + labI.LGID + "= '" + p.LGID + "'" +
                 "," + labI.status_show_qty + "= '" + p.status_show_qty + "'" +
@@ -459,6 +463,8 @@ namespace clinic_ivf.objdb
                 vsold1.method = dt.Rows[0][labI.method].ToString();
                 vsold1.status_outlab = dt.Rows[0][labI.status_outlab].ToString();
                 vsold1.num_barcode = dt.Rows[0][labI.num_barcode].ToString();
+                vsold1.method_id = dt.Rows[0][labI.method_id].ToString();
+                vsold1.lab_unit_id = dt.Rows[0][labI.lab_unit_id].ToString();
             }
             else
             {
@@ -500,6 +506,8 @@ namespace clinic_ivf.objdb
             stf1.normal_vaule = "";
             stf1.status_outlab = "";
             stf1.num_barcode = "";
+            stf1.lab_unit_id = "";
+            stf1.method_id = "";
             return stf1;
         }
     }

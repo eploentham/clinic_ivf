@@ -40,7 +40,7 @@ namespace clinic_ivf.objdb
             //lbM.remark = "remark";
             lbM.lab_unit_code = "lab_unit_code";
 
-            lbM.table = "lab_b_method";
+            lbM.table = "lab_b_unit";
             lbM.pkField = "lab_unit_id";
         }
         public void getlBsp()
@@ -63,9 +63,10 @@ namespace clinic_ivf.objdb
                 llbM.Add(itm1);
             }
         }
-        public String getIdDgs(String name)
+        public String getIdByName(String name)
         {
             String re = "";
+            if (llbM.Count <= 0) getlBsp();
             foreach (LabUnit row in llbM)
             {
                 if (row.lab_unit_name.Trim().Equals(name.Trim()))
@@ -76,9 +77,10 @@ namespace clinic_ivf.objdb
             }
             return re;
         }
-        public String getNameDgs(String id)
+        public String getNameById(String id)
         {
             String re = "";
+            if (llbM.Count <= 0) getlBsp();
             foreach (LabUnit row in llbM)
             {
                 if (row.lab_unit_id.Trim().Equals(id.Trim()))
