@@ -30,6 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmLabBloodAdd));
             this.panel1 = new System.Windows.Forms.Panel();
+            this.txtDob = new C1.Win.C1Input.C1TextBox();
             this.c1Button3 = new C1.Win.C1Input.C1Button();
             this.c1Button1 = new C1.Win.C1Input.C1Button();
             this.txtSex = new C1.Win.C1Input.C1TextBox();
@@ -124,8 +125,8 @@
             this.ribbonTopToolBar1 = new C1.Win.C1Ribbon.RibbonTopToolBar();
             this.sB = new System.Windows.Forms.StatusStrip();
             this.sB1 = new System.Windows.Forms.ToolStripStatusLabel();
-            this.txtDob = new C1.Win.C1Input.C1TextBox();
             this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtDob)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.c1Button3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.c1Button1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtSex)).BeginInit();
@@ -158,7 +159,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtEmailTo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.c1Ribbon1)).BeginInit();
             this.sB.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.txtDob)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -192,14 +192,27 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1134, 122);
+            this.panel1.Size = new System.Drawing.Size(1205, 122);
             this.panel1.TabIndex = 0;
+            // 
+            // txtDob
+            // 
+            this.txtDob.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtDob.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
+            this.txtDob.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.txtDob.Location = new System.Drawing.Point(95, 55);
+            this.txtDob.Name = "txtDob";
+            this.txtDob.Size = new System.Drawing.Size(156, 20);
+            this.txtDob.TabIndex = 976;
+            this.txtDob.Tag = null;
+            this.theme1.SetTheme(this.txtDob, "(default)");
+            this.txtDob.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
             // 
             // c1Button3
             // 
             this.c1Button3.Image = ((System.Drawing.Image)(resources.GetObject("c1Button3.Image")));
             this.c1Button3.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.c1Button3.Location = new System.Drawing.Point(956, 61);
+            this.c1Button3.Location = new System.Drawing.Point(1045, 61);
             this.c1Button3.Name = "c1Button3";
             this.c1Button3.Size = new System.Drawing.Size(105, 34);
             this.c1Button3.TabIndex = 975;
@@ -213,7 +226,7 @@
             // 
             this.c1Button1.Image = ((System.Drawing.Image)(resources.GetObject("c1Button1.Image")));
             this.c1Button1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.c1Button1.Location = new System.Drawing.Point(845, 61);
+            this.c1Button1.Location = new System.Drawing.Point(934, 61);
             this.c1Button1.Name = "c1Button1";
             this.c1Button1.Size = new System.Drawing.Size(105, 34);
             this.c1Button1.TabIndex = 974;
@@ -228,7 +241,7 @@
             this.txtSex.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtSex.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
             this.txtSex.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.txtSex.Location = new System.Drawing.Point(488, 56);
+            this.txtSex.Location = new System.Drawing.Point(464, 56);
             this.txtSex.Name = "txtSex";
             this.txtSex.Size = new System.Drawing.Size(69, 20);
             this.txtSex.TabIndex = 973;
@@ -242,7 +255,7 @@
             this.label6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.label6.Location = new System.Drawing.Point(338, 58);
+            this.label6.Location = new System.Drawing.Point(314, 58);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(37, 16);
             this.label6.TabIndex = 972;
@@ -327,7 +340,7 @@
             // 
             this.btnPrint.Image = global::clinic_ivf.Properties.Resources.print;
             this.btnPrint.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnPrint.Location = new System.Drawing.Point(734, 61);
+            this.btnPrint.Location = new System.Drawing.Point(823, 61);
             this.btnPrint.Name = "btnPrint";
             this.btnPrint.Size = new System.Drawing.Size(105, 34);
             this.btnPrint.TabIndex = 868;
@@ -340,9 +353,9 @@
             // 
             this.btnApproveResult.Image = global::clinic_ivf.Properties.Resources.Female_user_add_24;
             this.btnApproveResult.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnApproveResult.Location = new System.Drawing.Point(992, 14);
+            this.btnApproveResult.Location = new System.Drawing.Point(1081, 14);
             this.btnApproveResult.Name = "btnApproveResult";
-            this.btnApproveResult.Size = new System.Drawing.Size(128, 39);
+            this.btnApproveResult.Size = new System.Drawing.Size(84, 39);
             this.btnApproveResult.TabIndex = 815;
             this.btnApproveResult.Text = "Finish";
             this.btnApproveResult.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -353,7 +366,7 @@
             // 
             this.btnSave.Image = global::clinic_ivf.Properties.Resources.download_database24;
             this.btnSave.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnSave.Location = new System.Drawing.Point(891, 13);
+            this.btnSave.Location = new System.Drawing.Point(980, 13);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(83, 39);
             this.btnSave.TabIndex = 814;
@@ -368,7 +381,7 @@
             this.label1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.label1.Location = new System.Drawing.Point(660, 38);
+            this.label1.Location = new System.Drawing.Point(749, 38);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(68, 16);
             this.label1.TabIndex = 813;
@@ -401,7 +414,7 @@
             | C1.Win.C1Input.FormatInfoInheritFlags.TrimEnd)));
             this.txtApprovDate.EmptyAsNull = true;
             this.txtApprovDate.ImagePadding = new System.Windows.Forms.Padding(0);
-            this.txtApprovDate.Location = new System.Drawing.Point(734, 36);
+            this.txtApprovDate.Location = new System.Drawing.Point(823, 36);
             this.txtApprovDate.Name = "txtApprovDate";
             this.txtApprovDate.Size = new System.Drawing.Size(151, 18);
             this.txtApprovDate.TabIndex = 812;
@@ -414,7 +427,7 @@
             this.label109.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
             this.label109.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label109.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.label109.Location = new System.Drawing.Point(660, 15);
+            this.label109.Location = new System.Drawing.Point(749, 15);
             this.label109.Name = "label109";
             this.label109.Size = new System.Drawing.Size(68, 16);
             this.label109.TabIndex = 811;
@@ -447,7 +460,7 @@
             | C1.Win.C1Input.FormatInfoInheritFlags.TrimEnd)));
             this.txtReportDate.EmptyAsNull = true;
             this.txtReportDate.ImagePadding = new System.Windows.Forms.Padding(0);
-            this.txtReportDate.Location = new System.Drawing.Point(734, 13);
+            this.txtReportDate.Location = new System.Drawing.Point(823, 13);
             this.txtReportDate.Name = "txtReportDate";
             this.txtReportDate.Size = new System.Drawing.Size(151, 18);
             this.txtReportDate.TabIndex = 810;
@@ -467,9 +480,9 @@
             this.cboEmbryologistAppv.ImagePadding = new System.Windows.Forms.Padding(0);
             this.cboEmbryologistAppv.ItemsDisplayMember = "";
             this.cboEmbryologistAppv.ItemsValueMember = "";
-            this.cboEmbryologistAppv.Location = new System.Drawing.Point(488, 35);
+            this.cboEmbryologistAppv.Location = new System.Drawing.Point(464, 35);
             this.cboEmbryologistAppv.Name = "cboEmbryologistAppv";
-            this.cboEmbryologistAppv.Size = new System.Drawing.Size(165, 20);
+            this.cboEmbryologistAppv.Size = new System.Drawing.Size(279, 20);
             this.cboEmbryologistAppv.Style.DropDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
             this.cboEmbryologistAppv.Style.DropDownBorderColor = System.Drawing.Color.Gainsboro;
             this.cboEmbryologistAppv.Style.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
@@ -490,9 +503,9 @@
             this.cboEmbryologistReport.ImagePadding = new System.Windows.Forms.Padding(0);
             this.cboEmbryologistReport.ItemsDisplayMember = "";
             this.cboEmbryologistReport.ItemsValueMember = "";
-            this.cboEmbryologistReport.Location = new System.Drawing.Point(488, 12);
+            this.cboEmbryologistReport.Location = new System.Drawing.Point(464, 12);
             this.cboEmbryologistReport.Name = "cboEmbryologistReport";
-            this.cboEmbryologistReport.Size = new System.Drawing.Size(165, 20);
+            this.cboEmbryologistReport.Size = new System.Drawing.Size(279, 20);
             this.cboEmbryologistReport.Style.DropDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
             this.cboEmbryologistReport.Style.DropDownBorderColor = System.Drawing.Color.Gainsboro;
             this.cboEmbryologistReport.Style.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
@@ -506,7 +519,7 @@
             this.label61.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
             this.label61.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label61.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.label61.Location = new System.Drawing.Point(338, 37);
+            this.label61.Location = new System.Drawing.Point(314, 37);
             this.label61.Name = "label61";
             this.label61.Size = new System.Drawing.Size(147, 16);
             this.label61.TabIndex = 546;
@@ -518,7 +531,7 @@
             this.label60.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
             this.label60.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label60.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.label60.Location = new System.Drawing.Point(339, 14);
+            this.label60.Location = new System.Drawing.Point(315, 14);
             this.label60.Name = "label60";
             this.label60.Size = new System.Drawing.Size(131, 16);
             this.label60.TabIndex = 545;
@@ -601,7 +614,7 @@
             this.tC.Location = new System.Drawing.Point(0, 0);
             this.tC.Name = "tC";
             this.tC.SelectedIndex = 1;
-            this.tC.Size = new System.Drawing.Size(1136, 732);
+            this.tC.Size = new System.Drawing.Size(1207, 732);
             this.tC.TabIndex = 12;
             this.tC.TabSizeMode = C1.Win.C1Command.TabSizeModeEnum.Fit;
             this.tC.TabsShowFocusCues = false;
@@ -614,7 +627,7 @@
             this.tabResult.Controls.Add(this.panel2);
             this.tabResult.Location = new System.Drawing.Point(1, 24);
             this.tabResult.Name = "tabResult";
-            this.tabResult.Size = new System.Drawing.Size(1134, 707);
+            this.tabResult.Size = new System.Drawing.Size(1205, 707);
             this.tabResult.TabIndex = 0;
             this.tabResult.Text = "Result";
             // 
@@ -627,7 +640,7 @@
             this.panel2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
             this.panel2.Location = new System.Drawing.Point(0, 0);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1134, 707);
+            this.panel2.Size = new System.Drawing.Size(1205, 707);
             this.panel2.TabIndex = 0;
             this.theme1.SetTheme(this.panel2, "(default)");
             // 
@@ -638,7 +651,7 @@
             this.pnProc.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
             this.pnProc.Location = new System.Drawing.Point(0, 122);
             this.pnProc.Name = "pnProc";
-            this.pnProc.Size = new System.Drawing.Size(1134, 585);
+            this.pnProc.Size = new System.Drawing.Size(1205, 585);
             this.pnProc.TabIndex = 1;
             this.theme1.SetTheme(this.pnProc, "(default)");
             // 
@@ -647,7 +660,7 @@
             this.tabEmail.Controls.Add(this.panel3);
             this.tabEmail.Location = new System.Drawing.Point(1, 24);
             this.tabEmail.Name = "tabEmail";
-            this.tabEmail.Size = new System.Drawing.Size(1134, 707);
+            this.tabEmail.Size = new System.Drawing.Size(1205, 707);
             this.tabEmail.TabIndex = 1;
             this.tabEmail.Text = "Email";
             // 
@@ -660,7 +673,7 @@
             this.panel3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
             this.panel3.Location = new System.Drawing.Point(0, 0);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(1134, 707);
+            this.panel3.Size = new System.Drawing.Size(1205, 707);
             this.panel3.TabIndex = 0;
             this.theme1.SetTheme(this.panel3, "(default)");
             // 
@@ -673,7 +686,7 @@
             this.panel4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
             this.panel4.Location = new System.Drawing.Point(0, 146);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(1134, 561);
+            this.panel4.Size = new System.Drawing.Size(1205, 561);
             this.panel4.TabIndex = 1;
             this.theme1.SetTheme(this.panel4, "(default)");
             // 
@@ -686,7 +699,7 @@
             this.txtEmailBody.Location = new System.Drawing.Point(0, 68);
             this.txtEmailBody.Multiline = true;
             this.txtEmailBody.Name = "txtEmailBody";
-            this.txtEmailBody.Size = new System.Drawing.Size(1134, 493);
+            this.txtEmailBody.Size = new System.Drawing.Size(1205, 493);
             this.txtEmailBody.TabIndex = 543;
             this.txtEmailBody.Tag = null;
             this.theme1.SetTheme(this.txtEmailBody, "(default)");
@@ -705,7 +718,7 @@
             this.panel5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
             this.panel5.Location = new System.Drawing.Point(0, 0);
             this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(1134, 68);
+            this.panel5.Size = new System.Drawing.Size(1205, 68);
             this.panel5.TabIndex = 3;
             this.theme1.SetTheme(this.panel5, "(default)");
             // 
@@ -799,7 +812,7 @@
             this.c1Ribbon1.QatHolder = this.ribbonQat1;
             this.c1Ribbon1.QatItemsHolder.Add(this.UndoButton);
             this.c1Ribbon1.QatItemsHolder.Add(this.RedoButton);
-            this.c1Ribbon1.Size = new System.Drawing.Size(1134, 146);
+            this.c1Ribbon1.Size = new System.Drawing.Size(1205, 146);
             this.c1Ribbon1.Tabs.Add(this.HomeTab);
             this.c1Ribbon1.Tabs.Add(this.ViewTab);
             this.theme1.SetTheme(this.c1Ribbon1, "(default)");
@@ -1151,7 +1164,7 @@
             this.sB1});
             this.sB.Location = new System.Drawing.Point(0, 732);
             this.sB.Name = "sB";
-            this.sB.Size = new System.Drawing.Size(1136, 22);
+            this.sB.Size = new System.Drawing.Size(1207, 22);
             this.sB.TabIndex = 11;
             this.sB.Text = "statusStrip1";
             // 
@@ -1161,24 +1174,11 @@
             this.sB1.Size = new System.Drawing.Size(118, 17);
             this.sB1.Text = "toolStripStatusLabel1";
             // 
-            // txtDob
-            // 
-            this.txtDob.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtDob.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
-            this.txtDob.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.txtDob.Location = new System.Drawing.Point(95, 55);
-            this.txtDob.Name = "txtDob";
-            this.txtDob.Size = new System.Drawing.Size(156, 20);
-            this.txtDob.TabIndex = 976;
-            this.txtDob.Tag = null;
-            this.theme1.SetTheme(this.txtDob, "(default)");
-            this.txtDob.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
-            // 
             // FrmLabBloodAdd
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1136, 754);
+            this.ClientSize = new System.Drawing.Size(1207, 754);
             this.Controls.Add(this.tC);
             this.Controls.Add(this.sB);
             this.Name = "FrmLabBloodAdd";
@@ -1187,6 +1187,7 @@
             this.Load += new System.EventHandler(this.FrmLabBloodAdd_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtDob)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.c1Button3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.c1Button1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtSex)).EndInit();
@@ -1222,7 +1223,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.c1Ribbon1)).EndInit();
             this.sB.ResumeLayout(false);
             this.sB.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.txtDob)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

@@ -392,7 +392,7 @@ namespace clinic_ivf.gui
             grfAll.Rows.Count = 1;
             grfAll.Cols.Count = 3;
             grfAll.Cols[colpApmPttName].Editor = txt;
-            grfAll.Cols[colpApmPttName].Width = 520;
+            grfAll.Cols[colpApmPttName].Width = 720;
             grfAll.Cols[colpApmPttName].Caption = "Description";
             grfAll.Name = "grfAll";
             grfAll.Cols[colpApmPttId].Visible = false;
@@ -409,7 +409,8 @@ namespace clinic_ivf.gui
             foreach (DataRow row1 in dtDAll.Rows)
             {
                 String appn = "";
-                appn = ic.ivfDB.genAppointmentRemarkPttDonor(row1);
+                //appn = ic.ivfDB.genAppointmentRemarkPttDonor(row1);           // -003
+                appn = ic.ivfDB.genAppointmentRemarkPtt1(row1);         //      +003
                 Row rowAll = grfAll.Rows.Add();
                 rowAll[colpApmPttName] = appn + " " + row1["PatientName"].ToString();
                 rowAll[0] = (grfAll.Rows.Count - 1);
@@ -980,7 +981,7 @@ namespace clinic_ivf.gui
             grfPtt.Cols[colVsTrans].Width = 60;
             grfPtt.Cols[colVsANC].Width = 60;
             grfPtt.Cols[colVsAnes].Width = 100;
-            grfPtt.Cols[colVsRemark].Width = 60;
+            grfPtt.Cols[colVsRemark].Width = 200;
             grfPtt.Cols[colVSE2].Width = 60;
             grfPtt.Cols[colVSLh].Width = 60;
             grfPtt.Cols[colVSPrl].Width = 60;
@@ -1039,7 +1040,7 @@ namespace clinic_ivf.gui
             CellRange rng8 = grfPtt.GetCellRange(0, colVsET, 1, colVsET);
             rng8.Data = "ET";
             CellRange rng9 = grfPtt.GetCellRange(0, colVsSpermOPU, 1, colVsSpermOPU);
-            rng9.Data = "D&C";
+            rng9.Data = "Sp OPU";
             CellRange rng10 = grfPtt.GetCellRange(0, colVsANC, 1, colVsANC);
             rng10.Data = "ANC";
             CellRange rng11 = grfPtt.GetCellRange(0, colVsAnes, 1, colVsAnes);
@@ -1389,12 +1390,16 @@ namespace clinic_ivf.gui
             grfPtt.Cols[colID].Visible = false;
             grfPtt.Cols[colpttId].Visible = false;
             grfPtt.Cols[colVsStatus].Visible = false;
-            grfPtt.Cols[colVsPesa].Visible = false;
+            //grfPtt.Cols[colVsPesa].Visible = false;
             grfPtt.Cols[colVsCode].Visible = false;
             grfPtt.Cols[colVsDay8].Visible = true;
             grfPtt.Cols[colVsDoctor].Visible = false;
             grfPtt.Cols[colVsTrans].Visible = false;
             grfPtt.Cols[colConn].Visible = false;
+
+            grfPtt.Cols[colVsSperm].Visible = false;
+            grfPtt.Cols[colVsAnes].Visible = false;
+            //grfPtt.Cols[colConn].Visible = false;
             theme1.SetTheme(grfPtt, ic.theme);
 
         }

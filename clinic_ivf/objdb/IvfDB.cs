@@ -219,21 +219,35 @@ namespace clinic_ivf.objdb
         public String genAppointmentRemarkPtt1(DataRow row1)
         {
             String re = "";
-            String hormo = "", tvs = "", opu = "", et = "", beta = "", other = "", appn = "", fet="", sperm = "";
+            String hormo = "", tvs = "", opu = "", et = "", beta = "", other = "", appn = "", fet="", sperm = "", spermFreezing="", spermopu="", pesa="", e2="", lh="", fsh="", prl="";
             hormo = row1[pApmDB.pApm.hormone_test].ToString().Equals("1") ? "Hormone Test " : "";
-            tvs = row1[pApmDB.pApm.tvs].ToString().Equals("1") ? "TVS " : "";
+            tvs = row1[pApmDB.pApm.tvs].ToString().Equals("1") ? "TVS Day " + row1[pApmDB.pApm.tvs_day].ToString() + " [Time " + row1[pApmDB.pApm.tvs_time].ToString() + "]" : "" ;
             opu = row1[pApmDB.pApm.opu].ToString().Equals("1") ? row1[pApmDB.pApm.opu_time] != null ? "OPU [" + row1[pApmDB.pApm.opu_time].ToString() + "]" : "OPU " + row1[pApmDB.pApm.opu_time].ToString() : "";
             beta = row1[pApmDB.pApm.beta_hgc].ToString().Equals("1") ? "Beta HCG " : "";
             et = row1[pApmDB.pApm.et].ToString().Equals("1") ? row1[pApmDB.pApm.et_time] != null ? "ET [" + row1[pApmDB.pApm.et_time].ToString() + "]" : "ET" : "";
             fet = row1[pApmDB.pApm.fet].ToString().Equals("1") ? row1[pApmDB.pApm.fet_time] != null ? "FET [" + row1[pApmDB.pApm.fet_time].ToString() + "]" : "FET" : "";
             other = row1[pApmDB.pApm.other].ToString().Equals("1") ? row1[pApmDB.pApm.other_remark] != null ? "Other " + row1[pApmDB.pApm.other_remark].ToString() : "Other " : "";
             sperm = row1[pApmDB.pApm.sperm_collect].ToString().Equals("1") ? "Sperm Collect " : "";
-            appn = row1[pApmDB.pApm.patient_appointment_time].ToString() + " " + hormo + " " + tvs + " " + opu + " " + beta + " " + et + " " + fet + " " + sperm + " " + other;
+
+            spermFreezing = row1[pApmDB.pApm.sperm_freezing].ToString().Equals("1") ? "Sperm Freezing " : "";
+            spermopu = row1[pApmDB.pApm.sperm_opu].ToString().Equals("1") ? "Sperm OPU " : "";
+            pesa = row1[pApmDB.pApm.pesa].ToString().Equals("1") ? "PESA/TESA " : "";
+
+            e2 = row1[pApmDB.pApm.e2].ToString().Equals("1") ? "E2 " : "";
+            lh = row1[pApmDB.pApm.lh].ToString().Equals("1") ? "LH " : "";
+            fsh = row1[pApmDB.pApm.fsh].ToString().Equals("1") ? "FSH " : "";
+            prl = row1[pApmDB.pApm.prl].ToString().Equals("1") ? "PRL " : "";
+
+            appn = row1[pApmDB.pApm.patient_appointment_time].ToString() + " " + hormo + " " + tvs + " " + opu + " " + beta + " " 
+                + et + " " + fet + " " + sperm + " " 
+                + spermFreezing + " " + spermopu + " " + pesa + " " + sperm + " "
+                + e2 + " " + lh + " " + fsh + " " + prl + " "
+                + other;
             return appn;
         }
         public String genAppointmentRemarkPttDonor(DataRow row1)
         {
-            String e2 = "", lh = "", prl = "", fsh = "", appn = "", opu = "", tvs="", et = "", fet = "", sperm="";
+            String e2 = "", lh = "", prl = "", fsh = "", appn = "", opu = "", tvs="", et = "", fet = "", sperm="", spermFreezing = "", spermopu = "", pesa = "";
             tvs = row1[pApmDB.pApm.tvs].ToString().Equals("1") ? "TVS Day "+ row1[pApmDB.pApm.tvs_day].ToString()+" [Time "+ row1[pApmDB.pApm.tvs_time].ToString() : "]";
             tvs = row1[pApmDB.pApm.tvs_day].ToString();
             e2 = row1[pApmDB.pApm.e2].ToString().Equals("1") ? "E2 " : "";
@@ -241,8 +255,21 @@ namespace clinic_ivf.objdb
             prl = row1[pApmDB.pApm.prl].ToString().Equals("1") ? "PRL " : "";
             fsh = row1[pApmDB.pApm.fsh].ToString().Equals("1") ? "FSH " : "";
             sperm = row1[pApmDB.pApm.sperm_collect].ToString().Equals("1") ? "Sperm Collect " : "";
+
+            spermFreezing = row1[pApmDB.pApm.sperm_freezing].ToString().Equals("1") ? "Sperm Freezing " : "";
+            spermopu = row1[pApmDB.pApm.sperm_opu].ToString().Equals("1") ? "Sperm OPU " : "";
+            pesa = row1[pApmDB.pApm.pesa].ToString().Equals("1") ? "PESA/TESA " : "";
+
+            //e2 = row1[pApmDB.pApm.e2].ToString().Equals("1") ? "E2 " : "";
+            //lh = row1[pApmDB.pApm.lh].ToString().Equals("1") ? "LH " : "";
+            //fsh = row1[pApmDB.pApm.fsh].ToString().Equals("1") ? "FSH " : "";
+            //prl = row1[pApmDB.pApm.prl].ToString().Equals("1") ? "PRL " : "";
+
             opu = row1[pApmDB.pApm.opu].ToString().Equals("1") ? "OPU [Time " + row1[pApmDB.pApm.opu_time].ToString()+"] " + row1[pApmDB.pApm.doctor_anes].ToString() : "";
-            appn = row1[pApmDB.pApm.patient_appointment_time].ToString() + " " + e2 + " " + opu + " " + lh + " " + prl + " " + fsh + " " + sperm;
+            appn = row1[pApmDB.pApm.patient_appointment_time].ToString() + " " + e2 + " " + opu + " " + lh + " " + prl + " " + fsh + " " + sperm + " "
+                + spermFreezing + " " + spermopu + " " + pesa + " " + sperm + " "
+                //+ e2 + " " + lh + " " + fsh + " " + prl + " "
+                ;
             return appn;
         }
         public String datetoDB(String dt)

@@ -171,6 +171,12 @@ namespace clinic_ivf.gui
             txtDob.Value = ic.datetoShow(ptt.patient_birthday) + " [" + ptt.AgeStringShort() + "]";
             txtSex.Value = ptt.f_sex_id.Equals("1") ? "ชาย" : "หญิง";
 
+            ic.setC1Combo(cboEmbryologistAppv, lbRes.staff_id_approve);
+            ic.setC1Combo(cboEmbryologistReport, lbRes.staff_id_result);
+
+            txtApprovDate.Value = lbRes.date_time_approve;
+            txtReportDate.Value = lbRes.date_time_result;
+
             setGrfProc();
         }
         private void initGrfProc()

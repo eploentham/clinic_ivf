@@ -70,6 +70,8 @@
             this.txtIDOld = new C1.Win.C1Input.C1TextBox();
             this.tC1 = new C1.Win.C1Command.C1DockingTab();
             this.tabPtt = new C1.Win.C1Command.C1DockingTabPage();
+            this.chkSpermOPU = new C1.Win.C1Input.C1CheckBox();
+            this.chkPesa = new C1.Win.C1Input.C1CheckBox();
             this.chkSpermFreezing = new C1.Win.C1Input.C1CheckBox();
             this.chkSpermCollect = new C1.Win.C1Input.C1CheckBox();
             this.txtOther = new C1.Win.C1Input.C1TextBox();
@@ -121,8 +123,6 @@
             this.tC = new C1.Win.C1Command.C1DockingTab();
             this.tabVisit = new C1.Win.C1Command.C1DockingTabPage();
             this.tabDay = new C1.Win.C1Command.C1DockingTabPage();
-            this.chkPesa = new C1.Win.C1Input.C1CheckBox();
-            this.chkSpermOPU = new C1.Win.C1Input.C1CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.theme1)).BeginInit();
             this.sB.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtRemarkpApm)).BeginInit();
@@ -157,6 +157,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.tC1)).BeginInit();
             this.tC1.SuspendLayout();
             this.tabPtt.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.chkSpermOPU)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chkPesa)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkSpermFreezing)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkSpermCollect)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtOther)).BeginInit();
@@ -197,8 +199,6 @@
             this.tC.SuspendLayout();
             this.tabVisit.SuspendLayout();
             this.tabDay.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.chkPesa)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.chkSpermOPU)).BeginInit();
             this.SuspendLayout();
             // 
             // theme1
@@ -883,6 +883,42 @@
             this.tabPtt.TabIndex = 0;
             this.tabPtt.Text = "Appointment";
             // 
+            // chkSpermOPU
+            // 
+            this.chkSpermOPU.BackColor = System.Drawing.Color.Transparent;
+            this.chkSpermOPU.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
+            this.chkSpermOPU.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.chkSpermOPU.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.chkSpermOPU.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.chkSpermOPU.Location = new System.Drawing.Point(485, 83);
+            this.chkSpermOPU.Name = "chkSpermOPU";
+            this.chkSpermOPU.Padding = new System.Windows.Forms.Padding(4, 1, 1, 1);
+            this.chkSpermOPU.Size = new System.Drawing.Size(92, 24);
+            this.chkSpermOPU.TabIndex = 710;
+            this.chkSpermOPU.Text = "Sperm OPU";
+            this.theme1.SetTheme(this.chkSpermOPU, "(default)");
+            this.chkSpermOPU.UseVisualStyleBackColor = true;
+            this.chkSpermOPU.Value = null;
+            this.chkSpermOPU.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            // 
+            // chkPesa
+            // 
+            this.chkPesa.BackColor = System.Drawing.Color.Transparent;
+            this.chkPesa.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
+            this.chkPesa.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.chkPesa.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.chkPesa.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.chkPesa.Location = new System.Drawing.Point(581, 84);
+            this.chkPesa.Name = "chkPesa";
+            this.chkPesa.Padding = new System.Windows.Forms.Padding(4, 1, 1, 1);
+            this.chkPesa.Size = new System.Drawing.Size(94, 24);
+            this.chkPesa.TabIndex = 706;
+            this.chkPesa.Text = "PESA/TESA";
+            this.theme1.SetTheme(this.chkPesa, "(default)");
+            this.chkPesa.UseVisualStyleBackColor = true;
+            this.chkPesa.Value = null;
+            this.chkPesa.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            // 
             // chkSpermFreezing
             // 
             this.chkSpermFreezing.BackColor = System.Drawing.Color.Transparent;
@@ -917,6 +953,7 @@
             this.theme1.SetTheme(this.chkSpermCollect, "(default)");
             this.chkSpermCollect.UseVisualStyleBackColor = true;
             this.chkSpermCollect.Value = null;
+            this.chkSpermCollect.Visible = false;
             this.chkSpermCollect.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
             // 
             // txtOther
@@ -1733,42 +1770,6 @@
             this.tabDay.TabIndex = 1;
             this.tabDay.Text = "Day";
             // 
-            // chkPesa
-            // 
-            this.chkPesa.BackColor = System.Drawing.Color.Transparent;
-            this.chkPesa.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
-            this.chkPesa.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.chkPesa.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.chkPesa.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.chkPesa.Location = new System.Drawing.Point(581, 84);
-            this.chkPesa.Name = "chkPesa";
-            this.chkPesa.Padding = new System.Windows.Forms.Padding(4, 1, 1, 1);
-            this.chkPesa.Size = new System.Drawing.Size(94, 24);
-            this.chkPesa.TabIndex = 706;
-            this.chkPesa.Text = "PESA/TESA";
-            this.theme1.SetTheme(this.chkPesa, "(default)");
-            this.chkPesa.UseVisualStyleBackColor = true;
-            this.chkPesa.Value = null;
-            this.chkPesa.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
-            // 
-            // chkSpermOPU
-            // 
-            this.chkSpermOPU.BackColor = System.Drawing.Color.Transparent;
-            this.chkSpermOPU.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
-            this.chkSpermOPU.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.chkSpermOPU.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.chkSpermOPU.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.chkSpermOPU.Location = new System.Drawing.Point(485, 83);
-            this.chkSpermOPU.Name = "chkSpermOPU";
-            this.chkSpermOPU.Padding = new System.Windows.Forms.Padding(4, 1, 1, 1);
-            this.chkSpermOPU.Size = new System.Drawing.Size(92, 24);
-            this.chkSpermOPU.TabIndex = 710;
-            this.chkSpermOPU.Text = "Sperm OPU";
-            this.theme1.SetTheme(this.chkSpermOPU, "(default)");
-            this.chkSpermOPU.UseVisualStyleBackColor = true;
-            this.chkSpermOPU.Value = null;
-            this.chkSpermOPU.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
-            // 
             // FrmAppointmentAdd
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1818,6 +1819,8 @@
             this.tC1.ResumeLayout(false);
             this.tabPtt.ResumeLayout(false);
             this.tabPtt.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.chkSpermOPU)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chkPesa)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkSpermFreezing)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkSpermCollect)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtOther)).EndInit();
@@ -1859,8 +1862,6 @@
             this.tC.ResumeLayout(false);
             this.tabVisit.ResumeLayout(false);
             this.tabDay.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.chkPesa)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.chkSpermOPU)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

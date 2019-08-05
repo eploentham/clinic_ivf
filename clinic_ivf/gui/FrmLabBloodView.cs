@@ -67,11 +67,19 @@ namespace clinic_ivf.gui
             timer.Tick += Timer_Tick;
             timer.Enabled = true;
             tcLabView.TabClick += TcLabView_TabClick;
+            btnSearchFi.Click += BtnSearchFi_Click;
 
             initGrfReq();
             setGrfReq();
             initGrfProc();
             setGrfProc();
+            initGrfFinish();
+        }
+
+        private void BtnSearchFi_Click(object sender, EventArgs e)
+        {
+            //throw new NotImplementedException();
+            setGrfFinish();
         }
 
         private void TcLabView_TabClick(object sender, EventArgs e)
@@ -82,7 +90,128 @@ namespace clinic_ivf.gui
                 setGrfProc();
             }
         }
+        private void initGrfFinish()
+        {
+            grfFinish = new C1FlexGrid();
+            grfFinish.Font = fEdit;
+            grfFinish.Dock = System.Windows.Forms.DockStyle.Fill;
+            grfFinish.Location = new System.Drawing.Point(0, 0);
 
+            //FilterRow fr = new FilterRow(grfExpn);
+
+            //grfReq.AfterRowColChange += GrfReq_AfterRowColChange;
+            grfFinish.DoubleClick += GrfFinish_DoubleClick;
+            //grfExpnC.CellChanged += new C1.Win.C1FlexGrid.RowColEventHandler(this.grfDept_CellChanged);
+            //ContextMenu menuGw = new ContextMenu();
+            //menuGw.MenuItems.Add("รับ request พิมพ์ Sticker", new EventHandler(ContextMenu_edit));
+            //menuGw.MenuItems.Add("รับทราบการเปลี่ยนแปลงเวลา", new EventHandler(ContextMenu_Gw_time_modi));
+            //menuGw.MenuItems.Add("&ยกเลิก", new EventHandler(ContextMenu_Gw_Cancel));
+            //grfFinish.ContextMenu = menuGw;
+            gbFinish.Controls.Add(grfFinish);
+
+            theme1.SetTheme(grfFinish, "Office2010Blue");
+        }
+
+        private void GrfFinish_DoubleClick(object sender, EventArgs e)
+        {
+            //throw new NotImplementedException();
+            if (grfFinish.Row <= 0) return;
+            if (grfFinish.Col <= 0) return;
+            String id = "";
+            id = grfFinish[grfFinish.Row, colRsId] != null ? grfFinish[grfFinish.Row, colRsId].ToString() : "";
+            FrmLabBloodAdd frm = new FrmLabBloodAdd(ic, id);
+            frm.ShowDialog(this);
+        }
+        private void setGrfFinish()
+        {
+            grfFinish.DataSource = null;
+            grfFinish.Clear();
+            DataTable dt = new DataTable();
+            String date1 = "", date2 = "";
+            date1 = ic.datetoDB(txtFiDateStart.Text);
+            date2 = ic.datetoDB(txtFiDateEnd.Text);
+            //dt = ic.ivfDB.lbReqDB.selectByStatusReqAccept();
+            dt = ic.ivfDB.lbresDB.selectLabBloodByFinish(date1, date2);
+            //grfExpn.Rows.Count = dt.Rows.Count + 1;
+            grfFinish.Rows.Count = 1;
+            grfFinish.Cols.Count = 13;
+            //C1TextBox txt = new C1TextBox();
+            //C1ComboBox cboproce = new C1ComboBox();
+            //ic.ivfDB.itmDB.setCboItem(cboproce);
+            //grfReq.Cols[colRqReqNum].Editor = txt;
+            //grfReq.Cols[colRqHn].Editor = txt;
+            //grfReq.Cols[colRqVn].Editor = txt;
+            //grfReq.Cols[colRqName].Editor = txt;
+
+            grfFinish.Cols[colRsLabName].Width = 200;
+            grfFinish.Cols[colRsMethod].Width = 100;
+            grfFinish.Cols[colRsResult].Width = 100;
+            grfFinish.Cols[colRsInterpret].Width = 100;
+            grfFinish.Cols[colRsUnit].Width = 80;
+            grfFinish.Cols[colRsNormal].Width = 100;
+            grfFinish.Cols[colRsRemark].Width = 200;
+            grfFinish.Cols[colRsHn].Width = 100;
+            grfFinish.Cols[colRsPttName].Width = 200;
+            grfFinish.ShowCursor = true;
+            //grdFlex.Cols[colID].Caption = "no";
+            //grfDept.Cols[colCode].Caption = "รหัส";
+
+            grfFinish.Cols[colRsLabName].Caption = "Name";
+            grfFinish.Cols[colRsMethod].Caption = "Method";
+            grfFinish.Cols[colRsResult].Caption = "Result";
+            grfFinish.Cols[colRsInterpret].Caption = "Interpret";
+            grfFinish.Cols[colRsUnit].Caption = "Unit";
+            grfFinish.Cols[colRsNormal].Caption = "Normal";
+            grfFinish.Cols[colRsRemark].Caption = "Remark";
+            grfFinish.Cols[colRsHn].Caption = "HN";
+            grfFinish.Cols[colRsPttName].Caption = "Patient Name";
+            Color color = ColorTranslator.FromHtml(ic.iniC.grfRowColor);
+            //CellRange rg1 = grfBank.GetCellRange(1, colE, grfBank.Rows.Count, colE);
+            //rg1.Style = grfBank.Styles["date"];
+            //grfCu.Cols[colID].Visible = false;
+            int i = 1;
+            String chk = "";
+            foreach (DataRow row in dt.Rows)
+            {
+                Row row1 = grfFinish.Rows.Add();
+                row1[colRsId] = row[ic.ivfDB.lbresDB.lbRes.result_id].ToString();
+                row1[colRsLabName] = row[ic.ivfDB.oLabiDB.labI.LName].ToString();
+
+                row1[colRsMethod] = row[ic.ivfDB.lbresDB.lbRes.method].ToString();
+                row1[colRsResult] = row[ic.ivfDB.lbresDB.lbRes.result].ToString();
+                row1[colRsInterpret] = row[ic.ivfDB.lbresDB.lbRes.interpret].ToString();
+
+                row1[colRsUnit] = row[ic.ivfDB.lbresDB.lbRes.unit].ToString();
+                row1[colRsNormal] = row[ic.ivfDB.lbresDB.lbRes.normal_value].ToString();
+                row1[colRsRemark] = row[ic.ivfDB.lbresDB.lbRes.remark].ToString();
+                row1[colRsLabId] = row[ic.ivfDB.lbresDB.lbRes.lab_id].ToString();
+                row1[colRsReqId] = row[ic.ivfDB.lbresDB.lbRes.req_id].ToString();
+                row1[colRsHn] = row["patient_hn"].ToString();
+                row1[colRsPttName] = row["pname"].ToString();
+                //row1[colOPUTimeModi] = row[ic.ivfDB.lFormaDB.lformA.opu_time_modi].ToString();
+                //row1[colRqLabName] = row["SName"].ToString();
+                //row1[colRqHnMale] = row["hn_male"].ToString();
+                //row1[colRqNameMale] = row["name_male"].ToString();
+                //row1[colRqHnDonor] = row["hn_donor"].ToString();
+                //row1[colRqNameDonor] = row["name_donor"].ToString();
+
+                i++;
+            }
+            grfFinish.Cols[colRsId].Visible = false;
+            grfFinish.Cols[colRsLabId].Visible = false;
+            grfFinish.Cols[colRsReqId].Visible = false;
+
+            grfFinish.Cols[colRsLabName].AllowEditing = false;
+            grfFinish.Cols[colRsMethod].AllowEditing = false;
+            grfFinish.Cols[colRsResult].AllowEditing = false;
+            grfFinish.Cols[colRsInterpret].AllowEditing = false;
+            grfFinish.Cols[colRsUnit].AllowEditing = false;
+            grfFinish.Cols[colRsNormal].AllowEditing = false;
+            grfFinish.Cols[colRsRemark].AllowEditing = false;
+            grfFinish.Cols[colRsHn].AllowEditing = false;
+            grfFinish.Cols[colRsPttName].AllowEditing = false;
+            //grfReq.Cols[coldt].Visible = false;
+        }
         private void initGrfReq()
         {
             grfReq = new C1FlexGrid();

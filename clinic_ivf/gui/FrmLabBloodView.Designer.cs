@@ -43,7 +43,7 @@
             this.txtFiDateEnd = new C1.Win.C1Input.C1DateEdit();
             this.txtFiDateStart = new C1.Win.C1Input.C1DateEdit();
             this.c1TextBox1 = new C1.Win.C1Input.C1TextBox();
-            this.btnSearchF = new C1.Win.C1Input.C1Button();
+            this.btnSearchFi = new C1.Win.C1Input.C1Button();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.c1Button3 = new C1.Win.C1Input.C1Button();
@@ -76,7 +76,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtFiDateEnd)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtFiDateStart)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.c1TextBox1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.btnSearchF)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnSearchFi)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.c1Button3)).BeginInit();
             this.tabSearch.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -210,7 +210,7 @@
             this.groupBox2.Controls.Add(this.txtFiDateEnd);
             this.groupBox2.Controls.Add(this.txtFiDateStart);
             this.groupBox2.Controls.Add(this.c1TextBox1);
-            this.groupBox2.Controls.Add(this.btnSearchF);
+            this.groupBox2.Controls.Add(this.btnSearchFi);
             this.groupBox2.Controls.Add(this.label2);
             this.groupBox2.Controls.Add(this.label3);
             this.groupBox2.Controls.Add(this.c1Button3);
@@ -328,16 +328,16 @@
             this.c1TextBox1.Visible = false;
             this.c1TextBox1.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
             // 
-            // btnSearchF
+            // btnSearchFi
             // 
-            this.btnSearchF.Location = new System.Drawing.Point(471, 13);
-            this.btnSearchF.Name = "btnSearchF";
-            this.btnSearchF.Size = new System.Drawing.Size(28, 23);
-            this.btnSearchF.TabIndex = 517;
-            this.btnSearchF.Text = "...";
-            this.theme1.SetTheme(this.btnSearchF, "(default)");
-            this.btnSearchF.UseVisualStyleBackColor = true;
-            this.btnSearchF.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            this.btnSearchFi.Location = new System.Drawing.Point(471, 13);
+            this.btnSearchFi.Name = "btnSearchFi";
+            this.btnSearchFi.Size = new System.Drawing.Size(28, 23);
+            this.btnSearchFi.TabIndex = 517;
+            this.btnSearchFi.Text = "...";
+            this.theme1.SetTheme(this.btnSearchFi, "(default)");
+            this.btnSearchFi.UseVisualStyleBackColor = true;
+            this.btnSearchFi.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
             // 
             // label2
             // 
@@ -624,7 +624,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtFiDateEnd)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtFiDateStart)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.c1TextBox1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.btnSearchF)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnSearchFi)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.c1Button3)).EndInit();
             this.tabSearch.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
@@ -657,7 +657,7 @@
         private C1.Win.C1Input.C1DateEdit txtFiDateEnd;
         private C1.Win.C1Input.C1DateEdit txtFiDateStart;
         private C1.Win.C1Input.C1TextBox c1TextBox1;
-        private C1.Win.C1Input.C1Button btnSearchF;
+        private C1.Win.C1Input.C1Button btnSearchFi;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         private C1.Win.C1Input.C1Button c1Button3;

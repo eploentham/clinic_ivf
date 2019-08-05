@@ -179,7 +179,7 @@ namespace clinic_ivf.objdb
                 "Left Join LabItem on lbRes." + lbRes.lab_id + " = LabItem.LID " +
                 //"Left Join lab_b_unit on LabItem.lab_unit_id = lab_b_unit.lab_unit_id " +
                 //"Left Join lab_b_method on LabItem.method_id = lab_b_method.method_id " +
-                "Where lbRes." + lbRes.status_result + " ='1'  and lbRes.visit_id = '"+vsid+"'" +
+                "Where lbRes." + lbRes.status_result + " in ('1','2')  and lbRes.visit_id = '"+vsid+"'" +
                 "Order By lbRes." + lbRes.req_id;
             dt = conn.selectData(conn.conn, sql);
             return dt;
@@ -187,13 +187,28 @@ namespace clinic_ivf.objdb
         public DataTable selectLabBloodByVsId(String vsid)
         {
             DataTable dt = new DataTable();
-            String sql = "select lbRes.*, LabItem.LName as lab_name,LabItem.lab_unit_id,LabItem.method_id,lab_b_unit.lab_unit_name as unit,lab_b_method.method_name as method " +
+            String sql = "select lbRes.result, LabItem.LName as lab_name,LabItem.lab_unit_id,LabItem.method_id,lab_b_unit.lab_unit_name as unit,lab_b_method.method_name as method " +
                 " " +
                 "From " + lbRes.table + " lbRes " +
                 "Left Join LabItem on lbRes." + lbRes.lab_id + " = LabItem.LID " +
                 "Left Join lab_b_unit on LabItem.lab_unit_id = lab_b_unit.lab_unit_id " +
                 "Left Join lab_b_method on LabItem.method_id = lab_b_method.method_id " +
                 "Where lbRes." + lbRes.status_result + " ='2'  and lbRes.visit_id = '" + vsid + "'" +
+                "Order By lbRes." + lbRes.req_id;
+            dt = conn.selectData(conn.conn, sql);
+            return dt;
+        }
+        public DataTable selectLabBloodByFinish(String datestart, String dateend)
+        {
+            DataTable dt = new DataTable();
+            String sql = "select lbRes.*, LabItem.LName, ptt.patient_hn" +
+                ", CONCAT(IFNULL(fpp.patient_prefix_description,''),' ', ptt.patient_firstname_e ,' ',ptt.patient_lastname_e)  as pname " +
+                "From " + lbRes.table + " lbRes " +
+                "Left Join LabItem on lbRes." + lbRes.lab_id + " = LabItem.LID " +
+                "Left Join t_visit vs on lbRes.visit_id = vs.t_visit_id " +
+                "Left Join t_patient ptt on vs.t_patient_id = ptt.t_patient_id " +
+                "Left join f_patient_prefix fpp on fpp.f_patient_prefix_id = ptt.f_patient_prefix_id " +
+                "Where lbRes." + lbRes.status_result + " ='2' and LabItem.LGID='1' and vs.visit_begin_visit_time >= '" + datestart+ " 00:00:00' and vs.visit_begin_visit_time <= '" + dateend+" 23:59:59' " +
                 "Order By lbRes." + lbRes.req_id;
             dt = conn.selectData(conn.conn, sql);
             return dt;

@@ -36,6 +36,8 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.c1SplitterPanel2 = new C1.Win.C1SplitContainer.C1SplitterPanel();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.c1ComboBox1 = new C1.Win.C1Input.C1ComboBox();
+            this.label9 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.txtQty = new C1.Win.C1Input.C1TextBox();
@@ -61,8 +63,14 @@
             this.btnEdit = new C1.Win.C1Input.C1Button();
             this.chkVoid = new C1.Win.C1Input.C1CheckBox();
             this.btnVoid = new C1.Win.C1Input.C1Button();
-            this.label9 = new System.Windows.Forms.Label();
-            this.c1ComboBox1 = new C1.Win.C1Input.C1ComboBox();
+            this.label10 = new System.Windows.Forms.Label();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.chkDataTypeText = new System.Windows.Forms.RadioButton();
+            this.chkDataTypeInt = new System.Windows.Forms.RadioButton();
+            this.chkDataTypeDec = new System.Windows.Forms.RadioButton();
+            this.c1NumericEdit1 = new C1.Win.C1Input.C1NumericEdit();
+            this.chkDataTypeCbo = new System.Windows.Forms.RadioButton();
+            this.c1ComboBox2 = new C1.Win.C1Input.C1ComboBox();
             this.sB.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.theme1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.sCMain)).BeginInit();
@@ -70,6 +78,7 @@
             this.c1SplitterPanel1.SuspendLayout();
             this.c1SplitterPanel2.SuspendLayout();
             this.panel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.c1ComboBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtQty)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtNormalValue)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkOrderGroup)).BeginInit();
@@ -87,7 +96,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.btnEdit)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkVoid)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnVoid)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.c1ComboBox1)).BeginInit();
+            this.panel3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.c1NumericEdit1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.c1ComboBox2)).BeginInit();
             this.SuspendLayout();
             // 
             // sB
@@ -168,6 +179,8 @@
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.panel2.Controls.Add(this.panel3);
+            this.panel2.Controls.Add(this.label10);
             this.panel2.Controls.Add(this.c1ComboBox1);
             this.panel2.Controls.Add(this.label9);
             this.panel2.Controls.Add(this.label8);
@@ -202,6 +215,41 @@
             this.panel2.Size = new System.Drawing.Size(545, 668);
             this.panel2.TabIndex = 0;
             this.theme1.SetTheme(this.panel2, "(default)");
+            // 
+            // c1ComboBox1
+            // 
+            this.c1ComboBox1.AllowSpinLoop = false;
+            this.c1ComboBox1.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
+            this.c1ComboBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.c1ComboBox1.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
+            this.c1ComboBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.c1ComboBox1.GapHeight = 0;
+            this.c1ComboBox1.ImagePadding = new System.Windows.Forms.Padding(0);
+            this.c1ComboBox1.ItemsDisplayMember = "";
+            this.c1ComboBox1.ItemsValueMember = "";
+            this.c1ComboBox1.Location = new System.Drawing.Point(125, 240);
+            this.c1ComboBox1.Name = "c1ComboBox1";
+            this.c1ComboBox1.Size = new System.Drawing.Size(140, 20);
+            this.c1ComboBox1.Style.DropDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.c1ComboBox1.Style.DropDownBorderColor = System.Drawing.Color.Gainsboro;
+            this.c1ComboBox1.Style.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.c1ComboBox1.TabIndex = 587;
+            this.c1ComboBox1.Tag = null;
+            this.theme1.SetTheme(this.c1ComboBox1, "(default)");
+            this.c1ComboBox1.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.label9.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.label9.Location = new System.Drawing.Point(12, 242);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(66, 16);
+            this.label9.TabIndex = 586;
+            this.label9.Text = "Barcode :";
+            this.theme1.SetTheme(this.label9, "(default)");
             // 
             // label8
             // 
@@ -275,7 +323,7 @@
             this.chkOrderGroup.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.chkOrderGroup.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.chkOrderGroup.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.chkOrderGroup.Location = new System.Drawing.Point(31, 395);
+            this.chkOrderGroup.Location = new System.Drawing.Point(31, 557);
             this.chkOrderGroup.Name = "chkOrderGroup";
             this.chkOrderGroup.Padding = new System.Windows.Forms.Padding(4, 1, 1, 1);
             this.chkOrderGroup.Size = new System.Drawing.Size(203, 24);
@@ -293,10 +341,10 @@
             this.chkOutLab.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.chkOutLab.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.chkOutLab.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.chkOutLab.Location = new System.Drawing.Point(125, 305);
+            this.chkOutLab.Location = new System.Drawing.Point(113, 478);
             this.chkOutLab.Name = "chkOutLab";
             this.chkOutLab.Padding = new System.Windows.Forms.Padding(4, 1, 1, 1);
-            this.chkOutLab.Size = new System.Drawing.Size(203, 24);
+            this.chkOutLab.Size = new System.Drawing.Size(131, 24);
             this.chkOutLab.TabIndex = 579;
             this.chkOutLab.Text = "เป็น OUT LAB";
             this.theme1.SetTheme(this.chkOutLab, "(default)");
@@ -381,7 +429,7 @@
             this.chkShowQty.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.chkShowQty.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.chkShowQty.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.chkShowQty.Location = new System.Drawing.Point(125, 275);
+            this.chkShowQty.Location = new System.Drawing.Point(113, 448);
             this.chkShowQty.Name = "chkShowQty";
             this.chkShowQty.Padding = new System.Windows.Forms.Padding(4, 1, 1, 1);
             this.chkShowQty.Size = new System.Drawing.Size(203, 24);
@@ -498,7 +546,7 @@
             this.txtPasswordVoid.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtPasswordVoid.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
             this.txtPasswordVoid.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.txtPasswordVoid.Location = new System.Drawing.Point(250, 364);
+            this.txtPasswordVoid.Location = new System.Drawing.Point(250, 526);
             this.txtPasswordVoid.Name = "txtPasswordVoid";
             this.txtPasswordVoid.PasswordChar = '*';
             this.txtPasswordVoid.Size = new System.Drawing.Size(78, 20);
@@ -512,7 +560,7 @@
             // 
             this.btnSave.Image = global::clinic_ivf.Properties.Resources.accept_database24;
             this.btnSave.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnSave.Location = new System.Drawing.Point(446, 351);
+            this.btnSave.Location = new System.Drawing.Point(446, 513);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(83, 39);
             this.btnSave.TabIndex = 564;
@@ -557,7 +605,7 @@
             this.chkVoid.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.chkVoid.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.chkVoid.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.chkVoid.Location = new System.Drawing.Point(250, 335);
+            this.chkVoid.Location = new System.Drawing.Point(250, 497);
             this.chkVoid.Name = "chkVoid";
             this.chkVoid.Padding = new System.Windows.Forms.Padding(4, 1, 1, 1);
             this.chkVoid.Size = new System.Drawing.Size(155, 24);
@@ -572,7 +620,7 @@
             // 
             this.btnVoid.Image = global::clinic_ivf.Properties.Resources.trash24;
             this.btnVoid.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnVoid.Location = new System.Drawing.Point(446, 307);
+            this.btnVoid.Location = new System.Drawing.Point(446, 469);
             this.btnVoid.Name = "btnVoid";
             this.btnVoid.Size = new System.Drawing.Size(83, 39);
             this.btnVoid.TabIndex = 566;
@@ -582,40 +630,143 @@
             this.btnVoid.UseVisualStyleBackColor = true;
             this.btnVoid.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
             // 
-            // label9
+            // label10
             // 
-            this.label9.AutoSize = true;
-            this.label9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.label9.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.label9.Location = new System.Drawing.Point(12, 242);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(66, 16);
-            this.label9.TabIndex = 586;
-            this.label9.Text = "Barcode :";
-            this.theme1.SetTheme(this.label9, "(default)");
+            this.label10.AutoSize = true;
+            this.label10.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.label10.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.label10.Location = new System.Drawing.Point(12, 286);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(78, 16);
+            this.label10.TabIndex = 588;
+            this.label10.Text = "Data Type :";
+            this.theme1.SetTheme(this.label10, "(default)");
             // 
-            // c1ComboBox1
+            // panel3
             // 
-            this.c1ComboBox1.AllowSpinLoop = false;
-            this.c1ComboBox1.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
-            this.c1ComboBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.c1ComboBox1.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
-            this.c1ComboBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.c1ComboBox1.GapHeight = 0;
-            this.c1ComboBox1.ImagePadding = new System.Windows.Forms.Padding(0);
-            this.c1ComboBox1.ItemsDisplayMember = "";
-            this.c1ComboBox1.ItemsValueMember = "";
-            this.c1ComboBox1.Location = new System.Drawing.Point(125, 240);
-            this.c1ComboBox1.Name = "c1ComboBox1";
-            this.c1ComboBox1.Size = new System.Drawing.Size(140, 20);
-            this.c1ComboBox1.Style.DropDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.c1ComboBox1.Style.DropDownBorderColor = System.Drawing.Color.Gainsboro;
-            this.c1ComboBox1.Style.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.c1ComboBox1.TabIndex = 587;
-            this.c1ComboBox1.Tag = null;
-            this.theme1.SetTheme(this.c1ComboBox1, "(default)");
-            this.c1ComboBox1.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            this.panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.panel3.Controls.Add(this.c1ComboBox2);
+            this.panel3.Controls.Add(this.chkDataTypeCbo);
+            this.panel3.Controls.Add(this.c1NumericEdit1);
+            this.panel3.Controls.Add(this.chkDataTypeDec);
+            this.panel3.Controls.Add(this.chkDataTypeInt);
+            this.panel3.Controls.Add(this.chkDataTypeText);
+            this.panel3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.panel3.Location = new System.Drawing.Point(125, 266);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(252, 150);
+            this.panel3.TabIndex = 589;
+            this.theme1.SetTheme(this.panel3, "(default)");
+            // 
+            // chkDataTypeText
+            // 
+            this.chkDataTypeText.AutoSize = true;
+            this.chkDataTypeText.BackColor = System.Drawing.Color.Transparent;
+            this.chkDataTypeText.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
+            this.chkDataTypeText.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(189)))), ((int)(((byte)(182)))));
+            this.chkDataTypeText.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(189)))), ((int)(((byte)(182)))));
+            this.chkDataTypeText.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.chkDataTypeText.Location = new System.Drawing.Point(3, 3);
+            this.chkDataTypeText.Name = "chkDataTypeText";
+            this.chkDataTypeText.Size = new System.Drawing.Size(46, 17);
+            this.chkDataTypeText.TabIndex = 0;
+            this.chkDataTypeText.TabStop = true;
+            this.chkDataTypeText.Text = "Text";
+            this.theme1.SetTheme(this.chkDataTypeText, "(default)");
+            this.chkDataTypeText.UseVisualStyleBackColor = false;
+            // 
+            // chkDataTypeInt
+            // 
+            this.chkDataTypeInt.AutoSize = true;
+            this.chkDataTypeInt.BackColor = System.Drawing.Color.Transparent;
+            this.chkDataTypeInt.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
+            this.chkDataTypeInt.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(189)))), ((int)(((byte)(182)))));
+            this.chkDataTypeInt.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(189)))), ((int)(((byte)(182)))));
+            this.chkDataTypeInt.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.chkDataTypeInt.Location = new System.Drawing.Point(3, 37);
+            this.chkDataTypeInt.Name = "chkDataTypeInt";
+            this.chkDataTypeInt.Size = new System.Drawing.Size(77, 17);
+            this.chkDataTypeInt.TabIndex = 1;
+            this.chkDataTypeInt.TabStop = true;
+            this.chkDataTypeInt.Text = "จำนวนเต็ม";
+            this.theme1.SetTheme(this.chkDataTypeInt, "(default)");
+            this.chkDataTypeInt.UseVisualStyleBackColor = false;
+            // 
+            // chkDataTypeDec
+            // 
+            this.chkDataTypeDec.AutoSize = true;
+            this.chkDataTypeDec.BackColor = System.Drawing.Color.Transparent;
+            this.chkDataTypeDec.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
+            this.chkDataTypeDec.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(189)))), ((int)(((byte)(182)))));
+            this.chkDataTypeDec.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(189)))), ((int)(((byte)(182)))));
+            this.chkDataTypeDec.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.chkDataTypeDec.Location = new System.Drawing.Point(3, 69);
+            this.chkDataTypeDec.Name = "chkDataTypeDec";
+            this.chkDataTypeDec.Size = new System.Drawing.Size(62, 17);
+            this.chkDataTypeDec.TabIndex = 2;
+            this.chkDataTypeDec.TabStop = true;
+            this.chkDataTypeDec.Text = "ทศนิยม";
+            this.theme1.SetTheme(this.chkDataTypeDec, "(default)");
+            this.chkDataTypeDec.UseVisualStyleBackColor = false;
+            // 
+            // c1NumericEdit1
+            // 
+            this.c1NumericEdit1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            // 
+            // 
+            // 
+            this.c1NumericEdit1.Calculator.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.c1NumericEdit1.Calculator.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            this.c1NumericEdit1.DataType = typeof(short);
+            this.c1NumericEdit1.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
+            this.c1NumericEdit1.ImagePadding = new System.Windows.Forms.Padding(0, 0, 0, 0);
+            this.c1NumericEdit1.Location = new System.Drawing.Point(90, 68);
+            this.c1NumericEdit1.Name = "c1NumericEdit1";
+            this.c1NumericEdit1.Size = new System.Drawing.Size(89, 18);
+            this.c1NumericEdit1.TabIndex = 590;
+            this.c1NumericEdit1.Tag = null;
+            this.theme1.SetTheme(this.c1NumericEdit1, "(default)");
+            this.c1NumericEdit1.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            // 
+            // chkDataTypeCbo
+            // 
+            this.chkDataTypeCbo.AutoSize = true;
+            this.chkDataTypeCbo.BackColor = System.Drawing.Color.Transparent;
+            this.chkDataTypeCbo.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
+            this.chkDataTypeCbo.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(189)))), ((int)(((byte)(182)))));
+            this.chkDataTypeCbo.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(189)))), ((int)(((byte)(182)))));
+            this.chkDataTypeCbo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.chkDataTypeCbo.Location = new System.Drawing.Point(3, 107);
+            this.chkDataTypeCbo.Name = "chkDataTypeCbo";
+            this.chkDataTypeCbo.Size = new System.Drawing.Size(62, 17);
+            this.chkDataTypeCbo.TabIndex = 591;
+            this.chkDataTypeCbo.TabStop = true;
+            this.chkDataTypeCbo.Text = "ตัวเลือก";
+            this.theme1.SetTheme(this.chkDataTypeCbo, "(default)");
+            this.chkDataTypeCbo.UseVisualStyleBackColor = false;
+            // 
+            // c1ComboBox2
+            // 
+            this.c1ComboBox2.AllowSpinLoop = false;
+            this.c1ComboBox2.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
+            this.c1ComboBox2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.c1ComboBox2.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
+            this.c1ComboBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.c1ComboBox2.GapHeight = 0;
+            this.c1ComboBox2.ImagePadding = new System.Windows.Forms.Padding(0);
+            this.c1ComboBox2.ItemsDisplayMember = "";
+            this.c1ComboBox2.ItemsValueMember = "";
+            this.c1ComboBox2.Location = new System.Drawing.Point(90, 104);
+            this.c1ComboBox2.Name = "c1ComboBox2";
+            this.c1ComboBox2.Size = new System.Drawing.Size(140, 20);
+            this.c1ComboBox2.Style.DropDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.c1ComboBox2.Style.DropDownBorderColor = System.Drawing.Color.Gainsboro;
+            this.c1ComboBox2.Style.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.c1ComboBox2.TabIndex = 592;
+            this.c1ComboBox2.Tag = null;
+            this.theme1.SetTheme(this.c1ComboBox2, "(default)");
+            this.c1ComboBox2.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
             // 
             // FrmLabItem
             // 
@@ -636,6 +787,7 @@
             this.c1SplitterPanel2.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.c1ComboBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtQty)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtNormalValue)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkOrderGroup)).EndInit();
@@ -653,7 +805,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.btnEdit)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkVoid)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnVoid)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.c1ComboBox1)).EndInit();
+            this.panel3.ResumeLayout(false);
+            this.panel3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.c1NumericEdit1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.c1ComboBox2)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -696,5 +851,13 @@
         private C1.Win.C1Input.C1TextBox txtQty;
         private C1.Win.C1Input.C1ComboBox c1ComboBox1;
         private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Panel panel3;
+        private C1.Win.C1Input.C1NumericEdit c1NumericEdit1;
+        private System.Windows.Forms.RadioButton chkDataTypeDec;
+        private System.Windows.Forms.RadioButton chkDataTypeInt;
+        private System.Windows.Forms.RadioButton chkDataTypeText;
+        private System.Windows.Forms.Label label10;
+        private C1.Win.C1Input.C1ComboBox c1ComboBox2;
+        private System.Windows.Forms.RadioButton chkDataTypeCbo;
     }
 }

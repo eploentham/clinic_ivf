@@ -253,7 +253,7 @@ namespace clinic_ivf.gui
             dt.Rows[0][ic.ivfDB.lFormaDB.lformA.fet_no_date_freezing] = date1.Replace("-", "/");
             if (dt.Rows[0]["status_wait_confirm_opu_date"].ToString().Equals("1"))
             {
-                txt1 = "รอ confirm วัน เวลา OPU จากทาง พยาบาล";
+                txt1 = "Remark : " + dt.Rows[0][ic.ivfDB.lFormaDB.lformA.fet_remark].ToString();
             }
             dt.Columns.Add("note1", typeof(String));
             dt.Rows[0]["note1"] = txt1;

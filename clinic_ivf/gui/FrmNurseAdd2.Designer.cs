@@ -3218,6 +3218,7 @@
             this.theme1.SetTheme(this.chkApmSpermCollect, "(default)");
             this.chkApmSpermCollect.UseVisualStyleBackColor = true;
             this.chkApmSpermCollect.Value = null;
+            this.chkApmSpermCollect.Visible = false;
             this.chkApmSpermCollect.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
             // 
             // txtApmOther
