@@ -26,7 +26,45 @@ namespace clinic_ivf.gui
             InitializeComponent();
             this.ic = ic;
         }
-        public void setPmhReport(DataTable dt, String hn, String name, String age, String occup, String couple_name, String couple_age, String couple_occup, String sex, String married)
+        public void setLabBloodReport(DataTable dt, String hn, String name, String age, String sex, String report_by, String approve_by, String report_date, String approve_date)
+        {
+            String chk = "", printerDefault = "", err = "";
+            ReportDocument rpt = new ReportDocument();
+            try
+            {
+                err = "00" + ic.iniC.statusAppDonor;
+
+                rpt.Load("lab_blood_form1.rpt");
+
+                err = "01";
+                rpt.SetDataSource(dt);
+                err = "02";
+                rpt.SetParameterValue("line1", ic.cop.comp_name_t);
+                rpt.SetParameterValue("line2", ic.cop.addr1);
+                rpt.SetParameterValue("line3", ic.cop.addr2);
+                rpt.SetParameterValue("hn", hn);
+                rpt.SetParameterValue("name", name);
+                rpt.SetParameterValue("dob", age);                
+                rpt.SetParameterValue("sex", sex);
+                rpt.SetParameterValue("report_by", report_by);
+                rpt.SetParameterValue("approve_by", approve_by);
+                rpt.SetParameterValue("report_date", report_date);
+                rpt.SetParameterValue("approve_date", approve_date);
+                //rpt.SetParameterValue("et", et);
+                //rpt.SetParameterValue("fet", fet);
+                err = "03";
+                //rpt.SetParameterValue("age1", "" + age);
+                this.crystalReportViewer1.ReportSource = rpt;
+                err = "04";
+                this.crystalReportViewer1.Refresh();
+            }
+            catch (Exception ex)
+            {
+                chk = ex.Message.ToString();
+                MessageBox.Show("error " + ex.Message, "err " + err);
+            }
+        }
+        public void setPmhReport(DataTable dt, String hn, String name, String dob, String occup, String couple_name, String couple_age, String couple_occup, String sex, String married)
         {
             String chk = "", printerDefault = "", err = "";
             ReportDocument rpt = new ReportDocument();
@@ -44,7 +82,7 @@ namespace clinic_ivf.gui
                 rpt.SetParameterValue("line3", " Patient Medical History");
                 rpt.SetParameterValue("hn", hn);
                 rpt.SetParameterValue("name", name);
-                rpt.SetParameterValue("age", age);
+                rpt.SetParameterValue("dob", dob);
                 rpt.SetParameterValue("occup", occup);
                 rpt.SetParameterValue("couple_name", couple_name);
                 rpt.SetParameterValue("couple_age", couple_age);

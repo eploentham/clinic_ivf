@@ -30,6 +30,8 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmLabBloodAdd));
             this.panel1 = new System.Windows.Forms.Panel();
+            this.c1Button3 = new C1.Win.C1Input.C1Button();
+            this.c1Button1 = new C1.Win.C1Input.C1Button();
             this.txtSex = new C1.Win.C1Input.C1TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.txtPttId = new C1.Win.C1Input.C1TextBox();
@@ -48,27 +50,30 @@
             this.cboEmbryologistReport = new C1.Win.C1Input.C1ComboBox();
             this.label61 = new System.Windows.Forms.Label();
             this.label60 = new System.Windows.Forms.Label();
-            this.txtDobFeMale = new C1.Win.C1Input.C1DateEdit();
             this.label5 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.txtName = new C1.Win.C1Input.C1TextBox();
+            this.txtPttNameE = new C1.Win.C1Input.C1TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.txtHn = new C1.Win.C1Input.C1TextBox();
             this.theme1 = new C1.Win.C1Themes.C1ThemeController();
-            this.sB = new System.Windows.Forms.StatusStrip();
-            this.sB1 = new System.Windows.Forms.ToolStripStatusLabel();
             this.tC = new C1.Win.C1Command.C1DockingTab();
             this.tabResult = new C1.Win.C1Command.C1DockingTabPage();
-            this.tabEmail = new C1.Win.C1Command.C1DockingTabPage();
             this.panel2 = new System.Windows.Forms.Panel();
             this.pnProc = new System.Windows.Forms.Panel();
+            this.tabEmail = new C1.Win.C1Command.C1DockingTabPage();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.panel4 = new System.Windows.Forms.Panel();
+            this.txtEmailBody = new C1.Win.C1Input.C1TextBox();
+            this.panel5 = new System.Windows.Forms.Panel();
+            this.btnSendEmail = new C1.Win.C1Input.C1Button();
+            this.c1Button2 = new C1.Win.C1Input.C1Button();
+            this.label212 = new System.Windows.Forms.Label();
+            this.txtEmailSubject = new C1.Win.C1Input.C1TextBox();
+            this.label213 = new System.Windows.Forms.Label();
+            this.txtEmailTo = new C1.Win.C1Input.C1TextBox();
             this.c1Ribbon1 = new C1.Win.C1Ribbon.C1Ribbon();
             this.ribbonApplicationMenu1 = new C1.Win.C1Ribbon.RibbonApplicationMenu();
-            this.ribbonQat1 = new C1.Win.C1Ribbon.RibbonQat();
-            this.ribbonConfigToolBar1 = new C1.Win.C1Ribbon.RibbonConfigToolBar();
-            this.ribbonTopToolBar1 = new C1.Win.C1Ribbon.RibbonTopToolBar();
-            this.ribbonBottomToolBar1 = new C1.Win.C1Ribbon.RibbonBottomToolBar();
+            this.ExitButton = new C1.Win.C1Ribbon.RibbonButton();
             this.NewDocumentButton = new C1.Win.C1Ribbon.RibbonButton();
             this.OpenDocumentButton = new C1.Win.C1Ribbon.RibbonButton();
             this.SaveDocumentButton = new C1.Win.C1Ribbon.RibbonButton();
@@ -76,9 +81,11 @@
             this.SaveDocumentAsRtfButton = new C1.Win.C1Ribbon.RibbonButton();
             this.SaveDocumentAsTextButton = new C1.Win.C1Ribbon.RibbonButton();
             this.SaveDocumentAsOtherButton = new C1.Win.C1Ribbon.RibbonButton();
-            this.ExitButton = new C1.Win.C1Ribbon.RibbonButton();
+            this.ribbonBottomToolBar1 = new C1.Win.C1Ribbon.RibbonBottomToolBar();
+            this.ribbonConfigToolBar1 = new C1.Win.C1Ribbon.RibbonConfigToolBar();
             this.ribbonStyleCombo = new C1.Win.C1Ribbon.RibbonComboBox();
             this.F1HelpButton = new C1.Win.C1Ribbon.RibbonButton();
+            this.ribbonQat1 = new C1.Win.C1Ribbon.RibbonQat();
             this.UndoButton = new C1.Win.C1Ribbon.RibbonButton();
             this.RedoButton = new C1.Win.C1Ribbon.RibbonButton();
             this.HomeTab = new C1.Win.C1Ribbon.RibbonTab();
@@ -114,18 +121,13 @@
             this.ViewZoomGroup = new C1.Win.C1Ribbon.RibbonGroup();
             this.ViewZoomCombobox = new C1.Win.C1Ribbon.RibbonComboBox();
             this.NormalSizeButton = new C1.Win.C1Ribbon.RibbonButton();
-            this.panel4 = new System.Windows.Forms.Panel();
-            this.panel5 = new System.Windows.Forms.Panel();
-            this.btnSendEmail = new C1.Win.C1Input.C1Button();
-            this.c1Button2 = new C1.Win.C1Input.C1Button();
-            this.label212 = new System.Windows.Forms.Label();
-            this.txtEmailSubject = new C1.Win.C1Input.C1TextBox();
-            this.label213 = new System.Windows.Forms.Label();
-            this.txtEmailTo = new C1.Win.C1Input.C1TextBox();
-            this.txtEmailBody = new C1.Win.C1Input.C1TextBox();
-            this.c1Button1 = new C1.Win.C1Input.C1Button();
-            this.c1Button3 = new C1.Win.C1Input.C1Button();
+            this.ribbonTopToolBar1 = new C1.Win.C1Ribbon.RibbonTopToolBar();
+            this.sB = new System.Windows.Forms.StatusStrip();
+            this.sB1 = new System.Windows.Forms.ToolStripStatusLabel();
+            this.txtDob = new C1.Win.C1Input.C1TextBox();
             this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.c1Button3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.c1Button1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtSex)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtPttId)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtVsId)).BeginInit();
@@ -138,31 +140,30 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtReportDate)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cboEmbryologistAppv)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cboEmbryologistReport)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtDobFeMale)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtName)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtPttNameE)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtHn)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.theme1)).BeginInit();
-            this.sB.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tC)).BeginInit();
             this.tC.SuspendLayout();
             this.tabResult.SuspendLayout();
-            this.tabEmail.SuspendLayout();
             this.panel2.SuspendLayout();
+            this.tabEmail.SuspendLayout();
             this.panel3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.c1Ribbon1)).BeginInit();
             this.panel4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtEmailBody)).BeginInit();
             this.panel5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btnSendEmail)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.c1Button2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtEmailSubject)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtEmailTo)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtEmailBody)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.c1Button1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.c1Button3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.c1Ribbon1)).BeginInit();
+            this.sB.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtDob)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.txtDob);
             this.panel1.Controls.Add(this.c1Button3);
             this.panel1.Controls.Add(this.c1Button1);
             this.panel1.Controls.Add(this.txtSex);
@@ -183,10 +184,9 @@
             this.panel1.Controls.Add(this.cboEmbryologistReport);
             this.panel1.Controls.Add(this.label61);
             this.panel1.Controls.Add(this.label60);
-            this.panel1.Controls.Add(this.txtDobFeMale);
             this.panel1.Controls.Add(this.label5);
             this.panel1.Controls.Add(this.label2);
-            this.panel1.Controls.Add(this.txtName);
+            this.panel1.Controls.Add(this.txtPttNameE);
             this.panel1.Controls.Add(this.label4);
             this.panel1.Controls.Add(this.txtHn);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
@@ -194,6 +194,34 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1134, 122);
             this.panel1.TabIndex = 0;
+            // 
+            // c1Button3
+            // 
+            this.c1Button3.Image = ((System.Drawing.Image)(resources.GetObject("c1Button3.Image")));
+            this.c1Button3.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.c1Button3.Location = new System.Drawing.Point(956, 61);
+            this.c1Button3.Name = "c1Button3";
+            this.c1Button3.Size = new System.Drawing.Size(105, 34);
+            this.c1Button3.TabIndex = 975;
+            this.c1Button3.Text = "Print  Form3";
+            this.c1Button3.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.theme1.SetTheme(this.c1Button3, "(default)");
+            this.c1Button3.UseVisualStyleBackColor = true;
+            this.c1Button3.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            // 
+            // c1Button1
+            // 
+            this.c1Button1.Image = ((System.Drawing.Image)(resources.GetObject("c1Button1.Image")));
+            this.c1Button1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.c1Button1.Location = new System.Drawing.Point(845, 61);
+            this.c1Button1.Name = "c1Button1";
+            this.c1Button1.Size = new System.Drawing.Size(105, 34);
+            this.c1Button1.TabIndex = 974;
+            this.c1Button1.Text = "Print  Form2";
+            this.c1Button1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.theme1.SetTheme(this.c1Button1, "(default)");
+            this.c1Button1.UseVisualStyleBackColor = true;
+            this.c1Button1.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
             // 
             // txtSex
             // 
@@ -271,7 +299,7 @@
             this.txtVnShow.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtVnShow.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
             this.txtVnShow.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.txtVnShow.Location = new System.Drawing.Point(94, 76);
+            this.txtVnShow.Location = new System.Drawing.Point(95, 76);
             this.txtVnShow.Name = "txtVnShow";
             this.txtVnShow.Size = new System.Drawing.Size(126, 24);
             this.txtVnShow.TabIndex = 968;
@@ -496,42 +524,6 @@
             this.label60.TabIndex = 545;
             this.label60.Text = "Embryologist report :";
             // 
-            // txtDobFeMale
-            // 
-            this.txtDobFeMale.AllowSpinLoop = false;
-            this.txtDobFeMale.BorderColor = System.Drawing.SystemColors.WindowFrame;
-            this.txtDobFeMale.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            // 
-            // 
-            // 
-            this.txtDobFeMale.Calendar.Font = new System.Drawing.Font("Tahoma", 8F);
-            this.txtDobFeMale.Calendar.VisualStyle = C1.Win.C1Input.VisualStyle.System;
-            this.txtDobFeMale.Calendar.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
-            this.txtDobFeMale.Culture = 1054;
-            this.txtDobFeMale.CurrentTimeZone = false;
-            this.txtDobFeMale.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
-            this.txtDobFeMale.DisplayFormat.CalendarType = C1.Win.C1Input.CalendarType.GregorianCalendar;
-            this.txtDobFeMale.DisplayFormat.FormatType = C1.Win.C1Input.FormatTypeEnum.ShortDate;
-            this.txtDobFeMale.DisplayFormat.Inherit = ((C1.Win.C1Input.FormatInfoInheritFlags)(((((C1.Win.C1Input.FormatInfoInheritFlags.CustomFormat | C1.Win.C1Input.FormatInfoInheritFlags.NullText) 
-            | C1.Win.C1Input.FormatInfoInheritFlags.EmptyAsNull) 
-            | C1.Win.C1Input.FormatInfoInheritFlags.TrimStart) 
-            | C1.Win.C1Input.FormatInfoInheritFlags.TrimEnd)));
-            this.txtDobFeMale.EditFormat.CalendarType = C1.Win.C1Input.CalendarType.GregorianCalendar;
-            this.txtDobFeMale.EditFormat.FormatType = C1.Win.C1Input.FormatTypeEnum.ShortDate;
-            this.txtDobFeMale.EditFormat.Inherit = ((C1.Win.C1Input.FormatInfoInheritFlags)(((((C1.Win.C1Input.FormatInfoInheritFlags.CustomFormat | C1.Win.C1Input.FormatInfoInheritFlags.NullText) 
-            | C1.Win.C1Input.FormatInfoInheritFlags.EmptyAsNull) 
-            | C1.Win.C1Input.FormatInfoInheritFlags.TrimStart) 
-            | C1.Win.C1Input.FormatInfoInheritFlags.TrimEnd)));
-            this.txtDobFeMale.EmptyAsNull = true;
-            this.txtDobFeMale.GMTOffset = System.TimeSpan.Parse("00:00:00");
-            this.txtDobFeMale.ImagePadding = new System.Windows.Forms.Padding(0);
-            this.txtDobFeMale.Location = new System.Drawing.Point(95, 56);
-            this.txtDobFeMale.Name = "txtDobFeMale";
-            this.txtDobFeMale.Size = new System.Drawing.Size(207, 18);
-            this.txtDobFeMale.TabIndex = 540;
-            this.txtDobFeMale.Tag = null;
-            this.txtDobFeMale.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
-            // 
             // label5
             // 
             this.label5.AutoSize = true;
@@ -556,18 +548,18 @@
             this.label2.TabIndex = 538;
             this.label2.Text = "name :";
             // 
-            // txtName
+            // txtPttNameE
             // 
-            this.txtName.BorderColor = System.Drawing.SystemColors.WindowFrame;
-            this.txtName.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtName.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
-            this.txtName.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.txtName.Location = new System.Drawing.Point(95, 34);
-            this.txtName.Name = "txtName";
-            this.txtName.Size = new System.Drawing.Size(207, 20);
-            this.txtName.TabIndex = 537;
-            this.txtName.Tag = null;
-            this.txtName.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            this.txtPttNameE.BorderColor = System.Drawing.SystemColors.WindowFrame;
+            this.txtPttNameE.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtPttNameE.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
+            this.txtPttNameE.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.txtPttNameE.Location = new System.Drawing.Point(95, 34);
+            this.txtPttNameE.Name = "txtPttNameE";
+            this.txtPttNameE.Size = new System.Drawing.Size(207, 20);
+            this.txtPttNameE.TabIndex = 537;
+            this.txtPttNameE.Tag = null;
+            this.txtPttNameE.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
             // 
             // label4
             // 
@@ -598,22 +590,6 @@
             // 
             this.theme1.Theme = "Office2013Red";
             // 
-            // sB
-            // 
-            this.sB.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.sB1});
-            this.sB.Location = new System.Drawing.Point(0, 732);
-            this.sB.Name = "sB";
-            this.sB.Size = new System.Drawing.Size(1136, 22);
-            this.sB.TabIndex = 11;
-            this.sB.Text = "statusStrip1";
-            // 
-            // sB1
-            // 
-            this.sB1.Name = "sB1";
-            this.sB1.Size = new System.Drawing.Size(118, 17);
-            this.sB1.Text = "toolStripStatusLabel1";
-            // 
             // tC
             // 
             this.tC.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
@@ -642,15 +618,6 @@
             this.tabResult.TabIndex = 0;
             this.tabResult.Text = "Result";
             // 
-            // tabEmail
-            // 
-            this.tabEmail.Controls.Add(this.panel3);
-            this.tabEmail.Location = new System.Drawing.Point(1, 24);
-            this.tabEmail.Name = "tabEmail";
-            this.tabEmail.Size = new System.Drawing.Size(1134, 707);
-            this.tabEmail.TabIndex = 1;
-            this.tabEmail.Text = "Email";
-            // 
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
@@ -675,6 +642,15 @@
             this.pnProc.TabIndex = 1;
             this.theme1.SetTheme(this.pnProc, "(default)");
             // 
+            // tabEmail
+            // 
+            this.tabEmail.Controls.Add(this.panel3);
+            this.tabEmail.Location = new System.Drawing.Point(1, 24);
+            this.tabEmail.Name = "tabEmail";
+            this.tabEmail.Size = new System.Drawing.Size(1134, 707);
+            this.tabEmail.TabIndex = 1;
+            this.tabEmail.Text = "Email";
+            // 
             // panel3
             // 
             this.panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
@@ -687,6 +663,130 @@
             this.panel3.Size = new System.Drawing.Size(1134, 707);
             this.panel3.TabIndex = 0;
             this.theme1.SetTheme(this.panel3, "(default)");
+            // 
+            // panel4
+            // 
+            this.panel4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.panel4.Controls.Add(this.txtEmailBody);
+            this.panel4.Controls.Add(this.panel5);
+            this.panel4.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.panel4.Location = new System.Drawing.Point(0, 146);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(1134, 561);
+            this.panel4.TabIndex = 1;
+            this.theme1.SetTheme(this.panel4, "(default)");
+            // 
+            // txtEmailBody
+            // 
+            this.txtEmailBody.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtEmailBody.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
+            this.txtEmailBody.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.txtEmailBody.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.txtEmailBody.Location = new System.Drawing.Point(0, 68);
+            this.txtEmailBody.Multiline = true;
+            this.txtEmailBody.Name = "txtEmailBody";
+            this.txtEmailBody.Size = new System.Drawing.Size(1134, 493);
+            this.txtEmailBody.TabIndex = 543;
+            this.txtEmailBody.Tag = null;
+            this.theme1.SetTheme(this.txtEmailBody, "(default)");
+            this.txtEmailBody.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            // 
+            // panel5
+            // 
+            this.panel5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.panel5.Controls.Add(this.btnSendEmail);
+            this.panel5.Controls.Add(this.c1Button2);
+            this.panel5.Controls.Add(this.label212);
+            this.panel5.Controls.Add(this.txtEmailSubject);
+            this.panel5.Controls.Add(this.label213);
+            this.panel5.Controls.Add(this.txtEmailTo);
+            this.panel5.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.panel5.Location = new System.Drawing.Point(0, 0);
+            this.panel5.Name = "panel5";
+            this.panel5.Size = new System.Drawing.Size(1134, 68);
+            this.panel5.TabIndex = 3;
+            this.theme1.SetTheme(this.panel5, "(default)");
+            // 
+            // btnSendEmail
+            // 
+            this.btnSendEmail.Image = global::clinic_ivf.Properties.Resources.Email_icon_24;
+            this.btnSendEmail.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnSendEmail.Location = new System.Drawing.Point(284, 3);
+            this.btnSendEmail.Name = "btnSendEmail";
+            this.btnSendEmail.Size = new System.Drawing.Size(101, 34);
+            this.btnSendEmail.TabIndex = 542;
+            this.btnSendEmail.Text = "Send Email";
+            this.btnSendEmail.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.theme1.SetTheme(this.btnSendEmail, "(default)");
+            this.btnSendEmail.UseVisualStyleBackColor = true;
+            this.btnSendEmail.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            // 
+            // c1Button2
+            // 
+            this.c1Button2.Location = new System.Drawing.Point(250, 11);
+            this.c1Button2.Name = "c1Button2";
+            this.c1Button2.Size = new System.Drawing.Size(28, 23);
+            this.c1Button2.TabIndex = 541;
+            this.c1Button2.Text = "...";
+            this.theme1.SetTheme(this.c1Button2, "(default)");
+            this.c1Button2.UseVisualStyleBackColor = true;
+            this.c1Button2.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            // 
+            // label212
+            // 
+            this.label212.AutoSize = true;
+            this.label212.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.label212.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label212.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.label212.Location = new System.Drawing.Point(13, 44);
+            this.label212.Name = "label212";
+            this.label212.Size = new System.Drawing.Size(59, 16);
+            this.label212.TabIndex = 517;
+            this.label212.Text = "Subject :";
+            this.theme1.SetTheme(this.label212, "(default)");
+            // 
+            // txtEmailSubject
+            // 
+            this.txtEmailSubject.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtEmailSubject.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
+            this.txtEmailSubject.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.txtEmailSubject.Location = new System.Drawing.Point(78, 42);
+            this.txtEmailSubject.Name = "txtEmailSubject";
+            this.txtEmailSubject.Size = new System.Drawing.Size(479, 20);
+            this.txtEmailSubject.TabIndex = 516;
+            this.txtEmailSubject.Tag = null;
+            this.theme1.SetTheme(this.txtEmailSubject, "(default)");
+            this.txtEmailSubject.Value = "Result OPU";
+            this.txtEmailSubject.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            // 
+            // label213
+            // 
+            this.label213.AutoSize = true;
+            this.label213.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.label213.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label213.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.label213.Location = new System.Drawing.Point(13, 13);
+            this.label213.Name = "label213";
+            this.label213.Size = new System.Drawing.Size(31, 16);
+            this.label213.TabIndex = 515;
+            this.label213.Text = "To :";
+            this.theme1.SetTheme(this.label213, "(default)");
+            // 
+            // txtEmailTo
+            // 
+            this.txtEmailTo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtEmailTo.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
+            this.txtEmailTo.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.txtEmailTo.Location = new System.Drawing.Point(50, 10);
+            this.txtEmailTo.Name = "txtEmailTo";
+            this.txtEmailTo.Size = new System.Drawing.Size(194, 20);
+            this.txtEmailTo.TabIndex = 514;
+            this.txtEmailTo.Tag = null;
+            this.theme1.SetTheme(this.txtEmailTo, "(default)");
+            this.txtEmailTo.Value = "eploentham@outlook.co.th";
+            this.txtEmailTo.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
             // 
             // c1Ribbon1
             // 
@@ -718,29 +818,11 @@
             this.ribbonApplicationMenu1.Name = "ribbonApplicationMenu1";
             this.ribbonApplicationMenu1.Text = "File";
             // 
-            // ribbonQat1
+            // ExitButton
             // 
-            this.ribbonQat1.HotItemLinks.Add(this.SaveDocumentButton);
-            this.ribbonQat1.HotItemLinks.Add(this.UndoButton);
-            this.ribbonQat1.HotItemLinks.Add(this.RedoButton);
-            this.ribbonQat1.ItemLinks.Add(this.SaveDocumentButton);
-            this.ribbonQat1.ItemLinks.Add(this.UndoButton);
-            this.ribbonQat1.ItemLinks.Add(this.RedoButton);
-            this.ribbonQat1.Name = "ribbonQat1";
-            // 
-            // ribbonConfigToolBar1
-            // 
-            this.ribbonConfigToolBar1.Items.Add(this.ribbonStyleCombo);
-            this.ribbonConfigToolBar1.Items.Add(this.F1HelpButton);
-            this.ribbonConfigToolBar1.Name = "ribbonConfigToolBar1";
-            // 
-            // ribbonTopToolBar1
-            // 
-            this.ribbonTopToolBar1.Name = "ribbonTopToolBar1";
-            // 
-            // ribbonBottomToolBar1
-            // 
-            this.ribbonBottomToolBar1.Name = "ribbonBottomToolBar1";
+            this.ExitButton.Name = "ExitButton";
+            this.ExitButton.SmallImage = ((System.Drawing.Image)(resources.GetObject("ExitButton.SmallImage")));
+            this.ExitButton.Text = "E&xit WordPad Sample";
             // 
             // NewDocumentButton
             // 
@@ -791,11 +873,15 @@
             this.SaveDocumentAsOtherButton.Name = "SaveDocumentAsOtherButton";
             this.SaveDocumentAsOtherButton.Text = "Other formats";
             // 
-            // ExitButton
+            // ribbonBottomToolBar1
             // 
-            this.ExitButton.Name = "ExitButton";
-            this.ExitButton.SmallImage = ((System.Drawing.Image)(resources.GetObject("ExitButton.SmallImage")));
-            this.ExitButton.Text = "E&xit WordPad Sample";
+            this.ribbonBottomToolBar1.Name = "ribbonBottomToolBar1";
+            // 
+            // ribbonConfigToolBar1
+            // 
+            this.ribbonConfigToolBar1.Items.Add(this.ribbonStyleCombo);
+            this.ribbonConfigToolBar1.Items.Add(this.F1HelpButton);
+            this.ribbonConfigToolBar1.Name = "ribbonConfigToolBar1";
             // 
             // ribbonStyleCombo
             // 
@@ -810,6 +896,16 @@
             this.F1HelpButton.ShortcutKeys = System.Windows.Forms.Keys.F1;
             this.F1HelpButton.SmallImage = ((System.Drawing.Image)(resources.GetObject("F1HelpButton.SmallImage")));
             this.F1HelpButton.ToolTip = "Help";
+            // 
+            // ribbonQat1
+            // 
+            this.ribbonQat1.HotItemLinks.Add(this.SaveDocumentButton);
+            this.ribbonQat1.HotItemLinks.Add(this.UndoButton);
+            this.ribbonQat1.HotItemLinks.Add(this.RedoButton);
+            this.ribbonQat1.ItemLinks.Add(this.SaveDocumentButton);
+            this.ribbonQat1.ItemLinks.Add(this.UndoButton);
+            this.ribbonQat1.ItemLinks.Add(this.RedoButton);
+            this.ribbonQat1.Name = "ribbonQat1";
             // 
             // UndoButton
             // 
@@ -1045,157 +1141,38 @@
             this.NormalSizeButton.SmallImage = ((System.Drawing.Image)(resources.GetObject("NormalSizeButton.SmallImage")));
             this.NormalSizeButton.Text = "100%";
             // 
-            // panel4
+            // ribbonTopToolBar1
             // 
-            this.panel4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.panel4.Controls.Add(this.txtEmailBody);
-            this.panel4.Controls.Add(this.panel5);
-            this.panel4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.panel4.Location = new System.Drawing.Point(0, 146);
-            this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(1134, 561);
-            this.panel4.TabIndex = 1;
-            this.theme1.SetTheme(this.panel4, "(default)");
+            this.ribbonTopToolBar1.Name = "ribbonTopToolBar1";
             // 
-            // panel5
+            // sB
             // 
-            this.panel5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.panel5.Controls.Add(this.btnSendEmail);
-            this.panel5.Controls.Add(this.c1Button2);
-            this.panel5.Controls.Add(this.label212);
-            this.panel5.Controls.Add(this.txtEmailSubject);
-            this.panel5.Controls.Add(this.label213);
-            this.panel5.Controls.Add(this.txtEmailTo);
-            this.panel5.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.panel5.Location = new System.Drawing.Point(0, 0);
-            this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(1134, 68);
-            this.panel5.TabIndex = 3;
-            this.theme1.SetTheme(this.panel5, "(default)");
+            this.sB.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.sB1});
+            this.sB.Location = new System.Drawing.Point(0, 732);
+            this.sB.Name = "sB";
+            this.sB.Size = new System.Drawing.Size(1136, 22);
+            this.sB.TabIndex = 11;
+            this.sB.Text = "statusStrip1";
             // 
-            // btnSendEmail
+            // sB1
             // 
-            this.btnSendEmail.Image = global::clinic_ivf.Properties.Resources.Email_icon_24;
-            this.btnSendEmail.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnSendEmail.Location = new System.Drawing.Point(284, 3);
-            this.btnSendEmail.Name = "btnSendEmail";
-            this.btnSendEmail.Size = new System.Drawing.Size(101, 34);
-            this.btnSendEmail.TabIndex = 542;
-            this.btnSendEmail.Text = "Send Email";
-            this.btnSendEmail.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.theme1.SetTheme(this.btnSendEmail, "(default)");
-            this.btnSendEmail.UseVisualStyleBackColor = true;
-            this.btnSendEmail.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            this.sB1.Name = "sB1";
+            this.sB1.Size = new System.Drawing.Size(118, 17);
+            this.sB1.Text = "toolStripStatusLabel1";
             // 
-            // c1Button2
+            // txtDob
             // 
-            this.c1Button2.Location = new System.Drawing.Point(250, 11);
-            this.c1Button2.Name = "c1Button2";
-            this.c1Button2.Size = new System.Drawing.Size(28, 23);
-            this.c1Button2.TabIndex = 541;
-            this.c1Button2.Text = "...";
-            this.theme1.SetTheme(this.c1Button2, "(default)");
-            this.c1Button2.UseVisualStyleBackColor = true;
-            this.c1Button2.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
-            // 
-            // label212
-            // 
-            this.label212.AutoSize = true;
-            this.label212.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.label212.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label212.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.label212.Location = new System.Drawing.Point(13, 44);
-            this.label212.Name = "label212";
-            this.label212.Size = new System.Drawing.Size(59, 16);
-            this.label212.TabIndex = 517;
-            this.label212.Text = "Subject :";
-            this.theme1.SetTheme(this.label212, "(default)");
-            // 
-            // txtEmailSubject
-            // 
-            this.txtEmailSubject.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtEmailSubject.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
-            this.txtEmailSubject.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.txtEmailSubject.Location = new System.Drawing.Point(78, 42);
-            this.txtEmailSubject.Name = "txtEmailSubject";
-            this.txtEmailSubject.Size = new System.Drawing.Size(479, 20);
-            this.txtEmailSubject.TabIndex = 516;
-            this.txtEmailSubject.Tag = null;
-            this.theme1.SetTheme(this.txtEmailSubject, "(default)");
-            this.txtEmailSubject.Value = "Result OPU";
-            this.txtEmailSubject.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
-            // 
-            // label213
-            // 
-            this.label213.AutoSize = true;
-            this.label213.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.label213.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label213.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.label213.Location = new System.Drawing.Point(13, 13);
-            this.label213.Name = "label213";
-            this.label213.Size = new System.Drawing.Size(31, 16);
-            this.label213.TabIndex = 515;
-            this.label213.Text = "To :";
-            this.theme1.SetTheme(this.label213, "(default)");
-            // 
-            // txtEmailTo
-            // 
-            this.txtEmailTo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtEmailTo.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
-            this.txtEmailTo.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.txtEmailTo.Location = new System.Drawing.Point(50, 10);
-            this.txtEmailTo.Name = "txtEmailTo";
-            this.txtEmailTo.Size = new System.Drawing.Size(194, 20);
-            this.txtEmailTo.TabIndex = 514;
-            this.txtEmailTo.Tag = null;
-            this.theme1.SetTheme(this.txtEmailTo, "(default)");
-            this.txtEmailTo.Value = "eploentham@outlook.co.th";
-            this.txtEmailTo.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
-            // 
-            // txtEmailBody
-            // 
-            this.txtEmailBody.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtEmailBody.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
-            this.txtEmailBody.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.txtEmailBody.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.txtEmailBody.Location = new System.Drawing.Point(0, 68);
-            this.txtEmailBody.Multiline = true;
-            this.txtEmailBody.Name = "txtEmailBody";
-            this.txtEmailBody.Size = new System.Drawing.Size(1134, 493);
-            this.txtEmailBody.TabIndex = 543;
-            this.txtEmailBody.Tag = null;
-            this.theme1.SetTheme(this.txtEmailBody, "(default)");
-            this.txtEmailBody.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
-            // 
-            // c1Button1
-            // 
-            this.c1Button1.Image = ((System.Drawing.Image)(resources.GetObject("c1Button1.Image")));
-            this.c1Button1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.c1Button1.Location = new System.Drawing.Point(845, 61);
-            this.c1Button1.Name = "c1Button1";
-            this.c1Button1.Size = new System.Drawing.Size(105, 34);
-            this.c1Button1.TabIndex = 974;
-            this.c1Button1.Text = "Print  Form2";
-            this.c1Button1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.theme1.SetTheme(this.c1Button1, "(default)");
-            this.c1Button1.UseVisualStyleBackColor = true;
-            this.c1Button1.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
-            // 
-            // c1Button3
-            // 
-            this.c1Button3.Image = ((System.Drawing.Image)(resources.GetObject("c1Button3.Image")));
-            this.c1Button3.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.c1Button3.Location = new System.Drawing.Point(956, 61);
-            this.c1Button3.Name = "c1Button3";
-            this.c1Button3.Size = new System.Drawing.Size(105, 34);
-            this.c1Button3.TabIndex = 975;
-            this.c1Button3.Text = "Print  Form3";
-            this.c1Button3.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.theme1.SetTheme(this.c1Button3, "(default)");
-            this.c1Button3.UseVisualStyleBackColor = true;
-            this.c1Button3.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            this.txtDob.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtDob.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
+            this.txtDob.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.txtDob.Location = new System.Drawing.Point(95, 55);
+            this.txtDob.Name = "txtDob";
+            this.txtDob.Size = new System.Drawing.Size(156, 20);
+            this.txtDob.TabIndex = 976;
+            this.txtDob.Tag = null;
+            this.theme1.SetTheme(this.txtDob, "(default)");
+            this.txtDob.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
             // 
             // FrmLabBloodAdd
             // 
@@ -1210,6 +1187,8 @@
             this.Load += new System.EventHandler(this.FrmLabBloodAdd_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.c1Button3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.c1Button1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtSex)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtPttId)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtVsId)).EndInit();
@@ -1222,30 +1201,28 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtReportDate)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cboEmbryologistAppv)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cboEmbryologistReport)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtDobFeMale)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtName)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtPttNameE)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtHn)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.theme1)).EndInit();
-            this.sB.ResumeLayout(false);
-            this.sB.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tC)).EndInit();
             this.tC.ResumeLayout(false);
             this.tabResult.ResumeLayout(false);
-            this.tabEmail.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
+            this.tabEmail.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.c1Ribbon1)).EndInit();
             this.panel4.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.txtEmailBody)).EndInit();
             this.panel5.ResumeLayout(false);
             this.panel5.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btnSendEmail)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.c1Button2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtEmailSubject)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtEmailTo)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtEmailBody)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.c1Button1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.c1Button3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.c1Ribbon1)).EndInit();
+            this.sB.ResumeLayout(false);
+            this.sB.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtDob)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1254,10 +1231,9 @@
         #endregion
 
         private System.Windows.Forms.Panel panel1;
-        private C1.Win.C1Input.C1DateEdit txtDobFeMale;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label2;
-        private C1.Win.C1Input.C1TextBox txtName;
+        private C1.Win.C1Input.C1TextBox txtPttNameE;
         private System.Windows.Forms.Label label4;
         private C1.Win.C1Input.C1TextBox txtHn;
         private C1.Win.C1Input.C1ComboBox cboEmbryologistAppv;
@@ -1349,5 +1325,6 @@
         private C1.Win.C1Input.C1TextBox txtEmailBody;
         private C1.Win.C1Input.C1Button c1Button3;
         private C1.Win.C1Input.C1Button c1Button1;
+        private C1.Win.C1Input.C1TextBox txtDob;
     }
 }

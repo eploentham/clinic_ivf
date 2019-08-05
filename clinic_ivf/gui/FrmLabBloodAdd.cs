@@ -85,7 +85,14 @@ namespace clinic_ivf.gui
         private void BtnPrint_Click(object sender, EventArgs e)
         {
             //throw new NotImplementedException();
+            FrmReport frm = new FrmReport(ic);
+            DataTable dt = new DataTable();
+            dt = ic.ivfDB.lbresDB.selectLabBloodByVsId(txtVsId.Text);
 
+            String date1 = "";
+
+            frm.setLabBloodReport(dt, txtHn.Text, txtPttNameE.Text, txtDob.Text, txtSex.Text, cboEmbryologistReport.Text, cboEmbryologistAppv.Text, txtReportDate.Text, txtApprovDate.Text);
+            frm.ShowDialog(this);
         }
 
         private void BtnApproveResult_Click(object sender, EventArgs e)
@@ -119,12 +126,12 @@ namespace clinic_ivf.gui
                 MessageBox.Show("ไม่พบ รายชื่อพนักงาน Approve", "");
                 return;
             }
-            if(DateTime.TryParse(daterpt, out daterpt1))
+            if(!DateTime.TryParse(daterpt, out daterpt1))
             {
                 MessageBox.Show("วันที่ ไม่ถูกต้อง", "");
                 return;
             }
-            if (DateTime.TryParse(dateapp, out dateapp1))
+            if (!DateTime.TryParse(dateapp, out dateapp1))
             {
                 MessageBox.Show("วันที่ ไม่ถูกต้อง", "");
                 return;
@@ -160,8 +167,8 @@ namespace clinic_ivf.gui
 
             txtVnShow.Value = ic.showVN(vs.visit_vn);
             txtHn.Value = ptt.patient_hn;
-            txtName.Value = ptt.Name;
-            txtDobFeMale.Value = ic.datetoShow(ptt.patient_birthday) + " [" + ptt.AgeStringShort() + "]";
+            txtPttNameE.Value = ptt.Name;
+            txtDob.Value = ic.datetoShow(ptt.patient_birthday) + " [" + ptt.AgeStringShort() + "]";
             txtSex.Value = ptt.f_sex_id.Equals("1") ? "ชาย" : "หญิง";
 
             setGrfProc();

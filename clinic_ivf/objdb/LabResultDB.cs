@@ -184,6 +184,20 @@ namespace clinic_ivf.objdb
             dt = conn.selectData(conn.conn, sql);
             return dt;
         }
+        public DataTable selectLabBloodByVsId(String vsid)
+        {
+            DataTable dt = new DataTable();
+            String sql = "select lbRes.*, LabItem.LName as lab_name,LabItem.lab_unit_id,LabItem.method_id,lab_b_unit.lab_unit_name as unit,lab_b_method.method_name as method " +
+                " " +
+                "From " + lbRes.table + " lbRes " +
+                "Left Join LabItem on lbRes." + lbRes.lab_id + " = LabItem.LID " +
+                "Left Join lab_b_unit on LabItem.lab_unit_id = lab_b_unit.lab_unit_id " +
+                "Left Join lab_b_method on LabItem.method_id = lab_b_method.method_id " +
+                "Where lbRes." + lbRes.status_result + " ='2'  and lbRes.visit_id = '" + vsid + "'" +
+                "Order By lbRes." + lbRes.req_id;
+            dt = conn.selectData(conn.conn, sql);
+            return dt;
+        }
         public DataTable selectLabBloodByProcess()
         {
             DataTable dt = new DataTable();
