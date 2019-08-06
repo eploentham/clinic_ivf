@@ -173,7 +173,7 @@ namespace clinic_ivf.objdb
         public DataTable selectLabBloodByProcess(String vsid)
         {
             DataTable dt = new DataTable();
-            String sql = "select lbRes.*, LabItem.LName,LabItem.lab_unit_id,LabItem.method_id " +
+            String sql = "select lbRes.*, LabItem.LName,LabItem.lab_unit_id,LabItem.method_id, LabItem.status_datatype_result,LabItem.datatype_decimal,LabItem.status_interpret " +
                 " " +
                 "From " + lbRes.table + " lbRes " +
                 "Left Join LabItem on lbRes." + lbRes.lab_id + " = LabItem.LID " +

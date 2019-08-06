@@ -34,6 +34,7 @@ namespace clinic_ivf.objdb
             lbM.user_modi = "user_modi";
             lbM.remark = "remark";
             lbM.sort1 = "sort1";
+            lbM.lab_id = "lab_id";
 
             lbM.datatype_combobox_id = "datatype_combobox_id";
             lbM.datatype_combobox_name = "datatype_combobox_name";
@@ -42,13 +43,13 @@ namespace clinic_ivf.objdb
             lbM.table = "lab_b_datatype_combobox";
             lbM.pkField = "datatype_combobox_name";
         }
-        public void getlBsp()
+        public void getlBsp(String labid)
         {
             //lDept = new List<Position>();
 
             llbM.Clear();
             DataTable dt = new DataTable();
-            dt = selectAll();
+            dt = selectAll(labid);
             foreach (DataRow row in dt.Rows)
             {
                 LabDataTypeComboBox itm1 = new LabDataTypeComboBox();
@@ -64,7 +65,7 @@ namespace clinic_ivf.objdb
         public String getIdByName(String name)
         {
             String re = "";
-            if (llbM.Count <= 0) getlBsp();
+            if (llbM.Count <= 0) getlBsp("");
             foreach (LabDataTypeComboBox row in llbM)
             {
                 if (row.datatype_combobox_id.Trim().Equals(name.Trim()))
@@ -78,7 +79,7 @@ namespace clinic_ivf.objdb
         public String getNameById(String id)
         {
             String re = "";
-            if (llbM.Count <= 0) getlBsp();
+            if (llbM.Count <= 0) getlBsp("");
             foreach (LabDataTypeComboBox row in llbM)
             {
                 if (row.datatype_combobox_name.Trim().Equals(id.Trim()))
@@ -89,14 +90,14 @@ namespace clinic_ivf.objdb
             }
             return re;
         }
-        public DataTable selectAll()
+        public DataTable selectAll(String labid)
         {
             DataTable dt = new DataTable();
             String sql = "select * " +
                 "From " + lbM.table + " dgs " +
                 //"Left Join f_patient_prefix pfx On stf.prefix_id = pfx.f_patient_prefix_id " +
-                " Where dgs." + lbM.active + " ='1' " +
-                "Order By datatype_combobox_name ";
+                " Where dgs." + lbM.active + " ='1' and dgs.lab_id = '"+ labid+"' " +
+                "Order By sort1 ";
             dt = conn.selectData(conn.conn, sql);
 
             return dt;
@@ -141,6 +142,8 @@ namespace clinic_ivf.objdb
             p.datatype_combobox_name = p.datatype_combobox_name == null ? "" : p.datatype_combobox_name;            
             p.sort1 = p.sort1 == null ? "" : p.sort1;
 
+            p.lab_id = long.TryParse(p.lab_id, out chk) ? chk.ToString() : "0";
+
         }
         public String insert(LabDataTypeComboBox p, String userId)
         {
@@ -163,6 +166,7 @@ namespace clinic_ivf.objdb
                 "," + lbM.user_modi + "= ''" +
                 "," + lbM.user_cancel + "= ''" +
                 "," + lbM.status_datatype + " = '" + p.status_datatype.Replace("'", "''") + "'" +
+                "," + lbM.lab_id + " = '" + p.lab_id.Replace("'", "''") + "'" +
                "";
             try
             {
@@ -192,6 +196,7 @@ namespace clinic_ivf.objdb
             sql = "Update " + lbM.table + " Set " +
                 " " + lbM.datatype_combobox_name + " = '" + p.datatype_combobox_name.Replace("'", "''") + "'" +
                 "," + lbM.remark + "= '" + p.remark.Replace("'", "''") + "'" +
+                "," + lbM.lab_id + "= '" + p.lab_id.Replace("'", "''") + "'" +
                 "Where " + lbM.pkField + "='" + p.datatype_combobox_id + "'"
                 ;
             try
@@ -209,7 +214,7 @@ namespace clinic_ivf.objdb
         {
             String re = "";
 
-            if (p.datatype_combobox_name.Equals(""))
+            if (p.datatype_combobox_id.Equals(""))
             {
                 re = insert(p, "");
             }
@@ -237,6 +242,7 @@ namespace clinic_ivf.objdb
                 dgs1.user_modi = dt.Rows[0][lbM.user_modi].ToString();
                 dgs1.sort1 = dt.Rows[0][lbM.sort1].ToString();
                 dgs1.status_datatype = dt.Rows[0][lbM.status_datatype].ToString();
+                dgs1.lab_id = dt.Rows[0][lbM.lab_id].ToString();
             }
             else
             {
@@ -259,14 +265,28 @@ namespace clinic_ivf.objdb
             dgs1.user_modi = "";
             dgs1.sort1 = "";
             dgs1.status_datatype = "";
+            dgs1.lab_id = "";
             return dgs1;
         }
-        public void setCboLabDataTypeComboBox(C1ComboBox c, String selected)
+        public String setCboLabDataTypeComboBox1(String labid)
+        {
+            String re = "";
+            getlBsp(labid);
+           
+            foreach (LabDataTypeComboBox cus1 in llbM)
+            {
+                re += cus1.datatype_combobox_name+"|";
+            }
+            return re;
+        }
+        public void setCboLabDataTypeComboBox(C1ComboBox c, String selected, String labid)
         {
             ComboBoxItem item = new ComboBoxItem();
             //DataTable dt = selectAll();
             int i = 0;
-            if (llbM.Count <= 0) getlBsp();
+
+            c.Items.Clear();
+            getlBsp(labid);
             item = new ComboBoxItem();
             item.Value = "";
             item.Text = "";
@@ -274,8 +294,8 @@ namespace clinic_ivf.objdb
             foreach (LabDataTypeComboBox cus1 in llbM)
             {
                 item = new ComboBoxItem();
-                item.Value = cus1.datatype_combobox_name;
-                item.Text = cus1.datatype_combobox_id;
+                item.Value = cus1.datatype_combobox_id;
+                item.Text = cus1.datatype_combobox_name;
                 c.Items.Add(item);
                 if (item.Value.Equals(selected))
                 {

@@ -56,7 +56,7 @@ namespace clinic_ivf.gui
             setControl();
 
             btnSave.Click += BtnSave_Click;
-            chkNgs.CheckedChanged += ChkNgs_CheckedChanged;
+            //chkNgs1.CheckedChanged += ChkNgs_CheckedChanged;
             //chkEmbryoTranfer.CheckedChanged += ChkEmbryoTranfer_CheckedChanged;
             chkEmbryoTranfer.CheckStateChanged += ChkEmbryoTranfer_CheckStateChanged;
             chkEmbryoFreezing.CheckStateChanged += ChkEmbryoFresh_CheckStateChanged;
@@ -72,12 +72,14 @@ namespace clinic_ivf.gui
             btnPrintOPU.Click += BtnPrintOPU_Click;
             btnPrintFet.Click += BtnPrintFet_Click;
             btnPrintSperm.Click += BtnPrintSperm_Click;
-            //chkNoNgs.Click += ChkNoNgs_Click;
+            chkNoNgs.CheckedChanged += ChkNoNgs_CheckedChanged;
             chkSememPESA.CheckedChanged += ChkSememPESA_CheckedChanged;
             chkSpermIUI.CheckedChanged += ChkSpermIUI_CheckedChanged;
+            chkPgs.Click += ChkPgs_Click;
+            chkNgs.Click += ChkNgs_Click;
 
             ChkEmbryoTranfer_CheckStateChanged(null, null);
-            ChkNgs_CheckedChanged(null, null);
+            //ChkNgs_CheckedChanged(null, null);
             ChkEmbryoFresh_CheckStateChanged(null, null);
             ChkFET_CheckedChanged(null, null);
             ChkSpermAnalysis_CheckStateChanged(null, null);
@@ -117,6 +119,33 @@ namespace clinic_ivf.gui
             //lbMessage.Hide();
             lbMessage1.Text = "";
             sB1.Text = "";
+        }
+
+        private void ChkNgs_Click(object sender, EventArgs e)
+        {
+            //throw new NotImplementedException();
+            if (chkNgs.Checked) chkNgsDay5.Checked = true;
+            else chkNgsDay5.Checked = false;
+        }
+
+        private void ChkPgs_Click(object sender, EventArgs e)
+        {
+            //throw new NotImplementedException();
+            if (chkPgs.Checked) chkNgsDay3.Checked = true;
+            else chkNgsDay3.Checked = false;
+        }
+
+        private void ChkNoNgs_CheckedChanged(object sender, EventArgs e)
+        {
+            //throw new NotImplementedException();
+            if (chkNoNgs.Checked)
+            {
+                gbNgs.Visible = false;
+            }
+            else
+            {
+                gbNgs.Visible = true;
+            }
         }
 
         private void BtnPrintSperm_Click(object sender, EventArgs e)
@@ -201,20 +230,24 @@ namespace clinic_ivf.gui
         {
             //throw new NotImplementedException();
             if (chkSememPESA.Checked) txtPasaTeseDate.Enabled = true;
-            else txtPasaTeseDate.Enabled = false;
+            else
+            {
+                txtPasaTeseDate.Enabled = false;
+                txtPasaTeseDate.Value = "";
+            }
         }
 
-        private void ChkNoNgs_Click(object sender, EventArgs e)
-        {
+        //private void ChkNoNgs_Click(object sender, EventArgs e)
+        //{
             //throw new NotImplementedException();
-            if (chkNoNgs.Checked) chkNoNgs.Checked = false;            
-        }
+            //if (chkNoNgs.Checked) chkNoNgs.Checked = false;            
+        //}
 
-        private void ChkNgs_Click(object sender, EventArgs e)
-        {
-            //throw new NotImplementedException();
-            if (chkNgs.Checked) chkNgs.Checked = false;
-        }
+        //private void ChkNgs_Click(object sender, EventArgs e)
+        //{
+        //    //throw new NotImplementedException();
+        //    if (chkNgs.Checked) chkNgs.Checked = false;
+        //}
 
         private void BtnPrintFet_Click(object sender, EventArgs e)
         {
@@ -450,8 +483,17 @@ namespace clinic_ivf.gui
             dt.Rows[0][ic.ivfDB.lFormaDB.lformA.sperm_freezing_date_end] = date1.Replace("-", "/");
             date1 = ic.datetoShow(dt.Rows[0][ic.ivfDB.lFormaDB.lformA.iui_date].ToString());
             dt.Rows[0][ic.ivfDB.lFormaDB.lformA.iui_date] = date1.Replace("-", "/");
-            date1 = ic.datetoShow(dt.Rows[0][ic.ivfDB.lFormaDB.lformA.pasa_tese_date].ToString());
-            dt.Rows[0][ic.ivfDB.lFormaDB.lformA.pasa_tese_date] = date1.Replace("-", "/");
+
+            if (dt.Rows[0][ic.ivfDB.lFormaDB.lformA.status_sperm_pesa].ToString().Equals("1"))
+            {
+                date1 = ic.datetoShow(dt.Rows[0][ic.ivfDB.lFormaDB.lformA.pasa_tese_date].ToString());
+                dt.Rows[0][ic.ivfDB.lFormaDB.lformA.pasa_tese_date] = date1.Replace("-", "/");
+            }
+            else
+            {
+                dt.Rows[0][ic.ivfDB.lFormaDB.lformA.pasa_tese_date] = "";
+            }
+            
             date1 = ic.datetoShow(dt.Rows[0][ic.ivfDB.lFormaDB.lformA.sperm_analysis_date_start].ToString());
             dt.Rows[0][ic.ivfDB.lFormaDB.lformA.sperm_analysis_date_start] = date1.Replace("-", "/");
             date1 = ic.datetoShow(dt.Rows[0][ic.ivfDB.lFormaDB.lformA.sperm_analysis_date_end].ToString());
@@ -580,6 +622,10 @@ namespace clinic_ivf.gui
             lFormA.staff_req_id = txtStfConfirmID.Text;
             lFormA.status_sperm_iui = chkSpermIUI.Checked ? "1" : "0";
             lFormA.status_sperm_pesa = chkSememPESA.Checked ? "1" : "0";
+            if (lFormA.status_sperm_pesa.Equals("0") && (lFormA.pasa_tese_date.Length>0))
+            {
+                lFormA.pasa_tese_date = "";
+            }
             //lFormA.status_opu_active = chkSememPESA.Checked ? "1" : "0";
             //lFormA.embryo txtEmbryoTranferTime.Text
         }
@@ -824,11 +870,11 @@ namespace clinic_ivf.gui
             gbEmbryoTranfer.Enabled = chkEmbryoTranfer.CheckState == CheckState.Checked ? true : false;
         }
 
-        private void ChkNgs_CheckedChanged(object sender, EventArgs e)
-        {
-            //throw new NotImplementedException();
-            gbNgs.Enabled = chkNgs.Checked ? true : false;
-        }
+        //private void ChkNgs_CheckedChanged(object sender, EventArgs e)
+        //{
+        //    //throw new NotImplementedException();
+        //    gbNgs.Enabled = chkNgs1.Checked ? true : false;
+        //}
 
         private void setControl()
         {

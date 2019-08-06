@@ -81,7 +81,6 @@ namespace clinic_ivf.gui
             initGrfProc();
             setControl();
         }
-
         private void BtnPrint_Click(object sender, EventArgs e)
         {
             //throw new NotImplementedException();
@@ -257,6 +256,31 @@ namespace clinic_ivf.gui
                     grfProc[i, colRsId] = row[ic.ivfDB.lbresDB.lbRes.result_id].ToString();
                     grfProc[i, colRsLabName] = row[ic.ivfDB.oLabiDB.labI.LName].ToString();
                     grfProc[i, colRsMethod] =  ic.ivfDB.lbmDB.getNameById(row[ic.ivfDB.oLabiDB.labI.method_id].ToString());
+                    if (row[ic.ivfDB.oLabiDB.labI.status_datatype_result].ToString().Equals("4"))
+                    {
+                        C1ComboBox cbo = new C1ComboBox();
+                        cbo.AutoCompleteMode = AutoCompleteMode.Suggest;
+                        cbo.AutoCompleteSource = AutoCompleteSource.ListItems;
+                        ic.ivfDB.lbDtDB.setCboLabDataTypeComboBox(cbo, "", row[ic.ivfDB.lbresDB.lbRes.lab_id].ToString());
+
+                        CellRange cr = grfProc.GetCellRange(i, colRsResult, i, colRsResult);
+                        //cr.Style = grfProc.Styles["emp"];
+                        cr.StyleNew.Editor = cbo;
+                        //CellStyle cs1 = grfProc.Styles.Add("bool");
+                        //cr.Style = cs1;
+                    }
+                    //if (row[ic.ivfDB.oLabiDB.labI.status_interpret].ToString().Equals("1"))
+                    //{
+                    //    C1ComboBox cbo = new C1ComboBox();
+                    //    cbo.AutoCompleteMode = AutoCompleteMode.Suggest;
+                    //    cbo.AutoCompleteSource = AutoCompleteSource.ListItems;
+                    //    ic.ivfDB.lbinDB.setCboLabInterpretComboBox(cbo, "", row[ic.ivfDB.lbresDB.lbRes.lab_id].ToString());
+                                                
+                    //    CellRange cr = grfProc.GetCellRange(i, colRsInterpret, i, colRsInterpret);
+                    //    cr.StyleNew.Editor = cbo;
+                    //    //CellStyle cs1 = grfProc.Styles.Add("bool");
+                    //    //cr.Style = cs1;
+                    //}
                     grfProc[i, colRsResult] = row[ic.ivfDB.lbresDB.lbRes.result].ToString();
                     grfProc[i, colRsInterpret] = row[ic.ivfDB.lbresDB.lbRes.interpret].ToString();
                     grfProc[i, colRsUnit] = ic.ivfDB.lbuDB.getNameById(row[ic.ivfDB.oLabiDB.labI.lab_unit_id].ToString());
@@ -280,7 +304,7 @@ namespace clinic_ivf.gui
             grfProc.Cols[colRsLabName].AllowEditing = false;
             //grfProc.Cols[colRsMethod].AllowEditing = false;
             //grfProc.Cols[colRsResult].AllowEditing = false;
-            grfProc.Cols[colRsInterpret].AllowEditing = false;
+            //grfProc.Cols[colRsInterpret].AllowEditing = false;
             grfProc.Cols[colRsEdit].AllowEditing = false;
             grfProc.Cols[colRsNormal].AllowEditing = false;
             grfProc.Cols[colRsRemark].AllowEditing = false;

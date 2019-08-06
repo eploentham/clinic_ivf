@@ -11,10 +11,11 @@ namespace clinic_ivf.object1
         public String interpret_combobox_id { get; set; }
         public String interpret_combobox_name { get; set; }
         public String lab_id { get; set; }
-        public Decimal min_value { get; set; }
-        public Decimal max_value { get; set; }
+        public String min_value { get; set; }
+        public String max_value { get; set; }
         public String min_value_criteria { get; set; }
         public String max_value_criteria { get; set; }        
-        public String sort1 { get; set; }        
+        public String sort1 { get; set; }
+        public String interpret { get; set; }
     }
 }

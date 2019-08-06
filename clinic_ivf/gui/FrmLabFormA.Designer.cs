@@ -135,8 +135,11 @@
             this.lbMessage1 = new System.Windows.Forms.Label();
             this.chkOpuTimeModi = new C1.Win.C1Input.C1CheckBox();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.chkNoNgs = new System.Windows.Forms.RadioButton();
-            this.chkNgs = new System.Windows.Forms.RadioButton();
+            this.gbNgs = new System.Windows.Forms.GroupBox();
+            this.chkNgsDay5 = new System.Windows.Forms.RadioButton();
+            this.chkPgs = new C1.Win.C1Input.C1CheckBox();
+            this.chkNgsDay3 = new System.Windows.Forms.RadioButton();
+            this.chkWaitDay1 = new C1.Win.C1Input.C1CheckBox();
             this.label30 = new System.Windows.Forms.Label();
             this.txtOPURemark = new C1.Win.C1Input.C1TextBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
@@ -153,7 +156,6 @@
             this.chkWaitOpuDate = new System.Windows.Forms.RadioButton();
             this.txtOPUDate = new C1.Win.C1Input.C1DateEdit();
             this.label7 = new System.Windows.Forms.Label();
-            this.chkWaitDay1 = new C1.Win.C1Input.C1CheckBox();
             this.chkXselet = new C1.Win.C1Input.C1CheckBox();
             this.chkYselet = new C1.Win.C1Input.C1CheckBox();
             this.pnFreshSprem = new System.Windows.Forms.Panel();
@@ -170,9 +172,6 @@
             this.gbEmbryoTranfer = new System.Windows.Forms.GroupBox();
             this.chkEmbryoTranferFrozen = new System.Windows.Forms.RadioButton();
             this.chkEmbryoTranferFresh = new System.Windows.Forms.RadioButton();
-            this.gbNgs = new System.Windows.Forms.GroupBox();
-            this.chkNgsDay5 = new System.Windows.Forms.RadioButton();
-            this.chkNgsDay3 = new System.Windows.Forms.RadioButton();
             this.chkSpermHa = new C1.Win.C1Input.C1CheckBox();
             this.label11 = new System.Windows.Forms.Label();
             this.txtNoofOocyteLt = new C1.Win.C1Input.C1TextBox();
@@ -181,9 +180,10 @@
             this.txtNoofOocyteRt = new C1.Win.C1Input.C1TextBox();
             this.chkEmbryoFreezing = new C1.Win.C1Input.C1CheckBox();
             this.chkEmbryoTranfer = new C1.Win.C1Input.C1CheckBox();
-            this.chkPgs = new C1.Win.C1Input.C1CheckBox();
             this.chkFrozenSperm = new C1.Win.C1Input.C1CheckBox();
             this.chkFreshSprem = new C1.Win.C1Input.C1CheckBox();
+            this.chkNoNgs = new C1.Win.C1Input.C1CheckBox();
+            this.chkNgs = new C1.Win.C1Input.C1CheckBox();
             this.sB.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.theme1)).BeginInit();
             this.groupBox1.SuspendLayout();
@@ -255,6 +255,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtFrozenSpermDate)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkOpuTimeModi)).BeginInit();
             this.panel3.SuspendLayout();
+            this.gbNgs.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.chkPgs)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chkWaitDay1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtOPURemark)).BeginInit();
             this.groupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.cboOPUWaitRemark)).BeginInit();
@@ -262,7 +265,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtOPUTimeModi)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtOPUTime)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtOPUDate)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.chkWaitDay1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkXselet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkYselet)).BeginInit();
             this.pnFreshSprem.SuspendLayout();
@@ -271,15 +273,15 @@
             ((System.ComponentModel.ISupportInitialize)(this.btnPrint)).BeginInit();
             this.gbEmbryoFresh.SuspendLayout();
             this.gbEmbryoTranfer.SuspendLayout();
-            this.gbNgs.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chkSpermHa)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtNoofOocyteLt)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtNoofOocyteRt)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkEmbryoFreezing)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkEmbryoTranfer)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.chkPgs)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkFrozenSperm)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkFreshSprem)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chkNoNgs)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chkNgs)).BeginInit();
             this.SuspendLayout();
             // 
             // sB
@@ -2259,39 +2261,91 @@
             this.panel3.TabIndex = 739;
             this.theme1.SetTheme(this.panel3, "(default)");
             // 
-            // chkNoNgs
+            // gbNgs
             // 
-            this.chkNoNgs.AutoSize = true;
-            this.chkNoNgs.BackColor = System.Drawing.Color.Transparent;
-            this.chkNoNgs.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
-            this.chkNoNgs.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(189)))), ((int)(((byte)(182)))));
-            this.chkNoNgs.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(189)))), ((int)(((byte)(182)))));
-            this.chkNoNgs.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.chkNoNgs.Location = new System.Drawing.Point(10, 3);
-            this.chkNoNgs.Name = "chkNoNgs";
-            this.chkNoNgs.Size = new System.Drawing.Size(73, 17);
-            this.chkNoNgs.TabIndex = 537;
-            this.chkNoNgs.TabStop = true;
-            this.chkNoNgs.Text = "No Biopsy";
-            this.theme1.SetTheme(this.chkNoNgs, "(default)");
-            this.chkNoNgs.UseVisualStyleBackColor = false;
+            this.gbNgs.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.gbNgs.Controls.Add(this.chkNgs);
+            this.gbNgs.Controls.Add(this.chkNgsDay5);
+            this.gbNgs.Controls.Add(this.chkPgs);
+            this.gbNgs.Controls.Add(this.chkNgsDay3);
+            this.gbNgs.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.gbNgs.Location = new System.Drawing.Point(9, 29);
+            this.gbNgs.Name = "gbNgs";
+            this.gbNgs.Size = new System.Drawing.Size(256, 63);
+            this.gbNgs.TabIndex = 714;
+            this.gbNgs.TabStop = false;
+            this.gbNgs.Text = "Biopsy";
+            this.theme1.SetTheme(this.gbNgs, "(default)");
             // 
-            // chkNgs
+            // chkNgsDay5
             // 
-            this.chkNgs.AutoSize = true;
-            this.chkNgs.BackColor = System.Drawing.Color.Transparent;
-            this.chkNgs.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
-            this.chkNgs.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(189)))), ((int)(((byte)(182)))));
-            this.chkNgs.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(189)))), ((int)(((byte)(182)))));
-            this.chkNgs.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.chkNgs.Location = new System.Drawing.Point(13, 42);
-            this.chkNgs.Name = "chkNgs";
-            this.chkNgs.Size = new System.Drawing.Size(48, 17);
-            this.chkNgs.TabIndex = 536;
-            this.chkNgs.TabStop = true;
-            this.chkNgs.Text = "NGS";
-            this.theme1.SetTheme(this.chkNgs, "(default)");
-            this.chkNgs.UseVisualStyleBackColor = false;
+            this.chkNgsDay5.AutoSize = true;
+            this.chkNgsDay5.BackColor = System.Drawing.Color.Transparent;
+            this.chkNgsDay5.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
+            this.chkNgsDay5.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(189)))), ((int)(((byte)(182)))));
+            this.chkNgsDay5.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(189)))), ((int)(((byte)(182)))));
+            this.chkNgsDay5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.chkNgsDay5.Location = new System.Drawing.Point(122, 42);
+            this.chkNgsDay5.Name = "chkNgsDay5";
+            this.chkNgsDay5.Size = new System.Drawing.Size(53, 17);
+            this.chkNgsDay5.TabIndex = 535;
+            this.chkNgsDay5.Text = "Day 5";
+            this.theme1.SetTheme(this.chkNgsDay5, "(default)");
+            this.chkNgsDay5.UseVisualStyleBackColor = false;
+            // 
+            // chkPgs
+            // 
+            this.chkPgs.BackColor = System.Drawing.Color.Transparent;
+            this.chkPgs.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
+            this.chkPgs.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.chkPgs.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.chkPgs.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chkPgs.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.chkPgs.Location = new System.Drawing.Point(11, 16);
+            this.chkPgs.Name = "chkPgs";
+            this.chkPgs.Padding = new System.Windows.Forms.Padding(4, 1, 1, 1);
+            this.chkPgs.Size = new System.Drawing.Size(75, 24);
+            this.chkPgs.TabIndex = 700;
+            this.chkPgs.Text = "PGS";
+            this.theme1.SetTheme(this.chkPgs, "(default)");
+            this.chkPgs.UseVisualStyleBackColor = true;
+            this.chkPgs.Value = null;
+            this.chkPgs.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            // 
+            // chkNgsDay3
+            // 
+            this.chkNgsDay3.AutoSize = true;
+            this.chkNgsDay3.BackColor = System.Drawing.Color.Transparent;
+            this.chkNgsDay3.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
+            this.chkNgsDay3.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(189)))), ((int)(((byte)(182)))));
+            this.chkNgsDay3.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(189)))), ((int)(((byte)(182)))));
+            this.chkNgsDay3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.chkNgsDay3.Location = new System.Drawing.Point(122, 17);
+            this.chkNgsDay3.Name = "chkNgsDay3";
+            this.chkNgsDay3.Size = new System.Drawing.Size(53, 17);
+            this.chkNgsDay3.TabIndex = 534;
+            this.chkNgsDay3.Text = "Day 3";
+            this.theme1.SetTheme(this.chkNgsDay3, "(default)");
+            this.chkNgsDay3.UseVisualStyleBackColor = false;
+            // 
+            // chkWaitDay1
+            // 
+            this.chkWaitDay1.BackColor = System.Drawing.Color.Transparent;
+            this.chkWaitDay1.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
+            this.chkWaitDay1.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.chkWaitDay1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.chkWaitDay1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chkWaitDay1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.chkWaitDay1.Location = new System.Drawing.Point(277, 65);
+            this.chkWaitDay1.Name = "chkWaitDay1";
+            this.chkWaitDay1.Padding = new System.Windows.Forms.Padding(4, 1, 1, 1);
+            this.chkWaitDay1.Size = new System.Drawing.Size(140, 24);
+            this.chkWaitDay1.TabIndex = 733;
+            this.chkWaitDay1.Text = "รอ Confirm Day1";
+            this.theme1.SetTheme(this.chkWaitDay1, "(default)");
+            this.chkWaitDay1.UseVisualStyleBackColor = true;
+            this.chkWaitDay1.Value = null;
+            this.chkWaitDay1.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
             // 
             // label30
             // 
@@ -2579,25 +2633,6 @@
             this.label7.Text = "OPU date :";
             this.theme1.SetTheme(this.label7, "(default)");
             // 
-            // chkWaitDay1
-            // 
-            this.chkWaitDay1.BackColor = System.Drawing.Color.Transparent;
-            this.chkWaitDay1.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
-            this.chkWaitDay1.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.chkWaitDay1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.chkWaitDay1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chkWaitDay1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.chkWaitDay1.Location = new System.Drawing.Point(277, 65);
-            this.chkWaitDay1.Name = "chkWaitDay1";
-            this.chkWaitDay1.Padding = new System.Windows.Forms.Padding(4, 1, 1, 1);
-            this.chkWaitDay1.Size = new System.Drawing.Size(140, 24);
-            this.chkWaitDay1.TabIndex = 733;
-            this.chkWaitDay1.Text = "รอ Confirm Day1";
-            this.theme1.SetTheme(this.chkWaitDay1, "(default)");
-            this.chkWaitDay1.UseVisualStyleBackColor = true;
-            this.chkWaitDay1.Value = null;
-            this.chkWaitDay1.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
-            // 
             // chkXselet
             // 
             this.chkXselet.BackColor = System.Drawing.Color.Transparent;
@@ -2854,56 +2889,6 @@
             this.theme1.SetTheme(this.chkEmbryoTranferFresh, "(default)");
             this.chkEmbryoTranferFresh.UseVisualStyleBackColor = false;
             // 
-            // gbNgs
-            // 
-            this.gbNgs.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.gbNgs.Controls.Add(this.chkNgsDay5);
-            this.gbNgs.Controls.Add(this.chkPgs);
-            this.gbNgs.Controls.Add(this.chkNgs);
-            this.gbNgs.Controls.Add(this.chkNgsDay3);
-            this.gbNgs.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.gbNgs.Location = new System.Drawing.Point(9, 23);
-            this.gbNgs.Name = "gbNgs";
-            this.gbNgs.Size = new System.Drawing.Size(256, 69);
-            this.gbNgs.TabIndex = 714;
-            this.gbNgs.TabStop = false;
-            this.gbNgs.Text = "Biopsy";
-            this.theme1.SetTheme(this.gbNgs, "(default)");
-            // 
-            // chkNgsDay5
-            // 
-            this.chkNgsDay5.AutoSize = true;
-            this.chkNgsDay5.BackColor = System.Drawing.Color.Transparent;
-            this.chkNgsDay5.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
-            this.chkNgsDay5.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(189)))), ((int)(((byte)(182)))));
-            this.chkNgsDay5.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(189)))), ((int)(((byte)(182)))));
-            this.chkNgsDay5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.chkNgsDay5.Location = new System.Drawing.Point(107, 42);
-            this.chkNgsDay5.Name = "chkNgsDay5";
-            this.chkNgsDay5.Size = new System.Drawing.Size(53, 17);
-            this.chkNgsDay5.TabIndex = 535;
-            this.chkNgsDay5.TabStop = true;
-            this.chkNgsDay5.Text = "Day 5";
-            this.theme1.SetTheme(this.chkNgsDay5, "(default)");
-            this.chkNgsDay5.UseVisualStyleBackColor = false;
-            // 
-            // chkNgsDay3
-            // 
-            this.chkNgsDay3.AutoSize = true;
-            this.chkNgsDay3.BackColor = System.Drawing.Color.Transparent;
-            this.chkNgsDay3.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
-            this.chkNgsDay3.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(189)))), ((int)(((byte)(182)))));
-            this.chkNgsDay3.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(189)))), ((int)(((byte)(182)))));
-            this.chkNgsDay3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.chkNgsDay3.Location = new System.Drawing.Point(122, 19);
-            this.chkNgsDay3.Name = "chkNgsDay3";
-            this.chkNgsDay3.Size = new System.Drawing.Size(53, 17);
-            this.chkNgsDay3.TabIndex = 534;
-            this.chkNgsDay3.TabStop = true;
-            this.chkNgsDay3.Text = "Day 3";
-            this.theme1.SetTheme(this.chkNgsDay3, "(default)");
-            this.chkNgsDay3.UseVisualStyleBackColor = false;
-            // 
             // chkSpermHa
             // 
             this.chkSpermHa.BackColor = System.Drawing.Color.Transparent;
@@ -3026,25 +3011,6 @@
             this.chkEmbryoTranfer.Value = null;
             this.chkEmbryoTranfer.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
             // 
-            // chkPgs
-            // 
-            this.chkPgs.BackColor = System.Drawing.Color.Transparent;
-            this.chkPgs.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
-            this.chkPgs.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.chkPgs.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.chkPgs.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chkPgs.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.chkPgs.Location = new System.Drawing.Point(11, 19);
-            this.chkPgs.Name = "chkPgs";
-            this.chkPgs.Padding = new System.Windows.Forms.Padding(4, 1, 1, 1);
-            this.chkPgs.Size = new System.Drawing.Size(75, 24);
-            this.chkPgs.TabIndex = 700;
-            this.chkPgs.Text = "PGS";
-            this.theme1.SetTheme(this.chkPgs, "(default)");
-            this.chkPgs.UseVisualStyleBackColor = true;
-            this.chkPgs.Value = null;
-            this.chkPgs.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
-            // 
             // chkFrozenSperm
             // 
             this.chkFrozenSperm.BackColor = System.Drawing.Color.Transparent;
@@ -3082,6 +3048,44 @@
             this.chkFreshSprem.UseVisualStyleBackColor = true;
             this.chkFreshSprem.Value = null;
             this.chkFreshSprem.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            // 
+            // chkNoNgs
+            // 
+            this.chkNoNgs.BackColor = System.Drawing.Color.Transparent;
+            this.chkNoNgs.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
+            this.chkNoNgs.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.chkNoNgs.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.chkNoNgs.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chkNoNgs.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.chkNoNgs.Location = new System.Drawing.Point(9, 3);
+            this.chkNoNgs.Name = "chkNoNgs";
+            this.chkNoNgs.Padding = new System.Windows.Forms.Padding(4, 1, 1, 1);
+            this.chkNoNgs.Size = new System.Drawing.Size(140, 24);
+            this.chkNoNgs.TabIndex = 734;
+            this.chkNoNgs.Text = "No Biopsy";
+            this.theme1.SetTheme(this.chkNoNgs, "(default)");
+            this.chkNoNgs.UseVisualStyleBackColor = true;
+            this.chkNoNgs.Value = null;
+            this.chkNoNgs.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            // 
+            // chkNgs
+            // 
+            this.chkNgs.BackColor = System.Drawing.Color.Transparent;
+            this.chkNgs.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
+            this.chkNgs.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.chkNgs.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.chkNgs.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chkNgs.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.chkNgs.Location = new System.Drawing.Point(11, 36);
+            this.chkNgs.Name = "chkNgs";
+            this.chkNgs.Padding = new System.Windows.Forms.Padding(4, 1, 1, 1);
+            this.chkNgs.Size = new System.Drawing.Size(75, 24);
+            this.chkNgs.TabIndex = 735;
+            this.chkNgs.Text = "NGS";
+            this.theme1.SetTheme(this.chkNgs, "(default)");
+            this.chkNgs.UseVisualStyleBackColor = true;
+            this.chkNgs.Value = null;
+            this.chkNgs.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
             // 
             // FrmLabFormA
             // 
@@ -3176,7 +3180,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtFrozenSpermDate)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkOpuTimeModi)).EndInit();
             this.panel3.ResumeLayout(false);
-            this.panel3.PerformLayout();
+            this.gbNgs.ResumeLayout(false);
+            this.gbNgs.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.chkPgs)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chkWaitDay1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtOPURemark)).EndInit();
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
@@ -3186,7 +3193,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtOPUTimeModi)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtOPUTime)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtOPUDate)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.chkWaitDay1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkXselet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkYselet)).EndInit();
             this.pnFreshSprem.ResumeLayout(false);
@@ -3198,16 +3204,15 @@
             this.gbEmbryoFresh.PerformLayout();
             this.gbEmbryoTranfer.ResumeLayout(false);
             this.gbEmbryoTranfer.PerformLayout();
-            this.gbNgs.ResumeLayout(false);
-            this.gbNgs.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chkSpermHa)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtNoofOocyteLt)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtNoofOocyteRt)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkEmbryoFreezing)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkEmbryoTranfer)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.chkPgs)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkFrozenSperm)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkFreshSprem)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chkNoNgs)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chkNgs)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -3344,8 +3349,6 @@
         private System.Windows.Forms.RadioButton chkFetActive;
         private C1.Win.C1Input.C1TextBox txtOPUTimeModi;
         private System.Windows.Forms.Panel panel3;
-        private System.Windows.Forms.RadioButton chkNoNgs;
-        private System.Windows.Forms.RadioButton chkNgs;
         private C1.Win.C1Input.C1CheckBox chkOpuTimeModi;
         private System.Windows.Forms.Label label33;
         private System.Windows.Forms.Label lbMessage1;
@@ -3371,5 +3374,7 @@
         private System.Windows.Forms.GroupBox gbSpermPESA;
         private C1.Win.C1Input.C1DateEdit txtPasaTeseDate;
         private C1.Win.C1Input.C1CheckBox chkSememPESA;
+        private C1.Win.C1Input.C1CheckBox chkNoNgs;
+        private C1.Win.C1Input.C1CheckBox chkNgs;
     }
 }

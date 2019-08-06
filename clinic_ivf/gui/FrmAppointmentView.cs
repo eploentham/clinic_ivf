@@ -126,7 +126,6 @@ namespace clinic_ivf.gui
             //throw new NotImplementedException();
 
         }
-
         private void BtnPrnPtt_Click(object sender, EventArgs e)
         {
             //throw new NotImplementedException();

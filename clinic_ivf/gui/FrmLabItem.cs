@@ -23,9 +23,10 @@ namespace clinic_ivf.gui
         Font fEdit, fEditB;
 
         Color bg, fc;
+        Color color;
         Font ff, ffB;
         int colID = 1, colName = 2, colSubName = 4, colPrice=3;
-        int colInId = 1, colInValMin = 2, colInCri = 3, colInValMax=4, colInInterpret=5;
+        int colInId = 1, colInValMin = 2, colInCriMin = 3, colInxx=4, colInCriMax=5, colInValMax=6, colInInterpret=7, colInEdit=8;
 
         C1FlexGrid grfLab, grfInt;
 
@@ -47,6 +48,7 @@ namespace clinic_ivf.gui
             labI = new OldLabItem();
             fEdit = new Font(ic.iniC.grdViewFontName, ic.grdViewFontSize, FontStyle.Regular);
             fEditB = new Font(ic.iniC.grdViewFontName, ic.grdViewFontSize, FontStyle.Bold);
+            color = ColorTranslator.FromHtml(ic.iniC.grfRowColor);
 
             C1ThemeController.ApplicationTheme = ic.iniC.themeApplication;
             theme1.Theme = C1ThemeController.ApplicationTheme;
@@ -62,11 +64,18 @@ namespace clinic_ivf.gui
             ic.ivfDB.olabgDB.setCboBloodGroup(cboLabGroup, "");
             ic.ivfDB.lbuDB.setCboLabUnit(cboUnit, "");
             ic.ivfDB.lbmDB.setCboLabMethod(cboMethod, "");
+            //ic.ivfDB.lbDtDB.setCboLabDataTypeComboBox(cboDataTypeCbo, "");
 
             txtPasswordVoid.KeyUp += TxtPasswordVoid_KeyUp;
             btnNew.Click += BtnNew_Click;
             btnEdit.Click += BtnEdit_Click;
             btnSave.Click += BtnSave_Click;
+            btnDataTypePlus.Click += BtnDataTypePlus_Click;
+            chkInterpretCbo.Click += ChkInterpretCbo_Click;
+            chkInterpretText.Click += ChkInterpretText_Click;
+            btnInterpretPlus.Click += BtnInterpretPlus_Click;
+            btnInterpretMinus.Click += BtnInterpretMinus_Click;
+            btnInterpretSave.Click += BtnInterpretSave_Click;
 
             initGrfLabItem();
             setGrfLabItem();
@@ -79,6 +88,114 @@ namespace clinic_ivf.gui
             txtPasswordVoid.Hide();
             stt = new C1SuperTooltip();
             sep = new C1SuperErrorProvider();
+        }
+
+        private void BtnInterpretSave_Click(object sender, EventArgs e)
+        {
+            //throw new NotImplementedException();
+            String id = "", edit = "",re="", xx="";
+            
+            foreach(Row row in grfInt.Rows)
+            {
+                String min = "", max = "", interpret="";
+                xx = row[colInxx] != null ? row[colInxx].ToString() : "";
+                id = row[colInId] != null ? row[colInId].ToString() : "";
+                edit = row[colInEdit] != null ? row[colInEdit].ToString() : "";
+                if (xx.Equals("Value")) continue;
+                if (!edit.Equals("1")) continue;
+                min = row[colInValMin] != null ? row[colInValMin].ToString() : "";
+                max = row[colInValMax] != null ? row[colInValMax].ToString() : "";
+                interpret = row[colInInterpret] != null ? row[colInInterpret].ToString() : "";
+                //String re = "";
+                LabInterpretComboBox lbM = new LabInterpretComboBox();                
+
+                lbM.active = "";
+                lbM.date_cancel = "";
+                lbM.date_create = "";
+                lbM.date_modi = "";
+                lbM.user_cancel = "";
+                lbM.user_create = "";
+                lbM.user_modi = "";
+                lbM.remark = "";
+                lbM.sort1 = "";
+
+                lbM.interpret_combobox_id = id;
+                lbM.interpret_combobox_name = "";
+                lbM.lab_id = txtID.Text;
+                lbM.min_value = min;
+                lbM.max_value = max;
+                lbM.min_value_criteria = "";
+                lbM.max_value_criteria = "";
+                lbM.interpret = interpret;
+                re = ic.ivfDB.lbinDB.insertLabInterpretComboBox(lbM, "");
+            }
+        }
+
+        private void BtnInterpretMinus_Click(object sender, EventArgs e)
+        {
+            //throw new NotImplementedException();
+            String id = "", edit="";
+            id = grfInt[grfInt.Row, colInId].ToString();
+            edit = grfInt[grfInt.Row, colInEdit].ToString();
+            if (MessageBox.Show("ต้องการ ลบข้อมูล  ", "", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == DialogResult.OK)
+            {
+                String re = "";
+                re = ic.ivfDB.lbinDB.voidLabInterPret(id, "");
+                setGrfInterpret();
+            }
+        }
+
+        private void BtnInterpretPlus_Click(object sender, EventArgs e)
+        {
+            //throw new NotImplementedException();
+            grfIntAddRow();
+        }
+
+        private void ChkInterpretText_Click(object sender, EventArgs e)
+        {
+            //throw new NotImplementedException();
+            setControlEnableInterpret(false);
+        }
+
+        private void ChkInterpretCbo_Click(object sender, EventArgs e)
+        {
+            //throw new NotImplementedException();
+            setControlEnableInterpret(true);
+            setGrfInterpret();
+        }
+
+        private void BtnDataTypePlus_Click(object sender, EventArgs e)
+        {
+            //throw new NotImplementedException();
+            LabDataTypeComboBox lbM = new LabDataTypeComboBox();
+
+            lbM.active = "";
+            lbM.date_cancel = "";
+            lbM.date_create = "";
+            lbM.date_modi = "";
+            lbM.user_cancel = "";
+            lbM.user_create = "";
+            lbM.user_modi = "";
+            lbM.remark = "";
+            lbM.sort1 = "";
+            lbM.lab_id = txtID.Text;
+
+            lbM.datatype_combobox_id = cboDataTypeCbo.SelectedItem == null ? "" : ((ComboBoxItem)cboDataTypeCbo.SelectedItem).Value;
+            lbM.datatype_combobox_name = cboDataTypeCbo.Text;
+            lbM.status_datatype = "1";
+            if (cboDataTypeCbo.Text.Equals(""))
+            {
+                MessageBox.Show("ไม่พบข้อมูล data type", "");
+                return;
+            }
+            String re = "";
+            long chk = 0;
+            re = ic.ivfDB.lbDtDB.insertLabDataTypeComboBox(lbM, "");
+            if(long.TryParse(re, out chk))
+            {
+                cboDataTypeCbo.Items.Clear();
+                ic.ivfDB.lbDtDB.setCboLabDataTypeComboBox(cboDataTypeCbo, "", txtID.Text);
+            }
         }
 
         private void BtnSave_Click(object sender, EventArgs e)
@@ -135,57 +252,102 @@ namespace clinic_ivf.gui
             grfInt.Font = fEdit;
             grfInt.Dock = System.Windows.Forms.DockStyle.Fill;
             grfInt.Location = new System.Drawing.Point(0, 0);
-
+            grfInt.ChangeEdit += GrfInt_ChangeEdit;
             //FilterRow fr = new FilterRow(grfPosi);                        
 
-            panel1.Controls.Add(this.grfInt);
+            gbInterpret.Controls.Add(this.grfInt);
 
             C1Theme theme = C1ThemeController.GetThemeByName("Office2013Red", false);
             C1ThemeController.ApplyThemeToObject(grfInt, theme);
         }
+
+        private void GrfInt_ChangeEdit(object sender, EventArgs e)
+        {
+            //throw new NotImplementedException();
+            grfInt[grfInt.Row, colInEdit] = "1";
+
+            grfInt.Rows[grfInt.Row].StyleNew.BackColor = color;
+        }
+
         private void setGrfInterpret()
         {
             //grfDept.Rows.Count = 7;
             DataTable dt = new DataTable();
-            dt = ic.ivfDB.oLabiDB.selectAll1();
+            dt = ic.ivfDB.lbinDB.selectAll(txtID.Text);
             grfInt.DataSource = null;
-            grfInt.Cols.Count = 5;
+            grfInt.Cols.Count = 9;
             grfInt.Rows.Count = 1;
 
-            C1TextBox txt = new C1TextBox();
-            grfInt.Cols[colName].Editor = txt;
-            grfInt.Cols[colID].Width = 60;
+            //C1TextBox txt = new C1TextBox();
+            //grfInt.Cols[colName].Editor = txt;
+            //grfInt.Cols[colID].Width = 60;
 
+            //C1ComboBox cboMin = new C1ComboBox();
+            //cboMin.AutoCompleteMode = AutoCompleteMode.Suggest;
+            //cboMin.AutoCompleteSource = AutoCompleteSource.ListItems;
+            //ComboBoxItem item = new ComboBoxItem();
+            //item = new ComboBoxItem();
+            //item.Value = ">";
+            //item.Text = ">";
+            //cboMin.Items.Add(item);
+            //item = new ComboBoxItem();
+            //item.Value = ">=";
+            //item.Text = ">=";
+            //cboMin.Items.Add(item);
+
+            //grfInt.Cols[colRsMethod].Editor = cboMethod;
             //grfPosi.Cols[colCode].Width = 80;
-            grfInt.Cols[colName].Width = 300;
-            grfInt.Cols[colSubName].Width = 300;
+            grfInt.Cols[colInValMin].Width = 65;
+            grfInt.Cols[colInValMax].Width = 65;
+            grfInt.Cols[colInCriMin].Width = 65;
+            grfInt.Cols[colInCriMax].Width = 65;
+            grfInt.Cols[colInxx].Width = 65;
+            grfInt.Cols[colInInterpret].Width = 80;
 
             grfInt.ShowCursor = true;
             //grdFlex.Cols[colID].Caption = "no";
             //grfDept.Cols[colCode].Caption = "รหัส";
 
             grfInt.Cols[colInValMin].Caption = "Value Min";
-            grfInt.Cols[colInCri].Caption = "เงื่อนไข";
+            grfInt.Cols[colInCriMin].Caption = "เงื่อนไข";
+            grfInt.Cols[colInCriMax].Caption = "เงื่อนไข";
             grfInt.Cols[colInValMax].Caption = "Value Max";
             grfInt.Cols[colInInterpret].Caption = "Interpret";
+            grfInt.Cols[colInxx].Caption = "Value";
 
             //grfDept.Cols[coledit].Visible = false;
             //CellRange rg = grfPosi.GetCellRange(2, colE);
             for (int i = 0; i < dt.Rows.Count; i++)
             {
-                Row row = grfInt.Rows.Add();
-                row[colInId] = dt.Rows[i][ic.ivfDB.oLabiDB.labI.LID].ToString();
-                row[colInValMin] = dt.Rows[i][ic.ivfDB.oLabiDB.labI.LName].ToString();
-                row[colInCri] = dt.Rows[i]["LGName"].ToString();
-                row[colInValMax] = dt.Rows[i][ic.ivfDB.oLabiDB.labI.Price].ToString();
+                Row row = grfIntAddRow();
+                row[colInId] = dt.Rows[i][ic.ivfDB.lbinDB.lbM.interpret_combobox_id].ToString();
+                row[colInValMin] = dt.Rows[i][ic.ivfDB.lbinDB.lbM.min_value].ToString();
+                row[colInValMax] = dt.Rows[i][ic.ivfDB.lbinDB.lbM.max_value].ToString();
+                row[colInInterpret] = dt.Rows[i][ic.ivfDB.lbinDB.lbM.interpret].ToString();
                 row[0] = (i + 1);
                 if (i % 2 != 0)
                     grfLab.Rows[i].StyleNew.BackColor = ColorTranslator.FromHtml(ic.iniC.grfRowColor);
             }
+            if (grfInt.Rows.Count <= 1) grfIntAddRow();
 
-            grfInt.Cols[colID].Visible = false;
-            //grfPosi.Cols[colE].Visible = false;
-            //grfPosi.Cols[colS].Visible = false;
+            grfInt.Cols[colInId].Visible = false;
+            grfInt.Cols[colInCriMin].AllowEditing = false;
+            grfInt.Cols[colInCriMax].AllowEditing = false;
+            grfInt.Cols[colInxx].AllowEditing = false;
+            //grfInt.Cols[colInCriMin].AllowEditing = false;
+            grfInt.Cols[colInEdit].Visible = false;
+        }
+        private Row grfIntAddRow()
+        {
+            Row row = grfInt.Rows.Add();
+            row[colInValMin] = "";
+            row[colInCriMin] = ">=";
+            row[colInCriMax] = "<";
+            row[colInValMax] = "";
+            row[colInxx] = "x";
+            row[colInInterpret] = "";
+            row[colInEdit] = "";
+            return row;
         }
         private void initGrfLabItem()
         {
@@ -288,6 +450,29 @@ namespace clinic_ivf.gui
 
             txtDataTypeDec.Value = labI.datatype_decimal;
 
+            cboDataTypeCbo.Items.Clear();
+            if (labI.status_datatype_result.Equals("4"))
+            {
+                ic.ivfDB.lbDtDB.setCboLabDataTypeComboBox(cboDataTypeCbo, "", txtID.Text);
+            }
+            chkInterpretText.Checked = labI.status_interpret.Equals("0") ? true : false;
+            chkInterpretCbo.Checked = labI.status_interpret.Equals("1") ? true : false;
+            if (chkInterpretCbo.Checked)
+            {
+                setControlEnableInterpret(true);
+                setGrfInterpret();
+            }
+            else
+            {
+                setControlEnableInterpret(false);
+            }
+        }
+        private void setControlEnableInterpret(Boolean flag)
+        {
+            gbInterpret.Visible = flag;
+            btnInterpretPlus.Visible = flag;
+            btnInterpretMinus.Visible = flag;
+            btnInterpretSave.Visible = flag;
         }
         private void setControlEnable(Boolean flag)
         {
@@ -317,6 +502,7 @@ namespace clinic_ivf.gui
             labI.datatype_decimal = txtDataTypeDec.Text;
             labI.status_datatype_result = chkDataTypeText.Checked ? "1" : chkDataTypeInt.Checked ? "2" : chkDataTypeDec.Checked ? "3" : chkDataTypeCbo.Checked ? "4" : "0";
             labI.datatype_decimal = txtDataTypeDec.Text;
+            labI.status_interpret = chkInterpretText.Checked ? "0" : chkInterpretCbo.Checked ? "1" : "0";
         }
         private void grfPosi_AfterRowColChange(object sender, C1.Win.C1FlexGrid.RangeEventArgs e)
         {
