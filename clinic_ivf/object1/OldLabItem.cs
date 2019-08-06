@@ -42,5 +42,8 @@ namespace clinic_ivf.object1
         public String num_barcode { get; set; }
         public String lab_unit_id { get; set; }
         public String method_id { get; set; }
+        public String status_datatype_result { get; set; }
+        public String datatype_decimal { get; set; }
+        public String status_interpret { get; set; }
     }
 }

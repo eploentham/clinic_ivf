@@ -25,8 +25,9 @@ namespace clinic_ivf.gui
         Color bg, fc;
         Font ff, ffB;
         int colID = 1, colName = 2, colSubName = 4, colPrice=3;
+        int colInId = 1, colInValMin = 2, colInCri = 3, colInValMax=4, colInInterpret=5;
 
-        C1FlexGrid grfPosi;
+        C1FlexGrid grfLab, grfInt;
 
         //C1TextBox txtPassword = new C1.Win.C1Input.C1TextBox();
         Boolean flagEdit = false;
@@ -67,10 +68,12 @@ namespace clinic_ivf.gui
             btnEdit.Click += BtnEdit_Click;
             btnSave.Click += BtnSave_Click;
 
-            initGrfPosi();
+            initGrfLabItem();
             setGrfLabItem();
             setControlEnable(false);
             setFocusColor();
+            initGrfInterpret();
+
             sB1.Text = "";
             btnVoid.Hide();
             txtPasswordVoid.Hide();
@@ -126,65 +129,122 @@ namespace clinic_ivf.gui
             flagEdit = true;
             setControlEnable(true);
         }
-
-        private void initGrfPosi()
+        private void initGrfInterpret()
         {
-            grfPosi = new C1FlexGrid();
-            grfPosi.Font = fEdit;
-            grfPosi.Dock = System.Windows.Forms.DockStyle.Fill;
-            grfPosi.Location = new System.Drawing.Point(0, 0);
+            grfInt = new C1FlexGrid();
+            grfInt.Font = fEdit;
+            grfInt.Dock = System.Windows.Forms.DockStyle.Fill;
+            grfInt.Location = new System.Drawing.Point(0, 0);
+
+            //FilterRow fr = new FilterRow(grfPosi);                        
+
+            panel1.Controls.Add(this.grfInt);
+
+            C1Theme theme = C1ThemeController.GetThemeByName("Office2013Red", false);
+            C1ThemeController.ApplyThemeToObject(grfInt, theme);
+        }
+        private void setGrfInterpret()
+        {
+            //grfDept.Rows.Count = 7;
+            DataTable dt = new DataTable();
+            dt = ic.ivfDB.oLabiDB.selectAll1();
+            grfInt.DataSource = null;
+            grfInt.Cols.Count = 5;
+            grfInt.Rows.Count = 1;
+
+            C1TextBox txt = new C1TextBox();
+            grfInt.Cols[colName].Editor = txt;
+            grfInt.Cols[colID].Width = 60;
+
+            //grfPosi.Cols[colCode].Width = 80;
+            grfInt.Cols[colName].Width = 300;
+            grfInt.Cols[colSubName].Width = 300;
+
+            grfInt.ShowCursor = true;
+            //grdFlex.Cols[colID].Caption = "no";
+            //grfDept.Cols[colCode].Caption = "รหัส";
+
+            grfInt.Cols[colInValMin].Caption = "Value Min";
+            grfInt.Cols[colInCri].Caption = "เงื่อนไข";
+            grfInt.Cols[colInValMax].Caption = "Value Max";
+            grfInt.Cols[colInInterpret].Caption = "Interpret";
+
+            //grfDept.Cols[coledit].Visible = false;
+            //CellRange rg = grfPosi.GetCellRange(2, colE);
+            for (int i = 0; i < dt.Rows.Count; i++)
+            {
+                Row row = grfInt.Rows.Add();
+                row[colInId] = dt.Rows[i][ic.ivfDB.oLabiDB.labI.LID].ToString();
+                row[colInValMin] = dt.Rows[i][ic.ivfDB.oLabiDB.labI.LName].ToString();
+                row[colInCri] = dt.Rows[i]["LGName"].ToString();
+                row[colInValMax] = dt.Rows[i][ic.ivfDB.oLabiDB.labI.Price].ToString();
+                row[0] = (i + 1);
+                if (i % 2 != 0)
+                    grfLab.Rows[i].StyleNew.BackColor = ColorTranslator.FromHtml(ic.iniC.grfRowColor);
+            }
+
+            grfInt.Cols[colID].Visible = false;
+            //grfPosi.Cols[colE].Visible = false;
+            //grfPosi.Cols[colS].Visible = false;
+        }
+        private void initGrfLabItem()
+        {
+            grfLab = new C1FlexGrid();
+            grfLab.Font = fEdit;
+            grfLab.Dock = System.Windows.Forms.DockStyle.Fill;
+            grfLab.Location = new System.Drawing.Point(0, 0);
 
             //FilterRow fr = new FilterRow(grfPosi);
 
-            grfPosi.AfterRowColChange += new C1.Win.C1FlexGrid.RangeEventHandler(this.grfPosi_AfterRowColChange);
-            grfPosi.CellButtonClick += new C1.Win.C1FlexGrid.RowColEventHandler(this.grfPosi_CellButtonClick);
-            grfPosi.CellChanged += new C1.Win.C1FlexGrid.RowColEventHandler(this.grfPosi_CellChanged);
+            grfLab.AfterRowColChange += new C1.Win.C1FlexGrid.RangeEventHandler(this.grfPosi_AfterRowColChange);
+            grfLab.CellButtonClick += new C1.Win.C1FlexGrid.RowColEventHandler(this.grfPosi_CellButtonClick);
+            grfLab.CellChanged += new C1.Win.C1FlexGrid.RowColEventHandler(this.grfPosi_CellChanged);
 
-            panel1.Controls.Add(this.grfPosi);
+            panel1.Controls.Add(this.grfLab);
 
             C1Theme theme = C1ThemeController.GetThemeByName("Office2013Red", false);
-            C1ThemeController.ApplyThemeToObject(grfPosi, theme);
+            C1ThemeController.ApplyThemeToObject(grfLab, theme);
         }
         private void setGrfLabItem()
         {
             //grfDept.Rows.Count = 7;
             DataTable dt = new DataTable();
             dt = ic.ivfDB.oLabiDB.selectAll1();
-            grfPosi.DataSource = null;
-            grfPosi.Cols.Count = 5;
-            grfPosi.Rows.Count = 1;
+            grfLab.DataSource = null;
+            grfLab.Cols.Count = 5;
+            grfLab.Rows.Count = 1;
 
             C1TextBox txt = new C1TextBox();
-            grfPosi.Cols[colName].Editor = txt;
-            grfPosi.Cols[colID].Width = 60;
+            grfLab.Cols[colName].Editor = txt;
+            grfLab.Cols[colID].Width = 60;
 
             //grfPosi.Cols[colCode].Width = 80;
-            grfPosi.Cols[colName].Width = 300;
-            grfPosi.Cols[colSubName].Width = 300;
+            grfLab.Cols[colName].Width = 300;
+            grfLab.Cols[colSubName].Width = 300;
 
-            grfPosi.ShowCursor = true;
+            grfLab.ShowCursor = true;
             //grdFlex.Cols[colID].Caption = "no";
             //grfDept.Cols[colCode].Caption = "รหัส";
 
-            grfPosi.Cols[colSubName].Caption = "Group";
-            grfPosi.Cols[colName].Caption = "ชื่อประเภทเอกสารย่อย";
-            grfPosi.Cols[colPrice].Caption = "ราคา";
+            grfLab.Cols[colSubName].Caption = "Group";
+            grfLab.Cols[colName].Caption = "ชื่อประเภทเอกสารย่อย";
+            grfLab.Cols[colPrice].Caption = "ราคา";
 
             //grfDept.Cols[coledit].Visible = false;
             //CellRange rg = grfPosi.GetCellRange(2, colE);
             for (int i = 0; i < dt.Rows.Count; i++)
             {
-                Row row = grfPosi.Rows.Add();
+                Row row = grfLab.Rows.Add();
                 row[colID] = dt.Rows[i][ic.ivfDB.oLabiDB.labI.LID].ToString();
                 row[colName] = dt.Rows[i][ic.ivfDB.oLabiDB.labI.LName].ToString();
                 row[colSubName] = dt.Rows[i]["LGName"].ToString();
                 row[colPrice] = dt.Rows[i][ic.ivfDB.oLabiDB.labI.Price].ToString();
                 row[0] = (i + 1);
                 if (i % 2 != 0)
-                    grfPosi.Rows[i].StyleNew.BackColor = ColorTranslator.FromHtml(ic.iniC.grfRowColor);
+                    grfLab.Rows[i].StyleNew.BackColor = ColorTranslator.FromHtml(ic.iniC.grfRowColor);
             }
 
-            grfPosi.Cols[colID].Visible = false;
+            grfLab.Cols[colID].Visible = false;
             //grfPosi.Cols[colE].Visible = false;
             //grfPosi.Cols[colS].Visible = false;
         }
@@ -220,6 +280,14 @@ namespace clinic_ivf.gui
             ic.setC1Combo(cboUnit, labI.lab_unit_id);
             ic.setC1Combo(cboMethod, labI.method_id);
             txtQty.Value = labI.QTY;
+
+            chkDataTypeText.Checked = labI.status_datatype_result.Equals("1") ? true : false;
+            chkDataTypeInt.Checked = labI.status_datatype_result.Equals("2") ? true : false;
+            chkDataTypeDec.Checked = labI.status_datatype_result.Equals("3") ? true : false;
+            chkDataTypeCbo.Checked = labI.status_datatype_result.Equals("4") ? true : false;
+
+            txtDataTypeDec.Value = labI.datatype_decimal;
+
         }
         private void setControlEnable(Boolean flag)
         {
@@ -245,6 +313,10 @@ namespace clinic_ivf.gui
             labI.QTY = txtQty.Text;
             labI.lab_unit_id = cboUnit.SelectedItem == null ? "" : ((ComboBoxItem)cboUnit.SelectedItem).Value;
             labI.method_id = cboMethod.SelectedItem == null ? "" : ((ComboBoxItem)cboMethod.SelectedItem).Value;
+            labI.status_datatype_result = chkDataTypeText.Checked ? "1" : chkDataTypeInt.Checked ? "2" : chkDataTypeDec.Checked ? "3" : chkDataTypeCbo.Checked ? "4" : "0";
+            labI.datatype_decimal = txtDataTypeDec.Text;
+            labI.status_datatype_result = chkDataTypeText.Checked ? "1" : chkDataTypeInt.Checked ? "2" : chkDataTypeDec.Checked ? "3" : chkDataTypeCbo.Checked ? "4" : "0";
+            labI.datatype_decimal = txtDataTypeDec.Text;
         }
         private void grfPosi_AfterRowColChange(object sender, C1.Win.C1FlexGrid.RangeEventArgs e)
         {
@@ -252,7 +324,7 @@ namespace clinic_ivf.gui
             if (e.NewRange.Data == null) return;
 
             String deptId = "";
-            deptId = grfPosi[e.NewRange.r1, colID] != null ? grfPosi[e.NewRange.r1, colID].ToString() : "";
+            deptId = grfLab[e.NewRange.r1, colID] != null ? grfLab[e.NewRange.r1, colID].ToString() : "";
             setControl(deptId);
             setControlEnable(false);
             //setControlAddr(addrId);

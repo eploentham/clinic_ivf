@@ -105,6 +105,7 @@ namespace clinic_ivf.objdb
         public LabResultDB lbresDB;
         public LabMethodDB lbmDB;
         public LabUnitDB lbuDB;
+        public LabDataTypeComboBoxDB lbDtDB;
         public IvfDB(ConnectDB c)
         {
             conn = c;
@@ -200,6 +201,7 @@ namespace clinic_ivf.objdb
             lbresDB = new LabResultDB(conn);
             lbmDB = new LabMethodDB(conn);
             lbuDB = new LabUnitDB(conn);
+            lbDtDB = new LabDataTypeComboBoxDB(conn);
 
             Console.WriteLine("ivfDB end");
         }
