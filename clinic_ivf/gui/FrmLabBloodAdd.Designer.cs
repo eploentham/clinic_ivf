@@ -123,10 +123,10 @@
             this.ViewZoomCombobox = new C1.Win.C1Ribbon.RibbonComboBox();
             this.NormalSizeButton = new C1.Win.C1Ribbon.RibbonButton();
             this.ribbonTopToolBar1 = new C1.Win.C1Ribbon.RibbonTopToolBar();
-            this.sB = new System.Windows.Forms.StatusStrip();
-            this.sB1 = new System.Windows.Forms.ToolStripStatusLabel();
             this.tabReport = new C1.Win.C1Command.C1DockingTabPage();
             this.cryLab = new CrystalDecisions.Windows.Forms.CrystalReportViewer();
+            this.sB = new System.Windows.Forms.StatusStrip();
+            this.sB1 = new System.Windows.Forms.ToolStripStatusLabel();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtDob)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.c1Button3)).BeginInit();
@@ -160,8 +160,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtEmailSubject)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtEmailTo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.c1Ribbon1)).BeginInit();
-            this.sB.SuspendLayout();
             this.tabReport.SuspendLayout();
+            this.sB.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
@@ -1162,22 +1162,6 @@
             // 
             this.ribbonTopToolBar1.Name = "ribbonTopToolBar1";
             // 
-            // sB
-            // 
-            this.sB.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.sB1});
-            this.sB.Location = new System.Drawing.Point(0, 732);
-            this.sB.Name = "sB";
-            this.sB.Size = new System.Drawing.Size(1207, 22);
-            this.sB.TabIndex = 11;
-            this.sB.Text = "statusStrip1";
-            // 
-            // sB1
-            // 
-            this.sB1.Name = "sB1";
-            this.sB1.Size = new System.Drawing.Size(118, 17);
-            this.sB1.Text = "toolStripStatusLabel1";
-            // 
             // tabReport
             // 
             this.tabReport.Controls.Add(this.cryLab);
@@ -1200,6 +1184,22 @@
             this.cryLab.Size = new System.Drawing.Size(1205, 707);
             this.cryLab.TabIndex = 3;
             this.theme1.SetTheme(this.cryLab, "(default)");
+            // 
+            // sB
+            // 
+            this.sB.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.sB1});
+            this.sB.Location = new System.Drawing.Point(0, 732);
+            this.sB.Name = "sB";
+            this.sB.Size = new System.Drawing.Size(1207, 22);
+            this.sB.TabIndex = 11;
+            this.sB.Text = "statusStrip1";
+            // 
+            // sB1
+            // 
+            this.sB1.Name = "sB1";
+            this.sB1.Size = new System.Drawing.Size(118, 17);
+            this.sB1.Text = "toolStripStatusLabel1";
             // 
             // FrmLabBloodAdd
             // 
@@ -1248,9 +1248,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtEmailSubject)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtEmailTo)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.c1Ribbon1)).EndInit();
+            this.tabReport.ResumeLayout(false);
             this.sB.ResumeLayout(false);
             this.sB.PerformLayout();
-            this.tabReport.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 

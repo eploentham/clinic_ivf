@@ -289,6 +289,8 @@ namespace clinic_ivf.report {
             
             private global::System.Data.DataColumn columnnormal_value;
             
+            private global::System.Data.DataColumn columninterpret;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public lab_resultDataTable() {
@@ -364,6 +366,14 @@ namespace clinic_ivf.report {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn interpretColumn {
+                get {
+                    return this.columninterpret;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -399,14 +409,15 @@ namespace clinic_ivf.report {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public lab_resultRow Addlab_resultRow(string lab_name, string method, string result, string unit, string normal_value) {
+            public lab_resultRow Addlab_resultRow(string lab_name, string method, string result, string unit, string normal_value, string interpret) {
                 lab_resultRow rowlab_resultRow = ((lab_resultRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         lab_name,
                         method,
                         result,
                         unit,
-                        normal_value};
+                        normal_value,
+                        interpret};
                 rowlab_resultRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowlab_resultRow);
                 return rowlab_resultRow;
@@ -434,6 +445,7 @@ namespace clinic_ivf.report {
                 this.columnresult = base.Columns["result"];
                 this.columnunit = base.Columns["unit"];
                 this.columnnormal_value = base.Columns["normal_value"];
+                this.columninterpret = base.Columns["interpret"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -449,6 +461,8 @@ namespace clinic_ivf.report {
                 base.Columns.Add(this.columnunit);
                 this.columnnormal_value = new global::System.Data.DataColumn("normal_value", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnnormal_value);
+                this.columninterpret = new global::System.Data.DataColumn("interpret", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columninterpret);
                 this.columnlab_name.Caption = "DataColumn1";
                 this.columnmethod.Caption = "DataColumn1";
                 this.columnresult.Caption = "DataColumn1";
@@ -678,6 +692,22 @@ namespace clinic_ivf.report {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string interpret {
+                get {
+                    try {
+                        return ((string)(this[this.tablelab_result.interpretColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'interpret\' in table \'lab_result\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablelab_result.interpretColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public bool Islab_nameNull() {
                 return this.IsNull(this.tablelab_result.lab_nameColumn);
             }
@@ -734,6 +764,18 @@ namespace clinic_ivf.report {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public void Setnormal_valueNull() {
                 this[this.tablelab_result.normal_valueColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IsinterpretNull() {
+                return this.IsNull(this.tablelab_result.interpretColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetinterpretNull() {
+                this[this.tablelab_result.interpretColumn] = global::System.Convert.DBNull;
             }
         }
         

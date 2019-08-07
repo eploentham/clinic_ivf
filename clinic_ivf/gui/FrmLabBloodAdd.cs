@@ -301,6 +301,9 @@ namespace clinic_ivf.gui
             txtApprovDate.Value = lbRes.date_time_approve;
             txtReportDate.Value = lbRes.date_time_result;
 
+            txtEmailTo.Value = ic.iniC.email_to_sperm_freezing;
+            txtEmailSubject.Value = "Result LAB Blood HN " + txtHn.Text + " Name " + txtPttNameE.Text + " [VN " + txtVnShow.Text + "]";
+
             setGrfProc();
         }
         private void initGrfProc()

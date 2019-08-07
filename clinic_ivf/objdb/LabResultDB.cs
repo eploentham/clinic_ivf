@@ -187,7 +187,7 @@ namespace clinic_ivf.objdb
         public DataTable selectLabBloodByVsId(String vsid)
         {
             DataTable dt = new DataTable();
-            String sql = "select lbRes.result, LabItem.LName as lab_name,LabItem.lab_unit_id,LabItem.method_id,lab_b_unit.lab_unit_name as unit,lab_b_method.method_name as method " +
+            String sql = "select lbRes.result,lbRes.interpret, LabItem.LName as lab_name,LabItem.lab_unit_id,LabItem.method_id,lab_b_unit.lab_unit_name as unit,lab_b_method.method_name as method " +
                 " " +
                 "From " + lbRes.table + " lbRes " +
                 "Left Join LabItem on lbRes." + lbRes.lab_id + " = LabItem.LID " +
