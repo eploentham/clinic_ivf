@@ -3,11 +3,14 @@ using C1.Win.C1Input;
 using C1.Win.C1SuperTooltip;
 using clinic_ivf.control;
 using clinic_ivf.object1;
+using CrystalDecisions.CrystalReports.Engine;
+using CrystalDecisions.Shared;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Net.Mail;
 using System.Text;
@@ -62,6 +65,7 @@ namespace clinic_ivf.gui
             btnSave.Click += BtnSave_Click;
             btnApproveResult.Click += BtnApproveResult_Click;
             btnPrint.Click += BtnPrint_Click;
+            btnSendEmail.Click += BtnSendEmail_Click;
 
             sB1.Text = "";
             bg = txtHn.BackColor;
@@ -81,6 +85,128 @@ namespace clinic_ivf.gui
             initGrfProc();
             setControl();
         }
+        private Boolean setReportLabBlood(String filename)
+        {
+            Boolean chk1 = true;
+            DataTable dt = new DataTable();
+            dt = ic.ivfDB.lbresDB.selectLabBloodByVsId(txtVsId.Text);
+            String chk = "", printerDefault = "";
+            ReportDocument rpt = new ReportDocument();
+            try
+            {
+                String date1 = dt.Rows[0]["date_report"].ToString();
+                String date2 = dt.Rows[0]["date_approve"].ToString();
+                date1 = ic.datetimetoShow(dt.Rows[0]["date_report"]);
+                date2 = ic.datetimetoShow(dt.Rows[0]["date_approve"]);
+                dt.Rows[0]["date_report"] = date1;
+                dt.Rows[0]["date_approve"] = date2;
+
+                rpt.Load("lab_blood_form1.rpt");
+
+                rpt.SetDataSource(dt);
+                rpt.SetParameterValue("line1", ic.cop.comp_name_t);
+                rpt.SetParameterValue("line2", ic.cop.addr1);
+                rpt.SetParameterValue("line3", ic.cop.addr2);
+                //rpt.SetParameterValue("report_name", " Summary of OPU Report");
+                //rpt.SetParameterValue("date1", "" + date1);
+                this.cryLab.ReportSource = rpt;
+                this.cryLab.Refresh();
+
+                if (File.Exists(filename))
+                {
+                    File.Delete(filename);
+                    System.Threading.Thread.Sleep(200);
+                }
+
+                ExportOptions CrExportOptions;
+                DiskFileDestinationOptions CrDiskFileDestinationOptions = new DiskFileDestinationOptions();
+                PdfRtfWordFormatOptions CrFormatTypeOptions = new PdfRtfWordFormatOptions();
+                CrDiskFileDestinationOptions.DiskFileName = filename;
+                CrExportOptions = rpt.ExportOptions;
+                {
+                    CrExportOptions.ExportDestinationType = ExportDestinationType.DiskFile;
+                    CrExportOptions.ExportFormatType = ExportFormatType.PortableDocFormat;
+                    CrExportOptions.DestinationOptions = CrDiskFileDestinationOptions;
+                    CrExportOptions.FormatOptions = CrFormatTypeOptions;
+                }
+
+                rpt.Export();
+            }
+            catch (Exception ex)
+            {
+                chk1 = false;
+                chk = ex.Message.ToString();
+                MessageBox.Show("error " + ex.Message, "");
+            }
+            return chk1;
+        }
+        private void BtnSendEmail_Click(object sender, EventArgs e)
+        {
+            //throw new NotImplementedException();
+            //FrmReport frm = new FrmReport(ic);
+            //DataTable dt = new DataTable();
+            //dt = ic.ivfDB.lbresDB.selectLabBloodByVsId(txtVsId.Text);
+            //String date1 = dt.Rows[0]["date_report"].ToString();
+            //String date2 = dt.Rows[0]["date_approve"].ToString();
+            //date1 = ic.datetimetoShow(dt.Rows[0]["date_report"]);
+            //date2 = ic.datetimetoShow(dt.Rows[0]["date_approve"]);
+            //dt.Rows[0]["date_report"] = date1;
+            //dt.Rows[0]["date_approve"] = date2;
+            ////FrmWaiting frmW = new FrmWaiting();
+            ////frmW.Show();
+            //frm.setSpermSf(dt);
+            //frm.ShowDialog(this);
+
+
+
+
+
+
+            FrmWaiting frmW = new FrmWaiting();
+            frmW.Show();
+            String filename = "", datetick = "";
+            if (!Directory.Exists("report"))
+            {
+                Directory.CreateDirectory("report");
+            }
+            datetick = DateTime.Now.Ticks.ToString();
+            filename = "report\\lab_blood_" + datetick + ".pdf";
+            if (!setReportLabBlood(filename))
+            {
+                return;
+            }
+            frmW.Dispose();
+
+            MailMessage mail = new MailMessage();
+
+            mail.From = new MailAddress(txtEmailTo.Text);
+            mail.To.Add(txtEmailTo.Text);
+            mail.Subject = txtEmailSubject.Text;
+            mail.Body = txtEmailBody.Text;
+
+            mail.IsBodyHtml = true;
+            if (File.Exists(filename))
+            {
+                System.Net.Mail.Attachment attachment;
+                attachment = new System.Net.Mail.Attachment(filename);
+                mail.Attachments.Add(attachment);
+            }
+
+            AlternateView htmlView = AlternateView.CreateAlternateViewFromString(body, null, "text/html");
+            mail.AlternateViews.Add(htmlView);
+
+            foreach (LinkedResource linkimg in theEmailImage1)
+            {
+                htmlView.LinkedResources.Add(linkimg);
+            }
+
+            SmtpServer.Port = 587;
+            SmtpServer.Credentials = new System.Net.NetworkCredential(ic.iniC.email_auth_user, ic.iniC.email_auth_pass);
+
+            SmtpServer.EnableSsl = true;
+            SmtpServer.Send(mail);
+        }
+
         private void BtnPrint_Click(object sender, EventArgs e)
         {
             //throw new NotImplementedException();
@@ -153,7 +279,6 @@ namespace clinic_ivf.gui
                 }
             }
         }
-
         private void setControl()
         {
             lbRes = ic.ivfDB.lbresDB.selectByPk(resId);
@@ -185,13 +310,49 @@ namespace clinic_ivf.gui
             grfProc.Dock = System.Windows.Forms.DockStyle.Fill;
             grfProc.Location = new System.Drawing.Point(0, 0);
             grfProc.ChangeEdit += GrfProc_ChangeEdit;
-
+            grfProc.AfterRowColChange += GrfProc_AfterRowColChange;
+            grfProc.AfterEdit += GrfProc_AfterEdit;
             //FilterRow fr = new FilterRow(grfExpn);
 
             pnProc.Controls.Add(grfProc);
 
             theme1.SetTheme(grfProc, "Office2010Blue");
         }
+
+        private void GrfProc_AfterEdit(object sender, RowColEventArgs e)
+        {
+            //throw new NotImplementedException();
+            if (grfProc.Row <= 0) return;
+            if (grfProc.Col <= 0) return;
+            if (grfProc.Col == colRsResult)
+            {
+                Decimal result1 = 0;
+                String resid = "", labid = "", result = "";
+                OldLabItem labI = new OldLabItem();
+                resid = grfProc[grfProc.Row, colRsId] != null ? grfProc[grfProc.Row, colRsId].ToString() : "";
+                labid = grfProc[grfProc.Row, colRsLabId] != null ? grfProc[grfProc.Row, colRsLabId].ToString() : "";
+                result = grfProc[grfProc.Row, colRsResult] != null ? grfProc[grfProc.Row, colRsResult].ToString() : "";
+                labI = ic.ivfDB.oLabiDB.selectByPk1(labid);
+                if (labI.LID.Length <= 0) return;
+                if (labI.status_interpret.Equals("1"))
+                {
+                    if (!Decimal.TryParse(result, out result1)) return;
+                    grfProc[grfProc.Row, colRsInterpret] = ic.ivfDB.lbinDB.selectInterpret(labid, result1.ToString());
+                }
+                else
+                {
+                    grfProc[grfProc.Row, colRsInterpret] = result;
+                }
+            }
+        }
+
+        private void GrfProc_AfterRowColChange(object sender, RangeEventArgs e)
+        {
+            //throw new NotImplementedException();
+            
+            
+        }
+
         private void setGrfProc()
         {
             //grfDept.Rows.Count = 7;
@@ -225,7 +386,7 @@ namespace clinic_ivf.gui
             grfProc.Cols[colRsNormal].Width = 100;
             grfProc.Cols[colRsRemark].Width = 200;
             //grfProc.Cols[colBlQty].Width = 60;
-
+            
             grfProc.ShowCursor = true;
             //grdFlex.Cols[colID].Caption = "no";
             //grfDept.Cols[colCode].Caption = "รหัส";
@@ -256,7 +417,7 @@ namespace clinic_ivf.gui
                     grfProc[i, colRsId] = row[ic.ivfDB.lbresDB.lbRes.result_id].ToString();
                     grfProc[i, colRsLabName] = row[ic.ivfDB.oLabiDB.labI.LName].ToString();
                     grfProc[i, colRsMethod] =  ic.ivfDB.lbmDB.getNameById(row[ic.ivfDB.oLabiDB.labI.method_id].ToString());
-                    if (row[ic.ivfDB.oLabiDB.labI.status_datatype_result].ToString().Equals("4"))
+                    if (row[ic.ivfDB.oLabiDB.labI.status_datatype_result].ToString().Equals("4"))       // combobox
                     {
                         C1ComboBox cbo = new C1ComboBox();
                         cbo.AutoCompleteMode = AutoCompleteMode.Suggest;
@@ -269,23 +430,35 @@ namespace clinic_ivf.gui
                         //CellStyle cs1 = grfProc.Styles.Add("bool");
                         //cr.Style = cs1;
                     }
-                    //if (row[ic.ivfDB.oLabiDB.labI.status_interpret].ToString().Equals("1"))
-                    //{
+                    else if (row[ic.ivfDB.oLabiDB.labI.status_datatype_result].ToString().Equals("2"))      // integer
+                    {
                     //    C1ComboBox cbo = new C1ComboBox();
                     //    cbo.AutoCompleteMode = AutoCompleteMode.Suggest;
                     //    cbo.AutoCompleteSource = AutoCompleteSource.ListItems;
                     //    ic.ivfDB.lbinDB.setCboLabInterpretComboBox(cbo, "", row[ic.ivfDB.lbresDB.lbRes.lab_id].ToString());
-                                                
-                    //    CellRange cr = grfProc.GetCellRange(i, colRsInterpret, i, colRsInterpret);
-                    //    cr.StyleNew.Editor = cbo;
-                    //    //CellStyle cs1 = grfProc.Styles.Add("bool");
-                    //    //cr.Style = cs1;
-                    //}
+                        
+                        CellRange cr = grfProc.GetCellRange(i, colRsResult, i, colRsResult);
+                        //cr.StyleNew.Editor = cbo;
+                        CellStyle cs1 = grfProc.Styles.Add("integer");
+                        cs.DataType = typeof(int);
+                        cs.ForeColor = Color.CornflowerBlue;
+                        cr.Style = cs1;
+                    }
+                    else if (row[ic.ivfDB.oLabiDB.labI.status_datatype_result].ToString().Equals("3"))      // decimal
+                    {
+                        CellRange cr = grfProc.GetCellRange(i, colRsResult, i, colRsResult);
+                        //cr.StyleNew.Editor = cbo;
+                        CellStyle cs1 = grfProc.Styles.Add("decimal");
+                        cs.DataType = typeof(decimal);
+                        cs.ForeColor = Color.DarkGreen;
+                        cr.Style = cs1;
+                    }
                     grfProc[i, colRsResult] = row[ic.ivfDB.lbresDB.lbRes.result].ToString();
                     grfProc[i, colRsInterpret] = row[ic.ivfDB.lbresDB.lbRes.interpret].ToString();
                     grfProc[i, colRsUnit] = ic.ivfDB.lbuDB.getNameById(row[ic.ivfDB.oLabiDB.labI.lab_unit_id].ToString());
                     grfProc[i, colRsNormal] = row[ic.ivfDB.lbresDB.lbRes.normal_value].ToString();
                     grfProc[i, colRsRemark] = row[ic.ivfDB.lbresDB.lbRes.remark].ToString();
+                    grfProc[i, colRsLabId] = row[ic.ivfDB.oLabiDB.labI.LID].ToString();
                     grfProc[i, colRsEdit] = "";
                     //grfSgrfProcperm[i, colBlQty] = "1";
                     row[0] = (i - 2);
@@ -315,7 +488,6 @@ namespace clinic_ivf.gui
         {
             //throw new NotImplementedException();
             grfProc[grfProc.Row, colRsEdit] = "1";
-
             grfProc.Rows[grfProc.Row].StyleNew.BackColor = color;
         }
 

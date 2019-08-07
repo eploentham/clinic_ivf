@@ -125,6 +125,8 @@
             this.ribbonTopToolBar1 = new C1.Win.C1Ribbon.RibbonTopToolBar();
             this.sB = new System.Windows.Forms.StatusStrip();
             this.sB1 = new System.Windows.Forms.ToolStripStatusLabel();
+            this.tabReport = new C1.Win.C1Command.C1DockingTabPage();
+            this.cryLab = new CrystalDecisions.Windows.Forms.CrystalReportViewer();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtDob)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.c1Button3)).BeginInit();
@@ -159,6 +161,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtEmailTo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.c1Ribbon1)).BeginInit();
             this.sB.SuspendLayout();
+            this.tabReport.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
@@ -609,6 +612,7 @@
             this.tC.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.tC.Controls.Add(this.tabResult);
             this.tC.Controls.Add(this.tabEmail);
+            this.tC.Controls.Add(this.tabReport);
             this.tC.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tC.HotTrack = true;
             this.tC.Location = new System.Drawing.Point(0, 0);
@@ -1174,6 +1178,29 @@
             this.sB1.Size = new System.Drawing.Size(118, 17);
             this.sB1.Text = "toolStripStatusLabel1";
             // 
+            // tabReport
+            // 
+            this.tabReport.Controls.Add(this.cryLab);
+            this.tabReport.Location = new System.Drawing.Point(1, 24);
+            this.tabReport.Name = "tabReport";
+            this.tabReport.Size = new System.Drawing.Size(1205, 707);
+            this.tabReport.TabIndex = 2;
+            this.tabReport.Text = "Report";
+            // 
+            // cryLab
+            // 
+            this.cryLab.ActiveViewIndex = -1;
+            this.cryLab.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.cryLab.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.cryLab.Cursor = System.Windows.Forms.Cursors.Default;
+            this.cryLab.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.cryLab.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.cryLab.Location = new System.Drawing.Point(0, 0);
+            this.cryLab.Name = "cryLab";
+            this.cryLab.Size = new System.Drawing.Size(1205, 707);
+            this.cryLab.TabIndex = 3;
+            this.theme1.SetTheme(this.cryLab, "(default)");
+            // 
             // FrmLabBloodAdd
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1223,6 +1250,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.c1Ribbon1)).EndInit();
             this.sB.ResumeLayout(false);
             this.sB.PerformLayout();
+            this.tabReport.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1326,5 +1354,7 @@
         private C1.Win.C1Input.C1Button c1Button3;
         private C1.Win.C1Input.C1Button c1Button1;
         private C1.Win.C1Input.C1TextBox txtDob;
+        private C1.Win.C1Command.C1DockingTabPage tabReport;
+        private CrystalDecisions.Windows.Forms.CrystalReportViewer cryLab;
     }
 }

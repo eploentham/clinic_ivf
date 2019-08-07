@@ -35,7 +35,7 @@ namespace clinic_ivf.gui
         C1SuperTooltip stt;
         C1SuperErrorProvider sep;
         OldLabItem labI;
-
+        String theme2 = "Office2007Blue";
         String userIdVoid = "";
         public FrmLabItem(IvfControl ic)
         {
@@ -53,10 +53,7 @@ namespace clinic_ivf.gui
             C1ThemeController.ApplicationTheme = ic.iniC.themeApplication;
             theme1.Theme = C1ThemeController.ApplicationTheme;
             theme1.SetTheme(sB, "BeigeOne");
-            foreach (Control c in panel2.Controls)
-            {
-                theme1.SetTheme(c, "Office2013Red");
-            }
+            
 
             bg = txtLabName.BackColor;
             fc = txtLabName.ForeColor;
@@ -578,6 +575,12 @@ namespace clinic_ivf.gui
         private void FrmLabItem_Load(object sender, EventArgs e)
         {
             sCMain.HeaderHeight = 0;
+            theme1.SetTheme(panel2, theme2);
+            foreach (Control c in panel2.Controls)
+            {
+                theme1.SetTheme(c, theme2);
+            }
+            
         }
     }
 }
