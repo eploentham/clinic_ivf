@@ -204,7 +204,7 @@ namespace clinic_ivf.gui
             ic.ivfDB.pttDB.setCboProvince(cboProv);
             ic.ivfDB.pttDB.setCboAmphur(cboAmpr);
             ic.ivfDB.pttDB.setCboAllergy(cboAllergyDesc);
-
+            
             cboAgent.AutoCompleteSource = AutoCompleteSource.ListItems;
             cboAgent.AutoCompleteMode = AutoCompleteMode.Suggest;
 
@@ -215,11 +215,16 @@ namespace clinic_ivf.gui
             setGrfImg();
             initGrfVs();
             setGrfVs();
-            setGrfpApmDonor("");
+            //setGrfpApmDonor("");
+            setGrfpApmDonor(txtID.Text);
             initGrfImgOld();
             setGrfImgOld();
             initGrfNote();
             setGrfNote();
+            if (ptt.t_patient_id.Equals(""))
+            {
+                ic.setC1Combo(CboNation, "41");
+            }
             //setGrfpApmDonor("");
 
             btnPrnSticker.Click += BtnPrnSticker_Click;

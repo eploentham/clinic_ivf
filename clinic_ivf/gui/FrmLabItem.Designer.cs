@@ -37,6 +37,9 @@
             this.c1SplitterPanel2 = new C1.Win.C1SplitContainer.C1SplitterPanel();
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel4 = new System.Windows.Forms.Panel();
+            this.btnInterpretSave = new C1.Win.C1Input.C1Button();
+            this.btnInterpretMinus = new C1.Win.C1Input.C1Button();
+            this.btnInterpretPlus = new C1.Win.C1Input.C1Button();
             this.gbInterpret = new System.Windows.Forms.GroupBox();
             this.chkInterpretCbo = new System.Windows.Forms.RadioButton();
             this.chkInterpretText = new System.Windows.Forms.RadioButton();
@@ -78,9 +81,6 @@
             this.btnEdit = new C1.Win.C1Input.C1Button();
             this.chkVoid = new C1.Win.C1Input.C1CheckBox();
             this.btnVoid = new C1.Win.C1Input.C1Button();
-            this.btnInterpretPlus = new C1.Win.C1Input.C1Button();
-            this.btnInterpretMinus = new C1.Win.C1Input.C1Button();
-            this.btnInterpretSave = new C1.Win.C1Input.C1Button();
             this.sB.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.theme1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.sCMain)).BeginInit();
@@ -89,6 +89,9 @@
             this.c1SplitterPanel2.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.btnInterpretSave)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnInterpretMinus)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnInterpretPlus)).BeginInit();
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btnDataTypeMinus)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnDataTypePlus)).BeginInit();
@@ -112,9 +115,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.btnEdit)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkVoid)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnVoid)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.btnInterpretPlus)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.btnInterpretMinus)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.btnInterpretSave)).BeginInit();
             this.SuspendLayout();
             // 
             // sB
@@ -123,7 +123,7 @@
             this.sB1});
             this.sB.Location = new System.Drawing.Point(0, 689);
             this.sB.Name = "sB";
-            this.sB.Size = new System.Drawing.Size(1193, 22);
+            this.sB.Size = new System.Drawing.Size(1325, 22);
             this.sB.TabIndex = 6;
             this.sB.Text = "statusStrip1";
             // 
@@ -152,7 +152,7 @@
             this.sCMain.Name = "sCMain";
             this.sCMain.Panels.Add(this.c1SplitterPanel1);
             this.sCMain.Panels.Add(this.c1SplitterPanel2);
-            this.sCMain.Size = new System.Drawing.Size(1193, 689);
+            this.sCMain.Size = new System.Drawing.Size(1325, 689);
             this.sCMain.SplitterColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(189)))), ((int)(((byte)(182)))));
             this.sCMain.SplitterMovingColor = System.Drawing.Color.Black;
             this.sCMain.TabIndex = 7;
@@ -166,11 +166,11 @@
             this.c1SplitterPanel1.Dock = C1.Win.C1SplitContainer.PanelDockStyle.Left;
             this.c1SplitterPanel1.Location = new System.Drawing.Point(0, 21);
             this.c1SplitterPanel1.Name = "c1SplitterPanel1";
-            this.c1SplitterPanel1.Size = new System.Drawing.Size(519, 668);
+            this.c1SplitterPanel1.Size = new System.Drawing.Size(577, 668);
             this.c1SplitterPanel1.SizeRatio = 44.239D;
             this.c1SplitterPanel1.TabIndex = 0;
             this.c1SplitterPanel1.Text = "Panel 1";
-            this.c1SplitterPanel1.Width = 526;
+            this.c1SplitterPanel1.Width = 584;
             // 
             // panel1
             // 
@@ -179,7 +179,7 @@
             this.panel1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(519, 668);
+            this.panel1.Size = new System.Drawing.Size(577, 668);
             this.panel1.TabIndex = 0;
             this.theme1.SetTheme(this.panel1, "(default)");
             // 
@@ -187,9 +187,9 @@
             // 
             this.c1SplitterPanel2.Controls.Add(this.panel2);
             this.c1SplitterPanel2.Height = 689;
-            this.c1SplitterPanel2.Location = new System.Drawing.Point(530, 21);
+            this.c1SplitterPanel2.Location = new System.Drawing.Point(588, 21);
             this.c1SplitterPanel2.Name = "c1SplitterPanel2";
-            this.c1SplitterPanel2.Size = new System.Drawing.Size(663, 668);
+            this.c1SplitterPanel2.Size = new System.Drawing.Size(737, 668);
             this.c1SplitterPanel2.TabIndex = 1;
             this.c1SplitterPanel2.Text = "Panel 2";
             // 
@@ -231,7 +231,7 @@
             this.panel2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
             this.panel2.Location = new System.Drawing.Point(0, 0);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(663, 668);
+            this.panel2.Size = new System.Drawing.Size(737, 668);
             this.panel2.TabIndex = 0;
             this.theme1.SetTheme(this.panel2, "(default)");
             // 
@@ -245,11 +245,44 @@
             this.panel4.Controls.Add(this.chkInterpretCbo);
             this.panel4.Controls.Add(this.chkInterpretText);
             this.panel4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.panel4.Location = new System.Drawing.Point(125, 371);
+            this.panel4.Location = new System.Drawing.Point(80, 371);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(526, 186);
+            this.panel4.Size = new System.Drawing.Size(645, 186);
             this.panel4.TabIndex = 591;
             this.theme1.SetTheme(this.panel4, "(default)");
+            // 
+            // btnInterpretSave
+            // 
+            this.btnInterpretSave.Location = new System.Drawing.Point(303, 38);
+            this.btnInterpretSave.Name = "btnInterpretSave";
+            this.btnInterpretSave.Size = new System.Drawing.Size(58, 23);
+            this.btnInterpretSave.TabIndex = 598;
+            this.btnInterpretSave.Text = "Save";
+            this.theme1.SetTheme(this.btnInterpretSave, "(default)");
+            this.btnInterpretSave.UseVisualStyleBackColor = true;
+            this.btnInterpretSave.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            // 
+            // btnInterpretMinus
+            // 
+            this.btnInterpretMinus.Location = new System.Drawing.Point(236, 38);
+            this.btnInterpretMinus.Name = "btnInterpretMinus";
+            this.btnInterpretMinus.Size = new System.Drawing.Size(30, 23);
+            this.btnInterpretMinus.TabIndex = 597;
+            this.btnInterpretMinus.Text = "-";
+            this.theme1.SetTheme(this.btnInterpretMinus, "(default)");
+            this.btnInterpretMinus.UseVisualStyleBackColor = true;
+            this.btnInterpretMinus.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            // 
+            // btnInterpretPlus
+            // 
+            this.btnInterpretPlus.Location = new System.Drawing.Point(173, 38);
+            this.btnInterpretPlus.Name = "btnInterpretPlus";
+            this.btnInterpretPlus.Size = new System.Drawing.Size(30, 23);
+            this.btnInterpretPlus.TabIndex = 596;
+            this.btnInterpretPlus.Text = "+";
+            this.theme1.SetTheme(this.btnInterpretPlus, "(default)");
+            this.btnInterpretPlus.UseVisualStyleBackColor = true;
+            this.btnInterpretPlus.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
             // 
             // gbInterpret
             // 
@@ -257,7 +290,7 @@
             this.gbInterpret.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
             this.gbInterpret.Location = new System.Drawing.Point(3, 61);
             this.gbInterpret.Name = "gbInterpret";
-            this.gbInterpret.Size = new System.Drawing.Size(520, 122);
+            this.gbInterpret.Size = new System.Drawing.Size(639, 122);
             this.gbInterpret.TabIndex = 595;
             this.gbInterpret.TabStop = false;
             this.gbInterpret.Text = "เงื่อนไข";
@@ -886,44 +919,11 @@
             this.btnVoid.UseVisualStyleBackColor = true;
             this.btnVoid.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
             // 
-            // btnInterpretPlus
-            // 
-            this.btnInterpretPlus.Location = new System.Drawing.Point(173, 38);
-            this.btnInterpretPlus.Name = "btnInterpretPlus";
-            this.btnInterpretPlus.Size = new System.Drawing.Size(30, 23);
-            this.btnInterpretPlus.TabIndex = 596;
-            this.btnInterpretPlus.Text = "+";
-            this.theme1.SetTheme(this.btnInterpretPlus, "(default)");
-            this.btnInterpretPlus.UseVisualStyleBackColor = true;
-            this.btnInterpretPlus.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
-            // 
-            // btnInterpretMinus
-            // 
-            this.btnInterpretMinus.Location = new System.Drawing.Point(236, 38);
-            this.btnInterpretMinus.Name = "btnInterpretMinus";
-            this.btnInterpretMinus.Size = new System.Drawing.Size(30, 23);
-            this.btnInterpretMinus.TabIndex = 597;
-            this.btnInterpretMinus.Text = "-";
-            this.theme1.SetTheme(this.btnInterpretMinus, "(default)");
-            this.btnInterpretMinus.UseVisualStyleBackColor = true;
-            this.btnInterpretMinus.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
-            // 
-            // btnInterpretSave
-            // 
-            this.btnInterpretSave.Location = new System.Drawing.Point(303, 38);
-            this.btnInterpretSave.Name = "btnInterpretSave";
-            this.btnInterpretSave.Size = new System.Drawing.Size(58, 23);
-            this.btnInterpretSave.TabIndex = 598;
-            this.btnInterpretSave.Text = "Save";
-            this.theme1.SetTheme(this.btnInterpretSave, "(default)");
-            this.btnInterpretSave.UseVisualStyleBackColor = true;
-            this.btnInterpretSave.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
-            // 
             // FrmLabItem
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1193, 711);
+            this.ClientSize = new System.Drawing.Size(1325, 711);
             this.Controls.Add(this.sCMain);
             this.Controls.Add(this.sB);
             this.Name = "FrmLabItem";
@@ -940,6 +940,9 @@
             this.panel2.PerformLayout();
             this.panel4.ResumeLayout(false);
             this.panel4.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.btnInterpretSave)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnInterpretMinus)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnInterpretPlus)).EndInit();
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btnDataTypeMinus)).EndInit();
@@ -964,9 +967,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.btnEdit)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkVoid)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnVoid)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.btnInterpretPlus)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.btnInterpretMinus)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.btnInterpretSave)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

@@ -416,19 +416,19 @@ namespace clinic_ivf.objdb
 
             return re;
         }
-        public String updateResult(String result, String stfappid, String stfresid, String dateapp, String dateres,String resid)
+        public String updateResult(String result, String interpret, String stfappid, String stfresid, String dateapp, String dateres,String resid)
         {
             String re = "";
             String sql = "";
             int chk = 0;
             //chkNull(p);
             sql = "Update " + lbRes.table + " Set " +
-                " " + lbRes.result + " = '" + result + "'" +
+                " " + lbRes.result + " = '" + result.Replace("'", "''") + "'" +
                 "," + lbRes.staff_id_approve + " = '" + stfappid + "'" +
                 "," + lbRes.staff_id_result + " = '" + stfresid + "'" +
                 "," + lbRes.date_time_approve + " = '" + dateapp + "'" +
                 "," + lbRes.date_time_result + " = '" + dateres + "'" +
-                //"," + lbRes.status_result + " = '2'" +
+                "," + lbRes.interpret + " = '" + interpret.Replace("'","''") + "'" +
                 "Where " + lbRes.pkField + "='" + resid + "'"
                 ;
             try

@@ -45,7 +45,7 @@ namespace clinic_ivf.objdb
             lbM.interpret = "interpret";
 
             lbM.table = "lab_b_interpret_combobox";
-            lbM.pkField = "interpret_combobox_name";
+            lbM.pkField = "interpret_combobox_id";
         }
         public void getlBsp(String labid)
         {

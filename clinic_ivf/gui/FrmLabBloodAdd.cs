@@ -264,13 +264,14 @@ namespace clinic_ivf.gui
 
             foreach(Row row in grfProc.Rows)
             {
-                String id = "", edit = "", result="";
+                String id = "", edit = "", result="", interpret="";
                 id = row[colRsId] != null ? row[colRsId].ToString() : "";
                 edit = row[colRsEdit] != null ? row[colRsEdit].ToString() : "";
                 result = row[colRsResult] != null ? row[colRsResult].ToString() : "";
+                interpret = row[colRsInterpret] != null ? row[colRsInterpret].ToString() : "";
                 if (edit.Equals("1") && !result.Equals(""))
                 {
-                    String re = ic.ivfDB.lbresDB.updateResult(result, stfapp, stfrpt, dateapp, daterpt, id);
+                    String re = ic.ivfDB.lbresDB.updateResult(result, interpret, stfapp, stfrpt, dateapp, daterpt, id);
                     long chk = 0;
                    if(long.TryParse(re, out chk))
                     {
@@ -346,6 +347,8 @@ namespace clinic_ivf.gui
                 {
                     grfProc[grfProc.Row, colRsInterpret] = result;
                 }
+                grfProc[grfProc.Row, colRsEdit] = "1";
+                grfProc.Rows[grfProc.Row].StyleNew.BackColor = color;
             }
         }
 

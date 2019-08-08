@@ -844,8 +844,8 @@ namespace clinic_ivf.gui
             frm.ShowDialog(this);
             if (!ic.cStf.staff_id.Equals(""))
             {
-                if (ic.iniC.statusAppDonor.Equals("1"))
-                {
+                //if (ic.iniC.statusAppDonor.Equals("1"))
+                //{
                     String re = ic.ivfDB.pApmDB.VoidPatientAppointment(txtApmID.Text, txtStfConfirmID.Text);
                     int chk = 0;
                     //Patient ptt1 = new Patient();
@@ -859,16 +859,16 @@ namespace clinic_ivf.gui
                         //re = txtID.Text;
                         //setControlEnable(false);
                     }
-                }
-                else
-                {
+                //}
+                //else
+                //{
                     //String re = ic.ivfDB.pttOldDB.insertPatientOld(ptt, txtStfConfirmID.Text);
                     //int chk = 0;
                     //if (int.TryParse(re, out chk))
                     //{
 
                     //}
-                }
+                //}
             }
         }
 

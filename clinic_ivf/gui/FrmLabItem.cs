@@ -295,11 +295,11 @@ namespace clinic_ivf.gui
             //grfInt.Cols[colRsMethod].Editor = cboMethod;
             //grfPosi.Cols[colCode].Width = 80;
             grfInt.Cols[colInValMin].Width = 65;
-            grfInt.Cols[colInValMax].Width = 65;
+            grfInt.Cols[colInValMax].Width = 90;
             grfInt.Cols[colInCriMin].Width = 65;
             grfInt.Cols[colInCriMax].Width = 65;
             grfInt.Cols[colInxx].Width = 65;
-            grfInt.Cols[colInInterpret].Width = 80;
+            grfInt.Cols[colInInterpret].Width = 160;
 
             grfInt.ShowCursor = true;
             //grdFlex.Cols[colID].Caption = "no";
