@@ -3092,7 +3092,6 @@ namespace clinic_ivf.gui
                     {
                         MessageBox.Show("error "+ errfor+" " + ex.Message, "BtnFinish_Click foreach grfOrder.Rows");
                     }
-                    
                 }
 
                 ic.ivfDB.nurseFinish(txtVnOld.Text);

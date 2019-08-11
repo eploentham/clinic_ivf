@@ -62,6 +62,7 @@ namespace clinic_ivf.objdb
             labI.datatype_decimal = "datatype_decimal";
             labI.status_datatype_result = "status_datatype_result";
             labI.status_interpret = "status_interpret";
+            labI.remark = "remark";
 
             labI.table = "LabItem";
             labI.pkField = "LID";
@@ -266,6 +267,7 @@ namespace clinic_ivf.objdb
             p.num_barcode = p.num_barcode == null ? "0" : p.num_barcode;
             p.status_datatype_result = p.status_datatype_result == null ? "0" : p.status_datatype_result;
             p.datatype_decimal = p.datatype_decimal == null ? "0" : p.datatype_decimal;
+            p.remark = p.remark == null ? "" : p.remark;
 
             p.status_show_qty = p.status_show_qty == null ? "0" : p.status_show_qty;
             p.status_order_group = p.status_order_group == null ? "0" : p.status_order_group;
@@ -332,6 +334,7 @@ namespace clinic_ivf.objdb
                 "," + labI.status_datatype_result + "= '" + p.status_datatype_result.Replace("'", "''") + "'" +
                 "," + labI.datatype_decimal + "= '" + p.datatype_decimal.Replace("'", "''") + "'" +
                 "," + labI.status_interpret + "= '" + p.status_interpret.Replace("'", "''") + "'" +
+                "," + labI.remark + "= '" + p.remark.Replace("'", "''") + "'" +
                 "";
             try
             {
@@ -382,6 +385,7 @@ namespace clinic_ivf.objdb
                 "," + labI.unit + "= '" + p.unit.Replace("'", "''") + "'" +
                 "," + labI.status_outlab + "= '" + p.status_outlab.Replace("'", "''") + "'" +
                 "," + labI.num_barcode + "= '" + p.num_barcode.Replace("'", "''") + "'" +
+                "," + labI.remark + "= '" + p.remark.Replace("'", "''") + "'" +
                 "Where " + labI.pkField + "='" + p.LID + "'";
             try
             {
@@ -476,6 +480,7 @@ namespace clinic_ivf.objdb
                 vsold1.status_datatype_result = dt.Rows[0][labI.status_datatype_result].ToString();
                 vsold1.datatype_decimal = dt.Rows[0][labI.datatype_decimal].ToString();
                 vsold1.status_interpret = dt.Rows[0][labI.status_interpret].ToString();
+                vsold1.remark = dt.Rows[0][labI.remark].ToString();
             }
             else
             {
@@ -522,6 +527,7 @@ namespace clinic_ivf.objdb
             stf1.status_datatype_result = "";
             stf1.datatype_decimal = "";
             stf1.status_interpret = "";
+            stf1.remark = "";
             return stf1;
         }
     }

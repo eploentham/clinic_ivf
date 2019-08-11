@@ -26,6 +26,6 @@ namespace clinic_ivf.object1
         public String interpret { get; set; }
         public String status_result { get; set; }
         public String row1 { get; set; }
-
+        public String lot_input { get; set; }
     }
 }

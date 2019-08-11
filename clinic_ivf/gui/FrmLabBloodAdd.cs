@@ -33,7 +33,7 @@ namespace clinic_ivf.gui
         Color bg, fc;
         Font ff, ffB;
         Color color;
-        int colRsId = 1, colRsLabName = 2, colRsMethod = 3, colRsResult = 4, colRsInterpret = 5, colRsUnit = 6, colRsNormal = 7, colRsRemark = 8, colRsLabId=9, colRsReqId=10, colRsEdit=11;
+        int colRsId = 1, colRsLabName = 2, colRsMethod = 3, colRsResult = 4, colRsInterpret = 5, colRsUnit = 6, colRsNormal = 7, colRsRemark = 8, colRsLabId=9, colRsReqId=10, colRsEdit=11, colRsLotInput=12;
 
         C1SuperTooltip stt;
         C1SuperErrorProvider sep;
@@ -157,11 +157,6 @@ namespace clinic_ivf.gui
             //frm.setSpermSf(dt);
             //frm.ShowDialog(this);
 
-
-
-
-
-
             FrmWaiting frmW = new FrmWaiting();
             frmW.Show();
             String filename = "", datetick = "";
@@ -261,19 +256,30 @@ namespace clinic_ivf.gui
                 MessageBox.Show("วันที่ ไม่ถูกต้อง", "");
                 return;
             }
-
+            String lotInput = "";
             foreach(Row row in grfProc.Rows)
             {
-                String id = "", edit = "", result="", interpret="";
+                String id = "", edit = "", result="", interpret="", remark, lotinput="";
                 id = row[colRsId] != null ? row[colRsId].ToString() : "";
                 edit = row[colRsEdit] != null ? row[colRsEdit].ToString() : "";
                 result = row[colRsResult] != null ? row[colRsResult].ToString() : "";
                 interpret = row[colRsInterpret] != null ? row[colRsInterpret].ToString() : "";
+                remark = row[colRsRemark] != null ? row[colRsRemark].ToString() : "";
+                lotinput = row[colRsLotInput] != null ? row[colRsLotInput].ToString() : "";
                 if (edit.Equals("1") && !result.Equals(""))
                 {
-                    String re = ic.ivfDB.lbresDB.updateResult(result, interpret, stfapp, stfrpt, dateapp, daterpt, id);
+                    if (lotinput.Equals(""))
+                    {
+                        lotinput = ic.ivfDB.lbresDB.selectLotInput(txtVsId.Text);
+                        int chk1 = 0;
+                        if(int.TryParse(lotinput, out chk1))
+                        {
+                            lotinput = (chk1 + 1).ToString();
+                        }
+                    }
+                    String re = ic.ivfDB.lbresDB.updateResult(result, interpret, stfapp, stfrpt, dateapp, daterpt, remark, id);
                     long chk = 0;
-                   if(long.TryParse(re, out chk))
+                    if(long.TryParse(re, out chk))
                     {
 
                     }
@@ -330,23 +336,36 @@ namespace clinic_ivf.gui
             if (grfProc.Col <= 0) return;
             if (grfProc.Col == colRsResult)
             {
-                Decimal result1 = 0;
                 String resid = "", labid = "", result = "";
-                OldLabItem labI = new OldLabItem();
-                resid = grfProc[grfProc.Row, colRsId] != null ? grfProc[grfProc.Row, colRsId].ToString() : "";
-                labid = grfProc[grfProc.Row, colRsLabId] != null ? grfProc[grfProc.Row, colRsLabId].ToString() : "";
                 result = grfProc[grfProc.Row, colRsResult] != null ? grfProc[grfProc.Row, colRsResult].ToString() : "";
-                labI = ic.ivfDB.oLabiDB.selectByPk1(labid);
-                if (labI.LID.Length <= 0) return;
-                if (labI.status_interpret.Equals("1"))
+                if (result.Equals("w"))
                 {
-                    if (!Decimal.TryParse(result, out result1)) return;
-                    grfProc[grfProc.Row, colRsInterpret] = ic.ivfDB.lbinDB.selectInterpret(labid, result1.ToString());
+                    grfProc[grfProc.Row, colRsInterpret] = "Wait for Result";
                 }
                 else
                 {
-                    grfProc[grfProc.Row, colRsInterpret] = result;
+                    Decimal result1 = 0;
+                    OldLabItem labI = new OldLabItem();
+                    resid = grfProc[grfProc.Row, colRsId] != null ? grfProc[grfProc.Row, colRsId].ToString() : "";
+                    labid = grfProc[grfProc.Row, colRsLabId] != null ? grfProc[grfProc.Row, colRsLabId].ToString() : "";
+
+                    labI = ic.ivfDB.oLabiDB.selectByPk1(labid);
+                    if (labI.LID.Length <= 0) return;
+                    if (labI.status_interpret.Equals("1"))
+                    {
+                        if(result.Equals(""))
+                        {
+                            grfProc[grfProc.Row, colRsInterpret] = "";
+                        }
+                        if (!Decimal.TryParse(result, out result1)) return;
+                        grfProc[grfProc.Row, colRsInterpret] = ic.ivfDB.lbinDB.selectInterpret(labid, result1.ToString());
+                    }
+                    else
+                    {
+                        grfProc[grfProc.Row, colRsInterpret] = result;
+                    }
                 }
+                
                 grfProc[grfProc.Row, colRsEdit] = "1";
                 grfProc.Rows[grfProc.Row].StyleNew.BackColor = color;
             }
@@ -368,7 +387,7 @@ namespace clinic_ivf.gui
             //grfExpn.Rows.Count = dt.Rows.Count + 1;
             grfProc.Rows.Count = dt.Rows.Count + 1;
             //grfSperm.DataSource = dt;
-            grfProc.Cols.Count = 12;
+            grfProc.Cols.Count = 13;
             CellStyle cs = grfProc.Styles.Add("bool");
             cs.DataType = typeof(bool);
             cs.ImageAlign = ImageAlignEnum.LeftCenter;
@@ -423,6 +442,8 @@ namespace clinic_ivf.gui
                     grfProc[i, colRsId] = row[ic.ivfDB.lbresDB.lbRes.result_id].ToString();
                     grfProc[i, colRsLabName] = row[ic.ivfDB.oLabiDB.labI.LName].ToString();
                     grfProc[i, colRsMethod] =  ic.ivfDB.lbmDB.getNameById(row[ic.ivfDB.oLabiDB.labI.method_id].ToString());
+                    grfProc[i, colRsRemark] = row[ic.ivfDB.lbresDB.lbRes.remark].ToString();
+                    grfProc[i, colRsLotInput] = row[ic.ivfDB.lbresDB.lbRes.lot_input].ToString();
                     if (row[ic.ivfDB.oLabiDB.labI.status_datatype_result].ToString().Equals("4"))       // combobox
                     {
                         C1ComboBox cbo = new C1ComboBox();
@@ -479,6 +500,8 @@ namespace clinic_ivf.gui
             grfProc.Cols[colRsId].Visible = false;
             grfProc.Cols[colRsLabId].Visible = false;
             grfProc.Cols[colRsReqId].Visible = false;
+            grfProc.Cols[colRsEdit].Visible = false;
+            grfProc.Cols[colRsLotInput].Visible = false;
 
             grfProc.Cols[colRsLabName].AllowEditing = false;
             //grfProc.Cols[colRsMethod].AllowEditing = false;
