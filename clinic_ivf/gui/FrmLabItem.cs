@@ -496,7 +496,7 @@ namespace clinic_ivf.gui
             labI.lab_unit_id = cboUnit.SelectedItem == null ? "" : ((ComboBoxItem)cboUnit.SelectedItem).Value;
             labI.method_id = cboMethod.SelectedItem == null ? "" : ((ComboBoxItem)cboMethod.SelectedItem).Value;
             labI.status_datatype_result = chkDataTypeText.Checked ? "1" : chkDataTypeInt.Checked ? "2" : chkDataTypeDec.Checked ? "3" : chkDataTypeCbo.Checked ? "4" : "0";
-            labI.datatype_decimal = txtDataTypeDec.Text;
+            //labI.datatype_decimal = txtDataTypeDec.Text;
             labI.status_datatype_result = chkDataTypeText.Checked ? "1" : chkDataTypeInt.Checked ? "2" : chkDataTypeDec.Checked ? "3" : chkDataTypeCbo.Checked ? "4" : "0";
             labI.datatype_decimal = txtDataTypeDec.Text;
             labI.status_interpret = chkInterpretText.Checked ? "0" : chkInterpretCbo.Checked ? "1" : "0";

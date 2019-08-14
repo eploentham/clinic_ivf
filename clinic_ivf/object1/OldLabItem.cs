@@ -45,5 +45,6 @@ namespace clinic_ivf.object1
         public String status_datatype_result { get; set; }
         public String datatype_decimal { get; set; }
         public String status_interpret { get; set; }
+        public String remark { get; set; }
     }
 }

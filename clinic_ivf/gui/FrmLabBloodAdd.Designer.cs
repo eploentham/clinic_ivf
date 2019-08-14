@@ -219,7 +219,7 @@
             this.c1Button3.Name = "c1Button3";
             this.c1Button3.Size = new System.Drawing.Size(105, 34);
             this.c1Button3.TabIndex = 975;
-            this.c1Button3.Text = "Print  Form3";
+            this.c1Button3.Text = "Print  All";
             this.c1Button3.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.theme1.SetTheme(this.c1Button3, "(default)");
             this.c1Button3.UseVisualStyleBackColor = true;
@@ -343,11 +343,11 @@
             // 
             this.btnPrint.Image = global::clinic_ivf.Properties.Resources.print;
             this.btnPrint.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnPrint.Location = new System.Drawing.Point(823, 61);
+            this.btnPrint.Location = new System.Drawing.Point(807, 61);
             this.btnPrint.Name = "btnPrint";
-            this.btnPrint.Size = new System.Drawing.Size(105, 34);
+            this.btnPrint.Size = new System.Drawing.Size(121, 34);
             this.btnPrint.TabIndex = 868;
-            this.btnPrint.Text = "Print  Form1";
+            this.btnPrint.Text = "Print  Hormone";
             this.btnPrint.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnPrint.UseVisualStyleBackColor = true;
             this.btnPrint.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;

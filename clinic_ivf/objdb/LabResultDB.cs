@@ -50,6 +50,7 @@ namespace clinic_ivf.objdb
             lbRes.interpret = "interpret";
             lbRes.status_result = "status_result";
             lbRes.row1 = "row1";
+            lbRes.lot_input = "lot_input";
 
             lbRes.table = "lab_t_result";
             lbRes.pkField = "result_id";
@@ -187,7 +188,7 @@ namespace clinic_ivf.objdb
         public DataTable selectLabBloodByVsId(String vsid)
         {
             DataTable dt = new DataTable();
-            String sql = "select lbRes.result,lbRes.interpret, LabItem.LName as lab_name,LabItem.lab_unit_id,LabItem.method_id,lab_b_unit.lab_unit_name as unit,lab_b_method.method_name as method " +
+            String sql = "select lbRes.result,lbRes.interpret,lbRes.remark, LabItem.LName as lab_name,LabItem.lab_unit_id,LabItem.method_id,lab_b_unit.lab_unit_name as unit,lab_b_method.method_name as method " +
                 " " +
                 "From " + lbRes.table + " lbRes " +
                 "Left Join LabItem on lbRes." + lbRes.lab_id + " = LabItem.LID " +
@@ -227,6 +228,21 @@ namespace clinic_ivf.objdb
                 "Order By lbRes." + lbRes.req_id;
             dt = conn.selectData(conn.conn, sql);
             return dt;
+        }
+        public String selectLotInput(String vsid)
+        {
+            DataTable dt = new DataTable();
+            String re = "";
+            String sql = "select lbRes.lot_input " +
+                "From " + lbRes.table + " lbRes " +
+                "Where  lbRes."+lbRes.visit_id+" = '"+vsid +"' " +
+                "Group By lbRes." + lbRes.lot_input;
+            dt = conn.selectData(conn.conn, sql);
+            if (dt.Rows.Count > 0)
+            {
+                re = dt.Rows[0][lbRes.lot_input].ToString();
+            }
+            return re;
         }
         public String selectRowNoByHnVn(String lab_id, String result, String docgid)
         {
@@ -273,6 +289,7 @@ namespace clinic_ivf.objdb
             p.normal_value = p.normal_value == null ? "" : p.normal_value;
             p.status_result = p.status_result == null ? "0" : p.status_result;
             p.row1 = p.row1 == null ? "0" : p.row1;
+            p.lot_input = p.lot_input == null ? "0" : p.lot_input;
 
             p.lis_id = long.TryParse(p.lis_id, out chk) ? chk.ToString() : "0";
             p.req_id = long.TryParse(p.req_id, out chk) ? chk.ToString() : "0";
@@ -318,6 +335,7 @@ namespace clinic_ivf.objdb
                 "," + lbRes.interpret + " " + "= '" + p.interpret + "'" +
                 "," + lbRes.status_result + " " + "= '" + p.status_result + "'" +
                 "," + lbRes.row1 + " " + "= '" + p.row1 + "'" +
+                "," + lbRes.lot_input + " " + "= '" + p.lot_input + "'" +
                 "";
             try
             {
@@ -383,7 +401,7 @@ namespace clinic_ivf.objdb
                 "," + lbRes.date_time_result + " = '" + p.date_time_result + "'" +
                 "," + lbRes.date_time_approve + " = '" + p.date_time_approve + "'" +
                 "," + lbRes.normal_value + " = '" + p.normal_value + "'" +
-                //"," + labR.normal_value + " " + "= '" + p.normal_value + "'" +
+                //"," + lbRes. + " " + "= '" + p.normal_value + "'" +
                 "," + lbRes.interpret + " " + "= '" + p.interpret + "'" +
                 "," + lbRes.status_result + " " + "= '" + p.status_result + "'" +
                 "," + lbRes.row1 + " " + "= '" + p.row1 + "'" +
@@ -416,7 +434,7 @@ namespace clinic_ivf.objdb
 
             return re;
         }
-        public String updateResult(String result, String interpret, String stfappid, String stfresid, String dateapp, String dateres,String resid)
+        public String updateResult(String result, String interpret, String stfappid, String stfresid, String dateapp, String dateres, String remark, String lot_input, String resid)
         {
             String re = "";
             String sql = "";
@@ -429,6 +447,8 @@ namespace clinic_ivf.objdb
                 "," + lbRes.date_time_approve + " = '" + dateapp + "'" +
                 "," + lbRes.date_time_result + " = '" + dateres + "'" +
                 "," + lbRes.interpret + " = '" + interpret.Replace("'","''") + "'" +
+                "," + lbRes.remark + " = '" + remark.Replace("'", "''") + "'" +
+                "," + lbRes.lot_input + " = '" + lot_input.Replace("'", "''") + "'" +
                 "Where " + lbRes.pkField + "='" + resid + "'"
                 ;
             try
@@ -516,6 +536,7 @@ namespace clinic_ivf.objdb
                 dgs1.normal_value = dt.Rows[0][lbRes.date_time_approve].ToString();
                 dgs1.status_result = dt.Rows[0][lbRes.status_result].ToString();
                 dgs1.row1 = dt.Rows[0][lbRes.row1].ToString();
+                dgs1.remark = dt.Rows[0][lbRes.remark].ToString();
             }
             else
             {
@@ -550,6 +571,7 @@ namespace clinic_ivf.objdb
             dgs1.normal_value = "";
             dgs1.status_result = "";
             dgs1.row1 = "";
+            dgs1.remark = "";
             return dgs1;
         }
     }
