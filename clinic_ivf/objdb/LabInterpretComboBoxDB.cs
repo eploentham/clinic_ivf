@@ -153,6 +153,46 @@ namespace clinic_ivf.objdb
             }
             return re;
         }
+        public String selectInterpretMax(String labid, String val)
+        {
+            LabInterpretComboBox cop1 = new LabInterpretComboBox();
+            DataTable dt = new DataTable();
+
+            String sql = "", re = "";
+            sql = "select * " +
+                "From " + lbM.table + " dgs " +
+                //"Left Join f_patient_prefix pfx On stf.prefix_id = pfx.f_patient_prefix_id " +
+                "Where dgs." + lbM.lab_id + " ='" + labid + "' " +
+                " and dgs.active = '1' " +
+                " and dgs." + lbM.min_value + "<=" + val + " and dgs." + lbM.max_value + " >= " + val + " " +
+                "";
+            dt = conn.selectData(conn.conn, sql);
+            if (dt.Rows.Count > 0)
+            {
+                re = dt.Rows[0][lbM.interpret].ToString();
+            }
+            return re;
+        }
+        public String selectInterpretMin(String labid, String val)
+        {
+            LabInterpretComboBox cop1 = new LabInterpretComboBox();
+            DataTable dt = new DataTable();
+
+            String sql = "", re = "";
+            sql = "select * " +
+                "From " + lbM.table + " dgs " +
+                //"Left Join f_patient_prefix pfx On stf.prefix_id = pfx.f_patient_prefix_id " +
+                "Where dgs." + lbM.lab_id + " ='" + labid + "' " +
+                " and dgs.active = '1' " +
+                " and dgs." + lbM.min_value + ">" + val + "  " +
+                "";
+            dt = conn.selectData(conn.conn, sql);
+            if (dt.Rows.Count > 0)
+            {
+                re = dt.Rows[0][lbM.interpret].ToString();
+            }
+            return re;
+        }
         private void chkNull(LabInterpretComboBox p)
         {
             long chk = 0;

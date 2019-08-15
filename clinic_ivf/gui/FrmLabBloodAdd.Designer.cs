@@ -215,7 +215,7 @@
             // 
             this.c1Button3.Image = ((System.Drawing.Image)(resources.GetObject("c1Button3.Image")));
             this.c1Button3.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.c1Button3.Location = new System.Drawing.Point(1045, 61);
+            this.c1Button3.Location = new System.Drawing.Point(1081, 60);
             this.c1Button3.Name = "c1Button3";
             this.c1Button3.Size = new System.Drawing.Size(105, 34);
             this.c1Button3.TabIndex = 975;
@@ -231,9 +231,9 @@
             this.c1Button1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.c1Button1.Location = new System.Drawing.Point(934, 61);
             this.c1Button1.Name = "c1Button1";
-            this.c1Button1.Size = new System.Drawing.Size(105, 34);
+            this.c1Button1.Size = new System.Drawing.Size(129, 34);
             this.c1Button1.TabIndex = 974;
-            this.c1Button1.Text = "Print  Form2";
+            this.c1Button1.Text = "Print  Infectious";
             this.c1Button1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.theme1.SetTheme(this.c1Button1, "(default)");
             this.c1Button1.UseVisualStyleBackColor = true;

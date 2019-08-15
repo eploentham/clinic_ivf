@@ -277,7 +277,7 @@ namespace clinic_ivf.gui
                             lotinput = (chk1 + 1).ToString();
                         }
                     }
-                    String re = ic.ivfDB.lbresDB.updateResult(result, interpret, stfapp, stfrpt, dateapp, daterpt, remark, id);
+                    String re = ic.ivfDB.lbresDB.updateResult(result, interpret, stfapp, stfrpt, dateapp, daterpt, remark, lotinput, id);
                     long chk = 0;
                     if(long.TryParse(re, out chk))
                     {
@@ -336,7 +336,7 @@ namespace clinic_ivf.gui
             if (grfProc.Col <= 0) return;
             if (grfProc.Col == colRsResult)
             {
-                String resid = "", labid = "", result = "";
+                String resid = "", labid = "", result = "", result2 = "";
                 result = grfProc[grfProc.Row, colRsResult] != null ? grfProc[grfProc.Row, colRsResult].ToString() : "";
                 if (result.Equals("w"))
                 {
@@ -357,8 +357,27 @@ namespace clinic_ivf.gui
                         {
                             grfProc[grfProc.Row, colRsInterpret] = "";
                         }
-                        if (!Decimal.TryParse(result, out result1)) return;
-                        grfProc[grfProc.Row, colRsInterpret] = ic.ivfDB.lbinDB.selectInterpret(labid, result1.ToString());
+                        if ((result.IndexOf(">")>=0) || ((result.IndexOf("<") >= 0)))
+                        {
+                            result2 = result.Replace(">", "").Replace("<", "");
+                            
+                        }
+                        else
+                        {
+                            result2 = result;
+                        }
+                        if (!Decimal.TryParse(result2, out result1)) return;
+                        String interpret = "";
+                        interpret = ic.ivfDB.lbinDB.selectInterpret(labid, result1.ToString());
+                        if (result.IndexOf(">")>=0)
+                        {
+                            interpret = ic.ivfDB.lbinDB.selectInterpretMax(labid, result1.ToString());
+                        }
+                        if (result.IndexOf("<") >= 0)
+                        {
+                            interpret = ic.ivfDB.lbinDB.selectInterpretMin(labid, result1.ToString());
+                        }
+                        grfProc[grfProc.Row, colRsInterpret] = interpret;
                     }
                     else
                     {
@@ -509,7 +528,7 @@ namespace clinic_ivf.gui
             //grfProc.Cols[colRsInterpret].AllowEditing = false;
             grfProc.Cols[colRsEdit].AllowEditing = false;
             grfProc.Cols[colRsNormal].AllowEditing = false;
-            grfProc.Cols[colRsRemark].AllowEditing = false;
+            grfProc.Cols[colRsRemark].AllowEditing = true;
             //theme1.SetTheme(grfFinish, ic.theme);
 
         }
