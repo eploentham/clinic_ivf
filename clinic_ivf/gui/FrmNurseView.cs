@@ -242,7 +242,8 @@ namespace clinic_ivf.gui
                     }
                     else
                     {
-                        setGrfQue(txtSearch.Text);
+                        //setGrfQue(txtSearch.Text);        //62-08-15
+                        setGrfSearch(txtSearch.Text);       //62-08-15
                     }
                 }
             }
