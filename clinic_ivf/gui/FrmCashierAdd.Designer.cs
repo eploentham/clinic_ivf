@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.txtBillId = new C1.Win.C1Input.C1TextBox();
             this.txtVnShow = new C1.Win.C1Input.C1TextBox();
             this.label20 = new System.Windows.Forms.Label();
             this.txtAgent = new C1.Win.C1Input.C1TextBox();
@@ -101,8 +102,9 @@
             this.label8 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.txtPayName = new C1.Win.C1Input.C1TextBox();
-            this.txtBillId = new C1.Win.C1Input.C1TextBox();
+            this.btnCalPtt = new C1.Win.C1Input.C1Button();
             this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtBillId)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtVnShow)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtAgent)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnPrnReceipt)).BeginInit();
@@ -148,12 +150,13 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtDiscount)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cboAccCash)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtPayName)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtBillId)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnCalPtt)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBox1
             // 
             this.groupBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.groupBox1.Controls.Add(this.btnCalPtt);
             this.groupBox1.Controls.Add(this.txtBillId);
             this.groupBox1.Controls.Add(this.txtVnShow);
             this.groupBox1.Controls.Add(this.label20);
@@ -197,6 +200,20 @@
             this.groupBox1.Text = "Patient";
             this.theme1.SetTheme(this.groupBox1, "(default)");
             this.groupBox1.Enter += new System.EventHandler(this.GroupBox1_Enter);
+            // 
+            // txtBillId
+            // 
+            this.txtBillId.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtBillId.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
+            this.txtBillId.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.txtBillId.Location = new System.Drawing.Point(1239, 15);
+            this.txtBillId.Name = "txtBillId";
+            this.txtBillId.Size = new System.Drawing.Size(30, 20);
+            this.txtBillId.TabIndex = 705;
+            this.txtBillId.Tag = null;
+            this.theme1.SetTheme(this.txtBillId, "(default)");
+            this.txtBillId.Visible = false;
+            this.txtBillId.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
             // 
             // txtVnShow
             // 
@@ -1230,19 +1247,19 @@
             this.theme1.SetTheme(this.txtPayName, "(default)");
             this.txtPayName.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
             // 
-            // txtBillId
+            // btnCalPtt
             // 
-            this.txtBillId.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtBillId.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
-            this.txtBillId.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.txtBillId.Location = new System.Drawing.Point(1239, 15);
-            this.txtBillId.Name = "txtBillId";
-            this.txtBillId.Size = new System.Drawing.Size(30, 20);
-            this.txtBillId.TabIndex = 705;
-            this.txtBillId.Tag = null;
-            this.theme1.SetTheme(this.txtBillId, "(default)");
-            this.txtBillId.Visible = false;
-            this.txtBillId.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            this.btnCalPtt.Image = global::clinic_ivf.Properties.Resources.InsertColumnBefore_small;
+            this.btnCalPtt.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnCalPtt.Location = new System.Drawing.Point(1167, 52);
+            this.btnCalPtt.Name = "btnCalPtt";
+            this.btnCalPtt.Size = new System.Drawing.Size(80, 31);
+            this.btnCalPtt.TabIndex = 706;
+            this.btnCalPtt.Text = "Send to Ptt";
+            this.btnCalPtt.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.theme1.SetTheme(this.btnCalPtt, "(default)");
+            this.btnCalPtt.UseVisualStyleBackColor = true;
+            this.btnCalPtt.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
             // 
             // FrmCashierAdd
             // 
@@ -1259,6 +1276,7 @@
             this.Load += new System.EventHandler(this.FrmCashierAdd_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtBillId)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtVnShow)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtAgent)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnPrnReceipt)).EndInit();
@@ -1308,7 +1326,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtDiscount)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cboAccCash)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtPayName)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtBillId)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnCalPtt)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1390,5 +1408,6 @@
         private C1.Win.C1Input.C1TextBox txtAgent;
         private C1.Win.C1Input.C1TextBox txtVnShow;
         private C1.Win.C1Input.C1TextBox txtBillId;
+        private C1.Win.C1Input.C1Button btnCalPtt;
     }
 }

@@ -99,6 +99,7 @@ namespace clinic_ivf.gui
             chkDiscountCash.Click += ChkDiscountCash_Click;
             chkDiscountPer.Click += ChkDiscountPer_Click;
             btnPrnReceipt.Click += BtnPrnReceipt_Click;
+            btnCalPtt.Click += BtnCalPtt_Click;
             //txtTotalCash.KeyPress += TxtTotalCash_KeyPress;
             //txtTotalCredit.KeyPress += TxtTotalCredit_KeyPress;
 
@@ -113,6 +114,13 @@ namespace clinic_ivf.gui
             //MessageBox.Show(DateTime.Now.ToString("MM"), "");
             //MessageBox.Show(DateTime.Now.ToString("dd"), "");
         }
+
+        private void BtnCalPtt_Click(object sender, EventArgs e)
+        {
+            //throw new NotImplementedException();
+
+        }
+
         private void BtnPrnReceipt_Click(object sender, EventArgs e)
         {
             //throw new NotImplementedException();
