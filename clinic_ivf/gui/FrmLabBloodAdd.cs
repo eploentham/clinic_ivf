@@ -351,7 +351,7 @@ namespace clinic_ivf.gui
             if (grfProc.Col <= 0) return;
             if (grfProc.Col == colRsResult)
             {
-                String resid = "", labid = "", result = "";
+                String resid = "", labid = "", result = "", result2="";
                 result = grfProc[grfProc.Row, colRsResult] != null ? grfProc[grfProc.Row, colRsResult].ToString() : "";
                 if (result.Equals("w"))
                 {
@@ -372,7 +372,11 @@ namespace clinic_ivf.gui
                         {
                             grfProc[grfProc.Row, colRsInterpret] = "";
                         }
-                        if (!Decimal.TryParse(result, out result1)) return;
+                        if (result.IndexOf("<") >= 0 || (result.IndexOf(">") >= 0))
+                        {
+                            result2 = result.Replace("<", "").Replace(">", "");
+                        }
+                        if (!Decimal.TryParse(result2, out result1)) return;
                         grfProc[grfProc.Row, colRsInterpret] = ic.ivfDB.lbinDB.selectInterpret(labid, result1.ToString());
                     }
                     else
