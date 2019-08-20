@@ -6344,9 +6344,9 @@ namespace clinic_ivf.gui
             grfPg.ShowCursor = true;
             //grdFlex.Cols[colID].Caption = "no";
             //grfDept.Cols[colCode].Caption = "รหัส";
-            
+                        
             grfPg.Cols[colPgFilename].Caption = "Desc1";
-            
+                        
 
             Color color = ColorTranslator.FromHtml(ic.iniC.grfRowColor);
             //CellRange rg1 = grfBank.GetCellRange(1, colE, grfBank.Rows.Count, colE);
@@ -6356,7 +6356,7 @@ namespace clinic_ivf.gui
                 return;
             
             
-            Thread trftp = new Thread(() =>
+            Thread pump = new Thread(() =>
             {
                 Thread.CurrentThread.IsBackground = true;
                 
@@ -6426,7 +6426,7 @@ namespace clinic_ivf.gui
                     MessageBox.Show("setGrfPg 2 " + ex.Message + "\n ", "host " + ic.iniC.hostFTP + " user " + user + " pas  " + pass);
                 }
             });
-            trftp.Start();
+            pump.Start();
                     //pump.Join();
                     //grfImg.AutoSizeCols();
                     //grfImg.AutoSizeRows();

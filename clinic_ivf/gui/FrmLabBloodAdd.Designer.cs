@@ -32,7 +32,7 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.txtDob = new C1.Win.C1Input.C1TextBox();
             this.c1Button3 = new C1.Win.C1Input.C1Button();
-            this.c1Button1 = new C1.Win.C1Input.C1Button();
+            this.btnPrintInfectious = new C1.Win.C1Input.C1Button();
             this.txtSex = new C1.Win.C1Input.C1TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.txtPttId = new C1.Win.C1Input.C1TextBox();
@@ -40,7 +40,7 @@
             this.txtVn = new C1.Win.C1Input.C1TextBox();
             this.txtVnShow = new C1.Win.C1Input.C1TextBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.btnPrint = new C1.Win.C1Input.C1Button();
+            this.btnPrintHomone = new C1.Win.C1Input.C1Button();
             this.btnApproveResult = new C1.Win.C1Input.C1Button();
             this.btnSave = new C1.Win.C1Input.C1Button();
             this.label1 = new System.Windows.Forms.Label();
@@ -130,13 +130,13 @@
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtDob)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.c1Button3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.c1Button1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnPrintInfectious)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtSex)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtPttId)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtVsId)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtVn)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtVnShow)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.btnPrint)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnPrintHomone)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnApproveResult)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnSave)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtApprovDate)).BeginInit();
@@ -168,7 +168,7 @@
             // 
             this.panel1.Controls.Add(this.txtDob);
             this.panel1.Controls.Add(this.c1Button3);
-            this.panel1.Controls.Add(this.c1Button1);
+            this.panel1.Controls.Add(this.btnPrintInfectious);
             this.panel1.Controls.Add(this.txtSex);
             this.panel1.Controls.Add(this.label6);
             this.panel1.Controls.Add(this.txtPttId);
@@ -176,7 +176,7 @@
             this.panel1.Controls.Add(this.txtVn);
             this.panel1.Controls.Add(this.txtVnShow);
             this.panel1.Controls.Add(this.label3);
-            this.panel1.Controls.Add(this.btnPrint);
+            this.panel1.Controls.Add(this.btnPrintHomone);
             this.panel1.Controls.Add(this.btnApproveResult);
             this.panel1.Controls.Add(this.btnSave);
             this.panel1.Controls.Add(this.label1);
@@ -215,9 +215,9 @@
             // 
             this.c1Button3.Image = ((System.Drawing.Image)(resources.GetObject("c1Button3.Image")));
             this.c1Button3.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.c1Button3.Location = new System.Drawing.Point(1081, 60);
+            this.c1Button3.Location = new System.Drawing.Point(1062, 61);
             this.c1Button3.Name = "c1Button3";
-            this.c1Button3.Size = new System.Drawing.Size(105, 34);
+            this.c1Button3.Size = new System.Drawing.Size(88, 34);
             this.c1Button3.TabIndex = 975;
             this.c1Button3.Text = "Print  All";
             this.c1Button3.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -225,19 +225,19 @@
             this.c1Button3.UseVisualStyleBackColor = true;
             this.c1Button3.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
             // 
-            // c1Button1
+            // btnPrintInfectious
             // 
-            this.c1Button1.Image = ((System.Drawing.Image)(resources.GetObject("c1Button1.Image")));
-            this.c1Button1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.c1Button1.Location = new System.Drawing.Point(934, 61);
-            this.c1Button1.Name = "c1Button1";
-            this.c1Button1.Size = new System.Drawing.Size(129, 34);
-            this.c1Button1.TabIndex = 974;
-            this.c1Button1.Text = "Print  Infectious";
-            this.c1Button1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.theme1.SetTheme(this.c1Button1, "(default)");
-            this.c1Button1.UseVisualStyleBackColor = true;
-            this.c1Button1.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            this.btnPrintInfectious.Image = ((System.Drawing.Image)(resources.GetObject("btnPrintInfectious.Image")));
+            this.btnPrintInfectious.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnPrintInfectious.Location = new System.Drawing.Point(934, 61);
+            this.btnPrintInfectious.Name = "btnPrintInfectious";
+            this.btnPrintInfectious.Size = new System.Drawing.Size(122, 34);
+            this.btnPrintInfectious.TabIndex = 974;
+            this.btnPrintInfectious.Text = "Print  Infectious";
+            this.btnPrintInfectious.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.theme1.SetTheme(this.btnPrintInfectious, "(default)");
+            this.btnPrintInfectious.UseVisualStyleBackColor = true;
+            this.btnPrintInfectious.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
             // 
             // txtSex
             // 
@@ -339,18 +339,18 @@
             this.label3.Text = "VN :";
             this.theme1.SetTheme(this.label3, "(default)");
             // 
-            // btnPrint
+            // btnPrintHomone
             // 
-            this.btnPrint.Image = global::clinic_ivf.Properties.Resources.print;
-            this.btnPrint.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnPrint.Location = new System.Drawing.Point(807, 61);
-            this.btnPrint.Name = "btnPrint";
-            this.btnPrint.Size = new System.Drawing.Size(121, 34);
-            this.btnPrint.TabIndex = 868;
-            this.btnPrint.Text = "Print  Hormone";
-            this.btnPrint.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnPrint.UseVisualStyleBackColor = true;
-            this.btnPrint.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            this.btnPrintHomone.Image = global::clinic_ivf.Properties.Resources.print;
+            this.btnPrintHomone.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnPrintHomone.Location = new System.Drawing.Point(807, 61);
+            this.btnPrintHomone.Name = "btnPrintHomone";
+            this.btnPrintHomone.Size = new System.Drawing.Size(121, 34);
+            this.btnPrintHomone.TabIndex = 868;
+            this.btnPrintHomone.Text = "Print  Hormone";
+            this.btnPrintHomone.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnPrintHomone.UseVisualStyleBackColor = true;
+            this.btnPrintHomone.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
             // 
             // btnApproveResult
             // 
@@ -1216,13 +1216,13 @@
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtDob)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.c1Button3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.c1Button1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnPrintInfectious)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtSex)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtPttId)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtVsId)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtVn)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtVnShow)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.btnPrint)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnPrintHomone)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnApproveResult)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnSave)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtApprovDate)).EndInit();
@@ -1274,7 +1274,7 @@
         private C1.Win.C1Input.C1DateEdit txtReportDate;
         private C1.Win.C1Input.C1Button btnApproveResult;
         private C1.Win.C1Input.C1Button btnSave;
-        private C1.Win.C1Input.C1Button btnPrint;
+        private C1.Win.C1Input.C1Button btnPrintHomone;
         private C1.Win.C1Themes.C1ThemeController theme1;
         private System.Windows.Forms.StatusStrip sB;
         private System.Windows.Forms.ToolStripStatusLabel sB1;
@@ -1352,7 +1352,7 @@
         private C1.Win.C1Input.C1TextBox txtEmailTo;
         private C1.Win.C1Input.C1TextBox txtEmailBody;
         private C1.Win.C1Input.C1Button c1Button3;
-        private C1.Win.C1Input.C1Button c1Button1;
+        private C1.Win.C1Input.C1Button btnPrintInfectious;
         private C1.Win.C1Input.C1TextBox txtDob;
         private C1.Win.C1Command.C1DockingTabPage tabReport;
         private CrystalDecisions.Windows.Forms.CrystalReportViewer cryLab;

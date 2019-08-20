@@ -278,28 +278,6 @@ namespace clinic_ivf.objdb
             dt = conn.selectData(conn.conn, sql);
             return dt;
         }
-        public DataTable selectByStatusFinish(String search)
-        {
-            DataTable dt = new DataTable();
-            String sql = "select lsperm.*, Doctor.Name as dtr_name " +
-                "From " + lsperm.table + " lsperm " +
-                "Left Join Doctor on Doctor.ID = lsperm.doctor_id " +
-                //"Left Join lab_b_procedure on opu.proce_id = lab_b_procedure.proce_id " +
-                "Where lsperm." + lsperm.status_lab + " ='2' and lsperm." + lsperm.active + "='1' " +
-                //"and lsperm." + lsperm.date_finish + " >= '" + datestart + " 00:00:00' and lsperm." + lsperm.date_finish + " <= '" + dateend + " 23:59:59' " +
-                " and lsperm." + lsperm.hn_male + " like '%" + search + "%' " +
-            //"Order By opu." + opu.opu_id + " " +
-            //"Union " +
-            //"select fet.fet_id , fet.fet_code ,fet.hn_female ,fet.name_female,fet.fet_date ,fet.remark, fet.hn_male, fet.name_male, lab_b_procedure.proce_name_t " +
-            //"From lab_t_fet fet  " +
-            //"Left Join Doctor on Doctor.ID = fet.doctor_id " +
-            //"Left Join lab_b_procedure on fet.proce_id = lab_b_procedure.proce_id " +
-            //"Where fet.status_fet ='1' and fet.active + '1' " +
-            //"Order By fet.fet_id  ";
-            "  ";
-            dt = conn.selectData(conn.conn, sql);
-            return dt;
-        }
         public DataTable selectByStatusFinish(String datestart, String dateend)
         {
             DataTable dt = new DataTable();
@@ -309,7 +287,6 @@ namespace clinic_ivf.objdb
                 //"Left Join lab_b_procedure on opu.proce_id = lab_b_procedure.proce_id " +
                 "Where lsperm." + lsperm.status_lab + " ='2' and lsperm." + lsperm.active + "='1' " +
                 "and lsperm." + lsperm.date_finish + " >= '" + datestart + " 00:00:00' and lsperm." + lsperm.date_finish + " <= '" + dateend + " 23:59:59' " +
-                //" and lsperm."+ lsperm.hn_male+" like '%" + search +"%' "+
             //"Order By opu." + opu.opu_id + " " +
             //"Union " +
             //"select fet.fet_id , fet.fet_code ,fet.hn_female ,fet.name_female,fet.fet_date ,fet.remark, fet.hn_male, fet.name_male, lab_b_procedure.proce_name_t " +

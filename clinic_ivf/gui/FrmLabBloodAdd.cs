@@ -64,8 +64,9 @@ namespace clinic_ivf.gui
 
             btnSave.Click += BtnSave_Click;
             btnApproveResult.Click += BtnApproveResult_Click;
-            btnPrint.Click += BtnPrint_Click;
+            btnPrintHomone.Click += BtnPrintHomone_Click;
             btnSendEmail.Click += BtnSendEmail_Click;
+            btnPrintInfectious.Click += BtnPrintInfectious_Click;
 
             sB1.Text = "";
             bg = txtHn.BackColor;
@@ -85,6 +86,20 @@ namespace clinic_ivf.gui
             initGrfProc();
             setControl();
         }
+
+        private void BtnPrintInfectious_Click(object sender, EventArgs e)
+        {
+            //throw new NotImplementedException();
+            FrmReport frm = new FrmReport(ic);
+            DataTable dt = new DataTable();
+            dt = ic.ivfDB.lbresDB.selectLabBloodByVsIdInfectious(txtVsId.Text);
+
+            String date1 = "";
+
+            frm.setLabBloodReport(dt, txtHn.Text, txtPttNameE.Text, txtDob.Text, txtSex.Text, cboEmbryologistReport.Text, cboEmbryologistAppv.Text, txtReportDate.Text, txtApprovDate.Text);
+            frm.ShowDialog(this);
+        }
+
         private Boolean setReportLabBlood(String filename)
         {
             Boolean chk1 = true;
@@ -202,12 +217,12 @@ namespace clinic_ivf.gui
             SmtpServer.Send(mail);
         }
 
-        private void BtnPrint_Click(object sender, EventArgs e)
+        private void BtnPrintHomone_Click(object sender, EventArgs e)
         {
             //throw new NotImplementedException();
             FrmReport frm = new FrmReport(ic);
             DataTable dt = new DataTable();
-            dt = ic.ivfDB.lbresDB.selectLabBloodByVsId(txtVsId.Text);
+            dt = ic.ivfDB.lbresDB.selectLabBloodByVsIdHomone(txtVsId.Text);
 
             String date1 = "";
 
@@ -336,7 +351,7 @@ namespace clinic_ivf.gui
             if (grfProc.Col <= 0) return;
             if (grfProc.Col == colRsResult)
             {
-                String resid = "", labid = "", result = "", result2 = "";
+                String resid = "", labid = "", result = "";
                 result = grfProc[grfProc.Row, colRsResult] != null ? grfProc[grfProc.Row, colRsResult].ToString() : "";
                 if (result.Equals("w"))
                 {
@@ -357,27 +372,8 @@ namespace clinic_ivf.gui
                         {
                             grfProc[grfProc.Row, colRsInterpret] = "";
                         }
-                        if ((result.IndexOf(">")>=0) || ((result.IndexOf("<") >= 0)))
-                        {
-                            result2 = result.Replace(">", "").Replace("<", "");
-                            
-                        }
-                        else
-                        {
-                            result2 = result;
-                        }
-                        if (!Decimal.TryParse(result2, out result1)) return;
-                        String interpret = "";
-                        interpret = ic.ivfDB.lbinDB.selectInterpret(labid, result1.ToString());
-                        if (result.IndexOf(">")>=0)
-                        {
-                            interpret = ic.ivfDB.lbinDB.selectInterpretMax(labid, result1.ToString());
-                        }
-                        if (result.IndexOf("<") >= 0)
-                        {
-                            interpret = ic.ivfDB.lbinDB.selectInterpretMin(labid, result1.ToString());
-                        }
-                        grfProc[grfProc.Row, colRsInterpret] = interpret;
+                        if (!Decimal.TryParse(result, out result1)) return;
+                        grfProc[grfProc.Row, colRsInterpret] = ic.ivfDB.lbinDB.selectInterpret(labid, result1.ToString());
                     }
                     else
                     {
@@ -528,7 +524,7 @@ namespace clinic_ivf.gui
             //grfProc.Cols[colRsInterpret].AllowEditing = false;
             grfProc.Cols[colRsEdit].AllowEditing = false;
             grfProc.Cols[colRsNormal].AllowEditing = false;
-            grfProc.Cols[colRsRemark].AllowEditing = true;
+            grfProc.Cols[colRsRemark].AllowEditing = false;
             //theme1.SetTheme(grfFinish, ic.theme);
 
         }

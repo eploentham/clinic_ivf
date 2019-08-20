@@ -84,7 +84,7 @@ namespace clinic_ivf.gui
             setGrfReq();
             setGrfProc();
             setGrfFinish();
-            initGrfSearch();
+            initGrfSearch();   //111
         }
 
         private void BtnIui_Click(object sender, EventArgs e)
@@ -164,7 +164,7 @@ namespace clinic_ivf.gui
             //FilterRow fr = new FilterRow(grfExpn);
 
             //grfSearch.AfterRowColChange += GrfReq_AfterRowColChange;
-            grfSearch.DoubleClick += GrfSearch_DoubleClick;
+            //grfSearch.DoubleClick += GrfReq_DoubleClick;
             //grfExpnC.CellChanged += new C1.Win.C1FlexGrid.RowColEventHandler(this.grfDept_CellChanged);
             //ContextMenu menuGw = new ContextMenu();
             //menuGw.MenuItems.Add("ป้อน LAB OPU/FET", new EventHandler(ContextMenu_edit));
@@ -175,31 +175,13 @@ namespace clinic_ivf.gui
 
             theme1.SetTheme(grfSearch, "Office2010Blue");
         }
-
-        private void GrfSearch_DoubleClick(object sender, EventArgs e)
-        {
-            //throw new NotImplementedException();
-            String chk = "", name = "", id = "";
-            id = grfSearch[grfSearch.Row, colPcId] != null ? grfSearch[grfSearch.Row, colPcId].ToString() : "";
-            chk = grfSearch[grfSearch.Row, colPcStatusSperm] != null ? grfSearch[grfSearch.Row, colPcStatusSperm].ToString() : "";
-            name = grfSearch[grfSearch.Row, colPcNameMale] != null ? grfSearch[grfSearch.Row, colPcNameMale].ToString() : "";
-            //if (MessageBox.Show("ต้องการ ป้อน LAB OPU  \n  opu number " + chk + " \n name " + name, "", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == DialogResult.OK)
-            //{
-            //grfReq.Rows.Remove(grfReq.Row);
-            Cursor curOld;
-            curOld = this.Cursor;
-            this.Cursor = Cursors.WaitCursor;
-            openLabOPUAdd(id, name, chk.Equals("2") ? " Analysis " : chk.Equals("1") ? " Freezing " : chk.Equals("3") ? " PESA " : " IUI ");
-            this.Cursor = curOld;
-        }
-
         private void setGrfSearch()
         {
             grfSearch.DataSource = null;
             grfSearch.Clear();
             DataTable dt = new DataTable();
 
-            dt = ic.ivfDB.lspermDB.selectByStatusFinish(txtSearch.Text);
+            dt = ic.ivfDB.lspermDB.selectByStatusFinish("","");
             //grfExpn.Rows.Count = dt.Rows.Count + 1;
             grfSearch.Rows.Count = 1;
             grfSearch.Cols.Count = 10;
@@ -223,7 +205,7 @@ namespace clinic_ivf.gui
 
             grfSearch.Cols[colPcDate].Caption = "Date";
             grfSearch.Cols[colPcHnMale].Caption = "HN";
-            grfSearch.Cols[colPcNameMale].Caption = "Patient Name";
+            grfSearch.Cols[colPcNameMale].Caption = "Name";
             grfSearch.Cols[colPcSpermName].Caption = "LAB";
             grfSearch.Cols[colPcRemark].Caption = "Reamrk";
             grfSearch.Cols[colPcTime].Caption = "Time";
@@ -265,7 +247,7 @@ namespace clinic_ivf.gui
                     row1[colPcDate] = ic.datetoShow(row[ic.ivfDB.lspermDB.lsperm.iui_date].ToString());
                     //row1[colOPUTime] = ic.timetoShow(row[ic.ivfDB.lspermDB.lsperm.sperm_analysis_date_start].ToString());
                 }
-                row1[colPcStatusSperm] = row[ic.ivfDB.lspermDB.lsperm.status_lab_sperm].ToString();
+                row1[colRqStatusSperm] = row[ic.ivfDB.lspermDB.lsperm.status_lab_sperm].ToString();
                 row1[colPcSpermName] = row[ic.ivfDB.lspermDB.lsperm.status_lab_sperm].ToString().Equals("1") ? "Sperm Freezing"
                     : row[ic.ivfDB.lspermDB.lsperm.status_lab_sperm].ToString().Equals("2") ? "Sperm Analysis"
                     : row[ic.ivfDB.lspermDB.lsperm.status_lab_sperm].ToString().Equals("3") ? " PESA"

@@ -870,3 +870,30 @@ ENGINE = MyISAM
 DEFAULT CHARACTER SET = utf8
 COLLATE = utf8_bin
 COMMENT = 'id=248';
+
+CREATE TABLE `ivf_101_donor`.`lab_b_group` (
+  `lab_group_id` BIGINT NOT NULL,
+  `lab_group_name` VARCHAR(45) NULL,
+  `active` VARCHAR(45) NULL,
+  `remark` VARCHAR(45) NULL,
+  `date_create` VARCHAR(45) NULL,
+  `date_modi` VARCHAR(45) NULL,
+  `date_cancel` VARCHAR(45) NULL,
+  `user_create` VARCHAR(45) NULL,
+  `user_modi` VARCHAR(45) NULL,
+  `user_cancel` VARCHAR(45) NULL,
+  `sort1` VARCHAR(45) NULL,
+  PRIMARY KEY (`lab_group_id`))
+ENGINE = MyISAM
+DEFAULT CHARACTER SET = utf8
+COLLATE = utf8_bin
+COMMENT = 'id=255';
+
+ALTER TABLE `ivf_101_donor`.`lab_b_group` 
+CHANGE COLUMN `lab_group_id` `lab_group_id` BIGINT(20) NOT NULL AUTO_INCREMENT ;
+
+ALTER TABLE `ivf_101_donor`.`lab_b_group` AUTO_INCREMENT = 2550000000;
+
+ALTER TABLE `ivf_101`.`LabItem` 
+ADD COLUMN `lab_group_id` BIGINT NULL AFTER `remark`;
+
