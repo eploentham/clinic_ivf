@@ -153,6 +153,62 @@ namespace clinic_ivf.objdb
             }
             return re;
         }
+        public String selectInterpretMin(String labid, String val)
+        {
+            LabInterpretComboBox cop1 = new LabInterpretComboBox();
+            DataTable dt = new DataTable();
+
+            String sql = "", re = "";
+            sql = "select * " +
+                "From " + lbM.table + " dgs " +
+                //"Left Join f_patient_prefix pfx On stf.prefix_id = pfx.f_patient_prefix_id " +
+                "Where dgs." + lbM.lab_id + " ='" + labid + "' " +
+                " and dgs.active = '1' " +
+                " and dgs." + lbM.min_value + " = (Select min(" + lbM.min_value + ") From " + lbM.table + " Where " + lbM.lab_id + " ='" + labid + "' and active = '1' ) " +
+                "";
+            dt = conn.selectData(conn.conn, sql);
+            if (dt.Rows.Count > 0)
+            {
+                Decimal min_val = 0, val1 = 0;
+                Decimal.TryParse(val, out val1);
+                Decimal.TryParse(dt.Rows[0][lbM.min_value].ToString(), out min_val);
+                if(val1 <= min_val)
+                {
+                    re = dt.Rows[0][lbM.interpret].ToString();
+                }
+
+                //re = dt.Rows[0][lbM.interpret].ToString();
+            }
+            return re;
+        }
+        public String selectInterpretMax(String labid, String val)
+        {
+            LabInterpretComboBox cop1 = new LabInterpretComboBox();
+            DataTable dt = new DataTable();
+
+            String sql = "", re = "";
+            sql = "select * " +
+                "From " + lbM.table + " dgs " +
+                //"Left Join f_patient_prefix pfx On stf.prefix_id = pfx.f_patient_prefix_id " +
+                "Where dgs." + lbM.lab_id + " ='" + labid + "' " +
+                " and dgs.active = '1' " +
+                " and dgs." + lbM.min_value + " = (Select max(" + lbM.min_value + ") From " + lbM.table + " Where " + lbM.lab_id + " ='" + labid + "' and active = '1' ) " +
+                "";
+            dt = conn.selectData(conn.conn, sql);
+            if (dt.Rows.Count > 0)
+            {
+                Decimal max_val = 0, val1 = 0;
+                Decimal.TryParse(val, out val1);
+                Decimal.TryParse(dt.Rows[0][lbM.min_value].ToString(), out max_val);
+                if (val1 >= max_val)
+                {
+                    re = dt.Rows[0][lbM.interpret].ToString();
+                }
+
+                //re = dt.Rows[0][lbM.interpret].ToString();
+            }
+            return re;
+        }
         private void chkNull(LabInterpretComboBox p)
         {
             long chk = 0;

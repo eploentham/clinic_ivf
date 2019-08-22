@@ -322,6 +322,7 @@ namespace clinic_ivf.objdb
             //sql = "select appnOld.* " +
                 "From " + pApmO.table + " appnOld " +
                 "Left Join Doctor  On LOWER(Doctor.Name) = LOWER(appnOld.Doctor) " +
+                "" +
             "Where " + wheredate + wheredoctor +
             " Order By " + pApmO.AppDate + ",aaa ";
 

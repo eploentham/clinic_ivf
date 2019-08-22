@@ -34,7 +34,7 @@ namespace clinic_ivf.gui
 
         int colID = 1, colpttId = 2, colVsTime = 3, colPttHn = 4, colVsCode = 5, colVsPttName = 6, colVsDoctor = 7, colVsSperm = 8, colVsDay6 = 9, colVsDay7 = 10, colVsDay8 = 11, colVsDay9=12, colVsDay10=13, colVsDay11=14;
         int colVsTVS = 15, colVsPesa = 16, colVsSpermF = 17, colVsOPU = 18, colVsET = 19, colVsFET=20, colVsHCG = 21, colVsSpermOPU = 22, colVsTrans = 23, colVsANC = 24, colVsAnes = 25;
-        int colVSE2 = 26, colVSLh = 27, colVSPrl = 28, colVSFsh = 29, colVsRemark = 30, colVsStatus=31, colConn=32;
+        int colVSE2 = 26, colVSLh = 27, colVSPrl = 28, colVSFsh = 29, colVsAgent=30, colVsRemark = 31, colVsStatus=32, colConn=33;
 
         int colpApmPttId = 1,colpApmPttName = 2;
 
@@ -475,7 +475,8 @@ namespace clinic_ivf.gui
                 if (ic.iniC.statusAppDonor.Equals("1"))
                 {
                     dt1 = ic.ivfDB.pApmDB.selectByDayDtrId(ic.conn.conn, datestart1, dateend1, dtrid);
-                    dt2 = ic.ivfDB.pApmOldDB.selectByDateDtr(ic.conn.connEx, datestart1, dateend1, dtrid);
+                    //dt2 = ic.ivfDB.pApmOldDB.selectByDateDtr(ic.conn.connEx, datestart1, dateend1, dtrid);        //   -   แก้ให้เหลือแต่ t_appointment   62-08-22
+                    dt2 = ic.ivfDB.pApmDB.selectByDayDtrId(ic.conn.connEx, datestart1, dateend1, dtrid);        //   +   แก้ให้เหลือแต่ t_appointment   62-08-22
                 }
                 else
                 {
@@ -493,7 +494,8 @@ namespace clinic_ivf.gui
                     //fet = row1[ic.ivfDB.appnOldDB.appnOld.ET_FET].ToString().Equals("1") ? row1[ic.ivfDB.appnOldDB.appnOld.ET_FET_Time] != null ? "ET/FET [" + row1[ic.ivfDB.appnOldDB.appnOld.ET_FET_Time].ToString() + "]": "ET/FET" : "";
                     //other = row1[ic.ivfDB.appnOldDB.appnOld.Other].ToString().Equals("1") ? row1[ic.ivfDB.appnOldDB.appnOld.OtherRemark] != null ? "Other " + row1[ic.ivfDB.appnOldDB.appnOld.OtherRemark].ToString() : "Other " : "";
                     //appn = row1["aaa"].ToString() + " " + hormo + " " + tvs + " " + opu + " " + beta + " " + fet + " " + other;
-                    appn = ic.ivfDB.genAppointmentRemarkPtt(row1);
+                    //appn = ic.ivfDB.genAppointmentRemarkPtt(row1);        //   -   แก้ให้เหลือแต่ t_appointment   62-08-22
+                    appn = ic.ivfDB.genAppointmentRemarkPtt1(row1);        //   +   แก้ให้เหลือแต่ t_appointment   62-08-22
                     //Row rowAll = grfAll.Rows.Add();
                     //rowAll[colpApmPttName] = appn+ " " + row1["PatientName"].ToString();
                     //rowAll[0] = (grfAll.Rows.Count-1);
@@ -514,7 +516,8 @@ namespace clinic_ivf.gui
                     //fsh = row1[ic.ivfDB.pApmDB.pApm.fsh].ToString().Equals("1") ? "FSH " : "";
                     //opu = row1[ic.ivfDB.pApmDB.pApm.opu].ToString().Equals("1") ? "OPU " + row1[ic.ivfDB.pApmDB.pApm.doctor_anes] != null ? row1[ic.ivfDB.pApmDB.pApm.doctor_anes].ToString() : "" : "";
                     //appn = row1[ic.ivfDB.pApmDB.pApm.patient_appointment_time].ToString()+" "+e2 + " " + lh + " " + prl + " " + fsh;
-                    appn = ic.ivfDB.genAppointmentRemarkPttDonor(row1);
+                    //appn = ic.ivfDB.genAppointmentRemarkPttDonor(row1);//    -  แก้ให้เหลือแต่ t_appointment   62-08-22
+                    appn = ic.ivfDB.genAppointmentRemarkPtt1(row1);//    +  แก้ให้เหลือแต่ t_appointment   62-08-22
                     Row rowdtr = grf.Rows.Add();
                     rowdtr[colpApmPttName] = appn + " " + row1["PatientName"].ToString();
                     rowdtr[0] = (grf.Rows.Count-1);
@@ -874,7 +877,7 @@ namespace clinic_ivf.gui
         private void setGrfPtt1()
         {
             grfPtt.Rows.Count = 2;
-            grfPtt.Cols.Count = 33;
+            grfPtt.Cols.Count = 34;
             grfPtt.Rows.Fixed = 2;
             grfPtt.AllowMerging = C1.Win.C1FlexGrid.AllowMergingEnum.FixedOnly;
             grfPtt.AllowMergingFixed = C1.Win.C1FlexGrid.AllowMergingEnum.Free;
@@ -987,6 +990,7 @@ namespace clinic_ivf.gui
             grfPtt.Cols[colVSFsh].Width = 60;
             grfPtt.Cols[colVsFET].Width = 60;
             grfPtt.Cols[colVsDay11].Width = 60;
+            grfPtt.Cols[colVsAgent].Width = 80;
 
             grfPtt.ShowCursor = true;
             //grdFlex.Cols[colID].Caption = "no";
@@ -1021,6 +1025,7 @@ namespace clinic_ivf.gui
             grfPtt.Cols[colVSPrl].Caption = "PRL";
             grfPtt.Cols[colVSFsh].Caption = "FSH";
             grfPtt.Cols[colVsFET].Caption = "FET";
+            grfPtt.Cols[colVsAgent].Caption = "FET";
 
             CellRange rng1 = grfPtt.GetCellRange(0, colVsTime, 1, colVsTime);
             rng1.Data = "Time";
@@ -1056,6 +1061,8 @@ namespace clinic_ivf.gui
             rng16.Data = "Prl";
             CellRange rng17 = grfPtt.GetCellRange(0, colVSFsh, 1, colVSFsh);
             rng17.Data = "FSH";
+            CellRange rng18 = grfPtt.GetCellRange(0, colVsAgent, 1, colVsAgent);
+            rng18.Data = "Agent";
 
             grfPtt[1, colVsDoctor] = "Dr.";
             grfPtt[1, colVsSperm] = "Collect";
@@ -1070,6 +1077,7 @@ namespace clinic_ivf.gui
             grfPtt[1, colVsHCG] = "Scan";
             grfPtt[1, colVsTrans] = "Sperm";
             grfPtt[1, colVsSpermOPU] = "Sp OPU";
+            grfPtt[1, colVsAgent] = "Agent";
         }
         private void setGrfPtt(ConnectDB con, DataTable dtApmOld, DataTable dtApm)
         {
@@ -1231,6 +1239,7 @@ namespace clinic_ivf.gui
                 row1[colVsPesa] = row[ic.ivfDB.pApmDB.pApm.pesa].ToString().Equals("1") ? imgCorr : imgTran;
                 row1[colVsSpermOPU] = row[ic.ivfDB.pApmDB.pApm.sperm_opu].ToString().Equals("1") ? imgCorr : imgTran;
                 row1[colVsRemark] = row[ic.ivfDB.pApmDB.pApm.patient_appointment].ToString();
+                row1[colVsAgent] = row["AgentName"].ToString();
                 if (!row[ic.ivfDB.pApmDB.pApm.tvs_day].ToString().Equals(""))
                 {
                     CellNote note = new CellNote("Day "+row[ic.ivfDB.pApmDB.pApm.tvs_day].ToString()+" [Time "+ row[ic.ivfDB.pApmDB.pApm.tvs_time].ToString()+"]");
@@ -1319,6 +1328,7 @@ namespace clinic_ivf.gui
                 row1[colVsSpermF] = row[ic.ivfDB.pApmDB.pApm.sperm_freezing].ToString().Equals("1") ? imgCorr : imgTran;
                 row1[colVsSpermOPU] = row[ic.ivfDB.pApmDB.pApm.sperm_opu].ToString().Equals("1") ? imgCorr : imgTran;
                 row1[colVsRemark] = row[ic.ivfDB.pApmDB.pApm.patient_appointment].ToString();
+                row1[colVsAgent] = row["AgentName"].ToString();
                 if (!row[ic.ivfDB.pApmDB.pApm.tvs_day].ToString().Equals(""))
                 {
                     CellNote note = new CellNote("Day " + row[ic.ivfDB.pApmDB.pApm.tvs_day].ToString() + " [Time " + row[ic.ivfDB.pApmDB.pApm.tvs_time].ToString() + "]");
@@ -1386,6 +1396,8 @@ namespace clinic_ivf.gui
             grfPtt.Cols[colVsDoctor].AllowEditing = true;
             grfPtt.Cols[colVsSperm].AllowEditing = true;
             grfPtt.Cols[colVsOPU].AllowEditing = false;
+            grfPtt.Cols[colVsAgent].AllowEditing = false;
+
             grfPtt.Cols[colID].Visible = false;
             grfPtt.Cols[colpttId].Visible = false;
             grfPtt.Cols[colVsStatus].Visible = false;

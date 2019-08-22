@@ -376,8 +376,22 @@ namespace clinic_ivf.gui
                         {
                             result2 = result.Replace("<", "").Replace(">", "");
                         }
+                        else
+                        {
+                            result2 = result;
+                        }
                         if (!Decimal.TryParse(result2, out result1)) return;
-                        grfProc[grfProc.Row, colRsInterpret] = ic.ivfDB.lbinDB.selectInterpret(labid, result1.ToString());
+                        String interpret = "";
+                        interpret = ic.ivfDB.lbinDB.selectInterpret(labid, result1.ToString());
+                        if (interpret.Equals(""))       // ถ้าไม่เจอ น่าจะเป็น min
+                        {
+                            interpret = ic.ivfDB.lbinDB.selectInterpretMin(labid, result1.ToString());
+                            if (interpret.Equals(""))       // ถ้าไม่เจออีก น่าจะเป็น max
+                            {
+                                interpret = ic.ivfDB.lbinDB.selectInterpretMax(labid, result1.ToString());
+                            }
+                        }
+                        grfProc[grfProc.Row, colRsInterpret] = interpret;
                     }
                     else
                     {
@@ -425,7 +439,7 @@ namespace clinic_ivf.gui
             grfProc.Cols[colRsLabName].Width = 200;
             grfProc.Cols[colRsMethod].Width = 100;
             grfProc.Cols[colRsResult].Width = 100;
-            grfProc.Cols[colRsInterpret].Width = 100;
+            grfProc.Cols[colRsInterpret].Width = 150;
             grfProc.Cols[colRsUnit].Width = 100;
             grfProc.Cols[colRsNormal].Width = 100;
             grfProc.Cols[colRsRemark].Width = 200;
@@ -528,7 +542,7 @@ namespace clinic_ivf.gui
             //grfProc.Cols[colRsInterpret].AllowEditing = false;
             grfProc.Cols[colRsEdit].AllowEditing = false;
             grfProc.Cols[colRsNormal].AllowEditing = false;
-            grfProc.Cols[colRsRemark].AllowEditing = false;
+            grfProc.Cols[colRsRemark].AllowEditing = true;
             //theme1.SetTheme(grfFinish, ic.theme);
 
         }
