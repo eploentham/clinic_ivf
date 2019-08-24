@@ -1,4 +1,5 @@
-﻿using C1.Win.C1Input;
+﻿using C1.Win.C1FlexGrid;
+using C1.Win.C1Input;
 using C1.Win.C1SuperTooltip;
 using clinic_ivf.control;
 using clinic_ivf.object1;
@@ -13,6 +14,7 @@ using System.IO;
 using System.Linq;
 using System.Net.Mail;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -29,6 +31,7 @@ namespace clinic_ivf.gui
         Color bg, fc;
         Font ff, ffB;
         Color color;
+        int colImgID = 1, colImgHn = 2, colImgImg = 3, colImgDesc = 4, colImgDesc2 = 5, colImgDesc3 = 6, colImgPathPic = 7, colImgBtn = 8, colImgStatus = 9, colImgDoctor = 10;
 
         C1SuperTooltip stt;
         C1SuperErrorProvider sep;
@@ -36,7 +39,8 @@ namespace clinic_ivf.gui
         public String StatusSperm = "";
         SmtpClient SmtpServer;
         List<LinkedResource> theEmailImage1 = new List<LinkedResource>();
-        
+        C1FlexGrid grfImg;
+
         Boolean flagEdit = false;
         public FrmLabSpermAdd(IvfControl ic, String reqid, String spermId, String flagEdit)
         {
@@ -1272,6 +1276,11 @@ namespace clinic_ivf.gui
             lbReq = ic.ivfDB.lbReqDB.selectByPk1(lsperm.req_id);
             ic.setC1Combo(cboEmbryologistAppv, lsperm.staff_id_report);
             ic.setC1Combo(cboEmbryologistReport, lsperm.staff_id_approve);
+
+            Visit vs = new Visit();
+            vs = ic.ivfDB.vsDB.selectByPk1(lbReq.visit_id);
+            txtPttId.Value = vs.t_patient_id;
+
             txtSfApproveDate.Value = lsperm.date_approve;
             txtSfReportDate.Value = lsperm.date_report;
             txtApproveDate.Value = lsperm.date_approve;
@@ -1307,6 +1316,7 @@ namespace clinic_ivf.gui
         private void setControlAnalysis()
         {
             txtID.Value = lsperm.sperm_id;
+            txtPttId.Value = lsperm.
             txtHnFeMale.Value = lsperm.hn_female;
             txtHnMale.Value = lsperm.hn_male;
             txtNameFeMale.Value = lsperm.name_female;
@@ -1620,8 +1630,13 @@ namespace clinic_ivf.gui
             lsperm.morphology_head_defect1 = txtSfHead1.Text;
             lsperm.morphology_neck_defect1 = txtSfNeck1.Text;
             lsperm.morphology_tail_defect1 = txtSfTail1.Text;
-            lsperm.wbc = cboSfWbc.SelectedItem == null ? "0" : ((ComboBoxItem)cboSfWbc.SelectedItem).Value;
-            lsperm.no_of_vail = cboSfNoofVail.SelectedItem == null ? "0" : ((ComboBoxItem)cboSfNoofVail.SelectedItem).Value;
+            String aaa = "", bbb="";
+            aaa = ic.getC1Combo(cboSfNoofVail, cboSfNoofVail.Text);
+            bbb = ic.getC1Combo(cboSfWbc, cboSfWbc.Text);
+            //lsperm.wbc = cboSfWbc.SelectedItem == null ? "0" : ((ComboBoxItem)cboSfWbc.SelectedItem).Value;
+            //lsperm.no_of_vail = cboSfNoofVail.SelectedItem == null ? "0" : ((ComboBoxItem)cboSfNoofVail.SelectedItem).Value;
+            lsperm.wbc = bbb;
+            lsperm.no_of_vail = aaa;
         }
         private void setSpermPesa()
         {
@@ -1840,6 +1855,185 @@ namespace clinic_ivf.gui
             //    if (ctl is C1PictureBox) continue;
             //    theme1.SetTheme(ctl, theme2);
             //}
+        }
+        private void initGrfImg()
+        {
+            grfImg = new C1FlexGrid();
+            grfImg.Font = fEdit;
+            grfImg.Dock = System.Windows.Forms.DockStyle.Fill;
+            grfImg.Location = new System.Drawing.Point(0, 0);
+
+            grfImg.DoubleClick += GrfImg_DoubleClick;
+
+            pnSfEmailView.Controls.Add(grfImg);
+
+            theme1.SetTheme(grfImg, "Office2016Colorful");
+
+        }
+
+        private void GrfImg_DoubleClick(object sender, EventArgs e)
+        {
+            //throw new NotImplementedException();
+            if (grfImg.Row < 0) return;
+            if (grfImg.Col == colImgImg)
+            {
+                //MessageBox.Show("a "+grfImg[grfImg.Row, colImg].ToString(), "");
+                int row = 0;
+                //int.TryParse(grfImg[grfImg.Row, colImg].ToString(), out row);
+                int.TryParse(grfImg.Row.ToString(), out row);
+                //row *= 4;
+                FrmShowImage frm = new FrmShowImage(ic, grfImg[row, colImgID] != null ? grfImg[row, colImgID].ToString() : "", txtPttIdOld.Text, grfImg[row, colImgPathPic] != null ? grfImg[row, colImgPathPic].ToString() : "", FrmShowImage.statusModule.Patient);
+                frm.ShowDialog(this);
+            }
+        }
+        private void setGrfImg()
+        {
+            grfImg.Clear();
+            grfImg.DataSource = null;
+            grfImg.Rows.Count = 2;
+            grfImg.Cols.Count = 10;
+
+            Button btn = new Button();
+            btn.BackColor = Color.Gray;
+
+            grfImg.Cols[colImgBtn].Editor = btn;
+            //grfImg.Cols[colImg].Editor = img;
+
+            grfImg.Cols[colImgHn].Width = 250;
+            grfImg.Cols[colImgImg].Width = 100;
+            grfImg.Cols[colImgDesc].Width = 100;
+            grfImg.Cols[colImgDesc2].Width = 100;
+            grfImg.Cols[colImgDesc3].Width = 100;
+            grfImg.Cols[colImgBtn].Width = 50;
+            grfImg.Cols[colImgPathPic].Width = 100;
+
+            grfImg.ShowCursor = true;
+            //grdFlex.Cols[colID].Caption = "no";
+            //grfDept.Cols[colCode].Caption = "รหัส";
+
+            grfImg.Cols[colImgHn].Caption = "HN";
+            grfImg.Cols[colImgDesc].Caption = "Desc1";
+            grfImg.Cols[colImgDesc2].Caption = "Desc2";
+            grfImg.Cols[colImgDesc3].Caption = "Desc3";
+            grfImg.Cols[colImgBtn].Caption = "send";
+
+            //Hashtable ht = new Hashtable();
+            //foreach (DataRow dr in dt.Rows)
+            //{
+            //    ht.Add(dr["CategoryID"], LoadImage(dr["Picture"] as byte[]));
+            //}
+            //grfImg.Cols[colImg].ImageMap = ht;
+            //grfImg.Cols[colImg].ImageAndText = false;
+
+            //ContextMenu menuGw = new ContextMenu();
+            //menuGw.MenuItems.Add("&แก้ไข Patient", new EventHandler(ContextMenu_edit));
+            //grfImg.ContextMenu = menuGw;
+
+            Color color = ColorTranslator.FromHtml(ic.iniC.grfRowColor);
+            //CellRange rg1 = grfBank.GetCellRange(1, colE, grfBank.Rows.Count, colE);
+            //rg1.Style = grfBank.Styles["date"];
+            //grfCu.Cols[colID].Visible = false;
+            if (txtPttId.Text.Equals(""))
+                return;
+            DataTable dt = new DataTable();
+            dt = ic.ivfDB.pttImgDB.selectByPttIDDept(txtPttId.Text, "1090000001");
+            int i = 0;
+            foreach (DataRow row in dt.Rows)
+            {
+                i++;
+                Row row1 = grfImg.Rows.Add();
+                row1[colImgID] = row[ic.ivfDB.pttImgDB.pttI.patient_image_id].ToString();
+                row1[colImgDesc] = row[ic.ivfDB.pttImgDB.pttI.desc1].ToString();
+                row1[colImgPathPic] = row[ic.ivfDB.pttImgDB.pttI.image_path].ToString();
+                row1[colImgStatus] = row[ic.ivfDB.pttImgDB.pttI.status_image].ToString();
+                String statusdoc = "";
+                statusdoc = row[ic.ivfDB.pttImgDB.pttI.status_document].ToString();
+                grfImg[i, 0] = i;
+                if (row[ic.ivfDB.pttImgDB.pttI.image_path] != null && !row[ic.ivfDB.pttImgDB.pttI.image_path].ToString().Equals(""))
+                {
+                    int ii = i;
+                    Thread pump = new Thread(() =>
+                    {
+                        Thread.CurrentThread.IsBackground = true;
+                        Image loadedImage = null, resizedImage;
+                        String aaa = row[ic.ivfDB.pttImgDB.pttI.image_path].ToString();
+                        FtpWebRequest ftpRequest = null;
+                        FtpWebResponse ftpResponse = null;
+                        Stream ftpStream = null;
+                        int bufferSize = 2048;
+                        MemoryStream stream = new MemoryStream();
+                        string host = null;
+                        string user = null;
+                        string pass = null;     //iniC.hostFTP, iniC.userFTP, iniC.passFTP
+                        host = ic.iniC.hostFTP; user = ic.iniC.userFTP; pass = ic.iniC.passFTP;
+                        try
+                        {
+                            ftpRequest = (FtpWebRequest)FtpWebRequest.Create(host + "/" + aaa);
+                            ftpRequest.Credentials = new NetworkCredential(user, pass);
+                            ftpRequest.UseBinary = true;
+                            //ftpRequest.UsePassive = false;
+                            ftpRequest.UsePassive = ic.ftpUsePassive;
+                            ftpRequest.KeepAlive = true;
+                            ftpRequest.Method = WebRequestMethods.Ftp.DownloadFile;
+                            ftpResponse = (FtpWebResponse)ftpRequest.GetResponse();
+                            ftpStream = ftpResponse.GetResponseStream();
+                            byte[] byteBuffer = new byte[bufferSize];
+                            int bytesRead = ftpStream.Read(byteBuffer, 0, bufferSize);
+                            try
+                            {
+                                while (bytesRead > 0)
+                                {
+                                    stream.Write(byteBuffer, 0, bytesRead);
+                                    bytesRead = ftpStream.Read(byteBuffer, 0, bufferSize);
+                                }
+                            }
+                            catch (Exception ex)
+                            {
+                                Console.WriteLine(ex.ToString());
+                                MessageBox.Show("setGrfImgPatient 1 " + ex.Message + "\n " + aaa, "host " + ic.iniC.hostFTP + " user " + user + " pas  " + pass);
+                            }
+                            if (statusdoc.Equals("1"))
+                            {
+                                loadedImage = new Bitmap(stream);
+                            }
+                            ftpStream.Close();
+                            ftpResponse.Close();
+                            ftpRequest = null;
+                        }
+                        catch (Exception ex)
+                        {
+                            Console.WriteLine(ex.ToString());
+                            MessageBox.Show("setGrfImgPatient 2 " + ex.Message + "\n " + aaa, "host " + ic.iniC.hostFTP + " user " + user + " pas  " + pass);
+                        }
+                        //grfImg.Cols[colImg].ImageAndText = true;
+                        if (loadedImage != null)
+                        {
+                            int originalWidth = loadedImage.Width;
+                            int newWidth = 180;
+                            resizedImage = loadedImage.GetThumbnailImage(newWidth, (newWidth * loadedImage.Height) / originalWidth, null, IntPtr.Zero);
+                            Column col = grfImg.Cols[colImgImg];
+                            col.DataType = typeof(Image);
+                            row1[colImgImg] = resizedImage;
+                            flagImg = true;
+                            //grfImg.AutoSizeCols();
+                            //grfImg.AutoSizeRows();
+                        }
+                    });
+                    pump.Start();
+                    //pump.Join();
+                    //grfImg.AutoSizeCols();
+                    //grfImg.AutoSizeRows();
+                }
+                //if (i % 2 == 0)
+                //grfPtt.Rows[i].StyleNew.BackColor = color;
+            }
+            grfImg.Cols[colImgID].Visible = false;
+            //grfImg.Cols[colPathPic].Visible = false;
+            grfImg.Cols[colImgImg].AllowEditing = false;
+            //grfImg.AutoSizeCols();
+            grfImg.AutoSizeRows();
+            theme1.SetTheme(grfImg, "Office2016Colorful");
+
         }
         private void FrmLabSpermAdd_Load(object sender, EventArgs e)
         {

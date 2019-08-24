@@ -693,6 +693,7 @@
             this.txtPeHnFeMale = new C1.Win.C1Input.C1TextBox();
             this.tabReport = new C1.Win.C1Command.C1DockingTabPage();
             this.crySperm = new CrystalDecisions.Windows.Forms.CrystalReportViewer();
+            this.txtPttId = new C1.Win.C1Input.C1TextBox();
             this.sB.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.theme1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tC)).BeginInit();
@@ -948,6 +949,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtPeNameFeMale)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtPeHnFeMale)).BeginInit();
             this.tabReport.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtPttId)).BeginInit();
             this.SuspendLayout();
             // 
             // sB
@@ -1566,6 +1568,7 @@
             // panel7
             // 
             this.panel7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.panel7.Controls.Add(this.txtPttId);
             this.panel7.Controls.Add(this.btnPrintSf);
             this.panel7.Controls.Add(this.label62);
             this.panel7.Controls.Add(this.label63);
@@ -3077,7 +3080,7 @@
             // txtSfVolume
             // 
             this.txtSfVolume.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtSfVolume.DataType = typeof(short);
+            this.txtSfVolume.DataType = typeof(decimal);
             this.txtSfVolume.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
             this.txtSfVolume.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
             this.txtSfVolume.Location = new System.Drawing.Point(141, 375);
@@ -3225,7 +3228,7 @@
             this.txtSfSpermTime.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtSfSpermTime.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
             this.txtSfSpermTime.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.txtSfSpermTime.Location = new System.Drawing.Point(517, 59);
+            this.txtSfSpermTime.Location = new System.Drawing.Point(517, 60);
             this.txtSfSpermTime.Name = "txtSfSpermTime";
             this.txtSfSpermTime.Size = new System.Drawing.Size(112, 24);
             this.txtSfSpermTime.TabIndex = 774;
@@ -3239,7 +3242,7 @@
             this.label127.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
             this.label127.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label127.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.label127.Location = new System.Drawing.Point(423, 61);
+            this.label127.Location = new System.Drawing.Point(423, 62);
             this.label127.Name = "label127";
             this.label127.Size = new System.Drawing.Size(45, 16);
             this.label127.TabIndex = 773;
@@ -3257,7 +3260,7 @@
             this.cboSfDoctor.ImagePadding = new System.Windows.Forms.Padding(0);
             this.cboSfDoctor.ItemsDisplayMember = "";
             this.cboSfDoctor.ItemsValueMember = "";
-            this.cboSfDoctor.Location = new System.Drawing.Point(517, 15);
+            this.cboSfDoctor.Location = new System.Drawing.Point(517, 16);
             this.cboSfDoctor.Name = "cboSfDoctor";
             this.cboSfDoctor.Size = new System.Drawing.Size(207, 20);
             this.cboSfDoctor.Style.DropDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
@@ -3274,7 +3277,7 @@
             this.label128.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
             this.label128.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label128.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.label128.Location = new System.Drawing.Point(423, 17);
+            this.label128.Location = new System.Drawing.Point(423, 18);
             this.label128.Name = "label128";
             this.label128.Size = new System.Drawing.Size(54, 16);
             this.label128.TabIndex = 771;
@@ -3319,7 +3322,7 @@
             this.txtSfSpermDate.EmptyAsNull = true;
             this.txtSfSpermDate.GMTOffset = System.TimeSpan.Parse("00:00:00");
             this.txtSfSpermDate.ImagePadding = new System.Windows.Forms.Padding(0);
-            this.txtSfSpermDate.Location = new System.Drawing.Point(517, 39);
+            this.txtSfSpermDate.Location = new System.Drawing.Point(517, 40);
             this.txtSfSpermDate.Name = "txtSfSpermDate";
             this.txtSfSpermDate.Size = new System.Drawing.Size(207, 18);
             this.txtSfSpermDate.TabIndex = 770;
@@ -3333,7 +3336,7 @@
             this.label129.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
             this.label129.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label129.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.label129.Location = new System.Drawing.Point(423, 39);
+            this.label129.Location = new System.Drawing.Point(423, 40);
             this.label129.Name = "label129";
             this.label129.Size = new System.Drawing.Size(43, 16);
             this.label129.TabIndex = 769;
@@ -3629,7 +3632,7 @@
             this.c1SplitterPanel1.SizeRatio = 40.997D;
             this.c1SplitterPanel1.TabIndex = 0;
             this.c1SplitterPanel1.Text = "Panel 1";
-            this.c1SplitterPanel1.Width = 560;
+            this.c1SplitterPanel1.Width = 567;
             // 
             // panel6
             // 
@@ -10084,6 +10087,20 @@
             this.crySperm.TabIndex = 2;
             this.theme1.SetTheme(this.crySperm, "(default)");
             // 
+            // txtPttId
+            // 
+            this.txtPttId.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtPttId.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
+            this.txtPttId.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.txtPttId.Location = new System.Drawing.Point(48, 13);
+            this.txtPttId.Name = "txtPttId";
+            this.txtPttId.Size = new System.Drawing.Size(30, 20);
+            this.txtPttId.TabIndex = 868;
+            this.txtPttId.Tag = null;
+            this.theme1.SetTheme(this.txtPttId, "(default)");
+            this.txtPttId.Visible = false;
+            this.txtPttId.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            // 
             // FrmLabSpermAdd
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -10366,6 +10383,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtPeNameFeMale)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtPeHnFeMale)).EndInit();
             this.tabReport.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.txtPttId)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -11037,5 +11055,6 @@
         private C1.Win.C1Ribbon.RibbonTopToolBar ribbonTopToolBar12;
         private System.Windows.Forms.Panel pnIuiEmailView;
         private System.Windows.Forms.Panel pnEmailView;
+        private C1.Win.C1Input.C1TextBox txtPttId;
     }
 }

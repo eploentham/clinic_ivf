@@ -127,6 +127,7 @@
             this.cryLab = new CrystalDecisions.Windows.Forms.CrystalReportViewer();
             this.sB = new System.Windows.Forms.StatusStrip();
             this.sB1 = new System.Windows.Forms.ToolStripStatusLabel();
+            this.tabHis = new C1.Win.C1Command.C1DockingTabPage();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtDob)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.c1Button3)).BeginInit();
@@ -613,6 +614,7 @@
             this.tC.Controls.Add(this.tabResult);
             this.tC.Controls.Add(this.tabEmail);
             this.tC.Controls.Add(this.tabReport);
+            this.tC.Controls.Add(this.tabHis);
             this.tC.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tC.HotTrack = true;
             this.tC.Location = new System.Drawing.Point(0, 0);
@@ -1201,6 +1203,14 @@
             this.sB1.Size = new System.Drawing.Size(118, 17);
             this.sB1.Text = "toolStripStatusLabel1";
             // 
+            // tabHis
+            // 
+            this.tabHis.Location = new System.Drawing.Point(1, 24);
+            this.tabHis.Name = "tabHis";
+            this.tabHis.Size = new System.Drawing.Size(1205, 707);
+            this.tabHis.TabIndex = 3;
+            this.tabHis.Text = "History";
+            // 
             // FrmLabBloodAdd
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1356,5 +1366,6 @@
         private C1.Win.C1Input.C1TextBox txtDob;
         private C1.Win.C1Command.C1DockingTabPage tabReport;
         private CrystalDecisions.Windows.Forms.CrystalReportViewer cryLab;
+        private C1.Win.C1Command.C1DockingTabPage tabHis;
     }
 }

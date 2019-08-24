@@ -373,7 +373,7 @@ namespace clinic_ivf.gui
         }
         private void ContextMenu_edit(object sender, System.EventArgs e)
         {
-            String chk1 = "", name = "", id = "", vsid="";
+            String chk1 = "", name = "", id = "", vsid="", resid="";
             if (grfReq.Row < 0) return;
             id = grfReq[grfReq.Row, colReqId] != null ? grfReq[grfReq.Row, colReqId].ToString() : "";
             vsid = grfReq[grfReq.Row, colReqVsId] != null ? grfReq[grfReq.Row, colReqVsId].ToString() : "";
@@ -462,6 +462,7 @@ namespace clinic_ivf.gui
                         re2 = ic.ivfDB.lbresDB.insertLabResult(lbRes, ic.cStf.staff_id);
                         if (long.TryParse(re2, out chk2))
                         {
+                            resid = re2;
                             re = ic.ivfDB.lbReqDB.UpdateStatusRequestAccept(lbreq.req_id, ic.cStf.staff_id);
                             chk = 0;
                             if (long.TryParse(re, out chk))
@@ -506,6 +507,10 @@ namespace clinic_ivf.gui
                 }
 
             }
+            //String id = "";
+            //id = grfProc[grfProc.Row, colRsId] != null ? grfProc[grfProc.Row, colRsId].ToString() : "";
+            FrmLabBloodAdd frm = new FrmLabBloodAdd(ic, resid);
+            frm.ShowDialog(this);
             setGrfReq();
             //chk = grfReq[grfReq.Row, colRqReqNum] != null ? grfReq[grfReq.Row, colRqReqNum].ToString() : "";
             //name = grfReq[grfReq.Row, colRqName] != null ? grfReq[grfReq.Row, colRqName].ToString() : "";
