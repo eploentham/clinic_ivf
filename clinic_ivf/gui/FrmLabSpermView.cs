@@ -71,7 +71,7 @@ namespace clinic_ivf.gui
             timer.Enabled = true;
 
             //btnNew.Click += BtnNew_Click;
-            //btnSearchA.Click += BtnSearchA_Click;
+            btnSearchF.Click += BtnSearchF_Click;
             txtSearch.KeyUp += TxtSearch_KeyUp;
             //btnAna.Click += BtnAna_Click;
             //btnFreezing.Click += BtnFreezing_Click;
@@ -85,6 +85,12 @@ namespace clinic_ivf.gui
             setGrfProc();
             setGrfFinish();
             initGrfSearch();   //111
+        }
+
+        private void BtnSearchF_Click(object sender, EventArgs e)
+        {
+            //throw new NotImplementedException();
+            setGrfFinish();
         }
 
         private void BtnIui_Click(object sender, EventArgs e)
@@ -758,6 +764,8 @@ namespace clinic_ivf.gui
         private void GrfFinish_DoubleClick(object sender, EventArgs e)
         {
             //throw new NotImplementedException();
+            if (grfFinish.Row <= 0) return;
+            if (grfFinish.Col <= 0) return;
             String chk = "", name = "", id = "";
             id = grfFinish[grfFinish.Row, colPcId] != null ? grfFinish[grfFinish.Row, colPcId].ToString() : "";
             chk = grfFinish[grfFinish.Row, colPcStatusSperm] != null ? grfFinish[grfFinish.Row, colPcStatusSperm].ToString() : "";
@@ -781,20 +789,21 @@ namespace clinic_ivf.gui
         {
             grfFinish.DataSource = null;
             grfFinish.Clear();
+            grfFinish.Rows.Count = 0;
             DataTable dt = new DataTable();
             String datestart = "", dateend = "";
             datestart = ic.datetoDB(txtFiDateStart.Text);
             dateend = ic.datetoDB(txtFiDateEnd.Text);
             dt = ic.ivfDB.lspermDB.selectByStatusFinish(datestart, dateend);
             //grfExpn.Rows.Count = dt.Rows.Count + 1;
-            if (dt.Rows.Count <= 1)
-            {
-                grfFinish.Rows.Count = dt.Rows.Count + 1;
-            }
-            else
-            {
-                grfFinish.Rows.Count = dt.Rows.Count + 1;
-            }
+            //if (dt.Rows.Count <= 1)
+            //{
+            grfFinish.Rows.Count = 1;
+            //}
+            //else
+            //{
+            //    grfFinish.Rows.Count = dt.Rows.Count + 1;
+            //}
             grfFinish.Cols.Count = 10;
             //C1TextBox txt = new C1TextBox();
             ////C1ComboBox cboproce = new C1ComboBox();
