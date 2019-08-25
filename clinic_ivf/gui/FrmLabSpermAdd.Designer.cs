@@ -101,6 +101,7 @@
             this.ribbonTopToolBar1 = new C1.Win.C1Ribbon.RibbonTopToolBar();
             this.c1SplitterPanel4 = new C1.Win.C1SplitContainer.C1SplitterPanel();
             this.panel7 = new System.Windows.Forms.Panel();
+            this.txtPttId = new C1.Win.C1Input.C1TextBox();
             this.btnPrintSf = new C1.Win.C1Input.C1Button();
             this.label62 = new System.Windows.Forms.Label();
             this.label63 = new System.Windows.Forms.Label();
@@ -693,7 +694,7 @@
             this.txtPeHnFeMale = new C1.Win.C1Input.C1TextBox();
             this.tabReport = new C1.Win.C1Command.C1DockingTabPage();
             this.crySperm = new CrystalDecisions.Windows.Forms.CrystalReportViewer();
-            this.txtPttId = new C1.Win.C1Input.C1TextBox();
+            this.txtPttIdOld = new C1.Win.C1Input.C1TextBox();
             this.sB.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.theme1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tC)).BeginInit();
@@ -714,6 +715,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.c1Ribbon1)).BeginInit();
             this.c1SplitterPanel4.SuspendLayout();
             this.panel7.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtPttId)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnPrintSf)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.c1PictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.c1PictureBox4)).BeginInit();
@@ -949,7 +951,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtPeNameFeMale)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtPeHnFeMale)).BeginInit();
             this.tabReport.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.txtPttId)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtPttIdOld)).BeginInit();
             this.SuspendLayout();
             // 
             // sB
@@ -1568,6 +1570,7 @@
             // panel7
             // 
             this.panel7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.panel7.Controls.Add(this.txtPttIdOld);
             this.panel7.Controls.Add(this.txtPttId);
             this.panel7.Controls.Add(this.btnPrintSf);
             this.panel7.Controls.Add(this.label62);
@@ -1665,6 +1668,20 @@
             this.panel7.Size = new System.Drawing.Size(815, 754);
             this.panel7.TabIndex = 0;
             this.theme1.SetTheme(this.panel7, "(default)");
+            // 
+            // txtPttId
+            // 
+            this.txtPttId.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtPttId.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
+            this.txtPttId.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.txtPttId.Location = new System.Drawing.Point(48, 13);
+            this.txtPttId.Name = "txtPttId";
+            this.txtPttId.Size = new System.Drawing.Size(30, 20);
+            this.txtPttId.TabIndex = 868;
+            this.txtPttId.Tag = null;
+            this.theme1.SetTheme(this.txtPttId, "(default)");
+            this.txtPttId.Visible = false;
+            this.txtPttId.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
             // 
             // btnPrintSf
             // 
@@ -6146,7 +6163,7 @@
             this.c1SplitterPanel7.SizeRatio = 40.926D;
             this.c1SplitterPanel7.TabIndex = 0;
             this.c1SplitterPanel7.Text = "Panel 1";
-            this.c1SplitterPanel7.Width = 559;
+            this.c1SplitterPanel7.Width = 566;
             // 
             // panel10
             // 
@@ -6180,10 +6197,10 @@
             this.c1TextBox3.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
             this.c1TextBox3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.c1TextBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.c1TextBox3.Location = new System.Drawing.Point(0, 211);
+            this.c1TextBox3.Location = new System.Drawing.Point(0, 214);
             this.c1TextBox3.Multiline = true;
             this.c1TextBox3.Name = "c1TextBox3";
-            this.c1TextBox3.Size = new System.Drawing.Size(559, 543);
+            this.c1TextBox3.Size = new System.Drawing.Size(559, 540);
             this.c1TextBox3.TabIndex = 542;
             this.c1TextBox3.Tag = null;
             this.theme1.SetTheme(this.c1TextBox3, "(default)");
@@ -6200,7 +6217,7 @@
             this.panel12.Controls.Add(this.c1TextBox2);
             this.panel12.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel12.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.panel12.Location = new System.Drawing.Point(0, 143);
+            this.panel12.Location = new System.Drawing.Point(0, 146);
             this.panel12.Name = "panel12";
             this.panel12.Size = new System.Drawing.Size(559, 68);
             this.panel12.TabIndex = 3;
@@ -6296,7 +6313,7 @@
             this.c1Ribbon3.QatHolder = this.ribbonQat12;
             this.c1Ribbon3.QatItemsHolder.Add(this.UndoButton2);
             this.c1Ribbon3.QatItemsHolder.Add(this.RedoButton2);
-            this.c1Ribbon3.Size = new System.Drawing.Size(559, 143);
+            this.c1Ribbon3.Size = new System.Drawing.Size(559, 146);
             this.c1Ribbon3.Tabs.Add(this.HomeTab2);
             this.c1Ribbon3.Tabs.Add(this.ViewTab2);
             this.theme1.SetTheme(this.c1Ribbon3, "(default)");
@@ -10087,19 +10104,19 @@
             this.crySperm.TabIndex = 2;
             this.theme1.SetTheme(this.crySperm, "(default)");
             // 
-            // txtPttId
+            // txtPttIdOld
             // 
-            this.txtPttId.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtPttId.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
-            this.txtPttId.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.txtPttId.Location = new System.Drawing.Point(48, 13);
-            this.txtPttId.Name = "txtPttId";
-            this.txtPttId.Size = new System.Drawing.Size(30, 20);
-            this.txtPttId.TabIndex = 868;
-            this.txtPttId.Tag = null;
-            this.theme1.SetTheme(this.txtPttId, "(default)");
-            this.txtPttId.Visible = false;
-            this.txtPttId.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            this.txtPttIdOld.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtPttIdOld.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
+            this.txtPttIdOld.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.txtPttIdOld.Location = new System.Drawing.Point(84, 13);
+            this.txtPttIdOld.Name = "txtPttIdOld";
+            this.txtPttIdOld.Size = new System.Drawing.Size(30, 20);
+            this.txtPttIdOld.TabIndex = 869;
+            this.txtPttIdOld.Tag = null;
+            this.theme1.SetTheme(this.txtPttIdOld, "(default)");
+            this.txtPttIdOld.Visible = false;
+            this.txtPttIdOld.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
             // 
             // FrmLabSpermAdd
             // 
@@ -10135,6 +10152,7 @@
             this.c1SplitterPanel4.ResumeLayout(false);
             this.panel7.ResumeLayout(false);
             this.panel7.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtPttId)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnPrintSf)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.c1PictureBox3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.c1PictureBox4)).EndInit();
@@ -10383,7 +10401,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtPeNameFeMale)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtPeHnFeMale)).EndInit();
             this.tabReport.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.txtPttId)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtPttIdOld)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -11056,5 +11074,6 @@
         private System.Windows.Forms.Panel pnIuiEmailView;
         private System.Windows.Forms.Panel pnEmailView;
         private C1.Win.C1Input.C1TextBox txtPttId;
+        private C1.Win.C1Input.C1TextBox txtPttIdOld;
     }
 }

@@ -34,7 +34,7 @@ namespace clinic_ivf.gui
 
         int colID = 1, colpttId = 2, colVsTime = 3, colPttHn = 4, colVsCode = 5, colVsPttName = 6, colVsDoctor = 7, colVsSperm = 8, colVsDay6 = 9, colVsDay7 = 10, colVsDay8 = 11, colVsDay9=12, colVsDay10=13, colVsDay11=14;
         int colVsTVS = 15, colVsPesa = 16, colVsSpermF = 17, colVsOPU = 18, colVsET = 19, colVsFET=20, colVsHCG = 21, colVsSpermOPU = 22, colVsTrans = 23, colVsANC = 24, colVsAnes = 25;
-        int colVSE2 = 26, colVSLh = 27, colVSPrl = 28, colVSFsh = 29, colVsAgent=30, colVsRemark = 31, colVsStatus=32, colConn=33;
+        int colVSE2 = 26, colVSLh = 27, colVSPrl = 28, colVSFsh = 29, colVsAgent=30, colVsRemark = 31, colVsStatus=32, colConn=33, colStfCreate=34,colStfModi=35, colStfSave=36;
 
         int colpApmPttId = 1,colpApmPttName = 2;
 
@@ -877,7 +877,7 @@ namespace clinic_ivf.gui
         private void setGrfPtt1()
         {
             grfPtt.Rows.Count = 2;
-            grfPtt.Cols.Count = 34;
+            grfPtt.Cols.Count = 37;
             grfPtt.Rows.Fixed = 2;
             grfPtt.AllowMerging = C1.Win.C1FlexGrid.AllowMergingEnum.FixedOnly;
             grfPtt.AllowMergingFixed = C1.Win.C1FlexGrid.AllowMergingEnum.Free;
@@ -991,6 +991,9 @@ namespace clinic_ivf.gui
             grfPtt.Cols[colVsFET].Width = 60;
             grfPtt.Cols[colVsDay11].Width = 60;
             grfPtt.Cols[colVsAgent].Width = 80;
+            grfPtt.Cols[colStfCreate].Width = 80;
+            grfPtt.Cols[colStfModi].Width = 80;
+            grfPtt.Cols[colStfSave].Width = 80;
 
             grfPtt.ShowCursor = true;
             //grdFlex.Cols[colID].Caption = "no";
@@ -1025,7 +1028,10 @@ namespace clinic_ivf.gui
             grfPtt.Cols[colVSPrl].Caption = "PRL";
             grfPtt.Cols[colVSFsh].Caption = "FSH";
             grfPtt.Cols[colVsFET].Caption = "FET";
-            grfPtt.Cols[colVsAgent].Caption = "FET";
+            grfPtt.Cols[colVsAgent].Caption = "Agent";
+            //grfPtt.Cols[colStfCreate].Caption = "FET";
+            //grfPtt.Cols[colStfModi].Caption = "FET";
+            //grfPtt.Cols[celStfSave].Caption = "FET";
 
             CellRange rng1 = grfPtt.GetCellRange(0, colVsTime, 1, colVsTime);
             rng1.Data = "Time";
@@ -1063,6 +1069,12 @@ namespace clinic_ivf.gui
             rng17.Data = "FSH";
             CellRange rng18 = grfPtt.GetCellRange(0, colVsAgent, 1, colVsAgent);
             rng18.Data = "Agent";
+            CellRange rng19 = grfPtt.GetCellRange(0, colStfCreate, 1, colStfCreate);
+            rng19.Data = "stf create";
+            CellRange rng20 = grfPtt.GetCellRange(0, colStfModi, 1, colStfModi);
+            rng20.Data = "stf modi";
+            CellRange rng21= grfPtt.GetCellRange(0, colStfSave, 1, colStfSave);
+            rng21.Data = "stf save";
 
             grfPtt[1, colVsDoctor] = "Dr.";
             grfPtt[1, colVsSperm] = "Collect";
@@ -1078,6 +1090,9 @@ namespace clinic_ivf.gui
             grfPtt[1, colVsTrans] = "Sperm";
             grfPtt[1, colVsSpermOPU] = "Sp OPU";
             grfPtt[1, colVsAgent] = "Agent";
+            grfPtt[1, colStfCreate] = "stf create";
+            grfPtt[1, colStfModi] = "stf modi";
+            grfPtt[1, colStfSave] = "stf save";
         }
         private void setGrfPtt(ConnectDB con, DataTable dtApmOld, DataTable dtApm)
         {
@@ -1240,6 +1255,29 @@ namespace clinic_ivf.gui
                 row1[colVsSpermOPU] = row[ic.ivfDB.pApmDB.pApm.sperm_opu].ToString().Equals("1") ? imgCorr : imgTran;
                 row1[colVsRemark] = row[ic.ivfDB.pApmDB.pApm.patient_appointment].ToString();
                 row1[colVsAgent] = row["AgentName"].ToString();
+                String stf = "";
+                stf = row[ic.ivfDB.pApmDB.pApm.user_create].ToString();
+                if (stf.IndexOf("@") >= 0)
+                {
+                    stf = stf.Substring(0, stf.IndexOf("@"));
+                    row1[colStfCreate] = ic.ivfDB.stfDB.getStaffNameBylStf(stf);
+                }
+                
+                stf = "";
+                stf = row[ic.ivfDB.pApmDB.pApm.user_modi].ToString();
+                if (stf.IndexOf("@") >= 0)
+                {
+                    stf = stf.Substring(0, stf.IndexOf("@"));
+                    row1[colStfModi] = ic.ivfDB.stfDB.getStaffNameBylStf(stf);
+                }
+                
+                stf = "";
+                stf = row[ic.ivfDB.pApmDB.pApm.patient_appointment_staff_record].ToString();
+                if (stf.IndexOf("@") >= 0)
+                {
+                    stf = stf.Substring(0, stf.IndexOf("@"));
+                    row1[colStfSave] = ic.ivfDB.stfDB.getStaffNameBylStf(stf);
+                }
                 if (!row[ic.ivfDB.pApmDB.pApm.tvs_day].ToString().Equals(""))
                 {
                     CellNote note = new CellNote("Day "+row[ic.ivfDB.pApmDB.pApm.tvs_day].ToString()+" [Time "+ row[ic.ivfDB.pApmDB.pApm.tvs_time].ToString()+"]");
@@ -1329,6 +1367,30 @@ namespace clinic_ivf.gui
                 row1[colVsSpermOPU] = row[ic.ivfDB.pApmDB.pApm.sperm_opu].ToString().Equals("1") ? imgCorr : imgTran;
                 row1[colVsRemark] = row[ic.ivfDB.pApmDB.pApm.patient_appointment].ToString();
                 row1[colVsAgent] = row["AgentName"].ToString();
+                String stf = "";
+                stf = row[ic.ivfDB.pApmDB.pApm.user_create].ToString();
+                if (stf.IndexOf("@") >= 0)
+                {
+                    stf = stf.Substring(0, stf.IndexOf("@"));
+                    row1[colStfCreate] = ic.ivfDB.stfDB.getStaffNameBylStf(stf);
+                }
+                
+                stf = "";
+                stf = row[ic.ivfDB.pApmDB.pApm.user_modi].ToString();
+                if (stf.IndexOf("@") >= 0)
+                {
+                    stf = stf.Substring(0, stf.IndexOf("@"));
+                    row1[colStfModi] = ic.ivfDB.stfDB.getStaffNameBylStf(stf);
+                }
+                
+                stf = "";
+                stf = row[ic.ivfDB.pApmDB.pApm.patient_appointment_staff_record].ToString();
+                if (stf.IndexOf("@") >= 0)
+                {
+                    stf = stf.Substring(0, stf.IndexOf("@"));
+                    row1[colStfSave] = ic.ivfDB.stfDB.getStaffNameBylStf(stf);
+                }
+
                 if (!row[ic.ivfDB.pApmDB.pApm.tvs_day].ToString().Equals(""))
                 {
                     CellNote note = new CellNote("Day " + row[ic.ivfDB.pApmDB.pApm.tvs_day].ToString() + " [Time " + row[ic.ivfDB.pApmDB.pApm.tvs_time].ToString() + "]");

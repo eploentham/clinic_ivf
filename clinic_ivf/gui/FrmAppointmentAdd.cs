@@ -504,6 +504,7 @@ namespace clinic_ivf.gui
             chkSpermFreezing.Checked = pApm.sperm_freezing.Equals("1") ? true : false;
             chkSpermOPU.Checked = pApm.sperm_opu.Equals("1") ? true : false;
             chkPesa.Checked = pApm.pesa.Equals("1") ? true : false;
+            txtUserReq.Value = ic.ivfDB.stfDB.getStaffNameBylStf(pApm.patient_appointment_staff);
 
             txtOther.Value = pApm.other_remark;
             ic.setC1Combo(cboETTime, pApm.et_time);
@@ -705,6 +706,12 @@ namespace clinic_ivf.gui
                 //    grfPtt.Rows[i].StyleNew.BackColor = color;
                 i++;
             }
+            grfpApmAll.Cols[colDate].AllowEditing = false;
+            grfpApmAll.Cols[colTime].AllowEditing = false;
+            grfpApmAll.Cols[colAppointment].AllowEditing = false;
+            grfpApmAll.Cols[colDoctor].AllowEditing = false;
+            grfpApmAll.Cols[colSp].AllowEditing = false;
+            grfpApmAll.Cols[colNotice].AllowEditing = false;
             grfpApmAll.Cols[colE2].AllowEditing = false;
             grfpApmAll.Cols[colLh].AllowEditing = false;
             grfpApmAll.Cols[colEndo].AllowEditing = false;
@@ -832,6 +839,12 @@ namespace clinic_ivf.gui
             }
             //menuGw = new ContextMenu();
             //grfpApmVisit.ContextMenu = menuGw;
+            grfpApm.Cols[colDate].AllowEditing = false;
+            grfpApm.Cols[colTime].AllowEditing = false;
+            grfpApm.Cols[colAppointment].AllowEditing = false;
+            grfpApm.Cols[colDoctor].AllowEditing = false;
+            grfpApm.Cols[colSp].AllowEditing = false;
+            grfpApm.Cols[colNotice].AllowEditing = false;
             grfpApm.Cols[colE2].AllowEditing = false;
             grfpApm.Cols[colLh].AllowEditing = false;
             grfpApm.Cols[colEndo].AllowEditing = false;
@@ -964,6 +977,12 @@ namespace clinic_ivf.gui
             }
             //menuGw = new ContextMenu();
             //grfpApmDayAll.ContextMenu = menuGw;
+            grfpApmDayAll.Cols[colDate].AllowEditing = false;
+            grfpApmDayAll.Cols[colTime].AllowEditing = false;
+            grfpApmDayAll.Cols[colAppointment].AllowEditing = false;
+            grfpApmDayAll.Cols[colDoctor].AllowEditing = false;
+            grfpApmDayAll.Cols[colSp].AllowEditing = false;
+            grfpApmDayAll.Cols[colNotice].AllowEditing = false;
             grfpApmDayAll.Cols[colE2].AllowEditing = false;
             grfpApmDayAll.Cols[colLh].AllowEditing = false;
             grfpApmDayAll.Cols[colEndo].AllowEditing = false;

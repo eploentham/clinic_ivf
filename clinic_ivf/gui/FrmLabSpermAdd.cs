@@ -12,6 +12,7 @@ using System.Data;
 using System.Drawing;
 using System.IO;
 using System.Linq;
+using System.Net;
 using System.Net.Mail;
 using System.Text;
 using System.Threading;
@@ -41,7 +42,7 @@ namespace clinic_ivf.gui
         List<LinkedResource> theEmailImage1 = new List<LinkedResource>();
         C1FlexGrid grfImg;
 
-        Boolean flagEdit = false;
+        Boolean flagEdit = false, flagImg=false;
         public FrmLabSpermAdd(IvfControl ic, String reqid, String spermId, String flagEdit)
         {
             InitializeComponent();
@@ -1278,8 +1279,11 @@ namespace clinic_ivf.gui
             ic.setC1Combo(cboEmbryologistReport, lsperm.staff_id_approve);
 
             Visit vs = new Visit();
+            Patient ptt = new Patient();
             vs = ic.ivfDB.vsDB.selectByPk1(lbReq.visit_id);
+            ptt = ic.ivfDB.pttDB.selectByPk1(vs.t_patient_id);
             txtPttId.Value = vs.t_patient_id;
+            txtPttIdOld.Value = ptt.t_patient_id_old;
 
             txtSfApproveDate.Value = lsperm.date_approve;
             txtSfReportDate.Value = lsperm.date_report;
@@ -1312,11 +1316,13 @@ namespace clinic_ivf.gui
             {
                 setControlIui();
             }
+            initGrfImg();
+            setGrfImg();
         }
         private void setControlAnalysis()
         {
             txtID.Value = lsperm.sperm_id;
-            txtPttId.Value = lsperm.
+            //txtPttId.Value = lsperm.
             txtHnFeMale.Value = lsperm.hn_female;
             txtHnMale.Value = lsperm.hn_male;
             txtNameFeMale.Value = lsperm.name_female;
@@ -1864,8 +1870,23 @@ namespace clinic_ivf.gui
             grfImg.Location = new System.Drawing.Point(0, 0);
 
             grfImg.DoubleClick += GrfImg_DoubleClick;
-
-            pnSfEmailView.Controls.Add(grfImg);
+            if (lsperm.status_lab_sperm.Equals("1"))
+            {
+                pnSfEmailView.Controls.Add(grfImg);
+            }
+            else if (lsperm.status_lab_sperm.Equals("2"))
+            {
+                pnEmailView.Controls.Add(grfImg);
+            }
+            else if (lsperm.status_lab_sperm.Equals("3"))
+            {
+                pnIuiEmailView.Controls.Add(grfImg);
+            }
+            else if (lsperm.status_lab_sperm.Equals("4"))
+            {
+                pnSfEmailView.Controls.Add(grfImg);
+            }
+            
 
             theme1.SetTheme(grfImg, "Office2016Colorful");
 
@@ -1875,7 +1896,7 @@ namespace clinic_ivf.gui
         {
             //throw new NotImplementedException();
             if (grfImg.Row < 0) return;
-            if (grfImg.Col == colImgImg)
+            if (grfImg.Col == colImgImg && grfImg.Row > 1)
             {
                 //MessageBox.Show("a "+grfImg[grfImg.Row, colImg].ToString(), "");
                 int row = 0;
@@ -1884,6 +1905,11 @@ namespace clinic_ivf.gui
                 //row *= 4;
                 FrmShowImage frm = new FrmShowImage(ic, grfImg[row, colImgID] != null ? grfImg[row, colImgID].ToString() : "", txtPttIdOld.Text, grfImg[row, colImgPathPic] != null ? grfImg[row, colImgPathPic].ToString() : "", FrmShowImage.statusModule.Patient);
                 frm.ShowDialog(this);
+            }
+            if(grfImg.Row == 1)
+            {
+                grfImg.AutoSizeCols();
+                grfImg.AutoSizeRows();
             }
         }
         private void setGrfImg()
@@ -2030,10 +2056,14 @@ namespace clinic_ivf.gui
             grfImg.Cols[colImgID].Visible = false;
             //grfImg.Cols[colPathPic].Visible = false;
             grfImg.Cols[colImgImg].AllowEditing = false;
+            grfImg.Cols[colImgImg].AllowSorting = false;
+            grfImg.Cols[colImgDesc].AllowSorting = false;
+            grfImg.Cols[colImgPathPic].AllowSorting = false;
             //grfImg.AutoSizeCols();
             grfImg.AutoSizeRows();
             theme1.SetTheme(grfImg, "Office2016Colorful");
-
+            grfImg.AutoSizeCols();
+            grfImg.AutoSizeRows();
         }
         private void FrmLabSpermAdd_Load(object sender, EventArgs e)
         {
