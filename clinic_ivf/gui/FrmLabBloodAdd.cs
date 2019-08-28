@@ -82,7 +82,7 @@ namespace clinic_ivf.gui
             lbReq = new LabRequest();
             ptt = new Patient();
             vs = new Visit();
-
+            lbEmail.Text = "";
             initGrfProc();
             setControl();
         }
@@ -109,12 +109,13 @@ namespace clinic_ivf.gui
             ReportDocument rpt = new ReportDocument();
             try
             {
-                String date1 = dt.Rows[0]["date_report"].ToString();
-                String date2 = dt.Rows[0]["date_approve"].ToString();
-                date1 = ic.datetimetoShow(dt.Rows[0]["date_report"]);
-                date2 = ic.datetimetoShow(dt.Rows[0]["date_approve"]);
-                dt.Rows[0]["date_report"] = date1;
-                dt.Rows[0]["date_approve"] = date2;
+                lbEmail.Text = "สร้าง Report";
+                String date1 = dt.Rows[0]["date_time_result"].ToString();
+                String date2 = dt.Rows[0]["date_time_approve"].ToString();
+                date1 = ic.datetimetoShow(dt.Rows[0]["date_time_result"]);
+                date2 = ic.datetimetoShow(dt.Rows[0]["date_time_approve"]);
+                dt.Rows[0]["date_time_result"] = date1;
+                dt.Rows[0]["date_time_approve"] = date2;
 
                 rpt.Load("lab_blood_form1.rpt");
 
@@ -122,11 +123,19 @@ namespace clinic_ivf.gui
                 rpt.SetParameterValue("line1", ic.cop.comp_name_t);
                 rpt.SetParameterValue("line2", ic.cop.addr1);
                 rpt.SetParameterValue("line3", ic.cop.addr2);
+                rpt.SetParameterValue("hn", txtHn.Text);
+                rpt.SetParameterValue("name", txtPttNameE.Text);
+                rpt.SetParameterValue("dob", txtDob.Text);
+                rpt.SetParameterValue("sex", txtSex.Text);
+                rpt.SetParameterValue("report_by", cboEmbryologistReport.Text);
+                rpt.SetParameterValue("approve_by", cboEmbryologistAppv.Text);
+                rpt.SetParameterValue("report_date", txtReportDate.Text);
+                rpt.SetParameterValue("approve_date", txtApprovDate.Text);
                 //rpt.SetParameterValue("report_name", " Summary of OPU Report");
                 //rpt.SetParameterValue("date1", "" + date1);
                 this.cryLab.ReportSource = rpt;
                 this.cryLab.Refresh();
-
+                lbEmail.Text = "สร้าง Report เรียบร้อย";
                 if (File.Exists(filename))
                 {
                     File.Delete(filename);
@@ -144,7 +153,7 @@ namespace clinic_ivf.gui
                     CrExportOptions.DestinationOptions = CrDiskFileDestinationOptions;
                     CrExportOptions.FormatOptions = CrFormatTypeOptions;
                 }
-
+                lbEmail.Text = "Export Report";
                 rpt.Export();
             }
             catch (Exception ex)
@@ -171,7 +180,7 @@ namespace clinic_ivf.gui
             ////frmW.Show();
             //frm.setSpermSf(dt);
             //frm.ShowDialog(this);
-
+            lbEmail.Text = "เตรียม Email";
             FrmWaiting frmW = new FrmWaiting();
             frmW.Show();
             String filename = "", datetick = "";
@@ -181,12 +190,13 @@ namespace clinic_ivf.gui
             }
             datetick = DateTime.Now.Ticks.ToString();
             filename = "report\\lab_blood_" + datetick + ".pdf";
+            lbEmail.Text = "เตรียม Report";
             if (!setReportLabBlood(filename))
             {
                 return;
             }
             frmW.Dispose();
-
+            lbEmail.Text = "เริ่มส่ง Email";
             MailMessage mail = new MailMessage();
 
             mail.From = new MailAddress(txtEmailTo.Text);
@@ -215,6 +225,7 @@ namespace clinic_ivf.gui
 
             SmtpServer.EnableSsl = true;
             SmtpServer.Send(mail);
+            lbEmail.Text = "ส่ง Email เรียบร้อย";
         }
 
         private void BtnPrintHomone_Click(object sender, EventArgs e)

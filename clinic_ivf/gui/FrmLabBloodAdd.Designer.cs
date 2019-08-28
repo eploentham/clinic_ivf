@@ -125,9 +125,10 @@
             this.ribbonTopToolBar1 = new C1.Win.C1Ribbon.RibbonTopToolBar();
             this.tabReport = new C1.Win.C1Command.C1DockingTabPage();
             this.cryLab = new CrystalDecisions.Windows.Forms.CrystalReportViewer();
+            this.tabHis = new C1.Win.C1Command.C1DockingTabPage();
             this.sB = new System.Windows.Forms.StatusStrip();
             this.sB1 = new System.Windows.Forms.ToolStripStatusLabel();
-            this.tabHis = new C1.Win.C1Command.C1DockingTabPage();
+            this.lbEmail = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtDob)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.c1Button3)).BeginInit();
@@ -714,6 +715,7 @@
             // panel5
             // 
             this.panel5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.panel5.Controls.Add(this.lbEmail);
             this.panel5.Controls.Add(this.btnSendEmail);
             this.panel5.Controls.Add(this.c1Button2);
             this.panel5.Controls.Add(this.label212);
@@ -1187,6 +1189,14 @@
             this.cryLab.TabIndex = 3;
             this.theme1.SetTheme(this.cryLab, "(default)");
             // 
+            // tabHis
+            // 
+            this.tabHis.Location = new System.Drawing.Point(1, 24);
+            this.tabHis.Name = "tabHis";
+            this.tabHis.Size = new System.Drawing.Size(1205, 707);
+            this.tabHis.TabIndex = 3;
+            this.tabHis.Text = "History";
+            // 
             // sB
             // 
             this.sB.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -1203,13 +1213,18 @@
             this.sB1.Size = new System.Drawing.Size(118, 17);
             this.sB1.Text = "toolStripStatusLabel1";
             // 
-            // tabHis
+            // lbEmail
             // 
-            this.tabHis.Location = new System.Drawing.Point(1, 24);
-            this.tabHis.Name = "tabHis";
-            this.tabHis.Size = new System.Drawing.Size(1205, 707);
-            this.tabHis.TabIndex = 3;
-            this.tabHis.Text = "History";
+            this.lbEmail.AutoSize = true;
+            this.lbEmail.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.lbEmail.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.lbEmail.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.lbEmail.Location = new System.Drawing.Point(391, 8);
+            this.lbEmail.Name = "lbEmail";
+            this.lbEmail.Size = new System.Drawing.Size(60, 24);
+            this.lbEmail.TabIndex = 13;
+            this.lbEmail.Text = "label7";
+            this.theme1.SetTheme(this.lbEmail, "(default)");
             // 
             // FrmLabBloodAdd
             // 
@@ -1367,5 +1382,6 @@
         private C1.Win.C1Command.C1DockingTabPage tabReport;
         private CrystalDecisions.Windows.Forms.CrystalReportViewer cryLab;
         private C1.Win.C1Command.C1DockingTabPage tabHis;
+        private System.Windows.Forms.Label lbEmail;
     }
 }

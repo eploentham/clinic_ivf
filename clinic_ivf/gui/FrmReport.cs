@@ -313,7 +313,7 @@ namespace clinic_ivf.gui
                 err = "02";
                 rpt.SetParameterValue("line1", ic.cop.comp_name_t);
                 rpt.SetParameterValue("line2", "โทรศัพท์ " + ic.cop.tele);
-                rpt.SetParameterValue("line3", " Form Egg Sti");
+                rpt.SetParameterValue("line3", " Form Egg Stimulation");
                 rpt.SetParameterValue("ptt_female", ptt_female);
                 rpt.SetParameterValue("ptt_male", ptt_male);
                 rpt.SetParameterValue("lmp", lmp);
