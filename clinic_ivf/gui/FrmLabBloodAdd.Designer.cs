@@ -66,6 +66,7 @@
             this.panel4 = new System.Windows.Forms.Panel();
             this.txtEmailBody = new C1.Win.C1Input.C1TextBox();
             this.panel5 = new System.Windows.Forms.Panel();
+            this.lbEmail = new System.Windows.Forms.Label();
             this.btnSendEmail = new C1.Win.C1Input.C1Button();
             this.c1Button2 = new C1.Win.C1Input.C1Button();
             this.label212 = new System.Windows.Forms.Label();
@@ -128,7 +129,6 @@
             this.tabHis = new C1.Win.C1Command.C1DockingTabPage();
             this.sB = new System.Windows.Forms.StatusStrip();
             this.sB1 = new System.Windows.Forms.ToolStripStatusLabel();
-            this.lbEmail = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtDob)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.c1Button3)).BeginInit();
@@ -730,6 +730,19 @@
             this.panel5.TabIndex = 3;
             this.theme1.SetTheme(this.panel5, "(default)");
             // 
+            // lbEmail
+            // 
+            this.lbEmail.AutoSize = true;
+            this.lbEmail.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.lbEmail.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.lbEmail.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.lbEmail.Location = new System.Drawing.Point(391, 8);
+            this.lbEmail.Name = "lbEmail";
+            this.lbEmail.Size = new System.Drawing.Size(60, 24);
+            this.lbEmail.TabIndex = 13;
+            this.lbEmail.Text = "label7";
+            this.theme1.SetTheme(this.lbEmail, "(default)");
+            // 
             // btnSendEmail
             // 
             this.btnSendEmail.Image = global::clinic_ivf.Properties.Resources.Email_icon_24;
@@ -1212,19 +1225,6 @@
             this.sB1.Name = "sB1";
             this.sB1.Size = new System.Drawing.Size(118, 17);
             this.sB1.Text = "toolStripStatusLabel1";
-            // 
-            // lbEmail
-            // 
-            this.lbEmail.AutoSize = true;
-            this.lbEmail.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.lbEmail.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.lbEmail.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.lbEmail.Location = new System.Drawing.Point(391, 8);
-            this.lbEmail.Name = "lbEmail";
-            this.lbEmail.Size = new System.Drawing.Size(60, 24);
-            this.lbEmail.TabIndex = 13;
-            this.lbEmail.Text = "label7";
-            this.theme1.SetTheme(this.lbEmail, "(default)");
             // 
             // FrmLabBloodAdd
             // 

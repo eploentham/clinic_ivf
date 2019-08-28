@@ -96,7 +96,7 @@ namespace clinic_ivf.gui
 
             String date1 = "";
 
-            frm.setLabBloodReport(dt, txtHn.Text, txtPttNameE.Text, txtDob.Text, txtSex.Text, cboEmbryologistReport.Text, cboEmbryologistAppv.Text, txtReportDate.Text, txtApprovDate.Text);
+            frm.setLabBloodReportHomone(dt, txtHn.Text, txtPttNameE.Text, txtDob.Text, txtSex.Text, cboEmbryologistReport.Text, cboEmbryologistAppv.Text, txtReportDate.Text, txtApprovDate.Text);
             frm.ShowDialog(this);
         }
 
@@ -237,7 +237,7 @@ namespace clinic_ivf.gui
 
             String date1 = "";
 
-            frm.setLabBloodReport(dt, txtHn.Text, txtPttNameE.Text, txtDob.Text, txtSex.Text, cboEmbryologistReport.Text, cboEmbryologistAppv.Text, txtReportDate.Text, txtApprovDate.Text);
+            frm.setLabBloodReportHomone(dt, txtHn.Text, txtPttNameE.Text, txtDob.Text, txtSex.Text, cboEmbryologistReport.Text, cboEmbryologistAppv.Text, txtReportDate.Text, txtApprovDate.Text);
             frm.ShowDialog(this);
         }
 
@@ -326,7 +326,7 @@ namespace clinic_ivf.gui
             txtHn.Value = ptt.patient_hn;
             txtPttNameE.Value = ptt.Name;
             txtDob.Value = ic.datetoShow(ptt.patient_birthday) + " [" + ptt.AgeStringShort() + "]";
-            txtSex.Value = ptt.f_sex_id.Equals("1") ? "ชาย" : "หญิง";
+            txtSex.Value = ptt.f_sex_id.Equals("1") ? "Male" : "Female";
 
             ic.setC1Combo(cboEmbryologistAppv, lbRes.staff_id_approve);
             ic.setC1Combo(cboEmbryologistReport, lbRes.staff_id_result);
@@ -335,7 +335,7 @@ namespace clinic_ivf.gui
             txtReportDate.Value = lbRes.date_time_result;
 
             txtEmailTo.Value = ic.iniC.email_to_sperm_freezing;
-            txtEmailSubject.Value = "Result LAB Blood HN " + txtHn.Text + " Name " + txtPttNameE.Text + " [VN " + txtVnShow.Text + "]";
+            txtEmailSubject.Value = "Result LAB Blood HN " + txtHn.Text + " Name " + txtPttNameE.Text + "Sex "+txtSex.Text+ " [VN " + txtVnShow.Text + "]";
 
             setGrfProc();
         }
