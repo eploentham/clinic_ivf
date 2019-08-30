@@ -1036,6 +1036,16 @@ namespace clinic_ivf.gui
             FrmReport frm = new FrmReport(ic);
             DataTable dt = new DataTable();
             dt = ic.ivfDB.lspermDB.selectByPk(txtPeID.Text);
+            String date1 = dt.Rows[0]["date_report"].ToString();
+            String date2 = dt.Rows[0]["date_approve"].ToString();
+            String datemale = dt.Rows[0]["dob_male"].ToString();
+            date1 = ic.datetimetoShow(dt.Rows[0]["date_report"]);
+            date2 = ic.datetimetoShow(dt.Rows[0]["date_approve"]);
+            dt.Rows[0]["date_report"] = date1;
+            dt.Rows[0]["date_approve"] = date2;
+
+            datemale = ic.datetoShow(dt.Rows[0]["dob_male"]);
+            dt.Rows[0]["dob_male"] = datemale;
             //FrmWaiting frmW = new FrmWaiting();
             //frmW.Show();
             frm.setSpermPesa(dt);
@@ -1050,6 +1060,16 @@ namespace clinic_ivf.gui
             dt = ic.ivfDB.lspermDB.selectByPk(txtID.Text);
             //FrmWaiting frmW = new FrmWaiting();
             //frmW.Show();
+            String date1 = dt.Rows[0]["date_report"].ToString();
+            String date2 = dt.Rows[0]["date_approve"].ToString();
+            String datemale = dt.Rows[0]["dob_male"].ToString();
+            date1 = ic.datetimetoShow(dt.Rows[0]["date_report"]);
+            date2 = ic.datetimetoShow(dt.Rows[0]["date_approve"]);
+            dt.Rows[0]["date_report"] = date1;
+            dt.Rows[0]["date_approve"] = date2;
+
+            datemale = ic.datetoShow(dt.Rows[0]["dob_male"]);
+            dt.Rows[0]["dob_male"] = datemale;
             frm.setSpermSa(dt);
             frm.ShowDialog(this);
         }
@@ -1062,10 +1082,14 @@ namespace clinic_ivf.gui
             dt = ic.ivfDB.lspermDB.selectByPk(txtSfID.Text);
             String date1 = dt.Rows[0]["date_report"].ToString();
             String date2 = dt.Rows[0]["date_approve"].ToString();
+            String datemale = dt.Rows[0]["dob_male"].ToString();
             date1 = ic.datetimetoShow(dt.Rows[0]["date_report"]);
             date2 = ic.datetimetoShow(dt.Rows[0]["date_approve"]);
             dt.Rows[0]["date_report"] = date1;
             dt.Rows[0]["date_approve"] = date2;
+
+            datemale = ic.datetoShow(dt.Rows[0]["dob_male"]);
+            dt.Rows[0]["dob_male"] = datemale;
             //FrmWaiting frmW = new FrmWaiting();
             //frmW.Show();
             frm.setSpermSf(dt);
