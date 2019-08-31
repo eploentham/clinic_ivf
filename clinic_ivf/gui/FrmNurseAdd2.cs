@@ -1910,6 +1910,7 @@ namespace clinic_ivf.gui
             chkApmSpermFreezing.Checked = pApm.sperm_freezing.Equals("1") ? true : false;
             chkApmPesa.Checked = pApm.pesa.Equals("1") ? true : false;
             chkApmSpermOPU.Checked = pApm.sperm_opu.Equals("1") ? true : false;
+            chkApmSpermSA.Checked = pApm.sperm_opu.Equals("1") ? true : false;
 
             txtApmOther.Value = pApm.other_remark;
             ic.setC1Combo(cboApmETTime, pApm.et_time);
@@ -2359,9 +2360,10 @@ namespace clinic_ivf.gui
         private void BtnGenEggSti_Click(object sender, EventArgs e)
         {
             //throw new NotImplementedException();
-            String lmpdate = "";
+            String lmpdate = "",err="";
             DateTime lmpdate1 = new DateTime();
             lmpdate = ic.datetoDB(txtEggStiVisitLMP.Text);
+            ic.logw.WriteLog("BtnGenEggSti_Click HN "+txtHn.Text+" VN "+txtVn.Text);
             if (!DateTime.TryParse(lmpdate, out lmpdate1))
             {
                 MessageBox.Show("วันที่ LMP Date ไม่ถูกต้อง ", "");
@@ -2376,63 +2378,76 @@ namespace clinic_ivf.gui
                 if (!ic.cStf.staff_id.Equals(""))
                 {
                     long chk = 0, chk1 = 0, max=0;
+                    ic.logw.WriteLog("BtnGenEggSti_Click HN " + txtHn.Text + " VN " + txtVn.Text);
                     String re = ic.ivfDB.eggsDB.insertEggSti(eggs, ic.cStf.staff_id);
                     if (long.TryParse(re, out chk))
                     {
                         if(chk!=1)
                             txtEggStiId.Value = re;
                         ic.ivfDB.eggsdDB.VoidEggSti(txtEggStiId.Text, ic.cStf.staff_id);
-                        lmpdate = ic.datetoDB(txtEggStiVisitLMP.Text);      
-                        if (DateTime.TryParse(lmpdate, out lmpdate1))
+                        try
                         {
-                            //if (txtEggStiDay.Text.Equals("1"))
-                            //{
-
-                            //}
-                            //else
-                            //{
-                            //long.TryParse(txtEggStiDay.Text, out chk1);       //      -0005
-                            //chk1++;
-                            //lmpdate1 = lmpdate1.AddDays(chk1);
-                            //}
-                            //max = 17 + chk1;          //-0005
-                            max = 17;       //+0005
-                            for (long i = 1; i <= max; i++)
+                            lmpdate = ic.datetoDB(txtEggStiVisitLMP.Text);
+                            if (DateTime.TryParse(lmpdate, out lmpdate1))
                             {
-                                if (i != 1)       //+0005
-                                {       //+0005
-                                    lmpdate1 = lmpdate1.AddDays(1);       //+0005
-                                }       //+0005
-                                EggStiDay eggsd = new EggStiDay();
-                                eggsd.egg_sti_day_id = "";
-                                eggsd.egg_sti_id = txtEggStiId.Text;
-                                eggsd.day1 = i.ToString();
-                                eggsd.date = ic.datetoDB(lmpdate1.Year.ToString() + "-" + lmpdate1.ToString("MM-dd"));
-                                eggsd.e2 = "";
-                                eggsd.lh = "";
-                                eggsd.active = "";
-                                eggsd.remark = "";
-                                eggsd.fsh = "";
-                                eggsd.date_create = "";
-                                eggsd.date_modi = "";
-                                eggsd.date_cancel = "";
-                                eggsd.user_create = "";
-                                eggsd.user_modi = "";
-                                eggsd.user_cancel = "";
-                                eggsd.prolactin = "";
-                                eggsd.rt_ovary_1 = "";
-                                eggsd.rt_ovary_2 = "";
-                                eggsd.lt_ovary_1 = "";
-                                eggsd.lt_ovary_2 = "";
-                                eggsd.endo = "";
-                                eggsd.medication = "";
-                                eggsd.medication2 = "";
-                                chk1++;
-                                ic.ivfDB.eggsdDB.insertEggStiDay(eggsd, ic.cStf.staff_id);
+                                //if (txtEggStiDay.Text.Equals("1"))
+                                //{
+
+                                //}
+                                //else
+                                //{
+                                //long.TryParse(txtEggStiDay.Text, out chk1);       //      -0005
+                                //chk1++;
+                                //lmpdate1 = lmpdate1.AddDays(chk1);
+                                //}
+                                //max = 17 + chk1;          //-0005
+                                max = 17;       //+0005
+                                for (long i = 1; i <= max; i++)
+                                {
+                                    if (i != 1)       //+0005
+                                    {       //+0005
+                                        lmpdate1 = lmpdate1.AddDays(1);       //+0005
+                                    }       //+0005
+                                    EggStiDay eggsd = new EggStiDay();
+                                    eggsd.egg_sti_day_id = "";
+                                    eggsd.egg_sti_id = txtEggStiId.Text;
+                                    eggsd.day1 = i.ToString();
+                                    eggsd.date = ic.datetoDB(lmpdate1.Year.ToString() + "-" + lmpdate1.ToString("MM-dd"));
+                                    eggsd.e2 = "";
+                                    eggsd.lh = "";
+                                    eggsd.active = "";
+                                    eggsd.remark = "";
+                                    eggsd.fsh = "";
+                                    eggsd.date_create = "";
+                                    eggsd.date_modi = "";
+                                    eggsd.date_cancel = "";
+                                    eggsd.user_create = "";
+                                    eggsd.user_modi = "";
+                                    eggsd.user_cancel = "";
+                                    eggsd.prolactin = "";
+                                    eggsd.rt_ovary_1 = "";
+                                    eggsd.rt_ovary_2 = "";
+                                    eggsd.lt_ovary_1 = "";
+                                    eggsd.lt_ovary_2 = "";
+                                    eggsd.endo = "";
+                                    eggsd.medication = "";
+                                    eggsd.medication2 = "";
+                                    chk1++;
+                                    ic.ivfDB.eggsdDB.insertEggStiDay(eggsd, ic.cStf.staff_id);
+                                }
                             }
                         }
+                        catch(Exception ex)
+                        {
+                            ic.logw.WriteLog("BtnGenEggSti_Click error " + ex.Message);
+                        }
+                        
                         setControlEggSti();
                     }
+                    //else
+                    //{
+                    //    ic.logw.WriteLog("BtnGenEggSti_Click error " + re);
+                    //}
                 }
             }
         }
@@ -2830,7 +2845,7 @@ namespace clinic_ivf.gui
             pApm.sperm_freezing = chkApmSpermFreezing.Checked ? "1" : "0";
             pApm.sperm_opu = chkApmSpermOPU.Checked ? "1" : "0";
             pApm.pesa = chkApmPesa.Checked ? "1" : "0";
-
+            pApm.sperm_sa = chkApmSpermSA.Checked ? "1" : "0";
             //pApm.opu = chkET.Checked ? "1" : "0";
             return chk;
         }

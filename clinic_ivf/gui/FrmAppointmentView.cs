@@ -33,8 +33,8 @@ namespace clinic_ivf.gui
         Font ff, ffB;
 
         int colID = 1, colpttId = 2, colVsTime = 3, colPttHn = 4, colVsCode = 5, colVsPttName = 6, colVsDoctor = 7, colVsSperm = 8, colVsDay6 = 9, colVsDay7 = 10, colVsDay8 = 11, colVsDay9=12, colVsDay10=13, colVsDay11=14;
-        int colVsTVS = 15, colVsPesa = 16, colVsSpermF = 17, colVsOPU = 18, colVsET = 19, colVsFET=20, colVsHCG = 21, colVsSpermOPU = 22, colVsTrans = 23, colVsANC = 24, colVsAnes = 25;
-        int colVSE2 = 26, colVSLh = 27, colVSPrl = 28, colVSFsh = 29, colVsAgent=30, colVsRemark = 31, colVsStatus=32, colConn=33, colStfCreate=34,colStfModi=35, colStfSave=36;
+        int colVsTVS = 15, colVsPesa = 16, colVsSpermF = 17, colVsSpermSA=18, colVsOPU = 19, colVsET = 20, colVsFET=21, colVsHCG = 22, colVsSpermOPU = 23, colVsTrans = 24, colVsANC = 25, colVsAnes = 26;
+        int colVSE2 = 27, colVSLh = 28, colVSPrl = 29, colVSFsh = 30, colVsAgent=31, colVsRemark = 32, colVsStatus=33, colConn=34, colStfCreate=35,colStfModi=36, colStfSave=37;
 
         int colpApmPttId = 1,colpApmPttName = 2;
 
@@ -877,7 +877,7 @@ namespace clinic_ivf.gui
         private void setGrfPtt1()
         {
             grfPtt.Rows.Count = 2;
-            grfPtt.Cols.Count = 37;
+            grfPtt.Cols.Count = 38;
             grfPtt.Rows.Fixed = 2;
             grfPtt.AllowMerging = C1.Win.C1FlexGrid.AllowMergingEnum.FixedOnly;
             grfPtt.AllowMergingFixed = C1.Win.C1FlexGrid.AllowMergingEnum.Free;
@@ -994,6 +994,7 @@ namespace clinic_ivf.gui
             grfPtt.Cols[colStfCreate].Width = 80;
             grfPtt.Cols[colStfModi].Width = 80;
             grfPtt.Cols[colStfSave].Width = 80;
+            grfPtt.Cols[colVsSpermSA].Width = 60;
 
             grfPtt.ShowCursor = true;
             //grdFlex.Cols[colID].Caption = "no";
@@ -1029,7 +1030,7 @@ namespace clinic_ivf.gui
             grfPtt.Cols[colVSFsh].Caption = "FSH";
             grfPtt.Cols[colVsFET].Caption = "FET";
             grfPtt.Cols[colVsAgent].Caption = "Agent";
-            //grfPtt.Cols[colStfCreate].Caption = "FET";
+            grfPtt.Cols[colVsSpermSA].Caption = "Sp SA";
             //grfPtt.Cols[colStfModi].Caption = "FET";
             //grfPtt.Cols[celStfSave].Caption = "FET";
 
@@ -1075,6 +1076,8 @@ namespace clinic_ivf.gui
             rng20.Data = "stf modi";
             CellRange rng21= grfPtt.GetCellRange(0, colStfSave, 1, colStfSave);
             rng21.Data = "stf save";
+            CellRange rng22 = grfPtt.GetCellRange(0, colVsSpermSA, 1, colVsSpermSA);
+            rng22.Data = "Sp SA";
 
             grfPtt[1, colVsDoctor] = "Dr.";
             grfPtt[1, colVsSperm] = "Collect";
@@ -1093,6 +1096,7 @@ namespace clinic_ivf.gui
             grfPtt[1, colStfCreate] = "stf create";
             grfPtt[1, colStfModi] = "stf modi";
             grfPtt[1, colStfSave] = "stf save";
+            grfPtt[1, colVsSpermSA] = "Sp SA";
         }
         private void setGrfPtt(ConnectDB con, DataTable dtApmOld, DataTable dtApm)
         {
@@ -1255,6 +1259,7 @@ namespace clinic_ivf.gui
                 row1[colVsSpermOPU] = row[ic.ivfDB.pApmDB.pApm.sperm_opu].ToString().Equals("1") ? imgCorr : imgTran;
                 row1[colVsRemark] = row[ic.ivfDB.pApmDB.pApm.patient_appointment].ToString();
                 row1[colVsAgent] = row["AgentName"].ToString();
+                row1[colVsSpermSA] = row[ic.ivfDB.pApmDB.pApm.sperm_sa].ToString().Equals("1") ? imgCorr : imgTran;
                 String stf = "";
                 stf = row[ic.ivfDB.pApmDB.pApm.user_create].ToString();
                 if (stf.IndexOf("@") >= 0)
@@ -1367,6 +1372,7 @@ namespace clinic_ivf.gui
                 row1[colVsSpermOPU] = row[ic.ivfDB.pApmDB.pApm.sperm_opu].ToString().Equals("1") ? imgCorr : imgTran;
                 row1[colVsRemark] = row[ic.ivfDB.pApmDB.pApm.patient_appointment].ToString();
                 row1[colVsAgent] = row["AgentName"].ToString();
+                row1[colVsSpermSA] = row[ic.ivfDB.pApmDB.pApm.sperm_sa].ToString().Equals("1") ? imgCorr : imgTran;
                 String stf = "";
                 stf = row[ic.ivfDB.pApmDB.pApm.user_create].ToString();
                 if (stf.IndexOf("@") >= 0)
@@ -1472,6 +1478,20 @@ namespace clinic_ivf.gui
 
             grfPtt.Cols[colVsSperm].Visible = false;
             grfPtt.Cols[colVsAnes].Visible = false;
+            if (ic.user.status_admin.Equals("2"))
+            {
+                grfPtt.Cols[colStfCreate].Visible = true;
+                grfPtt.Cols[colStfModi].Visible = true;
+                grfPtt.Cols[colStfSave].Visible = true;
+                //grfPtt.Cols[colStfModi].Visible = true;
+            }
+            else
+            {
+                grfPtt.Cols[colStfCreate].Visible = false;
+                grfPtt.Cols[colStfModi].Visible = false;
+                grfPtt.Cols[colStfSave].Visible = false;
+                //grfPtt.Cols[colStfModi].Visible = false;
+            }
             //grfPtt.Cols[colConn].Visible = false;
             theme1.SetTheme(grfPtt, ic.theme);
 

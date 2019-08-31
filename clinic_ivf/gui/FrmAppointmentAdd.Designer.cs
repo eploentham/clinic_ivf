@@ -123,6 +123,7 @@
             this.tC = new C1.Win.C1Command.C1DockingTab();
             this.tabVisit = new C1.Win.C1Command.C1DockingTabPage();
             this.tabDay = new C1.Win.C1Command.C1DockingTabPage();
+            this.chkSpermSA = new C1.Win.C1Input.C1CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.theme1)).BeginInit();
             this.sB.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtRemarkpApm)).BeginInit();
@@ -199,6 +200,7 @@
             this.tC.SuspendLayout();
             this.tabVisit.SuspendLayout();
             this.tabDay.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.chkSpermSA)).BeginInit();
             this.SuspendLayout();
             // 
             // theme1
@@ -245,6 +247,7 @@
             this.txtRemarkpApm.TabIndex = 558;
             this.txtRemarkpApm.Tag = null;
             this.theme1.SetTheme(this.txtRemarkpApm, "(default)");
+            this.txtRemarkpApm.Visible = false;
             this.txtRemarkpApm.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
             this.txtRemarkpApm.TextChanged += new System.EventHandler(this.TxtRemarkpApm_TextChanged);
             // 
@@ -288,6 +291,7 @@
             this.label6.TabIndex = 557;
             this.label6.Text = "Remark :";
             this.theme1.SetTheme(this.label6, "(default)");
+            this.label6.Visible = false;
             // 
             // cboTimepApm
             // 
@@ -854,6 +858,7 @@
             // 
             // tabPtt
             // 
+            this.tabPtt.Controls.Add(this.chkSpermSA);
             this.tabPtt.Controls.Add(this.chkSpermOPU);
             this.tabPtt.Controls.Add(this.chkPesa);
             this.tabPtt.Controls.Add(this.chkSpermFreezing);
@@ -1770,6 +1775,24 @@
             this.tabDay.TabIndex = 1;
             this.tabDay.Text = "Day";
             // 
+            // chkSpermSA
+            // 
+            this.chkSpermSA.BackColor = System.Drawing.Color.Transparent;
+            this.chkSpermSA.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
+            this.chkSpermSA.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.chkSpermSA.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.chkSpermSA.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.chkSpermSA.Location = new System.Drawing.Point(440, 33);
+            this.chkSpermSA.Name = "chkSpermSA";
+            this.chkSpermSA.Padding = new System.Windows.Forms.Padding(4, 1, 1, 1);
+            this.chkSpermSA.Size = new System.Drawing.Size(104, 24);
+            this.chkSpermSA.TabIndex = 711;
+            this.chkSpermSA.Text = "Sperm SA";
+            this.theme1.SetTheme(this.chkSpermSA, "(default)");
+            this.chkSpermSA.UseVisualStyleBackColor = true;
+            this.chkSpermSA.Value = null;
+            this.chkSpermSA.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            // 
             // FrmAppointmentAdd
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1862,6 +1885,7 @@
             this.tC.ResumeLayout(false);
             this.tabVisit.ResumeLayout(false);
             this.tabDay.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.chkSpermSA)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1964,5 +1988,6 @@
         private C1.Win.C1Input.C1CheckBox chkSpermFreezing;
         private C1.Win.C1Input.C1CheckBox chkPesa;
         private C1.Win.C1Input.C1CheckBox chkSpermOPU;
+        private C1.Win.C1Input.C1CheckBox chkSpermSA;
     }
 }

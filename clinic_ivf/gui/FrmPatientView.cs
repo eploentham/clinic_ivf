@@ -244,11 +244,15 @@ namespace clinic_ivf.gui
             {
                 grfPtt.Cols[colStfCreate].Visible = true;
                 grfPtt.Cols[colStfModi].Visible = true;
+                //grfPtt.Cols[colStfCreate].Visible = true;
+                //grfPtt.Cols[colStfModi].Visible = true;
             }
             else
             {
                 grfPtt.Cols[colStfCreate].Visible = false;
                 grfPtt.Cols[colStfModi].Visible = false;
+                //grfPtt.Cols[colStfCreate].Visible = false;
+                //grfPtt.Cols[colStfModi].Visible = false;
             }
             grfPtt.Cols[colPttHn].AllowEditing = false;
             grfPtt.Cols[colPttName].AllowEditing = false;

@@ -8,6 +8,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -26,7 +27,8 @@ namespace clinic_ivf.gui
         C1SuperTooltip stt;
         C1SuperErrorProvider sep;
         String statusOPU = "", statusFET = "";
-
+        [DllImport("winspool.drv", CharSet = CharSet.Auto, SetLastError = true)]
+        public static extern bool SetDefaultPrinter(string Printer);
         public FrmLabFormA(IvfControl ic, String lformaId, String pttid, String vsid, String vn)
         {
             InitializeComponent();
@@ -151,6 +153,7 @@ namespace clinic_ivf.gui
         private void BtnPrintSperm_Click(object sender, EventArgs e)
         {
             //throw new NotImplementedException();
+            SetDefaultPrinter(ic.iniC.printerA4);
             FrmReport frm = new FrmReport(ic);
             DataTable dt = new DataTable();
             dt = ic.ivfDB.lFormaDB.selectReportByPk(txtID.Text);
@@ -252,6 +255,7 @@ namespace clinic_ivf.gui
         private void BtnPrintFet_Click(object sender, EventArgs e)
         {
             //throw new NotImplementedException();
+            SetDefaultPrinter(ic.iniC.printerA4);
             FrmReport frm = new FrmReport(ic);
             DataTable dt = new DataTable();
             dt = ic.ivfDB.lFormaDB.selectReportByPk(txtID.Text);
@@ -297,6 +301,7 @@ namespace clinic_ivf.gui
         private void BtnPrintOPU_Click(object sender, EventArgs e)
         {
             //throw new NotImplementedException();
+            SetDefaultPrinter(ic.iniC.printerA4);
             FrmReport frm = new FrmReport(ic);
             DataTable dt = new DataTable();
             dt = ic.ivfDB.lFormaDB.selectReportByPk(txtID.Text);
@@ -460,6 +465,7 @@ namespace clinic_ivf.gui
         private void BtnPrint_Click(object sender, EventArgs e)
         {
             //throw new NotImplementedException();
+            SetDefaultPrinter(ic.iniC.printerA4);
             FrmReport frm = new FrmReport(ic);
             DataTable dt = new DataTable();
             dt = ic.ivfDB.lFormaDB.selectReportByPk(txtID.Text);

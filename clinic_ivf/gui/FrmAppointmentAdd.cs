@@ -504,6 +504,7 @@ namespace clinic_ivf.gui
             chkSpermFreezing.Checked = pApm.sperm_freezing.Equals("1") ? true : false;
             chkSpermOPU.Checked = pApm.sperm_opu.Equals("1") ? true : false;
             chkPesa.Checked = pApm.pesa.Equals("1") ? true : false;
+            chkSpermSA.Checked = pApm.sperm_sa.Equals("1") ? true : false;
             txtUserReq.Value = ic.ivfDB.stfDB.getStaffNameBylStf(pApm.patient_appointment_staff);
 
             txtOther.Value = pApm.other_remark;
@@ -1106,7 +1107,7 @@ namespace clinic_ivf.gui
             pApm.sperm_freezing = chkSpermFreezing.Checked ? "1" : "0";
             pApm.sperm_opu = chkSpermOPU.Checked ? "1" : "0";
             pApm.pesa = chkPesa.Checked ? "1" : "0";
-            //pApm.opu = chkET.Checked ? "1" : "0";
+            pApm.sperm_sa = chkSpermSA.Checked ? "1" : "0";
             return chk;
         }
         private void FrmAppointmentAdd_Load(object sender, EventArgs e)

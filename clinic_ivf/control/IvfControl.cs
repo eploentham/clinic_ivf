@@ -62,6 +62,7 @@ namespace clinic_ivf.control
         public Decimal CreditCharge = 0;
         public Boolean ftpUsePassive = false;
         Hashtable _styles;
+        public LogWriter logw;
         //public FtpClient ftpC;
         public enum NID_FIELD
         {
@@ -120,6 +121,7 @@ namespace clinic_ivf.control
             cStf = new Staff();
             sStf = new Staff();
             cop = new Company();
+            logw = new LogWriter();
 
             GetConfig();
             conn = new ConnectDB(iniC);

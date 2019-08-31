@@ -170,6 +170,7 @@
             this.txtApmIDOld = new C1.Win.C1Input.C1TextBox();
             this.tCApm1 = new C1.Win.C1Command.C1DockingTab();
             this.tabApmPtt = new C1.Win.C1Command.C1DockingTabPage();
+            this.chkApmSpermSA = new C1.Win.C1Input.C1CheckBox();
             this.chkApmSpermOPU = new C1.Win.C1Input.C1CheckBox();
             this.chkApmPesa = new C1.Win.C1Input.C1CheckBox();
             this.chkApmSpermFreezing = new C1.Win.C1Input.C1CheckBox();
@@ -824,6 +825,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.tCApm1)).BeginInit();
             this.tCApm1.SuspendLayout();
             this.tabApmPtt.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.chkApmSpermSA)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkApmSpermOPU)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkApmPesa)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkApmSpermFreezing)).BeginInit();
@@ -2963,7 +2965,7 @@
             this.c1SplitterPanel6.SizeRatio = 28.02D;
             this.c1SplitterPanel6.TabIndex = 0;
             this.c1SplitterPanel6.Text = "Panel 1";
-            this.c1SplitterPanel6.Width = 443;
+            this.c1SplitterPanel6.Width = 436;
             // 
             // pnApmAll
             // 
@@ -3119,6 +3121,7 @@
             // 
             // tabApmPtt
             // 
+            this.tabApmPtt.Controls.Add(this.chkApmSpermSA);
             this.tabApmPtt.Controls.Add(this.chkApmSpermOPU);
             this.tabApmPtt.Controls.Add(this.chkApmPesa);
             this.tabApmPtt.Controls.Add(this.chkApmSpermFreezing);
@@ -3147,6 +3150,24 @@
             this.tabApmPtt.Size = new System.Drawing.Size(678, 118);
             this.tabApmPtt.TabIndex = 0;
             this.tabApmPtt.Text = "Patient";
+            // 
+            // chkApmSpermSA
+            // 
+            this.chkApmSpermSA.BackColor = System.Drawing.Color.Transparent;
+            this.chkApmSpermSA.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
+            this.chkApmSpermSA.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.chkApmSpermSA.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.chkApmSpermSA.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.chkApmSpermSA.Location = new System.Drawing.Point(440, 31);
+            this.chkApmSpermSA.Name = "chkApmSpermSA";
+            this.chkApmSpermSA.Padding = new System.Windows.Forms.Padding(4, 1, 1, 1);
+            this.chkApmSpermSA.Size = new System.Drawing.Size(104, 24);
+            this.chkApmSpermSA.TabIndex = 712;
+            this.chkApmSpermSA.Text = "Sperm SA";
+            this.theme1.SetTheme(this.chkApmSpermSA, "(default)");
+            this.chkApmSpermSA.UseVisualStyleBackColor = true;
+            this.chkApmSpermSA.Value = null;
+            this.chkApmSpermSA.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
             // 
             // chkApmSpermOPU
             // 
@@ -4068,6 +4089,7 @@
             this.txtApmRemarkpApm.TabIndex = 558;
             this.txtApmRemarkpApm.Tag = null;
             this.theme1.SetTheme(this.txtApmRemarkpApm, "(default)");
+            this.txtApmRemarkpApm.Visible = false;
             this.txtApmRemarkpApm.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
             // 
             // btnApmVoid
@@ -4110,6 +4132,7 @@
             this.label112.TabIndex = 557;
             this.label112.Text = "Remark :";
             this.theme1.SetTheme(this.label112, "(default)");
+            this.label112.Visible = false;
             // 
             // cboApmTimepApm
             // 
@@ -11319,6 +11342,7 @@
             this.tCApm1.ResumeLayout(false);
             this.tabApmPtt.ResumeLayout(false);
             this.tabApmPtt.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.chkApmSpermSA)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkApmSpermOPU)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkApmPesa)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkApmSpermFreezing)).EndInit();
@@ -12411,5 +12435,6 @@
         private C1.Win.C1Input.C1CheckBox chkApmPesa;
         private C1.Win.C1Input.C1CheckBox chkApmSpermFreezing;
         private C1.Win.C1Input.C1CheckBox chkApmSpermOPU;
+        private C1.Win.C1Input.C1CheckBox chkApmSpermSA;
     }
 }

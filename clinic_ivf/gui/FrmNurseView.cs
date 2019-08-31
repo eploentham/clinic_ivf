@@ -1407,261 +1407,404 @@ namespace clinic_ivf.gui
         }
         private void ContextMenu_prn_authen_sign_finish(object sender, System.EventArgs e)
         {
-            String chk = "", name = "", vsid = "", pttId = "", hn = "";
+            SetDefaultPrinter(ic.iniC.printerA4);
+            try
+            {
+                String chk = "", name = "", vsid = "", pttId = "", hn = "";
 
-            vsid = grfQue[grfQue.Row, colID] != null ? grfQue[grfQue.Row, colID].ToString() : "";
-            pttId = grfQue[grfQue.Row, colPttId] != null ? grfQue[grfQue.Row, colPttId].ToString() : "";
-            name = grfQue[grfQue.Row, colPttName] != null ? grfQue[grfQue.Row, colPttName].ToString() : "";
-            hn = grfQue[grfQue.Row, colPttHn] != null ? grfQue[grfQue.Row, colPttHn].ToString() : "";
-            FrmPrintCritiAnes frm = new FrmPrintCritiAnes(ic, hn, name, vsid);
-            frm.ShowDialog(this);
+                vsid = grfQue[grfQue.Row, colID] != null ? grfQue[grfQue.Row, colID].ToString() : "";
+                pttId = grfQue[grfQue.Row, colPttId] != null ? grfQue[grfQue.Row, colPttId].ToString() : "";
+                name = grfQue[grfQue.Row, colPttName] != null ? grfQue[grfQue.Row, colPttName].ToString() : "";
+                hn = grfQue[grfQue.Row, colPttHn] != null ? grfQue[grfQue.Row, colPttHn].ToString() : "";
+                FrmPrintCritiAnes frm = new FrmPrintCritiAnes(ic, hn, name, vsid);
+                frm.ShowDialog(this);
+                ic.logw.WriteLog("Print Paitent Authen Sign (Finish)");
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message, "");
+            }
+            
         }
         private void ContextMenu_prn_check_list_finish(object sender, System.EventArgs e)
         {
             SetDefaultPrinter(ic.iniC.printerA4);
+            try
+            {
+                String chk = "", name = "", vsid = "", pttId = "", hn = "";
 
-            String chk = "", name = "", vsid = "", pttId = "", hn = "";
-
-            vsid = grfQue[grfQue.Row, colID] != null ? grfQue[grfQue.Row, colID].ToString() : "";
-            pttId = grfQue[grfQue.Row, colPttId] != null ? grfQue[grfQue.Row, colPttId].ToString() : "";
-            name = grfQue[grfQue.Row, colPttName] != null ? grfQue[grfQue.Row, colPttName].ToString() : "";
-            hn = grfQue[grfQue.Row, colPttHn] != null ? grfQue[grfQue.Row, colPttHn].ToString() : "";
-            Patient ptt = new Patient();
-            ptt = ic.ivfDB.pttDB.selectByHn(hn);
-            Patient ptt2 = new Patient();
-            ptt2 = ic.ivfDB.pttDB.selectByHn(ptt.patient_hn_2);
-            FrmReport frm = new FrmReport(ic);
-            frm.setOpdCheckList(name, hn, ptt.AgeStringShort() + " [" + ic.datetoShow(ptt.patient_birthday) + "]", ptt2.Name + " " + ptt2.patient_hn + " " + ptt2.AgeStringShort() + " [" + ic.datetoShow(ptt2.patient_birthday) + "]");
-            frm.ShowDialog(this);
+                vsid = grfFinish[grfFinish.Row, colID] != null ? grfFinish[grfFinish.Row, colID].ToString() : "";
+                pttId = grfFinish[grfFinish.Row, colPttId] != null ? grfFinish[grfFinish.Row, colPttId].ToString() : "";
+                name = grfFinish[grfFinish.Row, colPttName] != null ? grfFinish[grfFinish.Row, colPttName].ToString() : "";
+                hn = grfFinish[grfFinish.Row, colPttHn] != null ? grfFinish[grfFinish.Row, colPttHn].ToString() : "";
+                Patient ptt = new Patient();
+                ptt = ic.ivfDB.pttDB.selectByHn(hn);
+                Patient ptt2 = new Patient();
+                ptt2 = ic.ivfDB.pttDB.selectByHn(ptt.patient_hn_2);
+                FrmReport frm = new FrmReport(ic);
+                frm.setOpdCheckList(name, hn, ptt.AgeStringShort() + " [" + ic.datetoShow(ptt.patient_birthday) + "]", ptt2.Name + " " + ptt2.patient_hn + " " + ptt2.AgeStringShort() + " [" + ic.datetoShow(ptt2.patient_birthday) + "]");
+                frm.ShowDialog(this);
+                ic.logw.WriteLog("Print Paitent Check List (Finish)");
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message, "");
+            }
+            
         }
         private void ContextMenu_prn_authen_sign(object sender, System.EventArgs e)
         {
-            String chk = "", name = "", vsid = "", pttId = "", hn="";
+            SetDefaultPrinter(ic.iniC.printerA4);
+            try
+            {
+                String chk = "", name = "", vsid = "", pttId = "", hn = "";
 
-            vsid = grfQue[grfQue.Row, colID] != null ? grfQue[grfQue.Row, colID].ToString() : "";
-            pttId = grfQue[grfQue.Row, colPttId] != null ? grfQue[grfQue.Row, colPttId].ToString() : "";
-            name = grfQue[grfQue.Row, colPttName] != null ? grfQue[grfQue.Row, colPttName].ToString() : "";
-            hn = grfQue[grfQue.Row, colPttHn] != null ? grfQue[grfQue.Row, colPttHn].ToString() : "";
-            FrmPrintCritiAnes frm = new FrmPrintCritiAnes(ic, hn, name, vsid);
-            frm.ShowDialog(this);
+                vsid = grfQue[grfQue.Row, colID] != null ? grfQue[grfQue.Row, colID].ToString() : "";
+                pttId = grfQue[grfQue.Row, colPttId] != null ? grfQue[grfQue.Row, colPttId].ToString() : "";
+                name = grfQue[grfQue.Row, colPttName] != null ? grfQue[grfQue.Row, colPttName].ToString() : "";
+                hn = grfQue[grfQue.Row, colPttHn] != null ? grfQue[grfQue.Row, colPttHn].ToString() : "";
+                FrmPrintCritiAnes frm = new FrmPrintCritiAnes(ic, hn, name, vsid);
+                frm.ShowDialog(this);
+                ic.logw.WriteLog("Print Paitent Authen Sign (Queue)");
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message, "");
+            }
+            
         }
         private void ContextMenu_prn_authen_sign_grfSearch(object sender, System.EventArgs e)
         {
+            SetDefaultPrinter(ic.iniC.printerA4);
+            try
+            {
+                String chk = "", name = "", vsid = "", pttId = "", hn = "";
+
+                vsid = grfSearch[grfSearch.Row, colID] != null ? grfSearch[grfSearch.Row, colID].ToString() : "";
+                pttId = grfSearch[grfSearch.Row, colPttId] != null ? grfSearch[grfSearch.Row, colPttId].ToString() : "";
+                name = grfSearch[grfSearch.Row, colPttName] != null ? grfSearch[grfSearch.Row, colPttName].ToString() : "";
+                hn = grfSearch[grfSearch.Row, colPttHn] != null ? grfSearch[grfSearch.Row, colPttHn].ToString() : "";
+
+                FrmPrintCritiAnes frm = new FrmPrintCritiAnes(ic, hn, name, vsid);
+                frm.ShowDialog(this);
+                ic.logw.WriteLog("Print Paitent Authen Sign (Search)");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "");
+            }
             
-            String chk = "", name = "", vsid = "", pttId = "", hn = "";
-
-            vsid = grfSearch[grfSearch.Row, colID] != null ? grfSearch[grfSearch.Row, colID].ToString() : "";
-            pttId = grfSearch[grfSearch.Row, colPttId] != null ? grfSearch[grfSearch.Row, colPttId].ToString() : "";
-            name = grfSearch[grfSearch.Row, colPttName] != null ? grfSearch[grfSearch.Row, colPttName].ToString() : "";
-            hn = grfSearch[grfSearch.Row, colPttHn] != null ? grfSearch[grfSearch.Row, colPttHn].ToString() : "";
-
-            FrmPrintCritiAnes frm = new FrmPrintCritiAnes(ic, hn, name, vsid);
-            frm.ShowDialog(this);
         }
         private void ContextMenu_prn_check_list(object sender, System.EventArgs e)
         {
             SetDefaultPrinter(ic.iniC.printerA4);
+            try
+            {
+                String chk = "", name = "", vsid = "", pttId = "", hn = "";
 
-            String chk = "", name = "", vsid = "", pttId = "", hn="";
-
-            vsid = grfQue[grfQue.Row, colID] != null ? grfQue[grfQue.Row, colID].ToString() : "";
-            pttId = grfQue[grfQue.Row, colPttId] != null ? grfQue[grfQue.Row, colPttId].ToString() : "";
-            hn = grfQue[grfQue.Row, colPttHn] != null ? grfQue[grfQue.Row, colPttHn].ToString() : "";
-            name = grfQue[grfQue.Row, colPttName] != null ? grfQue[grfQue.Row, colPttName].ToString() : "";
-            Patient ptt = new Patient();
-            ptt = ic.ivfDB.pttDB.selectByHn(hn);
-            Patient ptt2 = new Patient();
-            ptt2 = ic.ivfDB.pttDB.selectByHn(ptt.patient_hn_2);
-            FrmReport frm = new FrmReport(ic);
-            frm.setOpdCheckList(name, hn, ptt.AgeStringShort() + " [" + ic.datetoShow(ptt.patient_birthday) + "]", ptt2.Name+" "+ ptt2.patient_hn + " "+ ptt2.AgeStringShort() + " [" + ic.datetoShow(ptt2.patient_birthday) + "]");
-            frm.ShowDialog(this);
+                vsid = grfQue[grfQue.Row, colID] != null ? grfQue[grfQue.Row, colID].ToString() : "";
+                pttId = grfQue[grfQue.Row, colPttId] != null ? grfQue[grfQue.Row, colPttId].ToString() : "";
+                hn = grfQue[grfQue.Row, colPttHn] != null ? grfQue[grfQue.Row, colPttHn].ToString() : "";
+                name = grfQue[grfQue.Row, colPttName] != null ? grfQue[grfQue.Row, colPttName].ToString() : "";
+                Patient ptt = new Patient();
+                ptt = ic.ivfDB.pttDB.selectByHn(hn);
+                Patient ptt2 = new Patient();
+                ptt2 = ic.ivfDB.pttDB.selectByHn(ptt.patient_hn_2);
+                FrmReport frm = new FrmReport(ic);
+                frm.setOpdCheckList(name, hn, ptt.AgeStringShort() + " [" + ic.datetoShow(ptt.patient_birthday) + "]", ptt2.Name + " " + ptt2.patient_hn + " " + ptt2.AgeStringShort() + " [" + ic.datetoShow(ptt2.patient_birthday) + "]");
+                frm.ShowDialog(this);
+                ic.logw.WriteLog("Print Paitent Check List (Queue)");
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message, "");
+            }
+            
         }
         private void ContextMenu_prn_check_list_grfSearch(object sender, System.EventArgs e)
         {
             SetDefaultPrinter(ic.iniC.printerA4);
-
-            String chk = "", name = "", vsid = "", pttId = "", hn = "";
-            hn = grfQue[grfQue.Row, colPttHn] != null ? grfQue[grfQue.Row, colPttHn].ToString() : "";
-            vsid = grfSearch[grfSearch.Row, colID] != null ? grfSearch[grfSearch.Row, colID].ToString() : "";
-            pttId = grfSearch[grfSearch.Row, colPttId] != null ? grfSearch[grfSearch.Row, colPttId].ToString() : "";
-            name = grfSearch[grfSearch.Row, colPttName] != null ? grfSearch[grfSearch.Row, colPttName].ToString() : "";
-            Patient ptt = new Patient();
-            ptt = ic.ivfDB.pttDB.selectByHn(hn);
-            Patient ptt2 = new Patient();
-            ptt2 = ic.ivfDB.pttDB.selectByHn(ptt.patient_hn_2);
-            FrmReport frm = new FrmReport(ic);
-            frm.setOpdCheckList(name, hn, ptt.AgeStringShort() + " [" + ic.datetoShow(ptt.patient_birthday) + "]", ptt2.Name + " " + ptt2.patient_hn + " " + ptt2.AgeStringShort() + " [" + ic.datetoShow(ptt2.patient_birthday) + "]");
-            frm.ShowDialog(this);
+            try
+            {
+                String chk = "", name = "", vsid = "", pttId = "", hn = "";
+                hn = grfQue[grfQue.Row, colPttHn] != null ? grfQue[grfQue.Row, colPttHn].ToString() : "";
+                vsid = grfSearch[grfSearch.Row, colID] != null ? grfSearch[grfSearch.Row, colID].ToString() : "";
+                pttId = grfSearch[grfSearch.Row, colPttId] != null ? grfSearch[grfSearch.Row, colPttId].ToString() : "";
+                name = grfSearch[grfSearch.Row, colPttName] != null ? grfSearch[grfSearch.Row, colPttName].ToString() : "";
+                Patient ptt = new Patient();
+                ptt = ic.ivfDB.pttDB.selectByHn(hn);
+                Patient ptt2 = new Patient();
+                ptt2 = ic.ivfDB.pttDB.selectByHn(ptt.patient_hn_2);
+                FrmReport frm = new FrmReport(ic);
+                frm.setOpdCheckList(name, hn, ptt.AgeStringShort() + " [" + ic.datetoShow(ptt.patient_birthday) + "]", ptt2.Name + " " + ptt2.patient_hn + " " + ptt2.AgeStringShort() + " [" + ic.datetoShow(ptt2.patient_birthday) + "]");
+                frm.ShowDialog(this);
+                ic.logw.WriteLog("Print Paitent Check List (Search)");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "");
+            }
+            
         }
         private void ContextMenu_prn_order_opu_grfSearch(object sender, System.EventArgs e)
         {
             SetDefaultPrinter(ic.iniC.printerA4);
+            try
+            {
+                String chk = "", name = "", vsid = "", pttId = "", hn = "";
 
-            String chk = "", name = "", vsid = "", pttId = "", hn = "";
-
-            vsid = grfSearch[grfSearch.Row, colID] != null ? grfSearch[grfSearch.Row, colID].ToString() : "";
-            pttId = grfSearch[grfSearch.Row, colPttId] != null ? grfSearch[grfSearch.Row, colPttId].ToString() : "";
-            name = grfSearch[grfSearch.Row, colPttName] != null ? grfSearch[grfSearch.Row, colPttName].ToString() : "";
-            hn = grfSearch[grfSearch.Row, colPttHn] != null ? grfSearch[grfSearch.Row, colPttHn].ToString() : "";
-            Patient ptt = new Patient();
-            ptt = ic.ivfDB.pttDB.selectByHn(hn);
-            FrmReport frm = new FrmReport(ic);
-            frm.setOpdOrderOPU(name, hn, ptt.AgeStringShort() + " [" + ic.datetoShow(ptt.patient_birthday) + "]");
-            frm.ShowDialog(this);
+                vsid = grfSearch[grfSearch.Row, colID] != null ? grfSearch[grfSearch.Row, colID].ToString() : "";
+                pttId = grfSearch[grfSearch.Row, colPttId] != null ? grfSearch[grfSearch.Row, colPttId].ToString() : "";
+                name = grfSearch[grfSearch.Row, colPttName] != null ? grfSearch[grfSearch.Row, colPttName].ToString() : "";
+                hn = grfSearch[grfSearch.Row, colPttHn] != null ? grfSearch[grfSearch.Row, colPttHn].ToString() : "";
+                Patient ptt = new Patient();
+                ptt = ic.ivfDB.pttDB.selectByHn(hn);
+                FrmReport frm = new FrmReport(ic);
+                frm.setOpdOrderOPU(name, hn, ptt.AgeStringShort() + " [" + ic.datetoShow(ptt.patient_birthday) + "]");
+                frm.ShowDialog(this);
+                ic.logw.WriteLog("Print Print Order OPU (Search)");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "");
+            }
+            
         }
         private void ContextMenu_prn_order_opu_grfFinish(object sender, System.EventArgs e)
         {
             SetDefaultPrinter(ic.iniC.printerA4);
+            try
+            {
+                String chk = "", name = "", vsid = "", pttId = "", hn = "";
 
-            String chk = "", name = "", vsid = "", pttId = "", hn = "";
-
-            vsid = grfFinish[grfFinish.Row, colID] != null ? grfFinish[grfFinish.Row, colID].ToString() : "";
-            pttId = grfFinish[grfFinish.Row, colPttId] != null ? grfFinish[grfFinish.Row, colPttId].ToString() : "";
-            name = grfFinish[grfFinish.Row, colPttName] != null ? grfFinish[grfFinish.Row, colPttName].ToString() : "";
-            hn = grfFinish[grfFinish.Row, colPttHn] != null ? grfFinish[grfFinish.Row, colPttHn].ToString() : "";
-            Patient ptt = new Patient();
-            ptt = ic.ivfDB.pttDB.selectByHn(hn);
-            FrmReport frm = new FrmReport(ic);
-            frm.setOpdOrderOPU(name, hn, ptt.AgeStringShort() + " [" + ic.datetoShow(ptt.patient_birthday) + "]");
-            frm.ShowDialog(this);
+                vsid = grfFinish[grfFinish.Row, colID] != null ? grfFinish[grfFinish.Row, colID].ToString() : "";
+                pttId = grfFinish[grfFinish.Row, colPttId] != null ? grfFinish[grfFinish.Row, colPttId].ToString() : "";
+                name = grfFinish[grfFinish.Row, colPttName] != null ? grfFinish[grfFinish.Row, colPttName].ToString() : "";
+                hn = grfFinish[grfFinish.Row, colPttHn] != null ? grfFinish[grfFinish.Row, colPttHn].ToString() : "";
+                Patient ptt = new Patient();
+                ptt = ic.ivfDB.pttDB.selectByHn(hn);
+                FrmReport frm = new FrmReport(ic);
+                frm.setOpdOrderOPU(name, hn, ptt.AgeStringShort() + " [" + ic.datetoShow(ptt.patient_birthday) + "]");
+                frm.ShowDialog(this);
+                ic.logw.WriteLog("Print Print Order OPU (Finish)");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "");
+            }
+            
         }
         private void ContextMenu_prn_order_opu(object sender, System.EventArgs e)
         {
             SetDefaultPrinter(ic.iniC.printerA4);
+            try
+            {
+                String chk = "", name = "", vsid = "", pttId = "", hn = "";
 
-            String chk = "", name = "", vsid = "", pttId = "", hn = "";
-
-            vsid = grfQue[grfQue.Row, colID] != null ? grfQue[grfQue.Row, colID].ToString() : "";
-            pttId = grfQue[grfQue.Row, colPttId] != null ? grfQue[grfQue.Row, colPttId].ToString() : "";
-            name = grfQue[grfQue.Row, colPttName] != null ? grfQue[grfQue.Row, colPttName].ToString() : "";
-            hn = grfQue[grfQue.Row, colPttHn] != null ? grfQue[grfQue.Row, colPttHn].ToString() : "";
-            Patient ptt = new Patient();
-            ptt = ic.ivfDB.pttDB.selectByHn(hn);
-            FrmReport frm = new FrmReport(ic);
-            frm.setOpdOrderOPU(name, hn, ptt.AgeStringShort() + " [" + ic.datetoShow(ptt.patient_birthday) + "]");
-            frm.ShowDialog(this);
+                vsid = grfQue[grfQue.Row, colID] != null ? grfQue[grfQue.Row, colID].ToString() : "";
+                pttId = grfQue[grfQue.Row, colPttId] != null ? grfQue[grfQue.Row, colPttId].ToString() : "";
+                name = grfQue[grfQue.Row, colPttName] != null ? grfQue[grfQue.Row, colPttName].ToString() : "";
+                hn = grfQue[grfQue.Row, colPttHn] != null ? grfQue[grfQue.Row, colPttHn].ToString() : "";
+                Patient ptt = new Patient();
+                ptt = ic.ivfDB.pttDB.selectByHn(hn);
+                FrmReport frm = new FrmReport(ic);
+                frm.setOpdOrderOPU(name, hn, ptt.AgeStringShort() + " [" + ic.datetoShow(ptt.patient_birthday) + "]");
+                frm.ShowDialog(this);
+                ic.logw.WriteLog("Print Print Order OPU (Queue)");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "");
+            }
+            
         }
         private void ContextMenu_prn_order_et_fet_grfSearch(object sender, System.EventArgs e)
         {
             SetDefaultPrinter(ic.iniC.printerA4);
-            String chk = "", name = "", vsid = "", pttId = "", hn = "";
+            try
+            {
+                String chk = "", name = "", vsid = "", pttId = "", hn = "";
 
-            vsid = grfSearch[grfSearch.Row, colID] != null ? grfSearch[grfSearch.Row, colID].ToString() : "";
-            pttId = grfSearch[grfSearch.Row, colPttId] != null ? grfSearch[grfSearch.Row, colPttId].ToString() : "";
-            name = grfSearch[grfSearch.Row, colPttName] != null ? grfSearch[grfSearch.Row, colPttName].ToString() : "";
-            hn = grfSearch[grfSearch.Row, colPttHn] != null ? grfSearch[grfSearch.Row, colPttHn].ToString() : "";
-            Patient ptt = new Patient();
-            ptt = ic.ivfDB.pttDB.selectByHn(hn);
-            FrmReport frm = new FrmReport(ic);
-            frm.setOpdOrderETFET(name, hn, ptt.AgeStringShort() + " [" + ic.datetoShow(ptt.patient_birthday) + "]");
-            frm.ShowDialog(this);
+                vsid = grfSearch[grfSearch.Row, colID] != null ? grfSearch[grfSearch.Row, colID].ToString() : "";
+                pttId = grfSearch[grfSearch.Row, colPttId] != null ? grfSearch[grfSearch.Row, colPttId].ToString() : "";
+                name = grfSearch[grfSearch.Row, colPttName] != null ? grfSearch[grfSearch.Row, colPttName].ToString() : "";
+                hn = grfSearch[grfSearch.Row, colPttHn] != null ? grfSearch[grfSearch.Row, colPttHn].ToString() : "";
+                Patient ptt = new Patient();
+                ptt = ic.ivfDB.pttDB.selectByHn(hn);
+                FrmReport frm = new FrmReport(ic);
+                frm.setOpdOrderETFET(name, hn, ptt.AgeStringShort() + " [" + ic.datetoShow(ptt.patient_birthday) + "]");
+                frm.ShowDialog(this);
+                ic.logw.WriteLog("Print Print Order ET FET (Search)");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "");
+            }
+            
         }
         private void ContextMenu_prn_order_et_fet_grfFinish(object sender, System.EventArgs e)
         {
             SetDefaultPrinter(ic.iniC.printerA4);
+            try
+            {
+                String chk = "", name = "", vsid = "", pttId = "", hn = "";
 
-            String chk = "", name = "", vsid = "", pttId = "", hn = "";
-
-            vsid = grfFinish[grfFinish.Row, colID] != null ? grfFinish[grfFinish.Row, colID].ToString() : "";
-            pttId = grfFinish[grfFinish.Row, colPttId] != null ? grfFinish[grfFinish.Row, colPttId].ToString() : "";
-            name = grfFinish[grfFinish.Row, colPttName] != null ? grfFinish[grfFinish.Row, colPttName].ToString() : "";
-            hn = grfFinish[grfFinish.Row, colPttHn] != null ? grfFinish[grfFinish.Row, colPttHn].ToString() : "";
-            Patient ptt = new Patient();
-            ptt = ic.ivfDB.pttDB.selectByHn(hn);
-            FrmReport frm = new FrmReport(ic);
-            frm.setOpdOrderETFET(name, hn, ptt.AgeStringShort() + " [" + ic.datetoShow(ptt.patient_birthday) + "]");
-            frm.ShowDialog(this);
+                vsid = grfFinish[grfFinish.Row, colID] != null ? grfFinish[grfFinish.Row, colID].ToString() : "";
+                pttId = grfFinish[grfFinish.Row, colPttId] != null ? grfFinish[grfFinish.Row, colPttId].ToString() : "";
+                name = grfFinish[grfFinish.Row, colPttName] != null ? grfFinish[grfFinish.Row, colPttName].ToString() : "";
+                hn = grfFinish[grfFinish.Row, colPttHn] != null ? grfFinish[grfFinish.Row, colPttHn].ToString() : "";
+                Patient ptt = new Patient();
+                ptt = ic.ivfDB.pttDB.selectByHn(hn);
+                FrmReport frm = new FrmReport(ic);
+                frm.setOpdOrderETFET(name, hn, ptt.AgeStringShort() + " [" + ic.datetoShow(ptt.patient_birthday) + "]");
+                frm.ShowDialog(this);
+                ic.logw.WriteLog("Print Print Order ET FET (Finish)");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "");
+            }
+            
         }
         private void ContextMenu_prn_order_et_fet(object sender, System.EventArgs e)
         {
             SetDefaultPrinter(ic.iniC.printerA4);
+            try
+            {
+                String chk = "", name = "", vsid = "", pttId = "", hn = "";
 
-            String chk = "", name = "", vsid = "", pttId = "", hn = "";
-
-            vsid = grfQue[grfQue.Row, colID] != null ? grfQue[grfQue.Row, colID].ToString() : "";
-            pttId = grfQue[grfQue.Row, colPttId] != null ? grfQue[grfQue.Row, colPttId].ToString() : "";
-            name = grfQue[grfQue.Row, colPttName] != null ? grfQue[grfQue.Row, colPttName].ToString() : "";
-            hn = grfQue[grfQue.Row, colPttHn] != null ? grfQue[grfQue.Row, colPttHn].ToString() : "";
-            Patient ptt = new Patient();
-            ptt = ic.ivfDB.pttDB.selectByHn(hn);
-            FrmReport frm = new FrmReport(ic);
-            frm.setOpdOrderETFET(name, hn, ptt.AgeStringShort() + " [" + ic.datetoShow(ptt.patient_birthday) + "]");
-            frm.ShowDialog(this);
+                vsid = grfQue[grfQue.Row, colID] != null ? grfQue[grfQue.Row, colID].ToString() : "";
+                pttId = grfQue[grfQue.Row, colPttId] != null ? grfQue[grfQue.Row, colPttId].ToString() : "";
+                name = grfQue[grfQue.Row, colPttName] != null ? grfQue[grfQue.Row, colPttName].ToString() : "";
+                hn = grfQue[grfQue.Row, colPttHn] != null ? grfQue[grfQue.Row, colPttHn].ToString() : "";
+                Patient ptt = new Patient();
+                ptt = ic.ivfDB.pttDB.selectByHn(hn);
+                FrmReport frm = new FrmReport(ic);
+                frm.setOpdOrderETFET(name, hn, ptt.AgeStringShort() + " [" + ic.datetoShow(ptt.patient_birthday) + "]");
+                frm.ShowDialog(this);
+                ic.logw.WriteLog("Print Print Order ET FET (Queue)");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "");
+            }
+            
         }
         private void ContextMenu_prn_operation_note_grfSearch(object sender, System.EventArgs e)
         {
             SetDefaultPrinter(ic.iniC.printerA4);
+            try
+            {
+                String chk = "", name = "", vsid = "", pttId = "", hn = "";
 
-            String chk = "", name = "", vsid = "", pttId = "", hn = "";
-
-            vsid = grfSearch[grfSearch.Row, colID] != null ? grfSearch[grfSearch.Row, colID].ToString() : "";
-            pttId = grfSearch[grfSearch.Row, colPttId] != null ? grfSearch[grfSearch.Row, colPttId].ToString() : "";
-            name = grfSearch[grfSearch.Row, colPttName] != null ? grfSearch[grfSearch.Row, colPttName].ToString() : "";
-            hn = grfSearch[grfSearch.Row, colPttHn] != null ? grfSearch[grfSearch.Row, colPttHn].ToString() : "";
-            Patient ptt = new Patient();
-            ptt = ic.ivfDB.pttDB.selectByHn(hn);
-            FrmReport frm = new FrmReport(ic);
-            frm.setOpdpostoperationnote(name, hn, ptt.AgeStringShort() + " [" + ic.datetoShow(ptt.patient_birthday) + "]");
-            frm.ShowDialog(this);
+                vsid = grfSearch[grfSearch.Row, colID] != null ? grfSearch[grfSearch.Row, colID].ToString() : "";
+                pttId = grfSearch[grfSearch.Row, colPttId] != null ? grfSearch[grfSearch.Row, colPttId].ToString() : "";
+                name = grfSearch[grfSearch.Row, colPttName] != null ? grfSearch[grfSearch.Row, colPttName].ToString() : "";
+                hn = grfSearch[grfSearch.Row, colPttHn] != null ? grfSearch[grfSearch.Row, colPttHn].ToString() : "";
+                Patient ptt = new Patient();
+                ptt = ic.ivfDB.pttDB.selectByHn(hn);
+                FrmReport frm = new FrmReport(ic);
+                frm.setOpdpostoperationnote(name, hn, ptt.AgeStringShort() + " [" + ic.datetoShow(ptt.patient_birthday) + "]");
+                frm.ShowDialog(this);
+                ic.logw.WriteLog("Print Print Operation Note (Search)");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "");
+            }
+            
         }
         private void ContextMenu_prn_operation_note_grfFinish(object sender, System.EventArgs e)
         {
             SetDefaultPrinter(ic.iniC.printerA4);
+            try
+            {
+                String chk = "", name = "", vsid = "", pttId = "", hn = "";
 
-            String chk = "", name = "", vsid = "", pttId = "", hn = "";
-
-            vsid = grfFinish[grfFinish.Row, colID] != null ? grfFinish[grfFinish.Row, colID].ToString() : "";
-            pttId = grfFinish[grfFinish.Row, colPttId] != null ? grfFinish[grfFinish.Row, colPttId].ToString() : "";
-            name = grfFinish[grfFinish.Row, colPttName] != null ? grfFinish[grfFinish.Row, colPttName].ToString() : "";
-            hn = grfFinish[grfFinish.Row, colPttHn] != null ? grfFinish[grfFinish.Row, colPttHn].ToString() : "";
-            Patient ptt = new Patient();
-            ptt = ic.ivfDB.pttDB.selectByHn(hn);
-            FrmReport frm = new FrmReport(ic);
-            frm.setOpdpostoperationnote(name, hn, ptt.AgeStringShort() + " [" + ic.datetoShow(ptt.patient_birthday) + "]");
-            frm.ShowDialog(this);
+                vsid = grfFinish[grfFinish.Row, colID] != null ? grfFinish[grfFinish.Row, colID].ToString() : "";
+                pttId = grfFinish[grfFinish.Row, colPttId] != null ? grfFinish[grfFinish.Row, colPttId].ToString() : "";
+                name = grfFinish[grfFinish.Row, colPttName] != null ? grfFinish[grfFinish.Row, colPttName].ToString() : "";
+                hn = grfFinish[grfFinish.Row, colPttHn] != null ? grfFinish[grfFinish.Row, colPttHn].ToString() : "";
+                Patient ptt = new Patient();
+                ptt = ic.ivfDB.pttDB.selectByHn(hn);
+                FrmReport frm = new FrmReport(ic);
+                frm.setOpdpostoperationnote(name, hn, ptt.AgeStringShort() + " [" + ic.datetoShow(ptt.patient_birthday) + "]");
+                frm.ShowDialog(this);
+                ic.logw.WriteLog("Print Print Operation Note (Finish)");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "");
+            }
+            
         }
         private void ContextMenu_prn_operation_note(object sender, System.EventArgs e)
         {
             SetDefaultPrinter(ic.iniC.printerA4);
+            try
+            {
+                String chk = "", name = "", vsid = "", pttId = "", hn = "";
 
-            String chk = "", name = "", vsid = "", pttId = "", hn = "";
-
-            vsid = grfQue[grfQue.Row, colID] != null ? grfQue[grfQue.Row, colID].ToString() : "";
-            pttId = grfQue[grfQue.Row, colPttId] != null ? grfQue[grfQue.Row, colPttId].ToString() : "";
-            name = grfQue[grfQue.Row, colPttName] != null ? grfQue[grfQue.Row, colPttName].ToString() : "";
-            hn = grfQue[grfQue.Row, colPttHn] != null ? grfQue[grfQue.Row, colPttHn].ToString() : "";
-            Patient ptt = new Patient();
-            ptt = ic.ivfDB.pttDB.selectByHn(hn);
-            FrmReport frm = new FrmReport(ic);
-            frm.setOpdpostoperationnote(name, hn, ptt.AgeStringShort() + " [" + ic.datetoShow(ptt.patient_birthday) + "]");
-            frm.ShowDialog(this);
+                vsid = grfQue[grfQue.Row, colID] != null ? grfQue[grfQue.Row, colID].ToString() : "";
+                pttId = grfQue[grfQue.Row, colPttId] != null ? grfQue[grfQue.Row, colPttId].ToString() : "";
+                name = grfQue[grfQue.Row, colPttName] != null ? grfQue[grfQue.Row, colPttName].ToString() : "";
+                hn = grfQue[grfQue.Row, colPttHn] != null ? grfQue[grfQue.Row, colPttHn].ToString() : "";
+                Patient ptt = new Patient();
+                ptt = ic.ivfDB.pttDB.selectByHn(hn);
+                FrmReport frm = new FrmReport(ic);
+                frm.setOpdpostoperationnote(name, hn, ptt.AgeStringShort() + " [" + ic.datetoShow(ptt.patient_birthday) + "]");
+                frm.ShowDialog(this);
+                ic.logw.WriteLog("Print Print Operation Note (Queue)");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "");
+            }
+            
         }
         private void ContextMenu_prn_pmh_grfFinish(object sender, System.EventArgs e)
         {
             SetDefaultPrinter(ic.iniC.printerA4);
+            try
+            {
+                String chk = "", name = "", vsid = "", pttId = "", hn = "";
 
-            String chk = "", name = "", vsid = "", pttId = "", hn = "";
-
-            vsid = grfFinish[grfFinish.Row, colID] != null ? grfFinish[grfFinish.Row, colID].ToString() : "";
-            pttId = grfFinish[grfFinish.Row, colPttId] != null ? grfFinish[grfFinish.Row, colPttId].ToString() : "";
-            name = grfFinish[grfFinish.Row, colPttName] != null ? grfFinish[grfFinish.Row, colPttName].ToString() : "";
-            hn = grfFinish[grfFinish.Row, colPttHn] != null ? grfFinish[grfFinish.Row, colPttHn].ToString() : "";
-            FrmReport frm = new FrmReport(ic);
-            frm.setPatientMedicalHistory(name, hn);
-            frm.ShowDialog(this);
+                vsid = grfFinish[grfFinish.Row, colID] != null ? grfFinish[grfFinish.Row, colID].ToString() : "";
+                pttId = grfFinish[grfFinish.Row, colPttId] != null ? grfFinish[grfFinish.Row, colPttId].ToString() : "";
+                name = grfFinish[grfFinish.Row, colPttName] != null ? grfFinish[grfFinish.Row, colPttName].ToString() : "";
+                hn = grfFinish[grfFinish.Row, colPttHn] != null ? grfFinish[grfFinish.Row, colPttHn].ToString() : "";
+                FrmReport frm = new FrmReport(ic);
+                frm.setPatientMedicalHistory(name, hn);
+                frm.ShowDialog(this);
+                ic.logw.WriteLog("Print Print Patient History (Finish)");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "");
+            }
+            
         }
         private void ContextMenu_prn_pmh_grfSearch(object sender, System.EventArgs e)
         {
             SetDefaultPrinter(ic.iniC.printerA4);
-            String chk = "", name = "", vsid = "", pttId = "", hn = "";
+            try
+            {
+                String chk = "", name = "", vsid = "", pttId = "", hn = "";
 
-            vsid = grfSearch[grfSearch.Row, colID] != null ? grfSearch[grfSearch.Row, colID].ToString() : "";
-            pttId = grfSearch[grfSearch.Row, colPttId] != null ? grfSearch[grfSearch.Row, colPttId].ToString() : "";
-            name = grfSearch[grfSearch.Row, colPttName] != null ? grfSearch[grfSearch.Row, colPttName].ToString() : "";
-            hn = grfSearch[grfSearch.Row, colPttHn] != null ? grfSearch[grfSearch.Row, colPttHn].ToString() : "";
-            FrmReport frm = new FrmReport(ic);
-            frm.setPatientMedicalHistory(name, hn);
-            frm.ShowDialog(this);
+                vsid = grfSearch[grfSearch.Row, colID] != null ? grfSearch[grfSearch.Row, colID].ToString() : "";
+                pttId = grfSearch[grfSearch.Row, colPttId] != null ? grfSearch[grfSearch.Row, colPttId].ToString() : "";
+                name = grfSearch[grfSearch.Row, colPttName] != null ? grfSearch[grfSearch.Row, colPttName].ToString() : "";
+                hn = grfSearch[grfSearch.Row, colPttHn] != null ? grfSearch[grfSearch.Row, colPttHn].ToString() : "";
+                FrmReport frm = new FrmReport(ic);
+                frm.setPatientMedicalHistory(name, hn);
+                frm.ShowDialog(this);
+                ic.logw.WriteLog("Print Print Patient History (Search)");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "");
+            }
+            
         }
         private void ContextMenu_prn_sticker_vn_grfque(object sender, System.EventArgs e)
         {

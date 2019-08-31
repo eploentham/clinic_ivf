@@ -147,7 +147,6 @@ namespace clinic_ivf.objdb
                 "," + eggs.add_lab + "='" + p.add_lab + "'" +
                 "," + eggs.day_start + "='" + p.day_start + "'" +
                 " " +
-
                 "";
             try
             {
@@ -156,6 +155,7 @@ namespace clinic_ivf.objdb
             catch (Exception ex)
             {
                 sql = ex.Message + " " + ex.InnerException;
+                new LogWriter("Error insert EggSti " + sql);
             }
 
             return re;

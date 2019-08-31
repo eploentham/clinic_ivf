@@ -67,5 +67,6 @@ namespace clinic_ivf.object1
         public String sperm_freezing { get; set; }
         public String sperm_opu { get; set; }
         public String pesa { get; set; }
+        public String sperm_sa { get; set; }
     }
 }

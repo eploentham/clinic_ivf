@@ -125,6 +125,7 @@ namespace clinic_ivf.objdb
             catch (Exception ex)
             {
                 sql = ex.Message + " " + ex.InnerException;
+                new LogWriter("Error insert EggStiDay " + sql);
             }
 
             return re;

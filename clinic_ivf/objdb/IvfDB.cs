@@ -223,7 +223,7 @@ namespace clinic_ivf.objdb
         public String genAppointmentRemarkPtt1(DataRow row1)
         {
             String re = "";
-            String hormo = "", tvs = "", opu = "", et = "", beta = "", other = "", appn = "", fet="", sperm = "", spermFreezing="", spermopu="", pesa="", e2="", lh="", fsh="", prl="", agent="";
+            String hormo = "", tvs = "", opu = "", et = "", beta = "", other = "", appn = "", fet="", sperm = "", spermFreezing="", spermopu="", pesa="", e2="", lh="", fsh="", prl="", agent="", spermSA="";
             hormo = row1[pApmDB.pApm.hormone_test].ToString().Equals("1") ? "Hormone Test " : "";
             tvs = row1[pApmDB.pApm.tvs].ToString().Equals("1") ? "TVS Day " + row1[pApmDB.pApm.tvs_day].ToString() + " [Time " + row1[pApmDB.pApm.tvs_time].ToString() + "]" : "" ;
             opu = row1[pApmDB.pApm.opu].ToString().Equals("1") ? row1[pApmDB.pApm.opu_time] != null ? "OPU [" + row1[pApmDB.pApm.opu_time].ToString() + "]" : "OPU " + row1[pApmDB.pApm.opu_time].ToString() : "";
@@ -242,6 +242,7 @@ namespace clinic_ivf.objdb
             fsh = row1[pApmDB.pApm.fsh].ToString().Equals("1") ? "FSH " : "";
             prl = row1[pApmDB.pApm.prl].ToString().Equals("1") ? "PRL " : "";
             agent = !row1["AgentName"].ToString().Equals("") ? "Agent "+ row1["AgentName"].ToString() : "";
+            spermSA = row1[pApmDB.pApm.sperm_sa].ToString().Equals("1") ? "Sperm SA " : "";
 
             appn = row1[pApmDB.pApm.patient_appointment_time].ToString() + " " + hormo + " " + tvs + " " + opu + " " + beta + " " 
                 + et + " " + fet + " " + sperm + " " 
