@@ -280,6 +280,7 @@
             this.printDialog1 = new System.Windows.Forms.PrintDialog();
             this.cPdf = new C1.Win.C1Document.C1PdfDocumentSource(this.components);
             this._c1pdf = new C1.C1Pdf.C1PdfDocument();
+            this.btnRefresh = new C1.Win.C1Input.C1Button();
             ((System.ComponentModel.ISupportInitialize)(this.theme1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitMain)).BeginInit();
             this.splitMain.Panel1.SuspendLayout();
@@ -443,6 +444,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtBP)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtPulse)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtPttO)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnRefresh)).BeginInit();
             this.SuspendLayout();
             // 
             // theme1
@@ -487,6 +489,7 @@
             // splitContainer2.Panel1
             // 
             this.splitContainer2.Panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.splitContainer2.Panel1.Controls.Add(this.btnRefresh);
             this.splitContainer2.Panel1.Controls.Add(this.txtLmp);
             this.splitContainer2.Panel1.Controls.Add(this.lbLmp);
             this.splitContainer2.Panel1.Controls.Add(this.label76);
@@ -4289,6 +4292,20 @@
             this._c1pdf.UseFastTextOut = true;
             this._c1pdf.UseFontShaping = true;
             // 
+            // btnRefresh
+            // 
+            this.btnRefresh.Image = global::clinic_ivf.Properties.Resources.refresh24;
+            this.btnRefresh.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnRefresh.Location = new System.Drawing.Point(776, 238);
+            this.btnRefresh.Name = "btnRefresh";
+            this.btnRefresh.Size = new System.Drawing.Size(83, 33);
+            this.btnRefresh.TabIndex = 733;
+            this.btnRefresh.Text = "Refresh";
+            this.btnRefresh.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.theme1.SetTheme(this.btnRefresh, "(default)");
+            this.btnRefresh.UseVisualStyleBackColor = true;
+            this.btnRefresh.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            // 
             // FrmPatientAdd
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -4469,6 +4486,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtBP)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtPulse)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtPttO)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnRefresh)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -4731,5 +4749,6 @@
         private System.Windows.Forms.Label lbLmp;
         private C1.Win.C1Input.C1TextBox c1TextBox3;
         private C1.Win.C1Input.C1DateEdit txtLmp;
+        private C1.Win.C1Input.C1Button btnRefresh;
     }
 }

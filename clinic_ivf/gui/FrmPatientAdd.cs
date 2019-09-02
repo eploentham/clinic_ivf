@@ -256,6 +256,7 @@ namespace clinic_ivf.gui
             btnHn2.Click += BtnHn2_Click;
             lbLmp.DoubleClick += LbLmp_DoubleClick;
             this.FormClosing += FrmPatientAdd_FormClosing;
+            btnRefresh.Click += BtnRefresh_Click;
 
             setKeyEnter();
 
@@ -275,6 +276,12 @@ namespace clinic_ivf.gui
             picPtt.SizeMode = PictureBoxSizeMode.StretchImage;
             tabFamily.Hide();
             //btnSavePic.Enabled = false;
+        }
+
+        private void BtnRefresh_Click(object sender, EventArgs e)
+        {
+            //throw new NotImplementedException();
+            setControl();
         }
 
         private void FrmPatientAdd_FormClosing(object sender, FormClosingEventArgs e)
@@ -1294,6 +1301,7 @@ namespace clinic_ivf.gui
                 ic.video = new VideoCaptureDevice(webcanDevice[0].MonikerString);
                 ic.video.NewFrame += Video_NewFrame;
                 ic.video.Start();
+                ic.posiID = "-";
                 btnCapture.Enabled = true;
                 btnSavePic.Enabled = false;
             }

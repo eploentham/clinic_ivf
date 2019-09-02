@@ -1450,7 +1450,6 @@ namespace clinic_ivf.gui
             {
                 MessageBox.Show(ex.Message, "");
             }
-            
         }
         private void ContextMenu_prn_authen_sign(object sender, System.EventArgs e)
         {

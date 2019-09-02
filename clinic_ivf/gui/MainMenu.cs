@@ -29,6 +29,7 @@ namespace clinic_ivf.gui
             this.ic = ic;
             //MessageBox.Show("111", "");
             InitializeComponent();
+            tC1.TabPageClosing += TC1_TabPageClosing;
             login = new Login(ic, splash);
             login.ShowDialog(this);
             new Thread(() =>
@@ -54,6 +55,16 @@ namespace clinic_ivf.gui
                 Application.Exit();
             }
         }
+
+        private void TC1_TabPageClosing(object sender, TabPageCancelEventArgs e)
+        {
+            //throw new NotImplementedException();
+            String xx = "";
+            C1DockingTab tab = new C1DockingTab();
+            tab = (C1DockingTab)sender;
+            xx = tab.Name;
+        }
+
         private void initConfig()
         {
             this.FormClosing += MainMenu4_FormClosing;
@@ -482,6 +493,15 @@ namespace clinic_ivf.gui
             //throw new NotImplementedException();
             if (e.CloseReason == CloseReason.UserClosing)
             {
+                if (ic.video != null)
+                {
+                    ic.logw.WriteLog("MainMenu4_FormClosing ic.video != null");
+                    if (ic.video.IsRunning)
+                    {
+                        ic.video.Stop();
+                    }
+                    ic.video = null;
+                }
                 if (!flagExit)
                 {
                     if (MessageBox.Show("ต้องการออกจากโปรแกรม3", "ออกจากโปรแกรม", MessageBoxButtons.OKCancel, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.OK)
@@ -607,8 +627,8 @@ namespace clinic_ivf.gui
         {
             String date = "";
             date = DateTime.Now.Year+"-"+ DateTime.Now.ToString("MM-dd");
-            this.Text = ic.iniC.statusAppDonor.Equals("1") ? "โปรแกรมClinic IVF Donor " +"สวัสดี คุณ "+ic.user.staff_fname_t +" "+ic.user.staff_lname_t+" Update 2019-08-28 "
-                : "โปรแกรมClinic IVF " + "สวัสดี คุณ " + ic.user.staff_fname_t + " " + ic.user.staff_lname_t + " Update 2019-08-28 format date "+ date;
+            this.Text = ic.iniC.statusAppDonor.Equals("1") ? "โปรแกรมClinic IVF Donor " +"สวัสดี คุณ "+ic.user.staff_fname_t +" "+ic.user.staff_lname_t+" Update 2019-09-02 "
+                : "โปรแกรมClinic IVF " + "สวัสดี คุณ " + ic.user.staff_fname_t + " " + ic.user.staff_lname_t + " Update 2019-09-02 format date "+ date;
 
             //theme1.SetTheme(this, ic.theme);
             theme1.SetTheme(this, ic.theme);

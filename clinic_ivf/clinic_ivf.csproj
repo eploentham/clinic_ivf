@@ -2029,6 +2029,7 @@
     <Content Include="RDNIDlib.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <None Include="Resources\refresh.png" />
     <None Include="Resources\spermAnaPic1.jpg" />
     <None Include="Resources\spermAnaPic2.jpg" />
     <None Include="Resources\arrow_true_24.jpg" />
