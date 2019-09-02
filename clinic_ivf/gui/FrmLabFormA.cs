@@ -899,6 +899,16 @@ namespace clinic_ivf.gui
                     txtVsId.Value = vs.t_visit_id;
                     txtPttId.Value = vs.t_patient_id;
                 }
+                if (txtHnFeMale.Text.Equals("") && !txtHnMale.Text.Equals(""))
+                {
+                    Patient ptt = new Patient();
+                    ptt = ic.ivfDB.pttDB.selectByPk1(pttid);
+                    Patient ptt2 = new Patient();
+                    ptt2 = ic.ivfDB.pttDB.selectByHn(ptt.patient_hn_2);
+                    txtHnFeMale.Value = ptt2.patient_hn;
+                    txtNameFeMale.Value = ptt2.Name;
+                    txtDobFeMale.Value = ptt2.patient_birthday;
+                }
             }
             else
             {

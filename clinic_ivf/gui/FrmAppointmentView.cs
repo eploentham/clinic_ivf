@@ -961,6 +961,8 @@ namespace clinic_ivf.gui
             colFET.DataType = typeof(Image);
             Column colSpermOPU = grfPtt.Cols[colVsSpermOPU];
             colSpermOPU.DataType = typeof(Image);
+            Column colSpermSA = grfPtt.Cols[colVsSpermSA];
+            colSpermSA.DataType = typeof(Image);
 
             grfPtt.Cols[colPttHn].Width = 100;
             grfPtt.Cols[colVsCode].Width = 60;
