@@ -55,7 +55,6 @@ namespace clinic_ivf.gui
                 Application.Exit();
             }
         }
-
         private void TC1_TabPageClosing(object sender, TabPageCancelEventArgs e)
         {
             //throw new NotImplementedException();
