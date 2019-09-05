@@ -64,7 +64,7 @@ namespace clinic_ivf.gui
 
             btnSave.Click += BtnSave_Click;
             btnApproveResult.Click += BtnApproveResult_Click;
-            btnPrintHomone.Click += BtnPrintHomone_Click;
+            btnPrintHormone.Click += BtnPrintHormone_Click;
             btnSendEmail.Click += BtnSendEmail_Click;
             btnPrintInfectious.Click += BtnPrintInfectious_Click;
 
@@ -228,7 +228,7 @@ namespace clinic_ivf.gui
             lbEmail.Text = "ส่ง Email เรียบร้อย";
         }
 
-        private void BtnPrintHomone_Click(object sender, EventArgs e)
+        private void BtnPrintHormone_Click(object sender, EventArgs e)
         {
             //throw new NotImplementedException();
             FrmReport frm = new FrmReport(ic);
@@ -236,8 +236,15 @@ namespace clinic_ivf.gui
             dt = ic.ivfDB.lbresDB.selectLabBloodByVsIdHomone(txtVsId.Text);
 
             String date1 = "";
-
-            frm.setLabBloodReportHomone(dt, txtHn.Text, txtPttNameE.Text, txtDob.Text, txtSex.Text, cboEmbryologistReport.Text, cboEmbryologistAppv.Text, txtReportDate.Text, txtApprovDate.Text);
+            if (ptt.f_sex_id.Equals("2") && (!ptt.patient_hn_1.Equals("") && !ptt.patient_hn_2.Equals("")))     // เป็น female และ เป็น donor  ไม่ต้องพิมพ์ หัว บริษัท
+            {
+                frm.setLabBloodReportHormone(dt, txtHn.Text, txtPttNameE.Text, txtDob.Text, txtSex.Text, cboEmbryologistReport.Text, cboEmbryologistAppv.Text, txtReportDate.Text, txtApprovDate.Text,"1");
+            }
+            else
+            {
+                frm.setLabBloodReportHormone(dt, txtHn.Text, txtPttNameE.Text, txtDob.Text, txtSex.Text, cboEmbryologistReport.Text, cboEmbryologistAppv.Text, txtReportDate.Text, txtApprovDate.Text,"");
+            }
+            
             frm.ShowDialog(this);
         }
 
