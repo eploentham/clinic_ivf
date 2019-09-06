@@ -17,5 +17,6 @@ namespace clinic_ivf.object1
         public String max_value_criteria { get; set; }        
         public String sort1 { get; set; }
         public String interpret { get; set; }
+        public String reactive_message { get; set; }
     }
 }

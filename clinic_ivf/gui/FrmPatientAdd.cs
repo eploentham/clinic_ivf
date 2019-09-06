@@ -808,7 +808,20 @@ namespace clinic_ivf.gui
             txtORDescription.Enabled = chkOR.Checked ? true : false;
             txtORDescription.Focus();
         }
-
+        private void setControlView(Boolean flag)
+        {
+            btnSave.Enabled = flag;
+            btnEdit.Enabled = flag;
+            btnWebCamOn.Enabled = flag;
+            btnCapture.Enabled = flag;
+            btnSavePic.Enabled = flag;
+            btnVoid.Enabled = flag;
+            btnPrint.Enabled = flag;
+            btnSmartcard.Enabled = flag;
+            btnVisit.Enabled = flag;
+            btnVisitVoid.Enabled = flag;
+            btnApm.Enabled = flag;
+        }
         private void setControlEnable(Boolean flag)
         {
             txtHn.Enabled = flag;
@@ -3210,6 +3223,21 @@ namespace clinic_ivf.gui
                 label76.Text = ptt.Name;
             }
             //CboSex_SelectedIndexChanged(null, null);
+            if (ic.user.dept_id.Equals("1090000001"))
+            {
+                setControlView(true);
+            }
+            else
+            {
+                if (ic.user.status_admin.Equals("2"))
+                {
+                    setControlView(true);
+                }
+                else
+                {
+                    setControlView(false);
+                }
+            }
             if (!txtID.Text.Equals(""))
             {
                 //PatientImage pttI = new PatientImage();

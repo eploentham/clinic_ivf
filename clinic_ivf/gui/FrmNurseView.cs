@@ -2035,7 +2035,7 @@ namespace clinic_ivf.gui
                 lsperm = ic.ivfDB.lspermDB.selectByReqId(reqid);
                 FrmLabSpermAdd frm = new FrmLabSpermAdd(ic, reqid, lsperm.sperm_id, "");
                 String txt = "";
-                if (!namef.Equals(""))
+                if (!name.Equals(""))
                 {
                     txt = "ผลLAB SPERM " + name;
                 }

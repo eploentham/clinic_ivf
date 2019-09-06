@@ -101,6 +101,7 @@
             this.ribbonTopToolBar1 = new C1.Win.C1Ribbon.RibbonTopToolBar();
             this.c1SplitterPanel4 = new C1.Win.C1SplitContainer.C1SplitterPanel();
             this.panel7 = new System.Windows.Forms.Panel();
+            this.txtPttIdOld = new C1.Win.C1Input.C1TextBox();
             this.txtPttId = new C1.Win.C1Input.C1TextBox();
             this.btnPrintSf = new C1.Win.C1Input.C1Button();
             this.label62 = new System.Windows.Forms.Label();
@@ -694,7 +695,6 @@
             this.txtPeHnFeMale = new C1.Win.C1Input.C1TextBox();
             this.tabReport = new C1.Win.C1Command.C1DockingTabPage();
             this.crySperm = new CrystalDecisions.Windows.Forms.CrystalReportViewer();
-            this.txtPttIdOld = new C1.Win.C1Input.C1TextBox();
             this.sB.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.theme1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tC)).BeginInit();
@@ -715,6 +715,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.c1Ribbon1)).BeginInit();
             this.c1SplitterPanel4.SuspendLayout();
             this.panel7.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtPttIdOld)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtPttId)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnPrintSf)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.c1PictureBox3)).BeginInit();
@@ -951,7 +952,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtPeNameFeMale)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtPeHnFeMale)).BeginInit();
             this.tabReport.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.txtPttIdOld)).BeginInit();
             this.SuspendLayout();
             // 
             // sB
@@ -1049,7 +1049,7 @@
             this.c1SplitterPanel3.SizeRatio = 41.101D;
             this.c1SplitterPanel3.TabIndex = 0;
             this.c1SplitterPanel3.Text = "Panel 1";
-            this.c1SplitterPanel3.Width = 568;
+            this.c1SplitterPanel3.Width = 561;
             // 
             // pnSfLeft
             // 
@@ -1668,6 +1668,20 @@
             this.panel7.Size = new System.Drawing.Size(815, 754);
             this.panel7.TabIndex = 0;
             this.theme1.SetTheme(this.panel7, "(default)");
+            // 
+            // txtPttIdOld
+            // 
+            this.txtPttIdOld.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtPttIdOld.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
+            this.txtPttIdOld.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.txtPttIdOld.Location = new System.Drawing.Point(84, 13);
+            this.txtPttIdOld.Name = "txtPttIdOld";
+            this.txtPttIdOld.Size = new System.Drawing.Size(30, 20);
+            this.txtPttIdOld.TabIndex = 869;
+            this.txtPttIdOld.Tag = null;
+            this.theme1.SetTheme(this.txtPttIdOld, "(default)");
+            this.txtPttIdOld.Visible = false;
+            this.txtPttIdOld.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
             // 
             // txtPttId
             // 
@@ -10104,20 +10118,6 @@
             this.crySperm.TabIndex = 2;
             this.theme1.SetTheme(this.crySperm, "(default)");
             // 
-            // txtPttIdOld
-            // 
-            this.txtPttIdOld.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtPttIdOld.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
-            this.txtPttIdOld.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.txtPttIdOld.Location = new System.Drawing.Point(84, 13);
-            this.txtPttIdOld.Name = "txtPttIdOld";
-            this.txtPttIdOld.Size = new System.Drawing.Size(30, 20);
-            this.txtPttIdOld.TabIndex = 869;
-            this.txtPttIdOld.Tag = null;
-            this.theme1.SetTheme(this.txtPttIdOld, "(default)");
-            this.txtPttIdOld.Visible = false;
-            this.txtPttIdOld.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
-            // 
             // FrmLabSpermAdd
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -10152,6 +10152,7 @@
             this.c1SplitterPanel4.ResumeLayout(false);
             this.panel7.ResumeLayout(false);
             this.panel7.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtPttIdOld)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtPttId)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnPrintSf)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.c1PictureBox3)).EndInit();
@@ -10401,7 +10402,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtPeNameFeMale)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtPeHnFeMale)).EndInit();
             this.tabReport.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.txtPttIdOld)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

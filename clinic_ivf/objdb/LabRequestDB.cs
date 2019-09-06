@@ -56,6 +56,7 @@ namespace clinic_ivf.objdb
             lbReq.name_donor = "name_donor";
             lbReq.request_id = "request_id";
             lbReq.form_a_id = "form_a_id";
+            lbReq.req_time = "req_time";
 
             lbReq.table = "lab_t_request";
             lbReq.pkField = "req_id";
@@ -85,6 +86,7 @@ namespace clinic_ivf.objdb
             p.dob_male = p.dob_male == null ? "" : p.dob_male;
             p.hn_donor = p.hn_donor == null ? "" : p.hn_donor;
             p.name_donor = p.name_donor == null ? "" : p.name_donor;
+            p.req_time = p.req_time == null ? "" : p.req_time;
 
             p.status_req = p.status_req == null ? "0" : p.status_req;
 
@@ -488,7 +490,7 @@ namespace clinic_ivf.objdb
                 "," + lbReq.lab_id + " = '" + p.lab_id + "'" +
                 "," + lbReq.request_id + " = '" + p.request_id + "' " +
                 "," + lbReq.form_a_id + " = '" + p.form_a_id + "' " +
-                
+                "," + lbReq.req_time + " = '" + p.req_time + "' " +
                 "";
             try
             {
@@ -573,6 +575,7 @@ namespace clinic_ivf.objdb
                 lbReq1.form_a_id = dt.Rows[0][lbReq.form_a_id].ToString();
                 lbReq1.request_id = dt.Rows[0][lbReq.request_id].ToString();
                 lbReq1.dob_donor = dt.Rows[0][lbReq.dob_donor].ToString();
+                lbReq1.req_time = dt.Rows[0][lbReq.req_time].ToString();
             }
             else
             {
@@ -605,6 +608,7 @@ namespace clinic_ivf.objdb
                 lbReq1.request_id = "";
                 lbReq1.form_a_id = "";
                 lbReq1.dob_donor = "";
+                lbReq1.req_time = "";
             }
 
             return lbReq1;

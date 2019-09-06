@@ -51,6 +51,9 @@ namespace clinic_ivf.objdb
             lbRes.status_result = "status_result";
             lbRes.row1 = "row1";
             lbRes.lot_input = "lot_input";
+            lbRes.req_date_time = "req_date_time";
+            lbRes.date_time_receive = "date_time_receive";
+            lbRes.reactive_message = "reactive_message";
 
             lbRes.table = "lab_t_result";
             lbRes.pkField = "result_id";
@@ -91,6 +94,9 @@ namespace clinic_ivf.objdb
                 itm1.interpret = row[lbRes.interpret].ToString();
                 itm1.status_result = row[lbRes.status_result].ToString();
                 itm1.row1 = row[lbRes.row1].ToString();
+                itm1.req_date_time = row[lbRes.req_date_time].ToString();
+                itm1.date_time_receive = row[lbRes.date_time_receive].ToString();
+                itm1.reactive_message = row[lbRes.reactive_message].ToString();
                 lDgs.Add(itm1);
             }
         }
@@ -199,10 +205,10 @@ namespace clinic_ivf.objdb
             dt = conn.selectData(conn.conn, sql);
             return dt;
         }
-        public DataTable selectLabBloodByVsIdHomone(String vsid)
+        public DataTable selectLabBloodByVsIdHormone(String vsid)
         {
             DataTable dt = new DataTable();
-            String sql = "select lbRes.result,lbRes.interpret,lbRes.remark, LabItem.LName as lab_name,LabItem.lab_unit_id,LabItem.method_id,lab_b_unit.lab_unit_name as unit,lab_b_method.method_name as method " +
+            String sql = "select lbRes.result,lbRes.interpret,lbRes.remark, LabItem.LName as lab_name,LabItem.lab_unit_id,LabItem.method_id,lab_b_unit.lab_unit_name as unit,lab_b_method.method_name as method, LabItem.LID " +
                 " " +
                 "From " + lbRes.table + " lbRes " +
                 "Left Join LabItem on lbRes." + lbRes.lab_id + " = LabItem.LID " +
@@ -216,7 +222,7 @@ namespace clinic_ivf.objdb
         public DataTable selectLabBloodByVsIdInfectious(String vsid)
         {
             DataTable dt = new DataTable();
-            String sql = "select lbRes.result,lbRes.interpret,lbRes.remark, LabItem.LName as lab_name,LabItem.lab_unit_id,LabItem.method_id,lab_b_unit.lab_unit_name as unit,lab_b_method.method_name as method " +
+            String sql = "select lbRes.result,lbRes.interpret,lbRes.remark, LabItem.LName as lab_name,LabItem.lab_unit_id,LabItem.method_id,lab_b_unit.lab_unit_name as unit,lab_b_method.method_name as method, lbRes.reactive_message " +
                 " " +
                 "From " + lbRes.table + " lbRes " +
                 "Left Join LabItem on lbRes." + lbRes.lab_id + " = LabItem.LID " +
@@ -318,6 +324,9 @@ namespace clinic_ivf.objdb
             p.status_result = p.status_result == null ? "0" : p.status_result;
             p.row1 = p.row1 == null ? "0" : p.row1;
             p.lot_input = p.lot_input == null ? "0" : p.lot_input;
+            p.req_date_time = p.req_date_time == null ? "" : p.req_date_time;
+            p.date_time_receive = p.date_time_receive == null ? "" : p.date_time_receive;
+            p.reactive_message = p.reactive_message == null ? "" : p.reactive_message;
 
             p.lis_id = long.TryParse(p.lis_id, out chk) ? chk.ToString() : "0";
             p.req_id = long.TryParse(p.req_id, out chk) ? chk.ToString() : "0";
@@ -364,6 +373,9 @@ namespace clinic_ivf.objdb
                 "," + lbRes.status_result + " " + "= '" + p.status_result + "'" +
                 "," + lbRes.row1 + " " + "= '" + p.row1 + "'" +
                 "," + lbRes.lot_input + " " + "= '" + p.lot_input + "'" +
+                "," + lbRes.req_date_time + " " + "= '" + p.req_date_time + "'" +
+                "," + lbRes.date_time_receive + " " + "= '" + p.date_time_receive + "'" +
+                "," + lbRes.reactive_message + " " + "= '" + p.reactive_message + "'" +
                 "";
             try
             {
@@ -433,6 +445,7 @@ namespace clinic_ivf.objdb
                 "," + lbRes.interpret + " " + "= '" + p.interpret + "'" +
                 "," + lbRes.status_result + " " + "= '" + p.status_result + "'" +
                 "," + lbRes.row1 + " " + "= '" + p.row1 + "'" +
+                "," + lbRes.reactive_message + " " + "= '" + p.reactive_message + "'" +
                 "Where " + lbRes.pkField + "='" + p.result_id + "'"
                 ;
 
@@ -462,7 +475,7 @@ namespace clinic_ivf.objdb
 
             return re;
         }
-        public String updateResult(String result, String interpret, String stfappid, String stfresid, String dateapp, String dateres, String remark, String lot_input, String resid)
+        public String updateResult(String result, String interpret, String stfappid, String stfresid, String dateapp, String dateres, String remark, String lot_input, String reactive, String resid)
         {
             String re = "";
             String sql = "";
@@ -477,6 +490,7 @@ namespace clinic_ivf.objdb
                 "," + lbRes.interpret + " = '" + interpret.Replace("'","''") + "'" +
                 "," + lbRes.remark + " = '" + remark.Replace("'", "''") + "'" +
                 "," + lbRes.lot_input + " = '" + lot_input.Replace("'", "''") + "'" +
+                "," + lbRes.reactive_message + " = '" + reactive.Replace("'", "''") + "'" +
                 "Where " + lbRes.pkField + "='" + resid + "'"
                 ;
             try
@@ -564,7 +578,10 @@ namespace clinic_ivf.objdb
                 dgs1.normal_value = dt.Rows[0][lbRes.date_time_approve].ToString();
                 dgs1.status_result = dt.Rows[0][lbRes.status_result].ToString();
                 dgs1.row1 = dt.Rows[0][lbRes.row1].ToString();
-                dgs1.remark = dt.Rows[0][lbRes.remark].ToString();
+                //dgs1.remark = dt.Rows[0][lbRes.remark].ToString();
+                dgs1.req_date_time = dt.Rows[0][lbRes.req_date_time].ToString();
+                dgs1.date_time_receive = dt.Rows[0][lbRes.date_time_receive].ToString();
+                dgs1.reactive_message = dt.Rows[0][lbRes.reactive_message].ToString();
             }
             else
             {
@@ -599,7 +616,10 @@ namespace clinic_ivf.objdb
             dgs1.normal_value = "";
             dgs1.status_result = "";
             dgs1.row1 = "";
-            dgs1.remark = "";
+            //dgs1.remark = "";
+            dgs1.req_date_time = "";
+            dgs1.date_time_receive = "";
+            dgs1.reactive_message = "";
             return dgs1;
         }
     }

@@ -57,6 +57,23 @@ namespace clinic_ivf.gui
             else
             {
                 this.flagEdit = false;
+                if (StatusSperm.Equals("1"))
+                {
+                    c1SplitterPanel3.Hide();
+                }
+                else if (StatusSperm.Equals("2"))
+                {
+                    c1SplitterPanel1.Hide();
+                }
+                else if (StatusSperm.Equals("3"))
+                {
+                    c1SplitterPanel7.Hide();
+                }
+                else if (StatusSperm.Equals("4"))
+                {
+                    //tC.SelectedTab = TabSpermIUI;
+                }
+                
             }
             initConfig();
         }
@@ -190,6 +207,25 @@ namespace clinic_ivf.gui
 
             setControl();
             setTheme();
+            //if (!flagEdit)
+            //{
+            //    if (lsperm.status_lab_sperm.Equals("1"))
+            //    {
+            //        c1SplitterPanel3.Hide();
+            //    }
+            //    else if (lsperm.status_lab_sperm.Equals("2"))
+            //    {
+            //        c1SplitterPanel1.Hide();
+            //    }
+            //    else if (lsperm.status_lab_sperm.Equals("3"))
+            //    {
+            //        c1SplitterPanel7.Hide();
+            //    }
+            //    else if (lsperm.status_lab_sperm.Equals("4"))
+            //    {
+            //        //tC.SelectedTab = TabSpermIUI;
+            //    }
+            //}
         }
 
         private void BtnSfApproveResult_Click(object sender, EventArgs e)

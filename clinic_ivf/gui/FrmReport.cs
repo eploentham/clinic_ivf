@@ -26,7 +26,7 @@ namespace clinic_ivf.gui
             InitializeComponent();
             this.ic = ic;
         }
-        public void setLabBloodReportInfectious(DataTable dt, String hn, String name, String age, String sex, String report_by, String approve_by, String report_date, String approve_date)
+        public void setLabBloodReportInfectious(DataTable dt, String hn, String name, String age, String sex, String report_by, String approve_by, String report_date, String approve_date, String collect_date, String receive_date)
         {
             String chk = "", printerDefault = "", err = "";
             ReportDocument rpt = new ReportDocument();
@@ -50,8 +50,8 @@ namespace clinic_ivf.gui
                 rpt.SetParameterValue("approve_by", approve_by);
                 rpt.SetParameterValue("report_date", report_date);
                 rpt.SetParameterValue("approve_date", approve_date);
-                //rpt.SetParameterValue("et", et);
-                //rpt.SetParameterValue("fet", fet);
+                rpt.SetParameterValue("collect_date", approve_date);
+                rpt.SetParameterValue("receive_date", approve_date);
                 err = "03";
                 //rpt.SetParameterValue("age1", "" + age);
                 this.crystalReportViewer1.ReportSource = rpt;
@@ -64,15 +64,22 @@ namespace clinic_ivf.gui
                 MessageBox.Show("error " + ex.Message, "err " + err);
             }
         }
-        public void setLabBloodReportHormone(DataTable dt, String hn, String name, String age, String sex, String report_by, String approve_by, String report_date, String approve_date, String flagDonor)
+        public void setLabBloodReportHormone(DataTable dt, String hn, String name, String age, String sex, String report_by, String approve_by, String report_date, String approve_date, String flagDonor, String flagamh, String collect_date, String receive_date)
         {
             String chk = "", printerDefault = "", err = "";
             ReportDocument rpt = new ReportDocument();
             try
             {
                 err = "00" + ic.iniC.statusAppDonor;
-
-                rpt.Load("lab_blood_form1.rpt");
+                if (flagamh.Equals("1"))
+                {
+                    rpt.Load("lab_blood_form1_amh.rpt");
+                }
+                else
+                {
+                    rpt.Load("lab_blood_form1.rpt");
+                }
+                
 
                 err = "01";
                 rpt.SetDataSource(dt);
@@ -97,8 +104,8 @@ namespace clinic_ivf.gui
                 rpt.SetParameterValue("approve_by", approve_by);
                 rpt.SetParameterValue("report_date", report_date);
                 rpt.SetParameterValue("approve_date", approve_date);
-                //rpt.SetParameterValue("et", et);
-                //rpt.SetParameterValue("fet", fet);
+                rpt.SetParameterValue("collect_date", approve_date);
+                rpt.SetParameterValue("receive_date", approve_date);
                 err = "03";
                 //rpt.SetParameterValue("age1", "" + age);
                 this.crystalReportViewer1.ReportSource = rpt;

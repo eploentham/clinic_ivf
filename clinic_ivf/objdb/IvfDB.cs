@@ -432,6 +432,7 @@ namespace clinic_ivf.objdb
             lbReq.request_id = reqid;
             lbReq.item_id = itmcode;
             lbReq.form_a_id = "";
+            lbReq.req_time = System.DateTime.Now.ToString("hh:mm:ss");
             return lbReq;
         }
         public LabOpu setOPU(String reqid)

@@ -123,7 +123,7 @@
             this.sB1});
             this.sB.Location = new System.Drawing.Point(0, 689);
             this.sB.Name = "sB";
-            this.sB.Size = new System.Drawing.Size(1325, 22);
+            this.sB.Size = new System.Drawing.Size(1398, 22);
             this.sB.TabIndex = 6;
             this.sB.Text = "statusStrip1";
             // 
@@ -152,7 +152,7 @@
             this.sCMain.Name = "sCMain";
             this.sCMain.Panels.Add(this.c1SplitterPanel1);
             this.sCMain.Panels.Add(this.c1SplitterPanel2);
-            this.sCMain.Size = new System.Drawing.Size(1325, 689);
+            this.sCMain.Size = new System.Drawing.Size(1398, 689);
             this.sCMain.SplitterColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(189)))), ((int)(((byte)(182)))));
             this.sCMain.SplitterMovingColor = System.Drawing.Color.Black;
             this.sCMain.TabIndex = 7;
@@ -166,11 +166,11 @@
             this.c1SplitterPanel1.Dock = C1.Win.C1SplitContainer.PanelDockStyle.Left;
             this.c1SplitterPanel1.Location = new System.Drawing.Point(0, 21);
             this.c1SplitterPanel1.Name = "c1SplitterPanel1";
-            this.c1SplitterPanel1.Size = new System.Drawing.Size(577, 668);
-            this.c1SplitterPanel1.SizeRatio = 44.239D;
+            this.c1SplitterPanel1.Size = new System.Drawing.Size(573, 668);
+            this.c1SplitterPanel1.SizeRatio = 41.607D;
             this.c1SplitterPanel1.TabIndex = 0;
             this.c1SplitterPanel1.Text = "Panel 1";
-            this.c1SplitterPanel1.Width = 584;
+            this.c1SplitterPanel1.Width = 580;
             // 
             // panel1
             // 
@@ -179,7 +179,7 @@
             this.panel1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(577, 668);
+            this.panel1.Size = new System.Drawing.Size(573, 668);
             this.panel1.TabIndex = 0;
             this.theme1.SetTheme(this.panel1, "(default)");
             // 
@@ -187,9 +187,9 @@
             // 
             this.c1SplitterPanel2.Controls.Add(this.panel2);
             this.c1SplitterPanel2.Height = 689;
-            this.c1SplitterPanel2.Location = new System.Drawing.Point(588, 21);
+            this.c1SplitterPanel2.Location = new System.Drawing.Point(584, 21);
             this.c1SplitterPanel2.Name = "c1SplitterPanel2";
-            this.c1SplitterPanel2.Size = new System.Drawing.Size(737, 668);
+            this.c1SplitterPanel2.Size = new System.Drawing.Size(814, 668);
             this.c1SplitterPanel2.TabIndex = 1;
             this.c1SplitterPanel2.Text = "Panel 2";
             // 
@@ -231,7 +231,7 @@
             this.panel2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
             this.panel2.Location = new System.Drawing.Point(0, 0);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(737, 668);
+            this.panel2.Size = new System.Drawing.Size(814, 668);
             this.panel2.TabIndex = 0;
             this.theme1.SetTheme(this.panel2, "(default)");
             // 
@@ -247,7 +247,7 @@
             this.panel4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
             this.panel4.Location = new System.Drawing.Point(80, 371);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(645, 186);
+            this.panel4.Size = new System.Drawing.Size(722, 186);
             this.panel4.TabIndex = 591;
             this.theme1.SetTheme(this.panel4, "(default)");
             // 
@@ -290,7 +290,7 @@
             this.gbInterpret.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
             this.gbInterpret.Location = new System.Drawing.Point(3, 61);
             this.gbInterpret.Name = "gbInterpret";
-            this.gbInterpret.Size = new System.Drawing.Size(639, 122);
+            this.gbInterpret.Size = new System.Drawing.Size(716, 122);
             this.gbInterpret.TabIndex = 595;
             this.gbInterpret.TabStop = false;
             this.gbInterpret.Text = "เงื่อนไข";
@@ -923,7 +923,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1325, 711);
+            this.ClientSize = new System.Drawing.Size(1398, 711);
             this.Controls.Add(this.sCMain);
             this.Controls.Add(this.sB);
             this.Name = "FrmLabItem";

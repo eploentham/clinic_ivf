@@ -27,5 +27,8 @@ namespace clinic_ivf.object1
         public String status_result { get; set; }
         public String row1 { get; set; }
         public String lot_input { get; set; }
+        public String req_date_time { get; set; }
+        public String date_time_receive { get; set; }
+        public String reactive_message { get; set; }
     }
 }

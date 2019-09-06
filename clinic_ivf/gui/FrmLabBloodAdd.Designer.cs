@@ -341,12 +341,12 @@
             this.label3.Text = "VN :";
             this.theme1.SetTheme(this.label3, "(default)");
             // 
-            // btnPrintHomone
+            // btnPrintHormone
             // 
             this.btnPrintHormone.Image = global::clinic_ivf.Properties.Resources.print;
             this.btnPrintHormone.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnPrintHormone.Location = new System.Drawing.Point(807, 61);
-            this.btnPrintHormone.Name = "btnPrintHomone";
+            this.btnPrintHormone.Name = "btnPrintHormone";
             this.btnPrintHormone.Size = new System.Drawing.Size(121, 34);
             this.btnPrintHormone.TabIndex = 868;
             this.btnPrintHormone.Text = "Print  Hormone";

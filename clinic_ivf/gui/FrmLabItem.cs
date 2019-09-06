@@ -26,7 +26,7 @@ namespace clinic_ivf.gui
         Color color;
         Font ff, ffB;
         int colID = 1, colName = 2, colSubName = 4, colPrice=3;
-        int colInId = 1, colInValMin = 2, colInCriMin = 3, colInxx=4, colInCriMax=5, colInValMax=6, colInInterpret=7, colInEdit=8;
+        int colInId = 1, colInValMin = 2, colInCriMin = 3, colInxx=4, colInCriMax=5, colInValMax=6, colInInterpret=7, colReactive=8, colInEdit=9;
 
         C1FlexGrid grfLab, grfInt;
 
@@ -94,7 +94,7 @@ namespace clinic_ivf.gui
             
             foreach(Row row in grfInt.Rows)
             {
-                String min = "", max = "", interpret="";
+                String min = "", max = "", interpret="", reac="";
                 xx = row[colInxx] != null ? row[colInxx].ToString() : "";
                 id = row[colInId] != null ? row[colInId].ToString() : "";
                 edit = row[colInEdit] != null ? row[colInEdit].ToString() : "";
@@ -103,6 +103,7 @@ namespace clinic_ivf.gui
                 min = row[colInValMin] != null ? row[colInValMin].ToString() : "";
                 max = row[colInValMax] != null ? row[colInValMax].ToString() : "";
                 interpret = row[colInInterpret] != null ? row[colInInterpret].ToString() : "";
+                reac = row[colReactive] != null ? row[colReactive].ToString() : "";
                 //String re = "";
                 LabInterpretComboBox lbM = new LabInterpretComboBox();                
 
@@ -123,7 +124,8 @@ namespace clinic_ivf.gui
                 lbM.max_value = max;
                 lbM.min_value_criteria = "";
                 lbM.max_value_criteria = "";
-                lbM.interpret = interpret;
+                lbM.interpret = interpret.Trim();
+                lbM.reactive_message = reac.Trim();
                 re = ic.ivfDB.lbinDB.insertLabInterpretComboBox(lbM, "");
             }
         }
@@ -272,7 +274,7 @@ namespace clinic_ivf.gui
             DataTable dt = new DataTable();
             dt = ic.ivfDB.lbinDB.selectAll(txtID.Text);
             grfInt.DataSource = null;
-            grfInt.Cols.Count = 9;
+            grfInt.Cols.Count = 10;
             grfInt.Rows.Count = 1;
 
             //C1TextBox txt = new C1TextBox();
@@ -311,6 +313,7 @@ namespace clinic_ivf.gui
             grfInt.Cols[colInValMax].Caption = "Value Max";
             grfInt.Cols[colInInterpret].Caption = "Interpret";
             grfInt.Cols[colInxx].Caption = "Value";
+            grfInt.Cols[colReactive].Caption = "Reactive";
 
             //grfDept.Cols[coledit].Visible = false;
             //CellRange rg = grfPosi.GetCellRange(2, colE);
@@ -321,6 +324,7 @@ namespace clinic_ivf.gui
                 row[colInValMin] = dt.Rows[i][ic.ivfDB.lbinDB.lbM.min_value].ToString();
                 row[colInValMax] = dt.Rows[i][ic.ivfDB.lbinDB.lbM.max_value].ToString();
                 row[colInInterpret] = dt.Rows[i][ic.ivfDB.lbinDB.lbM.interpret].ToString();
+                row[colReactive] = dt.Rows[i][ic.ivfDB.lbinDB.lbM.reactive_message].ToString();
                 row[0] = (i + 1);
                 if (i % 2 != 0)
                     grfLab.Rows[i].StyleNew.BackColor = ColorTranslator.FromHtml(ic.iniC.grfRowColor);

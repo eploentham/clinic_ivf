@@ -43,6 +43,7 @@ namespace clinic_ivf.objdb
             lbM.min_value_criteria = "min_value_criteria";
             lbM.max_value_criteria = "max_value_criteria";
             lbM.interpret = "interpret";
+            lbM.reactive_message = "reactive_message";
 
             lbM.table = "lab_b_interpret_combobox";
             lbM.pkField = "interpret_combobox_id";
@@ -61,6 +62,7 @@ namespace clinic_ivf.objdb
                 itm1.interpret_combobox_id = row[lbM.interpret_combobox_id].ToString();
                 itm1.interpret_combobox_name = row[lbM.interpret_combobox_name].ToString();
                 itm1.remark = row[lbM.remark].ToString();
+                itm1.reactive_message = row[lbM.reactive_message].ToString();
 
                 //itm1.is_ipd = row[bsp.is_ipd].ToString();
                 llbM.Add(itm1);
@@ -149,7 +151,7 @@ namespace clinic_ivf.objdb
             dt = conn.selectData(conn.conn, sql);
             if (dt.Rows.Count > 0)
             {
-                re = dt.Rows[0][lbM.interpret].ToString();
+                re = dt.Rows[0][lbM.interpret].ToString()+"@"+ dt.Rows[0][lbM.reactive_message].ToString();
             }
             return re;
         }
@@ -225,6 +227,7 @@ namespace clinic_ivf.objdb
             p.min_value_criteria = p.min_value_criteria == null ? "" : p.min_value_criteria;
             p.max_value_criteria = p.max_value_criteria == null ? "" : p.max_value_criteria;
             p.interpret = p.interpret == null ? "" : p.interpret;
+            p.reactive_message = p.reactive_message == null ? "" : p.reactive_message;
 
             p.lab_id = long.TryParse(p.lab_id, out chk) ? chk.ToString() : "0";
             p.min_value = Decimal.TryParse(p.min_value, out chk1) ? chk1.ToString() : "0";
@@ -259,6 +262,7 @@ namespace clinic_ivf.objdb
                 "," + lbM.min_value + " = '" + p.min_value.Replace("'", "''") + "'" +
                 "," + lbM.max_value + " = '" + p.max_value.Replace("'", "''") + "'" +
                 "," + lbM.interpret + " = '" + p.interpret.Replace("'", "''") + "'" +
+                "," + lbM.reactive_message + " = '" + p.reactive_message.Replace("'", "''") + "'" +
                "";
             try
             {
@@ -294,6 +298,7 @@ namespace clinic_ivf.objdb
                 "," + lbM.min_value + " = '" + p.min_value.Replace("'", "''") + "'" +
                 "," + lbM.max_value + " = '" + p.max_value.Replace("'", "''") + "'" +
                 "," + lbM.interpret + " = '" + p.interpret.Replace("'", "''") + "'" +
+                "," + lbM.reactive_message + " = '" + p.reactive_message.Replace("'", "''") + "'" +
                 "Where " + lbM.pkField + "='" + p.interpret_combobox_id + "'"
                 ;
             try
@@ -366,6 +371,7 @@ namespace clinic_ivf.objdb
                 dgs1.min_value_criteria = dt.Rows[0][lbM.min_value_criteria].ToString();
                 dgs1.max_value_criteria = dt.Rows[0][lbM.max_value_criteria].ToString();
                 dgs1.interpret = dt.Rows[0][lbM.interpret].ToString();
+                dgs1.reactive_message = dt.Rows[0][lbM.reactive_message].ToString();
             }
             else
             {
@@ -393,6 +399,7 @@ namespace clinic_ivf.objdb
             dgs1.min_value_criteria = "";
             dgs1.max_value_criteria = "";
             dgs1.interpret = "";
+            dgs1.reactive_message = "";
             return dgs1;
         }
         public void setCboLabInterpretComboBox(C1ComboBox c, String selected, String labid)

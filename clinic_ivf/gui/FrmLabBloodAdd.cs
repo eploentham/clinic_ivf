@@ -33,7 +33,7 @@ namespace clinic_ivf.gui
         Color bg, fc;
         Font ff, ffB;
         Color color;
-        int colRsId = 1, colRsLabName = 2, colRsMethod = 3, colRsResult = 4, colRsInterpret = 5, colRsUnit = 6, colRsNormal = 7, colRsRemark = 8, colRsLabId=9, colRsReqId=10, colRsEdit=11, colRsLotInput=12;
+        int colRsId = 1, colRsLabName = 2, colRsMethod = 3, colRsResult = 4, colRsInterpret = 5, colRsReactive=6, colRsUnit = 7, colRsNormal = 8, colRsRemark = 9, colRsLabId = 10, colRsReqId = 11, colRsEdit = 12, colRsLotInput = 13;
 
         C1SuperTooltip stt;
         C1SuperErrorProvider sep;
@@ -94,9 +94,13 @@ namespace clinic_ivf.gui
             DataTable dt = new DataTable();
             dt = ic.ivfDB.lbresDB.selectLabBloodByVsIdInfectious(txtVsId.Text);
 
-            String date1 = "";
-
-            frm.setLabBloodReportInfectious(dt, txtHn.Text, txtPttNameE.Text, txtDob.Text, txtSex.Text, cboEmbryologistReport.Text, cboEmbryologistAppv.Text, txtReportDate.Text, txtApprovDate.Text);
+            String date1 = "", collectdate = "", receivedate = "";
+            foreach (DataRow row in dt.Rows)
+            {
+                collectdate = row[ic.ivfDB.lbresDB.lbRes.req_date_time].ToString();
+                receivedate = row[ic.ivfDB.lbresDB.lbRes.date_time_receive].ToString();
+            }
+            frm.setLabBloodReportInfectious(dt, txtHn.Text, txtPttNameE.Text, txtDob.Text, txtSex.Text, cboEmbryologistReport.Text, cboEmbryologistAppv.Text, txtReportDate.Text, txtApprovDate.Text, collectdate, receivedate);
             frm.ShowDialog(this);
         }
 
@@ -233,16 +237,30 @@ namespace clinic_ivf.gui
             //throw new NotImplementedException();
             FrmReport frm = new FrmReport(ic);
             DataTable dt = new DataTable();
-            dt = ic.ivfDB.lbresDB.selectLabBloodByVsIdHomone(txtVsId.Text);
-
+            dt = ic.ivfDB.lbresDB.selectLabBloodByVsIdHormone(txtVsId.Text);
+            String amh = "", collectdate="", receivedate="";
+            foreach (DataRow row in dt.Rows)
+            {
+                collectdate = row[ic.ivfDB.lbresDB.lbRes.req_date_time].ToString();
+                receivedate = row[ic.ivfDB.lbresDB.lbRes.date_time_receive].ToString();
+                if (row["LID"].ToString().Equals("10"))
+                {
+                    amh =  "1";
+                }
+                else
+                {
+                    amh = "0";
+                }
+            }
             String date1 = "";
             if (ptt.f_sex_id.Equals("2") && (!ptt.patient_hn_1.Equals("") && !ptt.patient_hn_2.Equals("")))     // เป็น female และ เป็น donor  ไม่ต้องพิมพ์ หัว บริษัท
             {
-                frm.setLabBloodReportHormone(dt, txtHn.Text, txtPttNameE.Text, txtDob.Text, txtSex.Text, cboEmbryologistReport.Text, cboEmbryologistAppv.Text, txtReportDate.Text, txtApprovDate.Text,"1");
+
+                frm.setLabBloodReportHormone(dt, txtHn.Text, txtPttNameE.Text, txtDob.Text, txtSex.Text, cboEmbryologistReport.Text, cboEmbryologistAppv.Text, txtReportDate.Text, txtApprovDate.Text, "", amh, collectdate, receivedate);
             }
             else
             {
-                frm.setLabBloodReportHormone(dt, txtHn.Text, txtPttNameE.Text, txtDob.Text, txtSex.Text, cboEmbryologistReport.Text, cboEmbryologistAppv.Text, txtReportDate.Text, txtApprovDate.Text,"");
+                frm.setLabBloodReportHormone(dt, txtHn.Text, txtPttNameE.Text, txtDob.Text, txtSex.Text, cboEmbryologistReport.Text, cboEmbryologistAppv.Text, txtReportDate.Text, txtApprovDate.Text,"", amh, collectdate, receivedate);
             }
             
             frm.ShowDialog(this);
@@ -292,13 +310,14 @@ namespace clinic_ivf.gui
             String lotInput = "";
             foreach(Row row in grfProc.Rows)
             {
-                String id = "", edit = "", result="", interpret="", remark, lotinput="";
+                String id = "", edit = "", result="", interpret="", remark, lotinput="", reactive="";
                 id = row[colRsId] != null ? row[colRsId].ToString() : "";
                 edit = row[colRsEdit] != null ? row[colRsEdit].ToString() : "";
                 result = row[colRsResult] != null ? row[colRsResult].ToString() : "";
                 interpret = row[colRsInterpret] != null ? row[colRsInterpret].ToString() : "";
                 remark = row[colRsRemark] != null ? row[colRsRemark].ToString() : "";
                 lotinput = row[colRsLotInput] != null ? row[colRsLotInput].ToString() : "";
+                reactive = row[colRsReactive] != null ? row[colRsReactive].ToString() : "";
                 if (edit.Equals("1") && !result.Equals(""))
                 {
                     if (lotinput.Equals(""))
@@ -310,7 +329,7 @@ namespace clinic_ivf.gui
                             lotinput = (chk1 + 1).ToString();
                         }
                     }
-                    String re = ic.ivfDB.lbresDB.updateResult(result, interpret, stfapp, stfrpt, dateapp, daterpt, remark, lotinput, id);
+                    String re = ic.ivfDB.lbresDB.updateResult(result, interpret, stfapp, stfrpt, dateapp, daterpt, remark, lotinput, reactive, id);
                     long chk = 0;
                     if(long.TryParse(re, out chk))
                     {
@@ -409,7 +428,18 @@ namespace clinic_ivf.gui
                                 interpret = ic.ivfDB.lbinDB.selectInterpretMax(labid, result1.ToString());
                             }
                         }
-                        grfProc[grfProc.Row, colRsInterpret] = interpret;
+                        String[] interpret1;
+                        interpret1 = interpret.Split('@');
+                        if (interpret1.Length == 2)
+                        {
+                            grfProc[grfProc.Row, colRsInterpret] = interpret1[0];
+                            grfProc[grfProc.Row, colRsReactive] = interpret1[1];
+                        }
+                        else
+                        {
+                            grfProc[grfProc.Row, colRsInterpret] = interpret;
+                        }
+                        
                     }
                     else
                     {
@@ -438,7 +468,7 @@ namespace clinic_ivf.gui
             //grfExpn.Rows.Count = dt.Rows.Count + 1;
             grfProc.Rows.Count = dt.Rows.Count + 1;
             //grfSperm.DataSource = dt;
-            grfProc.Cols.Count = 13;
+            grfProc.Cols.Count = 14;
             CellStyle cs = grfProc.Styles.Add("bool");
             cs.DataType = typeof(bool);
             cs.ImageAlign = ImageAlignEnum.LeftCenter;
@@ -461,8 +491,9 @@ namespace clinic_ivf.gui
             grfProc.Cols[colRsUnit].Width = 100;
             grfProc.Cols[colRsNormal].Width = 100;
             grfProc.Cols[colRsRemark].Width = 200;
+            grfProc.Cols[colRsReactive].Width = 150;
             //grfProc.Cols[colBlQty].Width = 60;
-            
+
             grfProc.ShowCursor = true;
             //grdFlex.Cols[colID].Caption = "no";
             //grfDept.Cols[colCode].Caption = "รหัส";
@@ -474,7 +505,7 @@ namespace clinic_ivf.gui
             grfProc.Cols[colRsUnit].Caption = "Unit";
             grfProc.Cols[colRsNormal].Caption = "Normal";
             grfProc.Cols[colRsRemark].Caption = "Remark";
-            //grfProc.Cols[colUnit].Caption = "Remark";
+            grfProc.Cols[colRsReactive].Caption = "Reactive";
             //grfProc.Cols[colUnit].Caption = "Remark";
 
             //CellRange rg = grfProc.GetCellRange(1, colBlInclude, grfProc.Rows.Count - 1, colBlInclude);
@@ -537,6 +568,7 @@ namespace clinic_ivf.gui
                     grfProc[i, colRsNormal] = row[ic.ivfDB.lbresDB.lbRes.normal_value].ToString();
                     grfProc[i, colRsRemark] = row[ic.ivfDB.lbresDB.lbRes.remark].ToString();
                     grfProc[i, colRsLabId] = row[ic.ivfDB.oLabiDB.labI.LID].ToString();
+                    grfProc[i, colRsReactive] = row[ic.ivfDB.lbresDB.lbRes.reactive_message].ToString();
                     grfProc[i, colRsEdit] = "";
                     //grfSgrfProcperm[i, colBlQty] = "1";
                     row[0] = (i - 2);

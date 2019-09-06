@@ -459,6 +459,8 @@ namespace clinic_ivf.gui
                         lbRes.interpret = "";
                         lbRes.status_result = "1";
                         lbRes.row1 = "0";
+                        lbRes.req_date_time = lbreq.req_date+" "+ lbreq.req_time;
+                        lbRes.date_time_receive = System.DateTime.Now.Year+"-"+ System.DateTime.Now.ToString("MM-dd hh:mm:ss");
                         re2 = ic.ivfDB.lbresDB.insertLabResult(lbRes, ic.cStf.staff_id);
                         if (long.TryParse(re2, out chk2))
                         {
