@@ -32,6 +32,89 @@ namespace clinic_ivf.objdb
             oca.table = "CashAccount";
             oca.pkField = "CashID";
         }
+        public String insert(OldCashAccount p, String userId)
+        {
+            String re = "";
+            String sql = "";
+            p.active = "1";
+            //p.ssdata_id = "";
+            int chk = 0;
+
+            p.CashName = p.CashName == null ? "" : p.CashName;
+
+            sql = "Insert Into " + oca.table + " set " +
+                " " + oca.CashName + " = '" + p.CashName.Replace("'", "''") + "'" +
+                //"," + oca.agent_code + " = '" + p.agent_code.Replace("'", "''") + "'" +
+                "," + oca.active + " = '1'" +
+                "," + oca.date_create + " = now()" +
+                "," + oca.user_create + " = '" + userId.Replace("'", "''") + "'" +
+                " ";
+            try
+            {
+                re = conn.ExecuteNonQuery(conn.conn, sql);
+            }
+            catch (Exception ex)
+            {
+                sql = ex.Message + " " + ex.InnerException;
+            }
+
+            return re;
+        }
+        public String update(OldCashAccount p, String userId)
+        {
+            String re = "";
+            String sql = "";
+            int chk = 0;
+
+            p.CashName = p.CashName == null ? "" : p.CashName;
+
+
+            sql = "Update " + oca.table + " Set " +
+                " " + oca.CashName + " = '" + p.CashName.Replace("'", "''") + "'" +
+                //"," + oca.agent_code + " = '" + p.agent_code.Replace("'", "''") + "'" +
+                "," + oca.date_modi + " = now()" +
+                "," + oca.user_modi + " = '" + userId.Replace("'", "''") + "'" +
+                "Where " + oca.pkField + "='" + p.CashID + "'"
+                ;
+
+            try
+            {
+                re = conn.ExecuteNonQuery(conn.conn, sql);
+            }
+            catch (Exception ex)
+            {
+                sql = ex.Message + " " + ex.InnerException;
+            }
+
+            return re;
+        }
+        public String insertCashAccount(OldCashAccount p, String userId)
+        {
+            String re = "";
+
+            if (p.CashID.Equals(""))
+            {
+                re = insert(p, userId);
+            }
+            else
+            {
+                re = update(p, userId);
+            }
+
+            return re;
+        }
+        public String VoidCashAccount(String stfId, String userIdVoid)
+        {
+            DataTable dt = new DataTable();
+            String sql = "Update " + oca.table + " Set " +
+                "" + oca.active + "='3'" +
+                "," + oca.date_cancel + "=now() " +
+                "," + oca.user_cancel + "='" + userIdVoid + "' " +
+                "Where " + oca.pkField + "='" + stfId + "'";
+            conn.ExecuteNonQuery(conn.conn, sql);
+
+            return "1";
+        }
         public DataTable selectByCreditCardName()
         {
             DataTable dt = new DataTable();
@@ -52,6 +135,28 @@ namespace clinic_ivf.objdb
             dt = conn.selectData(conn.conn, sql);
 
             return dt;
+        }
+        public DataTable selectByPk(String copId)
+        {
+            DataTable dt = new DataTable();
+            String sql = "select oca.* " +
+                "From " + oca.table + " oca ";
+            //"Left Join t_ssdata_visit ssv On ssv.ssdata_visit_id = bd.ssdata_visit_id " +
+            //"Where sex." + agnO.pkField + " ='" + copId + "' ";
+            dt = conn.selectData(conn.conn, sql);
+            return dt;
+        }
+        public OldCashAccount selectByPk1(String copId)
+        {
+            OldCashAccount cop1 = new OldCashAccount();
+            DataTable dt = new DataTable();
+            String sql = "select oca.* " +
+                "From " + oca.table + " oca " +
+                //"Left Join t_ssdata_visit ssv On ssv.ssdata_visit_id = bd.ssdata_visit_id " +
+                "Where oAgn." + oca.pkField + " ='" + copId + "' ";
+            dt = conn.selectData(conn.conn, sql);
+            cop1 = setCashAccount(dt);
+            return cop1;
         }
         public String getList(String id)
         {
@@ -113,6 +218,24 @@ namespace clinic_ivf.objdb
                 i++;
             }
             return c;
+        }
+        private OldCashAccount setCashAccount(DataTable dt)
+        {
+            OldCashAccount dept1 = new OldCashAccount();
+            if (dt.Rows.Count > 0)
+            {
+                dept1.CashID = dt.Rows[0][oca.CashID].ToString();
+                dept1.CashName = dt.Rows[0][oca.CashName].ToString();
+                dept1.remark = dt.Rows[0][oca.remark].ToString();
+            }
+            else
+            {
+                dept1.CashID = "";
+                dept1.CashName = "";
+                dept1.remark = "";
+            }
+
+            return dept1;
         }
     }
 }

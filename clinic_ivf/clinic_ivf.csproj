@@ -147,6 +147,12 @@
     <Compile Include="gui\FrmAppointmentDonorAdd.Designer.cs">
       <DependentUpon>FrmAppointmentDonorAdd.cs</DependentUpon>
     </Compile>
+    <Compile Include="gui\FrmCashAccount.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="gui\FrmCashAccount.Designer.cs">
+      <DependentUpon>FrmCashAccount.cs</DependentUpon>
+    </Compile>
     <Compile Include="gui\FrmCashierAdd.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -941,6 +947,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="gui\FrmAppointmentDonorAdd.resx">
       <DependentUpon>FrmAppointmentDonorAdd.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="gui\FrmCashAccount.resx">
+      <DependentUpon>FrmCashAccount.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="gui\FrmCashierAdd.resx">
       <DependentUpon>FrmCashierAdd.cs</DependentUpon>

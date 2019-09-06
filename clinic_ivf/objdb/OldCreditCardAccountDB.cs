@@ -32,6 +32,89 @@ namespace clinic_ivf.objdb
             occa.table = "CreditCardAccount";
             occa.pkField = "CreditCardID";
         }
+        public String insert(OldCreditCardAccount p, String userId)
+        {
+            String re = "";
+            String sql = "";
+            p.active = "1";
+            //p.ssdata_id = "";
+            int chk = 0;
+
+            p.CreditCardName = p.CreditCardName == null ? "" : p.CreditCardName;
+
+            sql = "Insert Into " + occa.table + " set " +
+                " " + occa.CreditCardName + " = '" + p.CreditCardName.Replace("'", "''") + "'" +
+                //"," + oca.agent_code + " = '" + p.agent_code.Replace("'", "''") + "'" +
+                "," + occa.active + " = '1'" +
+                "," + occa.date_create + " = now()" +
+                "," + occa.user_create + " = '" + userId.Replace("'", "''") + "'" +
+                " ";
+            try
+            {
+                re = conn.ExecuteNonQuery(conn.conn, sql);
+            }
+            catch (Exception ex)
+            {
+                sql = ex.Message + " " + ex.InnerException;
+            }
+
+            return re;
+        }
+        public String update(OldCreditCardAccount p, String userId)
+        {
+            String re = "";
+            String sql = "";
+            int chk = 0;
+
+            p.CreditCardName = p.CreditCardName == null ? "" : p.CreditCardName;
+
+
+            sql = "Update " + occa.table + " Set " +
+                " " + occa.CreditCardName + " = '" + p.CreditCardName.Replace("'", "''") + "'" +
+                //"," + oca.agent_code + " = '" + p.agent_code.Replace("'", "''") + "'" +
+                "," + occa.date_modi + " = now()" +
+                "," + occa.user_modi + " = '" + userId.Replace("'", "''") + "'" +
+                "Where " + occa.pkField + "='" + p.CreditCardID + "'"
+                ;
+
+            try
+            {
+                re = conn.ExecuteNonQuery(conn.conn, sql);
+            }
+            catch (Exception ex)
+            {
+                sql = ex.Message + " " + ex.InnerException;
+            }
+
+            return re;
+        }
+        public String insertCashAccount(OldCreditCardAccount p, String userId)
+        {
+            String re = "";
+
+            if (p.CreditCardID.Equals(""))
+            {
+                re = insert(p, userId);
+            }
+            else
+            {
+                re = update(p, userId);
+            }
+
+            return re;
+        }
+        public String VoidCashAccount(String stfId, String userIdVoid)
+        {
+            DataTable dt = new DataTable();
+            String sql = "Update " + occa.table + " Set " +
+                "" + occa.active + "='3'" +
+                "," + occa.date_cancel + "=now() " +
+                "," + occa.user_cancel + "='" + userIdVoid + "' " +
+                "Where " + occa.pkField + "='" + stfId + "'";
+            conn.ExecuteNonQuery(conn.conn, sql);
+
+            return "1";
+        }
         public DataTable selectByCreditCardName()
         {
             DataTable dt = new DataTable();
