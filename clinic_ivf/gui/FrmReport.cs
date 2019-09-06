@@ -64,7 +64,7 @@ namespace clinic_ivf.gui
                 MessageBox.Show("error " + ex.Message, "err " + err);
             }
         }
-        public void setLabBloodReportHomone(DataTable dt, String hn, String name, String age, String sex, String report_by, String approve_by, String report_date, String approve_date)
+        public void setLabBloodReportHormone(DataTable dt, String hn, String name, String age, String sex, String report_by, String approve_by, String report_date, String approve_date, String flagDonor)
         {
             String chk = "", printerDefault = "", err = "";
             ReportDocument rpt = new ReportDocument();
@@ -77,9 +77,18 @@ namespace clinic_ivf.gui
                 err = "01";
                 rpt.SetDataSource(dt);
                 err = "02";
-                rpt.SetParameterValue("line1", ic.cop.comp_name_t);
-                rpt.SetParameterValue("line2", ic.cop.addr1);
-                rpt.SetParameterValue("line3", ic.cop.addr2);
+                if (flagDonor.Equals("1"))
+                {
+                    rpt.SetParameterValue("line1", "");
+                    rpt.SetParameterValue("line2", "");
+                    rpt.SetParameterValue("line3", "");
+                }
+                else
+                {
+                    rpt.SetParameterValue("line1", ic.cop.comp_name_t);
+                    rpt.SetParameterValue("line2", ic.cop.addr1);
+                    rpt.SetParameterValue("line3", ic.cop.addr2);
+                }
                 rpt.SetParameterValue("hn", hn);
                 rpt.SetParameterValue("name", name);
                 rpt.SetParameterValue("dob", age);                

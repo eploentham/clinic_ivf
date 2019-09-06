@@ -40,7 +40,7 @@
             this.txtVn = new C1.Win.C1Input.C1TextBox();
             this.txtVnShow = new C1.Win.C1Input.C1TextBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.btnPrintHomone = new C1.Win.C1Input.C1Button();
+            this.btnPrintHormone = new C1.Win.C1Input.C1Button();
             this.btnApproveResult = new C1.Win.C1Input.C1Button();
             this.btnSave = new C1.Win.C1Input.C1Button();
             this.label1 = new System.Windows.Forms.Label();
@@ -138,7 +138,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtVsId)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtVn)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtVnShow)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.btnPrintHomone)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnPrintHormone)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnApproveResult)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnSave)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtApprovDate)).BeginInit();
@@ -178,7 +178,7 @@
             this.panel1.Controls.Add(this.txtVn);
             this.panel1.Controls.Add(this.txtVnShow);
             this.panel1.Controls.Add(this.label3);
-            this.panel1.Controls.Add(this.btnPrintHomone);
+            this.panel1.Controls.Add(this.btnPrintHormone);
             this.panel1.Controls.Add(this.btnApproveResult);
             this.panel1.Controls.Add(this.btnSave);
             this.panel1.Controls.Add(this.label1);
@@ -343,16 +343,16 @@
             // 
             // btnPrintHomone
             // 
-            this.btnPrintHomone.Image = global::clinic_ivf.Properties.Resources.print;
-            this.btnPrintHomone.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnPrintHomone.Location = new System.Drawing.Point(807, 61);
-            this.btnPrintHomone.Name = "btnPrintHomone";
-            this.btnPrintHomone.Size = new System.Drawing.Size(121, 34);
-            this.btnPrintHomone.TabIndex = 868;
-            this.btnPrintHomone.Text = "Print  Hormone";
-            this.btnPrintHomone.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnPrintHomone.UseVisualStyleBackColor = true;
-            this.btnPrintHomone.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            this.btnPrintHormone.Image = global::clinic_ivf.Properties.Resources.print;
+            this.btnPrintHormone.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnPrintHormone.Location = new System.Drawing.Point(807, 61);
+            this.btnPrintHormone.Name = "btnPrintHomone";
+            this.btnPrintHormone.Size = new System.Drawing.Size(121, 34);
+            this.btnPrintHormone.TabIndex = 868;
+            this.btnPrintHormone.Text = "Print  Hormone";
+            this.btnPrintHormone.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnPrintHormone.UseVisualStyleBackColor = true;
+            this.btnPrintHormone.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
             // 
             // btnApproveResult
             // 
@@ -1247,7 +1247,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtVsId)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtVn)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtVnShow)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.btnPrintHomone)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnPrintHormone)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnApproveResult)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnSave)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtApprovDate)).EndInit();
@@ -1299,7 +1299,7 @@
         private C1.Win.C1Input.C1DateEdit txtReportDate;
         private C1.Win.C1Input.C1Button btnApproveResult;
         private C1.Win.C1Input.C1Button btnSave;
-        private C1.Win.C1Input.C1Button btnPrintHomone;
+        private C1.Win.C1Input.C1Button btnPrintHormone;
         private C1.Win.C1Themes.C1ThemeController theme1;
         private System.Windows.Forms.StatusStrip sB;
         private System.Windows.Forms.ToolStripStatusLabel sB1;
