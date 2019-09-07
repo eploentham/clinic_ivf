@@ -74,7 +74,7 @@ namespace clinic_ivf.gui
             fc = txtHn.ForeColor;
             ff = txtHn.Font;
             ic.ivfDB.ocaDB.setCboCashAccount(cboAccCash, "");
-            ic.ivfDB.occa.setCboCreditCardAccount(cboAccCredit, "");
+            ic.ivfDB.ocrDB.setCboCreditCardAccount(cboAccCredit, "");
             ic.ivfDB.obilgDB.setCboGroupType(cboGrpType, "0");
             txtCreditCharge.Value = ic.iniC.creditCharge;
 

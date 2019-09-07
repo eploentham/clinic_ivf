@@ -48,17 +48,17 @@
             this.pnCash = new System.Windows.Forms.Panel();
             this.tabCredit = new C1.Win.C1Command.C1DockingTabPage();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.c1TextBox1 = new C1.Win.C1Input.C1TextBox();
-            this.c1CheckBox1 = new C1.Win.C1Input.C1CheckBox();
-            this.c1Button1 = new C1.Win.C1Input.C1Button();
-            this.c1Button2 = new C1.Win.C1Input.C1Button();
-            this.c1Button3 = new C1.Win.C1Input.C1Button();
-            this.c1Button4 = new C1.Win.C1Input.C1Button();
-            this.c1TextBox2 = new C1.Win.C1Input.C1TextBox();
+            this.txtCrPasswordVoid = new C1.Win.C1Input.C1TextBox();
+            this.chkCrVoid = new C1.Win.C1Input.C1CheckBox();
+            this.btnCrVoid = new C1.Win.C1Input.C1Button();
+            this.btnCrSave = new C1.Win.C1Input.C1Button();
+            this.btnCrNew = new C1.Win.C1Input.C1Button();
+            this.btnCrEdit = new C1.Win.C1Input.C1Button();
+            this.txtCrRemark = new C1.Win.C1Input.C1TextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.c1TextBox3 = new C1.Win.C1Input.C1TextBox();
+            this.txtCrNameT = new C1.Win.C1Input.C1TextBox();
             this.label4 = new System.Windows.Forms.Label();
-            this.c1TextBox4 = new C1.Win.C1Input.C1TextBox();
+            this.txtCrID = new C1.Win.C1Input.C1TextBox();
             this.pnCredit = new System.Windows.Forms.Panel();
             this.sB.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.theme1)).BeginInit();
@@ -77,15 +77,15 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtCaID)).BeginInit();
             this.tabCredit.SuspendLayout();
             this.panel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.c1TextBox1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.c1CheckBox1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.c1Button1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.c1Button2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.c1Button3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.c1Button4)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.c1TextBox2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.c1TextBox3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.c1TextBox4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtCrPasswordVoid)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chkCrVoid)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnCrVoid)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnCrSave)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnCrNew)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnCrEdit)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtCrRemark)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtCrNameT)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtCrID)).BeginInit();
             this.SuspendLayout();
             // 
             // sB
@@ -152,9 +152,9 @@
             this.panel1.Controls.Add(this.txtCaID);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.panel1.Location = new System.Drawing.Point(386, 0);
+            this.panel1.Location = new System.Drawing.Point(469, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(554, 579);
+            this.panel1.Size = new System.Drawing.Size(471, 579);
             this.panel1.TabIndex = 1;
             this.theme1.SetTheme(this.panel1, "(default)");
             // 
@@ -296,9 +296,9 @@
             this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
             this.label2.Location = new System.Drawing.Point(26, 80);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(65, 16);
+            this.label2.Size = new System.Drawing.Size(61, 16);
             this.label2.TabIndex = 262;
-            this.label2.Text = "ชื่อ Agent :";
+            this.label2.Text = "ชื่อ Cash :";
             this.theme1.SetTheme(this.label2, "(default)");
             // 
             // txtCaID
@@ -322,7 +322,7 @@
             this.pnCash.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
             this.pnCash.Location = new System.Drawing.Point(0, 0);
             this.pnCash.Name = "pnCash";
-            this.pnCash.Size = new System.Drawing.Size(386, 579);
+            this.pnCash.Size = new System.Drawing.Size(469, 579);
             this.pnCash.TabIndex = 0;
             this.theme1.SetTheme(this.pnCash, "(default)");
             // 
@@ -339,127 +339,127 @@
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.panel2.Controls.Add(this.c1TextBox1);
-            this.panel2.Controls.Add(this.c1CheckBox1);
-            this.panel2.Controls.Add(this.c1Button1);
-            this.panel2.Controls.Add(this.c1Button2);
-            this.panel2.Controls.Add(this.c1Button3);
-            this.panel2.Controls.Add(this.c1Button4);
-            this.panel2.Controls.Add(this.c1TextBox2);
+            this.panel2.Controls.Add(this.txtCrPasswordVoid);
+            this.panel2.Controls.Add(this.chkCrVoid);
+            this.panel2.Controls.Add(this.btnCrVoid);
+            this.panel2.Controls.Add(this.btnCrSave);
+            this.panel2.Controls.Add(this.btnCrNew);
+            this.panel2.Controls.Add(this.btnCrEdit);
+            this.panel2.Controls.Add(this.txtCrRemark);
             this.panel2.Controls.Add(this.label1);
-            this.panel2.Controls.Add(this.c1TextBox3);
+            this.panel2.Controls.Add(this.txtCrNameT);
             this.panel2.Controls.Add(this.label4);
-            this.panel2.Controls.Add(this.c1TextBox4);
+            this.panel2.Controls.Add(this.txtCrID);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.panel2.Location = new System.Drawing.Point(399, 0);
+            this.panel2.Location = new System.Drawing.Point(469, 0);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(541, 579);
+            this.panel2.Size = new System.Drawing.Size(471, 579);
             this.panel2.TabIndex = 2;
             this.theme1.SetTheme(this.panel2, "(default)");
             // 
-            // c1TextBox1
+            // txtCrPasswordVoid
             // 
-            this.c1TextBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.c1TextBox1.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
-            this.c1TextBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.c1TextBox1.Location = new System.Drawing.Point(274, 189);
-            this.c1TextBox1.Name = "c1TextBox1";
-            this.c1TextBox1.PasswordChar = '*';
-            this.c1TextBox1.Size = new System.Drawing.Size(78, 20);
-            this.c1TextBox1.TabIndex = 271;
-            this.c1TextBox1.Tag = null;
-            this.theme1.SetTheme(this.c1TextBox1, "(default)");
-            this.c1TextBox1.Visible = false;
-            this.c1TextBox1.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            this.txtCrPasswordVoid.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtCrPasswordVoid.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
+            this.txtCrPasswordVoid.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.txtCrPasswordVoid.Location = new System.Drawing.Point(274, 199);
+            this.txtCrPasswordVoid.Name = "txtCrPasswordVoid";
+            this.txtCrPasswordVoid.PasswordChar = '*';
+            this.txtCrPasswordVoid.Size = new System.Drawing.Size(78, 20);
+            this.txtCrPasswordVoid.TabIndex = 271;
+            this.txtCrPasswordVoid.Tag = null;
+            this.theme1.SetTheme(this.txtCrPasswordVoid, "(default)");
+            this.txtCrPasswordVoid.Visible = false;
+            this.txtCrPasswordVoid.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
             // 
-            // c1CheckBox1
+            // chkCrVoid
             // 
-            this.c1CheckBox1.BackColor = System.Drawing.Color.Transparent;
-            this.c1CheckBox1.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
-            this.c1CheckBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.c1CheckBox1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.c1CheckBox1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.c1CheckBox1.Location = new System.Drawing.Point(250, 169);
-            this.c1CheckBox1.Name = "c1CheckBox1";
-            this.c1CheckBox1.Padding = new System.Windows.Forms.Padding(4, 1, 1, 1);
-            this.c1CheckBox1.Size = new System.Drawing.Size(155, 24);
-            this.c1CheckBox1.TabIndex = 270;
-            this.c1CheckBox1.Text = "ต้องการยกเลิกรายการ";
-            this.theme1.SetTheme(this.c1CheckBox1, "(default)");
-            this.c1CheckBox1.UseVisualStyleBackColor = true;
-            this.c1CheckBox1.Value = null;
-            this.c1CheckBox1.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            this.chkCrVoid.BackColor = System.Drawing.Color.Transparent;
+            this.chkCrVoid.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
+            this.chkCrVoid.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.chkCrVoid.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.chkCrVoid.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.chkCrVoid.Location = new System.Drawing.Point(250, 169);
+            this.chkCrVoid.Name = "chkCrVoid";
+            this.chkCrVoid.Padding = new System.Windows.Forms.Padding(4, 1, 1, 1);
+            this.chkCrVoid.Size = new System.Drawing.Size(155, 24);
+            this.chkCrVoid.TabIndex = 270;
+            this.chkCrVoid.Text = "ต้องการยกเลิกรายการ";
+            this.theme1.SetTheme(this.chkCrVoid, "(default)");
+            this.chkCrVoid.UseVisualStyleBackColor = true;
+            this.chkCrVoid.Value = null;
+            this.chkCrVoid.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
             // 
-            // c1Button1
+            // btnCrVoid
             // 
-            this.c1Button1.Image = global::clinic_ivf.Properties.Resources.trash24;
-            this.c1Button1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.c1Button1.Location = new System.Drawing.Point(411, 180);
-            this.c1Button1.Name = "c1Button1";
-            this.c1Button1.Size = new System.Drawing.Size(83, 39);
-            this.c1Button1.TabIndex = 269;
-            this.c1Button1.Text = "ยกเลิกช้อมูล";
-            this.c1Button1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.theme1.SetTheme(this.c1Button1, "(default)");
-            this.c1Button1.UseVisualStyleBackColor = true;
-            this.c1Button1.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            this.btnCrVoid.Image = global::clinic_ivf.Properties.Resources.trash24;
+            this.btnCrVoid.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnCrVoid.Location = new System.Drawing.Point(411, 180);
+            this.btnCrVoid.Name = "btnCrVoid";
+            this.btnCrVoid.Size = new System.Drawing.Size(83, 39);
+            this.btnCrVoid.TabIndex = 269;
+            this.btnCrVoid.Text = "ยกเลิกช้อมูล";
+            this.btnCrVoid.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.theme1.SetTheme(this.btnCrVoid, "(default)");
+            this.btnCrVoid.UseVisualStyleBackColor = true;
+            this.btnCrVoid.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
             // 
-            // c1Button2
+            // btnCrSave
             // 
-            this.c1Button2.Image = global::clinic_ivf.Properties.Resources.accept_database24;
-            this.c1Button2.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.c1Button2.Location = new System.Drawing.Point(411, 224);
-            this.c1Button2.Name = "c1Button2";
-            this.c1Button2.Size = new System.Drawing.Size(83, 39);
-            this.c1Button2.TabIndex = 268;
-            this.c1Button2.Text = "บันทึกช้อมูล";
-            this.c1Button2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.theme1.SetTheme(this.c1Button2, "(default)");
-            this.c1Button2.UseVisualStyleBackColor = true;
-            this.c1Button2.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            this.btnCrSave.Image = global::clinic_ivf.Properties.Resources.accept_database24;
+            this.btnCrSave.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnCrSave.Location = new System.Drawing.Point(411, 224);
+            this.btnCrSave.Name = "btnCrSave";
+            this.btnCrSave.Size = new System.Drawing.Size(83, 39);
+            this.btnCrSave.TabIndex = 268;
+            this.btnCrSave.Text = "บันทึกช้อมูล";
+            this.btnCrSave.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.theme1.SetTheme(this.btnCrSave, "(default)");
+            this.btnCrSave.UseVisualStyleBackColor = true;
+            this.btnCrSave.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
             // 
-            // c1Button3
+            // btnCrNew
             // 
-            this.c1Button3.Image = global::clinic_ivf.Properties.Resources.custom_reports24;
-            this.c1Button3.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.c1Button3.Location = new System.Drawing.Point(411, 25);
-            this.c1Button3.Name = "c1Button3";
-            this.c1Button3.Size = new System.Drawing.Size(83, 39);
-            this.c1Button3.TabIndex = 267;
-            this.c1Button3.Text = "เพิ่มช้อมูล";
-            this.c1Button3.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.theme1.SetTheme(this.c1Button3, "(default)");
-            this.c1Button3.UseVisualStyleBackColor = true;
-            this.c1Button3.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            this.btnCrNew.Image = global::clinic_ivf.Properties.Resources.custom_reports24;
+            this.btnCrNew.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnCrNew.Location = new System.Drawing.Point(411, 25);
+            this.btnCrNew.Name = "btnCrNew";
+            this.btnCrNew.Size = new System.Drawing.Size(83, 39);
+            this.btnCrNew.TabIndex = 267;
+            this.btnCrNew.Text = "เพิ่มช้อมูล";
+            this.btnCrNew.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.theme1.SetTheme(this.btnCrNew, "(default)");
+            this.btnCrNew.UseVisualStyleBackColor = true;
+            this.btnCrNew.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
             // 
-            // c1Button4
+            // btnCrEdit
             // 
-            this.c1Button4.Image = global::clinic_ivf.Properties.Resources.lock24;
-            this.c1Button4.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.c1Button4.Location = new System.Drawing.Point(411, 70);
-            this.c1Button4.Name = "c1Button4";
-            this.c1Button4.Size = new System.Drawing.Size(83, 39);
-            this.c1Button4.TabIndex = 266;
-            this.c1Button4.Text = "แก้ไขช้อมูล";
-            this.c1Button4.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.theme1.SetTheme(this.c1Button4, "(default)");
-            this.c1Button4.UseVisualStyleBackColor = true;
-            this.c1Button4.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            this.btnCrEdit.Image = global::clinic_ivf.Properties.Resources.lock24;
+            this.btnCrEdit.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnCrEdit.Location = new System.Drawing.Point(411, 70);
+            this.btnCrEdit.Name = "btnCrEdit";
+            this.btnCrEdit.Size = new System.Drawing.Size(83, 39);
+            this.btnCrEdit.TabIndex = 266;
+            this.btnCrEdit.Text = "แก้ไขช้อมูล";
+            this.btnCrEdit.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.theme1.SetTheme(this.btnCrEdit, "(default)");
+            this.btnCrEdit.UseVisualStyleBackColor = true;
+            this.btnCrEdit.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
             // 
-            // c1TextBox2
+            // txtCrRemark
             // 
-            this.c1TextBox2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.c1TextBox2.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
-            this.c1TextBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.c1TextBox2.Location = new System.Drawing.Point(109, 105);
-            this.c1TextBox2.Name = "c1TextBox2";
-            this.c1TextBox2.Size = new System.Drawing.Size(207, 20);
-            this.c1TextBox2.TabIndex = 265;
-            this.c1TextBox2.Tag = null;
-            this.theme1.SetTheme(this.c1TextBox2, "(default)");
-            this.c1TextBox2.Visible = false;
-            this.c1TextBox2.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            this.txtCrRemark.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtCrRemark.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
+            this.txtCrRemark.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.txtCrRemark.Location = new System.Drawing.Point(109, 105);
+            this.txtCrRemark.Name = "txtCrRemark";
+            this.txtCrRemark.Size = new System.Drawing.Size(207, 20);
+            this.txtCrRemark.TabIndex = 265;
+            this.txtCrRemark.Tag = null;
+            this.theme1.SetTheme(this.txtCrRemark, "(default)");
+            this.txtCrRemark.Visible = false;
+            this.txtCrRemark.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
             // 
             // label1
             // 
@@ -475,18 +475,18 @@
             this.theme1.SetTheme(this.label1, "(default)");
             this.label1.Visible = false;
             // 
-            // c1TextBox3
+            // txtCrNameT
             // 
-            this.c1TextBox3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.c1TextBox3.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
-            this.c1TextBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.c1TextBox3.Location = new System.Drawing.Point(109, 79);
-            this.c1TextBox3.Name = "c1TextBox3";
-            this.c1TextBox3.Size = new System.Drawing.Size(207, 20);
-            this.c1TextBox3.TabIndex = 263;
-            this.c1TextBox3.Tag = null;
-            this.theme1.SetTheme(this.c1TextBox3, "(default)");
-            this.c1TextBox3.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            this.txtCrNameT.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtCrNameT.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
+            this.txtCrNameT.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.txtCrNameT.Location = new System.Drawing.Point(109, 79);
+            this.txtCrNameT.Name = "txtCrNameT";
+            this.txtCrNameT.Size = new System.Drawing.Size(207, 20);
+            this.txtCrNameT.TabIndex = 263;
+            this.txtCrNameT.Tag = null;
+            this.theme1.SetTheme(this.txtCrNameT, "(default)");
+            this.txtCrNameT.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
             // 
             // label4
             // 
@@ -498,22 +498,22 @@
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(65, 16);
             this.label4.TabIndex = 262;
-            this.label4.Text = "ชื่อ Agent :";
+            this.label4.Text = "ชื่อ Credit :";
             this.theme1.SetTheme(this.label4, "(default)");
             // 
-            // c1TextBox4
+            // txtCrID
             // 
-            this.c1TextBox4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.c1TextBox4.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
-            this.c1TextBox4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.c1TextBox4.Location = new System.Drawing.Point(322, 19);
-            this.c1TextBox4.Name = "c1TextBox4";
-            this.c1TextBox4.Size = new System.Drawing.Size(30, 20);
-            this.c1TextBox4.TabIndex = 261;
-            this.c1TextBox4.Tag = null;
-            this.theme1.SetTheme(this.c1TextBox4, "(default)");
-            this.c1TextBox4.Visible = false;
-            this.c1TextBox4.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            this.txtCrID.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtCrID.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
+            this.txtCrID.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.txtCrID.Location = new System.Drawing.Point(322, 19);
+            this.txtCrID.Name = "txtCrID";
+            this.txtCrID.Size = new System.Drawing.Size(30, 20);
+            this.txtCrID.TabIndex = 261;
+            this.txtCrID.Tag = null;
+            this.theme1.SetTheme(this.txtCrID, "(default)");
+            this.txtCrID.Visible = false;
+            this.txtCrID.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
             // 
             // pnCredit
             // 
@@ -522,7 +522,7 @@
             this.pnCredit.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
             this.pnCredit.Location = new System.Drawing.Point(0, 0);
             this.pnCredit.Name = "pnCredit";
-            this.pnCredit.Size = new System.Drawing.Size(399, 579);
+            this.pnCredit.Size = new System.Drawing.Size(469, 579);
             this.pnCredit.TabIndex = 1;
             this.theme1.SetTheme(this.pnCredit, "(default)");
             // 
@@ -556,15 +556,15 @@
             this.tabCredit.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.c1TextBox1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.c1CheckBox1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.c1Button1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.c1Button2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.c1Button3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.c1Button4)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.c1TextBox2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.c1TextBox3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.c1TextBox4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtCrPasswordVoid)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chkCrVoid)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnCrVoid)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnCrSave)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnCrNew)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnCrEdit)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtCrRemark)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtCrNameT)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtCrID)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -593,16 +593,16 @@
         private C1.Win.C1Input.C1TextBox txtCaNameT;
         private System.Windows.Forms.Label label2;
         private C1.Win.C1Input.C1TextBox txtCaID;
-        private C1.Win.C1Input.C1TextBox c1TextBox1;
-        private C1.Win.C1Input.C1CheckBox c1CheckBox1;
-        private C1.Win.C1Input.C1Button c1Button1;
-        private C1.Win.C1Input.C1Button c1Button2;
-        private C1.Win.C1Input.C1Button c1Button3;
-        private C1.Win.C1Input.C1Button c1Button4;
-        private C1.Win.C1Input.C1TextBox c1TextBox2;
+        private C1.Win.C1Input.C1TextBox txtCrPasswordVoid;
+        private C1.Win.C1Input.C1CheckBox chkCrVoid;
+        private C1.Win.C1Input.C1Button btnCrVoid;
+        private C1.Win.C1Input.C1Button btnCrSave;
+        private C1.Win.C1Input.C1Button btnCrNew;
+        private C1.Win.C1Input.C1Button btnCrEdit;
+        private C1.Win.C1Input.C1TextBox txtCrRemark;
         private System.Windows.Forms.Label label1;
-        private C1.Win.C1Input.C1TextBox c1TextBox3;
+        private C1.Win.C1Input.C1TextBox txtCrNameT;
         private System.Windows.Forms.Label label4;
-        private C1.Win.C1Input.C1TextBox c1TextBox4;
+        private C1.Win.C1Input.C1TextBox txtCrID;
     }
 }

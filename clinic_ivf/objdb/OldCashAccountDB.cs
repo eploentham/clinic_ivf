@@ -28,6 +28,13 @@ namespace clinic_ivf.objdb
             oca.CashName = "CashName";
             oca.IntLock = "IntLock";
             oca.active = "active";
+            oca.remark = "remark";
+            oca.date_cancel = "date_cancel";
+            oca.date_create = "date_create";
+            oca.date_modi = "date_modi";
+            oca.user_cancel = "user_cancel";
+            oca.user_create = "user_create";
+            oca.user_modi = "user_modi";
 
             oca.table = "CashAccount";
             oca.pkField = "CashID";
@@ -111,9 +118,9 @@ namespace clinic_ivf.objdb
                 "," + oca.date_cancel + "=now() " +
                 "," + oca.user_cancel + "='" + userIdVoid + "' " +
                 "Where " + oca.pkField + "='" + stfId + "'";
-            conn.ExecuteNonQuery(conn.conn, sql);
+            String re = conn.ExecuteNonQuery(conn.conn, sql);
 
-            return "1";
+            return re;
         }
         public DataTable selectByCreditCardName()
         {
@@ -153,7 +160,7 @@ namespace clinic_ivf.objdb
             String sql = "select oca.* " +
                 "From " + oca.table + " oca " +
                 //"Left Join t_ssdata_visit ssv On ssv.ssdata_visit_id = bd.ssdata_visit_id " +
-                "Where oAgn." + oca.pkField + " ='" + copId + "' ";
+                "Where oca." + oca.pkField + " ='" + copId + "' ";
             dt = conn.selectData(conn.conn, sql);
             cop1 = setCashAccount(dt);
             return cop1;

@@ -28,6 +28,13 @@ namespace clinic_ivf.objdb
             occa.CreditCardName = "CreditCardName";
             occa.IntLock = "IntLock";
             occa.active = "active";
+            occa.remark = "remark";
+            occa.date_cancel = "date_cancel";
+            occa.date_create = "date_create";
+            occa.date_create = "date_create";
+            occa.user_cancel = "user_cancel";
+            occa.user_create = "user_create";
+            occa.user_modi = "user_modi";
 
             occa.table = "CreditCardAccount";
             occa.pkField = "CreditCardID";
@@ -136,6 +143,28 @@ namespace clinic_ivf.objdb
 
             return dt;
         }
+        public DataTable selectByPk(String copId)
+        {
+            DataTable dt = new DataTable();
+            String sql = "select occa.* " +
+                "From " + occa.table + " occa ";
+            //"Left Join t_ssdata_visit ssv On ssv.ssdata_visit_id = bd.ssdata_visit_id " +
+            //"Where sex." + agnO.pkField + " ='" + copId + "' ";
+            dt = conn.selectData(conn.conn, sql);
+            return dt;
+        }
+        public OldCreditCardAccount selectByPk1(String copId)
+        {
+            OldCreditCardAccount cop1 = new OldCreditCardAccount();
+            DataTable dt = new DataTable();
+            String sql = "select occa.* " +
+                "From " + occa.table + " occa " +
+                //"Left Join t_ssdata_visit ssv On ssv.ssdata_visit_id = bd.ssdata_visit_id " +
+                "Where occa." + occa.pkField + " ='" + copId + "' ";
+            dt = conn.selectData(conn.conn, sql);
+            cop1 = setCreditAccount(dt);
+            return cop1;
+        }
         public String getList(String id)
         {
             String re = "";
@@ -196,6 +225,24 @@ namespace clinic_ivf.objdb
                 i++;
             }
             return c;
+        }
+        private OldCreditCardAccount setCreditAccount(DataTable dt)
+        {
+            OldCreditCardAccount dept1 = new OldCreditCardAccount();
+            if (dt.Rows.Count > 0)
+            {
+                dept1.CreditCardID = dt.Rows[0][occa.CreditCardID].ToString();
+                dept1.CreditCardName = dt.Rows[0][occa.CreditCardName].ToString();
+                dept1.remark = dt.Rows[0][occa.remark].ToString();
+            }
+            else
+            {
+                dept1.CreditCardID = "";
+                dept1.CreditCardName = "";
+                dept1.remark = "";
+            }
+
+            return dept1;
         }
     }
 }

@@ -89,6 +89,7 @@
             this.tC1 = new C1.Win.C1Command.C1DockingTab();
             this.PageS = new C1.Win.C1Command.C1DockingTabPage();
             this.theme1 = new C1.Win.C1Themes.C1ThemeController();
+            this.memuAccCash = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tCC1)).BeginInit();
             this.tCC1.SuspendLayout();
@@ -422,7 +423,8 @@
             this.menuDrug,
             this.แผนกORToolStripMenuItem,
             this.menuSpecialItem,
-            this.menuLabItem});
+            this.menuLabItem,
+            this.memuAccCash});
             this.masterToolStripMenuItem.Name = "masterToolStripMenuItem";
             this.masterToolStripMenuItem.Size = new System.Drawing.Size(192, 22);
             this.masterToolStripMenuItem.Text = "Master";
@@ -430,7 +432,7 @@
             // menuDrug
             // 
             this.menuDrug.Name = "menuDrug";
-            this.menuDrug.Size = new System.Drawing.Size(135, 22);
+            this.menuDrug.Size = new System.Drawing.Size(180, 22);
             this.menuDrug.Text = "แผนก Drug";
             // 
             // แผนกORToolStripMenuItem
@@ -440,7 +442,7 @@
             this.menuOrDiag,
             this.menuOrAnes});
             this.แผนกORToolStripMenuItem.Name = "แผนกORToolStripMenuItem";
-            this.แผนกORToolStripMenuItem.Size = new System.Drawing.Size(135, 22);
+            this.แผนกORToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.แผนกORToolStripMenuItem.Text = "แผนก OR";
             // 
             // menuGrpDiag
@@ -464,13 +466,13 @@
             // menuSpecialItem
             // 
             this.menuSpecialItem.Name = "menuSpecialItem";
-            this.menuSpecialItem.Size = new System.Drawing.Size(135, 22);
+            this.menuSpecialItem.Size = new System.Drawing.Size(180, 22);
             this.menuSpecialItem.Text = "SpecialItem";
             // 
             // menuLabItem
             // 
             this.menuLabItem.Name = "menuLabItem";
-            this.menuLabItem.Size = new System.Drawing.Size(135, 22);
+            this.menuLabItem.Size = new System.Drawing.Size(180, 22);
             this.menuLabItem.Text = "LabItem";
             // 
             // menuAgent
@@ -563,6 +565,12 @@
             // 
             this.theme1.Theme = "BeigeOne";
             // 
+            // memuAccCash
+            // 
+            this.memuAccCash.Name = "memuAccCash";
+            this.memuAccCash.Size = new System.Drawing.Size(180, 22);
+            this.memuAccCash.Text = "Account_Cash";
+            // 
             // MainMenu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -649,5 +657,6 @@
         private System.Windows.Forms.ToolStripMenuItem เบกออกรายการยาToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem ปรบปรงยอดรายการยาToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem menuLabBlood;
+        private System.Windows.Forms.ToolStripMenuItem memuAccCash;
     }
 }

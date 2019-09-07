@@ -77,7 +77,7 @@ namespace clinic_ivf.objdb
         public OldBilldetailDB obildDB;
         public OldBillheaderDB obilhDB;
         public OldCashAccountDB ocaDB;
-        public OldCreditCardAccountDB occa;
+        public OldCreditCardAccountDB ocrDB;
         public OldBillGroupDB obilgDB;
         public OldFilePatientDB ofpDB;
         public NoteDB noteDB;
@@ -172,7 +172,7 @@ namespace clinic_ivf.objdb
             dgssDB = new DocGroupSubScanDB(conn);
             dscDB = new DocScanDB(conn);
             ocaDB = new OldCashAccountDB(conn);
-            occa = new OldCreditCardAccountDB(conn);
+            ocrDB = new OldCreditCardAccountDB(conn);
             obildDB = new OldBilldetailDB(conn);
             obilhDB = new OldBillheaderDB(conn);
             obilgDB = new OldBillGroupDB(conn);

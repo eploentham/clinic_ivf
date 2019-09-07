@@ -380,7 +380,7 @@ namespace clinic_ivf.objdb
                 ", lforma.status_wait_confirm_day1,lreq.form_a_id,lreq.req_id , lforma.form_a_id, lreq.hn_male,lforma.status_wait_confirm_day1,lforma.status_wait_confirm_opu_date " +
                 ", lreq.req_code, lreq.hn_female, lreq.req_date, lreq.remark, lforma.status_opu_active, lforma.status_wait_confirm_opu_date, lforma.opu_wait_remark, lforma.remark as form_a_remark " +
                 ", lforma.opu_date, lforma.opu_time, lforma.opu_remark, lforma.fet_remark, lforma.opu_time_modi, lforma.status_opu_time_modi, lforma.hn_donor" +
-                ", lforma.name_donor,lreq.vn, lreq.item_id, si.LName " +
+                ", lforma.name_donor,lreq.vn, lreq.item_id, si.LName,si.LGID " +
                 "From lab_t_request lreq " +
                 "Left Join lab_t_form_a lforma on lreq.form_a_id = lforma.form_a_id  " +
                 "Left Join t_patient pttf on lreq.hn_female = pttf.patient_hn and lreq.hn_female <> '' " +

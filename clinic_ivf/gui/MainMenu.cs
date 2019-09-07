@@ -62,6 +62,10 @@ namespace clinic_ivf.gui
             C1DockingTab tab = new C1DockingTab();
             tab = (C1DockingTab)sender;
             xx = tab.Name;
+            //C1DockingTabPage page = new C1DockingTabPage();
+            //page = tab.TabPages[0];
+            //page = tab.TabPages[1];
+            //if(page.)
         }
 
         private void initConfig()
@@ -107,6 +111,15 @@ namespace clinic_ivf.gui
             menuStockRec.Click += MenuStockRec_Click;
             menuLabSperm.Click += MenuLabSperm_Click;
             menuLabBlood.Click += MenuLabBlood_Click;
+            memuAccCash.Click += MemuAccCash_Click;
+        }
+
+        private void MemuAccCash_Click(object sender, EventArgs e)
+        {
+            //throw new NotImplementedException();
+            FrmCashAccount frm = new FrmCashAccount(ic, this);
+            frm.FormBorderStyle = FormBorderStyle.None;
+            AddNewTab(frm, memuAccCash.Text + " ");
         }
 
         private void MenuLabBlood_Click(object sender, EventArgs e)
@@ -590,6 +603,7 @@ namespace clinic_ivf.gui
             tab.ResumeLayout();
             tab.Refresh();
             tab.Text = label;
+            tab.Closing += Tab_Closing;
             if (ic.iniC.statusAppDonor.Equals("1"))
             {
                 theme1.SetTheme(tC1, ic.iniC.themeDonor);
@@ -602,6 +616,21 @@ namespace clinic_ivf.gui
             //theme1.SetTheme(tC1, "Office2010Blue");
             //theme1.SetTheme(tC1, "Office2010Green");
             return tab;
+        }
+
+        private void Tab_Closing(object sender, CancelEventArgs e)
+        {
+            //throw new NotImplementedException();
+            //C1DockingTabPage aaa;
+            //aaa = (C1DockingTabPage)sender;
+            if (((C1DockingTabPage)sender).Name.Equals("FrmPatientAdd"))
+            {
+                String aaa = "";
+                if (ic.video.IsRunning)
+                {
+                    ic.video.Stop();
+                }
+            }
         }
 
         //protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
@@ -626,8 +655,8 @@ namespace clinic_ivf.gui
         {
             String date = "";
             date = DateTime.Now.Year+"-"+ DateTime.Now.ToString("MM-dd");
-            this.Text = ic.iniC.statusAppDonor.Equals("1") ? "โปรแกรมClinic IVF Donor " +"สวัสดี คุณ "+ic.user.staff_fname_t +" "+ic.user.staff_lname_t+" Update 2019-09-06 "
-                : "โปรแกรมClinic IVF " + "สวัสดี คุณ " + ic.user.staff_fname_t + " " + ic.user.staff_lname_t + " Update 2019-09-06 format date "+ date;
+            this.Text = ic.iniC.statusAppDonor.Equals("1") ? "โปรแกรมClinic IVF Donor " +"สวัสดี คุณ "+ic.user.staff_fname_t +" "+ic.user.staff_lname_t+" Update 2019-09-07 "
+                : "โปรแกรมClinic IVF " + "สวัสดี คุณ " + ic.user.staff_fname_t + " " + ic.user.staff_lname_t + " Update 2019-09-07 format date "+ date;
 
             //theme1.SetTheme(this, ic.theme);
             theme1.SetTheme(this, ic.theme);

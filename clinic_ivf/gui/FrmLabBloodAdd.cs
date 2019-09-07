@@ -364,6 +364,36 @@ namespace clinic_ivf.gui
             txtEmailSubject.Value = "Result LAB Blood HN " + txtHn.Text + " Name " + txtPttNameE.Text + "Sex "+txtSex.Text+ " [VN " + txtVnShow.Text + "]";
 
             setGrfProc();
+
+            if (ic.user.dept_id.Equals("1090000005"))
+            {
+                setControlView(true);
+            }
+            else
+            {
+                if (ic.user.status_admin.Equals("2"))
+                {
+                    setControlView(true);
+                }
+                else
+                {
+                    setControlView(false);
+                }
+            }
+        }
+        private void setControlView(Boolean flag)
+        {
+            txtHn.Enabled = flag;
+            txtPttNameE.Enabled = flag;
+            txtDob.Enabled = flag;
+            cboEmbryologistAppv.Enabled = flag;
+            cboEmbryologistReport.Enabled = flag;
+            txtSex.Enabled = flag;
+            txtReportDate.Enabled = flag;
+            txtApprovDate.Enabled = flag;
+            btnSave.Visible = flag;
+            btnApproveResult.Visible = flag;
+
         }
         private void initGrfProc()
         {
@@ -577,7 +607,6 @@ namespace clinic_ivf.gui
                 {
                     String err = "";
                 }
-
             }
             CellNoteManager mgr = new CellNoteManager(grfProc);
             grfProc.Cols[colRsId].Visible = false;
