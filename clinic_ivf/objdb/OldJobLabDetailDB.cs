@@ -228,6 +228,17 @@ namespace clinic_ivf.objdb
             }
             return re;
         }
+        public OldJobLabDetail selectByPk1(String pttId)
+        {
+            DataTable dt = new DataTable();
+            OldJobLabDetail ojld = new OldJobLabDetail();
+            String sql = "select jlabD.* " +
+                "From " + jlabD.table + " jlabD " +
+                "Where jlabD." + jlabD.pkField + " ='" + pttId + "' ";
+            dt = conn.selectData(conn.conn, sql);
+            ojld = setJobLabDetail(dt);
+            return ojld;
+        }
         public DataTable selectByPk(String pttId)
         {
             DataTable dt = new DataTable();
@@ -255,6 +266,17 @@ namespace clinic_ivf.objdb
                 "From " + jlabD.table + " jlabD " +
                 //"Left Join labItem li on jlabD.LID = li.LID " +
                 "Where jlabD." + jlabD.VN + " ='" + pttId + "' and jlabD.active = '1'" +
+                "Order By jlabD." + jlabD.LID;
+            dt = conn.selectData(conn.conn, sql);
+            return dt;
+        }
+        public DataTable selectByVNnoReq(String vn)
+        {
+            DataTable dt = new DataTable();
+            String sql = "select jlabD.* " +
+                "From " + jlabD.table + " jlabD " +
+                //"Left Join labItem li on jlabD.LID = li.LID " +
+                "Where jlabD." + jlabD.VN + " ='" + vn + "' and jlabD.active = '1' and jlabD.req_id = 0 " +
                 "Order By jlabD." + jlabD.LID;
             dt = conn.selectData(conn.conn, sql);
             return dt;
@@ -358,6 +380,105 @@ namespace clinic_ivf.objdb
                 re = dt.Rows[0]["ID"].ToString();
             }
             return re;
+        }
+        public OldJobLabDetail setJobLabDetail(DataTable dt)
+        {
+            OldJobLabDetail lbReq1 = new OldJobLabDetail();
+            if (dt.Rows.Count > 0)
+            {
+                lbReq1.ID = dt.Rows[0][jlabD.ID].ToString();
+                lbReq1.VN = dt.Rows[0][jlabD.VN].ToString();
+                lbReq1.LID = dt.Rows[0][jlabD.LID].ToString();
+                lbReq1.Extra = dt.Rows[0][jlabD.Extra].ToString();
+                lbReq1.Price = dt.Rows[0][jlabD.Price].ToString();
+                lbReq1.Status = dt.Rows[0][jlabD.Status].ToString();
+                lbReq1.PID = dt.Rows[0][jlabD.PID].ToString();
+                lbReq1.PIDS = dt.Rows[0][jlabD.PIDS].ToString();
+                lbReq1.LName = dt.Rows[0][jlabD.LName].ToString();
+                lbReq1.SP1V = dt.Rows[0][jlabD.SP1V].ToString();
+                lbReq1.SP2V = dt.Rows[0][jlabD.SP2V].ToString();
+                lbReq1.SP3V = dt.Rows[0][jlabD.SP3V].ToString();
+                lbReq1.SP4V = dt.Rows[0][jlabD.SP4V].ToString();
+                lbReq1.SP5V = dt.Rows[0][jlabD.SP5V].ToString();
+                lbReq1.SP6V = dt.Rows[0][jlabD.SP6V].ToString();
+                lbReq1.SP7V = dt.Rows[0][jlabD.SP7V].ToString();
+                lbReq1.SubItem = dt.Rows[0][jlabD.SubItem].ToString();
+                lbReq1.FileName = dt.Rows[0][jlabD.FileName].ToString();
+                lbReq1.Worker1 = dt.Rows[0][jlabD.Worker1].ToString();
+                lbReq1.Worker2 = dt.Rows[0][jlabD.Worker2].ToString();
+                lbReq1.Worker3 = dt.Rows[0][jlabD.Worker3].ToString();
+                lbReq1.Worker4 = dt.Rows[0][jlabD.Worker4].ToString();
+                lbReq1.LGID = dt.Rows[0][jlabD.LGID].ToString();
+                lbReq1.QTY = dt.Rows[0][jlabD.QTY].ToString();
+                lbReq1.row1 = dt.Rows[0][jlabD.row1].ToString();
+                lbReq1.status_show_qty = dt.Rows[0][jlabD.status_show_qty].ToString();
+                lbReq1.status_nurse = dt.Rows[0][jlabD.status_nurse].ToString();
+                lbReq1.status_cashier = dt.Rows[0][jlabD.status_cashier].ToString();
+                lbReq1.status_result = dt.Rows[0][jlabD.status_result].ToString();
+                lbReq1.result = dt.Rows[0][jlabD.result].ToString();
+                lbReq1.method = dt.Rows[0][jlabD.method].ToString();
+                lbReq1.unit = dt.Rows[0][jlabD.unit].ToString();
+                lbReq1.result_remark = dt.Rows[0][jlabD.result_remark].ToString();
+                lbReq1.normal_value = dt.Rows[0][jlabD.normal_value].ToString();
+                lbReq1.date_cancel = dt.Rows[0][jlabD.date_cancel].ToString();
+                lbReq1.date_create = dt.Rows[0][jlabD.date_create].ToString();
+                lbReq1.date_modi = dt.Rows[0][jlabD.date_modi].ToString();
+                lbReq1.user_cancel = dt.Rows[0][jlabD.user_cancel].ToString();
+                lbReq1.user_modi = dt.Rows[0][jlabD.user_modi].ToString();
+                lbReq1.status_amt = dt.Rows[0][jlabD.status_amt].ToString();
+                lbReq1.status_order_group = dt.Rows[0][jlabD.status_order_group].ToString();
+                lbReq1.lab_order_id = dt.Rows[0][jlabD.lab_order_id].ToString();
+                lbReq1.req_id = dt.Rows[0][jlabD.req_id].ToString();
+            }
+            else
+            {
+                lbReq1.ID = "";
+                lbReq1.VN = "N";
+                lbReq1.LID = "";
+                lbReq1.Extra = "";
+                lbReq1.Price = "";
+                lbReq1.Status = "";
+                lbReq1.PID = "";
+                lbReq1.PIDS = "";
+                lbReq1.LName = "";
+                lbReq1.SP1V = "";
+                lbReq1.SP2V = "";
+                lbReq1.SP3V = "";
+                lbReq1.SP4V = "";
+                lbReq1.SP5V = "";
+                lbReq1.SP6V = "";
+                lbReq1.SP7V = "";
+                lbReq1.SubItem = "";
+                lbReq1.FileName = "";
+                lbReq1.Worker1 = "";
+                lbReq1.Worker2 = "";
+                lbReq1.Worker3 = "";
+                lbReq1.Worker4 = "";
+                lbReq1.LGID = "";
+                lbReq1.QTY = "";
+                lbReq1.row1 = "";
+                lbReq1.status_show_qty = "";
+                lbReq1.status_nurse = "";
+                lbReq1.status_cashier = "";
+                lbReq1.status_result = "";
+                lbReq1.result = "";
+                lbReq1.method = "";
+                lbReq1.unit = "";
+                lbReq1.result_remark = "";
+                lbReq1.normal_value = "";
+                lbReq1.date_cancel = "";
+                lbReq1.date_create = "";
+                lbReq1.date_modi = "";
+                lbReq1.user_cancel = "";
+                lbReq1.user_create = "";
+                lbReq1.user_modi = "";
+                lbReq1.status_amt = "";
+                lbReq1.status_order_group = "";
+                lbReq1.lab_order_id = "";
+                lbReq1.req_id = "";
+            }
+
+            return lbReq1;
         }
     }
 }

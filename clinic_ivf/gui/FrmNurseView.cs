@@ -947,7 +947,7 @@ namespace clinic_ivf.gui
 
             //grfExpn.Rows.Count = dt.Rows.Count + 1;
             grfLab.Rows.Count = dt.Rows.Count + 1;
-            grfLab.Cols.Count = 9;
+            grfLab.Cols.Count = 10;
             //C1TextBox txt = new C1TextBox();
             //C1ComboBox cboproce = new C1ComboBox();
             //ic.ivfDB.itmDB.setCboItem(cboproce);
@@ -2050,7 +2050,10 @@ namespace clinic_ivf.gui
             {
                 if (lgid.Equals("1"))
                 {
-                    FrmLabBloodAdd frm = new FrmLabBloodAdd(ic, "");
+                    String resid = "";
+                    resid = ic.ivfDB.lbresDB.selectLabBloodByReqId(reqid);
+                    FrmLabBloodAdd frm = new FrmLabBloodAdd(ic, resid);
+                    frm.ShowDialog(this);
                 }
             }
             //pttId = grfLab[grfLab.Row, colPttId] != null ? grfLab[grfLab.Row, colPttId].ToString() : "";

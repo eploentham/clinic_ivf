@@ -1,4 +1,5 @@
-﻿using clinic_ivf.object1;
+﻿using C1.Win.C1Input;
+using clinic_ivf.object1;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -12,6 +13,7 @@ namespace clinic_ivf.objdb
     {
         public Visit vs;
         ConnectDB conn;
+        public List<Visit> lVs;
 
         public VisitDB(ConnectDB c)
         {
@@ -138,6 +140,8 @@ namespace clinic_ivf.objdb
 
             vs.table = "t_visit";
             vs.pkField = "t_visit_id";
+
+            lVs = new List<Visit>();
         }
         private void chkNull(Visit p)
         {
@@ -487,6 +491,57 @@ namespace clinic_ivf.objdb
 
             return dt;
         }
+        public void getlVisit(String pttid)
+        {
+            //lDept = new List<Position>();
+
+            lVs.Clear();
+            DataTable dt = new DataTable();
+            dt = selectByPttId(pttid);
+            foreach (DataRow row in dt.Rows)
+            {
+                Visit stf1 = new Visit();
+                stf1.t_visit_id = row[vs.t_visit_id].ToString();
+                stf1.visit_vn = row["VN"].ToString();
+                stf1.visit_record_date_time = row[vs.visit_record_date_time].ToString();
+                //stf1.staff_lname_t = row[stf.staff_lname_t].ToString();
+                //stf1.staff_fname_e = row[stf.staff_fname_e].ToString();
+                //stf1.staff_lname_e = row[stf.staff_lname_e].ToString();
+                //cus1.date_create = row[dept.date_create].ToString();
+                //cus1.date_modi = row[dept.date_modi].ToString();
+                //cus1.date_cancel = row[dept.date_cancel].ToString();
+                //cus1.user_create = row[dept.user_create].ToString();
+                //cus1.user_modi = row[dept.user_modi].ToString();
+                //cus1.user_cancel = row[dept.user_cancel].ToString();
+                //cus1.active = row[dept.active].ToString();
+                lVs.Add(stf1);
+            }
+        }
+        public void setCboVisit(C1ComboBox c, String selected, String pttid)
+        {
+            ComboBoxItem item = new ComboBoxItem();
+            //DataTable dt = selectWard();
+            int i = 0;
+            if (lVs.Count <= 0) getlVisit(pttid);
+            item = new ComboBoxItem();
+            item.Value = "";
+            item.Text = "";
+            c.Items.Add(item);
+            foreach (Visit cus1 in lVs)
+            {
+                item = new ComboBoxItem();
+                item.Value = cus1.t_visit_id;
+                item.Text = cus1.visit_vn ;
+                c.Items.Add(item);
+                if (item.Value.Equals(selected))
+                {
+                    //c.SelectedItem = item.Value;
+                    c.SelectedText = item.Text;
+                    c.SelectedIndex = i + 1;
+                }
+                i++;
+            }
+        }
         public String updateCloseDayId(String cldid)
         {
             String re = "", err = "";
@@ -828,7 +883,7 @@ namespace clinic_ivf.objdb
             //String date = System.DateTime.Now.Year + "-" + System.DateTime.Now.ToString("MM-dd");
             String sql = "select vs.t_visit_id,vs.visit_vn as VN, vs.visit_hn as PIDS, CONCAT(IFNULL(fpp.patient_prefix_description,''),' ', ptt.patient_firstname_e ,' ',ptt.patient_lastname_e)  as PName" +
                 ", vs.visit_begin_visit_time , vs.visit_financial_discharge_time , '' as VName, bsp.service_point_description, vs.visit_notice  " +
-                ", vs.t_patient_id , ptt.patient_birthday as dob, vs.bw, vs.bp, vs.pulse " +
+                ", vs.t_patient_id , ptt.patient_birthday as dob, vs.bw, vs.bp, vs.pulse, vs.visit_record_date_time " +
                 "From " + vs.table + " vs " +
                 "Left Join t_patient ptt on  ptt.t_patient_id = vs." + vs.t_patient_id + " " +
                 "Left join f_patient_prefix fpp on fpp.f_patient_prefix_id = ptt.f_patient_prefix_id " +

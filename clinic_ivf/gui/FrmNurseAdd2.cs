@@ -11,6 +11,8 @@ using clinic_ivf.control;
 using clinic_ivf.FlexGrid;
 using clinic_ivf.object1;
 using clinic_ivf.Properties;
+using CrystalDecisions.CrystalReports.Engine;
+using CrystalDecisions.Shared;
 using System;
 using System.Collections.Generic;
 using System.Collections.Specialized;
@@ -21,6 +23,7 @@ using System.Drawing.Printing;
 using System.IO;
 using System.Linq;
 using System.Net;
+using System.Net.Mail;
 using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading;
@@ -63,7 +66,7 @@ namespace clinic_ivf.gui
         int colRxdId = 1, colRxName = 2, colRxQty = 3, colRxPrice = 4, colRxInclude = 5, colRxRemark = 6, colRxUsE = 7, colRxUsT = 8, colRxId = 9, colRxItmId = 10;
         int colNoteId = 1, colNote = 2, colNoteStatusAll = 3;
         int colApmId = 1, colApmAppointment = 4, colApmDate = 2, colApmTime = 3, colApmDoctor = 5, colApmSp = 6, colApmNotice = 7, colE2 = 8, colLh = 9, colEndo = 10, colPrl = 10, colFsh = 11, colRt = 12, colLt = 13;
-        int colLabReqId = 1, collabName = 2, colLabStatus = 3;
+        int colLabReqId = 1, collabName = 2, colRsMethod = 3, colRsResult = 4, colRsInterpret = 5, colRsReactive = 6, colRsUnit = 7, colRsNormal = 8, colRsRemark = 9, colRsLabId = 10, colLabStatus = 11, colLabSend=12, colLabReqdate=13, colLabdatetiemreceive=14, colLabdatetimeresult=15, collabdatetimeapprove=16, collabjoblabid=17, collabjoblabreqid=18;
         int colHisVsId = 1, colHisVsDate = 2, colHisVsVn = 3;
         int colPgId = 1, colPgFilename = 2;
 
@@ -86,7 +89,7 @@ namespace clinic_ivf.gui
         string documentName, filePathNamePg;
         string documentPath;
         RichTextBoxStreamType documentFileType;
-        Boolean flagImg = false;
+        Boolean flagImg = false, pageLoad=false;
         [STAThread]
         private void richTextBox1SetText(String txt)
         {
@@ -110,6 +113,7 @@ namespace clinic_ivf.gui
         }
         private void initConfig()
         {
+            pageLoad = true;
             fEdit = new Font(ic.iniC.grdViewFontName, ic.grdViewFontSize, FontStyle.Regular);
             fEditB = new Font(ic.iniC.grdViewFontName, ic.grdViewFontSize, FontStyle.Bold);
 
@@ -160,6 +164,7 @@ namespace clinic_ivf.gui
             ic.ivfDB.eggsDB.setCboAddLab(cboEggStiAmh);
             ic.ivfDB.eggsDB.setCboTypingOther(cboEggStiOther);
             ic.ivfDB.eggsDB.setCboBhcgTest(cboEggStiBhcg);
+            
 
             txtApmDatepApm.Value = System.DateTime.Now.Year.ToString() + "-" + System.DateTime.Now.ToString("MM-dd");
 
@@ -211,6 +216,9 @@ namespace clinic_ivf.gui
             btnPrintPmh.Click += BtnPrintPmh_Click;
             c1Calendar1.Click += C1Calendar1_Click;
             rbPgPrint.Click += RbPgPrint_Click;
+            btnPrintHormone.Click += BtnPrintHormone_Click;
+            btnPrintInfectious.Click += BtnPrintInfectious_Click;
+            
 
             chkPmhMarried.CheckedChanged += ChkPmhMarried_CheckedChanged;
             chkPmhConOther.CheckedChanged += ChkPmhConOther_CheckedChanged;
@@ -235,6 +243,8 @@ namespace clinic_ivf.gui
             btnEggsNew.Click += BtnEggsNew_Click;
             tC.SelectedIndexChanged += TC_SelectedIndexChanged;
             tCHistory.DoubleClick += TCHistory_DoubleClick;
+            
+            cboLabVs.SelectedIndexChanged += CboLabVs_SelectedIndexChanged;
 
             setControl(vn);
             ChkDenyAllergy_CheckedChanged(null, null);
@@ -303,6 +313,7 @@ namespace clinic_ivf.gui
             setGrfImgOutLab();
             initGrfLab();
             setGrfLab();
+            
             if (flagedit.Equals("view"))
             {
                 btnPkgOrder.Enabled = false;
@@ -311,8 +322,85 @@ namespace clinic_ivf.gui
             //initGrfPtt();
             //setGrfPtt("");
             initProgressNote();
+            pageLoad = false;
+        }
+        private void BtnPrintInfectious_Click(object sender, EventArgs e)
+        {
+            //throw new NotImplementedException();
+            
+            FrmReport frm = new FrmReport(ic);
+            DataTable dt = new DataTable();
+            dt = ic.ivfDB.lbresDB.selectLabBloodByVsIdInfectious(txtVsId.Text);
+
+            String date1 = "", collectdate = "", receivedate = "", reportdate = "", approvedate = "", stfreport = "", stfapprove = "";
+            foreach (DataRow row in dt.Rows)
+            {
+                collectdate = row[ic.ivfDB.lbresDB.lbRes.req_date_time].ToString();
+                receivedate = row[ic.ivfDB.lbresDB.lbRes.date_time_receive].ToString();
+                reportdate = row[ic.ivfDB.lbresDB.lbRes.date_time_result].ToString();
+                approvedate = row[ic.ivfDB.lbresDB.lbRes.date_time_approve].ToString();
+                stfapprove = row[ic.ivfDB.lbresDB.lbRes.staff_id_approve].ToString();
+                stfreport = row[ic.ivfDB.lbresDB.lbRes.staff_id_result].ToString();
+            }
+            reportdate = ic.datetimetoShow(reportdate);
+            approvedate = ic.datetimetoShow(approvedate);
+            stfapprove = ic.ivfDB.stfDB.getIdByName(stfapprove);
+            stfreport = ic.ivfDB.stfDB.getIdByName(stfreport);
+            frm.setLabBloodReportInfectious(dt, txtHn.Text, txtPttNameE.Text, txtDob.Text, txtSex.Text, stfreport, stfapprove, reportdate, approvedate, collectdate, receivedate);
+            frm.ShowDialog(this);
         }
 
+        private void BtnPrintHormone_Click(object sender, EventArgs e)
+        {
+            //throw new NotImplementedException();
+            String date1 = "", reportdate="", approvedate="";
+            FrmReport frm = new FrmReport(ic);
+            DataTable dt = new DataTable();
+            dt = ic.ivfDB.lbresDB.selectLabBloodByVsIdHormone(txtVsId.Text);
+            String amh = "", collectdate = "", receivedate = "", stfreport="", stfapprove="";
+            foreach (DataRow row in dt.Rows)
+            {
+                collectdate = row[ic.ivfDB.lbresDB.lbRes.req_date_time].ToString();
+                receivedate = row[ic.ivfDB.lbresDB.lbRes.date_time_receive].ToString();
+                reportdate = row[ic.ivfDB.lbresDB.lbRes.date_time_result].ToString();
+                approvedate = row[ic.ivfDB.lbresDB.lbRes.date_time_approve].ToString();
+                stfapprove = row[ic.ivfDB.lbresDB.lbRes.staff_id_approve].ToString();
+                stfreport = row[ic.ivfDB.lbresDB.lbRes.staff_id_result].ToString();
+                if (row["LID"].ToString().Equals("10"))
+                {
+                    amh = "1";
+                }
+                else
+                {
+                    amh = "0";
+                }
+            }
+            reportdate = ic.datetimetoShow(reportdate);
+            approvedate = ic.datetimetoShow(approvedate);
+            stfapprove = ic.ivfDB.stfDB.getIdByName(stfapprove);
+            stfreport = ic.ivfDB.stfDB.getIdByName(stfreport);
+            //LabResult lbRes = new LabResult();
+            //lbRes = ic.ivfDB.lbresDB.selectBy(resId);
+            if (ptt.f_sex_id.Equals("2") && (!ptt.patient_hn_1.Equals("") && !ptt.patient_hn_2.Equals("")))     // เป็น female และ เป็น donor  ไม่ต้องพิมพ์ หัว บริษัท
+            {
+
+                frm.setLabBloodReportHormone(dt, txtHn.Text, txtPttNameE.Text, txtDob.Text, txtSex.Text, stfreport, stfapprove, reportdate, approvedate, "", amh, collectdate, receivedate);
+            }
+            else
+            {
+                frm.setLabBloodReportHormone(dt, txtHn.Text, txtPttNameE.Text, txtDob.Text, txtSex.Text, stfreport, stfapprove, reportdate, approvedate, "", amh, collectdate, receivedate);
+            }
+
+            frm.ShowDialog(this);
+        }
+
+        private void CboLabVs_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            //throw new NotImplementedException();
+            setGrfLab();
+        }
+                
+        
         private void RbPgPrint_Click(object sender, EventArgs e)
         {
             //throw new NotImplementedException();
@@ -399,6 +487,10 @@ namespace clinic_ivf.gui
             if(tC.SelectedTab== tabHistory)
             {
                 tCHistory.SelectedTab = tabHistoryDrug;
+            }
+            else if (tC.SelectedTab == tabLab)
+            {
+                setGrfLab();
             }
         }
 
@@ -770,15 +862,15 @@ namespace clinic_ivf.gui
 
             //grfExpnC.CellButtonClick += new C1.Win.C1FlexGrid.RowColEventHandler(this.grfDept_CellButtonClick);
             //grfExpnC.CellChanged += new C1.Win.C1FlexGrid.RowColEventHandler(this.grfDept_CellChanged);
-            ContextMenu menuGw = new ContextMenu();
-            if (flagedit.Equals("edit"))
-            {
-                menuGw.MenuItems.Add("สั่งการ", new EventHandler(ContextMenu_order_rx));
-            }
-            //menuGw.MenuItems.Add("&แก้ไข", new EventHandler(ContextMenu_Gw_Edit));
-            //menuGw.MenuItems.Add("&ยกเลิก", new EventHandler(ContextMenu_Gw_Cancel));
-            grfLab.ContextMenu = menuGw;
-            pnLab.Controls.Add(grfLab);
+            //ContextMenu menuGw = new ContextMenu();
+            //if (flagedit.Equals("edit"))
+            //{
+            //    menuGw.MenuItems.Add("สั่งการ", new EventHandler(ContextMenu_order_rx));
+            //}
+            ////menuGw.MenuItems.Add("&แก้ไข", new EventHandler(ContextMenu_Gw_Edit));
+            ////menuGw.MenuItems.Add("&ยกเลิก", new EventHandler(ContextMenu_Gw_Cancel));
+            //grfLab.ContextMenu = menuGw;
+            pnLabVs.Controls.Add(grfLab);
 
             theme1.SetTheme(grfLab, "Office2010Black");
 
@@ -787,17 +879,64 @@ namespace clinic_ivf.gui
         private void GrfLab_DoubleClick(object sender, EventArgs e)
         {
             //throw new NotImplementedException();
-
+            if(grfLab.Col == colRsLabId)
+            {
+                if(grfLab[grfLab.Row, colRsLabId].ToString().Equals("ส่ง request"))
+                {
+                    stt.Show("<p><b>ส่ง request</b></p> <br>"+ grfLab[grfLab.Row, collabName].ToString(), txtName_2, 10,20,5);//<p><b>สวัสดี</b></p>
+                    //System.Threading.Thread.Sleep(1000);
+                    //Application.DoEvents();
+                    String dtrid = "", errfor = "", lgid = "", reqid = "", itmid = "", jlabid="";
+                    LabRequest lbReq = new LabRequest();
+                    dtrid = cboDoctor.SelectedItem == null ? "" : ((ComboBoxItem)cboDoctor.SelectedItem).Value;
+                    jlabid = grfLab[grfLab.Row, collabjoblabid] != null ? grfLab[grfLab.Row, collabjoblabid].ToString() : "";
+                    OldJobLabDetail oldjobd = new OldJobLabDetail();
+                    oldjobd = ic.ivfDB.oJlabdDB.selectByPk1(jlabid);
+                    if (ptt.f_sex_id.Equals("1"))
+                    {
+                        lbReq = ic.ivfDB.setLabRequest("", txtVnOld.Text, dtrid, "", "", ic.datetoDB(txtDob.Text), oldjobd.ID, oldjobd.LID, txtHn.Text, txtPttNameE.Text, "", "", "", txtVsId.Text);
+                    }
+                    else if (ptt.f_sex_id.Equals("2"))
+                    {
+                        lbReq = ic.ivfDB.setLabRequest(txtPttNameE.Text, txtVnOld.Text, dtrid, "", txtHn.Text, ic.datetoDB(txtDob.Text), oldjobd.ID, oldjobd.LID, "", "", "", "", "", txtVsId.Text);
+                    }
+                    long chk = 0;
+                    String re = ic.ivfDB.lbReqDB.insertLabRequest(lbReq, ic.userId);
+                    if(long.TryParse(re, out chk))
+                    {
+                        String re1 = ic.ivfDB.oJlabdDB.updateReqId(re, oldjobd.ID);
+                        if (long.TryParse(re1, out chk))
+                        {
+                            setGrfLab();
+                        }
+                    }
+                }
+            }
         }
         private void setGrfLab()
         {
+            //grfLab.Rows.Count = 1;
+            if(grfLab !=null) grfLab.Rows.Count = 0;
+            if (pageLoad) return;
             grfLab.Clear();
             grfLab.DataSource = null;
             grfLab.Rows.Count = 1;
-            grfLab.Cols.Count = 4;
+            grfLab.Cols.Count = 19;
 
-            grfLab.Cols[collabName].Width = 250;
+            grfLab.Cols[collabName].Width = 200;
             grfLab.Cols[colLabStatus].Width = 80;
+            
+            grfLab.Cols[colRsMethod].Width = 100;
+            grfLab.Cols[colRsResult].Width = 100;
+            grfLab.Cols[colRsInterpret].Width = 150;
+            grfLab.Cols[colRsUnit].Width = 100;
+            grfLab.Cols[colRsNormal].Width = 100;
+            grfLab.Cols[colRsRemark].Width = 200;
+            grfLab.Cols[colRsReactive].Width = 150;
+            grfLab.Cols[colLabReqdate].Width = 150;
+            grfLab.Cols[colLabdatetiemreceive].Width = 150;
+            grfLab.Cols[colLabdatetimeresult].Width = 150;
+            grfLab.Cols[collabdatetimeapprove].Width = 150;
 
             grfLab.ShowCursor = true;
             //grdFlex.Cols[colID].Caption = "no";
@@ -805,15 +944,48 @@ namespace clinic_ivf.gui
 
             grfLab.Cols[collabName].Caption = "Lab Name";
             grfLab.Cols[colLabStatus].Caption = "Status";
+            grfLab.Cols[colRsMethod].Caption = "Method";
+            grfLab.Cols[colRsResult].Caption = "Result";
+            grfLab.Cols[colRsInterpret].Caption = "Interpret";
+            grfLab.Cols[colRsUnit].Caption = "Unit";
+            grfLab.Cols[colRsNormal].Caption = "Normal";
+            grfLab.Cols[colRsRemark].Caption = "Remark";
+            grfLab.Cols[colRsReactive].Caption = "Reactive";
+            grfLab.Cols[colLabReqdate].Caption = "request date";
+            grfLab.Cols[colLabdatetiemreceive].Caption = "receive date";
+            grfLab.Cols[colLabdatetimeresult].Caption = "result date";
+            grfLab.Cols[collabdatetimeapprove].Caption = "approve date";
+            grfLab.Cols[colRsLabId].Caption = "result id";
 
             Color color = ColorTranslator.FromHtml(ic.iniC.grfRowColor);
+            Color colorred = ColorTranslator.FromHtml(ic.iniC.grfRowRed);
             //CellRange rg1 = grfBank.GetCellRange(1, colE, grfBank.Rows.Count, colE);
             //rg1.Style = grfBank.Styles["date"];
             //grfCu.Cols[colID].Visible = false;
-            
+            DataTable dtlab = new DataTable();
+            if (cboLabVs.Text.Equals(txtVn.Text))
+            {
+                dtlab = ic.ivfDB.oJlabdDB.selectByVNnoReq(cboLabVs.Text);
+            }
+            else
+            {
+                   
+            }
+
             DataTable dt = new DataTable();
-            dt = ic.ivfDB.lbReqDB.selectByNurse(txtPttId.Text);
+            dt = ic.ivfDB.lbReqDB.selectByNurseVn(cboLabVs.Text);
             int i = 0;
+            foreach(DataRow row in dtlab.Rows)
+            {
+                i++;
+                Row row1 = grfLab.Rows.Add();
+                row1[colLabReqId] = "";
+                row1[colRsLabId] = "ส่ง request";
+                row1[collabName] = row["LName"].ToString();
+                row1[collabjoblabid] = row["ID"];
+                row1[collabjoblabreqid] = row["req_id"];
+                row1.StyleNew.BackColor = colorred;
+            }
             foreach (DataRow row in dt.Rows)
             {
                 i++;
@@ -821,13 +993,45 @@ namespace clinic_ivf.gui
                 row1[colLabReqId] = row[ic.ivfDB.lbReqDB.lbReq.req_id].ToString();
                 row1[collabName] = row["LName"].ToString();
                 row1[colLabStatus] = row[ic.ivfDB.lbReqDB.lbReq.status_req].ToString();
-                //row1[colImgStatus] = row[ic.ivfDB.pttImgDB.pttI.status_image].ToString();
+                row1[colRsMethod] = ic.ivfDB.lbmDB.getNameById(row[ic.ivfDB.oLabiDB.labI.method_id].ToString());
+                row1[colRsRemark] = row[ic.ivfDB.lbresDB.lbRes.remark].ToString();
+                row1[colRsResult] = row[ic.ivfDB.lbresDB.lbRes.result].ToString();
+                row1[colRsInterpret] = row[ic.ivfDB.lbresDB.lbRes.interpret].ToString();
+                row1[colRsUnit] = ic.ivfDB.lbuDB.getNameById(row[ic.ivfDB.oLabiDB.labI.lab_unit_id].ToString());
+                row1[colRsReactive] = row[ic.ivfDB.lbresDB.lbRes.reactive_message].ToString();
+                row1[colLabReqdate] = ic.datetoShow(row[ic.ivfDB.lbReqDB.lbReq.req_date].ToString()) + " " + ic.timetoShow(row[ic.ivfDB.lbReqDB.lbReq.req_time].ToString());
+                row1[colLabdatetiemreceive] = ic.datetimetoShow(row[ic.ivfDB.lbresDB.lbRes.date_time_receive].ToString());
+                row1[colLabdatetimeresult] = ic.datetimetoShow(row[ic.ivfDB.lbresDB.lbRes.date_time_result].ToString());
+                row1[collabdatetimeapprove] = ic.datetimetoShow(row[ic.ivfDB.lbresDB.lbRes.date_time_approve].ToString());
+                if (row[ic.ivfDB.lbReqDB.lbReq.status_req].ToString().Equals("1"))
+                {
+                    row1[colRsLabId] = "รอ result";
+                    //grfLab.Rows[i].StyleNew.BackColor = color;
+                    row1.StyleNew.BackColor = color;
+                }
+                else
+                {
+                    row1[colRsLabId] = row[ic.ivfDB.lbresDB.lbRes.result_id].ToString();
+                }
                 grfLab[i, 0] = i;
                 
             }
-            grfLab.Cols[colLabReqId].Visible = false;            
-            
-            grfImgOutLab.Cols[colLabStatus].AllowEditing = false;
+            grfLab.Cols[colLabReqId].Visible = false;
+            grfLab.Cols[collabjoblabid].Visible = false;
+            grfLab.Cols[collabjoblabreqid].Visible = false;
+
+            grfLab.Cols[colRsLabId].AllowEditing = false;
+            grfLab.Cols[collabdatetimeapprove].AllowEditing = false;
+            grfLab.Cols[colLabdatetimeresult].AllowEditing = false;
+            grfLab.Cols[colLabdatetiemreceive].AllowEditing = false;
+            grfLab.Cols[colLabReqdate].AllowEditing = false;
+            grfLab.Cols[colRsReactive].AllowEditing = false;
+            grfLab.Cols[colRsUnit].AllowEditing = false;
+            grfLab.Cols[colRsInterpret].AllowEditing = false;
+            grfLab.Cols[colRsResult].AllowEditing = false;
+            grfLab.Cols[colRsRemark].AllowEditing = false;
+            grfLab.Cols[colRsMethod].AllowEditing = false;
+            grfLab.Cols[colLabStatus].AllowEditing = false;
             grfLab.Cols[collabName].AllowEditing = false;
             //grfImg.AutoSizeCols();
             grfLab.AutoSizeRows();
@@ -3948,6 +4152,8 @@ namespace clinic_ivf.gui
             ic.ivfDB.eggsDB.setCboPatient(cboEggStiId, txtPttId.Text);
             txtAgent.Value = ic.ivfDB.oAgnDB.getList(ptt.agent);
             txtLmp.Value = ptt.lmp;
+            ic.ivfDB.vsDB.setCboVisit(cboLabVs, txtVsId.Text, txtPttId.Text);
+
             Patient ptt2 = new Patient();
             ptt2 = ic.ivfDB.pttDB.selectByHn(ptt.patient_hn_2);
             txtName_2.Value = ptt2.Name;
@@ -6472,6 +6678,7 @@ namespace clinic_ivf.gui
             tCApm1.SelectedTab = tabApmPtt;
             tabOrder.SelectedTab = tabPackage;
             tcPackage.SelectedTab = tabPkgOrder;
+            tcOrd.SelectedTab = tabOrd;
             //sB1.Text = "Date " + ic.cop.day + "-" + ic.cop.month + "-" + ic.cop.year + " Server " + ic.iniC.hostDB + " FTP " + ic.iniC.hostFTP;
             sB1.Text = "Date " + ic.cop.day + "-" + ic.cop.month + "-" + ic.cop.year + " Server " + ic.iniC.hostDB + " FTP " + ic.iniC.hostFTP + "/" + ic.iniC.folderFTP;
         }

@@ -155,7 +155,13 @@
             this.tabPkg = new C1.Win.C1Command.C1DockingTabPage();
             this.pnPkg = new System.Windows.Forms.Panel();
             this.tabLab = new C1.Win.C1Command.C1DockingTabPage();
+            this.pnLabVs = new System.Windows.Forms.Panel();
             this.pnLab = new System.Windows.Forms.Panel();
+            this.c1Button2 = new C1.Win.C1Input.C1Button();
+            this.btnPrintInfectious = new C1.Win.C1Input.C1Button();
+            this.btnPrintHormone = new C1.Win.C1Input.C1Button();
+            this.cboLabVs = new C1.Win.C1Input.C1ComboBox();
+            this.label97 = new System.Windows.Forms.Label();
             this.tabApp = new C1.Win.C1Command.C1DockingTabPage();
             this.pnAdm1 = new System.Windows.Forms.Panel();
             this.sCApmAdd = new C1.Win.C1SplitContainer.C1SplitContainer();
@@ -810,6 +816,11 @@
             this.tabOrd.SuspendLayout();
             this.tabPkg.SuspendLayout();
             this.tabLab.SuspendLayout();
+            this.pnLab.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.c1Button2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnPrintInfectious)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnPrintHormone)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cboLabVs)).BeginInit();
             this.tabApp.SuspendLayout();
             this.pnAdm1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.sCApmAdd)).BeginInit();
@@ -2891,6 +2902,7 @@
             // 
             // tabLab
             // 
+            this.tabLab.Controls.Add(this.pnLabVs);
             this.tabLab.Controls.Add(this.pnLab);
             this.tabLab.Location = new System.Drawing.Point(1, 24);
             this.tabLab.Name = "tabLab";
@@ -2899,16 +2911,108 @@
             this.tabLab.Text = "Order LAB";
             this.tabLab.Click += new System.EventHandler(this.TabLab_Click);
             // 
+            // pnLabVs
+            // 
+            this.pnLabVs.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.pnLabVs.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pnLabVs.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.pnLabVs.Location = new System.Drawing.Point(0, 62);
+            this.pnLabVs.Name = "pnLabVs";
+            this.pnLabVs.Size = new System.Drawing.Size(1585, 603);
+            this.pnLabVs.TabIndex = 0;
+            this.theme1.SetTheme(this.pnLabVs, "(default)");
+            // 
             // pnLab
             // 
             this.pnLab.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.pnLab.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pnLab.Controls.Add(this.c1Button2);
+            this.pnLab.Controls.Add(this.btnPrintInfectious);
+            this.pnLab.Controls.Add(this.btnPrintHormone);
+            this.pnLab.Controls.Add(this.cboLabVs);
+            this.pnLab.Controls.Add(this.label97);
+            this.pnLab.Dock = System.Windows.Forms.DockStyle.Top;
             this.pnLab.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
             this.pnLab.Location = new System.Drawing.Point(0, 0);
             this.pnLab.Name = "pnLab";
-            this.pnLab.Size = new System.Drawing.Size(1585, 665);
+            this.pnLab.Size = new System.Drawing.Size(1585, 62);
             this.pnLab.TabIndex = 0;
             this.theme1.SetTheme(this.pnLab, "(default)");
+            // 
+            // c1Button2
+            // 
+            this.c1Button2.Image = ((System.Drawing.Image)(resources.GetObject("c1Button2.Image")));
+            this.c1Button2.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.c1Button2.Location = new System.Drawing.Point(583, 14);
+            this.c1Button2.Name = "c1Button2";
+            this.c1Button2.Size = new System.Drawing.Size(88, 34);
+            this.c1Button2.TabIndex = 978;
+            this.c1Button2.Text = "Print  All";
+            this.c1Button2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.theme1.SetTheme(this.c1Button2, "(default)");
+            this.c1Button2.UseVisualStyleBackColor = true;
+            this.c1Button2.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            // 
+            // btnPrintInfectious
+            // 
+            this.btnPrintInfectious.Image = ((System.Drawing.Image)(resources.GetObject("btnPrintInfectious.Image")));
+            this.btnPrintInfectious.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnPrintInfectious.Location = new System.Drawing.Point(455, 14);
+            this.btnPrintInfectious.Name = "btnPrintInfectious";
+            this.btnPrintInfectious.Size = new System.Drawing.Size(122, 34);
+            this.btnPrintInfectious.TabIndex = 977;
+            this.btnPrintInfectious.Text = "Print  Infectious";
+            this.btnPrintInfectious.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.theme1.SetTheme(this.btnPrintInfectious, "(default)");
+            this.btnPrintInfectious.UseVisualStyleBackColor = true;
+            this.btnPrintInfectious.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            // 
+            // btnPrintHormone
+            // 
+            this.btnPrintHormone.Image = global::clinic_ivf.Properties.Resources.print;
+            this.btnPrintHormone.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnPrintHormone.Location = new System.Drawing.Point(328, 14);
+            this.btnPrintHormone.Name = "btnPrintHormone";
+            this.btnPrintHormone.Size = new System.Drawing.Size(121, 34);
+            this.btnPrintHormone.TabIndex = 976;
+            this.btnPrintHormone.Text = "Print  Hormone";
+            this.btnPrintHormone.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.theme1.SetTheme(this.btnPrintHormone, "(default)");
+            this.btnPrintHormone.UseVisualStyleBackColor = true;
+            this.btnPrintHormone.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            // 
+            // cboLabVs
+            // 
+            this.cboLabVs.AllowSpinLoop = false;
+            this.cboLabVs.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.cboLabVs.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
+            this.cboLabVs.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.cboLabVs.GapHeight = 0;
+            this.cboLabVs.ImagePadding = new System.Windows.Forms.Padding(0);
+            this.cboLabVs.ItemsDisplayMember = "";
+            this.cboLabVs.ItemsValueMember = "";
+            this.cboLabVs.Location = new System.Drawing.Point(69, 21);
+            this.cboLabVs.Name = "cboLabVs";
+            this.cboLabVs.Size = new System.Drawing.Size(253, 20);
+            this.cboLabVs.Style.DropDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.cboLabVs.Style.DropDownBorderColor = System.Drawing.Color.Gainsboro;
+            this.cboLabVs.Style.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.cboLabVs.TabIndex = 923;
+            this.cboLabVs.Tag = null;
+            this.theme1.SetTheme(this.cboLabVs, "(default)");
+            this.cboLabVs.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            // 
+            // label97
+            // 
+            this.label97.AutoSize = true;
+            this.label97.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.label97.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label97.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.label97.Location = new System.Drawing.Point(8, 23);
+            this.label97.Name = "label97";
+            this.label97.Size = new System.Drawing.Size(53, 16);
+            this.label97.TabIndex = 922;
+            this.label97.Text = "Visit id :";
+            this.theme1.SetTheme(this.label97, "(default)");
             // 
             // tabApp
             // 
@@ -11325,6 +11429,12 @@
             this.tabOrd.ResumeLayout(false);
             this.tabPkg.ResumeLayout(false);
             this.tabLab.ResumeLayout(false);
+            this.pnLab.ResumeLayout(false);
+            this.pnLab.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.c1Button2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnPrintInfectious)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnPrintHormone)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cboLabVs)).EndInit();
             this.tabApp.ResumeLayout(false);
             this.pnAdm1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.sCApmAdd)).EndInit();
@@ -12436,5 +12546,11 @@
         private C1.Win.C1Input.C1CheckBox chkApmSpermFreezing;
         private C1.Win.C1Input.C1CheckBox chkApmSpermOPU;
         private C1.Win.C1Input.C1CheckBox chkApmSpermSA;
+        private System.Windows.Forms.Panel pnLabVs;
+        private C1.Win.C1Input.C1ComboBox cboLabVs;
+        private System.Windows.Forms.Label label97;
+        private C1.Win.C1Input.C1Button c1Button2;
+        private C1.Win.C1Input.C1Button btnPrintInfectious;
+        private C1.Win.C1Input.C1Button btnPrintHormone;
     }
 }

@@ -43,6 +43,7 @@ namespace clinic_ivf.gui
         public String StatusSperm = "";
         SmtpClient SmtpServer;
         List<LinkedResource> theEmailImage1 = new List<LinkedResource>();
+        Boolean flagView = false;
         public FrmLabBloodAdd(IvfControl ic, String resid)
         {
             InitializeComponent();
@@ -363,14 +364,14 @@ namespace clinic_ivf.gui
             txtEmailTo.Value = ic.iniC.email_to_sperm_freezing;
             txtEmailSubject.Value = "Result LAB Blood HN " + txtHn.Text + " Name " + txtPttNameE.Text + "Sex "+txtSex.Text+ " [VN " + txtVnShow.Text + "]";
 
-            setGrfProc();
-
             if (ic.user.dept_id.Equals("1090000005"))
             {
                 setControlView(true);
+                flagView = false;
             }
             else
             {
+                flagView = true;
                 if (ic.user.status_admin.Equals("2"))
                 {
                     setControlView(true);
@@ -380,6 +381,8 @@ namespace clinic_ivf.gui
                     setControlView(false);
                 }
             }
+            setGrfProc();
+            
         }
         private void setControlView(Boolean flag)
         {
@@ -622,6 +625,13 @@ namespace clinic_ivf.gui
             grfProc.Cols[colRsEdit].AllowEditing = false;
             grfProc.Cols[colRsNormal].AllowEditing = false;
             grfProc.Cols[colRsRemark].AllowEditing = true;
+
+            grfProc.Cols[colRsRemark].AllowEditing = !flagView;
+            grfProc.Cols[colRsResult].AllowEditing = !flagView;
+            grfProc.Cols[colRsInterpret].AllowEditing = !flagView;
+            grfProc.Cols[colRsReactive].AllowEditing = !flagView;
+            grfProc.Cols[colRsUnit].AllowEditing = !flagView;
+            grfProc.Cols[colRsMethod].AllowEditing = !flagView;
             //theme1.SetTheme(grfFinish, ic.theme);
 
         }
