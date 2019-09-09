@@ -68,7 +68,7 @@
             this.panel5 = new System.Windows.Forms.Panel();
             this.lbEmail = new System.Windows.Forms.Label();
             this.btnSendEmail = new C1.Win.C1Input.C1Button();
-            this.c1Button2 = new C1.Win.C1Input.C1Button();
+            this.btnAgentEmail = new C1.Win.C1Input.C1Button();
             this.label212 = new System.Windows.Forms.Label();
             this.txtEmailSubject = new C1.Win.C1Input.C1TextBox();
             this.label213 = new System.Windows.Forms.Label();
@@ -158,7 +158,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtEmailBody)).BeginInit();
             this.panel5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btnSendEmail)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.c1Button2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnAgentEmail)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtEmailSubject)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtEmailTo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.c1Ribbon1)).BeginInit();
@@ -717,7 +717,7 @@
             this.panel5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
             this.panel5.Controls.Add(this.lbEmail);
             this.panel5.Controls.Add(this.btnSendEmail);
-            this.panel5.Controls.Add(this.c1Button2);
+            this.panel5.Controls.Add(this.btnAgentEmail);
             this.panel5.Controls.Add(this.label212);
             this.panel5.Controls.Add(this.txtEmailSubject);
             this.panel5.Controls.Add(this.label213);
@@ -757,16 +757,16 @@
             this.btnSendEmail.UseVisualStyleBackColor = true;
             this.btnSendEmail.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
             // 
-            // c1Button2
+            // btnAgentEmail
             // 
-            this.c1Button2.Location = new System.Drawing.Point(250, 8);
-            this.c1Button2.Name = "c1Button2";
-            this.c1Button2.Size = new System.Drawing.Size(28, 23);
-            this.c1Button2.TabIndex = 541;
-            this.c1Button2.Text = "...";
-            this.theme1.SetTheme(this.c1Button2, "(default)");
-            this.c1Button2.UseVisualStyleBackColor = true;
-            this.c1Button2.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            this.btnAgentEmail.Location = new System.Drawing.Point(250, 8);
+            this.btnAgentEmail.Name = "btnAgentEmail";
+            this.btnAgentEmail.Size = new System.Drawing.Size(28, 23);
+            this.btnAgentEmail.TabIndex = 541;
+            this.btnAgentEmail.Text = "...";
+            this.theme1.SetTheme(this.btnAgentEmail, "(default)");
+            this.btnAgentEmail.UseVisualStyleBackColor = true;
+            this.btnAgentEmail.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
             // 
             // label212
             // 
@@ -788,7 +788,7 @@
             this.txtEmailSubject.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
             this.txtEmailSubject.Location = new System.Drawing.Point(78, 42);
             this.txtEmailSubject.Name = "txtEmailSubject";
-            this.txtEmailSubject.Size = new System.Drawing.Size(479, 20);
+            this.txtEmailSubject.Size = new System.Drawing.Size(620, 20);
             this.txtEmailSubject.TabIndex = 516;
             this.txtEmailSubject.Tag = null;
             this.theme1.SetTheme(this.txtEmailSubject, "(default)");
@@ -1269,7 +1269,7 @@
             this.panel5.ResumeLayout(false);
             this.panel5.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btnSendEmail)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.c1Button2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnAgentEmail)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtEmailSubject)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtEmailTo)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.c1Ribbon1)).EndInit();
@@ -1370,7 +1370,7 @@
         private C1.Win.C1Ribbon.RibbonTopToolBar ribbonTopToolBar1;
         private System.Windows.Forms.Panel panel5;
         private C1.Win.C1Input.C1Button btnSendEmail;
-        private C1.Win.C1Input.C1Button c1Button2;
+        private C1.Win.C1Input.C1Button btnAgentEmail;
         private System.Windows.Forms.Label label212;
         private C1.Win.C1Input.C1TextBox txtEmailSubject;
         private System.Windows.Forms.Label label213;

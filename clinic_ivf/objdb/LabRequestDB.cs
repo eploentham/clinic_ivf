@@ -459,6 +459,18 @@ namespace clinic_ivf.objdb
             re = conn.ExecuteNonQuery(conn.conn, sql);
             return re;
         }
+        public String VoidRequest(String reqId, String userId)
+        {
+            DataTable dt = new DataTable();
+            String re = "";
+            String sql = "Update " + lbReq.table + " Set " +
+                "" + lbReq.active + "='3' " +
+                "," + lbReq.date_cancel + "= now() " +
+                "," + lbReq.user_cancel + "='" + userId + "' " +
+                "Where " + lbReq.pkField + "='" + reqId + "'";
+            re = conn.ExecuteNonQuery(conn.conn, sql);
+            return re;
+        }
         public String insert(LabRequest p, String userId)
         {
             String re = "";

@@ -38,6 +38,7 @@ namespace clinic_ivf.objdb
             oAgn.remark = "remark";
             oAgn.sort1 = "sort1";
             oAgn.agent_code = "agent_code";
+            oAgn.agent_email = "agent_email";
 
             oAgn.pkField = "AgentID";
             oAgn.table = "Agent";
@@ -97,7 +98,7 @@ namespace clinic_ivf.objdb
                 OldAgent itm1 = new OldAgent();
                 itm1.agentid = row[oAgn.agentid].ToString();
                 itm1.agentname = row[oAgn.agentname].ToString();
-
+                itm1.agent_email = row[oAgn.agent_email].ToString();
                 loAgn.Add(itm1);
             }
         }
@@ -135,6 +136,7 @@ namespace clinic_ivf.objdb
                 "," + oAgn.active + " = '1'" +
                 "," + oAgn.date_create + " = now()" +
                 "," + oAgn.user_create + " = '" + userId.Replace("'", "''") + "'" +
+                "," + oAgn.agent_email + " = '" + p.agent_email.Replace("'", "''") + "'" +
                 " ";
             try
             {
@@ -161,6 +163,7 @@ namespace clinic_ivf.objdb
                 "," + oAgn.agent_code + " = '" + p.agent_code.Replace("'", "''") + "'" +
                 "," + oAgn.date_modi + " = now()" +
                 "," + oAgn.user_modi + " = '" + userId.Replace("'", "''") + "'" +
+                "," + oAgn.agent_email + " = '" + p.agent_email.Replace("'", "''") + "'" +
                 "Where " + oAgn.pkField + "='" + p.agentid + "'"
                 ;
 
@@ -281,6 +284,7 @@ namespace clinic_ivf.objdb
                 dept1.agentname = dt.Rows[0][oAgn.agentname].ToString();
                 dept1.agent_code = dt.Rows[0][oAgn.agent_code].ToString();
                 dept1.remark = dt.Rows[0][oAgn.remark].ToString();
+                dept1.agent_email = dt.Rows[0][oAgn.agent_email].ToString();
             }
             else
             {
@@ -288,6 +292,7 @@ namespace clinic_ivf.objdb
                 dept1.agentname = "";
                 dept1.remark = "";
                 dept1.agent_code = "";
+                dept1.agent_email = "";
             }
 
             return dept1;

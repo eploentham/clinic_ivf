@@ -66,7 +66,7 @@ namespace clinic_ivf.gui
         int colRxdId = 1, colRxName = 2, colRxQty = 3, colRxPrice = 4, colRxInclude = 5, colRxRemark = 6, colRxUsE = 7, colRxUsT = 8, colRxId = 9, colRxItmId = 10;
         int colNoteId = 1, colNote = 2, colNoteStatusAll = 3;
         int colApmId = 1, colApmAppointment = 4, colApmDate = 2, colApmTime = 3, colApmDoctor = 5, colApmSp = 6, colApmNotice = 7, colE2 = 8, colLh = 9, colEndo = 10, colPrl = 10, colFsh = 11, colRt = 12, colLt = 13;
-        int colLabReqId = 1, collabName = 2, colRsMethod = 3, colRsResult = 4, colRsInterpret = 5, colRsReactive = 6, colRsUnit = 7, colRsNormal = 8, colRsRemark = 9, colRsLabId = 10, colLabStatus = 11, colLabSend=12, colLabReqdate=13, colLabdatetiemreceive=14, colLabdatetimeresult=15, collabdatetimeapprove=16, collabjoblabid=17, collabjoblabreqid=18;
+        int colLabReqId = 1, collabName = 2, colRsMethod = 3, colRsResult = 4, colRsInterpret = 5, colRsReactive = 6, colRsUnit = 7, colRsNormal = 8, colRsRemark = 9, colRsLabId = 10, colLabStatus = 11, colLabSend=12, colLabReqdate=13, colLabdatetiemreceive=14, colLabdatetimeresult=15, collabdatetimeapprove=16, collabjoblabid=17, collabjoblabreqid=18, collabStatusResult=19;
         int colHisVsId = 1, colHisVsDate = 2, colHisVsVn = 3;
         int colPgId = 1, colPgFilename = 2;
 
@@ -862,20 +862,56 @@ namespace clinic_ivf.gui
 
             //grfExpnC.CellButtonClick += new C1.Win.C1FlexGrid.RowColEventHandler(this.grfDept_CellButtonClick);
             //grfExpnC.CellChanged += new C1.Win.C1FlexGrid.RowColEventHandler(this.grfDept_CellChanged);
-            //ContextMenu menuGw = new ContextMenu();
+            ContextMenu menuGw = new ContextMenu();
             //if (flagedit.Equals("edit"))
             //{
             //    menuGw.MenuItems.Add("สั่งการ", new EventHandler(ContextMenu_order_rx));
             //}
             ////menuGw.MenuItems.Add("&แก้ไข", new EventHandler(ContextMenu_Gw_Edit));
-            ////menuGw.MenuItems.Add("&ยกเลิก", new EventHandler(ContextMenu_Gw_Cancel));
-            //grfLab.ContextMenu = menuGw;
+            menuGw.MenuItems.Add("&ยกเลิก", new EventHandler(ContextMenu_lab_Cancel));
+            grfLab.ContextMenu = menuGw;
             pnLabVs.Controls.Add(grfLab);
 
             theme1.SetTheme(grfLab, "Office2010Black");
 
         }
-
+        private void ContextMenu_lab_Cancel(object sender, System.EventArgs e)
+        {
+            String reqid = "", joblabid="", resid="", statusresult="";
+            joblabid = grfLab[grfLab.Row, collabjoblabid] != null ? grfLab[grfLab.Row, collabjoblabid].ToString() : "";
+            reqid = grfLab[grfLab.Row, colLabReqId] != null ? grfLab[grfLab.Row, colLabReqId].ToString() : "";
+            resid = grfLab[grfLab.Row, colRsLabId] != null ? grfLab[grfLab.Row, colRsLabId].ToString() : "";
+            
+            ic.cStf.staff_id = "";
+            FrmPasswordConfirm frm = new FrmPasswordConfirm(ic);
+            frm.ShowDialog(this);
+            if (!ic.cStf.staff_id.Equals(""))
+            {
+                if (resid.Equals(""))       // lab ยังไม่ได้รับ  
+                {
+                    if (reqid.Equals(""))           //cancel  JobLabDetail
+                    {
+                        ic.ivfDB.oJlabdDB.deleteByPk(joblabid);
+                    }
+                    else
+                    {
+                        ic.ivfDB.oJlabdDB.deleteByPk(joblabid);
+                        ic.ivfDB.lbReqDB.VoidRequest(reqid, ic.cStf.staff_id);
+                    }
+                }
+                else
+                {       // lab ยังไม่ได้รับ     cancel lab_t_result, lab_t_request
+                    statusresult = grfLab[grfLab.Row, collabStatusResult] != null ? grfLab[grfLab.Row, collabStatusResult].ToString() : "";
+                    if (!statusresult.Equals("2"))
+                    {
+                        ic.ivfDB.oJlabdDB.deleteByPk(joblabid);
+                        ic.ivfDB.lbReqDB.VoidRequest(reqid, ic.cStf.staff_id);
+                        ic.ivfDB.lbresDB.voidLabResult(resid, ic.cStf.staff_id);
+                    }
+                }
+            }
+            
+        }
         private void GrfLab_DoubleClick(object sender, EventArgs e)
         {
             //throw new NotImplementedException();
@@ -921,7 +957,7 @@ namespace clinic_ivf.gui
             grfLab.Clear();
             grfLab.DataSource = null;
             grfLab.Rows.Count = 1;
-            grfLab.Cols.Count = 19;
+            grfLab.Cols.Count = 20;
 
             grfLab.Cols[collabName].Width = 200;
             grfLab.Cols[colLabStatus].Width = 80;
@@ -1003,6 +1039,7 @@ namespace clinic_ivf.gui
                 row1[colLabdatetiemreceive] = ic.datetimetoShow(row[ic.ivfDB.lbresDB.lbRes.date_time_receive].ToString());
                 row1[colLabdatetimeresult] = ic.datetimetoShow(row[ic.ivfDB.lbresDB.lbRes.date_time_result].ToString());
                 row1[collabdatetimeapprove] = ic.datetimetoShow(row[ic.ivfDB.lbresDB.lbRes.date_time_approve].ToString());
+                row1[collabStatusResult] = ic.datetimetoShow(row[ic.ivfDB.lbresDB.lbRes.staff_id_result].ToString());
                 if (row[ic.ivfDB.lbReqDB.lbReq.status_req].ToString().Equals("1"))
                 {
                     row1[colRsLabId] = "รอ result";
@@ -1019,6 +1056,7 @@ namespace clinic_ivf.gui
             grfLab.Cols[colLabReqId].Visible = false;
             grfLab.Cols[collabjoblabid].Visible = false;
             grfLab.Cols[collabjoblabreqid].Visible = false;
+            grfLab.Cols[collabStatusResult].Visible = false;
 
             grfLab.Cols[colRsLabId].AllowEditing = false;
             grfLab.Cols[collabdatetimeapprove].AllowEditing = false;

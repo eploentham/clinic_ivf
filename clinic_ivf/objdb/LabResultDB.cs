@@ -209,7 +209,7 @@ namespace clinic_ivf.objdb
         {
             DataTable dt = new DataTable();
             String sql = "select lbRes.result,lbRes.interpret,lbRes.remark, LabItem.LName as lab_name,LabItem.lab_unit_id,LabItem.method_id,lab_b_unit.lab_unit_name as unit" +
-                ",lab_b_method.method_name as method, lbRes.reactive_message, LabItem.LID,lbRes.date_time_result,lbRes.date_time_approve " +
+                ",lab_b_method.method_name as method, lbRes.reactive_message, LabItem.LID,lbRes.date_time_result,lbRes.date_time_approve, lbRes.req_date_time,lbRes.date_time_receive " +
                 " " +
                 "From " + lbRes.table + " lbRes " +
                 "Left Join LabItem on lbRes." + lbRes.lab_id + " = LabItem.LID " +
@@ -224,7 +224,7 @@ namespace clinic_ivf.objdb
         {
             DataTable dt = new DataTable();
             String sql = "select lbRes.result,lbRes.interpret,lbRes.remark, LabItem.LName as lab_name,LabItem.lab_unit_id,LabItem.method_id,lab_b_unit.lab_unit_name as unit" +
-                ",lab_b_method.method_name as method, lbRes.reactive_message, LabItem.LID,lbRes.date_time_result,lbRes.date_time_approve " +
+                ",lab_b_method.method_name as method, lbRes.reactive_message, LabItem.LID,lbRes.date_time_result,lbRes.date_time_approve, lbRes.req_date_time,lbRes.date_time_receive " +
                 " " +
                 "From " + lbRes.table + " lbRes " +
                 "Left Join LabItem on lbRes." + lbRes.lab_id + " = LabItem.LID " +

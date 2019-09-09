@@ -12,5 +12,6 @@ namespace clinic_ivf.object1
         public String agentname { get; set; }
         public String sort1 { get; set; }
         public String agent_code { get; set; }
+        public String agent_email { get; set; }
     }
 }

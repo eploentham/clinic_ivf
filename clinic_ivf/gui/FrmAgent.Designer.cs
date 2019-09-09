@@ -36,6 +36,8 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.c1SplitterPanel2 = new C1.Win.C1SplitContainer.C1SplitterPanel();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.txtAgnEmail = new C1.Win.C1Input.C1TextBox();
+            this.label4 = new System.Windows.Forms.Label();
             this.txtPasswordVoid = new C1.Win.C1Input.C1TextBox();
             this.chkVoid = new C1.Win.C1Input.C1CheckBox();
             this.btnVoid = new C1.Win.C1Input.C1Button();
@@ -49,6 +51,7 @@
             this.txtID = new C1.Win.C1Input.C1TextBox();
             this.txtAgnCode = new C1.Win.C1Input.C1TextBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.btnClose = new C1.Win.C1Input.C1Button();
             this.sB.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.theme1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.c1SplitContainer1)).BeginInit();
@@ -56,6 +59,7 @@
             this.c1SplitterPanel1.SuspendLayout();
             this.c1SplitterPanel2.SuspendLayout();
             this.panel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtAgnEmail)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtPasswordVoid)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkVoid)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnVoid)).BeginInit();
@@ -66,6 +70,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtAgnNameT)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtID)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtAgnCode)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnClose)).BeginInit();
             this.SuspendLayout();
             // 
             // sB
@@ -148,6 +153,9 @@
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.panel2.Controls.Add(this.btnClose);
+            this.panel2.Controls.Add(this.txtAgnEmail);
+            this.panel2.Controls.Add(this.label4);
             this.panel2.Controls.Add(this.txtPasswordVoid);
             this.panel2.Controls.Add(this.chkVoid);
             this.panel2.Controls.Add(this.btnVoid);
@@ -168,6 +176,32 @@
             this.panel2.Size = new System.Drawing.Size(517, 608);
             this.panel2.TabIndex = 0;
             this.theme1.SetTheme(this.panel2, "(default)");
+            // 
+            // txtAgnEmail
+            // 
+            this.txtAgnEmail.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtAgnEmail.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
+            this.txtAgnEmail.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.txtAgnEmail.Location = new System.Drawing.Point(110, 123);
+            this.txtAgnEmail.Name = "txtAgnEmail";
+            this.txtAgnEmail.Size = new System.Drawing.Size(207, 20);
+            this.txtAgnEmail.TabIndex = 262;
+            this.txtAgnEmail.Tag = null;
+            this.theme1.SetTheme(this.txtAgnEmail, "(default)");
+            this.txtAgnEmail.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.label4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.label4.Location = new System.Drawing.Point(13, 125);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(86, 16);
+            this.label4.TabIndex = 261;
+            this.label4.Text = "Agent Email :";
+            this.theme1.SetTheme(this.label4, "(default)");
             // 
             // txtPasswordVoid
             // 
@@ -263,7 +297,7 @@
             this.txtRemark.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtRemark.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
             this.txtRemark.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.txtRemark.Location = new System.Drawing.Point(110, 123);
+            this.txtRemark.Location = new System.Drawing.Point(110, 161);
             this.txtRemark.Name = "txtRemark";
             this.txtRemark.Size = new System.Drawing.Size(207, 20);
             this.txtRemark.TabIndex = 252;
@@ -278,7 +312,7 @@
             this.label3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
             this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.label3.Location = new System.Drawing.Point(13, 125);
+            this.label3.Location = new System.Drawing.Point(13, 163);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(58, 16);
             this.label3.TabIndex = 251;
@@ -352,6 +386,20 @@
             this.label1.Text = "รหัส :";
             this.theme1.SetTheme(this.label1, "(default)");
             // 
+            // btnClose
+            // 
+            this.btnClose.Image = global::clinic_ivf.Properties.Resources.accept_database24;
+            this.btnClose.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnClose.Location = new System.Drawing.Point(412, 300);
+            this.btnClose.Name = "btnClose";
+            this.btnClose.Size = new System.Drawing.Size(83, 39);
+            this.btnClose.TabIndex = 263;
+            this.btnClose.Text = "บันทึกช้อมูล";
+            this.btnClose.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.theme1.SetTheme(this.btnClose, "(default)");
+            this.btnClose.UseVisualStyleBackColor = true;
+            this.btnClose.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            // 
             // FrmAgent
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -371,6 +419,7 @@
             this.c1SplitterPanel2.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtAgnEmail)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtPasswordVoid)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkVoid)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnVoid)).EndInit();
@@ -381,6 +430,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtAgnNameT)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtID)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtAgnCode)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnClose)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -409,5 +459,8 @@
         private C1.Win.C1Input.C1Button btnVoid;
         private C1.Win.C1Input.C1Button btnSave;
         private C1.Win.C1Input.C1TextBox txtPasswordVoid;
+        private C1.Win.C1Input.C1TextBox txtAgnEmail;
+        private System.Windows.Forms.Label label4;
+        private C1.Win.C1Input.C1Button btnClose;
     }
 }

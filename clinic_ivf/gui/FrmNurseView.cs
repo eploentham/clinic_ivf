@@ -2053,7 +2053,9 @@ namespace clinic_ivf.gui
                     String resid = "";
                     resid = ic.ivfDB.lbresDB.selectLabBloodByReqId(reqid);
                     FrmLabBloodAdd frm = new FrmLabBloodAdd(ic, resid);
+                    frm.StartPosition = FormStartPosition.CenterScreen;
                     frm.ShowDialog(this);
+                    
                 }
             }
             //pttId = grfLab[grfLab.Row, colPttId] != null ? grfLab[grfLab.Row, colPttId].ToString() : "";

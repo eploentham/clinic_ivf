@@ -64,6 +64,7 @@ namespace clinic_ivf.gui
             btnNew.Click += BtnNew_Click;
             btnSave.Click += BtnSave_Click;
             btnEdit.Click += BtnEdit_Click;
+            btnClose.Click += BtnClose_Click;
 
             initGrfAgent();
             setGrfAgent();
@@ -75,6 +76,13 @@ namespace clinic_ivf.gui
             stt = new C1SuperTooltip();
             sep = new C1SuperErrorProvider();
             //stt.BackgroundGradient = C1.Win.C1SuperTooltip.BackgroundGradient.Gold;
+        }
+
+        private void BtnClose_Click(object sender, EventArgs e)
+        {
+            //throw new NotImplementedException();
+            ic.email = txtAgnEmail.Text;
+            Close();
         }
 
         private void BtnEdit_Click(object sender, EventArgs e)
@@ -210,6 +218,7 @@ namespace clinic_ivf.gui
             txtID.Value = agn.agentid;
             txtAgnCode.Value = agn.agent_code;
             txtAgnNameT.Value = agn.agentname;
+            txtAgnEmail.Value = agn.agent_email;
             //txtPosiNameT.Value = agn.posi_name_t;
             //txtRemark.Value = agn.remark;
             //if (posi.status_doctor.Equals("1"))
@@ -243,7 +252,7 @@ namespace clinic_ivf.gui
             agn.agentid = txtID.Text;
             agn.agentname = txtAgnNameT.Text;
             agn.agent_code = txtAgnCode.Text;
-            //posi.posi_name_e = txtPosiNameE.Text;
+            agn.agent_email = txtAgnEmail.Text;
             //agn.remark = txtRemark.Text;
             //posi.status_doctor = chkStatusDoctor.Checked == true ? "1" : "0";
             //posi.status_embryologist = chkEmbryologist.Checked == true ? "1" : "0";

@@ -68,6 +68,7 @@ namespace clinic_ivf.gui
             btnPrintHormone.Click += BtnPrintHormone_Click;
             btnSendEmail.Click += BtnSendEmail_Click;
             btnPrintInfectious.Click += BtnPrintInfectious_Click;
+            btnAgentEmail.Click += BtnAgentEmail_Click;
 
             sB1.Text = "";
             bg = txtHn.BackColor;
@@ -86,6 +87,16 @@ namespace clinic_ivf.gui
             lbEmail.Text = "";
             initGrfProc();
             setControl();
+        }
+
+        private void BtnAgentEmail_Click(object sender, EventArgs e)
+        {
+            //throw new NotImplementedException();
+            ic.email = "";
+            FrmAgent frm = new FrmAgent(ic);
+            frm.StartPosition = FormStartPosition.CenterScreen;
+            frm.ShowDialog(this);
+            txtEmailTo.Value = ic.email;
         }
 
         private void BtnPrintInfectious_Click(object sender, EventArgs e)
