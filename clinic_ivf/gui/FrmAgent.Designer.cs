@@ -36,6 +36,7 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.c1SplitterPanel2 = new C1.Win.C1SplitContainer.C1SplitterPanel();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.btnClose = new C1.Win.C1Input.C1Button();
             this.txtAgnEmail = new C1.Win.C1Input.C1TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.txtPasswordVoid = new C1.Win.C1Input.C1TextBox();
@@ -51,7 +52,6 @@
             this.txtID = new C1.Win.C1Input.C1TextBox();
             this.txtAgnCode = new C1.Win.C1Input.C1TextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.btnClose = new C1.Win.C1Input.C1Button();
             this.sB.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.theme1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.c1SplitContainer1)).BeginInit();
@@ -59,6 +59,7 @@
             this.c1SplitterPanel1.SuspendLayout();
             this.c1SplitterPanel2.SuspendLayout();
             this.panel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.btnClose)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtAgnEmail)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtPasswordVoid)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkVoid)).BeginInit();
@@ -70,7 +71,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtAgnNameT)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtID)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtAgnCode)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.btnClose)).BeginInit();
             this.SuspendLayout();
             // 
             // sB
@@ -176,6 +176,20 @@
             this.panel2.Size = new System.Drawing.Size(517, 608);
             this.panel2.TabIndex = 0;
             this.theme1.SetTheme(this.panel2, "(default)");
+            // 
+            // btnClose
+            // 
+            this.btnClose.Image = global::clinic_ivf.Properties.Resources.login24;
+            this.btnClose.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnClose.Location = new System.Drawing.Point(412, 300);
+            this.btnClose.Name = "btnClose";
+            this.btnClose.Size = new System.Drawing.Size(83, 39);
+            this.btnClose.TabIndex = 263;
+            this.btnClose.Text = "Exit";
+            this.btnClose.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.theme1.SetTheme(this.btnClose, "(default)");
+            this.btnClose.UseVisualStyleBackColor = true;
+            this.btnClose.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
             // 
             // txtAgnEmail
             // 
@@ -386,20 +400,6 @@
             this.label1.Text = "รหัส :";
             this.theme1.SetTheme(this.label1, "(default)");
             // 
-            // btnClose
-            // 
-            this.btnClose.Image = global::clinic_ivf.Properties.Resources.accept_database24;
-            this.btnClose.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnClose.Location = new System.Drawing.Point(412, 300);
-            this.btnClose.Name = "btnClose";
-            this.btnClose.Size = new System.Drawing.Size(83, 39);
-            this.btnClose.TabIndex = 263;
-            this.btnClose.Text = "บันทึกช้อมูล";
-            this.btnClose.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.theme1.SetTheme(this.btnClose, "(default)");
-            this.btnClose.UseVisualStyleBackColor = true;
-            this.btnClose.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
-            // 
             // FrmAgent
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -419,6 +419,7 @@
             this.c1SplitterPanel2.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.btnClose)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtAgnEmail)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtPasswordVoid)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkVoid)).EndInit();
@@ -430,7 +431,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtAgnNameT)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtID)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtAgnCode)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.btnClose)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

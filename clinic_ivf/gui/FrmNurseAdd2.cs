@@ -165,7 +165,6 @@ namespace clinic_ivf.gui
             ic.ivfDB.eggsDB.setCboTypingOther(cboEggStiOther);
             ic.ivfDB.eggsDB.setCboBhcgTest(cboEggStiBhcg);
             
-
             txtApmDatepApm.Value = System.DateTime.Now.Year.ToString() + "-" + System.DateTime.Now.ToString("MM-dd");
 
             tabOrder.Click += TabOrder_Click;
@@ -3321,35 +3320,35 @@ namespace clinic_ivf.gui
                 err = "00";
                 dtrid = cboDoctor.SelectedItem == null ? "" : ((ComboBoxItem)cboDoctor.SelectedItem).Value;
                 err = "01";
-                foreach (Row row in grfOrder.Rows)
-                {
-                    try
-                    {
-                        String lgid = "", reqid = "", itmid = "";
-                        errfor = "000";
-                        lgid = row[colOrdlpid] != null ? row[colOrdlpid].ToString() : "";
-                        reqid = row[colOrdid] != null ? row[colOrdid].ToString() : "";
-                        itmid = row[colOrditmid] != null ? row[colOrditmid].ToString() : "";
-                        errfor = "001";
-                        if (lgid.Length <= 0) continue;
-                        LabRequest lbReq = new LabRequest();
-                        if (ptt.f_sex_id.Equals("1"))
-                        {
-                            lbReq = ic.ivfDB.setLabRequest("", txtVnOld.Text, dtrid, "", "", ic.datetoDB(txtDob.Text), reqid, itmid, txtHn.Text, txtPttNameE.Text, "", "", "", txtVsId.Text);
-                        }
-                        else if (ptt.f_sex_id.Equals("2"))
-                        {
-                            lbReq = ic.ivfDB.setLabRequest(txtPttNameE.Text, txtVnOld.Text, dtrid, "", txtHn.Text, ic.datetoDB(txtDob.Text), reqid, itmid, "", "", "", "", "", txtVsId.Text);
-                        }
-                        errfor = "002";
-                        String re = ic.ivfDB.lbReqDB.insertLabRequest(lbReq, ic.userId);
-                        ic.ivfDB.oJlabdDB.updateReqId(re, reqid);
-                    }
-                    catch(Exception ex)
-                    {
-                        MessageBox.Show("error "+ errfor+" " + ex.Message, "BtnFinish_Click foreach grfOrder.Rows");
-                    }
-                }
+                //foreach (Row row in grfOrder.Rows)
+                //{
+                //    try
+                //    {
+                //        String lgid = "", reqid = "", itmid = "";
+                //        errfor = "000";
+                //        lgid = row[colOrdlpid] != null ? row[colOrdlpid].ToString() : "";
+                //        reqid = row[colOrdid] != null ? row[colOrdid].ToString() : "";
+                //        itmid = row[colOrditmid] != null ? row[colOrditmid].ToString() : "";
+                //        errfor = "001";
+                //        if (lgid.Length <= 0) continue;
+                //        LabRequest lbReq = new LabRequest();
+                //        if (ptt.f_sex_id.Equals("1"))
+                //        {
+                //            lbReq = ic.ivfDB.setLabRequest("", txtVnOld.Text, dtrid, "", "", ic.datetoDB(txtDob.Text), reqid, itmid, txtHn.Text, txtPttNameE.Text, "", "", "", txtVsId.Text);
+                //        }
+                //        else if (ptt.f_sex_id.Equals("2"))
+                //        {
+                //            lbReq = ic.ivfDB.setLabRequest(txtPttNameE.Text, txtVnOld.Text, dtrid, "", txtHn.Text, ic.datetoDB(txtDob.Text), reqid, itmid, "", "", "", "", "", txtVsId.Text);
+                //        }
+                //        errfor = "002";
+                //        String re = ic.ivfDB.lbReqDB.insertLabRequest(lbReq, ic.userId);
+                //        ic.ivfDB.oJlabdDB.updateReqId(re, reqid);
+                //    }
+                //    catch(Exception ex)
+                //    {
+                //        MessageBox.Show("error "+ errfor+" " + ex.Message, "BtnFinish_Click foreach grfOrder.Rows");
+                //    }
+                //}
 
                 ic.ivfDB.nurseFinish(txtVnOld.Text);
                 VisitOld ovs = new VisitOld();

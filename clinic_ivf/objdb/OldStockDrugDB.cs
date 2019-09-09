@@ -197,14 +197,14 @@ namespace clinic_ivf.objdb
         {
             String re = "";
 
-            //if (p.VN.Equals(""))
-            //{
-            re = insert(p, "");
-            //}
-            //else
-            //{
-            //    //re = update(p, "");
-            //}
+            if (p.DUID.Equals(""))
+            {
+                re = insert(p, "");
+            }
+            else
+            {
+                //re = update(p, "");
+            }
 
             return re;
         }

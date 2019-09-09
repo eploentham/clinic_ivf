@@ -522,7 +522,9 @@ namespace clinic_ivf.objdb
             ComboBoxItem item = new ComboBoxItem();
             //DataTable dt = selectWard();
             int i = 0;
-            if (lVs.Count <= 0) getlVisit(pttid);
+            c.Items.Clear();
+            //if (lVs.Count <= 0) getlVisit(pttid);
+            getlVisit(pttid);
             item = new ComboBoxItem();
             item.Value = "";
             item.Text = "";

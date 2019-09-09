@@ -79,7 +79,7 @@ namespace clinic_ivf.gui
             //ostkD.PendingQTY = "PendingQTY";
             //ostkD.Price = "Price";
             //ostkD.active = "active";
-
+            sdrk.DUID = "";
             sdrk.DUID = txtID.Text;
             sdrk.DUName = txtDrgName.Text;
             sdrk.EUsage = cboUsageE.Text;
@@ -93,6 +93,12 @@ namespace clinic_ivf.gui
         private void BtnSave_Click(object sender, EventArgs e)
         {
             //throw new NotImplementedException();
+            decimal price = 0;
+            if(!Decimal.TryParse(txtPrice1.Text, out price))
+            {
+                MessageBox.Show("ราคายา ไม่ถูกต้อง", "");
+                return;
+            }
             if (MessageBox.Show("ต้องการ บันทึกช้อมูล ", "", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == DialogResult.OK)
             {
                 setStockDrug();
