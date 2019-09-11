@@ -36,7 +36,7 @@ namespace clinic_ivf.gui
 
         C1SuperTooltip stt;
         C1SuperErrorProvider sep;
-        String theme2 = "Office2007Blue";
+        String theme2 = "Office2007Blue", flagEdit1="";
         public String StatusSperm = "";
         SmtpClient SmtpServer;
         List<LinkedResource> theEmailImage1 = new List<LinkedResource>();
@@ -84,7 +84,7 @@ namespace clinic_ivf.gui
             reqId = reqid;
             this.spermId = spermId;
             this.StatusSperm = StatusSperm;
-            //this.flagEdit = flagEdit;
+            this.flagEdit1 = flagEdit;
             if (flagEdit.Equals("edit"))
             {
                 this.flagEdit = true;
@@ -135,6 +135,8 @@ namespace clinic_ivf.gui
             btnPrintSa.Click += BtnPrintSa_Click;
             btnPrintPesa.Click += BtnPrintPesa_Click;
             btnPrintIui.Click += BtnPrintIui_Click;
+            btnAgentEmail.Click += BtnAgentEmail_Click;
+            btnSfAgentEmail.Click += BtnSfAgentEmail_Click;
 
             sB1.Text = "";
             bg = txtHnFeMale.BackColor;
@@ -226,6 +228,26 @@ namespace clinic_ivf.gui
             //        //tC.SelectedTab = TabSpermIUI;
             //    }
             //}
+        }
+
+        private void BtnSfAgentEmail_Click(object sender, EventArgs e)
+        {
+            //throw new NotImplementedException();
+            ic.email = "";
+            FrmAgent frm = new FrmAgent(ic);
+            frm.StartPosition = FormStartPosition.CenterScreen;
+            frm.ShowDialog(this);
+            txtSfEmailTo.Value = ic.email;
+        }
+
+        private void BtnAgentEmail_Click(object sender, EventArgs e)
+        {
+            //throw new NotImplementedException();
+            ic.email = "";
+            FrmAgent frm = new FrmAgent(ic);
+            frm.StartPosition = FormStartPosition.CenterScreen;
+            frm.ShowDialog(this);
+            txtEmailTo.Value = ic.email;
         }
 
         private void BtnSfApproveResult_Click(object sender, EventArgs e)
@@ -1330,6 +1352,7 @@ namespace clinic_ivf.gui
             //{
             //    pnEmailAddSubject.Enabled = false;
             //}
+
         }
         private void setControl()
         {
@@ -1426,6 +1449,17 @@ namespace clinic_ivf.gui
             ic.setC1ComboByName(cboRemark, lsperm.remark);
             txtEmailTo.Value = ic.iniC.email_to_sperm_freezing;
             txtEmailSubject.Value = "Result LAB Sperm Analysis HN " + txtSfHnMale.Text + " Name " + txtSfNameMale.Text+" ["+ txtLabReqCode.Text+"]";
+            if (!lsperm.status_lab.Equals("5"))
+            {
+                if (flagEdit1.Equals(""))
+                {
+                    pnEmailAddSubject.Enabled = true;
+                }
+                else
+                {
+                    pnEmailAddSubject.Enabled = false;
+                }
+            }
         }
         private void setControlSpermFreezing()
         {
@@ -1486,7 +1520,16 @@ namespace clinic_ivf.gui
 
             if (!lsperm.status_lab.Equals("5"))
             {
-                pnEmailAddSubject.Enabled = false;
+                if (flagEdit1.Equals(""))
+                {
+                    panel5.Enabled = true;
+                    txtEmailBody.Enabled = true;
+                }
+                else
+                {
+                    panel5.Enabled = false;
+                    txtEmailBody.Enabled = false;
+                }
             }
         }
         private void setControlPesa()

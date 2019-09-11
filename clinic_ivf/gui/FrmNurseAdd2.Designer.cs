@@ -724,6 +724,7 @@
             this.c1SplitterPanel4 = new C1.Win.C1SplitContainer.C1SplitterPanel();
             this.c1SplitterPanel5 = new C1.Win.C1SplitContainer.C1SplitterPanel();
             this.cPdf = new C1.Win.C1Document.C1PdfDocumentSource(this.components);
+            this.btnPrnLabReq = new C1.Win.C1Input.C1Button();
             this.sB.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.theme1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.sC)).BeginInit();
@@ -1133,6 +1134,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.btnSave)).BeginInit();
             this.c1SplitterPanel4.SuspendLayout();
             this.c1SplitterPanel5.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.btnPrnLabReq)).BeginInit();
             this.SuspendLayout();
             // 
             // sB
@@ -2925,6 +2927,7 @@
             // pnLab
             // 
             this.pnLab.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.pnLab.Controls.Add(this.btnPrnLabReq);
             this.pnLab.Controls.Add(this.c1Button2);
             this.pnLab.Controls.Add(this.btnPrintInfectious);
             this.pnLab.Controls.Add(this.btnPrintHormone);
@@ -11322,6 +11325,20 @@
             this.c1SplitterPanel5.TabIndex = 1;
             this.c1SplitterPanel5.Text = "Panel 2";
             // 
+            // btnPrnLabReq
+            // 
+            this.btnPrnLabReq.Image = global::clinic_ivf.Properties.Resources.Print_large;
+            this.btnPrnLabReq.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnPrnLabReq.Location = new System.Drawing.Point(696, 14);
+            this.btnPrnLabReq.Name = "btnPrnLabReq";
+            this.btnPrnLabReq.Size = new System.Drawing.Size(121, 34);
+            this.btnPrnLabReq.TabIndex = 979;
+            this.btnPrnLabReq.Text = "Print  Request";
+            this.btnPrnLabReq.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.theme1.SetTheme(this.btnPrnLabReq, "(default)");
+            this.btnPrnLabReq.UseVisualStyleBackColor = true;
+            this.btnPrnLabReq.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            // 
             // FrmNurseAdd2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -11801,6 +11818,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.btnSave)).EndInit();
             this.c1SplitterPanel4.ResumeLayout(false);
             this.c1SplitterPanel5.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.btnPrnLabReq)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -12552,5 +12570,6 @@
         private C1.Win.C1Input.C1Button c1Button2;
         private C1.Win.C1Input.C1Button btnPrintInfectious;
         private C1.Win.C1Input.C1Button btnPrintHormone;
+        private C1.Win.C1Input.C1Button btnPrnLabReq;
     }
 }

@@ -217,7 +217,7 @@ namespace clinic_ivf.gui
             rbPgPrint.Click += RbPgPrint_Click;
             btnPrintHormone.Click += BtnPrintHormone_Click;
             btnPrintInfectious.Click += BtnPrintInfectious_Click;
-            
+            btnPrnLabReq.Click += BtnPrnLabReq_Click;
 
             chkPmhMarried.CheckedChanged += ChkPmhMarried_CheckedChanged;
             chkPmhConOther.CheckedChanged += ChkPmhConOther_CheckedChanged;
@@ -323,10 +323,33 @@ namespace clinic_ivf.gui
             initProgressNote();
             pageLoad = false;
         }
+
+        private void BtnPrnLabReq_Click(object sender, EventArgs e)
+        {
+            //throw new NotImplementedException();
+            SetDefaultPrinter(ic.iniC.printerAppointment);      //A5
+            FrmReport frm = new FrmReport(ic);
+            DataTable dt = new DataTable();
+            String reqdate = "", stf = "", stfname="";
+            dt = ic.ivfDB.lbReqDB.selectByNurseVn(cboLabVs.Text);
+            if (dt.Rows.Count > 0)
+            {
+                reqdate = ic.datetoShow(dt.Rows[0][ic.ivfDB.lbReqDB.lbReq.req_date].ToString()) +""+ dt.Rows[0][ic.ivfDB.lbReqDB.lbReq.req_time].ToString();
+                stf = dt.Rows[0][ic.ivfDB.lbReqDB.lbReq.user_create].ToString();
+                String[] stf1 = stf.Split('@');
+                if (stf1.Length > 1)
+                {
+                    stfname = ic.ivfDB.stfDB.getStaffNameBylStf(stf1[0]);
+                }
+            }
+            frm.setLabBloodRequest(dt, txtHn.Text, txtPttNameE.Text, txtDob.Text, txtSex.Text, vs.visit_begin_visit_time, reqdate, cboDoctor.Text, stfname);
+            frm.ShowDialog(this);
+        }
+
         private void BtnPrintInfectious_Click(object sender, EventArgs e)
         {
             //throw new NotImplementedException();
-            
+            SetDefaultPrinter(ic.iniC.printerAppointment);      //A5
             FrmReport frm = new FrmReport(ic);
             DataTable dt = new DataTable();
             dt = ic.ivfDB.lbresDB.selectLabBloodByVsIdInfectious(txtVsId.Text);
@@ -352,6 +375,7 @@ namespace clinic_ivf.gui
         private void BtnPrintHormone_Click(object sender, EventArgs e)
         {
             //throw new NotImplementedException();
+            SetDefaultPrinter(ic.iniC.printerAppointment);      //A5
             String date1 = "", reportdate="", approvedate="";
             FrmReport frm = new FrmReport(ic);
             DataTable dt = new DataTable();

@@ -865,6 +865,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Lab_Form_Day1.xsd</DependentUpon>
     </Compile>
+    <Compile Include="report\lab_request.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>lab_request.xsd</DependentUpon>
+    </Compile>
     <Compile Include="report\lab_result.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -1291,6 +1296,17 @@
     </None>
     <None Include="report\Lab_Form_Day1.xss">
       <DependentUpon>Lab_Form_Day1.xsd</DependentUpon>
+    </None>
+    <None Include="report\lab_request.xsc">
+      <DependentUpon>lab_request.xsd</DependentUpon>
+    </None>
+    <None Include="report\lab_request.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>lab_request.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="report\lab_request.xss">
+      <DependentUpon>lab_request.xsd</DependentUpon>
     </None>
     <None Include="report\lab_result.xsc">
       <DependentUpon>lab_result.xsd</DependentUpon>

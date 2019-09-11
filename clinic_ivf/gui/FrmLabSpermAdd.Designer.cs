@@ -43,7 +43,7 @@
             this.txtSfEmailBody = new C1.Win.C1Input.C1TextBox();
             this.pnEmailAddSubject = new System.Windows.Forms.Panel();
             this.btnSfSendEmail = new C1.Win.C1Input.C1Button();
-            this.btnMaleSearch = new C1.Win.C1Input.C1Button();
+            this.btnSfAgentEmail = new C1.Win.C1Input.C1Button();
             this.label210 = new System.Windows.Forms.Label();
             this.txtSfEmailSubject = new C1.Win.C1Input.C1TextBox();
             this.label211 = new System.Windows.Forms.Label();
@@ -236,7 +236,7 @@
             this.txtEmailBody = new C1.Win.C1Input.C1TextBox();
             this.panel5 = new System.Windows.Forms.Panel();
             this.btnSendEmail = new C1.Win.C1Input.C1Button();
-            this.c1Button2 = new C1.Win.C1Input.C1Button();
+            this.btnAgentEmail = new C1.Win.C1Input.C1Button();
             this.label212 = new System.Windows.Forms.Label();
             this.txtEmailSubject = new C1.Win.C1Input.C1TextBox();
             this.label213 = new System.Windows.Forms.Label();
@@ -709,7 +709,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtSfEmailBody)).BeginInit();
             this.pnEmailAddSubject.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btnSfSendEmail)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.btnMaleSearch)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnSfAgentEmail)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtSfEmailSubject)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtSfEmailTo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.c1Ribbon1)).BeginInit();
@@ -779,7 +779,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtEmailBody)).BeginInit();
             this.panel5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btnSendEmail)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.c1Button2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnAgentEmail)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtEmailSubject)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtEmailTo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.c1Ribbon2)).BeginInit();
@@ -960,7 +960,7 @@
             this.sB1});
             this.sB.Location = new System.Drawing.Point(0, 800);
             this.sB.Name = "sB";
-            this.sB.Size = new System.Drawing.Size(1389, 22);
+            this.sB.Size = new System.Drawing.Size(1450, 22);
             this.sB.TabIndex = 10;
             this.sB.Text = "statusStrip1";
             // 
@@ -987,7 +987,7 @@
             this.tC.HotTrack = true;
             this.tC.Location = new System.Drawing.Point(0, 0);
             this.tC.Name = "tC";
-            this.tC.Size = new System.Drawing.Size(1389, 800);
+            this.tC.Size = new System.Drawing.Size(1450, 800);
             this.tC.TabIndex = 11;
             this.tC.TabSizeMode = C1.Win.C1Command.TabSizeModeEnum.Fit;
             this.tC.TabsShowFocusCues = false;
@@ -1000,7 +1000,7 @@
             this.tabSpermFreezing.Controls.Add(this.panel2);
             this.tabSpermFreezing.Location = new System.Drawing.Point(1, 24);
             this.tabSpermFreezing.Name = "tabSpermFreezing";
-            this.tabSpermFreezing.Size = new System.Drawing.Size(1387, 775);
+            this.tabSpermFreezing.Size = new System.Drawing.Size(1448, 775);
             this.tabSpermFreezing.TabIndex = 1;
             this.tabSpermFreezing.Text = "Sperm Freezing";
             // 
@@ -1012,7 +1012,7 @@
             this.panel2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
             this.panel2.Location = new System.Drawing.Point(0, 0);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1387, 775);
+            this.panel2.Size = new System.Drawing.Size(1448, 775);
             this.panel2.TabIndex = 0;
             this.theme1.SetTheme(this.panel2, "(default)");
             // 
@@ -1031,7 +1031,7 @@
             this.sCFreezing.Name = "sCFreezing";
             this.sCFreezing.Panels.Add(this.c1SplitterPanel3);
             this.sCFreezing.Panels.Add(this.c1SplitterPanel4);
-            this.sCFreezing.Size = new System.Drawing.Size(1387, 775);
+            this.sCFreezing.Size = new System.Drawing.Size(1448, 775);
             this.sCFreezing.SplitterColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(189)))), ((int)(((byte)(182)))));
             this.sCFreezing.SplitterMovingColor = System.Drawing.Color.Black;
             this.sCFreezing.TabIndex = 13;
@@ -1049,7 +1049,7 @@
             this.c1SplitterPanel3.SizeRatio = 41.101D;
             this.c1SplitterPanel3.TabIndex = 0;
             this.c1SplitterPanel3.Text = "Panel 1";
-            this.c1SplitterPanel3.Width = 561;
+            this.c1SplitterPanel3.Width = 568;
             // 
             // pnSfLeft
             // 
@@ -1108,7 +1108,7 @@
             // 
             this.pnEmailAddSubject.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
             this.pnEmailAddSubject.Controls.Add(this.btnSfSendEmail);
-            this.pnEmailAddSubject.Controls.Add(this.btnMaleSearch);
+            this.pnEmailAddSubject.Controls.Add(this.btnSfAgentEmail);
             this.pnEmailAddSubject.Controls.Add(this.label210);
             this.pnEmailAddSubject.Controls.Add(this.txtSfEmailSubject);
             this.pnEmailAddSubject.Controls.Add(this.label211);
@@ -1135,16 +1135,16 @@
             this.btnSfSendEmail.UseVisualStyleBackColor = true;
             this.btnSfSendEmail.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
             // 
-            // btnMaleSearch
+            // btnSfAgentEmail
             // 
-            this.btnMaleSearch.Location = new System.Drawing.Point(250, 11);
-            this.btnMaleSearch.Name = "btnMaleSearch";
-            this.btnMaleSearch.Size = new System.Drawing.Size(28, 23);
-            this.btnMaleSearch.TabIndex = 541;
-            this.btnMaleSearch.Text = "...";
-            this.theme1.SetTheme(this.btnMaleSearch, "(default)");
-            this.btnMaleSearch.UseVisualStyleBackColor = true;
-            this.btnMaleSearch.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            this.btnSfAgentEmail.Location = new System.Drawing.Point(250, 11);
+            this.btnSfAgentEmail.Name = "btnSfAgentEmail";
+            this.btnSfAgentEmail.Size = new System.Drawing.Size(28, 23);
+            this.btnSfAgentEmail.TabIndex = 541;
+            this.btnSfAgentEmail.Text = "...";
+            this.theme1.SetTheme(this.btnSfAgentEmail, "(default)");
+            this.btnSfAgentEmail.UseVisualStyleBackColor = true;
+            this.btnSfAgentEmail.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
             // 
             // label210
             // 
@@ -3614,7 +3614,7 @@
             this.tabSememAna.Controls.Add(this.panel1);
             this.tabSememAna.Location = new System.Drawing.Point(1, 24);
             this.tabSememAna.Name = "tabSememAna";
-            this.tabSememAna.Size = new System.Drawing.Size(1387, 775);
+            this.tabSememAna.Size = new System.Drawing.Size(1448, 775);
             this.tabSememAna.TabIndex = 0;
             this.tabSememAna.Text = "Sperm Analysis";
             // 
@@ -3626,7 +3626,7 @@
             this.panel1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1387, 775);
+            this.panel1.Size = new System.Drawing.Size(1448, 775);
             this.panel1.TabIndex = 0;
             this.theme1.SetTheme(this.panel1, "(default)");
             // 
@@ -3645,7 +3645,7 @@
             this.sCAnalysis.Name = "sCAnalysis";
             this.sCAnalysis.Panels.Add(this.c1SplitterPanel1);
             this.sCAnalysis.Panels.Add(this.c1SplitterPanel2);
-            this.sCAnalysis.Size = new System.Drawing.Size(1387, 775);
+            this.sCAnalysis.Size = new System.Drawing.Size(1448, 775);
             this.sCAnalysis.SplitterColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(189)))), ((int)(((byte)(182)))));
             this.sCAnalysis.SplitterMovingColor = System.Drawing.Color.Black;
             this.sCAnalysis.TabIndex = 12;
@@ -3663,7 +3663,7 @@
             this.c1SplitterPanel1.SizeRatio = 40.997D;
             this.c1SplitterPanel1.TabIndex = 0;
             this.c1SplitterPanel1.Text = "Panel 1";
-            this.c1SplitterPanel1.Width = 567;
+            this.c1SplitterPanel1.Width = 560;
             // 
             // panel6
             // 
@@ -3710,7 +3710,7 @@
             // 
             this.panel5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
             this.panel5.Controls.Add(this.btnSendEmail);
-            this.panel5.Controls.Add(this.c1Button2);
+            this.panel5.Controls.Add(this.btnAgentEmail);
             this.panel5.Controls.Add(this.label212);
             this.panel5.Controls.Add(this.txtEmailSubject);
             this.panel5.Controls.Add(this.label213);
@@ -3737,16 +3737,16 @@
             this.btnSendEmail.UseVisualStyleBackColor = true;
             this.btnSendEmail.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
             // 
-            // c1Button2
+            // btnAgentEmail
             // 
-            this.c1Button2.Location = new System.Drawing.Point(250, 11);
-            this.c1Button2.Name = "c1Button2";
-            this.c1Button2.Size = new System.Drawing.Size(28, 23);
-            this.c1Button2.TabIndex = 541;
-            this.c1Button2.Text = "...";
-            this.theme1.SetTheme(this.c1Button2, "(default)");
-            this.c1Button2.UseVisualStyleBackColor = true;
-            this.c1Button2.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            this.btnAgentEmail.Location = new System.Drawing.Point(250, 11);
+            this.btnAgentEmail.Name = "btnAgentEmail";
+            this.btnAgentEmail.Size = new System.Drawing.Size(28, 23);
+            this.btnAgentEmail.TabIndex = 541;
+            this.btnAgentEmail.Text = "...";
+            this.theme1.SetTheme(this.btnAgentEmail, "(default)");
+            this.btnAgentEmail.UseVisualStyleBackColor = true;
+            this.btnAgentEmail.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
             // 
             // label212
             // 
@@ -6128,7 +6128,7 @@
             this.TabSpermIUI.Controls.Add(this.panel4);
             this.TabSpermIUI.Location = new System.Drawing.Point(1, 24);
             this.TabSpermIUI.Name = "TabSpermIUI";
-            this.TabSpermIUI.Size = new System.Drawing.Size(1387, 775);
+            this.TabSpermIUI.Size = new System.Drawing.Size(1448, 775);
             this.TabSpermIUI.TabIndex = 3;
             this.TabSpermIUI.Text = " IUI";
             // 
@@ -6140,7 +6140,7 @@
             this.panel4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
             this.panel4.Location = new System.Drawing.Point(0, 0);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(1387, 775);
+            this.panel4.Size = new System.Drawing.Size(1448, 775);
             this.panel4.TabIndex = 0;
             this.theme1.SetTheme(this.panel4, "(default)");
             // 
@@ -6159,7 +6159,7 @@
             this.sCIui.Name = "sCIui";
             this.sCIui.Panels.Add(this.c1SplitterPanel7);
             this.sCIui.Panels.Add(this.c1SplitterPanel8);
-            this.sCIui.Size = new System.Drawing.Size(1387, 775);
+            this.sCIui.Size = new System.Drawing.Size(1448, 775);
             this.sCIui.SplitterColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(189)))), ((int)(((byte)(182)))));
             this.sCIui.SplitterMovingColor = System.Drawing.Color.Black;
             this.sCIui.TabIndex = 13;
@@ -6173,11 +6173,11 @@
             this.c1SplitterPanel7.Dock = C1.Win.C1SplitContainer.PanelDockStyle.Left;
             this.c1SplitterPanel7.Location = new System.Drawing.Point(0, 21);
             this.c1SplitterPanel7.Name = "c1SplitterPanel7";
-            this.c1SplitterPanel7.Size = new System.Drawing.Size(559, 754);
+            this.c1SplitterPanel7.Size = new System.Drawing.Size(584, 754);
             this.c1SplitterPanel7.SizeRatio = 40.926D;
             this.c1SplitterPanel7.TabIndex = 0;
             this.c1SplitterPanel7.Text = "Panel 1";
-            this.c1SplitterPanel7.Width = 566;
+            this.c1SplitterPanel7.Width = 591;
             // 
             // panel10
             // 
@@ -6190,7 +6190,7 @@
             this.panel10.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
             this.panel10.Location = new System.Drawing.Point(0, 0);
             this.panel10.Name = "panel10";
-            this.panel10.Size = new System.Drawing.Size(559, 754);
+            this.panel10.Size = new System.Drawing.Size(584, 754);
             this.panel10.TabIndex = 0;
             this.theme1.SetTheme(this.panel10, "(default)");
             // 
@@ -6201,7 +6201,7 @@
             this.pnIuiEmailView.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
             this.pnIuiEmailView.Location = new System.Drawing.Point(0, 446);
             this.pnIuiEmailView.Name = "pnIuiEmailView";
-            this.pnIuiEmailView.Size = new System.Drawing.Size(559, 308);
+            this.pnIuiEmailView.Size = new System.Drawing.Size(584, 308);
             this.pnIuiEmailView.TabIndex = 543;
             this.theme1.SetTheme(this.pnIuiEmailView, "(default)");
             // 
@@ -6214,7 +6214,7 @@
             this.c1TextBox3.Location = new System.Drawing.Point(0, 214);
             this.c1TextBox3.Multiline = true;
             this.c1TextBox3.Name = "c1TextBox3";
-            this.c1TextBox3.Size = new System.Drawing.Size(559, 540);
+            this.c1TextBox3.Size = new System.Drawing.Size(584, 540);
             this.c1TextBox3.TabIndex = 542;
             this.c1TextBox3.Tag = null;
             this.theme1.SetTheme(this.c1TextBox3, "(default)");
@@ -6233,7 +6233,7 @@
             this.panel12.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
             this.panel12.Location = new System.Drawing.Point(0, 146);
             this.panel12.Name = "panel12";
-            this.panel12.Size = new System.Drawing.Size(559, 68);
+            this.panel12.Size = new System.Drawing.Size(584, 68);
             this.panel12.TabIndex = 3;
             this.theme1.SetTheme(this.panel12, "(default)");
             // 
@@ -6327,7 +6327,7 @@
             this.c1Ribbon3.QatHolder = this.ribbonQat12;
             this.c1Ribbon3.QatItemsHolder.Add(this.UndoButton2);
             this.c1Ribbon3.QatItemsHolder.Add(this.RedoButton2);
-            this.c1Ribbon3.Size = new System.Drawing.Size(559, 146);
+            this.c1Ribbon3.Size = new System.Drawing.Size(584, 146);
             this.c1Ribbon3.Tabs.Add(this.HomeTab2);
             this.c1Ribbon3.Tabs.Add(this.ViewTab2);
             this.theme1.SetTheme(this.c1Ribbon3, "(default)");
@@ -6677,9 +6677,9 @@
             // 
             this.c1SplitterPanel8.Controls.Add(this.panel11);
             this.c1SplitterPanel8.Height = 775;
-            this.c1SplitterPanel8.Location = new System.Drawing.Point(570, 21);
+            this.c1SplitterPanel8.Location = new System.Drawing.Point(595, 21);
             this.c1SplitterPanel8.Name = "c1SplitterPanel8";
-            this.c1SplitterPanel8.Size = new System.Drawing.Size(817, 754);
+            this.c1SplitterPanel8.Size = new System.Drawing.Size(853, 754);
             this.c1SplitterPanel8.TabIndex = 1;
             this.c1SplitterPanel8.Text = "Panel 2";
             // 
@@ -6780,7 +6780,7 @@
             this.panel11.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
             this.panel11.Location = new System.Drawing.Point(0, 0);
             this.panel11.Name = "panel11";
-            this.panel11.Size = new System.Drawing.Size(817, 754);
+            this.panel11.Size = new System.Drawing.Size(853, 754);
             this.panel11.TabIndex = 0;
             this.theme1.SetTheme(this.panel11, "(default)");
             // 
@@ -8370,7 +8370,7 @@
             this.tabSememPESA.Controls.Add(this.panel3);
             this.tabSememPESA.Location = new System.Drawing.Point(1, 24);
             this.tabSememPESA.Name = "tabSememPESA";
-            this.tabSememPESA.Size = new System.Drawing.Size(1387, 775);
+            this.tabSememPESA.Size = new System.Drawing.Size(1448, 775);
             this.tabSememPESA.TabIndex = 2;
             this.tabSememPESA.Text = " PESA / TESE";
             // 
@@ -8382,7 +8382,7 @@
             this.panel3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
             this.panel3.Location = new System.Drawing.Point(0, 0);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(1387, 775);
+            this.panel3.Size = new System.Drawing.Size(1448, 775);
             this.panel3.TabIndex = 0;
             this.theme1.SetTheme(this.panel3, "(default)");
             // 
@@ -8401,7 +8401,7 @@
             this.sCPesa.Name = "sCPesa";
             this.sCPesa.Panels.Add(this.c1SplitterPanel5);
             this.sCPesa.Panels.Add(this.c1SplitterPanel6);
-            this.sCPesa.Size = new System.Drawing.Size(1387, 775);
+            this.sCPesa.Size = new System.Drawing.Size(1448, 775);
             this.sCPesa.SplitterColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(189)))), ((int)(((byte)(182)))));
             this.sCPesa.SplitterMovingColor = System.Drawing.Color.Black;
             this.sCPesa.TabIndex = 13;
@@ -10100,7 +10100,7 @@
             this.tabReport.Controls.Add(this.crySperm);
             this.tabReport.Location = new System.Drawing.Point(1, 24);
             this.tabReport.Name = "tabReport";
-            this.tabReport.Size = new System.Drawing.Size(1387, 775);
+            this.tabReport.Size = new System.Drawing.Size(1448, 775);
             this.tabReport.TabIndex = 4;
             this.tabReport.Text = "Report";
             // 
@@ -10114,7 +10114,7 @@
             this.crySperm.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
             this.crySperm.Location = new System.Drawing.Point(0, 0);
             this.crySperm.Name = "crySperm";
-            this.crySperm.Size = new System.Drawing.Size(1387, 775);
+            this.crySperm.Size = new System.Drawing.Size(1448, 775);
             this.crySperm.TabIndex = 2;
             this.theme1.SetTheme(this.crySperm, "(default)");
             // 
@@ -10122,7 +10122,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1389, 822);
+            this.ClientSize = new System.Drawing.Size(1450, 822);
             this.Controls.Add(this.tC);
             this.Controls.Add(this.sB);
             this.Name = "FrmLabSpermAdd";
@@ -10145,7 +10145,7 @@
             this.pnEmailAddSubject.ResumeLayout(false);
             this.pnEmailAddSubject.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btnSfSendEmail)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.btnMaleSearch)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnSfAgentEmail)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtSfEmailSubject)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtSfEmailTo)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.c1Ribbon1)).EndInit();
@@ -10220,7 +10220,7 @@
             this.panel5.ResumeLayout(false);
             this.panel5.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btnSendEmail)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.c1Button2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnAgentEmail)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtEmailSubject)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtEmailTo)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.c1Ribbon2)).EndInit();
@@ -10944,7 +10944,7 @@
         private C1.Win.C1Ribbon.RibbonTopToolBar ribbonTopToolBar1;
         private System.Windows.Forms.Panel pnEmailAddSubject;
         private C1.Win.C1Input.C1Button btnSfSendEmail;
-        private C1.Win.C1Input.C1Button btnMaleSearch;
+        private C1.Win.C1Input.C1Button btnSfAgentEmail;
         private System.Windows.Forms.Label label210;
         private C1.Win.C1Input.C1TextBox txtSfEmailSubject;
         private System.Windows.Forms.Label label211;
@@ -10955,7 +10955,7 @@
         private C1.Win.C1Input.C1TextBox txtEmailBody;
         private System.Windows.Forms.Panel panel5;
         private C1.Win.C1Input.C1Button btnSendEmail;
-        private C1.Win.C1Input.C1Button c1Button2;
+        private C1.Win.C1Input.C1Button btnAgentEmail;
         private System.Windows.Forms.Label label212;
         private C1.Win.C1Input.C1TextBox txtEmailSubject;
         private System.Windows.Forms.Label label213;

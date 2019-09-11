@@ -319,15 +319,33 @@ namespace clinic_ivf.gui
             {
                 FrmSearchHn frm = new FrmSearchHn(ic, FrmSearchHn.StatusConnection.host, FrmSearchHn.StatusSearch.DonorSearch, FrmSearchHn.StatusSearchTable.PttSearch);
                 frm.ShowDialog(this);
-                txtHn_2.Value = ic.sVsOld.PIDS;
-                label76.Text = ic.sVsOld.PName;
+                if (ic.sVsOld.PIDS.Trim().Equals("-"))
+                {
+                    txtHn_2.Value = "";
+                    label76.Text = "";
+                }
+                else
+                {
+                    txtHn_2.Value = ic.sVsOld.PIDS;
+                    label76.Text = ic.sVsOld.PName;
+                }
+                
             }
             else
             {
                 FrmSearchHn frm = new FrmSearchHn(ic, FrmSearchHn.StatusConnection.host, FrmSearchHn.StatusSearch.PttSearch, FrmSearchHn.StatusSearchTable.PttSearch);
                 frm.ShowDialog(this);
-                txtHn_2.Value = ic.sVsOld.PIDS;
-                label76.Text = ic.sVsOld.PName;
+                if (ic.sVsOld.PIDS.Trim().Equals("-"))
+                {
+                    txtHn_2.Value = "";
+                    label76.Text = "";
+                }
+                else
+                {
+                    txtHn_2.Value = ic.sVsOld.PIDS;
+                    label76.Text = ic.sVsOld.PName;
+                }
+                
             }
         }
 
@@ -340,8 +358,25 @@ namespace clinic_ivf.gui
             {
                 FrmSearchHn frm = new FrmSearchHn(ic, FrmSearchHn.StatusConnection.host, FrmSearchHn.StatusSearch.DonorSearch, FrmSearchHn.StatusSearchTable.PttSearch);
                 frm.ShowDialog(this);
-                txtHn_1.Value = ic.sVsOld.PIDS;
-                label78.Text = ic.sVsOld.PName;
+                if (ic.sVsOld.PIDS.Trim().Equals("-"))
+                {
+                    txtHn_1.Value = "";
+                    label78.Text = "";
+                }
+                else
+                {
+                    if (ic.sVsOld.PIDS.Trim().Equals("-"))
+                    {
+                        txtHn_1.Value = "";
+                        label78.Text = "";
+                    }
+                    else
+                    {
+                        txtHn_1.Value = ic.sVsOld.PIDS;
+                        label78.Text = ic.sVsOld.PName;
+                    }
+                    
+                }
             }
             else
             {

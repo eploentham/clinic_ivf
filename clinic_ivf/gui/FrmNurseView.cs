@@ -2037,7 +2037,7 @@ namespace clinic_ivf.gui
             {
                 LabSperm lsperm = new LabSperm();
                 lsperm = ic.ivfDB.lspermDB.selectByReqId(reqid);
-                FrmLabSpermAdd frm = new FrmLabSpermAdd(ic, reqid, lsperm.sperm_id, "");
+                FrmLabSpermAdd frm = new FrmLabSpermAdd(ic, reqid, lsperm.sperm_id, "nurse_view");
                 String txt = "";
                 if (!name.Equals(""))
                 {

@@ -288,7 +288,7 @@ namespace clinic_ivf.objdb
         public DataTable selectByNurseVn(String vn)
         {
             DataTable dt = new DataTable();
-            String sql = "Select  lreq.*,litem.LName, lbres.*,litem.method_id, litem.lab_unit_id " +
+            String sql = "Select  lreq.*,litem.LName, lbres.*,litem.method_id, litem.lab_unit_id, litem.LName as lab_name " +
                 "From lab_t_request lreq " +
                 //"Left Join t_visit vs on lreq.visit_id = vs.t_visit_id  " +
                 "Left Join LabItem litem on lreq.item_id = litem.LID " +
