@@ -12,7 +12,7 @@
   <xs:element name="lab_result" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="lab_result" msprop:Generator_UserDSName="lab_result">
     <xs:complexType>
       <xs:choice minOccurs="0" maxOccurs="unbounded">
-        <xs:element name="lab_result" msprop:Generator_TableClassName="lab_resultDataTable" msprop:Generator_TableVarName="tablelab_result" msprop:Generator_RowChangedName="lab_resultRowChanged" msprop:Generator_TablePropName="_lab_result" msprop:Generator_RowDeletingName="lab_resultRowDeleting" msprop:Generator_RowChangingName="lab_resultRowChanging" msprop:Generator_RowEvHandlerName="lab_resultRowChangeEventHandler" msprop:Generator_RowDeletedName="lab_resultRowDeleted" msprop:Generator_RowClassName="lab_resultRow" msprop:Generator_UserTableName="lab_result" msprop:Generator_RowEvArgName="lab_resultRowChangeEvent">
+        <xs:element name="lab_result" msprop:Generator_TableClassName="lab_resultDataTable" msprop:Generator_TableVarName="tablelab_result" msprop:Generator_TablePropName="_lab_result" msprop:Generator_RowDeletingName="lab_resultRowDeleting" msprop:Generator_RowChangingName="lab_resultRowChanging" msprop:Generator_RowEvHandlerName="lab_resultRowChangeEventHandler" msprop:Generator_RowDeletedName="lab_resultRowDeleted" msprop:Generator_UserTableName="lab_result" msprop:Generator_RowChangedName="lab_resultRowChanged" msprop:Generator_RowEvArgName="lab_resultRowChangeEvent" msprop:Generator_RowClassName="lab_resultRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="lab_name" msdata:Caption="DataColumn1" msprop:Generator_ColumnVarNameInTable="columnlab_name" msprop:Generator_ColumnPropNameInRow="lab_name" msprop:Generator_ColumnPropNameInTable="lab_nameColumn" msprop:Generator_UserColumnName="lab_name" type="xs:string" minOccurs="0" />
@@ -23,6 +23,7 @@
               <xs:element name="interpret" msprop:Generator_ColumnVarNameInTable="columninterpret" msprop:Generator_ColumnPropNameInRow="interpret" msprop:Generator_ColumnPropNameInTable="interpretColumn" msprop:Generator_UserColumnName="interpret" type="xs:string" minOccurs="0" />
               <xs:element name="remark" msprop:Generator_ColumnVarNameInTable="columnremark" msprop:Generator_ColumnPropNameInRow="remark" msprop:Generator_ColumnPropNameInTable="remarkColumn" msprop:Generator_UserColumnName="remark" type="xs:string" minOccurs="0" />
               <xs:element name="reactive_message" msprop:Generator_ColumnVarNameInTable="columnreactive_message" msprop:Generator_ColumnPropNameInRow="reactive_message" msprop:Generator_ColumnPropNameInTable="reactive_messageColumn" msprop:Generator_UserColumnName="reactive_message" type="xs:string" minOccurs="0" />
+              <xs:element name="doctor" msprop:Generator_ColumnVarNameInTable="columndoctor" msprop:Generator_ColumnPropNameInRow="doctor" msprop:Generator_ColumnPropNameInTable="doctorColumn" msprop:Generator_UserColumnName="doctor" type="xs:string" minOccurs="0" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>

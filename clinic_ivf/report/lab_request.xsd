@@ -12,11 +12,12 @@
   <xs:element name="lab_request" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="lab_request" msprop:Generator_UserDSName="lab_request">
     <xs:complexType>
       <xs:choice minOccurs="0" maxOccurs="unbounded">
-        <xs:element name="lab_request" msprop:Generator_TableClassName="lab_requestDataTable" msprop:Generator_TableVarName="tablelab_request" msprop:Generator_TablePropName="_lab_request" msprop:Generator_RowDeletingName="lab_requestRowDeleting" msprop:Generator_RowChangingName="lab_requestRowChanging" msprop:Generator_RowEvHandlerName="lab_requestRowChangeEventHandler" msprop:Generator_RowDeletedName="lab_requestRowDeleted" msprop:Generator_UserTableName="lab_request" msprop:Generator_RowChangedName="lab_requestRowChanged" msprop:Generator_RowEvArgName="lab_requestRowChangeEvent" msprop:Generator_RowClassName="lab_requestRow">
+        <xs:element name="lab_request" msprop:Generator_TableClassName="lab_requestDataTable" msprop:Generator_TableVarName="tablelab_request" msprop:Generator_RowChangedName="lab_requestRowChanged" msprop:Generator_TablePropName="_lab_request" msprop:Generator_RowDeletingName="lab_requestRowDeleting" msprop:Generator_RowChangingName="lab_requestRowChanging" msprop:Generator_RowEvHandlerName="lab_requestRowChangeEventHandler" msprop:Generator_RowDeletedName="lab_requestRowDeleted" msprop:Generator_RowClassName="lab_requestRow" msprop:Generator_UserTableName="lab_request" msprop:Generator_RowEvArgName="lab_requestRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="lab_name" msdata:Caption="DataColumn1" msprop:Generator_ColumnVarNameInTable="columnlab_name" msprop:Generator_ColumnPropNameInRow="lab_name" msprop:Generator_ColumnPropNameInTable="lab_nameColumn" msprop:Generator_UserColumnName="lab_name" type="xs:string" minOccurs="0" />
               <xs:element name="price" msdata:Caption="DataColumn1" msprop:Generator_ColumnVarNameInTable="columnprice" msprop:Generator_ColumnPropNameInRow="price" msprop:Generator_ColumnPropNameInTable="priceColumn" msprop:Generator_UserColumnName="price" type="xs:string" minOccurs="0" />
+              <xs:element name="remark" msprop:Generator_ColumnVarNameInTable="columnremark" msprop:Generator_ColumnPropNameInRow="remark" msprop:Generator_ColumnPropNameInTable="remarkColumn" msprop:Generator_UserColumnName="remark" type="xs:string" minOccurs="0" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>

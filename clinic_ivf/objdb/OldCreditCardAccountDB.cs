@@ -31,7 +31,7 @@ namespace clinic_ivf.objdb
             occa.remark = "remark";
             occa.date_cancel = "date_cancel";
             occa.date_create = "date_create";
-            occa.date_create = "date_create";
+            occa.date_modi = "date_create";
             occa.user_cancel = "user_cancel";
             occa.user_create = "user_create";
             occa.user_modi = "user_modi";
@@ -80,7 +80,7 @@ namespace clinic_ivf.objdb
                 " " + occa.CreditCardName + " = '" + p.CreditCardName.Replace("'", "''") + "'" +
                 //"," + oca.agent_code + " = '" + p.agent_code.Replace("'", "''") + "'" +
                 "," + occa.date_modi + " = now()" +
-                "," + occa.user_modi + " = '" + userId.Replace("'", "''") + "'" +
+                "," + occa.user_modi + " = '" + userId.Replace("'", "''") + "' " +
                 "Where " + occa.pkField + "='" + p.CreditCardID + "'"
                 ;
 
@@ -95,7 +95,7 @@ namespace clinic_ivf.objdb
 
             return re;
         }
-        public String insertCashAccount(OldCreditCardAccount p, String userId)
+        public String insertCreditAccount(OldCreditCardAccount p, String userId)
         {
             String re = "";
 
@@ -110,7 +110,7 @@ namespace clinic_ivf.objdb
 
             return re;
         }
-        public String VoidCashAccount(String stfId, String userIdVoid)
+        public String VoidCreditAccount(String stfId, String userIdVoid)
         {
             DataTable dt = new DataTable();
             String sql = "Update " + occa.table + " Set " +
@@ -118,9 +118,9 @@ namespace clinic_ivf.objdb
                 "," + occa.date_cancel + "=now() " +
                 "," + occa.user_cancel + "='" + userIdVoid + "' " +
                 "Where " + occa.pkField + "='" + stfId + "'";
-            conn.ExecuteNonQuery(conn.conn, sql);
+            String re = conn.ExecuteNonQuery(conn.conn, sql);
 
-            return "1";
+            return re;
         }
         public DataTable selectByCreditCardName()
         {

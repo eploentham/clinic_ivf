@@ -38,7 +38,7 @@ namespace clinic_ivf.control
         
         public String userId = "";
         public String copID = "", jobID = "", cusID = "", addrID = "", contID = "", cusrID = "", custID = "", stfID = "", deptID = "", posiID = "", drawID = "", email="";
-        public String rContactName = "", rContacTel = "", rContID = "", userIderc = "", NumSticker="";
+        public String rContactName = "", rContacTel = "", rContID = "", userIderc = "", NumSticker="", labrequestremark="";
         
         public Staff sStf, cStf;
         

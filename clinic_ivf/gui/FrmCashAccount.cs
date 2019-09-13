@@ -165,7 +165,7 @@ namespace clinic_ivf.gui
             if (MessageBox.Show("ต้องการ บันทึกช้อมูล ", "", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == DialogResult.OK)
             {
                 setCreditAccount();
-                String re = ic.ivfDB.ocrDB.insertCashAccount(ocr, ic.user.staff_id);
+                String re = ic.ivfDB.ocrDB.insertCreditAccount(ocr, ic.user.staff_id);
                 long chk = 0;
                 if (long.TryParse(re, out chk))
                 {
@@ -176,7 +176,7 @@ namespace clinic_ivf.gui
                 {
                     btnCrSave.Image = Resources.accept_database24;
                 }
-                setGrfCa();
+                setGrfCr();
                 setControlCrEnable(false);
                 //this.Dispose();
             }
@@ -187,7 +187,7 @@ namespace clinic_ivf.gui
             //throw new NotImplementedException();
             if (MessageBox.Show("ต้องการ ยกเลิกช้อมูล ", "", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == DialogResult.OK)
             {
-                ic.ivfDB.ocrDB.VoidCashAccount(txtCaID.Text, userIdVoid);
+                ic.ivfDB.ocrDB.VoidCreditAccount(txtCrID.Text, userIdVoid);
                 setGrfCr();
             }
         }

@@ -218,6 +218,7 @@ namespace clinic_ivf.gui
             btnPrintHormone.Click += BtnPrintHormone_Click;
             btnPrintInfectious.Click += BtnPrintInfectious_Click;
             btnPrnLabReq.Click += BtnPrnLabReq_Click;
+            btnLabReq.Click += BtnLabReq_Click;
 
             chkPmhMarried.CheckedChanged += ChkPmhMarried_CheckedChanged;
             chkPmhConOther.CheckedChanged += ChkPmhConOther_CheckedChanged;
@@ -322,6 +323,56 @@ namespace clinic_ivf.gui
             //setGrfPtt("");
             initProgressNote();
             pageLoad = false;
+        }
+
+        private void BtnLabReq_Click(object sender, EventArgs e)
+        {
+            //throw new NotImplementedException();
+            ic.labrequestremark = "";
+            FrmNurseLabNote frm = new FrmNurseLabNote();
+            frm.ShowDialog(this);
+
+            foreach(Row row in grfLab.Rows)
+            {
+                if (row[colRsLabId].ToString().Equals("ส่ง request"))
+                {
+                    try
+                    {
+                        stt.Show("<p><b>ส่ง request</b></p> <br>" + grfLab[grfLab.Row, collabName].ToString(), txtName_2, 10, 20, 5);//<p><b>สวัสดี</b></p>
+                                                                                                                                     //System.Threading.Thread.Sleep(1000);
+                                                                                                                                     //Application.DoEvents();
+                        String dtrid = "", errfor = "", lgid = "", reqid = "", itmid = "", jlabid = "";
+                        LabRequest lbReq = new LabRequest();
+                        dtrid = cboDoctor.SelectedItem == null ? "" : ((ComboBoxItem)cboDoctor.SelectedItem).Value;
+                        jlabid = grfLab[grfLab.Row, collabjoblabid] != null ? grfLab[grfLab.Row, collabjoblabid].ToString() : "";
+                        OldJobLabDetail oldjobd = new OldJobLabDetail();
+                        oldjobd = ic.ivfDB.oJlabdDB.selectByPk1(jlabid);
+                        if (ptt.f_sex_id.Equals("1"))
+                        {
+                            lbReq = ic.ivfDB.setLabRequest("", txtVnOld.Text, dtrid, ic.labrequestremark, "", ic.datetoDB(txtDob.Text), oldjobd.ID, oldjobd.LID, txtHn.Text, txtPttNameE.Text, "", "", "", txtVsId.Text);
+                        }
+                        else if (ptt.f_sex_id.Equals("2"))
+                        {
+                            lbReq = ic.ivfDB.setLabRequest(txtPttNameE.Text, txtVnOld.Text, dtrid, ic.labrequestremark, txtHn.Text, ic.datetoDB(txtDob.Text), oldjobd.ID, oldjobd.LID, "", "", "", "", "", txtVsId.Text);
+                        }
+                        long chk = 0;
+                        String re = ic.ivfDB.lbReqDB.insertLabRequest(lbReq, ic.userId);
+                        if (long.TryParse(re, out chk))
+                        {
+                            String re1 = ic.ivfDB.oJlabdDB.updateReqId(re, oldjobd.ID);
+                            if (long.TryParse(re1, out chk))
+                            {
+                                //setGrfLab();
+                            }
+                        }
+                    }
+                    catch(Exception ex)
+                    {
+
+                    }
+                }
+            }
+            setGrfLab();
         }
 
         private void BtnPrnLabReq_Click(object sender, EventArgs e)
@@ -1034,6 +1085,7 @@ namespace clinic_ivf.gui
             DataTable dt = new DataTable();
             dt = ic.ivfDB.lbReqDB.selectByNurseVn(cboLabVs.Text);
             int i = 0;
+            Boolean chkSend = false;
             foreach(DataRow row in dtlab.Rows)
             {
                 i++;
@@ -1044,6 +1096,15 @@ namespace clinic_ivf.gui
                 row1[collabjoblabid] = row["ID"];
                 row1[collabjoblabreqid] = row["req_id"];
                 row1.StyleNew.BackColor = colorred;
+                chkSend = true;
+            }
+            if (chkSend)
+            {
+                btnLabReq.Show();
+            }
+            else
+            {
+                btnLabReq.Hide();
             }
             foreach (DataRow row in dt.Rows)
             {

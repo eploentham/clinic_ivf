@@ -54,6 +54,7 @@ namespace clinic_ivf.objdb
             lbRes.req_date_time = "req_date_time";
             lbRes.date_time_receive = "date_time_receive";
             lbRes.reactive_message = "reactive_message";
+            lbRes.doctor_id = "doctor_id";
 
             lbRes.table = "lab_t_result";
             lbRes.pkField = "result_id";
@@ -97,6 +98,7 @@ namespace clinic_ivf.objdb
                 itm1.req_date_time = row[lbRes.req_date_time].ToString();
                 itm1.date_time_receive = row[lbRes.date_time_receive].ToString();
                 itm1.reactive_message = row[lbRes.reactive_message].ToString();
+                itm1.doctor_id = row[lbRes.doctor_id].ToString();
                 lDgs.Add(itm1);
             }
         }
@@ -210,11 +212,12 @@ namespace clinic_ivf.objdb
             DataTable dt = new DataTable();
             String sql = "select lbRes.result,lbRes.interpret,lbRes.remark, LabItem.LName as lab_name,LabItem.lab_unit_id,LabItem.method_id,lab_b_unit.lab_unit_name as unit" +
                 ",lab_b_method.method_name as method, lbRes.reactive_message, LabItem.LID,lbRes.date_time_result,lbRes.date_time_approve, lbRes.req_date_time,lbRes.date_time_receive " +
-                " " +
+                ",LabItem.normal_vaule, dtr.Name " +
                 "From " + lbRes.table + " lbRes " +
                 "Left Join LabItem on lbRes." + lbRes.lab_id + " = LabItem.LID " +
                 "Left Join lab_b_unit on LabItem.lab_unit_id = lab_b_unit.lab_unit_id " +
                 "Left Join lab_b_method on LabItem.method_id = lab_b_method.method_id " +
+                "Left Join Doctor dtr on dtr.ID = lbRes.doctor_id " +
                 "Where lbRes." + lbRes.status_result + " ='2'  and lbRes.visit_id = '" + vsid + "' and LabItem.lab_group_id = '2550000000' " +
                 "Order By lbRes." + lbRes.req_id;
             dt = conn.selectData(conn.conn, sql);
@@ -225,11 +228,12 @@ namespace clinic_ivf.objdb
             DataTable dt = new DataTable();
             String sql = "select lbRes.result,lbRes.interpret,lbRes.remark, LabItem.LName as lab_name,LabItem.lab_unit_id,LabItem.method_id,lab_b_unit.lab_unit_name as unit" +
                 ",lab_b_method.method_name as method, lbRes.reactive_message, LabItem.LID,lbRes.date_time_result,lbRes.date_time_approve, lbRes.req_date_time,lbRes.date_time_receive " +
-                " " +
+                ",LabItem.normal_vaule, dtr.Name " +
                 "From " + lbRes.table + " lbRes " +
                 "Left Join LabItem on lbRes." + lbRes.lab_id + " = LabItem.LID " +
                 "Left Join lab_b_unit on LabItem.lab_unit_id = lab_b_unit.lab_unit_id " +
                 "Left Join lab_b_method on LabItem.method_id = lab_b_method.method_id " +
+                "Left Join Doctor dtr on dtr.ID = lbRes.doctor_id " +
                 "Where lbRes." + lbRes.status_result + " ='2'  and lbRes.visit_id = '" + vsid + "' and LabItem.lab_group_id = '2550000001' " +
                 "Order By lbRes." + lbRes.req_id;
             dt = conn.selectData(conn.conn, sql);
@@ -355,6 +359,7 @@ namespace clinic_ivf.objdb
             p.lab_id = long.TryParse(p.lab_id, out chk) ? chk.ToString() : "0";
             p.patient_id = long.TryParse(p.patient_id, out chk) ? chk.ToString() : "0";
             p.visit_id = long.TryParse(p.visit_id, out chk) ? chk.ToString() : "0";
+            p.doctor_id = long.TryParse(p.doctor_id, out chk) ? chk.ToString() : "0";
         }
         public String insert(LabResult p, String userId)
         {
@@ -395,6 +400,7 @@ namespace clinic_ivf.objdb
                 "," + lbRes.req_date_time + " " + "= '" + p.req_date_time + "'" +
                 "," + lbRes.date_time_receive + " " + "= '" + p.date_time_receive + "'" +
                 "," + lbRes.reactive_message + " " + "= '" + p.reactive_message + "'" +
+                "," + lbRes.doctor_id + " " + "= '" + p.doctor_id + "'" +
                 "";
             try
             {
@@ -465,6 +471,7 @@ namespace clinic_ivf.objdb
                 "," + lbRes.status_result + " " + "= '" + p.status_result + "'" +
                 "," + lbRes.row1 + " " + "= '" + p.row1 + "'" +
                 "," + lbRes.reactive_message + " " + "= '" + p.reactive_message + "'" +
+                "," + lbRes.doctor_id + " " + "= '" + p.doctor_id + "'" +
                 "Where " + lbRes.pkField + "='" + p.result_id + "'"
                 ;
 
@@ -601,6 +608,7 @@ namespace clinic_ivf.objdb
                 dgs1.req_date_time = dt.Rows[0][lbRes.req_date_time].ToString();
                 dgs1.date_time_receive = dt.Rows[0][lbRes.date_time_receive].ToString();
                 dgs1.reactive_message = dt.Rows[0][lbRes.reactive_message].ToString();
+                dgs1.doctor_id = dt.Rows[0][lbRes.doctor_id].ToString();
             }
             else
             {
@@ -639,6 +647,7 @@ namespace clinic_ivf.objdb
             dgs1.req_date_time = "";
             dgs1.date_time_receive = "";
             dgs1.reactive_message = "";
+            dgs1.doctor_id = "";
             return dgs1;
         }
     }

@@ -283,6 +283,8 @@ namespace clinic_ivf.report {
             
             private global::System.Data.DataColumn columnprice;
             
+            private global::System.Data.DataColumn columnremark;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public lab_requestDataTable() {
@@ -334,6 +336,14 @@ namespace clinic_ivf.report {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn remarkColumn {
+                get {
+                    return this.columnremark;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -369,11 +379,12 @@ namespace clinic_ivf.report {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public lab_requestRow Addlab_requestRow(string lab_name, string price) {
+            public lab_requestRow Addlab_requestRow(string lab_name, string price, string remark) {
                 lab_requestRow rowlab_requestRow = ((lab_requestRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         lab_name,
-                        price};
+                        price,
+                        remark};
                 rowlab_requestRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowlab_requestRow);
                 return rowlab_requestRow;
@@ -398,6 +409,7 @@ namespace clinic_ivf.report {
             internal void InitVars() {
                 this.columnlab_name = base.Columns["lab_name"];
                 this.columnprice = base.Columns["price"];
+                this.columnremark = base.Columns["remark"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -407,6 +419,8 @@ namespace clinic_ivf.report {
                 base.Columns.Add(this.columnlab_name);
                 this.columnprice = new global::System.Data.DataColumn("price", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnprice);
+                this.columnremark = new global::System.Data.DataColumn("remark", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnremark);
                 this.columnlab_name.Caption = "DataColumn1";
                 this.columnprice.Caption = "DataColumn1";
                 this.ExtendedProperties.Add("Generator_TablePropName", "_lab_request");
@@ -585,6 +599,22 @@ namespace clinic_ivf.report {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string remark {
+                get {
+                    try {
+                        return ((string)(this[this.tablelab_request.remarkColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'remark\' in table \'lab_request\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablelab_request.remarkColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public bool Islab_nameNull() {
                 return this.IsNull(this.tablelab_request.lab_nameColumn);
             }
@@ -605,6 +635,18 @@ namespace clinic_ivf.report {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public void SetpriceNull() {
                 this[this.tablelab_request.priceColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IsremarkNull() {
+                return this.IsNull(this.tablelab_request.remarkColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetremarkNull() {
+                this[this.tablelab_request.remarkColumn] = global::System.Convert.DBNull;
             }
         }
         

@@ -30,5 +30,6 @@ namespace clinic_ivf.object1
         public String req_date_time { get; set; }
         public String date_time_receive { get; set; }
         public String reactive_message { get; set; }
+        public String doctor_id { get; set; }
     }
 }

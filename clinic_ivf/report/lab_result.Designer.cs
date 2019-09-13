@@ -295,6 +295,8 @@ namespace clinic_ivf.report {
             
             private global::System.Data.DataColumn columnreactive_message;
             
+            private global::System.Data.DataColumn columndoctor;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public lab_resultDataTable() {
@@ -394,6 +396,14 @@ namespace clinic_ivf.report {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn doctorColumn {
+                get {
+                    return this.columndoctor;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -429,7 +439,7 @@ namespace clinic_ivf.report {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public lab_resultRow Addlab_resultRow(string lab_name, string method, string result, string unit, string normal_value, string interpret, string remark, string reactive_message) {
+            public lab_resultRow Addlab_resultRow(string lab_name, string method, string result, string unit, string normal_value, string interpret, string remark, string reactive_message, string doctor) {
                 lab_resultRow rowlab_resultRow = ((lab_resultRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         lab_name,
@@ -439,7 +449,8 @@ namespace clinic_ivf.report {
                         normal_value,
                         interpret,
                         remark,
-                        reactive_message};
+                        reactive_message,
+                        doctor};
                 rowlab_resultRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowlab_resultRow);
                 return rowlab_resultRow;
@@ -470,6 +481,7 @@ namespace clinic_ivf.report {
                 this.columninterpret = base.Columns["interpret"];
                 this.columnremark = base.Columns["remark"];
                 this.columnreactive_message = base.Columns["reactive_message"];
+                this.columndoctor = base.Columns["doctor"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -491,6 +503,8 @@ namespace clinic_ivf.report {
                 base.Columns.Add(this.columnremark);
                 this.columnreactive_message = new global::System.Data.DataColumn("reactive_message", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnreactive_message);
+                this.columndoctor = new global::System.Data.DataColumn("doctor", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columndoctor);
                 this.columnlab_name.Caption = "DataColumn1";
                 this.columnmethod.Caption = "DataColumn1";
                 this.columnresult.Caption = "DataColumn1";
@@ -768,6 +782,22 @@ namespace clinic_ivf.report {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string doctor {
+                get {
+                    try {
+                        return ((string)(this[this.tablelab_result.doctorColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'doctor\' in table \'lab_result\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablelab_result.doctorColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public bool Islab_nameNull() {
                 return this.IsNull(this.tablelab_result.lab_nameColumn);
             }
@@ -860,6 +890,18 @@ namespace clinic_ivf.report {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public void Setreactive_messageNull() {
                 this[this.tablelab_result.reactive_messageColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IsdoctorNull() {
+                return this.IsNull(this.tablelab_result.doctorColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetdoctorNull() {
+                this[this.tablelab_result.doctorColumn] = global::System.Convert.DBNull;
             }
         }
         
