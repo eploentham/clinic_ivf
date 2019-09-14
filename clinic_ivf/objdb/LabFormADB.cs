@@ -636,6 +636,46 @@ namespace clinic_ivf.objdb
             }
             return re;
         }
+        public String VoidFET(String id)
+        {
+            String re = "";
+            String sql = "";
+
+            sql = "Update " + lformA.table + " " +
+                //" Set "+lformA.patient_appoint_date_time + "='"+p.patient_appoint_date_time + "' " +
+                "Set " + lformA.status_fet_active + "='3' " +
+                "," + lformA.req_id_fet + "=0 " +
+                " Where " + lformA.pkField + " = '" + id + "' ";
+            try
+            {
+                re = conn.ExecuteNonQuery(conn.conn, sql);
+            }
+            catch (Exception ex)
+            {
+                sql = ex.Message + " " + ex.InnerException;
+            }
+            return re;
+        }
+        public String VoidOPU(String id)
+        {
+            String re = "";
+            String sql = "";
+
+            sql = "Update " + lformA.table + " " +
+                //" Set "+lformA.patient_appoint_date_time + "='"+p.patient_appoint_date_time + "' " +
+                "Set " + lformA.status_opu_active + "='3' " +
+                "," + lformA.req_id_opu + "=0 " +
+                " Where " + lformA.pkField + " = '" + id + "' ";
+            try
+            {
+                re = conn.ExecuteNonQuery(conn.conn, sql);
+            }
+            catch (Exception ex)
+            {
+                sql = ex.Message + " " + ex.InnerException;
+            }
+            return re;
+        }
         public DataTable selectReportByPk(String pttId)
         {
             DataTable dt = new DataTable();

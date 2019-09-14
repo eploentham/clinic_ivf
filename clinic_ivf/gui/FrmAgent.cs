@@ -65,6 +65,7 @@ namespace clinic_ivf.gui
             btnSave.Click += BtnSave_Click;
             btnEdit.Click += BtnEdit_Click;
             btnClose.Click += BtnClose_Click;
+            btnVoid.Click += BtnVoid_Click;
 
             initGrfAgent();
             setGrfAgent();
@@ -76,6 +77,16 @@ namespace clinic_ivf.gui
             stt = new C1SuperTooltip();
             sep = new C1SuperErrorProvider();
             //stt.BackgroundGradient = C1.Win.C1SuperTooltip.BackgroundGradient.Gold;
+        }
+
+        private void BtnVoid_Click(object sender, EventArgs e)
+        {
+            //throw new NotImplementedException();
+            if (MessageBox.Show("ต้องการ ยกเลิกช้อมูล ", "", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == DialogResult.OK)
+            {
+                ic.ivfDB.posiDB.VoidPosition(txtID.Text, userIdVoid);
+                setGrfAgent();
+            }
         }
 
         private void BtnClose_Click(object sender, EventArgs e)
@@ -322,11 +333,7 @@ namespace clinic_ivf.gui
         }
         private void btnVoid_Click(object sender, EventArgs e)
         {
-            if (MessageBox.Show("ต้องการ ยกเลิกช้อมูล ", "", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == DialogResult.OK)
-            {
-                ic.ivfDB.posiDB.VoidPosition(txtID.Text, userIdVoid);
-                setGrfAgent();
-            }
+            
         }
         //private void btnSave_Click(object sender, EventArgs e)
         //{

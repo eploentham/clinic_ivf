@@ -21,7 +21,7 @@ namespace clinic_ivf.gui
     public partial class FrmLabFormA : Form
     {
         IvfControl ic;
-        String lformaId = "", pttid="", vsid="", vn="";
+        String lformaId = "", pttid="", vsid="", vn="", userIdVoid="";
         LabFormA lFormA;
 
         C1SuperTooltip stt;
@@ -55,6 +55,11 @@ namespace clinic_ivf.gui
             chkOPUActive.Checked = false;
             chkOPUActiveWait.Checked = false;
             chkOPUUnActive.Checked = false;
+            txtPasswordVoidOPU.Hide();
+            txtPasswordVoidFET.Hide();
+            btnVoidOPU.Hide();
+            btnVoidFET.Hide();
+
             setControl();
 
             btnSave.Click += BtnSave_Click;
@@ -79,6 +84,12 @@ namespace clinic_ivf.gui
             chkSpermIUI.CheckedChanged += ChkSpermIUI_CheckedChanged;
             chkPgs.Click += ChkPgs_Click;
             chkNgs.Click += ChkNgs_Click;
+            chkVoidOPU.Click += ChkVoidOPU_Click;
+            chkVoidFET.Click += ChkVoidFET_Click;
+            txtPasswordVoidOPU.KeyUp += TxtPasswordVoidOPU_KeyUp;
+            txtPasswordVoidFET.KeyUp += TxtPasswordVoidFET_KeyUp;
+            btnVoidOPU.Click += BtnVoidOPU_Click;
+            btnVoidFET.Click += BtnVoidFET_Click;
 
             ChkEmbryoTranfer_CheckStateChanged(null, null);
             //ChkNgs_CheckedChanged(null, null);
@@ -121,6 +132,124 @@ namespace clinic_ivf.gui
             //lbMessage.Hide();
             lbMessage1.Text = "";
             sB1.Text = "";
+        }
+
+        private void BtnVoidFET_Click(object sender, EventArgs e)
+        {
+            //throw new NotImplementedException();
+            if (MessageBox.Show("ต้องการ ยกเลิกช้อมูล FET", "", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == DialogResult.OK)
+            {
+                //ic.ivfDB.posiDB.VoidPosition(txtID.Text, userIdVoid);
+                //setGrfAgent();
+                long chk = 0;
+                LabFormA forma = new LabFormA();
+                forma = ic.ivfDB.lFormaDB.selectByPk1(txtID.Text);
+                if (long.TryParse(forma.req_id_fet, out chk))
+                {
+                    if (chk > 0)
+                    {
+                        String re = "";
+                        re = ic.ivfDB.lFormaDB.VoidFET(forma.form_a_id);
+                        if (long.TryParse(re, out chk))
+                        {
+                            ic.ivfDB.lbReqDB.VoidRequest(forma.req_id_fet, userIdVoid);
+                        }
+                    }
+                }
+            }
+        }
+
+        private void BtnVoidOPU_Click(object sender, EventArgs e)
+        {
+            //throw new NotImplementedException();
+            if (MessageBox.Show("ต้องการ ยกเลิกช้อมูล OPU", "", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == DialogResult.OK)
+            {
+                //ic.ivfDB.posiDB.VoidPosition(txtID.Text, userIdVoid);
+                long chk = 0;
+                LabFormA forma = new LabFormA();
+                forma = ic.ivfDB.lFormaDB.selectByPk1(txtID.Text);
+                if(long.TryParse(forma.req_id_opu, out chk))
+                {
+                    if (chk > 0)
+                    {
+                        String re = "";
+                        re = ic.ivfDB.lFormaDB.VoidOPU(forma.form_a_id);
+                        if (long.TryParse(re, out chk))
+                        {
+                            ic.ivfDB.lbReqDB.VoidRequest(forma.req_id_opu, userIdVoid);
+                        }
+                    }
+                }
+                //setGrfAgent();
+            }
+        }
+
+        private void TxtPasswordVoidFET_KeyUp(object sender, KeyEventArgs e)
+        {
+            //throw new NotImplementedException();
+            if (e.KeyCode == Keys.Enter)
+            {
+                userIdVoid = "";
+                userIdVoid = ic.ivfDB.stfDB.selectByPasswordAdmin(txtPasswordVoidFET.Text.Trim());
+                if (userIdVoid.Length > 0)
+                {
+                    txtPasswordVoidFET.Hide();
+                    btnVoidFET.Show();
+                    //stt.Show("<p><b>ต้องการยกเลิก</b></p> <br> รหัสผ่านถูกต้อง", btnVoid);
+                }
+                else
+                {
+                    sep.SetError(txtPasswordVoidFET, "333");
+                }
+            }
+        }
+
+        private void TxtPasswordVoidOPU_KeyUp(object sender, KeyEventArgs e)
+        {
+            //throw new NotImplementedException();
+            if (e.KeyCode == Keys.Enter)
+            {
+                userIdVoid = "";
+                userIdVoid = ic.ivfDB.stfDB.selectByPasswordAdmin(txtPasswordVoidOPU.Text.Trim());
+                if (userIdVoid.Length > 0)
+                {
+                    txtPasswordVoidOPU.Hide();
+                    btnVoidOPU.Show();
+                    //stt.Show("<p><b>ต้องการยกเลิก</b></p> <br> รหัสผ่านถูกต้อง", btnVoid);
+                }
+                else
+                {
+                    sep.SetError(txtPasswordVoidOPU, "333");
+                }
+            }
+        }
+
+        private void ChkVoidFET_Click(object sender, EventArgs e)
+        {
+            //throw new NotImplementedException();
+            if (chkVoidFET.Checked)
+            {
+                txtPasswordVoidFET.Show();
+                txtPasswordVoidFET.Focus();
+            }
+            else
+            {
+                txtPasswordVoidFET.Hide();
+            }
+        }
+
+        private void ChkVoidOPU_Click(object sender, EventArgs e)
+        {
+            //throw new NotImplementedException();
+            if (chkVoidOPU.Checked)
+            {
+                txtPasswordVoidOPU.Show();
+                txtPasswordVoidOPU.Focus();
+            }
+            else
+            {
+                txtPasswordVoidOPU.Hide();
+            }
         }
 
         private void ChkNgs_Click(object sender, EventArgs e)
@@ -1054,14 +1183,18 @@ namespace clinic_ivf.gui
             }
             //gbOPU.Enabled = false;
             //gbETFET.Enabled = false;
-            
-            String reqopuid = ic.ivfDB.oJsDB.selectByStatusFET(txtVnOld.Text);
-            String reqfetid = ic.ivfDB.oJsDB.selectByStatusFET(txtVnOld.Text);
-            String reqetid = ic.ivfDB.oJsDB.selectByStatusFET(txtVnOld.Text);
-            String reqanaid = ic.ivfDB.oJsDB.selectByStatusFET(txtVnOld.Text);
-            String reqfreezingid = ic.ivfDB.oJsDB.selectByStatusFET(txtVnOld.Text);
-            String reqpesaid = ic.ivfDB.oJsDB.selectByStatusFET(txtVnOld.Text);
-            String reqiuiid = ic.ivfDB.oJsDB.selectByStatusFET(txtVnOld.Text);
+
+            //String reqopuid = ic.ivfDB.oJsDB.selectByStatusFET(txtVnOld.Text);
+            //String reqfetid = ic.ivfDB.oJsDB.selectByStatusFET(txtVnOld.Text);
+            //String reqetid = ic.ivfDB.oJsDB.selectByStatusFET(txtVnOld.Text);
+            //String reqanaid = ic.ivfDB.oJsDB.selectByStatusFET(txtVnOld.Text);
+            //String reqfreezingid = ic.ivfDB.oJsDB.selectByStatusFET(txtVnOld.Text);
+            //String reqpesaid = ic.ivfDB.oJsDB.selectByStatusFET(txtVnOld.Text);
+            //String reqiuiid = ic.ivfDB.oJsDB.selectByStatusFET(txtVnOld.Text);
+            if (lFormA.status_opu_active.Equals("3"))
+            {
+                lbMessage1.Text = "มี ยกเลิก OPU";
+            }
         }
         private void setControl1()
         {
