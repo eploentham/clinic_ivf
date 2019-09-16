@@ -329,7 +329,7 @@ namespace clinic_ivf.gui
         {
             //throw new NotImplementedException();
             ic.labrequestremark = "";
-            FrmNurseLabNote frm = new FrmNurseLabNote();
+            FrmNurseLabNote frm = new FrmNurseLabNote(ic);
             frm.ShowDialog(this);
 
             foreach(Row row in grfLab.Rows)

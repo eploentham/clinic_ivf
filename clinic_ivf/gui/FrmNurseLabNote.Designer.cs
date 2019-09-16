@@ -90,6 +90,7 @@
             this.Name = "FrmNurseLabNote";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FrmNurseLabNote";
+            this.Load += new System.EventHandler(this.FrmNurseLabNote_Load);
             ((System.ComponentModel.ISupportInitialize)(this.cboRemark)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnSave)).EndInit();
             this.ResumeLayout(false);

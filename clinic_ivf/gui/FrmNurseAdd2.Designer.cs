@@ -157,6 +157,7 @@
             this.tabLab = new C1.Win.C1Command.C1DockingTabPage();
             this.pnLabVs = new System.Windows.Forms.Panel();
             this.pnLab = new System.Windows.Forms.Panel();
+            this.btnLabReq = new C1.Win.C1Input.C1Button();
             this.btnPrnLabReq = new C1.Win.C1Input.C1Button();
             this.c1Button2 = new C1.Win.C1Input.C1Button();
             this.btnPrintInfectious = new C1.Win.C1Input.C1Button();
@@ -725,7 +726,6 @@
             this.c1SplitterPanel4 = new C1.Win.C1SplitContainer.C1SplitterPanel();
             this.c1SplitterPanel5 = new C1.Win.C1SplitContainer.C1SplitterPanel();
             this.cPdf = new C1.Win.C1Document.C1PdfDocumentSource(this.components);
-            this.btnLabReq = new C1.Win.C1Input.C1Button();
             this.sB.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.theme1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.sC)).BeginInit();
@@ -819,6 +819,7 @@
             this.tabPkg.SuspendLayout();
             this.tabLab.SuspendLayout();
             this.pnLab.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.btnLabReq)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnPrnLabReq)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.c1Button2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnPrintInfectious)).BeginInit();
@@ -1136,7 +1137,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.btnSave)).BeginInit();
             this.c1SplitterPanel4.SuspendLayout();
             this.c1SplitterPanel5.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.btnLabReq)).BeginInit();
             this.SuspendLayout();
             // 
             // sB
@@ -2943,6 +2943,20 @@
             this.pnLab.Size = new System.Drawing.Size(1585, 62);
             this.pnLab.TabIndex = 0;
             this.theme1.SetTheme(this.pnLab, "(default)");
+            // 
+            // btnLabReq
+            // 
+            this.btnLabReq.Image = global::clinic_ivf.Properties.Resources.Print_large;
+            this.btnLabReq.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnLabReq.Location = new System.Drawing.Point(823, 14);
+            this.btnLabReq.Name = "btnLabReq";
+            this.btnLabReq.Size = new System.Drawing.Size(121, 34);
+            this.btnLabReq.TabIndex = 980;
+            this.btnLabReq.Text = "send  Request";
+            this.btnLabReq.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.theme1.SetTheme(this.btnLabReq, "(default)");
+            this.btnLabReq.UseVisualStyleBackColor = true;
+            this.btnLabReq.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
             // 
             // btnPrnLabReq
             // 
@@ -11342,20 +11356,6 @@
             this.c1SplitterPanel5.TabIndex = 1;
             this.c1SplitterPanel5.Text = "Panel 2";
             // 
-            // btnLabReq
-            // 
-            this.btnLabReq.Image = global::clinic_ivf.Properties.Resources.Print_large;
-            this.btnLabReq.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnLabReq.Location = new System.Drawing.Point(823, 14);
-            this.btnLabReq.Name = "btnLabReq";
-            this.btnLabReq.Size = new System.Drawing.Size(121, 34);
-            this.btnLabReq.TabIndex = 980;
-            this.btnLabReq.Text = "send  Request";
-            this.btnLabReq.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.theme1.SetTheme(this.btnLabReq, "(default)");
-            this.btnLabReq.UseVisualStyleBackColor = true;
-            this.btnLabReq.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
-            // 
             // FrmNurseAdd2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -11465,6 +11465,7 @@
             this.tabLab.ResumeLayout(false);
             this.pnLab.ResumeLayout(false);
             this.pnLab.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.btnLabReq)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnPrnLabReq)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.c1Button2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnPrintInfectious)).EndInit();
@@ -11836,7 +11837,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.btnSave)).EndInit();
             this.c1SplitterPanel4.ResumeLayout(false);
             this.c1SplitterPanel5.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.btnLabReq)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

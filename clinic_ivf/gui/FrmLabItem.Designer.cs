@@ -121,7 +121,7 @@
             // 
             this.sB.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.sB1});
-            this.sB.Location = new System.Drawing.Point(0, 689);
+            this.sB.Location = new System.Drawing.Point(0, 748);
             this.sB.Name = "sB";
             this.sB.Size = new System.Drawing.Size(1398, 22);
             this.sB.TabIndex = 6;
@@ -152,7 +152,7 @@
             this.sCMain.Name = "sCMain";
             this.sCMain.Panels.Add(this.c1SplitterPanel1);
             this.sCMain.Panels.Add(this.c1SplitterPanel2);
-            this.sCMain.Size = new System.Drawing.Size(1398, 689);
+            this.sCMain.Size = new System.Drawing.Size(1398, 748);
             this.sCMain.SplitterColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(189)))), ((int)(((byte)(182)))));
             this.sCMain.SplitterMovingColor = System.Drawing.Color.Black;
             this.sCMain.TabIndex = 7;
@@ -166,7 +166,7 @@
             this.c1SplitterPanel1.Dock = C1.Win.C1SplitContainer.PanelDockStyle.Left;
             this.c1SplitterPanel1.Location = new System.Drawing.Point(0, 21);
             this.c1SplitterPanel1.Name = "c1SplitterPanel1";
-            this.c1SplitterPanel1.Size = new System.Drawing.Size(573, 668);
+            this.c1SplitterPanel1.Size = new System.Drawing.Size(573, 727);
             this.c1SplitterPanel1.SizeRatio = 41.607D;
             this.c1SplitterPanel1.TabIndex = 0;
             this.c1SplitterPanel1.Text = "Panel 1";
@@ -179,17 +179,17 @@
             this.panel1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(573, 668);
+            this.panel1.Size = new System.Drawing.Size(573, 727);
             this.panel1.TabIndex = 0;
             this.theme1.SetTheme(this.panel1, "(default)");
             // 
             // c1SplitterPanel2
             // 
             this.c1SplitterPanel2.Controls.Add(this.panel2);
-            this.c1SplitterPanel2.Height = 689;
+            this.c1SplitterPanel2.Height = 748;
             this.c1SplitterPanel2.Location = new System.Drawing.Point(584, 21);
             this.c1SplitterPanel2.Name = "c1SplitterPanel2";
-            this.c1SplitterPanel2.Size = new System.Drawing.Size(814, 668);
+            this.c1SplitterPanel2.Size = new System.Drawing.Size(814, 727);
             this.c1SplitterPanel2.TabIndex = 1;
             this.c1SplitterPanel2.Text = "Panel 2";
             // 
@@ -231,7 +231,7 @@
             this.panel2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
             this.panel2.Location = new System.Drawing.Point(0, 0);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(814, 668);
+            this.panel2.Size = new System.Drawing.Size(814, 727);
             this.panel2.TabIndex = 0;
             this.theme1.SetTheme(this.panel2, "(default)");
             // 
@@ -245,9 +245,9 @@
             this.panel4.Controls.Add(this.chkInterpretCbo);
             this.panel4.Controls.Add(this.chkInterpretText);
             this.panel4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.panel4.Location = new System.Drawing.Point(80, 371);
+            this.panel4.Location = new System.Drawing.Point(15, 371);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(722, 186);
+            this.panel4.Size = new System.Drawing.Size(787, 227);
             this.panel4.TabIndex = 591;
             this.theme1.SetTheme(this.panel4, "(default)");
             // 
@@ -290,7 +290,7 @@
             this.gbInterpret.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
             this.gbInterpret.Location = new System.Drawing.Point(3, 61);
             this.gbInterpret.Name = "gbInterpret";
-            this.gbInterpret.Size = new System.Drawing.Size(716, 122);
+            this.gbInterpret.Size = new System.Drawing.Size(781, 163);
             this.gbInterpret.TabIndex = 595;
             this.gbInterpret.TabStop = false;
             this.gbInterpret.Text = "เงื่อนไข";
@@ -336,7 +336,7 @@
             this.label11.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
             this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
             this.label11.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.label11.Location = new System.Drawing.Point(12, 395);
+            this.label11.Location = new System.Drawing.Point(12, 352);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(62, 16);
             this.label11.TabIndex = 590;
@@ -612,7 +612,7 @@
             this.chkOrderGroup.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.chkOrderGroup.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.chkOrderGroup.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.chkOrderGroup.Location = new System.Drawing.Point(31, 638);
+            this.chkOrderGroup.Location = new System.Drawing.Point(31, 679);
             this.chkOrderGroup.Name = "chkOrderGroup";
             this.chkOrderGroup.Padding = new System.Windows.Forms.Padding(4, 1, 1, 1);
             this.chkOrderGroup.Size = new System.Drawing.Size(203, 24);
@@ -630,7 +630,7 @@
             this.chkOutLab.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.chkOutLab.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.chkOutLab.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.chkOutLab.Location = new System.Drawing.Point(113, 593);
+            this.chkOutLab.Location = new System.Drawing.Point(113, 634);
             this.chkOutLab.Name = "chkOutLab";
             this.chkOutLab.Padding = new System.Windows.Forms.Padding(4, 1, 1, 1);
             this.chkOutLab.Size = new System.Drawing.Size(131, 24);
@@ -718,7 +718,7 @@
             this.chkShowQty.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.chkShowQty.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.chkShowQty.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.chkShowQty.Location = new System.Drawing.Point(113, 563);
+            this.chkShowQty.Location = new System.Drawing.Point(113, 604);
             this.chkShowQty.Name = "chkShowQty";
             this.chkShowQty.Padding = new System.Windows.Forms.Padding(4, 1, 1, 1);
             this.chkShowQty.Size = new System.Drawing.Size(203, 24);
@@ -835,7 +835,7 @@
             this.txtPasswordVoid.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtPasswordVoid.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
             this.txtPasswordVoid.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.txtPasswordVoid.Location = new System.Drawing.Point(250, 641);
+            this.txtPasswordVoid.Location = new System.Drawing.Point(250, 682);
             this.txtPasswordVoid.Name = "txtPasswordVoid";
             this.txtPasswordVoid.PasswordChar = '*';
             this.txtPasswordVoid.Size = new System.Drawing.Size(78, 20);
@@ -849,7 +849,7 @@
             // 
             this.btnSave.Image = global::clinic_ivf.Properties.Resources.accept_database24;
             this.btnSave.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnSave.Location = new System.Drawing.Point(446, 628);
+            this.btnSave.Location = new System.Drawing.Point(446, 669);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(83, 39);
             this.btnSave.TabIndex = 564;
@@ -894,7 +894,7 @@
             this.chkVoid.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.chkVoid.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.chkVoid.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.chkVoid.Location = new System.Drawing.Point(250, 612);
+            this.chkVoid.Location = new System.Drawing.Point(250, 653);
             this.chkVoid.Name = "chkVoid";
             this.chkVoid.Padding = new System.Windows.Forms.Padding(4, 1, 1, 1);
             this.chkVoid.Size = new System.Drawing.Size(155, 24);
@@ -909,7 +909,7 @@
             // 
             this.btnVoid.Image = global::clinic_ivf.Properties.Resources.trash24;
             this.btnVoid.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnVoid.Location = new System.Drawing.Point(446, 584);
+            this.btnVoid.Location = new System.Drawing.Point(446, 625);
             this.btnVoid.Name = "btnVoid";
             this.btnVoid.Size = new System.Drawing.Size(83, 39);
             this.btnVoid.TabIndex = 566;
@@ -923,7 +923,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1398, 711);
+            this.ClientSize = new System.Drawing.Size(1398, 770);
             this.Controls.Add(this.sCMain);
             this.Controls.Add(this.sB);
             this.Name = "FrmLabItem";

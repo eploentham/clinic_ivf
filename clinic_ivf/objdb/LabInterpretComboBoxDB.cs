@@ -151,7 +151,7 @@ namespace clinic_ivf.objdb
             dt = conn.selectData(conn.conn, sql);
             if (dt.Rows.Count > 0)
             {
-                re = dt.Rows[0][lbM.interpret].ToString()+"@"+ dt.Rows[0][lbM.reactive_message].ToString();
+                re = dt.Rows[0][lbM.interpret].ToString()+"@"+ dt.Rows[0][lbM.reactive_message].ToString() + "@" + dt.Rows[0][lbM.remark].ToString();
             }
             return re;
         }

@@ -341,39 +341,39 @@ namespace clinic_ivf.objdb
             {
                 sql = "Insert Into " + lsperm.table + " " +
                     "Set " + lsperm.sperm_code + "='" + p.sperm_code + "'" +
-                    "," + lsperm.abstinence_day + "='" + p.abstinence_day + "'" +
-                    "," + lsperm.sperm_date + "='" + p.sperm_date + "'" +
-                    "," + lsperm.appearance + "='" + p.appearance + "'" +
-                    "," + lsperm.liquefaction + "='" + p.liquefaction + "'" +
+                    "," + lsperm.abstinence_day + "='" + p.abstinence_day.Replace("'", "''") + "'" +
+                    "," + lsperm.sperm_date + "='" + p.sperm_date.Replace("'", "''") + "'" +
+                    "," + lsperm.appearance + "='" + p.appearance.Replace("'", "''") + "'" +
+                    "," + lsperm.liquefaction + "='" + p.liquefaction.Replace("'", "''") + "'" +
                     "," + lsperm.status_fresh_sperm + "='" + p.status_fresh_sperm + "'" +
                     "," + lsperm.status_frozen_sperm + "='" + p.status_frozen_sperm + "'" +
-                    "," + lsperm.viscosity + "='" + p.viscosity + "'" +
-                    "," + lsperm.viability + "='" + p.viability + "'" +
-                    "," + lsperm.volume1 + "='" + p.volume1 + "'" +
-                    "," + lsperm.count1 + "='" + p.count1 + "'" +
-                    "," + lsperm.total_count + "='" + p.total_count + "'" +
-                    "," + lsperm.motile + "='" + p.motile + "'" +
-                    "," + lsperm.total_motile + "='" + p.total_motile + "'" +
-                    "," + lsperm.motility + "='" + p.motility + "'" +
-                    "," + lsperm.motility_rate_4 + "='" + p.motility_rate_4 + "'" +
-                    "," + lsperm.motility_rate_3 + "='" + p.motility_rate_3 + "'" +
-                    "," + lsperm.motility_rate_2 + "='" + p.motility_rate_2 + "'" +
-                    "," + lsperm.motility_rate_1 + "='" + p.motility_rate_1 + "'" +                    
+                    "," + lsperm.viscosity + "='" + p.viscosity.Replace("'", "''") + "'" +
+                    "," + lsperm.viability + "='" + p.viability.Replace("'", "''") + "'" +
+                    "," + lsperm.volume1 + "='" + p.volume1.Replace("'", "''") + "'" +
+                    "," + lsperm.count1 + "='" + p.count1.Replace("'", "''") + "'" +
+                    "," + lsperm.total_count + "='" + p.total_count.Replace("'", "''") + "'" +
+                    "," + lsperm.motile + "='" + p.motile.Replace("'", "''") + "'" +
+                    "," + lsperm.total_motile + "='" + p.total_motile.Replace("'", "''") + "'" +
+                    "," + lsperm.motility + "='" + p.motility.Replace("'", "''") + "'" +
+                    "," + lsperm.motility_rate_4 + "='" + p.motility_rate_4.Replace("'", "''") + "'" +
+                    "," + lsperm.motility_rate_3 + "='" + p.motility_rate_3.Replace("'", "''") + "'" +
+                    "," + lsperm.motility_rate_2 + "='" + p.motility_rate_2.Replace("'", "''") + "'" +
+                    "," + lsperm.motility_rate_1 + "='" + p.motility_rate_1.Replace("'", "''") + "'" +                    
                     "," + lsperm.finish_time + "='" + p.finish_time + "'" +
                     "," + lsperm.sort1 + "='" + p.sort1 + "'" +
                     "," + lsperm.staff_id_report + "='" + p.staff_id_report + "'" +
                     "," + lsperm.staff_id_approve + "='" + p.staff_id_approve + "'" +
                     "," + lsperm.date_report + "='" + p.date_report + "'" +
                     "," + lsperm.date_approve + "='" + p.date_approve + "'" +
-                    "," + lsperm.morphology_normal + "='" + p.morphology_normal + "'" +
-                    "," + lsperm.morphology_abnormal + "='" + p.morphology_abnormal + "'" +
-                    "," + lsperm.morphology_head_defect + "='" + p.morphology_head_defect + "'" +
-                    "," + lsperm.morphology_neck_defect + "='" + p.morphology_neck_defect + "'" +
-                    "," + lsperm.morphology_tail_defect + "='" + p.morphology_tail_defect + "'" +
-                    "," + lsperm.no_of_vail + "='" + p.no_of_vail + "'" +
-                    "," + lsperm.wbc + "='" + p.wbc + "'" +
+                    "," + lsperm.morphology_normal + "='" + p.morphology_normal.Replace("'", "''") + "'" +
+                    "," + lsperm.morphology_abnormal + "='" + p.morphology_abnormal.Replace("'", "''") + "'" +
+                    "," + lsperm.morphology_head_defect + "='" + p.morphology_head_defect.Replace("'", "''") + "'" +
+                    "," + lsperm.morphology_neck_defect + "='" + p.morphology_neck_defect.Replace("'", "''") + "'" +
+                    "," + lsperm.morphology_tail_defect + "='" + p.morphology_tail_defect.Replace("'", "''") + "'" +
+                    "," + lsperm.no_of_vail + "='" + p.no_of_vail.Replace("'", "''") + "'" +
+                    "," + lsperm.wbc + "='" + p.wbc.Replace("'", "''") + "'" +
                     "," + lsperm.active + "='1' " +
-                    "," + lsperm.remark + "='" + p.remark + "' " +
+                    "," + lsperm.remark + "='" + p.remark.Replace("'", "''") + "' " +
                     "," + lsperm.date_create + "=now() " +
                     "," + lsperm.date_modi + "='' " +
                     "," + lsperm.date_cancel + "='' " +
@@ -384,17 +384,17 @@ namespace clinic_ivf.objdb
                     "," + lsperm.status_owner_sperm + "='" + p.status_owner_sperm + "' " +
                     "," + lsperm.status_donor_sperm + "='" + p.status_donor_sperm + "' " +
                     //"," + lsperm.dob_female + "='" + p.dob_female + "' " +
-                    "," + lsperm.hn_male + "='" + p.hn_male + "' " +
-                    "," + lsperm.hn_female + "='" + p.hn_female + "' " +
-                    "," + lsperm.name_male + "='" + p.name_male + "' " +
-                    "," + lsperm.name_female + "='" + p.name_female + "' " +
+                    "," + lsperm.hn_male + "='" + p.hn_male.Replace("'", "''") + "' " +
+                    "," + lsperm.hn_female + "='" + p.hn_female.Replace("'", "''") + "' " +
+                    "," + lsperm.name_male + "='" + p.name_male.Replace("'", "''") + "' " +
+                    "," + lsperm.name_female + "='" + p.name_female.Replace("'", "''") + "' " +
                     //"," + lsperm.status_frozen_sperm + "='" + p.status_frozen_sperm + "' " +
                     "," + lsperm.frozen_sperm_vail + "='" + p.frozen_sperm_vail + "' " +
                     "," + lsperm.doctor_id + "='" + p.doctor_id + "' " +
                     "," + lsperm.status_lab_sperm + "='" + p.status_lab_sperm + "' " +
                     "," + lsperm.req_id + "='" + p.req_id + "' " +                    
-                    "," + lsperm.dob_female + "='" + p.dob_female + "' " +
-                    "," + lsperm.dob_male + "='" + p.dob_male + "' " +
+                    "," + lsperm.dob_female + "='" + p.dob_female.Replace("'", "''") + "' " +
+                    "," + lsperm.dob_male + "='" + p.dob_male.Replace("'", "''") + "' " +
                     "," + lsperm.status_lab + "='1' " +
                     "," + lsperm.sperm_analysis_date_start + "='" + p.sperm_analysis_date_start + "' " +
                     "," + lsperm.spern_freezing_date_start + "='" + p.spern_freezing_date_start + "' " +
@@ -405,19 +405,19 @@ namespace clinic_ivf.objdb
                     "," + lsperm.examination_time + "='" + p.examination_time + "' " +
                     //"," + lsperm.finish_time + "='" + p.finish_time + "' " +
                     "," + lsperm.ejaculation_time + "='" + p.ejaculation_time + "' " +
-                    "," + lsperm.post_count + "='" + p.post_count + "' " +
-                    "," + lsperm.post_motile + "='" + p.post_motile + "' " +
-                    "," + lsperm.post_motility_rate_1 + "='" + p.post_motility_rate_1 + "' " +
-                    "," + lsperm.post_motility_rate_2 + "='" + p.post_motility_rate_2 + "' " +
-                    "," + lsperm.post_motility_rate_3 + "='" + p.post_motility_rate_3 + "' " +
-                    "," + lsperm.post_motility_rate_4 + "='" + p.post_motility_rate_4 + "' " +
-                    "," + lsperm.post_total_count + "='" + p.post_total_count + "' " +
-                    "," + lsperm.post_total_motile + "='" + p.post_total_motile + "' " +
-                    "," + lsperm.post_volume1 + "='" + p.post_volume1 + "' " +
-                    "," + lsperm.post_motility + "='" + p.post_motility + "' " +
-                    "," + lsperm.morphology_head_defect1 + "='" + p.morphology_head_defect1 + "'" +
-                    "," + lsperm.morphology_neck_defect1 + "='" + p.morphology_neck_defect1 + "'" +
-                    "," + lsperm.morphology_tail_defect1 + "='" + p.morphology_tail_defect1 + "'" +
+                    "," + lsperm.post_count + "='" + p.post_count.Replace("'", "''") + "' " +
+                    "," + lsperm.post_motile + "='" + p.post_motile.Replace("'", "''") + "' " +
+                    "," + lsperm.post_motility_rate_1 + "='" + p.post_motility_rate_1.Replace("'", "''") + "' " +
+                    "," + lsperm.post_motility_rate_2 + "='" + p.post_motility_rate_2.Replace("'", "''") + "' " +
+                    "," + lsperm.post_motility_rate_3 + "='" + p.post_motility_rate_3.Replace("'", "''") + "' " +
+                    "," + lsperm.post_motility_rate_4 + "='" + p.post_motility_rate_4.Replace("'", "''") + "' " +
+                    "," + lsperm.post_total_count + "='" + p.post_total_count.Replace("'", "''") + "' " +
+                    "," + lsperm.post_total_motile + "='" + p.post_total_motile.Replace("'", "''") + "' " +
+                    "," + lsperm.post_volume1 + "='" + p.post_volume1.Replace("'", "''") + "' " +
+                    "," + lsperm.post_motility + "='" + p.post_motility.Replace("'", "''") + "' " +
+                    "," + lsperm.morphology_head_defect1 + "='" + p.morphology_head_defect1.Replace("'", "''") + "'" +
+                    "," + lsperm.morphology_neck_defect1 + "='" + p.morphology_neck_defect1.Replace("'", "''") + "'" +
+                    "," + lsperm.morphology_tail_defect1 + "='" + p.morphology_tail_defect1.Replace("'", "''") + "'" +
                     "," + lsperm.staff_id_finish + "='" + p.staff_id_finish + "'" +
                     "," + lsperm.date_finish + "=''" +
                     "";
@@ -425,7 +425,9 @@ namespace clinic_ivf.objdb
             }
             catch (Exception ex)
             {
+                new LogWriter("Error insert LabSperm sql " + sql);
                 sql = ex.Message + " " + ex.InnerException;
+                new LogWriter("Error insert LabSperm " + sql);
             }
             return re;
         }
@@ -441,24 +443,24 @@ namespace clinic_ivf.objdb
             sql = "Update " + lsperm.table + " " +
                 //" Set "+lformA.patient_appoint_date_time + "='"+p.patient_appoint_date_time + "' " +
                 "Set " + lsperm.sperm_code + "='" + p.sperm_code.Replace("'", "''") + "' " +
-                "," + lsperm.abstinence_day + "='" + p.abstinence_day + "'" +
-                    "," + lsperm.sperm_date + "='" + p.sperm_date + "'" +
-                    "," + lsperm.appearance + "='" + p.appearance + "'" +
-                    "," + lsperm.liquefaction + "='" + p.liquefaction + "'" +
+                "," + lsperm.abstinence_day + "='" + p.abstinence_day.Replace("'", "''") + "'" +
+                    "," + lsperm.sperm_date + "='" + p.sperm_date.Replace("'", "''") + "'" +
+                    "," + lsperm.appearance + "='" + p.appearance.Replace("'", "''") + "'" +
+                    "," + lsperm.liquefaction + "='" + p.liquefaction.Replace("'", "''") + "'" +
                     "," + lsperm.status_fresh_sperm + "='" + p.status_fresh_sperm + "'" +
                     "," + lsperm.status_frozen_sperm + "='" + p.status_frozen_sperm + "'" +
-                    "," + lsperm.viscosity + "='" + p.viscosity + "'" +
-                    "," + lsperm.viability + "='" + p.viability + "'" +
-                    "," + lsperm.volume1 + "='" + p.volume1 + "'" +
-                    "," + lsperm.count1 + "='" + p.count1 + "'" +
-                    "," + lsperm.total_count + "='" + p.total_count + "'" +
-                    "," + lsperm.motile + "='" + p.motile + "'" +
-                    "," + lsperm.total_motile + "='" + p.total_motile + "'" +
-                    "," + lsperm.motility + "='" + p.motility + "'" +
-                    "," + lsperm.motility_rate_4 + "='" + p.motility_rate_4 + "'" +
-                    "," + lsperm.motility_rate_3 + "='" + p.motility_rate_3 + "'" +
-                    "," + lsperm.motility_rate_2 + "='" + p.motility_rate_2 + "'" +
-                    "," + lsperm.motility_rate_1 + "='" + p.motility_rate_1 + "'" +
+                    "," + lsperm.viscosity + "='" + p.viscosity.Replace("'", "''") + "'" +
+                    "," + lsperm.viability + "='" + p.viability.Replace("'", "''") + "'" +
+                    "," + lsperm.volume1 + "='" + p.volume1.Replace("'", "''") + "'" +
+                    "," + lsperm.count1 + "='" + p.count1.Replace("'", "''") + "'" +
+                    "," + lsperm.total_count + "='" + p.total_count.Replace("'", "''") + "'" +
+                    "," + lsperm.motile + "='" + p.motile.Replace("'", "''") + "'" +
+                    "," + lsperm.total_motile + "='" + p.total_motile.Replace("'", "''") + "'" +
+                    "," + lsperm.motility + "='" + p.motility.Replace("'", "''") + "'" +
+                    "," + lsperm.motility_rate_4 + "='" + p.motility_rate_4.Replace("'", "''") + "'" +
+                    "," + lsperm.motility_rate_3 + "='" + p.motility_rate_3.Replace("'", "''") + "'" +
+                    "," + lsperm.motility_rate_2 + "='" + p.motility_rate_2.Replace("'", "''") + "'" +
+                    "," + lsperm.motility_rate_1 + "='" + p.motility_rate_1.Replace("'", "''") + "'" +
                     
                     "," + lsperm.finish_time + "='" + p.finish_time + "'" +
                     "," + lsperm.sort1 + "='" + p.sort1 + "'" +
@@ -466,11 +468,11 @@ namespace clinic_ivf.objdb
                     "," + lsperm.staff_id_approve + "='" + p.staff_id_approve + "'" +
                     "," + lsperm.date_report + "='" + p.date_report + "'" +
                     "," + lsperm.date_approve + "='" + p.date_approve + "'" +
-                    "," + lsperm.morphology_normal + "='" + p.morphology_normal + "'" +
-                    "," + lsperm.morphology_abnormal + "='" + p.morphology_abnormal + "'" +
-                    "," + lsperm.morphology_head_defect + "='" + p.morphology_head_defect + "'" +
-                    "," + lsperm.morphology_neck_defect + "='" + p.morphology_neck_defect + "'" +
-                    "," + lsperm.morphology_tail_defect + "='" + p.morphology_tail_defect + "'" +
+                    "," + lsperm.morphology_normal + "='" + p.morphology_normal.Replace("'", "''") + "'" +
+                    "," + lsperm.morphology_abnormal + "='" + p.morphology_abnormal.Replace("'", "''") + "'" +
+                    "," + lsperm.morphology_head_defect + "='" + p.morphology_head_defect.Replace("'", "''") + "'" +
+                    "," + lsperm.morphology_neck_defect + "='" + p.morphology_neck_defect.Replace("'", "''") + "'" +
+                    "," + lsperm.morphology_tail_defect + "='" + p.morphology_tail_defect.Replace("'", "''") + "'" +
                     "," + lsperm.no_of_vail + "='" + p.no_of_vail + "'" +
                     "," + lsperm.wbc + "='" + p.wbc + "'" +
                     "," + lsperm.active + "='" + p.active + "' " +
@@ -481,10 +483,10 @@ namespace clinic_ivf.objdb
                     "," + lsperm.status_owner_sperm + "='" + p.status_owner_sperm + "' " +
                     //"," + lformA.status_donor_sperm + "='" + p.status_donor_sperm + "' " +
                     "," + lsperm.status_fresh_sperm + "='" + p.status_fresh_sperm + "' " +
-                    "," + lsperm.hn_male + "='" + p.hn_male + "' " +
-                    "," + lsperm.hn_female + "='" + p.hn_female + "' " +
-                    "," + lsperm.name_male + "='" + p.name_male + "' " +
-                    "," + lsperm.name_female + "='" + p.name_female + "' " +
+                    "," + lsperm.hn_male + "='" + p.hn_male.Replace("'", "''") + "' " +
+                    "," + lsperm.hn_female + "='" + p.hn_female.Replace("'", "''") + "' " +
+                    "," + lsperm.name_male + "='" + p.name_male.Replace("'", "''") + "' " +
+                    "," + lsperm.name_female + "='" + p.name_female.Replace("'", "''") + "' " +
                     "," + lsperm.status_frozen_sperm + "='" + p.status_frozen_sperm + "' " +
                     "," + lsperm.frozen_sperm_vail + "='" + p.frozen_sperm_vail + "' " +
                     "," + lsperm.doctor_id + "='" + p.doctor_id + "' " +
@@ -497,24 +499,24 @@ namespace clinic_ivf.objdb
                     "," + lsperm.spern_freezing_date_start + "='" + p.spern_freezing_date_start + "' " +
                     "," + lsperm.pasa_tese_date + "='" + p.pasa_tese_date + "' " +
                     "," + lsperm.iui_date + "='" + p.iui_date + "' " +
-                    "," + lsperm.recive_time + "='" + p.recive_time + "' " +
-                    "," + lsperm.examination_time + "='" + p.examination_time + "' " +
-                    "," + lsperm.finish_time + "='" + p.finish_time + "' " +
-                    "," + lsperm.ejaculation_time + "='" + p.ejaculation_time + "' " +
-                    "," + lsperm.no_of_vail + "='" + p.no_of_vail + "' " +
-                    "," + lsperm.post_count + "='" + p.post_count + "' " +
-                    "," + lsperm.post_motile + "='" + p.post_motile + "' " +
-                    "," + lsperm.post_motility_rate_1 + "='" + p.post_motility_rate_1 + "' " +
-                    "," + lsperm.post_motility_rate_2 + "='" + p.post_motility_rate_2 + "' " +
-                    "," + lsperm.post_motility_rate_3 + "='" + p.post_motility_rate_3 + "' " +
-                    "," + lsperm.post_motility_rate_4 + "='" + p.post_motility_rate_4 + "' " +
-                    "," + lsperm.post_total_count + "='" + p.post_total_count + "' " +
-                    "," + lsperm.post_total_motile + "='" + p.post_total_motile + "' " +
-                    "," + lsperm.post_volume1 + "='" + p.post_volume1 + "' " +
-                    "," + lsperm.post_motility + "='" + p.post_motility + "' " +
-                    "," + lsperm.morphology_head_defect1 + "='" + p.morphology_head_defect1 + "'" +
-                    "," + lsperm.morphology_neck_defect1 + "='" + p.morphology_neck_defect1 + "'" +
-                    "," + lsperm.morphology_tail_defect1 + "='" + p.morphology_tail_defect1 + "'" +
+                    "," + lsperm.recive_time + "='" + p.recive_time.Replace("'", "''") + "' " +
+                    "," + lsperm.examination_time + "='" + p.examination_time.Replace("'", "''") + "' " +
+                    "," + lsperm.finish_time + "='" + p.finish_time.Replace("'", "''") + "' " +
+                    "," + lsperm.ejaculation_time + "='" + p.ejaculation_time.Replace("'", "''") + "' " +
+                    "," + lsperm.no_of_vail + "='" + p.no_of_vail.Replace("'", "''") + "' " +
+                    "," + lsperm.post_count + "='" + p.post_count.Replace("'", "''") + "' " +
+                    "," + lsperm.post_motile + "='" + p.post_motile.Replace("'", "''") + "' " +
+                    "," + lsperm.post_motility_rate_1 + "='" + p.post_motility_rate_1.Replace("'", "''") + "' " +
+                    "," + lsperm.post_motility_rate_2 + "='" + p.post_motility_rate_2.Replace("'", "''") + "' " +
+                    "," + lsperm.post_motility_rate_3 + "='" + p.post_motility_rate_3.Replace("'", "''") + "' " +
+                    "," + lsperm.post_motility_rate_4 + "='" + p.post_motility_rate_4.Replace("'", "''") + "' " +
+                    "," + lsperm.post_total_count + "='" + p.post_total_count.Replace("'", "''") + "' " +
+                    "," + lsperm.post_total_motile + "='" + p.post_total_motile.Replace("'", "''") + "' " +
+                    "," + lsperm.post_volume1 + "='" + p.post_volume1.Replace("'", "''") + "' " +
+                    "," + lsperm.post_motility + "='" + p.post_motility.Replace("'", "''") + "' " +
+                    "," + lsperm.morphology_head_defect1 + "='" + p.morphology_head_defect1.Replace("'", "''") + "'" +
+                    "," + lsperm.morphology_neck_defect1 + "='" + p.morphology_neck_defect1.Replace("'", "''") + "'" +
+                    "," + lsperm.morphology_tail_defect1 + "='" + p.morphology_tail_defect1.Replace("'", "''") + "'" +
                 " Where " + lsperm.pkField + " = '" + p.sperm_id + "' "
                 ;
             try
@@ -523,7 +525,9 @@ namespace clinic_ivf.objdb
             }
             catch (Exception ex)
             {
+                new LogWriter("Error insert LabSperm sql " + sql);
                 sql = ex.Message + " " + ex.InnerException;
+                new LogWriter("Error insert LabSperm " + sql);
             }
             return re;
         }

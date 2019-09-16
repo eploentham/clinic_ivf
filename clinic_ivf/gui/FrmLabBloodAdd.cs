@@ -478,6 +478,7 @@ namespace clinic_ivf.gui
                         {
                             grfProc[grfProc.Row, colRsInterpret] = interpret1[0];
                             grfProc[grfProc.Row, colRsReactive] = interpret1[1];
+                            grfProc[grfProc.Row, colRsRemark] = interpret1[2];
                         }
                         else
                         {
