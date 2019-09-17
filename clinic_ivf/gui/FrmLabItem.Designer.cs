@@ -81,6 +81,10 @@
             this.btnEdit = new C1.Win.C1Input.C1Button();
             this.chkVoid = new C1.Win.C1Input.C1CheckBox();
             this.btnVoid = new C1.Win.C1Input.C1Button();
+            this.label12 = new System.Windows.Forms.Label();
+            this.txtlisMinValue = new C1.Win.C1Input.C1TextBox();
+            this.label13 = new System.Windows.Forms.Label();
+            this.txtlisMaxValue = new C1.Win.C1Input.C1TextBox();
             this.sB.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.theme1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.sCMain)).BeginInit();
@@ -115,6 +119,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.btnEdit)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkVoid)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnVoid)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtlisMinValue)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtlisMaxValue)).BeginInit();
             this.SuspendLayout();
             // 
             // sB
@@ -238,6 +244,10 @@
             // panel4
             // 
             this.panel4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.panel4.Controls.Add(this.label13);
+            this.panel4.Controls.Add(this.txtlisMaxValue);
+            this.panel4.Controls.Add(this.label12);
+            this.panel4.Controls.Add(this.txtlisMinValue);
             this.panel4.Controls.Add(this.btnInterpretSave);
             this.panel4.Controls.Add(this.btnInterpretMinus);
             this.panel4.Controls.Add(this.btnInterpretPlus);
@@ -919,6 +929,58 @@
             this.btnVoid.UseVisualStyleBackColor = true;
             this.btnVoid.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
             // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.label12.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.label12.Location = new System.Drawing.Point(388, 5);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(95, 16);
+            this.label12.TabIndex = 599;
+            this.label12.Text = "LIS min Vaule :";
+            this.theme1.SetTheme(this.label12, "(default)");
+            // 
+            // txtlisMinValue
+            // 
+            this.txtlisMinValue.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtlisMinValue.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
+            this.txtlisMinValue.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.txtlisMinValue.Location = new System.Drawing.Point(501, 3);
+            this.txtlisMinValue.Name = "txtlisMinValue";
+            this.txtlisMinValue.Size = new System.Drawing.Size(140, 20);
+            this.txtlisMinValue.TabIndex = 600;
+            this.txtlisMinValue.Tag = null;
+            this.theme1.SetTheme(this.txtlisMinValue, "(default)");
+            this.txtlisMinValue.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.label13.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.label13.Location = new System.Drawing.Point(388, 31);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(99, 16);
+            this.label13.TabIndex = 601;
+            this.label13.Text = "LIS max Vaule :";
+            this.theme1.SetTheme(this.label13, "(default)");
+            // 
+            // txtlisMaxValue
+            // 
+            this.txtlisMaxValue.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtlisMaxValue.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
+            this.txtlisMaxValue.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.txtlisMaxValue.Location = new System.Drawing.Point(501, 29);
+            this.txtlisMaxValue.Name = "txtlisMaxValue";
+            this.txtlisMaxValue.Size = new System.Drawing.Size(140, 20);
+            this.txtlisMaxValue.TabIndex = 602;
+            this.txtlisMaxValue.Tag = null;
+            this.theme1.SetTheme(this.txtlisMaxValue, "(default)");
+            this.txtlisMaxValue.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            // 
             // FrmLabItem
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -967,6 +1029,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.btnEdit)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkVoid)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnVoid)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtlisMinValue)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtlisMaxValue)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1027,5 +1091,9 @@
         private C1.Win.C1Input.C1Button btnInterpretPlus;
         private C1.Win.C1Input.C1Button btnInterpretSave;
         private C1.Win.C1Input.C1Button btnInterpretMinus;
+        private System.Windows.Forms.Label label13;
+        private C1.Win.C1Input.C1TextBox txtlisMaxValue;
+        private System.Windows.Forms.Label label12;
+        private C1.Win.C1Input.C1TextBox txtlisMinValue;
     }
 }

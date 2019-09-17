@@ -63,6 +63,8 @@ namespace clinic_ivf.objdb
             labI.status_datatype_result = "status_datatype_result";
             labI.status_interpret = "status_interpret";
             labI.remark = "remark";
+            labI.lis_max_value = "lis_max_value";
+            labI.lis_min_value = "lis_min_value";
 
             labI.table = "LabItem";
             labI.pkField = "LID";
@@ -268,6 +270,8 @@ namespace clinic_ivf.objdb
             p.status_datatype_result = p.status_datatype_result == null ? "0" : p.status_datatype_result;
             p.datatype_decimal = p.datatype_decimal == null ? "0" : p.datatype_decimal;
             p.remark = p.remark == null ? "" : p.remark;
+            p.lis_max_value = p.lis_max_value == null ? "" : p.lis_max_value;
+            p.lis_min_value = p.lis_min_value == null ? "" : p.lis_min_value;
 
             p.status_show_qty = p.status_show_qty == null ? "0" : p.status_show_qty;
             p.status_order_group = p.status_order_group == null ? "0" : p.status_order_group;
@@ -335,6 +339,8 @@ namespace clinic_ivf.objdb
                 "," + labI.datatype_decimal + "= '" + p.datatype_decimal.Replace("'", "''") + "'" +
                 "," + labI.status_interpret + "= '" + p.status_interpret.Replace("'", "''") + "'" +
                 "," + labI.remark + "= '" + p.remark.Replace("'", "''") + "'" +
+                "," + labI.lis_max_value + "= '" + p.lis_max_value.Replace("'", "''") + "'" +
+                "," + labI.lis_min_value + "= '" + p.lis_min_value.Replace("'", "''") + "'" +
                 "";
             try
             {
@@ -386,6 +392,8 @@ namespace clinic_ivf.objdb
                 "," + labI.status_outlab + "= '" + p.status_outlab.Replace("'", "''") + "'" +
                 "," + labI.num_barcode + "= '" + p.num_barcode.Replace("'", "''") + "'" +
                 "," + labI.remark + "= '" + p.remark.Replace("'", "''") + "'" +
+                "," + labI.lis_max_value + "= '" + p.lis_max_value.Replace("'", "''") + "'" +
+                "," + labI.lis_min_value + "= '" + p.lis_min_value.Replace("'", "''") + "'" +
                 "Where " + labI.pkField + "='" + p.LID + "'";
             try
             {
@@ -481,6 +489,8 @@ namespace clinic_ivf.objdb
                 vsold1.datatype_decimal = dt.Rows[0][labI.datatype_decimal].ToString();
                 vsold1.status_interpret = dt.Rows[0][labI.status_interpret].ToString();
                 vsold1.remark = dt.Rows[0][labI.remark].ToString();
+                vsold1.lis_max_value = dt.Rows[0][labI.lis_max_value].ToString();
+                vsold1.lis_min_value = dt.Rows[0][labI.lis_min_value].ToString();
             }
             else
             {
@@ -528,6 +538,8 @@ namespace clinic_ivf.objdb
             stf1.datatype_decimal = "";
             stf1.status_interpret = "";
             stf1.remark = "";
+            stf1.lis_min_value = "";
+            stf1.lis_max_value = "";
             return stf1;
         }
     }

@@ -153,8 +153,13 @@ namespace clinic_ivf.objdb
             {
                 re = dt.Rows[0][lbM.interpret].ToString()+"@"+ dt.Rows[0][lbM.reactive_message].ToString() + "@" + dt.Rows[0][lbM.remark].ToString();
             }
+            else
+            {
+                re = "@@";
+            }
             return re;
         }
+
         public String selectInterpretMin(String labid, String val)
         {
             LabInterpretComboBox cop1 = new LabInterpretComboBox();
@@ -204,7 +209,8 @@ namespace clinic_ivf.objdb
                 Decimal.TryParse(dt.Rows[0][lbM.min_value].ToString(), out max_val);
                 if (val1 >= max_val)
                 {
-                    re = dt.Rows[0][lbM.interpret].ToString();
+                    //re = dt.Rows[0][lbM.interpret].ToString();
+                    re = dt.Rows[0][lbM.interpret].ToString() + "@" + dt.Rows[0][lbM.reactive_message].ToString() + "@" + dt.Rows[0][lbM.remark].ToString();
                 }
 
                 //re = dt.Rows[0][lbM.interpret].ToString();

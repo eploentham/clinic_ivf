@@ -46,5 +46,7 @@ namespace clinic_ivf.object1
         public String datatype_decimal { get; set; }
         public String status_interpret { get; set; }
         public String remark { get; set; }
+        public String lis_min_value { get; set; }
+        public String lis_max_value { get; set; }
     }
 }

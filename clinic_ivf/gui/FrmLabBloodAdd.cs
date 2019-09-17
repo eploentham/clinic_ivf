@@ -456,6 +456,48 @@ namespace clinic_ivf.gui
                         if (result.IndexOf("<") >= 0 || (result.IndexOf(">") >= 0))
                         {
                             result2 = result.Replace("<", "").Replace(">", "");
+                            if((result.IndexOf("<") >= 0) && result.Trim().Equals(labI.lis_min_value))
+                            {
+                                String temp = "";
+                                int chk = 0;
+                                if(int.TryParse(labI.datatype_decimal, out chk))
+                                {
+                                    for (int i = 0; i < chk-1; i++)
+                                    {
+                                        temp += "0";
+                                    }
+                                    temp += "1";
+                                }
+                                temp = "." + temp;
+                                decimal temp1 = 0, temp2=0, temp3=0;
+                                Decimal.TryParse(result2, out temp3);
+                                if (Decimal.TryParse(temp, out temp1))
+                                {
+                                    temp2 = temp3 - temp1;
+                                    result2 = temp2.ToString();
+                                }
+                            }
+                            else if ((result.IndexOf(">") >= 0) && result.Trim().Equals(labI.lis_max_value))
+                            {
+                                String temp = "";
+                                int chk = 0;
+                                if (int.TryParse(labI.datatype_decimal, out chk))
+                                {
+                                    for (int i = 0; i < chk - 1; i++)
+                                    {
+                                        temp += "0";
+                                    }
+                                    temp += "1";
+                                }
+                                temp = "." + temp;
+                                decimal temp1 = 0, temp2 = 0, temp3 = 0;
+                                Decimal.TryParse(result2, out temp3);
+                                if (Decimal.TryParse(temp, out temp1))
+                                {
+                                    temp2 = temp3 + temp1;
+                                    result2 = temp2.ToString();
+                                }
+                            }
                         }
                         else
                         {
@@ -464,7 +506,7 @@ namespace clinic_ivf.gui
                         if (!Decimal.TryParse(result2, out result1)) return;
                         String interpret = "";
                         interpret = ic.ivfDB.lbinDB.selectInterpret(labid, result1.ToString());
-                        if (interpret.Equals(""))       // ถ้าไม่เจอ น่าจะเป็น min
+                        if (interpret.Equals("@@"))       // ถ้าไม่เจอ น่าจะเป็น min
                         {
                             interpret = ic.ivfDB.lbinDB.selectInterpretMin(labid, result1.ToString());
                             if (interpret.Equals(""))       // ถ้าไม่เจออีก น่าจะเป็น max
@@ -474,7 +516,7 @@ namespace clinic_ivf.gui
                         }
                         String[] interpret1;
                         interpret1 = interpret.Split('@');
-                        if (interpret1.Length == 2)
+                        if (interpret1.Length == 3)
                         {
                             grfProc[grfProc.Row, colRsInterpret] = interpret1[0];
                             grfProc[grfProc.Row, colRsReactive] = interpret1[1];
@@ -482,9 +524,9 @@ namespace clinic_ivf.gui
                         }
                         else
                         {
-                            grfProc[grfProc.Row, colRsInterpret] = interpret;
+                            grfProc[grfProc.Row, colRsInterpret] = result;
+                            grfProc[grfProc.Row, colRsRemark] = "";
                         }
-                        
                     }
                     else
                     {

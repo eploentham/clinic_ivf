@@ -471,6 +471,8 @@ namespace clinic_ivf.gui
             {
                 setControlEnableInterpret(false);
             }
+            txtlisMaxValue.Value = labI.lis_max_value;
+            txtlisMinValue.Value = labI.lis_min_value;
         }
         private void setControlEnableInterpret(Boolean flag)
         {
@@ -508,6 +510,8 @@ namespace clinic_ivf.gui
             labI.status_datatype_result = chkDataTypeText.Checked ? "1" : chkDataTypeInt.Checked ? "2" : chkDataTypeDec.Checked ? "3" : chkDataTypeCbo.Checked ? "4" : "0";
             labI.datatype_decimal = txtDataTypeDec.Text;
             labI.status_interpret = chkInterpretText.Checked ? "0" : chkInterpretCbo.Checked ? "1" : "0";
+            labI.lis_max_value = txtlisMaxValue.Text.Trim();
+            labI.lis_min_value = txtlisMinValue.Text.Trim();
         }
         private void grfPosi_AfterRowColChange(object sender, C1.Win.C1FlexGrid.RangeEventArgs e)
         {

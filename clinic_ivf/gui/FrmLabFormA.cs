@@ -282,6 +282,11 @@ namespace clinic_ivf.gui
         private void BtnPrintSperm_Click(object sender, EventArgs e)
         {
             //throw new NotImplementedException();
+            if (!saveLabFormA())
+            {
+                MessageBox.Show("save error", "");
+                return;
+            }
             SetDefaultPrinter(ic.iniC.printerA4);
             FrmReport frm = new FrmReport(ic);
             DataTable dt = new DataTable();
@@ -384,6 +389,11 @@ namespace clinic_ivf.gui
         private void BtnPrintFet_Click(object sender, EventArgs e)
         {
             //throw new NotImplementedException();
+            if (!saveLabFormA())
+            {
+                MessageBox.Show("save error", "");
+                return;
+            }
             SetDefaultPrinter(ic.iniC.printerA4);
             FrmReport frm = new FrmReport(ic);
             DataTable dt = new DataTable();
@@ -430,6 +440,11 @@ namespace clinic_ivf.gui
         private void BtnPrintOPU_Click(object sender, EventArgs e)
         {
             //throw new NotImplementedException();
+            if (!saveLabFormA())
+            {
+                MessageBox.Show("save error", "");
+                return;
+            }
             SetDefaultPrinter(ic.iniC.printerA4);
             FrmReport frm = new FrmReport(ic);
             DataTable dt = new DataTable();
@@ -594,6 +609,11 @@ namespace clinic_ivf.gui
         private void BtnPrint_Click(object sender, EventArgs e)
         {
             //throw new NotImplementedException();
+            if (!saveLabFormA())
+            {
+                MessageBox.Show("save error", "");
+                return;
+            }
             SetDefaultPrinter(ic.iniC.printerA4);
             FrmReport frm = new FrmReport(ic);
             DataTable dt = new DataTable();
@@ -764,29 +784,23 @@ namespace clinic_ivf.gui
             //lFormA.status_opu_active = chkSememPESA.Checked ? "1" : "0";
             //lFormA.embryo txtEmbryoTranferTime.Text
         }
-        private void BtnSave_Click(object sender, EventArgs e)
+        private Boolean saveLabFormA()
         {
-            //throw new NotImplementedException();
-            //if (btnSave.Text.Equals("Confirm"))
-            //{
-                
-            //}
-            //else
-            //{
+            Boolean chk1 = false;
             if (chkNgs.Checked && chkNgsDay3.Checked == false && chkNgsDay5.Checked == false)
             {
                 MessageBox.Show("กรุณาเลือก Biopsy Day", "");
-                return;
+                return false;
             }
             if (chkEmbryoTranfer.Checked && chkEmbryoTranferFresh.Checked == false && chkEmbryoTranferFrozen.Checked == false)
             {
                 MessageBox.Show("กรุณาเลือก Embryo Tranfer", "");
-                return;
+                return false;
             }
             if (chkEmbryoFreezing.Checked && chkEmbryoFreezingDay1.Checked == false && chkEmbryoFreezingDay2.Checked == false && chkEmbryoFreezingDay3.Checked == false && chkEmbryoFreezingDay5.Checked == false)
             {
                 MessageBox.Show("กรุณาเลือก Embryo Freezing", "");
-                return;
+                return false;
             }
             if (chkFreshSprem.Checked && txtFreshSpermColTime.Text.Equals("") && txtFreshSpermEndTime.Text.Equals(""))
             {
@@ -910,7 +924,7 @@ namespace clinic_ivf.gui
                     {
                         String dtrid = "";
                         dtrid = cboDoctor.SelectedItem == null ? "" : ((ComboBoxItem)cboDoctor.SelectedItem).Value;
-                        reqid = ic.ivfDB.oJlabdDB.selectByStatusSememAnalysis(txtVnOld.Text);                            
+                        reqid = ic.ivfDB.oJlabdDB.selectByStatusSememAnalysis(txtVnOld.Text);
                         lbReq = ic.ivfDB.setLabRequest(txtNameFeMale.Text, txtVnOld.Text, dtrid, cboRemark.Text, txtHnOld.Text, ic.datetoDB(txtDobFeMale.Text), reqid, "14", txtHnMale.Text, txtNameMale.Text, txtHnDonor.Text, txtNameDonor.Text, txtDonorDob.Text, txtVsId.Text);
                         lbReq.form_a_id = txtID.Text;
                         lbReq.req_id = lFormA.req_id_semem_analysis;
@@ -966,7 +980,20 @@ namespace clinic_ivf.gui
                 btnSave.Text = "Save";
                 btnSave.Image = Resources.download_database24;
             }
+            return true;
+        }
+        private void BtnSave_Click(object sender, EventArgs e)
+        {
+            //throw new NotImplementedException();
+            //if (btnSave.Text.Equals("Confirm"))
+            //{
+
             //}
+            //else
+            //{
+
+            //}
+            saveLabFormA();
         }
 
         private void ChkFreshSprem_CheckStateChanged(object sender, EventArgs e)
