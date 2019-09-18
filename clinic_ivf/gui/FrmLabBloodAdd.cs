@@ -255,6 +255,13 @@ namespace clinic_ivf.gui
             Boolean chk1 = true;
             DataTable dt = new DataTable();
             dt = ic.ivfDB.lbresDB.selectLabBloodByVsIdHormone(txtVsId.Text);
+            dt.Columns.Add("patient_name", typeof(String));
+            dt.Columns.Add("patient_hn", typeof(String));
+            dt.Columns.Add("patient_dob", typeof(String));
+            dt.Columns.Add("patient_sex", typeof(String));
+            dt.Columns.Add("line1", typeof(String));
+            dt.Columns.Add("line2", typeof(String));
+            dt.Columns.Add("line3", typeof(String));
             String chk = "", printerDefault = "";
             String amh = "", collectdate = "", receivedate = "";
             foreach (DataRow row in dt.Rows)
@@ -268,6 +275,22 @@ namespace clinic_ivf.gui
                 else
                 {
                     amh = "0";
+                }
+                row["patient_hn"] = txtHn.Text;
+                row["patient_name"] = txtPttNameE.Text;
+                row["patient_dob"] = txtDob.Text;
+                row["patient_sex"] = txtSex.Text;
+                if (ptt.f_sex_id.Equals("2") && (!ptt.patient_hn_1.Equals("") && !ptt.patient_hn_2.Equals("")))     // เป็น female และ เป็น donor  ไม่ต้องพิมพ์ หัว บริษัท
+                {
+                    row["line1"] = "";
+                    row["line2"] = "";
+                    row["line3"] = "";
+                }
+                else
+                {
+                    row["line1"] = ic.cop.comp_name_t;
+                    row["line2"] = ic.cop.addr1;
+                    row["line3"] = ic.cop.addr2;
                 }
             }
             ReportDocument rpt = new ReportDocument();
@@ -297,18 +320,21 @@ namespace clinic_ivf.gui
                 }
                 else
                 {
-                    rpt.SetParameterValue("line1", ic.cop.comp_name_t);
-                    rpt.SetParameterValue("line2", ic.cop.addr1);
-                    rpt.SetParameterValue("line3", ic.cop.addr2);
+                    //rpt.SetParameterValue("line1", ic.cop.comp_name_t);
+                    //rpt.SetParameterValue("line2", ic.cop.addr1);
+                    //rpt.SetParameterValue("line3", ic.cop.addr2);
+                    //rpt.SetParameterValue("aaaa", ic.cop.comp_name_t);
+                    //rpt.SetParameterValue("bbbb", ic.cop.addr1);
+                    //rpt.SetParameterValue("cccc", ic.cop.addr2);
                 }
                 rpt.SetDataSource(dt);
                 //rpt.SetParameterValue("line1", ic.cop.comp_name_t);
                 //rpt.SetParameterValue("line2", ic.cop.addr1);
                 //rpt.SetParameterValue("line3", ic.cop.addr2);
-                rpt.SetParameterValue("hn", txtHn.Text);
-                rpt.SetParameterValue("name", txtPttNameE.Text);
-                rpt.SetParameterValue("dob", txtDob.Text);
-                rpt.SetParameterValue("sex", txtSex.Text);
+                //rpt.SetParameterValue("hn", txtHn.Text);
+                //rpt.SetParameterValue("name", txtPttNameE.Text);
+                //rpt.SetParameterValue("dob", txtDob.Text);
+                //rpt.SetParameterValue("sex", txtSex.Text);
                 rpt.SetParameterValue("report_by", cboEmbryologistReport.Text);
                 rpt.SetParameterValue("approve_by", cboEmbryologistAppv.Text);
                 rpt.SetParameterValue("report_date", txtReportDate.Text);
