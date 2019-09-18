@@ -63,6 +63,16 @@ namespace clinic_ivf.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap _ {
+            get {
+                object obj = ResourceManager.GetObject("_", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap _698929 {
             get {
                 object obj = ResourceManager.GetObject("_698929", resourceCulture);
@@ -386,6 +396,16 @@ namespace clinic_ivf.Properties {
         internal static System.Drawing.Bitmap close {
             get {
                 object obj = ResourceManager.GetObject("close", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap connection {
+            get {
+                object obj = ResourceManager.GetObject("connection", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -1116,6 +1136,26 @@ namespace clinic_ivf.Properties {
         internal static System.Drawing.Bitmap Male_User_Warning48 {
             get {
                 object obj = ResourceManager.GetObject("Male_User_Warning48", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap microphone {
+            get {
+                object obj = ResourceManager.GetObject("microphone", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap monitor {
+            get {
+                object obj = ResourceManager.GetObject("monitor", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -2006,6 +2046,16 @@ namespace clinic_ivf.Properties {
         internal static System.Drawing.Bitmap transport_24x24 {
             get {
                 object obj = ResourceManager.GetObject("transport_24x24", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap transport_32x32 {
+            get {
+                object obj = ResourceManager.GetObject("transport_32x32", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

@@ -66,6 +66,7 @@
             this.panel4 = new System.Windows.Forms.Panel();
             this.txtEmailBody = new C1.Win.C1Input.C1TextBox();
             this.panel5 = new System.Windows.Forms.Panel();
+            this.btnSendEmailInfectious = new C1.Win.C1Input.C1Button();
             this.lbEmail = new System.Windows.Forms.Label();
             this.btnSendEmail = new C1.Win.C1Input.C1Button();
             this.btnAgentEmail = new C1.Win.C1Input.C1Button();
@@ -157,6 +158,7 @@
             this.panel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtEmailBody)).BeginInit();
             this.panel5.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.btnSendEmailInfectious)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnSendEmail)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnAgentEmail)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtEmailSubject)).BeginInit();
@@ -715,6 +717,7 @@
             // panel5
             // 
             this.panel5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.panel5.Controls.Add(this.btnSendEmailInfectious);
             this.panel5.Controls.Add(this.lbEmail);
             this.panel5.Controls.Add(this.btnSendEmail);
             this.panel5.Controls.Add(this.btnAgentEmail);
@@ -730,13 +733,27 @@
             this.panel5.TabIndex = 3;
             this.theme1.SetTheme(this.panel5, "(default)");
             // 
+            // btnSendEmailInfectious
+            // 
+            this.btnSendEmailInfectious.Image = global::clinic_ivf.Properties.Resources.transport_32x32;
+            this.btnSendEmailInfectious.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnSendEmailInfectious.Location = new System.Drawing.Point(431, 3);
+            this.btnSendEmailInfectious.Name = "btnSendEmailInfectious";
+            this.btnSendEmailInfectious.Size = new System.Drawing.Size(157, 34);
+            this.btnSendEmailInfectious.TabIndex = 543;
+            this.btnSendEmailInfectious.Text = "Send Email Infectious";
+            this.btnSendEmailInfectious.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.theme1.SetTheme(this.btnSendEmailInfectious, "(default)");
+            this.btnSendEmailInfectious.UseVisualStyleBackColor = true;
+            this.btnSendEmailInfectious.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            // 
             // lbEmail
             // 
             this.lbEmail.AutoSize = true;
             this.lbEmail.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
             this.lbEmail.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
             this.lbEmail.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.lbEmail.Location = new System.Drawing.Point(391, 8);
+            this.lbEmail.Location = new System.Drawing.Point(594, 8);
             this.lbEmail.Name = "lbEmail";
             this.lbEmail.Size = new System.Drawing.Size(60, 24);
             this.lbEmail.TabIndex = 13;
@@ -749,9 +766,9 @@
             this.btnSendEmail.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnSendEmail.Location = new System.Drawing.Point(284, 3);
             this.btnSendEmail.Name = "btnSendEmail";
-            this.btnSendEmail.Size = new System.Drawing.Size(101, 34);
+            this.btnSendEmail.Size = new System.Drawing.Size(141, 34);
             this.btnSendEmail.TabIndex = 542;
-            this.btnSendEmail.Text = "Send Email";
+            this.btnSendEmail.Text = "Send Email Hormone";
             this.btnSendEmail.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.theme1.SetTheme(this.btnSendEmail, "(default)");
             this.btnSendEmail.UseVisualStyleBackColor = true;
@@ -1268,6 +1285,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtEmailBody)).EndInit();
             this.panel5.ResumeLayout(false);
             this.panel5.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.btnSendEmailInfectious)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnSendEmail)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnAgentEmail)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtEmailSubject)).EndInit();
@@ -1383,5 +1401,6 @@
         private CrystalDecisions.Windows.Forms.CrystalReportViewer cryLab;
         private C1.Win.C1Command.C1DockingTabPage tabHis;
         private System.Windows.Forms.Label lbEmail;
+        private C1.Win.C1Input.C1Button btnSendEmailInfectious;
     }
 }

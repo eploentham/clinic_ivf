@@ -66,9 +66,10 @@ namespace clinic_ivf.gui
             btnSave.Click += BtnSave_Click;
             btnApproveResult.Click += BtnApproveResult_Click;
             btnPrintHormone.Click += BtnPrintHormone_Click;
-            btnSendEmail.Click += BtnSendEmail_Click;
+            btnSendEmail.Click += BtnSendEmailHormone_Click;
             btnPrintInfectious.Click += BtnPrintInfectious_Click;
             btnAgentEmail.Click += BtnAgentEmail_Click;
+            btnSendEmailInfectious.Click += BtnSendEmailInfectious_Click;
 
             sB1.Text = "";
             bg = txtHn.BackColor;
@@ -87,6 +88,57 @@ namespace clinic_ivf.gui
             lbEmail.Text = "";
             initGrfProc();
             setControl();
+        }
+
+        private void BtnSendEmailInfectious_Click(object sender, EventArgs e)
+        {
+            //throw new NotImplementedException();
+            lbEmail.Text = "เตรียม Email";
+            FrmWaiting frmW = new FrmWaiting();
+            frmW.Show();
+            String filename = "", datetick = "";
+            if (!Directory.Exists("report"))
+            {
+                Directory.CreateDirectory("report");
+            }
+            datetick = DateTime.Now.Ticks.ToString();
+            filename = "report\\lab_blood_" + datetick + ".pdf";
+            lbEmail.Text = "เตรียม Report";
+            if (!setReportLabBloodInfectious(filename))
+            {
+                return;
+            }
+            frmW.Dispose();
+            lbEmail.Text = "เริ่มส่ง Email";
+            MailMessage mail = new MailMessage();
+
+            mail.From = new MailAddress(txtEmailTo.Text);
+            mail.To.Add(txtEmailTo.Text);
+            mail.Subject = txtEmailSubject.Text;
+            mail.Body = txtEmailBody.Text;
+
+            mail.IsBodyHtml = true;
+            if (File.Exists(filename))
+            {
+                System.Net.Mail.Attachment attachment;
+                attachment = new System.Net.Mail.Attachment(filename);
+                mail.Attachments.Add(attachment);
+            }
+
+            AlternateView htmlView = AlternateView.CreateAlternateViewFromString(body, null, "text/html");
+            mail.AlternateViews.Add(htmlView);
+
+            foreach (LinkedResource linkimg in theEmailImage1)
+            {
+                htmlView.LinkedResources.Add(linkimg);
+            }
+
+            SmtpServer.Port = 587;
+            SmtpServer.Credentials = new System.Net.NetworkCredential(ic.iniC.email_auth_user, ic.iniC.email_auth_pass);
+
+            SmtpServer.EnableSsl = true;
+            SmtpServer.Send(mail);
+            lbEmail.Text = "ส่ง Email เรียบร้อย";
         }
 
         private void BtnAgentEmail_Click(object sender, EventArgs e)
@@ -115,13 +167,26 @@ namespace clinic_ivf.gui
             frm.setLabBloodReportInfectious(dt, txtHn.Text, txtPttNameE.Text, txtDob.Text, txtSex.Text, cboEmbryologistReport.Text, cboEmbryologistAppv.Text, txtReportDate.Text, txtApprovDate.Text, collectdate, receivedate);
             frm.ShowDialog(this);
         }
-
-        private Boolean setReportLabBlood(String filename)
+        private Boolean setReportLabBloodInfectious(String filename)
         {
             Boolean chk1 = true;
             DataTable dt = new DataTable();
-            dt = ic.ivfDB.lbresDB.selectLabBloodByVsId(txtVsId.Text);
+            dt = ic.ivfDB.lbresDB.selectLabBloodByVsIdHormone(txtVsId.Text);
             String chk = "", printerDefault = "";
+            String amh = "", collectdate = "", receivedate = "";
+            foreach (DataRow row in dt.Rows)
+            {
+                collectdate = row[ic.ivfDB.lbresDB.lbRes.req_date_time].ToString();
+                receivedate = row[ic.ivfDB.lbresDB.lbRes.date_time_receive].ToString();
+                if (row["LID"].ToString().Equals("10"))
+                {
+                    amh = "1";
+                }
+                else
+                {
+                    amh = "0";
+                }
+            }
             ReportDocument rpt = new ReportDocument();
             try
             {
@@ -132,13 +197,16 @@ namespace clinic_ivf.gui
                 date2 = ic.datetimetoShow(dt.Rows[0]["date_time_approve"]);
                 dt.Rows[0]["date_time_result"] = date1;
                 dt.Rows[0]["date_time_approve"] = date2;
-
-                rpt.Load("lab_blood_form1.rpt");
-
-                rpt.SetDataSource(dt);
+                
+                rpt.Load("lab_blood_form2.rpt");
                 rpt.SetParameterValue("line1", ic.cop.comp_name_t);
                 rpt.SetParameterValue("line2", ic.cop.addr1);
                 rpt.SetParameterValue("line3", ic.cop.addr2);
+                
+                rpt.SetDataSource(dt);
+                //rpt.SetParameterValue("line1", ic.cop.comp_name_t);
+                //rpt.SetParameterValue("line2", ic.cop.addr1);
+                //rpt.SetParameterValue("line3", ic.cop.addr2);
                 rpt.SetParameterValue("hn", txtHn.Text);
                 rpt.SetParameterValue("name", txtPttNameE.Text);
                 rpt.SetParameterValue("dob", txtDob.Text);
@@ -147,6 +215,8 @@ namespace clinic_ivf.gui
                 rpt.SetParameterValue("approve_by", cboEmbryologistAppv.Text);
                 rpt.SetParameterValue("report_date", txtReportDate.Text);
                 rpt.SetParameterValue("approve_date", txtApprovDate.Text);
+                rpt.SetParameterValue("collect_date", collectdate);
+                rpt.SetParameterValue("receive_date", receivedate);
                 //rpt.SetParameterValue("report_name", " Summary of OPU Report");
                 //rpt.SetParameterValue("date1", "" + date1);
                 this.cryLab.ReportSource = rpt;
@@ -180,7 +250,105 @@ namespace clinic_ivf.gui
             }
             return chk1;
         }
-        private void BtnSendEmail_Click(object sender, EventArgs e)
+        private Boolean setReportLabBloodHormone(String filename)
+        {
+            Boolean chk1 = true;
+            DataTable dt = new DataTable();
+            dt = ic.ivfDB.lbresDB.selectLabBloodByVsIdHormone(txtVsId.Text);
+            String chk = "", printerDefault = "";
+            String amh = "", collectdate = "", receivedate = "";
+            foreach (DataRow row in dt.Rows)
+            {
+                collectdate = row[ic.ivfDB.lbresDB.lbRes.req_date_time].ToString();
+                receivedate = row[ic.ivfDB.lbresDB.lbRes.date_time_receive].ToString();
+                if (row["LID"].ToString().Equals("10"))
+                {
+                    amh = "1";
+                }
+                else
+                {
+                    amh = "0";
+                }
+            }
+            ReportDocument rpt = new ReportDocument();
+            try
+            {
+                lbEmail.Text = "สร้าง Report";
+                String date1 = dt.Rows[0]["date_time_result"].ToString();
+                String date2 = dt.Rows[0]["date_time_approve"].ToString();
+                date1 = ic.datetimetoShow(dt.Rows[0]["date_time_result"]);
+                date2 = ic.datetimetoShow(dt.Rows[0]["date_time_approve"]);
+                dt.Rows[0]["date_time_result"] = date1;
+                dt.Rows[0]["date_time_approve"] = date2;
+                if (amh.Equals("1"))
+                {
+                    rpt.Load("lab_blood_form1_amh.rpt");
+                }
+                else
+                {
+                    rpt.Load("lab_blood_form1.rpt");
+                }
+                //rpt.Load("lab_blood_form1.rpt");
+                if (ptt.f_sex_id.Equals("2") && (!ptt.patient_hn_1.Equals("") && !ptt.patient_hn_2.Equals("")))     // เป็น female และ เป็น donor  ไม่ต้องพิมพ์ หัว บริษัท
+                {
+                    rpt.SetParameterValue("line1", "");
+                    rpt.SetParameterValue("line2", "");
+                    rpt.SetParameterValue("line3", "");
+                }
+                else
+                {
+                    rpt.SetParameterValue("line1", ic.cop.comp_name_t);
+                    rpt.SetParameterValue("line2", ic.cop.addr1);
+                    rpt.SetParameterValue("line3", ic.cop.addr2);
+                }
+                rpt.SetDataSource(dt);
+                //rpt.SetParameterValue("line1", ic.cop.comp_name_t);
+                //rpt.SetParameterValue("line2", ic.cop.addr1);
+                //rpt.SetParameterValue("line3", ic.cop.addr2);
+                rpt.SetParameterValue("hn", txtHn.Text);
+                rpt.SetParameterValue("name", txtPttNameE.Text);
+                rpt.SetParameterValue("dob", txtDob.Text);
+                rpt.SetParameterValue("sex", txtSex.Text);
+                rpt.SetParameterValue("report_by", cboEmbryologistReport.Text);
+                rpt.SetParameterValue("approve_by", cboEmbryologistAppv.Text);
+                rpt.SetParameterValue("report_date", txtReportDate.Text);
+                rpt.SetParameterValue("approve_date", txtApprovDate.Text);
+                rpt.SetParameterValue("collect_date", collectdate);
+                rpt.SetParameterValue("receive_date", receivedate);
+                //rpt.SetParameterValue("report_name", " Summary of OPU Report");
+                //rpt.SetParameterValue("date1", "" + date1);
+                this.cryLab.ReportSource = rpt;
+                this.cryLab.Refresh();
+                lbEmail.Text = "สร้าง Report เรียบร้อย";
+                if (File.Exists(filename))
+                {
+                    File.Delete(filename);
+                    System.Threading.Thread.Sleep(200);
+                }
+
+                ExportOptions CrExportOptions;
+                DiskFileDestinationOptions CrDiskFileDestinationOptions = new DiskFileDestinationOptions();
+                PdfRtfWordFormatOptions CrFormatTypeOptions = new PdfRtfWordFormatOptions();
+                CrDiskFileDestinationOptions.DiskFileName = filename;
+                CrExportOptions = rpt.ExportOptions;
+                {
+                    CrExportOptions.ExportDestinationType = ExportDestinationType.DiskFile;
+                    CrExportOptions.ExportFormatType = ExportFormatType.PortableDocFormat;
+                    CrExportOptions.DestinationOptions = CrDiskFileDestinationOptions;
+                    CrExportOptions.FormatOptions = CrFormatTypeOptions;
+                }
+                lbEmail.Text = "Export Report";
+                rpt.Export();
+            }
+            catch (Exception ex)
+            {
+                chk1 = false;
+                chk = ex.Message.ToString();
+                MessageBox.Show("error " + ex.Message, "");
+            }
+            return chk1;
+        }
+        private void BtnSendEmailHormone_Click(object sender, EventArgs e)
         {
             //throw new NotImplementedException();
             //FrmReport frm = new FrmReport(ic);
@@ -207,7 +375,7 @@ namespace clinic_ivf.gui
             datetick = DateTime.Now.Ticks.ToString();
             filename = "report\\lab_blood_" + datetick + ".pdf";
             lbEmail.Text = "เตรียม Report";
-            if (!setReportLabBlood(filename))
+            if (!setReportLabBloodHormone(filename))
             {
                 return;
             }
@@ -267,8 +435,7 @@ namespace clinic_ivf.gui
             String date1 = "";
             if (ptt.f_sex_id.Equals("2") && (!ptt.patient_hn_1.Equals("") && !ptt.patient_hn_2.Equals("")))     // เป็น female และ เป็น donor  ไม่ต้องพิมพ์ หัว บริษัท
             {
-
-                frm.setLabBloodReportHormone(dt, txtHn.Text, txtPttNameE.Text, txtDob.Text, txtSex.Text, cboEmbryologistReport.Text, cboEmbryologistAppv.Text, txtReportDate.Text, txtApprovDate.Text, "", amh, collectdate, receivedate);
+                frm.setLabBloodReportHormone(dt, txtHn.Text, txtPttNameE.Text, txtDob.Text, txtSex.Text, cboEmbryologistReport.Text, cboEmbryologistAppv.Text, txtReportDate.Text, txtApprovDate.Text, "1", amh, collectdate, receivedate);
             }
             else
             {
