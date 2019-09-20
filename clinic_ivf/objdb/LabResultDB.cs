@@ -55,6 +55,7 @@ namespace clinic_ivf.objdb
             lbRes.date_time_receive = "date_time_receive";
             lbRes.reactive_message = "reactive_message";
             lbRes.doctor_id = "doctor_id";
+            lbRes.date_time_collect = "date_time_collect";
 
             lbRes.table = "lab_t_result";
             lbRes.pkField = "result_id";
@@ -99,6 +100,7 @@ namespace clinic_ivf.objdb
                 itm1.date_time_receive = row[lbRes.date_time_receive].ToString();
                 itm1.reactive_message = row[lbRes.reactive_message].ToString();
                 itm1.doctor_id = row[lbRes.doctor_id].ToString();
+                itm1.date_time_collect = row[lbRes.date_time_collect].ToString();
                 lDgs.Add(itm1);
             }
         }
@@ -212,7 +214,7 @@ namespace clinic_ivf.objdb
             DataTable dt = new DataTable();
             String sql = "select lbRes.result,lbRes.interpret,lbRes.remark, LabItem.LName as lab_name,LabItem.lab_unit_id,LabItem.method_id,lab_b_unit.lab_unit_name as unit" +
                 ",lab_b_method.method_name as method, lbRes.reactive_message, LabItem.LID,lbRes.date_time_result,lbRes.date_time_approve, lbRes.req_date_time,lbRes.date_time_receive " +
-                ",LabItem.normal_vaule, dtr.Name " +
+                ",LabItem.normal_vaule, dtr.Name,LabItem.normal_vaule,lbRes.date_time_collect " +
                 "From " + lbRes.table + " lbRes " +
                 "Left Join LabItem on lbRes." + lbRes.lab_id + " = LabItem.LID " +
                 "Left Join lab_b_unit on LabItem.lab_unit_id = lab_b_unit.lab_unit_id " +
@@ -228,7 +230,7 @@ namespace clinic_ivf.objdb
             DataTable dt = new DataTable();
             String sql = "select lbRes.result,lbRes.interpret,lbRes.remark, LabItem.LName as lab_name,LabItem.lab_unit_id,LabItem.method_id,lab_b_unit.lab_unit_name as unit" +
                 ",lab_b_method.method_name as method, lbRes.reactive_message, LabItem.LID,lbRes.date_time_result,lbRes.date_time_approve, lbRes.req_date_time,lbRes.date_time_receive " +
-                ",LabItem.normal_vaule, dtr.Name " +
+                ",LabItem.normal_vaule, dtr.Name,LabItem.normal_vaule,lbRes.date_time_collect " +
                 "From " + lbRes.table + " lbRes " +
                 "Left Join LabItem on lbRes." + lbRes.lab_id + " = LabItem.LID " +
                 "Left Join lab_b_unit on LabItem.lab_unit_id = lab_b_unit.lab_unit_id " +
@@ -350,6 +352,7 @@ namespace clinic_ivf.objdb
             p.req_date_time = p.req_date_time == null ? "" : p.req_date_time;
             p.date_time_receive = p.date_time_receive == null ? "" : p.date_time_receive;
             p.reactive_message = p.reactive_message == null ? "" : p.reactive_message;
+            p.date_time_collect = p.date_time_collect == null ? "" : p.date_time_collect;
 
             p.lis_id = long.TryParse(p.lis_id, out chk) ? chk.ToString() : "0";
             p.req_id = long.TryParse(p.req_id, out chk) ? chk.ToString() : "0";
@@ -401,6 +404,7 @@ namespace clinic_ivf.objdb
                 "," + lbRes.date_time_receive + " " + "= '" + p.date_time_receive + "'" +
                 "," + lbRes.reactive_message + " " + "= '" + p.reactive_message + "'" +
                 "," + lbRes.doctor_id + " " + "= '" + p.doctor_id + "'" +
+                "," + lbRes.date_time_collect + " " + "= '" + p.date_time_collect + "'" +
                 "";
             try
             {
@@ -472,6 +476,7 @@ namespace clinic_ivf.objdb
                 "," + lbRes.row1 + " " + "= '" + p.row1 + "'" +
                 "," + lbRes.reactive_message + " " + "= '" + p.reactive_message + "'" +
                 "," + lbRes.doctor_id + " " + "= '" + p.doctor_id + "'" +
+                "," + lbRes.date_time_collect + " " + "= '" + p.date_time_collect + "'" +
                 "Where " + lbRes.pkField + "='" + p.result_id + "'"
                 ;
 
@@ -501,7 +506,33 @@ namespace clinic_ivf.objdb
 
             return re;
         }
-        public String updateResult(String result, String interpret, String stfappid, String stfresid, String dateapp, String dateres, String remark, String lot_input, String reactive, String resid)
+        public String updateResultDate(String stfappid, String stfresid, String dateapp, String dateres, String datecollect, String datereceive, String resid)
+        {
+            String re = "";
+            String sql = "";
+            int chk = 0;
+            //chkNull(p);
+            sql = "Update " + lbRes.table + " Set " +               
+                " " + lbRes.staff_id_approve + " = '" + stfappid + "'" +
+                "," + lbRes.staff_id_result + " = '" + stfresid + "'" +
+                "," + lbRes.date_time_approve + " = '" + dateapp + "'" +
+                "," + lbRes.date_time_result + " = '" + dateres + "'" +                
+                "," + lbRes.date_time_collect + " = '" + datecollect.Replace("'", "''") + "'" +
+                "," + lbRes.date_time_receive + " = '" + datereceive.Replace("'", "''") + "'" +
+                "Where " + lbRes.pkField + "='" + resid + "'"
+                ;
+            try
+            {
+                re = conn.ExecuteNonQuery(conn.conn, sql);
+            }
+            catch (Exception ex)
+            {
+                sql = ex.Message + " " + ex.InnerException;
+            }
+
+            return re;
+        }
+        public String updateResult(String result, String interpret, String remark, String lot_input, String reactive, String resid)
         {
             String re = "";
             String sql = "";
@@ -509,14 +540,16 @@ namespace clinic_ivf.objdb
             //chkNull(p);
             sql = "Update " + lbRes.table + " Set " +
                 " " + lbRes.result + " = '" + result.Replace("'", "''") + "'" +
-                "," + lbRes.staff_id_approve + " = '" + stfappid + "'" +
-                "," + lbRes.staff_id_result + " = '" + stfresid + "'" +
-                "," + lbRes.date_time_approve + " = '" + dateapp + "'" +
-                "," + lbRes.date_time_result + " = '" + dateres + "'" +
+                //"," + lbRes.staff_id_approve + " = '" + stfappid + "'" +
+                //"," + lbRes.staff_id_result + " = '" + stfresid + "'" +
+                //"," + lbRes.date_time_approve + " = '" + dateapp + "'" +
+                //"," + lbRes.date_time_result + " = '" + dateres + "'" +
                 "," + lbRes.interpret + " = '" + interpret.Replace("'","''") + "'" +
                 "," + lbRes.remark + " = '" + remark.Replace("'", "''") + "'" +
                 "," + lbRes.lot_input + " = '" + lot_input.Replace("'", "''") + "'" +
                 "," + lbRes.reactive_message + " = '" + reactive.Replace("'", "''") + "'" +
+                //"," + lbRes.date_time_collect + " = '" + datecollect.Replace("'", "''") + "'" +
+                //"," + lbRes.date_time_receive + " = '" + datereceive.Replace("'", "''") + "'" +
                 "Where " + lbRes.pkField + "='" + resid + "'"
                 ;
             try
@@ -609,6 +642,7 @@ namespace clinic_ivf.objdb
                 dgs1.date_time_receive = dt.Rows[0][lbRes.date_time_receive].ToString();
                 dgs1.reactive_message = dt.Rows[0][lbRes.reactive_message].ToString();
                 dgs1.doctor_id = dt.Rows[0][lbRes.doctor_id].ToString();
+                dgs1.date_time_collect = dt.Rows[0][lbRes.date_time_collect].ToString();
             }
             else
             {
@@ -648,6 +682,7 @@ namespace clinic_ivf.objdb
             dgs1.date_time_receive = "";
             dgs1.reactive_message = "";
             dgs1.doctor_id = "";
+            dgs1.date_time_collect = "";
             return dgs1;
         }
     }

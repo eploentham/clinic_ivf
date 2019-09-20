@@ -29,7 +29,7 @@ namespace clinic_ivf.gui
         C1SuperErrorProvider sep;
 
         int colReqId = 1, colReqLabName = 2, colReqHn = 3, colReqPttName=4, colReqVnShow = 5, colReqDate = 6, colReqTime=7, colReqVn=8, colReqVsId=9;
-        int colRsId = 1, colRsLabName = 2, colRsHn=3, colRsPttName=4, colRsMethod = 5, colRsResult = 6, colRsInterpret = 7, colRsUnit = 8, colRsNormal = 9, colRsRemark = 10, colRsLabId = 11, colRsReqId = 12;
+        int colRsId = 1, colRsReqDate=2, colRsLabName = 3, colRsHn=4, colRsPttName=5, colRsMethod = 6, colRsResult = 7, colRsInterpret = 8, colRsUnit = 9, colRsNormal = 10, colRsRemark = 11, colRsLabId = 12, colRsReqId = 13;
 
         Timer timer;
         [DllImport("winspool.drv", CharSet = CharSet.Auto, SetLastError = true)]
@@ -74,6 +74,7 @@ namespace clinic_ivf.gui
             initGrfProc();
             setGrfProc();
             initGrfFinish();
+            setGrfFinish();
         }
 
         private void BtnSearchFi_Click(object sender, EventArgs e)
@@ -131,10 +132,12 @@ namespace clinic_ivf.gui
             date1 = ic.datetoDB(txtFiDateStart.Text);
             date2 = ic.datetoDB(txtFiDateEnd.Text);
             //dt = ic.ivfDB.lbReqDB.selectByStatusReqAccept();
-            dt = ic.ivfDB.lbresDB.selectLabBloodByFinish(date1, date2);
+            
             //grfExpn.Rows.Count = dt.Rows.Count + 1;
             grfFinish.Rows.Count = 1;
-            grfFinish.Cols.Count = 13;
+            grfFinish.Cols.Count = 14;
+            if (txtFiDateStart.Text.Equals("")) return;
+            dt = ic.ivfDB.lbresDB.selectLabBloodByFinish(date1, date2);
             //C1TextBox txt = new C1TextBox();
             //C1ComboBox cboproce = new C1ComboBox();
             //ic.ivfDB.itmDB.setCboItem(cboproce);
@@ -152,11 +155,13 @@ namespace clinic_ivf.gui
             grfFinish.Cols[colRsRemark].Width = 200;
             grfFinish.Cols[colRsHn].Width = 100;
             grfFinish.Cols[colRsPttName].Width = 200;
+            grfFinish.Cols[colRsReqDate].Width = 150;
             grfFinish.ShowCursor = true;
             //grdFlex.Cols[colID].Caption = "no";
             //grfDept.Cols[colCode].Caption = "รหัส";
 
             grfFinish.Cols[colRsLabName].Caption = "Name";
+            grfFinish.Cols[colRsReqDate].Caption = "Request Date";
             grfFinish.Cols[colRsMethod].Caption = "Method";
             grfFinish.Cols[colRsResult].Caption = "Result";
             grfFinish.Cols[colRsInterpret].Caption = "Interpret";
@@ -188,6 +193,7 @@ namespace clinic_ivf.gui
                 row1[colRsReqId] = row[ic.ivfDB.lbresDB.lbRes.req_id].ToString();
                 row1[colRsHn] = row["patient_hn"].ToString();
                 row1[colRsPttName] = row["pname"].ToString();
+                row1[colRsReqDate] = ic.datetimetoShow(row[ic.ivfDB.lbresDB.lbRes.req_date_time].ToString());
                 //row1[colOPUTimeModi] = row[ic.ivfDB.lFormaDB.lformA.opu_time_modi].ToString();
                 //row1[colRqLabName] = row["SName"].ToString();
                 //row1[colRqHnMale] = row["hn_male"].ToString();
@@ -264,7 +270,7 @@ namespace clinic_ivf.gui
             dt = ic.ivfDB.lbresDB.selectLabBloodByProcess();
             //grfExpn.Rows.Count = dt.Rows.Count + 1;
             grfProc.Rows.Count = 1;
-            grfProc.Cols.Count = 13;
+            grfProc.Cols.Count = 14;
             //C1TextBox txt = new C1TextBox();
             //C1ComboBox cboproce = new C1ComboBox();
             //ic.ivfDB.itmDB.setCboItem(cboproce);
@@ -282,6 +288,7 @@ namespace clinic_ivf.gui
             grfProc.Cols[colRsRemark].Width = 200;
             grfProc.Cols[colRsHn].Width = 100;
             grfProc.Cols[colRsPttName].Width = 200;
+            grfProc.Cols[colRsReqDate].Width = 150;
             grfProc.ShowCursor = true;
             //grdFlex.Cols[colID].Caption = "no";
             //grfDept.Cols[colCode].Caption = "รหัส";
@@ -295,6 +302,7 @@ namespace clinic_ivf.gui
             grfProc.Cols[colRsRemark].Caption = "Remark";
             grfProc.Cols[colRsHn].Caption = "HN";
             grfProc.Cols[colRsPttName].Caption = "Patient Name";
+            grfProc.Cols[colRsReqDate].Caption = "Request Date";
             Color color = ColorTranslator.FromHtml(ic.iniC.grfRowColor);
             //CellRange rg1 = grfBank.GetCellRange(1, colE, grfBank.Rows.Count, colE);
             //rg1.Style = grfBank.Styles["date"];
@@ -318,6 +326,7 @@ namespace clinic_ivf.gui
                 row1[colRsReqId] = row[ic.ivfDB.lbresDB.lbRes.req_id].ToString();
                 row1[colRsHn] = row["patient_hn"].ToString();
                 row1[colRsPttName] = row["pname"].ToString();
+                row1[colRsReqDate] = ic.datetimetoShow(row[ic.ivfDB.lbresDB.lbRes.req_date_time].ToString());
                 //row1[colOPUTimeModi] = row[ic.ivfDB.lFormaDB.lformA.opu_time_modi].ToString();
                 //row1[colRqLabName] = row["SName"].ToString();
                 //row1[colRqHnMale] = row["hn_male"].ToString();
@@ -340,6 +349,7 @@ namespace clinic_ivf.gui
             grfProc.Cols[colRsRemark].AllowEditing = false;
             grfProc.Cols[colRsHn].AllowEditing = false;
             grfProc.Cols[colRsPttName].AllowEditing = false;
+            grfProc.Cols[colRsReqDate].AllowEditing = false;
             //grfReq.Cols[coldt].Visible = false;
         }
         private void GrfProc_DoubleClick(object sender, EventArgs e)

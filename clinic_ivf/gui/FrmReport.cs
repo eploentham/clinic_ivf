@@ -88,8 +88,8 @@ namespace clinic_ivf.gui
                 rpt.SetParameterValue("approve_by", approve_by);
                 rpt.SetParameterValue("report_date", report_date);
                 rpt.SetParameterValue("approve_date", approve_date);
-                rpt.SetParameterValue("collect_date", approve_date);
-                rpt.SetParameterValue("receive_date", approve_date);
+                rpt.SetParameterValue("collect_date", collect_date);
+                rpt.SetParameterValue("receive_date", receive_date);
                 err = "03";
                 //rpt.SetParameterValue("age1", "" + age);
                 this.crystalReportViewer1.ReportSource = rpt;

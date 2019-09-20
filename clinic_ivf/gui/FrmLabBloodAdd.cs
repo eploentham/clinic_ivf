@@ -157,14 +157,36 @@ namespace clinic_ivf.gui
             FrmReport frm = new FrmReport(ic);
             DataTable dt = new DataTable();
             dt = ic.ivfDB.lbresDB.selectLabBloodByVsIdInfectious(txtVsId.Text);
-
+            dt.Columns.Add("patient_name", typeof(String));
+            dt.Columns.Add("patient_hn", typeof(String));
+            dt.Columns.Add("patient_dob", typeof(String));
+            dt.Columns.Add("patient_sex", typeof(String));
+            dt.Columns.Add("line1", typeof(String));
+            dt.Columns.Add("line2", typeof(String));
+            dt.Columns.Add("line3", typeof(String));
             String date1 = "", collectdate = "", receivedate = "";
             foreach (DataRow row in dt.Rows)
             {
                 collectdate = row[ic.ivfDB.lbresDB.lbRes.req_date_time].ToString();
                 receivedate = row[ic.ivfDB.lbresDB.lbRes.date_time_receive].ToString();
+                row["patient_hn"] = txtHn.Text;
+                row["patient_name"] = txtPttNameE.Text;
+                row["patient_dob"] = txtDob.Text;
+                row["patient_sex"] = txtSex.Text;
+                if (ptt.f_sex_id.Equals("2") && (!ptt.patient_hn_1.Equals("") && !ptt.patient_hn_2.Equals("")))     // เป็น female และ เป็น donor  ไม่ต้องพิมพ์ หัว บริษัท
+                {
+                    row["line1"] = "";
+                    row["line2"] = "";
+                    row["line3"] = "";
+                }
+                else
+                {
+                    row["line1"] = ic.cop.comp_name_t;
+                    row["line2"] = ic.cop.addr1;
+                    row["line3"] = ic.cop.addr2;
+                }
             }
-            frm.setLabBloodReportInfectious(dt, txtHn.Text, txtPttNameE.Text, txtDob.Text, txtSex.Text, cboEmbryologistReport.Text, cboEmbryologistAppv.Text, txtReportDate.Text, txtApprovDate.Text, collectdate, receivedate);
+            frm.setLabBloodReportInfectious(dt, txtHn.Text, txtPttNameE.Text, txtDob.Text, txtSex.Text, cboEmbryologistReport.Text, cboEmbryologistAppv.Text, txtReportDate.Text, txtApprovDate.Text, ic.datetimetoShow(collectdate), ic.datetimetoShow(receivedate));
             frm.ShowDialog(this);
         }
         private Boolean setReportLabBloodInfectious(String filename)
@@ -172,6 +194,14 @@ namespace clinic_ivf.gui
             Boolean chk1 = true;
             DataTable dt = new DataTable();
             dt = ic.ivfDB.lbresDB.selectLabBloodByVsIdHormone(txtVsId.Text);
+            dt.Columns.Add("patient_name", typeof(String));
+            dt.Columns.Add("patient_hn", typeof(String));
+            dt.Columns.Add("patient_dob", typeof(String));
+            dt.Columns.Add("patient_sex", typeof(String));
+            dt.Columns.Add("line1", typeof(String));
+            dt.Columns.Add("line2", typeof(String));
+            dt.Columns.Add("line3", typeof(String));
+
             String chk = "", printerDefault = "";
             String amh = "", collectdate = "", receivedate = "";
             foreach (DataRow row in dt.Rows)
@@ -184,7 +214,23 @@ namespace clinic_ivf.gui
                 }
                 else
                 {
-                    amh = "0";
+                    //amh = "0";
+                }
+                row["patient_hn"] = txtHn.Text;
+                row["patient_name"] = txtPttNameE.Text;
+                row["patient_dob"] = txtDob.Text;
+                row["patient_sex"] = txtSex.Text;
+                if (ptt.f_sex_id.Equals("2") && (!ptt.patient_hn_1.Equals("") && !ptt.patient_hn_2.Equals("")))     // เป็น female และ เป็น donor  ไม่ต้องพิมพ์ หัว บริษัท
+                {
+                    row["line1"] = "";
+                    row["line2"] = "";
+                    row["line3"] = "";
+                }
+                else
+                {
+                    row["line1"] = ic.cop.comp_name_t;
+                    row["line2"] = ic.cop.addr1;
+                    row["line3"] = ic.cop.addr2;
                 }
             }
             ReportDocument rpt = new ReportDocument();
@@ -199,24 +245,24 @@ namespace clinic_ivf.gui
                 dt.Rows[0]["date_time_approve"] = date2;
                 
                 rpt.Load("lab_blood_form2.rpt");
-                rpt.SetParameterValue("line1", ic.cop.comp_name_t);
-                rpt.SetParameterValue("line2", ic.cop.addr1);
-                rpt.SetParameterValue("line3", ic.cop.addr2);
+                //rpt.SetParameterValue("line1", ic.cop.comp_name_t);
+                //rpt.SetParameterValue("line2", ic.cop.addr1);
+                //rpt.SetParameterValue("line3", ic.cop.addr2);
                 
                 rpt.SetDataSource(dt);
                 //rpt.SetParameterValue("line1", ic.cop.comp_name_t);
                 //rpt.SetParameterValue("line2", ic.cop.addr1);
                 //rpt.SetParameterValue("line3", ic.cop.addr2);
-                rpt.SetParameterValue("hn", txtHn.Text);
-                rpt.SetParameterValue("name", txtPttNameE.Text);
-                rpt.SetParameterValue("dob", txtDob.Text);
-                rpt.SetParameterValue("sex", txtSex.Text);
+                //rpt.SetParameterValue("hn", txtHn.Text);
+                //rpt.SetParameterValue("name", txtPttNameE.Text);
+                //rpt.SetParameterValue("dob", txtDob.Text);
+                //rpt.SetParameterValue("sex", txtSex.Text);
                 rpt.SetParameterValue("report_by", cboEmbryologistReport.Text);
                 rpt.SetParameterValue("approve_by", cboEmbryologistAppv.Text);
                 rpt.SetParameterValue("report_date", txtReportDate.Text);
                 rpt.SetParameterValue("approve_date", txtApprovDate.Text);
-                rpt.SetParameterValue("collect_date", collectdate);
-                rpt.SetParameterValue("receive_date", receivedate);
+                rpt.SetParameterValue("collect_date", ic.datetimetoShow(collectdate));
+                rpt.SetParameterValue("receive_date", ic.datetimetoShow(receivedate));
                 //rpt.SetParameterValue("report_name", " Summary of OPU Report");
                 //rpt.SetParameterValue("date1", "" + date1);
                 this.cryLab.ReportSource = rpt;
@@ -274,7 +320,7 @@ namespace clinic_ivf.gui
                 }
                 else
                 {
-                    amh = "0";
+                    //amh = "0";
                 }
                 row["patient_hn"] = txtHn.Text;
                 row["patient_name"] = txtPttNameE.Text;
@@ -314,9 +360,9 @@ namespace clinic_ivf.gui
                 //rpt.Load("lab_blood_form1.rpt");
                 if (ptt.f_sex_id.Equals("2") && (!ptt.patient_hn_1.Equals("") && !ptt.patient_hn_2.Equals("")))     // เป็น female และ เป็น donor  ไม่ต้องพิมพ์ หัว บริษัท
                 {
-                    rpt.SetParameterValue("line1", "");
-                    rpt.SetParameterValue("line2", "");
-                    rpt.SetParameterValue("line3", "");
+                    //rpt.SetParameterValue("line1", "");
+                    //rpt.SetParameterValue("line2", "");
+                    //rpt.SetParameterValue("line3", "");
                 }
                 else
                 {
@@ -339,8 +385,8 @@ namespace clinic_ivf.gui
                 rpt.SetParameterValue("approve_by", cboEmbryologistAppv.Text);
                 rpt.SetParameterValue("report_date", txtReportDate.Text);
                 rpt.SetParameterValue("approve_date", txtApprovDate.Text);
-                rpt.SetParameterValue("collect_date", collectdate);
-                rpt.SetParameterValue("receive_date", receivedate);
+                rpt.SetParameterValue("collect_date", ic.datetimetoShow(collectdate));
+                rpt.SetParameterValue("receive_date", ic.datetimetoShow(receivedate));
                 //rpt.SetParameterValue("report_name", " Summary of OPU Report");
                 //rpt.SetParameterValue("date1", "" + date1);
                 this.cryLab.ReportSource = rpt;
@@ -444,10 +490,17 @@ namespace clinic_ivf.gui
             FrmReport frm = new FrmReport(ic);
             DataTable dt = new DataTable();
             dt = ic.ivfDB.lbresDB.selectLabBloodByVsIdHormone(txtVsId.Text);
+            dt.Columns.Add("patient_name", typeof(String));
+            dt.Columns.Add("patient_hn", typeof(String));
+            dt.Columns.Add("patient_dob", typeof(String));
+            dt.Columns.Add("patient_sex", typeof(String));
+            dt.Columns.Add("line1", typeof(String));
+            dt.Columns.Add("line2", typeof(String));
+            dt.Columns.Add("line3", typeof(String));
             String amh = "", collectdate="", receivedate="";
             foreach (DataRow row in dt.Rows)
             {
-                collectdate = row[ic.ivfDB.lbresDB.lbRes.req_date_time].ToString();
+                collectdate = row[ic.ivfDB.lbresDB.lbRes.date_time_collect].ToString();
                 receivedate = row[ic.ivfDB.lbresDB.lbRes.date_time_receive].ToString();
                 if (row["LID"].ToString().Equals("10"))
                 {
@@ -455,17 +508,33 @@ namespace clinic_ivf.gui
                 }
                 else
                 {
-                    amh = "0";
+                    //amh = "0";
+                }
+                row["patient_hn"] = txtHn.Text;
+                row["patient_name"] = txtPttNameE.Text;
+                row["patient_dob"] = txtDob.Text;
+                row["patient_sex"] = txtSex.Text;
+                if (ptt.f_sex_id.Equals("2") && (!ptt.patient_hn_1.Equals("") && !ptt.patient_hn_2.Equals("")))     // เป็น female และ เป็น donor  ไม่ต้องพิมพ์ หัว บริษัท
+                {
+                    row["line1"] = "";
+                    row["line2"] = "";
+                    row["line3"] = "";
+                }
+                else
+                {
+                    row["line1"] = ic.cop.comp_name_t;
+                    row["line2"] = ic.cop.addr1;
+                    row["line3"] = ic.cop.addr2;
                 }
             }
             String date1 = "";
             if (ptt.f_sex_id.Equals("2") && (!ptt.patient_hn_1.Equals("") && !ptt.patient_hn_2.Equals("")))     // เป็น female และ เป็น donor  ไม่ต้องพิมพ์ หัว บริษัท
             {
-                frm.setLabBloodReportHormone(dt, txtHn.Text, txtPttNameE.Text, txtDob.Text, txtSex.Text, cboEmbryologistReport.Text, cboEmbryologistAppv.Text, txtReportDate.Text, txtApprovDate.Text, "1", amh, collectdate, receivedate);
+                frm.setLabBloodReportHormone(dt, txtHn.Text, txtPttNameE.Text, txtDob.Text, txtSex.Text, cboEmbryologistReport.Text, cboEmbryologistAppv.Text, txtReportDate.Text, txtApprovDate.Text, "1", amh, ic.datetimetoShow(collectdate), ic.datetimetoShow(receivedate));
             }
             else
             {
-                frm.setLabBloodReportHormone(dt, txtHn.Text, txtPttNameE.Text, txtDob.Text, txtSex.Text, cboEmbryologistReport.Text, cboEmbryologistAppv.Text, txtReportDate.Text, txtApprovDate.Text,"", amh, collectdate, receivedate);
+                frm.setLabBloodReportHormone(dt, txtHn.Text, txtPttNameE.Text, txtDob.Text, txtSex.Text, cboEmbryologistReport.Text, cboEmbryologistAppv.Text, txtReportDate.Text, txtApprovDate.Text,"", amh, ic.datetimetoShow(collectdate), ic.datetimetoShow(receivedate));
             }
             
             frm.ShowDialog(this);
@@ -481,13 +550,17 @@ namespace clinic_ivf.gui
         private void BtnSave_Click(object sender, EventArgs e)
         {
             //throw new NotImplementedException();
-            String stfapp = "", stfrpt = "", dateapp = "", daterpt = "";
+            String stfapp = "", stfrpt = "", dateapp = "", daterpt = "", datecollect="", datereceive="";
             DateTime daterpt1 = new DateTime();
             DateTime dateapp1 = new DateTime();
+            DateTime datecollect1 = new DateTime();
+            DateTime datereceive1 = new DateTime();
             stfrpt = cboEmbryologistReport.SelectedItem == null ? "" : ((ComboBoxItem)cboEmbryologistReport.SelectedItem).Value;
             stfapp = cboEmbryologistAppv.SelectedItem == null ? "" : ((ComboBoxItem)cboEmbryologistAppv.SelectedItem).Value;
             daterpt = ic.dateTimetoDB1(txtReportDate.Text);
             dateapp = ic.dateTimetoDB1(txtApprovDate.Text);
+            datecollect = ic.dateTimetoDB1(txtCollectTime.Text);
+            datereceive = ic.dateTimetoDB1(txtReceiveTime.Text);
 
             Staff stf = new Staff();
             stf = ic.ivfDB.stfDB.selectByPk1(stfrpt);
@@ -504,12 +577,22 @@ namespace clinic_ivf.gui
             }
             if(!DateTime.TryParse(daterpt, out daterpt1))
             {
-                MessageBox.Show("วันที่ ไม่ถูกต้อง", "");
+                MessageBox.Show("Report Datetime ไม่ถูกต้อง", "");
                 return;
             }
             if (!DateTime.TryParse(dateapp, out dateapp1))
             {
-                MessageBox.Show("วันที่ ไม่ถูกต้อง", "");
+                MessageBox.Show("Approve Datetime ไม่ถูกต้อง", "");
+                return;
+            }
+            if (!DateTime.TryParse(datecollect, out datecollect1))
+            {
+                MessageBox.Show("Collect time ไม่ถูกต้อง", "");
+                return;
+            }
+            if (!DateTime.TryParse(datereceive, out datereceive1))
+            {
+                MessageBox.Show("Receive time ไม่ถูกต้อง", "");
                 return;
             }
             String lotInput = "";
@@ -517,12 +600,14 @@ namespace clinic_ivf.gui
             {
                 String id = "", edit = "", result="", interpret="", remark, lotinput="", reactive="";
                 id = row[colRsId] != null ? row[colRsId].ToString() : "";
+                if (id.Equals("")) continue;
                 edit = row[colRsEdit] != null ? row[colRsEdit].ToString() : "";
                 result = row[colRsResult] != null ? row[colRsResult].ToString() : "";
                 interpret = row[colRsInterpret] != null ? row[colRsInterpret].ToString() : "";
                 remark = row[colRsRemark] != null ? row[colRsRemark].ToString() : "";
                 lotinput = row[colRsLotInput] != null ? row[colRsLotInput].ToString() : "";
                 reactive = row[colRsReactive] != null ? row[colRsReactive].ToString() : "";
+                String re1 = ic.ivfDB.lbresDB.updateResultDate(stfapp, stfrpt, dateapp, daterpt, datecollect, datereceive, id);
                 if (edit.Equals("1") && !result.Equals(""))
                 {
                     if (lotinput.Equals(""))
@@ -534,7 +619,7 @@ namespace clinic_ivf.gui
                             lotinput = (chk1 + 1).ToString();
                         }
                     }
-                    String re = ic.ivfDB.lbresDB.updateResult(result, interpret, stfapp, stfrpt, dateapp, daterpt, remark, lotinput, reactive, id);
+                    String re = ic.ivfDB.lbresDB.updateResult(result, interpret, remark, lotinput, reactive, id);
                     long chk = 0;
                     if(long.TryParse(re, out chk))
                     {
@@ -564,6 +649,23 @@ namespace clinic_ivf.gui
 
             txtApprovDate.Value = lbRes.date_time_approve;
             txtReportDate.Value = lbRes.date_time_result;
+            if (lbRes.date_time_collect.Equals(""))
+            {
+                txtCollectTime.Value = DateTime.Now.Year+"-"+DateTime.Now.ToString("MM-dd");
+            }
+            else
+            {
+                txtCollectTime.Value = lbRes.date_time_collect;
+            }
+            if (lbRes.date_time_receive.Equals(""))
+            {
+                txtReceiveTime.Value = lbRes.req_date_time;
+            }
+            else
+            {
+                txtReceiveTime.Value = lbRes.date_time_receive;
+            }
+            
 
             txtEmailTo.Value = ic.iniC.email_to_sperm_freezing;
             txtEmailSubject.Value = "Result LAB Blood HN " + txtHn.Text + " Name " + txtPttNameE.Text + "Sex "+txtSex.Text+ " [VN " + txtVnShow.Text + "]";
