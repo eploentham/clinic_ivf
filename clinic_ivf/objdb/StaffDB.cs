@@ -96,8 +96,8 @@ namespace clinic_ivf.objdb
                 stf1.staff_lname_t = row[stf.staff_lname_t].ToString();
                 stf1.staff_fname_e = row[stf.staff_fname_e].ToString();
                 stf1.staff_lname_e = row[stf.staff_lname_e].ToString();
-                //cus1.date_create = row[dept.date_create].ToString();
-                //cus1.date_modi = row[dept.date_modi].ToString();
+                stf1.doctor_id_old = row[stf.doctor_id_old].ToString();
+                stf1.doctor_id = row[stf.doctor_id].ToString();
                 //cus1.date_cancel = row[dept.date_cancel].ToString();
                 //cus1.user_create = row[dept.user_create].ToString();
                 //cus1.user_modi = row[dept.user_modi].ToString();
@@ -106,7 +106,20 @@ namespace clinic_ivf.objdb
                 lStf.Add(stf1);
             }
         }
-
+        public String getIdByIdOld(String code)
+        {
+            String id = "";
+            if (lStf.Count <= 0) getlStf();
+            foreach (Staff stf1 in lStf)
+            {
+                if (code.Trim().Equals(stf1.doctor_id_old))
+                {
+                    id = stf1.staff_id;
+                    break;
+                }
+            }
+            return id;
+        }
         public String getIdByCode(String code)
         {
             String id = "";

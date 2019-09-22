@@ -78,6 +78,7 @@ namespace clinic_ivf.gui
 
             ic.ivfDB.stfDB.setCboEmbryologist(cboEmbryologistAppv, "");
             ic.ivfDB.stfDB.setCboEmbryologist(cboEmbryologistReport, "");
+            ic.ivfDB.stfDB.setCboDoctor(cboDoctor, "");
 
             stt = new C1SuperTooltip();
             sep = new C1SuperErrorProvider();
@@ -193,7 +194,12 @@ namespace clinic_ivf.gui
         {
             Boolean chk1 = true;
             DataTable dt = new DataTable();
-            dt = ic.ivfDB.lbresDB.selectLabBloodByVsIdHormone(txtVsId.Text);
+            dt = ic.ivfDB.lbresDB.selectLabBloodByVsIdInfectious(txtVsId.Text);
+            if (dt.Rows.Count <= 0)
+            {
+                MessageBox.Show("ไม่พบข้อมูล", "");
+                return false;
+            }
             dt.Columns.Add("patient_name", typeof(String));
             dt.Columns.Add("patient_hn", typeof(String));
             dt.Columns.Add("patient_dob", typeof(String));
@@ -301,6 +307,11 @@ namespace clinic_ivf.gui
             Boolean chk1 = true;
             DataTable dt = new DataTable();
             dt = ic.ivfDB.lbresDB.selectLabBloodByVsIdHormone(txtVsId.Text);
+            if (dt.Rows.Count <= 0)
+            {
+                MessageBox.Show("ไม่พบข้อมูล", "");
+                return false;
+            }
             dt.Columns.Add("patient_name", typeof(String));
             dt.Columns.Add("patient_hn", typeof(String));
             dt.Columns.Add("patient_dob", typeof(String));
@@ -646,6 +657,7 @@ namespace clinic_ivf.gui
 
             ic.setC1Combo(cboEmbryologistAppv, lbRes.staff_id_approve);
             ic.setC1Combo(cboEmbryologistReport, lbRes.staff_id_result);
+            ic.setC1Combo(cboDoctor, ic.ivfDB.stfDB.getIdByIdOld(lbRes.doctor_id));
 
             txtApprovDate.Value = lbRes.date_time_approve;
             txtReportDate.Value = lbRes.date_time_result;

@@ -30,6 +30,10 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmLabBloodAdd));
             this.panel1 = new System.Windows.Forms.Panel();
+            this.label8 = new System.Windows.Forms.Label();
+            this.txtReceiveTime = new C1.Win.C1Input.C1DateEdit();
+            this.label7 = new System.Windows.Forms.Label();
+            this.txtCollectTime = new C1.Win.C1Input.C1DateEdit();
             this.txtDob = new C1.Win.C1Input.C1TextBox();
             this.c1Button3 = new C1.Win.C1Input.C1Button();
             this.btnPrintInfectious = new C1.Win.C1Input.C1Button();
@@ -130,11 +134,11 @@
             this.tabHis = new C1.Win.C1Command.C1DockingTabPage();
             this.sB = new System.Windows.Forms.StatusStrip();
             this.sB1 = new System.Windows.Forms.ToolStripStatusLabel();
-            this.label7 = new System.Windows.Forms.Label();
-            this.txtCollectTime = new C1.Win.C1Input.C1DateEdit();
-            this.label8 = new System.Windows.Forms.Label();
-            this.txtReceiveTime = new C1.Win.C1Input.C1DateEdit();
+            this.cboDoctor = new C1.Win.C1Input.C1ComboBox();
+            this.label9 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtReceiveTime)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtCollectTime)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtDob)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.c1Button3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnPrintInfectious)).BeginInit();
@@ -170,12 +174,13 @@
             ((System.ComponentModel.ISupportInitialize)(this.c1Ribbon1)).BeginInit();
             this.tabReport.SuspendLayout();
             this.sB.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.txtCollectTime)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtReceiveTime)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cboDoctor)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.cboDoctor);
+            this.panel1.Controls.Add(this.label9);
             this.panel1.Controls.Add(this.label8);
             this.panel1.Controls.Add(this.txtReceiveTime);
             this.panel1.Controls.Add(this.label7);
@@ -212,6 +217,122 @@
             this.panel1.Size = new System.Drawing.Size(1263, 135);
             this.panel1.TabIndex = 0;
             // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.label8.Location = new System.Drawing.Point(749, 84);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(93, 16);
+            this.label8.TabIndex = 980;
+            this.label8.Text = "Receive time :";
+            this.theme1.SetTheme(this.label8, "(default)");
+            // 
+            // txtReceiveTime
+            // 
+            this.txtReceiveTime.AllowSpinLoop = false;
+            this.txtReceiveTime.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            // 
+            // 
+            // 
+            this.txtReceiveTime.Calendar.ArrowColor = System.Drawing.Color.Black;
+            this.txtReceiveTime.Calendar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.txtReceiveTime.Calendar.DayNamesFont = new System.Drawing.Font("Tahoma", 8F);
+            this.txtReceiveTime.Calendar.Font = new System.Drawing.Font("Tahoma", 8F);
+            this.txtReceiveTime.Calendar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.txtReceiveTime.Calendar.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(71)))), ((int)(((byte)(47)))));
+            this.txtReceiveTime.Calendar.SelectionForeColor = System.Drawing.Color.White;
+            this.txtReceiveTime.Calendar.TitleBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(230)))));
+            this.txtReceiveTime.Calendar.TitleFont = new System.Drawing.Font("Tahoma", 8F);
+            this.txtReceiveTime.Calendar.TitleForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.txtReceiveTime.Calendar.TodayBorderColor = System.Drawing.Color.White;
+            this.txtReceiveTime.Calendar.TrailingForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
+            this.txtReceiveTime.Calendar.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            this.txtReceiveTime.Culture = 1054;
+            this.txtReceiveTime.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
+            this.txtReceiveTime.DisplayFormat.CalendarType = C1.Win.C1Input.CalendarType.GregorianCalendar;
+            this.txtReceiveTime.DisplayFormat.FormatType = C1.Win.C1Input.FormatTypeEnum.ShortDateShortTime;
+            this.txtReceiveTime.DisplayFormat.Inherit = ((C1.Win.C1Input.FormatInfoInheritFlags)(((((C1.Win.C1Input.FormatInfoInheritFlags.CustomFormat | C1.Win.C1Input.FormatInfoInheritFlags.NullText) 
+            | C1.Win.C1Input.FormatInfoInheritFlags.EmptyAsNull) 
+            | C1.Win.C1Input.FormatInfoInheritFlags.TrimStart) 
+            | C1.Win.C1Input.FormatInfoInheritFlags.TrimEnd)));
+            this.txtReceiveTime.EditFormat.CalendarType = C1.Win.C1Input.CalendarType.GregorianCalendar;
+            this.txtReceiveTime.EditFormat.FormatType = C1.Win.C1Input.FormatTypeEnum.ShortDateShortTime;
+            this.txtReceiveTime.EditFormat.Inherit = ((C1.Win.C1Input.FormatInfoInheritFlags)(((((C1.Win.C1Input.FormatInfoInheritFlags.CustomFormat | C1.Win.C1Input.FormatInfoInheritFlags.NullText) 
+            | C1.Win.C1Input.FormatInfoInheritFlags.EmptyAsNull) 
+            | C1.Win.C1Input.FormatInfoInheritFlags.TrimStart) 
+            | C1.Win.C1Input.FormatInfoInheritFlags.TrimEnd)));
+            this.txtReceiveTime.EmptyAsNull = true;
+            this.txtReceiveTime.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.txtReceiveTime.ImagePadding = new System.Windows.Forms.Padding(0);
+            this.txtReceiveTime.Location = new System.Drawing.Point(885, 82);
+            this.txtReceiveTime.Name = "txtReceiveTime";
+            this.txtReceiveTime.Size = new System.Drawing.Size(165, 20);
+            this.txtReceiveTime.TabIndex = 979;
+            this.txtReceiveTime.Tag = null;
+            this.theme1.SetTheme(this.txtReceiveTime, "(default)");
+            this.txtReceiveTime.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.label7.Location = new System.Drawing.Point(749, 61);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(83, 16);
+            this.label7.TabIndex = 978;
+            this.label7.Text = "Collect time :";
+            this.theme1.SetTheme(this.label7, "(default)");
+            // 
+            // txtCollectTime
+            // 
+            this.txtCollectTime.AllowSpinLoop = false;
+            this.txtCollectTime.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            // 
+            // 
+            // 
+            this.txtCollectTime.Calendar.ArrowColor = System.Drawing.Color.Black;
+            this.txtCollectTime.Calendar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.txtCollectTime.Calendar.DayNamesFont = new System.Drawing.Font("Tahoma", 8F);
+            this.txtCollectTime.Calendar.Font = new System.Drawing.Font("Tahoma", 8F);
+            this.txtCollectTime.Calendar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.txtCollectTime.Calendar.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(71)))), ((int)(((byte)(47)))));
+            this.txtCollectTime.Calendar.SelectionForeColor = System.Drawing.Color.White;
+            this.txtCollectTime.Calendar.TitleBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(230)))));
+            this.txtCollectTime.Calendar.TitleFont = new System.Drawing.Font("Tahoma", 8F);
+            this.txtCollectTime.Calendar.TitleForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.txtCollectTime.Calendar.TodayBorderColor = System.Drawing.Color.White;
+            this.txtCollectTime.Calendar.TrailingForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
+            this.txtCollectTime.Calendar.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            this.txtCollectTime.Culture = 1054;
+            this.txtCollectTime.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
+            this.txtCollectTime.DisplayFormat.CalendarType = C1.Win.C1Input.CalendarType.GregorianCalendar;
+            this.txtCollectTime.DisplayFormat.FormatType = C1.Win.C1Input.FormatTypeEnum.ShortDateShortTime;
+            this.txtCollectTime.DisplayFormat.Inherit = ((C1.Win.C1Input.FormatInfoInheritFlags)(((((C1.Win.C1Input.FormatInfoInheritFlags.CustomFormat | C1.Win.C1Input.FormatInfoInheritFlags.NullText) 
+            | C1.Win.C1Input.FormatInfoInheritFlags.EmptyAsNull) 
+            | C1.Win.C1Input.FormatInfoInheritFlags.TrimStart) 
+            | C1.Win.C1Input.FormatInfoInheritFlags.TrimEnd)));
+            this.txtCollectTime.EditFormat.CalendarType = C1.Win.C1Input.CalendarType.GregorianCalendar;
+            this.txtCollectTime.EditFormat.FormatType = C1.Win.C1Input.FormatTypeEnum.ShortDateShortTime;
+            this.txtCollectTime.EditFormat.Inherit = ((C1.Win.C1Input.FormatInfoInheritFlags)(((((C1.Win.C1Input.FormatInfoInheritFlags.CustomFormat | C1.Win.C1Input.FormatInfoInheritFlags.NullText) 
+            | C1.Win.C1Input.FormatInfoInheritFlags.EmptyAsNull) 
+            | C1.Win.C1Input.FormatInfoInheritFlags.TrimStart) 
+            | C1.Win.C1Input.FormatInfoInheritFlags.TrimEnd)));
+            this.txtCollectTime.EmptyAsNull = true;
+            this.txtCollectTime.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.txtCollectTime.ImagePadding = new System.Windows.Forms.Padding(0);
+            this.txtCollectTime.Location = new System.Drawing.Point(885, 59);
+            this.txtCollectTime.Name = "txtCollectTime";
+            this.txtCollectTime.Size = new System.Drawing.Size(165, 20);
+            this.txtCollectTime.TabIndex = 977;
+            this.txtCollectTime.Tag = null;
+            this.theme1.SetTheme(this.txtCollectTime, "(default)");
+            this.txtCollectTime.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            // 
             // txtDob
             // 
             this.txtDob.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
@@ -243,7 +364,7 @@
             // 
             this.btnPrintInfectious.Image = ((System.Drawing.Image)(resources.GetObject("btnPrintInfectious.Image")));
             this.btnPrintInfectious.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnPrintInfectious.Location = new System.Drawing.Point(464, 98);
+            this.btnPrintInfectious.Location = new System.Drawing.Point(527, 98);
             this.btnPrintInfectious.Name = "btnPrintInfectious";
             this.btnPrintInfectious.Size = new System.Drawing.Size(122, 34);
             this.btnPrintInfectious.TabIndex = 974;
@@ -284,7 +405,7 @@
             this.txtPttId.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtPttId.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
             this.txtPttId.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.txtPttId.Location = new System.Drawing.Point(678, 67);
+            this.txtPttId.Location = new System.Drawing.Point(364, 105);
             this.txtPttId.Name = "txtPttId";
             this.txtPttId.Size = new System.Drawing.Size(30, 20);
             this.txtPttId.TabIndex = 970;
@@ -298,7 +419,7 @@
             this.txtVsId.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtVsId.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
             this.txtVsId.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.txtVsId.Location = new System.Drawing.Point(647, 68);
+            this.txtVsId.Location = new System.Drawing.Point(333, 106);
             this.txtVsId.Name = "txtVsId";
             this.txtVsId.Size = new System.Drawing.Size(30, 20);
             this.txtVsId.TabIndex = 969;
@@ -312,7 +433,7 @@
             this.txtVn.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtVn.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
             this.txtVn.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.txtVn.Location = new System.Drawing.Point(602, 64);
+            this.txtVn.Location = new System.Drawing.Point(288, 102);
             this.txtVn.Name = "txtVn";
             this.txtVn.Size = new System.Drawing.Size(41, 24);
             this.txtVn.TabIndex = 971;
@@ -357,7 +478,7 @@
             // 
             this.btnPrintHormone.Image = global::clinic_ivf.Properties.Resources.print;
             this.btnPrintHormone.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnPrintHormone.Location = new System.Drawing.Point(464, 60);
+            this.btnPrintHormone.Location = new System.Drawing.Point(400, 98);
             this.btnPrintHormone.Name = "btnPrintHormone";
             this.btnPrintHormone.Size = new System.Drawing.Size(121, 34);
             this.btnPrintHormone.TabIndex = 868;
@@ -1255,101 +1376,39 @@
             this.sB1.Size = new System.Drawing.Size(118, 17);
             this.sB1.Text = "toolStripStatusLabel1";
             // 
-            // label7
+            // cboDoctor
             // 
-            this.label7.AutoSize = true;
-            this.label7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.label7.Location = new System.Drawing.Point(749, 61);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(83, 16);
-            this.label7.TabIndex = 978;
-            this.label7.Text = "Collect time :";
-            this.theme1.SetTheme(this.label7, "(default)");
+            this.cboDoctor.AllowSpinLoop = false;
+            this.cboDoctor.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.cboDoctor.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
+            this.cboDoctor.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.cboDoctor.GapHeight = 0;
+            this.cboDoctor.ImagePadding = new System.Windows.Forms.Padding(0);
+            this.cboDoctor.ItemsDisplayMember = "";
+            this.cboDoctor.ItemsValueMember = "";
+            this.cboDoctor.Location = new System.Drawing.Point(464, 58);
+            this.cboDoctor.Name = "cboDoctor";
+            this.cboDoctor.Size = new System.Drawing.Size(279, 20);
+            this.cboDoctor.Style.DropDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.cboDoctor.Style.DropDownBorderColor = System.Drawing.Color.Gainsboro;
+            this.cboDoctor.Style.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.cboDoctor.TabIndex = 982;
+            this.cboDoctor.Tag = null;
+            this.theme1.SetTheme(this.cboDoctor, "(default)");
+            this.cboDoctor.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
             // 
-            // txtCollectTime
+            // label9
             // 
-            this.txtCollectTime.AllowSpinLoop = false;
-            this.txtCollectTime.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            // 
-            // 
-            // 
-            this.txtCollectTime.Calendar.Font = new System.Drawing.Font("Tahoma", 8F);
-            this.txtCollectTime.Calendar.VisualStyle = C1.Win.C1Input.VisualStyle.System;
-            this.txtCollectTime.Calendar.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
-            this.txtCollectTime.Culture = 1054;
-            this.txtCollectTime.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
-            this.txtCollectTime.DisplayFormat.CalendarType = C1.Win.C1Input.CalendarType.GregorianCalendar;
-            this.txtCollectTime.DisplayFormat.FormatType = C1.Win.C1Input.FormatTypeEnum.ShortDateShortTime;
-            this.txtCollectTime.DisplayFormat.Inherit = ((C1.Win.C1Input.FormatInfoInheritFlags)(((((C1.Win.C1Input.FormatInfoInheritFlags.CustomFormat | C1.Win.C1Input.FormatInfoInheritFlags.NullText) 
-            | C1.Win.C1Input.FormatInfoInheritFlags.EmptyAsNull) 
-            | C1.Win.C1Input.FormatInfoInheritFlags.TrimStart) 
-            | C1.Win.C1Input.FormatInfoInheritFlags.TrimEnd)));
-            this.txtCollectTime.EditFormat.CalendarType = C1.Win.C1Input.CalendarType.GregorianCalendar;
-            this.txtCollectTime.EditFormat.FormatType = C1.Win.C1Input.FormatTypeEnum.ShortDateShortTime;
-            this.txtCollectTime.EditFormat.Inherit = ((C1.Win.C1Input.FormatInfoInheritFlags)(((((C1.Win.C1Input.FormatInfoInheritFlags.CustomFormat | C1.Win.C1Input.FormatInfoInheritFlags.NullText) 
-            | C1.Win.C1Input.FormatInfoInheritFlags.EmptyAsNull) 
-            | C1.Win.C1Input.FormatInfoInheritFlags.TrimStart) 
-            | C1.Win.C1Input.FormatInfoInheritFlags.TrimEnd)));
-            this.txtCollectTime.EmptyAsNull = true;
-            this.txtCollectTime.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.txtCollectTime.ImagePadding = new System.Windows.Forms.Padding(0);
-            this.txtCollectTime.Location = new System.Drawing.Point(885, 59);
-            this.txtCollectTime.Name = "txtCollectTime";
-            this.txtCollectTime.Size = new System.Drawing.Size(165, 20);
-            this.txtCollectTime.TabIndex = 977;
-            this.txtCollectTime.Tag = null;
-            this.theme1.SetTheme(this.txtCollectTime, "(default)");
-            this.txtCollectTime.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.label8.Location = new System.Drawing.Point(749, 84);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(93, 16);
-            this.label8.TabIndex = 980;
-            this.label8.Text = "Receive time :";
-            this.theme1.SetTheme(this.label8, "(default)");
-            // 
-            // txtReceiveTime
-            // 
-            this.txtReceiveTime.AllowSpinLoop = false;
-            this.txtReceiveTime.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            // 
-            // 
-            // 
-            this.txtReceiveTime.Calendar.Font = new System.Drawing.Font("Tahoma", 8F);
-            this.txtReceiveTime.Calendar.VisualStyle = C1.Win.C1Input.VisualStyle.System;
-            this.txtReceiveTime.Calendar.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
-            this.txtReceiveTime.Culture = 1054;
-            this.txtReceiveTime.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
-            this.txtReceiveTime.DisplayFormat.CalendarType = C1.Win.C1Input.CalendarType.GregorianCalendar;
-            this.txtReceiveTime.DisplayFormat.FormatType = C1.Win.C1Input.FormatTypeEnum.ShortDateShortTime;
-            this.txtReceiveTime.DisplayFormat.Inherit = ((C1.Win.C1Input.FormatInfoInheritFlags)(((((C1.Win.C1Input.FormatInfoInheritFlags.CustomFormat | C1.Win.C1Input.FormatInfoInheritFlags.NullText) 
-            | C1.Win.C1Input.FormatInfoInheritFlags.EmptyAsNull) 
-            | C1.Win.C1Input.FormatInfoInheritFlags.TrimStart) 
-            | C1.Win.C1Input.FormatInfoInheritFlags.TrimEnd)));
-            this.txtReceiveTime.EditFormat.CalendarType = C1.Win.C1Input.CalendarType.GregorianCalendar;
-            this.txtReceiveTime.EditFormat.FormatType = C1.Win.C1Input.FormatTypeEnum.ShortDateShortTime;
-            this.txtReceiveTime.EditFormat.Inherit = ((C1.Win.C1Input.FormatInfoInheritFlags)(((((C1.Win.C1Input.FormatInfoInheritFlags.CustomFormat | C1.Win.C1Input.FormatInfoInheritFlags.NullText) 
-            | C1.Win.C1Input.FormatInfoInheritFlags.EmptyAsNull) 
-            | C1.Win.C1Input.FormatInfoInheritFlags.TrimStart) 
-            | C1.Win.C1Input.FormatInfoInheritFlags.TrimEnd)));
-            this.txtReceiveTime.EmptyAsNull = true;
-            this.txtReceiveTime.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.txtReceiveTime.ImagePadding = new System.Windows.Forms.Padding(0);
-            this.txtReceiveTime.Location = new System.Drawing.Point(885, 82);
-            this.txtReceiveTime.Name = "txtReceiveTime";
-            this.txtReceiveTime.Size = new System.Drawing.Size(165, 20);
-            this.txtReceiveTime.TabIndex = 979;
-            this.txtReceiveTime.Tag = null;
-            this.theme1.SetTheme(this.txtReceiveTime, "(default)");
-            this.txtReceiveTime.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            this.label9.AutoSize = true;
+            this.label9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label9.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.label9.Location = new System.Drawing.Point(314, 61);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(54, 16);
+            this.label9.TabIndex = 981;
+            this.label9.Text = "Doctor :";
+            this.theme1.SetTheme(this.label9, "(default)");
             // 
             // FrmLabBloodAdd
             // 
@@ -1364,6 +1423,8 @@
             this.Load += new System.EventHandler(this.FrmLabBloodAdd_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtReceiveTime)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtCollectTime)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtDob)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.c1Button3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnPrintInfectious)).EndInit();
@@ -1402,8 +1463,7 @@
             this.tabReport.ResumeLayout(false);
             this.sB.ResumeLayout(false);
             this.sB.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.txtCollectTime)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtReceiveTime)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cboDoctor)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1516,5 +1576,7 @@
         private C1.Win.C1Input.C1DateEdit txtCollectTime;
         private System.Windows.Forms.Label label8;
         private C1.Win.C1Input.C1DateEdit txtReceiveTime;
+        private C1.Win.C1Input.C1ComboBox cboDoctor;
+        private System.Windows.Forms.Label label9;
     }
 }
