@@ -12,7 +12,7 @@
   <xs:element name="lab_result" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="lab_result" msprop:Generator_UserDSName="lab_result">
     <xs:complexType>
       <xs:choice minOccurs="0" maxOccurs="unbounded">
-        <xs:element name="lab_result" msprop:Generator_TableClassName="lab_resultDataTable" msprop:Generator_TableVarName="tablelab_result" msprop:Generator_RowChangedName="lab_resultRowChanged" msprop:Generator_TablePropName="_lab_result" msprop:Generator_RowDeletingName="lab_resultRowDeleting" msprop:Generator_RowChangingName="lab_resultRowChanging" msprop:Generator_RowEvHandlerName="lab_resultRowChangeEventHandler" msprop:Generator_RowDeletedName="lab_resultRowDeleted" msprop:Generator_RowClassName="lab_resultRow" msprop:Generator_UserTableName="lab_result" msprop:Generator_RowEvArgName="lab_resultRowChangeEvent">
+        <xs:element name="lab_result" msprop:Generator_TableClassName="lab_resultDataTable" msprop:Generator_TableVarName="tablelab_result" msprop:Generator_TablePropName="_lab_result" msprop:Generator_RowDeletingName="lab_resultRowDeleting" msprop:Generator_RowChangingName="lab_resultRowChanging" msprop:Generator_RowEvHandlerName="lab_resultRowChangeEventHandler" msprop:Generator_RowDeletedName="lab_resultRowDeleted" msprop:Generator_UserTableName="lab_result" msprop:Generator_RowChangedName="lab_resultRowChanged" msprop:Generator_RowEvArgName="lab_resultRowChangeEvent" msprop:Generator_RowClassName="lab_resultRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="lab_name" msdata:Caption="DataColumn1" msprop:Generator_ColumnVarNameInTable="columnlab_name" msprop:Generator_ColumnPropNameInRow="lab_name" msprop:Generator_ColumnPropNameInTable="lab_nameColumn" msprop:Generator_UserColumnName="lab_name" type="xs:string" minOccurs="0" />
@@ -31,6 +31,8 @@
               <xs:element name="line2" msprop:Generator_ColumnVarNameInTable="columnline2" msprop:Generator_ColumnPropNameInRow="line2" msprop:Generator_ColumnPropNameInTable="line2Column" msprop:Generator_UserColumnName="line2" type="xs:string" minOccurs="0" />
               <xs:element name="line3" msprop:Generator_ColumnVarNameInTable="columnline3" msprop:Generator_ColumnPropNameInRow="line3" msprop:Generator_ColumnPropNameInTable="line3Column" msprop:Generator_UserColumnName="line3" type="xs:string" minOccurs="0" />
               <xs:element name="patient_sex" msprop:Generator_ColumnVarNameInTable="columnpatient_sex" msprop:Generator_ColumnPropNameInRow="patient_sex" msprop:Generator_ColumnPropNameInTable="patient_sexColumn" msprop:Generator_UserColumnName="patient_sex" type="xs:string" minOccurs="0" />
+              <xs:element name="sign_reporter" msprop:Generator_ColumnVarNameInTable="columnsign_reporter" msprop:Generator_ColumnPropNameInRow="sign_reporter" msprop:Generator_ColumnPropNameInTable="sign_reporterColumn" msprop:Generator_UserColumnName="sign_reporter" type="xs:string" minOccurs="0" />
+              <xs:element name="sign_approved" msprop:Generator_ColumnVarNameInTable="columnsign_approved" msprop:Generator_ColumnPropNameInRow="sign_approved" msprop:Generator_ColumnPropNameInTable="sign_approvedColumn" msprop:Generator_UserColumnName="sign_approved" type="xs:string" minOccurs="0" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>

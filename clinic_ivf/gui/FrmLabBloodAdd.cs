@@ -165,7 +165,16 @@ namespace clinic_ivf.gui
             dt.Columns.Add("line1", typeof(String));
             dt.Columns.Add("line2", typeof(String));
             dt.Columns.Add("line3", typeof(String));
-            String date1 = "", collectdate = "", receivedate = "";
+            dt.Columns.Add("sign_reporter", typeof(String));
+            dt.Columns.Add("sign_approved", typeof(String));
+            String date1 = "", collectdate = "", receivedate = "", reporter = "", approved = "", reportername = "", approvedname = "";
+            Staff stf = new Staff();
+            reporter = ic.ivfDB.stfDB.getIdByNameSurname(cboEmbryologistReport.Text);
+            approved = ic.ivfDB.stfDB.getIdByNameSurname(cboEmbryologistAppv.Text);
+            stf = ic.ivfDB.stfDB.selectByPk1(reporter);
+            reportername = stf.prefix_name_t + " " + stf.staff_fname_e + " " + stf.staff_lname_e;
+            stf = ic.ivfDB.stfDB.selectByPk1(approved);
+            approvedname = stf.prefix_name_t + " " + stf.staff_fname_e + " " + stf.staff_lname_e;
             foreach (DataRow row in dt.Rows)
             {
                 collectdate = row[ic.ivfDB.lbresDB.lbRes.req_date_time].ToString();
@@ -174,6 +183,8 @@ namespace clinic_ivf.gui
                 row["patient_name"] = txtPttNameE.Text;
                 row["patient_dob"] = txtDob.Text;
                 row["patient_sex"] = txtSex.Text;
+                row["sign_reporter"] = System.IO.Directory.GetCurrentDirectory() + "\\" + reporter + ".jpg";
+                row["sign_approved"] = System.IO.Directory.GetCurrentDirectory() + "\\" + approved + ".jpg";
                 if (ptt.f_sex_id.Equals("2") && (!ptt.patient_hn_1.Equals("") && !ptt.patient_hn_2.Equals("")))     // เป็น female และ เป็น donor  ไม่ต้องพิมพ์ หัว บริษัท
                 {
                     row["line1"] = "";
@@ -187,7 +198,7 @@ namespace clinic_ivf.gui
                     row["line3"] = ic.cop.addr2;
                 }
             }
-            frm.setLabBloodReportInfectious(dt, txtHn.Text, txtPttNameE.Text, txtDob.Text, txtSex.Text, cboEmbryologistReport.Text, cboEmbryologistAppv.Text, txtReportDate.Text, txtApprovDate.Text, ic.datetimetoShow(collectdate), ic.datetimetoShow(receivedate));
+            frm.setLabBloodReportInfectious(dt, txtHn.Text, txtPttNameE.Text, txtDob.Text, txtSex.Text, reportername, approvedname, txtReportDate.Text, txtApprovDate.Text, ic.datetimetoShow(collectdate), ic.datetimetoShow(receivedate));
             frm.ShowDialog(this);
         }
         private Boolean setReportLabBloodInfectious(String filename)
@@ -209,7 +220,15 @@ namespace clinic_ivf.gui
             dt.Columns.Add("line3", typeof(String));
 
             String chk = "", printerDefault = "";
-            String amh = "", collectdate = "", receivedate = "";
+            String amh = "", collectdate = "", receivedate = "", reporter = "", approved = "", reportername = "", approvedname = "";
+            Staff stf = new Staff();
+            //lbRes = ic.ivfDB.lbresDB.selectByPk(resId);
+            reporter = ic.ivfDB.stfDB.getIdByNameSurname(cboEmbryologistReport.Text);
+            approved = ic.ivfDB.stfDB.getIdByNameSurname(cboEmbryologistAppv.Text);
+            stf = ic.ivfDB.stfDB.selectByPk1(reporter);
+            reportername = stf.prefix_name_t + " " + stf.staff_fname_e + " " + stf.staff_lname_e;
+            stf = ic.ivfDB.stfDB.selectByPk1(approved);
+            approvedname = stf.prefix_name_t + " " + stf.staff_fname_e + " " + stf.staff_lname_e;
             foreach (DataRow row in dt.Rows)
             {
                 collectdate = row[ic.ivfDB.lbresDB.lbRes.req_date_time].ToString();
@@ -226,6 +245,8 @@ namespace clinic_ivf.gui
                 row["patient_name"] = txtPttNameE.Text;
                 row["patient_dob"] = txtDob.Text;
                 row["patient_sex"] = txtSex.Text;
+                row["sign_reporter"] = System.IO.Directory.GetCurrentDirectory() + "\\" + reporter + ".jpg";
+                row["sign_approved"] = System.IO.Directory.GetCurrentDirectory() + "\\" + approved + ".jpg";
                 if (ptt.f_sex_id.Equals("2") && (!ptt.patient_hn_1.Equals("") && !ptt.patient_hn_2.Equals("")))     // เป็น female และ เป็น donor  ไม่ต้องพิมพ์ หัว บริษัท
                 {
                     row["line1"] = "";
@@ -263,8 +284,8 @@ namespace clinic_ivf.gui
                 //rpt.SetParameterValue("name", txtPttNameE.Text);
                 //rpt.SetParameterValue("dob", txtDob.Text);
                 //rpt.SetParameterValue("sex", txtSex.Text);
-                rpt.SetParameterValue("report_by", cboEmbryologistReport.Text);
-                rpt.SetParameterValue("approve_by", cboEmbryologistAppv.Text);
+                rpt.SetParameterValue("report_by", reportername);
+                rpt.SetParameterValue("approve_by", approvedname);
                 rpt.SetParameterValue("report_date", txtReportDate.Text);
                 rpt.SetParameterValue("approve_date", txtApprovDate.Text);
                 rpt.SetParameterValue("collect_date", ic.datetimetoShow(collectdate));
@@ -319,8 +340,18 @@ namespace clinic_ivf.gui
             dt.Columns.Add("line1", typeof(String));
             dt.Columns.Add("line2", typeof(String));
             dt.Columns.Add("line3", typeof(String));
+            dt.Columns.Add("sign_reporter", typeof(String));
+            dt.Columns.Add("sign_approved", typeof(String));
             String chk = "", printerDefault = "";
-            String amh = "", collectdate = "", receivedate = "";
+            String amh = "", collectdate = "", receivedate = "", reporter = "", approved = "", reportername = "", approvedname = "";
+            Staff stf = new Staff();
+            //lbRes = ic.ivfDB.lbresDB.selectByPk(resId);
+            reporter = ic.ivfDB.stfDB.getIdByNameSurname(cboEmbryologistReport.Text);
+            approved = ic.ivfDB.stfDB.getIdByNameSurname(cboEmbryologistAppv.Text);
+            stf = ic.ivfDB.stfDB.selectByPk1(reporter);
+            reportername = stf.prefix_name_t + " " + stf.staff_fname_e + " " + stf.staff_lname_e;
+            stf = ic.ivfDB.stfDB.selectByPk1(approved);
+            approvedname = stf.prefix_name_t + " " + stf.staff_fname_e + " " + stf.staff_lname_e;
             foreach (DataRow row in dt.Rows)
             {
                 collectdate = row[ic.ivfDB.lbresDB.lbRes.req_date_time].ToString();
@@ -337,6 +368,8 @@ namespace clinic_ivf.gui
                 row["patient_name"] = txtPttNameE.Text;
                 row["patient_dob"] = txtDob.Text;
                 row["patient_sex"] = txtSex.Text;
+                row["sign_reporter"] = System.IO.Directory.GetCurrentDirectory() + "\\" + reporter + ".jpg";
+                row["sign_approved"] = System.IO.Directory.GetCurrentDirectory() + "\\" + approved + ".jpg";
                 if (ptt.f_sex_id.Equals("2") && (!ptt.patient_hn_1.Equals("") && !ptt.patient_hn_2.Equals("")))     // เป็น female และ เป็น donor  ไม่ต้องพิมพ์ หัว บริษัท
                 {
                     row["line1"] = "";
@@ -392,8 +425,8 @@ namespace clinic_ivf.gui
                 //rpt.SetParameterValue("name", txtPttNameE.Text);
                 //rpt.SetParameterValue("dob", txtDob.Text);
                 //rpt.SetParameterValue("sex", txtSex.Text);
-                rpt.SetParameterValue("report_by", cboEmbryologistReport.Text);
-                rpt.SetParameterValue("approve_by", cboEmbryologistAppv.Text);
+                rpt.SetParameterValue("report_by", reportername);
+                rpt.SetParameterValue("approve_by", approvedname);
                 rpt.SetParameterValue("report_date", txtReportDate.Text);
                 rpt.SetParameterValue("approve_date", txtApprovDate.Text);
                 rpt.SetParameterValue("collect_date", ic.datetimetoShow(collectdate));
@@ -508,7 +541,17 @@ namespace clinic_ivf.gui
             dt.Columns.Add("line1", typeof(String));
             dt.Columns.Add("line2", typeof(String));
             dt.Columns.Add("line3", typeof(String));
-            String amh = "", collectdate="", receivedate="";
+            dt.Columns.Add("sign_reporter", typeof(String));
+            dt.Columns.Add("sign_approved", typeof(String));
+            String amh = "", collectdate="", receivedate="", reporter="", approved="", reportername="", approvedname="";
+            Staff stf = new Staff();
+            //lbRes = ic.ivfDB.lbresDB.selectByPk(resId);
+            reporter = ic.ivfDB.stfDB.getIdByNameSurname(cboEmbryologistReport.Text);
+            approved = ic.ivfDB.stfDB.getIdByNameSurname(cboEmbryologistAppv.Text);
+            stf = ic.ivfDB.stfDB.selectByPk1(reporter);
+            reportername = stf.prefix_name_t+" "+stf.staff_fname_e+" "+stf.staff_lname_e;
+            stf = ic.ivfDB.stfDB.selectByPk1(approved);
+            approvedname = stf.prefix_name_t + " " + stf.staff_fname_e + " " + stf.staff_lname_e;
             foreach (DataRow row in dt.Rows)
             {
                 collectdate = row[ic.ivfDB.lbresDB.lbRes.date_time_collect].ToString();
@@ -525,6 +568,8 @@ namespace clinic_ivf.gui
                 row["patient_name"] = txtPttNameE.Text;
                 row["patient_dob"] = txtDob.Text;
                 row["patient_sex"] = txtSex.Text;
+                row["sign_reporter"] = System.IO.Directory.GetCurrentDirectory() + "\\" + reporter + ".jpg";
+                row["sign_approved"] = System.IO.Directory.GetCurrentDirectory() + "\\" + approved + ".jpg";
                 if (ptt.f_sex_id.Equals("2") && (!ptt.patient_hn_1.Equals("") && !ptt.patient_hn_2.Equals("")))     // เป็น female และ เป็น donor  ไม่ต้องพิมพ์ หัว บริษัท
                 {
                     row["line1"] = "";
@@ -541,11 +586,11 @@ namespace clinic_ivf.gui
             String date1 = "";
             if (ptt.f_sex_id.Equals("2") && (!ptt.patient_hn_1.Equals("") && !ptt.patient_hn_2.Equals("")))     // เป็น female และ เป็น donor  ไม่ต้องพิมพ์ หัว บริษัท
             {
-                frm.setLabBloodReportHormone(dt, txtHn.Text, txtPttNameE.Text, txtDob.Text, txtSex.Text, cboEmbryologistReport.Text, cboEmbryologistAppv.Text, txtReportDate.Text, txtApprovDate.Text, "1", amh, ic.datetimetoShow(collectdate), ic.datetimetoShow(receivedate));
+                frm.setLabBloodReportHormone(dt, txtHn.Text, txtPttNameE.Text, txtDob.Text, txtSex.Text, reportername, approvedname, txtReportDate.Text, txtApprovDate.Text, "1", amh, ic.datetimetoShow(collectdate), ic.datetimetoShow(receivedate));
             }
             else
             {
-                frm.setLabBloodReportHormone(dt, txtHn.Text, txtPttNameE.Text, txtDob.Text, txtSex.Text, cboEmbryologistReport.Text, cboEmbryologistAppv.Text, txtReportDate.Text, txtApprovDate.Text,"", amh, ic.datetimetoShow(collectdate), ic.datetimetoShow(receivedate));
+                frm.setLabBloodReportHormone(dt, txtHn.Text, txtPttNameE.Text, txtDob.Text, txtSex.Text, reportername, approvedname, txtReportDate.Text, txtApprovDate.Text,"", amh, ic.datetimetoShow(collectdate), ic.datetimetoShow(receivedate));
             }
             
             frm.ShowDialog(this);

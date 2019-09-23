@@ -133,6 +133,29 @@ namespace clinic_ivf.objdb
             }
             return id;
         }
+        public String getIdByNameSurname(String name)
+        {
+            String id = "";
+            String[] name1 = name.Split(' ');
+            if (name1.Length == 2)
+            {
+                foreach (Staff stf1 in lStf)
+                {
+                    if (name1[0].Trim().Equals(stf1.staff_fname_t))
+                    {
+                        if (name1[1].Trim().Equals(stf1.staff_lname_e))
+                        {
+                            id = stf1.staff_id;
+                            break;
+                        }
+                        //id = stf1.staff_id;
+                        //break;
+                    }
+                }
+            }
+            
+            return id;
+        }
         public String getIdByName(String name)
         {
             String id = "";
@@ -490,6 +513,7 @@ namespace clinic_ivf.objdb
             stf1 = setStaff(dt);
             return stf1;
         }
+        
         public DataTable selectCSByCodeLike(String copId)
         {
             DataTable dt = new DataTable();

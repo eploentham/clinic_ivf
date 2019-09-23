@@ -311,6 +311,10 @@ namespace clinic_ivf.report {
             
             private global::System.Data.DataColumn columnpatient_sex;
             
+            private global::System.Data.DataColumn columnsign_reporter;
+            
+            private global::System.Data.DataColumn columnsign_approved;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public lab_resultDataTable() {
@@ -474,6 +478,22 @@ namespace clinic_ivf.report {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn sign_reporterColumn {
+                get {
+                    return this.columnsign_reporter;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn sign_approvedColumn {
+                get {
+                    return this.columnsign_approved;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -525,7 +545,9 @@ namespace clinic_ivf.report {
                         string line1, 
                         string line2, 
                         string line3, 
-                        string patient_sex) {
+                        string patient_sex, 
+                        string sign_reporter, 
+                        string sign_approved) {
                 lab_resultRow rowlab_resultRow = ((lab_resultRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         lab_name,
@@ -543,7 +565,9 @@ namespace clinic_ivf.report {
                         line1,
                         line2,
                         line3,
-                        patient_sex};
+                        patient_sex,
+                        sign_reporter,
+                        sign_approved};
                 rowlab_resultRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowlab_resultRow);
                 return rowlab_resultRow;
@@ -582,6 +606,8 @@ namespace clinic_ivf.report {
                 this.columnline2 = base.Columns["line2"];
                 this.columnline3 = base.Columns["line3"];
                 this.columnpatient_sex = base.Columns["patient_sex"];
+                this.columnsign_reporter = base.Columns["sign_reporter"];
+                this.columnsign_approved = base.Columns["sign_approved"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -619,6 +645,10 @@ namespace clinic_ivf.report {
                 base.Columns.Add(this.columnline3);
                 this.columnpatient_sex = new global::System.Data.DataColumn("patient_sex", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnpatient_sex);
+                this.columnsign_reporter = new global::System.Data.DataColumn("sign_reporter", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnsign_reporter);
+                this.columnsign_approved = new global::System.Data.DataColumn("sign_approved", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnsign_approved);
                 this.columnlab_name.Caption = "DataColumn1";
                 this.columnmethod.Caption = "DataColumn1";
                 this.columnresult.Caption = "DataColumn1";
@@ -1024,6 +1054,38 @@ namespace clinic_ivf.report {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string sign_reporter {
+                get {
+                    try {
+                        return ((string)(this[this.tablelab_result.sign_reporterColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'sign_reporter\' in table \'lab_result\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablelab_result.sign_reporterColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string sign_approved {
+                get {
+                    try {
+                        return ((string)(this[this.tablelab_result.sign_approvedColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'sign_approved\' in table \'lab_result\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablelab_result.sign_approvedColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public bool Islab_nameNull() {
                 return this.IsNull(this.tablelab_result.lab_nameColumn);
             }
@@ -1212,6 +1274,30 @@ namespace clinic_ivf.report {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public void Setpatient_sexNull() {
                 this[this.tablelab_result.patient_sexColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool Issign_reporterNull() {
+                return this.IsNull(this.tablelab_result.sign_reporterColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void Setsign_reporterNull() {
+                this[this.tablelab_result.sign_reporterColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool Issign_approvedNull() {
+                return this.IsNull(this.tablelab_result.sign_approvedColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void Setsign_approvedNull() {
+                this[this.tablelab_result.sign_approvedColumn] = global::System.Convert.DBNull;
             }
         }
         
