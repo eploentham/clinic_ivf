@@ -255,7 +255,7 @@ namespace clinic_ivf.gui
                         //    String re2 = ic.ivfDB.pttDB.updatePID(re, re1);
                         //    if (int.TryParse(re2, out chk))
                         //    {
-                        re = ic.ivfDB.vsDB.updateCloseStatusNurse(txtVsId.Text);
+                        re = ic.ivfDB.vsDB.updateCloseStatusNurse(txtVsId.Text, ic.cStf.staff_id);
                         re = ic.ivfDB.vsDB.updateStatusAppointment(txtVsId.Text, txtID.Text);
                         //txtID.Value = re;
                         btnSave.Text = "Save";

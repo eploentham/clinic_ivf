@@ -278,7 +278,6 @@
             this.txtBP = new C1.Win.C1Input.C1TextBox();
             this.txtPulse = new C1.Win.C1Input.C1TextBox();
             this.txtPttO = new C1.Win.C1Input.C1TextBox();
-            this.printDialog1 = new System.Windows.Forms.PrintDialog();
             this.cPdf = new C1.Win.C1Document.C1PdfDocumentSource(this.components);
             this._c1pdf = new C1.C1Pdf.C1PdfDocument();
             ((System.ComponentModel.ISupportInitialize)(this.theme1)).BeginInit();
@@ -4286,10 +4285,6 @@
             this.txtPttO.Visible = false;
             this.txtPttO.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
             // 
-            // printDialog1
-            // 
-            this.printDialog1.UseEXDialog = true;
-            // 
             // _c1pdf
             // 
             this._c1pdf.DocumentInfo.Author = "";
@@ -4573,7 +4568,6 @@
         private C1.Win.C1Input.C1TextBox txtStfConfirmID;
         private C1.Win.C1Input.C1TextBox txtUserReq;
         private System.Windows.Forms.Label label21;
-        private System.Windows.Forms.PrintDialog printDialog1;
         private C1.Win.C1Document.C1PdfDocumentSource cPdf;
         private C1.C1Pdf.C1PdfDocument _c1pdf;
         private System.Windows.Forms.Label label31;

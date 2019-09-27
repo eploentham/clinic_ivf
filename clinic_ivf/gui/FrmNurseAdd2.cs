@@ -3434,14 +3434,19 @@ namespace clinic_ivf.gui
                 //        MessageBox.Show("error "+ errfor+" " + ex.Message, "BtnFinish_Click foreach grfOrder.Rows");
                 //    }
                 //}
-
-                ic.ivfDB.nurseFinish(txtVnOld.Text);
-                VisitOld ovs = new VisitOld();
-                ovs = ic.ivfDB.ovsDB.selectByPk1(txtVnOld.Text);
-                if (ovs.VSID.Equals("160"))
+                ic.cStf.staff_id = "";
+                FrmPasswordConfirm frm = new FrmPasswordConfirm(ic);
+                frm.ShowDialog(this);
+                if (!ic.cStf.staff_id.Equals(""))
                 {
-                    menu.removeTab(tab);
-                    //return;
+                    ic.ivfDB.nurseFinish(txtVnOld.Text, ic.cStf.staff_id);
+                    VisitOld ovs = new VisitOld();
+                    ovs = ic.ivfDB.ovsDB.selectByPk1(txtVnOld.Text);
+                    if (ovs.VSID.Equals("160"))
+                    {
+                        menu.removeTab(tab);
+                        //return;
+                    }
                 }
             }
             catch(Exception ex)

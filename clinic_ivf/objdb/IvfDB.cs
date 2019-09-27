@@ -560,7 +560,7 @@ namespace clinic_ivf.objdb
             extra = ojsdDB.selectSumExtraPriceByVN(vn);
             oJsDB.updateIncludePriceFormDetail(include, extra, vn);
         }
-        public void nurseFinish(String vn)
+        public void nurseFinish(String vn, String userid)
         {
             //    $this->px->cal_px($VN);
             //$this->lab->cal_lab($VN);
@@ -573,7 +573,7 @@ namespace clinic_ivf.objdb
             calIncludeExtraPricePx(vn);
             calIncludeExtraPricelab(vn);
             calIncludeExtraPriceSpecial(vn);
-            vsDB.updateCloseStatusNurseByVN(vn);
+            vsDB.updateCloseStatusNurseByVN(vn, userid);
             ovsDB.updateStatusNurseFinish(vn);
         }
         public void setPx(String vn, String hn, String pid, String drugid)

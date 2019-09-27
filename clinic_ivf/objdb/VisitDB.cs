@@ -137,6 +137,7 @@ namespace clinic_ivf.objdb
             vs.active = "active";
             vs.remark = "remark";
             vs.nurse_finish_date_time = "nurse_finish_date_time";
+            vs.cashier_finish_date_time = "cashier_finish_date_time";
 
             vs.table = "t_visit";
             vs.pkField = "t_visit_id";
@@ -233,6 +234,7 @@ namespace clinic_ivf.objdb
             //p.visit_lab_status_id = p.visit_lab_status_id == null ? "" : p.visit_lab_status_id;
             p.nurse_finish_date_time = p.nurse_finish_date_time == null ? "" : p.nurse_finish_date_time;
             p.status_cashier = p.status_cashier == null ? "" : p.status_cashier;
+            p.cashier_finish_date_time = p.cashier_finish_date_time == null ? "" : p.cashier_finish_date_time;
 
 
             p.t_visit_id = long.TryParse(p.t_visit_id, out chk) ? chk.ToString() : "0";
@@ -680,7 +682,7 @@ namespace clinic_ivf.objdb
             }
             return re;
         }
-        public String updateCloseStatusNurseByVN(String vn)
+        public String updateCloseStatusNurseByVN(String vn, String userid)
         {
             String re = "", err = "";
             String sql = "update " + vs.table + " " +
@@ -690,7 +692,7 @@ namespace clinic_ivf.objdb
             try
             {
                 re = conn.ExecuteNonQuery(conn.conn, sql);
-                updateStatusVoidVisitByVN(vn);
+                //updateStatusVoidVisitByVN(vn,userid);
             }
             catch (Exception ex)
             {
@@ -699,16 +701,36 @@ namespace clinic_ivf.objdb
 
             return re;
         }
-        public String updateCloseStatusNurse(String vsid )
+        public String updateCloseStatusNurseNoOperation(String vsid, String userid)
         {
-            String re = "", err="";
-            String sql = "update " + vs.table +" " +
+            String re = "", err = "";
+            String sql = "update " + vs.table + " " +
                 "Set " + vs.status_nurse + " ='2' " +
+                "," + vs.f_visit_status_id + " = '4' " +
                 "Where " + vs.pkField + " ='" + vsid + "' ";
             try
             {
                 re = conn.ExecuteNonQuery(conn.conn, sql);
-                updateStatusVoidVisit(vsid);
+                //updateStatusVoidVisit(vsid, userid);
+            }
+            catch (Exception ex)
+            {
+                err = ex.Message + ex.InnerException;
+            }
+
+            return re;
+        }
+        public String updateCloseStatusNurse(String vsid, String userid)
+        {
+            String re = "", err="";
+            String sql = "update " + vs.table +" " +
+                "Set " + vs.status_nurse + " ='2' " +
+                //"," + vs.f_visit_status_id + " = '4' " +
+                "Where " + vs.pkField + " ='" + vsid + "' ";
+            try
+            {
+                re = conn.ExecuteNonQuery(conn.conn, sql);
+                //updateStatusVoidVisit(vsid, userid);
             }
             catch(Exception ex)
             {
@@ -717,12 +739,13 @@ namespace clinic_ivf.objdb
             
             return re;
         }
-        public String updateStatusVoidVisitByVN(String vsid)
+        public String updateStatusVoidVisitByVN(String vsid, String userid)
         {
             String re = "", err = "";
             String sql = "update " + vs.table + " " +
-                "Set " + vs.f_visit_status_id + " ='4' " +
-
+                "Set " + vs.f_visit_status_id + " ='3' " +
+                "," + vs.date_cancel + " = now() " +
+                "," + vs.user_cancel + " = '"+ userid + "' " +
                 "Where " + vs.visit_vn + " ='" + vsid + "' ";
             try
             {
@@ -735,11 +758,13 @@ namespace clinic_ivf.objdb
 
             return re;
         }
-        public String updateStatusVoidVisit(String vsid)
+        public String updateStatusVoidVisit(String vsid, String userid)
         {
             String re = "", err = "";
             String sql = "update " + vs.table + " " +
-                "Set " + vs.f_visit_status_id + " ='4' " +
+                "Set " + vs.f_visit_status_id + " ='3' " +
+                "," + vs.date_cancel + " = now() " +
+                "," + vs.user_cancel + " = '" + userid + "' " +
                 "Where " + vs.pkField + " ='" + vsid + "' ";
             try
             {
@@ -867,7 +892,7 @@ namespace clinic_ivf.objdb
             //String date = System.DateTime.Now.Year + "-" + System.DateTime.Now.ToString("MM-dd");
             String sql = "select vs.t_visit_id as id,vs.visit_vn as VN, vs.visit_hn as PIDS, CONCAT(IFNULL(fpp.patient_prefix_description,''),' ', ptt.patient_firstname_e ,' ',ptt.patient_lastname_e)  as PName" +
                 ", vs.visit_begin_visit_time as VDate, vs.visit_begin_visit_time as VStartTime, vs.visit_financial_discharge_time as VEndTime, '' as VName, bsp.service_point_description as VSID" +
-                ", vs.t_patient_id as PID, ptt.patient_birthday as dob " +
+                ", vs.t_patient_id as PID, ptt.patient_birthday as dob, vs.status_nurse, vs.status_cashier, vs.status_lab " +
                 "From " + vs.table + " vs " +
                 "Left Join t_patient ptt on  ptt.t_patient_id = vs." + vs.t_patient_id + " " +
                 "Left join f_patient_prefix fpp on fpp.f_patient_prefix_id = ptt.f_patient_prefix_id " +
@@ -875,6 +900,24 @@ namespace clinic_ivf.objdb
                 " " +
                 "Where vs." + vs.visit_hn + " ='" + hn + "' and vs.f_visit_status_id in ('1','2') " +
                 "Order By vs."+vs.t_visit_id;
+            dt = conn.selectData(conn.conn, sql);
+
+            return dt;
+        }
+        public DataTable selectByHN1(String hn)
+        {
+            DataTable dt = new DataTable();
+            //String date = System.DateTime.Now.Year + "-" + System.DateTime.Now.ToString("MM-dd");
+            String sql = "select vs.t_visit_id as id,vs.visit_vn as VN, vs.visit_hn as PIDS, CONCAT(IFNULL(fpp.patient_prefix_description,''),' ', ptt.patient_firstname_e ,' ',ptt.patient_lastname_e)  as PName" +
+                ", vs.visit_begin_visit_time as VDate, vs.visit_begin_visit_time as VStartTime, vs.visit_financial_discharge_time as VEndTime, '' as VName, bsp.service_point_description as VSID" +
+                ", vs.t_patient_id as PID, ptt.patient_birthday as dob, vs.status_nurse, vs.status_cashier, vs.status_lab, vs.nurse_finish_date_time, vs.f_visit_status_id, vs.cashier_finish_date_time " +
+                "From " + vs.table + " vs " +
+                "Left Join t_patient ptt on  ptt.t_patient_id = vs." + vs.t_patient_id + " " +
+                "Left join f_patient_prefix fpp on fpp.f_patient_prefix_id = ptt.f_patient_prefix_id " +
+                "Left Join b_service_point bsp on bsp.b_service_point_id = vs.b_service_point_id " +
+                " " +
+                "Where vs." + vs.visit_hn + " ='" + hn + "' /*and vs.f_visit_status_id in ('1','2')*/ " +
+                "Order By vs." + vs.t_visit_id;
             dt = conn.selectData(conn.conn, sql);
 
             return dt;
@@ -1099,6 +1142,8 @@ namespace clinic_ivf.objdb
                 vs1.doctor_id = dt.Rows[0][vs.doctor_id].ToString();
                 vs1.patient_hn_2 = dt.Rows[0][vs.patient_hn_2].ToString();
                 vs1.status_cashier = dt.Rows[0][vs.status_cashier].ToString();
+                vs1.cashier_finish_date_time = dt.Rows[0][vs.cashier_finish_date_time].ToString();
+                vs1.nurse_finish_date_time = dt.Rows[0][vs.nurse_finish_date_time].ToString();
             }
             else
             {
@@ -1212,6 +1257,8 @@ namespace clinic_ivf.objdb
             stf1.doctor_id = "";
             stf1.patient_hn_2 = "";
             stf1.status_cashier = "";
+            stf1.cashier_finish_date_time = "";
+            stf1.nurse_finish_date_time = "";
             return stf1;
         }
     }

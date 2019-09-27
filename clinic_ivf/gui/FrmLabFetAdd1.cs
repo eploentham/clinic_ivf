@@ -64,8 +64,7 @@ namespace clinic_ivf.gui
             color = ColorTranslator.FromHtml(ic.iniC.grfRowColor);
             cboRemark.DropDownOpened += CboRemark_DropDownOpened;
             cboRemark.DropDownClosed += CboRemark_DropDownClosed;
-
-
+            
             sB1.Text = "";
             bg = txtHnFeMale.BackColor;
             fc = txtHnFeMale.ForeColor;
@@ -76,7 +75,7 @@ namespace clinic_ivf.gui
             fet = new LabFet();
             lbReq = new LabRequest();
 
-            ic.ivfDB.proceDB.setCboLabProce(cboOpuProce, objdb.LabProcedureDB.StatusLab.OPUProcedure);
+            ic.ivfDB.proceDB.setCboLabProce(cboOpuProce, objdb.LabProcedureDB.StatusLab.FETProcedure);
             ic.ivfDB.dtrOldDB.setCboDoctor(cboDoctor, "");
             ic.ivfDB.stfDB.setCboEmbryologist(cboEmbryoForEtEmbryologist, "");
             ic.ivfDB.stfDB.setCboEmbryologist(cboEmbryologistAppv, "");
@@ -417,7 +416,7 @@ namespace clinic_ivf.gui
             cboday3desc1.AutoCompleteMode = AutoCompleteMode.Suggest;
             cboday3desc1.AutoCompleteSource = AutoCompleteSource.ListItems;
             ic.ivfDB.fdtDB.setCboOPUStageDay5(cboday5, "");
-            ic.ivfDB.fdtDB.setCboOPUStageDay3Desc1(cboday3desc1, "");
+            ic.ivfDB.fdtDB.setCboOPUStageDay5Desc1(cboday3desc1, "");
             grfDay5.Cols[colDay5ID].Editor = txt;
             grfDay5.Cols[colDay5Num].Editor = txt;
             grfDay5.Cols[colDay5Desc].Editor = cboday5;
@@ -485,7 +484,7 @@ namespace clinic_ivf.gui
             cboday3desc1.AutoCompleteMode = AutoCompleteMode.Suggest;
             cboday3desc1.AutoCompleteSource = AutoCompleteSource.ListItems;
             ic.ivfDB.fdtDB.setCboOPUStageDay5(cboday5, "");
-            ic.ivfDB.fdtDB.setCboOPUStageDay3Desc1(cboday3desc1, "");
+            ic.ivfDB.fdtDB.setCboOPUStageDay5Desc1(cboday3desc1, "");
             grfDay6.Cols[colDay6ID].Editor = txt;
             grfDay6.Cols[colDay6Num].Editor = txt;
             grfDay6.Cols[colDay6Desc].Editor = cboday5;

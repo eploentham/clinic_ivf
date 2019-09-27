@@ -49,9 +49,10 @@ namespace clinic_ivf.gui
         Color bg, fc;
         Font ff, ffB;
         int colID = 1, colHn = 2, colImg = 3, colDesc = 4, colDesc2 = 5, colDesc3 = 6, colPathPic = 7, colBtn=8, colStatus=9, colDoctor=10;
-        int colVsID = 1, colVsHn = 2, colVsVisitDate = 3, colVsVisitTime=4, colVsStatus=5;
+        int colVsVN = 1, colVsVnShow=2, colVsHn = 3, colVsVisitDate = 4, colVsVisitTime=5, colVsNuserFinishTime=6, colVsCashierFinishTime=7, colVsStatus=8, colVsStatusNurse=9, colVsStatusLab=10, colVsStatusCashier=11;
         int colpApmId = 1, colpApmDate = 2, colpApmTime = 3, colpApmRemark = 4;
         int colNoteId = 1, colNote = 2, colNoteStatusAll=3;
+        Image imgCorr, imgTran, imgFinish;
 
         //C1FlexGrid grfDay2, grfDay3, grfDay5, grfDay6;
         C1SuperTooltip stt;
@@ -135,6 +136,9 @@ namespace clinic_ivf.gui
             sep = new C1SuperErrorProvider();
             ptt = new Patient();
             image1 = null;
+            imgCorr = Resources.red_checkmark_png_16;
+            imgTran = Resources.red_checkmark_png_51;
+            imgFinish = Resources.OK_24;
             try
             {
                 color = ColorTranslator.FromHtml(ic.iniC.grfRowColor);
@@ -627,13 +631,13 @@ namespace clinic_ivf.gui
                 String re = "", re1 = "";
                 if (ic.iniC.statusAppDonor.Equals("1"))
                 {
-                    re = ic.ivfDB.vsDB.updateStatusVoidVisit(txtVisitID.Text);
+                    re = ic.ivfDB.vsDB.updateStatusVoidVisit(txtVisitID.Text, ic.cStf.staff_id);
                     setGrfVsDonor(txtHn.Text);
                 }
                 else
                 {
                     re = ic.ivfDB.ovsDB.updateStatusVoidVisit(txtVn.Text);
-                    re1 = ic.ivfDB.vsDB.updateStatusVoidVisit(txtVisitID.Text);
+                    re1 = ic.ivfDB.vsDB.updateStatusVoidVisit(txtVisitID.Text, ic.cStf.staff_id);
                     setGrfVs(txtHn.Text);
                 }
             }
@@ -2511,7 +2515,7 @@ namespace clinic_ivf.gui
         private void ContextMenu_edit_visit(object sender, System.EventArgs e)
         {
             String chk = "", name = "", id = "";
-            id = grfVs[grfVs.Row, colVsID] != null ? grfVs[grfVs.Row, colVsID].ToString() : "";
+            id = grfVs[grfVs.Row, colVsVN] != null ? grfVs[grfVs.Row, colVsVN].ToString() : "";
             setControlVisit(id);
             //chk = grfPtt[grfPtt.Row, colPttHn] != null ? grfPtt[grfPtt.Row, colPttHn].ToString() : "";
             //name = grfPtt[grfPtt.Row, colPttName] != null ? grfPtt[grfPtt.Row, colPttName].ToString() : "";
@@ -2581,25 +2585,30 @@ namespace clinic_ivf.gui
         {
             grfVs.Clear();
             grfVs.Rows.Count = 1;
-            grfVs.Cols.Count = 6;
-            DataTable dt = ic.ivfDB.vsDB.selectByHN(search);
+            grfVs.Cols.Count = 12;
+            DataTable dt = ic.ivfDB.vsDB.selectByHN1(search);
 
             grfVs.Rows.Count = dt.Rows.Count + 1;
             //grfCu.Rows.Count = 41;
             //grfCu.Cols.Count = 4;
-            C1TextBox txt = new C1TextBox();
+            //C1TextBox txt = new C1TextBox();
             //Button btn = new Button();
             //btn.BackColor = Color.Gray;
             //btn.Click += BtnEditor_Click;
             //C1ComboBox cboproce = new C1ComboBox();
             //ic.ivfDB.itmDB.setCboItem(cboproce);
-            grfVs.Cols[colVsID].Editor = txt;
-            grfVs.Cols[colVsHn].Editor = txt;
-            grfVs.Cols[colVsVisitDate].Editor = txt;
-            grfVs.Cols[colVsVisitTime].Editor = txt;
+            //grfVs.Cols[colVsID].Editor = txt;
+            //grfVs.Cols[colVsHn].Editor = txt;
+            //grfVs.Cols[colVsVisitDate].Editor = txt;
+            Column colNurse = grfVs.Cols[colVsStatusNurse];
+            colNurse.DataType = typeof(Image);
+            Column colLab = grfVs.Cols[colVsStatusLab];
+            colLab.DataType = typeof(Image);
+            Column colCashier = grfVs.Cols[colVsStatusCashier];
+            colCashier.DataType = typeof(Image);
             //grfImg.Cols[colBtn].Editor = btn;
 
-            grfVs.Cols[colVsID].Width = 250;
+            grfVs.Cols[colVsVN].Width = 250;
             grfVs.Cols[colVsHn].Width = 100;
             grfVs.Cols[colVsVisitDate].Width = 100;
             grfVs.Cols[colVsVisitTime].Width = 100;
@@ -2611,11 +2620,16 @@ namespace clinic_ivf.gui
             //grdFlex.Cols[colID].Caption = "no";
             //grfDept.Cols[colCode].Caption = "รหัส";
 
-            grfVs.Cols[colVsID].Caption = "VN";
+            grfVs.Cols[colVsVN].Caption = "VN";
             grfVs.Cols[colVsHn].Caption = "HN";
             grfVs.Cols[colVsVisitDate].Caption = "visit date";
             grfVs.Cols[colVsVisitTime].Caption = "visit time";
             grfVs.Cols[colVsStatus].Caption = "Status";
+            grfVs.Cols[colVsStatusNurse].Caption = "Nurse";
+            grfVs.Cols[colVsStatusLab].Caption = "Lab";
+            grfVs.Cols[colVsStatusCashier].Caption = "Cashier";
+            grfVs.Cols[colVsNuserFinishTime].Caption = "N.F Time";
+            grfVs.Cols[colVsCashierFinishTime].Caption = "C.F Time";
 
             //Hashtable ht = new Hashtable();
             //foreach (DataRow dr in dt.Rows)
@@ -2636,46 +2650,62 @@ namespace clinic_ivf.gui
             int i = 1;
             foreach (DataRow row in dt.Rows)
             {
-                grfVs[i, colVsID] = row[ic.ivfDB.ovsDB.vsold.VN].ToString();
+                grfVs[i, colVsVN] = row[ic.ivfDB.ovsDB.vsold.VN].ToString();
+                grfVs[i, colVsVnShow] = ic.showVN(row[ic.ivfDB.ovsDB.vsold.VN].ToString());
                 grfVs[i, colVsHn] = row[ic.ivfDB.ovsDB.vsold.PIDS].ToString();
                 grfVs[i, colVsVisitDate] = ic.datetoShow(row[ic.ivfDB.ovsDB.vsold.VDate]);
-                grfVs[i, colVsVisitTime] = row[ic.ivfDB.ovsDB.vsold.VStartTime].ToString();
-                grfVs[i, colVsStatus] = row["VName"].ToString();
+                grfVs[i, colVsVisitTime] = ic.timetoShow(row[ic.ivfDB.ovsDB.vsold.VStartTime].ToString());
+                grfVs[i, colVsStatus] = row["status_nurse"].ToString().Equals("1") ? "Nurse" : row["status_cashier"].ToString().Equals("1") ? "Cashier" : row["status_cashier"].ToString().Equals("2") ? "Finish" : row["f_visit_status_id"].ToString().Equals("3") ? "ยกเลิก" : "";
+                grfVs[i, colVsStatusNurse] = row["status_nurse"].ToString().Equals("1") ? imgCorr : row["status_nurse"].ToString().Equals("2") ? imgFinish : imgTran;
+                grfVs[i, colVsStatusLab] = row["status_lab"].ToString().Equals("1") ? imgCorr : row["status_lab"].ToString().Equals("2") ? imgFinish : imgTran;
+                grfVs[i, colVsStatusCashier] = row["status_cashier"].ToString().Equals("1") ? imgCorr : row["status_cashier"].ToString().Equals("2") ? imgFinish : imgTran;
+                grfVs[i, colVsNuserFinishTime] = ic.timetoShow(row[ic.ivfDB.vsDB.vs.nurse_finish_date_time].ToString());
+                grfVs[i, colVsCashierFinishTime] = ic.timetoShow(row[ic.ivfDB.vsDB.vs.cashier_finish_date_time].ToString());
                 grfVs[i, 0] = i;
                 i++;
                 //if (i % 2 == 0)
                 //grfPtt.Rows[i].StyleNew.BackColor = color;
             }
             //grfVs.Cols[colID].Visible = false;
-            //grfImg.Cols[colPathPic].Visible = false;
+            grfVs.Cols[colVsVN].Visible = false;
+
             grfVs.Cols[colImg].AllowEditing = false;
+            grfVs.Cols[colVsHn].AllowEditing = false;
+            grfVs.Cols[colVsVisitDate].AllowEditing = false;
+            grfVs.Cols[colVsVisitTime].AllowEditing = false;
+            grfVs.Cols[colVsStatus].AllowEditing = false;
+            grfVs.Cols[colVsStatusNurse].AllowEditing = false;
+            grfVs.Cols[colVsStatusLab].AllowEditing = false;
+            grfVs.Cols[colVsStatusCashier].AllowEditing = false;
+            grfVs.Cols[colVsNuserFinishTime].AllowEditing = false;
+            grfVs.Cols[colVsCashierFinishTime].AllowEditing = false;
             grfVs.AutoSizeCols();
             grfVs.AutoSizeRows();
-            theme1.SetTheme(grfImg, "Office2016DarkGray");
+            theme1.SetTheme(grfVs, "Office2016DarkGray");
         }
         private void setGrfVs(String search)
         {
             grfVs.Clear();
             grfVs.Rows.Count = 1;
-            grfVs.Cols.Count = 6;
-            DataTable dt = ic.ivfDB.ovsDB.selectByHN(search);
+            grfVs.Cols.Count = 12;
+            DataTable dt = ic.ivfDB.vsDB.selectByHN1(search);
 
             grfVs.Rows.Count = dt.Rows.Count + 1;
             //grfCu.Rows.Count = 41;
             //grfCu.Cols.Count = 4;
-            C1TextBox txt = new C1TextBox();
+            //C1TextBox txt = new C1TextBox();
             //Button btn = new Button();
             //btn.BackColor = Color.Gray;
             //btn.Click += BtnEditor_Click;
             //C1ComboBox cboproce = new C1ComboBox();
             //ic.ivfDB.itmDB.setCboItem(cboproce);
-            grfVs.Cols[colVsID].Editor = txt;
-            grfVs.Cols[colVsHn].Editor = txt;
-            grfVs.Cols[colVsVisitDate].Editor = txt;
-            grfVs.Cols[colVsVisitTime].Editor = txt;
+            //grfVs.Cols[colVsVN].Editor = txt;
+            //grfVs.Cols[colVsHn].Editor = txt;
+            //grfVs.Cols[colVsVisitDate].Editor = txt;
+            //grfVs.Cols[colVsVisitTime].Editor = txt;
             //grfImg.Cols[colBtn].Editor = btn;
 
-            grfVs.Cols[colVsID].Width = 250;
+            grfVs.Cols[colVsVN].Width = 250;
             grfVs.Cols[colVsHn].Width = 100;
             grfVs.Cols[colVsVisitDate].Width = 100;
             grfVs.Cols[colVsVisitTime].Width = 100;
@@ -2686,12 +2716,22 @@ namespace clinic_ivf.gui
             grfVs.ShowCursor = true;
             //grdFlex.Cols[colID].Caption = "no";
             //grfDept.Cols[colCode].Caption = "รหัส";
-
-            grfVs.Cols[colVsID].Caption = "VN";
+            Column colNurse = grfVs.Cols[colVsStatusNurse];
+            colNurse.DataType = typeof(Image);
+            Column colLab = grfVs.Cols[colVsStatusLab];
+            colLab.DataType = typeof(Image);
+            Column colCashier = grfVs.Cols[colVsStatusCashier];
+            colCashier.DataType = typeof(Image);
+            grfVs.Cols[colVsVN].Caption = "VN";
             grfVs.Cols[colVsHn].Caption = "HN";
             grfVs.Cols[colVsVisitDate].Caption = "visit date";
             grfVs.Cols[colVsVisitTime].Caption = "visit time";
             grfVs.Cols[colVsStatus].Caption = "Status";
+            grfVs.Cols[colVsStatusNurse].Caption = "Nurse";
+            grfVs.Cols[colVsStatusLab].Caption = "Lab";
+            grfVs.Cols[colVsStatusCashier].Caption = "Cashier";
+            grfVs.Cols[colVsNuserFinishTime].Caption = "N.F Time";
+            grfVs.Cols[colVsCashierFinishTime].Caption = "C.F Time";
 
             //Hashtable ht = new Hashtable();
             //foreach (DataRow dr in dt.Rows)
@@ -2712,22 +2752,37 @@ namespace clinic_ivf.gui
             int i = 1;
             foreach(DataRow row in dt.Rows)
             {
-                grfVs[i, colVsID] = row[ic.ivfDB.ovsDB.vsold.VN].ToString();
+                grfVs[i, colVsVN] = row[ic.ivfDB.ovsDB.vsold.VN].ToString();
+                grfVs[i, colVsVnShow] = ic.showVN(row[ic.ivfDB.ovsDB.vsold.VN].ToString());
                 grfVs[i, colVsHn] = row[ic.ivfDB.ovsDB.vsold.PIDS].ToString();
                 grfVs[i, colVsVisitDate] = ic.datetoShow(row[ic.ivfDB.ovsDB.vsold.VDate]);
-                grfVs[i, colVsVisitTime] = row[ic.ivfDB.ovsDB.vsold.VStartTime].ToString();
-                grfVs[i, colVsStatus] = row["VName"].ToString();
+                grfVs[i, colVsVisitTime] = ic.timetoShow(row[ic.ivfDB.ovsDB.vsold.VStartTime].ToString());
+                grfVs[i, colVsStatus] = row["status_nurse"].ToString().Equals("1") ? "Nurse" : row["status_cashier"].ToString().Equals("1") ? "Cashier" : row["status_cashier"].ToString().Equals("2") ? "Finish" : row["f_visit_status_id"].ToString().Equals("3") ? "ยกเลิก" : "";
+                grfVs[i, colVsStatusNurse] = row["status_nurse"].ToString().Equals("1") ? imgCorr : row["status_nurse"].ToString().Equals("2") ? imgFinish : imgTran;
+                grfVs[i, colVsStatusLab] = row["status_lab"].ToString().Equals("1") ? imgCorr : row["status_lab"].ToString().Equals("2") ? imgFinish : imgTran;
+                grfVs[i, colVsStatusCashier] = row["status_cashier"].ToString().Equals("1") ? imgCorr : row["status_cashier"].ToString().Equals("2") ? imgFinish : imgTran;
+                grfVs[i, colVsNuserFinishTime] = ic.timetoShow(row[ic.ivfDB.vsDB.vs.nurse_finish_date_time].ToString());
+                grfVs[i, colVsCashierFinishTime] = ic.timetoShow(row[ic.ivfDB.vsDB.vs.cashier_finish_date_time].ToString());
                 grfVs[i, 0] = i;
                 i++;
                 //if (i % 2 == 0)
                 //grfPtt.Rows[i].StyleNew.BackColor = color;
             }
-            //grfVs.Cols[colID].Visible = false;
-            //grfImg.Cols[colPathPic].Visible = false;
+            grfVs.Cols[colVsVN].Visible = false;
+
             grfVs.Cols[colImg].AllowEditing = false;
+            grfVs.Cols[colVsHn].AllowEditing = false;
+            grfVs.Cols[colVsVisitDate].AllowEditing = false;
+            grfVs.Cols[colVsVisitTime].AllowEditing = false;
+            grfVs.Cols[colVsStatus].AllowEditing = false;
+            grfVs.Cols[colVsStatusNurse].AllowEditing = false;
+            grfVs.Cols[colVsStatusLab].AllowEditing = false;
+            grfVs.Cols[colVsStatusCashier].AllowEditing = false;
+            grfVs.Cols[colVsNuserFinishTime].AllowEditing = false;
+            grfVs.Cols[colVsCashierFinishTime].AllowEditing = false;
             grfVs.AutoSizeCols();
             grfVs.AutoSizeRows();
-            theme1.SetTheme(grfImg, "Office2016DarkGray");
+            theme1.SetTheme(grfVs, "Office2016DarkGray");
 
         }
         private void initGrfpApm()
@@ -3417,20 +3472,20 @@ namespace clinic_ivf.gui
         }
         private void DoPrint(C1PdfDocumentSource pds)
         {
-            if (printDialog1.ShowDialog(this) != DialogResult.OK)
-                return;
+            //if (printDialog1.ShowDialog(this) != DialogResult.OK)
+            //    return;
 
-            try
-            {
-                C1PrintOptions po = new C1PrintOptions();
-                po.PrinterSettings = printDialog1.PrinterSettings;
-                pds.Print(po);
-                MessageBox.Show(this, "Document was successfully printed.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(this, ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+            //try
+            //{
+            //    C1PrintOptions po = new C1PrintOptions();
+            //    po.PrinterSettings = printDialog1.PrinterSettings;
+            //    pds.Print(po);
+            //    MessageBox.Show(this, "Document was successfully printed.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            //}
+            //catch (Exception ex)
+            //{
+            //    MessageBox.Show(this, ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            //}
         }
 
         private void DoExport(C1PdfDocumentSource pds, ExportProvider ep)

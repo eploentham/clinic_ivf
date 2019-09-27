@@ -788,7 +788,7 @@ namespace clinic_ivf.gui
             {
                 menuGw.MenuItems.Add("&LAB request FORM A", new EventHandler(ContextMenu_LAB_req_formA_Ptt_search));
                 menuGw.MenuItems.Add("LAB Form Day1", new EventHandler(ContextMenu_Form_day1));
-            }            
+            }
             //menuGw.MenuItems.Add("&Add Appointment", new EventHandler(ContextMenu_Apm_Ptt));
             //menuGw.MenuItems.Add("&Cancel Receive", new EventHandler(ContextMenu_Apm_Ptt));
             //menuGw.MenuItems.Add("&No Appointment Close Operation", new EventHandler(ContextMenu_NO_Apm_Ptt));
@@ -1969,8 +1969,14 @@ namespace clinic_ivf.gui
             if (MessageBox.Show("ต้องการ NO Operation    \n  hn number " + chk + " \n name " + name, "", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == DialogResult.OK)
             {
                 String re = "";
-                re = ic.ivfDB.vsDB.updateCloseStatusNurse(vsid);
-                ic.ivfDB.ovsDB.updateStatusVoidVisit(vsid);
+                ic.cStf.staff_id = "";
+                FrmPasswordConfirm frm = new FrmPasswordConfirm(ic);
+                frm.ShowDialog(this);
+                if (!ic.cStf.staff_id.Equals(""))
+                {
+                    re = ic.ivfDB.vsDB.updateCloseStatusNurseNoOperation(vsid, ic.cStf.staff_id);
+                    ic.ivfDB.ovsDB.updateStatusVoidVisit(vsid);
+                }
                 if (re.Equals("1"))
                 {
                     setGrfQue();
@@ -1991,11 +1997,14 @@ namespace clinic_ivf.gui
             if (MessageBox.Show("ต้องการ Close Operation    \n  hn number " + chk + " \n name " + name, "", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == DialogResult.OK)
             {
                 String re = "";
-                re = ic.ivfDB.vsDB.updateCloseStatusNurse(vsid);
-                if (re.Equals("1"))
+                ic.cStf.staff_id = "";
+                FrmPasswordConfirm frm = new FrmPasswordConfirm(ic);
+                frm.ShowDialog(this);
+                if (!ic.cStf.staff_id.Equals(""))
                 {
-                    setGrfQue();
+                    re = ic.ivfDB.vsDB.updateCloseStatusNurseNoOperation(vsid, ic.cStf.staff_id);
                 }
+                setGrfQue();
             }
         }
         private void ContextMenu_Result_Lab_OPU(object sender, System.EventArgs e)
@@ -2191,10 +2200,10 @@ namespace clinic_ivf.gui
         }
         private void ContextMenu_Void_Ptt(object sender, System.EventArgs e)
         {
-            String chk = "", name = "", vsid = "", pttId = "", order="";
+            String chk = "", name = "", vn = "", pttId = "", order="";
             Boolean chkOrer = false;
             if (grfQue.Row < 0) return;
-            vsid = grfQue[grfQue.Row, colID] != null ? grfQue[grfQue.Row, colID].ToString() : "";
+            vn = grfQue[grfQue.Row, colID] != null ? grfQue[grfQue.Row, colID].ToString() : "";
             pttId = grfQue[grfQue.Row, colPttId] != null ? grfQue[grfQue.Row, colPttId].ToString() : "";
             chk = grfQue[grfQue.Row, colPttHn] != null ? grfQue[grfQue.Row, colPttHn].ToString() : "";
             name = grfQue[grfQue.Row, colPttName] != null ? grfQue[grfQue.Row, colPttName].ToString() : "";
@@ -2204,9 +2213,9 @@ namespace clinic_ivf.gui
             DataTable dtpx = new DataTable();
             DataTable dtpkg = new DataTable();
 
-            dtbl = ic.ivfDB.oJlabdDB.selectByVN(vsid);
-            dtse = ic.ivfDB.ojsdDB.selectByVN(vsid);
-            dtpx = ic.ivfDB.oJpxdDB.selectByVN(vsid);
+            dtbl = ic.ivfDB.oJlabdDB.selectByVN(vn);
+            dtse = ic.ivfDB.ojsdDB.selectByVN(vn);
+            dtpx = ic.ivfDB.oJpxdDB.selectByVN(vn);
             //dtpkg = ic.ivfDB.opkgsDB.selectByVN(vn);
             dtpkg = ic.ivfDB.opkgsDB.selectByPID(pttId);    // ต้องดึงตาม HN เพราะ ถ้ามีงวดการชำระ 
             if (dtbl.Rows.Count > 0)
@@ -2239,12 +2248,15 @@ namespace clinic_ivf.gui
                 String re = "";
                 Visit vs = new Visit();
                 //vs = ic.ivfDB.vsDB.selectByVn(vsid);
-                re = ic.ivfDB.vsDB.updateCloseStatusNurseByVN(vsid);
-                ic.ivfDB.ovsDB.updateStatusVoidVisit(vsid);
-                if (re.Equals("1"))
+                ic.cStf.staff_id = "";
+                FrmPasswordConfirm frm = new FrmPasswordConfirm(ic);
+                frm.ShowDialog(this);
+                if (!ic.cStf.staff_id.Equals(""))
                 {
-                    setGrfQue();
+                    re = ic.ivfDB.vsDB.updateStatusVoidVisitByVN(vn, ic.cStf.staff_id);
+                    ic.ivfDB.ovsDB.updateStatusVoidVisit(vn);
                 }
+                setGrfQue();
             }
         }
         private void ContextMenu_Apm(object sender, System.EventArgs e)
