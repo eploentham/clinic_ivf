@@ -180,7 +180,8 @@ namespace clinic_ivf.objdb
                 ", fdt0.doc_type_name as embryo_freez_mothod_0_name, fdt1.doc_type_name as embryo_freez_mothod_1_name " +
                 ", fdt_stage_0.doc_type_name as embryo_freez_stage_0_name, fdt_stage_1.doc_type_name as embryo_freez_stage_1_name " +
                 ", fdt_freeze_0.doc_type_name as embryo_freez_freeze_media_0_name " +
-                //", fdt_freeze_1.doc_type_name as embryo_freez_freeze_media_1_name " +
+                ",CONCAT(IFNULL(fpp_rpt.patient_prefix_description,''),' ', stf_embryo_dev_et_rpt.staff_fname_e ,' ',stf_embryo_dev_et_rpt.staff_lname_e ) as embryo_for_et_embryologist_name_rpt " +
+                ",CONCAT(IFNULL(fpp_apv.patient_prefix_description,''),' ', stf_embryo_dev_et_apv.staff_fname_e ,' ',stf_embryo_dev_et_apv.staff_lname_e ) as embryo_for_et_embryologist_name_apv " +
                 "From " + opu.table + " opu " +
                 "Left Join Doctor dtr on dtr.ID = opu." + opu.doctor_id + " " +
                 "Left Join lab_b_procedure proce on proce.proce_id = opu.proce_id " +
@@ -189,7 +190,10 @@ namespace clinic_ivf.objdb
                 "Left Join f_doc_type fdt_stage_0 on fdt_stage_0.doc_type_id = opu.embryo_freez_stage_0 " +
                 "Left Join f_doc_type fdt_stage_1 on fdt_stage_1.doc_type_id = opu.embryo_freez_stage_1 " +
                 "Left Join f_doc_type fdt_freeze_0 on opu.embryo_freez_freeze_media_0 = fdt_freeze_0.doc_type_id " +
-                //"Left Join b_satff stf_embryo_dev_0 on opu.embryo_freez_freeze_media_1 = fdt_freeze_1.doc_type_id " +
+                "Left Join b_staff stf_embryo_dev_et_rpt on opu.embryologist_report_id = stf_embryo_dev_et_rpt.staff_id " +
+                "Left join f_patient_prefix fpp_rpt on fpp_rpt.f_patient_prefix_id = stf_embryo_dev_et_rpt.prefix_id " +
+                "Left Join b_staff stf_embryo_dev_et_apv on opu.embryologist_approve_id = stf_embryo_dev_et_apv.staff_id " +
+                "Left join f_patient_prefix fpp_apv on fpp_apv.f_patient_prefix_id = stf_embryo_dev_et_apv.prefix_id " +
                 "Where opu." + opu.pkField + " ='" + copId + "' ";
             dt = conn.selectData(conn.conn, sql);
             return dt;

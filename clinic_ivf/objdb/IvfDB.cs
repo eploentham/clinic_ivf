@@ -514,6 +514,13 @@ namespace clinic_ivf.objdb
             //opu.embryoid_freez_position = "";
             opu.hn_male = lformA.hn_male;
             opu.hn_female = lbreq.hn_female;
+            if (opu.hn_female.Equals(""))     //ซ่อม เพราะใน request ไม่มี hn แต่มี name
+            {
+                Patient ptt = new Patient();
+                ptt = pttDB.selectByHn(lformA.hn_male);
+                opu.hn_female = ptt.patient_hn_1;
+            }
+            
             opu.name_male = lformA.name_male;
             opu.name_female = lbreq.name_female;
             opu.remark = lbreq.remark;
@@ -1746,7 +1753,7 @@ namespace clinic_ivf.objdb
             dt.Columns.Add("embryo_dev_1_checked_name", typeof(String));
             dt.Columns.Add("embryo_freez_no_straw_0", typeof(String));
             dt.Columns.Add("embryo_freez_no_straw_1", typeof(String));
-
+            dt.Columns.Add("embryo_for_et_embryologist_name", typeof(String));
             //dt.Columns.Add("remark_day2", typeof(String));
             //dt.Columns.Add("remark_day3", typeof(String));
             //dt.Columns.Add("remark_day5", typeof(String));

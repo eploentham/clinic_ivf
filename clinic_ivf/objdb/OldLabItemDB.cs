@@ -65,6 +65,7 @@ namespace clinic_ivf.objdb
             labI.remark = "remark";
             labI.lis_max_value = "lis_max_value";
             labI.lis_min_value = "lis_min_value";
+            labI.status_send_request = "status_send_request";
 
             labI.table = "LabItem";
             labI.pkField = "LID";
@@ -277,6 +278,7 @@ namespace clinic_ivf.objdb
             p.status_order_group = p.status_order_group == null ? "0" : p.status_order_group;
             p.status_outlab = p.status_outlab == null ? "0" : p.status_outlab;
             p.status_interpret = p.status_interpret.Equals("") ? "0" : p.status_interpret;
+            p.status_send_request = p.status_send_request.Equals("") ? "0" : p.status_send_request;
 
             p.LGID = long.TryParse(p.LGID, out chk) ? chk.ToString() : "0";
             p.SubItem = long.TryParse(p.SubItem, out chk) ? chk.ToString() : "0";
@@ -341,6 +343,7 @@ namespace clinic_ivf.objdb
                 "," + labI.remark + "= '" + p.remark.Replace("'", "''") + "'" +
                 "," + labI.lis_max_value + "= '" + p.lis_max_value.Replace("'", "''") + "'" +
                 "," + labI.lis_min_value + "= '" + p.lis_min_value.Replace("'", "''") + "'" +
+                "," + labI.status_send_request + "= '" + p.status_send_request.Replace("'", "''") + "'" +
                 "";
             try
             {
@@ -394,6 +397,7 @@ namespace clinic_ivf.objdb
                 "," + labI.remark + "= '" + p.remark.Replace("'", "''") + "'" +
                 "," + labI.lis_max_value + "= '" + p.lis_max_value.Replace("'", "''") + "'" +
                 "," + labI.lis_min_value + "= '" + p.lis_min_value.Replace("'", "''") + "'" +
+                "," + labI.status_send_request + "= '" + p.status_send_request.Replace("'", "''") + "'" +
                 "Where " + labI.pkField + "='" + p.LID + "'";
             try
             {
@@ -491,6 +495,7 @@ namespace clinic_ivf.objdb
                 vsold1.remark = dt.Rows[0][labI.remark].ToString();
                 vsold1.lis_max_value = dt.Rows[0][labI.lis_max_value].ToString();
                 vsold1.lis_min_value = dt.Rows[0][labI.lis_min_value].ToString();
+                vsold1.status_send_request = dt.Rows[0][labI.status_send_request].ToString();
             }
             else
             {
@@ -540,6 +545,7 @@ namespace clinic_ivf.objdb
             stf1.remark = "";
             stf1.lis_min_value = "";
             stf1.lis_max_value = "";
+            stf1.status_send_request = "";
             return stf1;
         }
     }

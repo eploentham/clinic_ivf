@@ -293,7 +293,7 @@ namespace clinic_ivf.objdb
                 //"Left Join t_visit vs on lreq.visit_id = vs.t_visit_id  " +
                 "Left Join LabItem litem on lreq.item_id = litem.LID " +
                 "Left Join lab_t_result lbres on lreq.req_id = lbres.req_id " +
-                "Where  lreq.vn = '" + vn + "'  and lreq.active= '1' " +
+                "Where  lreq.vn = '" + vn + "'  and lreq.active= '1'  " +
                 //"and lreq.item_id in ('14','18','66') " +
                 "Order By lreq.req_id ";
             dt = conn.selectData(conn.conn, sql);

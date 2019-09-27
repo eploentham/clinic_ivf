@@ -158,12 +158,15 @@ namespace clinic_ivf.gui
             }
 
             //loadedImage = Image.FromFile(filename);
-            
+
             //int originalWidth = loadedImage.Width;
             //resizedImage = loadedImage.GetThumbnailImage(newWidth, (newWidth * loadedImage.Height) / originalWidth, null, IntPtr.Zero);
             //pic.Image = resizedImage;
-            pic.Image = Image.FromStream(stream);
-            pic.SizeMode = PictureBoxSizeMode.StretchImage;
+            if (stream.Length > 0)
+            {
+                pic.Image = Image.FromStream(stream);
+                pic.SizeMode = PictureBoxSizeMode.StretchImage;
+            }
         }
 
         private void BtnPrn_Click(object sender, EventArgs e)

@@ -579,6 +579,10 @@ namespace clinic_ivf.report {
             
             private global::System.Data.DataColumn columnremark_day6;
             
+            private global::System.Data.DataColumn columnembryo_for_et_embryologist_name_rpt;
+            
+            private global::System.Data.DataColumn columnembryo_for_et_embryologist_name_apv;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public lab_opuDataTable() {
@@ -1814,6 +1818,22 @@ namespace clinic_ivf.report {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn embryo_for_et_embryologist_name_rptColumn {
+                get {
+                    return this.columnembryo_for_et_embryologist_name_rpt;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn embryo_for_et_embryologist_name_apvColumn {
+                get {
+                    return this.columnembryo_for_et_embryologist_name_apv;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -1999,7 +2019,9 @@ namespace clinic_ivf.report {
                         string remark_day2, 
                         string remark_day3, 
                         string remark_day5, 
-                        string remark_day6) {
+                        string remark_day6, 
+                        string embryo_for_et_embryologist_name_rpt, 
+                        string embryo_for_et_embryologist_name_apv) {
                 lab_opuRow rowlab_opuRow = ((lab_opuRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         name_female,
@@ -2151,7 +2173,9 @@ namespace clinic_ivf.report {
                         remark_day2,
                         remark_day3,
                         remark_day5,
-                        remark_day6};
+                        remark_day6,
+                        embryo_for_et_embryologist_name_rpt,
+                        embryo_for_et_embryologist_name_apv};
                 rowlab_opuRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowlab_opuRow);
                 return rowlab_opuRow;
@@ -2324,6 +2348,8 @@ namespace clinic_ivf.report {
                 this.columnremark_day3 = base.Columns["remark_day3"];
                 this.columnremark_day5 = base.Columns["remark_day5"];
                 this.columnremark_day6 = base.Columns["remark_day6"];
+                this.columnembryo_for_et_embryologist_name_rpt = base.Columns["embryo_for_et_embryologist_name_rpt"];
+                this.columnembryo_for_et_embryologist_name_apv = base.Columns["embryo_for_et_embryologist_name_apv"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -2629,6 +2655,10 @@ namespace clinic_ivf.report {
                 base.Columns.Add(this.columnremark_day5);
                 this.columnremark_day6 = new global::System.Data.DataColumn("remark_day6", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnremark_day6);
+                this.columnembryo_for_et_embryologist_name_rpt = new global::System.Data.DataColumn("embryo_for_et_embryologist_name_rpt", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnembryo_for_et_embryologist_name_rpt);
+                this.columnembryo_for_et_embryologist_name_apv = new global::System.Data.DataColumn("embryo_for_et_embryologist_name_apv", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnembryo_for_et_embryologist_name_apv);
                 this.columnname_female.Caption = "DataColumn1";
                 this.columnhn_female.Caption = "DataColumn1";
                 this.columnname_male.Caption = "DataColumn1";
@@ -5290,6 +5320,40 @@ namespace clinic_ivf.report {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string embryo_for_et_embryologist_name_rpt {
+                get {
+                    try {
+                        return ((string)(this[this.tablelab_opu.embryo_for_et_embryologist_name_rptColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'embryo_for_et_embryologist_name_rpt\' in table \'lab_opu\' is " +
+                                "DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablelab_opu.embryo_for_et_embryologist_name_rptColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string embryo_for_et_embryologist_name_apv {
+                get {
+                    try {
+                        return ((string)(this[this.tablelab_opu.embryo_for_et_embryologist_name_apvColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'embryo_for_et_embryologist_name_apv\' in table \'lab_opu\' is " +
+                                "DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablelab_opu.embryo_for_et_embryologist_name_apvColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public bool Isname_femaleNull() {
                 return this.IsNull(this.tablelab_opu.name_femaleColumn);
             }
@@ -7086,6 +7150,30 @@ namespace clinic_ivf.report {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public void Setremark_day6Null() {
                 this[this.tablelab_opu.remark_day6Column] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool Isembryo_for_et_embryologist_name_rptNull() {
+                return this.IsNull(this.tablelab_opu.embryo_for_et_embryologist_name_rptColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void Setembryo_for_et_embryologist_name_rptNull() {
+                this[this.tablelab_opu.embryo_for_et_embryologist_name_rptColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool Isembryo_for_et_embryologist_name_apvNull() {
+                return this.IsNull(this.tablelab_opu.embryo_for_et_embryologist_name_apvColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void Setembryo_for_et_embryologist_name_apvNull() {
+                this[this.tablelab_opu.embryo_for_et_embryologist_name_apvColumn] = global::System.Convert.DBNull;
             }
         }
         

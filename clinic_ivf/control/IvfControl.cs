@@ -219,6 +219,7 @@ namespace clinic_ivf.control
             iniC.email_port = iniF.getIni("email", "email_port");
             iniC.email_ssl = iniF.getIni("email", "email_ssl");
             iniC.email_to_sperm_freezing = iniF.getIni("email", "email_to_sperm_freezing");
+            iniC.themeFET = iniF.getIni("app", "themeFET");
 
             iniC.grdViewFontName = iniC.grdViewFontName.Equals("") ? "Microsoft Sans Serif" : iniC.grdViewFontName;
 
@@ -244,6 +245,8 @@ namespace clinic_ivf.control
             iniC.themeApplication = iniC.themeApplication == null ? "Office2007Blue" : iniC.themeApplication .Equals("") ? "Office2007Blue" : iniC.themeApplication;
             iniC.themeDonor = iniC.themeDonor == null ? "Office2007Blue" : iniC.themeDonor.Equals("") ? "Office2007Blue" : iniC.themeDonor;
             iniC.themeDonor1 = iniC.themeDonor1 == null ? "MacBlue" : iniC.themeDonor1.Equals("") ? "MacBlue" : iniC.themeDonor1;
+            iniC.themeFET = iniC.themeFET == null ? "Office2016Black" : iniC.themeFET.Equals("") ? "Office2016Black" : iniC.themeFET;
+
             iniC.grfRowRed = iniC.grfRowRed == null ? "#FF0266" : iniC.grfRowRed.Equals("") ? "#FF0266" : iniC.grfRowRed;
             iniC.grfRowGreen = iniC.grfRowGreen == null ? "#7CB342" : iniC.grfRowGreen.Equals("") ? "#7CB342" : iniC.grfRowGreen;
             iniC.grfRowYellow = iniC.grfRowYellow == null ? "#FFDE03" : iniC.grfRowYellow.Equals("") ? "#FFDE03" : iniC.grfRowYellow;

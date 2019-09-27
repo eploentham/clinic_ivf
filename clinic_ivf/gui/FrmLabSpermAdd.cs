@@ -27,6 +27,7 @@ namespace clinic_ivf.gui
         String reqId = "", spermId = "", body = "";
         LabRequest lbReq;
         LabSperm lsperm;
+        LabFormA lforma;
 
         Font fEdit, fEditB;
         Color bg, fc;
@@ -206,6 +207,7 @@ namespace clinic_ivf.gui
             sep = new C1SuperErrorProvider();
             lsperm = new LabSperm();
             lbReq = new LabRequest();
+            lforma = new LabFormA();
 
             setControl();
             setTheme();
@@ -1249,6 +1251,7 @@ namespace clinic_ivf.gui
             txtNameFeMale.ReadOnly = !flag;
             txtNameMale.ReadOnly = !flag;
             txtLabReqCode.ReadOnly = !flag;
+            txtLabFormACode.ReadOnly = !flag;
             txtDobFeMale.ReadOnly = !flag;
             txtDobMale.ReadOnly = !flag;
             cboDoctor.ReadOnly = !flag;
@@ -1297,6 +1300,7 @@ namespace clinic_ivf.gui
             txtSfNameFeMale.ReadOnly = !flag;
             txtSfNameMale.ReadOnly = !flag;
             txtSfLabReqCode.ReadOnly = !flag;
+            txtSfLabFormACode.ReadOnly = !flag;
             txtSfDobFeMale.ReadOnly = !flag;
             txtSfDobMale.ReadOnly = !flag;
             cboSfDoctor.ReadOnly = !flag;
@@ -1358,6 +1362,7 @@ namespace clinic_ivf.gui
         {
             lsperm = ic.ivfDB.lspermDB.selectByPk1(spermId);
             lbReq = ic.ivfDB.lbReqDB.selectByPk1(lsperm.req_id);
+            lforma = ic.ivfDB.lFormaDB.selectByPk1(lsperm.form_a_id);
             ic.setC1Combo(cboEmbryologistAppv, lsperm.staff_id_report);
             ic.setC1Combo(cboEmbryologistReport, lsperm.staff_id_approve);
 
@@ -1411,6 +1416,7 @@ namespace clinic_ivf.gui
             txtNameFeMale.Value = lsperm.name_female;
             txtNameMale.Value = lsperm.name_male;
             txtLabReqCode.Value = lbReq.req_code;
+            txtLabFormACode.Value = lforma.form_a_code;
             txtDobFeMale.Value = lsperm.dob_female;
             txtDobMale.Value = lsperm.dob_male;
             ic.setC1Combo(cboDoctor, lsperm.doctor_id);
@@ -1469,6 +1475,8 @@ namespace clinic_ivf.gui
             txtSfNameFeMale.Value = lsperm.name_female;
             txtSfNameMale.Value = lsperm.name_male;
             txtSfLabReqCode.Value = lbReq.req_code;
+            txtSfLabFormACode.Value = lforma.form_a_code;
+
             txtSfDobFeMale.Value = lsperm.dob_female;
             txtSfDobMale.Value = lsperm.dob_male;
             ic.setC1Combo(cboSfDoctor, lsperm.doctor_id);
@@ -1540,6 +1548,7 @@ namespace clinic_ivf.gui
             txtPeNameFeMale.Value = lsperm.name_female;
             txtPeNameMale.Value = lsperm.name_male;
             txtPeLabReqCode.Value = lbReq.req_code;
+            txtPeLabFormACode.Value = lforma.form_a_code;
             txtPeDobFeMale.Value = lsperm.dob_female;
             txtPeDobMale.Value = lsperm.dob_male;
             ic.setC1Combo(cboPeDoctor, lsperm.doctor_id);
@@ -1585,6 +1594,7 @@ namespace clinic_ivf.gui
             txtIuiNameFeMale.Value = lsperm.name_female;
             txtIuiNameMale.Value = lsperm.name_male;
             txtIuiLabReqCode.Value = lbReq.req_code;
+            txtIuiLabFormACode.Value = lforma.form_a_code;
             txtIuiDobFeMale.Value = lsperm.dob_female;
             txtIuiDobMale.Value = lsperm.dob_male;
             ic.setC1Combo(cboIuiDoctor, lsperm.doctor_id);

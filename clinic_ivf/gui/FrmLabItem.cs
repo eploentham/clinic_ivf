@@ -473,6 +473,8 @@ namespace clinic_ivf.gui
             }
             txtlisMaxValue.Value = labI.lis_max_value;
             txtlisMinValue.Value = labI.lis_min_value;
+            chkReqNurseScr.Checked = labI.status_send_request.Equals("0") ? true : false;
+            chkReqLabFormA.Checked = labI.status_send_request.Equals("1") ? true : false;
         }
         private void setControlEnableInterpret(Boolean flag)
         {
@@ -512,6 +514,7 @@ namespace clinic_ivf.gui
             labI.status_interpret = chkInterpretText.Checked ? "0" : chkInterpretCbo.Checked ? "1" : "0";
             labI.lis_max_value = txtlisMaxValue.Text.Trim();
             labI.lis_min_value = txtlisMinValue.Text.Trim();
+            labI.status_send_request = chkReqNurseScr.Checked ? "0" : chkReqLabFormA.Checked ? "1" : "0";
         }
         private void grfPosi_AfterRowColChange(object sender, C1.Win.C1FlexGrid.RangeEventArgs e)
         {

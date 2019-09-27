@@ -422,16 +422,16 @@ namespace clinic_ivf.objdb
                 fet1.hn_donor = dt.Rows[0][fet.hn_donor].ToString();
                 fet1.name_donor = dt.Rows[0][fet.name_donor].ToString();
                 fet1.dob_donor = dt.Rows[0][fet.dob_donor].ToString();
-                fet1.approve_result_staff_id = dt.Rows[0][fet.approve_result_staff_id].ToString();
-                fet1.status_approve_result_day1 = dt.Rows[0][fet.status_approve_result_day1].ToString();
-                fet1.status_approve_result_day3 = dt.Rows[0][fet.status_approve_result_day3].ToString();
-                fet1.status_approve_result_day5 = dt.Rows[0][fet.status_approve_result_day5].ToString();
-                fet1.approve_result_day1_staff_id = dt.Rows[0][fet.approve_result_day1_staff_id].ToString();
-                fet1.approve_result_day3_staff_id = dt.Rows[0][fet.approve_result_day3_staff_id].ToString();
-                fet1.approve_result_day5_staff_id = dt.Rows[0][fet.approve_result_day5_staff_id].ToString();
-                fet1.approve_result_day1_date = dt.Rows[0][fet.approve_result_day1_date].ToString();
-                fet1.approve_result_day3_date = dt.Rows[0][fet.approve_result_day3_date].ToString();
-                fet1.approve_result_day5_date = dt.Rows[0][fet.approve_result_day5_date].ToString();
+                //fet1.approve_result_staff_id = dt.Rows[0][fet.approve_result_staff_id].ToString();
+                //fet1.status_approve_result_day1 = dt.Rows[0][fet.status_approve_result_day1].ToString();
+                //fet1.status_approve_result_day3 = dt.Rows[0][fet.status_approve_result_day3].ToString();
+                //fet1.status_approve_result_day5 = dt.Rows[0][fet.status_approve_result_day5].ToString();
+                //fet1.approve_result_day1_staff_id = dt.Rows[0][fet.approve_result_day1_staff_id].ToString();
+                //fet1.approve_result_day3_staff_id = dt.Rows[0][fet.approve_result_day3_staff_id].ToString();
+                //fet1.approve_result_day5_staff_id = dt.Rows[0][fet.approve_result_day5_staff_id].ToString();
+                //fet1.approve_result_day1_date = dt.Rows[0][fet.approve_result_day1_date].ToString();
+                //fet1.approve_result_day3_date = dt.Rows[0][fet.approve_result_day3_date].ToString();
+                //fet1.approve_result_day5_date = dt.Rows[0][fet.approve_result_day5_date].ToString();
                 fet1.fet_time = dt.Rows[0][fet.fet_time].ToString();
 
                 fet1.freeze_date = dt.Rows[0][fet.freeze_date].ToString();
@@ -445,6 +445,7 @@ namespace clinic_ivf.objdb
                 fet1.media_lot_no = dt.Rows[0][fet.media_lot_no].ToString();
                 fet1.media_exp = dt.Rows[0][fet.media_exp].ToString();
                 fet1.media_thawing = dt.Rows[0][fet.media_thawing].ToString();
+                //fet1.dob_donor = dt.Rows[0][fet.dob_donor].ToString();
             }
             else
             {

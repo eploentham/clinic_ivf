@@ -89,7 +89,7 @@ namespace clinic_ivf.gui
             ic.ivfDB.stfDB.setCboEmbryologist(cboCheckedDay3, "");
             ic.ivfDB.stfDB.setCboEmbryologist(cboCheckedDay5, "");
             ic.ivfDB.stfDB.setCboEmbryologist(cboCheckedDay6, "");
-                        
+            
             ic.ivfDB.opuDB.setCboRemark(cboRemark);
 
             //stt.BackgroundGradient = C1.Win.C1SuperTooltip.BackgroundGradient.Gold;
@@ -110,92 +110,97 @@ namespace clinic_ivf.gui
         private void setTheme()
         {
             theme1.SetTheme(sB, "BeigeOne");
-            theme1.SetTheme(this, "Office2016Black");
-            theme1.SetTheme(groupBox1, "Office2016Black");
-            theme1.SetTheme(groupBox3, "Office2016Black");
-            theme1.SetTheme(groupBox4, "Office2016Black");
-            theme1.SetTheme(groupBox5, "Office2016Black");
-            theme1.SetTheme(groupBox7, "Office2016Black");
-            theme1.SetTheme(groupBox2, "Office2016Black");
-            theme1.SetTheme(c1CommandDock1, "Office2016Black");
-            theme1.SetTheme(tC1, "Office2016Black");
-            theme1.SetTheme(gbDay2, "Office2016Black");
-            theme1.SetTheme(gbDay3, "Office2016Black");
-            theme1.SetTheme(gbDay5, "Office2016Black");
-            theme1.SetTheme(gbDay6, "Office2016Black");
-            theme1.SetTheme(pn2, "Office2016Black");
-            theme1.SetTheme(pn5, "Office2016Black");
-            theme1.SetTheme(pn3, "Office2016Black");
-            theme1.SetTheme(pn6, "Office2016Black");
-            theme1.SetTheme(panel3, "Office2016Black");
-            theme1.SetTheme(panel4, "Office2016Black");
-            theme1.SetTheme(panel5, "Office2016Black");
-            theme1.SetTheme(panel6, "Office2016Black");
-            theme1.SetTheme(splitContainer1, "Office2016Black");
-            theme1.SetTheme(splitContainer2, "Office2016Black");
-            theme1.SetTheme(splitContainer3, "Office2016Black");
-            theme1.SetTheme(splitContainer4, "Office2016Black");
-            theme1.SetTheme(splitContainer5, "Office2016Black");
+            theme1.SetTheme(this, ic.iniC.themeFET);
+            theme1.SetTheme(groupBox1, ic.iniC.themeFET);
+            theme1.SetTheme(groupBox3, ic.iniC.themeFET);
+            theme1.SetTheme(groupBox4, ic.iniC.themeFET);
+            theme1.SetTheme(groupBox5, ic.iniC.themeFET);
+            theme1.SetTheme(groupBox7, ic.iniC.themeFET);
+            theme1.SetTheme(groupBox2, ic.iniC.themeFET);
+            theme1.SetTheme(c1CommandDock1, ic.iniC.themeFET);
+            theme1.SetTheme(tC1, ic.iniC.themeFET);
+            theme1.SetTheme(gbDay2, ic.iniC.themeFET);
+            theme1.SetTheme(gbDay3, ic.iniC.themeFET);
+            theme1.SetTheme(gbDay5, ic.iniC.themeFET);
+            theme1.SetTheme(gbDay6, ic.iniC.themeFET);
+            theme1.SetTheme(pn2, ic.iniC.themeFET);
+            theme1.SetTheme(pn5, ic.iniC.themeFET);
+            theme1.SetTheme(pn3, ic.iniC.themeFET);
+            theme1.SetTheme(pn6, ic.iniC.themeFET);
+            theme1.SetTheme(panel3, ic.iniC.themeFET);
+            theme1.SetTheme(panel4, ic.iniC.themeFET);
+            theme1.SetTheme(panel5, ic.iniC.themeFET);
+            theme1.SetTheme(panel6, ic.iniC.themeFET);
+            theme1.SetTheme(splitContainer1, ic.iniC.themeFET);
+            theme1.SetTheme(splitContainer2, ic.iniC.themeFET);
+            theme1.SetTheme(splitContainer3, ic.iniC.themeFET);
+            theme1.SetTheme(splitContainer4, ic.iniC.themeFET);
+            theme1.SetTheme(splitContainer5, ic.iniC.themeFET);
 
             foreach (Control ctl in groupBox1.Controls)
             {
-                theme1.SetTheme(ctl, "Office2016Black");
+                theme1.SetTheme(ctl, ic.iniC.themeFET);
             }
             foreach (Control ctl in groupBox3.Controls)
             {
-                theme1.SetTheme(ctl, "Office2016Black");
+                theme1.SetTheme(ctl, ic.iniC.themeFET);
             }
             foreach (Control ctl in groupBox4.Controls)
             {
-                theme1.SetTheme(ctl, "Office2016Black");
+                theme1.SetTheme(ctl, ic.iniC.themeFET);
             }
             foreach (Control ctl in groupBox5.Controls)
             {
-                theme1.SetTheme(ctl, "Office2016Black");
+                theme1.SetTheme(ctl, ic.iniC.themeFET);
             }
             foreach (Control ctl in groupBox7.Controls)
             {
-                theme1.SetTheme(ctl, "Office2016Black");
+                theme1.SetTheme(ctl, ic.iniC.themeFET);
             }
             //foreach (ComboBoxItemList ctl in cboOpuProce.Items) 
             //{
-            //    theme1.SetTheme(ctl, "Office2016Black");
+            //    theme1.SetTheme(ctl, ic.iniC.themeFET);
             //}
             foreach (Control ctl in pn2.Controls)
             {
-                theme1.SetTheme(ctl, "Office2016Black");
+                theme1.SetTheme(ctl, ic.iniC.themeFET);
             }
             foreach (Control ctl in pn3.Controls)
             {
-                theme1.SetTheme(ctl, "Office2016Black");
+                theme1.SetTheme(ctl, ic.iniC.themeFET);
             }
             foreach (Control ctl in pn5.Controls)
             {
-                theme1.SetTheme(ctl, "Office2016Black");
+                theme1.SetTheme(ctl, ic.iniC.themeFET);
             }
             foreach (Control ctl in pn6.Controls)
             {
-                theme1.SetTheme(ctl, "Office2016Black");
+                theme1.SetTheme(ctl, ic.iniC.themeFET);
             }
             foreach (Control ctl in panel3.Controls)
             {
-                theme1.SetTheme(ctl, "Office2016Black");
+                theme1.SetTheme(ctl, ic.iniC.themeFET);
             }
             foreach (Control ctl in panel4.Controls)
             {
-                theme1.SetTheme(ctl, "Office2016Black");
+                theme1.SetTheme(ctl, ic.iniC.themeFET);
             }
             foreach (Control ctl in panel5.Controls)
             {
-                theme1.SetTheme(ctl, "Office2016Black");
+                theme1.SetTheme(ctl, ic.iniC.themeFET);
             }
             foreach (Control ctl in panel6.Controls)
             {
-                theme1.SetTheme(ctl, "Office2016Black");
+                theme1.SetTheme(ctl, ic.iniC.themeFET);
             }
-            theme1.SetTheme(cboOpuProce, "ExpressionDark");
-            theme1.SetTheme(cboDoctor, "ExpressionDark");
-            theme1.SetTheme(cboRemark, "ExpressionDark");
+            //foreach (Control ctl in tC1.Controls)
+            //{
+            //    theme1.SetTheme(ctl, ic.iniC.themeFET);
+            //}
+            theme1.SetTheme(cboOpuProce, ic.iniC.themeFET);
+            theme1.SetTheme(cboDoctor, ic.iniC.themeFET);
+            theme1.SetTheme(cboRemark, ic.iniC.themeFET);
+            //theme1.SetTheme(tC1, ic.iniC.themeFET);
         }
         private void CboRemark_DropDownClosed(object sender, DropDownClosedEventArgs e)
         {
@@ -2265,7 +2270,7 @@ namespace clinic_ivf.gui
             //grfDay2Img.Cols[colDay2ImgPic].AllowEditing = false;
             grfDay2Img.AutoSizeCols();
             grfDay2Img.AutoSizeRows();
-            theme1.SetTheme(grfDay2Img, "Office2016Black");
+            theme1.SetTheme(grfDay2Img, ic.iniC.themeFET);
             grfDay2Img.Refresh();
         }
 
@@ -2288,7 +2293,7 @@ namespace clinic_ivf.gui
             grfDay2Img.ContextMenu = menuGw;
             pnGrf2Img.Controls.Add(grfDay2Img);
 
-            theme1.SetTheme(grfDay2Img, "Office2016Black");
+            theme1.SetTheme(grfDay2Img, ic.iniC.themeFET);
         }
         private void ContextMenu_grfday2_upload(object sender, System.EventArgs e)
         {
@@ -2505,7 +2510,7 @@ namespace clinic_ivf.gui
             //grfDay2Img.Cols[colDay2ImgPic].AllowEditing = false;
             grfDay3Img.AutoSizeCols();
             grfDay3Img.AutoSizeRows();
-            theme1.SetTheme(grfDay3Img, "Office2016Black");
+            theme1.SetTheme(grfDay3Img, ic.iniC.themeFET);
             grfDay3Img.Refresh();
         }
 
@@ -2528,7 +2533,7 @@ namespace clinic_ivf.gui
             grfDay3Img.ContextMenu = menuGw;
             pnGrf3Img.Controls.Add(grfDay3Img);
 
-            theme1.SetTheme(grfDay3Img, "Office2016Black");
+            theme1.SetTheme(grfDay3Img, ic.iniC.themeFET);
         }
         private void ContextMenu_grfday3_upload(object sender, System.EventArgs e)
         {
@@ -2744,7 +2749,7 @@ namespace clinic_ivf.gui
             //grfDay2Img.Cols[colDay2ImgPic].AllowEditing = false;
             grfDay5Img.AutoSizeCols();
             grfDay5Img.AutoSizeRows();
-            theme1.SetTheme(grfDay5Img, "Office2016Black");
+            theme1.SetTheme(grfDay5Img, ic.iniC.themeFET);
             grfDay5Img.Refresh();
         }
 
@@ -2767,7 +2772,7 @@ namespace clinic_ivf.gui
             grfDay5Img.ContextMenu = menuGw;
             pnGrf5Img.Controls.Add(grfDay5Img);
 
-            theme1.SetTheme(grfDay5Img, "Office2016Black");
+            theme1.SetTheme(grfDay5Img, ic.iniC.themeFET);
         }
         private void ContextMenu_grfday5_upload(object sender, System.EventArgs e)
         {
@@ -2983,7 +2988,7 @@ namespace clinic_ivf.gui
             //grfDay2Img.Cols[colDay2ImgPic].AllowEditing = false;
             grfDay6Img.AutoSizeCols();
             grfDay6Img.AutoSizeRows();
-            theme1.SetTheme(grfDay6Img, "Office2016Black");
+            theme1.SetTheme(grfDay6Img, ic.iniC.themeFET);
             grfDay6Img.Refresh();
         }
 
@@ -3006,7 +3011,7 @@ namespace clinic_ivf.gui
             grfDay6Img.ContextMenu = menuGw;
             pnGrf6Img.Controls.Add(grfDay6Img);
 
-            theme1.SetTheme(grfDay6Img, "Office2016Black");
+            theme1.SetTheme(grfDay6Img, ic.iniC.themeFET);
         }
         private void ContextMenu_grfday6_upload(object sender, System.EventArgs e)
         {
@@ -3126,7 +3131,7 @@ namespace clinic_ivf.gui
             //grfDay2.ContextMenu = menuGw;
             pn2Grf.Controls.Add(grfDay2);
 
-            theme1.SetTheme(grfDay2, "Office2016Black");
+            theme1.SetTheme(grfDay2, ic.iniC.themeFET);
         }
         private void GrfDay2_GotFocus(object sender, EventArgs e)
         {
@@ -3213,7 +3218,7 @@ namespace clinic_ivf.gui
             grfDay6.ContextMenu = menuGw;
             pn6Grf.Controls.Add(grfDay6);
 
-            theme1.SetTheme(grfDay6, "Office2016Black");
+            theme1.SetTheme(grfDay6, ic.iniC.themeFET);
         }
         private void GrfDay6_GotFocus(object sender, EventArgs e)
         {
@@ -3282,7 +3287,7 @@ namespace clinic_ivf.gui
             grfDay3.ContextMenu = menuGw;
             pn3Grf.Controls.Add(grfDay3);
 
-            theme1.SetTheme(grfDay3, "Office2016Black");
+            theme1.SetTheme(grfDay3, ic.iniC.themeFET);
         }
         private void GrfDay3_GotFocus(object sender, EventArgs e)
         {
@@ -3351,7 +3356,7 @@ namespace clinic_ivf.gui
             grfDay5.ContextMenu = menuGw;
             pn5Grf.Controls.Add(grfDay5);
 
-            theme1.SetTheme(grfDay5, "Office2016Black");
+            theme1.SetTheme(grfDay5, ic.iniC.themeFET);
             //theme1.SetTheme(grfDay6, "Office2016DarkGray");
         }
         private void GrfDay5_GotFocus(object sender, EventArgs e)

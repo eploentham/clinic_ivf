@@ -330,7 +330,7 @@
             this.c1CommandDock1.Dock = System.Windows.Forms.DockStyle.Right;
             this.c1CommandDock1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
             this.c1CommandDock1.Id = 1;
-            this.c1CommandDock1.Location = new System.Drawing.Point(1557, 0);
+            this.c1CommandDock1.Location = new System.Drawing.Point(1616, 0);
             this.c1CommandDock1.Name = "c1CommandDock1";
             this.c1CommandDock1.Size = new System.Drawing.Size(168, 757);
             this.theme1.SetTheme(this.c1CommandDock1, "(default)");
@@ -741,7 +741,7 @@
             this.groupBox1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
             this.groupBox1.Location = new System.Drawing.Point(0, 0);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(1557, 116);
+            this.groupBox1.Size = new System.Drawing.Size(1616, 116);
             this.groupBox1.TabIndex = 12;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Patient";
@@ -940,7 +940,7 @@
             // 
             this.btnEdit.Image = global::clinic_ivf.Properties.Resources.lock24;
             this.btnEdit.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnEdit.Location = new System.Drawing.Point(992, 20);
+            this.btnEdit.Location = new System.Drawing.Point(1016, 20);
             this.btnEdit.Name = "btnEdit";
             this.btnEdit.Size = new System.Drawing.Size(83, 39);
             this.btnEdit.TabIndex = 536;
@@ -954,7 +954,7 @@
             // 
             this.btnSave.Image = global::clinic_ivf.Properties.Resources.download_database24;
             this.btnSave.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnSave.Location = new System.Drawing.Point(992, 65);
+            this.btnSave.Location = new System.Drawing.Point(1016, 65);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(83, 39);
             this.btnSave.TabIndex = 535;
@@ -1095,7 +1095,7 @@
             this.cboDoctor.ItemsValueMember = "";
             this.cboDoctor.Location = new System.Drawing.Point(754, 19);
             this.cboDoctor.Name = "cboDoctor";
-            this.cboDoctor.Size = new System.Drawing.Size(207, 20);
+            this.cboDoctor.Size = new System.Drawing.Size(256, 20);
             this.cboDoctor.Style.DropDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
             this.cboDoctor.Style.DropDownBorderColor = System.Drawing.Color.Gainsboro;
             this.cboDoctor.Style.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
@@ -1190,7 +1190,7 @@
             this.cboOpuProce.ItemsValueMember = "";
             this.cboOpuProce.Location = new System.Drawing.Point(754, 41);
             this.cboOpuProce.Name = "cboOpuProce";
-            this.cboOpuProce.Size = new System.Drawing.Size(207, 20);
+            this.cboOpuProce.Size = new System.Drawing.Size(256, 20);
             this.cboOpuProce.Style.DropDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
             this.cboOpuProce.Style.DropDownBorderColor = System.Drawing.Color.Gainsboro;
             this.cboOpuProce.Style.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
@@ -1374,8 +1374,8 @@
             this.splitContainer1.Panel2.Controls.Add(this.splitContainer2);
             this.splitContainer1.Panel2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
             this.theme1.SetTheme(this.splitContainer1.Panel2, "(default)");
-            this.splitContainer1.Size = new System.Drawing.Size(1557, 641);
-            this.splitContainer1.SplitterDistance = 448;
+            this.splitContainer1.Size = new System.Drawing.Size(1616, 641);
+            this.splitContainer1.SplitterDistance = 317;
             this.splitContainer1.TabIndex = 13;
             this.theme1.SetTheme(this.splitContainer1, "(default)");
             // 
@@ -1389,7 +1389,7 @@
             this.groupBox2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
             this.groupBox2.Location = new System.Drawing.Point(0, 0);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(448, 641);
+            this.groupBox2.Size = new System.Drawing.Size(317, 641);
             this.groupBox2.TabIndex = 1;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Embryo Thawing";
@@ -1410,7 +1410,7 @@
             this.groupBox5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
             this.groupBox5.Location = new System.Drawing.Point(3, 240);
             this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Size = new System.Drawing.Size(442, 122);
+            this.groupBox5.Size = new System.Drawing.Size(311, 122);
             this.groupBox5.TabIndex = 517;
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "Thawing Media";
@@ -1568,7 +1568,7 @@
             this.groupBox4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
             this.groupBox4.Location = new System.Drawing.Point(3, 118);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(442, 122);
+            this.groupBox4.Size = new System.Drawing.Size(311, 122);
             this.groupBox4.TabIndex = 516;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Date Time of thaw";
@@ -1724,7 +1724,7 @@
             this.groupBox3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
             this.groupBox3.Location = new System.Drawing.Point(3, 16);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(442, 102);
+            this.groupBox3.Size = new System.Drawing.Size(311, 102);
             this.groupBox3.TabIndex = 515;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Date Time of Freeze";
@@ -1863,7 +1863,7 @@
             this.splitContainer2.Panel2.Controls.Add(this.groupBox7);
             this.splitContainer2.Panel2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
             this.theme1.SetTheme(this.splitContainer2.Panel2, "(default)");
-            this.splitContainer2.Size = new System.Drawing.Size(1105, 641);
+            this.splitContainer2.Size = new System.Drawing.Size(1295, 641);
             this.splitContainer2.SplitterDistance = 487;
             this.splitContainer2.TabIndex = 0;
             this.theme1.SetTheme(this.splitContainer2, "(default)");
@@ -1889,8 +1889,8 @@
             this.splitContainer3.Panel2.Controls.Add(this.splitContainer5);
             this.splitContainer3.Panel2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
             this.theme1.SetTheme(this.splitContainer3.Panel2, "(default)");
-            this.splitContainer3.Size = new System.Drawing.Size(1105, 487);
-            this.splitContainer3.SplitterDistance = 567;
+            this.splitContainer3.Size = new System.Drawing.Size(1295, 487);
+            this.splitContainer3.SplitterDistance = 663;
             this.splitContainer3.TabIndex = 0;
             this.theme1.SetTheme(this.splitContainer3, "(default)");
             // 
@@ -1915,8 +1915,8 @@
             this.splitContainer4.Panel2.Controls.Add(this.gbDay3);
             this.splitContainer4.Panel2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
             this.theme1.SetTheme(this.splitContainer4.Panel2, "(default)");
-            this.splitContainer4.Size = new System.Drawing.Size(567, 487);
-            this.splitContainer4.SplitterDistance = 289;
+            this.splitContainer4.Size = new System.Drawing.Size(663, 487);
+            this.splitContainer4.SplitterDistance = 337;
             this.splitContainer4.TabIndex = 0;
             this.theme1.SetTheme(this.splitContainer4, "(default)");
             // 
@@ -1929,7 +1929,7 @@
             this.gbDay2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
             this.gbDay2.Location = new System.Drawing.Point(0, 0);
             this.gbDay2.Name = "gbDay2";
-            this.gbDay2.Size = new System.Drawing.Size(289, 487);
+            this.gbDay2.Size = new System.Drawing.Size(337, 487);
             this.gbDay2.TabIndex = 4;
             this.gbDay2.TabStop = false;
             this.gbDay2.Text = "Day 2 Embryo Development ";
@@ -1942,7 +1942,7 @@
             this.pn2Grf.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
             this.pn2Grf.Location = new System.Drawing.Point(3, 16);
             this.pn2Grf.Name = "pn2Grf";
-            this.pn2Grf.Size = new System.Drawing.Size(283, 398);
+            this.pn2Grf.Size = new System.Drawing.Size(331, 398);
             this.pn2Grf.TabIndex = 1;
             this.theme1.SetTheme(this.pn2Grf, "(default)");
             // 
@@ -1960,7 +1960,7 @@
             this.pn2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
             this.pn2.Location = new System.Drawing.Point(3, 414);
             this.pn2.Name = "pn2";
-            this.pn2.Size = new System.Drawing.Size(283, 70);
+            this.pn2.Size = new System.Drawing.Size(331, 70);
             this.pn2.TabIndex = 0;
             this.theme1.SetTheme(this.pn2, "(default)");
             // 
@@ -2061,7 +2061,7 @@
             this.cboCheckedDay2.ItemsValueMember = "";
             this.cboCheckedDay2.Location = new System.Drawing.Point(75, 27);
             this.cboCheckedDay2.Name = "cboCheckedDay2";
-            this.cboCheckedDay2.Size = new System.Drawing.Size(151, 20);
+            this.cboCheckedDay2.Size = new System.Drawing.Size(210, 20);
             this.cboCheckedDay2.Style.DropDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
             this.cboCheckedDay2.Style.DropDownBorderColor = System.Drawing.Color.Gainsboro;
             this.cboCheckedDay2.Style.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
@@ -2082,7 +2082,7 @@
             this.cboEmbryologistDay2.ItemsValueMember = "";
             this.cboEmbryologistDay2.Location = new System.Drawing.Point(75, 5);
             this.cboEmbryologistDay2.Name = "cboEmbryologistDay2";
-            this.cboEmbryologistDay2.Size = new System.Drawing.Size(151, 20);
+            this.cboEmbryologistDay2.Size = new System.Drawing.Size(210, 20);
             this.cboEmbryologistDay2.Style.DropDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
             this.cboEmbryologistDay2.Style.DropDownBorderColor = System.Drawing.Color.Gainsboro;
             this.cboEmbryologistDay2.Style.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
@@ -2095,7 +2095,7 @@
             // 
             this.btnSaveDay2.Image = global::clinic_ivf.Properties.Resources.download_database16;
             this.btnSaveDay2.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnSaveDay2.Location = new System.Drawing.Point(232, 4);
+            this.btnSaveDay2.Location = new System.Drawing.Point(291, 4);
             this.btnSaveDay2.Name = "btnSaveDay2";
             this.btnSaveDay2.Size = new System.Drawing.Size(49, 28);
             this.btnSaveDay2.TabIndex = 538;
@@ -2114,7 +2114,7 @@
             this.gbDay3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
             this.gbDay3.Location = new System.Drawing.Point(0, 0);
             this.gbDay3.Name = "gbDay3";
-            this.gbDay3.Size = new System.Drawing.Size(274, 487);
+            this.gbDay3.Size = new System.Drawing.Size(322, 487);
             this.gbDay3.TabIndex = 5;
             this.gbDay3.TabStop = false;
             this.gbDay3.Text = "Day 3 Embryo Development ";
@@ -2127,7 +2127,7 @@
             this.pn3Grf.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
             this.pn3Grf.Location = new System.Drawing.Point(3, 16);
             this.pn3Grf.Name = "pn3Grf";
-            this.pn3Grf.Size = new System.Drawing.Size(268, 398);
+            this.pn3Grf.Size = new System.Drawing.Size(316, 398);
             this.pn3Grf.TabIndex = 1;
             this.theme1.SetTheme(this.pn3Grf, "(default)");
             // 
@@ -2145,7 +2145,7 @@
             this.pn3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
             this.pn3.Location = new System.Drawing.Point(3, 414);
             this.pn3.Name = "pn3";
-            this.pn3.Size = new System.Drawing.Size(268, 70);
+            this.pn3.Size = new System.Drawing.Size(316, 70);
             this.pn3.TabIndex = 0;
             this.theme1.SetTheme(this.pn3, "(default)");
             // 
@@ -2246,7 +2246,7 @@
             this.cboCheckedDay3.ItemsValueMember = "";
             this.cboCheckedDay3.Location = new System.Drawing.Point(72, 25);
             this.cboCheckedDay3.Name = "cboCheckedDay3";
-            this.cboCheckedDay3.Size = new System.Drawing.Size(151, 20);
+            this.cboCheckedDay3.Size = new System.Drawing.Size(212, 20);
             this.cboCheckedDay3.Style.DropDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
             this.cboCheckedDay3.Style.DropDownBorderColor = System.Drawing.Color.Gainsboro;
             this.cboCheckedDay3.Style.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
@@ -2267,7 +2267,7 @@
             this.cboEmbryologistDay3.ItemsValueMember = "";
             this.cboEmbryologistDay3.Location = new System.Drawing.Point(72, 4);
             this.cboEmbryologistDay3.Name = "cboEmbryologistDay3";
-            this.cboEmbryologistDay3.Size = new System.Drawing.Size(151, 20);
+            this.cboEmbryologistDay3.Size = new System.Drawing.Size(212, 20);
             this.cboEmbryologistDay3.Style.DropDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
             this.cboEmbryologistDay3.Style.DropDownBorderColor = System.Drawing.Color.Gainsboro;
             this.cboEmbryologistDay3.Style.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
@@ -2280,7 +2280,7 @@
             // 
             this.btnSaveDay3.Image = global::clinic_ivf.Properties.Resources.download_database16;
             this.btnSaveDay3.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnSaveDay3.Location = new System.Drawing.Point(231, 5);
+            this.btnSaveDay3.Location = new System.Drawing.Point(290, 5);
             this.btnSaveDay3.Name = "btnSaveDay3";
             this.btnSaveDay3.Size = new System.Drawing.Size(49, 28);
             this.btnSaveDay3.TabIndex = 544;
@@ -2311,8 +2311,8 @@
             this.splitContainer5.Panel2.Controls.Add(this.gbDay6);
             this.splitContainer5.Panel2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
             this.theme1.SetTheme(this.splitContainer5.Panel2, "(default)");
-            this.splitContainer5.Size = new System.Drawing.Size(534, 487);
-            this.splitContainer5.SplitterDistance = 278;
+            this.splitContainer5.Size = new System.Drawing.Size(628, 487);
+            this.splitContainer5.SplitterDistance = 326;
             this.splitContainer5.TabIndex = 0;
             this.theme1.SetTheme(this.splitContainer5, "(default)");
             // 
@@ -2325,7 +2325,7 @@
             this.gbDay5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
             this.gbDay5.Location = new System.Drawing.Point(0, 0);
             this.gbDay5.Name = "gbDay5";
-            this.gbDay5.Size = new System.Drawing.Size(278, 487);
+            this.gbDay5.Size = new System.Drawing.Size(326, 487);
             this.gbDay5.TabIndex = 6;
             this.gbDay5.TabStop = false;
             this.gbDay5.Text = "Day 5 Embryo Development ";
@@ -2338,7 +2338,7 @@
             this.pn5Grf.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
             this.pn5Grf.Location = new System.Drawing.Point(3, 16);
             this.pn5Grf.Name = "pn5Grf";
-            this.pn5Grf.Size = new System.Drawing.Size(272, 398);
+            this.pn5Grf.Size = new System.Drawing.Size(320, 398);
             this.pn5Grf.TabIndex = 1;
             this.theme1.SetTheme(this.pn5Grf, "(default)");
             // 
@@ -2356,7 +2356,7 @@
             this.pn5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
             this.pn5.Location = new System.Drawing.Point(3, 414);
             this.pn5.Name = "pn5";
-            this.pn5.Size = new System.Drawing.Size(272, 70);
+            this.pn5.Size = new System.Drawing.Size(320, 70);
             this.pn5.TabIndex = 0;
             this.theme1.SetTheme(this.pn5, "(default)");
             // 
@@ -2457,7 +2457,7 @@
             this.cboCheckedDay5.ItemsValueMember = "";
             this.cboCheckedDay5.Location = new System.Drawing.Point(71, 25);
             this.cboCheckedDay5.Name = "cboCheckedDay5";
-            this.cboCheckedDay5.Size = new System.Drawing.Size(151, 20);
+            this.cboCheckedDay5.Size = new System.Drawing.Size(209, 20);
             this.cboCheckedDay5.Style.DropDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
             this.cboCheckedDay5.Style.DropDownBorderColor = System.Drawing.Color.Gainsboro;
             this.cboCheckedDay5.Style.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
@@ -2478,7 +2478,7 @@
             this.cboEmbryologistDay5.ItemsValueMember = "";
             this.cboEmbryologistDay5.Location = new System.Drawing.Point(71, 4);
             this.cboEmbryologistDay5.Name = "cboEmbryologistDay5";
-            this.cboEmbryologistDay5.Size = new System.Drawing.Size(151, 20);
+            this.cboEmbryologistDay5.Size = new System.Drawing.Size(209, 20);
             this.cboEmbryologistDay5.Style.DropDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
             this.cboEmbryologistDay5.Style.DropDownBorderColor = System.Drawing.Color.Gainsboro;
             this.cboEmbryologistDay5.Style.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
@@ -2491,7 +2491,7 @@
             // 
             this.btnSaveDay5.Image = global::clinic_ivf.Properties.Resources.download_database16;
             this.btnSaveDay5.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnSaveDay5.Location = new System.Drawing.Point(227, 4);
+            this.btnSaveDay5.Location = new System.Drawing.Point(286, 4);
             this.btnSaveDay5.Name = "btnSaveDay5";
             this.btnSaveDay5.Size = new System.Drawing.Size(49, 28);
             this.btnSaveDay5.TabIndex = 546;
@@ -2510,7 +2510,7 @@
             this.gbDay6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
             this.gbDay6.Location = new System.Drawing.Point(0, 0);
             this.gbDay6.Name = "gbDay6";
-            this.gbDay6.Size = new System.Drawing.Size(252, 487);
+            this.gbDay6.Size = new System.Drawing.Size(298, 487);
             this.gbDay6.TabIndex = 7;
             this.gbDay6.TabStop = false;
             this.gbDay6.Text = "Day 6 Embryo Development ";
@@ -2523,7 +2523,7 @@
             this.pn6Grf.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
             this.pn6Grf.Location = new System.Drawing.Point(3, 16);
             this.pn6Grf.Name = "pn6Grf";
-            this.pn6Grf.Size = new System.Drawing.Size(246, 398);
+            this.pn6Grf.Size = new System.Drawing.Size(292, 398);
             this.pn6Grf.TabIndex = 1;
             this.theme1.SetTheme(this.pn6Grf, "(default)");
             // 
@@ -2541,7 +2541,7 @@
             this.pn6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
             this.pn6.Location = new System.Drawing.Point(3, 414);
             this.pn6.Name = "pn6";
-            this.pn6.Size = new System.Drawing.Size(246, 70);
+            this.pn6.Size = new System.Drawing.Size(292, 70);
             this.pn6.TabIndex = 0;
             this.theme1.SetTheme(this.pn6, "(default)");
             // 
@@ -2641,7 +2641,7 @@
             this.cboCheckedDay6.ItemsValueMember = "";
             this.cboCheckedDay6.Location = new System.Drawing.Point(74, 29);
             this.cboCheckedDay6.Name = "cboCheckedDay6";
-            this.cboCheckedDay6.Size = new System.Drawing.Size(151, 20);
+            this.cboCheckedDay6.Size = new System.Drawing.Size(208, 20);
             this.cboCheckedDay6.Style.DropDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
             this.cboCheckedDay6.Style.DropDownBorderColor = System.Drawing.Color.Gainsboro;
             this.cboCheckedDay6.Style.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
@@ -2662,7 +2662,7 @@
             this.cboEmbryologistDay6.ItemsValueMember = "";
             this.cboEmbryologistDay6.Location = new System.Drawing.Point(74, 6);
             this.cboEmbryologistDay6.Name = "cboEmbryologistDay6";
-            this.cboEmbryologistDay6.Size = new System.Drawing.Size(151, 20);
+            this.cboEmbryologistDay6.Size = new System.Drawing.Size(208, 20);
             this.cboEmbryologistDay6.Style.DropDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
             this.cboEmbryologistDay6.Style.DropDownBorderColor = System.Drawing.Color.Gainsboro;
             this.cboEmbryologistDay6.Style.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
@@ -2675,7 +2675,7 @@
             // 
             this.btnSaveDay6.Image = global::clinic_ivf.Properties.Resources.download_database16;
             this.btnSaveDay6.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnSaveDay6.Location = new System.Drawing.Point(229, 8);
+            this.btnSaveDay6.Location = new System.Drawing.Point(288, 8);
             this.btnSaveDay6.Name = "btnSaveDay6";
             this.btnSaveDay6.Size = new System.Drawing.Size(49, 28);
             this.btnSaveDay6.TabIndex = 548;
@@ -2721,7 +2721,7 @@
             this.groupBox7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
             this.groupBox7.Location = new System.Drawing.Point(0, 0);
             this.groupBox7.Name = "groupBox7";
-            this.groupBox7.Size = new System.Drawing.Size(1105, 150);
+            this.groupBox7.Size = new System.Drawing.Size(1295, 150);
             this.groupBox7.TabIndex = 4;
             this.groupBox7.TabStop = false;
             this.groupBox7.Text = "Embryo for ET";
@@ -2754,11 +2754,11 @@
             // 
             this.btnSaveEmbryoEt.Image = global::clinic_ivf.Properties.Resources.download_database24;
             this.btnSaveEmbryoEt.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnSaveEmbryoEt.Location = new System.Drawing.Point(715, 83);
+            this.btnSaveEmbryoEt.Location = new System.Drawing.Point(956, 85);
             this.btnSaveEmbryoEt.Name = "btnSaveEmbryoEt";
             this.btnSaveEmbryoEt.Size = new System.Drawing.Size(83, 39);
             this.btnSaveEmbryoEt.TabIndex = 545;
-            this.btnSaveEmbryoEt.Text = "save day";
+            this.btnSaveEmbryoEt.Text = "save ET";
             this.btnSaveEmbryoEt.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.theme1.SetTheme(this.btnSaveEmbryoEt, "(default)");
             this.btnSaveEmbryoEt.UseVisualStyleBackColor = true;
@@ -2776,9 +2776,9 @@
             this.cboEmbryologistAppv.ImagePadding = new System.Windows.Forms.Padding(0);
             this.cboEmbryologistAppv.ItemsDisplayMember = "";
             this.cboEmbryologistAppv.ItemsValueMember = "";
-            this.cboEmbryologistAppv.Location = new System.Drawing.Point(576, 104);
+            this.cboEmbryologistAppv.Location = new System.Drawing.Point(703, 104);
             this.cboEmbryologistAppv.Name = "cboEmbryologistAppv";
-            this.cboEmbryologistAppv.Size = new System.Drawing.Size(133, 20);
+            this.cboEmbryologistAppv.Size = new System.Drawing.Size(229, 20);
             this.cboEmbryologistAppv.Style.DropDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
             this.cboEmbryologistAppv.Style.DropDownBorderColor = System.Drawing.Color.Gainsboro;
             this.cboEmbryologistAppv.Style.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
@@ -2799,9 +2799,9 @@
             this.cboEmbryologistReport.ImagePadding = new System.Windows.Forms.Padding(0);
             this.cboEmbryologistReport.ItemsDisplayMember = "";
             this.cboEmbryologistReport.ItemsValueMember = "";
-            this.cboEmbryologistReport.Location = new System.Drawing.Point(576, 81);
+            this.cboEmbryologistReport.Location = new System.Drawing.Point(703, 81);
             this.cboEmbryologistReport.Name = "cboEmbryologistReport";
-            this.cboEmbryologistReport.Size = new System.Drawing.Size(133, 20);
+            this.cboEmbryologistReport.Size = new System.Drawing.Size(229, 20);
             this.cboEmbryologistReport.Style.DropDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
             this.cboEmbryologistReport.Style.DropDownBorderColor = System.Drawing.Color.Gainsboro;
             this.cboEmbryologistReport.Style.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
@@ -2824,7 +2824,7 @@
             this.cboEmbryoForEtEmbryologist.ItemsValueMember = "";
             this.cboEmbryoForEtEmbryologist.Location = new System.Drawing.Point(311, 79);
             this.cboEmbryoForEtEmbryologist.Name = "cboEmbryoForEtEmbryologist";
-            this.cboEmbryoForEtEmbryologist.Size = new System.Drawing.Size(127, 20);
+            this.cboEmbryoForEtEmbryologist.Size = new System.Drawing.Size(229, 20);
             this.cboEmbryoForEtEmbryologist.Style.DropDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
             this.cboEmbryoForEtEmbryologist.Style.DropDownBorderColor = System.Drawing.Color.Gainsboro;
             this.cboEmbryoForEtEmbryologist.Style.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
@@ -2839,7 +2839,7 @@
             this.label61.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
             this.label61.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label61.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.label61.Location = new System.Drawing.Point(426, 106);
+            this.label61.Location = new System.Drawing.Point(549, 106);
             this.label61.Name = "label61";
             this.label61.Size = new System.Drawing.Size(147, 16);
             this.label61.TabIndex = 541;
@@ -2852,7 +2852,7 @@
             this.label60.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
             this.label60.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label60.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.label60.Location = new System.Drawing.Point(439, 83);
+            this.label60.Location = new System.Drawing.Point(549, 83);
             this.label60.Name = "label60";
             this.label60.Size = new System.Drawing.Size(131, 16);
             this.label60.TabIndex = 538;
@@ -2864,7 +2864,7 @@
             this.txtEmbryoForEtNumDiscard.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtEmbryoForEtNumDiscard.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
             this.txtEmbryoForEtNumDiscard.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.txtEmbryoForEtNumDiscard.Location = new System.Drawing.Point(610, 58);
+            this.txtEmbryoForEtNumDiscard.Location = new System.Drawing.Point(702, 58);
             this.txtEmbryoForEtNumDiscard.Name = "txtEmbryoForEtNumDiscard";
             this.txtEmbryoForEtNumDiscard.Size = new System.Drawing.Size(99, 20);
             this.txtEmbryoForEtNumDiscard.TabIndex = 528;
@@ -2877,7 +2877,7 @@
             this.txtEmbryoForEtNumFreeze.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtEmbryoForEtNumFreeze.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
             this.txtEmbryoForEtNumFreeze.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.txtEmbryoForEtNumFreeze.Location = new System.Drawing.Point(610, 36);
+            this.txtEmbryoForEtNumFreeze.Location = new System.Drawing.Point(702, 36);
             this.txtEmbryoForEtNumFreeze.Name = "txtEmbryoForEtNumFreeze";
             this.txtEmbryoForEtNumFreeze.Size = new System.Drawing.Size(99, 20);
             this.txtEmbryoForEtNumFreeze.TabIndex = 527;
@@ -2890,7 +2890,7 @@
             this.txtEmbryoForEtNumTran.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtEmbryoForEtNumTran.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
             this.txtEmbryoForEtNumTran.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.txtEmbryoForEtNumTran.Location = new System.Drawing.Point(610, 14);
+            this.txtEmbryoForEtNumTran.Location = new System.Drawing.Point(702, 14);
             this.txtEmbryoForEtNumTran.Name = "txtEmbryoForEtNumTran";
             this.txtEmbryoForEtNumTran.Size = new System.Drawing.Size(99, 20);
             this.txtEmbryoForEtNumTran.TabIndex = 526;
@@ -2943,7 +2943,7 @@
             this.label59.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
             this.label59.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label59.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.label59.Location = new System.Drawing.Point(457, 60);
+            this.label59.Location = new System.Drawing.Point(549, 60);
             this.label59.Name = "label59";
             this.label59.Size = new System.Drawing.Size(126, 16);
             this.label59.TabIndex = 520;
@@ -2956,7 +2956,7 @@
             this.label58.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
             this.label58.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label58.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.label58.Location = new System.Drawing.Point(457, 38);
+            this.label58.Location = new System.Drawing.Point(549, 38);
             this.label58.Name = "label58";
             this.label58.Size = new System.Drawing.Size(121, 16);
             this.label58.TabIndex = 519;
@@ -2969,7 +2969,7 @@
             this.label57.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
             this.label57.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label57.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.label57.Location = new System.Drawing.Point(457, 16);
+            this.label57.Location = new System.Drawing.Point(549, 16);
             this.label57.Name = "label57";
             this.label57.Size = new System.Drawing.Size(129, 16);
             this.label57.TabIndex = 518;
@@ -3151,7 +3151,7 @@
             this.sB1});
             this.sB.Location = new System.Drawing.Point(0, 757);
             this.sB.Name = "sB";
-            this.sB.Size = new System.Drawing.Size(1725, 22);
+            this.sB.Size = new System.Drawing.Size(1784, 22);
             this.sB.TabIndex = 11;
             this.sB.Text = "statusStrip1";
             // 
@@ -3165,7 +3165,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1725, 779);
+            this.ClientSize = new System.Drawing.Size(1784, 779);
             this.Controls.Add(this.splitContainer1);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.c1CommandDock1);

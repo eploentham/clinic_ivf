@@ -37,6 +37,10 @@
             this.c1SplitterPanel2 = new C1.Win.C1SplitContainer.C1SplitterPanel();
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel4 = new System.Windows.Forms.Panel();
+            this.label13 = new System.Windows.Forms.Label();
+            this.txtlisMaxValue = new C1.Win.C1Input.C1TextBox();
+            this.label12 = new System.Windows.Forms.Label();
+            this.txtlisMinValue = new C1.Win.C1Input.C1TextBox();
             this.btnInterpretSave = new C1.Win.C1Input.C1Button();
             this.btnInterpretMinus = new C1.Win.C1Input.C1Button();
             this.btnInterpretPlus = new C1.Win.C1Input.C1Button();
@@ -81,10 +85,9 @@
             this.btnEdit = new C1.Win.C1Input.C1Button();
             this.chkVoid = new C1.Win.C1Input.C1CheckBox();
             this.btnVoid = new C1.Win.C1Input.C1Button();
-            this.label12 = new System.Windows.Forms.Label();
-            this.txtlisMinValue = new C1.Win.C1Input.C1TextBox();
-            this.label13 = new System.Windows.Forms.Label();
-            this.txtlisMaxValue = new C1.Win.C1Input.C1TextBox();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.chkReqNurseScr = new System.Windows.Forms.RadioButton();
+            this.chkReqLabFormA = new System.Windows.Forms.RadioButton();
             this.sB.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.theme1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.sCMain)).BeginInit();
@@ -93,6 +96,8 @@
             this.c1SplitterPanel2.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtlisMaxValue)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtlisMinValue)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnInterpretSave)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnInterpretMinus)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnInterpretPlus)).BeginInit();
@@ -119,8 +124,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.btnEdit)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkVoid)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnVoid)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtlisMinValue)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtlisMaxValue)).BeginInit();
+            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // sB
@@ -202,6 +206,7 @@
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.panel2.Controls.Add(this.groupBox1);
             this.panel2.Controls.Add(this.panel4);
             this.panel2.Controls.Add(this.label11);
             this.panel2.Controls.Add(this.panel3);
@@ -260,6 +265,58 @@
             this.panel4.Size = new System.Drawing.Size(787, 227);
             this.panel4.TabIndex = 591;
             this.theme1.SetTheme(this.panel4, "(default)");
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.label13.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.label13.Location = new System.Drawing.Point(388, 31);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(99, 16);
+            this.label13.TabIndex = 601;
+            this.label13.Text = "LIS max Vaule :";
+            this.theme1.SetTheme(this.label13, "(default)");
+            // 
+            // txtlisMaxValue
+            // 
+            this.txtlisMaxValue.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtlisMaxValue.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
+            this.txtlisMaxValue.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.txtlisMaxValue.Location = new System.Drawing.Point(501, 29);
+            this.txtlisMaxValue.Name = "txtlisMaxValue";
+            this.txtlisMaxValue.Size = new System.Drawing.Size(140, 20);
+            this.txtlisMaxValue.TabIndex = 602;
+            this.txtlisMaxValue.Tag = null;
+            this.theme1.SetTheme(this.txtlisMaxValue, "(default)");
+            this.txtlisMaxValue.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.label12.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.label12.Location = new System.Drawing.Point(388, 5);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(95, 16);
+            this.label12.TabIndex = 599;
+            this.label12.Text = "LIS min Vaule :";
+            this.theme1.SetTheme(this.label12, "(default)");
+            // 
+            // txtlisMinValue
+            // 
+            this.txtlisMinValue.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtlisMinValue.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
+            this.txtlisMinValue.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.txtlisMinValue.Location = new System.Drawing.Point(501, 3);
+            this.txtlisMinValue.Name = "txtlisMinValue";
+            this.txtlisMinValue.Size = new System.Drawing.Size(140, 20);
+            this.txtlisMinValue.TabIndex = 600;
+            this.txtlisMinValue.Tag = null;
+            this.theme1.SetTheme(this.txtlisMinValue, "(default)");
+            this.txtlisMinValue.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
             // 
             // btnInterpretSave
             // 
@@ -929,57 +986,53 @@
             this.btnVoid.UseVisualStyleBackColor = true;
             this.btnVoid.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
             // 
-            // label12
+            // groupBox1
             // 
-            this.label12.AutoSize = true;
-            this.label12.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.label12.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.label12.Location = new System.Drawing.Point(388, 5);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(95, 16);
-            this.label12.TabIndex = 599;
-            this.label12.Text = "LIS min Vaule :";
-            this.theme1.SetTheme(this.label12, "(default)");
+            this.groupBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.groupBox1.Controls.Add(this.chkReqLabFormA);
+            this.groupBox1.Controls.Add(this.chkReqNurseScr);
+            this.groupBox1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.groupBox1.Location = new System.Drawing.Point(516, 215);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(200, 140);
+            this.groupBox1.TabIndex = 592;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "จุดส่ง request LAB";
+            this.theme1.SetTheme(this.groupBox1, "(default)");
             // 
-            // txtlisMinValue
+            // chkReqNurseScr
             // 
-            this.txtlisMinValue.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtlisMinValue.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
-            this.txtlisMinValue.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.txtlisMinValue.Location = new System.Drawing.Point(501, 3);
-            this.txtlisMinValue.Name = "txtlisMinValue";
-            this.txtlisMinValue.Size = new System.Drawing.Size(140, 20);
-            this.txtlisMinValue.TabIndex = 600;
-            this.txtlisMinValue.Tag = null;
-            this.theme1.SetTheme(this.txtlisMinValue, "(default)");
-            this.txtlisMinValue.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            this.chkReqNurseScr.AutoSize = true;
+            this.chkReqNurseScr.BackColor = System.Drawing.Color.Transparent;
+            this.chkReqNurseScr.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
+            this.chkReqNurseScr.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(189)))), ((int)(((byte)(182)))));
+            this.chkReqNurseScr.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(189)))), ((int)(((byte)(182)))));
+            this.chkReqNurseScr.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.chkReqNurseScr.Location = new System.Drawing.Point(6, 20);
+            this.chkReqNurseScr.Name = "chkReqNurseScr";
+            this.chkReqNurseScr.Size = new System.Drawing.Size(90, 17);
+            this.chkReqNurseScr.TabIndex = 1;
+            this.chkReqNurseScr.TabStop = true;
+            this.chkReqNurseScr.Text = "Nurse Screen";
+            this.theme1.SetTheme(this.chkReqNurseScr, "(default)");
+            this.chkReqNurseScr.UseVisualStyleBackColor = false;
             // 
-            // label13
+            // chkReqLabFormA
             // 
-            this.label13.AutoSize = true;
-            this.label13.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.label13.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.label13.Location = new System.Drawing.Point(388, 31);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(99, 16);
-            this.label13.TabIndex = 601;
-            this.label13.Text = "LIS max Vaule :";
-            this.theme1.SetTheme(this.label13, "(default)");
-            // 
-            // txtlisMaxValue
-            // 
-            this.txtlisMaxValue.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtlisMaxValue.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(152)))), ((int)(((byte)(152)))));
-            this.txtlisMaxValue.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.txtlisMaxValue.Location = new System.Drawing.Point(501, 29);
-            this.txtlisMaxValue.Name = "txtlisMaxValue";
-            this.txtlisMaxValue.Size = new System.Drawing.Size(140, 20);
-            this.txtlisMaxValue.TabIndex = 602;
-            this.txtlisMaxValue.Tag = null;
-            this.theme1.SetTheme(this.txtlisMaxValue, "(default)");
-            this.txtlisMaxValue.VisualStyleBaseStyle = C1.Win.C1Input.VisualStyle.Office2010Blue;
+            this.chkReqLabFormA.AutoSize = true;
+            this.chkReqLabFormA.BackColor = System.Drawing.Color.Transparent;
+            this.chkReqLabFormA.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
+            this.chkReqLabFormA.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(189)))), ((int)(((byte)(182)))));
+            this.chkReqLabFormA.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(189)))), ((int)(((byte)(182)))));
+            this.chkReqLabFormA.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.chkReqLabFormA.Location = new System.Drawing.Point(6, 55);
+            this.chkReqLabFormA.Name = "chkReqLabFormA";
+            this.chkReqLabFormA.Size = new System.Drawing.Size(81, 17);
+            this.chkReqLabFormA.TabIndex = 2;
+            this.chkReqLabFormA.TabStop = true;
+            this.chkReqLabFormA.Text = "LAB Form A";
+            this.theme1.SetTheme(this.chkReqLabFormA, "(default)");
+            this.chkReqLabFormA.UseVisualStyleBackColor = false;
             // 
             // FrmLabItem
             // 
@@ -1002,6 +1055,8 @@
             this.panel2.PerformLayout();
             this.panel4.ResumeLayout(false);
             this.panel4.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtlisMaxValue)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtlisMinValue)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnInterpretSave)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnInterpretMinus)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnInterpretPlus)).EndInit();
@@ -1029,8 +1084,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.btnEdit)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkVoid)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnVoid)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtlisMinValue)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtlisMaxValue)).EndInit();
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1095,5 +1150,8 @@
         private C1.Win.C1Input.C1TextBox txtlisMaxValue;
         private System.Windows.Forms.Label label12;
         private C1.Win.C1Input.C1TextBox txtlisMinValue;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.RadioButton chkReqLabFormA;
+        private System.Windows.Forms.RadioButton chkReqNurseScr;
     }
 }
