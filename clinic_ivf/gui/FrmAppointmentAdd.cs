@@ -252,7 +252,7 @@ namespace clinic_ivf.gui
             cboOPUTime.Enabled = chkOPU.Checked ? true : false;
             if (chkOPU.Checked)
             {
-                txtRemarkpApm.Value = "Not Allow to drink or eat from (งดน้ำ งดอาหาร ตั้งแต่เวลา)";
+                txtOPURemark.Value = "Not Allow to drink or eat from (งดน้ำ งดอาหาร ตั้งแต่เวลา)";
             }
         }
 
@@ -528,7 +528,7 @@ namespace clinic_ivf.gui
             //txtHn.Value = pttO.PIDS;  //  -1
             //txtName.Value = pttO.FullName;  //  -1
 
-            txtOPURemark.Value = "Not Allow to drink or eat from (งดน้ำ งดอาหาร ตั้งแต่เวลา)";
+            txtOPURemark.Value = pApm.opu_remark;
             txtAppointment.Value = pApm.patient_appointment;
 
             if (pApm.patient_appointment_servicepoint.Equals("") && cboBsp.Items.Count>3)
@@ -1108,6 +1108,7 @@ namespace clinic_ivf.gui
             pApm.sperm_opu = chkSpermOPU.Checked ? "1" : "0";
             pApm.pesa = chkPesa.Checked ? "1" : "0";
             pApm.sperm_sa = chkSpermSA.Checked ? "1" : "0";
+            pApm.opu_remark = txtOPURemark.Text.Trim();
             return chk;
         }
         private void FrmAppointmentAdd_Load(object sender, EventArgs e)

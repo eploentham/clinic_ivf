@@ -7,7 +7,7 @@
     <ProjectGuid>{7D208141-0F7C-4B94-8BBA-D4B4FA8685A4}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <RootNamespace>clinic_ivf</RootNamespace>
-    <AssemblyName>clinic_ivf_donor</AssemblyName>
+    <AssemblyName>clinic_ivf_ptt</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -32,7 +32,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>Resources\icon-sqr-01.ico</ApplicationIcon>
+    <ApplicationIcon>Resources\Treetog-I-Documents.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="AForge, Version=2.2.5.0, Culture=neutral, PublicKeyToken=c1db6ff4eaa06aeb, processorArchitecture=MSIL">
@@ -140,12 +140,6 @@
     </Compile>
     <Compile Include="gui\FrmAppointmentAdd.Designer.cs">
       <DependentUpon>FrmAppointmentAdd.cs</DependentUpon>
-    </Compile>
-    <Compile Include="gui\FrmAppointmentDonorAdd.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="gui\FrmAppointmentDonorAdd.Designer.cs">
-      <DependentUpon>FrmAppointmentDonorAdd.cs</DependentUpon>
     </Compile>
     <Compile Include="gui\FrmCashAccount.cs">
       <SubType>Form</SubType>
@@ -951,9 +945,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="gui\FrmAppointmentAdd.resx">
       <DependentUpon>FrmAppointmentAdd.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="gui\FrmAppointmentDonorAdd.resx">
-      <DependentUpon>FrmAppointmentDonorAdd.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="gui\FrmCashAccount.resx">
       <DependentUpon>FrmCashAccount.cs</DependentUpon>

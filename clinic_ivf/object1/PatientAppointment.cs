@@ -68,5 +68,6 @@ namespace clinic_ivf.object1
         public String sperm_opu { get; set; }
         public String pesa { get; set; }
         public String sperm_sa { get; set; }
+        public String opu_remark { get; set; }
     }
 }

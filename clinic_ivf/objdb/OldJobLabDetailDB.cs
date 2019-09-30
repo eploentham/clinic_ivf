@@ -277,7 +277,7 @@ namespace clinic_ivf.objdb
                 "From " + jlabD.table + " jlabD " +
                 "Left Join LabItem li on jlabD.LID = li.LID " +
                 "Where jlabD." + jlabD.VN + " ='" + vn + "' and jlabD.active = '1' and jlabD.req_id = 0 and li.status_outlab = '0' and li.status_send_request = '0' " +
-                "Order By jlabD." + jlabD.LID;
+                "Order By li.sort1, jlabD." + jlabD.LID;
             dt = conn.selectData(conn.conn, sql);
             return dt;
         }

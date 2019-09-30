@@ -2009,6 +2009,13 @@ namespace clinic_ivf.gui
             String date1 = "";
             date1 = ic.datetoShow(dt.Rows[0][ic.ivfDB.pApmDB.pApm.patient_appointment_date].ToString());
             dt.Rows[0][ic.ivfDB.pApmDB.pApm.patient_appointment_date] = date1;
+            if (dt.Rows.Count > 0)
+            {
+                if (dt.Rows[0][ic.ivfDB.pApmDB.pApm.opu_remark].ToString().Length > 0)
+                {
+                    dt.Rows[0][ic.ivfDB.pApmDB.pApm.patient_appointment_notice] += Environment.NewLine + dt.Rows[0][ic.ivfDB.pApmDB.pApm.opu_remark].ToString()+Environment.NewLine;
+                }
+            }
 
             frm.setAppointmentPatient(dt);
             frm.ShowDialog(this);
@@ -2053,7 +2060,11 @@ namespace clinic_ivf.gui
             cboApmOPUTime.Enabled = chkApmOpu.Checked ? true : false;
             if (chkApmOpu.Checked)
             {
-                txtApmRemarkpApm.Value = "Not Allow to drink or eat from (งดน้ำ งดอาหาร ตั้งแต่เวลา)";
+                txtApmOPURemark.Value = "Not Allow to drink or eat from (งดน้ำ งดอาหาร ตั้งแต่เวลา)";
+            }
+            else
+            {
+                txtApmOPURemark.Value = "";
             }
         }
 
@@ -2260,7 +2271,7 @@ namespace clinic_ivf.gui
             txtHn.Value = pttO.PIDS;
             txtApmName.Value = pttO.FullName;
             txtApmRemark.Value = ptt.remark;
-            txtApmOPURemark.Value = "Not Allow to drink or eat from (งดน้ำ งดอาหาร ตั้งแต่เวลา)";
+            txtApmOPURemark.Value = pApm.opu_remark;
 
             if (pApm.patient_appointment_servicepoint.Equals("") && cboBsp.Items.Count > 3)
             {
@@ -3173,7 +3184,7 @@ namespace clinic_ivf.gui
             pApm.sperm_opu = chkApmSpermOPU.Checked ? "1" : "0";
             pApm.pesa = chkApmPesa.Checked ? "1" : "0";
             pApm.sperm_sa = chkApmSpermSA.Checked ? "1" : "0";
-            //pApm.opu = chkET.Checked ? "1" : "0";
+            pApm.opu_remark = txtApmOPURemark.Text.Trim();
             return chk;
         }
         private void BtnApmSave_Click(object sender, EventArgs e)
